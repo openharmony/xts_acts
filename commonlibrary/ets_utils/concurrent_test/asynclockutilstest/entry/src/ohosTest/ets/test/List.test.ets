@@ -13,12 +13,22 @@
 * limitations under the License.
 */
 
-import TaskpoolUtilsAsynclockDifferentTest from "./TaskpoolUtilsAsynclockDifferentTest.test";
-import TaskpoolUtilsAsynclockSameTest from "./TaskpoolUtilsAsynclockSameTest.test";
-import TaskpoolUtilsAsynclockSameAddTest from "./TaskpoolUtilsAsynclockSameAddTest.test";
+import AsynclockDifferentTest from "./AsynclockDifferentTest.test";
+import AsynclockSameTest from "./AsynclockSameTest.test";
+import AsynclockSameAddTest from "./AsynclockSameAddTest.test";
+import AsynclockDifferentSecondTest from "./AsynclockDifferentSecondTest.test";
+import AsynclockDifferentThirdTest from "./AsynclockDifferentThirdTest.test";
+import AsynclockDifferentForthTest from "./AsynclockDifferentForthTest.test";
+import AsynclockSameSecondTest from "./AsynclockSameSecondTest.test";
+import AsynclockSameAddSecondTest from "./AsynclockSameAddSecondTest.test";
 
 export default function testsuite() {
-  TaskpoolUtilsAsynclockDifferentTest();
-  TaskpoolUtilsAsynclockSameTest();
-  TaskpoolUtilsAsynclockSameAddTest();
+  AsynclockDifferentTest();
+  AsynclockSameTest();
+  AsynclockSameAddTest();
+  AsynclockDifferentSecondTest();
+  AsynclockDifferentThirdTest();
+  AsynclockDifferentForthTest();
+  AsynclockSameSecondTest();
+  AsynclockSameAddSecondTest();
 }

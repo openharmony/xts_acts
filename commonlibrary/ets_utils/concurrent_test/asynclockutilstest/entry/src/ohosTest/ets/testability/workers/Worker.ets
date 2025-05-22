@@ -27,7 +27,7 @@ const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
 workerPort.onmessage = async (event: MessageEvents) => {
   let str: string = event.data;
   console.log('str:' + str);
-  if (str == 'TaskpoolUtilsAsynclockSameTest0700') {
+  if (str == 'AsynclockSameTest0700') {
     let count: number = 0;
     let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
     let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
@@ -48,7 +48,7 @@ workerPort.onmessage = async (event: MessageEvents) => {
     workerPort.close();
   }
 
-  if (str == 'TaskpoolUtilsAsynclockSameTest1300') {
+  if (str == 'AsynclockSameTest1300') {
     let count: number = 0;
     let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
     let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
@@ -74,7 +74,7 @@ workerPort.onmessage = async (event: MessageEvents) => {
     workerPort.close();
   }
 
-  if (str == 'TaskpoolUtilsAsynclockSameTest1900') {
+  if (str == 'AsynclockSameTest1900') {
     let count: number = 0;
     let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
     let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
@@ -104,7 +104,7 @@ workerPort.onmessage = async (event: MessageEvents) => {
   }
 
 
-  if (str == 'TaskpoolUtilsAsynclockSameTest2800') {
+  if (str == 'AsynclockSameTest2800') {
     let count: number = 0;
     let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
     let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
@@ -133,7 +133,7 @@ workerPort.onmessage = async (event: MessageEvents) => {
     workerPort.close();
   }
 
-  if (str == 'TaskpoolUtilsAsynclockSameTest3100') {
+  if (str == 'AsynclockSameTest3100') {
     let count: number = 0;
     let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
     let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
@@ -163,7 +163,7 @@ workerPort.onmessage = async (event: MessageEvents) => {
   }
 
 
-  if (str == 'TaskpoolUtilsAsynclockSameTest3500') {
+  if (str == 'AsynclockSameTest3500') {
     let count: number = 42;
     console.log('value :' + count);
     workerPort.postMessage(count);
@@ -171,7 +171,7 @@ workerPort.onmessage = async (event: MessageEvents) => {
   }
 
 
-  if (str == 'TaskpoolUtilsAsynclockSameTest3600') {
+  if (str == 'AsynclockSameTest3600') {
     let count: number = 42;
     console.log('value :' + count);
     workerPort.postMessage(count);
@@ -179,7 +179,7 @@ workerPort.onmessage = async (event: MessageEvents) => {
   }
 
 
-  if (str == 'TaskpoolUtilsAsynclockSameTest3700') {
+  if (str == 'AsynclockSameTest3700') {
     let count: number = 42;
     console.log('value :' + count);
     workerPort.postMessage(count);
@@ -187,7 +187,7 @@ workerPort.onmessage = async (event: MessageEvents) => {
   }
 
 
-  if (str == 'TaskpoolUtilsAsynclockSameTest3800') {
+  if (str == 'AsynclockSameTest3800') {
     let count: number = 42;
     console.log('value :' + count);
     workerPort.postMessage(count);
@@ -196,7 +196,7 @@ workerPort.onmessage = async (event: MessageEvents) => {
 
 
 
-  if (str == 'TaskpoolUtilsAsynclockSameTest3900') {
+  if (str == 'AsynclockSameTest3900') {
     let count: number = 42;
     console.log('value :' + count);
     workerPort.postMessage(count);
@@ -204,7 +204,7 @@ workerPort.onmessage = async (event: MessageEvents) => {
   }
 
 
-  if (str == 'TaskpoolUtilsAsynclockSameTest4010') {
+  if (str == 'AsynclockSameTest4010') {
     let count: number = 42;
     console.log('value :' + count);
     workerPort.postMessage(count);
@@ -212,7 +212,7 @@ workerPort.onmessage = async (event: MessageEvents) => {
   }
 
 
-  if (str == 'TaskpoolUtilsAsynclockSameTest4000') {
+  if (str == 'AsynclockSameTest4000') {
     let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
     let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
     const promises: Promise<void>[] = [];
@@ -227,7 +227,7 @@ workerPort.onmessage = async (event: MessageEvents) => {
         WorkThread.onexit = () => {
           console.log("onexit");
         }
-        WorkThread.postMessage("TaskpoolUtilsAsynclockSameTest4010");
+        WorkThread.postMessage("AsynclockSameTest4010");
         WorkThread.onmessage = (e: MessageEvents): void => {
           count = e.data ;
           console.log('e:' + JSON.stringify(e));
@@ -249,13 +249,13 @@ workerPort.onmessage = async (event: MessageEvents) => {
     while (count != 42) {
       await sleep(300);
     }
-    console.log('value of TaskpoolUtilsAsynclockSameTest3500:' + count);
+    console.log('value of AsynclockSameTest3500:' + count);
     workerPort.postMessage(count);
     workerPort.close();
   }
 
 
-  if (str == 'TaskpoolUtilsAsynclockSameTest4300') {
+  if (str == 'AsynclockSameTest4300') {
     let count: number = 0;
     let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
     let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
@@ -290,7 +290,7 @@ workerPort.onmessage = async (event: MessageEvents) => {
 
 
 
-  if (str == 'TaskpoolUtilsAsynclockSameTest4800') {
+  if (str == 'AsynclockSameTest4800') {
     let count: number = 42;
     console.log('value:' + count);
     workerPort.postMessage(count);
@@ -300,7 +300,7 @@ workerPort.onmessage = async (event: MessageEvents) => {
 
 
 
-  if (str == 'TaskpoolUtilsAsynclockSameTest4900') {
+  if (str == 'AsynclockSameTest4900') {
     let count: number = 42;
     console.log('value:' + count);
     workerPort.postMessage(count);
@@ -310,7 +310,7 @@ workerPort.onmessage = async (event: MessageEvents) => {
 
 
 
-  if (str == 'TaskpoolUtilsAsynclockSameTest5000') {
+  if (str == 'AsynclockSameTest5000') {
     let count: number = 42;
     console.log(' value :' + count);
     workerPort.postMessage(count);
@@ -320,7 +320,7 @@ workerPort.onmessage = async (event: MessageEvents) => {
 
 
 
-  if (str == 'TaskpoolUtilsAsynclockSameTest5300') {
+  if (str == 'AsynclockSameTest5300') {
     let count: number = 0;
     let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
     let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
@@ -354,7 +354,7 @@ workerPort.onmessage = async (event: MessageEvents) => {
   }
 
 
-  if (str == 'TaskpoolUtilsAsynclockSameTest5600') {
+  if (str == 'AsynclockSameTest5600') {
     let count: number = 0;
     let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
     let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");

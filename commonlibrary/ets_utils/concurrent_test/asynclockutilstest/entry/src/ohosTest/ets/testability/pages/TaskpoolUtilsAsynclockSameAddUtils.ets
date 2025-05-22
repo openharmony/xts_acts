@@ -37,7 +37,6 @@ export function test(args:number) {
 export async function taskFunctionTest0200(): Promise<number> {
   let count = 0;
   let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-  let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
   const promises: Promise<void>[] = [];
   for (let i = 0; i < 3; i++) {
     const promise : Promise<void> = lock1.lockAsync( async () => {
@@ -63,7 +62,6 @@ export async function taskFunctionTest0200(): Promise<number> {
 export async function taskFunctionTest0400(): Promise<number> {
   let count = 0;
   let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-  let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
   const promises: Promise<void>[] = [];
   for (let i = 0; i < 3; i++) {
     const promise : Promise<void> = lock1.lockAsync( async () => {
@@ -88,7 +86,6 @@ export async function taskFunctionTest0400(): Promise<number> {
 export async function taskFunctionTest0600(): Promise<number> {
   let count = 0;
   let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-  let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
   const promises: Promise<void>[] = [];
   for (let i = 0; i < 3; i++) {
     const promise : Promise<void> = lock1.lockAsync( async () => {
@@ -112,7 +109,6 @@ export async function taskFunctionTest0600(): Promise<number> {
 export async function taskFunctionTest0900(): Promise<number> {
   let count = 0;
   let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-  let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
   const promises: Promise<void>[] = [];
   for (let i = 0; i < 3; i++) {
     const promise : Promise<void> = lock1.lockAsync( async () => {
@@ -362,7 +358,7 @@ export async function taskFunctionTest3300() {
 
 @Concurrent
 export async function taskFunctionTest3600() {
-  const caseName = 'TaskpoolUtilsAsynclockSameAddTest3600';
+  const caseName = 'AsynclockSameAddTest3600';
   const lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
   const lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
   const promises: Promise<void>[] = [];
@@ -405,7 +401,7 @@ export async function taskFunctionTest3600() {
 
 @Concurrent
 export async function taskFunctionTest3900() {
-  const caseName = 'TaskpoolUtilsAsynclockSameAddTest3900';
+  const caseName = 'AsynclockSameAddTest3900';
   const lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
   const lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
   const promises: Promise<void>[] = [];
@@ -535,7 +531,7 @@ export async function taskFunctionTest4700() {
 
 @Concurrent
 export async function taskFunctionTest5000() {
-  const caseName = 'TaskpoolUtilsAsynclockSameTest4900';
+  const caseName = 'AsynclockSameTest4900';
   const lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
   const lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
   const lock3 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");

@@ -19,7 +19,8 @@
       "workers": [
         './src/ohosTest/ets/testability/workers/Worker.ets',
         './src/ohosTest/ets/testability/workers/Worker1.ets',
-        './src/ohosTest/ets/testability/workers/Worker2.ets'
+        './src/ohosTest/ets/testability/workers/Worker2.ets',
+        './src/ohosTest/ets/testability/workers/Worker3.ets'
       ]
     }
   },

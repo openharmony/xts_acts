@@ -12,6 +12,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
+
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Size, Level, TestType } from "@ohos/hypium";
 import { ArkTSUtils , MessageEvents, taskpool, worker } from "@kit.ArkTS";
 import { sleep } from "../testability/pages/Utils";
@@ -35,14 +36,12 @@ import {
   taskFunctionTest4200,
   taskFunctionTest4500,
   taskFunctionTest4700,
-  taskFunctionTest4900,
-  taskFunctionTest5000,
-  taskFunctionTest5010,
-  taskFunctionTest5200,
-  taskFunctionTest5500
-} from "../testability/pages/TaskpoolUtilsAsynclockSameUtils";
-export default function TaskpoolUtilsAsynclockSameTest() {
-  describe('TaskpoolUtilsAsynclockSameTest', () => {
+  taskFunctionAddTest1010,
+  taskFunctionAddTest1000,
+} from "../testability/pages/TaskpoolUtilsAsynclockSameAddUtils";
+
+export default function AsynclockSameAddTest() {
+  describe('AsynclockSameAddTest', () => {
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
     beforeAll(() => {
       // Presets an action, which is performed only once before all test cases of the test suite start.
@@ -64,17 +63,18 @@ export default function TaskpoolUtilsAsynclockSameTest() {
       // This API supports only one parameter: clear action function.
     })
 
+
     /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_0100
-     * @tc.name TaskpoolUtilsAsynclockSameTest0100
+     * @tc.number SUB_ASYNCLOCK_SAME_ADD_TEST_0100
+     * @tc.name AsynclockSameAddTest0100
      * @tc.desc test
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('TaskpoolUtilsAsynclockSameTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('AsynclockSameAddTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done:Function) => {
-        const caseName = 'TaskpoolUtilsAsynclockSameTest0100';
+        const caseName = 'AsynclockSameAddTest0100';
         console.info(`${caseName} test start`);
         let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
         const promises: Promise<void>[] = [];
@@ -87,7 +87,7 @@ export default function TaskpoolUtilsAsynclockSameTest() {
               count++;
               console.error('Caught an exception:', error.message);
             }
-          }, ArkTSUtils.locks.AsyncLockMode.SHARED);
+          }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
           promises.push(promise);
         }
         await Promise.all(promises);
@@ -101,38 +101,44 @@ export default function TaskpoolUtilsAsynclockSameTest() {
 
 
     /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_0200
-     * @tc.name TaskpoolUtilsAsynclockSameTest0200
+     * @tc.number SUB_ASYNCLOCK_SAME_ADD_TEST_0200
+     * @tc.name AsynclockSameAddTest0200
      * @tc.desc test
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('TaskpoolUtilsAsynclockSameTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('AsynclockSameAddTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
-        const caseName = 'TaskpoolUtilsAsynclockSameTest0200';
+        const caseName = 'AsynclockSameAddTest0200';
         console.info(`${caseName} test start`);
         let task: taskpool.Task = new taskpool.Task(taskFunctionTest0200);
-        await taskpool.execute(task).then(async (result) => {
-          while(result != 3){
-            await sleep(300);
-          }
-          expect(result).assertEqual(3);
-          Done();
-        });
+        let count = 0;
+        for (let i = 0; i < 3; i++) {
+          taskpool.execute(task).then((result) => {
+            console.log(`${result}`);
+            count++;
+          });
+        }
+        while(count != 3){
+          await sleep(300);
+        }
+        expect(count).assertEqual(3);
+        console.info(`${caseName} test end`);
+        Done();
       });
 
     /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_0300
-     * @tc.name TaskpoolUtilsAsynclockSameTest0300
+     * @tc.number SUB_ASYNCLOCK_SAME_ADD_TEST_0300
+     * @tc.name AsynclockSameAddTest0300
      * @tc.desc test
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('TaskpoolUtilsAsynclockSameTest0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('AsynclockSameAddTest0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
-        const caseName = 'TaskpoolUtilsAsynclockSameTest0300';
+        const caseName = 'AsynclockSameAddTest0300';
         console.info(`${caseName} test start`);
         let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
         const promises: Promise<void>[] = [];
@@ -145,7 +151,7 @@ export default function TaskpoolUtilsAsynclockSameTest() {
                 count++;
               }, 200);
             });
-          }, ArkTSUtils.locks.AsyncLockMode.SHARED);
+          }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
           promises.push(promise1);
         }
         while(count != 10){
@@ -157,55 +163,60 @@ export default function TaskpoolUtilsAsynclockSameTest() {
         Done();
       });
 
-    /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_0400
-     * @tc.name TaskpoolUtilsAsynclockSameTest0400
-     * @tc.desc test
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('TaskpoolUtilsAsynclockSameTest0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
-      async (Done: Function) => {
-        const caseName = 'TaskpoolUtilsAsynclockSameTest0400';
-        console.info(`${caseName} test start`);
-        let task: taskpool.Task = new taskpool.Task(taskFunctionTest0400);
-        await taskpool.execute(task).then(async (result) => {
-          console.info(`${caseName} test end`)
-          while(result != 3){
-            await sleep(300);
-          }
-          expect(result).assertEqual(3);
-          Done();
-        });
-      });
 
     /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_0500
-     * @tc.name TaskpoolUtilsAsynclockSameTest0500
+     * @tc.number SUB_ASYNCLOCK_SAME_ADD_TEST_0400
+     * @tc.name AsynclockSameAddTest0400
      * @tc.desc test
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('TaskpoolUtilsAsynclockSameTest0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('AsynclockSameAddTest0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
-        const caseName = 'TaskpoolUtilsAsynclockSameTest0500';
+        const caseName = 'AsynclockSameAddTest0400';
+        console.info(`${caseName} test start`);
+        let task: taskpool.Task = new taskpool.Task(taskFunctionTest0400);
+        let count = 0;
+        for (let i = 0; i < 3; i++) {
+          taskpool.execute(task).then((result) => {
+            console.log(`${result}`);
+            count++;
+          });
+        }
+        while(count != 3){
+          await sleep(300);
+        }
+        expect(count).assertEqual(3);
+        console.info(`${caseName} test end`);
+        Done();
+      });
+
+
+    /**
+     * @tc.number SUB_ASYNCLOCK_SAME_ADD_TEST_0500
+     * @tc.name AsynclockSameAddTest0500
+     * @tc.desc test
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('AsynclockSameAddTest0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        const caseName = 'AsynclockSameAddTest0500';
         console.info(`${caseName} test start`);
         let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
         let count = 0;
         const promises: Promise<void>[] = [];
         for (let i = 0; i < 10; i++) {
           const promise1 = lock1.lockAsync(async () => {
-            console.log('Enter shared lock lock1');
             await new Promise<void>((_, reject) => {
               setTimeout(() => {
                 reject();
                 count++;
               }, 200);
             });
-          }, ArkTSUtils.locks.AsyncLockMode.SHARED);
-          console.log('Exit shared lock lock1');
+          }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
           promises.push(promise1);
         }
         await Promise.all(promises);
@@ -220,43 +231,48 @@ export default function TaskpoolUtilsAsynclockSameTest() {
 
 
     /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_0600
-     * @tc.name TaskpoolUtilsAsynclockSameTest0600
+     * @tc.number SUB_ASYNCLOCK_SAME_ADD_TEST_0600
+     * @tc.name AsynclockSameAddTest0600
      * @tc.desc test
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('TaskpoolUtilsAsynclockSameTest0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('AsynclockSameAddTest0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
-        const caseName = 'TaskpoolUtilsAsynclockSameTest0600';
+        const caseName = 'AsynclockSameAddTest0600';
         console.info(`${caseName} test start`);
         let task: taskpool.Task = new taskpool.Task(taskFunctionTest0600);
-        await taskpool.execute(task).then(async (result) => {
-          console.info(`${caseName} test end`)
-          while(result != 3){
-            await sleep(300);
-          }
-          expect(result).assertEqual(3);
-          Done();
-        })
+        let count = 0;
+        for (let i = 0; i < 3; i++) {
+          taskpool.execute(task).then((result) => {
+            console.log(`${result}`);
+            count++;
+          });
+        }
+        while(count != 3){
+          await sleep(300);
+        }
+        expect(count).assertEqual(3);
+        console.info(`${caseName} test end`);
+        Done();
       });
 
     /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_0700
-     * @tc.name TaskpoolUtilsAsynclockSameTest0700
+     * @tc.number SUB_ASYNCLOCK_SAME_ADD_TEST_0700
+     * @tc.name AsynclockSameAddTest0700
      * @tc.desc test
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('TaskpoolUtilsAsynclockSameTest0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('AsynclockSameAddTest0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
-        const caseName = 'TaskpoolUtilsAsynclockSameTest0700';
+        const caseName = 'AsynclockSameAddTest0700';
         console.info(`${caseName} test start`);
         let count: number = 0;
         let WorkThread: worker.ThreadWorker;
-        WorkThread = new worker.ThreadWorker('../testability/workers/Worker');
+        WorkThread = new worker.ThreadWorker('../testability/workers/Worker1');
         WorkThread.onexit = () => {
           console.log("onexit");
         }
@@ -278,16 +294,16 @@ export default function TaskpoolUtilsAsynclockSameTest() {
       });
 
     /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_0800
-     * @tc.name TaskpoolUtilsAsynclockSameTest0800
+     * @tc.number SUB_ASYNCLOCK_SAME_ADD_TEST_0800
+     * @tc.name AsynclockSameAddTest0800
      * @tc.desc test
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('TaskpoolUtilsAsynclockSameTest0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('AsynclockSameAddTest0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
-        const caseName = 'TaskpoolUtilsAsynclockSameTest0800';
+        const caseName = 'AsynclockSameAddTest0800';
         console.info(`${caseName} test start`);
         let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
         const promises: Promise<void>[] = [];
@@ -306,7 +322,7 @@ export default function TaskpoolUtilsAsynclockSameTest() {
                 }
               }, 200);
             });
-          }, ArkTSUtils.locks.AsyncLockMode.SHARED);
+          }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
           promises.push(promise1);
         }
         try {
@@ -325,104 +341,76 @@ export default function TaskpoolUtilsAsynclockSameTest() {
         console.info(`${caseName} test end`);
         Done();
       });
-    /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_0900
-     * @tc.name TaskpoolUtilsAsynclockSameTest0900
-     * @tc.desc test
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('TaskpoolUtilsAsynclockSameTest0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
-      async (Done: Function) => {
-        const caseName = 'TaskpoolUtilsAsynclockSameTest0900';
-        console.info(`${caseName} test start`);
-        let task: taskpool.Task = new taskpool.Task(taskFunctionTest0900);
-        await taskpool.execute(task).then(async (result) => {
-          console.log('Success execution count:' + result);
-          while(result != 3){
-            await sleep(300);
-          }
-          expect(result).assertEqual(3);
-          console.info(`${caseName} test end`);
-          Done();
-        })
-      });
 
     /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_1000
-     * @tc.name TaskpoolUtilsAsynclockSameTest1000
+     * @tc.number SUB_ASYNCLOCK_SAME_ADD_TEST_0900
+     * @tc.name AsynclockSameAddTest0900
      * @tc.desc test
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('TaskpoolUtilsAsynclockSameTest1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('AsynclockSameAddTest0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
-        const caseName = 'TaskpoolUtilsAsynclockSameTest1000';
+        const caseName = 'AsynclockSameAddTest0900';
         console.info(`${caseName} test start`);
-        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-        const promises: Promise<void>[] = [];
-        let task: taskpool.Task = new taskpool.Task(printArgs1, 1);
+        let task: taskpool.Task = new taskpool.Task(taskFunctionTest0900);
         let count = 0;
-        let errorCount = 0;
-        let executionSucceededCount = 0;
-        task.onExecutionSucceeded(()=>{
-          const promise1  = lock1.lockAsync(async () => {
-            console.log('Enter shared lock lock1');
-             new Promise<void>((_, reject) => {
-                try {
-                  executionSucceededCount++;
-                  const error = new Error('Simulated asynchronous operation error');
-                  console.error('Caught an exception:', error.message);
-                  throw error;
-                } catch (e) {
-                  errorCount++;
-                  reject(e);
-                }
-            });
-          }, ArkTSUtils.locks.AsyncLockMode.SHARED);
-          console.log('Exit shared lock lock1');
-          promises.push(promise1);
-        });
-        await taskpool.execute(task).then(async () => {
-          console.info("taskpool: onExecute")
-          count++;
-        })
-        try {
-          await Promise.all(promises);
-        } catch (e) {
-          console.log('Caught an error in Promise.all:', JSON.stringify(e));
+        for (let i = 0; i < 3; i++) {
+          taskpool.execute(task).then((result) => {
+            console.log(`${result}`);
+            count++;
+          });
         }
-        while(count != 1){
+        while(count != 3){
           await sleep(300);
         }
-        while(executionSucceededCount != 1){
-          await sleep(300);
-        }
-        while(errorCount != 1){
-          await sleep(300);
-        }
-        console.log('Success execution count:' + count);
-        expect(count).assertEqual(1);
-        expect(executionSucceededCount).assertEqual(1);
-        expect(errorCount).assertEqual(1);
+        expect(count).assertEqual(3);
         console.info(`${caseName} test end`);
         Done();
       });
 
     /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_1100
-     * @tc.name TaskpoolUtilsAsynclockSameTest1100
+     * @tc.number SUB_ASYNCLOCK_SAME_ADD_TEST_1000
+     * @tc.name AsynclockSameAddTest1000
      * @tc.desc test
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('TaskpoolUtilsAsynclockSameTest1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('AsynclockSameAddTest1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
-        const caseName = 'TaskpoolUtilsAsynclockSameTest1100';
+        const caseName = 'AsynclockSameAddTest1000';
+        console.info(`${caseName} test start`);
+        let task: taskpool.Task = new taskpool.Task(taskFunctionAddTest1010,1);
+        task.onReceiveData(taskFunctionAddTest1000);
+        let count = 0;
+        for (let i = 0; i < 3; i++) {
+          taskpool.execute(task).then((result) => {
+            console.log(`${result}`);
+            count++;
+          });
+        }
+        while(count != 3){
+          await sleep(300);
+        }
+        expect(count).assertEqual(3);
+        console.info(`${caseName} test end`);
+        Done();
+      });
+
+
+    /**
+     * @tc.number SUB_ASYNCLOCK_SAME_ADD_TEST_1100
+     * @tc.name AsynclockSameAddTest1100
+     * @tc.desc test
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('AsynclockSameAddTest1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        const caseName = 'AsynclockSameAddTest1100';
         console.info(`${caseName} test start`);
         let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
         let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
@@ -431,9 +419,7 @@ export default function TaskpoolUtilsAsynclockSameTest() {
         let errorCount = 0;
         for (let i = 0; i < 10; i++) {
           const promise1 = lock1.lockAsync(async () => {
-            console.log('Enter shared lock lock1');
-            await lock2.lockAsync(async () => {
-              console.log('Enter shared lock lock2');
+             lock2.lockAsync(async () => {
               await new Promise<void>((resolve, reject) => {
                 setTimeout(() => {
                   try {
@@ -447,10 +433,8 @@ export default function TaskpoolUtilsAsynclockSameTest() {
                   }
                 }, 200);
               });
-            }, ArkTSUtils.locks.AsyncLockMode.SHARED);
-            console.log('Exit shared lock lock2');
-          }, ArkTSUtils.locks.AsyncLockMode.SHARED);
-          console.log('Exit shared lock lock1');
+            }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
+          }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
           promises.push(promise1);
         }
         try {
@@ -467,44 +451,48 @@ export default function TaskpoolUtilsAsynclockSameTest() {
       });
 
     /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_1200
-     * @tc.name TaskpoolUtilsAsynclockSameTest1200
+     * @tc.number SUB_ASYNCLOCK_SAME_ADD_TEST_1200
+     * @tc.name AsynclockSameAddTest1200
      * @tc.desc test
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('TaskpoolUtilsAsynclockSameTest1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('AsynclockSameAddTest1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
-        const caseName = 'TaskpoolUtilsAsynclockSameTest1200';
+        const caseName = 'AsynclockSameAddTest1200';
         console.info(`${caseName} test start`);
         let task: taskpool.Task = new taskpool.Task(taskFunctionTest1200, 1);
-        await taskpool.execute(task).then(async (result) => {
-          while(result != 3){
-            await sleep(300);
-          }
-          console.log('Success execution count:' + result);
-          expect(result).assertEqual(3);
-          console.info(`${caseName} test end`);
-          Done();
-        })
+        let count = 0;
+        for (let i = 0; i < 3; i++) {
+          taskpool.execute(task).then((result) => {
+            console.log(`${result}`);
+            count++;
+          });
+        }
+        while(count != 3){
+          await sleep(300);
+        }
+        expect(count).assertEqual(3);
+        console.info(`${caseName} test end`);
+        Done();
       });
 
     /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_1300
-     * @tc.name TaskpoolUtilsAsynclockSameTest1300
+     * @tc.number SUB_ASYNCLOCK_SAME_ADD_TEST_1300
+     * @tc.name AsynclockSameAddTest1300
      * @tc.desc test
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('TaskpoolUtilsAsynclockSameTest1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('AsynclockSameAddTest1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
-        const caseName = 'TaskpoolUtilsAsynclockSameTest1300';
+        const caseName = 'AsynclockSameAddTest1300';
         console.info(`${caseName} test start`);
         let count: number = 0;
         let WorkThread: worker.ThreadWorker;
-        WorkThread = new worker.ThreadWorker('../testability/workers/Worker');
+        WorkThread = new worker.ThreadWorker('../testability/workers/Worker1');
         WorkThread.onexit = () => {
           console.log("onexit");
         }
@@ -525,16 +513,16 @@ export default function TaskpoolUtilsAsynclockSameTest() {
       });
 
     /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_1400
-     * @tc.name TaskpoolUtilsAsynclockSameTest1400
+     * @tc.number SUB_ASYNCLOCK_SAME_ADD_TEST_1400
+     * @tc.name AsynclockSameAddTest1400
      * @tc.desc test
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('TaskpoolUtilsAsynclockSameTest1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('AsynclockSameAddTest1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
-        const caseName = 'TaskpoolUtilsAsynclockSameTest1400';
+        const caseName = 'AsynclockSameAddTest1400';
         console.info(`${caseName} test start`);
         let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
         let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
@@ -542,17 +530,15 @@ export default function TaskpoolUtilsAsynclockSameTest() {
         let count = 0;
         for (let i = 0; i < 10; i++) {
           const promise1  = lock1.lockAsync(async () => {
-            console.log('Enter shared lock lock1');
-            await lock2.lockAsync(async () => {
-              console.log('Enter shared lock lock2');
+             lock2.lockAsync(async () => {
               await new Promise<void>((resolve, reject) => {
                 setTimeout(() => {
                   count++;
                   resolve();
                 }, 200);
               });
-            }, ArkTSUtils.locks.AsyncLockMode.SHARED);
-          }, ArkTSUtils.locks.AsyncLockMode.SHARED);
+            }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
+          }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
           promises.push(promise1);
         }
         try {
@@ -570,37 +556,44 @@ export default function TaskpoolUtilsAsynclockSameTest() {
       });
 
     /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_1500
-     * @tc.name TaskpoolUtilsAsynclockSameTest1500
+     * @tc.number SUB_ASYNCLOCK_SAME_ADD_TEST_1500
+     * @tc.name AsynclockSameAddTest1500
      * @tc.desc test
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('TaskpoolUtilsAsynclockSameTest1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('AsynclockSameAddTest1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
-        const caseName = 'TaskpoolUtilsAsynclockSameTest1500';
+        const caseName = 'AsynclockSameAddTest1500';
         console.info(`${caseName} test start`);
         let task: taskpool.Task = new taskpool.Task(taskFunctionTest1500);
-        await taskpool.execute(task).then(async (result) => {
-          console.log('Success execution count:' + result);
-          expect(result).assertEqual(3);
-          console.info(`${caseName} test end`);
-          Done();
-        })
+        let count = 0;
+        for (let i = 0; i < 3; i++) {
+          taskpool.execute(task).then((result) => {
+            console.log(`${result}`);
+            count++;
+          });
+        }
+        while(count != 3){
+          await sleep(300);
+        }
+        expect(count).assertEqual(3);
+        console.info(`${caseName} test end`);
+        Done();
       });
 
     /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_1600
-     * @tc.name TaskpoolUtilsAsynclockSameTest1600
+     * @tc.number SUB_ASYNCLOCK_SAME_ADD_TEST_1600
+     * @tc.name AsynclockSameAddTest1600
      * @tc.desc test
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('TaskpoolUtilsAsynclockSameTest1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('AsynclockSameAddTest1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
-        const caseName = 'TaskpoolUtilsAsynclockSameTest1600';
+        const caseName = 'AsynclockSameAddTest1600';
         console.info(`${caseName} test start`);
         let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
         let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
@@ -610,8 +603,8 @@ export default function TaskpoolUtilsAsynclockSameTest() {
         let onEnqueuedcount = 0;
         task.onEnqueued(()=>{
           const promise1 : Promise<void> = lock1.lockAsync(async () => {
-            console.log('Enter shared lock lock1');
-            await lock2.lockAsync(async () => {
+            console.log('Enter exclusive lock lock1');
+            lock2.lockAsync(async () => {
               console.log('Enter exclusive lock lock2');
               await new Promise<void>((resolve, reject) => {
                 setTimeout(() => {
@@ -619,10 +612,10 @@ export default function TaskpoolUtilsAsynclockSameTest() {
                   resolve();
                 }, 200);
               });
-            }, ArkTSUtils.locks.AsyncLockMode.SHARED);
+            }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
             console.log('Exit exclusive lock lock2');
-          }, ArkTSUtils.locks.AsyncLockMode.SHARED);
-          console.log('Exit shared lock lock1');
+          }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
+          console.log('Exit exclusive lock lock1');
           promises.push(promise1);
         });
         await taskpool.execute(task).then(async () => {
@@ -637,6 +630,9 @@ export default function TaskpoolUtilsAsynclockSameTest() {
         while(count != 1){
           await sleep(300);
         }
+        while(onEnqueuedcount != 1){
+          await sleep(300);
+        }
         console.log('Success execution count:' + count);
         expect(count).assertEqual(1);
         expect(onEnqueuedcount).assertEqual(1);
@@ -645,16 +641,16 @@ export default function TaskpoolUtilsAsynclockSameTest() {
       });
 
     /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_1700
-     * @tc.name TaskpoolUtilsAsynclockSameTest1700
+     * @tc.number SUB_ASYNCLOCK_SAME_ADD_TEST_1700
+     * @tc.name AsynclockSameAddTest1700
      * @tc.desc test
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('TaskpoolUtilsAsynclockSameTest1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('AsynclockSameAddTest1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
-        const caseName = 'TaskpoolUtilsAsynclockSameTest1700';
+        const caseName = 'AsynclockSameAddTest1700';
         console.info(`${caseName} test start`);
         let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
         let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
@@ -662,17 +658,17 @@ export default function TaskpoolUtilsAsynclockSameTest() {
         let count = 0;
         for (let i = 0; i < 10; i++) {
           const promise1 : Promise<void> = lock1.lockAsync(async () => {
-            console.log('Enter shared lock lock1');
-            await lock2.lockAsync(async () => {
-              console.log('Enter shared lock lock2');
+            console.log('Enter exclusive lock lock1');
+             lock2.lockAsync(async () => {
+              console.log('Enter exclusive lock lock2');
               await new Promise<void>((resolve, reject) => {
                 setTimeout(() => {
                   count++;
                   reject();
                 }, 200);
               });
-            }, ArkTSUtils.locks.AsyncLockMode.SHARED);
-          }, ArkTSUtils.locks.AsyncLockMode.SHARED);
+            }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
+          }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
           promises.push(promise1);
         }
         try {
@@ -691,43 +687,47 @@ export default function TaskpoolUtilsAsynclockSameTest() {
 
     /**
      * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_1800
-     * @tc.name TaskpoolUtilsAsynclockSameTest1800
+     * @tc.name AsynclockSameAddTest1800
      * @tc.desc test
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('TaskpoolUtilsAsynclockSameTest1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('AsynclockSameAddTest1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
-        const caseName = 'TaskpoolUtilsAsynclockSameTest1800';
+        const caseName = 'AsynclockSameAddTest1800';
         console.info(`${caseName} test start`);
         let task: taskpool.Task = new taskpool.Task(taskFunctionTest1800);
-        await taskpool.execute(task).then(async (result) => {
-          console.log('Success execution count:' + result);
-          while(result != 3){
-            await sleep(300);
-          }
-          expect(result).assertEqual(3);
-          console.info(`${caseName} test end`);
-          Done();
-        })
+        let count = 0;
+        for (let i = 0; i < 3; i++) {
+          taskpool.execute(task).then((result) => {
+            console.log(`${result}`);
+            count++;
+          });
+        }
+        while(count != 3){
+          await sleep(300);
+        }
+        expect(count).assertEqual(3);
+        console.info(`${caseName} test end`);
+        Done();
       });
 
     /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_1900
-     * @tc.name TaskpoolUtilsAsynclockSameTest1900
+     * @tc.number SUB_ASYNCLOCK_SAME_ADD_TEST_1900
+     * @tc.name AsynclockSameAddTest1900
      * @tc.desc test
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('TaskpoolUtilsAsynclockSameTest1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('AsynclockSameAddTest1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
-        const caseName = 'TaskpoolUtilsAsynclockSameTest1900';
+        const caseName = 'AsynclockSameAddTest1900';
         console.info(`${caseName} test start`);
         let count: number = 0;
         let WorkThread: worker.ThreadWorker;
-        WorkThread = new worker.ThreadWorker('../testability/workers/Worker');
+        WorkThread = new worker.ThreadWorker('../testability/workers/Worker1');
         WorkThread.onexit = () => {
           console.log("onexit");
         }
@@ -738,7 +738,6 @@ export default function TaskpoolUtilsAsynclockSameTest() {
           console.info("main2 thread count is  " + count);
           WorkThread.terminate();
         }
-        await sleep(300);
         console.log('Success execution count:' + count);
         while(count != 1){
           await sleep(300);
@@ -750,16 +749,16 @@ export default function TaskpoolUtilsAsynclockSameTest() {
 
 
     /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_2000
-     * @tc.name TaskpoolUtilsAsynclockSameTest2000
+     * @tc.number SUB_ASYNCLOCK_SAME_ADD_TEST_2000
+     * @tc.name AsynclockSameAddTest2000
      * @tc.desc test
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('TaskpoolUtilsAsynclockSameTest2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('AsynclockSameAddTest2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
-        const caseName = 'TaskpoolUtilsAsynclockSameTest2000';
+        const caseName = 'AsynclockSameAddTest2000';
         console.info(`${caseName} test start`);
         let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
         let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
@@ -768,9 +767,9 @@ export default function TaskpoolUtilsAsynclockSameTest() {
         let errorCount = 0;
         for (let i = 0; i < 10; i++) {
           const promise1 : Promise<void> = lock1.lockAsync(async () => {
-            console.log('Enter shared lock lock1');
+            console.log('Enter exclusive lock lock1');
             lock2.lockAsync(async () => {
-              console.log('Enter exclusive lock lock2');
+              console.log('Enter shared lock lock2');
               try {
                 count++;
                 const error = new Error('Simulated asynchronous operation error');
@@ -779,8 +778,8 @@ export default function TaskpoolUtilsAsynclockSameTest() {
               } catch (e) {
                 errorCount++;
               }
-            }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
-          }, ArkTSUtils.locks.AsyncLockMode.SHARED);
+            }, ArkTSUtils.locks.AsyncLockMode.SHARED);
+          }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
           promises.push(promise1);
         }
         try {
@@ -798,33 +797,44 @@ export default function TaskpoolUtilsAsynclockSameTest() {
       });
 
     /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_2100
-     * @tc.name TaskpoolUtilsAsynclockSameTest2100
+     * @tc.number SUB_ASYNCLOCK_SAME_ADD_TEST_2100
+     * @tc.name AsynclockSameAddTest2100
      * @tc.desc test
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('TaskpoolUtilsAsynclockSameTest2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('AsynclockSameAddTest2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
+        const caseName = 'AsynclockSameAddTest2100';
+        console.info(`${caseName} test start`);
         let task: taskpool.Task = new taskpool.Task(taskFunctionTest2100);
-        await taskpool.execute(task).then((result) => {
-          expect(result).assertEqual(3);
-          Done();
-        })
+        let count = 0;
+        for (let i = 0; i < 3; i++) {
+          taskpool.execute(task).then((result) => {
+            console.log(`${result}`);
+            count++;
+          });
+        }
+        while(count != 3){
+          await sleep(300);
+        }
+        expect(count).assertEqual(3);
+        console.info(`${caseName} test end`);
+        Done();
       });
 
     /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_2200
-     * @tc.name TaskpoolUtilsAsynclockSameTest2200
+     * @tc.number SUB_ASYNCLOCK_SAME_ADD_TEST_2200
+     * @tc.name AsynclockSameAddTest2200
      * @tc.desc test
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('TaskpoolUtilsAsynclockSameTest2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('AsynclockSameAddTest2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
-        const caseName = 'TaskpoolUtilsAsynclockSameTest2200';
+        const caseName = 'AsynclockSameAddTest2200';
         console.info(`${caseName} test start`);
         let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
         let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
@@ -834,7 +844,7 @@ export default function TaskpoolUtilsAsynclockSameTest() {
         let onStartExecutioncount = 0;
         task.onStartExecution(()=>{
           const promise1 : Promise<void> = lock1.lockAsync(async () => {
-             lock2.lockAsync(async () => {
+            lock2.lockAsync(async () => {
               try {
                 const error = new Error('Simulated asynchronous operation error');
                 console.error('Caught an exception:', error.message);
@@ -842,8 +852,8 @@ export default function TaskpoolUtilsAsynclockSameTest() {
               } catch (e) {
                 onStartExecutioncount++;
               }
-            }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
-          }, ArkTSUtils.locks.AsyncLockMode.SHARED);
+            }, ArkTSUtils.locks.AsyncLockMode.SHARED);
+          }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
           promises.push(promise1);
         });
         await taskpool.execute(task).then(async () => {
@@ -868,16 +878,16 @@ export default function TaskpoolUtilsAsynclockSameTest() {
       });
 
     /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_2300
-     * @tc.name TaskpoolUtilsAsynclockSameTest2300
+     * @tc.number SUB_ASYNCLOCK_SAME_ADD_TEST_2300
+     * @tc.name AsynclockSameAddTest2300
      * @tc.desc test
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('TaskpoolUtilsAsynclockSameTest2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('AsynclockSameAddTest2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
-        const caseName = 'TaskpoolUtilsAsynclockSameTest2300';
+        const caseName = 'AsynclockSameAddTest2300';
         console.info(`${caseName} test start`);
         let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
         let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
@@ -886,12 +896,12 @@ export default function TaskpoolUtilsAsynclockSameTest() {
         for (let i = 0; i < 10; i++) {
           const promise1 : Promise<void> = lock1.lockAsync(async () => {
             lock2.lockAsync(async () => {
-               new Promise<void>((resolve, reject) => {
+              new Promise<void>((resolve, reject) => {
                 count++;
                 resolve();
               });
-            }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
-          }, ArkTSUtils.locks.AsyncLockMode.SHARED);
+            }, ArkTSUtils.locks.AsyncLockMode.SHARED);
+          }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
           promises.push(promise1);
         }
         try {
@@ -908,338 +918,57 @@ export default function TaskpoolUtilsAsynclockSameTest() {
       });
 
     /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_2400
-     * @tc.name TaskpoolUtilsAsynclockSameTest2400
+     * @tc.number SUB_ASYNCLOCK_SAME_ADD_TEST_2400
+     * @tc.name AsynclockSameAddTest2400
      * @tc.desc test
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('TaskpoolUtilsAsynclockSameTest2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('AsynclockSameAddTest2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
+        const caseName = 'AsynclockSameAddTest2400';
+        console.info(`${caseName} test start`);
         let task: taskpool.Task = new taskpool.Task(taskFunctionTest2400);
-        await taskpool.execute(task).then((result) => {
-          expect(result).assertEqual(3);
-          Done();
-        })
+        let count = 0;
+        for (let i = 0; i < 3; i++) {
+          taskpool.execute(task).then((result) => {
+            console.log(`${result}`);
+            count++;
+          });
+        }
+        while(count != 3){
+          await sleep(300);
+        }
+        expect(count).assertEqual(3);
+        console.info(`${caseName} test end`);
+        Done();
       });
 
     /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_2500
-     * @tc.name TaskpoolUtilsAsynclockSameTest2500
+     * @tc.number SUB_ASYNCLOCK_SAME_ADD_TEST_2500
+     * @tc.name AsynclockSameAddTest2500
      * @tc.desc test
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('TaskpoolUtilsAsynclockSameTest2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('AsynclockSameAddTest2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
-        const caseName = 'TaskpoolUtilsAsynclockSameTest2500';
-        console.info(`${caseName} test start`);
-        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-        const promises: Promise<void>[] = [];
-        let task: taskpool.Task = new taskpool.Task(test, 1);
+        let lock1: ArkTSUtils.locks.AsyncLock = ArkTSUtils.locks.AsyncLock.request("lock_1");
+        let lock2: ArkTSUtils.locks.AsyncLock = ArkTSUtils.locks.AsyncLock.request("lock_1");
         let count = 0;
-        let onExecutionFailedcount = 0;
-        task.onExecutionFailed(()=>{
-          const promise1 : Promise<void> = lock1.lockAsync(async () => {
+        const promises: Promise<void>[] = [];
+        let task: taskpool.Task = new taskpool.Task(printArgs1, 1);
+        await taskpool.execute(task).finally(async () => {
+          const promise1: Promise<void> = lock1.lockAsync(async () => {
             lock2.lockAsync(async () => {
               new Promise<void>((resolve, reject) => {
                 count++;
                 resolve();
               });
-            }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
-          }, ArkTSUtils.locks.AsyncLockMode.SHARED);
-          promises.push(promise1);
-        });
-        await taskpool.execute(task).then(async()=>{
-        }).catch(()=>{
-          onExecutionFailedcount++;
-        })
-        try {
-          await Promise.all(promises);
-        } catch (e) {
-          console.log('Caught an error in Promise.all:', JSON.stringify(e));
-        }
-        await sleep(300);
-        expect(count).assertEqual(1);
-        expect(onExecutionFailedcount).assertEqual(1);
-        console.info(`${caseName} test end`);
-        Done();
-      });
-
-    /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_2600
-     * @tc.name TaskpoolUtilsAsynclockSameTest2600
-     * @tc.desc test
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('TaskpoolUtilsAsynclockSameTest2600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
-      async (Done: Function) => {
-        const caseName = 'TaskpoolUtilsAsynclockSameTest2600';
-        console.info(`${caseName} test start`);
-        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-        const promises: Promise<void>[] = [];
-        let count = 0;
-        for (let i = 0; i < 10; i++) {
-          const promise1 : Promise<void> = lock1.lockAsync(async () => {
-            lock2.lockAsync(async () => {
-              new Promise<void>((resolve, reject) => {
-                count++;
-                reject();
-              });
-            }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
-          }, ArkTSUtils.locks.AsyncLockMode.SHARED);
-          promises.push(promise1);
-        }
-        try {
-          await Promise.all(promises);
-        } catch (e) {
-          console.log('Caught an error in Promise.all:', JSON.stringify(e));
-        }
-        while (count != 10) {
-          await sleep(300);
-        }
-        expect(count).assertEqual(10);
-        console.info(`${caseName} test end`);
-        Done();
-      });
-
-    /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_2700
-     * @tc.name TaskpoolUtilsAsynclockSameTest2700
-     * @tc.desc test
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('TaskpoolUtilsAsynclockSameTest2700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
-      async (Done: Function) => {
-        let task: taskpool.Task = new taskpool.Task(taskFunctionTest2700);
-        await taskpool.execute(task).then((result) => {
-          expect(result).assertEqual(3);
-          Done();
-        })
-      });
-
-    /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_2800
-     * @tc.name TaskpoolUtilsAsynclockSameTest2800
-     * @tc.desc test
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('TaskpoolUtilsAsynclockSameTest2800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
-      async (Done: Function) => {
-        const caseName = 'TaskpoolUtilsAsynclockSameTest2800';
-        console.info(`${caseName} test start`);
-        let count: number = 0;
-        let WorkThread: worker.ThreadWorker;
-        WorkThread = new worker.ThreadWorker('../testability/workers/Worker');
-        WorkThread.onexit = () => {
-          console.log("onexit");
-        }
-        WorkThread.postMessage(caseName);
-        WorkThread.onmessage = (e: MessageEvents): void => {
-          count = e.data;
-          console.log('e:' + JSON.stringify(e));
-          WorkThread.terminate();
-          console.info(`${caseName} test end`);
-        }
-        while (count != 1) {
-          await sleep(300);
-        }
-        expect(count).assertEqual(1);
-        Done();
-      });
-
-    /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_2900
-     * @tc.name TaskpoolUtilsAsynclockSameTest2900
-     * @tc.desc test
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('TaskpoolUtilsAsynclockSameTest2900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
-      async (Done: Function) => {
-        const caseName = 'TaskpoolUtilsAsynclockSameTest2900';
-        console.info(`${caseName} test start`);
-        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-        const promises: Promise<void>[] = [];
-        let count = 0;
-        for (let i = 0; i < 10; i++) {
-          const promise1 : Promise<void> = lock1.lockAsync(async () => {
-            lock2.lockAsync(async () => {
-              let task: taskpool.Task = new taskpool.Task(printArgs1, 1);
-              await taskpool.execute(task).then((result) => {
-                count++;
-              })
             }, ArkTSUtils.locks.AsyncLockMode.SHARED);
-          }, ArkTSUtils.locks.AsyncLockMode.SHARED);
-          promises.push(promise1);
-        }
-        try {
-          await Promise.all(promises);
-        } catch (e) {
-          console.log('Caught an error in Promise.all:', JSON.stringify(e));
-        }
-        while (count != 10) {
-          await sleep(300);
-        }
-        console.log('Success execution count:' + count);
-        expect(count).assertEqual(10);
-        console.info(`${caseName} test end`);
-        Done();
-      });
-
-    /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_3000
-     * @tc.name TaskpoolUtilsAsynclockSameTest3000
-     * @tc.desc test
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('TaskpoolUtilsAsynclockSameTest3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
-      async (Done: Function) => {
-        let task: taskpool.Task = new taskpool.Task(taskFunctionTest3000);
-        await taskpool.execute(task).then((result) => {
-          expect(result).assertEqual(3);
-          Done();
-        })
-      });
-
-
-    /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_3100
-     * @tc.name TaskpoolUtilsAsynclockSameTest3100
-     * @tc.desc test
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('TaskpoolUtilsAsynclockSameTest3100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
-      async (Done: Function) => {
-        const caseName = 'TaskpoolUtilsAsynclockSameTest3100';
-        console.info(`${caseName} test start`);
-        let count: number = 0;
-        let WorkThread: worker.ThreadWorker;
-        WorkThread = new worker.ThreadWorker('../testability/workers/Worker');
-        WorkThread.onexit = () => {
-          console.log("onexit");
-        }
-        WorkThread.postMessage(caseName);
-        WorkThread.onmessage = (e: MessageEvents): void => {
-          count = e.data;
-          console.log('e:' + JSON.stringify(e));
-          console.info("main2 thread count is  " + count);
-          WorkThread.terminate();
-          console.log('Success execution count:' + count);
-          console.info(`${caseName} test end`);
-        }
-        while (count != 1) {
-          await sleep(300);
-        }
-        expect(count).assertEqual(1);
-        Done();
-      });
-
-    /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_3200
-     * @tc.name TaskpoolUtilsAsynclockSameTest3200
-     * @tc.desc test
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('TaskpoolUtilsAsynclockSameTest3200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
-      async (Done: Function) => {
-        const caseName = 'TaskpoolUtilsAsynclockSameTest3200';
-        console.info(`${caseName} test start`);
-        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-        const promises: Promise<void>[] = [];
-        let count = 0;
-        for (let i = 0; i < 10; i++) {
-          const promise1 : Promise<void> = lock1.lockAsync(async () => {
-            console.log('Enter shared lock lock1');
-            lock2.lockAsync(async () => {
-              console.log('Enter exclusive lock lock2');
-              let task: taskpool.Task = new taskpool.Task(printArgs1, 1);
-              await taskpool.execute(task).then((result) => {
-                count++;
-              })
-            }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
-            console.log('Exit exclusive lock lock2');
-          }, ArkTSUtils.locks.AsyncLockMode.SHARED);
-          promises.push(promise1);
-        }
-        try {
-          await Promise.all(promises);
-        } catch (e) {
-          console.log('Caught an error in Promise.all:', JSON.stringify(e));
-        }
-        while (count != 10) {
-          await sleep(300);
-        }
-        console.log('Success execution count:' + count);
-        expect(count).assertEqual(10);
-        console.info(`${caseName} test end`);
-        Done();
-      });
-
-    /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_3300
-     * @tc.name TaskpoolUtilsAsynclockSameTest3300
-     * @tc.desc test
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('TaskpoolUtilsAsynclockSameTest3300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
-      async (Done: Function) => {
-        let task: taskpool.Task = new taskpool.Task(taskFunctionTest3300);
-        await taskpool.execute(task).then((result) => {
-          expect(result).assertEqual(3);
-          Done();
-        })
-      });
-
-    /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_3400
-     * @tc.name TaskpoolUtilsAsynclockSameTest3400
-     * @tc.desc test
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('TaskpoolUtilsAsynclockSameTest3400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
-      async (Done: Function) => {
-        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-        let count = 0;
-        const promises: Promise<void>[] = [];
-        let task: taskpool.Task = new taskpool.Task(printArgs1,1);
-        await taskpool.execute(task).finally(async () => {
-          const promise1 : Promise<void> = lock1.lockAsync(async () => {
-            console.log('Enter shared lock lock1');
-            lock2.lockAsync(async () => {
-              console.log('Enter exclusive lock lock2');
-              let task: taskpool.Task = new taskpool.Task(printArgs1, 1);
-              await taskpool.execute(task).then((result) => {
-                count++;
-              })
-            }, ArkTSUtils.locks.AsyncLockMode.SHARED);
-            console.log('Exit exclusive lock lock2');
-          }, ArkTSUtils.locks.AsyncLockMode.SHARED);
-          console.log('Exit shared lock lock1');
+          }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
           promises.push(promise1);
           try {
             await Promise.all(promises);
@@ -1253,41 +982,32 @@ export default function TaskpoolUtilsAsynclockSameTest() {
         })
       });
 
+
     /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_3500
-     * @tc.name TaskpoolUtilsAsynclockSameTest3500
+     * @tc.number SUB_ASYNCLOCK_SAME_ADD_TEST_2600
+     * @tc.name AsynclockSameAddTest2600
      * @tc.desc test
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('TaskpoolUtilsAsynclockSameTest3500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('AsynclockSameAddTest2600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
-        const caseName = 'TaskpoolUtilsAsynclockSameTest3500';
+        const caseName = 'AsynclockSameAddTest2600';
         console.info(`${caseName} test start`);
         let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
         let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
         const promises: Promise<void>[] = [];
         let count = 0;
-        let returnCount = 0
         for (let i = 0; i < 10; i++) {
           const promise1 : Promise<void> = lock1.lockAsync(async () => {
             lock2.lockAsync(async () => {
-              let WorkThread: worker.ThreadWorker;
-              WorkThread = new worker.ThreadWorker('../testability/workers/Worker');
-              WorkThread.onexit = () => {
-                console.log("onexit");
-              }
-              WorkThread.postMessage(caseName);
-              WorkThread.onmessage = (e: MessageEvents): void => {
-                returnCount = e.data;
+              new Promise<void>((resolve, reject) => {
                 count++;
-                console.log('e:' + JSON.stringify(e));
-                WorkThread.terminate();
-                console.info(`${caseName} test end`);
-              }
+                reject();
+              });
             }, ArkTSUtils.locks.AsyncLockMode.SHARED);
-          }, ArkTSUtils.locks.AsyncLockMode.SHARED);
+          }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
           promises.push(promise1);
         }
         try {
@@ -1295,132 +1015,99 @@ export default function TaskpoolUtilsAsynclockSameTest() {
         } catch (e) {
           console.log('Caught an error in Promise.all:', JSON.stringify(e));
         }
-        while(count != 10){
+        while (count != 10) {
           await sleep(300);
         }
-        console.log('Success execution count:' + count);
         expect(count).assertEqual(10);
-        expect(returnCount).assertEqual(42);
         console.info(`${caseName} test end`);
         Done();
       });
 
     /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_3600
-     * @tc.name TaskpoolUtilsAsynclockSameTest3600
+     * @tc.number SUB_ASYNCLOCK_SAME_ADD_TEST_2700
+     * @tc.name AsynclockSameAddTest2700
      * @tc.desc test
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('TaskpoolUtilsAsynclockSameTest3600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('AsynclockSameAddTest2700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
-        let task: taskpool.Task = new taskpool.Task(taskFunctionTest3600);
-        await taskpool.execute(task).then((result) => {
-          expect(result).assertEqual(3);
-          Done();
-        })
+        const caseName = 'AsynclockSameAddTest2700';
+        console.info(`${caseName} test start`);
+        let task: taskpool.Task = new taskpool.Task(taskFunctionTest2700);
+        let count = 0;
+        for (let i = 0; i < 3; i++) {
+          taskpool.execute(task).then((result) => {
+            console.log(`${result}`);
+            count++;
+          });
+        }
+        while(count != 3){
+          await sleep(300);
+        }
+        expect(count).assertEqual(3);
+        console.info(`${caseName} test end`);
+        Done();
       });
 
     /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_3700
-     * @tc.name TaskpoolUtilsAsynclockSameTest3700
+     * @tc.number SUB_ASYNCLOCK_SAME_ADD_TEST_2800
+     * @tc.name AsynclockSameAddTest2800
      * @tc.desc test
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('TaskpoolUtilsAsynclockSameTest3700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('AsynclockSameAddTest2800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
-        const caseName = 'TaskpoolUtilsAsynclockSameTest3700';
+        const caseName = 'AsynclockSameAddTest2800';
         console.info(`${caseName} test start`);
-        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-        const promises: Promise<void>[] = [];
         let count: number = 0;
         let WorkThread: worker.ThreadWorker;
-        WorkThread = new worker.ThreadWorker('../testability/workers/Worker');
+        WorkThread = new worker.ThreadWorker('../testability/workers/Worker1');
         WorkThread.onexit = () => {
           console.log("onexit");
         }
         WorkThread.postMessage(caseName);
         WorkThread.onmessage = (e: MessageEvents): void => {
-
-          const promise1 : Promise<void> = lock1.lockAsync(async () => {
-            lock2.lockAsync(async () => {
-              let WorkThread: worker.ThreadWorker;
-              WorkThread = new worker.ThreadWorker('../testability/workers/Worker');
-              WorkThread.onexit = () => {
-                console.log("onexit");
-              }
-              WorkThread.postMessage(caseName);
-              WorkThread.onmessage = (e: MessageEvents): void => {
-                count = e.data ;
-                console.log('e:' + JSON.stringify(e));
-                WorkThread.terminate();
-                console.info(`${caseName} test end`);
-              }
-            }, ArkTSUtils.locks.AsyncLockMode.SHARED);
-          }, ArkTSUtils.locks.AsyncLockMode.SHARED);
-          promises.push(promise1);
-
+          count = e.data;
+          console.log('e:' + JSON.stringify(e));
+          WorkThread.terminate();
+          console.info(`${caseName} test end`);
         }
-        try {
-          await Promise.all(promises);
-        } catch (e) {
-          console.log('Caught an error in Promise.all:', JSON.stringify(e));
-        }
-        while (count != 42) {
+        while (count != 1) {
           await sleep(300);
         }
-        expect(count).assertEqual(42);
+        expect(count).assertEqual(1);
         Done();
       });
 
     /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_3800
-     * @tc.name TaskpoolUtilsAsynclockSameTest3800
+     * @tc.number SUB_ASYNCLOCK_SAME_ADD_TEST_2900
+     * @tc.name AsynclockSameAddTest2900
      * @tc.desc test
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('TaskpoolUtilsAsynclockSameTest3800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('AsynclockSameAddTest2900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
-        const caseName = 'TaskpoolUtilsAsynclockSameTest3800';
+        const caseName = 'AsynclockSameAddTest2900';
         console.info(`${caseName} test start`);
         let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
         let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
         const promises: Promise<void>[] = [];
         let count = 0;
-        let returnCount = 0
         for (let i = 0; i < 10; i++) {
           const promise1 : Promise<void> = lock1.lockAsync(async () => {
-            console.log('Enter shared lock lock1');
             lock2.lockAsync(async () => {
-
-              console.log('Enter exclusive lock lock2');
-              console.log('Enter worker');
-              let WorkThread: worker.ThreadWorker;
-              WorkThread = new worker.ThreadWorker('../testability/workers/Worker');
-              WorkThread.onexit = () => {
-                console.log("onexit");
-              }
-              WorkThread.postMessage(caseName);
-              WorkThread.onmessage = (e: MessageEvents): void => {
-                returnCount = e.data;
+              let task: taskpool.Task = new taskpool.Task(printArgs1, 1);
+              await taskpool.execute(task).then((result) => {
                 count++;
-                console.log('e:' + JSON.stringify(e));
-                console.info("main2 thread count is  " + count);
-                WorkThread.terminate();
-                console.log('Success execution count:' + count);
-                console.info(`${caseName} test end`);
-              }
-              console.log('Exit worker');
-
+              })
             }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
-            console.log('Exit exclusive lock lock2');
-          }, ArkTSUtils.locks.AsyncLockMode.SHARED);
+          }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
           promises.push(promise1);
         }
         try {
@@ -1428,136 +1115,59 @@ export default function TaskpoolUtilsAsynclockSameTest() {
         } catch (e) {
           console.log('Caught an error in Promise.all:', JSON.stringify(e));
         }
-        while(count != 10){
+        while (count != 10) {
           await sleep(300);
         }
         console.log('Success execution count:' + count);
         expect(count).assertEqual(10);
-        expect(returnCount).assertEqual(42);
         console.info(`${caseName} test end`);
         Done();
       });
 
     /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_3900
-     * @tc.name TaskpoolUtilsAsynclockSameTest3900
+     * @tc.number SUB_ASYNCLOCK_SAME_ADD_TEST_3000
+     * @tc.name AsynclockSameAddTest3000
      * @tc.desc test
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('TaskpoolUtilsAsynclockSameTest3900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('AsynclockSameAddTest3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
-        let task: taskpool.Task = new taskpool.Task(taskFunctionTest3900);
-        await taskpool.execute(task).then((result) => {
-          expect(result).assertEqual(3);
-          Done();
-        })
-      });
-
-    /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_4000
-     * @tc.name TaskpoolUtilsAsynclockSameTest4000
-     * @tc.desc test
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('TaskpoolUtilsAsynclockSameTest4000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
-      async (Done: Function) => {
-        const caseName = 'TaskpoolUtilsAsynclockSameTest4000';
+        const caseName = 'AsynclockSameAddTest3000';
         console.info(`${caseName} test start`);
-        let WorkThread: worker.ThreadWorker;
-        WorkThread = new worker.ThreadWorker('../testability/workers/Worker');
-        WorkThread.onexit = () => {
-          console.log("onexit");
-        }
-        WorkThread.postMessage(caseName);
-        WorkThread.onmessage = (e: MessageEvents): void => {
-          expect(e.data).assertEqual(42);
-          Done();
-        }
-      });
-
-    /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_4100
-     * @tc.name TaskpoolUtilsAsynclockSameTest4100
-     * @tc.desc test
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('TaskpoolUtilsAsynclockSameTest4100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
-      async (Done: Function) => {
-        const caseName = 'TaskpoolUtilsAsynclockSameTest4100';
-        console.info(`${caseName} test start`);
-        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-        let lock3 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-        const promises: Promise<void>[] = [];
+        let task: taskpool.Task = new taskpool.Task(taskFunctionTest3000);
         let count = 0;
-        for (let i = 0; i < 10; i++) {
-          const promise1  = lock1.lockAsync(async () => {
-            console.log('Enter shared lock lock1');
-             lock2.lockAsync(async () => {
-              console.log('Enter exclusive lock lock2');
-               lock3.lockAsync(async () => {
-                console.log('Enter exclusive lock lock3');
-                 let task: taskpool.Task = new taskpool.Task(printArgs1, 1);
-                 await taskpool.execute(task).then((result) => {
-                   count++;
-                 })
-              }, ArkTSUtils.locks.AsyncLockMode.SHARED);
-            }, ArkTSUtils.locks.AsyncLockMode.SHARED);
-          }, ArkTSUtils.locks.AsyncLockMode.SHARED);
-          promises.push(promise1);
+        for (let i = 0; i < 3; i++) {
+          taskpool.execute(task).then((result) => {
+            console.log(`${result}`);
+            count++;
+          });
         }
-        try {
-          await Promise.all(promises);
-        } catch (e) {
-          console.log('Caught an error in Promise.all:', JSON.stringify(e));
-        }
-        while(count != 10){
+        while(count != 3){
           await sleep(300);
         }
-        console.log('Success execution count:' + count);
-        expect(count).assertEqual(10);
+        expect(count).assertEqual(3);
         console.info(`${caseName} test end`);
         Done();
       });
 
-    /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_4200
-     * @tc.name TaskpoolUtilsAsynclockSameTest4200
-     * @tc.desc test
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('TaskpoolUtilsAsynclockSameTest4200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
-      async (Done: Function) => {
-        let task: taskpool.Task = new taskpool.Task(taskFunctionTest4200);
-        await taskpool.execute(task).then((result) => {
-          expect(result).assertEqual(3);
-          Done();
-        })
-      });
 
     /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_4300
-     * @tc.name TaskpoolUtilsAsynclockSameTest4300
+     * @tc.number SUB_ASYNCLOCK_SAME_ADD_TEST_3100
+     * @tc.name AsynclockSameAddTest3100
      * @tc.desc test
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('TaskpoolUtilsAsynclockSameTest4300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('AsynclockSameAddTest3100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
-        const caseName = 'TaskpoolUtilsAsynclockSameTest4300';
+        const caseName = 'AsynclockSameAddTest3100';
         console.info(`${caseName} test start`);
         let count: number = 0;
         let WorkThread: worker.ThreadWorker;
-        WorkThread = new worker.ThreadWorker('../testability/workers/Worker');
+        WorkThread = new worker.ThreadWorker('../testability/workers/Worker1');
         WorkThread.onexit = () => {
           console.log("onexit");
         }
@@ -1578,16 +1188,375 @@ export default function TaskpoolUtilsAsynclockSameTest() {
       });
 
     /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_4400
-     * @tc.name TaskpoolUtilsAsynclockSameTest4400
+     * @tc.number SUB_ASYNCLOCK_SAME_ADD_TEST_3200
+     * @tc.name AsynclockSameAddTest3200
      * @tc.desc test
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('TaskpoolUtilsAsynclockSameTest4400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('AsynclockSameAddTest3200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
-        const caseName = 'TaskpoolUtilsAsynclockSameTest4400';
+        const caseName = 'AsynclockSameAddTest3200';
+        console.info(`${caseName} test start`);
+        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
+        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
+        const promises: Promise<void>[] = [];
+        let count = 0;
+        for (let i = 0; i < 10; i++) {
+          const promise1 : Promise<void> = lock1.lockAsync(async () => {
+            lock2.lockAsync(async () => {
+              let task: taskpool.Task = new taskpool.Task(printArgs1, 1);
+              await taskpool.execute(task).then((result) => {
+                count++;
+              })
+            }, ArkTSUtils.locks.AsyncLockMode.SHARED);
+          }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
+          promises.push(promise1);
+        }
+        try {
+          await Promise.all(promises);
+        } catch (e) {
+          console.log('Caught an error in Promise.all:', JSON.stringify(e));
+        }
+        while (count != 10) {
+          await sleep(300);
+        }
+        console.log('Success execution count:' + count);
+        expect(count).assertEqual(10);
+        console.info(`${caseName} test end`);
+        Done();
+      });
+
+    /**
+     * @tc.number SUB_ASYNCLOCK_SAME_ADD_TEST_3300
+     * @tc.name AsynclockSameAddTest3300
+     * @tc.desc test
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('AsynclockSameAddTest3300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        const caseName = 'AsynclockSameAddTest3300';
+        console.info(`${caseName} test start`);
+        let task: taskpool.Task = new taskpool.Task(taskFunctionTest3300);
+        let count = 0;
+        for (let i = 0; i < 3; i++) {
+          taskpool.execute(task).then((result) => {
+            console.log(`${result}`);
+            count++;
+          });
+        }
+        while(count != 3){
+          await sleep(300);
+        }
+        expect(count).assertEqual(3);
+        console.info(`${caseName} test end`);
+        Done();
+      });
+
+    /**
+     * @tc.number SUB_ASYNCLOCK_SAME_ADD_TEST_3400
+     * @tc.name AsynclockSameAddTest3400
+     * @tc.desc test
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('AsynclockSameAddTest3400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        const caseName = 'AsynclockSameAddTest3400';
+        console.info(`${caseName} test start`);
+        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
+        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
+        const promises: Promise<void>[] = [];
+        let count: number = 0;
+        let WorkThread: worker.ThreadWorker;
+        WorkThread = new worker.ThreadWorker('../testability/workers/Worker1');
+        WorkThread.onexit = () => {
+          console.log("onexit");
+        }
+        WorkThread.postMessage(caseName);
+        WorkThread.onmessage = (e: MessageEvents): void => {
+          const promise1 : Promise<void> = lock1.lockAsync(async () => {
+            lock2.lockAsync(async () => {
+              let task: taskpool.Task = new taskpool.Task(printArgs1, 1);
+              await taskpool.execute(task).then((result) => {
+                count++;
+              })
+            }, ArkTSUtils.locks.AsyncLockMode.SHARED);
+          }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
+          promises.push(promise1);
+
+        }
+        try {
+          await Promise.all(promises);
+        } catch (e) {
+          console.log('Caught an error in Promise.all:', JSON.stringify(e));
+        }
+        while (count != 1) {
+          await sleep(300);
+        }
+        expect(count).assertEqual(1);
+        Done();
+      });
+
+    /**
+     * @tc.number SUB_ASYNCLOCK_SAME_ADD_TEST_3500
+     * @tc.name AsynclockSameAddTest3500
+     * @tc.desc test
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('AsynclockSameAddTest3500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        const caseName = 'AsynclockSameAddTest3500';
+        console.info(`${caseName} test start`);
+        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
+        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
+        const promises: Promise<void>[] = [];
+        let count = 0;
+        let returnCount = 0
+        for (let i = 0; i < 10; i++) {
+          const promise1 : Promise<void> = lock1.lockAsync(async () => {
+            lock2.lockAsync(async () => {
+              let WorkThread: worker.ThreadWorker;
+              WorkThread = new worker.ThreadWorker('../testability/workers/Worker1');
+              WorkThread.onexit = () => {
+                console.log("onexit");
+              }
+              WorkThread.postMessage(caseName);
+              WorkThread.onmessage = (e: MessageEvents): void => {
+                returnCount = e.data;
+                count++;
+                console.log('e:' + JSON.stringify(e));
+                WorkThread.terminate();
+                console.info(`${caseName} test end`);
+              }
+            }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
+          }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
+          promises.push(promise1);
+        }
+        try {
+          await Promise.all(promises);
+        } catch (e) {
+          console.log('Caught an error in Promise.all:', JSON.stringify(e));
+        }
+        while(count != 10){
+          await sleep(300);
+        }
+        console.log('Success execution count:' + count);
+        expect(count).assertEqual(10);
+        expect(returnCount).assertEqual(42);
+        console.info(`${caseName} test end`);
+        Done();
+      });
+
+    /**
+     * @tc.number SUB_ASYNCLOCK_SAME_ADD_TEST_3600
+     * @tc.name AsynclockSameAddTest3600
+     * @tc.desc test
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('AsynclockSameAddTest3600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        const caseName = 'AsynclockSameAddTest3600';
+        console.info(`${caseName} test start`);
+        let task: taskpool.Task = new taskpool.Task(taskFunctionTest3600);
+        let count = 0;
+        for (let i = 0; i < 3; i++) {
+          taskpool.execute(task).then((result) => {
+            console.log(`${result}`);
+            count++;
+          });
+        }
+        while(count != 3){
+          await sleep(300);
+        }
+        expect(count).assertEqual(3);
+        console.info(`${caseName} test end`);
+        Done();
+      });
+
+    /**
+     * @tc.number SUB_ASYNCLOCK_SAME_ADD_TEST_3700
+     * @tc.name AsynclockSameAddTest3700
+     * @tc.desc test
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('AsynclockSameAddTest3700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        const caseName = 'AsynclockSameAddTest3700';
+        console.info(`${caseName} test start`);
+        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
+        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
+        const promises: Promise<void>[] = [];
+        let task: taskpool.Task = new taskpool.Task(printArgs1, 1);
+        let count = 0;
+        let returnCount = 0;
+        task.onExecutionSucceeded(()=>{
+          const promise1  = lock1.lockAsync(async () => {
+            lock2.lockAsync(async () => {
+              let WorkThread: worker.ThreadWorker;
+              WorkThread = new worker.ThreadWorker('../testability/workers/Worker1');
+              WorkThread.onexit = () => {
+                console.log("onexit");
+              }
+              WorkThread.postMessage(caseName);
+              WorkThread.onmessage = (e: MessageEvents): void => {
+                returnCount = e.data;
+                count++;
+                console.log('e:' + JSON.stringify(e));
+                WorkThread.terminate();
+                console.info(`${caseName} test end`);
+              }
+            }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
+          }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
+          promises.push(promise1);
+        });
+        await taskpool.execute(task).then(async () => {
+          console.info("taskpool: onExecute")
+        })
+        try {
+          await Promise.all(promises);
+        } catch (e) {
+          console.log('Caught an error in Promise.all:', JSON.stringify(e));
+        }
+        while(count != 1){
+          await sleep(300);
+        }
+        while(returnCount != 42){
+          await sleep(300);
+        }
+
+        console.log('Success execution count:' + count);
+        expect(count).assertEqual(1);
+        expect(returnCount).assertEqual(42);
+        console.info(`${caseName} test end`);
+        Done();
+      });
+
+    /**
+     * @tc.number SUB_ASYNCLOCK_SAME_ADD_TEST_3800
+     * @tc.name AsynclockSameAddTest3800
+     * @tc.desc test
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('AsynclockSameAddTest3800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        const caseName = 'AsynclockSameAddTest3800';
+        console.info(`${caseName} test start`);
+        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
+        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
+        const promises: Promise<void>[] = [];
+        let count = 0;
+        let returnCount = 0
+        for (let i = 0; i < 10; i++) {
+          const promise1 : Promise<void> = lock1.lockAsync(async () => {
+            lock2.lockAsync(async () => {
+              let WorkThread: worker.ThreadWorker;
+              WorkThread = new worker.ThreadWorker('../testability/workers/Worker1');
+              WorkThread.onexit = () => {
+                console.log("onexit");
+              }
+              WorkThread.postMessage(caseName);
+              WorkThread.onmessage = (e: MessageEvents): void => {
+                returnCount = e.data;
+                count++;
+                console.log('e:' + JSON.stringify(e));
+                WorkThread.terminate();
+                console.info(`${caseName} test end`);
+              }
+            }, ArkTSUtils.locks.AsyncLockMode.SHARED);
+          }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
+          promises.push(promise1);
+        }
+        try {
+          await Promise.all(promises);
+        } catch (e) {
+          console.log('Caught an error in Promise.all:', JSON.stringify(e));
+        }
+        while(count != 10){
+          await sleep(300);
+        }
+        console.log('Success execution count:' + count);
+        expect(count).assertEqual(10);
+        expect(returnCount).assertEqual(42);
+        console.info(`${caseName} test end`);
+        Done();
+      });
+
+    /**
+     * @tc.number SUB_ASYNCLOCK_SAME_ADD_TEST_3900
+     * @tc.name AsynclockSameAddTest3900
+     * @tc.desc test
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('AsynclockSameAddTest3900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        const caseName = 'AsynclockSameAddTest3900';
+        console.info(`${caseName} test start`);
+        let task: taskpool.Task = new taskpool.Task(taskFunctionTest3900);
+        let count = 0;
+        for (let i = 0; i < 3; i++) {
+          taskpool.execute(task).then((result) => {
+            console.log(`${result}`);
+            count++;
+          });
+        }
+        while(count != 3){
+          await sleep(300);
+        }
+        expect(count).assertEqual(3);
+        console.info(`${caseName} test end`);
+        Done();
+      });
+
+    /**
+     * @tc.number SUB_ASYNCLOCK_SAME_ADD_TEST_4000
+     * @tc.name AsynclockSameAddTest4000
+     * @tc.desc test
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('AsynclockSameAddTest4000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        const caseName = 'AsynclockSameAddTest4000';
+        console.info(`${caseName} test start`);
+        let WorkThread: worker.ThreadWorker;
+        WorkThread = new worker.ThreadWorker('../testability/workers/Worker1');
+        WorkThread.onexit = () => {
+          console.log("onexit");
+        }
+        WorkThread.postMessage(caseName);
+        WorkThread.onmessage = (e: MessageEvents): void => {
+          expect(e.data).assertEqual(42);
+          Done();
+        }
+      });
+
+    /**
+     * @tc.number SUB_ASYNCLOCK_SAME_ADD_TEST_4100
+     * @tc.name AsynclockSameAddTest4100
+     * @tc.desc test
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('AsynclockSameAddTest4100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        const caseName = 'AsynclockSameAddTest4100';
         console.info(`${caseName} test start`);
         let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
         let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
@@ -1596,18 +1565,121 @@ export default function TaskpoolUtilsAsynclockSameTest() {
         let count = 0;
         for (let i = 0; i < 10; i++) {
           const promise1  = lock1.lockAsync(async () => {
-            console.log('Enter shared lock lock1');
             lock2.lockAsync(async () => {
-              console.log('Enter exclusive lock lock2');
               lock3.lockAsync(async () => {
-                console.log('Enter exclusive lock lock3');
+                let task: taskpool.Task = new taskpool.Task(printArgs1, 1);
+                await taskpool.execute(task).then((result) => {
+                  count++;
+                })
+              }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
+            }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
+          }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
+          promises.push(promise1);
+        }
+        try {
+          await Promise.all(promises);
+        } catch (e) {
+          console.log('Caught an error in Promise.all:', JSON.stringify(e));
+        }
+        while(count != 10){
+          await sleep(300);
+        }
+        console.log('Success execution count:' + count);
+        expect(count).assertEqual(10);
+        console.info(`${caseName} test end`);
+        Done();
+      });
+
+    /**
+     * @tc.number SUB_ASYNCLOCK_SAME_ADD_TEST_4200
+     * @tc.name AsynclockSameAddTest4200
+     * @tc.desc test
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('AsynclockSameAddTest4200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        const caseName = 'AsynclockSameAddTest4200';
+        console.info(`${caseName} test start`);
+        let task: taskpool.Task = new taskpool.Task(taskFunctionTest4200);
+        let count = 0;
+        for (let i = 0; i < 3; i++) {
+          taskpool.execute(task).then((result) => {
+            console.log(`${result}`);
+            count++;
+          });
+        }
+        while(count != 3){
+          await sleep(300);
+        }
+        expect(count).assertEqual(3);
+        console.info(`${caseName} test end`);
+        Done();
+      });
+
+    /**
+     * @tc.number SUB_ASYNCLOCK_SAME_ADD_TEST_4300
+     * @tc.name AsynclockSameAddTest4300
+     * @tc.desc test
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('AsynclockSameAddTest4300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        const caseName = 'AsynclockSameAddTest4300';
+        console.info(`${caseName} test start`);
+        let count: number = 0;
+        let WorkThread: worker.ThreadWorker;
+        WorkThread = new worker.ThreadWorker('../testability/workers/Worker1');
+        WorkThread.onexit = () => {
+          console.log("onexit");
+        }
+        WorkThread.postMessage(caseName);
+        WorkThread.onmessage = (e: MessageEvents): void => {
+          count = e.data;
+          console.log('e:' + JSON.stringify(e));
+          console.info("main2 thread count is  " + count);
+          WorkThread.terminate();
+          console.log('Success execution count:' + count);
+          console.info(`${caseName} test end`);
+        }
+        while (count != 1) {
+          await sleep(300);
+        }
+        expect(count).assertEqual(1);
+        Done();
+      });
+
+    /**
+     * @tc.number SUB_ASYNCLOCK_SAME_ADD_TEST_4400
+     * @tc.name AsynclockSameAddTest4400
+     * @tc.desc test
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('AsynclockSameAddTest4400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        const caseName = 'AsynclockSameAddTest4400';
+        console.info(`${caseName} test start`);
+        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
+        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
+        let lock3 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
+        const promises: Promise<void>[] = [];
+        let count = 0;
+        for (let i = 0; i < 10; i++) {
+          const promise1  = lock1.lockAsync(async () => {
+            lock2.lockAsync(async () => {
+              lock3.lockAsync(async () => {
                 new Promise<void>((resolve, reject) => {
                   count++;
                   resolve();
                 });
-              }, ArkTSUtils.locks.AsyncLockMode.SHARED);
-            }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
-          }, ArkTSUtils.locks.AsyncLockMode.SHARED);
+              }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
+            }, ArkTSUtils.locks.AsyncLockMode.SHARED);
+          }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
           promises.push(promise1);
         }
         try {
@@ -1625,33 +1697,44 @@ export default function TaskpoolUtilsAsynclockSameTest() {
       });
 
     /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_4500
-     * @tc.name TaskpoolUtilsAsynclockSameTest4500
+     * @tc.number SUB_ASYNCLOCK_SAME_ADD_TEST_4500
+     * @tc.name AsynclockSameAddTest4500
      * @tc.desc test
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('TaskpoolUtilsAsynclockSameTest4500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('AsynclockSameAddTest4500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
+        const caseName = 'AsynclockSameAddTest4500';
+        console.info(`${caseName} test start`);
         let task: taskpool.Task = new taskpool.Task(taskFunctionTest4500);
-        await taskpool.execute(task).then((result) => {
-          expect(result).assertEqual(3);
-          Done();
-        })
+        let count = 0;
+        for (let i = 0; i < 3; i++) {
+          taskpool.execute(task).then((result) => {
+            console.log(`${result}`);
+            count++;
+          });
+        }
+        while(count != 3){
+          await sleep(300);
+        }
+        expect(count).assertEqual(3);
+        console.info(`${caseName} test end`);
+        Done();
       });
 
     /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_4600
-     * @tc.name TaskpoolUtilsAsynclockSameTest4600
+     * @tc.number SUB_ASYNCLOCK_SAME_ADD_TEST_4600
+     * @tc.name AsynclockSameAddTest4600
      * @tc.desc test
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('TaskpoolUtilsAsynclockSameTest4600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('AsynclockSameAddTest4600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
-        const caseName = 'TaskpoolUtilsAsynclockSameTest4600';
+        const caseName = 'AsynclockSameAddTest4600';
         console.info(`${caseName} test start`);
         let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
         let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
@@ -1660,18 +1743,14 @@ export default function TaskpoolUtilsAsynclockSameTest() {
         let count = 0;
         for (let i = 0; i < 10; i++) {
           const promise1  = lock1.lockAsync(async () => {
-            console.log('Enter shared lock lock1');
             lock2.lockAsync(async () => {
-              console.log('Enter exclusive lock lock2');
               lock3.lockAsync(async () => {
-                console.log('Enter exclusive lock lock3');
                 setTimeout( async () => {
-                  console.log('Enter exclusive lock lock3');
                   count++
                 },300);
-              }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
-            }, ArkTSUtils.locks.AsyncLockMode.SHARED);
-          }, ArkTSUtils.locks.AsyncLockMode.SHARED);
+              }, ArkTSUtils.locks.AsyncLockMode.SHARED);
+            }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
+          }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
           promises.push(promise1);
         }
         try {
@@ -1689,33 +1768,99 @@ export default function TaskpoolUtilsAsynclockSameTest() {
       });
 
     /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_4700
-     * @tc.name TaskpoolUtilsAsynclockSameTest4700
+     * @tc.number SUB_ASYNCLOCK_SAME_ADD_TEST_4700
+     * @tc.name AsynclockSameAddTest4700
      * @tc.desc test
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('TaskpoolUtilsAsynclockSameTest4700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('AsynclockSameAddTest4700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
+        const caseName = 'AsynclockSameAddTest4700';
+        console.info(`${caseName} test start`);
         let task: taskpool.Task = new taskpool.Task(taskFunctionTest4700);
-        await taskpool.execute(task).then((result) => {
-          expect(result).assertEqual(3);
-          Done();
-        })
+        let count = 0;
+        for (let i = 0; i < 3; i++) {
+          taskpool.execute(task).then((result) => {
+            console.log(`${result}`);
+            count++;
+          });
+        }
+        while(count != 3){
+          await sleep(300);
+        }
+        expect(count).assertEqual(3);
+        console.info(`${caseName} test end`);
+        Done();
       });
 
+
     /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_4800
-     * @tc.name TaskpoolUtilsAsynclockSameTest4800
+     * @tc.number SUB_ASYNCLOCK_SAME_ADD_TEST_4800
+     * @tc.name AsynclockSameAddTest4800
      * @tc.desc test
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('TaskpoolUtilsAsynclockSameTest4800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('AsynclockSameAddTest4800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
-        const caseName = 'TaskpoolUtilsAsynclockSameTest4800';
+        const caseName = 'AsynclockSameAddTest4800';
+        console.info(`${caseName} test start`);
+        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
+        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
+        let lock3 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
+        const promises: Promise<void>[] = [];
+        let task: taskpool.Task = new taskpool.Task(test, 1);
+        let count = 0;
+        let onExecutionFailedcount = 0;
+        task.onExecutionFailed(()=>{
+          const promise1 : Promise<void> = lock1.lockAsync(async () => {
+            lock2.lockAsync(async () => {
+              lock3.lockAsync(async () => {
+                setTimeout( async () => {
+                  count++
+                },300);
+              }, ArkTSUtils.locks.AsyncLockMode.SHARED);
+            }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
+          }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
+          promises.push(promise1);
+        });
+        await taskpool.execute(task).then(async()=>{
+        }).catch(()=>{
+          onExecutionFailedcount++;
+        })
+        try {
+          await Promise.all(promises);
+        } catch (e) {
+          console.log('Caught an error in Promise.all:', JSON.stringify(e));
+        }
+        while(count != 1){
+          await sleep(300);
+        }
+        while(onExecutionFailedcount != 1){
+          await sleep(300);
+        }
+        expect(count).assertEqual(1);
+        expect(onExecutionFailedcount).assertEqual(1);
+        console.info(`${caseName} test end`);
+        Done();
+      });
+
+
+
+    /**
+     * @tc.number SUB_ASYNCLOCK_SAME_ADD_TEST_4900
+     * @tc.name AsynclockSameAddTest4900
+     * @tc.desc test
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('AsynclockSameAddTest4900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (Done: Function) => {
+        const caseName = 'AsynclockSameAddTest4900';
         console.info(`${caseName} test start`);
         let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
         let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
@@ -1725,14 +1870,11 @@ export default function TaskpoolUtilsAsynclockSameTest() {
         let returnCount = 0
         for (let i = 0; i < 10; i++) {
           const promise1 : Promise<void> = lock1.lockAsync(async () => {
-            console.log('Enter shared lock lock1');
             lock2.lockAsync(async () => {
-              console.log('Enter exclusive lock lock2');
               lock3.lockAsync(async () => {
-                console.log('Enter exclusive lock lock3');
                 console.log('Enter worker');
                 let WorkThread: worker.ThreadWorker;
-                WorkThread = new worker.ThreadWorker('../testability/workers/Worker');
+                WorkThread = new worker.ThreadWorker('../testability/workers/Worker1');
                 WorkThread.onexit = () => {
                   console.log("onexit");
                 }
@@ -1747,9 +1889,9 @@ export default function TaskpoolUtilsAsynclockSameTest() {
                   console.info(`${caseName} test end`);
                 }
                 console.log('Exit worker');
-              }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
-            }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
-          }, ArkTSUtils.locks.AsyncLockMode.SHARED);
+              }, ArkTSUtils.locks.AsyncLockMode.SHARED);
+            }, ArkTSUtils.locks.AsyncLockMode.SHARED);
+          }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
           promises.push(promise1);
         }
         try {
@@ -1764,233 +1906,6 @@ export default function TaskpoolUtilsAsynclockSameTest() {
         expect(count).assertEqual(10);
         expect(returnCount).assertEqual(42);
         console.info(`${caseName} test end`);
-        Done();
-      });
-
-    /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_4900
-     * @tc.name TaskpoolUtilsAsynclockSameTest4900
-     * @tc.desc test
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('TaskpoolUtilsAsynclockSameTest4900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
-      async (Done: Function) => {
-        let task: taskpool.Task = new taskpool.Task(taskFunctionTest4900);
-        await taskpool.execute(task).then((result) => {
-          expect(result).assertEqual(3);
-          Done();
-        })
-      });
-
-    /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_5000
-     * @tc.name TaskpoolUtilsAsynclockSameTest5000
-     * @tc.desc test
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('TaskpoolUtilsAsynclockSameTest5000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
-      async (Done: Function) => {
-        let task: taskpool.Task = new taskpool.Task(taskFunctionTest5010,1);
-        task.onReceiveData(taskFunctionTest5000);
-        await taskpool.execute(task);
-        await sleep(1000);
-        Done();
-      });
-
-    /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_5100
-     * @tc.name TaskpoolUtilsAsynclockSameTest5100
-     * @tc.desc test
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('TaskpoolUtilsAsynclockSameTest5100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
-      async (Done: Function) => {
-        const caseName = 'TaskpoolUtilsAsynclockSameTest5100';
-        console.info(`${caseName} test start`);
-        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-        const promises: Promise<void>[] = [];
-        let count = 0;
-        for (let i = 0; i < 10; i++) {
-          const promise1 = lock1.lockAsync(async () => {
-            setTimeout(() => {},1000)
-            console.log('Enter shared lock lock1');
-             lock2.lockAsync(async () => {
-              setTimeout(() => {},1000)
-              console.log('Enter exclusive lock lock2');
-              await new Promise<void>((resolve, reject) => {
-                setTimeout(() => {
-                  count++;
-                  resolve();
-                }, 1000);
-              });
-            }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
-            console.log('Exit exclusive lock lock2');
-          }, ArkTSUtils.locks.AsyncLockMode.SHARED);
-          console.log('Exit shared lock lock1');
-          promises.push(promise1);
-        }
-        try {
-          await Promise.all(promises);
-        } catch (e) {
-          console.log('Caught an error in Promise.all:', JSON.stringify(e));
-        }
-        while(count != 10){
-          await sleep(300);
-        }
-        expect(count).assertEqual(10);
-        Done();
-      });
-
-    /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_5200
-     * @tc.name TaskpoolUtilsAsynclockSameTest5200
-     * @tc.desc test
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('TaskpoolUtilsAsynclockSameTest5200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
-      async (Done: Function) => {
-        let task: taskpool.Task = new taskpool.Task(taskFunctionTest5200);
-        await taskpool.execute(task).then((result) => {
-          expect(result).assertEqual(3);
-          Done();
-        })
-      });
-
-    /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_5300
-     * @tc.name TaskpoolUtilsAsynclockSameTest5300
-     * @tc.desc test
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('TaskpoolUtilsAsynclockSameTest5300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
-      async (Done: Function) => {
-        const caseName = 'TaskpoolUtilsAsynclockSameTest5300';
-        console.info(`${caseName} test start`);
-        let count: number = 0;
-        let WorkThread: worker.ThreadWorker;
-        WorkThread = new worker.ThreadWorker('../testability/workers/Worker');
-        WorkThread.onexit = () => {
-          console.log("onexit");
-        }
-        WorkThread.postMessage(caseName);
-        WorkThread.onmessage = (e: MessageEvents): void => {
-          count = e.data;
-          console.log('e:' + JSON.stringify(e));
-          console.info("main2 thread count is  " + count);
-          WorkThread.terminate();
-          console.log('Success execution count:' + count);
-          console.info(`${caseName} test end`);
-        }
-        while (count != 1) {
-          await sleep(300);
-        }
-        expect(count).assertEqual(1);
-        Done();
-      });
-
-    /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_5400
-     * @tc.name TaskpoolUtilsAsynclockSameTest5400
-     * @tc.desc test
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('TaskpoolUtilsAsynclockSameTest5400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
-      async (Done: Function) => {
-        const caseName = 'TaskpoolUtilsAsynclockSameTest5400';
-        console.info(`${caseName} test start`);
-        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-        const promises: Promise<void>[] = [];
-        let count = 0;
-        for (let i = 0; i < 10; i++) {
-          const promise1 = lock1.lockAsync(async () => {
-            setTimeout(() => {},1000)
-            console.log('Enter shared lock lock1');
-            lock2.lockAsync(async () => {
-              setTimeout(() => {},1000)
-              console.log('Enter exclusive lock lock2');
-                setTimeout(() => {
-                  count++;
-                }, 1000);
-            }, ArkTSUtils.locks.AsyncLockMode.SHARED);
-            console.log('Exit exclusive lock lock2');
-          }, ArkTSUtils.locks.AsyncLockMode.SHARED);
-          console.log('Exit shared lock lock1');
-          promises.push(promise1);
-        }
-        try {
-          await Promise.all(promises);
-        } catch (e) {
-          console.log('Caught an error in Promise.all:', JSON.stringify(e));
-        }
-        while(count != 10){
-          await sleep(300);
-        }
-        expect(count).assertEqual(10);
-        Done();
-      });
-
-    /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_5500
-     * @tc.name TaskpoolUtilsAsynclockSameTest5500
-     * @tc.desc test
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('TaskpoolUtilsAsynclockSameTest5500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
-      async (Done: Function) => {
-        let task: taskpool.Task = new taskpool.Task(taskFunctionTest5500);
-        await taskpool.execute(task).then((result) => {
-          expect(result).assertEqual(3);
-          Done();
-        })
-      });
-
-    /**
-     * @tc.number SUB_UTILS_ASYNCLOCK_SAME_TEST_5600
-     * @tc.name TaskpoolUtilsAsynclockSameTest5600
-     * @tc.desc test
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('TaskpoolUtilsAsynclockSameTest5600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
-      async (Done: Function) => {
-        const caseName = 'TaskpoolUtilsAsynclockSameTest5600';
-        console.info(`${caseName} test start`);
-        let count: number = 0;
-        let WorkThread: worker.ThreadWorker;
-        WorkThread = new worker.ThreadWorker('../testability/workers/Worker');
-        WorkThread.onexit = () => {
-          console.log("onexit");
-        }
-        WorkThread.postMessage(caseName);
-        WorkThread.onmessage = (e: MessageEvents): void => {
-          count = e.data;
-          console.log('e:' + JSON.stringify(e));
-          console.info("main2 thread count is  " + count);
-          WorkThread.terminate();
-          console.log('Success execution count:' + count);
-          console.info(`${caseName} test end`);
-        }
-        while (count != 1) {
-          await sleep(300);
-        }
-        expect(count).assertEqual(1);
         Done();
       });
   })

@@ -13,8 +13,8 @@
 * limitations under the License.
 */
 
-import { ArkTSUtils, ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
-import { sleep } from '../pages/Utils';
+import { ArkTSUtils, ErrorEvent, MessageEvents, taskpool, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
+import { printArgs1, sleep } from '../pages/Utils';
 
 const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
 
@@ -27,7 +27,7 @@ const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
 workerPort.onmessage = async (event: MessageEvents) => {
   let str: string = event.data;
   console.log('str:' + str);
-  if (str == 'TaskpoolUtilsAsynclockDifferentTest0700') {
+  if (str == 'AsynclockDifferentTest0700') {
     let count: number = 0;
     const lock1 = new ArkTSUtils.locks.AsyncLock();
     const promises: Promise<void>[] = [];
@@ -45,7 +45,7 @@ workerPort.onmessage = async (event: MessageEvents) => {
     workerPort.close();
   }
 
-  if (str == 'TaskpoolUtilsAsynclockDifferentTest1000') {
+  if (str == 'AsynclockDifferentTest1000') {
     let count: number = 0;
     const lock1 = new ArkTSUtils.locks.AsyncLock();
     const promises: Promise<void>[] = [];
@@ -72,7 +72,7 @@ workerPort.onmessage = async (event: MessageEvents) => {
     workerPort.close();
   }
 
-  if (str == 'TaskpoolUtilsAsynclockDifferentTest1300') {
+  if (str == 'AsynclockDifferentTest1300') {
     let count: number = 0;
     const lock1 = new ArkTSUtils.locks.AsyncLock();
     const lock2 = new ArkTSUtils.locks.AsyncLock();
@@ -103,7 +103,7 @@ workerPort.onmessage = async (event: MessageEvents) => {
     workerPort.close();
   }
 
-  if (str == 'TaskpoolUtilsAsynclockDifferentTest1800') {
+  if (str == 'AsynclockDifferentTest1800') {
     let count: number = 0;
     const lock1 = new ArkTSUtils.locks.AsyncLock();
     const lock2 = new ArkTSUtils.locks.AsyncLock();
@@ -133,7 +133,7 @@ workerPort.onmessage = async (event: MessageEvents) => {
   }
 
 
-  if (str == 'TaskpoolUtilsAsynclockDifferentTest2600') {
+  if (str == 'AsynclockDifferentTest2600') {
     let count: number = 0;
     const lock1 = new ArkTSUtils.locks.AsyncLock();
     const lock2 = new ArkTSUtils.locks.AsyncLock();
@@ -161,6 +161,172 @@ workerPort.onmessage = async (event: MessageEvents) => {
     workerPort.postMessage(count);
     workerPort.close();
   }
+
+
+  if (str == 'AsynclockDifferentTest2900') {
+    let count = 0;
+    const promises: Promise<void>[] = [];
+    const lock1 = new ArkTSUtils.locks.AsyncLock();
+    const lock2 = new ArkTSUtils.locks.AsyncLock();
+    let task: taskpool.Task = new taskpool.Task(printArgs1, 1);
+    const promise1 = lock1.lockAsync(async () => {
+      console.log('Enter shared lock lock1');
+      await lock2.lockAsync(async () => {
+        console.log('Enter exclusive lock lock2');
+        await taskpool.execute(task).then(() => {
+          count++;
+          console.log('taskpool success');
+        })
+      }, ArkTSUtils.locks.AsyncLockMode.SHARED);
+      console.log('Exit exclusive lock lock2');
+    }, ArkTSUtils.locks.AsyncLockMode.SHARED);
+    console.log('Exit shared lock lock1');
+    promises.push(promise1);
+    try {
+      await Promise.all(promises);
+    } catch (error) {
+      console.log('Promise.all caught an error:', error);
+    }
+    console.log('count:' + count);
+    workerPort.postMessage(count);
+    workerPort.close();
+  }
+
+  if (str == 'AsynclockDifferentTest3500') {
+    let count = 0;
+    const promises: Promise<void>[] = [];
+    let task: taskpool.Task = new taskpool.Task(printArgs1, 1);
+    const lock1 = ArkTSUtils.locks.AsyncLock.request('lock1');
+    const lock2 = ArkTSUtils.locks.AsyncLock.request('lock2');
+    const lock3 = ArkTSUtils.locks.AsyncLock.request('lock3');
+    const promise1 = lock1.lockAsync(async () => {
+      console.log('Enter shared lock lock1');
+      await lock2.lockAsync(async () => {
+        console.log('Enter shared lock lock2');
+        await lock3.lockAsync(async () => {
+          console.log('Enter shared lock lock3');
+          await taskpool.execute(task).then(() => {
+            count++;
+            console.log('taskpool success');
+          })
+          console.log('Exit shared lock lock3');
+        }, ArkTSUtils.locks.AsyncLockMode.SHARED);
+        console.log('Exit shared lock lock2');
+      }, ArkTSUtils.locks.AsyncLockMode.SHARED);
+      console.log('Exit shared lock lock1');
+    }, ArkTSUtils.locks.AsyncLockMode.SHARED);
+    console.log('Exit shared lock lock1');
+    promises.push(promise1);
+    try {
+      await Promise.all(promises);
+    } catch (error) {
+      console.log('Promise.all caught an error:', error);
+    }
+    console.log('count:' + count);
+    workerPort.postMessage(count);
+    workerPort.close();
+  }
+
+  if (str == 'AsynclockDifferentTest4200') {
+    let count = 0;
+    count++;
+    console.log('count:' + count)
+    workerPort.postMessage(count);
+    workerPort.close();
+  }
+
+  if (str == 'AsynclockDifferentTest4300') {
+    let count = 0;
+    count++;
+    console.log('count:' + count)
+    workerPort.postMessage(count);
+    workerPort.close();
+  }
+
+  if (str == 'AsynclockDifferentTest4400') {
+    let count = 0;
+    count++;
+    console.log('count:' + count)
+    workerPort.postMessage(count);
+    workerPort.close();
+  }
+
+  if (str == 'AsynclockDifferentTest4700') {
+    const promises: Promise<void>[] = [];
+    let count = 0;
+    const lock1 = ArkTSUtils.locks.AsyncLock.request('lock1');
+    const lock2 = ArkTSUtils.locks.AsyncLock.request('lock2');
+    const options1 = new ArkTSUtils.locks.AsyncLockOptions<void>();
+    options1.timeout = 1000;
+    const options2 = new ArkTSUtils.locks.AsyncLockOptions<void>();
+    options2.timeout = 1000;
+    const promise1 = lock1.lockAsync(async () => {
+      console.log('enter SHARE lock1');
+      try {
+        await lock2.lockAsync(async () => {
+          console.log('enter EXCLUSIVE lock2');
+          await new Promise<void>((resolve) => {
+            setTimeout(() => {
+              count++;
+              resolve();
+            }, 1000);
+          });
+          console.log('Exit EXCLUSIVE lock');
+        }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE, options2);
+      } catch (e) {
+        console.log(`Promise execution completed in ${count} second`);
+      }
+      console.log('Exit SHARED lock');
+    }, ArkTSUtils.locks.AsyncLockMode.SHARED, options1);
+    promises.push(promise1);
+    await Promise.all(promises);
+    while (count != 1) {
+      await sleep(300);
+    }
+    console.log('count:' + count);
+    workerPort.postMessage(count);
+    workerPort.close();
+  }
+
+
+  if (str == 'AsynclockDifferentTest5000') {
+    const promises: Promise<void>[] = [];
+    let count = 0;
+    const lock1 = ArkTSUtils.locks.AsyncLock.request('lock1');
+    const lock2 = ArkTSUtils.locks.AsyncLock.request('lock2');
+    const options1 = new ArkTSUtils.locks.AsyncLockOptions<void>();
+    options1.timeout = 1000;
+    const options2 = new ArkTSUtils.locks.AsyncLockOptions<void>();
+    options2.timeout = 1000;
+    const promise1 = lock1.lockAsync(async () => {
+      console.log('enter SHARE lock1');
+      try {
+        await lock2.lockAsync(async () => {
+          console.log('enter SHARED lock2');
+          await new Promise<void>((resolve) => {
+            setTimeout(() => {
+              count++;
+              resolve();
+            }, 1000);
+          });
+          console.log('Exit SHARED lock');
+        }, ArkTSUtils.locks.AsyncLockMode.SHARED, options2);
+      } catch (e) {
+        console.log(`Promise execution completed in ${count} second`);
+      }
+      console.log('Exit SHARED lock');
+    }, ArkTSUtils.locks.AsyncLockMode.SHARED, options1);
+    promises.push(promise1);
+    await Promise.all(promises);
+    while (count != 1) {
+      await sleep(300);
+    }
+    console.log('count:' + count);
+    workerPort.postMessage(count);
+    workerPort.close();
+  }
+
+
 
 };
 
