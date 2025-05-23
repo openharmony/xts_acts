@@ -5697,8 +5697,493 @@ export default function windowPropertiesTest() {
           expect().assertFail();
           done();
         }
-      }) 
-     
+      })
+
+      /**
+       * @tc.number    : SUB_BASIC_WMS_GETWINDOWPROPERTIES_TRANSPARENT_0100
+       * @tc.name      : test_GETWINDOWPROPERTIES_TRANSPARENT_0100
+       * @tc.desc      : 主窗设置透明/非透明背景色后查询isTransparent属性
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level0
+       */
+      it('test_GETWINDOWPROPERTIES_TRANSPARENT_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async(done: Function) => {
+        let msgStr = ' test_GETWINDOWPROPERTIES_TRANSPARENT_0100 ';
+        console.info(msgStr + ' begin ');
+        try {
+          let windowClass = windowStage.getMainWindowSync();
+          let promise = windowClass.setBackgroundColor('#0000FF00');
+          promise.then(async () => {
+            console.info('Succeeded in setBackgroundColor.');
+            let windowProperties = windowClass.getWindowProperties()
+            console.info(`${msgStr} windowProperties: ${JSON.stringify(windowProperties)}`);
+            expect(windowProperties.isTransparent).assertEqual(true);
+            let promise2 = windowClass.setBackgroundColor('#FFFFFF');
+            promise2.then(async () => {
+              console.info('Succeeded2 in setBackgroundColor.');
+              let windowProperties2 = windowClass.getWindowProperties()
+              console.info(`${msgStr} windowProperties2: ${JSON.stringify(windowProperties2)}`);
+              expect(windowProperties2.isTransparent).assertEqual(false);
+              done();
+            }).catch((err: BusinessError) => {
+              console.error(`${msgStr} Failed2 to setBackgroundColor. Cause code: ${err.code}, message: ${err.message}`);
+              if (err.code == 801) {
+                done();
+              } else {
+                expect().assertFail();
+                done();
+              }
+            });
+          }).catch((err: BusinessError) => {
+            console.error(`${msgStr} Failed1 to setBackgroundColor. Cause code: ${err.code}, message: ${err.message}`);
+            if (err.code == 801) {
+              done();
+            } else {
+              expect().assertFail();
+              done();
+            }
+          });
+        } catch (error) {
+          console.error('Failed. Cause: ' + JSON.stringify(error));
+          expect().assertFail();
+          done();
+        }
+      })
+
+      /**
+       * @tc.number    : SUB_BASIC_WMS_GETWINDOWPROPERTIES_TRANSPARENT_0200
+       * @tc.name      : test_GETWINDOWPROPERTIES_TRANSPARENT_0200
+       * @tc.desc      : 子窗设置透明/非透明背景色后查询isTransparent属性
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level1
+       */
+      it('test_GETWINDOWPROPERTIES_TRANSPARENT_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async(done: Function) => {
+        let msgStr = ' test_GETWINDOWPROPERTIES_TRANSPARENT_0200 ';
+        console.info(msgStr + ' begin ');
+        const windowClass = await windowStage.createSubWindow('test_GETWINDOWPROPERTIES_TRANSPARENT_0200');
+        try {
+          let promise = windowClass.setBackgroundColor('#0000FF00');
+          promise.then(async () => {
+            console.info('Succeeded in setBackgroundColor.');
+            let windowProperties = windowClass.getWindowProperties()
+            console.info(`${msgStr} windowProperties: ${JSON.stringify(windowProperties)}`);
+            expect(windowProperties.isTransparent).assertEqual(true);
+            let promise2 = windowClass.setBackgroundColor('#FFFFFF');
+            promise2.then(async () => {
+              console.info('Succeeded2 in setBackgroundColor.');
+              let windowProperties2 = windowClass.getWindowProperties()
+              console.info(`${msgStr} windowProperties2: ${JSON.stringify(windowProperties2)}`);
+              expect(windowProperties2.isTransparent).assertEqual(false);
+              await windowClass.destroyWindow();
+              done();
+            }).catch(async (err: BusinessError) => {
+              console.error(`${msgStr} Failed2 to setBackgroundColor. Cause code: ${err.code}, message: ${err.message}`);
+              await windowClass.destroyWindow();
+              if (err.code == 801) {
+                done();
+              } else {
+                expect().assertFail();
+                done();
+              }
+            });
+          }).catch(async (err: BusinessError) => {
+            console.error(`${msgStr} Failed1 to setBackgroundColor. Cause code: ${err.code}, message: ${err.message}`);
+            await windowClass.destroyWindow();
+            if (err.code == 801) {
+              done();
+            } else {
+              expect().assertFail();
+              done();
+            }
+          });
+        } catch (error) {
+          console.error('Failed. Cause: ' + JSON.stringify(error));
+          await windowClass.destroyWindow();
+          expect().assertFail();
+          done();
+        }
+      })
+
+      /**
+       * @tc.number    : SUB_BASIC_WMS_GETWINDOWPROPERTIES_TRANSPARENT_0300
+       * @tc.name      : test_GETWINDOWPROPERTIES_TRANSPARENT_0300
+       * @tc.desc      : 系统窗设置透明/非透明背景色后查询isTransparent属性
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level1
+       */
+      it('test_GETWINDOWPROPERTIES_TRANSPARENT_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async(done: Function) => {
+        let msgStr = ' test_GETWINDOWPROPERTIES_TRANSPARENT_0300 ';
+        console.info(msgStr + ' begin ');
+        let config: window.Configuration = {
+          name: "modalWindow",
+          windowType: window.WindowType.TYPE_DIALOG,
+          ctx: context
+        };
+        let windowClass = await window.createWindow(config);
+        try {
+          let promise = windowClass.setBackgroundColor('#0000FF00');
+          promise.then(async () => {
+            console.info('Succeeded in setBackgroundColor.');
+            let windowProperties = windowClass!.getWindowProperties()
+            console.info(`${msgStr} windowProperties: ${JSON.stringify(windowProperties)}`);
+            expect(windowProperties.isTransparent).assertEqual(true);
+            let promise2 = windowClass!.setBackgroundColor('#FFFFFF');
+            promise2.then(async () => {
+              console.info('Succeeded2 in setBackgroundColor.');
+              let windowProperties2 = windowClass!.getWindowProperties()
+              console.info(`${msgStr} windowProperties2: ${JSON.stringify(windowProperties2)}`);
+              expect(windowProperties2.isTransparent).assertEqual(false);
+              await windowClass.destroyWindow();
+              done();
+            }).catch(async (err: BusinessError) => {
+              console.error(`${msgStr} Failed2 to setBackgroundColor. Cause code: ${err.code}, message: ${err.message}`);
+              await windowClass.destroyWindow();
+              if (err.code == 801) {
+                done();
+              } else {
+                expect().assertFail();
+                done();
+              }
+            });
+          }).catch(async (err: BusinessError) => {
+            console.error(`${msgStr} Failed1 to setBackgroundColor. Cause code: ${err.code}, message: ${err.message}`);
+            await windowClass.destroyWindow();
+            if (err.code == 801) {
+              done();
+            } else {
+              expect().assertFail();
+              done();
+            }
+          });
+        } catch (error) {
+          console.error('Failed. Cause: ' + JSON.stringify(error));
+          await windowClass.destroyWindow();
+          expect().assertFail();
+          done();
+        }
+      })
+
+      /**
+       * @tc.number    : SUB_BASIC_WMS_GETWINDOWPROPERTIES_WINDOWID_0100
+       * @tc.name      : test_GETWINDOWPROPERTIES_WINDOWID_0100
+       * @tc.desc      : 主窗查询windowid
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level0
+       */
+      it('test_GETWINDOWPROPERTIES_WINDOWID_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async(done: Function) => {
+        let msgStr = ' test_GETWINDOWPROPERTIES_WINDOWID_0100 ';
+        console.info(msgStr + ' begin ');
+        let windowClass = await windowStage.getMainWindowSync();
+        let subWindowClass: window.Window | undefined
+        try {
+          let windowProperties = windowClass.getWindowProperties()
+          console.info(`${msgStr} windowProperties: ${JSON.stringify(windowProperties)}`);
+          let windowId = windowProperties.id;
+          console.info(`${msgStr} windowId: ${JSON.stringify(windowId)}`);
+          expect(windowId).assertLarger(0)
+          let config: window.Configuration = {
+            name: "modalWindow",
+            windowType: window.WindowType.TYPE_DIALOG,
+            ctx: context,
+            parentId: windowId
+          };
+          subWindowClass = await window.createWindow(config);
+          subWindowClass.destroyWindow();
+          done()
+        } catch (error) {
+          console.error('Failed. Cause: ' + JSON.stringify(error));
+          if (subWindowClass !== undefined) {
+            subWindowClass.destroyWindow();
+          }
+          expect().assertFail();
+          done();
+        }
+      })
+
+      /**
+       * @tc.number    : SUB_BASIC_WMS_GETWINDOWPROPERTIES_DISPLAYID_1900
+       * @tc.name      : test_GETWINDOWPROPERTIES_DISPLAYID_1900
+       * @tc.desc      : 主窗查询所在displayid
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level0
+       */
+      it('test_GETWINDOWPROPERTIES_DISPLAYID_1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async(done: Function) => {
+        let msgStr = ' test_GETWINDOWPROPERTIES_DISPLAYID_1900 ';
+        console.info(msgStr + ' begin ');
+        let windowClass = await windowStage.getMainWindowSync();
+        try {
+          let windowProperties = windowClass.getWindowProperties()
+          console.info(`${msgStr} windowProperties: ${JSON.stringify(windowProperties)}`);
+          let displayId = windowProperties.displayId;
+          console.info(`${msgStr} displayId: ${JSON.stringify(displayId)}`);
+          expect(displayId).assertLargerOrEqual(0)
+          done()
+        } catch (error) {
+          console.error('Failed. Cause: ' + JSON.stringify(error));
+          expect().assertFail();
+          done();
+        }
+      })
+
+      /**
+       * @tc.number    : SUB_BASIC_WMS_GETWINDOWPROPERTIES_NAME_0100
+       * @tc.name      : test_GETWINDOWPROPERTIES_NAME_0100
+       * @tc.desc      : 主窗查询name
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level0
+       */
+      it('test_GETWINDOWPROPERTIES_NAME_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async(done: Function) => {
+        let msgStr = ' test_GETWINDOWPROPERTIES_NAME_0100 ';
+        console.info(msgStr + ' begin ');
+        let windowClass = await windowStage.getMainWindowSync();
+        try {
+          let windowProperties = windowClass.getWindowProperties()
+          console.info(`${msgStr} windowProperties: ${JSON.stringify(windowProperties)}`);
+          let name = windowProperties.name;
+          console.info(`${msgStr} name: ${JSON.stringify(name)}`);
+          expect(name?.length).assertEqual(0);
+          done()
+        } catch (error) {
+          console.error('Failed. Cause: ' + JSON.stringify(error));
+          expect().assertFail();
+          done();
+        }
+      })
+
+      /**
+       * @tc.number    : SUB_BASIC_WMS_GETWINDOWPROPERTIES_NAME_0200
+       * @tc.name      : test_GETWINDOWPROPERTIES_NAME_0200
+       * @tc.desc      : 子窗查询name
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level0
+       */
+      it('test_GETWINDOWPROPERTIES_NAME_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async(done: Function) => {
+        let msgStr = ' test_GETWINDOWPROPERTIES_NAME_0200 ';
+        console.info(msgStr + ' begin ');
+        let subWindowClass: window.Window | undefined;
+        try {
+          let options: ohosWindow.SubWindowOptions = {
+            title: 'title',
+            decorEnabled: false
+          };
+          let promise = windowStage.createSubWindowWithOptions('testWindowPropertiesSubWindow', options);
+          promise.then(async (data) => {
+            subWindowClass = data;
+            let windowProperties = subWindowClass.getWindowProperties()
+            console.info(`${msgStr} windowProperties: ${JSON.stringify(windowProperties)}`);
+            let name = windowProperties.name;
+            console.info(`${msgStr} name: ${JSON.stringify(name)}`);
+            expect(name).assertEqual('testWindowPropertiesSubWindow');
+            await subWindowClass.destroyWindow();
+            done();
+          }).catch(async (error: BusinessError) => {
+            console.error(msgStr + 'Failed to create the subwindow. Cause: ' + JSON.stringify(error));
+            if (subWindowClass !== undefined) {
+              await subWindowClass.destroyWindow();
+            }
+            if (error.code == 1300002) {
+              expect(true).assertTrue();
+              done();
+            } else {
+              expect().assertFail();
+              done();
+            }
+          });
+        } catch (error) {
+          console.error('Failed2 to create the subwindow. Cause: ' + JSON.stringify(error));
+          if (subWindowClass !== undefined) {
+            await subWindowClass.destroyWindow();
+          }
+          if (error.code == 1300002) {
+            expect().assertTrue();
+            done();
+          } else {
+            expect().assertFail();
+            done();
+          }
+        }
+      })
+
+      /**
+       * @tc.number    : SUB_BASIC_WMS_GETWINDOWPROPERTIES_NAME_0300
+       * @tc.name      : test_GETWINDOWPROPERTIES_NAME_0300
+       * @tc.desc      : float窗查询name
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level1
+       */
+      it('test_GETWINDOWPROPERTIES_NAME_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async(done: Function) => {
+        let msgStr = ' test_GETWINDOWPROPERTIES_NAME_0300 ';
+        console.info(msgStr + ' begin ');
+        let subWindowClass: window.Window | undefined;
+        let config: window.Configuration = {
+          name: "testWindowPropertiesFloatWindow",
+          windowType: window.WindowType.TYPE_FLOAT,
+          ctx: context
+        };
+        try {
+          subWindowClass = await window.createWindow(config);
+          let windowProperties = subWindowClass.getWindowProperties()
+          console.info(`${msgStr} windowProperties: ${JSON.stringify(windowProperties)}`);
+          let name = windowProperties.name;
+          console.info(`${msgStr} name: ${JSON.stringify(name)}`);
+          expect(name).assertEqual('testWindowPropertiesFloatWindow');
+          await subWindowClass.destroyWindow();
+          done();
+        } catch (error) {
+          console.error('Failed to create the subwindow. Cause: ' + JSON.stringify(error));
+          if (subWindowClass !== undefined) {
+            await subWindowClass.destroyWindow();
+          }
+          expect().assertFail();
+          done();
+        }
+      })
+
+      /**
+       * @tc.number    : SUB_BASIC_WMS_GETWINDOWPROPERTIES_NAME_0400
+       * @tc.name      : test_GETWINDOWPROPERTIES_NAME_0400
+       * @tc.desc      : dialog窗查询name
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level1
+       */
+      it('test_GETWINDOWPROPERTIES_NAME_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async(done: Function) => {
+        let msgStr = ' test_GETWINDOWPROPERTIES_NAME_0400 ';
+        console.info(msgStr + ' begin ');
+        let subWindowClass: window.Window | undefined;
+        let config: window.Configuration = {
+          name: "testWindowPropertiesDialogWindow",
+          windowType: window.WindowType.TYPE_DIALOG,
+          ctx: context
+        };
+        try {
+          subWindowClass = await window.createWindow(config);
+          let windowProperties = subWindowClass.getWindowProperties()
+          console.info(`${msgStr} windowProperties: ${JSON.stringify(windowProperties)}`);
+          let name = windowProperties.name;
+          console.info(`${msgStr} name: ${JSON.stringify(name)}`);
+          expect(name).assertEqual('testWindowPropertiesDialogWindow');
+          await subWindowClass.destroyWindow();
+          done();
+        } catch (error) {
+          console.error('Failed to create the subwindow. Cause: ' + JSON.stringify(error));
+          if (subWindowClass !== undefined) {
+            await subWindowClass.destroyWindow();
+          }
+          expect().assertFail();
+          done();
+        }
+      })
+
+      /**
+       * @tc.number    : SUB_BASIC_WMS_GETWINDOWPROPERTIES_WINDOWRECT_2300
+       * @tc.name      : test_GETWINDOWPROPERTIES_WINDOWRECT_2300
+       * @tc.desc      : 子窗在loadcontent之前getWindowProperties
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level0
+       */
+      it('test_GETWINDOWPROPERTIES_WINDOWRECT_2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async(done: Function) => {
+        let msgStr = ' test_GETWINDOWPROPERTIES_WINDOWRECT_2300 ';
+        const subWindowClass = await windowStage.createSubWindow('test_GETWINDOWPROPERTIES_PRIVACYMODE_0200');
+        try {
+          await subWindowClass.resize(150, 150);
+          await sleep(200);
+          await subWindowClass.moveWindowTo(50, 50);
+          await sleep(200);
+          let windowProperties = subWindowClass.getWindowProperties()
+          console.info(`${msgStr} windowProperties: ${JSON.stringify(windowProperties)}`);
+          let windowRect = windowProperties.windowRect;
+          console.info(`${msgStr} windowRect: ${JSON.stringify(windowRect)}`);
+          expect(Math.abs(windowRect.left-50)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect.top-50)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect.width-150)).assertLessOrEqual(1);
+          expect(Math.abs(windowRect.height-150)).assertLessOrEqual(1);
+          // TYPE_APP 是FA模型的
+          // expect(windowProperties.type).assertEqual(window.WindowType.TYPE_APP);
+          expect(windowProperties.isFullScreen).assertEqual(true);
+          expect(windowProperties.isLayoutFullScreen).assertEqual(true);
+          expect(windowProperties.isTransparent).assertEqual(false);
+          expect(windowProperties.isPrivacyMode).assertEqual(false);
+          expect(windowProperties.focusable).assertEqual(true);
+          expect(windowProperties.touchable).assertEqual(true);
+          // expect(windowProperties.isKeepScreenOn).assertEqual(true);
+          expect(Number.isInteger(windowProperties.brightness)).assertEqual(false);
+          expect(windowProperties.id).assertLarger(0);
+          expect(windowProperties.displayId).assertLargerOrEqual(0);
+          expect(windowProperties.name).assertEqual('test_GETWINDOWPROPERTIES_PRIVACYMODE_0200');
+          await subWindowClass.setUIContent('testability/pages/First/index2');
+          await sleep(200);
+          await subWindowClass.showWindow();
+          await sleep(200);
+          await subWindowClass.destroyWindow();
+          done();
+        } catch (error) {
+          console.error('Failed to create the subwindow. Cause: ' + JSON.stringify(error));
+          if (subWindowClass !== undefined) {
+            await subWindowClass.destroyWindow();
+          }
+          expect().assertFail();
+          done();
+        }
+      })
+
+      /**
+       * @tc.number    : SUB_BASIC_WMS_GETWINDOWPROPERTIES_WINDOWRECT_2400
+       * @tc.name      : test_GETWINDOWPROPERTIES_WINDOWRECT_2400
+       * @tc.desc      : 主窗在loadcontent之前getWindowProperties
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level0
+       */
+      it('test_GETWINDOWPROPERTIES_WINDOWRECT_2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async(done: Function) => {
+        let msgStr = 'test_GETWINDOWPROPERTIES_WINDOWRECT_2400';
+        let windowStageStart = await startAbility3(msgStr, context);
+        try {
+          let windowClass = windowStageStart.getMainWindowSync();
+          let windowProperties = windowClass.getWindowProperties()
+          console.info(`${msgStr} windowProperties: ${JSON.stringify(windowProperties)}`);
+          let windowRect = windowProperties.windowRect;
+          console.info(`${msgStr} windowRect: ${JSON.stringify(windowRect)}`);
+          expect(windowRect.left).assertEqual(0);
+          expect(windowRect.top).assertEqual(0);
+          expect(windowRect.width).assertEqual(0);
+          expect(windowRect.height).assertEqual(0);
+          expect(windowProperties.type).assertEqual(1);
+          if (isPCStatus != '' || isAutoWindow == 'false') {
+            expect(windowProperties.isFullScreen).assertEqual(false);
+          } else {
+            expect(windowProperties.isFullScreen).assertEqual(true);
+          }
+          expect(windowProperties.isLayoutFullScreen).assertEqual(true);
+          expect(windowProperties.isTransparent).assertEqual(false);
+          expect(windowProperties.isPrivacyMode).assertEqual(false);
+          expect(windowProperties.focusable).assertEqual(true);
+          expect(windowProperties.touchable).assertEqual(true);
+          expect(Number.isInteger(windowProperties.brightness)).assertEqual(false);
+          // expect(windowProperties.isKeepScreenOn).assertEqual(true);
+          expect(windowProperties.id).assertLarger(0);
+          expect(windowProperties.displayId).assertLargerOrEqual(0);
+          await windowClass.setUIContent('testability/pages/First/index2');
+          await sleep(200);
+          // await windowClass.showWindow();
+          // await sleep(200);
+          await terminateAbility3(msgStr);
+          done();
+        } catch (error) {
+          console.error('Failed to create the subwindow. Cause: ' + JSON.stringify(error));
+          expect().assertFail();
+          done();
+        }
+      })
+
     })
 }
 
