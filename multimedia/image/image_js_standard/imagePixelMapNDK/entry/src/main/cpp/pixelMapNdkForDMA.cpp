@@ -15,7 +15,6 @@
 
 #include "napi/native_api.h"
 #include "pixelMapNdkForDMA.h"
-#include "pixelMapNdkForARGB.cpp"
 #include "common/log_common.h"
 #include <node_api.h>
 #include <bits/alltypes.h>
@@ -295,7 +294,6 @@ EXTERN_C_START static napi_value Init(napi_env env, napi_value exports)
             nullptr, nullptr, nullptr, napi_default, nullptr}
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
-    InitARGB(env, exports);
     return exports;
 }
 EXTERN_C_END
