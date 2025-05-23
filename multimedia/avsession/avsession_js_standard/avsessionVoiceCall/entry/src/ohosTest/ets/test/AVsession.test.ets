@@ -2268,8 +2268,8 @@ export default function abilityTest() {
 
    /* *
     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_CALLBACK_2400
-    * @tc.name      : getOutputDevice - promise - set pcmsrc -true
-    * @tc.desc      : Testing call getOutputDevice(promise)  set pcmsrc -true
+    * @tc.name      : getOutputDevice - promise - set pcmSrc -true
+    * @tc.desc      : Testing call getOutputDevice(promise)  set pcmSrc -true
     * @tc.size      : MediumTest
     * @tc.type      : Function
     * @tc.level     : Level 2
@@ -2281,7 +2281,7 @@ export default function abilityTest() {
         title: 'music_name',
         subtitle: 'music_sub_name',
         description: 'music_description',
-        pcmsrc: true,
+        pcmSrc: true,
         extras: {extras:'any'}
       };
       let queueItem_1: avSession.AVQueueItem = {
@@ -2293,7 +2293,7 @@ export default function abilityTest() {
         title: 'music_name',
         subtitle: 'music_sub_name',
         description: 'music_description',
-        pcmsrc: true,
+        pcmSrc: true,
         extras: {extras:'any'}
       };
       let queueItem_2: avSession.AVQueueItem = {
@@ -2313,8 +2313,8 @@ export default function abilityTest() {
 
    /* *
     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_CALLBACK_2500
-    * @tc.name      : getOutputDevice - promise - set pcmsrc -false
-    * @tc.desc      : Testing call getOutputDevice(promise)  set pcmsrc -false
+    * @tc.name      : getOutputDevice - promise - set pcmSrc -false
+    * @tc.desc      : Testing call getOutputDevice(promise)  set pcmSrc -false
     * @tc.size      : MediumTest
     * @tc.type      : Function
     * @tc.level     : Level 2
@@ -2326,7 +2326,7 @@ export default function abilityTest() {
         title: 'music_name',
         subtitle: 'music_sub_name',
         description: 'music_description',
-        pcmsrc: false,
+        pcmSrc: false,
         extras: {extras:'any'}
       };
       let queueItem_1: avSession.AVQueueItem = {
@@ -2338,7 +2338,7 @@ export default function abilityTest() {
         title: 'music_name',
         subtitle: 'music_sub_name',
         description: 'music_description',
-        pcmsrc: false,
+        pcmSrc: false,
         extras: {extras:'any'}
       };
       let queueItem_2: avSession.AVQueueItem = {
@@ -2358,8 +2358,8 @@ export default function abilityTest() {
 
    /* *
     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_CALLBACK_2600
-    * @tc.name      : getOutputDevice - promise - set pcmsrc -undefined
-    * @tc.desc      : Testing call getOutputDevice(promise)  set pcmsrc -undefined
+    * @tc.name      : getOutputDevice - promise - set pcmSrc -undefined
+    * @tc.desc      : Testing call getOutputDevice(promise)  set pcmSrc -undefined
     * @tc.size      : MediumTest
     * @tc.type      : Function
     * @tc.level     : Level 4
@@ -2371,7 +2371,7 @@ export default function abilityTest() {
         title: 'music_name',
         subtitle: 'music_sub_name',
         description: 'music_description',
-        pcmsrc: false,
+        pcmSrc: false,
         extras: {extras:'any'}
       };
       let queueItem_1: avSession.AVQueueItem = {
@@ -2390,8 +2390,8 @@ export default function abilityTest() {
 
    /* *
     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_CALLBACK_2700
-    * @tc.name      : getOutputDevice - callback - set pcmsrc -true
-    * @tc.desc      : Testing call getOutputDevice(callback)  set pcmsrc -true
+    * @tc.name      : getOutputDevice - callback - set pcmSrc -true
+    * @tc.desc      : Testing call getOutputDevice(callback)  set pcmSrc -true
     * @tc.size      : MediumTest
     * @tc.type      : Function
     * @tc.level     : Level 2
@@ -2403,7 +2403,7 @@ export default function abilityTest() {
         title: 'music_name',
         subtitle: 'music_sub_name',
         description: 'music_description',
-        pcmsrc: true,
+        pcmSrc: true,
         extras: {extras:'any'}
       };
       let queueItem_1: avSession.AVQueueItem = {
@@ -2415,7 +2415,7 @@ export default function abilityTest() {
         title: 'music_name',
         subtitle: 'music_sub_name',
         description: 'music_description',
-        pcmsrc: true,
+        pcmSrc: true,
         extras: {extras:'any'}
       };
       let queueItem_2: avSession.AVQueueItem = {
@@ -2437,8 +2437,8 @@ export default function abilityTest() {
 
    /* *
     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_CALLBACK_2800
-    * @tc.name      : getOutputDevice - callback - set pcmsrc -false
-    * @tc.desc      : Testing call getOutputDevice(callback)  set pcmsrc -false
+    * @tc.name      : getOutputDevice - callback - set pcmSrc -false
+    * @tc.desc      : Testing call getOutputDevice(callback)  set pcmSrc -false
     * @tc.size      : MediumTest
     * @tc.type      : Function
     * @tc.level     : Level 2
@@ -2450,7 +2450,7 @@ export default function abilityTest() {
         title: 'music_name',
         subtitle: 'music_sub_name',
         description: 'music_description',
-        pcmsrc: false,
+        pcmSrc: false,
         extras: {extras:'any'}
       };
       let queueItem_1: avSession.AVQueueItem = {
@@ -2462,7 +2462,7 @@ export default function abilityTest() {
         title: 'music_name',
         subtitle: 'music_sub_name',
         description: 'music_description',
-        pcmsrc: false,
+        pcmSrc: false,
         extras: {extras:'any'}
       };
       let queueItem_2: avSession.AVQueueItem = {
@@ -2484,8 +2484,8 @@ export default function abilityTest() {
 
    /* *
     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_CALLBACK_2900
-    * @tc.name      : getOutputDevice - callback - set pcmsrc -undefined
-    * @tc.desc      : Testing call getOutputDevice(callback)  set pcmsrc -undefined
+    * @tc.name      : getOutputDevice - callback - set pcmSrc -undefined
+    * @tc.desc      : Testing call getOutputDevice(callback)  set pcmSrc -undefined
     * @tc.size      : MediumTest
     * @tc.type      : Function
     * @tc.level     : Level 4
@@ -2497,7 +2497,7 @@ export default function abilityTest() {
         title: 'music_name',
         subtitle: 'music_sub_name',
         description: 'music_description',
-        pcmsrc: false,
+        pcmSrc: false,
         extras: {extras:'any'}
       };
       let queueItem_1: avSession.AVQueueItem = {
