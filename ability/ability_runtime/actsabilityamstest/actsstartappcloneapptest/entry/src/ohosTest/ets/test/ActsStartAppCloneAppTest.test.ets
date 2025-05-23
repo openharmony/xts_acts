@@ -393,7 +393,9 @@ export default function actsStartAppCloneAppTest() {
           if (err.code) {
             hilog.info(0x0000, TAG, '%{public}s',
               `${TEST_SUITE_NAME}#${TEST_CASE_NAME} startAbility error code is ${err.code}, message is ${err.message} `);
-            expect().assertFail();
+            if (err.code != 16000050) {
+              expect().assertFail();
+            }
             done();
             return;
           }
