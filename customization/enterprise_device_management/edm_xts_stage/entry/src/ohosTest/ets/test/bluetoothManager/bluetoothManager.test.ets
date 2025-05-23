@@ -14,7 +14,7 @@
  */
 
 import { describe, expect, it, Level } from '@ohos/hypium';
-import { ENTINFO1, SELFWANT, SELFHAPNAME, TEST_APP_ID_1, TEST_POLICY_NAME, TEST_POLICY_VALUE } from '../commom.ets';
+import { ENTINFO1, SELFWANT, SELFHAPNAME, TEST_APP_ID_1, TEST_POLICY_NAME, TEST_POLICY_VALUE, INVALID_WANT } from '../commom.ets';
 
 import bluetoothManager from '@ohos.enterprise.bluetoothManager';
 import adminManager from '@ohos.enterprise.adminManager';
@@ -881,7 +881,7 @@ export default function bluetoothManagerTest() {
         bluetoothManager.turnOnBluetooth(SELFWANT);
         expect(false).assertTrue();
       } catch(error) {
-        expect(error.code == 9200007).assertTrue();
+        expect(error.code == 203).assertTrue();
       } finally {
         restrictions.setDisallowedPolicy(SELFWANT, LABEL_BLUETOOTH, false);
         await adminManager.disableSuperAdmin(SELFHAPNAME);
@@ -987,7 +987,7 @@ export default function bluetoothManagerTest() {
         bluetoothManager.turnOffBluetooth(SELFWANT);
         expect(false).assertTrue();
       } catch(error) {
-        expect(error.code == 9200007).assertTrue();
+        expect(error.code == 203).assertTrue();
       } finally {
         restrictions.setDisallowedPolicy(SELFWANT, LABEL_BLUETOOTH, false);
         await adminManager.disableSuperAdmin(SELFHAPNAME);
