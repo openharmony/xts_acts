@@ -40,5 +40,7 @@ export const getAVRecorderConfig: () => number;
 
 export const getAvailableEncoder: () => number;
 
+export const setWillMuteWhenInterrupted: () => number;
+
 
 

@@ -6603,6 +6603,18 @@ static napi_value AudioVolumeManagerUnregisterRingerModeChangeCallback_004(napi_
     return result;
 }
 
+static napi_value AudioCapturerSetWillMuteWhenInterrupted(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamBuilder *builder = CreateCapturerBuilder();
+
+    OH_AudioStream_Result result = OH_AudioStreamBuilder_SetCapturerWillMuteWhenInterrupted(builder, true);
+    OH_AudioStreamBuilder_Destroy(builder);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+
+    return res;
+}
+
 EXTERN_C_START
 napi_property_descriptor desc1[] = {
     {"audioStreamBuilderSetVolumeModeTest_001", nullptr, OH_AudioStreamBuilder_SetVolumeMode_Test_001, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -6986,6 +6998,8 @@ napi_property_descriptor desc2[] = {
     {"audioRendererStart", nullptr, AudioRendererStart, nullptr, nullptr, nullptr, napi_default, nullptr},
     {"audioRendererStop", nullptr, AudioRendererStop, nullptr, nullptr, nullptr, napi_default, nullptr},
     {"audioRendererRelease", nullptr, AudioRendererRelease, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"AudioCapturerSetWillMuteWhenInterrupted", nullptr,
+        AudioCapturerSetWillMuteWhenInterrupted, nullptr, nullptr, nullptr, napi_default, nullptr}
 };
 napi_property_descriptor desc3[] = {
     {"audioManagerGetAudioVolumeManager_001", nullptr, AudioManagerGetAudioVolumeManager_001,
