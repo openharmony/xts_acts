@@ -2084,6 +2084,7 @@ export default function drawingTsMatrixPart2Test() {
         console.info(msg + ` matrix getAll actualValues errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail();
       }
+      matrix.reset();
       matrix.postSkew(0.5, 0.9, 0.5, 2.2);
       try {
         let actualValues2 = matrix.getAll();
@@ -2096,6 +2097,7 @@ export default function drawingTsMatrixPart2Test() {
         console.info(msg + ` matrix getAll actualValues2 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail();
       }
+      matrix.reset();
       matrix.postSkew(0, 0, 0, 0);
       try {
         let actualValues3 = matrix.getAll();
@@ -2108,6 +2110,7 @@ export default function drawingTsMatrixPart2Test() {
         console.info(msg + ` matrix getAll actualValues3 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail();
       }
+      matrix.reset();
       matrix.postSkew(-1.5, -2, -2.75, -1);
       try {
         let actualValues4 = matrix.getAll();
@@ -2120,6 +2123,7 @@ export default function drawingTsMatrixPart2Test() {
         console.info(msg + ` matrix getAll actualValues4 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail();
       }
+      matrix.reset();
       matrix.postSkew(2.5, -2, 0.5, 2);
       try {
         let actualValues5 = matrix.getAll();
@@ -2132,6 +2136,7 @@ export default function drawingTsMatrixPart2Test() {
         console.info(msg + ` matrix getAll actualValues5 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail();
       }
+      matrix.reset();
       matrix.postSkew(1, -1, 1, 1);
       try {
         let actualValues6 = matrix.getAll();
@@ -2265,6 +2270,7 @@ export default function drawingTsMatrixPart2Test() {
         console.info(msg + ` matrix getAll actualValues errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail();
       }
+      matrix.reset();
       matrix.preSkew(0.5, 0.9, 0.5, 2.2);
       try {
         let actualValues2 = matrix.getAll();
@@ -2277,6 +2283,7 @@ export default function drawingTsMatrixPart2Test() {
         console.info(msg + ` matrix getAll actualValues2 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail();
       }
+      matrix.reset();
       matrix.preSkew(0, 0, 0, 0);
       try {
         let actualValues3 = matrix.getAll();
@@ -2289,6 +2296,7 @@ export default function drawingTsMatrixPart2Test() {
         console.info(msg + ` matrix getAll actualValues3 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail();
       }
+      matrix.reset();
       matrix.preSkew(-1.5, -2, -2.75, -1);
       try {
         let actualValues4 = matrix.getAll();
@@ -2301,6 +2309,7 @@ export default function drawingTsMatrixPart2Test() {
         console.info(msg + ` matrix getAll actualValues4 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail();
       }
+      matrix.reset();
       matrix.preSkew(2.5, -2, 0.5, 2);
       try {
         let actualValues5 = matrix.getAll();
@@ -2313,6 +2322,7 @@ export default function drawingTsMatrixPart2Test() {
         console.info(msg + ` matrix getAll actualValues5 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail();
       }
+      matrix.reset();
       matrix.preSkew(1, -1, 1, 1);
       try {
         let actualValues6 = matrix.getAll();
@@ -2465,7 +2475,7 @@ export default function drawingTsMatrixPart2Test() {
         let radius4 = matrix.mapRadius(-15);
         console.info(msg + ' matrix mapRadius radius4 successed');
         console.info(msg + ' matrix mapRadius radius4: ' + radius4);
-        expect(parseFloat(radius4.toFixed(3))).assertEqual(14.999);
+        expect(radius4).assertEqual(15);
       } catch (e) {
         console.info(msg + ` matrix mapRadius radius4 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail();
