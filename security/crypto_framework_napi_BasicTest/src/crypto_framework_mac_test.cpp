@@ -265,6 +265,8 @@ HWTEST_P(MAC_TEST, SUB_Security_CryptoFramework_NAPI_Mac_Test_0200, TestSize.Lev
     EXPECT_TRUE(msgBlob.len == msgLen);
     EXPECT_EQ(OHTEST_GenSymKey(macInfo.algoKeyName, &key), CRYPTO_SUCCESS);
     EXPECT_EQ(OHTEST_DoMac(&ctx, macInfo, key, &msgBlob, &out1), CRYPTO_SUCCESS);
+    OH_CryptoMac_Destroy(ctx);
+    ctx = nullptr;
     EXPECT_EQ(OHTEST_DoSegmentMac(&ctx, macInfo, key, blockSize, &msgBlob, &out2), CRYPTO_SUCCESS);
     EXPECT_EQ(OH_CryptoMac_GetLength(ctx, &macLength), CRYPTO_SUCCESS);
     EXPECT_TRUE(out1.len == macLength);

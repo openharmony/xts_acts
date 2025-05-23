@@ -163,6 +163,7 @@ static OH_Crypto_ErrCode Rsa_PubkeyEncode(OH_CryptoAsymKeyGenerator *ctx, OH_Cry
     }
     
     ret = OH_CryptoAsymKeyGenerator_Convert(ctx, CRYPTO_PEM, &retBlob, nullptr, dupKeyPair);
+    OH_Crypto_FreeDataBlob(&retBlob);
     if (ret != CRYPTO_SUCCESS) {
         return ret;
     }
@@ -179,6 +180,7 @@ static OH_Crypto_ErrCode Ecc_PubkeyEncode(OH_CryptoAsymKeyGenerator *ctx, OH_Cry
     }
     
     ret = OH_CryptoAsymKeyGenerator_Convert(ctx, CRYPTO_DER, &retBlob, nullptr, dupKeyPair);
+    OH_Crypto_FreeDataBlob(&retBlob);
     if (ret != CRYPTO_SUCCESS) {
         return ret;
     }
@@ -195,6 +197,7 @@ static OH_Crypto_ErrCode PubkeyEncode(OH_CryptoAsymKeyGenerator *ctx, OH_CryptoP
     }
     
     ret = OH_CryptoAsymKeyGenerator_Convert(ctx, CRYPTO_DER, &retBlob, nullptr, dupKeyPair);
+    OH_Crypto_FreeDataBlob(&retBlob);
     if (ret != CRYPTO_SUCCESS) {
         return ret;
     }
@@ -231,7 +234,6 @@ static OH_Crypto_ErrCode GetEncode(const char *name, OH_CryptoPubKey *pubKey, Cr
     OH_Crypto_ErrCode ret = OH_CryptoPubKey_GetParam(pubKey, item, value);
     return ret;
 }
-
 
 INSTANTIATE_TEST_CASE_P(OHCryptoFrameworkAsymKeyNapiTest, ASYMKEY_TEST, ::testing::ValuesIn(g_asymKeyData));
 
@@ -1094,6 +1096,7 @@ HWTEST_P(ASYMKEY_PRIV_TEST, SUB_Security_CryptoFramework_NAPI_AsymKey_Test_1200,
     
     OH_Crypto_FreeDataBlob(&out);
     OH_Crypto_FreeDataBlob(&new_out);
+    OH_Crypto_FreeDataBlob(&outPub);
     OH_CryptoPrivKeyEncodingParams_Destroy(params);
     OH_CryptoKeyPair_Destroy(keyPair);
     OH_CryptoKeyPair_Destroy(new_keyPair);
@@ -1130,6 +1133,8 @@ static OH_CryptoAsymKeySpec *OHTEST_GenEcCommonParamsSpec(OH_CryptoPubKey *pubKe
     OH_Crypto_FreeDataBlob(&g_y);
     OH_Crypto_FreeDataBlob(&a);
     OH_Crypto_FreeDataBlob(&b);
+    OH_Crypto_FreeDataBlob(&n);
+    OH_Crypto_FreeDataBlob(&h);
     OH_Crypto_FreeDataBlob(&fp);
     return specCtx;
 }
@@ -2460,6 +2465,7 @@ HWTEST_P(ASYMKEY_PRIV_TEST, SUB_Security_CryptoFramework_NAPI_AsymKey_Test_4000,
     
     OH_Crypto_FreeDataBlob(&out);
     OH_Crypto_FreeDataBlob(&new_out);
+    OH_Crypto_FreeDataBlob(&outPub);
     OH_CryptoKeyPair_Destroy(keyPair);
     OH_CryptoKeyPair_Destroy(new_keyPair);
 }
