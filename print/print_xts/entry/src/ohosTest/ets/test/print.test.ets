@@ -124,7 +124,7 @@ export default function printTest() {
      */
     it('print_function_0300', Level.LEVEL2, (done: Function) => {
       let file = ['file://data/print/a.png', 'file://data/print/b.png'];
-      let context = this.getUIContext().getHostContext();
+      let context = getContext();
       // Permissions required: ohos.permission.PRINT
       print.print(file, context, (err: BusinessError, printTask: print.PrintTask) => {
         try {
@@ -154,7 +154,7 @@ export default function printTest() {
      */
     it('print_function_0400', Level.LEVEL0, async (done: Function) => {
       let file = ['file://data/print/a.png', 'file://data/print/b.png'];
-      let context = this.getUIContext().getHostContext();
+      let context = getContext();
       // Permissions required: ohos.permission.PRINT
       await print.print(file, context).then((printTask: print.PrintTask) => {
         expect(typeof (printTask)).assertEqual('object');
@@ -163,7 +163,7 @@ export default function printTest() {
         done();
       }).catch((error: BusinessError) => {
         console.log('print_function_0400 failed, err: ' + JSON.stringify(error));
-        expect(error).assertEqual(13100003);
+        expect(false).assertTrue();
         done();
       })
     })
@@ -178,7 +178,7 @@ export default function printTest() {
      */
     it('print_function_0401', Level.LEVEL2, async (done: Function) => {
       let file = ['file://data/print/a.png', 'file://data/print/b.png'];
-      let context = this.getUIContext().getHostContext();
+      let context = getContext();
       // Permissions required: ohos.permission.PRINT
       await print.print(file, context).then((printTask: print.PrintTask) => {
         registerPrintTask(printTask);
@@ -201,7 +201,7 @@ export default function printTest() {
      */
     it('print_function_0402', Level.LEVEL2, async (done: Function) => {
       let file = ['file://data/print/a.png', 'file://data/print/b.png'];
-      let context = this.getUIContext().getHostContext();
+      let context = getContext();
       // Permissions required: ohos.permission.PRINT
       await print.print(file, context).then((printTask: print.PrintTask) => {
         registerPrintTask(printTask);
@@ -301,7 +301,7 @@ export default function printTest() {
       printAttributes.duplexMode = print.PrintDuplexMode.DUPLEX_MODE_NONE;
       printAttributes.duplexMode = print.PrintDuplexMode.DUPLEX_MODE_LONG_EDGE;
       printAttributes.duplexMode = print.PrintDuplexMode.DUPLEX_MODE_SHORT_EDGE;
-      let context = this.getUIContext().getHostContext();
+      let context = getContext();
       // Permissions required: ohos.permission.PRINT
       await print.print(jobName, printAdapter, printAttributes, context).then((printTask: print.PrintTask) => {
         expect(typeof (printTask)).assertEqual('object');
