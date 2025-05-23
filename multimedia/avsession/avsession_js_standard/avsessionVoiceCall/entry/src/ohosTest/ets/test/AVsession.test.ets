@@ -2203,27 +2203,28 @@ export default function abilityTest() {
       try{
          session.getOutputDevice().then((device_Info: avSession.OutputDeviceInfo) => {
             console.info('Get device successfully');
+            let deviceInfo: avSession.DeviceInfo = device_Info.devices[0];
+            console.info(`getOutputDevice successfully ${JSON.stringify(deviceInfo)}`);
+            if (deviceInfo && deviceInfo.castCategory !== undefined && deviceInfo.deviceId !== undefined &&
+                deviceInfo.deviceName !== undefined && deviceInfo.deviceType !== undefined && deviceInfo.ipAddress !== undefined &&
+                deviceInfo.providerId !== undefined && deviceInfo.supportedProtocols !== undefined &&
+                deviceInfo.authenticationStatus !== undefined && deviceInfo.audioCapabilities?.streamInfos !== undefined) {
+                expect(true).assertTrue();
+            } else {
+                console.info('getOutputDevice value error.')
+                expect(false).assertTrue();
+            }
+            done();
           }).catch((err: BusinessError) => {
             console.error(`GetOutputDevice BusinessError: code: ${err.code}, message: ${err.message}`);
             expect(false).assertTrue();
           })
-          console.info('getOutputDevice successfully');
-          let deviceInfo: avSession.DeviceInfo = device_Info.devices[0];
-          console.info(`getOutputDevice successfully ${JSON.stringify(deviceInfo)}`);
-          if (deviceInfo && deviceInfo.castCategory !== undefined && deviceInfo.deviceId !== undefined &&
-              deviceInfo.deviceName !== undefined && deviceInfo.deviceType !== undefined && deviceInfo.ipAddress !== undefined &&
-              deviceInfo.providerId !== undefined && deviceInfo.supportedProtocols !== undefined &&
-              deviceInfo.authenticationStatus !== undefined && deviceInfo.audioCapabilities.streamInfos !== undefined) {
-              expect(true).assertTrue();
-          } else {
-              console.info('getOutputDevice value error.')
-              expect(false).assertTrue();
-          }
-          done();
+
       } catch(err) {
           console.info(`Get device BusinessError: ${err.code}, message: ${err.message}`);
           expect(false).assertTrue();
       }
+      done();
   })
 
 
@@ -2249,7 +2250,7 @@ export default function abilityTest() {
           if (deviceInfo && deviceInfo.castCategory !== undefined && deviceInfo.deviceId !== undefined &&
               deviceInfo.deviceName !== undefined && deviceInfo.deviceType !== undefined && deviceInfo.ipAddress !== undefined &&
               deviceInfo.providerId !== undefined && deviceInfo.supportedProtocols !== undefined &&
-              deviceInfo.authenticationStatus !== undefined && deviceInfo.audioCapabilities.streamInfos !== undefined) {
+              deviceInfo.authenticationStatus !== undefined && deviceInfo.audioCapabilities?.streamInfos !== undefined) {
               expect(true).assertTrue();
           } else {
               console.info('getOutputDevice value error.')
@@ -2261,13 +2262,14 @@ export default function abilityTest() {
           console.info(`Get device BusinessError: ${err.code}, message: ${err.message}`);
           expect(false).assertTrue();
       }
+      done();
   })
 
 
    /* *
     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_CALLBACK_2400
-    * @tc.name      : getOutputDevice - promise - set prmSrc -true
-    * @tc.desc      : Testing call getOutputDevice(promise)  set prmSrc -true
+    * @tc.name      : getOutputDevice - promise - set pcmsrc -true
+    * @tc.desc      : Testing call getOutputDevice(promise)  set pcmsrc -true
     * @tc.size      : MediumTest
     * @tc.type      : Function
     * @tc.level     : Level 2
@@ -2279,7 +2281,7 @@ export default function abilityTest() {
         title: 'music_name',
         subtitle: 'music_sub_name',
         description: 'music_description',
-        prmSrc: true,
+        pcmsrc: true,
         extras: {extras:'any'}
       };
       let queueItem_1: avSession.AVQueueItem = {
@@ -2291,7 +2293,7 @@ export default function abilityTest() {
         title: 'music_name',
         subtitle: 'music_sub_name',
         description: 'music_description',
-        prmSrc: true,
+        pcmsrc: true,
         extras: {extras:'any'}
       };
       let queueItem_2: avSession.AVQueueItem = {
@@ -2306,12 +2308,13 @@ export default function abilityTest() {
         expect(false).assertTrue();
         done();
       });
+      done();
     })
 
    /* *
     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_CALLBACK_2500
-    * @tc.name      : getOutputDevice - promise - set prmSrc -false
-    * @tc.desc      : Testing call getOutputDevice(promise)  set prmSrc -false
+    * @tc.name      : getOutputDevice - promise - set pcmsrc -false
+    * @tc.desc      : Testing call getOutputDevice(promise)  set pcmsrc -false
     * @tc.size      : MediumTest
     * @tc.type      : Function
     * @tc.level     : Level 2
@@ -2323,7 +2326,7 @@ export default function abilityTest() {
         title: 'music_name',
         subtitle: 'music_sub_name',
         description: 'music_description',
-        prmSrc: false,
+        pcmsrc: false,
         extras: {extras:'any'}
       };
       let queueItem_1: avSession.AVQueueItem = {
@@ -2335,7 +2338,7 @@ export default function abilityTest() {
         title: 'music_name',
         subtitle: 'music_sub_name',
         description: 'music_description',
-        prmSrc: false,
+        pcmsrc: false,
         extras: {extras:'any'}
       };
       let queueItem_2: avSession.AVQueueItem = {
@@ -2350,12 +2353,13 @@ export default function abilityTest() {
         expect(false).assertTrue();
         done();
       });
+      done();
     })
 
    /* *
     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_CALLBACK_2600
-    * @tc.name      : getOutputDevice - promise - set prmSrc -undefined
-    * @tc.desc      : Testing call getOutputDevice(promise)  set prmSrc -undefined
+    * @tc.name      : getOutputDevice - promise - set pcmsrc -undefined
+    * @tc.desc      : Testing call getOutputDevice(promise)  set pcmsrc -undefined
     * @tc.size      : MediumTest
     * @tc.type      : Function
     * @tc.level     : Level 4
@@ -2367,7 +2371,7 @@ export default function abilityTest() {
         title: 'music_name',
         subtitle: 'music_sub_name',
         description: 'music_description',
-        prmSrc: false,
+        pcmsrc: false,
         extras: {extras:'any'}
       };
       let queueItem_1: avSession.AVQueueItem = {
@@ -2381,12 +2385,13 @@ export default function abilityTest() {
         expect(err.code).assertEqual(401);
         done();
       });
+      done();
     })
 
    /* *
     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_CALLBACK_2700
-    * @tc.name      : getOutputDevice - callback - set prmSrc -true
-    * @tc.desc      : Testing call getOutputDevice(callback)  set prmSrc -true
+    * @tc.name      : getOutputDevice - callback - set pcmsrc -true
+    * @tc.desc      : Testing call getOutputDevice(callback)  set pcmsrc -true
     * @tc.size      : MediumTest
     * @tc.type      : Function
     * @tc.level     : Level 2
@@ -2398,7 +2403,7 @@ export default function abilityTest() {
         title: 'music_name',
         subtitle: 'music_sub_name',
         description: 'music_description',
-        prmSrc: true,
+        pcmsrc: true,
         extras: {extras:'any'}
       };
       let queueItem_1: avSession.AVQueueItem = {
@@ -2410,7 +2415,7 @@ export default function abilityTest() {
         title: 'music_name',
         subtitle: 'music_sub_name',
         description: 'music_description',
-        prmSrc: true,
+        pcmsrc: true,
         extras: {extras:'any'}
       };
       let queueItem_2: avSession.AVQueueItem = {
@@ -2427,12 +2432,13 @@ export default function abilityTest() {
         }
         done();
       });
+      done();
     })
 
    /* *
     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_CALLBACK_2800
-    * @tc.name      : getOutputDevice - callback - set prmSrc -false
-    * @tc.desc      : Testing call getOutputDevice(callback)  set prmSrc -false
+    * @tc.name      : getOutputDevice - callback - set pcmsrc -false
+    * @tc.desc      : Testing call getOutputDevice(callback)  set pcmsrc -false
     * @tc.size      : MediumTest
     * @tc.type      : Function
     * @tc.level     : Level 2
@@ -2444,7 +2450,7 @@ export default function abilityTest() {
         title: 'music_name',
         subtitle: 'music_sub_name',
         description: 'music_description',
-        prmSrc: false,
+        pcmsrc: false,
         extras: {extras:'any'}
       };
       let queueItem_1: avSession.AVQueueItem = {
@@ -2456,7 +2462,7 @@ export default function abilityTest() {
         title: 'music_name',
         subtitle: 'music_sub_name',
         description: 'music_description',
-        prmSrc: false,
+        pcmsrc: false,
         extras: {extras:'any'}
       };
       let queueItem_2: avSession.AVQueueItem = {
@@ -2473,12 +2479,13 @@ export default function abilityTest() {
         }
         done();
       });
+      done();
     })
 
    /* *
     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_CALLBACK_2900
-    * @tc.name      : getOutputDevice - callback - set prmSrc -undefined
-    * @tc.desc      : Testing call getOutputDevice(callback)  set prmSrc -undefined
+    * @tc.name      : getOutputDevice - callback - set pcmsrc -undefined
+    * @tc.desc      : Testing call getOutputDevice(callback)  set pcmsrc -undefined
     * @tc.size      : MediumTest
     * @tc.type      : Function
     * @tc.level     : Level 4
@@ -2490,7 +2497,7 @@ export default function abilityTest() {
         title: 'music_name',
         subtitle: 'music_sub_name',
         description: 'music_description',
-        prmSrc: false,
+        pcmsrc: false,
         extras: {extras:'any'}
       };
       let queueItem_1: avSession.AVQueueItem = {
@@ -2506,6 +2513,7 @@ export default function abilityTest() {
         }
         done();
       });
+      done();
     })
 
 
