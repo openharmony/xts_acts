@@ -184,13 +184,12 @@ export default function rectUtilsTest() {
       const msg = 'testRectUtilsMakeLtrbMultipleCalls';
       for (let i = 0; i < 20; i += 1) {
         try {
-          let rect = drawing.RectUtils.RectUtils(Math.random() * 10, Math.random() * 20, Math.random() * 100,
+          let rect = drawing.RectUtils.makeLtrb(Math.random() * 10, Math.random() * 20, Math.random() * 100,
             Math.random() * 200);
-          console.info(msg + `RectUtils.RectUtils success step: ` + i);
-          console.info(msg + `RectUtils.RectUtils success rect: ` + JSON.stringify(rect));
+          console.info(msg + `RectUtils.makeLtrb success step: ` + i);
+          console.info(msg + `RectUtils.makeLtrb success rect: ` + JSON.stringify(rect));
         } catch (e) {
-          console.info(msg +
-            `RectUtils.RectUtils error. errorCode is: ${e.code} + errormsg is: ${e.message}} step: ${i}`);
+          console.info(msg +`RectUtils.makeLtrb error. errorCode is: ${e.code} + errormsg is: ${e.message}} step: ${i}`);
           expect().assertFail()
         }
       }
@@ -4292,7 +4291,6 @@ export default function rectUtilsTest() {
     it('testRectUtilsIsEqualNull', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, () => {
       const msg = 'testRectUtilsIsEqualNull';
       let rect2: common2D.Rect = { left: 0, right: 100, top: 0, bottom: 100 };
-      let rect2: common2D.Rect = { left: 0, right: 100, top: 0, bottom: 100 };
       try {
         drawing.RectUtils.isEqual(null, rect2);
         console.info(msg + `RectUtils isEqual 1 successed`);
@@ -4310,7 +4308,7 @@ export default function rectUtilsTest() {
         expect(e.code).assertEqual(401);
       }
       try {
-        drawing.RectUtils.isEqual(rect, null);
+        drawing.RectUtils.isEqual(rect2, null);
         console.info(msg + `RectUtils isEqual 3 successed`);
         expect().assertFail();
       } catch (e) {
@@ -4318,7 +4316,7 @@ export default function rectUtilsTest() {
         expect(e.code).assertEqual(401);
       }
       try {
-        drawing.RectUtils.isEqual(rect, undefined);
+        drawing.RectUtils.isEqual(rect2, undefined);
         console.info(msg + `RectUtils isEqual 4 successed`);
         expect().assertFail();
       } catch (e) {
