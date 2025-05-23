@@ -209,6 +209,20 @@ export default function AVPlayerNdkTest() {
     });
 
     /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_SETAUDIORENDERERINFO_0100
+     * @tc.name       : testOhAvPlayerSetVolumeMode001
+     * @tc.desc       : test OH_AVPlayer_SetVolumeMode
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerSetVolumeMode001', Level.LEVEL0,async (done: Function) => {
+      let result: number = avplayer.AvPlayerSetVolumeMode();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
      * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_SETAUDIOINTERRUPTMODE_0100
      * @tc.name       : testOhAvPlayerSetAudioInterruptMode001
      * @tc.desc       : test OH_AVPlayer_SetAudioInterruptMode
