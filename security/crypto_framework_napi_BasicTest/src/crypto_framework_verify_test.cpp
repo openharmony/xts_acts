@@ -631,6 +631,7 @@ HWTEST_P(VERIFY_PKCS1_TEST, SUB_Security_CryptoFramework_NAPI_Verify_Test_0100, 
     HcfObjDestroy(signObj);
     OH_CryptoVerify_Destroy(verify);
     HcfObjDestroy(randomObj);
+    OH_Crypto_FreeDataBlob(&n);
     OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
     OH_CryptoKeyPair_Destroy(keyPair);
     HcfBlobDataClearAndFree(&msgBlob);
@@ -1658,6 +1659,7 @@ HWTEST_F(OHCryptoFrameworkVerifyNapiTest, SUB_Security_CryptoFramework_NAPI_Veri
     HcfObjDestroy(signObj);
     OH_CryptoVerify_Destroy(verify);
     HcfObjDestroy(randomObj);
+    OH_Crypto_FreeDataBlob(&retBlob);
     OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
     OH_CryptoKeyPair_Destroy(keyPair);
     HcfBlobDataClearAndFree(&msgBlob);
@@ -1702,6 +1704,8 @@ HWTEST_F(OHCryptoFrameworkVerifyNapiTest, SUB_Security_CryptoFramework_NAPI_Veri
     OH_CryptoVerify_Destroy(verify);
     OH_Crypto_FreeDataBlob(&rawSignData);
     HcfObjDestroy(signObj);
+    OH_Crypto_FreeDataBlob(&retBlob);
+    OH_Crypto_FreeDataBlob(&msgBlob);
     HcfObjDestroy(randomObj);
     OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
     OH_CryptoKeyPair_Destroy(keyPair);
@@ -1745,6 +1749,7 @@ HWTEST_F(OHCryptoFrameworkVerifyNapiTest, SUB_Security_CryptoFramework_NAPI_Veri
     HcfObjDestroy(signObj);
     OH_CryptoVerify_Destroy(verify);
     HcfObjDestroy(randomObj);
+    OH_Crypto_FreeDataBlob(&retBlob);
     OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
     OH_CryptoKeyPair_Destroy(keyPair);
     HcfBlobDataClearAndFree(&msgBlob);
@@ -1812,6 +1817,7 @@ HWTEST_F(OHCryptoFrameworkVerifyNapiTest, SUB_Security_CryptoFramework_NAPI_Veri
     HcfObjDestroy(signObj);
     OH_CryptoVerify_Destroy(verify);
     HcfObjDestroy(randomObj);
+    OH_Crypto_FreeDataBlob(&retBlob);
     OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
     OH_CryptoKeyPair_Destroy(keyPair);
     HcfBlobDataClearAndFree(&msgBlob);

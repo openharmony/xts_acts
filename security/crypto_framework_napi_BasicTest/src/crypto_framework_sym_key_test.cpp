@@ -172,6 +172,7 @@ HWTEST_P(SYMKEY_CONVERT_TEST, SUB_Security_CryptoFramework_NAPI_SymKey_Test_0200
 
     OH_CryptoSymKeyGenerator_Destroy(ctx);
     OH_CryptoSymKey_Destroy(convertKeyCtx);
+    OH_Crypto_FreeDataBlob(&in);
     HcfBlobDataClearAndFree((HcfBlob *)&convertOut);
 }
 
