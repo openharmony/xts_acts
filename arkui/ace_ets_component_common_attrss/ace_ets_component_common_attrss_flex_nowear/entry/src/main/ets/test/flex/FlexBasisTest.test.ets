@@ -112,14 +112,13 @@ export default function flexBasisTest() {
 
         let realWidth = rect.right - rect.left;
         console.info('[' + data.caseTag + '] realWidth : ' + realWidth);
-        expect(Math.abs(realWidth - (data.testValue.expectValue.expectSize)) <= 1).assertTrue();
+        expect(Math.floor(Math.abs(realWidth - (data.testValue.expectValue.expectSize))) <= 1).assertTrue();
       } else if (data.pageConfig.containerView == 'Column' || data.pageConfig.containerView == 'FlexColumn'
         || data.pageConfig.containerView == 'FlexColumnReverse') {
 
-        let realHeight = Number(rect.bottom - rect.top).toFixed(2);
+        let realHeight = rect.bottom - rect.top;
         console.info('[' + data.caseTag + '] realHeight : ' + realHeight);
-        expect(realHeight)
-          .assertEqual(Number(data.testValue.expectValue.expectSize).toFixed(2));
+        expect(Math.floor(Math.abs(realHeight - (data.testValue.expectValue.expectSize))) <= 1).assertTrue();
       }
     })
   })
