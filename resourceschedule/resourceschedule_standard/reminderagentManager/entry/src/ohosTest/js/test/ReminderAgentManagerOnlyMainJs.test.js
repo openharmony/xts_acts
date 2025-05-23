@@ -67,15 +67,15 @@ export default function ReminderAgentManagerOnlyMainTest() {
         console.info('start################################start');
 
         /**
-         * @tc.number: reminderRequestAttribute_0031
-         * @tc.name: reminderRequestAttribute_0031
+         * @tc.number: onlyMainReminderRequestAttribute_0100
+         * @tc.name: onlyMainReminderRequestAttribute_0100
          * @tc.desc: test ReminderRequest Attribute titleResourceId
          * @tc.level: Level 3
          * @tc.type: Function
          * @tc.size: MediumTest
          */
-        it("reminderRequestAttribute_0031", Level.LEVEL3, async function (done) {
-            console.info('----------------------reminderRequestAttribute_0031---------------------------');
+        it("onlyMainReminderRequestAttribute_0100", Level.LEVEL3, async function (done) {
+            console.info('----------------------onlyMainReminderRequestAttribute_0100---------------------------');
             const currentYear = new Date().getFullYear();
             const nextYear = currentYear + 1
             let ReminderRequest = {
@@ -99,30 +99,30 @@ export default function ReminderAgentManagerOnlyMainTest() {
             try {
                 reminderAgent.publishReminder(ReminderRequest, (err, reminderId) => {
                     if (err) {
-                        console.info('reminderRequestAttribute_0031 callback err.code is :' + err.code);
+                        console.info('onlyMainReminderRequestAttribute_0100 callback err.code is :' + err.code);
                     } else {
-                        console.info('reminderRequestAttribute_0031 callback reminderId = ' + reminderId);
+                        console.info('onlyMainReminderRequestAttribute_0100 callback reminderId = ' + reminderId);
                         let id = reminderId;
                         expect(reminderId).assertLarger(0);
                         done();
                     }
                 })
             } catch (error) {
-                console.log("reminderRequestAttribute_0031 publishReminder error.code:" + error.code);
+                console.log("onlyMainReminderRequestAttribute_0100 publishReminder error.code:" + error.code);
             }
         })
 
 
         /**
-         * @tc.number: reminderRequestAttribute_0032
-         * @tc.name: reminderRequestAttribute_0032
+         * @tc.number: onlyMainReminderRequestAttribute_0200
+         * @tc.name: onlyMainReminderRequestAttribute_0200
          * @tc.desc: test ReminderRequest Attribute contentResourceId
          * @tc.level: Level 3
          * @tc.type: Function
          * @tc.size: MediumTest
          */
-        it("reminderRequestAttribute_0032", Level.LEVEL3, async function (done) {
-            console.info('----------------------reminderRequestAttribute_0032---------------------------');
+        it("onlyMainReminderRequestAttribute_0200", Level.LEVEL3, async function (done) {
+            console.info('----------------------onlyMainReminderRequestAttribute_0200---------------------------');
             const currentYear = new Date().getFullYear();
             const nextYear = currentYear + 1
             let ReminderRequest = {
@@ -146,28 +146,28 @@ export default function ReminderAgentManagerOnlyMainTest() {
             try {
                 reminderAgent.publishReminder(ReminderRequest, (err, reminderId) => {
                     if (err) {
-                        console.info('reminderRequestAttribute_0032 callback err.code is :' + err.code);
+                        console.info('onlyMainReminderRequestAttribute_0200 callback err.code is :' + err.code);
                     } else {
-                        console.info('reminderRequestAttribute_0032 callback reminderId = ' + reminderId);
+                        console.info('onlyMainReminderRequestAttribute_0200 callback reminderId = ' + reminderId);
                         expect(reminderId).assertLarger(0);
                         done();
                     }
                 })
             } catch (error) {
-                console.log("reminderRequestAttribute_0032 publishReminder error.code:" + error.code);
+                console.log("onlyMainReminderRequestAttribute_0200 publishReminder error.code:" + error.code);
             }
         })
 
         /**
-         * @tc.number: reminderRequestAttribute_0033
-         * @tc.name: reminderRequestAttribute_0033
+         * @tc.number: onlyMainReminderRequestAttribute_0300
+         * @tc.name: onlyMainReminderRequestAttribute_0300
          * @tc.desc: test ReminderRequest Attribute expiredContentResourceId
          * @tc.level: Level 3
          * @tc.type: Function
          * @tc.size: MediumTest
          */
-        it("reminderRequestAttribute_0033", Level.LEVEL3, async function (done) {
-            console.info('----------------------reminderRequestAttribute_0033---------------------------');
+        it("onlyMainReminderRequestAttribute_0300", Level.LEVEL3, async function (done) {
+            console.info('----------------------onlyMainReminderRequestAttribute_0300---------------------------');
             const currentYear = new Date().getFullYear();
             const nextYear = currentYear + 1
             let ReminderRequest = {
@@ -191,28 +191,28 @@ export default function ReminderAgentManagerOnlyMainTest() {
             try {
                 reminderAgent.publishReminder(ReminderRequest, (err, reminderId) => {
                     if (err) {
-                        console.info('reminderRequestAttribute_0033 callback err.code is :' + err.code);
+                        console.info('onlyMainReminderRequestAttribute_0300 callback err.code is :' + err.code);
                     } else {
-                        console.info('reminderRequestAttribute_0033 callback reminderId = ' + reminderId);
+                        console.info('onlyMainReminderRequestAttribute_0300 callback reminderId = ' + reminderId);
                         expect(reminderId).assertLarger(0);
                         done();
                     }
                 })
             } catch (error) {
-                console.log("reminderRequestAttribute_0033 publishReminder error.code:" + error.code);
+                console.log("onlyMainReminderRequestAttribute_0300 publishReminder error.code:" + error.code);
             }
         })
 
         /**
-         * @tc.number: reminderRequestAttribute_0034
-         * @tc.name: reminderRequestAttribute_0034
+         * @tc.number: onlyMainReminderRequestAttribute_0400
+         * @tc.name: onlyMainReminderRequestAttribute_0400
          * @tc.desc: test ReminderRequest Attribute snoozeContentResourceId
          * @tc.level: Level 3
          * @tc.type: Function
          * @tc.size: MediumTest
          */
-        it("reminderRequestAttribute_0034", Level.LEVEL3, async function (done) {
-            console.info('----------------------reminderRequestAttribute_0034---------------------------');
+        it("onlyMainReminderRequestAttribute_0400", Level.LEVEL3, async function (done) {
+            console.info('----------------------onlyMainReminderRequestAttribute_0400---------------------------');
             const currentYear = new Date().getFullYear();
             const nextYear = currentYear + 1
             let ReminderRequest = {
@@ -236,15 +236,15 @@ export default function ReminderAgentManagerOnlyMainTest() {
             try {
                 reminderAgent.publishReminder(ReminderRequest, (err, reminderId) => {
                     if (err) {
-                        console.info('reminderRequestAttribute_0034 callback err.code is :' + err.code);
+                        console.info('onlyMainReminderRequestAttribute_0400 callback err.code is :' + err.code);
                     } else {
-                        console.info('reminderRequestAttribute_0034 callback reminderId = ' + reminderId);
+                        console.info('onlyMainReminderRequestAttribute_0400 callback reminderId = ' + reminderId);
                         expect(reminderId).assertLarger(0);
                         done();
                     }
                 })
             } catch (error) {
-                console.log("reminderRequestAttribute_0034 publishReminder error.code:" + error.code);
+                console.log("onlyMainReminderRequestAttribute_0400 publishReminder error.code:" + error.code);
             }
         })
     })

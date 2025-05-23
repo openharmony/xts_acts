@@ -17,18 +17,50 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import reminderAgent from '@ohos.reminderAgent'
 import notification from '@ohos.notification'
+import notificationManager from '@ohos.notificationManager';
+import { UiDriver, BY } from '@ohos.UiTest';
 
 export default function ReminderAgentTest() {
     describe('ReminderAgentTest', function () {
 
         const TRIGGER_TIME_IN_SECONDS = 100;
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
 
-        beforeAll(function () {
+        beforeAll(async function (done) {
 
             /*
              * @tc.setup: setup invoked before all testcases
              */
             console.info('beforeAll caled')
+            notificationManager.requestEnableNotification((err) => {
+            console.info(`ReminderAgentTest requestEnableNotification ===>====>come in requestEnableNotification`);
+              if (err) {
+                console.info(`ReminderAgentTest SUB_NOTIFICATION_ANS_Publish_TEST ===>requestEnableNotification failed, code is ${err.code}, message is ${err.message}`);
+              } else {
+                console.info("ReminderAgentTest SUB_NOTIFICATION_ANS_Publish_TEST ===>requestEnableNotification success");
+              }
+            });
+        
+            await sleep(1500);
+
+            let driver = await UiDriver.create();
+            console.info(`ReminderAgentTest SUB_NOTIFICATION_ANS_Publish_TEST ===>====>come in driveFn`);
+            await sleep(1000);
+            console.info(`ReminderAgentTest SUB_NOTIFICATION_ANS_Publish_TEST ===>====>driver is ${JSON.stringify(driver)}`);
+            let button = await driver.findComponent(BY.text('允许'));
+            console.info(`ReminderAgentTest SUB_NOTIFICATION_ANS_Publish_TEST ===>====>button is ${JSON.stringify(button)}`);
+            if(button != null){
+                console.info(`ReminderAgentTest SUB_NOTIFICATION_ANS_Publish_TEST ===>====>button is if`);
+                await sleep(1500);
+                await button.click();
+                await sleep(1000);
+            }else{
+                console.info(`ReminderAgentTest SUB_NOTIFICATION_ANS_Publish_TEST ===>====>button is null button`);
+            } 
+            await sleep(1000);
+            done(); 
         })
 
         afterAll(function () {
