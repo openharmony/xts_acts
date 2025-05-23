@@ -2443,6 +2443,79 @@ export default function windowImmersiveTest() {
       }
     });
     
+     /**
+     * @tc.number    : SUB_BASIC_WMS_LANSCAPE_SHOW_STATUS_BAR_0100
+     * @tc.name      : test_LANSCAPE_SHOW_STATUS_BAR_0100
+     * @tc.desc      : test_LANSCAPE_SHOW_STATUS_BAR_0100
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('test_LANSCAPE_SHOW_STATUS_BAR_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let caseName = 'test_LANSCAPE_SHOW_STATUS_BAR_0100';
+      try {
+        let windowClass = windowStage.getMainWindowSync();
+        await windowClass.setPreferredOrientation(window.Orientation.LANDSCAPE);
+        await sleep(1000);
+        console.info(`${caseName} Succeeded in setPreferredOrientation LANDSCAPE.`);
+        windowClass.on('avoidAreaChange', (data) => {
+          console.error(`${caseName} Succeeded in enabling the listener for avoid area changes. type:
+           ${JSON.stringify(data.type)} area: ${JSON.stringify(data.area)}`);
+          windowClass.off('avoidAreaChange');
+          done();
+        });
+        windowClass.setSpecificSystemBarEnabled('status', true).then(async () => {
+          console.log(`${caseName} Succeeded in setting the status bar to be visible.`);
+          done();
+        }).catch((error: BusinessError) => {
+          console.log(`${caseName} Failed to set the status bar to be visible. Cause: ${JSON.stringify(error)}`);
+          expect().assertFail();
+          done();
+        });
+        await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT);
+      } catch (exception) {
+        console.error(`${caseName} Failed to set setSpecificSystemBarEnabled. Cause code: ${exception.code}, message: ${exception.message}`);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_LANSCAPE_HIDE_STATUS_BAR_0100
+     * @tc.name      : test_LANSCAPE_HIDE_STATUS_BAR_0100
+     * @tc.desc      : test_LANSCAPE_HIDE_STATUS_BAR_0100
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('test_LANSCAPE_HIDE_STATUS_BAR_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let caseName = 'test_LANSCAPE_HIDE_STATUS_BAR_0100';
+      try {
+        let windowClass = windowStage.getMainWindowSync();
+        await windowClass.setPreferredOrientation(window.Orientation.LANDSCAPE);
+        await sleep(1000);
+        console.info(`${caseName} Succeeded in setPreferredOrientation LANDSCAPE.`);
+        windowClass.on('avoidAreaChange', (data) => {
+          console.error(`${caseName} Succeeded in enabling the listener for avoid area changes. type: ${JSON.stringify(data.type)} area: ${JSON.stringify(data.area)}`);
+          windowClass.off('avoidAreaChange');
+          done();
+        });
+        windowClass.setSpecificSystemBarEnabled('status', false).then(async () => {
+          console.log(`${caseName} Succeeded in setting the status bar to be invisible.`);
+          done();
+        }).catch((error: BusinessError) => {
+          console.log(`${caseName} Failed to set the status bar to be invisible. Cause: ${JSON.stringify(error)}`);
+          expect().assertFail();
+          done();
+        });
+        await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT);
+      } catch (exception) {
+        console.error(`${caseName} Failed to set setSpecificSystemBarEnabled. Cause code: ${exception.code}, message: ${exception.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
+
   })
 }
 
