@@ -15,7 +15,7 @@
 
 import image from '@ohos.multimedia.image'
 import rpc from '@ohos.rpc'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from '@ohos/hypium'
 import { testPng, testJpg } from './testImg.test'
 import { tcBuf020, tcBuf020_1, tcBuf021, tcBuf021_1, tcBuf022 } from './testImg.test'
 import { BusinessError } from '@ohos.base'
@@ -7376,5 +7376,45 @@ export default function imageJsTest() {
                 }
             }
         });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GET_DECODE_SUPPORTEDFORMATS_0100
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_GET_DECODE_SUPPORTEDFORMATS_0100
+         * @tc.desc      : 1.test Image getDecodeSupportedFormats
+         * @tc.size      : MediumTest
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_GET_DECODE_SUPPORTEDFORMATS_0100', Level.LEVEL0, async (done: Function) => {
+            let logger = "SUB_MULTIMEDIA_IMAGE_GET_DECODE_SUPPORTEDFORMATS_0100";
+            const srcSupportedFormatsList: Array<string> = await image.getImageSourceSupportedFormats();
+            const dstSupportedFormatsList: Array<string> = image.createImageSource(testContext.filesDir + '/' + "test.jpg").supportedFormats;
+            console.log(`${logger}, srcSupportedFormatsList: ` + JSON.stringify(srcSupportedFormatsList));
+            console.log(`${logger}, dstSupportedFormatsList: ` + JSON.stringify(dstSupportedFormatsList));
+            const ret = (JSON.stringify(srcSupportedFormatsList) == JSON.stringify(dstSupportedFormatsList));
+            console.log("compare result is: " + ret);
+            expect(ret).assertTrue();
+            done();
+        })
+    
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GET_ENCODE_SUPPORTEDFORMATS_0100
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_GET_ENCODE_SUPPORTEDFORMATS_0100
+         * @tc.desc      : 1.test image getEncodeSupportedFormats
+         * @tc.size      : MediumTest
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_GET_ENCODE_SUPPORTEDFORMATS_0100', Level.LEVEL0, async (done: Function) => {
+            let logger = "SUB_MULTIMEDIA_IMAGE_GET_ENCODE_SUPPORTEDFORMATS_0100";
+            const srcSupportedFormatsList: Array<string> = await image.getImagePackerSupportedFormats();
+            const dstSupportedFormatsList: Array<string> = image.createImagePacker().supportedFormats;
+            console.log(`${logger}, srcSupportedFormatsList: ` + JSON.stringify(srcSupportedFormatsList));
+            console.log(`${logger}, dstSupportedFormatsList: ` + JSON.stringify(dstSupportedFormatsList));
+            const ret = (JSON.stringify(srcSupportedFormatsList) == JSON.stringify(dstSupportedFormatsList));
+            console.log("compare result is: " + ret);
+            expect(ret).assertTrue();
+            done();
+        })
     })
 }
