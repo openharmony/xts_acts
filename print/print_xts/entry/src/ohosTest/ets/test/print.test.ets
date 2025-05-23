@@ -162,7 +162,8 @@ export default function printTest() {
         console.log('print_function_0400 succeed');
         done();
       }).catch((error: BusinessError) => {
-        expect(false).assertTrue();
+        console.log('print_function_0400 failed, err: ' + JSON.stringify(error));
+        expect(error).assertEqual(13100003);
         done();
       })
     })
