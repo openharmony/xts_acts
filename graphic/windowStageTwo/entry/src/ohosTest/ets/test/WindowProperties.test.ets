@@ -4441,6 +4441,1264 @@ export default function windowPropertiesTest() {
       }
     })
 
+    /**
+       * @tc.number    : SUB_BASIC_WMS_GETWINDOWPROPERTIES_WINDOWRECT_0100
+       * @tc.name      : test_GETWINDOWPROPERTIES_WINDOWRECT_0100
+       * @tc.desc      : 无标题栏子窗可绘制区域等于窗口区域
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level0
+       */
+      it('test_GETWINDOWPROPERTIES_WINDOWRECT_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async(done: Function) => {
+        let msgStr = ' test_GETWINDOWPROPERTIES_WINDOWRECT_0100 ';
+        console.info(msgStr + ' begin ');
+        let windowClass: window.Window = windowStage.getMainWindowSync()
+        let subWindowClass: window.Window | undefined;
+        try {
+          let options: ohosWindow.SubWindowOptions = {
+            title: 'title',
+            decorEnabled: false
+          };
+          let promise = windowStage.createSubWindowWithOptions('test_GETWINDOWPROPERTIES_WINDOWRECT_0100', options);
+          promise.then(async (data) => {
+            subWindowClass = data;
+            console.info(msgStr + 'Succeeded in creating the subwindow. Data: ' + JSON.stringify(subWindowClass));
+            let windowLimits = await windowClass.getWindowLimits();
+            console.info(msgStr + ' Succeeded in get the window limits. Cause: ' + JSON.stringify(windowLimits));
+            await subWindowClass.resetSize(windowLimits.minWidth as number, windowLimits.minHeight as number);
+            await sleep(200);
+            await subWindowClass.moveWindowTo(100, 100);
+            await sleep(200);
+            let windowProperties = subWindowClass.getWindowProperties()
+            console.info(`${msgStr} windowProperties: ${JSON.stringify(windowProperties)}`);
+            let windowRect = windowProperties.windowRect;
+            console.info(`${msgStr} windowRect: ${JSON.stringify(windowRect)}`);
+            expect(Math.abs(windowRect.width-(windowLimits.minWidth as number))).assertLessOrEqual(1);
+            expect(Math.abs(windowRect.height-(windowLimits.maxHeight as number))).assertLessOrEqual(1);
+            expect(Math.abs(windowRect.left-100)).assertLessOrEqual(1);
+            expect(Math.abs(windowRect.top-100)).assertLessOrEqual(1);
+            let drawableRect  = windowProperties.drawableRect;
+            console.info(`${msgStr} drawableRect: ${JSON.stringify(drawableRect)}`);
+            expect(Math.abs(drawableRect.left - windowRect.left)).assertLessOrEqual(1);
+            expect(Math.abs(drawableRect.top - windowRect.top)).assertLessOrEqual(1);
+            expect(Math.abs(drawableRect.width - windowRect.width)).assertLessOrEqual(1);
+            expect(Math.abs(drawableRect.height - windowRect.height)).assertLessOrEqual(1);
+            await subWindowClass.destroyWindow();
+            done();
+          }).catch(async (error: BusinessError) => {
+            console.error(msgStr + 'Failed to create the subwindow. Cause: ' + JSON.stringify(error));
+            if (subWindowClass !== undefined) {
+              await subWindowClass.destroyWindow();
+            }
+            if (error.code == 1300002) {
+              expect(true).assertTrue();
+              done();
+            } else {
+              expect().assertFail();
+              done();
+            }
+          });
+        } catch (error) {
+          console.error('Failed2 to create the subwindow. Cause: ' + JSON.stringify(error));
+          if (subWindowClass !== undefined) {
+            await subWindowClass.destroyWindow();
+          }
+          if (error.code == 1300002) {
+            expect().assertTrue();
+            done();
+          } else {
+            expect().assertFail();
+            done();
+          }
+        }
+      })
+
+      /**
+       * @tc.number    : SUB_BASIC_WMS_GETWINDOWPROPERTIES_WINDOWRECT_0200
+       * @tc.name      : test_GETWINDOWPROPERTIES_WINDOWRECT_0200
+       * @tc.desc      : 有装饰栏子窗可绘制区域等于窗口区域减去装饰栏区域
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level0
+       */
+      it('test_GETWINDOWPROPERTIES_WINDOWRECT_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async(done: Function) => {
+        let msgStr = ' test_GETWINDOWPROPERTIES_WINDOWRECT_0200 ';
+        console.info(msgStr + ' begin ');
+        let windowClass: window.Window = windowStage.getMainWindowSync()
+        let subWindowClass: window.Window | undefined;
+        try {
+          let options: ohosWindow.SubWindowOptions = {
+            title: 'title',
+            decorEnabled: true
+          };
+          let promise = windowStage.createSubWindowWithOptions('test_GETWINDOWPROPERTIES_WINDOWRECT_0200', options);
+          promise.then(async (data) => {
+            subWindowClass = data;
+            console.info(msgStr + 'Succeeded in creating the subwindow. Data: ' + JSON.stringify(subWindowClass));
+            let windowLimits = await windowClass.getWindowLimits();
+            console.info(msgStr + ' Succeeded in get the window limits. Cause: ' + JSON.stringify(windowLimits));
+            await subWindowClass.resetSize(windowLimits.minWidth as number, windowLimits.minHeight as number);
+            await sleep(200);
+            await subWindowClass.moveWindowTo(100, 100);
+            await sleep(200);
+            let decorHeight = subWindowClass.getWindowDecorHeight();
+            let windowProperties = subWindowClass.getWindowProperties()
+            console.info(`${msgStr} windowProperties: ${JSON.stringify(windowProperties)}`);
+            let windowRect = windowProperties.windowRect;
+            console.info(`${msgStr} windowRect: ${JSON.stringify(windowRect)}`);
+            let drawableRect  = windowProperties.drawableRect;
+            console.info(`${msgStr} drawableRect: ${JSON.stringify(drawableRect)}`);
+            // expect(drawableRect.height).assertEqual(windowRect.height - decorHeight);
+            expect(Math.abs(drawableRect.height - (windowRect.height - decorHeight))).assertLessOrEqual(1);
+            expect(Math.abs(drawableRect.width - windowRect.width)).assertLessOrEqual(1);
+            expect(Math.abs(drawableRect.height - windowRect.height)).assertLessOrEqual(1);
+            expect(Math.abs(drawableRect.top - (windowRect.top + decorHeight))).assertLessOrEqual(1);
+            await subWindowClass.destroyWindow();
+            done();
+          }).catch(async (error: BusinessError) => {
+            console.error(msgStr + 'Failed to create the subwindow. Cause: ' + JSON.stringify(error));
+            if (subWindowClass !== undefined) {
+              await subWindowClass.destroyWindow();
+            }
+            if (error.code == 1300002) {
+              expect(true).assertTrue();
+              done();
+            } else {
+              expect().assertFail();
+              done();
+            }
+          });
+        } catch (error) {
+          console.error('Failed2 to create the subwindow. Cause: ' + JSON.stringify(error));
+          if (subWindowClass !== undefined) {
+            await subWindowClass.destroyWindow();
+          }
+          if (error.code == 1300002) {
+            expect().assertTrue();
+            done();
+          } else {
+            expect().assertFail();
+            done();
+          }
+        }
+      })
+
+
+      /**
+       * @tc.number    : SUB_BASIC_WMS_GETWINDOWPROPERTIES_WINDOWTYPE_0100
+       * @tc.name      : test_GETWINDOWPROPERTIES_WINDOWTYPE_0100
+       * @tc.desc      : 查询悬浮窗窗口类型
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level0
+       */
+      it('test_GETWINDOWPROPERTIES_WINDOWTYPE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async(done: Function) => {
+        let msgStr = ' test_GETWINDOWPROPERTIES_WINDOWTYPE_0100 ';
+        console.info(msgStr + ' begin ');
+        let subWindowClass: window.Window | undefined;
+        let config: window.Configuration = {
+          name: "floatWindow",
+          windowType: window.WindowType.TYPE_FLOAT,
+          ctx: context
+        };
+        try {
+          subWindowClass = await window.createWindow(config);
+          let windowProperties = subWindowClass.getWindowProperties()
+          console.info(`${msgStr} windowProperties: ${JSON.stringify(windowProperties)}`);
+          expect(windowProperties.type).assertEqual(window.WindowType.TYPE_FLOAT);
+          await subWindowClass.destroyWindow();
+          done();
+        } catch (error) {
+          console.error('Failed to create the subwindow. Cause: ' + JSON.stringify(error));
+          if (subWindowClass !== undefined) {
+            await subWindowClass.destroyWindow();
+          }
+          expect().assertFail();
+          done();
+        }
+      })
+
+      /**
+       * @tc.number    : SUB_BASIC_WMS_GETWINDOWPROPERTIES_WINDOWTYPE_0200
+       * @tc.name      : test_GETWINDOWPROPERTIES_WINDOWTYPE_0200
+       * @tc.desc      : 查询模态窗窗口类型
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level0
+       */
+      it('test_GETWINDOWPROPERTIES_WINDOWTYPE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async(done: Function) => {
+        let msgStr = ' test_GETWINDOWPROPERTIES_WINDOWTYPE_0200 ';
+        console.info(msgStr + ' begin ');
+        let subWindowClass: window.Window | undefined;
+        let config: window.Configuration = {
+          name: "modalWindow",
+          windowType: window.WindowType.TYPE_DIALOG,
+          ctx: context
+        };
+        try {
+          subWindowClass = await window.createWindow(config);
+          let windowProperties = subWindowClass.getWindowProperties()
+          console.info(`${msgStr} windowProperties: ${JSON.stringify(windowProperties)}`);
+          expect(windowProperties.type).assertEqual(window.WindowType.TYPE_DIALOG);
+          await subWindowClass.destroyWindow();
+          done();
+        } catch (error) {
+          console.error('Failed to create the subwindow. Cause: ' + JSON.stringify(error));
+          if (subWindowClass !== undefined) {
+            await subWindowClass.destroyWindow();
+          }
+          expect().assertFail();
+          done();
+        }
+      })
+
+      // /**
+      //  * @tc.number    : SUB_BASIC_WMS_GETWINDOWPROPERTIES_WINDOWTYPE_0300
+      //  * @tc.name      : test_GETWINDOWPROPERTIES_WINDOWTYPE_0300
+      //  * @tc.desc      : 查询子窗窗口类型
+      //  * @tc.size      : MediumTest
+      //  * @tc.type      : Function
+      //  * @tc.level     : Level1
+      //  */
+      // it('test_GETWINDOWPROPERTIES_WINDOWTYPE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async(done: Function) => {
+      //   let msgStr = ' test_GETWINDOWPROPERTIES_WINDOWTYPE_0300 ';
+      //   console.info(msgStr + ' begin ');
+      //   let subWindowClass: window.Window | undefined;
+      //
+      //   try {
+      //     let options: ohosWindow.SubWindowOptions = {
+      //       title: 'title',
+      //       decorEnabled: true
+      //     };
+      //     let promise = windowStage.createSubWindowWithOptions('test_GETWINDOWPROPERTIES_WINDOWTYPE_0300', options);
+      //     promise.then(async (data) => {
+      //       subWindowClass = data;
+      //       let windowProperties = subWindowClass.getWindowProperties()
+      //       console.info(`${msgStr} windowProperties: ${JSON.stringify(windowProperties)}`);
+      //       expect(windowProperties.type).assertEqual(window.WindowType.TYPE_APP);
+      //       await subWindowClass.destroyWindow();
+      //       done();
+      //     }).catch(async (error: BusinessError) => {
+      //       console.error(msgStr + 'Failed to create the subwindow. Cause: ' + JSON.stringify(error));
+      //       if (subWindowClass !== undefined) {
+      //         await subWindowClass.destroyWindow();
+      //       }
+      //       if (error.code == 1300002) {
+      //         expect(true).assertTrue();
+      //         done();
+      //       } else {
+      //         expect().assertFail();
+      //         done();
+      //       }
+      //     });
+      //   } catch (error) {
+      //     console.error('Failed2 to create the subwindow. Cause: ' + JSON.stringify(error));
+      //     if (subWindowClass !== undefined) {
+      //       await subWindowClass.destroyWindow();
+      //     }
+      //     if (error.code == 1300002) {
+      //       expect(true).assertTrue();
+      //       done();
+      //     } else {
+      //       expect().assertFail();
+      //       done();
+      //     }
+      //   }
+      // })
+
+      /**
+       * @tc.number    : SUB_BASIC_WMS_GETWINDOWPROPERTIES_FULLSCREEN_0100
+       * @tc.name      : test_GETWINDOWPROPERTIES_FULLSCREEN_0100
+       * @tc.desc      : 最大化主窗查询isFullScreen和isLayoutFullScreen属性
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level1
+       */
+      it('test_GETWINDOWPROPERTIES_FULLSCREEN_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async(done: Function) => {
+        let msgStr = ' test_GETWINDOWPROPERTIES_FULLSCREEN_0100 ';
+        console.info(msgStr + ' begin ');
+        try {
+          let windowClass = windowStage.getMainWindowSync();
+          let promise = windowClass.maximize(window.MaximizePresentation.ENTER_IMMERSIVE);
+          promise.then(async () => {
+            console.info('Succeeded in maximizing the window.');
+            let windowProperties = windowClass.getWindowProperties()
+            console.info(`${msgStr} windowProperties: ${JSON.stringify(windowProperties)}`);
+            expect(windowProperties.isFullScreen).assertEqual(true);
+            expect(windowProperties.isLayoutFullScreen).assertEqual(false);
+            await windowClass.recover();
+            await sleep(200);
+            done();
+          }).catch((err: BusinessError) => {
+            console.error(`${msgStr} Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
+            if (err.code == 801) {
+              done();
+            } else {
+              expect().assertFail();
+              done();
+            }
+          });
+        } catch (error) {
+          console.error('Failed. Cause: ' + JSON.stringify(error));
+          expect().assertFail();
+          done();
+        }
+      })
+
+      /**
+       * @tc.number    : SUB_BASIC_WMS_GETWINDOWPROPERTIES_FULLSCREEN_0100
+       * @tc.name      : test_GETWINDOWPROPERTIES_FULLSCREEN_0100
+       * @tc.desc      : 最大化主窗查询isFullScreen和isLayoutFullScreen属性
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level1
+       */
+      it('test_GETWINDOWPROPERTIES_FULLSCREEN_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async(done: Function) => {
+        let msgStr = ' test_GETWINDOWPROPERTIES_FULLSCREEN_0100 ';
+        console.info(msgStr + ' begin ');
+        try {
+          let windowClass = windowStage.getMainWindowSync();
+          let promise = windowClass.maximize(window.MaximizePresentation.FOLLOW_APP_IMMERSIVE_SETTING);
+          promise.then(async () => {
+            console.info('Succeeded in maximizing the window.');
+            let windowProperties = windowClass.getWindowProperties()
+            console.info(`${msgStr} windowProperties: ${JSON.stringify(windowProperties)}`);
+            expect(windowProperties.isFullScreen).assertEqual(true);
+            expect(windowProperties.isLayoutFullScreen).assertEqual(false);
+            await windowClass.recover();
+            await sleep(200);
+            done();
+          }).catch((err: BusinessError) => {
+            console.error(`${msgStr} Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
+            if (err.code == 801) {
+              done();
+            } else {
+              expect().assertFail();
+              done();
+            }
+          });
+        } catch (error) {
+          console.error('Failed. Cause: ' + JSON.stringify(error));
+          expect().assertFail();
+          done();
+        }
+      })
+
+      /**
+       * @tc.number    : SUB_BASIC_WMS_GETWINDOWPROPERTIES_FULLSCREEN_0200
+       * @tc.name      : test_GETWINDOWPROPERTIES_FULLSCREEN_0200
+       * @tc.desc      : 最大化非沉浸式主窗查询isFullScreen和isLayoutFullScreen属性
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level0
+       */
+      it('test_GETWINDOWPROPERTIES_FULLSCREEN_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async(done: Function) => {
+        let msgStr = ' test_GETWINDOWPROPERTIES_FULLSCREEN_0200 ';
+        console.info(msgStr + ' begin ');
+        try {
+          let windowClass = windowStage.getMainWindowSync();
+          let promise = windowClass.maximize(window.MaximizePresentation.EXIT_IMMERSIVE);
+          promise.then(async () => {
+            console.info('Succeeded in maximizing the window.');
+            let windowProperties = windowClass.getWindowProperties()
+            console.info(`${msgStr} windowProperties: ${JSON.stringify(windowProperties)}`);
+            expect(windowProperties.isFullScreen).assertEqual(true);
+            expect(windowProperties.isLayoutFullScreen).assertEqual(false);
+            await windowClass.recover();
+            await sleep(200);
+            done();
+          }).catch((err: BusinessError) => {
+            console.error(`${msgStr} Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
+            if (err.code == 801) {
+              done();
+            } else {
+              expect().assertFail();
+              done();
+            }
+          });
+        } catch (error) {
+          console.error('Failed. Cause: ' + JSON.stringify(error));
+          expect().assertFail();
+          done();
+        }
+      })
+
+      /**
+       * @tc.number    : SUB_BASIC_WMS_GETWINDOWPROPERTIES_FULLSCREEN_0300
+       * @tc.name      : test_GETWINDOWPROPERTIES_FULLSCREEN_0300
+       * @tc.desc      : 最大化且沉浸式主窗查询isFullScreen和isLayoutFullScreen属性
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level0
+       */
+      it('test_GETWINDOWPROPERTIES_FULLSCREEN_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async(done: Function) => {
+        let msgStr = ' test_GETWINDOWPROPERTIES_FULLSCREEN_0300 ';
+        console.info(msgStr + ' begin ');
+        try {
+          let windowClass = windowStage.getMainWindowSync();
+          let promise = windowClass.maximize(window.MaximizePresentation.ENTER_IMMERSIVE);
+          promise.then(async () => {
+            console.info('Succeeded in maximizing the window.');
+            let windowProperties = windowClass.getWindowProperties()
+            console.info(`${msgStr} windowProperties: ${JSON.stringify(windowProperties)}`);
+            expect(windowProperties.isFullScreen).assertEqual(true);
+            expect(windowProperties.isLayoutFullScreen).assertEqual(true);
+            await windowClass.recover();
+            await sleep(200);
+            done();
+          }).catch((err: BusinessError) => {
+            console.error(`${msgStr} Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
+            if (err.code == 801) {
+              done();
+            } else {
+              expect().assertFail();
+              done();
+            }
+          });
+        } catch (error) {
+          console.error('Failed. Cause: ' + JSON.stringify(error));
+          expect().assertFail();
+          done();
+        }
+      })
+
+      /**
+       * @tc.number    : SUB_BASIC_WMS_GETWINDOWPROPERTIES_FULLSCREEN_0400
+       * @tc.name      : test_GETWINDOWPROPERTIES_FULLSCREEN_0400
+       * @tc.desc      : 最大化且沉浸式不可hover回显标题栏和dock栏主窗查询isFullScreen和isLayoutFullScreen属性
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level1
+       */
+      it('test_GETWINDOWPROPERTIES_FULLSCREEN_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async(done: Function) => {
+        let msgStr = ' test_GETWINDOWPROPERTIES_FULLSCREEN_0400 ';
+        console.info(msgStr + ' begin ');
+        try {
+          let windowClass = windowStage.getMainWindowSync();
+          let promise = windowClass.maximize(window.MaximizePresentation.ENTER_IMMERSIVE_DISABLE_TITLE_AND_DOCK_HOVER);
+          promise.then(async () => {
+            console.info('Succeeded in maximizing the window.');
+            let windowProperties = windowClass.getWindowProperties()
+            console.info(`${msgStr} windowProperties: ${JSON.stringify(windowProperties)}`);
+            expect(windowProperties.isFullScreen).assertEqual(true);
+            expect(windowProperties.isLayoutFullScreen).assertEqual(true);
+            await windowClass.recover();
+            await sleep(200);
+            done();
+          }).catch((err: BusinessError) => {
+            console.error(`${msgStr} Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
+            if (err.code == 801) {
+              done();
+            } else {
+              expect().assertFail();
+              done();
+            }
+          });
+        } catch (error) {
+          console.error('Failed. Cause: ' + JSON.stringify(error));
+          expect().assertFail();
+          done();
+        }
+      })
+
+      /**
+       * @tc.number    : SUB_BASIC_WMS_GETWINDOWPROPERTIES_FULLSCREEN_0500
+       * @tc.name      : test_GETWINDOWPROPERTIES_FULLSCREEN_0500
+       * @tc.desc      : 开启/关闭沉浸式布局后，主窗查询isLayoutFullScreen属性
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level0
+       */
+      it('test_GETWINDOWPROPERTIES_FULLSCREEN_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async(done: Function) => {
+        let msgStr = ' test_GETWINDOWPROPERTIES_FULLSCREEN_0500 ';
+        console.info(msgStr + ' begin ');
+        try {
+          let windowClass = windowStage.getMainWindowSync();
+          windowClass.setImmersiveModeEnabledState(true);
+          let windowProperties = windowClass.getWindowProperties()
+          console.info(`${msgStr} windowProperties: ${JSON.stringify(windowProperties)}`);
+          expect(windowProperties.isLayoutFullScreen).assertEqual(true);
+          windowClass.setImmersiveModeEnabledState(false);
+          let windowProperties2 = windowClass.getWindowProperties()
+          console.info(`${msgStr} windowProperties2: ${JSON.stringify(windowProperties2)}`);
+          expect(windowProperties2.isLayoutFullScreen).assertEqual(false);
+          done();
+        } catch (error) {
+          console.error('Failed. Cause: ' + JSON.stringify(error));
+          expect().assertFail();
+          done();
+        }
+      })
+
+      /**
+       * @tc.number    : SUB_BASIC_WMS_GETWINDOWPROPERTIES_FOCUSABLE_0100
+       * @tc.name      : test_GETWINDOWPROPERTIES_FOCUSABLE_0100
+       * @tc.desc      : 开启/关闭窗口获焦能力后，主窗查询focusable属性
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level0
+       */
+      it('test_GETWINDOWPROPERTIES_FOCUSABLE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async(done: Function) => {
+        let msgStr = ' test_GETWINDOWPROPERTIES_FOCUSABLE_0100 ';
+        console.info(msgStr + ' begin ');
+        try {
+          let windowClass = windowStage.getMainWindowSync();
+          let promise = windowClass.setWindowFocusable(false);
+          promise.then(async () => {
+            console.info('Succeeded in setWindowFocusable.');
+            let windowProperties = windowClass.getWindowProperties()
+            console.info(`${msgStr} windowProperties: ${JSON.stringify(windowProperties)}`);
+            expect(windowProperties.focusable).assertEqual(false);
+            let promise2 = windowClass.setWindowFocusable(true);
+            promise2.then(async () => {
+              console.info('Succeeded in setWindowFocusable.');
+              let windowProperties2 = windowClass.getWindowProperties()
+              console.info(`${msgStr} windowProperties2: ${JSON.stringify(windowProperties2)}`);
+              expect(windowProperties2.focusable).assertEqual(true);
+              done();
+            }).catch((err: BusinessError) => {
+              console.error(`${msgStr} Failed2 to setWindowFocusable. Cause code: ${err.code}, message: ${err.message}`);
+              if (err.code == 801) {
+                done();
+              } else {
+                expect().assertFail();
+                done();
+              }
+            });
+          }).catch((err: BusinessError) => {
+            console.error(`${msgStr} Failed1 to setWindowFocusable. Cause code: ${err.code}, message: ${err.message}`);
+            if (err.code == 801) {
+              done();
+            } else {
+              expect().assertFail();
+              done();
+            }
+          });
+        } catch (error) {
+          console.error('Failed. Cause: ' + JSON.stringify(error));
+          expect().assertFail();
+          done();
+        }
+      })
+
+      /**
+       * @tc.number    : SUB_BASIC_WMS_GETWINDOWPROPERTIES_FOCUSABLE_0200
+       * @tc.name      : test_GETWINDOWPROPERTIES_FOCUSABLE_0200
+       * @tc.desc      : 开启/关闭窗口获焦能力后，子窗查询focusable属性
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level1
+       */
+      it('test_GETWINDOWPROPERTIES_FOCUSABLE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async(done: Function) => {
+        let msgStr = ' test_GETWINDOWPROPERTIES_FOCUSABLE_0200 ';
+        console.info(msgStr + ' begin ');
+        const windowClass = await windowStage.createSubWindow('test_GETWINDOWPROPERTIES_FOCUSABLE_0200');
+        try {
+          let promise = windowClass.setWindowFocusable(false);
+          promise.then(async () => {
+            console.info('Succeeded in setWindowFocusable.');
+            let windowProperties = windowClass.getWindowProperties()
+            console.info(`${msgStr} windowProperties: ${JSON.stringify(windowProperties)}`);
+            expect(windowProperties.focusable).assertEqual(false);
+            let promise2 = windowClass.setWindowFocusable(true);
+            promise2.then(async () => {
+              console.info('Succeeded in setWindowFocusable.');
+              let windowProperties2 = windowClass.getWindowProperties()
+              console.info(`${msgStr} windowProperties2: ${JSON.stringify(windowProperties2)}`);
+              expect(windowProperties2.focusable).assertEqual(true);
+              await windowClass.destroyWindow();
+              done();
+            }).catch(async (err: BusinessError) => {
+              console.error(`${msgStr} Failed2 to setWindowFocusable. Cause code: ${err.code}, message: ${err.message}`);
+              await windowClass.destroyWindow();
+              if (err.code == 801) {
+                done();
+              } else {
+                expect().assertFail();
+                done();
+              }
+            });
+          }).catch(async (err: BusinessError) => {
+            console.error(`${msgStr} Failed1 to setWindowFocusable. Cause code: ${err.code}, message: ${err.message}`);
+            await windowClass.destroyWindow();
+            if (err.code == 801) {
+              done();
+            } else {
+              expect().assertFail();
+              done();
+            }
+          });
+        } catch (error) {
+          console.error('Failed. Cause: ' + JSON.stringify(error));
+          await windowClass.destroyWindow();
+          expect().assertFail();
+          done();
+        }
+      })
+
+      /**
+       * @tc.number    : SUB_BASIC_WMS_GETWINDOWPROPERTIES_FOCUSABLE_0300
+       * @tc.name      : test_GETWINDOWPROPERTIES_FOCUSABLE_0300
+       * @tc.desc      : 开启/关闭窗口获焦能力后，dialog窗查询focusable属性
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level1
+       */
+      it('test_GETWINDOWPROPERTIES_FOCUSABLE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async(done: Function) => {
+        let msgStr = ' test_GETWINDOWPROPERTIES_FOCUSABLE_0300 ';
+        console.info(msgStr + ' begin ');
+        let config: window.Configuration = {
+          name: "modalWindow",
+          windowType: window.WindowType.TYPE_DIALOG,
+          ctx: context
+        };
+        let windowClass = await window.createWindow(config);
+        try {
+          let promise = windowClass.setWindowFocusable(false);
+          promise.then(async () => {
+            console.info('Succeeded in setWindowFocusable.');
+            let windowProperties = windowClass!.getWindowProperties()
+            console.info(`${msgStr} windowProperties: ${JSON.stringify(windowProperties)}`);
+            expect(windowProperties.focusable).assertEqual(false);
+            let promise2 = windowClass!.setWindowFocusable(true);
+            promise2.then(async () => {
+              console.info('Succeeded in setWindowFocusable.');
+              let windowProperties2 = windowClass!.getWindowProperties()
+              console.info(`${msgStr} windowProperties2: ${JSON.stringify(windowProperties2)}`);
+              expect(windowProperties2.focusable).assertEqual(true);
+              await windowClass.destroyWindow();
+              done();
+            }).catch(async (err: BusinessError) => {
+              console.error(`${msgStr} Failed2 to setWindowFocusable. Cause code: ${err.code}, message: ${err.message}`);
+              await windowClass.destroyWindow();
+              if (err.code == 801) {
+                done();
+              } else {
+                expect().assertFail();
+                done();
+              }
+            });
+          }).catch(async (err: BusinessError) => {
+            console.error(`${msgStr} Failed1 to setWindowFocusable. Cause code: ${err.code}, message: ${err.message}`);
+            await windowClass.destroyWindow();
+            if (err.code == 801) {
+              done();
+            } else {
+              expect().assertFail();
+              done();
+            }
+          });
+        } catch (error) {
+          console.error('Failed. Cause: ' + JSON.stringify(error));
+          await windowClass.destroyWindow();
+          expect().assertFail();
+          done();
+        }
+      })
+
+      /**
+       * @tc.number    : SUB_BASIC_WMS_GETWINDOWPROPERTIES_TOUCHABLE_0100
+       * @tc.name      : test_GETWINDOWPROPERTIES_TOUCHABLE_0100
+       * @tc.desc      : 设置主窗可触/不可触后，主窗查询touchable属性
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level0
+       */
+      it('test_GETWINDOWPROPERTIES_TOUCHABLE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async(done: Function) => {
+        let msgStr = ' test_GETWINDOWPROPERTIES_TOUCHABLE_0100 ';
+        console.info(msgStr + ' begin ');
+        try {
+          let windowClass = windowStage.getMainWindowSync();
+          let promise = windowClass.setWindowTouchable(false);
+          promise.then(async () => {
+            console.info('Succeeded in setWindowTouchable.');
+            let windowProperties = windowClass.getWindowProperties()
+            console.info(`${msgStr} windowProperties: ${JSON.stringify(windowProperties)}`);
+            expect(windowProperties.touchable).assertEqual(false);
+            let promise2 = windowClass.setWindowTouchable(true);
+            promise2.then(async () => {
+              console.info('Succeeded2 in setWindowTouchable.');
+              let windowProperties2 = windowClass.getWindowProperties()
+              console.info(`${msgStr} windowProperties2: ${JSON.stringify(windowProperties2)}`);
+              expect(windowProperties2.touchable).assertEqual(true);
+              done();
+            }).catch((err: BusinessError) => {
+              console.error(`${msgStr} Failed2 to setWindowTouchable. Cause code: ${err.code}, message: ${err.message}`);
+              if (err.code == 801) {
+                done();
+              } else {
+                expect().assertFail();
+                done();
+              }
+            });
+          }).catch((err: BusinessError) => {
+            console.error(`${msgStr} Failed1 to setWindowTouchable. Cause code: ${err.code}, message: ${err.message}`);
+            if (err.code == 801) {
+              done();
+            } else {
+              expect().assertFail();
+              done();
+            }
+          });
+        } catch (error) {
+          console.error('Failed. Cause: ' + JSON.stringify(error));
+          expect().assertFail();
+          done();
+        }
+      })
+
+      /**
+       * @tc.number    : SUB_BASIC_WMS_GETWINDOWPROPERTIES_TOUCHABLE_0200
+       * @tc.name      : test_GETWINDOWPROPERTIES_TOUCHABLE_0200
+       * @tc.desc      : 设置子窗可触/不可触后，子窗查询touchable属性
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level1
+       */
+      it('test_GETWINDOWPROPERTIES_TOUCHABLE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async(done: Function) => {
+        let msgStr = ' test_GETWINDOWPROPERTIES_TOUCHABLE_0200 ';
+        console.info(msgStr + ' begin ');
+        const windowClass = await windowStage.createSubWindow('test_GETWINDOWPROPERTIES_TOUCHABLE_0200');
+        try {
+          let promise = windowClass.setWindowTouchable(false);
+          promise.then(async () => {
+            console.info('Succeeded in setWindowTouchable.');
+            let windowProperties = windowClass.getWindowProperties()
+            console.info(`${msgStr} windowProperties: ${JSON.stringify(windowProperties)}`);
+            expect(windowProperties.touchable).assertEqual(false);
+            let promise2 = windowClass.setWindowTouchable(true);
+            promise2.then(async () => {
+              console.info('Succeeded2 in setWindowTouchable.');
+              let windowProperties2 = windowClass.getWindowProperties()
+              console.info(`${msgStr} windowProperties2: ${JSON.stringify(windowProperties2)}`);
+              expect(windowProperties2.touchable).assertEqual(true);
+              await windowClass.destroyWindow();
+              done();
+            }).catch(async (err: BusinessError) => {
+              console.error(`${msgStr} Failed2 to setWindowTouchable. Cause code: ${err.code}, message: ${err.message}`);
+              await windowClass.destroyWindow();
+              if (err.code == 801) {
+                done();
+              } else {
+                expect().assertFail();
+                done();
+              }
+            });
+          }).catch(async (err: BusinessError) => {
+            console.error(`${msgStr} Failed1 to setWindowTouchable. Cause code: ${err.code}, message: ${err.message}`);
+            await windowClass.destroyWindow();
+            if (err.code == 801) {
+              done();
+            } else {
+              expect().assertFail();
+              done();
+            }
+          });
+        } catch (error) {
+          console.error('Failed. Cause: ' + JSON.stringify(error));
+          await windowClass.destroyWindow();
+          expect().assertFail();
+          done();
+        }
+      })
+
+      /**
+       * @tc.number    : SUB_BASIC_WMS_GETWINDOWPROPERTIES_TOUCHABLE_0300
+       * @tc.name      : test_GETWINDOWPROPERTIES_TOUCHABLE_0300
+       * @tc.desc      : 设置dialog窗可触/不可触后，dialog窗查询touchable属性
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level1
+       */
+      it('test_GETWINDOWPROPERTIES_TOUCHABLE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async(done: Function) => {
+        let msgStr = ' test_GETWINDOWPROPERTIES_TOUCHABLE_0300 ';
+        console.info(msgStr + ' begin ');
+        let config: window.Configuration = {
+          name: "modalWindow",
+          windowType: window.WindowType.TYPE_DIALOG,
+          ctx: context
+        };
+        let windowClass = await window.createWindow(config);
+        try {
+          let promise = windowClass.setWindowTouchable(false);
+          promise.then(async () => {
+            console.info('Succeeded in setWindowTouchable.');
+            let windowProperties = windowClass!.getWindowProperties()
+            console.info(`${msgStr} windowProperties: ${JSON.stringify(windowProperties)}`);
+            expect(windowProperties.touchable).assertEqual(false);
+            let promise2 = windowClass!.setWindowTouchable(true);
+            promise2.then(async () => {
+              console.info('Succeeded2 in setWindowTouchable.');
+              let windowProperties2 = windowClass!.getWindowProperties()
+              console.info(`${msgStr} windowProperties2: ${JSON.stringify(windowProperties2)}`);
+              expect(windowProperties2.touchable).assertEqual(true);
+              await windowClass.destroyWindow();
+              done();
+            }).catch(async (err: BusinessError) => {
+              console.error(`${msgStr} Failed2 to setWindowTouchable. Cause code: ${err.code}, message: ${err.message}`);
+              await windowClass.destroyWindow();
+              if (err.code == 801) {
+                done();
+              } else {
+                expect().assertFail();
+                done();
+              }
+            });
+          }).catch(async (err: BusinessError) => {
+            console.error(`${msgStr} Failed1 to setWindowTouchable. Cause code: ${err.code}, message: ${err.message}`);
+            await windowClass.destroyWindow();
+            if (err.code == 801) {
+              done();
+            } else {
+              expect().assertFail();
+              done();
+            }
+          });
+        } catch (error) {
+          console.error('Failed. Cause: ' + JSON.stringify(error));
+          await windowClass.destroyWindow();
+          expect().assertFail();
+          done();
+        }
+      })
+
+
+      /**
+       * @tc.number    : SUB_BASIC_WMS_GETWINDOWPROPERTIES_BRIGHTNESS_0100
+       * @tc.name      : test_GETWINDOWPROPERTIES_BRIGHTNESS_0100
+       * @tc.desc      : 主窗设置亮度后，主子窗dialog窗查询brightness属性
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level0
+       */
+      it('test_GETWINDOWPROPERTIES_BRIGHTNESS_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async(done: Function) => {
+        let msgStr = ' test_GETWINDOWPROPERTIES_BRIGHTNESS_0100 ';
+        console.info(msgStr + ' begin ');
+        let subWindowClass1: window.Window | undefined;
+        let subWindowClass2: window.Window | undefined;
+        try {
+          let mainWindow = windowStage.getMainWindowSync();
+          let mainWindowProperties = mainWindow.getWindowProperties();
+          console.info(`${msgStr} mainWindowProperties: ${JSON.stringify(mainWindowProperties)}`);
+          let brightness1 = mainWindowProperties.brightness;
+          console.info(`${msgStr} brightness1: ${JSON.stringify(brightness1)}`);
+          expect(brightness1).assertEqual(0.5);
+          subWindowClass1 = await windowStage.createSubWindow('test_GETWINDOWPROPERTIES_BRIGHTNESS_0100');
+          let config: window.Configuration = {
+            name: "dialogWindow",
+            windowType: window.WindowType.TYPE_DIALOG,
+            ctx: context
+          };
+          subWindowClass2 = await window.createWindow(config);
+          let subWindowProperties = subWindowClass1.getWindowProperties();
+          console.info(`${msgStr} subWindowProperties: ${JSON.stringify(subWindowProperties)}`);
+          let brightness2 = subWindowProperties.brightness;
+          console.info(`${msgStr} brightness2: ${JSON.stringify(brightness2)}`);
+          expect(brightness2).assertEqual(0.5);
+          let dialogWindowProperties = subWindowClass2.getWindowProperties();
+          console.info(`${msgStr} dialogWindowProperties: ${JSON.stringify(dialogWindowProperties)}`);
+          let brightness3 = dialogWindowProperties.brightness;
+          console.info(`${msgStr} brightness3: ${JSON.stringify(brightness3)}`);
+          expect(brightness3).assertEqual(0.5);
+
+          await mainWindow.setWindowBrightness(-1.0);
+          let mainWindowProperties2 = mainWindow.getWindowProperties();
+          console.info(`${msgStr} mainWindowProperties2: ${JSON.stringify(mainWindowProperties2)}`);
+          let brightness4 = mainWindowProperties2.brightness;
+          console.info(`${msgStr} brightness4: ${JSON.stringify(brightness4)}`);
+          expect(brightness4).assertLarger(0);
+          expect(brightness4).assertLess(1);
+          let subWindowProperties2 = subWindowClass1.getWindowProperties();
+          console.info(`${msgStr} subWindowProperties2: ${JSON.stringify(subWindowProperties2)}`);
+          let brightness5 = subWindowProperties2.brightness;
+          console.info(`${msgStr} brightness5: ${JSON.stringify(brightness5)}`);
+          expect(brightness5).assertLarger(0);
+          expect(brightness5).assertLess(1);
+          let dialogWindowProperties2 = subWindowClass2.getWindowProperties();
+          console.info(`${msgStr} dialogWindowProperties2: ${JSON.stringify(dialogWindowProperties2)}`);
+          let brightness6 = dialogWindowProperties2.brightness;
+          console.info(`${msgStr} brightness6: ${JSON.stringify(brightness6)}`);
+          expect(brightness6).assertLarger(0);
+          expect(brightness6).assertLess(1);
+          expect(brightness4).assertEqual(brightness5);
+          expect(brightness4).assertEqual(brightness6);
+          await subWindowClass1.destroyWindow()
+          await subWindowClass2.destroyWindow()
+          done();
+        } catch (error) {
+          console.error('Failed. Cause: ' + JSON.stringify(error));
+          if (subWindowClass1 !== undefined) {
+            await subWindowClass1.destroyWindow()
+          }
+          if (subWindowClass2 !== undefined) {
+            await subWindowClass2.destroyWindow()
+          }
+          expect().assertFail();
+          done();
+        }
+      })
+
+      /**
+       * @tc.number    : SUB_BASIC_WMS_GETWINDOWPROPERTIES_BRIGHTNESS_0200
+       * @tc.name      : test_GETWINDOWPROPERTIES_BRIGHTNESS_0200
+       * @tc.desc      : 未设置过亮度的主窗，主窗查询brightness属性
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level0
+       */
+      it('test_GETWINDOWPROPERTIES_BRIGHTNESS_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async(done: Function) => {
+        let msgStr = 'test_GETWINDOWPROPERTIES_BRIGHTNESS_0200';
+        console.info(msgStr + ' begin ');
+        let windowStageStart = await startAbility3(msgStr, context);
+        try {
+          let windowClass = windowStageStart.getMainWindowSync();
+          let mainWindowProperties = windowClass.getWindowProperties();
+          console.info(`${msgStr} mainWindowProperties: ${JSON.stringify(mainWindowProperties)}`);
+          let brightness = mainWindowProperties.brightness;
+          console.info(`${msgStr} brightness: ${JSON.stringify(brightness)}`);
+          expect(brightness).assertEqual(-1);
+          await terminateAbility3(msgStr);
+          done();
+        } catch (error) {
+          console.error('Failed. Cause: ' + JSON.stringify(error));
+          await terminateAbility3(msgStr);
+          expect().assertFail();
+          done();
+        }
+      })
+
+      /**
+       * @tc.number    : SUB_BASIC_WMS_GETWINDOWPROPERTIES_KEEPSCREENON_0100
+       * @tc.name      : test_GETWINDOWPROPERTIES_KEEPSCREENON_0100
+       * @tc.desc      : 主窗设置常亮/非常亮后，主窗查询isKeepScreenOn属性
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level0
+       */
+      it('test_GETWINDOWPROPERTIES_KEEPSCREENON_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async(done: Function) => {
+        let msgStr = ' test_GETWINDOWPROPERTIES_KEEPSCREENON_0100 ';
+        console.info(msgStr + ' begin ');
+        try {
+          let windowClass = windowStage.getMainWindowSync();
+          let promise = windowClass.setWindowKeepScreenOn(true);
+          promise.then(async () => {
+            console.info('Succeeded in setWindowKeepScreenOn.');
+            let windowProperties = windowClass.getWindowProperties()
+            console.info(`${msgStr} windowProperties: ${JSON.stringify(windowProperties)}`);
+            expect(windowProperties.isKeepScreenOn).assertEqual(true);
+            let promise2 = windowClass.setWindowKeepScreenOn(false);
+            promise2.then(async () => {
+              console.info('Succeeded2 in setWindowKeepScreenOn.');
+              let windowProperties2 = windowClass.getWindowProperties()
+              console.info(`${msgStr} windowProperties2: ${JSON.stringify(windowProperties2)}`);
+              expect(windowProperties2.isKeepScreenOn).assertEqual(false);
+              done();
+            }).catch((err: BusinessError) => {
+              console.error(`${msgStr} Failed2 to setWindowKeepScreenOn. Cause code: ${err.code}, message: ${err.message}`);
+              if (err.code == 801) {
+                done();
+              } else {
+                expect().assertFail();
+                done();
+              }
+            });
+          }).catch((err: BusinessError) => {
+            console.error(`${msgStr} Failed1 to setWindowKeepScreenOn. Cause code: ${err.code}, message: ${err.message}`);
+            if (err.code == 801) {
+              done();
+            } else {
+              expect().assertFail();
+              done();
+            }
+          });
+        } catch (error) {
+          console.error('Failed. Cause: ' + JSON.stringify(error));
+          expect().assertFail();
+          done();
+        }
+      })
+
+      /**
+       * @tc.number    : SUB_BASIC_WMS_GETWINDOWPROPERTIES_KEEPSCREENON_0200
+       * @tc.name      : test_GETWINDOWPROPERTIES_KEEPSCREENON_0200
+       * @tc.desc      : 子窗设置常亮/非常亮后，主窗查询isKeepScreenOn属性
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level1
+       */
+      it('test_GETWINDOWPROPERTIES_KEEPSCREENON_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async(done: Function) => {
+        let msgStr = ' test_GETWINDOWPROPERTIES_KEEPSCREENON_0200 ';
+        console.info(msgStr + ' begin ');
+        const windowClass = await windowStage.createSubWindow('test_GETWINDOWPROPERTIES_KEEPSCREENON_0200');
+        try {
+          let promise = windowClass.setWindowKeepScreenOn(true);
+          promise.then(async () => {
+            console.info('Succeeded in setWindowKeepScreenOn.');
+            let windowProperties = windowClass.getWindowProperties()
+            console.info(`${msgStr} setWindowKeepScreenOn: ${JSON.stringify(windowProperties)}`);
+            expect(windowProperties.isKeepScreenOn).assertEqual(true);
+            let promise2 = windowClass.setWindowKeepScreenOn(false);
+            promise2.then(async () => {
+              console.info('Succeeded2 in setWindowKeepScreenOn.');
+              let windowProperties2 = windowClass.getWindowProperties()
+              console.info(`${msgStr} windowProperties2: ${JSON.stringify(windowProperties2)}`);
+              expect(windowProperties2.isKeepScreenOn).assertEqual(false);
+              await windowClass.destroyWindow();
+              done();
+            }).catch(async (err: BusinessError) => {
+              console.error(`${msgStr} Failed2 to setWindowKeepScreenOn. Cause code: ${err.code}, message: ${err.message}`);
+              await windowClass.destroyWindow();
+              if (err.code == 801) {
+                done();
+              } else {
+                expect().assertFail();
+                done();
+              }
+            });
+          }).catch(async (err: BusinessError) => {
+            console.error(`${msgStr} Failed1 to setWindowKeepScreenOn. Cause code: ${err.code}, message: ${err.message}`);
+            await windowClass.destroyWindow();
+            if (err.code == 801) {
+              done();
+            } else {
+              expect().assertFail();
+              done();
+            }
+          });
+        } catch (error) {
+          console.error('Failed. Cause: ' + JSON.stringify(error));
+          await windowClass.destroyWindow();
+          expect().assertFail();
+          done();
+        }
+      })
+
+      /**
+       * @tc.number    : SUB_BASIC_WMS_GETWINDOWPROPERTIES_KEEPSCREENON_0300
+       * @tc.name      : test_GETWINDOWPROPERTIES_KEEPSCREENON_0300
+       * @tc.desc      : dialog窗设置常亮/非常亮后，主窗查询isKeepScreenOn属性
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level1
+       */
+      it('test_GETWINDOWPROPERTIES_KEEPSCREENON_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async(done: Function) => {
+        let msgStr = ' test_GETWINDOWPROPERTIES_KEEPSCREENON_0300 ';
+        console.info(msgStr + ' begin ');
+        let config: window.Configuration = {
+          name: "modalWindow",
+          windowType: window.WindowType.TYPE_DIALOG,
+          ctx: context
+        };
+        let windowClass = await window.createWindow(config);
+        try {
+          let promise = windowClass.setWindowKeepScreenOn(true);
+          promise.then(async () => {
+            console.info('Succeeded in setWindowKeepScreenOn.');
+            let windowProperties = windowClass!.getWindowProperties()
+            console.info(`${msgStr} windowProperties: ${JSON.stringify(windowProperties)}`);
+            expect(windowProperties.isKeepScreenOn).assertEqual(true);
+            let promise2 = windowClass!.setWindowKeepScreenOn(false);
+            promise2.then(async () => {
+              console.info('Succeeded2 in setWindowKeepScreenOn.');
+              let windowProperties2 = windowClass!.getWindowProperties()
+              console.info(`${msgStr} windowProperties2: ${JSON.stringify(windowProperties2)}`);
+              expect(windowProperties2.isKeepScreenOn).assertEqual(false);
+              await windowClass.destroyWindow();
+              done();
+            }).catch(async (err: BusinessError) => {
+              console.error(`${msgStr} Failed2 to setWindowKeepScreenOn. Cause code: ${err.code}, message: ${err.message}`);
+              await windowClass.destroyWindow();
+              if (err.code == 801) {
+                done();
+              } else {
+                expect().assertFail();
+                done();
+              }
+            });
+          }).catch(async (err: BusinessError) => {
+            console.error(`${msgStr} Failed1 to setWindowKeepScreenOn. Cause code: ${err.code}, message: ${err.message}`);
+            await windowClass.destroyWindow();
+            if (err.code == 801) {
+              done();
+            } else {
+              expect().assertFail();
+              done();
+            }
+          });
+        } catch (error) {
+          console.error('Failed. Cause: ' + JSON.stringify(error));
+          await windowClass.destroyWindow();
+          expect().assertFail();
+          done();
+        }
+      })
+
+      /**
+       * @tc.number    : SUB_BASIC_WMS_GETWINDOWPROPERTIES_PRIVACYMODE_0100
+       * @tc.name      : test_GETWINDOWPROPERTIES_PRIVACYMODE_0100
+       * @tc.desc      : 主窗设置隐私模式/非隐私模式，主窗查询isPrivacyMode属性
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level0
+       */
+      it('test_GETWINDOWPROPERTIES_PRIVACYMODE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async(done: Function) => {
+        let msgStr = ' test_GETWINDOWPROPERTIES_PRIVACYMODE_0100 ';
+        console.info(msgStr + ' begin ');
+        try {
+          let windowClass = windowStage.getMainWindowSync();
+          let promise = windowClass.setPrivacyMode(true);
+          promise.then(async () => {
+            console.info('Succeeded in setPrivacyMode.');
+            let windowProperties = windowClass.getWindowProperties()
+            console.info(`${msgStr} windowProperties: ${JSON.stringify(windowProperties)}`);
+            expect(windowProperties.isPrivacyMode).assertEqual(true);
+            let promise2 = windowClass.setPrivacyMode(false);
+            promise2.then(async () => {
+              console.info('Succeeded2 in setPrivacyMode.');
+              let windowProperties2 = windowClass.getWindowProperties()
+              console.info(`${msgStr} windowProperties2: ${JSON.stringify(windowProperties2)}`);
+              expect(windowProperties2.isPrivacyMode).assertEqual(false);
+              done();
+            }).catch((err: BusinessError) => {
+              console.error(`${msgStr} Failed2 to setPrivacyMode. Cause code: ${err.code}, message: ${err.message}`);
+              if (err.code == 801) {
+                done();
+              } else {
+                expect().assertFail();
+                done();
+              }
+            });
+          }).catch((err: BusinessError) => {
+            console.error(`${msgStr} Failed1 to setPrivacyMode. Cause code: ${err.code}, message: ${err.message}`);
+            if (err.code == 801) {
+              done();
+            } else {
+              expect().assertFail();
+              done();
+            }
+          });
+        } catch (error) {
+          console.error('Failed. Cause: ' + JSON.stringify(error));
+          expect().assertFail();
+          done();
+        }
+      })
+
+      /**
+       * @tc.number    : SUB_BASIC_WMS_GETWINDOWPROPERTIES_PRIVACYMODE_0200
+       * @tc.name      : test_GETWINDOWPROPERTIES_PRIVACYMODE_0200
+       * @tc.desc      : 子窗设置隐私模式/非隐私模式，主窗查询isPrivacyMode属性
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level1
+       */
+      it('test_GETWINDOWPROPERTIES_PRIVACYMODE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async(done: Function) => {
+        let msgStr = ' test_GETWINDOWPROPERTIES_PRIVACYMODE_0200 ';
+        console.info(msgStr + ' begin ');
+        const windowClass = await windowStage.createSubWindow('test_GETWINDOWPROPERTIES_PRIVACYMODE_0200');
+        try {
+          let promise = windowClass.setPrivacyMode(true);
+          promise.then(async () => {
+            console.info('Succeeded in setPrivacyMode.');
+            let windowProperties = windowClass.getWindowProperties()
+            console.info(`${msgStr} windowProperties: ${JSON.stringify(windowProperties)}`);
+            expect(windowProperties.isPrivacyMode).assertEqual(true);
+            let promise2 = windowClass.setPrivacyMode(false);
+            promise2.then(async () => {
+              console.info('Succeeded2 in setPrivacyMode.');
+              let windowProperties2 = windowClass.getWindowProperties()
+              console.info(`${msgStr} windowProperties2: ${JSON.stringify(windowProperties2)}`);
+              expect(windowProperties2.isPrivacyMode).assertEqual(false);
+              await windowClass.destroyWindow();
+              done();
+            }).catch(async (err: BusinessError) => {
+              console.error(`${msgStr} Failed2 to setPrivacyMode. Cause code: ${err.code}, message: ${err.message}`);
+              await windowClass.destroyWindow();
+              if (err.code == 801) {
+                done();
+              } else {
+                expect().assertFail();
+                done();
+              }
+            });
+          }).catch(async (err: BusinessError) => {
+            console.error(`${msgStr} Failed1 to setPrivacyMode. Cause code: ${err.code}, message: ${err.message}`);
+            await windowClass.destroyWindow();
+            if (err.code == 801) {
+              done();
+            } else {
+              expect().assertFail();
+              done();
+            }
+          });
+        } catch (error) {
+          console.error('Failed. Cause: ' + JSON.stringify(error));
+          await windowClass.destroyWindow();
+          expect().assertFail();
+          done();
+        }
+      })
+
+      /**
+       * @tc.number    : SUB_BASIC_WMS_GETWINDOWPROPERTIES_PRIVACYMODE_0300
+       * @tc.name      : test_GETWINDOWPROPERTIES_PRIVACYMODE_0300
+       * @tc.desc      : dialog窗设置隐私模式/非隐私模式，主窗查询isPrivacyMode属性
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level1
+       */
+      it('test_GETWINDOWPROPERTIES_PRIVACYMODE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async(done: Function) => {
+        let msgStr = ' test_GETWINDOWPROPERTIES_PRIVACYMODE_0300 ';
+        console.info(msgStr + ' begin ');
+        let config: window.Configuration = {
+          name: "modalWindow",
+          windowType: window.WindowType.TYPE_DIALOG,
+          ctx: context
+        };
+        let windowClass = await window.createWindow(config);
+        try {
+          let promise = windowClass.setPrivacyMode(true);
+          promise.then(async () => {
+            console.info('Succeeded in setPrivacyMode.');
+            let windowProperties = windowClass!.getWindowProperties()
+            console.info(`${msgStr} windowProperties: ${JSON.stringify(windowProperties)}`);
+            expect(windowProperties.isPrivacyMode).assertEqual(true);
+            let promise2 = windowClass!.setPrivacyMode(false);
+            promise2.then(async () => {
+              console.info('Succeeded2 in setPrivacyMode.');
+              let windowProperties2 = windowClass!.getWindowProperties()
+              console.info(`${msgStr} windowProperties2: ${JSON.stringify(windowProperties2)}`);
+              expect(windowProperties2.isPrivacyMode).assertEqual(false);
+              await windowClass.destroyWindow();
+              done();
+            }).catch(async (err: BusinessError) => {
+              console.error(`${msgStr} Failed2 to setPrivacyMode. Cause code: ${err.code}, message: ${err.message}`);
+              await windowClass.destroyWindow();
+              if (err.code == 801) {
+                done();
+              } else {
+                expect().assertFail();
+                done();
+              }
+            });
+          }).catch(async (err: BusinessError) => {
+            console.error(`${msgStr} Failed1 to setPrivacyMode. Cause code: ${err.code}, message: ${err.message}`);
+            await windowClass.destroyWindow();
+            if (err.code == 801) {
+              done();
+            } else {
+              expect().assertFail();
+              done();
+            }
+          });
+        } catch (error) {
+          console.error('Failed. Cause: ' + JSON.stringify(error));
+          await windowClass.destroyWindow();
+          expect().assertFail();
+          done();
+        }
+      }) 
+     
     })
 }
 
