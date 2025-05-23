@@ -143,7 +143,7 @@ struct ScrollToIndexForGrid01 {
                 .fontSize(16)
                 .backgroundColor(0xF9CF93)
                 .width('90%')
-                .height(80)
+                .height('20%')
                 .textAlign(TextAlign.Center)
             }.id('gridIndex01_'+ day)
           })
