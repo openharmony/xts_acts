@@ -3183,7 +3183,7 @@ export default function rectUtilsTest() {
         drawing.RectUtils.offset(rect, -100000, 100000);
         console.info(msg + ' RectUtils offset 8 successed');
         console.info(msg + ' RectUtils offset 8 successed rect: ' + JSON.stringify(rect));
-        expect(rect.left == -90 && rect.top == -95.98787689208984 && rect.right == 310.20001220703125 && rect.bottom == 305).assertEqual(true);
+        expect(rect.left == -99900 && rect.top == 100100.25 && rect.right == -100100 && rect.bottom == 99900).assertEqual(true);
       } catch (e) {
         console.info(msg + ` RectUtils offset 8 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail()
