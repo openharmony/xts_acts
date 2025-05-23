@@ -42,11 +42,11 @@ typedef struct {
 } AsymSignSpec;
 
 #define SKIP_NOHASH_TEST(value)                         \
-    if (memcmp(value, "NoHash", strlen("NoHash")) == 0) \
+    if (strlen(value) == strlen("NoHash") && memcmp(value, "NoHash", strlen("NoHash")) == 0) \
         return
 
 #define SKIP_ED25519_TEST(value)                         \
-if (memcmp(value, "Ed25519", strlen("Ed25519")) == 0)    \
+if (strlen(value) == strlen("Ed25519") && memcmp(value, "Ed25519", strlen("Ed25519")) == 0)    \
     return
 
 static uint8_t g_rsa_512_priKey[] = {
