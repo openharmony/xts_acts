@@ -2144,7 +2144,7 @@ function testTurnOffWifiList() {
       restrictions.setDisallowedPolicy(SELFWANT, LABEL_WIFI, false);
       await adminManager.disableAdmin(SELFHAPNAME);
     }
-    turnOnWifi(SELFWANT, true);
+    wifiManager.turnOnWifi(SELFWANT, true);
     done();
   });
 
