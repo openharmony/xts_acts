@@ -2483,7 +2483,7 @@ export default function drawingTsMatrixPart2Test() {
         let radius5 = matrix.mapRadius(-25.5114);
         console.info(msg + ' matrix mapRadius radius5 successed');
         console.info(msg + ' matrix mapRadius radius5: ' + radius5);
-        let num2 = parseFloat(radius2.toFixed(3)).toString().slice(0, -1)
+        let num2 = parseFloat(radius5.toFixed(3)).toString().slice(0, -1)
         expect(num2).assertEqual(25.511);
       } catch (e) {
         console.info(msg + ` matrix mapRadius radius5 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
@@ -2505,7 +2505,7 @@ export default function drawingTsMatrixPart2Test() {
         let radius7 = matrix.mapRadius(20.364);
         console.info(msg + ' matrix mapRadius radius7 successed');
         console.info(msg + ' matrix mapRadius radius7: ' + radius7);
-        let num3 = parseFloat(radius2.toFixed(3)).toString().slice(0, -1)
+        let num3 = parseFloat(radius7.toFixed(3)).toString().slice(0, -1)
         expect(num3).assertEqual(32.198);
       } catch (e) {
         console.info(msg + ` matrix mapRadius radius7 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
@@ -2525,7 +2525,7 @@ export default function drawingTsMatrixPart2Test() {
         let radius9 = matrix.mapRadius(-15);
         console.info(msg + ' matrix mapRadius radius9 successed');
         console.info(msg + ' matrix mapRadius radius9: ' + radius9);
-        let num4 = parseFloat(radius2.toFixed(3)).toString().slice(0, -1);
+        let num4 = parseFloat(radius9.toFixed(3)).toString().slice(0, -1);
         expect(num4).assertEqual(45.774);
       } catch (e) {
         console.info(msg + ` matrix mapRadius radius9 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
@@ -2536,7 +2536,7 @@ export default function drawingTsMatrixPart2Test() {
         let radius10 = matrix.mapRadius(-25.5114);
         console.info(msg + ' matrix mapRadius radius10 successed');
         console.info(msg + ' matrix mapRadius radius10: ' + radius10);
-        let num5 = parseFloat(radius2.toFixed(3)).toString().slice(0, -1)
+        let num5 = parseFloat(radius10.toFixed(3)).toString().slice(0, -1)
         expect(num5).assertEqual(41.485);
       } catch (e) {
         console.info(msg + ` matrix mapRadius radius10 errorCode is:  ${e.code} + errormsg is: ${e.message}`);

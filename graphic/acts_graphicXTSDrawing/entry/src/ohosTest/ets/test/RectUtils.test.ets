@@ -3301,7 +3301,7 @@ export default function rectUtilsTest() {
       }
       rect = drawing.RectUtils.makeLtrb(10, 20, 20, 20);
       try {
-        drawing.RectUtils.offsetTo(rect, 10.1, 20.2);
+        drawing.RectUtils.offsetTo(rect, 5.1, 5.2);
         console.info(msg + ' RectUtils offsetTo 2 successed');
         console.info(msg + ' RectUtils offsetTo 2 successed rect: ' + JSON.stringify(rect));
         expect(rect.left == 5.099999904632568 && rect.top == 5.199999809265137 && rect.right == 15.100000381469727 && rect.bottom == 5.199999809265137).assertEqual(true);
@@ -3331,7 +3331,7 @@ export default function rectUtilsTest() {
       }
       rect = drawing.RectUtils.makeLtrb(0, 0, 100, 100);
       try {
-        drawing.RectUtils.offsetTo(rect, 10, 0);
+        drawing.RectUtils.offsetTo(rect, -50, 50);
         console.info(msg + ' RectUtils offsetTo 5 successed');
         console.info(msg + ' RectUtils offsetTo 5 successed rect: ' + JSON.stringify(rect));
         expect(rect.left == -50 && rect.top == 50 && rect.right == 250 && rect.bottom == 350).assertEqual(true);
@@ -3341,7 +3341,7 @@ export default function rectUtilsTest() {
       }
       rect = drawing.RectUtils.makeLtrb(0,10.2632,100.25474,100.2884);
       try {
-        drawing.RectUtils.offsetTo(rect, 5.256, -2.552);
+        drawing.RectUtils.offsetTo(rect, 205.256, -2.552);
         console.info(msg + ' RectUtils offsetTo 6 successed');
         console.info(msg + ' RectUtils offsetTo 6 successed rect: ' + JSON.stringify(rect));
         expect(rect.left == 205.25599670410156 && rect.top == -2.552000045776367 && rect.right == 305.5107421875 && rect.bottom == 87.47319793701172).assertEqual(true);
@@ -3351,7 +3351,7 @@ export default function rectUtilsTest() {
       }
       rect = drawing.RectUtils.makeLtrb(-100,-100.98788,300.20,300);
       try {
-        drawing.RectUtils.offsetTo(rect, 10, 5);
+        drawing.RectUtils.offsetTo(rect, 600, 500);
         console.info(msg + ' RectUtils offsetTo 7 successed');
         console.info(msg + ' RectUtils offsetTo 7 successed rect: ' + JSON.stringify(rect));
         expect(rect.left == 600 && rect.top == 499.9999694824219 && rect.right == 1000.2000122070313 && rect.bottom == 900.9878540039063).assertEqual(true);
