@@ -4551,5 +4551,54 @@ export default function imageNdkTest() {
       }
     });
 
+    /**
+     * @tc.number   : SUB_MULTIMEDIA_IMAGE_NATIVE_GET_PROPERTY_WITH_NULL_0100
+     * @tc.name     : GetPropertyWithNull
+     * @tc.desc     : 1.check getproperty equal to setProperty
+     * @tc.size     : MediumTest
+     * @tc.type     : Functional
+     * @tc.level    : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_NATIVE_GET_PROPERTY_WITH_NULL_0100", Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NATIVE_GET_PROPERTY_WITH_NULL_0100';
+      let res = ndkTest.GetPropertyWithNull();
+      expect(res == 0).assertTrue();
+      hilog.info(0x0000, testTag, `GetPropertyWithNull success`);
+      done();
+    });
+
+    /**
+     * @tc.number   : SUB_MULTIMEDIA_IMAGE_NATIVE_GET_MIMETYPE_WITH_NULL_0100
+     * @tc.name     : GetMimeTypeWithNull
+     * @tc.desc     : 1.check getMimeType equal to setMimeType
+     * @tc.size     : MediumTest
+     * @tc.type     : Functional
+     * @tc.level    : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_NATIVE_GET_MIMETYPE_WITH_NULL_0100", Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NATIVE_GET_MIMETYPE_WITH_NULL_0100';
+      let res = ndkTest.GetMimeTypeWithNull();
+      expect(res == 0).assertTrue();
+      hilog.info(0x0000, testTag, `GetMimeTypeWithNull success`);
+      done();
+    });
+
+    /**
+     * @tc.number   : SUB_MULTIMEDIA_IMAGE_NATIVE_GET_IMAGE_PROPERTY_WITH_NULL_0100
+     * @tc.name     : GetImagePropertyWithNull
+     * @tc.desc     : 1.check GetImageProperty equal to picture's exif
+     * @tc.size     : MediumTest
+     * @tc.type     : Functional
+     * @tc.level    : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_NATIVE_GET_IMAGE_PROPERTY_WITH_NULL_0100", Level.LEVEL0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_IMAGE_NATIVE_GET_IMAGE_PROPERTY_WITH_NULL_0100';
+      await getFd("JpegFragmentMap.jpg");
+      let res = ndkTest.GetImagePropertyWithNull(fileFd);
+      expect(res == 0).assertTrue();
+      hilog.info(0x0000, testTag, `GetImagePropertyWithNull success`);
+      done();
+    });
+
   })
 }
