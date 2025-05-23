@@ -1715,8 +1715,8 @@ export default function rectUtilsTest() {
      * @tc.type      : Function
      * @tc.level     : Level 4
      */
-    it('testRectUtilsContains2Null', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, () => {
-      const msg = 'testRectUtilsContains2Null';
+    it('testRectUtilsContains3Null', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, () => {
+      const msg = 'testRectUtilsContains3Null';
       let rect2 = drawing.RectUtils.makeLtrb(0, 0, 40, 40);
       try {
         let isContains = drawing.RectUtils.contains(null, 10, 10);

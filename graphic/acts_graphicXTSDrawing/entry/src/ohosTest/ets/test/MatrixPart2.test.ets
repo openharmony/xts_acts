@@ -1313,7 +1313,7 @@ export default function drawingTsMatrixPart2Test() {
         console.info(msg + ` drawing matrix3 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail();
       }
-      matrix1.setMatrix([1.25,302.2,100.2,20,-1.5,-1,0,300,10]);
+      matrix.setMatrix([1.25,302.2,100.2,20,-1.5,-1,0,300,10]);
       try {
         let matrix4 = new drawing.Matrix(matrix);
         console.info(msg + ' drawing matrix4 successed');
@@ -1466,7 +1466,7 @@ export default function drawingTsMatrixPart2Test() {
      */
     it('testMatrixIsAffineMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testMatrixIsAffineMultipleCalls';
-      let matrix1 = new drawing.Matrix();
+      let matrix = new drawing.Matrix();
       for (let i = 0; i < 20; i += 1) {
         try {
           let isAff = matrix.isAffine();
@@ -1753,13 +1753,14 @@ export default function drawingTsMatrixPart2Test() {
      */
     it('testMatrixSetMatrixMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
       const msg = 'testMatrixSetMatrixMultipleCalls';
+      let matrix = new drawing.Matrix();
+      let matrixnew = new drawing.Matrix();
       for (let i = 0; i < 20; i += 1) {
         try {
           let value3 : Array<number> = [Math.random() *10,Math.random() *10, Math.random() *10, Math.random() *10, Math.random() *10, Math.random() *10, Math.random() *10, Math.random() *10,Math.random() *10];
           matrix.setMatrix(value3);
           matrixnew.setMatrix(matrix)
           console.info(msg + `matrix.setMatrix success step: ` + i);
-          expect(matrixnew).assertEqual(matrix);
         } catch (e) {
           console.info(msg + `matrix.setMatrix error. errorCode is: ${e.code} + errormsg is: ${e.message}} step: ${i}`);
           expect().assertFail()
@@ -1947,7 +1948,7 @@ export default function drawingTsMatrixPart2Test() {
       const msg = 'testMatrixPostConcatNormal';
       let matrixA = new drawing.Matrix();
       let matrixB = new drawing.Matrix();
-      matrixA.postConcat(matrixA, matrixB);
+      matrixA.postConcat(matrixB);
       try {
         let actualValues = matrixA.getAll();
         console.info(msg + ' matrix getAll actualValues successed');
@@ -1962,7 +1963,7 @@ export default function drawingTsMatrixPart2Test() {
       let value2 : Array<number> = [2, 2, 2, 2, 2, 2, 2, 2, 2];
       matrixA.setMatrix(value2);
       matrixB.setTranslation(50, -25);
-      matrixA.postConcat(matrixA, matrixB);
+      matrixA.postConcat(matrixB);
       try {
         let actualValues2 = matrixA.getAll();
         console.info(msg + ' matrix getAll actualValues2 successed');
@@ -1977,7 +1978,7 @@ export default function drawingTsMatrixPart2Test() {
       matrixA.reset();
       matrixB.reset();
       matrixB.setRotation(45,100,200);
-      matrixA.postConcat(matrixA, matrixB);
+      matrixA.postConcat(matrixB);
       try {
         let actualValues3 = matrixA.getAll();
         console.info(msg + ' matrix getAll actualValues3 successed');
@@ -1991,7 +1992,7 @@ export default function drawingTsMatrixPart2Test() {
       matrixA.reset();
       matrixB.reset();
       matrixA.setScale(2,-5,50,40);
-      matrixA.postConcat(matrixA, matrixB);
+      matrixA.postConcat(matrixB);
       try {
         let actualValues4 = matrixA.getAll();
         console.info(msg + ' matrix getAll actualValues4 successed');
@@ -2018,7 +2019,7 @@ export default function drawingTsMatrixPart2Test() {
       let matrixB = new drawing.Matrix();
       for (let i = 0; i < 20; i += 1) {
         try {
-          matrixA.postConcat(matrixA, matrixB);
+          matrixA.postConcat(matrixB);
           let actualValues = matrixA.getAll();
           console.info(msg + `matrixA.getAll success step: ` + i);
           console.info(msg + "matrixA.getAll: " + matrixA.getAll().toString());
@@ -2044,7 +2045,7 @@ export default function drawingTsMatrixPart2Test() {
       let matrixA = new drawing.Matrix();
       let matrixB = new drawing.Matrix();
       try {
-        matrixA.postConcat(null, matrixB);
+        matrixA.postConcat(null);
         console.info(msg + `Matrix postConcat 1 successed`);
         expect().assertFail();
       } catch (e) {
@@ -2052,27 +2053,11 @@ export default function drawingTsMatrixPart2Test() {
         expect(e.code).assertEqual(401);
       }
       try {
-        matrixA.postConcat(undefined, matrixB);
+        matrixA.postConcat(undefined);
         console.info(msg + `Matrix postConcat 2 successed`);
         expect().assertFail();
       } catch (e) {
         console.info(msg + `Matrix postConcat 2 failed. Error code is: ${e.code}. Error message is: ${e.message}`);
-        expect(e.code).assertEqual(401);
-      }
-      try {
-        matrixA.postConcatpostConcat(matrixA, null);
-        console.info(msg + `Matrix postConcat 3 successed`);
-        expect().assertFail();
-      } catch (e) {
-        console.info(msg + `Matrix postConcat 3 failed. Error code is: ${e.code}. Error message is: ${e.message}`);
-        expect(e.code).assertEqual(401);
-      }
-      try {
-        matrixA.postConcat(matrixA, undefined);
-        console.info(msg + `Matrix postConcat 4 successed`);
-        expect().assertFail();
-      } catch (e) {
-        console.info(msg + `Matrix postConcat 4 failed. Error code is: ${e.code}. Error message is: ${e.message}`);
         expect(e.code).assertEqual(401);
       }
     });
@@ -2103,7 +2088,7 @@ export default function drawingTsMatrixPart2Test() {
       try {
         let actualValues2 = matrix.getAll();
         console.info(msg + ' matrix getAll actualValues2 successed');
-        console.info(msg + "matrix actualValues2: " + matrixA.getAll().toString());
+        console.info(msg + "matrix actualValues2: " + matrix.getAll().toString());
         expect(actualValues2[0] ==1 && actualValues2[1] ==0.5 && actualValues2[2] ==-1.100000023841858 && actualValues2[3] ==0.8999999761581421 &&
           actualValues2[4] ==1 && actualValues2[5] ==-0.44999998807907104 && actualValues2[6] ==0 && actualValues2[7] ==0 &&
           actualValues2[8] ==1).assertEqual(true);
@@ -2284,7 +2269,7 @@ export default function drawingTsMatrixPart2Test() {
       try {
         let actualValues2 = matrix.getAll();
         console.info(msg + ' matrix getAll actualValues2 successed');
-        console.info(msg + "matrix actualValues2: " + matrixA.getAll().toString());
+        console.info(msg + "matrix actualValues2: " + matrix.getAll().toString());
         expect(actualValues2[0] ==1 && actualValues2[1] ==0.5 && actualValues2[2] ==-1.100000023841858 && actualValues2[3] ==0.8999999761581421 &&
           actualValues2[4] ==1 && actualValues2[5] ==-0.44999998807907104 && actualValues2[6] ==0 && actualValues2[7] ==0 &&
           actualValues2[8] ==1).assertEqual(true);
@@ -2452,6 +2437,7 @@ export default function drawingTsMatrixPart2Test() {
       try {
         let radius = matrix.mapRadius(10);
         console.info(msg + ' matrix mapRadius radius successed');
+        console.info(msg + ' matrix mapRadius radius: ' + radius);
         expect(radius).assertEqual(10);
       } catch (e) {
         console.info(msg + ` matrix mapRadius radius errorCode is:  ${e.code} + errormsg is: ${e.message}`);
@@ -2460,7 +2446,8 @@ export default function drawingTsMatrixPart2Test() {
       try {
         let radius2 = matrix.mapRadius(20.364);
         console.info(msg + ' matrix mapRadius radius2 successed');
-        expect(radius).assertEqual(20.364002227783203);
+        console.info(msg + ' matrix mapRadius radius2: ' + radius2);
+        expect(radius2).assertEqual(20.364002227783203);
       } catch (e) {
         console.info(msg + ` matrix mapRadius radius2 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail();
@@ -2468,7 +2455,8 @@ export default function drawingTsMatrixPart2Test() {
       try {
         let radius3 = matrix.mapRadius(0);
         console.info(msg + ' matrix mapRadius radius3 successed');
-        expect(radius).assertEqual(0);
+        console.info(msg + ' matrix mapRadius radius3: ' + radius3);
+        expect(radius3).assertEqual(0);
       } catch (e) {
         console.info(msg + ` matrix mapRadius radius3 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail();
@@ -2476,7 +2464,8 @@ export default function drawingTsMatrixPart2Test() {
       try {
         let radius4 = matrix.mapRadius(-15);
         console.info(msg + ' matrix mapRadius radius4 successed');
-        expect(radius).assertEqual(14.999998092651367);
+        console.info(msg + ' matrix mapRadius radius4: ' + radius4);
+        expect(radius4).assertEqual(14.999998092651367);
       } catch (e) {
         console.info(msg + ` matrix mapRadius radius4 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail();
@@ -2484,7 +2473,8 @@ export default function drawingTsMatrixPart2Test() {
       try {
         let radius5 = matrix.mapRadius(-25.5114);
         console.info(msg + ' matrix mapRadius radius5 successed');
-        expect(radius).assertEqual(25.511398315429688);
+        console.info(msg + ' matrix mapRadius radius5: ' + radius5);
+        expect(radius5).assertEqual(25.511398315429688);
       } catch (e) {
         console.info(msg + ` matrix mapRadius radius5 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail();
@@ -2493,7 +2483,8 @@ export default function drawingTsMatrixPart2Test() {
       try {
         let radius6 = matrix.mapRadius(10);
         console.info(msg + ' matrix mapRadius radius6 successed');
-        expect(radius).assertEqual(10);
+        console.info(msg + ' matrix mapRadius radius6: ' + radius6);
+        expect(radius6).assertEqual(10);
       } catch (e) {
         console.info(msg + ` matrix mapRadius radius6 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail();
@@ -2503,7 +2494,8 @@ export default function drawingTsMatrixPart2Test() {
       try {
         let radius7 = matrix.mapRadius(20.364);
         console.info(msg + ' matrix mapRadius radius7 successed');
-        expect(radius).assertEqual(32.19831085205078);
+        console.info(msg + ' matrix mapRadius radius7: ' + radius7);
+        expect(radius7).assertEqual(32.19831085205078);
       } catch (e) {
         console.info(msg + ` matrix mapRadius radius7 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail();
@@ -2511,7 +2503,8 @@ export default function drawingTsMatrixPart2Test() {
       try {
         let radius8 = matrix.mapRadius(0);
         console.info(msg + ' matrix mapRadius radius8 successed');
-        expect(radius).assertEqual(0);
+        console.info(msg + ' matrix mapRadius radius8: ' + radius8);
+        expect(radius8).assertEqual(0);
       } catch (e) {
         console.info(msg + ` matrix mapRadius radius8 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail();
@@ -2520,7 +2513,8 @@ export default function drawingTsMatrixPart2Test() {
       try {
         let radius9 = matrix.mapRadius(-15);
         console.info(msg + ' matrix mapRadius radius9 successed');
-        expect(radius).assertEqual(45.77458190917969);
+        console.info(msg + ' matrix mapRadius radius9: ' + radius9);
+        expect(radius9).assertEqual(45.77458190917969);
       } catch (e) {
         console.info(msg + ` matrix mapRadius radius9 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail();
@@ -2529,7 +2523,8 @@ export default function drawingTsMatrixPart2Test() {
       try {
         let radius10 = matrix.mapRadius(-25.5114);
         console.info(msg + ' matrix mapRadius radius10 successed');
-        expect(radius).assertEqual(41.48501205444336);
+        console.info(msg + ' matrix mapRadius radius10: ' + radius10);
+        expect(radius10).assertEqual(41.48501205444336);
       } catch (e) {
         console.info(msg + ` matrix mapRadius radius10 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail();
@@ -2752,7 +2747,7 @@ export default function drawingTsMatrixPart2Test() {
         console.info(msg + ' matrix getAll actualValues5 successed');
         console.info(msg + "matrix actualValues5: " + matrix.getAll().toString());
         expect(actualValues5[0] ==0.75 && actualValues5[1] ==-10 && actualValues5[2] ==310.2200012207031 && actualValues5[3] ==10 &&
-          actualValues5[4] ==0.75 && actualValues5[5] ==-192.3695068359375 && actualValues5[6] ==0 && actualValues5[7] ==0 & actualValues5[8] ==1).assertEqual(true);
+          actualValues5[4] ==0.75 && actualValues5[5] ==-192.3695068359375 && actualValues5[6] ==0 && actualValues5[7] ==0 && actualValues5[8] ==1).assertEqual(true);
       } catch (e) {
         console.info(msg + ` matrix getAll actualValues5 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail();
