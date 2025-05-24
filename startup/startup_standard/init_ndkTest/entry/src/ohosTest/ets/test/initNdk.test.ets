@@ -774,6 +774,100 @@ export default function initNdkTest() {
     });
 
     /**
+     * @tc.number     : SUB_STARTUP_INIT_DEVICEINFO_OH_GETSDKMINORAPIVERSION_0100
+     * @tc.name       : testOHGetSdkMinorApiVersion001
+     * @tc.desc       : test OH_GetSdkMinorApiVersion return value type is without special characters for numbers.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHGetSdkMinorApiVersion001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      let sdkMinorApiVersionInfo: number = initndk.oHGetSdkMinorApiVersion();
+      let str: RegExp = new RegExp("[\\w\\-\\.(\\)]","g");
+      let arr = sdkMinorApiVersionInfo.toString().match(str);
+      if(arr !== null){
+        let bufferstr = arr.join('');
+        let numstr = parseInt(bufferstr);
+        console.info('the value of the bufferstr is :' + numstr);
+        expect(sdkMinorApiVersionInfo).assertEqual(numstr);
+      }
+
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_STARTUP_INIT_DEVICEINFO_OH_GETSDKMINORAPIVERSION_0200
+     * @tc.name       : testOHGetSdkMinorApiVersion002
+     * @tc.desc       : test OH_GetSdkMinorApiVersion return value type is number, the return value is greater than or equal to 0.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHGetSdkMinorApiVersion002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      let sdkMinorApiVersionInfo: number = initndk.oHGetSdkMinorApiVersion();
+
+      let ret = false;
+      console.info('the value of the deviceinfo sdkMinorApiVersion is :' + sdkMinorApiVersionInfo);
+      expect(sdkMinorApiVersionInfo).assertInstanceOf('Number');
+      if (sdkMinorApiVersionInfo >= 0) {
+        ret = true;
+        expect(ret).assertTrue();
+        done();
+      } else {
+        console.info('the return value SdkMinorApiVersion is null or incorrect.');
+        expect(false).assertTrue();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_STARTUP_INIT_DEVICEINFO_OH_GETSDKPATCHAPIVERSION_0100
+     * @tc.name       : testOHGetSdkPatchApiVersion001
+     * @tc.desc       : test OH_GetSdkPatchApiVersion return value type is without special characters for numbers.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHGetSdkPatchApiVersion001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      let sdkPatchApiVersionInfo: number = initndk.oHGetSdkPatchApiVersion();
+      let str: RegExp = new RegExp("[\\w\\-\\.(\\)]","g");
+      let arr = sdkPatchApiVersionInfo.toString().match(str);
+      if(arr !== null){
+        let bufferstr = arr.join('');
+        let numstr = parseInt(bufferstr);
+        console.info('the value of the bufferstr is :' + numstr);
+        expect(sdkPatchApiVersionInfo).assertEqual(numstr);
+      }
+
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_STARTUP_INIT_DEVICEINFO_OH_GETSDKPATCHAPIVERSION_0200
+     * @tc.name       : testOHGetSdkPatchApiVersion002
+     * @tc.desc       : test OH_GetSdkPatchApiVersion return value type is number, the return value is greater than or equal to 0.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHGetSdkPatchApiVersion002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      let sdkPatchApiVersionInfo: number = initndk.oHGetSdkPatchApiVersion();
+
+      let ret = false;
+      console.info('the value of the deviceinfo sdkPatchApiVersion is :' + sdkPatchApiVersionInfo);
+      expect(sdkPatchApiVersionInfo).assertInstanceOf('Number');
+      if (sdkPatchApiVersionInfo >= 0) {
+        ret = true;
+        expect(ret).assertTrue();
+        done();
+      } else {
+        console.info('the return value SdkPatchApiVersion is null or incorrect.');
+        expect(false).assertTrue();
+        done();
+      }
+    });
+
+    /**
      * @tc.number     : SUB_STARTUP_INIT_DEVICEINFO_OH_GETFIRSTAPIVERSION_0100
      * @tc.name       : testOHGetFirstApiVersion001
      * @tc.desc       : test OH_GetFirstApiVersion return value type is without special characters for numbers.
@@ -1294,6 +1388,42 @@ export default function initNdkTest() {
       expect(result).assertEqual(resultTrue);
       if (result == resultTrue) {
         console.info('the SystemCapability of SystemCapability.ArkUI.ArkUI.Full can use');
+      }
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_STARTUP_INIT_SYSCAPNDK_ISAPIVERSIONGREATOREQUAL_0100
+     * @tc.name       : testIsApiVersionGreaterOrEqual001
+     * @tc.desc       : test operating system version is greater than or equal to the given value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testIsApiVersionGreaterOrEqual001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      let majorApiVersion: number = initndk.oHGetSdkApiVersion();
+      let minorApiVersion: number = initndk.oHGetSdkMinorApiVersion();
+      let patchApiVersion: number = initndk.oHGetSdkPatchApiVersion();
+      console.info('IsApiVersionGreaterOrEqual, major:' + majorApiVersion + ', minor:' + minorApiVersion + ', patch:' + patchApiVersion);
+      if (majorApiVersion < 2 || majorApiVersion > 999 || minorApiVersion < 0 || patchApiVersion < 0) {
+        done();
+      } else {
+        // 验证传参等于系统版本时返回1
+        let result1: number = initndk.oHIsApiVersionGreaterOrEqual(majorApiVersion, minorApiVersion, patchApiVersion);
+        console.info('IsApiVersionGreaterOrEqual result1:' + result1);
+        expect(result1).assertEqual(1);
+
+        // 验证传参小于系统版本时返回1
+        majorApiVersion -= 1;
+        let result2: number = initndk.oHIsApiVersionGreaterOrEqual(majorApiVersion, minorApiVersion, patchApiVersion);
+        console.info('IsApiVersionGreaterOrEqual result2:' + result2);
+        expect(result2).assertEqual(1);
+
+        // 验证传参大于系统版本时返回0
+        majorApiVersion += 2;
+        let result3: number = initndk.oHIsApiVersionGreaterOrEqual(majorApiVersion, minorApiVersion, patchApiVersion);
+        console.info('IsApiVersionGreaterOrEqual result3:' + result3);
+        expect(result3).assertEqual(0);
       }
       done();
     });
