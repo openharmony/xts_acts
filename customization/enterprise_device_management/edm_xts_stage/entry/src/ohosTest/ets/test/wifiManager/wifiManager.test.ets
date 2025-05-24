@@ -1911,6 +1911,8 @@ function testTurnOnWifiList() {
       expect(false).assertTrue();
     } catch (error) {
       expect(error.code == 9200002).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
     }
     done();
   });
@@ -1930,6 +1932,8 @@ function testTurnOnWifiList() {
       expect(false).assertTrue();
     } catch (error) {
       expect(error.code == 9200002).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
     }
     done();
   });
@@ -1937,7 +1941,7 @@ function testTurnOnWifiList() {
   /**
    * @tc.number    : SUB_CUSTOMIZATION_EDM_TURNON_WIFI_LIST_JS_0005
    * @tc.name      : test_turnon_wifi_list_0005
-   * @tc.desc      : test wifiManager turnOnWifi with normal super admin
+   * @tc.desc      : test wifiManager turnOnWifi with super admin
    * @tc.level     : Level 2
    * @tc.type      : Function
    * @tc.size      : MediumTest
@@ -1949,7 +1953,7 @@ function testTurnOnWifiList() {
     } catch (error) {
       expect(false).assertTrue();
     } finally {
-       await adminManager.disableSuperAdmin(SELFHAPNAME);
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
     }
     done();
   });
@@ -1957,7 +1961,7 @@ function testTurnOnWifiList() {
   /**
    * @tc.number    : SUB_CUSTOMIZATION_EDM_TURNON_WIFI_LIST_JS_0006
    * @tc.name      : test_turnon_wifi_list_0006
-   * @tc.desc      : test wifiManager turnOnWifi with normal super admin
+   * @tc.desc      : test wifiManager turnOnWifi with super admin
    * @tc.level     : Level 2
    * @tc.type      : Function
    * @tc.size      : MediumTest
@@ -1969,7 +1973,7 @@ function testTurnOnWifiList() {
     } catch (error) {
       expect(false).assertTrue();
     } finally {
-       await adminManager.disableSuperAdmin(SELFHAPNAME);
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
     }
     done();
   });
@@ -1993,7 +1997,7 @@ function testTurnOnWifiList() {
       expect(error.code == 203).assertTrue();
     } finally {
       restrictions.setDisallowedPolicy(SELFWANT, LABEL_WIFI, false);
-      await adminManager.disableAdmin(SELFHAPNAME);
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
     }
     done();
   });
@@ -2017,7 +2021,7 @@ function testTurnOnWifiList() {
       expect(error.code == 203).assertTrue();
     } finally {
       restrictions.setDisallowedPolicy(SELFWANT, LABEL_WIFI, false);
-      await adminManager.disableAdmin(SELFHAPNAME);
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
     }
     done();
   });
@@ -2099,6 +2103,8 @@ function testTurnOffWifiList() {
       expect(false).assertTrue();
     } catch (error) {
       expect(error.code == 9200002).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
     }
     done();
   });
@@ -2106,7 +2112,7 @@ function testTurnOffWifiList() {
   /**
    * @tc.number    : SUB_CUSTOMIZATION_EDM_TURNOFF_WIFI_LIST_JS_0003
    * @tc.name      : test_turnoff_wifi_list_0003
-   * @tc.desc      : test wifiManager turnOffWifi with normal super admin
+   * @tc.desc      : test wifiManager turnOffWifi with super admin
    * @tc.level     : Level 2
    * @tc.type      : Function
    * @tc.size      : MediumTest
