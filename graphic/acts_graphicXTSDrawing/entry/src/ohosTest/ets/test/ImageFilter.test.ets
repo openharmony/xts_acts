@@ -942,7 +942,7 @@ export default function imageFilterTest() {
         expect().assertFail();
       } catch( e ) {
         console.info(msg + ` createBlendImageFilter blendImageFilter errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
-        expect(e.code).assertEqual(401);
+        expect(e.code).assertEqual(25900001);
       }
     });
     /**
