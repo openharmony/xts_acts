@@ -14,7 +14,7 @@
  */
 
 import { describe, expect, it, Level } from '@ohos/hypium';
-import { ENTINFO1, SELFWANT, SELFHAPNAME, INVALID_WANT } from '../commom';
+import { ENTINFO1, SELFWANT, SELFHAPNAME, TEST_APP_ID_1, TEST_POLICY_NAME, TEST_POLICY_VALUE, INVALID_WANT } from '../commom.ets';
 
 import adminManager from '@ohos.enterprise.adminManager';
 import wifiManager from '@ohos.enterprise.wifiManager';
