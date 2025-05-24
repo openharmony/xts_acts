@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from "@ohos/hypium"
+import { describe, it, expect, Level } from "@ohos/hypium"
 import mediacodecbasexdlndk from 'libmediacodecbasexdlndk.so'
 
 export default function mediaCodecBaseXdlNdkTest() {
@@ -27,7 +27,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderQualityRange002', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderQualityRange002', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderQualityRangeAnormal();
         expect(result != null).assertTrue();
@@ -46,7 +46,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderQualityRange003', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderQualityRange003', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderQualityRangeBnormal();
       expect(result).assertEqual(-1);
       done();
@@ -60,7 +60,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderQualityRange004', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderQualityRange004', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderQualityRangeCnormal();
       expect(result).assertEqual(-1);
       done();
@@ -74,7 +74,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderQualityRange005', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderQualityRange005', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderQualityRangeDnormal();
       expect(result).assertEqual(-1);
       done();
@@ -88,7 +88,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderQualityRange006', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderQualityRange006', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderQualityRangeEnormal();
       expect(result).assertEqual(-1);
       done();
@@ -102,7 +102,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderQualityRange007', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderQualityRange007', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderQualityRangeFnormal();
       expect(result).assertEqual(-1);
       done();
@@ -116,7 +116,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderQualityRange008', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderQualityRange008', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderQualityRangeGnormal();
       expect(result).assertEqual(-1);
       done();
@@ -130,7 +130,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderQualityRange009', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderQualityRange009', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderQualityRangeHnormal();
       expect(result).assertEqual(-1);
       done();
@@ -144,7 +144,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderQualityRange010', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderQualityRange010', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderQualityRangeInormal();
       expect(result).assertEqual(-1);
       done();
@@ -158,7 +158,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderQualityRange011', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderQualityRange011', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderQualityRangeJnormal();
         expect(result != null).assertTrue();
@@ -177,7 +177,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderQualityRange012', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderQualityRange012', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderQualityRangeKnormal();
       expect(result).assertEqual(0);
       done();
@@ -191,7 +191,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderQualityRange013', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderQualityRange013', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderQualityRangeLnormal();
       expect(result).assertEqual(0);
       done();
@@ -205,7 +205,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderQualityRange014', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderQualityRange014', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderQualityRangeMnormal();
       expect(result).assertEqual(0);
       done();
@@ -219,7 +219,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderQualityRange015', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderQualityRange015', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderQualityRangeNnormal();
         expect(result != null).assertTrue();
@@ -238,7 +238,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderQualityRange016', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderQualityRange016', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderQualityRangeOnormal();
       expect(result).assertEqual(0);
       done();
@@ -252,7 +252,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderQualityRange017', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderQualityRange017', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderQualityRangePnormal();
       expect(result).assertEqual(-1);
       done();
@@ -266,7 +266,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderQualityRange018', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderQualityRange018', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderQualityRangeQnormal();
       expect(result).assertEqual(-1);
       done();
@@ -280,7 +280,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderQualityRange019', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderQualityRange019', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderQualityRangeRnormal();
       expect(result).assertEqual(-1);
       done();
@@ -294,7 +294,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderQualityRange020', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderQualityRange020', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderQualityRangeSnormal();
         expect(result != null).assertTrue();
@@ -313,7 +313,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderQualityRange021', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderQualityRange021', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderQualityRangeTnormal();
         expect(result != null).assertTrue();
@@ -332,7 +332,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderQualityRange022', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderQualityRange022', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderQualityRangeUnormal();
       expect(result).assertEqual(-1);
       done();
@@ -346,7 +346,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderQualityRange023', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderQualityRange023', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderQualityRangeVnormal();
       expect(result).assertEqual(-1);
       done();
@@ -360,7 +360,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderQualityRange024', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderQualityRange024', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderQualityRangeWnormal();
       expect(result).assertEqual(-1);
       done();
@@ -374,7 +374,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderQualityRange025', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderQualityRange025', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderQualityRangeXnormal();
       expect(result).assertEqual(-1);
       done();
@@ -388,7 +388,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderQualityRange026', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderQualityRange026', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderQualityRangeYnormal();
       expect(result).assertEqual(-1);
       done();
@@ -402,7 +402,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderQualityRange027', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderQualityRange027', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderQualityRangeZnormal();
       expect(result).assertEqual(-1);
       done();
@@ -416,7 +416,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderQualityRange028', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderQualityRange028', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderQualityRangeAAnormal();
       expect(result).assertEqual(-1);
       done();
@@ -430,7 +430,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderQualityRange029', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderQualityRange029', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderQualityRangeABnormal();
       expect(result).assertEqual(-1);
       done();
@@ -444,7 +444,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderQualityRange030', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderQualityRange030', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderQualityRangeACnormal();
       expect(result).assertEqual(0);
       done();
@@ -458,7 +458,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderQualityRange031', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderQualityRange031', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderQualityRangeADnormal();
       expect(result).assertEqual(-1);
       done();
@@ -472,7 +472,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderQualityRange032', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderQualityRange032', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderQualityRangeAEnormal();
       expect(result).assertEqual(0);
       done();
@@ -486,7 +486,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderQualityRange033', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderQualityRange033', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderQualityRangeAFnormal();
       expect(result).assertEqual(-1);
       done();
@@ -500,7 +500,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderQualityRange034', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderQualityRange034', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderQualityRangeAGnormal();
       expect(result).assertEqual(0);
       done();
@@ -514,7 +514,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderQualityRange035', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderQualityRange035', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderQualityRangeAHnormal();
       expect(result).assertEqual(-1);
       done();
@@ -528,7 +528,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderQualityRange036', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderQualityRange036', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderQualityRangeAInormal();
       expect(result).assertEqual(0);
       done();
@@ -542,7 +542,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderQualityRange037', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderQualityRange037', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderQualityRangeAJnormal();
       expect(result).assertEqual(-1);
       done();
@@ -556,7 +556,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderQualityRange038', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderQualityRange038', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderQualityRangeAKnormal();
       expect(result).assertEqual(-1);
       done();
@@ -570,7 +570,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderQualityRange039', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderQualityRange039', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderQualityRangeALnormal();
       expect(result).assertEqual(-1);
       done();
@@ -584,7 +584,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderQualityRange040', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderQualityRange040', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderQualityRangeAMnormal();
         expect(result != null).assertTrue();
@@ -603,7 +603,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderComplexityRange002', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderComplexityRange002', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderComplexityRangeAnormal();
       expect(result).assertEqual(-1);
       done();
@@ -617,7 +617,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderComplexityRange003', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderComplexityRange003', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderComplexityRangeBnormal();
       expect(result).assertEqual(-1);
       done();
@@ -631,7 +631,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderComplexityRange004', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderComplexityRange004', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderComplexityRangeCnormal();
       expect(result).assertEqual(-1);
       done();
@@ -645,7 +645,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderComplexityRange005', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderComplexityRange005', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderComplexityRangeDnormal();
       expect(result).assertEqual(-1);
       done();
@@ -659,7 +659,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderComplexityRange006', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderComplexityRange006', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderComplexityRangeEnormal();
         expect(result != null).assertTrue();
@@ -678,7 +678,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderComplexityRange007', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderComplexityRange007', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderComplexityRangeFnormal();
       expect(result).assertEqual(-1);
       done();
@@ -692,7 +692,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderComplexityRange008', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderComplexityRange008', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderComplexityRangeGnormal();
       expect(result).assertEqual(-1);
       done();
@@ -706,7 +706,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderComplexityRange009', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderComplexityRange009', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderComplexityRangeHnormal();
       expect(result).assertEqual(-1);
       done();
@@ -720,7 +720,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderComplexityRange010', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderComplexityRange010', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderComplexityRangeInormal();
       expect(result).assertEqual(-1);
       done();
@@ -734,7 +734,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderComplexityRange011', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderComplexityRange011', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderComplexityRangeJnormal();
       expect(result).assertEqual(0);
       done();
@@ -748,7 +748,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderComplexityRange012', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderComplexityRange012', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderComplexityRangeKnormal();
       expect(result).assertEqual(-1);
       done();
@@ -762,7 +762,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderComplexityRange013', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderComplexityRange013', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderComplexityRangeLnormal();
       expect(result).assertEqual(-1);
       done();
@@ -776,7 +776,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderComplexityRange014', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderComplexityRange014', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderComplexityRangeMnormal();
       expect(result).assertEqual(-1);
       done();
@@ -790,7 +790,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderComplexityRange015', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderComplexityRange015', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderComplexityRangeNnormal();
       expect(result).assertEqual(-1);
       done();
@@ -804,7 +804,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderComplexityRange016', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderComplexityRange016', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderComplexityRangeOnormal();
         expect(result != null).assertTrue();
@@ -823,7 +823,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderComplexityRange017', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderComplexityRange017', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderComplexityRangePnormal();
       expect(result).assertEqual(-1);
       done();
@@ -837,7 +837,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderComplexityRange018', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderComplexityRange018', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderComplexityRangeQnormal();
       expect(result).assertEqual(-1);
       done();
@@ -851,7 +851,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderComplexityRange019', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderComplexityRange019', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderComplexityRangeRnormal();
       expect(result).assertEqual(-1);
       done();
@@ -865,7 +865,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderComplexityRange020', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderComplexityRange020', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderComplexityRangeSnormal();
       expect(result).assertEqual(-1);
       done();
@@ -879,7 +879,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderComplexityRange021', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderComplexityRange021', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderComplexityRangeTnormal();
         expect(result != null).assertTrue();
@@ -898,7 +898,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderComplexityRange022', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderComplexityRange022', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderComplexityRangeUnormal();
       expect(result).assertEqual(0);
       done();
@@ -912,7 +912,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderComplexityRange023', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderComplexityRange023', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderComplexityRangeVnormal();
       expect(result).assertEqual(0);
       done();
@@ -926,7 +926,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderComplexityRange024', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderComplexityRange024', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderComplexityRangeWnormal();
       expect(result).assertEqual(0);
       done();
@@ -940,7 +940,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderComplexityRange025', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderComplexityRange025', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderComplexityRangeXnormal();
       expect(result).assertEqual(0);
       done();
@@ -954,7 +954,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderComplexityRange026', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderComplexityRange026', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderComplexityRangeYnormal();
         expect(result != null).assertTrue();
@@ -973,7 +973,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderComplexityRange027', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderComplexityRange027', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderComplexityRangeZnormal();
         expect(result != null).assertTrue();
@@ -992,7 +992,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderComplexityRange028', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderComplexityRange028', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderComplexityRangeAAnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1006,7 +1006,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderComplexityRange029', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderComplexityRange029', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderComplexityRangeABnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1020,7 +1020,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderComplexityRange030', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderComplexityRange030', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderComplexityRangeACnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1034,7 +1034,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderComplexityRange031', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderComplexityRange031', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderComplexityRangeADnormal();
         expect(result != null).assertTrue();
@@ -1053,7 +1053,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderComplexityRange032', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderComplexityRange032', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderComplexityRangeAEnormal();
       expect(result).assertEqual(0);
       done();
@@ -1067,7 +1067,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderComplexityRange033', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderComplexityRange033', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderComplexityRangeAFnormal();
       expect(result).assertEqual(0);
       done();
@@ -1081,7 +1081,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderComplexityRange034', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderComplexityRange034', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderComplexityRangeAGnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1095,7 +1095,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderComplexityRange035', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderComplexityRange035', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderComplexityRangeAHnormal();
       expect(result).assertEqual(0);
       done();
@@ -1109,7 +1109,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderComplexityRange036', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderComplexityRange036', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderComplexityRangeAInormal();
       expect(result).assertEqual(-1);
       done();
@@ -1123,7 +1123,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderComplexityRange037', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderComplexityRange037', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderComplexityRangeAJnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1137,7 +1137,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderComplexityRange038', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderComplexityRange038', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderComplexityRangeAKnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1151,7 +1151,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderComplexityRange039', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderComplexityRange039', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderComplexityRangeALnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1165,7 +1165,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderComplexityRange040', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderComplexityRange040', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetEncoderComplexityRangeAMnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1179,7 +1179,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetAudioSupportedSampleRates002', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetAudioSupportedSampleRates002', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetAudioSupportedSampleRatesAbnormal();
       expect(result).assertEqual(0);
       done();
@@ -1193,7 +1193,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetAudioSupportedSampleRates003', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetAudioSupportedSampleRates003', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetAudioSupportedSampleRatesAnormal();
       expect(result).assertEqual(0);
       done();
@@ -1207,7 +1207,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetAudioSupportedSampleRates004', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetAudioSupportedSampleRates004', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetAudioSupportedSampleRatesBnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1221,7 +1221,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetAudioSupportedSampleRates005', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetAudioSupportedSampleRates005', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetAudioSupportedSampleRatesCnormal();
       expect(result).assertEqual(0);
       done();
@@ -1235,7 +1235,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetAudioSupportedSampleRates006', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetAudioSupportedSampleRates006', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetAudioSupportedSampleRatesDnormal();
       expect(result).assertEqual(0);
       done();
@@ -1249,7 +1249,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetAudioSupportedSampleRates007', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetAudioSupportedSampleRates007', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetAudioSupportedSampleRatesEnormal();
       expect(result).assertEqual(0);
       done();
@@ -1263,7 +1263,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetAudioSupportedSampleRates008', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetAudioSupportedSampleRates008', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetAudioSupportedSampleRatesFnormal();
       expect(result).assertEqual(0);
       done();
@@ -1277,7 +1277,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetAudioSupportedSampleRates009', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetAudioSupportedSampleRates009', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetAudioSupportedSampleRatesGnormal();
       expect(result).assertEqual(0);
       done();
@@ -1291,7 +1291,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetAudioSupportedSampleRates010', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetAudioSupportedSampleRates010', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetAudioSupportedSampleRatesHnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1305,7 +1305,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetAudioSupportedSampleRates011', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetAudioSupportedSampleRates011', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetAudioSupportedSampleRatesInormal();
       expect(result).assertEqual(-1);
       done();
@@ -1319,7 +1319,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetAudioSupportedSampleRates012', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetAudioSupportedSampleRates012', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetAudioSupportedSampleRatesGnormal();
       expect(result).assertEqual(0);
       done();
@@ -1333,7 +1333,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetAudioSupportedSampleRates013', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetAudioSupportedSampleRates013', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetAudioSupportedSampleRatesKnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1347,7 +1347,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetAudioSupportedSampleRates014', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetAudioSupportedSampleRates014', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetAudioSupportedSampleRatesLnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1361,7 +1361,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetAudioSupportedSampleRates015', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetAudioSupportedSampleRates015', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetAudioSupportedSampleRatesMnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1375,7 +1375,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetAudioSupportedSampleRates016', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetAudioSupportedSampleRates016', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetAudioSupportedSampleRatesNnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1389,7 +1389,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetAudioSupportedSampleRates017', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetAudioSupportedSampleRates017', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetAudioSupportedSampleRatesOnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1403,7 +1403,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetAudioSupportedSampleRates018', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetAudioSupportedSampleRates018', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = mediacodecbasexdlndk.oHAvCapabilityGetAudioSupportedSampleRatesPnormal();
         expect(result != null).assertTrue();
@@ -1422,7 +1422,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetAudioChannelCountRange002', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetAudioChannelCountRange002', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetAudioChannelCountRangeAnormal();
       expect(result).assertEqual(0);
       done();
@@ -1436,7 +1436,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetAudioChannelCountRange003', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetAudioChannelCountRange003', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetAudioChannelCountRangeBnormal();
       expect(result).assertEqual(0);
       done();
@@ -1450,7 +1450,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetAudioChannelCountRange004', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetAudioChannelCountRange004', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetAudioChannelCountRangeCnormal();
       expect(result).assertEqual(0);
       done();
@@ -1464,7 +1464,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetAudioChannelCountRange005', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetAudioChannelCountRange005', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetAudioChannelCountRangeDnormal();
       expect(result).assertEqual(0);
       done();
@@ -1478,7 +1478,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetAudioChannelCountRange006', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetAudioChannelCountRange006', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = mediacodecbasexdlndk.oHAvCapabilityGetAudioChannelCountRangeEnormal();
         expect(result != null).assertTrue();
@@ -1497,7 +1497,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetAudioChannelCountRange007', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetAudioChannelCountRange007', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = mediacodecbasexdlndk.oHAvCapabilityGetAudioChannelCountRangeFnormal();
         expect(result != null).assertTrue();
@@ -1516,7 +1516,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetAudioChannelCountRange008', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetAudioChannelCountRange008', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetAudioChannelCountRangeGnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1530,7 +1530,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetAudioChannelCountRange009', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetAudioChannelCountRange009', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetAudioChannelCountRangeHnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1544,7 +1544,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetAudioChannelCountRange010', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetAudioChannelCountRange010', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetAudioChannelCountRangeInormal();
       expect(result).assertEqual(-1);
       done();
@@ -1558,7 +1558,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetAudioChannelCountRange011', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetAudioChannelCountRange011', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetAudioChannelCountRangeJnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1572,7 +1572,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetAudioChannelCountRange012', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetAudioChannelCountRange012', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = mediacodecbasexdlndk.oHAvCapabilityGetAudioChannelCountRangeKnormal();
         expect(result != null).assertTrue();
@@ -1591,7 +1591,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetAudioChannelCountRange013', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetAudioChannelCountRange013', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetAudioChannelCountRangeLnormal();
       expect(result).assertEqual(0);
       done();
@@ -1605,7 +1605,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetAudioChannelCountRange014', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetAudioChannelCountRange014', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetAudioChannelCountRangeMnormal();
       expect(result).assertEqual(0);
       done();
@@ -1619,7 +1619,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetAudioChannelCountRange015', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetAudioChannelCountRange015', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetAudioChannelCountRangeNnormal();
       expect(result).assertEqual(0);
       done();
@@ -1633,7 +1633,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetAudioChannelCountRange016', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetAudioChannelCountRange016', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = mediacodecbasexdlndk.oHAvCapabilityGetAudioChannelCountRangeOnormal();
         expect(result != null).assertTrue();
@@ -1652,7 +1652,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetAudioChannelCountRange017', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetAudioChannelCountRange017', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetAudioChannelCountRangePnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1666,7 +1666,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetAudioChannelCountRange018', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetAudioChannelCountRange018', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetAudioChannelCountRangeQnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1680,7 +1680,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetAudioChannelCountRange019', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetAudioChannelCountRange019', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetAudioChannelCountRangeRnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1694,7 +1694,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetAudioChannelCountRange020', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetAudioChannelCountRange020', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetAudioChannelCountRangeSnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1708,7 +1708,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetVideoWidthAlignment002', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetVideoWidthAlignment002', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetVideoWidthAlignmentAnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1722,7 +1722,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetVideoWidthAlignment003', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetVideoWidthAlignment003', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = mediacodecbasexdlndk.oHAvCapabilityGetVideoWidthAlignmentBnormal();
         expect(result != null).assertTrue();
@@ -1741,7 +1741,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetVideoWidthAlignment004', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetVideoWidthAlignment004', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetVideoWidthAlignmentCnormal();
       expect(result).assertEqual(0);
       done();
@@ -1755,7 +1755,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetVideoWidthAlignment005', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetVideoWidthAlignment005', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetVideoWidthAlignmentDnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1769,7 +1769,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetVideoWidthAlignment006', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetVideoWidthAlignment006', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = mediacodecbasexdlndk.oHAvCapabilityGetVideoWidthAlignmentEnormal();
         expect(result != null).assertTrue();
@@ -1788,7 +1788,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetVideoWidthAlignment007', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetVideoWidthAlignment007', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = mediacodecbasexdlndk.oHAvCapabilityGetVideoWidthAlignmentFnormal();
         expect(result != null).assertTrue();
@@ -1807,7 +1807,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetVideoWidthAlignment008', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetVideoWidthAlignment008', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = mediacodecbasexdlndk.oHAvCapabilityGetVideoWidthAlignmentGnormal();
         expect(result != null).assertTrue();
@@ -1826,7 +1826,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetVideoWidthAlignment009', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetVideoWidthAlignment009', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = mediacodecbasexdlndk.oHAvCapabilityGetVideoWidthAlignmentHnormal();
         expect(result != null).assertTrue();
@@ -1845,7 +1845,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetVideoWidthAlignment010', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetVideoWidthAlignment010', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = mediacodecbasexdlndk.oHAvCapabilityGetVideoWidthAlignmentInormal();
         expect(result != null).assertTrue();
@@ -1864,7 +1864,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetVideoWidthAlignment011', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetVideoWidthAlignment011', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetVideoWidthAlignmentJnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1878,7 +1878,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetVideoWidthAlignment012', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetVideoWidthAlignment012', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetVideoWidthAlignmentKnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1892,7 +1892,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetVideoWidthAlignment013', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetVideoWidthAlignment013', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetVideoWidthAlignmentLnormal();
       expect(result).assertEqual(0);
       done();
@@ -1906,7 +1906,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetVideoWidthAlignment014', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetVideoWidthAlignment014', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetVideoWidthAlignmentMnormal();
       expect(result).assertEqual(0);
       done();
@@ -1920,7 +1920,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCapabilityGetVideoHeightAlignment002', 0, async (done: Function) => {
+    it('testOhAvCapabilityGetVideoHeightAlignment002', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetVideoHeightAlignmentAnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1934,7 +1934,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCapabilityGetVideoHeightAlignment003', 0, async (done: Function) => {
+    it('testOhAvCapabilityGetVideoHeightAlignment003', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = mediacodecbasexdlndk.oHAvCapabilityGetVideoHeightAlignmentBnormal();
         expect(result != null).assertTrue();
@@ -1953,7 +1953,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCapabilityGetVideoHeightAlignment004', 0, async (done: Function) => {
+    it('testOhAvCapabilityGetVideoHeightAlignment004', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetVideoHeightAlignmentCnormal();
       expect(result).assertEqual(0);
       done();
@@ -1967,7 +1967,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCapabilityGetVideoHeightAlignment005', 0, async (done: Function) => {
+    it('testOhAvCapabilityGetVideoHeightAlignment005', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetVideoHeightAlignmentDnormal();
       expect(result).assertEqual(-1);
       done();
@@ -1981,7 +1981,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCapabilityGetVideoHeightAlignment006', 0, async (done: Function) => {
+    it('testOhAvCapabilityGetVideoHeightAlignment006', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = mediacodecbasexdlndk.oHAvCapabilityGetVideoHeightAlignmentEnormal();
         expect(result != null).assertTrue();
@@ -2000,7 +2000,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCapabilityGetVideoHeightAlignment007', 0, async (done: Function) => {
+    it('testOhAvCapabilityGetVideoHeightAlignment007', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = mediacodecbasexdlndk.oHAvCapabilityGetVideoHeightAlignmentFnormal();
         expect(result != null).assertTrue();
@@ -2019,7 +2019,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCapabilityGetVideoHeightAlignment008', 0, async (done: Function) => {
+    it('testOhAvCapabilityGetVideoHeightAlignment008', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = mediacodecbasexdlndk.oHAvCapabilityGetVideoHeightAlignmentGnormal();
         expect(result != null).assertTrue();
@@ -2038,7 +2038,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCapabilityGetVideoHeightAlignment009', 0, async (done: Function) => {
+    it('testOhAvCapabilityGetVideoHeightAlignment009', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = mediacodecbasexdlndk.oHAvCapabilityGetVideoHeightAlignmentHnormal();
         expect(result != null).assertTrue();
@@ -2057,7 +2057,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCapabilityGetVideoHeightAlignment010', 0, async (done: Function) => {
+    it('testOhAvCapabilityGetVideoHeightAlignment010', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetVideoHeightAlignmentInormal();
       expect(result).assertEqual(-1);
       done();
@@ -2071,7 +2071,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCapabilityGetVideoHeightAlignment011', 0, async (done: Function) => {
+    it('testOhAvCapabilityGetVideoHeightAlignment011', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetVideoHeightAlignmentJnormal();
       expect(result).assertEqual(-1);
       done();
@@ -2085,7 +2085,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCapabilityGetVideoHeightAlignment012', 0, async (done: Function) => {
+    it('testOhAvCapabilityGetVideoHeightAlignment012', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = mediacodecbasexdlndk.oHAvCapabilityGetVideoHeightAlignmentKnormal();
         expect(result != null).assertTrue();
@@ -2104,7 +2104,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCapabilityGetVideoHeightAlignment013', 0, async (done: Function) => {
+    it('testOhAvCapabilityGetVideoHeightAlignment013', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetVideoHeightAlignmentLnormal();
       expect(result).assertEqual(0);
       done();
@@ -2118,7 +2118,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCapabilityGetVideoHeightAlignment014', 0, async (done: Function) => {
+    it('testOhAvCapabilityGetVideoHeightAlignment014', Level.LEVEL0, async (done: Function) => {
       let result: number = mediacodecbasexdlndk.oHAvCapabilityGetVideoHeightAlignmentMnormal();
       expect(result).assertEqual(0);
       done();
@@ -2132,7 +2132,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCapabilityGetEncoderQualityRange001', 0, async (done: Function) => {
+    it('testOhAvCapabilityGetEncoderQualityRange001', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = mediacodecbasexdlndk.OH_AVCapability_GetEncoderQualityRange();
         expect(result != null).assertTrue();
@@ -2151,7 +2151,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCapabilityGetEncoderComplexityRange001', 0, async (done: Function) => {
+    it('testOhAvCapabilityGetEncoderComplexityRange001', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = mediacodecbasexdlndk.OH_AVCapability_GetEncoderComplexityRange();
         expect(result != null).assertTrue();
@@ -2170,7 +2170,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCapabilityGetAudioSupportedSampleRates001', 0, async (done: Function) => {
+    it('testOhAvCapabilityGetAudioSupportedSampleRates001', Level.LEVEL0, async (done: Function) => {
       expect(mediacodecbasexdlndk.OH_AVCapability_GetAudioSupportedSampleRates()).assertEqual(0);
       done();
     });
@@ -2183,7 +2183,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCapabilityGetAudioChannelCountRange001', 0, async (done: Function) => {
+    it('testOhAvCapabilityGetAudioChannelCountRange001', Level.LEVEL0, async (done: Function) => {
       expect(mediacodecbasexdlndk.OH_AVCapability_GetAudioChannelCountRange()).assertEqual(0);
       done();
     });
@@ -2196,7 +2196,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCapabilityGetVideoWidthAlignment001', 0, async (done: Function) => {
+    it('testOhAvCapabilityGetVideoWidthAlignment001', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = mediacodecbasexdlndk.OH_AVCapability_GetVideoWidthAlignment();
         expect(result != null).assertTrue();
@@ -2215,7 +2215,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCapabilityGetVideoHeightAlignment001', 0, async (done: Function) => {
+    it('testOhAvCapabilityGetVideoHeightAlignment001', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = mediacodecbasexdlndk.OH_AVCapability_GetVideoHeightAlignment();
         expect(result != null).assertTrue();
@@ -2234,7 +2234,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCodecGetCapability001', 0, async (done: Function) => {
+    it('testOhAvCodecGetCapability001', Level.LEVEL0, async (done: Function) => {
       expect(mediacodecbasexdlndk.OH_AVCodec_GetCapability()).assertEqual(0);
       done();
     });
@@ -2247,7 +2247,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCodecGetCapabilityByCategory001', 0, async (done: Function) => {
+    it('testOhAvCodecGetCapabilityByCategory001', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = mediacodecbasexdlndk.OH_AVCodec_GetCapabilityByCategory();
         expect(result != null).assertTrue();
@@ -2266,7 +2266,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCapabilityGetVideoWidthRange001', 0, async (done: Function) => {
+    it('testOhAvCapabilityGetVideoWidthRange001', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = mediacodecbasexdlndk.OH_AVCapability_GetVideoWidthRange();
         expect(result != null).assertTrue();
@@ -2285,7 +2285,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCapabilityGetVideoHeightRange001', 0, async (done: Function) => {
+    it('testOhAvCapabilityGetVideoHeightRange001', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = mediacodecbasexdlndk.OH_AVCapability_GetVideoHeightRange();
         expect(result != null).assertTrue();
@@ -2304,7 +2304,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCapabilityIsVideoSizeSupported001', 0, async (done: Function) => {
+    it('testOhAvCapabilityIsVideoSizeSupported001', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = mediacodecbasexdlndk.OH_AVCapability_IsVideoSizeSupported();
         expect(result != null).assertTrue();
@@ -2323,7 +2323,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCapabilityGetVideoFrameRateRange001', 0, async (done: Function) => {
+    it('testOhAvCapabilityGetVideoFrameRateRange001', Level.LEVEL0, async (done: Function) => {
       try {
             let result: number = mediacodecbasexdlndk.OH_AVCapability_GetVideoFrameRateRange();
             expect(result != null).assertTrue();
@@ -2342,7 +2342,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCapabilityGetVideoFrameRateRangeForSize001', 0, async (done: Function) => {
+    it('testOhAvCapabilityGetVideoFrameRateRangeForSize001', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = mediacodecbasexdlndk.OH_AVCapability_GetVideoFrameRateRangeForSize();
         expect(result != null).assertTrue();
@@ -2361,7 +2361,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCapabilityAreVideoSizeAndFrameRateSupported001', 0, async (done: Function) => {
+    it('testOhAvCapabilityAreVideoSizeAndFrameRateSupported001', Level.LEVEL0, async (done: Function) => {
       expect(mediacodecbasexdlndk.OH_AVCapability_AreVideoSizeAndFrameRateSupported()).assertEqual(0);
       done();
     });
@@ -2374,7 +2374,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCapabilityGetVideoSupportedPixelFormats001', 0, async (done: Function) => {
+    it('testOhAvCapabilityGetVideoSupportedPixelFormats001', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = mediacodecbasexdlndk.OH_AVCapability_GetVideoSupportedPixelFormats();
         expect(result != null).assertTrue();
@@ -2393,7 +2393,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCapabilityGetSupportedProfiles001', 0, async (done: Function) => {
+    it('testOhAvCapabilityGetSupportedProfiles001', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = mediacodecbasexdlndk.OH_AVCapability_GetSupportedProfiles();
         expect(result != null).assertTrue();
@@ -2412,7 +2412,7 @@ export default function mediaCodecBaseXdlNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCapabilityGetSupportedLevelsForProfile001', 0, async (done: Function) => {
+    it('testOhAvCapabilityGetSupportedLevelsForProfile001', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = mediacodecbasexdlndk.OH_AVCapability_GetSupportedLevelsForProfile();
         expect(result != null).assertTrue();

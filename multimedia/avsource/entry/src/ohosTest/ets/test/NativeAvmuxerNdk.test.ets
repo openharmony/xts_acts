@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from "@ohos/hypium"
+import { describe, it, expect, Level } from "@ohos/hypium"
 import nativeavmuxer from 'libnativeavmuxerndk.so'
 
 export default function nativeavmuxerNdkTest() {
@@ -27,7 +27,7 @@ export default function nativeavmuxerNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAVMuxerCreate001', 0, async (done: Function) => {
+    it('testOHAVMuxerCreate001', Level.LEVEL0, async (done: Function) => {
       let result: number = nativeavmuxer.oHAVMuxerCreate();
       expect(result).assertEqual(0);
       done();
@@ -41,7 +41,7 @@ export default function nativeavmuxerNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAVMuxerSetRotation001', 0, async (done: Function) => {
+    it('testOHAVMuxerSetRotation001', Level.LEVEL0, async (done: Function) => {
       let result: number = nativeavmuxer.oHAVMuxerSetRotation();
       expect(result).assertEqual(0);
       done();
@@ -55,7 +55,7 @@ export default function nativeavmuxerNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAVMuxerSetFormat001', 0, async (done: Function) => {
+    it('testOHAVMuxerSetFormat001', Level.LEVEL0, async (done: Function) => {
       let result: number = nativeavmuxer.oHAVMuxerSetFormat();
       expect(result).assertEqual(0);
       done();
@@ -69,7 +69,7 @@ export default function nativeavmuxerNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAVMuxerStart001', 0, async (done: Function) => {
+    it('testOHAVMuxerStart001', Level.LEVEL0, async (done: Function) => {
       let result: number = nativeavmuxer.oHAVMuxerStart();
       expect(result).assertEqual(0);
       done();
@@ -83,7 +83,7 @@ export default function nativeavmuxerNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAVMuxerStop001', 0, async (done: Function) => {
+    it('testOHAVMuxerStop001', Level.LEVEL0, async (done: Function) => {
       let result: number = nativeavmuxer.oHAVMuxerStop();
       expect(result).assertEqual(0);
       done();
@@ -97,7 +97,7 @@ export default function nativeavmuxerNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAVMuxerWriteSample001', 0, async (done: Function) => {
+    it('testOHAVMuxerWriteSample001', Level.LEVEL0, async (done: Function) => {
       let result: number = nativeavmuxer.oHAVMuxerWriteSample();
       expect(result).assertEqual(0);
       done();
@@ -111,7 +111,7 @@ export default function nativeavmuxerNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAVMuxerWriteSampleBuffer001', 0, async (done: Function) => {
+    it('testOHAVMuxerWriteSampleBuffer001', Level.LEVEL0, async (done: Function) => {
       let result: number = nativeavmuxer.OHAVMuxerWriteSampleBuffer();
       expect(result).assertEqual(0);
       done();
@@ -125,7 +125,7 @@ export default function nativeavmuxerNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAVMuxerAddTrack001', 0, async (done: Function) => {
+    it('testOHAVMuxerAddTrack001', Level.LEVEL0, async (done: Function) => {
       let result: number = nativeavmuxer.oHAVMuxerAddTrack();
       expect(result).assertEqual(0);
       done();
@@ -139,7 +139,7 @@ export default function nativeavmuxerNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAVMuxerDestroy001', 0, async (done: Function) => {
+    it('testOHAVMuxerDestroy001', Level.LEVEL0, async (done: Function) => {
       let result: number = nativeavmuxer.oHAVMuxerDestroy();
       expect(result).assertEqual(0);
       done();
@@ -153,7 +153,7 @@ export default function nativeavmuxerNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAVMuxerCreate002', 0, async (done: Function) => {
+    it('testOHAVMuxerCreate002', Level.LEVEL0, async (done: Function) => {
       let result: number = nativeavmuxer.oHAVMuxerCreateAbnormal();
       expect(result).assertEqual(0);
       done();
@@ -167,7 +167,7 @@ export default function nativeavmuxerNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAVMuxerSetRotation002', 0, async (done: Function) => {
+    it('testOHAVMuxerSetRotation002', Level.LEVEL0, async (done: Function) => {
       let result: number = nativeavmuxer.oHAVMuxerSetRotationAbnormal();
       expect(result).assertEqual(0);
       done();
@@ -181,7 +181,7 @@ export default function nativeavmuxerNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAVMuxerSetFormat002', 0, async (done: Function) => {
+    it('testOHAVMuxerSetFormat002', Level.LEVEL0, async (done: Function) => {
       let result: number = nativeavmuxer.oHAVMuxerSetFormatAbnormal();
       expect(result).assertEqual(0);
       done();
@@ -195,7 +195,7 @@ export default function nativeavmuxerNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAVMuxerStart002', 0, async (done: Function) => {
+    it('testOHAVMuxerStart002', Level.LEVEL0, async (done: Function) => {
       let result: number = nativeavmuxer.oHAVMuxerStartAbnormal();
       expect(result).assertEqual(0);
       done();
@@ -209,7 +209,7 @@ export default function nativeavmuxerNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAVMuxerStop002', 0, async (done: Function) => {
+    it('testOHAVMuxerStop002', Level.LEVEL0, async (done: Function) => {
       let result: number = nativeavmuxer.oHAVMuxerStopAbnormal();
       expect(result).assertEqual(0);
       done();
@@ -223,7 +223,7 @@ export default function nativeavmuxerNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAVMuxerWriteSample002', 0, async (done: Function) => {
+    it('testOHAVMuxerWriteSample002', Level.LEVEL0, async (done: Function) => {
       let result: number = nativeavmuxer.oHAVMuxerWriteSampleAbnormal();
       expect(result).assertEqual(0);
       done();
@@ -237,7 +237,7 @@ export default function nativeavmuxerNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAVMuxerAddTrack002', 0, async (done: Function) => {
+    it('testOHAVMuxerAddTrack002', Level.LEVEL0, async (done: Function) => {
       let result: number = nativeavmuxer.oHAVMuxerAddTrackAbnormal();
       expect(result).assertEqual(0);
       done();
@@ -251,7 +251,7 @@ export default function nativeavmuxerNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAVMuxerDestroy002', 0, async (done: Function) => {
+    it('testOHAVMuxerDestroy002', Level.LEVEL0, async (done: Function) => {
       let result: number = nativeavmuxer.oHAVMuxerDestroyAbnormal();
       expect(result).assertEqual(0);
       done();

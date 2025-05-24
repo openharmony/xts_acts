@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from "@ohos/hypium"
+import { describe, it, expect, Level } from "@ohos/hypium"
 import audioDecoderAvBuffer from 'libaudioDecoderAvBuffer.so'
 
 export default function audioDeCoderNdkTest() {
@@ -27,7 +27,7 @@ export default function audioDeCoderNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testOhAudioDecoderCreateByMime001', 0, async (done: Function) => {
+    it('testOhAudioDecoderCreateByMime001', Level.LEVEL0, async (done: Function) => {
       expect(audioDecoderAvBuffer.OH_AudioCodec_CreateByMime()).assertEqual(0);
       done();
     });
@@ -40,7 +40,7 @@ export default function audioDeCoderNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testOhAudioDecoderCreateByMime002', 0, async (done: Function) => {
+    it('testOhAudioDecoderCreateByMime002', Level.LEVEL0, async (done: Function) => {
       expect(audioDecoderAvBuffer.OHAudioDecoderAmrnb()).assertEqual(0);
       done();
     });
@@ -53,7 +53,7 @@ export default function audioDeCoderNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testOhAudioDecoderCreateByMime003', 0, async (done: Function) => {
+    it('testOhAudioDecoderCreateByMime003', Level.LEVEL0, async (done: Function) => {
       expect(audioDecoderAvBuffer.OHAudioDecoderAmrwb()).assertEqual(0);
       done();
     });
@@ -66,7 +66,7 @@ export default function audioDeCoderNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testOhAudioDecoderCreateByMime004', 0, async (done: Function) => {
+    it('testOhAudioDecoderCreateByMime004', Level.LEVEL0, async (done: Function) => {
       expect(audioDecoderAvBuffer.OHAudioDecoderOpus()).assertEqual(0);
       done();
     });
@@ -79,7 +79,7 @@ export default function audioDeCoderNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testOhAudioDecoderCreateByMime005', 0, async (done: Function) => {
+    it('testOhAudioDecoderCreateByMime005', Level.LEVEL0, async (done: Function) => {
       expect(audioDecoderAvBuffer.OHAudioDecoderG711Mu()).assertEqual(0);
       done();
     });
@@ -92,7 +92,7 @@ export default function audioDeCoderNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testOhAudioDecoderCreateByMime006', 0, async (done: Function) => {
+    it('testOhAudioDecoderCreateByMime006', Level.LEVEL0, async (done: Function) => {
       expect(audioDecoderAvBuffer.OHAudioDecoderViVid()).assertEqual(0);
       done();
     });
@@ -105,7 +105,7 @@ export default function audioDeCoderNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testOhAudioDecoderCreateByName001', 0, async (done: Function) => {
+    it('testOhAudioDecoderCreateByName001', Level.LEVEL0, async (done: Function) => {
       expect(audioDecoderAvBuffer.OH_AudioCodec_CreateByName()).assertEqual(0);
       done();
     });
@@ -118,7 +118,7 @@ export default function audioDeCoderNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testOhAudioDecoderDestroy001', 0, async (done: Function) => {
+    it('testOhAudioDecoderDestroy001', Level.LEVEL0, async (done: Function) => {
       expect(audioDecoderAvBuffer.OH_AudioCodec_Destroy()).assertEqual(0);
       done();
     });
@@ -131,7 +131,7 @@ export default function audioDeCoderNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testOhAudioDecoderSetCallback001', 0, async (done: Function) => {
+    it('testOhAudioDecoderSetCallback001', Level.LEVEL0, async (done: Function) => {
       expect(audioDecoderAvBuffer.OH_AudioCodec_RegisterCallback()).assertEqual(0);
       done();
     });
@@ -144,7 +144,7 @@ export default function audioDeCoderNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testOhAudioDecoderConfigure001', 0, async (done: Function) => {
+    it('testOhAudioDecoderConfigure001', Level.LEVEL0, async (done: Function) => {
       expect(audioDecoderAvBuffer.OH_AudioCodec_Configure()).assertEqual(0);
       done();
     });
@@ -157,7 +157,7 @@ export default function audioDeCoderNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testOhAudioDecoderPrepare001', 0, async (done: Function) => {
+    it('testOhAudioDecoderPrepare001', Level.LEVEL0, async (done: Function) => {
       expect(audioDecoderAvBuffer.OH_AudioCodec_Prepare()).assertEqual(0);
       done();
     });
@@ -170,7 +170,7 @@ export default function audioDeCoderNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testOhAudioDecoderStart001', 0, async (done: Function) => {
+    it('testOhAudioDecoderStart001', Level.LEVEL0, async (done: Function) => {
       expect(audioDecoderAvBuffer.OH_AudioCodec_Start()).assertEqual(0);
       done();
     });
@@ -183,7 +183,7 @@ export default function audioDeCoderNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testOhAudioDecoderStop001', 0, async (done: Function) => {
+    it('testOhAudioDecoderStop001', Level.LEVEL0, async (done: Function) => {
       expect(audioDecoderAvBuffer.OH_AudioCodec_Stop()).assertEqual(0);
       done();
     });
@@ -196,7 +196,7 @@ export default function audioDeCoderNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testOhAudioDecoderFlush001', 0, async (done: Function) => {
+    it('testOhAudioDecoderFlush001', Level.LEVEL0, async (done: Function) => {
       expect(audioDecoderAvBuffer.OH_AudioCodec_Flush()).assertEqual(0);
       done();
     });
@@ -209,7 +209,7 @@ export default function audioDeCoderNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testOhAudioDecoderReset001', 0, async (done: Function) => {
+    it('testOhAudioDecoderReset001', Level.LEVEL0, async (done: Function) => {
       expect(audioDecoderAvBuffer.OH_AudioCodec_Reset()).assertEqual(0);
       done();
     });
@@ -222,7 +222,7 @@ export default function audioDeCoderNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testOhAudioDecoderGetOutputDescription001', 0, async (done: Function) => {
+    it('testOhAudioDecoderGetOutputDescription001', Level.LEVEL0, async (done: Function) => {
       expect(audioDecoderAvBuffer.OH_AudioCodec_GetOutputDescription()).assertEqual(0);
       done();
     });
@@ -235,7 +235,7 @@ export default function audioDeCoderNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testOhAudioDecoderSetParameter001', 0, async (done: Function) => {
+    it('testOhAudioDecoderSetParameter001', Level.LEVEL0, async (done: Function) => {
       expect(audioDecoderAvBuffer.OH_AudioCodec_SetParameter()).assertEqual(0);
       done();
     });
@@ -248,7 +248,7 @@ export default function audioDeCoderNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testOhAudioDecoderIsValid001', 0, async (done: Function) => {
+    it('testOhAudioDecoderIsValid001', Level.LEVEL0, async (done: Function) => {
       expect(audioDecoderAvBuffer.OH_AudioCodec_IsValid()).assertEqual(0);
       done();
     });
@@ -261,7 +261,7 @@ export default function audioDeCoderNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAudioDecoderCreateByName002', 0, async (done: Function) => {
+    it('testOHAudioDecoderCreateByName002', Level.LEVEL0, async (done: Function) => {
       let result: number = audioDecoderAvBuffer.OHAudioDecoderCreateByNameAnormal();
       expect(result).assertEqual(0);
       done();
@@ -275,7 +275,7 @@ export default function audioDeCoderNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAudioDecoderCreateByName003', 0, async (done: Function) => {
+    it('testOHAudioDecoderCreateByName003', Level.LEVEL0, async (done: Function) => {
       let result: number = audioDecoderAvBuffer.OHAudioDecoderCreateByNameBnormal();
       expect(result).assertEqual(0);
       done();
@@ -289,7 +289,7 @@ export default function audioDeCoderNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAudioDecoderCreateByName004', 0, async (done: Function) => {
+    it('testOHAudioDecoderCreateByName004', Level.LEVEL0, async (done: Function) => {
       let result: number = audioDecoderAvBuffer.OHAudioDecoderCreateByNameCnormal();
       expect(result).assertEqual(0);
       done();
@@ -303,7 +303,7 @@ export default function audioDeCoderNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAudioDecoderDestroy002', 0, async (done: Function) => {
+    it('testOHAudioDecoderDestroy002', Level.LEVEL0, async (done: Function) => {
       let result: number = audioDecoderAvBuffer.OHAudioDecoderDestroyAnormal();
       expect(result).assertEqual(0);
       done();
@@ -317,7 +317,7 @@ export default function audioDeCoderNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAudioDecoderDestroy003', 0, async (done: Function) => {
+    it('testOHAudioDecoderDestroy003', Level.LEVEL0, async (done: Function) => {
       let result: number = audioDecoderAvBuffer.OHAudioDecoderDestroyBnormal();
       expect(result).assertEqual(0);
       done();
@@ -331,7 +331,7 @@ export default function audioDeCoderNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAudioDecoderDestroy004', 0, async (done: Function) => {
+    it('testOHAudioDecoderDestroy004', Level.LEVEL0, async (done: Function) => {
       let result: number = audioDecoderAvBuffer.OHAudioDecoderDestroyCnormal();
       expect(result).assertEqual(0);
       done();
@@ -345,7 +345,7 @@ export default function audioDeCoderNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAudioDecoderStart002', 0, async (done: Function) => {
+    it('testOHAudioDecoderStart002', Level.LEVEL0, async (done: Function) => {
       let result: number = audioDecoderAvBuffer.OHAudioDecoderStartAnormal();
       expect(result).assertEqual(0);
       done();
@@ -359,7 +359,7 @@ export default function audioDeCoderNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAudioDecoderStart003', 0, async (done: Function) => {
+    it('testOHAudioDecoderStart003', Level.LEVEL0, async (done: Function) => {
       let result: number = audioDecoderAvBuffer.OHAudioDecoderStartBnormal();
       expect(result).assertEqual(0);
       done();
@@ -373,7 +373,7 @@ export default function audioDeCoderNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAudioDecoderStart004', 0, async (done: Function) => {
+    it('testOHAudioDecoderStart004', Level.LEVEL0, async (done: Function) => {
       let result: number = audioDecoderAvBuffer.OHAudioDecoderStartCnormal();
       expect(result).assertEqual(-1);
       done();
@@ -387,7 +387,7 @@ export default function audioDeCoderNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAudioDecoderStop002', 0, async (done: Function) => {
+    it('testOHAudioDecoderStop002', Level.LEVEL0, async (done: Function) => {
       let result: number = audioDecoderAvBuffer.OHAudioDecoderStopAnormal();
       expect(result).assertEqual(0);
       done();
@@ -401,7 +401,7 @@ export default function audioDeCoderNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAudioDecoderStop003', 0, async (done: Function) => {
+    it('testOHAudioDecoderStop003', Level.LEVEL0, async (done: Function) => {
       let result: number = audioDecoderAvBuffer.OHAudioDecoderStopBnormal();
       expect(result).assertEqual(0);
       done();
@@ -415,7 +415,7 @@ export default function audioDeCoderNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAudioDecoderStop004', 0, async (done: Function) => {
+    it('testOHAudioDecoderStop004', Level.LEVEL0, async (done: Function) => {
       let result: number = audioDecoderAvBuffer.OHAudioDecoderStopCnormal();
       expect(result).assertEqual(-1);
       done();
@@ -429,7 +429,7 @@ export default function audioDeCoderNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAudioDecoderFlush002', 0, async (done: Function) => {
+    it('testOHAudioDecoderFlush002', Level.LEVEL0, async (done: Function) => {
       let result: number = audioDecoderAvBuffer.OHAudioDecoderFlushAnormal();
       expect(result).assertEqual(0);
       done();
@@ -443,7 +443,7 @@ export default function audioDeCoderNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAudioDecoderFlush003', 0, async (done: Function) => {
+    it('testOHAudioDecoderFlush003', Level.LEVEL0, async (done: Function) => {
       let result: number = audioDecoderAvBuffer.OHAudioDecoderFlushBnormal();
       expect(result).assertEqual(0);
       done();
@@ -457,7 +457,7 @@ export default function audioDeCoderNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAudioDecoderFlush004', 0, async (done: Function) => {
+    it('testOHAudioDecoderFlush004', Level.LEVEL0, async (done: Function) => {
       let result: number = audioDecoderAvBuffer.OHAudioDecoderFlushCnormal();
       expect(result).assertEqual(-1);
       done();
@@ -471,7 +471,7 @@ export default function audioDeCoderNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAudioDecoderReset002', 0, async (done: Function) => {
+    it('testOHAudioDecoderReset002', Level.LEVEL0, async (done: Function) => {
       let result: number = audioDecoderAvBuffer.OHAudioDecoderResetAnormal();
       expect(result).assertEqual(0);
       done();
@@ -485,7 +485,7 @@ export default function audioDeCoderNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAudioDecoderReset003', 0, async (done: Function) => {
+    it('testOHAudioDecoderReset003', Level.LEVEL0, async (done: Function) => {
       let result: number = audioDecoderAvBuffer.OHAudioDecoderResetBnormal();
       expect(result).assertEqual(0);
       done();
@@ -499,7 +499,7 @@ export default function audioDeCoderNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAudioDecoderReset004', 0, async (done: Function) => {
+    it('testOHAudioDecoderReset004', Level.LEVEL0, async (done: Function) => {
       let result: number = audioDecoderAvBuffer.OHAudioDecoderResetCnormal();
       expect(result).assertEqual(-1);
       done();
@@ -513,7 +513,7 @@ export default function audioDeCoderNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAudioDecoderGetOutputDescription002', 0, async (done: Function) => {
+    it('testOHAudioDecoderGetOutputDescription002', Level.LEVEL0, async (done: Function) => {
       let result: number = audioDecoderAvBuffer.OHAudioDecoderGetOutputDescriptionAnormal();
       expect(result).assertEqual(0);
       done();
@@ -527,7 +527,7 @@ export default function audioDeCoderNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAudioDecoderGetOutputDescription003', 0, async (done: Function) => {
+    it('testOHAudioDecoderGetOutputDescription003', Level.LEVEL0, async (done: Function) => {
       let result: number = audioDecoderAvBuffer.OHAudioDecoderGetOutputDescriptionBnormal();
       expect(result).assertEqual(0);
       done();
@@ -541,7 +541,7 @@ export default function audioDeCoderNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAudioDecoderGetOutputDescription004', 0, async (done: Function) => {
+    it('testOHAudioDecoderGetOutputDescription004', Level.LEVEL0, async (done: Function) => {
       let result: number = audioDecoderAvBuffer.OHAudioDecoderGetOutputDescriptionCnormal();
       expect(result).assertEqual(-1);
       done();
@@ -555,7 +555,7 @@ export default function audioDeCoderNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAudioDecoderSetParameter002', 0, async (done: Function) => {
+    it('testOHAudioDecoderSetParameter002', Level.LEVEL0, async (done: Function) => {
       let result: number = audioDecoderAvBuffer.OHAudioDecoderSetParameterAnormal();
       expect(result).assertEqual(0);
       done();
@@ -569,7 +569,7 @@ export default function audioDeCoderNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAudioDecoderSetParameter003', 0, async (done: Function) => {
+    it('testOHAudioDecoderSetParameter003', Level.LEVEL0, async (done: Function) => {
       let result: number = audioDecoderAvBuffer.OHAudioDecoderSetParameterBnormal();
       expect(result).assertEqual(0);
       done();
@@ -583,7 +583,7 @@ export default function audioDeCoderNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAudioDecoderSetParameter004', 0, async (done: Function) => {
+    it('testOHAudioDecoderSetParameter004', Level.LEVEL0, async (done: Function) => {
       let result: number = audioDecoderAvBuffer.OHAudioDecoderSetParameterCnormal();
       expect(result).assertEqual(-1);
       done();
@@ -597,7 +597,7 @@ export default function audioDeCoderNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAudioDecoderIsValid002', 0, async (done: Function) => {
+    it('testOHAudioDecoderIsValid002', Level.LEVEL0, async (done: Function) => {
       let result: number = audioDecoderAvBuffer.OHAudioDecoderIsValidAnormal();
       expect(result).assertEqual(0);
       done();
@@ -611,7 +611,7 @@ export default function audioDeCoderNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAudioDecoderIsValid003', 0, async (done: Function) => {
+    it('testOHAudioDecoderIsValid003', Level.LEVEL0, async (done: Function) => {
       let result: number = audioDecoderAvBuffer.OHAudioDecoderIsValidBnormal();
       expect(result).assertEqual(0);
       done();
@@ -625,7 +625,7 @@ export default function audioDeCoderNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAudioDecoderIsValid004', 0, async (done: Function) => {
+    it('testOHAudioDecoderIsValid004', Level.LEVEL0, async (done: Function) => {
       let result: number = audioDecoderAvBuffer.OHAudioDecoderIsValidCnormal();
       expect(result).assertEqual(-1);
       done();
@@ -639,7 +639,7 @@ export default function audioDeCoderNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAudioDecoderPushInputBuffer001', 0, async (done: Function) => {
+    it('testOHAudioDecoderPushInputBuffer001', Level.LEVEL0, async (done: Function) => {
       let result: number = audioDecoderAvBuffer.OHAudioDecoderPushInputBuffer();
       expect(result).assertEqual(0);
       done();
@@ -653,7 +653,7 @@ export default function audioDeCoderNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAudioDecoderFreeOutputBuffer001', 0, async (done: Function) => {
+    it('testOHAudioDecoderFreeOutputBuffer001', Level.LEVEL0, async (done: Function) => {
       let result: number = audioDecoderAvBuffer.OHAudioDecoderFreeOutputBuffer();
       expect(result).assertEqual(0);
       done();
@@ -667,7 +667,7 @@ export default function audioDeCoderNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAudioDecoderOutputFormatChange0100', 0, async (done: Function) => {
+    it('testOHAudioDecoderOutputFormatChange0100', Level.LEVEL0, async (done: Function) => {
       expect(audioDecoderAvBuffer.OHAudioDecoderOutputFormatChange()).assertEqual(0);
       done();
     });

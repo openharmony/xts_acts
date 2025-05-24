@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { describe, expect, it, Level } from '@ohos/hypium'
 import MultimediaCore from 'libmultimediaCore.so'
 
 export default function audioDecoderTest() {
@@ -27,7 +27,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMultimediaCoreAVFormatCreate001', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatCreate001', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatCreate();
       expect(result).assertEqual(0)
       done()
@@ -41,7 +41,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatCreateAudioFormat001', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatCreateAudioFormat001', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatCreateAudioFormatOne();
       expect(result).assertEqual(0);
       done();
@@ -55,7 +55,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatCreateAudioFormat002', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatCreateAudioFormat002', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatCreateAudioFormatTwo();
       expect(result).assertEqual(0);
       done();
@@ -69,7 +69,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatCreateVideoFormat001', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatCreateVideoFormat001', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatCreateVideoFormatOne();
       expect(result).assertEqual(0);
       done();
@@ -83,7 +83,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatCreateVideoFormat002', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatCreateVideoFormat002', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatCreateVideoFormatTwo();
       expect(result).assertEqual(0);
       done();
@@ -97,7 +97,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCoreMultimediaCoreAVFormatCopy001', 0, async (done: Function) => {
+    it('testCoreMultimediaCoreAVFormatCopy001', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatCopyOne();
       expect(result).assertEqual(0);
       done();
@@ -111,7 +111,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCoreMultimediaCoreAVFormatCopy002', 0, async (done: Function) => {
+    it('testCoreMultimediaCoreAVFormatCopy002', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatCopyTwo();
       expect(result).assertEqual(0);
       done();
@@ -125,7 +125,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCoreMultimediaCoreAVFormatCopy003', 0, async (done: Function) => {
+    it('testCoreMultimediaCoreAVFormatCopy003', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatCopyThree();
       expect(result).assertEqual(0);
       done();
@@ -139,7 +139,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCoreMultimediaCoreAVFormatDestroy001', 0, async (done: Function) => {
+    it('testCoreMultimediaCoreAVFormatDestroy001', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatDestroy();
       expect(result).assertEqual(0);
       done();
@@ -153,7 +153,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCoreMultimediaCoreAVFormatDumpInfo001', 0, async (done: Function) => {
+    it('testCoreMultimediaCoreAVFormatDumpInfo001', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatDumpInfoOne();
       expect(result).assertEqual(0);
       done();
@@ -167,7 +167,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCoreMultimediaCoreAVFormatDumpInfo002', 0, async (done: Function) => {
+    it('testCoreMultimediaCoreAVFormatDumpInfo002', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatDumpInfoTwo();
       expect(result).assertEqual(0);
       done();
@@ -181,7 +181,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatGetBuffer001', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatGetBuffer001', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatGetBufferOne();
       expect(result).assertEqual(0);
       done();
@@ -195,7 +195,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatGetBuffer002', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatGetBuffer002', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatGetBufferTwo();
       expect(result).assertEqual(0);
       done();
@@ -209,7 +209,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatGetBuffer003', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatGetBuffer003', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatGetBufferThree();
       expect(result).assertEqual(0);
       done();
@@ -222,7 +222,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatGetBuffer004', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatGetBuffer004', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatGetBufferFour();
       expect(result).assertEqual(0);
       done();
@@ -235,7 +235,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatGetBuffer005', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatGetBuffer005', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatGetBufferFive();
       expect(result).assertEqual(0);
       done();
@@ -249,7 +249,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatGetDoubleValue001', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatGetDoubleValue001', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatGetDoubleValueOne();
       expect(result).assertEqual(0);
       done();
@@ -263,7 +263,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatGetDoubleValue002', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatGetDoubleValue002', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatGetDoubleValueTwo();
       expect(result).assertEqual(0);
       done();
@@ -277,7 +277,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatGetDoubleValue003', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatGetDoubleValue003', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatGetDoubleValueThree();
       expect(result).assertEqual(0);
       done();
@@ -291,7 +291,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatGetDoubleValue004', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatGetDoubleValue004', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatGetDoubleValueFour();
       expect(result).assertEqual(0);
       done();
@@ -305,7 +305,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatGetDoubleValue005', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatGetDoubleValue005', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatGetDoubleValueFive();
       expect(result).assertEqual(0);
       done();
@@ -319,7 +319,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatGetFloatValue001', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatGetFloatValue001', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatGetFloatValueOne();
       expect(result).assertEqual(0);
       done();
@@ -333,7 +333,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatGetFloatValue002', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatGetFloatValue002', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatGetFloatValueTwo();
       expect(result).assertEqual(0);
       done();
@@ -347,7 +347,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatGetFloatValue003', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatGetFloatValue003', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatGetFloatValueThree();
       expect(result).assertEqual(0);
       done();
@@ -361,7 +361,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatGetFloatValue004', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatGetFloatValue004', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatGetFloatValueFour();
       expect(result).assertEqual(0);
       done();
@@ -375,7 +375,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatGetFloatValue005', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatGetFloatValue005', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatGetFloatValueFive();
       expect(result).assertEqual(0);
       done();
@@ -389,7 +389,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatGetIntValue001', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatGetIntValue001', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatGetIntValueOne();
       expect(result).assertEqual(0);
       done();
@@ -403,7 +403,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatGetIntValue002', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatGetIntValue002', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatGetIntValueTwo();
       expect(result).assertEqual(0);
       done();
@@ -417,7 +417,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatGetIntValue003', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatGetIntValue003', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatGetIntValueThree();
       expect(result).assertEqual(0);
       done();
@@ -431,7 +431,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatGetIntValue004', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatGetIntValue004', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatGetIntValueFour();
       expect(result).assertEqual(0);
       done();
@@ -445,7 +445,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatGetIntValue005', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatGetIntValue005', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatGetIntValueFive();
       expect(result).assertEqual(0);
       done();
@@ -459,7 +459,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatGetLongValue001', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatGetLongValue001', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatGetLongValueOne();
       expect(result).assertEqual(0);
       done();
@@ -473,7 +473,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatGetLongValue002', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatGetLongValue002', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatGetLongValueTwo();
       expect(result).assertEqual(0);
       done();
@@ -487,7 +487,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatGetLongValue003', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatGetLongValue003', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatGetLongValueThree();
       expect(result).assertEqual(0);
       done();
@@ -501,7 +501,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatGetLongValue004', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatGetLongValue004', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatGetLongValueFour();
       expect(result).assertEqual(0);
       done();
@@ -515,7 +515,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatGetLongValue005', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatGetLongValue005', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatGetLongValueFive();
       expect(result).assertEqual(0);
       done();
@@ -529,7 +529,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatGetStringValue001', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatGetStringValue001', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatGetStringValueOne();
       expect(result).assertEqual(0);
       done();
@@ -543,7 +543,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatGetStringValue002', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatGetStringValue002', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatGetStringValueTwo();
       expect(result).assertEqual(0);
       done();
@@ -557,7 +557,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatGetStringValue003', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatGetStringValue003', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatGetStringValueThree();
       expect(result).assertEqual(0);
       done();
@@ -571,7 +571,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatGetStringValue004', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatGetStringValue004', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatGetStringValueFour();
       expect(result).assertEqual(0);
       done();
@@ -585,7 +585,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatGetStringValue005', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatGetStringValue005', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatGetStringValueFive();
       expect(result).assertEqual(0);
       done();
@@ -599,7 +599,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCoreMultimediaCoreAVFormatSetBuffer001', 0, async (done: Function) => {
+    it('testCoreMultimediaCoreAVFormatSetBuffer001', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetBufferOne();
       expect(result).assertEqual(0);
       done();
@@ -613,7 +613,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCoreMultimediaCoreAVFormatSetBuffer002', 0, async (done: Function) => {
+    it('testCoreMultimediaCoreAVFormatSetBuffer002', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetBufferTwo();
       expect(result).assertEqual(0);
       done();
@@ -627,7 +627,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCoreMultimediaCoreAVFormatSetBuffer003', 0, async (done: Function) => {
+    it('testCoreMultimediaCoreAVFormatSetBuffer003', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetBufferThree();
       expect(result).assertEqual(0);
       done();
@@ -641,7 +641,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetBuffer004', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetBuffer004', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetBufferFour();
       expect(result).assertEqual(0);
       done();
@@ -655,7 +655,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetDoubleValue001', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetDoubleValue001', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetDoubleValueOne();
       expect(result).assertEqual(0);
       done();
@@ -669,7 +669,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetDoubleValue002', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetDoubleValue002', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetDoubleValueTwo();
       expect(result).assertEqual(0);
       done();
@@ -683,7 +683,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetDoubleValue003', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetDoubleValue003', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetDoubleValueThree();
       expect(result).assertEqual(0);
       done();
@@ -697,7 +697,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetFloatValue001', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetFloatValue001', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetFloatValueOne();
       expect(result).assertEqual(0);
       done();
@@ -711,7 +711,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetFloatValue002', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetFloatValue002', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetFloatValueTwo();
       expect(result).assertEqual(0);
       done();
@@ -725,7 +725,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetFloatValue003', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetFloatValue003', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetFloatValueThree();
       expect(result).assertEqual(0);
       done();
@@ -739,7 +739,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetIntValue001', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetIntValue001', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetIntValueOne();
       expect(result).assertEqual(0);
       done();
@@ -753,7 +753,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetIntValue002', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetIntValue002', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetIntValueTwo();
       expect(result).assertEqual(0);
       done();
@@ -767,7 +767,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetIntValue003', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetIntValue003', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetIntValueThree();
       expect(result).assertEqual(0);
       done();
@@ -781,7 +781,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetLongValue001', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetLongValue001', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetLongValueOne();
       expect(result).assertEqual(0);
       done();
@@ -795,7 +795,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetLongValue002', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetLongValue002', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetLongValueTwo();
       expect(result).assertEqual(0);
       done();
@@ -809,7 +809,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetLongValue003', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetLongValue003', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetLongValueThree();
       expect(result).assertEqual(0);
       done();
@@ -823,7 +823,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetStringValue001', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetStringValue001', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.MultimediaCoreAVFormatSetStringValueOne();
       expect(result).assertEqual(0);
       done();
@@ -837,7 +837,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetStringValue002', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetStringValue002', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.MultimediaCoreAVFormatSetStringValueTwo();
       expect(result).assertEqual(0);
       done();
@@ -851,7 +851,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetStringValue003', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetStringValue003', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.MultimediaCoreAVFormatSetStringValueThree();
       expect(result).assertEqual(0);
       done();
@@ -865,7 +865,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetStringValue004', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetStringValue004', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.MultimediaCoreAVFormatSetStringValueFour();
       expect(result).assertEqual(0);
       done();
@@ -879,7 +879,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVMemoryCreate001', 0, async (done: Function) => {
+    it('testMultimediaCoreAVMemoryCreate001', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVMemoryCreateOne();
       expect(result).assertEqual(0);
       done();
@@ -893,7 +893,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVMemoryCreate002', 0, async (done: Function) => {
+    it('testMultimediaCoreAVMemoryCreate002', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVMemoryCreateTwo();
       expect(result).assertEqual(0);
       done();
@@ -907,7 +907,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVMemoryDestroy001', 0, async (done: Function) => {
+    it('testMultimediaCoreAVMemoryDestroy001', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVMemoryDestroyOne();
       expect(result).assertEqual(0);
       done();
@@ -921,7 +921,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVMemoryDestroy002', 0, async (done: Function) => {
+    it('testMultimediaCoreAVMemoryDestroy002', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVMemoryDestroyTwo();
       expect(result).assertEqual(0);
       done();
@@ -936,7 +936,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVMemoryGetAddr001', 0, async (done: Function) => {
+    it('testMultimediaCoreAVMemoryGetAddr001', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVMemoryGetAddrOne();
       expect(result).assertEqual(0);
       done();
@@ -950,7 +950,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVMemoryGetAddr002', 0, async (done: Function) => {
+    it('testMultimediaCoreAVMemoryGetAddr002', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVMemoryGetAddrTwo();
       expect(result).assertEqual(0);
       done();
@@ -964,7 +964,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVMemoryGetSize001', 0, async (done: Function) => {
+    it('testMultimediaCoreAVMemoryGetSize001', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVMemoryGetSizeOne();
       expect(result).assertEqual(0);
       done();
@@ -978,7 +978,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVMemoryGetSize002', 0, async (done: Function) => {
+    it('testMultimediaCoreAVMemoryGetSize002', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVMemoryGetSizeTwo();
       expect(result).assertEqual(0);
       done();
@@ -992,7 +992,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCoreMultimediaCoreAVFormatCreateAudioFormat001', 0, async (done: Function) => {
+    it('testCoreMultimediaCoreAVFormatCreateAudioFormat001', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatCreateAudioFormatAVC();
       expect(result).assertEqual(0);
       done();
@@ -1006,7 +1006,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCoreMultimediaCoreAVFormatCreateAudioFormat002', 0, async (done: Function) => {
+    it('testCoreMultimediaCoreAVFormatCreateAudioFormat002', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatCreateAudioFormatVORBIS();
       expect(result).assertEqual(0);
       done();
@@ -1020,7 +1020,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatCreateAudioFormat003', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatCreateAudioFormat003', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatCreateAudioFormatVORBISMPEG();
       expect(result).assertEqual(0);
       done();
@@ -1034,7 +1034,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCoreMultimediaCoreAVFormatCreateVideoFormat001', 0, async (done: Function) => {
+    it('testCoreMultimediaCoreAVFormatCreateVideoFormat001', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatCreateVideoFormatHEVC();
       expect(result).assertEqual(0);
       done();
@@ -1048,7 +1048,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCoreMultimediaCoreAVFormatCreateVideoFormat002', 0, async (done: Function) => {
+    it('testCoreMultimediaCoreAVFormatCreateVideoFormat002', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatCreateVideoFormatMPEG4();
       expect(result).assertEqual(0);
       done();
@@ -1062,7 +1062,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatDestroy001', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatDestroy001', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatDestroyVideoHEVC();
       expect(result).assertEqual(0);
       done();
@@ -1076,7 +1076,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatDestroy002', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatDestroy002', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatDestroyVideoMPEG4();
       expect(result).assertEqual(0);
       done();
@@ -1090,7 +1090,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatDestroy003', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatDestroy003', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatDestroyAudioFLAC();
       expect(result).assertEqual(0);
       done();
@@ -1104,7 +1104,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatDestroy004', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatDestroy004', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatDestroyAudioAAC();
       expect(result).assertEqual(0);
       done();
@@ -1118,7 +1118,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatDestroy005', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatDestroy005', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatDestroyAudioVORBIS();
       expect(result).assertEqual(0);
       done();
@@ -1132,7 +1132,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatDestroy006', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatDestroy006', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatDestroyAudioMPEG();
       expect(result).assertEqual(0);
       done();
@@ -1146,7 +1146,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatCopy001', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatCopy001', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatCopyVideoHEVC();
       expect(result).assertEqual(0);
       done();
@@ -1160,7 +1160,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatCopy002', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatCopy002', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatCopyVideoMPEG4();
       expect(result).assertEqual(0);
       done();
@@ -1174,7 +1174,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatCopy003', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatCopy003', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatCopyAudioAAC();
       expect(result).assertEqual(0);
       done();
@@ -1188,7 +1188,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatCopy004', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatCopy004', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatCopyAudioFLAC();
       expect(result).assertEqual(0);
       done();
@@ -1202,7 +1202,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatCopy005', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatCopy005', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatCopyAudioVORBIS();
       expect(result).assertEqual(0);
       done();
@@ -1216,7 +1216,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatCopy006', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatCopy006', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatCopyAudioMPEG();
       expect(result).assertEqual(0);
       done();
@@ -1230,7 +1230,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatDumpInfo001', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatDumpInfo001', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatDumpInfoARTIST();
       expect(result).assertEqual(0);
       done();
@@ -1244,7 +1244,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatDumpInfo002', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatDumpInfo002', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatDumpInfoALBUM();
       expect(result).assertEqual(0);
       done();
@@ -1258,7 +1258,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatDumpInfo003', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatDumpInfo003', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatDumpInfoALBUMARTIST();
       expect(result).assertEqual(0);
       done();
@@ -1272,7 +1272,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatDumpInfo004', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatDumpInfo004', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatDumpInfoDATE();
       expect(result).assertEqual(0);
       done();
@@ -1286,7 +1286,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatDumpInfo005', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatDumpInfo005', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatDumpInfoCOMMENT();
       expect(result).assertEqual(0);
       done();
@@ -1300,7 +1300,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatDumpInfo006', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatDumpInfo006', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatDumpInfoGENRE();
       expect(result).assertEqual(0);
       done();
@@ -1314,7 +1314,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatDumpInfo007', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatDumpInfo007', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatDumpInfoCOPYRIGHT();
       expect(result).assertEqual(0);
       done();
@@ -1328,7 +1328,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatDumpInfo008', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatDumpInfo008', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatDumpInfoLANGUAGE();
       expect(result).assertEqual(0);
       done();
@@ -1342,7 +1342,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatDumpInfo009', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatDumpInfo009', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatDumpInfoDESCRIPTION();
       expect(result).assertEqual(0);
       done();
@@ -1356,7 +1356,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatDumpInfo010', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatDumpInfo010', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatDumpInfoLYRICS();
       expect(result).assertEqual(0);
       done();
@@ -1370,7 +1370,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetBuffer001', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetBuffer001', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetBufferAll(1);
       expect(result).assertEqual(0);
       done();
@@ -1384,7 +1384,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetBuffer002', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetBuffer002', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetBufferAll(2);
       expect(result).assertEqual(0);
       done();
@@ -1398,7 +1398,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetBuffer003', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetBuffer003', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetBufferAll(3);
       expect(result).assertEqual(0);
       done();
@@ -1412,7 +1412,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCoreMultimediaCoreAVFormatSetBuffer004', 0, async (done: Function) => {
+    it('testCoreMultimediaCoreAVFormatSetBuffer004', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetBufferAll(4);
       expect(result).assertEqual(0);
       done();
@@ -1426,7 +1426,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetBuffer005', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetBuffer005', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetBufferAll(5);
       expect(result).assertEqual(0);
       done();
@@ -1440,7 +1440,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetBuffer006', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetBuffer006', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetBufferAll(6);
       expect(result).assertEqual(0);
       done();
@@ -1454,7 +1454,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetBuffer007', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetBuffer007', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetBufferAll(7);
       expect(result).assertEqual(0);
       done();
@@ -1468,7 +1468,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetBuffer008', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetBuffer008', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetBufferAll(8);
       expect(result).assertEqual(0);
       done();
@@ -1482,7 +1482,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetBuffer009', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetBuffer009', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetBufferAll(9);
       expect(result).assertEqual(0);
       done();
@@ -1496,7 +1496,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetBuffer010', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetBuffer010', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetBufferAll(10);
       expect(result).assertEqual(0);
       done();
@@ -1510,7 +1510,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetBuffer011', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetBuffer011', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetBufferAll(11);
       expect(result).assertEqual(0);
       done();
@@ -1524,7 +1524,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetBuffer012', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetBuffer012', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetBufferAll(12);
       expect(result).assertEqual(0);
       done();
@@ -1538,7 +1538,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetBuffer013', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetBuffer013', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetBufferAll(13);
       expect(result).assertEqual(0);
       done();
@@ -1552,7 +1552,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetBuffer014', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetBuffer014', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetBufferAll(14);
       expect(result).assertEqual(0);
       done();
@@ -1566,7 +1566,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetBuffer015', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetBuffer015', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetBufferAll(15);
       expect(result).assertEqual(0);
       done();
@@ -1580,7 +1580,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetBuffer016', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetBuffer016', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetBufferAll(16);
       expect(result).assertEqual(0);
       done();
@@ -1594,7 +1594,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetBuffer017', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetBuffer017', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetBufferAll(17);
       expect(result).assertEqual(0);
       done();
@@ -1608,7 +1608,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetBuffer018', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetBuffer018', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetBufferAll(18);
       expect(result).assertEqual(0);
       done();
@@ -1622,7 +1622,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetBuffer019', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetBuffer019', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetBufferAll(19);
       expect(result).assertEqual(0);
       done();
@@ -1636,7 +1636,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetBuffer020', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetBuffer020', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetBufferAll(20);
       expect(result).assertEqual(0);
       done();
@@ -1650,7 +1650,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetBuffer021', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetBuffer021', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetBufferAll(21);
       expect(result).assertEqual(0);
       done();
@@ -1664,7 +1664,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetBuffer022', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetBuffer022', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetBufferAll(22);
       expect(result).assertEqual(0);
       done();
@@ -1678,7 +1678,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetBuffer023', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetBuffer023', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetBufferAll(23);
       expect(result).assertEqual(0);
       done();
@@ -1692,7 +1692,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetBuffer024', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetBuffer024', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetBufferAll(24);
       expect(result).assertEqual(0);
       done();
@@ -1706,7 +1706,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetBuffer025', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetBuffer025', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetBufferAll(25);
       expect(result).assertEqual(0);
       done();
@@ -1720,7 +1720,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetBuffer026', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetBuffer026', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetBufferAll(26);
       expect(result).assertEqual(0);
       done();
@@ -1734,7 +1734,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetBuffer027', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetBuffer027', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetBufferAll(27);
       expect(result).assertEqual(0);
       done();
@@ -1748,7 +1748,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetBuffer028', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetBuffer028', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetBufferAll(28);
       expect(result).assertEqual(0);
       done();
@@ -1762,7 +1762,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetBuffer029', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetBuffer029', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetBufferAll(29);
       expect(result).assertEqual(0);
       done();
@@ -1776,7 +1776,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetBuffer030', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetBuffer030', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetBufferAll(30);
       expect(result).assertEqual(0);
       done();
@@ -1790,7 +1790,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetBuffer031', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetBuffer031', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetBufferAll(31);
       expect(result).assertEqual(0);
       done();
@@ -1804,7 +1804,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetBuffer032', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetBuffer032', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetBufferAll(32);
       expect(result).assertEqual(0);
       done();
@@ -1818,7 +1818,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetBuffer033', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetBuffer033', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetBufferAll(33);
       expect(result).assertEqual(0);
       done();
@@ -1832,7 +1832,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetBuffer034', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetBuffer034', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetBufferAll(34);
       expect(result).assertEqual(0);
       done();
@@ -1846,7 +1846,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetBuffer035', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetBuffer035', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetBufferAll(35);
       expect(result).assertEqual(0);
       done();
@@ -1860,7 +1860,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetBuffer036', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetBuffer036', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetBufferAll(36);
       expect(result).assertEqual(0);
       done();
@@ -1874,7 +1874,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetBuffer037', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetBuffer037', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetBufferAll(37);
       expect(result).assertEqual(0);
       done();
@@ -1888,7 +1888,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetBuffer038', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetBuffer038', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetBufferAll(38);
       expect(result).assertEqual(0);
       done();
@@ -1902,7 +1902,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetBuffer039', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetBuffer039', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetBufferAll(39);
       expect(result).assertEqual(0);
       done();
@@ -1916,7 +1916,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetBuffer040', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetBuffer040', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetBufferAll(40);
       expect(result).assertEqual(0);
       done();
@@ -1930,7 +1930,7 @@ export default function audioDecoderTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetBuffer041', 0, async (done: Function) => {
+    it('testMultimediaCoreAVFormatSetBuffer041', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetBufferAll(41);
       expect(result).assertEqual(0);
       done();
@@ -1944,7 +1944,7 @@ export default function audioDecoderTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testMultimediaCoreAVBufferCreate001', 0, async (done: Function) => {
+    it('testMultimediaCoreAVBufferCreate001', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVBufferCreate();
       expect(result).assertEqual(0);
       done();
@@ -1958,7 +1958,7 @@ export default function audioDecoderTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testMultimediaCoreAVBufferDestroy001', 0, async (done: Function) => {
+    it('testMultimediaCoreAVBufferDestroy001', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVBufferDestroy();
       expect(result).assertEqual(0);
       done();
@@ -1972,7 +1972,7 @@ export default function audioDecoderTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testMultimediaCoreAVBufferGetBufferAttr001', 0, async (done: Function) => {
+    it('testMultimediaCoreAVBufferGetBufferAttr001', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVBufferGetBufferAttr();
       expect(result).assertEqual(0);
       done();
@@ -1986,7 +1986,7 @@ export default function audioDecoderTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testMultimediaCoreAVBufferSetBufferAttr001', 0, async (done: Function) => {
+    it('testMultimediaCoreAVBufferSetBufferAttr001', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVBufferSetBufferAttr();
       expect(result).assertEqual(0);
       done();
@@ -2000,7 +2000,7 @@ export default function audioDecoderTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testMultimediaCoreAVBufferGetParameter001', 0, async (done: Function) => {
+    it('testMultimediaCoreAVBufferGetParameter001', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVBufferGetParameter();
       expect(result).assertEqual(0);
       done();
@@ -2014,7 +2014,7 @@ export default function audioDecoderTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testMultimediaCoreAVBufferSetParameter001', 0, async (done: Function) => {
+    it('testMultimediaCoreAVBufferSetParameter001', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVBufferSetParameter();
       expect(result).assertEqual(0);
       done();
@@ -2028,7 +2028,7 @@ export default function audioDecoderTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testMultimediaCoreAVBufferGetAddr001', 0, async (done: Function) => {
+    it('testMultimediaCoreAVBufferGetAddr001', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVBufferGetAddr();
       expect(result).assertEqual(0);
       done();
@@ -2042,7 +2042,7 @@ export default function audioDecoderTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testMultimediaCoreAVBufferGetCapacity001', 0, async (done: Function) => {
+    it('testMultimediaCoreAVBufferGetCapacity001', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVBufferGetCapacity();
       expect(result).assertEqual(0);
       done();
@@ -2056,7 +2056,7 @@ export default function audioDecoderTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testMultimediaCoreAVBufferGetNativeBuffer001', 0, async (done: Function) => {
+    it('testMultimediaCoreAVBufferGetNativeBuffer001', Level.LEVEL0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVBufferGetNativeBuffer();
       expect(result).assertEqual(0);
       done();
