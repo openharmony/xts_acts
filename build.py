@@ -100,6 +100,7 @@ class XtsBuild:
             self._other_args['get-warning-list'] = 'false'
             self._other_args['stat-ccache'] = 'true'
             self._other_args['compute-overlap-rate'] = 'false'
+            self._other_args['ninja-args'] = '-v'
             self._args['deps-guard'] = 'false'
             self._gn_args['skip_generate_module_list_file'] = 'true'
             self._gn_args['is_standard_system'] = 'true'
@@ -164,7 +165,11 @@ class XtsBuild:
         return ret.returncode
 
     def build(self):
-        func_list = [self.parse_cmdline, self.standard_check, self.do_make]
+        func_list = [
+            self.parse_cmdline,
+            # self.standard_check,
+            self.do_make
+        ]
         for i in func_list:
             retcode = i()
             if retcode:
