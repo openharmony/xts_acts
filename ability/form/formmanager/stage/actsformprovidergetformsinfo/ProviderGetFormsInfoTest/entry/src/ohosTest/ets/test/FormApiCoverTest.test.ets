@@ -391,5 +391,28 @@ export default function FormApiCoverTest() {
       }
       console.info(`${name} end`);
     });
+
+    /*
+     * @tc.number  GetFormRect_Cover_0100
+     * @tc.name    GetFormRect_Cover_0100
+     * @tc.desc    Function GetFormRect covered test
+     * @tc.size:   MediumTest
+     * @tc.type:   Function
+     * @tc.level   Level 1
+     */
+    it(`GetFormRect_Cover_0100`, 0, async (done:Function) => {
+      let name: string = 'GetFormRect_Cover_0100';
+      console.info(`${name} start`);
+      try {
+        formProvider.getFormRect("1");
+        console.log(`${name} getFormRect`);
+        console.log(`${name} should not reach here`);
+        done();
+      } catch (error) {
+        expect().assertFail();
+        done();
+      }
+      console.info(`${name} end`);
+    });
   })
 }
