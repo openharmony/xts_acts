@@ -2148,7 +2148,7 @@ function testTurnOffWifiList() {
       expect(error.code == 203).assertTrue();
     } finally {
       restrictions.setDisallowedPolicy(SELFWANT, LABEL_WIFI, false);
-      await adminManager.disableAdmin(SELFHAPNAME);
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
     }
     wifiManager.turnOnWifi(SELFWANT, true);
     done();
