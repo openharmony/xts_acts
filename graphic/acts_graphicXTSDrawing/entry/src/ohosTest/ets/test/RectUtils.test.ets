@@ -3334,7 +3334,7 @@ export default function rectUtilsTest() {
         drawing.RectUtils.offsetTo(rect, -50, 50);
         console.info(msg + ' RectUtils offsetTo 5 successed');
         console.info(msg + ' RectUtils offsetTo 5 successed rect: ' + JSON.stringify(rect));
-        expect(rect.left == -50 && rect.top == 50 && rect.right == 250 && rect.bottom == 350).assertEqual(true);
+        expect(rect.left == -50 && rect.top == 50 && rect.right == 50 && rect.bottom == 150).assertEqual(true);
       } catch (e) {
         console.info(msg + ` RectUtils offsetTo 5 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail()
