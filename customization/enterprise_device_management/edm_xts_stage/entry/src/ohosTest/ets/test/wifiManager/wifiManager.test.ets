@@ -2124,7 +2124,8 @@ function testTurnOffWifiList() {
     } catch (error) {
       expect(false).assertTrue();
     } finally {
-       await adminManager.disableSuperAdmin(SELFHAPNAME);
+      wifiManager.turnOnWifi(SELFWANT, true);
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
     }
     done();
   });
@@ -2150,7 +2151,6 @@ function testTurnOffWifiList() {
       restrictions.setDisallowedPolicy(SELFWANT, LABEL_WIFI, false);
       await adminManager.disableSuperAdmin(SELFHAPNAME);
     }
-    wifiManager.turnOnWifi(SELFWANT, true);
     done();
   });
 
