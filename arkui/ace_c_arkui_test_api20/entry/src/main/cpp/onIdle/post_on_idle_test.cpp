@@ -136,7 +136,7 @@ napi_value PostOnIdleTest::testPostOnIdle001(napi_env env, napi_callback_info in
         }
         if (targetId == NUMBER_4) {
             g_myUserData = NUMBER_41;
-            auto b = OH_ArkUI_PostIdleCallback(context, &myUserData, nullptr);
+            auto b = OH_ArkUI_PostIdleCallback(context, &g_myUserData, nullptr);
             OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager", "PostOnIdleTest code = %{public}d", b);
             if (b == ARKUI_ERROR_CODE_CALLBACK_INVALID) {
                 nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
@@ -144,7 +144,7 @@ napi_value PostOnIdleTest::testPostOnIdle001(napi_env env, napi_callback_info in
         }
         if (targetId == NUMBER_5) {
             g_myUserData = NUMBER_42;
-            auto c = OH_ArkUI_PostIdleCallback(nullptr, &myUserData, PostOnIdleTest::CallBack);
+            auto c = OH_ArkUI_PostIdleCallback(nullptr, &g_myUserData, PostOnIdleTest::CallBack);
             OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager", "PostOnIdleTest code = %{public}d", c);
             if (c == ARKUI_ERROR_CODE_UI_CONTEXT_INVALID) {
                 nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
