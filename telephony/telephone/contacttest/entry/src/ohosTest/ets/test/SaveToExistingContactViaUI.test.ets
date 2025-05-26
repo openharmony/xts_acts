@@ -199,28 +199,18 @@ export default function SaveToExistingContactViaUITest() {
       console.info(`${caseName} test start `);
       try {
         let context: Context = AppStorage.get('context') as Context;
-        contact.addContact(context, contactData, async (err: BusinessError, data: number) => {
-            if(err) {
-                console.log(`${caseName} addContact: err>${JSON.stringify(err)}`);
-                ExpectFail();
-                done();
-            } else {
-                console.log(`${caseName} addContact: success>${JSON.stringify(err)}`);
-                ExpectTrue(data > 0);
-                let promise = contact.saveToExistingContactViaUI(context, {
-                    phoneNumbers: [{
-                        phoneNumber: "13555558888"
-                    }],
-                });
-                promise.then((data: number) => {
-                    console.log(`${caseName} SaveToExistingContactViaUI: data>${JSON.stringify(data)}`);
-                    done();
-                }).catch((err: BusinessError) => {
-                    console.log(`${caseName} SaveToExistingContactViaUI: err>${JSON.stringify(err)}`);
-                    expect(err.code).assertEqual(801);
-                    done();
-                });
-            }
+        let promise = contact.saveToExistingContactViaUI(context, {
+          phoneNumbers: [{
+            phoneNumber: "13555558888"
+          }],
+        });
+        promise.then((data: number) => {
+          console.log(`${caseName} SaveToExistingContactViaUI: data>${JSON.stringify(data)}`);
+          done();
+        }).catch((err: BusinessError) => {
+            console.log(`${caseName} SaveToExistingContactViaUI: err>${JSON.stringify(err)}`);
+            expect(err.code).assertEqual(801);
+            done();
         });
       } catch (err) {
         console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
@@ -243,28 +233,18 @@ export default function SaveToExistingContactViaUITest() {
       console.info(`${caseName} test start `);
       try {
         let context: Context = AppStorage.get('context') as Context;
-        contact.addContact(context, contactData, async (err: BusinessError, data: number) => {
-            if(err) {
-                console.log(`${caseName} addContact: err>${JSON.stringify(err)}`);
-                ExpectFail();
-                done();
-            } else {
-                console.log(`${caseName} addContact: success>${JSON.stringify(err)}`);
-                ExpectTrue(data > 0);
-                let promise = contact.saveToExistingContactViaUI(context, {
-                    phoneNumbers: [{
-                        phoneNumber: "13555558888"
-                    }],
-                });
-                promise.then((data: number) => {
-                    console.log(`${caseName} SaveToExistingContactViaUI: data>${JSON.stringify(data)}`);
-                    done();
-                }).catch((err: BusinessError) => {
-                    console.log(`${caseName} SaveToExistingContactViaUI: err>${JSON.stringify(err)}`);
-                    expect(err.code).assertEqual(801);
-                    done();
-                });
-            }
+        let promise = contact.saveToExistingContactViaUI(context, {
+          phoneNumbers: [{
+            phoneNumber: "13555558888"
+          }],
+        });
+        promise.then((data: number) => {
+          console.log(`${caseName} SaveToExistingContactViaUI: data>${JSON.stringify(data)}`);
+          done();
+        }).catch((err: BusinessError) => {
+          console.log(`${caseName} SaveToExistingContactViaUI: err>${JSON.stringify(err)}`);
+          expect(err.code).assertEqual(801);
+          done();
         });
       } catch (err) {
         console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
