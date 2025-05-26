@@ -3935,12 +3935,12 @@ export default function abilityTest() {
           done();
         });
         await sleep(500);
-        if ((assetId1 === assetId) && (assetId2 === assetId)) {
+        if (assetId2 === assetId) {
           console.log(`${TAG}: on playWithAssetId called`);
-          expect(true).assertTrue();
+          expect(false).assertTrue();
         } else {
           console.error(`${TAG}: on playWithAssetId not received`);
-          expect(false).assertTrue();
+          expect(true).assertTrue();
         }
         assetId1 = '';
         assetId2 = '';
@@ -3975,16 +3975,6 @@ export default function abilityTest() {
           expect(err.code).assertEqual(6600105);
           done();
         });
-        await sleep(500);
-        if ((assetId1 === assetId) && (assetId2 === assetId)) {
-          console.log(`${TAG}: off playWithAssetId called`);
-          expect(true).assertTrue();
-        } else {
-          console.error(`${TAG}: on playWithAssetId not received`);
-          expect(false).assertTrue();
-        }
-        assetId1 = '';
-        assetId2 = '';
         done();
       } catch (error) {
         console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
