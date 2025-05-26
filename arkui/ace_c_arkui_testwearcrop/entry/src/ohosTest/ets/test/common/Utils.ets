@@ -120,7 +120,8 @@ export default class Utils {
   static async doubleClickComponent(id: string) {
     let driver = Driver.create();
     let component = await driver.findComponent(ON.id(id));
-    await component.doubleClick();
+    await component.click();
+    await component.click();
   }
 
   static async clickLocation(X: number, Y: number) {
