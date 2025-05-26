@@ -40,6 +40,10 @@
 #define NUM_4 4
 #define NUM_5 5
 #define NUM_6 6
+#define NUM_7 7
+#define NUM_8 8
+#define NUM_9 9
+#define NUM_10 10
 #define MAX_BUFFER_SIZE 512
 #define MAX_COLOR_SIZE 96
 #define MAX_QUALITY_SIZE 98
