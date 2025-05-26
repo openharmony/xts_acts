@@ -51,20 +51,94 @@ export default function SplitPlaceholder() {
     /**
      * @tc.number    SplitPlaceholder_0100
      * @tc.name      SplitPlaceholder_0100
-     * @tc.desc      Test navDestinationId、setPathStack、getPathStack
+     * @tc.desc      Test  SplitPlaceholder exist
      * @tc.level     Level 0
      */
     it('SplitPlaceholder_0100', Level.LEVEL0, async (done: Function) => {
-      console.info('SplitPlaceholder_0100 START');
+      console.info('[SplitPlaceholder_0100] START');
       await CommonFunc.sleep(500);
       let driver = Driver.create();
       await driver.delayMs(1000);
 
       let obj1: ESObject = JSON.parse(JSON.stringify(getInspectorTree()));
       await CommonFunc.sleep(1000);
-      console.log('SplitPlaceholder_0100 getInspectorTree is ', JSON.stringify(getInspectorTree()))
+
       console.log('SplitPlaceholder_0100: ', JSON.stringify(obj1.$children[0].$children[3]))
-      console.info('SplitPlaceholder_0100 END');
+      console.log('SplitPlaceholder_0100]: ', obj1.$children[0].$children[3].$type)
+
+      await driver.assertComponentExist(ON.type('SplitPlaceholderContentNode'));
+
+      console.info('[SplitPlaceholder_0100] END');
+      done();
+    });
+
+    /**
+     * @tc.number    SplitPlaceholder_0200
+     * @tc.name      SplitPlaceholder_0200
+     * @tc.desc      Test set SplitPlaceholder null
+     * @tc.level     Level 0
+     */
+    it('SplitPlaceholder_0200', Level.LEVEL0, async (done: Function) => {
+      console.info('[SplitPlaceholder_0200] START');
+      await CommonFunc.sleep(500);
+      let driver = Driver.create();
+      await driver.delayMs(1000);
+
+      let btn4: Component = await driver.findComponent(ON.id('btn4'));
+      await btn4.click()
+      console.info('[SplitPlaceholder_0200] btn4 click');
+      await driver.delayMs(1000);
+
+      let splitPlaceholderContentNode: Component | null = await driver.findComponent(ON.type('SplitPlaceholderContentNode'));
+      expect(splitPlaceholderContentNode).assertEqual(null);
+
+      console.info('[SplitPlaceholder_0200] END');
+      done();
+    });
+
+    /**
+     * @tc.number    SplitPlaceholder_0300
+     * @tc.name      SplitPlaceholder_0300
+     * @tc.desc      Test set SplitPlaceholder undefined
+     * @tc.level     Level 0
+     */
+    it('SplitPlaceholder_0300', Level.LEVEL0, async (done: Function) => {
+      console.info('[SplitPlaceholder_0300] START');
+      await CommonFunc.sleep(500);
+      let driver = Driver.create();
+      await driver.delayMs(1000);
+
+      let btn5: Component = await driver.findComponent(ON.id('btn5'));
+      await btn5.click()
+      console.info('[SplitPlaceholder_0300] btn5 click');
+      await driver.delayMs(1000);
+
+      let splitPlaceholderContentNode: Component | null = await driver.findComponent(ON.type('SplitPlaceholderContentNode'));
+      expect(splitPlaceholderContentNode).assertEqual(null);
+      console.info('[SplitPlaceholder_0300] END');
+      done();
+    });
+
+    /**
+     * @tc.number    SplitPlaceholder_0400
+     * @tc.name      SplitPlaceholder_0400
+     * @tc.desc      Test set SplitPlaceholder 空节点
+     * @tc.level     Level 0
+     */
+    it('SplitPlaceholder_0400', Level.LEVEL0, async (done: Function) => {
+      console.info('[SplitPlaceholder_0400] START');
+      await CommonFunc.sleep(500);
+      let driver = Driver.create();
+      await driver.delayMs(1000);
+
+      let btn3: Component = await driver.findComponent(ON.id('btn3'));
+      await btn3.click()
+      console.info('[SplitPlaceholder_0400] btn3 click');
+      await driver.delayMs(1000);
+
+      let splitPlaceholderContentNode: Component | null = await driver.findComponent(ON.type('SplitPlaceholderContentNode'));
+      expect(splitPlaceholderContentNode).assertEqual(null);
+      console.info('[SplitPlaceholder_0400] END');
       done();
     });
 
