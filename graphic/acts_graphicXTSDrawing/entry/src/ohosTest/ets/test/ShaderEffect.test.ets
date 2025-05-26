@@ -1414,7 +1414,7 @@ export default function shadowEffectTest() {
         expect().assertFail();
       } catch( e ) {
         console.info(msg + ` createLightingColorFilter shader errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
-        expect(e.code).assertEqual(401);
+        expect(e.code).assertEqual(25900001);
       }
     });
     /**
@@ -1619,7 +1619,7 @@ export default function shadowEffectTest() {
         expect().assertFail();
       } catch( e ) {
         console.info(msg + ` createImageShader imageShader errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
-        expect(e.code).assertEqual(401);
+        expect(e.code).assertEqual(25900001);
       }
       try {
         let imageShader2 = drawing.ShaderEffect.createImageShader(pixel, drawing.TileMode.REPEAT, 10, options, matrix);
@@ -1627,7 +1627,7 @@ export default function shadowEffectTest() {
         expect().assertFail();
       } catch( e ) {
         console.info(msg + ` createImageShader imageShader2 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
-        expect(e.code).assertEqual(401);
+        expect(e.code).assertEqual(25900001);
       }
     });
   })
