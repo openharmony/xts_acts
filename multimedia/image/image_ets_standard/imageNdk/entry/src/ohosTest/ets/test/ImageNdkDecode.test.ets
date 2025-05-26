@@ -80,9 +80,9 @@ export default function imageNdkDecodeTest() {
      * @tc.desc     : 1.getimagepath,2.createImageSourceFromFd,3.CreateDecodingOptions,4.DecodingOptionsSetDesiredSize, 5.DecodingOptionsSetDesiredRegion,6.CreatePixelMap
      * @tc.size     : MediumTest
      * @tc.type     : Functional
-     * @tc.level    : Level 0
+     * @tc.level    : Level 2
      */
-    it("SUB_MULTIMEDIA_IMAGE_NDK_CROP_AND_SCALE_Strategy_0010", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_NDK_CROP_AND_SCALE_Strategy_0010", Level.LEVEL2, async (done: Function) => {
       const tag = 'SUB_MULTIMEDIA_IMAGE_NDK_CROP_AND_SCALE_Strategy_0010';
       await Ndk_CropAndScaleStrategyDecode(done, 'pixel_bmp_1440x1920.bmp', tag, 800, 800, 0, 0, 500, 1000, 800, 800);
     })

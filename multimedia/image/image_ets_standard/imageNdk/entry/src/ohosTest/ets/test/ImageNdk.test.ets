@@ -1061,6 +1061,34 @@ export default function imageNdkTest() {
     }
   }
 
+  const Ndk_CropAndScaleStrategyDecode = async (done: Function, filename: string, TAG: string, desiredWidth: number, desiredHeight: number, regionX: number, regionY: number, regionWidth: number, regionHeight: number, imageWidth:number, imageHeight:number) => {
+      try {
+        await getFd(filename);
+        let result = await ndkTest.testCropAndScaleStrategy(fileFd, desiredWidth, desiredHeight, regionX, regionY, regionWidth, regionHeight, imageWidth, imageHeight);
+        hilog.info(0x0000, 'ImageNdkCropAndScaleStrategyTest', '%{public}s', TAG + ` result is `+ result);
+        expect(result == 0).assertTrue();
+        hilog.info(0x0000, 'ImageNdkCropAndScaleStrategyTest', '%{public}s', TAG + ` test success`);
+        done();
+      } catch (error) {
+        hilog.info(0x0000, 'ImageNdkCropAndScaleStrategyTest', '%{public}s', TAG + ` test fail`);
+        expect(false).assertTrue();
+        done();
+      }
+    }
+
+    /**
+     * @tc.number   : SUB_MULTIMEDIA_IMAGE_NDK_CROP_AND_SCALE_Strategy_0010
+     * @tc.name     : CreatePixelMap
+     * @tc.desc     : 1.getimagepath,2.createImageSourceFromFd,3.CreateDecodingOptions,4.DecodingOptionsSetDesiredSize, 5.DecodingOptionsSetDesiredRegion,6.CreatePixelMap
+     * @tc.size     : MediumTest
+     * @tc.type     : Functional
+     * @tc.level    : Level 2
+     */
+    it("SUB_MULTIMEDIA_IMAGE_NDK_CROP_AND_SCALE_Strategy_0010", Level.LEVEL2, async (done: Function) => {
+      const tag = 'SUB_MULTIMEDIA_IMAGE_NDK_CROP_AND_SCALE_Strategy_0010';
+      await Ndk_CropAndScaleStrategyDecode(done, 'pixel_bmp_1440x1920.bmp', tag, 800, 800, 0, 0, 500, 1000, 800, 800);
+    })
+
     /*
      * @tc.number    : SUB_MULTIMEDIA_PIXELMAPCAPI_InitializationOptions_0100
      * @tc.name      : testInitializationOptions
