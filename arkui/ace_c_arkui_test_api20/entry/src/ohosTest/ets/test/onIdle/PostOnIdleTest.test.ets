@@ -48,6 +48,9 @@ export default function PostOnIdleTest(){
       let button3 = await driver.findComponent(ON.id('onClick3'));
       await button3.click();
       await Utils.sleep(1000)
+      let button5 = await driver.findComponent(ON.id('onClick5'));
+      await button5.click();
+      await Utils.sleep(1000)
       expect(Utils.getComponentInfoByKey('onClick1').$attrs.backgroundColor).assertEqual('#FF00FF00')
       expect(Utils.getComponentInfoByKey('onClick2').$attrs.backgroundColor).assertEqual('#FF00FF00')
       expect(Utils.getComponentInfoByKey('onClick3').$attrs.backgroundColor).assertEqual('#FF00FF00')
