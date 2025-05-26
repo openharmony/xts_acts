@@ -106,3 +106,5 @@ export const AssertImageSize: (width:number, height:number) => number;
 export const GetPropertyWithNull: () => number;
 export const GetMimeTypeWithNull: () => number;
 export const GetImagePropertyWithNull: (fd:number) => number;
+export const testCropAndScaleStrategy: (fd:number, desiredWidth:number, desiredHeight:number, regionX:number, regionY:number, 
+                                        regionWidth:number, regionHight:number, imageWidth:number, imageHeight:number) => number;
