@@ -217,7 +217,7 @@ export default function SaveToExistingContactViaUITest() {
                     done();
                 }).catch((err: BusinessError) => {
                     console.log(`${caseName} SaveToExistingContactViaUI: err>${JSON.stringify(err)}`);
-                    except(err.code).assertEqual(801);
+                    expect(err.code).assertEqual(801);
                     done();
                 });
             }
@@ -261,7 +261,7 @@ export default function SaveToExistingContactViaUITest() {
                     done();
                 }).catch((err: BusinessError) => {
                     console.log(`${caseName} SaveToExistingContactViaUI: err>${JSON.stringify(err)}`);
-                    except(err.code).assertEqual(801);
+                    expect(err.code).assertEqual(801);
                     done();
                 });
             }
