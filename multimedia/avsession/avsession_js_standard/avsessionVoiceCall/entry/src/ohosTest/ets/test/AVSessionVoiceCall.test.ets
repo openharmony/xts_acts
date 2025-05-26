@@ -2819,14 +2819,14 @@ export default function abilityTest() {
       } catch (error) {
         console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
         expect(false).assertTrue();
-        done();
+        done();f
       }
     })
 
     /* *
      * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ON_CALLSTATECHANGE_0500
      * @tc.name      : ON_CALLSTATECHANGE_0500
-     * @tc.desc      : Testing on('callStateChange')
+     * @tc.desc      : Testing on('callStateChange')f
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level2
@@ -3928,7 +3928,7 @@ export default function abilityTest() {
       try {
         session.on('playWithAssetId', playWithAssetIdCallback1);
         session.on('playWithAssetId', playWithAssetIdCallback2);
-        await session.off('playWithAssetId'，playWithAssetIdCallback2);
+        await session.off('playWithAssetId', playWithAssetIdCallback2);
         await controller.sendControlCommand(command).catch((err: BusinessError) => {
           console.info(`${TAG}: sendControlCommand failed, error: [${err.code}, ${err.message}]`);
           expect(false).assertTrue();
@@ -4003,7 +4003,7 @@ export default function abilityTest() {
      */
     it('SUB_MULTIMEDIA_AVSESSION_OFF_PLAYWITHASSETID_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async (done: Function) => {
       try {
-        await session.off('playWithAssetId')；
+        await session.off('playWithAssetId');
       } catch (error) {
         if (error.code == 6600101) {
           console.info(`${TAG}: off playWithAssetId without avsession test success, error: code: ${error.code}, message: ${error.message}`);
