@@ -127,6 +127,9 @@ export default function UIContextNavDestinationUpdate() {
       console.info('[UIContextNavDestinationUpdate_0300] offBtn click');
       await driver.delayMs(1000);
 
+      AppStorage.delete('navDestinationName');
+      await driver.delayMs(1000);
+
       let pushTwoBtn: Component = await driver.findComponent(ON.id('pushTwoId'));
       await pushTwoBtn.click()
       console.info('[UIContextNavDestinationUpdate_0300] pushTwoBtn click');
