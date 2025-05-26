@@ -307,12 +307,19 @@ export default function FormApiCoverTest() {
      */
     it(`RequestOverflow_Cover_0100`, 0, async (done:Function) => {
       let name: string = 'RequestOverflow_Cover_0100';
+      let rect: formInfo.Rect = {
+        left: -25,
+        top: -25,
+        width: 200,
+        height:200
+      };
+      let overflowInfo: formInfo.OverflowInfo = {
+        area: rect,
+        duration: 3000
+      };
       console.info(`${name} start`);
       try {
-        formProvider.requestOverflow("1", {
-          area: {left: -30, top: -30, width: 200, height: 200},
-          duration: 3500
-        });
+        formProvider.requestOverflow("1", overflowInfo);
         console.log(`${name} RequestOverflow`);
         console.log(`${name} should not reach here`);
         done();
