@@ -258,6 +258,338 @@ export default function typefaceTest() {
         expect(e.code).assertEqual(401)
       }
     });
-
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_TYPEFACE_0400
+     * @tc.name      : testTypeFaceMakeFromFileWithArgumentsNormal
+     * @tc.desc      : testTypeFaceMakeFromFileWithArgumentsNormal
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testTypeFaceMakeFromFileWithArgumentsNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, () => {
+      const msg = 'testTypeFaceMakeFromFileWithArgumentsNormal';
+      let str = "/system/fonts/HarmonyOS_Sans_Italic.ttf";
+      try {
+        let typeFaceArgument = new drawing.TypefaceArguments();
+        let mytypeface = drawing.Typeface.makeFromFileWithArguments(str, typeFaceArgument);
+        console.info(msg + ' makeFromFileWithArguments successed');
+        expect(mytypeface != null || mytypeface != undefined).assertTrue()
+      } catch (e) {
+        console.info(msg + ` makeFromFileWithArguments errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_TYPEFACE_0401
+     * @tc.name      : testTypeFaceMakeFromFileWithArgumentsMultipleCalls
+     * @tc.desc      : testTypeFaceMakeFromFileWithArgumentsMultipleCalls
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testTypeFaceMakeFromFileWithArgumentsMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
+      const msg = 'testTypeFaceMakeFromFileWithArgumentsMultipleCalls';
+      for (let i = 0; i < 20; i++) {
+        let str = "/system/fonts/HarmonyOS_Sans_Italic.ttf";
+        try {
+          let typeFaceArgument = new drawing.TypefaceArguments();
+          let mytypeface = drawing.Typeface.makeFromFileWithArguments(str, typeFaceArgument);
+          console.info(msg + ' makeFromFileWithArguments successed step: ' + i );
+          expect(mytypeface != null || mytypeface != undefined).assertTrue()
+        } catch (e) {
+          console.info(msg + ` makeFromFileWithArguments errorCode is:  ${e.code}, errorMessage is: ${e.message} step: ${i}`);
+          expect().assertFail();
+        }
+      }
+    });
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_TYPEFACE_0402
+     * @tc.name      : testTypeFaceMakeFromFileWithArgumentsNull
+     * @tc.desc      : testTypeFaceMakeFromFileWithArgumentsNull
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testTypeFaceMakeFromFileWithArgumentsNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
+      const msg = 'testTypeFaceMakeFromFileWithArgumentsNull';
+      let str = "/system/fonts/HarmonyOS_Sans_Italic.ttf";
+      try {
+        let typeFaceArgument = new drawing.TypefaceArguments();
+        let mytypeface = drawing.Typeface.makeFromFileWithArguments(null, typeFaceArgument);
+        console.info(msg + ` makeFromFileWithArguments mytypeface success`);
+        expect().assertFail();
+      } catch (e) {
+        console.info(msg + ` makeFromFileWithArguments mytypeface errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
+        expect(e.code).assertEqual(401)
+      }
+      try {
+        let typeFaceArgument = new drawing.TypefaceArguments();
+        let mytypeface2 = drawing.Typeface.makeFromFileWithArguments(undefined, typeFaceArgument);
+        console.info(msg + ` makeFromFileWithArguments mytypeface2 success`);
+        expect().assertFail();
+      } catch (e) {
+        console.info(msg + ` makeFromFileWithArguments mytypeface2 errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
+        expect(e.code).assertEqual(401)
+      }
+      try {
+        let typeFaceArgument = new drawing.TypefaceArguments();
+        let mytypeface3 = drawing.Typeface.makeFromFileWithArguments(str, null);
+        console.info(msg + ` makeFromFileWithArguments mytypeface3 success`);
+        expect().assertFail();
+      } catch (e) {
+        console.info(msg + ` makeFromFileWithArguments mytypeface3 errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
+        expect(e.code).assertEqual(401)
+      }
+      try {
+        let typeFaceArgument = new drawing.TypefaceArguments();
+        let mytypeface4 = drawing.Typeface.makeFromFileWithArguments(str, undefined);
+        console.info(msg + ` makeFromFileWithArguments mytypeface4 success`);
+        expect().assertFail();
+      } catch (e) {
+        console.info(msg + ` makeFromFileWithArguments mytypeface4 errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
+        expect(e.code).assertEqual(401)
+      }
+      try {
+        let typeFaceArgument = new drawing.TypefaceArguments();
+        let mytypeface5 = drawing.Typeface.makeFromFileWithArguments("", typeFaceArgument);
+        console.info(msg + ` makeFromFileWithArguments mytypeface5 success`);
+        expect(mytypeface5).assertEqual(undefined);
+      } catch (e) {
+        console.info(msg + ` makeFromFileWithArguments mytypeface5 errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_TYPEFACE_0403
+     * @tc.name      : testTypeFaceMakeFromFileWithArgumentsAbnormal
+     * @tc.desc      : testTypeFaceMakeFromFileWithArgumentsAbnormal
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testTypeFaceMakeFromFileWithArgumentsAbnormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
+      const msg = 'testTypeFaceMakeFromFileWithArgumentsAbnormal';
+      let typeFaceArgument = new drawing.TypefaceArguments();
+      try {
+        let mytypeface1 = drawing.Typeface.makeFromFileWithArguments('testTypeFaceMakeFromFileWithArgumentsAbnormal', typeFaceArgument);
+        console.info(msg + ` makeFromFileWithArguments mytypeface1 success`);
+        expect(mytypeface1).assertEqual(undefined);
+      } catch (e) {
+        console.info(msg + ` makeFromFileWithArguments mytypeface1 errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
+        expect().assertFail();
+      }
+      try {
+        let mytypeface2 = drawing.Typeface.makeFromFileWithArguments('/system/fonts', typeFaceArgument);
+        console.info(msg + ` makeFromFileWithArguments mytypeface2 success`);
+        expect(mytypeface2).assertEqual(undefined);
+      } catch (e) {
+        console.info(msg + ` makeFromFileWithArguments mytypeface2 errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_TYPEFACE_0500
+     * @tc.name      : testTypeFaceMakeFromCurrentNormal
+     * @tc.desc      : testTypeFaceMakeFromCurrentNormal
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testTypeFaceMakeFromCurrentNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, () => {
+      const msg = 'testTypeFaceMakeFromCurrentNormal';
+      let typeArguments = new drawing.TypefaceArguments();
+      let myTypeFace = drawing.Typeface.makeFromFile("/system/fonts/HarmonyOS_Sans_SC.ttf");
+      try {
+        let  typeFace1 = myTypeFace.makeFromCurrent(typeArguments);
+        console.info(msg + ' makeFromCurrent typeFace1 successed');
+        expect(typeFace1 != null || typeFace1 != undefined).assertTrue()
+      } catch (e) {
+        console.info(msg + ` makeFromFileWithArguments typeFace1 errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
+        expect().assertFail();
+      }
+      typeArguments.addVariation("wght", 100);
+      try {
+        let  typeFace2 = myTypeFace.makeFromCurrent(typeArguments);
+        console.info(msg + ' makeFromCurrent typeFace2 successed');
+        expect(typeFace2 != null || typeFace2 != undefined).assertTrue()
+      } catch (e) {
+        console.info(msg + ` makeFromFileWithArguments typeFace2  errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_TYPEFACE_0501
+     * @tc.name      : testTypeFaceMakeFromCurrentMultipleCalls
+     * @tc.desc      : testTypeFaceMakeFromCurrentMultipleCalls
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testTypeFaceMakeFromCurrentMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
+      const msg = 'testTypeFaceMakeFromCurrentMultipleCalls';
+      for (let i = 0; i < 20; i++) {
+        let typeArguments = new drawing.TypefaceArguments();
+        let myTypeFace = drawing.Typeface.makeFromFile("/system/fonts/HarmonyOS_Sans_SC.ttf");
+        try {
+          let  typeFace1 = myTypeFace.makeFromCurrent(typeArguments)
+          console.info(msg + ' makeFromCurrent successed step: ' + i );
+          expect(typeFace1 != null || typeFace1 != undefined).assertTrue()
+        } catch (e) {
+          console.info(msg + ` makeFromCurrent errorCode is:  ${e.code}, errorMessage is: ${e.message} step: ${i}`);
+          expect().assertFail();
+        }
+      }
+    });
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_TYPEFACE_0502
+     * @tc.name      : testTypeFaceMakeFromCurrentNull
+     * @tc.desc      : testTypeFaceMakeFromCurrentNull
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testTypeFaceMakeFromCurrentNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
+      const msg = 'testTypeFaceMakeFromCurrentNull';
+      let typeArguments = new drawing.TypefaceArguments();
+      let myTypeFace = drawing.Typeface.makeFromFile("/system/fonts/HarmonyOS_Sans_SC.ttf");
+      try {
+        let typeFace1 = myTypeFace.makeFromCurrent(null);
+        console.info(msg + ` makeFromCurrent typeFace1 success`);
+        expect().assertFail();
+      } catch (e) {
+        console.info(msg + ` makeFromCurrent typeFace1 errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
+        expect(e.code).assertEqual(401)
+      }
+      try {
+        let typeFace2 = myTypeFace.makeFromCurrent(undefined);
+        console.info(msg + ` makeFromCurrent typeFace2 success`);
+        expect().assertFail();
+      } catch (e) {
+        console.info(msg + ` makeFromCurrent typeFace2 errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
+        expect(e.code).assertEqual(401)
+      }
+    });
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_TYPEFACE_0600
+     * @tc.name      : testTypeFaceMakeFromRawFileWithArgumentsNormal
+     * @tc.desc      : testTypeFaceMakeFromRawFileWithArgumentsNormal
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('testTypeFaceMakeFromRawFileWithArgumentsNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, () => {
+      const msg = 'testTypeFaceMakeFromRawFileWithArgumentsNormal';
+      let typeFaceArgument = new drawing.TypefaceArguments();
+      try {
+        let myTypeFace = drawing.Typeface.makeFromRawFileWithArguments($rawfile('HarmonyOS_Sans_Condensed.ttf'), typeFaceArgument);
+        console.info(msg + ' makeFromRawFileWithArguments myTypeFace successed');
+        expect(myTypeFace != null || myTypeFace != undefined).assertTrue()
+      } catch (e) {
+        console.info(msg + ` makeFromFileWithArguments myTypeFace errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
+        expect().assertFail();
+      }
+      try {
+        let myTypeFace2 = drawing.Typeface.makeFromRawFileWithArguments($rawfile('ttf/HarmonyOS_Sans_Condensed.ttf'), typeFaceArgument);
+        console.info(msg + ' makeFromRawFileWithArguments myTypeFace2 successed');
+        expect(myTypeFace2 != null || myTypeFace2 != undefined).assertTrue()
+      } catch (e) {
+        console.info(msg + ` makeFromFileWithArguments myTypeFace2 errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_TYPEFACE_0601
+     * @tc.name      : testTypeFaceMakeFromRawFileWithArgumentsMultipleCalls
+     * @tc.desc      : testTypeFaceMakeFromRawFileWithArgumentsMultipleCalls
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testTypeFaceMakeFromRawFileWithArgumentsMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
+      const msg = 'testTypeFaceMakeFromRawFileWithArgumentsMultipleCalls';
+      for (let i = 0; i < 20; i++) {
+        try {
+          let typeFaceArgument = new drawing.TypefaceArguments();
+          let myTypeFace = drawing.Typeface.makeFromRawFileWithArguments($rawfile('HarmonyOS_Sans_Condensed.ttf'), typeFaceArgument)
+          console.info(msg + ' makeFromRawFileWithArguments successed step: ' + i );
+          expect(myTypeFace != null || myTypeFace != undefined).assertTrue()
+        } catch (e) {
+          console.info(msg + ` makeFromRawFileWithArguments errorCode is:  ${e.code}, errorMessage is: ${e.message} step: ${i}`);
+          expect().assertFail();
+        }
+      }
+    });
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_TYPEFACE_0602
+     * @tc.name      : testTypeFaceMakeFromRawFileWithArgumentsNull
+     * @tc.desc      : testTypeFaceMakeFromRawFileWithArgumentsNull
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testTypeFaceMakeFromRawFileWithArgumentsNull', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
+      const msg = 'testTypeFaceMakeFromRawFileWithArgumentsNull';
+      let typeFaceArgument = new drawing.TypefaceArguments();
+      try {
+        let myTypeFace = drawing.Typeface.makeFromRawFileWithArguments(null, typeFaceArgument);
+        console.info(msg + ` makeFromRawFileWithArguments myTypeFace success`);
+        expect().assertFail();
+      } catch (e) {
+        console.info(msg + ` makeFromRawFileWithArguments myTypeFace errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
+        expect(e.code).assertEqual(401)
+      }
+      try {
+        let myTypeFace2 = drawing.Typeface.makeFromRawFileWithArguments(undefined, typeFaceArgument);
+        console.info(msg + ` makeFromRawFileWithArguments myTypeFace2 success`);
+        expect().assertFail();
+      } catch (e) {
+        console.info(msg + ` makeFromRawFileWithArguments myTypeFace2 errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
+        expect(e.code).assertEqual(401)
+      }
+      try {
+        let myTypeFace3 = drawing.Typeface.makeFromRawFileWithArguments($rawfile('HarmonyOS_Sans_Condensed.ttf'), null);
+        console.info(msg + ` makeFromRawFileWithArguments myTypeFace3 success`);
+        expect().assertFail();
+      } catch (e) {
+        console.info(msg + ` makeFromRawFileWithArguments myTypeFace3 errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
+        expect(e.code).assertEqual(401)
+      }
+      try {
+        let myTypeFace4 = drawing.Typeface.makeFromRawFileWithArguments($rawfile('HarmonyOS_Sans_Condensed.ttf'), undefined);
+        console.info(msg + ` makeFromRawFileWithArguments myTypeFace4 success`);
+        expect().assertFail();
+      } catch (e) {
+        console.info(msg + ` makeFromRawFileWithArguments myTypeFace4 errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
+        expect(e.code).assertEqual(401)
+      }
+    });
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_TYPEFACE_0603
+     * @tc.name      : testTypeFaceMakeFromRawFileWithArgumentsAbnormal
+     * @tc.desc      : testTypeFaceMakeFromRawFileWithArgumentsAbnormal
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testTypeFaceMakeFromRawFileWithArgumentsAbnormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
+      const msg = 'testTypeFaceMakeFromRawFileWithArgumentsAbnormal';
+      let typeFaceArgument = new drawing.TypefaceArguments();
+      try {
+        let myTypeFace = drawing.Typeface.makeFromRawFileWithArguments($rawfile('image.png'), typeFaceArgument);
+        console.info(msg + ` makeFromFileWithArguments myTypeFace success`);
+        expect(myTypeFace).assertEqual(undefined)
+      } catch (e) {
+        console.info(msg + ` makeFromFileWithArguments myTypeFace errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
+        expect().assertFail();
+      }
+      try {
+        let myTypeFace2 = drawing.Typeface.makeFromRawFileWithArguments($r('app.boolean.apptest1'), typeFaceArgument);
+        console.info(msg + ` makeFromFileWithArguments myTypeFace2 success`);
+        expect().assertFail();
+      } catch (e) {
+        console.info(msg + ` makeFromFileWithArguments mytypeface2 errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
+        expect(e.code).assertEqual(401)
+      }
+    });
   })
 }
