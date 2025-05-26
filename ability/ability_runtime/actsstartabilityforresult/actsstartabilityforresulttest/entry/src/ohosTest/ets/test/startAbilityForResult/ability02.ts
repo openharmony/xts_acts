@@ -80,9 +80,6 @@ export default class UiAbility02 extends UIAbility {
       commonEventManager.publish('ability02_onForeground', function () {
         hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5000 publish ability02_onForeground');
       });
-      commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
-        hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5000 publish ACTS_LIFE_CYCLE');
-      });
       commonEventManager.publish('ACTS_TEST_DESTROY', function () {
         hilog.info(0x0000, 'testTag', '%{public}s', 'commonEventManager UiAbility02 publish ACTS_TEST_DESTROY');
       });

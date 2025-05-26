@@ -23,9 +23,6 @@ export default class UiAbility03 extends UIAbility {
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility03 onCreate');
     globalThis.uiAbilityContext3 = this.context
     hilog.info(0x0000, 'testTag', '%{public}s', `UiAbility03 JSON.stringify(want) is: ${JSON.stringify(want)}`);
-    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5000 publish ACTS_LIFE_CYCLE');
-    });
     commonEventManager.publish('ability03_onCreate', function () {
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5000 publish ability03_onCreate');
     });
@@ -37,9 +34,6 @@ export default class UiAbility03 extends UIAbility {
 
   onWindowStageCreate(windowStage: window.WindowStage) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility03 onWindowStageCreate');
-    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5000 publish ACTS_LIFE_CYCLE');
-    });
     commonEventManager.publish('ability03_onWindowStageCreate', function () {
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5000 publish ability03_onWindowStageCreate');
     });
@@ -59,9 +53,6 @@ export default class UiAbility03 extends UIAbility {
   onForeground() {
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility03 onForeground');
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility03 execute router.back!');
-    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5000 publish ACTS_LIFE_CYCLE');
-    });
     commonEventManager.publish('ability03_onForeground', function () {
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5000 publish ability03_onForeground');
     });
@@ -75,9 +66,6 @@ export default class UiAbility03 extends UIAbility {
   onBackground() {
     // Ability has back to background
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility03 onBackground');
-    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5000 publish ACTS_LIFE_CYCLE');
-    });
     commonEventManager.publish('ability03_onBackground', function () {
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5000 publish ability03_onBackground');
     });

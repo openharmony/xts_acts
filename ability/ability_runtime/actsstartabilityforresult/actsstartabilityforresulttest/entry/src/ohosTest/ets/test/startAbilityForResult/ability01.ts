@@ -24,7 +24,6 @@ export default class UiAbility01 extends UIAbility {
     globalThis.uiAbilityContext1 = this.context
     hilog.info(0x0000, 'testTag', '%{public}s', `UiAbility01 JSON.stringify(want) is: ${JSON.stringify(want)}`);
     if (want.action == 'abc'){
-      globalThis.testNum01++
       commonEventManager.publish('ability01_onCreate', function () {
         hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_0500 publish ability01_onCreate');
       });
@@ -33,7 +32,6 @@ export default class UiAbility01 extends UIAbility {
   }
 
   onDestroy() {
-    globalThis.testNum01++
     commonEventManager.publish('ability01_onDestroy', function () {
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_0500 publish ability01_onDestroy');
     });
@@ -42,7 +40,6 @@ export default class UiAbility01 extends UIAbility {
 
   onWindowStageCreate(windowStage: window.WindowStage) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility01 onWindowStageCreate');
-    globalThis.testNum01++
     commonEventManager.publish('ability01_onWindowStageCreate', function () {
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_0500 publish ability01_onWindowStageCreate');
     });
@@ -56,7 +53,6 @@ export default class UiAbility01 extends UIAbility {
   }
 
   onWindowStageDestroy() {
-    globalThis.testNum01++
     commonEventManager.publish('ability01_onWindowStageDestroy', function () {
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_0500 publish ability01_onWindowStageDestroy');
     });
@@ -64,19 +60,19 @@ export default class UiAbility01 extends UIAbility {
   }
 
   onForeground() {
-    globalThis.testNum01++
     commonEventManager.publish('ability01_onForeground', function () {
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_0500 publish ability01_onForeground');
     });
+    setTimeout(() => {
+      commonEventManager.publish('ACTS_TEST_DESTROY', function () {
+        hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_0500 publish ACTS_TEST_DESTROY');
+      });
+    }, 500);
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility01 onForeground');
-    commonEventManager.publish('ACTS_TEST_DESTROY', function () {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_0500 publish ACTS_TEST_DESTROY');
-    });
   }
 
   onBackground() {
     // Ability has back to background
-    globalThis.testNum01++
     commonEventManager.publish('ability01_onBackground', function () {
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_0500 publish ability01_onBackground');
     });

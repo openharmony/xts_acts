@@ -24,7 +24,6 @@ let ACTS_EVENT: commonEventManager.CommonEventSubscribeInfo = {
     'ACTS_TEST_START',
     'ACTS_TEST_DESTROY',
     'ACTS_TEST_BACK',
-    'ACTS_LIFE_CYCLE',
     'ability01_onCreate',
     'ability01_onDestroy',
     'ability01_onWindowStageCreate',
@@ -77,107 +76,113 @@ export default function startAbilityForResultTwoTest() {
      * @tc.type:   Function
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_0500', Level.LEVEL0, async (done: Function) => {
-      let tag:string = "SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_0500"
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_0500', Level.LEVEL0, (done: Function) => {
+      let tag: string = "SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_0500"
       hilog.info(0x0000, 'testTag', '%{public}s', `${tag} start`);
-      globalThis.testNum01 = 0
-      let wantWithAction: Want = {
-        deviceId: '',
-        bundleName: 'com.example.mytest1',
-        action:'abc'
-      };
-      let abilityResult:common.AbilityResult | undefined = undefined
       let want: Want = {
         deviceId: '',
         bundleName: 'com.example.mytest1',
-        abilityName: 'startAbilityForResult01',
         action:'abc'
       };
-      let a:number = 0;
-      let b:number = 0;
-      let c:number = 0;
-      let d:number = 0;
-      let e:number = 0;
-      let f:number = 0;
+      let resultCode:number = 0;
+      let ability01OnCreate: string = 'ability01OnCreate_fail';
+      let ability01OnDestroy: string = 'ability01OnDestroy_fail';
+      let ability01OnWindowStageCreate: string = 'ability01OnWindowStageCreate_fail';
+      let ability01OnWindowStageDestroy: string = 'ability01OnWindowStageDestroy_fail';
+      let ability01OnForeground: string = 'ability01OnForeground_fail';
+      let ability01OnBackground: string = 'ability01OnBackground_fail';
       commonEventManager.createSubscriber(ACTS_EVENT)
         .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
           subscriber = commonEventSubscriber;
           let unSubscribeCallback = () => {
-            setTimeout(async () => {
+            setTimeout(() => {
               hilog.info(0x0000, 'testTag', `${tag} unSubscribeCallback`);
-              expect(globalThis.testNum01).assertEqual(6)
-              expect(a).assertEqual(1)
-              expect(b).assertEqual(2)
-              expect(c).assertEqual(3)
-              expect(d).assertEqual(4)
-              expect(e).assertEqual(5)
-              expect(f).assertEqual(6)
+              expect(ability01OnCreate).assertEqual('ability01OnCreate_success')
+              expect(ability01OnDestroy).assertEqual('ability01OnDestroy_success')
+              expect(ability01OnWindowStageCreate).assertEqual('ability01OnWindowStageCreate_success')
+              expect(ability01OnWindowStageDestroy).assertEqual('ability01OnWindowStageDestroy_success')
+              expect(ability01OnForeground).assertEqual('ability01OnForeground_success')
+              expect(ability01OnBackground).assertEqual('ability01OnBackground_success')
               done();
             }, 1000);
           }
           let subscribeCallBack = (err: BusinessError, data: commonEventManager.CommonEventData) => {
             hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success with status: ${data.event}`)
             if (data.event == 'ability01_onCreate') {
-              a = 1;
-            }
+              ability01OnCreate = 'ability01OnCreate_success'
+            };
             if (data.event == 'ability01_onDestroy') {
-              b = 2;
-            }
+              ability01OnDestroy = 'ability01OnDestroy_success'
+            };
             if (data.event == 'ability01_onWindowStageCreate') {
-              c = 3;
-            }
+              ability01OnWindowStageCreate = 'ability01OnWindowStageCreate_success'
+            };
             if (data.event == 'ability01_onWindowStageDestroy') {
-              d = 4;
-            }
+              ability01OnWindowStageDestroy = 'ability01OnWindowStageDestroy_success'
+            };
             if (data.event == 'ability01_onForeground') {
-              e = 5;
-            }
+              ability01OnForeground = 'ability01OnForeground_success'
+            };
             if (data.event == 'ability01_onBackground') {
-              f = 6;
-            }
+              ability01OnBackground = 'ability01OnBackground_success'
+            };
             if (data.event == 'ACTS_TEST_START') {
-              setTimeout(() => {
-                try {
-                  context.startAbilityForResult(wantWithAction, (err: BusinessError, result: common.AbilityResult) => {
-                    if (err.code) {
-                      // 处理业务逻辑错误
-                      hilog.info(0x0000, 'testTag', '%{public}s', `startAbilityForResult failed, error.code: ${err.code}, error.message: ${err.message}`);
-                      return;
-                    }
-                    // 执行正常业务
-                    hilog.info(0x0000, 'testTag', '%{public}s', 'startAbilityForResult success test.ets!');
-                    hilog.info(0x0000, 'testTag', '%{public}s', `startAbilityForResult success result is: ${result}`);
-                    hilog.info(0x0000, 'testTag', '%{public}s', `startAbilityForResult success result is: ${JSON.stringify(result)}`);
-                    abilityResult = result
-                  });
-                } catch (err) {
-                  // 处理入参错误异常
-                  let code = (err as BusinessError).code;
-                  let message = (err as BusinessError).message;
-                  hilog.info(0x0000, 'testTag', '%{public}s', `startAbilityForResult failed, error.code: ${code}, error.message: ${message}`);
-                }
-              }, 500);
-            }
-            if (data.event == 'ACTS_TEST_DESTROY') {
               try {
-                globalThis.uiAbilityContext1.terminateSelfWithResult(abilityResult, (err: BusinessError) => {
+                context.startAbilityForResult(want, (err: BusinessError, result: common.AbilityResult) => {
                   if (err.code) {
                     // 处理业务逻辑错误
-                    hilog.info(0x0000, 'testTag', '%{public}s', `terminateSelfWithResult failed, error.code: ${err.code}, error.message: ${err.message}`);
+                    hilog.info(0x0000, 'testTag', '%{public}s',
+                      `startAbilityForResult failed, error.code: ${err.code}, error.message: ${err.message}`);
                     return;
                   }
                   // 执行正常业务
-                  hilog.info(0x0000, 'testTag', '%{public}s', 'terminateSelfWithResult success!');
-                  setTimeout(() => {
-                    commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
-                  }, 500);
+                  hilog.info(0x0000, 'testTag', '%{public}s', 'startAbilityForResult success test.ets!');
+                  if(result.want){
+                    want = result.want;
+                  }
+                  if(result.resultCode){
+                    resultCode = result.resultCode
+                  }
+                  hilog.info(0x0000, 'testTag', '%{public}s', `startAbilityForResult success result is: ${result}`);
+                  hilog.info(0x0000, 'testTag', '%{public}s',
+                    `startAbilityForResult success result is: ${JSON.stringify(result)}`);
                 });
               } catch (err) {
                 // 处理入参错误异常
                 let code = (err as BusinessError).code;
                 let message = (err as BusinessError).message;
-                hilog.info(0x0000, 'testTag', '%{public}s', `startAbilityForResult failed, error.code: ${code}, error.message: ${message}`);
+                hilog.info(0x0000, 'testTag', '%{public}s',
+                  `startAbilityForResult failed, error.code: ${code}, error.message: ${message}`);
               }
+            }
+            if (data.event == 'ACTS_TEST_DESTROY') {
+              let abilityResult:common.AbilityResult = {
+                want,
+                resultCode
+              }
+              setTimeout(() => {
+                try {
+                  globalThis.uiAbilityContext1.terminateSelfWithResult(abilityResult, (err: BusinessError) => {
+                    if (err.code) {
+                      // 处理业务逻辑错误
+                      hilog.info(0x0000, 'testTag', '%{public}s',
+                        `terminateSelfWithResult failed, error.code: ${err.code}, error.message: ${err.message}`);
+                      return;
+                    }
+                    // 执行正常业务
+                    hilog.info(0x0000, 'testTag', '%{public}s', 'terminateSelfWithResult success!');
+                    setTimeout(() => {
+                      commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
+                    }, 500);
+                  });
+                } catch (err) {
+                  // 处理入参错误异常
+                  let code = (err as BusinessError).code;
+                  let message = (err as BusinessError).message;
+                  hilog.info(0x0000, 'testTag', '%{public}s',
+                    `terminateSelfWithResult failed, error.code: ${code}, error.message: ${message}`);
+                }
+              }, 1000);
             }
           }
           commonEventManager.subscribe(subscriber, subscribeCallBack);
@@ -195,91 +200,86 @@ export default function startAbilityForResultTwoTest() {
      * @tc.type:   Function
      * @tc.level  : 0
      */
-    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5000', Level.LEVEL0, async (done: Function) => {
-      let tag:string = "SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5000"
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5000', Level.LEVEL0, (done: Function) => {
+      let tag: string = "SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5000"
       hilog.info(0x0000, 'testTag', '%{public}s', `${tag} start`);
-      let testNum02:number = 0
-      let a:number = 0;
-      let b:number = 0;
-      let c:number = 0;
-      let d:number = 0;
-      let e:number = 0;
-      let f:number = 0;
-      let g:number = 0;
-      let h:number = 0;
-      let i:number = 0;
-      let j:number = 0;
-      let k:number = 0;
+      let ability02OnForeground: string = 'ability02OnForeground_fail';
+      let ability03OnCreate: string = 'ability03OnCreate_fail';
+      let ability03OnWindowStageCreate: string = 'ability03OnWindowStageCreate_fail';
+      let ability03OnForeground: string = 'ability03OnForeground_fail';
+      let ability03OnBackground: string = 'ability03OnBackground_fail';
+      let entryAbility4OnCreate: string = 'entryAbility4OnCreate_fail';
+      let entryAbility4OnWindowStageCreate: string = 'entryAbility4OnWindowStageCreate_fail';
+      let entryAbility4OnForeground01: string = 'entryAbility4OnForeground01_fail';
+      let entryAbility4OnForeground02: string = 'entryAbility4OnForeground02_fail';
+      let entryAbility4OnBackground01: string = 'entryAbility4OnBackground01_fail';
+      let entryAbility4OnBackground02: string = 'entryAbility4OnBackground02_fail';
       let want: Want = {
         bundleName: 'com.example.mytest1',
-        abilityName:'startAbilityForResult02'
+        abilityName: 'startAbilityForResult02'
       };
       commonEventManager.createSubscriber(ACTS_EVENT)
         .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
           subscriber = commonEventSubscriber;
           let unSubscribeCallback = () => {
-            hilog.info(0x0000, 'testTag', '%{public}s', `${tag} testNum02 is: ${testNum02}`);
-            setTimeout(async () => {
+            setTimeout(() => {
               hilog.info(0x0000, 'testTag', `${tag} unSubscribeCallback`);
-              expect(a).assertEqual(1)
-              expect(b).assertEqual(2)
-              expect(c).assertEqual(3)
-              expect(d).assertEqual(4)
-              expect(e).assertEqual(5)
-              expect(f).assertEqual(6)
-              expect(g).assertEqual(7)
-              expect(h).assertEqual(8)
-              expect(i).assertEqual(9)
-              expect(j).assertEqual(10)
-              expect(k).assertEqual(11)
+              expect(ability02OnForeground).assertEqual('ability02OnForeground_success');
+              expect(ability03OnCreate).assertEqual('ability03OnCreate_success');
+              expect(ability03OnWindowStageCreate).assertEqual('ability03OnWindowStageCreate_success');
+              expect(ability03OnForeground).assertEqual('ability03OnForeground_success');
+              expect(ability03OnBackground).assertEqual('ability03OnBackground_success');
+              expect(entryAbility4OnCreate).assertEqual('entryAbility4OnCreate_success');
+              expect(entryAbility4OnWindowStageCreate).assertEqual('entryAbility4OnWindowStageCreate_success');
+              expect(entryAbility4OnForeground01).assertEqual('entryAbility4OnForeground01_success');
+              expect(entryAbility4OnForeground02).assertEqual('entryAbility4OnForeground02_success');
+              expect(entryAbility4OnBackground01).assertEqual('entryAbility4OnBackground01_success');
+              expect(entryAbility4OnBackground02).assertEqual('entryAbility4OnBackground02_success');
               done();
             }, 1000);
           }
           let subscribeCallBack = (err: BusinessError, data: commonEventManager.CommonEventData) => {
             hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success with status: ${data.event}`)
-            if (data.event == 'ACTS_LIFE_CYCLE') {
-              testNum02++
-            }
             if (data.event == 'ability02_onForeground') {
-              a = 1;
+              ability02OnForeground = 'ability02OnForeground_success';
             }
             if (data.event == 'ability03_onCreate') {
-              b = 2;
+              ability03OnCreate = 'ability03OnCreate_success';
             }
             if (data.event == 'ability03_onWindowStageCreate') {
-              c = 3;
+              ability03OnWindowStageCreate = 'ability03OnWindowStageCreate_success';
             }
             if (data.event == 'ability03_onForeground') {
-              d = 4;
+              ability03OnForeground = 'ability03OnForeground_success';
             }
             if (data.event == 'ability03_onBackground') {
-              e = 5;
+              ability03OnBackground = 'ability03OnBackground_success';
             }
             if (data.event == 'entryAbility4_onCreate') {
-              f = 6;
+              entryAbility4OnCreate = 'entryAbility4OnCreate_success';
             }
             if (data.event == 'entryAbility4_onWindowStageCreate') {
-              g = 7;
+              entryAbility4OnWindowStageCreate = 'entryAbility4OnWindowStageCreate_success';
             }
             if (data.event == 'entryAbility4_onForeground_01') {
-              h = 8;
+              entryAbility4OnForeground01 = 'entryAbility4OnForeground01_success';
             }
             if (data.event == 'entryAbility4_onForeground_02') {
-              i = 9;
+              entryAbility4OnForeground02 = 'entryAbility4OnForeground02_success';
             }
             if (data.event == 'entryAbility4_onBackground_01') {
-              j = 10;
+              entryAbility4OnBackground01 = 'entryAbility4OnBackground01_success';
             }
             if (data.event == 'entryAbility4_onBackground_02') {
-              k = 11;
+              entryAbility4OnBackground02 = 'entryAbility4OnBackground02_success';
             }
             if (data.event == 'ACTS_TEST_START') {
-              setTimeout(() => {
                 try {
                   context.startAbilityForResult(want, (err: BusinessError, result: common.AbilityResult) => {
                     if (err.code) {
                       // 处理业务逻辑错误
-                      hilog.info(0x0000, 'testTag', '%{public}s', `startAbilityForResult failed, error.code: ${err.code}, error.message: ${err.message}`);
+                      hilog.info(0x0000, 'testTag', '%{public}s',
+                        `startAbilityForResult failed, error.code: ${err.code}, error.message: ${err.message}`);
                       return;
                     }
                     // 执行正常业务
@@ -289,22 +289,24 @@ export default function startAbilityForResultTwoTest() {
                   // 处理入参错误异常
                   let code = (err as BusinessError).code;
                   let message = (err as BusinessError).message;
-                  hilog.info(0x0000, 'testTag', '%{public}s', `startAbilityForResult failed, error.code: ${code}, error.message: ${message}`);
+                  hilog.info(0x0000, 'testTag', '%{public}s',
+                    `startAbilityForResult failed, error.code: ${code}, error.message: ${message}`);
                 }
-              }, 500);
             }
             if (data.event == 'ACTS_TEST_BACK') {
-              try{
+              try {
                 router.back();
                 hilog.info(0x0000, 'testTag', '%{public}s', 'router.back success!');
-              } catch (err){
+              } catch (err) {
                 let code = (err as BusinessError).code;
                 let message = (err as BusinessError).message;
-                hilog.info(0x0000, 'testTag', '%{public}s', `router.back failed, error.code: ${code}, error.message: ${message}`);
+                hilog.info(0x0000, 'testTag', '%{public}s',
+                  `router.back failed, error.code: ${code}, error.message: ${message}`);
               }
             }
             if (data.event == 'ACTS_TEST_DESTROY') {
               globalThis.uiAbilityContext2.terminateSelf()
+              globalThis.uiAbilityContext3.terminateSelf()
               setTimeout(() => {
                 commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
               }, 500);
