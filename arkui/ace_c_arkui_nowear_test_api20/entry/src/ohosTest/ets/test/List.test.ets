@@ -13,7 +13,11 @@
  * limitations under the License.
  */
 import buttonGetTypeTest from './button/ButtonGetTypeTest.test'
+import dragEventGetDisplayIdTest from './dragEventTest/dragEventGetDisplayId.test'
+import dragEventGetDragSourceTest from './dragEventTest/dragEventGetDragSource.test'
 
 export default function testsuite() {
   buttonGetTypeTest();
+  dragEventGetDisplayIdTest();
+  dragEventGetDragSourceTest();
 }
