@@ -4061,5 +4061,338 @@ export default function inputMethodEngineJSUnit() {
       testTemplate('Sub_Misc_inputMethodEngine_InputClient_offAttachOptionsDidChange_0200', 110, done, beforePublish, afterPublish);
     });
 
+    /*
+    * @tc.number  Sub_InputMethod_IMF_CapitalizeMode_0100
+    * @tc.name    Sub_InputMethod_IMF_CapitalizeMode_0100
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
+    it('Sub_InputMethod_IMF_CapitalizeMode_0100', Level.LEVEL2, async (done: Function) => {
+      let beforePublish = async () => {
+        await inputMethod.getController().detach();
+        const ATTRIBUTE: inputMethod.TextConfig = {
+          inputAttribute: {
+            textInputType: 0, enterKeyType: 0
+          },
+          capitalizeMode: inputMethod.CapitalizeMode.NONE
+        }
+        await inputMethod.getController().attach(false, ATTRIBUTE);
+      }
+
+      testTemplate('Sub_InputMethod_IMF_CapitalizeMode_0100', 115, done, beforePublish);
+    });
+
+    /*
+    * @tc.number  Sub_InputMethod_IMF_CapitalizeMode_0200
+    * @tc.name    Sub_InputMethod_IMF_CapitalizeMode_0200
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
+    it('Sub_InputMethod_IMF_CapitalizeMode_0200', Level.LEVEL2, async (done: Function) => {
+      let beforePublish = async () => {
+        await inputMethod.getController().detach();
+        const ATTRIBUTE: inputMethod.TextConfig = {
+          inputAttribute: {
+            textInputType: 0, enterKeyType: 0
+          },
+          capitalizeMode: inputMethod.CapitalizeMode.SENTENCES
+        }
+        await inputMethod.getController().attach(false, ATTRIBUTE);
+      }
+
+      testTemplate('Sub_InputMethod_IMF_CapitalizeMode_0200', 116, done, beforePublish);
+    });
+
+    /*
+    * @tc.number  Sub_InputMethod_IMF_CapitalizeMode_0300
+    * @tc.name    Sub_InputMethod_IMF_CapitalizeMode_0300
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
+    it('Sub_InputMethod_IMF_CapitalizeMode_0300', Level.LEVEL2, async (done: Function) => {
+      let beforePublish = async () => {
+        await inputMethod.getController().detach();
+        const ATTRIBUTE: inputMethod.TextConfig = {
+          inputAttribute: {
+            textInputType: 0, enterKeyType: 0
+          },
+          capitalizeMode: inputMethod.CapitalizeMode.WORDS
+        }
+        await inputMethod.getController().attach(false, ATTRIBUTE);
+      }
+
+      testTemplate('Sub_InputMethod_IMF_CapitalizeMode_0300', 117, done, beforePublish);
+    });
+
+    /*
+    * @tc.number  Sub_InputMethod_IMF_CapitalizeMode_0400
+    * @tc.name    Sub_InputMethod_IMF_CapitalizeMode_0400
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
+    it('Sub_InputMethod_IMF_CapitalizeMode_0400', Level.LEVEL2, async (done: Function) => {
+      let beforePublish = async () => {
+        await inputMethod.getController().detach();
+        const ATTRIBUTE: inputMethod.TextConfig = {
+          inputAttribute: {
+            textInputType: 0, enterKeyType: 0
+          },
+          capitalizeMode: inputMethod.CapitalizeMode.CHARACTERS
+        }
+        await inputMethod.getController().attach(false, ATTRIBUTE);
+      }
+
+      testTemplate('Sub_InputMethod_IMF_CapitalizeMode_0400', 118, done, beforePublish);
+    });
+
+    /*
+    * @tc.number  Sub_InputMethod_IMF_CapitalizeMode_0500
+    * @tc.name    Sub_InputMethod_IMF_CapitalizeMode_0500
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
+    it('Sub_InputMethod_IMF_CapitalizeMode_0500', Level.LEVEL2, async (done: Function) => {
+      let beforePublish = async () => {
+        await inputMethod.getController().detach();
+        const ATTRIBUTE: inputMethod.TextConfig = {
+          inputAttribute: {
+            textInputType: 0, enterKeyType: 0
+          },
+        }
+        await inputMethod.getController().attach(false, ATTRIBUTE);
+      }
+
+      testTemplate('Sub_InputMethod_IMF_CapitalizeMode_0500', 119, done, beforePublish);
+    });
+
+    /*
+    * @tc.number  Sub_InputMethod_IMF_Placeholder_0100
+    * @tc.name    Sub_InputMethod_IMF_Placeholder_0100
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
+    it('Sub_InputMethod_IMF_Placeholder_0100', Level.LEVEL2, async (done: Function) => {
+      let beforePublish = async () => {
+        await inputMethod.getController().detach();
+        const ATTRIBUTE: inputMethod.TextConfig = {
+          inputAttribute: {
+            textInputType: 0, enterKeyType: 0
+          },
+        }
+        await inputMethod.getController().attach(false, ATTRIBUTE);
+      }
+
+      testTemplate('Sub_InputMethod_IMF_Placeholder_0100', 120, done, beforePublish);
+    });
+
+    /*
+    * @tc.number  Sub_InputMethod_IMF_Placeholder_0200
+    * @tc.name    Sub_InputMethod_IMF_Placeholder_0200
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
+    it('Sub_InputMethod_IMF_Placeholder_0200', Level.LEVEL2, async (done: Function) => {
+      let beforePublish = async () => {
+        await inputMethod.getController().detach();
+        const ATTRIBUTE: inputMethod.TextConfig = {
+          inputAttribute: {
+            textInputType: 0, enterKeyType: 0
+          },
+        }
+        let value: string = 'B';
+        let placeholderValue = value.repeat(255);
+        let abilityNameValue = value.repeat(127);
+        ATTRIBUTE.inputAttribute.placeholder = placeholderValue;
+        ATTRIBUTE.inputAttribute.abilityName = abilityNameValue;
+        await inputMethod.getController().attach(false, ATTRIBUTE);
+      }
+
+      testTemplate('Sub_InputMethod_IMF_Placeholder_0200', 121, done, beforePublish);
+    });
+
+    /*
+    * @tc.number  Sub_InputMethod_IMF_Placeholder_0300
+    * @tc.name    Sub_InputMethod_IMF_Placeholder_0300
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
+    it('Sub_InputMethod_IMF_Placeholder_0300', Level.LEVEL2, async (done: Function) => {
+      let beforePublish = async () => {
+        await inputMethod.getController().detach();
+        const ATTRIBUTE: inputMethod.TextConfig = {
+          inputAttribute: {
+            textInputType: 0, enterKeyType: 0
+          },
+        }
+        let value: string = 'B';
+        let placeholderValue = value.repeat(256);
+        let abilityNameValue = value.repeat(127);
+        ATTRIBUTE.inputAttribute.placeholder = placeholderValue;
+        ATTRIBUTE.inputAttribute.abilityName = abilityNameValue;
+        await inputMethod.getController().attach(false, ATTRIBUTE);
+      }
+
+      testTemplate('Sub_InputMethod_IMF_Placeholder_0300', 122, done, beforePublish);
+    });
+
+    /*
+    * @tc.number  Sub_InputMethod_IMF_Placeholder_0400
+    * @tc.name    Sub_InputMethod_IMF_Placeholder_0400
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
+    it('Sub_InputMethod_IMF_Placeholder_0400', Level.LEVEL2, async (done: Function) => {
+      let beforePublish = async () => {
+        await inputMethod.getController().detach();
+        const ATTRIBUTE: inputMethod.TextConfig = {
+          inputAttribute: {
+            textInputType: 0, enterKeyType: 0
+          },
+        }
+        let value: string = 'B';
+        let placeholderValue = value.repeat(255);
+        let abilityNameValue = value.repeat(128);
+        ATTRIBUTE.inputAttribute.placeholder = placeholderValue;
+        ATTRIBUTE.inputAttribute.abilityName = abilityNameValue;
+        await inputMethod.getController().attach(false, ATTRIBUTE);
+      }
+
+      testTemplate('Sub_InputMethod_IMF_Placeholder_0400', 123, done, beforePublish);
+    });
+
+    /*
+    * @tc.number  Sub_InputMethod_IMF_Placeholder_0600
+    * @tc.name    Sub_InputMethod_IMF_Placeholder_0600
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
+    it('Sub_InputMethod_IMF_Placeholder_0600', Level.LEVEL2, async (done: Function) => {
+      let beforePublish = async () => {
+        await inputMethod.getController().detach();
+        const ATTRIBUTE: inputMethod.TextConfig = {
+          inputAttribute: {
+            textInputType: 0, enterKeyType: 0, placeholder: undefined, abilityName: undefined
+          },
+        }
+        await inputMethod.getController().attach(false, ATTRIBUTE);
+      }
+
+      testTemplate('Sub_InputMethod_IMF_Placeholder_0600', 124, done, beforePublish);
+    });
+
+    /*
+    * @tc.number  Sub_InputMethod_IMF_DiscardTypingText_0300
+    * @tc.name    Sub_InputMethod_IMF_DiscardTypingText_0300
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
+    it('Sub_InputMethod_IMF_DiscardTypingText_0300', Level.LEVEL2, async (done: Function) => {
+      await inputMethod.getController().detach();
+      const ATTRIBUTE: inputMethod.TextConfig = {
+        inputAttribute: {
+          textInputType: 0, enterKeyType: 0
+        },
+      }
+      await inputMethod.getController().attach(false, ATTRIBUTE);
+      runCmd();
+      try{
+        let inputMethodController = inputMethod.getController();
+        let state =  await inputMethodController.discardTypingText();
+        console.info("====>Sub_InputMethod_IMF_DiscardTypingText_0300 state is: " + state);
+        expect().assertFail();
+        done();
+      }catch(err){
+        console.info(`====>Sub_InputMethod_IMF_DiscardTypingText_0300 errCode:${err.code}, errMessage is ${err.message}`)
+        expect(err.code).assertEqual(12800015);
+        done();
+      }
+    });
+
+    /*
+    * @tc.number  Sub_InputMethod_IMF_DiscardTypingText_0100
+    * @tc.name    Sub_InputMethod_IMF_DiscardTypingText_0100
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
+    it('Sub_InputMethod_IMF_DiscardTypingText_0100', Level.LEVEL2, async (done: Function) => {
+      const ATTRIBUTE: inputMethod.TextConfig = {
+        inputAttribute: {
+          textInputType: 0, enterKeyType: 0
+        }, 
+      };
+      let newEditBoxValue: boolean = false;
+      ATTRIBUTE.newEditBox = newEditBoxValue;
+
+      let beforePublish = async () => {
+        await inputMethod.getController().detach();
+        inputMethod.getController().attach(true, ATTRIBUTE);
+      }
+
+      let afterPublish = async () => {
+        setTimeout(async () => {
+          let inputMethodController = inputMethod.getController();
+          await inputMethodController.discardTypingText();
+        }, 100);
+      }
+
+      testTemplate('Sub_InputMethod_IMF_DiscardTypingText_0100', 125, done, beforePublish, afterPublish);
+    });
+
+    /*
+    * @tc.number  Sub_InputMethod_IMF_DiscardTypingText_1000
+    * @tc.name    Sub_InputMethod_IMF_DiscardTypingText_1000
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
+    it('Sub_InputMethod_IMF_DiscardTypingText_1000', Level.LEVEL2, async (done: Function) => {
+      const ATTRIBUTE: inputMethod.TextConfig = {
+        inputAttribute: {
+          textInputType: 0, enterKeyType: 0
+        },
+      };
+      let newEditBoxValue: boolean = true;
+      ATTRIBUTE.newEditBox = newEditBoxValue;
+
+      let beforePublish = async () => {
+        await inputMethod.getController().detach();
+        inputMethod.getController().attach(true, ATTRIBUTE);
+      }
+
+      let afterPublish = async () => {
+        setTimeout(async () => {
+          let inputMethodController = inputMethod.getController();
+          await inputMethodController.discardTypingText();
+        }, 100);
+      }
+
+      testTemplate('Sub_InputMethod_IMF_DiscardTypingText_1000', 126, done, beforePublish, afterPublish);
+    });
+
   })
 }
