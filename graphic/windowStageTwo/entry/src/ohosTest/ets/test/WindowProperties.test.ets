@@ -4719,45 +4719,6 @@ export default function windowPropertiesTest() {
         console.info(msgStr + ' begin ');
         try {
           let windowClass = windowStage.getMainWindowSync();
-          let promise = windowClass.maximize(window.MaximizePresentation.ENTER_IMMERSIVE);
-          promise.then(async () => {
-            console.info('Succeeded in maximizing the window.');
-            let windowProperties = windowClass.getWindowProperties()
-            console.info(`${msgStr} windowProperties: ${JSON.stringify(windowProperties)}`);
-            expect(windowProperties.isFullScreen).assertEqual(true);
-            expect(windowProperties.isLayoutFullScreen).assertEqual(false);
-            await windowClass.recover();
-            await sleep(200);
-            done();
-          }).catch((err: BusinessError) => {
-            console.error(`${msgStr} Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
-            if (err.code == 801) {
-              done();
-            } else {
-              expect().assertFail();
-              done();
-            }
-          });
-        } catch (error) {
-          console.error('Failed. Cause: ' + JSON.stringify(error));
-          expect().assertFail();
-          done();
-        }
-      })
-
-      /**
-       * @tc.number    : SUB_BASIC_WMS_GETWINDOWPROPERTIES_FULLSCREEN_0100
-       * @tc.name      : test_GETWINDOWPROPERTIES_FULLSCREEN_0100
-       * @tc.desc      : 最大化主窗查询isFullScreen和isLayoutFullScreen属性
-       * @tc.size      : MediumTest
-       * @tc.type      : Function
-       * @tc.level     : Level1
-       */
-      it('test_GETWINDOWPROPERTIES_FULLSCREEN_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async(done: Function) => {
-        let msgStr = ' test_GETWINDOWPROPERTIES_FULLSCREEN_0100 ';
-        console.info(msgStr + ' begin ');
-        try {
-          let windowClass = windowStage.getMainWindowSync();
           let promise = windowClass.maximize(window.MaximizePresentation.FOLLOW_APP_IMMERSIVE_SETTING);
           promise.then(async () => {
             console.info('Succeeded in maximizing the window.');
