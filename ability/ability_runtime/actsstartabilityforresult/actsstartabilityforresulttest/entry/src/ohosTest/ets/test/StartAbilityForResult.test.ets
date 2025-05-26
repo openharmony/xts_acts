@@ -24,7 +24,24 @@ let ACTS_EVENT: commonEventManager.CommonEventSubscribeInfo = {
     'ACTS_TEST_START',
     'ACTS_TEST_DESTROY',
     'ACTS_TEST_BACK',
-    'ACTS_LIFE_CYCLE'
+    'ACTS_LIFE_CYCLE',
+    'ability01_onCreate',
+    'ability01_onDestroy',
+    'ability01_onWindowStageCreate',
+    'ability01_onWindowStageDestroy',
+    'ability01_onForeground',
+    'ability01_onBackground',
+    'ability02_onForeground',
+    'ability03_onCreate',
+    'ability03_onWindowStageCreate',
+    'ability03_onForeground',
+    'ability03_onBackground',
+    'entryAbility4_onCreate',
+    'entryAbility4_onWindowStageCreate',
+    'entryAbility4_onForeground_01',
+    'entryAbility4_onForeground_02',
+    'entryAbility4_onBackground_01',
+    'entryAbility4_onBackground_02'
   ]
 };
 
@@ -64,11 +81,24 @@ export default function startAbilityForResultTwoTest() {
       let tag:string = "SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_0500"
       hilog.info(0x0000, 'testTag', '%{public}s', `${tag} start`);
       globalThis.testNum01 = 0
-      let want: Want = {
+      let wantWithAction: Want = {
         deviceId: '',
         bundleName: 'com.example.mytest1',
         action:'abc'
       };
+      let abilityResult:common.AbilityResult | undefined = undefined
+      let want: Want = {
+        deviceId: '',
+        bundleName: 'com.example.mytest1',
+        abilityName: 'startAbilityForResult01',
+        action:'abc'
+      };
+      let a:number = 0;
+      let b:number = 0;
+      let c:number = 0;
+      let d:number = 0;
+      let e:number = 0;
+      let f:number = 0;
       commonEventManager.createSubscriber(ACTS_EVENT)
         .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
           subscriber = commonEventSubscriber;
@@ -76,15 +106,39 @@ export default function startAbilityForResultTwoTest() {
             setTimeout(async () => {
               hilog.info(0x0000, 'testTag', `${tag} unSubscribeCallback`);
               expect(globalThis.testNum01).assertEqual(6)
+              expect(a).assertEqual(1)
+              expect(b).assertEqual(2)
+              expect(c).assertEqual(3)
+              expect(d).assertEqual(4)
+              expect(e).assertEqual(5)
+              expect(f).assertEqual(6)
               done();
             }, 1000);
           }
           let subscribeCallBack = (err: BusinessError, data: commonEventManager.CommonEventData) => {
             hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success with status: ${data.event}`)
+            if (data.event == 'ability01_onCreate') {
+              a = 1;
+            }
+            if (data.event == 'ability01_onDestroy') {
+              b = 2;
+            }
+            if (data.event == 'ability01_onWindowStageCreate') {
+              c = 3;
+            }
+            if (data.event == 'ability01_onWindowStageDestroy') {
+              d = 4;
+            }
+            if (data.event == 'ability01_onForeground') {
+              e = 5;
+            }
+            if (data.event == 'ability01_onBackground') {
+              f = 6;
+            }
             if (data.event == 'ACTS_TEST_START') {
               setTimeout(() => {
                 try {
-                  context.startAbilityForResult(want, (err: BusinessError, result: common.AbilityResult) => {
+                  context.startAbilityForResult(wantWithAction, (err: BusinessError, result: common.AbilityResult) => {
                     if (err.code) {
                       // 处理业务逻辑错误
                       hilog.info(0x0000, 'testTag', '%{public}s', `startAbilityForResult failed, error.code: ${err.code}, error.message: ${err.message}`);
@@ -92,6 +146,9 @@ export default function startAbilityForResultTwoTest() {
                     }
                     // 执行正常业务
                     hilog.info(0x0000, 'testTag', '%{public}s', 'startAbilityForResult success test.ets!');
+                    hilog.info(0x0000, 'testTag', '%{public}s', `startAbilityForResult success result is: ${result}`);
+                    hilog.info(0x0000, 'testTag', '%{public}s', `startAbilityForResult success result is: ${JSON.stringify(result)}`);
+                    abilityResult = result
                   });
                 } catch (err) {
                   // 处理入参错误异常
@@ -102,17 +159,6 @@ export default function startAbilityForResultTwoTest() {
               }, 500);
             }
             if (data.event == 'ACTS_TEST_DESTROY') {
-              let want: Want = {
-                deviceId: '',
-                bundleName: 'com.example.mytest1',
-                abilityName: 'startAbilityForResult01',
-                action:'abc'
-              };
-              let resultCode = 100;
-              let abilityResult: common.AbilityResult = {
-                want,
-                resultCode
-              };
               try {
                 globalThis.uiAbilityContext1.terminateSelfWithResult(abilityResult, (err: BusinessError) => {
                   if (err.code) {
@@ -153,6 +199,17 @@ export default function startAbilityForResultTwoTest() {
       let tag:string = "SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5000"
       hilog.info(0x0000, 'testTag', '%{public}s', `${tag} start`);
       let testNum02:number = 0
+      let a:number = 0;
+      let b:number = 0;
+      let c:number = 0;
+      let d:number = 0;
+      let e:number = 0;
+      let f:number = 0;
+      let g:number = 0;
+      let h:number = 0;
+      let i:number = 0;
+      let j:number = 0;
+      let k:number = 0;
       let want: Want = {
         bundleName: 'com.example.mytest1',
         abilityName:'startAbilityForResult02'
@@ -164,7 +221,17 @@ export default function startAbilityForResultTwoTest() {
             hilog.info(0x0000, 'testTag', '%{public}s', `${tag} testNum02 is: ${testNum02}`);
             setTimeout(async () => {
               hilog.info(0x0000, 'testTag', `${tag} unSubscribeCallback`);
-              expect(testNum02).assertEqual(11)
+              expect(a).assertEqual(1)
+              expect(b).assertEqual(2)
+              expect(c).assertEqual(3)
+              expect(d).assertEqual(4)
+              expect(e).assertEqual(5)
+              expect(f).assertEqual(6)
+              expect(g).assertEqual(7)
+              expect(h).assertEqual(8)
+              expect(i).assertEqual(9)
+              expect(j).assertEqual(10)
+              expect(k).assertEqual(11)
               done();
             }, 1000);
           }
@@ -172,6 +239,39 @@ export default function startAbilityForResultTwoTest() {
             hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success with status: ${data.event}`)
             if (data.event == 'ACTS_LIFE_CYCLE') {
               testNum02++
+            }
+            if (data.event == 'ability02_onForeground') {
+              a = 1;
+            }
+            if (data.event == 'ability03_onCreate') {
+              b = 2;
+            }
+            if (data.event == 'ability03_onWindowStageCreate') {
+              c = 3;
+            }
+            if (data.event == 'ability03_onForeground') {
+              d = 4;
+            }
+            if (data.event == 'ability03_onBackground') {
+              e = 5;
+            }
+            if (data.event == 'entryAbility4_onCreate') {
+              f = 6;
+            }
+            if (data.event == 'entryAbility4_onWindowStageCreate') {
+              g = 7;
+            }
+            if (data.event == 'entryAbility4_onForeground_01') {
+              h = 8;
+            }
+            if (data.event == 'entryAbility4_onForeground_02') {
+              i = 9;
+            }
+            if (data.event == 'entryAbility4_onBackground_01') {
+              j = 10;
+            }
+            if (data.event == 'entryAbility4_onBackground_02') {
+              k = 11;
             }
             if (data.event == 'ACTS_TEST_START') {
               setTimeout(() => {

@@ -77,6 +77,9 @@ export default class UiAbility02 extends UIAbility {
         hilog.info(0x0000, 'testTag', '%{public}s', `startAbilityForResult failed, error.code: ${code}, error.message: ${message}`);
       }
     } else if (backSet === 1) {
+      commonEventManager.publish('ability02_onForeground', function () {
+        hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5000 publish ability02_onForeground');
+      });
       commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
         hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5000 publish ACTS_LIFE_CYCLE');
       });
