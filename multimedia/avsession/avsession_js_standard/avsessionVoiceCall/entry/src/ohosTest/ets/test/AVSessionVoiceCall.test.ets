@@ -2819,7 +2819,7 @@ export default function abilityTest() {
       } catch (error) {
         console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
         expect(false).assertTrue();
-        done();f
+        done();
       }
     })
 
