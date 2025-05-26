@@ -37,10 +37,4 @@ if (os_level == "standard") {
   ohos_test_suite("acts_wearable") {
     deps = selected_packages_wearable
   }
-
-  ohos_test_suite("xts_acts_static") {
-    deps = [
-      "//test/xts/acts/ability/ability_runtime/ActsAbility2StaticTest:ActsAbility2StaticTest"
-    ]
-  }
 }
