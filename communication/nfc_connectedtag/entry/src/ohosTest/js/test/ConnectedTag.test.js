@@ -43,7 +43,7 @@ export default function ConnectedTagTest() {
 
         /**
          * @tc.number SUB_Communication_NFC_nfcConnectedTag_js_0100
-         * @tc.name Test init connectedTag
+         * @tc.name SUB_Communication_NFC_nfcConnectedTag_js_0100
          * @tc.desc Initializes the active label chip.
          * @tc.size since 8
          * @tc.type Function
@@ -65,7 +65,7 @@ export default function ConnectedTagTest() {
 
         /**
          * @tc.number SUB_Communication_NFC_nfcConnectedTag_js_0200
-         * @tc.name Test init connectedTag
+         * @tc.name SUB_Communication_NFC_nfcConnectedTag_js_0200
          * @tc.desc Reads the content of the active tag.
          * @tc.size since 8
          * @tc.type Function
@@ -91,7 +91,7 @@ export default function ConnectedTagTest() {
 
         /**
          * @tc.number SUB_Communication_NFC_nfcConnectedTag_js_0300
-         * @tc.name Test init connectedTag
+         * @tc.name SUB_Communication_NFC_nfcConnectedTag_js_0300
          * @tc.desc Reads the content of the active tag.
          * @tc.size since 8
          * @tc.type Function
@@ -120,7 +120,7 @@ export default function ConnectedTagTest() {
 
         /**
          * @tc.number SUB_Communication_NFC_nfcConnectedTag_js_0400
-         * @tc.name Test writeNdefTag connectedTag
+         * @tc.name SUB_Communication_NFC_nfcConnectedTag_js_0400
          * @tc.desc Write Content to Active Tags
          * @tc.size since 8
          * @tc.type Function
@@ -149,7 +149,7 @@ export default function ConnectedTagTest() {
 
         /**
          * @tc.number SUB_Communication_NFC_nfcConnectedTag_js_0500
-         * @tc.name Test writeNdefTag connectedTag
+         * @tc.name SUB_Communication_NFC_nfcConnectedTag_js_0500
          * @tc.desc Write Content to Active Tags
          * @tc.size since 8
          * @tc.type Function
@@ -178,7 +178,7 @@ export default function ConnectedTagTest() {
 
         /**
          * @tc.number SUB_Communication_NFC_nfcConnectedTag_js_0600
-         * @tc.name Test on_off connectedTag
+         * @tc.name SUB_Communication_NFC_nfcConnectedTag_js_0600
          * @tc.desc Registers and cancels the NFC field strength status event.
          * @tc.size since 8
          * @tc.type Function
@@ -208,7 +208,7 @@ export default function ConnectedTagTest() {
 
         /**
          * @tc.number SUB_Communication_NFC_nfcConnectedTag_js_0700
-         * @tc.name Test uninit connectedTag
+         * @tc.name SUB_Communication_NFC_nfcConnectedTag_js_0700
          * @tc.desc Unloads active label chip resources.
          * @tc.size since 8
          * @tc.type Function
@@ -226,7 +226,7 @@ export default function ConnectedTagTest() {
                     console.info("[NFC_test] SUB_Communication_NFC_nfcConnectedTag_js_0700 uninit success: " + uninittag );
                     expect(true).assertTrue();
                 }catch(error){
-                    console.error("[NFC_test] SUB_Communication_NFC_nfcConnectedTag_js_0700 uninit failed,code is ${error.code}, message is ${error.message}`);
+                    console.error("[NFC_test] SUB_Communication_NFC_nfcConnectedTag_js_0700 uninit failed,code is ${error.code}, message is ${error.message}");
                 }
             }
             done();
@@ -234,7 +234,7 @@ export default function ConnectedTagTest() {
 
         /**
          * @tc.number SUB_Communication_NFC_nfcConnectedTag_js_0800
-         * @tc.name Test initialize connectedTag
+         * @tc.name SUB_Communication_NFC_nfcConnectedTag_js_0800
          * @tc.desc Initializes the active label chip.
          * @tc.size since 8
          * @tc.type Function
@@ -262,7 +262,7 @@ export default function ConnectedTagTest() {
 
         /**
          * @tc.number SUB_Communication_NFC_nfcConnectedTag_js_0900
-         * @tc.name Test uninitialize connectedTag
+         * @tc.name SUB_Communication_NFC_nfcConnectedTag_js_0900
          * @tc.desc uninitialize active label chip resources.
          * @tc.size since 8
          * @tc.type Function
@@ -281,7 +281,7 @@ export default function ConnectedTagTest() {
                     console.info("[NFC_test] SUB_Communication_NFC_nfcConnectedTag_js_0900 uninitialize success: " + uninittag );
                     expect(true).assertTrue();
                 }catch(error){
-                    console.error("[NFC_test] SUB_Communication_NFC_nfcConnectedTag_js_0900 uninitialize failed,code is ${error.code}, message is ${error.message}`);
+                    console.error("[NFC_test] SUB_Communication_NFC_nfcConnectedTag_js_0900 uninitialize failed,code is ${error.code}, message is ${error.message}");
                     expect(true).assertTrue();
                 }
             }
@@ -290,7 +290,7 @@ export default function ConnectedTagTest() {
 
         /**
          * @tc.number SUB_Communication_NFC_nfcConnectedTag_js_1000
-         * @tc.name Test read connectedTag
+         * @tc.name SUB_Communication_NFC_nfcConnectedTag_js_1000
          * @tc.desc Reads the content of the active tag.
          * @tc.size since 8
          * @tc.type Function
@@ -324,7 +324,7 @@ export default function ConnectedTagTest() {
 
         /**
          * @tc.number SUB_Communication_NFC_nfcConnectedTag_js_1100
-         * @tc.name Test read connectedTag
+         * @tc.name SUB_Communication_NFC_nfcConnectedTag_js_1100
          * @tc.desc Reads the content of the active tag.
          * @tc.size since 8
          * @tc.type Function
@@ -362,7 +362,7 @@ export default function ConnectedTagTest() {
 
        /**
          * @tc.number SUB_Communication_NFC_nfcConnectedTag_js_1200
-         * @tc.name Test write connectedTag
+         * @tc.name SUB_Communication_NFC_nfcConnectedTag_js_1200
          * @tc.desc Write Content to Active Tags
          * @tc.size since 8
          * @tc.type Function
@@ -396,7 +396,7 @@ export default function ConnectedTagTest() {
 
         /**
          * @tc.number SUB_Communication_NFC_nfcConnectedTag_js_1300
-         * @tc.name Test write connectedTag
+         * @tc.name SUB_Communication_NFC_nfcConnectedTag_js_1300
          * @tc.desc Write Content to Active Tags
          * @tc.size since 8
          * @tc.type Function
@@ -434,7 +434,7 @@ export default function ConnectedTagTest() {
         })
         /**
          * @tc.number SUB_Communication_NFC_nfcConnectedTag_js_1400
-         * @tc.name Test NfcRfType value
+         * @tc.name SUB_Communication_NFC_nfcConnectedTag_js_1400
          * @tc.desc NfcRfType value.
          * @tc.size since 8
          * @tc.type Function
