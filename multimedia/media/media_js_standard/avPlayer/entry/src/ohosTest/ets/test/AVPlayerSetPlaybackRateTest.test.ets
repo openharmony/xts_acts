@@ -165,7 +165,7 @@ export default function AVPlayerSetPlaybackRateTest() {
         afterAll(async () => {
             console.info('afterAll case');
             try {
-                await mediaTestBase.closeFdNumber(avFd.fd)
+                await mediaTestBase.closeFileDescriptor(VIDEO_SOURCE_MP4)
                 await mediaTestBase.closeFdNumber(movFd.fd)
                 await mediaTestBase.closeFdNumber(mkvFd.fd)
                 await mediaTestBase.closeFdNumber(mp3Fd.fd)
