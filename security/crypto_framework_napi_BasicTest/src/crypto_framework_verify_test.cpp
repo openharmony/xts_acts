@@ -1705,7 +1705,7 @@ HWTEST_F(OHCryptoFrameworkVerifyNapiTest, SUB_Security_CryptoFramework_NAPI_Veri
     OH_Crypto_FreeDataBlob(&rawSignData);
     HcfObjDestroy(signObj);
     OH_Crypto_FreeDataBlob(&retBlob);
-    OH_Crypto_FreeDataBlob(&msgBlob);
+    OH_Crypto_FreeDataBlob((Crypto_DataBlob *)&msgBlob);
     HcfObjDestroy(randomObj);
     OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
     OH_CryptoKeyPair_Destroy(keyPair);
