@@ -514,6 +514,7 @@ export default function printTest() {
             console.log('printerChange, event: ' + event + ', printerInformation: ' + JSON.stringify(printerInformation));
           };
         print.on('printerChange', onPrinterChange);
+        expect(false).assertTrue();
         done();
       } catch (error) {
         console.log('print_function_1100 expect failed, err: ' + JSON.stringify(error));
@@ -534,6 +535,7 @@ export default function printTest() {
       // Permissions required: ohos.permission.PRINT
       try {
         print.off('printerChange');
+        expect(false).assertTrue();
         done();
       } catch (error) {
         console.log('print_function_1200 expect failed, err: ' + JSON.stringify(error));
