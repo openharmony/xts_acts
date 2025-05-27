@@ -822,9 +822,15 @@ export default function printTest() {
           console.log('printerChange, event: ' + event + ', printerInformation: ' + JSON.stringify(printerInformation));
         };
       // Permissions required: ohos.permission.PRINT
-      print.on('printerChange', onPrinterChange);
-      print.off('printerChange');
-      done();
+      try {
+        print.on('printerChange', onPrinterChange);
+        print.off('printerChange');
+        done();
+      } catch (error) {
+        console.log('print_function_1200 expect failed, err: ' + JSON.stringify(error));
+        expect().assertFalse();
+        done();
+      }
     })
   })
 }
