@@ -67,7 +67,7 @@ export default class AbilityTest01 extends UIAbility {
         setTimeout(() => {
           // destroy assistHap
           globalThis.abilityAssist01.terminateSelf();
-        }, 600);
+        }, 400);
       });
     } catch (err) {
       hilog.info(0x0000, 'testTag', '%{public}s', `startAbility fail ${err}`);

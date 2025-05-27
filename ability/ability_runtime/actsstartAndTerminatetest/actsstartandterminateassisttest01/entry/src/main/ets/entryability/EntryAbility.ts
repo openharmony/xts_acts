@@ -16,7 +16,6 @@ import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { commonEventManager } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
-import app, { AppResponse } from '@system.app'
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
@@ -59,11 +58,11 @@ export default class EntryAbility extends UIAbility {
     hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility onForeground');
     commonEventManager.publish('EntryAbility_onForeground', function () {
       hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility publish EntryAbility_onForeground');
+      setTimeout(() => {
+        // destroy assistHap
+        globalThis.abilityAssistEntry01.terminateSelf()
+      }, 5000);
     });
-    setTimeout(() => {
-      // destroy assistHap
-      globalThis.abilityAssistEntry01.terminateSelf()
-    }, 5000);
   }
 
   onBackground() {

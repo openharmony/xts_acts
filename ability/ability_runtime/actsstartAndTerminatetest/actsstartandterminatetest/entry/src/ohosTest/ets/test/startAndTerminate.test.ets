@@ -99,8 +99,7 @@ let ACTS_EVENT: commonEventManager.CommonEventSubscribeInfo = {
     'ACTS_TEST_ONFORGROUND',
     'ACTS_TEST_ONBACKGROUND',
     'ACTS_TEST_ONDESTROYED',
-    'ACTS_TEST_DESTROY',
-    'ACTS_LIFE_CYCLE'
+    'ACTS_TEST_DESTROY'
   ]
 };
 
@@ -130,7 +129,8 @@ export default function startAndTerminateTest() {
     beforeAll(() => {
       context = globalThis.context
     })
-    beforeEach(() => {
+    beforeEach(async () => {
+      await sleep(1500)
     })
     afterEach(async () => {
       await sleep(1500)

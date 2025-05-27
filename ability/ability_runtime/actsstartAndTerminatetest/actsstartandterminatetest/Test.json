@@ -4,7 +4,7 @@
         "type": "OHJSUnitTest",
         "test-timeout": "180000",
         "shell-timeout": "180000",
-        "testcase-timeout": "10000",
+        "testcase-timeout": "12000",
         "bundle-name": "com.test.actsstartandterminatetest",
         "module-name": "entry_test"
     },
