@@ -252,11 +252,15 @@ export default function TLSSocketConnectionsTest() {
             client.send('Hello,client!', async (err: BusinessError) => {
               if (err) {
                 expectTrue(false)
-                await client.close()
+                await client.close().catch((err:BusinessError) => {
+                    console.info('fail to close' + err.code.toString());
+                });
                 done()
               } else {
                 expectTrue(true)
-                await client.close()
+                await client.close().catch((err:BusinessError) => {
+                    console.info('fail to close' + err.code.toString());
+                });
                 done()
               }
             })
@@ -310,11 +314,15 @@ export default function TLSSocketConnectionsTest() {
               if (err) {
                 console.info(`${caseName} send fail:${JSON.stringify(err)}`)
                 expectEqual(err.code, 401)
-                await client.close()
+                await client.close().catch((err:BusinessError) => {
+                    console.info('fail to close' + err.code.toString());
+                });
                 done()
               } else {
                 expectTrue(false)
-                await client.close()
+                await client.close().catch((err:BusinessError) => {
+                    console.info('fail to close' + err.code.toString());
+                });
                 done()
               }
             })
@@ -367,12 +375,16 @@ export default function TLSSocketConnectionsTest() {
               if (err) {
                 console.info(`${caseName} send fail:${JSON.stringify(err)}`);
                 expectTrue(false)
-                await client.close()
+                await client.close().catch((err:BusinessError) => {
+                    console.info('fail to close' + err.code.toString());
+                });
                 done()
               } else {
                 console.info(`${caseName} send success`);
                 expectTrue(true)
-                await client.close()
+                await client.close().catch((err:BusinessError) => {
+                    console.info('fail to close' + err.code.toString());
+                });
                 done()
               }
             })
@@ -425,12 +437,16 @@ export default function TLSSocketConnectionsTest() {
               if (err) {
                 console.info(`${caseName} send fail:${JSON.stringify(err)}`);
                 expectTrue(true)
-                await client.close()
+                await client.close().catch((err:BusinessError) => {
+                    console.info('fail to close' + err.code.toString());
+                });
                 done()
               } else {
                 console.info(`${caseName} send success`);
                 expectTrue(false)
-                await client.close()
+                await client.close().catch((err:BusinessError) => {
+                    console.info('fail to close' + err.code.toString());
+                });
                 done()
               }
             })
@@ -439,12 +455,16 @@ export default function TLSSocketConnectionsTest() {
               if (err) {
                 console.info(`${caseName} send fail:${JSON.stringify(err)}`);
                 expectTrue(false)
-                await client.close()
+                await client.close().catch((err:BusinessError) => {
+                    console.info('fail to close' + err.code.toString());
+                });
                 done()
               } else {
                 console.info(`${caseName} send success`);
                 expectTrue(true)
-                await client.close()
+                await client.close().catch((err:BusinessError) => {
+                    console.info('fail to close' + err.code.toString());
+                });
                 done()
               }
             })
@@ -497,12 +517,16 @@ export default function TLSSocketConnectionsTest() {
               if (err) {
                 console.info(`${caseName} send fail:${JSON.stringify(err)}`);
                 expectTrue(false)
-                await client.close()
+                await client.close().catch((err:BusinessError) => {
+                    console.info('fail to close' + err.code.toString());
+                });
                 done()
               } else {
                 console.info(`${caseName} send success`);
                 expectTrue(true)
-                await client.close()
+                await client.close().catch((err:BusinessError) => {
+                    console.info('fail to close' + err.code.toString());
+                });
                 done()
               }
             })
@@ -510,12 +534,16 @@ export default function TLSSocketConnectionsTest() {
               if (err) {
                 console.info(`${caseName} send fail:${JSON.stringify(err)}`);
                 expectTrue(false)
-                await client.close()
+                await client.close().catch((err:BusinessError) => {
+                    console.info('fail to close' + err.code.toString());
+                });
                 done()
               } else {
                 console.info(`${caseName} send success`);
                 expectTrue(true)
-                await client.close()
+                await client.close().catch((err:BusinessError) => {
+                    console.info('fail to close' + err.code.toString());
+                });
                 done()
               }
             })
@@ -566,12 +594,16 @@ export default function TLSSocketConnectionsTest() {
             })
             client.send('hell word!').then(async () => {
               console.info(`${caseName} send success`);
-              await client.close()
+              await client.close().catch((err:BusinessError) => {
+                    console.info('fail to close' + err.code.toString());
+                });
               done()
             }).catch(async (err: BusinessError) => {
               console.info(`${caseName} send fail:${JSON.stringify(err)}`);
               expectTrue(false)
-              await client.close()
+              await client.close().catch((err:BusinessError) => {
+                    console.info('fail to close' + err.code.toString());
+                });
               done()
             })
           })
@@ -621,11 +653,15 @@ export default function TLSSocketConnectionsTest() {
             })
             client.send(sendLongMessage).then(async () => {
               console.info(`${caseName} send success`);
-              await client.close()
+              await client.close().catch((err:BusinessError) => {
+                    console.info('fail to close' + err.code.toString());
+                });
             }).catch(async (err: BusinessError) => {
               console.info(`${caseName} send fail:${JSON.stringify(err)}`);
               expectTrue(false)
-              await client.close()
+              await client.close().catch((err:BusinessError) => {
+                    console.info('fail to close' + err.code.toString());
+                });
               done()
             })
           })
@@ -676,12 +712,16 @@ export default function TLSSocketConnectionsTest() {
             client.send('').then(async () => {
               console.info(`${caseName} send success`);
               expectTrue(false)
-              await client.close()
+              await client.close().catch((err:BusinessError) => {
+                    console.info('fail to close' + err.code.toString());
+                });
               done()
             }).catch(async (err: BusinessError) => {
               console.info(`${caseName} send fail:${JSON.stringify(err)}`);
               expectEqual(err.code, 401)
-              await client.close()
+              await client.close().catch((err:BusinessError) => {
+                    console.info('fail to close' + err.code.toString());
+                });
               done()
             })
           })
@@ -732,24 +772,32 @@ export default function TLSSocketConnectionsTest() {
             client.send('').then(async () => {
               console.info(`${caseName} send success`);
               expectTrue(false)
-              await client.close()
+              await client.close().catch((err:BusinessError) => {
+                    console.info('fail to close' + err.code.toString());
+                });
               done()
             }).catch(async (err: BusinessError) => {
               console.info(`${caseName} send fail:${JSON.stringify(err)}`);
               expectEqual(err.code, 401)
-              await client.close()
+              await client.close().catch((err:BusinessError) => {
+                    console.info('fail to close' + err.code.toString());
+                });
               done()
             })
             /*again send*/
             client.send('hello Mr.Tree').then(async () => {
               console.info(`${caseName} send success`);
               expectTrue(true)
-              await client.close()
+              await client.close().catch((err:BusinessError) => {
+                    console.info('fail to close' + err.code.toString());
+                });
               done()
             }).catch(async (err: BusinessError) => {
               console.info(`${caseName} send fail:${JSON.stringify(err)}`);
               expectTrue(false)
-              await client.close()
+              await client.close().catch((err:BusinessError) => {
+                    console.info('fail to close' + err.code.toString());
+                });
               done()
             })
           })
@@ -800,24 +848,32 @@ export default function TLSSocketConnectionsTest() {
             client.send('hello word!').then(async () => {
               console.info(`${caseName} send success`);
               expectTrue(true)
-              await client.close()
+              await client.close().catch((err:BusinessError) => {
+                    console.info('fail to close' + err.code.toString());
+                });
               done()
             }).catch(async (err: BusinessError) => {
               console.info(`${caseName} send fail:${JSON.stringify(err)}`);
               expectTrue(false)
-              await client.close()
+              await client.close().catch((err:BusinessError) => {
+                    console.info('fail to close' + err.code.toString());
+                });
               done()
             })
             /*again send*/
             client.send('hello Mr.Tree').then(async () => {
               console.info(`${caseName} send success`);
               expectTrue(true)
-              await client.close()
+              await client.close().catch((err:BusinessError) => {
+                    console.info('fail to close' + err.code.toString());
+                });
               done()
             }).catch(async (err: BusinessError) => {
               console.info(`${caseName} send fail:${JSON.stringify(err)}`);
               expectTrue(false)
-              await client.close()
+              await client.close().catch((err:BusinessError) => {
+                    console.info('fail to close' + err.code.toString());
+                });
               done()
             })
           })
