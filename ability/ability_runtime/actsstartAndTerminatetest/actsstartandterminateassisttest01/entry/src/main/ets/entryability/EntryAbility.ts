@@ -21,24 +21,24 @@ import app, { AppResponse } from '@system.app'
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility onCreate');
-    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility publish ACTS_LIFE_CYCLE');
+    commonEventManager.publish('EntryAbility_onCreate', function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility publish EntryAbility_onCreate');
     });
     globalThis.abilityAssistEntry01 = this.context
   }
 
   onDestroy() {
     hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility onDestroy');
-    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility publish ACTS_LIFE_CYCLE');
+    commonEventManager.publish('EntryAbility_onDestroy', function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility publish UiAbility04_onDestroy');
     });
   }
 
   onWindowStageCreate(windowStage: window.WindowStage) {
     // Main window is created, set main page for this ability
     hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility onWindowStageCreate');
-    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility publish ACTS_LIFE_CYCLE');
+    commonEventManager.publish('EntryAbility_onWindowStageCreate', function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility publish EntryAbility_onWindowStageCreate');
     });
     windowStage.loadContent('pages/Index', (err, data) => {
       if (err.code) {
@@ -57,8 +57,8 @@ export default class EntryAbility extends UIAbility {
   onForeground() {
     // Ability has brought to foreground
     hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility onForeground');
-    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility publish ACTS_LIFE_CYCLE');
+    commonEventManager.publish('EntryAbility_onForeground', function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility publish EntryAbility_onForeground');
     });
     setTimeout(() => {
       // destroy assistHap
@@ -69,8 +69,8 @@ export default class EntryAbility extends UIAbility {
   onBackground() {
     // Ability has back to background
     hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility onBackground');
-    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility publish ACTS_LIFE_CYCLE');
+    commonEventManager.publish('EntryAbility_onBackground', function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility publish UiAbility04_onBackground');
     });
   }
 }

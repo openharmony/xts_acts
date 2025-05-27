@@ -18,39 +18,50 @@ import hilog from '@ohos.hilog';
 import window from '@ohos.window';
 import { commonEventManager } from '@kit.BasicServicesKit';
 
-let testNum:number = 0;
-
 export default class UiAbility09 extends UIAbility {
 
   static isFirstStart:boolean = true;
 
   onCreate(want, launchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility09 onCreate');
-    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility09 publish ACTS_LIFE_CYCLE');
-    });
     globalThis.uiAbilityContext9 = this.context
     hilog.info(0x0000, 'testTag', '%{public}s', `UiAbility09 want is, ${JSON.stringify(want)}`);
     UiAbility09.isFirstStart = want.parameters.isFirstStart
+    if (UiAbility09.isFirstStart) {
+      commonEventManager.publish('UiAbility09_onCreate_01', function () {
+        hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility09 publish UiAbility09_onCreate_01');
+      });
+    } else {
+      commonEventManager.publish('UiAbility09_onCreate_02', function () {
+        hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility09 publish UiAbility09_onCreate_02');
+      });
+    }
   }
 
   onDestroy() {
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility09 onDestroy');
-    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility09 publish ACTS_LIFE_CYCLE');
-    });
     if (UiAbility09.isFirstStart) {
-      commonEventManager.publish('ACTS_TEST_ONDESTROYED', function () {
-        hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility09 publish ACTS_TEST_ONDESTROYED');
+      commonEventManager.publish('UiAbility09_onDestroy_01', function () {
+        hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility09 publish UiAbility09_onDestroy_01');
+      });
+    } else {
+      commonEventManager.publish('UiAbility09_onDestroy_02', function () {
+        hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility09 publish UiAbility09_onDestroy_02');
       });
     }
   }
 
   onWindowStageCreate(windowStage: window.WindowStage) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility09 onWindowStageCreate');
-    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility09 publish ACTS_LIFE_CYCLE');
-    });
+    if (UiAbility09.isFirstStart) {
+      commonEventManager.publish('UiAbility09_onWindowStageCreate_01', function () {
+        hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility09 publish UiAbility09_onWindowStageCreate_01');
+      });
+    } else {
+      commonEventManager.publish('UiAbility09_onWindowStageCreate_02', function () {
+        hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility09 publish UiAbility09_onWindowStageCreate_02');
+      });
+    }
     windowStage.loadContent('testability/pages/UiAbility/UiAbility01', (err, data) => {
       if (err.code) {
         hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
@@ -66,14 +77,14 @@ export default class UiAbility09 extends UIAbility {
 
   onForeground() {
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility09 onForeground');
-    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility09 publish ACTS_LIFE_CYCLE');
-    });
     if (UiAbility09.isFirstStart) {
-      commonEventManager.publish('ACTS_TEST_ONFORGROUND', function () {
-        hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility09 publish ACTS_TEST_ONFORGROUND');
+      commonEventManager.publish('UiAbility09_onForeground_01', function () {
+        hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility09 publish UiAbility09_onForeground_01');
       });
-    }else {
+    } else {
+      commonEventManager.publish('UiAbility09_onForeground_02', function () {
+        hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility09 publish UiAbility09_onForeground_02');
+      });
       commonEventManager.publish('ACTS_TEST_DESTROY', function () {
         hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility09 publish ACTS_TEST_DESTROY');
       });
@@ -83,17 +94,14 @@ export default class UiAbility09 extends UIAbility {
   onBackground() {
     // Ability has back to background
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility09 onBackground');
-    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility09 publish ACTS_LIFE_CYCLE');
-    });
-    let options = {
-      parameters: {
-        result: 'onBackground'
-      }
-    };
+
     if (UiAbility09.isFirstStart) {
-      commonEventManager.publish('ACTS_TEST_ONBACKGROUND', options, function () {
-        hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility09 publish ACTS_TEST_ONBACKGROUND');
+      commonEventManager.publish('UiAbility09_onBackground_01', function () {
+        hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility09 publish UiAbility09_onBackground_01');
+      });
+    } else {
+      commonEventManager.publish('UiAbility09_onBackground_02', function () {
+        hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility09 publish UiAbility09_onBackground_02');
       });
     }
   }

@@ -24,6 +24,78 @@ let ACTS_EVENT: commonEventManager.CommonEventSubscribeInfo = {
     'ACTS_TEST_START01',
     'ACTS_TEST_START02',
     'ACTS_TEST_START03',
+
+    'UiAbility01_onCreate',
+    'UiAbility01_onDestroy',
+    'UiAbility01_onWindowStageCreate',
+    'UiAbility01_onForeground',
+    'UiAbility01_onBackground',
+    'UiAbility02_onCreate',
+    'UiAbility02_onWindowStageCreate',
+    'UiAbility02_onForeground',
+
+    'UiAbility03_onCreate',
+    'UiAbility03_onDestroy',
+    'UiAbility03_onWindowStageCreate',
+    'UiAbility03_onForeground',
+    'UiAbility03_onBackground',
+    'EntryAbility_onCreate',
+    'EntryAbility_onWindowStageCreate',
+    'EntryAbility_onForeground',
+
+    'EntryAbility_onDestroy',
+    'EntryAbility_onBackground',
+    'UiAbility04_onCreate',
+    'UiAbility04_onWindowStageCreate',
+    'UiAbility04_onForeground_01',
+    'UiAbility04_onForeground_02',
+    'UiAbility04_onBackground',
+
+    'UiAbility05_onCreate',
+    'UiAbility05_onWindowStageCreate',
+    'UiAbility05_onForeground',
+    'UiAbility05_onBackground',
+    'UiAbility06_onCreate',
+    'UiAbility06_onWindowStageCreate',
+    'UiAbility06_onForeground',
+    'UiAbility06_onBackground',
+    'UiAbility07_onCreate',
+    'UiAbility07_onWindowStageCreate',
+    'UiAbility07_onForeground',
+
+    'EntryAbility_hap2_onCreate',
+    'EntryAbility_hap2_onWindowStageCreate',
+    'EntryAbility_hap2_onForeground',
+    'EntryAbility_hap2_onBackground',
+    'EntryAbility_hap3_onCreate',
+    'EntryAbility_hap3_onWindowStageCreate',
+    'EntryAbility_hap3_onForeground',
+
+    'UiAbility08_onCreate',
+    'UiAbility08_onWindowStageCreate',
+    'UiAbility08_onForeground_01',
+    'UiAbility08_onForeground_02',
+    'UiAbility08_onBackground',
+    'AbilityTest01_onCreate',
+    'AbilityTest01_onWindowStageCreate',
+    'AbilityTest01_onForeground',
+    'AbilityTest01_onBackground',
+
+    'UiAbility09_onCreate_01',
+    'UiAbility09_onCreate_02',
+    'UiAbility09_onDestroy_01',
+    'UiAbility09_onDestroy_02',
+    'UiAbility09_onWindowStageCreate_01',
+    'UiAbility09_onWindowStageCreate_02',
+    'UiAbility09_onForeground_01',
+    'UiAbility09_onForeground_02',
+    'UiAbility09_onBackground_01',
+    'UiAbility09_onBackground_02',
+
+    'UiAbility10_onCreate',
+    'UiAbility10_onWindowStageCreate',
+    'UiAbility10_onForeground',
+
     'ACTS_TEST_ONFORGROUND',
     'ACTS_TEST_ONBACKGROUND',
     'ACTS_TEST_ONDESTROYED',
@@ -31,6 +103,7 @@ let ACTS_EVENT: commonEventManager.CommonEventSubscribeInfo = {
     'ACTS_LIFE_CYCLE'
   ]
 };
+
 let subscriber: commonEventManager.CommonEventSubscriber;
 
 function publishCB(err: BusinessError) {
@@ -76,22 +149,56 @@ export default function startAndTerminateTest() {
     it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0100', Level.LEVEL0,(done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0100`;
       hilog.info(0x0000, 'testTag', `${tag}, it begin`);
-      let testNum01:number = 0;
+      let uiAbility01OnCreate:string = 'uiAbility01OnCreateFail';
+      let uiAbility01OnDestroy: string = 'uiAbility01OnDestroyFail';
+      let uiAbility01OnWindowStageCreate: string = 'uiAbility01OnWindowStageCreateFail';
+      let uiAbility01OnForeground: string = 'uiAbility01OnForegroundFail';
+      let uiAbility01OnBackground: string = 'uiAbility01OnBackgroundFail';
+      let uiAbility02OnCreate: string = 'uiAbility02OnCreateFail';
+      let uiAbility02OnWindowStageCreate: string = 'uiAbility02OnWindowStageCreateFail';
+      let uiAbility02OnForeground: string = 'uiAbility02OnForegroundFail';
       commonEventManager.createSubscriber(ACTS_EVENT)
         .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
           subscriber = commonEventSubscriber;
           let unSubscribeCallback = () => {
-            hilog.info(0x0000, 'testTag', '%{public}s', `${tag} testNum01 is: ${testNum01}`);
             setTimeout(async () => {
               hilog.info(0x0000, 'testTag', `${tag} unSubscribeCallback`);
-              expect(testNum01).assertEqual(8)
+              expect(uiAbility01OnCreate).assertEqual('uiAbility01OnCreateSuccess');
+              expect(uiAbility01OnDestroy).assertEqual('uiAbility01OnDestroySuccess');
+              expect(uiAbility01OnWindowStageCreate).assertEqual('uiAbility01OnWindowStageCreateSuccess');
+              expect(uiAbility01OnForeground).assertEqual('uiAbility01OnForegroundSuccess');
+              expect(uiAbility01OnBackground).assertEqual('uiAbility01OnBackgroundSuccess');
+              expect(uiAbility02OnCreate).assertEqual('uiAbility02OnCreateSuccess');
+              expect(uiAbility02OnWindowStageCreate).assertEqual('uiAbility02OnWindowStageCreateSuccess');
+              expect(uiAbility02OnForeground).assertEqual('uiAbility02OnForegroundSuccess');
               done();
             }, 1000);
           }
           let subscribeCallBack = (err: BusinessError, data: commonEventManager.CommonEventData) => {
             hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success`)
-            if (data.event == 'ACTS_LIFE_CYCLE') {
-              testNum01++;
+            if (data.event == 'UiAbility01_onCreate') {
+              uiAbility01OnCreate = 'uiAbility01OnCreateSuccess';
+            };
+            if (data.event == 'UiAbility01_onDestroy') {
+              uiAbility01OnDestroy = 'uiAbility01OnDestroySuccess';
+            };
+            if (data.event == 'UiAbility01_onWindowStageCreate') {
+              uiAbility01OnWindowStageCreate = 'uiAbility01OnWindowStageCreateSuccess';
+            };
+            if (data.event == 'UiAbility01_onForeground') {
+              uiAbility01OnForeground = 'uiAbility01OnForegroundSuccess';
+            };
+            if (data.event == 'UiAbility01_onBackground') {
+              uiAbility01OnBackground = 'uiAbility01OnBackgroundSuccess';
+            };
+            if (data.event == 'UiAbility02_onCreate') {
+              uiAbility02OnCreate = 'uiAbility02OnCreateSuccess';
+            };
+            if (data.event == 'UiAbility02_onWindowStageCreate') {
+              uiAbility02OnWindowStageCreate = 'uiAbility02OnWindowStageCreateSuccess';
+            };
+            if (data.event == 'UiAbility02_onForeground') {
+              uiAbility02OnForeground = 'uiAbility02OnForegroundSuccess';
             };
             if (data.event == 'ACTS_TEST_START01') {
               setTimeout(() => {
@@ -147,22 +254,56 @@ export default function startAndTerminateTest() {
     it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0200', Level.LEVEL0,(done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0200`;
       hilog.info(0x0000, 'testTag', '%{public}s', `${tag}, it begin`);
-      let testNum02:number = 0;
+      let uiAbility03OnCreate: string = 'uiAbility03OnCreateFail';
+      let uiAbility03OnDestroy: string = 'uiAbility03OnDestroyFail';
+      let uiAbility03OnWindowStageCreate: string = 'uiAbility03OnWindowStageCreateFail';
+      let uiAbility03OnForeground: string = 'uiAbility03OnForegroundFail';
+      let uiAbility03OnBackground: string = 'uiAbility03OnBackgroundFail';
+      let entryAbilityOnCreate: string = 'entryAbilityOnCreateFail';
+      let entryAbilityOnWindowStageCreate: string = 'entryAbilityOnWindowStageCreateFail';
+      let entryAbilityOnForeground: string = 'entryAbilityOnForegroundFail';
       commonEventManager.createSubscriber(ACTS_EVENT)
         .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
           subscriber = commonEventSubscriber;
           let unSubscribeCallback = () => {
-            hilog.info(0x0000, 'testTag', '%{public}s', `${tag} testNum02 is: ${testNum02}`);
             setTimeout(async () => {
               hilog.info(0x0000, 'testTag', '%{public}s', `====>${tag} unSubscribeCallback`);
-              expect(testNum02).assertEqual(8)
+              expect(uiAbility03OnCreate).assertEqual('uiAbility03OnCreateSuccess');
+              expect(uiAbility03OnDestroy).assertEqual('uiAbility03OnDestroySuccess');
+              expect(uiAbility03OnWindowStageCreate).assertEqual('uiAbility03OnWindowStageCreateSuccess');
+              expect(uiAbility03OnForeground).assertEqual('uiAbility03OnForegroundSuccess');
+              expect(uiAbility03OnBackground).assertEqual('uiAbility03OnBackgroundSuccess');
+              expect(entryAbilityOnCreate).assertEqual('entryAbilityOnCreateSuccess');
+              expect(entryAbilityOnWindowStageCreate).assertEqual('entryAbilityOnWindowStageCreateSuccess');
+              expect(entryAbilityOnForeground).assertEqual('entryAbilityOnForegroundSuccess');
               done();
             }, 1000);
           }
           let subscribeCallBack = (err: BusinessError, data: commonEventManager.CommonEventData) => {
             hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success`)
-            if (data.event == 'ACTS_LIFE_CYCLE') {
-              testNum02++;
+            if (data.event == 'UiAbility03_onCreate') {
+              uiAbility03OnCreate = 'uiAbility03OnCreateSuccess';
+            };
+            if (data.event == 'UiAbility03_onDestroy') {
+              uiAbility03OnDestroy = 'uiAbility03OnDestroySuccess';
+            };
+            if (data.event == 'UiAbility03_onWindowStageCreate') {
+              uiAbility03OnWindowStageCreate = 'uiAbility03OnWindowStageCreateSuccess';
+            };
+            if (data.event == 'UiAbility03_onForeground') {
+              uiAbility03OnForeground = 'uiAbility03OnForegroundSuccess';
+            };
+            if (data.event == 'UiAbility03_onBackground') {
+              uiAbility03OnBackground = 'uiAbility03OnBackgroundSuccess';
+            };
+            if (data.event == 'EntryAbility_onCreate') {
+              entryAbilityOnCreate = 'entryAbilityOnCreateSuccess';
+            };
+            if (data.event == 'EntryAbility_onWindowStageCreate') {
+              entryAbilityOnWindowStageCreate = 'entryAbilityOnWindowStageCreateSuccess';
+            };
+            if (data.event == 'EntryAbility_onForeground') {
+              entryAbilityOnForeground = 'entryAbilityOnForegroundSuccess';
             };
             if (data.event == 'ACTS_TEST_START01') {
               setTimeout(() => {
@@ -219,22 +360,75 @@ export default function startAndTerminateTest() {
     it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0300', Level.LEVEL0,(done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0300`;
       hilog.info(0x0000, 'testTag', '%{public}s', `${tag}, it begin`);
-      let testNum03:number = 0;
+      let entryAbilityOnCreate: string = 'entryAbilityOnCreateFail';
+      let entryAbilityOnWindowStageCreate: string = 'entryAbilityOnWindowStageCreateFail';
+      let entryAbilityOnForeground: string = 'entryAbilityOnForegroundFail';
+      let entryAbilityOnDestroy: string = 'entryAbilityOnDestroyFail';
+      let entryAbilityOnBackground: string = 'entryAbilityOnBackgroundFail';
+      let uiAbility04OnCreate: string = 'uiAbility04OnCreateFail';
+      let uiAbility04OnWindowStageCreate: string = 'uiAbility04OnWindowStageCreateFail';
+      let uiAbility04OnForeground01: string = 'uiAbility04OnForeground01Fail';
+      let uiAbility04OnForeground02: string = 'uiAbility04OnForeground02Fail';
+      let uiAbility04OnBackground: string = 'uiAbility04OnBackgroundFail';
       commonEventManager.createSubscriber(ACTS_EVENT)
         .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
           subscriber = commonEventSubscriber;
           let unSubscribeCallback = () => {
-            hilog.info(0x0000, 'testTag', '%{public}s', `${tag} testNum03 is: ${testNum03}`);
             setTimeout(async () => {
               hilog.info(0x0000, 'testTag', '%{public}s', `====>${tag} unSubscribeCallback`);
-              expect(testNum03).assertEqual(11)
+              expect(entryAbilityOnCreate).assertEqual('entryAbilityOnCreateSuccess');
+              expect(entryAbilityOnWindowStageCreate).assertEqual('entryAbilityOnWindowStageCreateSuccess');
+              expect(entryAbilityOnForeground).assertEqual('entryAbilityOnForegroundSuccess');
+              expect(entryAbilityOnDestroy).assertEqual('entryAbilityOnDestroySuccess');
+              expect(entryAbilityOnBackground).assertEqual('entryAbilityOnBackgroundSuccess');
+              expect(uiAbility04OnCreate).assertEqual('uiAbility04OnCreateSuccess');
+              expect(uiAbility04OnWindowStageCreate).assertEqual('uiAbility04OnWindowStageCreateSuccess');
+              expect(uiAbility04OnForeground01).assertEqual('uiAbility04OnForeground01Success');
+              expect(uiAbility04OnForeground02).assertEqual('uiAbility04OnForeground02Success');
+              expect(uiAbility04OnBackground).assertEqual('uiAbility04OnBackgroundSuccess');
               done();
             }, 1000);
           }
           let subscribeCallBack = (err: BusinessError, data: commonEventManager.CommonEventData) => {
             hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success`)
-            if (data.event == 'ACTS_LIFE_CYCLE') {
-              testNum03++;
+            if (data.event == 'EntryAbility_onCreate') {
+              entryAbilityOnCreate = 'entryAbilityOnCreateSuccess';
+            };
+
+            if (data.event == 'EntryAbility_onWindowStageCreate') {
+              entryAbilityOnWindowStageCreate = 'entryAbilityOnWindowStageCreateSuccess';
+            };
+
+            if (data.event == 'EntryAbility_onForeground') {
+              entryAbilityOnForeground = 'entryAbilityOnForegroundSuccess';
+            };
+
+            if (data.event == 'EntryAbility_onDestroy') {
+              entryAbilityOnDestroy = 'entryAbilityOnDestroySuccess';
+            };
+
+            if (data.event == 'EntryAbility_onBackground') {
+              entryAbilityOnBackground = 'entryAbilityOnBackgroundSuccess';
+            };
+
+            if (data.event == 'UiAbility04_onCreate') {
+              uiAbility04OnCreate = 'uiAbility04OnCreateSuccess';
+            };
+
+            if (data.event == 'UiAbility04_onWindowStageCreate') {
+              uiAbility04OnWindowStageCreate = 'uiAbility04OnWindowStageCreateSuccess';
+            };
+
+            if (data.event == 'UiAbility04_onForeground_01') {
+              uiAbility04OnForeground01 = 'uiAbility04OnForeground01Success';
+            };
+
+            if (data.event == 'UiAbility04_onForeground_02') {
+              uiAbility04OnForeground02 = 'uiAbility04OnForeground02Success';
+            };
+
+            if (data.event == 'UiAbility04_onBackground') {
+              uiAbility04OnBackground = 'uiAbility04OnBackgroundSuccess';
             };
             if (data.event == 'ACTS_TEST_START01') {
               setTimeout(() => {
@@ -291,22 +485,81 @@ export default function startAndTerminateTest() {
     it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0900', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0900`;
       hilog.info(0x0000, 'testTag', '%{public}s', `${tag}, it begin`);
-      let testNum04:number = 0;
+      let uiAbility05OnCreate: string = 'uiAbility05OnCreateFail';
+      let uiAbility05OnWindowStageCreate: string = 'uiAbility05OnWindowStageCreateFail';
+      let uiAbility05OnForeground: string = 'uiAbility05OnForegroundFail';
+      let uiAbility05OnBackground: string = 'uiAbility05OnBackgroundFail';
+      let uiAbility06OnCreate: string = 'uiAbility06OnCreateFail';
+      let uiAbility06OnWindowStageCreate: string = 'uiAbility06OnWindowStageCreateFail';
+      let uiAbility06OnForeground: string = 'uiAbility06OnForegroundFail';
+      let uiAbility06OnBackground: string = 'uiAbility06OnBackgroundFail';
+      let uiAbility07OnCreate: string = 'uiAbility07OnCreateFail';
+      let uiAbility07OnWindowStageCreate: string = 'uiAbility07OnWindowStageCreateFail';
+      let uiAbility07OnForeground: string = 'uiAbility07OnForegroundFail';
       commonEventManager.createSubscriber(ACTS_EVENT)
         .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
           subscriber = commonEventSubscriber;
           let unSubscribeCallback = () => {
-            hilog.info(0x0000, 'testTag', '%{public}s', `${tag} testNum04 is: ${testNum04}`);
             setTimeout(async () => {
               hilog.info(0x0000, 'testTag', '%{public}s', `====>${tag} unSubscribeCallback`);
-              expect(testNum04).assertEqual(13)
+              expect(uiAbility05OnCreate).assertEqual('uiAbility05OnCreateSuccess');
+              expect(uiAbility05OnWindowStageCreate).assertEqual('uiAbility05OnWindowStageCreateSuccess');
+              expect(uiAbility05OnForeground).assertEqual('uiAbility05OnForegroundSuccess');
+              expect(uiAbility05OnBackground).assertEqual('uiAbility05OnBackgroundSuccess');
+              expect(uiAbility06OnCreate).assertEqual('uiAbility06OnCreateSuccess');
+              expect(uiAbility06OnWindowStageCreate).assertEqual('uiAbility06OnWindowStageCreateSuccess');
+              expect(uiAbility06OnForeground).assertEqual('uiAbility06OnForegroundSuccess');
+              expect(uiAbility06OnBackground).assertEqual('uiAbility06OnBackgroundSuccess');
+              expect(uiAbility07OnCreate).assertEqual('uiAbility07OnCreateSuccess');
+              expect(uiAbility07OnWindowStageCreate).assertEqual('uiAbility07OnWindowStageCreateSuccess');
+              expect(uiAbility07OnForeground).assertEqual('uiAbility07OnForegroundSuccess');
               done();
             }, 1000);
           }
           let subscribeCallBack = (err: BusinessError, data: commonEventManager.CommonEventData) => {
             hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success`)
-            if (data.event == 'ACTS_LIFE_CYCLE') {
-              testNum04++;
+            if (data.event == 'UiAbility05_onCreate') {
+              uiAbility05OnCreate = 'uiAbility05OnCreateSuccess';
+            };
+
+            if (data.event == 'UiAbility05_onWindowStageCreate') {
+              uiAbility05OnWindowStageCreate = 'uiAbility05OnWindowStageCreateSuccess';
+            };
+
+            if (data.event == 'UiAbility05_onForeground') {
+              uiAbility05OnForeground = 'uiAbility05OnForegroundSuccess';
+            };
+
+            if (data.event == 'UiAbility05_onBackground') {
+              uiAbility05OnBackground = 'uiAbility05OnBackgroundSuccess';
+            };
+
+            if (data.event == 'UiAbility06_onCreate') {
+              uiAbility06OnCreate = 'uiAbility06OnCreateSuccess';
+            };
+
+            if (data.event == 'UiAbility06_onWindowStageCreate') {
+              uiAbility06OnWindowStageCreate = 'uiAbility06OnWindowStageCreateSuccess';
+            };
+
+            if (data.event == 'UiAbility06_onForeground') {
+              uiAbility06OnForeground = 'uiAbility06OnForegroundSuccess';
+            };
+
+            if (data.event == 'UiAbility06_onBackground') {
+              uiAbility06OnBackground = 'uiAbility06OnBackgroundSuccess';
+            };
+
+            if (data.event == 'UiAbility07_onCreate') {
+              uiAbility07OnCreate = 'uiAbility07OnCreateSuccess';
+            };
+
+            if (data.event == 'UiAbility07_onWindowStageCreate') {
+              uiAbility07OnWindowStageCreate = 'uiAbility07OnWindowStageCreateSuccess';
+            };
+
+            if (data.event == 'UiAbility07_onForeground') {
+              uiAbility07OnForeground = 'uiAbility07OnForegroundSuccess';
             };
             if (data.event == 'ACTS_TEST_START01') {
               setTimeout(() => {
@@ -359,9 +612,6 @@ export default function startAndTerminateTest() {
               }
             }
             if (data.event == 'ACTS_TEST_DESTROY') {
-              // globalThis.uiAbilityContext5.terminateSelf();
-              // globalThis.uiAbilityContext6.terminateSelf();
-              // globalThis.uiAbilityContext7.terminateSelf();
               setTimeout(() => {
                 commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
               }, 500);
@@ -386,22 +636,81 @@ export default function startAndTerminateTest() {
     it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_1000', Level.LEVEL0,(done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_1000`;
       hilog.info(0x0000, 'testTag', '%{public}s', `${tag}, it begin`);
-      let testNum05:number = 0;
+      let uiAbility05OnCreate: string = 'uiAbility05OnCreateFail';
+      let uiAbility05OnWindowStageCreate: string = 'uiAbility05OnWindowStageCreateFail';
+      let uiAbility05OnForeground: string = 'uiAbility05OnForegroundFail';
+      let uiAbility05OnBackground: string = 'uiAbility05OnBackgroundFail';
+      let entryAbilityHap2OnCreate: string = 'entryAbilityHap2OnCreateFail';
+      let entryAbilityHap2OnWindowStageCreate: string = 'entryAbilityHap2OnWindowStageCreateFail';
+      let entryAbilityHap2OnForeground: string = 'entryAbilityHap2OnForegroundFail';
+      let entryAbilityHap2OnBackground: string = 'entryAbilityHap2OnBackgroundFail';
+      let entryAbilityHap3OnCreate: string = 'entryAbilityHap3OnCreateFail';
+      let entryAbilityHap3OnWindowStageCreate: string = 'entryAbilityHap3OnWindowStageCreateFail';
+      let entryAbilityHap3OnForeground: string = 'entryAbilityHap3OnForegroundFail';
+
       commonEventManager.createSubscriber(ACTS_EVENT)
         .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
           subscriber = commonEventSubscriber;
           let unSubscribeCallback = () => {
-            hilog.info(0x0000, 'testTag', '%{public}s', `${tag} testNum05 is: ${testNum05}`);
             setTimeout(async () => {
               hilog.info(0x0000, 'testTag', '%{public}s', `====>${tag} unSubscribeCallback`);
-              expect(testNum05).assertEqual(11)
+              expect(uiAbility05OnCreate).assertEqual('uiAbility05OnCreateSuccess');
+              expect(uiAbility05OnWindowStageCreate).assertEqual('uiAbility05OnWindowStageCreateSuccess');
+              expect(uiAbility05OnForeground).assertEqual('uiAbility05OnForegroundSuccess');
+              expect(uiAbility05OnBackground).assertEqual('uiAbility05OnBackgroundSuccess');
+              expect(entryAbilityHap2OnCreate).assertEqual('entryAbilityHap2OnCreateSuccess');
+              expect(entryAbilityHap2OnWindowStageCreate).assertEqual('entryAbilityHap2OnWindowStageCreateSuccess');
+              expect(entryAbilityHap2OnForeground).assertEqual('entryAbilityHap2OnForegroundSuccess');
+              expect(entryAbilityHap2OnBackground).assertEqual('entryAbilityHap2OnBackgroundSuccess');
+              expect(entryAbilityHap3OnCreate).assertEqual('entryAbilityHap3OnCreateSuccess');
+              expect(entryAbilityHap3OnWindowStageCreate).assertEqual('entryAbilityHap3OnWindowStageCreateSuccess');
+              expect(entryAbilityHap3OnForeground).assertEqual('entryAbilityHap3OnForegroundSuccess');
               done();
             }, 1000);
           }
           let subscribeCallBack = (err: BusinessError, data: commonEventManager.CommonEventData) => {
             hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success`)
-            if (data.event == 'ACTS_LIFE_CYCLE') {
-              testNum05++;
+            if (data.event == 'UiAbility05_onCreate') {
+              uiAbility05OnCreate = 'uiAbility05OnCreateSuccess';
+            };
+
+            if (data.event == 'UiAbility05_onWindowStageCreate') {
+              uiAbility05OnWindowStageCreate = 'uiAbility05OnWindowStageCreateSuccess';
+            };
+
+            if (data.event == 'UiAbility05_onForeground') {
+              uiAbility05OnForeground = 'uiAbility05OnForegroundSuccess';
+            };
+
+            if (data.event == 'UiAbility05_onBackground') {
+              uiAbility05OnBackground = 'uiAbility05OnBackgroundSuccess';
+            };
+            if (data.event == 'EntryAbility_hap2_onCreate') {
+              entryAbilityHap2OnCreate = 'entryAbilityHap2OnCreateSuccess';
+            };
+
+            if (data.event == 'EntryAbility_hap2_onWindowStageCreate') {
+              entryAbilityHap2OnWindowStageCreate = 'entryAbilityHap2OnWindowStageCreateSuccess';
+            };
+
+            if (data.event == 'EntryAbility_hap2_onForeground') {
+              entryAbilityHap2OnForeground = 'entryAbilityHap2OnForegroundSuccess';
+            };
+
+            if (data.event == 'EntryAbility_hap2_onBackground') {
+              entryAbilityHap2OnBackground = 'entryAbilityHap2OnBackgroundSuccess';
+            };
+
+            if (data.event == 'EntryAbility_hap3_onCreate') {
+              entryAbilityHap3OnCreate = 'entryAbilityHap3OnCreateSuccess';
+            };
+
+            if (data.event == 'EntryAbility_hap3_onWindowStageCreate') {
+              entryAbilityHap3OnWindowStageCreate = 'entryAbilityHap3OnWindowStageCreateSuccess';
+            };
+
+            if (data.event == 'EntryAbility_hap3_onForeground') {
+              entryAbilityHap3OnForeground = 'entryAbilityHap3OnForegroundSuccess';
             };
             if (data.event == 'ACTS_TEST_START01') {
               setTimeout(() => {
@@ -463,22 +772,69 @@ export default function startAndTerminateTest() {
     it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_1200', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_1200`;
       hilog.info(0x0000, 'testTag', '%{public}s', `${tag}, it begin`);
-      let testNum06:number = 0;
+      let uiAbility08OnCreate: string = 'uiAbility08OnCreateFail';
+      let uiAbility08OnWindowStageCreate: string = 'uiAbility08OnWindowStageCreateFail';
+      let uiAbility08OnForeground01: string = 'uiAbility08OnForeground01Fail';
+      let uiAbility08OnForeground02: string = 'uiAbility08OnForeground02Fail';
+      let uiAbility08OnBackground: string = 'uiAbility08OnBackgroundFail';
+      let abilityTest01OnCreate: string = 'abilityTest01OnCreateFail';
+      let abilityTest01OnWindowStageCreate: string = 'abilityTest01OnWindowStageCreateFail';
+      let abilityTest01OnForeground: string = 'abilityTest01OnForegroundFail';
+      let abilityTest01OnBackground: string = 'abilityTest01OnBackgroundFail';
       commonEventManager.createSubscriber(ACTS_EVENT)
         .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
           subscriber = commonEventSubscriber;
           let unSubscribeCallback = () => {
-            hilog.info(0x0000, 'testTag', '%{public}s', `${tag} testNum06 is: ${testNum06}`);
             setTimeout(async () => {
               hilog.info(0x0000, 'testTag', '%{public}s', `====>${tag} unSubscribeCallback`);
-              expect(testNum06).assertEqual(10)
+              expect(uiAbility08OnCreate).assertEqual('uiAbility08OnCreateSuccess');
+              expect(uiAbility08OnWindowStageCreate).assertEqual('uiAbility08OnWindowStageCreateSuccess');
+              expect(uiAbility08OnForeground01).assertEqual('uiAbility08OnForeground01Success');
+              expect(uiAbility08OnForeground02).assertEqual('uiAbility08OnForeground02Success');
+              expect(uiAbility08OnBackground).assertEqual('uiAbility08OnBackgroundSuccess');
+              expect(abilityTest01OnCreate).assertEqual('abilityTest01OnCreateSuccess');
+              expect(abilityTest01OnWindowStageCreate).assertEqual('abilityTest01OnWindowStageCreateSuccess');
+              expect(abilityTest01OnForeground).assertEqual('abilityTest01OnForegroundSuccess');
+              expect(abilityTest01OnBackground).assertEqual('abilityTest01OnBackgroundSuccess');
               done();
             }, 1000);
           }
           let subscribeCallBack = (err: BusinessError, data: commonEventManager.CommonEventData) => {
             hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success`)
-            if (data.event == 'ACTS_LIFE_CYCLE') {
-              testNum06++;
+            if (data.event == 'UiAbility08_onCreate') {
+              uiAbility08OnCreate = 'uiAbility08OnCreateSuccess';
+            };
+
+            if (data.event == 'UiAbility08_onWindowStageCreate') {
+              uiAbility08OnWindowStageCreate = 'uiAbility08OnWindowStageCreateSuccess';
+            };
+
+            if (data.event == 'UiAbility08_onForeground_01') {
+              uiAbility08OnForeground01 = 'uiAbility08OnForeground01Success';
+            };
+
+            if (data.event == 'UiAbility08_onForeground_02') {
+              uiAbility08OnForeground02 = 'uiAbility08OnForeground02Success';
+            };
+
+            if (data.event == 'UiAbility08_onBackground') {
+              uiAbility08OnBackground = 'uiAbility08OnBackgroundSuccess';
+            };
+
+            if (data.event == 'AbilityTest01_onCreate') {
+              abilityTest01OnCreate = 'abilityTest01OnCreateSuccess';
+            };
+
+            if (data.event == 'AbilityTest01_onWindowStageCreate') {
+              abilityTest01OnWindowStageCreate = 'abilityTest01OnWindowStageCreateSuccess';
+            };
+
+            if (data.event == 'AbilityTest01_onForeground') {
+              abilityTest01OnForeground = 'abilityTest01OnForegroundSuccess';
+            };
+
+            if (data.event == 'AbilityTest01_onBackground') {
+              abilityTest01OnBackground = 'abilityTest01OnBackgroundSuccess';
             };
             if (data.event == 'ACTS_TEST_START01') {
               setTimeout(() => {
@@ -519,23 +875,37 @@ export default function startAndTerminateTest() {
     it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2200', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2200`;
       hilog.info(0x0000, 'testTag', '%{public}s', `${tag}, it begin`);
-      let testNum07:number = 0;
+      let uiAbility09OnCreate01: string = 'uiAbility09OnCreate01Fail';
+      let uiAbility09OnCreate02: string = 'uiAbility09OnCreate02Fail';
+      let uiAbility09OnDestroy01: string = 'uiAbility09OnDestroy01Fail';
+      let uiAbility09OnDestroy02: string = 'uiAbility09OnDestroy02Fail';
+      let uiAbility09OnWindowStageCreate01: string = 'uiAbility09OnWindowStageCreate01Fail';
+      let uiAbility09OnWindowStageCreate02: string = 'uiAbility09OnWindowStageCreate02Fail';
+      let uiAbility09OnForeground01: string = 'uiAbility09OnForeground01Fail';
+      let uiAbility09OnForeground02: string = 'uiAbility09OnForeground02Fail';
+      let uiAbility09OnBackground01: string = 'uiAbility09OnBackground01Fail';
+      let uiAbility09OnBackground02: string = 'uiAbility09OnBackground02Fail';
       commonEventManager.createSubscriber(ACTS_EVENT)
         .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
           subscriber = commonEventSubscriber;
           let unSubscribeCallback = () => {
-            hilog.info(0x0000, 'testTag', '%{public}s', `${tag} testNum07 is: ${testNum07}`);
             setTimeout(async () => {
               hilog.info(0x0000, 'testTag', '%{public}s', `====>${tag} unSubscribeCallback`);
-              expect(testNum07).assertEqual(10)
+              expect(uiAbility09OnCreate01).assertEqual('uiAbility09OnCreate01Success');
+              expect(uiAbility09OnCreate02).assertEqual('uiAbility09OnCreate02Success');
+              expect(uiAbility09OnDestroy01).assertEqual('uiAbility09OnDestroy01Success');
+              expect(uiAbility09OnDestroy02).assertEqual('uiAbility09OnDestroy02Success');
+              expect(uiAbility09OnWindowStageCreate01).assertEqual('uiAbility09OnWindowStageCreate01Success');
+              expect(uiAbility09OnWindowStageCreate02).assertEqual('uiAbility09OnWindowStageCreate02Success');
+              expect(uiAbility09OnForeground01).assertEqual('uiAbility09OnForeground01Success');
+              expect(uiAbility09OnForeground02).assertEqual('uiAbility09OnForeground02Success');
+              expect(uiAbility09OnBackground01).assertEqual('uiAbility09OnBackground01Success');
+              expect(uiAbility09OnBackground02).assertEqual('uiAbility09OnBackground02Success');
               done();
             }, 1000);
           }
           let subscribeCallBack = (err: BusinessError, data: commonEventManager.CommonEventData) => {
             hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success`)
-            if (data.event == 'ACTS_LIFE_CYCLE') {
-              testNum07++;
-            };
             if (data.event == 'ACTS_TEST_START01') {
               setTimeout(() => {
                 try {
@@ -554,15 +924,43 @@ export default function startAndTerminateTest() {
                 }
               }, 500);
             }
-            if (data.event == 'ACTS_TEST_ONFORGROUND') {
+            if (data.event == 'UiAbility09_onCreate_01') {
+              uiAbility09OnCreate01 = 'uiAbility09OnCreate01Success';
+            };
+
+            if (data.event == 'UiAbility09_onCreate_02') {
+              uiAbility09OnCreate02 = 'uiAbility09OnCreate02Success';
+            };
+
+            if (data.event == 'UiAbility09_onDestroy_02') {
+              uiAbility09OnDestroy02 = 'uiAbility09OnDestroy02Success';
+            };
+
+            if (data.event == 'UiAbility09_onWindowStageCreate_01') {
+              uiAbility09OnWindowStageCreate01 = 'uiAbility09OnWindowStageCreate01Success';
+            };
+
+            if (data.event == 'UiAbility09_onWindowStageCreate_02') {
+              uiAbility09OnWindowStageCreate02 = 'uiAbility09OnWindowStageCreate02Success';
+            };
+
+            if (data.event == 'UiAbility09_onForeground_02') {
+              uiAbility09OnForeground02 = 'uiAbility09OnForeground02Success';
+            };
+
+            if (data.event == 'UiAbility09_onBackground_01') {
+              uiAbility09OnBackground01 = 'uiAbility09OnBackground01Success';
+            };
+
+            if (data.event == 'UiAbility09_onBackground_02') {
+              uiAbility09OnBackground02 = 'uiAbility09OnBackground02Success';
+            };
+            if (data.event == 'UiAbility09_onForeground_01') {
+              uiAbility09OnForeground01 = 'uiAbility09OnForeground01Success';
               globalThis.uiAbilityContext9.terminateSelf();
             }
-            if (data.event == 'ACTS_TEST_ONBACKGROUND') {
-              if(data.parameters){
-                expect(data.parameters.result).assertEqual('onBackground')
-              }
-            }
-            if (data.event == 'ACTS_TEST_ONDESTROYED') {
+            if (data.event == 'UiAbility09_onDestroy_01') {
+              uiAbility09OnDestroy01 = 'uiAbility09OnDestroy01Success';
               setTimeout(() => {
                 try {
                   context.startAbility(
@@ -606,22 +1004,33 @@ export default function startAndTerminateTest() {
     it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_5100', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_5100`;
       hilog.info(0x0000, 'testTag', '%{public}s', `${tag}, it begin`);
-      let testNum08:number = 0;
+      let uiAbility10OnCreate: string = 'uiAbility10OnCreateFail';
+      let uiAbility10OnWindowStageCreate: string = 'uiAbility10OnWindowStageCreateFail';
+      let uiAbility10OnForeground: string = 'uiAbility10OnForegroundFail';
       commonEventManager.createSubscriber(ACTS_EVENT)
         .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
           subscriber = commonEventSubscriber;
           let unSubscribeCallback = () => {
-            hilog.info(0x0000, 'testTag', '%{public}s', `${tag} testNum08 is: ${testNum08}`);
             setTimeout(async () => {
               hilog.info(0x0000, 'testTag', '%{public}s', `====>${tag} unSubscribeCallback`);
-              expect(testNum08).assertEqual(3)
+              expect(uiAbility10OnCreate).assertEqual('uiAbility10OnCreateSuccess');
+              expect(uiAbility10OnWindowStageCreate).assertEqual('uiAbility10OnWindowStageCreateSuccess');
+              expect(uiAbility10OnForeground).assertEqual('uiAbility10OnForegroundSuccess');
               done();
             }, 1000);
           }
           let subscribeCallBack = (err: BusinessError, data: commonEventManager.CommonEventData) => {
             hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success`)
-            if (data.event == 'ACTS_LIFE_CYCLE') {
-              testNum08++;
+            if (data.event == 'UiAbility10_onCreate') {
+              uiAbility10OnCreate = 'uiAbility10OnCreateSuccess';
+            };
+
+            if (data.event == 'UiAbility10_onWindowStageCreate') {
+              uiAbility10OnWindowStageCreate = 'uiAbility10OnWindowStageCreateSuccess';
+            };
+
+            if (data.event == 'UiAbility10_onForeground') {
+              uiAbility10OnForeground = 'uiAbility10OnForegroundSuccess';
             };
             if (data.event == 'ACTS_TEST_START01') {
               setTimeout(() => {
@@ -668,22 +1077,33 @@ export default function startAndTerminateTest() {
     it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_5400', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_5400`;
       hilog.info(0x0000, 'testTag', '%{public}s', `${tag}, it begin`);
-      let testNum09:number = 0;
+      let uiAbility10OnCreate: string = 'uiAbility10OnCreateFail';
+      let uiAbility10OnWindowStageCreate: string = 'uiAbility10OnWindowStageCreateFail';
+      let uiAbility10OnForeground: string = 'uiAbility10OnForegroundFail';
       commonEventManager.createSubscriber(ACTS_EVENT)
         .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
           subscriber = commonEventSubscriber;
           let unSubscribeCallback = () => {
-            hilog.info(0x0000, 'testTag', '%{public}s', `${tag} testNum09 is: ${testNum09}`);
             setTimeout(async () => {
               hilog.info(0x0000, 'testTag', '%{public}s', `====>${tag} unSubscribeCallback`);
-              expect(testNum09).assertEqual(3)
+              expect(uiAbility10OnCreate).assertEqual('uiAbility10OnCreateSuccess');
+              expect(uiAbility10OnWindowStageCreate).assertEqual('uiAbility10OnWindowStageCreateSuccess');
+              expect(uiAbility10OnForeground).assertEqual('uiAbility10OnForegroundSuccess');
               done();
             }, 1000);
           }
           let subscribeCallBack = (err: BusinessError, data: commonEventManager.CommonEventData) => {
             hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success`)
-            if (data.event == 'ACTS_LIFE_CYCLE') {
-              testNum09++;
+            if (data.event == 'UiAbility10_onCreate') {
+              uiAbility10OnCreate = 'uiAbility10OnCreateSuccess';
+            };
+
+            if (data.event == 'UiAbility10_onWindowStageCreate') {
+              uiAbility10OnWindowStageCreate = 'uiAbility10OnWindowStageCreateSuccess';
+            };
+
+            if (data.event == 'UiAbility10_onForeground') {
+              uiAbility10OnForeground = 'uiAbility10OnForegroundSuccess';
             };
             if (data.event == 'ACTS_TEST_START01') {
               setTimeout(() => {
@@ -727,23 +1147,34 @@ export default function startAndTerminateTest() {
     it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3800', Level.LEVEL0, (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3800`;
       hilog.info(0x0000, 'testTag', '%{public}s', `${tag}, it begin`);
-      let testNum10:number = 0;
+      let uiAbility10OnCreate: string = 'uiAbility10OnCreateFail';
+      let uiAbility10OnWindowStageCreate: string = 'uiAbility10OnWindowStageCreateFail';
+      let uiAbility10OnForeground: string = 'uiAbility10OnForegroundFail';
       let res: string = ""
       commonEventManager.createSubscriber(ACTS_EVENT)
         .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
           subscriber = commonEventSubscriber;
           let unSubscribeCallback = () => {
-            hilog.info(0x0000, 'testTag', '%{public}s', `${tag} testNum10 is: ${testNum10}`);
             setTimeout(async () => {
               hilog.info(0x0000, 'testTag', '%{public}s', `====>${tag} unSubscribeCallback`);
-              expect(testNum10).assertEqual(3)
+              expect(uiAbility10OnCreate).assertEqual('uiAbility10OnCreateSuccess');
+              expect(uiAbility10OnWindowStageCreate).assertEqual('uiAbility10OnWindowStageCreateSuccess');
+              expect(uiAbility10OnForeground).assertEqual('uiAbility10OnForegroundSuccess');
               done();
             }, 1000);
           }
           let subscribeCallBack = (err: BusinessError, data: commonEventManager.CommonEventData) => {
             hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success`)
-            if (data.event == 'ACTS_LIFE_CYCLE') {
-              testNum10++;
+            if (data.event == 'UiAbility10_onCreate') {
+              uiAbility10OnCreate = 'uiAbility10OnCreateSuccess';
+            };
+
+            if (data.event == 'UiAbility10_onWindowStageCreate') {
+              uiAbility10OnWindowStageCreate = 'uiAbility10OnWindowStageCreateSuccess';
+            };
+
+            if (data.event == 'UiAbility10_onForeground') {
+              uiAbility10OnForeground = 'uiAbility10OnForegroundSuccess';
             };
             if (data.event == 'ACTS_TEST_START01') {
               setTimeout(async () => {

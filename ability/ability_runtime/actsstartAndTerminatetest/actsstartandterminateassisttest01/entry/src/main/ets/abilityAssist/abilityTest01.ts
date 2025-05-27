@@ -22,8 +22,8 @@ export default class AbilityTest01 extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'AbilityTest01 onCreate');
     globalThis.abilityAssist01 = this.context;
-    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'AbilityTest01 publish ACTS_LIFE_CYCLE');
+    commonEventManager.publish('AbilityTest01_onCreate', function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'AbilityTest01 publish AbilityTest01_onCreate');
     });
   }
 
@@ -34,8 +34,8 @@ export default class AbilityTest01 extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
     // Main window is created, set main page for this ability
     hilog.info(0x0000, 'testTag', '%{public}s', 'AbilityTest01 onWindowStageCreate');
-    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'AbilityTest01 publish ACTS_LIFE_CYCLE');
+    commonEventManager.publish('AbilityTest01_onWindowStageCreate', function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'AbilityTest01 publish AbilityTest01_onWindowStageCreate');
     });
     windowStage.loadContent('pages/Index', (err, data) => {
       if (err.code) {
@@ -54,8 +54,8 @@ export default class AbilityTest01 extends UIAbility {
   onForeground(): void {
     // Ability has brought to foreground
     hilog.info(0x0000, 'testTag', '%{public}s', 'AbilityTest01 onForeground');
-    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'AbilityTest01 publish ACTS_LIFE_CYCLE');
+    commonEventManager.publish('AbilityTest01_onForeground', function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'AbilityTest01 publish AbilityTest01_onForeground');
     });
     try {
       globalThis.abilityAssist01.startAbility(
@@ -78,8 +78,8 @@ export default class AbilityTest01 extends UIAbility {
   onBackground(): void {
     // Ability has back to background
     hilog.info(0x0000, 'testTag', '%{public}s', 'AbilityTest01 onBackground');
-    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'AbilityTest01 publish ACTS_LIFE_CYCLE');
+    commonEventManager.publish('AbilityTest01_onBackground', function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'AbilityTest01 publish AbilityTest01_onBackground');
     });
   }
 }

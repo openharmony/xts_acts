@@ -23,16 +23,16 @@ export default class UiAbility03 extends UIAbility {
     hilog.info(0x0000, 'testTag', '%{public}s', `UiAbility03 onCreate`);
     let uri = want?.uri
     globalThis.uiAbilityContext3 = this.context
-    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0200 publish ACTS_LIFE_CYCLE');
+    commonEventManager.publish('UiAbility03_onCreate', function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0200 publish UiAbility03_onCreate');
     });
     hilog.info(0x0000, 'testTag', '%{public}s', `UiAbility03 want is, ${JSON.stringify(want)}`);
   }
 
   onDestroy() {
     hilog.info(0x0000, 'testTag', '%{public}s', `UiAbility03 onDestroy`);
-    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0200 publish ACTS_LIFE_CYCLE');
+    commonEventManager.publish('UiAbility03_onDestroy', function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0200 publish UiAbility03_onDestroy');
     });
     commonEventManager.publish('ACTS_TEST_DESTROY', function () {
       hilog.info(0x0000, 'testTag', '%{public}s', `UiAbility03 publish ACTS_TEST_DESTROY`);
@@ -41,8 +41,8 @@ export default class UiAbility03 extends UIAbility {
 
   onWindowStageCreate(windowStage: window.WindowStage) {
     hilog.info(0x0000, 'testTag', '%{public}s', `UiAbility03 onWindowStageCreate`);
-    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0200 publish ACTS_LIFE_CYCLE');
+    commonEventManager.publish('UiAbility03_onWindowStageCreate', function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0200 publish UiAbility03_onWindowStageCreate');
     });
     commonEventManager.publish('ACTS_TEST_START02', function () {
       hilog.info(0x0000, 'testTag', '%{public}s', `UiAbility03 publish ACTS_TEST_START02`);
@@ -63,8 +63,8 @@ export default class UiAbility03 extends UIAbility {
 
   onForeground() {
     hilog.info(0x0000, 'testTag', '%{public}s', `UiAbility03 onForeground`);
-    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0200 publish ACTS_LIFE_CYCLE');
+    commonEventManager.publish('UiAbility03_onForeground', function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0200 publish UiAbility03_onForeground');
     });
     setTimeout(() => {
       // destroy
@@ -75,8 +75,8 @@ export default class UiAbility03 extends UIAbility {
   onBackground() {
     // Ability has back to background
     hilog.info(0x0000, 'testTag', '%{public}s', `UiAbility03 onBackground`);
-    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0200 publish ACTS_LIFE_CYCLE');
+    commonEventManager.publish('UiAbility03_onBackground', function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0200 publish UiAbility03_onBackground');
     });
   }
 }

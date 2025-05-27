@@ -21,8 +21,8 @@ import { commonEventManager } from '@kit.BasicServicesKit';
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility onDestroy');
-    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility publish ACTS_LIFE_CYCLE');
+    commonEventManager.publish('EntryAbility_hap3_onCreate', function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility publish EntryAbility_hap3_onCreate');
     });
     globalThis.abilityAssistEntry03 = this.context
   }
@@ -37,8 +37,8 @@ export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     // Main window is created, set main page for this ability
     hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility onWindowStageCreate');
-    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility publish ACTS_LIFE_CYCLE');
+    commonEventManager.publish('EntryAbility_hap3_onWindowStageCreate', function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility publish EntryAbility_hap3_onWindowStageCreate');
     });
     windowStage.loadContent('pages/Index', (err, data) => {
       if (err.code) {
@@ -57,8 +57,8 @@ export default class EntryAbility extends UIAbility {
   onForeground() {
     // Ability has brought to foreground
     hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility onForeground');
-    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility publish ACTS_LIFE_CYCLE');
+    commonEventManager.publish('EntryAbility_hap3_onForeground', function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility publish EntryAbility_hap3_onForeground');
     });
     setTimeout(() => {
       // destroy assistHap

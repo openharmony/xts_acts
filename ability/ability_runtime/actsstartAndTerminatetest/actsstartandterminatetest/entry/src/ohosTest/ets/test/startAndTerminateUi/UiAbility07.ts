@@ -21,8 +21,8 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 export default class UiAbility07 extends UIAbility {
   onCreate(want, launchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility07 onCreate');
-    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility07 publish ACTS_LIFE_CYCLE');
+    commonEventManager.publish('UiAbility07_onCreate', function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility07 publish UiAbility07_onCreate');
     });
     globalThis.uiAbilityContext7 = this.context
     hilog.info(0x0000, 'testTag', '%{public}s', `UiAbility07 want is, ${JSON.stringify(want)}`);
@@ -37,8 +37,8 @@ export default class UiAbility07 extends UIAbility {
 
   onWindowStageCreate(windowStage: window.WindowStage) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility07 onWindowStageCreate');
-    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility07 publish ACTS_LIFE_CYCLE');
+    commonEventManager.publish('UiAbility07_onWindowStageCreate', function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility07 publish UiAbility07_onWindowStageCreate');
     });
     windowStage.loadContent('testability/pages/UiAbility/UiAbility01', (err, data) => {
       if (err.code) {
@@ -56,8 +56,8 @@ export default class UiAbility07 extends UIAbility {
 
   onForeground() {
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility07 onForeground');
-    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility07 publish ACTS_LIFE_CYCLE');
+    commonEventManager.publish('UiAbility07_onForeground', function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility07 publish UiAbility07_onForeground');
     });
     globalThis.uiAbilityContext7.terminateSelf();
   }

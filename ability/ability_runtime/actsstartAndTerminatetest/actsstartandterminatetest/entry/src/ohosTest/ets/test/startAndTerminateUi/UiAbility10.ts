@@ -22,8 +22,8 @@ export default class UiAbility10 extends UIAbility {
 
   onCreate(want, launchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility10 onCreate');
-    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility10 publish ACTS_LIFE_CYCLE');
+    commonEventManager.publish('UiAbility10_onCreate', function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility10 publish UiAbility10_onCreate');
     });
     globalThis.uiAbilityContext10 = this.context
     hilog.info(0x0000, 'testTag', '%{public}s', `UiAbility10 want is, ${JSON.stringify(want)}`);
@@ -35,8 +35,8 @@ export default class UiAbility10 extends UIAbility {
 
   onWindowStageCreate(windowStage: window.WindowStage) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility10 onWindowStageCreate');
-    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility10 publish ACTS_LIFE_CYCLE');
+    commonEventManager.publish('UiAbility10_onWindowStageCreate', function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility10 publish UiAbility10_onWindowStageCreate');
     });
     windowStage.loadContent('testability/pages/UiAbility/UiAbility01', (err, data) => {
       if (err.code) {
@@ -53,8 +53,8 @@ export default class UiAbility10 extends UIAbility {
 
   onForeground() {
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility10 onForeground');
-    commonEventManager.publish('ACTS_LIFE_CYCLE', function () {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility10 publish ACTS_LIFE_CYCLE');
+    commonEventManager.publish('UiAbility10_onForeground', function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility10 publish UiAbility10_onForeground');
     });
     commonEventManager.publish('ACTS_TEST_DESTROY', function () {
       hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility10 publish ACTS_TEST_DESTROY');
