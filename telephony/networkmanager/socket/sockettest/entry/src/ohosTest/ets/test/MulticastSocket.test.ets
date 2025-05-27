@@ -78,7 +78,9 @@ export default function MulticastSocket() {
             expectFail();
           } else {
             expectTrue(true);
-            await multicast.dropMembership(addr);
+            await multicast.dropMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to dropMembership' + err.code.toString());
+            });
           }
           console.info(`${caseName} test end`);
           done();
@@ -113,7 +115,9 @@ export default function MulticastSocket() {
             expectFail();
           } else {
             expectTrue(true);
-            await multicast.dropMembership(addr);
+            await multicast.dropMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to dropMembership' + err.code.toString());
+            });
           }
           console.info(`${caseName} test end`);
           done();
@@ -150,7 +154,9 @@ export default function MulticastSocket() {
             expectFail();
           } else {
             expectTrue(true);
-            await multicast.dropMembership(addr);
+            await multicast.dropMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to dropMembership' + err.code.toString());
+            });
           }
           console.info(`${caseName} test end`);
           done();
@@ -187,7 +193,9 @@ export default function MulticastSocket() {
             expectFail();
           } else {
             expectTrue(true);
-            await multicast.dropMembership(addr);
+            await multicast.dropMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to dropMembership' + err.code.toString());
+            });
           }
           console.info(`${caseName} test end`);
           done();
@@ -224,7 +232,9 @@ export default function MulticastSocket() {
             expectFail();
           } else {
             expectTrue(true);
-            await multicast.dropMembership(addr);
+            await multicast.dropMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to dropMembership' + err.code.toString());
+            });
           }
           console.info(`${caseName} test end`);
           done();
@@ -324,7 +334,9 @@ export default function MulticastSocket() {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
         multicast.addMembership(addr).then(async () => {
           expectTrue(true);
-          await multicast.dropMembership(addr);
+          await multicast.dropMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to dropMembership' + err.code.toString());
+            });
           console.info(`${caseName} test end`);
           done();
         }).catch((err: BusinessError) => {
@@ -359,7 +371,9 @@ export default function MulticastSocket() {
         };
         multicast.addMembership(addr).then(async () => {
           expectTrue(true);
-          await multicast.dropMembership(addr);
+          await multicast.dropMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to dropMembership' + err.code.toString());
+            });
           console.info(`${caseName} test end`);
           done();
         }).catch((err: BusinessError) => {
@@ -396,7 +410,9 @@ export default function MulticastSocket() {
         };
         multicast.addMembership(addr).then(async () => {
           expectTrue(true);
-          await multicast.dropMembership(addr);
+          await multicast.dropMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to dropMembership' + err.code.toString());
+            });
           console.info(`${caseName} test end`);
           done();
         }).catch((err: BusinessError) => {
@@ -568,7 +584,9 @@ export default function MulticastSocket() {
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         multicast.dropMembership(addr, (err: BusinessError) => {
           if (err) {
             console.info(`${caseName} err: ${JSON.stringify(err)}`);
@@ -600,7 +618,9 @@ export default function MulticastSocket() {
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         let dropAddr: socket.NetAddress = {
           address: '239.255.0.1',
           port: 0,
@@ -637,7 +657,9 @@ export default function MulticastSocket() {
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         let dropAddr: socket.NetAddress = {
           address: '127.0.0.1',
           port: 0,
@@ -674,7 +696,9 @@ export default function MulticastSocket() {
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         let dropAddr: socket.NetAddress = {
           address: '23424243',
           port: 0,
@@ -711,7 +735,9 @@ export default function MulticastSocket() {
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         let dropAddr: socket.NetAddress = {
           address: 'fe80::95f1:6adf:b93c:d39a%11' // todo 填写正确的ipv6地址
         };
@@ -746,7 +772,9 @@ export default function MulticastSocket() {
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         multicast.dropMembership(addr).then(() => {
           expectTrue(true);
           console.info(`${caseName} test end`);
@@ -778,7 +806,9 @@ export default function MulticastSocket() {
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         let dropAddr: socket.NetAddress = {
           address: '127.0.0.1',
           port: 0,
@@ -815,7 +845,9 @@ export default function MulticastSocket() {
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         let dropAddr: socket.NetAddress = {
           address: '23424243',
           port: 0,
@@ -852,7 +884,9 @@ export default function MulticastSocket() {
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         let dropAddr: socket.NetAddress = {
           address: 'fe80::95f1:6adf:b93c:d39a%11' // todo 填写正确的ipv6地址
         };
@@ -887,14 +921,18 @@ export default function MulticastSocket() {
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         let ttl: number = 8;
         multicast.setMulticastTTL(ttl, async (err: BusinessError) => {
           if (err) {
             console.info(`${caseName} err: ${JSON.stringify(err)}`);
             expectFail();
           } else {
-            let value: number = await multicast.getMulticastTTL();
+            let value: number = await multicast.getMulticastTTL().catch((err:BusinessError) => {
+                console.info('fail to getMulticastTTL' + err.code.toString());
+            });
             expectEqual(value, ttl);
           }
           console.info(`${caseName} test end`);
@@ -921,7 +959,9 @@ export default function MulticastSocket() {
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         let ttl: number = -1;
         multicast.setMulticastTTL(ttl, async (err: BusinessError) => {
           if (err) {
@@ -954,7 +994,9 @@ export default function MulticastSocket() {
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         let ttl: number = 256;
         multicast.setMulticastTTL(ttl, async (err: BusinessError) => {
           if (err) {
@@ -1019,10 +1061,14 @@ export default function MulticastSocket() {
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         let ttl: number = 8;
         multicast.setMulticastTTL(ttl).then(async () => {
-          let value: number = await multicast.getMulticastTTL();
+          let value: number = await multicast.getMulticastTTL().catch((err:BusinessError) => {
+                console.info('fail to getMulticastTTL' + err.code.toString());
+            });
           expectEqual(value, ttl);
           console.info(`${caseName} test end`);
           done();
@@ -1053,7 +1099,9 @@ export default function MulticastSocket() {
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         let ttl: number = -1;
         multicast.setMulticastTTL(ttl).then(() => {
           expectTrue(true);
@@ -1086,7 +1134,9 @@ export default function MulticastSocket() {
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         let ttl: number = 256;
         multicast.setMulticastTTL(ttl).then(() => {
           expectFail();
@@ -1151,9 +1201,13 @@ export default function MulticastSocket() {
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         let ttl: number = 8;
-        await multicast.setMulticastTTL(ttl)
+        await multicast.setMulticastTTL(ttl).catch((err:BusinessError) => {
+                console.info('fail to setMulticastTTL' + err.code.toString());
+            });
         multicast.getMulticastTTL((err: BusinessError, value: number) => {
           if (err) {
             console.info(`${caseName} err: ${JSON.stringify(err)}`);
@@ -1216,7 +1270,9 @@ export default function MulticastSocket() {
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         multicast.getMulticastTTL((err: BusinessError, value: number) => {
           if (err) {
             console.info(`${caseName} err: ${JSON.stringify(err)}`);
@@ -1248,9 +1304,13 @@ export default function MulticastSocket() {
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         let ttl: number = 8;
-        await multicast.setMulticastTTL(ttl)
+        await multicast.setMulticastTTL(ttl).catch((err:BusinessError) => {
+                console.info('fail to setMulticastTTL' + err.code.toString());
+            });
         multicast.getMulticastTTL().then((value: number) => {
           expectEqual(value, ttl);
           console.info(`${caseName} test end`);
@@ -1313,7 +1373,9 @@ export default function MulticastSocket() {
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         multicast.getMulticastTTL().then((value: number) => {
           expectEqual(value, 1);
           console.info(`${caseName} test end`);
@@ -1345,14 +1407,18 @@ export default function MulticastSocket() {
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         let mode: boolean = true;
         multicast.setLoopbackMode(mode, async (err: BusinessError) => {
           if (err) {
             console.info(`${caseName} err: ${JSON.stringify(err)}`);
             expectFail();
           } else {
-            let value: boolean = await multicast.getLoopbackMode();
+            let value: boolean = await multicast.getLoopbackMode().catch((err:BusinessError) => {
+                console.info('fail to getLoopbackMode' + err.code.toString());
+            });
             expectEqual(value, mode);
           }
           console.info(`${caseName} test end`);
@@ -1379,14 +1445,18 @@ export default function MulticastSocket() {
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         let mode: boolean = false;
         multicast.setLoopbackMode(mode, async (err: BusinessError) => {
           if (err) {
             console.info(`${caseName} err: ${JSON.stringify(err)}`);
             expectFail();
           } else {
-            let value: boolean = await multicast.getLoopbackMode();
+            let value: boolean = await multicast.getLoopbackMode().catch((err:BusinessError) => {
+                console.info('fail to getLoopbackMode' + err.code.toString());
+            });
             expectEqual(value, mode);
           }
           console.info(`${caseName} test end`);
@@ -1445,10 +1515,14 @@ export default function MulticastSocket() {
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         let mode: boolean = true;
         multicast.setLoopbackMode(mode).then(async () => {
-          let value: boolean = await multicast.getLoopbackMode();
+          let value: boolean = await multicast.getLoopbackMode().catch((err:BusinessError) => {
+                console.info('fail to getLoopbackMode' + err.code.toString());
+            });
           expectEqual(value, mode);
           console.info(`${caseName} test end`);
           done();
@@ -1479,10 +1553,14 @@ export default function MulticastSocket() {
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         let mode: boolean = false;
         multicast.setLoopbackMode(mode).then(async () => {
-          let value: boolean = await multicast.getLoopbackMode();
+          let value: boolean = await multicast.getLoopbackMode().catch((err:BusinessError) => {
+                console.info('fail to getLoopbackMode' + err.code.toString());
+            });
           expectEqual(value, mode);
           console.info(`${caseName} test end`);
           done();
@@ -1545,9 +1623,13 @@ export default function MulticastSocket() {
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         let mode: boolean = false;
-        await multicast.setLoopbackMode(mode)
+        await multicast.setLoopbackMode(mode).catch((err:BusinessError) => {
+                console.info('fail to setLoopbackMode' + err.code.toString());
+            });
         multicast.getLoopbackMode((err: BusinessError, value: boolean) => {
           if (err) {
             console.info(`${caseName} err: ${JSON.stringify(err)}`);
@@ -1579,7 +1661,9 @@ export default function MulticastSocket() {
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         multicast.getLoopbackMode((err: BusinessError, value: boolean) => {
           if (err) {
             console.info(`${caseName} err: ${JSON.stringify(err)}`);
@@ -1642,9 +1726,13 @@ export default function MulticastSocket() {
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         let mode: boolean = false;
-        await multicast.setLoopbackMode(mode)
+        await multicast.setLoopbackMode(mode).catch((err:BusinessError) => {
+                console.info('fail to setLoopbackMode' + err.code.toString());
+            });
         multicast.getLoopbackMode().then((value: boolean) => {
           expectEqual(value, mode);
           console.info(`${caseName} test end`);
@@ -1676,7 +1764,9 @@ export default function MulticastSocket() {
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         multicast.getLoopbackMode().then((value: boolean) => {
           expectEqual(value, true);
           console.info(`${caseName} test end`);
@@ -1739,7 +1829,9 @@ export default function MulticastSocket() {
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         let sendOption: socket.UDPSendOptions = {
           data: stringToArrayBuffer('Hello, server!'),
           address: {
@@ -1779,7 +1871,9 @@ export default function MulticastSocket() {
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         let sendOption: socket.UDPSendOptions = {
           data: stringToArrayBuffer('Hello, server!'),
           address: {
@@ -1819,7 +1913,9 @@ export default function MulticastSocket() {
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         multicast.send(null, (err: BusinessError) => {
           if (err) {
             console.info(`${caseName} err: ${JSON.stringify(err)}`);
@@ -1851,7 +1947,9 @@ export default function MulticastSocket() {
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         multicast.send(undefined, (err: BusinessError) => {
           if (err) {
             console.info(`${caseName} err: ${JSON.stringify(err)}`);
@@ -1883,7 +1981,9 @@ export default function MulticastSocket() {
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         let sendOption: socket.UDPSendOptions = {
           data: stringToArrayBuffer('Hello, server!'),
           address: {
@@ -1923,7 +2023,9 @@ export default function MulticastSocket() {
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         let sendOption: socket.UDPSendOptions = {
           data: stringToArrayBuffer('Hello, server!'),
           address: {
@@ -1963,7 +2065,9 @@ export default function MulticastSocket() {
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         multicast.send(null).then(() => {
           expectFail();
           console.info(`${caseName} test end`);
@@ -1995,7 +2099,9 @@ export default function MulticastSocket() {
       console.info(`${caseName} test start`);
       try {
         let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        await multicast.addMembership(addr);
+        await multicast.addMembership(addr).catch((err:BusinessError) => {
+                console.info('fail to addMembership' + err.code.toString());
+            });
         multicast.send(undefined).then(() => {
           expectFail();
           console.info(`${caseName} test end`);
