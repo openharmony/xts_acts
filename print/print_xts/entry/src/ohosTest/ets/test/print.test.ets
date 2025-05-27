@@ -80,7 +80,7 @@ export default function printTest() {
         done();
       }).catch((error: BusinessError) => {
         console.log('print_function_0100 failed, err: ' + JSON.stringify(error));
-        expect(error.code).assertEqual(401);
+        expect(error).assertEqual(401);
         done();
       })
     })
@@ -98,9 +98,9 @@ export default function printTest() {
       // Permissions required: ohos.permission.PRINT
       print.print(file, (err: BusinessError, printTask: print.PrintTask) => {
         try {
-          if (err) {  
+          if (err) {
             console.log('print_function_0200 expect failed, err: ' + JSON.stringify(err));
-            expect(err.code).assertEqual(401);
+            expect(err).assertEqual(401);
             done();
           } else {
             expect(typeof (printTask)).assertEqual('object');
@@ -128,9 +128,9 @@ export default function printTest() {
       // Permissions required: ohos.permission.PRINT
       print.print(file, context, (err: BusinessError, printTask: print.PrintTask) => {
         try {
-          if (err) {  
+          if (err) {
             console.log('print_function_0300 failed, err: ' + JSON.stringify(err));
-            expect(err.code).assertEqual(13100003);
+            expect(err).assertEqual(13100003);
             done();
           } else {
             expect(typeof (printTask)).assertEqual('object');
@@ -162,6 +162,7 @@ export default function printTest() {
         console.log('print_function_0400 succeed');
         done();
       }).catch((error: BusinessError) => {
+        console.log('print_function_0400 failed, err: ' + JSON.stringify(error));
         expect(false).assertTrue();
         done();
       })
@@ -215,7 +216,7 @@ export default function printTest() {
 
     class MyPrintDocumentAdapter implements print.PrintDocumentAdapter {
       onStartLayoutWrite(jobId: string, oldAttrs: print.PrintAttributes, newAttrs: print.PrintAttributes, fd: number,
-                         writeResultCallback: (jobId: string, writeResult: print.PrintFileCreationState) => void) {
+        writeResultCallback: (jobId: string, writeResult: print.PrintFileCreationState) => void) {
         writeResultCallback(jobId, print.PrintFileCreationState.PRINT_FILE_CREATED);
         writeResultCallback(jobId, print.PrintFileCreationState.PRINT_FILE_CREATION_FAILED);
         writeResultCallback(jobId, print.PrintFileCreationState.PRINT_FILE_CREATED_UNRENDERED);
@@ -325,6 +326,16 @@ export default function printTest() {
       options?: string;
     }
 
+    class MyPrinterPreferences implements print.PrinterPreferences {
+      defaultDuplexMode?: print.PrintDuplexMode;
+      defaultPrintQuality?: print.PrintQuality;
+      defaultMediaType?: string;
+      defaultPageSizeId?: string;
+      defaultOrientation?: print.PrintOrientationMode;
+      borderless?: boolean;
+      options?: string;
+    }
+
     class MyPrinterInformation implements print.PrinterInformation {
       printerId: string = '';
       printerName: string = '';
@@ -333,6 +344,8 @@ export default function printTest() {
       capability?: print.PrinterCapabilities;
       uri?: string;
       printerMake?: string;
+      preferences?: print.PrinterPreferences;
+      alias?: string;
       options?: string;
     }
 
@@ -384,6 +397,17 @@ export default function printTest() {
       printerInformation.capability.options = 'testOptions';
       printerInformation.uri = 'testUri';
       printerInformation.printerMake = 'testPrinterMake';
+
+      printerInformation.preferences = new MyPrinterPreferences();
+      printerInformation.preferences.defaultDuplexMode = print.PrintDuplexMode.DUPLEX_MODE_NONE;
+      printerInformation.preferences.defaultPrintQuality = print.PrintQuality.QUALITY_NORMAL;
+      printerInformation.preferences.defaultMediaType = 'stationery';
+      printerInformation.preferences.defaultPageSizeId = 'ISO_A4';
+      printerInformation.preferences.defaultOrientation = print.PrintOrientationMode.ORIENTATION_MODE_NONE;
+      printerInformation.preferences.borderless = false;
+      printerInformation.preferences.options = 'testOptions';
+
+      printerInformation.alias = 'testAlias';
       printerInformation.options = 'testOptions';
 
       // Permissions required: ohos.permission.PRINT
@@ -429,9 +453,9 @@ export default function printTest() {
         })
         .catch((error: BusinessError) => {
           console.log('addPrinterToDiscovery expect failed, error: ' + JSON.stringify(error));
-          expect(error.code).assertEqual(401);
+          expect(error).assertEqual(401);
           done();
-      })
+        })
     })
 
     /**
@@ -517,9 +541,9 @@ export default function printTest() {
         })
         .catch((error: BusinessError) => {
           console.log('updatePrinterInDiscovery expect failed, error: ' + JSON.stringify(error));
-          expect(error.code).assertEqual(401);
+          expect(error).assertEqual(401);
           done();
-      })
+        })
     })
 
     /**
@@ -565,9 +589,9 @@ export default function printTest() {
         })
         .catch((error: BusinessError) => {
           console.log('removePrinterFromDiscovery expect failed, error: ' + JSON.stringify(error));
-          expect(error.code).assertEqual(401);
+          expect(error).assertEqual(401);
           done();
-      })
+        })
     })
 
     /**
@@ -608,16 +632,6 @@ export default function printTest() {
       printerInformation.uri = 'testUri';
       printerInformation.printerMake = 'testPrinterMake';
       printerInformation.options = 'testOptions';
-      // Permissions required: ohos.permission.PRINT
-      await print.addPrinterToDiscovery(printerInformation).then((data : void) => {
-        console.log('addPrinterToDiscovery expect succeed, data: ' + JSON.stringify(data));
-        expect(data).assertTrue();
-        done();
-      }).catch((error: BusinessError) => {
-        console.log('addPrinterToDiscovery failed, error: ' + JSON.stringify(error));
-        expect().assertFalse();
-        done();
-      })
 
       let printerId : string = 'testPrinterId';
       // Permissions required: ohos.permission.PRINT
@@ -627,7 +641,7 @@ export default function printTest() {
         done();
       }).catch((error: BusinessError) => {
         console.log('getPrinterInformationById failed, error: ' + JSON.stringify(error));
-        expect().assertFalse();
+        expect(error).assertEqual(print.PrintErrorCode.E_PRINT_INVALID_PRINTER);
         done();
       })
     })
@@ -652,9 +666,9 @@ export default function printTest() {
         })
         .catch((error: BusinessError) => {
           console.log('getPrinterInformationById expect failed, error: ' + JSON.stringify(error));
-          expect(error.code).assertEqual(401);
+          expect(error).assertEqual(401);
           done();
-      })
+        })
     })
 
     /**
@@ -713,6 +727,7 @@ export default function printTest() {
         print.PrintJobSubState.PRINT_JOB_BLOCK_SLOW_FILE_CONVERSION,
         print.PrintJobSubState.PRINT_JOB_RUNNING_UPLOADING_FILES,
         print.PrintJobSubState.PRINT_JOB_RUNNING_CONVERTING_FILES,
+        print.PrintJobSubState.PRINT_JOB_BLOCK_FILE_UPLOADING_ERROR,
         print.PrintJobSubState.PRINT_JOB_BLOCK_UNKNOWN
       ];
       console.log('jobSubStates: ' + JSON.stringify(jobSubStates));
@@ -727,7 +742,8 @@ export default function printTest() {
         print.PrintErrorCode.E_PRINT_INVALID_EXTENSION,
         print.PrintErrorCode.E_PRINT_INVALID_PRINTER,
         print.PrintErrorCode.E_PRINT_INVALID_PRINT_JOB,
-        print.PrintErrorCode.E_PRINT_FILE_IO
+        print.PrintErrorCode.E_PRINT_FILE_IO,
+        print.PrintErrorCode.E_PRINT_TOO_MANY_FILES
       ];
       console.log('errorCodes: ' + JSON.stringify(errorCodes));
 
@@ -753,6 +769,62 @@ export default function printTest() {
         print.PrintFileCreationState.PRINT_FILE_CREATED_UNRENDERED
       ];
       console.log('printFileCreationStates: ' + JSON.stringify(printFileCreationStates));
+
+      let printerEvents: print.PrinterEvent[] = [
+        print.PrinterEvent.PRINTER_EVENT_ADDED,
+        print.PrinterEvent.PRINTER_EVENT_DELETED,
+        print.PrinterEvent.PRINTER_EVENT_STATE_CHANGED,
+        print.PrinterEvent.PRINTER_EVENT_INFO_CHANGED,
+        print.PrinterEvent.PRINTER_EVENT_PREFERENCE_CHANGED,
+        print.PrinterEvent.PRINTER_EVENT_LAST_USED_PRINTER_CHANGED
+      ];
+      console.log('printerEvents: ' + JSON.stringify(printerEvents));
+
+      let defaultPrinterTypes: print.DefaultPrinterType[] = [
+        print.DefaultPrinterType.DEFAULT_PRINTER_TYPE_SET_BY_USER,
+        print.DefaultPrinterType.DEFAULT_PRINTER_TYPE_LAST_USED_PRINTER
+      ];
+      console.log('defaultPrinterTypes: ' + JSON.stringify(defaultPrinterTypes));
+    })
+
+    /**
+     * @tc.number print_function_1100
+     * @tc.name Test print
+     * @tc.desc check the getAddedPrinters function
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 1
+     */
+    it('print_function_1100', Level.LEVEL2, async (done: Function) => {
+      // Permissions required: ohos.permission.PRINT
+      await print.getAddedPrinters().then((printers : Array<string>) => {
+        console.log('getAddedPrinters expect succeed, data: ' + JSON.stringify(printers));
+        expect(!!printers).assertTrue();
+        done();
+      }).catch((error: BusinessError) => {
+        console.log('getAddedPrinters failed, error: ' + JSON.stringify(error));
+        expect().assertFalse();
+        done();
+      })
+    })
+
+    /**
+     * @tc.number print_function_1200
+     * @tc.name Test print
+     * @tc.desc check the printerChange event registration and unregistration functions
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 1
+     */
+    it('print_function_1200', Level.LEVEL2, async (done: Function) => {
+      let onPrinterChange =
+        (event: print.PrinterEvent, printerInformation: print.PrinterInformation) => {
+          console.log('printerChange, event: ' + event + ', printerInformation: ' + JSON.stringify(printerInformation));
+        };
+      // Permissions required: ohos.permission.PRINT
+      print.on('printerChange', onPrinterChange);
+      print.off('printerChange');
+      done();
     })
   })
 }
