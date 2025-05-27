@@ -582,5 +582,94 @@ export default function roundRectTest() {
         }
       }
     });
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_ROUNDRECT_0400
+     * @tc.name      : testRoundRectConstructor2Normal
+     * @tc.desc      : Test for testRoundRectConstructor2Normal.
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('testRoundRectConstructor2Normal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
+      const msg = 'testRoundRectConstructor2Normal';
+      let roundRect : drawing.RoundRect = new drawing.RoundRect({left: 100, top: 100, right: 400, bottom: 400}, 0, 0);
+      try {
+        let roundRect2 = new drawing.RoundRect(roundRect);
+        console.info(msg + ' roundRect2 succeeded');
+      } catch( e ) {
+        console.info(msg + ` roundRect2 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        expect().assertFail();
+      }
+      roundRect.setCorner(drawing.CornerPos.TOP_LEFT_POS, 20, 20);
+      roundRect.setCorner(drawing.CornerPos.TOP_RIGHT_POS, 20, 20);
+      roundRect.setCorner(drawing.CornerPos.BOTTOM_LEFT_POS, 20, 20);
+      roundRect.setCorner(drawing.CornerPos.BOTTOM_RIGHT_POS, 20, 20);
+      try {
+        let roundRect3 = new drawing.RoundRect(roundRect);
+        console.info(msg + ' roundRect3 succeeded');
+      } catch( e ) {
+        console.info(msg + ` roundRect3 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        expect().assertFail();
+      }
+      roundRect.setCorner(drawing.CornerPos.TOP_LEFT_POS, 10, 16);
+      roundRect.setCorner(drawing.CornerPos.TOP_RIGHT_POS, 5, 30);
+      roundRect.setCorner(drawing.CornerPos.BOTTOM_LEFT_POS, 30, 10);
+      roundRect.setCorner(drawing.CornerPos.BOTTOM_RIGHT_POS, 40, 40);
+      try {
+        let roundRect4 = new drawing.RoundRect(roundRect);
+        console.info(msg + ' roundRect4 succeeded');
+      } catch( e ) {
+        console.info(msg + ` roundRect4 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_ROUNDRECT_0401
+     * @tc.name      : testRoundRectConstructor2MultipleCalls
+     * @tc.desc      : testRoundRectConstructor2MultipleCalls
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testRoundRectConstructor2MultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
+      const msg = 'testRoundRectConstructor2MultipleCalls';
+      for (let i = 0; i < 20; i += 1) {
+        try {
+          let roundRect : drawing.RoundRect = new drawing.RoundRect({left: Math.random() *10, top: Math.random() *20, right: Math.random() *30, bottom: Math.random() *40}, Math.random() *10, Math.random() *20);
+          let roundRect2 = new drawing.RoundRect(roundRect);
+          console.info(msg + `drawing RoundRect success step: ` + i);
+        } catch (e) {
+          console.info(msg + `drawing RoundRect error. errorCode is: ${e.code} + errormsg is: ${e.message}} step: ${i}`);
+          expect().assertFail()
+        }
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_ROUNDRECT_0402
+     * @tc.name      : testRoundRectConstructor2Null
+     * @tc.desc      : testRoundRectConstructor2Null
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testRoundRectConstructor2Null', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
+      const msg = 'testRoundRectConstructor2Null';
+      try {
+        let roundRect = new drawing.RoundRect(null);
+        console.info(msg + `drawing RoundRect null successed`);
+        expect().assertFail();
+      } catch (e) {
+        console.info(msg + `drawing RoundRect null failed. Error code is: ${e.code}. Error message is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+      try {
+        let roundRect2 = new drawing.RoundRect(undefined);
+        console.info(msg + `drawing roundRect2  undefined successed`);
+        expect().assertFail();
+      } catch (e) {
+        console.info(msg + `drawing roundRect2  undefined failed. Error code is: ${e.code}. Error message is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+    });
   });
 }
