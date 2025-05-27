@@ -1991,7 +1991,7 @@ export default function windowPCTest() {
           console.log(`${message} subwindow0 create `);
           const subWindowClass = data;
           await subWindowClass.setUIContent('testability/pages/WindowTest/StartMoving');
-          subWindowClass.resizeAsync(0,100);
+          subWindowClass.moveWindowToAsync(0,100);
           await subWindowClass.showWindow();
           await sleep(1000);
           subWindowClass.on('windowWillClose', callback);
