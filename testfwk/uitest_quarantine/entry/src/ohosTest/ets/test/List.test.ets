@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import UiTest from './uitest.test';
-import GrantPermission from './UitestEnum.test';
+import GrantPermission from './GrantPermission.test';
 
 export default function testsuite() {
   GrantPermission();

@@ -16,7 +16,7 @@
 import uitestComponentErrorTest from './UitestComponentErrorCode.test';
 import uitestDriverErrorTest from './UitestDriverErrorCode.test';
 import uitestUiWindowErrorTest from './UitestUiWindowErrorCode.test';
-import GrantPermission from './UitestEnum.test';
+import GrantPermission from './GrantPermission.test';
 export default function testsuite() {
   GrantPermission();
   uitestComponentErrorTest();
