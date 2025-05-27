@@ -25,6 +25,7 @@ group("ActsAceEtsModuleNavigationTest") {
       "ace_ets_module_navigation_api16:ActsAceEtsModuleNavigationApi16Test",
       "ace_ets_module_navigation_api18:ActsAceEtsModuleNavigationApi18Test",
       "ace_ets_module_navigation_wear_api18:ActsAceEtsModuleNavigationWearApi18Test",
+      "ace_ets_module_navigation_api20:ActsAceEtsModuleNavigationApi20Test",
     ]
   } else {
     deps = [
@@ -38,6 +39,7 @@ group("ActsAceEtsModuleNavigationTest") {
       "ace_ets_module_navigation_nowear_api11:ActsAceEtsModuleNavigationNoWearApi11Test",
       "ace_ets_module_navigation_nowear_api12:ActsAceEtsModuleNavigationNoWearApi12Test",
       "ace_ets_module_navigation_nowear_api18:ActsAceEtsModuleNavigationNoWearApi18Test",
+      "ace_ets_module_navigation_api20:ActsAceEtsModuleNavigationApi20Test",
     ]
   }
 }
