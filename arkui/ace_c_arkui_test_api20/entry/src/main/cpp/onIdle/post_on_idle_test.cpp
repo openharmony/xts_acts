@@ -154,7 +154,7 @@ napi_value PostOnIdleTest::testPostOnIdle001(napi_env env, napi_callback_info in
             g_myUserData = NUMBER_43;
             auto d = OH_ArkUI_PostIdleCallback(nullptr, nullptr, nullptr);
             OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager", "PostOnIdleTest code = %{public}d", d);
-            if (d == ARKUI_ERROR_CODE_CAPI_INIT_ERROR) {
+            if (d == ARKUI_ERROR_CODE_UI_CONTEXT_INVALID) {
                 nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
             }
         }
