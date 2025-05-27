@@ -22,6 +22,7 @@ import { UiDriver, BY } from '@ohos.UiTest';
 export default function ReminderAgentManagerTest() {
     describe('ReminderAgentManagerTest', function () {
         function sleep(ms) {
+            console.info(`ReminderAgentManagerTest SUB_NOTIFICATION_ANS_Publish_TEST ===>====>sleep is success`);
             return new Promise(resolve => setTimeout(resolve, ms));
         }
         beforeAll(async function (done) {
@@ -30,16 +31,21 @@ export default function ReminderAgentManagerTest() {
              * @tc.setup: setup invoked before all testcases
              */
             console.info('beforeAll caled')
-            notificationManager.requestEnableNotification((err) => {
+            notificationManager.requestEnableNotification(async (err) => {
             console.info(`ReminderAgentManagerTest requestEnableNotification ===>====>come in requestEnableNotification`);
               if (err) {
                 console.info(`ReminderAgentManagerTest SUB_NOTIFICATION_ANS_Publish_TEST ===>requestEnableNotification failed, code is ${err.code}, message is ${err.message}`);
+                expect(false).assertTrue();
+                done();
               } else {
                 console.info("ReminderAgentManagerTest SUB_NOTIFICATION_ANS_Publish_TEST ===>requestEnableNotification success");
+                expect(true).assertTrue();
+                await sleep(1000);
+                done();
               }
             });
         
-            await sleep(1500);
+            await sleep(1000);
 
             let driver = await UiDriver.create();
             console.info(`ReminderAgentManagerTest SUB_NOTIFICATION_ANS_Publish_TEST ===>====>come in driveFn`);
@@ -48,15 +54,14 @@ export default function ReminderAgentManagerTest() {
             let button = await driver.findComponent(BY.text('允许'));
             console.info(`ReminderAgentManagerTest SUB_NOTIFICATION_ANS_Publish_TEST ===>====>button is ${JSON.stringify(button)}`);
             if(button != null){
-                console.info(`ReminderAgentManagerTest SUB_NOTIFICATION_ANS_Publish_TEST ===>====>button is if`);
-                await sleep(1500);
                 await button.click();
+                console.info(`ReminderAgentManagerTest SUB_NOTIFICATION_ANS_Publish_TEST ===>====>button is click`);
                 await sleep(1000);
             }else{
                 console.info(`ReminderAgentManagerTest SUB_NOTIFICATION_ANS_Publish_TEST ===>====>button is null button`);
+                await sleep(1000);
+                done(); 
             } 
-            await sleep(1000);
-            done();          
         })
 
         afterAll(function () {
@@ -731,6 +736,7 @@ export default function ReminderAgentManagerTest() {
                             console.info('reminderRequestAttribute_0026 if is ok');
                             reminderId = reminderInfoArr[i].reminderId;
                             Object.assign(reminderReq, reminderInfoArr[i].reminderReq);
+                            break;
                         }
                     }
                     console.info('reminderRequestAttribute_0026 = ' + JSON.stringify(reminderReq));
@@ -863,6 +869,7 @@ export default function ReminderAgentManagerTest() {
                         console.info('reminderRequestAttribute_0029 for is ok');
                         if (reminderInfoArr[i].reminderReq.dateTime.month == 7) {
                             reminderId = reminderInfoArr[i].reminderId;
+                            break;
                         }
                     }
                     console.info('reminderRequestAttribute_0029 reminderId' + reminderId)
@@ -902,6 +909,7 @@ export default function ReminderAgentManagerTest() {
                         if (reminderInfoArr[i].reminderReq.dateTime.month == 7) {
                             console.info('reminderRequestAttribute_0030 if is ok');
                             reminderId = reminderInfoArr[i].reminderId;
+                            break;
                         }
                     }
                     
@@ -934,7 +942,6 @@ export default function ReminderAgentManagerTest() {
             reminderAgent.cancelAllReminders().then((err, data) => {
                 console.info('reminderRequestAttribute_0031 cancelAllReminders success');
                 expect(true).assertTrue();
-                done();
             });
             const currentYear = new Date().getFullYear();
             const nextYear = currentYear + 1
@@ -962,14 +969,15 @@ export default function ReminderAgentManagerTest() {
                         console.log('reminderRequestAttribute_0031 callback err.code is :' + err.code);
                     }
                     expect(reminderId).assertLarger(0);
-                    done();
                     console.log('reminderRequestAttribute_0031 callback reminderId = ' + reminderId);
                     reminderAgent.cancelReminder(reminderId).then(() => {
                         console.log("reminderRequestAttribute_0031 cancelReminder promise");
-                        expect(false).assertTrue();
+                        expect(true).assertTrue();
                         done();
                       }).catch((err) => {
                         console.log("reminderRequestAttribute_0031 promise err code:" + err.code + " message:" + err.message);
+                        expect(false).assertTrue();
+                        done();
                       });
                 })             
             } catch (error) {
@@ -990,7 +998,6 @@ export default function ReminderAgentManagerTest() {
             reminderAgent.cancelAllReminders().then((err, data) => {
                 console.info('reminderRequestAttribute_0032 cancelAllReminders success');
                 expect(true).assertTrue();
-                done();
             });
             const currentYear = new Date().getFullYear();
             const nextYear = currentYear + 1
@@ -1018,18 +1025,18 @@ export default function ReminderAgentManagerTest() {
                         console.error('reminderRequestAttribute_0032 callback err.code is :' + err.code);
                     } else {
                         console.info('reminderRequestAttribute_0032 callback reminderId = ' + reminderId);
-                        expect(reminderId).assertLarger(0);
-                        done();
-                        reminderAgent.cancelReminder(reminderId, (err) => {
-                            if (err.code) {
+                        let id = reminderId
+                        reminderAgent.cancelReminder(id, (err) => {
+                            if (err) {
                               console.error("reminderRequestAttribute_0032 cancelReminder callback err code:" + err.code + " message:" + err.message);
+                              expect(false).assertTrue();
+                              done();
                             } else {
                               console.log("reminderRequestAttribute_0032 cancelReminder callback");
-                              expect(false).assertTrue();
+                              expect(true).assertTrue();
                               done();
                             }
                         });
-                        done();
                     }
                 })             
             } catch (error) {
