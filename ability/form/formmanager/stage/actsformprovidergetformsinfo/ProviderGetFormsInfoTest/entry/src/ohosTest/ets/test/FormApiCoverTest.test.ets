@@ -21,6 +21,7 @@ import Want from '@ohos.app.ability.Want';
 import formBindingData from '@ohos.app.form.formBindingData';
 import formProvider from '@ohos.app.form.formProvider';
 import FormEditExtensionAbility from '@ohos.app.form.FormEditExtensionAbility';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 const INTERVAL_TIME = 2500;
 
