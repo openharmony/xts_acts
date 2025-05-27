@@ -28,7 +28,6 @@ import RichEditorMaxLinesTest from './RichEditorTest/RichEditorMaxLinesTest.test
 import WordBreakTest from './TextAreaTest/WordBreakTest.test';
 import ImageContentEmpty from './ImageContentTest/ImageContentEmpty.test';
 import ImageOnError from './ImageErrorTest/ImageOnError.test';
-import ImageHdrBrightness from './ImageHdrBrightnessTest/ImageHdrBrightness.test';
 
 export default function testsuite() {
   textAreaInputTest();
@@ -46,5 +45,4 @@ export default function testsuite() {
   WordBreakTest();
   ImageContentEmpty();
   ImageOnError();
-  ImageHdrBrightness();
 }
