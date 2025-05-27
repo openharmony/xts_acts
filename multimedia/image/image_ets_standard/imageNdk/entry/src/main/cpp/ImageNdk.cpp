@@ -2842,7 +2842,7 @@ EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports) {
     napi_property_descriptor desc[] = {
         {"testCropAndScaleStrategy", nullptr, testCropAndScaleStrategy, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testCropAndScaleStrategyErr", nullptr, testCropAndScaleStrategy, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testCropAndScaleStrategyErr", nullptr, testCropAndScaleStrategyErr, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testInitializationOptions", nullptr, TestInitializationOptions, nullptr, nullptr, nullptr, napi_default,
          nullptr},
         {"testCreatePixelmap", nullptr, TestCreatePixelmap, nullptr, nullptr, nullptr, napi_default, nullptr},
