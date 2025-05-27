@@ -372,6 +372,8 @@ export default function imagePacking() {
         console.log(`checkPackingForSequenceResult height ${imageInfo.size.height}`);
         console.log(`checkPackingForSequenceResult width ${imageInfo.size.width}`);
         console.log(`checkPackingForSequenceResult mimeType ${imageInfo.mimeType}`);
+        expect(imageInfo.size.width == pictureSize.width).assertTrue();
+        expect(imageInfo.size.height == pictureSize.height).assertTrue();
         expect(imageInfo.mimeType == "image/gif").assertTrue();
         console.log(`checkPackingForSequenceResult loopcount1 ${JSON.stringify(loopcount)}`);
         console.log(`checkPackingForSequenceResult loopcount2 ${JSON.stringify(packingOptions.loopCount)}`);
@@ -1304,7 +1306,7 @@ export default function imagePacking() {
         done();
       }
     });
-/**
+    /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0600
      * @tc.name      : packing ImageSource - callback - quality -1
      * @tc.desc      : 1.create ImageSource
