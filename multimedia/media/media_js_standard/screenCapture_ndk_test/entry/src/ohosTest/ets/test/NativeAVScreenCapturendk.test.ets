@@ -288,5 +288,27 @@ export default function nativeAVScreenCaptureNdkTest() {
       expect(result).assertEqual(0);
       done();
     });
+
+    /**
+     * @tc.number       SUB_MULTIMEDIA_SCREEN_CAPTURE_SET_CAPTURE_AREA_0100
+     * @tc.name         OH_AVScreenCapture_StartScreenCapture_SetCaptureArea_True
+     * @tc.desc         OH_AVScreenCapture_StartScreenCapture_SetCaptureArea_True
+     * @tc.size         MediumTest
+     * @tc.type         Function
+     * @tc.level        Level 1
+     */
+    it('SUB_MULTIMEDIA_SCREEN_CAPTURE_SET_CAPTURE_AREA_0100', Level.LEVEL0, async (done: Function) => {
+      console.info(Tag + "normalAVScreenCaptureSetCaptureAreaTest-------------before click:");
+      let result: number = myScreenCaptureNdk.normalAVScreenCaptureSetCaptureAreaTest();
+      console.info(Tag + "normalAVScreenCaptureSetCaptureAreaTest-------------res:" + result);
+      expect(result).assertEqual(0);
+
+      let isShowDialog: number = await Utils.btnTextScreenCapture();
+      let resultStop: number = myScreenCaptureNdk.normalAVScreenCaptureSetCaptureAreaTestStop();
+      console.info(Tag + "normalAVScreenCaptureSetCaptureAreaTestStop-------------resultStop:" + resultStop);
+      expect(resultStop).assertEqual(0);
+      expect(isShowDialog).assertEqual(0);
+      done();
+    });
   })
 }
