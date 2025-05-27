@@ -549,6 +549,50 @@ export default function PhotoAccessHelperNativeTest() {
     })
     
     /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_CHANGE_REQUEST_SAVE_CAMERA_VIDEO_NATIVE_0100
+     * @tc.name      : TestChangeRequestSaveCameraVideo0100
+     * @tc.desc      : Save camera video when changeRequest is invalid
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('TestChangeRequestSaveCameraVideo0100', Level.LEVEL2, (done: Function) => {
+      let testNum = 'TestChangeRequestSaveCameraVideo0100';
+      try {
+        let ret:ESObject = mediaLibrary.testChangeRequestSaveCameraVideo(1);
+        console.log(`${testNum} ret: ${ret}`);
+        expect(ret).assertEqual(MEDIA_LIBRARY_PARAMETER_ERROR);
+        done();
+      } catch (error) {
+        console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_CHANGE_REQUEST_SAVE_CAMERA_VIDEO_NATIVE_0200
+     * @tc.name      : TestChangeRequestSaveCameraVideo0200
+     * @tc.desc      : Save camera video when imageFileType is invalid
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('TestChangeRequestSaveCameraVideo0200', Level.LEVEL2, (done: Function) => {
+      let testNum = 'TestChangeRequestSaveCameraVideo0200';
+      try {
+        let ret:ESObject = mediaLibrary.testChangeRequestSaveCameraVideo(2);
+        console.log(`${testNum} ret: ${ret}`);
+        expect(ret).assertEqual(MEDIA_LIBRARY_PARAMETER_ERROR);
+        done();
+      } catch (error) {
+        console.error(`${testNum} failed; error: ${error.code}  ${error.message}`);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+
+    /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_CHANGE_REQUEST_DISCARD_CAMERA_PHOTO_NATIVE_0100
      * @tc.name      : TestChangeRequestDiscardCameraPhoto0100
      * @tc.desc      : Discard camera photo when changeRequest is invalid

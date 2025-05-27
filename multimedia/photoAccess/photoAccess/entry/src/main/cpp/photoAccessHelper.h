@@ -71,6 +71,7 @@ public:
     MediaLibrary_ErrorCode ChangeRequestGetWriteCacheHandler(int useCaseCode);
     MediaLibrary_ErrorCode ChangeRequestAddResourceWithBuffer(int useCaseCode);
     MediaLibrary_ErrorCode ChangeRequestSaveCameraPhoto(int useCaseCode);
+    MediaLibrary_ErrorCode ChangeRequestSaveCameraVideo(int useCaseCode);
     MediaLibrary_ErrorCode ChangeRequestDiscardCameraPhoto(int useCaseCode);
     MediaLibrary_ErrorCode ChangeRequestRelease(int useCaseCode);
 
