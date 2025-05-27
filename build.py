@@ -25,14 +25,14 @@ logging.basicConfig(level=logging.ERROR, format='%(asctime)s - %(levelname)s - %
 
 usage_info = """
 USAGE
-       ./build.sh [suite=BUILD_TARGET] [target_os=TARGET_OS] [target_arch=TARGET_ARCH] [variant=BUILD_VARIANT] [target_subsystem=TARGET_SUBSYSTEM]
+       ./build.sh [suite=BUILD_TARGET] [target_os=TARGET_OS] [target_arch=TARGET_ARCH] [variant=BUILD_VARIANT] [target_subsystem=TARGET_SUBSYSTEM] [xts_suitetype=SUITE_TYPE_LIST]
                   suite            : BUILD_TARGET     acts, hats, dcts
                   target_arch      : TARGET_ARCH      arm64 or arm, default value is arm
                   variant          : BUILD_VARIANT    release or debug, default value is debug
                   target_subsystem : TARGET_SUBSYSTEM the target subsystem to build
                   system_size      : SYSTEM_SIZE      standard
                   product_name     : PRODUCT_NAME     the name of product. such as Hi3516DV300, and so on.
-
+                  xts_suitetype    : SUITE_TYPE_LIST  {bin, hap_dynamic, hap_static, hap_interop}. eg. xts_suitetype=bin,hap_dynamic
 """
 
 
@@ -56,7 +56,7 @@ class XtsBuild:
     def parse_cmdline(self):
         cmdline_args = [
             'suite', 'target_arch', 'use_musl', 'target_subsystem', 'system_size', 'product_name', 'pr_path_list',
-            'cache_type', 'make_osp', 'target_app_dir'
+            'cache_type', 'make_osp', 'target_app_dir', "xts_suitetype"
         ]
         cmdline = {'use_musl': 'false', 'system_size': 'standard', 'target_arch': 'arm'}
         for p in self._commandline:
@@ -72,8 +72,9 @@ class XtsBuild:
                 return -1
         if cmdline.get('target_subsystem'):
             os.environ['target_subsystem'] = cmdline.get('target_subsystem')
+        if cmdline.get('xts_suitetype'):
+            os.environ['XTS_SUITETYPE'] = cmdline.get('xts_suitetype')
 
-        # print("args_dict = {}".format(cmdline))
         self._gn_args['build_xts'] = 'true'
         if cmdline.get('system_size') == 'standard':
             build_target = cmdline['suite'] if cmdline.get('suite') else "test/xts/acts:xts_acts"
@@ -95,7 +96,7 @@ class XtsBuild:
             
             if cmdline.get('target_app_dir'):
                 self._gn_args['target_app_dir'] = cmdline.get('target_app_dir')
-            
+
             self._args['target-cpu'] = cmdline.get('target_arch')
             self._other_args['get-warning-list'] = 'false'
             self._other_args['stat-ccache'] = 'true'
