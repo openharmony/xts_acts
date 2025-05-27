@@ -27,8 +27,9 @@ class DemoGridItemInfo {
 @ComponentV2
 struct Repeat0020 {
   @Local itemList: Array<DemoGridItemInfo> = [];
-  @Local up: number = 0;
-  @Local down: number = 0;
+  @Local swipeStartIndex: number = -1;
+  @Local repeat0020_1: string = "-1";
+  @Local repeat0020_2: string = "-1";
   private imagesUrl: Array<string> = [
     "https://consumer.huawei.com/content/dam/huawei-cbg-site/cn/mkt/launch/241126/plp/phones/new/huawei-phones-ai.jpg",
     "https://consumer.huawei.com/content/dam/huawei-cbg-site/cn/mkt/launch/241126/plp/phones/new/huawei-phones-camera.jpg",
@@ -45,44 +46,46 @@ struct Repeat0020 {
 
   build() {
     Column({space: 10}) {
-      Text('Grid include Repeat')
-        .fontSize(5)
-      Row() {
-        Button('toTop')
-          .id("toTop")
+      Column() {
+        Button('toIndex[2]')
+          .id("toIndex[2]")
           .onClick(() => {
-            this.GridScroller.scrollEdge(Edge.Top);
+            let rect = this.GridScroller.getItemRect(this.swipeStartIndex);
+            this.GridScroller.scrollToIndex(2)
+            this.GridScroller.scrollBy(0, -rect.y);
           })
-        Button('toBottom')
-          .id("toBottom")
-          .onClick(() => {
-            this.GridScroller.scrollEdge(Edge.Bottom);
-          })
+        Text(this.repeat0020_1)
+          .id("repeat0020_1")
+        Text(this.repeat0020_2)
+          .id("repeat0020_2")
       }
-      Column(){
-        Text(`up num ${this.up}, down num ${this.down}`)
-        Text(`${this.up - this.down}`)
-      }
+
       Grid(this.GridScroller) {
         Repeat<DemoGridItemInfo>(this.itemList)
           .each((obj: RepeatItem<DemoGridItemInfo>) => {
             GridItem() {
-              Column() {
+              Stack() {
                 Image(obj.item.url)
-                  .width('100%')
                 Text(obj.item.name)
+                  .backgroundColor(Color.White)
+                  .border({width: 10})
               }
             }
+            .height("50%")
+            .margin(10)
             .onAttach(() => {
-              this.up++;
+              this.repeat0020_2 = obj.item.name;
             })
             .onDetach(() =>{
-              this.down++;
+              this.repeat0020_1 = obj.item.name;
             })
           }
-        )
+          )
           .virtualScroll({totalCount: this.itemList.length})
       }
+      .onScrollIndex((start: number, end: number) => {
+        this.swipeStartIndex = start;
+      })
       .columnsTemplate('1fr')
       .cachedCount(0)
       .height('100%')

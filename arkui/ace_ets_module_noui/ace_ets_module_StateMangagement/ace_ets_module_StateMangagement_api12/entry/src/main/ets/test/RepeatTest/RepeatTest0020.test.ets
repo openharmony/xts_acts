@@ -57,16 +57,15 @@ export default function RepeatTest0020() {
       console.info('[RepeatTest0020_001] START');
       await CommonFunc.sleep(2000);
       let driver: Driver = Driver.create();
-      let btn: Component = await driver.findComponent(ON.id("toBottom"));
+      let btn: Component = await driver.findComponent(ON.id("toIndex[2]"));
       await CommonFunc.sleep(1000);
       await btn.click();
       await CommonFunc.sleep(1000);
-      let obj: ESObject = JSON.parse(JSON.stringify(getInspectorTree()))
-        .$children[0]
-        .$children[2]
-        .$children[1];
-      console.info("[RepeatTest0020_001] component obj is: " + JSON.stringify(obj));
-      expect(parseInt(obj.$attrs.content)).assertLarger(0);
+      let text_1 = await (await driver.findComponent(ON.id("repeat0020_1"))).getText();
+      let text_2 = await (await driver.findComponent(ON.id("repeat0020_2"))).getText();
+      console.info("[RepeatTest0020_001] component text_1: " + text_1 + "text2:" + text_2);
+      expect(text_1).assertEqual("img0");
+      expect(text_2).assertEqual("img2");
       await CommonFunc.sleep(1000);
       console.info('[RepeatTest0020_001] END');
       done();
