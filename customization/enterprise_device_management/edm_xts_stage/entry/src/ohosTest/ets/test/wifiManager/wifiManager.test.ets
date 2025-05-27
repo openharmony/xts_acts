@@ -2124,7 +2124,7 @@ function testTurnOffWifiList() {
     } catch (error) {
       expect(false).assertTrue();
     } finally {
-      wifiManager.turnOnWifi(SELFWANT, true);
+      wifiManager.turnOnWifi(SELFWANT, false);
       await adminManager.disableSuperAdmin(SELFHAPNAME);
     }
     done();
