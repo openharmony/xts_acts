@@ -307,25 +307,29 @@ export default function FormApiCoverTest() {
      */
     it(`RequestOverflow_Cover_0100`, 0, async (done:Function) => {
       let name: string = 'RequestOverflow_Cover_0100';
+      let rect: formInfo.Rect = {
+        left: -25,
+        top: -25,
+        width: 200,
+        height:200
+      };
+      let overflowInfo: formInfo.OverflowInfo = {
+        area: rect,
+        duration: 3000
+      };
       console.info(`${name} start`);
       try {
-        formProvider.requestOverflow("1", {
-          area: {
-            left: -30,
-            top: -30,
-            width: 200,
-            height: 200
-          },
-          duration: 3500
-        });
-        console.log(`${name} RequestOverflow`);
-        console.log(`${name} should not reach here`);
-        done();
+        formProvider.requestOverflow("1", overflowInfo).then(() => {
+          console.info('requestOverflow succeed');
+          expect().not().assertFail();
+        }).catch((error: BusinessError) => {
+          expect(error.code).assertEqual(16501001);
+        })
       } catch (error) {
         expect().assertFail();
-        done();
       }
       console.info(`${name} end`);
+      done();
     });
  
     /*
@@ -340,15 +344,17 @@ export default function FormApiCoverTest() {
       let name: string = 'CancelOverflow_Cover_0100';
       console.info(`${name} start`);
       try {
-        formProvider.cancelOverflow("1");
-        console.log(`${name} CancelOverflow`);
-        console.log(`${name} should not reach here`);
-        done();
+        formProvider.cancelOverflow("1").then(() => {
+          console.info('cancelOverflow succeed');
+          expect().not().assertFail();
+        }).catch((error: BusinessError) => {
+          expect(error.code).assertEqual(16501001);
+        })
       } catch (error) {
         expect().assertFail();
-        done();
       }
       console.info(`${name} end`);
+      done();
     });
  
     /*
@@ -363,15 +369,17 @@ export default function FormApiCoverTest() {
       let name: string = 'ActivateSceneAnimation_Cover_0100';
       console.info(`${name} start`);
       try {
-        formProvider.activateSceneAnimation("1");
-        console.log(`${name} activateSceneAnimation`);
-        console.log(`${name} should not reach here`);
-        done();
+        formProvider.activateSceneAnimation("1").then(() => {
+          console.info('activateSceneAnimation succeed');
+          expect().not().assertFail();
+        }).catch((error: BusinessError) => {
+          expect(error.code).assertEqual(16501001);
+        })
       } catch (error) {
         expect().assertFail();
-        done();
       }
       console.info(`${name} end`);
+      done();
     });
  
     /*
@@ -386,15 +394,17 @@ export default function FormApiCoverTest() {
       let name: string = 'DeactivateSceneAnimation_Cover_0100';
       console.info(`${name} start`);
       try {
-        formProvider.deactivateSceneAnimation("1");
-        console.log(`${name} deactivateSceneAnimation`);
-        console.log(`${name} should not reach here`);
-        done();
+        formProvider.deactivateSceneAnimation("1").then(() => {
+          console.info('deactivateSceneAnimation succeed');
+          expect().not().assertFail();
+        }).catch((error: BusinessError) => {
+          expect(error.code).assertEqual(16501001);
+        })
       } catch (error) {
         expect().assertFail();
-        done();
       }
       console.info(`${name} end`);
+      done();
     });
 
     /*
@@ -410,14 +420,12 @@ export default function FormApiCoverTest() {
       console.info(`${name} start`);
       try {
         formProvider.getFormRect("1");
-        console.log(`${name} getFormRect`);
-        console.log(`${name} should not reach here`);
-        done();
+        expect().not().assertFail();
       } catch (error) {
         expect().assertFail();
-        done();
       }
       console.info(`${name} end`);
+      done();
     });
   })
 }
