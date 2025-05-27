@@ -1169,10 +1169,6 @@ HWTEST_P(SIGNATURE_ECDSA_TEST, SUB_Security_CryptoFramework_NAPI_Signature_Test_
     OH_Crypto_FreeDataBlob((Crypto_DataBlob *)&msgBlob);
 }
 
-#define SKIP_NOHASH_TEST(value)                         \
-    if (memcmp(value, "NoHash", strlen("NoHash")) == 0) \
-        return
-
 /**
 * @tc.number SUB_Security_CryptoFramework_NAPI_Signature_Test_0900
 * @tc.name OHCryptoFrameworkSignatureNapiTest/SIGNATURE_ECDSA_TEST.SUB_Security_CryptoFramework_NAPI_Signature_Test_0900/x
