@@ -363,7 +363,7 @@ export default function ConnectedTagErrorTest() {
                 try{
                     connectedTag.uninitialize();
                 }catch(error){
-                    console.error(`SUB_Communication_NFC_nfcConnectedTag_ErrorCode_js_0800 uninitialize failed,code is ${error.code}, message is ${error.message}");
+                    console.error(`SUB_Communication_NFC_nfcConnectedTag_ErrorCode_js_0800 uninitialize failed,code is ${error.code}, message is ${error.message}`);
                 }
             }
             done();
