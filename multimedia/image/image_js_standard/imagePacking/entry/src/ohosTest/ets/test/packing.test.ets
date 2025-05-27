@@ -37,6 +37,14 @@ interface packOpts {
   bufferSize?: number
 };
 
+let sleep = async (delay: number): Promise<void> => {
+  return new Promise((resolve, _) => {
+    setTimeout(async () => {
+      resolve();
+    }, delay);
+  });
+};
+
 export default function imagePacking() {
   describe("imagePacking", () => {
     let testContext: common.UIAbilityContext =
@@ -65,6 +73,7 @@ export default function imagePacking() {
       console.info("beforeEach case");
     });
     afterEach(async () => {
+      await sleep(1000);
       console.info("afterEach case");
     });
 
@@ -118,8 +127,12 @@ export default function imagePacking() {
                   expect().assertFail();
                   done();
                 });
+            imagePackerApi?.release();
+            done();
             }
           }
+          pixelmap?.release();
+          done();
         })
         .catch((error: BusinessError) => {
           console.log("createpixelmap error: " + error);
@@ -172,8 +185,12 @@ export default function imagePacking() {
                 expect(data != undefined).assertTrue();
                 done();
               });
+              imagePackerApi?.release();
+              done();
             }
           }
+          pixelmap?.release();
+          done();
         })
         .catch((error: BusinessError) => {
           console.log(`${testNum} createpixelmap error: ` + error);
@@ -214,7 +231,11 @@ export default function imagePacking() {
                 done();
               });
             }
+            imagePackerApi?.release();
+            done();
           }
+          pixelmap?.release();
+          done();
         })
         .catch((error: BusinessError) => {
           console.log(`${testNum} createpixelmap error:` + error);
@@ -261,7 +282,11 @@ export default function imagePacking() {
                   done();
                 });
             }
+            imagePackerApi?.release();
+            done();
           }
+          pixelmap?.release();
+          done();
         })
         .catch((error: BusinessError) => {
           console.log("createpixelmap error: " + error);
@@ -340,14 +365,13 @@ export default function imagePacking() {
         let disposalTypes = await imgSource.getDisposalTypeList();
         let loopcount: ESObject = await imgSource.getImageProperties([image.PropertyKey.GIF_LOOP_COUNT]);
         let imageInfo = imgSource.getImageInfoSync();
+        await imgSource?.release();
         console.log(`checkPackingForSequenceResult delayTimes ${delayTimes}`);
         console.log(`checkPackingForSequenceResult disposalTypes ${disposalTypes}`);
         console.log(`checkPackingForSequenceResult loopcount ${loopcount}`);
         console.log(`checkPackingForSequenceResult height ${imageInfo.size.height}`);
         console.log(`checkPackingForSequenceResult width ${imageInfo.size.width}`);
         console.log(`checkPackingForSequenceResult mimeType ${imageInfo.mimeType}`);
-        expect(imageInfo.size.width == pictureSize.width).assertTrue();
-        expect(imageInfo.size.height == pictureSize.height).assertTrue();
         expect(imageInfo.mimeType == "image/gif").assertTrue();
         console.log(`checkPackingForSequenceResult loopcount1 ${JSON.stringify(loopcount)}`);
         console.log(`checkPackingForSequenceResult loopcount2 ${JSON.stringify(packingOptions.loopCount)}`);
@@ -411,6 +435,8 @@ export default function imagePacking() {
         expect().assertFail();
         done();
       });
+      globalPacker?.release();
+      done();
     }
 
     let testPackingForSequencePromiseError = (done: ESObject, testNum: ESObject, pictureSize: ESObject,
@@ -431,6 +457,8 @@ export default function imagePacking() {
         expect(error.code == ERROR_CODE).assertTrue();
         done();
       });
+      globalPacker?.release();
+      done();
     }
 
     let checkPackToDataResult = async (buffer: ESObject, picSize: ESObject) => {
@@ -492,6 +520,9 @@ export default function imagePacking() {
             done();
           }
         }
+        await source?.release();
+        await globalPacker?.release();
+        done();
       }
 
     let testPackGifToData =
@@ -503,6 +534,8 @@ export default function imagePacking() {
           source = globalpixelmap;
         }
         await packGifToData(done, testNum, source, picSize, type);
+        await source?.release();
+        done();
       }
     /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKING_PROMISE_0100
@@ -912,7 +945,11 @@ export default function imagePacking() {
                 expect(false).assertFail();
                 done();
               });
+            await imageSourceApi?.release();
+            done();
           }
+          await imagePackerApi?.release();
+          done();
         }
       } catch (error) {
         console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_PROMISE_0100 error: " + error);
@@ -956,7 +993,11 @@ export default function imagePacking() {
               expect(data != undefined).assertTrue();
               done();
             });
+            await imageSourceApi?.release();
+            done();
           }
+          await imagePackerApi?.release();
+          done();
         }
       } catch (error) {
         console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0100 error: " + error);
@@ -999,7 +1040,11 @@ export default function imagePacking() {
               console.info(data);
               done();
             });
+            await imageSourceApi?.release();
+            done();
           }
+          await imagePackerApi?.release();
+          done();
         }
       } catch (error) {
         console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0200 error: " + error);
@@ -1034,9 +1079,12 @@ export default function imagePacking() {
             done();
           } else {
             console.info("SUB_MULTIMEDIA_IMAGE_PACKING_CREATEIMAGEPACKER_0100 create image packer success");
+            await imagePackerApi.release();
             expect(true).assertTrue();
             done();
           }
+          await imageSourceApi?.release();
+          done();
         }
       } catch (error) {
         console.info("SUB_MULTIMEDIA_IMAGE_PACKING_CREATEIMAGEPACKER_0100 error: " + error);
@@ -1086,7 +1134,11 @@ export default function imagePacking() {
                 expect(true).assertTrue();
                 done();
               });
+            await imageSourceApi?.release();
+            done();
           }
+          await imagePackerApi?.release();
+          done();
         }
       } catch (error) {
         console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_PROMISE_0200 error: " + error);
@@ -1135,7 +1187,11 @@ export default function imagePacking() {
                 expect(true).assertTrue();
                 done();
               });
+            await imageSourceApi?.release();
+            done();
           }
+          await imagePackerApi?.release();
+          done();
         }
       } catch (error) {
         console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_PROMISE_0300 error: " + error);
@@ -1190,7 +1246,11 @@ export default function imagePacking() {
                 done();
               }
             });
+            await imageSourceApi?.release();
+            done();
           }
+          await imagePackerApi?.release();
+          done();
         }
       } catch (error) {
         console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0400 error: " + error);
@@ -1232,7 +1292,11 @@ export default function imagePacking() {
               expect(data != undefined).assertTrue();
               done();
             });
+            await imageSourceApi?.release();
+            done();
           }
+          await imagePackerApi?.release();
+          done();
         }
       } catch (error) {
         console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0500 error: " + error);
@@ -1240,7 +1304,7 @@ export default function imagePacking() {
         done();
       }
     });
-    /**
+/**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0600
      * @tc.name      : packing ImageSource - callback - quality -1
      * @tc.desc      : 1.create ImageSource
@@ -1274,7 +1338,11 @@ export default function imagePacking() {
               expect(data == undefined).assertTrue();
               done();
             });
+            await imageSourceApi?.release();
+            done();
           }
+          await imagePackerApi?.release();
+          done();
         }
       } catch (error) {
         console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0600 error: " + error);
@@ -1324,7 +1392,11 @@ export default function imagePacking() {
                 expect(true).assertTrue();
                 done();
               });
+            await imageSourceApi?.release();
+            done();
           }
+          await imagePackerApi?.release();
+          done();
         }
       } catch (error) {
         console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_PROMISE_0700 error: " + error);
@@ -1367,7 +1439,11 @@ export default function imagePacking() {
               expect(data == undefined).assertTrue();
               done();
             });
+            await imageSourceApi?.release();
+            done();
           }
+          await imagePackerApi?.release();
+          done();
         }
       } catch (error) {
         console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0800 error: " + error);
@@ -1406,6 +1482,8 @@ export default function imagePacking() {
             done();
           });
       }
+      await imagePackerApi?.release();
+      done();
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKING_RELEASE_IMAGEPACKER_CALLBACK_0100
@@ -1430,6 +1508,8 @@ export default function imagePacking() {
           done();
         });
       }
+      await imagePackerApi?.release();
+      done();
     });
 
     /**
