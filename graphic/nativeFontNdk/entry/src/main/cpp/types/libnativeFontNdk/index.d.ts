@@ -82,3 +82,5 @@ export const oHDrawingGetRunImageBounds001: () => number;
 export const oHDrawingGetRunGlyphsByIndex001: () => number;
 export const oHDrawingGetRunPositions001: () => number;
 export const oHDrawingGetFontCollectionGlobalInstance001: () => number;
+export const oHDrawingSetTextStyleBadgeType001: () => Array<number>;
+export const oHDrawingSetTextStyleBadgeType002: () => Array<number>;
