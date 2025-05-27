@@ -5239,6 +5239,7 @@ export default function windowPropertiesTest() {
         let subWindowClass2: window.Window | undefined;
         try {
           let mainWindow = windowStage.getMainWindowSync();
+          await mainWindow.setWindowBrightness(0.5);
           let mainWindowProperties = mainWindow.getWindowProperties();
           console.info(`${msgStr} mainWindowProperties: ${JSON.stringify(mainWindowProperties)}`);
           let brightness1 = mainWindowProperties.brightness;
@@ -6075,7 +6076,7 @@ export default function windowPropertiesTest() {
           expect(windowProperties.isPrivacyMode).assertEqual(false);
           expect(windowProperties.focusable).assertEqual(true);
           expect(windowProperties.touchable).assertEqual(true);
-          // expect(windowProperties.isKeepScreenOn).assertEqual(true);
+          expect(typeof windowProperties.isKeepScreenOn).assertEqual('boolean');
           expect(Number.isInteger(windowProperties.brightness)).assertEqual(false);
           expect(windowProperties.id).assertLarger(0);
           expect(windowProperties.displayId).assertLargerOrEqual(0);
@@ -6118,7 +6119,7 @@ export default function windowPropertiesTest() {
           expect(windowRect.width).assertEqual(0);
           expect(windowRect.height).assertEqual(0);
           expect(windowProperties.type).assertEqual(1);
-          if (isPCStatus != '' || isAutoWindow == 'false') {
+          if (isPCStatus == '' || isAutoWindow == 'false') {
             expect(windowProperties.isFullScreen).assertEqual(false);
           } else {
             expect(windowProperties.isFullScreen).assertEqual(true);
@@ -6129,7 +6130,7 @@ export default function windowPropertiesTest() {
           expect(windowProperties.focusable).assertEqual(true);
           expect(windowProperties.touchable).assertEqual(true);
           expect(Number.isInteger(windowProperties.brightness)).assertEqual(false);
-          // expect(windowProperties.isKeepScreenOn).assertEqual(true);
+          expect(typeof windowProperties.isKeepScreenOn).assertEqual('boolean');
           expect(windowProperties.id).assertLarger(0);
           expect(windowProperties.displayId).assertLargerOrEqual(0);
           await windowClass.setUIContent('testability/pages/First/index2');
