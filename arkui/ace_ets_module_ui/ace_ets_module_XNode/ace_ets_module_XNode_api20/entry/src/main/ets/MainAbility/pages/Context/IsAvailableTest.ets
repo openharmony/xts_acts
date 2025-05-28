@@ -22,7 +22,7 @@ struct IsAvailableIndex {
 
   build() {
     Column() {
-      Button("test isAvailable")
+      Button('test isAvailable')
         .id('btn_isAvailable')
         .onClick(() => {
           const uiContext1 = this.getUIContext();
