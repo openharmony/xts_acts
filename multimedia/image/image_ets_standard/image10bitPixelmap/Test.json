@@ -38,7 +38,7 @@
       "type": "ShellKit",
       "run-command": [
           "power-shell wakeup",
-                "power-shell timeout -o 864000000",
+                "power-shell timeout -o 2147483647",
           "power-shell setmode 602"
       ]
     }
