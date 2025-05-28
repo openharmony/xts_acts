@@ -936,9 +936,7 @@ export default function SocketErrorCodeTest01() {
           port: 12345,
           family: 1
         };
-        await tcpServer.listen(listenAddress).catch((err:BusinessError) => {
-                    console.info('fail to listen' + err.code.toString());
-                });
+        await tcpServer.listen(listenAddress);
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: listenAddress,
           proxy: {
