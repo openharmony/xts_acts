@@ -20,6 +20,8 @@
             "type": "ShellKit",
             "run-command": [
                 "power-shell wakeup",
+                "power-shell timeout -o 864000000",
+                "power-shell timeout -o 864000000",
                 "uinput -T -m 300 2700 280 200",
                 "power-shell setmode 602",
                 "mkdir -p /data/app/el2/100/base/ohos.audio.napitest/haps/entry_test/files",

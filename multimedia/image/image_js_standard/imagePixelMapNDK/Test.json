@@ -58,6 +58,7 @@
             "run-command": [
                 "chmod -R 777 /data/app/el2/100/base/ohos.acts.multimedia.imagePixelMapNDK/haps/entry_test/*",
                 "power-shell wakeup",
+                "power-shell timeout -o 864000000",
                 "power-shell setmode 602"
             ]
         }
