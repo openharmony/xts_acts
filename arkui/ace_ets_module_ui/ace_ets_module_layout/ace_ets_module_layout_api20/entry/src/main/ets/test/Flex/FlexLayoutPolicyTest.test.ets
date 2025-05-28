@@ -61,10 +61,10 @@ export default function FlexLayoutPolicyTest() {
       let flex_child: RectValue = CommonFunc.getComponentRect('FlexLayoutPolicyTest_0100_Flex_child');
 
       // padding(20) + border(5) + safeAreaPadding(10)
-      console.log('[FlexLayoutPolicyTest_0100] flex_child.left - flex_parent.left - vp2px(35) is:' + flex_child.left - flex_parent.left - vp2px(35));
-      console.log('[FlexLayoutPolicyTest_0100] flex_parent.right - flex_child.right - vp2px(35) is:' + flex_parent.right - flex_child.right - vp2px(35));
-      console.log('[FlexLayoutPolicyTest_0100] flex_child.top - flex_parent.top - vp2px(35) is:' + flex_child.top - flex_parent.top - vp2px(35));
-      console.log('[FlexLayoutPolicyTest_0100] flex_parent.bottom - flex_child.bottom - vp2px(35) is:' + flex_parent.bottom - flex_child.bottom - vp2px(35));
+      console.log('[FlexLayoutPolicyTest_0100] flex_child.left - flex_parent.left - vp2px(35) is:' + (flex_child.left - flex_parent.left - vp2px(35)));
+      console.log('[FlexLayoutPolicyTest_0100] flex_parent.right - flex_child.right - vp2px(35) is:' + (flex_parent.right - flex_child.right - vp2px(35)));
+      console.log('[FlexLayoutPolicyTest_0100] flex_child.top - flex_parent.top - vp2px(35) is:' + (flex_child.top - flex_parent.top - vp2px(35)));
+      console.log('[FlexLayoutPolicyTest_0100] flex_parent.bottom - flex_child.bottom - vp2px(35) is:' + (flex_parent.bottom - flex_child.bottom - vp2px(35)));
       expect(Math.floor(Math.abs(flex_child.left - flex_parent.left - vp2px(35))) <= 1).assertTrue();
       expect(Math.floor(Math.abs(flex_parent.right - flex_child.right - vp2px(35))) <= 1).assertTrue();
       expect(Math.floor(Math.abs(flex_child.top - flex_parent.top - vp2px(35))) <= 1).assertTrue();
