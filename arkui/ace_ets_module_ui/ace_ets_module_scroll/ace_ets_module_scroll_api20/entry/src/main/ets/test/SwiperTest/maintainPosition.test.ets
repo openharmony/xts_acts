@@ -45,7 +45,7 @@ export default function maintainPosition() {
     /**
      * @tc.number    maintainPosition_001
      * @tc.name      maintainPosition_0100
-     * @tc.desc      Do you want to keep the visible content position unchanged when inserting data in front of the display area.
+     * @tc.desc      When inserting data in front of the display area, the visible content position changes.
      * @tc.level     Level 0
      * @tc.type
      * @tc.size
@@ -60,25 +60,42 @@ export default function maintainPosition() {
       await btnAdd.click();
       await CommonFunc.sleep(1500);
       await driver.assertComponentExist(ON.text('4'));
+      console.info('[maintainPosition_0100] swiper 4');
       //reset
       let btnDel = await driver.findComponent(ON.id('maintain_swiper_del'));
       await btnDel.click();
       await CommonFunc.sleep(1500);
-      await driver.assertComponentExist(ON.text('5'));
+      console.info('[maintainPosition_0100] END');
+      done();
+    });
 
+    /**
+     * @tc.number    maintainPosition_002
+     * @tc.name      maintainPosition_0200
+     * @tc.desc      Keep the visible content position unchanged when inserting data in front of the display area.
+     * @tc.level     Level 0
+     * @tc.type
+     * @tc.size
+     */
+    it('maintainPosition_0200', Level.LEVEL0, async (done: Function) => {
+      console.info('[maintainPosition_0200] START');
+      await CommonFunc.sleep(1000);
+      let driver = Driver.create();
+      await driver.assertComponentExist(ON.text('5'));
       //maintainVisibleContentPosition true
       let btnTrue = await driver.findComponent(ON.id('maintain_swiper_true'));
       await btnTrue.click();
-      await CommonFunc.sleep(1500);
-      let btnTrueAdd = await driver.findComponent(ON.id('maintain_swiper_add'));
-      await btnTrueAdd.click();
+      await CommonFunc.sleep(2000);
+      let btnAdd = await driver.findComponent(ON.id('maintain_swiper_add'));
+      await btnAdd.click();
       await CommonFunc.sleep(1500);
       await driver.assertComponentExist(ON.text('5'));
+      console.info('[maintainPosition_0200] swiper 5');
       //reset
       let btnTrueDel = await driver.findComponent(ON.id('maintain_swiper_del'));
       await btnTrueDel.click();
       await CommonFunc.sleep(1500);
-      console.info('[maintainPosition_0100] END');
+      console.info('[maintainPosition_0200] END');
       done();
     });
   })
