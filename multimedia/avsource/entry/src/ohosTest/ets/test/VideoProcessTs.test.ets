@@ -30,7 +30,7 @@
         let context = abilityDelegator.getAppContext().getApplicationContext().createModuleContext(moduleName);
         let mResourceManager = context.resourceManager;
         let imageSource: image.ImageSource = image.createImageSource(
-            mResourceManager.getRawFdSync('videoProcessTsSample.jpg'));
+            mResourceManager.getRawFdSync('videoProcessTsSample.jpeg'));
         let opts: image.DecodingOptions = {
             desiredPixelFormat : 3,
             editable : true,
