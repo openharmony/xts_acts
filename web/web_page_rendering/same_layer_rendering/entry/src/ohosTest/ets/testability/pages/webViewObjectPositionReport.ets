@@ -180,10 +180,6 @@ struct webViewObjectPositionReport {
             switch (this.emitKey) {
               case 'emitWebViewObjectPositionReport': {
                 try {
-                  if ( Utils.isPC(this.controller) ) {
-                    Utils.emitEvent('success', 8018);
-                    return
-                  }
                   this.controller.runJavaScript('positionMove()')
                 } catch (error) {
                   let e:business_error.BusinessError = error as business_error.BusinessError;
