@@ -14,6 +14,8 @@ import {
 import { SuiteService } from './SuiteService';
 import { ConfigService } from '../config/configService';
 import { ItfnType } from '../types/common';
+import hilog from '@ohos.hilog'
+
 class SpecService {
   public id: string;
   public totalTest: int;
@@ -114,13 +116,19 @@ class SpecService {
         if (cService.filterDesc(curSuite.description, desc, filter) && isFilter && !sService.fullRun) {
           this.initSpecService();
         } else {
-          const funcStr = (func as object).toString();
+  
+
+          const funcStr = Type.of((func as object)).getLiteral()
+
           const argsCount = this.getFunctionArgumentsCount(funcStr);
 
+
           const isAsync = this.checkIsAsyncFunction(funcStr);
+
           let processedFunc: () => Promise<void> = (): Promise<void> => {
             return Promise.resolve();
           };
+
           if (argsCount === 1) {
             if (isAsync) {
               const fn = func as (done: () => void) => Promise<void>;
@@ -129,20 +137,28 @@ class SpecService {
               const fn = func as (done: () => void) => void;
               processedFunc = processFuncWithArgOne(coreContext, fn);
             }
+
           } else {
+
             const fn = func as () => Promise<void>;
             processedFunc = processFunc(coreContext, fn);
+
+
           }
+
           const spec = new StaticSpec({ description: desc, fi: filter, asyncFn: processedFunc });
           if (this.isSkipSpec) {
             spec.isSkip = true;
             spec.skipReason = this.specSkipReason;
           }
           this.initSpecService();
+
+
           if (cService.runSkipped === 'skipped' && !spec.isSkip) {
             console.info(`${TAG} runSkipped is skipped , just run xit, don't run it: ${spec.description}`);
             return;
           }
+    
 
           if (curSuite.isSkip && !spec.isSkip) {
             cService.filterXdescribe.push(curSuite.description);

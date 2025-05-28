@@ -9,6 +9,7 @@ import { SysTestKit } from '../kit/SysTestKit';
 import { AssertException } from './AssertException';
 import { ConfigService } from '../config/configService';
 import { SpecService } from './SpecService';
+import hilog from '@ohos.hilog'
 
 class SuiteService {
   public id: string;
@@ -63,6 +64,7 @@ class SuiteService {
           return Promise.resolve(undefined);
         }
         const isFilter = this.analyzeConfigServiceClass(configService.className, desc);
+
         if (configService.filterSuite(desc) && isFilter) {
           if (this.currentRunningSuite.description === '' || this.currentRunningSuite.description == null) {
             console.info(`${TAG}filter suite : ${desc}`);
@@ -71,6 +73,8 @@ class SuiteService {
             return Promise.resolve(undefined);
           }
         }
+
+
         const suite = new StaticSuite({ description: desc });
         if (this.isSkipSuite) {
           suite.isSkip = true;
@@ -83,6 +87,7 @@ class SuiteService {
         this.suitesStack.push(suite);
 
         await (func as () => Promise<void>)();
+
         this.suitesStack.pop();
 
         const staticService = this.suitesStack.pop();
