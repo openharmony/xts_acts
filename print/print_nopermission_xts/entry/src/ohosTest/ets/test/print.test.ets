@@ -72,12 +72,12 @@ export default function printTest() {
         done();
       } catch (error) {
         console.log('print_function_0100 expect failed, err: ' + JSON.stringify(error));
-        expect(error.code).assertEqual(201);
+        expect(error).assertEqual(201);
         done();
       }
     })
 
-     /**
+    /**
      * @tc.number print_function_0101
      * @tc.name Test print
      * @tc.desc check the 401 error code of print function
@@ -94,7 +94,7 @@ export default function printTest() {
         done();
       } catch (error) {
         console.log('print_function_0101 expect failed, err: ' + JSON.stringify(error));
-        expect(error.code).assertEqual(401);
+        expect(error).assertEqual(401);
         done();
       }
     })
@@ -112,9 +112,9 @@ export default function printTest() {
       // Permissions required: ohos.permission.PRINT
       print.print(file, (err: BusinessError, printTask: print.PrintTask) => {
         try {
-          if (err) {  
+          if (err) {
             console.log('print_function_0200 expect failed, err: ' + JSON.stringify(err));
-            expect(err.code).assertEqual(201);
+            expect(err).assertEqual(201);
             done();
           } else {
             expect(false).assertTrue();
@@ -139,9 +139,9 @@ export default function printTest() {
       // Permissions required: ohos.permission.PRINT
       print.print(file, (err: BusinessError, printTask: print.PrintTask) => {
         try {
-          if (err) {  
+          if (err) {
             console.log('print_function_0201 expect failed, err: ' + JSON.stringify(err));
-            expect(err.code).assertEqual(401);
+            expect(err).assertEqual(401);
             done();
           } else {
             expect(false).assertTrue();
@@ -167,9 +167,9 @@ export default function printTest() {
       // Permissions required: ohos.permission.PRINT
       print.print(file, context, (err: BusinessError, printTask: print.PrintTask) => {
         try {
-          if (err) {  
+          if (err) {
             console.log('print_function_0300 expect failed, err: ' + JSON.stringify(err));
-            expect(err.code).assertEqual(201);
+            expect(err).assertEqual(201);
             done();
           } else {
             expect(false).assertTrue();
@@ -195,9 +195,9 @@ export default function printTest() {
       // Permissions required: ohos.permission.PRINT
       print.print(file, context, (err: BusinessError, printTask: print.PrintTask) => {
         try {
-          if (err) {  
+          if (err) {
             console.log('print_function_0301 expect failed, err: ' + JSON.stringify(err));
-            expect(err.code).assertEqual(401);
+            expect(err).assertEqual(401);
             done();
           } else {
             expect(false).assertTrue();
@@ -227,7 +227,7 @@ export default function printTest() {
         done();
       } catch (error) {
         console.log('print_function_0400 expect failed, err: ' + JSON.stringify(error));
-        expect(error.code).assertEqual(201);
+        expect(error).assertEqual(201);
         done();
       }
     })
@@ -250,14 +250,14 @@ export default function printTest() {
         done();
       } catch (error) {
         console.log('print_function_0401 expect failed, err: ' + JSON.stringify(error));
-        expect(error.code).assertEqual(401);
+        expect(error).assertEqual(401);
         done();
       }
     })
 
     class MyPrintDocumentAdapter implements print.PrintDocumentAdapter {
       onStartLayoutWrite(jobId: string, oldAttrs: print.PrintAttributes, newAttrs: print.PrintAttributes, fd: number,
-                         writeResultCallback: (jobId: string, writeResult: print.PrintFileCreationState) => void) {
+        writeResultCallback: (jobId: string, writeResult: print.PrintFileCreationState) => void) {
         writeResultCallback(jobId, print.PrintFileCreationState.PRINT_FILE_CREATED);
         writeResultCallback(jobId, print.PrintFileCreationState.PRINT_FILE_CREATION_FAILED);
         writeResultCallback(jobId, print.PrintFileCreationState.PRINT_FILE_CREATED_UNRENDERED);
@@ -333,7 +333,7 @@ export default function printTest() {
         done();
       } catch (error) {
         console.log('print_function_0500 expect failed, err: ' + JSON.stringify(error));
-        expect(error.code).assertEqual(201);
+        expect(error).assertEqual(201);
         done();
       }
     });
@@ -390,7 +390,7 @@ export default function printTest() {
         done();
       } catch (error) {
         console.log('print_function_0600 expect failed, err: ' + JSON.stringify(error));
-        expect(error.code).assertEqual(201);
+        expect(error).assertEqual(201);
         done();
       }
     })
@@ -426,7 +426,7 @@ export default function printTest() {
         done();
       } catch (error) {
         console.log('print_function_0700 expect failed, err: ' + JSON.stringify(error));
-        expect(error.code).assertEqual(201);
+        expect(error).assertEqual(201);
         done();
       }
     })
@@ -449,7 +449,7 @@ export default function printTest() {
         done();
       } catch (error) {
         console.log('print_function_0800 expect failed, err: ' + JSON.stringify(error));
-        expect(error.code).assertEqual(201);
+        expect(error).assertEqual(201);
         done();
       }
     })
@@ -472,6 +472,73 @@ export default function printTest() {
         done();
       } catch (error) {
         console.log('print_function_0900 expect failed, err: ' + JSON.stringify(error));
+        expect(error).assertEqual(201);
+        done();
+      }
+    })
+
+    /**
+     * @tc.number print_function_1000
+     * @tc.name Test print
+     * @tc.desc check the 201 error code of getAddedPrinters function
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('print_function_1000', Level.LEVEL2, async (done: Function) => {
+      // Permissions required: ohos.permission.PRINT
+      try {
+        await print.getAddedPrinters();
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.log('print_function_1000 expect failed, err: ' + JSON.stringify(error));
+        expect(error).assertEqual(201);
+        done();
+      }
+    })
+
+    /**
+     * @tc.number print_function_1100
+     * @tc.name Test print
+     * @tc.desc check the 201 error code of the printerChange event registration function
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('print_function_1100', Level.LEVEL2, async (done: Function) => {
+      // Permissions required: ohos.permission.PRINT
+      try {
+        let onPrinterChange =
+          (event: print.PrinterEvent, printerInformation: print.PrinterInformation) => {
+            console.log('printerChange, event: ' + event + ', printerInformation: ' + JSON.stringify(printerInformation));
+          };
+        print.on('printerChange', onPrinterChange);
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.log('print_function_1100 expect failed, err: ' + JSON.stringify(error));
+        expect(error.code).assertEqual(201);
+        done();
+      }
+    })
+
+    /**
+     * @tc.number print_function_1200
+     * @tc.name Test print
+     * @tc.desc check the 201 error code of the printerChange event unregistration function
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('print_function_1200', Level.LEVEL2, async (done: Function) => {
+      // Permissions required: ohos.permission.PRINT
+      try {
+        print.off('printerChange');
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.log('print_function_1200 expect failed, err: ' + JSON.stringify(error));
         expect(error.code).assertEqual(201);
         done();
       }
