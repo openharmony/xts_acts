@@ -1043,5 +1043,95 @@ export default function ReminderAgentManagerTest() {
                 console.log("reminderRequestAttribute_0032 publishReminder error.code:" + error.code);
             }
         })
+
+        /**
+         * @tc.number: reminderRequestAttribute_0033
+         * @tc.name: reminderRequestAttribute_0033
+         * @tc.desc: test reminderAgent.RingChannel.RING_CHANNEL_ALARM is 0.
+         * @tc.level: Level 3
+         * @tc.type: Function
+         * @tc.size: MediumTest
+         */
+        it("reminderRequestAttribute_0033", Level.LEVEL3, async function (done) {
+            console.info('----------------------reminderRequestAttribute_0033---------------------------');
+            let ringType = reminderAgent.RingChannel.RING_CHANNEL_ALARM;
+            expect(ringType).assertEqual(0);
+            done();
+        })
+
+        /**
+         * @tc.number: reminderRequestAttribute_0034
+         * @tc.name: reminderRequestAttribute_0034
+         * @tc.desc: test reminderAgent.RingChannel.RING_CHANNEL_ALARM is 0.
+         * @tc.level: Level 3
+         * @tc.type: Function
+         * @tc.size: MediumTest
+         */
+        it("reminderRequestAttribute_0034", Level.LEVEL0, async function (done) {
+            console.info('----------------------reminderRequestAttribute_0034---------------------------');
+            let ringType = reminderAgent.RingChannel.RING_CHANNEL_MEDIA;
+            expect(ringType).assertEqual(1);
+            done();
+        })
+
+        /**
+         * @tc.number: reminderRequestAttribute_0035
+         * @tc.name: reminderRequestAttribute_0035
+         * @tc.desc: test updateReminder promise function 
+         * @tc.level: Level 3
+         * @tc.type: Function
+         * @tc.size: MediumTest
+         */
+        it("reminderRequestAttribute_0035", Level.LEVEL3, async function (done) {
+            console.info('----------------------reminderRequestAttribute_0035---------------------------');
+            reminderAgent.cancelAllReminders().then((err, data) => {
+                console.info('reminderRequestAttribute_0035 cancelAllReminders success');
+            });
+            const currentYear = new Date().getFullYear();
+            const nextYear = currentYear + 1
+            let ReminderRequest = {
+                reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
+                dateTime: {
+                    year: nextYear,
+                    month: 1,
+                    day: 11,
+                    hour: 11,
+                    minute: 11,
+                    second: 11
+                },
+                actionButton: [
+                    {
+                        title: 'close',
+                        type: 0,
+                    }
+                ],
+                RingChannel: reminderAgent.RingChannel.RING_CHANNEL_ALARM
+            }
+            let timer = {
+              reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
+              triggerTimeInSeconds: 10
+            }
+            try {
+                reminderAgent.publishReminder(ReminderRequest, (err, reminderId) => {
+                    if (err) {                           
+                        console.error('reminderRequestAttribute_0035 callback err.code is :' + err.code);
+                    } else {
+                        console.info('reminderRequestAttribute_0035 callback reminderId = ' + reminderId);
+                        let id = reminderId;
+                        reminderAgent.updateReminder(id, timer).then(() => {
+                            console.log("reminderRequestAttribute_0035 update reminder succeed");
+                            expect(true).assertTrue();
+                            done();
+                        }).catch((err) => {
+                            console.error("reminderRequestAttribute_0035 promise err code:" + err.code + " message:" + err.message);
+                            expect(false).assertTrue();
+                            done();
+                        });
+                    }
+                })             
+            } catch (error) {
+                console.log("reminderRequestAttribute_0035 publishReminder error.code:" + error.code);
+            }
+        })
     })
 }
