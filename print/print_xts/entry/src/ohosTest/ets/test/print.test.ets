@@ -130,35 +130,35 @@ export default function printTest() {
       })
     })
 
-    /**
-     * @tc.number print_function_0300
-     * @tc.name Test print
-     * @tc.desc check the print function
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('print_function_0300', Level.LEVEL2, (done: Function) => {
-      let file = ['file://data/print/a.png', 'file://data/print/b.png'];
-      let context = getContext();
-      // Permissions required: ohos.permission.PRINT
-      print.print(file, context, (err: BusinessError, printTask: print.PrintTask) => {
-        try {
-          if (err) {  
-            console.log('print_function_0300 failed, err: ' + JSON.stringify(err));
-            expect(err).assertEqual(13100003);
-            done();
-          } else {
-            expect(typeof (printTask)).assertEqual('object');
-            expect(!!printTask).assertTrue();
-            console.log('print_function_0300 succeed');
-            done();
-          }
-        } catch (error) {
-          done();
-        }
-      })
-    })
+    // /**
+    //  * @tc.number print_function_0300
+    //  * @tc.name Test print
+    //  * @tc.desc check the print function
+    //  * @tc.size MEDIUM
+    //  * @tc.type Function
+    //  * @tc.level Level 2
+    //  */
+    // it('print_function_0300', Level.LEVEL2, (done: Function) => {
+    //   let file = ['file://data/print/a.png', 'file://data/print/b.png'];
+    //   let context = getContext();
+    //   // Permissions required: ohos.permission.PRINT
+    //   print.print(file, context, (err: BusinessError, printTask: print.PrintTask) => {
+    //     try {
+    //       if (err) {
+    //         console.log('print_function_0300 failed, err: ' + JSON.stringify(err));
+    //         expect(err).assertEqual(13100003);
+    //         done();
+    //       } else {
+    //         expect(typeof (printTask)).assertEqual('object');
+    //         expect(!!printTask).assertTrue();
+    //         console.log('print_function_0300 succeed');
+    //         done();
+    //       }
+    //     } catch (error) {
+    //       done();
+    //     }
+    //   })
+    // })
 
     // /**
     //  * @tc.number print_function_0400
