@@ -1211,10 +1211,7 @@ export default function windowFocusTest() {
       const subWindowClass = await windowStage.createSubWindow('test_SHOWWINDOW_FOCUSONSHOW_ERRORCODE_0200')
       console.info(`${caseName} Succeeded in creating the dialog window.`);
       try {
-        let focusOnshowOptions: window.ShowWindowOptions = {
-          focusOnShow: null
-        }
-        let promise =  subWindowClass.showWindow(focusOnshowOptions);
+        let promise =  subWindowClass.showWindow({focusOnShow: null});
         promise.then(async () => {
           console.error(caseName + 'Succeeded in showWindow.');
           expect().assertFail();
@@ -1222,13 +1219,13 @@ export default function windowFocusTest() {
           done()
         }).catch(async (err: BusinessError) => {
           console.error(`${caseName} Failed in showWindow. Cause code: ${err.code}, message: ${err.message}`);
-          expect(err.code).assertEqual(1300016)
+          expect().assertFail();
           await subWindowClass.destroyWindow();
           done()
         });
       } catch (err) {
         console.error(`${caseName} Failed2 in showWindow. Cause: ${JSON.stringify(err)}`);
-        expect().assertFail();
+        expect(err.code).assertEqual(1300016)
         await subWindowClass.destroyWindow();
         done()
       }
