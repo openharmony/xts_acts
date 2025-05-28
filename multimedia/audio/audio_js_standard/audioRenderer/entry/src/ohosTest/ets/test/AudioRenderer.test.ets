@@ -11888,6 +11888,108 @@ export default function audioRendererTest() {
     // })
 
     /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_ON_ACTIVE_VOLUME_TYPE_CHANGE_0100
+     * @tc.name      : STREAM_VOICE_CALL INTERRUPT STREAM_MUSIC
+     * @tc.desc      : STREAM_VOICE_CALL INTERRUPT STREAM_MUSIC
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+   it('SUB_MULTIMEDIA_AUDIO_ON_ACTIVE_VOLUME_TYPE_CHANGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+    let interrput_flag = false;
+    let AudioStreamInfo = {
+      samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+      channels: audio.AudioChannel.CHANNEL_1,
+      sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+      encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+    }
+    // STREAM_MUSIC
+    let AudioRendererInfo = {
+      content: audio.ContentType.CONTENT_TYPE_MUSIC,
+      usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
+      rendererFlags: 0
+    }
+
+    let AudioRendererOptions = {
+      streamInfo: AudioStreamInfo,
+      rendererInfo: AudioRendererInfo
+    }
+
+    try {
+      let audioRen;
+      await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+        audioRen = data;
+        console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS data state: ' + Object.keys(data));
+        console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS data value: ' + JSON.stringify(data));
+      }).catch((err) => {
+        console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
+      });
+
+      let volumeManager = audio.getAudioManager().getVolumeManager();
+      let flag: boolean = false;
+      let cb = (volumeType: audio.AudioVolumeType) => {
+        console.info("callback activeVolumeTypeChange func execute");
+        expect(volumeType).assertEqual(audio.AudioVolumeType.VOICE_CALL);
+      };
+      try {
+        volumeManager.on('activeVolumeTypeChange', cb);
+        flag = true;
+        expect(flag).assertTrue();
+      } catch (error) {
+        console.info(`on('activeVolumeTypeChange') Fail`);
+        expect(flag).assertTrue();
+      }
+
+      let a = await audioRen.setInterruptMode(1);
+      console.info("AudioFrameworkRenderLog audioRen setInterruptMode(INDEPENDENT_MODE) success");
+
+      await audioRen.start().then(async function () {
+        console.info('AudioFrameworkRenderLog: renderInstant started :SUCCESS ');
+      }).catch((err) => {
+        console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : ' + err.message);
+      });
+      await sleep(1000);
+      // STREAM_VOICE_CALL
+      let AudioRendererInfo_interrupt = {
+        content: audio.ContentType.CONTENT_TYPE_MUSIC,
+        usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
+        rendererFlags: 0
+      }
+
+      let AudioRendererOptions_interrupt = {
+        streamInfo: AudioStreamInfo,
+        rendererInfo: AudioRendererInfo_interrupt
+      }
+
+      let audioRen_interrupt;
+      await audio.createAudioRenderer(AudioRendererOptions_interrupt).then(async function (data) {
+        audioRen_interrupt = data;
+        console.info('AudioFrameworkRenderLog: AudioRender2 Created : Success : Stream Type: SUCCESS data state: ' + Object.keys(data));
+        console.info('AudioFrameworkRenderLog: AudioRender2 Created : Success : Stream Type: SUCCESS data value: ' + JSON.stringify(data));
+      }).catch((err) => {
+        console.info('AudioFrameworkRenderLog: AudioRender2 Created : ERROR : ' + err.message);
+      });
+
+      let b = await audioRen_interrupt.setInterruptMode(1);
+      console.info("AudioFrameworkRenderLog audioRen_interrupt setInterruptMode(INDEPENDENT_MODE) success");
+
+      await audioRen_interrupt.start().then(async function () {
+        console.info('AudioFrameworkRenderLog: renderInstant2 started :SUCCESS ');
+      }).catch((err) => {
+        console.info('AudioFrameworkRenderLog: renderInstant2 start :ERROR : ' + err.message);
+      });
+      await sleep(2000);
+      await audioRen.release();
+      await audioRen_interrupt.release();
+    }
+    catch (error) {
+      console.log("SUB_MULTIMEDIA_AUDIO_RENDERER_INTERUPT_AUDIO_0700 : error = " + error);
+      expect(false).assertTrue();
+    }
+    done();
+  })
+
+    /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_SET_VOLUME_1600
      * @tc.name      : AudioRenderer - setVolume 1 - callback
      * @tc.desc      : AudioRenderer - setVolume 1 - callback

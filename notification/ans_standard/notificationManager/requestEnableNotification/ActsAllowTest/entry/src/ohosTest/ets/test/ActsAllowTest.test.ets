@@ -70,7 +70,7 @@ export default function ActsAllowTest() {
      * @tc.name      : function requestEnableNotification(context): Promise<void>
      * @tc.desc      : requestEnableNotification allow button is clicked
      */
-    it('Sub_Notification_Ans_NotificationManager_RequestEnableNotification_Allow_Test_0100', Level.LEVEL2,
+    it('Sub_Notification_Ans_NotificationManager_RequestEnableNotification_Allow_Test_0100', Level.LEVEL0,
       async (done: () => void) => {
         let fn = async (resolve: () => void, reject: (arg1: Error) => void): Promise<void> => {
           let succeed = succeedGenerator(TAG, resolve, done);
@@ -197,7 +197,7 @@ export default function ActsAllowTest() {
   * @tc.type      : Function test
   * @tc.level     : Level 2
   */
-    it('Sub_Notification_Ces_Subscriber_Subscribe_08086', Level.LEVEL2, async (done: () => void) => {
+    it('Sub_Notification_Ces_Subscriber_Subscribe_08086', Level.LEVEL0, async (done: () => void) => {
 
       // 创建订阅者
       try {

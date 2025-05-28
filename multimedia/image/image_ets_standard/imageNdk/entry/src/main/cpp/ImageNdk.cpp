@@ -25,6 +25,8 @@
 #include <multimedia/image_framework/image/pixelmap_native.h>
 #include <multimedia/image_framework/image/image_packer_native.h>
 #include <multimedia/image_framework/image/image_source_native.h>
+#include <multimedia/image_framework/image/image_common.h>
+#include <multimedia/image_framework/image/picture_native.h>
 
 #undef LOG_DOMAIN
 #undef LOG_TAG
@@ -2486,6 +2488,150 @@ static napi_value PackingOptionsGetNeedsPackProperties(napi_env env, napi_callba
     return result;
 }
 
+static napi_value GetPropertyWithNull(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_get_undefined(env, &result);
+
+    Image_MetadataType metadataType = EXIF_METADATA;
+    const std::string keyString = "ImageWidth";
+ 
+    OH_PictureMetadata *metadataPtr = nullptr;
+    Image_ErrorCode errCode = OH_PictureMetadata_Create(metadataType, &metadataPtr);
+    if (errCode != IMAGE_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "Create PictureMetadata fail, errCode: %{public}d.", errCode);
+        return nullptr;
+    }
+ 
+    Image_String key;
+    key.data = strdup(keyString.c_str());
+    key.size = strlen(key.data);
+    Image_String srcValue;
+    char bufferValue[] = "666";
+    srcValue.data = bufferValue;
+    srcValue.size = strlen(bufferValue);
+    errCode = OH_PictureMetadata_SetProperty(metadataPtr, &key, &srcValue);
+    if (errCode != IMAGE_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "SetProperty fail, errCode: %{public}d.", errCode);
+        return nullptr;
+    }
+ 
+    Image_String dstValue;
+    errCode = OH_PictureMetadata_GetPropertyWithNull(metadataPtr, &key, &dstValue);
+    if (errCode != IMAGE_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "GetPropertyWithNull fail, errCode: %{public}d.", errCode);
+        return nullptr;
+    }
+    if (dstValue.data == nullptr) {
+        OH_LOG_ERROR(LOG_APP, "dstValue.data is nullptr");
+        return nullptr;
+    }
+    if (srcValue.size != dstValue.size) {
+        OH_LOG_ERROR(LOG_APP, "srcValue.size is not equal to dstValue.size");
+        return nullptr;
+    }
+    if (strncmp(srcValue.data, dstValue.data, srcValue.size) != 0) {
+        OH_LOG_ERROR(LOG_APP, "strncmp(srcValue.data, dstValue.data, srcValue.size) is not equal to 0");
+        return nullptr;
+    }
+    
+    errCode = OH_PictureMetadata_Release(metadataPtr);
+    if (errCode != IMAGE_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "Release PictureMetadata fail, errCode: %{public}d.", errCode);
+        return nullptr;
+    }
+    free(key.data);
+    if (dstValue.data != nullptr) {
+        delete[] dstValue.data;
+        dstValue.data = nullptr;
+    }
+    napi_create_int32(env, 0, &result);
+    return result;
+}
+
+static napi_value GetMimeTypeWithNull(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_get_undefined(env, &result);
+
+    OH_PackingOptions *ops = nullptr;
+    char str[10] = "";
+    char str2[10] = "12";
+    Image_MimeType *mimeType = new Image_MimeType();
+    mimeType->data = str;
+    mimeType->size = 0;
+    Image_MimeType *mimeType2 = new Image_MimeType();
+    mimeType2->data = str2;
+    mimeType2->size = 2;
+    Image_ErrorCode errCode = OH_PackingOptions_Create(&ops);
+    if (errCode != IMAGE_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "Create PackingOptions fail, errCode: %{public}d.", errCode);
+        return nullptr;
+    }
+    errCode = OH_PackingOptions_SetMimeType(ops, mimeType2);
+    if (errCode != IMAGE_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "SetMimeType fail, errCode: %{public}d.", errCode);
+        return nullptr;
+    }
+    errCode = OH_PackingOptions_GetMimeTypeWithNull(ops, mimeType);
+    if (errCode != IMAGE_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "GetMimeTypeWithNull fail, errCode: %{public}d.", errCode);
+        return nullptr;
+    }
+    if (mimeType->size != 2) {
+        OH_LOG_ERROR(LOG_APP, "check mimeType fail");
+        return nullptr;
+    }
+    const std::string res(mimeType->data, mimeType->size);
+    if (res != "12") {
+        OH_LOG_ERROR(LOG_APP, "check mimeType fail");
+        return nullptr;
+    }
+    OH_PackingOptions_Release(ops);
+
+    napi_create_int32(env, 0, &result);
+    return result;
+}
+
+static napi_value GetImagePropertyWithNull(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_value argValue[NUM_1] = {0};
+    size_t argCount = NUM_1;
+
+    if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok) {
+        return result;
+    }
+    
+    int32_t fd;
+    napi_get_value_int32(env, argValue[NUM_0], &fd);
+    OH_ImageSourceNative *imageSource = nullptr;
+    Image_ErrorCode errCode = OH_ImageSourceNative_CreateFromFd(fd, &imageSource);
+    if (errCode != IMAGE_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "CreateImageSource failed, errCode: %{public}d.", errCode);
+        napi_create_int32(env, errCode, &result);
+        return result;
+    }
+    Image_String key;
+    Image_String value;
+    key.data = const_cast<char*>(OHOS_IMAGE_PROPERTY_EXIF_VERSION);
+    key.size = strlen(OHOS_IMAGE_PROPERTY_EXIF_VERSION);
+    value.data = nullptr;
+    value.size = 100;
+    errCode = OH_ImageSourceNative_GetImagePropertyWithNull(imageSource, &key, &value);
+    if (errCode != IMAGE_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "CreateImageSource failed, errCode: %{public}d.", errCode);
+        napi_create_int32(env, errCode, &result);
+        return result;
+    }
+    OH_ImageSourceNative_Release(imageSource);
+    if (errCode == IMAGE_SUCCESS) {
+        free(value.data);
+    }
+    napi_create_int32(env, 0, &result);
+    return result;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports) {
     napi_property_descriptor desc[] = {
@@ -2586,7 +2732,10 @@ static napi_value Init(napi_env env, napi_value exports) {
         {"PackingOptionsSetNeedsPackProperties", nullptr, PackingOptionsSetNeedsPackProperties, nullptr, nullptr,
          nullptr, napi_default, nullptr},
         {"PackingOptionsGetNeedsPackProperties", nullptr, PackingOptionsGetNeedsPackProperties, nullptr, nullptr,
-         nullptr, napi_default, nullptr}
+         nullptr, napi_default, nullptr},
+        {"GetPropertyWithNull", nullptr, GetPropertyWithNull, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetMimeTypeWithNull", nullptr, GetMimeTypeWithNull, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetImagePropertyWithNull", nullptr, GetImagePropertyWithNull, nullptr, nullptr, nullptr, napi_default, nullptr}
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;

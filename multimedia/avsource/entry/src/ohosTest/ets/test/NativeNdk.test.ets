@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from "@ohos/hypium"
+import { describe, it, expect, Level } from "@ohos/hypium"
 import native from 'libnativendk.so'
 
 export default function nativeNdkTest() {
@@ -27,7 +27,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsHardware002', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsHardware002', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(1, 1, 1, 0, 1, 1);
         expect(result != null).assertTrue();
@@ -46,7 +46,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsHardware003', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsHardware003', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(2, 1, 1, 0, 1, 1);
       expect(result).assertEqual(-1);
       done();
@@ -60,7 +60,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsHardware004', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsHardware004', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(3, 1, 1, 0, 1, 1);
       expect(result).assertEqual(-1);
       done();
@@ -74,7 +74,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsHardware005', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsHardware005', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(4, 1, 1, 0, 1, 1);
       expect(result).assertEqual(-1);
       done();
@@ -88,7 +88,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsHardware006', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsHardware006', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(5, 1, 1, 0, 1, 1);
       expect(result).assertEqual(-1);
       done();
@@ -102,7 +102,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsHardware007', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsHardware007', Level.LEVEL0, async (done: Function) => {
       try{
         let result: number = native.decodeMainProcess(6, 1, 1, 0, 1, 1);
         expect(result != null).assertTrue();
@@ -121,7 +121,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsHardware008', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsHardware008', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(7, 1, 1, 0, 1, 1);
       expect(result).assertEqual(-1);
       done();
@@ -135,7 +135,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsHardware009', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsHardware009', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(1, 0, 1, 0, 1, 1);
       expect(result).assertEqual(0);
       done();
@@ -149,7 +149,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsHardware010', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsHardware010', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(2, 0, 1, 0, 1, 1);
       expect(result).assertEqual(-1);
       done();
@@ -163,7 +163,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsHardware011', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsHardware011', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(3, 0, 1, 0, 1, 1);
       expect(result).assertEqual(-1);
       done();
@@ -177,7 +177,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsHardware012', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsHardware012', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(4, 0, 1, 0, 1, 1);
       expect(result).assertEqual(-1);
       done();
@@ -191,7 +191,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsHardware013', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsHardware013', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(5, 0, 1, 0, 1, 1);
       expect(result).assertEqual(-1);
       done();
@@ -205,7 +205,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsHardware014', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsHardware014', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(6, 0, 1, 0, 1, 1);
         expect(result != null).assertTrue();
@@ -224,7 +224,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsHardware015', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsHardware015', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(7, 0, 1, 0, 1, 1);
       expect(result).assertEqual(-1);
       done();
@@ -238,7 +238,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsHardware016', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsHardware016', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(1, 1, 0, 0, 1, 1);
       expect(result).assertEqual(-1);
       done();
@@ -252,7 +252,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsHardware017', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsHardware017', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(2, 1, 0, 0, 1, 1);
       expect(result).assertEqual(-1);
       done();
@@ -266,7 +266,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsHardware018', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsHardware018', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(3, 1, 0, 0, 1, 1);
       expect(result).assertEqual(-1);
       done();
@@ -280,7 +280,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsHardware019', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsHardware019', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(4, 1, 0, 0, 1, 1);
       expect(result).assertEqual(-1);
       done();
@@ -294,7 +294,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsHardware020', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsHardware020', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(5, 1, 0, 0, 1, 1);
       expect(result).assertEqual(-1);
       done();
@@ -308,7 +308,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsHardware021', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsHardware021', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(6, 1, 0, 0, 1, 1);
       expect(result).assertEqual(-1);
       done();
@@ -322,7 +322,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsHardware022', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsHardware022', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(7, 1, 0, 0, 1, 1);
       expect(result).assertEqual(-1);
       done();
@@ -336,7 +336,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsHardware023', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsHardware023', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(1, 0, 0, 0, 1, 1);
       expect(result).assertEqual(-1);
       done();
@@ -350,7 +350,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsHardware024', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsHardware024', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(2, 0, 0, 0, 1, 1);
       expect(result).assertEqual(-1);
       done();
@@ -364,7 +364,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsHardware025', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsHardware025', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(3, 0, 0, 0, 1, 1);
       expect(result).assertEqual(-1);
       done();
@@ -378,7 +378,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsHardware026', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsHardware026', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(4, 0, 0, 0, 1, 1);
       expect(result).assertEqual(-1);
       done();
@@ -392,7 +392,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsHardware027', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsHardware027', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(5, 0, 0, 0, 1, 1);
       expect(result).assertEqual(-1);
       done();
@@ -406,7 +406,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsHardware028', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsHardware028', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(6, 0, 0, 0, 1, 1);
       expect(result).assertEqual(-1);
       done();
@@ -420,7 +420,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetName002', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetName002', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(1, 1, 0, 1, 1, 2);
       expect(result).assertEqual(0);
       done();
@@ -434,7 +434,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetName003', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetName003', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(2, 1, 0, 1, 1, 2);
       expect(result).assertEqual(0);
       done();
@@ -448,7 +448,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetName004', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetName004', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(3, 1, 0, 1, 1, 2);
       expect(result).assertEqual(0);
       done();
@@ -462,7 +462,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetName005', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetName005', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(4, 1, 0, 1, 1, 2);
       expect(result).assertEqual(0);
       done();
@@ -476,7 +476,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetName006', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetName006', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(5, 1, 0, 1, 1, 2);
       expect(result).assertEqual(0);
       done();
@@ -490,7 +490,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetName007', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetName007', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(6, 1, 0, 1, 1, 2);
       expect(result).assertEqual(0);
       done();
@@ -504,7 +504,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetName008', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetName008', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(7, 1, 0, 1, 1, 2);
       expect(result).assertEqual(0);
       done();
@@ -518,7 +518,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetName009', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetName009', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(1, 0, 0, 1, 1, 2);
       expect(result).assertEqual(0);
       done();
@@ -532,7 +532,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetName010', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetName010', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(2, 0, 0, 1, 1, 2);
       expect(result).assertEqual(0);
       done();
@@ -546,7 +546,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetName011', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetName011', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(3, 0, 0, 1, 1, 2);
       expect(result).assertEqual(0);
       done();
@@ -560,7 +560,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetName012', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetName012', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(4, 0, 0, 1, 1, 2);
       expect(result).assertEqual(0);
       done();
@@ -574,7 +574,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetName013', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetName013', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(5, 0, 0, 1, 1, 2);
       expect(result).assertEqual(0);
       done();
@@ -588,7 +588,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetName014', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetName014', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(6, 0, 0, 1, 1, 2);
       expect(result).assertEqual(0);
       done();
@@ -602,7 +602,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetName015', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetName015', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(1, 1, 1, 0, 1, 2);
       expect(result).assertEqual(0);
       done();
@@ -616,7 +616,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetName016', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetName016', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(2, 1, 1, 0, 1, 2);
       expect(result).assertEqual(0);
       done();
@@ -630,7 +630,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetName017', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetName017', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(3, 1, 1, 0, 1, 2);
       expect(result).assertEqual(0);
       done();
@@ -644,7 +644,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetName018', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetName018', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(4, 1, 1, 0, 1, 2);
       expect(result).assertEqual(0);
       done();
@@ -658,7 +658,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetName019', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetName019', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(5, 1, 1, 0, 1, 2);
       expect(result).assertEqual(0);
       done();
@@ -672,7 +672,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetName020', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetName020', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(6, 1, 1, 0, 1, 2);
       expect(result).assertEqual(0);
       done();
@@ -686,7 +686,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetName021', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetName021', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(7, 1, 1, 0, 1, 2);
       expect(result).assertEqual(0);
       done();
@@ -700,7 +700,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetName022', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetName022', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(1, 0, 1, 0, 1, 2);
       expect(result).assertEqual(0);
       done();
@@ -714,7 +714,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetName023', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetName023', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(2, 0, 1, 0, 1, 2);
       expect(result).assertEqual(0);
       done();
@@ -728,7 +728,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetName024', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetName024', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(3, 0, 1, 0, 1, 2);
       expect(result).assertEqual(0);
       done();
@@ -742,7 +742,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetName025', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetName025', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(4, 0, 1, 0, 1, 2);
       expect(result).assertEqual(0);
       done();
@@ -756,7 +756,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetName026', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetName026', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(5, 0, 1, 0, 1, 2);
       expect(result).assertEqual(0);
       done();
@@ -770,7 +770,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetName027', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetName027', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(6, 0, 1, 0, 1, 2);
       expect(result).assertEqual(0);
       done();
@@ -784,7 +784,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetName028', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetName028', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(7, 0, 1, 0, 1, 2);
       expect(result).assertEqual(0);
       done();
@@ -798,7 +798,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetName029', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetName029', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(1, 1, 0, 0, 1, 2);
       expect(result).assertEqual(0);
       done();
@@ -812,7 +812,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetName030', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetName030', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(2, 1, 0, 0, 1, 2);
       expect(result).assertEqual(0);
       done();
@@ -826,7 +826,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetName031', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetName031', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(3, 1, 0, 0, 1, 2);
       expect(result).assertEqual(0);
       done();
@@ -840,7 +840,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetName032', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetName032', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(4, 1, 0, 0, 1, 2);
       expect(result).assertEqual(0);
       done();
@@ -854,7 +854,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetName033', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetName033', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(5, 1, 0, 0, 1, 2);
       expect(result).assertEqual(0);
       done();
@@ -868,7 +868,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetName034', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetName034', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(6, 1, 0, 0, 1, 2);
       expect(result).assertEqual(0);
       done();
@@ -882,7 +882,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetName035', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetName035', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(7, 1, 0, 0, 1, 2);
       expect(result).assertEqual(0);
       done();
@@ -896,7 +896,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetName036', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetName036', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(1, 0, 0, 0, 1, 2);
       expect(result).assertEqual(0);
       done();
@@ -910,7 +910,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetName037', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetName037', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(2, 0, 0, 0, 1, 2);
       expect(result).assertEqual(0);
       done();
@@ -924,7 +924,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetName038', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetName038', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(3, 0, 0, 0, 1, 2);
       expect(result).assertEqual(0);
       done();
@@ -938,7 +938,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetName039', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetName039', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(4, 0, 0, 0, 1, 2);
       expect(result).assertEqual(0);
       done();
@@ -952,7 +952,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetName040', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetName040', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(5, 0, 0, 0, 1, 2);
       expect(result).assertEqual(0);
       done();
@@ -966,7 +966,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetName041', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetName041', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(6, 0, 0, 0, 1, 2);
       expect(result).assertEqual(0);
       done();
@@ -980,7 +980,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetName042', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetName042', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(7, 0, 0, 0, 1, 2);
       expect(result).assertEqual(0);
       done();
@@ -994,7 +994,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetMaxSupportedInstances002', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetMaxSupportedInstances002', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(1, 1, 0, 1, 1, 3);
       expect(result).assertEqual(0);
       done();
@@ -1008,7 +1008,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetMaxSupportedInstances003', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetMaxSupportedInstances003', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(2, 1, 0, 1, 1, 3);
       expect(result).assertEqual(0);
       done();
@@ -1022,7 +1022,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetMaxSupportedInstances004', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetMaxSupportedInstances004', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(3, 1, 0, 1, 1, 3);
       expect(result).assertEqual(0);
       done();
@@ -1036,7 +1036,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetMaxSupportedInstances005', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetMaxSupportedInstances005', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(4, 1, 0, 1, 1, 3);
       expect(result).assertEqual(0);
       done();
@@ -1050,7 +1050,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetMaxSupportedInstances006', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetMaxSupportedInstances006', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(5, 1, 0, 1, 1, 3);
       expect(result).assertEqual(0);
       done();
@@ -1064,7 +1064,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetMaxSupportedInstances007', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetMaxSupportedInstances007', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(6, 1, 0, 1, 1, 3);
       expect(result).assertEqual(0);
       done();
@@ -1078,7 +1078,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetMaxSupportedInstances008', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetMaxSupportedInstances008', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(7, 1, 0, 1, 1, 3);
       expect(result).assertEqual(0);
       done();
@@ -1092,7 +1092,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetMaxSupportedInstances009', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetMaxSupportedInstances009', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(7, 0, 0, 1, 1, 3);
       expect(result).assertEqual(0);
       done();
@@ -1106,7 +1106,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetMaxSupportedInstances010', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetMaxSupportedInstances010', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(2, 0, 0, 1, 1, 3);
       expect(result).assertEqual(0);
       done();
@@ -1120,7 +1120,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetMaxSupportedInstances011', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetMaxSupportedInstances011', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(3, 0, 0, 1, 1, 3);
       expect(result).assertEqual(0);
       done();
@@ -1134,7 +1134,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetMaxSupportedInstances012', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetMaxSupportedInstances012', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(4, 0, 0, 1, 1, 3);
       expect(result).assertEqual(0);
       done();
@@ -1148,7 +1148,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetMaxSupportedInstances013', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetMaxSupportedInstances013', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(5, 0, 0, 1, 1, 3);
       expect(result).assertEqual(0);
       done();
@@ -1162,7 +1162,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetMaxSupportedInstances014', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetMaxSupportedInstances014', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(6, 0, 0, 1, 1, 3);
       expect(result).assertEqual(0);
       done();
@@ -1176,7 +1176,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetMaxSupportedInstances015', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetMaxSupportedInstances015', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(1, 1, 1, 0, 1, 3);
       expect(result).assertEqual(0);
       done();
@@ -1190,7 +1190,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetMaxSupportedInstances016', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetMaxSupportedInstances016', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(2, 1, 1, 0, 1, 3);
       expect(result).assertEqual(0);
       done();
@@ -1204,7 +1204,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetMaxSupportedInstances017', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetMaxSupportedInstances017', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(3, 1, 1, 0, 1, 3);
       expect(result).assertEqual(0);
       done();
@@ -1218,7 +1218,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetMaxSupportedInstances018', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetMaxSupportedInstances018', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(4, 1, 1, 0, 1, 3);
       expect(result).assertEqual(0);
       done();
@@ -1232,7 +1232,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetMaxSupportedInstances019', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetMaxSupportedInstances019', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(5, 1, 1, 0, 1, 3);
       expect(result).assertEqual(0);
       done();
@@ -1246,7 +1246,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetMaxSupportedInstances020', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetMaxSupportedInstances020', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(6, 1, 1, 0, 1, 3);
       expect(result).assertEqual(0);
       done();
@@ -1260,7 +1260,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetMaxSupportedInstances021', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetMaxSupportedInstances021', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(7, 1, 1, 0, 1, 3);
       expect(result).assertEqual(0);
       done();
@@ -1274,7 +1274,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetMaxSupportedInstances022', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetMaxSupportedInstances022', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(1, 0, 0, 0, 1, 3);
       expect(result).assertEqual(0);
       done();
@@ -1288,7 +1288,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetMaxSupportedInstances023', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetMaxSupportedInstances023', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(2, 0, 0, 0, 1, 3);
       expect(result).assertEqual(0);
       done();
@@ -1302,7 +1302,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetMaxSupportedInstances024', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetMaxSupportedInstances024', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(3, 0, 0, 0, 1, 3);
       expect(result).assertEqual(0);
       done();
@@ -1316,7 +1316,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetMaxSupportedInstances025', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetMaxSupportedInstances025', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(4, 0, 0, 0, 1, 3);
       expect(result).assertEqual(0);
       done();
@@ -1330,7 +1330,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetMaxSupportedInstances026', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetMaxSupportedInstances026', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(5, 0, 0, 0, 1, 3);
       expect(result).assertEqual(0);
       done();
@@ -1344,7 +1344,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetMaxSupportedInstances027', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetMaxSupportedInstances027', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(6, 0, 0, 0, 1, 3);
       expect(result).assertEqual(0);
       done();
@@ -1358,7 +1358,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetMaxSupportedInstances028', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetMaxSupportedInstances028', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(7, 0, 0, 0, 1, 3);
       expect(result).assertEqual(0);
       done();
@@ -1372,7 +1372,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetMaxSupportedInstances029', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetMaxSupportedInstances029', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(1, 1, 0, 0, 1, 3);
       expect(result).assertEqual(0);
       done();
@@ -1386,7 +1386,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetMaxSupportedInstances030', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetMaxSupportedInstances030', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(2, 1, 0, 0, 1, 3);
       expect(result).assertEqual(0);
       done();
@@ -1400,7 +1400,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetMaxSupportedInstances031', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetMaxSupportedInstances031', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(3, 1, 0, 0, 1, 3);
       expect(result).assertEqual(0);
       done();
@@ -1414,7 +1414,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetMaxSupportedInstances032', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetMaxSupportedInstances032', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(4, 1, 0, 0, 1, 3);
       expect(result).assertEqual(0);
       done();
@@ -1428,7 +1428,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetMaxSupportedInstances033', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetMaxSupportedInstances033', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(5, 1, 0, 0, 1, 3);
       expect(result).assertEqual(0);
       done();
@@ -1442,7 +1442,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetMaxSupportedInstances034', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetMaxSupportedInstances034', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(6, 1, 0, 0, 1, 3);
       expect(result).assertEqual(0);
       done();
@@ -1456,7 +1456,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetMaxSupportedInstances035', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetMaxSupportedInstances035', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(7, 1, 0, 0, 1, 3);
       expect(result).assertEqual(0);
       done();
@@ -1470,7 +1470,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetMaxSupportedInstances036', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetMaxSupportedInstances036', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(1, 0, 1, 0, 1, 3);
       expect(result).assertEqual(0);
       done();
@@ -1484,7 +1484,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetMaxSupportedInstances037', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetMaxSupportedInstances037', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(2, 0, 1, 0, 1, 3);
       expect(result).assertEqual(0);
       done();
@@ -1498,7 +1498,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetMaxSupportedInstances038', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetMaxSupportedInstances038', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(3, 0, 1, 0, 1, 3);
       expect(result).assertEqual(0);
       done();
@@ -1512,7 +1512,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetMaxSupportedInstances039', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetMaxSupportedInstances039', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(4, 0, 1, 0, 1, 3);
       expect(result).assertEqual(0);
       done();
@@ -1526,7 +1526,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetMaxSupportedInstances040', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetMaxSupportedInstances040', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(5, 0, 1, 0, 1, 3);
       expect(result).assertEqual(0);
       done();
@@ -1540,7 +1540,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetMaxSupportedInstances041', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetMaxSupportedInstances041', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(6, 0, 1, 0, 1, 3);
       expect(result).assertEqual(0);
       done();
@@ -1554,7 +1554,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetMaxSupportedInstances042', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetMaxSupportedInstances042', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(7, 0, 1, 0, 1, 3);
       expect(result).assertEqual(0);
       done();
@@ -1568,7 +1568,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderBitrateRange002', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderBitrateRange002', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(2, 1, 1, 0, 1, 4);
       expect(result).assertEqual(-1);
       done();
@@ -1582,7 +1582,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderBitrateRange003', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderBitrateRange003', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(3, 1, 1, 0, 1, 4);
       expect(result).assertEqual(-1);
       done();
@@ -1596,7 +1596,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderBitrateRange004', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderBitrateRange004', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(4, 1, 1, 0, 1, 4);
       expect(result).assertEqual(-1);
       done();
@@ -1610,7 +1610,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderBitrateRange005', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderBitrateRange005', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(5, 1, 1, 0, 1, 4);
       expect(result).assertEqual(-1);
       done();
@@ -1624,7 +1624,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderBitrateRange006', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderBitrateRange006', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(6, 1, 1, 0, 1, 4);
         expect(result != null).assertTrue();
@@ -1643,7 +1643,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderBitrateRange007', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderBitrateRange007', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(7, 1, 1, 0, 1, 4);
       expect(result).assertEqual(-1);
       done();
@@ -1657,7 +1657,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderBitrateRange008', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderBitrateRange008', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(1, 1, 0, 0, 1, 4);
         expect(result != null).assertTrue();
@@ -1676,7 +1676,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderBitrateRange009', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderBitrateRange009', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(2, 1, 0, 0, 1, 4);
       expect(result).assertEqual(0);
       done();
@@ -1690,7 +1690,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderBitrateRange010', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderBitrateRange010', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(3, 1, 0, 0, 1, 4);
       expect(result).assertEqual(0);
       done();
@@ -1704,7 +1704,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderBitrateRange011', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderBitrateRange011', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(4, 1, 0, 0, 1, 4);
       expect(result).assertEqual(-1);
       done();
@@ -1718,7 +1718,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderBitrateRange012', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderBitrateRange012', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(5, 1, 0, 0, 1, 4);
       expect(result).assertEqual(0);
       done();
@@ -1732,7 +1732,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderBitrateRange013', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderBitrateRange013', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(6, 1, 0, 0, 1, 4);
       expect(result).assertEqual(-1);
       done();
@@ -1746,7 +1746,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderBitrateRange014', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderBitrateRange014', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(7, 1, 0, 0, 1, 4);
       expect(result).assertEqual(-1);
       done();
@@ -1760,7 +1760,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderBitrateRange015', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderBitrateRange015', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(7, 1, 0, 0, 1, 5);
       expect(result).assertEqual(0);
       done();
@@ -1774,7 +1774,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderBitrateRange016', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderBitrateRange016', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(1, 1, 1, 1, 1, 4);
         expect(result != null).assertTrue();
@@ -1793,7 +1793,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderBitrateRange017', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderBitrateRange017', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(2, 1, 1, 1, 1, 4);
       expect(result).assertEqual(0);
       done();
@@ -1807,7 +1807,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderBitrateRange018', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderBitrateRange018', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(3, 1, 1, 1, 1, 4);
       expect(result).assertEqual(0);
       done();
@@ -1821,7 +1821,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderBitrateRange019', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderBitrateRange019', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(4, 1, 1, 1, 1, 4);
       expect(result).assertEqual(-1);
       done();
@@ -1835,7 +1835,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderBitrateRange020', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderBitrateRange020', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(5, 1, 1, 1, 1, 4);
       expect(result).assertEqual(0);
       done();
@@ -1849,7 +1849,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderBitrateRange021', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderBitrateRange021', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(6, 1, 1, 1, 1, 4);
         expect(result != null).assertTrue();
@@ -1868,7 +1868,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderBitrateRange022', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderBitrateRange022', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(7, 1, 1, 1, 1, 4);
       expect(result).assertEqual(-1);
       done();
@@ -1882,7 +1882,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetEncoderBitrateRange023', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetEncoderBitrateRange023', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(7, 1, 1, 1, 1, 5);
       expect(result).assertEqual(0);
       done();
@@ -1896,7 +1896,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported002', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported002', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(2, 1, 0, 1, 1, 6);
       expect(result).assertEqual(-1);
       done();
@@ -1910,7 +1910,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported003', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported003', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(3, 1, 0, 1, 1, 6);
       expect(result).assertEqual(-1);
       done();
@@ -1924,7 +1924,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported004', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported004', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(4, 1, 0, 1, 1, 6);
       expect(result).assertEqual(-1);
       done();
@@ -1938,7 +1938,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported005', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported005', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(5, 1, 0, 1, 1, 6);
       expect(result).assertEqual(-1);
       done();
@@ -1952,7 +1952,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported006', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported006', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(6, 1, 0, 1, 1, 6);
         expect(result != null).assertTrue();
@@ -1971,7 +1971,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported007', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported007', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(7, 1, 0, 1, 1, 6);
       expect(result).assertEqual(-1);
       done();
@@ -1985,7 +1985,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported008', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported008', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(1, 1, 0, 1, 1, 7);
         expect(result != null).assertTrue();
@@ -2004,7 +2004,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported009', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported009', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(2, 1, 0, 1, 1, 7);
       expect(result).assertEqual(-1);
       done();
@@ -2018,7 +2018,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported010', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported010', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(3, 1, 0, 1, 1, 7);
       expect(result).assertEqual(-1);
       done();
@@ -2032,7 +2032,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported011', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported011', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(4, 1, 0, 1, 1, 7);
       expect(result).assertEqual(-1);
       done();
@@ -2046,7 +2046,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported012', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported012', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(5, 1, 0, 1, 1, 7);
       expect(result).assertEqual(-1);
       done();
@@ -2060,7 +2060,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported013', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported013', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(6, 1, 0, 1, 1, 7);
         expect(result != null).assertTrue();
@@ -2079,7 +2079,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported014', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported014', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(7, 1, 0, 1, 1, 7);
       expect(result).assertEqual(-1);
       done();
@@ -2093,7 +2093,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported015', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported015', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(1, 1, 0, 1, 1, 8);
         expect(result != null).assertTrue();
@@ -2112,7 +2112,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported016', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported016', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(2, 1, 0, 1, 1, 8);
       expect(result).assertEqual(-1);
       done();
@@ -2126,7 +2126,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported017', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported017', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(3, 1, 0, 1, 1, 8);
       expect(result).assertEqual(-1);
       done();
@@ -2140,7 +2140,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported018', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported018', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(4, 1, 0, 1, 1, 8);
       expect(result).assertEqual(-1);
       done();
@@ -2154,7 +2154,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported019', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported019', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(5, 1, 0, 1, 1, 8);
       expect(result).assertEqual(-1);
       done();
@@ -2168,7 +2168,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported020', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported020', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(6, 1, 0, 1, 1, 8);
         expect(result != null).assertTrue();
@@ -2187,7 +2187,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported021', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported021', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(7, 1, 0, 1, 1, 8);
       expect(result).assertEqual(-1);
       done();
@@ -2201,7 +2201,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported022', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported022', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(1, 1, 0, 0, 1, 6);
         expect(result != null).assertTrue();
@@ -2220,7 +2220,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported023', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported023', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(2, 1, 0, 0, 1, 6);
       expect(result).assertEqual(-1);
       done();
@@ -2234,7 +2234,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported024', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported024', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(3, 1, 0, 0, 1, 6);
       expect(result).assertEqual(-1);
       done();
@@ -2248,7 +2248,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported025', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported025', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(7, 1, 1, 0, 1, 8);
       expect(result).assertEqual(-1);
       done();
@@ -2262,7 +2262,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported026', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported026', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(4, 1, 0, 0, 1, 6);
       expect(result).assertEqual(-1);
       done();
@@ -2276,7 +2276,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported027', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported027', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(5, 1, 0, 0, 1, 6);
       expect(result).assertEqual(-1);
       done();
@@ -2290,7 +2290,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported028', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported028', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(6, 1, 0, 0, 1, 6);
       expect(result).assertEqual(-1);
       done();
@@ -2304,7 +2304,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported029', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported029', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(7, 1, 0, 0, 1, 6);
       expect(result).assertEqual(-1);
       done();
@@ -2318,7 +2318,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported030', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported030', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(1, 1, 1, 0, 1, 6);
         expect(result != null).assertTrue();
@@ -2337,7 +2337,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported031', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported031', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(2, 1, 1, 0, 1, 6);
       expect(result).assertEqual(-1);
       done();
@@ -2351,7 +2351,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported032', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported032', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(3, 1, 1, 0, 1, 6);
       expect(result).assertEqual(-1);
       done();
@@ -2365,7 +2365,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported033', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported033', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(4, 1, 1, 0, 1, 6);
       expect(result).assertEqual(-1);
       done();
@@ -2379,7 +2379,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported034', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported034', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(5, 1, 1, 0, 1, 6);
       expect(result).assertEqual(-1);
       done();
@@ -2393,7 +2393,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported035', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported035', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(6, 1, 1, 0, 1, 6);
         expect(result != null).assertTrue();
@@ -2412,7 +2412,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported036', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported036', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(7, 1, 1, 0, 1, 6);
       expect(result).assertEqual(-1);
       done();
@@ -2426,7 +2426,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported037', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported037', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(1, 1, 0, 0, 1, 7);
         expect(result != null).assertTrue();
@@ -2445,7 +2445,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported038', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported038', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(2, 1, 0, 0, 1, 7);
       expect(result).assertEqual(-1);
       done();
@@ -2459,7 +2459,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported039', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported039', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(3, 1, 0, 0, 1, 7);
       expect(result).assertEqual(-1);
       done();
@@ -2473,7 +2473,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported040', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported040', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(4, 1, 0, 0, 1, 7);
       expect(result).assertEqual(-1);
       done();
@@ -2487,7 +2487,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported041', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported041', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(5, 1, 0, 0, 1, 7);
       expect(result).assertEqual(-1);
       done();
@@ -2501,7 +2501,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported042', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported042', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(6, 1, 0, 0, 1, 7);
       expect(result).assertEqual(-1);
       done();
@@ -2515,7 +2515,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported043', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported043', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(7, 1, 0, 0, 1, 7);
       expect(result).assertEqual(-1);
       done();
@@ -2529,7 +2529,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported044', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported044', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(1, 1, 1, 0, 1, 7);
         expect(result != null).assertTrue();
@@ -2548,7 +2548,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported045', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported045', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(2, 1, 1, 0, 1, 7);
       expect(result).assertEqual(-1);
       done();
@@ -2562,7 +2562,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported046', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported046', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(3, 1, 1, 0, 1, 7);
       expect(result).assertEqual(-1);
       done();
@@ -2576,7 +2576,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported047', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported047', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(4, 1, 1, 0, 1, 7);
       expect(result).assertEqual(-1);
       done();
@@ -2590,7 +2590,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported048', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported048', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(5, 1, 1, 0, 1, 7);
       expect(result).assertEqual(-1);
       done();
@@ -2604,7 +2604,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported049', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported049', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(6, 1, 1, 0, 1, 7);
         expect(result != null).assertTrue();
@@ -2623,7 +2623,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported050', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported050', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(7, 1, 1, 0, 1, 7);
       expect(result).assertEqual(-1);
       done();
@@ -2637,7 +2637,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported051', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported051', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(1, 1, 0, 0, 1, 8);
         expect(result != null).assertTrue();
@@ -2656,7 +2656,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported052', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported052', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(2, 1, 0, 0, 1, 8);
       expect(result).assertEqual(-1);
       done();
@@ -2671,7 +2671,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported055', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported055', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(5, 1, 0, 0, 1, 8);
       expect(result).assertEqual(-1);
       done();
@@ -2685,7 +2685,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported056', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported056', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(6, 1, 0, 0, 1, 8);
       expect(result).assertEqual(-1);
       done();
@@ -2699,7 +2699,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported057', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported057', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(7, 1, 0, 0, 1, 8);
       expect(result).assertEqual(-1);
       done();
@@ -2713,7 +2713,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported058', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported058', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(1, 1, 1, 0, 1, 8);
         expect(result != null).assertTrue();
@@ -2732,7 +2732,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported059', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported059', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(2, 1, 1, 0, 1, 8);
       expect(result).assertEqual(-1);
       done();
@@ -2746,7 +2746,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported060', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported060', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(3, 1, 1, 0, 1, 8);
       expect(result).assertEqual(-1);
       done();
@@ -2760,7 +2760,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported061', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported061', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(4, 1, 1, 0, 1, 8);
       expect(result).assertEqual(-1);
       done();
@@ -2774,7 +2774,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported062', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported062', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(5, 1, 1, 0, 1, 8);
       expect(result).assertEqual(-1);
       done();
@@ -2788,7 +2788,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityIsEncoderBitrateModeSupported063', 0, async (done: Function) => {
+    it('testOHAvCapabilityIsEncoderBitrateModeSupported063', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(6, 1, 1, 0, 1, 8);
         expect(result != null).assertTrue();
@@ -2807,7 +2807,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetVideoWidthRangeForHeight002', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetVideoWidthRangeForHeight002', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(1, 1, 1, 0, 1, 9);
         expect(result != null).assertTrue();
@@ -2826,7 +2826,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetVideoWidthRangeForHeight003', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetVideoWidthRangeForHeight003', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(6, 1, 1, 0, 1, 9);
         expect(result != null).assertTrue();
@@ -2845,7 +2845,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetVideoWidthRangeForHeight004', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetVideoWidthRangeForHeight004', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(7, 1, 1, 0, 1, 9);
       expect(result).assertEqual(-1);
       done();
@@ -2859,7 +2859,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetVideoWidthRangeForHeight005', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetVideoWidthRangeForHeight005', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(1, 0, 1, 0, 1, 9);
       expect(result).assertEqual(0);
       done();
@@ -2873,7 +2873,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetVideoWidthRangeForHeight006', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetVideoWidthRangeForHeight006', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(6, 0, 1, 0, 1, 9);
         expect(result != null).assertTrue();
@@ -2892,7 +2892,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetVideoWidthRangeForHeight007', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetVideoWidthRangeForHeight007', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(7, 0, 1, 0, 1, 9);
       expect(result).assertEqual(-1);
       done();
@@ -2906,7 +2906,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetVideoWidthRangeForHeight008', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetVideoWidthRangeForHeight008', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(1, 1, 0, 0, 1, 9);
         expect(result != null).assertTrue();
@@ -2925,7 +2925,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetVideoWidthRangeForHeight009', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetVideoWidthRangeForHeight009', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(6, 1, 0, 0, 1, 9);
       expect(result).assertEqual(-1);
       done();
@@ -2939,7 +2939,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetVideoWidthRangeForHeight010', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetVideoWidthRangeForHeight010', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(7, 1, 0, 0, 1, 9);
       expect(result).assertEqual(-1);
       done();
@@ -2953,7 +2953,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetVideoWidthRangeForHeight011', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetVideoWidthRangeForHeight011', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(6, 0, 0, 0, 1, 9);
         expect(result != null).assertTrue();
@@ -2972,7 +2972,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetVideoWidthRangeForHeight012', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetVideoWidthRangeForHeight012', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(7, 0, 0, 0, 1, 9);
         expect(result != null).assertTrue();
@@ -2991,7 +2991,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetVideoWidthRangeForHeight013', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetVideoWidthRangeForHeight013', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(6, 0, 0, 0, 1, 10);
       expect(result).assertEqual(0);
       done();
@@ -3005,7 +3005,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetVideoWidthRangeForHeight014', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetVideoWidthRangeForHeight014', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(1, 1, 0, 1, 1, 9);
         expect(result != null).assertTrue();
@@ -3024,7 +3024,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetVideoWidthRangeForHeight015', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetVideoWidthRangeForHeight015', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(6, 1, 0, 1, 1, 9);
         expect(result != null).assertTrue();
@@ -3043,7 +3043,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetVideoWidthRangeForHeight016', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetVideoWidthRangeForHeight016', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(7, 1, 0, 1, 1, 9);
       expect(result).assertEqual(-1);
       done();
@@ -3057,7 +3057,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetVideoWidthRangeForHeight017', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetVideoWidthRangeForHeight017', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(1, 0, 0, 1, 1, 9);
       expect(result).assertEqual(0);
       done();
@@ -3071,7 +3071,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetVideoWidthRangeForHeight018', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetVideoWidthRangeForHeight018', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(6, 0, 0, 1, 1, 9);
         expect(result != null).assertTrue();
@@ -3090,7 +3090,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetVideoWidthRangeForHeight019', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetVideoWidthRangeForHeight019', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(7, 0, 0, 1, 1, 9);
         expect(result != null).assertTrue();
@@ -3109,7 +3109,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetVideoWidthRangeForHeight020', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetVideoWidthRangeForHeight020', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(7, 0, 0, 1, 1, 10);
       expect(result).assertEqual(0);
       done();
@@ -3123,7 +3123,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetVideoHeightRangeForWidth002', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetVideoHeightRangeForWidth002', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(1, 1, 1, 0, 1, 11);
         expect(result != null).assertTrue();
@@ -3142,7 +3142,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetVideoHeightRangeForWidth003', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetVideoHeightRangeForWidth003', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(6, 1, 1, 0, 1, 11);
         expect(result != null).assertTrue();
@@ -3161,7 +3161,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetVideoHeightRangeForWidth004', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetVideoHeightRangeForWidth004', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(7, 1, 1, 0, 1, 11);
       expect(result).assertEqual(-1);
       done();
@@ -3175,7 +3175,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetVideoHeightRangeForWidth005', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetVideoHeightRangeForWidth005', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(1, 0, 1, 0, 1, 11);
       expect(result).assertEqual(0);
       done();
@@ -3189,7 +3189,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetVideoHeightRangeForWidth006', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetVideoHeightRangeForWidth006', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(6, 0, 1, 0, 1, 11);
         expect(result != null).assertTrue();
@@ -3208,7 +3208,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetVideoHeightRangeForWidth007', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetVideoHeightRangeForWidth007', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(7, 0, 1, 0, 1, 11);
       expect(result).assertEqual(-1);
       done();
@@ -3222,7 +3222,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetVideoHeightRangeForWidth008', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetVideoHeightRangeForWidth008', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(1, 0, 0, 0, 1, 11);
         expect(result != null).assertTrue();
@@ -3241,7 +3241,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetVideoHeightRangeForWidth009', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetVideoHeightRangeForWidth009', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(6, 0, 0, 0, 1, 11);
         expect(result != null).assertTrue();
@@ -3260,7 +3260,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetVideoHeightRangeForWidth010', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetVideoHeightRangeForWidth010', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(7, 0, 0, 0, 1, 11);
         expect(result != null).assertTrue();
@@ -3279,7 +3279,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetVideoHeightRangeForWidth011', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetVideoHeightRangeForWidth011', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(1, 1, 0, 0, 1, 11);
         expect(result != null).assertTrue();
@@ -3298,7 +3298,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetVideoHeightRangeForWidth012', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetVideoHeightRangeForWidth012', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(6, 1, 0, 0, 1, 11);
       expect(result).assertEqual(-1);
       done();
@@ -3312,7 +3312,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetVideoHeightRangeForWidth013', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetVideoHeightRangeForWidth013', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(7, 1, 0, 0, 1, 11);
       expect(result).assertEqual(-1);
       done();
@@ -3326,7 +3326,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetVideoHeightRangeForWidth014', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetVideoHeightRangeForWidth014', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(6, 1, 0, 1, 1, 11);
         expect(result != null).assertTrue();
@@ -3345,7 +3345,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetVideoHeightRangeForWidth015', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetVideoHeightRangeForWidth015', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(7, 1, 0, 1, 1, 11);
       expect(result).assertEqual(-1);
       done();
@@ -3359,7 +3359,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetVideoHeightRangeForWidth016', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetVideoHeightRangeForWidth016', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(1, 0, 0, 1, 1, 11);
       expect(result).assertEqual(0);
       done();
@@ -3373,7 +3373,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetVideoHeightRangeForWidth017', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetVideoHeightRangeForWidth017', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(6, 0, 0, 1, 1, 11);
         expect(result != null).assertTrue();
@@ -3392,7 +3392,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetVideoHeightRangeForWidth018', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetVideoHeightRangeForWidth018', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(7, 0, 0, 1, 1, 11);
         expect(result != null).assertTrue();
@@ -3411,7 +3411,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetVideoHeightRangeForWidth019', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetVideoHeightRangeForWidth019', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(1, 0, 0, 1, 1, 12);
       expect(result).assertEqual(0);
       done();
@@ -3425,7 +3425,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityGetVideoHeightRangeForWidth020', 0, async (done: Function) => {
+    it('testOHAvCapabilityGetVideoHeightRangeForWidth020', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(7, 1, 0, 0, 1, 12);
       expect(result).assertEqual(0);
       done();
@@ -3439,7 +3439,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported002', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported002', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(1,1,0,1,1,13);
         expect(result != null).assertTrue();
@@ -3458,7 +3458,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported003', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported003', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(2,1,0,1,1,13);
       expect(result).assertEqual(-1);
       done();
@@ -3472,7 +3472,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported004', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported004', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(3,1,0,1,1,13);
       expect(result).assertEqual(-1);
       done();
@@ -3486,7 +3486,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported005', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported005', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(4,1,0,1,1,13);
       expect(result).assertEqual(-1);
       done();
@@ -3500,7 +3500,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported006', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported006', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(5,1,0,1,1,13);
       expect(result).assertEqual(-1);
       done();
@@ -3514,7 +3514,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported007', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported007', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(6,1,0,1,1,13);
         expect(result != null).assertTrue();
@@ -3533,7 +3533,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported008', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported008', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(7,1,0,1,1,13);
       expect(result).assertEqual(-1);
       done();
@@ -3547,7 +3547,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported009', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported009', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(4,0,0,1,1,13);
       expect(result).assertEqual(-1);
       done();
@@ -3561,7 +3561,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported010', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported010', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(2,0,0,1,1,13);
       expect(result).assertEqual(-1);
       done();
@@ -3575,7 +3575,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported011', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported011', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(3,0,0,1,1,13);
       expect(result).assertEqual(-1);
       done();
@@ -3589,7 +3589,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported012', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported012', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(5,0,0,1,1,13);
       expect(result).assertEqual(-1);
       done();
@@ -3603,7 +3603,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported013', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported013', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(6,0,0,1,1,13);
         expect(result != null).assertTrue();
@@ -3622,7 +3622,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported014', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported014', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(7,0,0,1,1,13);
         expect(result != null).assertTrue();
@@ -3641,7 +3641,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported015', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported015', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(1,1,0,1,1,14);
         expect(result != null).assertTrue();
@@ -3660,7 +3660,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported016', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported016', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(2,1,0,1,1,14);
       expect(result).assertEqual(-1);
       done();
@@ -3674,7 +3674,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported017', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported017', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(3,1,0,1,1,14);
       expect(result).assertEqual(-1);
       done();
@@ -3688,7 +3688,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported018', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported018', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(4,1,0,1,1,14);
       expect(result).assertEqual(-1);
       done();
@@ -3702,7 +3702,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported019', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported019', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(5,1,0,1,1,14);
       expect(result).assertEqual(-1);
       done();
@@ -3716,7 +3716,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported020', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported020', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(6,1,0,1,1,14);
       expect(result).assertEqual(-1);
       done();
@@ -3730,7 +3730,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported021', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported021', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(7,1,0,1,1,14);
       expect(result).assertEqual(-1);
       done();
@@ -3744,7 +3744,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported022', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported022', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(1,0,0,1,1,14);
       expect(result).assertEqual(0);
       done();
@@ -3758,7 +3758,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported023', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported023', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(2,0,0,1,1,14);
       expect(result).assertEqual(-1);
       done();
@@ -3772,7 +3772,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported024', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported024', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(7,0,0,0,1,15);
       expect(result).assertEqual(-1);
       done();
@@ -3786,7 +3786,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported025', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported025', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(3,0,0,1,1,14);
       expect(result).assertEqual(-1);
       done();
@@ -3800,7 +3800,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported026', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported026', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(4,0,0,1,1,14);
       expect(result).assertEqual(-1);
       done();
@@ -3814,7 +3814,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported027', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported027', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(5,0,0,1,1,14);
       expect(result).assertEqual(-1);
       done();
@@ -3828,7 +3828,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported028', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported028', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(6,0,0,1,1,14);
       expect(result).assertEqual(-1);
       done();
@@ -3842,7 +3842,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported029', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported029', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(7,0,0,1,1,14);
       expect(result).assertEqual(-1);
       done();
@@ -3856,7 +3856,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported030', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported030', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(1,1,0,1,1,15);
         expect(result != null).assertTrue();
@@ -3875,7 +3875,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported031', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported031', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(2,1,0,1,1,15);
       expect(result).assertEqual(-1);
       done();
@@ -3889,7 +3889,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported032', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported032', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(3,1,0,1,1,15);
       expect(result).assertEqual(-1);
       done();
@@ -3903,7 +3903,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported033', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported033', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(4,1,0,1,1,15);
       expect(result).assertEqual(-1);
       done();
@@ -3917,7 +3917,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported034', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported034', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(5,1,0,1,1,15);
       expect(result).assertEqual(-1);
       done();
@@ -3931,7 +3931,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported035', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported035', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(6,1,0,1,1,15);
       expect(result).assertEqual(-1);
       done();
@@ -3945,7 +3945,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported036', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported036', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(7,1,0,1,1,15);
       expect(result).assertEqual(-1);
       done();
@@ -3959,7 +3959,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported037', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported037', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(1,0,0,1,1,15);
       expect(result).assertEqual(0);
       done();
@@ -3974,7 +3974,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported038', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported038', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(2,0,0,1,1,15);
       expect(result).assertEqual(-1);
       done();
@@ -3988,7 +3988,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported039', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported039', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(3,0,0,1,1,15);
       expect(result).assertEqual(-1);
       done();
@@ -4002,7 +4002,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported040', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported040', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(4,0,0,1,1,15);
       expect(result).assertEqual(-1);
       done();
@@ -4016,7 +4016,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported041', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported041', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(5,0,0,1,1,15);
       expect(result).assertEqual(-1);
       done();
@@ -4030,7 +4030,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported042', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported042', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(6,0,0,1,1,15);
       expect(result).assertEqual(-1);
       done();
@@ -4044,7 +4044,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported043', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported043', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(7,0,0,1,1,15);
       expect(result).assertEqual(-1);
       done();
@@ -4058,7 +4058,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported044', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported044', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(1,1,1,0,1,13);
         expect(result != null).assertTrue();
@@ -4077,7 +4077,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported045', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported045', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(2,1,1,0,1,13);
       expect(result).assertEqual(-1);
       done();
@@ -4091,7 +4091,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported046', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported046', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(3,1,1,0,1,13);
       expect(result).assertEqual(-1);
       done();
@@ -4105,7 +4105,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported047', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported047', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(4,1,1,0,1,13);
       expect(result).assertEqual(-1);
       done();
@@ -4119,7 +4119,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported048', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported048', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(5,1,1,0,1,13);
       expect(result).assertEqual(-1);
       done();
@@ -4133,7 +4133,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported049', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported049', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(6,1,1,0,1,13);
         expect(result != null).assertTrue();
@@ -4152,7 +4152,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported050', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported050', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(7,1,1,0,1,13);
       expect(result).assertEqual(-1);
       done();
@@ -4166,7 +4166,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported051', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported051', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(1,1,0,0,1,13);
         expect(result != null).assertTrue();
@@ -4185,7 +4185,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported052', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported052', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(2,1,0,0,1,13);
       expect(result).assertEqual(-1);
       done();
@@ -4199,7 +4199,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported053', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported053', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(3,1,0,0,1,13);
       expect(result).assertEqual(-1);
       done();
@@ -4213,7 +4213,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported054', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported054', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(4,1,0,0,1,13);
       expect(result).assertEqual(-1);
       done();
@@ -4227,7 +4227,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported055', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported055', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(5,1,0,0,1,13);
       expect(result).assertEqual(-1);
       done();
@@ -4241,7 +4241,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported056', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported056', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(6,1,0,0,1,13);
       expect(result).assertEqual(-1);
       done();
@@ -4255,7 +4255,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported057', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported057', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(7,1,0,0,1,13);
       expect(result).assertEqual(-1);
       done();
@@ -4269,7 +4269,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported058', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported058', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(1,0,1,0,1,13);
       expect(result).assertEqual(0);
       done();
@@ -4283,7 +4283,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported059', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported059', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(2,0,1,0,1,13);
       expect(result).assertEqual(-1);
       done();
@@ -4297,7 +4297,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported060', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported060', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(3,0,1,0,1,13);
       expect(result).assertEqual(-1);
       done();
@@ -4311,7 +4311,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported061', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported061', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(4,0,1,0,1,13);
       expect(result).assertEqual(-1);
       done();
@@ -4325,7 +4325,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported062', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported062', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(5,0,1,0,1,13);
       expect(result).assertEqual(-1);
       done();
@@ -4339,7 +4339,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported063', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported063', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(6,0,1,0,1,13);
         expect(result != null).assertTrue();
@@ -4358,7 +4358,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported064', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported064', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(7,0,1,0,1,13);
       expect(result).assertEqual(-1);
       done();
@@ -4372,7 +4372,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported065', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported065', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(1,0,0,0,1,13);
         expect(result != null).assertTrue();
@@ -4391,7 +4391,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported066', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported066', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(2,0,0,0,1,13);
       expect(result).assertEqual(-1);
       done();
@@ -4405,7 +4405,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported067', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported067', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(3,0,0,0,1,13);
       expect(result).assertEqual(-1);
       done();
@@ -4419,7 +4419,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported068', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported068', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(4,0,0,0,1,13);
       expect(result).assertEqual(-1);
       done();
@@ -4433,7 +4433,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported069', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported069', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(5,0,0,0,1,13);
       expect(result).assertEqual(-1);
       done();
@@ -4447,7 +4447,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported070', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported070', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(6,0,0,0,1,13);
         expect(result != null).assertTrue();
@@ -4466,7 +4466,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported071', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported071', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(7,0,0,0,1,13);
         expect(result != null).assertTrue();
@@ -4485,7 +4485,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported072', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported072', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(1,1,1,0,1,14);
         expect(result != null).assertTrue();
@@ -4504,7 +4504,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported073', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported073', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(2,1,1,0,1,14);
       expect(result).assertEqual(-1);
       done();
@@ -4518,7 +4518,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported074', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported074', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(3,1,1,0,1,14);
       expect(result).assertEqual(-1);
       done();
@@ -4532,7 +4532,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported075', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported075', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(4,1,1,0,1,14);
       expect(result).assertEqual(-1);
       done();
@@ -4546,7 +4546,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported076', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported076', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(5,1,1,0,1,14);
       expect(result).assertEqual(-1);
       done();
@@ -4560,7 +4560,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported077', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported077', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(6,1,1,0,1,14);
       expect(result).assertEqual(-1);
       done();
@@ -4574,7 +4574,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported078', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported078', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(7,1,1,0,1,14);
       expect(result).assertEqual(-1);
       done();
@@ -4588,7 +4588,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported079', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported079', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(1,1,0,0,1,14);
       expect(result).assertEqual(-1);
       done();
@@ -4602,7 +4602,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported080', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported080', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(2,1,0,0,1,14);
       expect(result).assertEqual(-1);
       done();
@@ -4616,7 +4616,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported081', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported081', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(3,1,0,0,1,14);
       expect(result).assertEqual(-1);
       done();
@@ -4630,7 +4630,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported082', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported082', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(4,1,0,0,1,14);
       expect(result).assertEqual(-1);
       done();
@@ -4644,7 +4644,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported083', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported083', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(5,1,0,0,1,14);
       expect(result).assertEqual(-1);
       done();
@@ -4658,7 +4658,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported084', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported084', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(6,1,0,0,1,14);
       expect(result).assertEqual(-1);
       done();
@@ -4672,7 +4672,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported085', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported085', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(7,1,0,0,1,14);
       expect(result).assertEqual(-1);
       done();
@@ -4686,7 +4686,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported086', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported086', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(1,0,1,0,1,14);
       expect(result).assertEqual(0);
       done();
@@ -4700,7 +4700,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported087', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported087', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(2,0,1,0,1,14);
       expect(result).assertEqual(-1);
       done();
@@ -4714,7 +4714,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported088', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported088', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(3,0,1,0,1,14);
       expect(result).assertEqual(-1);
       done();
@@ -4728,7 +4728,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported089', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported089', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(4,0,1,0,1,14);
       expect(result).assertEqual(-1);
       done();
@@ -4742,7 +4742,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported090', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported090', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(5,0,1,0,1,14);
       expect(result).assertEqual(-1);
       done();
@@ -4756,7 +4756,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported091', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported091', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(6,0,1,0,1,14);
       expect(result).assertEqual(-1);
       done();
@@ -4770,7 +4770,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported092', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported092', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(7,0,1,0,1,14);
       expect(result).assertEqual(-1);
       done();
@@ -4784,7 +4784,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported093', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported093', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(1,0,0,0,1,14);
         expect(result != null).assertTrue();
@@ -4803,7 +4803,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported094', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported094', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(2,0,0,0,1,14);
       expect(result).assertEqual(-1);
       done();
@@ -4817,7 +4817,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported095', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported095', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(3,0,0,0,1,14);
       expect(result).assertEqual(-1);
       done();
@@ -4831,7 +4831,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported096', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported096', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(4,0,0,0,1,14);
       expect(result).assertEqual(-1);
       done();
@@ -4845,7 +4845,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported097', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported097', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(5,0,0,0,1,14);
       expect(result).assertEqual(-1);
       done();
@@ -4859,7 +4859,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported098', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported098', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(6,0,0,0,1,14);
       expect(result).assertEqual(-1);
       done();
@@ -4873,7 +4873,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported099', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported099', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(7,0,0,0,1,14);
       expect(result).assertEqual(-1);
       done();
@@ -4887,7 +4887,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported100', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported100', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(1,1,1,0,1,15);
         expect(result != null).assertTrue();
@@ -4906,7 +4906,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported101', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported101', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(2,1,1,0,1,15);
       expect(result).assertEqual(-1);
       done();
@@ -4920,7 +4920,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported102', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported102', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(3,1,1,0,1,15);
       expect(result).assertEqual(-1);
       done();
@@ -4934,7 +4934,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported103', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported103', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(4,1,1,0,1,15);
       expect(result).assertEqual(-1);
       done();
@@ -4948,7 +4948,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported104', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported104', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(5,1,1,0,1,15);
       expect(result).assertEqual(-1);
       done();
@@ -4962,7 +4962,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported105', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported105', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(6,1,1,0,1,15);
       expect(result).assertEqual(-1);
       done();
@@ -4976,7 +4976,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported106', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported106', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(7,1,1,0,1,15);
       expect(result).assertEqual(-1);
       done();
@@ -4990,7 +4990,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported107', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported107', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(1,1,0,0,1,15);
         expect(result != null).assertTrue();
@@ -5009,7 +5009,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported108', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported108', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(2,1,0,0,1,15);
       expect(result).assertEqual(-1);
       done();
@@ -5023,7 +5023,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported109', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported109', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(3,1,0,0,1,15);
       expect(result).assertEqual(-1);
       done();
@@ -5037,7 +5037,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported110', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported110', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(4,1,0,0,1,15);
       expect(result).assertEqual(-1);
       done();
@@ -5051,7 +5051,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported111', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported111', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(5,1,0,0,1,15);
       expect(result).assertEqual(-1);
       done();
@@ -5065,7 +5065,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported112', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported112', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(6,1,0,0,1,15);
       expect(result).assertEqual(-1);
       done();
@@ -5079,7 +5079,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported113', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported113', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(7,1,0,0,1,15);
       expect(result).assertEqual(-1);
       done();
@@ -5093,7 +5093,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported114', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported114', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(1,0,1,0,1,15);
       expect(result).assertEqual(0);
       done();
@@ -5107,7 +5107,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported115', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported115', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(2,0,1,0,1,15);
       expect(result).assertEqual(-1);
       done();
@@ -5121,7 +5121,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported116', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported116', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(3,0,1,0,1,15);
       expect(result).assertEqual(-1);
       done();
@@ -5135,7 +5135,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported117', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported117', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(4,0,1,0,1,15);
       expect(result).assertEqual(-1);
       done();
@@ -5149,7 +5149,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported118', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported118', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(5,0,1,0,1,15);
       expect(result).assertEqual(-1);
       done();
@@ -5163,7 +5163,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported119', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported119', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(6,0,1,0,1,15);
       expect(result).assertEqual(-1);
       done();
@@ -5177,7 +5177,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported120', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported120', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(7,0,1,0,1,15);
       expect(result).assertEqual(-1);
       done();
@@ -5191,7 +5191,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported121', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported121', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.decodeMainProcess(1,0,0,0,1,15);
         expect(result != null).assertTrue();
@@ -5210,7 +5210,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported122', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported122', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(2,0,0,0,1,15);
       expect(result).assertEqual(-1);
       done();
@@ -5224,7 +5224,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported123', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported123', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(3,0,0,0,1,15);
       expect(result).assertEqual(-1);
       done();
@@ -5238,7 +5238,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported124', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported124', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(4,0,0,0,1,15);
       expect(result).assertEqual(-1);
       done();
@@ -5252,7 +5252,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported125', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported125', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(5,0,0,0,1,15);
       expect(result).assertEqual(-1);
       done();
@@ -5266,7 +5266,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAvCapabilityAreProfileAndLevelSupported126', 0, async (done: Function) => {
+    it('testOHAvCapabilityAreProfileAndLevelSupported126', Level.LEVEL0, async (done: Function) => {
       let result: number = native.decodeMainProcess(6,0,0,0,1,15);
       expect(result).assertEqual(-1);
       done();
@@ -5280,7 +5280,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCapabilityIsHardware001', 0, async (done: Function) => {
+    it('testOhAvCapabilityIsHardware001', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.OH_AVCapability_IsHardware();
         expect(result != null).assertTrue();
@@ -5299,7 +5299,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCapabilityGetName001', 0, async (done: Function) => {
+    it('testOhAvCapabilityGetName001', Level.LEVEL0, async (done: Function) => {
       expect(native.OH_AVCapability_GetName()).assertEqual(0);
       done();
     });
@@ -5312,7 +5312,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCapabilityGetMaxSupportedInstances001', 0, async (done: Function) => {
+    it('testOhAvCapabilityGetMaxSupportedInstances001', Level.LEVEL0, async (done: Function) => {
       expect(native.OH_AVCapability_GetMaxSupportedInstances()).assertEqual(0);
       done();
     });
@@ -5325,7 +5325,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCapabilityGetEncoderBitrateRange001', 0, async (done: Function) => {
+    it('testOhAvCapabilityGetEncoderBitrateRange001', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.OH_AVCapability_GetEncoderBitrateRange();
         expect(result != null).assertTrue();
@@ -5344,7 +5344,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCapabilityIsEncoderBitrateModeSupported001', 0, async (done: Function) => {
+    it('testOhAvCapabilityIsEncoderBitrateModeSupported001', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.OH_AVCapability_IsEncoderBitrateModeSupported();
         expect(result != null).assertTrue();
@@ -5363,7 +5363,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCapabilityGetVideoWidthRangeForHeight001', 0, async (done: Function) => {
+    it('testOhAvCapabilityGetVideoWidthRangeForHeight001', Level.LEVEL0, async (done: Function) => {
       try {
         let result: number = native.OH_AVCapability_GetVideoWidthRangeForHeight();
         expect(result != null).assertTrue();
@@ -5382,7 +5382,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCapabilityGetVideoHeightRangeForWidth001', 0, async (done: Function) => {
+    it('testOhAvCapabilityGetVideoHeightRangeForWidth001', Level.LEVEL0, async (done: Function) => {
       done();
       try {
         let result: number = native.OH_AVCapability_GetVideoHeightRangeForWidth();
@@ -5402,7 +5402,7 @@ export default function nativeNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOhAvCapabilityAreProfileAndLevelSupported001', 0, async (done: Function) => {
+    it('testOhAvCapabilityAreProfileAndLevelSupported001', Level.LEVEL0, async (done: Function) => {
       expect(native.OH_AVCapability_AreProfileAndLevelSupported()).assertEqual(0);
       done();
     });

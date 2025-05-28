@@ -1847,5 +1847,44 @@ export default function TextPicker() {
       console.info("testPicker38 finish");
       done();
     });
+
+    /* *
+     * @tc.number    : testPicker39
+     * @tc.name      : testPicker39
+     * @tc.desc      : Testing PhotoPickerComponent singleLineConfig
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+    */
+    it('testPicker39', Level.LEVEL0, async (done: Function) => {
+      if (!isExecutePicker) {
+        done();
+        return;
+      }
+      let code: number = EventType.PHOTO_PICKER_INFO;
+      let pickerOptions: PickerOptions = getDefaultPickerOptions();
+      pickerOptions.singleLineConfig = {
+        itemDisplayRatio: 1,
+        itemBorderRadius: {
+          topLeft: 8,
+          bottomRight: 8
+        },
+        itemGap: '10vp'
+      };
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/PickerComponent',
+        params: {
+          eventId: code,
+          pickerOptions: pickerOptions,
+        }
+      }
+      await routeToUrl(options);
+      let strJson: string = getInspectorByKey('PhotoPickerComponent');
+      console.info("testPicker39 JSON.parse(strJson) is" + strJson);
+      expect(JSON.parse(strJson).$attrs.visibility).assertEqual('Visibility.Visible');
+      router.back();
+      console.info("testPicker39 finish");
+      done();
+    });
   })
 }

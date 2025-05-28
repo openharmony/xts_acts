@@ -19,7 +19,7 @@ import Want from '@ohos.app.ability.Want';
 import { BusinessError } from '@ohos.base';
 import systemParameterEnhance from '@ohos.systemParameterEnhance';
 
-let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
+let deviceSupport = systemParameterEnhance.getSync('persist.sys.abilityms.move_ui_ability_to_background_api_enable');
 
 function sleep(time: number) {
   return new Promise((resolve: (value: string) => void) => {
@@ -309,7 +309,7 @@ export default function abilityTest() {
       expect(result1[0]).assertEqual("MainAbility1 onCreate");
       expect(result1[1]).assertEqual("MainAbility1 onWindowStageCreate");
       expect(result1[2]).assertEqual("MainAbility1 onForeground");
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }

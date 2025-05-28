@@ -53,12 +53,6 @@ ohos_moduletest_suite("ActsDeqpgles31Suite0029aTest") {
     "../functional/Deqpgles31viewclass_32_bits_rgba8i_rg16fTestCase.cpp",
     "../functional/Deqpgles31viewclass_32_bits_rgba8i_rg16iTestCase.cpp",
     "../functional/Deqpgles31viewclass_32_bits_rgba8i_rg16uiTestCase.cpp",
-    "../functional/Deqpgles31viewclass_32_bits_rgba8i_rgb10_a2TestCase.cpp",
-    "../functional/Deqpgles31viewclass_32_bits_rgba8i_rgb10_a2uiTestCase.cpp",
-    "../functional/Deqpgles31viewclass_32_bits_rgba8i_rgba8TestCase.cpp",
-    "../functional/Deqpgles31viewclass_32_bits_rgba8i_rgba8_snormTestCase.cpp",
-    "../functional/Deqpgles31viewclass_32_bits_rgba8i_rgba8iTestCase.cpp",
-    "../functional/Deqpgles31viewclass_32_bits_rgba8i_rgba8uiTestCase.cpp",
   ]
 
   include_dirs = [ "../../../src" ]

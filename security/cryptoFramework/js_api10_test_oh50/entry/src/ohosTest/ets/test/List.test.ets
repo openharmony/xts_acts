@@ -33,6 +33,8 @@ import SecurityCryptoFwRSAEncodeDecodeWithSecretTestUnit from './SecurityCryptoF
 import SecurityCryptoFwCmacTestUnit from './SecurityCryptoFwCmac.test'
 import SecurityCryptoFwScryptKdfTestUnit from './SecurityCryptoFwScryptKdf.test'
 import SecurityCryptoFwErrCodeTestUnit from './SecurityCryptoErrCode.test'
+import SecurityCryptoFwSM2TestUnit from './SecurityCryptoFwSM2Signature.test'
+import SecurityCryptoFwDESTestUnit from './SecurityCryptoFwDes.test'
 
 
 export default function testsuite() {
@@ -56,4 +58,6 @@ export default function testsuite() {
   SecurityCryptoFwCmacTestUnit();
   SecurityCryptoFwScryptKdfTestUnit();
   SecurityCryptoFwErrCodeTestUnit();
+  SecurityCryptoFwSM2TestUnit();
+  SecurityCryptoFwDESTestUnit();
 }

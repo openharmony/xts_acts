@@ -17,18 +17,55 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import reminderAgent from '@ohos.reminderAgent'
 import notification from '@ohos.notification'
+import notificationManager from '@ohos.notificationManager';
+import { UiDriver, BY } from '@ohos.UiTest';
 
 export default function ReminderAgentTest() {
     describe('ReminderAgentTest', function () {
 
         const TRIGGER_TIME_IN_SECONDS = 100;
+        function sleep(ms) {
+            console.info(`ReminderAgentTest SUB_NOTIFICATION_ANS_Publish_TEST ===>====>sleep is success`);
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
 
-        beforeAll(function () {
+        beforeAll(async function (done) {
 
             /*
              * @tc.setup: setup invoked before all testcases
              */
             console.info('beforeAll caled')
+            notificationManager.requestEnableNotification(async (err) => {
+            console.info(`ReminderAgentTest requestEnableNotification ===>====>come in requestEnableNotification`);
+              if (err) {
+                console.info(`ReminderAgentTest SUB_NOTIFICATION_ANS_Publish_TEST ===>requestEnableNotification failed, code is ${err.code}, message is ${err.message}`);
+                expect(false).assertTrue();
+                done();
+              } else {
+                console.info("ReminderAgentTest SUB_NOTIFICATION_ANS_Publish_TEST ===>requestEnableNotification success");
+                expect(true).assertTrue();
+                await sleep(1000);
+                done();
+              }
+            });
+        
+            await sleep(1000);
+
+            let driver = await UiDriver.create();
+            console.info(`ReminderAgentTest SUB_NOTIFICATION_ANS_Publish_TEST ===>====>come in driveFn`);
+            await sleep(1000);
+            console.info(`ReminderAgentTest SUB_NOTIFICATION_ANS_Publish_TEST ===>====>driver is ${JSON.stringify(driver)}`);
+            let button = await driver.findComponent(BY.text('允许'));
+            console.info(`ReminderAgentTest SUB_NOTIFICATION_ANS_Publish_TEST ===>====>button is ${JSON.stringify(button)}`);
+            if(button != null){
+                await button.click();
+                console.info(`ReminderAgentTest SUB_NOTIFICATION_ANS_Publish_TEST ===>====>button is click`);
+                await sleep(1000);
+            }else{
+                console.info(`ReminderAgentTest SUB_NOTIFICATION_ANS_Publish_TEST ===>====>button is null button`);
+                await sleep(1000);
+                done(); 
+            } 
         })
 
         afterAll(function () {
@@ -266,7 +303,8 @@ export default function ReminderAgentTest() {
                     hour: 23,
                     minute: 30,
                     second: 18
-                }
+                },
+                repeatMonths: [3]
             }
             reminderAgent.publishReminder(calendar).then((reminderId) => {
                 console.info("testReminderRequestType_007 reminderId =" + reminderId);
@@ -1492,7 +1530,8 @@ export default function ReminderAgentTest() {
                     hour: 11,
                     minute: 30,
                     second: 50
-                }
+                },
+                repeatMonths: [3]
             }
             reminderAgent.publishReminder(calendar, (err, reminderId) => {
                 console.info("callback,the testPublishReminderCalendarFun_059 reminderId =" + reminderId);
@@ -1517,7 +1556,8 @@ export default function ReminderAgentTest() {
                     hour: 11,
                     minute: 30,
                     second: 40
-                }
+                },
+                repeatMonths: [3]
             }
             reminderAgent.publishReminder(calendar).then((reminderId) => {
                 console.info("promise,the testPublishReminderCalendarFun_060 reminderId =" + reminderId);
@@ -1647,8 +1687,8 @@ export default function ReminderAgentTest() {
                     minute: 45,
                     second: 15
                 },
-                repeatMonths: [],
-                repeatDays: []
+                repeatMonths: [3],
+                repeatDays: [7]
             }
             reminderAgent.cancelAllReminders().then(() => {
                 console.info('cancelAllReminders success')
@@ -1679,8 +1719,8 @@ export default function ReminderAgentTest() {
                     minute: 45,
                     second: 15
                 },
-                repeatMonths: [],
-                repeatDays: []
+                repeatMonths: [3],
+                repeatDays: [7]
             }
             reminderAgent.publishReminder(calendar).then((reminderId) => {
                 console.info("promise,the testPublishReminderCalendar_066 reminderId =" + reminderId);
@@ -2829,7 +2869,8 @@ export default function ReminderAgentTest() {
                     day: 10,
                     hour: 23,
                     minute: 30
-                }
+                },
+                repeatMonths: [3]
             }
             reminderAgent.publishReminder(timer).then((reminderId) => { });
             reminderAgent.publishReminder(calendar).then((reminderId) => { });

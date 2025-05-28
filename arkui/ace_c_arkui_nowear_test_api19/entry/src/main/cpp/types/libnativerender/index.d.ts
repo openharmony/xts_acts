@@ -12,6 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+export const testNotifyDragTest: (a: string) => void;
 
 export const calendarPickerTest: (a: string) => void;
+
+export const PanGestureTest001: (a: string) => string[];
+
+export const PanGestureTest002: (a: string) => string[];
+
+export const PanGestureTest003: (a: string) => string[];
+
+export const PanGestureTest004: (a: string) => string[];
+
+export const GetPanGestureData: () => object;
 

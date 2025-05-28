@@ -28,8 +28,10 @@
 #include "ohaudio/native_audio_routing_manager.h"
 #include "ohaudio/native_audio_device_base.h"
 #include "ohaudio/native_audio_session_manager.h"
+#include "ohaudio/native_audio_volume_manager.h"
 #include "hilog/log.h"
 #include <ctime> 
+#include <set>
 
 #define AUDIO_LOG_TAG "AUDIO_TAGLOG"
 #define AUDIO_LOG_DOMAIN 0x3200
@@ -62,6 +64,24 @@ OH_AudioStream_SampleFormat g_ohFormat;
 static int32_t g_ohSamplingRate;
 static int32_t g_ohChannelCount;
 OH_AudioStream_LatencyMode g_ohLatencyMode;
+constexpr int32_t INVALID_VALUE = -1;
+
+const std::set<OH_AudioStream_Usage> VALID_OH_STREAM_USAGES = {
+    AUDIOSTREAM_USAGE_UNKNOWN,
+    AUDIOSTREAM_USAGE_MUSIC,
+    AUDIOSTREAM_USAGE_VOICE_COMMUNICATION,
+    AUDIOSTREAM_USAGE_VOICE_ASSISTANT,
+    AUDIOSTREAM_USAGE_ALARM,
+    AUDIOSTREAM_USAGE_VOICE_MESSAGE,
+    AUDIOSTREAM_USAGE_RINGTONE,
+    AUDIOSTREAM_USAGE_NOTIFICATION,
+    AUDIOSTREAM_USAGE_ACCESSIBILITY,
+    AUDIOSTREAM_USAGE_MOVIE,
+    AUDIOSTREAM_USAGE_GAME,
+    AUDIOSTREAM_USAGE_AUDIOBOOK,
+    AUDIOSTREAM_USAGE_NAVIGATION,
+    AUDIOSTREAM_USAGE_VIDEO_COMMUNICATION
+};
 
 void uDelay(int time)//time*1000为秒数 
 { 
@@ -106,6 +126,32 @@ static int32_t MyAudioSessionDeactivatedCallback(OH_AudioSession_DeactivatedEven
             LOG("MyAudioSessionDeactivatedCallback, event is %{public}d", event.reason);
           return 0;
     }
+}
+
+void MyOnAudioSceneChangeCallback(void *userData, OH_AudioScene scene)
+{
+    (void)userData;
+    LOG("MyOnAudioSceneChangeCallback, scene is %{public}d", scene);
+}
+
+void MyOnStreamVolumeChangeCallback1(void *userData, OH_AudioStream_Usage usage, int32_t volumeLevel, bool updateUi)
+{
+    (void)userData;
+    (void)updateUi;
+    LOG("MyOnStreamVolumeChangeCallback, usage:%{public}d, volumeLevel: %{public}d", usage, volumeLevel);
+}
+
+void MyOnStreamVolumeChangeCallback2(void *userData, OH_AudioStream_Usage usage, int32_t volumeLevel, bool updateUi)
+{
+    (void)userData;
+    (void)updateUi;
+    LOG("MyOnStreamVolumeChangeCallback, usage:%{public}d, volumeLevel: %{public}d", usage, volumeLevel);
+}
+
+void MyOnRingerModeChangeCallback(void *userData, OH_AudioRingerMode ringerMode)
+{
+    (void)userData;
+    LOG("MyOnRingerModeChangeCallback, ringerMode is %{public}d", ringerMode);
 }
 
 static napi_value CreateAudioStreamBuilder(napi_env env, napi_callback_info info)
@@ -2356,6 +2402,173 @@ static napi_value AudioManagerGetAudioScene_02(napi_env env, napi_callback_info 
 
     result = OH_GetAudioScene(audioManager, nullptr);
     if (result != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
+        napi_create_int32(env, TEST_FAIL, &res);
+        return res;
+    }
+
+    napi_create_int32(env, TEST_PASS, &res);
+    return res;
+}
+
+static napi_value AudioManagerRegisterAudioSceneChangeCallback_01(napi_env env, napi_callback_info info)
+{
+    napi_value res;
+    OH_AudioManager *audioManager = nullptr;
+    OH_AudioCommon_Result result = OH_GetAudioManager(&audioManager);
+    if (result != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_GetAudioManager error, result is: %{public}d", result);
+        napi_create_int32(env, TEST_FAIL, &res);
+        return res;
+    }
+
+    // MyOnAudioSceneChangeCallback
+    result = OH_AudioManager_RegisterAudioSceneChangeCallback(audioManager, MyOnAudioSceneChangeCallback, nullptr);
+    if (result != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_AudioManager_RegisterAudioSceneChangeCallback error, result is: %{public}d", result);
+        napi_create_int32(env, TEST_FAIL, &res);
+        return res;
+    }
+
+    result = OH_AudioManager_UnregisterAudioSceneChangeCallback(audioManager, MyOnAudioSceneChangeCallback);
+    if (result != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_AudioManager_UnregisterAudioSceneChangeCallback error, result is: %{public}d", result);
+        napi_create_int32(env, TEST_FAIL, &res);
+        return res;
+    }
+
+    napi_create_int32(env, TEST_PASS, &res);
+    return res;
+}
+
+static napi_value AudioManagerRegisterAudioSceneChangeCallback_02(napi_env env, napi_callback_info info)
+{
+    napi_value res;
+    // MyOnAudioSceneChangeCallback
+    OH_AudioCommon_Result result = OH_AudioManager_RegisterAudioSceneChangeCallback(nullptr, nullptr, nullptr);
+    if (result != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
+        LOG("OH_AudioManager_RegisterAudioSceneChangeCallback error, result is: %{public}d", result);
+        napi_create_int32(env, TEST_FAIL, &res);
+        return res;
+    }
+
+    napi_create_int32(env, TEST_PASS, &res);
+    return res;
+}
+
+static napi_value AudioManagerRegisterAudioSceneChangeCallback_03(napi_env env, napi_callback_info info)
+{
+    napi_value res;
+    OH_AudioManager *audioManager = nullptr;
+    OH_AudioCommon_Result result = OH_GetAudioManager(&audioManager);
+    if (result != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_GetAudioManager error, result is: %{public}d", result);
+        napi_create_int32(env, TEST_FAIL, &res);
+        return res;
+    }
+
+    // MyOnAudioSceneChangeCallback
+    result = OH_AudioManager_RegisterAudioSceneChangeCallback(audioManager, nullptr, nullptr);
+    if (result != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
+        LOG("OH_AudioManager_RegisterAudioSceneChangeCallback error, result is: %{public}d", result);
+        napi_create_int32(env, TEST_FAIL, &res);
+        return res;
+    }
+
+    napi_create_int32(env, TEST_PASS, &res);
+    return res;
+}
+
+static napi_value AudioManagerUnregisterAudioSceneChangeCallback_01(napi_env env, napi_callback_info info)
+{
+    napi_value res;
+    // MyOnAudioSceneChangeCallback
+    OH_AudioCommon_Result result = OH_AudioManager_UnregisterAudioSceneChangeCallback(nullptr,
+        MyOnAudioSceneChangeCallback);
+    if (result != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
+        LOG("OH_AudioManager_UnregisterAudioSceneChangeCallback error, result is: %{public}d", result);
+        napi_create_int32(env, TEST_FAIL, &res);
+        return res;
+    }
+
+    napi_create_int32(env, TEST_PASS, &res);
+    return res;
+}
+
+static napi_value AudioManagerUnregisterAudioSceneChangeCallback_02(napi_env env, napi_callback_info info)
+{
+    napi_value res;
+    OH_AudioManager *audioManager = nullptr;
+    OH_AudioCommon_Result result = OH_GetAudioManager(&audioManager);
+    if (result != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_GetAudioManager error, result is: %{public}d", result);
+        napi_create_int32(env, TEST_FAIL, &res);
+        return res;
+    }
+
+    // MyOnAudioSceneChangeCallback
+    result = OH_AudioManager_UnregisterAudioSceneChangeCallback(audioManager, nullptr);
+    if (result != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
+        LOG("OH_AudioManager_UnregisterAudioSceneChangeCallback error, result is: %{public}d", result);
+        napi_create_int32(env, TEST_FAIL, &res);
+        return res;
+    }
+
+    napi_create_int32(env, TEST_PASS, &res);
+    return res;
+}
+
+static napi_value AudioManagerUnregisterAudioSceneChangeCallback_03(napi_env env, napi_callback_info info)
+{
+    napi_value res;
+    OH_AudioManager *audioManager = nullptr;
+    OH_AudioCommon_Result result = OH_GetAudioManager(&audioManager);
+    if (result != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_GetAudioManager error, result is: %{public}d", result);
+        napi_create_int32(env, TEST_FAIL, &res);
+        return res;
+    }
+
+    // MyOnAudioSceneChangeCallback
+    result = OH_AudioManager_UnregisterAudioSceneChangeCallback(audioManager, MyOnAudioSceneChangeCallback);
+    if (result != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
+        LOG("OH_AudioManager_UnregisterAudioSceneChangeCallback error, result is: %{public}d", result);
+        napi_create_int32(env, TEST_FAIL, &res);
+        return res;
+    }
+
+    napi_create_int32(env, TEST_PASS, &res);
+    return res;
+}
+
+static napi_value AudioManagerUnregisterAudioSceneChangeCallback_04(napi_env env, napi_callback_info info)
+{
+    napi_value res;
+    OH_AudioManager *audioManager = nullptr;
+    OH_AudioCommon_Result result = OH_GetAudioManager(&audioManager);
+    if (result != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_GetAudioManager error, result is: %{public}d", result);
+        napi_create_int32(env, TEST_FAIL, &res);
+        return res;
+    }
+
+    // MyOnAudioSceneChangeCallback
+    result = OH_AudioManager_RegisterAudioSceneChangeCallback(audioManager, MyOnAudioSceneChangeCallback, nullptr);
+    if (result != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_AudioManager_RegisterAudioSceneChangeCallback error, result is: %{public}d", result);
+        napi_create_int32(env, TEST_FAIL, &res);
+        return res;
+    }
+
+    result = OH_AudioManager_UnregisterAudioSceneChangeCallback(audioManager, MyOnAudioSceneChangeCallback);
+    if (result != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_AudioManager_UnregisterAudioSceneChangeCallback 1 error, result is: %{public}d", result);
+        napi_create_int32(env, TEST_FAIL, &res);
+        return res;
+    }
+
+    result = OH_AudioManager_UnregisterAudioSceneChangeCallback(audioManager, MyOnAudioSceneChangeCallback);
+    if (result != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
+        LOG("OH_AudioManager_UnregisterAudioSceneChangeCallback 2 error, result is: %{public}d", result);
         napi_create_int32(env, TEST_FAIL, &res);
         return res;
     }
@@ -5452,6 +5665,956 @@ static napi_value OH_AudioStreamBuilder_SetVolumeMode_Test_004(napi_env env, nap
     return result;
 }
 
+static napi_value AudioManagerGetAudioVolumeManager_001(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    OH_AudioVolumeManager *volumeManager = nullptr;
+    OH_AudioCommon_Result res = OH_AudioManager_GetAudioVolumeManager(&volumeManager);
+    if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_AudioManager_GetAudioVolumeManager FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    napi_create_int32(env, TEST_PASS, &result);
+    return result;
+}
+
+static napi_value AudioManagerGetAudioVolumeManager_002(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    OH_AudioCommon_Result res = OH_AudioManager_GetAudioVolumeManager(nullptr);
+    if (res != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
+        LOG("OH_AudioManager_GetAudioVolumeManager FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    napi_create_int32(env, TEST_PASS, &result);
+    return result;
+}
+
+static napi_value AudioVolumeManagerGetMaxVolumeByUsage_001(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    OH_AudioVolumeManager *volumeManager = nullptr;
+    OH_AudioCommon_Result res = OH_AudioManager_GetAudioVolumeManager(&volumeManager);
+    if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_AudioManager_GetAudioVolumeManager FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    int32_t maxVolumeLevel = 0;
+    for (auto usage : VALID_OH_STREAM_USAGES) {
+        res = OH_AudioVolumeManager_GetMaxVolumeByUsage(volumeManager, usage, &maxVolumeLevel);
+        if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+            LOG("OH_AudioVolumeManager_GetMaxVolumeByUsage FAILED, res is %{public}d, usage is %{public}d", res, usage);
+            napi_create_int32(env, TEST_FAIL, &result);
+            return result;
+        }
+    }
+
+    napi_create_int32(env, TEST_PASS, &result);
+    return result;
+}
+
+static napi_value AudioVolumeManagerGetMaxVolumeByUsage_002(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    OH_AudioCommon_Result res = OH_AudioVolumeManager_GetMaxVolumeByUsage(nullptr, AUDIOSTREAM_USAGE_MUSIC, nullptr);
+    if (res != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
+        LOG("OH_AudioVolumeManager_GetMaxVolumeByUsage FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    napi_create_int32(env, TEST_PASS, &result);
+    return result;
+}
+
+static napi_value AudioVolumeManagerGetMaxVolumeByUsage_003(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    OH_AudioVolumeManager *volumeManager = nullptr;
+    OH_AudioCommon_Result res = OH_AudioManager_GetAudioVolumeManager(&volumeManager);
+    if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_AudioManager_GetAudioVolumeManager FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    res = OH_AudioVolumeManager_GetMaxVolumeByUsage(volumeManager, (OH_AudioStream_Usage)INVALID_VALUE, nullptr);
+    if (res != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
+        LOG("OH_AudioVolumeManager_GetMaxVolumeByUsage FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    napi_create_int32(env, TEST_PASS, &result);
+    return result;
+}
+
+static napi_value AudioVolumeManagerGetMaxVolumeByUsage_004(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    OH_AudioVolumeManager *volumeManager = nullptr;
+    OH_AudioCommon_Result res = OH_AudioManager_GetAudioVolumeManager(&volumeManager);
+    if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_AudioManager_GetAudioVolumeManager FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    res = OH_AudioVolumeManager_GetMaxVolumeByUsage(volumeManager, AUDIOSTREAM_USAGE_MUSIC, nullptr);
+    if (res != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
+        LOG("OH_AudioVolumeManager_GetMaxVolumeByUsage FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    napi_create_int32(env, TEST_PASS, &result);
+    return result;
+}
+
+static napi_value AudioVolumeManagerGetMinVolumeByUsage_001(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    OH_AudioVolumeManager *volumeManager = nullptr;
+    OH_AudioCommon_Result res = OH_AudioManager_GetAudioVolumeManager(&volumeManager);
+    if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_AudioManager_GetAudioVolumeManager FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    int32_t minVolumeLevel = 0;
+    for (auto usage : VALID_OH_STREAM_USAGES) {
+        res = OH_AudioVolumeManager_GetMinVolumeByUsage(volumeManager, usage, &minVolumeLevel);
+        if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+            LOG("OH_AudioVolumeManager_GetMinVolumeByUsage FAILED, res is %{public}d, usage is %{public}d", res, usage);
+            napi_create_int32(env, TEST_FAIL, &result);
+            return result;
+        }
+    }
+
+    napi_create_int32(env, TEST_PASS, &result);
+    return result;
+}
+
+static napi_value AudioVolumeManagerGetMinVolumeByUsage_002(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    OH_AudioCommon_Result res = OH_AudioVolumeManager_GetMinVolumeByUsage(nullptr, AUDIOSTREAM_USAGE_MUSIC, nullptr);
+    if (res != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
+        LOG("OH_AudioVolumeManager_GetMinVolumeByUsage FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    napi_create_int32(env, TEST_PASS, &result);
+    return result;
+}
+
+static napi_value AudioVolumeManagerGetMinVolumeByUsage_003(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    OH_AudioVolumeManager *volumeManager = nullptr;
+    OH_AudioCommon_Result res = OH_AudioManager_GetAudioVolumeManager(&volumeManager);
+    if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_AudioManager_GetAudioVolumeManager FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    res = OH_AudioVolumeManager_GetMinVolumeByUsage(volumeManager, (OH_AudioStream_Usage)INVALID_VALUE, nullptr);
+    if (res != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
+        LOG("OH_AudioVolumeManager_GetMinVolumeByUsage FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    napi_create_int32(env, TEST_PASS, &result);
+    return result;
+}
+
+static napi_value AudioVolumeManagerGetMinVolumeByUsage_004(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    OH_AudioVolumeManager *volumeManager = nullptr;
+    OH_AudioCommon_Result res = OH_AudioManager_GetAudioVolumeManager(&volumeManager);
+    if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_AudioManager_GetAudioVolumeManager FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    res = OH_AudioVolumeManager_GetMinVolumeByUsage(volumeManager, AUDIOSTREAM_USAGE_MUSIC, nullptr);
+    if (res != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
+        LOG("OH_AudioVolumeManager_GetMinVolumeByUsage FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    napi_create_int32(env, TEST_PASS, &result);
+    return result;
+}
+
+static napi_value AudioVolumeManagerGetVolumeByUsage_001(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    OH_AudioVolumeManager *volumeManager = nullptr;
+    OH_AudioCommon_Result res = OH_AudioManager_GetAudioVolumeManager(&volumeManager);
+    if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_AudioManager_GetAudioVolumeManager FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    int32_t volumeLevel = 0;
+    for (auto usage : VALID_OH_STREAM_USAGES) {
+        res = OH_AudioVolumeManager_GetVolumeByUsage(volumeManager, usage, &volumeLevel);
+        if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+            LOG("OH_AudioVolumeManager_GetVolumeByUsage FAILED, res is %{public}d, usage is %{public}d", res, usage);
+            napi_create_int32(env, TEST_FAIL, &result);
+            return result;
+        }
+    }
+
+    napi_create_int32(env, TEST_PASS, &result);
+    return result;
+}
+
+static napi_value AudioVolumeManagerGetVolumeByUsage_002(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    OH_AudioCommon_Result res = OH_AudioVolumeManager_GetVolumeByUsage(nullptr, AUDIOSTREAM_USAGE_MUSIC, nullptr);
+    if (res != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
+        LOG("OH_AudioVolumeManager_GetVolumeByUsage FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    napi_create_int32(env, TEST_PASS, &result);
+    return result;
+}
+
+static napi_value AudioVolumeManagerGetVolumeByUsage_003(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    OH_AudioVolumeManager *volumeManager = nullptr;
+    OH_AudioCommon_Result res = OH_AudioManager_GetAudioVolumeManager(&volumeManager);
+    if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_AudioManager_GetAudioVolumeManager FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    res = OH_AudioVolumeManager_GetVolumeByUsage(volumeManager, (OH_AudioStream_Usage)INVALID_VALUE, nullptr);
+    if (res != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
+        LOG("OH_AudioVolumeManager_GetVolumeByUsage FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    napi_create_int32(env, TEST_PASS, &result);
+    return result;
+}
+
+static napi_value AudioVolumeManagerGetVolumeByUsage_004(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    OH_AudioVolumeManager *volumeManager = nullptr;
+    OH_AudioCommon_Result res = OH_AudioManager_GetAudioVolumeManager(&volumeManager);
+    if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_AudioManager_GetAudioVolumeManager FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    res = OH_AudioVolumeManager_GetVolumeByUsage(volumeManager, AUDIOSTREAM_USAGE_MUSIC, nullptr);
+    if (res != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
+        LOG("OH_AudioVolumeManager_GetVolumeByUsage FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    napi_create_int32(env, TEST_PASS, &result);
+    return result;
+}
+
+static napi_value AudioVolumeManagerIsMuteByUsage_001(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    OH_AudioVolumeManager *volumeManager = nullptr;
+    OH_AudioCommon_Result res = OH_AudioManager_GetAudioVolumeManager(&volumeManager);
+    if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_AudioManager_GetAudioVolumeManager FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    bool muted = false;
+    for (auto usage : VALID_OH_STREAM_USAGES) {
+        res = OH_AudioVolumeManager_IsMuteByUsage(volumeManager, usage, &muted);
+        if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+            LOG("OH_AudioVolumeManager_IsMuteByUsage FAILED, res is %{public}d, usage is %{public}d", res, usage);
+            napi_create_int32(env, TEST_FAIL, &result);
+            return result;
+        }
+    }
+
+    napi_create_int32(env, TEST_PASS, &result);
+    return result;
+}
+
+static napi_value AudioVolumeManagerIsMuteByUsage_002(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    OH_AudioCommon_Result res = OH_AudioVolumeManager_IsMuteByUsage(nullptr, AUDIOSTREAM_USAGE_MUSIC, nullptr);
+    if (res != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
+        LOG("OH_AudioVolumeManager_IsMuteByUsage FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    napi_create_int32(env, TEST_PASS, &result);
+    return result;
+}
+
+static napi_value AudioVolumeManagerIsMuteByUsage_003(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    OH_AudioVolumeManager *volumeManager = nullptr;
+    OH_AudioCommon_Result res = OH_AudioManager_GetAudioVolumeManager(&volumeManager);
+    if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_AudioManager_GetAudioVolumeManager FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    res = OH_AudioVolumeManager_IsMuteByUsage(volumeManager, (OH_AudioStream_Usage)INVALID_VALUE, nullptr);
+    if (res != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
+        LOG("OH_AudioVolumeManager_IsMuteByUsage FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    napi_create_int32(env, TEST_PASS, &result);
+    return result;
+}
+
+static napi_value AudioVolumeManagerIsMuteByUsage_004(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    OH_AudioVolumeManager *volumeManager = nullptr;
+    OH_AudioCommon_Result res = OH_AudioManager_GetAudioVolumeManager(&volumeManager);
+    if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_AudioManager_GetAudioVolumeManager FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    res = OH_AudioVolumeManager_IsMuteByUsage(volumeManager, AUDIOSTREAM_USAGE_MUSIC, nullptr);
+    if (res != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
+        LOG("OH_AudioVolumeManager_IsMuteByUsage FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    napi_create_int32(env, TEST_PASS, &result);
+    return result;
+}
+
+static napi_value AudioVolumeManagerRegisterStreamVolumeChangeCallback_001(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    OH_AudioVolumeManager *volumeManager = nullptr;
+    OH_AudioCommon_Result res = OH_AudioManager_GetAudioVolumeManager(&volumeManager);
+    if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_AudioManager_GetAudioVolumeManager FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    for (auto usage : VALID_OH_STREAM_USAGES) {
+        res = OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback(volumeManager, usage,
+            MyOnStreamVolumeChangeCallback1, nullptr);
+        if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+            LOG("OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback FAILED, res: %{public}d, usage: %{public}d",
+                res, usage);
+            napi_create_int32(env, TEST_FAIL, &result);
+            return result;
+        }
+
+        res = OH_AudioVolumeManager_UnregisterStreamVolumeChangeCallback(volumeManager,
+            MyOnStreamVolumeChangeCallback1);
+        if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+            LOG("OH_AudioVolumeManager_UnregisterStreamVolumeChangeCallback FAILED, res: %{public}d, usage: %{public}d",
+                res, usage);
+            napi_create_int32(env, TEST_FAIL, &result);
+            return result;
+        }
+    }
+
+    napi_create_int32(env, TEST_PASS, &result);
+    return result;
+}
+
+static napi_value AudioVolumeManagerRegisterStreamVolumeChangeCallback_002(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    OH_AudioVolumeManager *volumeManager = nullptr;
+    OH_AudioCommon_Result res = OH_AudioManager_GetAudioVolumeManager(&volumeManager);
+    if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_AudioManager_GetAudioVolumeManager FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    res = OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback(volumeManager, AUDIOSTREAM_USAGE_MUSIC,
+        MyOnStreamVolumeChangeCallback1, nullptr);
+    if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback 1 FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    res = OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback(volumeManager, AUDIOSTREAM_USAGE_MUSIC,
+        MyOnStreamVolumeChangeCallback2, nullptr);
+    if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback 2 FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    res = OH_AudioVolumeManager_UnregisterStreamVolumeChangeCallback(volumeManager, MyOnStreamVolumeChangeCallback1);
+    if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_AudioVolumeManager_UnregisterStreamVolumeChangeCallback 1 FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    res = OH_AudioVolumeManager_UnregisterStreamVolumeChangeCallback(volumeManager, MyOnStreamVolumeChangeCallback2);
+    if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_AudioVolumeManager_UnregisterStreamVolumeChangeCallback 2 FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    napi_create_int32(env, TEST_PASS, &result);
+    return result;
+}
+
+static napi_value AudioVolumeManagerRegisterStreamVolumeChangeCallback_003(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    OH_AudioVolumeManager *volumeManager = nullptr;
+    OH_AudioCommon_Result res = OH_AudioManager_GetAudioVolumeManager(&volumeManager);
+    if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_AudioManager_GetAudioVolumeManager FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    res = OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback(volumeManager, AUDIOSTREAM_USAGE_MUSIC,
+        MyOnStreamVolumeChangeCallback1, nullptr);
+    if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback 1 FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    res = OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback(volumeManager, AUDIOSTREAM_USAGE_RINGTONE,
+        MyOnStreamVolumeChangeCallback2, nullptr);
+    if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback 2 FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    res = OH_AudioVolumeManager_UnregisterStreamVolumeChangeCallback(volumeManager, MyOnStreamVolumeChangeCallback1);
+    if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_AudioVolumeManager_UnregisterStreamVolumeChangeCallback 1 FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    res = OH_AudioVolumeManager_UnregisterStreamVolumeChangeCallback(volumeManager, MyOnStreamVolumeChangeCallback2);
+    if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_AudioVolumeManager_UnregisterStreamVolumeChangeCallback 2 FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    napi_create_int32(env, TEST_PASS, &result);
+    return result;
+}
+
+static napi_value AudioVolumeManagerRegisterStreamVolumeChangeCallback_004(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    OH_AudioVolumeManager *volumeManager = nullptr;
+    OH_AudioCommon_Result res = OH_AudioManager_GetAudioVolumeManager(&volumeManager);
+    if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_AudioManager_GetAudioVolumeManager FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    res = OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback(volumeManager, AUDIOSTREAM_USAGE_MUSIC,
+        MyOnStreamVolumeChangeCallback1, nullptr);
+    if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback 1 FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    res = OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback(volumeManager, AUDIOSTREAM_USAGE_MUSIC,
+        MyOnStreamVolumeChangeCallback1, nullptr);
+    if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback 2 FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    res = OH_AudioVolumeManager_UnregisterStreamVolumeChangeCallback(volumeManager, MyOnStreamVolumeChangeCallback1);
+    if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_AudioVolumeManager_UnregisterStreamVolumeChangeCallback 2 FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    napi_create_int32(env, TEST_PASS, &result);
+    return result;
+}
+
+static napi_value AudioVolumeManagerRegisterStreamVolumeChangeCallback_005(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    OH_AudioCommon_Result res = OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback(nullptr,
+        AUDIOSTREAM_USAGE_MUSIC, nullptr, nullptr);
+    if (res != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
+        LOG("OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    napi_create_int32(env, TEST_PASS, &result);
+    return result;
+}
+
+static napi_value AudioVolumeManagerRegisterStreamVolumeChangeCallback_006(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    OH_AudioVolumeManager *volumeManager = nullptr;
+    OH_AudioCommon_Result res = OH_AudioManager_GetAudioVolumeManager(&volumeManager);
+    if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_AudioManager_GetAudioVolumeManager FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    res = OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback(volumeManager, (OH_AudioStream_Usage)INVALID_VALUE,
+        nullptr, nullptr);
+    if (res != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
+        LOG("OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    napi_create_int32(env, TEST_PASS, &result);
+    return result;
+}
+
+static napi_value AudioVolumeManagerRegisterStreamVolumeChangeCallback_007(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    OH_AudioVolumeManager *volumeManager = nullptr;
+    OH_AudioCommon_Result res = OH_AudioManager_GetAudioVolumeManager(&volumeManager);
+    if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_AudioManager_GetAudioVolumeManager FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    res = OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback(volumeManager, AUDIOSTREAM_USAGE_MUSIC,
+        nullptr, nullptr);
+    if (res != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
+        LOG("OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    napi_create_int32(env, TEST_PASS, &result);
+    return result;
+}
+
+static napi_value AudioVolumeManagerRegisterStreamVolumeChangeCallback_008(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    OH_AudioVolumeManager *volumeManager = nullptr;
+    OH_AudioCommon_Result res = OH_AudioManager_GetAudioVolumeManager(&volumeManager);
+    if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_AudioManager_GetAudioVolumeManager FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    res = OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback(volumeManager, AUDIOSTREAM_USAGE_MUSIC,
+        MyOnStreamVolumeChangeCallback1, nullptr);
+    if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback 1 FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    res = OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback(volumeManager, AUDIOSTREAM_USAGE_RINGTONE,
+        MyOnStreamVolumeChangeCallback1, nullptr);
+    if (res != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
+        LOG("OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback 2 FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    res = OH_AudioVolumeManager_UnregisterStreamVolumeChangeCallback(volumeManager, MyOnStreamVolumeChangeCallback1);
+    if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_AudioVolumeManager_UnregisterStreamVolumeChangeCallback FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    napi_create_int32(env, TEST_PASS, &result);
+    return result;
+}
+
+static napi_value AudioVolumeManagerUnregisterStreamVolumeChangeCallback_001(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    OH_AudioCommon_Result res = OH_AudioVolumeManager_UnregisterStreamVolumeChangeCallback(nullptr, nullptr);
+    if (res != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
+        LOG("OH_AudioVolumeManager_UnregisterStreamVolumeChangeCallback FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    napi_create_int32(env, TEST_PASS, &result);
+    return result;
+}
+
+static napi_value AudioVolumeManagerUnregisterStreamVolumeChangeCallback_002(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    OH_AudioVolumeManager *volumeManager = nullptr;
+    OH_AudioCommon_Result res = OH_AudioManager_GetAudioVolumeManager(&volumeManager);
+    if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_AudioManager_GetAudioVolumeManager FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    res = OH_AudioVolumeManager_UnregisterStreamVolumeChangeCallback(volumeManager, nullptr);
+    if (res != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
+        LOG("OH_AudioVolumeManager_UnregisterStreamVolumeChangeCallback FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    napi_create_int32(env, TEST_PASS, &result);
+    return result;
+}
+
+static napi_value AudioVolumeManagerUnregisterStreamVolumeChangeCallback_003(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    OH_AudioVolumeManager *volumeManager = nullptr;
+    OH_AudioCommon_Result res = OH_AudioManager_GetAudioVolumeManager(&volumeManager);
+    if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_AudioManager_GetAudioVolumeManager FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    res = OH_AudioVolumeManager_UnregisterStreamVolumeChangeCallback(volumeManager, MyOnStreamVolumeChangeCallback1);
+    if (res != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
+        LOG("OH_AudioVolumeManager_UnregisterStreamVolumeChangeCallback FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    napi_create_int32(env, TEST_PASS, &result);
+    return result;
+}
+
+static napi_value AudioVolumeManagerUnregisterStreamVolumeChangeCallback_004(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    OH_AudioVolumeManager *volumeManager = nullptr;
+    OH_AudioCommon_Result res = OH_AudioManager_GetAudioVolumeManager(&volumeManager);
+    if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_AudioManager_GetAudioVolumeManager FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    res = OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback(volumeManager, AUDIOSTREAM_USAGE_MUSIC,
+        MyOnStreamVolumeChangeCallback1, nullptr);
+    if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback 1 FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    res = OH_AudioVolumeManager_UnregisterStreamVolumeChangeCallback(volumeManager, MyOnStreamVolumeChangeCallback1);
+    if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_AudioVolumeManager_UnregisterStreamVolumeChangeCallback 1 FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    res = OH_AudioVolumeManager_UnregisterStreamVolumeChangeCallback(volumeManager, MyOnStreamVolumeChangeCallback1);
+    if (res != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
+        LOG("OH_AudioVolumeManager_UnregisterStreamVolumeChangeCallback 2 FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    napi_create_int32(env, TEST_PASS, &result);
+    return result;
+}
+
+static napi_value AudioVolumeManagerGetRingerMode_001(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    OH_AudioVolumeManager *volumeManager = nullptr;
+    OH_AudioCommon_Result res = OH_AudioManager_GetAudioVolumeManager(&volumeManager);
+    if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_AudioManager_GetAudioVolumeManager FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    OH_AudioRingerMode ringerMode = AUDIO_RINGER_MODE_NORMAL;
+    res = OH_AudioVolumeManager_GetRingerMode(volumeManager, &ringerMode);
+    if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_AudioVolumeManager_GetRingerMode FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    napi_create_int32(env, TEST_PASS, &result);
+    return result;
+}
+
+static napi_value AudioVolumeManagerGetRingerMode_002(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    OH_AudioCommon_Result res = OH_AudioVolumeManager_GetRingerMode(nullptr, nullptr);
+    if (res != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
+        napi_create_int32(env, TEST_FAIL, &result);
+        LOG("OH_AudioVolumeManager_GetRingerMode FAILED, res is %{public}d", res);
+        return result;
+    }
+
+    napi_create_int32(env, TEST_PASS, &result);
+    return result;
+}
+
+static napi_value AudioVolumeManagerGetRingerMode_003(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    OH_AudioVolumeManager *volumeManager = nullptr;
+    OH_AudioCommon_Result res = OH_AudioManager_GetAudioVolumeManager(&volumeManager);
+    if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_AudioManager_GetAudioVolumeManager FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    res = OH_AudioVolumeManager_GetRingerMode(volumeManager, nullptr);
+    if (res != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
+        LOG("OH_AudioVolumeManager_GetRingerMode FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    napi_create_int32(env, TEST_PASS, &result);
+    return result;
+}
+
+static napi_value AudioVolumeManagerRegisterRingerModeChangeCallback_001(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    OH_AudioVolumeManager *volumeManager = nullptr;
+    OH_AudioCommon_Result res = OH_AudioManager_GetAudioVolumeManager(&volumeManager);
+    if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_AudioManager_GetAudioVolumeManager FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    res = OH_AudioVolumeManager_RegisterRingerModeChangeCallback(volumeManager, MyOnRingerModeChangeCallback, nullptr);
+    if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_AudioVolumeManager_RegisterRingerModeChangeCallback FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    res = OH_AudioVolumeManager_UnregisterRingerModeChangeCallback(volumeManager, MyOnRingerModeChangeCallback);
+    if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_AudioVolumeManager_UnregisterRingerModeChangeCallback FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    napi_create_int32(env, TEST_PASS, &result);
+    return result;
+}
+
+static napi_value AudioVolumeManagerRegisterRingerModeChangeCallback_002(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    OH_AudioCommon_Result res = OH_AudioVolumeManager_RegisterRingerModeChangeCallback(nullptr, nullptr, nullptr);
+    if (res != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
+        LOG("OH_AudioVolumeManager_RegisterRingerModeChangeCallback FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    napi_create_int32(env, TEST_PASS, &result);
+    return result;
+}
+
+static napi_value AudioVolumeManagerRegisterRingerModeChangeCallback_003(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    OH_AudioVolumeManager *volumeManager = nullptr;
+    OH_AudioCommon_Result res = OH_AudioManager_GetAudioVolumeManager(&volumeManager);
+    if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_AudioManager_GetAudioVolumeManager FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    res = OH_AudioVolumeManager_RegisterRingerModeChangeCallback(volumeManager, nullptr, nullptr);
+    if (res != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
+        LOG("OH_AudioVolumeManager_RegisterRingerModeChangeCallback FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    napi_create_int32(env, TEST_PASS, &result);
+    return result;
+}
+
+static napi_value AudioVolumeManagerUnregisterRingerModeChangeCallback_001(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    OH_AudioCommon_Result res = OH_AudioVolumeManager_UnregisterRingerModeChangeCallback(nullptr, nullptr);
+    if (res != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
+        LOG("OH_AudioVolumeManager_UnregisterRingerModeChangeCallback FAILED, res is %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    napi_create_int32(env, TEST_PASS, &result);
+    return result;
+}
+
+static napi_value AudioVolumeManagerUnregisterRingerModeChangeCallback_002(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    OH_AudioVolumeManager *volumeManager = nullptr;
+    OH_AudioCommon_Result res = OH_AudioManager_GetAudioVolumeManager(&volumeManager);
+    if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_AudioManager_GetAudioVolumeManager failed, res: %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    res = OH_AudioVolumeManager_UnregisterRingerModeChangeCallback(volumeManager, nullptr);
+    if (res != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
+        LOG("OH_AudioVolumeManager_UnregisterRingerModeChangeCallback failed, res: %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    napi_create_int32(env, TEST_PASS, &result);
+    return result;
+}
+
+static napi_value AudioVolumeManagerUnregisterRingerModeChangeCallback_003(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    OH_AudioVolumeManager *volumeManager = nullptr;
+    OH_AudioCommon_Result res = OH_AudioManager_GetAudioVolumeManager(&volumeManager);
+    if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_AudioManager_GetAudioVolumeManager failed, res: %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    res = OH_AudioVolumeManager_UnregisterRingerModeChangeCallback(volumeManager, MyOnRingerModeChangeCallback);
+    if (res != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
+        LOG("OH_AudioVolumeManager_UnregisterRingerModeChangeCallback failed, res: %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    napi_create_int32(env, TEST_PASS, &result);
+    return result;
+}
+
+static napi_value AudioVolumeManagerUnregisterRingerModeChangeCallback_004(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    OH_AudioVolumeManager *volumeManager = nullptr;
+    OH_AudioCommon_Result res = OH_AudioManager_GetAudioVolumeManager(&volumeManager);
+    if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_AudioManager_GetAudioVolumeManager failed, res: %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    res = OH_AudioVolumeManager_RegisterRingerModeChangeCallback(volumeManager, MyOnRingerModeChangeCallback, nullptr);
+    if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_AudioVolumeManager_RegisterRingerModeChangeCallback failed, res: %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    res = OH_AudioVolumeManager_UnregisterRingerModeChangeCallback(volumeManager, MyOnRingerModeChangeCallback);
+    if (res != AUDIOCOMMON_RESULT_SUCCESS) {
+        LOG("OH_AudioVolumeManager_UnregisterRingerModeChangeCallback 1 failed, res: %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    res = OH_AudioVolumeManager_UnregisterRingerModeChangeCallback(volumeManager, MyOnRingerModeChangeCallback);
+    if (res != AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM) {
+        LOG("OH_AudioVolumeManager_UnregisterRingerModeChangeCallback 2 failed, res: %{public}d", res);
+        napi_create_int32(env, TEST_FAIL, &result);
+        return result;
+    }
+
+    napi_create_int32(env, TEST_PASS, &result);
+    return result;
+}
+
+static napi_value AudioCapturerSetWillMuteWhenInterrupted(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamBuilder *builder = CreateCapturerBuilder();
+
+    OH_AudioStream_Result result = OH_AudioStreamBuilder_SetCapturerWillMuteWhenInterrupted(builder, true);
+    OH_AudioStreamBuilder_Destroy(builder);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+
+    return res;
+}
+
 EXTERN_C_START
 napi_property_descriptor desc1[] = {
     {"audioStreamBuilderSetVolumeModeTest_001", nullptr, OH_AudioStreamBuilder_SetVolumeMode_Test_001, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -5663,6 +6826,20 @@ napi_property_descriptor desc1[] = {
 napi_property_descriptor desc2[] = {
     {"audioManagerGetAudioScene_02", nullptr, AudioManagerGetAudioScene_02, nullptr, nullptr, nullptr, napi_default,
         nullptr},
+    {"audioManagerRegisterAudioSceneChangeCallback_01", nullptr, AudioManagerRegisterAudioSceneChangeCallback_01,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioManagerRegisterAudioSceneChangeCallback_02", nullptr, AudioManagerRegisterAudioSceneChangeCallback_02,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioManagerRegisterAudioSceneChangeCallback_03", nullptr, AudioManagerRegisterAudioSceneChangeCallback_03,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioManagerUnregisterAudioSceneChangeCallback_01", nullptr, AudioManagerUnregisterAudioSceneChangeCallback_01,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioManagerUnregisterAudioSceneChangeCallback_02", nullptr, AudioManagerUnregisterAudioSceneChangeCallback_02,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioManagerUnregisterAudioSceneChangeCallback_03", nullptr, AudioManagerUnregisterAudioSceneChangeCallback_03,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioManagerUnregisterAudioSceneChangeCallback_04", nullptr, AudioManagerUnregisterAudioSceneChangeCallback_04,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
     {"audioRoutingManagerGetAvailableDevices001", nullptr, AudioRoutingManagerGetAvailableDevices001, nullptr,
         nullptr, nullptr, napi_default, nullptr},
     {"audioRoutingManagerGetPreferredOutputDevice001", nullptr, AudioRoutingManagerGetPreferredOutputDevice001,
@@ -5821,18 +6998,104 @@ napi_property_descriptor desc2[] = {
     {"audioRendererStart", nullptr, AudioRendererStart, nullptr, nullptr, nullptr, napi_default, nullptr},
     {"audioRendererStop", nullptr, AudioRendererStop, nullptr, nullptr, nullptr, napi_default, nullptr},
     {"audioRendererRelease", nullptr, AudioRendererRelease, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"AudioCapturerSetWillMuteWhenInterrupted", nullptr,
+        AudioCapturerSetWillMuteWhenInterrupted, nullptr, nullptr, nullptr, napi_default, nullptr}
 };
-
+napi_property_descriptor desc3[] = {
+    {"audioManagerGetAudioVolumeManager_001", nullptr, AudioManagerGetAudioVolumeManager_001,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioManagerGetAudioVolumeManager_002", nullptr, AudioManagerGetAudioVolumeManager_002,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioVolumeManagerGetMaxVolumeByUsage_001", nullptr, AudioVolumeManagerGetMaxVolumeByUsage_001,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioVolumeManagerGetMaxVolumeByUsage_002", nullptr, AudioVolumeManagerGetMaxVolumeByUsage_002,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioVolumeManagerGetMaxVolumeByUsage_003", nullptr, AudioVolumeManagerGetMaxVolumeByUsage_003,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioVolumeManagerGetMaxVolumeByUsage_004", nullptr, AudioVolumeManagerGetMaxVolumeByUsage_004,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioVolumeManagerGetMinVolumeByUsage_001", nullptr, AudioVolumeManagerGetMinVolumeByUsage_001,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioVolumeManagerGetMinVolumeByUsage_002", nullptr, AudioVolumeManagerGetMinVolumeByUsage_002,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioVolumeManagerGetMinVolumeByUsage_003", nullptr, AudioVolumeManagerGetMinVolumeByUsage_003,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioVolumeManagerGetMinVolumeByUsage_004", nullptr, AudioVolumeManagerGetMinVolumeByUsage_004,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioVolumeManagerGetVolumeByUsage_001", nullptr, AudioVolumeManagerGetVolumeByUsage_001,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioVolumeManagerGetVolumeByUsage_002", nullptr, AudioVolumeManagerGetVolumeByUsage_002,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioVolumeManagerGetVolumeByUsage_003", nullptr, AudioVolumeManagerGetVolumeByUsage_003,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioVolumeManagerGetVolumeByUsage_004", nullptr, AudioVolumeManagerGetVolumeByUsage_004,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioVolumeManagerIsMuteByUsage_001", nullptr, AudioVolumeManagerIsMuteByUsage_001,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioVolumeManagerIsMuteByUsage_002", nullptr, AudioVolumeManagerIsMuteByUsage_002,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioVolumeManagerIsMuteByUsage_003", nullptr, AudioVolumeManagerIsMuteByUsage_003,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioVolumeManagerIsMuteByUsage_004", nullptr, AudioVolumeManagerIsMuteByUsage_004,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioVolumeManagerRegisterStreamVolumeChangeCallback_001", nullptr,
+        AudioVolumeManagerRegisterStreamVolumeChangeCallback_001, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioVolumeManagerRegisterStreamVolumeChangeCallback_002", nullptr,
+        AudioVolumeManagerRegisterStreamVolumeChangeCallback_002, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioVolumeManagerRegisterStreamVolumeChangeCallback_003", nullptr,
+        AudioVolumeManagerRegisterStreamVolumeChangeCallback_003, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioVolumeManagerRegisterStreamVolumeChangeCallback_004", nullptr,
+        AudioVolumeManagerRegisterStreamVolumeChangeCallback_004, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioVolumeManagerRegisterStreamVolumeChangeCallback_005", nullptr,
+        AudioVolumeManagerRegisterStreamVolumeChangeCallback_005, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioVolumeManagerRegisterStreamVolumeChangeCallback_006", nullptr,
+        AudioVolumeManagerRegisterStreamVolumeChangeCallback_006, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioVolumeManagerRegisterStreamVolumeChangeCallback_007", nullptr,
+        AudioVolumeManagerRegisterStreamVolumeChangeCallback_007, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioVolumeManagerRegisterStreamVolumeChangeCallback_008", nullptr,
+        AudioVolumeManagerRegisterStreamVolumeChangeCallback_008, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioVolumeManagerUnregisterStreamVolumeChangeCallback_001", nullptr, 
+        AudioVolumeManagerUnregisterStreamVolumeChangeCallback_001, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioVolumeManagerUnregisterStreamVolumeChangeCallback_002", nullptr, 
+        AudioVolumeManagerUnregisterStreamVolumeChangeCallback_002, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioVolumeManagerUnregisterStreamVolumeChangeCallback_003", nullptr, 
+        AudioVolumeManagerUnregisterStreamVolumeChangeCallback_003, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioVolumeManagerUnregisterStreamVolumeChangeCallback_004", nullptr, 
+        AudioVolumeManagerUnregisterStreamVolumeChangeCallback_004, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioVolumeManagerGetRingerMode_001", nullptr, AudioVolumeManagerGetRingerMode_001,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioVolumeManagerGetRingerMode_002", nullptr, AudioVolumeManagerGetRingerMode_002,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioVolumeManagerGetRingerMode_003", nullptr, AudioVolumeManagerGetRingerMode_003,
+        nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioVolumeManagerRegisterRingerModeChangeCallback_001", nullptr, 
+        AudioVolumeManagerRegisterRingerModeChangeCallback_001, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioVolumeManagerRegisterRingerModeChangeCallback_002", nullptr, 
+        AudioVolumeManagerRegisterRingerModeChangeCallback_002, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioVolumeManagerRegisterRingerModeChangeCallback_003", nullptr, 
+        AudioVolumeManagerRegisterRingerModeChangeCallback_003, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioVolumeManagerUnregisterRingerModeChangeCallback_001", nullptr, 
+        AudioVolumeManagerUnregisterRingerModeChangeCallback_001, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioVolumeManagerUnregisterRingerModeChangeCallback_002", nullptr, 
+        AudioVolumeManagerUnregisterRingerModeChangeCallback_002, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioVolumeManagerUnregisterRingerModeChangeCallback_003", nullptr, 
+        AudioVolumeManagerUnregisterRingerModeChangeCallback_003, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"audioVolumeManagerUnregisterRingerModeChangeCallback_004", nullptr, 
+        AudioVolumeManagerUnregisterRingerModeChangeCallback_004, nullptr, nullptr, nullptr, napi_default, nullptr},
+};
 static napi_value Init(napi_env env, napi_value exports)
 {
     size_t mergedLength = sizeof(desc1) / sizeof(desc1[0]) +
-    sizeof(desc2) / sizeof(desc2[0]);
+    sizeof(desc2) / sizeof(desc2[0]) + sizeof(desc3) / sizeof(desc3[0]);
     napi_property_descriptor mergedArray[mergedLength];
     for (size_t i = 0; i < sizeof(desc1) / sizeof(desc1[0]); ++i) {
         mergedArray[i] = desc1[i];
     }
     for (size_t i = 0; i < sizeof(desc2) / sizeof(desc2[0]); ++i) {
         mergedArray[sizeof(desc1) / sizeof(desc1[0]) + i] = desc2[i];
+    }
+    for (size_t i = 0; i < sizeof(desc3) / sizeof(desc3[0]); ++i) {
+        mergedArray[sizeof(desc1) / sizeof(desc1[0]) + sizeof(desc2) / sizeof(desc2[0]) + i] = desc3[i];
     }
     napi_define_properties(env, exports, mergedLength, mergedArray);
     return exports;

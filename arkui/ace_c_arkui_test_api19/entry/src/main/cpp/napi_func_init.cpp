@@ -46,7 +46,23 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testCustomDialogEnableHoverMode", nullptr, TestCustomDialogEnableHoverMode, nullptr, nullptr, nullptr,
             napi_default, nullptr},
         {"testCustomDialogHoverModeArea", nullptr, TestCustomDialogHoverModeArea, nullptr, nullptr, nullptr,
-            napi_default, nullptr}
+            napi_default, nullptr},
+        {"testCustomDialogLevelMode", nullptr, TestCustomDialogLevelMode, nullptr, nullptr, nullptr,
+            napi_default, nullptr},
+        {"testCustomDialogLevelUniqueId", nullptr, TestCustomDialogLevelUniqueId, nullptr, nullptr, nullptr,
+            napi_default, nullptr},
+        {"testCustomDialogImmersiveMode", nullptr, TestCustomDialogImmersiveMode, nullptr, nullptr, nullptr,
+            napi_default, nullptr},
+        {"testCustomDialogBackgroundColor", nullptr, TestCustomDialogBackgroundColor, nullptr, nullptr, nullptr,
+            napi_default, nullptr},
+        {"testCustomDialogCornerRadius", nullptr, TestCustomDialogCornerRadius, nullptr, nullptr, nullptr,
+            napi_default, nullptr},
+        {"testCustomModalMode", nullptr, TestCustomModalMode, nullptr, nullptr, nullptr,
+            napi_default, nullptr},
+        {"testCustomAutoCancel", nullptr, TestCustomAutoCancel, nullptr, nullptr, nullptr,
+            napi_default, nullptr},
+        {"testCustomMask", nullptr, TestCustomMask, nullptr, nullptr, nullptr,
+            napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");

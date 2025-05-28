@@ -222,6 +222,69 @@ export default function geolocationTest_geo8() {
             }
             done();
         })
+
+        /**
+        * @tc.number    : SUB_HSS_LOCATIONSYSTEM_GET_DISTANCE_BETWEEN_LOCATIONS_0001
+        * @tc.name      : testGetDistanceBetweenLocations01
+        * @tc.desc      : Obtain the 
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 2
+        */
+        it('testGetDistanceBetweenLocations01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+            try {
+                let location1 = {"latitude": 30.12, "longitude": 120.11, "altitude": 0, "accuracy": 0,
+                    "speed": 0, "timeStamp": 0, "direction": 0, "timeSinceBoot": 0, "additionSize": 0}
+                let location2 = {"latitude": 30.12, "longitude": 120.11, "altitude": 0, "accuracy": 0,
+                    "speed": 0, "timeStamp": 0, "direction": 0, "timeSinceBoot": 0, "additionSize": 0}
+                let distance1 = geolocationm.getDistanceBetweenLocations(location1, location2);
+                expect(distance1).assertEqual(0)
+            } catch(error) {
+                console.error("getDistanceBetweenLocations: errCode" + error.code + ", errMessage" + error.message);
+                expect(true).assertFail();
+            }
+            done();
+        })
+
+        /**
+        * @tc.number    : SUB_HSS_LOCATIONSYSTEM_IS_POI_SERVICE_SUPPORTED_0001
+        * @tc.name      : testIsPoiServiceSupported001
+        * @tc.desc      : Obtain the 
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 2
+        */
+        it('testIsPoiServiceSupported001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+            try {
+                let poiServiceState = geolocationm.isPoiServiceSupported()
+                if (poiServiceState) {
+                    expect(poiServiceState).assertEqual(true)
+                    let poiInfo = await geolocationm.getPoiInfo()
+                    if (poiInfo) {
+                        let poiArray = poiInfo.poiArray
+                        expect(true).assertEqual(poiArray != null)
+                        if (poiArray && poiArray.length > 0) {
+                            expect(true).assertEqual(poiArray[0].id != 'NA')
+                            expect(true).assertEqual(poiArray[0].confidence != -1)
+                            expect(true).assertEqual(poiArray[0].name != 'NA')
+                            expect(true).assertEqual(poiArray[0].latitude != -1)
+                            expect(true).assertEqual(poiArray[0].lontitude != -1)
+                            expect(true).assertEqual(poiArray[0].administrativeArea != 'NA')
+                            expect(true).assertEqual(poiArray[0].locatity != 'NA')
+                            expect(true).assertEqual(poiArray[0].subLocality != 'NA')
+                            expect(true).assertEqual(poiArray[0].address != 'NA')
+                        }
+                        expect(true).assertEqual(poiInfo.timestamp != -1)
+                    }
+                } else {
+                    expect(poiServiceState).assertEqual(false)
+                }
+            } catch(error) {
+                console.error("testIsPoiServiceSupported001: errCode" + error.code + ", errMessage" + error.message);
+                expect(true).assertFail();
+            }
+            done()
+        })
     })
 }
 

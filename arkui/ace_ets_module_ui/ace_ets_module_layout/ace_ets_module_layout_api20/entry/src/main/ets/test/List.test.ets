@@ -14,8 +14,10 @@
  */
 import FlexLayoutPolicyTest from './Flex/FlexLayoutPolicyTest.test.ets'
 import GridRowNoColumnsTest from './GridRow/GridRowNoColumnsTest.test.ets'
+import LayoutInspectorTest from './inspector/layoutInspector.test.ets'
 
 export default function testsuite() {
   FlexLayoutPolicyTest();
   GridRowNoColumnsTest();
+  LayoutInspectorTest();
 }

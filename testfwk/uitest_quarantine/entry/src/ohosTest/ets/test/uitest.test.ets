@@ -52,6 +52,68 @@ async function exitInputMethod() {
 }
 
 export default function UiTest() {
+  describe('UiTest_API20', () => {
+    let driver: Driver
+    beforeAll(async (done: Function) => {
+      driver = Driver.create()
+      await driver.delayMs(1000)
+      done()
+    })
+
+    beforeEach(async () => {
+      await stopApplication('com.uitestScene.acts');
+    })
+
+    /*
+     * @tc.number: uiTest_20002
+     * @tc.name: testDragBetween
+     * @tc.desc: drag this UiComponent to the bounds rect of target UiComponent, the value of duration is 3000, the value of speed is 3000.
+     */
+    it('testDragBetween', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.log(TestTag, 'testDragBetween start');
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+      await driver.delayMs(waitUiReadyMs)
+      let button = await driver.findComponent(ON.id('jump'))
+      await button.longClick()
+      await driver.delayMs(waitUiReadyMs)
+      let text1 = await driver.findComponent(ON.text('one'))
+      let text2 = await driver.findComponent(ON.text('two'))
+      let center1 = await text1.getBoundsCenter()
+      let center2 = await text2.getBoundsCenter()
+      await driver.dragBetween(center1, center2, 3000, 3000)
+      await driver.delayMs(waitUiReadyMs)
+      let text = await driver.findComponent(ON.text('one').isBefore(ON.text('two')))
+      expect(text == null).assertTrue()
+      await stopApplication('com.uitestScene.acts')
+      console.log(TestTag, 'testDragBetween over');
+    })
+
+    /*
+    * @tc.number: uiTest_20003
+    * @tc.name: testNewMouseDrag
+    * @tc.desc: drag on the screen between the specified points by mouse, the value of speed and duration are 3000.
+    */
+    it('testNewMouseDrag', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.log(TestTag, 'testNewMouseDrag start');
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+      await driver.delayMs(waitUiReadyMs)
+      let button = await driver.findComponent(ON.id('jump'))
+      let center = await button.getBoundsCenter();
+      await driver.mouseLongClick(center, MouseButton.MOUSE_BUTTON_LEFT, 0, 2072, 3000)
+      console.log(TestTag, 'mouseLongClick successful');
+      await driver.delayMs(waitUiReadyMs)
+      let text1 = await driver.findComponent(ON.text('one'))
+      let text2 = await driver.findComponent(ON.text('two'))
+      let point1 = await text1.getBoundsCenter()
+      let point2 = await text2.getBoundsCenter()
+      await driver.mouseDrag(point1, point2, 600, 3000)
+      await driver.delayMs(2000)
+      let text = await driver.findComponent(ON.text('one').isBefore(ON.text('two')))
+      expect(text == null).assertTrue()
+      console.log(TestTag, 'testNewMouseDrag over');
+    })
+
+  })
   describe('UiTest_API16', () => {
     let driver: Driver
     beforeAll(async (done: Function) => {
@@ -130,8 +192,8 @@ export default function UiTest() {
       let center = await button.getBoundsCenter();
       await driver.mouseLongClick(center, MouseButton.MOUSE_BUTTON_LEFT)
       await driver.delayMs(waitUiReadyMs)
-      let text1 = await driver.findComponent(ON.text('two'))
-      let text2 = await driver.findComponent(ON.text('three'))
+      let text1 = await driver.findComponent(ON.text('one'))
+      let text2 = await driver.findComponent(ON.text('two'))
       let point1 = await text1.getBoundsCenter()
       let point2 = await text2.getBoundsCenter()
       await driver.mouseDrag(point1, point2, 600)

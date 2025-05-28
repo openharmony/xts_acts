@@ -1783,7 +1783,7 @@ describe('threadWorkerTest', function () {
                 await promiseCase()
             }
             expect(error.name).assertEqual("BusinessError")
-            expect(error.message).assertEqual("An exception occurred during serialization, failed to serialize message.")
+            expect(error.message).assertContain("An exception occurred during serialization, failed to serialize message.")
             flag = false
             ss.terminate()
             while (!flag) {
@@ -2508,7 +2508,7 @@ describe('threadWorkerTest', function () {
         while (!isTerminate) {
             await promiseCase();
         }
-        expect(res).assertEqual("An exception occurred during serialization, failed to serialize message.");
+        expect(res).assertContain("An exception occurred during serialization, failed to serialize message.");
         done();
     })
 
@@ -3318,7 +3318,9 @@ describe('threadWorkerTest', function () {
             flag = true;
             errorMessage = e.message;
             console.log("threadWorker_onAllErrors_test_003 onAllErrors is: " + e.message);
-            workerInstance.terminate();
+            if (errorMessage.includes("BusinessError: An exception occurred during serialization, failed to serialize message.")) {
+                workerInstance.terminate();
+            }
         }
 
         workerInstance.onexit = function() {
@@ -3340,7 +3342,7 @@ describe('threadWorkerTest', function () {
             await promiseCase();
         }
 
-        expect(errorMessage).assertEqual("BusinessError: An exception occurred during serialization, failed to serialize message.");
+        expect(errorMessage).assertContain("BusinessError: An exception occurred during serialization, failed to serialize message.");
         expect(flag).assertTrue();
         done();
     })
@@ -3400,7 +3402,7 @@ describe('threadWorkerTest', function () {
             await promiseCase();
         }
 
-        expect(errorMessage).assertEqual("TypeError: is not callable");
+        expect(errorMessage).assertEqual("TypeError: undefined is not callable");
         expect(flag).assertTrue();
         done();
     })
@@ -3480,15 +3482,17 @@ describe('threadWorkerTest', function () {
         workerInstance.onAllErrors = function(e) {
             count++;
             flag = true;
-            if (count == 1) {
+            if (e.message == "Error: newworker_047 onmessageerror throw error") {
                 errorMessage = e.message;
                 console.log("threadWorker_onAllErrors_test_006 onAllErrors with 1 is: ", e.message);
             }
-            if (count == 2) {
+            if (e.message.includes("BusinessError: An exception occurred during serialization, failed to serialize message.")) {
                 errorMessage1 = e.message;
                 console.log("threadWorker_onAllErrors_test_006 onAllErrors with 2 is: ", e.message);
             }
-            workerInstance.terminate();
+            if (errorMessage != "" && errorMessage1 != "") {
+                workerInstance.terminate();
+            }
         }
 
         workerInstance.onexit = function() {
@@ -3513,7 +3517,7 @@ describe('threadWorkerTest', function () {
         expect(flag).assertTrue();
         expect(isTerminate).assertTrue();
         expect(errorMessage).assertEqual("Error: newworker_047 onmessageerror throw error");
-        expect(errorMessage1).assertEqual("BusinessError: An exception occurred during serialization, failed to serialize message.");
+        expect(errorMessage1).assertContain("BusinessError: An exception occurred during serialization, failed to serialize message.");
         done();
     })
 

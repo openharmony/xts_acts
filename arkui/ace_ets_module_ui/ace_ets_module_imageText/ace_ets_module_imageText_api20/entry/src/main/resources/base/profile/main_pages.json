@@ -4,6 +4,8 @@
     "MainAbility/pages/Text/textAreaInputTest",
     "MainAbility/pages/Search/SearchType",
     "MainAbility/pages/TextArea/TextAreaType",
-    "MainAbility/pages/TextInput/TextInputType"
+    "MainAbility/pages/TextInput/TextInputType",
+    "MainAbility/pages/Text/ResourceNormal",
+    "MainAbility/pages/Text/ResourceModifier"
   ]
 }

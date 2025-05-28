@@ -23,7 +23,7 @@ import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
 
 let driver = Driver.create();
-let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
+let deviceSupport = systemParameterEnhance.getSync('persist.sys.abilityms.move_ui_ability_to_background_api_enable');
 let subscriberInfo:commonEventManager.CommonEventSubscribeInfo = {
   events: ['onCreateMain_To_Test_CommonEvent',
     'onWindowStageCreateMain_To_Test_CommonEvent',
@@ -237,7 +237,7 @@ export default function abilityTest() {
      */
     it('ACTS_NewWant_Test_0300', Level.LEVEL0, async (done:Function) => {
       console.log("ACTS_NewWant_Test_0300 --- start")
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }
@@ -321,7 +321,7 @@ export default function abilityTest() {
      */
     it('ACTS_NewWant_Test_0400', Level.LEVEL0, async (done:Function) => {
       console.log("ACTS_NewWant_Test_0400 --- start")
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }
@@ -406,7 +406,7 @@ export default function abilityTest() {
      */
     it('ACTS_NewWant_Test_0500', Level.LEVEL0, async (done:Function) => {
       console.log("ACTS_NewWant_Test_0500 --- start")
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }
@@ -491,7 +491,7 @@ export default function abilityTest() {
      */
     it('ACTS_NewWant_Test_0600', Level.LEVEL0, async (done:Function) => {
       console.log("ACTS_NewWant_Test_0600 --- start")
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }
@@ -567,7 +567,7 @@ export default function abilityTest() {
      */
     it('ACTS_NewWant_Test_0700', Level.LEVEL0, async (done:Function) => {
       console.log("ACTS_NewWant_Test_0700 --- start")
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }
@@ -643,7 +643,7 @@ export default function abilityTest() {
      */
     it('ACTS_NewWant_Test_0800', Level.LEVEL0, async (done:Function) => {
       console.log("ACTS_NewWant_Test_0800 --- start")
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }

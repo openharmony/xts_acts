@@ -44,6 +44,12 @@ function ExpectFail(): void {
   }
 }
 
+function sleep(time:number):Promise<string> {
+    return new Promise<string>((resolve) => {setTimeout(()=>{
+      resolve('ok')},time)
+ });
+}
+
 type emptyFunc = () => void;
 
 const TEST_MORE_LEN: number = 2;
@@ -101,6 +107,7 @@ export default function HttpRequestOnOffTest() {
                 );
               }
               Promise.all(list).then(() => {
+                sleep(100);
                 ExpectTrue(called == 1);
                 httpRequest.destroy();
                 done();
@@ -170,6 +177,7 @@ export default function HttpRequestOnOffTest() {
                 );
               }
               Promise.all(list).then(() => {
+                sleep(100);
                 ExpectTrue(called == 1);
                 httpRequest.destroy();
                 done();
@@ -240,6 +248,7 @@ export default function HttpRequestOnOffTest() {
                 );
               }
               Promise.all(list).then(() => {
+                sleep(100);
                 ExpectTrue(called == TEST_MORE_REQUEST_LEN);
                 httpRequest.destroy();
                 done();
@@ -309,6 +318,7 @@ export default function HttpRequestOnOffTest() {
                 );
               }
               Promise.all(list).then(() => {
+                sleep(100);
                 ExpectTrue(called == 1);
                 httpRequest.destroy();
                 httpRequest.off('headersReceive');
@@ -380,6 +390,7 @@ export default function HttpRequestOnOffTest() {
                 ;
               }
               Promise.all(list).then(() => {
+                sleep(100);
                 ExpectTrue(called == 1);
                 httpRequest.destroy();
                 httpRequest.off('headersReceive');
@@ -451,6 +462,7 @@ export default function HttpRequestOnOffTest() {
                 ;
               }
               Promise.all(list).then(() => {
+                sleep(100);
                 ExpectTrue(called == TEST_MORE_REQUEST_LEN);
                 httpRequest.destroy();
                 httpRequest.off('headersReceive');
@@ -522,6 +534,7 @@ export default function HttpRequestOnOffTest() {
                 ;
               }
               Promise.all(list).then(() => {
+                sleep(100);
                 ExpectTrue(called >= 1);
                 httpRequest.destroy();
                 done();
@@ -592,6 +605,7 @@ export default function HttpRequestOnOffTest() {
                 ;
               }
               Promise.all(list).then(() => {
+                sleep(100);
                 ExpectTrue(called >= 1);
                 httpRequest.destroy();
                 done();
@@ -663,6 +677,7 @@ export default function HttpRequestOnOffTest() {
                 ;
               }
               Promise.all(list).then(() => {
+                sleep(100);
                 ExpectTrue(called >= TEST_MORE_REQUEST_LEN);
                 httpRequest.destroy();
                 done();
@@ -736,6 +751,7 @@ export default function HttpRequestOnOffTest() {
                 ;
               }
               Promise.all(list).then(() => {
+                sleep(100);
                 ExpectTrue(called == 1);
                 httpRequest.destroy();
                 done();
@@ -808,6 +824,7 @@ export default function HttpRequestOnOffTest() {
                 ;
               }
               Promise.all(list).then(() => {
+                sleep(100);
                 ExpectTrue(called == 1);
                 httpRequest.destroy();
                 done();
@@ -880,6 +897,7 @@ export default function HttpRequestOnOffTest() {
                 );
               }
               Promise.all(list).then(() => {
+                sleep(100);
                 ExpectTrue(called == 2);
                 httpRequest.destroy();
                 done();
@@ -950,6 +968,7 @@ export default function HttpRequestOnOffTest() {
                 );
               }
               Promise.all(list).then(() => {
+                sleep(100);
                 ExpectTrue(called >= 1);
                 httpRequest.destroy();
                 done();
@@ -1019,6 +1038,7 @@ export default function HttpRequestOnOffTest() {
                 );
               }
               Promise.all(list).then(() => {
+                sleep(100);
                 ExpectTrue(called >= 1);
                 httpRequest.destroy();
                 done();
@@ -1089,6 +1109,7 @@ export default function HttpRequestOnOffTest() {
                 );
               }
               Promise.all(list).then(() => {
+                sleep(100);
                 ExpectTrue(called >= TEST_MORE_REQUEST_LEN);
                 httpRequest.destroy();
                 done();
@@ -1161,6 +1182,7 @@ export default function HttpRequestOnOffTest() {
                 );
               }
               Promise.all(list).then(() => {
+                sleep(100);
                 ExpectTrue(called >= 0);
                 httpRequest.destroy();
                 done();
@@ -1230,6 +1252,7 @@ export default function HttpRequestOnOffTest() {
                 );
               }
               Promise.all(list).then(() => {
+                sleep(100);
                 ExpectTrue(called >= 0);
                 httpRequest.destroy();
                 done();
@@ -1302,6 +1325,7 @@ export default function HttpRequestOnOffTest() {
                 );
               }
               Promise.all(list).then(() => {
+                sleep(100);
                 ExpectTrue(called >= 0);
                 httpRequest.destroy();
                 done();
@@ -1372,6 +1396,7 @@ export default function HttpRequestOnOffTest() {
                 );
               }
               Promise.all(list).then(() => {
+                sleep(100);
                 ExpectTrue(called == 1);
                 httpRequest.destroy();
                 httpRequest.off('headersReceive');
@@ -1443,6 +1468,7 @@ export default function HttpRequestOnOffTest() {
                 );
               }
               Promise.all(list).then(() => {
+                sleep(100);
                 ExpectTrue(called == 1);
                 httpRequest.destroy();
                 httpRequest.off('headersReceive');
@@ -1513,6 +1539,7 @@ export default function HttpRequestOnOffTest() {
                 );
               }
               Promise.all(list).then(() => {
+                sleep(100);
                 ExpectTrue(called == 1);
                 httpRequest.destroy();
                 httpRequest.off('headersReceive');
@@ -1584,6 +1611,7 @@ export default function HttpRequestOnOffTest() {
                 );
               }
               Promise.all(list).then(() => {
+                sleep(100);
                 ExpectTrue(called == 1);
                 httpRequest.destroy();
                 httpRequest.off('headersReceive');
@@ -1655,6 +1683,7 @@ export default function HttpRequestOnOffTest() {
                 );
               }
               Promise.all(list).then(() => {
+                sleep(100);
                 ExpectTrue(called == 1);
                 httpRequest.destroy();
                 httpRequest.off('headersReceive');
@@ -1726,6 +1755,7 @@ export default function HttpRequestOnOffTest() {
                 );
               }
               Promise.all(list).then(() => {
+                sleep(100);
                 ExpectTrue(called == 1);
                 httpRequest.destroy();
                 httpRequest.off('headersReceive');
@@ -1788,6 +1818,7 @@ export default function HttpRequestOnOffTest() {
                 });
               });
               promise.then(() => {
+                sleep(100);
                 ExpectTrue(called == 0);
                 httpRequest.destroy();
                 done();
@@ -1848,6 +1879,7 @@ export default function HttpRequestOnOffTest() {
                 });
               });
               promise.then(() => {
+                sleep(100);
                 ExpectTrue(called == 0);
                 httpRequest.destroy();
                 done();
@@ -1909,6 +1941,7 @@ export default function HttpRequestOnOffTest() {
                 });
               });
               promise.then(() => {
+                sleep(100);
                 ExpectTrue(called == 0);
                 httpRequest.destroy();
                 done();
@@ -1970,6 +2003,7 @@ export default function HttpRequestOnOffTest() {
                 });
               });
               promise.then(() => {
+                sleep(100);
                 ExpectTrue(called >= 0);
                 httpRequest.destroy();
                 done();
@@ -2032,6 +2066,7 @@ export default function HttpRequestOnOffTest() {
                 );
               }
               Promise.all(list).then(() => {
+                sleep(100);
                 ExpectTrue(called == 1);
                 httpRequest.destroy();
                 done();
@@ -2093,6 +2128,7 @@ export default function HttpRequestOnOffTest() {
                 );
               }
               Promise.all(list).then(() => {
+                sleep(100);
                 ExpectTrue(called == 1);
                 httpRequest.destroy();
                 done();
@@ -2154,6 +2190,7 @@ export default function HttpRequestOnOffTest() {
                 );
               }
               Promise.all(list).then(() => {
+                sleep(100);
                 ExpectTrue(called == TEST_MORE_REQUEST_LEN);
                 httpRequest.destroy();
                 done();
@@ -2216,6 +2253,7 @@ export default function HttpRequestOnOffTest() {
                 );
               }
               Promise.all(list).then(() => {
+                sleep(100);
                 ExpectTrue(called == 1);
                 httpRequest.off('headersReceive');
                 httpRequest.destroy();
@@ -2278,6 +2316,7 @@ export default function HttpRequestOnOffTest() {
                 );
               }
               Promise.all(list).then(() => {
+                sleep(100);
                 ExpectTrue(called == 1);
                 httpRequest.destroy();
                 httpRequest.off('headersReceive');
@@ -2340,6 +2379,7 @@ export default function HttpRequestOnOffTest() {
                 );
               }
               Promise.all(list).then(() => {
+                sleep(100);
                 ExpectTrue(called == TEST_MORE_REQUEST_LEN);
                 httpRequest.destroy();
                 httpRequest.off('headersReceive');
@@ -2402,6 +2442,7 @@ export default function HttpRequestOnOffTest() {
                 );
               }
               Promise.all(list).then(() => {
+                sleep(100);
                 ExpectTrue(called >= 1);
                 httpRequest.destroy();
                 done();
@@ -2463,6 +2504,7 @@ export default function HttpRequestOnOffTest() {
                 );
               }
               Promise.all(list).then(() => {
+                sleep(100);
                 ExpectTrue(called >= 1);
                 httpRequest.destroy();
                 done();
@@ -2525,6 +2567,7 @@ export default function HttpRequestOnOffTest() {
                 );
               }
               Promise.all(list).then(() => {
+                sleep(100);
                 ExpectTrue(called >= TEST_MORE_REQUEST_LEN);
                 httpRequest.destroy();
                 done();
@@ -2588,6 +2631,7 @@ export default function HttpRequestOnOffTest() {
               }
               Promise.all(list).then(() => {
                 setTimeout(() => {
+                  sleep(100);
                   console.info(`${caseName} called: ${called}}`);
                   ExpectTrue(called == 1);
                   httpRequest.destroy();
@@ -2653,6 +2697,7 @@ export default function HttpRequestOnOffTest() {
               }
               Promise.all(list).then(() => {
                 setTimeout(() => {
+                  sleep(100);
                   console.info(`${caseName} called: ${called}}`);
                   ExpectTrue(called == 1);
                   httpRequest.destroy();
@@ -2718,6 +2763,7 @@ export default function HttpRequestOnOffTest() {
               }
               Promise.all(list).then(() => {
                 setTimeout(() => {
+                  sleep(100);
                   console.info(`${caseName} called: ${called}}`);
                   ExpectTrue(called == 2);
                   httpRequest.destroy();
@@ -2782,6 +2828,7 @@ export default function HttpRequestOnOffTest() {
                 );
               }
               Promise.all(list).then(() => {
+                sleep(100);
                 ExpectTrue(called >= 1);
                 httpRequest.destroy();
                 done();
@@ -2843,6 +2890,7 @@ export default function HttpRequestOnOffTest() {
                 );
               }
               Promise.all(list).then(() => {
+                sleep(100);
                 ExpectTrue(called >= 1);
                 httpRequest.destroy();
                 done();
@@ -2905,6 +2953,7 @@ export default function HttpRequestOnOffTest() {
                 );
               }
               Promise.all(list).then(() => {
+                sleep(100);
                 ExpectTrue(called >= TEST_MORE_REQUEST_LEN);
                 httpRequest.destroy();
                 done();
@@ -2967,6 +3016,7 @@ export default function HttpRequestOnOffTest() {
                 );
               }
               Promise.all(list).then(() => {
+                sleep(100);
                 ExpectTrue(called >= 0);
                 httpRequest.destroy();
                 done();
@@ -3028,6 +3078,7 @@ export default function HttpRequestOnOffTest() {
                 );
               }
               Promise.all(list).then(() => {
+                sleep(100);
                 ExpectTrue(called == 0);
                 httpRequest.destroy();
                 done();
@@ -3090,6 +3141,7 @@ export default function HttpRequestOnOffTest() {
                 );
               }
               Promise.all(list).then(() => {
+                sleep(100);
                 ExpectTrue(called >= 0);
                 httpRequest.destroy();
                 done();
@@ -3140,6 +3192,7 @@ export default function HttpRequestOnOffTest() {
                 called++;
               });
               httpRequest.requestInStream(ADDR_TEST_STREAM_HTTPS).then((res: number) => {
+                sleep(100);
                 console.info(`${caseName} request sunccess, data: ${JSON.stringify(res)}`);
                 console.info(`${caseName} called: ${called}`);
                 ExpectTrue(called == 1);
@@ -3192,6 +3245,7 @@ export default function HttpRequestOnOffTest() {
                 called++;
               });
               httpRequest.request(ADDR_TEST_STREAM_HTTPS).then((res: http.HttpResponse) => {
+                sleep(100);
                 console.info(`${caseName} request sunccess, data: ${JSON.stringify(res)}`);
                 console.info(`${caseName} called: ${called}`);
                 ExpectTrue(called == 0);
@@ -3245,6 +3299,7 @@ export default function HttpRequestOnOffTest() {
                 called++;
               });
               httpRequest.requestInStream(ADDR_TEST_STREAM_HTTPS).then((res: number) => {
+                sleep(100);
                 console.info(`${caseName} request sunccess, data: ${JSON.stringify(res)}`);
                 console.info(`${caseName} called: ${called}`);
                 ExpectTrue(called == 1);
@@ -3298,6 +3353,7 @@ export default function HttpRequestOnOffTest() {
                 called++;
               });
               httpRequest.request(ADDR_TEST_STREAM_HTTPS).then((res: http.HttpResponse) => {
+                sleep(100);
                 console.info(`${caseName} request sunccess, data: ${JSON.stringify(res)}`);
                 ExpectTrue(called == 0);
                 httpRequest.destroy();

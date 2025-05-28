@@ -64,8 +64,11 @@ export default function abilityTest() {
       hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}  =========`);
       let subscriber: commonEventManager.CommonEventSubscriber | null = null;
       let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-        events: ['action1'],
+        events: ['action1', 'EventAppSelectNotExist'],
       };
+      let UnSubscribeInfoCallback = (err: BusinessError) => {
+        console.info(TAG + " UnSubscribeInfoCallback called");
+      }
       commonEventManager.createSubscriber(subscribeInfo, async (err: BusinessError, subscribedata: commonEventManager.CommonEventSubscriber) => {
         if (err) {
           hilog.error(DOMAIN_NUMBER, TAG, `Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
@@ -81,11 +84,15 @@ export default function abilityTest() {
             if (err) {
               hilog.error(DOMAIN_NUMBER, TAG, `Failed to subscribe common event. Code is ${err.code}, message is ${err.message}`);
               return;
-            }else {
-              hilog.info(0x0000, 'this +++++++803', '%{public}s', data.data);
-              expect(JSON.stringify('-~!@#$ %^&*')).assertEqual(JSON.stringify(data.data));
-              done();
             }
+            if (data.event == 'EventAppSelectNotExist') {
+              commonEventManager.unsubscribe(subscriber, UnSubscribeInfoCallback);
+              done();
+              return;
+            }
+            hilog.info(0x0000, 'this +++++++803', '%{public}s', data.data);
+            expect(JSON.stringify('-~!@#$ %^&*')).assertEqual(JSON.stringify(data.data));
+            done();
           })
         let want: Want = {
           deviceId: '',

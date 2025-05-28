@@ -14,7 +14,9 @@
  */
 import UiTest from './uitest.test'
 import uitestEnumTest from './UitestEnum.test';
+import GrantPermission from './GrantPermission.test';
 export default function testsuite() {
+  GrantPermission();
   UiTest();
   uitestEnumTest(); 
 }

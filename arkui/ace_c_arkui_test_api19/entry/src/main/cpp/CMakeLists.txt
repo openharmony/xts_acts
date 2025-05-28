@@ -17,6 +17,7 @@ add_library(nativerender SHARED
     component/text_component.cpp
     textpicker/text_picker_range_test.cpp
     component/button_component.cpp
+    customdialog/customdialog1_test.cpp
 )
 
 add_library(nativefunc SHARED

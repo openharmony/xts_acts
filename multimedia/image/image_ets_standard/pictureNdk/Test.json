@@ -30,8 +30,6 @@
             "type": "PushKit",
             "pre-push": [],
             "push": [
-                "./resource/image/0801_sdr2.heic ->/data/app/el2/100/base/ohos.acts.multimedia.image.pictureNdk/haps/entry_test/files",
-                "./resource/image/testExif.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.pictureNdk/haps/entry_test/files",
                 "./resource/image/JPEGISOSingle.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.pictureNdk/haps/entry_test/files",
                 "./resource/image/HEIFISOMultiChannelBaseColor0512V12.heic ->/data/app/el2/100/base/ohos.acts.multimedia.image.pictureNdk/haps/entry_test/files",
                 "./resource/image/test.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.pictureNdk/haps/entry_test/files",

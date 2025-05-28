@@ -18,7 +18,7 @@ import systemParameterEnhance from '@ohos.systemParameterEnhance';
 import ability from '@ohos.ability.ability';
 import base from '@ohos.base';
 
-let deviceType = '';
+let deviceSupport = '';
 let TAG = '';
 let intervalId: number = -1;
 let subscriber: commonEvent.CommonEventSubscriber;
@@ -61,7 +61,7 @@ export default function abilityTest() {
   describe('AbilityTest', () => {
 
     beforeAll(() => {
-      deviceType = systemParameterEnhance.getSync('const.product.devicetype');
+      deviceSupport = systemParameterEnhance.getSync('persist.sys.abilityms.move_ui_ability_to_background_api_enable');
       let actsEvents = [
         'Hap2MainAbility10onForeground',
         'Hap3MainAbility3onForeground',
@@ -472,7 +472,7 @@ export default function abilityTest() {
     it("Multihap_WindowStageLifecycleTest_006", Level.LEVEL0, async (done: Function) => {
       console.log("------------Multihap_WindowStageLifecycleTest_006 start-------------");
       TAG = "Multihap_WindowStageLifecycleTest_006";
-      if (deviceType != '2in1') {
+      if (deviceSupport != 'false') {
         let isOneStartedHap2MainAbility8: boolean = false;
         let ids: Array<number> = []
         let eventCallback = (event: string) => {
@@ -525,7 +525,7 @@ export default function abilityTest() {
           console.log(TAG + ": first MainAbility7 startAbility success, err: " + JSON.stringify(error) +
             ",data: " + JSON.stringify(data));
         });
-      } else if (deviceType == '2in1') {
+      } else if (deviceSupport === 'false') {
         done();
       }
 
@@ -687,7 +687,7 @@ export default function abilityTest() {
     it('Multihap_WindowStageLifecycleTest_009', Level.LEVEL0, async (done: Function) => {
       console.info("---------------Multihap_WindowStageLifecycleTest_009 is start---------------")
       TAG = "Multihap_WindowStageLifecycleTest_009";
-      if (deviceType != '2in1') {
+      if (deviceSupport != 'false') {
         let hap3MainAbility3onForegroundCount: number = 0;
         let isFirstMainAbility4onForeground = true;
         let eventCallback = (event: string) => {
@@ -749,7 +749,7 @@ export default function abilityTest() {
           }
         }
         handlerMessage(eventCallback);
-      } else if (deviceType == '2in1') {
+      } else if (deviceSupport === 'false') {
         done();
       }
 

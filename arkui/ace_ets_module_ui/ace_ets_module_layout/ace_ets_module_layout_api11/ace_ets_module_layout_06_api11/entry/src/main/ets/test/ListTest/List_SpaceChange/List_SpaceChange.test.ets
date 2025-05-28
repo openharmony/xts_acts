@@ -108,7 +108,7 @@ export default function list_SpaceChangeTest() {
         ${(listContainer.bottom - fourthListItem.bottom)}`);
       console.info(`[testListSpaceChangeUnfill](listHeight - 2 * listItemHeight - 2 * listItemHeight2 - vp2px(60))=
         ${(listHeight - 2 * listItemHeight - 2 * listItemHeight2 - vp2px(60))}`);
-      expect(Math.abs(Math.floor((listContainer.bottom - fourthListItem.bottom) - (listHeight - 2 * listItemHeight - 2 * listItemHeight2 - vp2px(60)))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((listContainer.bottom - fourthListItem.bottom) - (listHeight - 2 * listItemHeight - 2 * listItemHeight2 - vp2px(60)))) <= 1).assertTrue();
 
       let driver = Driver.create();
       await driver.swipe(
@@ -120,7 +120,7 @@ export default function list_SpaceChangeTest() {
 
       fourthListItem = CommonFunc.getComponentRect('List_SpaceChange04');
       listContainer = CommonFunc.getComponentRect('List_SpaceChange_Container01');
-      expect(Math.abs(Math.floor((listContainer.bottom - fourthListItem.bottom) - (listHeight - 2 * listItemHeight - 2 * listItemHeight2 - vp2px(60)))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((listContainer.bottom - fourthListItem.bottom) - (listHeight - 2 * listItemHeight - 2 * listItemHeight2 - vp2px(60)))) <= 1).assertTrue();
 
       console.info('[testListSpaceChangeUnfill] END');
 
@@ -179,7 +179,7 @@ export default function list_SpaceChangeTest() {
         ${(listContainer.bottom - fourthListItem.bottom)}`);
       console.info(`[testListSpaceChangeFill](listHeight - 2 * listItemHeight - 2 * listItemHeight2 - vp2px(120))=
         ${(listHeight - 2 * listItemHeight - 2 * listItemHeight2 - vp2px(120))}`);
-      expect(Math.abs(Math.floor((listContainer.bottom - fourthListItem.bottom) - (listHeight - 2 * listItemHeight - 2 * listItemHeight2 - vp2px(120)))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((listContainer.bottom - fourthListItem.bottom) - (listHeight - 2 * listItemHeight - 2 * listItemHeight2 - vp2px(120)))) <= 1).assertTrue();
 
       let driver = Driver.create();
       await driver.swipe(
@@ -192,7 +192,7 @@ export default function list_SpaceChangeTest() {
       fourthListItem = CommonFunc.getComponentRect('List_SpaceChange04');
       listContainer = CommonFunc.getComponentRect('List_SpaceChange_Container01');
       if (fourthListItem.bottom < listContainer.bottom ){
-       expect(Math.abs(Math.floor((listContainer.bottom - fourthListItem.bottom) - (listHeight - 2 * listItemHeight - 2 * listItemHeight2 - vp2px(120)))) <= 1).assertTrue();
+       expect(Math.floor(Math.abs((listContainer.bottom - fourthListItem.bottom) - (listHeight - 2 * listItemHeight - 2 * listItemHeight2 - vp2px(120)))) <= 1).assertTrue();
       } else {
        expect(listContainer.bottom <= fourthListItem.bottom).assertTrue();
       }
@@ -254,7 +254,7 @@ export default function list_SpaceChangeTest() {
         ${(listContainer.bottom - fourthListItem.bottom)}`);
       console.info(`[testListSpaceChangeOverflow](listHeight - 2 * listItemHeight - 2 * listItemHeight2 - vp2px(180))=
         ${(listHeight - 2 * listItemHeight - 2 * listItemHeight2 - vp2px(180))}`);
-      expect(Math.abs(Math.floor((listContainer.bottom - fourthListItem.bottom) - (listHeight - 2 * listItemHeight - 2 * listItemHeight2 - vp2px(180)))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((listContainer.bottom - fourthListItem.bottom) - (listHeight - 2 * listItemHeight - 2 * listItemHeight2 - vp2px(180)))) <= 1).assertTrue();
       let driver = Driver.create();
       await driver.swipe(
         Math.round(globalThis.winLeft + thirdListItem.left + ((thirdListItem.right - thirdListItem.left) / 2)),
@@ -265,7 +265,7 @@ export default function list_SpaceChangeTest() {
       fourthListItem = CommonFunc.getComponentRect('List_SpaceChange04');
       listContainer = CommonFunc.getComponentRect('List_SpaceChange_Container01');
       if (fourthListItem.bottom < listContainer.bottom ){
-      expect(Math.abs(Math.floor((listContainer.bottom - fourthListItem.bottom) - (listHeight - 2 * listItemHeight - 2 * listItemHeight2 - vp2px(180)))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((listContainer.bottom - fourthListItem.bottom) - (listHeight - 2 * listItemHeight - 2 * listItemHeight2 - vp2px(180)))) <= 1).assertTrue();
       } else {
        expect(listContainer.bottom <= fourthListItem.bottom).assertTrue();
       }

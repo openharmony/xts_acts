@@ -1,6 +1,7 @@
 import { describe, it, expect, TestType, Level, Size } from '@ohos/hypium'
 import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
-import { UiComponent, UiDriver, BY, Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, UiDirection, MouseButton, WindowMode, PointerMatrix, UIElementInfo, UIEventObserver } from '@ohos.UiTest'
+import { UiComponent, UiDriver, BY, Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, UiDirection, MouseButton, WindowMode, PointerMatrix, UIElementInfo, UIEventObserver,
+  InputTextMode } from '@ohos.UiTest'
 import { BusinessError } from '@ohos.base';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
@@ -27,6 +28,7 @@ const TestTag = 'UitestComponentErrorTest';
 const AsyncErrorCode = 17000002;
 const InvisibleErrorCode = 17000004;
 const ErrorCode = 401;
+const CapabilityCode = 801;
 
 function sleep(nm: number) {
   return new Promise<void>((resolve: Function, reject: Function) => {
@@ -38,7 +40,7 @@ export default function uitestComponentErrorTest() {
   describe('UitestComponentErrorTest', () => {
 
     /*
-     * @tc.number: UitestComponentErrorTest_041
+     * @tc.number: UitestComponentErrorTest_001
      * @tc.name: test_scrollToTop_17000002
      * @tc.desc: scrollToTop 17000002 test.
     */
@@ -63,7 +65,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_042
+    * @tc.number: UitestComponentErrorTest_002
     * @tc.name: test_scrollToTop_17000004
     * @tc.desc: scrollToTop 17000004 test.
     */
@@ -88,7 +90,7 @@ export default function uitestComponentErrorTest() {
 
 
     /*
-        * @tc.number: UitestComponentErrorTest_038
+        * @tc.number: UitestComponentErrorTest_003
         * @tc.name: test_scrollSearch_17000002
         * @tc.desc: scrollSearch 17000002 test.
         */
@@ -115,7 +117,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_039
+    * @tc.number: UitestComponentErrorTest_004
     * @tc.name: test_scrollSearch_17000004
     * @tc.desc: scrollSearch 17000004 test.
     */
@@ -139,7 +141,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_043
+    * @tc.number: UitestComponentErrorTest_005
     * @tc.name: test_scrollToBottom_17000002
     * @tc.desc: scrollToBottom 17000002 test.
     */
@@ -165,7 +167,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_044
+    * @tc.number: UitestComponentErrorTest_006
     * @tc.name: test_scrollSearch_17000004
     * @tc.desc: scrollToBottom 17000004 test.
     */
@@ -191,7 +193,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_001
+    * @tc.number: UitestComponentErrorTest_007
     * @tc.name: test_click_17000002
     * @tc.desc: click 17000002 test.
     */
@@ -217,7 +219,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_002
+    * @tc.number: UitestComponentErrorTest_008
     * @tc.name: test_click_17000004
     * @tc.desc: click 17000004 test.
     */
@@ -242,7 +244,7 @@ export default function uitestComponentErrorTest() {
 
 
     /*
-    * @tc.number: UitestComponentErrorTest_003
+    * @tc.number: UitestComponentErrorTest_009
     * @tc.name: test_doubleClick_17000002
     * @tc.desc: doubleClick 17000002 test.
     */
@@ -268,7 +270,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_004
+    * @tc.number: UitestComponentErrorTest_010
     * @tc.name: test_doubleClick_17000004
     * @tc.desc: doubleClick 17000004 test.
     */
@@ -293,7 +295,7 @@ export default function uitestComponentErrorTest() {
 
 
     /*
-    * @tc.number: UitestComponentErrorTest_005
+    * @tc.number: UitestComponentErrorTest_011
     * @tc.name: test_longClick_17000002
     * @tc.desc: doubleClick 17000002 test.
     */
@@ -319,7 +321,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_006
+    * @tc.number: UitestComponentErrorTest_012
     * @tc.name: test_doubleClick_17000004
     * @tc.desc: doubleClick 17000004 test.
     */
@@ -343,7 +345,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_007
+    * @tc.number: UitestComponentErrorTest_013
     * @tc.name: test_getId_17000002
     * @tc.desc: getId 17000002 test.
     */
@@ -369,7 +371,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_008
+    * @tc.number: UitestComponentErrorTest_014
     * @tc.name: test_getId_17000004
     * @tc.desc: getId 17000004 test.
     */
@@ -393,7 +395,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_009
+    * @tc.number: UitestComponentErrorTest_015
     * @tc.name: test_getText_17000002
     * @tc.desc: getText 17000002 test.
     */
@@ -419,7 +421,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_010
+    * @tc.number: UitestComponentErrorTest_016
     * @tc.name: test_getId_17000004
     * @tc.desc: getText 17000004 test.
     */
@@ -443,7 +445,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_011
+    * @tc.number: UitestComponentErrorTest_017
     * @tc.name: test_getText_17000002
     * @tc.desc: getText 17000002 test.
     */
@@ -469,7 +471,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_012
+    * @tc.number: UitestComponentErrorTest_018
     * @tc.name: test_getType_17000004
     * @tc.desc: getText 17000004 test.
     */
@@ -493,7 +495,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_013
+    * @tc.number: UitestComponentErrorTest_019
     * @tc.name: test_getBounds_17000002
     * @tc.desc: getBounds 17000002 test.
     */
@@ -519,7 +521,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_014
+    * @tc.number: UitestComponentErrorTest_020
     * @tc.name: test_getBounds_17000004
     * @tc.desc: getBounds 17000004 test.
     */
@@ -543,7 +545,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_015
+    * @tc.number: UitestComponentErrorTest_021
     * @tc.name: test_getBoundsCenter_17000002
     * @tc.desc: getBoundsCenter 17000002 test.
     */
@@ -569,7 +571,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_016
+    * @tc.number: UitestComponentErrorTest_022
     * @tc.name: test_getBounds_17000004
     * @tc.desc: getBoundsCenter 17000004 test.
     */
@@ -593,7 +595,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_017
+    * @tc.number: UitestComponentErrorTest_023
     * @tc.name: test_isClickable_17000002
     * @tc.desc: isClickable 17000002 test.
     */
@@ -619,7 +621,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_018
+    * @tc.number: UitestComponentErrorTest_024
     * @tc.name: test_isClickable_17000004
     * @tc.desc: isClickable 17000004 test.
     */
@@ -643,7 +645,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_019
+    * @tc.number: UitestComponentErrorTest_025
     * @tc.name: test_isClickable_17000002
     * @tc.desc: isLongClickable 17000002 test.
     */
@@ -669,7 +671,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_020
+    * @tc.number: UitestComponentErrorTest_026
     * @tc.name: test_isClickable_17000004
     * @tc.desc: isLongClickable 17000004 test.
     */
@@ -693,7 +695,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_021
+    * @tc.number: UitestComponentErrorTest_027
     * @tc.name: test_isChecked_17000002
     * @tc.desc: isChecked 17000002 test.
     */
@@ -719,7 +721,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_022
+    * @tc.number: UitestComponentErrorTest_028
     * @tc.name: test_isChecked_17000004
     * @tc.desc: isChecked 17000004 test.
     */
@@ -743,7 +745,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_023
+    * @tc.number: UitestComponentErrorTest_029
     * @tc.name: test_isCheckable_17000002
     * @tc.desc: isCheckable 17000002 test.
     */
@@ -769,7 +771,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_024
+    * @tc.number: UitestComponentErrorTest_030
     * @tc.name: test_isCheckable_17000004
     * @tc.desc: isCheckable 17000004 test.
     */
@@ -793,7 +795,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_025
+    * @tc.number: UitestComponentErrorTest_031
     * @tc.name: test_isScrollable_17000002
     * @tc.desc: isScrollable 17000002 test.
     */
@@ -819,7 +821,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_026
+    * @tc.number: UitestComponentErrorTest_032
     * @tc.name: test_isScrollable_17000004
     * @tc.desc: isScrollable 17000004 test.
     */
@@ -842,7 +844,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_027
+    * @tc.number: UitestComponentErrorTest_033
     * @tc.name: test_isEnabled_17000002
     * @tc.desc: isEnabled 17000002 test.
     */
@@ -868,7 +870,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_028
+    * @tc.number: UitestComponentErrorTest_034
     * @tc.name: test_isEnabled_17000004
     * @tc.desc: isEnabled 17000004 test.
     */
@@ -891,7 +893,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_029
+    * @tc.number: UitestComponentErrorTest_035
     * @tc.name: test_isEnabled_17000002
     * @tc.desc: isFocused 17000002 test.
     */
@@ -917,7 +919,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_030
+    * @tc.number: UitestComponentErrorTest_036
     * @tc.name: test_isFocused_17000004
     * @tc.desc: isFocused 17000004 test.
     */
@@ -941,7 +943,7 @@ export default function uitestComponentErrorTest() {
 
 
     /*
-    * @tc.number: UitestComponentErrorTest_031
+    * @tc.number: UitestComponentErrorTest_037
     * @tc.name: test_isSelected_17000002
     * @tc.desc: isSelected 17000002 test.
     */
@@ -967,7 +969,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_032
+    * @tc.number: UitestComponentErrorTest_038
     * @tc.name: test_isSelected_17000004
     * @tc.desc: isSelected 17000004 test.
     */
@@ -991,7 +993,7 @@ export default function uitestComponentErrorTest() {
 
 
     /*
-    * @tc.number: UitestComponentErrorTest_033
+    * @tc.number: UitestComponentErrorTest_039
     * @tc.name: test_inputText_17000002
     * @tc.desc: inputText 17000002 test.
     */
@@ -1017,7 +1019,103 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_034
+    * @tc.number: UitestComponentErrorTest_040
+    * @tc.name: test_inputTextMode_801
+    * @tc.desc: inputText 801 test.
+    */
+    it('test_inputTextMode_801', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.log(`${TestTag}, test_inputTextMode_801 start`);
+      try {
+        const driver = Driver.create();
+        await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
+        await driver.delayMs(waitUiReadyMs);
+        let button = await driver.findComponent(ON.type('TextInput'));
+        if (button == null) {
+          let scorll = await driver.findComponent(ON.type('Scroll'))
+          button = await scorll.scrollSearch(ON.type('TextInput'))
+        }
+        await driver.delayMs(waitUiReadyMs);
+        await button.inputText('123456', {
+          paste: true
+        });
+      }catch (e) {
+        console.log(`${TestTag}, test_inputTextMode_801 error is: ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(CapabilityCode);
+      } finally {
+        await stopApplication('com.uitestScene.acts');
+      }
+      await sleep(waitUiReadyMs);
+      console.log(`${TestTag}, test_inputTextMode_801 end`);
+    })
+
+
+    /*
+    * @tc.number: UitestComponentErrorTest_041
+    * @tc.name: test_inputTextMode_17000002
+    * @tc.desc: inputText 17000002 test.
+    */
+    it('test_inputTextMode_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.log(`${TestTag}, test_inputTextMode_17000002 start`);
+      try {
+        const driver = Driver.create();
+        await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
+        await driver.delayMs(waitUiReadyMs);
+        let button = await driver.findComponent(ON.text('MainPage'));
+        driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
+        await button.inputText('hello', {
+          paste: false
+        });
+        expect().assertFail();
+      }catch (e) {
+        console.log(`${TestTag}, test_inputTextMode_17000002 error is: ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(AsyncErrorCode);
+      } finally {
+        await stopApplication('com.uitestScene.acts');
+      }
+      await sleep(waitUiReadyMs * 5);
+      console.log(`${TestTag}, test_inputTextMode_17000002 end`);
+    })
+
+    /*
+    * @tc.number: UitestComponentErrorTest_042
+    * @tc.name: test_inputTextMode_401
+    * @tc.desc: inputText 401 test.
+    */
+    it('test_inputTextMode_401', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.log(`${TestTag}, test_inputTextMode_401 start`);
+      const driver = Driver.create();
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
+      await driver.delayMs(waitUiReadyMs);
+      let button = await driver.findComponent(ON.text('MainPage'));
+      try {
+        await driver.delayMs(waitUiReadyMs);
+        await button.inputText(null, {
+          paste: false
+        });
+        console.log(`${TestTag}, test_inputTextMode_401 success`);
+        expect().assertFail();
+      }catch (e) {
+        console.log(`${TestTag}, test_inputTextMode_401 text = null error is: ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(401);
+      }
+      try {
+        await driver.delayMs(waitUiReadyMs);
+        await button.inputText(undefined, {
+          paste: true
+        });
+        expect().assertFail();
+      }catch (e) {
+        console.log(`${TestTag}, test_inputTextMode_401 text = undefined error is: ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(401);
+      }
+      console.log(`${TestTag}, test_inputTextMode_401 end`);
+      await stopApplication('com.uitestScene.acts');
+    })
+
+
+    /*
+    * @tc.number: UitestComponentErrorTest_043
     * @tc.name: test_inputText_17000004
     * @tc.desc: inputText 17000004 test.
     */
@@ -1041,7 +1139,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_036
+    * @tc.number: UitestComponentErrorTest_044
     * @tc.name: test_clearText_17000002
     * @tc.desc: clearText 17000002 test.
     */
@@ -1068,7 +1166,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_037
+    * @tc.number: UitestComponentErrorTest_045
     * @tc.name: test_clearText_17000004
     * @tc.desc: clearText 17000004 test.
     */
@@ -1092,7 +1190,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_045
+    * @tc.number: UitestComponentErrorTest_046
     * @tc.name: test_dragTo_17000002
     * @tc.desc: dragTo 17000002 test.
     */
@@ -1102,26 +1200,10 @@ export default function uitestComponentErrorTest() {
         await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
         let driver = Driver.create()
         await driver.delayMs(waitUiReadyMs)
-        let button = await driver.findComponent(ON.id('jump'))
-        if (button == null) {
-          let scorll = await driver.findComponent(ON.type('Scroll'))
-          button = await scorll.scrollSearch(ON.text('jump'))
-        }
-        await button.longClick()
-        await driver.delayMs(waitUiReadyMs)
-        let text1 = await driver.findComponent(ON.text('one'));
-        if (text1 == null) {
-          let scorll = await driver.findComponent(ON.type('Scroll'))
-          text1 = await scorll.scrollSearch(ON.text('one'))
-        }
-        let text2 = await driver.findComponent(ON.text('two'))
-        if (text2 == null) {
-          let scorll = await driver.findComponent(ON.type('Scroll'))
-          text2 = await scorll.scrollSearch(ON.text('two'))
-        }
+        let button = await driver.findComponent(ON.text('MainPage'));
         driver.delayMs(waitUiReadyMs * 3);
         await sleep(100);
-        await text1.dragTo(text2)
+        await button.dragTo(button)
         expect().assertFail();
       }catch (e) {
         console.log(`${TestTag}, test_dragTo_17000002 error is: ${JSON.stringify(e)}`);
@@ -1134,7 +1216,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_046
+    * @tc.number: UitestComponentErrorTest_047
     * @tc.name: test_dragTo_17000004
     * @tc.desc: dragTo 17000004 test.
     */
@@ -1144,26 +1226,10 @@ export default function uitestComponentErrorTest() {
         await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
         let driver = Driver.create();
         await driver.delayMs(waitUiReadyMs);
-        let button = await driver.findComponent(ON.id('jump'));
-        if (button == null) {
-          let scorll = await driver.findComponent(ON.type('Scroll'))
-          button = await scorll.scrollSearch(ON.text('jump'))
-        }
-        await button.longClick();
-        await driver.delayMs(waitUiReadyMs);
-        let text1 = await driver.findComponent(ON.text('one'));
-        if (text1 == null) {
-          let scorll = await driver.findComponent(ON.type('Scroll'));
-          text1 = await scorll.scrollSearch(ON.text('one'));
-        }
-        let text2 = await driver.findComponent(ON.text('two'));
-        if (text2 == null) {
-          let scorll = await driver.findComponent(ON.type('Scroll'));
-          text2 = await scorll.scrollSearch(ON.text('two'));
-        }
+        let button = await driver.findComponent(ON.text('MainPage'));
         await stopApplication('com.uitestScene.acts');
         await driver.delayMs(waitUiReadyMs * 2);
-        await text1.dragTo(text2)
+        await button.dragTo(button)
         await driver.delayMs(waitUiReadyMs);
         expect().assertFail();
       }catch (e) {
@@ -1184,21 +1250,10 @@ export default function uitestComponentErrorTest() {
         await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
         let driver = Driver.create();
         await driver.delayMs(waitUiReadyMs);
-        let button = await driver.findComponent(ON.id('jump'));
-        if (button == null) {
-          let scorll = await driver.findComponent(ON.type('Scroll'));
-          button = await scorll.scrollSearch(ON.id('jump'));
-        }
-        await button.click();
-        await driver.delayMs(waitUiReadyMs);
-        let image1 = await driver.findComponent(ON.id('test_pict'));
-        if (image1 == null) {
-          let scorll = await driver.findComponent(ON.type('Scroll'));
-          image1 = await scorll.scrollSearch(ON.id('test_pict'));
-        }
+        let button = await driver.findComponent(ON.text('MainPage'));
         driver.delayMs(waitUiReadyMs * 3);
         await sleep(100);
-        await image1.pinchOut(1.2);
+        await button.pinchOut(1.2);
         expect().assertFail();
       }catch (e) {
         console.log(`${TestTag}, test_pinchOut_17000002 error is: ${JSON.stringify(e)}`);
@@ -1221,21 +1276,10 @@ export default function uitestComponentErrorTest() {
         await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
         let driver = Driver.create();
         await driver.delayMs(waitUiReadyMs);
-        let button = await driver.findComponent(ON.id('jump'));
-        if (button == null) {
-          let scorll = await driver.findComponent(ON.type('Scroll'));
-          button = await scorll.scrollSearch(ON.id('jump'));
-        }
-        await button.click();
-        await driver.delayMs(waitUiReadyMs);
-        let image1 = await driver.findComponent(ON.id('test_pict'));
-        if (image1 == null) {
-          let scorll = await driver.findComponent(ON.type('Scroll'));
-          image1 = await scorll.scrollSearch(ON.id('test_pict'));
-        }
+        let button = await driver.findComponent(ON.text('MainPage'));
         await stopApplication('com.uitestScene.acts');
         await driver.delayMs(waitUiReadyMs * 2);
-        await image1.pinchOut(1.2);
+        await button.pinchOut(1.2);
         await driver.delayMs(waitUiReadyMs)
         expect().assertFail();
       }catch (e) {
@@ -1249,7 +1293,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-   * @tc.number: UitestComponentErrorTest_051
+   * @tc.number: UitestComponentErrorTest_050
    * @tc.name: test_pinchIn_17000002
    * @tc.desc: pinchIn 17000002 test.
    */
@@ -1259,21 +1303,10 @@ export default function uitestComponentErrorTest() {
         await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
         let driver = Driver.create();
         await driver.delayMs(waitUiReadyMs);
-        let button = await driver.findComponent(ON.id('jump'));
-        if (button == null) {
-          let scorll = await driver.findComponent(ON.type('Scroll'));
-          button = await scorll.scrollSearch(ON.id('jump'));
-        }
-        await button.click();
-        await driver.delayMs(waitUiReadyMs);
-        let image1 = await driver.findComponent(ON.id('test_pict'));
-        if (image1 == null) {
-          let scorll = await driver.findComponent(ON.type('Scroll'));
-          image1 = await scorll.scrollSearch(ON.id('test_pict'));
-        }
+        let button = await driver.findComponent(ON.text('MainPage'));
         driver.delayMs(waitUiReadyMs * 3)
         await sleep(100);
-        await image1.pinchIn(0.5);
+        await button.pinchIn(0.5);
         expect().assertFail();
       }catch (e) {
         console.log(`${TestTag}, test_pinchIn_17000002 error is: ${JSON.stringify(e)}`);
@@ -1286,7 +1319,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-   * @tc.number: UitestComponentErrorTest_052
+   * @tc.number: UitestComponentErrorTest_051
    * @tc.name: test_pinchOut_17000004
    * @tc.desc: pinchIn 17000004 test.
    */
@@ -1296,21 +1329,10 @@ export default function uitestComponentErrorTest() {
         await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
         let driver = Driver.create();
         await driver.delayMs(waitUiReadyMs);
-        let button = await driver.findComponent(ON.id('jump'));
-        if (button == null) {
-          let scorll = await driver.findComponent(ON.type('Scroll'));
-          button = await scorll.scrollSearch(ON.id('jump'));
-        }
-        await button.click();
-        await driver.delayMs(waitUiReadyMs);
-        let image1 = await driver.findComponent(ON.id('test_pict'));
-        if (image1 == null) {
-          let scorll = await driver.findComponent(ON.type('Scroll'));
-          image1 = await scorll.scrollSearch(ON.id('test_pict'));
-        }
+        let button = await driver.findComponent(ON.text('MainPage'));
         await stopApplication('com.uitestScene.acts');
         await driver.delayMs(waitUiReadyMs * 2);
-        await image1.pinchIn(0.5);
+        await button.pinchIn(0.5);
         await driver.delayMs(waitUiReadyMs)
         expect().assertFail();
       }catch (e) {
@@ -1324,7 +1346,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-   * @tc.number: UitestComponentErrorTest_054
+   * @tc.number: UitestComponentErrorTest_052
    * @tc.name: test_getDescription_17000002
    * @tc.desc: getDescription 17000002 test.
    */
@@ -1334,11 +1356,7 @@ export default function uitestComponentErrorTest() {
         let driver: Driver = Driver.create();
         await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
         await driver.delayMs(waitUiReadyMs);
-        let button = await driver.findComponent(ON.type('Button'));
-        if (button == null) {
-          let scorll = await driver.findComponent(ON.type('Scroll'));
-          button = await scorll.scrollSearch(ON.type('Button'));
-        }
+        let button = await driver.findComponent(ON.text('MainPage'));
         driver.delayMs(waitUiReadyMs * 3);
         await sleep(100);
         await button.getDescription();
@@ -1354,7 +1372,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-   * @tc.number: UitestComponentErrorTest_055
+   * @tc.number: UitestComponentErrorTest_053
    * @tc.name: test_getDescription_17000004
    * @tc.desc: getDescription 17000004 test.
    */
@@ -1364,11 +1382,7 @@ export default function uitestComponentErrorTest() {
         let driver: Driver = Driver.create();
         await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
         await driver.delayMs(waitUiReadyMs);
-        let button = await driver.findComponent(ON.type('Button'));
-        if (button == null) {
-          let scorll = await driver.findComponent(ON.type('Scroll'));
-          button = await scorll.scrollSearch(ON.type('Button'));
-        }
+        let button = await driver.findComponent(ON.text('MainPage'));
         await driver.delayMs(waitUiReadyMs);
         await stopApplication('com.uitestScene.acts');
         await driver.delayMs(waitUiReadyMs * 2);
@@ -1386,7 +1400,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-   * @tc.number: UitestComponentErrorTest_056
+   * @tc.number: UitestComponentErrorTest_054
    * @tc.name: test_getHint_17000002
    * @tc.desc: getHint 17000002 test.
    */
@@ -1396,11 +1410,7 @@ export default function uitestComponentErrorTest() {
         let driver: Driver = Driver.create();
         await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
         await driver.delayMs(waitUiReadyMs);
-        let button = await driver.findComponent(ON.hint('welcome'));
-        if (button == null) {
-          let scorll = await driver.findComponent(ON.type('Scroll'))
-          button = await scorll.scrollSearch(ON.hint('welcome'))
-        }
+        let button = await driver.findComponent(ON.text('MainPage'));
         driver.delayMs(waitUiReadyMs * 3);
         await sleep(100);
         await button.getHint();
@@ -1416,7 +1426,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-   * @tc.number: UitestComponentErrorTest_057
+   * @tc.number: UitestComponentErrorTest_055
    * @tc.name: test_getHint_17000004
    * @tc.desc: getHint 17000004 test.
    */
@@ -1426,11 +1436,7 @@ export default function uitestComponentErrorTest() {
         let driver: Driver = Driver.create();
         await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
         await driver.delayMs(waitUiReadyMs);
-        let button = await driver.findComponent(ON.hint('welcome'));
-        if (button == null) {
-          let scorll = await driver.findComponent(ON.type('Scroll'))
-          button = await scorll.scrollSearch(ON.hint('welcome'))
-        }
+        let button = await driver.findComponent(ON.text('MainPage'));
         await driver.delayMs(waitUiReadyMs);
         await stopApplication('com.uitestScene.acts');
         await driver.delayMs(waitUiReadyMs * 2);
@@ -1445,5 +1451,31 @@ export default function uitestComponentErrorTest() {
       console.log(`${TestTag}, test_getHint_17000004 end`);
     })
 
+
+    /*
+    * @tc.number: UitestComponentErrorTest_056
+    * @tc.name: test_inputTextMode_17000004
+    * @tc.desc: inputText 17000004 test.
+    */
+    it('test_inputTextMode_17000004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.log(`${TestTag}, test_inputTextMode_17000004 start`);
+      try {
+        const driver = Driver.create();
+        await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
+        await driver.delayMs(waitUiReadyMs);
+        let button = await driver.findComponent(ON.text('MainPage'));
+        await driver.delayMs(waitUiReadyMs);
+        await stopApplication('com.uitestScene.acts');
+        await driver.delayMs(waitUiReadyMs * 2);
+        await button.inputText('hello', {
+          paste: false
+        });
+        expect().assertFail();
+      }catch (e) {
+        console.log(`${TestTag}, test_inputTextMode_17000004 error is: ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(InvisibleErrorCode);
+      }
+      console.log(`${TestTag}, test_inputTextMode_17000004 end`);
+    })
   })
 }

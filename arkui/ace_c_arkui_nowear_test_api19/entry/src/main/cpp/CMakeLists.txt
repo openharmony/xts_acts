@@ -14,8 +14,10 @@ add_library(nativerender SHARED
     manager/plugin_manager.cpp
     napi_render_init.cpp
     component/component.cpp
+    drag/notify_drag_test.cpp
     component/calendarPicker_component.cpp
     calendarPicker/calendar_picker_test.cpp
+    gestureRecognizer/PanGestureTest.cpp
     
 )
 

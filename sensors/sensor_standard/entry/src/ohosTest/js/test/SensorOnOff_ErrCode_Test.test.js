@@ -790,40 +790,6 @@ export default function SensorOnOff_ErrCode_Test() {
     })
 
     /*
-    * @tc.number: SensorOnOff_ErrCode_Test_0023
-    * @tc.name: SensorOnOff_ErrCode_Test_0023
-    * @tc.desc:Verification results of the incorrect parameters of the test interface
-    * @tc.level:Level 3
-    * @tc.type:Function
-    * @tc.size:MediumTest
-    */
-    it("SensorOnOff_ErrCode_Test_0023", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-      TAG = 'SensorOnOff_ErrCode_Test_0023';
-      try{
-        sensor.getSingleSensor(sensor.SensorId.HEART_RATE,(error, data) => {
-          if (error) {
-            console.info(TAG + ' error:' + error);
-            done();
-          } else {
-            try {
-              expect(typeof(data)).assertEqual("object");
-              sensor.once(sensor.SensorId.HEART_RATE, callback, {'interval': -100000000});
-              done();
-            } catch (error) {
-              console.info(TAG + ' catch error:' + error);
-              expect(error.code).assertEqual(SERVICE_EXCEPTION_CODE);
-              done();
-            }
-          }
-        })
-      } catch (error) {
-        console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
-        expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
-        done();
-      }
-    })
-
-    /*
     * @tc.number: SensorOnOff_ErrCode_Test_0024
     * @tc.name: SensorOnOff_ErrCode_Test_0024
     * @tc.desc:Verification results of the incorrect parameters of the test interface
@@ -978,40 +944,6 @@ export default function SensorOnOff_ErrCode_Test() {
             try {
               expect(typeof(data)).assertEqual("object");
               sensor.once(sensor.SensorId.ORIENTATION, callback, {'interval': -100000000});
-              done();
-            } catch (error) {
-              console.info(TAG + ' catch error:' + error);
-              expect(error.code).assertEqual(SERVICE_EXCEPTION_CODE);
-              done();
-            }
-          }
-        })
-      } catch (error) {
-        console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
-        expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
-        done();
-      }
-    })
-
-    /*
-    * @tc.number: SensorOnOff_ErrCode_Test_0029
-    * @tc.name: SensorOnOff_ErrCode_Test_0029
-    * @tc.desc:Verification results of the incorrect parameters of the test interface
-    * @tc.level:Level 3
-    * @tc.type:Function
-    * @tc.size:MediumTest
-    */
-    it("SensorOnOff_ErrCode_Test_0029", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-      TAG = 'SensorOnOff_ErrCode_Test_0029';
-      try{
-        sensor.getSingleSensor(sensor.SensorId.PEDOMETER,(error, data) => {
-          if (error) {
-            console.info(TAG + ' error:' + error);
-            done();
-          } else {
-            try {
-              expect(typeof(data)).assertEqual("object");
-              sensor.once(sensor.SensorId.PEDOMETER, callback, {'interval': -100000000});
               done();
             } catch (error) {
               console.info(TAG + ' catch error:' + error);

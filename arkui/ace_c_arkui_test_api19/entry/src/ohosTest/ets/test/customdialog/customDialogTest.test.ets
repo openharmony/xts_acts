@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach,Level } from '@ohos/hypium';
 import { Driver, ON, PointerMatrix, Rect } from '@ohos.UiTest';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
@@ -34,7 +34,7 @@ export default function customDialogTest(){
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCustomDialog001', 0, async (done: Function) => {
+    it('testCustomDialog001', Level.LEVEL0, async (done: Function) => {
       expect(nativeFunc.testCustomDialogWidth()).assertEqual(0)
       done()
     });
@@ -47,7 +47,7 @@ export default function customDialogTest(){
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCustomDialog002', 0, async (done: Function) => {
+    it('testCustomDialog002', Level.LEVEL0, async (done: Function) => {
       expect(nativeFunc.testCustomDialogHeight()).assertEqual(0)
       done()
     });
@@ -60,7 +60,7 @@ export default function customDialogTest(){
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCustomDialog003', 0, async (done: Function) => {
+    it('testCustomDialog003', Level.LEVEL0, async (done: Function) => {
       expect(nativeFunc.testCustomDialogBorderWidth()).assertEqual(0)
       done()
     });
@@ -73,7 +73,7 @@ export default function customDialogTest(){
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCustomDialog004', 0, async (done: Function) => {
+    it('testCustomDialog004', Level.LEVEL0, async (done: Function) => {
       expect(nativeFunc.testCustomDialogBorderColor()).assertEqual(0)
       done()
     });
@@ -86,7 +86,7 @@ export default function customDialogTest(){
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCustomDialog005', 0, async (done: Function) => {
+    it('testCustomDialog005', Level.LEVEL0, async (done: Function) => {
       expect(nativeFunc.testCustomDialogBorderStyle()).assertEqual(0)
       done()
     });
@@ -99,7 +99,7 @@ export default function customDialogTest(){
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCustomDialog006', 0, async (done: Function) => {
+    it('testCustomDialog006', Level.LEVEL0, async (done: Function) => {
       expect(nativeFunc.testCustomDialogShadow()).assertEqual(0)
       done()
     });
@@ -112,7 +112,7 @@ export default function customDialogTest(){
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCustomDialog007', 0, async (done: Function) => {
+    it('testCustomDialog007', Level.LEVEL0, async (done: Function) => {
       expect(nativeFunc.testCustomDialogCustomShadow()).assertEqual(0)
       done()
     });
@@ -125,7 +125,7 @@ export default function customDialogTest(){
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCustomDialog008', 0, async (done: Function) => {
+    it('testCustomDialog008', Level.LEVEL0, async (done: Function) => {
       expect(nativeFunc.testCustomDialogBackgroundBlurStyle()).assertEqual(0)
       done()
     });
@@ -138,7 +138,7 @@ export default function customDialogTest(){
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCustomDialog009', 0, async (done: Function) => {
+    it('testCustomDialog009', Level.LEVEL0, async (done: Function) => {
       expect(nativeFunc.testCustomDialogKeyboardAvoidMode()).assertEqual(0)
       done()
     });
@@ -151,7 +151,7 @@ export default function customDialogTest(){
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCustomDialog010', 0, async (done: Function) => {
+    it('testCustomDialog010', Level.LEVEL0, async (done: Function) => {
       expect(nativeFunc.testCustomDialogEnableHoverMode()).assertEqual(0)
       done()
     });
@@ -164,8 +164,112 @@ export default function customDialogTest(){
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCustomDialog011', 0, async (done: Function) => {
+    it('testCustomDialog011', Level.LEVEL0, async (done: Function) => {
       expect(nativeFunc.testCustomDialogHoverModeArea()).assertEqual(0)
+      done()
+    });
+
+    /*
+    * @tc.number     : SUB_ARKUI_CAPI_POST_FRAME_0110
+    * @tc.name       : testCustomDialog012
+    * @tc.desc       : testing CustomDialog
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 0
+    */
+    it('testCustomDialog012', Level.LEVEL0 , async (done: Function) => {
+      expect(nativeFunc.testCustomDialogLevelMode()).assertEqual(0)
+      done()
+    });
+
+    /*
+    * @tc.number     : SUB_ARKUI_CAPI_POST_FRAME_0110
+    * @tc.name       : testCustomDialog013
+    * @tc.desc       : testing CustomDialog
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 0
+    */
+    it('testCustomDialog013', Level.LEVEL0 , async (done: Function) => {
+      expect(nativeFunc.testCustomDialogLevelUniqueId()).assertEqual(0)
+      done()
+    });
+
+    /*
+    * @tc.number     : SUB_ARKUI_CAPI_POST_FRAME_0110
+    * @tc.name       : testCustomDialog014
+    * @tc.desc       : testing CustomDialog
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 0
+    */
+    it('testCustomDialog014', Level.LEVEL0 , async (done: Function) => {
+      expect(nativeFunc.testCustomDialogImmersiveMode()).assertEqual(0)
+      done()
+    });
+
+    /*
+    * @tc.number     : SUB_ARKUI_CAPI_POST_FRAME_0110
+    * @tc.name       : testCustomDialog015
+    * @tc.desc       : testing CustomDialog
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 0
+    */
+    it('testCustomDialog015', Level.LEVEL0 , async (done: Function) => {
+      expect(nativeFunc.testCustomDialogBackgroundColor()).assertEqual(0)
+      done()
+    });
+
+    /*
+    * @tc.number     : SUB_ARKUI_CAPI_POST_FRAME_0110
+    * @tc.name       : testCustomDialog016
+    * @tc.desc       : testing CustomDialog
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 0
+    */
+    it('testCustomDialog016', Level.LEVEL0 , async (done: Function) => {
+      expect(nativeFunc.testCustomDialogCornerRadius()).assertEqual(0)
+      done()
+    });
+
+    /*
+    * @tc.number     : SUB_ARKUI_CAPI_POST_FRAME_0110
+    * @tc.name       : testCustomDialog018
+    * @tc.desc       : testing CustomDialog
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 0
+    */
+    it('testCustomDialog017', Level.LEVEL0 , async (done: Function) => {
+      expect(nativeFunc.testCustomModalMode()).assertEqual(0)
+      done()
+    });
+
+    /*
+    * @tc.number     : SUB_ARKUI_CAPI_POST_FRAME_0110
+    * @tc.name       : testCustomDialog019
+    * @tc.desc       : testing CustomDialog
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 0
+    */
+    it('testCustomDialog018', Level.LEVEL0 , async (done: Function) => {
+      expect(nativeFunc.testCustomAutoCancel()).assertEqual(0)
+      done()
+    });
+
+    /*
+    * @tc.number     : SUB_ARKUI_CAPI_POST_FRAME_0110
+    * @tc.name       : testCustomDialog021
+    * @tc.desc       : testing CustomDialog
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 0
+    */
+    it('testCustomDialog019', Level.LEVEL0 , async (done: Function) => {
+      expect(nativeFunc.testCustomMask()).assertEqual(0)
       done()
     });
   })

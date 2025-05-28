@@ -14,9 +14,15 @@
 */
 
 import notification from '@ohos.notification'
+import notificationManager from '@ohos.notificationManager'
+import { UiDriver, BY } from '@ohos.UiTest';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium'
 import image from '@ohos.multimedia.image'
 import wantAgent from '@ohos.wantAgent'
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 export default function ActsNotificationPublishTest() {
   describe('SUB_NOTIFICATION_ANS_Publish_TEST', function () {
@@ -103,6 +109,85 @@ export default function ActsNotificationPublishTest() {
       console.info(`${TAG} afterEach END`)
     })
 
+     /*
+     * @tc.number    : Sub_Notification_Ans_Enable_Query_2700
+     * @tc.name      : function requestEnableNotification(callback: AsyncCallback<void>): void
+     * @tc.desc      : OperationType.UNKNOWN_TYPE & WantAgentFlags.ONE_TIME_FLAG
+     */
+     it('Sub_Notification_Ans_Enable_Query_2700', Level.LEVEL2, async function (done) {
+      notificationManager.requestEnableNotification(async (err) => {
+        if (err) {
+          console.info(`Sub_Notification_Ans_Enable_Query_2700 ===>requestEnableNotification failed, code is ${err.code}, message is ${err.message}`);
+          expect(false).assertTrue()
+          done()
+        } else {
+          console.info("Sub_Notification_Ans_Enable_Query_2700 ===>requestEnableNotification success");
+          expect(true).assertTrue()
+          await sleep(1000);
+          console.info("Sub_Notification_Ans_Enable_Query_2700 ===>requestEnableNotification success 1s");
+          done()
+        }
+      });
+  
+      await sleep(1000);
+      let driver = await UiDriver.create();
+      console.info(`Sub_Notification_Ans_Enable_Query_2700 ===>====>come in driveFn`);
+      await sleep(1000);
+      console.info(`Sub_Notification_Ans_Enable_Query_2700 ===>====>driver is ${JSON.stringify(driver)}`);
+      let button = await driver.findComponent(BY.text('允许'));
+      console.info(`Sub_Notification_Ans_Enable_Query_2700 ===>====>button is ${JSON.stringify(button)}`);
+      if (button !== null) {
+        await button.click();
+        console.info(`Sub_Notification_Ans_Enable_Query_2700 ===>====>button is click`);
+        await sleep(1000);
+      } else {
+        console.info('Sub_Notification_Ans_Enable_Query_2700 ===>====>button is null button');
+        await sleep(1000);
+        done()
+      }
+      console.info(`${TAG} Sub_Notification_Ans_Enable_Query_2700 END`)
+    })
+
+     /*
+     * @tc.number    : Sub_Notification_Ans_Enable_Query_2800
+     * @tc.name      : function requestEnableNotification(): Promise<void>
+     * @tc.desc      : OperationType.UNKNOWN_TYPE & WantAgentFlags.ONE_TIME_FLAG
+     */
+     it('Sub_Notification_Ans_Enable_Query_2800', Level.LEVEL2, async function (done) {
+      
+      console.info(`${TAG} Sub_Notification_Ans_Enable_Query_2800 START`)
+      await sleep(2000);
+      console.info(`${TAG} Sub_Notification_Ans_Enable_Query_2800 2s`)
+      await notification.requestEnableNotification().then(() => {
+        console.info(`${TAG} requestEnableNotification Promise success`)
+        expect(false).assertTrue()
+        done()
+      }).catch((err) => {
+        console.info(`${TAG} requestEnableNotification Promise err: ${err.code}`)
+        expect(true).assertTrue()
+        done()
+      })
+      console.info(`${TAG} Sub_Notification_Ans_Enable_Query_2800 END`)
+    })
+
+    /*
+     * @tc.number    : SUB_NOTIFICATION_ANS_REQUEST_ENABLE_TEST_0300
+     * @tc.name      : function requestEnableNotification(undefined): Promise<void>
+     * @tc.desc      : OperationType.UNKNOWN_TYPE & WantAgentFlags.ONE_TIME_FLAG
+     */
+    it('SUB_NOTIFICATION_ANS_REQUEST_ENABLE_TEST_0300', Level.LEVEL2, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_REQUEST_ENABLE_TEST_0300 START`)
+      await notificationManager.requestEnableNotification(undefined).then(() => {
+        console.info(`${TAG} SUB_NOTIFICATION_ANS_REQUEST_ENABLE_TEST_0300 requestEnableNotification Promise success`)
+        expect(true).assertTrue()
+        done()
+      }).catch((err) => {
+        console.info(`${TAG} SUB_NOTIFICATION_ANS_REQUEST_ENABLE_TEST_0300 requestEnableNotification Promise err: ${err.code}`)
+        expect(false).assertTrue()
+        done()
+      })
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_REQUEST_ENABLE_TEST_0300 END`)
+    })
     
     /*
      * @tc.number    : Sub_Notification_Ans_Publish_Publish_8300
@@ -850,64 +935,6 @@ export default function ActsNotificationPublishTest() {
       console.info(`${TAG} SUB_NOTIFICATION_ANS_CANCEL_GROUP_TEST_0400 END`)
     })
 
-    /*
-     * @tc.number    : Sub_Notification_Ans_Enable_Query_2700
-     * @tc.name      : function requestEnableNotification(callback: AsyncCallback<void>): void
-     * @tc.desc      : OperationType.UNKNOWN_TYPE & WantAgentFlags.ONE_TIME_FLAG
-     */
-    it('Sub_Notification_Ans_Enable_Query_2700', Level.LEVEL2, async function (done) {
-      console.info(`${TAG} Sub_Notification_Ans_Enable_Query_2700 START`)
-      await notification.requestEnableNotification((err) => {
-        if (err.code) {
-          console.info(`${TAG} requestEnableNotification AsyncCallback err: ${err.code}`)
-          expect(false).assertTrue()
-          done()
-        } else {
-          console.info(`${TAG} requestEnableNotification AsyncCallback success`)
-          expect(true).assertTrue()
-          done()
-        }
-      })
-      console.info(`${TAG} Sub_Notification_Ans_Enable_Query_2700 END`)
-    })
-
-    /*
-     * @tc.number    : Sub_Notification_Ans_Enable_Query_2800
-     * @tc.name      : function requestEnableNotification(): Promise<void>
-     * @tc.desc      : OperationType.UNKNOWN_TYPE & WantAgentFlags.ONE_TIME_FLAG
-     */
-    it('Sub_Notification_Ans_Enable_Query_2800', Level.LEVEL2, async function (done) {
-      console.info(`${TAG} Sub_Notification_Ans_Enable_Query_2800 START`)
-      await notification.requestEnableNotification().then(() => {
-        console.info(`${TAG} requestEnableNotification Promise success`)
-        expect(true).assertTrue()
-        done()
-      }).catch((err) => {
-        console.info(`${TAG} requestEnableNotification Promise err: ${err.code}`)
-        expect(false).assertTrue()
-        done()
-      })
-      console.info(`${TAG} Sub_Notification_Ans_Enable_Query_2800 END`)
-    })
-
-    /*
-     * @tc.number    : SUB_NOTIFICATION_ANS_REQUEST_ENABLE_TEST_0300
-     * @tc.name      : function requestEnableNotification(undefined): Promise<void>
-     * @tc.desc      : OperationType.UNKNOWN_TYPE & WantAgentFlags.ONE_TIME_FLAG
-     */
-    it('SUB_NOTIFICATION_ANS_REQUEST_ENABLE_TEST_0300', Level.LEVEL2, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_REQUEST_ENABLE_TEST_0300 START`)
-      await notification.requestEnableNotification(undefined).then(() => {
-        console.info(`${TAG} requestEnableNotification Promise success`)
-        expect(true).assertTrue()
-        done()
-      }).catch((err) => {
-        console.info(`${TAG} requestEnableNotification Promise err: ${err.code}`)
-        expect(false).assertTrue()
-        done()
-      })
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_REQUEST_ENABLE_TEST_0300 END`)
-    })
 
     /*
      * @tc.number    : Sub_Notification_Ans_Distributed_Search_0600

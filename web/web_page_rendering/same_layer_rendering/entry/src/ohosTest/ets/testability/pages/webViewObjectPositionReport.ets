@@ -128,6 +128,7 @@ struct webViewObjectPositionReport {
   @State oldPosition: string = '';
   @State newPosition: string = '';
   @State oldWindowOrientation: number = 0;
+  @State edges: Edges = {};
 
   aboutToAppear () {
     this.oldWindowOrientation = display.getDefaultDisplaySync().orientation;
@@ -198,6 +199,7 @@ struct webViewObjectPositionReport {
           .width(this.nodeContainerWidth)
           .height(this.nodeContainerHeight)
           .backgroundColor(Color.Yellow)
+          .position(this.edges)
           Web({ src: $rawfile('objectMove.html'), controller: this.controller })
             .javaScriptAccess(this.javaScriptAccess)
             .fileAccess(this.fileAccess)
@@ -219,6 +221,7 @@ struct webViewObjectPositionReport {
                   this.nodeController.setRenderOption(this.embedMap?.get('cameraTest')?.surfaceId as string, NodeRenderType.RENDER_TYPE_TEXTURE,
                     this.embedMap?.get('cameraTest')?.embedId as string, px2vp(this.embedMap?.get("cameraTest")?.width),
                     px2vp(this.embedMap?.get('cameraTest')?.height))
+                  this.edges = {left: `${embed.info?.position?.x as number}px`, top: `${embed.info?.position?.y as number}px`}
                   this.nodeController.rebuild()
                   console.log('surfaceId = ' + this.embedMap?.get('cameraTest')?.surfaceId);
                   this.nodeContainerWidth = px2vp(this.embedMap?.get('cameraTest')?.width);
@@ -228,6 +231,7 @@ struct webViewObjectPositionReport {
               }else if (embed.status == NativeEmbedStatus.UPDATE) {
                 console.log('NativeEmbed update' + JSON.stringify(embed.info));
                 this.newPosition = JSON.stringify(embed.info?.position);
+                this.edges = {left: `${embed.info?.position?.x as number}px`, top: `${embed.info?.position?.y as number}px`}
                 if (this.oldPosition != this.newPosition) {
                   Utils.emitEvent('success', 8018);
                 } else {
@@ -237,8 +241,22 @@ struct webViewObjectPositionReport {
                 console.log('NativeEmbed destroy' + JSON.stringify(embed.info));
               }
         })
-
-
+            .onNativeEmbedGestureEvent((touch) => {
+              console.log("NativeEmbed onNativeEmbedGestureEvent" + JSON.stringify(touch.touchEvent));
+              // 将获取到的同层区域的事件发送到该区域embedId对应的nodeController上
+              if(this.nodeController?.getEmbedId() == touch.embedId) {
+                let ret = this.nodeController?.postEvent(touch.touchEvent)
+                if(ret) {
+                  console.log("onNativeEmbedGestureEvent success ");
+                } else {
+                  console.log("onNativeEmbedGestureEvent fail ");
+                }
+                if(touch.result) {
+                  // 通知Web组件手势事件消费结果
+                  touch.result.setGestureEventResult(ret);
+                }
+              }
+            })
       }
     }
   }
