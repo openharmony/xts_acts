@@ -842,8 +842,8 @@ export default function BuiltinsRequiredUtilityTypeTest() {
 
 
     /**
-     * @tc.number SUB_BUILTINS_REQUIRED_UTILITY_TEST_2600
-     * @tc.name BuiltinsRequiredUtilityTypeTest2600
+     * @tc.number SUB_BUILTINS_REQUIRED_UTILITY_TEST_3000
+     * @tc.name BuiltinsRequiredUtilityTypeTest3000
      * @tc.desc Required Utility Type
      * @tc.size MediumTest
      * @tc.type Function

@@ -1,21 +1,21 @@
 /*
 * Copyright (C) 2024 HiHope Open Source Organization.
-* Licensed under the Apache License, Version 2.0 (the "License");
+* Licensed under the Apache License, Version 2.0 (the 'License');
 * you may not use this file except in compliance with the License.
 * You may obtain a copy of the License at
 *
 *   http://www.apache.org/licenses/LICENSE-2.0
 *
 * Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
+* distributed under the License is distributed on an 'AS IS' BASIS,
 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from "@ohos/hypium"
-import { hilog } from "@kit.PerformanceAnalysisKit"
-import { createProxy } from "../testability/pages/Proxy"
-import { sliceString, treeString } from "../testability/pages/TreeString"
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level, Size, TestType } from '@ohos/hypium'
+import { createProxy } from '../testability/pages/Proxy'
+import { sliceString, treeString } from '../testability/pages/TreeString'
+
 
 
 export default function builtinsProxyTest() {
@@ -47,7 +47,7 @@ export default function builtinsProxyTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('builtinsProxyTest0100', 0, (Done: Function) => {
+    it('builtinsProxyTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       interface User {
         name: string;
         age: number;
@@ -67,7 +67,7 @@ export default function builtinsProxyTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('builtinsProxyTest0200', 0, (Done: Function) => {
+    it('builtinsProxyTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       interface User {
         name: string;
         age: number;
@@ -87,7 +87,7 @@ export default function builtinsProxyTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('builtinsProxyTest0300', 0, (Done: Function) => {
+    it('builtinsProxyTest0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       interface User {
         name: string|undefined;
         age: number;
@@ -109,7 +109,7 @@ export default function builtinsProxyTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('builtinsProxyTest0400', 0, (Done: Function) => {
+    it('builtinsProxyTest0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       interface User {
         name: string|undefined|null;
         age: number;
@@ -131,7 +131,7 @@ export default function builtinsProxyTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('builtinsProxyTest0500', 0, (Done: Function) => {
+    it('builtinsProxyTest0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       interface User {
         name: string|undefined|null;
         age: number;
@@ -152,7 +152,7 @@ export default function builtinsProxyTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('builtinsProxyTest0600', 0, (Done: Function) => {
+    it('builtinsProxyTest0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       interface User {
         name: string|undefined|null;
         age: number;
@@ -174,7 +174,7 @@ export default function builtinsProxyTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('builtinsProxyTest0700', 0, (Done: Function) => {
+    it('builtinsProxyTest0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       interface User {
         name: string|undefined|null;
         age: number;
@@ -196,7 +196,7 @@ export default function builtinsProxyTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('builtinsProxyTest0800', 0, (Done: Function) => {
+    it('builtinsProxyTest0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       interface User {
         name: string|undefined|null;
         age: number;
@@ -218,7 +218,7 @@ export default function builtinsProxyTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('builtinsProxyTest0900', 0, (Done: Function) => {
+    it('builtinsProxyTest0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       interface User {
         name: string|undefined|null;
         age: number;
@@ -240,7 +240,7 @@ export default function builtinsProxyTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('builtinsProxyTest1000', 0, (Done: Function) => {
+    it('builtinsProxyTest1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       interface User {
         name: string|undefined|null;
         age: number;
@@ -262,7 +262,7 @@ export default function builtinsProxyTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('builtinsProxyTest1100', 0, (Done: Function) => {
+    it('builtinsProxyTest1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       interface User {
         name: string|undefined|null;
         age: number;
@@ -284,7 +284,7 @@ export default function builtinsProxyTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('builtinsProxyTest1200', 0, (Done: Function) => {
+    it('builtinsProxyTest1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       interface User {
         name: string|undefined|null;
         age: number;
@@ -306,7 +306,7 @@ export default function builtinsProxyTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('builtinsProxyTest1300', 0, (Done: Function) => {
+    it('builtinsProxyTest1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       interface User {
         name: string|undefined|null;
         age: number;
@@ -328,7 +328,7 @@ export default function builtinsProxyTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('builtinsProxyTest1400', 0, (Done: Function) => {
+    it('builtinsProxyTest1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       interface User {
         name: string|undefined|null;
         age: number;
@@ -350,7 +350,7 @@ export default function builtinsProxyTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('builtinsProxyTest1500', 0, (Done: Function) => {
+    it('builtinsProxyTest1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       interface User {
         name: string|undefined|null;
         age: number;
@@ -372,7 +372,7 @@ export default function builtinsProxyTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('builtinsProxyTest1600', 0, (Done: Function) => {
+    it('builtinsProxyTest1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       interface User {
         name: string|undefined|null;
         age: number;
@@ -394,7 +394,7 @@ export default function builtinsProxyTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('builtinsProxyTest1700', 0, (Done: Function) => {
+    it('builtinsProxyTest1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       interface User {
         name: string|undefined|null;
         age: number;
@@ -417,14 +417,14 @@ export default function builtinsProxyTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('builtinsProxyTest1800', 0, (Done: Function) => {
+    it('builtinsProxyTest1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
       interface User {
         name: string|undefined|null;
         age: number;
         specialChar?: string;
         undefinedProp?: undefined;
       }
-      const user: User =  { name:sliceString("{k1:value1,k2:value2}"),age:0};
+      const user: User =  { name:sliceString('{k1:value1,k2:value2}'),age:0};
       const userProxy = createProxy(user) as User;
       expect(userProxy.name).assertEqual('{');;
       Done()

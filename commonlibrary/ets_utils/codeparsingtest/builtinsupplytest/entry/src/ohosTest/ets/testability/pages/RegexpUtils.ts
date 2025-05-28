@@ -13,39 +13,39 @@
 * limitations under the License.
 */
 
-export function regExpProtoCompile(pattern: string, flags?: string) {
+export function regExpProtoCompile(pattern: string, flags?: string):RegExp {
   return RegExp.prototype.compile(pattern, flags);
 }
 
-export function regExpProtoExec(str: string) {
+export function regExpProtoExec(str: string): RegExpExecArray | null {
   return RegExp.prototype.exec(str);
 }
 
-export function regExpSymbolMatch(pattern: RegExp, str: string) {
+export function regExpSymbolMatch(pattern: RegExp, str: string): RegExpMatchArray | null {
   return pattern[Symbol.match](str);
 }
 
-export function regExpSymbolMatchAll(pattern: RegExp, str: string) {
+export function regExpSymbolMatchAll(pattern: RegExp, str: string): IterableIterator<RegExpMatchArray> {
   return pattern[Symbol.matchAll](str);
 }
 
-export function regExpSymbolReplace(pattern: RegExp, str: string, replaceStr: string) {
+export function regExpSymbolReplace(pattern: RegExp, str: string, replaceStr: string): string {
   return pattern[Symbol.replace](str, replaceStr);
 }
 
-export function regExpSymbolSearch(pattern: RegExp, str: string) {
+export function regExpSymbolSearch(pattern: RegExp, str: string): number {
   return pattern[Symbol.search](str);
 }
 
-export function regExpSymbolSplit(pattern: RegExp, str: string) {
+export function regExpSymbolSplit(pattern: RegExp, str: string): string[] {
   return pattern[Symbol.split](str);
 }
 
-export function regExp$str(pattern: RegExp, str: string) {
+export function regExp$str(pattern: RegExp, str: string): any {
   return RegExp[str];
 }
 
-export function regExpSymbolSpecies(pattern: RegExp) {
+export function regExpSymbolSpecies(pattern: RegExp): RegExpConstructor {
   return RegExp[Symbol.species];
 }
 

@@ -314,7 +314,7 @@ export default function builtinsGenericsRestraintTest() {
     })
     /**
      * @tc.number SUB_BUILTINS_GENERICS_RESTRAINT_TEST_0100
-     * @tc.name builtinsGenericsRestraintTest0600
+     * @tc.name builtinsGenericsRestraintTest0100
      * @tc.desc test Generic no constrained parameters
      * @tc.size MediumTest
      * @tc.type Function

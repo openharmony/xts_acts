@@ -680,7 +680,7 @@ export default function BuiltinsNullLiteralTest() {
 
     /**
      * @tc.number SUB_NULL_LITERAL_TEST_3000
-     * @tc.name BuiltinsNullLiteralTes3000
+     * @tc.name BuiltinsNullLiteralTest3000
      * @tc.desc Testing Task
      * @tc.size MediumTest
      * @tc.type Function

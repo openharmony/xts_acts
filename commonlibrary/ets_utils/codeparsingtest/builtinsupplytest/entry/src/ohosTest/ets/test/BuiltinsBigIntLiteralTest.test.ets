@@ -1,13 +1,13 @@
 /*
 * Copyright (C) 2024 HiHope Open Source Organization.
-* Licensed under the Apache License, Version 2.0 (the "License");
+* Licensed under the Apache License, Version 2.0 (the 'License');
 * you may not use this file except in compliance with the License.
 * You may obtain a copy of the License at
 *
 *   http://www.apache.org/licenses/LICENSE-2.0
 *
 * Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
+* distributed under the License is distributed on an 'AS IS' BASIS,
 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 * See the License for the specific language governing permissions and
 * limitations under the License.
@@ -247,9 +247,9 @@ export default function BuiltinsBigIntLiteralTest() {
     it('BuiltinsBigIntLiteralTest0900',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'BuiltinsBigIntLiteralTest0900';
       console.log(`${caseName} test start`);
-      const strValue1 = "123";
-      const strValue2 = "456";
-      const strValue3 = "789";
+      const strValue1 = '123';
+      const strValue2 = '456';
+      const strValue3 = '789';
       const bigIntValue1 = BigInt(strValue1);
       const bigIntValue2 = BigInt(strValue2);
       const bigIntValue3 = BigInt(strValue3);
@@ -278,10 +278,10 @@ export default function BuiltinsBigIntLiteralTest() {
     it('BuiltinsBigIntLiteralTest1000',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'BuiltinsBigIntLiteralTest1000';
       console.log(`${caseName} test start`);
-      const strValue1 = "159";
-      const strValue2 = "357";
-      const strValue3 = "852";
-      const strValue4 = "456";
+      const strValue1 = '159';
+      const strValue2 = '357';
+      const strValue3 = '852';
+      const strValue4 = '456';
       const bigIntValue1 = BigInt(strValue1);
       const bigIntValue2 = BigInt(strValue2);
       const bigIntValue3 = BigInt(strValue3);
@@ -311,9 +311,9 @@ export default function BuiltinsBigIntLiteralTest() {
     it('BuiltinsBigIntLiteralTest1100',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'BuiltinsBigIntLiteralTest1100';
       console.log(`${caseName} test start`);
-      const strValue1 = "369";
-      const strValue2 = "456";
-      const strValue3 = "789";
+      const strValue1 = '369';
+      const strValue2 = '456';
+      const strValue3 = '789';
       const bigIntValue1 = BigInt(strValue1);
       const bigIntValue2 = BigInt(strValue2);
       const bigIntValue3 = BigInt(strValue3);
@@ -342,10 +342,10 @@ export default function BuiltinsBigIntLiteralTest() {
     it('BuiltinsBigIntLiteralTest1200',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'BuiltinsBigIntLiteralTest1200';
       console.log(`${caseName} test start`);
-      const strValue1 = "123";
-      const strValue2 = "357";
-      const strValue3 = "753";
-      const strValue4 = "951";
+      const strValue1 = '123';
+      const strValue2 = '357';
+      const strValue3 = '753';
+      const strValue4 = '951';
       const bigIntValue1 = BigInt(strValue1);
       const bigIntValue2 = BigInt(strValue2);
       const bigIntValue3 = BigInt(strValue3);
@@ -375,7 +375,7 @@ export default function BuiltinsBigIntLiteralTest() {
     it('BuiltinsBigIntLiteralTest1300',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'BuiltinsBigIntLiteralTest1300';
       console.log(`${caseName} test start`);
-      const str1 = "1_23";
+      const str1 = '1_23';
       const cleanStr = str1.replace(/[^0-9-]/g, '');
       const bigint1 = BigInt(cleanStr);
       console.log(`${bigint1}`);
@@ -397,7 +397,7 @@ export default function BuiltinsBigIntLiteralTest() {
     it('BuiltinsBigIntLiteralTest1400',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'BuiltinsBigIntLiteralTest1400';
       console.log(`${caseName} test start`);
-      const str1 = "_123";
+      const str1 = '_123';
       const cleanStr = str1.replace(/[^0-9-]/g, '');
       const bigint1 = BigInt(cleanStr);
       console.log(`${bigint1}`);
@@ -418,7 +418,7 @@ export default function BuiltinsBigIntLiteralTest() {
     it('BuiltinsBigIntLiteralTest1500',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'BuiltinsBigIntLiteralTest1500';
       console.log(`${caseName} test start`);
-      const str1 = "1_2_3_4_5";
+      const str1 = '1_2_3_4_5';
       const cleanStr = str1.replace(/[^0-9-]/g, '');
       const bigint1 = BigInt(cleanStr);
       console.log(`${bigint1}`);
@@ -440,7 +440,7 @@ export default function BuiltinsBigIntLiteralTest() {
     it('BuiltinsBigIntLiteralTest1600',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'BuiltinsBigIntLiteralTest1600';
       console.log(`${caseName} test start`);
-      const str1 = "1234567_";
+      const str1 = '1234567_';
       const cleanStr = str1.replace(/[^0-9-]/g, '');
       const bigint1 = BigInt(cleanStr);
       console.log(`${bigint1}`);
@@ -461,9 +461,9 @@ export default function BuiltinsBigIntLiteralTest() {
     it('BuiltinsBigIntLiteralTest1700',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'BuiltinsBigIntLiteralTest1700';
       console.log(`${caseName} test start`);
-      const str1 = "7_8_9";
+      const str1 = '7_8_9';
       const cleanStr = str1.replace(/[^0-9-]/g, '');
-      const str2 = "789";
+      const str2 = '789';
       const bigint1 = BigInt(cleanStr);
       const bigint2 = BigInt(str2);
       console.log(`${bigint1}`);
@@ -484,7 +484,7 @@ export default function BuiltinsBigIntLiteralTest() {
     it('BuiltinsBigIntLiteralTest1800',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'BuiltinsBigIntLiteralTest1800';
       console.log(`${caseName} test start`);
-      const str1 = "1as23ds5";
+      const str1 = '1as23ds5';
       const cleanStr = str1.replace(/[^0-9-]/g, '');
       const bigint1 = BigInt(cleanStr);
       console.log(`${bigint1}`);

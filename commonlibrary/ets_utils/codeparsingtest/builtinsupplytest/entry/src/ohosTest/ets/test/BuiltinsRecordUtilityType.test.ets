@@ -645,8 +645,8 @@ export default function BuiltinsRecordUtilityTypeTest() {
 
 
     /**
-     * @tc.number SUB_BUILTINS_RECORD_UTILITY_TEST_2600
-     * @tc.name BuiltinsRecordUtilityTypeTest2600
+     * @tc.number SUB_BUILTINS_RECORD_UTILITY_TEST_2700
+     * @tc.name BuiltinsRecordUtilityTypeTest2700
      * @tc.desc Record Utility Type
      * @tc.size MediumTest
      * @tc.type Function

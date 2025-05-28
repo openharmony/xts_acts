@@ -1,13 +1,13 @@
 /*
 * Copyright (C) 2024 HiHope Open Source Organization.
-* Licensed under the Apache License, Version 2.0 (the "License");
+* Licensed under the Apache License, Version 2.0 (the 'License');
 * you may not use this file except in compliance with the License.
 * You may obtain a copy of the License at
 *
 *   http://www.apache.org/licenses/LICENSE-2.0
 *
 * Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
+* distributed under the License is distributed on an 'AS IS' BASIS,
 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 * See the License for the specific language governing permissions and
 * limitations under the License.
@@ -626,8 +626,8 @@ export default function BuiltinsBooleanLiteralTest() {
       const isEvenAndInRange = isEven && isInRange;
       const isOddOrOutOfRange =!isEven ||!isInRange;
 
-      console.log("Is even and in range:", isEvenAndInRange);
-      console.log("Is odd or out of range:", isOddOrOutOfRange);
+      console.log('Is even and in range:', isEvenAndInRange);
+      console.log('Is odd or out of range:', isOddOrOutOfRange);
       expect(false).assertEqual(isEvenAndInRange);
       expect(true).assertEqual(isOddOrOutOfRange);
       console.log(`${caseName} test end`);
@@ -656,7 +656,7 @@ export default function BuiltinsBooleanLiteralTest() {
           countEvenInRange++;
         }
       }
-      console.log("Count of even numbers in range:", countEvenInRange);
+      console.log('Count of even numbers in range:', countEvenInRange);
       expect(1).assertEqual(countEvenInRange);
       console.log(`${caseName} test end`);
       Done();
@@ -718,7 +718,7 @@ export default function BuiltinsBooleanLiteralTest() {
       const isAdult = person.age >= 18;
       const isWorkingNonStudent =!person.isStudent && person.hasJob;
       const isValidProfile = isAdult && isWorkingNonStudent;
-      console.log("Is valid profile:", isValidProfile);
+      console.log('Is valid profile:', isValidProfile);
       expect(true).assertEqual(isValidProfile);
       console.log(`${caseName} test end`);
       Done();
@@ -741,7 +741,7 @@ export default function BuiltinsBooleanLiteralTest() {
       const conditionC = true;
       const conditionD = false;
       const complexCondition = (conditionA &&!conditionB) || (conditionC &&!conditionD);
-      console.log("Complex condition result:", complexCondition);
+      console.log('Complex condition result:', complexCondition);
       expect(true).assertEqual(complexCondition);
       console.log(`${caseName} test end`);
       Done();

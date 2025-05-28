@@ -601,7 +601,7 @@ export default function builtinsStringPrototypeTest() {
 
     /**
      * @tc.number SUB_BUILTINS_STRING_PROTOTYPE_TEST_0122
-     * @tc.name builtinsStringPrototypeTest012
+     * @tc.name builtinsStringPrototypeTest0122
      * @tc.desc Test String.prototype.startsWith() with "one" and position 15
      * @tc.size SMALLTEST
      * @tc.type Function

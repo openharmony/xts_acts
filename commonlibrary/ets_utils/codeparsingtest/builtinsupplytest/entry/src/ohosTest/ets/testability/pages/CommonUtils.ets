@@ -29,6 +29,6 @@ export function hasProperty(issue: Partial<Issue>, prop: keyof Issue): boolean {
 
 @Concurrent
 export function printArgs1(args: number): number {
-  console.info("printArgs: " + args);
+  console.info('printArgs: ' + args);
   return args;
 }

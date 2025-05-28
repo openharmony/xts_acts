@@ -1,13 +1,13 @@
 /*
 * Copyright (C) 2024 HiHope Open Source Organization.
-* Licensed under the Apache License, Version 2.0 (the "License");
+* Licensed under the Apache License, Version 2.0 (the 'License');
 * you may not use this file except in compliance with the License.
 * You may obtain a copy of the License at
 *
 *   http://www.apache.org/licenses/LICENSE-2.0
 *
 * Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
+* distributed under the License is distributed on an 'AS IS' BASIS,
 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 * See the License for the specific language governing permissions and
 * limitations under the License.
@@ -75,7 +75,7 @@ export default function BuiltinsFloatLiteralTest() {
     it('BuiltinsFloatLiteralTest0200',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'BuiltinsFloatLiteralTest0200';
       console.log(`${caseName} test start`);
-      const floatStr = "2.3";
+      const floatStr = '2.3';
       const floatValue = parseFloat(floatStr);
       if (typeof floatValue!== 'number') {
         throw new Error(`${floatValue}`);
@@ -191,7 +191,7 @@ export default function BuiltinsFloatLiteralTest() {
       const withUnderline = 2_000.3;
       const withoutUnderline = 2000.3;
       if (withUnderline!== withoutUnderline) {
-        throw new Error("false");
+        throw new Error('false');
       }
       expect(withUnderline).assertEqual(withoutUnderline);
       console.log(`${caseName} test end`);
@@ -226,8 +226,8 @@ export default function BuiltinsFloatLiteralTest() {
 
 
     /**
-     * @tc.number SUB_FLOAT_LITERAL_TEST_0800
-     * @tc.name BuiltinsFloatLiteralTest0800
+     * @tc.number SUB_FLOAT_LITERAL_TEST_0900
+     * @tc.name BuiltinsFloatLiteralTest0900
      * @tc.desc Testing Task
      * @tc.size MediumTest
      * @tc.type Function

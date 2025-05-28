@@ -15,11 +15,11 @@
 
 export type CustomAny = any;
 
-export function fnArr() {
+export function fnArr():any {
   let arr: readonly number[];
   let res;
   try {
-    res = (arr as CustomAny).at(0)
+    res = (arr as CustomAny).at(0);
   } catch (e) {
     console.error(`${fnArr} failed, error: ${e.message}`);
     res = e;
@@ -27,11 +27,11 @@ export function fnArr() {
   return res;
 }
 
-export function fnArrTwo() {
+export function fnArrTwo():any {
   let arr: readonly number[] = undefined;
   let res;
   try {
-    res = (arr as CustomAny).at(0)
+    res = (arr as CustomAny).at(0);
   } catch (e) {
     console.error(`${fnArr} failed, error: ${e.message}`);
     res = e;
