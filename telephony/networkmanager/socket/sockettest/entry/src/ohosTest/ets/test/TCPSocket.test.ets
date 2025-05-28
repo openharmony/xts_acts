@@ -1290,9 +1290,7 @@ export default function TCPSocketTest() {
           port: 4007,
           family: 2
         };
-        await tcp.bind(bindAddress).catch((err:BusinessError) => {
-              console.info('fail to bind' + err.code.toString());
-          });
+        await tcp.bind(bindAddress);
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: {
             address: 'fe80::b3b:ecb5:77f:88dc%12'
@@ -1339,9 +1337,7 @@ export default function TCPSocketTest() {
           port: 4008,
           family: 2
         };
-        await tcp.bind(bindAddress).catch((err:BusinessError) => {
-              console.info('fail to bind' + err.code.toString());
-          });
+        await tcp.bind(bindAddress);
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: bindAddress
         };
@@ -2027,9 +2023,7 @@ export default function TCPSocketTest() {
           port: 4023,
           family:2
         };
-        await tcp.bind(bindAddress).catch((err:BusinessError) => {
-              console.info('fail to bind' + err.code.toString());
-          });
+        await tcp.bind(bindAddress);
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: {
             address:'fe80::b3b:ecb5:77f:88dc%12'
@@ -2077,9 +2071,7 @@ export default function TCPSocketTest() {
           port: 4024,
           family:2
         };
-        await tcp.bind(bindAddress).catch((err:BusinessError) => {
-              console.info('fail to bind' + err.code.toString());
-          });
+        await tcp.bind(bindAddress);
         let tcpConnectOptions: socket.TCPConnectOptions = {
           address: bindAddress
         };
