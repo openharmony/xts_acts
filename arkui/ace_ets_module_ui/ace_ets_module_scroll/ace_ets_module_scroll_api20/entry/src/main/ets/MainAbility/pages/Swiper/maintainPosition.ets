@@ -44,6 +44,7 @@ struct maintainContentPositionSwiper {
             this.data.deleteData(1)
           })
       }
+      Text('Swiper: ' + this.index).id('swiper_maintain_index')
       Swiper(this.swiperController) {
         LazyForEach(this.data, (item: string) => {
           Text(item.toString())
@@ -54,12 +55,12 @@ struct maintainContentPositionSwiper {
             .fontSize(30)
         }, (item: string) => item)
       }
+      .index(this.index)
+      .maintainVisibleContentPosition(this.maintainContentPosition)
       .onChange((index) => {
         this.index = index
         console.error('Swiper onChange ' + index)
       })
-      .index(this.index)
-      .maintainVisibleContentPosition(this.maintainContentPosition)
 
     }.width('100%')
   }
