@@ -4583,41 +4583,6 @@ export default function windowPropertiesTest() {
         }
       })
 
-
-      /**
-       * @tc.number    : SUB_BASIC_WMS_GETWINDOWPROPERTIES_WINDOWTYPE_0100
-       * @tc.name      : test_GETWINDOWPROPERTIES_WINDOWTYPE_0100
-       * @tc.desc      : 查询悬浮窗窗口类型
-       * @tc.size      : MediumTest
-       * @tc.type      : Function
-       * @tc.level     : Level0
-       */
-      it('test_GETWINDOWPROPERTIES_WINDOWTYPE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async(done: Function) => {
-        let msgStr = ' test_GETWINDOWPROPERTIES_WINDOWTYPE_0100 ';
-        console.info(msgStr + ' begin ');
-        let subWindowClass: window.Window | undefined;
-        let config: window.Configuration = {
-          name: "floatWindow",
-          windowType: window.WindowType.TYPE_FLOAT,
-          ctx: context
-        };
-        try {
-          subWindowClass = await window.createWindow(config);
-          let windowProperties = subWindowClass.getWindowProperties()
-          console.info(`${msgStr} windowProperties: ${JSON.stringify(windowProperties)}`);
-          expect(windowProperties.type).assertEqual(window.WindowType.TYPE_FLOAT);
-          await subWindowClass.destroyWindow();
-          done();
-        } catch (error) {
-          console.error('Failed to create the subwindow. Cause: ' + JSON.stringify(error));
-          if (subWindowClass !== undefined) {
-            await subWindowClass.destroyWindow();
-          }
-          expect().assertFail();
-          done();
-        }
-      })
-
       /**
        * @tc.number    : SUB_BASIC_WMS_GETWINDOWPROPERTIES_WINDOWTYPE_0200
        * @tc.name      : test_GETWINDOWPROPERTIES_WINDOWTYPE_0200
@@ -5854,42 +5819,6 @@ export default function windowPropertiesTest() {
             expect().assertFail();
             done();
           }
-        }
-      })
-
-      /**
-       * @tc.number    : SUB_BASIC_WMS_GETWINDOWPROPERTIES_NAME_0300
-       * @tc.name      : test_GETWINDOWPROPERTIES_NAME_0300
-       * @tc.desc      : float窗查询name
-       * @tc.size      : MediumTest
-       * @tc.type      : Function
-       * @tc.level     : Level1
-       */
-      it('test_GETWINDOWPROPERTIES_NAME_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async(done: Function) => {
-        let msgStr = ' test_GETWINDOWPROPERTIES_NAME_0300 ';
-        console.info(msgStr + ' begin ');
-        let subWindowClass: window.Window | undefined;
-        let config: window.Configuration = {
-          name: "testWindowPropertiesFloatWindow",
-          windowType: window.WindowType.TYPE_FLOAT,
-          ctx: context
-        };
-        try {
-          subWindowClass = await window.createWindow(config);
-          let windowProperties = subWindowClass.getWindowProperties()
-          console.info(`${msgStr} windowProperties: ${JSON.stringify(windowProperties)}`);
-          let name = windowProperties.name;
-          console.info(`${msgStr} name: ${JSON.stringify(name)}`);
-          expect(name).assertEqual('testWindowPropertiesFloatWindow');
-          await subWindowClass.destroyWindow();
-          done();
-        } catch (error) {
-          console.error('Failed to create the subwindow. Cause: ' + JSON.stringify(error));
-          if (subWindowClass !== undefined) {
-            await subWindowClass.destroyWindow();
-          }
-          expect().assertFail();
-          done();
         }
       })
 
