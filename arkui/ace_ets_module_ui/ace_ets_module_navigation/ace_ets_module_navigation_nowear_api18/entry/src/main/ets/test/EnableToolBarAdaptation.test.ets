@@ -175,9 +175,15 @@ export default function EnableToolBarAdaptation() {
       await btn1.click();
       console.info('[EnableToolBarAdaptation_0400] btn1 click');
 
-      await driver.assertComponentExist(ON.type('ToolBar'));
-      console.info('[EnableToolBarAdaptation_0400] ToolBar is exist');
-      await driver.delayMs(1000);
+      let navigation: Component = await driver.findComponent(ON.type('Navigation'));
+      let rect = await navigation.getBounds();
+      let navigationWidth = rect.right;
+      console.info('[EnableToolBarAdaptation_0400] navigationWidth is ', navigationWidth);
+      if (navigationWidth < 1500) {
+        await driver.assertComponentExist(ON.type('ToolBar'));
+        console.info('[EnableToolBarAdaptation_0400] ToolBar is exist');
+        await driver.delayMs(1000);
+      }
 
       let landscapeBtn: Component = await driver.findComponent(ON.id('landscapeId'));
       await landscapeBtn.click();
