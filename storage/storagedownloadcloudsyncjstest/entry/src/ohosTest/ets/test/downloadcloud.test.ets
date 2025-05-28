@@ -92,10 +92,10 @@ describe('cloud_file_download_test', () => {
    * @tc.desc function of API, Test State RUNNING
    * @tc.size MediumTest
    * @tc.type Function
-   * @tc.level Level 3
+   * @tc.level Level 0
    * @tc.require
    */
-   it('test_Download_State_001', Level.LEVEL3, async (done: Function) => {
+   it('test_Download_State_001', Level.LEVEL0, async (done: Function) => {
      let TAG = "test_Download_State_001::";
      let RUNNING = 0;
      try {
@@ -122,10 +122,10 @@ describe('cloud_file_download_test', () => {
    * @tc.desc function of API, Test State FAILED
    * @tc.size MediumTest
    * @tc.type Function
-   * @tc.level Level 3
+   * @tc.level Level 0
    * @tc.require
    */
-   it('test_Download_State_002', Level.LEVEL3, async (done: Function) => {
+   it('test_Download_State_002', Level.LEVEL0, async (done: Function) => {
      let TAG = "test_Download_State_002::";
      let FAILED = 2;
      try {
@@ -152,10 +152,10 @@ describe('cloud_file_download_test', () => {
    * @tc.desc function of API, Test State Uploading
    * @tc.size MediumTest
    * @tc.type Function
-   * @tc.level Level 3
+   * @tc.level Level 0
    * @tc.require
    */
-   it('test_Uploading_State_003', Level.LEVEL3, async (done: Function) => {
+   it('test_Uploading_State_003', Level.LEVEL0, async (done: Function) => {
      let TAG = "test_Uploading_State_003::";
      let UPLOADING = 0;
      try {
@@ -181,10 +181,10 @@ describe('cloud_file_download_test', () => {
    * @tc.desc function of API, Test State Uploading_Failed
    * @tc.size MediumTest
    * @tc.type Function
-   * @tc.level Level 3
+   * @tc.level Level 0
    * @tc.require
    */
-   it('test_Uploading_Failed_State_004', Level.LEVEL3, async (done: Function) => {
+   it('test_Uploading_Failed_State_004', Level.LEVEL0, async (done: Function) => {
      let TAG = "test_Uploading_Failed_State_004::";
      let UPLOAD_FAILED = 1;
      try {
@@ -210,10 +210,10 @@ describe('cloud_file_download_test', () => {
    * @tc.desc function of API, Test State DOWNLOAD_FAILED
    * @tc.size MediumTest
    * @tc.type Function
-   * @tc.level Level 3
+   * @tc.level Level 0
    * @tc.require
    */
-  it('test_CloudSync_SyncState_005', Level.LEVEL3, async (done: Function) => {
+  it('test_CloudSync_SyncState_005', Level.LEVEL0, async (done: Function) => {
     let TAG = "test_CloudSync_SyncState_005::";
     let DOWNLOAD_FAILED = 3;
     try {
@@ -240,10 +240,10 @@ describe('cloud_file_download_test', () => {
    * @tc.desc function of API, Test State Downloading
    * @tc.size MediumTest
    * @tc.type Function
-   * @tc.level Level 3
+   * @tc.level Level 0
    * @tc.require
    */
-   it('test_Downloading_State_006', Level.LEVEL3, async (done: Function) => {
+   it('test_Downloading_State_006', Level.LEVEL0, async (done: Function) => {
      let TAG = "test_Downloading_State_006::";
      let DOWNLOADING = 2;
      try {
@@ -269,10 +269,10 @@ describe('cloud_file_download_test', () => {
    * @tc.desc function of API, Test State processed
    * @tc.size MediumTest
    * @tc.type Function
-   * @tc.level Level 3
+   * @tc.level Level 0
    * @tc.require
    */
-   it('test_Download_Processed_001', Level.LEVEL3, async (done: Function) => {
+   it('test_Download_Processed_001', Level.LEVEL0, async (done: Function) => {
      let TAG = "test_Download_Processed_001::";
      let FAILED = 2;
      try {
@@ -299,10 +299,10 @@ describe('cloud_file_download_test', () => {
    * @tc.desc function of API, Test DownloadErrorType NO_ERROR
    * @tc.size MediumTest
    * @tc.type Function
-   * @tc.level Level 3
+   * @tc.level Level 0
    * @tc.require
    */
-   it('test_Download_Error_001', Level.LEVEL3, async (done: Function) => {
+   it('test_Download_Error_001', Level.LEVEL0, async (done: Function) => {
      let TAG = "test_Download_Error_001::";
      let NO_ERROR = 0;
      try {
@@ -329,10 +329,10 @@ describe('cloud_file_download_test', () => {
    * @tc.desc function of API, Test DownloadErrorType UNKNOWN_ERROR
    * @tc.size MediumTest
    * @tc.type Function
-   * @tc.level Level 3
+   * @tc.level Level 0
    * @tc.require
    */
-   it('test_Download_Error_002', Level.LEVEL3, async (done: Function) => {
+   it('test_Download_Error_002', Level.LEVEL0, async (done: Function) => {
      let TAG = "test_Download_Error_002::";
      let UNKNOWN_ERROR = 1;
      try {
@@ -359,10 +359,10 @@ describe('cloud_file_download_test', () => {
    * @tc.desc function of API, Test DownloadErrorType NETWORK_UNAVAILABLE
    * @tc.size MediumTest
    * @tc.type Function
-   * @tc.level Level 3
+   * @tc.level Level 0
    * @tc.require
    */
-   it('test_Download_Error_003', Level.LEVEL3, async (done: Function) => {
+   it('test_Download_Error_003', Level.LEVEL0, async (done: Function) => {
      let TAG = "test_Download_Error_003::";
      let NETWORK_UNAVAILABLE = 2;
      try {
