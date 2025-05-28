@@ -314,8 +314,6 @@ class StaticSuite {
         tempSuiteService = suiteService;
         await tempSuiteService.setSuiteResults(this, err, coreContext);
       }
-      hilog.info(0x0000, 'testTag', '%{public}s', 'xushijie888');
-      hilog.info(0x0000, 'testTag', '%{public}s', `xushijie${this.specs.length}`);
 
 
       if (this.specs.length > 0 && this.hookError === null) {

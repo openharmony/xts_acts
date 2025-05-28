@@ -64,7 +64,6 @@ class SuiteService {
           return Promise.resolve(undefined);
         }
         const isFilter = this.analyzeConfigServiceClass(configService.className, desc);
-        hilog.info(0x0000, 'testTag', '%{public}s', `xushijie-${isFilter}`);
 
         if (configService.filterSuite(desc) && isFilter) {
           if (this.currentRunningSuite.description === '' || this.currentRunningSuite.description == null) {
@@ -74,7 +73,7 @@ class SuiteService {
             return Promise.resolve(undefined);
           }
         }
-        hilog.info(0x0000, 'testTag', '%{public}s', `xushijie-this.isSkipSuite-${this.isSkipSuite}`); //false
+
 
         const suite = new StaticSuite({ description: desc });
         if (this.isSkipSuite) {
@@ -88,7 +87,6 @@ class SuiteService {
         this.suitesStack.push(suite);
 
         await (func as () => Promise<void>)();
-        hilog.info(0x0000, 'testTag', '%{public}s', `xushijie-101010`);
 
         this.suitesStack.pop();
 
