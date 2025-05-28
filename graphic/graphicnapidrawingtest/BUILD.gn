@@ -49,6 +49,8 @@ ohos_moduletest_suite("ActsGraphicNapiDrawingTest") {
     "NativeFontTest.cpp",
     "NativeImageLargeValueTest.cpp",
     "NativeImageTest.cpp",
+    "NativeTypographyTestAutoSpace.cpp",
+    "NativeTypographyUpdate.cpp",
     "OH_Drawing_FontCollectionTest.cpp",
     "OH_Drawing_TypographyLargeValueTest.cpp",
     "OH_Drawing_TypographyTest.cpp",

@@ -193,6 +193,10 @@ static bool parseSetConfigFileFormatOps(napi_env env, napi_value arg, struct OH_
             config.profile.fileFormat = AVRECORDER_CFT_WAV;
             config.profile.audioCodec = AVRECORDER_AUDIO_AAC;
             break;
+        case AVRECORDER_CFT_AAC:
+            config.profile.fileFormat = AVRECORDER_CFT_AAC;
+            config.profile.audioCodec = AVRECORDER_AUDIO_AAC;
+            break;
         default:
             config.profile.fileFormat = AVRECORDER_CFT_MPEG_4;
             break;

@@ -43,6 +43,7 @@ import roundRectTest from './RoundRect.test';
 import shadowEffectTest from './ShaderEffect.test'
 import toolTest from './Tool.test'
 import typefaceArguments from './TypefaceArguments.test'
+import rectUtils from './RectUtils.test'
 
 export default function testsuite() {
   samplingOptionsTest();
@@ -76,4 +77,5 @@ export default function testsuite() {
   shadowEffectTest();
   toolTest();
   typefaceArguments();
+  rectUtils();
 }

@@ -39,5 +39,8 @@ export const oHNativeVSyncRequestFrameWithMultiCallbackNormal: () => Array<numbe
 export const oHNativeVSyncRequestFrameWithMultiCallbackNormal01: () => Array<number>;
 export const oHNativeVSyncRequestFrameWithMultiCallbackAbNormal: () => Array<number>;
 export const oHNativeVSyncRequestFrameWithMultiCallbackAbNormal01: () => Array<number>;
+export const oHNativeVSyncSetExpectedFrameRateRange001: () => number;
+export const oHNativeVSyncSetExpectedFrameRateRange002: () => number;
+export const oHNativeVSyncSetExpectedFrameRateRange003: () => Array<number>;
 //
 

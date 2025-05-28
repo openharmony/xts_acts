@@ -137,7 +137,7 @@ export default function AVPlayerVideoScaleTypeTest() {
         afterAll(async () => {
             console.info('afterAll case');
             try {
-                await mediaTestBase.closeFdNumber(avFd.fd)
+                await mediaTestBase.closeFileDescriptor(VIDEO_SOURCE_MP4)
             } catch (e) {
                 console.info(`afterAll error: ${JSON.stringify(e)}`)
             }

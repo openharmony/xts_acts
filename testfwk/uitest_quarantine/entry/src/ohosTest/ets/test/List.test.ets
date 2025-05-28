@@ -12,8 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import UiTest from './uitest.test'
+import UiTest from './uitest.test';
+import GrantPermission from './GrantPermission.test';
 
 export default function testsuite() {
-  UiTest()
+  GrantPermission();
+  UiTest();
 }

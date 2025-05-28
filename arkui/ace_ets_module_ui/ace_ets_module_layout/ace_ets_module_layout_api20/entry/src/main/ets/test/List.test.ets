@@ -14,6 +14,7 @@
  */
 import FlexLayoutPolicyTest from './Flex/FlexLayoutPolicyTest.test.ets'
 import GridRowNoColumnsTest from './GridRow/GridRowNoColumnsTest.test.ets'
+import LayoutInspectorTest from './inspector/layoutInspector.test.ets'
 
 import ColumnMatchParentTest from './Column/ColumnMatchParentTest.ets'
 import ColumnWrapContentTest from './Column/ColumnWrapContentTest.ets'
@@ -37,5 +38,6 @@ export default function testsuite() {
   FolderStackMatchParentTest();
   StackMatchParentTest();
   StackWrapContentTest();
+  LayoutInspectorTest();
 
 }

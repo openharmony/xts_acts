@@ -28,6 +28,12 @@
 #include "drawing_text_lineTypography.h"
 #include "rosen_text/typography.h"
 #include "rosen_text/typography_create.h"
+#include "drawing_text_global.h"
+#include "drawing_text_blob.h"
+#include "global_config/text_global_config.h"
+#include "text/text_blob.h"
+#include "text_style.h"
+#include "typography.h"
 
 #include <string>
 #include <fstream>
@@ -108,6 +114,12 @@ static TypographyStyle* ConvertToOriginalText(OH_Drawing_TypographyStyle* style)
 static TextStyle* ConvertToOriginalText(OH_Drawing_TextStyle* style)
 {
     return reinterpret_cast<TextStyle*>(style);
+}
+
+static uint32_t GetTextHighContrast()
+{
+    auto &instance = Rosen::Drawing::ProcessTextConstrast::Instance();
+    return static_cast<uint32_t>(instance.GetTextContrast());
 }
 
 void OH_Drawing_TypographyTest::PrepareCreateTextLine(const std::string& text)
@@ -2422,5 +2434,34 @@ HWTEST_F(OH_Drawing_TypographyTest, OHDrawingTextLineEnumerateCaretOffsets001, F
         });
     }
     OH_Drawing_DestroyTextLines(textLines);
+}
+
+/*
+* @tc.name: OHDrawingSetTextHighContrast001
+* @tc.desc: test for text high contrast mode
+* @tc.type: FUNC
+*/
+HWTEST_F(OH_Drawing_TypographyTest, OHDrawingSetTextHighContrast001, Function | MediumTest | Level1)
+{
+    OH_Drawing_SetTextHighContrast(OH_Drawing_TextHighContrast::TEXT_FOLLOW_SYSTEM_HIGH_CONTRAST);
+    EXPECT_EQ(GetTextHighContrast(), OH_Drawing_TextHighContrast::TEXT_FOLLOW_SYSTEM_HIGH_CONTRAST);
+
+    OH_Drawing_SetTextHighContrast(OH_Drawing_TextHighContrast::TEXT_APP_DISABLE_HIGH_CONTRAST);
+    EXPECT_EQ(GetTextHighContrast(), OH_Drawing_TextHighContrast::TEXT_APP_DISABLE_HIGH_CONTRAST);
+
+    OH_Drawing_SetTextHighContrast(OH_Drawing_TextHighContrast::TEXT_APP_ENABLE_HIGH_CONTRAST);
+    EXPECT_EQ(GetTextHighContrast(), OH_Drawing_TextHighContrast::TEXT_APP_ENABLE_HIGH_CONTRAST);
+}
+
+/*
+* @tc.name: OHDrawingSetTextHighContrast002
+* @tc.desc: test for text high contrast mode（Invalid）
+* @tc.type: FUNC
+*/
+HWTEST_F(OH_Drawing_TypographyTest, OHDrawingSetTextHighContrast002, Function | MediumTest | Level1)
+{
+    uint32_t preValue = GetTextHighContrast();
+    OH_Drawing_SetTextHighContrast(static_cast<OH_Drawing_TextHighContrast>(Rosen::SrvText::TEXT_HIGH_CONTRAST_BUTT));
+    EXPECT_EQ(GetTextHighContrast(), preValue);
 }
 }
