@@ -1008,7 +1008,7 @@ struct WebComponent {
             }
             case 'emitWebviewBFCacheSuspendPlayerOne': {
               this.controller.loadUrl('http://114.115.208.239:8070/colombo_test/single_video_1.html')
-              await Utils.sleep(4000)
+              await Utils.sleep(20000)
               this.controller.runJavaScript('buttonPlay()')
               await this.retryPlayingGen(this.emitKey)()
               sendEventByKey('webviewBFCacheButton', 10, '');
