@@ -1,7 +1,7 @@
 {
-    "description": "Config for ActsOpenGLgl46gtfmasterTest test cases",
+    "description": "Config for ActsOpenGLegl325xTest test cases",
     "driver": {
-        "module-name": "ActsOpenGLgl46gtfmasterTest",
+        "module-name": "ActsOpenGLegl325xTest",
         "native-test-timeout": "120000",
         "native-test-device-path": "/data/local/tmp",
         "runtime-hint": "100s",
@@ -26,7 +26,7 @@
             ],
             
             "push": [
-                "ActsOpenGLgl46gtfmasterTest->/data/local/tmp/ActsOpenGLgl46gtfmasterTest",
+                "ActsOpenGLegl325xTest->/data/local/tmp/ActsOpenGLegl325xTest",
                 "opengldata/libdeqp_ohos_platform.z.so->/data/local/tmp/libdeqp_ohos_platform.z.so",
                 "opengldata/librosen_context.z.so->/data/local/tmp/librosen_context.z.so",
                 "opengldata/libdeqp_spirv.z.so->/data/local/tmp/libdeqp_spirv.z.so",
@@ -41,7 +41,7 @@
             "teardown": [
                 {
                     "name": "pull",
-                    "value": "/data/local/tmp/ActsOpenGLgl46gtfmasterTest.qpa->ActsOpenGLgl46gtfmasterTest.qpa"
+                    "value": "/data/local/tmp/ActsOpenGLegl325xTest.qpa->ActsOpenGLegl325xTest.qpa"
                 }
             ]
         },
@@ -53,7 +53,7 @@
                 "cd /data/local/tmp"
             ],
             "teardown-localcommand": [
-                "python testcases/opengldata/genlocal.py ActsOpenGLgl46gtfmasterTest gl/khronos_mustpass/main/gl46-gtf-master.txt"
+                "python testcases/opengldata/genlocal.py ActsOpenGLegl325xTest egl/a_mustpass/3.2.5.x/egl-master.txt"
             ]
         }
 

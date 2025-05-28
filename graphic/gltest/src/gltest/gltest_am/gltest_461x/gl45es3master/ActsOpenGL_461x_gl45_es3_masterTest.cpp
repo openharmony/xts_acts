@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
- #include "ActsOpenGL_gl46_masterTest.h"
+ #include "ActsOpenGL_461x_gl45_es3_masterTest.h"
  #include <gtest/gtest.h>
  #include <cstdlib>
  #include "common.h"
@@ -24,32 +24,32 @@
      using namespace testing::ext;
  
      // Preset action of the test suite, which is executed before the first test case
-     void ActsOpenGL_gl46_masterTest::SetUpTestCase(void)
+     void ActsOpenGL_461x_gl45_es3_masterTest::SetUpTestCase(void)
      {
      }
      // Test suite cleanup action, which is executed after the last test case
-     void ActsOpenGL_gl46_masterTest::TearDownTestCase(void)
+     void ActsOpenGL_461x_gl45_es3_masterTest::TearDownTestCase(void)
      {
      }
      // Preset action of the test case
-     void ActsOpenGL_gl46_masterTest::SetUp()
+     void ActsOpenGL_461x_gl45_es3_masterTest::SetUp()
      {
      }
      // Cleanup action of the test case
-     void ActsOpenGL_gl46_masterTest::TearDown()
+     void ActsOpenGL_461x_gl45_es3_masterTest::TearDown()
      {
      }
  
-     HWTEST_F(ActsOpenGL_gl46_masterTest, TestOpenGLglTestCase22, Function | MediumTest | Level2)
+     HWTEST_F(ActsOpenGL_461x_gl45_es3_masterTest, TestOpenGL461xgl45es3TestCase01, Function | MediumTest | Level2)
      {
-         printf("------start ActsOpenGLgl46masterTest------\n");
+         printf("------start ActsOpenGL461xgl45es3masterTest------\n");
          if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
              system("/data/local/tmp/opengl/mustpass/glcts "
-                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/"
-                 "gl46-master.txt "
-                 "--deqp-log-filename=ActsOpenGLgl46masterTest.qpa");
+                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/a_mustpass/4.6.1.x/"
+                 "gl45-es3-master.txt "
+                 "--deqp-log-filename=ActsOpenGL461xgl45es3masterTest.qpa");
          }
          EXPECT_TRUE(true);
-         printf("------end ActsOpenGLgl46masterTest------\n");
+         printf("------end ActsOpenGL461xgl45es3masterTest------\n");
      }
  }

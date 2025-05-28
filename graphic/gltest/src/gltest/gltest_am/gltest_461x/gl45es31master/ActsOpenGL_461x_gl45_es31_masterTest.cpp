@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
- #include "ActsOpenGL_gl46_gtf_masterTest.h"
+ #include "ActsOpenGL_461x_gl45_es31_masterTest.h"
  #include <gtest/gtest.h>
  #include <cstdlib>
  #include "common.h"
@@ -24,32 +24,32 @@
      using namespace testing::ext;
  
      // Preset action of the test suite, which is executed before the first test case
-     void ActsOpenGL_gl46_gtf_masterTest::SetUpTestCase(void)
+     void ActsOpenGL_461x_gl45_es31_masterTest::SetUpTestCase(void)
      {
      }
      // Test suite cleanup action, which is executed after the last test case
-     void ActsOpenGL_gl46_gtf_masterTest::TearDownTestCase(void)
+     void ActsOpenGL_461x_gl45_es31_masterTest::TearDownTestCase(void)
      {
      }
      // Preset action of the test case
-     void ActsOpenGL_gl46_gtf_masterTest::SetUp()
+     void ActsOpenGL_461x_gl45_es31_masterTest::SetUp()
      {
      }
      // Cleanup action of the test case
-     void ActsOpenGL_gl46_gtf_masterTest::TearDown()
+     void ActsOpenGL_461x_gl45_es31_masterTest::TearDown()
      {
      }
  
-     HWTEST_F(ActsOpenGL_gl46_gtf_masterTest, TestOpenGLglTestCase21, Function | MediumTest | Level2)
+     HWTEST_F(ActsOpenGL_461x_gl45_es31_masterTest, TestOpenGL461xgl45es31TestCase01, Function | MediumTest | Level2)
      {
-         printf("------start ActsOpenGLgl46gtfmasterTest------\n");
+         printf("------start ActsOpenGL461xgl45es31masterTest------\n");
          if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
              system("/data/local/tmp/opengl/mustpass/glcts "
-                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/"
-                 "gl46-gtf-master.txt "
-                 "--deqp-log-filename=ActsOpenGLgl46gtfmasterTest.qpa");
+                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/a_mustpass/4.6.1.x/"
+                 "gl45-es31-master.txt "
+                 "--deqp-log-filename=ActsOpenGL461xgl45es31masterTest.qpa");
          }
          EXPECT_TRUE(true);
-         printf("------end ActsOpenGLgl46gtfmasterTest------\n");
+         printf("------end ActsOpenGL461xgl45es31masterTest------\n");
      }
  }
