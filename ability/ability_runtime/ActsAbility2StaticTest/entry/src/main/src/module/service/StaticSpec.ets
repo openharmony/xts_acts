@@ -1,6 +1,7 @@
 import { StaticSpecIF } from '../../interface';
 import { Core } from '../../core';
 import { SpecService } from './SpecService';
+import hilog from '@ohos.hilog'
 
 class StaticSpec {
   public description: string;
@@ -78,6 +79,8 @@ class StaticSpec {
     if (typeof dataDriver === 'undefined') {
       const asyncFn = this.asyncFn;
       const fn = this.fn;
+      hilog.info(0x0000, 'testTag', '%{public}s', 'xushijie444');
+
       if (asyncFn !== null) {
         await asyncFn();
       } else if (fn !== null) {

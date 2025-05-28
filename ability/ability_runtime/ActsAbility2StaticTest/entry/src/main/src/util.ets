@@ -1,6 +1,7 @@
 import { Core } from './core';
 import { ConfigService } from './module/config/configService';
 import { AnyType } from './module/types/common';
+import hilog from '@ohos.hilog'
 
 export function getFuncWithArgsZero(func: (() => void) | (() => Promise<void>), timeout: int, isStressTest: boolean) {
   return new Promise<void>(async (resolve: (value: PromiseLike<void>) => void, reject: (value: object) => void) => {
@@ -11,8 +12,16 @@ export function getFuncWithArgsZero(func: (() => void) | (() => Promise<void>), 
       }, timeout);
     }
     try {
+      hilog.info(0x0000, 'testTag', '%{public}s', `xushijie-xushijie-util004`);
+      hilog.info(0x0000, 'testTag', '%{public}s', `xushijie-xushijie-util004func-${typeof func}`);
+
       await (func as () => Promise<void>)();
-    } catch (err: Error) {}
+      hilog.info(0x0000, 'testTag', '%{public}s', `xushijie-xushijie-util005`);
+
+    } catch (err: Error) {
+      hilog.info(0x0000, 'testTag', '%{public}s', `xushijie-xushijie-util006-${err.message}`);  // undefined cannot be cast to Promise<void>
+
+    }
     if (!!timer) {
       clearTimeout(timer);
     }
@@ -146,6 +155,8 @@ export function processFunc(
   coreContext: Core,
   func: ((param1?: () => void) => void) | ((param1?: () => void) => Promise<void>)
 ) {
+  hilog.info(0x0000, 'testTag', '%{public}s', `xushijie-xushijie-util001`);
+
   const configService = coreContext.getDefaultService('config');
   if (configService !== null) {
     const config = configService as ConfigService;
@@ -161,7 +172,13 @@ export function processFunc(
     } else {
       isStressTest = false;
     }
+    hilog.info(0x0000, 'testTag', '%{public}s', `xushijie-xushijie-util002`);
+
     return () => {
+      hilog.info(0x0000, 'testTag', '%{public}s', `xushijie-xushijie-util003`);
+      hilog.info(0x0000, 'testTag', '%{public}s', `xushijie-xushijie-util003func-${typeof func}`);
+
+
       return getFuncWithArgsZero(func, timeout as int, isStressTest);
     };
   }

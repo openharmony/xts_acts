@@ -14,6 +14,8 @@ import {
 import { SuiteService } from './SuiteService';
 import { ConfigService } from '../config/configService';
 import { ItfnType } from '../types/common';
+import hilog from '@ohos.hilog'
+
 class SpecService {
   public id: string;
   public totalTest: int;
@@ -105,6 +107,7 @@ class SpecService {
           sService.suitesStack,
           desc
         );
+        hilog.info(0x0000, 'testTag', '%{public}s', `xushijie-isFilter-${isFilter}`); // true
 
         if (cService.filterWithNest(desc, filter)) {
           this.initSpecService();
@@ -114,13 +117,24 @@ class SpecService {
         if (cService.filterDesc(curSuite.description, desc, filter) && isFilter && !sService.fullRun) {
           this.initSpecService();
         } else {
-          const funcStr = (func as object).toString();
+          hilog.info(0x0000, 'testTag', '%{public}s', `xushijie-111111`);
+
+          // const funcStr = (func as object).toString();
+          const funcStr = Type.of((func as object)).getLiteral()
+
           const argsCount = this.getFunctionArgumentsCount(funcStr);
+          hilog.info(0x0000, 'testTag', '%{public}s', `xushijie-funcStr-${funcStr}`); // Cannot get source code of function
+          hilog.info(0x0000, 'testTag', '%{public}s', `xushijie-argsCount-${argsCount}`); // 0
+
 
           const isAsync = this.checkIsAsyncFunction(funcStr);
+          hilog.info(0x0000, 'testTag', '%{public}s', `xushijie-isAsync-${isAsync}`); //false
+
           let processedFunc: () => Promise<void> = (): Promise<void> => {
             return Promise.resolve();
           };
+          hilog.info(0x0000, 'testTag', '%{public}s', `xushijie-xushijie-001`);
+
           if (argsCount === 1) {
             if (isAsync) {
               const fn = func as (done: () => void) => Promise<void>;
@@ -129,20 +143,32 @@ class SpecService {
               const fn = func as (done: () => void) => void;
               processedFunc = processFuncWithArgOne(coreContext, fn);
             }
+            hilog.info(0x0000, 'testTag', '%{public}s', `xushijie-xushijie-002`);
+
           } else {
+
             const fn = func as () => Promise<void>;
             processedFunc = processFunc(coreContext, fn);
+            hilog.info(0x0000, 'testTag', '%{public}s', `xushijie-xushijie-003`);
+            hilog.info(0x0000, 'testTag', '%{public}s', `xushijie-xushijie-003fnfnfn-${fn}`);
+
+
           }
+          hilog.info(0x0000, 'testTag', '%{public}s', `xushijie-121212`);
+
           const spec = new StaticSpec({ description: desc, fi: filter, asyncFn: processedFunc });
           if (this.isSkipSpec) {
             spec.isSkip = true;
             spec.skipReason = this.specSkipReason;
           }
           this.initSpecService();
+          hilog.info(0x0000, 'testTag', '%{public}s', `xushijie-131313`);
+
           if (cService.runSkipped === 'skipped' && !spec.isSkip) {
             console.info(`${TAG} runSkipped is skipped , just run xit, don't run it: ${spec.description}`);
             return;
           }
+          hilog.info(0x0000, 'testTag', '%{public}s', `xushijie-141414`);
 
           if (curSuite.isSkip && !spec.isSkip) {
             cService.filterXdescribe.push(curSuite.description);
