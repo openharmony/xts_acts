@@ -53,14 +53,19 @@ export default function maintainPosition() {
     it('maintainPosition_0100', Level.LEVEL0, async (done: Function) => {
       console.info('[maintainPosition_0100] START');
       await CommonFunc.sleep(1000);
+      //maintainVisibleContentPosition false
       let driver = Driver.create();
       await driver.assertComponentExist(ON.text('5'));
-      //maintainVisibleContentPosition false
+
       let btnAdd = await driver.findComponent(ON.id('maintain_swiper_add'));
       await btnAdd.click();
       await CommonFunc.sleep(1500);
-      await driver.assertComponentExist(ON.text('4'));
       console.info('[maintainPosition_0100] swiper 4');
+      await driver.assertComponentExist(ON.text('4'));
+      let strJson = getInspectorByKey('swiper_maintain_index');
+      console.info("[maintainPosition_0100] content: " + JSON.stringify(JSON.parse(strJson).$attrs.content));
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('Swiper: 5');
+
       //reset
       let btnDel = await driver.findComponent(ON.id('maintain_swiper_del'));
       await btnDel.click();
@@ -80,17 +85,22 @@ export default function maintainPosition() {
     it('maintainPosition_0200', Level.LEVEL0, async (done: Function) => {
       console.info('[maintainPosition_0200] START');
       await CommonFunc.sleep(1000);
+      //maintainVisibleContentPosition true
       let driver = Driver.create();
       await driver.assertComponentExist(ON.text('5'));
-      //maintainVisibleContentPosition true
+      
       let btnTrue = await driver.findComponent(ON.id('maintain_swiper_true'));
       await btnTrue.click();
       await CommonFunc.sleep(2000);
       let btnAdd = await driver.findComponent(ON.id('maintain_swiper_add'));
       await btnAdd.click();
       await CommonFunc.sleep(1500);
-      await driver.assertComponentExist(ON.text('5'));
       console.info('[maintainPosition_0200] swiper 5');
+      await driver.assertComponentExist(ON.text('5'));
+      let strJson = getInspectorByKey('swiper_maintain_index');
+      console.info("[maintainPosition_0200] content: " + JSON.stringify(JSON.parse(strJson).$attrs.content));
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('Swiper: 6');
+      
       //reset
       let btnTrueDel = await driver.findComponent(ON.id('maintain_swiper_del'));
       await btnTrueDel.click();
