@@ -52,10 +52,12 @@ export default function sceneTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testGetNodeByPath', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done:Function)=> {
+    it('testGetNodeByPath', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let msg = "============================testGetNodeByPath";
       console.info(msg + ' begin ');
       try {
+        scene = await Scene.load($rawfile("gltf/DamagedHelmet/glTF/DamagedHelmet.gltf"));
+        rf = scene.getResourceFactory();
         let node = scene?.getNodeByPath('rootNode_/Scene/node_damagedHelmet_-6514');
         console.info(msg + " succeed in getNodeByPath " + JSON.stringify(node));
         expect(node != null).assertTrue();
@@ -75,10 +77,12 @@ export default function sceneTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testGetResourceFactory', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done:Function)=> {
+    it('testGetResourceFactory', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let msg = "============================testGetResourceFactory";
       console.info(msg + ' begin ');
       try {
+        scene = await Scene.load($rawfile("gltf/DamagedHelmet/glTF/DamagedHelmet.gltf"));
+        rf = scene.getResourceFactory();
         scene?.getResourceFactory();
         console.info(msg + " Succeed in scene.getResourceFactory() ");
         expect(true).assertTrue();
@@ -97,10 +101,12 @@ export default function sceneTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testDestroy', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done:Function)=> {
+    it('testDestroy', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let msg = "============================testDestroy";
       console.info(msg + ' begin ');
       try {
+        scene = await Scene.load($rawfile("gltf/DamagedHelmet/glTF/DamagedHelmet.gltf"));
+        rf = scene.getResourceFactory();
         expect(scene?.root != undefined).assertTrue;
         console.info(msg + " scene?.root is defined ");
         scene?.destroy();
@@ -188,10 +194,12 @@ export default function sceneTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSceneRenderFrame', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done:Function)=> {
+    it('testSceneRenderFrame', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let msg = "============================testSceneRenderFrame";
       console.info(msg + ' begin ');
       try {
+        scene = await Scene.load($rawfile("gltf/DamagedHelmet/glTF/DamagedHelmet.gltf"));
+        rf = scene.getResourceFactory();
         scene?.renderFrame({ alwaysRender: true });
         expect(scene?.renderFrame()).assertTrue();
         console.info(msg + " Succeed in scene?.renderFrame() ");
@@ -239,6 +247,8 @@ export default function sceneTest() {
       let msg = "============================testSphereGeometry";
       console.info(msg + ' begin ');
       try {
+        scene = await Scene.load($rawfile("gltf/DamagedHelmet/glTF/DamagedHelmet.gltf"));
+        rf = scene.getResourceFactory();
         let sphereGeom = new scene3d.SphereGeometry();
         expect(sphereGeom != null).assertTrue();
         expect(sphereGeom.geometryType).assertEqual(scene3d.GeometryType.SPHERE);
@@ -372,8 +382,8 @@ export default function sceneTest() {
       let msg = "============================testCreateScene_01";
       console.info(msg + ' begin ');
       try {
-        let scene = await rf.createScene($rawfile("gltf/DamagedHelmet/glTF/DamagedHelmet.gltf"));
-        expect(scene != null).assertTrue();
+        let scene1 = await rf.createScene($rawfile("gltf/DamagedHelmet/glTF/DamagedHelmet.gltf"));
+        expect(scene1 != null).assertTrue();
         done();
       } catch (err) {
         console.info(msg + " Failed in testCreateScene_01 " + JSON.stringify(err));
@@ -393,8 +403,8 @@ export default function sceneTest() {
       let msg = "============================testCreateScene_02";
       console.info(msg + ' begin ');
       try {
-        let scene = await rf.createScene();
-        expect(scene != null).assertTrue();
+        let scene2 = await rf.createScene();
+        expect(scene2 != null).assertTrue();
         done();
       } catch (err) {
         console.info(msg + " Failed in testCreateScene_02 " + JSON.stringify(err));
@@ -414,12 +424,12 @@ export default function sceneTest() {
       let msg = "============================testSceneLoad_02";
       console.info(msg + ' begin ');
       try {
-        scene = await Scene.load();
-        expect(scene != null).assertTrue();
-        expect(scene != undefined).assertTrue();
+        let scene3 = await Scene.load();
+        expect(scene3 != null).assertTrue();
+        expect(scene3 != undefined).assertTrue();
         done();
       } catch (err) {
-        console.info(msg + 'Failed in Scene.load() ' +
+        console.info(msg + 'Failed in Scene3.load() ' +
         JSON.stringify(err));
         expect().assertFail();
         done();
