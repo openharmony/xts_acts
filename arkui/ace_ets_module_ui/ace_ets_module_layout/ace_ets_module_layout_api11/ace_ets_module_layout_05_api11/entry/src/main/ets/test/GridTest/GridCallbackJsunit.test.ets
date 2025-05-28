@@ -52,9 +52,11 @@ export default function GridCallbackJsunit() {
       let bottom = grid2.bottom
       let left = grid2.left
       let right = grid2.right
+      let width = right - left
+      let height = bottom -top
       console.log('[GridCallbackJsunit_1000] grid 2 top:' + top +" bottom:" + bottom + "left: " + left + " right:" + right)
       let driver = await UiDriver.create()
-      await driver.swipe(Math.round((right - left)), Math.round(bottom - 60), Math.round((right - left)), Math.round(top + 60));
+      await driver.swipe(Math.round((left + width/2)), Math.round(top + height * 0.6), Math.round((left + width/2)), Math.round(top + height * 0.1));
       await CommonFunc.sleep(2000);
       let onReachStartText = await driver.findComponent(BY.key('onReachStartText'));
 
