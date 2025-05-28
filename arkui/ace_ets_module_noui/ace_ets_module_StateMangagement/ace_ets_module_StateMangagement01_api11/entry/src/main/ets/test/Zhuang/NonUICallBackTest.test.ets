@@ -47,7 +47,7 @@ export default function NonUICallBackTest() {
     });
 
     /**
-     * @tc.number NonUICallBackTest
+     * @tc.number NonUICallBackTest_001
      * @tc.name NonUICallBackTest_001
      * @tc.desc Persistently store UI related data
      * @tc.level Level 2
@@ -65,7 +65,7 @@ export default function NonUICallBackTest() {
     });
 
     /**
-     * @tc.number NonUICallBackTest
+     * @tc.number NonUICallBackTest_002
      * @tc.name NonUICallBackTest_002
      * @tc.desc Persistently store UI related data
      * @tc.level Level 2
@@ -88,7 +88,7 @@ export default function NonUICallBackTest() {
     });
 
     /**
-     * @tc.number NonUICallBackTest
+     * @tc.number NonUICallBackTest_003
      * @tc.name NonUICallBackTest_003
      * @tc.desc Persistently store UI related data
      * @tc.level Level 2
@@ -111,7 +111,7 @@ export default function NonUICallBackTest() {
     });
 
     /**
-     * @tc.number NonUICallBackTest
+     * @tc.number NonUICallBackTest_004
      * @tc.name NonUICallBackTest_004
      * @tc.desc Persistently store UI related data
      * @tc.level Level 2

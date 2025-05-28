@@ -24,7 +24,7 @@ struct NonUICallBack {
     }
 
     class ListItem implements List {
-      id: string
+      public id: string
 
       constructor(id: string) {
         this.id = id;
@@ -44,7 +44,7 @@ struct NonUICallBack {
         .height('5%')
         .onClick(() => {
           class Polygon {
-            static str: string = 'Polygon'
+            public static str: string = 'Polygon'
           }
           this.message = Polygon.str
         })
