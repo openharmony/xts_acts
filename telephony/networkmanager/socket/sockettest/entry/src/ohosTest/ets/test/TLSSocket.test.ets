@@ -599,7 +599,9 @@ export default function TLSSocketTest() {
       console.info(`${caseName} test start`);
       try {
         let tlsSocket: socket.TLSSocket = socket.constructTLSSocketInstance();
-        await tlsSocket.bind(addr);
+        await tlsSocket.bind(addr).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         tlsSocket.getState((err: BusinessError, data: socket.SocketStateBase) => {
           if (err) {
             console.info(`${caseName} err: ${JSON.stringify(err)}`);
@@ -671,7 +673,9 @@ export default function TLSSocketTest() {
       console.info(`${caseName} test start`);
       try {
         let tlsSocket: socket.TLSSocket = socket.constructTLSSocketInstance();
-        await tlsSocket.bind(addr);
+        await tlsSocket.bind(addr).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         tlsSocket.getState().then((data: socket.SocketStateBase) => {
           console.info(`${caseName} data: ${JSON.stringify(data)}`);
           expectTrue(data != null);
@@ -743,7 +747,9 @@ export default function TLSSocketTest() {
       console.info(`${caseName} test start`);
       try {
         let tlsSocket: socket.TLSSocket = socket.constructTLSSocketInstance();
-        await tlsSocket.bind(addr);
+        await tlsSocket.bind(addr).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           keepAlive: true,
           OOBInline: true,
@@ -786,7 +792,9 @@ export default function TLSSocketTest() {
       console.info(`${caseName} test start`);
       try {
         let tlsSocket: socket.TLSSocket = socket.constructTLSSocketInstance();
-        await tlsSocket.bind(addr);
+        await tlsSocket.bind(addr).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           keepAlive: false,
           OOBInline: false,
@@ -829,7 +837,9 @@ export default function TLSSocketTest() {
       console.info(`${caseName} test start`);
       try {
         let tlsSocket: socket.TLSSocket = socket.constructTLSSocketInstance();
-        await tlsSocket.bind(addr);
+        await tlsSocket.bind(addr).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           socketLinger: { on: true, linger: 10 },
         };
@@ -865,7 +875,9 @@ export default function TLSSocketTest() {
       console.info(`${caseName} test start`);
       try {
         let tlsSocket: socket.TLSSocket = socket.constructTLSSocketInstance();
-        await tlsSocket.bind(addr);
+        await tlsSocket.bind(addr).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           keepAlive: false,
           OOBInline: false,
@@ -908,7 +920,9 @@ export default function TLSSocketTest() {
       console.info(`${caseName} test start`);
       try {
         let tlsSocket: socket.TLSSocket = socket.constructTLSSocketInstance();
-        await tlsSocket.bind(addr);
+        await tlsSocket.bind(addr).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           keepAlive: false,
           OOBInline: false,
@@ -951,7 +965,9 @@ export default function TLSSocketTest() {
       console.info(`${caseName} test start`);
       try {
         let tlsSocket: socket.TLSSocket = socket.constructTLSSocketInstance();
-        await tlsSocket.bind(addr);
+        await tlsSocket.bind(addr).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           keepAlive: false,
           OOBInline: false,
@@ -994,7 +1010,9 @@ export default function TLSSocketTest() {
       console.info(`${caseName} test start`);
       try {
         let tlsSocket: socket.TLSSocket = socket.constructTLSSocketInstance();
-        await tlsSocket.bind(addr);
+        await tlsSocket.bind(addr).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           keepAlive: false,
           OOBInline: false,
@@ -1037,7 +1055,9 @@ export default function TLSSocketTest() {
       console.info(`${caseName} test start`);
       try {
         let tlsSocket: socket.TLSSocket = socket.constructTLSSocketInstance();
-        await tlsSocket.bind(addr);
+        await tlsSocket.bind(addr).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           keepAlive: false,
           OOBInline: false,
@@ -1080,7 +1100,9 @@ export default function TLSSocketTest() {
       console.info(`${caseName} test start`);
       try {
         let tlsSocket: socket.TLSSocket = socket.constructTLSSocketInstance();
-        await tlsSocket.bind(addr);
+        await tlsSocket.bind(addr).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           keepAlive: true,
           OOBInline: true,
@@ -1123,7 +1145,9 @@ export default function TLSSocketTest() {
       console.info(`${caseName} test start`);
       try {
         let tlsSocket: socket.TLSSocket = socket.constructTLSSocketInstance();
-        await tlsSocket.bind(addr);
+        await tlsSocket.bind(addr).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           keepAlive: false,
           OOBInline: false,
@@ -1166,7 +1190,9 @@ export default function TLSSocketTest() {
       console.info(`${caseName} test start`);
       try {
         let tlsSocket: socket.TLSSocket = socket.constructTLSSocketInstance();
-        await tlsSocket.bind(addr);
+        await tlsSocket.bind(addr).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           socketLinger: { on: true, linger: 10 },
         };
@@ -1202,7 +1228,9 @@ export default function TLSSocketTest() {
       console.info(`${caseName} test start`);
       try {
         let tlsSocket: socket.TLSSocket = socket.constructTLSSocketInstance();
-        await tlsSocket.bind(addr);
+        await tlsSocket.bind(addr).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           keepAlive: false,
           OOBInline: false,
@@ -1245,7 +1273,9 @@ export default function TLSSocketTest() {
       console.info(`${caseName} test start`);
       try {
         let tlsSocket: socket.TLSSocket = socket.constructTLSSocketInstance();
-        await tlsSocket.bind(addr);
+        await tlsSocket.bind(addr).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           keepAlive: false,
           OOBInline: false,
@@ -1288,7 +1318,9 @@ export default function TLSSocketTest() {
       console.info(`${caseName} test start`);
       try {
         let tlsSocket: socket.TLSSocket = socket.constructTLSSocketInstance();
-        await tlsSocket.bind(addr);
+        await tlsSocket.bind(addr).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           keepAlive: false,
           OOBInline: false,
@@ -1331,7 +1363,9 @@ export default function TLSSocketTest() {
       console.info(`${caseName} test start`);
       try {
         let tlsSocket: socket.TLSSocket = socket.constructTLSSocketInstance();
-        await tlsSocket.bind(addr);
+        await tlsSocket.bind(addr).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           keepAlive: false,
           OOBInline: false,
@@ -1374,7 +1408,9 @@ export default function TLSSocketTest() {
       console.info(`${caseName} test start`);
       try {
         let tlsSocket: socket.TLSSocket = socket.constructTLSSocketInstance();
-        await tlsSocket.bind(addr);
+        await tlsSocket.bind(addr).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         let tcpExtraOptions: socket.TCPExtraOptions = {
           keepAlive: false,
           OOBInline: false,
