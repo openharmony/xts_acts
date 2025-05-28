@@ -930,9 +930,7 @@ export default function MulticastSocket() {
             console.info(`${caseName} err: ${JSON.stringify(err)}`);
             expectFail();
           } else {
-            let value: number = await multicast.getMulticastTTL().catch((err:BusinessError) => {
-                console.info('fail to getMulticastTTL' + err.code.toString());
-            });
+            let value: number = await multicast.getMulticastTTL();
             expectEqual(value, ttl);
           }
           console.info(`${caseName} test end`);
@@ -1066,9 +1064,7 @@ export default function MulticastSocket() {
             });
         let ttl: number = 8;
         multicast.setMulticastTTL(ttl).then(async () => {
-          let value: number = await multicast.getMulticastTTL().catch((err:BusinessError) => {
-                console.info('fail to getMulticastTTL' + err.code.toString());
-            });
+          let value: number = await multicast.getMulticastTTL();
           expectEqual(value, ttl);
           console.info(`${caseName} test end`);
           done();
@@ -1416,9 +1412,7 @@ export default function MulticastSocket() {
             console.info(`${caseName} err: ${JSON.stringify(err)}`);
             expectFail();
           } else {
-            let value: boolean = await multicast.getLoopbackMode().catch((err:BusinessError) => {
-                console.info('fail to getLoopbackMode' + err.code.toString());
-            });
+            let value: boolean = await multicast.getLoopbackMode();
             expectEqual(value, mode);
           }
           console.info(`${caseName} test end`);
@@ -1454,9 +1448,7 @@ export default function MulticastSocket() {
             console.info(`${caseName} err: ${JSON.stringify(err)}`);
             expectFail();
           } else {
-            let value: boolean = await multicast.getLoopbackMode().catch((err:BusinessError) => {
-                console.info('fail to getLoopbackMode' + err.code.toString());
-            });
+            let value: boolean = await multicast.getLoopbackMode();
             expectEqual(value, mode);
           }
           console.info(`${caseName} test end`);
@@ -1520,9 +1512,7 @@ export default function MulticastSocket() {
             });
         let mode: boolean = true;
         multicast.setLoopbackMode(mode).then(async () => {
-          let value: boolean = await multicast.getLoopbackMode().catch((err:BusinessError) => {
-                console.info('fail to getLoopbackMode' + err.code.toString());
-            });
+          let value: boolean = await multicast.getLoopbackMode();
           expectEqual(value, mode);
           console.info(`${caseName} test end`);
           done();
@@ -1558,9 +1548,7 @@ export default function MulticastSocket() {
             });
         let mode: boolean = false;
         multicast.setLoopbackMode(mode).then(async () => {
-          let value: boolean = await multicast.getLoopbackMode().catch((err:BusinessError) => {
-                console.info('fail to getLoopbackMode' + err.code.toString());
-            });
+          let value: boolean = await multicast.getLoopbackMode();
           expectEqual(value, mode);
           console.info(`${caseName} test end`);
           done();
