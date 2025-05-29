@@ -667,7 +667,7 @@ export function main33() {
 
 export function main34() {
     try {
-        const keywords = ["0", "NaN", ""];
+        const keywords = ['0', 'NaN', ''];
         const processed = keywords.map(keyword => {
             return keyword;
         });
