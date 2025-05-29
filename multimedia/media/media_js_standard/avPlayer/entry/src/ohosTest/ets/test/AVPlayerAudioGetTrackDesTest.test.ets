@@ -91,7 +91,7 @@ export default function AVPlayerAudioGetTrackDesTest() {
         // #region
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_GET_AUDIODEPTH_CALLBACK_0100
-            * @tc.name      : 001.test integrationAccurateSeekTSInterface - getTrackDescription by callback in prepared state
+            * @tc.name      : SUB_MULTIMEDIA_MEDIA_GET_AUDIODEPTH_CALLBACK_0100
             * @tc.desc      : GetTrackDescription by callback in prepared state
             * @tc.size      : MediumTest
             * @tc.type      : Reliability test
@@ -125,7 +125,7 @@ export default function AVPlayerAudioGetTrackDesTest() {
         // #region
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_GET_AUDIODEPTH_PROMISE_0100
-            * @tc.name      : 002.test integrationAccurateSeekTSInterface - getTrackDescription by promise in prepared state
+            * @tc.name      : SUB_MULTIMEDIA_MEDIA_GET_AUDIODEPTH_PROMISE_0100
             * @tc.desc      : GetTrackDescription by promise in prepared state
             * @tc.size      : MediumTest
             * @tc.type      : Reliability test
@@ -159,7 +159,7 @@ export default function AVPlayerAudioGetTrackDesTest() {
         // #region
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_GET_AUDIODEPTH_CALLBACK_0200
-            * @tc.name      : 003.test integrationAccurateSeekTSInterface - getTrackDescription by callback in playing state
+            * @tc.name      : SUB_MULTIMEDIA_MEDIA_GET_AUDIODEPTH_CALLBACK_0200
             * @tc.desc      : GetTrackDescription by callback in playing state
             * @tc.size      : MediumTest
             * @tc.type      : Reliability test
@@ -196,7 +196,7 @@ export default function AVPlayerAudioGetTrackDesTest() {
         // #region
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_GET_AUDIODEPTH_PROMISE_0200
-            * @tc.name      : 004.test integrationAccurateSeekTSInterface - getTrackDescription by promise in playing state
+            * @tc.name      : SUB_MULTIMEDIA_MEDIA_GET_AUDIODEPTH_PROMISE_0200
             * @tc.desc      : GetTrackDescription by promise in playing state
             * @tc.size      : MediumTest
             * @tc.type      : Reliability test
@@ -233,7 +233,7 @@ export default function AVPlayerAudioGetTrackDesTest() {
         // #region
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_GET_AUDIODEPTH_CALLBACK_0300
-            * @tc.name      : 005.test integrationAccurateSeekTSInterface - getTrackDescription by callback in paused state
+            * @tc.name      : SUB_MULTIMEDIA_MEDIA_GET_AUDIODEPTH_CALLBACK_0300
             * @tc.desc      : GetTrackDescription by callback in paused state
             * @tc.size      : MediumTest
             * @tc.type      : Reliability test
@@ -273,7 +273,7 @@ export default function AVPlayerAudioGetTrackDesTest() {
         // #region
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_GET_AUDIODEPTH_PROMISE_0300
-            * @tc.name      : 006.test integrationAccurateSeekTSInterface - getTrackDescription by promise in paused state
+            * @tc.name      : SUB_MULTIMEDIA_MEDIA_GET_AUDIODEPTH_PROMISE_0300
             * @tc.desc      : GetTrackDescription by promise in paused state
             * @tc.size      : MediumTest
             * @tc.type      : Reliability test
@@ -313,7 +313,7 @@ export default function AVPlayerAudioGetTrackDesTest() {
         // #region
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_GET_AUDIODEPTH_CALLBACK_0400
-            * @tc.name      : 007.test integrationAccurateSeekTSInterface - getTrackDescription by callback in idle state
+            * @tc.name      : SUB_MULTIMEDIA_MEDIA_GET_AUDIODEPTH_CALLBACK_0400
             * @tc.desc      : GetTrackDescription by callback in idle state
             * @tc.size      : MediumTest
             * @tc.type      : Reliability test
@@ -341,7 +341,7 @@ export default function AVPlayerAudioGetTrackDesTest() {
         // #region
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_GET_AUDIODEPTH_PROMISE_0400
-            * @tc.name      : 008.test integrationAccurateSeekTSInterface - getTrackDescription by promise in idle state
+            * @tc.name      : SUB_MULTIMEDIA_MEDIA_GET_AUDIODEPTH_PROMISE_0400
             * @tc.desc      : GetTrackDescription by promise in idle state
             * @tc.size      : MediumTest
             * @tc.type      : Reliability test
@@ -369,7 +369,7 @@ export default function AVPlayerAudioGetTrackDesTest() {
         // #region
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_GET_AUDIODEPTH_CALLBACK_0500
-            * @tc.name      : 009.test integrationAccurateSeekTSInterface - getTrackDescription by callback in stopped state
+            * @tc.name      : SUB_MULTIMEDIA_MEDIA_GET_AUDIODEPTH_CALLBACK_0500
             * @tc.desc      : GetTrackDescription by callback in stopped state
             * @tc.size      : MediumTest
             * @tc.type      : Reliability test
@@ -409,7 +409,7 @@ export default function AVPlayerAudioGetTrackDesTest() {
         // #region
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_GET_AUDIODEPTH_PROMISE_0500
-            * @tc.name      : 010.test integrationAccurateSeekTSInterface - getTrackDescription by promise in stopped state
+            * @tc.name      : SUB_MULTIMEDIA_MEDIA_GET_AUDIODEPTH_PROMISE_0500
             * @tc.desc      : GetTrackDescription by promise in stopped state
             * @tc.size      : MediumTest
             * @tc.type      : Reliability test
@@ -449,7 +449,7 @@ export default function AVPlayerAudioGetTrackDesTest() {
         // #region
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_GET_AUDIODEPTH_CALLBACK_0600
-            * @tc.name      : 011.test integrationAccurateSeekTSInterface - getTrackDescription by callback in released state
+            * @tc.name      : SUB_MULTIMEDIA_MEDIA_GET_AUDIODEPTH_CALLBACK_0600
             * @tc.desc      : GetTrackDescription by callback in released state
             * @tc.size      : MediumTest
             * @tc.type      : Reliability test
@@ -494,7 +494,7 @@ export default function AVPlayerAudioGetTrackDesTest() {
         // #region
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_GET_AUDIODEPTH_PROMISE_0600
-            * @tc.name      : 010.test integrationAccurateSeekTSInterface - getTrackDescription by promise in released state
+            * @tc.name      : SUB_MULTIMEDIA_MEDIA_GET_AUDIODEPTH_PROMISE_0600
             * @tc.desc      : GetTrackDescription by promise in released state
             * @tc.size      : MediumTest
             * @tc.type      : Reliability test
