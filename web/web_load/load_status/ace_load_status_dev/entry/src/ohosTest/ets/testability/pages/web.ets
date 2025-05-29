@@ -18,6 +18,7 @@ import { Hypium } from '@ohos/hypium';
 import testsuite from '../../test/List.test';
 import { waitForExist } from '../../test/WaitTest.test';
 import Utils from '../../test/Utils';
+import { URL } from '../../test/Config.test';
 
 let loadedUrl: string;
 
@@ -120,11 +121,11 @@ struct Index {
               break;
             }
             case 'emitStop': {
-              this.controller.loadUrl({ url: 'http://appgallery.huawei.com/' })
+              this.controller.loadUrl({ url: URL })
               this.controller.stop()
               setTimeout(() => {
                 let stopCalled = false;
-                if (this.pageEnd !== 'http://appgallery.huawei.com/') {
+                if (this.pageEnd !== URL) {
                   stopCalled = true;
                 }
                 Utils.emitEvent(stopCalled, 83);
