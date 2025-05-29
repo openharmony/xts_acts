@@ -612,7 +612,7 @@ HWTEST_F(DrawingNativeFontPart2Test, testFontMeasureTextWithBrushOrPenNull, Func
     float textWidth;
     OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
     OH_Drawing_Pen* pen = OH_Drawing_PenCreate();
-	OH_Drawing_Rect* bounds = OH_Drawing_RectCreate(0.0, 0.0, 200.0, 200.0);
+    OH_Drawing_Rect* bounds = OH_Drawing_RectCreate(0.0, 0.0, 200.0, 200.0);
 	// font passes to nullptr
     EXPECT_EQ(OH_Drawing_FontMeasureTextWithBrushOrPen(nullptr, text, strlen(text),
         TEXT_ENCODING_UTF8, brush, nullptr, bounds, &textWidth), OH_DRAWING_ERROR_INVALID_PARAMETER);
@@ -635,7 +635,7 @@ HWTEST_F(DrawingNativeFontPart2Test, testFontMeasureTextWithBrushOrPenNull, Func
 	// bounds passes to nullptr
     EXPECT_EQ(OH_Drawing_FontMeasureTextWithBrushOrPen(font, text, strlen(text),
         TEXT_ENCODING_UTF8, brush, pen, nullptr, &textWidth), OH_DRAWING_ERROR_INVALID_PARAMETER);
-	OH_Drawing_RectDestroy(bounds);
+    OH_Drawing_RectDestroy(bounds);
     OH_Drawing_BrushDestroy(brush);
     OH_Drawing_PenDestroy(pen);
     OH_Drawing_FontDestroy(font);
@@ -882,7 +882,7 @@ HWTEST_F(DrawingNativeFontPart2Test, testFontGetWidthsBoundsAbnormal, Function |
 	// Both brush and pen are not empty
     EXPECT_EQ(OH_Drawing_FontGetWidthsBounds(font, glyphs, glyphsCount, brush, pen, widths, outRectarr),
         OH_DRAWING_ERROR_INVALID_PARAMETER);
-	OH_Drawing_RectDestroyArray(outRectarr);
+    OH_Drawing_RectDestroyArray(outRectarr);
     OH_Drawing_BrushDestroy(brush);
     OH_Drawing_PenDestroy(pen);
     OH_Drawing_FontDestroy(font);
