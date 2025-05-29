@@ -269,7 +269,7 @@ workerPort.onmessage = async (event: MessageEvents) => {
             setTimeout(() => {
               count++;
               resolve();
-            }, 1000);
+            }, 500);
           });
           console.log('Exit EXCLUSIVE lock');
         }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE, options2);
@@ -307,7 +307,7 @@ workerPort.onmessage = async (event: MessageEvents) => {
             setTimeout(() => {
               count++;
               resolve();
-            }, 1000);
+            }, 500);
           });
           console.log('Exit SHARED lock');
         }, ArkTSUtils.locks.AsyncLockMode.SHARED, options2);
