@@ -304,7 +304,8 @@ export default function ReminderAgentTest() {
                     minute: 30,
                     second: 18
                 },
-                repeatMonths: [3]
+                repeatMonths: [3],
+                repeatDays: [7]
             }
             reminderAgent.publishReminder(calendar).then((reminderId) => {
                 console.info("testReminderRequestType_007 reminderId =" + reminderId);
@@ -1531,7 +1532,8 @@ export default function ReminderAgentTest() {
                     minute: 30,
                     second: 50
                 },
-                repeatMonths: [3]
+                repeatMonths: [3],
+                repeatDays: [7]
             }
             reminderAgent.publishReminder(calendar, (err, reminderId) => {
                 console.info("callback,the testPublishReminderCalendarFun_059 reminderId =" + reminderId);
@@ -1557,7 +1559,8 @@ export default function ReminderAgentTest() {
                     minute: 30,
                     second: 40
                 },
-                repeatMonths: [3]
+                repeatMonths: [3],
+                repeatDays: [7]
             }
             reminderAgent.publishReminder(calendar).then((reminderId) => {
                 console.info("promise,the testPublishReminderCalendarFun_060 reminderId =" + reminderId);
@@ -2870,7 +2873,8 @@ export default function ReminderAgentTest() {
                     hour: 23,
                     minute: 30
                 },
-                repeatMonths: [3]
+                repeatMonths: [3],
+                repeatDays: [7]
             }
             reminderAgent.publishReminder(timer).then((reminderId) => { });
             reminderAgent.publishReminder(calendar).then((reminderId) => { });
