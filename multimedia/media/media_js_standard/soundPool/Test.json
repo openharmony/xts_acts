@@ -37,7 +37,8 @@
                 "./resource/soundpool/test_01.mp3 ->/data/app/el2/100/base/com.example.soundpoolxts/haps/entry_test/files/",
                 "./resource/soundpool/test_02.mp3 ->/data/app/el2/100/base/com.example.soundpoolxts/haps/entry_test/files/",
                 "./resource/soundpool/test_03.mp3 ->/data/app/el2/100/base/com.example.soundpoolxts/haps/entry_test/files/",
-                "./resource/soundpool/test_04.mp3 ->/data/app/el2/100/base/com.example.soundpoolxts/haps/entry_test/files/"
+                "./resource/soundpool/test_04.mp3 ->/data/app/el2/100/base/com.example.soundpoolxts/haps/entry_test/files/",
+                "./resource/soundpool/test_05.wav ->/data/app/el2/100/base/com.example.soundpoolxts/haps/entry_test/files/"
             ]
         }
     ]
