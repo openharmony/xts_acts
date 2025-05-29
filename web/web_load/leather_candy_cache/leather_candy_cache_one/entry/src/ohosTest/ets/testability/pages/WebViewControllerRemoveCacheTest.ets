@@ -66,7 +66,7 @@ struct WebViewControllerRemoveCacheTest {
               case "testRemoveCache001": {
                 try {
                   this.buttonStart = true;
-                  console.info('buttonStart==>'+this.buttonStart);
+                  console.log('buttonStart==>'+this.buttonStart);
                   this.removeRom = true
                   this.controller.loadUrl('https://openharmony.cn/')
                 } catch (error) {
@@ -97,7 +97,8 @@ struct WebViewControllerRemoveCacheTest {
         .databaseAccess(this.databaseAccess)
         .onPageEnd((event) => {
           if (event) {
-            if () {
+            if (this.buttonStart) {
+              console.log('onPageEnd buttonStart==>'+this.buttonStart);
               setTimeout(async () => {
                 let filesBeforeRemove = Utils.listFile(this.cachePath)
                 let memorySizeBeforeRemove = await appManager.getAppMemorySize()
