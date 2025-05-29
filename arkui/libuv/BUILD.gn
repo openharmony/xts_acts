@@ -15,7 +15,7 @@ import("//test/xts/tools/build/suite.gni")
 
 import("//test/xts/acts/arkui/libuv/comm.gni")
 
-ohos_static_library("libuvTestStatic") {
+ohos_xts_static_library("libuvTestStatic") {
   include_dirs = [
     "//third_party/libuv/include",
     "//third_party/libuv/src",
@@ -201,7 +201,7 @@ ohos_static_library("libuvTestStatic") {
   deps = [ "//third_party/libuv:uv_static" ]
 }
 
-ohos_executable("libuvruntest") {
+ohos_xts_executable("libuvruntest") {
   include_dirs = [
     "//third_party/libuv/include",
     "//third_party/libuv/src",
@@ -229,7 +229,7 @@ ohos_moduletest_suite("ActsLibuvTest") {
   cflags = [ "-Wno-error" ]
 }
 
-action("cpLibuv") {
+ohos_xts_action("cpLibuv") {
   testonly = true
   script = "cplibuv.sh"
   outputs = [ "${target_out_dir}/cplibuv.log" ]
@@ -239,10 +239,12 @@ action("cpLibuv") {
     ":ActsLibuvTest",
     ":libuvruntest",
   ]
+  suite_type = "bin"
 }
 
-group("libuvTest") {
+ohos_xts_group("libuvTest") {
   testonly = true
+  suite_type = "bin"
   if (is_standard_system) {
     deps = [
       ":ActsLibuvTest",

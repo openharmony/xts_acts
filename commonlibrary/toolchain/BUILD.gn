@@ -13,8 +13,9 @@
 import("//build/ohos_var.gni")
 import("//test/xts/tools/build/suite.gni")
 
-group("toolchain") {
+ohos_xts_group("toolchain") {
   testonly = true
+  suite_type = "bin"
   deps = [ "//third_party/musl:libctest" ]
   if (is_standard_system) {
     deps += [ ":tar_dllib" ]

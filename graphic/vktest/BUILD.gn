@@ -15,8 +15,9 @@ import("//test/xts/tools/build/suite.gni")
 
 import("//test/xts/acts/graphic/vktest/comm.gni")
 
-action("cpVulkan") {
+ohos_xts_action("cpVulkan") {
   testonly = true
+  suite_type = "bin"
   script = "cpVulkan.sh"
   outputs = [ "${target_out_dir}/cpVulkan.log" ]
   root_vkgl_path = rebase_path("//")
