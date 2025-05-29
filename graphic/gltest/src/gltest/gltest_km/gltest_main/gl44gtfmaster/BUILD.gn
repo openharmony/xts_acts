@@ -23,11 +23,11 @@ ohos_moduletest_suite("ActsOpenGlMainGl44GtfMasterTest") {
 
   include_dirs = [
     ".",
-    "../../../src",
-    "../../../../../../../../base/startup/init/interfaces/kits/syscap/include",
+    "//test/xts/acts/graphic/gltest/src",
+    "//base/startup/init/interfaces/kits/syscap/include",
   ]
   deps = [
-    "../../../../../../../../base/startup/init/interfaces/kits/syscap:deviceinfo_ndk",
+    "//base/startup/init/interfaces/kits/syscap:deviceinfo_ndk",
     "//third_party/vk-gl-cts/framework/platform:glcts",
   ]
   cflags = [ "-Wno-error" ]
