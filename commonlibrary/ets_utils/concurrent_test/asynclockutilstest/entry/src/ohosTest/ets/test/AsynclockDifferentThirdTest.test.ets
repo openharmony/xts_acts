@@ -1,13 +1,13 @@
 /*
 * Copyright (C) 2025 HiHope Open Source Organization.
-* Licensed under the Apache License, Version 2.0 (the "License");
+* Licensed under the Apache License, Version 2.0 (the 'License');
 * you may not use this file except in compliance with the License.
 * You may obtain a copy of the License at
 *
 *   http://www.apache.org/licenses/LICENSE-2.0
 *
 * Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
+* distributed under the License is distributed on an 'AS IS' BASIS,
 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 * See the License for the specific language governing permissions and
 * limitations under the License.
@@ -24,9 +24,9 @@ import {
   Size,
   Level,
   TestType
-} from "@ohos/hypium";
-import { delay, printArgs1, sleep } from "../testability/pages/Utils";
-import { ArkTSUtils, MessageEvents, taskpool, worker } from "@kit.ArkTS";
+} from '@ohos/hypium';
+import { delay, printArgs1, sleep } from '../testability/pages/Utils';
+import { ArkTSUtils, MessageEvents, taskpool, worker } from '@kit.ArkTS';
 import {
   delay1,
   TaskFun1,
@@ -42,8 +42,8 @@ import {
   TaskFun27,
   TaskFun4,
   TaskFun7
-} from "../testability/pages/Utils2";
-import { TaskTest, TaskTest1, TaskTest2 } from "../testability/pages/Methods2";
+} from '../testability/pages/Utils2';
+import { TaskTest, TaskTest1, TaskTest2 } from '../testability/pages/Methods2';
 
 export default function AsynclockDifferentThirdTest() {
   describe('AsynclockDifferentThirdTest', () => {
@@ -124,7 +124,7 @@ export default function AsynclockDifferentThirdTest() {
         const promises: Promise<void>[] = [];
         for (let i = 0; i < 3; i++) {
           taskpool.execute(task).then((value: Object) => {
-            console.log("taskpool result: " + value);
+            console.log('taskpool result: ' + value);
             count1++
           });
         }
@@ -198,7 +198,7 @@ export default function AsynclockDifferentThirdTest() {
         const promises: Promise<void>[] = [];
         for (let i = 0; i < 3; i++) {
           taskpool.execute(task).then((value: Object) => {
-            console.log("taskpool result: " + value);
+            console.log('taskpool result: ' + value);
             count++
           })
         }
@@ -235,7 +235,7 @@ export default function AsynclockDifferentThirdTest() {
         let task: taskpool.Task = new taskpool.Task(delay1, 1);
         const lock1 = new ArkTSUtils.locks.AsyncLock();
         task.onStartExecution(() => {
-          console.info("taskpool: onStartExecution");
+          console.info('taskpool: onStartExecution');
           const promise1 = lock1.lockAsync(async () => {
             console.log('Enter shared lock lock1');
             taskpool.execute(task).then(() => {
@@ -323,7 +323,7 @@ export default function AsynclockDifferentThirdTest() {
         const promises: Promise<void>[] = [];
         for (let i = 0; i < 3; i++) {
           taskpool.execute(task).then((value) => {
-            console.log("taskpool result: " + value);
+            console.log('taskpool result: ' + value);
             count++
           })
         }
@@ -361,7 +361,7 @@ export default function AsynclockDifferentThirdTest() {
         WorkThread.onmessage = (e: MessageEvents): void => {
           count = e.data;
           console.log('e:' + JSON.stringify(e));
-          console.info("main2 thread count is  " + count);
+          console.info('main2 thread count is  ' + count);
           WorkThread.terminate();
         }
         while (count != 10) {
@@ -443,7 +443,7 @@ export default function AsynclockDifferentThirdTest() {
         let count = 0;
         for (let i = 0; i < 3; i++) {
           taskpool.execute(task).then((value) => {
-            console.log("taskpool result: " + value);
+            console.log('taskpool result: ' + value);
             count++
           })
         }
@@ -537,7 +537,7 @@ export default function AsynclockDifferentThirdTest() {
         let count = 0;
         for (let i = 0; i < 3; i++) {
           taskpool.execute(task).then((value) => {
-            console.log("taskpool result: " + value);
+            console.log('taskpool result: ' + value);
             count++
           })
         }
@@ -575,7 +575,7 @@ export default function AsynclockDifferentThirdTest() {
         WorkThread.onmessage = (e: MessageEvents): void => {
           count = e.data;
           console.log('e:' + JSON.stringify(e));
-          console.info("main2 thread count is  " + count);
+          console.info('main2 thread count is  ' + count);
           WorkThread.terminate();
         }
         await sleep(300);
@@ -650,7 +650,7 @@ export default function AsynclockDifferentThirdTest() {
         let count = 0;
         for (let i = 0; i < 3; i++) {
           taskpool.execute(task).then((value) => {
-            console.log("taskpool result: " + value);
+            console.log('taskpool result: ' + value);
             count++
           })
         }
@@ -769,7 +769,7 @@ export default function AsynclockDifferentThirdTest() {
         let count = 0;
         for (let i = 0; i < 3; i++) {
           taskpool.execute(task).then((value) => {
-            console.log("taskpool result: " + value);
+            console.log('taskpool result: ' + value);
             count++
           })
         }
@@ -807,7 +807,7 @@ export default function AsynclockDifferentThirdTest() {
         WorkThread.onmessage = (e: MessageEvents): void => {
           count = e.data;
           console.log('e:' + JSON.stringify(e));
-          console.info("main2 thread count is  " + count);
+          console.info('main2 thread count is  ' + count);
           WorkThread.terminate();
         }
         while (count != 1) {
@@ -894,7 +894,7 @@ export default function AsynclockDifferentThirdTest() {
         let count = 0;
         for (let i = 0; i < 3; i++) {
           taskpool.execute(task).then((value) => {
-            console.log("taskpool result: " + value);
+            console.log('taskpool result: ' + value);
             count++
           })
         }
@@ -929,7 +929,7 @@ export default function AsynclockDifferentThirdTest() {
         let task: taskpool.Task = new taskpool.Task(TaskFun22, 0);
         let count = 0;
         task.onEnqueued(() => {
-          console.info("taskpool: onEnqueued")
+          console.info('taskpool: onEnqueued')
         });
         for (let i = 0; i < 3; i++) {
           taskpool.execute(task).then((value) => {
@@ -1055,7 +1055,7 @@ export default function AsynclockDifferentThirdTest() {
         WorkThread.onmessage = (e: MessageEvents): void => {
           count = e.data;
           console.log('e:' + JSON.stringify(e));
-          console.info("main2 thread count is  " + count);
+          console.info('main2 thread count is  ' + count);
           WorkThread.terminate();
         }
         while (count != 1) {
@@ -1170,7 +1170,7 @@ export default function AsynclockDifferentThirdTest() {
         WorkThread.onmessage = (e: MessageEvents): void => {
           count = e.data;
           console.log('e:' + JSON.stringify(e));
-          console.info("main2 thread count is  " + count);
+          console.info('main2 thread count is  ' + count);
           WorkThread.terminate();
         }
         while (count != 1) {
@@ -1289,7 +1289,7 @@ export default function AsynclockDifferentThirdTest() {
         WorkThread.onmessage = (e: MessageEvents): void => {
           count = e.data;
           console.log('e:' + JSON.stringify(e));
-          console.info("main2 thread count is  " + count);
+          console.info('main2 thread count is  ' + count);
           WorkThread.terminate();
         }
         while (count != 1) {
@@ -1545,7 +1545,7 @@ export default function AsynclockDifferentThirdTest() {
         WorkThread.onmessage = (e: MessageEvents): void => {
           count = e.data;
           console.log('e:' + JSON.stringify(e));
-          console.info("main2 thread count is  " + count);
+          console.info('main2 thread count is  ' + count);
           WorkThread.terminate();
         }
         while (count != 1) {

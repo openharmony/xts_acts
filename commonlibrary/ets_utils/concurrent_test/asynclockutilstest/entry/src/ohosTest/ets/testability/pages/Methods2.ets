@@ -1,5 +1,5 @@
-import { ArkTSUtils, taskpool } from "@kit.ArkTS";
-import { TaskFun30, TaskFun33, TaskFun36 } from "./Utils2";
+import { ArkTSUtils, taskpool } from '@kit.ArkTS';
+import { TaskFun30, TaskFun33, TaskFun36 } from './Utils2';
 
 
 @Concurrent

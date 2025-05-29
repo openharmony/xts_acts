@@ -1,5 +1,5 @@
-import { ArkTSUtils, taskpool } from "@kit.ArkTS";
-import { printArgs1, printArgs28, printArgs31, printArgs34 } from "./Utils";
+import { ArkTSUtils, taskpool } from '@kit.ArkTS';
+import { printArgs1, printArgs28, printArgs31, printArgs34 } from './Utils';
 
 @Concurrent
 export function testTask() {

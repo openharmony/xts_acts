@@ -1,18 +1,18 @@
 /*
 * Copyright (C) 2025 HiHope Open Source Organization.
-* Licensed under the Apache License, Version 2.0 (the "License");
+* Licensed under the Apache License, Version 2.0 (the 'License');
 * you may not use this file except in compliance with the License.
 * You may obtain a copy of the License at
 *
 *   http://www.apache.org/licenses/LICENSE-2.0
 *
 * Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
+* distributed under the License is distributed on an 'AS IS' BASIS,
 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import { ArkTSUtils, MessageEvents, taskpool, worker } from "@kit.ArkTS";
+import { ArkTSUtils, MessageEvents, taskpool, worker } from '@kit.ArkTS';
 
 export function sleep(time: number): Promise<void> {
   return new Promise((re, je) => {
@@ -26,7 +26,7 @@ export function sleep(time: number): Promise<void> {
 
 @Concurrent
 export function printArgs1(args: number): number {
-  console.info("printArgs: " + args);
+  console.info('printArgs: ' + args);
   return args;
 }
 
@@ -540,14 +540,14 @@ export function printArgs43(args: number): number {
       await lock2.lockAsync(async () => {
         console.log('Enter EXCLUSIVE lock lock2');
         await lock3.lockAsync(async () => {
-          let WorkThread: worker.ThreadWorker;
-          WorkThread = new worker.ThreadWorker('../testability/workers/Worker');
-          WorkThread.postMessage(caseName);
-          WorkThread.onmessage = (e: MessageEvents): void => {
+          let workThread: worker.ThreadWorker;
+          workThread = new worker.ThreadWorker('../testability/workers/Worker');
+          workThread.postMessage(caseName);
+          workThread.onmessage = (e: MessageEvents): void => {
             count = e.data;
             console.log('e:' + JSON.stringify(e));
-            console.info("main2 thread count is  " + count);
-            WorkThread.terminate();
+            console.info('main2 thread count is  ' + count);
+            workThread.terminate();
           }
           console.log('Exit EXCLUSIVE lock lock3');
         }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
@@ -582,7 +582,7 @@ export function printArgs44(args: number): number {
           WorkThread.onmessage = (e: MessageEvents): void => {
             count = e.data;
             console.log('e:' + JSON.stringify(e));
-            console.info("main2 thread count is  " + count);
+            console.info('main2 thread count is  ' + count);
             WorkThread.terminate();
           }
           console.log('Exit EXCLUSIVE lock lock3');

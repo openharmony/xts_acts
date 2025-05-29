@@ -1,20 +1,20 @@
 /*
 * Copyright (C) 2025 HiHope Open Source Organization.
-* Licensed under the Apache License, Version 2.0 (the "License");
+* Licensed under the Apache License, Version 2.0 (the 'License');
 * you may not use this file except in compliance with the License.
 * You may obtain a copy of the License at
 *
 *   http://www.apache.org/licenses/LICENSE-2.0
 *
 * Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
+* distributed under the License is distributed on an 'AS IS' BASIS,
 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Size, Level, TestType } from "@ohos/hypium";
-import { ArkTSUtils , MessageEvents, taskpool, worker } from "@kit.ArkTS";
-import { sleep } from "../testability/pages/Utils";
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Size, Level, TestType } from '@ohos/hypium';
+import { ArkTSUtils , MessageEvents, taskpool, worker } from '@kit.ArkTS';
+import { sleep } from '../testability/pages/Utils';
 import {
   printArgs1,
   taskFunctionTest0200,
@@ -36,7 +36,7 @@ import {
   taskFunctionTest4500,
   taskFunctionTest4700,
   taskFunctionTest4900,
-} from "../testability/pages/TaskpoolUtilsAsynclockSameUtils";
+} from '../testability/pages/TaskpoolUtilsAsynclockSameUtils';
 export default function AsynclockSameTest() {
   describe('AsynclockSameTest', () => {
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
@@ -72,7 +72,7 @@ export default function AsynclockSameTest() {
       async (Done:Function) => {
         const caseName = 'AsynclockSameTest0100';
         console.info(`${caseName} test start`);
-        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
+        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
         const promises: Promise<void>[] = [];
         let count = 0;
         for (let i = 0; i < 10; i++) {
@@ -136,7 +136,7 @@ export default function AsynclockSameTest() {
       async (Done: Function) => {
         const caseName = 'AsynclockSameTest0300';
         console.info(`${caseName} test start`);
-        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
+        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
         const promises: Promise<void>[] = [];
         let count = 0;
         for (let i = 0; i < 10; i++) {
@@ -199,7 +199,7 @@ export default function AsynclockSameTest() {
       async (Done: Function) => {
         const caseName = 'AsynclockSameTest0500';
         console.info(`${caseName} test start`);
-        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
+        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
         let count = 0;
         const promises: Promise<void>[] = [];
         for (let i = 0; i < 10; i++) {
@@ -270,13 +270,13 @@ export default function AsynclockSameTest() {
         let WorkThread: worker.ThreadWorker;
         WorkThread = new worker.ThreadWorker('../testability/workers/Worker');
         WorkThread.onexit = () => {
-          console.log("onexit");
+          console.log('onexit');
         }
         WorkThread.postMessage(caseName);
         WorkThread.onmessage = (e: MessageEvents): void => {
           count = e.data;
           console.log('e:' + JSON.stringify(e));
-          console.info("main2 thread count is  " + count);
+          console.info('main2 thread count is  ' + count);
           WorkThread.terminate();
         }
         await sleep(300);
@@ -301,7 +301,7 @@ export default function AsynclockSameTest() {
       async (Done: Function) => {
         const caseName = 'AsynclockSameTest0800';
         console.info(`${caseName} test start`);
-        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
+        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
         const promises: Promise<void>[] = [];
         let count = 0;
         let errorCount = 0;
@@ -377,7 +377,7 @@ export default function AsynclockSameTest() {
       async (Done: Function) => {
         const caseName = 'AsynclockSameTest1000';
         console.info(`${caseName} test start`);
-        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
+        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
         const promises: Promise<void>[] = [];
         let task: taskpool.Task = new taskpool.Task(printArgs1, 1);
         let count = 0;
@@ -402,7 +402,7 @@ export default function AsynclockSameTest() {
           promises.push(promise1);
         });
         await taskpool.execute(task).then(async () => {
-          console.info("taskpool: onExecute")
+          console.info('taskpool: onExecute')
           count++;
         })
         try {
@@ -439,8 +439,8 @@ export default function AsynclockSameTest() {
       async (Done: Function) => {
         const caseName = 'AsynclockSameTest1100';
         console.info(`${caseName} test start`);
-        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
+        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
+        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
         const promises: Promise<void>[] = [];
         let count = 0;
         let errorCount = 0;
@@ -525,13 +525,13 @@ export default function AsynclockSameTest() {
         let WorkThread: worker.ThreadWorker;
         WorkThread = new worker.ThreadWorker('../testability/workers/Worker');
         WorkThread.onexit = () => {
-          console.log("onexit");
+          console.log('onexit');
         }
         WorkThread.postMessage(caseName);
         WorkThread.onmessage = (e: MessageEvents): void => {
           count = e.data;
           console.log('e:' + JSON.stringify(e));
-          console.info("main2 thread count is  " + count);
+          console.info('main2 thread count is  ' + count);
           WorkThread.terminate();
         }
         while(count != 1){
@@ -555,8 +555,8 @@ export default function AsynclockSameTest() {
       async (Done: Function) => {
         const caseName = 'AsynclockSameTest1400';
         console.info(`${caseName} test start`);
-        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
+        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
+        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
         const promises: Promise<void>[] = [];
         let count = 0;
         for (let i = 0; i < 10; i++) {
@@ -628,8 +628,8 @@ export default function AsynclockSameTest() {
       async (Done: Function) => {
         const caseName = 'AsynclockSameTest1600';
         console.info(`${caseName} test start`);
-        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
+        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
+        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
         const promises: Promise<void>[] = [];
         let task: taskpool.Task = new taskpool.Task(printArgs1, 1);
         let count = 0;
@@ -682,8 +682,8 @@ export default function AsynclockSameTest() {
       async (Done: Function) => {
         const caseName = 'AsynclockSameTest1700';
         console.info(`${caseName} test start`);
-        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
+        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
+        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
         const promises: Promise<void>[] = [];
         let count = 0;
         for (let i = 0; i < 10; i++) {
@@ -760,13 +760,13 @@ export default function AsynclockSameTest() {
         let WorkThread: worker.ThreadWorker;
         WorkThread = new worker.ThreadWorker('../testability/workers/Worker');
         WorkThread.onexit = () => {
-          console.log("onexit");
+          console.log('onexit');
         }
         WorkThread.postMessage(caseName);
         WorkThread.onmessage = (e: MessageEvents): void => {
           count = e.data;
           console.log('e:' + JSON.stringify(e));
-          console.info("main2 thread count is  " + count);
+          console.info('main2 thread count is  ' + count);
           WorkThread.terminate();
         }
         await sleep(300);
@@ -792,8 +792,8 @@ export default function AsynclockSameTest() {
       async (Done: Function) => {
         const caseName = 'AsynclockSameTest2000';
         console.info(`${caseName} test start`);
-        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
+        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
+        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
         const promises: Promise<void>[] = [];
         let count = 0;
         let errorCount = 0;
@@ -868,8 +868,8 @@ export default function AsynclockSameTest() {
       async (Done: Function) => {
         const caseName = 'AsynclockSameTest2200';
         console.info(`${caseName} test start`);
-        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
+        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
+        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
         const promises: Promise<void>[] = [];
         let task: taskpool.Task = new taskpool.Task(printArgs1, 1);
         let count = 0;
@@ -921,8 +921,8 @@ export default function AsynclockSameTest() {
       async (Done: Function) => {
         const caseName = 'AsynclockSameTest2300';
         console.info(`${caseName} test start`);
-        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
+        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
+        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
         const promises: Promise<void>[] = [];
         let count = 0;
         for (let i = 0; i < 10; i++) {
@@ -989,8 +989,8 @@ export default function AsynclockSameTest() {
       async (Done: Function) => {
         const caseName = 'AsynclockSameTest2500';
         console.info(`${caseName} test start`);
-        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
+        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
+        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
         const promises: Promise<void>[] = [];
         let task: taskpool.Task = new taskpool.Task(test, 1);
         let count = 0;
@@ -1034,8 +1034,8 @@ export default function AsynclockSameTest() {
       async (Done: Function) => {
         const caseName = 'AsynclockSameTest2600';
         console.info(`${caseName} test start`);
-        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
+        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
+        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
         const promises: Promise<void>[] = [];
         let count = 0;
         for (let i = 0; i < 10; i++) {
@@ -1106,7 +1106,7 @@ export default function AsynclockSameTest() {
         let WorkThread: worker.ThreadWorker;
         WorkThread = new worker.ThreadWorker('../testability/workers/Worker');
         WorkThread.onexit = () => {
-          console.log("onexit");
+          console.log('onexit');
         }
         WorkThread.postMessage(caseName);
         WorkThread.onmessage = (e: MessageEvents): void => {
@@ -1134,8 +1134,8 @@ export default function AsynclockSameTest() {
       async (Done: Function) => {
         const caseName = 'AsynclockSameTest2900';
         console.info(`${caseName} test start`);
-        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
+        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
+        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
         const promises: Promise<void>[] = [];
         let count = 0;
         for (let i = 0; i < 10; i++) {
@@ -1208,13 +1208,13 @@ export default function AsynclockSameTest() {
         let WorkThread: worker.ThreadWorker;
         WorkThread = new worker.ThreadWorker('../testability/workers/Worker');
         WorkThread.onexit = () => {
-          console.log("onexit");
+          console.log('onexit');
         }
         WorkThread.postMessage(caseName);
         WorkThread.onmessage = (e: MessageEvents): void => {
           count = e.data;
           console.log('e:' + JSON.stringify(e));
-          console.info("main2 thread count is  " + count);
+          console.info('main2 thread count is  ' + count);
           WorkThread.terminate();
           console.log('Success execution count:' + count);
           console.info(`${caseName} test end`);
@@ -1238,8 +1238,8 @@ export default function AsynclockSameTest() {
       async (Done: Function) => {
         const caseName = 'AsynclockSameTest3200';
         console.info(`${caseName} test start`);
-        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
+        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
+        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
         const promises: Promise<void>[] = [];
         let count = 0;
         for (let i = 0; i < 10; i++) {
@@ -1308,8 +1308,8 @@ export default function AsynclockSameTest() {
      */
     it('AsynclockSameTest3400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
-        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
+        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
+        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
         let count = 0;
         const promises: Promise<void>[] = [];
         let task: taskpool.Task = new taskpool.Task(printArgs1,1);
@@ -1351,8 +1351,8 @@ export default function AsynclockSameTest() {
       async (Done: Function) => {
         const caseName = 'AsynclockSameTest3500';
         console.info(`${caseName} test start`);
-        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
+        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
+        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
         const promises: Promise<void>[] = [];
         let count = 0;
         let returnCount = 0
@@ -1362,7 +1362,7 @@ export default function AsynclockSameTest() {
               let WorkThread: worker.ThreadWorker;
               WorkThread = new worker.ThreadWorker('../testability/workers/Worker');
               WorkThread.onexit = () => {
-                console.log("onexit");
+                console.log('onexit');
               }
               WorkThread.postMessage(caseName);
               WorkThread.onmessage = (e: MessageEvents): void => {
@@ -1432,14 +1432,14 @@ export default function AsynclockSameTest() {
       async (Done: Function) => {
         const caseName = 'AsynclockSameTest3700';
         console.info(`${caseName} test start`);
-        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
+        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
+        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
         const promises: Promise<void>[] = [];
         let count: number = 0;
         let WorkThread: worker.ThreadWorker;
         WorkThread = new worker.ThreadWorker('../testability/workers/Worker');
         WorkThread.onexit = () => {
-          console.log("onexit");
+          console.log('onexit');
         }
         WorkThread.postMessage(caseName);
         WorkThread.onmessage = (e: MessageEvents): void => {
@@ -1449,7 +1449,7 @@ export default function AsynclockSameTest() {
               let WorkThread: worker.ThreadWorker;
               WorkThread = new worker.ThreadWorker('../testability/workers/Worker');
               WorkThread.onexit = () => {
-                console.log("onexit");
+                console.log('onexit');
               }
               WorkThread.postMessage(caseName);
               WorkThread.onmessage = (e: MessageEvents): void => {
@@ -1487,8 +1487,8 @@ export default function AsynclockSameTest() {
       async (Done: Function) => {
         const caseName = 'AsynclockSameTest3800';
         console.info(`${caseName} test start`);
-        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
+        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
+        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
         const promises: Promise<void>[] = [];
         let count = 0;
         let returnCount = 0
@@ -1502,14 +1502,14 @@ export default function AsynclockSameTest() {
               let WorkThread: worker.ThreadWorker;
               WorkThread = new worker.ThreadWorker('../testability/workers/Worker');
               WorkThread.onexit = () => {
-                console.log("onexit");
+                console.log('onexit');
               }
               WorkThread.postMessage(caseName);
               WorkThread.onmessage = (e: MessageEvents): void => {
                 returnCount = e.data;
                 count++;
                 console.log('e:' + JSON.stringify(e));
-                console.info("main2 thread count is  " + count);
+                console.info('main2 thread count is  ' + count);
                 WorkThread.terminate();
                 console.log('Success execution count:' + count);
                 console.info(`${caseName} test end`);
@@ -1580,7 +1580,7 @@ export default function AsynclockSameTest() {
         let WorkThread: worker.ThreadWorker;
         WorkThread = new worker.ThreadWorker('../testability/workers/Worker');
         WorkThread.onexit = () => {
-          console.log("onexit");
+          console.log('onexit');
         }
         WorkThread.postMessage(caseName);
         WorkThread.onmessage = (e: MessageEvents): void => {
@@ -1601,9 +1601,9 @@ export default function AsynclockSameTest() {
       async (Done: Function) => {
         const caseName = 'AsynclockSameTest4100';
         console.info(`${caseName} test start`);
-        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-        let lock3 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
+        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
+        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
+        let lock3 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
         const promises: Promise<void>[] = [];
         let count = 0;
         for (let i = 0; i < 10; i++) {
@@ -1681,13 +1681,13 @@ export default function AsynclockSameTest() {
         let WorkThread: worker.ThreadWorker;
         WorkThread = new worker.ThreadWorker('../testability/workers/Worker');
         WorkThread.onexit = () => {
-          console.log("onexit");
+          console.log('onexit');
         }
         WorkThread.postMessage(caseName);
         WorkThread.onmessage = (e: MessageEvents): void => {
           count = e.data;
           console.log('e:' + JSON.stringify(e));
-          console.info("main2 thread count is  " + count);
+          console.info('main2 thread count is  ' + count);
           WorkThread.terminate();
           console.log('Success execution count:' + count);
           console.info(`${caseName} test end`);
@@ -1711,9 +1711,9 @@ export default function AsynclockSameTest() {
       async (Done: Function) => {
         const caseName = 'AsynclockSameTest4400';
         console.info(`${caseName} test start`);
-        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-        let lock3 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
+        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
+        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
+        let lock3 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
         const promises: Promise<void>[] = [];
         let count = 0;
         for (let i = 0; i < 10; i++) {
@@ -1787,9 +1787,9 @@ export default function AsynclockSameTest() {
       async (Done: Function) => {
         const caseName = 'AsynclockSameTest4600';
         console.info(`${caseName} test start`);
-        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-        let lock3 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
+        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
+        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
+        let lock3 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
         const promises: Promise<void>[] = [];
         let count = 0;
         for (let i = 0; i < 10; i++) {
@@ -1863,9 +1863,9 @@ export default function AsynclockSameTest() {
       async (Done: Function) => {
         const caseName = 'AsynclockSameTest4800';
         console.info(`${caseName} test start`);
-        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-        let lock3 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
+        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
+        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
+        let lock3 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
         const promises: Promise<void>[] = [];
         let count = 0;
         let returnCount = 0
@@ -1880,14 +1880,14 @@ export default function AsynclockSameTest() {
                 let WorkThread: worker.ThreadWorker;
                 WorkThread = new worker.ThreadWorker('../testability/workers/Worker');
                 WorkThread.onexit = () => {
-                  console.log("onexit");
+                  console.log('onexit');
                 }
                 WorkThread.postMessage(caseName);
                 WorkThread.onmessage = (e: MessageEvents): void => {
                   returnCount = e.data;
                   count++;
                   console.log('e:' + JSON.stringify(e));
-                  console.info("main2 thread count is  " + count);
+                  console.info('main2 thread count is  ' + count);
                   WorkThread.terminate();
                   console.log('Success execution count:' + count);
                   console.info(`${caseName} test end`);

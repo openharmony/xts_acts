@@ -1,13 +1,13 @@
 /*
 * Copyright (C) 2025 HiHope Open Source Organization.
-* Licensed under the Apache License, Version 2.0 (the "License");
+* Licensed under the Apache License, Version 2.0 (the 'License');
 * you may not use this file except in compliance with the License.
 * You may obtain a copy of the License at
 *
 *   http://www.apache.org/licenses/LICENSE-2.0
 *
 * Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
+* distributed under the License is distributed on an 'AS IS' BASIS,
 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 * See the License for the specific language governing permissions and
 * limitations under the License.
@@ -24,9 +24,9 @@ import {
   Size,
   Level,
   TestType
-} from "@ohos/hypium";
-import { sleep } from "../testability/pages/Utils";
-import { ArkTSUtils, MessageEvents, taskpool, worker } from "@kit.ArkTS";
+} from '@ohos/hypium';
+import { sleep } from '../testability/pages/Utils';
+import { ArkTSUtils, MessageEvents, taskpool, worker } from '@kit.ArkTS';
 import {
   ConcurrentFunc1,
   TaskFun1,
@@ -35,7 +35,7 @@ import {
   TaskFun44,
   TaskFun46,
   TaskFun49
-} from "../testability/pages/Utils2";
+} from '../testability/pages/Utils2';
 
 export default function AsynclockDifferentForthTest() {
   describe('AsynclockDifferentForthTest', () => {
@@ -62,7 +62,7 @@ export default function AsynclockDifferentForthTest() {
 
 
     /**
-     * @tc.number SUB_ASYNCLOCK_DIFFERENT_TEST_3800
+     * @tc.number SUB_ASYNCLOCK_DIFFERENT_THIRD_TEST_3800
      * @tc.name AsynclockDifferentThirdTest3800
      * @tc.desc test
      * @tc.size MediumTest
@@ -315,7 +315,7 @@ export default function AsynclockDifferentForthTest() {
                 WorkThread.onmessage = (e: MessageEvents): void => {
                   count = e.data;
                   console.log('e:' + JSON.stringify(e));
-                  console.info("main2 thread count is  " + count);
+                  console.info('main2 thread count is  ' + count);
                   WorkThread.terminate();
                 }
                 console.log('Exit EXCLUSIVE lock lock3');
@@ -487,7 +487,7 @@ export default function AsynclockDifferentForthTest() {
         WorkThread.onmessage = (e: MessageEvents): void => {
           count = e.data;
           console.log('e:' + JSON.stringify(e));
-          console.info("main2 thread count is  " + count);
+          console.info('main2 thread count is  ' + count);
           WorkThread.terminate();
         }
         while (count != 1) {
@@ -613,7 +613,7 @@ export default function AsynclockDifferentForthTest() {
         WorkThread.onmessage = (e: MessageEvents): void => {
           count = e.data;
           console.log('e:' + JSON.stringify(e));
-          console.info("main2 thread count is  " + count);
+          console.info('main2 thread count is  ' + count);
           WorkThread.terminate();
         }
         while (count != 1) {

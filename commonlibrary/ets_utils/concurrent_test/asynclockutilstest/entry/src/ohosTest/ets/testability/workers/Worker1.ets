@@ -1,13 +1,13 @@
 /*
 * Copyright (C) 2025 HiHope Open Source Organization.
-* Licensed under the Apache License, Version 2.0 (the "License");
+* Licensed under the Apache License, Version 2.0 (the 'License');
 * you may not use this file except in compliance with the License.
 * You may obtain a copy of the License at
 *
 *   http://www.apache.org/licenses/LICENSE-2.0
 *
 * Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
+* distributed under the License is distributed on an 'AS IS' BASIS,
 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 * See the License for the specific language governing permissions and
 * limitations under the License.
@@ -29,8 +29,8 @@ workerPort.onmessage = async (event: MessageEvents) => {
   console.log('str:' + str);
   if (str == 'AsynclockSameAddTest0700') {
     let count: number = 0;
-    let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-    let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
+    let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
+    let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
     const promises: Promise<void>[] = [];
     for (let i = 0; i < 10; i++) {
       const promise = lock1.lockAsync(async () => {
@@ -50,8 +50,8 @@ workerPort.onmessage = async (event: MessageEvents) => {
 
   if (str == 'AsynclockSameAddTest1300') {
     let count: number = 0;
-    let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-    let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
+    let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
+    let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
     const promises: Promise<void>[] = [];
     const promise = lock1.lockAsync(async () => {
       lock2.lockAsync(async () => {
@@ -78,8 +78,8 @@ workerPort.onmessage = async (event: MessageEvents) => {
 
   if (str == 'AsynclockSameAddTest1900') {
     let count: number = 0;
-    let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-    let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
+    let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
+    let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
     const promises: Promise<void>[] = [];
     const promise = lock1.lockAsync(async () => {
      lock2.lockAsync(async () => {
@@ -109,8 +109,8 @@ workerPort.onmessage = async (event: MessageEvents) => {
 
   if (str == 'AsynclockSameAddTest2800') {
     let count: number = 0;
-    let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-    let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
+    let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
+    let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
     const promises: Promise<void>[] = [];
     const promise = lock1.lockAsync(async () => {
       lock2.lockAsync(async () => {
@@ -136,8 +136,8 @@ workerPort.onmessage = async (event: MessageEvents) => {
 
   if (str == 'AsynclockSameAddTest3100') {
     let count: number = 0;
-    let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-    let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
+    let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
+    let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
     const promises: Promise<void>[] = [];
     const promise = lock1.lockAsync(async () => {
       console.log('Enter shared lock lock1');
@@ -220,27 +220,25 @@ workerPort.onmessage = async (event: MessageEvents) => {
 
 
   if (str == 'AsynclockSameAddTest4000') {
-    let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-    let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
+    let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
+    let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
     const promises: Promise<void>[] = [];
     let count: number = 0;
     const promise1 : Promise<void> = lock1.lockAsync(async () => {
       lock2.lockAsync(async () => {
-
-
         console.log('Enter exclusive lock lock2');
         console.log('Enter worker');
-        let WorkThread: worker.ThreadWorker;
-        WorkThread = new worker.ThreadWorker('./Worker1');
-        WorkThread.onexit = () => {
-          console.log("onexit");
+        let workThread: worker.ThreadWorker;
+        workThread = new worker.ThreadWorker('./Worker1');
+        workThread.onexit = () => {
+          console.log('onexit');
         }
-        WorkThread.postMessage("AsynclockSameAddTest4010");
-        WorkThread.onmessage = (e: MessageEvents): void => {
+        workThread.postMessage('AsynclockSameAddTest4010');
+        workThread.onmessage = (e: MessageEvents): void => {
           count = e.data ;
           console.log('e:' + JSON.stringify(e));
-          console.info("main2 thread count is  " + count);
-          WorkThread.terminate();
+          console.info('main2 thread count is  ' + count);
+          workThread.terminate();
           console.log('Success execution count:' + count);
         }
         console.log('Exit worker');
@@ -264,9 +262,9 @@ workerPort.onmessage = async (event: MessageEvents) => {
 
   if (str == 'AsynclockSameAddTest4300') {
     let count: number = 0;
-    let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-    let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-    let lock3 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
+    let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
+    let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
+    let lock3 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
     const promises: Promise<void>[] = [];
     const promise = lock1.lockAsync(async () => {
       console.log('Enter shared lock lock1');
@@ -308,8 +306,8 @@ workerPort.onmessage = async (event: MessageEvents) => {
 
   if (str == 'AsynclockSameAddTest5300') {
     let count: number = 0;
-    let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-    let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
+    let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
+    let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
     const promises: Promise<void>[] = [];
     const promise = lock1.lockAsync(async () => {
       setTimeout(() => {},1000)
@@ -340,8 +338,8 @@ workerPort.onmessage = async (event: MessageEvents) => {
 
   if (str == 'AsynclockSameAddTest5600') {
     let count: number = 0;
-    let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-    let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
+    let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
+    let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
     const promises: Promise<void>[] = [];
     const promise = lock1.lockAsync(async () => {
       setTimeout(() => {},1000)

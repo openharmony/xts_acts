@@ -1,26 +1,26 @@
 /*
 * Copyright (C) 2025 HiHope Open Source Organization.
-* Licensed under the Apache License, Version 2.0 (the "License");
+* Licensed under the Apache License, Version 2.0 (the 'License');
 * you may not use this file except in compliance with the License.
 * You may obtain a copy of the License at
 *
 *   http://www.apache.org/licenses/LICENSE-2.0
 *
 * Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
+* distributed under the License is distributed on an 'AS IS' BASIS,
 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Size, Level, TestType } from "@ohos/hypium";
-import { ArkTSUtils , MessageEvents, taskpool, worker } from "@kit.ArkTS";
-import { sleep } from "../testability/pages/Utils";
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Size, Level, TestType } from '@ohos/hypium';
+import { ArkTSUtils , MessageEvents, taskpool, worker } from '@kit.ArkTS';
+import { sleep } from '../testability/pages/Utils';
 import {
   taskFunctionTest5000,
   taskFunctionTest5010,
   taskFunctionTest5200,
   taskFunctionTest5500
-} from "../testability/pages/TaskpoolUtilsAsynclockSameUtils";
+} from '../testability/pages/TaskpoolUtilsAsynclockSameUtils';
 export default function AsynclockSameSecondTest() {
   describe('AsynclockSameSecondTest', () => {
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
@@ -86,8 +86,8 @@ export default function AsynclockSameSecondTest() {
       async (Done: Function) => {
         const caseName = 'AsynclockSameTest5100';
         console.info(`${caseName} test start`);
-        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
+        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
+        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
         const promises: Promise<void>[] = [];
         let count = 0;
         for (let i = 0; i < 10; i++) {
@@ -166,13 +166,13 @@ export default function AsynclockSameSecondTest() {
         let WorkThread: worker.ThreadWorker;
         WorkThread = new worker.ThreadWorker('../testability/workers/Worker');
         WorkThread.onexit = () => {
-          console.log("onexit");
+          console.log('onexit');
         }
         WorkThread.postMessage(caseName);
         WorkThread.onmessage = (e: MessageEvents): void => {
           count = e.data;
           console.log('e:' + JSON.stringify(e));
-          console.info("main2 thread count is  " + count);
+          console.info('main2 thread count is  ' + count);
           WorkThread.terminate();
           console.log('Success execution count:' + count);
           console.info(`${caseName} test end`);
@@ -196,8 +196,8 @@ export default function AsynclockSameSecondTest() {
       async (Done: Function) => {
         const caseName = 'AsynclockSameTest5400';
         console.info(`${caseName} test start`);
-        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
-        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request("lock_1");
+        let lock1 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
+        let lock2 :ArkTSUtils.locks.AsyncLock =  ArkTSUtils.locks.AsyncLock.request('lock_1');
         const promises: Promise<void>[] = [];
         let count = 0;
         for (let i = 0; i < 10; i++) {
@@ -273,13 +273,13 @@ export default function AsynclockSameSecondTest() {
         let WorkThread: worker.ThreadWorker;
         WorkThread = new worker.ThreadWorker('../testability/workers/Worker');
         WorkThread.onexit = () => {
-          console.log("onexit");
+          console.log('onexit');
         }
         WorkThread.postMessage(caseName);
         WorkThread.onmessage = (e: MessageEvents): void => {
           count = e.data;
           console.log('e:' + JSON.stringify(e));
-          console.info("main2 thread count is  " + count);
+          console.info('main2 thread count is  ' + count);
           WorkThread.terminate();
           console.log('Success execution count:' + count);
           console.info(`${caseName} test end`);

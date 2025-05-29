@@ -1,13 +1,13 @@
 /*
 * Copyright (C) 2025 HiHope Open Source Organization.
-* Licensed under the Apache License, Version 2.0 (the "License");
+* Licensed under the Apache License, Version 2.0 (the 'License');
 * you may not use this file except in compliance with the License.
 * You may obtain a copy of the License at
 *
 *   http://www.apache.org/licenses/LICENSE-2.0
 *
 * Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
+* distributed under the License is distributed on an 'AS IS' BASIS,
 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 * See the License for the specific language governing permissions and
 * limitations under the License.
@@ -24,7 +24,7 @@ import {
   Size,
   Level,
   TestType
-} from "@ohos/hypium";
+} from '@ohos/hypium';
 import { ConcurrentFunc, delay, printArgs1,
   printArgs12,
   printArgs15,
@@ -37,9 +37,9 @@ import { ConcurrentFunc, delay, printArgs1,
   printArgs37,
   printArgs4,
   printArgs9,
-  sleep } from "../testability/pages/Utils";
-import { ArkTSUtils, MessageEvents, taskpool, worker } from "@kit.ArkTS";
-import { testTask, testTask1, testTask2 } from "../testability/pages/Methods";
+  sleep } from '../testability/pages/Utils';
+import { ArkTSUtils, MessageEvents, taskpool, worker } from '@kit.ArkTS';
+import { testTask, testTask1, testTask2 } from '../testability/pages/Methods';
 
 export default function AsynclockDifferentTest() {
   describe('AsynclockDifferentTest', () => {
@@ -121,7 +121,7 @@ export default function AsynclockDifferentTest() {
         const promises: Promise<void>[] = [];
         for (let i = 0; i < 3; i++) {
           taskpool.execute(task).then((value: Object) => {
-            console.log("taskpool result: " + value);
+            console.log('taskpool result: ' + value);
             count1++
           });
         }
@@ -197,7 +197,7 @@ export default function AsynclockDifferentTest() {
         const promises: Promise<void>[] = [];
         for (let i = 0; i < 3; i++) {
           taskpool.execute(task).then((value: Object) => {
-            console.log("taskpool result: " + value);
+            console.log('taskpool result: ' + value);
             count++
           })
         }
@@ -273,7 +273,7 @@ export default function AsynclockDifferentTest() {
         const promises: Promise<void>[] = [];
         for (let i = 0; i < 3; i++) {
           taskpool.execute(task).then((value) => {
-            console.log("taskpool result: " + value);
+            console.log('taskpool result: ' + value);
             count++
           })
         }
@@ -311,7 +311,7 @@ export default function AsynclockDifferentTest() {
         WorkThread.onmessage = (e: MessageEvents): void => {
           count = e.data;
           console.log('e:' + JSON.stringify(e));
-          console.info("main2 thread count is  " + count);
+          console.info('main2 thread count is  ' + count);
           WorkThread.terminate();
         }
         while (count != 10) {
@@ -393,7 +393,7 @@ export default function AsynclockDifferentTest() {
         let count = 0;
         for (let i = 0; i < 3; i++) {
           taskpool.execute(task).then((value) => {
-            console.log("taskpool result: " + value);
+            console.log('taskpool result: ' + value);
             count++
           })
         }
@@ -431,7 +431,7 @@ export default function AsynclockDifferentTest() {
         WorkThread.onmessage = (e: MessageEvents): void => {
           count = e.data;
           console.log('e:' + JSON.stringify(e));
-          console.info("main2 thread count is  " + count);
+          console.info('main2 thread count is  ' + count);
           WorkThread.terminate();
         }
         while (count != 1) {
@@ -518,7 +518,7 @@ export default function AsynclockDifferentTest() {
         let count = 0;
         for (let i = 0; i < 3; i++) {
           taskpool.execute(task).then((value) => {
-            console.log("taskpool result: " + value);
+            console.log('taskpool result: ' + value);
             count++
           })
         }
@@ -556,7 +556,7 @@ export default function AsynclockDifferentTest() {
         WorkThread.onmessage = (e: MessageEvents): void => {
           count = e.data;
           console.log('e:' + JSON.stringify(e));
-          console.info("main2 thread count is  " + count);
+          console.info('main2 thread count is  ' + count);
           WorkThread.terminate();
         }
         while (count != 1) {
@@ -633,7 +633,7 @@ export default function AsynclockDifferentTest() {
         let count = 0;
         for (let i = 0; i < 3; i++) {
           taskpool.execute(task).then((value) => {
-            console.log("taskpool result: " + value);
+            console.log('taskpool result: ' + value);
             count++
           })
         }
@@ -716,7 +716,7 @@ export default function AsynclockDifferentTest() {
         let count = 0;
         for (let i = 0; i < 3; i++) {
           taskpool.execute(task).then((value) => {
-            console.log("taskpool result: " + value);
+            console.log('taskpool result: ' + value);
             count++
           })
         }
@@ -754,7 +754,7 @@ export default function AsynclockDifferentTest() {
         WorkThread.onmessage = (e: MessageEvents): void => {
           count = e.data;
           console.log('e:' + JSON.stringify(e));
-          console.info("main2 thread count is  " + count);
+          console.info('main2 thread count is  ' + count);
           WorkThread.terminate();
         }
         while (count != 1) {
@@ -841,7 +841,7 @@ export default function AsynclockDifferentTest() {
         let count = 0;
         for (let i = 0; i < 3; i++) {
           taskpool.execute(task).then((value) => {
-            console.log("taskpool result: " + value);
+            console.log('taskpool result: ' + value);
             count++
           })
         }
@@ -876,7 +876,7 @@ export default function AsynclockDifferentTest() {
         let task: taskpool.Task = new taskpool.Task(printArgs21, 0);
         let count = 0;
         task.onEnqueued(() => {
-          console.info("taskpool: onEnqueued")
+          console.info('taskpool: onEnqueued')
         });
         for (let i = 0; i < 3; i++) {
           taskpool.execute(task).then((value) => {
@@ -1084,7 +1084,7 @@ export default function AsynclockDifferentTest() {
         WorkThread.onmessage = (e: MessageEvents): void => {
           count = e.data;
           console.log('e:' + JSON.stringify(e));
-          console.info("main2 thread count is  " + count);
+          console.info('main2 thread count is  ' + count);
           WorkThread.terminate();
         }
         while (count != 1) {
@@ -1203,7 +1203,7 @@ export default function AsynclockDifferentTest() {
         WorkThread.onmessage = (e: MessageEvents): void => {
           count = e.data;
           console.log('e:' + JSON.stringify(e));
-          console.info("main2 thread count is  " + count);
+          console.info('main2 thread count is  ' + count);
           WorkThread.terminate();
         }
         while (count != 1) {
@@ -1322,7 +1322,7 @@ export default function AsynclockDifferentTest() {
         const lock1 = new ArkTSUtils.locks.AsyncLock();
         const lock2 = new ArkTSUtils.locks.AsyncLock();
         task.onStartExecution(() => {
-          console.info("taskpool: onStartExecution");
+          console.info('taskpool: onStartExecution');
           const promise1 = lock1.lockAsync(async () => {
             console.log('Enter shared lock lock1');
             await lock2.lockAsync(() => {
@@ -1470,7 +1470,7 @@ export default function AsynclockDifferentTest() {
         WorkThread.onmessage = (e: MessageEvents): void => {
           count = e.data;
           console.log('e:' + JSON.stringify(e));
-          console.info("main2 thread count is  " + count);
+          console.info('main2 thread count is  ' + count);
           WorkThread.terminate();
         }
         while (count != 1) {
