@@ -375,19 +375,19 @@ export async function taskFunctionTest3600() {
         console.log('Enter exclusive lock lock2');
 
         console.log('Enter worker');
-        let WorkThread: worker.ThreadWorker;
-        WorkThread = new worker.ThreadWorker('../workers/Worker');
-        WorkThread.onexit = () => {
+        let workThread: worker.ThreadWorker;
+        workThread = new worker.ThreadWorker('../workers/Worker');
+        workThread.onexit = () => {
           console.log('onexit');
         }
-        WorkThread.postMessage(caseName);
-        WorkThread.onmessage = (e: MessageEvents): void => {
+        workThread.postMessage(caseName);
+        workThread.onmessage = (e: MessageEvents): void => {
           returnCount = e.data;
           count++;
           console.log('e:' + JSON.stringify(e));
           console.info('main2 thread count is  ' + count);
           console.info('main2 returnCount  is  ' + returnCount);
-          WorkThread.terminate();
+          workThread.terminate();
           console.log('Success execution count:' + count);
           console.info(`${caseName} test end`);
         }
