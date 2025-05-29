@@ -663,7 +663,7 @@ HWTEST_F(DrawingNativeFontPart2Test, testFontMeasureTextWithBrushOrPenAbnormal, 
 	// brush and pen are not empty
     EXPECT_EQ(OH_Drawing_FontMeasureTextWithBrushOrPen(font, text, strlen(text),
         TEXT_ENCODING_UTF8, brush, pen, bounds, &textWidth), OH_DRAWING_ERROR_INVALID_PARAMETER);
-	OH_Drawing_RectDestroy(bounds);
+    OH_Drawing_RectDestroy(bounds);
     OH_Drawing_BrushDestroy(brush);
     OH_Drawing_PenDestroy(pen);
     OH_Drawing_FontDestroy(font);
@@ -916,7 +916,7 @@ HWTEST_F(DrawingNativeFontPart2Test, testFontGetWidthsBoundsMultiCalls, Function
         errorCode = OH_Drawing_FontGetWidthsBounds(font, glyphs, glyphsCount, brush, nullptr, widths, outRectarr);
         EXPECT_EQ(errorCode, OH_DRAWING_SUCCESS);
     }
-	OH_Drawing_RectDestroyArray(outRectarr);
+    OH_Drawing_RectDestroyArray(outRectarr);
     OH_Drawing_BrushDestroy(brush);
     OH_Drawing_PenDestroy(pen);
     OH_Drawing_FontDestroy(font);
