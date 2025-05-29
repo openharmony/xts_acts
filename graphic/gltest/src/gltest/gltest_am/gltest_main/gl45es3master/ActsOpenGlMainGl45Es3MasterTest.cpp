@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
- #include "ActsOpenGL_main_gl45_khr_singleTest.h"
+ #include "ActsOpenGlMainGl45Es3MasterTest.h"
  #include <gtest/gtest.h>
  #include <cstdlib>
  #include "common.h"
@@ -24,32 +24,32 @@
      using namespace testing::ext;
  
      // Preset action of the test suite, which is executed before the first test case
-     void ActsOpenGL_main_gl45_khr_singleTest::SetUpTestCase(void)
+     void ActsOpenGlMainGl45Es3MasterTest::SetUpTestCase(void)
      {
      }
      // Test suite cleanup action, which is executed after the last test case
-     void ActsOpenGL_main_gl45_khr_singleTest::TearDownTestCase(void)
+     void ActsOpenGlMainGl45Es3MasterTest::TearDownTestCase(void)
      {
      }
      // Preset action of the test case
-     void ActsOpenGL_main_gl45_khr_singleTest::SetUp()
+     void ActsOpenGlMainGl45Es3MasterTest::SetUp()
      {
      }
      // Cleanup action of the test case
-     void ActsOpenGL_main_gl45_khr_singleTest::TearDown()
+     void ActsOpenGlMainGl45Es3MasterTest::TearDown()
      {
      }
  
-     HWTEST_F(ActsOpenGL_main_gl45_khr_singleTest, TestOpenGLglTestCase09, Function | MediumTest | Level2)
+     HWTEST_F(ActsOpenGlMainGl45Es3MasterTest, TestOpenGLmaingl45es3TestCase01, Function | MediumTest | Level2)
      {
-         printf("------start ActsOpenGLmaingl45khrsingleTest------\n");
+         printf("------start ActsOpenGlMainGl45Es3MasterTest------\n");
          if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
              system("/data/local/tmp/opengl/mustpass/glcts "
-                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass_single/main/"
-                 "gl45-khr-single.txt "
-                 "--deqp-log-filename=ActsOpenGLmaingl45khrsingleTest.qpa");
+                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/a_mustpass/main/"
+                 "gl45-es3-master.txt "
+                 "--deqp-log-filename=ActsOpenGlMainGl45Es3MasterTest.qpa");
          }
          EXPECT_TRUE(true);
-         printf("------end ActsOpenGLmaingl45khrsingleTest------\n");
+         printf("------end ActsOpenGlMainGl45Es3MasterTest------\n");
      }
  }

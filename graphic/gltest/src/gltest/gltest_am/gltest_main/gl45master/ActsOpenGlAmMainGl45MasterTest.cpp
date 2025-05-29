@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
- #include "ActsOpenGL_461x_gl44_khr_singleTest.h"
+ #include "ActsOpenGlAmMainGl45MasterTest.h"
  #include <gtest/gtest.h>
  #include <cstdlib>
  #include "common.h"
@@ -24,32 +24,32 @@
      using namespace testing::ext;
  
      // Preset action of the test suite, which is executed before the first test case
-     void ActsOpenGL_461x_gl44_khr_singleTest::SetUpTestCase(void)
+     void ActsOpenGlAmMainGl45MasterTest::SetUpTestCase(void)
      {
      }
      // Test suite cleanup action, which is executed after the last test case
-     void ActsOpenGL_461x_gl44_khr_singleTest::TearDownTestCase(void)
+     void ActsOpenGlAmMainGl45MasterTest::TearDownTestCase(void)
      {
      }
      // Preset action of the test case
-     void ActsOpenGL_461x_gl44_khr_singleTest::SetUp()
+     void ActsOpenGlAmMainGl45MasterTest::SetUp()
      {
      }
      // Cleanup action of the test case
-     void ActsOpenGL_461x_gl44_khr_singleTest::TearDown()
+     void ActsOpenGlAmMainGl45MasterTest::TearDown()
      {
      }
  
-     HWTEST_F(ActsOpenGL_461x_gl44_khr_singleTest, TestOpenGLglTestCase09, Function | MediumTest | Level2)
+     HWTEST_F(ActsOpenGlAmMainGl45MasterTest, TestOpenGLmaingl45TestCase01, Function | MediumTest | Level2)
      {
-         printf("------start ActsOpenGL461xgl44khrsingleTest------\n");
+         printf("------start ActsOpenGlAmMainGl45MasterTest------\n");
          if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
              system("/data/local/tmp/opengl/mustpass/glcts "
-                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass_single/4.6.1.x/"
-                 "gl44-khr-single.txt "
-                 "--deqp-log-filename=ActsOpenGL461xgl44khrsingleTest.qpa");
+                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/a_mustpass/main/"
+                 "gl45-master.txt "
+                 "--deqp-log-filename=ActsOpenGlAmMainGl45MasterTest.qpa");
          }
          EXPECT_TRUE(true);
-         printf("------end ActsOpenGL461xgl44khrsingleTest------\n");
+         printf("------end ActsOpenGlAmMainGl45MasterTest------\n");
      }
  }

@@ -18,7 +18,7 @@
 
 #include <gtest/gtest.h>
 namespace OHOS {
-    class ActsOpenGL_main_gl44_khr_singleTest : public testing::Test {
+    class ActsOpenGlEgl324xTest : public testing::Test {
     public:
     protected:
         // Preset action of the test suite, which is executed before the first test case
