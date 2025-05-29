@@ -208,8 +208,8 @@ export default function BuiltinsBooleanLiteralTest() {
 
 
     /**
-     * @tc.number SUB_BOOLEAN_LITERAL_TEST_0800
-     * @tc.name BuiltinsBooleanLiteralTest0800
+     * @tc.number SUB_BOOLEAN_LITERAL_TEST_0900
+     * @tc.name BuiltinsBooleanLiteralTest0900
      * @tc.desc Testing Task
      * @tc.size MediumTest
      * @tc.type Function

@@ -12,7 +12,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-let flag = 'ss'
+let flag = 'ss';
 
 export function main1() {
     try {
@@ -29,7 +29,7 @@ export function main2() {
     try {
         Reflect.apply(123, {}, []);
         return flag;
-    } catch (error){
+    } catch (error) {
         flag = error.name;
         return flag;
     }
@@ -39,7 +39,7 @@ export function main3() {
     try {
         Reflect.apply(undefined, {}, []);
         return undefined;
-    } catch (error){
+    } catch (error) {
         flag = error.name;
         return flag;
     }
@@ -48,7 +48,7 @@ export function main3() {
 export function main4() {
     try {
         Reflect.apply('', {}, []);
-    } catch (error){
+    } catch (error) {
         flag = error.name;
         return flag;
     }
@@ -64,7 +64,7 @@ export function main5() {
         const result = Reflect.apply(echo, null, [specialChars]);
         console.log(result);
         return result;
-    } catch (error){
+    } catch (error) {
         flag = error.name;
         return flag;
     }
@@ -83,7 +83,7 @@ export function main6() {
             null,
             asciiCodes.map(code => String.fromCharCode(code))
         );
-    } catch (error){
+    } catch (error) {
         flag = error.name;
         return flag;
     }
@@ -99,80 +99,22 @@ export function main7() {
             '',
             [...specialChars]
         );
-    } catch (error){
+    } catch (error) {
         flag = error.name;
         return flag;
     }
 }
 
 export function main9(caseName) {
-    if (caseName === 'ReflectTest1700'){
+    if (caseName === 'ReflectTest0900') {
         try {
-            const specialChars = '\"';
+            const specialChars = '\\b';
             return Reflect.apply(
                 String.prototype.concat,
                 '',
                 [...specialChars]
             );
-        } catch (error){
-            flag = error.name;
-            return flag;
-        }
-    }
-
-
-    if (caseName === 'ReflectTest1800'){
-        try {
-            const specialChars = '\?';
-            return Reflect.apply(
-                String.prototype.concat,
-                '',
-                [...specialChars]
-            );
-        } catch (error){
-            flag = error.name;
-            return flag;
-        }
-    }
-
-    if (caseName === 'ReflectTest1900'){
-        try {
-            const specialChars = '\0';
-            return Reflect.apply(
-                String.prototype.concat,
-                '',
-                [...specialChars]
-            );
-        } catch (error){
-            flag = error.name;
-            return flag;
-        }
-    }
-
-
-    if (caseName === 'ReflectTest2000'){
-        try {
-            const octalChars = '\\141\\142\\143';
-            return Reflect.apply(
-                String.prototype.concat,
-                '',
-                [octalChars]
-            );
-        } catch (error){
-            flag = error.name;
-            return flag;
-        }
-    }
-
-    if (caseName === 'ReflectTest2100'){
-        try {
-            const hexChars = '\\x61\\x62\\x63';
-            return Reflect.apply(
-                String.prototype.concat,
-                '',
-                [hexChars]
-            );
-        } catch (error){
+        } catch (error) {
             flag = error.name;
             return flag;
         }
@@ -195,21 +137,11 @@ export function main8(caseName) {
             return flag;
         }
     }
+}
 
-    if (caseName === 'ReflectTest0900') {
-        try {
-            const specialChars = '\\b';
-            return Reflect.apply(
-                String.prototype.concat,
-                '',
-                [...specialChars]
-            );
-        } catch (error) {
-            flag = error.name;
-            return flag;
-        }
-    }
 
+
+export function main10(caseName) {
     if (caseName === 'ReflectTest1000') {
         try {
             const specialChars = '\\f';
@@ -223,8 +155,9 @@ export function main8(caseName) {
             return flag;
         }
     }
+}
 
-
+export function main11(caseName) {
     if (caseName === 'ReflectTest1100') {
         try {
             const specialChars = '\\n';
@@ -238,7 +171,9 @@ export function main8(caseName) {
             return flag;
         }
     }
+}
 
+export function main12(caseName) {
     if (caseName === 'ReflectTest1200') {
         try {
             const specialChars = '\\r';
@@ -252,7 +187,10 @@ export function main8(caseName) {
             return flag;
         }
     }
+}
 
+
+export function main13(caseName) {
     if (caseName === 'ReflectTest1300') {
         try {
             const specialChars = '\\t';
@@ -266,7 +204,9 @@ export function main8(caseName) {
             return flag;
         }
     }
+}
 
+export function main14(caseName) {
     if (caseName === 'ReflectTest1400') {
         try {
             const specialChars = '\\v';
@@ -280,7 +220,9 @@ export function main8(caseName) {
             return flag;
         }
     }
+}
 
+export function main15(caseName) {
     if (caseName === 'ReflectTest1500') {
         try {
             const specialChars = '\\';
@@ -294,7 +236,10 @@ export function main8(caseName) {
             return flag;
         }
     }
+}
 
+
+export function main16(caseName) {
     if (caseName === 'ReflectTest1600') {
         try {
             const specialChars = '\'';
@@ -310,10 +255,88 @@ export function main8(caseName) {
     }
 }
 
+export function main17(caseName) {
+    if (caseName === 'ReflectTest1700') {
+        try {
+            const specialChars = '\"';
+            return Reflect.apply(
+                String.prototype.concat,
+                '',
+                [...specialChars]
+            );
+        } catch (error) {
+            flag = error.name;
+            return flag;
+        }
+    }
+}
 
+export function main18(caseName) {
+    if (caseName === 'ReflectTest1800') {
+        try {
+            const specialChars = '\?';
+            return Reflect.apply(
+                String.prototype.concat,
+                '',
+                [...specialChars]
+            );
+        } catch (error) {
+            flag = error.name;
+            return flag;
+        }
+    }
+}
 
-export function main10(caseName) {
-    if (caseName === 'ReflectTest2200'){
+export function main19(caseName) {
+    if (caseName === 'ReflectTest1900') {
+        try {
+            const specialChars = '\0';
+            return Reflect.apply(
+                String.prototype.concat,
+                '',
+                [...specialChars]
+            );
+        } catch (error) {
+            flag = error.name;
+            return flag;
+        }
+    }
+}
+
+export function main20(caseName) {
+    if (caseName === 'ReflectTest2000') {
+        try {
+            const octalChars = '\\141\\142\\143';
+            return Reflect.apply(
+                String.prototype.concat,
+                '',
+                [octalChars]
+            );
+        } catch (error) {
+            flag = error.name;
+            return flag;
+        }
+    }
+}
+
+export function main21(caseName) {
+    if (caseName === 'ReflectTest2100') {
+        try {
+            const hexChars = '\\x61\\x62\\x63';
+            return Reflect.apply(
+                String.prototype.concat,
+                '',
+                [hexChars]
+            );
+        } catch (error) {
+            flag = error.name;
+            return flag;
+        }
+    }
+}
+
+export function main22(caseName) {
+    if (caseName === 'ReflectTest2200') {
         try {
             const emoji = '👆';
             const unicode = [...emoji].map(char => {
@@ -335,13 +358,16 @@ export function main10(caseName) {
                 '',
                 [unicode]
             );
-        } catch (error){
+        } catch (error) {
             flag = error.name;
             return flag;
         }
     }
 
-    if (caseName === 'ReflectTest2300'){
+}
+
+export function main23(caseName) {
+    if (caseName === 'ReflectTest2300') {
         try {
             const emoji = '👿';
             const unicode = [...emoji].map(char => {
@@ -362,14 +388,15 @@ export function main10(caseName) {
                 '',
                 [unicode]
             );
-        } catch (error){
+        } catch (error) {
             flag = error.name;
             return flag;
         }
     }
+}
 
-
-    if (caseName === 'ReflectTest2400'){
+export function main24(caseName) {
+    if (caseName === 'ReflectTest2400') {
         try {
             const emoji = '👀';
             const unicode = [...emoji].map(char => {
@@ -390,13 +417,15 @@ export function main10(caseName) {
                 '',
                 [unicode]
             );
-        } catch (error){
+        } catch (error) {
             flag = error.name;
             return flag;
         }
     }
+}
 
-    if (caseName === 'ReflectTest2500'){
+export function main25(caseName) {
+    if (caseName === 'ReflectTest2500') {
         try {
             const emoji = '💯';
             const unicode = [...emoji].map(char => {
@@ -417,14 +446,15 @@ export function main10(caseName) {
                 '',
                 [unicode]
             );
-        } catch (error){
+        } catch (error) {
             flag = error.name;
             return flag;
         }
     }
+}
 
-
-    if (caseName === 'ReflectTest2600'){
+export function main26(caseName) {
+    if (caseName === 'ReflectTest2600') {
         try {
             const emoji = '🎅';
             const unicode = [...emoji].map(char => {
@@ -445,13 +475,16 @@ export function main10(caseName) {
                 '',
                 [unicode]
             );
-        } catch (error){
+        } catch (error) {
             flag = error.name;
             return flag;
         }
     }
+}
 
-    if (caseName === 'ReflectTest2700'){
+
+export function main27(caseName) {
+    if (caseName === 'ReflectTest2700') {
         try {
             const emoji = '😼';
             const unicode = [...emoji].map(char => {
@@ -472,13 +505,15 @@ export function main10(caseName) {
                 '',
                 [unicode]
             );
-        } catch (error){
+        } catch (error) {
             flag = error.name;
             return flag;
         }
     }
+}
 
-    if (caseName === 'ReflectTest2800'){
+export function main28(caseName) {
+    if (caseName === 'ReflectTest2800') {
         try {
             const emoji = '🔧';
             const unicode = [...emoji].map(char => {
@@ -499,14 +534,15 @@ export function main10(caseName) {
                 '',
                 [unicode]
             );
-        } catch (error){
+        } catch (error) {
             flag = error.name;
             return flag;
         }
     }
+}
 
-
-    if (caseName === 'ReflectTest2900'){
+export function main29(caseName) {
+    if (caseName === 'ReflectTest2900') {
         try {
             const emoji = '💇';
             const unicode = [...emoji].map(char => {
@@ -527,13 +563,15 @@ export function main10(caseName) {
                 '',
                 [unicode]
             );
-        }catch (error){
+        }catch (error) {
             flag = error.name;
             return flag;
         }
     }
+}
 
-    if (caseName === 'ReflectTest3000'){
+export function main30(caseName) {
+    if (caseName === 'ReflectTest3000') {
         try {
             const emoji = '🤼‍♂';
             const unicode = [...emoji].map(char => {
@@ -554,18 +592,15 @@ export function main10(caseName) {
                 '',
                 [unicode]
             );
-        } catch (error){
+        } catch (error) {
             flag = error.name;
             return flag;
         }
     }
-
 }
 
-
-export function main11(caseName) {
-
-    if (caseName === 'ReflectTest3100'){
+export function main31(caseName) {
+    if (caseName === 'ReflectTest3100') {
         try {
             const emoji = '🛢';
             const unicode = [...emoji].map(char => {
@@ -586,13 +621,15 @@ export function main11(caseName) {
                 '',
                 [unicode]
             );
-        } catch (error){
+        } catch (error) {
             flag = error.name;
             return flag;
         }
     }
+}
 
-    if (caseName === 'ReflectTest3200'){
+export function main32(caseName) {
+    if (caseName === 'ReflectTest3200') {
         try {
             const emoji = '🀄';
             const unicode = [...emoji].map(char => {
@@ -613,14 +650,15 @@ export function main11(caseName) {
                 '',
                 [unicode]
             );
-        } catch (error){
+        } catch (error) {
             flag = error.name;
             return flag;
         }
     }
+}
 
-
-    if (caseName === 'ReflectTest3300'){
+export function main33(caseName) {
+    if (caseName === 'ReflectTest3300') {
         try {
             const emoji = '🏴';
             const unicode = [...emoji].map(char => {
@@ -641,14 +679,15 @@ export function main11(caseName) {
                 '',
                 [unicode]
             );
-        } catch (error){
+        } catch (error) {
             flag = error.name;
             return flag;
         }
     }
+}
 
-
-    if (caseName === 'ReflectTest3400'){
+export function main34(caseName) {
+    if (caseName === 'ReflectTest3400') {
         try {
             const keywords = ["0", "NaN", ""];
             const processed = keywords.map(keyword => {
@@ -659,13 +698,15 @@ export function main11(caseName) {
                 '',
                 processed
             );
-        } catch (error){
+        } catch (error) {
             flag = error.name;
             return flag;
         }
     }
+}
 
-    if (caseName === 'ReflectTest3500'){
+export function main35(caseName) {
+    if (caseName === 'ReflectTest3500') {
         try {
             const size = 10000;
             const treeStart = performance.now();
@@ -695,14 +736,15 @@ export function main11(caseName) {
                 return ans.substring(0, size);
             }
 
-        } catch (error){
+        } catch (error) {
             flag = error.name;
             return flag;
         }
     }
+}
 
-
-    if (caseName === 'ReflectTest3600'){
+export function main36(caseName) {
+    if (caseName === 'ReflectTest3600') {
         try {
             const originalStr = '{k1:value1,k2:value2}';
             const iterations = 1000;
@@ -730,10 +772,10 @@ export function main11(caseName) {
                     `值是否稳定: ${isValid}`
                 ]
             );
-        } catch (error){
+        } catch (error) {
             flag = error.name;
             return flag;
         }
     }
-
 }
+
