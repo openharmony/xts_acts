@@ -40,7 +40,11 @@
                 "./resource/image/text.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.imageNdk/haps/entry_test/files",
                 "./resource/image/jpeg_test_1440x1920.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.imageNdk/haps/entry_test/files",
                 "./resource/image/JpegFragmentMap.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.imageNdk/haps/entry_test/files",
-                "./resource/image/pixel_bmp_1440x1920.bmp ->/data/app/el2/100/base/ohos.acts.multimedia.image.imageNdk/haps/entry_test/files"
+                "./resource/image/pixel_bmp_1440x1920.bmp ->/data/app/el2/100/base/ohos.acts.multimedia.image.imageNdk/haps/entry_test/files",
+                "./resource/image/pixel_bmp_3072x4096.bmp ->/data/app/el2/100/base/ohos.acts.multimedia.image.imageNdk/haps/entry_test/files",
+                "./resource/image/pixel_bmp_6144x8192.bmp ->/data/app/el2/100/base/ohos.acts.multimedia.image.imageNdk/haps/entry_test/files",
+                "./resource/image/pixel_bmp_480x360.bmp ->/data/app/el2/100/base/ohos.acts.multimedia.image.imageNdk/haps/entry_test/files",
+                "./resource/image/pixel_bmp_481x361.bmp ->/data/app/el2/100/base/ohos.acts.multimedia.image.imageNdk/haps/entry_test/files"
             ]
         },
         {
