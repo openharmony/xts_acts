@@ -222,17 +222,17 @@ workerPort.onmessage = async (event: MessageEvents) => {
       lock2.lockAsync(async () => {
         console.log('Enter exclusive lock lock2');
         console.log('Enter worker');
-        let WorkThread: worker.ThreadWorker;
-        WorkThread = new worker.ThreadWorker('./Worker');
-        WorkThread.onexit = () => {
+        let workThread: worker.ThreadWorker;
+        workThread = new worker.ThreadWorker('./Worker');
+        workThread.onexit = () => {
           console.log('onexit');
         }
-        WorkThread.postMessage('AsynclockSameTest4010');
-        WorkThread.onmessage = (e: MessageEvents): void => {
+        workThread.postMessage('AsynclockSameTest4010');
+        workThread.onmessage = (e: MessageEvents): void => {
           count = e.data ;
           console.log('e:' + JSON.stringify(e));
           console.info('main2 thread count is  ' + count);
-          WorkThread.terminate();
+          workThread.terminate();
           console.log('Success execution count:' + count);
         }
         console.log('Exit worker');

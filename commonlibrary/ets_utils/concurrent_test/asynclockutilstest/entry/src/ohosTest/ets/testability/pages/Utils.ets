@@ -576,14 +576,14 @@ export function printArgs44(args: number): number {
       await lock2.lockAsync(async () => {
         console.log('Enter EXCLUSIVE lock lock2');
         await lock3.lockAsync(async () => {
-          let WorkThread: worker.ThreadWorker;
-          WorkThread = new worker.ThreadWorker('../testability/workers/Worker');
-          WorkThread.postMessage(caseName);
-          WorkThread.onmessage = (e: MessageEvents): void => {
+          let workThread: worker.ThreadWorker;
+          workThread = new worker.ThreadWorker('../testability/workers/Worker');
+          workThread.postMessage(caseName);
+          workThread.onmessage = (e: MessageEvents): void => {
             count = e.data;
             console.log('e:' + JSON.stringify(e));
             console.info('main2 thread count is  ' + count);
-            WorkThread.terminate();
+            workThread.terminate();
           }
           console.log('Exit EXCLUSIVE lock lock3');
         }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);

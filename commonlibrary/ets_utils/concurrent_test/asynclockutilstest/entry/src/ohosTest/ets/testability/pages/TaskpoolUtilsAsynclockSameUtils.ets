@@ -418,19 +418,19 @@ export async function taskFunctionTest3900() {
         console.log('Enter exclusive lock lock2');
 
         console.log('Enter worker');
-        let WorkThread: worker.ThreadWorker;
-        WorkThread = new worker.ThreadWorker('../workers/Worker');
-        WorkThread.onexit = () => {
+        let workThread: worker.ThreadWorker;
+        workThread = new worker.ThreadWorker('../workers/Worker');
+        workThread.onexit = () => {
           console.log('onexit');
         }
-        WorkThread.postMessage(caseName);
-        WorkThread.onmessage = (e: MessageEvents): void => {
+        workThread.postMessage(caseName);
+        workThread.onmessage = (e: MessageEvents): void => {
           returnCount = e.data;
           count++;
           console.log('e:' + JSON.stringify(e));
           console.info('main2 thread count is  ' + count);
           console.info('main2 returnCount  is  ' + returnCount);
-          WorkThread.terminate();
+          workThread.terminate();
           console.log('Success execution count:' + count);
           console.info(`${caseName} test end`);
         }
@@ -559,19 +559,19 @@ export async function taskFunctionTest4900() {
         lock3.lockAsync(async () => {
           console.log('Enter exclusive lock lock3');
           console.log('Enter worker');
-          let WorkThread: worker.ThreadWorker;
-          WorkThread = new worker.ThreadWorker('../workers/Worker');
-          WorkThread.onexit = () => {
+          let workThread: worker.ThreadWorker;
+          workThread = new worker.ThreadWorker('../workers/Worker');
+          workThread.onexit = () => {
             console.log('onexit');
           }
-          WorkThread.postMessage(caseName);
-          WorkThread.onmessage = (e: MessageEvents): void => {
+          workThread.postMessage(caseName);
+          workThread.onmessage = (e: MessageEvents): void => {
             returnCount = e.data;
             count++;
             console.log('e:' + JSON.stringify(e));
             console.info('main2 thread count is  ' + count);
             console.info('main2 returnCount  is  ' + returnCount);
-            WorkThread.terminate();
+            workThread.terminate();
             console.log('Success execution count:' + count);
             console.info(`${caseName} test end`);
           }
@@ -608,12 +608,12 @@ export async function taskFunctionTest5000(args : number) {
   lock1.lockAsync(async () => {
     lock2.lockAsync(async () => {
       lock3.lockAsync(async () => {
-        let WorkThread: worker.ThreadWorker;
-        WorkThread = new worker.ThreadWorker('../workers/Worker');
-        WorkThread.postMessage(caseName);
-        WorkThread.onmessage = (): void => {
+        let workThread: worker.ThreadWorker;
+        workThread = new worker.ThreadWorker('../workers/Worker');
+        workThread.postMessage(caseName);
+        workThread.onmessage = (): void => {
           count++;
-          WorkThread.terminate();
+          workThread.terminate();
         }
       }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);
     }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE);

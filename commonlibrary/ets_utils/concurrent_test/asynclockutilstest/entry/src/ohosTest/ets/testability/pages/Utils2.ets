@@ -526,14 +526,14 @@ export function TaskFun44(args: number): number {
       await lock2.lockAsync(async () => {
         console.log('Enter SHARED lock lock2');
         await lock3.lockAsync(async () => {
-          let WorkThread: worker.ThreadWorker;
-          WorkThread = new worker.ThreadWorker('../testability/workers/Worker2');
-          WorkThread.postMessage(caseName);
-          WorkThread.onmessage = (e: MessageEvents): void => {
+          let workThread: worker.ThreadWorker;
+          workThread = new worker.ThreadWorker('../testability/workers/Worker2');
+          workThread.postMessage(caseName);
+          workThread.onmessage = (e: MessageEvents): void => {
             count = e.data;
             console.log('e:' + JSON.stringify(e));
             console.info('main2 thread count is  ' + count);
-            WorkThread.terminate();
+            workThread.terminate();
           }
           console.log('Exit SHARED lock lock3');
         }, ArkTSUtils.locks.AsyncLockMode.SHARED);
