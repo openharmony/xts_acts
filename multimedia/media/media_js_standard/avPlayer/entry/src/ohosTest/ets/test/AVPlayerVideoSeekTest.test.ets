@@ -121,7 +121,7 @@ export default function AVPlayerVideoSeekTest() {
         // #region
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_0100
-            * @tc.name      : 001.test integrationAccurateSeekTSInterface - sequential loop call seek
+            * @tc.name      : SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_0100
             * @tc.desc      : Sequential loop call seek in prepared state
             * @tc.size      : MediumTest
             * @tc.type      : Reliability test
@@ -166,7 +166,7 @@ export default function AVPlayerVideoSeekTest() {
         // #region
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_0200
-            * @tc.name      : 002.test integrationAccurateSeekTSInterface - randomized loop call seek
+            * @tc.name      : SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_0200
             * @tc.desc      : Randomized loop call seek in prepared state
             * @tc.size      : MediumTest
             * @tc.type      : Reliability test
@@ -216,7 +216,7 @@ export default function AVPlayerVideoSeekTest() {
         // #region
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_0300
-            * @tc.name      : 003.test integrationAccurateSeekTSInterface - sequential loop call seek
+            * @tc.name      : SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_0300
             * @tc.desc      : Sequential loop call seek in playing state
             * @tc.size      : MediumTest
             * @tc.type      : Reliability test
@@ -269,7 +269,7 @@ export default function AVPlayerVideoSeekTest() {
         // #region
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_0400
-            * @tc.name      : 004.test integrationAccurateSeekTSInterface - randomized loop call seek
+            * @tc.name      : SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_0400
             * @tc.desc      : Randomized loop call seek in playing state
             * @tc.size      : MediumTest
             * @tc.type      : Reliability test
@@ -322,7 +322,7 @@ export default function AVPlayerVideoSeekTest() {
         // #region
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_0500
-            * @tc.name      : 005.test integrationAccurateSeekTSInterface - sequential loop call seek
+            * @tc.name      : SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_0500
             * @tc.desc      : Sequential loop call seek in pause state
             * @tc.size      : MediumTest
             * @tc.type      : Reliability test
@@ -378,7 +378,7 @@ export default function AVPlayerVideoSeekTest() {
         // #region
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_0600
-            * @tc.name      : 006.test integrationAccurateSeekTSInterface - randomized loop call seek
+            * @tc.name      : SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_0600
             * @tc.desc      : Randomized loop call seek in pause state
             * @tc.size      : MediumTest
             * @tc.type      : Reliability test
@@ -434,7 +434,7 @@ export default function AVPlayerVideoSeekTest() {
         // #region
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_0700
-            * @tc.name      : 007.test integrationAccurateSeekTSInterface - sequential loop call seek in initialized state
+            * @tc.name      : SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_0700
             * @tc.desc      : Sequential loop call seek in initialized state
             * @tc.size      : MediumTest
             * @tc.type      : Reliability test
@@ -487,7 +487,7 @@ export default function AVPlayerVideoSeekTest() {
         // #region
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_0800
-            * @tc.name      : 008.test integrationAccurateSeekTSInterface - randomized loop call seek
+            * @tc.name      : SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_0800
             * @tc.desc      : Randomized loop call seek in completed state
             * @tc.size      : MediumTest
             * @tc.type      : Reliability test
@@ -540,7 +540,7 @@ export default function AVPlayerVideoSeekTest() {
         // #region
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_0900
-            * @tc.name      : 009.test integrationAccurateSeekTSInterface - set values outside the range
+            * @tc.name      : SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_0900
             * @tc.desc      : Set values outside the range and run in prepared state
             * @tc.size      : MediumTest
             * @tc.type      : Reliability test
@@ -590,7 +590,7 @@ export default function AVPlayerVideoSeekTest() {
         // #region
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_1000
-            * @tc.name      : 010.test integrationAccurateSeekTSInterface - set values outside the range
+            * @tc.name      : SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_1000
             * @tc.desc      : Set values outside the range and run in playing state
             * @tc.size      : MediumTest
             * @tc.type      : Reliability test
@@ -643,7 +643,7 @@ export default function AVPlayerVideoSeekTest() {
         // #region
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_1100
-            * @tc.name      : 011.test integrationAccurateSeekTSInterface - set values outside the range
+            * @tc.name      : SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_1100
             * @tc.desc      : Set values outside the range and run in paused state
             * @tc.size      : MediumTest
             * @tc.type      : Reliability test
@@ -699,7 +699,7 @@ export default function AVPlayerVideoSeekTest() {
         // #region
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_1200
-            * @tc.name      : 012.test integrationAccurateSeekTSInterface - set values outside the range
+            * @tc.name      : SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_1200
             * @tc.desc      : Set values outside the range and run in completed state
             * @tc.size      : MediumTest
             * @tc.type      : Reliability test
@@ -752,7 +752,7 @@ export default function AVPlayerVideoSeekTest() {
         // #region
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_1300
-            * @tc.name      : 013.test integrationAccurateSeekTSInterface - sequential loop call seek in idle state
+            * @tc.name      : SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_1300
             * @tc.desc      : Sequential loop call seek in idle state
             * @tc.size      : MediumTest
             * @tc.type      : Reliability test
@@ -796,7 +796,7 @@ export default function AVPlayerVideoSeekTest() {
         // #region
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_1400
-            * @tc.name      : 014.test integrationAccurateSeekTSInterface - randomized loop call seek in idle state
+            * @tc.name      : SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_1400
             * @tc.desc      : Randomized loop call seek in idle state
             * @tc.size      : MediumTest
             * @tc.type      : Reliability test
@@ -840,7 +840,7 @@ export default function AVPlayerVideoSeekTest() {
         // #region
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_1500
-            * @tc.name      : 015.test integrationAccurateSeekTSInterface - sequential loop call seek
+            * @tc.name      : SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_1500
             * @tc.desc      : Sequential loop call seek in initialized state
             * @tc.size      : MediumTest
             * @tc.type      : Reliability test
@@ -887,7 +887,7 @@ export default function AVPlayerVideoSeekTest() {
         // #region
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_1600
-            * @tc.name      : 016.test integrationAccurateSeekTSInterface - randomized loop call seek
+            * @tc.name      : SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_1600
             * @tc.desc      : Randomized loop call seek in initialized state
             * @tc.size      : MediumTest
             * @tc.type      : Reliability test
@@ -934,7 +934,7 @@ export default function AVPlayerVideoSeekTest() {
         // #region
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_1700
-            * @tc.name      : 017.test integrationAccurateSeekTSInterface - sequential loop call seek
+            * @tc.name      : SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_1700
             * @tc.desc      : Sequential loop call seek in stopped state
             * @tc.size      : MediumTest
             * @tc.type      : Reliability test
@@ -987,7 +987,7 @@ export default function AVPlayerVideoSeekTest() {
         // #region
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_1800
-            * @tc.name      : 018.test integrationAccurateSeekTSInterface - randomized loop call seek
+            * @tc.name      : SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_1800
             * @tc.desc      : Randomized loop call seek in stopped state
             * @tc.size      : MediumTest
             * @tc.type      : Reliability test
@@ -1040,7 +1040,7 @@ export default function AVPlayerVideoSeekTest() {
         // #region
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_1900
-            * @tc.name      : 019.test integrationAccurateSeekTSInterface - sequential loop call seek
+            * @tc.name      : SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_1900
             * @tc.desc      : Sequential loop call seek in released state
             * @tc.size      : MediumTest
             * @tc.type      : Reliability test
@@ -1087,7 +1087,7 @@ export default function AVPlayerVideoSeekTest() {
         // #region
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_2000
-            * @tc.name      : 020.test integrationAccurateSeekTSInterface - randomized loop call seek
+            * @tc.name      : SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_2000
             * @tc.desc      : Randomized loop call seek in released state
             * @tc.size      : MediumTest
             * @tc.type      : Reliability test
