@@ -5481,8 +5481,7 @@ export default function soundPoolTest() {
       console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_ERROR_OCCURRED_0100 in`);
       try {
         let soundId = 0;
-        let errorInfo: ErrorInfo;
-        let isExpected: boolean = false;
+        let isExpected = false;
         await createSoundPool();
         if (!soundPool) {
           console.error(`${TAG}:createSoundPool soundPool is null`);
@@ -5491,8 +5490,9 @@ export default function soundPoolTest() {
           return;
         }
         soundPool.on('errorOccurred', (errorInfo_) => {
-          console.error(`${TAG}: onErrorOccurred called! error happened, message is: ${errorInfo.errorCode.message}`);
-          errorInfo = errorInfo_;
+          console.error(`${TAG}: onErrorOccurred called! error happened, message is: ${errorInfo_.errorCode.message}`);
+          isExpected = errorInfo_.soundId == soundId && errorInfo_.errorType == 1 &&
+            errorInfo_.errorCode.code == 5400103;
         })
         await soundPool.load(uri5).then((soundId_) => {
           if (soundId_ > 0) {
@@ -5506,17 +5506,16 @@ export default function soundPoolTest() {
           console.info(`${TAG}: load fail! catch error, error: [${error.code}, ${error.message}]`);
           expectFalse();
         })
-      isExpected = errorInfo.soundId == soundId && errorInfo.errorType == ErrorType.LOAD_ERROR &&
-        errorInfo.errorCode.code == 5400103;
-      if (isExpected) {
-        console.info(`${TAG}: Test onErrorOccurred when loadfailed success`);
-      } else {
-        console.error(`${TAG}:Test onErrorOccurred when loadfailed failed`);
-        expectFalse();
-      }
+        await sleep(500);
+        if (isExpected) {
+            console.info(`${TAG}: Test onErrorOccurred when loadfailed success`);
+        } else {
+            console.error(`${TAG}:Test onErrorOccurred when loadfailed failed`);
+            expectFalse();
+        }
       } catch (error) {
-        console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
-        expectFalse();
+          console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
+          expectFalse();
       }
       done();
       return;
@@ -5539,8 +5538,8 @@ export default function soundPoolTest() {
           return;
         }
         soundPool.on('errorOccurred', (errorInfo_) => {
-          console.error(`${TAG}: onErrorOccurred called! error happened, message is: ${errorInfo.errorCode.message}`);
-          flag = ture;
+          console.error(`${TAG}: onErrorOccurred called! error happened, message is: ${errorInfo_.errorCode.message}`);
+          flag = true;
         })
         soundPool.off('errorOccurred');
         await sleep(500);
