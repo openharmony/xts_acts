@@ -920,6 +920,7 @@ struct WebComponent {
               if (isResume === false) {
                 Utils.emitEvent('success', 24082)
               }
+              isSuspend = false;
               break;
             }
             case 'emitWebviewBFCacheSuspendPlayer': {
