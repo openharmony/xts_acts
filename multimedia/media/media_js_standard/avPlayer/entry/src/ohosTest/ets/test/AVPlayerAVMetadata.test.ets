@@ -23,6 +23,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 const AUDIO_SOURCE = 'mjpeg_mp3.mp3';
 const VIDEO_SOURCE = 'H264_AAC_Matedata.mp4';
 const VIDEO_NOSUPPORT = 'No_Support_Format.mov'
+const HTTP_SOURCE = 'http://XXX';
 const TAG = "MetadataDemo"
 const SLEEP_TIME = 200
 let AVFileDescriptor: media.AVFileDescriptor;
@@ -1014,6 +1015,107 @@ export default function AVMetadata() {
           done();
         });
       });
+    });
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_PLAYER_AVMETADATA_SERURLSOURCE_VOID_FUNCTION_0100
+     * @tc.name      : SUB_MULTIMEDIA_PLAYER_AVMETADATA_SERURLSOURCE_VOID_FUNCTION_0100
+     * @tc.desc      : Online http Video playback control test
+     * @tc.size      : MediumTest
+     * @tc.type      : Function Test
+     * @tc.level     : Level0
+     */
+    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_SERURLSOURCE_VOID_FUNCTION_0100', Level.LEVEL0, async (done: Function) => {
+      let avMetadataExtractor = await media.createAVMetadataExtractor();
+      console.info('AVMetadataExtractor success');
+      let pixelMapLoc: image.PixelMap | undefined = undefined;
+      avMetadataExtractor.setUrlSource(HTTP_SOURCE);
+      // 初始化入参
+      let timeUs = 10000;
+      let queryOption = media.AVImageQueryOptions.AV_IMAGE_QUERY_NEXT_SYNC;
+      let param: media.PixelMapParams = {
+        width : 300,
+        height : 300
+      };
+      // 获取缩略图
+      avMetadataExtractor.fetchFrameByTime(timeUs, queryOption, param).then((pixelMap: image.PixelMap) => {
+        pixelMapLoc = pixelMap;
+        console.info(TAG, `fetchFrameByTime success`);
+      }).catch((error: BusinessError) => {
+        console.error(`fetchFrameByTime catchCallback ${error.name} code: ${error.code} message: ${error.message}`);
+      });
+      await mediaTestBase.msleepAsync(SLEEP_TIME);
+      expect(pixelMapLoc).assertUndefined();
+      avMetadataExtractor.release();
+      done();
+    });
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_PLAYER_AVMETADATA_SERURLSOURCE_VOID_FUNCTION_0200
+     * @tc.name      : SUB_MULTIMEDIA_PLAYER_AVMETADATA_SERURLSOURCE_VOID_FUNCTION_0200
+     * @tc.desc      : Online http Video with httpheader playback control test
+     * @tc.size      : MediumTest
+     * @tc.type      : Function Test
+     * @tc.level     : Level0
+     */
+    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_SERURLSOURCE_VOID_FUNCTION_0200', Level.LEVEL0, async (done: Function) => {
+      let avMetadataExtractor = await media.createAVMetadataExtractor();
+      console.info('AVMetadataExtractor success');
+      let pixelMapLoc: image.PixelMap | undefined = undefined;
+      let headers: Record<string, string> = {
+        "User-Agent" : "User-Agent-Value"
+      };
+      avMetadataExtractor.setUrlSource(HTTP_SOURCE, headers);
+      // 初始化入参
+      let timeUs = 10000;
+      let queryOption = media.AVImageQueryOptions.AV_IMAGE_QUERY_NEXT_SYNC;
+      let param: media.PixelMapParams = {
+        width : 300,
+        height : 300
+      };
+      // 获取缩略图
+      avMetadataExtractor.fetchFrameByTime(timeUs, queryOption, param).then((pixelMap: image.PixelMap) => {
+        pixelMapLoc = pixelMap;
+        console.info(TAG, `fetchFrameByTime success`);
+      }).catch((error: BusinessError) => {
+        console.error(`fetchFrameByTime catchCallback ${error.name} code: ${error.code} message: ${error.message}`);
+      });
+      await mediaTestBase.msleepAsync(SLEEP_TIME);
+      expect(pixelMapLoc).assertUndefined();
+      avMetadataExtractor.release();
+      done();
+    });
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_PLAYER_AVMETADATA_FETCHFRAME_PROMISE_FUNCTION_0100
+     * @tc.name      : SUB_MULTIMEDIA_PLAYER_AVMETADATA_FETCHFRAME_PROMISE_FUNCTION_0100
+     * @tc.desc      : Online http Video playback control test
+     * @tc.size      : MediumTest
+     * @tc.type      : Function Test
+     * @tc.level     : Level0
+     */
+    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_FETCHFRAME_PROMISE_FUNCTION_0100', Level.LEVEL0, async (done: Function) => {
+      let avMetadataExtractor = await media.createAVMetadataExtractor();
+      console.info('AVMetadataExtractor success');
+      avMetadataExtractor.fdSrc = AVFileDescriptor2;
+      // 初始化入参
+      let timeUs = 10000;
+      let queryOption = media.AVImageQueryOptions.AV_IMAGE_QUERY_NEXT_SYNC;
+      let param: media.PixelMapParams = {
+        width : 300,
+        height : 300
+      };
+      // 获取缩略图
+      avMetadataExtractor.fetchFrameByTime(timeUs, queryOption, param).then((pixelMap: image.PixelMap) => {
+        expect(pixelMap).not().assertUndefined();
+        console.info(TAG, `fetchFrameByTime success`);
+      }).catch((error: BusinessError) => {
+        console.error(`fetchFrameByTime catchCallback ${error.name} code: ${error.code} message: ${error.message}`);
+        expect().assertFail();
+      });
+      await mediaTestBase.msleepAsync(SLEEP_TIME);
+      avMetadataExtractor.release();
+      done();
     });
   })
 }
