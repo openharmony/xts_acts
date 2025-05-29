@@ -1019,7 +1019,7 @@ export default function AVMetadata() {
 
     /* *
      * @tc.number    : SUB_MULTIMEDIA_PLAYER_AVMETADATA_SERURLSOURCE_VOID_FUNCTION_0100
-     * @tc.name      : 001.testAVMeta setUrlSource
+     * @tc.name      : SUB_MULTIMEDIA_PLAYER_AVMETADATA_SERURLSOURCE_VOID_FUNCTION_0100
      * @tc.desc      : Online http Video playback control test
      * @tc.size      : MediumTest
      * @tc.type      : Function Test
@@ -1052,7 +1052,7 @@ export default function AVMetadata() {
 
     /* *
      * @tc.number    : SUB_MULTIMEDIA_PLAYER_AVMETADATA_SERURLSOURCE_VOID_FUNCTION_0200
-     * @tc.name      : 002.testAVMeta setUrlSource
+     * @tc.name      : SUB_MULTIMEDIA_PLAYER_AVMETADATA_SERURLSOURCE_VOID_FUNCTION_0200
      * @tc.desc      : Online http Video with httpheader playback control test
      * @tc.size      : MediumTest
      * @tc.type      : Function Test
@@ -1088,7 +1088,7 @@ export default function AVMetadata() {
 
     /* *
      * @tc.number    : SUB_MULTIMEDIA_PLAYER_AVMETADATA_FETCHFRAME_PROMISE_FUNCTION_0100
-     * @tc.name      : 001.testAVMeta fetchFrameByTime
+     * @tc.name      : SUB_MULTIMEDIA_PLAYER_AVMETADATA_FETCHFRAME_PROMISE_FUNCTION_0100
      * @tc.desc      : Online http Video playback control test
      * @tc.size      : MediumTest
      * @tc.type      : Function Test
