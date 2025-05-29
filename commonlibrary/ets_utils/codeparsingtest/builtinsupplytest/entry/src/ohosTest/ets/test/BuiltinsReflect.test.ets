@@ -214,7 +214,7 @@ export default function ReflectTest() {
     it('ReflectTest0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done:Function) => {
       const caseName = 'ReflectTest0800';
       console.info(`${caseName} test start`);
-      let a:string | undefined = main8(caseName);
+      let a:string | undefined = main8();
       console.log(a);
       expect(a).assertEqual('\\a');
       console.info(`${caseName} test end`);
@@ -233,7 +233,7 @@ export default function ReflectTest() {
     it('ReflectTest0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done:Function) => {
       const caseName = 'ReflectTest0900';
       console.info(`${caseName} test start`);
-      let a:string | undefined = main9(caseName);
+      let a:string | undefined = main9();
       console.log(a);
       expect(a).assertEqual('\\b');
       console.info(`${caseName} test end`);
@@ -251,7 +251,7 @@ export default function ReflectTest() {
     it('ReflectTest1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done:Function) => {
       const caseName = 'ReflectTest1000';
       console.info(`${caseName} test start`);
-      let a:string | undefined = main10(caseName);
+      let a:string | undefined = main10();
       console.log(a);
       expect(a).assertEqual('\\f');
       console.info(`${caseName} test end`);
@@ -270,7 +270,7 @@ export default function ReflectTest() {
     it('ReflectTest1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done:Function) => {
       const caseName = 'ReflectTest1100';
       console.info(`${caseName} test start`);
-      let a:string | undefined = main11(caseName);
+      let a:string | undefined = main11();
       console.log(a);
       expect(a).assertEqual('\\n');
       console.info(`${caseName} test end`);
@@ -288,7 +288,7 @@ export default function ReflectTest() {
     it('ReflectTest1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done:Function) => {
       const caseName = 'ReflectTest1200';
       console.info(`${caseName} test start`);
-      let a:string | undefined = main12(caseName);
+      let a:string | undefined = main12();
       console.log(a);
       expect(a).assertEqual('\\r');
       console.info(`${caseName} test end`);
@@ -306,7 +306,7 @@ export default function ReflectTest() {
     it('ReflectTest1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done:Function) => {
       const caseName = 'ReflectTest1300';
       console.info(`${caseName} test start`);
-      let a:string | undefined = main13(caseName);
+      let a:string | undefined = main13();
       console.log(a);
       expect(a).assertEqual('\\t');
       console.info(`${caseName} test end`);
@@ -325,7 +325,7 @@ export default function ReflectTest() {
     it('ReflectTest1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done:Function) => {
       const caseName = 'ReflectTest1400';
       console.info(`${caseName} test start`);
-      let a:string | undefined = main14(caseName);
+      let a:string | undefined = main14();
       console.log(a);
       expect(a).assertEqual('\\v');
       console.info(`${caseName} test end`);
@@ -343,7 +343,7 @@ export default function ReflectTest() {
     it('ReflectTest1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done:Function) => {
       const caseName = 'ReflectTest1500';
       console.info(`${caseName} test start`);
-      let a:string | undefined = main15(caseName);
+      let a:string | undefined = main15();
       console.log(a);
       expect(a).assertEqual('\\');
       console.info(`${caseName} test end`);
@@ -362,7 +362,7 @@ export default function ReflectTest() {
     it('ReflectTest1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done:Function) => {
       const caseName = 'ReflectTest1600';
       console.info(`${caseName} test start`);
-      let a:string | undefined = main16(caseName);
+      let a:string | undefined = main16();
       console.log(a);
       expect(a).assertEqual('\'');
       console.info(`${caseName} test end`);
@@ -381,7 +381,7 @@ export default function ReflectTest() {
     it('ReflectTest1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done:Function) => {
       const caseName = 'ReflectTest1700';
       console.info(`${caseName} test start`);
-      let a:string | undefined = main17(caseName);
+      let a:string | undefined = main17();
       console.log(a);
       expect(a).assertEqual('\"');
       console.info(`${caseName} test end`);
@@ -401,7 +401,7 @@ export default function ReflectTest() {
     it('ReflectTest1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done:Function) => {
       const caseName = 'ReflectTest1800';
       console.info(`${caseName} test start`);
-      let a:string | undefined = main18(caseName);
+      let a:string | undefined = main18();
       console.log(a);
       expect(a).assertEqual('\?');
       console.info(`${caseName} test end`);
@@ -419,7 +419,7 @@ export default function ReflectTest() {
     it('ReflectTest1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done:Function) => {
       const caseName = 'ReflectTest1900';
       console.info(`${caseName} test start`);
-      let a:string | undefined = main19(caseName);
+      let a:string | undefined = main19();
       console.log(a);
       expect(a).assertEqual('\0');
       console.info(`${caseName} test end`);
@@ -437,7 +437,7 @@ export default function ReflectTest() {
     it('ReflectTest2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done:Function) => {
       const caseName = 'ReflectTest2000';
       console.info(`${caseName} test start`);
-      let a:string | undefined = main20(caseName);
+      let a:string | undefined = main20();
       console.log(a);
       expect(a).assertEqual('\\141\\142\\143');
       console.info(`${caseName} test end`);
@@ -456,7 +456,7 @@ export default function ReflectTest() {
     it('ReflectTest2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done:Function) => {
       const caseName = 'ReflectTest2100';
       console.info(`${caseName} test start`);
-      let a:string | undefined = main21(caseName);
+      let a:string | undefined = main21();
       console.log(a);
       expect(a).assertEqual('\\x61\\x62\\x63');
       console.info(`${caseName} test end`);
@@ -475,7 +475,7 @@ export default function ReflectTest() {
     it('ReflectTest2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done:Function) => {
       const caseName = 'ReflectTest2200';
       console.info(`${caseName} test start`);
-      let a:string | undefined = main22(caseName);
+      let a:string | undefined = main22();
       console.log(a);
       expect(a).assertEqual('\\ud83d\\udc46');
       console.info(`${caseName} test end`);
@@ -494,7 +494,7 @@ export default function ReflectTest() {
     it('ReflectTest2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done:Function) => {
       const caseName = 'ReflectTest2300';
       console.info(`${caseName} test start`);
-      let a:string | undefined = main23(caseName);
+      let a:string | undefined = main23();
       console.log(a);
       expect(a).assertEqual('\\ud83d\\udc7f');
       console.info(`${caseName} test end`);
@@ -512,7 +512,7 @@ export default function ReflectTest() {
     it('ReflectTest2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done:Function) => {
       const caseName = 'ReflectTest2400';
       console.info(`${caseName} test start`);
-      let a:string | undefined = main24(caseName);
+      let a:string | undefined = main24();
       console.log(a);
       expect(a).assertEqual('\\ud83d\\udc40');
       console.info(`${caseName} test end`);
@@ -531,7 +531,7 @@ export default function ReflectTest() {
     it('ReflectTest2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done:Function) => {
       const caseName = 'ReflectTest2500';
       console.info(`${caseName} test start`);
-      let a:string | undefined = main25(caseName);
+      let a:string | undefined = main25();
       console.log(a);
       expect(a).assertEqual('\\ud83d\\udcaf');
       console.info(`${caseName} test end`);
@@ -550,7 +550,7 @@ export default function ReflectTest() {
     it('ReflectTest2600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done:Function) => {
       const caseName = 'ReflectTest2600';
       console.info(`${caseName} test start`);
-      let a:string | undefined = main26(caseName);
+      let a:string | undefined = main26();
       console.log(a);
       expect(a).assertEqual('\\ud83c\\udf85');
       console.info(`${caseName} test end`);
@@ -569,7 +569,7 @@ export default function ReflectTest() {
     it('ReflectTest2700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done:Function) => {
       const caseName = 'ReflectTest2700';
       console.info(`${caseName} test start`);
-      let a:string | undefined = main27(caseName);
+      let a:string | undefined = main27();
       console.log(a);
       expect(a).assertEqual('\\ud83d\\ude3c');
       console.info(`${caseName} test end`);
@@ -588,7 +588,7 @@ export default function ReflectTest() {
     it('ReflectTest2800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done:Function) => {
       const caseName = 'ReflectTest2800';
       console.info(`${caseName} test start`);
-      let a:string | undefined = main28(caseName);
+      let a:string | undefined = main28();
       console.log(a);
       expect(a).assertEqual('\\ud83d\\udd27');
       console.info(`${caseName} test end`);
@@ -606,7 +606,7 @@ export default function ReflectTest() {
     it('ReflectTest2900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done:Function) => {
       const caseName = 'ReflectTest2900';
       console.info(`${caseName} test start`);
-      let a:string | undefined = main29(caseName);
+      let a:string | undefined = main29();
       console.log(a);
       expect(a).assertEqual('\\ud83d\\udc87');
       console.info(`${caseName} test end`);
@@ -624,7 +624,7 @@ export default function ReflectTest() {
     it('ReflectTest3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done:Function) => {
       const caseName = 'ReflectTest3000';
       console.info(`${caseName} test start`);
-      let a:string | undefined = main30(caseName);
+      let a:string | undefined = main30();
       console.log(a);
       expect(a).assertEqual('\\ud83e\\udd3c\\u200d\\u2642');
       console.info(`${caseName} test end`);
@@ -643,7 +643,7 @@ export default function ReflectTest() {
     it('ReflectTest3100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done:Function) => {
       const caseName = 'ReflectTest3100';
       console.info(`${caseName} test start`);
-      let a:string | undefined = main31(caseName);
+      let a:string | undefined = main31();
       console.log(a);
       expect(a).assertEqual('\\ud83d\\udee2');
       console.info(`${caseName} test end`);
@@ -661,7 +661,7 @@ export default function ReflectTest() {
     it('ReflectTest3200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done:Function) => {
       const caseName = 'ReflectTest3200';
       console.info(`${caseName} test start`);
-      let a:string | undefined = main32(caseName);
+      let a:string | undefined = main32();
       console.log(a);
       expect(a).assertEqual('\\ud83c\\udc04');
       console.info(`${caseName} test end`);
@@ -679,7 +679,7 @@ export default function ReflectTest() {
     it('ReflectTest3300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done:Function) => {
       const caseName = 'ReflectTest3300';
       console.info(`${caseName} test start`);
-      let a:string | undefined = main33(caseName);
+      let a:string | undefined = main33();
       console.log(a);
       expect(a).assertEqual('\\ud83c\\udff4');
       console.info(`${caseName} test end`);
@@ -699,7 +699,7 @@ export default function ReflectTest() {
     it('ReflectTest3400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done:Function) => {
       const caseName = 'ReflectTest3400';
       console.info(`${caseName} test start`);
-      let a:string | undefined = main34(caseName);
+      let a:string | undefined = main34();
       console.log(a);
       expect(a).assertEqual('0NaN');
       console.info(`${caseName} test end`);
@@ -718,7 +718,7 @@ export default function ReflectTest() {
     it('ReflectTest3500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done:Function) => {
       const caseName = 'ReflectTest3500';
       console.info(`${caseName} test start`);
-      let a:string | undefined = main35(caseName);
+      let a:string | undefined = main35();
       console.log(a);
       expect(a).assertEqual('ReferenceError');
       console.info(`${caseName} test end`);
@@ -737,7 +737,7 @@ export default function ReflectTest() {
     it('ReflectTest3600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done:Function) => {
       const caseName = 'ReflectTest3600';
       console.info(`${caseName} test start`);
-      let a:string | undefined = main36(caseName);
+      let a:string | undefined = main36();
       console.log(a);
       expect(a).assertEqual('循环次数: 11, 值是否稳定: true');
       console.info(`${caseName} test end`);

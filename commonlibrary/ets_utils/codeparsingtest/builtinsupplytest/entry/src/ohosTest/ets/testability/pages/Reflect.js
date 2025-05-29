@@ -22,7 +22,7 @@ export function main1() {
         flag = error.name;
         return flag;
     }
-
+    return flag;
 }
 
 export function main2() {
@@ -33,6 +33,7 @@ export function main2() {
         flag = error.name;
         return flag;
     }
+    return flag;
 }
 
 export function main3() {
@@ -43,6 +44,7 @@ export function main3() {
         flag = error.name;
         return flag;
     }
+    return flag;
 }
 
 export function main4() {
@@ -52,15 +54,18 @@ export function main4() {
         flag = error.name;
         return flag;
     }
+    return flag;
 }
 
 
 export function main5() {
     try {
         const specialChars = '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~';
+
         function echo(text) {
             return text;
         }
+
         const result = Reflect.apply(echo, null, [specialChars]);
         console.log(result);
         return result;
@@ -68,6 +73,7 @@ export function main5() {
         flag = error.name;
         return flag;
     }
+    return flag;
 }
 
 
@@ -87,8 +93,8 @@ export function main6() {
         flag = error.name;
         return flag;
     }
+    return flag;
 }
-
 
 
 export function main7() {
@@ -103,679 +109,649 @@ export function main7() {
         flag = error.name;
         return flag;
     }
+    return flag;
 }
 
-export function main9(caseName) {
-    if (caseName === 'ReflectTest0900') {
-        try {
-            const specialChars = '\\b';
-            return Reflect.apply(
-                String.prototype.concat,
-                '',
-                [...specialChars]
-            );
-        } catch (error) {
-            flag = error.name;
-            return flag;
-        }
+export function main9() {
+    try {
+        const specialChars = '\\b';
+        return Reflect.apply(
+            String.prototype.concat,
+            '',
+            [...specialChars]
+        );
+    } catch (error) {
+        flag = error.name;
+        return flag;
     }
+    return flag;
 }
 
 
+export function main8() {
 
-export function main8(caseName) {
-    if (caseName === 'ReflectTest0800') {
-        try {
-            const specialChars = '\\a';
-            return Reflect.apply(
-                String.prototype.concat,
-                '',
-                [...specialChars]
-            );
-        } catch (error) {
-            flag = error.name;
-            return flag;
-        }
+    try {
+        const specialChars = '\\a';
+        return Reflect.apply(
+            String.prototype.concat,
+            '',
+            [...specialChars]
+        );
+    } catch (error) {
+        flag = error.name;
+        return flag;
     }
+    return flag;
 }
 
 
-
-export function main10(caseName) {
-    if (caseName === 'ReflectTest1000') {
-        try {
-            const specialChars = '\\f';
-            return Reflect.apply(
-                String.prototype.concat,
-                '',
-                [...specialChars]
-            );
-        } catch (error) {
-            flag = error.name;
-            return flag;
-        }
+export function main10() {
+    try {
+        const specialChars = '\\f';
+        return Reflect.apply(
+            String.prototype.concat,
+            '',
+            [...specialChars]
+        );
+    } catch (error) {
+        flag = error.name;
+        return flag;
     }
+    return flag;
 }
 
-export function main11(caseName) {
-    if (caseName === 'ReflectTest1100') {
-        try {
-            const specialChars = '\\n';
-            return Reflect.apply(
-                String.prototype.concat,
-                '',
-                [...specialChars]
-            );
-        } catch (error) {
-            flag = error.name;
-            return flag;
-        }
+export function main11() {
+    try {
+        const specialChars = '\\n';
+        return Reflect.apply(
+            String.prototype.concat,
+            '',
+            [...specialChars]
+        );
+    } catch (error) {
+        flag = error.name;
+        return flag;
     }
+    return flag;
 }
 
-export function main12(caseName) {
-    if (caseName === 'ReflectTest1200') {
-        try {
-            const specialChars = '\\r';
-            return Reflect.apply(
-                String.prototype.concat,
-                '',
-                [...specialChars]
-            );
-        } catch (error) {
-            flag = error.name;
-            return flag;
-        }
+export function main12() {
+    try {
+        const specialChars = '\\r';
+        return Reflect.apply(
+            String.prototype.concat,
+            '',
+            [...specialChars]
+        );
+    } catch (error) {
+        flag = error.name;
+        return flag;
     }
+    return flag;
 }
 
 
-export function main13(caseName) {
-    if (caseName === 'ReflectTest1300') {
-        try {
-            const specialChars = '\\t';
-            return Reflect.apply(
-                String.prototype.concat,
-                '',
-                [...specialChars]
-            );
-        } catch (error) {
-            flag = error.name;
-            return flag;
-        }
+export function main13() {
+    try {
+        const specialChars = '\\t';
+        return Reflect.apply(
+            String.prototype.concat,
+            '',
+            [...specialChars]
+        );
+    } catch (error) {
+        flag = error.name;
+        return flag;
     }
+    return flag;
 }
 
-export function main14(caseName) {
-    if (caseName === 'ReflectTest1400') {
-        try {
-            const specialChars = '\\v';
-            return Reflect.apply(
-                String.prototype.concat,
-                '',
-                [...specialChars]
-            );
-        } catch (error) {
-            flag = error.name;
-            return flag;
-        }
+export function main14() {
+    try {
+        const specialChars = '\\v';
+        return Reflect.apply(
+            String.prototype.concat,
+            '',
+            [...specialChars]
+        );
+    } catch (error) {
+        flag = error.name;
+        return flag;
     }
+    return flag;
 }
 
-export function main15(caseName) {
-    if (caseName === 'ReflectTest1500') {
-        try {
-            const specialChars = '\\';
-            return Reflect.apply(
-                String.prototype.concat,
-                '',
-                [...specialChars]
-            );
-        } catch (error) {
-            flag = error.name;
-            return flag;
-        }
+export function main15() {
+    try {
+        const specialChars = '\\';
+        return Reflect.apply(
+            String.prototype.concat,
+            '',
+            [...specialChars]
+        );
+    } catch (error) {
+        flag = error.name;
+        return flag;
     }
+    return flag;
 }
 
 
-export function main16(caseName) {
-    if (caseName === 'ReflectTest1600') {
-        try {
-            const specialChars = '\'';
-            return Reflect.apply(
-                String.prototype.concat,
-                '',
-                [...specialChars]
-            );
-        } catch (error) {
-            flag = error.name;
-            return flag;
-        }
+export function main16() {
+    try {
+        const specialChars = '\'';
+        return Reflect.apply(
+            String.prototype.concat,
+            '',
+            [...specialChars]
+        );
+    } catch (error) {
+        flag = error.name;
+        return flag;
     }
+    return flag;
 }
 
-export function main17(caseName) {
-    if (caseName === 'ReflectTest1700') {
-        try {
-            const specialChars = '\"';
-            return Reflect.apply(
-                String.prototype.concat,
-                '',
-                [...specialChars]
-            );
-        } catch (error) {
-            flag = error.name;
-            return flag;
-        }
+export function main17() {
+    try {
+        const specialChars = '\"';
+        return Reflect.apply(
+            String.prototype.concat,
+            '',
+            [...specialChars]
+        );
+    } catch (error) {
+        flag = error.name;
+        return flag;
     }
+    return flag;
 }
 
-export function main18(caseName) {
-    if (caseName === 'ReflectTest1800') {
-        try {
-            const specialChars = '\?';
-            return Reflect.apply(
-                String.prototype.concat,
-                '',
-                [...specialChars]
-            );
-        } catch (error) {
-            flag = error.name;
-            return flag;
-        }
+export function main18() {
+    try {
+        const specialChars = '\?';
+        return Reflect.apply(
+            String.prototype.concat,
+            '',
+            [...specialChars]
+        );
+    } catch (error) {
+        flag = error.name;
+        return flag;
     }
+    return flag;
 }
 
-export function main19(caseName) {
-    if (caseName === 'ReflectTest1900') {
-        try {
-            const specialChars = '\0';
-            return Reflect.apply(
-                String.prototype.concat,
-                '',
-                [...specialChars]
-            );
-        } catch (error) {
-            flag = error.name;
-            return flag;
-        }
+export function main19() {
+    try {
+        const specialChars = '\0';
+        return Reflect.apply(
+            String.prototype.concat,
+            '',
+            [...specialChars]
+        );
+    } catch (error) {
+        flag = error.name;
+        return flag;
     }
+    return flag;
 }
 
-export function main20(caseName) {
-    if (caseName === 'ReflectTest2000') {
-        try {
-            const octalChars = '\\141\\142\\143';
-            return Reflect.apply(
-                String.prototype.concat,
-                '',
-                [octalChars]
-            );
-        } catch (error) {
-            flag = error.name;
-            return flag;
-        }
+export function main20() {
+    try {
+        const octalChars = '\\141\\142\\143';
+        return Reflect.apply(
+            String.prototype.concat,
+            '',
+            [octalChars]
+        );
+    } catch (error) {
+        flag = error.name;
+        return flag;
     }
+    return flag;
 }
 
-export function main21(caseName) {
-    if (caseName === 'ReflectTest2100') {
-        try {
-            const hexChars = '\\x61\\x62\\x63';
-            return Reflect.apply(
-                String.prototype.concat,
-                '',
-                [hexChars]
-            );
-        } catch (error) {
-            flag = error.name;
-            return flag;
-        }
+export function main21() {
+    try {
+        const hexChars = '\\x61\\x62\\x63';
+        return Reflect.apply(
+            String.prototype.concat,
+            '',
+            [hexChars]
+        );
+    } catch (error) {
+        flag = error.name;
+        return flag;
     }
+    return flag;
 }
 
-export function main22(caseName) {
-    if (caseName === 'ReflectTest2200') {
-        try {
-            const emoji = '👆';
-            const unicode = [...emoji].map(char => {
-                const codePoint = char.codePointAt(0);
-                if (codePoint === undefined) {
-                    throw new Error('Invalid character');
-                }
-                if (codePoint > 0xFFFF) {
-
-                    const high = Math.floor((codePoint - 0x10000) / 0x400) + 0xD800;
-                    const low = ((codePoint - 0x10000) % 0x400) + 0xDC00;
-                    return `\\u${high.toString(16).padStart(4, '0')}\\u${low.toString(16).padStart(4, '0')}`;
-                } else {
-                    return `\\u${codePoint.toString(16).padStart(4, '0')}`;
-                }
-            }).join('');
-            return Reflect.apply(
-                String.prototype.concat,
-                '',
-                [unicode]
-            );
-        } catch (error) {
-            flag = error.name;
-            return flag;
-        }
-    }
-
-}
-
-export function main23(caseName) {
-    if (caseName === 'ReflectTest2300') {
-        try {
-            const emoji = '👿';
-            const unicode = [...emoji].map(char => {
-                const codePoint = char.codePointAt(0);
-                if (codePoint === undefined) {
-                    throw new Error('Invalid character');
-                }
-                if (codePoint > 0xFFFF) {
-                    const high = Math.floor((codePoint - 0x10000) / 0x400) + 0xD800;
-                    const low = ((codePoint - 0x10000) % 0x400) + 0xDC00;
-                    return `\\u${high.toString(16).padStart(4, '0')}\\u${low.toString(16).padStart(4, '0')}`;
-                } else {
-                    return `\\u${codePoint.toString(16).padStart(4, '0')}`;
-                }
-            }).join('');
-            return Reflect.apply(
-                String.prototype.concat,
-                '',
-                [unicode]
-            );
-        } catch (error) {
-            flag = error.name;
-            return flag;
-        }
-    }
-}
-
-export function main24(caseName) {
-    if (caseName === 'ReflectTest2400') {
-        try {
-            const emoji = '👀';
-            const unicode = [...emoji].map(char => {
-                const codePoint = char.codePointAt(0);
-                if (codePoint === undefined) {
-                    throw new Error('Invalid character');
-                }
-                if (codePoint > 0xFFFF) {
-                    const high = Math.floor((codePoint - 0x10000) / 0x400) + 0xD800;
-                    const low = ((codePoint - 0x10000) % 0x400) + 0xDC00;
-                    return `\\u${high.toString(16).padStart(4, '0')}\\u${low.toString(16).padStart(4, '0')}`;
-                } else {
-                    return `\\u${codePoint.toString(16).padStart(4, '0')}`;
-                }
-            }).join('');
-            return Reflect.apply(
-                String.prototype.concat,
-                '',
-                [unicode]
-            );
-        } catch (error) {
-            flag = error.name;
-            return flag;
-        }
-    }
-}
-
-export function main25(caseName) {
-    if (caseName === 'ReflectTest2500') {
-        try {
-            const emoji = '💯';
-            const unicode = [...emoji].map(char => {
-                const codePoint = char.codePointAt(0);
-                if (codePoint === undefined) {
-                    throw new Error('Invalid character');
-                }
-                if (codePoint > 0xFFFF) {
-                    const high = Math.floor((codePoint - 0x10000) / 0x400) + 0xD800;
-                    const low = ((codePoint - 0x10000) % 0x400) + 0xDC00;
-                    return `\\u${high.toString(16).padStart(4, '0')}\\u${low.toString(16).padStart(4, '0')}`;
-                } else {
-                    return `\\u${codePoint.toString(16).padStart(4, '0')}`;
-                }
-            }).join('');
-            return Reflect.apply(
-                String.prototype.concat,
-                '',
-                [unicode]
-            );
-        } catch (error) {
-            flag = error.name;
-            return flag;
-        }
-    }
-}
-
-export function main26(caseName) {
-    if (caseName === 'ReflectTest2600') {
-        try {
-            const emoji = '🎅';
-            const unicode = [...emoji].map(char => {
-                const codePoint = char.codePointAt(0);
-                if (codePoint === undefined) {
-                    throw new Error('Invalid character');
-                }
-                if (codePoint > 0xFFFF) {
-                    const high = Math.floor((codePoint - 0x10000) / 0x400) + 0xD800;
-                    const low = ((codePoint - 0x10000) % 0x400) + 0xDC00;
-                    return `\\u${high.toString(16).padStart(4, '0')}\\u${low.toString(16).padStart(4, '0')}`;
-                } else {
-                    return `\\u${codePoint.toString(16).padStart(4, '0')}`;
-                }
-            }).join('');
-            return Reflect.apply(
-                String.prototype.concat,
-                '',
-                [unicode]
-            );
-        } catch (error) {
-            flag = error.name;
-            return flag;
-        }
-    }
-}
-
-
-export function main27(caseName) {
-    if (caseName === 'ReflectTest2700') {
-        try {
-            const emoji = '😼';
-            const unicode = [...emoji].map(char => {
-                const codePoint = char.codePointAt(0);
-                if (codePoint === undefined) {
-                    throw new Error('Invalid character');
-                }
-                if (codePoint > 0xFFFF) {
-                    const high = Math.floor((codePoint - 0x10000) / 0x400) + 0xD800;
-                    const low = ((codePoint - 0x10000) % 0x400) + 0xDC00;
-                    return `\\u${high.toString(16).padStart(4, '0')}\\u${low.toString(16).padStart(4, '0')}`;
-                } else {
-                    return `\\u${codePoint.toString(16).padStart(4, '0')}`;
-                }
-            }).join('');
-            return Reflect.apply(
-                String.prototype.concat,
-                '',
-                [unicode]
-            );
-        } catch (error) {
-            flag = error.name;
-            return flag;
-        }
-    }
-}
-
-export function main28(caseName) {
-    if (caseName === 'ReflectTest2800') {
-        try {
-            const emoji = '🔧';
-            const unicode = [...emoji].map(char => {
-                const codePoint = char.codePointAt(0);
-                if (codePoint === undefined) {
-                    throw new Error('Invalid character');
-                }
-                if (codePoint > 0xFFFF) {
-                    const high = Math.floor((codePoint - 0x10000) / 0x400) + 0xD800;
-                    const low = ((codePoint - 0x10000) % 0x400) + 0xDC00;
-                    return `\\u${high.toString(16).padStart(4, '0')}\\u${low.toString(16).padStart(4, '0')}`;
-                } else {
-                    return `\\u${codePoint.toString(16).padStart(4, '0')}`;
-                }
-            }).join('');
-            return Reflect.apply(
-                String.prototype.concat,
-                '',
-                [unicode]
-            );
-        } catch (error) {
-            flag = error.name;
-            return flag;
-        }
-    }
-}
-
-export function main29(caseName) {
-    if (caseName === 'ReflectTest2900') {
-        try {
-            const emoji = '💇';
-            const unicode = [...emoji].map(char => {
-                const codePoint = char.codePointAt(0);
-                if (codePoint === undefined) {
-                    throw new Error('Invalid character');
-                }
-                if (codePoint > 0xFFFF) {
-                    const high = Math.floor((codePoint - 0x10000) / 0x400) + 0xD800;
-                    const low = ((codePoint - 0x10000) % 0x400) + 0xDC00;
-                    return `\\u${high.toString(16).padStart(4, '0')}\\u${low.toString(16).padStart(4, '0')}`;
-                } else {
-                    return `\\u${codePoint.toString(16).padStart(4, '0')}`;
-                }
-            }).join('');
-            return Reflect.apply(
-                String.prototype.concat,
-                '',
-                [unicode]
-            );
-        }catch (error) {
-            flag = error.name;
-            return flag;
-        }
-    }
-}
-
-export function main30(caseName) {
-    if (caseName === 'ReflectTest3000') {
-        try {
-            const emoji = '🤼‍♂';
-            const unicode = [...emoji].map(char => {
-                const codePoint = char.codePointAt(0);
-                if (codePoint === undefined) {
-                    throw new Error('Invalid character');
-                }
-                if (codePoint > 0xFFFF) {
-                    const high = Math.floor((codePoint - 0x10000) / 0x400) + 0xD800;
-                    const low = ((codePoint - 0x10000) % 0x400) + 0xDC00;
-                    return `\\u${high.toString(16).padStart(4, '0')}\\u${low.toString(16).padStart(4, '0')}`;
-                } else {
-                    return `\\u${codePoint.toString(16).padStart(4, '0')}`;
-                }
-            }).join('');
-            return Reflect.apply(
-                String.prototype.concat,
-                '',
-                [unicode]
-            );
-        } catch (error) {
-            flag = error.name;
-            return flag;
-        }
-    }
-}
-
-export function main31(caseName) {
-    if (caseName === 'ReflectTest3100') {
-        try {
-            const emoji = '🛢';
-            const unicode = [...emoji].map(char => {
-                const codePoint = char.codePointAt(0);
-                if (codePoint === undefined) {
-                    throw new Error('Invalid character');
-                }
-                if (codePoint > 0xFFFF) {
-                    const high = Math.floor((codePoint - 0x10000) / 0x400) + 0xD800;
-                    const low = ((codePoint - 0x10000) % 0x400) + 0xDC00;
-                    return `\\u${high.toString(16).padStart(4, '0')}\\u${low.toString(16).padStart(4, '0')}`;
-                } else {
-                    return `\\u${codePoint.toString(16).padStart(4, '0')}`;
-                }
-            }).join('');
-            return Reflect.apply(
-                String.prototype.concat,
-                '',
-                [unicode]
-            );
-        } catch (error) {
-            flag = error.name;
-            return flag;
-        }
-    }
-}
-
-export function main32(caseName) {
-    if (caseName === 'ReflectTest3200') {
-        try {
-            const emoji = '🀄';
-            const unicode = [...emoji].map(char => {
-                const codePoint = char.codePointAt(0);
-                if (codePoint === undefined) {
-                    throw new Error('Invalid character');
-                }
-                if (codePoint > 0xFFFF) {
-                    const high = Math.floor((codePoint - 0x10000) / 0x400) + 0xD800;
-                    const low = ((codePoint - 0x10000) % 0x400) + 0xDC00;
-                    return `\\u${high.toString(16).padStart(4, '0')}\\u${low.toString(16).padStart(4, '0')}`;
-                } else {
-                    return `\\u${codePoint.toString(16).padStart(4, '0')}`;
-                }
-            }).join('');
-            return Reflect.apply(
-                String.prototype.concat,
-                '',
-                [unicode]
-            );
-        } catch (error) {
-            flag = error.name;
-            return flag;
-        }
-    }
-}
-
-export function main33(caseName) {
-    if (caseName === 'ReflectTest3300') {
-        try {
-            const emoji = '🏴';
-            const unicode = [...emoji].map(char => {
-                const codePoint = char.codePointAt(0);
-                if (codePoint === undefined) {
-                    throw new Error('Invalid character');
-                }
-                if (codePoint > 0xFFFF) {
-                    const high = Math.floor((codePoint - 0x10000) / 0x400) + 0xD800;
-                    const low = ((codePoint - 0x10000) % 0x400) + 0xDC00;
-                    return `\\u${high.toString(16).padStart(4, '0')}\\u${low.toString(16).padStart(4, '0')}`;
-                } else {
-                    return `\\u${codePoint.toString(16).padStart(4, '0')}`;
-                }
-            }).join('');
-            return Reflect.apply(
-                String.prototype.concat,
-                '',
-                [unicode]
-            );
-        } catch (error) {
-            flag = error.name;
-            return flag;
-        }
-    }
-}
-
-export function main34(caseName) {
-    if (caseName === 'ReflectTest3400') {
-        try {
-            const keywords = ["0", "NaN", ""];
-            const processed = keywords.map(keyword => {
-                return keyword;
-            });
-            return Reflect.apply(
-                String.prototype.concat,
-                '',
-                processed
-            );
-        } catch (error) {
-            flag = error.name;
-            return flag;
-        }
-    }
-}
-
-export function main35(caseName) {
-    if (caseName === 'ReflectTest3500') {
-        try {
-            const size = 10000;
-            const treeStart = performance.now();
-            Reflect.apply(init, null, [size]);
-            const treeTime = performance.now() - treeStart;
-
-            const normalStart = performance.now();
-            Reflect.apply(createNormalString, null, [size]);
-            const normalTime = performance.now() - normalStart;
-
-            return `treeString时间: Xms, 普通字符串时间: Yms`;
-
-            function init(size) {
-                let ans = '[';
-                while (ans.length < size) {
-                    ans += '{"a":1},';
-                }
-                ans += '{"a":1}]';
-                return ans;
+export function main22() {
+    try {
+        const emoji = '👆';
+        const unicode = [...emoji].map(char => {
+            const codePoint = char.codePointAt(0);
+            if (codePoint === undefined) {
+                throw new Error('Invalid character');
             }
+            if (codePoint > 0xFFFF) {
 
-            function createNormalString(size) {
-                let ans = '';
-                while (ans.length < size) {
-                    ans += 'a'.repeat(9);
-                }
-                return ans.substring(0, size);
+                const high = Math.floor((codePoint - 0x10000) / 0x400) + 0xD800;
+                const low = ((codePoint - 0x10000) % 0x400) + 0xDC00;
+                return `\\u${high.toString(16).padStart(4, '0')}\\u${low.toString(16).padStart(4, '0')}`;
+            } else {
+                return `\\u${codePoint.toString(16).padStart(4, '0')}`;
             }
-
-        } catch (error) {
-            flag = error.name;
-            return flag;
-        }
+        }).join('');
+        return Reflect.apply(
+            String.prototype.concat,
+            '',
+            [unicode]
+        );
+    } catch (error) {
+        flag = error.name;
+        return flag;
     }
+
 }
 
-export function main36(caseName) {
-    if (caseName === 'ReflectTest3600') {
-        try {
-            const originalStr = '{k1:value1,k2:value2}';
-            const iterations = 1000;
-            const results = [];
-            let currentStr = originalStr;
-            for (let i = 0; i < iterations; i++) {
-                currentStr = currentStr.substring(0, currentStr.length - 2);
-                results.push(currentStr);
-                if (currentStr.length === 0) {
-                    break;
-                }
+export function main23() {
+    try {
+        const emoji = '👿';
+        const unicode = [...emoji].map(char => {
+            const codePoint = char.codePointAt(0);
+            if (codePoint === undefined) {
+                throw new Error('Invalid character');
             }
-
-            const isValid = results.every((result, index) => {
-                const expectedLength = Math.max(0, originalStr.length - 2 * (index + 1));
-                const expected = originalStr.substring(0, expectedLength);
-                return result === expected;
-            });
-
-            return Reflect.apply(
-                String.prototype.concat,
-                '',
-                [
-                    `循环次数: ${results.length}, `,
-                    `值是否稳定: ${isValid}`
-                ]
-            );
-        } catch (error) {
-            flag = error.name;
-            return flag;
-        }
+            if (codePoint > 0xFFFF) {
+                const high = Math.floor((codePoint - 0x10000) / 0x400) + 0xD800;
+                const low = ((codePoint - 0x10000) % 0x400) + 0xDC00;
+                return `\\u${high.toString(16).padStart(4, '0')}\\u${low.toString(16).padStart(4, '0')}`;
+            } else {
+                return `\\u${codePoint.toString(16).padStart(4, '0')}`;
+            }
+        }).join('');
+        return Reflect.apply(
+            String.prototype.concat,
+            '',
+            [unicode]
+        );
+    } catch (error) {
+        flag = error.name;
+        return flag;
     }
+    return flag;
+}
+
+export function main24() {
+    try {
+        const emoji = '👀';
+        const unicode = [...emoji].map(char => {
+            const codePoint = char.codePointAt(0);
+            if (codePoint === undefined) {
+                throw new Error('Invalid character');
+            }
+            if (codePoint > 0xFFFF) {
+                const high = Math.floor((codePoint - 0x10000) / 0x400) + 0xD800;
+                const low = ((codePoint - 0x10000) % 0x400) + 0xDC00;
+                return `\\u${high.toString(16).padStart(4, '0')}\\u${low.toString(16).padStart(4, '0')}`;
+            } else {
+                return `\\u${codePoint.toString(16).padStart(4, '0')}`;
+            }
+        }).join('');
+        return Reflect.apply(
+            String.prototype.concat,
+            '',
+            [unicode]
+        );
+    } catch (error) {
+        flag = error.name;
+        return flag;
+    }
+    return flag;
+}
+
+export function main25() {
+    try {
+        const emoji = '💯';
+        const unicode = [...emoji].map(char => {
+            const codePoint = char.codePointAt(0);
+            if (codePoint === undefined) {
+                throw new Error('Invalid character');
+            }
+            if (codePoint > 0xFFFF) {
+                const high = Math.floor((codePoint - 0x10000) / 0x400) + 0xD800;
+                const low = ((codePoint - 0x10000) % 0x400) + 0xDC00;
+                return `\\u${high.toString(16).padStart(4, '0')}\\u${low.toString(16).padStart(4, '0')}`;
+            } else {
+                return `\\u${codePoint.toString(16).padStart(4, '0')}`;
+            }
+        }).join('');
+        return Reflect.apply(
+            String.prototype.concat,
+            '',
+            [unicode]
+        );
+    } catch (error) {
+        flag = error.name;
+        return flag;
+    }
+    return flag;
+}
+
+export function main26() {
+    try {
+        const emoji = '🎅';
+        const unicode = [...emoji].map(char => {
+            const codePoint = char.codePointAt(0);
+            if (codePoint === undefined) {
+                throw new Error('Invalid character');
+            }
+            if (codePoint > 0xFFFF) {
+                const high = Math.floor((codePoint - 0x10000) / 0x400) + 0xD800;
+                const low = ((codePoint - 0x10000) % 0x400) + 0xDC00;
+                return `\\u${high.toString(16).padStart(4, '0')}\\u${low.toString(16).padStart(4, '0')}`;
+            } else {
+                return `\\u${codePoint.toString(16).padStart(4, '0')}`;
+            }
+        }).join('');
+        return Reflect.apply(
+            String.prototype.concat,
+            '',
+            [unicode]
+        );
+    } catch (error) {
+        flag = error.name;
+        return flag;
+    }
+    return flag;
+}
+
+
+export function main27() {
+    try {
+        const emoji = '😼';
+        const unicode = [...emoji].map(char => {
+            const codePoint = char.codePointAt(0);
+            if (codePoint === undefined) {
+                throw new Error('Invalid character');
+            }
+            if (codePoint > 0xFFFF) {
+                const high = Math.floor((codePoint - 0x10000) / 0x400) + 0xD800;
+                const low = ((codePoint - 0x10000) % 0x400) + 0xDC00;
+                return `\\u${high.toString(16).padStart(4, '0')}\\u${low.toString(16).padStart(4, '0')}`;
+            } else {
+                return `\\u${codePoint.toString(16).padStart(4, '0')}`;
+            }
+        }).join('');
+        return Reflect.apply(
+            String.prototype.concat,
+            '',
+            [unicode]
+        );
+    } catch (error) {
+        flag = error.name;
+        return flag;
+    }
+    return flag;
+}
+
+export function main28() {
+    try {
+        const emoji = '🔧';
+        const unicode = [...emoji].map(char => {
+            const codePoint = char.codePointAt(0);
+            if (codePoint === undefined) {
+                throw new Error('Invalid character');
+            }
+            if (codePoint > 0xFFFF) {
+                const high = Math.floor((codePoint - 0x10000) / 0x400) + 0xD800;
+                const low = ((codePoint - 0x10000) % 0x400) + 0xDC00;
+                return `\\u${high.toString(16).padStart(4, '0')}\\u${low.toString(16).padStart(4, '0')}`;
+            } else {
+                return `\\u${codePoint.toString(16).padStart(4, '0')}`;
+            }
+        }).join('');
+        return Reflect.apply(
+            String.prototype.concat,
+            '',
+            [unicode]
+        );
+    } catch (error) {
+        flag = error.name;
+        return flag;
+    }
+    return flag;
+}
+
+export function main29() {
+    try {
+        const emoji = '💇';
+        const unicode = [...emoji].map(char => {
+            const codePoint = char.codePointAt(0);
+            if (codePoint === undefined) {
+                throw new Error('Invalid character');
+            }
+            if (codePoint > 0xFFFF) {
+                const high = Math.floor((codePoint - 0x10000) / 0x400) + 0xD800;
+                const low = ((codePoint - 0x10000) % 0x400) + 0xDC00;
+                return `\\u${high.toString(16).padStart(4, '0')}\\u${low.toString(16).padStart(4, '0')}`;
+            } else {
+                return `\\u${codePoint.toString(16).padStart(4, '0')}`;
+            }
+        }).join('');
+        return Reflect.apply(
+            String.prototype.concat,
+            '',
+            [unicode]
+        );
+    } catch (error) {
+        flag = error.name;
+        return flag;
+    }
+    return flag;
+}
+
+export function main30() {
+    try {
+        const emoji = '🤼‍♂';
+        const unicode = [...emoji].map(char => {
+            const codePoint = char.codePointAt(0);
+            if (codePoint === undefined) {
+                throw new Error('Invalid character');
+            }
+            if (codePoint > 0xFFFF) {
+                const high = Math.floor((codePoint - 0x10000) / 0x400) + 0xD800;
+                const low = ((codePoint - 0x10000) % 0x400) + 0xDC00;
+                return `\\u${high.toString(16).padStart(4, '0')}\\u${low.toString(16).padStart(4, '0')}`;
+            } else {
+                return `\\u${codePoint.toString(16).padStart(4, '0')}`;
+            }
+        }).join('');
+        return Reflect.apply(
+            String.prototype.concat,
+            '',
+            [unicode]
+        );
+    } catch (error) {
+        flag = error.name;
+        return flag;
+    }
+    return flag;
+}
+
+export function main31() {
+    try {
+        const emoji = '🛢';
+        const unicode = [...emoji].map(char => {
+            const codePoint = char.codePointAt(0);
+            if (codePoint === undefined) {
+                throw new Error('Invalid character');
+            }
+            if (codePoint > 0xFFFF) {
+                const high = Math.floor((codePoint - 0x10000) / 0x400) + 0xD800;
+                const low = ((codePoint - 0x10000) % 0x400) + 0xDC00;
+                return `\\u${high.toString(16).padStart(4, '0')}\\u${low.toString(16).padStart(4, '0')}`;
+            } else {
+                return `\\u${codePoint.toString(16).padStart(4, '0')}`;
+            }
+        }).join('');
+        return Reflect.apply(
+            String.prototype.concat,
+            '',
+            [unicode]
+        );
+    } catch (error) {
+        flag = error.name;
+        return flag;
+    }
+    return flag;
+}
+
+export function main32() {
+    try {
+        const emoji = '🀄';
+        const unicode = [...emoji].map(char => {
+            const codePoint = char.codePointAt(0);
+            if (codePoint === undefined) {
+                throw new Error('Invalid character');
+            }
+            if (codePoint > 0xFFFF) {
+                const high = Math.floor((codePoint - 0x10000) / 0x400) + 0xD800;
+                const low = ((codePoint - 0x10000) % 0x400) + 0xDC00;
+                return `\\u${high.toString(16).padStart(4, '0')}\\u${low.toString(16).padStart(4, '0')}`;
+            } else {
+                return `\\u${codePoint.toString(16).padStart(4, '0')}`;
+            }
+        }).join('');
+        return Reflect.apply(
+            String.prototype.concat,
+            '',
+            [unicode]
+        );
+    } catch (error) {
+        flag = error.name;
+        return flag;
+    }
+    return flag;
+}
+
+export function main33() {
+    try {
+        const emoji = '🏴';
+        const unicode = [...emoji].map(char => {
+            const codePoint = char.codePointAt(0);
+            if (codePoint === undefined) {
+                throw new Error('Invalid character');
+            }
+            if (codePoint > 0xFFFF) {
+                const high = Math.floor((codePoint - 0x10000) / 0x400) + 0xD800;
+                const low = ((codePoint - 0x10000) % 0x400) + 0xDC00;
+                return `\\u${high.toString(16).padStart(4, '0')}\\u${low.toString(16).padStart(4, '0')}`;
+            } else {
+                return `\\u${codePoint.toString(16).padStart(4, '0')}`;
+            }
+        }).join('');
+        return Reflect.apply(
+            String.prototype.concat,
+            '',
+            [unicode]
+        );
+    } catch (error) {
+        flag = error.name;
+        return flag;
+    }
+    return flag;
+}
+
+export function main34() {
+    try {
+        const keywords = ["0", "NaN", ""];
+        const processed = keywords.map(keyword => {
+            return keyword;
+        });
+        return Reflect.apply(
+            String.prototype.concat,
+            '',
+            processed
+        );
+    } catch (error) {
+        flag = error.name;
+        return flag;
+    }
+    return flag;
+}
+
+export function main35() {
+    try {
+        const size = 10000;
+        const treeStart = performance.now();
+        Reflect.apply(init, null, [size]);
+        const treeTime = performance.now() - treeStart;
+
+        const normalStart = performance.now();
+        Reflect.apply(createNormalString, null, [size]);
+        const normalTime = performance.now() - normalStart;
+
+        return `treeString时间: Xms, 普通字符串时间: Yms`;
+
+        function init(size) {
+            let ans = '[';
+            while (ans.length < size) {
+                ans += '{"a":1},';
+            }
+            ans += '{"a":1}]';
+            return ans;
+        }
+
+        function createNormalString(size) {
+            let ans = '';
+            while (ans.length < size) {
+                ans += 'a'.repeat(9);
+            }
+            return ans.substring(0, size);
+        }
+
+    } catch (error) {
+        flag = error.name;
+        return flag;
+    }
+    return flag;
+}
+
+export function main36() {
+    try {
+        const originalStr = '{k1:value1,k2:value2}';
+        const iterations = 1000;
+        const results = [];
+        let currentStr = originalStr;
+        for (let i = 0; i < iterations; i++) {
+            currentStr = currentStr.substring(0, currentStr.length - 2);
+            results.push(currentStr);
+            if (currentStr.length === 0) {
+                break;
+            }
+        }
+
+        const isValid = results.every((result, index) => {
+            const expectedLength = Math.max(0, originalStr.length - 2 * (index + 1));
+            const expected = originalStr.substring(0, expectedLength);
+            return result === expected;
+        });
+
+        return Reflect.apply(
+            String.prototype.concat,
+            '',
+            [
+                `循环次数: ${results.length}, `,
+                `值是否稳定: ${isValid}`
+            ]
+        );
+    } catch (error) {
+        flag = error.name;
+        return flag;
+    }
+    return flag;
 }
 
