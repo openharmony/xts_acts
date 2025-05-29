@@ -40,6 +40,14 @@ namespace OHOS {
     {
     }
 
+    /*
+     * @tc.number: TestOpenGLegl323xTestCase01
+     * @tc.name: ActsOpenGlEgl323xTest
+     * @tc.desc: test for ActsOpenGlEgl323xTest.
+     * @tc.size  : SmallTest
+     * @tc.type  : Function
+     * @tc.level : Level 0
+     */
     HWTEST_F(ActsOpenGlEgl323xTest, TestOpenGLegl323xTestCase01, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGlEgl323xTest------\n");

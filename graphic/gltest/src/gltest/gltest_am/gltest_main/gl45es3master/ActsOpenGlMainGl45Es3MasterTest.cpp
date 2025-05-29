@@ -13,43 +13,51 @@
  * limitations under the License.
  */
 
- #include "ActsOpenGlMainGl45Es3MasterTest.h"
- #include <gtest/gtest.h>
- #include <cstdlib>
- #include "common.h"
- 
- 
- namespace OHOS {
-     using namespace std;
-     using namespace testing::ext;
- 
-     // Preset action of the test suite, which is executed before the first test case
-     void ActsOpenGlMainGl45Es3MasterTest::SetUpTestCase(void)
-     {
-     }
-     // Test suite cleanup action, which is executed after the last test case
-     void ActsOpenGlMainGl45Es3MasterTest::TearDownTestCase(void)
-     {
-     }
-     // Preset action of the test case
-     void ActsOpenGlMainGl45Es3MasterTest::SetUp()
-     {
-     }
-     // Cleanup action of the test case
-     void ActsOpenGlMainGl45Es3MasterTest::TearDown()
-     {
-     }
- 
-     HWTEST_F(ActsOpenGlMainGl45Es3MasterTest, TestOpenGLmaingl45es3TestCase01, Function | MediumTest | Level2)
-     {
-         printf("------start ActsOpenGlMainGl45Es3MasterTest------\n");
-         if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
-             system("/data/local/tmp/opengl/mustpass/glcts "
-                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/a_mustpass/main/"
-                 "gl45-es3-master.txt "
-                 "--deqp-log-filename=ActsOpenGlMainGl45Es3MasterTest.qpa");
-         }
-         EXPECT_TRUE(true);
-         printf("------end ActsOpenGlMainGl45Es3MasterTest------\n");
-     }
- }
+#include "ActsOpenGlMainGl45Es3MasterTest.h"
+#include <gtest/gtest.h>
+#include <cstdlib>
+#include "common.h"
+
+
+namespace OHOS {
+    using namespace std;
+    using namespace testing::ext;
+
+    // Preset action of the test suite, which is executed before the first test case
+    void ActsOpenGlMainGl45Es3MasterTest::SetUpTestCase(void)
+    {
+    }
+    // Test suite cleanup action, which is executed after the last test case
+    void ActsOpenGlMainGl45Es3MasterTest::TearDownTestCase(void)
+    {
+    }
+    // Preset action of the test case
+    void ActsOpenGlMainGl45Es3MasterTest::SetUp()
+    {
+    }
+    // Cleanup action of the test case
+    void ActsOpenGlMainGl45Es3MasterTest::TearDown()
+    {
+    }
+
+    /*
+     * @tc.number: TestOpenGLmaingl45es3TestCase01
+     * @tc.name: ActsOpenGlMainGl45Es3MasterTest
+     * @tc.desc: test for ActsOpenGlMainGl45Es3MasterTest.
+     * @tc.size  : SmallTest
+     * @tc.type  : Function
+     * @tc.level : Level 0
+     */
+    HWTEST_F(ActsOpenGlMainGl45Es3MasterTest, TestOpenGLmaingl45es3TestCase01, Function | MediumTest | Level2)
+    {
+        printf("------start ActsOpenGlMainGl45Es3MasterTest------\n");
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
+            system("/data/local/tmp/opengl/mustpass/glcts "
+                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/a_mustpass/main/"
+                "gl45-es3-master.txt "
+                "--deqp-log-filename=ActsOpenGlMainGl45Es3MasterTest.qpa");
+        }
+        EXPECT_TRUE(true);
+        printf("------end ActsOpenGlMainGl45Es3MasterTest------\n");
+    }
+}

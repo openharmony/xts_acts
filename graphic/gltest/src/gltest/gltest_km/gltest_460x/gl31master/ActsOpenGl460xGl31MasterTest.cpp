@@ -13,43 +13,51 @@
  * limitations under the License.
  */
 
- #include "ActsOpenGl460xGl31MasterTest.h"
- #include <gtest/gtest.h>
- #include <cstdlib>
- #include "common.h"
+#include "ActsOpenGl460xGl31MasterTest.h"
+#include <gtest/gtest.h>
+#include <cstdlib>
+#include "common.h"
  
  
- namespace OHOS {
-     using namespace std;
-     using namespace testing::ext;
- 
-     // Preset action of the test suite, which is executed before the first test case
-     void ActsOpenGl460xGl31MasterTest::SetUpTestCase(void)
-     {
-     }
-     // Test suite cleanup action, which is executed after the last test case
-     void ActsOpenGl460xGl31MasterTest::TearDownTestCase(void)
-     {
-     }
-     // Preset action of the test case
-     void ActsOpenGl460xGl31MasterTest::SetUp()
-     {
-     }
-     // Cleanup action of the test case
-     void ActsOpenGl460xGl31MasterTest::TearDown()
-     {
-     }
- 
-     HWTEST_F(ActsOpenGl460xGl31MasterTest, TestOpenGL460xglTestCase04, Function | MediumTest | Level2)
-     {
-         printf("------start ActsOpenGl460xGl31MasterTest------\n");
-         if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
-             system("/data/local/tmp/opengl/mustpass/glcts "
-                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/4.6.0.x/"
-                 "gl31-master.txt "
-                 "--deqp-log-filename=ActsOpenGl460xGl31MasterTest.qpa");
-         }
-         EXPECT_TRUE(true);
-         printf("------end ActsOpenGl460xGl31MasterTest------\n");
-     }
- }
+namespace OHOS {
+    using namespace std;
+    using namespace testing::ext;
+
+    // Preset action of the test suite, which is executed before the first test case
+    void ActsOpenGl460xGl31MasterTest::SetUpTestCase(void)
+    {
+    }
+    // Test suite cleanup action, which is executed after the last test case
+    void ActsOpenGl460xGl31MasterTest::TearDownTestCase(void)
+    {
+    }
+    // Preset action of the test case
+    void ActsOpenGl460xGl31MasterTest::SetUp()
+    {
+    }
+    // Cleanup action of the test case
+    void ActsOpenGl460xGl31MasterTest::TearDown()
+    {
+    }
+
+    /*
+     * @tc.number: TestOpenGL460xglTestCase04
+     * @tc.name: ActsOpenGl460xGl31MasterTest
+     * @tc.desc: test for ActsOpenGl460xGl31MasterTest.
+     * @tc.size  : SmallTest
+     * @tc.type  : Function
+     * @tc.level : Level 0
+     */
+    HWTEST_F(ActsOpenGl460xGl31MasterTest, TestOpenGL460xglTestCase04, Function | MediumTest | Level2)
+    {
+        printf("------start ActsOpenGl460xGl31MasterTest------\n");
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
+            system("/data/local/tmp/opengl/mustpass/glcts "
+                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/4.6.0.x/"
+                "gl31-master.txt "
+                "--deqp-log-filename=ActsOpenGl460xGl31MasterTest.qpa");
+        }
+        EXPECT_TRUE(true);
+        printf("------end ActsOpenGl460xGl31MasterTest------\n");
+    }
+}
