@@ -566,7 +566,7 @@ HWTEST_F(DrawingNativeFontPart2Test, testFontMeasureTextWithBrushOrPenNormal2, F
     float textWidth;
     OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
     OH_Drawing_Pen* pen = OH_Drawing_PenCreate();
-	OH_Drawing_Rect* bounds = OH_Drawing_RectCreate(0.0, 0.0, 200.0, 200.0);
+    OH_Drawing_Rect* bounds = OH_Drawing_RectCreate(0.0, 0.0, 200.0, 200.0);
 	// Both brush and pen pass to nullptr
     EXPECT_EQ(OH_Drawing_FontMeasureTextWithBrushOrPen(font, text, strlen(text),
         TEXT_ENCODING_UTF8, nullptr, nullptr, bounds, &textWidth), OH_DRAWING_SUCCESS);
@@ -591,7 +591,7 @@ HWTEST_F(DrawingNativeFontPart2Test, testFontMeasureTextWithBrushOrPenNormal2, F
     EXPECT_EQ(static_cast<int>(OH_Drawing_RectGetLeft(bounds)), 3); // left 3
     EXPECT_EQ(static_cast<int>(OH_Drawing_RectGetRight(bounds)), 251); // right 251
     EXPECT_EQ(static_cast<int>(OH_Drawing_RectGetBottom(bounds)), 1); // bottom 1
-	OH_Drawing_RectDestroy(bounds);
+    OH_Drawing_RectDestroy(bounds);
     OH_Drawing_BrushDestroy(brush);
     OH_Drawing_PenDestroy(pen);
     OH_Drawing_FontDestroy(font);
@@ -661,7 +661,7 @@ HWTEST_F(DrawingNativeFontPart2Test, testFontMeasureTextWithBrushOrPenAbnormal, 
     EXPECT_EQ(OH_Drawing_FontMeasureTextWithBrushOrPen(font, text, 0,
         TEXT_ENCODING_UTF8, brush, nullptr, bounds, &textWidth), OH_DRAWING_ERROR_INVALID_PARAMETER);
 	// brush and pen are not empty
-	EXPECT_EQ(OH_Drawing_FontMeasureTextWithBrushOrPen(font, text, strlen(text),
+    EXPECT_EQ(OH_Drawing_FontMeasureTextWithBrushOrPen(font, text, strlen(text),
         TEXT_ENCODING_UTF8, brush, pen, bounds, &textWidth), OH_DRAWING_ERROR_INVALID_PARAMETER);
 	OH_Drawing_RectDestroy(bounds);
     OH_Drawing_BrushDestroy(brush);
@@ -687,7 +687,7 @@ HWTEST_F(DrawingNativeFontPart2Test, testFontMeasureTextWithBrushOrPenMultiCalls
 	OH_Drawing_Rect* bounds = OH_Drawing_RectCreate(0.0, 0.0, 200.0, 200.0);
 	// OH_Drawing_FontMeasureTextWithBrushOrPen is called 20 times.
     for (int i = 0; i < 20; i++) { //Number of cycles: 20
-		OH_Drawing_ErrorCode errorCode = OH_Drawing_FontMeasureTextWithBrushOrPen(font, text, strlen(text),
+        OH_Drawing_ErrorCode errorCode = OH_Drawing_FontMeasureTextWithBrushOrPen(font, text, strlen(text),
 			TEXT_ENCODING_UTF8, nullptr, pen, bounds, &textWidth);
         EXPECT_EQ(errorCode, OH_DRAWING_SUCCESS);
     }
@@ -720,15 +720,15 @@ HWTEST_F(DrawingNativeFontPart2Test, testFontGetWidthsBoundsNormal1, Function | 
     float widths[50] = {0.f}; // 50 means widths array number
     OH_Drawing_Array *outRectarr = OH_Drawing_RectCreateArray(count);
 	// Font does not set any attributes
-	OH_Drawing_Font *font2 = OH_Drawing_FontCreate();
+    OH_Drawing_Font *font2 = OH_Drawing_FontCreate();
     EXPECT_EQ(OH_Drawing_FontGetWidthsBounds(font2, glyphs, glyphsCount, nullptr, pen, widths, outRectarr),
         OH_DRAWING_SUCCESS);
 	// Font set some attributes
-	OH_Drawing_FontArguments *arguments = OH_Drawing_FontArgumentsCreate();
-	OH_Drawing_FontArgumentsAddVariation(arguments, "wght", 0);
+    OH_Drawing_FontArguments *arguments = OH_Drawing_FontArgumentsCreate();
+    OH_Drawing_FontArgumentsAddVariation(arguments, "wght", 0);
     OH_Drawing_Typeface* typeface = OH_Drawing_TypefaceCreateDefault();
     OH_Drawing_FontSetTypeface(font, typeface);
-	OH_Drawing_FontSetFakeBoldText(font, true);
+    OH_Drawing_FontSetFakeBoldText(font, true);
     OH_Drawing_FontSetScaleX(font, 0.5f);
     OH_Drawing_FontSetHinting(font, FONT_HINTING_SLIGHT);
     count = OH_Drawing_FontCountText(font, text, strlen(text), TEXT_ENCODING_UTF8);
@@ -786,17 +786,17 @@ HWTEST_F(DrawingNativeFontPart2Test, testFontGetWidthsBoundsNormal2, Function | 
         EXPECT_EQ(OH_Drawing_RectGetRight(iter) - OH_Drawing_RectGetLeft(iter), OH_Drawing_RectGetWidth(iter));
     }
     OH_Drawing_BrushSetColor(brush, 0xFF00FFFF);
-	OH_Drawing_BrushSetAlpha(brush, 100); // Alpha 100
-	OH_Drawing_BrushSetAntiAlias(brush, true);
+    OH_Drawing_BrushSetAlpha(brush, 100); // Alpha 100
+    OH_Drawing_BrushSetAntiAlias(brush, true);
     EXPECT_EQ(OH_Drawing_FontGetWidthsBounds(font, glyphs, glyphsCount, brush, nullptr, widths, outRectarr),
         OH_DRAWING_SUCCESS);
     OH_Drawing_PenSetWidth(pen, 10.0f);
-	OH_Drawing_PenSetColor(pen, 0xFF00FFFF);
-	OH_Drawing_PenSetAlpha(pen, 100); // Alpha 100
-	OH_Drawing_PenSetAntiAlias(pen, true);
+    OH_Drawing_PenSetColor(pen, 0xFF00FFFF);
+    OH_Drawing_PenSetAlpha(pen, 100); // Alpha 100
+    OH_Drawing_PenSetAntiAlias(pen, true);
     EXPECT_EQ(OH_Drawing_FontGetWidthsBounds(font, glyphs, glyphsCount, nullptr, pen, widths, outRectarr),
         OH_DRAWING_SUCCESS);
-	OH_Drawing_RectDestroyArray(outRectarr);
+    OH_Drawing_RectDestroyArray(outRectarr);
     OH_Drawing_BrushDestroy(brush);
     OH_Drawing_PenDestroy(pen);
     OH_Drawing_FontDestroy(font);
