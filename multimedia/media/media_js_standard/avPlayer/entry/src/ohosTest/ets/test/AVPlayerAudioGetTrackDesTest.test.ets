@@ -100,26 +100,33 @@ export default function AVPlayerAudioGetTrackDesTest() {
         // #endregion
         it('SUB_MULTIMEDIA_MEDIA_GET_AUDIODEPTH_CALLBACK_0100', Level.LEVEL0,async (done: Function) => {
             if(!avPlayer){
-                console.info(`avPlayer is null`);
+                console.info(`avPlayer is null`)
                 expect().assertFail()
                 done();
-                return;
-            }
-            avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
-                if(!avPlayer) return
-                console.info('case current state is: ' + state)
-                switch (state) {
-                    case INITIALIZED:
-                        avPlayer.prepare();
-                        break;
-                    case PREPARED:
-                        avPlayerGetTrackDescriptionByCallback(done,true);
-                        break;
-                    default:
-                        break;
+            }else{
+                try {
+                    avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
+                        if(!avPlayer) return
+                        console.info('case current state is: ' + state)
+                        switch (state) {
+                            case INITIALIZED:
+                                avPlayer.prepare();
+                                break;
+                            case PREPARED:
+                                avPlayerGetTrackDescriptionByCallback(done,true);
+                                break;
+                            default:
+                                break;
+                        }
+                    });
+                    setSource(avPlayer, fileDescriptor);
+                } catch (error) {
+                    console.error(`Test exception: ${JSON.stringify(error)}`);
+                    expect().assertFail()
+                    done()
                 }
-            });
-            setSource(avPlayer, fileDescriptor);
+            }
+            
         })
 
         // #region
@@ -137,23 +144,29 @@ export default function AVPlayerAudioGetTrackDesTest() {
                 console.info(`avPlayer is null`);
                 expect().assertFail()
                 done();
-                return;
-            }
-            avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
-                if(!avPlayer) return
-                console.info('case current state is: ' + state)
-                switch (state) {
-                    case INITIALIZED:
-                        avPlayer.prepare();
-                        break;
-                    case PREPARED:
-                        avPlayerGetTrackDescriptionByPromise(done,true);
-                        break;
-                    default:
-                        break;
+            }else{
+                try {
+                    avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
+                        if(!avPlayer) return
+                        console.info('case current state is: ' + state)
+                        switch (state) {
+                            case INITIALIZED:
+                                avPlayer.prepare();
+                                break;
+                            case PREPARED:
+                                avPlayerGetTrackDescriptionByPromise(done,true);
+                                break;
+                            default:
+                                break;
+                        }
+                    });
+                    setSource(avPlayer, fileDescriptor);
+                } catch (error) {
+                    console.error(`Test exception: ${JSON.stringify(error)}`);
+                    expect().assertFail()
+                    done()
                 }
-            });
-            setSource(avPlayer, fileDescriptor);
+            }
         })
 
         // #region
@@ -171,26 +184,32 @@ export default function AVPlayerAudioGetTrackDesTest() {
                 console.info(`avPlayer is null`);
                 expect().assertFail()
                 done();
-                return;
-            }
-            avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
-                if(!avPlayer) return
-                console.info('case current state is: ' + state)
-                switch (state) {
-                    case INITIALIZED:
-                        avPlayer.prepare();
-                        break;
-                    case PREPARED:
-                        avPlayer.play();
-                        break;
-                    case PLAYING:
-                        avPlayerGetTrackDescriptionByCallback(done,true);
-                        break;
-                    default:
-                        break;
+            }else{
+                try {
+                    avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
+                        if(!avPlayer) return
+                        console.info('case current state is: ' + state)
+                        switch (state) {
+                            case INITIALIZED:
+                                avPlayer.prepare();
+                                break;
+                            case PREPARED:
+                                avPlayer.play();
+                                break;
+                            case PLAYING:
+                                avPlayerGetTrackDescriptionByCallback(done,true);
+                                break;
+                            default:
+                                break;
+                        }
+                    });
+                    setSource(avPlayer, fileDescriptor);
+                } catch (error) {
+                    console.error(`Test exception: ${JSON.stringify(error)}`);
+                    expect().assertFail()
+                    done()
                 }
-            });
-            setSource(avPlayer, fileDescriptor);
+            }
         })
 
         // #region
@@ -208,26 +227,32 @@ export default function AVPlayerAudioGetTrackDesTest() {
                 console.info(`avPlayer is null`);
                 expect().assertFail()
                 done();
-                return;
-            }
-            avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
-                if(!avPlayer) return
-                console.info('case current state is: ' + state)
-                switch (state) {
-                    case INITIALIZED:
-                        avPlayer.prepare();
-                        break;
-                    case PREPARED:
-                        avPlayer.play();
-                        break;
-                    case PLAYING:
-                        avPlayerGetTrackDescriptionByPromise(done,true);
-                        break;
-                    default:
-                        break;
+            }else{
+                try {
+                    avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
+                        if(!avPlayer) return
+                        console.info('case current state is: ' + state)
+                        switch (state) {
+                            case INITIALIZED:
+                                avPlayer.prepare();
+                                break;
+                            case PREPARED:
+                                avPlayer.play();
+                                break;
+                            case PLAYING:
+                                avPlayerGetTrackDescriptionByPromise(done,true);
+                                break;
+                            default:
+                                break;
+                        }
+                    });
+                    setSource(avPlayer, fileDescriptor);
+                } catch (error) {
+                    console.error(`Test exception: ${JSON.stringify(error)}`);
+                    expect().assertFail()
+                    done()
                 }
-            });
-            setSource(avPlayer, fileDescriptor);
+            }
         })
 
         // #region
@@ -245,29 +270,35 @@ export default function AVPlayerAudioGetTrackDesTest() {
                 console.info(`avPlayer is null`);
                 expect().assertFail()
                 done();
-                return;
-            }
-            avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
-                if(!avPlayer) return
-                console.info('case current state is: ' + state)
-                switch (state) {
-                    case INITIALIZED:
-                        avPlayer.prepare();
-                        break;
-                    case PREPARED:
-                        avPlayer.play();
-                        break;
-                    case PLAYING:
-                        avPlayer.pause()
-                        break;
-                    case PAUSED:
-                        avPlayerGetTrackDescriptionByCallback(done,true);
-                        break;
-                    default:
-                        break;
+            }else{
+                try {
+                    avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
+                        if(!avPlayer) return
+                        console.info('case current state is: ' + state)
+                        switch (state) {
+                            case INITIALIZED:
+                                avPlayer.prepare();
+                                break;
+                            case PREPARED:
+                                avPlayer.play();
+                                break;
+                            case PLAYING:
+                                avPlayer.pause()
+                                break;
+                            case PAUSED:
+                                avPlayerGetTrackDescriptionByCallback(done,true);
+                                break;
+                            default:
+                                break;
+                        }
+                    });
+                    setSource(avPlayer, fileDescriptor);
+                } catch (error) {
+                    console.error(`Test exception: ${JSON.stringify(error)}`);
+                    expect().assertFail()
+                    done()
                 }
-            });
-            setSource(avPlayer, fileDescriptor);
+            }
         })
 
         // #region
@@ -285,29 +316,35 @@ export default function AVPlayerAudioGetTrackDesTest() {
                 console.info(`avPlayer is null`);
                 expect().assertFail()
                 done();
-                return;
-            }
-            avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
-                if(!avPlayer) return
-                console.info('case current state is: ' + state)
-                switch (state) {
-                    case INITIALIZED:
-                        avPlayer.prepare();
-                        break;
-                    case PREPARED:
-                        avPlayer.play();
-                        break;
-                    case PLAYING:
-                        avPlayer.pause()
-                        break;
-                    case PAUSED:
-                        avPlayerGetTrackDescriptionByPromise(done,true);
-                        break;
-                    default:
-                        break;
+            }else{
+                try {
+                    avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
+                        if(!avPlayer) return
+                        console.info('case current state is: ' + state)
+                        switch (state) {
+                            case INITIALIZED:
+                                avPlayer.prepare();
+                                break;
+                            case PREPARED:
+                                avPlayer.play();
+                                break;
+                            case PLAYING:
+                                avPlayer.pause()
+                                break;
+                            case PAUSED:
+                                avPlayerGetTrackDescriptionByPromise(done,true);
+                                break;
+                            default:
+                                break;
+                        }
+                    });
+                    setSource(avPlayer, fileDescriptor);
+                } catch (error) {
+                    console.error(`Test exception: ${JSON.stringify(error)}`);
+                    expect().assertFail()
+                    done()
                 }
-            });
-            setSource(avPlayer, fileDescriptor);
+            }
         })
 
         // #region
@@ -325,17 +362,23 @@ export default function AVPlayerAudioGetTrackDesTest() {
                 console.info(`avPlayer is null`);
                 expect().assertFail()
                 done();
-                return;
-            }
-            avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
-                if(!avPlayer) return
-                console.info('case current state is: ' + state)
-                switch (state) {
-                    default:
-                        break;
+            }else{
+                try {
+                    avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
+                        if(!avPlayer) return
+                        console.info('case current state is: ' + state)
+                        switch (state) {
+                            default:
+                                break;
+                        }
+                    });
+                    avPlayerGetTrackDescriptionByCallback(done,false);
+                } catch (error) {
+                    console.error(`Test exception: ${JSON.stringify(error)}`);
+                    expect().assertFail()
+                    done()
                 }
-            });
-            avPlayerGetTrackDescriptionByCallback(done,false);
+            }
         })
 
         // #region
@@ -353,17 +396,23 @@ export default function AVPlayerAudioGetTrackDesTest() {
                 console.info(`avPlayer is null`);
                 expect().assertFail()
                 done();
-                return;
-            }
-            avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
-                if(!avPlayer) return
-                console.info('case current state is: ' + state)
-                switch (state) {
-                    default:
-                        break;
+            }else{
+                try {
+                    avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
+                        if(!avPlayer) return
+                        console.info('case current state is: ' + state)
+                        switch (state) {
+                            default:
+                                break;
+                        }
+                    });
+                    avPlayerGetTrackDescriptionByPromise(done,false);
+                } catch (error) {
+                    console.error(`Test exception: ${JSON.stringify(error)}`);
+                    expect().assertFail()
+                    done()
                 }
-            });
-            avPlayerGetTrackDescriptionByPromise(done,false);
+            }
         })
 
         // #region
@@ -381,29 +430,35 @@ export default function AVPlayerAudioGetTrackDesTest() {
                 console.info(`avPlayer is null`);
                 expect().assertFail()
                 done();
-                return;
-            }
-            avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
-                if(!avPlayer) return
-                console.info('case current state is: ' + state)
-                switch (state) {
-                    case INITIALIZED:
-                        avPlayer.prepare();
-                        break;
-                    case PREPARED:
-                        avPlayer.play();
-                        break;
-                    case PLAYING:
-                        avPlayer.stop();
-                        break;
-                    case STOPPED:
-                        avPlayerGetTrackDescriptionByCallback(done,false);
-                        break;
-                    default:
-                        break;
+            }else{
+                try {
+                    avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
+                        if(!avPlayer) return
+                        console.info('case current state is: ' + state)
+                        switch (state) {
+                            case INITIALIZED:
+                                avPlayer.prepare();
+                                break;
+                            case PREPARED:
+                                avPlayer.play();
+                                break;
+                            case PLAYING:
+                                avPlayer.stop();
+                                break;
+                            case STOPPED:
+                                avPlayerGetTrackDescriptionByCallback(done,false);
+                                break;
+                            default:
+                                break;
+                        }
+                    });
+                    setSource(avPlayer, fileDescriptor);
+                } catch (error) {
+                    console.error(`Test exception: ${JSON.stringify(error)}`);
+                    expect().assertFail()
+                    done()
                 }
-            });
-            setSource(avPlayer, fileDescriptor);
+            }
         })
 
         // #region
@@ -421,29 +476,35 @@ export default function AVPlayerAudioGetTrackDesTest() {
                 console.info(`avPlayer is null`);
                 expect().assertFail()
                 done();
-                return;
-            }
-            avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
-                if(!avPlayer) return
-                console.info('case current state is: ' + state)
-                switch (state) {
-                    case INITIALIZED:
-                        avPlayer.prepare();
-                        break;
-                    case PREPARED:
-                        avPlayer.play();
-                        break;
-                    case PLAYING:
-                        avPlayer.stop()
-                        break;
-                    case STOPPED:
-                        avPlayerGetTrackDescriptionByPromise(done,false);
-                        break;
-                    default:
-                        break;
+            }else{
+                try {
+                    avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
+                        if(!avPlayer) return
+                        console.info('case current state is: ' + state)
+                        switch (state) {
+                            case INITIALIZED:
+                                avPlayer.prepare();
+                                break;
+                            case PREPARED:
+                                avPlayer.play();
+                                break;
+                            case PLAYING:
+                                avPlayer.stop()
+                                break;
+                            case STOPPED:
+                                avPlayerGetTrackDescriptionByPromise(done,false);
+                                break;
+                            default:
+                                break;
+                        }
+                    });
+                    setSource(avPlayer, fileDescriptor);
+                } catch (error) {
+                    console.error(`Test exception: ${JSON.stringify(error)}`);
+                    expect().assertFail()
+                    done()
                 }
-            });
-            setSource(avPlayer, fileDescriptor);
+            }
         })
 
         // #region
@@ -461,34 +522,40 @@ export default function AVPlayerAudioGetTrackDesTest() {
                 console.info(`avPlayer is null`);
                 expect().assertFail()
                 done();
-                return;
-            }
-            avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
-                if(!avPlayer) return
-                console.info('case current state is: ' + state)
-                switch (state) {
-                    case INITIALIZED:
-                        avPlayer.prepare();
-                        break;
-                    case PREPARED:
-                        avPlayer.release();
-                        break;
-                    case RELEASED:
-                        const time = setTimeout(() => {
-                            done()
-                        },3000)
-                        avPlayerGetTrackDescriptionByCallback(done,false);
-                        avPlayer?.getTrackDescription((error: BusinessError, arrList: Array<media.MediaDescription>) => {
-                            clearTimeout(time)
-                            if ((arrList) != null) expect().assertFail()
-                            done()
-                        })
-                        break;
-                    default:
-                        break;
+            }else{
+                try {
+                    avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
+                        if(!avPlayer) return
+                        console.info('case current state is: ' + state)
+                        switch (state) {
+                            case INITIALIZED:
+                                avPlayer.prepare();
+                                break;
+                            case PREPARED:
+                                avPlayer.release();
+                                break;
+                            case RELEASED:
+                                const time = setTimeout(() => {
+                                    done()
+                                },3000)
+                                avPlayerGetTrackDescriptionByCallback(done,false);
+                                avPlayer?.getTrackDescription((error: BusinessError, arrList: Array<media.MediaDescription>) => {
+                                    clearTimeout(time)
+                                    if ((arrList) != null) expect().assertFail()
+                                    done()
+                                })
+                                break;
+                            default:
+                                break;
+                        }
+                    });
+                    setSource(avPlayer, fileDescriptor);
+                } catch (error) {
+                    console.error(`Test exception: ${JSON.stringify(error)}`);
+                    expect().assertFail()
+                    done()
                 }
-            });
-            setSource(avPlayer, fileDescriptor);
+            }
         })
 
         // #region
@@ -506,36 +573,42 @@ export default function AVPlayerAudioGetTrackDesTest() {
                 console.info(`avPlayer is null`);
                 expect().assertFail()
                 done();
-                return;
-            }
-            avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
-                if(!avPlayer) return
-                console.info('case current state is: ' + state)
-                switch (state) {
-                    case INITIALIZED:
-                        avPlayer.prepare();
-                        break;
-                    case PREPARED:
-                        avPlayer.release();
-                        break;
-                    case RELEASED:
-                        const time = setTimeout(() => {
-                            done()
-                        },3000)
-                        avPlayer?.getTrackDescription().then((arrList: Array<media.MediaDescription>) => {
-                            clearTimeout(time)
-                            expect().assertFail()
-                            done()
-                        }).catch((error: BusinessError) => {
-                            clearTimeout(time)
-                            done()
-                        });
-                        break;
-                    default:
-                        break;
+            }else{
+                try {
+                    avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
+                        if(!avPlayer) return
+                        console.info('case current state is: ' + state)
+                        switch (state) {
+                            case INITIALIZED:
+                                avPlayer.prepare();
+                                break;
+                            case PREPARED:
+                                avPlayer.release();
+                                break;
+                            case RELEASED:
+                                const time = setTimeout(() => {
+                                    done()
+                                },3000)
+                                avPlayer?.getTrackDescription().then((arrList: Array<media.MediaDescription>) => {
+                                    clearTimeout(time)
+                                    expect().assertFail()
+                                    done()
+                                }).catch((error: BusinessError) => {
+                                    clearTimeout(time)
+                                    done()
+                                });
+                                break;
+                            default:
+                                break;
+                        }
+                    });
+                    setSource(avPlayer, fileDescriptor);
+                } catch (error) {
+                    console.error(`Test exception: ${JSON.stringify(error)}`);
+                    expect().assertFail()
+                    done()
                 }
-            });
-            setSource(avPlayer, fileDescriptor);
+            }
         })
     })
 }
