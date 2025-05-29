@@ -39,8 +39,16 @@ namespace OHOS {
     void ActsOpenGlMainGl30MasterTest::TearDown()
     {
     }
-
-    HWTEST_F(ActsOpenGlMainGl30MasterTest, TestOpenGLglTestCase02, Function | MediumTest | Level2)
+    
+    /*
+     * @tc.number: TestOpenGLmainglTestCase02
+     * @tc.name: ActsOpenGlMainGl30MasterTest
+     * @tc.desc: test for ActsOpenGlMainGl30MasterTest.
+     * @tc.size  : SmallTest
+     * @tc.type  : Function
+     * @tc.level : Level 0
+     */
+    HWTEST_F(ActsOpenGlMainGl30MasterTest, TestOpenGLmainglTestCase02, Function | MediumTest | Level2)
     {
         printf("------start ActsOpenGlMainGl30MasterTest------\n");
         if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
