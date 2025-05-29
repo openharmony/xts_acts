@@ -16,6 +16,7 @@ import events_emitter from '@ohos.events.emitter';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import { Hypium } from '@ohos/hypium';
 import testsuite from '../../test/List.test';
+import { waitForExist } from '../../test/WaitTest.test';
 import Utils from '../../test/Utils';
 import business_error from '@ohos.base';
 
@@ -23,9 +24,10 @@ import business_error from '@ohos.base';
 @Component
 struct Index {
   controller: WebController = new WebController();
-  @State str: string = "emitJavaScriptProxy";
-  @State console: string = "";
+  @State str: string = 'emitJavaScriptProxy';
+  @State console: string = '';
   @State javaScriptAccess: boolean = true;
+  @State isComplete: number = -1;
 
   onPageShow() {
     let valueChangeEvent: events_emitter.InnerEvent = {
@@ -36,9 +38,9 @@ struct Index {
   }
 
   private valueChangeCallBack = (eventData: events_emitter.EventData) => {
-    console.info("web page valueChangeCallBack");
+    console.info('web page valueChangeCallBack');
     if (eventData != null) {
-      console.info("valueChangeCallBack:" + JSON.stringify(eventData));
+      console.info('valueChangeCallBack:' + JSON.stringify(eventData));
       if (eventData.data?.ACTION != null) {
         this.str = eventData.data.ACTION;
       }
@@ -49,11 +51,11 @@ struct Index {
       Utils.emitEvent(res, 102);
     },
     toString: (str: ESObject) => {
-      console.info("ets toString:" + String(str));
+      console.info('ets toString:' + String(str));
     },
     register: (res: ESObject) => {
       Utils.emitEvent(res, 86);
-      return "web222";
+      return 'web222';
     }
   }
 
@@ -67,37 +69,39 @@ struct Index {
   build() {
     Column() {
       Row() {
-        Button("web click").key('webcomponent').onClick(async () => {
-          console.info("key==>" + this.str);
+        Button('web click').key('webcomponent').onClick(async () => {
+          console.info('key==>' + this.str);
           switch (this.str) {
-            case "emitJavaScriptProxy": {
-              this.controller.runJavaScript({ script: "test()" });
+            case 'emitJavaScriptProxy': {
+              await waitForExist(()=>this.isComplete, 'emitJavaScriptProxy', 0, 1000)
+              this.isComplete = -1
+              this.controller.runJavaScript({ script: 'test()' });
               break;
             }
-            case "emitRunJavaScript": {
-              this.controller.loadUrl({ url: "resource://rawfile/index.html" });
+            case 'emitRunJavaScript': {
+              this.controller.loadUrl({ url: 'resource://rawfile/index.html' });
               setTimeout(() => {
                 this.controller.runJavaScript({
-                  script: "testRunJavaScript()", callback: (res) => {
+                  script: 'testRunJavaScript()', callback: (res) => {
                     Utils.emitEvent(res, 112);
                   }
                 })
               }, 3000)
               break;
             }
-            case "emitOnConsole": {
-              this.controller.runJavaScript({ script: "consoleTest()" });
+            case 'emitOnConsole': {
+              this.controller.runJavaScript({ script: 'consoleTest()' });
               setTimeout(() => {
                 Utils.emitEvent(this.console, 62);
               }, 3000);
               break;
             }
-            case "emitJavaScriptAccess": {
+            case 'emitJavaScriptAccess': {
               this.javaScriptAccess = false;
               setTimeout(() => {
-                this.controller.runJavaScript({ script: "jsAccess()" });
+                this.controller.runJavaScript({ script: 'jsAccess()' });
                 setTimeout(() => {
-                  if (this.console !== "web111") {
+                  if (this.console !== 'web111') {
                     let javaScriptAccessCalled = true;
                     Utils.emitEvent(javaScriptAccessCalled, 88);
                   }
@@ -105,13 +109,13 @@ struct Index {
               }, 3000);
               break;
             }
-            case "testRunJavaScript001": {
+            case 'testRunJavaScript001': {
               try {
                 this.javaScriptAccess = true;
                 await Utils.sleep(2000);
-                this.controller.loadUrl({ url: "resource://rawfile/webPart1index.html" });
+                this.controller.loadUrl({ url: 'resource://rawfile/webPart1index.html' });
                 await Utils.sleep(2000);
-                this.controller.runJavaScript({ script: "testRunJavaScript()", callback: (res) => {
+                this.controller.runJavaScript({ script: 'testRunJavaScript()', callback: (res) => {
                   Utils.emitEvent(String(res), 31004)
                 } })
               }
@@ -123,7 +127,7 @@ struct Index {
               break;
             }
             default:
-              console.info("can not match case");
+              console.info('can not match case');
           }
         })
       }
@@ -132,16 +136,23 @@ struct Index {
         .javaScriptAccess(this.javaScriptAccess)
         .javaScriptProxy({
           object: this.jsObj,
-          name: "backToEts",
-          methodList: ["test", "toString"],
+          name: 'backToEts',
+          methodList: ['test', 'toString'],
           controller: this.controller
         })
         .onConsole((event) => {
           this.console = event.message.getMessage();
           let level = event.message.getMessageLevel();
           let msg = event.message.getMessage();
-          console.log("html==>" + msg);
+          console.log('html==>' + msg);
           return false;
+        })
+        .onPageBegin((event) => {
+          console.log('onPageBegin ==>' + event.url);
+        })
+        .onPageEnd((event) => {
+          console.log('onPageEnd ==>' + event.url);
+          this.isComplete = 0
         })
     }
   }
