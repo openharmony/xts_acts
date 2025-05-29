@@ -31,6 +31,7 @@ struct WebViewControllerRemoveCacheTest {
   @State databaseAccess: boolean = true
   @State removeRom: boolean = true
   @State cachePath: string = Utils.getSandboxCacheDir() + 'web/Cache/Cache_Data/'
+  @State buttonStart: boolean = false
 
   onPageShow() {
     let valueChangeEvent: events_emitter.InnerEvent = {
@@ -64,6 +65,8 @@ struct WebViewControllerRemoveCacheTest {
             switch (this.str) {
               case "testRemoveCache001": {
                 try {
+                  this.buttonStart = true;
+                  console.log('buttonStart==>'+this.buttonStart);
                   this.removeRom = true
                   this.controller.loadUrl('https://openharmony.cn/')
                 } catch (error) {
@@ -94,7 +97,9 @@ struct WebViewControllerRemoveCacheTest {
         .databaseAccess(this.databaseAccess)
         .onPageEnd((event) => {
           if (event) {
-            setTimeout(async () => {
+            console.log('onPageEnd buttonStart==>'+this.buttonStart);
+            if (this.buttonStart) {
+              setTimeout(async () => {
               let filesBeforeRemove = Utils.listFile(this.cachePath)
               let memorySizeBeforeRemove = await appManager.getAppMemorySize()
               console.info('memorySizeBeforeRemove:' + memorySizeBeforeRemove)
@@ -109,6 +114,7 @@ struct WebViewControllerRemoveCacheTest {
                 Utils.emitEvent(filesAfterRemove.length == filesBeforeRemove.length, 77202)
               }
             }, 100)
+            }
 
           }
         })
