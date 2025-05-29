@@ -1,7 +1,7 @@
 {
-    "description": "Config for ActsOpenGLmaingl32gtfmasterTest test cases",
+    "description": "Config for ActsOpenGlMainGl32GtfMasterTest test cases",
     "driver": {
-        "module-name": "ActsOpenGLmaingl32gtfmasterTest",
+        "module-name": "ActsOpenGlMainGl32GtfMasterTest",
         "native-test-timeout": "120000",
         "native-test-device-path": "/data/local/tmp",
         "runtime-hint": "100s",
@@ -26,7 +26,7 @@
             ],
             
             "push": [
-                "ActsOpenGLmaingl32gtfmasterTest->/data/local/tmp/ActsOpenGLmaingl32gtfmasterTest",
+                "ActsOpenGlMainGl32GtfMasterTest->/data/local/tmp/ActsOpenGlMainGl32GtfMasterTest",
                 "opengldata/libdeqp_ohos_platform.z.so->/data/local/tmp/libdeqp_ohos_platform.z.so",
                 "opengldata/librosen_context.z.so->/data/local/tmp/librosen_context.z.so",
                 "opengldata/libdeqp_spirv.z.so->/data/local/tmp/libdeqp_spirv.z.so",
@@ -41,7 +41,7 @@
             "teardown": [
                 {
                     "name": "pull",
-                    "value": "/data/local/tmp/ActsOpenGLmaingl32gtfmasterTest.qpa->ActsOpenGLmaingl32gtfmasterTest.qpa"
+                    "value": "/data/local/tmp/ActsOpenGlMainGl32GtfMasterTest.qpa->ActsOpenGlMainGl32GtfMasterTest.qpa"
                 }
             ]
         },
@@ -53,7 +53,7 @@
                 "cd /data/local/tmp"
             ],
             "teardown-localcommand": [
-                "python testcases/opengldata/genlocal.py ActsOpenGLmaingl32gtfmasterTest gl/khronos_mustpass/main/gl32-gtf-master.txt"
+                "python testcases/opengldata/genlocal.py ActsOpenGlMainGl32GtfMasterTest gl/khronos_mustpass/main/gl32-gtf-master.txt"
             ]
         }
 

@@ -1,7 +1,7 @@
 {
-    "description": "Config for ActsOpenGLmaingl44khrsingleTest test cases",
+    "description": "Config for ActsOpenGlMainGl44KhrSingleTest test cases",
     "driver": {
-        "module-name": "ActsOpenGLmaingl44khrsingleTest",
+        "module-name": "ActsOpenGlMainGl44KhrSingleTest",
         "native-test-timeout": "120000",
         "native-test-device-path": "/data/local/tmp",
         "runtime-hint": "100s",
@@ -26,7 +26,7 @@
             ],
             
             "push": [
-                "ActsOpenGLmaingl44khrsingleTest->/data/local/tmp/ActsOpenGLmaingl44khrsingleTest",
+                "ActsOpenGlMainGl44KhrSingleTest->/data/local/tmp/ActsOpenGlMainGl44KhrSingleTest",
                 "opengldata/libdeqp_ohos_platform.z.so->/data/local/tmp/libdeqp_ohos_platform.z.so",
                 "opengldata/librosen_context.z.so->/data/local/tmp/librosen_context.z.so",
                 "opengldata/libdeqp_spirv.z.so->/data/local/tmp/libdeqp_spirv.z.so",
@@ -41,7 +41,7 @@
             "teardown": [
                 {
                     "name": "pull",
-                    "value": "/data/local/tmp/ActsOpenGLmaingl44khrsingleTest.qpa->ActsOpenGLmaingl44khrsingleTest.qpa"
+                    "value": "/data/local/tmp/ActsOpenGlMainGl44KhrSingleTest.qpa->ActsOpenGlMainGl44KhrSingleTest.qpa"
                 }
             ]
         },
@@ -53,7 +53,7 @@
                 "cd /data/local/tmp"
             ],
             "teardown-localcommand": [
-                "python testcases/opengldata/genlocal.py ActsOpenGLmaingl44khrsingleTest gl/khronos_mustpass_single/main/gl44-khr-single.txt"
+                "python testcases/opengldata/genlocal.py ActsOpenGlMainGl44KhrSingleTest gl/khronos_mustpass_single/main/gl44-khr-single.txt"
             ]
         }
 

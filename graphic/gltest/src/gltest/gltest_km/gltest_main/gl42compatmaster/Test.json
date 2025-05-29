@@ -1,7 +1,7 @@
 {
-    "description": "Config for ActsOpenGLmaingl42compatmasterTest test cases",
+    "description": "Config for ActsOpenGlMainGl42CompatMasterTest test cases",
     "driver": {
-        "module-name": "ActsOpenGLmaingl42compatmasterTest",
+        "module-name": "ActsOpenGlMainGl42CompatMasterTest",
         "native-test-timeout": "120000",
         "native-test-device-path": "/data/local/tmp",
         "runtime-hint": "100s",
@@ -26,7 +26,7 @@
             ],
             
             "push": [
-                "ActsOpenGLmaingl42compatmasterTest->/data/local/tmp/ActsOpenGLmaingl42compatmasterTest",
+                "ActsOpenGlMainGl42CompatMasterTest->/data/local/tmp/ActsOpenGlMainGl42CompatMasterTest",
                 "opengldata/libdeqp_ohos_platform.z.so->/data/local/tmp/libdeqp_ohos_platform.z.so",
                 "opengldata/librosen_context.z.so->/data/local/tmp/librosen_context.z.so",
                 "opengldata/libdeqp_spirv.z.so->/data/local/tmp/libdeqp_spirv.z.so",
@@ -41,7 +41,7 @@
             "teardown": [
                 {
                     "name": "pull",
-                    "value": "/data/local/tmp/ActsOpenGLmaingl42compatmasterTest.qpa->ActsOpenGLmaingl42compatmasterTest.qpa"
+                    "value": "/data/local/tmp/ActsOpenGlMainGl42CompatMasterTest.qpa->ActsOpenGlMainGl42CompatMasterTest.qpa"
                 }
             ]
         },
@@ -53,7 +53,7 @@
                 "cd /data/local/tmp"
             ],
             "teardown-localcommand": [
-                "python testcases/opengldata/genlocal.py ActsOpenGLmaingl42compatmasterTest gl/khronos_mustpass/main/gl42-compat-master.txt"
+                "python testcases/opengldata/genlocal.py ActsOpenGlMainGl42CompatMasterTest gl/khronos_mustpass/main/gl42-compat-master.txt"
             ]
         }
 

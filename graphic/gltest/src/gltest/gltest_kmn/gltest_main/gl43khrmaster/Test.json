@@ -1,7 +1,7 @@
 {
-    "description": "Config for ActsOpenGLmaingl43khrmasterTest test cases",
+    "description": "Config for ActsOpenGlMainGl43KhrMasterTest test cases",
     "driver": {
-        "module-name": "ActsOpenGLmaingl43khrmasterTest",
+        "module-name": "ActsOpenGlMainGl43KhrMasterTest",
         "native-test-timeout": "120000",
         "native-test-device-path": "/data/local/tmp",
         "runtime-hint": "100s",
@@ -26,7 +26,7 @@
             ],
             
             "push": [
-                "ActsOpenGLmaingl43khrmasterTest->/data/local/tmp/ActsOpenGLmaingl43khrmasterTest",
+                "ActsOpenGlMainGl43KhrMasterTest->/data/local/tmp/ActsOpenGlMainGl43KhrMasterTest",
                 "opengldata/libdeqp_ohos_platform.z.so->/data/local/tmp/libdeqp_ohos_platform.z.so",
                 "opengldata/librosen_context.z.so->/data/local/tmp/librosen_context.z.so",
                 "opengldata/libdeqp_spirv.z.so->/data/local/tmp/libdeqp_spirv.z.so",
@@ -41,7 +41,7 @@
             "teardown": [
                 {
                     "name": "pull",
-                    "value": "/data/local/tmp/ActsOpenGLmaingl43khrmasterTest.qpa->ActsOpenGLmaingl43khrmasterTest.qpa"
+                    "value": "/data/local/tmp/ActsOpenGlMainGl43KhrMasterTest.qpa->ActsOpenGlMainGl43KhrMasterTest.qpa"
                 }
             ]
         },
@@ -53,7 +53,7 @@
                 "cd /data/local/tmp"
             ],
             "teardown-localcommand": [
-                "python testcases/opengldata/genlocal.py ActsOpenGLmaingl43khrmasterTest gl/khronos_mustpass_noctx/main/gl43-khr-master.txt"
+                "python testcases/opengldata/genlocal.py ActsOpenGlMainGl43KhrMasterTest gl/khronos_mustpass_noctx/main/gl43-khr-master.txt"
             ]
         }
 
