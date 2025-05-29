@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 import menuSubMenuExpandSymbolTest from './MenuTest/subMenuExpandSymbol.test';
+import customDialogGetstateTest from './customdialogTest/customdialog.test';
 
 export default function testsuite() {
-  menuSubMenuExpandSymbolTest()
+  menuSubMenuExpandSymbolTest();
+  customDialogGetstateTest();
 }
