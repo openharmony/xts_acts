@@ -16,7 +16,7 @@
 import notificationManager from '@ohos.notificationManager';
 
 import { Driver, ON } from '@ohos.UiTest';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { logGenerator, succeedGenerator, exitGenerator, sleep, exitSpecialGenerator } from '../common/utils';
 
 import common from '@ohos.app.ability.common';
@@ -70,7 +70,7 @@ export default function ActsAllowTest() {
      * @tc.name      : function requestEnableNotification(context): Promise<void>
      * @tc.desc      : requestEnableNotification allow button is clicked
      */
-    it('Sub_Notification_Ans_NotificationManager_RequestEnableNotification_Allow_Test_0100', 0,
+    it('Sub_Notification_Ans_NotificationManager_RequestEnableNotification_Allow_Test_0100', Level.LEVEL0,
       async (done: () => void) => {
         let fn = async (resolve: () => void, reject: (arg1: Error) => void): Promise<void> => {
           let succeed = succeedGenerator(TAG, resolve, done);
@@ -104,7 +104,7 @@ export default function ActsAllowTest() {
     * @tc.name      : 【openNotificationSettings】非系统应用调用openNotificationSettings接口拉起设置页面
     * @tc.desc      : 非系统应用调用openNotificationSettings接口拉起设置页面
     */
-    it('Sub_Notification_Ans_OpenNotification_Settings_0004', 0,
+    it('Sub_Notification_Ans_OpenNotification_Settings_0004', Level.LEVEL0,
       async (done: () => void) => {
         let fn = async (resolve: () => void, reject: (arg1: Error) => void): Promise<void> => {
           let succeed = succeedGenerator(TAG, resolve, done);
@@ -148,7 +148,7 @@ export default function ActsAllowTest() {
   * @tc.type      : Function test
   * @tc.level     : Level 0
   */
-    it('Sub_Notification_Ans_Publish_updateOnly_0003', 0, (done: Function) => {
+    it('Sub_Notification_Ans_Publish_updateOnly_0003', Level.LEVEL0, (done: Function) => {
       // 通知Request对象
       let notificationRequest: notificationManager.NotificationRequest = {
         id: 2025012101,
@@ -197,7 +197,7 @@ export default function ActsAllowTest() {
   * @tc.type      : Function test
   * @tc.level     : Level 2
   */
-    it('Sub_Notification_Ces_Subscriber_Subscribe_08086', 0, async (done: () => void) => {
+    it('Sub_Notification_Ces_Subscriber_Subscribe_08086', Level.LEVEL0, async (done: () => void) => {
 
       // 创建订阅者
       try {
