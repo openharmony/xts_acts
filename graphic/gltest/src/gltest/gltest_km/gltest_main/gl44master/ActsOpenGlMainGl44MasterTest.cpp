@@ -13,43 +13,51 @@
  * limitations under the License.
  */
 
- #include "ActsOpenGlMainGl44MasterTest.h"
- #include <gtest/gtest.h>
- #include <cstdlib>
- #include "common.h"
+#include "ActsOpenGlMainGl44MasterTest.h"
+#include <gtest/gtest.h>
+#include <cstdlib>
+#include "common.h"
  
  
- namespace OHOS {
-     using namespace std;
-     using namespace testing::ext;
- 
-     // Preset action of the test suite, which is executed before the first test case
-     void ActsOpenGlMainGl44MasterTest::SetUpTestCase(void)
-     {
-     }
-     // Test suite cleanup action, which is executed after the last test case
-     void ActsOpenGlMainGl44MasterTest::TearDownTestCase(void)
-     {
-     }
-     // Preset action of the test case
-     void ActsOpenGlMainGl44MasterTest::SetUp()
-     {
-     }
-     // Cleanup action of the test case
-     void ActsOpenGlMainGl44MasterTest::TearDown()
-     {
-     }
- 
-     HWTEST_F(ActsOpenGlMainGl44MasterTest, TestOpenGLglTestCase18, Function | MediumTest | Level2)
-     {
-         printf("------start ActsOpenGlMainGl44MasterTest------\n");
-         if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
-             system("/data/local/tmp/opengl/mustpass/glcts "
-                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/"
-                 "gl44-master.txt "
-                 "--deqp-log-filename=ActsOpenGlMainGl44MasterTest.qpa");
-         }
-         EXPECT_TRUE(true);
-         printf("------end ActsOpenGlMainGl44MasterTest------\n");
-     }
- }
+namespace OHOS {
+    using namespace std;
+    using namespace testing::ext;
+
+    // Preset action of the test suite, which is executed before the first test case
+    void ActsOpenGlMainGl44MasterTest::SetUpTestCase(void)
+    {
+    }
+    // Test suite cleanup action, which is executed after the last test case
+    void ActsOpenGlMainGl44MasterTest::TearDownTestCase(void)
+    {
+    }
+    // Preset action of the test case
+    void ActsOpenGlMainGl44MasterTest::SetUp()
+    {
+    }
+    // Cleanup action of the test case
+    void ActsOpenGlMainGl44MasterTest::TearDown()
+    {
+    }
+    
+    /*
+     * @tc.number: TestOpenGLmainglTestCase19
+     * @tc.name: ActsOpenGlMainGl44MasterTest
+     * @tc.desc: test for ActsOpenGlMainGl44MasterTest.
+     * @tc.size  : SmallTest
+     * @tc.type  : Function
+     * @tc.level : Level 0
+     */
+    HWTEST_F(ActsOpenGlMainGl44MasterTest, TestOpenGLmainglTestCase19, Function | MediumTest | Level2)
+    {
+        printf("------start ActsOpenGlMainGl44MasterTest------\n");
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
+            system("/data/local/tmp/opengl/mustpass/glcts "
+                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass/main/"
+                "gl44-master.txt "
+                "--deqp-log-filename=ActsOpenGlMainGl44MasterTest.qpa");
+        }
+        EXPECT_TRUE(true);
+        printf("------end ActsOpenGlMainGl44MasterTest------\n");
+    }
+}

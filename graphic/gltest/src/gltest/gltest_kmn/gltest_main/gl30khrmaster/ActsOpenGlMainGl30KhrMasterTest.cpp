@@ -13,43 +13,51 @@
  * limitations under the License.
  */
 
- #include "ActsOpenGlMainGl30KhrMasterTest.h"
- #include <gtest/gtest.h>
- #include <cstdlib>
- #include "common.h"
+#include "ActsOpenGlMainGl30KhrMasterTest.h"
+#include <gtest/gtest.h>
+#include <cstdlib>
+#include "common.h"
  
  
- namespace OHOS {
-     using namespace std;
-     using namespace testing::ext;
- 
-     // Preset action of the test suite, which is executed before the first test case
-     void ActsOpenGlMainGl30KhrMasterTest::SetUpTestCase(void)
-     {
-     }
-     // Test suite cleanup action, which is executed after the last test case
-     void ActsOpenGlMainGl30KhrMasterTest::TearDownTestCase(void)
-     {
-     }
-     // Preset action of the test case
-     void ActsOpenGlMainGl30KhrMasterTest::SetUp()
-     {
-     }
-     // Cleanup action of the test case
-     void ActsOpenGlMainGl30KhrMasterTest::TearDown()
-     {
-     }
- 
-     HWTEST_F(ActsOpenGlMainGl30KhrMasterTest, TestOpenGLglTestCase09, Function | MediumTest | Level2)
-     {
-         printf("------start ActsOpenGlMainGl30KhrMasterTest------\n");
-         if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
-             system("/data/local/tmp/opengl/mustpass/glcts "
-                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass_noctx/main/"
-                 "gl30-khr-master.txt "
-                 "--deqp-log-filename=ActsOpenGlMainGl30KhrMasterTest.qpa");
-         }
-         EXPECT_TRUE(true);
-         printf("------end ActsOpenGlMainGl30KhrMasterTest------\n");
-     }
- }
+namespace OHOS {
+    using namespace std;
+    using namespace testing::ext;
+
+    // Preset action of the test suite, which is executed before the first test case
+    void ActsOpenGlMainGl30KhrMasterTest::SetUpTestCase(void)
+    {
+    }
+    // Test suite cleanup action, which is executed after the last test case
+    void ActsOpenGlMainGl30KhrMasterTest::TearDownTestCase(void)
+    {
+    }
+    // Preset action of the test case
+    void ActsOpenGlMainGl30KhrMasterTest::SetUp()
+    {
+    }
+    // Cleanup action of the test case
+    void ActsOpenGlMainGl30KhrMasterTest::TearDown()
+    {
+    }
+    
+    /*
+     * @tc.number: TestOpenGLmainkmnglTestCase01
+     * @tc.name: ActsOpenGlMainGl30KhrMasterTest
+     * @tc.desc: test for ActsOpenGlMainGl30KhrMasterTest.
+     * @tc.size  : SmallTest
+     * @tc.type  : Function
+     * @tc.level : Level 0
+     */
+    HWTEST_F(ActsOpenGlMainGl30KhrMasterTest, TestOpenGLmainkmnglTestCase01, Function | MediumTest | Level2)
+    {
+        printf("------start ActsOpenGlMainGl30KhrMasterTest------\n");
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
+            system("/data/local/tmp/opengl/mustpass/glcts "
+                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass_noctx/main/"
+                "gl30-khr-master.txt "
+                "--deqp-log-filename=ActsOpenGlMainGl30KhrMasterTest.qpa");
+        }
+        EXPECT_TRUE(true);
+        printf("------end ActsOpenGlMainGl30KhrMasterTest------\n");
+    }
+}
