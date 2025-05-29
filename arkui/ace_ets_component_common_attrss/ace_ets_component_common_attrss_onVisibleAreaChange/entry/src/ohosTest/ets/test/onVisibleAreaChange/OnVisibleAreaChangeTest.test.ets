@@ -152,6 +152,7 @@ export default function onVisibleAreaChangeTest() {
 
   describe('OnVisibleAreaChangeTest', () => {
     CommonTest.initTest(pageConfig, supportView, testValues, null, async (data: ESObject) => {
+      await Utils.sleep(4000);
       //Get Information about the location of the target component before the change
       let targetRectBefore: ESObject = Utils.getComponentRect(data.pageConfig.componentKey);
       console.info('[' + data.caseTag + '] targetRectBefore: ' + targetRectBefore);
