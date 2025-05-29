@@ -41,7 +41,7 @@ namespace OHOS {
     }
     
     /*
-     * @tc.number: TestOpenGL461xglTestCase09
+     * @tc.number: ActsOpenGl461xGl40GtfMasterTest
      * @tc.name: ActsOpenGl461xGl40GtfMasterTest
      * @tc.desc: test for ActsOpenGl461xGl40GtfMasterTest.
      * @tc.size  : SmallTest

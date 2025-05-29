@@ -51,382 +51,382 @@ gltest测试套件使用VK-GL-CTS三方库内原有的openglcts，通过acts测�
     └── gltest
         ├── gltest_am
         │   ├── gltest_461x
-        │   │   ├── gl45es31master
+        │   │   ├── gl45es31Master
         │   │   │   ├── ActsOpenGl461xGl45Es31MasterTest.cpp
         │   │   │   ├── ActsOpenGl461xGl45Es31MasterTest.h
         │   │   │   ├── BUILD.gn
         │   │   │   └── Test.json
-        │   │   ├── gl45es3master
+        │   │   ├── gl45es3Master
         │   │   │   ├── ActsOpenGl461xGl45Es3MasterTest.cpp
         │   │   │   ├── ActsOpenGl461xGl45Es3MasterTest.h
         │   │   │   ├── BUILD.gn
         │   │   │   └── Test.json
-        │   │   └── gl45master
+        │   │   └── gl45Master
         │   │       ├── ActsOpenGLAm461xGl45MasterTest.cpp
         │   │       ├── ActsOpenGLAm461xGl45MasterTest.h
         │   │       ├── BUILD.gn
         │   │       └── Test.json
         │   └── gltest_main
-        │       ├── gl45es31master
+        │       ├── gl45es31Master
         │       │   ├── ActsOpenGlMainGl45Es31MasterTest.cpp
         │       │   ├── ActsOpenGlMainGl45Es31MasterTest.h
         │       │   ├── BUILD.gn
         │       │   └── Test.json
-        │       ├── gl45es3master
+        │       ├── gl45es3Master
         │       │   ├── ActsOpenGlMainGl45Es3MasterTest.cpp
         │       │   ├── ActsOpenGlMainGl45Es3MasterTest.h
         │       │   ├── BUILD.gn
         │       │   └── Test.json
-        │       └── gl45master
+        │       └── gl45Master
         │           ├── ActsOpenGlAmMainGl45MasterTest.cpp
         │           ├── ActsOpenGlAmMainGl45MasterTest.h
         │           ├── BUILD.gn
         │           └── Test.json
         ├── gltest_km
         │   ├── gltest_460x
-        │   │   ├── gl30gtfmaster
+        │   │   ├── gl30gtfMaster
         │   │   │   ├── ActsOpenGl460xGl30GtfMasterTest.cpp
         │   │   │   ├── ActsOpenGl460xGl30GtfMasterTest.h
         │   │   │   ├── BUILD.gn
         │   │   │   └── Test.json
-        │   │   ├── gl30master
+        │   │   ├── gl30Master
         │   │   │   ├── ActsOpenGl460xGl30MasterTest.cpp
         │   │   │   ├── ActsOpenGl460xGl30MasterTest.h
         │   │   │   ├── BUILD.gn
         │   │   │   └── Test.json
-        │   │   ├── gl31gtfmaster
+        │   │   ├── gl31gtfMaster
         │   │   │   ├── ActsOpenGl460xGl31GtfMasterTest.cpp
         │   │   │   ├── ActsOpenGl460xGl31GtfMasterTest.h
         │   │   │   ├── BUILD.gn
         │   │   │   └── Test.json
-        │   │   ├── gl31master
+        │   │   ├── gl31Master
         │   │   │   ├── ActsOpenGl460xGl31MasterTest.cpp
         │   │   │   ├── ActsOpenGl460xGl31MasterTest.h
         │   │   │   ├── BUILD.gn
         │   │   │   └── Test.json
-        │   │   ├── gl32gtfmaster
+        │   │   ├── gl32gtfMaster
         │   │   │   ├── ActsOpenGl460xGl32GtfMasterTest.cpp
         │   │   │   ├── ActsOpenGl460xGl32GtfMasterTest.h
         │   │   │   ├── BUILD.gn
         │   │   │   └── Test.json
-        │   │   ├── gl32master
+        │   │   ├── gl32Master
         │   │   │   ├── ActsOpenGl460xGl32MasterTest.cpp
         │   │   │   ├── ActsOpenGl460xGl32MasterTest.h
         │   │   │   ├── BUILD.gn
         │   │   │   └── Test.json
-        │   │   ├── gl33gtfmaster
+        │   │   ├── gl33gtfMaster
         │   │   │   ├── ActsOpenGl460xGl33GtfMasterTest.cpp
         │   │   │   ├── ActsOpenGl460xGl33GtfMasterTest.h
         │   │   │   ├── BUILD.gn
         │   │   │   └── Test.json
-        │   │   ├── gl33master
+        │   │   ├── gl33Master
         │   │   │   ├── ActsOpenGl460xGl33MasterTest.cpp
         │   │   │   ├── ActsOpenGl460xGl33MasterTest.h
         │   │   │   ├── BUILD.gn
         │   │   │   └── Test.json
-        │   │   ├── gl40gtfmaster
+        │   │   ├── gl40gtfMaster
         │   │   │   ├── ActsOpenGl460xGl40GtfMasterTest.cpp
         │   │   │   ├── ActsOpenGl460xGl40GtfMasterTest.h
         │   │   │   ├── BUILD.gn
         │   │   │   └── Test.json
-        │   │   ├── gl40master
+        │   │   ├── gl40Master
         │   │   │   ├── ActsOpenGl460xGl40MasterTest.cpp
         │   │   │   ├── ActsOpenGl460xGl40MasterTest.h
         │   │   │   ├── BUILD.gn
         │   │   │   └── Test.json
-        │   │   ├── gl41gtfmaster
+        │   │   ├── gl41gtfMaster
         │   │   │   ├── ActsOpenGl460xGl41GtfMasterTest.cpp
         │   │   │   ├── ActsOpenGl460xGl41GtfMasterTest.h
         │   │   │   ├── BUILD.gn
         │   │   │   └── Test.json
-        │   │   ├── gl41master
+        │   │   ├── gl41Master
         │   │   │   ├── ActsOpenGl460xGl41MasterTest.cpp
         │   │   │   ├── ActsOpenGl460xGl41MasterTest.h
         │   │   │   ├── BUILD.gn
         │   │   │   └── Test.json
-        │   │   ├── gl42compatmaster
+        │   │   ├── gl42compatMaster
         │   │   │   ├── ActsOpenGl460xGl42CompatMasterTest.cpp
         │   │   │   ├── ActsOpenGl460xGl42CompatMasterTest.h
         │   │   │   ├── BUILD.gn
         │   │   │   └── Test.json
-        │   │   ├── gl42gtfmaster
+        │   │   ├── gl42gtfMaster
         │   │   │   ├── ActsOpenGl460xGl42GtfMasterTest.cpp
         │   │   │   ├── ActsOpenGl460xGl42GtfMasterTest.h
         │   │   │   ├── BUILD.gn
         │   │   │   └── Test.json
-        │   │   ├── gl42master
+        │   │   ├── gl42Master
         │   │   │   ├── ActsOpenGl460xGl42MasterTest.cpp
         │   │   │   ├── ActsOpenGl460xGl42MasterTest.h
         │   │   │   ├── BUILD.gn
         │   │   │   └── Test.json
-        │   │   ├── gl43gtfmaster
+        │   │   ├── gl43gtfMaster
         │   │   │   ├── ActsOpenGl460xGl43GtfMasterTest.cpp
         │   │   │   ├── ActsOpenGl460xGl43GtfMasterTest.h
         │   │   │   ├── BUILD.gn
         │   │   │   └── Test.json
-        │   │   ├── gl43master
+        │   │   ├── gl43Master
         │   │   │   ├── ActsOpenGl460xGl43MasterTest.cpp
         │   │   │   ├── ActsOpenGl460xGl43MasterTest.h
         │   │   │   ├── BUILD.gn
         │   │   │   └── Test.json
-        │   │   ├── gl44gtfmaster
+        │   │   ├── gl44gtfMaster
         │   │   │   ├── ActsOpenGl460xGl44GtfMasterTest.cpp
         │   │   │   ├── ActsOpenGl460xGl44GtfMasterTest.h
         │   │   │   ├── BUILD.gn
         │   │   │   └── Test.json
-        │   │   ├── gl44master
+        │   │   ├── gl44Master
         │   │   │   ├── ActsOpenGl460xGl44MasterTest.cpp
         │   │   │   ├── ActsOpenGl460xGl44MasterTest.h
         │   │   │   ├── BUILD.gn
         │   │   │   └── Test.json
-        │   │   ├── gl45gtfmaster
+        │   │   ├── gl45gtfMaster
         │   │   │   ├── ActsOpenGl460xGl45GtfMasterTest.cpp
         │   │   │   ├── ActsOpenGl460xGl45GtfMasterTest.h
         │   │   │   ├── BUILD.gn
         │   │   │   └── Test.json
-        │   │   ├── gl45master
+        │   │   ├── gl45Master
         │   │   │   ├── ActsOpenGl460xGl45MasterTest.cpp
         │   │   │   ├── ActsOpenGl460xGl45MasterTest.h
         │   │   │   ├── BUILD.gn
         │   │   │   └── Test.json
-        │   │   ├── gl46gtfmaster
+        │   │   ├── gl46gtfMaster
         │   │   │   ├── ActsOpenGl460xGl46GtfMasterTest.cpp
         │   │   │   ├── ActsOpenGl460xGl46GtfMasterTest.h
         │   │   │   ├── BUILD.gn
         │   │   │   └── Test.json
-        │   │   └── gl46master
+        │   │   └── gl46Master
         │   │       ├── ActsOpenGl460xGl46MasterTest.cpp
         │   │       ├── ActsOpenGl460xGl46MasterTest.h
         │   │       ├── BUILD.gn
         │   │       └── Test.json
         │   ├── gltest_461x
-        │   │   ├── gl30gtfmaster
+        │   │   ├── gl30gtfMaster
         │   │   │   ├── ActsOpenGl461xGl30GtfMasterTest.cpp
         │   │   │   ├── ActsOpenGl461xGl30GtfMasterTest.h
         │   │   │   ├── BUILD.gn
         │   │   │   └── Test.json
-        │   │   ├── gl30master
+        │   │   ├── gl30Master
         │   │   │   ├── ActsOpenGl461xGl30MasterTest.cpp
         │   │   │   ├── ActsOpenGl461xGl30MasterTest.h
         │   │   │   ├── BUILD.gn
         │   │   │   └── Test.json
-        │   │   ├── gl31gtfmaster
+        │   │   ├── gl31gtfMaster
         │   │   │   ├── ActsOpenGl461xGl31GtfMasterTest.cpp
         │   │   │   ├── ActsOpenGl461xGl31GtfMasterTest.h
         │   │   │   ├── BUILD.gn
         │   │   │   └── Test.json
-        │   │   ├── gl31master
+        │   │   ├── gl31Master
         │   │   │   ├── ActsOpenGl461xGl31MasterTest.cpp
         │   │   │   ├── ActsOpenGl461xGl31MasterTest.h
         │   │   │   ├── BUILD.gn
         │   │   │   └── Test.json
-        │   │   ├── gl32gtfmaster
+        │   │   ├── gl32gtfMaster
         │   │   │   ├── ActsOpenGl461xGl32GtfMasterTest.cpp
         │   │   │   ├── ActsOpenGl461xGl32GtfMasterTest.h
         │   │   │   ├── BUILD.gn
         │   │   │   └── Test.json
-        │   │   ├── gl32master
+        │   │   ├── gl32Master
         │   │   │   ├── ActsOpenGl461xGl32MasterTest.cpp
         │   │   │   ├── ActsOpenGl461xGl32MasterTest.h
         │   │   │   ├── BUILD.gn
         │   │   │   └── Test.json
-        │   │   ├── gl33gtfmaster
+        │   │   ├── gl33gtfMaster
         │   │   │   ├── ActsOpenGl461xGl33GtfMasterTest.cpp
         │   │   │   ├── ActsOpenGl461xGl33GtfMasterTest.h
         │   │   │   ├── BUILD.gn
         │   │   │   └── Test.json
-        │   │   ├── gl33master
+        │   │   ├── gl33Master
         │   │   │   ├── ActsOpenGl461xGl33MasterTest.cpp
         │   │   │   ├── ActsOpenGl461xGl33MasterTest.h
         │   │   │   ├── BUILD.gn
         │   │   │   └── Test.json
-        │   │   ├── gl40gtfmaster
+        │   │   ├── gl40gtfMaster
         │   │   │   ├── ActsOpenGl461xGl40GtfMasterTest.cpp
         │   │   │   ├── ActsOpenGl461xGl40GtfMasterTest.h
         │   │   │   ├── BUILD.gn
         │   │   │   └── Test.json
-        │   │   ├── gl40master
+        │   │   ├── gl40Master
         │   │   │   ├── ActsOpenGl461xGl40MasterTest.cpp
         │   │   │   ├── ActsOpenGl461xGl40MasterTest.h
         │   │   │   ├── BUILD.gn
         │   │   │   └── Test.json
-        │   │   ├── gl41gtfmaster
+        │   │   ├── gl41gtfMaster
         │   │   │   ├── ActsOpenGl461xGl41GtfMasterTest.cpp
         │   │   │   ├── ActsOpenGl461xGl41GtfMasterTest.h
         │   │   │   ├── BUILD.gn
         │   │   │   └── Test.json
-        │   │   ├── gl41master
+        │   │   ├── gl41mMaster
         │   │   │   ├── ActsOpenGl461xGl41MasterTest.cpp
         │   │   │   ├── ActsOpenGl461xGl41MasterTest.h
         │   │   │   ├── BUILD.gn
         │   │   │   └── Test.json
-        │   │   ├── gl42compatmaster
+        │   │   ├── gl42compatMaster
         │   │   │   ├── ActsOpenGl461xGl42CompatMasterTest.cpp
         │   │   │   ├── ActsOpenGl461xGl42CompatMasterTest.h
         │   │   │   ├── BUILD.gn
         │   │   │   └── Test.json
-        │   │   ├── gl42gtfmaster
+        │   │   ├── gl42gtfMaster
         │   │   │   ├── ActsOpenGl461xGl42GtfMasterTest.cpp
         │   │   │   ├── ActsOpenGl461xGl42GtfMasterTest.h
         │   │   │   ├── BUILD.gn
         │   │   │   └── Test.json
-        │   │   ├── gl42master
+        │   │   ├── gl42Master
         │   │   │   ├── ActsOpenGl461xGl42MasterTest.cpp
         │   │   │   ├── ActsOpenGl461xGl42MasterTest.h
         │   │   │   ├── BUILD.gn
         │   │   │   └── Test.json
-        │   │   ├── gl43gtfmaster
+        │   │   ├── gl43gtfMaster
         │   │   │   ├── ActsOpenGl461xGl43GtfMasterTest.cpp
         │   │   │   ├── ActsOpenGl461xGl43GtfMasterTest.h
         │   │   │   ├── BUILD.gn
         │   │   │   └── Test.json
-        │   │   ├── gl43master
+        │   │   ├── gl43Master
         │   │   │   ├── ActsOpenGl461xGl43MasterTest.cpp
         │   │   │   ├── ActsOpenGl461xGl43MasterTest.h
         │   │   │   ├── BUILD.gn
         │   │   │   └── Test.json
-        │   │   ├── gl44gtfmaster
+        │   │   ├── gl44gtfMaster
         │   │   │   ├── ActsOpenGl461xGl44GtfMasterTest.cpp
         │   │   │   ├── ActsOpenGl461xGl44GtfMasterTest.h
         │   │   │   ├── BUILD.gn
         │   │   │   └── Test.json
-        │   │   ├── gl44master
+        │   │   ├── gl44Master
         │   │   │   ├── ActsOpenGl461xGl44MasterTest.cpp
         │   │   │   ├── ActsOpenGl461xGl44MasterTest.h
         │   │   │   ├── BUILD.gn
         │   │   │   └── Test.json
-        │   │   ├── gl45gtfmaster
+        │   │   ├── gl45gtfMaster
         │   │   │   ├── ActsOpenGl461xGl45GtfMasterTest.cpp
         │   │   │   ├── ActsOpenGl461xGl45GtfMasterTest.h
         │   │   │   ├── BUILD.gn
         │   │   │   └── Test.json
-        │   │   ├── gl45master
+        │   │   ├── gl45Master
         │   │   │   ├── ActsOpenGl461xGl45MasterTest.cpp
         │   │   │   ├── ActsOpenGl461xGl45MasterTest.h
         │   │   │   ├── BUILD.gn
         │   │   │   └── Test.json
-        │   │   ├── gl46gtfmaster
+        │   │   ├── gl46gtfMaster
         │   │   │   ├── ActsOpenGl461xGl46GtfMasterTest.cpp
         │   │   │   ├── ActsOpenGl461xGl46GtfMasterTest.h
         │   │   │   ├── BUILD.gn
         │   │   │   └── Test.json
-        │   │   └── gl46master
+        │   │   └── gl46Master
         │   │       ├── ActsOpenGl461xGl46MasterTest.cpp
         │   │       ├── ActsOpenGl461xGl46MasterTest.h
         │   │       ├── BUILD.gn
         │   │       └── Test.json
         │   └── gltest_main
-        │       ├── gl30gtfmaster
+        │       ├── gl30gtfMaster
         │       │   ├── ActsOpenGlMainGl30GtfMasterTest.cpp
         │       │   ├── ActsOpenGlMainGl30GtfMasterTest.h
         │       │   ├── BUILD.gn
         │       │   └── Test.json
-        │       ├── gl30master
+        │       ├── gl30mMster
         │       │   ├── ActsOpenGlMainGl30MasterTest.cpp
         │       │   ├── ActsOpenGlMainGl30MasterTest.h
         │       │   ├── BUILD.gn
         │       │   └── Test.json
-        │       ├── gl31gtfmaster
+        │       ├── gl31gtfMaster
         │       │   ├── ActsOpenGlMainGl31GtfMasterTest.cpp
         │       │   ├── ActsOpenGlMainGl31GtfMasterTest.h
         │       │   ├── BUILD.gn
         │       │   └── Test.json
-        │       ├── gl31master
+        │       ├── gl31Master
         │       │   ├── ActsOpenGlMainGl31MasterTest.cpp
         │       │   ├── ActsOpenGlMainGl31MasterTest.h
         │       │   ├── BUILD.gn
         │       │   └── Test.json
-        │       ├── gl32gtfmaster
+        │       ├── gl32gtfMaster
         │       │   ├── ActsOpenGlMainGl32GtfMasterTest.cpp
         │       │   ├── ActsOpenGlMainGl32GtfMasterTest.h
         │       │   ├── BUILD.gn
         │       │   └── Test.json
-        │       ├── gl32master
+        │       ├── gl32Master
         │       │   ├── ActsOpenGlMainGl32MasterTest.cpp
         │       │   ├── ActsOpenGlMainGl32MasterTest.h
         │       │   ├── BUILD.gn
         │       │   └── Test.json
-        │       ├── gl33gtfmaster
+        │       ├── gl33gtfMaster
         │       │   ├── ActsOpenGlMainGl33GtfMasterTest.cpp
         │       │   ├── ActsOpenGlMainGl33GtfMasterTest.h
         │       │   ├── BUILD.gn
         │       │   └── Test.json
-        │       ├── gl33master
+        │       ├── gl33Master
         │       │   ├── ActsOpenGlMainGl33MasterTest.cpp
         │       │   ├── ActsOpenGlMainGl33MasterTest.h
         │       │   ├── BUILD.gn
         │       │   └── Test.json
-        │       ├── gl40gtfmaster
+        │       ├── gl40gtfMaster
         │       │   ├── ActsOpenGlMainGl40GtfMasterTest.cpp
         │       │   ├── ActsOpenGlMainGl40GtfMasterTest.h
         │       │   ├── BUILD.gn
         │       │   └── Test.json
-        │       ├── gl40master
+        │       ├── gl40Master
         │       │   ├── ActsOpenGlMainGl40MasterTest.cpp
         │       │   ├── ActsOpenGlMainGl40MasterTest.h
         │       │   ├── BUILD.gn
         │       │   └── Test.json
-        │       ├── gl41gtfmaster
+        │       ├── gl41gtfMaster
         │       │   ├── ActsOpenGlMainGl41GtfMasterTest.cpp
         │       │   ├── ActsOpenGlMainGl41GtfMasterTest.h
         │       │   ├── BUILD.gn
         │       │   └── Test.json
-        │       ├── gl41master
+        │       ├── gl41Master
         │       │   ├── ActsOpenGlMainGl41MasterTest.cpp
         │       │   ├── ActsOpenGlMainGl41MasterTest.h
         │       │   ├── BUILD.gn
         │       │   └── Test.json
-        │       ├── gl42compatmaster
+        │       ├── gl42compatMaster
         │       │   ├── ActsOpenGlMainGl42CompatMasterTest.cpp
         │       │   ├── ActsOpenGlMainGl42CompatMasterTest.h
         │       │   ├── BUILD.gn
         │       │   └── Test.json
-        │       ├── gl42gtfmaster
+        │       ├── gl42gtfMaster
         │       │   ├── ActsOpenGlMainGl42GtfMasterTest.cpp
         │       │   ├── ActsOpenGlMainGl42GtfMasterTest.h
         │       │   ├── BUILD.gn
         │       │   └── Test.json
-        │       ├── gl42master
+        │       ├── gl42Master
         │       │   ├── ActsOpenGlMainGl42MasterTest.cpp
         │       │   ├── ActsOpenGlMainGl42MasterTest.h
         │       │   ├── BUILD.gn
         │       │   └── Test.json
-        │       ├── gl43gtfmaster
+        │       ├── gl43gtfMaster
         │       │   ├── ActsOpenGlMainGl43GtfMasterTest.cpp
         │       │   ├── ActsOpenGlMainGl43GtfMasterTest.h
         │       │   ├── BUILD.gn
         │       │   └── Test.json
-        │       ├── gl43master
+        │       ├── gl43Master
         │       │   ├── ActsOpenGlMainGl43MasterTest.cpp
         │       │   ├── ActsOpenGlMainGl43MasterTest.h
         │       │   ├── BUILD.gn
         │       │   └── Test.json
-        │       ├── gl44gtfmaster
+        │       ├── gl44gtfMaster
         │       │   ├── ActsOpenGlMainGl44GtfMasterTest.cpp
         │       │   ├── ActsOpenGlMainGl44GtfMasterTest.h
         │       │   ├── BUILD.gn
         │       │   └── Test.json
-        │       ├── gl44master
+        │       ├── gl44Master
         │       │   ├── ActsOpenGlMainGl44MasterTest.cpp
         │       │   ├── ActsOpenGlMainGl44MasterTest.h
         │       │   ├── BUILD.gn
         │       │   └── Test.json
-        │       ├── gl45gtfmaster
+        │       ├── gl45gtfMaster
         │       │   ├── ActsOpenGlMainGl45GtfMasterTest.cpp
         │       │   ├── ActsOpenGlMainGl45GtfMasterTest.h
         │       │   ├── BUILD.gn
         │       │   └── Test.json
-        │       ├── gl45master
+        │       ├── gl45Master
         │       │   ├── ActsOpenGlMainGl45MasterTest.cpp
         │       │   ├── ActsOpenGlMainGl45MasterTest.h
         │       │   ├── BUILD.gn
         │       │   └── Test.json
-        │       ├── gl46gtfmaster
+        │       ├── gl46gtfMaster
         │       │   ├── ActsOpenGlMainGl46GtfMasterTest.cpp
         │       │   ├── ActsOpenGlMainGl46GtfMasterTest.h
         │       │   ├── BUILD.gn
         │       │   └── Test.json
-        │       └── gl46master
+        │       └── gl46Master
         │           ├── ActsOpenGlMainGl46MasterTest.cpp
         │           ├── ActsOpenGlMainGl46MasterTest.h
         │           ├── BUILD.gn
@@ -438,64 +438,64 @@ gltest测试套件使用VK-GL-CTS三方库内原有的openglcts，通过acts测�
         │   │   ├── BUILD.gn
         │   │   └── Test.json
         │   ├── gltest_460x
-        │   │   ├── gl30khrmaster
+        │   │   ├── gl30khrMaster
         │   │   │   ├── ActsOpenGl460xGl30KhrMasterTest.cpp
         │   │   │   ├── ActsOpenGl460xGl30KhrMasterTest.h
         │   │   │   ├── BUILD.gn
         │   │   │   └── Test.json
-        │   │   ├── gl40khrmaster
+        │   │   ├── gl40khrMaster
         │   │   │   ├── ActsOpenGl460xGl40KhrMasterTest.cpp
         │   │   │   ├── ActsOpenGl460xGl40KhrMasterTest.h
         │   │   │   ├── BUILD.gn
         │   │   │   └── Test.json
-        │   │   ├── gl43khrmaster
+        │   │   ├── gl43khrMaster
         │   │   │   ├── ActsOpenGl460xGl43KhrMasterTest.cpp
         │   │   │   ├── ActsOpenGl460xGl43KhrMasterTest.h
         │   │   │   ├── BUILD.gn
         │   │   │   └── Test.json
-        │   │   └── gl45khrmaster
+        │   │   └── gl45khrMaster
         │   │       ├── ActsOpenGl460xGl45KhrMasterTest.cpp
         │   │       ├── ActsOpenGl460xGl45KhrMasterTest.h
         │   │       ├── BUILD.gn
         │   │       └── Test.json
         │   ├── gltest_461x
-        │   │   ├── gl30khrmaster
+        │   │   ├── gl30khrMaster
         │   │   │   ├── ActsOpenGl461xGl30KhrMasterTest.cpp
         │   │   │   ├── ActsOpenGl461xGl30KhrMasterTest.h
         │   │   │   ├── BUILD.gn
         │   │   │   └── Test.json
-        │   │   ├── gl40khrmaster
+        │   │   ├── gl40khrMaster
         │   │   │   ├── ActsOpenGl461xGl40KhrMasterTest.cpp
         │   │   │   ├── ActsOpenGl461xGl40KhrMasterTest.h
         │   │   │   ├── BUILD.gn
         │   │   │   └── Test.json
-        │   │   ├── gl43khrmaster
+        │   │   ├── gl43khrMaster
         │   │   │   ├── ActsOpenGl461xGl43KhrMasterTest.cpp
         │   │   │   ├── ActsOpenGl461xGl43KhrMasterTest.h
         │   │   │   ├── BUILD.gn
         │   │   │   └── Test.json
-        │   │   └── gl45khrmaster
+        │   │   └── gl45khrMaster
         │   │       ├── ActsOpenGl461xGl45KhrMasterTest.cpp
         │   │       ├── ActsOpenGl461xGl45KhrMasterTest.h
         │   │       ├── BUILD.gn
         │   │       └── Test.json
         │   └── gltest_main
-        │       ├── gl30khrmaster
+        │       ├── gl30khrMaster
         │       │   ├── ActsOpenGlMainGl30KhrMasterTest.cpp
         │       │   ├── ActsOpenGlMainGl30KhrMasterTest.h
         │       │   ├── BUILD.gn
         │       │   └── Test.json
-        │       ├── gl40khrmaster
+        │       ├── gl40khrMaster
         │       │   ├── ActsOpenGlMainGl40KhrMasterTest.cpp
         │       │   ├── ActsOpenGlMainGl40KhrMasterTest.h
         │       │   ├── BUILD.gn
         │       │   └── Test.json
-        │       ├── gl43khrmaster
+        │       ├── gl43khrmMaster
         │       │   ├── ActsOpenGlMainGl43KhrMasterTest.cpp
         │       │   ├── ActsOpenGlMainGl43KhrMasterTest.h
         │       │   ├── BUILD.gn
         │       │   └── Test.json
-        │       └── gl45khrmaster
+        │       └── gl45khrMaster
         │           ├── ActsOpenGlMainGl45KhrMasterTest.cpp
         │           ├── ActsOpenGlMainGl45KhrMasterTest.h
         │           ├── BUILD.gn
