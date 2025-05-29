@@ -129,38 +129,50 @@ export default function AVPlayerVideoSeekTest() {
         */
         // #endregion
         it('SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_0100', Level.LEVEL0,async (done: Function) => {
-            let runSeekInfo:RunSeekInfo
-            const time_points = getVideoStagePoints()
-            avPlayer?.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
-                console.info('case current state is: ' + state)
-                switch (state) {
-                    case INITIALIZED:
-                        avPlayer?.prepare();
-                        break;
-                    case PREPARED:
-                        const time_points = getVideoStagePoints()
-                        runSeekInfo = runSeekInSeries(time_points)
-                        await runSeekInfo.allDone
-                        await waitForSeekDone()
-                        runSeekInfo.printPassCount()
-                        expect(runSeekInfo.seekSucceed).assertEqual(time_points.length)
-                        done()
-                        break;
-                    default:
-                        break;
+            if(!avPlayer){
+                console.info(`avPlayer is null`);
+                expect().assertFail()
+                done();
+            }else{
+                try {
+                    let runSeekInfo:RunSeekInfo
+                    const time_points = getVideoStagePoints()
+                    avPlayer?.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
+                        console.info('case current state is: ' + state)
+                        switch (state) {
+                            case INITIALIZED:
+                                avPlayer?.prepare();
+                                break;
+                            case PREPARED:
+                                const time_points = getVideoStagePoints()
+                                runSeekInfo = runSeekInSeries(time_points)
+                                await runSeekInfo.allDone
+                                await waitForSeekDone()
+                                runSeekInfo.printPassCount()
+                                expect(runSeekInfo.seekSucceed).assertEqual(time_points.length)
+                                done()
+                                break;
+                            default:
+                                break;
+                        }
+                    });
+                    avPlayer?.on('seekDone',(seekDoneTime:number) => {
+                        console.info('seekDone called,and seek time is:' + seekDoneTime);
+                        isSeek = false;
+                        runSeekInfo.seekSucceed++;
+                    })
+                    avPlayer?.on('error', (err) => {
+                        console.error(`error occurred, message is ${err.message}`);
+                        isSeek = false;
+                        runSeekInfo.seekFailed++;
+                    });
+                    setSource(avPlayer, fileDescriptor);
+                } catch (error) {
+                    console.error(`Test exception: ${JSON.stringify(error)}`);
+                    expect().assertFail()
+                    done()
                 }
-            });
-            avPlayer?.on('seekDone',(seekDoneTime:number) => {
-                console.info('seekDone called,and seek time is:' + seekDoneTime);
-                isSeek = false;
-                runSeekInfo.seekSucceed++;
-            })
-            avPlayer?.on('error', (err) => {
-                console.error(`error occurred, message is ${err.message}`);
-                isSeek = false;
-                runSeekInfo.seekFailed++;
-            });
-            setSource(avPlayer, fileDescriptor);
+            }
         })
         
         // #region
@@ -176,41 +188,48 @@ export default function AVPlayerVideoSeekTest() {
         it('SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_0200', Level.LEVEL0,async (done: Function) => {
             if(!avPlayer){
                 console.info(`avPlayer is null`);
+                expect().assertFail()
                 done();
-                return;
-            }
-            let runSeekInfo:RunSeekInfo
-            avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
-                if(!avPlayer) return
-                console.info('case current state is: ' + state)
-                switch (state) {
-                    case INITIALIZED:
-                        avPlayer.prepare();
-                        break;
-                    case PREPARED:
-                        const time_points = getVideoStagePoints(true)
-                        runSeekInfo = runSeekInSeries(time_points)
-                        await runSeekInfo.allDone
-                        await waitForSeekDone()
-                        runSeekInfo.printPassCount()
-                        expect(runSeekInfo.seekSucceed).assertEqual(time_points.length)
-                        done()
-                        break;
-                    default:
-                        break;
+            }else{
+                try {
+                    let runSeekInfo:RunSeekInfo
+                    avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
+                        if(!avPlayer) return
+                        console.info('case current state is: ' + state)
+                        switch (state) {
+                            case INITIALIZED:
+                                avPlayer.prepare();
+                                break;
+                            case PREPARED:
+                                const time_points = getVideoStagePoints(true)
+                                runSeekInfo = runSeekInSeries(time_points)
+                                await runSeekInfo.allDone
+                                await waitForSeekDone()
+                                runSeekInfo.printPassCount()
+                                expect(runSeekInfo.seekSucceed).assertEqual(time_points.length)
+                                done()
+                                break;
+                            default:
+                                break;
+                        }
+                    });
+                    avPlayer.on('seekDone',(seekDoneTime:number) => {
+                        console.info('seekDone called,and seek time is:' + seekDoneTime);
+                        isSeek = false;
+                        runSeekInfo.seekSucceed++;
+                    })
+                    avPlayer.on('error', (err) => {
+                        console.error(`error occurred, message is ${err.message}`);
+                        isSeek = false;
+                        runSeekInfo.seekFailed++;
+                    });
+                    setSource(avPlayer, fileDescriptor);
+                } catch (error) {
+                    console.error(`Test exception: ${JSON.stringify(error)}`);
+                    expect().assertFail()
+                    done()
                 }
-            });
-            avPlayer.on('seekDone',(seekDoneTime:number) => {
-                console.info('seekDone called,and seek time is:' + seekDoneTime);
-                isSeek = false;
-                runSeekInfo.seekSucceed++;
-            })
-            avPlayer.on('error', (err) => {
-                console.error(`error occurred, message is ${err.message}`);
-                isSeek = false;
-                runSeekInfo.seekFailed++;
-            });
-            setSource(avPlayer, fileDescriptor);
+            }
         })
 
         // #region
@@ -226,44 +245,51 @@ export default function AVPlayerVideoSeekTest() {
         it('SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_0300', Level.LEVEL0,async (done: Function) => {
             if(!avPlayer){
                 console.info(`avPlayer is null`);
+                expect().assertFail();
                 done();
-                return;
-            }
-            let runSeekInfo:RunSeekInfo
-            avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
-                if(!avPlayer) return
-                console.info('case current state is: ' + state)
-                switch (state) {
-                    case INITIALIZED:
-                        avPlayer.prepare();
-                        break;
-                    case PREPARED:
-                        avPlayer.play();
-                        break;
-                    case PLAYING:
-                        const time_points = getVideoStagePoints()
-                        runSeekInfo = runSeekInSeries(time_points)
-                        await runSeekInfo.allDone
-                        await waitForSeekDone()
-                        runSeekInfo.printPassCount()
-                        expect(runSeekInfo.seekSucceed).assertEqual(time_points.length)
-                        done()
-                        break;
-                    default:
-                        break;
+            }else{
+                try {
+                    let runSeekInfo:RunSeekInfo
+                    avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
+                        if(!avPlayer) return
+                        console.info('case current state is: ' + state)
+                        switch (state) {
+                            case INITIALIZED:
+                                avPlayer.prepare();
+                                break;
+                            case PREPARED:
+                                avPlayer.play();
+                                break;
+                            case PLAYING:
+                                const time_points = getVideoStagePoints()
+                                runSeekInfo = runSeekInSeries(time_points)
+                                await runSeekInfo.allDone
+                                await waitForSeekDone()
+                                runSeekInfo.printPassCount()
+                                expect(runSeekInfo.seekSucceed).assertEqual(time_points.length)
+                                done()
+                                break;
+                            default:
+                                break;
+                        }
+                    });
+                    avPlayer.on('seekDone',(seekDoneTime:number) => {
+                        console.info('seekDone called,and seek time is:' + seekDoneTime);
+                        isSeek = false;
+                        runSeekInfo.seekSucceed++;
+                    })
+                    avPlayer.on('error', (err) => {
+                        console.error(`error occurred, message is ${err.message}`);
+                        isSeek = false;
+                        runSeekInfo.seekFailed++;
+                    });
+                    setSource(avPlayer, fileDescriptor);
+                } catch (error) {
+                    console.error(`Test exception: ${JSON.stringify(error)}`);
+                    expect().assertFail()
+                    done()
                 }
-            });
-            avPlayer.on('seekDone',(seekDoneTime:number) => {
-                console.info('seekDone called,and seek time is:' + seekDoneTime);
-                isSeek = false;
-                runSeekInfo.seekSucceed++;
-            })
-            avPlayer.on('error', (err) => {
-                console.error(`error occurred, message is ${err.message}`);
-                isSeek = false;
-                runSeekInfo.seekFailed++;
-            });
-            setSource(avPlayer, fileDescriptor);
+            }
         })
 
         // #region
@@ -279,44 +305,51 @@ export default function AVPlayerVideoSeekTest() {
         it('SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_0400', Level.LEVEL0,async (done: Function) => {
             if(!avPlayer){
                 console.info(`avPlayer is null`);
+                expect().assertFail();
                 done();
-                return;
-            }
-            let runSeekInfo:RunSeekInfo
-            avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
-                if(!avPlayer) return;
-                console.info('case current state is: ' + state)
-                switch (state) {
-                    case INITIALIZED:
-                        avPlayer.prepare();
-                        break;
-                    case PREPARED:
-                        avPlayer.play();
-                        break;
-                    case PLAYING:
-                        const time_points = getVideoStagePoints(true)
-                        runSeekInfo = runSeekInSeries(time_points)
-                        await runSeekInfo.allDone
-                        await waitForSeekDone()
-                        runSeekInfo.printPassCount()
-                        expect(runSeekInfo.seekSucceed).assertEqual(time_points.length)
-                        done()
-                        break;
-                    default:
-                        break;
+            }else{
+                try {
+                    let runSeekInfo:RunSeekInfo
+                    avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
+                        if(!avPlayer) return;
+                        console.info('case current state is: ' + state)
+                        switch (state) {
+                            case INITIALIZED:
+                                avPlayer.prepare();
+                                break;
+                            case PREPARED:
+                                avPlayer.play();
+                                break;
+                            case PLAYING:
+                                const time_points = getVideoStagePoints(true)
+                                runSeekInfo = runSeekInSeries(time_points)
+                                await runSeekInfo.allDone
+                                await waitForSeekDone()
+                                runSeekInfo.printPassCount()
+                                expect(runSeekInfo.seekSucceed).assertEqual(time_points.length)
+                                done()
+                                break;
+                            default:
+                                break;
+                        }
+                    });
+                    avPlayer.on('seekDone',(seekDoneTime:number) => {
+                        console.info('seekDone called,and seek time is:' + seekDoneTime);
+                        isSeek = false;
+                        runSeekInfo.seekSucceed++;
+                    })
+                    avPlayer.on('error', (err) => {
+                        console.error(`error occurred, message is ${err.message}`);
+                        isSeek = false;
+                        runSeekInfo.seekFailed++;
+                    });
+                    setSource(avPlayer, fileDescriptor);
+                } catch (error) {
+                    console.error(`Test exception: ${JSON.stringify(error)}`);
+                    expect().assertFail()
+                    done()
                 }
-            });
-            avPlayer.on('seekDone',(seekDoneTime:number) => {
-                console.info('seekDone called,and seek time is:' + seekDoneTime);
-                isSeek = false;
-                runSeekInfo.seekSucceed++;
-            })
-            avPlayer.on('error', (err) => {
-                console.error(`error occurred, message is ${err.message}`);
-                isSeek = false;
-                runSeekInfo.seekFailed++;
-            });
-            setSource(avPlayer, fileDescriptor);
+            }
         })
 
         // #region
@@ -332,47 +365,54 @@ export default function AVPlayerVideoSeekTest() {
         it('SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_0500', Level.LEVEL0,async (done: Function) => {
             if(!avPlayer){
                 console.info(`avPlayer is null`);
+                expect().assertFail();
                 done();
-                return;
-            }
-            let runSeekInfo:RunSeekInfo
-            avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
-                if(!avPlayer) return;
-                console.info('case current state is: ' + state)
-                switch (state) {
-                    case INITIALIZED:
-                        avPlayer.prepare();
-                        break;
-                    case PREPARED:
-                        avPlayer.play();
-                        break;
-                    case PLAYING:
-                        avPlayer.pause()
-                        break;
-                    case PAUSED:
-                        const time_points = getVideoStagePoints()
-                        runSeekInfo = runSeekInSeries(time_points)
-                        await runSeekInfo.allDone
-                        await waitForSeekDone()
-                        runSeekInfo.printPassCount()
-                        expect(runSeekInfo.seekSucceed).assertEqual(time_points.length)
-                        done()
-                        break;
-                    default:
-                        break;
+            }else{
+                try {
+                    let runSeekInfo:RunSeekInfo
+                    avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
+                        if(!avPlayer) return;
+                        console.info('case current state is: ' + state)
+                        switch (state) {
+                            case INITIALIZED:
+                                avPlayer.prepare();
+                                break;
+                            case PREPARED:
+                                avPlayer.play();
+                                break;
+                            case PLAYING:
+                                avPlayer.pause()
+                                break;
+                            case PAUSED:
+                                const time_points = getVideoStagePoints()
+                                runSeekInfo = runSeekInSeries(time_points)
+                                await runSeekInfo.allDone
+                                await waitForSeekDone()
+                                runSeekInfo.printPassCount()
+                                expect(runSeekInfo.seekSucceed).assertEqual(time_points.length)
+                                done()
+                                break;
+                            default:
+                                break;
+                        }
+                    });
+                    avPlayer.on('seekDone',(seekDoneTime:number) => {
+                        console.info('seekDone called,and seek time is:' + seekDoneTime);
+                        isSeek = false;
+                        runSeekInfo.seekSucceed++;
+                    })
+                    avPlayer.on('error', (err) => {
+                        console.error(`error occurred, message is ${err.message}`);
+                        isSeek = false;
+                        runSeekInfo.seekFailed++;
+                    });
+                    setSource(avPlayer, fileDescriptor);
+                } catch (error) {
+                    console.error(`Test exception: ${JSON.stringify(error)}`);
+                    expect().assertFail()
+                    done()
                 }
-            });
-            avPlayer.on('seekDone',(seekDoneTime:number) => {
-                console.info('seekDone called,and seek time is:' + seekDoneTime);
-                isSeek = false;
-                runSeekInfo.seekSucceed++;
-            })
-            avPlayer.on('error', (err) => {
-                console.error(`error occurred, message is ${err.message}`);
-                isSeek = false;
-                runSeekInfo.seekFailed++;
-            });
-            setSource(avPlayer, fileDescriptor);
+            }
         })
 
         // #region
@@ -388,47 +428,54 @@ export default function AVPlayerVideoSeekTest() {
         it('SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_0600', Level.LEVEL0,async (done: Function) => {
             if(!avPlayer){
                 console.info(`avPlayer is null`);
+                expect().assertFail();
                 done();
-                return;
-            }
-            let runSeekInfo:RunSeekInfo
-            avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
-                if(!avPlayer) return;
-                console.info('case current state is: ' + state)
-                switch (state) {
-                    case INITIALIZED:
-                        avPlayer.prepare();
-                        break;
-                    case PREPARED:
-                        avPlayer.play();
-                        break;
-                    case PLAYING:
-                        avPlayer.pause()
-                        break;
-                    case PAUSED:
-                        const time_points = getVideoStagePoints(true)
-                        runSeekInfo = runSeekInSeries(time_points)
-                        await runSeekInfo.allDone
-                        await waitForSeekDone()
-                        runSeekInfo.printPassCount()
-                        expect(runSeekInfo.seekSucceed).assertEqual(time_points.length)
-                        done()
-                        break;
-                    default:
-                        break;
+            }else{
+                try {
+                    let runSeekInfo:RunSeekInfo
+                    avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
+                        if(!avPlayer) return;
+                        console.info('case current state is: ' + state)
+                        switch (state) {
+                            case INITIALIZED:
+                                avPlayer.prepare();
+                                break;
+                            case PREPARED:
+                                avPlayer.play();
+                                break;
+                            case PLAYING:
+                                avPlayer.pause()
+                                break;
+                            case PAUSED:
+                                const time_points = getVideoStagePoints(true)
+                                runSeekInfo = runSeekInSeries(time_points)
+                                await runSeekInfo.allDone
+                                await waitForSeekDone()
+                                runSeekInfo.printPassCount()
+                                expect(runSeekInfo.seekSucceed).assertEqual(time_points.length)
+                                done()
+                                break;
+                            default:
+                                break;
+                        }
+                    });
+                    avPlayer.on('seekDone',(seekDoneTime:number) => {
+                        console.info('seekDone called,and seek time is:' + seekDoneTime);
+                        isSeek = false;
+                        runSeekInfo.seekSucceed++;
+                    })
+                    avPlayer.on('error', (err) => {
+                        console.error(`error occurred, message is ${err.message}`);
+                        isSeek = false;
+                        runSeekInfo.seekFailed++;
+                    });
+                    setSource(avPlayer, fileDescriptor);
+                } catch (error) {
+                    console.error(`Test exception: ${JSON.stringify(error)}`);
+                    expect().assertFail()
+                    done()
                 }
-            });
-            avPlayer.on('seekDone',(seekDoneTime:number) => {
-                console.info('seekDone called,and seek time is:' + seekDoneTime);
-                isSeek = false;
-                runSeekInfo.seekSucceed++;
-            })
-            avPlayer.on('error', (err) => {
-                console.error(`error occurred, message is ${err.message}`);
-                isSeek = false;
-                runSeekInfo.seekFailed++;
-            });
-            setSource(avPlayer, fileDescriptor);
+            }
         })
 
         // #region
@@ -444,44 +491,51 @@ export default function AVPlayerVideoSeekTest() {
         it('SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_0700', Level.LEVEL0,async (done: Function) => {
             if(!avPlayer){
                 console.info(`avPlayer is null`);
+                expect().assertFail();
                 done();
-                return;
-            }
-            let runSeekInfo:RunSeekInfo
-            avPlayer?.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
-                if(!avPlayer) return
-                console.info('case current state is: ' + state)
-                switch (state) {
-                    case INITIALIZED:
-                        avPlayer.prepare();
-                        break;
-                    case PREPARED:
-                        avPlayer.play();
-                        break;
-                    case COMPLETED:
-                        const time_points = getVideoStagePoints()
-                        runSeekInfo = runSeekInSeries(time_points)
-                        await runSeekInfo.allDone
-                        await waitForSeekDone()
-                        runSeekInfo.printPassCount()
-                        expect(runSeekInfo.seekSucceed).assertEqual(time_points.length)
-                        done()
-                        break;
-                    default:
-                        break;
+            }else{
+                try {
+                    let runSeekInfo:RunSeekInfo
+                    avPlayer?.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
+                        if(!avPlayer) return
+                        console.info('case current state is: ' + state)
+                        switch (state) {
+                            case INITIALIZED:
+                                avPlayer.prepare();
+                                break;
+                            case PREPARED:
+                                avPlayer.play();
+                                break;
+                            case COMPLETED:
+                                const time_points = getVideoStagePoints()
+                                runSeekInfo = runSeekInSeries(time_points)
+                                await runSeekInfo.allDone
+                                await waitForSeekDone()
+                                runSeekInfo.printPassCount()
+                                expect(runSeekInfo.seekSucceed).assertEqual(time_points.length)
+                                done()
+                                break;
+                            default:
+                                break;
+                        }
+                    });
+                    avPlayer.on('seekDone',(seekDoneTime:number) => {
+                        console.info('seekDone called,and seek time is:' + seekDoneTime);
+                        isSeek = false;
+                        runSeekInfo.seekSucceed++;
+                    })
+                    avPlayer.on('error', (err) => {
+                        console.error(`error occurred, message is ${err.message}`);
+                        isSeek = false;
+                        runSeekInfo.seekFailed++;
+                    });
+                    setSource(avPlayer, fileDescriptor);
+                } catch (error) {
+                    console.error(`Test exception: ${JSON.stringify(error)}`);
+                    expect().assertFail()
+                    done()
                 }
-            });
-            avPlayer.on('seekDone',(seekDoneTime:number) => {
-                console.info('seekDone called,and seek time is:' + seekDoneTime);
-                isSeek = false;
-                runSeekInfo.seekSucceed++;
-            })
-            avPlayer.on('error', (err) => {
-                console.error(`error occurred, message is ${err.message}`);
-                isSeek = false;
-                runSeekInfo.seekFailed++;
-            });
-            setSource(avPlayer, fileDescriptor);
+            }
         })
 
         // #region
@@ -497,44 +551,51 @@ export default function AVPlayerVideoSeekTest() {
         it('SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_0800', Level.LEVEL0,async (done: Function) => {
             if(!avPlayer){
                 console.info(`avPlayer is null`);
+                expect().assertFail();
                 done();
-                return;
-            }
-            let runSeekInfo:RunSeekInfo
-            avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
-                if(!avPlayer) return
-                console.info('case current state is: ' + state)
-                switch (state) {
-                    case INITIALIZED:
-                        avPlayer.prepare();
-                        break;
-                    case PREPARED:
-                        avPlayer.play();
-                        break;
-                    case COMPLETED:
-                        const time_points = getVideoStagePoints(true)
-                        runSeekInfo = runSeekInSeries(time_points)
-                        await runSeekInfo.allDone
-                        await waitForSeekDone()
-                        runSeekInfo.printPassCount()
-                        expect(runSeekInfo.seekSucceed).assertEqual(time_points.length)
-                        done()
-                        break;
-                    default:
-                        break;
+            }else{
+                try {
+                    let runSeekInfo:RunSeekInfo
+                    avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
+                        if(!avPlayer) return
+                        console.info('case current state is: ' + state)
+                        switch (state) {
+                            case INITIALIZED:
+                                avPlayer.prepare();
+                                break;
+                            case PREPARED:
+                                avPlayer.play();
+                                break;
+                            case COMPLETED:
+                                const time_points = getVideoStagePoints(true)
+                                runSeekInfo = runSeekInSeries(time_points)
+                                await runSeekInfo.allDone
+                                await waitForSeekDone()
+                                runSeekInfo.printPassCount()
+                                expect(runSeekInfo.seekSucceed).assertEqual(time_points.length)
+                                done()
+                                break;
+                            default:
+                                break;
+                        }
+                    });
+                    avPlayer.on('seekDone',(seekDoneTime:number) => {
+                        console.info('seekDone called,and seek time is:' + seekDoneTime);
+                        isSeek = false;
+                        runSeekInfo.seekSucceed++;
+                    })
+                    avPlayer.on('error', (err) => {
+                        console.error(`error occurred, message is ${err.message}`);
+                        isSeek = false;
+                        runSeekInfo.seekFailed++;
+                    });
+                    setSource(avPlayer, fileDescriptor);
+                } catch (error) {
+                    console.error(`Test exception: ${JSON.stringify(error)}`);
+                    expect().assertFail()
+                    done()
                 }
-            });
-            avPlayer.on('seekDone',(seekDoneTime:number) => {
-                console.info('seekDone called,and seek time is:' + seekDoneTime);
-                isSeek = false;
-                runSeekInfo.seekSucceed++;
-            })
-            avPlayer.on('error', (err) => {
-                console.error(`error occurred, message is ${err.message}`);
-                isSeek = false;
-                runSeekInfo.seekFailed++;
-            });
-            setSource(avPlayer, fileDescriptor);
+            }
         })
 
         // #region
@@ -550,41 +611,48 @@ export default function AVPlayerVideoSeekTest() {
         it('SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_0900', Level.LEVEL0,async (done: Function) => {
             if(!avPlayer){
                 console.info(`avPlayer is null`);
+                expect().assertFail();
                 done();
-                return;
-            }
-            let runSeekInfo:RunSeekInfo
-            avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
-                if(!avPlayer) return
-                console.info('case current state is: ' + state)
-                switch (state) {
-                    case INITIALIZED:
-                        avPlayer.prepare();
-                        break;
-                    case PREPARED:
-                        const outsideTimePoints = [-1,avPlayer.duration + 100];
-                        runSeekInfo = runSeekInSeries(outsideTimePoints)
-                        await runSeekInfo.allDone
-                        await waitForSeekDone()
-                        runSeekInfo.printPassCount()
-                        expect(!runSeekInfo.seekFailed).assertEqual(false)
-                        done()
-                        break;
-                    default:
-                        break;
+            }else{
+                try {
+                    let runSeekInfo:RunSeekInfo
+                    avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
+                        if(!avPlayer) return
+                        console.info('case current state is: ' + state)
+                        switch (state) {
+                            case INITIALIZED:
+                                avPlayer.prepare();
+                                break;
+                            case PREPARED:
+                                const outsideTimePoints = [-1,avPlayer.duration + 100];
+                                runSeekInfo = runSeekInSeries(outsideTimePoints)
+                                await runSeekInfo.allDone
+                                await waitForSeekDone()
+                                runSeekInfo.printPassCount()
+                                expect(!runSeekInfo.seekFailed).assertEqual(false)
+                                done()
+                                break;
+                            default:
+                                break;
+                        }
+                    });
+                    avPlayer.on('seekDone',(seekDoneTime:number) => {
+                        console.info('seekDone called,and seek time is:' + seekDoneTime);
+                        isSeek = false;
+                        runSeekInfo.seekSucceed++
+                    })
+                    avPlayer.on('error', (err) => {
+                        console.error(`error occurred, message is ${err.message}`);
+                        isSeek = false;
+                        runSeekInfo.seekFailed++
+                    });
+                    setSource(avPlayer, fileDescriptor);
+                } catch (error) {
+                    console.error(`Test exception: ${JSON.stringify(error)}`);
+                    expect().assertFail()
+                    done()
                 }
-            });
-            avPlayer.on('seekDone',(seekDoneTime:number) => {
-                console.info('seekDone called,and seek time is:' + seekDoneTime);
-                isSeek = false;
-                runSeekInfo.seekSucceed++
-            })
-            avPlayer.on('error', (err) => {
-                console.error(`error occurred, message is ${err.message}`);
-                isSeek = false;
-                runSeekInfo.seekFailed++
-            });
-            setSource(avPlayer, fileDescriptor);
+            }
         })
 
         // #region
@@ -600,44 +668,51 @@ export default function AVPlayerVideoSeekTest() {
         it('SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_1000', Level.LEVEL0,async (done: Function) => {
             if(!avPlayer){
                 console.info(`avPlayer is null`);
+                expect().assertFail();
                 done();
-                return;
-            }
-            let runSeekInfo:RunSeekInfo
-            avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
-                if(!avPlayer) return
-                console.info('case current state is: ' + state)
-                switch (state) {
-                    case INITIALIZED:
-                        avPlayer.prepare();
-                        break;
-                    case PREPARED:
-                        avPlayer.play();
-                        break;
-                    case PLAYING:
-                        const outsideTimePoints = [-1,avPlayer.duration + 100];
-                        runSeekInfo = runSeekInSeries(outsideTimePoints)
-                        await runSeekInfo.allDone
-                        await waitForSeekDone()
-                        runSeekInfo.printPassCount()
-                        expect(!runSeekInfo.seekFailed).assertEqual(false)
-                        done()
-                        break;
-                    default:
-                        break;
+            }else{
+                try {
+                    let runSeekInfo:RunSeekInfo
+                    avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
+                        if(!avPlayer) return
+                        console.info('case current state is: ' + state)
+                        switch (state) {
+                            case INITIALIZED:
+                                avPlayer.prepare();
+                                break;
+                            case PREPARED:
+                                avPlayer.play();
+                                break;
+                            case PLAYING:
+                                const outsideTimePoints = [-1,avPlayer.duration + 100];
+                                runSeekInfo = runSeekInSeries(outsideTimePoints)
+                                await runSeekInfo.allDone
+                                await waitForSeekDone()
+                                runSeekInfo.printPassCount()
+                                expect(!runSeekInfo.seekFailed).assertEqual(false)
+                                done()
+                                break;
+                            default:
+                                break;
+                        }
+                    });
+                    avPlayer.on('seekDone',(seekDoneTime:number) => {
+                        console.info('seekDone called,and seek time is:' + seekDoneTime);
+                        isSeek = false;
+                        runSeekInfo.seekSucceed++
+                    })
+                    avPlayer.on('error', (err) => {
+                        console.error(`error occurred, message is ${err.message}`);
+                        isSeek = false;
+                        runSeekInfo.seekFailed++
+                    });
+                    setSource(avPlayer, fileDescriptor);
+                } catch (error) {
+                    console.error(`Test exception: ${JSON.stringify(error)}`);
+                    expect().assertFail()
+                    done()
                 }
-            });
-            avPlayer.on('seekDone',(seekDoneTime:number) => {
-                console.info('seekDone called,and seek time is:' + seekDoneTime);
-                isSeek = false;
-                runSeekInfo.seekSucceed++
-            })
-            avPlayer.on('error', (err) => {
-                console.error(`error occurred, message is ${err.message}`);
-                isSeek = false;
-                runSeekInfo.seekFailed++
-            });
-            setSource(avPlayer, fileDescriptor);
+            }
         })
 
         // #region
@@ -653,47 +728,54 @@ export default function AVPlayerVideoSeekTest() {
         it('SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_1100', Level.LEVEL0,async (done: Function) => {
             if(!avPlayer){
                 console.info(`avPlayer is null`);
+                expect().assertFail();
                 done();
-                return;
-            }
-            let runSeekInfo:RunSeekInfo
-            avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
-                if(!avPlayer) return
-                console.info('case current state is: ' + state)
-                switch (state) {
-                    case INITIALIZED:
-                        avPlayer.prepare();
-                        break;
-                    case PREPARED:
-                        avPlayer.play();
-                        break;
-                    case PLAYING:
-                        avPlayer.pause()
-                        break
-                    case PAUSED:
-                        const outsideTimePoints = [-1,avPlayer.duration + 100];
-                        runSeekInfo = runSeekInSeries(outsideTimePoints)
-                        await runSeekInfo.allDone
-                        await waitForSeekDone()
-                        runSeekInfo.printPassCount()
-                        expect(!runSeekInfo.seekFailed).assertEqual(false)
-                        done()
-                        break;
-                    default:
-                        break;
+            }else{
+                try {
+                    let runSeekInfo:RunSeekInfo
+                    avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
+                        if(!avPlayer) return
+                        console.info('case current state is: ' + state)
+                        switch (state) {
+                            case INITIALIZED:
+                                avPlayer.prepare();
+                                break;
+                            case PREPARED:
+                                avPlayer.play();
+                                break;
+                            case PLAYING:
+                                avPlayer.pause()
+                                break
+                            case PAUSED:
+                                const outsideTimePoints = [-1,avPlayer.duration + 100];
+                                runSeekInfo = runSeekInSeries(outsideTimePoints)
+                                await runSeekInfo.allDone
+                                await waitForSeekDone()
+                                runSeekInfo.printPassCount()
+                                expect(!runSeekInfo.seekFailed).assertEqual(false)
+                                done()
+                                break;
+                            default:
+                                break;
+                        }
+                    });
+                    avPlayer.on('seekDone',(seekDoneTime:number) => {
+                        console.info('seekDone called,and seek time is:' + seekDoneTime);
+                        isSeek = false;
+                        runSeekInfo.seekSucceed++
+                    })
+                    avPlayer.on('error', (err) => {
+                        console.error(`error occurred, message is ${err.message}`);
+                        isSeek = false;
+                        runSeekInfo.seekFailed++
+                    });
+                    setSource(avPlayer, fileDescriptor);
+                } catch (error) {
+                    console.error(`Test exception: ${JSON.stringify(error)}`);
+                    expect().assertFail()
+                    done()
                 }
-            });
-            avPlayer.on('seekDone',(seekDoneTime:number) => {
-                console.info('seekDone called,and seek time is:' + seekDoneTime);
-                isSeek = false;
-                runSeekInfo.seekSucceed++
-            })
-            avPlayer.on('error', (err) => {
-                console.error(`error occurred, message is ${err.message}`);
-                isSeek = false;
-                runSeekInfo.seekFailed++
-            });
-            setSource(avPlayer, fileDescriptor);
+            }
         })
 
         // #region
@@ -709,44 +791,51 @@ export default function AVPlayerVideoSeekTest() {
         it('SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_1200', Level.LEVEL0,async (done: Function) => {
             if(!avPlayer){
                 console.info(`avPlayer is null`);
+                expect().assertFail();
                 done();
-                return;
-            }
-            let runSeekInfo:RunSeekInfo
-            avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
-                if(!avPlayer) return
-                console.info('case current state is: ' + state)
-                switch (state) {
-                    case INITIALIZED:
-                        avPlayer.prepare();
-                        break;
-                    case PREPARED:
-                        avPlayer.play();
-                        break;
-                    case COMPLETED:
-                        const outsideTimePoints = [-1,avPlayer.duration + 100];
-                        runSeekInfo = runSeekInSeries(outsideTimePoints)
-                        await runSeekInfo.allDone
-                        await waitForSeekDone()
-                        runSeekInfo.printPassCount()
-                        expect(!runSeekInfo.seekFailed).assertEqual(false)
-                        done()
-                        break;
-                    default:
-                        break;
+            }else{
+                try {
+                    let runSeekInfo:RunSeekInfo
+                    avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
+                        if(!avPlayer) return
+                        console.info('case current state is: ' + state)
+                        switch (state) {
+                            case INITIALIZED:
+                                avPlayer.prepare();
+                                break;
+                            case PREPARED:
+                                avPlayer.play();
+                                break;
+                            case COMPLETED:
+                                const outsideTimePoints = [-1,avPlayer.duration + 100];
+                                runSeekInfo = runSeekInSeries(outsideTimePoints)
+                                await runSeekInfo.allDone
+                                await waitForSeekDone()
+                                runSeekInfo.printPassCount()
+                                expect(!runSeekInfo.seekFailed).assertEqual(false)
+                                done()
+                                break;
+                            default:
+                                break;
+                        }
+                    });
+                    avPlayer.on('seekDone',(seekDoneTime:number) => {
+                        console.info('seekDone called,and seek time is:' + seekDoneTime);
+                        isSeek = false;
+                        runSeekInfo.seekSucceed++
+                    })
+                    avPlayer.on('error', (err) => {
+                        console.error(`error occurred, message is ${err.message}`);
+                        isSeek = false;
+                        runSeekInfo.seekFailed++
+                    });
+                    setSource(avPlayer, fileDescriptor);
+                } catch (error) {
+                    console.error(`Test exception: ${JSON.stringify(error)}`);
+                    expect().assertFail()
+                    done()
                 }
-            });
-            avPlayer.on('seekDone',(seekDoneTime:number) => {
-                console.info('seekDone called,and seek time is:' + seekDoneTime);
-                isSeek = false;
-                runSeekInfo.seekSucceed++
-            })
-            avPlayer.on('error', (err) => {
-                console.error(`error occurred, message is ${err.message}`);
-                isSeek = false;
-                runSeekInfo.seekFailed++
-            });
-            setSource(avPlayer, fileDescriptor);
+            }
         })
 
         // #region
@@ -762,35 +851,42 @@ export default function AVPlayerVideoSeekTest() {
         it('SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_1300', Level.LEVEL0,async (done: Function) => {
             if(!avPlayer){
                 console.info(`avPlayer is null`);
+                expect().assertFail();
                 done();
-                return;
-            }
-            let runSeekInfo:RunSeekInfo
-            avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
-                if(!avPlayer) return
-                console.info('case current state is: ' + state)
-                switch (state) {
-                    default:
-                        break;
+            }else{
+                try {
+                    let runSeekInfo:RunSeekInfo
+                    avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
+                        if(!avPlayer) return
+                        console.info('case current state is: ' + state)
+                        switch (state) {
+                            default:
+                                break;
+                        }
+                    });
+                    avPlayer.on('seekDone',(seekDoneTime:number) => {
+                        console.info('seekDone called,and seek time is:' + seekDoneTime);
+                        isSeek = false;
+                        runSeekInfo.seekSucceed++;
+                    })
+                    avPlayer.on('error', (err) => {
+                        console.error(`error occurred, message is ${err.message}`);
+                        isSeek = false;
+                        runSeekInfo.seekFailed++;
+                    });
+                    const time_points = getVideoStagePoints()
+                    runSeekInfo = runSeekInSeries(time_points)
+                    await runSeekInfo.allDone
+                    await waitForSeekDone()
+                    runSeekInfo.printPassCount()
+                    expect(!runSeekInfo.seekFailed).assertEqual(false)
+                    done()
+                } catch (error) {
+                    console.error(`Test exception: ${JSON.stringify(error)}`);
+                    expect().assertFail()
+                    done()
                 }
-            });
-            avPlayer.on('seekDone',(seekDoneTime:number) => {
-                console.info('seekDone called,and seek time is:' + seekDoneTime);
-                isSeek = false;
-                runSeekInfo.seekSucceed++;
-            })
-            avPlayer.on('error', (err) => {
-                console.error(`error occurred, message is ${err.message}`);
-                isSeek = false;
-                runSeekInfo.seekFailed++;
-            });
-            const time_points = getVideoStagePoints()
-            runSeekInfo = runSeekInSeries(time_points)
-            await runSeekInfo.allDone
-            await waitForSeekDone()
-            runSeekInfo.printPassCount()
-            expect(!runSeekInfo.seekFailed).assertEqual(false)
-            done()
+            }
         })
 
         // #region
@@ -806,35 +902,42 @@ export default function AVPlayerVideoSeekTest() {
         it('SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_1400', Level.LEVEL0,async (done: Function) => {
             if(!avPlayer){
                 console.info(`avPlayer is null`);
+                expect().assertFail();
                 done();
-                return;
-            }
-            let runSeekInfo:RunSeekInfo
-            avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
-                if(!avPlayer) return
-                console.info('case current state is: ' + state)
-                switch (state) {
-                    default:
-                        break;
+            }else{
+                try {
+                    let runSeekInfo:RunSeekInfo
+                    avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
+                        if(!avPlayer) return
+                        console.info('case current state is: ' + state)
+                        switch (state) {
+                            default:
+                                break;
+                        }
+                    });
+                    avPlayer.on('seekDone',(seekDoneTime:number) => {
+                        console.info('seekDone called,and seek time is:' + seekDoneTime);
+                        isSeek = false;
+                        runSeekInfo.seekSucceed++;
+                    })
+                    avPlayer.on('error', (err) => {
+                        console.error(`error occurred, message is ${err.message}`);
+                        isSeek = false;
+                        runSeekInfo.seekFailed++;
+                    });
+                    const time_points = getVideoStagePoints(true)
+                    runSeekInfo = runSeekInSeries(time_points)
+                    await runSeekInfo.allDone
+                    await waitForSeekDone()
+                    runSeekInfo.printPassCount()
+                    expect(!runSeekInfo.seekFailed).assertEqual(false)
+                    done()
+                } catch (error) {
+                    console.error(`Test exception: ${JSON.stringify(error)}`);
+                    expect().assertFail()
+                    done()
                 }
-            });
-            avPlayer.on('seekDone',(seekDoneTime:number) => {
-                console.info('seekDone called,and seek time is:' + seekDoneTime);
-                isSeek = false;
-                runSeekInfo.seekSucceed++;
-            })
-            avPlayer.on('error', (err) => {
-                console.error(`error occurred, message is ${err.message}`);
-                isSeek = false;
-                runSeekInfo.seekFailed++;
-            });
-            const time_points = getVideoStagePoints(true)
-            runSeekInfo = runSeekInSeries(time_points)
-            await runSeekInfo.allDone
-            await waitForSeekDone()
-            runSeekInfo.printPassCount()
-            expect(!runSeekInfo.seekFailed).assertEqual(false)
-            done()
+            }
         })
 
         // #region
@@ -850,38 +953,45 @@ export default function AVPlayerVideoSeekTest() {
         it('SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_1500', Level.LEVEL0,async (done: Function) => {
             if(!avPlayer){
                 console.info(`avPlayer is null`);
+                expect().assertFail();
                 done();
-                return;
-            }
-            let runSeekInfo:RunSeekInfo
-            avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
-                if(!avPlayer) return
-                console.info('case current state is: ' + state)
-                switch (state) {
-                    case INITIALIZED:
-                        const time_points = getVideoStagePoints()
-                        runSeekInfo = runSeekInSeries(time_points)
-                        await runSeekInfo.allDone
-                        await waitForSeekDone()
-                        runSeekInfo.printPassCount()
-                        expect(!runSeekInfo.seekFailed).assertEqual(false)
-                        done()
-                        break;
-                    default:
-                        break;
+            }else{
+                try {
+                    let runSeekInfo:RunSeekInfo
+                    avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
+                        if(!avPlayer) return
+                        console.info('case current state is: ' + state)
+                        switch (state) {
+                            case INITIALIZED:
+                                const time_points = getVideoStagePoints()
+                                runSeekInfo = runSeekInSeries(time_points)
+                                await runSeekInfo.allDone
+                                await waitForSeekDone()
+                                runSeekInfo.printPassCount()
+                                expect(!runSeekInfo.seekFailed).assertEqual(false)
+                                done()
+                                break;
+                            default:
+                                break;
+                        }
+                    });
+                    avPlayer.on('seekDone',(seekDoneTime:number) => {
+                        console.info('seekDone called,and seek time is:' + seekDoneTime);
+                        isSeek = false;
+                        runSeekInfo.seekSucceed++;
+                    })
+                    avPlayer.on('error', (err) => {
+                        console.error(`error occurred, message is ${err.message}`);
+                        isSeek = false;
+                        runSeekInfo.seekFailed++;
+                    });
+                    setSource(avPlayer, fileDescriptor);
+                } catch (error) {
+                    console.error(`Test exception: ${JSON.stringify(error)}`);
+                    expect().assertFail()
+                    done()
                 }
-            });
-            avPlayer.on('seekDone',(seekDoneTime:number) => {
-                console.info('seekDone called,and seek time is:' + seekDoneTime);
-                isSeek = false;
-                runSeekInfo.seekSucceed++;
-            })
-            avPlayer.on('error', (err) => {
-                console.error(`error occurred, message is ${err.message}`);
-                isSeek = false;
-                runSeekInfo.seekFailed++;
-            });
-            setSource(avPlayer, fileDescriptor);
+            }
         })
 
         // #region
@@ -897,38 +1007,45 @@ export default function AVPlayerVideoSeekTest() {
         it('SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_1600', Level.LEVEL0,async (done: Function) => {
             if(!avPlayer){
                 console.info(`avPlayer is null`);
+                expect().assertFail();
                 done();
-                return;
-            }
-            let runSeekInfo:RunSeekInfo
-            avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
-                if(!avPlayer) return
-                console.info('case current state is: ' + state)
-                switch (state) {
-                    case INITIALIZED:
-                        const time_points = getVideoStagePoints(true)
-                        runSeekInfo = runSeekInSeries(time_points)
-                        await runSeekInfo.allDone
-                        await waitForSeekDone()
-                        runSeekInfo.printPassCount()
-                        expect(!runSeekInfo.seekFailed).assertEqual(false)
-                        done()
-                        break;
-                    default:
-                        break;
+            }else{
+                try {
+                    let runSeekInfo:RunSeekInfo
+                    avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
+                        if(!avPlayer) return
+                        console.info('case current state is: ' + state)
+                        switch (state) {
+                            case INITIALIZED:
+                                const time_points = getVideoStagePoints(true)
+                                runSeekInfo = runSeekInSeries(time_points)
+                                await runSeekInfo.allDone
+                                await waitForSeekDone()
+                                runSeekInfo.printPassCount()
+                                expect(!runSeekInfo.seekFailed).assertEqual(false)
+                                done()
+                                break;
+                            default:
+                                break;
+                        }
+                    });
+                    avPlayer.on('seekDone',(seekDoneTime:number) => {
+                        console.info('seekDone called,and seek time is:' + seekDoneTime);
+                        isSeek = false;
+                        runSeekInfo.seekSucceed++;
+                    })
+                    avPlayer.on('error', (err) => {
+                        console.error(`error occurred, message is ${err.message}`);
+                        isSeek = false;
+                        runSeekInfo.seekFailed++;
+                    });
+                    setSource(avPlayer, fileDescriptor);
+                } catch (error) {
+                    console.error(`Test exception: ${JSON.stringify(error)}`);
+                    expect().assertFail()
+                    done()
                 }
-            });
-            avPlayer.on('seekDone',(seekDoneTime:number) => {
-                console.info('seekDone called,and seek time is:' + seekDoneTime);
-                isSeek = false;
-                runSeekInfo.seekSucceed++;
-            })
-            avPlayer.on('error', (err) => {
-                console.error(`error occurred, message is ${err.message}`);
-                isSeek = false;
-                runSeekInfo.seekFailed++;
-            });
-            setSource(avPlayer, fileDescriptor);
+            }
         })
         
         // #region
@@ -944,44 +1061,51 @@ export default function AVPlayerVideoSeekTest() {
         it('SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_1700', Level.LEVEL0,async (done: Function) => {
             if(!avPlayer){
                 console.info(`avPlayer is null`);
+                expect().assertFail();
                 done();
-                return;
-            }
-            let runSeekInfo:RunSeekInfo
-            avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
-                if(!avPlayer) return
-                console.info('case current state is: ' + state)
-                switch (state) {
-                    case INITIALIZED:
-                        avPlayer.prepare();
-                        break;
-                    case PREPARED:
-                        avPlayer.stop();
-                        break;
-                    case STOPPED:
-                        const time_points = getVideoStagePoints()
-                        runSeekInfo = runSeekInSeries(time_points)
-                        await runSeekInfo.allDone
-                        await waitForSeekDone()
-                        runSeekInfo.printPassCount()
-                        expect(!runSeekInfo.seekFailed).assertEqual(false)
-                        done()
-                        break;
-                    default:
-                        break;
+            }else{
+                try {
+                    let runSeekInfo:RunSeekInfo
+                    avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
+                        if(!avPlayer) return
+                        console.info('case current state is: ' + state)
+                        switch (state) {
+                            case INITIALIZED:
+                                avPlayer.prepare();
+                                break;
+                            case PREPARED:
+                                avPlayer.stop();
+                                break;
+                            case STOPPED:
+                                const time_points = getVideoStagePoints()
+                                runSeekInfo = runSeekInSeries(time_points)
+                                await runSeekInfo.allDone
+                                await waitForSeekDone()
+                                runSeekInfo.printPassCount()
+                                expect(!runSeekInfo.seekFailed).assertEqual(false)
+                                done()
+                                break;
+                            default:
+                                break;
+                        }
+                    });
+                    avPlayer.on('seekDone',(seekDoneTime:number) => {
+                        console.info('seekDone called,and seek time is:' + seekDoneTime);
+                        isSeek = false;
+                        runSeekInfo.seekSucceed++;
+                    })
+                    avPlayer.on('error', (err) => {
+                        console.error(`error occurred, message is ${err.message}`);
+                        isSeek = false;
+                        runSeekInfo.seekFailed++;
+                    });
+                    setSource(avPlayer, fileDescriptor);
+                } catch (error) {
+                    console.error(`Test exception: ${JSON.stringify(error)}`);
+                    expect().assertFail()
+                    done()
                 }
-            });
-            avPlayer.on('seekDone',(seekDoneTime:number) => {
-                console.info('seekDone called,and seek time is:' + seekDoneTime);
-                isSeek = false;
-                runSeekInfo.seekSucceed++;
-            })
-            avPlayer.on('error', (err) => {
-                console.error(`error occurred, message is ${err.message}`);
-                isSeek = false;
-                runSeekInfo.seekFailed++;
-            });
-            setSource(avPlayer, fileDescriptor);
+            }
         })
 
         // #region
@@ -997,44 +1121,51 @@ export default function AVPlayerVideoSeekTest() {
         it('SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_1800', Level.LEVEL0,async (done: Function) => {
             if(!avPlayer){
                 console.info(`avPlayer is null`);
+                expect().assertFail();
                 done();
-                return;
-            }
-            let runSeekInfo:RunSeekInfo
-            avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
-                if(!avPlayer) return
-                console.info('case current state is: ' + state)
-                switch (state) {
-                    case INITIALIZED:
-                        avPlayer.prepare();
-                        break;
-                    case PREPARED:
-                        avPlayer.stop();
-                        break;
-                    case STOPPED:
-                        const time_points = getVideoStagePoints(true)
-                        runSeekInfo = runSeekInSeries(time_points)
-                        await runSeekInfo.allDone
-                        await waitForSeekDone()
-                        runSeekInfo.printPassCount()
-                        expect(!runSeekInfo.seekFailed).assertEqual(false)
-                        done()
-                        break;
-                    default:
-                        break;
+            }else{
+                try {
+                    let runSeekInfo:RunSeekInfo
+                    avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
+                        if(!avPlayer) return
+                        console.info('case current state is: ' + state)
+                        switch (state) {
+                            case INITIALIZED:
+                                avPlayer.prepare();
+                                break;
+                            case PREPARED:
+                                avPlayer.stop();
+                                break;
+                            case STOPPED:
+                                const time_points = getVideoStagePoints(true)
+                                runSeekInfo = runSeekInSeries(time_points)
+                                await runSeekInfo.allDone
+                                await waitForSeekDone()
+                                runSeekInfo.printPassCount()
+                                expect(!runSeekInfo.seekFailed).assertEqual(false)
+                                done()
+                                break;
+                            default:
+                                break;
+                        }
+                    });
+                    avPlayer.on('seekDone',(seekDoneTime:number) => {
+                        console.info('seekDone called,and seek time is:' + seekDoneTime);
+                        isSeek = false;
+                        runSeekInfo.seekSucceed++;
+                    })
+                    avPlayer.on('error', (err) => {
+                        console.error(`error occurred, message is ${err.message}`);
+                        isSeek = false;
+                        runSeekInfo.seekFailed++;
+                    });
+                    setSource(avPlayer, fileDescriptor);
+                } catch (error) {
+                    console.error(`Test exception: ${JSON.stringify(error)}`);
+                    expect().assertFail()
+                    done()
                 }
-            });
-            avPlayer.on('seekDone',(seekDoneTime:number) => {
-                console.info('seekDone called,and seek time is:' + seekDoneTime);
-                isSeek = false;
-                runSeekInfo.seekSucceed++;
-            })
-            avPlayer.on('error', (err) => {
-                console.error(`error occurred, message is ${err.message}`);
-                isSeek = false;
-                runSeekInfo.seekFailed++;
-            });
-            setSource(avPlayer, fileDescriptor);
+            }
         })
 
         // #region
@@ -1050,38 +1181,45 @@ export default function AVPlayerVideoSeekTest() {
         it('SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_1900', Level.LEVEL0,async (done: Function) => {
             if(!avPlayer){
                 console.info(`avPlayer is null`);
+                expect().assertFail();
                 done();
-                return;
-            }
-            let runSeekInfo:RunSeekInfo
-            avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
-                if(!avPlayer) return
-                console.info('case current state is: ' + state)
-                switch (state) {
-                    case RELEASED:
-                        const time_points = getVideoStagePoints()
-                        runSeekInfo = runSeekInSeries(time_points)
-                        await runSeekInfo.allDone
-                        await waitForSeekDone()
-                        runSeekInfo.printPassCount()
-                        expect(!runSeekInfo.seekFailed).assertEqual(false)
-                        done()
-                        break;
-                    default:
-                        break;
+            }else{
+                try {
+                    let runSeekInfo:RunSeekInfo
+                    avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
+                        if(!avPlayer) return
+                        console.info('case current state is: ' + state)
+                        switch (state) {
+                            case RELEASED:
+                                const time_points = getVideoStagePoints()
+                                runSeekInfo = runSeekInSeries(time_points)
+                                await runSeekInfo.allDone
+                                await waitForSeekDone()
+                                runSeekInfo.printPassCount()
+                                expect(!runSeekInfo.seekFailed).assertEqual(false)
+                                done()
+                                break;
+                            default:
+                                break;
+                        }
+                    });
+                    avPlayer.on('seekDone',(seekDoneTime:number) => {
+                        console.info('seekDone called,and seek time is:' + seekDoneTime);
+                        isSeek = false;
+                        runSeekInfo.seekSucceed++;
+                    })
+                    avPlayer.on('error', (err) => {
+                        console.error(`error occurred, message is ${err.message}`);
+                        isSeek = false;
+                        runSeekInfo.seekFailed++;
+                    });
+                    avPlayer.release()
+                } catch (error) {
+                    console.error(`Test exception: ${JSON.stringify(error)}`);
+                    expect().assertFail()
+                    done()
                 }
-            });
-            avPlayer.on('seekDone',(seekDoneTime:number) => {
-                console.info('seekDone called,and seek time is:' + seekDoneTime);
-                isSeek = false;
-                runSeekInfo.seekSucceed++;
-            })
-            avPlayer.on('error', (err) => {
-                console.error(`error occurred, message is ${err.message}`);
-                isSeek = false;
-                runSeekInfo.seekFailed++;
-            });
-            avPlayer.release()
+            }
         })
 
         // #region
@@ -1097,38 +1235,45 @@ export default function AVPlayerVideoSeekTest() {
         it('SUB_MULTIMEDIA_MEDIA_INTEGRATION_ACCURATESEEKTSINTERFACE_2000', Level.LEVEL0,async (done: Function) => {
             if(!avPlayer){
                 console.info(`avPlayer is null`);
+                expect().assertFail();
                 done();
-                return;
-            }
-            let runSeekInfo:RunSeekInfo
-            avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
-                if(!avPlayer) return
-                console.info('case current state is: ' + state)
-                switch (state) {
-                    case RELEASED:
-                        const time_points = getVideoStagePoints(true)
-                        runSeekInfo = runSeekInSeries(time_points)
-                        await runSeekInfo.allDone
-                        await waitForSeekDone()
-                        runSeekInfo.printPassCount()
-                        expect(!runSeekInfo.seekFailed).assertEqual(false)
-                        done()
-                        break;
-                    default:
-                        break;
+            }else{
+                try {
+                    let runSeekInfo:RunSeekInfo
+                    avPlayer.on('stateChange', async (state:string, reason:media.StateChangeReason) => {
+                        if(!avPlayer) return
+                        console.info('case current state is: ' + state)
+                        switch (state) {
+                            case RELEASED:
+                                const time_points = getVideoStagePoints(true)
+                                runSeekInfo = runSeekInSeries(time_points)
+                                await runSeekInfo.allDone
+                                await waitForSeekDone()
+                                runSeekInfo.printPassCount()
+                                expect(!runSeekInfo.seekFailed).assertEqual(false)
+                                done()
+                                break;
+                            default:
+                                break;
+                        }
+                    });
+                    avPlayer.on('seekDone',(seekDoneTime:number) => {
+                        console.info('seekDone called,and seek time is:' + seekDoneTime);
+                        isSeek = false;
+                        runSeekInfo.seekSucceed++;
+                    })
+                    avPlayer.on('error', (err) => {
+                        console.error(`error occurred, message is ${err.message}`);
+                        isSeek = false;
+                        runSeekInfo.seekFailed++;
+                    });
+                    avPlayer.release()
+                } catch (error) {
+                    console.error(`Test exception: ${JSON.stringify(error)}`);
+                    expect().assertFail()
+                    done()
                 }
-            });
-            avPlayer.on('seekDone',(seekDoneTime:number) => {
-                console.info('seekDone called,and seek time is:' + seekDoneTime);
-                isSeek = false;
-                runSeekInfo.seekSucceed++;
-            })
-            avPlayer.on('error', (err) => {
-                console.error(`error occurred, message is ${err.message}`);
-                isSeek = false;
-                runSeekInfo.seekFailed++;
-            });
-            avPlayer.release()
+            }
         })
     })
 }
