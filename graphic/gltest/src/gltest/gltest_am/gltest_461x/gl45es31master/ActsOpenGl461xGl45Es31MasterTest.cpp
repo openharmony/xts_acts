@@ -59,4 +59,4 @@ namespace OHOS {
         EXPECT_TRUE(true);
         printf("------end ActsOpenGl461xGl45Es31MasterTest------\n");
     }
-} 
+}
