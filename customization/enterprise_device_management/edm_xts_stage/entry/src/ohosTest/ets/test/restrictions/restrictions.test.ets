@@ -18,6 +18,7 @@ import { ENTINFO1, SELFWANT, SELFHAPNAME, INVALID_WANT, DEFAULT_USER_ID, APP_IDS
 
 import adminManager from '@ohos.enterprise.adminManager';
 import restrictions from '@ohos.enterprise.restrictions';
+import sysDeviceInfo from '@ohos.deviceInfo';
 
 const LABEL_BLUETOOTH = "bluetooth";
 const LABEL_MODIFY_DATETIME = "modifyDateTime";
@@ -34,6 +35,8 @@ const LABEL_TETHERING = "tethering";
 const LABEL_NEAR_LINK = "nearLink";
 const LABEL_MTP_CLIENT = "mtpClient";
 const LABEL_MTP_SERVER = "mtpServer";
+const LABEL_SAMBA_CLIENT = "sambaClient";
+const LABEL_SAMBA_SERVER = "sambaServer";
 
 export default function restrictionsTest() {
   describe('restrictions_test', () => {
@@ -565,6 +568,90 @@ function testSetDisallowedPolicy() {
       expect(restrictions.getDisallowedPolicy(SELFWANT, LABEL_MTP_SERVER)).assertFalse();
     } catch (error) {
       expect(false).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_DISALLOWED_POLICY_JS_0125
+   * @tc.name      : test_set_disallowed_policy_0125
+   * @tc.desc      : test restrictions setDisallowedPolicy
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_disallowed_policy_0125", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      restrictions.setDisallowedPolicy(SELFWANT, LABEL_SAMBA_CLIENT, false);
+      expect(restrictions.getDisallowedPolicy(SELFWANT, LABEL_SAMBA_CLIENT)).assertFalse();
+    } catch (error) {
+      expect(error.code == 801).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_DISALLOWED_POLICY_JS_0126
+   * @tc.name      : test_set_disallowed_policy_0126
+   * @tc.desc      : test restrictions setDisallowedPolicy
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_disallowed_policy_0126", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      restrictions.setDisallowedPolicy(SELFWANT, LABEL_SAMBA_CLIENT, true);
+      expect(restrictions.getDisallowedPolicy(SELFWANT, LABEL_SAMBA_CLIENT)).assertTrue();
+    } catch (error) {
+      expect(error.code == 801).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_DISALLOWED_POLICY_JS_0127
+   * @tc.name      : test_set_disallowed_policy_0127
+   * @tc.desc      : test restrictions setDisallowedPolicy
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_disallowed_policy_0127", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      restrictions.setDisallowedPolicy(SELFWANT, LABEL_SAMBA_SERVER, false);
+      expect(restrictions.getDisallowedPolicy(SELFWANT, LABEL_SAMBA_SERVER)).assertFalse();
+    } catch (error) {
+      expect(error.code == 801).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_DISALLOWED_POLICY_JS_0128
+   * @tc.name      : test_set_disallowed_policy_0128
+   * @tc.desc      : test restrictions setDisallowedPolicy
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_disallowed_policy_0128", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      restrictions.setDisallowedPolicy(SELFWANT, LABEL_SAMBA_SERVER, true);
+      expect(restrictions.getDisallowedPolicy(SELFWANT, LABEL_SAMBA_SERVER)).assertTrue();
+    } catch (error) {
+      expect(error.code == 801).assertTrue();
     } finally {
       await adminManager.disableAdmin(SELFWANT);
     }
