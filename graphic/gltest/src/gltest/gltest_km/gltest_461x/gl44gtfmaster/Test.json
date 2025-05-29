@@ -1,7 +1,7 @@
 {
-    "description": "Config for ActsOpenGL461xgl44gtfmasterTest test cases",
+    "description": "Config for ActsOpenGl461xGl44GtfMasterTest test cases",
     "driver": {
-        "module-name": "ActsOpenGL461xgl44gtfmasterTest",
+        "module-name": "ActsOpenGl461xGl44GtfMasterTest",
         "native-test-timeout": "120000",
         "native-test-device-path": "/data/local/tmp",
         "runtime-hint": "100s",
@@ -26,7 +26,7 @@
             ],
             
             "push": [
-                "ActsOpenGL461xgl44gtfmasterTest->/data/local/tmp/ActsOpenGL461xgl44gtfmasterTest",
+                "ActsOpenGl461xGl44GtfMasterTest->/data/local/tmp/ActsOpenGl461xGl44GtfMasterTest",
                 "opengldata/libdeqp_ohos_platform.z.so->/data/local/tmp/libdeqp_ohos_platform.z.so",
                 "opengldata/librosen_context.z.so->/data/local/tmp/librosen_context.z.so",
                 "opengldata/libdeqp_spirv.z.so->/data/local/tmp/libdeqp_spirv.z.so",
@@ -41,7 +41,7 @@
             "teardown": [
                 {
                     "name": "pull",
-                    "value": "/data/local/tmp/ActsOpenGL461xgl44gtfmasterTest.qpa->ActsOpenGL461xgl44gtfmasterTest.qpa"
+                    "value": "/data/local/tmp/ActsOpenGl461xGl44GtfMasterTest.qpa->ActsOpenGl461xGl44GtfMasterTest.qpa"
                 }
             ]
         },
@@ -53,7 +53,7 @@
                 "cd /data/local/tmp"
             ],
             "teardown-localcommand": [
-                "python testcases/opengldata/genlocal.py ActsOpenGL461xgl44gtfmasterTest gl/khronos_mustpass/4.6.1.x/gl44-gtf-master.txt"
+                "python testcases/opengldata/genlocal.py ActsOpenGl461xGl44GtfMasterTest gl/khronos_mustpass/4.6.1.x/gl44-gtf-master.txt"
             ]
         }
 

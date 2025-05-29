@@ -1,7 +1,7 @@
 {
-    "description": "Config for ActsOpenGLeglmainTest test cases",
+    "description": "Config for ActsOpenGlEglMainTest test cases",
     "driver": {
-        "module-name": "ActsOpenGLeglmainTest",
+        "module-name": "ActsOpenGlEglMainTest",
         "native-test-timeout": "120000",
         "native-test-device-path": "/data/local/tmp",
         "runtime-hint": "100s",
@@ -26,7 +26,7 @@
             ],
             
             "push": [
-                "ActsOpenGLeglmainTest->/data/local/tmp/ActsOpenGLeglmainTest",
+                "ActsOpenGlEglMainTest->/data/local/tmp/ActsOpenGlEglMainTest",
                 "opengldata/libdeqp_ohos_platform.z.so->/data/local/tmp/libdeqp_ohos_platform.z.so",
                 "opengldata/librosen_context.z.so->/data/local/tmp/librosen_context.z.so",
                 "opengldata/libdeqp_spirv.z.so->/data/local/tmp/libdeqp_spirv.z.so",
@@ -41,7 +41,7 @@
             "teardown": [
                 {
                     "name": "pull",
-                    "value": "/data/local/tmp/ActsOpenGLeglmainTest.qpa->ActsOpenGLeglmainTest.qpa"
+                    "value": "/data/local/tmp/ActsOpenGlEglMainTest.qpa->ActsOpenGlEglMainTest.qpa"
                 }
             ]
         },
@@ -53,7 +53,7 @@
                 "cd /data/local/tmp"
             ],
             "teardown-localcommand": [
-                "python testcases/opengldata/genlocal.py ActsOpenGLeglmainTest egl/a_mustpass/main/egl-master.txt"
+                "python testcases/opengldata/genlocal.py ActsOpenGlEglMainTest egl/a_mustpass/main/egl-master.txt"
             ]
         }
 

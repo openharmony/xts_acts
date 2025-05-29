@@ -1,7 +1,7 @@
 {
-    "description": "Config for ActsOpenGL460xgl31masterTest test cases",
+    "description": "Config for ActsOpenGl460xGl31MasterTest test cases",
     "driver": {
-        "module-name": "ActsOpenGL460xgl31masterTest",
+        "module-name": "ActsOpenGl460xGl31MasterTest",
         "native-test-timeout": "120000",
         "native-test-device-path": "/data/local/tmp",
         "runtime-hint": "100s",
@@ -26,7 +26,7 @@
             ],
             
             "push": [
-                "ActsOpenGL460xgl31masterTest->/data/local/tmp/ActsOpenGL460xgl31masterTest",
+                "ActsOpenGl460xGl31MasterTest->/data/local/tmp/ActsOpenGl460xGl31MasterTest",
                 "opengldata/libdeqp_ohos_platform.z.so->/data/local/tmp/libdeqp_ohos_platform.z.so",
                 "opengldata/librosen_context.z.so->/data/local/tmp/librosen_context.z.so",
                 "opengldata/libdeqp_spirv.z.so->/data/local/tmp/libdeqp_spirv.z.so",
@@ -41,7 +41,7 @@
             "teardown": [
                 {
                     "name": "pull",
-                    "value": "/data/local/tmp/ActsOpenGL460xgl31masterTest.qpa->ActsOpenGL460xgl31masterTest.qpa"
+                    "value": "/data/local/tmp/ActsOpenGl460xGl31MasterTest.qpa->ActsOpenGl460xGl31MasterTest.qpa"
                 }
             ]
         },
@@ -53,7 +53,7 @@
                 "cd /data/local/tmp"
             ],
             "teardown-localcommand": [
-                "python testcases/opengldata/genlocal.py ActsOpenGL460xgl31masterTest gl/khronos_mustpass/4.6.0.x/gl31-master.txt"
+                "python testcases/opengldata/genlocal.py ActsOpenGl460xGl31MasterTest gl/khronos_mustpass/4.6.0.x/gl31-master.txt"
             ]
         }
 

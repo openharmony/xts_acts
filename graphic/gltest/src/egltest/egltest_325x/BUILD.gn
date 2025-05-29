@@ -15,10 +15,10 @@ import("//test/xts/tools/build/suite.gni")
 
 import("//test/xts/acts/graphic/gltest/comm.gni")
 
-ohos_moduletest_suite("ActsOpenGLegl325xTest") {
+ohos_moduletest_suite("ActsOpenGlEgl325xTest") {
   part_name = "graphic_2d"
   sources = [
-    "ActsOpenGL_egl_325xTest.cpp",
+    "ActsOpenGlEgl325xTest.cpp",
   ]
 
   include_dirs = [
