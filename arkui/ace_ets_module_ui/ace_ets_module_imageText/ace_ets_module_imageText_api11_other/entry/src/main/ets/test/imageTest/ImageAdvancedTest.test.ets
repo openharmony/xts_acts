@@ -153,7 +153,9 @@ export default function ImageAdvancedTest() {
       console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0300] component obj2 is: " + JSON.stringify(obj2));
       console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0300] obj2.$attrs.content is: " + obj2.$attrs.content);
       console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0300] vp2px(10): " + vp2px(10));
-      expect(Math.abs(Number(obj1.$attrs.content) - vp2px(80)) <= 1).assertTrue();
+      let contentHeigt = Number(obj1.$attrs.content)
+      let imageContentHeight = vp2px(100) - Math.floor(vp2px(10)) * 2
+      expect(Math.abs(contentHeigt - imageContentHeight) <= 1).assertTrue();
       expect(Math.abs(Number(obj2.$attrs.content) - vp2px(10)) <= 1).assertTrue();
       done();
     });
@@ -209,7 +211,9 @@ export default function ImageAdvancedTest() {
       console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0320] component obj2 is: " + JSON.stringify(obj2));
       console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0320] obj2.$attrs.content is: " + obj2.$attrs.content);
       console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0320] vp2px(10): " + vp2px(10));
-      expect(Math.abs(Number(obj1.$attrs.content) - vp2px(80)) <= 1).assertTrue();
+      let contentHeigt = Number(obj1.$attrs.content)
+      let imageContentHeight = vp2px(100) - Math.floor(vp2px(10)) * 2
+      expect(Math.abs(contentHeigt - imageContentHeight) <= 1).assertTrue();
       expect(Math.abs(Number(obj2.$attrs.content) - vp2px(10)) <= 1).assertTrue();
       done();
     });
