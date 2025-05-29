@@ -16,6 +16,7 @@ import events_emitter from '@ohos.events.emitter';
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 import { Hypium } from '@ohos/hypium';
 import testsuite from '../../test/List.test';
+import { waitForExist } from '../../test/WaitTest.test';
 import Utils from '../../test/Utils';
 import web_webview from '@ohos.web.webview';
 import image from "@ohos.multimedia.image"
@@ -24,13 +25,13 @@ import image from "@ohos.multimedia.image"
 @Component
 struct OnWindowNew {
   controller: web_webview.WebviewController = new web_webview.WebviewController();
-  @State str: string = "emitOnWindowNew01";
+  @State str: string = 'emitOnWindowNew01';
   @State testMultiWindowAccess: boolean = true;
   @State testAllowWindowOpenMethod: boolean = true;
   @State block: boolean = false;
   @State ref: number = 0;
   @State eventId: number = 0;
-  @State userAgent: string = "Mozilla/5.0 (Window NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) CHrome/105.0.0.0 Safari/537.36 Edg/105.0.1343.27";
+  @State userAgent: string = 'Mozilla/5.0 (Window NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) CHrome/105.0.0.0 Safari/537.36 Edg/105.0.1343.27';
   @State javaScriptAccess: boolean = true;
   @State fileAccess: boolean = true;
   @State domStorageAccess: boolean = true;
@@ -38,6 +39,7 @@ struct OnWindowNew {
   @State onlineImageAccess: boolean = true;
   @State databaseAccess: boolean = true;
   @State arr: boolean = true;
+  @State isComplete: number = -1;
 
   onPageShow() {
     let valueChangeEvent: events_emitter.InnerEvent = {
@@ -48,9 +50,9 @@ struct OnWindowNew {
   }
 
   private valueChangeCallBack = (eventData: events_emitter.EventData) => {
-    console.info("OnWindowNew page valueChangeCallBack");
+    console.info('OnWindowNew page valueChangeCallBack');
     if (eventData != null) {
-      console.info("valueChangeCallBack:" + JSON.stringify(eventData));
+      console.info('valueChangeCallBack:' + JSON.stringify(eventData));
       if (eventData.data?.ACTION != null) {
         this.str = eventData.data?.ACTION;
       }
@@ -60,16 +62,18 @@ struct OnWindowNew {
   build() {
     Column() {
       Row() {
-        Button("web click").key('onWindowNew').onClick(async () => {
-          console.info("key==>" + this.str)
+        Button('web click').key('onWindowNew').onClick(async () => {
+          console.info('key==>' + this.str)
           switch (this.str) {
-            case "emitOnWindowNew01": {
+            case 'emitOnWindowNew01': {
               try {
                 this.ref = 0;
                 this.javaScriptAccess = true;
                 this.testAllowWindowOpenMethod = true;
                 this.testMultiWindowAccess = true;
-                this.controller.runJavaScript("OpenNewWindow()", (res) => {
+                await waitForExist(()=>this.isComplete, 'emitOnWindowNew01', 0, 1000)
+                this.isComplete = -1
+                this.controller.runJavaScript('OpenNewWindow()', (res) => {
                   Utils.emitEvent(this.ref, 7100)
                 })
               } catch (error) {
@@ -77,14 +81,14 @@ struct OnWindowNew {
               }
               break;
             }
-            case "emitOnWindowNew02": {
+            case 'emitOnWindowNew02': {
               try {
                 this.ref = 0;
                 this.javaScriptAccess = true;
                 this.testAllowWindowOpenMethod = false;
                 this.testMultiWindowAccess = true;
                 setTimeout(() => {
-                  this.controller.runJavaScript("OpenNewWindow()", (res) => {
+                  this.controller.runJavaScript('OpenNewWindow()', (res) => {
                     Utils.emitEvent(this.ref, 7102)
                   })
                 }, 2000)
@@ -93,13 +97,13 @@ struct OnWindowNew {
               }
               break;
             }
-            case "emitOnWindowNew03": {
+            case 'emitOnWindowNew03': {
               try {
                 this.ref = 0;
                 this.javaScriptAccess = false;
                 this.testAllowWindowOpenMethod = false;
                 this.testMultiWindowAccess = true;
-                this.controller.runJavaScript("OpenNewWindow()", (res) => {
+                this.controller.runJavaScript('OpenNewWindow()', (res) => {
                   Utils.emitEvent(this.ref, 7104)
                 })
               } catch (error) {
@@ -107,13 +111,13 @@ struct OnWindowNew {
               }
               break;
             }
-            case "emitOnWindowNew04": {
+            case 'emitOnWindowNew04': {
               try {
                 this.ref = 0;
                 this.javaScriptAccess = true;
                 this.testAllowWindowOpenMethod = false;
                 this.testMultiWindowAccess = false;
-                this.controller.runJavaScript("OpenNewWindow()", (res) => {
+                this.controller.runJavaScript('OpenNewWindow()', (res) => {
                   Utils.emitEvent(this.ref, 7106)
                 })
               } catch (error) {
@@ -125,12 +129,12 @@ struct OnWindowNew {
         })
       }
 
-      Web({ src: $rawfile("onWindowNew.html"), controller: this.controller })
+      Web({ src: $rawfile('onWindowNew.html'), controller: this.controller })
         .multiWindowAccess(this.testMultiWindowAccess)
         .javaScriptAccess(this.javaScriptAccess)
         .allowWindowOpenMethod(this.testAllowWindowOpenMethod)
         .onWindowNew((event) => {
-          console.log("onWindowNew start");
+          console.log('onWindowNew start');
           if (event) {
             console.log('this.ref ===:' + this.ref);
             this.ref += 1;
@@ -160,6 +164,13 @@ struct OnWindowNew {
         .onlineImageAccess(this.onlineImageAccess)
         .databaseAccess(this.databaseAccess)
         .userAgent(this.userAgent)
+        .onPageBegin((event) => {
+          console.log('onPageBegin ==>' + event.url);
+        })
+        .onPageEnd((event) => {
+          console.log('onPageEnd ==>' + event.url);
+          this.isComplete = 0
+        })
     }
   }
 }
