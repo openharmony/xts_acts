@@ -13,43 +13,51 @@
  * limitations under the License.
  */
 
- #include "ActsOpenGl461xGl44KhrSingleTest.h"
- #include <gtest/gtest.h>
- #include <cstdlib>
- #include "common.h"
+#include "ActsOpenGl461xGl44KhrSingleTest.h"
+#include <gtest/gtest.h>
+#include <cstdlib>
+#include "common.h"
  
  
- namespace OHOS {
-     using namespace std;
-     using namespace testing::ext;
- 
-     // Preset action of the test suite, which is executed before the first test case
-     void ActsOpenGl461xGl44KhrSingleTest::SetUpTestCase(void)
-     {
-     }
-     // Test suite cleanup action, which is executed after the last test case
-     void ActsOpenGl461xGl44KhrSingleTest::TearDownTestCase(void)
-     {
-     }
-     // Preset action of the test case
-     void ActsOpenGl461xGl44KhrSingleTest::SetUp()
-     {
-     }
-     // Cleanup action of the test case
-     void ActsOpenGl461xGl44KhrSingleTest::TearDown()
-     {
-     }
- 
-     HWTEST_F(ActsOpenGl461xGl44KhrSingleTest, TestOpenGLglTestCase09, Function | MediumTest | Level2)
-     {
-         printf("------start ActsOpenGl461xGl44KhrSingleTest------\n");
-         if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
-             system("/data/local/tmp/opengl/mustpass/glcts "
-                 "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass_single/4.6.1.x/"
-                 "gl44-khr-single.txt "
-                 "--deqp-log-filename=ActsOpenGl461xGl44KhrSingleTest.qpa");
-         }
-         EXPECT_TRUE(true);
-         printf("------end ActsOpenGl461xGl44KhrSingleTest------\n");
-     }
- }
+namespace OHOS {
+    using namespace std;
+    using namespace testing::ext;
+
+    // Preset action of the test suite, which is executed before the first test case
+    void ActsOpenGl461xGl44KhrSingleTest::SetUpTestCase(void)
+    {
+    }
+    // Test suite cleanup action, which is executed after the last test case
+    void ActsOpenGl461xGl44KhrSingleTest::TearDownTestCase(void)
+    {
+    }
+    // Preset action of the test case
+    void ActsOpenGl461xGl44KhrSingleTest::SetUp()
+    {
+    }
+    // Cleanup action of the test case
+    void ActsOpenGl461xGl44KhrSingleTest::TearDown()
+    {
+    }
+    
+    /*
+     * @tc.number: TestOpenGL461xkmsglTestCase02
+     * @tc.name: ActsOpenGl461xGl44KhrSingleTest
+     * @tc.desc: test for ActsOpenGl461xGl44KhrSingleTest.
+     * @tc.size  : SmallTest
+     * @tc.type  : Function
+     * @tc.level : Level 0
+     */
+    HWTEST_F(ActsOpenGl461xGl44KhrSingleTest, TestOpenGL461xkmsglTestCase02, Function | MediumTest | Level2)
+    {
+        printf("------start ActsOpenGl461xGl44KhrSingleTest------\n");
+        if (canIUse("SystemCapability.Graphic.Graphic2D.WebGL")) {
+            system("/data/local/tmp/opengl/mustpass/glcts "
+                "--deqp-caselist-file=/data/local/tmp/opengl/mustpass/gl/khronos_mustpass_single/4.6.1.x/"
+                "gl44-khr-single.txt "
+                "--deqp-log-filename=ActsOpenGl461xGl44KhrSingleTest.qpa");
+        }
+        EXPECT_TRUE(true);
+        printf("------end ActsOpenGl461xGl44KhrSingleTest------\n");
+    }
+}

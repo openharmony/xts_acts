@@ -31,4 +31,7 @@ ohos_moduletest_suite("ActsOpenGlMainGl45KhrSingleTest") {
     "//third_party/vk-gl-cts/framework/platform:glcts",
   ]
   cflags = [ "-Wno-error" ]
+
+  subsystem_name = "graphic"
+  part_name = "graphic_2d"
 }
