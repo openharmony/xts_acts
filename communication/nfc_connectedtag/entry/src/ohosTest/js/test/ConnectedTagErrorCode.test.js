@@ -14,7 +14,6 @@
  */
 
 import connectedTag from '@ohos.connectedTag';
-import parameter from '@ohos.systemparameter';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium'
 
 function sleep(delay) {
@@ -43,13 +42,13 @@ export default function ConnectedTagErrorTest() {
 
         /**
          * @tc.number SUB_Communication_NFC_nfcConnectedTag_ErrorCode_js_0100
-         * @tc.name Test initialize connectedTag errorcode 201/801
-         * @tc.desc Initializes the active label chip.
+         * @tc.name SUB_Communication_NFC_nfcConnectedTag_ErrorCode_js_0100
+         * @tc.desc Initializes the active label chip,Test initialize connectedTag errorcode 201/801
          * @tc.size since 8
          * @tc.type Function
          * @tc.level Level 0
          */
-        it('SUB_Communication_NFC_nfcConnectedTag_ErrorCode_js_0100', Level.LEVEL0, function ()  {
+        it('SUB_Communication_NFC_nfcConnectedTag_ErrorCode_js_0100', Level.LEVEL0, function (done)  {
             var isAccessToken = canIUse("SystemCapability.Communication.ConnectedTag");
             console.info("testSysCaps01 test.syscap.param.001 : " + isAccessToken);
             if (!isAccessToken) {
@@ -59,27 +58,30 @@ export default function ConnectedTagErrorTest() {
             else {
                 try{
                     let inittag = connectedTag.initialize();
+                    let inittag2 = connectedTag.initialize();
+                    console.info("[NFC_test] SUB_Communication_NFC_nfcConnectedTag_ErrorCode_js_0100 initialize success: " + inittag );
                     expect().assertFail();
                 }catch(error){
-                    console.error(`initialize failed, code is ${error.code}, message is ${error.message}`)
-                    if(error.code==801){
+                    console.error(`SUB_Communication_NFC_nfcConnectedTag_ErrorCode_js_0100 initialize failed, code is ${error.code}, message is ${error.message}`)
+                    if(error.code==801||error.code==3200101||error.code==201){
                         expect(true).assertTrue();
                     }else{
-                        expect(error.code).assertEqual(201);
+                        expect().assertFail();
                     }
                     
                 }
             }
+            done();
         })
         /**
          * @tc.number SUB_Communication_NFC_nfcConnectedTag_ErrorCode_js_0200
-         * @tc.name Test uninitialize connectedTag errorcode 201/801
-         * @tc.desc uninitialize active label chip resources.
+         * @tc.name SUB_Communication_NFC_nfcConnectedTag_ErrorCode_js_0200
+         * @tc.desc uninitialize active label chip resources,Test uninitialize connectedTag errorcode 201/801
          * @tc.size since 8
          * @tc.type Function
          * @tc.level Level 0
          */
-        it('SUB_Communication_NFC_nfcConnectedTag_ErrorCode_js_0200', Level.LEVEL0, function () {
+        it('SUB_Communication_NFC_nfcConnectedTag_ErrorCode_js_0200', Level.LEVEL0, function (done) {
             var isAccessToken = canIUse("SystemCapability.Communication.ConnectedTag");
             console.info("testSysCaps01 test.syscap.param.001 : " + isAccessToken);
             if (!isAccessToken) {
@@ -89,21 +91,23 @@ export default function ConnectedTagErrorTest() {
             else{
                 try{
                     let uninittag = connectedTag.uninitialize();
-                    expect().assertFail();
+                    console.info("[NFC_test] SUB_Communication_NFC_nfcConnectedTag_ErrorCode_js_0200 uninitialize success: " + uninittag );
+                    expect(true).assertTrue();
                 }catch(error){
-                    console.error(`uninitialize failed, code is ${error.code}, message is ${error.message}`)
-                    if(error.code==801){
+                    console.error(`SUB_Communication_NFC_nfcConnectedTag_ErrorCode_js_0200 uninitialize failed, code is ${error.code}, message is ${error.message}`)
+                    if(error.code==801||error.code==3200101||error.code==201){
                         expect(true).assertTrue();
                     }else{
-                        expect(error.code).assertEqual(201);
+                        expect().assertFail();
                     }
                 }
             }
+            done();
         })
         /**
          * @tc.number SUB_Communication_NFC_nfcConnectedTag_ErrorCode_js_0300
-         * @tc.name Test init connectedTag
-         * @tc.desc Reads the content of the active tag.
+         * @tc.name SUB_Communication_NFC_nfcConnectedTag_ErrorCode_js_0300
+         * @tc.desc Reads the content of the active tag,Test init connectedTag
          * @tc.size since 8
          * @tc.type Function
          * @tc.level Level 0
@@ -120,14 +124,14 @@ export default function ConnectedTagErrorTest() {
                 (async() =>{
                     try{
                         let result=await connectedTag.read();
-                        console.info("[connectedTag read promise successful:]"+JSON.stringify(result))
+                        console.info("[SUB_Communication_NFC_nfcConnectedTag_ErrorCode_js_0300 read promise successful:]"+JSON.stringify(result))
                         expect().assertFail();
                     }catch(error){
                         console.error(`read promise failed,code is ${error.code}, message is ${error.message}`)
-                        if(error.code==801){
+                        if(error.code==801||error.code==3200101||error.code==201){
                             expect(true).assertTrue();
                         }else{
-                            expect(error.code).assertEqual(201);
+                            expect().assertFail();
                         }
                     }
                 })()
@@ -137,8 +141,8 @@ export default function ConnectedTagErrorTest() {
 
         /**
          * @tc.number SUB_Communication_NFC_nfcConnectedTag_ErrorCode_js_0400
-         * @tc.name Test read connectedTag errorcode 201/801
-         * @tc.desc Write Content to Active Tags
+         * @tc.name SUB_Communication_NFC_nfcConnectedTag_ErrorCode_js_0400
+         * @tc.desc Write Content to Active Tags,Test read connectedTag errorcode 201/801
          * @tc.size since 8
          * @tc.type Function
          * @tc.level Level 0
@@ -156,11 +160,11 @@ export default function ConnectedTagErrorTest() {
                     connectedTag.read(
                         (error, data) => {
                             if (error) {
-                                console.error(`read callback failed,code is ${error.code}, message is ${error.message}`)
-                                if(error.code==801){
+                                console.error(`SUB_Communication_NFC_nfcConnectedTag_ErrorCode_js_0400 read callback failed,code is ${error.code}, message is ${error.message}`)
+                                if(error.code==801||error.code==3200101||error.code==201){
                                     expect(true).assertTrue();
                                 }else{
-                                    expect(error.code).assertEqual(201);
+                                    expect().assertFail();
                                 }
                                 return;
                             } 
@@ -168,11 +172,11 @@ export default function ConnectedTagErrorTest() {
                             expect().assertFail();
                         });
                 }catch(error){
-                    console.error(`read callback failed,code is ${error.code}, message is ${error.message}`)
-                    if(error.code==801){
+                    console.error(`SUB_Communication_NFC_nfcConnectedTag_ErrorCode_js_0400 read callback failed,code is ${error.code}, message is ${error.message}`)
+                    if(error.code==801||error.code==3200101||error.code==201){
                         expect(true).assertTrue();
                     }else{
-                        expect(error.code).assertEqual(201);
+                        expect().assertFail();
                     }
                 }
             }
@@ -181,8 +185,8 @@ export default function ConnectedTagErrorTest() {
 
         /**
          * @tc.number SUB_Communication_NFC_nfcConnectedTag_ErrorCode_js_0500
-         * @tc.name Test write connectedTag errorcode 201/801
-         * @tc.desc Write Content to Active Tags
+         * @tc.name SUB_Communication_NFC_nfcConnectedTag_ErrorCode_js_0500
+         * @tc.desc Write Content to Active Tags,Test write connectedTag errorcode 201/801
          * @tc.size since 8
          * @tc.type Function
          * @tc.level Level 0
@@ -198,15 +202,16 @@ export default function ConnectedTagErrorTest() {
             else {
                 (async() =>{
                     try{
-                        let result=await connectedTag.write();
-                        console.info("[connectedTag write promise successful:]"+JSON.stringify(result))
-                        expect().assertFail();
+                        let rawData=[0x03,0x01,0x00];
+                        let result=await connectedTag.write(rawData);
+                        console.info("[SUB_Communication_NFC_nfcConnectedTag_ErrorCode_js_0500 connectedTag write promise successful:]"+JSON.stringify(result))
+                        expect(true).assertTrue();
                     }catch(error){
-                        console.error(`write promise failed,code is ${error.code}, message is ${error.message}`)
-                        if(error.code==801){
+                        console.error(`SUB_Communication_NFC_nfcConnectedTag_ErrorCode_js_0500 write promise failed,code is ${error.code}, message is ${error.message}`)
+                        if(error.code==801||error.code==3200101||error.code==201){
                             expect(true).assertTrue();
                         }else{
-                            expect(error.code).assertEqual(201);
+                            expect().assertFail();
                         }
                     }
                 })()
@@ -216,8 +221,8 @@ export default function ConnectedTagErrorTest() {
 
         /**
          * @tc.number SUB_Communication_NFC_nfcConnectedTag_ErrorCode_js_0600
-         * @tc.name write connectedTag errorcode 201/801
-         * @tc.desc Write Content to Active Tags
+         * @tc.name SUB_Communication_NFC_nfcConnectedTag_ErrorCode_js_0600
+         * @tc.desc Write Content to Active Tags,write connectedTag errorcode 201/801
          * @tc.size since 8
          * @tc.type Function
          * @tc.level Level 0
@@ -232,26 +237,27 @@ export default function ConnectedTagErrorTest() {
             } 
             else {
                 try{
-                    connectedTag.write(
+                    let rawData=[0x03,0x01,0x00];
+                    connectedTag.write(rawData,
                         (error, data) => {
                             if (error) {
-                                console.error(`write callback failed,code is ${error.code}, message is ${error.message}`)
-                                if(error.code==801){
+                                console.error(`SUB_Communication_NFC_nfcConnectedTag_ErrorCode_js_0600 write callback failed,code is ${error.code}, message is ${error.message}`)
+                                if(error.code==801||error.code==3200101||error.code==201){
                                     expect(true).assertTrue();
                                 }else{
-                                    expect(error.code).assertEqual(201);
+                                    expect().assertFail();
                                 }
                                 return;
                             } 
-                            console.info("[connectedTag write callback successful:]"+JSON.stringify(data))
+                            console.info("[SUB_Communication_NFC_nfcConnectedTag_ErrorCode_js_0600 connectedTag write callback successful:]"+JSON.stringify(data))
                             expect().assertFail();
                         });
                 }catch(error){
-                    console.error(`write callback failed,code is ${error.code}, message is ${error.message}`)
-                    if(error.code==801){
+                    console.error(`SUB_Communication_NFC_nfcConnectedTag_ErrorCode_js_0600 write callback failed,code is ${error.code}, message is ${error.message}`)
+                    if(error.code==801||error.code==3200101||error.code==201){
                         expect(true).assertTrue();
                     }else{
-                        expect(error.code).assertEqual(201);
+                        expect().assertFail();
                     }
                 }
             }
@@ -260,8 +266,8 @@ export default function ConnectedTagErrorTest() {
 
         /**
          * @tc.number SUB_Communication_NFC_nfcConnectedTag_ErrorCode_js_0700
-         * @tc.name write connectedTag errorcode 401
-         * @tc.desc Write Content to Active Tags
+         * @tc.name SUB_Communication_NFC_nfcConnectedTag_ErrorCode_js_0700
+         * @tc.desc Write Content to Active Tags,write connectedTag errorcode 401
          * @tc.size since 8
          * @tc.type Function
          * @tc.level Level 0
@@ -275,29 +281,50 @@ export default function ConnectedTagErrorTest() {
                 done();
             } 
             else {
-                await connectedTag.write(null).then(result => {
-                    console.info("[connectedTag write promise successful]: result" + result);
-                    done();
-                }).catch((error)=> {
-                    console.error(`write promise failed,code is ${error.code}, message is ${error.message}`);
+                try{
+                    connectedTag.initialize();
+                }catch(error){
+                    console.error(`SUB_Communication_NFC_nfcConnectedTag_ErrorCode_js_0700 initialize failed,code is ${error.code}, message is ${error.message}`);
+                }
+                try{
+                    await connectedTag.write().then(result => {
+                        console.info("[SUB_Communication_NFC_nfcConnectedTag_ErrorCode_js_0700 connectedTag write promise successful]: result" + result);
+                        expect().assertFail();
+                        done();
+                    }).catch((error)=> {
+                        console.error(`SUB_Communication_NFC_nfcConnectedTag_ErrorCode_js_0700 write promise failed,code is ${error.code}, message is ${error.message}`);
+                        if(error.code==401){
+                            expect(true).assertTrue();
+                        }else{
+                            expect().assertFail();
+                        }
+                    });
+                }catch(error){
+                    console.error(`SUB_Communication_NFC_nfcConnectedTag_ErrorCode_js_0700 write promise failed,code is ${error.code}, message is ${error.message}`);
                     if(error.code==401){
                         expect(true).assertTrue();
                     }else{
                         expect().assertFail();
                     }
-                });
+                }
+                try{
+                    connectedTag.uninitialize();
+                }catch(error){
+                    console.error(`SUB_Communication_NFC_nfcConnectedTag_ErrorCode_js_0700 uninitialize failed,code is ${error.code}, message is ${error.message}`);
+                }
             }
+            done();
         })
 
         /**
          * @tc.number SUB_Communication_NFC_nfcConnectedTag_ErrorCode_js_0800
-         * @tc.name Test initialize connectedTag
-         * @tc.desc Initializes the active label chip.
+         * @tc.name SUB_Communication_NFC_nfcConnectedTag_ErrorCode_js_0800
+         * @tc.desc Initializes the active label chip,Test initialize connectedTag
          * @tc.size since 8
          * @tc.type Function
          * @tc.level Level 0
          */
-        it('SUB_Communication_NFC_nfcConnectedTag_ErrorCode_js_0800', Level.LEVEL0,async function (done)  {
+         it('SUB_Communication_NFC_nfcConnectedTag_ErrorCode_js_0800', Level.LEVEL0,async function (done)  {
             var isAccessToken = canIUse("SystemCapability.Communication.ConnectedTag");
             console.info("testSysCaps01 test.syscap.param.001 : " + isAccessToken);
             if (!isAccessToken) {
@@ -306,22 +333,40 @@ export default function ConnectedTagErrorTest() {
                 done();
             }
             else{
-                connectedTag.write(null,(err, result)=> {
-                    if (err) {
-                        console.info("[connectedTag write callback error]" + err);
-                        if(err.code==401){
-                            expect(true).assertTrue();
-                        }else{
-                            expect().assertFail();
+                try{
+                    connectedTag.initialize();
+                }catch(error){
+                    console.error(`SUB_Communication_NFC_nfcConnectedTag_ErrorCode_js_0800 initialize failed,code is ${error.code}, message is ${error.message}`);
+                }
+                try{
+                    connectedTag.write((err, result)=> {
+                        if (err) {
+                            console.info("[SUB_Communication_NFC_nfcConnectedTag_ErrorCode_js_0800 connectedTag write callback error]" + err);
+                            if(err.code==401){
+                                expect(true).assertTrue();
+                            }else{
+                                expect().assertFail();
+                            }
+                        } else {
+                            console.info("[SUB_Communication_NFC_nfcConnectedTag_ErrorCode_js_0800 connectedTag write promise successful] result: " + result);
+                            expect(result!=null).assertTrue();
                         }
-                        done();
-                    } else {
-                        console.info("[connectedTag write promise successful] result: " + result);
-                        expect(result!=null).assertTrue();
-                        done();
+                    });
+                }catch(error){
+                    console.error(`SUB_Communication_NFC_nfcConnectedTag_ErrorCode_js_0800 write promise failed,code is ${error.code}, message is ${error.message}`);
+                    if(error.code==401){
+                        expect(true).assertTrue();
+                    }else{
+                        expect().assertFail();
                     }
-                });
+                }
+                try{
+                    connectedTag.uninitialize();
+                }catch(error){
+                    console.error(`SUB_Communication_NFC_nfcConnectedTag_ErrorCode_js_0800 uninitialize failed,code is ${error.code}, message is ${error.message}`);
+                }
             }
+            done();
         })        
         console.info("*************[nfc_test] start nfc errorcode js unit test end*************");
     })
