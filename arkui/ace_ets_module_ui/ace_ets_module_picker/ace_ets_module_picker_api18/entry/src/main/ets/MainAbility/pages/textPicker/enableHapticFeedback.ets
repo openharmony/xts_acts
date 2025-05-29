@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import { MessageManager, Callback } from '../../common/MessageManager';
 
 @Entry
 @Component
@@ -35,24 +36,72 @@ struct TextPickerPage {
       })
         .id('textPicker1')
         .enableHapticFeedback(true)
+        .onChange((value: string | string[], index: number | number[]) => {
+          console.info('TextPicker 多列:onChange ' + JSON.stringify(value) + ', ' + 'index: ' + JSON.stringify(index));
+          if (typeof index === 'number') {
+            this.selectedIndex = index;
+          }
+        })
+        .divider({
+          strokeWidth: 2,
+          color: Color.Red,
+          startMargin: 10,
+          endMargin: 20,
+        } as DividerOptions);
       TextPicker({
         range: this.multi,
         selected: this.selectedIndex,
       })
         .id('textPicker2')
         .enableHapticFeedback(false)
+        .onChange((value: string | string[], index: number | number[]) => {
+          console.info('TextPicker 多列:onChange ' + JSON.stringify(value) + ', ' + 'index: ' + JSON.stringify(index));
+          if (typeof index === 'number') {
+            this.selectedIndex = index;
+          }
+        })
+        .divider({
+          strokeWidth: 2,
+          color: Color.Red,
+          startMargin: 10,
+          endMargin: 20,
+        } as DividerOptions);
       TextPicker({
         range: this.multi,
         selected: this.selectedIndex,
       })
         .id('textPicker3')
         .enableHapticFeedback(undefined)
+        .onChange((value: string | string[], index: number | number[]) => {
+          console.info('TextPicker 多列:onChange ' + JSON.stringify(value) + ', ' + 'index: ' + JSON.stringify(index));
+          if (typeof index === 'number') {
+            this.selectedIndex = index;
+          }
+        })
+        .divider({
+          strokeWidth: 2,
+          color: Color.Red,
+          startMargin: 10,
+          endMargin: 20,
+        } as DividerOptions);
       TextPicker({
         range: this.multi,
         selected: this.selectedIndex,
       })
         .id('textPicker4')
         .enableHapticFeedback(null)
+        .onChange((value: string | string[], index: number | number[]) => {
+          console.info('TextPicker 多列:onChange ' + JSON.stringify(value) + ', ' + 'index: ' + JSON.stringify(index));
+          if (typeof index === 'number') {
+            this.selectedIndex = index;
+          }
+        })
+        .divider({
+          strokeWidth: 2,
+          color: Color.Red,
+          startMargin: 10,
+          endMargin: 20,
+        } as DividerOptions);
     }
   }
 }
