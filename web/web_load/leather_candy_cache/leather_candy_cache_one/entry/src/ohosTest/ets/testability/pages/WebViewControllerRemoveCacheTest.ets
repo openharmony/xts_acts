@@ -31,7 +31,7 @@ struct WebViewControllerRemoveCacheTest {
   @State databaseAccess: boolean = true
   @State removeRom: boolean = true
   @State cachePath: string = Utils.getSandboxCacheDir() + 'web/Cache/Cache_Data/'
-  @State buttonStart: boolean = false
+  @State buttonStart: boolean = false;
 
   onPageShow() {
     let valueChangeEvent: events_emitter.InnerEvent = {
@@ -66,7 +66,7 @@ struct WebViewControllerRemoveCacheTest {
               case "testRemoveCache001": {
                 try {
                   this.buttonStart = true;
-                  console.log('buttonStart==>'+this.buttonStart);
+                  console.info('buttonStart==>'+this.buttonStart);
                   this.removeRom = true
                   this.controller.loadUrl('https://openharmony.cn/')
                 } catch (error) {
@@ -97,24 +97,24 @@ struct WebViewControllerRemoveCacheTest {
         .databaseAccess(this.databaseAccess)
         .onPageEnd((event) => {
           if (event) {
-            console.log('onPageEnd buttonStart==>'+this.buttonStart);
-            if (this.buttonStart) {
+            if () {
               setTimeout(async () => {
-              let filesBeforeRemove = Utils.listFile(this.cachePath)
-              let memorySizeBeforeRemove = await appManager.getAppMemorySize()
-              console.info('memorySizeBeforeRemove:' + memorySizeBeforeRemove)
-              this.controller.removeCache(this.removeRom)
-              await Utils.sleep(2000)
-              let filesAfterRemove = Utils.listFile(this.cachePath)
-              let memorySizeAfterRemove = await appManager.getAppMemorySize()
-              console.info('memorySizeAfterRemove:' + memorySizeAfterRemove)
-              if (this.removeRom) {
-                Utils.emitEvent(filesAfterRemove.length < filesBeforeRemove.length, 77200)
-              } else {
-                Utils.emitEvent(filesAfterRemove.length == filesBeforeRemove.length, 77202)
-              }
-            }, 100)
+                let filesBeforeRemove = Utils.listFile(this.cachePath)
+                let memorySizeBeforeRemove = await appManager.getAppMemorySize()
+                console.info('memorySizeBeforeRemove:' + memorySizeBeforeRemove)
+                this.controller.removeCache(this.removeRom)
+                await Utils.sleep(2000)
+                let filesAfterRemove = Utils.listFile(this.cachePath)
+                let memorySizeAfterRemove = await appManager.getAppMemorySize()
+                console.info('memorySizeAfterRemove:' + memorySizeAfterRemove)
+                if (this.removeRom) {
+                  Utils.emitEvent(filesAfterRemove.length < filesBeforeRemove.length, 77200)
+                } else {
+                  Utils.emitEvent(filesAfterRemove.length == filesBeforeRemove.length, 77202)
+                }
+              }, 100)
             }
+            
 
           }
         })
