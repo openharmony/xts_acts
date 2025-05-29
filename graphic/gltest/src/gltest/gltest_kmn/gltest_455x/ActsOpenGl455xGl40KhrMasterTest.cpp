@@ -41,8 +41,8 @@ namespace OHOS {
     }
     
     /*
-     * @tc.number: ActsOpenGl455xGl40KhrMasterTest
-     * @tc.name: ActsOpenGl455xGl40KhrMasterTest
+     * @tc.number: TestOpenGL455xkmnglTestCase01
+     * @tc.name: TestOpenGL455xkmnglTestCase01
      * @tc.desc: test for ActsOpenGl455xGl40KhrMasterTest.
      * @tc.size  : SmallTest
      * @tc.type  : Function

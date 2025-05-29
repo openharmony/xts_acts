@@ -41,8 +41,8 @@ namespace OHOS {
     }
     
     /*
-     * @tc.number: ActsOpenGlMainGl33GtfMasterTest
-     * @tc.name: ActsOpenGlMainGl33GtfMasterTest
+     * @tc.number: TestOpenGLmainglTestCase07
+     * @tc.name: TestOpenGLmainglTestCase07
      * @tc.desc: test for ActsOpenGlMainGl33GtfMasterTest.
      * @tc.size  : SmallTest
      * @tc.type  : Function
