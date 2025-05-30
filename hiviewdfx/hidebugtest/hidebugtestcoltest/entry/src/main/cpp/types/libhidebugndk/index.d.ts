@@ -40,4 +40,4 @@ export const stopAppTraceCapture: () => number;
 export const getGraphicsMemory: () => number;
 export const getGraphicsMemoryNULL: () => number;
 export const getGraphicsMemoryArray: () => number;
-export const getHiDebug20Ndk: () => void;
+export const getBacktraceFromFp: () => void;

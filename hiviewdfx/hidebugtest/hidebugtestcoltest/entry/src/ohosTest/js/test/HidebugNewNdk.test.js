@@ -23,7 +23,7 @@ describe('HidebugNewNdkTest', function () {
 
     /**
      * @tc.number SUB_DFX_DFR_Hidebug_StackBack_Fun_0100
-     * @tc.name testHiDebugC01
+     * @tc.name SUB_DFX_DFR_Hidebug_StackBack_Fun_0100
      * @tc.desc 验证获取HiDebug开放调用栈回溯20新增接口
      * @tc.size MediumTest
      * @tc.type Function
@@ -31,7 +31,7 @@ describe('HidebugNewNdkTest', function () {
      */
     it('SUB_DFX_DFR_Hidebug_StackBack_Fun_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         try {
-            testNapi.getHiDebug20Ndk();
+            testNapi.getBacktraceFromFp();
             done();
         } catch (err) {
             console.error(`SUB_DFX_DFR_Hidebug_StackBack_Fun_0100 > error code: ${err.code}, error msg: ${err.message}`);

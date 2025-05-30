@@ -1,4 +1,19 @@
-#include "test_backtrace.h"
+/*
+ * Copyright (c) 2022 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+ 
+#include "backtrace.h"
 #include "hidebug/hidebug.h"
 #include "hilog/log.h"
 #include <condition_variable>
@@ -32,38 +47,43 @@ private:
     void **pcs_ = nullptr;
 };
 
-BackTraceObject &BackTraceObject::GetInstance() {
+BackTraceObject &BackTraceObject::GetInstance() 
+{
     static BackTraceObject instance;
     return instance;
 }
 
-bool BackTraceObject::Init(uint32_t size) { // 初始化，申请资源。
+bool BackTraceObject::Init(uint32_t size) // 初始化，申请资源。
+{
     backtraceObject_ = OH_HiDebug_CreateBacktraceObject();
     if (backtraceObject_ == nullptr) {
         return false;
     }
-    pcs_ = new (std::nothrow) void *[size] { nullptr };
+    pcs_ = new (std::nothrow) void *[MAX_FRAME_SIZE] { nullptr };
     if (pcs_ == nullptr) {
         return false;
     }
     return true;
 }
 
-void BackTraceObject::Release() { // 释放栈回溯及栈解析的资源。
+void BackTraceObject::Release() // 释放栈回溯及栈解析的资源。
+{
     OH_HiDebug_DestroyBacktraceObject(backtraceObject_);
     backtraceObject_ = nullptr;
     delete[] pcs_;
     pcs_ = nullptr;
 }
 
-int BackTraceObject::BackTraceFromFp(void *startFp, int size) {
+int BackTraceObject::BackTraceFromFp(void *startFp, int size) 
+{
     if (size <= MAX_FRAME_SIZE) {
         return OH_HiDebug_BacktraceFromFp(backtraceObject_, startFp, pcs_, size);
     }
     return 0;
 }
 
-void BackTraceObject::PrintStackFrame(void *pc, const HiDebug_StackFrame &frame) {
+void BackTraceObject::PrintStackFrame(void *pc, const HiDebug_StackFrame &frame) 
+{
     if (frame.type == HIDEBUG_STACK_FRAME_TYPE_JS) {
         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "TestTag",
                      "js stack frame info for pc: %{public}p is "
@@ -92,7 +112,8 @@ void BackTraceObject::PrintStackFrame(void *pc, const HiDebug_StackFrame &frame)
     }
 }
 
-void BackTraceObject::SymbolicAddress(int index) {
+void BackTraceObject::SymbolicAddress(int index) 
+{
     if (index < 0 || index >= MAX_FRAME_SIZE) {
         return;
     }
@@ -103,7 +124,8 @@ void BackTraceObject::SymbolicAddress(int index) {
 }
 
 
-void BackTraceCurrentThread() {
+void BackTraceCurrentThread()
+{
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "TestTag", "start  BackTraceCurrentThread");
     BackTraceObject::GetInstance().Init(MAX_FRAME_SIZE);
     auto pcSize2 = BackTraceObject::GetInstance().BackTraceFromFp(__builtin_frame_address(0), MAX_FRAME_SIZE);

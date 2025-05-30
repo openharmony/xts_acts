@@ -17,7 +17,7 @@
 #include <hidebug/hidebug.h>
 #include <hidebug/hidebug_type.h>
 #include <cstdlib>
-#include "test_backtrace.h"
+#include "backtrace.h"
 
 static napi_value GetTotalMem(napi_env env, napi_callback_info info)
 {
@@ -292,7 +292,7 @@ __attribute((noinline)) __attribute((optnone)) void TestNativeFrames(int i)
     BackTraceCurrentThread();
 }
 
-__attribute((noinline)) __attribute((optnone)) napi_value GetHiDebug20Ndk(napi_env env, napi_callback_info info)
+__attribute((noinline)) __attribute((optnone)) napi_value GetBacktraceFromFp(napi_env env, napi_callback_info info)
 {
     TestNativeFrames(1);
     return nullptr;
@@ -325,7 +325,7 @@ static napi_value Init(napi_env env, napi_value exports)
         {"getGraphicsMemory", nullptr, getGraphicsMemory, nullptr, nullptr, nullptr, napi_default, nullptr},
         { "getGraphicsMemoryNULL", nullptr, getGraphicsMemoryNULL, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "getGraphicsMemoryArray", nullptr, getGraphicsMemoryArray, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "getHiDebug20Ndk", nullptr, GetHiDebug20Ndk, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "getBacktraceFromFp", nullptr, GetBacktraceFromFp, nullptr, nullptr, nullptr, napi_default, nullptr },
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
