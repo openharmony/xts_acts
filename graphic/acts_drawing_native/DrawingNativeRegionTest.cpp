@@ -671,7 +671,7 @@ HWTEST_F(DrawingNativeRegionTest, testRegionCopyAbnormal, Function | SmallTest |
     OH_Drawing_RegionSetRect(region1, rect4);
     // 13. Copy a region object by OH_Drawing_RegionCopy.
     region2 = OH_Drawing_RegionCopy(region1);
-    EXPECT_NE(region2, nullptr); 
+    EXPECT_NE(region2, nullptr);
     // 14. Free memory.
     OH_Drawing_RectDestroy(rect1);
     OH_Drawing_RectDestroy(rect2);
