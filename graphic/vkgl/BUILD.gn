@@ -302,4 +302,5 @@ ohos_sh_assist_suite("cpvkgl") {
     "//third_party/vk-gl-cts/framework/platform:glcts",
   ]
   part_name = "graphic_2d"
+  suite_type = "bin"
 }

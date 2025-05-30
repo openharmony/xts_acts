@@ -47,8 +47,9 @@ action("check_test") {
   outputs = [ "$target_out_dir" ]
 }
 
-group("ohos_app_demo_test") {
+ohos_xts_group("ohos_app_demo_test") {
   testonly = true
+  suite_type = "hap_dynamic"
   if (is_standard_system) {
     deps = [ ":check_test" ]
   }
