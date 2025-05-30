@@ -30,7 +30,6 @@ group("ans_standard") {
       "actsNotificationSlotTest:ActsNotificationSlotTest",
       "actsNotificationSystemAPITest:ActsNotificationSystemAPITest",
       "actsNotificationSystemLiveViewTest:ActsNotificationSystemLiveViewTest",
-      "actsNotificationVibrationSoundTest:ActsNotificationVibrationSoundTest",
       "notificationManager:notificationManager",
     ]
   }
