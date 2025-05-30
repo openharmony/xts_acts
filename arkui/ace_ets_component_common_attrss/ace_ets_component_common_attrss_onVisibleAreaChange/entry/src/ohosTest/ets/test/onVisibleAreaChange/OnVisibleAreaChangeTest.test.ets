@@ -152,14 +152,19 @@ export default function onVisibleAreaChangeTest() {
 
   describe('OnVisibleAreaChangeTest', () => {
     CommonTest.initTest(pageConfig, supportView, testValues, null, async (data: ESObject) => {
-      await Utils.sleep(4000);
       //Get Information about the location of the target component before the change
       let targetRectBefore: ESObject = Utils.getComponentRect(data.pageConfig.componentKey);
       console.info('[' + data.caseTag + '] targetRectBefore: ' + targetRectBefore);
 
       //Set value
       AttrsManager.change(data.caseTag, data.testValue.setValue.leave);
-      await Utils.sleep(1000);
+      if (
+        data.pageConfig.targetView == "RichText"
+        ) {
+        await Utils.sleep(4000)
+        } else {
+        await Utils.sleep(1000)
+        }
       sendEventByKey('OnVisibleAreaChangeButton', 10, '');
       await Utils.sleep(4000);
 
@@ -170,7 +175,13 @@ export default function onVisibleAreaChangeTest() {
 
       //Set value
       AttrsManager.change(data.caseTag, data.testValue.setValue.enter);
-      await Utils.sleep(1000);
+      if (
+        data.pageConfig.targetView == "RichText"
+        ) {
+        await Utils.sleep(4000)
+        } else {
+        await Utils.sleep(1000)
+        }
       sendEventByKey('OnVisibleAreaChangeButton', 10, '');
       await Utils.sleep(4000);
 
