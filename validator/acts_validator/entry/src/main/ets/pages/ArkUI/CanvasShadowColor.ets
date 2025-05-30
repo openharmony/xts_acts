@@ -42,14 +42,14 @@ struct SetCircle {
           Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
             Toggle({ type: ToggleType.Button, isOn: false }) {
               Text('Blue')
-                .fontSize(16)
-            }.size({ width: '25%', height: '20%' })
+                .fontSize(10).fontColor(Color.Black)
+            }.size({ width: '25%' })
             .onClick(() => {
-              this.context.clearRect(10, 100, 400, 300);
+              this.context.clearRect(0, 0, 400, 300);
               this.context.shadowBlur = 30;
               this.context.shadowColor = 'rgb(0,0,255)';
               this.context.fillStyle = 'rgb(255,0,0)';
-              this.context.fillRect(150, 150, 100, 100);
+              this.context.fillRect(50, 50, 100, 50);
               this.num1 = 1;
               if (this.num1 == 1 && this.num3 == 1 && this.num2 == 1) {
                 this.Vue = true;
@@ -58,14 +58,14 @@ struct SetCircle {
 
             Toggle({ type: ToggleType.Button, isOn: false }) {
               Text('Yellow')
-                .fontSize(16)
-            }.size({ width: '25%', height: '20%' })
+                .fontSize(10).fontColor(Color.Black)
+            }.size({ width: '25%' })
             .onClick(() => {
-              this.context.clearRect(10, 100, 400, 300);
+              this.context.clearRect(0, 0, 400, 300);
               this.context.shadowBlur = 30;
               this.context.shadowColor = '#fffffc3c';
               this.context.fillStyle = 'rgb(255,0,0)';
-              this.context.fillRect(150, 150, 100, 100);
+              this.context.fillRect(50, 50, 100, 50);
               this.num2 = 1;
               if (this.num1 == 1 && this.num3 == 1 && this.num2 == 1) {
                 this.Vue = true;
@@ -74,14 +74,14 @@ struct SetCircle {
 
             Toggle({ type: ToggleType.Button, isOn: false }) {
               Text('Green')
-                .fontSize(16)
-            }.size({ width: '25%', height: '20%' })
+                .fontSize(10).fontColor(Color.Black)
+            }.size({ width: '25%' })
             .onClick(() => {
-              this.context.clearRect(10, 100, 400, 300);
+              this.context.clearRect(0, 0, 400, 300);
               this.context.shadowBlur = 30;
               this.context.shadowColor = '#ff19fa00';
               this.context.fillStyle = 'rgb(255,0,0)';
-              this.context.fillRect(150, 150, 100, 100);
+              this.context.fillRect(50, 50, 100, 50);
               this.num3 = 1;
               if (this.num1 == 1 && this.num3 == 1 && this.num2 == 1) {
                 this.Vue = true;
@@ -98,7 +98,7 @@ struct SetCircle {
               .backgroundColor('#ffffffff')
               .onReady(() => {
                 this.context.fillStyle = 'rgb(255,0,0)';
-                this.context.fillRect(150, 150, 100, 100);
+                this.context.fillRect(50, 50, 100, 50);
               })
           }
           .width('100%')
