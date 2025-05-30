@@ -502,5 +502,109 @@ export default function UsbCoreEtsTestEx() {
         }
       }
     })
+
+    /**
+     * @tc.number   : SUB_USB_HostManager_JS_Compatibility_3400
+     * @tc.name     : testResetUsbDevice
+     * @tc.desc     : Negative test: Reset device
+     * @tc.size     : MediumTest
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('testResetUsbDevice', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.info(TAG, 'usb testResetUsbDevice begin');
+      if (!isDeviceConnected) {
+        expect(isDeviceConnected).assertFalse();
+        return
+      }
+
+      try {
+        let gDeviceList: Array<usbMgr.USBDevice> = usbMgr.getDevices();
+        let device: usbMgr.USBDevice = JSON.parse(JSON.stringify(devices));
+        let hasRight = await usbMgr.requestRight(gDeviceList[0].name);
+        console.info(TAG, 'usb testRequestRight004 ret :' + hasRight);
+        expect(hasRight).assertTrue();
+        gPipe = usbMgr.connectDevice(device);
+        console.info(TAG, 'usb case testConnectDevice014 ret: ' + JSON.stringify(gPipe));
+        expect(CheckEmptyUtils.isEmpty(gPipe)).assertFalse();
+        let result = usbMgr.resetUsbDevice(gPipe);
+        console.info(TAG, 'usb resetUsbDevice ret :' + result);
+        expect(result == true).assertTrue();
+      } catch (error) {
+        console.info(TAG, 'resetUsbDevice failed: ' + error);
+        expect(error !== null).assertFalse();
+      }
+      toClosePipe('testResetUsbDevice');
+    })
+
+    /**
+     * @tc.number   : SUB_USB_HostManager_JS_Compatibility_3500
+     * @tc.name     : testResetUsbDeviceErrorCode
+     * @tc.desc     : Negative test: resetUsbDevice error code 14400001 overwrite
+     * @tc.size     : MediumTest
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+     it('testResetUsbDeviceErrorCode', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.info(TAG, 'usb testResetUsbDeviceErrorCode begin');
+      if (!isDeviceConnected) {
+        expect(isDeviceConnected).assertFalse();
+        return
+      }
+
+      try {
+        let gDeviceList: Array<usbMgr.USBDevice> = usbMgr.getDevices();
+        let device: usbMgr.USBDevice = JSON.parse(JSON.stringify(devices));
+        let hasRight = await usbMgr.requestRight(gDeviceList[0].name);
+        console.info(TAG, 'usb testRequestRight005 ret :' + hasRight);
+        expect(hasRight).assertTrue();
+        gPipe = usbMgr.connectDevice(device);
+        console.info(TAG, 'usb case testConnectDevice015 ret: ' + JSON.stringify(gPipe));
+        expect(CheckEmptyUtils.isEmpty(gPipe)).assertFalse();
+        gPipe = {
+          "busNum":0,
+          "devAddress":0
+        };
+        let result = usbMgr.resetUsbDevice(gPipe);
+        console.info(TAG, 'usb resetUsbDevice ret :' + result);
+        expect(result == true).assertTrue();
+      } catch (error) {
+        console.info(TAG, 'resetUsbDevice failed: ' + error);
+        expect(error.code).assertEqual(14400001);
+      }
+    })
+
+    /**
+     * @tc.number   : SUB_USB_HostManager_JS_Compatibility_3600
+     * @tc.name     : testResetUsbDeviceErrorCode001
+     * @tc.desc     : Negative test: resetUsbDevice error code 14400013 overwrite
+     * @tc.size     : MediumTest
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+     it('testResetUsbDeviceErrorCode001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.info(TAG, 'usb testResetUsbDeviceErrorCode001 begin');
+      if (!isDeviceConnected) {
+        expect(isDeviceConnected).assertFalse();
+        return
+      }
+      
+      try {
+        let gDeviceList: Array<usbMgr.USBDevice> = usbMgr.getDevices();
+        let hasRight = await usbMgr.requestRight(gDeviceList[0].name);
+        console.info(TAG, 'usb testRequestRight006 ret :' + hasRight);
+        expect(hasRight).assertTrue();
+        gPipe = {
+          "busNum":gDeviceList[0].busNum,
+          "devAddress":gDeviceList[0].devAddress
+        };
+        let result = usbMgr.resetUsbDevice(gPipe);
+        console.info(TAG, 'usb resetUsbDevice ret :' + result);
+        expect(result == true).assertTrue();
+      } catch (error) {
+        console.info(TAG, 'resetUsbDevice failed: ' + error);
+        expect(error.code).assertEqual(14400013);
+      }
+    })
   })
 }
