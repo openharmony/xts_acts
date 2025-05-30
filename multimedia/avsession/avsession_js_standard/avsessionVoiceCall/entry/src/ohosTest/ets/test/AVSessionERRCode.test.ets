@@ -474,7 +474,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_ERR_CODE_CAST_CONTROL_IO_READ_POSITION_OUT_OF_RANGE_0100', 2TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 ,async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_ERR_CODE_CAST_CONTROL_IO_READ_POSITION_OUT_OF_RANGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2 ,async (done: Function) => {
         let err_code: avSession.AVSessionErrorCode =
           avSession.AVSessionErrorCode.ERR_CODE_CAST_CONTROL_IO_READ_POSITION_OUT_OF_RANGE
         if (err_code == 6612008) {
