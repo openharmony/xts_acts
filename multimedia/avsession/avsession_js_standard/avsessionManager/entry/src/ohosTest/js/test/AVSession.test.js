@@ -2359,7 +2359,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_ONWRONGCALLBACK_0100', 0, function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_ONWRONGCALLBACK_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function (done) {
             try {
                 session.on('wrongCall', () => {
                     console.info('TestLog: Wrong callback registration successful');
