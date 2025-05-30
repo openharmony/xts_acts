@@ -1760,7 +1760,7 @@ HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateSweepGradientWithL
     uint32_t colors2[] = {0xFFFFFFFF};
     float pos1[] = {0.0f, 1.0f}; // 1.0f: gradient color points
     float pos2[] = {-1.0f}; // -1.0f: gradient color points
-    float pos3[] = {0xFFFFFFFF}; 
+    float pos3[] = {0xFFFFFFFF};
     uint32_t size = 2; // colors' number
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
     EXPECT_NE(matrix, nullptr);
