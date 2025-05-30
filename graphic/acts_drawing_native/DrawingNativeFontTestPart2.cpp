@@ -492,6 +492,737 @@ HWTEST_F(DrawingNativeFontPart2Test, testFontGetMetricsMultiplies, Function | Sm
     OH_Drawing_TypefaceDestroy(typeface);
 }
 
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_FONT_2600
+ * @tc.name: testFontMeasureTextWithBrushOrPenNormal1
+ * @tc.desc: test for testFontMeasureTextWithBrushOrPenNormal1
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeFontPart2Test, testFontMeasureTextWithBrushOrPenNormal1, Function | SmallTest | Level0) {
+    OH_Drawing_Font *font = OH_Drawing_FontCreate();
+    OH_Drawing_FontSetTextSize(font, 50.0f);
+    const char* text = "你好世界";
+    float textWidth;
+    OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
+    OH_Drawing_Pen* pen = OH_Drawing_PenCreate();
+    OH_Drawing_Rect* bounds = OH_Drawing_RectCreate(0.0, 0.0, 200.0, 200.0);
+    OH_Drawing_Font *font2 = OH_Drawing_FontCreate();
+    EXPECT_EQ(OH_Drawing_FontMeasureTextWithBrushOrPen(font2, text, strlen(text),
+        TEXT_ENCODING_UTF8, nullptr, pen, bounds, &textWidth), OH_DRAWING_SUCCESS);
+    OH_Drawing_FontArguments *arguments = OH_Drawing_FontArgumentsCreate();
+    OH_Drawing_FontArgumentsAddVariation(arguments, "wght", 0);
+    OH_Drawing_Typeface* typeface = OH_Drawing_TypefaceCreateDefault();
+    OH_Drawing_FontSetTypeface(font, typeface);
+    OH_Drawing_FontSetFakeBoldText(font, true);
+    OH_Drawing_FontSetScaleX(font, 0.5f);
+    OH_Drawing_FontSetHinting(font, FONT_HINTING_SLIGHT);
+    EXPECT_EQ(OH_Drawing_FontMeasureTextWithBrushOrPen(font, text, strlen(text),
+        TEXT_ENCODING_UTF8, brush, nullptr, bounds, &textWidth), OH_DRAWING_SUCCESS);
+    OH_Drawing_TextEncoding encodes[] = {
+        TEXT_ENCODING_UTF8,
+        TEXT_ENCODING_UTF16,
+        TEXT_ENCODING_UTF32,
+        TEXT_ENCODING_GLYPH_ID,
+    };
+    for (OH_Drawing_TextEncoding encode : encodes) {
+        OH_Drawing_ErrorCode errorCode = OH_Drawing_FontMeasureTextWithBrushOrPen(font, text, strlen(text),
+        encode, brush, nullptr, bounds, &textWidth);
+        EXPECT_EQ(errorCode, OH_DRAWING_SUCCESS);
+    }
+    OH_Drawing_ErrorCode errorCode = OH_Drawing_FontMeasureTextWithBrushOrPen(font, text, strlen(text),
+        TEXT_ENCODING_UTF8, brush, nullptr, bounds, &textWidth);
+    EXPECT_EQ(errorCode, OH_DRAWING_SUCCESS);
+    EXPECT_EQ(static_cast<int>(textWidth), 100); // Inspection textwidth
+    const char* text1 = "hello world";
+    errorCode = OH_Drawing_FontMeasureTextWithBrushOrPen(font, text1, strlen(text1),
+        TEXT_ENCODING_UTF8, brush, nullptr, bounds, &textWidth);
+    EXPECT_EQ(errorCode, OH_DRAWING_SUCCESS);
+    EXPECT_EQ(static_cast<int>(textWidth), 120); // Inspection textwidth
+    const char* text2 = "1234567890 !@#$%^&*(";
+    errorCode = OH_Drawing_FontMeasureTextWithBrushOrPen(font, text2, strlen(text2),
+        TEXT_ENCODING_UTF8, nullptr, pen, bounds, &textWidth);
+    EXPECT_EQ(errorCode, OH_DRAWING_SUCCESS);
+    EXPECT_EQ(static_cast<int>(textWidth), 259); // Inspection textwidth
+    OH_Drawing_RectDestroy(bounds);
+    OH_Drawing_BrushDestroy(brush);
+    OH_Drawing_PenDestroy(pen);
+    OH_Drawing_FontDestroy(font);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_FONT_2601
+ * @tc.name: testFontMeasureTextWithBrushOrPenNormal2
+ * @tc.desc: test for testFontMeasureTextWithBrushOrPenNormal2
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeFontPart2Test, testFontMeasureTextWithBrushOrPenNormal2, Function | SmallTest | Level0) {
+    OH_Drawing_Font *font = OH_Drawing_FontCreate();
+    OH_Drawing_FontSetTextSize(font, 50.0f);
+    const char* text = "你好世界";
+    float textWidth;
+    OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
+    OH_Drawing_Pen* pen = OH_Drawing_PenCreate();
+    OH_Drawing_Rect* bounds = OH_Drawing_RectCreate(0.0, 0.0, 200.0, 200.0);
+    // Both brush and pen pass to nullptr
+    EXPECT_EQ(OH_Drawing_FontMeasureTextWithBrushOrPen(font, text, strlen(text),
+        TEXT_ENCODING_UTF8, nullptr, nullptr, bounds, &textWidth), OH_DRAWING_SUCCESS);
+    // Pass in the styled brush
+    OH_Drawing_BrushSetColor(brush, 0xFF00FFFF);
+    OH_Drawing_BrushSetAlpha(brush, 100); // Alpha 100
+    OH_Drawing_BrushSetAntiAlias(brush, true);
+    EXPECT_EQ(OH_Drawing_FontMeasureTextWithBrushOrPen(font, text, strlen(text),
+        TEXT_ENCODING_UTF8, brush, nullptr, bounds, &textWidth), OH_DRAWING_SUCCESS);
+    // Pass in the styled pen
+    OH_Drawing_PenSetWidth(pen, 10.0f);
+    OH_Drawing_PenSetColor(pen, 0xFF00FFFF);
+    OH_Drawing_PenSetAlpha(pen, 100); // Alpha 100
+    OH_Drawing_PenSetAntiAlias(pen, true);
+    EXPECT_EQ(OH_Drawing_FontMeasureTextWithBrushOrPen(font, text, strlen(text),
+        TEXT_ENCODING_UTF8, nullptr, pen, bounds, &textWidth), OH_DRAWING_SUCCESS);
+    // Verify the bounds
+    const char* text1 = "hello world";
+    OH_Drawing_ErrorCode errorCode = OH_Drawing_FontMeasureTextWithBrushOrPen(font, text1, strlen(text1),
+        TEXT_ENCODING_UTF8, brush, nullptr, bounds, &textWidth);
+    EXPECT_EQ(errorCode, OH_DRAWING_SUCCESS);
+    EXPECT_EQ(static_cast<int>(OH_Drawing_RectGetLeft(bounds)), 3); // left 3
+    EXPECT_EQ(static_cast<int>(OH_Drawing_RectGetRight(bounds)), 251); // right 251
+    EXPECT_EQ(static_cast<int>(OH_Drawing_RectGetBottom(bounds)), 1); // bottom 1
+    OH_Drawing_RectDestroy(bounds);
+    OH_Drawing_BrushDestroy(brush);
+    OH_Drawing_PenDestroy(pen);
+    OH_Drawing_FontDestroy(font);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_FONT_2602
+ * @tc.name: testFontMeasureTextWithBrushOrPenNull
+ * @tc.desc: test for testFontMeasureTextWithBrushOrPenNull
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeFontPart2Test, testFontMeasureTextWithBrushOrPenNull, Function | SmallTest | Level3) {
+    OH_Drawing_Font *font = OH_Drawing_FontCreate();
+    OH_Drawing_FontSetTextSize(font, 50.0f);
+    const char* text = "你好世界";
+    float textWidth;
+    OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
+    OH_Drawing_Pen* pen = OH_Drawing_PenCreate();
+    OH_Drawing_Rect* bounds = OH_Drawing_RectCreate(0.0, 0.0, 200.0, 200.0);
+    // font passes to nullptr
+    EXPECT_EQ(OH_Drawing_FontMeasureTextWithBrushOrPen(nullptr, text, strlen(text),
+        TEXT_ENCODING_UTF8, brush, nullptr, bounds, &textWidth), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    // text passes to nullptr
+    EXPECT_EQ(OH_Drawing_FontMeasureTextWithBrushOrPen(font, nullptr, strlen(text),
+        TEXT_ENCODING_UTF8, brush, nullptr, bounds, &textWidth), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    // text passes to null
+    const char* text2 = "";
+    EXPECT_EQ(OH_Drawing_FontMeasureTextWithBrushOrPen(font, text2, strlen(text),
+        TEXT_ENCODING_UTF8, brush, nullptr, bounds, &textWidth), OH_DRAWING_SUCCESS);
+    // text's length mismatch
+    EXPECT_EQ(OH_Drawing_FontMeasureTextWithBrushOrPen(font, text, 0,
+        TEXT_ENCODING_UTF8, brush, nullptr, bounds, &textWidth), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    // Both brush and pen pass to nullptr
+    EXPECT_EQ(OH_Drawing_FontMeasureTextWithBrushOrPen(font, text, strlen(text),
+        TEXT_ENCODING_UTF8, nullptr, nullptr, bounds, &textWidth), OH_DRAWING_SUCCESS);
+    // textWidth passes to nullptr
+    EXPECT_EQ(OH_Drawing_FontMeasureTextWithBrushOrPen(font, text, strlen(text),
+        TEXT_ENCODING_UTF8, brush, pen, bounds, nullptr), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    // bounds passes to nullptr
+    EXPECT_EQ(OH_Drawing_FontMeasureTextWithBrushOrPen(font, text, strlen(text),
+        TEXT_ENCODING_UTF8, brush, pen, nullptr, &textWidth), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_RectDestroy(bounds);
+    OH_Drawing_BrushDestroy(brush);
+    OH_Drawing_PenDestroy(pen);
+    OH_Drawing_FontDestroy(font);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_FONT_2603
+ * @tc.name: testFontMeasureTextWithBrushOrPenAbnormal
+ * @tc.desc: test for testFontMeasureTextWithBrushOrPenAbnormal
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeFontPart2Test, testFontMeasureTextWithBrushOrPenAbnormal, Function | SmallTest | Level3) {
+    OH_Drawing_Font *font = OH_Drawing_FontCreate();
+    OH_Drawing_FontSetTextSize(font, 50.0f);
+    const char* text = "你好世界";
+    float textWidth;
+    OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
+    OH_Drawing_Pen* pen = OH_Drawing_PenCreate();
+    OH_Drawing_Rect* bounds = OH_Drawing_RectCreate(0.0, 0.0, 200.0, 200.0);
+    // byteLength passes to 0
+    EXPECT_EQ(OH_Drawing_FontMeasureTextWithBrushOrPen(font, text, 0,
+        TEXT_ENCODING_UTF8, brush, nullptr, bounds, &textWidth), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    // brush and pen are not empty
+    EXPECT_EQ(OH_Drawing_FontMeasureTextWithBrushOrPen(font, text, strlen(text),
+        TEXT_ENCODING_UTF8, brush, pen, bounds, &textWidth), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_RectDestroy(bounds);
+    OH_Drawing_BrushDestroy(brush);
+    OH_Drawing_PenDestroy(pen);
+    OH_Drawing_FontDestroy(font);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_FONT_2604
+ * @tc.name: testFontMeasureTextWithBrushOrPenMultiCalls
+ * @tc.desc: test for testFontMeasureTextWithBrushOrPenMultiCalls
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeFontPart2Test, testFontMeasureTextWithBrushOrPenMultiCalls, Function | SmallTest | Level3) {
+    OH_Drawing_Font *font = OH_Drawing_FontCreate();
+    OH_Drawing_FontSetTextSize(font, 50.0f);
+    const char* text = "你好世界";
+    float textWidth;
+    OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
+    OH_Drawing_Pen* pen = OH_Drawing_PenCreate();
+    OH_Drawing_Rect* bounds = OH_Drawing_RectCreate(0.0, 0.0, 200.0, 200.0);
+    // OH_Drawing_FontMeasureTextWithBrushOrPen is called 20 times.
+    for (int i = 0; i < 20; i++) { //Number of cycles: 20
+        OH_Drawing_ErrorCode errorCode = OH_Drawing_FontMeasureTextWithBrushOrPen(font, text, strlen(text),
+        TEXT_ENCODING_UTF8, nullptr, pen, bounds, &textWidth);
+        EXPECT_EQ(errorCode, OH_DRAWING_SUCCESS);
+    }
+    OH_Drawing_RectDestroy(bounds);
+    OH_Drawing_BrushDestroy(brush);
+    OH_Drawing_PenDestroy(pen);
+    OH_Drawing_FontDestroy(font);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_FONT_2700
+ * @tc.name: testFontGetWidthsBoundsNormal1
+ * @tc.desc: test for testFontGetWidthsBoundsNormal1
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeFontPart2Test, testFontGetWidthsBoundsNormal1, Function | SmallTest | Level0) {
+    OH_Drawing_Font *font = OH_Drawing_FontCreate();
+    OH_Drawing_FontSetTextSize(font, 50.0f);
+    OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
+    OH_Drawing_Pen* pen = OH_Drawing_PenCreate();
+    const char* text = "你好世界";
+    uint32_t count = 0;
+    count = OH_Drawing_FontCountText(font, text, strlen(text), TEXT_ENCODING_UTF8);
+    uint16_t glyphs[count];
+    int glyphsCount = 0;
+    glyphsCount = OH_Drawing_FontTextToGlyphs(
+        font, text, strlen(text), OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8, glyphs, count);
+    float widths[50] = {0.f}; // 50 means widths array number
+    OH_Drawing_Array *outRectarr = OH_Drawing_RectCreateArray(count);
+    // Font does not set any attributes
+    OH_Drawing_Font *font2 = OH_Drawing_FontCreate();
+    EXPECT_EQ(OH_Drawing_FontGetWidthsBounds(font2, glyphs, glyphsCount, nullptr, pen, widths, outRectarr),
+        OH_DRAWING_SUCCESS);
+    // Font set some attributes
+    OH_Drawing_FontArguments *arguments = OH_Drawing_FontArgumentsCreate();
+    OH_Drawing_FontArgumentsAddVariation(arguments, "wght", 0);
+    OH_Drawing_Typeface* typeface = OH_Drawing_TypefaceCreateDefault();
+    OH_Drawing_FontSetTypeface(font, typeface);
+    OH_Drawing_FontSetFakeBoldText(font, true);
+    OH_Drawing_FontSetScaleX(font, 0.5f);
+    OH_Drawing_FontSetHinting(font, FONT_HINTING_SLIGHT);
+    count = OH_Drawing_FontCountText(font, text, strlen(text), TEXT_ENCODING_UTF8);
+    glyphsCount = OH_Drawing_FontTextToGlyphs(
+        font, text, strlen(text), OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8, glyphs, count);
+    EXPECT_EQ(OH_Drawing_FontGetWidthsBounds(font, glyphs, glyphsCount, brush, nullptr, widths, outRectarr),
+        OH_DRAWING_SUCCESS);
+    OH_Drawing_RectDestroyArray(outRectarr);
+    OH_Drawing_BrushDestroy(brush);
+    OH_Drawing_PenDestroy(pen);
+    OH_Drawing_FontDestroy(font);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_FONT_2701
+ * @tc.name: testFontGetWidthsBoundsNormal2
+ * @tc.desc: test for testFontGetWidthsBoundsNormal2
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeFontPart2Test, testFontGetWidthsBoundsNormal2, Function | SmallTest | Level0) {
+    OH_Drawing_Font *font = OH_Drawing_FontCreate();
+    OH_Drawing_FontSetTextSize(font, 50.0f);
+    OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
+    OH_Drawing_Pen* pen = OH_Drawing_PenCreate();
+    const char* text = "你好世界";
+    uint32_t count = 0;
+    count = OH_Drawing_FontCountText(font, text, strlen(text), TEXT_ENCODING_UTF8);
+    uint16_t glyphs[count];
+    int glyphsCount = 0;
+    glyphsCount = OH_Drawing_FontTextToGlyphs(
+        font, text, strlen(text), OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8, glyphs, count);
+    float widths[50] = {0.f}; // 50 means widths array number
+    OH_Drawing_Array *outRectarr = OH_Drawing_RectCreateArray(count);
+    std::vector<int> widthArr = {50, 50, 50, 50}; // num of four to font
+    OH_Drawing_ErrorCode errorCode = OH_Drawing_FontGetWidthsBounds(
+        font, glyphs, glyphsCount, brush, nullptr, widths, nullptr);
+    EXPECT_EQ(errorCode, OH_DRAWING_SUCCESS);
+    for (int i = 0; i < count; i++) {
+        EXPECT_EQ((int)widths[i], widthArr[i]);
+    }
+    errorCode = OH_Drawing_FontGetWidthsBounds(font, glyphs, glyphsCount, nullptr, pen, nullptr, outRectarr);
+    EXPECT_EQ(errorCode, OH_DRAWING_SUCCESS);
+    std::vector<std::array<int, 4>> arr = { { 0, -42, 48, 3 }, { 1, -42, 48, 3 }, { 2, -42, 47, 2 }, { 1, -40, 48, 3 }};
+    for (int i = 0; i < count; i++) {
+        OH_Drawing_Rect* iter = nullptr;
+        EXPECT_EQ(OH_Drawing_RectGetArrayElement(outRectarr, i, &iter), OH_DRAWING_SUCCESS);
+        ASSERT_NE(iter, nullptr);
+        EXPECT_EQ((int)OH_Drawing_RectGetLeft(iter), arr[i][0]);
+        EXPECT_EQ((int)OH_Drawing_RectGetTop(iter), arr[i][1]);
+        EXPECT_EQ((int)OH_Drawing_RectGetRight(iter), arr[i][2]);
+        EXPECT_EQ((int)OH_Drawing_RectGetBottom(iter), arr[i][3]);
+        EXPECT_EQ(OH_Drawing_RectGetBottom(iter) - OH_Drawing_RectGetTop(iter), OH_Drawing_RectGetHeight(iter));
+        EXPECT_EQ(OH_Drawing_RectGetRight(iter) - OH_Drawing_RectGetLeft(iter), OH_Drawing_RectGetWidth(iter));
+    }
+    OH_Drawing_BrushSetColor(brush, 0xFF00FFFF);
+    OH_Drawing_BrushSetAlpha(brush, 100); // Alpha 100
+    OH_Drawing_BrushSetAntiAlias(brush, true);
+    EXPECT_EQ(OH_Drawing_FontGetWidthsBounds(font, glyphs, glyphsCount, brush, nullptr, widths, outRectarr),
+        OH_DRAWING_SUCCESS);
+    OH_Drawing_PenSetWidth(pen, 10.0f);
+    OH_Drawing_PenSetColor(pen, 0xFF00FFFF);
+    OH_Drawing_PenSetAlpha(pen, 100); // Alpha 100
+    OH_Drawing_PenSetAntiAlias(pen, true);
+    EXPECT_EQ(OH_Drawing_FontGetWidthsBounds(font, glyphs, glyphsCount, nullptr, pen, widths, outRectarr),
+        OH_DRAWING_SUCCESS);
+    OH_Drawing_RectDestroyArray(outRectarr);
+    OH_Drawing_BrushDestroy(brush);
+    OH_Drawing_PenDestroy(pen);
+    OH_Drawing_FontDestroy(font);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_FONT_2702
+ * @tc.name: testFontGetWidthsBoundsNull
+ * @tc.desc: test for testFontGetWidthsBoundsNull
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeFontPart2Test, testFontGetWidthsBoundsNull, Function | SmallTest | Level3) {
+    OH_Drawing_Font *font = OH_Drawing_FontCreate();
+    OH_Drawing_FontSetTextSize(font, 50.0f);
+    OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
+    OH_Drawing_Pen* pen = OH_Drawing_PenCreate();
+    const char* text = "你好世界";
+    uint32_t count = 0;
+    count = OH_Drawing_FontCountText(font, text, strlen(text), TEXT_ENCODING_UTF8);
+    uint16_t glyphs[count];
+    int glyphsCount = 0;
+    glyphsCount = OH_Drawing_FontTextToGlyphs(
+        font, text, strlen(text), OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8, glyphs, count);
+    float widths[50] = {0.f}; // 50 means widths array number
+    OH_Drawing_Array *outRectarr = OH_Drawing_RectCreateArray(count);
+    // Font passes to nullptr
+    EXPECT_EQ(OH_Drawing_FontGetWidthsBounds(nullptr, glyphs, glyphsCount, nullptr, pen, widths, outRectarr),
+        OH_DRAWING_ERROR_INVALID_PARAMETER);
+    // Glyphs passes to nullptr
+    EXPECT_EQ(OH_Drawing_FontGetWidthsBounds(font, nullptr, glyphsCount, nullptr, pen, widths, outRectarr),
+        OH_DRAWING_ERROR_INVALID_PARAMETER);
+    // Both brush and pen pass to nullptr
+    EXPECT_EQ(OH_Drawing_FontGetWidthsBounds(font, glyphs, glyphsCount, nullptr, nullptr, widths, outRectarr),
+        OH_DRAWING_SUCCESS);
+    // Widths pass to nullptr
+    EXPECT_EQ(OH_Drawing_FontGetWidthsBounds(font, glyphs, glyphsCount, nullptr, pen, nullptr, outRectarr),
+        OH_DRAWING_SUCCESS);
+    // Bounds pass to nullptr
+    EXPECT_EQ(OH_Drawing_FontGetWidthsBounds(font, glyphs, glyphsCount, nullptr, pen, widths, nullptr),
+        OH_DRAWING_SUCCESS);
+    // Widths and Bounds pass to nullptr
+    EXPECT_EQ(OH_Drawing_FontGetWidthsBounds(font, glyphs, glyphsCount, nullptr, pen, nullptr, nullptr),
+        OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_RectDestroyArray(outRectarr);
+    OH_Drawing_BrushDestroy(brush);
+    OH_Drawing_PenDestroy(pen);
+    OH_Drawing_FontDestroy(font);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_FONT_2703
+ * @tc.name: testFontGetWidthsBoundsAbnormal
+ * @tc.desc: test for testFontGetWidthsBoundsAbnormal
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeFontPart2Test, testFontGetWidthsBoundsAbnormal, Function | SmallTest | Level3) {
+    OH_Drawing_Font *font = OH_Drawing_FontCreate();
+    OH_Drawing_FontSetTextSize(font, 50.0f);
+    OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
+    OH_Drawing_Pen* pen = OH_Drawing_PenCreate();
+    const char* text = "你好世界";
+    uint32_t count = 0;
+    count = OH_Drawing_FontCountText(font, text, strlen(text), TEXT_ENCODING_UTF8);
+    uint16_t glyphs[count];
+    int glyphsCount = 0;
+    glyphsCount = OH_Drawing_FontTextToGlyphs(
+        font, text, strlen(text), OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8, glyphs, count);
+    float widths[50] = {0.f}; // 50 means widths array number
+    OH_Drawing_Array *outRectarr = OH_Drawing_RectCreateArray(count);
+    // count passes to 0
+    EXPECT_EQ(OH_Drawing_FontGetWidthsBounds(font, glyphs, 0, nullptr, pen, widths, outRectarr),
+        OH_DRAWING_ERROR_INVALID_PARAMETER);
+    // count passes to negative number
+    EXPECT_EQ(OH_Drawing_FontGetWidthsBounds(font, glyphs, -1, nullptr, pen, widths, outRectarr),
+        OH_DRAWING_ERROR_INVALID_PARAMETER);
+    // The input parameter of count is less than the length of the glyphs array
+    EXPECT_EQ(OH_Drawing_FontGetWidthsBounds(font, glyphs, sizeof(glyphs)/sizeof(glyphs[0]) - 1, nullptr,
+        pen, widths, nullptr), OH_DRAWING_SUCCESS);
+    // Both brush and pen are not empty
+    EXPECT_EQ(OH_Drawing_FontGetWidthsBounds(font, glyphs, glyphsCount, brush, pen, widths, outRectarr),
+        OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_RectDestroyArray(outRectarr);
+    OH_Drawing_BrushDestroy(brush);
+    OH_Drawing_PenDestroy(pen);
+    OH_Drawing_FontDestroy(font);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_FONT_2704
+ * @tc.name: testFontGetWidthsBoundsMultiCalls
+ * @tc.desc: test for testFontGetWidthsBoundsMultiCalls
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeFontPart2Test, testFontGetWidthsBoundsMultiCalls, Function | SmallTest | Level3) {
+    OH_Drawing_Font *font = OH_Drawing_FontCreate();
+    OH_Drawing_FontSetTextSize(font, 50.0f);
+    OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
+    OH_Drawing_Pen* pen = OH_Drawing_PenCreate();
+    const char* text = "你好世界";
+    uint32_t count = 0;
+    count = OH_Drawing_FontCountText(font, text, strlen(text), TEXT_ENCODING_UTF8);
+    uint16_t glyphs[count];
+    int glyphsCount = 0;
+    glyphsCount = OH_Drawing_FontTextToGlyphs(
+        font, text, strlen(text), OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8, glyphs, count);
+    float widths[50] = {0.f}; // 50 means widths array number
+    OH_Drawing_Array *outRectarr = OH_Drawing_RectCreateArray(count);
+    // OH_Drawing_FontGetWidthsBounds is called 20 times
+    OH_Drawing_ErrorCode errorCode;
+    for (int i = 0; i < 20; i++) { //Number of cycles: 20
+        errorCode = OH_Drawing_FontGetWidthsBounds(font, glyphs, glyphsCount, brush, nullptr, widths, outRectarr);
+        EXPECT_EQ(errorCode, OH_DRAWING_SUCCESS);
+    }
+    OH_Drawing_RectDestroyArray(outRectarr);
+    OH_Drawing_BrushDestroy(brush);
+    OH_Drawing_PenDestroy(pen);
+    OH_Drawing_FontDestroy(font);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_FONT_2800
+ * @tc.name: testFontGePosNormal
+ * @tc.desc: test for testFontGePosNormal
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeFontPart2Test, testFontGePosNormal, Function | SmallTest | Level0) {
+    OH_Drawing_Font *font = OH_Drawing_FontCreate();
+    OH_Drawing_FontSetTextSize(font, 50.0f);
+    //font Different words
+    const char* text = "你好世界";
+    uint32_t count = 0;
+    count = OH_Drawing_FontCountText(font, text, strlen(text), TEXT_ENCODING_UTF8);
+    OH_Drawing_Point *point = OH_Drawing_PointCreate(10.0, 10.0);
+    uint16_t glyphs[count];
+    int glyphsCount = 0;
+    glyphsCount = OH_Drawing_FontTextToGlyphs(
+        font, text, strlen(text), OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8, glyphs, count);
+    OH_Drawing_Point2D* points = new OH_Drawing_Point2D[count];
+    //font does not set any attributes
+    OH_Drawing_ErrorCode errorCode = OH_Drawing_FontGetPos(font, glyphs, glyphsCount, point, points);
+    EXPECT_EQ(errorCode, OH_DRAWING_SUCCESS);
+    std::vector<std::array<int, 2>> testPoints = {{10, 10}, {60, 10}, {110, 10}, {160, 10}};
+    for (int i = 0; i < count; i++) {
+        EXPECT_EQ((int)points[i].x, testPoints[i][0]);
+        EXPECT_EQ((int)points[i].y, testPoints[i][1]);
+    }
+    //length count < glyphs
+    OH_Drawing_ErrorCode errorCode2 = OH_Drawing_FontGetPos(font, glyphs, sizeof(glyphs)/sizeof(glyphs[0])-1,
+        point, points);
+    EXPECT_EQ(errorCode2, OH_DRAWING_SUCCESS);
+    OH_Drawing_Typeface* typeface = OH_Drawing_TypefaceCreateDefault();
+    OH_Drawing_FontSetTypeface(font, typeface);
+    OH_Drawing_FontSetFakeBoldText(font, true);
+    OH_Drawing_FontSetScaleX(font, 0.5f);
+    OH_Drawing_FontSetHinting(font, FONT_HINTING_SLIGHT);
+    //font set some attributes
+    OH_Drawing_ErrorCode errorCode1 = OH_Drawing_FontGetPos(font, glyphs, glyphsCount, point, points);
+    EXPECT_EQ(errorCode1, OH_DRAWING_SUCCESS);
+    OH_Drawing_PointDestroy(point);
+    if (points != nullptr) {
+        delete[] points;
+    }
+    OH_Drawing_FontDestroy(font);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_FONT_2801
+ * @tc.name: testFontGetPosNormal1
+ * @tc.desc: test for testFontGetPosNormal1
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeFontPart2Test, testFontGetPosNormal1, Function | SmallTest | Level0) {
+    OH_Drawing_Font *font = OH_Drawing_FontCreate();
+    OH_Drawing_FontSetTextSize(font, 50.0f);
+    const char* text = "1234";
+    uint32_t count1 = 0;
+    count1 = OH_Drawing_FontCountText(font, text, strlen(text), TEXT_ENCODING_UTF8);
+    OH_Drawing_Point *point1 = OH_Drawing_PointCreate(100.0, 0.0);
+    std::vector<std::array<int, 2>> testPoints1 = {{100, 0}, {129, 0}, {158, 0}, {187, 0}};
+    uint16_t glyphs1[count1];
+    int glyphsCount1 = 0;
+    glyphsCount1 = OH_Drawing_FontTextToGlyphs(
+        font, text, strlen(text), OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8, glyphs1, count1);
+    OH_Drawing_Point2D* points1 = new OH_Drawing_Point2D[count1];
+    OH_Drawing_ErrorCode errorCode1 = OH_Drawing_FontGetPos(font, glyphs1, glyphsCount1, point1, points1);
+    EXPECT_EQ(errorCode1, OH_DRAWING_SUCCESS);
+    for (int i = 0; i < count1; i++) {
+        EXPECT_EQ((int)points1[i].x, testPoints1[i][0]);
+        EXPECT_EQ((int)points1[i].y, testPoints1[i][1]);
+    }
+    uint32_t count2 = 0;
+    count2 = OH_Drawing_FontCountText(font, text, strlen(text), TEXT_ENCODING_UTF8);
+    OH_Drawing_Point *point2 = OH_Drawing_PointCreate(0.0, 100.0);
+    std::vector<std::array<int, 2>> testPoints2 = {{0, 100}, {29, 100}, {58, 100}, {87, 100}};
+    uint16_t glyphs2[count2];
+    int glyphsCount2 = 0;
+    glyphsCount2 = OH_Drawing_FontTextToGlyphs(
+        font, text, strlen(text), OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8, glyphs2, count2);
+    OH_Drawing_Point2D* points2 = new OH_Drawing_Point2D[count2];
+    OH_Drawing_ErrorCode errorCode2 = OH_Drawing_FontGetPos(font, glyphs2, glyphsCount2, point2, points2);
+    EXPECT_EQ(errorCode2, OH_DRAWING_SUCCESS);
+    for (int i = 0; i < count2; i++) {
+        EXPECT_EQ((int)points2[i].x, testPoints2[i][0]);
+        EXPECT_EQ((int)points2[i].y, testPoints2[i][1]);
+    }
+    OH_Drawing_PointDestroy(point1);
+    OH_Drawing_PointDestroy(point2);
+    if (points1 != nullptr || points2 != nullptr) {
+        delete[] points1;
+        delete[] points2;
+    }
+    OH_Drawing_FontDestroy(font);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_FONT_2802
+ * @tc.name: testFontGePosNormal2
+ * @tc.desc: test for testFontGePosNormal2
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeFontPart2Test, testFontGePosNormal2, Function | SmallTest | Level0) {
+    OH_Drawing_Font *font = OH_Drawing_FontCreate();
+    OH_Drawing_FontSetTextSize(font, 50.0f);
+    const char* text = "1234";
+    uint32_t count1 = 0;
+    count1 = OH_Drawing_FontCountText(font, text, strlen(text), TEXT_ENCODING_UTF8);
+    OH_Drawing_Point *point1 = OH_Drawing_PointCreate(100.25, 200.585);
+    std::vector<std::array<float, 2>> testPoints1 = {{100.25, 200.585007}, {129.25, 200.585007},
+        {158.25, 200.585007}, {187.25, 200.585007}};
+    uint16_t glyphs1[count1];
+    int glyphsCount1 = 0;
+    glyphsCount1 = OH_Drawing_FontTextToGlyphs(
+        font, text, strlen(text), OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8, glyphs1, count1);
+    OH_Drawing_Point2D* points1 = new OH_Drawing_Point2D[count1];
+    OH_Drawing_ErrorCode errorCode1 = OH_Drawing_FontGetPos(font, glyphs1, glyphsCount1, point1, points1);
+    EXPECT_EQ(errorCode1, OH_DRAWING_SUCCESS);
+    for (int i = 0; i < count1; i++) {
+        EXPECT_EQ(points1[i].x, testPoints1[i][0]);
+        EXPECT_EQ(points1[i].y, testPoints1[i][1]);
+    }
+    uint32_t count2 = 0;
+    count2 = OH_Drawing_FontCountText(font, text, strlen(text), TEXT_ENCODING_UTF8);
+    OH_Drawing_Point *point2 = OH_Drawing_PointCreate(-100.0, -100.0);
+    std::vector<std::array<int, 2>> testPoints2 = {{-100, -100}, {-71, -100}, {-42, -100}, {-13, -100}};
+    uint16_t glyphs2[count2];
+    int glyphsCount2 = 0;
+    glyphsCount2 = OH_Drawing_FontTextToGlyphs(
+        font, text, strlen(text), OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8, glyphs2, count2);
+    OH_Drawing_Point2D* points2 = new OH_Drawing_Point2D[count2];
+    OH_Drawing_ErrorCode errorCode2 = OH_Drawing_FontGetPos(font, glyphs2, glyphsCount2, point2, points2);
+    EXPECT_EQ(errorCode2, OH_DRAWING_SUCCESS);
+    for (int i = 0; i < count2; i++) {
+        EXPECT_EQ((int)points2[i].x, testPoints2[i][0]);
+        EXPECT_EQ((int)points2[i].y, testPoints2[i][1]);
+    }
+    OH_Drawing_PointDestroy(point1);
+    OH_Drawing_PointDestroy(point2);
+    if (points1 != nullptr || points2 != nullptr) {
+        delete[] points1;
+        delete[] points2;
+    }
+    OH_Drawing_FontDestroy(font);
+}
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_FONT_2803
+ * @tc.name: testFontGePosNull
+ * @tc.desc: test for testFontGePosNull
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeFontPart2Test, testFontGePosNull, Function | SmallTest | Level3) {
+    OH_Drawing_Font *font = OH_Drawing_FontCreate();
+    OH_Drawing_FontSetTextSize(font, 50.0f);
+    const char* text = "你好";
+    uint32_t count = 0;
+    count = OH_Drawing_FontCountText(font, text, strlen(text), TEXT_ENCODING_UTF8);
+    OH_Drawing_Point *point = OH_Drawing_PointCreate(10.0, 10.0);
+    uint16_t glyphs[count];
+    int glyphsCount = 0;
+    glyphsCount = OH_Drawing_FontTextToGlyphs(
+        font, text, strlen(text), OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8, glyphs, count);
+    OH_Drawing_Point2D* points = new OH_Drawing_Point2D[count];
+    EXPECT_EQ(OH_Drawing_FontGetPos(nullptr, glyphs, glyphsCount, point, points), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    EXPECT_EQ(OH_Drawing_FontGetPos(font, nullptr, glyphsCount, point, points), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    EXPECT_EQ(OH_Drawing_FontGetPos(font, glyphs, glyphsCount, nullptr, nullptr), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_Point *point1 = OH_Drawing_PointCreate(0.0, 0.0);
+    EXPECT_EQ(OH_Drawing_FontGetPos(font, glyphs, glyphsCount, point1, points), OH_DRAWING_SUCCESS);
+    OH_Drawing_PointDestroy(point);
+    OH_Drawing_PointDestroy(point1);
+    if (points != nullptr) {
+        delete[] points;
+    }
+    OH_Drawing_FontDestroy(font);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_FONT_2804
+ * @tc.name: testFontGePosMultiplieCalls
+ * @tc.desc: test for testFontGePosMultiplieCalls
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeFontPart2Test, testFontGePosMultiplieCalls, Function | SmallTest | Level3) {
+    OH_Drawing_Font *font = OH_Drawing_FontCreate();
+    OH_Drawing_FontSetTextSize(font, 50.0f);
+    const char* text = "你好";
+    uint32_t count = 0;
+    count = OH_Drawing_FontCountText(font, text, strlen(text), TEXT_ENCODING_UTF8);
+    OH_Drawing_Point *point = OH_Drawing_PointCreate(10.0, 10.0);
+    uint16_t glyphs[count];
+    int glyphsCount = 0;
+    glyphsCount = OH_Drawing_FontTextToGlyphs(
+        font, text, strlen(text), OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8, glyphs, count);
+    OH_Drawing_Point2D* points = new OH_Drawing_Point2D[count];
+    for (int i = 0; i < 20; i++) { //Number of cycles: 20
+        EXPECT_EQ(OH_Drawing_FontGetPos(font, glyphs, glyphsCount, point, points), OH_DRAWING_SUCCESS);
+    }
+    OH_Drawing_FontDestroy(font);
+    OH_Drawing_PointDestroy(point);
+    if (points != nullptr) {
+        delete[] points;
+    }
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_FONT_2805
+ * @tc.name: testFontGePosAbnormal
+ * @tc.desc: test for testFontGePosAbnormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeFontPart2Test, testFontGePosAbnormal, Function | SmallTest | Level3) {
+    OH_Drawing_Font *font = OH_Drawing_FontCreate();
+    OH_Drawing_FontSetTextSize(font, 50.0f);
+    const char* text = "你好";
+    uint32_t count = 0;
+    count = OH_Drawing_FontCountText(font, text, strlen(text), TEXT_ENCODING_UTF8);
+    OH_Drawing_Point *point = OH_Drawing_PointCreate(10.0, 10.0);
+    uint16_t glyphs[count];
+    int glyphsCount = 0;
+    glyphsCount = OH_Drawing_FontTextToGlyphs(
+        font, text, strlen(text), OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8, glyphs, count);
+    OH_Drawing_Point2D* points = new OH_Drawing_Point2D[count];
+    EXPECT_EQ(OH_Drawing_FontGetPos(font, glyphs, 0, point, points), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    EXPECT_EQ(OH_Drawing_FontGetPos(font, glyphs, -1, point, points), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_FontDestroy(font);
+    OH_Drawing_PointDestroy(point);
+    if (points != nullptr) {
+        delete[] points;
+    }
+}
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_FONT_2900
+ * @tc.name: testFontGeSpacingNormal
+ * @tc.desc: test for testFontGeSpacingNormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeFontPart2Test, testFontGeSpacingNormal, Function | SmallTest | Level0) {
+    OH_Drawing_Font *font = OH_Drawing_FontCreate();
+    float spacing = 0.0f;
+    OH_Drawing_ErrorCode errorCode = OH_Drawing_FontGetSpacing(font, &spacing);
+    EXPECT_EQ(errorCode, OH_DRAWING_SUCCESS);
+    OH_Drawing_Typeface* typeface = OH_Drawing_TypefaceCreateDefault();
+    OH_Drawing_FontSetTypeface(font, typeface);
+    OH_Drawing_FontSetTextSize(font, 30.0f);
+    OH_Drawing_FontSetFakeBoldText(font, true);
+    OH_Drawing_FontSetScaleX(font, 0.5f);
+    OH_Drawing_FontSetHinting(font, FONT_HINTING_SLIGHT);
+    OH_Drawing_ErrorCode errorCode1 = OH_Drawing_FontGetSpacing(font, &spacing);
+    EXPECT_EQ(errorCode1, OH_DRAWING_SUCCESS);
+    EXPECT_EQ(std::fabs(spacing - 35.16) < 1e-6, true);
+    OH_Drawing_FontDestroy(font);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_FONT_2901
+ * @tc.name: testFontGeSpacingMultiplieCalls
+ * @tc.desc: test for testFontGeSpacingMultiplieCalls.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeFontPart2Test, testFontGeSpacingMultiplieCalls, Function | SmallTest | Level3) {
+    OH_Drawing_Font *font = OH_Drawing_FontCreate();
+    OH_Drawing_FontSetTextSize(font, 30.0f);
+    float spacing = 0.0f;
+    for (int i = 0; i < 20; i++) { //Number of cycles: 20
+        EXPECT_EQ(OH_Drawing_FontGetSpacing(font, &spacing), OH_DRAWING_SUCCESS);
+    }
+    EXPECT_EQ(std::fabs(spacing - 35.16) < 1e-6, true);
+    OH_Drawing_FontDestroy(font);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_FONT_2902
+ * @tc.name: testFontGeSpacingNull
+ * @tc.desc: test for testFontGeSpacingNull
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeFontPart2Test, testFontGeSpacingNull, Function | SmallTest | Level3) {
+    OH_Drawing_Font *font = OH_Drawing_FontCreate();
+    OH_Drawing_FontSetTextSize(font, 30.0f);
+    float spacing = 0.0f;
+    EXPECT_EQ(OH_Drawing_FontGetSpacing(nullptr, &spacing), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    EXPECT_EQ(OH_Drawing_FontGetSpacing(font, nullptr), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_FontDestroy(font);
+}
 } // namespace Drawing
 } // namespace Rosen
 } // namespace OHOS

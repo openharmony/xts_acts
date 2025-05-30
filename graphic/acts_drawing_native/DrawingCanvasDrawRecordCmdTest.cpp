@@ -149,6 +149,135 @@ HWTEST_F(DrawingCanvasDrawRecordCmdTest, testCanvasDrawRecordCmdABNormal, Functi
         EXPECT_EQ(result, OH_DRAWING_ERROR_INVALID_PARAMETER);
 }
 }
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_RECORDER_0600
+ * @tc.name: testCanvasDrawRecordCmdNestingNormal
+ * @tc.desc: test for testCanvasDrawRecordCmdNestingNormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingCanvasDrawRecordCmdTest, testCanvasDrawRecordCmdNestingNormal, Function | SmallTest | Level0) {
+    OH_Drawing_Canvas *canvas0 = OH_Drawing_CanvasCreate();
+    int32_t width = 100;
+    int32_t height = 100;
+    OH_Drawing_RecordCmd *recordCmd = nullptr; //beginRecording-draw-finishRecording
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    OH_Drawing_RecordCmdUtils *recordCmdUtils = OH_Drawing_RecordCmdUtilsCreate();
+    OH_Drawing_RecordCmdUtilsBeginRecording(recordCmdUtils, width, height, &canvas);
+    drawCircle1(canvas, width);
+    OH_Drawing_RecordCmdUtilsFinishRecording(recordCmdUtils, &recordCmd);
+    canvas = nullptr;
+    OH_Drawing_RecordCmdUtilsDestroy(recordCmdUtils);
+    OH_Drawing_ErrorCode result1 = OH_Drawing_CanvasDrawRecordCmdNesting(canvas0, recordCmd);
+    EXPECT_EQ(result1, OH_DRAWING_SUCCESS);
+    OH_Drawing_RecordCmd *recordCmd1 = nullptr; //beginRecording-finishRecording
+    OH_Drawing_Canvas *canvas1 = OH_Drawing_CanvasCreate();
+    OH_Drawing_RecordCmdUtils *recordCmdUtils1 = OH_Drawing_RecordCmdUtilsCreate();
+    OH_Drawing_RecordCmdUtilsBeginRecording(recordCmdUtils1, width, height, &canvas1);
+    OH_Drawing_RecordCmdUtilsFinishRecording(recordCmdUtils1, &recordCmd1);
+    canvas1 = nullptr;
+    OH_Drawing_RecordCmdUtilsDestroy(recordCmdUtils1);
+    OH_Drawing_ErrorCode result2 = OH_Drawing_CanvasDrawRecordCmdNesting(canvas0, recordCmd1);
+    EXPECT_EQ(result2, OH_DRAWING_SUCCESS);
+    OH_Drawing_RecordCmd *recordCmd2 = nullptr; //beginRecording-draw-nesting-draw-finishRecording
+    OH_Drawing_Canvas *canvas2 = OH_Drawing_CanvasCreate();
+    OH_Drawing_RecordCmdUtils *recordCmdUtils2 = OH_Drawing_RecordCmdUtilsCreate();
+    OH_Drawing_RecordCmdUtilsBeginRecording(recordCmdUtils2, width, height, &canvas2);
+    drawCircle1(canvas2, width);
+    OH_Drawing_ErrorCode result3 = OH_Drawing_CanvasDrawRecordCmdNesting(canvas2, recordCmd1);
+    drawCircle1(canvas2, width);
+    OH_Drawing_RecordCmdUtilsFinishRecording(recordCmdUtils2, &recordCmd2);
+    canvas2 = nullptr;
+    OH_Drawing_RecordCmdUtilsDestroy(recordCmdUtils2);
+    EXPECT_EQ(result3, OH_DRAWING_SUCCESS);
+    OH_Drawing_RecordCmd *recordCmd3 = nullptr; //beginRecording-nesting-nesting-finishRecording
+    OH_Drawing_Canvas *canvas3 = OH_Drawing_CanvasCreate();
+    OH_Drawing_RecordCmdUtils *recordCmdUtils3 = OH_Drawing_RecordCmdUtilsCreate();
+    OH_Drawing_RecordCmdUtilsBeginRecording(recordCmdUtils3, width, height, &canvas3);
+    OH_Drawing_ErrorCode result4 = OH_Drawing_CanvasDrawRecordCmdNesting(canvas3, recordCmd2);
+    OH_Drawing_ErrorCode result5 = OH_Drawing_CanvasDrawRecordCmdNesting(canvas3, recordCmd1);
+    OH_Drawing_RecordCmdUtilsFinishRecording(recordCmdUtils3, &recordCmd3);
+    canvas3 = nullptr;
+    OH_Drawing_RecordCmdUtilsDestroy(recordCmdUtils3);
+    EXPECT_EQ(result4, OH_DRAWING_SUCCESS);
+    EXPECT_EQ(result5, OH_DRAWING_SUCCESS);
+    OH_Drawing_RecordCmdDestroy(recordCmd);
+    OH_Drawing_RecordCmdDestroy(recordCmd1);
+    OH_Drawing_RecordCmdDestroy(recordCmd2);
+    OH_Drawing_RecordCmdDestroy(recordCmd3);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_RECORDER_0601
+ * @tc.name: testCanvasDrawRecordCmdNestingAbNormal
+ * @tc.desc: test for testCanvasDrawRecordCmdNestingAbNormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingCanvasDrawRecordCmdTest, testCanvasDrawRecordCmdNestingAbNormal, Function | SmallTest | Level3) {
+    OH_Drawing_Canvas *canvas0 = OH_Drawing_CanvasCreate();
+    int32_t width = 100;
+    int32_t height = 100;
+    OH_Drawing_RecordCmd *recordCmd = nullptr;
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    OH_Drawing_RecordCmdUtils *recordCmdUtils = OH_Drawing_RecordCmdUtilsCreate();
+    OH_Drawing_ErrorCode result = OH_Drawing_CanvasDrawRecordCmdNesting(canvas, recordCmd);
+    OH_Drawing_RecordCmdUtilsBeginRecording(recordCmdUtils, width, height, &canvas);
+    drawCircle1(canvas, width);
+    OH_Drawing_RecordCmdUtilsFinishRecording(recordCmdUtils, &recordCmd);
+    canvas = nullptr;
+    OH_Drawing_RecordCmdUtilsDestroy(recordCmdUtils);
+    OH_Drawing_ErrorCode result1 = OH_Drawing_CanvasDrawRecordCmdNesting(nullptr, recordCmd);
+    EXPECT_EQ(result, OH_DRAWING_ERROR_INVALID_PARAMETER);
+    EXPECT_EQ(result1, OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_ErrorCode result2 = OH_Drawing_CanvasDrawRecordCmdNesting(canvas0, nullptr);
+    EXPECT_EQ(result2, OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_RecordCmdDestroy(recordCmd);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_RECORDER_0602
+ * @tc.name: testCanvasDrawRecordCmdNestingAbNormal1
+ * @tc.desc: test for testCanvasDrawRecordCmdNestingAbNormal1.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingCanvasDrawRecordCmdTest, testCanvasDrawRecordCmdNestingAbNormal1, Function | SmallTest | Level3) {
+    OH_Drawing_Canvas *canvas0 = OH_Drawing_CanvasCreate();
+    int32_t width = 100;
+    int32_t height = 100;
+    OH_Drawing_RecordCmd *recordCmd = nullptr;
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    OH_Drawing_RecordCmdUtils *recordCmdUtils = OH_Drawing_RecordCmdUtilsCreate();
+    OH_Drawing_RecordCmdUtilsBeginRecording(recordCmdUtils, width, height, &canvas);
+    OH_Drawing_ErrorCode result = OH_Drawing_CanvasDrawRecordCmdNesting(canvas, recordCmd);
+    OH_Drawing_RecordCmdUtilsBeginRecording(recordCmdUtils, width, height, &canvas);
+    OH_Drawing_ErrorCode result1 = OH_Drawing_CanvasDrawRecordCmdNesting(canvas, recordCmd);
+    OH_Drawing_RecordCmdUtilsFinishRecording(recordCmdUtils, &recordCmd);
+    canvas = nullptr;
+    OH_Drawing_RecordCmdUtilsDestroy(recordCmdUtils);
+    EXPECT_EQ(result, OH_DRAWING_ERROR_INVALID_PARAMETER);
+    EXPECT_EQ(result1, OH_DRAWING_ERROR_INVALID_PARAMETER);
+
+    OH_Drawing_RecordCmd *recordCmd1 = nullptr;
+    OH_Drawing_Canvas *canvas1 = OH_Drawing_CanvasCreate();
+    OH_Drawing_RecordCmdUtils *recordCmdUtils1 = OH_Drawing_RecordCmdUtilsCreate();
+    OH_Drawing_RecordCmdUtilsBeginRecording(recordCmdUtils1, width, height, &canvas);
+    OH_Drawing_ErrorCode result2 = OH_Drawing_CanvasDrawRecordCmdNesting(canvas1, recordCmd1);
+    OH_Drawing_RecordCmdUtilsFinishRecording(recordCmdUtils1, &recordCmd1);
+    OH_Drawing_ErrorCode result3 = OH_Drawing_CanvasDrawRecordCmdNesting(canvas0, recordCmd1);
+    OH_Drawing_RecordCmdUtilsFinishRecording(recordCmdUtils1, &recordCmd1);
+    canvas1 = nullptr;
+    OH_Drawing_RecordCmdUtilsDestroy(recordCmdUtils1);
+    EXPECT_EQ(result2, OH_DRAWING_ERROR_INVALID_PARAMETER);
+    EXPECT_EQ(result3, OH_DRAWING_SUCCESS);
+    OH_Drawing_RecordCmdDestroy(recordCmd);
+    OH_Drawing_RecordCmdDestroy(recordCmd1);
+}
 } // namespace Drawing
 } // namespace Rosen
 } // namespace OHOS
