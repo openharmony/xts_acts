@@ -140,7 +140,8 @@
     "pages/ArkUI/AccessibilityDefaultFocusPage",
     "pages/ArkUI/AccessibilityScrollTriggerablePage",
 	"pages/ArkUI/EmbeddedComponentInstanceTest",
-    "pages/ArkUI/OnAccessibilityActionIntercept"
+    "pages/ArkUI/OnAccessibilityActionIntercept",
+    "pages/ArkUI/moveList"
   ]
 }
 
