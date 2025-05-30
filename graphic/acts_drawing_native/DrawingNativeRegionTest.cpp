@@ -576,6 +576,140 @@ HWTEST_F(DrawingNativeRegionTest, testRegionSetPathResultFalse, Function | Small
     OH_Drawing_RectDestroy(rect);
 }
 
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_REGION_0700
+ * @tc.name: testRegionCopyNormal
+ * @tc.desc: test for testRegionCopyNormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeRegionTest, testRegionCopyNormal, Function | SmallTest | Level0) {
+    // 1. Create a region object by OH_Drawing_RegionCreate.
+    OH_Drawing_Region *region1 = OH_Drawing_RegionCreate();
+    EXPECT_NE(region1, nullptr);
+    // 2. Create a region object by OH_Drawing_RectCreate.
+    OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0.0f, 0.0f, 200.0f, 200.0f);
+    EXPECT_NE(rect, nullptr);
+    // 3. Set the region1 as the rectangle.
+    OH_Drawing_RegionSetRect(region1, rect);
+    // 4. Create another region object by OH_Drawing_RegionCreate.
+    OH_Drawing_Region *region2 = OH_Drawing_RegionCopy(region1);
+    EXPECT_NE(region2, nullptr);
+    // 5. Free memory.
+    OH_Drawing_RectDestroy(rect);
+    OH_Drawing_RegionDestroy(region1);
+    OH_Drawing_RegionDestroy(region2);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_REGION_0701
+ * @tc.name: testRegionCopyNull
+ * @tc.desc: test for testRegionCopyNull
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeRegionTest, testRegionCopyNull, Function | SmallTest | Level3) {
+    // 1. Create a region object by OH_Drawing_RegionCreate.
+    OH_Drawing_Region *region1 = OH_Drawing_RegionCreate();
+    EXPECT_NE(region1, nullptr);
+    // 2. Create a region object by OH_Drawing_RectCreate.
+    OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0.0f, 0.0f, 200.0f, 200.0f);
+    EXPECT_NE(rect, nullptr);
+    // 3. Set the region1 as the rectangle.
+    OH_Drawing_RegionSetRect(region1, rect);
+    // 4. Copy a region object by OH_Drawing_RegionCopy.
+    OH_Drawing_Region *region2 = OH_Drawing_RegionCopy(nullptr);
+    EXPECT_EQ(region2, nullptr);
+    // 5. Free memory.
+    OH_Drawing_RectDestroy(rect);
+    OH_Drawing_RegionDestroy(region1);
+    OH_Drawing_RegionDestroy(region2);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_REGION_0702
+ * @tc.name: testRegionCopyAbnormal
+ * @tc.desc: test for testRegionCopyAbnormal
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeRegionTest, testRegionCopyAbnormal, Function | SmallTest | Level3) {
+    // 1. Create a region object by OH_Drawing_RegionCreate.
+    OH_Drawing_Region *region1 = OH_Drawing_RegionCreate();
+    EXPECT_NE(region1, nullptr);
+    // 2. The ordinate coordinates of the upper left corner and the lower right corner are equal.
+    OH_Drawing_Rect *rect1 = OH_Drawing_RectCreate(0.0f, 0.0f, 200.0f, 0.0f);
+    EXPECT_NE(rect1, nullptr);
+    // 3. Set the region1 as the rectangle.
+    OH_Drawing_RegionSetRect(region1, rect1);
+    // 4. Copy a region object by OH_Drawing_RegionCopy.
+    OH_Drawing_Region *region2 = OH_Drawing_RegionCopy(region1);
+    EXPECT_NE(region2, nullptr);
+    // 5. The horizontal coordinates of the upper left corner and the lower right corner are equal.
+    OH_Drawing_Rect *rect2 = OH_Drawing_RectCreate(0.0f, 0.0f, 0.0f, 200.0f);
+    EXPECT_NE(rect2, nullptr);
+    // 6. Set the region1 as the rectangle.
+    OH_Drawing_RegionSetRect(region1, rect2);
+    // 7. Copy a region object by OH_Drawing_RegionCopy.
+    region2 = OH_Drawing_RegionCopy(region1);
+    EXPECT_NE(region2, nullptr);
+    // 8. The coordinates of the upper left corner and the lower right corner are equal.
+    OH_Drawing_Rect *rect3 = OH_Drawing_RectCreate(0.0f, 0.0f, 0.0f, 0.0f);
+    EXPECT_NE(rect3, nullptr);
+    // 9. Set the region1 as the rectangle.
+    OH_Drawing_RegionSetRect(region1, rect3);
+    // 10. Copy a region object by OH_Drawing_RegionCopy.
+    region2 = OH_Drawing_RegionCopy(region1);
+    EXPECT_NE(region2, nullptr);
+    // 11. The coordinates of the upper left corner are greater than those of the lower right corner.
+    OH_Drawing_Rect *rect4 = OH_Drawing_RectCreate(400.0f, 400.0f, 200.0f, 200.0f);
+    EXPECT_NE(rect4, nullptr);
+    // 12. Set the region1 as the rectangle.
+    OH_Drawing_RegionSetRect(region1, rect4);
+    // 13. Copy a region object by OH_Drawing_RegionCopy.
+    region2 = OH_Drawing_RegionCopy(region1);
+    EXPECT_NE(region2, nullptr); 
+    // 14. Free memory.
+    OH_Drawing_RectDestroy(rect1);
+    OH_Drawing_RectDestroy(rect2);
+    OH_Drawing_RectDestroy(rect3);
+    OH_Drawing_RectDestroy(rect4);
+    OH_Drawing_RegionDestroy(region1);
+    OH_Drawing_RegionDestroy(region2);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_REGION_0703
+ * @tc.name: testRegionCopyMultipleCalls
+ * @tc.desc: test for testRegionCopyMultipleCalls
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeRegionTest, testRegionCopyMultipleCalls, Function | SmallTest | Level0) {
+    // 1. Create a region object by OH_Drawing_RegionCreate.
+    OH_Drawing_Region *region1 = OH_Drawing_RegionCreate();
+    EXPECT_NE(region1, nullptr);
+    // 2. Create a region object by OH_Drawing_RectCreate.
+    OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0.0f, 0.0f, 200.0f, 200.0f);
+    EXPECT_NE(rect, nullptr);
+    // 3. Set the region1 as the rectangle.
+    OH_Drawing_RegionSetRect(region1, rect);
+    // 4. Create another region object by OH_Drawing_RegionCreate.
+    OH_Drawing_Region *region2 = OH_Drawing_RegionCreate();
+    // 5. The function OH_Drawing_RegionCopy is called 10 times.
+    for (int i = 0; i < 10; i++) {
+        region2 = OH_Drawing_RegionCopy(region1);
+        EXPECT_NE(region2, nullptr);
+    }
+    // 5. Free memory.
+    OH_Drawing_RectDestroy(rect);
+    OH_Drawing_RegionDestroy(region1);
+    OH_Drawing_RegionDestroy(region2);
+}
 } // namespace Drawing
 } // namespace Rosen
 } // namespace OHOS

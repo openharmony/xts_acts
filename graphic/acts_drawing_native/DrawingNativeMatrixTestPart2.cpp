@@ -938,6 +938,85 @@ HWTEST_F(DrawingNativeMatrixPart2Test, testMatrixIsIdentityMultipleCalls, Functi
     }
 }
 
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_2400
+ * @tc.name: testMatrixCopyNormal
+ * @tc.desc: test for testMatrixCopyNormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeMatrixPart2Test, testMatrixCopyNormal, Function | SmallTest | Level0) {
+    // 1. Create a matrix object using OH_Drawing_MatrixCreate.
+    OH_Drawing_Matrix *matrix1 = OH_Drawing_MatrixCreate();
+    EXPECT_NE(matrix1, nullptr);
+    // 2. The function OH_Drawing_MatrixSetMatrix creates a identity matrix.
+    OH_Drawing_MatrixSetMatrix(matrix1, 1, 0, 0, 0, 1, 0, 0, 0, 1);
+    // 3. Using the function OH_Drawing_MatrixCopy copy another matrix.
+    OH_Drawing_Matrix *matrix2 = OH_Drawing_MatrixCopy(matrix1);
+    EXPECT_NE(matrix2, nullptr);
+    EXPECT_EQ(OH_Drawing_MatrixGetValue(matrix2, 0), 1);
+    EXPECT_EQ(OH_Drawing_MatrixGetValue(matrix2, 1), 0);
+    EXPECT_EQ(OH_Drawing_MatrixGetValue(matrix2, 2), 0);
+    EXPECT_EQ(OH_Drawing_MatrixGetValue(matrix2, 3), 0);
+    EXPECT_EQ(OH_Drawing_MatrixGetValue(matrix2, 4), 1);
+    EXPECT_EQ(OH_Drawing_MatrixGetValue(matrix2, 5), 0);
+    EXPECT_EQ(OH_Drawing_MatrixGetValue(matrix2, 6), 0);
+    EXPECT_EQ(OH_Drawing_MatrixGetValue(matrix2, 7), 0);
+    EXPECT_EQ(OH_Drawing_MatrixGetValue(matrix2, 8), 1);
+    // 4. Free memory
+    OH_Drawing_MatrixDestroy(matrix1);
+    OH_Drawing_MatrixDestroy(matrix2);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_2401
+ * @tc.name: testMatrixCopyNull
+ * @tc.desc: test for testMatrixCopyNull.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeMatrixPart2Test, testMatrixCopyNull, Function | SmallTest | Level3) {
+    // 1. Create a matrix object using OH_Drawing_MatrixCreate.
+    OH_Drawing_Matrix *matrix1 = OH_Drawing_MatrixCreate();
+    EXPECT_NE(matrix1, nullptr);
+    // 2. The function OH_Drawing_MatrixSetMatrix creates a identity matrix.
+    OH_Drawing_MatrixSetMatrix(matrix1, 1, 0, 0, 0, 1, 0, 0, 0, 1);
+    // 3. The function OH_Drawing_MatrixCopy passes to nullptr.
+    OH_Drawing_Matrix *matrix2 = OH_Drawing_MatrixCopy(nullptr);
+    EXPECT_EQ(matrix2, nullptr);
+    // 4. Free memory
+    OH_Drawing_MatrixDestroy(matrix1);
+    OH_Drawing_MatrixDestroy(matrix2);
+}
+
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_2402
+ * @tc.name: testMatrixCopyMultipleCalls
+ * @tc.desc: test for testMatrixCopyMultipleCalls.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeMatrixPart2Test, testMatrixCopyMultipleCalls, Function | SmallTest | Level3) {
+    // 1. Create a matrix object using OH_Drawing_MatrixCreate.
+    OH_Drawing_Matrix *matrix1 = OH_Drawing_MatrixCreate();
+    EXPECT_NE(matrix1, nullptr);
+    // 2. The function OH_Drawing_MatrixSetMatrix creates a identity matrix.
+    OH_Drawing_MatrixSetMatrix(matrix1, 1, 0, 0, 0, 1, 0, 0, 0, 1);
+    // 3. Using the function OH_Drawing_MatrixCopy copy another matrix.
+    OH_Drawing_Matrix *matrix2 = OH_Drawing_MatrixCreate();
+    // 4. The function OH_Drawing_MatrixCopy is called 10 times.
+    for (int i = 0; i < 10; i++) {
+        OH_Drawing_MatrixCopy(matrix1);
+        EXPECT_NE(matrix2, nullptr);
+    }
+    // 5. Free memory
+    OH_Drawing_MatrixDestroy(matrix1);
+    OH_Drawing_MatrixDestroy(matrix2);
+}
 } // namespace Drawing
 } // namespace Rosen
 } // namespace OHOS
