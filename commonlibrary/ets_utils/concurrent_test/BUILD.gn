@@ -17,6 +17,7 @@ group("concurrent_test") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "asynclockutilstest:ActsAsyncLockUtilsTest",
       "atomicstest:ActsAtomicsTest",
       "collectionstaskpooltest:ActsCollectionsTaskPoolTest",
       "collectionstest:ActsCollectionsTest",
