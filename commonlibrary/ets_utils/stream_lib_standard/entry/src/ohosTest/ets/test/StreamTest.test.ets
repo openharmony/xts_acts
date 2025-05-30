@@ -1895,7 +1895,7 @@ export default function StreamTest() {
 
     // Check the StreamReadableData.
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_09000
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_25200
      * @tc.name: testStreamReadableData002
      * @tc.desc: Data events in a Readable stream.
      * @tc.size: MediumTest
@@ -1911,6 +1911,356 @@ export default function StreamTest() {
       }
       readableStream.on('data', (chunk) => {
         expect(chunk.data).assertEqual('x');
+      });
+    });
+
+    // Check the StreamReadableData.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_23000
+     * @tc.name: testStreamReadableData003
+     * @tc.desc: Data events in a Readable stream.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testStreamReadableData003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      let dataSource = ["1"];
+      class MyReadable extends stream.Readable {
+        constructor(opt?: stream.ReadableOptions) {
+          super(opt)
+        }
+
+        doRead(size: number): void {
+          this.push(dataSource.shift() || null);
+        }
+      }
+
+      let src = new MyReadable();
+
+      src.on('data', (chunk:ESObject) => {
+        expect(chunk.data).assertEqual("1");
+      });
+    });
+
+    // Check the StreamReadableData.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_24500
+     * @tc.name: testStreamReadableData005
+     * @tc.desc: should read data in paused mode.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testStreamReadableData005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      class MyReadable extends stream.Readable {
+        constructor(opt?: stream.ReadableOptions) {
+          super(opt)
+        }
+
+        doRead(size: number): void {
+          this.push('data');
+          this.push(null);
+        }
+      }
+
+      let src = new MyReadable();
+
+      src.pause();
+      const chunk = src.read();
+      expect(chunk).assertEqual(null);
+    });    
+    
+    // Check the StreamReadableData.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_24200
+     * @tc.name: testStreamReadableData006
+     * @tc.desc: should handle pause/resume.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testStreamReadableData006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      class MyReadable extends stream.Readable {
+        constructor(opt?: stream.ReadableOptions) {
+          super(opt)
+        }
+
+        doRead(size: number): void {
+          this.push('first');
+          this.push('second');
+          this.push(null);
+        }
+      }
+
+      let src = new MyReadable();
+      const chunks:ESObject[] =[];
+
+      src.on('data', (chunk) => {
+        chunks.push(chunk.data);
+        src.pause();
+        setTimeout(() => src.resume(), 100);
+      });
+
+      src.on('end', () => {
+        expect(JSON.stringify(chunks)).assertEqual('["firstsecond"]');
+      });
+    });
+
+    // Check the StreamReadableData.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_23200
+     * @tc.name: testStreamReadableData007
+     * @tc.desc: should handle empty stream.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testStreamReadableData007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      class MyReadable extends stream.Readable {
+        constructor(opt?: stream.ReadableOptions) {
+          super(opt)
+        }
+
+        doRead(size: number): void {
+          this.push(null);
+        }
+      }
+      let dataEmitted = false;
+      let src = new MyReadable();
+      src.on('data', (chunk) => {
+        dataEmitted = true
+      });
+      src.on('end', () => {
+        expect(dataEmitted).assertEqual(false);
+      });
+    });
+
+    // Check the StreamReadableData.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_24300
+     * @tc.name: testStreamReadableData008
+     * @tc.desc: should handle remove data listener.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testStreamReadableData008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      class MyReadable extends stream.Readable {
+        constructor(opt?: stream.ReadableOptions) {
+          super(opt)
+        }
+
+        doRead(size: number): void {
+          this.push('data');
+          this.push(null);
+        }
+      }
+      let called = false;
+      let src = new MyReadable();
+      let dataHandler = () => {
+        called = true;
+      }
+      src.on('data', dataHandler);
+      src.off('data', dataHandler);
+
+      src.on('end', () => {
+        expect(called).assertEqual(false);
+      });
+    });
+
+    // Check the StreamReadableData.
+    /**
+    * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_24600
+    * @tc.name: testStreamReadableData009
+    * @tc.desc: should handle remove data listener.
+    * @tc.size: MediumTest
+    * @tc.type: Function
+    * @tc.level: Level 1
+    */
+    it('testStreamReadableData009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      class MyReadable extends stream.Readable {
+        constructor(opt?: stream.ReadableOptions) {
+          super(opt)
+        }
+
+        doRead(size: number): void {
+          this.push(null);
+        }
+      }
+
+      let callCount = 0;
+      let src = new MyReadable();
+      let endHandler = () => {
+        callCount ++;
+      }
+      src.on('end', endHandler);
+      src.push(null);
+      Promise.resolve().then(()=>{
+        expect(callCount).assertEqual(1);
+      })
+    });
+
+    // Check the StreamReadableData.
+    /**
+    * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_22900
+    * @tc.name: testStreamReadableData010
+    * @tc.desc: should handle remove data listener.
+    * @tc.size: MediumTest
+    * @tc.type: Function
+    * @tc.level: Level 1
+    */
+    it('testStreamReadableData010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      class MyReadable extends stream.Readable {
+        constructor(opt?: stream.ReadableOptions) {
+          super(opt)
+        }
+
+        doRead(size: number): void {
+          this.push('data');
+          this.push(null);
+        }
+      }
+
+      let src = new MyReadable();
+      expect(src.readable).assertEqual(true);
+      src.on('end', () => {
+        expect(src.readable).assertEqual(false);
+      });
+
+      src.resume();
+    });
+
+    // Check the StreamReadableData.
+    /**
+    * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_23800
+    * @tc.name: testStreamReadableData011
+    * @tc.desc: should handle remove data listener.
+    * @tc.size: MediumTest
+    * @tc.type: Function
+    * @tc.level: Level 1
+    */
+    it('testStreamReadableData011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      class MyReadable extends stream.Readable {
+        constructor(opt?: stream.ReadableOptions) {
+          super(opt)
+        }
+
+        doRead(size: number): void {
+          setTimeout(() => {
+            this.push('async');
+            this.push(null);
+          }, 100);
+        }
+      }
+
+      let src = new MyReadable();
+      src.on('data', (chunk) => {
+        expect(chunk.data).assertEqual('async');
+      });
+    });
+
+    // Check the StreamReadableData.
+    /**
+    * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_25300
+    * @tc.name: testStreamReadableData012
+    * @tc.desc: should switch between flowing and paused modes.
+    * @tc.size: MediumTest
+    * @tc.type: Function
+    * @tc.level: Level 1
+    */
+    it('testStreamReadableData012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      class MyReadable extends stream.Readable {
+        constructor(opt?: stream.ReadableOptions) {
+          super(opt)
+        }
+
+        doRead(size: number): void {
+          this.push('data1');
+          this.push('data2');
+          this.push(null);
+        }
+      }
+
+      let src = new MyReadable();
+      const chunks:ESObject[] = [];
+      src.on('data', (chunk) => {
+        chunks.push(chunk.data);
+        src.pause();
+        setTimeout(() => src.resume(), 50);
+      });
+
+      src.on('end', () => {
+        expect(JSON.stringify(chunks)).assertEqual('["data1data2"]');
+      });
+    });
+
+    // Check the StreamReadableData.
+    /**
+    * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_24000
+    * @tc.name: testStreamReadableData013
+    * @tc.desc: should switch between flowing and paused modes.
+    * @tc.size: MediumTest
+    * @tc.type: Function
+    * @tc.level: Level 1
+    */
+    it('testStreamReadableData013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      class MyReadable extends stream.Readable {
+        constructor(opt?: stream.ReadableOptions) {
+          super(opt)
+        }
+
+        doRead(size: number): void {
+          this.push('x');
+          this.push('y');
+          this.push(null);
+        }
+      }
+
+      let src = new MyReadable();
+      const chunks:ESObject[] = [];
+      src.on('data', (chunk) => {
+        chunks.push(chunk.data);
+        src.pause();
+        setTimeout(() => src.resume(), 50);
+      });
+
+      src.on('end', () => {
+        expect(JSON.stringify(chunks)).assertEqual('["xy"]');
+      });
+    });
+
+    // Check the StreamReadableData.
+    /**
+    * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_09000
+    * @tc.name: testStreamReadableData014
+    * @tc.desc: should switch between flowing and paused modes.
+    * @tc.size: MediumTest
+    * @tc.type: Function
+    * @tc.level: Level 1
+    */
+    it('testStreamReadableData014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      class MyReadable extends stream.Readable {
+        constructor(opt?: stream.ReadableOptions) {
+          super(opt)
+        }
+
+        doRead(size: number): void {
+          this.push('a');
+          this.push('b');
+          this.push(null);
+        }
+      }
+
+      let src = new MyReadable();
+      const chunks:ESObject[] = [];
+      src.on('data', (chunk) => {
+        chunks.push(chunk.data);
+        src.pause();
+        setTimeout(() => src.resume(), 50);
+      });
+
+      src.on('end', () => {
+        expect(JSON.stringify(chunks)).assertEqual('["ab"]');
       });
     });
 
@@ -3079,6 +3429,643 @@ export default function StreamTest() {
         done();
       }, 0)
     });
+
+    // Check the StreamReadablePipe.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_24700
+     * @tc.name: testStreamPipe007
+     * @tc.desc: Readable pipe should support multiple destinations.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testStreamPipe007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done) => {
+      let count = 0;
+      let num = 0;
+      class MyReadable extends stream.Readable {
+        constructor() {
+          super()
+        }
+
+        doRead(size: number): void {
+          this.push('multi');
+          this.push(null);
+        }
+      }
+
+      class MyWriteable extends stream.Writable {
+        constructor() {
+          super()
+
+        }
+        doWrite(chunk: string | Uint8Array, encoding: string, callback: Function): void {
+          count++;
+          callback();
+        }
+      }
+
+      let src = new MyReadable();
+      let dest1 = new MyWriteable();
+      let dest2 = new MyWriteable();
+      dest1.on('finish', () => {
+        if (count === 2){
+          num ++;
+        }
+
+      });
+      dest2.on('finish', () => {
+        if (count === 2){
+          num ++;
+        }
+      });
+      src.pipe(dest1);
+      src.pipe(dest2);
+      setTimeout(()=>{
+        expect(num).assertEqual(2);
+        done();
+      },10)
+    });
+
+    // Check the StreamReadablePipe.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_25000
+     * @tc.name: testStreamPipe008
+     * @tc.desc: Readable pipe should support multiple destinations.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testStreamPipe008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done) => {
+      let count = 0;
+      let num = 0;
+      class MyReadable extends stream.Readable {
+        constructor() {
+          super()
+        }
+
+        doRead(size: number): void {
+          this.push('multi');
+          this.push(null);
+        }
+      }
+
+      class MyWriteable extends stream.Writable {
+        constructor() {
+          super()
+        }
+        doWrite(chunk: string | Uint8Array, encoding: string, callback: Function): void {
+          count++;
+          callback();
+        }
+      }
+
+      let src = new MyReadable();
+      let dest1 = new MyWriteable();
+      let dest2 = new MyWriteable();
+      let dest3 = new MyWriteable();
+      dest1.on('finish', () => {
+        if (count === 3){
+          num ++;
+        }
+
+      });
+      dest2.on('finish', () => {
+        if (count === 3){
+          num ++;
+        }
+      });
+      dest3.on('finish', () => {
+        if (count === 3){
+          num ++;
+        }
+      });
+      src.pipe(dest1);
+      src.pipe(dest2);
+      src.pipe(dest3);
+      setTimeout(()=>{
+        expect(num).assertEqual(3);
+        done();
+      },10)
+    });
+
+   // Check the StreamReadablePipe.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_23100
+     * @tc.name: testStreamPipe009
+     * @tc.desc: Readable pipe should emit pipe/unpipe events.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testStreamPipe009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done) => {
+      let num = 0
+      class MyReadable extends stream.Readable {
+        constructor() {
+          super()
+        }
+
+        doRead(size: number): void {
+          this.push(null);
+        }
+      }
+
+      class MyWriteable extends stream.Writable {
+        constructor() {
+          super()
+
+        }
+        doWrite(chunk: string | Uint8Array, encoding: string, callback: Function): void {
+          callback();
+        }
+      }
+      let src = new MyReadable();
+      let dest = new MyWriteable();
+      dest.on('pipe', ()=>{
+        num++;
+      });
+      dest.on('unpipe', ()=>{
+        num--;
+      });
+
+      src.pipe(dest);
+      src.unpipe(dest);
+
+      Promise.resolve().then(()=>{
+        expect(num).assertEqual(0);
+        done();
+      })
+    });
+
+    // Check the StreamReadablePipe.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_23400
+     * @tc.name: testStreamPipe010
+     * @tc.desc: Readable pipe should verify chunk sequence.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testStreamPipe010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done) => {
+      const chunks = ['A', 'B', 'C'];
+      const received:string[] = [];
+      let str = '';
+      class MyReadable extends stream.Readable {
+        constructor() {
+          super()
+        }
+
+        doRead(size: number): void {
+          this.push(chunks.shift() || null);
+        }
+      }
+
+      class MyWriteable extends stream.Writable {
+        constructor() {
+          super()
+        }
+        doWrite(chunk: string | Uint8Array, encoding: string, callback: Function): void {
+          received.push(JSON.stringify(chunk));
+          str = str + JSON.stringify(chunk);
+          callback();
+        }
+      }
+      let src = new MyReadable();
+      let dest = new MyWriteable();
+      dest.on('finish', () => {
+        expect(received.length).assertEqual(2);
+        expect(str).assertEqual('"A""BC"');
+        done();
+      });
+      src.pipe(dest);
+    });
+
+    // Check the StreamReadablePipe.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_23600
+     * @tc.name: testStreamPipe011
+     * @tc.desc: Readable pipe should verify chunk sequence.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testStreamPipe011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done) => {
+      const chunks = ['1', '2', '3'];
+      const received:string[] = [];
+      let str = '';
+      class MyReadable extends stream.Readable {
+        constructor() {
+          super()
+        }
+
+        doRead(size: number): void {
+          this.push(chunks.shift() || null);
+        }
+      }
+
+      class MyWriteable extends stream.Writable {
+        constructor() {
+          super()
+        }
+        doWrite(chunk: string | Uint8Array, encoding: string, callback: Function): void {
+          received.push(JSON.stringify(chunk));
+          str = str + JSON.stringify(chunk);
+          callback();
+        }
+      }
+      let src = new MyReadable();
+      let dest = new MyWriteable();
+      dest.on('finish', () => {
+        expect(received.length).assertEqual(2);
+        expect(str).assertEqual('"1""23"');
+        done();
+      });
+      src.pipe(dest);
+    });
+
+    // Check the StreamReadablePipe.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_24900
+     * @tc.name: testStreamPipe012
+     * @tc.desc: Readable pipe should handle multiple pipe/unpipe cycles.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testStreamPipe012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done) => {
+      class MyReadable extends stream.Readable {
+        constructor(opt?: stream.ReadableOptions) {
+          super(opt)
+        }
+
+        doRead(size: number): void {
+          this.push('test1');
+          this.push(null);
+        }
+      }
+
+      class MyWriteable extends stream.Writable {
+        constructor() {
+          super()
+
+        }
+        doWrite(chunk: string | Uint8Array, encoding: string, callback: Function): void {
+          setTimeout(() => {
+            expect(JSON.stringify(chunk)).assertEqual('"test1"');
+            callback();
+            done();
+          }, 200);
+        }
+      }
+
+      let src = new MyReadable();
+      let dest = new MyWriteable();
+      src.pipe(dest);
+    });
+
+    // Check the StreamReadablePipe.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_25100
+     * @tc.name: testStreamPipe013
+     * @tc.desc: Readable pipe should handle manual pause/resume.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testStreamPipe013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done) => {
+      let writeCount = 0;
+      class MyReadable extends stream.Readable {
+        constructor(opt?: stream.ReadableOptions) {
+          super(opt)
+        }
+
+        doRead(size: number): void {
+          this.push('data'); this.push(null)
+        }
+      }
+
+      class MyWriteable extends stream.Writable {
+        constructor() {
+          super()
+
+        }
+        doWrite(chunk: string | Uint8Array, encoding: string, callback: Function): void {
+          writeCount ++;
+          setTimeout(callback, 1);
+        }
+      }
+
+      let src = new MyReadable();
+      let dest = new MyWriteable();
+      src.pipe(dest);
+      src.pause();
+      setTimeout(() => src.resume(), 2);
+
+      dest.on('finish', () => {
+        expect(writeCount).assertEqual(1);
+        done();
+      });
+    });
+
+    // Check the StreamReadablePipe.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_24100
+     * @tc.name: testStreamPipe014
+     * @tc.desc: Readable pipe should handle empty streams.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testStreamPipe014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done) => {
+      let called = false
+      class MyReadable extends stream.Readable {
+        constructor(opt?: stream.ReadableOptions) {
+          super(opt)
+        }
+
+        doRead(size: number): void {
+          this.push(null)
+        }
+      }
+
+      class MyWriteable extends stream.Writable {
+        constructor() {
+          super()
+
+        }
+        doWrite(chunk: string | Uint8Array, encoding: string, callback: Function): void {
+          called = true
+          callback()
+        }
+      }
+
+      let src = new MyReadable();
+      let dest = new MyWriteable();
+      dest.on('finish', () => {
+        expect(called).assertEqual(false);
+        done();
+      });
+
+      src.pipe(dest);
+    });
+
+    // Check the StreamReadablePipe.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_23700
+     * @tc.name: testStreamPipe015
+     * @tc.desc: Readable pipe should ignore data after unpiping.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testStreamPipe015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done) => {
+      let callCount = 0
+      class MyReadable extends stream.Readable {
+        constructor(opt?: stream.ReadableOptions) {
+          super(opt)
+        }
+
+        doRead(size: number): void {
+          this.push('data1');
+          this.push('data2');
+          this.push(null);
+        }
+      }
+
+      class MyWriteable extends stream.Writable {
+        constructor() {
+          super()
+
+        }
+        doWrite(chunk: string | Uint8Array, encoding: string, callback: Function): void {
+          callCount ++;
+          callback()
+        }
+      }
+
+      let src = new MyReadable();
+      let dest = new MyWriteable();
+      src.pipe(dest);
+      src.unpipe(dest);
+
+      Promise.resolve().then(()=>{
+        expect(callCount).assertEqual(0);
+        done();
+      })
+    });
+
+    // Check the StreamReadablePipe.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_24400
+     * @tc.name: testStreamPipe016
+     * @tc.desc: Readable pipe should handle async write completion.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testStreamPipe016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done) => {
+      class MyReadable extends stream.Readable {
+        constructor(opt?: stream.ReadableOptions) {
+          super(opt)
+        }
+
+        doRead(size: number): void {
+          this.push('async');
+          this.push(null);
+        }
+      }
+
+      class MyWriteable extends stream.Writable {
+        constructor() {
+          super()
+
+        }
+        doWrite(chunk: string | Uint8Array, encoding: string, callback: Function): void {
+          setTimeout(() => {
+            expect(JSON.stringify(chunk)).assertEqual('"async"');
+            callback();
+            done();
+          }, 200);
+        }
+      }
+
+      let src = new MyReadable();
+      let dest = new MyWriteable();
+      src.pipe(dest);
+    });
+
+    // Check the StreamReadablePipe.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_24800
+     * @tc.name: testStreamPipe017
+     * @tc.desc: Readable pipe should handle async write completion.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testStreamPipe017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done) => {
+      class MyReadable extends stream.Readable {
+        constructor(opt?: stream.ReadableOptions) {
+          super(opt)
+        }
+
+        doRead(size: number): void {
+          this.push('data');
+          this.push(null);
+        }
+      }
+
+      class MyWriteable extends stream.Writable {
+        constructor() {
+          super()
+
+        }
+        doWrite(chunk: string | Uint8Array, encoding: string, callback: Function): void {
+          setTimeout(() => {
+            expect(JSON.stringify(chunk)).assertEqual('"data"');
+            callback();
+            done();
+          }, 200);
+        }
+      }
+
+      let src = new MyReadable();
+      let dest = new MyWriteable();
+      src.pipe(dest);
+    });
+
+    // Check the StreamReadablePipe.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_23500
+     * @tc.name: testStreamPipe018
+     * @tc.desc: Readable pipe should ignore data after unpiping.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testStreamPipe018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done) => {
+      let callCount = 0
+      class MyReadable extends stream.Readable {
+        constructor(opt?: stream.ReadableOptions) {
+          super(opt)
+        }
+
+        doRead(size: number): void {
+          this.push('data1');
+          this.push('data2');
+          this.push('data3');
+          this.push(null);
+        }
+      }
+
+      class MyWriteable extends stream.Writable {
+        constructor() {
+          super()
+
+        }
+        doWrite(chunk: string | Uint8Array, encoding: string, callback: Function): void {
+          callCount ++;
+          callback()
+        }
+      }
+
+      let src = new MyReadable();
+      let dest = new MyWriteable();
+      src.pipe(dest);
+      src.unpipe(dest);
+
+      Promise.resolve().then(()=>{
+        expect(callCount).assertEqual(0);
+        done();
+      })
+    });
+
+    // Check the StreamReadablePipe.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_23900
+     * @tc.name: testStreamPipe019
+     * @tc.desc: Readable pipe should verify chunk sequence.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testStreamPipe019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done) => {
+      const chunks = ['x', 'y', 'z'];
+      const received:string[] = [];
+      let str = '';
+      class MyReadable extends stream.Readable {
+        constructor() {
+          super()
+        }
+
+        doRead(size: number): void {
+          this.push(chunks.shift() || null);
+        }
+      }
+
+      class MyWriteable extends stream.Writable {
+        constructor() {
+          super()
+        }
+        doWrite(chunk: string | Uint8Array, encoding: string, callback: Function): void {
+          received.push(JSON.stringify(chunk));
+          str = str + JSON.stringify(chunk);
+          callback();
+        }
+      }
+      let src = new MyReadable();
+      let dest = new MyWriteable();
+      dest.on('finish', () => {
+        expect(received.length).assertEqual(2);
+        expect(str).assertEqual('"x""yz"');
+        done();
+      });
+      src.pipe(dest);
+    });
+
+    // Check the StreamReadablePipe.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_23300
+     * @tc.name: testStreamPipe020
+     * @tc.desc: Readable pipe should verify chunk sequence.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testStreamPipe020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done) => {
+      const chunks = ['a', 'b', 'c'];
+      const received:string[] = [];
+
+      class MyReadable extends stream.Readable {
+        constructor() {
+          super()
+        }
+
+        doRead(size: number): void {
+          this.push(chunks.shift() || null);
+        }
+      }
+
+      class MyWriteable extends stream.Writable {
+        constructor() {
+          super()
+        }
+        doWrite(chunk: string | Uint8Array, encoding: string, callback: Function): void {
+          received.push(JSON.stringify(chunk));
+          callback();
+        }
+      }
+
+      let src = new MyReadable();
+      let dest = new MyWriteable();
+
+      dest.on('finish', () => {
+        expect(received.length).assertEqual(2);
+        done();
+      });
+
+      src.pipe(dest);
+    });
+
 
     // Check the StreamDuplexDoWritev.
     /**
