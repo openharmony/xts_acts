@@ -257,6 +257,7 @@ HWTEST_P(SYMCIPHER_TEST, SUB_Security_CryptoFramework_NAPI_SymCipher_Test_0100, 
 
     OH_CryptoSymCipherParams_Destroy(params);
     OH_CryptoSymCipher_Destroy(encCtx);
+    OH_CryptoSymCipher_Destroy(decCtx);
     OH_CryptoSymKeyGenerator_Destroy(genCtx);
     OH_CryptoSymKey_Destroy(keyCtx);
     HcfBlobDataClearAndFree((HcfBlob *)&outUpdate);
@@ -322,6 +323,7 @@ HWTEST_P(SYMCIPHER_GCM_TEST, Security_CryptoFramework_NAPI_SymCipher_Test_0200, 
 
     OH_CryptoSymCipherParams_Destroy(params);
     OH_CryptoSymCipher_Destroy(encCtx);
+    OH_CryptoSymCipher_Destroy(decCtx);
     OH_CryptoSymKeyGenerator_Destroy(genCtx);
     OH_CryptoSymKey_Destroy(keyCtx);
     HcfBlobDataClearAndFree((HcfBlob *)&outUpdate);
@@ -389,6 +391,7 @@ HWTEST_P(SYMCIPHER_CCM_TEST, SUB_Security_CryptoFramework_NAPI_SymCipher_Test_03
 
     OH_CryptoSymCipherParams_Destroy(params);
     OH_CryptoSymCipher_Destroy(encCtx);
+    OH_CryptoSymCipher_Destroy(decCtx);
     OH_CryptoSymKeyGenerator_Destroy(genCtx);
     OH_CryptoSymKey_Destroy(keyCtx);
     HcfBlobDataClearAndFree((HcfBlob *)&outUpdate);
@@ -448,6 +451,7 @@ HWTEST_P(SYMCIPHER_TEST, SUB_Security_CryptoFramework_NAPI_SymCipher_Test_0400, 
     EXPECT_EQ(OH_CryptoSymCipher_Create((const char *)symCipherData.cipherAlgName, &encCtx), CRYPTO_SUCCESS);
     EXPECT_EQ(OH_CryptoSymCipher_Init(encCtx, CRYPTO_ENCRYPT_MODE, keyCtx, params), CRYPTO_SUCCESS);
     for (int i = 0; i < cnt; i++) {
+        OH_Crypto_FreeDataBlob(&outUpdate);
         msgBlob.len = blockSize;
         EXPECT_EQ(OH_CryptoSymCipher_Update(encCtx, (Crypto_DataBlob *)&msgBlob, &outUpdate), CRYPTO_SUCCESS);
         msgBlob.data += blockSize;
@@ -456,11 +460,13 @@ HWTEST_P(SYMCIPHER_TEST, SUB_Security_CryptoFramework_NAPI_SymCipher_Test_0400, 
     }
     if (rem > 0) {
         msgBlob.len = rem;
+        OH_Crypto_FreeDataBlob(&outUpdate);
         EXPECT_EQ(OH_CryptoSymCipher_Update(encCtx, (Crypto_DataBlob *)&msgBlob, &outUpdate), CRYPTO_SUCCESS);
         memcpy(&cipherText[cipherLen], outUpdate.data, outUpdate.len);
         cipherLen += outUpdate.len;
     }
     if (symCipherData.ispadding) {
+        OH_Crypto_FreeDataBlob(&outUpdate);
         EXPECT_EQ(OH_CryptoSymCipher_Final(encCtx, nullptr, &outUpdate), CRYPTO_SUCCESS);
         memcpy(&cipherText[cipherLen], outUpdate.data, outUpdate.len);
         cipherLen += outUpdate.len;
@@ -479,6 +485,7 @@ HWTEST_P(SYMCIPHER_TEST, SUB_Security_CryptoFramework_NAPI_SymCipher_Test_0400, 
 
     OH_CryptoSymCipherParams_Destroy(params);
     OH_CryptoSymCipher_Destroy(encCtx);
+    OH_CryptoSymCipher_Destroy(decCtx);
     OH_CryptoSymKeyGenerator_Destroy(genCtx);
     OH_CryptoSymKey_Destroy(keyCtx);
     HcfBlobDataClearAndFree((HcfBlob *)&outUpdate);
@@ -540,12 +547,14 @@ HWTEST_P(SYMCIPHER_GCM_TEST, SUB_Security_CryptoFramework_NAPI_SymCipher_Test_04
     EXPECT_EQ(OH_CryptoSymCipher_Init(encCtx, CRYPTO_ENCRYPT_MODE, keyCtx, params), CRYPTO_SUCCESS);
     for (int i = 0; i < cnt; i++) {
         msgBlob.len = blockSize;
+        OH_Crypto_FreeDataBlob(&outUpdate);
         EXPECT_EQ(OH_CryptoSymCipher_Update(encCtx, (Crypto_DataBlob *)&msgBlob, &outUpdate), CRYPTO_SUCCESS);
         msgBlob.data += blockSize;
         memcpy(&cipherText[cipherLen], outUpdate.data, outUpdate.len);
         cipherLen += outUpdate.len;
     }
     if (rem > 0) {
+        OH_Crypto_FreeDataBlob(&outUpdate);
         msgBlob.len = rem;
         EXPECT_EQ(OH_CryptoSymCipher_Update(encCtx, (Crypto_DataBlob *)&msgBlob, &outUpdate), CRYPTO_SUCCESS);
         memcpy(&cipherText[cipherLen], outUpdate.data, outUpdate.len);
@@ -570,6 +579,7 @@ HWTEST_P(SYMCIPHER_GCM_TEST, SUB_Security_CryptoFramework_NAPI_SymCipher_Test_04
 
     OH_CryptoSymCipherParams_Destroy(params);
     OH_CryptoSymCipher_Destroy(encCtx);
+    OH_CryptoSymCipher_Destroy(decCtx);
     OH_CryptoSymKeyGenerator_Destroy(genCtx);
     OH_CryptoSymKey_Destroy(keyCtx);
     HcfBlobDataClearAndFree((HcfBlob *)&outUpdate);
@@ -658,7 +668,6 @@ HWTEST_F(OHCryptoFrameworkSymCipherNapiTest, SUB_Security_CryptoFramework_NAPI_S
 
     HcfRandCreate(&randomObj);
     EXPECT_TRUE(randomObj != nullptr);
-    EXPECT_EQ(randomObj->generateRandom(randomObj, ivLen, &ivBlob), HCF_SUCCESS);
     EXPECT_EQ(randomObj->generateRandom(randomObj, aadLen, &aadBlob), HCF_SUCCESS);
 
     if (ivLen != 0) {
@@ -882,6 +891,7 @@ HWTEST_F(OHCryptoFrameworkSymCipherNapiTest, SUB_Security_CryptoFramework_NAPI_S
 
     OH_CryptoSymCipherParams_Destroy(params);
     OH_CryptoSymCipher_Destroy(encCtx);
+    OH_CryptoSymCipher_Destroy(decCtx);
     OH_CryptoSymKeyGenerator_Destroy(genCtx);
     OH_CryptoSymKey_Destroy(keyCtx);
     HcfBlobDataClearAndFree((HcfBlob *)&outUpdate);
@@ -934,6 +944,7 @@ HWTEST_F(OHCryptoFrameworkSymCipherNapiTest, SUB_Security_CryptoFramework_NAPI_S
 
     OH_CryptoSymCipherParams_Destroy(params);
     OH_CryptoSymCipher_Destroy(encCtx);
+    OH_CryptoSymCipher_Destroy(decCtx);
     OH_CryptoSymKeyGenerator_Destroy(genCtx);
     OH_CryptoSymKey_Destroy(keyCtx);
     HcfBlobDataClearAndFree((HcfBlob *)&outUpdate);
@@ -986,6 +997,7 @@ HWTEST_F(OHCryptoFrameworkSymCipherNapiTest, SUB_Security_CryptoFramework_NAPI_S
 
     OH_CryptoSymCipherParams_Destroy(params);
     OH_CryptoSymCipher_Destroy(encCtx);
+    OH_CryptoSymCipher_Destroy(decCtx);
     OH_CryptoSymKeyGenerator_Destroy(genCtx);
     OH_CryptoSymKey_Destroy(keyCtx);
     HcfBlobDataClearAndFree((HcfBlob *)&outUpdate);
@@ -1039,6 +1051,7 @@ HWTEST_F(OHCryptoFrameworkSymCipherNapiTest, SUB_Security_CryptoFramework_NAPI_S
 
     OH_CryptoSymCipherParams_Destroy(params);
     OH_CryptoSymCipher_Destroy(encCtx);
+    OH_CryptoSymCipher_Destroy(decCtx);
     OH_CryptoSymKeyGenerator_Destroy(genCtx);
     OH_CryptoSymKey_Destroy(keyCtx);
     HcfBlobDataClearAndFree((HcfBlob *)&outUpdate);
@@ -1090,6 +1103,7 @@ HWTEST_F(OHCryptoFrameworkSymCipherNapiTest, SUB_Security_CryptoFramework_NAPI_S
 
     OH_CryptoSymCipherParams_Destroy(params);
     OH_CryptoSymCipher_Destroy(encCtx);
+    OH_CryptoSymCipher_Destroy(decCtx);
     OH_CryptoSymKeyGenerator_Destroy(genCtx);
     OH_CryptoSymKey_Destroy(keyCtx);
     HcfBlobDataClearAndFree((HcfBlob *)&outUpdate);
