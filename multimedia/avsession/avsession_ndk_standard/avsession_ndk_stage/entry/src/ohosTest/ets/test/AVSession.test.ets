@@ -16,7 +16,7 @@ import hilog from '@ohos.hilog';
 //import avmetadata_builder from 'libentry.so';
 import AVSessionManager from '@ohos.multimedia.avsession';
 import avSes from 'libentry.so';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level  } from '@ohos/hypium';
 
 
 export default function builderAbilityTest() {
