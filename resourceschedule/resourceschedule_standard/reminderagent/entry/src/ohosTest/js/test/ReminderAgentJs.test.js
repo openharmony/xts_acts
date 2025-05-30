@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2021-2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -14,7 +14,7 @@
  */
 
 // @ts-nocheck
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import reminderAgent from '@ohos.reminderAgent'
 import notification from '@ohos.notification'
 
@@ -23,7 +23,7 @@ export default function ReminderAgentTest() {
 
         const TRIGGER_TIME_IN_SECONDS = 100;
 
-        beforeAll(function () {
+        beforeAll(function (done) {
 
             /*
              * @tc.setup: setup invoked before all testcases
@@ -62,7 +62,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testActionButton_001
          * @tc.desc      test ActionButton title.
          */
-        it("testActionButton_001", 0, async function (done) {
+        it("testActionButton_001", Level.LEVEL0, async function (done) {
             console.info('----------------------testActionButton_001---------------------------');
             let timer = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
@@ -91,7 +91,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testActionButton_002
          * @tc.desc      test ActionButton 
          */
-        it("testActionButton_002", 0, async function (done) {
+        it("testActionButton_002", Level.LEVEL0, async function (done) {
             console.info('----------------------testActionButton_002---------------------------');
             let timer = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
@@ -123,7 +123,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testWantAgentAbilityName_003
          * @tc.desc      test wantAgent abilityName 
          */
-        it("testWantAgentAbilityName_003", 0, async function (done) {
+        it("testWantAgentAbilityName_003", Level.LEVEL0, async function (done) {
             console.info('----------------------testWantAgentAbilityName_003---------------------------');
             let timer = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
@@ -157,7 +157,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testMaxScreenWantAgentAbilityName_004
          * @tc.desc      test MaxScreenWantAgent abilityName 
          */
-        it("testMaxScreenWantAgentAbilityName_004", 0, async function (done) {
+        it("testMaxScreenWantAgentAbilityName_004", Level.LEVEL0, async function (done) {
             console.info('----------------------testMaxScreenWantAgentAbilityName_004---------------------------');
             let timer = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
@@ -191,7 +191,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testReminderRequestTitle_005
          * @tc.desc      test ReminderRequest title 
          */
-        it("testReminderRequestTitle_005", 0, async function (done) {
+        it("testReminderRequestTitle_005", Level.LEVEL0, async function (done) {
             console.info('----------------------testReminderRequestTitle_005---------------------------');
             let timer = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
@@ -223,7 +223,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testReminderRequestContent_006
          * @tc.desc      test ReminderRequest content 
          */
-        it("testReminderRequestContent_006", 0, async function (done) {
+        it("testReminderRequestContent_006", Level.LEVEL0, async function (done) {
             console.info('----------------------testReminderRequestContent_006---------------------------');
             let timer = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
@@ -255,7 +255,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testReminderRequestType_007
          * @tc.desc      test ReminderRequest LocalDateTime second 
          */
-        it("testReminderRequestType_007", 0, async function (done) {
+        it("testReminderRequestType_007", Level.LEVEL0, async function (done) {
             console.info('----------------------testReminderRequestType_007---------------------------');
             let calendar = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
@@ -266,7 +266,9 @@ export default function ReminderAgentTest() {
                     hour: 23,
                     minute: 30,
                     second: 18
-                }
+                },
+                repeatMonths: [3],
+                repeatDays: [7]
             }
             reminderAgent.publishReminder(calendar).then((reminderId) => {
                 console.info("testReminderRequestType_007 reminderId =" + reminderId);
@@ -280,7 +282,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testReminderRequestType_008
          * @tc.desc      test ReminderRequest ReminderRequestAlarm daysOfWeek 
          */
-        it("testReminderRequestType_008", 0, async function (done) {
+        it("testReminderRequestType_008", Level.LEVEL0, async function (done) {
             console.info('----------------------testReminderRequestType_008---------------------------');
             let alarm = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
@@ -302,7 +304,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testPublishReminderNorFun_009
          * @tc.desc      test reminderId is outo increment with the promise function.
          */
-        it('testPublishReminderNorFun_009', 0, async function (done) {
+        it('testPublishReminderNorFun_009', Level.LEVEL0, async function (done) {
             console.info('----------------------testPublishReminderNorFun_009---------------------------');
             let timer = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
@@ -328,7 +330,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testPublishReminderNorFun_010
          * @tc.desc      test reminderId is outo increment with the callback function.
          */
-        it('testPublishReminderNorFun_010', 0, async function (done) {
+        it('testPublishReminderNorFun_010', Level.LEVEL0, async function (done) {
             console.info('----------------------testPublishReminderNorFun_010---------------------------');
             let timer = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
@@ -352,7 +354,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testAddNotificationSlotNorFun_011
          * @tc.desc      Adds a reminder notification slot with the callback function.
          */
-        it('testAddNotificationSlotNorFun_011', 0, async function (done) {
+        it('testAddNotificationSlotNorFun_011', Level.LEVEL0, async function (done) {
             console.info('----------------------testAddNotificationSlotNorFun_011---------------------------');
             try {
                 function reminderCallback(err, data) {
@@ -371,7 +373,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testAddNotificationSlotNorFun_012
          * @tc.desc      Adds a reminder notification slot with the promise function and null mySlot.
          */
-         it('testAddNotificationSlotNorFun_012', 0, async function (done) {
+         it('testAddNotificationSlotNorFun_012', Level.LEVEL0, async function (done) {
           console.info('----------------------testAddNotificationSlotNorFun_012---------------------------');
           let mySlot = null;
 
@@ -387,7 +389,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testAddNotificationSlotNorFun_013
          * @tc.desc      Adds a reminder notification slot with the promise function and mySlot type 3.
          */
-        it('testAddNotificationSlotNorFun_013', 0, async function (done) {
+        it('testAddNotificationSlotNorFun_013', Level.LEVEL0, async function (done) {
             console.info('----------------------testAddNotificationSlotNorFun_013---------------------------');
             let mySlot = {
                 type: 3
@@ -406,7 +408,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testAddNotificationSlotNorFun_014
          * @tc.desc      Adds a reminder notification slot with the promise function and mySlot more types.
          */
-        it('testAddNotificationSlotNorFun_014', 0, async function (done) {
+        it('testAddNotificationSlotNorFun_014', Level.LEVEL0, async function (done) {
             console.info('----------------------testAddNotificationSlotNorFun_014---------------------------');
             let mySlot0 = {
                 type: 0
@@ -447,7 +449,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testGetValidRemindersNorFun_015
          * @tc.desc      Obtains all valid remindeers set by the current application. 
          */
-        it('testGetValidRemindersNorFun_015', 0, async function (done) {
+        it('testGetValidRemindersNorFun_015', Level.LEVEL0, async function (done) {
             console.info('----------------------testGetValidRemindersNorFun_015---------------------------');
             let timer = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
@@ -472,7 +474,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testCancelAllRemindersNorFun_016
          * @tc.desc      test cancel all reminders can cancel all exist reminders
          */
-        it('testCancelAllRemindersNorFun_016', 0, async function (done) {
+        it('testCancelAllRemindersNorFun_016', Level.LEVEL0, async function (done) {
             console.info('----------------------testCancelAllRemindersNorFun_016---------------------------');
             let timer = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
@@ -497,7 +499,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testCancelRemindersNorFun_017
          * @tc.desc      test cancelReminder with not exit reminder.
          */
-        it('testCancelRemindersNorFun_017', 0, async function (done) {
+        it('testCancelRemindersNorFun_017', Level.LEVEL0, async function (done) {
             console.info('----------------------testCancelRemindersNorFun_017---------------------------');
             let timer = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
@@ -532,7 +534,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testCancelRemindersNorFun_018
          * @tc.desc      test cancel reminder with not exit reminder.
          */
-        it('testCancelRemindersNorFun_018', 0, async function (done) {
+        it('testCancelRemindersNorFun_018', Level.LEVEL0, async function (done) {
             console.info('----------------------testCancelRemindersNorFun_018---------------------------');
             let timer = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
@@ -567,7 +569,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testCancelRemindersNorFun_019
          * @tc.desc      test cancel reminder with exist reminder.
          */
-        it('testCancelRemindersNorFun_019', 0, async function (done) {
+        it('testCancelRemindersNorFun_019', Level.LEVEL0, async function (done) {
             console.info('----------------------testCancelRemindersNorFun_019---------------------------');
             let alarm = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
@@ -607,7 +609,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testCancelRemindersNorFun_020
          * @tc.desc      test cancel reminder with exist reminder with the promise function.
          */
-        it('testCancelRemindersNorFun_020', 0, async function (done) {
+        it('testCancelRemindersNorFun_020', Level.LEVEL0, async function (done) {
             console.info('----------------------testCancelRemindersNorFun_020---------------------------');
             let alarm = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
@@ -647,7 +649,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testGetValidRemindersNorFun_021
          * @tc.desc      test get valid reminders verify all the information is correct.
          */
-        it('testGetValidRemindersNorFun_021', 0, async function (done) {
+        it('testGetValidRemindersNorFun_021', Level.LEVEL0, async function (done) {
             console.info('----------------------testGetValidRemindersNorFun_021---------------------------');
             let alarm = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
@@ -678,7 +680,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testGetValidRemindersNorFun_022
          * @tc.desc      test get valid reminders verify all the information is correct with the callback function.
          */
-        it('testGetValidRemindersNorFun_022', 0, async function (done) {
+        it('testGetValidRemindersNorFun_022', Level.LEVEL0, async function (done) {
             console.info('----------------------testGetValidRemindersNorFun_022---------------------------');
             let alarm = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
@@ -709,7 +711,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testRemoveNotificationSlotNorFun_023
          * @tc.desc      test remove notification Slot with not exist slot.
          */
-        it('testRemoveNotificationSlotNorFun_023', 0, async function (done) {
+        it('testRemoveNotificationSlotNorFun_023', Level.LEVEL0, async function (done) {
             console.info('----------------------testRemoveNotificationSlotNorFun_023---------------------------');
             function reminderCallback(err, data) {
                 let i = 0;
@@ -724,7 +726,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testPublishReminderTimer_024
          * @tc.desc      test timer without reminderType .
          */
-        it("testPublishReminderTimer_024", 0, async function (done) {
+        it("testPublishReminderTimer_024", Level.LEVEL0, async function (done) {
             console.info('----------------------testPublishReminderTimer_024---------------------------');
             let timer = {
                 triggerTimeInSeconds: 10
@@ -741,7 +743,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testPublishReminderTimer_025
          * @tc.desc      test timer without triggerTimeInSeconds.
          */
-        it("testPublishReminderTimer_025", 0, async function (done) {
+        it("testPublishReminderTimer_025", Level.LEVEL0, async function (done) {
             console.info('----------------------testPublishReminderTimer_025---------------------------');
             let timer = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER
@@ -759,7 +761,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testPublishReminderTimer_026
          * @tc.desc      test timer triggerTimeInSeconds with wrong parameter.
          */
-        it("testPublishReminderTimer_026", 0, async function (done) {
+        it("testPublishReminderTimer_026", Level.LEVEL0, async function (done) {
             console.info('----------------------testPublishReminderTimer_026---------------------------');
             let timer = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
@@ -777,7 +779,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testPublishReminderTimer_027
          * @tc.desc      test timer triggerTimeInSeconds with illegal parameter.
          */
-        it("testPublishReminderTimer_027", 0, async function (done) {
+        it("testPublishReminderTimer_027", Level.LEVEL0, async function (done) {
             console.info('----------------------testPublishReminderTimer_027---------------------------');
             let timer = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
@@ -795,7 +797,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testPublishReminderTimer_028
          * @tc.desc      test timer triggerTimeInSeconds with illegal parameter.
          */
-        it("testPublishReminderTimer_028", 0, async function (done) {
+        it("testPublishReminderTimer_028", Level.LEVEL0, async function (done) {
             console.info('----------------------testPublishReminderTimer_028---------------------------');
             let timer = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
@@ -813,7 +815,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testPublishReminderTimer_029
          * @tc.desc      test timer normal parameter,return with callback.
          */
-        it("testPublishReminderTimer_029", 0, async function (done) {
+        it("testPublishReminderTimer_029", Level.LEVEL0, async function (done) {
             console.info('----------------------testPublishReminderTimer_029---------------------------');
             let timer = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
@@ -831,7 +833,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testPublishReminderTimer_030
          * @tc.desc      test timer normal parameter,return with promise.
          */
-        it("testPublishReminderTimer_030", 0, async function (done) {
+        it("testPublishReminderTimer_030", Level.LEVEL0, async function (done) {
             console.info('----------------------testPublishReminderTimer_030---------------------------');
             let timer = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
@@ -852,7 +854,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testPublishReminderAlarm_031
          * @tc.desc      test alarm without reminderType parameter.
          */
-        it("testPublishReminderAlarm_031", 0, async function (done) {
+        it("testPublishReminderAlarm_031", Level.LEVEL0, async function (done) {
             console.info('----------------------testPublishReminderAlarm_031---------------------------');
             let alarm = {
                 hour: 11,
@@ -870,7 +872,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testPublishReminderAlarm_032
          * @tc.desc      test alarm without hour parameter.
          */
-        it("testPublishReminderAlarm_032", 0, async function (done) {
+        it("testPublishReminderAlarm_032", Level.LEVEL0, async function (done) {
             console.info('----------------------testPublishReminderAlarm_032---------------------------');
             let alarm = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
@@ -888,7 +890,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testPublishReminderAlarm_033
          * @tc.desc      test alarm with illegal hour parameter.
          */
-        it("testPublishReminderAlarm_033", 0, async function (done) {
+        it("testPublishReminderAlarm_033", Level.LEVEL0, async function (done) {
             console.info('----------------------testPublishReminderAlarm_033---------------------------');
             let alarm = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
@@ -907,7 +909,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testPublishReminderAlarm_034
          * @tc.desc      test alarm hour with illegal parameter 24.
          */
-        it("testPublishReminderAlarm_034", 0, async function (done) {
+        it("testPublishReminderAlarm_034", Level.LEVEL0, async function (done) {
             console.info('----------------------testPublishReminderAlarm_034---------------------------');
             let alarm = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
@@ -926,7 +928,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testPublishReminderAlarm_035
          * @tc.desc      test alarm without minute parameter.
          */
-        it("testPublishReminderAlarm_035", 0, async function (done) {
+        it("testPublishReminderAlarm_035", Level.LEVEL0, async function (done) {
             console.info('----------------------testPublishReminderAlarm_035---------------------------');
             let alarm = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
@@ -944,7 +946,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testPublishReminderAlarmNorFun_036
          * @tc.desc      test alarm with illegal minute parameter.
          */
-        it("testPublishReminderAlarmNorFun_036", 0, async function (done) {
+        it("testPublishReminderAlarmNorFun_036", Level.LEVEL0, async function (done) {
             console.info('----------------------testPublishReminderAlarmNorFun_036---------------------------');
             let alarm = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
@@ -963,7 +965,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testPublishReminderAlarm_037
          * @tc.desc      test alarm hour with illegal parameter 60.
          */
-        it("testPublishReminderAlarm_037", 0, async function (done) {
+        it("testPublishReminderAlarm_037", Level.LEVEL0, async function (done) {
             console.info('----------------------testPublishReminderAlarm_037---------------------------');
             let alarm = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
@@ -982,7 +984,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testPublishReminderAlarmFun_038
          * @tc.desc      test alarm with normal parameter,return with callback.
          */
-        it("testPublishReminderAlarmFun_038", 0, async function (done) {
+        it("testPublishReminderAlarmFun_038", Level.LEVEL0, async function (done) {
             console.info('----------------------testPublishReminderAlarmFun_038---------------------------');
             let alarm = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
@@ -1001,7 +1003,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testPublishReminderAlarmFun_039
          * @tc.desc      test alarm with normal parameter,return with promise.
          */
-        it("testPublishReminderAlarmFun_039", 0, async function (done) {
+        it("testPublishReminderAlarmFun_039", Level.LEVEL0, async function (done) {
             console.info('----------------------testPublishReminderAlarmFun_039---------------------------');
             let alarm = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
@@ -1020,7 +1022,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testPublishReminderAlarm_040
          * @tc.desc      test alarm with illegal daysOfWeek parameter.
          */
-        it("testPublishReminderAlarm_040", 0, async function (done) {
+        it("testPublishReminderAlarm_040", Level.LEVEL0, async function (done) {
             console.info('----------------------testPublishReminderAlarm_040---------------------------');
             let alarm = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
@@ -1042,7 +1044,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testPublishReminderAlarm_041
          * @tc.desc      test alarm with null daysOfWeek parameter.
          */
-        it("testPublishReminderAlarm_041", 0, async function (done) {
+        it("testPublishReminderAlarm_041", Level.LEVEL0, async function (done) {
             console.info('----------------------testPublishReminderAlarm_041---------------------------');
             let alarm = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
@@ -1062,7 +1064,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testPublishReminderCalendar_042
          * @tc.desc      test calendar without reminderType parameter.
          */
-        it("testPublishReminderCalendar_042", 0, async function (done) {
+        it("testPublishReminderCalendar_042", Level.LEVEL0, async function (done) {
             console.info('----------------------testPublishReminderCalendar_042---------------------------');
             let calendar = {
                 dateTime: {
@@ -1086,7 +1088,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testPublishReminderCalendar_043
          * @tc.desc      test calendar without year parameter.
          */
-        it("testPublishReminderCalendar_043", 0, async function (done) {
+        it("testPublishReminderCalendar_043", Level.LEVEL0, async function (done) {
             console.info('----------------------testPublishReminderCalendar_043---------------------------');
             let calendar = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
@@ -1110,7 +1112,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testPublishReminderCalendar_044
          * @tc.desc      test calendar with illegal year parameter.
          */
-        it("testPublishReminderCalendar_044", 0, async function (done) {
+        it("testPublishReminderCalendar_044", Level.LEVEL0, async function (done) {
             console.info('----------------------testPublishReminderCalendar_044---------------------------');
             let calendar = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
@@ -1135,7 +1137,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testPublishReminderCalendar_045
          * @tc.desc      test calendar without month parameter.
          */
-        it("testPublishReminderCalendar_045", 0, async function (done) {
+        it("testPublishReminderCalendar_045", Level.LEVEL0, async function (done) {
             console.info('----------------------testPublishReminderCalendar_045---------------------------');
             let calendar = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
@@ -1159,7 +1161,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testPublishReminderCalendar_046
          * @tc.desc      test calendar with illegal month parameter.
          */
-        it("testPublishReminderCalendar_046", 0, async function (done) {
+        it("testPublishReminderCalendar_046", Level.LEVEL0, async function (done) {
             console.info('----------------------testPublishReminderCalendar_046---------------------------');
             let calendar = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
@@ -1184,7 +1186,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testPublishReminderCalendar_047
          * @tc.desc      test calendar with illegal month parameter 0.
          */
-        it("testPublishReminderCalendar_047", 0, async function (done) {
+        it("testPublishReminderCalendar_047", Level.LEVEL0, async function (done) {
             console.info('----------------------testPublishReminderCalendar_047---------------------------');
             let calendar = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
@@ -1209,7 +1211,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testPublishReminderCalendar_048
          * @tc.desc      test calendar with illegal month parameter 13.
          */
-        it("testPublishReminderCalendar_048", 0, async function (done) {
+        it("testPublishReminderCalendar_048", Level.LEVEL0, async function (done) {
             console.info('----------------------testPublishReminderCalendar_048---------------------------');
             let calendar = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
@@ -1234,7 +1236,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testPublishReminderCalendar_049
          * @tc.desc      test calendar without day parameter.
          */
-        it("testPublishReminderCalendar_049", 0, async function (done) {
+        it("testPublishReminderCalendar_049", Level.LEVEL0, async function (done) {
             console.info('----------------------testPublishReminderCalendar_049---------------------------');
             let calendar = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
@@ -1258,7 +1260,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testPublishReminderCalendar_050
          * @tc.desc      test calendar with illegal day parameter.
          */
-        it("testPublishReminderCalendar_050", 0, async function (done) {
+        it("testPublishReminderCalendar_050", Level.LEVEL0, async function (done) {
             console.info('----------------------testPublishReminderCalendar_050---------------------------');
             let calendar = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
@@ -1283,7 +1285,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testPublishReminderCalendar_051
          * @tc.desc      test calendar with illegal day parameter 0.
          */
-        it("testPublishReminderCalendar_051", 0, async function (done) {
+        it("testPublishReminderCalendar_051", Level.LEVEL0, async function (done) {
             console.info('----------------------testPublishReminderCalendar_051---------------------------');
             let calendar = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
@@ -1308,7 +1310,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testPublishReminderCalendar_052
          * @tc.desc      test calendar with illegal day parameter 32.
          */
-        it("testPublishReminderCalendar_052", 0, async function (done) {
+        it("testPublishReminderCalendar_052", Level.LEVEL0, async function (done) {
             console.info('----------------------testPublishReminderCalendar_052---------------------------');
             let calendar = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
@@ -1333,7 +1335,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testPublishReminderCalendar_053
          * @tc.desc      test calendar without hour parameter.
          */
-        it("testPublishReminderCalendar_053", 0, async function (done) {
+        it("testPublishReminderCalendar_053", Level.LEVEL0, async function (done) {
             console.info('----------------------testPublishReminderCalendar_053---------------------------');
             let calendar = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
@@ -1357,7 +1359,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testPublishReminderCalendar_054
          * @tc.desc      test calendar with illegal hour parameter.
          */
-        it("testPublishReminderCalendar_054", 0, async function (done) {
+        it("testPublishReminderCalendar_054", Level.LEVEL0, async function (done) {
             console.info('----------------------testPublishReminderCalendar_054---------------------------');
             let calendar = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
@@ -1382,7 +1384,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testPublishReminderCalendar_055
          * @tc.desc      test calendar with illegal hour parameter 24.
          */
-        it("testPublishReminderCalendar_055", 0, async function (done) {
+        it("testPublishReminderCalendar_055", Level.LEVEL0, async function (done) {
             console.info('----------------------testPublishReminderCalendar_055---------------------------');
             let calendar = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
@@ -1407,7 +1409,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testPublishReminderCalendar_056
          * @tc.desc      test calendar without minute parameter.
          */
-        it("testPublishReminderCalendar_056", 0, async function (done) {
+        it("testPublishReminderCalendar_056", Level.LEVEL0, async function (done) {
             console.info('----------------------testPublishReminderCalendar_056---------------------------');
             let calendar = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
@@ -1431,7 +1433,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testPublishReminderCalendar_057
          * @tc.desc      test calendar with illegal minute parameter.
          */
-        it("testPublishReminderCalendar_057", 0, async function (done) {
+        it("testPublishReminderCalendar_057", Level.LEVEL0, async function (done) {
             console.info('----------------------testPublishReminderCalendar_057---------------------------');
             let calendar = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
@@ -1456,7 +1458,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testPublishReminderCalendar_058
          * @tc.desc      test calendar with illegal minute parameter 60.
          */
-        it("testPublishReminderCalendar_058", 0, async function (done) {
+        it("testPublishReminderCalendar_058", Level.LEVEL0, async function (done) {
             console.info('----------------------testPublishReminderCalendar_058---------------------------');
             let calendar = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
@@ -1481,7 +1483,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testPublishReminderCalendarFun_059
          * @tc.desc      test calendar with normal parameter,return with callback.
          */
-        it("testPublishReminderCalendarFun_059", 0, async function (done) {
+        it("testPublishReminderCalendarFun_059", Level.LEVEL0, async function (done) {
             console.info('----------------------testPublishReminderCalendarFun_059---------------------------');
             let calendar = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
@@ -1492,7 +1494,9 @@ export default function ReminderAgentTest() {
                     hour: 11,
                     minute: 30,
                     second: 50
-                }
+                },
+                repeatMonths: [3],
+                repeatDays: [7]
             }
             reminderAgent.publishReminder(calendar, (err, reminderId) => {
                 console.info("callback,the testPublishReminderCalendarFun_059 reminderId =" + reminderId);
@@ -1506,7 +1510,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testPublishReminderCalendarFun_060
          * @tc.desc      test calendar with normal parameter,return with promise.
          */
-        it("testPublishReminderCalendarFun_060", 0, async function (done) {
+        it("testPublishReminderCalendarFun_060", Level.LEVEL0, async function (done) {
             console.info('----------------------testPublishReminderCalendarFun_060---------------------------');
             let calendar = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
@@ -1517,7 +1521,9 @@ export default function ReminderAgentTest() {
                     hour: 11,
                     minute: 30,
                     second: 40
-                }
+                },
+                repeatMonths: [3],
+                repeatDays: [7]
             }
             reminderAgent.publishReminder(calendar).then((reminderId) => {
                 console.info("promise,the testPublishReminderCalendarFun_060 reminderId =" + reminderId);
@@ -1531,7 +1537,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testPublishReminderCalendar_061
          * @tc.desc      test calendar with illegal repeatMonths parameter 13.
          */
-        it("testPublishReminderCalendar_061", 0, async function (done) {
+        it("testPublishReminderCalendar_061", Level.LEVEL0, async function (done) {
             console.info('----------------------testPublishReminderCalendar_061---------------------------');
             let calendar = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
@@ -1557,7 +1563,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testPublishReminderCalendar_062
          * @tc.desc      test calendar with illegal repeatMonths parameter 0.
          */
-        it("testPublishReminderCalendar_062", 0, async function (done) {
+        it("testPublishReminderCalendar_062", Level.LEVEL0, async function (done) {
             console.info('----------------------testPublishReminderCalendar_062---------------------------');
             let calendar = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
@@ -1583,7 +1589,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testPublishReminderCalendar_063
          * @tc.desc      test calendar with illegal repeatDays parameter 32.
          */
-        it("testPublishReminderCalendar_063", 0, async function (done) {
+        it("testPublishReminderCalendar_063", Level.LEVEL0, async function (done) {
             console.info('----------------------testPublishReminderCalendar_063---------------------------');
             let calendar = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
@@ -1609,7 +1615,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testPublishReminderCalendar_064
          * @tc.desc      test calendar with illegal repeatDays parameter 0.
          */
-        it("testPublishReminderCalendar_064", 0, async function (done) {
+        it("testPublishReminderCalendar_064", Level.LEVEL0, async function (done) {
             console.info('----------------------testPublishReminderCalendar_064---------------------------');
             let calendar = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
@@ -1635,7 +1641,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testPublishReminderCalendar_065
          * @tc.desc      test calendar with repeatMonths��repeatDays parameter null,return with callback.
          */
-        it("testPublishReminderCalendar_065", 0, async function (done) {
+        it("testPublishReminderCalendar_065", Level.LEVEL0, async function (done) {
             console.info('----------------------testPublishReminderCalendar_065---------------------------');
             let calendar = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
@@ -1647,8 +1653,8 @@ export default function ReminderAgentTest() {
                     minute: 45,
                     second: 15
                 },
-                repeatMonths: [],
-                repeatDays: []
+                repeatMonths: [3],
+                repeatDays: [7]
             }
             reminderAgent.cancelAllReminders().then(() => {
                 console.info('cancelAllReminders success')
@@ -1667,7 +1673,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testPublishReminderCalendar_066
          * @tc.desc      test calendar with repeatMonths��repeatDays parameter null,return with promise.
          */
-        it("testPublishReminderCalendar_066", 0, async function (done) {
+        it("testPublishReminderCalendar_066", Level.LEVEL0, async function (done) {
             console.info('----------------------testPublishReminderCalendar_066---------------------------');
             let calendar = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
@@ -1679,8 +1685,8 @@ export default function ReminderAgentTest() {
                     minute: 45,
                     second: 15
                 },
-                repeatMonths: [],
-                repeatDays: []
+                repeatMonths: [3],
+                repeatDays: [7]
             }
             reminderAgent.publishReminder(calendar).then((reminderId) => {
                 console.info("promise,the testPublishReminderCalendar_066 reminderId =" + reminderId);
@@ -1694,7 +1700,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testGetValidRemindersButton_067
          * @tc.desc      test actionButton with illegal parameter.
          */
-        it("testGetValidRemindersButton_067", 0, async function (done) {
+        it("testGetValidRemindersButton_067", Level.LEVEL0, async function (done) {
             console.info('----------------------testGetValidRemindersButton_067---------------------------');
             let alarm = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
@@ -1728,7 +1734,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testGetValidRemindersButton_068
          * @tc.desc      test actionButton without title.
          */
-        it("testGetValidRemindersButton_068", 0, async function (done) {
+        it("testGetValidRemindersButton_068", Level.LEVEL0, async function (done) {
             console.info('----------------------testGetValidRemindersButton_068---------------------------');
             let alarm = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
@@ -1761,7 +1767,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testGetValidRemindersButton_069
          * @tc.desc      test actionButton with illegal title.
          */
-        it("testGetValidRemindersButton_069", 0, async function (done) {
+        it("testGetValidRemindersButton_069", Level.LEVEL0, async function (done) {
             console.info('----------------------testGetValidRemindersButton_069---------------------------');
             let alarm = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
@@ -1795,7 +1801,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testGetValidRemindersSnoozTimes_070
          * @tc.desc      test snoozeTimes with parameter 0.
          */
-        it("testGetValidRemindersSnoozTimes_070", 0, async function (done) {
+        it("testGetValidRemindersSnoozTimes_070", Level.LEVEL0, async function (done) {
             console.info('----------------------testGetValidRemindersSnoozTimes_070---------------------------');
             let alarm = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
@@ -1823,7 +1829,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testGetValidRemindersSnoozTimes_071
          * @tc.desc      test snoozeTimes with illegal parameter.
          */
-        it("testGetValidRemindersSnoozTimes_071", 0, async function (done) {
+        it("testGetValidRemindersSnoozTimes_071", Level.LEVEL0, async function (done) {
             console.info('----------------------testGetValidRemindersSnoozTimes_071---------------------------');
             let alarm = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
@@ -1851,7 +1857,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testGetValidRemindersSnoozTimes_072
          * @tc.desc      test snoozeTimes with illegal parameter.
          */
-        it("testGetValidRemindersSnoozTimes_072", 0, async function (done) {
+        it("testGetValidRemindersSnoozTimes_072", Level.LEVEL0, async function (done) {
             console.info('----------------------testGetValidRemindersSnoozTimes_072---------------------------');
             let alarm = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
@@ -1879,7 +1885,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testGetValidRemindersRingDuration_073
          * @tc.desc      test ringDuration default parameters.
          */
-        it("testGetValidRemindersRingDuration_073", 0, async function (done) {
+        it("testGetValidRemindersRingDuration_073", Level.LEVEL0, async function (done) {
             console.info('----------------------testGetValidRemindersRingDuration_073---------------------------');
             let alarm = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
@@ -1906,7 +1912,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testGetValidRemindersRingDuration_074
          * @tc.desc      test ringDuration with illegal parameter.
          */
-        it("testGetValidRemindersRingDuration_074", 0, async function (done) {
+        it("testGetValidRemindersRingDuration_074", Level.LEVEL0, async function (done) {
             console.info('----------------------testGetValidRemindersRingDuration_074---------------------------');
             let alarm = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
@@ -1934,7 +1940,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testGetValidRemindersRingDuration_075
          * @tc.desc      test ringDuration with illegal parameter.
          */
-        it("testGetValidRemindersRingDuration_075", 0, async function (done) {
+        it("testGetValidRemindersRingDuration_075", Level.LEVEL0, async function (done) {
             console.info('----------------------testGetValidRemindersRingDuration_075---------------------------');
             let alarm = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
@@ -1956,7 +1962,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testGetValidRemindersTimeInterval_076
          * @tc.desc      test timeInterval default parameters.
          */
-        it("testGetValidRemindersTimeInterval_076", 0, async function (done) {
+        it("testGetValidRemindersTimeInterval_076", Level.LEVEL0, async function (done) {
             console.info('----------------------testGetValidRemindersTimeInterval_076---------------------------');
             let alarm = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
@@ -1983,7 +1989,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testGetValidRemindersTimeInterval_077
          * @tc.desc      test timeInterval with illegal parameters.
          */
-        it("testGetValidRemindersTimeInterval_077", 0, async function (done) {
+        it("testGetValidRemindersTimeInterval_077", Level.LEVEL0, async function (done) {
             console.info('----------------------testGetValidRemindersTimeInterval_077---------------------------');
             let alarm = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
@@ -2011,7 +2017,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testGetValidRemindersTimeInterval_078
          * @tc.desc      test timeInterval with illegal parameters.
          */
-        it("testGetValidRemindersTimeInterval_078", 0, async function (done) {
+        it("testGetValidRemindersTimeInterval_078", Level.LEVEL0, async function (done) {
             console.info('----------------------testGetValidRemindersTimeInterval_078---------------------------');
             let alarm = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
@@ -2039,7 +2045,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testGetValidRemindersTitle_079
          * @tc.desc      test title with empty parameters.
          */
-        it("testGetValidRemindersTitle_079", 0, async function (done) {
+        it("testGetValidRemindersTitle_079", Level.LEVEL0, async function (done) {
             console.info('----------------------testGetValidRemindersTitle_079---------------------------');
             let timer = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
@@ -2070,7 +2076,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testGetValidRemindersTitle_080
          * @tc.desc      test title with illegal parameters.
          */
-        it("testGetValidRemindersTitle_080", 0, async function (done) {
+        it("testGetValidRemindersTitle_080", Level.LEVEL0, async function (done) {
             console.info('----------------------testGetValidRemindersTitle_080---------------------------');
             let timer = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
@@ -2101,7 +2107,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testGetValidRemindersSlotType_081
          * @tc.desc      test slotType default parameters.
          */
-        it("testGetValidRemindersSlotType_081", 0, async function (done) {
+        it("testGetValidRemindersSlotType_081", Level.LEVEL0, async function (done) {
             console.info('----------------------testGetValidRemindersSlotType_081---------------------------');
             let timer = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
@@ -2129,7 +2135,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testGetValidRemindersSlotType_082
          * @tc.desc      test slotType with illegal parameter 5.
          */
-        it("testGetValidRemindersSlotType_082", 0, async function (done) {
+        it("testGetValidRemindersSlotType_082", Level.LEVEL0, async function (done) {
             console.info('----------------------testGetValidRemindersSlotType_082---------------------------');
             let timer = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
@@ -2154,7 +2160,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testGetValidRemindersPkgName_083
          * @tc.desc      test pkgName with empty parameters.
          */
-        it("testGetValidRemindersPkgName_083", 0, async function (done) {
+        it("testGetValidRemindersPkgName_083", Level.LEVEL0, async function (done) {
             console.info('----------------------testGetValidRemindersPkgName_083---------------------------');
             let timer = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
@@ -2186,7 +2192,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testGetValidRemindersPkgName_084
          * @tc.desc      test pkgName with illegal parameters.
          */
-        it("testGetValidRemindersPkgName_084", 0, async function (done) {
+        it("testGetValidRemindersPkgName_084", Level.LEVEL0, async function (done) {
             console.info('----------------------testGetValidRemindersPkgName_084---------------------------');
             let timer = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
@@ -2218,7 +2224,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testGetValidRemindersAbilityName_085
          * @tc.desc      test abilityName with empty parameters.
          */
-        it("testGetValidRemindersAbilityName_085", 0, async function (done) {
+        it("testGetValidRemindersAbilityName_085", Level.LEVEL0, async function (done) {
             console.info('----------------------testGetValidRemindersAbilityName_085---------------------------');
             let timer = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
@@ -2251,7 +2257,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testGetValidRemindersAbilityName_086
          * @tc.desc      test abilityName with illegal parameters.
          */
-        it("testGetValidRemindersAbilityName_086", 0, async function (done) {
+        it("testGetValidRemindersAbilityName_086", Level.LEVEL0, async function (done) {
             console.info('----------------------testGetValidRemindersAbilityName_086---------------------------');
             let timer = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
@@ -2284,7 +2290,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testGetValidRemindersContent_087
          * @tc.desc      test content with illegal parameters.
          */
-        it("testGetValidRemindersContent_087", 0, async function (done) {
+        it("testGetValidRemindersContent_087", Level.LEVEL0, async function (done) {
             console.info('----------------------testGetValidRemindersContent_087---------------------------');
             let timer = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
@@ -2313,7 +2319,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testGetValidRemindersContent_088
          * @tc.desc      test content with illegal parameters.
          */
-        it("testGetValidRemindersContent_088", 0, async function (done) {
+        it("testGetValidRemindersContent_088", Level.LEVEL0, async function (done) {
             console.info('----------------------testGetValidRemindersContent_088---------------------------');
             let timer = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
@@ -2342,7 +2348,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testGetValidRemindersExpiredContent_089
          * @tc.desc      test expiredContent with empty parameters.
          */
-        it("testGetValidRemindersExpiredContent_089", 0, async function (done) {
+        it("testGetValidRemindersExpiredContent_089", Level.LEVEL0, async function (done) {
             console.info('----------------------testGetValidRemindersExpiredContent_089---------------------------');
             let timer = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
@@ -2372,7 +2378,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testGetValidRemindersExpiredContent_090
          * @tc.desc      test expiredContent with illegal parameters.
          */
-        it("testGetValidRemindersExpiredContent_090", 0, async function (done) {
+        it("testGetValidRemindersExpiredContent_090", Level.LEVEL0, async function (done) {
             console.info('----------------------testGetValidRemindersExpiredContent_090---------------------------');
             let timer = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
@@ -2402,7 +2408,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testGetValidRemindersSnoozeContent_091
          * @tc.desc      test snoozeContent with empty parameters.
          */
-        it("testGetValidRemindersSnoozeContent_091", 0, async function (done) {
+        it("testGetValidRemindersSnoozeContent_091", Level.LEVEL0, async function (done) {
             console.info('----------------------testGetValidRemindersSnoozeContent_091---------------------------');
             let timer = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
@@ -2432,7 +2438,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testGetValidRemindersSnoozeContent_092
          * @tc.desc      test snoozeContent with illegal parameters.
          */
-        it("testGetValidRemindersSnoozeContent_092", 0, async function (done) {
+        it("testGetValidRemindersSnoozeContent_092", Level.LEVEL0, async function (done) {
             console.info('----------------------testGetValidRemindersSnoozeContent_092---------------------------');
             let timer = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
@@ -2461,7 +2467,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testGetValidRemindersNotificationId_093
          * @tc.desc      test notificationId with illegal parameters.
          */
-        it("testGetValidRemindersNotificationId_093", 0, async function (done) {
+        it("testGetValidRemindersNotificationId_093", Level.LEVEL0, async function (done) {
             console.info('----------------------testGetValidRemindersNotificationId_093---------------------------');
             let timer = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
@@ -2491,7 +2497,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testGetValidRemindersNotificationId_094
          * @tc.desc      test snoozeContent with illegal parameters.
          */
-        it("testGetValidRemindersNotificationId_094", 0, async function (done) {
+        it("testGetValidRemindersNotificationId_094", Level.LEVEL0, async function (done) {
             console.info('----------------------testGetValidRemindersNotificationId_094---------------------------');
             let timer = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
@@ -2521,7 +2527,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testReminderType_095
          * @tc.desc      test timer default parameter with 0.
          */
-        it("testReminderType_095", 0, async function (done) {
+        it("testReminderType_095", Level.LEVEL0, async function (done) {
             console.info('----------------------testReminderType_095---------------------------');
             let timer = reminderAgent.ReminderType.REMINDER_TYPE_TIMER;
             expect(timer).assertEqual(0);
@@ -2533,7 +2539,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testReminderType_096
          * @tc.desc      test calendar default parameter with 1.
          */
-        it("testReminderType_096", 0, async function (done) {
+        it("testReminderType_096", Level.LEVEL0, async function (done) {
             console.info('----------------------testReminderType_096---------------------------');
             let calendar = reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR;
             expect(calendar).assertEqual(1);
@@ -2545,7 +2551,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testReminderType_097
          * @tc.desc      test alarm default parameter with 2.
          */
-        it("testReminderType_097", 0, async function (done) {
+        it("testReminderType_097", Level.LEVEL0, async function (done) {
             console.info('----------------------testReminderType_097---------------------------');
             let alarm = reminderAgent.ReminderType.REMINDER_TYPE_ALARM;
             expect(alarm).assertEqual(2);
@@ -2557,7 +2563,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testActionButtonType_098
          * @tc.desc      test button close default parameter with 0.
          */
-        it("testActionButtonType_098", 0, async function (done) {
+        it("testActionButtonType_098", Level.LEVEL0, async function (done) {
             console.info('----------------------testActionButtonType_098---------------------------');
             let button = reminderAgent.ActionButtonType.ACTION_BUTTON_TYPE_CLOSE;
             expect(button).assertEqual(0);
@@ -2569,7 +2575,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testActionButtonType_099
          * @tc.desc      test button snooze default parameter with 1.
          */
-        it("testActionButtonType_099", 0, async function (done) {
+        it("testActionButtonType_099", Level.LEVEL0, async function (done) {
             console.info('----------------------testActionButtonType_099---------------------------');
             let button = reminderAgent.ActionButtonType.ACTION_BUTTON_TYPE_SNOOZE;
             expect(button).assertEqual(1);
@@ -2581,7 +2587,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testNotificationSlotType_0100
          * @tc.desc      test UNKNOWN_TYPE default parameter with 0.
          */
-        it("testNotificationSlotType_0100", 0, async function (done) {
+        it("testNotificationSlotType_0100", Level.LEVEL0, async function (done) {
             console.info('----------------------testNotificationSlotType_0100---------------------------');
             let type = notification.SlotType.UNKNOWN_TYPE;
             expect(type).assertEqual(0);
@@ -2593,7 +2599,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testNotificationSlotType_0101
          * @tc.desc      test SOCIAL_COMMUNICATION default parameter with 1.
          */
-        it("testNotificationSlotType_0101", 0, async function (done) {
+        it("testNotificationSlotType_0101", Level.LEVEL0, async function (done) {
             console.info('----------------------testNotificationSlotType_0101---------------------------');
             let type = notification.SlotType.SOCIAL_COMMUNICATION;
             expect(type).assertEqual(1);
@@ -2605,7 +2611,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testNotificationSlotType_0102
          * @tc.desc      test SERVICE.INFORMATION default parameter with 2.
          */
-        it("testNotificationSlotType_0102", 0, async function (done) {
+        it("testNotificationSlotType_0102", Level.LEVEL0, async function (done) {
             console.info('----------------------testNotificationSlotType_0102---------------------------');
             let type = notification.SlotType.SERVICE_INFORMATION;
             expect(type).assertEqual(2);
@@ -2617,7 +2623,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testNotificationSlotType_0103
          * @tc.desc      test CONTENT_INFORMATION default parameter with 3.
          */
-        it("testNotificationSlotType_0103", 0, async function (done) {
+        it("testNotificationSlotType_0103", Level.LEVEL0, async function (done) {
             console.info('----------------------testNotificationSlotType_0103---------------------------');
             let type = notification.SlotType.CONTENT_INFORMATION;
             expect(type).assertEqual(3);
@@ -2629,7 +2635,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testNotificationSlotType_0104
          * @tc.desc      test OTHER_TYPES default parameter with 65535.
          */
-        it("testNotificationSlotType_0104", 0, async function (done) {
+        it("testNotificationSlotType_0104", Level.LEVEL0, async function (done) {
             console.info('----------------------testNotificationSlotType_0104---------------------------');
             let type = notification.SlotType.OTHER_TYPES;
             expect(type).assertEqual(65535);
@@ -2641,7 +2647,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testRemoveNotificationSlotNorFun_0105
          * @tc.desc      test remove notification Slot with not exist slot with the promise function.
          */
-        it('testRemoveNotificationSlotNorFun_0105', 0, async function (done) {
+        it('testRemoveNotificationSlotNorFun_0105', Level.LEVEL0, async function (done) {
             console.info('----------------------testRemoveNotificationSlotNorFun_0105---------------------------');
             let promise = new Promise((resolve, reject) => {
                 reminderAgent.removeNotificationSlot(1).then(() => {
@@ -2662,7 +2668,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testRemoveNotificationSlotNorFun_0106
          * @tc.desc      test remove notification Slot with exist slot.
          */
-        it('testRemoveNotificationSlotNorFun_0106', 0, async function (done) {
+        it('testRemoveNotificationSlotNorFun_0106', Level.LEVEL0, async function (done) {
             console.info('----------------------testRemoveNotificationSlotNorFun_0106---------------------------');
             let tarRemoveSlot = {
                 type: 1
@@ -2682,7 +2688,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testRemoveNotificationSlotNorFun_0107
          * @tc.desc      test remove notification Slot with exist slot with the promise function.
          */
-        it('testRemoveNotificationSlotNorFun_0107', 0, async function (done) {
+        it('testRemoveNotificationSlotNorFun_0107', Level.LEVEL0, async function (done) {
             console.info('----------------------testRemoveNotificationSlotNorFun_0107---------------------------');
             let tarRemoveSlot = {
                 type: 2
@@ -2702,7 +2708,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testGetValidRemindersNorFun_0108
          * @tc.desc      test get valid reminders with promise function.
          */
-        it('testGetValidRemindersNorFun_0108', 0, async function (done) {
+        it('testGetValidRemindersNorFun_0108', Level.LEVEL0, async function (done) {
             console.info('----------------------testGetValidRemindersNorFun_0108---------------------------');
             let timer = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
@@ -2724,7 +2730,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testGetValidRemindersNorFun_0109
          * @tc.desc      test get valid reminders with the callback function.
          */
-        it('testGetValidRemindersNorFun_0109', 0, async function (done) {
+        it('testGetValidRemindersNorFun_0109', Level.LEVEL0, async function (done) {
             console.info('----------------------testGetValidRemindersNorFun_0109---------------------------');
             let timer = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
@@ -2746,7 +2752,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testPublishReminderNorAlarmFun_0110
          * @tc.desc      test publish reminder with a nomal alarm promise function.
          */
-        it('testPublishReminderNorAlarmFun_0110', 0, async function (done) {
+        it('testPublishReminderNorAlarmFun_0110', Level.LEVEL0, async function (done) {
             console.info('----------------------testPublishReminderNorAlarmFun_0110---------------------------');
             let alarm = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
@@ -2765,7 +2771,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testPublishReminderNorAlarmFun_0111
          * @tc.desc      test publish reminder with a nomal alarm callback function.
          */
-        it('testPublishReminderNorAlarmFun_0111', 0, async function (done) {
+        it('testPublishReminderNorAlarmFun_0111', Level.LEVEL0, async function (done) {
             console.info('----------------------testPublishReminderNorAlarmFun_0111---------------------------');
             let alarm = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
@@ -2784,7 +2790,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testPublishReminderAbNorFun_0112
          * @tc.desc      test publish reminder with max number limit of each application.
          */
-        it('testPublishReminderAbNorFun_0112', 0, async function (done) {
+        it('testPublishReminderAbNorFun_0112', Level.LEVEL0, async function (done) {
             console.info('----------------------testPublishReminderAbNorFun_0112---------------------------');
             let timer = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
@@ -2815,7 +2821,7 @@ export default function ReminderAgentTest() {
       * @tc.name      testReminderTypeCalendarFun_0113
       * @tc.desc      test cancelAllReminders can cancel all exist reminders with type of calendar.
       */
-        it('testReminderTypeCalendarFun_0113', 0, async function (done) {
+        it('testReminderTypeCalendarFun_0113', Level.LEVEL0, async function (done) {
             console.info('----------------------testReminderTypeCalendarFun_0113---------------------------');
             let timer = {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
@@ -2829,7 +2835,9 @@ export default function ReminderAgentTest() {
                     day: 10,
                     hour: 23,
                     minute: 30
-                }
+                },
+                repeatMonths: [3],
+                repeatDays: [7]
             }
             reminderAgent.publishReminder(timer).then((reminderId) => { });
             reminderAgent.publishReminder(calendar).then((reminderId) => { });
@@ -2848,7 +2856,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testActionButtonType_0115
          * @tc.desc      test action butto type type = 0.
          */
-        it("testActionButtonType_0115", 0, async function (done) {
+        it("testActionButtonType_0115", Level.LEVEL0, async function (done) {
             console.info('----------------------testActionButtonType_0115---------------------------');
             let type1 = reminderAgent.ActionButtonType.ACTION_BUTTON_TYPE_CLOSE;
             console.info(type1 + typeof (type1));
@@ -2865,7 +2873,7 @@ export default function ReminderAgentTest() {
          * @tc.name      testActionButtonType_0116
          * @tc.desc      test action butto type type = 1.
          */
-        it("testActionButtonType_0116", 0, async function (done) {
+        it("testActionButtonType_0116", Level.LEVEL0, async function (done) {
             console.info('----------------------testActionButtonType_0116---------------------------');
             let type1 = reminderAgent.ActionButtonType.ACTION_BUTTON_TYPE_SNOOZE;
             console.info(type1 + typeof (type1));
