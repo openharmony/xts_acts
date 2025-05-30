@@ -504,7 +504,7 @@ export default function UsbCoreEtsTestEx() {
     })
 
     /**
-     * @tc.number   : SUB_USB_HostManager_JS_Compatibility_3400
+     * @tc.number   : SUB_USB_HostManager_JS_Reset_0100
      * @tc.name     : testResetUsbDevice
      * @tc.desc     : Negative test: Reset device
      * @tc.size     : MediumTest
@@ -538,7 +538,7 @@ export default function UsbCoreEtsTestEx() {
     })
 
     /**
-     * @tc.number   : SUB_USB_HostManager_JS_Compatibility_3500
+     * @tc.number   : SUB_USB_HostManager_JS_Reset_0200
      * @tc.name     : testResetUsbDeviceErrorCode
      * @tc.desc     : Negative test: resetUsbDevice error code 14400001 overwrite
      * @tc.size     : MediumTest
@@ -575,7 +575,7 @@ export default function UsbCoreEtsTestEx() {
     })
 
     /**
-     * @tc.number   : SUB_USB_HostManager_JS_Compatibility_3600
+     * @tc.number   : SUB_USB_HostManager_JS_Reset_0300
      * @tc.name     : testResetUsbDeviceErrorCode001
      * @tc.desc     : Negative test: resetUsbDevice error code 14400013 overwrite
      * @tc.size     : MediumTest
