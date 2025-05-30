@@ -824,6 +824,181 @@ function testSetDisallowedForAccountPolicy() {
     }
     done();
   });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_DISALLOWED_POLICY_FOR_ACCOUNT_JS_0901
+   * @tc.name      : test_set_disallowed_policy_for_account_0901
+   * @tc.desc      : test restrictions setDisallowedPolicyForAccount with policy false
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_disallowed_policy_for_account_0901", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      restrictions.setDisallowedPolicyForAccount(SELFWANT, LABEL_MTP_CLIENT, false, DEFAULT_USER_ID);
+      let res = restrictions.getDisallowedPolicyForAccount(SELFWANT, LABEL_MTP_CLIENT, DEFAULT_USER_ID);
+      expect(res).assertFalse();
+    } catch (error) {
+      expect(false).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_DISALLOWED_POLICY_FOR_ACCOUNT_JS_0902
+   * @tc.name      : test_set_disallowed_policy_for_account_0902
+   * @tc.desc      : test restrictions setDisallowedPolicyForAccount with policy true
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_disallowed_policy_for_account_0902", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      restrictions.setDisallowedPolicyForAccount(SELFWANT, LABEL_MTP_CLIENT, true, DEFAULT_USER_ID);
+      let res = restrictions.getDisallowedPolicyForAccount(SELFWANT, LABEL_MTP_CLIENT, DEFAULT_USER_ID);
+      expect(res).assertTrue();
+    } catch (error) {
+      expect(false).assertTrue();
+    } finally {
+      restrictions.setDisallowedPolicyForAccount(SELFWANT, LABEL_MTP_CLIENT, false, DEFAULT_USER_ID);
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_DISALLOWED_POLICY_FOR_ACCOUNT_JS_0903
+   * @tc.name      : test_set_disallowed_policy_for_account_0903
+   * @tc.desc      : test restrictions setDisallowedPolicyForAccount without admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_disallowed_policy_for_account_0903", Level.LEVEL2, async (done: Function) => {
+    try {
+      restrictions.setDisallowedPolicyForAccount(SELFWANT, LABEL_MTP_CLIENT, true, DEFAULT_USER_ID);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200001).assertTrue();
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_DISALLOWED_POLICY_FOR_ACCOUNT_JS_0904
+   * @tc.name      : test_set_disallowed_policy_for_account_0904
+   * @tc.desc      : test restrictions setDisallowedPolicyForAccount with normal admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_disallowed_policy_for_account_0904", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+    try {
+      restrictions.setDisallowedPolicyForAccount(SELFWANT, LABEL_MTP_CLIENT, true, DEFAULT_USER_ID);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200002).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_DISALLOWED_POLICY_FOR_ACCOUNT_JS_0905
+   * @tc.name      : test_set_disallowed_policy_for_account_0905
+   * @tc.desc      : test restrictions setDisallowedPolicyForAccount with invalid admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_disallowed_policy_for_account_0905", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      restrictions.setDisallowedPolicyForAccount(INVALID_WANT, LABEL_MTP_CLIENT, true, DEFAULT_USER_ID);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_DISALLOWED_POLICY_FOR_ACCOUNT_JS_0906
+   * @tc.name      : test_set_disallowed_policy_for_account_0906
+   * @tc.desc      : test restrictions setDisallowedPolicyForAccount with user 0
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_disallowed_policy_for_account_0906", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    const userId = 0;
+    try {
+      restrictions.setDisallowedPolicyForAccount(SELFWANT, LABEL_MTP_CLIENT, true, userId);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200007).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_DISALLOWED_POLICY_FOR_ACCOUNT_JS_0907
+   * @tc.name      : test_set_disallowed_policy_for_account_0907
+   * @tc.desc      : test restrictions setDisallowedPolicyForAccount with conflict policy
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_disallowed_policy_for_account_0907", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      restrictions.setDisallowedPolicyForAccount(SELFWANT, LABEL_MTP_CLIENT, true, DEFAULT_USER_ID);
+      let res = restrictions.getDisallowedPolicyForAccount(SELFWANT, LABEL_MTP_CLIENT, DEFAULT_USER_ID);
+      expect(res).assertTrue();
+      restrictions.setDisallowedPolicy(SELFWANT, LABEL_MTP_CLIENT, true);
+    } catch (error) {
+      expect(error.code == 9200010).assertTrue();
+    } finally {
+      restrictions.setDisallowedPolicyForAccount(SELFWANT, LABEL_MTP_CLIENT, false, DEFAULT_USER_ID);
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_DISALLOWED_POLICY_FOR_ACCOUNT_JS_0908
+   * @tc.name      : test_set_disallowed_policy_for_account_0908
+   * @tc.desc      : test restrictions setDisallowedPolicyForAccount with conflict policy
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_disallowed_policy_for_account_0908", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      restrictions.setDisallowedPolicy(SELFWANT, LABEL_MTP_CLIENT, true);
+      let res = restrictions.getDisallowedPolicy(SELFWANT, LABEL_MTP_CLIENT)
+      expect(res).assertTrue();
+      restrictions.setDisallowedPolicyForAccount(SELFWANT, LABEL_MTP_CLIENT, true, DEFAULT_USER_ID);
+    } catch (error) {
+      expect(error.code == 9200010).assertTrue();
+    } finally {
+      restrictions.setDisallowedPolicy(SELFWANT, LABEL_MTP_CLIENT, false);
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
 }
 
 function testGetDisallowedForAccountPolicy() {
@@ -920,6 +1095,66 @@ function testGetDisallowedForAccountPolicy() {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
     try {
       restrictions.getDisallowedPolicyForAccount(SELFWANT, LABEL_FINGER_PRINT, null);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 401).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_GET_DISALLOWED_FOR_ACCOUNT_POLICY_JS_0601
+   * @tc.name      : test_get_disallowed_policy_for_account_0601
+   * @tc.desc      : test restrictions getDisallowedPolicyForAccount without admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_get_disallowed_policy_for_account_0601", Level.LEVEL2, async (done: Function) => {
+    try {
+      restrictions.getDisallowedPolicyForAccount(SELFWANT, LABEL_MTP_CLIENT, DEFAULT_USER_ID);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200001).assertTrue();
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_GET_DISALLOWED_FOR_ACCOUNT_POLICY_JS_0602
+   * @tc.name      : test_get_disallowed_policy_for_account_0602
+   * @tc.desc      : test restrictions getDisallowedPolicyForAccount with normal admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_get_disallowed_policy_for_account_0602", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+    try {
+      restrictions.getDisallowedPolicyForAccount(SELFWANT, LABEL_MTP_CLIENT, DEFAULT_USER_ID);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 9200002).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_GET_DISALLOWED_FOR_ACCOUNT_POLICY_JS_0603
+   * @tc.name      : test_get_disallowed_policy_for_account_0603
+   * @tc.desc      : test restrictions getDisallowedPolicyForAccount with invalid admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_get_disallowed_policy_for_account_0603", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      restrictions.getDisallowedPolicyForAccount(INVALID_WANT, LABEL_MTP_CLIENT, DEFAULT_USER_ID);
       expect(false).assertTrue();
     } catch (error) {
       expect(error.code == 401).assertTrue();
