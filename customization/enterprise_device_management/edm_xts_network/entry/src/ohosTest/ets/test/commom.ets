@@ -22,11 +22,11 @@ const ENTINFO1: adminManager.EnterpriseInfo = {
 };
 
 const SELFWANT: Want = {
-  bundleName: "com.example.myapplication",
+  bundleName: "com.edm.acts.network",
   abilityName: "com.example.myapplication.EnterpriseAdminAbility"
 };
 
-const SELFHAPNAME = "com.example.myapplication"
+const SELFHAPNAME = "com.edm.acts.network"
 const NETWORK_ETH_LOCAL = "lo";
 const NETWORK_ETH_INVALID = "eth4";
 

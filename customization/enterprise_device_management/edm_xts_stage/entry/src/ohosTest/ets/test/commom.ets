@@ -30,7 +30,7 @@ const ENTINFO1: adminManager.EnterpriseInfo = {
 };
 
 const SELFWANT: Want = {
-  bundleName: "com.example.myapplication",
+  bundleName: "com.edm.acts.normal",
   abilityName: "com.example.myapplication.EnterpriseAdminAbility"
 };
 
@@ -39,7 +39,7 @@ const INVALID_WANT: Want = {
 }
 
 const AUTOSTARTAPP1: Want = {
-  bundleName: "com.example.myapplication",
+  bundleName: "com.edm.acts.normal",
   abilityName: "com.example.myapplication.MainAbility"
 };
 
@@ -47,7 +47,7 @@ const AUTOSTARTAPP2: Want = {
   bundleName: "com.example.extensionzerotest",
   abilityName: "com.example.extensionzerotest.MainAbility"
 };
-const SELFHAPNAME = "com.example.myapplication"
+const SELFHAPNAME = "com.edm.acts.normal"
 const COMPANYNAME2 = "company2"
 const DESCRIPTION2 = "edm demo2"
 const NOT_EXIST_BUNDLE = "bundle.not.exist"
