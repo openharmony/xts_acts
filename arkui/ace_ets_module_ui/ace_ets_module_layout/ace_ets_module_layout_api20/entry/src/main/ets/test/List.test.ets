@@ -16,8 +16,28 @@ import FlexLayoutPolicyTest from './Flex/FlexLayoutPolicyTest.test.ets'
 import GridRowNoColumnsTest from './GridRow/GridRowNoColumnsTest.test.ets'
 import LayoutInspectorTest from './inspector/layoutInspector.test.ets'
 
+import ColumnMatchParentTest from './Column/ColumnMatchParentTest.ets'
+import ColumnWrapContentTest from './Column/ColumnWrapContentTest.ets'
+import FlexWrapContentTest from './Flex/FlexWrapContentTest.ets'
+import RowMatchParentTest from './Row/RowMatchParentTest.ets'
+import RowWrapContentTest from './Row/RowWrapContentTest.ets'
+import FolderStackMatchParentTest from './Stack/FolderStackMatchParentTest.ets'
+import StackMatchParentTest from './Stack/StackMatchParentTest.ets'
+import StackWrapContentTest from './Stack/StackWrapContentTest.ets'
+
+
 export default function testsuite() {
   FlexLayoutPolicyTest();
   GridRowNoColumnsTest();
+
+  ColumnMatchParentTest();
+  ColumnWrapContentTest();
+  FlexWrapContentTest();
+  RowMatchParentTest();
+  RowWrapContentTest();
+  FolderStackMatchParentTest();
+  StackMatchParentTest();
+  StackWrapContentTest();
   LayoutInspectorTest();
+
 }
