@@ -153,8 +153,10 @@ export default function ImageAdvancedTest() {
       console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0300] component obj2 is: " + JSON.stringify(obj2));
       console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0300] obj2.$attrs.content is: " + obj2.$attrs.content);
       console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0300] vp2px(10): " + vp2px(10));
+      let round = Math.round(vp2px(10))
+      let vp2px10 = Math.abs(vp2px(10) - round) < 0.001 ? round : Math.floor(vp2px(10))
       let contentHeigt = Number(obj1.$attrs.content)
-      let imageContentHeight = vp2px(100) - Math.floor(vp2px(10)) * 2
+      let imageContentHeight = vp2px(100) - vp2px10 * 2
       expect(Math.abs(contentHeigt - imageContentHeight) <= 1).assertTrue();
       expect(Math.abs(Number(obj2.$attrs.content) - vp2px(10)) <= 1).assertTrue();
       done();
@@ -211,8 +213,10 @@ export default function ImageAdvancedTest() {
       console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0320] component obj2 is: " + JSON.stringify(obj2));
       console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0320] obj2.$attrs.content is: " + obj2.$attrs.content);
       console.info("[SUB_ACE_UI_COMPONENT_MEDIA_IMAGE_SIZE_0320] vp2px(10): " + vp2px(10));
+      let round = Math.round(vp2px(10))
+      let vp2px10 = Math.abs(vp2px(10) - round) < 0.001 ? round : Math.floor(vp2px(10))
       let contentHeigt = Number(obj1.$attrs.content)
-      let imageContentHeight = vp2px(100) - Math.floor(vp2px(10)) * 2
+      let imageContentHeight = vp2px(100) - vp2px10 * 2
       expect(Math.abs(contentHeigt - imageContentHeight) <= 1).assertTrue();
       expect(Math.abs(Number(obj2.$attrs.content) - vp2px(10)) <= 1).assertTrue();
       done();
