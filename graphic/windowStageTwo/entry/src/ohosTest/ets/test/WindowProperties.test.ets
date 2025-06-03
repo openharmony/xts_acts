@@ -23,6 +23,7 @@ import settings from '@ohos.settings';
 import { image } from '@kit.ImageKit';
 import { StartOptions } from '@kit.AbilityKit';
 import { display } from '@kit.ArkUI';
+import pipWindow from '@ohos.PiPWindow';
 
 let sleep = (sleepMs: number) => new Promise<string>(resolve => setTimeout(resolve, sleepMs));
 
@@ -4499,7 +4500,7 @@ export default function windowPropertiesTest() {
             }
           });
         } catch (error) {
-          console.error('Failed2 to create the subwindow. Cause: ' + JSON.stringify(error));
+          console.error(msgStr + ' Failed2 to create the subwindow. Cause: ' + JSON.stringify(error));
           if (subWindowClass !== undefined) {
             await subWindowClass.destroyWindow();
           }
@@ -4569,7 +4570,7 @@ export default function windowPropertiesTest() {
             }
           });
         } catch (error) {
-          console.error('Failed2 to create the subwindow. Cause: ' + JSON.stringify(error));
+          console.error(msgStr + ' Failed2 to create the subwindow. Cause: ' + JSON.stringify(error));
           if (subWindowClass !== undefined) {
             await subWindowClass.destroyWindow();
           }
@@ -4582,6 +4583,41 @@ export default function windowPropertiesTest() {
           }
         }
       })
+
+
+      // /**
+      //  * @tc.number    : SUB_BASIC_WMS_GETWINDOWPROPERTIES_WINDOWTYPE_0100
+      //  * @tc.name      : test_GETWINDOWPROPERTIES_WINDOWTYPE_0100
+      //  * @tc.desc      : 查询悬浮窗窗口类型
+      //  * @tc.size      : MediumTest
+      //  * @tc.type      : Function
+      //  * @tc.level     : Level0
+      //  */
+      // it('test_GETWINDOWPROPERTIES_WINDOWTYPE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async(done: Function) => {
+      //   let msgStr = ' test_GETWINDOWPROPERTIES_WINDOWTYPE_0100 ';
+      //   console.info(msgStr + ' begin ');
+      //   let subWindowClass: window.Window | undefined;
+      //   let config: window.Configuration = {
+      //     name: "floatWindow",
+      //     windowType: window.WindowType.TYPE_FLOAT,
+      //     ctx: context
+      //   };
+      //   try {
+      //     subWindowClass = await window.createWindow(config);
+      //     let windowProperties = subWindowClass.getWindowProperties()
+      //     console.info(`${msgStr} windowProperties: ${JSON.stringify(windowProperties)}`);
+      //     expect(windowProperties.type).assertEqual(window.WindowType.TYPE_FLOAT);
+      //     await subWindowClass.destroyWindow();
+      //     done();
+      //   } catch (error) {
+      //     console.error('Failed to create the subwindow. Cause: ' + JSON.stringify(error));
+      //     if (subWindowClass !== undefined) {
+      //       await subWindowClass.destroyWindow();
+      //     }
+      //     expect().assertFail();
+      //     done();
+      //   }
+      // })
 
       /**
        * @tc.number    : SUB_BASIC_WMS_GETWINDOWPROPERTIES_WINDOWTYPE_0200
@@ -4608,7 +4644,7 @@ export default function windowPropertiesTest() {
           await subWindowClass.destroyWindow();
           done();
         } catch (error) {
-          console.error('Failed to create the subwindow. Cause: ' + JSON.stringify(error));
+          console.error(msgStr + ' Failed to create the subwindow. Cause: ' + JSON.stringify(error));
           if (subWindowClass !== undefined) {
             await subWindowClass.destroyWindow();
           }
@@ -4650,7 +4686,7 @@ export default function windowPropertiesTest() {
             }
           });
         } catch (error) {
-          console.error('Failed. Cause: ' + JSON.stringify(error));
+          console.error(msgStr + ' Failed. Cause: ' + JSON.stringify(error));
           expect().assertFail();
           done();
         }
@@ -4689,7 +4725,7 @@ export default function windowPropertiesTest() {
             }
           });
         } catch (error) {
-          console.error('Failed. Cause: ' + JSON.stringify(error));
+          console.error(msgStr + ' Failed. Cause: ' + JSON.stringify(error));
           expect().assertFail();
           done();
         }
@@ -4728,7 +4764,7 @@ export default function windowPropertiesTest() {
             }
           });
         } catch (error) {
-          console.error('Failed. Cause: ' + JSON.stringify(error));
+          console.error(msgStr + ' Failed. Cause: ' + JSON.stringify(error));
           expect().assertFail();
           done();
         }
@@ -4767,7 +4803,7 @@ export default function windowPropertiesTest() {
             }
           });
         } catch (error) {
-          console.error('Failed. Cause: ' + JSON.stringify(error));
+          console.error(msgStr + ' Failed. Cause: ' + JSON.stringify(error));
           expect().assertFail();
           done();
         }
@@ -4796,7 +4832,7 @@ export default function windowPropertiesTest() {
           expect(windowProperties2.isLayoutFullScreen).assertEqual(false);
           done();
         } catch (error) {
-          console.error('Failed. Cause: ' + JSON.stringify(error));
+          console.error(msgStr + ' Failed. Cause: ' + JSON.stringify(error));
           expect().assertFail();
           done();
         }
@@ -4847,7 +4883,7 @@ export default function windowPropertiesTest() {
             }
           });
         } catch (error) {
-          console.error('Failed. Cause: ' + JSON.stringify(error));
+          console.error(msgStr + ' Failed. Cause: ' + JSON.stringify(error));
           expect().assertFail();
           done();
         }
@@ -4901,7 +4937,7 @@ export default function windowPropertiesTest() {
             }
           });
         } catch (error) {
-          console.error('Failed. Cause: ' + JSON.stringify(error));
+          console.error(msgStr + ' Failed. Cause: ' + JSON.stringify(error));
           await windowClass.destroyWindow();
           expect().assertFail();
           done();
@@ -4961,7 +4997,7 @@ export default function windowPropertiesTest() {
             }
           });
         } catch (error) {
-          console.error('Failed. Cause: ' + JSON.stringify(error));
+          console.error(msgStr + ' Failed. Cause: ' + JSON.stringify(error));
           await windowClass.destroyWindow();
           expect().assertFail();
           done();
@@ -5013,7 +5049,7 @@ export default function windowPropertiesTest() {
             }
           });
         } catch (error) {
-          console.error('Failed. Cause: ' + JSON.stringify(error));
+          console.error(msgStr + ' Failed. Cause: ' + JSON.stringify(error));
           expect().assertFail();
           done();
         }
@@ -5067,7 +5103,7 @@ export default function windowPropertiesTest() {
             }
           });
         } catch (error) {
-          console.error('Failed. Cause: ' + JSON.stringify(error));
+          console.error(msgStr + ' Failed. Cause: ' + JSON.stringify(error));
           await windowClass.destroyWindow();
           expect().assertFail();
           done();
@@ -5127,7 +5163,7 @@ export default function windowPropertiesTest() {
             }
           });
         } catch (error) {
-          console.error('Failed. Cause: ' + JSON.stringify(error));
+          console.error(msgStr + ' Failed. Cause: ' + JSON.stringify(error));
           await windowClass.destroyWindow();
           expect().assertFail();
           done();
@@ -5202,7 +5238,7 @@ export default function windowPropertiesTest() {
           await subWindowClass2.destroyWindow()
           done();
         } catch (error) {
-          console.error('Failed. Cause: ' + JSON.stringify(error));
+          console.error(msgStr + ' Failed. Cause: ' + JSON.stringify(error));
           if (subWindowClass1 !== undefined) {
             await subWindowClass1.destroyWindow()
           }
@@ -5236,7 +5272,7 @@ export default function windowPropertiesTest() {
           await terminateAbility3(msgStr);
           done();
         } catch (error) {
-          console.error('Failed. Cause: ' + JSON.stringify(error));
+          console.error(msgStr + ' Failed. Cause: ' + JSON.stringify(error));
           await terminateAbility3(msgStr);
           expect().assertFail();
           done();
@@ -5288,7 +5324,7 @@ export default function windowPropertiesTest() {
             }
           });
         } catch (error) {
-          console.error('Failed. Cause: ' + JSON.stringify(error));
+          console.error(msgStr + ' Failed. Cause: ' + JSON.stringify(error));
           expect().assertFail();
           done();
         }
@@ -5342,7 +5378,7 @@ export default function windowPropertiesTest() {
             }
           });
         } catch (error) {
-          console.error('Failed. Cause: ' + JSON.stringify(error));
+          console.error(msgStr + ' Failed. Cause: ' + JSON.stringify(error));
           await windowClass.destroyWindow();
           expect().assertFail();
           done();
@@ -5402,7 +5438,7 @@ export default function windowPropertiesTest() {
             }
           });
         } catch (error) {
-          console.error('Failed. Cause: ' + JSON.stringify(error));
+          console.error(msgStr + ' Failed. Cause: ' + JSON.stringify(error));
           await windowClass.destroyWindow();
           expect().assertFail();
           done();
@@ -5454,7 +5490,7 @@ export default function windowPropertiesTest() {
             }
           });
         } catch (error) {
-          console.error('Failed. Cause: ' + JSON.stringify(error));
+          console.error(msgStr + ' Failed. Cause: ' + JSON.stringify(error));
           expect().assertFail();
           done();
         }
@@ -5508,7 +5544,7 @@ export default function windowPropertiesTest() {
             }
           });
         } catch (error) {
-          console.error('Failed. Cause: ' + JSON.stringify(error));
+          console.error(msgStr + ' Failed. Cause: ' + JSON.stringify(error));
           await windowClass.destroyWindow();
           expect().assertFail();
           done();
@@ -5568,7 +5604,7 @@ export default function windowPropertiesTest() {
             }
           });
         } catch (error) {
-          console.error('Failed. Cause: ' + JSON.stringify(error));
+          console.error(msgStr + ' Failed. Cause: ' + JSON.stringify(error));
           await windowClass.destroyWindow();
           expect().assertFail();
           done();
@@ -5600,7 +5636,7 @@ export default function windowPropertiesTest() {
           expect(windowProperties2.isTransparent).assertEqual(false);
           done();
         } catch (error) {
-          console.error('Failed. Cause: ' + JSON.stringify(error));
+          console.error(msgStr + ' Failed. Cause: ' + JSON.stringify(error));
           expect().assertFail();
           done();
         }
@@ -5617,8 +5653,9 @@ export default function windowPropertiesTest() {
       it('test_GETWINDOWPROPERTIES_TRANSPARENT_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async(done: Function) => {
         let msgStr = ' test_GETWINDOWPROPERTIES_TRANSPARENT_0200 ';
         console.info(msgStr + ' begin ');
-        const windowClass = await windowStage.createSubWindow('test_GETWINDOWPROPERTIES_TRANSPARENT_0200');
+
         try {
+          const windowClass = await windowStage.createSubWindow('test_GETWINDOWPROPERTIES_TRANSPARENT_0200');
           windowClass.setWindowBackgroundColor('#0000FF00');
           console.error('Succeeded in setWindowBackgroundColor.');
           let windowProperties = windowClass!.getWindowProperties()
@@ -5632,8 +5669,7 @@ export default function windowPropertiesTest() {
           await windowClass.destroyWindow();
           done();
         } catch (error) {
-          console.error('Failed. Cause: ' + JSON.stringify(error));
-          await windowClass.destroyWindow();
+          console.error(msgStr + ' Failed. Cause: ' + JSON.stringify(error));
           expect().assertFail();
           done();
         }
@@ -5670,7 +5706,7 @@ export default function windowPropertiesTest() {
           await windowClass.destroyWindow();
           done();
         } catch (error) {
-          console.error('Failed. Cause: ' + JSON.stringify(error));
+          console.error(msgStr + ' Failed. Cause: ' + JSON.stringify(error));
           await windowClass.destroyWindow();
           expect().assertFail();
           done();
@@ -5706,7 +5742,7 @@ export default function windowPropertiesTest() {
           subWindowClass.destroyWindow();
           done()
         } catch (error) {
-          console.error('Failed. Cause: ' + JSON.stringify(error));
+          console.error(msgStr + ' Failed. Cause: ' + JSON.stringify(error));
           if (subWindowClass !== undefined) {
             subWindowClass.destroyWindow();
           }
@@ -5735,7 +5771,7 @@ export default function windowPropertiesTest() {
           expect(displayId).assertLargerOrEqual(0)
           done()
         } catch (error) {
-          console.error('Failed. Cause: ' + JSON.stringify(error));
+          console.error(msgStr + ' Failed. Cause: ' + JSON.stringify(error));
           expect().assertFail();
           done();
         }
@@ -5761,7 +5797,7 @@ export default function windowPropertiesTest() {
           expect(name?.length).assertEqual(0);
           done()
         } catch (error) {
-          console.error('Failed. Cause: ' + JSON.stringify(error));
+          console.error(msgStr + ' Failed. Cause: ' + JSON.stringify(error));
           expect().assertFail();
           done();
         }
@@ -5808,7 +5844,7 @@ export default function windowPropertiesTest() {
             }
           });
         } catch (error) {
-          console.error('Failed2 to create the subwindow. Cause: ' + JSON.stringify(error));
+          console.error(msgStr + ' Failed2 to create the subwindow. Cause: ' + JSON.stringify(error));
           if (subWindowClass !== undefined) {
             await subWindowClass.destroyWindow();
           }
@@ -5821,6 +5857,42 @@ export default function windowPropertiesTest() {
           }
         }
       })
+
+      // /**
+      //  * @tc.number    : SUB_BASIC_WMS_GETWINDOWPROPERTIES_NAME_0300
+      //  * @tc.name      : test_GETWINDOWPROPERTIES_NAME_0300
+      //  * @tc.desc      : float窗查询name
+      //  * @tc.size      : MediumTest
+      //  * @tc.type      : Function
+      //  * @tc.level     : Level1
+      //  */
+      // it('test_GETWINDOWPROPERTIES_NAME_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async(done: Function) => {
+      //   let msgStr = ' test_GETWINDOWPROPERTIES_NAME_0300 ';
+      //   console.info(msgStr + ' begin ');
+      //   let subWindowClass: window.Window | undefined;
+      //   let config: window.Configuration = {
+      //     name: "testWindowPropertiesFloatWindow",
+      //     windowType: window.WindowType.TYPE_FLOAT,
+      //     ctx: context
+      //   };
+      //   try {
+      //     subWindowClass = await window.createWindow(config);
+      //     let windowProperties = subWindowClass.getWindowProperties()
+      //     console.info(`${msgStr} windowProperties: ${JSON.stringify(windowProperties)}`);
+      //     let name = windowProperties.name;
+      //     console.info(`${msgStr} name: ${JSON.stringify(name)}`);
+      //     expect(name).assertEqual('testWindowPropertiesFloatWindow');
+      //     await subWindowClass.destroyWindow();
+      //     done();
+      //   } catch (error) {
+      //     console.error('Failed to create the subwindow. Cause: ' + JSON.stringify(error));
+      //     if (subWindowClass !== undefined) {
+      //       await subWindowClass.destroyWindow();
+      //     }
+      //     expect().assertFail();
+      //     done();
+      //   }
+      // })
 
       /**
        * @tc.number    : SUB_BASIC_WMS_GETWINDOWPROPERTIES_NAME_0400
@@ -5849,7 +5921,7 @@ export default function windowPropertiesTest() {
           await subWindowClass.destroyWindow();
           done();
         } catch (error) {
-          console.error('Failed to create the subwindow. Cause: ' + JSON.stringify(error));
+          console.error(msgStr + ' Failed to create the subwindow. Cause: ' + JSON.stringify(error));
           if (subWindowClass !== undefined) {
             await subWindowClass.destroyWindow();
           }
@@ -5900,7 +5972,7 @@ export default function windowPropertiesTest() {
           await subWindowClass.destroyWindow();
           done();
         } catch (error) {
-          console.error('Failed to create the subwindow. Cause: ' + JSON.stringify(error));
+          console.error(msgStr + ' Failed to create the subwindow. Cause: ' + JSON.stringify(error));
           if (subWindowClass !== undefined) {
             await subWindowClass.destroyWindow();
           }
@@ -5950,7 +6022,7 @@ export default function windowPropertiesTest() {
           await terminateAbility3(msgStr);
           done();
         } catch (error) {
-          console.error('Failed to create the subwindow. Cause: ' + JSON.stringify(error));
+          console.error(msgStr + ' Failed to create the subwindow. Cause: ' + JSON.stringify(error));
           await terminateAbility3(msgStr);
           expect().assertFail();
           done();

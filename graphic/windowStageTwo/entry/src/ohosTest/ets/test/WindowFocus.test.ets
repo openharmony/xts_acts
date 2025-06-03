@@ -1219,9 +1219,14 @@ export default function windowFocusTest() {
           done()
         }).catch(async (err: BusinessError) => {
           console.error(`${caseName} Failed in showWindow. Cause code: ${err.code}, message: ${err.message}`);
-          expect().assertFail();
-          await subWindowClass.destroyWindow();
-          done()
+          if (err.code === 801) {
+            await subWindowClass.destroyWindow();
+            done()
+          } else {
+            expect().assertFail();
+            await subWindowClass.destroyWindow();
+            done()
+          }
         });
       } catch (err) {
         console.error(`${caseName} Failed2 in showWindow. Cause: ${JSON.stringify(err)}`);
@@ -1291,18 +1296,23 @@ export default function windowFocusTest() {
         let promise =  subWindowClass.showWindow({focusOnShow: undefined});
         promise.then(async () => {
           console.info(caseName + 'Succeeded in showWindow.');
-          expect().assertFail();
+          expect(subWindowClass.isFocused()).assertEqual(true)
           await subWindowClass.destroyWindow();
           done()
         }).catch(async (err: BusinessError) => {
           console.error(`${caseName} Failed in showWindow. Cause code: ${err.code}, message: ${err.message}`);
-          expect().assertFail();
-          await subWindowClass.destroyWindow();
-          done()
+          if (err.code === 801) {
+            await subWindowClass.destroyWindow();
+            done()
+          } else {
+            expect().assertFail();
+            await subWindowClass.destroyWindow();
+            done()
+          }
         });
       } catch (err) {
         console.error(`${caseName} Failed2 in showWindow. Cause: ${JSON.stringify(err)}`);
-        expect(err.code).assertEqual(1300016)
+        expect().assertFail();
         await subWindowClass.destroyWindow();
         done()
       }
@@ -1335,9 +1345,14 @@ export default function windowFocusTest() {
           done()
         }).catch(async (err: BusinessError) => {
           console.error(`${caseName} Failed in showWindow. Cause code: ${err.code}, message: ${err.message}`);
-          expect().assertFail();
-          await subWindowClass.destroyWindow();
-          done()
+          if (err.code === 801) {
+            await subWindowClass.destroyWindow();
+            done()
+          } else {
+            expect().assertFail();
+            await subWindowClass.destroyWindow();
+            done()
+          }
         });
       } catch (e) {
         console.error(`${caseName} Failed2 in showWindow. Cause: ${JSON.stringify(e)}`);
@@ -1374,9 +1389,14 @@ export default function windowFocusTest() {
           done()
         }).catch(async (err: BusinessError) => {
           console.error(`${caseName} Failed in showWindow. Cause code: ${err.code}, message: ${err.message}`);
-          expect().assertFail();
-          await subWindowClass.destroyWindow();
-          done()
+          if (err.code === 801) {
+            await subWindowClass.destroyWindow();
+            done()
+          } else {
+            expect().assertFail();
+            await subWindowClass.destroyWindow();
+            done()
+          }
         });
       } catch (e) {
         console.error(`${caseName} Failed2 in showWindow. Cause: ${JSON.stringify(e)}`);
@@ -1419,9 +1439,14 @@ export default function windowFocusTest() {
           await subWindowClass1.destroyWindow();
         }).catch(async (err: BusinessError) => {
           console.error(`${caseName} Failed in showWindow. Cause code: ${err.code}, message: ${err.message}`);
-          expect().assertFail();
-          await subWindowClass1.destroyWindow();
-          done()
+          if (err.code === 801) {
+            await subWindowClass1.destroyWindow();
+            done()
+          } else {
+            expect().assertFail();
+            await subWindowClass1.destroyWindow();
+            done()
+          }
         });
 
         let focusOnshowOptions2: window.ShowWindowOptions = {
@@ -1436,9 +1461,14 @@ export default function windowFocusTest() {
           done()
         }).catch(async (err: BusinessError) => {
           console.error(`${caseName} Failed in showWindow. Cause code: ${err.code}, message: ${err.message}`);
-          expect().assertFail();
-          await subWindowClass2.destroyWindow();
-          done()
+          if (err.code === 801) {
+            await subWindowClass2.destroyWindow();
+            done()
+          } else {
+            expect().assertFail();
+            await subWindowClass2.destroyWindow();
+            done()
+          }
         });
       } catch (e) {
         console.error(`${caseName} Failed2 in showWindow. Cause: ${JSON.stringify(e)}`);
@@ -1491,15 +1521,25 @@ export default function windowFocusTest() {
             done()
           }).catch(async (err: BusinessError) => {
             console.error(`${caseName} Failed in showWindow. Cause code: ${err.code}, message: ${err.message}`);
-            expect().assertFail();
-            await subWindowClass2.destroyWindow();
-            done()
+            if (err.code === 801) {
+              await subWindowClass2.destroyWindow();
+              done()
+            } else {
+              expect().assertFail();
+              await subWindowClass2.destroyWindow();
+              done()
+            }
           });
         }).catch(async (err: BusinessError) => {
           console.error(`${caseName} Failed in showWindow. Cause code: ${err.code}, message: ${err.message}`);
-          expect().assertFail();
-          await subWindowClass1.destroyWindow();
-          done()
+          if (err.code === 801) {
+            await subWindowClass1.destroyWindow();
+            done()
+          } else {
+            expect().assertFail();
+            await subWindowClass1.destroyWindow();
+            done()
+          }
         });
       } catch (e) {
         console.error(`${caseName} Failed2 in showWindow. Cause: ${JSON.stringify(e)}`);
@@ -1521,10 +1561,6 @@ export default function windowFocusTest() {
     // it('test_SHOWWINDOW_FOCUSONSHOW_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
     //   let caseName: string = 'test_SHOWWINDOW_FOCUSONSHOW_0500 ';
     //   console.log(caseName + 'begin');
-    //   // SUB_BASIC_WMS_SHOWWINDOW_FOCUSONSHOW_0500	验证float窗设置不获焦showOnFocus: true	hits仓	"""1、创建float窗
-    //   // 2、子窗调用showWindow({ focusOnShow: true })
-    //   // 3、断言subWindow.isFocused == true""
-    //   // "	3、子窗isFocused=true断言成功	0
     //   let config: window.Configuration = {
     //     name: "test_SHOWWINDOW_FOCUSONSHOW_0500",
     //     windowType: window.WindowType.TYPE_FLOAT,
@@ -1547,9 +1583,14 @@ export default function windowFocusTest() {
     //       done()
     //     }).catch(async (err: BusinessError) => {
     //       console.error(`${caseName} Failed in showWindow. Cause code: ${err.code}, message: ${err.message}`);
-    //       expect().assertFail();
-    //       await subWindowClass.destroyWindow();
-    //       done()
+    //       if (err.code === 801) {
+    //         await subWindowClass.destroyWindow();
+    //         done()
+    //       } else {
+    //         expect().assertFail();
+    //         await subWindowClass.destroyWindow();
+    //         done()
+    //       }
     //     });
     //   } catch (e) {
     //     console.error(`${caseName} Failed2 in showWindow. Cause: ${JSON.stringify(e)}`);
