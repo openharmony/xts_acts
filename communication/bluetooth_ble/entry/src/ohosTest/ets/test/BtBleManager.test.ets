@@ -614,7 +614,7 @@ function wrDescriptorVal() {
               }).catch((err : BusinessError) => {
                 console.info('bluetooth getRssiValue has error: '+ JSON.stringify(err));
                 let b=false;
-                if(err.code==2900099||err.code==-1)
+                if(err.code==2901003||err.code==-1)
                 {
                   b=true
                 }
@@ -627,7 +627,7 @@ function wrDescriptorVal() {
                 console.info('[bluetooth_js]getRssiValue is not support');
                 expect(true).assertTrue();
               } else {
-                expect(Number(error.code)).assertEqual(2900099);
+                expect(Number(error.code)).assertEqual(2901003);
               }
             }
             done();
@@ -648,7 +648,7 @@ function wrDescriptorVal() {
               })
                 .catch((e : BusinessError) => {
                   console.info("[bluetooth_js]02 getRssiValue failed" + e);
-                  expect(2900099).assertEqual(Number(e));
+                  expect(2901003).assertEqual(Number(e));
                   done();
                 })
             } catch (error) {
@@ -657,7 +657,7 @@ function wrDescriptorVal() {
                 console.info('[bluetooth_js]getRssiValue is not support');
                 expect(true).assertTrue();
               } else {
-                expect(Number(error.code)).assertEqual(2900099);
+                expect(Number(error.code)).assertEqual(2901003);
               }
             }
             done();
