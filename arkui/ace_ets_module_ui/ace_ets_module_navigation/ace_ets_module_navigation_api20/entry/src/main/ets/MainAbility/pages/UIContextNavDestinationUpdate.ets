@@ -79,14 +79,14 @@ struct UniqueIdPageOne {
         .height('5%')
       Button('uiObserver.on')
         .onClick(() => {
-          this.getUIContext().getUIObserver().on('navDestinationUpdate', this.uniqueId, this.info1);
+          this.getUIContext().getUIObserver().on('navDestinationUpdateByUniqueId', this.uniqueId, this.info1);
         })
         .id('onId')
       Button('uiObserver.off')
         .onClick(() => {
           uiObserver.off('navDestinationUpdate');
           uiObserver.off('navDestinationUpdate', { navigationId: 'testId' });
-          this.getUIContext().getUIObserver().off('navDestinationUpdate', this.uniqueId, this.info1);
+          this.getUIContext().getUIObserver().off('navDestinationUpdateByUniqueId', this.uniqueId, this.info1);
           console.info('close getNavigationInfoByUniqueId: ', this.uniqueId);
         })
         .id('offId')
