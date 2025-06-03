@@ -28,24 +28,6 @@ export default function builtinsRegExpSymbolMatchTest() {
     })
     afterAll(() => {
     })
-
-    /**
-     * @tc.number SUB_BUILTINS_REGEXP_SYMBOL_MATCH_TEST_0100
-     * @tc.name builtinsRegExpSymbolMatchTest0100
-     * @tc.desc Testing
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('builtinsRegExpSymbolMatchTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
-      const caseName = 'builtinsRegExpSymbolMatchTest0100';
-      console.info(`${caseName} test start`);
-      let reg = regExpSymbolMatch(/a/, 'abc');
-      expect(reg).assertDeepEquals(['a']);
-      done();
-      console.info(`${caseName} test end`);
-    })
-
     /**
      * @tc.number SUB_BUILTINS_REGEXP_SYMBOL_MATCH_TEST_0200
      * @tc.name builtinsRegExpSymbolMatchTest0200

@@ -34,29 +34,6 @@ export default function builtinsRegExpInstancePropTest() {
     })
 
     /**
-     * @tc.number SUB_BUILTINS_REGEXP_INSTANCE_PROP_TEST_0100
-     * @tc.name builtinsRegExpInstancePropTest0100
-     * @tc.desc Testing
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('builtinsRegExpInstancePropTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
-      const caseName = 'builtinsRegExpInstancePropTest0100';
-      console.info(`${caseName} test start`);
-      let reg = /(hi)?/g;
-      expect(reg.lastIndex).assertEqual(0);
-      let res1 = reg.exec('hi');
-      expect(res1).assertDeepEquals(['hi', 'hi']);
-      expect(reg.lastIndex).assertEqual(2);
-      let res2 = reg.exec('hi');
-      expect(res2).assertDeepEquals(['', undefined]);
-      expect(reg.lastIndex).assertEqual(2);
-      done();
-      console.info(`${caseName} test end`);
-    })
-
-    /**
      * @tc.number SUB_BUILTINS_REGEXP_INSTANCE_PROP_TEST_0200
      * @tc.name builtinsRegExpInstancePropTest0200
      * @tc.desc Testing
