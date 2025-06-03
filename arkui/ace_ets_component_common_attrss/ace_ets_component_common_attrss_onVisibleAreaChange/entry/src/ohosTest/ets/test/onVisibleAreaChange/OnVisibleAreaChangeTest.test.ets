@@ -152,12 +152,6 @@ export default function onVisibleAreaChangeTest() {
 
   describe('OnVisibleAreaChangeTest', () => {
     CommonTest.initTest(pageConfig, supportView, testValues, null, async (data: ESObject) => {
-      //Get Information about the location of the target component before the change
-      let targetRectBefore: ESObject = Utils.getComponentRect(data.pageConfig.componentKey);
-      console.info('[' + data.caseTag + '] targetRectBefore: ' + targetRectBefore);
-
-      //Set value
-      AttrsManager.change(data.caseTag, data.testValue.setValue.leave);
       if (
         data.pageConfig.targetView == "RichText"
         ) {
@@ -165,6 +159,13 @@ export default function onVisibleAreaChangeTest() {
         } else {
         await Utils.sleep(1000)
         }
+      //Get Information about the location of the target component before the change
+      let targetRectBefore: ESObject = Utils.getComponentRect(data.pageConfig.componentKey);
+      console.info('[' + data.caseTag + '] targetRectBefore: ' + targetRectBefore);
+
+      //Set value
+      AttrsManager.change(data.caseTag, data.testValue.setValue.leave);
+      await Utils.sleep(1000)
       sendEventByKey('OnVisibleAreaChangeButton', 10, '');
       await Utils.sleep(4000);
 
@@ -175,13 +176,7 @@ export default function onVisibleAreaChangeTest() {
 
       //Set value
       AttrsManager.change(data.caseTag, data.testValue.setValue.enter);
-      if (
-        data.pageConfig.targetView == "RichText"
-        ) {
-        await Utils.sleep(4000)
-        } else {
-        await Utils.sleep(1000)
-        }
+      await Utils.sleep(1000)
       sendEventByKey('OnVisibleAreaChangeButton', 10, '');
       await Utils.sleep(4000);
 
