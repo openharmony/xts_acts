@@ -51,22 +51,18 @@ export default function ColumnMatchParentTest() {
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
 
-      let Column_parent: RectValue = CommonFunc.getComponentRect('Column2');
-      let Column_child: RectValue = CommonFunc.getComponentRect('Column1');
-      let Column_parent_width = Column_parent.right - Column_parent.left;
-      let Column_parent_height = Column_parent.bottom - Column_parent.top;
-      let Column_child_width = Column_child.right - Column_child.left;
-      let Column_child_height = Column_child.bottom - Column_child.top;
-      console.log('[ColumnMatchParentTest_0100] Column_parent_width is:' + Column_parent_width);
-      console.log('[ColumnMatchParentTest_0100] Column_parent_height is:' + Column_parent_height);
-      console.log('[ColumnMatchParentTest_0100] Column_child_width is:' + Column_child_width);
-      console.log('[ColumnMatchParentTest_0100] Column_child_height is:' + Column_child_height);
-      console.log('[ColumnMatchParentTest_0100] Column_width-v2px(70) is:' + Math.floor(Math.abs(Column_parent_width - Column_child_width - vp2px(70))));
-      console.log('[ColumnMatchParentTest_0100] Column_height-v2px(70) is:' + Math.floor(Math.abs(Column_parent_height - Column_child_height - vp2px(70))));
+      let column_parent: RectValue = CommonFunc.getComponentRect('Column2');
+      let column_child: RectValue = CommonFunc.getComponentRect('Column1');
       
-      // padding(20*2) + border(5*2) + safeAreaPadding(10*2)
-      expect(Math.floor(Math.abs(Column_parent_width - Column_child_width - vp2px(70))) <= 1).assertTrue();
-      expect(Math.floor(Math.abs(Column_parent_height - Column_child_height - vp2px(70))) <= 1).assertTrue();
+      // padding(20) + border(5) + safeAreaPadding(10)
+      console.log('[ColumnMatchParentTest_0100] column_child.left - column_parent.left - vp2px(35) is:' + (column_child.left - column_parent.left - vp2px(35)));
+      console.log('[ColumnMatchParentTest_0100] column_parent.right - column_child.right - vp2px(35) is:' + (column_parent.right - column_child.right - vp2px(35)));
+      console.log('[ColumnMatchParentTest_0100] column_child.top - column_parent.top - vp2px(35) is:' + (column_child.top - column_parent.top - vp2px(35)));
+      console.log('[ColumnMatchParentTest_0100] column_parent.bottom - column_child.bottom - vp2px(35) is:' + (column_parent.bottom - column_child.bottom - vp2px(35)));
+      expect(Math.floor(Math.abs(column_child.left - column_parent.left - vp2px(35))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(column_parent.right - column_child.right - vp2px(35))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(column_child.top - column_parent.top - vp2px(35))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(column_parent.bottom - column_child.bottom - vp2px(35))) <= 1).assertTrue();
 
       console.info('[ColumnMatchParentTest_0100] END');
       done();

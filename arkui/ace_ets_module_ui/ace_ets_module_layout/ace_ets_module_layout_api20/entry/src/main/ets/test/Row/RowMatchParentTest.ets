@@ -51,22 +51,18 @@ export default function RowMatchParentTest() {
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
 
-      let Row_parent: RectValue = CommonFunc.getComponentRect('Row2');
-      let Row_child: RectValue = CommonFunc.getComponentRect('Row1');
-      let Row_parent_width = Row_parent.right - Row_parent.left;
-      let Row_parent_height = Row_parent.bottom - Row_parent.top;
-      let Row_child_width = Row_child.right - Row_child.left;
-      let Row_child_height = Row_child.bottom - Row_child.top;
-      console.log('[RowMatchParentTest_0100] Row_parent_width is:' + Row_parent_width);
-      console.log('[RowMatchParentTest_0100] Row_parent_height is:' + Row_parent_height);
-      console.log('[RowMatchParentTest_0100] Row_child_width is:' + Row_child_width);
-      console.log('[RowMatchParentTest_0100] Row_child_height is:' + Row_child_height);
-      console.log('[RowMatchParentTest_0100] Row_width-v2px(70) is:' + Math.floor(Math.abs(Row_parent_width - Row_child_width - vp2px(70))));
-      console.log('[RowMatchParentTest_0100] Row_height-v2px(70) is:' + Math.floor(Math.abs(Row_parent_height - Row_child_height - vp2px(70))));
-      
-      // padding(20*2) + border(5*2) + safeAreaPadding(10*2)
-      expect(Math.floor(Math.abs(Row_parent_width - Row_child_width - vp2px(70))) <= 1).assertTrue();
-      expect(Math.floor(Math.abs(Row_parent_height - Row_child_height - vp2px(70))) <= 1).assertTrue();
+      let row_parent: RectValue = CommonFunc.getComponentRect('Row2');
+      let row_child: RectValue = CommonFunc.getComponentRect('Row1');
+
+      // padding(20) + border(5) + safeAreaPadding(10)
+      console.log('[RowMatchParentTest_0100] row_child.left - row_parent.left - vp2px(35) is:' + (row_child.left - row_parent.left - vp2px(35)));
+      console.log('[RowMatchParentTest_0100] row_parent.right - row_child.right - vp2px(35) is:' + (row_parent.right - row_child.right - vp2px(35)));
+      console.log('[RowMatchParentTest_0100] row_child.top - row_parent.top - vp2px(35) is:' + (row_child.top - row_parent.top - vp2px(35)));
+      console.log('[RowMatchParentTest_0100] row_parent.bottom - row_child.bottom - vp2px(35) is:' + (row_parent.bottom - row_child.bottom - vp2px(35)));
+      expect(Math.floor(Math.abs(row_child.left - row_parent.left - vp2px(35))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(row_parent.right - row_child.right - vp2px(35))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(row_child.top - row_parent.top - vp2px(35))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(row_parent.bottom - row_child.bottom - vp2px(35))) <= 1).assertTrue();
 
       console.info('[RowMatchParentTest_0100] END');
       done();

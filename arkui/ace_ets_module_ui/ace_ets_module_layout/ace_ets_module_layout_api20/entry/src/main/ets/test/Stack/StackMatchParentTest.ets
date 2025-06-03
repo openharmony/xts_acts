@@ -53,20 +53,16 @@ export default function StackMatchParentTest() {
 
       let stack_parent: RectValue = CommonFunc.getComponentRect('Stack2');
       let stack_child: RectValue = CommonFunc.getComponentRect('Stack1');
-      let stack_parent_width = stack_parent.right - stack_parent.left;
-      let stack_parent_height = stack_parent.bottom - stack_parent.top;
-      let stack_child_width = stack_child.right - stack_child.left;
-      let stack_child_height = stack_child.bottom - stack_child.top;
-      console.log('[StackMatchParentTest_0100] stack_parent_width is:' + stack_parent_width);
-      console.log('[StackMatchParentTest_0100] stack_parent_height is:' + stack_parent_height);
-      console.log('[StackMatchParentTest_0100] stack_child_width is:' + stack_child_width);
-      console.log('[StackMatchParentTest_0100] stack_child_height is:' + stack_child_height);
-      console.log('[StackMatchParentTest_0100] stack_width-v2px(70) is:' + Math.floor(Math.abs(stack_parent_width - stack_child_width - vp2px(70))));
-      console.log('[StackMatchParentTest_0100] stack_height-v2px(70) is:' + Math.floor(Math.abs(stack_parent_height - stack_child_height - vp2px(70))));
-      
-      // padding(20*2) + border(5*2) + safeAreaPadding(10*2)
-      expect(Math.floor(Math.abs(stack_parent_width - stack_child_width - vp2px(70))) <= 1).assertTrue();
-      expect(Math.floor(Math.abs(stack_parent_height - stack_child_height - vp2px(70))) <= 1).assertTrue();
+
+      // padding(20) + border(5) + safeAreaPadding(10)
+      console.log('[StackMatchParentTest_0100] stack_child.left - stack_parent.left - vp2px(35) is:' + (stack_child.left - stack_parent.left - vp2px(35)));
+      console.log('[StackMatchParentTest_0100] stack_parent.right - stack_child.right - vp2px(35) is:' + (stack_parent.right - stack_child.right - vp2px(35)));
+      console.log('[StackMatchParentTest_0100] stack_child.top - stack_parent.top - vp2px(35) is:' + (stack_child.top - stack_parent.top - vp2px(35)));
+      console.log('[StackMatchParentTest_0100] stack_parent.bottom - stack_child.bottom - vp2px(35) is:' + (stack_parent.bottom - stack_child.bottom - vp2px(35)));
+      expect(Math.floor(Math.abs(stack_child.left - stack_parent.left - vp2px(35))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(stack_parent.right - stack_child.right - vp2px(35))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(stack_child.top - stack_parent.top - vp2px(35))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(stack_parent.bottom - stack_child.bottom - vp2px(35))) <= 1).assertTrue();
 
       console.info('[StackMatchParentTest_0100] END');
       done();
