@@ -165,7 +165,7 @@ export default function onVisibleAreaChangeTest() {
 
       //Set value
       AttrsManager.change(data.caseTag, data.testValue.setValue.leave);
-      await Utils.sleep(1000)
+      await Utils.sleep(1000);
       sendEventByKey('OnVisibleAreaChangeButton', 10, '');
       await Utils.sleep(4000);
 
@@ -176,7 +176,7 @@ export default function onVisibleAreaChangeTest() {
 
       //Set value
       AttrsManager.change(data.caseTag, data.testValue.setValue.enter);
-      await Utils.sleep(1000)
+      await Utils.sleep(1000);
       sendEventByKey('OnVisibleAreaChangeButton', 10, '');
       await Utils.sleep(4000);
 
