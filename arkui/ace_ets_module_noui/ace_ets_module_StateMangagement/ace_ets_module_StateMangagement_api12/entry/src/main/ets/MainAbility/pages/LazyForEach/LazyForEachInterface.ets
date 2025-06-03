@@ -160,7 +160,6 @@ struct LazyForEachInterface {
           .padding(5)
           .fontSize(12)
           .onClick(() => {
-            // this.data.pushData((this.data.totalCount() + 1).toString())
             for (let i = 1; i <= 15; i++) {
               this.data.pushData((this.data.totalCount() + 1).toString());
             }
@@ -217,7 +216,7 @@ struct ChildViewShow {
   @Link childInfo: string;
 
   aboutToReuse(params: Record<string, ESObject>) {
-    console.info("Recycle Child")
+    console.info('Recycle Child')
     this.childInfo = 'aboutToReuse'
     this.message = params.message as string
   }
