@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import systemAPITestAppManagerTest from './systemAPITestAppManager.test'
+import systemAPITestAppManagerTest from './SystemAPITestAppManager.test'
 
 export default function testsuite() {
   systemAPITestAppManagerTest()

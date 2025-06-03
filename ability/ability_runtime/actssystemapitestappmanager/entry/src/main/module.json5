@@ -19,9 +19,6 @@
     "description": "$string:module_desc",
     "mainElement": "EntryAbility",
     "deviceTypes": [
-      "default",
-      "tablet",
-      "wearable"
     ],
     "deliveryWithInstall": true,
     "installationFree": false,

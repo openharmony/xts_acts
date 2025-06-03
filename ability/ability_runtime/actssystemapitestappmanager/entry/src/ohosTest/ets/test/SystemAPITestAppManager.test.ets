@@ -27,8 +27,8 @@ export default function systemAPITestAppManagerTest() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StateInfo_SystemAPITestAppManager_0500
-     * @tc.name   : appManager.getProcessMemoryByPid callback
-     * @tc.desc   : Function test
+     * @tc.name   : SUB_Ability_AbilityRuntime_ABILITY_StateInfo_SystemAPITestAppManager_0500
+     * @tc.desc   : appManager.getProcessMemoryByPid callback
      * @tc.size:   MediumTest
      * @tc.type:   Function
      * @tc.level  : 0
@@ -57,8 +57,8 @@ export default function systemAPITestAppManagerTest() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StateInfo_SystemAPITestAppManager_0600
-     * @tc.name   : appManager.getProcessMemoryByPid promise
-     * @tc.desc   : Function test
+     * @tc.name   : SUB_Ability_AbilityRuntime_ABILITY_StateInfo_SystemAPITestAppManager_0600
+     * @tc.desc   : appManager.getProcessMemoryByPid promise
      * @tc.size:   MediumTest
      * @tc.type:   Function
      * @tc.level  : 0
@@ -84,8 +84,8 @@ export default function systemAPITestAppManagerTest() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StateInfo_SystemAPITestAppManager_0700
-     * @tc.name   : appManager.getRunningProcessInfoByBundleName callback
-     * @tc.desc   : Function test
+     * @tc.name   : SUB_Ability_AbilityRuntime_ABILITY_StateInfo_SystemAPITestAppManager_0700
+     * @tc.desc   : appManager.getRunningProcessInfoByBundleName callback
      * @tc.size:   MediumTest
      * @tc.type:   Function
      * @tc.level  : 0
@@ -115,8 +115,8 @@ export default function systemAPITestAppManagerTest() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StateInfo_SystemAPITestAppManager_0800
-     * @tc.name   : appManager.getRunningProcessInfoByBundleName promise
-     * @tc.desc   : Function test
+     * @tc.name   : SUB_Ability_AbilityRuntime_ABILITY_StateInfo_SystemAPITestAppManager_0800
+     * @tc.desc   : appManager.getRunningProcessInfoByBundleName promise
      * @tc.size:   MediumTest
      * @tc.type:   Function
      * @tc.level  : 0
@@ -143,8 +143,8 @@ export default function systemAPITestAppManagerTest() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StateInfo_SystemAPITestAppManager_0900
-     * @tc.name   : appManager.getRunningProcessInfoByBundleName callback with userId
-     * @tc.desc   : Function test
+     * @tc.name   : SUB_Ability_AbilityRuntime_ABILITY_StateInfo_SystemAPITestAppManager_0900
+     * @tc.desc   : appManager.getRunningProcessInfoByBundleName callback with userId
      * @tc.size:   MediumTest
      * @tc.type:   Function
      * @tc.level  : 0
@@ -175,8 +175,8 @@ export default function systemAPITestAppManagerTest() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StateInfo_SystemAPITestAppManager_1000
-     * @tc.name   : appManager.getRunningProcessInfoByBundleName promise with userId
-     * @tc.desc   : Function test
+     * @tc.name   : SUB_Ability_AbilityRuntime_ABILITY_StateInfo_SystemAPITestAppManager_1000
+     * @tc.desc   : appManager.getRunningProcessInfoByBundleName promise with userId
      * @tc.size:   MediumTest
      * @tc.type:   Function
      * @tc.level  : 0
