@@ -14,11 +14,11 @@
 */
 
 import notification from '@ohos.notification'
-import notificationManager from '@ohos.notificationManager'
 import { UiDriver, BY } from '@ohos.UiTest';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium'
 import image from '@ohos.multimedia.image'
 import wantAgent from '@ohos.wantAgent'
+import notificationManager from '@ohos.notificationManager'
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -48,6 +48,7 @@ export default function ActsNotificationPublishTest() {
     image.createPixelMap(picture_buffer, picture_opts, (err, pixelMap) => {
       if (err) {
         console.info(`${TAG} createPixelMap err: ${err}`)
+        expect(false).assertTrue()
       } else {
         if (notification_picture == undefined) {
           console.info(`${TAG} createPixelMap err: ${err}`)
@@ -87,6 +88,7 @@ export default function ActsNotificationPublishTest() {
     wantAgent.getWantAgent(WantAgentInfo, (err, data) => {
       if (err.code) {
         console.info(`${TAG} getWantAgent AsyncCallback err: ${err.code}`)
+        expect(false).assertTrue()
       } else {
         console.info(`${TAG} getWantAgent AsyncCallback success: ${JSON.stringify(data)}`)
         wantAgentData = data
