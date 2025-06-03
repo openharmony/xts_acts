@@ -909,7 +909,7 @@ export default function bluetoothAdvertisingTest() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_2000
-     * @tc.name testStartAdvertising
+     * @tc.name SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_2000
      * @tc.desc Test errorCode 2900010
      * @tc.type Function
      * @tc.size MediumTest
@@ -957,7 +957,7 @@ export default function bluetoothAdvertisingTest() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_2100
-     * @tc.name testStartAdvertisingPromise
+     * @tc.name SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_2100
      * @tc.desc Test errorCode 2900010
      * @tc.type Function
      * @tc.size MediumTest
@@ -1007,7 +1007,7 @@ export default function bluetoothAdvertisingTest() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_2200
-     * @tc.name testStartAdvertisingCallback
+     * @tc.name SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_2200
      * @tc.desc Test errorCode 2900010
      * @tc.type Function
      * @tc.size MediumTest
@@ -1073,7 +1073,7 @@ export default function bluetoothAdvertisingTest() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_2300
-     * @tc.name EnableAdvertisingApi20
+     * @tc.name SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_2300
      * @tc.desc Test errorCode 2902055
      * @tc.type Function
      * @tc.size MediumTest
@@ -1117,7 +1117,7 @@ export default function bluetoothAdvertisingTest() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_2400
-     * @tc.name EnableAdvertisingApi20
+     * @tc.name SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_2400
      * @tc.desc Test errorCode 2902055
      * @tc.type Function
      * @tc.size MediumTest
@@ -1146,7 +1146,7 @@ export default function bluetoothAdvertisingTest() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_2500
-     * @tc.name DisableAdvertisingApi20
+     * @tc.name SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_2500
      * @tc.desc Test errorCode 2902055
      * @tc.type Function
      * @tc.size MediumTest
@@ -1190,7 +1190,7 @@ export default function bluetoothAdvertisingTest() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_2600
-     * @tc.name DisableAdvertisingApi20
+     * @tc.name SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_2600
      * @tc.desc Test errorCode 2902055
      * @tc.type Function
      * @tc.size MediumTest
@@ -1219,7 +1219,7 @@ export default function bluetoothAdvertisingTest() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_2700
-     * @tc.name StopAdvertisingApi20
+     * @tc.name SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_2700
      * @tc.desc Test errorCode 2902055
      * @tc.type Function
      * @tc.size MediumTest
@@ -1260,7 +1260,7 @@ export default function bluetoothAdvertisingTest() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_2800
-     * @tc.name StopAdvertisingApi20
+     * @tc.name SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_2800
      * @tc.desc Test errorCode 2902055
      * @tc.type Function
      * @tc.size MediumTest
@@ -1285,7 +1285,7 @@ export default function bluetoothAdvertisingTest() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_2900
-     * @tc.name testStartAdvertising
+     * @tc.name SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_2900
      * @tc.desc Test errorCode 2902054
      * @tc.type Function
      * @tc.size MediumTest
@@ -1331,7 +1331,7 @@ export default function bluetoothAdvertisingTest() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_3000
-     * @tc.name StartAdvertisingApi20
+     * @tc.name SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_3000
      * @tc.desc Test errorCode 2902054
      * @tc.type Function
      * @tc.size MediumTest
@@ -1379,7 +1379,7 @@ export default function bluetoothAdvertisingTest() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_3100
-     * @tc.name StartAdvertisingApi20
+     * @tc.name SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_3100
      * @tc.desc Test errorCode 2902054
      * @tc.type Function
      * @tc.size MediumTest
