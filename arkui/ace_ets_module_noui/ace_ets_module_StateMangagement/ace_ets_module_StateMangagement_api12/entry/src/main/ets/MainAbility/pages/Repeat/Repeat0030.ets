@@ -16,8 +16,8 @@
 
 @ObservedV2
 class WaterFlowItemInfo {
-  @Trace name: string;
-  @Trace url: string;
+  @Trace public name: string;
+  @Trace public url: string;
 
   constructor(name: string, url: string) {
     this.name = name;
@@ -30,21 +30,21 @@ class WaterFlowItemInfo {
 struct Repeat0030 {
   @Local itemList: Array<WaterFlowItemInfo> = [];
   @Local swipeStartIndex: number = -1;
-  @Local repeat0030_1: string = "-1";
-  @Local repeat0030_2: string = "-1";
+  @Local repeat0030_1: string = '-1';
+  @Local repeat0030_2: string = '-1';
   @Local isLoading: boolean = true;
   @Local hasError: boolean = false;
   private imagesUrl: Array<string> = [
-    "https://consumer.huawei.com/content/dam/huawei-cbg-site/cn/mkt/launch/241126/plp/phones/new/huawei-phones-ai.jpg",
-    "https://consumer.huawei.com/content/dam/huawei-cbg-site/cn/mkt/launch/241126/plp/phones/new/huawei-phones-camera.jpg",
-    "https://consumer.huawei.com/content/dam/huawei-cbg-site/cn/mkt/launch/250320/plp/phones/pura-x-design.jpg",
-    "https://consumer.huawei.com/content/dam/huawei-cbg-site/cn/mkt/plp/new-phones/images/reason/huawei-phones-communication.jpeg"
+    'app.media.img1',
+    'app.media.img2',
+    'app.media.img3',
+    'app.media.img4'
   ]
   private scroller: Scroller = new Scroller();
 
   aboutToAppear(): void {
     for (let i = 0; i < 50; i++) {
-      this.itemList.push(new WaterFlowItemInfo("img" + i, this.imagesUrl[i % 4]));
+      this.itemList.push(new WaterFlowItemInfo('img' + i, this.imagesUrl[i % 4]));
     }
   }
 
@@ -53,16 +53,16 @@ struct Repeat0030 {
       Column() {
         Text("waterflow with repeat")
         Button('toIndex[2]')
-          .id("toIndex[2]")
+          .id('toIndex[2]')
           .onClick(() => {
             this.scroller.scrollToIndex(2)
           })
         Text(this.repeat0030_1)
-          .id("repeat0030_1")
+          .id('repeat0030_1')
         Text(this.repeat0030_2)
-          .id("repeat0030_2")
+          .id('repeat0030_2')
         Text(this.isLoading && !this.hasError ? "Normal display" : "Error display")
-          .id("display_status")
+          .id('display_status')
       }
 
       WaterFlow({ scroller: this.scroller }) {
@@ -70,7 +70,7 @@ struct Repeat0030 {
           .each((obj: RepeatItem<WaterFlowItemInfo>) => {
             FlowItem() {
               Stack() {
-                Image(obj.item.url)
+                Image($r(obj.item.url))
                   .onComplete(() => {
                     if (!this.hasError) {
                       this.isLoading = true
@@ -86,7 +86,7 @@ struct Repeat0030 {
                   .border({ width: 10 })
               }
             }
-            .height("100%")
+            .height('100%')
             .margin(10)
             .onAttach(() => {
               this.repeat0030_2 = obj.item.name;
@@ -97,7 +97,7 @@ struct Repeat0030 {
           })
           .virtualScroll({ totalCount: this.itemList.length })
       }
-      .columnsTemplate("1fr")
+      .columnsTemplate('1fr')
       .onScrollIndex((start: number, end: number) => {
         this.swipeStartIndex = start;
       })

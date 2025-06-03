@@ -57,13 +57,13 @@ export default function RepeatTest0030() {
       console.info('[RepeatTest0030_001] START');
       await CommonFunc.sleep(2000);
       let driver: Driver = Driver.create();
-      let btn: Component = await driver.findComponent(ON.id("toIndex[2]"));
+      let btn: Component = await driver.findComponent(ON.id('toIndex[2]'));
       await CommonFunc.sleep(1000);
       await btn.click();
       await CommonFunc.sleep(1000);
-      let text_1 = await (await driver.findComponent(ON.id("repeat0030_1"))).getText();
-      let text_2 = await (await driver.findComponent(ON.id("repeat0030_2"))).getText();
-      let display_status = await (await driver.findComponent(ON.id("display_status"))).getText();
+      let text_1 = await (await driver.findComponent(ON.id('repeat0030_1'))).getText();
+      let text_2 = await (await driver.findComponent(ON.id('repeat0030_2'))).getText();
+      let display_status = await (await driver.findComponent(ON.id('display_status'))).getText();
       console.info("[RepeatTest0030_001] component text_1: " + text_1 + "text2:" + text_2 + "display_status: " +
         display_status);
       expect(text_1).assertEqual("img0");

@@ -16,8 +16,8 @@
 
 @ObservedV2
 class SwiperItemInfo {
-  @Trace name: string;
-  @Trace url: string;
+  @Trace public name: string;
+  @Trace public url: string;
 
   constructor(name: string, url: string) {
     this.name = name;
@@ -30,21 +30,21 @@ class SwiperItemInfo {
 struct Repeat0400 {
   @Local itemList: Array<SwiperItemInfo> = [];
   @Local swipeStartIndex: number = -1;
-  @Local repeat0040_1: string = "-1";
-  @Local repeat0040_2: string = "-1";
+  @Local repeat0040_1: string = '-1';
+  @Local repeat0040_2: string = '-1';
   @Local isLoading: boolean = true;
   @Local hasError: boolean = false;
   private imagesUrl: Array<string> = [
-    "https://consumer.huawei.com/content/dam/huawei-cbg-site/cn/mkt/launch/241126/plp/phones/new/huawei-phones-ai.jpg",
-    "https://consumer.huawei.com/content/dam/huawei-cbg-site/cn/mkt/launch/241126/plp/phones/new/huawei-phones-camera.jpg",
-    "https://consumer.huawei.com/content/dam/huawei-cbg-site/cn/mkt/launch/250320/plp/phones/pura-x-design.jpg",
-    "https://consumer.huawei.com/content/dam/huawei-cbg-site/cn/mkt/plp/new-phones/images/reason/huawei-phones-communication.jpeg"
+    'app.media.img1',
+    'app.media.img2',
+    'app.media.img3',
+    'app.media.img4'
   ]
   private swiperController: SwiperController = new SwiperController();
 
   aboutToAppear(): void {
     for (let i = 0; i < 50; i++) {
-      this.itemList.push(new SwiperItemInfo("img" + i, this.imagesUrl[i % 4]));
+      this.itemList.push(new SwiperItemInfo('img' + i, this.imagesUrl[i % 4]));
     }
   }
 
@@ -54,23 +54,23 @@ struct Repeat0400 {
         Text("swiper with repeat")
 
         Button('toNext')
-          .id("toNext")
+          .id('toNext')
           .onClick(() => {
             this.swiperController.showNext()
           })
         Text(this.repeat0040_1)
-          .id("repeat0400_1")
+          .id('repeat0400_1')
         Text(this.repeat0040_2)
-          .id("repeat0400_2")
+          .id('repeat0400_2')
         Text(this.isLoading && !this.hasError ? "Normal display" : "Error display")
-          .id("display_status")
+          .id('display_status')
       }
 
       Swiper(this.swiperController) {
         Repeat<SwiperItemInfo>(this.itemList)
           .each((obj: RepeatItem<SwiperItemInfo>) => {
             Stack() {
-              Image(obj.item.url)
+              Image($r(obj.item.url))
                 .onComplete(() => {
                   if (!this.hasError) {
                     this.isLoading = true
