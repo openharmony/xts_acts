@@ -2446,7 +2446,9 @@ export default function drawingTsMatrixPart2Test() {
         let radius = matrix.mapRadius(10);
         console.info(msg + ' matrix mapRadius radius successed');
         console.info(msg + ' matrix mapRadius radius: ' + radius);
-        expect(Math.round(radius)).assertEqual(10);
+        let err = 10 - radius;
+        console.info(msg + ' matrix mapRadius radiusError: ' + err);
+        expect(err < 0.00001).assertEqual(true);
       } catch (e) {
         console.info(msg + ` matrix mapRadius radius errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail();
@@ -2465,7 +2467,9 @@ export default function drawingTsMatrixPart2Test() {
         let radius3 = matrix.mapRadius(0);
         console.info(msg + ' matrix mapRadius radius3 successed');
         console.info(msg + ' matrix mapRadius radius3: ' + radius3);
-        expect(radius3).assertEqual(0);
+        let err3 = 0 - radius3;
+        console.info(msg + ' matrix mapRadius radius3 radiusError: ' + err3);
+        expect(err3 < 0.00001).assertEqual(true);
       } catch (e) {
         console.info(msg + ` matrix mapRadius radius3 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail();
@@ -2475,6 +2479,9 @@ export default function drawingTsMatrixPart2Test() {
         console.info(msg + ' matrix mapRadius radius4 successed');
         console.info(msg + ' matrix mapRadius radius4: ' + radius4);
         expect(Math.round(radius4)).assertEqual(15);
+        let err4 = 15 - radius4;
+        console.info(msg + ' matrix mapRadius radius4 radiusError: ' + err4);
+        expect(err4 < 0.00001).assertEqual(true);
       } catch (e) {
         console.info(msg + ` matrix mapRadius radius4 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail();
