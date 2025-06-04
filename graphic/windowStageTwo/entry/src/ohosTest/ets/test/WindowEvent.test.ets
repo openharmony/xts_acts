@@ -102,6 +102,7 @@ export default function windowEventTest() {
         await sleep(1000);
         const callback = () => {
           timer++;
+          console.log(`${caseName} timer: ${timer}`);
         }
         subWindowClass.on('touchOutside', callback);
         await mainWindow.setPreferredOrientation(window.Orientation.LANDSCAPE);
@@ -154,6 +155,7 @@ export default function windowEventTest() {
         await sleep(1000);
         const callback = () => {
           timer++;
+          console.log(`${caseName} timer: ${timer}`);
         }
         mainWindow.on('touchOutside', callback);
         let driver: Driver = Driver.create();

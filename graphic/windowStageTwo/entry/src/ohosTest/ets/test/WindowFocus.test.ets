@@ -1174,7 +1174,7 @@ export default function windowFocusTest() {
         }
         let promise =  subWindowClass.showWindow(focusOnshowOptions);
         promise.then(async () => {
-          console.error(caseName + 'Succeeded in showWindow.');
+          console.info(caseName + 'Succeeded in showWindow.');
           expect().assertFail();
           await subWindowClass.destroyWindow();
           done()
@@ -1213,7 +1213,7 @@ export default function windowFocusTest() {
       try {
         let promise =  subWindowClass.showWindow({focusOnShow: null});
         promise.then(async () => {
-          console.error(caseName + 'Succeeded in showWindow.');
+          console.info(caseName + 'Succeeded in showWindow.');
           expect().assertFail();
           await subWindowClass.destroyWindow();
           done()
@@ -1339,7 +1339,7 @@ export default function windowFocusTest() {
         let promise =  subWindowClass.showWindow(focusOnshowOptions);
         promise.then(async () => {
           console.info(caseName + 'Succeeded in showWindow.');
-          console.error(`${caseName} subWindowClass isFocused: ${subWindowClass.isFocused()}`)
+          console.info(`${caseName} subWindowClass isFocused: ${subWindowClass.isFocused()}`)
           expect(subWindowClass.isFocused()).assertEqual(false)
           await subWindowClass.destroyWindow();
           done()
@@ -1383,7 +1383,7 @@ export default function windowFocusTest() {
         let promise =  subWindowClass.showWindow(focusOnshowOptions);
         promise.then(async () => {
           console.info(caseName + 'Succeeded in showWindow.');
-          console.error(`${caseName} subWindowClass isFocused: ${subWindowClass.isFocused()}`)
+          console.info(`${caseName} subWindowClass isFocused: ${subWindowClass.isFocused()}`)
           expect(subWindowClass.isFocused()).assertEqual(true)
           await subWindowClass.destroyWindow();
           done()
@@ -1430,11 +1430,31 @@ export default function windowFocusTest() {
         let promise1 =  subWindowClass1.showWindow(focusOnshowOptions1);
         promise1.then(async () => {
           console.info(caseName + 'Succeeded in showWindow.');
-          console.error(`${caseName} subWindowClass1 isFocused: ${subWindowClass1.isFocused()}`)
+          console.info(`${caseName} subWindowClass1 isFocused: ${subWindowClass1.isFocused()}`)
           expect(subWindowClass1.isFocused()).assertEqual(false);
           await subWindowClass1.raiseToAppTop();
-          await sleep(1000);
-          console.error(`${caseName} after raiseTopAppTop, subWindowClass1 isFocused: ${subWindowClass1.isFocused()}`)
+          let focusOnshowOptions2: window.ShowWindowOptions = {
+            focusOnShow: true
+          }
+          let promise2 =  subWindowClass2.showWindow(focusOnshowOptions2);
+          promise2.then(async () => {
+            console.info(caseName + 'Succeeded in showWindow.');
+            console.info(`${caseName} subWindowClass2 isFocused: ${subWindowClass2.isFocused()}`)
+            expect(subWindowClass2.isFocused()).assertEqual(true);
+            await subWindowClass2.destroyWindow();
+            done()
+          }).catch(async (err: BusinessError) => {
+            console.error(`${caseName} Failed in showWindow. Cause code: ${err.code}, message: ${err.message}`);
+            if (err.code === 801) {
+              await subWindowClass2.destroyWindow();
+              done()
+            } else {
+              expect().assertFail();
+              await subWindowClass2.destroyWindow();
+              done()
+            }
+          });
+          console.info(`${caseName} after raiseTopAppTop, subWindowClass1 isFocused: ${subWindowClass1.isFocused()}`)
           expect(subWindowClass1.isFocused()).assertEqual(true);
           await subWindowClass1.destroyWindow();
         }).catch(async (err: BusinessError) => {
@@ -1449,27 +1469,6 @@ export default function windowFocusTest() {
           }
         });
 
-        let focusOnshowOptions2: window.ShowWindowOptions = {
-          focusOnShow: true
-        }
-        let promise2 =  subWindowClass2.showWindow(focusOnshowOptions2);
-        promise2.then(async () => {
-          console.info(caseName + 'Succeeded in showWindow.');
-          console.error(`${caseName} subWindowClass2 isFocused: ${subWindowClass2.isFocused()}`)
-          expect(subWindowClass2.isFocused()).assertEqual(true);
-          await subWindowClass2.destroyWindow();
-          done()
-        }).catch(async (err: BusinessError) => {
-          console.error(`${caseName} Failed in showWindow. Cause code: ${err.code}, message: ${err.message}`);
-          if (err.code === 801) {
-            await subWindowClass2.destroyWindow();
-            done()
-          } else {
-            expect().assertFail();
-            await subWindowClass2.destroyWindow();
-            done()
-          }
-        });
       } catch (e) {
         console.error(`${caseName} Failed2 in showWindow. Cause: ${JSON.stringify(e)}`);
         await subWindowClass1.destroyWindow();
@@ -1506,16 +1505,16 @@ export default function windowFocusTest() {
         let promise1 =  subWindowClass1.showWindow(focusOnshowOptions1);
         promise1.then(async () => {
           console.info(caseName + 'Succeeded in showWindow.');
-          console.error(`${caseName} subWindowClass1 isFocused: ${subWindowClass1.isFocused()}`)
+          console.info(`${caseName} subWindowClass1 isFocused: ${subWindowClass1.isFocused()}`)
           expect(subWindowClass1.isFocused()).assertEqual(false);
 
           let promise2 =  subWindowClass2.showWindow(focusOnshowOptions2);
           promise2.then(async () => {
             console.info(caseName + 'Succeeded in showWindow.');
-            console.error(`${caseName} subWindowClass2 isFocused: ${subWindowClass2.isFocused()}`)
+            console.info(`${caseName} subWindowClass2 isFocused: ${subWindowClass2.isFocused()}`)
             expect(subWindowClass2.isFocused()).assertEqual(true);
             await subWindowClass2.destroyWindow();
-            console.error(`${caseName} after subWindowClass2.destroyWindow(), subWindowClass1 isFocused: ${subWindowClass1.isFocused()}`)
+            console.info(`${caseName} after subWindowClass2.destroyWindow(), subWindowClass1 isFocused: ${subWindowClass1.isFocused()}`)
             expect(subWindowClass1.isFocused()).assertEqual(true);
             await subWindowClass1.destroyWindow();
             done()
@@ -1577,7 +1576,7 @@ export default function windowFocusTest() {
     //     let promise =  subWindowClass.showWindow(focusOnshowOptions);
     //     promise.then(async () => {
     //       console.info(caseName + 'Succeeded in showWindow.');
-    //       console.error(`${caseName} subWindowClass isFocused: ${subWindowClass.isFocused()}`)
+    //       console.info(`${caseName} subWindowClass isFocused: ${subWindowClass.isFocused()}`)
     //       expect(subWindowClass.isFocused()).assertEqual(true);
     //       await subWindowClass.destroyWindow();
     //       done()
