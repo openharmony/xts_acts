@@ -2501,7 +2501,9 @@ export default function drawingTsMatrixPart2Test() {
         let radius6 = matrix.mapRadius(10);
         console.info(msg + ' matrix mapRadius radius6 successed');
         console.info(msg + ' matrix mapRadius radius6: ' + radius6);
-        expect(Math.round(radius6)).assertEqual(10);
+        let err6 = 10 - radius6;
+        console.info(msg + ' matrix mapRadius radius6 radiusError: ' + err6);
+        expect(err6 < 0.00001).assertEqual(true);
       } catch (e) {
         console.info(msg + ` matrix mapRadius radius6 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail();
