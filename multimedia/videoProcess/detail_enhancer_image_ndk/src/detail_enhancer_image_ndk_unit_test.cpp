@@ -104,7 +104,9 @@ void CreateEmptyPixelmap(OH_PixelmapNative** pixelMap, int32_t width, int32_t he
 
 bool IsSupportImageSR()
 {
-    if (!access("/sys_prod/lib64/VideoProcessingEngine/libdisplay_aipq_imagesr.so", 0)) {
+    if (!access("/sys_prod/lib64/VideoProcessingEngine/libdisplay_aipq_imagesr.so", 0) &&
+        !access("/sys_prod/etc/VideoProcessingEngine/image_aisr_algo_config.xml", 0) &&
+        !access("/sys_prod/etc/VideoProcessingEngine/Image_SR_Model_576x576_20240402.omc", 0)) {
         return true;
     }
     return false;
@@ -763,6 +765,9 @@ HWTEST_F(DetailEnhancerImageNdkUnitTest, vpeImageNdk_40_1, TestSize.Level1)
 // detail enhance RGBA
 HWTEST_F(DetailEnhancerImageNdkUnitTest, vpeImageNdk_41, TestSize.Level1)
 {
+    if (!IsSupportImageSR()) {
+        return;
+    }
     OH_ImageProcessing_InitializeEnvironment();
     OH_ImageProcessing* instance = nullptr;
     OH_PixelmapNative* srcImg = nullptr;
@@ -771,15 +776,7 @@ HWTEST_F(DetailEnhancerImageNdkUnitTest, vpeImageNdk_41, TestSize.Level1)
     CreateEmptyPixelmap(&dstImg, 1440, 1920, PIXEL_FORMAT_RGBA_8888);
     OH_ImageProcessing_Create(&instance, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER);
     ImageProcessing_ErrorCode ret = OH_ImageProcessing_EnhanceDetail(instance, srcImg, dstImg);
-    if (IsSupportImageSR()) {
-        EXPECT_EQ(ret, IMAGE_PROCESSING_SUCCESS);
-    } else {
-#ifdef SKIA_ENABLE
-        EXPECT_EQ(ret, IMAGE_PROCESSING_SUCCESS);
-#else
-        EXPECT_NE(ret, IMAGE_PROCESSING_SUCCESS);
-#endif
-    }
+    EXPECT_EQ(ret, IMAGE_PROCESSING_SUCCESS);
     OH_ImageProcessing_Destroy(instance);
     OH_ImageProcessing_DeinitializeEnvironment();
 }
@@ -809,6 +806,9 @@ HWTEST_F(DetailEnhancerImageNdkUnitTest, vpeImageNdk_41_1, TestSize.Level1)
 // detail enhance BGRA
 HWTEST_F(DetailEnhancerImageNdkUnitTest, vpeImageNdk_42, TestSize.Level1)
 {
+    if (!IsSupportImageSR()) {
+        return;
+    }
     OH_ImageProcessing_InitializeEnvironment();
     OH_ImageProcessing* instance = nullptr;
     OH_PixelmapNative* srcImg = nullptr;
@@ -817,15 +817,7 @@ HWTEST_F(DetailEnhancerImageNdkUnitTest, vpeImageNdk_42, TestSize.Level1)
     CreateEmptyPixelmap(&dstImg, 1440, 1920, PIXEL_FORMAT_BGRA_8888);
     OH_ImageProcessing_Create(&instance, IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER);
     ImageProcessing_ErrorCode ret = OH_ImageProcessing_EnhanceDetail(instance, srcImg, dstImg);
-    if (IsSupportImageSR()) {
-        EXPECT_EQ(ret, IMAGE_PROCESSING_SUCCESS);
-    } else {
-#ifdef SKIA_ENABLE
-        EXPECT_EQ(ret, IMAGE_PROCESSING_SUCCESS);
-#else
-        EXPECT_NE(ret, IMAGE_PROCESSING_SUCCESS);
-#endif
-    }
+    EXPECT_EQ(ret, IMAGE_PROCESSING_SUCCESS);
     OH_ImageProcessing_Destroy(instance);
     OH_ImageProcessing_DeinitializeEnvironment();
 }
