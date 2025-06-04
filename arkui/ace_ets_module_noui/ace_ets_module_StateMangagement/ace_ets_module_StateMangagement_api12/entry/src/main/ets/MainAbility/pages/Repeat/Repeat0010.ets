@@ -51,7 +51,7 @@ struct Repeat0010 {
   build() {
     Column({ space: 10 }) {
       Column() {
-        Text("list with repeat")
+        Text('list with repeat')
         Button('toIndex[2]')
           .id('toIndex[2]')
           .onClick(() => {
@@ -61,7 +61,7 @@ struct Repeat0010 {
           .id('repeat0010_1')
         Text(this.repeat0010_2)
           .id('repeat0010_2')
-        Text(this.isLoading && !this.hasError ? "Normal display" : "Error display")
+        Text(this.isLoading && !this.hasError ? 'Normal display' : 'Error display')
           .id('display_status')
       }
 

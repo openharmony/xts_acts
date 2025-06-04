@@ -51,7 +51,7 @@ struct Repeat0030 {
   build() {
     Column({ space: 10 }) {
       Column() {
-        Text("waterflow with repeat")
+        Text('waterflow with repeat')
         Button('toIndex[2]')
           .id('toIndex[2]')
           .onClick(() => {
@@ -61,7 +61,7 @@ struct Repeat0030 {
           .id('repeat0030_1')
         Text(this.repeat0030_2)
           .id('repeat0030_2')
-        Text(this.isLoading && !this.hasError ? "Normal display" : "Error display")
+        Text(this.isLoading && !this.hasError ? 'Normal display' : 'Error display')
           .id('display_status')
       }
 

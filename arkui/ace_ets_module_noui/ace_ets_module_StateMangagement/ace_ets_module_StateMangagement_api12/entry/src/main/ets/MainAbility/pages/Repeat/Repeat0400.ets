@@ -51,7 +51,7 @@ struct Repeat0400 {
   build() {
     Column({ space: 10 }) {
       Column() {
-        Text("swiper with repeat")
+        Text('swiper with repeat')
 
         Button('toNext')
           .id('toNext')
@@ -62,7 +62,7 @@ struct Repeat0400 {
           .id('repeat0400_1')
         Text(this.repeat0040_2)
           .id('repeat0400_2')
-        Text(this.isLoading && !this.hasError ? "Normal display" : "Error display")
+        Text(this.isLoading && !this.hasError ? 'Normal display' : 'Error display')
           .id('display_status')
       }
 

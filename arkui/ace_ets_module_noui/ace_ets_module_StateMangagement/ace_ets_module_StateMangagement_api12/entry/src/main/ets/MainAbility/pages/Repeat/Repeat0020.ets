@@ -58,7 +58,7 @@ struct Repeat0020 {
           .id('repeat0020_1')
         Text(this.repeat0020_2)
           .id('repeat0020_2')
-        Text(this.isLoading && !this.hasError ? "Normal display" : "Error display")
+        Text(this.isLoading && !this.hasError ? 'Normal display' : 'Error display')
           .id('display_status')
       }
 
