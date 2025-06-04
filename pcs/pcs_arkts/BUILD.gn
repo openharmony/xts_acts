@@ -21,7 +21,7 @@ ohos_app_assist_suite("ActsPCSArkts") {
   hap_name = "ActsPCSArkts"
 }
 
-ohos_copy("PyTestCase") {
+ohos_copy("ActsPCSArktsTest") {
   subsystem_name = "xts"
   part_name = "acts"
   sources = [
