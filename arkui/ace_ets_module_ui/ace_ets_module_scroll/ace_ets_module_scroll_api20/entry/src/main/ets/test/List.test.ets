@@ -14,7 +14,17 @@
  */
 
 import maintainPosition from './SwiperTest/maintainPosition.test';
+import barMarginGrid from './GridTest/barMarginGrid.test';
+import barMarginList from './ListTest/barMarginList.test';
+import barMarginScroll from './ScrollTest/barMarginScroll.test';
+import curvesTabs from './TabsTest/curvesTabs.test';
+import maxDownRefresh from './RefreshTest/maxDownRefresh.test';
 
 export default function testsuite() {
   maintainPosition()
+  barMarginGrid()
+  barMarginList()
+  barMarginScroll()
+  curvesTabs()
+  maxDownRefresh()
 }
