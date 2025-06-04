@@ -2826,7 +2826,7 @@ export default function abilityTest() {
     /* *
      * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ON_CALLSTATECHANGE_0500
      * @tc.name      : ON_CALLSTATECHANGE_0500
-     * @tc.desc      : Testing on('callStateChange')f
+     * @tc.desc      : Testing on('callStateChange')
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level2
@@ -3779,7 +3779,7 @@ export default function abilityTest() {
 
     /* *
      * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ON_PLAYWITHASSETID_0100
-     * @tc.name      : ON_PLAYWITHASSETID_0100
+     * @tc.name      : SUB_MULTIMEDIA_AVSESSION_ON_PLAYWITHASSETID_0100
      * @tc.desc      : Testing on('playWithAssetId') -- one on function
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -3806,7 +3806,7 @@ export default function abilityTest() {
 
     /* *
      * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ON_PLAYWITHASSETID_0200
-     * @tc.name      : ON_PLAYWITHASSETID_0200
+     * @tc.name      : SUB_MULTIMEDIA_AVSESSION_ON_PLAYWITHASSETID_0200
      * @tc.desc      : Testing on('playWithAssetId') -- many on functions
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -3846,7 +3846,7 @@ export default function abilityTest() {
 
     /* *
      * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ON_PLAYWITHASSETID_0300
-     * @tc.name      : ON_TOGGLECALLMUTE_0300
+     * @tc.name      : SUB_MULTIMEDIA_AVSESSION_ON_PLAYWITHASSETID_0300
      * @tc.desc      : Testing destroy before on('playWithAssetId')
      * @tc.size      : MediumTest
      * @tc.type      : Fault Tolerance
@@ -3875,7 +3875,7 @@ export default function abilityTest() {
 
     /* *
      * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFF_PLAYWITHASSETID_0100
-     * @tc.name      : OFF_PLAYWITHASSETID_0100
+     * @tc.name      : SUB_MULTIMEDIA_AVSESSION_OFF_PLAYWITHASSETID_0100
      * @tc.desc      : Testing off('playWithAssetId') --off one function
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -3914,7 +3914,7 @@ export default function abilityTest() {
 
     /* *
      * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFF_PLAYWITHASSETID_0200
-     * @tc.name      : OFF_PLAYWITHASSETID_0200
+     * @tc.name      : SUB_MULTIMEDIA_AVSESSION_OFF_PLAYWITHASSETID_0200
      * @tc.desc      : Testing off('playWithAssetId') -- off select on functions
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -3955,7 +3955,7 @@ export default function abilityTest() {
 
     /* *
      * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFF_PLAYWITHASSETID_0300
-     * @tc.name      : OFF_PLAYWITHASSETID_0300
+     * @tc.name      : SUB_MULTIMEDIA_AVSESSION_OFF_PLAYWITHASSETID_0300
      * @tc.desc      : Testing off('playWithAssetId') -- off all on functions
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -3985,7 +3985,7 @@ export default function abilityTest() {
 
     /* *
      * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFF_PLAYWITHASSETID_0400
-     * @tc.name      : OFF_PLAYWITHASSETID_0400
+     * @tc.name      : SUB_MULTIMEDIA_AVSESSION_OFF_PLAYWITHASSETID_0400
      * @tc.desc      : Testing not on('playWithAssetId') before off('playWithAssetId')
      * @tc.size      : MediumTest
      * @tc.type      : Fault Tolerance
@@ -4008,7 +4008,7 @@ export default function abilityTest() {
 
     /* *
      * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFF_PLAYWITHASSETID_0500
-     * @tc.name      : OFF_PLAYWITHASSETID_0500
+     * @tc.name      : SUB_MULTIMEDIA_AVSESSION_OFF_PLAYWITHASSETID_0500
      * @tc.desc      : Testing destroy before off('playWithAssetId')
      * @tc.size      : MediumTest
      * @tc.type      : Fault Tolerance
@@ -4032,7 +4032,7 @@ export default function abilityTest() {
 
     /* *
      * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_PROMISE_1200
-     * @tc.name      : SENDCONTROLCOMMAND_PROMISE_1200
+     * @tc.name      : SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_PROMISE_1200
      * @tc.desc      : Testing sendControlCommand(command)-promise-special characters &max length
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -4061,7 +4061,7 @@ export default function abilityTest() {
 
     /* *
      * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_PROMISE_1300
-     * @tc.name      : SENDCONTROLCOMMAND_PROMISE_1300
+     * @tc.name      : SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_PROMISE_1300
      * @tc.desc      : Testing sendControlCommand(command)-promise-exceed max length
      * @tc.size      : MediumTest
      * @tc.type      : Fault Tolerance
@@ -4093,7 +4093,7 @@ export default function abilityTest() {
 
     /* *
      * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_PROMISE_1400
-     * @tc.name      : SENDCONTROLCOMMAND_PROMISE_1400
+     * @tc.name      : SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_PROMISE_1400
      * @tc.desc      : Testing sendControlCommand(command)-promise-with no parameters
      * @tc.size      : MediumTest
      * @tc.type      : Fault Tolerance
@@ -4124,7 +4124,7 @@ export default function abilityTest() {
 
     /* *
      * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_PROMISE_1500
-     * @tc.name      : SENDCONTROLCOMMAND_PROMISE_1500
+     * @tc.name      : SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_PROMISE_1500
      * @tc.desc      : Testing sendControlCommand(command)-promise-type error
      * @tc.size      : MediumTest
      * @tc.type      : Fault Tolerance
@@ -4156,7 +4156,7 @@ export default function abilityTest() {
 
     /* *
      * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_PROMISE_1600
-     * @tc.name      : SENDCONTROLCOMMAND_PROMISE_1600
+     * @tc.name      : SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_PROMISE_1600
      * @tc.desc      : Testing sendControlCommand(command)-promise-parameter to None
      * @tc.size      : MediumTest
      * @tc.type      : Fault Tolerance
@@ -4188,7 +4188,7 @@ export default function abilityTest() {
 
     /* *
      * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_CALLBACK_1200
-     * @tc.name      : SENDCONTROLCOMMAND_CALLBACK_1200
+     * @tc.name      : SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_CALLBACK_1200
      * @tc.desc      : Testing sendControlCommand(command)-callback-special characters &max length
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -4223,7 +4223,7 @@ export default function abilityTest() {
 
     /* *
      * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_CALLBACK_1300
-     * @tc.name      : SENDCONTROLCOMMAND_CALLBACK_1300
+     * @tc.name      : SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_CALLBACK_1300
      * @tc.desc      : Testing sendControlCommand(command)-callback-exceed max length
      * @tc.size      : MediumTest
      * @tc.type      : Fault Tolerance
@@ -4258,7 +4258,7 @@ export default function abilityTest() {
 
     /* *
      * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_CALLBACK_1400
-     * @tc.name      : SENDCONTROLCOMMAND_CALLBACK_1400
+     * @tc.name      : SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_CALLBACK_1400
      * @tc.desc      : Testing sendControlCommand(command)-callback-with no parameters
      * @tc.size      : MediumTest
      * @tc.type      : Fault Tolerance
@@ -4292,7 +4292,7 @@ export default function abilityTest() {
 
     /* *
      * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_CALLBACK_1500
-     * @tc.name      : SENDCONTROLCOMMAND_CALLBACK_1500
+     * @tc.name      : SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_CALLBACK_1500
      * @tc.desc      : Testing sendControlCommand(command)-callback-type error
      * @tc.size      : MediumTest
      * @tc.type      : Fault Tolerance
@@ -4327,7 +4327,7 @@ export default function abilityTest() {
 
     /* *
      * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_CALLBACK_1600
-     * @tc.name      : SENDCONTROLCOMMAND_CALLBACK_1600
+     * @tc.name      : SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_CALLBACK_1600
      * @tc.desc      : Testing sendControlCommand(command)-callback-parameter to None
      * @tc.size      : MediumTest
      * @tc.type      : Fault Tolerance

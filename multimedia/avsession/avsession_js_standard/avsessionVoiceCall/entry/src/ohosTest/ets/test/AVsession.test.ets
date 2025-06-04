@@ -2112,7 +2112,7 @@ export default function abilityTest() {
 
    /* *
     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_2600
-    * @tc.name      : setAVMetadata - callback - set filter
+    * @tc.name      : SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_2600
     * @tc.desc      : Testing call setAVMetadata(callback) set filter- TYPE_CAST_PLUS_AUDIO
     * @tc.size      : MediumTest
     * @tc.type      : Function
@@ -2156,7 +2156,7 @@ export default function abilityTest() {
 
    /* *
     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETMETADATA_PROMISE_3000
-    * @tc.name      : setAVMetadata - promise - set filter
+    * @tc.name      : SUB_MULTIMEDIA_AVSESSION_SETMETADATA_PROMISE_3000
     * @tc.desc      : Testing call setAVMetadata(promise) set filter- TYPE_CAST_PLUS_AUDIO
     * @tc.size      : MediumTest
     * @tc.type      : Function
@@ -2192,7 +2192,7 @@ export default function abilityTest() {
 
    /* *
     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_PROMISE_2200
-    * @tc.name      : getOutputDevice - promise - streamInfos not undefined
+    * @tc.name      : SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_PROMISE_2200
     * @tc.desc      : Testing call getOutputDevice(promise) streamInfos not undefined
     * @tc.size      : MediumTest
     * @tc.type      : Function
@@ -2230,7 +2230,7 @@ export default function abilityTest() {
 
    /* *
     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_CALLBACK_2300
-    * @tc.name      : getOutputDevice - callback - streamInfos not undefined
+    * @tc.name      : SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_CALLBACK_2300
     * @tc.desc      : Testing call getOutputDevice(callback) streamInfos not undefined
     * @tc.size      : MediumTest
     * @tc.type      : Function
@@ -2268,7 +2268,7 @@ export default function abilityTest() {
 
    /* *
     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_CALLBACK_2400
-    * @tc.name      : getOutputDevice - promise - set pcmSrc -true
+    * @tc.name      : SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_CALLBACK_2400
     * @tc.desc      : Testing call getOutputDevice(promise)  set pcmSrc -true
     * @tc.size      : MediumTest
     * @tc.type      : Function
@@ -2313,7 +2313,7 @@ export default function abilityTest() {
 
    /* *
     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_CALLBACK_2500
-    * @tc.name      : getOutputDevice - promise - set pcmSrc -false
+    * @tc.name      : SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_CALLBACK_2500
     * @tc.desc      : Testing call getOutputDevice(promise)  set pcmSrc -false
     * @tc.size      : MediumTest
     * @tc.type      : Function
@@ -2358,7 +2358,7 @@ export default function abilityTest() {
 
    /* *
     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_CALLBACK_2600
-    * @tc.name      : getOutputDevice - promise - set pcmSrc -undefined
+    * @tc.name      : SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_CALLBACK_2600
     * @tc.desc      : Testing call getOutputDevice(promise)  set pcmSrc -undefined
     * @tc.size      : MediumTest
     * @tc.type      : Function
@@ -2390,7 +2390,7 @@ export default function abilityTest() {
 
    /* *
     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_CALLBACK_2700
-    * @tc.name      : getOutputDevice - callback - set pcmSrc -true
+    * @tc.name      : SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_CALLBACK_2700
     * @tc.desc      : Testing call getOutputDevice(callback)  set pcmSrc -true
     * @tc.size      : MediumTest
     * @tc.type      : Function
@@ -2437,7 +2437,7 @@ export default function abilityTest() {
 
    /* *
     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_CALLBACK_2800
-    * @tc.name      : getOutputDevice - callback - set pcmSrc -false
+    * @tc.name      : SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_CALLBACK_2800
     * @tc.desc      : Testing call getOutputDevice(callback)  set pcmSrc -false
     * @tc.size      : MediumTest
     * @tc.type      : Function
@@ -2484,7 +2484,7 @@ export default function abilityTest() {
 
    /* *
     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_CALLBACK_2900
-    * @tc.name      : getOutputDevice - callback - set pcmSrc -undefined
+    * @tc.name      : SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_CALLBACK_2900
     * @tc.desc      : Testing call getOutputDevice(callback)  set pcmSrc -undefined
     * @tc.size      : MediumTest
     * @tc.type      : Function
