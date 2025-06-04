@@ -12,24 +12,38 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { router } from '@kit.ArkUI'
 
 @Entry
 @Component
-struct Index {
+struct ListPage {
+  scroller: Scroller = new Scroller()
+  private arr: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
   build() {
     Row() {
       Column() {
-        Button('ListPage')
-        .fontSize(25)
-        .fontWeight(FontWeight.Bold)
-        .onClick(async () => {
-          await router.pushUrl({ url: "pages/ListPage"})
-        })
+        Scroll(this.scroller) {
+          Column() {
+            ForEach(this.arr, (item: number) => {
+              Text(item.toString())
+                .width('90%')
+                .height('40%')
+                .backgroundColor(0xDCDCDC)
+                .fontSize(80)
+                .textAlign(TextAlign.Center)
+                .margin({ top: 10 })
+            }, (item: string) => item)
+          }
+        }
+        .id('verticalScroll')
+        .width('100%')
+        .height('100%')
+        .scrollable(ScrollDirection.Vertical)
+        .scrollBar(BarState.On)
+        .scrollBarColor(Color.Gray)
       }
       .width('100%')
     }
     .height('100%')
   }
 }
-
