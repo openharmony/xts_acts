@@ -52,18 +52,22 @@ struct Repeat0400 {
     Column({ space: 10 }) {
       Column() {
         Text('swiper with repeat')
-
+          .height('3%')
         Button('toNext')
+          .height('3%')
           .id('toNext')
           .onClick(() => {
             this.swiperController.showNext()
           })
         Text(this.repeat0040_1)
           .id('repeat0400_1')
+          .height('3%')
         Text(this.repeat0040_2)
           .id('repeat0400_2')
+          .height('3%')
         Text(this.isLoading && !this.hasError ? 'Normal display' : 'Error display')
           .id('display_status')
+          .height('3%')
       }
 
       Swiper(this.swiperController) {

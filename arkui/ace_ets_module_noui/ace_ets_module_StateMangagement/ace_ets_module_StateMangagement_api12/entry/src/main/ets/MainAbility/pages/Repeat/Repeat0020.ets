@@ -51,15 +51,19 @@ struct Repeat0020 {
       Column() {
         Button('toIndex[2]')
           .id('toIndex[2]')
+          .height('3%')
           .onClick(() => {
             this.GridScroller.scrollToIndex(2)
           })
         Text(this.repeat0020_1)
           .id('repeat0020_1')
+          .height('3%')
         Text(this.repeat0020_2)
           .id('repeat0020_2')
+          .height('3%')
         Text(this.isLoading && !this.hasError ? 'Normal display' : 'Error display')
           .id('display_status')
+          .height('3%')
       }
 
       Grid(this.GridScroller) {

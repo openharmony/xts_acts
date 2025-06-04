@@ -52,17 +52,22 @@ struct Repeat0030 {
     Column({ space: 10 }) {
       Column() {
         Text('waterflow with repeat')
+          .height('3%')
         Button('toIndex[2]')
           .id('toIndex[2]')
+          .height('3%')
           .onClick(() => {
             this.scroller.scrollToIndex(2)
           })
         Text(this.repeat0030_1)
           .id('repeat0030_1')
+          .height('3%')
         Text(this.repeat0030_2)
           .id('repeat0030_2')
+          .height('3%')
         Text(this.isLoading && !this.hasError ? 'Normal display' : 'Error display')
           .id('display_status')
+          .height('3%')
       }
 
       WaterFlow({ scroller: this.scroller }) {
