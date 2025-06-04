@@ -21,7 +21,7 @@ ohos_app_assist_suite("ActsPCSArkts") {
   hap_name = "ActsPCSArkts"
 }
 
-ohos_copy("ActsPCSArktsTest") {
+ohos_copy("ActsPCSArktsTestCopy") {
   subsystem_name = "xts"
   part_name = "acts"
   sources = [
@@ -41,6 +41,7 @@ ohos_js_app_suite("ActsPCSArktsTest") {
   deps = [
     ":ActsPCSArkts",
     "../pcs_arkts_assist:ActsPCSArktsAssist",
+	":ActsPCSArktsTestCopy"
   ]
 }
 
