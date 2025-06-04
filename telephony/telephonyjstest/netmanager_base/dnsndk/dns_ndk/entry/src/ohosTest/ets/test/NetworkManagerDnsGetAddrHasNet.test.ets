@@ -38,14 +38,14 @@ export default function NetworkManagerDnsGetAddrHasNetTest() {
     let function_null = 1
 
     /* *
-    * @tc.number  NETWORKMANAGER_DNS_GETADDRINFO_0100
-    * @tc.name    getAddrInfo
+    * @tc.number  SUB_NETWORKMANAGER_DNS_GETADDRINFO_0100
+    * @tc.name    testNetworkManager_Dns_GetAddrInfo_0100
     * @tc.desc    check get DNS result
     * @tc.size    MediumTest
     * @tc.type    Function
     * @tc.level   Level 0
     */
-    it("NetworkManager_Dns_GetAddrInfo_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it("testNetworkManager_Dns_GetAddrInfo_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = "NetworkManager_Dns_GetAddrInfo_0100"
       let status = testNapi.getaddrinfo(hostaddr_valid, serv, netid_default);
       if (status != 0) {
