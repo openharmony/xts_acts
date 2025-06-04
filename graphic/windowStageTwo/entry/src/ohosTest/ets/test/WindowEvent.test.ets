@@ -89,9 +89,13 @@ export default function windowEventTest() {
     it('testTouchOutSide_TopBar_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testTouchOutSide_TopBar_0100 ';
       console.log(caseName + 'begin');
+      console.error(`${caseName} aaaaa: ${7 / 2}`)
       let mainWindow = windowStage.getMainWindowSync();
       let subWindowClass = await windowStage.createSubWindow('testTouchOutSide_TopBar_0100');
       await subWindowClass.setUIContent('testability/pages/First/index2');
+      await sleep(1000);
+      await subWindowClass.showWindow();
+      await sleep(1000);
       let timer = 0;
       try {
         let windowLimits = subWindowClass.getWindowLimits();
@@ -100,6 +104,7 @@ export default function windowEventTest() {
         await sleep(1000);
         await subWindowClass.moveWindowTo(0, 0);
         await sleep(1000);
+
         const callback = () => {
           timer++;
           console.log(`${caseName} timer: ${timer}`);
@@ -108,7 +113,7 @@ export default function windowEventTest() {
         await mainWindow.setPreferredOrientation(window.Orientation.LANDSCAPE);
         let driver: Driver = Driver.create();
         await sleep(200);
-        await driver.click((windowLimits.minWidth as number)/2, 0);
+        await driver.click(Math.round((windowLimits.minWidth as number)/2), 0);
         expect(timer).assertEqual(0);
         await driver.click((windowLimits.minWidth as number) + 1, 0);
         expect(timer).assertEqual(1);
@@ -143,6 +148,9 @@ export default function windowEventTest() {
       let mainWindow = windowStage.getMainWindowSync();
       let subWindowClass = await windowStage.createSubWindow('testTouchOutSide_0100');
       await subWindowClass.setUIContent('testability/pages/First/index2');
+      await sleep(1000);
+      await subWindowClass.showWindow();
+      await sleep(1000);
       let timer = 0;
       try {
         let windowLimits = subWindowClass.getWindowLimits();
@@ -160,7 +168,7 @@ export default function windowEventTest() {
         mainWindow.on('touchOutside', callback);
         let driver: Driver = Driver.create();
         await sleep(200);
-        await driver.click(displayInfo.width/2 + 2, displayInfo.height/2 + 2);
+        await driver.click(Math.round(displayInfo.width/2) + 2, Math.round(displayInfo.height/2) + 2);
         subWindowClass.off('touchOutside');
         expect(timer).assertEqual(1);
         await subWindowClass.destroyWindow();
