@@ -19,7 +19,8 @@ import os
 import sys
 import subprocess
 import shutil
-import logging 
+import logging
+
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logging.basicConfig(level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
 
@@ -90,10 +91,10 @@ class XtsBuild:
 
             if cmdline.get('pr_path_list'):
                 self._gn_args['pr_path_list'] = cmdline.get('pr_path_list')
-            
+
             if cmdline.get('make_osp'):
                 self._gn_args['make_osp'] = cmdline.get('make_osp')
-            
+
             if cmdline.get('target_app_dir'):
                 self._gn_args['target_app_dir'] = cmdline.get('target_app_dir')
 
@@ -120,6 +121,9 @@ class XtsBuild:
         return ret.returncode
 
     def get_accurate_targets(self):
+        if os.environ.get("XTS_SUITETYPE") == "hap_static":
+            logging.info("hap_static task use full build")
+            return self._build_target
         accurate_dir = "{}/test/xts/tools/ci".format(self._code_root_dir)
         sys.path.append(accurate_dir)
         import generate_accurate_targets as gat
@@ -185,6 +189,7 @@ def main():
     retcode = obj.build()
 
     return retcode
+
 
 if __name__ == "__main__":
     sys.exit(main())
