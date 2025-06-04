@@ -12,12 +12,12 @@ include_directories(
 
 add_library(nativerender SHARED
     manager/plugin_manager.cpp
-    napi_render_init.cpp
+    napi_render_init_test.cpp
     onIdle/post_on_idle_test.cpp
 )
 
 add_library(nativefunc SHARED
-    napi_func_init.cpp
+    napi_func_init_test.cpp
 )
 
 find_library(
