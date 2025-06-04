@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level} from '@ohos/hypium';
 import { Driver, ON, PointerMatrix, Rect } from '@ohos.UiTest';
 import Utils from '../common/Utils';
 
@@ -33,7 +33,7 @@ export default function PostOnIdleTest(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPostOnIdle001', 0, async (done: Function) => {
+    it('testPostOnIdle001', Level.LEVEL0, async (done: Function) => {
       let PAGE_TAG = 'TestPostOnIdle';
       await Utils.pushPage(`onIdle/${PAGE_TAG}`);
       await Utils.sleep(1000)
