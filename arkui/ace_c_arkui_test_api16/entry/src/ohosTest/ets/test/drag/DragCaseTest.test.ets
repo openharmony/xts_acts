@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium'
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium'
 import { Driver, ON, PointerMatrix, Rect } from '@ohos.UiTest'
 import { Point } from '@ohos.UiTest';
 import Utils from '../common/Utils'
@@ -58,7 +58,7 @@ export default function DragTest(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('dragCaseTest001', 0, async (done: Function) => {
+    it('dragCaseTest001', Level.LEVEL1, async (done: Function) => {
         let PAGE_TAG = 'DragCaseTest1'
         await Utils.pushPage(`drag/${PAGE_TAG}`)
         await panAndPinchGesture('image')
@@ -76,7 +76,7 @@ export default function DragTest(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('dragCaseTest002', 0, async (done: Function) => {
+    it('dragCaseTest002', Level.LEVEL1, async (done: Function) => {
         let PAGE_TAG = 'DragCaseTest2'
         await Utils.pushPage(`drag/${PAGE_TAG}`)
         await panAndPinchGesture('image')
@@ -94,7 +94,7 @@ export default function DragTest(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('dragCaseTest003', 0, async (done: Function) => {
+    it('dragCaseTest003', Level.LEVEL1, async (done: Function) => {
         let PAGE_TAG = 'DragCaseTest3'
         await panAndPinchGesture('image')
         let dataArray: number[] = nativeRender.GetResult();
