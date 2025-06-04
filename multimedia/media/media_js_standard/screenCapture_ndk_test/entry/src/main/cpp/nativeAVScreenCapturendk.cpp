@@ -760,6 +760,46 @@ static napi_value normalAVScreenCaptureShowCursorWithParaNullTrue(napi_env env, 
     return res;
 }
 
+static napi_value normalAVScreenCaptureStrategyForKeepCaptureDuringCallFalse(napi_env env, napi_callback_info info)
+{
+    screenCaptureNormal = OH_AVScreenCapture_Create();
+    OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureStrategy();
+    OH_AVSCREEN_CAPTURE_ErrCode result = OH_AVScreenCapture_StrategyForKeepCaptureDuringCall(strategy, false);
+    if (result == AV_SCREEN_CAPTURE_ERR_OK) {
+        result = OH_AVScreenCapture_SetCaptureStrategy(screenCaptureNormal, strategy);
+    }
+    if (result == AV_SCREEN_CAPTURE_ERR_OK) {
+        result = OH_AVScreenCapture_ReleaseCaptureStrategy(strategy);
+    }
+    int resCapture = TEST_FAILED;
+    if (result == AV_SCREEN_CAPTURE_ERR_OK) {
+        resCapture = TEST_PASS;
+    }
+    napi_value res;
+    napi_create_int32(env, resCapture, &res);
+    return res;
+}
+
+static napi_value normalAVScreenCaptureStrategyForKeepCaptureDuringCallTrue(napi_env env, napi_callback_info info)
+{
+    screenCaptureNormal = OH_AVScreenCapture_Create();
+    OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureStrategy();
+    OH_AVSCREEN_CAPTURE_ErrCode result = OH_AVScreenCapture_StrategyForKeepCaptureDuringCall(strategy, true);
+    if (result == AV_SCREEN_CAPTURE_ERR_OK) {
+        result = OH_AVScreenCapture_SetCaptureStrategy(screenCaptureNormal, strategy);
+    }
+    if (result == AV_SCREEN_CAPTURE_ERR_OK) {
+        result = OH_AVScreenCapture_ReleaseCaptureStrategy(strategy);
+    }
+    int resCapture = TEST_FAILED;
+    if (result == AV_SCREEN_CAPTURE_ERR_OK) {
+        resCapture = TEST_PASS;
+    }
+    napi_value res;
+    napi_create_int32(env, resCapture, &res);
+    return res;
+}
+
 static napi_value normalAVScreenCaptureContentChangedCallback(napi_env env, napi_callback_info info)
 {
     screenCaptureContentChange = OH_AVScreenCapture_Create();
@@ -883,6 +923,12 @@ static napi_value Init(napi_env env, napi_value exports)
             nullptr, nullptr, nullptr, napi_default, nullptr},
         {"normalAVScreenCaptureDisplayCallbackSuccess", nullptr, normalAVScreenCaptureDisplayCallbackSuccess,
             nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"normalAVScreenCaptureStrategyForKeepCaptureDuringCallFalse", nullptr,
+            normalAVScreenCaptureStrategyForKeepCaptureDuringCallFalse, nullptr, nullptr, nullptr, napi_default,
+            nullptr},
+        {"normalAVScreenCaptureStrategyForKeepCaptureDuringCallTrue", nullptr,
+            normalAVScreenCaptureStrategyForKeepCaptureDuringCallTrue, nullptr, nullptr, nullptr, napi_default,
+            nullptr},
         {"normalAVScreenCaptureContentChangedCallback", nullptr, normalAVScreenCaptureContentChangedCallback,
             nullptr, nullptr, nullptr, napi_default, nullptr},
         {"normalAVScreenCaptureSetCaptureAreaTest", nullptr, normalAVScreenCaptureSetCaptureAreaTest,
