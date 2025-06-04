@@ -107,6 +107,7 @@ struct IndexPage {
     { title: 'Touchhand', uri: 'pages/ArkUI/Touchhand' },
     { title: 'HoverSpen', uri: 'pages/ArkUI/HoverSpen' },
     { title: 'stopSwiper', uri: 'pages/ArkUI/stopSwiper' },
+    { title: 'moveList', uri: 'pages/ArkUI/moveList' },
     { title: 'AccessibilityRoleTypeTest', uri: 'pages/ArkUI/AccessibilityRoleTypeTest' },
     { title: 'StylusPen', uri: 'pages/ArkUI/StylusPen' },
     { title: 'AccessibilityFocusDrawLevel', uri: 'pages/ArkUI/AccessibilityFocusDrawLevel' },
@@ -115,7 +116,6 @@ struct IndexPage {
     { title: 'AccessibilityDefaultFocusPage', uri: 'pages/ArkUI/AccessibilityDefaultFocusPage' },
     { title: 'AccessibilityScrollTriggerablePage', uri: 'pages/ArkUI/AccessibilityScrollTriggerablePage' },
     { title: 'OnAccessibilityActionIntercept', uri: 'pages/ArkUI/OnAccessibilityActionIntercept' },
-    { title: 'moveList', uri: 'pages/ArkUI/moveList' },
     
   ]
   @State ColorObject: Object[] = letColor;
