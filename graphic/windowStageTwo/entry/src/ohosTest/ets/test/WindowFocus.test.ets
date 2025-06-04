@@ -1493,7 +1493,7 @@ export default function windowFocusTest() {
       const subWindowClass1 = await windowStage.createSubWindow('test_SHOWWINDOW_FOCUSONSHOW_0400_1')
       console.info(`${caseName} Succeeded in creating the sub window 1.`);
       await subWindowClass1.setUIContent('testability/pages/First/index2');
-      const subWindowClass2 = await windowStage.createSubWindow('test_SHOWWINDOW_FOCUSONSHOW_0400_1')
+      const subWindowClass2 = await windowStage.createSubWindow('test_SHOWWINDOW_FOCUSONSHOW_0400_2')
       console.info(`${caseName} Succeeded in creating the sub window 2.`);
       await subWindowClass1.setUIContent('testability/pages/First/index2');
       try {
