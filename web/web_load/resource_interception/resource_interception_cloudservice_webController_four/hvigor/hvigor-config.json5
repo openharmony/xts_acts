@@ -14,9 +14,9 @@
 */
 
 {
-  "hvigorVersion": "4.0.5",
+  "hvigorVersion": "4.0.8",
   "dependencies": {
-    "@ohos/hvigor-ohos-plugin": "4.0.5"
+    "@ohos/hvigor-ohos-plugin": "4.0.8"
   },
   "execution": {
     // "analyze": "default",                    /* Define the build analyze mode. Value: [ "default" | "verbose" | false ]. Default: "default" */
