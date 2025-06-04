@@ -4669,13 +4669,13 @@ export default function windowPropertiesTest() {
           if (isPCStatus == '' || isAutoWindow == 'false') {
             done();
           } else {
-            let promise = windowClass.maximize(window.MaximizePresentation.ENTER_IMMERSIVE);
+            let promise = windowClass.maximize(window.MaximizePresentation.FOLLOW_APP_IMMERSIVE_SETTING);
             promise.then(async () => {
               console.info('Succeeded in maximizing the window.');
               let windowProperties = windowClass.getWindowProperties()
               console.info(`${msgStr} windowProperties: ${JSON.stringify(windowProperties)}`);
-              expect(windowProperties.isFullScreen).assertEqual(false);
-              expect(windowProperties.isLayoutFullScreen).assertEqual(true);
+              expect(windowProperties.isFullScreen).assertEqual(true);
+              expect(windowProperties.isLayoutFullScreen).assertEqual(false);
               await windowClass.recover();
               await sleep(200);
               done();
