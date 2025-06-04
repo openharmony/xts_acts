@@ -4709,25 +4709,29 @@ export default function windowPropertiesTest() {
         console.info(msgStr + ' begin ');
         try {
           let windowClass = windowStage.getMainWindowSync();
-          let promise = windowClass.maximize(window.MaximizePresentation.EXIT_IMMERSIVE);
-          promise.then(async () => {
-            console.info('Succeeded in maximizing the window.');
-            let windowProperties = windowClass.getWindowProperties()
-            console.info(`${msgStr} windowProperties: ${JSON.stringify(windowProperties)}`);
-            expect(windowProperties.isFullScreen).assertEqual(true);
-            expect(windowProperties.isLayoutFullScreen).assertEqual(false);
-            await windowClass.recover();
-            await sleep(200);
+          if (isPCStatus == '' || isAutoWindow == 'false') {
             done();
-          }).catch((err: BusinessError) => {
-            console.error(`${msgStr} Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
-            if (err.code == 801) {
+          } else {
+            let promise = windowClass.maximize(window.MaximizePresentation.EXIT_IMMERSIVE);
+            promise.then(async () => {
+              console.info('Succeeded in maximizing the window.');
+              let windowProperties = windowClass.getWindowProperties()
+              console.info(`${msgStr} windowProperties: ${JSON.stringify(windowProperties)}`);
+              expect(windowProperties.isFullScreen).assertEqual(true);
+              expect(windowProperties.isLayoutFullScreen).assertEqual(false);
+              await windowClass.recover();
+              await sleep(200);
               done();
-            } else {
-              expect().assertFail();
-              done();
-            }
-          });
+            }).catch((err: BusinessError) => {
+              console.error(`${msgStr} Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
+              if (err.code == 801) {
+                done();
+              } else {
+                expect().assertFail();
+                done();
+              }
+            });
+          }
         } catch (error) {
           console.error(msgStr + ' Failed. Cause: ' + JSON.stringify(error));
           expect().assertFail();
@@ -4748,25 +4752,29 @@ export default function windowPropertiesTest() {
         console.info(msgStr + ' begin ');
         try {
           let windowClass = windowStage.getMainWindowSync();
-          let promise = windowClass.maximize(window.MaximizePresentation.ENTER_IMMERSIVE);
-          promise.then(async () => {
-            console.info('Succeeded in maximizing the window.');
-            let windowProperties = windowClass.getWindowProperties()
-            console.info(`${msgStr} windowProperties: ${JSON.stringify(windowProperties)}`);
-            expect(windowProperties.isFullScreen).assertEqual(true);
-            expect(windowProperties.isLayoutFullScreen).assertEqual(true);
-            await windowClass.recover();
-            await sleep(200);
+          if (isPCStatus == '' || isAutoWindow == 'false') {
             done();
-          }).catch((err: BusinessError) => {
-            console.error(`${msgStr} Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
-            if (err.code == 801) {
+          } else {
+            let promise = windowClass.maximize(window.MaximizePresentation.ENTER_IMMERSIVE);
+            promise.then(async () => {
+              console.info('Succeeded in maximizing the window.');
+              let windowProperties = windowClass.getWindowProperties()
+              console.info(`${msgStr} windowProperties: ${JSON.stringify(windowProperties)}`);
+              expect(windowProperties.isFullScreen).assertEqual(true);
+              expect(windowProperties.isLayoutFullScreen).assertEqual(true);
+              await windowClass.recover();
+              await sleep(200);
               done();
-            } else {
-              expect().assertFail();
-              done();
-            }
-          });
+            }).catch((err: BusinessError) => {
+              console.error(`${msgStr} Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
+              if (err.code == 801) {
+                done();
+              } else {
+                expect().assertFail();
+                done();
+              }
+            });
+          }
         } catch (error) {
           console.error(msgStr + ' Failed. Cause: ' + JSON.stringify(error));
           expect().assertFail();
@@ -4787,25 +4795,29 @@ export default function windowPropertiesTest() {
         console.info(msgStr + ' begin ');
         try {
           let windowClass = windowStage.getMainWindowSync();
-          let promise = windowClass.maximize(window.MaximizePresentation.ENTER_IMMERSIVE_DISABLE_TITLE_AND_DOCK_HOVER);
-          promise.then(async () => {
-            console.info('Succeeded in maximizing the window.');
-            let windowProperties = windowClass.getWindowProperties()
-            console.info(`${msgStr} windowProperties: ${JSON.stringify(windowProperties)}`);
-            expect(windowProperties.isFullScreen).assertEqual(true);
-            expect(windowProperties.isLayoutFullScreen).assertEqual(true);
-            await windowClass.recover();
-            await sleep(200);
+          if (isPCStatus == '' || isAutoWindow == 'false') {
             done();
-          }).catch((err: BusinessError) => {
-            console.error(`${msgStr} Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
-            if (err.code == 801) {
+          } else {
+            let promise = windowClass.maximize(window.MaximizePresentation.ENTER_IMMERSIVE_DISABLE_TITLE_AND_DOCK_HOVER);
+            promise.then(async () => {
+              console.info('Succeeded in maximizing the window.');
+              let windowProperties = windowClass.getWindowProperties()
+              console.info(`${msgStr} windowProperties: ${JSON.stringify(windowProperties)}`);
+              expect(windowProperties.isFullScreen).assertEqual(true);
+              expect(windowProperties.isLayoutFullScreen).assertEqual(true);
+              await windowClass.recover();
+              await sleep(200);
               done();
-            } else {
-              expect().assertFail();
-              done();
-            }
-          });
+            }).catch((err: BusinessError) => {
+              console.error(`${msgStr} Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
+              if (err.code == 801) {
+                done();
+              } else {
+                expect().assertFail();
+                done();
+              }
+            });
+          }
         } catch (error) {
           console.error(msgStr + ' Failed. Cause: ' + JSON.stringify(error));
           expect().assertFail();
