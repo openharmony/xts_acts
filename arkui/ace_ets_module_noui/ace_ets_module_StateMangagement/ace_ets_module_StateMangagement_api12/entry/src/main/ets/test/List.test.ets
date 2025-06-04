@@ -391,7 +391,7 @@ export default function testsuite() {
     LazyForEachTest0120();
     LazyForEachChangeTest0020();
     LazyForEachInterface();
-	  RepeatTest0020();
+	RepeatTest0020();
     RepeatTest0010();
     RepeatTest0030();
     RepeatTest0400();
