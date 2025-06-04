@@ -530,6 +530,107 @@ HWTEST_F(DrawingNativeRoundRectTest, testRoundRectOffsetMultipleCalls, Function 
     OH_Drawing_RectDestroy(rect);
 }
 
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_ROUND_RECT_0500
+ * @tc.name: testRoundRectCopyNormal
+ * @tc.desc: test for testRoundRectCopyNormal
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeRoundRectTest, testRoundRectCopyNormal, Function | SmallTest | Level0) {
+    // 1. Create a rect object by OH_Drawing_RectCreate.
+    OH_Drawing_Rect *rect1 = OH_Drawing_RectCreate(0, 0, 100, 100);
+    EXPECT_NE(rect1, nullptr);
+    // 2. Create a roundRect object by OH_Drawing_RoundRectCreate.
+    OH_Drawing_RoundRect *roundRect1 = OH_Drawing_RoundRectCreate(rect1, 0, 0);
+    EXPECT_NE(roundRect1, nullptr);
+    // 3. Copy a roundRect object by OH_Drawing_RoundRectCopy.
+    OH_Drawing_RoundRect *roundRect2 = OH_Drawing_RoundRectCopy(roundRect1);
+    EXPECT_NE(roundRect2, nullptr);
+    // 4. Create a rect object by OH_Drawing_RectCreate.
+    OH_Drawing_Rect *rect2 = OH_Drawing_RectCreate(0, 0, 100, 100);
+    EXPECT_NE(rect2, nullptr);
+    // 5. Create a roundRect object by OH_Drawing_RoundRectCreate.
+    OH_Drawing_RoundRect *roundRect3 = OH_Drawing_RoundRectCreate(rect2, 20, 20);
+    EXPECT_NE(roundRect3, nullptr);
+    // 6. Copy a roundRect object by OH_Drawing_RoundRectCopy.
+    OH_Drawing_RoundRect *roundRect4 = OH_Drawing_RoundRectCopy(roundRect3);
+    EXPECT_NE(roundRect4, nullptr);
+    // 7. Create a rect object by OH_Drawing_RectCreate.
+    OH_Drawing_Rect *rect3 = OH_Drawing_RectCreate(0, 0, 100, 100);
+    EXPECT_NE(rect3, nullptr);
+    // 8. Create a roundRect object by OH_Drawing_RoundRectCreate.
+    OH_Drawing_RoundRect *roundRect5 = OH_Drawing_RoundRectCreate(rect3, 0, 0);
+    EXPECT_NE(roundRect5, nullptr);
+    // 9. Set the upper left corner of the rectangle as a rounded corner.
+    OH_Drawing_RoundRectSetCorner(roundRect5, OH_Drawing_CornerPos::CORNER_POS_TOP_LEFT, {20, 20});
+    // 10. Copy a roundRect object by OH_Drawing_RoundRectCopy.
+    OH_Drawing_RoundRect *roundRect6 = OH_Drawing_RoundRectCopy(roundRect5);
+    EXPECT_NE(roundRect6, nullptr);
+    // 11. free memory
+    OH_Drawing_RectDestroy(rect1);
+    OH_Drawing_RectDestroy(rect2);
+    OH_Drawing_RectDestroy(rect3);
+    OH_Drawing_RoundRectDestroy(roundRect1);
+    OH_Drawing_RoundRectDestroy(roundRect2);
+    OH_Drawing_RoundRectDestroy(roundRect3);
+    OH_Drawing_RoundRectDestroy(roundRect4);
+    OH_Drawing_RoundRectDestroy(roundRect5);
+    OH_Drawing_RoundRectDestroy(roundRect6);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_ROUND_RECT_0501
+ * @tc.name: testRoundRectCopyNull
+ * @tc.desc: test for testRoundRectCopyNull
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeRoundRectTest, testRoundRectCopyNull, Function | SmallTest | Level3) {
+    // 1. Create a rect object by OH_Drawing_RectCreate.
+    OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    EXPECT_NE(rect, nullptr);
+    // 2. Create a roundRect object by OH_Drawing_RoundRectCreate.
+    OH_Drawing_RoundRect *roundRect1 = OH_Drawing_RoundRectCreate(rect, 0, 0);
+    EXPECT_NE(roundRect1, nullptr);
+    // 3. Copy a roundRect object by OH_Drawing_RoundRectCopy.
+    OH_Drawing_RoundRect *roundRect2 = OH_Drawing_RoundRectCopy(nullptr);
+    EXPECT_EQ(roundRect2, nullptr);
+    // 11. free memory
+    OH_Drawing_RectDestroy(rect);
+    OH_Drawing_RoundRectDestroy(roundRect1);
+    OH_Drawing_RoundRectDestroy(roundRect2);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_ROUND_RECT_0502
+ * @tc.name: testRoundRectCopyMultipleCalls
+ * @tc.desc: test for testRoundRectCopyMultipleCalls
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeRoundRectTest, testRoundRectCopyMultipleCalls, Function | SmallTest | Level3) {
+    // 1. Create a rect object by OH_Drawing_RectCreate.
+    OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    EXPECT_NE(rect, nullptr);
+    // 2. Create a roundRect object by OH_Drawing_RoundRectCreate.
+    OH_Drawing_RoundRect *roundRect1 = OH_Drawing_RoundRectCreate(rect, 0, 0);
+    EXPECT_NE(roundRect1, nullptr);
+    // 3. Copy a roundRect object by OH_Drawing_RoundRectCopy.
+    OH_Drawing_RoundRect *roundRect2 = nullptr;
+    // 4. The function OH_Drawing_RoundRectCopy is called 10 times.
+    for (int i = 0; i < 10; i++) {
+        roundRect2 = OH_Drawing_RoundRectCopy(roundRect1);
+        EXPECT_NE(roundRect2, nullptr);
+    }
+    // 5. free memory
+    OH_Drawing_RectDestroy(rect);
+    OH_Drawing_RoundRectDestroy(roundRect1);
+    OH_Drawing_RoundRectDestroy(roundRect2);
+}
 } // namespace Drawing
 } // namespace Rosen
 } // namespace OHOS
