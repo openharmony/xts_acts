@@ -41,9 +41,6 @@ ohos_js_app_suite("ActsPCSArktsTest") {
   deps = [
     ":ActsPCSArkts",
     "../pcs_arkts_assist:ActsPCSArktsAssist",
-	":ActsPCSArktsTestCopy"
+    ":ActsPCSArktsTestCopy",
   ]
 }
-
-
-
