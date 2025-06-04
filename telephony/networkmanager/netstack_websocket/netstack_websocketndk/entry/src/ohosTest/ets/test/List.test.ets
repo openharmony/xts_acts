@@ -14,7 +14,13 @@
  */
 
 import webSocketTest from './WebSocketTest';
+import webSocketHasNetTest from './WebSocketHasNetTest';
+import connection from '@ohos.net.connection';
+let netHandle = connection.getDefaultNetSync();
 
 export default function testsuite() {
-  webSocketTest()
+  if(netHandle.netId >= 100){
+	webSocketHasNetTest();
+  }
+  webSocketTest();
 }

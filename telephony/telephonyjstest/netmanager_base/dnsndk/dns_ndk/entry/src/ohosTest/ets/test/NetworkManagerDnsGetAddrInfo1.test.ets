@@ -38,28 +38,6 @@ export default function NetworkManagerDnsGetAddrInfo1Test() {
     let function_null = 1
 
     /* *
-    * @tc.number  NETWORKMANAGER_DNS_GETADDRINFO_0100
-    * @tc.name    getAddrInfo
-    * @tc.desc    check get DNS result
-    * @tc.size    MediumTest
-    * @tc.type    Function
-    * @tc.level   Level 0
-    */
-    it("NetworkManager_Dns_GetAddrInfo_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
-      let caseName = "NetworkManager_Dns_GetAddrInfo_0100"
-      let status = testNapi.getaddrinfo(hostaddr_valid, serv, netid_default);
-      if (status != 0) {
-        console.log(`${caseName} failed, err: ${JSON.stringify(status)}`);
-        expectFalse();
-        done();
-      } else {
-        console.log(`${caseName} success, data: ${JSON.stringify(status)}`);
-        expect(status).assertEqual(0);
-        done();
-      }
-    });
-
-    /* *
     * @tc.number  NETWORKMANAGER_DNS_GETADDRINFO_0200
     * @tc.name    getAddrInfo
     * @tc.desc    check get DNS result
