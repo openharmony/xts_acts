@@ -21,6 +21,16 @@ ohos_app_assist_suite("ActsPCSArkts") {
   hap_name = "ActsPCSArkts"
 }
 
+ohos_copy("PyTestCase") {
+  subsystem_name = "xts"
+  part_name = "acts"
+  sources = [
+    "../../../../../base/notification/common_event_service/frameworks/native/src/common_event_support.cpp",
+  ]
+  outputs =
+      [ root_out_dir + "/suites/acts/acts/testcases/common_event.txt" ]
+}
+
 ohos_js_app_suite("ActsPCSArktsTest") {
   test_hap = true
   testonly = true
@@ -33,3 +43,6 @@ ohos_js_app_suite("ActsPCSArktsTest") {
     "../pcs_arkts_assist:ActsPCSArktsAssist",
   ]
 }
+
+
+
