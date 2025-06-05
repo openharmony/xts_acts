@@ -189,6 +189,9 @@
     "MainAbility/pages/Storage/LocalStorageDelete0120",
     "MainAbility/pages/LazyForEach/LazyForEach0120",
     "MainAbility/pages/LazyForEach/LazyForEachChange0020",
-	"MainAbility/pages/Repeat/Repeat0020"
+	"MainAbility/pages/Repeat/Repeat0020",
+    "MainAbility/pages/LazyForEach/LazyForEachInterface",
+    "MainAbility/pages/Repeat/Repeat0010",
+    "MainAbility/pages/Repeat/Repeat0400"
   ]
 }

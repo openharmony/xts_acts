@@ -13,10 +13,12 @@
  * limitations under the License.
  */
 
+
 @ObservedV2
-class DemoGridItemInfo {
+class ListItemInfo {
   @Trace public name: string;
   @Trace public url: string;
+
   constructor(name: string, url: string) {
     this.name = name;
     this.url = url;
@@ -25,11 +27,11 @@ class DemoGridItemInfo {
 
 @Entry
 @ComponentV2
-struct Repeat0020 {
-  @Local itemList: Array<DemoGridItemInfo> = [];
+struct Repeat0010 {
+  @Local itemList: Array<ListItemInfo> = [];
   @Local swipeStartIndex: number = -1;
-  @Local repeat0020_1: string = '-1';
-  @Local repeat0020_2: string = '-1';
+  @Local repeat0010_1: string = '-1';
+  @Local repeat0010_2: string = '-1';
   @Local isLoading: boolean = true;
   @Local hasError: boolean = false;
   private imagesUrl: Array<string> = [
@@ -38,38 +40,40 @@ struct Repeat0020 {
     'app.media.img3',
     'app.media.img4'
   ]
-  private GridScroller: Scroller = new Scroller();
+  private scroller: Scroller = new Scroller();
 
   aboutToAppear(): void {
     for (let i = 0; i < 50; i++) {
-      this.itemList.push(new DemoGridItemInfo('img' + i, this.imagesUrl[i % 4]));
+      this.itemList.push(new ListItemInfo('img' + i, this.imagesUrl[i % 4]));
     }
   }
 
   build() {
-    Column({space: 10}) {
+    Column({ space: 10 }) {
       Column() {
+        Text('list with repeat')
+          .height('3%')
         Button('toIndex[2]')
           .id('toIndex[2]')
           .height('3%')
           .onClick(() => {
-            this.GridScroller.scrollToIndex(2)
+            this.scroller.scrollToIndex(2)
           })
-        Text(this.repeat0020_1)
-          .id('repeat0020_1')
+        Text(this.repeat0010_1)
+          .id('repeat0010_1')
           .height('3%')
-        Text(this.repeat0020_2)
-          .id('repeat0020_2')
+        Text(this.repeat0010_2)
+          .id('repeat0010_2')
           .height('3%')
         Text(this.isLoading && !this.hasError ? 'Normal display' : 'Error display')
           .id('display_status')
           .height('3%')
       }
 
-      Grid(this.GridScroller) {
-        Repeat<DemoGridItemInfo>(this.itemList)
-          .each((obj: RepeatItem<DemoGridItemInfo>) => {
-            GridItem() {
+      List({ scroller: this.scroller }) {
+        Repeat<ListItemInfo>(this.itemList)
+          .each((obj: RepeatItem<ListItemInfo>) => {
+            ListItem() {
               Stack() {
                 Image($r(obj.item.url))
                   .onComplete(() => {
@@ -84,25 +88,24 @@ struct Repeat0020 {
                   })
                 Text(obj.item.name)
                   .backgroundColor(Color.White)
-                  .border({width: 10})
+                  .border({ width: 10 })
               }
             }
             .height('50%')
             .margin(10)
             .onAttach(() => {
-              this.repeat0020_2 = obj.item.name;
+              this.repeat0010_2 = obj.item.name;
             })
-            .onDetach(() =>{
-              this.repeat0020_1 = obj.item.name;
+            .onDetach(() => {
+              this.repeat0010_1 = obj.item.name;
             })
           }
           )
-          .virtualScroll({totalCount: this.itemList.length})
+          .virtualScroll({ totalCount: this.itemList.length })
       }
       .onScrollIndex((start: number, end: number) => {
         this.swipeStartIndex = start;
       })
-      .columnsTemplate('1fr')
       .cachedCount(0)
       .layoutWeight(1)
     }
