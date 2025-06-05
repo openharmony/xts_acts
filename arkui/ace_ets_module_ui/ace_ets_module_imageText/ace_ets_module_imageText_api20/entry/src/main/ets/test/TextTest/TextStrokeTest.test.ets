@@ -62,11 +62,11 @@ export default function TextStrokeTest() {
       await getStroke.click()
       await CommonFunc.sleep(500);
       expect(''+AppStorage.get('TextInputStrokeWidth')).assertEqual('0.00px');
-      expect(''+AppStorage.get('TextInputStrokeColor')).assertEqual('#FF182431');
+      expect(''+AppStorage.get('TextInputStrokeColor')).assertEqual('#FFFFC0CB');
       expect(''+AppStorage.get('TextAreaStrokeWidth')).assertEqual('0.00px');
-      expect(''+AppStorage.get('TextAreaStrokeColor')).assertEqual('#FF182431');
+      expect(''+AppStorage.get('TextAreaStrokeColor')).assertEqual('#FFFFC0CB');
       expect(''+AppStorage.get('SearchStrokeWidth')).assertEqual('0.00px');
-      expect(''+AppStorage.get('SearchStrokeColor')).assertEqual('#FF182431');
+      expect(''+AppStorage.get('SearchStrokeColor')).assertEqual('#FFFFC0CB');
       AppStorage.delete('TextInputStrokeWidth')
       AppStorage.delete('TextInputStrokeColor')
       AppStorage.delete('TextAreaStrokeWidth')
@@ -134,11 +134,11 @@ export default function TextStrokeTest() {
       await getStroke.click()
       await CommonFunc.sleep(500);
       expect(''+AppStorage.get('TextInputStrokeWidth')).assertEqual('-500.00%');
-      expect(''+AppStorage.get('TextInputStrokeColor')).assertEqual('#FF182431');
+      expect(''+AppStorage.get('TextInputStrokeColor')).assertEqual('#FF00000A');
       expect(''+AppStorage.get('TextAreaStrokeWidth')).assertEqual('-500.00%');
-      expect(''+AppStorage.get('TextAreaStrokeColor')).assertEqual('#FF182431');
+      expect(''+AppStorage.get('TextAreaStrokeColor')).assertEqual('#FF00000A');
       expect(''+AppStorage.get('SearchStrokeWidth')).assertEqual('-500.00%');
-      expect(''+AppStorage.get('SearchStrokeColor')).assertEqual('#FF182431');
+      expect(''+AppStorage.get('SearchStrokeColor')).assertEqual('#FF00000A');
       AppStorage.delete('TextInputStrokeWidth')
       AppStorage.delete('TextInputStrokeColor')
       AppStorage.delete('TextAreaStrokeWidth')

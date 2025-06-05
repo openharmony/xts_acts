@@ -20,6 +20,7 @@ import TextInputTypeTest from './TextInputTest/TextInputType.test';
 import ResourceNormalTest from './TextTest/ResourceNormal.test';
 import ResourceModifierTest from './TextTest/ResourceModifier.test';
 import TextStrokeTest from './TextTest/TextStrokeTest.test';
+import StyledStringStrokeTest from './TextTest/StyledStringStrokeTest.test';
 
 
 export default function testsuite() {
@@ -30,4 +31,5 @@ export default function testsuite() {
   ResourceNormalTest();
   ResourceModifierTest();
   TextStrokeTest();
+  StyledStringStrokeTest();
 }
