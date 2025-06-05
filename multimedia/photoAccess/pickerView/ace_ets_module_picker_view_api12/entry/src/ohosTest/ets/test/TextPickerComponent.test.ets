@@ -35,6 +35,7 @@ import {
   ClickType,
   BaseItemInfo,
   SaveMode,
+  ItemDisplayRatio
 } from '@ohos.file.PhotoPickerComponent';
 import { AlbumPickerComponent, AlbumPickerOptions, AlbumInfo } from '@ohos.file.AlbumPickerComponent';
 import photoAccessHelper from '@ohos.file.photoAccessHelper';
@@ -1864,13 +1865,14 @@ export default function TextPicker() {
       let code: number = EventType.PHOTO_PICKER_INFO;
       let pickerOptions: PickerOptions = getDefaultPickerOptions();
       pickerOptions.singleLineConfig = {
-        itemDisplayRatio: 1,
+        itemDisplayRatio: ItemDisplayRatio.SQUARE_RATIO,
         itemBorderRadius: {
           topLeft: 8,
           bottomRight: 8
         },
         itemGap: '10vp'
       };
+      pickerOptions.singleLineConfig.itemDisplayRatio = ItemDisplayRatio.ORIGINAL_SIZE_RATIO;
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/PickerComponent',
         params: {
