@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 
 export default function customComponentOnDrawBehindTest() {
@@ -28,7 +28,7 @@ export default function customComponentOnDrawBehindTest() {
 
     /*
     * @tc.number     : SUB_ARKUI_CAPI_CUSTOMCOMPONENT_ONDRAW_BEHIND_0100
-    * @tc.name       : testCustomComponentOnDraw001
+    * @tc.name       : testCustomComponentOnDrawBehind001
     * @tc.desc       : test onDrawBehind event callback
     * @tc.size       : MediumTest
     * @tc.type       : Function
