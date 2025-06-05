@@ -110,7 +110,7 @@ export default function windowControlsTest() {
         });
       } catch (err) {
         console.error(caseName + 'Failed. Cause:' + JSON.stringify(err));
-        expect(err.code).assertEqual(1300016)
+        expect(err.code).assertEqual(401)
         done();
       }
     });
@@ -138,7 +138,7 @@ export default function windowControlsTest() {
         });
       } catch (err) {
         console.error(caseName + 'Failed. Cause:' + JSON.stringify(err));
-        expect(err.code).assertEqual(1300016)
+        expect(err.code).assertEqual(401)
         done();
       }
     });
