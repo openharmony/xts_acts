@@ -51,11 +51,14 @@
 |1.2|ActsFaMyApplication1[***Static***]()Test|
 |互操作|ActsFaMyApplication1[***Interop***]()Test|
 
-#### 9 BUILD.gn文件由于当前ohosTest不能使用，故test_hap、testonly字段需注释
+#### 9 BUILD.gn文件由于当前ohosTest不能使用，故test_hap字段需注释
 
 ![输入图片说明](/figures/images1.2/2F962E71-41E3-4529-C392-AA15B944208D.png)
 
 #### 10 BUILD.gn必须使用1.2模板名ohos_js_app_static_suite，否则编译环境是1.1
 
 ![输入图片说明](/figures/images1.2/91B25DE1-5955-4851-B84E-3E20F8F5B429.png)
+
+注意：part_name = "自己子系统组件名"
+     subsystem_name = "自己子系统名"
 
