@@ -13,3 +13,7 @@
  * limitations under the License.
  */
 export const testPostOnIdle: (a: string) => void;
+
+export const customComponentOnDrawFrontTest: (a: string) => void;
+
+export const customComponentOnDrawBehindTest: (a: string) => void;

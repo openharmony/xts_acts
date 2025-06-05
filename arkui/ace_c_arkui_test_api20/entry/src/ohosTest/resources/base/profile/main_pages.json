@@ -2,6 +2,8 @@
   "src": [
     "MainAbility/pages/XTSIndex",
     "MainAbility/pages/testgesture",
-    "MainAbility/pages/onIdle/TestPostOnIdle"
+    "MainAbility/pages/onIdle/TestPostOnIdle",
+    "MainAbility/pages/customcomponent/CustomComponentOnDrawBehindTest",
+    "MainAbility/pages/customcomponent/CustomComponentOnDrawFrontTest"
   ]
 }
