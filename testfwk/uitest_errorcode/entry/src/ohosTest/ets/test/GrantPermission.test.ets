@@ -54,7 +54,7 @@ export default function UiTest() {
     * @tc.name: getInputPermission
     * @tc.desc: Grant permission to the input method application.
     */
-    it('getInputPermission', 0, async () => {
+    it('getInputPermission', Level.LEVEL0, async () => {
       await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
       await driver.delayMs(2000)
       let TextInput = await driver.findComponent(ON.type('TextInput'))
