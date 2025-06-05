@@ -119,6 +119,8 @@ export default function SelectContactsTest() {
         let data: number = await contact.addContact(context, contactData);
         console.info(`${caseName} addContact: success data->${JSON.stringify(data)}`);
 
+        let promise = contact.selectContacts({ isMultiSelect: true });
+
         contact.selectContacts({ isMultiSelect: false }).then((data: contact.Contact[]) => {
             console.info(`${caseName} selectContacts: success data->${JSON.stringify(data)}`);
             ExpectTrue(data.length > 0);
@@ -133,7 +135,12 @@ export default function SelectContactsTest() {
         try {
             let driver: Driver = Driver.create();
             let onType1: On = ON.text('测试');
+            let onType2: On = ON.text('完成');
+            let item2: Component = await driver.findComponent(onType2);
             await getComponent(driver, onType1);
+            if (item2) {
+                await getComponent(driver, onType2);
+            }
         } catch (err) {
             console.error(`${caseName} get component catch: err->${JSON.stringify(err)}`);
         }
@@ -176,7 +183,12 @@ export default function SelectContactsTest() {
         try {
             let driver: Driver = Driver.create();
             let onType1: On = ON.text('测试');
+            let onType2: On = ON.text('完成');
+            let item2: Component = await driver.findComponent(onType2);
             await getComponent(driver, onType1);
+            if (item2) {
+                await getComponent(driver, onType2);
+            }
         } catch (err) {
             console.error(`${caseName} get component catch: err->${JSON.stringify(err)}`);
         }
@@ -219,7 +231,12 @@ export default function SelectContactsTest() {
         try {
             let driver: Driver = Driver.create();
             let onType1: On = ON.text('测试');
+            let onType2: On = ON.text('完成');
+            let item2: Component = await driver.findComponent(onType2);
             await getComponent(driver, onType1);
+            if (item2) {
+                await getComponent(driver, onType2);
+            }
         } catch (err) {
             console.error(`${caseName} get component catch: err->${JSON.stringify(err)}`);
         }
@@ -262,7 +279,12 @@ export default function SelectContactsTest() {
         try {
             let driver: Driver = Driver.create();
             let onType1: On = ON.text('测试');
+            let onType2: On = ON.text('完成');
+            let item2: Component = await driver.findComponent(onType2);
             await getComponent(driver, onType1);
+            if (item2) {
+                await getComponent(driver, onType2);
+            }
         } catch (err) {
             console.error(`${caseName} get component catch: err->${JSON.stringify(err)}`);
         }
@@ -305,7 +327,12 @@ export default function SelectContactsTest() {
         try {
             let driver: Driver = Driver.create();
             let onType1: On = ON.text('测试');
+            let onType2: On = ON.text('完成');
+            let item2: Component = await driver.findComponent(onType2);
             await getComponent(driver, onType1);
+            if (item2) {
+                await getComponent(driver, onType2);
+            }
         } catch (err) {
             console.error(`${caseName} get component catch: err->${JSON.stringify(err)}`);
         }
@@ -348,7 +375,12 @@ export default function SelectContactsTest() {
         try {
             let driver: Driver = Driver.create();
             let onType1: On = ON.text('测试');
+            let onType2: On = ON.text('完成');
+            let item2: Component = await driver.findComponent(onType2);
             await getComponent(driver, onType1);
+            if (item2) {
+                await getComponent(driver, onType2);
+            }
         } catch (err) {
             console.error(`${caseName} get component catch: err->${JSON.stringify(err)}`);
         }
@@ -397,7 +429,12 @@ export default function SelectContactsTest() {
         try {
             let driver: Driver = Driver.create();
             let onType1: On = ON.text('测试');
+            let onType2: On = ON.text('完成');
+            let item2: Component = await driver.findComponent(onType2);
             await getComponent(driver, onType1);
+            if (item2) {
+                await getComponent(driver, onType2);
+            }
         } catch (err) {
             console.error(`${caseName} get component catch: err->${JSON.stringify(err)}`);
         }
@@ -446,7 +483,12 @@ export default function SelectContactsTest() {
         try {
             let driver: Driver = Driver.create();
             let onType1: On = ON.text('测试');
+            let onType2: On = ON.text('完成');
+            let item2: Component = await driver.findComponent(onType2);
             await getComponent(driver, onType1);
+            if (item2) {
+                await getComponent(driver, onType2);
+            }
         } catch (err) {
             console.error(`${caseName} get component catch: err->${JSON.stringify(err)}`);
         }
@@ -495,7 +537,12 @@ export default function SelectContactsTest() {
         try {
             let driver: Driver = Driver.create();
             let onType1: On = ON.text('测试');
+            let onType2: On = ON.text('完成');
+            let item2: Component = await driver.findComponent(onType2);
             await getComponent(driver, onType1);
+            if (item2) {
+                await getComponent(driver, onType2);
+            }
         } catch (err) {
             console.error(`${caseName} get component catch: err->${JSON.stringify(err)}`);
         }
@@ -547,7 +594,12 @@ export default function SelectContactsTest() {
         try {
             let driver: Driver = Driver.create();
             let onType1: On = ON.text('测试');
+            let onType2: On = ON.text('完成');
+            let item2: Component = await driver.findComponent(onType2);
             await getComponent(driver, onType1);
+            if (item2) {
+                await getComponent(driver, onType2);
+            }
         } catch (err) {
             console.error(`${caseName} get component catch: err->${JSON.stringify(err)}`);
         }
@@ -599,7 +651,12 @@ export default function SelectContactsTest() {
         try {
             let driver: Driver = Driver.create();
             let onType1: On = ON.text('测试');
+            let onType2: On = ON.text('完成');
+            let item2: Component = await driver.findComponent(onType2);
             await getComponent(driver, onType1);
+            if (item2) {
+                await getComponent(driver, onType2);
+            }
         } catch (err) {
             console.error(`${caseName} get component catch: err->${JSON.stringify(err)}`);
         }
@@ -651,7 +708,12 @@ export default function SelectContactsTest() {
         try {
             let driver: Driver = Driver.create();
             let onType1: On = ON.text('测试');
+            let onType2: On = ON.text('完成');
+            let item2: Component = await driver.findComponent(onType2);
             await getComponent(driver, onType1);
+            if (item2) {
+                await getComponent(driver, onType2);
+            }
         } catch (err) {
             console.error(`${caseName} get component catch: err->${JSON.stringify(err)}`);
         }
