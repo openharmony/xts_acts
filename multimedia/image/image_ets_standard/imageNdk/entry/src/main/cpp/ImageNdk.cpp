@@ -2756,6 +2756,8 @@ static napi_value testCropAndScaleStrategy(napi_env env, napi_callback_info info
         napi_create_int32(env, 0, &result);
     } else {
         napi_create_int32(env, -1, &result);
+    }
+}
 
 static napi_value testCropAndScaleStrategyWithCropRegion(napi_env env, napi_callback_info info) {
     napi_value result = nullptr;
@@ -2865,6 +2867,8 @@ static napi_value testCropAndScaleStrategyWithCropRegion(napi_env env, napi_call
         napi_create_int32(env, 0, &result);
     } else {
         napi_create_int32(env, -1, &result);
+    }
+}
 
 static napi_value testCropAndScaleStrategyErr(napi_env env, napi_callback_info info) {
     napi_value result = nullptr;
@@ -2943,6 +2947,7 @@ static napi_value testCropAndScaleStrategyErr(napi_env env, napi_callback_info i
         napi_create_int32(env, -1, &result);
         return result;
     }
+}
 
 static napi_value GetImagePackerSupportedFormats(napi_env env, napi_callback_info info)
 {
