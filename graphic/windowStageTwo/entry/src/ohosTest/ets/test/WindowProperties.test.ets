@@ -60,6 +60,39 @@ async function terminateAbility3(caseName: string) {
   await sleep(1000)
 }
 
+async function startAbility4(caseName: string, context: common.UIAbilityContext, options?: StartOptions) {
+  let want: Want = {
+    bundleName: AppStorage.get('bundleName'),
+    abilityName: 'StartTestAbility4',
+  };
+  if (options) {
+    await context.startAbility(want, options).then(() => {
+      console.info(`${caseName} Succeeded in starting ability.`);
+    }).catch((err: BusinessError) => {
+      console.info(`${caseName} Failed in starting ability. Cause message: ${err.message}`);
+    });
+  } else {
+    await context.startAbility(want).then(() => {
+      console.info(`${caseName} Succeeded in starting ability.`);
+    }).catch((err: BusinessError) => {
+      console.info(`${caseName} Failed in starting ability. Cause message: ${err.message}`);
+    });
+  }
+  await sleep(1000)
+  let windowStageStart = AppStorage.get('windowStageStartTest4') as window.WindowStage;
+  return windowStageStart
+}
+
+async function terminateAbility4(caseName: string) {
+  let pageContext = AppStorage.get('contextTest4') as common.UIAbilityContext
+  await pageContext.terminateSelf().then(() => {
+    console.log(`${caseName} terminateSelf success`);
+  }).catch((err: BusinessError) => {
+    console.error(`${caseName} terminateSelf fail, err: ${JSON.stringify(err)}`);
+  });
+  await sleep(1000)
+}
+
 export default function windowPropertiesTest() {
     describe('windowProperties_test', () => {
         let sleep = (sleepMs: number) => new Promise<string>(resolve => setTimeout(resolve, sleepMs));
@@ -5672,6 +5705,11 @@ export default function windowPropertiesTest() {
 
         try {
           const windowClass = await windowStage.createSubWindow('test_GETWINDOWPROPERTIES_TRANSPARENT_0200');
+          await sleep(200);
+          await windowClass.setUIContent('testability/pages/First/index2');
+          await sleep(200);
+          await windowClass.showWindow();
+          await sleep(200);
           windowClass.setWindowBackgroundColor('#0000FF00');
           console.error('Succeeded in setWindowBackgroundColor.');
           let windowProperties = windowClass!.getWindowProperties()
@@ -5708,6 +5746,11 @@ export default function windowPropertiesTest() {
           ctx: context
         };
         let windowClass = await window.createWindow(config);
+        await sleep(200);
+        await windowClass.setUIContent('testability/pages/First/index2');
+        await sleep(200);
+        await windowClass.showWindow();
+        await sleep(200);
         try {
           windowClass.setWindowBackgroundColor('#0000FF00');
           console.info('Succeeded in setWindowBackgroundColor.');
@@ -6000,22 +6043,32 @@ export default function windowPropertiesTest() {
        */
       it('test_GETWINDOWPROPERTIES_WINDOWRECT_2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async(done: Function) => {
         let msgStr = 'test_GETWINDOWPROPERTIES_WINDOWRECT_2400';
-        let windowStageStart = await startAbility3(msgStr, context);
+        let windowStageStart = await startAbility4(msgStr, context);
         try {
           let windowClass = windowStageStart.getMainWindowSync();
           let windowProperties = windowClass.getWindowProperties()
           console.info(`${msgStr} windowProperties: ${JSON.stringify(windowProperties)}`);
+          let drawableRect = windowProperties.drawableRect;
+          console.info(`${msgStr} drawableRect: ${JSON.stringify(drawableRect)}`);
+          expect(drawableRect.left).assertEqual(0);
+          expect(drawableRect.top).assertEqual(0);
+          expect(drawableRect.width).assertEqual(0);
+          expect(drawableRect.height).assertEqual(0);
+          expect(windowProperties.type).assertEqual(1);
           let windowRect = windowProperties.windowRect;
           console.info(`${msgStr} windowRect: ${JSON.stringify(windowRect)}`);
-          expect(windowRect.left).assertLarger(0);
-          expect(windowRect.top).assertLarger(0);
-          expect(windowRect.width).assertLarger(0);
-          expect(windowRect.height).assertLarger(0);
-          expect(windowProperties.type).assertEqual(1);
           if (isPCStatus == '' || isAutoWindow == 'false') {
             expect(windowProperties.isFullScreen).assertEqual(false);
+            expect(windowRect.left).assertEqual(0);
+            expect(windowRect.top).assertEqual(0);
+            expect(windowRect.width).assertLarger(0);
+            expect(windowRect.height).assertLarger(0);
           } else {
             expect(windowProperties.isFullScreen).assertEqual(true);
+            expect(windowRect.left).assertLarger(0);
+            expect(windowRect.top).assertLarger(0);
+            expect(windowRect.width).assertLarger(0);
+            expect(windowRect.height).assertLarger(0);
           }
           expect(windowProperties.isLayoutFullScreen).assertEqual(false);
           expect(windowProperties.isTransparent).assertEqual(false);
@@ -6028,11 +6081,11 @@ export default function windowPropertiesTest() {
           expect(windowProperties.displayId).assertLargerOrEqual(0);
           await windowClass.setUIContent('testability/pages/First/index2');
           await sleep(200);
-          await terminateAbility3(msgStr);
+          await terminateAbility4(msgStr);
           done();
         } catch (error) {
           console.error(msgStr + ' Failed to create the subwindow. Cause: ' + JSON.stringify(error));
-          await terminateAbility3(msgStr);
+          await terminateAbility4(msgStr);
           expect().assertFail();
           done();
         }

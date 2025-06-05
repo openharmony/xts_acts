@@ -89,7 +89,6 @@ export default function windowEventTest() {
     it('testTouchOutSide_TopBar_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testTouchOutSide_TopBar_0100 ';
       console.log(caseName + 'begin');
-      console.error(`${caseName} aaaaa: ${7 / 2}`)
       let mainWindow = windowStage.getMainWindowSync();
       let subWindowClass = await windowStage.createSubWindow('testTouchOutSide_TopBar_0100');
       await subWindowClass.setUIContent('testability/pages/First/index2');
