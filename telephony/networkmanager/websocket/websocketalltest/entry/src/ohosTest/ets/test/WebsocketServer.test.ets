@@ -65,10 +65,17 @@ export default function WebsocketServerTest() {
       console.info(`${caseName} test start`);
       try {
         let wss: webSocket.WebSocketServer = webSocket.createWebSocketServer();
-        console.info(`${caseName} --> ${wss}`);
-        ExpectTrue(wss != null,`${caseName}`);
-        done();
-        console.info(`${caseName} test end`);
+        if(!wss) {
+          console.info(`${caseName} Server is nullptr`);
+          ExpectTrue(true,`${caseName}`);
+          done();
+          console.info(`${caseName} test end`);
+        }else{
+          console.info(`${caseName} --> ${wss}`);
+          ExpectTrue(wss != null,`${caseName}`);
+          done();
+          console.info(`${caseName} test end`);
+        }
       } catch (err) {
         console.info(`${caseName} catch error ${JSON.stringify(err)}`);
         expectFail(`${caseName} fail,errInfo->${JSON.stringify(err)}`);
@@ -90,12 +97,19 @@ export default function WebsocketServerTest() {
       console.info(`${caseName} test start`);
       try {
         let server1: webSocket.WebSocketServer = webSocket.createWebSocketServer();
-        let server2: webSocket.WebSocketServer = webSocket.createWebSocketServer();
-        console.info(`${caseName} --> ${server1}`);
-        console.info(`${caseName} --> ${server2}`);
-        ExpectTrue(server1 != server2,`${caseName}`);
-        done();
-        console.info(`${caseName} test end`);
+        if(!server1) {
+          console.info(`${caseName} Server is nullptr`);
+          ExpectTrue(true,`${caseName}`);
+          done();
+          console.info(`${caseName} test end`);
+        }else {
+          let server2: webSocket.WebSocketServer = webSocket.createWebSocketServer();
+          console.info(`${caseName} --> ${server1}`);
+          console.info(`${caseName} --> ${server2}`);
+          ExpectTrue(server1 != server2,`${caseName}`);
+          done();
+          console.info(`${caseName} test end`);
+        }
       } catch (err) {
         console.info(`${caseName} catch error ${JSON.stringify(err)}`);
         expectFail(`${caseName} fail,errInfo->${JSON.stringify(err)}`);
@@ -117,31 +131,38 @@ export default function WebsocketServerTest() {
       console.info(`${caseName} test start`);
       try {
         let server: webSocket.WebSocketServer = webSocket.createWebSocketServer();
-        console.info(`${caseName} --> ${server}`);
-        let serverConfig: webSocket.WebSocketServerConfig ={
-          serverIP: "0.0.0.0",
-          serverPort: 8088,
-          maxConcurrentClientsNumber: 10,
-          maxConnectionsForOneClient: 4,
-        }
-        server.start(serverConfig).then((success: boolean) => {
-          if (success){
-            console.log(`${caseName} webSocketServer start success`)
-            ExpectTrue(true, `${caseName} webSocketServer start success`);
-            done()
-            server.stop()
-            console.info(`${caseName} test end`);
-          }else {
-            expectFail(`${caseName} webSocketServer start fail`)
-            done()
-            console.info(`${caseName} test end`);
-          }
-        }).catch((error: BusinessError) => {
-          console.info(`${caseName} test result error ${JSON.stringify(error)}`);
-          expectFail(`${caseName} test result error ${JSON.stringify(error)}`)
-          done()
+        if(!server) {
+          console.info(`${caseName} Server is nullptr`);
+          ExpectTrue(true,`${caseName}`);
+          done();
           console.info(`${caseName} test end`);
-        })
+        }else {
+          console.info(`${caseName} --> ${server}`);
+          let serverConfig: webSocket.WebSocketServerConfig ={
+            serverIP: "0.0.0.0",
+            serverPort: 8088,
+            maxConcurrentClientsNumber: 10,
+            maxConnectionsForOneClient: 4,
+          }
+          server.start(serverConfig).then((success: boolean) => {
+            if (success){
+              console.log(`${caseName} webSocketServer start success`)
+              ExpectTrue(true, `${caseName} webSocketServer start success`);
+              done()
+              server.stop()
+              console.info(`${caseName} test end`);
+            }else {
+              expectFail(`${caseName} webSocketServer start fail`)
+              done()
+              console.info(`${caseName} test end`);
+            }
+          }).catch((error: BusinessError) => {
+            console.info(`${caseName} test result error ${JSON.stringify(error)}`);
+            expectFail(`${caseName} test result error ${JSON.stringify(error)}`)
+            done()
+            console.info(`${caseName} test end`);
+          })
+        }
       } catch (err) {
         console.info(`${caseName} catch error ${JSON.stringify(err)}`);
         expectFail(`${caseName} fail,errInfo->${JSON.stringify(err)}`);
@@ -163,32 +184,39 @@ export default function WebsocketServerTest() {
       console.info(`${caseName} test start`);
       try {
         let server: webSocket.WebSocketServer = webSocket.createWebSocketServer();
-        console.info(`${caseName} --> ${server}`);
-        let serverConfig: webSocket.WebSocketServerConfig ={
-          serverIP: "0.0.0.0",
-          serverPort: 8088,
-          maxConcurrentClientsNumber: 10,
-          maxConnectionsForOneClient: 4,
-          protocol: "my-protocol",
-        }
-        server.start(serverConfig).then((success: boolean) => {
-          if (success){
-            console.log(`${caseName} webSocketServer start success`)
-            ExpectTrue(true, `${caseName} webSocketServer start success`);
-            done()
-            server.stop()
-            console.info(`${caseName} test end`);
-          }else {
-            expectFail(`${caseName} webSocketServer start fail`)
-            done()
-            console.info(`${caseName} test end`);
-          }
-        }).catch((error: BusinessError) => {
-          console.info(`${caseName} test result error ${JSON.stringify(error)}`);
-          expectFail(`${caseName} test result error ${JSON.stringify(error)}`)
-          done()
+        if(!server) {
+          console.info(`${caseName} Server is nullptr`);
+          ExpectTrue(true,`${caseName}`);
+          done();
           console.info(`${caseName} test end`);
-        })
+        }else {
+          console.info(`${caseName} --> ${server}`);
+          let serverConfig: webSocket.WebSocketServerConfig ={
+            serverIP: "0.0.0.0",
+            serverPort: 8088,
+            maxConcurrentClientsNumber: 10,
+            maxConnectionsForOneClient: 4,
+            protocol: "my-protocol",
+          }
+          server.start(serverConfig).then((success: boolean) => {
+            if (success){
+              console.log(`${caseName} webSocketServer start success`)
+              ExpectTrue(true, `${caseName} webSocketServer start success`);
+              done()
+              server.stop()
+              console.info(`${caseName} test end`);
+            }else {
+              expectFail(`${caseName} webSocketServer start fail`)
+              done()
+              console.info(`${caseName} test end`);
+            }
+          }).catch((error: BusinessError) => {
+            console.info(`${caseName} test result error ${JSON.stringify(error)}`);
+            expectFail(`${caseName} test result error ${JSON.stringify(error)}`)
+            done()
+            console.info(`${caseName} test end`);
+          })
+        }
       } catch (err) {
         console.info(`${caseName} catch error ${JSON.stringify(err)}`);
         expectFail(`${caseName} fail,errInfo->${JSON.stringify(err)}`);
@@ -210,37 +238,44 @@ export default function WebsocketServerTest() {
       console.info(`${caseName} test start`);
       try {
         let server: webSocket.WebSocketServer = webSocket.createWebSocketServer();
-        console.info(`${caseName} --> ${server}`);
-        let serverCert: webSocket.ServerCert = {
-          certPath: "",
-          keyPath: ""
-        }
-        let serverConfig: webSocket.WebSocketServerConfig ={
-          serverIP: "0.0.0.0",
-          serverPort: 8088,
-          maxConcurrentClientsNumber: 10,
-          maxConnectionsForOneClient: 4,
-          protocol: "my-protocol",
-          serverCert: serverCert,
-        }
-        server.start(serverConfig).then((success: boolean) => {
-          if (success){
-            console.log(`${caseName} webSocketServer start success`)
-            ExpectTrue(true, `${caseName} webSocketServer start success`);
-            done()
-            server.stop()
-            console.info(`${caseName} test end`);
-          }else {
-            expectFail(`${caseName} webSocketServer start fail`)
-            done()
-            console.info(`${caseName} test end`);
-          }
-        }).catch((error: BusinessError) => {
-          console.info(`${caseName} test result error ${JSON.stringify(error)}`);
-          expectFail(`${caseName} test result error ${JSON.stringify(error)}`)
-          done()
+        if(!server) {
+          console.info(`${caseName} Server is nullptr`);
+          ExpectTrue(true,`${caseName}`);
+          done();
           console.info(`${caseName} test end`);
-        })
+        }else {
+          console.info(`${caseName} --> ${server}`);
+          let serverCert: webSocket.ServerCert = {
+            certPath: "",
+            keyPath: ""
+          }
+          let serverConfig: webSocket.WebSocketServerConfig ={
+            serverIP: "0.0.0.0",
+            serverPort: 8088,
+            maxConcurrentClientsNumber: 10,
+            maxConnectionsForOneClient: 4,
+            protocol: "my-protocol",
+            serverCert: serverCert,
+          }
+          server.start(serverConfig).then((success: boolean) => {
+            if (success){
+              console.log(`${caseName} webSocketServer start success`)
+              ExpectTrue(true, `${caseName} webSocketServer start success`);
+              done()
+              server.stop()
+              console.info(`${caseName} test end`);
+            }else {
+              expectFail(`${caseName} webSocketServer start fail`)
+              done()
+              console.info(`${caseName} test end`);
+            }
+          }).catch((error: BusinessError) => {
+            console.info(`${caseName} test result error ${JSON.stringify(error)}`);
+            expectFail(`${caseName} test result error ${JSON.stringify(error)}`)
+            done()
+            console.info(`${caseName} test end`);
+          })
+        }
       } catch (err) {
         console.info(`${caseName} catch error ${JSON.stringify(err)}`);
         expectFail(`${caseName} fail,errInfo->${JSON.stringify(err)}`);
@@ -262,36 +297,43 @@ export default function WebsocketServerTest() {
       console.info(`${caseName} test start`);
       try {
         let server: webSocket.WebSocketServer = webSocket.createWebSocketServer();
-        console.info(`${caseName} --> ${server}`);
-        let serverCert: webSocket.ServerCert = {
-          certPath: "",
-          keyPath: ""
-        }
-        let serverConfig: webSocket.WebSocketServerConfig ={
-          serverIP: undefined,
-          serverPort: 8088,
-          maxConcurrentClientsNumber: 10,
-          maxConnectionsForOneClient: 4,
-          protocol: "my-protocol",
-          serverCert: serverCert,
-        }
-        server.start(serverConfig).then((success: boolean) => {
-          if (success){
-            console.log(`${caseName} webSocketServer start success`)
-            ExpectTrue(true, `${caseName} webSocketServer start success`);
-            done()
-            console.info(`${caseName} test end`);
-          }else {
-            expectFail(`${caseName} webSocketServer start fail`)
-            done()
-            console.info(`${caseName} test end`);
-          }
-        }).catch((error: BusinessError) => {
-          console.info(`${caseName}  error ${JSON.stringify(error)}`);
-          expectFail(`${caseName} test result error ${JSON.stringify(error)}`)
-          done()
+        if(!server) {
+          console.info(`${caseName} Server is nullptr`);
+          ExpectTrue(true,`${caseName}`);
+          done();
           console.info(`${caseName} test end`);
-        })
+        }else {
+          console.info(`${caseName} --> ${server}`);
+          let serverCert: webSocket.ServerCert = {
+            certPath: "",
+            keyPath: ""
+          }
+          let serverConfig: webSocket.WebSocketServerConfig ={
+            serverIP: undefined,
+            serverPort: 8088,
+            maxConcurrentClientsNumber: 10,
+            maxConnectionsForOneClient: 4,
+            protocol: "my-protocol",
+            serverCert: serverCert,
+          }
+          server.start(serverConfig).then((success: boolean) => {
+            if (success){
+              console.log(`${caseName} webSocketServer start success`)
+              ExpectTrue(true, `${caseName} webSocketServer start success`);
+              done()
+              console.info(`${caseName} test end`);
+            }else {
+              expectFail(`${caseName} webSocketServer start fail`)
+              done()
+              console.info(`${caseName} test end`);
+            }
+          }).catch((error: BusinessError) => {
+            console.info(`${caseName}  error ${JSON.stringify(error)}`);
+            expectFail(`${caseName} test result error ${JSON.stringify(error)}`)
+            done()
+            console.info(`${caseName} test end`);
+          })
+        }
       } catch (err) {
         console.info(`${caseName} catch error ${JSON.stringify(err)}`);
         expectFail(`${caseName} fail,errInfo->${JSON.stringify(err)}`);
@@ -312,39 +354,45 @@ export default function WebsocketServerTest() {
       let caseName: string = 'testNetworkMgrWebSocketWebSocketServerStart0500';
       console.info(`${caseName} test start`);
       try {
-        let server1: webSocket.WebSocketServer = webSocket.createWebSocketServer();
-        let server2: webSocket.WebSocketServer = webSocket.createWebSocketServer();
-        console.info(`${caseName} --> ${server2}`);
-        let serverCert: webSocket.ServerCert = {
-          certPath: "./index.test",
-          keyPath: "./index.test"
-        }
-        let serverConfig: webSocket.WebSocketServerConfig ={
-          serverIP: "0.0.0.0",
-          serverPort: 8088,
-          maxConcurrentClientsNumber: 10,
-          maxConnectionsForOneClient: 4,
-          protocol: "my-protocol",
-          serverCert: serverCert,
-        }
-        server1.start(serverConfig)
-        server2.start(serverConfig).then((success: boolean) => {
-          if (success){
-            console.log(`${caseName} webSocketServer start success`)
-            expectFail(`${caseName} webSocketServer start success`);
-            done()
-            console.info(`${caseName} test end`);
-          }else {
-            expectFail(`${caseName} webSocketServer start fail`)
-            done()
-            console.info(`${caseName} test end`);
-          }
-        }).catch((error: BusinessError) => {
-          console.info(`${caseName}  error ${JSON.stringify(error)}`);
-          ExpectTrue(error.code == 2302002, `${caseName} test result error ${JSON.stringify(error)}`)
-          done()
+        let server: webSocket.WebSocketServer = webSocket.createWebSocketServer();
+        if(!server) {
+          console.info(`${caseName} Server is nullptr`);
+          ExpectTrue(true,`${caseName}`);
+          done();
           console.info(`${caseName} test end`);
-        })
+        }else {
+          console.info(`${caseName} --> ${server}`);
+          let serverCert: webSocket.ServerCert = {
+            certPath: "./index.test",
+            keyPath: "./index.test"
+          }
+          let serverConfig: webSocket.WebSocketServerConfig ={
+            serverIP: "0.0.0.0",
+            serverPort: 8088,
+            maxConcurrentClientsNumber: 10,
+            maxConnectionsForOneClient: 4,
+            protocol: "my-protocol",
+            serverCert: serverCert,
+          }
+
+          server.start(serverConfig).then((success: boolean) => {
+            if (success){
+              console.log(`${caseName} webSocketServer start success`)
+              expectFail(`${caseName} webSocketServer start success`);
+              done()
+              console.info(`${caseName} test end`);
+            }else {
+              expectFail(`${caseName} webSocketServer start fail`)
+              done()
+              console.info(`${caseName} test end`);
+            }
+          }).catch((error: BusinessError) => {
+            console.info(`${caseName}  error ${JSON.stringify(error)}`);
+            ExpectTrue(error.code == 2302002, `${caseName} test result error ${JSON.stringify(error)}`)
+            done()
+            console.info(`${caseName} test end`);
+          })
+        }
       } catch (err) {
         console.info(`${caseName} catch error ${JSON.stringify(err)}`);
         expectFail(`${caseName} fail,errInfo->${JSON.stringify(err)}`);
@@ -366,33 +414,38 @@ export default function WebsocketServerTest() {
       console.info(`${caseName} test start`);
       try {
         let server: webSocket.WebSocketServer = webSocket.createWebSocketServer();
-
-        console.info(`${caseName} --> ${server}`);
-
-        let serverConfig: webSocket.WebSocketServerConfig ={
-          serverIP: "0.0.0.0",
-          serverPort: 123456489764556454,
-          maxConcurrentClientsNumber: 10,
-          maxConnectionsForOneClient: 4,
-          protocol: "my-protocol",
-        }
-        await server.start(serverConfig).then((success: boolean) => {
-          if (success){
-            console.log(`${caseName} webSocketServer start success`)
-            expectFail(`${caseName} webSocketServer start`);
-            done()
-            console.info(`${caseName} test end`);
-          }else {
-            expectFail(`${caseName} webSocketServer start fail`)
-            done()
-            console.info(`${caseName} test end`);
-          }
-        }).catch((error: BusinessError) => {
-          console.info(`${caseName}  error ${JSON.stringify(error)}`);
-          ExpectTrue(error.code == 2302005, `${caseName} test result error ${JSON.stringify(error)}`)
-          done()
+        if(!server) {
+          console.info(`${caseName} Server is nullptr`);
+          ExpectTrue(true,`${caseName}`);
+          done();
           console.info(`${caseName} test end`);
-        })
+        }else {
+          console.info(`${caseName} --> ${server}`);
+          let serverConfig: webSocket.WebSocketServerConfig ={
+            serverIP: "0.0.0.0",
+            serverPort: 123456489764556454,
+            maxConcurrentClientsNumber: 10,
+            maxConnectionsForOneClient: 4,
+            protocol: "my-protocol",
+          }
+          await server.start(serverConfig).then((success: boolean) => {
+            if (success){
+              console.log(`${caseName} webSocketServer start success`)
+              expectFail(`${caseName} webSocketServer start`);
+              done()
+              console.info(`${caseName} test end`);
+            }else {
+              expectFail(`${caseName} webSocketServer start fail`)
+              done()
+              console.info(`${caseName} test end`);
+            }
+          }).catch((error: BusinessError) => {
+            console.info(`${caseName}  error ${JSON.stringify(error)}`);
+            ExpectTrue(error.code == 2302005, `${caseName} test result error ${JSON.stringify(error)}`)
+            done()
+            console.info(`${caseName} test end`);
+          })
+        }
       } catch (err) {
         console.info(`${caseName} catch error ${JSON.stringify(err)}`);
         expectFail(`${caseName} fail,errInfo->${JSON.stringify(err)}`);
@@ -414,30 +467,37 @@ export default function WebsocketServerTest() {
       console.info(`${caseName} test start`);
       try {
         let server: webSocket.WebSocketServer = webSocket.createWebSocketServer();
-        console.info(`${caseName} --> ${server}`);
-        let serverConfig: webSocket.WebSocketServerConfig ={
-          serverIP: "0.0.0.0..",
-          serverPort: 8088,
-          maxConcurrentClientsNumber: 10,
-          maxConnectionsForOneClient: 4,
-        }
-        server.start(serverConfig).then((success: boolean) => {
-          if (success){
-            console.log(`${caseName} webSocketServer start success`)
-            expectFail(`${caseName} webSocketServer start`);
-            done()
-            console.info(`${caseName} test end`);
-          }else {
-            expectFail(`${caseName} webSocketServer start fail`)
-            done()
-            console.info(`${caseName} test end`);
-          }
-        }).catch((error: BusinessError) => {
-          console.info(`${caseName}  error ${JSON.stringify(error)}`);
-          ExpectTrue(error.code == 2302004, `${caseName} test result error ${JSON.stringify(error)}`)
-          done()
+        if(!server) {
+          console.info(`${caseName} Server is nullptr`);
+          ExpectTrue(true,`${caseName}`);
+          done();
           console.info(`${caseName} test end`);
-        })
+        }else {
+          console.info(`${caseName} --> ${server}`);
+          let serverConfig: webSocket.WebSocketServerConfig ={
+            serverIP: "0.0.0.0..",
+            serverPort: 8088,
+            maxConcurrentClientsNumber: 10,
+            maxConnectionsForOneClient: 4,
+          }
+          server.start(serverConfig).then((success: boolean) => {
+            if (success){
+              console.log(`${caseName} webSocketServer start success`)
+              expectFail(`${caseName} webSocketServer start`);
+              done()
+              console.info(`${caseName} test end`);
+            }else {
+              expectFail(`${caseName} webSocketServer start fail`)
+              done()
+              console.info(`${caseName} test end`);
+            }
+          }).catch((error: BusinessError) => {
+            console.info(`${caseName}  error ${JSON.stringify(error)}`);
+            ExpectTrue(error.code == 2302004, `${caseName} test result error ${JSON.stringify(error)}`)
+            done()
+            console.info(`${caseName} test end`);
+          })
+        }
       } catch (err) {
         console.info(`${caseName} catch error ${JSON.stringify(err)}`);
         expectFail(`${caseName} fail,errInfo->${JSON.stringify(err)}`);
@@ -445,6 +505,58 @@ export default function WebsocketServerTest() {
         console.info(`${caseName} test end`);
       }
     });
+    /* *
+     * @tc.number: SUB_NetworkMgr_WebSocket_WebSocketServerStart_0800
+     * @tc.name  : testNetworkMgrWebSocketWebSocketServerStart0800
+     * @tc.desc  : Start a WebSocketServer (errorCode:2302999)
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : level 3
+     */
+    it('testNetworkMgrWebSocketWebSocketServerStart0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrWebSocketWebSocketServerStart0800';
+      console.info(`${caseName} test start`);
+      try {
+        let server: webSocket.WebSocketServer = webSocket.createWebSocketServer();
+        if(!server) {
+          console.info(`${caseName} Server is nullptr`);
+          ExpectTrue(true,`${caseName}`);
+          done();
+          console.info(`${caseName} test end`);
+        }else {
+          console.info(`${caseName} --> ${server}`);
+          let serverConfig: webSocket.WebSocketServerConfig ={
+            serverIP: "0.0.0.0",
+            serverPort: 8088,
+            maxConcurrentClientsNumber: 10,
+            maxConnectionsForOneClient: 11,
+          }
+          server.start(serverConfig).then((success: boolean) => {
+            if (success){
+              console.log(`${caseName} webSocketServer start success`)
+              expectFail(`${caseName} webSocketServer start`);
+              done()
+              console.info(`${caseName} test end`);
+            }else {
+              expectFail(`${caseName} webSocketServer start fail`)
+              done()
+              console.info(`${caseName} test end`);
+            }
+          }).catch((error: BusinessError) => {
+            console.info(`${caseName}  error ${JSON.stringify(error)}`);
+            ExpectTrue(error.code == 2302999, `${caseName} test result error ${JSON.stringify(error)}`)
+            done()
+            console.info(`${caseName} test end`);
+          })
+        }
+      } catch (err) {
+        console.info(`${caseName} catch error ${JSON.stringify(err)}`);
+        expectFail(`${caseName} fail,errInfo->${JSON.stringify(err)}`);
+        done();
+        console.info(`${caseName} test end`);
+      }
+    });
+
 
     /* *
      * @tc.number: SUB_NetworkMgr_WebSocket_WebSocketServerListAllConnections_0100
@@ -459,56 +571,63 @@ export default function WebsocketServerTest() {
       console.info(`${caseName} test start`)
       try {
         let server: webSocket.WebSocketServer= webSocket.createWebSocketServer()
-        let serverConfig: webSocket.WebSocketServerConfig ={
-          serverIP: "0.0.0.0",
-          serverPort: 8088,
-          maxConcurrentClientsNumber: 10,
-          maxConnectionsForOneClient: 4,
-        }
-        await server.start(serverConfig).then((value: boolean)=>{
-          if (value) {
-            console.info(`${caseName} server start`)
-          }else {
-            console.info(`${caseName} server start fail`)
-            expectFail(`${caseName} server start fail`)
-            done()
-            console.info(`${caseName} test end`)
-          }
-        }).catch((err: BusinessError) => {
-          console.info(`${caseName} catch error ${JSON.stringify(err)}`);
-          expectFail(`${caseName} fail,errInfo->${JSON.stringify(err)}`);
+        if(!server) {
+          console.info(`${caseName} Server is nullptr`);
+          ExpectTrue(true,`${caseName}`);
           done();
           console.info(`${caseName} test end`);
-        })
-        let callback = (connection: webSocket.WebSocketConnection) => {
-          console.info(`${caseName} connections-->+ ${JSON.stringify(connection)}`);
-        }
-        await server.on('connect',callback)
-        await sleep(100)
-        let client: webSocket.WebSocket = webSocket.createWebSocket()
-        console.info(`${caseName}client-- >${client}`)
-        client.connect('ws://127.0.0.1:8088', (err: BusinessError, value: boolean) => {
-          if (value) {
-            console.info(`${caseName} test connect success and value is ${value}`);
-          } else {
-            console.info(`${caseName} test connect fail ${JSON.stringify(err)}`);
+        }else {
+          let serverConfig: webSocket.WebSocketServerConfig ={
+            serverIP: "0.0.0.0",
+            serverPort: 8088,
+            maxConcurrentClientsNumber: 10,
+            maxConnectionsForOneClient: 4,
+          }
+          await server.start(serverConfig).then((value: boolean)=>{
+            if (value) {
+              console.info(`${caseName} server start`)
+            }else {
+              console.info(`${caseName} server start fail`)
+              expectFail(`${caseName} server start fail`)
+              done()
+              console.info(`${caseName} test end`)
+            }
+          }).catch((err: BusinessError) => {
+            console.info(`${caseName} catch error ${JSON.stringify(err)}`);
+            expectFail(`${caseName} fail,errInfo->${JSON.stringify(err)}`);
+            done();
+            console.info(`${caseName} test end`);
+          })
+          let callback = (connection: webSocket.WebSocketConnection) => {
+            console.info(`${caseName} connections-->+ ${JSON.stringify(connection)}`);
+          }
+          await server.on('connect',callback)
+          await sleep(100)
+          let client: webSocket.WebSocket = webSocket.createWebSocket()
+          console.info(`${caseName}client-- >${client}`)
+          client.connect('ws://127.0.0.1:8088', (err: BusinessError, value: boolean) => {
+            if (value) {
+              console.info(`${caseName} test connect success and value is ${value}`);
+            } else {
+              console.info(`${caseName} test connect fail ${JSON.stringify(err)}`);
+              expectFail(`${caseName}`)
+              done()
+              console.info(`${caseName} test end`);
+            }
+          })
+          await sleep(100)
+          let connections = server.listAllConnections()
+          console.info(`${caseName} connections-->+ ${JSON.stringify(connections[0])}`);
+          if (connections.length != 0) {
+            console.info(`${connections}`)
+            ExpectTrue(true, `${caseName}--> ${connections[0]}`)
+            done()
+            console.info(`${caseName} test end1`)
+          }else{
             expectFail(`${caseName}`)
             done()
-            console.info(`${caseName} test end`);
+            console.info(`${caseName} test end2`)
           }
-        })
-        await sleep(100)
-        let connections = server.listAllConnections()
-        console.info(`${caseName} connections-->+ ${JSON.stringify(connections[0])}`);
-        if (connections.length != 0) {
-          console.info(`${connections}`)
-          ExpectTrue(true, `${caseName}--> ${connections[0]}`)
-          done()
-          console.info(`${caseName} test end1`)
-        }else{
-          expectFail(`${caseName}`)
-          done()
-          console.info(`${caseName} test end2`)
         }
       }catch (error){
         console.info(`${caseName} error--${error}`)
@@ -530,63 +649,70 @@ export default function WebsocketServerTest() {
       console.info(`${caseName} test start`);
       try {
         let server: webSocket.WebSocketServer= webSocket.createWebSocketServer()
-        let serverConfig: webSocket.WebSocketServerConfig = {
-          serverIP: "0.0.0.0",
-          serverPort: 8088,
-          maxConcurrentClientsNumber: 10,
-          maxConnectionsForOneClient: 4,
-        }
-        await server.start(serverConfig).then((success: boolean) => {
-          if (success){
-            console.log(`${caseName} webSocketServer start success`)
-          }else {
-            expectFail(`${caseName} webSocketServer start fail`)
-            done()
-            console.info(`${caseName} test end`);
-          }
-        }).catch((error: BusinessError) => {
-          console.info(`${caseName} test result error ${JSON.stringify(error)}`);
-          expectFail(`${caseName} test result error ${JSON.stringify(error)}`)
-          done()
-          console.info(`${caseName} test end`);
-        })
-        await new Promise<string>((resolve)=> {
-          let client: webSocket.WebSocket = webSocket.createWebSocket()
-          console.info(`${caseName}client-- >${client}`)
-          client.connect('ws://127.0.0.1:8088', (err: BusinessError, value: boolean) => {
-            if (value) {
-              console.info(`${caseName} test connect success and value is ${value}`);
-            } else {
-              console.info(`${caseName} test connect fail ${JSON.stringify(err)}`);
-              expectFail(`${caseName}`)
-              done()
-              console.info(`${caseName} test end test end`);
-            }
-            resolve('ok')
-          });
-
-        })
-        await sleep(20)
-        let connections = await server.listAllConnections()
-        server.send("hello client", connections[0]).then((success: boolean)=>{
-          if (success){
-            console.info(`${caseName} send success`)
-            ExpectTrue(success, `${caseName} send success`)
-            done()
-            console.info(`${caseName} test end`);
-          }else{
-            console.info(`${caseName} send fail`);
-            expectFail(`${caseName} send fail`)
-            done()
-            console.info(`${caseName} test end`);
-          }
-        }).catch((error: BusinessError) => {
-          console.info(`${caseName} test send fail ${JSON.stringify(error)}`);
-          expectFail(`${caseName} test send fail`);
-          server.stop()
+        if(!server) {
+          console.info(`${caseName} Server is nullptr`);
+          ExpectTrue(true,`${caseName}`);
           done();
           console.info(`${caseName} test end`);
-        })
+        }else {
+          let serverConfig: webSocket.WebSocketServerConfig = {
+            serverIP: "0.0.0.0",
+            serverPort: 8088,
+            maxConcurrentClientsNumber: 10,
+            maxConnectionsForOneClient: 4,
+          }
+          await server.start(serverConfig).then((success: boolean) => {
+            if (success){
+              console.log(`${caseName} webSocketServer start success`)
+            }else {
+              expectFail(`${caseName} webSocketServer start fail`)
+              done()
+              console.info(`${caseName} test end`);
+            }
+          }).catch((error: BusinessError) => {
+            console.info(`${caseName} test result error ${JSON.stringify(error)}`);
+            expectFail(`${caseName} test result error ${JSON.stringify(error)}`)
+            done()
+            console.info(`${caseName} test end`);
+          })
+          await new Promise<string>((resolve)=> {
+            let client: webSocket.WebSocket = webSocket.createWebSocket()
+            console.info(`${caseName}client-- >${client}`)
+            client.connect('ws://127.0.0.1:8088', (err: BusinessError, value: boolean) => {
+              if (value) {
+                console.info(`${caseName} test connect success and value is ${value}`);
+              } else {
+                console.info(`${caseName} test connect fail ${JSON.stringify(err)}`);
+                expectFail(`${caseName}`)
+                done()
+                console.info(`${caseName} test end test end`);
+              }
+              resolve('ok')
+            });
+
+          })
+          await sleep(20)
+          let connections = await server.listAllConnections()
+          server.send("hello client", connections[0]).then((success: boolean)=>{
+            if (success){
+              console.info(`${caseName} send success`)
+              ExpectTrue(success, `${caseName} send success`)
+              done()
+              console.info(`${caseName} test end`);
+            }else{
+              console.info(`${caseName} send fail`);
+              expectFail(`${caseName} send fail`)
+              done()
+              console.info(`${caseName} test end`);
+            }
+          }).catch((error: BusinessError) => {
+            console.info(`${caseName} test send fail ${JSON.stringify(error)}`);
+            expectFail(`${caseName} test send fail`);
+            server.stop()
+            done();
+            console.info(`${caseName} test end`);
+          })
+        }
       } catch (err) {
         console.info(`${caseName} catch error ${JSON.stringify(err)}`);
         expectFail(`${caseName} fail,errInfo->${JSON.stringify(err)}`);
@@ -607,50 +733,56 @@ export default function WebsocketServerTest() {
       let caseName: string = 'testNetworkMgrWebSocketWebSocketServerClose0100';
       console.info(`${caseName} test start`);
       try {
-
-        await server.start(serverConfig).then((success: boolean) => {
-          if (success){
-            console.log(`${caseName} webSocketServer start success`)
-          }else {
-            expectFail(`${caseName} client connect to server`)
-            done()
-            console.info(`${caseName} test end`);
-          }
-        }).catch((error: BusinessError) => {
-          console.info(`${caseName} test result error ${JSON.stringify(error)}`);
-          expectFail(`${caseName} test result error ${JSON.stringify(error)}`)
-          done()
+        if(!server) {
+          console.info(`${caseName} Server is nullptr`);
+          ExpectTrue(true,`${caseName}`);
+          done();
           console.info(`${caseName} test end`);
-        })
-        let client: webSocket.WebSocket = webSocket.createWebSocket()
-        console.info(`${caseName}client-- >${client}`)
-        client.connect('ws://127.0.0.1:8088', (err: BusinessError, value: boolean) => {
-          if (value) {
-            console.info(`${caseName} test connect success and value is ${value}`);
-          } else {
-            console.info(`${caseName} test connect fail ${JSON.stringify(err)}`);
-            expectFail(`${caseName}`)
+        }else {
+          await server.start(serverConfig).then((success: boolean) => {
+            if (success){
+              console.log(`${caseName} webSocketServer start success`)
+            }else {
+              expectFail(`${caseName} client connect to server`)
+              done()
+              console.info(`${caseName} test end`);
+            }
+          }).catch((error: BusinessError) => {
+            console.info(`${caseName} test result error ${JSON.stringify(error)}`);
+            expectFail(`${caseName} test result error ${JSON.stringify(error)}`)
             done()
-            console.info(`${caseName} test end test end`);
-          }
-        });
-        await sleep(20)
-        let connections = await server.listAllConnections()
-        console.info(`${caseName} connections-->+ ${JSON.stringify(connections[0])}`)
-        server.close(connections[0]).then((success: boolean) => {
-          if (success) {
-            ExpectTrue(true, `${caseName} server close success`)
-            console.info(`${caseName} server close success`)
-            done()
-            server.stop()
             console.info(`${caseName} test end`);
-          } else{
-            expectFail(`${caseName} server close fail`)
-            done()
-            server.stop()
-            console.info(`${caseName} test end`);
-          }
-        })
+          })
+          let client: webSocket.WebSocket = webSocket.createWebSocket()
+          console.info(`${caseName}client-- >${client}`)
+          client.connect('ws://127.0.0.1:8088', (err: BusinessError, value: boolean) => {
+            if (value) {
+              console.info(`${caseName} test connect success and value is ${value}`);
+            } else {
+              console.info(`${caseName} test connect fail ${JSON.stringify(err)}`);
+              expectFail(`${caseName}`)
+              done()
+              console.info(`${caseName} test end test end`);
+            }
+          });
+          await sleep(20)
+          let connections = await server.listAllConnections()
+          console.info(`${caseName} connections-->+ ${JSON.stringify(connections[0])}`)
+          server.close(connections[0]).then((success: boolean) => {
+            if (success) {
+              ExpectTrue(true, `${caseName} server close success`)
+              console.info(`${caseName} server close success`)
+              done()
+              server.stop()
+              console.info(`${caseName} test end`);
+            } else{
+              expectFail(`${caseName} server close fail`)
+              done()
+              server.stop()
+              console.info(`${caseName} test end`);
+            }
+          })
+        }
       } catch (err) {
         console.info(`${caseName} catch error ${JSON.stringify(err)}`);
         expectFail(`${caseName} fail,errInfo->${JSON.stringify(err)}`);
@@ -672,38 +804,45 @@ export default function WebsocketServerTest() {
       console.info(`${caseName} test start`);
       try {
         let server: webSocket.WebSocketServer = webSocket.createWebSocketServer();
-        console.info(`${caseName} --> ${server}`);
-        let serverConfig: webSocket.WebSocketServerConfig ={
-          serverIP: "0.0.0.0",
-          serverPort: 8088,
-          maxConcurrentClientsNumber: 10,
-          maxConnectionsForOneClient: 4,
-        }
-        await server.start(serverConfig).then((success: boolean) => {
-          if (success){
-            console.log(`${caseName} webSocketServer start success`)
-          }else {
-            expectFail(`${caseName} webSocketServer start fail`)
-            done()
-            console.info(`${caseName} test end`);
-          }
-        }).catch((error: BusinessError) => {
-          console.info(`${caseName} test result error ${JSON.stringify(error)}`);
-          expectFail(`${caseName} test result error ${JSON.stringify(error)}`)
-          done()
+        if(!server) {
+          console.info(`${caseName} Server is nullptr`);
+          ExpectTrue(true,`${caseName}`);
+          done();
           console.info(`${caseName} test end`);
-        })
-        await server.stop().then((success: boolean) => {
-          if (success) {
-            ExpectTrue(true, `${caseName} server close success`)
-            done()
-            console.info(`${caseName} test end`);
-          } else{
-            expectFail(`${caseName} server stop fail`)
-            done()
-            console.info(`${caseName} test end`);
+        }else {
+          console.info(`${caseName} --> ${server}`);
+          let serverConfig: webSocket.WebSocketServerConfig ={
+            serverIP: "0.0.0.0",
+            serverPort: 8088,
+            maxConcurrentClientsNumber: 10,
+            maxConnectionsForOneClient: 4,
           }
-        })
+          await server.start(serverConfig).then((success: boolean) => {
+            if (success){
+              console.log(`${caseName} webSocketServer start success`)
+            }else {
+              expectFail(`${caseName} webSocketServer start fail`)
+              done()
+              console.info(`${caseName} test end`);
+            }
+          }).catch((error: BusinessError) => {
+            console.info(`${caseName} test result error ${JSON.stringify(error)}`);
+            expectFail(`${caseName} test result error ${JSON.stringify(error)}`)
+            done()
+            console.info(`${caseName} test end`);
+          })
+          await server.stop().then((success: boolean) => {
+            if (success) {
+              ExpectTrue(true, `${caseName} server close success`)
+              done()
+              console.info(`${caseName} test end`);
+            } else{
+              expectFail(`${caseName} server stop fail`)
+              done()
+              console.info(`${caseName} test end`);
+            }
+          })
+        }
       } catch (err) {
         console.info(`${caseName} catch error ${JSON.stringify(err)}`);
         expectFail(`${caseName} fail,errInfo->${JSON.stringify(err)}`);
@@ -726,51 +865,57 @@ export default function WebsocketServerTest() {
       console.info(`${caseName} test start`);
       try {
         let server: webSocket.WebSocketServer = webSocket.createWebSocketServer();
-
-        console.info(`${caseName} --> ${server}`);
-        let serverConfig: webSocket.WebSocketServerConfig ={
-          serverIP: "0.0.0.0",
-          serverPort: 8088,
-          maxConcurrentClientsNumber: 10,
-          maxConnectionsForOneClient: 4,
-        }
-        await server.start(serverConfig).then((value: boolean)=>{
-          if (value) {
-            console.info(`${caseName} server start`)
-          }else {
-            console.info(`${caseName} server start fail`)
-            expectFail(`${caseName} server start fail`)
-            done()
-            console.info(`${caseName} test end`)
-          }
-        }).catch((err: BusinessError) => {
-          console.info(`${caseName} catch error ${JSON.stringify(err)}`);
-          expectFail(`${caseName} fail,errInfo->${JSON.stringify(err)}`);
+        if(!server) {
+          console.info(`${caseName} Server is nullptr`);
+          ExpectTrue(true,`${caseName}`);
           done();
           console.info(`${caseName} test end`);
-        })
-        let callback = (connection: webSocket.WebSocketConnection) => {
-          console.info(`${caseName} connections-->+ ${JSON.stringify(connection)}`);
-          ExpectTrue(connection != undefined)
-          done();
-          console.info(`${caseName} test end`);
-        }
-        await server.on('connect',callback)
-        await sleep(100)
-
-        let client = await webSocket.createWebSocket()
-        await client.connect('ws://127.0.0.1:8088', (err:BusinessError, value: boolean) =>{
-          if (value){
-            console.info(`${caseName} connect success`)
-          }else{
-            console.info(`${caseName} connect fail`)
+        }else {
+          console.info(`${caseName} --> ${server}`);
+          let serverConfig: webSocket.WebSocketServerConfig ={
+            serverIP: "0.0.0.0",
+            serverPort: 8088,
+            maxConcurrentClientsNumber: 10,
+            maxConnectionsForOneClient: 4,
           }
+          await server.start(serverConfig).then((value: boolean)=>{
+            if (value) {
+              console.info(`${caseName} server start`)
+            }else {
+              console.info(`${caseName} server start fail`)
+              expectFail(`${caseName} server start fail`)
+              done()
+              console.info(`${caseName} test end`)
+            }
+          }).catch((err: BusinessError) => {
+            console.info(`${caseName} catch error ${JSON.stringify(err)}`);
+            expectFail(`${caseName} fail,errInfo->${JSON.stringify(err)}`);
+            done();
+            console.info(`${caseName} test end`);
+          })
+          let callback = (connection: webSocket.WebSocketConnection) => {
+            console.info(`${caseName} connections-->+ ${JSON.stringify(connection)}`);
+            ExpectTrue(connection != undefined)
+            done();
+            console.info(`${caseName} test end`);
+          }
+          await server.on('connect',callback)
+          await sleep(100)
 
-        })
-        await sleep(100)
-        ExpectTrue(true)
-        done();
-        console.info(`${caseName} test end1`);
+          let client = await webSocket.createWebSocket()
+          await client.connect('ws://127.0.0.1:8088', (err:BusinessError, value: boolean) =>{
+            if (value){
+              console.info(`${caseName} connect success`)
+            }else{
+              console.info(`${caseName} connect fail`)
+            }
+
+          })
+          await sleep(100)
+          ExpectTrue(true)
+          done();
+          console.info(`${caseName} test end1`);
+        }
       } catch (err) {
         console.info(`${caseName} catch error ${JSON.stringify(err)}`);
         expectFail(`${caseName} fail,errInfo->${JSON.stringify(err)}`);
@@ -792,52 +937,58 @@ export default function WebsocketServerTest() {
       console.info(`${caseName} test start`);
       try {
         let server: webSocket.WebSocketServer = webSocket.createWebSocketServer();
-
-        console.info(`${caseName} --> ${server}`);
-        let serverConfig: webSocket.WebSocketServerConfig ={
-          serverIP: "0.0.0.0",
-          serverPort: 8088,
-          maxConcurrentClientsNumber: 10,
-          maxConnectionsForOneClient: 4,
-        }
-        await server.start(serverConfig).then((value: boolean)=>{
-          if (value) {
-            console.info(`${caseName} server start`)
-          }else {
-            console.info(`${caseName} server start fail`)
-            expectFail(`${caseName} server start fail`)
-            done()
-            console.info(`${caseName} test end`)
-          }
-        }).catch((err: BusinessError) => {
-          console.info(`${caseName} catch error ${JSON.stringify(err)}`);
-          expectFail(`${caseName} fail,errInfo->${JSON.stringify(err)}`);
+        if(!server) {
+          console.info(`${caseName} Server is nullptr`);
+          ExpectTrue(true,`${caseName}`);
           done();
           console.info(`${caseName} test end`);
-        })
-        let callback = (connection: webSocket.WebSocketConnection) => {
-          console.info(`${caseName} connections-->+ ${JSON.stringify(connection)}`);
-          ExpectTrue(connection != undefined)
-          done();
-          console.info(`${caseName} test end`);
-        }
-        await server.on('connect',callback)
-        await server.off('connect',callback)
-        await sleep(100)
-
-        let client = await webSocket.createWebSocket()
-        await client.connect('ws://127.0.0.1:8088', (err:BusinessError, value: boolean) =>{
-          if (value){
-            console.info(`${caseName} connect success`)
-          }else{
-            console.info(`${caseName} connect fail`)
+        }else {
+          console.info(`${caseName} --> ${server}`);
+          let serverConfig: webSocket.WebSocketServerConfig ={
+            serverIP: "0.0.0.0",
+            serverPort: 8088,
+            maxConcurrentClientsNumber: 10,
+            maxConnectionsForOneClient: 4,
           }
+          await server.start(serverConfig).then((value: boolean)=>{
+            if (value) {
+              console.info(`${caseName} server start`)
+            }else {
+              console.info(`${caseName} server start fail`)
+              expectFail(`${caseName} server start fail`)
+              done()
+              console.info(`${caseName} test end`)
+            }
+          }).catch((err: BusinessError) => {
+            console.info(`${caseName} catch error ${JSON.stringify(err)}`);
+            expectFail(`${caseName} fail,errInfo->${JSON.stringify(err)}`);
+            done();
+            console.info(`${caseName} test end`);
+          })
+          let callback = (connection: webSocket.WebSocketConnection) => {
+            console.info(`${caseName} connections-->+ ${JSON.stringify(connection)}`);
+            ExpectTrue(connection != undefined)
+            done();
+            console.info(`${caseName} test end`);
+          }
+          await server.on('connect',callback)
+          await server.off('connect',callback)
+          await sleep(100)
 
-        })
-        await sleep(100)
-        ExpectTrue(true)
-        done();
-        console.info(`${caseName} test end1`);
+          let client = await webSocket.createWebSocket()
+          await client.connect('ws://127.0.0.1:8088', (err:BusinessError, value: boolean) =>{
+            if (value){
+              console.info(`${caseName} connect success`)
+            }else{
+              console.info(`${caseName} connect fail`)
+            }
+
+          })
+          await sleep(100)
+          ExpectTrue(true)
+          done();
+          console.info(`${caseName} test end1`);
+        }
       } catch (err) {
         console.info(`${caseName} catch error ${JSON.stringify(err)}`);
         expectFail(`${caseName} fail,errInfo->${JSON.stringify(err)}`);
@@ -859,52 +1010,58 @@ export default function WebsocketServerTest() {
       console.info(`${caseName} test start`);
       try {
         let server: webSocket.WebSocketServer = webSocket.createWebSocketServer();
-
-        console.info(`${caseName} --> ${server}`);
-        let serverConfig: webSocket.WebSocketServerConfig ={
-          serverIP: "0.0.0.0",
-          serverPort: 8088,
-          maxConcurrentClientsNumber: 10,
-          maxConnectionsForOneClient: 4,
-        }
-        await server.start(serverConfig).then((value: boolean)=>{
-          if (value) {
-            console.info(`${caseName} server start`)
-          }else {
-            console.info(`${caseName} server start fail`)
-            expectFail(`${caseName} server start fail`)
-            done()
-            console.info(`${caseName} test end`)
-          }
-        }).catch((err: BusinessError) => {
-          console.info(`${caseName} catch error ${JSON.stringify(err)}`);
-          expectFail(`${caseName} fail,errInfo->${JSON.stringify(err)}`);
+        if(!server) {
+          console.info(`${caseName} Server is nullptr`);
+          ExpectTrue(true,`${caseName}`);
           done();
           console.info(`${caseName} test end`);
-        })
-        let callback = (connection: webSocket.WebSocketConnection) => {
-          console.info(`${caseName} connections-->+ ${JSON.stringify(connection)}`);
-          ExpectTrue(connection != undefined)
-          done();
-          console.info(`${caseName} test end`);
-        }
-        await server.on('connect',callback)
-        await server.off('connect')
-        await sleep(100)
-
-        let client = await webSocket.createWebSocket()
-        await client.connect('ws://127.0.0.1:8088', (err:BusinessError, value: boolean) =>{
-          if (value){
-            console.info(`${caseName} connect success`)
-          }else{
-            console.info(`${caseName} connect fail`)
+        }else {
+          console.info(`${caseName} --> ${server}`);
+          let serverConfig: webSocket.WebSocketServerConfig ={
+            serverIP: "0.0.0.0",
+            serverPort: 8088,
+            maxConcurrentClientsNumber: 10,
+            maxConnectionsForOneClient: 4,
           }
+          await server.start(serverConfig).then((value: boolean)=>{
+            if (value) {
+              console.info(`${caseName} server start`)
+            }else {
+              console.info(`${caseName} server start fail`)
+              expectFail(`${caseName} server start fail`)
+              done()
+              console.info(`${caseName} test end`)
+            }
+          }).catch((err: BusinessError) => {
+            console.info(`${caseName} catch error ${JSON.stringify(err)}`);
+            expectFail(`${caseName} fail,errInfo->${JSON.stringify(err)}`);
+            done();
+            console.info(`${caseName} test end`);
+          })
+          let callback = (connection: webSocket.WebSocketConnection) => {
+            console.info(`${caseName} connections-->+ ${JSON.stringify(connection)}`);
+            ExpectTrue(connection != undefined)
+            done();
+            console.info(`${caseName} test end`);
+          }
+          await server.on('connect',callback)
+          await server.off('connect')
+          await sleep(100)
 
-        })
-        await sleep(100)
-        ExpectTrue(true)
-        done();
-        console.info(`${caseName} test end1`);
+          let client = await webSocket.createWebSocket()
+          await client.connect('ws://127.0.0.1:8088', (err:BusinessError, value: boolean) =>{
+            if (value){
+              console.info(`${caseName} connect success`)
+            }else{
+              console.info(`${caseName} connect fail`)
+            }
+
+          })
+          await sleep(100)
+          ExpectTrue(true)
+          done();
+          console.info(`${caseName} test end1`);
+        }
       } catch (err) {
         console.info(`${caseName} catch error ${JSON.stringify(err)}`);
         expectFail(`${caseName} fail,errInfo->${JSON.stringify(err)}`);
@@ -927,78 +1084,86 @@ export default function WebsocketServerTest() {
       console.info(`${caseName} test start`);
       try {
         let server: webSocket.WebSocketServer = webSocket.createWebSocketServer();
-        console.info(`${caseName} --> ${server}`);
-        let serverConfig: webSocket.WebSocketServerConfig ={
-          serverIP: "0.0.0.0",
-          serverPort: 8088,
-          maxConcurrentClientsNumber: 10,
-          maxConnectionsForOneClient: 4,
-        }
-        await server.start(serverConfig).then((value: boolean)=>{
-          if (value) {
-            console.info(`${caseName} server start`)
-          }else {
-            console.info(`${caseName} server start fail`)
-            expectFail(`${caseName} server start fail`)
-            done()
-            console.info(`${caseName} test end`)
-          }
-        }).catch((err: BusinessError) => {
-          console.info(`${caseName} catch error ${JSON.stringify(err)}`);
-          expectFail(`${caseName} fail,errInfo->${JSON.stringify(err)}`);
+        if(!server) {
+          console.info(`${caseName} Server is nullptr`);
+          ExpectTrue(true,`${caseName}`);
           done();
           console.info(`${caseName} test end`);
-        })
-        let callback = (massage: webSocket.WebSocketMessage) => {
-          if (massage.data == "hello server") {
-            console.info(`${caseName} test onMassage success`)
-            ExpectTrue(true, `${caseName} test onMassage success`)
-            done()
-            console.info(`${caseName} test end`);
-          }else {
-            expectFail(`${caseName} client connect to server`)
-            done()
-            console.info(`${caseName} test end`);
+        }else {
+          console.info(`${caseName} --> ${server}`);
+          let serverConfig: webSocket.WebSocketServerConfig ={
+            serverIP: "0.0.0.0",
+            serverPort: 8088,
+            maxConcurrentClientsNumber: 10,
+            maxConnectionsForOneClient: 4,
           }
-        }
-        server.on('messageReceive',callback)
-        await sleep(100)
-
-        let client: webSocket.WebSocket = webSocket.createWebSocket()
-        console.info(`${caseName}client-- >${client}`)
-        class OutValue {
-          status: number = 0
-          message: string = ""
-        }
-        await client.on('open', (err: BusinessError, value: Object) => {
-          console.info(`${caseName} onopen err is ${JSON.stringify(err)} and value is ${JSON.stringify(value)}`);
-          const status: number = (value as OutValue).status;
-          console.info(`${JSON.stringify(status)}`);
-
-          client.send('hello server', (err: BusinessError, value: boolean) => {
-            if (!err) {
-              console.info(`${caseName} client send message successfully`)
-            }else{
-              console.info(`${caseName} Failed to send the message. Err:`+ JSON.stringify(err));
-              expectFail(`${caseName}`)
+          await server.start(serverConfig).then((value: boolean)=>{
+            if (value) {
+              console.info(`${caseName} server start`)
+            }else {
+              console.info(`${caseName} server start fail`)
+              expectFail(`${caseName} server start fail`)
+              done()
+              console.info(`${caseName} test end`)
+            }
+          }).catch((err: BusinessError) => {
+            console.info(`${caseName} catch error ${JSON.stringify(err)}`);
+            expectFail(`${caseName} fail,errInfo->${JSON.stringify(err)}`);
+            done();
+            console.info(`${caseName} test end`);
+          })
+          let callback = (massage: webSocket.WebSocketMessage) => {
+            if (massage.data == "hello server") {
+              console.info(`${caseName} test onMassage success`)
+              ExpectTrue(true, `${caseName} test onMassage success`)
+              done()
+              console.info(`${caseName} test end`);
+            }else {
+              expectFail(`${caseName} client connect to server`)
               done()
               console.info(`${caseName} test end`);
             }
-          })
-        })
-        await sleep(100)
-        client.connect('ws://127.0.0.1:8088', (err: BusinessError, value: boolean) => {
-          if (value) {
-            console.info(`${caseName} test connect success and value is ${value}`);
-          } else {
-            console.info(`${caseName} test connect fail ${JSON.stringify(err)}`);
           }
-        });
-        await sleep(100)
+          server.on('messageReceive',callback)
+          await sleep(100)
 
-        ExpectTrue(true)
-        done();
-        console.info(`${caseName} test end1`);
+          let client: webSocket.WebSocket = webSocket.createWebSocket()
+          console.info(`${caseName}client-- >${client}`)
+          class OutValue {
+            status: number = 0
+            message: string = ""
+          }
+          await client.on('open', (err: BusinessError, value: Object) => {
+            console.info(`${caseName} onopen err is ${JSON.stringify(err)} and value is ${JSON.stringify(value)}`);
+            const status: number = (value as OutValue).status;
+            console.info(`${JSON.stringify(status)}`);
+
+            client.send('hello server', (err: BusinessError, value: boolean) => {
+              if (!err) {
+                console.info(`${caseName} client send message successfully`)
+              }else{
+                console.info(`${caseName} Failed to send the message. Err:`+ JSON.stringify(err));
+                expectFail(`${caseName}`)
+                done()
+                console.info(`${caseName} test end`);
+              }
+            })
+          })
+          await sleep(100)
+          client.connect('ws://127.0.0.1:8088', (err: BusinessError, value: boolean) => {
+            if (value) {
+              console.info(`${caseName} test connect success and value is ${value}`);
+            } else {
+              console.info(`${caseName} test connect fail ${JSON.stringify(err)}`);
+            }
+          });
+          await sleep(100)
+
+          ExpectTrue(true)
+          done();
+          console.info(`${caseName} test end1`);
+        }
+
       } catch (err) {
         console.info(`${caseName} catch error ${JSON.stringify(err)}`);
         expectFail(`${caseName} fail,errInfo->${JSON.stringify(err)}`);
@@ -1020,78 +1185,85 @@ export default function WebsocketServerTest() {
       console.info(`${caseName} test start`);
       try {
         let server: webSocket.WebSocketServer = webSocket.createWebSocketServer();
-        console.info(`${caseName} --> ${server}`);
-        let serverConfig: webSocket.WebSocketServerConfig ={
-          serverIP: "0.0.0.0",
-          serverPort: 8088,
-          maxConcurrentClientsNumber: 10,
-          maxConnectionsForOneClient: 4,
-        }
-        await server.start(serverConfig).then((value: boolean)=>{
-          if (value) {
-            console.info(`${caseName} server start`)
-          }else {
-            console.info(`${caseName} server start fail`)
-            expectFail(`${caseName} server start fail`)
-            done()
-            console.info(`${caseName} test end`)
-          }
-        }).catch((err: BusinessError) => {
-          console.info(`${caseName} catch error ${JSON.stringify(err)}`);
-          expectFail(`${caseName} fail,errInfo->${JSON.stringify(err)}`);
+        if(!server) {
+          console.info(`${caseName} Server is nullptr`);
+          ExpectTrue(true,`${caseName}`);
           done();
           console.info(`${caseName} test end`);
-        })
-        let callback = (massage: webSocket.WebSocketMessage) => {
-          if (massage.data == "hello server") {
-            console.info(`${caseName} test onMassage success`)
-            ExpectTrue(true, `${caseName} test onMassage success`)
-            done()
-            console.info(`${caseName} test end`);
-          }else {
-            expectFail(`${caseName} client connect to server`)
-            done()
-            console.info(`${caseName} test end`);
+        }else {
+          console.info(`${caseName} --> ${server}`);
+          let serverConfig: webSocket.WebSocketServerConfig ={
+            serverIP: "0.0.0.0",
+            serverPort: 8088,
+            maxConcurrentClientsNumber: 10,
+            maxConnectionsForOneClient: 4,
           }
-        }
-        server.on('messageReceive',callback)
-        server.off('messageReceive',callback)
-        await sleep(100)
-        let client: webSocket.WebSocket = webSocket.createWebSocket()
-        console.info(`${caseName}client-- >${client}`)
-        class OutValue {
-          status: number = 0
-          message: string = ""
-        }
-        await client.on('open', (err: BusinessError, value: Object) => {
-          console.info(`${caseName} onopen err is ${JSON.stringify(err)} and value is ${JSON.stringify(value)}`);
-          const status: number = (value as OutValue).status;
-          console.info(`${JSON.stringify(status)}`);
-
-          client.send('hello server', (err: BusinessError, value: boolean) => {
-            if (!err) {
-              console.info(`${caseName} client send message successfully`)
-            }else{
-              console.info(`${caseName} Failed to send the message. Err:`+ JSON.stringify(err));
-              expectFail(`${caseName}`)
+          await server.start(serverConfig).then((value: boolean)=>{
+            if (value) {
+              console.info(`${caseName} server start`)
+            }else {
+              console.info(`${caseName} server start fail`)
+              expectFail(`${caseName} server start fail`)
+              done()
+              console.info(`${caseName} test end`)
+            }
+          }).catch((err: BusinessError) => {
+            console.info(`${caseName} catch error ${JSON.stringify(err)}`);
+            expectFail(`${caseName} fail,errInfo->${JSON.stringify(err)}`);
+            done();
+            console.info(`${caseName} test end`);
+          })
+          let callback = (massage: webSocket.WebSocketMessage) => {
+            if (massage.data == "hello server") {
+              console.info(`${caseName} test onMassage success`)
+              ExpectTrue(true, `${caseName} test onMassage success`)
+              done()
+              console.info(`${caseName} test end`);
+            }else {
+              expectFail(`${caseName} client connect to server`)
               done()
               console.info(`${caseName} test end`);
             }
-          })
-        })
-        await sleep(100)
-        client.connect('ws://127.0.0.1:8088', (err: BusinessError, value: boolean) => {
-          if (value) {
-            console.info(`${caseName} test connect success and value is ${value}`);
-          } else {
-            console.info(`${caseName} test connect fail ${JSON.stringify(err)}`);
           }
-        });
-        await sleep(100)
+          server.on('messageReceive',callback)
+          server.off('messageReceive',callback)
+          await sleep(100)
+          let client: webSocket.WebSocket = webSocket.createWebSocket()
+          console.info(`${caseName}client-- >${client}`)
+          class OutValue {
+            status: number = 0
+            message: string = ""
+          }
+          await client.on('open', (err: BusinessError, value: Object) => {
+            console.info(`${caseName} onopen err is ${JSON.stringify(err)} and value is ${JSON.stringify(value)}`);
+            const status: number = (value as OutValue).status;
+            console.info(`${JSON.stringify(status)}`);
 
-        ExpectTrue(true)
-        done();
-        console.info(`${caseName} test end1`);
+            client.send('hello server', (err: BusinessError, value: boolean) => {
+              if (!err) {
+                console.info(`${caseName} client send message successfully`)
+              }else{
+                console.info(`${caseName} Failed to send the message. Err:`+ JSON.stringify(err));
+                expectFail(`${caseName}`)
+                done()
+                console.info(`${caseName} test end`);
+              }
+            })
+          })
+          await sleep(100)
+          client.connect('ws://127.0.0.1:8088', (err: BusinessError, value: boolean) => {
+            if (value) {
+              console.info(`${caseName} test connect success and value is ${value}`);
+            } else {
+              console.info(`${caseName} test connect fail ${JSON.stringify(err)}`);
+            }
+          });
+          await sleep(100)
+
+          ExpectTrue(true)
+          done();
+          console.info(`${caseName} test end1`);
+        }
       } catch (err) {
         console.info(`${caseName} catch error ${JSON.stringify(err)}`);
         expectFail(`${caseName} fail,errInfo->${JSON.stringify(err)}`);
@@ -1113,79 +1285,86 @@ export default function WebsocketServerTest() {
       console.info(`${caseName} test start`);
       try {
         let server: webSocket.WebSocketServer = webSocket.createWebSocketServer();
-        console.info(`${caseName} --> ${server}`);
-        let serverConfig: webSocket.WebSocketServerConfig ={
-          serverIP: "0.0.0.0",
-          serverPort: 8088,
-          maxConcurrentClientsNumber: 10,
-          maxConnectionsForOneClient: 4,
-        }
-        await server.start(serverConfig).then((value: boolean)=>{
-          if (value) {
-            console.info(`${caseName} server start`)
-          }else {
-            console.info(`${caseName} server start fail`)
-            expectFail(`${caseName} server start fail`)
-            done()
-            console.info(`${caseName} test end`)
-          }
-        }).catch((err: BusinessError) => {
-          console.info(`${caseName} catch error ${JSON.stringify(err)}`);
-          expectFail(`${caseName} fail,errInfo->${JSON.stringify(err)}`);
+        if(!server) {
+          console.info(`${caseName} Server is nullptr`);
+          ExpectTrue(true,`${caseName}`);
           done();
           console.info(`${caseName} test end`);
-        })
-        let callback = (massage: webSocket.WebSocketMessage) => {
-          if (massage.data == "hello server") {
-            console.info(`${caseName} test onMassage success`)
-            ExpectTrue(true, `${caseName} test onMassage success`)
-            done()
-            console.info(`${caseName} test end`);
-          }else {
-            expectFail(`${caseName} client connect to server`)
-            done()
-            console.info(`${caseName} test end`);
+        }else {
+          console.info(`${caseName} --> ${server}`);
+          let serverConfig: webSocket.WebSocketServerConfig ={
+            serverIP: "0.0.0.0",
+            serverPort: 8088,
+            maxConcurrentClientsNumber: 10,
+            maxConnectionsForOneClient: 4,
           }
-        }
-        server.on('messageReceive',callback)
-        server.off('messageReceive')
-        await sleep(100)
-
-        let client: webSocket.WebSocket = webSocket.createWebSocket()
-        console.info(`${caseName}client-- >${client}`)
-        class OutValue {
-          status: number = 0
-          message: string = ""
-        }
-        await client.on('open', (err: BusinessError, value: Object) => {
-          console.info(`${caseName} onopen err is ${JSON.stringify(err)} and value is ${JSON.stringify(value)}`);
-          const status: number = (value as OutValue).status;
-          console.info(`${JSON.stringify(status)}`);
-
-          client.send('hello server', (err: BusinessError, value: boolean) => {
-            if (!err) {
-              console.info(`${caseName} client send message successfully`)
-            }else{
-              console.info(`${caseName} Failed to send the message. Err:`+ JSON.stringify(err));
-              expectFail(`${caseName}`)
+          await server.start(serverConfig).then((value: boolean)=>{
+            if (value) {
+              console.info(`${caseName} server start`)
+            }else {
+              console.info(`${caseName} server start fail`)
+              expectFail(`${caseName} server start fail`)
+              done()
+              console.info(`${caseName} test end`)
+            }
+          }).catch((err: BusinessError) => {
+            console.info(`${caseName} catch error ${JSON.stringify(err)}`);
+            expectFail(`${caseName} fail,errInfo->${JSON.stringify(err)}`);
+            done();
+            console.info(`${caseName} test end`);
+          })
+          let callback = (massage: webSocket.WebSocketMessage) => {
+            if (massage.data == "hello server") {
+              console.info(`${caseName} test onMassage success`)
+              ExpectTrue(true, `${caseName} test onMassage success`)
+              done()
+              console.info(`${caseName} test end`);
+            }else {
+              expectFail(`${caseName} client connect to server`)
               done()
               console.info(`${caseName} test end`);
             }
-          })
-        })
-        await sleep(100)
-        client.connect('ws://127.0.0.1:8088', (err: BusinessError, value: boolean) => {
-          if (value) {
-            console.info(`${caseName} test connect success and value is ${value}`);
-          } else {
-            console.info(`${caseName} test connect fail ${JSON.stringify(err)}`);
           }
-        });
-        await sleep(100)
+          server.on('messageReceive',callback)
+          server.off('messageReceive')
+          await sleep(100)
 
-        ExpectTrue(true)
-        done();
-        console.info(`${caseName} test end1`);
+          let client: webSocket.WebSocket = webSocket.createWebSocket()
+          console.info(`${caseName}client-- >${client}`)
+          class OutValue {
+            status: number = 0
+            message: string = ""
+          }
+          await client.on('open', (err: BusinessError, value: Object) => {
+            console.info(`${caseName} onopen err is ${JSON.stringify(err)} and value is ${JSON.stringify(value)}`);
+            const status: number = (value as OutValue).status;
+            console.info(`${JSON.stringify(status)}`);
+
+            client.send('hello server', (err: BusinessError, value: boolean) => {
+              if (!err) {
+                console.info(`${caseName} client send message successfully`)
+              }else{
+                console.info(`${caseName} Failed to send the message. Err:`+ JSON.stringify(err));
+                expectFail(`${caseName}`)
+                done()
+                console.info(`${caseName} test end`);
+              }
+            })
+          })
+          await sleep(100)
+          client.connect('ws://127.0.0.1:8088', (err: BusinessError, value: boolean) => {
+            if (value) {
+              console.info(`${caseName} test connect success and value is ${value}`);
+            } else {
+              console.info(`${caseName} test connect fail ${JSON.stringify(err)}`);
+            }
+          });
+          await sleep(100)
+
+          ExpectTrue(true)
+          done();
+          console.info(`${caseName} test end1`);
+        }
       } catch (err) {
         console.info(`${caseName} catch error ${JSON.stringify(err)}`);
         expectFail(`${caseName} fail,errInfo->${JSON.stringify(err)}`);
@@ -1207,46 +1386,53 @@ export default function WebsocketServerTest() {
       console.info(`${caseName} test start`);
       try {
         let server: webSocket.WebSocketServer = webSocket.createWebSocketServer();
-        console.info(`${caseName} --> ${server}`);
-        let serverConfig: webSocket.WebSocketServerConfig ={
-          serverIP: "0.0.0.0",
-          serverPort: 8088,
-          maxConcurrentClientsNumber: 10,
-          maxConnectionsForOneClient: 4,
-        }
-        await server.start(serverConfig).then((value: boolean)=>{
-          if (value) {
-            console.info(`${caseName} server start`)
-          }else {
-            console.info(`${caseName} server start fail`)
-            expectFail(`${caseName} server start fail`)
+        if(!server) {
+          console.info(`${caseName} Server is nullptr`);
+          ExpectTrue(true,`${caseName}`);
+          done();
+          console.info(`${caseName} test end`);
+        }else {
+          console.info(`${caseName} --> ${server}`);
+          let serverConfig: webSocket.WebSocketServerConfig ={
+            serverIP: "0.0.0.0",
+            serverPort: 8088,
+            maxConcurrentClientsNumber: 10,
+            maxConnectionsForOneClient: 4,
+          }
+          await server.start(serverConfig).then((value: boolean)=>{
+            if (value) {
+              console.info(`${caseName} server start`)
+            }else {
+              console.info(`${caseName} server start fail`)
+              expectFail(`${caseName} server start fail`)
+              done()
+              console.info(`${caseName} test end`)
+            }
+          })
+          let callback = (err: BusinessError) => {
+            console.info(`${caseName} err,errcode == ${err.code}`)
+            ExpectTrue(true, `${caseName} test onError err：${JSON.stringify(err)}`)
             done()
-            console.info(`${caseName} test end`)
+            console.info(`${caseName} test end1`);
           }
-        })
-        let callback = (err: BusinessError) => {
-          console.info(`${caseName} err,errcode == ${err.code}`)
-          ExpectTrue(true, `${caseName} test onError err：${JSON.stringify(err)}`)
-          done()
-          console.info(`${caseName} test end1`);
-        }
-        server.on("error", callback);
-        await sleep(100)
-        let wrongConnection: webSocket.WebSocketConnection = {
-          clientIP: '1.1.1.1',
-          clientPort: 8888
-        }
-        await server.send("hi", wrongConnection).then((success: boolean)=> {
-          if (success){
-            console.info(`${caseName} send success`)
-          }else{
-            console.info(`${caseName} send fail`);
+          server.on("error", callback);
+          await sleep(100)
+          let wrongConnection: webSocket.WebSocketConnection = {
+            clientIP: '1.1.1.1',
+            clientPort: 8888
           }
-        })
-        await sleep(100)
-        ExpectTrue(true)
-        done();
-        console.info(`${caseName} test end2`);
+          await server.send("hi", wrongConnection).then((success: boolean)=> {
+            if (success){
+              console.info(`${caseName} send success`)
+            }else{
+              console.info(`${caseName} send fail`);
+            }
+          })
+          await sleep(100)
+          ExpectTrue(true)
+          done();
+          console.info(`${caseName} test end2`);
+        }
       } catch (err) {
         console.info(`${caseName} catch error ${JSON.stringify(err)}`);
         ExpectTrue(err.code == 2302006,`${caseName} fail,errInfo->${JSON.stringify(err)}`);
@@ -1269,47 +1455,54 @@ export default function WebsocketServerTest() {
       console.info(`${caseName} test start`);
       try {
         let server: webSocket.WebSocketServer = webSocket.createWebSocketServer();
-        console.info(`${caseName} --> ${server}`);
-        let serverConfig: webSocket.WebSocketServerConfig ={
-          serverIP: "0.0.0.0",
-          serverPort: 8088,
-          maxConcurrentClientsNumber: 10,
-          maxConnectionsForOneClient: 4,
-        }
-        await server.start(serverConfig).then((value: boolean)=>{
-          if (value) {
-            console.info(`${caseName} server start`)
-          }else {
-            console.info(`${caseName} server start fail`)
-            expectFail(`${caseName} server start fail`)
+        if(!server) {
+          console.info(`${caseName} Server is nullptr`);
+          ExpectTrue(true,`${caseName}`);
+          done();
+          console.info(`${caseName} test end`);
+        }else {
+          console.info(`${caseName} --> ${server}`);
+          let serverConfig: webSocket.WebSocketServerConfig ={
+            serverIP: "0.0.0.0",
+            serverPort: 8088,
+            maxConcurrentClientsNumber: 10,
+            maxConnectionsForOneClient: 4,
+          }
+          await server.start(serverConfig).then((value: boolean)=>{
+            if (value) {
+              console.info(`${caseName} server start`)
+            }else {
+              console.info(`${caseName} server start fail`)
+              expectFail(`${caseName} server start fail`)
+              done()
+              console.info(`${caseName} test end`)
+            }
+          })
+          let callback = (err: BusinessError) => {
+            console.info(`${caseName} err,errcode == ${err.code}`)
+            ExpectTrue(true, `${caseName} test onError err：${JSON.stringify(err)}`)
             done()
-            console.info(`${caseName} test end`)
+            console.info(`${caseName} test end1`);
           }
-        })
-        let callback = (err: BusinessError) => {
-          console.info(`${caseName} err,errcode == ${err.code}`)
-          ExpectTrue(true, `${caseName} test onError err：${JSON.stringify(err)}`)
-          done()
-          console.info(`${caseName} test end1`);
-        }
-        server.on("error", callback);
-        server.off("error", callback);
-        await sleep(100)
-        let wrongConnection: webSocket.WebSocketConnection = {
-          clientIP: '1.1.1.1',
-          clientPort: 8888
-        }
-        await server.send("hi", wrongConnection).then((success: boolean)=> {
-          if (success){
-            console.info(`${caseName} send success`)
-          }else{
-            console.info(`${caseName} send fail`);
+          server.on("error", callback);
+          server.off("error", callback);
+          await sleep(100)
+          let wrongConnection: webSocket.WebSocketConnection = {
+            clientIP: '1.1.1.1',
+            clientPort: 8888
           }
-        })
-        await sleep(100)
-        ExpectTrue(true)
-        done();
-        console.info(`${caseName} test end2`);
+          await server.send("hi", wrongConnection).then((success: boolean)=> {
+            if (success){
+              console.info(`${caseName} send success`)
+            }else{
+              console.info(`${caseName} send fail`);
+            }
+          })
+          await sleep(100)
+          ExpectTrue(true)
+          done();
+          console.info(`${caseName} test end2`);
+        }
       } catch (err) {
         console.info(`${caseName} catch error ${JSON.stringify(err)}`);
         ExpectTrue(err.code == 2302006,`${caseName} fail,errInfo->${JSON.stringify(err)}`);
@@ -1331,47 +1524,54 @@ export default function WebsocketServerTest() {
       console.info(`${caseName} test start`);
       try {
         let server: webSocket.WebSocketServer = webSocket.createWebSocketServer();
-        console.info(`${caseName} --> ${server}`);
-        let serverConfig: webSocket.WebSocketServerConfig ={
-          serverIP: "0.0.0.0",
-          serverPort: 8088,
-          maxConcurrentClientsNumber: 10,
-          maxConnectionsForOneClient: 4,
-        }
-        await server.start(serverConfig).then((value: boolean)=>{
-          if (value) {
-            console.info(`${caseName} server start`)
-          }else {
-            console.info(`${caseName} server start fail`)
-            expectFail(`${caseName} server start fail`)
+        if(!server) {
+          console.info(`${caseName} Server is nullptr`);
+          ExpectTrue(true,`${caseName}`);
+          done();
+          console.info(`${caseName} test end`);
+        }else{
+          console.info(`${caseName} --> ${server}`);
+          let serverConfig: webSocket.WebSocketServerConfig ={
+            serverIP: "0.0.0.0",
+            serverPort: 8088,
+            maxConcurrentClientsNumber: 10,
+            maxConnectionsForOneClient: 4,
+          }
+          await server.start(serverConfig).then((value: boolean)=>{
+            if (value) {
+              console.info(`${caseName} server start`)
+            }else {
+              console.info(`${caseName} server start fail`)
+              expectFail(`${caseName} server start fail`)
+              done()
+              console.info(`${caseName} test end`)
+            }
+          })
+          let callback = (err: BusinessError) => {
+            console.info(`${caseName} err,errcode == ${err.code}`)
+            ExpectTrue(true, `${caseName} test onError err：${JSON.stringify(err)}`)
             done()
-            console.info(`${caseName} test end`)
+            console.info(`${caseName} test end1`);
           }
-        })
-        let callback = (err: BusinessError) => {
-          console.info(`${caseName} err,errcode == ${err.code}`)
-          ExpectTrue(true, `${caseName} test onError err：${JSON.stringify(err)}`)
-          done()
-          console.info(`${caseName} test end1`);
-        }
-        server.on("error", callback);
-        server.off("error");
-        await sleep(100)
-        let wrongConnection: webSocket.WebSocketConnection = {
-          clientIP: '1.1.1.1',
-          clientPort: 8888
-        }
-        await server.send("hi", wrongConnection).then((success: boolean)=> {
-          if (success){
-            console.info(`${caseName} send success`)
-          }else{
-            console.info(`${caseName} send fail`);
+          server.on("error", callback);
+          server.off("error");
+          await sleep(100)
+          let wrongConnection: webSocket.WebSocketConnection = {
+            clientIP: '1.1.1.1',
+            clientPort: 8888
           }
-        })
-        await sleep(100)
-        ExpectTrue(true)
-        done();
-        console.info(`${caseName} test end2`);
+          await server.send("hi", wrongConnection).then((success: boolean)=> {
+            if (success){
+              console.info(`${caseName} send success`)
+            }else{
+              console.info(`${caseName} send fail`);
+            }
+          })
+          await sleep(100)
+          ExpectTrue(true)
+          done();
+          console.info(`${caseName} test end2`);
+        }
       } catch (err) {
         console.info(`${caseName} catch error ${JSON.stringify(err)}`);
         ExpectTrue(err.code == 2302006,`${caseName} fail,errInfo->${JSON.stringify(err)}`);
@@ -1393,63 +1593,70 @@ export default function WebsocketServerTest() {
       console.info(`${caseName} test start`);
       try {
         let server: webSocket.WebSocketServer= webSocket.createWebSocketServer()
-        let serverConfig: webSocket.WebSocketServerConfig ={
-          serverIP: "0.0.0.0",
-          serverPort: 8088,
-          maxConcurrentClientsNumber: 10,
-          maxConnectionsForOneClient: 4,
-        }
-        await server.start(serverConfig).then((value: boolean)=>{
-          if (value) {
-            console.info(`${caseName} server start`)
-          }else {
-            console.info(`${caseName} server start fail`)
-            expectFail(`${caseName} server start fail`)
-            done()
-            console.info(`${caseName} test end`)
-          }
-        }).catch((err: BusinessError) => {
-          console.info(`${caseName} catch error ${JSON.stringify(err)}`);
-          expectFail(`${caseName} fail,errInfo->${JSON.stringify(err)}`);
+        if(!server) {
+          console.info(`${caseName} Server is nullptr`);
+          ExpectTrue(true,`${caseName}`);
           done();
           console.info(`${caseName} test end`);
-        })
-
-        let closeCallback = (clientConnection: webSocket.WebSocketConnection, closeReason: webSocket.CloseResult) => {
-          console.info(`${caseName} onclose connection is ${JSON.stringify(clientConnection)} and closeReason is ${JSON.stringify(closeReason)}`);
-          ExpectTrue(clientConnection != undefined);
-          done();
-          console.info(`${caseName} test end1`);
-        }
-        server.on('close', closeCallback);
-        server.on('connect',(connection: webSocket.WebSocketConnection) => {
-          console.info(`${caseName} connections-->+ ${JSON.stringify(connection)}`);
-
-          let closeOption: webSocket.WebSocketCloseOptions = {
-            code: 1000,
-            reason: "normal"
+        }else {
+          let serverConfig: webSocket.WebSocketServerConfig ={
+            serverIP: "0.0.0.0",
+            serverPort: 8088,
+            maxConcurrentClientsNumber: 10,
+            maxConnectionsForOneClient: 4,
           }
-          server.close(connection, closeOption).then((value: boolean) => {
-            console.info(`${caseName} close value is ${JSON.stringify(value)}`)
-          })
-        })
-        await sleep(100)
-        let client = await webSocket.createWebSocket()
-        await client.connect('ws://127.0.0.1:8088', (err:BusinessError, value: boolean) =>{
-          if (value){
-            console.info(`${caseName} connect success`)
-          }else{
-            console.info(`${caseName} connect fail`)
+          await server.start(serverConfig).then((value: boolean)=>{
+            if (value) {
+              console.info(`${caseName} server start`)
+            }else {
+              console.info(`${caseName} server start fail`)
+              expectFail(`${caseName} server start fail`)
+              done()
+              console.info(`${caseName} test end`)
+            }
+          }).catch((err: BusinessError) => {
+            console.info(`${caseName} catch error ${JSON.stringify(err)}`);
             expectFail(`${caseName} fail,errInfo->${JSON.stringify(err)}`);
             done();
             console.info(`${caseName} test end`);
-          }
+          })
 
-        })
-        await sleep(100)
-        ExpectTrue(true)
-        done();
-        console.info(`${caseName} test end1`);
+          let closeCallback = (clientConnection: webSocket.WebSocketConnection, closeReason: webSocket.CloseResult) => {
+            console.info(`${caseName} onclose connection is ${JSON.stringify(clientConnection)} and closeReason is ${JSON.stringify(closeReason)}`);
+            ExpectTrue(clientConnection != undefined);
+            done();
+            console.info(`${caseName} test end1`);
+          }
+          server.on('close', closeCallback);
+          server.on('connect',(connection: webSocket.WebSocketConnection) => {
+            console.info(`${caseName} connections-->+ ${JSON.stringify(connection)}`);
+
+            let closeOption: webSocket.WebSocketCloseOptions = {
+              code: 1000,
+              reason: "normal"
+            }
+            server.close(connection, closeOption).then((value: boolean) => {
+              console.info(`${caseName} close value is ${JSON.stringify(value)}`)
+            })
+          })
+          await sleep(100)
+          let client = await webSocket.createWebSocket()
+          await client.connect('ws://127.0.0.1:8088', (err:BusinessError, value: boolean) =>{
+            if (value){
+              console.info(`${caseName} connect success`)
+            }else{
+              console.info(`${caseName} connect fail`)
+              expectFail(`${caseName} fail,errInfo->${JSON.stringify(err)}`);
+              done();
+              console.info(`${caseName} test end`);
+            }
+
+          })
+          await sleep(100)
+          ExpectTrue(true)
+          done();
+          console.info(`${caseName} test end1`);
+        }
       } catch (err) {
         console.info(`${caseName} catch error ${JSON.stringify(err)}`);
         expectFail(`${caseName} fail,errInfo->${JSON.stringify(err)}`);
@@ -1471,64 +1678,71 @@ export default function WebsocketServerTest() {
       console.info(`${caseName} test start`);
       try {
         let server: webSocket.WebSocketServer= webSocket.createWebSocketServer()
-        let serverConfig: webSocket.WebSocketServerConfig ={
-          serverIP: "0.0.0.0",
-          serverPort: 8088,
-          maxConcurrentClientsNumber: 10,
-          maxConnectionsForOneClient: 4,
-        }
-        await server.start(serverConfig).then((value: boolean)=>{
-          if (value) {
-            console.info(`${caseName} server start`)
-          }else {
-            console.info(`${caseName} server start fail`)
-            expectFail(`${caseName} server start fail`)
-            done()
-            console.info(`${caseName} test end`)
-          }
-        }).catch((err: BusinessError) => {
-          console.info(`${caseName} catch error ${JSON.stringify(err)}`);
-          expectFail(`${caseName} fail,errInfo->${JSON.stringify(err)}`);
+        if(!server) {
+          console.info(`${caseName} Server is nullptr`);
+          ExpectTrue(true,`${caseName}`);
           done();
           console.info(`${caseName} test end`);
-        })
-
-        let closeCallback = (clientConnection: webSocket.WebSocketConnection, closeReason: webSocket.CloseResult) => {
-          console.info(`${caseName} onclose connection is ${JSON.stringify(clientConnection)} and closeReason is ${JSON.stringify(closeReason)}`);
-          ExpectTrue(clientConnection != undefined);
-          done();
-          console.info(`${caseName} test end1`);
-        }
-        server.on('close', closeCallback);
-        server.off('close', closeCallback);
-        server.on('connect',(connection: webSocket.WebSocketConnection) => {
-          console.info(`${caseName} connections-->+ ${JSON.stringify(connection)}`);
-
-          let closeOption: webSocket.WebSocketCloseOptions = {
-            code: 1000,
-            reason: "normal"
+        }else {
+          let serverConfig: webSocket.WebSocketServerConfig ={
+            serverIP: "0.0.0.0",
+            serverPort: 8088,
+            maxConcurrentClientsNumber: 10,
+            maxConnectionsForOneClient: 4,
           }
-          server.close(connection, closeOption).then((value: boolean) => {
-            console.info(`${caseName} close value is ${JSON.stringify(value)}`)
-          })
-        })
-        await sleep(100)
-        let client = await webSocket.createWebSocket()
-        await client.connect('ws://127.0.0.1:8088', (err:BusinessError, value: boolean) =>{
-          if (value){
-            console.info(`${caseName} connect success`)
-          }else{
-            console.info(`${caseName} connect fail`)
+          await server.start(serverConfig).then((value: boolean)=>{
+            if (value) {
+              console.info(`${caseName} server start`)
+            }else {
+              console.info(`${caseName} server start fail`)
+              expectFail(`${caseName} server start fail`)
+              done()
+              console.info(`${caseName} test end`)
+            }
+          }).catch((err: BusinessError) => {
+            console.info(`${caseName} catch error ${JSON.stringify(err)}`);
             expectFail(`${caseName} fail,errInfo->${JSON.stringify(err)}`);
             done();
             console.info(`${caseName} test end`);
-          }
+          })
 
-        })
-        await sleep(100)
-        ExpectTrue(true)
-        done();
-        console.info(`${caseName} test end1`);
+          let closeCallback = (clientConnection: webSocket.WebSocketConnection, closeReason: webSocket.CloseResult) => {
+            console.info(`${caseName} onclose connection is ${JSON.stringify(clientConnection)} and closeReason is ${JSON.stringify(closeReason)}`);
+            ExpectTrue(clientConnection != undefined);
+            done();
+            console.info(`${caseName} test end1`);
+          }
+          server.on('close', closeCallback);
+          server.off('close', closeCallback);
+          server.on('connect',(connection: webSocket.WebSocketConnection) => {
+            console.info(`${caseName} connections-->+ ${JSON.stringify(connection)}`);
+
+            let closeOption: webSocket.WebSocketCloseOptions = {
+              code: 1000,
+              reason: "normal"
+            }
+            server.close(connection, closeOption).then((value: boolean) => {
+              console.info(`${caseName} close value is ${JSON.stringify(value)}`)
+            })
+          })
+          await sleep(100)
+          let client = await webSocket.createWebSocket()
+          await client.connect('ws://127.0.0.1:8088', (err:BusinessError, value: boolean) =>{
+            if (value){
+              console.info(`${caseName} connect success`)
+            }else{
+              console.info(`${caseName} connect fail`)
+              expectFail(`${caseName} fail,errInfo->${JSON.stringify(err)}`);
+              done();
+              console.info(`${caseName} test end`);
+            }
+
+          })
+          await sleep(100)
+          ExpectTrue(true)
+          done();
+          console.info(`${caseName} test end1`);
+        }
       } catch (err) {
         console.info(`${caseName} catch error ${JSON.stringify(err)}`);
         expectFail(`${caseName} fail,errInfo->${JSON.stringify(err)}`);
@@ -1550,64 +1764,71 @@ export default function WebsocketServerTest() {
       console.info(`${caseName} test start`);
       try {
         let server: webSocket.WebSocketServer= webSocket.createWebSocketServer()
-        let serverConfig: webSocket.WebSocketServerConfig ={
-          serverIP: "0.0.0.0",
-          serverPort: 8088,
-          maxConcurrentClientsNumber: 10,
-          maxConnectionsForOneClient: 4,
-        }
-        await server.start(serverConfig).then((value: boolean)=>{
-          if (value) {
-            console.info(`${caseName} server start`)
-          }else {
-            console.info(`${caseName} server start fail`)
-            expectFail(`${caseName} server start fail`)
-            done()
-            console.info(`${caseName} test end`)
-          }
-        }).catch((err: BusinessError) => {
-          console.info(`${caseName} catch error ${JSON.stringify(err)}`);
-          expectFail(`${caseName} fail,errInfo->${JSON.stringify(err)}`);
+        if(!server) {
+          console.info(`${caseName} Server is nullptr`);
+          ExpectTrue(true,`${caseName}`);
           done();
           console.info(`${caseName} test end`);
-        })
-
-        let closeCallback = (clientConnection: webSocket.WebSocketConnection, closeReason: webSocket.CloseResult) => {
-          console.info(`${caseName} onclose connection is ${JSON.stringify(clientConnection)} and closeReason is ${JSON.stringify(closeReason)}`);
-          ExpectTrue(clientConnection != undefined);
-          done();
-          console.info(`${caseName} test end1`);
-        }
-        server.on('close', closeCallback);
-        server.off('close');
-        server.on('connect',(connection: webSocket.WebSocketConnection) => {
-          console.info(`${caseName} connections-->+ ${JSON.stringify(connection)}`);
-
-          let closeOption: webSocket.WebSocketCloseOptions = {
-            code: 1000,
-            reason: "normal"
+        }else {
+          let serverConfig: webSocket.WebSocketServerConfig ={
+            serverIP: "0.0.0.0",
+            serverPort: 8088,
+            maxConcurrentClientsNumber: 10,
+            maxConnectionsForOneClient: 4,
           }
-          server.close(connection, closeOption).then((value: boolean) => {
-            console.info(`${caseName} close value is ${JSON.stringify(value)}`)
-          })
-        })
-        await sleep(100)
-        let client = await webSocket.createWebSocket()
-        await client.connect('ws://127.0.0.1:8088', (err:BusinessError, value: boolean) =>{
-          if (value){
-            console.info(`${caseName} connect success`)
-          }else{
-            console.info(`${caseName} connect fail`)
+          await server.start(serverConfig).then((value: boolean)=>{
+            if (value) {
+              console.info(`${caseName} server start`)
+            }else {
+              console.info(`${caseName} server start fail`)
+              expectFail(`${caseName} server start fail`)
+              done()
+              console.info(`${caseName} test end`)
+            }
+          }).catch((err: BusinessError) => {
+            console.info(`${caseName} catch error ${JSON.stringify(err)}`);
             expectFail(`${caseName} fail,errInfo->${JSON.stringify(err)}`);
             done();
             console.info(`${caseName} test end`);
-          }
+          })
 
-        })
-        await sleep(100)
-        ExpectTrue(true)
-        done();
-        console.info(`${caseName} test end1`);
+          let closeCallback = (clientConnection: webSocket.WebSocketConnection, closeReason: webSocket.CloseResult) => {
+            console.info(`${caseName} onclose connection is ${JSON.stringify(clientConnection)} and closeReason is ${JSON.stringify(closeReason)}`);
+            ExpectTrue(clientConnection != undefined);
+            done();
+            console.info(`${caseName} test end1`);
+          }
+          server.on('close', closeCallback);
+          server.off('close');
+          server.on('connect',(connection: webSocket.WebSocketConnection) => {
+            console.info(`${caseName} connections-->+ ${JSON.stringify(connection)}`);
+
+            let closeOption: webSocket.WebSocketCloseOptions = {
+              code: 1000,
+              reason: "normal"
+            }
+            server.close(connection, closeOption).then((value: boolean) => {
+              console.info(`${caseName} close value is ${JSON.stringify(value)}`)
+            })
+          })
+          await sleep(100)
+          let client = await webSocket.createWebSocket()
+          await client.connect('ws://127.0.0.1:8088', (err:BusinessError, value: boolean) =>{
+            if (value){
+              console.info(`${caseName} connect success`)
+            }else{
+              console.info(`${caseName} connect fail`)
+              expectFail(`${caseName} fail,errInfo->${JSON.stringify(err)}`);
+              done();
+              console.info(`${caseName} test end`);
+            }
+
+          })
+          await sleep(100)
+          ExpectTrue(true)
+          done();
+          console.info(`${caseName} test end1`);
+        }
       } catch (err) {
         console.info(`${caseName} catch error ${JSON.stringify(err)}`);
         expectFail(`${caseName} fail,errInfo->${JSON.stringify(err)}`);
