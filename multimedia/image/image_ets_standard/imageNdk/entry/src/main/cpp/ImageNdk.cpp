@@ -20,6 +20,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <dlfcn.h>
+#include <set>
 
 #include "napi/native_api.h"
 #include <multimedia/image_framework/image/pixelmap_native.h>
@@ -2632,6 +2633,141 @@ static napi_value GetImagePropertyWithNull(napi_env env, napi_callback_info info
     return result;
 }
 
+static napi_value GetImagePackerSupportedFormats(napi_env env, napi_callback_info info)
+{
+    Image_MimeType* image_MimeType = nullptr;
+    size_t length = NUM_0;
+    napi_value result = nullptr;
+    Image_ErrorCode errCode = OH_ImagePackerNative_GetSupportedFormats(&image_MimeType, &length);
+    if (errCode != IMAGE_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "OH_ImagePackerNative_GetSupportedFormats failed, errCode: %{public}d.", errCode);
+        return getJsResult(env, errCode);
+    } else  {
+        napi_status status = napi_create_uint32(env, length, &result);
+        if (status != napi_ok) {
+            napi_throw_error(env, nullptr, "Failed to create external object");
+            return nullptr;
+        }
+    }
+    OH_LOG_INFO(LOG_APP, "length: %{public}d", length);
+    napi_create_array(env, &result);
+    std::set<std::string> formats;
+    for (size_t i = NUM_0; i < length; ++i) {
+        if (image_MimeType[i].data != nullptr) {
+            formats.insert(std::string(image_MimeType[i].data));
+        }
+    }
+    size_t count = NUM_0;
+    for (const std::string& formatStr: formats) {
+        napi_value format = nullptr;
+        napi_create_string_latin1(env, formatStr.c_str(), formatStr.length(), &format);
+        napi_set_element(env, result, count, format);
+        count++;
+    }
+    return result;
+}
+
+static napi_value GetImageSourceSupportedFormats(napi_env env, napi_callback_info info)
+{
+    Image_MimeType* image_MimeType = nullptr;
+    size_t length = NUM_0;
+    napi_value result = nullptr;
+    Image_ErrorCode errCode =  OH_ImageSourceNative_GetSupportedFormats(&image_MimeType, &length);
+    if (errCode != IMAGE_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "OH_ImageSourceNative_GetSupportedFormats failed, errCode: %{public}d.", errCode);
+        return getJsResult(env, errCode);
+    } else  {
+        napi_status status = napi_create_uint32(env, length, &result);
+        if (status != napi_ok) {
+            napi_throw_error(env, nullptr, "Failed to create external object");
+            return nullptr;
+        }
+    }
+    OH_LOG_INFO(LOG_APP, "length: %{public}d.", length);
+    napi_create_array(env, &result);
+    std::set<std::string> formats;
+    for (size_t i = NUM_0; i < length; ++i) {
+        if (image_MimeType[i].data != nullptr) {
+            formats.insert(std::string(image_MimeType[i].data));
+        }
+    }
+    size_t count = NUM_0;
+    for (const std::string& formatStr: formats) {
+        napi_value format = nullptr;
+        napi_create_string_latin1(env, formatStr.c_str(), formatStr.length(), &format);
+        napi_set_element(env, result, count, format);
+        count++;
+    }
+    return result;
+}
+
+static napi_value GetImagePackerSupportedFormatsError(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_value argValue[NUM_1] = {nullptr};
+    size_t argCount = NUM_1;
+
+    napi_get_undefined(env, &result);
+    if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok || argCount < NUM_1) {
+        OH_LOG_ERROR(LOG_APP, "GetImagePackerSupportedFormatsError napi_get_cb_info failed");
+        return result;
+    }
+
+    bool flag;
+    napi_get_value_bool(env, argValue[NUM_0], &flag);
+
+    Image_MimeType* image_MimeType = nullptr;
+    size_t length = NUM_0;
+    Image_ErrorCode errCode;
+    if (flag == true) {
+        errCode = OH_ImagePackerNative_GetSupportedFormats(nullptr, &length);
+        OH_LOG_INFO(LOG_APP, "GetImagePackerSupportedFormatsError image_MimeType is nullptr");
+    } else {
+        errCode = OH_ImagePackerNative_GetSupportedFormats(&image_MimeType, nullptr);
+        OH_LOG_INFO(LOG_APP, "GetImagePackerSupportedFormatsError length is nullptr");
+    }
+    
+    if (errCode != IMAGE_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "OH_ImagePackerNative_GetSupportedFormats failed, errCode: %{public}d.", errCode);
+    } else  {
+        OH_LOG_ERROR(LOG_APP, "OH_ImagePackerNative_GetSupportedFormats succ!");
+    }
+    return getJsResult(env, errCode);
+}
+
+static napi_value GetImageSourceSupportedFormatsError(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_value argValue[NUM_1] = {nullptr};
+    size_t argCount = NUM_1;
+
+    napi_get_undefined(env, &result);
+    if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok || argCount < NUM_1) {
+        OH_LOG_ERROR(LOG_APP, "PackingOptionsGetNeedsPackProperties napi_get_cb_info failed");
+        return result;
+    }
+
+    bool flag;
+    napi_get_value_bool(env, argValue[NUM_0], &flag);
+
+    Image_MimeType* image_MimeType = nullptr;
+    size_t length = NUM_0;
+    Image_ErrorCode errCode;
+    if (flag == true) {
+        errCode = OH_ImageSourceNative_GetSupportedFormats(nullptr, &length);
+        OH_LOG_INFO(LOG_APP, "GetImageSourceSupportedFormatsError image_MimeType is nullptr!");
+    } else {
+        errCode = OH_ImageSourceNative_GetSupportedFormats(&image_MimeType, nullptr);
+        OH_LOG_INFO(LOG_APP, "GetImageSourceSupportedFormatsError image_MimeType is nullptr!");
+    }
+    if (errCode != IMAGE_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "OH_ImagePackerNative_GetSupportedFormats failed, errCode: %{public}d.", errCode);
+    } else  {
+        OH_LOG_ERROR(LOG_APP, "OH_ImagePackerNative_GetSupportedFormats succ!");
+    }
+    return getJsResult(env, errCode);
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports) {
     napi_property_descriptor desc[] = {
@@ -2735,7 +2871,15 @@ static napi_value Init(napi_env env, napi_value exports) {
          nullptr, napi_default, nullptr},
         {"GetPropertyWithNull", nullptr, GetPropertyWithNull, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"GetMimeTypeWithNull", nullptr, GetMimeTypeWithNull, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"GetImagePropertyWithNull", nullptr, GetImagePropertyWithNull, nullptr, nullptr, nullptr, napi_default, nullptr}
+        {"GetImagePropertyWithNull", nullptr, GetImagePropertyWithNull, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetImagePackerSupportedFormats", nullptr, GetImagePackerSupportedFormats,
+            nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetImageSourceSupportedFormats", nullptr, GetImageSourceSupportedFormats,
+            nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetImagePackerSupportedFormatsError", nullptr, GetImagePackerSupportedFormatsError,
+            nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetImageSourceSupportedFormatsError", nullptr, GetImageSourceSupportedFormatsError,
+            nullptr, nullptr, nullptr, napi_default, nullptr}
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
