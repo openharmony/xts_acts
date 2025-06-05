@@ -693,5 +693,29 @@ export default function inputMethodStageJSUnit() {
       }
     });
 
+    /*
+    * @tc.number  SUB_InputMethod_IMF_ListControl_0800
+    * @tc.name   SUB_InputMethod_IMF_ListControl_0800
+    * @tc.desc    Function test
+    * @tc.size    MEDIUMTEST
+    * @tc.type    Function
+    * @tc.level   2
+    */
+    it('SUB_InputMethod_IMF_ListControl_0800', Level.LEVEL2, (done: Function) => {
+      console.info("====>SUB_InputMethod_IMF_ListControl_0800 start");
+      try {
+        let defaultIme: inputMethod.InputMethodProperty = inputMethod.getDefaultInputMethod();
+        console.info("====>SUB_InputMethod_IMF_ListControl_0800: " + JSON.stringify(defaultIme));
+        expect(defaultIme.enabledState).assertEqual(inputMethod.EnabledState.BASIC_MODE);
+        done();
+        console.info("====>SUB_InputMethod_IMF_ListControl_0800 try end");
+      } catch (err) {
+        console.info(`====>Failed to getDefaultInputMethod: ${JSON.stringify(err)}`);
+        expect().assertFail();
+        done();
+        console.info("====>SUB_InputMethod_IMF_ListControl_0800 err end");
+      }
+    });
+
   });
 };
