@@ -98,7 +98,7 @@ napi_value CustomComponentOnDrawFrontTest::CreateNativeNode(napi_env env, napi_c
     nodeAPI->addChild(column, custom);
 
     nodeAPI->registerNodeCustomEventReceiver(&OnEventReceive);
-    nodeAPI->registerNodeCustomEvent(custom, ARKUI_NODE_CUSTOM_EVENT_ON_DRAW, ON_DRAW_EVENT_ID, nullptr);
+    nodeAPI->registerNodeCustomEvent(custom, ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_FRONT, ON_DRAW_EVENT_ID, nullptr);
 
     std::string id(xComponentID);
     if (OH_NativeXComponent_AttachNativeRootNode(PluginManager::GetInstance()->GetNativeXComponent(id), column) ==
