@@ -4475,7 +4475,7 @@ export default function windowPropertiesTest() {
       }
     })
 
-    /**
+      /**
        * @tc.number    : SUB_BASIC_WMS_GETWINDOWPROPERTIES_WINDOWRECT_0100
        * @tc.name      : test_GETWINDOWPROPERTIES_WINDOWRECT_0100
        * @tc.desc      : 无标题栏子窗可绘制区域等于窗口区域
@@ -4625,7 +4625,7 @@ export default function windowPropertiesTest() {
         }
       })
 
-      
+
       // it('test_GETWINDOWPROPERTIES_WINDOWTYPE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async(done: Function) => {
       //   let msgStr = ' test_GETWINDOWPROPERTIES_WINDOWTYPE_0100 ';
       //   console.info(msgStr + ' begin ');
@@ -5264,22 +5264,16 @@ export default function windowPropertiesTest() {
           console.info(`${msgStr} mainWindowProperties2: ${JSON.stringify(mainWindowProperties2)}`);
           let brightness4 = mainWindowProperties2.brightness;
           console.info(`${msgStr} brightness4: ${JSON.stringify(brightness4)}`);
-          // expect(brightness4).assertLarger(0);
-          // expect(brightness4).assertLess(1);
           expect(brightness4).assertEqual(-1.0);
           let subWindowProperties2 = subWindowClass1.getWindowProperties();
           console.info(`${msgStr} subWindowProperties2: ${JSON.stringify(subWindowProperties2)}`);
           let brightness5 = subWindowProperties2.brightness;
           console.info(`${msgStr} brightness5: ${JSON.stringify(brightness5)}`);
-          // expect(brightness5).assertLarger(0);
-          // expect(brightness5).assertLess(1);
           expect(brightness5).assertEqual(-1.0);
           let dialogWindowProperties2 = subWindowClass2.getWindowProperties();
           console.info(`${msgStr} dialogWindowProperties2: ${JSON.stringify(dialogWindowProperties2)}`);
           let brightness6 = dialogWindowProperties2.brightness;
           console.info(`${msgStr} brightness6: ${JSON.stringify(brightness6)}`);
-          // expect(brightness6).assertLarger(0);
-          // expect(brightness6).assertLess(1);
           expect(brightness6).assertEqual(-1.0);
           expect(brightness4).assertEqual(brightness5);
           expect(brightness4).assertEqual(brightness6);
@@ -5853,7 +5847,7 @@ export default function windowPropertiesTest() {
           console.info(`${msgStr} windowProperties: ${JSON.stringify(windowProperties)}`);
           let name = windowProperties.name;
           console.info(`${msgStr} name: ${JSON.stringify(name)}`);
-          expect(name?.length).assertEqual(0);
+          expect(name).assertEqual('myapplication0');
           done()
         } catch (error) {
           console.error(msgStr + ' Failed. Cause: ' + JSON.stringify(error));
