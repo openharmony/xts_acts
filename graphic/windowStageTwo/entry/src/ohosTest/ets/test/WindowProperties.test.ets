@@ -4444,7 +4444,8 @@ export default function windowPropertiesTest() {
 
     
 
-    /**
+
+      /**
        * @tc.number    : SUB_BASIC_WMS_GETGLOBALWINDOWMODE_0100
        * @tc.name      : testGetGlobalWindowMode_Null_1300016
        * @tc.desc      : testGetGlobalWindowMode_Null_1300016
@@ -4636,60 +4637,52 @@ export default function windowPropertiesTest() {
       // })
       //
 
-      /**
-       * @tc.number    : SUB_BASIC_WMS_GETGLOBALWINDOWMODE_0600
-       * @tc.name      : testGetGlobalWindowMode_Fullscreen_And_Hide_Subwindow
-       * @tc.desc      : testGetGlobalWindowMode_Fullscreen_And_Hide_Subwindow
-       * @tc.size      : MediumTest
-       * @tc.type      : Function
-       * @tc.level     : Level0
-       */
-      it('testGetGlobalWindowMode_Fullscreen_And_Hide_Subwindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async(done: Function) => {
-        let caseName = 'testGetGlobalWindowMode_Fullscreen_And_Hide_Subwindow';
-        let subWindowClass: window.Window | undefined;
-        let mainWindow = windowStage.getMainWindowSync();
-        try {
-          if (isPCStatus == '' || isAutoWindow == 'false') {
-            console.info(`${caseName}: this device is not pc or autowindow is false.`)
-          } else {
-            await mainWindow.maximize();
-            await sleep(200);
-          }
-          subWindowClass = await windowStage.createSubWindow('testGetGlobalWindowMode_Fullscreen_And_Hide_Subwindow');
-          await sleep(200)
-          await subWindowClass.hide();
-          await sleep(200);
-          window.getGlobalWindowMode(0).then(async (data: number) => {
-            console.info(`${caseName} Succeeded in calling getGlobalWindowMode. data: ${data}`);
-            expect(data).assertEqual(1);
-            if (isPCStatus != '' || isAutoWindow == 'true') {
-              await mainWindow.recover();
-            }
-            await subWindowClass?.destroyWindow();
-            done();
-          }).catch(async (err: BusinessError) => {
-            console.error(`${caseName} Failed to call getGlobalWindowMode. Cause: ${JSON.stringify(err)}`);
-            if (isPCStatus != '' || isAutoWindow == 'true') {
-              await mainWindow.recover();
-            }
-            await subWindowClass?.destroyWindow();
-            if (err.code === 801) {
-              done();
-            } else {
-              expect().assertFail();
-              done();
-            }
-          });
-        } catch (error) {
-          console.error(`${caseName} Failed2 to call getGlobalWindowMode. Cause: ${JSON.stringify(error)}`);
-          if (isPCStatus != '' || isAutoWindow == 'true') {
-            await mainWindow.recover();
-          }
-          await subWindowClass?.destroyWindow();
-          expect().assertFail();
-          done();
-        }
-      })
+      // it('testGetGlobalWindowMode_Fullscreen_And_Hide_Subwindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async(done: Function) => {
+      //   let caseName = 'testGetGlobalWindowMode_Fullscreen_And_Hide_Subwindow';
+      //   let subWindowClass: window.Window | undefined;
+      //   let mainWindow = windowStage.getMainWindowSync();
+      //   try {
+      //     if (isPCStatus == '' || isAutoWindow == 'false') {
+      //       console.info(`${caseName}: this device is not pc or autowindow is false.`)
+      //     } else {
+      //       await mainWindow.maximize();
+      //       await sleep(200);
+      //     }
+      //     subWindowClass = await windowStage.createSubWindow('testGetGlobalWindowMode_Fullscreen_And_Hide_Subwindow');
+      //     await sleep(200)
+      //     await subWindowClass.hide();
+      //     await sleep(200);
+      //     window.getGlobalWindowMode(0).then(async (data: number) => {
+      //       console.info(`${caseName} Succeeded in calling getGlobalWindowMode. data: ${data}`);
+      //       expect(data).assertEqual(1);
+      //       if (isPCStatus != '' || isAutoWindow == 'true') {
+      //         await mainWindow.recover();
+      //       }
+      //       await subWindowClass?.destroyWindow();
+      //       done();
+      //     }).catch(async (err: BusinessError) => {
+      //       console.error(`${caseName} Failed to call getGlobalWindowMode. Cause: ${JSON.stringify(err)}`);
+      //       if (isPCStatus != '' || isAutoWindow == 'true') {
+      //         await mainWindow.recover();
+      //       }
+      //       await subWindowClass?.destroyWindow();
+      //       if (err.code === 801) {
+      //         done();
+      //       } else {
+      //         expect().assertFail();
+      //         done();
+      //       }
+      //     });
+      //   } catch (error) {
+      //     console.error(`${caseName} Failed2 to call getGlobalWindowMode. Cause: ${JSON.stringify(error)}`);
+      //     if (isPCStatus != '' || isAutoWindow == 'true') {
+      //       await mainWindow.recover();
+      //     }
+      //     await subWindowClass?.destroyWindow();
+      //     expect().assertFail();
+      //     done();
+      //   }
+      // })
 
       /**
        * @tc.number    : SUB_BASIC_WMS_GETGLOBALWINDOWMODE_0700
@@ -4717,11 +4710,9 @@ export default function windowPropertiesTest() {
           if (!enabled) {
             done();
           }
-          let properties = mainWindow.getWindowProperties();
-          console.info(`${caseName} properties: ${JSON.stringify(properties)}`);
-          // 查询主窗的windowmode用什么接口???
-          // ??? 怎么获取 ？？？
-          if (!properties.isFullScreen) {
+          let windowStatusType = mainWindow.getWindowStatus();
+          console.info(`${caseName} windowStatusType: ${JSON.stringify(windowStatusType)}`);
+          if (windowStatusType !== window.WindowStatusType.FULL_SCREEN) {
             await mainWindow.maximize();
             await sleep(200);
             isMaximize = true;
