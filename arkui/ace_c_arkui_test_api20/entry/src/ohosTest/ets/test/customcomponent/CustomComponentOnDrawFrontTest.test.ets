@@ -28,7 +28,7 @@ export default function customComponentOnDrawFrontTest() {
 
     /*
     * @tc.number     : SUB_ARKUI_CAPI_CUSTOMCOMPONENT_ONDRAW_FRONT_0100
-    * @tc.name       : testCustomComponentOnDraw001
+    * @tc.name       : testCustomComponentOnDrawFront001
     * @tc.desc       : test onDrawFront event callback
     * @tc.size       : MediumTest
     * @tc.type       : Function
