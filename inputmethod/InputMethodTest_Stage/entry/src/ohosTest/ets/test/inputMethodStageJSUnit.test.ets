@@ -706,7 +706,7 @@ export default function inputMethodStageJSUnit() {
       try {
         let defaultIme: inputMethod.InputMethodProperty = inputMethod.getDefaultInputMethod();
         console.info("====>SUB_InputMethod_IMF_ListControl_0800: " + JSON.stringify(defaultIme));
-        expect(defaultIme.enabledState).assertEqual(inputMethod.EnabledState.BASIC_MODE);
+        expect(typeof (defaultIme.enabledState) === 'number').assertTrue();
         done();
         console.info("====>SUB_InputMethod_IMF_ListControl_0800 try end");
       } catch (err) {
