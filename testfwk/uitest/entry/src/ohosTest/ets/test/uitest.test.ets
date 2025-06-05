@@ -52,12 +52,37 @@ async function exitInputMethod() {
     }
 }
 
+async function getInputMethodPermission() {
+    let driver = Driver.create()
+    await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+    await driver.delayMs(2000)
+    let TextInput = await driver.findComponent(ON.type('TextInput'))
+    if (TextInput == null) {
+      let scorll = await driver.findComponent(ON.type('Scroll'))
+      TextInput = await scorll.scrollSearch(ON.type('TextInput'))
+    }
+    await TextInput.click()
+    await driver.delayMs(1000)
+    let permissionBtn1 = await driver.findComponent(ON.text('同意'))
+    if (permissionBtn1 != null) {
+      await permissionBtn1.click()
+      await driver.delayMs(1000)
+    }
+    let permissionBtn2 = await driver.findComponent(ON.text('下一步'))
+    if (permissionBtn2 != null) {
+      await permissionBtn2.click()
+      await driver.delayMs(1000)
+    }
+    await stopApplication('com.uitestScene.acts')
+}
+
 export default function UiTest() {
     describe('UiTest_API20', () => {
         let driver: Driver
         beforeAll(async (done: Function) => {
             driver = Driver.create()
             await driver.delayMs(1000)
+            await getInputMethodPermission()
             done()
         })
 
@@ -438,6 +463,7 @@ export default function UiTest() {
         beforeAll(async (done: Function) => {
             driver = Driver.create()
             await driver.delayMs(1000)
+            await getInputMethodPermission()
             done()
         })
 
@@ -1496,6 +1522,7 @@ export default function UiTest() {
         beforeAll(async (done: Function) => {
             driver = Driver.create()
             await driver.delayMs(1000)
+            await getInputMethodPermission()
             done()
         })
 
@@ -1753,6 +1780,7 @@ export default function UiTest() {
         beforeAll(async (done: Function) => {
             driver = Driver.create()
             await driver.delayMs(1000)
+            await getInputMethodPermission()
             done()
         })
 
@@ -1975,6 +2003,7 @@ export default function UiTest() {
         beforeAll(async (done: Function) => {
             driver = Driver.create()
             await driver.delayMs(1000)
+            await getInputMethodPermission()
             done()
         })
 
@@ -3053,6 +3082,7 @@ export default function UiTest() {
         beforeAll(async (done: Function) => {
             driver = UiDriver.create()
             await driver.delayMs(1000)
+            await getInputMethodPermission()
             done()
         })
 
