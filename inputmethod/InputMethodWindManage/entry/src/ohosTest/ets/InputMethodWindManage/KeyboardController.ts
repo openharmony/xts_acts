@@ -1651,10 +1651,14 @@ export class KeyboardController {
     let commonEventPublishData = {
       data: 'FAILED'
     };
+    let fla_fixed = inputmethodengine.PanelFlag.FLG_FIXED;
+    let fla_floating = inputmethodengine.PanelFlag.FLG_FLOATING;
     console.info(TAG + '====>Sub_InputMethod_IME_Dragging_1100 success');
     try {
       if (this.softKeyboardPanel !== null) {
         try {
+          this.softKeyboardPanel.changeFlag(fla_fixed);
+          console.info(TAG + '====>Sub_InputMethod_IME_Dragging_1100 switch to fla_fixed');
           this.softKeyboardPanel.startMoving();
           console.info(TAG + '====>Sub_InputMethod_IME_Dragging_1100 startMoving success');
         } catch (err) {
@@ -1669,6 +1673,8 @@ export class KeyboardController {
               data: 'SUCCESS'
             };
           };
+        } finally {
+          this.softKeyboardPanel.changeFlag(fla_floating);
         };
       } else {
         console.info(TAG + '====>Sub_InputMethod_IME_Dragging_1100 this.softKeyboardPanel is null');

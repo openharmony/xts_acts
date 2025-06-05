@@ -132,6 +132,7 @@
     "pages/ArkUI/Touchhand",
     "pages/ArkUI/HoverSpen",
     "pages/ArkUI/stopSwiper",
+    "pages/ArkUI/moveList",
     "pages/ArkUI/AccessibilityRoleTypeTest",
     "pages/ArkUI/StylusPen",
     "pages/ArkUI/AccessibilityFocusDrawLevel",

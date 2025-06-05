@@ -12,5 +12,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+interface DataType {
+    metadata: {
+      name: string;
+      value: string;
+      resource: string;
+    }[]
+  }
 export const getCurrentApplicationInfo: () => any;
+export const IsDebugMode: () => string;
+export const GetModuleMetadata: () => object;

@@ -639,6 +639,133 @@ HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasDrawPixelMapNineCalls, Function
     OH_Drawing_CanvasDestroy(canvas);
 }
 
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_5300
+ * @tc.name: testCanvasCreateWithPixelMapNormal
+ * @tc.desc: test for testCanvasCreateWithPixelMapNormal
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
+ */
+HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasCreateWithPixelMapNormal, Function | SmallTest | Level2)
+{
+    uint32_t imageWidth = 500;
+    uint32_t imageHeight = 500;
+    OH_Pixelmap_InitializationOptions* createOps = nullptr;
+    auto ret = OH_PixelmapInitializationOptions_Create(&createOps);
+    OH_PixelmapInitializationOptions_SetWidth(createOps, imageWidth);
+    OH_PixelmapInitializationOptions_SetHeight(createOps, imageHeight);
+    OH_PixelmapInitializationOptions_SetPixelFormat(createOps, 3);    // 3 is RGBA fromat
+    OH_PixelmapInitializationOptions_SetSrcPixelFormat(createOps, 3); // 3 is RGBA fromat
+    OH_PixelmapInitializationOptions_SetAlphaType(createOps, 2);      // 2 is ALPHA_FORMAT_PREMUL
+    size_t bufferSize = imageWidth * imageHeight * 4;                 // 4 for test
+    void* bitmapAddr = malloc(bufferSize);
+    if (bitmapAddr == nullptr) {
+        return;
+    }
+    for (int i = 0; i < imageWidth * imageHeight; i++) {
+        ((uint32_t*)bitmapAddr)[i] = DRAW_COLORBLUE;
+    }
+    OH_PixelmapNative* pixelMapNative = nullptr;
+    ret = OH_PixelmapNative_CreatePixelmap((uint8_t*)bitmapAddr, bufferSize, createOps, &pixelMapNative);
+    OH_Drawing_SamplingOptions* samplingOptions =
+        OH_Drawing_SamplingOptionsCreate(FILTER_MODE_NEAREST, MIPMAP_MODE_NEAREST);
+    OH_Drawing_PixelMap* pixelMap = OH_Drawing_PixelMapGetFromOhPixelMapNative(pixelMapNative);
+    OH_Drawing_Canvas* offScreenCanvas = OH_Drawing_CanvasCreateWithPixelMap(pixelMap);
+    EXPECT_NE(offScreenCanvas, nullptr);
+    OH_Drawing_CanvasDestroy(offScreenCanvas);
+    OH_Drawing_SamplingOptionsDestroy(samplingOptions);
+    OH_Drawing_PixelMapDissolve(pixelMap);
+    OH_PixelmapNative_Release(pixelMapNative);
+    OH_PixelmapInitializationOptions_Release(createOps);
+    free(bitmapAddr);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_5301
+ * @tc.name: testCanvasCreateWithPixelMapNull
+ * @tc.desc: test for testCanvasCreateWithPixelMapNull
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasCreateWithPixelMapNull, Function | SmallTest | Level3)
+{
+    uint32_t imageWidth = 500;
+    uint32_t imageHeight = 500;
+    OH_Pixelmap_InitializationOptions* createOps = nullptr;
+    auto ret = OH_PixelmapInitializationOptions_Create(&createOps);
+    OH_PixelmapInitializationOptions_SetWidth(createOps, imageWidth);
+    OH_PixelmapInitializationOptions_SetHeight(createOps, imageHeight);
+    OH_PixelmapInitializationOptions_SetPixelFormat(createOps, 3);    // 3 is RGBA fromat
+    OH_PixelmapInitializationOptions_SetSrcPixelFormat(createOps, 3); // 3 is RGBA fromat
+    OH_PixelmapInitializationOptions_SetAlphaType(createOps, 2);      // 2 is ALPHA_FORMAT_PREMUL
+    size_t bufferSize = imageWidth * imageHeight * 4;                 // 4 for test
+    void* bitmapAddr = malloc(bufferSize);
+    if (bitmapAddr == nullptr) {
+        return;
+    }
+    for (int i = 0; i < imageWidth * imageHeight; i++) {
+        ((uint32_t*)bitmapAddr)[i] = DRAW_COLORBLUE;
+    }
+    OH_PixelmapNative* pixelMapNative = nullptr;
+    ret = OH_PixelmapNative_CreatePixelmap((uint8_t*)bitmapAddr, bufferSize, createOps, &pixelMapNative);
+    OH_Drawing_SamplingOptions* samplingOptions =
+        OH_Drawing_SamplingOptionsCreate(FILTER_MODE_NEAREST, MIPMAP_MODE_NEAREST);
+    OH_Drawing_PixelMap* pixelMap = OH_Drawing_PixelMapGetFromOhPixelMapNative(pixelMapNative);
+    OH_Drawing_Canvas* offScreenCanvas = OH_Drawing_CanvasCreateWithPixelMap(nullptr);
+    EXPECT_EQ(offScreenCanvas, nullptr);
+    OH_Drawing_CanvasDestroy(offScreenCanvas);
+    OH_Drawing_SamplingOptionsDestroy(samplingOptions);
+    OH_Drawing_PixelMapDissolve(pixelMap);
+    OH_PixelmapNative_Release(pixelMapNative);
+    OH_PixelmapInitializationOptions_Release(createOps);
+    free(bitmapAddr);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_5302
+ * @tc.name: testCanvasCreateWithPixelMapMultipleCalls
+ * @tc.desc: test for testCanvasCreateWithPixelMapMultipleCalls
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeCanvasPart5Test, testCanvasCreateWithPixelMapMultipleCalls, Function | SmallTest | Level3)
+{
+    uint32_t imageWidth = 500;
+    uint32_t imageHeight = 500;
+    OH_Pixelmap_InitializationOptions* createOps = nullptr;
+    auto ret = OH_PixelmapInitializationOptions_Create(&createOps);
+    OH_PixelmapInitializationOptions_SetWidth(createOps, imageWidth);
+    OH_PixelmapInitializationOptions_SetHeight(createOps, imageHeight);
+    OH_PixelmapInitializationOptions_SetPixelFormat(createOps, 3);    // 3 is RGBA fromat
+    OH_PixelmapInitializationOptions_SetSrcPixelFormat(createOps, 3); // 3 is RGBA fromat
+    OH_PixelmapInitializationOptions_SetAlphaType(createOps, 2);      // 2 is ALPHA_FORMAT_PREMUL
+    size_t bufferSize = imageWidth * imageHeight * 4;                 // 4 for test
+    void* bitmapAddr = malloc(bufferSize);
+    if (bitmapAddr == nullptr) {
+        return;
+    }
+    for (int i = 0; i < imageWidth * imageHeight; i++) {
+        ((uint32_t*)bitmapAddr)[i] = DRAW_COLORBLUE;
+    }
+    OH_PixelmapNative* pixelMapNative = nullptr;
+    ret = OH_PixelmapNative_CreatePixelmap((uint8_t*)bitmapAddr, bufferSize, createOps, &pixelMapNative);
+    OH_Drawing_SamplingOptions* samplingOptions =
+        OH_Drawing_SamplingOptionsCreate(FILTER_MODE_NEAREST, MIPMAP_MODE_NEAREST);
+    OH_Drawing_PixelMap* pixelMap = OH_Drawing_PixelMapGetFromOhPixelMapNative(pixelMapNative);
+    for (int i = 0; i < 10; i++) {
+        OH_Drawing_Canvas* offScreenCanvas = OH_Drawing_CanvasCreateWithPixelMap(pixelMap);
+        EXPECT_NE(offScreenCanvas, nullptr);
+        OH_Drawing_CanvasDestroy(offScreenCanvas);
+    }
+    OH_Drawing_SamplingOptionsDestroy(samplingOptions);
+    OH_Drawing_PixelMapDissolve(pixelMap);
+    OH_PixelmapNative_Release(pixelMapNative);
+    OH_PixelmapInitializationOptions_Release(createOps);
+    free(bitmapAddr);
+}
 } // namespace Drawing
 } // namespace Rosen
 } // namespace OHOS

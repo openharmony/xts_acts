@@ -66,6 +66,32 @@ function truncateAndFormat(num: number): string {
   return truncated.toFixed(2);
 }
 
+async function isPipWindowSupport(context1: common.BaseContext){
+    let pipController: pipWindow.PiPController | undefined = undefined;
+      let mXComponentController = new XComponentController();
+      let navId = "";
+      let config: pipWindow.PiPConfiguration = {
+        context: context1,
+        componentController: mXComponentController,
+        navigationId: navId,
+        templateType: pipWindow.PiPTemplateType.VIDEO_LIVE,
+        contentWidth: 500,
+        contentHeight: 500,
+        localStorage: null!
+      };
+      pipController = await pipWindow.create(config);
+      let isPipWindowSupport =  pipController.isPiPSupported();
+        console.log('isPipWindowSupport:'+isPipWindowSupport);
+        await pipController.startPiP();
+        await  sleep(300)
+        await pipController.stopPiP();
+        if (isPipWindowSupport) {
+          return true;
+        }else{
+          return false;
+        }
+}
+
 // let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
 
 export default function pipWindowTest(context1: common.BaseContext, windowStage: ohosWindow.WindowStage) {
@@ -73,6 +99,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
     console.log('describe window_api_test start!!!')
     const TRUE_FLAG = true;
     let tag = 'pipWindowTest'
+    let isPipWindowEnabled = false;
     let isAutoWindow: string =
       settings.getValueSync(globalThis.abilityContext, 'window_pcmode_switch_status', '',
         settings.domainName.DEVICE_SHARED);
@@ -102,6 +129,11 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
       };
       return config;
     }
+
+    beforeAll(async () => {
+      isPipWindowEnabled = await isPipWindowSupport(context1);
+      console.log('beforeAll isPipEnabled:'+isPipWindowEnabled);
+    });
 
     /**
      * @tc.number     : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0100
@@ -2331,8 +2363,8 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
         console.log('PiPSizeChange_Function_Callback_0 device type 2in1');
         done();
         return;
-      }
-      let pipController:pipWindow.PiPController | undefined = undefined;
+      }else{
+        let pipController:pipWindow.PiPController | undefined = undefined;
       let mXComponentController = new XComponentController();
       let navId = "";
       let contentWidth = 400;
@@ -2395,6 +2427,8 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           done();
         }
       }
+      }
+      
     })
     /**
      * @tc.number     : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4400
@@ -2409,8 +2443,8 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
         console.log('PiPSizeChange_Function_Callback_1 device type 2in1');
         done();
         return;
-      }
-      let pipController:pipWindow.PiPController | undefined = undefined;
+      }else{
+        let pipController:pipWindow.PiPController | undefined = undefined;
       let mXComponentController = new XComponentController();
       let navId = "";
       let contentWidth = 400;
@@ -2476,6 +2510,8 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           done();
         }
       }
+      }
+      
     })
     /**
      * @tc.number     : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4500
@@ -2490,8 +2526,8 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
         console.log('PiPSizeChange_Function_Callback_2 device type 2in1');
         done();
         return;
-      }
-      let pipController:pipWindow.PiPController | undefined = undefined;
+      }else{
+        let pipController:pipWindow.PiPController | undefined = undefined;
       let mXComponentController = new XComponentController();
       let navId = "";
       let contentWidth = 400;
@@ -2566,6 +2602,8 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           done();
         }
       }
+      }
+      
     })
 
     /**
@@ -3941,12 +3979,10 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
     it('testPipWindowDefaultWindowSize_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const message = 'testPipWindowDefaultWindowSize_0100!'
       try {
-        let enable = pipWindow.isPiPEnabled();
-        console.error(`${message} isPiPEnabled: ${enable}`);
-        if (!enable) {
+        if (!isPipWindowEnabled) {
           done();
-        }
-        await startAbility(message, globalThis.abilityContext);
+        }else{
+          await startAbility(message, globalThis.abilityContext);
         let driver = Driver.create();
         let createPip1 = await driver.findComponent(ON.id('CreatePipWindow1'));
         await sleep(1000)
@@ -3994,6 +4030,8 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           await sleep(1000)
           done()
         }
+        }
+        
       } catch (err) {
         console.error(`${message} Failed, Cause code ${err.code}, message ${err.message}`);
         if (err.code === 801) {
@@ -4018,12 +4056,10 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
     it('testPipWindowDefaultWindowSize_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const message = 'testPipWindowDefaultWindowSize_0200!'
       try {
-        let enable = pipWindow.isPiPEnabled();
-        console.error(`${message} isPiPEnabled: ${enable}`);
-        if (!enable) {
+        if (!isPipWindowEnabled) {
           done();
-        }
-        await startAbility(message, globalThis.abilityContext);
+        }else{
+          await startAbility(message, globalThis.abilityContext);
         let driver = Driver.create();
         let createPip1 = await driver.findComponent(ON.id('CreatePipWindow1'));
         await sleep(1000)
@@ -4071,6 +4107,8 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           await sleep(1000)
           done()
         }
+        }
+        
       } catch (err) {
         console.error(`${message} Failed, Cause code ${err.code}, message ${err.message}`);
         if (err.code === 801) {
@@ -4095,13 +4133,11 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
     it('testPipWindowDefaultWindowSize_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const message = 'testPipWindowDefaultWindowSize_0300!'
       try {
-        let enable = pipWindow.isPiPEnabled();
-        console.error(`${message} isPiPEnabled: ${enable}`);
-        if (!enable) {
+      
+        if (!isPipWindowEnabled) {
           done();
-        }
-
-        await startAbility(message, globalThis.abilityContext);
+        }else{
+          await startAbility(message, globalThis.abilityContext);
         let driver = Driver.create();
         let createPip4 = await driver.findComponent(ON.id('CreatePipWindow4'));
         await sleep(1000)
@@ -4152,6 +4188,9 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           await sleep(1000)
           done()
         }
+        }
+
+        
       } catch (err) {
         console.error(`${message} Failed, Cause code ${err.code}, message ${err.message}`);
         if (err.code === 801) {
@@ -4176,13 +4215,10 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
     it('testPipWindowDefaultWindowSize_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const message = 'testPipWindowDefaultWindowSize_0400!'
       try {
-        let enable = pipWindow.isPiPEnabled();
-        console.error(`${message} isPiPEnabled: ${enable}`);
-        if (!enable) {
+        if (!isPipWindowEnabled) {
           done();
-        }
-
-        await startAbility(message, globalThis.abilityContext);
+        }else{
+          await startAbility(message, globalThis.abilityContext);
         let driver = Driver.create();
         let createPip4 = await driver.findComponent(ON.id('CreatePipWindow4'));
         await sleep(1000)
@@ -4233,6 +4269,9 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           await sleep(1000)
           done()
         }
+        }
+
+        
       } catch (err) {
         console.error(`${message} Failed, Cause code ${err.code}, message ${err.message}`);
         if (err.code === 801) {
@@ -4256,11 +4295,9 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
     it('testPipWindowDefaultWindowSizeErrCode_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const message = 'testPipWindowDefaultWindowSizeErrCode_0100!'
       try {
-        let enable = pipWindow.isPiPEnabled();
-        console.error(`${message} isPiPEnabled: ${enable}`);
-        if (!enable) {
+        if (!isPipWindowEnabled) {
           done();
-        }
+        }else{
           let pipController: pipWindow.PiPController | undefined = undefined;
           let mXComponentController: XComponentController = new XComponentController();
           let navId: string = "page_1"; // 假设当前页面的导航id为page_1，详见PiPConfiguration定义，具体导航名称由开发者自行定义。
@@ -4287,6 +4324,8 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
             expect().assertFail();
             done();
           });
+        }
+          
       } catch (err) {
         console.error(`${message} Failed, Cause code ${err.code}, message ${err.message}`);
         if (err.code === 801) {

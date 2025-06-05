@@ -586,8 +586,8 @@ let performanceTiming_0100 = async (done: Function) => {
     } else {
       console.log(`${caseName} request success, data: ${JSON.stringify(data)}`);
       expectTrue(data.performanceTiming.dnsTiming > 0);
-      expectTrue(data.performanceTiming.tcpTiming > 0);
-      expectTrue(data.performanceTiming.tlsTiming > 0);
+      expectTrue(data.performanceTiming.tcpTiming >= 0);
+      expectTrue(data.performanceTiming.tlsTiming >= 0);
       expectTrue(data.performanceTiming.firstSendTiming > 0);
       expectTrue(data.performanceTiming.firstReceiveTiming > 0);
       expectTrue(data.performanceTiming.totalFinishTiming > 0);

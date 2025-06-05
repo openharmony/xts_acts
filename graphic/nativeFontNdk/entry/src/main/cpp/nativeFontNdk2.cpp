@@ -30,6 +30,11 @@
 #define DOUBLE_NUM_10 10.0
 #define DOUBLE_NUM_15 15.0
 
+namespace {
+    const double DEFAULT_FONT_SIZE = 50;
+    const double MAX_WIDTH = 800.0;
+}
+
 static OH_Drawing_TypographyStyle *typoStyle_ = nullptr;
 static OH_Drawing_TextStyle *txtStyle_ = nullptr;
 static OH_Drawing_FontCollection *fontCollection_ = nullptr;
@@ -315,5 +320,126 @@ napi_value OHDrawingFontGetPathForGlyph004(napi_env env, napi_callback_info info
         }
     }
     OH_Drawing_FontDestroy(font);
+    return result;
+}
+
+napi_value OHDrawingSetTextStyleBadgeType001(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_create_array_with_length(env, ARR_NUM_3, &result);
+    napi_value result1 = nullptr;
+    napi_value result2 = nullptr;
+    napi_value result3 = nullptr;
+
+    OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
+    OH_Drawing_TextStyle *txtStyle = OH_Drawing_CreateTextStyle();
+    OH_Drawing_TypographyCreate *handler =
+        OH_Drawing_CreateTypographyHandler(typoStyle, OH_Drawing_CreateFontCollection());
+    OH_Drawing_TypographyCreate *superTxtHandler =
+        OH_Drawing_CreateTypographyHandler(typoStyle, OH_Drawing_CreateFontCollection());
+
+    OH_Drawing_SetTextStyleColor(txtStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0xFF));
+    OH_Drawing_SetTextStyleFontSize(txtStyle, DEFAULT_FONT_SIZE);
+    OH_Drawing_SetTextStyleFontWeight(txtStyle, FONT_WEIGHT_400);
+    OH_Drawing_SetTextStyleBadgeType(txtStyle, OH_Drawing_TextBadgeType::TEXT_BADGE_NONE);
+
+    OH_Drawing_TextStyle *superTxtStyle = OH_Drawing_CreateTextStyle();
+    if (superTxtStyle != nullptr) {
+        napi_create_int32(env, SUCCESS, &result1);
+    } else {
+        napi_create_int32(env, FAIL, &result1);
+    }
+    napi_set_element(env, result, ARR_NUM_0, result1);
+    OH_Drawing_SetTextStyleFontSize(superTxtStyle, DEFAULT_FONT_SIZE);
+    OH_Drawing_SetTextStyleFontWeight(superTxtStyle, FONT_WEIGHT_400);
+    OH_Drawing_SetTextStyleBadgeType(superTxtStyle, OH_Drawing_TextBadgeType::TEXT_SUPERSCRIPT);
+
+    const char *text = "OpenHarmony";
+    OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
+    OH_Drawing_TypographyHandlerAddText(handler, text);
+    OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
+    if (typography != nullptr) {
+        napi_create_int32(env, SUCCESS, &result2);
+    } else {
+        napi_create_int32(env, FAIL, &result2);
+    }
+    napi_set_element(env, result, ARR_NUM_1, result2);
+    OH_Drawing_TypographyLayout(typography, MAX_WIDTH);
+
+    OH_Drawing_TypographyHandlerPushTextStyle(superTxtHandler, superTxtStyle);
+    OH_Drawing_TypographyHandlerAddText(superTxtHandler, text);
+    OH_Drawing_Typography *superTxtTypography = OH_Drawing_CreateTypography(superTxtHandler);
+    if (superTxtTypography != nullptr) {
+        napi_create_int32(env, SUCCESS, &result3);
+    } else {
+        napi_create_int32(env, FAIL, &result3);
+    }
+    napi_set_element(env, result, ARR_NUM_2, result3);
+    OH_Drawing_TypographyLayout(superTxtTypography, MAX_WIDTH);
+
+    OH_Drawing_DestroyTypography(typography);
+    OH_Drawing_DestroyTypographyHandler(handler);
+    OH_Drawing_DestroyTextStyle(txtStyle);
+
+    OH_Drawing_DestroyTypography(superTxtTypography);
+    OH_Drawing_DestroyTypographyHandler(superTxtHandler);
+    OH_Drawing_DestroyTextStyle(superTxtStyle);
+    return result;
+}
+
+napi_value OHDrawingSetTextStyleBadgeType002(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_create_array_with_length(env, ARR_NUM_2, &result);
+    napi_value result1 = nullptr;
+    napi_value result2 = nullptr;
+
+    OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
+    OH_Drawing_TextStyle *txtStyle = OH_Drawing_CreateTextStyle();
+    OH_Drawing_TypographyCreate *handler =
+        OH_Drawing_CreateTypographyHandler(typoStyle, OH_Drawing_CreateFontCollection());
+    OH_Drawing_TypographyCreate *subTxtHandler =
+        OH_Drawing_CreateTypographyHandler(typoStyle, OH_Drawing_CreateFontCollection());
+
+    OH_Drawing_SetTextStyleColor(txtStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0xFF));
+    OH_Drawing_SetTextStyleFontSize(txtStyle, DEFAULT_FONT_SIZE);
+    OH_Drawing_SetTextStyleFontWeight(txtStyle, FONT_WEIGHT_400);
+    OH_Drawing_SetTextStyleBadgeType(txtStyle, OH_Drawing_TextBadgeType::TEXT_BADGE_NONE);
+
+    OH_Drawing_TextStyle *subTxtStyle = OH_Drawing_CreateTextStyle();
+    if (subTxtStyle != nullptr) {
+        napi_create_int32(env, SUCCESS, &result1);
+    } else {
+        napi_create_int32(env, FAIL, &result1);
+    }
+    napi_set_element(env, result, ARR_NUM_0, result1);
+    OH_Drawing_SetTextStyleFontSize(subTxtStyle, DEFAULT_FONT_SIZE);
+    OH_Drawing_SetTextStyleFontWeight(subTxtStyle, FONT_WEIGHT_400);
+    OH_Drawing_SetTextStyleBadgeType(subTxtStyle, OH_Drawing_TextBadgeType::TEXT_SUBSCRIPT);
+    
+    const char *text = "ƒ„∫√ ¿ΩÁ";
+    OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
+    OH_Drawing_TypographyHandlerAddText(handler, text);
+    OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
+    OH_Drawing_TypographyLayout(typography, MAX_WIDTH);
+
+    OH_Drawing_TypographyHandlerPushTextStyle(subTxtHandler, subTxtStyle);
+    OH_Drawing_TypographyHandlerAddText(subTxtHandler, text);
+    OH_Drawing_Typography *subTxtTypography = OH_Drawing_CreateTypography(subTxtHandler);
+    if (subTxtTypography != nullptr) {
+        napi_create_int32(env, SUCCESS, &result2);
+    } else {
+        napi_create_int32(env, FAIL, &result2);
+    }
+    napi_set_element(env, result, ARR_NUM_1, result2);
+    OH_Drawing_TypographyLayout(subTxtTypography, MAX_WIDTH);
+
+    OH_Drawing_DestroyTypography(typography);
+    OH_Drawing_DestroyTypographyHandler(handler);
+    OH_Drawing_DestroyTextStyle(txtStyle);
+
+    OH_Drawing_DestroyTypography(subTxtTypography);
+    OH_Drawing_DestroyTypographyHandler(subTxtHandler);
+    OH_Drawing_DestroyTextStyle(subTxtStyle);
     return result;
 }

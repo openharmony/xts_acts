@@ -110,6 +110,8 @@ export default function pixelmapNdkForDMATest() {
       }
       let imageInfo = await pixelMap.getImageInfo();
       logger.log("getImageInfoFromPixelmapJS info is: " + JSON.stringify(imageInfo));
+      await imageSource?.release();
+      await pixelMap?.release();
       return imageInfo;
     }
 

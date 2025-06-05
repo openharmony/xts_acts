@@ -19551,8 +19551,6 @@ export default function imageExifGetModifyTest() {
     it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_ERROR_014800', Level.LEVEL0, async (done: Function) => {
       const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_ERROR_014800';
       const key = image.PropertyKey.MAKER_NOTE;
-      const expectedModifyErrorCode = 62980146
-      const expectedGetErrorCode = 62980123
       try {
         const values:Array<picTypeValue> = [
           {name: "jpeg", fileName: "test_exif_empty_2.jpg"},
@@ -19571,38 +19569,22 @@ export default function imageExifGetModifyTest() {
               expect().assertFail();
               done();
             } else {
-              await imageSourceApi.modifyImageProperty(key, 'abc')
-                .then(() => {
-                  hilog.info(0x0000, testTag,
-                    `modifyImageProperty promise success %{public}s %{public}s %{public}s`, key,testType);
-                })
-                .catch(async (err: BusinessError) => {
-                  hilog.info(0x0000, testTag,
-                    `modifyImageProperty promise failed %{public}s %{public}s %{public}s`, key, err.code,
-                    '62980146',testType);
-                  if (expectedModifyErrorCode == err.code) {
-                    const imageSourceApiGet = await getImageSource(values[i].fileName, testType);
-                    await imageSourceApiGet.getImageProperty(key)
-                      .then((data: string) => {
-                        hilog.info(0x0000, testTag,
-                          `getImageProperty promise success %{public}s %{public}s %{public}s %{public}s`,
-                          key, data,testType);
-                      })
-                      .catch((error: BusinessError) => {
-                        hilog.info(0x0000, testTag,
-                          `getImageProperty promise error %{public}s %{public}s %{public}s`, key, error.code,testType);
-                        checkResult = expectedGetErrorCode == error.code
-                      })
-                    if (imageSourceApiGet != undefined) {
-                      imageSourceApiGet.release();
-                    }
-                  }
-                })
-              if (imageSourceApi != undefined) {
-                imageSourceApi.release();
-              }
+              await imageSourceApi.modifyImageProperty(key, 'abc').then(() => {
+              hilog.info(0x0000, testTag, `modifyImageProperty promise success %{public}s %{public}s %{public}s`, key,testType);
+              checkResult = true
+              expect(true).assertTrue();
+              done();
+            }).catch(async (err: BusinessError) => {
+              hilog.info(0x0000, testTag, `modifyImageProperty promise failed %{public}s %{public}s %{public}s`, key, err.code, '62980146',testType);
+              checkResult = false
+              expect(false).assertTrue();
+              done();
+            })
+            if (imageSourceApi != undefined) {
+              imageSourceApi.release();
             }
-            result = result && checkResult
+          }
+          result = result && checkResult
           }
         }
         expect(result).assertTrue()

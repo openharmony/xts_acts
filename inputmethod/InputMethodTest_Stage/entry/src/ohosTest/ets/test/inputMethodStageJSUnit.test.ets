@@ -513,6 +513,21 @@ export default function inputMethodStageJSUnit() {
       let number_password = inputMethod.TextInputType.NUMBER_PASSWORD;
       console.info("====>Sub_Misc_inputMethod_TextInputType_0100 NUMBER_PASSWORD:" + number_password);
       expect(number_password).assertEqual(8);
+      let screen_lock_password = inputMethod.TextInputType.SCREEN_LOCK_PASSWORD;
+      console.info("====>Sub_Misc_inputMethod_TextInputType_0100 SCREEN_LOCK_PASSWORD:" + screen_lock_password);
+      expect(screen_lock_password).assertEqual(9);
+      let user_name = inputMethod.TextInputType.USER_NAME;
+      console.info("====>Sub_Misc_inputMethod_TextInputType_0100 USER_NAME:" + user_name);
+      expect(user_name).assertEqual(10);
+      let new_password = inputMethod.TextInputType.NEW_PASSWORD;
+      console.info("====>Sub_Misc_inputMethod_TextInputType_0100 NEW_PASSWORD:" + new_password);
+      expect(new_password).assertEqual(11);
+      let number_decimal = inputMethod.TextInputType.NUMBER_DECIMAL;
+      console.info("====>Sub_Misc_inputMethod_TextInputType_0100 NUMBER_DECIMAL:" + number_decimal);
+      expect(number_decimal).assertEqual(12);
+      let one_time_code = inputMethod.TextInputType.ONE_TIME_CODE;
+      console.info("====>Sub_Misc_inputMethod_TextInputType_0100 ONE_TIME_CODE:" + one_time_code);
+      expect(one_time_code).assertEqual(13);
       done();
     });
 

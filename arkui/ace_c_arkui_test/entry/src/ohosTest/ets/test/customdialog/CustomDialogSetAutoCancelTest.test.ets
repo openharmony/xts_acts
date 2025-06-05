@@ -36,9 +36,9 @@ export default function customDialogSetAutoCancelTest() {
      */
     it('testCustomDialogSetAutoCancel001', 0, async (done: Function) => {
       await Utils.pushPage(`customdialog/CustomDialogSetAutoCancelTest`)
-      await Utils.clickComponent("buttonSetAutoCancel")
+      await Utils.clickComponent('buttonSetAutoCancel')
       await Utils.sleep(2000)
-      await Utils.clickComponent("buttonSetAutoCancel")
+      await Utils.clickComponent('buttonSetAutoCancel')
       await Utils.sleep(2000)
       expect(getInspectorByKey('columnSetAutoCancel')).assertEqual("")
       done()

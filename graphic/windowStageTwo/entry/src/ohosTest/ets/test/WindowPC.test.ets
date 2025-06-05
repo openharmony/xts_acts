@@ -1973,6 +1973,7 @@ export default function windowPCTest() {
       const message = 'test_on_windowWillClose_subWindow_result_false'
       let result: boolean = true;
       const callback = () => {
+        console.log(`${message} callback come in... `);
         return new Promise<boolean>((resolve, reject) => {
           result = false;
           resolve(result);
@@ -1986,10 +1987,12 @@ export default function windowPCTest() {
       try {
         let promise = windowStage.createSubWindowWithOptions('subwindow0', options);
         // let promise = windowStage.createSubWindow('subwindow0');
-        await promise.then(async (data) => {
+        promise.then(async (data) => {
+          console.log(`${message} subwindow0 create `);
           const subWindowClass = data;
-          subWindowClass.setUIContent('testability/pages/WindowTest/StartMoving');
-          subWindowClass.showWindow();
+          await subWindowClass.setUIContent('testability/pages/WindowTest/StartMoving');
+          subWindowClass.moveWindowToAsync(0,100);
+          await subWindowClass.showWindow();
           await sleep(1000);
           subWindowClass.on('windowWillClose', callback);
           let driver: Driver = Driver.create();
@@ -1998,11 +2001,11 @@ export default function windowPCTest() {
           await sleep(1000);
           try {
             window.findWindow('subwindow0');
-            console.info(`subwindow0 is existing`);
+            console.info(`${message} subwindow0 is existing`);
             subWindowClass.off('windowWillClose');
             expect().assertFail();
           } catch (exception) {
-            console.info(`subwindow0 is not existing`);
+            console.info(`${message} subwindow0 is not existing`);
           }
           expect(result).assertFalse();
           done();
@@ -2010,14 +2013,14 @@ export default function windowPCTest() {
           console.error(`${message} Failed to create subwindow, Cause code ${err.code}, message ${err.message} `);
           try {
             const windowClassFind = window.findWindow('subwindow0')
-            console.error(`The window ${windowClassFind} still exist`);
+            console.error(`${message} The window ${windowClassFind} still exist`);
             windowClassFind.off('windowWillClose');
           } catch (err) {
-            console.info(`The window does not exist`);
+            console.info(`${message} The window does not exist`);
           }
           if (err.code == 801 || err.code == 1300002) {
             expect(true).assertTrue();
-            console.error(`The device not support on(windowWillClose)`);
+            console.error(`${message} The device not support on(windowWillClose)`);
           } else {
             expect().assertFail();
           }
@@ -2025,7 +2028,7 @@ export default function windowPCTest() {
           done();
         })
       } catch (err) {
-        console.error(`Failed to register callback, Cause code ${err.code}, message ${err.message} `);
+        console.error(`${message} Failed to register callback, Cause code ${err.code}, message ${err.message} `);
         expect().assertFail();
         done();
       }

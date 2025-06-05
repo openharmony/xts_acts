@@ -112,3 +112,7 @@ export const testCropAndScaleStrategyWithCropRegion: (fd:number, regionX:number,
                                                       cropAndScaleStrategy:number, imageWidth:number, imageHeight:number) => number;
 export const testCropAndScaleStrategyErr: (fd:number, desiredWidth:number, desiredHeight:number, regionX:number, regionY:number, 
                                            regionWidth:number, regionHight:number, cropAndScaleStrategy:number) => number;
+export const GetImagePackerSupportedFormats: () => Array<string>;
+export const GetImageSourceSupportedFormats: () => Array<string>;
+export const GetImagePackerSupportedFormatsError: (flag: boolean) => number;
+export const GetImageSourceSupportedFormatsError: (flag: boolean) => number;

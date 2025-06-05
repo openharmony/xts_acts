@@ -29,7 +29,9 @@
             "type": "PushKit",
             "push": [
                 "./resource/pcs/bundle_fifth.hap -> /data/app/el2/100/base/com.acts.pcs.arktstest/haps/entry/files/bundle_fifth.hap",
-                "./resource/pcs/Believer.wav -> /data/app/el2/100/base/com.acts.pcs.arktstest/haps/entry/files/Believer.wav"
+                "./resource/pcs/Believer.wav -> /data/app/el2/100/base/com.acts.pcs.arktstest/haps/entry/files/Believer.wav",
+				"./common_event.txt -> /data/app/el2/100/base/com.acts.pcs.arktstest/haps/entry/files/common_event.txt" 
+
             ]
         }
     ]

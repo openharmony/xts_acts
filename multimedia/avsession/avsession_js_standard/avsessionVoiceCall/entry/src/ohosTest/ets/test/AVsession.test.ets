@@ -2110,7 +2110,413 @@ export default function abilityTest() {
         }
     })
 
+   /* *
+    * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_2600
+    * @tc.name      : setAVMetadata - callback - set filter
+    * @tc.desc      : Testing call setAVMetadata(callback) set filter- TYPE_CAST_PLUS_AUDIO
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 2
+    */
+
+    it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_2600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+        let metadata:avSession.AVMetadata = {
+            assetId: '121278',
+            filter : avSession.ProtocolType.TYPE_CAST_PLUS_AUDIO
+        };
+        try {
+            session.setAVMetadata(metadata, (err:BusinessError) => {
+                if (err) {
+                    console.info(`TestLog: Set singleLyricText error: code: ${err.code}, message: ${err.message}`);
+                    expect(err.code).assertEqual(401);
+                    done();
+                } else {
+                    controller.getAVMetadata((err:BusinessError, data:avSession.AVMetadata) => {
+                        if (err) {
+                            console.info(`TestLog: Get filter error: code: ${err.code}, message: ${err.message}`);
+                            expect(false).assertTrue();
+                        } else if (data) {
+                            console.info('TestLog: Get filter Successfully');
+                            expect(data.assetId).assertEqual(metadata.assetId);
+                            expect(data.filter).assertEqual(metadata.filter);
+                        } else {
+                            console.info(`TestLog: Get singleLyricText failed:${data}`);
+                            expect(false).assertTrue();
+                        }
+                        done();
+                    })
+                }
+            })
+        } catch (err) {
+            console.info(`TestLog: set & get filter error: code: ${err.code}, message: ${err.message}`);
+            expect(false).assertTrue();
+            done();
+        }
+    })
+
+   /* *
+    * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETMETADATA_PROMISE_3000
+    * @tc.name      : setAVMetadata - promise - set filter
+    * @tc.desc      : Testing call setAVMetadata(promise) set filter- TYPE_CAST_PLUS_AUDIO
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 2
+    */
+
+    it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_PROMISE_3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+        let metadata:avSession.AVMetadata = {
+            assetId: '121278',
+            filter : avSession.ProtocolType.TYPE_CAST_PLUS_AUDIO
+        };
+        await session.setAVMetadata(metadata).then(() => {
+            console.info('TestLog: Set filter successfully');
+        }).catch((err:BusinessError) => {
+            console.error(`TestLog: Set filter error: code: ${err.code}, message: ${err.message}`);
+            expect(err.code).assertEqual(401);
+            done();
+        });
+
+        await controller.getAVMetadata().then((data:avSession.AVMetadata) => {
+            if (JSON.stringify(data.filter) === JSON.stringify(metadata.filter)) {
+                expect(true).assertTrue();
+            } else {
+                console.info('TestLog: Get filter failed');
+                expect(false).assertTrue();
+            }
+        }).catch((err:BusinessError) => {
+            console.error(`TestLog: Get filter error: code: ${err.code}, message: ${err.message}`);
+            expect(false).assertTrue();
+        });
+        done();
+    })
+
+   /* *
+    * @tc.number    : SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_PROMISE_2200
+    * @tc.name      : getOutputDevice - promise - streamInfos not undefined
+    * @tc.desc      : Testing call getOutputDevice(promise) streamInfos not undefined
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 2
+    */
+
+    it('SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_PROMISE_2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      try{
+         session.getOutputDevice().then((device_Info: avSession.OutputDeviceInfo) => {
+            console.info('Get device successfully');
+            let deviceInfo: avSession.DeviceInfo = device_Info.devices[0];
+            console.info(`getOutputDevice successfully ${JSON.stringify(deviceInfo)}`);
+            if (deviceInfo && deviceInfo.castCategory !== undefined && deviceInfo.deviceId !== undefined &&
+                deviceInfo.deviceName !== undefined && deviceInfo.deviceType !== undefined && deviceInfo.ipAddress !== undefined &&
+                deviceInfo.providerId !== undefined && deviceInfo.supportedProtocols !== undefined &&
+                deviceInfo.authenticationStatus !== undefined && deviceInfo.audioCapabilities?.streamInfos !== undefined) {
+                expect(true).assertTrue();
+            } else {
+                console.info('getOutputDevice value error.')
+                expect(false).assertTrue();
+            }
+            done();
+          }).catch((err: BusinessError) => {
+            console.error(`GetOutputDevice BusinessError: code: ${err.code}, message: ${err.message}`);
+            expect(false).assertTrue();
+          })
+
+      } catch(err) {
+          console.info(`Get device BusinessError: ${err.code}, message: ${err.message}`);
+          expect(false).assertTrue();
+      }
+      done();
+  })
+
+
+   /* *
+    * @tc.number    : SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_CALLBACK_2300
+    * @tc.name      : getOutputDevice - callback - streamInfos not undefined
+    * @tc.desc      : Testing call getOutputDevice(callback) streamInfos not undefined
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 2
+    */
+
+    it('SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_CALLBACK_2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      try{
+         session.getOutputDevice((err: BusinessError, device_Info: avSession.OutputDeviceInfo) => {
+          if (err) {
+            console.info(`Get device BusinessError: ${err.code}, message: ${err.message}`);
+            expect(false).assertTrue();
+          }
+          console.info('getOutputDevice successfully');
+          let deviceInfo: avSession.DeviceInfo = device_Info.devices[0];
+          console.info(`getOutputDevice successfully ${JSON.stringify(deviceInfo)}`);
+          if (deviceInfo && deviceInfo.castCategory !== undefined && deviceInfo.deviceId !== undefined &&
+              deviceInfo.deviceName !== undefined && deviceInfo.deviceType !== undefined && deviceInfo.ipAddress !== undefined &&
+              deviceInfo.providerId !== undefined && deviceInfo.supportedProtocols !== undefined &&
+              deviceInfo.authenticationStatus !== undefined && deviceInfo.audioCapabilities?.streamInfos !== undefined) {
+              expect(true).assertTrue();
+          } else {
+              console.info('getOutputDevice value error.')
+              expect(false).assertTrue();
+          }
+          done();
+        });
+      } catch(err) {
+          console.info(`Get device BusinessError: ${err.code}, message: ${err.message}`);
+          expect(false).assertTrue();
+      }
+      done();
+  })
+
+
+   /* *
+    * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_CALLBACK_2400
+    * @tc.name      : getOutputDevice - promise - set pcmSrc -true
+    * @tc.desc      : Testing call getOutputDevice(promise)  set pcmSrc -true
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 2
+    */
+
+    it('SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_CALLBACK_2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let queueItemDescription_1: avSession.AVMediaDescription = {
+        assetId: '001',
+        title: 'music_name',
+        subtitle: 'music_sub_name',
+        description: 'music_description',
+        pcmSrc: true,
+        extras: {extras:'any'}
+      };
+      let queueItem_1: avSession.AVQueueItem = {
+        itemId: 1,
+        description: queueItemDescription_1
+      };
+      let queueItemDescription_2: avSession.AVMediaDescription = {
+        assetId: '002',
+        title: 'music_name',
+        subtitle: 'music_sub_name',
+        description: 'music_description',
+        pcmSrc: true,
+        extras: {extras:'any'}
+      };
+      let queueItem_2: avSession.AVQueueItem = {
+        itemId: 2,
+        description: queueItemDescription_2
+      };
+      let queueItemsArray: avSession.AVQueueItem[] = [queueItem_1, queueItem_2];
+      session.setAVQueueItems(queueItemsArray).then(() => {
+        console.info('SetAVQueueItems successfully');
+      }).catch((err: BusinessError) => {
+        console.error(`SetAVQueueItems BusinessError: code: ${err.code}, message: ${err.message}`);
+        expect(false).assertTrue();
+        done();
+      });
+      done();
+    })
+
+   /* *
+    * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_CALLBACK_2500
+    * @tc.name      : getOutputDevice - promise - set pcmSrc -false
+    * @tc.desc      : Testing call getOutputDevice(promise)  set pcmSrc -false
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 2
+    */
+
+    it('SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_CALLBACK_2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let queueItemDescription_1: avSession.AVMediaDescription = {
+        assetId: '001',
+        title: 'music_name',
+        subtitle: 'music_sub_name',
+        description: 'music_description',
+        pcmSrc: false,
+        extras: {extras:'any'}
+      };
+      let queueItem_1: avSession.AVQueueItem = {
+        itemId: 1,
+        description: queueItemDescription_1
+      };
+      let queueItemDescription_2: avSession.AVMediaDescription = {
+        assetId: '002',
+        title: 'music_name',
+        subtitle: 'music_sub_name',
+        description: 'music_description',
+        pcmSrc: false,
+        extras: {extras:'any'}
+      };
+      let queueItem_2: avSession.AVQueueItem = {
+        itemId: 2,
+        description: queueItemDescription_2
+      };
+      let queueItemsArray: avSession.AVQueueItem[] = [queueItem_1, queueItem_2];
+      session.setAVQueueItems(queueItemsArray).then(() => {
+        console.info('SetAVQueueItems successfully');
+      }).catch((err: BusinessError) => {
+        console.error(`SetAVQueueItems BusinessError: code: ${err.code}, message: ${err.message}`);
+        expect(false).assertTrue();
+        done();
+      });
+      done();
+    })
+
+   /* *
+    * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_CALLBACK_2600
+    * @tc.name      : getOutputDevice - promise - set pcmSrc -undefined
+    * @tc.desc      : Testing call getOutputDevice(promise)  set pcmSrc -undefined
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 4
+    */
+
+    it('SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_CALLBACK_2600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async (done: Function) => {
+      let queueItemDescription_1: avSession.AVMediaDescription = {
+        assetId: '001',
+        title: 'music_name',
+        subtitle: 'music_sub_name',
+        description: 'music_description',
+        pcmSrc: false,
+        extras: {extras:'any'}
+      };
+      let queueItem_1: avSession.AVQueueItem = {
+        itemId: 1,
+        description: queueItemDescription_1
+      };
+      session.setAVQueueItems(queueItem_1).then(() => {
+        console.info('SetAVQueueItems successfully');
+      }).catch((err: BusinessError) => {
+        console.error(`SetAVQueueItems BusinessError: code: ${err.code}, message: ${err.message}`);
+        expect(err.code).assertEqual(401);
+        done();
+      });
+      done();
+    })
+
+   /* *
+    * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_CALLBACK_2700
+    * @tc.name      : getOutputDevice - callback - set pcmSrc -true
+    * @tc.desc      : Testing call getOutputDevice(callback)  set pcmSrc -true
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 2
+    */
+
+    it('SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_CALLBACK_2700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let queueItemDescription_1: avSession.AVMediaDescription = {
+        assetId: '001',
+        title: 'music_name',
+        subtitle: 'music_sub_name',
+        description: 'music_description',
+        pcmSrc: true,
+        extras: {extras:'any'}
+      };
+      let queueItem_1: avSession.AVQueueItem = {
+        itemId: 1,
+        description: queueItemDescription_1
+      };
+      let queueItemDescription_2: avSession.AVMediaDescription = {
+        assetId: '002',
+        title: 'music_name',
+        subtitle: 'music_sub_name',
+        description: 'music_description',
+        pcmSrc: true,
+        extras: {extras:'any'}
+      };
+      let queueItem_2: avSession.AVQueueItem = {
+        itemId: 2,
+        description: queueItemDescription_2
+      };
+      let queueItemsArray: avSession.AVQueueItem[] = [queueItem_1, queueItem_2];
+      session.setAVQueueItems(queueItemsArray, (err: BusinessError) => {
+        if (err) {
+          console.error(`SetAVQueueItems BusinessError: code: ${err.code}, message: ${err.message}`);
+          expect(false).assertTrue();
+        } else {
+          console.info('SetAVQueueItems successfully');
+        }
+        done();
+      });
+      done();
+    })
+
+   /* *
+    * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_CALLBACK_2800
+    * @tc.name      : getOutputDevice - callback - set pcmSrc -false
+    * @tc.desc      : Testing call getOutputDevice(callback)  set pcmSrc -false
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 2
+    */
+
+    it('SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_CALLBACK_2800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let queueItemDescription_1: avSession.AVMediaDescription = {
+        assetId: '001',
+        title: 'music_name',
+        subtitle: 'music_sub_name',
+        description: 'music_description',
+        pcmSrc: false,
+        extras: {extras:'any'}
+      };
+      let queueItem_1: avSession.AVQueueItem = {
+        itemId: 1,
+        description: queueItemDescription_1
+      };
+      let queueItemDescription_2: avSession.AVMediaDescription = {
+        assetId: '002',
+        title: 'music_name',
+        subtitle: 'music_sub_name',
+        description: 'music_description',
+        pcmSrc: false,
+        extras: {extras:'any'}
+      };
+      let queueItem_2: avSession.AVQueueItem = {
+        itemId: 2,
+        description: queueItemDescription_2
+      };
+      let queueItemsArray: avSession.AVQueueItem[] = [queueItem_1, queueItem_2];
+      session.setAVQueueItems(queueItemsArray, (err: BusinessError) => {
+        if (err) {
+          console.error(`SetAVQueueItems BusinessError: code: ${err.code}, message: ${err.message}`);
+          expect(false).assertTrue();
+        } else {
+          console.info('SetAVQueueItems successfully');
+        }
+        done();
+      });
+      done();
+    })
+
+   /* *
+    * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_CALLBACK_2900
+    * @tc.name      : getOutputDevice - callback - set pcmSrc -undefined
+    * @tc.desc      : Testing call getOutputDevice(callback)  set pcmSrc -undefined
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 4
+    */
+
+    it('SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_CALLBACK_2900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async (done: Function) => {
+      let queueItemDescription_1: avSession.AVMediaDescription = {
+        assetId: '001',
+        title: 'music_name',
+        subtitle: 'music_sub_name',
+        description: 'music_description',
+        pcmSrc: false,
+        extras: {extras:'any'}
+      };
+      let queueItem_1: avSession.AVQueueItem = {
+        itemId: 1,
+        description: queueItemDescription_1
+      };
+      session.setAVQueueItems(queueItem_1, (err: BusinessError) => {
+        if (err) {
+          console.error(`SetAVQueueItems BusinessError: code: ${err.code}, message: ${err.message}`);
+          expect(err.code).assertEqual(401);
+        } else {
+          console.info('SetAVQueueItems successfully');
+        }
+        done();
+      });
+      done();
+    })
+
+
   })
 }
-
 
