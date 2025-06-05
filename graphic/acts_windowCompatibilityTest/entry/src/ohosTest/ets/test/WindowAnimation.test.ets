@@ -141,11 +141,10 @@ export default function windowAnimationTest(context: common.UIAbilityContext, wi
       let mainWin = windowStage.getMainWindowSync();
       expect(!!mainWin).assertTrue();
       console.info(msgStr + 'Succeeded getMainWindowSync.');
-      let curveParam: window.WindowAnimationCurveParam = [100, 10, 20, 5]
       const animationConfig: window.WindowAnimationConfig = {
         duration: 1000,
         curve: window.WindowAnimationCurve.INTERPOLATION_SPRING,
-        param: curveParam
+        param: [100, 10, 20, 5]
       };
       const transitionAnimation: window.TransitionAnimation = {
         opacity: 0.5,
@@ -190,11 +189,10 @@ export default function windowAnimationTest(context: common.UIAbilityContext, wi
       let mainWin = windowStage.getMainWindowSync();
       expect(!!mainWin).assertTrue();
       console.info(msgStr + 'Succeeded getMainWindowSync.');
-      let curveParam: window.WindowAnimationCurveParam = [100, 10, 20, 5]
       const animationConfig: window.WindowAnimationConfig = {
         duration: 4000,
         curve: window.WindowAnimationCurve.INTERPOLATION_SPRING,
-        param: curveParam
+        param: [100, 10, 20, 5]
       };
       const transitionAnimation: window.TransitionAnimation = {
         opacity: 0.5,
