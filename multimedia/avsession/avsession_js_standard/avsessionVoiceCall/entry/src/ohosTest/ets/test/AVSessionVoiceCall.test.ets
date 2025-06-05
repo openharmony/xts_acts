@@ -101,6 +101,12 @@ export default function abilityTest() {
     let receivedCallback1: boolean = false;
     let receivedCallback2: boolean = false;
     let tag: string = 'VoiceCallXTS';
+    let assetId: string = 'assetIdTest';
+    let assetId1: string = '';
+    let assetId2: string = '';
+    let assetId3: string = '~!@#$%^&*()_+{}:">?,./123456789'+'a'.repeat(40928);
+    let assetId4: string = 'a'.repeat(40960)
+    let assetId5: number = 123
 
     let getPixelMap = async () => {
       let color = new ArrayBuffer(96);
@@ -181,6 +187,16 @@ export default function abilityTest() {
     let toggleCallMuteCallback2 = () => {
       console.info(`${TAG}: toggleCallMuteCallback2 received`);
       receivedCallback2 = true;
+    }
+
+    let playWithAssetIdCallback1 = (data: string) => {
+      console.info(`${TAG}: playWithAssetIdCallback1 received ${data}`);
+      assetId1 = data;
+    }
+
+    let playWithAssetIdCallback2 = (data: string) => {
+      console.info(`${TAG}: playWithAssetIdCallback2 received ${data}`);
+      assetId2 = data;
     }
 
     beforeAll(() => {
@@ -3760,5 +3776,590 @@ export default function abilityTest() {
         done();
       }
     })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ON_PLAYWITHASSETID_0100
+     * @tc.name      : SUB_MULTIMEDIA_AVSESSION_ON_PLAYWITHASSETID_0100
+     * @tc.desc      : Testing on('playWithAssetId') -- one on function
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_ON_PLAYWITHASSETID_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let command: avSession.AVControlCommand = {
+        command: 'playWithAssetId',
+        parameter: assetId
+      }
+      try {
+        session.on('playWithAssetId', (data: string) => {
+          console.info(`${TAG}: on playWithAssetId, assetId = ${data}`);
+          expect(data === assetId).assertTrue();
+          done();
+        });
+        await controller.sendControlCommand(command)
+      } catch (error) {
+        console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ON_PLAYWITHASSETID_0200
+     * @tc.name      : SUB_MULTIMEDIA_AVSESSION_ON_PLAYWITHASSETID_0200
+     * @tc.desc      : Testing on('playWithAssetId') -- many on functions
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_ON_PLAYWITHASSETID_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let command: avSession.AVControlCommand = {
+        command: 'playWithAssetId',
+        parameter: assetId
+      }
+      try {
+        session.on('playWithAssetId', playWithAssetIdCallback1);
+        session.on('playWithAssetId', playWithAssetIdCallback2);
+        await controller.sendControlCommand(command).catch((err: BusinessError) => {
+          console.info(`${TAG}: sendControlCommand failed, error: [${err.code}, ${err.message}]`);
+          expect(false).assertTrue();
+          done();
+        });
+        await sleep(500);
+        if ((assetId1 === assetId) && (assetId2 === assetId)) {
+          console.log(`${TAG}: on playWithAssetId called`);
+          expect(true).assertTrue();
+        } else {
+          console.error(`${TAG}: on playWithAssetId not received`);
+          expect(false).assertTrue();
+        }
+        assetId1 = '';
+        assetId2 = '';
+        await session.off('playWithAssetId');
+        done();
+      } catch (error) {
+        console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ON_PLAYWITHASSETID_0300
+     * @tc.name      : SUB_MULTIMEDIA_AVSESSION_ON_PLAYWITHASSETID_0300
+     * @tc.desc      : Testing destroy before on('playWithAssetId')
+     * @tc.size      : MediumTest
+     * @tc.type      : Fault Tolerance
+     * @tc.level     : Level4
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_ON_PLAYWITHASSETID_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async (done: Function) => {
+      try {
+        await session.destroy();
+        session.on('playWithAssetId', (data: string) => {
+          console.info(`${TAG}: on playWithAssetId, assetId = ${data}`);
+          expect(false).assertTrue();
+          done();
+        });
+      } catch (error) {
+        if (error.code == 6600102) {
+          console.info(`${TAG}: on playWithAssetId without avsession test success, error: code: ${error.code}, message: ${error.message}`);
+          expect(true).assertTrue();
+        } else {
+          console.info(`${TAG}: on playWithAssetId errorCode != 6600102, error: code: ${error.code}, message: ${error.message}`);
+          expect(false).assertTrue();
+        }
+        session = null;
+        done();
+      }
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFF_PLAYWITHASSETID_0100
+     * @tc.name      : SUB_MULTIMEDIA_AVSESSION_OFF_PLAYWITHASSETID_0100
+     * @tc.desc      : Testing off('playWithAssetId') --off one function
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_OFF_PLAYWITHASSETID_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let command: avSession.AVControlCommand = {
+        command: 'playWithAssetId',
+        parameter: assetId
+      }
+      try {
+        session.on('playWithAssetId', (data: string) => {
+          console.info(`${TAG}: on playWithAssetId, assetId = ${data}`);
+          assetId1=data;
+        });
+        await session.off('playWithAssetId')
+        await controller.sendControlCommand(command).catch((err: BusinessError) => {
+          console.info(`${TAG}: sendControlCommand failed, error: [${err.code}, ${err.message}]`);
+          expect(err.code).assertEqual(6600105);
+          done();
+        });
+        await sleep(500);
+        if (assetId1 === assetId) {
+          console.log(`${TAG}: off playWithAssetId fail, on playWithAssetId called`);
+          expect(false).assertTrue();
+        } else {
+          console.info(`${TAG}: playWithAssetId off`);
+          expect(true).assertTrue();
+        }
+      } catch (error) {
+        console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFF_PLAYWITHASSETID_0200
+     * @tc.name      : SUB_MULTIMEDIA_AVSESSION_OFF_PLAYWITHASSETID_0200
+     * @tc.desc      : Testing off('playWithAssetId') -- off select on functions
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_OFF_PLAYWITHASSETID_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let command: avSession.AVControlCommand = {
+        command: 'playWithAssetId',
+        parameter: assetId
+      }
+      try {
+        session.on('playWithAssetId', playWithAssetIdCallback1);
+        session.on('playWithAssetId', playWithAssetIdCallback2);
+        await session.off('playWithAssetId', playWithAssetIdCallback2);
+        await controller.sendControlCommand(command).catch((err: BusinessError) => {
+          console.info(`${TAG}: sendControlCommand failed, error: [${err.code}, ${err.message}]`);
+          expect(false).assertTrue();
+          done();
+        });
+        await sleep(500);
+        if (assetId2 === assetId) {
+          console.log(`${TAG}: on playWithAssetId called`);
+          expect(false).assertTrue();
+        } else {
+          console.error(`${TAG}: on playWithAssetId not received`);
+          expect(true).assertTrue();
+        }
+        assetId1 = '';
+        assetId2 = '';
+        await session.off('playWithAssetId');
+        done();
+      } catch (error) {
+        console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFF_PLAYWITHASSETID_0300
+     * @tc.name      : SUB_MULTIMEDIA_AVSESSION_OFF_PLAYWITHASSETID_0300
+     * @tc.desc      : Testing off('playWithAssetId') -- off all on functions
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_OFF_PLAYWITHASSETID_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let command: avSession.AVControlCommand = {
+        command: 'playWithAssetId',
+        parameter: assetId
+      }
+      try {
+        session.on('playWithAssetId', playWithAssetIdCallback1);
+        session.on('playWithAssetId', playWithAssetIdCallback2);
+        await session.off('playWithAssetId');
+        await controller.sendControlCommand(command).catch((err: BusinessError) => {
+          console.info(`${TAG}: sendControlCommand failed, error: [${err.code}, ${err.message}]`);
+          expect(err.code).assertEqual(6600105);
+          done();
+        });
+        done();
+      } catch (error) {
+        console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFF_PLAYWITHASSETID_0400
+     * @tc.name      : SUB_MULTIMEDIA_AVSESSION_OFF_PLAYWITHASSETID_0400
+     * @tc.desc      : Testing not on('playWithAssetId') before off('playWithAssetId')
+     * @tc.size      : MediumTest
+     * @tc.type      : Fault Tolerance
+     * @tc.level     : Level4
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_OFF_PLAYWITHASSETID_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async (done: Function) => {
+      try {
+        await session.off('playWithAssetId');
+      } catch (error) {
+        if (error.code == 6600101) {
+          console.info(`${TAG}: off playWithAssetId without avsession test success, error: code: ${error.code}, message: ${error.message}`);
+          expect(true).assertTrue();
+        } else {
+          console.info(`${TAG}: off playWithAssetId errorCode != 6600101, error: code: ${error.code}, message: ${error.message}`);
+          expect(false).assertTrue();
+        }
+        done();
+      }
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFF_PLAYWITHASSETID_0500
+     * @tc.name      : SUB_MULTIMEDIA_AVSESSION_OFF_PLAYWITHASSETID_0500
+     * @tc.desc      : Testing destroy before off('playWithAssetId')
+     * @tc.size      : MediumTest
+     * @tc.type      : Fault Tolerance
+     * @tc.level     : Level4
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_OFF_PLAYWITHASSETID_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async (done: Function) => {
+      await session.destroy();
+      try {
+        await session.off('playWithAssetId')
+      } catch (error) {
+        if (error.code == 6600102) {
+          console.info(`${TAG}: off playWithAssetId without avsession test success, error: code: ${error.code}, message: ${error.message}`);
+          expect(true).assertTrue();
+        } else {
+          console.info(`${TAG}: off playWithAssetId errorCode != 6600102, error: code: ${error.code}, message: ${error.message}`);
+          expect(false).assertTrue();
+        }
+        done();
+      }
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_PROMISE_1200
+     * @tc.name      : SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_PROMISE_1200
+     * @tc.desc      : Testing sendControlCommand(command)-promise-special characters &max length
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_PROMISE_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let command: avSession.AVControlCommand = {
+        command: 'playWithAssetId',
+        parameter: assetId3
+      }
+      try {
+          session.on('playWithAssetId', (data: string) => {
+            console.info(`${TAG}: on playWithAssetId, assetId3 = ${data}`);
+            expect(data == assetId3).assertTrue();
+            session.off('playWithAssetId')
+            done();
+          });
+        await controller.sendControlCommand(command);
+      } catch (error) {
+        console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
+        expect(false).assertTrue();
+        done();
+      }
+      done();
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_PROMISE_1300
+     * @tc.name      : SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_PROMISE_1300
+     * @tc.desc      : Testing sendControlCommand(command)-promise-exceed max length
+     * @tc.size      : MediumTest
+     * @tc.type      : Fault Tolerance
+     * @tc.level     : Level4
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_PROMISE_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async (done: Function) => {
+      let command: avSession.AVControlCommand = {
+        command: 'playWithAssetId',
+        parameter: assetId4
+      }
+      try {
+          session.on('playWithAssetId', (data: string) => {
+            console.info(`${TAG}: on playWithAssetId, assetId4 = ${data}`);
+            session.off('playWithAssetId');
+            done();
+          });
+          await controller.sendControlCommand(command).catch((err: BusinessError) => {
+          console.info(`${TAG}: sendControlCommand failed, error: [${err.code}, ${err.message}]`);
+          expect(err.code).assertEqual(401);
+          done();
+        });
+      } catch (error) {
+        console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
+        expect(false).assertTrue();
+        done();
+      }
+      done();
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_PROMISE_1400
+     * @tc.name      : SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_PROMISE_1400
+     * @tc.desc      : Testing sendControlCommand(command)-promise-with no parameters
+     * @tc.size      : MediumTest
+     * @tc.type      : Fault Tolerance
+     * @tc.level     : Level4
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_PROMISE_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async (done: Function) => {
+      let command: avSession.AVControlCommand = {
+        command: 'playWithAssetId',
+      }
+      try {
+          session.on('playWithAssetId', (data: string) => {
+            console.info(`${TAG}: on playWithAssetId, assetId = ${data}`);
+            session.off('playWithAssetId');
+            done();
+          });
+          await controller.sendControlCommand(command).catch((err: BusinessError) => {
+          console.info(`${TAG}: sendControlCommand failed, error: [${err.code}, ${err.message}]`);
+          expect(err.code).assertEqual(401);
+          done();
+        });
+      } catch (error) {
+        console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
+        expect(false).assertTrue();
+        done();
+      }
+      done();
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_PROMISE_1500
+     * @tc.name      : SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_PROMISE_1500
+     * @tc.desc      : Testing sendControlCommand(command)-promise-type error
+     * @tc.size      : MediumTest
+     * @tc.type      : Fault Tolerance
+     * @tc.level     : Level4
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_PROMISE_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async (done: Function) => {
+      let command: avSession.AVControlCommand = {
+        command: 'playWithAssetId',
+        parameter: assetId5
+      }
+      try {
+          session.on('playWithAssetId', (data: string) => {
+            console.info(`${TAG}: on playWithAssetId, assetId5 = ${data}`);
+            session.off('playWithAssetId');
+            done();
+          });
+          await controller.sendControlCommand(command).catch((err: BusinessError) => {
+          console.info(`${TAG}: sendControlCommand failed, error: [${err.code}, ${err.message}]`);
+          expect(err.code).assertEqual(401);
+          done();
+        });
+      } catch (error) {
+        console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
+        expect(false).assertTrue();
+        done();
+      }
+      done();
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_PROMISE_1600
+     * @tc.name      : SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_PROMISE_1600
+     * @tc.desc      : Testing sendControlCommand(command)-promise-parameter to None
+     * @tc.size      : MediumTest
+     * @tc.type      : Fault Tolerance
+     * @tc.level     : Level4
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_PROMISE_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async (done: Function) => {
+      let command: avSession.AVControlCommand = {
+        command: 'playWithAssetId',
+        parameter: assetId1
+      }
+      try {
+          session.on('playWithAssetId', (data: string) => {
+            console.info(`${TAG}: on playWithAssetId, assetId1 = ${data}`);
+            session.off('playWithAssetId');
+            done();
+          });
+          await controller.sendControlCommand(command).catch((err: BusinessError) => {
+          console.info(`${TAG}: sendControlCommand failed, error: [${err.code}, ${err.message}]`);
+          expect(err.code).assertEqual(401);
+          done();
+        });
+      } catch (error) {
+        console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
+        expect(false).assertTrue();
+        done();
+      }
+      done();
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_CALLBACK_1200
+     * @tc.name      : SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_CALLBACK_1200
+     * @tc.desc      : Testing sendControlCommand(command)-callback-special characters &max length
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_CALLBACK_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let command: avSession.AVControlCommand = {
+        command: 'playWithAssetId',
+        parameter: assetId3
+      }
+      try {
+          session.on('playWithAssetId', (data: string) => {
+            console.info(`${TAG}: on playWithAssetId, assetId3 = ${data}`);
+            expect(data == assetId3).assertTrue();
+            session.off('playWithAssetId')
+            done();
+          });
+        await controller.sendControlCommand(command, (err: BusinessError) => {
+          if (err) {
+            console.error(`SendControlCommand BusinessError: code: ${err.code}, message: ${err.message}`);
+          } else {
+            console.info('SendControlCommand successfully');
+          }
+        });
+      } catch (error) {
+        console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
+        expect(false).assertTrue();
+        done();
+      }
+      done();
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_CALLBACK_1300
+     * @tc.name      : SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_CALLBACK_1300
+     * @tc.desc      : Testing sendControlCommand(command)-callback-exceed max length
+     * @tc.size      : MediumTest
+     * @tc.type      : Fault Tolerance
+     * @tc.level     : Level4
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_CALLBACK_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async (done: Function) => {
+      let command: avSession.AVControlCommand = {
+        command: 'playWithAssetId',
+        parameter: assetId4
+      }
+      try {
+          session.on('playWithAssetId', (data: string) => {
+            console.info(`${TAG}: on playWithAssetId, assetId4 = ${data}`);
+            session.off('playWithAssetId');
+            done();
+          });
+          await controller.sendControlCommand(command, (err: BusinessError) => {
+            if (err) {
+              console.error(`SendControlCommand BusinessError: code: ${err.code}, message: ${err.message}`);
+              expect(err.code).assertEqual(401);
+            } else {
+              console.info('SendControlCommand successfully');
+            }
+          });
+      } catch (error) {
+        console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
+        expect(false).assertTrue();
+        done();
+      }
+      done();
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_CALLBACK_1400
+     * @tc.name      : SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_CALLBACK_1400
+     * @tc.desc      : Testing sendControlCommand(command)-callback-with no parameters
+     * @tc.size      : MediumTest
+     * @tc.type      : Fault Tolerance
+     * @tc.level     : Level4
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_CALLBACK_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async (done: Function) => {
+      let command: avSession.AVControlCommand = {
+        command: 'playWithAssetId',
+      }
+      try {
+          session.on('playWithAssetId', (data: string) => {
+            console.info(`${TAG}: on playWithAssetId, assetId = ${data}`);
+            session.off('playWithAssetId');
+            done();
+          });
+          await controller.sendControlCommand(command, (err: BusinessError) => {
+            if (err) {
+              console.error(`SendControlCommand BusinessError: code: ${err.code}, message: ${err.message}`);
+              expect(err.code).assertEqual(401);
+            } else {
+              console.info('SendControlCommand successfully');
+            }
+          });
+      } catch (error) {
+        console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
+        expect(false).assertTrue();
+        done();
+      }
+      done();
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_CALLBACK_1500
+     * @tc.name      : SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_CALLBACK_1500
+     * @tc.desc      : Testing sendControlCommand(command)-callback-type error
+     * @tc.size      : MediumTest
+     * @tc.type      : Fault Tolerance
+     * @tc.level     : Level4
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_CALLBACK_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async (done: Function) => {
+      let command: avSession.AVControlCommand = {
+        command: 'playWithAssetId',
+        parameter: assetId5
+      }
+      try {
+          session.on('playWithAssetId', (data: string) => {
+            console.info(`${TAG}: on playWithAssetId, assetId5 = ${data}`);
+            session.off('playWithAssetId');
+            done();
+          });
+          await controller.sendControlCommand(command, (err: BusinessError) => {
+            if (err) {
+              console.error(`SendControlCommand BusinessError: code: ${err.code}, message: ${err.message}`);
+              expect(err.code).assertEqual(401);
+            } else {
+              console.info('SendControlCommand successfully');
+            }
+          });
+      } catch (error) {
+        console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
+        expect(false).assertTrue();
+        done();
+      }
+      done();
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_CALLBACK_1600
+     * @tc.name      : SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_CALLBACK_1600
+     * @tc.desc      : Testing sendControlCommand(command)-callback-parameter to None
+     * @tc.size      : MediumTest
+     * @tc.type      : Fault Tolerance
+     * @tc.level     : Level4
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_SENDCONTROLCOMMAND_CALLBACK_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL4, async (done: Function) => {
+      let command: avSession.AVControlCommand = {
+        command: 'playWithAssetId',
+        parameter: assetId1
+      }
+      try {
+          session.on('playWithAssetId', (data: string) => {
+            console.info(`${TAG}: on playWithAssetId, assetId1 = ${data}`);
+            session.off('playWithAssetId');
+            done();
+          });
+          await controller.sendControlCommand(command, (err: BusinessError) => {
+            if (err) {
+              console.error(`SendControlCommand BusinessError: code: ${err.code}, message: ${err.message}`);
+              expect(err.code).assertEqual(401);
+            } else {
+              console.info('SendControlCommand successfully');
+            }
+          });
+      } catch (error) {
+        console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
+        expect(false).assertTrue();
+        done();
+      }
+      done();
+    })
+
+
   })
 }
