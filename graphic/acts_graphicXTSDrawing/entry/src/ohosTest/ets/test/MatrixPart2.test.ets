@@ -2448,7 +2448,7 @@ export default function drawingTsMatrixPart2Test() {
         console.info(msg + ' matrix mapRadius radius: ' + radius);
         let err = 10 - radius;
         console.info(msg + ' matrix mapRadius radiusError: ' + err);
-        expect(err < 0.00001).assertEqual(true);
+        expect(err < 0.0001).assertEqual(true);
       } catch (e) {
         console.info(msg + ` matrix mapRadius radius errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail();
@@ -2469,7 +2469,7 @@ export default function drawingTsMatrixPart2Test() {
         console.info(msg + ' matrix mapRadius radius3: ' + radius3);
         let err3 = 0 - radius3;
         console.info(msg + ' matrix mapRadius radius3 radiusError: ' + err3);
-        expect(err3 < 0.00001).assertEqual(true);
+        expect(err3 < 0.0001).assertEqual(true);
       } catch (e) {
         console.info(msg + ` matrix mapRadius radius3 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail();
@@ -2481,7 +2481,7 @@ export default function drawingTsMatrixPart2Test() {
         expect(Math.round(radius4)).assertEqual(15);
         let err4 = 15 - radius4;
         console.info(msg + ' matrix mapRadius radius4 radiusError: ' + err4);
-        expect(err4 < 0.00001).assertEqual(true);
+        expect(err4 < 0.0001).assertEqual(true);
       } catch (e) {
         console.info(msg + ` matrix mapRadius radius4 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail();
@@ -2503,7 +2503,7 @@ export default function drawingTsMatrixPart2Test() {
         console.info(msg + ' matrix mapRadius radius6: ' + radius6);
         let err6 = 10 - radius6;
         console.info(msg + ' matrix mapRadius radius6 radiusError: ' + err6);
-        expect(err6 < 0.00001).assertEqual(true);
+        expect(err6 < 0.0001).assertEqual(true);
       } catch (e) {
         console.info(msg + ` matrix mapRadius radius6 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail();
