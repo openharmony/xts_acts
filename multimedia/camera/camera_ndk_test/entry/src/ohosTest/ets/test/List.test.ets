@@ -47,22 +47,18 @@ export default function testsuite() {
   CameraManagerTest();
   VideoMirrorTest();
   CameraSessionMacroTest();
-
-  if (voice){
-    CameraSessionExposureTest();
-    CameraSessionBaseTest();
-    CameraSessionFlashTest();
-    CameraSessionFocusTest();
-    CameraSessionZoomRatioTest();
-    CameraSessionVideoStabilizationTest();
-    CameraImageProcessingTest();
-    CameraErrorCodeUsecaseTest();
-    cameraJSUnitOutput();
-    CameraSessionCameraRotationTest();
-    CameraSessionAutoDeviceSwitchTest();
-  }else{
-    CameraFunctionTest();
-    CameraInputTest();
-  }
+  CameraSessionExposureTest();
+  CameraSessionBaseTest();
+  CameraSessionFlashTest();
+  CameraSessionFocusTest();
+  CameraSessionZoomRatioTest();
+  CameraSessionVideoStabilizationTest();
+  CameraImageProcessingTest();
+  CameraErrorCodeUsecaseTest();
+  cameraJSUnitOutput();
+  CameraSessionCameraRotationTest();
+  CameraSessionAutoDeviceSwitchTest();
+  CameraFunctionTest();
+  CameraInputTest();
 
 }
