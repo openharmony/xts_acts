@@ -27,7 +27,7 @@ static napi_value Add(napi_env env, napi_callback_info info)
     size_t argc = 2;
     napi_value args[2] = {nullptr};
 
-    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
     napi_valuetype valuetype0;
     napi_typeof(env, args[0], &valuetype0);
@@ -328,7 +328,7 @@ static napi_value UnregisterDisplayChangeListener(napi_env env, napi_callback_in
     napi_value args[1] = { nullptr };
 
     uint32_t listenerIndex;
-    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     napi_get_value_uint32(env, args[0], &listenerIndex);
     OH_LOG_INFO(LOG_APP, "UnregisterDisplayChangeListener listenerIndex =%{public}d.", listenerIndex);
     NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_UnregisterDisplayChangeListener(listenerIndex);
@@ -366,7 +366,7 @@ static napi_value UnregisterFoldDisplayModeChangeListener(napi_env env, napi_cal
     size_t argc = 1;
     napi_value args[1] = { nullptr };
     uint32_t listenerIndex;
-    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     napi_get_value_uint32(env, args[0], &listenerIndex);
     OH_LOG_INFO(LOG_APP, "listenerIndex =%{public}d.", listenerIndex);
     NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_UnregisterFoldDisplayModeChangeListener(listenerIndex);
@@ -428,8 +428,8 @@ static napi_value DestroyAvailableArea(napi_env env, napi_callback_info info)
 
 static napi_value GetDisplaySourceMode_1(napi_env env, napi_callback_info info)
 {
-   NativeDisplayManager_SourceMode displaySourceMode;
-   NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_GetDisplaySourceMode(0, &displaySourceMode);
+    NativeDisplayManager_SourceMode displaySourceMode;
+    NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_GetDisplaySourceMode(0, &displaySourceMode);
     OH_LOG_INFO(LOG_APP, "errorCode=%{public}d", errCode);
     napi_value result;
     if (errCode != 0) {
@@ -446,7 +446,7 @@ static napi_value GetDisplaySourceMode_2(napi_env env, napi_callback_info info)
     size_t argc = 1;
     napi_value args[1] = { nullptr };
     int64_t displayId;
-    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     napi_get_value_int64(env, args[0], &displayId);
     OH_LOG_INFO(LOG_APP, "displayId =%{public}d.", displayId);
     NativeDisplayManager_SourceMode displaySourceMode;
@@ -467,7 +467,7 @@ static napi_value GetDisplaySourceMode_4(napi_env env, napi_callback_info info)
     size_t argc = 1;
     napi_value args[1] = { nullptr };
     int64_t displayId;
-    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     napi_get_value_int64(env, args[0], &displayId);
     OH_LOG_INFO(LOG_APP, "displayId =%{public}d.", displayId);
     NativeDisplayManager_SourceMode displaySourceMode;
@@ -526,7 +526,7 @@ static napi_value RegisterAvailableAreaChangeListener(napi_env env, napi_callbac
     size_t argc = 1;
     napi_value args[1] = { nullptr };
     uint32_t listenerIndex;
-    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     napi_get_value_uint32(env, args[0], &listenerIndex);
     OH_LOG_INFO(LOG_APP, "listenerIndex =%{public}d.", listenerIndex);
     NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_RegisterAvailableAreaChangeListener(
@@ -542,11 +542,12 @@ static napi_value UnregisterAvailableAreaChangeListener(napi_env env, napi_callb
     size_t argc = 1;
     napi_value args[1] = { nullptr };
     uint32_t listenerIndex;
-    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     napi_get_value_uint32(env, args[0], &listenerIndex);
     OH_LOG_INFO(LOG_APP, "listenerIndex =%{public}d.", listenerIndex);
     OH_NativeDisplayManager_RegisterAvailableAreaChangeListener(DisplayChangeCallback, &listenerIndex);
-    NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_UnregisterAvailableAreaChangeListener(listenerIndex);
+    NativeDisplayManager_ErrorCode errCode =
+    OH_NativeDisplayManager_UnregisterAvailableAreaChangeListener(listenerIndex);
     OH_LOG_INFO(LOG_APP, "errorCode=%{public}d", errCode);
     napi_value errorCode;
     napi_create_int32(env, errCode, &errorCode);
@@ -558,7 +559,7 @@ static napi_value UnregisterAvailableAreaChangeListener_ErrCode140003(napi_env e
     size_t argc = 1;
     napi_value args[1] = { nullptr };
     uint32_t listenerIndex;
-    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     napi_get_value_uint32(env, args[0], &listenerIndex);
     OH_LOG_INFO(LOG_APP, "listenerIndex =%{public}d.", listenerIndex);
     NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_UnregisterAvailableAreaChangeListener(listenerIndex);
@@ -573,11 +574,11 @@ static napi_value RegisterDisplayAddListener(napi_env env, napi_callback_info in
     size_t argc = 1;
     napi_value args[1] = { nullptr };
     uint32_t listenerIndex;
-    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     napi_get_value_uint32(env, args[0], &listenerIndex);
     OH_LOG_INFO(LOG_APP, "listenerIndex =%{public}d.", listenerIndex);
-    NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_RegisterDisplayAddListener(
-       DisplayChangeCallback, &listenerIndex);
+    NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_RegisterDisplayAddListener(DisplayChangeCallback,
+        &listenerIndex);
     OH_LOG_INFO(LOG_APP, "errorCode=%{public}d", errCode);
     napi_value errorCode;
     napi_create_int32(env, errCode, &errorCode);
@@ -589,7 +590,7 @@ static napi_value UnregisterDisplayAddListener(napi_env env, napi_callback_info 
     size_t argc = 1;
     napi_value args[1] = { nullptr };
     uint32_t listenerIndex;
-    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     napi_get_value_uint32(env, args[0], &listenerIndex);
     OH_LOG_INFO(LOG_APP, "listenerIndex =%{public}d.", listenerIndex);
     OH_NativeDisplayManager_RegisterDisplayAddListener(DisplayChangeCallback, &listenerIndex);
@@ -605,7 +606,7 @@ static napi_value UnregisterDisplayAddListener_ErrCode140003(napi_env env, napi_
     size_t argc = 1;
     napi_value args[1] = { nullptr };
     uint32_t listenerIndex;
-    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     napi_get_value_uint32(env, args[0], &listenerIndex);
     OH_LOG_INFO(LOG_APP, "listenerIndex =%{public}d.", listenerIndex);
     NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_UnregisterDisplayAddListener(listenerIndex);
@@ -620,11 +621,11 @@ static napi_value RegisterDisplayRemoveListener(napi_env env, napi_callback_info
     size_t argc = 1;
     napi_value args[1] = { nullptr };
     uint32_t listenerIndex;
-    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     napi_get_value_uint32(env, args[0], &listenerIndex);
     OH_LOG_INFO(LOG_APP, "listenerIndex =%{public}d.", listenerIndex);
-    NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_RegisterDisplayRemoveListener(
-       DisplayChangeCallback, &listenerIndex);
+    NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_RegisterDisplayRemoveListener(DisplayChangeCallback,
+        &listenerIndex);
     OH_LOG_INFO(LOG_APP, "errorCode=%{public}d", errCode);
     napi_value errorCode;
     napi_create_int32(env, errCode, &errorCode);
@@ -636,7 +637,7 @@ static napi_value UnregisterDisplayRemoveListener(napi_env env, napi_callback_in
     size_t argc = 1;
     napi_value args[1] = { nullptr };
     uint32_t listenerIndex;
-    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     napi_get_value_uint32(env, args[0], &listenerIndex);
     OH_LOG_INFO(LOG_APP, "listenerIndex =%{public}d.", listenerIndex);
     OH_NativeDisplayManager_RegisterDisplayRemoveListener(DisplayChangeCallback, &listenerIndex);
@@ -652,7 +653,7 @@ static napi_value RegisterDisplayRemoveListener_ErrCode140003(napi_env env, napi
     size_t argc = 1;
     napi_value args[1] = { nullptr };
     uint32_t listenerIndex;
-    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     napi_get_value_uint32(env, args[0], &listenerIndex);
     OH_LOG_INFO(LOG_APP, "listenerIndex =%{public}d.", listenerIndex);
     NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_UnregisterDisplayRemoveListener(listenerIndex);
@@ -715,20 +716,20 @@ static napi_value Init(napi_env env, napi_value exports)
             nullptr, napi_default, nullptr },
         { "unregisterAvailableAreaChangeListener", nullptr, UnregisterAvailableAreaChangeListener, nullptr, nullptr,
             nullptr, napi_default, nullptr },
-        { "unregisterAvailableAreaChangeListener_ErrCode140003", nullptr, UnregisterAvailableAreaChangeListener_ErrCode140003, 
-            nullptr, nullptr,nullptr, napi_default, nullptr },
+        { "unregisterAvailableAreaChangeListener_ErrCode140003", nullptr,
+            UnregisterAvailableAreaChangeListener_ErrCode140003, nullptr, nullptr,nullptr, napi_default, nullptr },
         { "registerDisplayAddListener", nullptr, RegisterDisplayAddListener, nullptr, nullptr,
             nullptr, napi_default, nullptr },
         { "unregisterDisplayAddListener", nullptr, UnregisterDisplayAddListener, nullptr, nullptr,
             nullptr, napi_default, nullptr },
-        { "unregisterDisplayAddListener_ErrCode140003", nullptr, UnregisterDisplayAddListener_ErrCode140003, nullptr, nullptr,
-            nullptr, napi_default, nullptr },
+        { "unregisterDisplayAddListener_ErrCode140003", nullptr, UnregisterDisplayAddListener_ErrCode140003,
+            nullptr, nullptr, nullptr, napi_default, nullptr },
         { "registerDisplayRemoveListener", nullptr, RegisterDisplayRemoveListener, nullptr, nullptr,
             nullptr, napi_default, nullptr },
         { "unregisterDisplayRemoveListener", nullptr, UnregisterDisplayRemoveListener, nullptr, nullptr,
             nullptr, napi_default, nullptr },
-        { "registerDisplayRemoveListener_ErrCode140003", nullptr, RegisterDisplayRemoveListener_ErrCode140003, nullptr, nullptr,
-            nullptr, napi_default, nullptr },
+        { "registerDisplayRemoveListener_ErrCode140003", nullptr, RegisterDisplayRemoveListener_ErrCode140003,
+            nullptr, nullptr, nullptr, napi_default, nullptr },
         
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
