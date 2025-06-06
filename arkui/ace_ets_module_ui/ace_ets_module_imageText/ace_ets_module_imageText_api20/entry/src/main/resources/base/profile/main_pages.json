@@ -6,6 +6,7 @@
     "MainAbility/pages/TextArea/TextAreaType",
     "MainAbility/pages/TextInput/TextInputType",
     "MainAbility/pages/Text/ResourceNormal",
-    "MainAbility/pages/Text/ResourceModifier"
+    "MainAbility/pages/Text/ResourceModifier",
+    "MainAbility/pages/ImageError/ImageOnError"
   ]
 }
