@@ -16,7 +16,7 @@
 @Entry
 @Component
 struct OnTextSelectionChange1 {
-  @State flag: string = "init"
+  @State flag: string = 'init'
 
   build() {
     Column({ space:5 }) {
