@@ -570,7 +570,7 @@ export default function UsbCoreEtsTestEx() {
         expect(result == true).assertTrue();
       } catch (error) {
         console.info(TAG, 'resetUsbDevice failed: ' + error);
-        expect(error.code).assertEqual(14400001);
+        expect(error.code).assertEqual(14400008);
       }
     })
 
