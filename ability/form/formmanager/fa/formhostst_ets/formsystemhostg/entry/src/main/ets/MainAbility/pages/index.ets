@@ -87,13 +87,14 @@ struct Index {
   }
 
   aboutToAppear() {
+    console.log(`${this.TAG} aboutToAppear start`);
     commonEvent.createSubscriber(this.subscriberFormDeleteEvent).then(async (data) => {
         console.info(`====>${this.TAG} Subscriber FormDelete data:====>`, JSON.stringify(data)); 
         this.subscriberDel = data;     
         await commonEvent.subscribe(this.subscriberDel, this.deleteCallBack);
     })
 
-    console.error(`${this.TAG} getWant`);
+    console.info(`${this.TAG} aboutToAppear:getWant start`);
     featureAbility.getWant()
     .then((want: Want) => {
       this.formId = parseInt(want.parameters?.formId ?? 0);
@@ -130,12 +131,12 @@ struct Index {
       }
       setTimeout(() => {
         this.canCreateForm = want.parameters?.isCreate ?? false;
-        console.error(`${this.TAG} getWant canCreateForm:` + this.canCreateForm); 
+        console.info(`${this.TAG} aboutToAppear:getWant canCreateForm:` + this.canCreateForm); 
       }, 10); 
-      console.error(`${this.TAG} getWant end` + JSON.stringify(want));
+      console.info(`${this.TAG} aboutToAppear:getWant end` + JSON.stringify(want));
 
       if(!(want.parameters?.isCreate ?? false) && this.deleteForm) {
-        console.log(`${this.TAG} deleteForm start`);
+        console.log(`${this.TAG} aboutToAppear:deleteForm start`);
         formHost.deleteForm(this.deleteId)
           .then((data) => {
           console.info(`${this.TAG} deleteForm result:` + data);
@@ -145,7 +146,10 @@ struct Index {
               "formId" : this.deleteId,
             }
           };
-          commonEvent.publish(this.formOnDeletedEvent, commonEventPublishData, this.publishOnDeletedCallBack);
+          setTimeout(()=>{
+            console.log(`${this.TAG} publish formOnStateEvent:` + this.formOnDeletedEvent);
+            commonEvent.publish(this.formOnDeletedEvent, commonEventPublishData, this.publishOnDeletedCallBack);
+          }, 500);
         })
         .catch((error:BusinessError) => {
           console.info(`${this.TAG} deleteForm error:` + error);
@@ -158,12 +162,12 @@ struct Index {
           commonEvent.publish(this.formOnDeletedEvent, commonEventPublishData, this.publishOnDeletedCallBack);
         });
       
-        console.log(`${this.TAG} deleteForm end`);
+        console.log(`${this.TAG} aboutToAppear:deleteForm end`);
       }
 
-      if(!(want.parameters?.isCreate ?? false) && this.stateForm) {        
+      if(!(want.parameters?.isCreate ?? false) && this.stateForm) {
         if(this.stateForm == "visible") {
-          console.log(`${this.TAG} notifyVisibleForm start`);
+          console.log(`${this.TAG} aboutToAppear:notifyVisibleForm start`);
           formHost.notifyVisibleForms(this.stateIds)
             .then((data) => {
             console.info(`${this.TAG} notifyVisibleForm result:` + data);
@@ -175,7 +179,10 @@ struct Index {
                 "formId" : this.stateIds[0]
               }
             };
-            commonEvent.publish(this.formOnStateEvent, commonEventPublishData, this.publishOnStateCallBack);
+            setTimeout(()=>{
+              console.log(`${this.TAG} publish formOnStateEvent:` + this.formOnStateEvent);
+              commonEvent.publish(this.formOnStateEvent, commonEventPublishData, this.publishOnStateCallBack);
+            }, 500);
           })
           .catch((error:BusinessError) => {
             console.info(`${this.TAG} notifyVisibleForm error:` + error);
@@ -188,9 +195,9 @@ struct Index {
             };
             commonEvent.publish(this.formOnStateEvent, commonEventPublishData, this.publishOnStateCallBack);
           });        
-          console.log(`${this.TAG} notifyVisibleForm end`);
+          console.log(`${this.TAG} aboutToAppear:notifyVisibleForm end`);
         } else if(this.stateForm == "invisible") {
-          console.log(`${this.TAG} notifyInvisibleForm start`);
+          console.log(`${this.TAG} aboutToAppear:notifyInvisibleForm start`);
           formHost.notifyInvisibleForms(this.stateIds)
             .then((data) => {
             console.info(`${this.TAG} notifyInvisibleForm result:` + data);
@@ -202,7 +209,10 @@ struct Index {
                 "formId" : this.stateIds[0]
               }
             };
-            commonEvent.publish(this.formOnStateEvent, commonEventPublishData, this.publishOnStateCallBack);
+            setTimeout(()=>{
+              console.log(`${this.TAG} publish formOnStateEvent:` + this.formOnStateEvent);
+              commonEvent.publish(this.formOnStateEvent, commonEventPublishData, this.publishOnStateCallBack);
+            }, 500);
           })
           .catch((error:BusinessError) => {
             console.info(`${this.TAG} notifyInvisibleForm error:` + error);
@@ -215,9 +225,9 @@ struct Index {
             };
             commonEvent.publish(this.formOnStateEvent, commonEventPublishData, this.publishOnStateCallBack);
           });
-          console.log(`${this.TAG} notifyInvisibleForm end`);
+          console.log(`${this.TAG} aboutToAppear:notifyInvisibleForm end`);
         } else if(this.stateForm == "enable") {
-          console.log(`${this.TAG} enableFormsUpdate start`);
+          console.log(`${this.TAG} aboutToAppear:enableFormsUpdate start`);
           formHost.enableFormsUpdate(this.stateIds)
             .then((data) => {
             console.info(`${this.TAG} enableFormsUpdate result:` + data);
@@ -228,7 +238,10 @@ struct Index {
                 "formId" : this.stateIds[0]
               }
             };
-            commonEvent.publish(this.formOnStateEvent, commonEventPublishData, this.publishOnStateCallBack);
+            setTimeout(()=>{
+              console.log(`${this.TAG} publish formOnStateEvent:` + this.formOnStateEvent);
+              commonEvent.publish(this.formOnStateEvent, commonEventPublishData, this.publishOnStateCallBack);
+            }, 500);
           })
           .catch((error:BusinessError) => {
             console.info(`${this.TAG} enableFormsUpdate error:` + error);
@@ -241,9 +254,9 @@ struct Index {
             };
             commonEvent.publish(this.formOnStateEvent, commonEventPublishData, this.publishOnStateCallBack);
           });        
-          console.log(`${this.TAG} enableFormsUpdate end`);
+          console.log(`${this.TAG} aboutToAppear:enableFormsUpdate end`);
         } else {
-          console.log(`${this.TAG} disableFormsUpdate start`);
+          console.log(`${this.TAG} aboutToAppear:disableFormsUpdate start`);
           formHost.disableFormsUpdate(this.stateIds)
             .then((data) => {
             console.info(`${this.TAG} disableFormsUpdate result:` + data);
@@ -254,7 +267,10 @@ struct Index {
                 "formId" : this.stateIds[0]
               }
             };
-            commonEvent.publish(this.formOnStateEvent, commonEventPublishData, this.publishOnStateCallBack);
+            setTimeout(()=>{
+              console.log(`${this.TAG} publish formOnStateEvent:` + this.formOnStateEvent);
+              commonEvent.publish(this.formOnStateEvent, commonEventPublishData, this.publishOnStateCallBack);
+            }, 500);
           })
           .catch((error:BusinessError) => {
             console.info(`${this.TAG} disableFormsUpdate error:` + error);
@@ -267,7 +283,7 @@ struct Index {
             };
             commonEvent.publish(this.formOnStateEvent, commonEventPublishData, this.publishOnStateCallBack);
           });        
-          console.log(`${this.TAG} disableFormsUpdate end`);
+          console.log(`${this.TAG} aboutToAppear:disableFormsUpdate end`);
         }
       }
 
@@ -295,6 +311,7 @@ struct Index {
             .allowUpdate(this.allowUpate)
             .visibility(this.isShowing ? Visibility.Visible : Visibility.Hidden)
             .onAcquired((form:InfoType) => {
+              console.log(`${this.TAG} onAcquired start`);
               console.log(`${this.TAG} get form, form id:` + form.id);
               this.formId = form.id;
               if(this.deleteForm) {
@@ -312,7 +329,10 @@ struct Index {
                         "formId" : this.deleteId,
                       }
                     };
-                    commonEvent.publish(this.formOnDeletedEvent, commonEventPublishData, this.publishOnDeletedCallBack);
+                    setTimeout(()=>{
+                      console.log(`${this.TAG} publish formOnStateEvent:` + this.formOnDeletedEvent);
+                      commonEvent.publish(this.formOnDeletedEvent, commonEventPublishData, this.publishOnDeletedCallBack);
+                    }, 500);
                   })
                   .catch((error:BusinessError) => {
                     console.info(`${this.TAG} deleteForm error:` + error);
@@ -350,7 +370,10 @@ struct Index {
                           "formId" : this.stateIds[0]
                         }
                       };
-                      commonEvent.publish(this.formOnStateEvent, commonEventPublishData, this.publishOnStateCallBack);
+                      setTimeout(()=>{
+                        console.log(`${this.TAG} publish formOnStateEvent:` + this.formOnStateEvent);
+                        commonEvent.publish(this.formOnStateEvent, commonEventPublishData, this.publishOnStateCallBack);
+                      }, 500);
                     })
                     .catch((error:BusinessError) => {
                       console.info(`${this.TAG} notifyVisibleForm error:` + error);
@@ -383,7 +406,10 @@ struct Index {
                           "formId" : this.stateIds[0]
                         }
                       };
-                      commonEvent.publish(this.formOnStateEvent, commonEventPublishData, this.publishOnStateCallBack);
+                      setTimeout(()=>{
+                        console.log(`${this.TAG} publish formOnStateEvent:` + this.formOnStateEvent);
+                        commonEvent.publish(this.formOnStateEvent, commonEventPublishData, this.publishOnStateCallBack);
+                      }, 500);
                     })
                     .catch((error:BusinessError) => {
                       console.info(`${this.TAG} notifyInvisibleForm error:` + error.code);
@@ -415,7 +441,10 @@ struct Index {
                           "formId" : this.stateIds[0]
                         }
                       };
-                      commonEvent.publish(this.formOnStateEvent, commonEventPublishData, this.publishOnStateCallBack);
+                      setTimeout(()=>{
+                        console.log(`${this.TAG} publish formOnStateEvent:` + this.formOnStateEvent);
+                        commonEvent.publish(this.formOnStateEvent, commonEventPublishData, this.publishOnStateCallBack);
+                      }, 500);
                     })
                     .catch((error:BusinessError) => {
                       console.info(`${this.TAG} enableFormsUpdate error:` + error);
@@ -447,7 +476,10 @@ struct Index {
                           "formId" : this.stateIds[0]
                         }
                       };
-                      commonEvent.publish(this.formOnStateEvent, commonEventPublishData, this.publishOnStateCallBack);
+                      setTimeout(()=>{
+                        console.log(`${this.TAG} publish formOnStateEvent:` + this.formOnStateEvent);
+                        commonEvent.publish(this.formOnStateEvent, commonEventPublishData, this.publishOnStateCallBack);
+                      }, 500);
                     })
                     .catch((error:BusinessError) => {
                       console.info(`${this.TAG} disableFormsUpdate error:` + error);
@@ -473,8 +505,12 @@ struct Index {
                       "formId" : this.formId.toString()
                     }
                 };
-                commonEvent.publish(this.formOnAcquiredEvent, commonEventPublishData, this.publishOnAcquiredCallBack);
+                setTimeout(()=>{
+                  console.log(`${this.TAG} publish formOnAcquiredEvent:` + this.formOnAcquiredEvent);
+                  commonEvent.publish(this.formOnAcquiredEvent, commonEventPublishData, this.publishOnAcquiredCallBack);
+                }, 500);
               }
+              console.log(`${this.TAG} onAcquired end`);
             })
             .onUninstall((info:InfoType) => {
               console.log(`${this.TAG} onUninstall:` + JSON.stringify(info));
