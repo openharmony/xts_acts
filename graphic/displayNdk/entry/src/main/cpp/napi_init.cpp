@@ -696,7 +696,7 @@ static napi_value Init(napi_env env, napi_value exports)
         { "registerFoldDisplayModeChange", nullptr, RegisterFoldDisplayModeChangeListener, nullptr, nullptr, nullptr,
             napi_default, nullptr },
         { "unregisterFoldDisplayModeChange", nullptr, UnregisterFoldDisplayModeChangeListener, nullptr, nullptr,
-            nullptr, napi_default, nullptr }, 
+            nullptr, napi_default, nullptr },
         { "createAvailableArea", nullptr, CreateAvailableArea, nullptr, nullptr,
             nullptr, napi_default, nullptr },
         { "createAvailableArea_ErrCode140004", nullptr, CreateAvailableArea_ErrCode140004, nullptr, nullptr,
