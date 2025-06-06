@@ -59,6 +59,7 @@ export default function XComponentDrawingCanvasTestTest() {
 
       let button = await driver.findComponent(ON.id('XComponentDrawingCanvas_btn'));
       await button.click();
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('XComponent1_lock1');
       let obj: ESObject = JSON.parse(strJson);
