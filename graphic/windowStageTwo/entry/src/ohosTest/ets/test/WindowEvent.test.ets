@@ -93,15 +93,15 @@ export default function windowEventTest() {
       let subWindowClass = await windowStage.createSubWindow('testTouchOutSide_TopBar_0100');
       await subWindowClass.setUIContent('testability/pages/First/index2');
       await sleep(1000);
-      await subWindowClass.showWindow();
-      await sleep(1000);
       let timer = 0;
       try {
         let windowLimits = subWindowClass.getWindowLimits();
         console.info(`${caseName} windowLimits: ${JSON.stringify(windowLimits)}`);
-        await subWindowClass.resize(windowLimits.minWidth as number, windowLimits.minHeight as number);
+        await subWindowClass.resize(windowLimits.minWidth as number+100, windowLimits.minHeight as number);
         await sleep(1000);
         await subWindowClass.moveWindowTo(0, 0);
+        await sleep(1000);
+        await subWindowClass.showWindow();
         await sleep(1000);
 
         const callback = () => {
@@ -112,9 +112,9 @@ export default function windowEventTest() {
         await mainWindow.setPreferredOrientation(window.Orientation.LANDSCAPE);
         let driver: Driver = Driver.create();
         await sleep(200);
-        await driver.click(Math.round((windowLimits.minWidth as number)/2), 0);
+        await driver.click(Math.round((windowLimits.minWidth as number+100)/2), 0);
         expect(timer).assertEqual(0);
-        await driver.click((windowLimits.minWidth as number) + 1, 0);
+        await driver.click((windowLimits.minWidth as number+100) + 2, 0);
         expect(timer).assertEqual(1);
         await mainWindow.setPreferredOrientation(window.Orientation.PORTRAIT);
         subWindowClass.off('touchOutside');

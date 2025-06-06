@@ -4512,7 +4512,7 @@ export default function windowPropertiesTest() {
             let windowRect = windowProperties.windowRect;
             console.info(`${msgStr} windowRect: ${JSON.stringify(windowRect)}`);
             expect(Math.abs(windowRect.width-(windowLimits.minWidth as number))).assertLessOrEqual(1);
-            expect(Math.abs(windowRect.height-(windowLimits.maxHeight as number))).assertLessOrEqual(1);
+            expect(Math.abs(windowRect.height-(windowLimits.minHeight as number))).assertLessOrEqual(1);
             expect(Math.abs(windowRect.left-100)).assertLessOrEqual(1);
             expect(Math.abs(windowRect.top-100)).assertLessOrEqual(1);
             let drawableRect  = windowProperties.drawableRect;
@@ -4583,7 +4583,7 @@ export default function windowPropertiesTest() {
             await sleep(200);
             await subWindowClass.moveWindowTo(100, 100);
             await sleep(200);
-            let decorHeight = subWindowClass.getWindowDecorHeight();
+            let decorHeight = vp2px(subWindowClass.getWindowDecorHeight());
             console.info(`${msgStr} decorHeight: ${JSON.stringify(decorHeight)}`);
             let windowProperties = subWindowClass.getWindowProperties()
             console.info(`${msgStr} windowProperties: ${JSON.stringify(windowProperties)}`);
@@ -4591,17 +4591,16 @@ export default function windowPropertiesTest() {
             console.info(`${msgStr} windowRect: ${JSON.stringify(windowRect)}`);
             let drawableRect  = windowProperties.drawableRect;
             console.info(`${msgStr} drawableRect: ${JSON.stringify(drawableRect)}`);
-            // expect(drawableRect.height).assertEqual(windowRect.height - decorHeight);
-            if (isPCStatus == '' || isAutoWindow == 'false') {
-              expect(drawableRect.left).assertEqual(0);
-              expect(drawableRect.top).assertEqual(0);
-              expect(Math.abs(drawableRect.width - windowRect.width)).assertLessOrEqual(1);
-              expect(Math.abs(drawableRect.height - windowRect.height)).assertLessOrEqual(1);
-            } else {
+            if (isPCStatus != '' || isAutoWindow == 'true') {
               expect(drawableRect.left).assertEqual(0);
               expect(Math.abs(drawableRect.top - decorHeight)).assertLessOrEqual(1);
               expect(Math.abs(drawableRect.width - windowRect.width)).assertLessOrEqual(1);
               expect(Math.abs(drawableRect.height - (windowRect.height - decorHeight))).assertLessOrEqual(1);
+            } else {
+              expect(drawableRect.left).assertEqual(0);
+              expect(drawableRect.top).assertEqual(0);
+              expect(Math.abs(drawableRect.width - windowRect.width)).assertLessOrEqual(1);
+              expect(Math.abs(drawableRect.height - windowRect.height)).assertLessOrEqual(1);
             }
 
             await subWindowClass.destroyWindow();
@@ -4708,9 +4707,7 @@ export default function windowPropertiesTest() {
         console.info(msgStr + ' begin ');
         try {
           let windowClass = windowStage.getMainWindowSync();
-          if (isPCStatus == '' || isAutoWindow == 'false') {
-            done();
-          } else {
+          if (isPCStatus != '' || isAutoWindow == 'true') {
             let promise = windowClass.maximize(window.MaximizePresentation.FOLLOW_APP_IMMERSIVE_SETTING);
             promise.then(async () => {
               console.info('Succeeded in maximizing the window.');
@@ -4730,6 +4727,8 @@ export default function windowPropertiesTest() {
                 done();
               }
             });
+          } else {
+            done();
           }
         } catch (error) {
           console.error(msgStr + ' Failed. Cause: ' + JSON.stringify(error));
@@ -4751,9 +4750,7 @@ export default function windowPropertiesTest() {
         console.info(msgStr + ' begin ');
         try {
           let windowClass = windowStage.getMainWindowSync();
-          if (isPCStatus == '' || isAutoWindow == 'false') {
-            done();
-          } else {
+          if (isPCStatus != '' || isAutoWindow == 'true') {
             let promise = windowClass.maximize(window.MaximizePresentation.EXIT_IMMERSIVE);
             promise.then(async () => {
               console.info('Succeeded in maximizing the window.');
@@ -4773,6 +4770,8 @@ export default function windowPropertiesTest() {
                 done();
               }
             });
+          } else {
+            done();
           }
         } catch (error) {
           console.error(msgStr + ' Failed. Cause: ' + JSON.stringify(error));
@@ -4794,9 +4793,7 @@ export default function windowPropertiesTest() {
         console.info(msgStr + ' begin ');
         try {
           let windowClass = windowStage.getMainWindowSync();
-          if (isPCStatus == '' || isAutoWindow == 'false') {
-            done();
-          } else {
+          if (isPCStatus != '' || isAutoWindow == 'true') {
             let promise = windowClass.maximize(window.MaximizePresentation.ENTER_IMMERSIVE);
             promise.then(async () => {
               console.info('Succeeded in maximizing the window.');
@@ -4816,6 +4813,8 @@ export default function windowPropertiesTest() {
                 done();
               }
             });
+          } else {
+            done();
           }
         } catch (error) {
           console.error(msgStr + ' Failed. Cause: ' + JSON.stringify(error));
@@ -4837,9 +4836,7 @@ export default function windowPropertiesTest() {
         console.info(msgStr + ' begin ');
         try {
           let windowClass = windowStage.getMainWindowSync();
-          if (isPCStatus == '' || isAutoWindow == 'false') {
-            done();
-          } else {
+          if (isPCStatus != '' || isAutoWindow == 'true') {
             let promise = windowClass.maximize(window.MaximizePresentation.ENTER_IMMERSIVE_DISABLE_TITLE_AND_DOCK_HOVER);
             promise.then(async () => {
               console.info('Succeeded in maximizing the window.');
@@ -4859,6 +4856,8 @@ export default function windowPropertiesTest() {
                 done();
               }
             });
+          } else {
+            done();
           }
         } catch (error) {
           console.error(msgStr + ' Failed. Cause: ' + JSON.stringify(error));
@@ -4880,9 +4879,7 @@ export default function windowPropertiesTest() {
         console.info(msgStr + ' begin ');
         try {
           let windowClass = windowStage.getMainWindowSync();
-          if (isPCStatus == '' || isAutoWindow == 'false') {
-            done();
-          } else {
+          if (isPCStatus != '' || isAutoWindow == 'true') {
             windowClass.setImmersiveModeEnabledState(true);
             let windowProperties = windowClass.getWindowProperties()
             console.info(`${msgStr} windowProperties: ${JSON.stringify(windowProperties)}`);
@@ -4891,6 +4888,8 @@ export default function windowPropertiesTest() {
             let windowProperties2 = windowClass.getWindowProperties()
             console.info(`${msgStr} windowProperties2: ${JSON.stringify(windowProperties2)}`);
             expect(windowProperties2.isLayoutFullScreen).assertEqual(false);
+            done();
+          } else {
             done();
           }
         } catch (error) {
@@ -6064,16 +6063,16 @@ export default function windowPropertiesTest() {
           expect(windowProperties.type).assertEqual(1);
           let windowRect = windowProperties.windowRect;
           console.info(`${msgStr} windowRect: ${JSON.stringify(windowRect)}`);
-          if (isPCStatus == '' || isAutoWindow == 'false') {
+          if (isPCStatus != '' || isAutoWindow == 'true') {
             expect(windowProperties.isFullScreen).assertEqual(false);
-            expect(windowRect.left).assertEqual(0);
-            expect(windowRect.top).assertEqual(0);
+            expect(windowRect.left).assertLarger(0);
+            expect(windowRect.top).assertLarger(0);
             expect(windowRect.width).assertLarger(0);
             expect(windowRect.height).assertLarger(0);
           } else {
-            expect(windowProperties.isFullScreen).assertEqual(true);
-            expect(windowRect.left).assertLarger(0);
-            expect(windowRect.top).assertLarger(0);
+            expect(windowProperties.isFullScreen).assertEqual(false);
+            expect(windowRect.left).assertEqual(0);
+            expect(windowRect.top).assertEqual(0);
             expect(windowRect.width).assertLarger(0);
             expect(windowRect.height).assertLarger(0);
           }
