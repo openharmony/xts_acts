@@ -11,15 +11,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-group("WebContentProcessing") {
+import("//test/xts/tools/build/suite.gni")
+
+ohos_js_app_suite("ActsWebPageCopyPasteTest") {
+  test_hap = true
   testonly = true
-  if (is_standard_system) {
-    deps = [
-      "password_padding:ActsWebPasswordPaddingTest",
-      "upload_and_download:uploadAndDownload",
-      "web_copy_paste:ActsWebPageCopyPasteTest",
-      "web_page_download:ActsWebPageDownloadTest",
-      "web_page_saving:ActsWebPageSavingTest",
-    ]
-  }
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsWebPageCopyPasteTest"
+  part_name = "webview"
+  subsystem_name = "web"
 }
