@@ -127,6 +127,102 @@ export default function windowAnimationTest(context: common.UIAbilityContext, wi
       }
     })
     /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOWANIMATION_JS_API_0120
+     * @tc.name      : testSetWindowTransitionAnimationNormal2
+     * @tc.desc      : Add transition animations to the Windows in specific scenes.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('testSetWindowTransitionAnimationNormal2', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async () => {
+      let caseName = 'testSetWindowTransitionAnimationNormal2';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let mainWin = windowStage.getMainWindowSync();
+      expect(!!mainWin).assertTrue();
+      console.info(msgStr + 'Succeeded getMainWindowSync.');
+      const animationConfig: window.WindowAnimationConfig = {
+        duration: 1000,
+        curve: window.WindowAnimationCurve.INTERPOLATION_SPRING,
+        param: [100, 10, 20, 5]
+      };
+      const transitionAnimation: window.TransitionAnimation = {
+        opacity: 0.5,
+        config: animationConfig
+      };
+      try {
+        await mainWin.setWindowTransitionAnimation(window.WindowTransitionType.DESTROY, transitionAnimation).then(() => {
+          console.info(msgStr + 'Succeeded in setting window transition animation. Cause:');
+        }).catch((err: BusinessError) => {
+          if (err.code != 801) {
+            console.error(msgStr + `Failed to set window transition animation. Cause code: ${err.code}, message: ${err.message}`);
+            expect().assertFail();
+          } else {
+            console.log(msgStr + 'innner catch 当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+            console.log(msgStr + JSON.stringify(err))
+            expect(err.code).assertEqual(801);
+          }
+        });
+      } catch (err) {
+        if (err.code != 801) {
+          console.error(msgStr + `Failed to obtain the window status of window. Cause code: ${err.code}, message: ${err.message}`);
+          expect().assertFail();
+        } else {
+          console.log(msgStr + 'out catch 当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+          console.log(msgStr + JSON.stringify(err))
+          expect(err.code).assertEqual(801);
+        }
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOWANIMATION_JS_API_0130
+     * @tc.name      : testSetWindowTransitionAnimationCurveSpring
+     * @tc.desc      : Add transition animations to the Windows in specific scenes.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testSetWindowTransitionAnimationCurveSpring', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async () => {
+      let caseName = 'testSetWindowTransitionAnimationCurveSpring';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let mainWin = windowStage.getMainWindowSync();
+      expect(!!mainWin).assertTrue();
+      console.info(msgStr + 'Succeeded getMainWindowSync.');
+      const animationConfig: window.WindowAnimationConfig = {
+        duration: 4000,
+        curve: window.WindowAnimationCurve.INTERPOLATION_SPRING,
+        param: [100, 10, 20, 5]
+      };
+      const transitionAnimation: window.TransitionAnimation = {
+        opacity: 0.5,
+        config: animationConfig
+      };
+      try {
+        await mainWin.setWindowTransitionAnimation(window.WindowTransitionType.DESTROY, transitionAnimation).then(() => {
+          console.info(msgStr + 'Succeeded in setting window transition animation. Cause:');
+        }).catch((err: BusinessError) => {
+          if (err.code != 801) {
+            console.error(msgStr + `Failed to set window transition animation. Cause code: ${err.code}, message: ${err.message}`);
+            expect().assertFail();
+          } else {
+            console.log(msgStr + 'innner catch 当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+            console.log(msgStr + JSON.stringify(err))
+            expect(err.code).assertEqual(801);
+          }
+        });
+      } catch (err) {
+        if (err.code != 801) {
+          console.error(msgStr + `Failed to obtain the window status of window. Cause code: ${err.code}, message: ${err.message}`);
+          expect().assertFail();
+        } else {
+          console.log(msgStr + 'out catch 当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+          console.log(msgStr + JSON.stringify(err))
+          expect(err.code).assertEqual(801);
+        }
+      }
+    })
+    /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOWANIMATION_JS_API_0020
      * @tc.name      : testSetWindowTransitionAnimationWindowStateAbnormal
      * @tc.desc      : Add transition animations to the Windows in specific scenes.
