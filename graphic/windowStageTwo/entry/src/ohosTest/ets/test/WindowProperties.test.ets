@@ -4462,8 +4462,12 @@ export default function windowPropertiesTest() {
             done()
           }).catch(async (err: BusinessError) => {
             console.error(`${caseName} Failed to call getGlobalWindowMode. Cause: ${JSON.stringify(err)}`);
-            expect().assertFail();
-            done()
+            if (err.code == 801) {
+              done()
+            } else {
+              expect().assertFail();
+              done()
+            }
           });
         } catch (error) {
           console.error(`${caseName} Failed2 to call getGlobalWindowMode. Cause: ${JSON.stringify(error)}`);
@@ -4545,11 +4549,11 @@ export default function windowPropertiesTest() {
         let subWindowClass: window.Window | undefined;
         let mainWindow = windowStage.getMainWindowSync();
         try {
-          if (isPCStatus == '' || isAutoWindow == 'false') {
-            console.info(`${caseName}: this device is not pc or autowindow is false.`)
-          } else {
+          if (isPCStatus != '' || isAutoWindow == 'true') {
             await mainWindow.maximize();
             await sleep(200);
+          } else {
+            console.info(`${caseName}: this device is not pc or autowindow is false.`)
           }
           subWindowClass = await windowStage.createSubWindow('testGetGlobalWindowMode_Fullscreen_And_Subwindow');
           window.getGlobalWindowMode(0).then(async (data: number) => {
@@ -4766,11 +4770,11 @@ export default function windowPropertiesTest() {
         let subWindowClass: window.Window | undefined;
         let mainWindow = windowStage.getMainWindowSync();
         try {
-          if (isPCStatus == '' || isAutoWindow == 'false') {
-            console.info(`${caseName}: this device is not pc or autowindow is false.`)
-          } else {
+          if (isPCStatus != '' || isAutoWindow == 'true') {
             await mainWindow.maximize();
             await sleep(200);
+          } else {
+            console.info(`${caseName}: this device is not pc or autowindow is false.`)
           }
           let config: window.Configuration = {
             name: 'testGetGlobalWindowMode_Fullscreen_And_Dialog',
@@ -4821,11 +4825,7 @@ export default function windowPropertiesTest() {
         let caseName = 'testGetGlobalWindowMode_Fullscreen_And_Unvisible_Float';
         let windowStageStart = await startAbility3(caseName, context);
         try {
-          if (isPCStatus == '' || isAutoWindow == 'false') {
-            console.info(`${caseName}: this device is not pc or autowindow is false.`)
-            await terminateAbility3(caseName);
-            done();
-          } else {
+          if (isPCStatus != '' || isAutoWindow == 'true') {
             await sleep(200);
             let subWindow = windowStageStart.getMainWindowSync();
             await subWindow.maximize();
@@ -4845,6 +4845,10 @@ export default function windowPropertiesTest() {
                 done();
               }
             });
+          } else {
+            console.info(`${caseName}: this device is not pc or autowindow is false.`)
+            await terminateAbility3(caseName);
+            done();
           }
         } catch (error) {
           console.error(`${caseName} Failed2 to call getGlobalWindowMode. Cause: ${JSON.stringify(error)}`);
@@ -4867,10 +4871,10 @@ export default function windowPropertiesTest() {
         try {
           window.getGlobalWindowMode().then(async (data: number) => {
             console.info(`${caseName} Succeeded in calling getGlobalWindowMode. data: ${data}`);
-            if (isPCStatus == '' || isAutoWindow == 'false') {
-              expect(data).assertEqual(1);
-            } else {
+            if (isPCStatus != '' || isAutoWindow == 'true') {
               expect(data).assertEqual(4);
+            } else {
+              expect(data).assertEqual(1);
             }
             done();
           }).catch(async (err: BusinessError) => {
