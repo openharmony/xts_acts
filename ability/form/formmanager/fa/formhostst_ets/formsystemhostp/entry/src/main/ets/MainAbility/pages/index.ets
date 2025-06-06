@@ -153,6 +153,7 @@ struct Index {
   }
 
   aboutToAppear() {
+    console.info(`${this.TAG} aboutToAppear start`);
     commonEvent.createSubscriber(this.subscriberFormDeleteEvent).then(async (data) => {
       console.info(`====>${this.TAG} formsystemhostp Subscriber FormDelete data:====>`, JSON.stringify(data));
       this.subscriberDel = data;
@@ -230,7 +231,7 @@ struct Index {
         }, 10);
 
         if (this.castFormId != "-1" && (want.parameters?.optType ?? 0) == 3) {
-          console.info(`${this.TAG} castTempForm start`);
+          console.info(`${this.TAG} aboutToAppear:castTempForm start`);
           commonEvent.unsubscribe(this.subscriberDel, () => {
             console.info(`====> ${this.TAG} formsystemhostp optType unSubscribeDeleteCallback CallBack====>`);
           });
@@ -262,12 +263,12 @@ struct Index {
               };
               commonEvent.publish(this.formCastEvent, commonEventPublishData, this.publishCastCallBack);
             });
-          console.info(`${this.TAG} castTempForm end`);
+          console.info(`${this.TAG} aboutToAppear:castTempForm end`);
         }
 
         if ((want.parameters?.optType ?? 0) == 2 && this.deleteIds.length > 0) {
           for (let iIndex = 0; iIndex < this.deleteIds.length; ++iIndex) {
-            console.info(`${this.TAG} formsystemhostp deleteForm start`);
+            console.info(`${this.TAG} aboutToAppear:formsystemhostp deleteForm start`);
             formHost.deleteForm(this.deleteIds[iIndex])
               .then((data) => {
                 console.info(`${this.TAG} formsystemhostp deleteForm result:` + data);
@@ -295,7 +296,7 @@ struct Index {
                 };
                 commonEvent.publish(this.formOnErrorEvent, commonEventPublishData, this.publishOnErrorCallBack);
               });
-            console.info(`${this.TAG} formsystemhostp deleteForm end`);
+            console.info(`${this.TAG} aboutToAppear:formsystemhostp deleteForm end`);
           }
         }
       })
@@ -349,7 +350,10 @@ struct Index {
                           "formIds": this.normalFormIds
                         }
                       };
-                      commonEvent.publish(this.formOnAcquiredEvent, commonEventPublishData, this.publishOnAcquiredCallBack);
+                      setTimeout(()=>{
+                        console.log(`${this.TAG} publish formOnAcquiredEvent:` + this.formOnAcquiredEvent);
+                        commonEvent.publish(this.formOnAcquiredEvent, commonEventPublishData, this.publishOnAcquiredCallBack);
+                      }, 500);
                     }
                   })
                   .onError((error:ErroType) => {
@@ -397,7 +401,10 @@ struct Index {
                           "formIds": this.tempFormIds
                         }
                       };
-                      commonEvent.publish(this.formOnAcquiredEvent, commonEventPublishData, this.publishOnAcquiredCallBack);
+                      setTimeout(()=>{
+                        console.log(`${this.TAG} publish formOnAcquiredEvent:` + this.formOnAcquiredEvent);
+                        commonEvent.publish(this.formOnAcquiredEvent, commonEventPublishData, this.publishOnAcquiredCallBack);
+                      }, 500);
                     }
                   })
                   .onError((error:ErroType) => {
