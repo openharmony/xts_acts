@@ -139,6 +139,25 @@ export default function UiTest() {
       console.log(TestTag, 'testNewMouseDrag over');
     })
 
+    /*
+     * @tc.number: uiTest_20021
+     * @tc.name: testPressHomeWithId
+     * @tc.desc: pressHome test
+     */
+    it('testPressHomeWithId', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.log(TestTag, 'testPressHomeWithId start');
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+      await driver.delayMs(waitUiReadyMs)
+      let disPlay = display.getDefaultDisplaySync();
+      console.log(`${TestTag}, testPressHomeWithId disPlay is: ${JSON.stringify(disPlay)}`);
+      await driver.pressHome(disPlay.id)
+      await driver.delayMs(1000)
+      let button = await driver.findComponent(ON.belongingDisplay(disPlay.id).text('next page'))
+      expect(button == null).assertTrue()
+      await stopApplication('com.uitestScene.acts')
+      console.log(TestTag, 'testPressHomeWithId over');
+    })
+
   })
   describe('UiTest_API16', () => {
     let driver: Driver
