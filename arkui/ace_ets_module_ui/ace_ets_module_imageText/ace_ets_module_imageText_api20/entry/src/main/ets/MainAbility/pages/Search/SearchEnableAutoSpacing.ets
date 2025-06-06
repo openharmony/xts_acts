@@ -13,21 +13,21 @@
  * limitations under the License.
  */
 
- class SearchModifier1 implements AttributeModifier<SearchAttribute> {
+ class SearchModifier11 implements AttributeModifier<SearchAttribute> {
 
   applyNormalAttribute(instance: SearchAttribute): void {
     instance.enableAutoSpacing(true)
   }
 }
 
-class SearchModifier2 implements AttributeModifier<SearchAttribute> {
+class SearchModifier12 implements AttributeModifier<SearchAttribute> {
 
   applyNormalAttribute(instance: SearchAttribute): void {
     instance.enableAutoSpacing(false)
   }
 }
 
-class SearchModifier3 implements AttributeModifier<SearchAttribute> {
+class SearchModifier13 implements AttributeModifier<SearchAttribute> {
 
   applyNormalAttribute(instance: SearchAttribute): void {
     instance.enableAutoSpacing(undefined)
@@ -37,9 +37,9 @@ class SearchModifier3 implements AttributeModifier<SearchAttribute> {
 @Entry
 @Component
 struct SearchEnableAutoSpacing {
-  @State searchModifier1: SearchModifier1 = new SearchModifier1()
-  @State searchModifier2: SearchModifier2 = new SearchModifier2()
-  @State searchModifier3: SearchModifier3 = new SearchModifier3()
+  @State searchModifier11: SearchModifier11 = new SearchModifier11()
+  @State searchModifier12: SearchModifier12 = new SearchModifier12()
+  @State searchModifier13: SearchModifier13 = new SearchModifier13()
 
   build() {
     Column({ space: 1 }) {
@@ -73,7 +73,7 @@ struct SearchEnableAutoSpacing {
       Search({
         value:'SearchModifier: true',
       })
-        .attributeModifier(this.searchModifier1)
+        .attributeModifier(this.searchModifier11)
         .id('SearchModifier_enableAutoSpacing_true')
         .height('5%')
         .borderWidth(1)
@@ -81,7 +81,7 @@ struct SearchEnableAutoSpacing {
       Search({
         value:'SearchModifier: false',
       })
-        .attributeModifier(this.searchModifier2)
+        .attributeModifier(this.searchModifier12)
         .id('SearchModifier_enableAutoSpacing_false')
         .height('5%')
         .borderWidth(1)
@@ -89,7 +89,7 @@ struct SearchEnableAutoSpacing {
       Search({
         value:'SearchModifier: undefined',
       })
-        .attributeModifier(this.searchModifier3)
+        .attributeModifier(this.searchModifier13)
         .id('SearchModifier_enableAutoSpacing_undefined')
         .height('5%')
         .borderWidth(1)

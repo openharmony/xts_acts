@@ -13,21 +13,21 @@
  * limitations under the License.
  */
 
- class TextInputModifier1 implements AttributeModifier<TextInputAttribute> {
+ class TextInputModifier21 implements AttributeModifier<TextInputAttribute> {
 
   applyNormalAttribute(instance: TextInputAttribute): void {
     instance.enableAutoSpacing(true)
   }
 }
 
-class TextInputModifier2 implements AttributeModifier<TextInputAttribute> {
+class TextInputModifier22 implements AttributeModifier<TextInputAttribute> {
 
   applyNormalAttribute(instance: TextInputAttribute): void {
     instance.enableAutoSpacing(false)
   }
 }
 
-class TextInputModifier3 implements AttributeModifier<TextInputAttribute> {
+class TextInputModifier23 implements AttributeModifier<TextInputAttribute> {
 
   applyNormalAttribute(instance: TextInputAttribute): void {
     instance.enableAutoSpacing(undefined)
@@ -37,9 +37,9 @@ class TextInputModifier3 implements AttributeModifier<TextInputAttribute> {
 @Entry
 @Component
 struct TextInputEnableAutoSpacing {
-  @State TextInputModifier1: TextInputModifier1 = new TextInputModifier1()
-  @State TextInputModifier2: TextInputModifier2 = new TextInputModifier2()
-  @State TextInputModifier3: TextInputModifier3 = new TextInputModifier3()
+  @State TextInputModifier21: TextInputModifier21 = new TextInputModifier21()
+  @State TextInputModifier22: TextInputModifier22 = new TextInputModifier22()
+  @State TextInputModifier23: TextInputModifier23 = new TextInputModifier23()
 
   build() {
     Column({ space: 1 }) {
@@ -73,7 +73,7 @@ struct TextInputEnableAutoSpacing {
       TextInput({
         text:'TextInputModifier: true',
       })
-        .attributeModifier(this.TextInputModifier1)
+        .attributeModifier(this.TextInputModifier21)
         .id('TextInputModifier_enableAutoSpacing_true')
         .height('5%')
         .borderWidth(1)
@@ -81,7 +81,7 @@ struct TextInputEnableAutoSpacing {
       TextInput({
         text:'TextInputModifier: false',
       })
-        .attributeModifier(this.TextInputModifier2)
+        .attributeModifier(this.TextInputModifier22)
         .id('TextInputModifier_enableAutoSpacing_false')
         .height('5%')
         .borderWidth(1)
@@ -89,7 +89,7 @@ struct TextInputEnableAutoSpacing {
       TextInput({
         text:'TextInputModifier: undefined',
       })
-        .attributeModifier(this.TextInputModifier3)
+        .attributeModifier(this.TextInputModifier23)
         .id('TextInputModifier_enableAutoSpacing_undefined')
         .height('5%')
         .borderWidth(1)

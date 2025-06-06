@@ -13,21 +13,21 @@
  * limitations under the License.
  */
 
- class TextAreaModifier1 implements AttributeModifier<TextAreaAttribute> {
+ class TextAreaModifier21 implements AttributeModifier<TextAreaAttribute> {
 
   applyNormalAttribute(instance: TextAreaAttribute): void {
     instance.enableAutoSpacing(true)
   }
 }
 
-class TextAreaModifier2 implements AttributeModifier<TextAreaAttribute> {
+class TextAreaModifier22 implements AttributeModifier<TextAreaAttribute> {
 
   applyNormalAttribute(instance: TextAreaAttribute): void {
     instance.enableAutoSpacing(false)
   }
 }
 
-class TextAreaModifier3 implements AttributeModifier<TextAreaAttribute> {
+class TextAreaModifier23 implements AttributeModifier<TextAreaAttribute> {
 
   applyNormalAttribute(instance: TextAreaAttribute): void {
     instance.enableAutoSpacing(undefined)
@@ -37,9 +37,9 @@ class TextAreaModifier3 implements AttributeModifier<TextAreaAttribute> {
 @Entry
 @Component
 struct TextAreaEnableAutoSpacing {
-  @State TextAreaModifier1: TextAreaModifier1 = new TextAreaModifier1()
-  @State TextAreaModifier2: TextAreaModifier2 = new TextAreaModifier2()
-  @State TextAreaModifier3: TextAreaModifier3 = new TextAreaModifier3()
+  @State TextAreaModifier21: TextAreaModifier21 = new TextAreaModifier21()
+  @State TextAreaModifier22: TextAreaModifier22 = new TextAreaModifier22()
+  @State TextAreaModifier23: TextAreaModifier23 = new TextAreaModifier23()
 
   build() {
     Column({ space: 1 }) {
@@ -73,7 +73,7 @@ struct TextAreaEnableAutoSpacing {
       TextArea({
         text:'TextAreaModifier: true',
       })
-        .attributeModifier(this.TextAreaModifier1)
+        .attributeModifier(this.TextAreaModifier21)
         .id('TextAreaModifier_enableAutoSpacing_true')
         .height('5%')
         .borderWidth(1)
@@ -81,7 +81,7 @@ struct TextAreaEnableAutoSpacing {
       TextArea({
         text:'TextAreaModifier: false',
       })
-        .attributeModifier(this.TextAreaModifier2)
+        .attributeModifier(this.TextAreaModifier22)
         .id('TextAreaModifier_enableAutoSpacing_false')
         .height('5%')
         .borderWidth(1)
@@ -89,7 +89,7 @@ struct TextAreaEnableAutoSpacing {
       TextArea({
         text:'TextAreaModifier: undefined',
       })
-        .attributeModifier(this.TextAreaModifier3)
+        .attributeModifier(this.TextAreaModifier23)
         .id('TextAreaModifier_enableAutoSpacing_undefined')
         .height('5%')
         .borderWidth(1)
