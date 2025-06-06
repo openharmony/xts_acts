@@ -1895,7 +1895,7 @@ export default function uitestDriverErrorTest() {
 
     /*
      * @tc.number: uitestDriverErrorTest_082
-     * @tc.name: test_driver_DoubleClickAt_17000007
+     * @tc.name: test_driver_swipeBetween_17000007
      * @tc.desc: swipeBetween 17000007 test.
      */
     it('test_driver_swipeBetween_17000007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {

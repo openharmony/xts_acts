@@ -112,7 +112,7 @@ export default function UiTest() {
         })
 
         /*
-        * @tc.number: uiTest_200015
+        * @tc.number: uiTest_20002
         * @tc.name: testNewMouseLongClick
         * @tc.desc: longClick in the specified location on the screen by mouse, the value of speed and duration are 3000.
         */
@@ -131,7 +131,7 @@ export default function UiTest() {
         })
 
         /*
-         * @tc.number: uiTest_20005
+         * @tc.number: uiTest_20003
          * @tc.name: testDriverInputText
          * @tc.desc: enter '123',the values of both paste and addition are false
          */
@@ -157,7 +157,7 @@ export default function UiTest() {
         })
 
         /*
-         * @tc.number: uiTest_20006
+         * @tc.number: uiTest_20004
          * @tc.name: testDriverInputText1
          * @tc.desc: enter '长贵儿',the values of both paste and addition are false
          */
@@ -185,7 +185,7 @@ export default function UiTest() {
         })
 
         /*
-         * @tc.number: uiTest_20007
+         * @tc.number: uiTest_20005
          * @tc.name: testDriverInputText2
          * @tc.desc: enter '123',the values of paste is true,the values of addition is false
          */
@@ -213,7 +213,7 @@ export default function UiTest() {
         })
 
         /*
-         * @tc.number: uiTest_20008
+         * @tc.number: uiTest_20006
          * @tc.name: testDriverInputText3
          * @tc.desc: enter '123',the values of paste is false,the values of addition is true
          */
@@ -238,7 +238,7 @@ export default function UiTest() {
         })
 
         /*
-         * @tc.number: uiTest_20009
+         * @tc.number: uiTest_20007
          * @tc.name: testDriverInputText4
          * @tc.desc: enter '123',the values of paste is true,the values of addition is true
          */
@@ -263,7 +263,7 @@ export default function UiTest() {
         })
 
         /*
-         * @tc.number: uiTest_20010
+         * @tc.number: uiTest_20008
          * @tc.name: testComponentInputText
          * @tc.desc: enter '123',the values of both paste and addition are false
          */
@@ -287,7 +287,7 @@ export default function UiTest() {
         })
 
         /*
-         * @tc.number: uiTest_20011
+         * @tc.number: uiTest_20009
          * @tc.name: testComponentInputText1
          * @tc.desc: enter '长贵儿',the values of both paste and addition are false
          */
@@ -314,7 +314,7 @@ export default function UiTest() {
         })
 
         /*
-         * @tc.number: uiTest_20012
+         * @tc.number: uiTest_20010
          * @tc.name: testComponentInputText2
          * @tc.desc: enter '123',the values of paste is true,the values of addition is false
          */
@@ -341,7 +341,7 @@ export default function UiTest() {
         })
 
         /*
-         * @tc.number: uiTest_20013
+         * @tc.number: uiTest_20011
          * @tc.name: testComponentInputText3
          * @tc.desc: enter '123',the values of paste is false,the values of addition is true
          */
@@ -365,7 +365,7 @@ export default function UiTest() {
         })
 
         /*
-         * @tc.number: uiTest_20014
+         * @tc.number: uiTest_20012
          * @tc.name: testComponentInputText4
          * @tc.desc: enter '123',the values of paste is true,the values of addition is true
          */
@@ -389,7 +389,7 @@ export default function UiTest() {
         })
 
         /*
-         * @tc.number: uiTest_20015
+         * @tc.number: uiTest_20013
          * @tc.name: testCrownRotate
          * @tc.desc: crownRotate test
          */
@@ -424,7 +424,7 @@ export default function UiTest() {
         })
 
         /*
-         * @tc.number: uiTest_20016
+         * @tc.number: uiTest_20014
          * @tc.name: testCrownRotateSpeed
          * @tc.desc: crownRotate test
          */
@@ -459,7 +459,7 @@ export default function UiTest() {
         })
 
         /*
-         * @tc.number: uiTest_20017
+         * @tc.number: uiTest_20015
          * @tc.name: testBelongingDisplay
          * @tc.desc: belongingDisplay test
          */
@@ -483,7 +483,7 @@ export default function UiTest() {
         })
 
         /*
-         * @tc.number: uiTest_20018
+         * @tc.number: uiTest_20016
          * @tc.name: testGetDisplayId
          * @tc.desc: getDisplayId test
          */
@@ -507,7 +507,7 @@ export default function UiTest() {
         })
 
         /*
-         * @tc.number: uiTest_20019
+         * @tc.number: uiTest_20017
          * @tc.name: testPressBackWithId
          * @tc.desc: pressBack test
          */
@@ -529,7 +529,7 @@ export default function UiTest() {
         })
 
         /*
-         * @tc.number: uiTest_20020
+         * @tc.number: uiTest_20018
          * @tc.name: testTriggerKeyWithId
          * @tc.desc: triggerKey test
          */
@@ -553,7 +553,7 @@ export default function UiTest() {
         })
 
         /*
-         * @tc.number: uiTest_20021
+         * @tc.number: uiTest_20019
          * @tc.name: testScreenCapWithId
          * @tc.desc: screenCap test
          */
@@ -572,7 +572,7 @@ export default function UiTest() {
         })
 
         /*
-         * @tc.number: uiTest_20022
+         * @tc.number: uiTest_20020
          * @tc.name: testGetDisplaySizeWithId
          * @tc.desc: getDisplaySize test
          */
@@ -590,7 +590,7 @@ export default function UiTest() {
         })
 
         /*
-         * @tc.number: uiTest_20023
+         * @tc.number: uiTest_20021
          * @tc.name: testGetDisplayDensityWithId
          * @tc.desc: getDisplayDensity test
          */
@@ -609,7 +609,7 @@ export default function UiTest() {
 
 
         /*
-         * @tc.number: uiTest_20024
+         * @tc.number: uiTest_20022
          * @tc.name: testClickAt
          * @tc.desc: clickAt test
          */
@@ -629,7 +629,7 @@ export default function UiTest() {
         })
 
         /*
-         * @tc.number: uiTest_20025
+         * @tc.number: uiTest_20023
          * @tc.name: testDoubleClickAt
          * @tc.desc: doubleClickAt test
          */
@@ -654,7 +654,7 @@ export default function UiTest() {
         })
 
         /*
-         * @tc.number: uiTest_20025
+         * @tc.number: uiTest_20024
          * @tc.name: test_swipeBetween
          * @tc.desc: swipeBetween test
          */
@@ -678,7 +678,7 @@ export default function UiTest() {
         })
 
         /*
-         * @tc.number: uiTest_20026
+         * @tc.number: uiTest_20025
          * @tc.name: test_swipeBetweenspeednull
          * @tc.desc: swipeBetween test
          */
@@ -726,7 +726,7 @@ export default function UiTest() {
         })
 
         /*
-         * @tc.number: uiTest_20026
+         * @tc.number: uiTest_20027
          * @tc.name: test_swipeBetweenspeed199
          * @tc.desc: swipeBetween test
          */
@@ -750,7 +750,7 @@ export default function UiTest() {
         })
 
         /*
-         * @tc.number: uiTest_20026
+         * @tc.number: uiTest_20028
          * @tc.name: test_swipeBetweenspeed40001
          * @tc.desc: swipeBetween test
          */
@@ -774,7 +774,7 @@ export default function UiTest() {
         })
 
         /*
-         * @tc.number: uiTest_20026
+         * @tc.number: uiTest_20029
          * @tc.name: test_swipeBetweenspeed1000
          * @tc.desc: swipeBetween test
          */
@@ -798,7 +798,7 @@ export default function UiTest() {
         })
 
         /*
-         * @tc.number: uiTest_20021
+         * @tc.number: uiTest_20030
          * @tc.name: testFlingWithId
          * @tc.desc: fling test
          */
@@ -840,7 +840,7 @@ export default function UiTest() {
         })
 
         /*
-         * @tc.number: uiTest_20021
+         * @tc.number: uiTest_20031
          * @tc.name: testGetDisplayRotationWithId
          * @tc.desc: getDisplayRotation test
          */
@@ -862,7 +862,7 @@ export default function UiTest() {
         })
 
         /*
-         * @tc.number: uiTest_20021
+         * @tc.number: uiTest_20032
          * @tc.name: testTriggerCombineKeysWithId
          * @tc.desc: triggerCombineKeys test
          */
