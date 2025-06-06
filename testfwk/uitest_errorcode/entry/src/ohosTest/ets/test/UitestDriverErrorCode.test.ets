@@ -1057,10 +1057,31 @@ export default function uitestDriverErrorTest() {
         expect(e.code).assertEqual(ParameterErrorCode);
       }
       try {
+        await driver.dragBetween({x: -1, y: 100}, {x:200, y: 200});
+        expect().assertFail();
+      }catch (e) {
+        console.log(`${TestTag} test_driver_dragBetween_17000007, from.x=-1 error is: ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(ParameterErrorCode);
+      }
+      try {
+        await driver.dragBetween({x: 100, y: -1}, {x:200, y: 200});
+        expect().assertFail();
+      }catch (e) {
+        console.log(`${TestTag} test_driver_dragBetween_17000007, from.y=-1 error is: ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(ParameterErrorCode);
+      }
+      try {
+        await driver.dragBetween({x: 100, y: 100, displayId: -1}, {x:200, y: 200});
+        expect().assertFail();
+      }catch (e) {
+        console.log(`${TestTag} test_driver_dragBetween_17000007, from.displayId=-1 error is: ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(ParameterErrorCode);
+      }
+      try {
         await driver.dragBetween({x: 100, y: 100}, null);
         expect().assertFail();
       }catch (e) {
-        console.log(`${TestTag} test_driver_dragBetween_17000007, to to=null error is: ${JSON.stringify(e)}`);
+        console.log(`${TestTag} test_driver_dragBetween_17000007, to=null error is: ${JSON.stringify(e)}`);
         expect(e.code).assertEqual(ParameterErrorCode);
       }
       try {
@@ -1068,20 +1089,6 @@ export default function uitestDriverErrorTest() {
         expect().assertFail();
       }catch (e) {
         console.log(`${TestTag} test_driver_dragBetween_17000007, to=undefined error is: ${JSON.stringify(e)}`);
-        expect(e.code).assertEqual(ParameterErrorCode);
-      }
-      try {
-        await driver.dragBetween({x: -1, y: 100}, {x: 200, y: 200});
-        expect().assertFail();
-      }catch (e) {
-        console.log(`${TestTag} test_driver_dragBetween_17000007, from.x = -1 error is: ${JSON.stringify(e)}`);
-        expect(e.code).assertEqual(ParameterErrorCode);
-      }
-      try {
-        await driver.dragBetween({x: 100, y: -1}, {x: 200, y: 200});
-        expect().assertFail();
-      }catch (e) {
-        console.log(`${TestTag} test_driver_dragBetween_17000007, from.y = -1 error is: ${JSON.stringify(e)}`);
         expect(e.code).assertEqual(ParameterErrorCode);
       }
       try {
@@ -1099,10 +1106,24 @@ export default function uitestDriverErrorTest() {
         expect(e.code).assertEqual(ParameterErrorCode);
       }
       try {
+        await driver.dragBetween({x: 100, y: 100}, {x: 100, y: 100, displayId: -1});
+        expect().assertFail();
+      }catch (e) {
+        console.log(`${TestTag} test_driver_dragBetween_17000007, to.displayId = -1 error is: ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(ParameterErrorCode);
+      }
+      try {
         await driver.dragBetween({x: 100, y: 100}, {x: 100, y: 100}, 600, 1499);
         expect().assertFail();
       }catch (e) {
         console.log(`${TestTag} test_driver_dragBetween_17000007, duration = 1499 error is: ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(ParameterErrorCode);
+      }
+      try {
+        await driver.dragBetween({x: 100, y: 100, displayId: 0}, {x: 100, y: 100, displayId: 1});
+        expect().assertFail();
+      }catch (e) {
+        console.log(`${TestTag} test_driver_dragBetween_17000007, diffDis error is: ${JSON.stringify(e)}`);
         expect(e.code).assertEqual(ParameterErrorCode);
       }
       console.log(`${TestTag}, test_driver_dragBetween_17000007 end`);
@@ -1158,6 +1179,13 @@ export default function uitestDriverErrorTest() {
         console.log(`${TestTag}, test_driver_mouseLongClick_duration_401 duration=1499 error is: ${JSON.stringify(e)}`);
         expect(e.code).assertEqual(ErrorCode);
       }
+      try {
+        await driver.mouseLongClick({x: 100, y: 100, displayId: -1}, MouseButton.MOUSE_BUTTON_LEFT, 2072, 2073, 1600);
+        expect().assertFail();
+      }catch (e) {
+        console.log(`${TestTag}, test_driver_mouseLongClick_duration_401 p.displayId=-1 error is: ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(ErrorCode);
+      }
       console.log(`${TestTag}, test_driver_mouseLongClick_duration_401 end`);
     })
 
@@ -1210,14 +1238,22 @@ export default function uitestDriverErrorTest() {
         console.log(`${TestTag}, test_driver_inputTextMode_401 p.y=-1 error is: ${JSON.stringify(e)}`);
         expect(e.code).assertEqual(ErrorCode);
       }
-      await sleep(waitUiReadyMs * 5);
+      try {
+        await driver.inputText({x:100, y:100, displayId: -1}, '123456', {
+          paste: false
+        });
+        expect().assertFail();
+      }catch (e) {
+        console.log(`${TestTag}, test_driver_inputTextMode_401 p.displayId=-1 error is: ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(ErrorCode);
+      }
       console.log(`${TestTag}, test_driver_inputTextMode_401 end`);
     })
 
     /*
      * @tc.number: uitestDriverErrorTest_053
      * @tc.name: test_driver_inputTextMode_801
-     * @tc.desc: mouseLongClick inputText test.
+     * @tc.desc: inputText test.
      */
     it('test_driver_inputTextMode_801', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_driver_inputTextMode_801 start`);
@@ -1369,6 +1405,13 @@ export default function uitestDriverErrorTest() {
         expect(e.code).assertEqual(ParameterErrorCode);
       }
       try {
+        await driver.longClickAt({x: 100, y: 100, displayId: -1}, 1500);
+        expect().assertFail();
+      }catch (e) {
+        console.log(`${TestTag}, test_driver_longClickAt_17000007 point.displayId = -1 error is: ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(ParameterErrorCode);
+      }
+      try {
         await driver.longClickAt({x: 10000, y: 100}, 1500);
       }catch (e) {
         console.log(`${TestTag}, test_driver_longClickAt_17000007 point.X = 10000 error is: ${JSON.stringify(e)}`);
@@ -1380,6 +1423,7 @@ export default function uitestDriverErrorTest() {
         console.log(`${TestTag}, test_driver_longClickAt_17000007 point.y = 10000 error is: ${JSON.stringify(e)}`);
         expect().assertFail();
       }
+
       try {
         await driver.longClickAt({x: 100, y: 100}, 1499);
       }catch (e) {
@@ -1434,6 +1478,13 @@ export default function uitestDriverErrorTest() {
         expect(e.code).assertEqual(ErrorCode);
       }
       try {
+        await driver.mouseDrag({x:100, y:100, displayId: -1}, {x:200, y:200}, 600, 1800);
+        expect().assertFail();
+      }catch (e) {
+        console.log(`${TestTag}, test_driver_mouseDrag_22_401 from.displayId=-1 error is: ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(ErrorCode);
+      }
+      try {
         await driver.mouseDrag({x:100, y:100}, {x:-1, y:200}, 600, 1800);
         expect().assertFail();
       }catch (e) {
@@ -1448,6 +1499,13 @@ export default function uitestDriverErrorTest() {
         expect(e.code).assertEqual(ErrorCode);
       }
       try {
+        await driver.mouseDrag({x:100, y:100}, {x:100, y:100, displayId: -1}, 600, 1800);
+        expect().assertFail();
+      }catch (e) {
+        console.log(`${TestTag}, test_driver_mouseDrag_22_401 to.displayId=-1 error is: ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(ErrorCode);
+      }
+      try {
         await driver.mouseDrag({x:100, y:100}, {x:200, y:200}, 600, 1400);
         console.log(`${TestTag}, test_driver_mouseDrag_22_401 duration=1400 successful`);
         expect().assertFail();
@@ -1456,6 +1514,569 @@ export default function uitestDriverErrorTest() {
         expect(e.code).assertEqual(ErrorCode);
       }
       console.log(`${TestTag}, test_driver_mouseDrag_22_401 end`);
+    })
+
+    /*
+     * @tc.number: uitestDriverErrorTest_061
+     * @tc.name: test_driver_pressBackWithId_17000002
+     * @tc.desc: mouseDrag 17000002 test.
+     */
+    it("test_driver_pressBackWithId_17000002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.log(`${TestTag}, test_driver_pressBackWithId_17000002 start`);
+      try {
+        let driver: Driver = Driver.create();
+        driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
+        await driver.pressBack(0);
+        expect().assertFail();
+      } catch (e) {
+        console.log(`${TestTag}, test_driver_pressBackWithId_17000002 error is, ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(AsyncErrorCode);
+      }
+      await sleep(waitUiReadyMs * 5);
+      console.log(`${TestTag}, test_driver_pressBackWithId_17000002 end`);
+    })
+
+    /*
+     * @tc.number: uitestDriverErrorTest_062
+     * @tc.name: test_driver_pressBackWithId_17000007
+     * @tc.desc: mouseDrag 17000007 test.
+     */
+    it("test_driver_pressBackWithId_17000007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.log(`${TestTag}, test_driver_pressBackWithId_17000007 start`);
+      try {
+        let driver: Driver = Driver.create();
+        await driver.pressBack(-1);
+        expect().assertFail();
+      } catch (e) {
+        console.log(`${TestTag}, test_driver_pressBackWithId_17000007 error is, ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(ParameterErrorCode);
+      }
+      console.log(`${TestTag}, test_driver_pressBackWithId_17000007 end`);
+    })
+
+    /*
+     * @tc.number: uitestDriverErrorTest_063
+     * @tc.name: test_driver_triggerKeyWithId_17000002
+     * @tc.desc: mouseDrag 17000002 test.
+     */
+    it("test_driver_triggerKeyWithId_17000002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.log(`${TestTag}, test_driver_triggerKeyWithId_17000002 start`);
+      try {
+        let driver: Driver = Driver.create();
+        driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
+        await driver.triggerKey(2, 0);
+        expect().assertFail();
+      } catch (e) {
+        console.log(`${TestTag}, test_driver_triggerKeyWithId_17000002 error is, ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(AsyncErrorCode);
+      }
+      await sleep(waitUiReadyMs * 5);
+      console.log(`${TestTag}, test_driver_triggerKeyWithId_17000002 end`);
+    })
+
+    /*
+     * @tc.number: uitestDriverErrorTest_064
+     * @tc.name: test_driver_triggerCombineKeysWithId_17000002
+     * @tc.desc: triggerCombineKeys 17000002 test.
+     */
+    it("test_driver_triggerCombineKeysWithId_17000002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.log(`${TestTag}, test_driver_triggerCombineKeysWithId_17000002 start`);
+      try {
+        let driver: Driver = Driver.create();
+        driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
+        await driver.triggerCombineKeys(2, 2072, 2017, 0);
+        expect().assertFail();
+      } catch (e) {
+        console.log(`${TestTag}, test_driver_triggerCombineKeysWithId_17000002 error is, ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(AsyncErrorCode);
+      }
+      await sleep(waitUiReadyMs * 5);
+      console.log(`${TestTag}, test_driver_triggerCombineKeysWithId_17000002 end`);
+    })
+
+    /*
+     * @tc.number: uitestDriverErrorTest_065
+     * @tc.name: test_driver_screenCapWithId_17000002
+     * @tc.desc: screenCap 17000002 test.
+     */
+    it("test_driver_screenCapWithId_17000002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.log(`${TestTag}, test_driver_screenCapWithId_17000002 start`);
+      try {
+        let driver: Driver = Driver.create();
+        driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
+        await driver.screenCap('/data/storage/el2/base/cache/1.png', 0);
+        expect().assertFail();
+      } catch (e) {
+        console.log(`${TestTag}, test_driver_screenCapWithId_17000002 error is, ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(AsyncErrorCode);
+      }
+      await sleep(waitUiReadyMs * 5);
+      console.log(`${TestTag}, test_driver_screenCapWithId_17000002 end`);
+    })
+
+    /*
+     * @tc.number: uitestDriverErrorTest_066
+     * @tc.name: test_driver_getDisplayRotationWithId_17000002
+     * @tc.desc: getDisplayRotation 17000002 test.
+     */
+    it("test_driver_getDisplayRotationWithId_17000002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.log(`${TestTag}, test_driver_getDisplayRotationWithId_17000002 start`);
+      try {
+        let driver: Driver = Driver.create();
+        driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
+        await driver.getDisplayRotation(0);
+        expect().assertFail();
+      } catch (e) {
+        console.log(`${TestTag}, test_driver_getDisplayRotationWithId_17000002 error is, ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(AsyncErrorCode);
+      }
+      await sleep(waitUiReadyMs * 5);
+      console.log(`${TestTag}, test_driver_getDisplayRotationWithId_17000002 end`);
+    })
+
+    /*
+     * @tc.number: uitestDriverErrorTest_067
+     * @tc.name: test_driver_getDisplayRotationWithId_17000007
+     * @tc.desc: getDisplayRotation 17000007 test.
+     */
+    it("test_driver_getDisplayRotationWithId_17000007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.log(`${TestTag}, test_driver_getDisplayRotationWithId_17000007 start`);
+      try {
+        let driver: Driver = Driver.create();
+        await driver.getDisplayRotation(-1);
+        expect().assertFail();
+      } catch (e) {
+        console.log(`${TestTag}, test_driver_getDisplayRotationWithId_17000007 error is, ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(ParameterErrorCode);
+      }
+      console.log(`${TestTag}, test_driver_getDisplayRotationWithId_17000007 end`);
+    })
+
+    /*
+     * @tc.number: uitestDriverErrorTest_068
+     * @tc.name: test_driver_getDisplaySizeWithId_17000002
+     * @tc.desc: getDisplaySize 17000002 test.
+     */
+    it("test_driver_getDisplaySizeWithId_17000002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.log(`${TestTag}, test_driver_getDisplaySizeWithId_17000002 start`);
+      try {
+        let driver: Driver = Driver.create();
+        driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
+        await driver.getDisplaySize(0);
+        expect().assertFail();
+      } catch (e) {
+        console.log(`${TestTag}, test_driver_getDisplaySizeWithId_17000002 error is, ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(AsyncErrorCode);
+      }
+      await sleep(waitUiReadyMs * 5);
+      console.log(`${TestTag}, test_driver_getDisplaySizeWithId_17000002 end`);
+    })
+
+    /*
+     * @tc.number: uitestDriverErrorTest_069
+     * @tc.name: test_driver_getDisplaySizeWithId_17000007
+     * @tc.desc: getDisplayRotation 17000007 test.
+     */
+    it("test_driver_getDisplaySizeWithId_17000007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.log(`${TestTag}, test_driver_getDisplaySizeWithId_17000007 start`);
+      try {
+        let driver: Driver = Driver.create();
+        await driver.getDisplaySize(-1);
+        expect().assertFail();
+      } catch (e) {
+        console.log(`${TestTag}, test_driver_getDisplaySizeWithId_17000007 error is, ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(ParameterErrorCode);
+      }
+      console.log(`${TestTag}, test_driver_getDisplaySizeWithId_17000007 end`);
+    })
+
+    /*
+     * @tc.number: uitestDriverErrorTest_070
+     * @tc.name: test_driver_getDisplayDensityWithId_17000002
+     * @tc.desc: getDisplayDensity 17000002 test.
+     */
+    it("test_driver_getDisplayDensityWithId_17000002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.log(`${TestTag}, test_driver_getDisplayDensityWithId_17000002 start`);
+      try {
+        let driver: Driver = Driver.create();
+        driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
+        await driver.getDisplayDensity(0);
+        expect().assertFail();
+      } catch (e) {
+        console.log(`${TestTag}, test_driver_getDisplayDensityWithId_17000002 error is, ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(AsyncErrorCode);
+      }
+      await sleep(waitUiReadyMs * 5);
+      console.log(`${TestTag}, test_driver_getDisplayDensityWithId_17000002 end`);
+    })
+
+    /*
+     * @tc.number: uitestDriverErrorTest_071
+     * @tc.name: test_driver_getDisplayDensityWithId_17000007
+     * @tc.desc: getDisplayDensity 17000007 test.
+     */
+    it("test_driver_getDisplayDensityWithId_17000007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.log(`${TestTag}, test_driver_getDisplayDensityWithId_17000007 start`);
+      try {
+        let driver: Driver = Driver.create();
+        await driver.getDisplayDensity(-1);
+        expect().assertFail();
+      } catch (e) {
+        console.log(`${TestTag}, test_driver_getDisplayDensityWithId_17000007 error is, ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(ParameterErrorCode);
+      }
+      console.log(`${TestTag}, test_driver_getDisplayDensityWithId_17000007 end`);
+    })
+
+    /*
+     * @tc.number: uitestDriverErrorTest_072
+     * @tc.name: test_driver_pressHomeWithId_17000002
+     * @tc.desc: pressHome 17000002 test.
+     */
+    it("test_driver_pressHomeWithId_17000002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.log(`${TestTag}, test_driver_pressHomeWithId_17000002 start`);
+      try {
+        let driver: Driver = Driver.create();
+        driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
+        await driver.pressHome(0);
+        expect().assertFail();
+      } catch (e) {
+        console.log(`${TestTag}, test_driver_pressHomeWithId_17000002 error is, ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(AsyncErrorCode);
+      }
+      await sleep(waitUiReadyMs * 5);
+      console.log(`${TestTag}, test_driver_pressHomeWithId_17000002 end`);
+    })
+
+    /*
+     * @tc.number: uitestDriverErrorTest_073
+     * @tc.name: test_driver_pressHomeWithId_17000007
+     * @tc.desc: pressHome 17000007 test.
+     */
+    it("test_driver_pressHomeWithId_17000007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.log(`${TestTag}, test_driver_pressHomeWithId_17000007 start`);
+      try {
+        let driver: Driver = Driver.create();
+        await driver.pressHome(-1);
+        expect().assertFail();
+      } catch (e) {
+        console.log(`${TestTag}, test_driver_pressHomeWithId_17000007 error is, ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(ParameterErrorCode);
+      }
+      console.log(`${TestTag}, test_driver_pressHomeWithId_17000007 end`);
+    })
+
+    /*
+     * @tc.number: uitestDriverErrorTest_074
+     * @tc.name: test_driver_ClickAt_17000002
+     * @tc.desc: ClickAt 17000002 test.
+     */
+    it('test_driver_ClickAt_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.log(`${TestTag}, test_driver_ClickAt_17000002 start`);
+      try {
+        let driver: Driver = Driver.create();
+        driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
+        await driver.clickAt({x: 100, y: 100});
+        expect().assertFail();
+      }catch (e) {
+        console.log(`${TestTag}, test_driver_ClickAt_17000002 error is: ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(AsyncErrorCode);
+      }
+      await sleep(waitUiReadyMs * 5);
+      console.log(`${TestTag}, test_driver_ClickAt_17000002 end`);
+    })
+
+    /*
+     * @tc.number: uitestDriverErrorTest_075
+     * @tc.name: test_driver_ClickAt_17000007
+     * @tc.desc: ClickAt 17000007 test.
+     */
+    it('test_driver_ClickAt_17000007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.log(`${TestTag}, test_driver_ClickAt_17000007 start`);
+      let driver: Driver = Driver.create();
+      try {
+        await driver.clickAt(null);
+        expect().assertFail();
+      }catch (e) {
+        console.log(`${TestTag}, test_driver_ClickAt_17000007 null error is: ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(ParameterErrorCode);
+      }
+      try {
+        await driver.clickAt(undefined);
+        expect().assertFail();
+      }catch (e) {
+        console.log(`${TestTag}, test_driver_ClickAt_17000007 undefined error is: ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(ParameterErrorCode);
+      }
+      try {
+        await driver.clickAt({x: -1, y:100});
+        expect().assertFail();
+      }catch (e) {
+        console.log(`${TestTag}, test_driver_ClickAt_17000007 point.x=-1 error is: ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(ParameterErrorCode);
+      }
+      try {
+        await driver.clickAt({x: 100, y:-1});
+        expect().assertFail();
+      }catch (e) {
+        console.log(`${TestTag}, test_driver_ClickAt_17000007 point.y = -1 error is: ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(ParameterErrorCode);
+      }
+      try {
+        await driver.clickAt({x: 100, y: 100, displayId: -1});
+        expect().assertFail();
+      }catch (e) {
+        console.log(`${TestTag}, test_driver_longClickAt_17000007 point.displayId = -1 error is: ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(ParameterErrorCode);
+      }
+      console.log(`${TestTag}, test_driver_longClickAt_17000007 end`);
+    })
+
+    /*
+     * @tc.number: uitestDriverErrorTest_076
+     * @tc.name: test_driver_flingWithId_17000002
+     * @tc.desc: fling 17000002 test.
+     */
+    it("test_driver_flingWithId_17000002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.log(`${TestTag}, test_driver_flingWithId_17000002 start`);
+      try {
+        let driver: Driver = Driver.create();
+        driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
+        await driver.fling(UiDirection.DOWN, 10000, 0);
+        expect().assertFail();
+      } catch (e) {
+        console.log(`${TestTag}, test_driver_flingWithId_17000002 error is, ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(AsyncErrorCode);
+      }
+      await sleep(waitUiReadyMs * 5);
+      console.log(`${TestTag}, test_driver_flingWithId_17000002 end`);
+    })
+
+    /*
+     * @tc.number: uitestDriverErrorTest_079
+     * @tc.name: test_driver_DoubleClickAt_17000002
+     * @tc.desc: doubleClickAt 17000002 test.
+     */
+    it('test_driver_DoubleClickAt_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.log(`${TestTag}, test_driver_DoubleClickAt_17000002 start`);
+      try {
+        let driver: Driver = Driver.create();
+        driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
+        await driver.doubleClickAt({x: 100, y: 100});
+        expect().assertFail();
+      }catch (e) {
+        console.log(`${TestTag}, test_driver_DoubleClickAt_17000002 error is: ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(AsyncErrorCode);
+      }
+      await sleep(waitUiReadyMs * 5);
+      console.log(`${TestTag}, test_driver_DoubleClickAt_17000002 end`);
+    })
+
+    /*
+     * @tc.number: uitestDriverErrorTest_080
+     * @tc.name: test_driver_DoubleClickAt_17000007
+     * @tc.desc: doubleClickAt 17000007 test.
+     */
+    it('test_driver_DoubleClickAt_17000007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.log(`${TestTag}, test_driver_DoubleClickAt_17000007 start`);
+      let driver: Driver = Driver.create();
+      try {
+        await driver.doubleClickAt(null);
+        expect().assertFail();
+      }catch (e) {
+        console.log(`${TestTag}, test_driver_DoubleClickAt_17000007 null error is: ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(ParameterErrorCode);
+      }
+      try {
+        await driver.doubleClickAt(undefined);
+        expect().assertFail();
+      }catch (e) {
+        console.log(`${TestTag}, test_driver_DoubleClickAt_17000007 undefined error is: ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(ParameterErrorCode);
+      }
+      try {
+        await driver.doubleClickAt({x: -1, y:100});
+        expect().assertFail();
+      }catch (e) {
+        console.log(`${TestTag}, test_driver_DoubleClickAt_17000007 point.x=-1 error is: ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(ParameterErrorCode);
+      }
+      try {
+        await driver.doubleClickAt({x: 100, y:-1});
+        expect().assertFail();
+      }catch (e) {
+        console.log(`${TestTag}, test_driver_DoubleClickAt_17000007 point.y = -1 error is: ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(ParameterErrorCode);
+      }
+      try {
+        await driver.doubleClickAt({x: 100, y: 100, displayId: -1});
+        expect().assertFail();
+      }catch (e) {
+        console.log(`${TestTag}, test_driver_DoubleClickAt_17000007 point.displayId = -1 error is: ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(ParameterErrorCode);
+      }
+      console.log(`${TestTag}, test_driver_DoubleClickAt_17000007 end`);
+    })
+
+
+    /*
+     * @tc.number: uitestDriverErrorTest_081
+     * @tc.name: test_driver_swipeBetween_17000002
+     * @tc.desc: swipeBetween 17000002 test.
+     */
+    it('test_driver_swipeBetween_17000002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.log(`${TestTag}, test_driver_swipeBetween_17000002 start`);
+      try {
+        let driver: Driver = Driver.create();
+        driver.delayMs(waitUiReadyMs * 3);
+        await sleep(100);
+        await driver.swipeBetween({x: 100, y: 100}, {x: 100, y: 100});
+        expect().assertFail();
+      }catch (e) {
+        console.log(`${TestTag}, test_driver_swipeBetween_17000002 error is: ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(AsyncErrorCode);
+      }
+      await sleep(waitUiReadyMs * 5);
+      console.log(`${TestTag}, test_driver_swipeBetween_17000002 end`);
+    })
+
+    /*
+     * @tc.number: uitestDriverErrorTest_082
+     * @tc.name: test_driver_DoubleClickAt_17000007
+     * @tc.desc: swipeBetween 17000007 test.
+     */
+    it('test_driver_swipeBetween_17000007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.log(`${TestTag}, test_driver_swipeBetween_17000007 start`);
+      let driver: Driver = Driver.create();
+      try {
+        await driver.swipeBetween(null,{x: 100, y: 100});
+        expect().assertFail();
+      }catch (e) {
+        console.log(`${TestTag}, test_driver_swipeBetween_17000007 from = null error is: ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(ParameterErrorCode);
+      }
+      try {
+        await driver.swipeBetween(undefined, {x: 100, y: 100});
+        expect().assertFail();
+      }catch (e) {
+        console.log(`${TestTag}, test_driver_swipeBetween_17000007 from = undefined error is: ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(ParameterErrorCode);
+      }
+      try {
+        await driver.swipeBetween({x: -1, y:100}, {x: 100, y: 100});
+        expect().assertFail();
+      }catch (e) {
+        console.log(`${TestTag}, test_driver_swipeBetween_17000007 from.x=-1 error is: ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(ParameterErrorCode);
+      }
+      try {
+        await driver.swipeBetween({x: 100, y:-1}, {x: 100, y: 100});
+        expect().assertFail();
+      }catch (e) {
+        console.log(`${TestTag}, test_driver_swipeBetween_17000007 from.y=-1 error is: ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(ParameterErrorCode);
+      }
+      try {
+        await driver.swipeBetween({x: 100, y:100, displayId: -1}, {x: 100, y: 100});
+        expect().assertFail();
+      }catch (e) {
+        console.log(`${TestTag}, test_driver_swipeBetween_17000007 from.displayId=-1 error is: ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(ParameterErrorCode);
+      }
+      try {
+        await driver.swipeBetween({x: 100, y:100}, null);
+        expect().assertFail();
+      }catch (e) {
+        console.log(`${TestTag}, test_driver_swipeBetween_17000007 to=null error is: ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(ParameterErrorCode);
+      }
+      try {
+        await driver.swipeBetween({x: 100, y:100}, undefined);
+        expect().assertFail();
+      }catch (e) {
+        console.log(`${TestTag}, test_driver_swipeBetween_17000007 to=undefined error is: ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(ParameterErrorCode);
+      }
+      try {
+        await driver.swipeBetween({x: 100, y:100}, {x:-1, y: 100});
+        expect().assertFail();
+      }catch (e) {
+        console.log(`${TestTag}, test_driver_swipeBetween_17000007 to.x=-1 error is: ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(ParameterErrorCode);
+      }
+      try {
+        await driver.swipeBetween({x: 100, y:100}, {x:100, y: -1});
+        expect().assertFail();
+      }catch (e) {
+        console.log(`${TestTag}, test_driver_swipeBetween_17000007 to.y=-1 error is: ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(ParameterErrorCode);
+      }
+      try {
+        await driver.swipeBetween({x: 100, y:100}, {x:100, y: 100, displayId: -1});
+        expect().assertFail();
+      }catch (e) {
+        console.log(`${TestTag}, test_driver_swipeBetween_17000007 to.displayId=-1 error is: ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(ParameterErrorCode);
+      }
+      try {
+        await driver.swipeBetween({x: 100, y:100}, {x:100, y: 100}, -1);
+        expect().assertFail();
+      }catch (e) {
+        console.log(`${TestTag}, test_driver_swipeBetween_17000007 speed=-1 error is: ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(ParameterErrorCode);
+      }
+      try {
+        await driver.swipeBetween({x: 100, y:100, displayId: 0}, {x:100, y: 100, displayId: 1});
+        expect().assertFail();
+      }catch (e) {
+        console.log(`${TestTag}, test_driver_swipeBetween_17000007 diff error is: ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(ParameterErrorCode);
+      }
+      console.log(`${TestTag}, test_driver_swipeBetween_17000007 end`);
+    })
+
+    /*
+     * @tc.number: uitestDriverErrorTest_083
+     * @tc.name: test_driver_screenCapWithId_401
+     * @tc.desc: screenCap 401 test.
+     */
+    it("test_driver_screenCapWithId_401", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.log(`${TestTag}, test_driver_screenCapWithId_401 start`);
+      let driver: Driver = Driver.create();
+      try {
+        await driver.screenCap(null, 0);
+        expect().assertFail();
+      } catch (error) {
+        console.log(`${TestTag}, test_driver_screenCapWithId_401 savePath = null error, ${JSON.stringify(error)} `);
+        expect(error.code).assertEqual(ErrorCode)
+      }
+      try {
+        await driver.screenCap(undefined, 0);
+        expect().assertFail();
+      } catch (error) {
+        console.log(`${TestTag}, test_driver_screenCapWithId_401 savePath = undefined error, ${JSON.stringify(error)} `);
+        expect(error.code).assertEqual(ErrorCode)
+      }
+      try {
+        let savePath = '/data/storage/el2/base/cache/1.png'
+        await driver.screenCap(savePath, -1);
+        console.log(`${TestTag}, test_driver_screenCapWithId_401 displayId = -1 SUCCESS `)
+        expect().assertFail();
+      } catch (error) {
+        console.log(`${TestTag}, test_driver_screenCapWithId_401 displayId = -1 error, ${JSON.stringify(error)} `);
+        expect(error.code).assertEqual(ErrorCode)
+      }
     })
   })
 }
