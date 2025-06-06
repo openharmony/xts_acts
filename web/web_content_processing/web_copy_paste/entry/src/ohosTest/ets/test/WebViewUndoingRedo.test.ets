@@ -92,8 +92,8 @@ export default function ActswebviewUndoingRedo() {
 
     /*
     * @tc.number      : SUB_ACE_WEBVIEWUNDOINGREDO_API_0002
-    * @tc.name        : testWebviewUndoingRedo
-    * @tc.desc        : testWebviewUndoingRedo
+    * @tc.name        : testWebviewUndoingRedo002
+    * @tc.desc        : testWebviewUndoingRedo002
     * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 0
