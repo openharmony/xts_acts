@@ -1,0 +1,64 @@
+### 注意事项
+
+#### 1 上库工程迁移
+
+0528模板前工程迁移，网址：https://gitee.com/openharmony/xts_acts/tree/OpenHarmony_feature_20250328/README_migrate0528.md
+
+0603，0604模板前工程迁移，网址：https://gitee.com/openharmony/xts_acts/tree/OpenHarmony_feature_20250328/README_migrate0604.md
+
+#### 2 hypium文件夹，本地验证时需下载存放，上库时需要将hypium文件夹删除掉
+
+#### 3 工程中使用syscap.json，需要将module.json5中红圈改成如图所示
+
+![输入图片说明](/figures/images1.2/8990023F-CB7E-4661-B9EA-E582A0242D5A.png)
+
+#### 4 工程中使用app.json5中的bundleName字段不能使用com.example.helloworld，bundleName位置如下图
+
+![输入图片说明](/figures/images1.2/5C1C0DA1-3208-4CD5-B31D-D52A40E618D0.png)
+
+#### 5 目录命名
+
+注意事项下图所示:(3)既是工程目录名，其中（1）（2）属于子系统名和组件名，不能修改
+
+![输入图片说明](/figures/images1.2/122733EE-A6A0-4BEF-8C59-F66BAD0739EF.png)
+
+|arkts类型|示例1|示例2|示例3|
+|-|-|-|-|
+|1.1|ActsAmsUsersThirdTest|ace_web_page_saving_dev_three|actscreatemodulecontexttest|
+|1.2|ActsAmsUsersThirdTest[***Static***]()|ace_web_page_saving_dev_three_[***static***]()|actscreatemodulecontexttest[***static***]()|
+|互操作|ActsAmsUsersThirdTest[***Interop***]()|ace_web_page_saving_dev_three_[***interop***]()|actscreatemodulecontexttest[***interop***]()|
+
+#### 7 bundlename命名
+
+![输入图片说明](/figures/images1.2/5C1C0DA1-3208-4CD5-B31D-D52A40E618D0.png)
+
+|arkts类型|示例|
+|-|-|
+|1.1|com.open.harmony.actsacewebpagesavtest|
+|1.2|com.open.harmony.actsacewebpagesavtest.[***Static***]()|
+|互操作|com.open.harmony.actsacewebpagesavtest.[***Interop***]()|
+
+#### 8 hap_name/targetname/ohos_js_app_static_suite("目标名")命名
+
+![输入图片说明](/figures/images1.2/40A6E21A-582A-4E7F-8AC8-14CB35B1F15B.png)
+
+> 注意：因CodeCheck使用Acts.*Test校验hap_name，所以static不能附加在尾部，否则会被门禁拦截
+
+
+|arkts类型|示例|
+|-|-|
+|1.1|ActsFaMyApplication1Test|
+|1.2|ActsFaMyApplication1[***Static***]()Test|
+|互操作|ActsFaMyApplication1[***Interop***]()Test|
+
+#### 9 BUILD.gn文件由于当前ohosTest不能使用，故test_hap字段需注释
+
+![输入图片说明](/figures/images1.2/2F962E71-41E3-4529-C392-AA15B944208D.png)
+
+#### 10 BUILD.gn必须使用1.2模板名ohos_js_app_static_suite，否则编译环境是1.1
+
+![输入图片说明](/figures/images1.2/91B25DE1-5955-4851-B84E-3E20F8F5B429.png)
+
+注意：part_name = "自己子系统组件名"
+     subsystem_name = "自己子系统名"
+
