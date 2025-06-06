@@ -9,6 +9,11 @@
     "MainAbility/pages/Text/ResourceModifier",
     "MainAbility/pages/Text/TextStrokeTest",
     "MainAbility/pages/Text/StyledStringStrokeTest",
-    "MainAbility/pages/TextInput/TextInputEnableAutoFillAnimation"
+    "MainAbility/pages/Text/TextEnableAutoSpacing",
+    "MainAbility/pages/Search/SearchEnableAutoSpacing",
+    "MainAbility/pages/TextArea/TextAreaEnableAutoSpacing",
+    "MainAbility/pages/TextInput/TextInputEnableAutoSpacing",
+    "MainAbility/pages/TextInput/TextInputEnableAutoFillAnimation",
+    "MainAbility/pages/TextArea/TextAreaMinLines"
   ]
 }
