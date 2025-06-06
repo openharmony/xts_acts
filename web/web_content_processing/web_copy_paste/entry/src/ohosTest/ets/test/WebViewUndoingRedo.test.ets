@@ -14,7 +14,7 @@
  */
 import { beforeAll, afterEach, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
-import Utils from './Utils';
+import Utils from './Utils.test';
 import router from '@ohos.router';
 import { accessibility, config } from '@kit.AccessibilityKit';
 const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
@@ -77,8 +77,8 @@ export default function ActswebviewUndoingRedo() {
 
     /*
     * @tc.number      : SUB_ACE_WEBVIEWUNDOINGREDO_API_0001
-    * @tc.name        : test testWebviewUndoingRedo
-    * @tc.desc        : test testWebviewUndoingRedo
+    * @tc.name        : testWebviewUndoingRedo
+    * @tc.desc        : testWebviewUndoingRedo
     * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 0
@@ -92,8 +92,8 @@ export default function ActswebviewUndoingRedo() {
 
     /*
     * @tc.number      : SUB_ACE_WEBVIEWUNDOINGREDO_API_0002
-    * @tc.name        : test testWebviewUndoingRedo
-    * @tc.desc        : test testWebviewUndoingRedo
+    * @tc.name        : testWebviewUndoingRedo
+    * @tc.desc        : testWebviewUndoingRedo
     * @tc.size        : MediumTest
     * @tc.type        : Function
     * @tc.level       : Level 0
