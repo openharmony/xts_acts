@@ -32,3 +32,29 @@ export const registerDisplayChange: (callback: Function) => number;
 export const unregisterDisplayChange: (registerIndex: number) => number;
 export const registerFoldDisplayModeChange: (callback: Function) => number;
 export const unregisterFoldDisplayModeChange: (registerIndex: number) => number;
+
+export interface myObj {
+  errcode: number;
+  left: number;
+  top: number;
+  width: number;
+  height: number;
+}
+export const createAvailableArea: () => myObj;
+export const createAvailableArea_ErrCode140004: () => number;
+export const destroyAvailableArea: () => number;
+export const getDisplaySourceMode_1: () => number;
+export const getDisplaySourceMode_2: (id: number) => number;
+export const getDisplaySourceMode_4: (id: number) => number;
+export const getDisplaySourceMode_ErrCode140004: () => number;
+export const getDisplayPosition: () => number;
+export const getDisplayPosition_ErrCode140004: () => number;
+export const registerAvailableAreaChangeListener: (registerIndex: number) => number;
+export const unregisterAvailableAreaChangeListener: (registerIndex: number) => number;
+export const unregisterAvailableAreaChangeListener_ErrCode140003: (registerIndex: number) => number;
+export const registerDisplayAddListener: (registerIndex: number) => number;
+export const unregisterDisplayAddListener: (registerIndex: number) => number;
+export const unregisterDisplayAddListener_ErrCode140003: (registerIndex: number) => number;
+export const registerDisplayRemoveListener: (registerIndex: number) => number;
+export const unregisterDisplayRemoveListener: (registerIndex: number) => number;
+export const registerDisplayRemoveListener_ErrCode140003: (registerIndex: number) => number;

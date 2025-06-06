@@ -376,6 +376,292 @@ static napi_value UnregisterFoldDisplayModeChangeListener(napi_env env, napi_cal
     return errorCode;
 }
 
+static napi_value CreateAvailableArea(napi_env env, napi_callback_info info)
+{
+    NativeDisplayManager_Rect *availableAreaInfo;
+    NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_CreateAvailableArea(0, &availableAreaInfo);
+    OH_LOG_INFO(LOG_APP, "errorCode=%{public}d", errCode);
+    OH_LOG_INFO(LOG_APP, "left=%{public}d", availableAreaInfo->left);
+    OH_LOG_INFO(LOG_APP, "top=%{public}d", availableAreaInfo->top);
+    OH_LOG_INFO(LOG_APP, "width=%{public}d", availableAreaInfo->width);
+    OH_LOG_INFO(LOG_APP, "height=%{public}d", availableAreaInfo->height);
+    napi_value result;
+    napi_create_object(env, &result);
+    napi_value errorCode;
+    napi_create_int32(env, errCode, &errorCode);
+    napi_set_named_property(env, result, "errcode", errorCode);
+    napi_value left;
+    napi_create_int32(env, availableAreaInfo->left, &left);
+    napi_set_named_property(env, result, "left", left);
+    napi_value top;
+    napi_create_int32(env, availableAreaInfo->top, &top);
+    napi_set_named_property(env, result, "top", top);
+    napi_value width;
+    napi_create_int32(env, availableAreaInfo->width, &width);
+    napi_set_named_property(env, result, "width", width);
+    napi_value height;
+    napi_create_int32(env, availableAreaInfo->height, &height);
+    napi_set_named_property(env, result, "height", height);
+    return result;
+}
+
+static napi_value CreateAvailableArea_ErrCode140004(napi_env env, napi_callback_info info)
+{
+    NativeDisplayManager_Rect *availableAreaInfo;
+    NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_CreateAvailableArea(-1, &availableAreaInfo);
+    OH_LOG_INFO(LOG_APP, "errorCode=%{public}d", errCode);
+    napi_value errorCode;
+    napi_create_int32(env, errCode, &errorCode);
+    return errorCode;
+}
+
+static napi_value DestroyAvailableArea(napi_env env, napi_callback_info info)
+{
+    NativeDisplayManager_Rect *availableAreaInfo;
+    OH_NativeDisplayManager_CreateAvailableArea(0, &availableAreaInfo);
+    NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_DestroyAvailableArea(availableAreaInfo);
+    OH_LOG_INFO(LOG_APP, "errorCode=%{public}d", errCode);
+    napi_value errorCode;
+    napi_create_int32(env, errCode, &errorCode);
+    return errorCode;
+}
+
+static napi_value GetDisplaySourceMode_1(napi_env env, napi_callback_info info)
+{
+   NativeDisplayManager_SourceMode displaySourceMode;
+   NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_GetDisplaySourceMode(0, &displaySourceMode);
+    OH_LOG_INFO(LOG_APP, "errorCode=%{public}d", errCode);
+    napi_value result;
+    if (errCode != 0) {
+        napi_create_int32(env, errCode, &result);
+    } else {
+        OH_LOG_INFO(LOG_APP, "displaySourceMode=%{public}d", displaySourceMode);
+        napi_create_int32(env, displaySourceMode, &result);
+    }
+    return result;
+}
+
+static napi_value GetDisplaySourceMode_2(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = { nullptr };
+    int64_t displayId;
+    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+    napi_get_value_int64(env, args[0], &displayId);
+    OH_LOG_INFO(LOG_APP, "displayId =%{public}d.", displayId);
+    NativeDisplayManager_SourceMode displaySourceMode;
+    NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_GetDisplaySourceMode(displayId, &displaySourceMode);
+    OH_LOG_INFO(LOG_APP, "errorCode=%{public}d", errCode);
+    napi_value result;
+    if (errCode != 0) {
+        napi_create_int32(env, errCode, &result);
+    } else {
+        OH_LOG_INFO(LOG_APP, "displaySourceMode=%{public}d", displaySourceMode);
+        napi_create_int32(env, displaySourceMode, &result);
+    }
+    return result;
+}
+
+static napi_value GetDisplaySourceMode_4(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = { nullptr };
+    int64_t displayId;
+    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+    napi_get_value_int64(env, args[0], &displayId);
+    OH_LOG_INFO(LOG_APP, "displayId =%{public}d.", displayId);
+    NativeDisplayManager_SourceMode displaySourceMode;
+    NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_GetDisplaySourceMode(displayId, &displaySourceMode);
+    OH_LOG_INFO(LOG_APP, "errorCode=%{public}d", errCode);
+    napi_value result;
+    if (errCode != 0) {
+        napi_create_int32(env, errCode, &result);
+    } else {
+        OH_LOG_INFO(LOG_APP, "displaySourceMode=%{public}d", displaySourceMode);
+        napi_create_int32(env, displaySourceMode, &result);
+    }
+    return result;
+}
+
+static napi_value GetDisplaySourceMode_ErrCode140004(napi_env env, napi_callback_info info)
+{
+    NativeDisplayManager_SourceMode displaySourceMode;
+    NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_GetDisplaySourceMode(-1, &displaySourceMode);
+    OH_LOG_INFO(LOG_APP, "errorCode=%{public}d", errCode);
+    napi_value errorCode;
+    napi_create_int32(env, errCode, &errorCode);
+    return errorCode;
+}
+
+static napi_value GetDisplayPosition(napi_env env, napi_callback_info info)
+{
+    int32_t x;
+    int32_t y;
+    uint64_t displayId = 0;
+    NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_GetDisplayPosition(displayId, &x, &y);
+    OH_LOG_INFO(LOG_APP, "errorCode=%{public}d", errCode);
+    OH_LOG_INFO(LOG_APP, "x=%{public}d", x);
+    OH_LOG_INFO(LOG_APP, "y=%{public}d", y);
+    napi_value errorCode;
+    napi_create_int32(env, errCode, &errorCode);
+    return errorCode;
+}
+
+static napi_value GetDisplayPosition_ErrCode140004(napi_env env, napi_callback_info info)
+{
+    int32_t x;
+    int32_t y;
+    uint64_t displayId = -1;
+    NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_GetDisplayPosition(displayId, &x, &y);
+    OH_LOG_INFO(LOG_APP, "errorCode=%{public}d", errCode);
+    OH_LOG_INFO(LOG_APP, "x=%{public}d", x);
+    OH_LOG_INFO(LOG_APP, "y=%{public}d", y);
+    napi_value errorCode;
+    napi_create_int32(env, errCode, &errorCode);
+    return errorCode;
+}
+
+static napi_value RegisterAvailableAreaChangeListener(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = { nullptr };
+    uint32_t listenerIndex;
+    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+    napi_get_value_uint32(env, args[0], &listenerIndex);
+    OH_LOG_INFO(LOG_APP, "listenerIndex =%{public}d.", listenerIndex);
+    NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_RegisterAvailableAreaChangeListener(
+       DisplayChangeCallback, &listenerIndex);
+    OH_LOG_INFO(LOG_APP, "errorCode=%{public}d", errCode);
+    napi_value errorCode;
+    napi_create_int32(env, errCode, &errorCode);
+    return errorCode;
+}
+
+static napi_value UnregisterAvailableAreaChangeListener(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = { nullptr };
+    uint32_t listenerIndex;
+    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+    napi_get_value_uint32(env, args[0], &listenerIndex);
+    OH_LOG_INFO(LOG_APP, "listenerIndex =%{public}d.", listenerIndex);
+    OH_NativeDisplayManager_RegisterAvailableAreaChangeListener(DisplayChangeCallback, &listenerIndex);
+    NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_UnregisterAvailableAreaChangeListener(listenerIndex);
+    OH_LOG_INFO(LOG_APP, "errorCode=%{public}d", errCode);
+    napi_value errorCode;
+    napi_create_int32(env, errCode, &errorCode);
+    return errorCode;
+}
+
+static napi_value UnregisterAvailableAreaChangeListener_ErrCode140003(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = { nullptr };
+    uint32_t listenerIndex;
+    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+    napi_get_value_uint32(env, args[0], &listenerIndex);
+    OH_LOG_INFO(LOG_APP, "listenerIndex =%{public}d.", listenerIndex);
+    NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_UnregisterAvailableAreaChangeListener(listenerIndex);
+    OH_LOG_INFO(LOG_APP, "errorCode=%{public}d", errCode);
+    napi_value errorCode;
+    napi_create_int32(env, errCode, &errorCode);
+    return errorCode;
+}
+
+static napi_value RegisterDisplayAddListener(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = { nullptr };
+    uint32_t listenerIndex;
+    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+    napi_get_value_uint32(env, args[0], &listenerIndex);
+    OH_LOG_INFO(LOG_APP, "listenerIndex =%{public}d.", listenerIndex);
+    NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_RegisterDisplayAddListener(
+       DisplayChangeCallback, &listenerIndex);
+    OH_LOG_INFO(LOG_APP, "errorCode=%{public}d", errCode);
+    napi_value errorCode;
+    napi_create_int32(env, errCode, &errorCode);
+    return errorCode;
+}
+
+static napi_value UnregisterDisplayAddListener(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = { nullptr };
+    uint32_t listenerIndex;
+    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+    napi_get_value_uint32(env, args[0], &listenerIndex);
+    OH_LOG_INFO(LOG_APP, "listenerIndex =%{public}d.", listenerIndex);
+    OH_NativeDisplayManager_RegisterDisplayAddListener(DisplayChangeCallback, &listenerIndex);
+    NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_UnregisterDisplayAddListener(listenerIndex);
+    OH_LOG_INFO(LOG_APP, "errorCode=%{public}d", errCode);
+    napi_value errorCode;
+    napi_create_int32(env, errCode, &errorCode);
+    return errorCode;
+}
+
+static napi_value UnregisterDisplayAddListener_ErrCode140003(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = { nullptr };
+    uint32_t listenerIndex;
+    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+    napi_get_value_uint32(env, args[0], &listenerIndex);
+    OH_LOG_INFO(LOG_APP, "listenerIndex =%{public}d.", listenerIndex);
+    NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_UnregisterDisplayAddListener(listenerIndex);
+    OH_LOG_INFO(LOG_APP, "errorCode=%{public}d", errCode);
+    napi_value errorCode;
+    napi_create_int32(env, errCode, &errorCode);
+    return errorCode;
+}
+
+static napi_value RegisterDisplayRemoveListener(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = { nullptr };
+    uint32_t listenerIndex;
+    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+    napi_get_value_uint32(env, args[0], &listenerIndex);
+    OH_LOG_INFO(LOG_APP, "listenerIndex =%{public}d.", listenerIndex);
+    NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_RegisterDisplayRemoveListener(
+       DisplayChangeCallback, &listenerIndex);
+    OH_LOG_INFO(LOG_APP, "errorCode=%{public}d", errCode);
+    napi_value errorCode;
+    napi_create_int32(env, errCode, &errorCode);
+    return errorCode;
+}
+
+static napi_value UnregisterDisplayRemoveListener(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = { nullptr };
+    uint32_t listenerIndex;
+    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+    napi_get_value_uint32(env, args[0], &listenerIndex);
+    OH_LOG_INFO(LOG_APP, "listenerIndex =%{public}d.", listenerIndex);
+    OH_NativeDisplayManager_RegisterDisplayRemoveListener(DisplayChangeCallback, &listenerIndex);
+    NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_UnregisterDisplayRemoveListener(listenerIndex);
+    OH_LOG_INFO(LOG_APP, "errorCode=%{public}d", errCode);
+    napi_value errorCode;
+    napi_create_int32(env, errCode, &errorCode);
+    return errorCode;
+}
+
+static napi_value RegisterDisplayRemoveListener_ErrCode140003(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = { nullptr };
+    uint32_t listenerIndex;
+    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+    napi_get_value_uint32(env, args[0], &listenerIndex);
+    OH_LOG_INFO(LOG_APP, "listenerIndex =%{public}d.", listenerIndex);
+    NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_UnregisterDisplayRemoveListener(listenerIndex);
+    OH_LOG_INFO(LOG_APP, "errorCode=%{public}d", errCode);
+    napi_value errorCode;
+    napi_create_int32(env, errCode, &errorCode);
+    return errorCode;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -406,7 +692,44 @@ static napi_value Init(napi_env env, napi_value exports)
         { "registerFoldDisplayModeChange", nullptr, RegisterFoldDisplayModeChangeListener, nullptr, nullptr, nullptr,
             napi_default, nullptr },
         { "unregisterFoldDisplayModeChange", nullptr, UnregisterFoldDisplayModeChangeListener, nullptr, nullptr,
+            nullptr, napi_default, nullptr }, 
+        { "createAvailableArea", nullptr, CreateAvailableArea, nullptr, nullptr,
+            nullptr, napi_default, nullptr }, 
+        { "createAvailableArea_ErrCode140004", nullptr, CreateAvailableArea_ErrCode140004, nullptr, nullptr,
             nullptr, napi_default, nullptr },
+        { "destroyAvailableArea", nullptr, DestroyAvailableArea, nullptr, nullptr,
+            nullptr, napi_default, nullptr },
+        { "getDisplaySourceMode_1", nullptr, GetDisplaySourceMode_1, nullptr, nullptr,
+            nullptr, napi_default, nullptr },
+        { "getDisplaySourceMode_2", nullptr, GetDisplaySourceMode_2, nullptr, nullptr,
+            nullptr, napi_default, nullptr },   
+        { "getDisplaySourceMode_4", nullptr, GetDisplaySourceMode_4, nullptr, nullptr,
+            nullptr, napi_default, nullptr },
+        { "getDisplaySourceMode_ErrCode140004", nullptr, GetDisplaySourceMode_ErrCode140004, nullptr, nullptr,
+            nullptr, napi_default, nullptr },
+        { "getDisplayPosition", nullptr, GetDisplayPosition, nullptr, nullptr,
+            nullptr, napi_default, nullptr },
+        { "getDisplayPosition_ErrCode140004", nullptr, GetDisplayPosition_ErrCode140004, nullptr, nullptr,
+            nullptr, napi_default, nullptr },
+        { "registerAvailableAreaChangeListener", nullptr, RegisterAvailableAreaChangeListener, nullptr, nullptr,
+            nullptr, napi_default, nullptr },
+        { "unregisterAvailableAreaChangeListener", nullptr, UnregisterAvailableAreaChangeListener, nullptr, nullptr,
+            nullptr, napi_default, nullptr },
+        { "unregisterAvailableAreaChangeListener_ErrCode140003", nullptr, UnregisterAvailableAreaChangeListener_ErrCode140003, 
+            nullptr, nullptr,nullptr, napi_default, nullptr },
+        { "registerDisplayAddListener", nullptr, RegisterDisplayAddListener, nullptr, nullptr,
+            nullptr, napi_default, nullptr },
+        { "unregisterDisplayAddListener", nullptr, UnregisterDisplayAddListener, nullptr, nullptr,
+            nullptr, napi_default, nullptr },
+        { "unregisterDisplayAddListener_ErrCode140003", nullptr, UnregisterDisplayAddListener_ErrCode140003, nullptr, nullptr,
+            nullptr, napi_default, nullptr },
+        { "registerDisplayRemoveListener", nullptr, RegisterDisplayRemoveListener, nullptr, nullptr,
+            nullptr, napi_default, nullptr },
+        { "unregisterDisplayRemoveListener", nullptr, UnregisterDisplayRemoveListener, nullptr, nullptr,
+            nullptr, napi_default, nullptr },
+        { "registerDisplayRemoveListener_ErrCode140003", nullptr, RegisterDisplayRemoveListener_ErrCode140003, nullptr, nullptr,
+            nullptr, napi_default, nullptr },
+        
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
