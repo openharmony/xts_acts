@@ -303,7 +303,7 @@ export default function nativeAVScreenCaptureNdkTest() {
 
     /**
      * @tc.number       SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_CONTENT_CHANGED_0100
-     * @tc.name         OH_AVScreenCapture_SetCaptureContentChangedCallback
+     * @tc.name         SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_CONTENT_CHANGED_0100
      * @tc.desc         OH_AVScreenCapture_SetCaptureContentChangedCallback
      * @tc.size         MediumTest
      * @tc.type         Function
@@ -347,7 +347,7 @@ export default function nativeAVScreenCaptureNdkTest() {
 
     /**
      * @tc.number       SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_STRATEGY_FOR_PRIVACY_MASKMODE_0100
-     * @tc.name         OH_AVScreenCapture_StrategyForPrivacyMaskMode
+     * @tc.name         SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_STRATEGY_FOR_PRIVACY_MASKMODE_0100
      * @tc.desc         OH_AVScreenCapture_StrategyForPrivacyMaskMode 0
      * @tc.size         MediumTest
      * @tc.type         Function
@@ -371,7 +371,7 @@ export default function nativeAVScreenCaptureNdkTest() {
 
     /**
      * @tc.number       SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_STRATEGY_FOR_PRIVACY_MASKMODE_0101
-     * @tc.name         OH_AVScreenCapture_StrategyForPrivacyMaskMode
+     * @tc.name         SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_STRATEGY_FOR_PRIVACY_MASKMODE_0101
      * @tc.desc         OH_AVScreenCapture_StrategyForPrivacyMaskMode 1
      * @tc.size         MediumTest
      * @tc.type         Function

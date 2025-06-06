@@ -772,6 +772,9 @@ static napi_value normalAVScreenCaptureStrategyForKeepCaptureDuringCallFalse(nap
     if (result == AV_SCREEN_CAPTURE_ERR_OK) {
         result = OH_AVScreenCapture_ReleaseCaptureStrategy(strategy);
     }
+    if (result == AV_SCREEN_CAPTURE_ERR_OK) {
+        result = OH_AVScreenCapture_Release(screenCaptureNormal);
+    }
     int resCapture = TEST_FAILED;
     if (result == AV_SCREEN_CAPTURE_ERR_OK) {
         resCapture = TEST_PASS;
@@ -792,30 +795,15 @@ static napi_value normalAVScreenCaptureStrategyForKeepCaptureDuringCallTrue(napi
     if (result == AV_SCREEN_CAPTURE_ERR_OK) {
         result = OH_AVScreenCapture_ReleaseCaptureStrategy(strategy);
     }
+    if (result == AV_SCREEN_CAPTURE_ERR_OK) {
+        result = OH_AVScreenCapture_Release(screenCaptureNormal);
+    }
     int resCapture = TEST_FAILED;
     if (result == AV_SCREEN_CAPTURE_ERR_OK) {
         resCapture = TEST_PASS;
     }
     napi_value res;
     napi_create_int32(env, resCapture, &res);
-    return res;
-}
-
-// SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_KEEP_DURING_CALL_0100
-static napi_value normalAVScreenCaptureStrategyForKeepCaptureDuringCallTestStop(napi_env env, napi_callback_info info)
-{
-    usleep(g_recordTimeOne);
-    OH_AVSCREEN_CAPTURE_ErrCode result1 = OH_AVScreenCapture_StopScreenCapture(screenCaptureNormal);
-    OH_AVSCREEN_CAPTURE_ErrCode result2 = OH_AVScreenCapture_Release(screenCaptureNormal);
-
-    OH_AVSCREEN_CAPTURE_ErrCode result = AV_SCREEN_CAPTURE_ERR_OK;
-    if (result1 == AV_SCREEN_CAPTURE_ERR_OK && result2 == AV_SCREEN_CAPTURE_ERR_OK) {
-        result = AV_SCREEN_CAPTURE_ERR_OK;
-    } else {
-        result = AV_SCREEN_CAPTURE_ERR_OPERATE_NOT_PERMIT;
-    }
-    napi_value res;
-    napi_create_int32(env, result, &res);
     return res;
 }
 
@@ -1046,9 +1034,6 @@ static napi_value Init(napi_env env, napi_value exports)
             nullptr},
         {"normalAVScreenCaptureStrategyForKeepCaptureDuringCallTrue", nullptr,
             normalAVScreenCaptureStrategyForKeepCaptureDuringCallTrue, nullptr, nullptr, nullptr, napi_default,
-            nullptr},
-        {"normalAVScreenCaptureStrategyForKeepCaptureDuringCallTestStop", nullptr,
-            normalAVScreenCaptureStrategyForKeepCaptureDuringCallTestStop, nullptr, nullptr, nullptr, napi_default,
             nullptr},
         {"normalAVScreenCaptureContentChangedCallback", nullptr, normalAVScreenCaptureContentChangedCallback,
             nullptr, nullptr, nullptr, napi_default, nullptr},
