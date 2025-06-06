@@ -1428,67 +1428,66 @@ export default function windowModalTest() {
      * @tc.level     : Level3
      */
     it('testSetWindowModalTrue', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
-      done();
-      // const message = 'testSetWindowModalTrueTest';
-      // let windowClass = windowStage.getMainWindowSync()
-      // await windowClass.setUIContent('testability/pages/WindowTest/Modality')
-      // await sleep(300);
-      // let windowRect = windowClass.getWindowProperties().windowRect
-      // console.info(`${message} windowRect = ${JSON.stringify(windowRect)}`)
-      // let driver = Driver.create()
-      // let btn = await driver.findComponent(ON.id('ModalityText'))
-      // await sleep(1500)
-      // let btnPoint = await btn.getBoundsCenter()
-      // let windowStageStart = await startAbility(message, context)
-      // try {
-      //   let promise = windowStageStart.setWindowModal(true);
-      //   promise.then(async () => {
-      //     console.info(`${message} Succeeded in setting window modal`);
-      //     let windowClassStart = windowStageStart.getMainWindowSync()
-      //     await windowClassStart.resizeAsync(700, 200)
-      //     await windowClassStart.moveWindowToAsync(50, 50)
-      //     await driver.click(btnPoint.x, btnPoint.y)
-      //     await sleep(1000)
-      //     let btnTest = await btn.getText()
-      //     console.info(`${message} btnTest = ${btnTest}, expect Modality`);
-      //     expect(btnTest).assertEqual('Modality')
-      //     let testWindow = await driver.findWindow({
-      //       actived: true
-      //     });
-      //     await sleep(1000)
-      //     let windowPoint = await testWindow.getBounds()
-      //     console.info(`${message} windowPoint = ${JSON.stringify(windowPoint)}`);
-      //     console.info(`${message} window width = ${windowPoint.bottom - windowPoint.top}, expect 800`);
-      //     console.info(`${message} window height = ${windowPoint.right - windowPoint.left}, expect 700`);
-      //     expect(windowPoint.bottom - windowPoint.top).assertEqual(200)
-      //     expect(windowPoint.right - windowPoint.left).assertEqual(700)
-      //     await sleep(300);
-      //     await terminateAbility(message);
-      //     done()
-      //   }).catch(async (err: BusinessError) => {
-      //     await terminateAbility(message);
-      //     if (err.code == 801) {
-      //       console.error(`${message}  Capability not supported. Failed to call the API due to limited device capabilities`);
-      //       expect(false).assertFalse();
-      //       done();
-      //     } else {
-      //       console.error(`${message} Failed to set window modal. Cause code: ${err.code}, message: ${err.message}`)
-      //       expect().assertFail();
-      //       done();
-      //     }
-      //   });
-      // } catch (exception) {
-      //   await terminateAbility(message);
-      //   if (exception.code == 801) {
-      //     console.error(`${message}  Capability not supported. Failed to call the API due to limited device capabilities`);
-      //     expect(false).assertFalse();
-      //     done();
-      //   } else {
-      //     console.error(`${message} Failed to set window modal. Cause code: ${exception.code}, message: ${exception.message}`)
-      //     expect().assertFail();
-      //     done();
-      //   }
-      // }
+      const message = 'testSetWindowModalTrueTest';
+      let windowClass = windowStage.getMainWindowSync()
+      await windowClass.setUIContent('testability/pages/WindowTest/Modality')
+      await sleep(300);
+      let windowRect = windowClass.getWindowProperties().windowRect
+      console.info(`${message} windowRect = ${JSON.stringify(windowRect)}`)
+      let driver = Driver.create()
+      let btn = await driver.findComponent(ON.id('ModalityText'))
+      await sleep(1500)
+      let btnPoint = await btn.getBoundsCenter()
+      let windowStageStart = await startAbility(message, context)
+      try {
+        let promise = windowStageStart.setWindowModal(true);
+        promise.then(async () => {
+          console.info(`${message} Succeeded in setting window modal`);
+          let windowClassStart = windowStageStart.getMainWindowSync()
+          await windowClassStart.resizeAsync(700, 200)
+          await windowClassStart.moveWindowToAsync(50, 50)
+          await driver.click(btnPoint.x, btnPoint.y)
+          await sleep(1000)
+          let btnTest = await btn.getText()
+          console.info(`${message} btnTest = ${btnTest}, expect Modality`);
+          expect(btnTest).assertEqual('Modality')
+          let testWindow = await driver.findWindow({
+            actived: true
+          });
+          await sleep(1000)
+          let windowPoint = await testWindow.getBounds()
+          console.info(`${message} windowPoint = ${JSON.stringify(windowPoint)}`);
+          console.info(`${message} window width = ${windowPoint.bottom - windowPoint.top}, expect 800`);
+          console.info(`${message} window height = ${windowPoint.right - windowPoint.left}, expect 700`);
+          expect(windowPoint.bottom - windowPoint.top).assertEqual(200)
+          expect(windowPoint.right - windowPoint.left).assertEqual(700)
+          await sleep(300);
+          await terminateAbility(message);
+          done()
+        }).catch(async (err: BusinessError) => {
+          await terminateAbility(message);
+          if (err.code == 801) {
+            console.error(`${message}  Capability not supported. Failed to call the API due to limited device capabilities`);
+            expect(false).assertFalse();
+            done();
+          } else {
+            console.error(`${message} Failed to set window modal. Cause code: ${err.code}, message: ${err.message}`)
+            expect().assertFail();
+            done();
+          }
+        });
+      } catch (exception) {
+        await terminateAbility(message);
+        if (exception.code == 801) {
+          console.error(`${message}  Capability not supported. Failed to call the API due to limited device capabilities`);
+          expect(false).assertFalse();
+          done();
+        } else {
+          console.error(`${message} Failed to set window modal. Cause code: ${exception.code}, message: ${exception.message}`)
+          expect().assertFail();
+          done();
+        }
+      }
     })
 
     /**
@@ -1500,66 +1499,65 @@ export default function windowModalTest() {
      * @tc.level     : Level3
      */
     it('testSetWindowModalFalse', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
-      done();
-      // const message = 'testSetWindowModalFalseTest';
-      // let windowClass = windowStage.getMainWindowSync()
-      // await windowClass.setUIContent('testability/pages/WindowTest/Modality')
-      // await sleep(300);
-      // let windowRect = windowClass.getWindowProperties().windowRect
-      // console.info(`${message} windowRect = ${JSON.stringify(windowRect)}`)
-      // let driver = Driver.create()
-      // let btn = await driver.findComponent(ON.id('ModalityText'))
-      // await sleep(1000)
-      // let btnPoint = await btn.getBoundsCenter()
-      // let windowStageStart = await startAbility(message, context);
-      // try {
-      //   let promise = windowStageStart.setWindowModal(false);
-      //   promise.then(async () => {
-      //     console.info(`${message} Succeeded in setting window modal`);
-      //     let windowClassStart = windowStageStart.getMainWindowSync()
-      //     await windowClassStart.resizeAsync(700, 200)
-      //     await windowClassStart.moveWindowToAsync(50, 50)
-      //     await driver.click(btnPoint.x, btnPoint.y)
-      //     await sleep(1000)
-      //     let btnTest = await btn.getText()
-      //     console.info(`${message} btnTest = ${btnTest}, expect Clicked`);
-      //     expect(btnTest).assertEqual('Clicked')
-      //     let testWindow = await driver.findWindow({
-      //       actived: true
-      //     });
-      //     await sleep(1000)
-      //     let windowPoint = await testWindow.getBounds()
-      //     console.info(`${message} window width = ${windowPoint.bottom - windowPoint.top}, expect ${windowRect.height}`);
-      //     console.info(`${message} window height = ${windowPoint.right - windowPoint.left}, expect ${windowRect.width}`);
-      //     expect(windowPoint.bottom - windowPoint.top).assertEqual(windowRect.height)
-      //     expect(windowPoint.right - windowPoint.left).assertEqual(windowRect.width)
-      //     await sleep(300);
-      //     await terminateAbility(message);
-      //     done()
-      //   }).catch(async (err: BusinessError) => {
-      //     await terminateAbility(message);
-      //     if (err.code == 801) {
-      //       console.error(`${message}  Capability not supported. Failed to call the API due to limited device capabilities`);
-      //       expect(false).assertFalse();
-      //       done();
-      //     } else {
-      //       console.error(`${message} Failed to set window modal. Cause code: ${err.code}, message: ${err.message}`)
-      //       expect().assertFail();
-      //       done();
-      //     }
-      //   });
-      // } catch (exception) {
-      //   await terminateAbility(message);
-      //   if (exception.code == 801) {
-      //     console.error(`${message}  Capability not supported. Failed to call the API due to limited device capabilities`);
-      //     expect(false).assertFalse();
-      //     done();
-      //   } else {
-      //     console.error(`${message} Failed to set window modal. Cause code: ${exception.code}, message: ${exception.message}`)
-      //     expect().assertFail();
-      //     done();
-      //   }
-      // }
+      const message = 'testSetWindowModalFalseTest';
+      let windowClass = windowStage.getMainWindowSync()
+      await windowClass.setUIContent('testability/pages/WindowTest/Modality')
+      await sleep(300);
+      let windowRect = windowClass.getWindowProperties().windowRect
+      console.info(`${message} windowRect = ${JSON.stringify(windowRect)}`)
+      let driver = Driver.create()
+      let btn = await driver.findComponent(ON.id('ModalityText'))
+      await sleep(1000)
+      let btnPoint = await btn.getBoundsCenter()
+      let windowStageStart = await startAbility(message, context);
+      try {
+        let promise = windowStageStart.setWindowModal(false);
+        promise.then(async () => {
+          console.info(`${message} Succeeded in setting window modal`);
+          let windowClassStart = windowStageStart.getMainWindowSync()
+          await windowClassStart.resizeAsync(700, 200)
+          await windowClassStart.moveWindowToAsync(50, 50)
+          await driver.click(btnPoint.x, btnPoint.y)
+          await sleep(1000)
+          let btnTest = await btn.getText()
+          console.info(`${message} btnTest = ${btnTest}, expect Clicked`);
+          expect(btnTest).assertEqual('Clicked')
+          let testWindow = await driver.findWindow({
+            actived: true
+          });
+          await sleep(1000)
+          let windowPoint = await testWindow.getBounds()
+          console.info(`${message} window width = ${windowPoint.bottom - windowPoint.top}, expect ${windowRect.height}`);
+          console.info(`${message} window height = ${windowPoint.right - windowPoint.left}, expect ${windowRect.width}`);
+          expect(windowPoint.bottom - windowPoint.top).assertEqual(windowRect.height)
+          expect(windowPoint.right - windowPoint.left).assertEqual(windowRect.width)
+          await sleep(300);
+          await terminateAbility(message);
+          done()
+        }).catch(async (err: BusinessError) => {
+          await terminateAbility(message);
+          if (err.code == 801) {
+            console.error(`${message}  Capability not supported. Failed to call the API due to limited device capabilities`);
+            expect(false).assertFalse();
+            done();
+          } else {
+            console.error(`${message} Failed to set window modal. Cause code: ${err.code}, message: ${err.message}`)
+            expect().assertFail();
+            done();
+          }
+        });
+      } catch (exception) {
+        await terminateAbility(message);
+        if (exception.code == 801) {
+          console.error(`${message}  Capability not supported. Failed to call the API due to limited device capabilities`);
+          expect(false).assertFalse();
+          done();
+        } else {
+          console.error(`${message} Failed to set window modal. Cause code: ${exception.code}, message: ${exception.message}`)
+          expect().assertFail();
+          done();
+        }
+      }
     })
 
     
