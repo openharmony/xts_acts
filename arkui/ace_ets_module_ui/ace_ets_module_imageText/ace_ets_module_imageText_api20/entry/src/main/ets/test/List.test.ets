@@ -21,6 +21,7 @@ import ResourceNormalTest from './TextTest/ResourceNormal.test';
 import ResourceModifierTest from './TextTest/ResourceModifier.test';
 import TextStrokeTest from './TextTest/TextStrokeTest.test';
 import StyledStringStrokeTest from './TextTest/StyledStringStrokeTest.test';
+import TextInputEnableAutoFillAnimationTest from './TextInputTest/TextInputEnableAutoFillAnimation.test';
 
 
 export default function testsuite() {
@@ -32,4 +33,5 @@ export default function testsuite() {
   ResourceModifierTest();
   TextStrokeTest();
   StyledStringStrokeTest();
+  TextInputEnableAutoFillAnimationTest();
 }

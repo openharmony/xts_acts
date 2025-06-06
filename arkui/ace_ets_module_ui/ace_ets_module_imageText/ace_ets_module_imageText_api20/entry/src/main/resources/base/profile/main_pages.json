@@ -8,6 +8,7 @@
     "MainAbility/pages/Text/ResourceNormal",
     "MainAbility/pages/Text/ResourceModifier",
     "MainAbility/pages/Text/TextStrokeTest",
-    "MainAbility/pages/Text/StyledStringStrokeTest"
+    "MainAbility/pages/Text/StyledStringStrokeTest",
+    "MainAbility/pages/TextInput/TextInputEnableAutoFillAnimation"
   ]
 }
