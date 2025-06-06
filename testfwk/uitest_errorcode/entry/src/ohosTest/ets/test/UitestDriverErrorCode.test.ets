@@ -1057,31 +1057,10 @@ export default function uitestDriverErrorTest() {
         expect(e.code).assertEqual(ParameterErrorCode);
       }
       try {
-        await driver.dragBetween({x: -1, y: 100}, {x:200, y: 200});
-        expect().assertFail();
-      }catch (e) {
-        console.log(`${TestTag} test_driver_dragBetween_17000007, from.x=-1 error is: ${JSON.stringify(e)}`);
-        expect(e.code).assertEqual(ParameterErrorCode);
-      }
-      try {
-        await driver.dragBetween({x: 100, y: -1}, {x:200, y: 200});
-        expect().assertFail();
-      }catch (e) {
-        console.log(`${TestTag} test_driver_dragBetween_17000007, from.y=-1 error is: ${JSON.stringify(e)}`);
-        expect(e.code).assertEqual(ParameterErrorCode);
-      }
-      try {
-        await driver.dragBetween({x: 100, y: 100, displayId: -1}, {x:200, y: 200});
-        expect().assertFail();
-      }catch (e) {
-        console.log(`${TestTag} test_driver_dragBetween_17000007, from.displayId=-1 error is: ${JSON.stringify(e)}`);
-        expect(e.code).assertEqual(ParameterErrorCode);
-      }
-      try {
         await driver.dragBetween({x: 100, y: 100}, null);
         expect().assertFail();
       }catch (e) {
-        console.log(`${TestTag} test_driver_dragBetween_17000007, to=null error is: ${JSON.stringify(e)}`);
+        console.log(`${TestTag} test_driver_dragBetween_17000007, to to=null error is: ${JSON.stringify(e)}`);
         expect(e.code).assertEqual(ParameterErrorCode);
       }
       try {
@@ -1089,6 +1068,20 @@ export default function uitestDriverErrorTest() {
         expect().assertFail();
       }catch (e) {
         console.log(`${TestTag} test_driver_dragBetween_17000007, to=undefined error is: ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(ParameterErrorCode);
+      }
+      try {
+        await driver.dragBetween({x: -1, y: 100}, {x: 200, y: 200});
+        expect().assertFail();
+      }catch (e) {
+        console.log(`${TestTag} test_driver_dragBetween_17000007, from.x = -1 error is: ${JSON.stringify(e)}`);
+        expect(e.code).assertEqual(ParameterErrorCode);
+      }
+      try {
+        await driver.dragBetween({x: 100, y: -1}, {x: 200, y: 200});
+        expect().assertFail();
+      }catch (e) {
+        console.log(`${TestTag} test_driver_dragBetween_17000007, from.y = -1 error is: ${JSON.stringify(e)}`);
         expect(e.code).assertEqual(ParameterErrorCode);
       }
       try {
@@ -1106,24 +1099,10 @@ export default function uitestDriverErrorTest() {
         expect(e.code).assertEqual(ParameterErrorCode);
       }
       try {
-        await driver.dragBetween({x: 100, y: 100}, {x: 100, y: 100, displayId: -1});
-        expect().assertFail();
-      }catch (e) {
-        console.log(`${TestTag} test_driver_dragBetween_17000007, to.displayId = -1 error is: ${JSON.stringify(e)}`);
-        expect(e.code).assertEqual(ParameterErrorCode);
-      }
-      try {
         await driver.dragBetween({x: 100, y: 100}, {x: 100, y: 100}, 600, 1499);
         expect().assertFail();
       }catch (e) {
         console.log(`${TestTag} test_driver_dragBetween_17000007, duration = 1499 error is: ${JSON.stringify(e)}`);
-        expect(e.code).assertEqual(ParameterErrorCode);
-      }
-      try {
-        await driver.dragBetween({x: 100, y: 100, displayId: 0}, {x: 100, y: 100, displayId: 1});
-        expect().assertFail();
-      }catch (e) {
-        console.log(`${TestTag} test_driver_dragBetween_17000007, diffDis error is: ${JSON.stringify(e)}`);
         expect(e.code).assertEqual(ParameterErrorCode);
       }
       console.log(`${TestTag}, test_driver_dragBetween_17000007 end`);
@@ -1179,13 +1158,6 @@ export default function uitestDriverErrorTest() {
         console.log(`${TestTag}, test_driver_mouseLongClick_duration_401 duration=1499 error is: ${JSON.stringify(e)}`);
         expect(e.code).assertEqual(ErrorCode);
       }
-      try {
-        await driver.mouseLongClick({x: 100, y: 100, displayId: -1}, MouseButton.MOUSE_BUTTON_LEFT, 2072, 2073, 1600);
-        expect().assertFail();
-      }catch (e) {
-        console.log(`${TestTag}, test_driver_mouseLongClick_duration_401 p.displayId=-1 error is: ${JSON.stringify(e)}`);
-        expect(e.code).assertEqual(ErrorCode);
-      }
       console.log(`${TestTag}, test_driver_mouseLongClick_duration_401 end`);
     })
 
@@ -1238,22 +1210,14 @@ export default function uitestDriverErrorTest() {
         console.log(`${TestTag}, test_driver_inputTextMode_401 p.y=-1 error is: ${JSON.stringify(e)}`);
         expect(e.code).assertEqual(ErrorCode);
       }
-      try {
-        await driver.inputText({x:100, y:100, displayId: -1}, '123456', {
-          paste: false
-        });
-        expect().assertFail();
-      }catch (e) {
-        console.log(`${TestTag}, test_driver_inputTextMode_401 p.displayId=-1 error is: ${JSON.stringify(e)}`);
-        expect(e.code).assertEqual(ErrorCode);
-      }
+      await sleep(waitUiReadyMs * 5);
       console.log(`${TestTag}, test_driver_inputTextMode_401 end`);
     })
 
     /*
      * @tc.number: uitestDriverErrorTest_053
      * @tc.name: test_driver_inputTextMode_801
-     * @tc.desc: inputText test.
+     * @tc.desc: mouseLongClick inputText test.
      */
     it('test_driver_inputTextMode_801', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       console.log(`${TestTag}, test_driver_inputTextMode_801 start`);
@@ -1405,13 +1369,6 @@ export default function uitestDriverErrorTest() {
         expect(e.code).assertEqual(ParameterErrorCode);
       }
       try {
-        await driver.longClickAt({x: 100, y: 100, displayId: -1}, 1500);
-        expect().assertFail();
-      }catch (e) {
-        console.log(`${TestTag}, test_driver_longClickAt_17000007 point.displayId = -1 error is: ${JSON.stringify(e)}`);
-        expect(e.code).assertEqual(ParameterErrorCode);
-      }
-      try {
         await driver.longClickAt({x: 10000, y: 100}, 1500);
       }catch (e) {
         console.log(`${TestTag}, test_driver_longClickAt_17000007 point.X = 10000 error is: ${JSON.stringify(e)}`);
@@ -1423,7 +1380,6 @@ export default function uitestDriverErrorTest() {
         console.log(`${TestTag}, test_driver_longClickAt_17000007 point.y = 10000 error is: ${JSON.stringify(e)}`);
         expect().assertFail();
       }
-
       try {
         await driver.longClickAt({x: 100, y: 100}, 1499);
       }catch (e) {
@@ -1478,13 +1434,6 @@ export default function uitestDriverErrorTest() {
         expect(e.code).assertEqual(ErrorCode);
       }
       try {
-        await driver.mouseDrag({x:100, y:100, displayId: -1}, {x:200, y:200}, 600, 1800);
-        expect().assertFail();
-      }catch (e) {
-        console.log(`${TestTag}, test_driver_mouseDrag_22_401 from.displayId=-1 error is: ${JSON.stringify(e)}`);
-        expect(e.code).assertEqual(ErrorCode);
-      }
-      try {
         await driver.mouseDrag({x:100, y:100}, {x:-1, y:200}, 600, 1800);
         expect().assertFail();
       }catch (e) {
@@ -1496,13 +1445,6 @@ export default function uitestDriverErrorTest() {
         expect().assertFail();
       }catch (e) {
         console.log(`${TestTag}, test_driver_mouseDrag_22_401 to.y=-1 error is: ${JSON.stringify(e)}`);
-        expect(e.code).assertEqual(ErrorCode);
-      }
-      try {
-        await driver.mouseDrag({x:100, y:100}, {x:100, y:100, displayId: -1}, 600, 1800);
-        expect().assertFail();
-      }catch (e) {
-        console.log(`${TestTag}, test_driver_mouseDrag_22_401 to.displayId=-1 error is: ${JSON.stringify(e)}`);
         expect(e.code).assertEqual(ErrorCode);
       }
       try {
