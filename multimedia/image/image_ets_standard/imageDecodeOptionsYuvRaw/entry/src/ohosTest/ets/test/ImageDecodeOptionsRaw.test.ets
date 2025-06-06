@@ -185,11 +185,11 @@ export default function imageDecodeOptionsRawTest() {
             hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' imageInfo:' + JSON.stringify(imageInfo));
             pixelFormat === 3 && (result = true);
             pixelMap.release();
+            imageSourceApi.release();
           })
         }).catch((err: BusinessError) => {
           hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' getImageInfo err ' + JSON.stringify(err));
         })
-      await imageSourceApi.release();
     }
 
     const callBackCreate_F16 = async (TAG: string, imageSourceApi: image.ImageSource,
@@ -206,12 +206,12 @@ export default function imageDecodeOptionsRawTest() {
             hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' imageInfo:' + JSON.stringify(imageInfo));
             pixelFormat === 3 && (result = true);
             pixelMap.release();
+            imageSourceApi.release();
           })
         } else {
           hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' getImageInfo err ' + JSON.stringify(err));
         }
       })
-      await imageSourceApi.release();
     }
     
     beforeAll(() => {
