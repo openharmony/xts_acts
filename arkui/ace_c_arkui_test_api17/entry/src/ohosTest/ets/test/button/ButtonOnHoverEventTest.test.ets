@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import { Driver, ON } from '@kit.TestKit';
 
@@ -44,7 +44,7 @@ export default function buttonOnClickEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testButtonOnHover001', 0, async (done: Function) => {
+    it('testButtonOnHover001', Level.LEVEL1, async (done: Function) => {
       await mouseMoveToCommonEvent('OnHoverTestButton')
       await Utils.sleep(2000)
       expect(Utils.getComponentInfoByKey('OnHoverTestButton').$attrs.backgroundColor).assertEqual('#FF00FF00')

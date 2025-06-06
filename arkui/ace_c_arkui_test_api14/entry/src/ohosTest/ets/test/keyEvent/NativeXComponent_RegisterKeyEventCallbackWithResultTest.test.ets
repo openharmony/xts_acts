@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level} from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function NativeXComponent_RegisterKeyEventCallbackWithResultTest(
      * @tc.level      : Level 3
      */
 
-    it('testNativeXComponent_RegisterKeyEventCallbackWithResult001', 0, async (done: Function) => {
+    it('testNativeXComponent_RegisterKeyEventCallbackWithResult001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testNativeXComponent_RegisterKeyEventCallbackWithResult001()).assertEqual(0)
       done()
     })

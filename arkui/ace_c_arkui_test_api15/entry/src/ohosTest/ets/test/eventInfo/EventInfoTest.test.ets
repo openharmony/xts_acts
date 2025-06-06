@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium'
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium'
 import { Driver, ON } from '@ohos.UiTest'
 import Utils from '../common/Utils'
 import nativeRender from 'libnativerender.so'
@@ -43,7 +43,7 @@ export default function EventInfoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('EventInfoCaseTest001', 0, async (done: Function) => {
+    it('EventInfoCaseTest001', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'EventInfoCaseTest1'
       await Utils.pushPage(`eventInfo/${PAGE_TAG}`)
       let driver = Driver.create()
@@ -65,7 +65,7 @@ export default function EventInfoTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('EventInfoCaseTest002', 0, async (done: Function) => {
+    it('EventInfoCaseTest002', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'EventInfoCaseTest1'
       await Utils.pushPage(`eventInfo/${PAGE_TAG}`)
       await click('image')

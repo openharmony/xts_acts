@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, beforeEach } from '@ohos/hypium';
+import { expect, describe, it, beforeEach, Level  } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -33,7 +33,7 @@ export default function customDialogBackGroundTest(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomDialog001', 0, async (done: Function) => {
+    it('testCustomDialog001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomDialog001()).assertEqual(0)
       done();
     });
@@ -46,7 +46,7 @@ export default function customDialogBackGroundTest(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomDialog002', 0, async (done: Function) => {
+    it('testCustomDialog002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomDialog002()).assertEqual(0)
       done();
     });

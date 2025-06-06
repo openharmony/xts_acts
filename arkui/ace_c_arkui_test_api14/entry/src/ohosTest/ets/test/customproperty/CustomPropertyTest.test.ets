@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import { Driver, ON, PointerMatrix, Rect } from '@ohos.UiTest';
 import Utils from '../common/Utils';
 // import nativeFunc from 'libnativefunc.so'
@@ -34,7 +34,7 @@ export default function customPropertyTest(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetCustomProperty001', 0, async (done: Function) => {
+    it('testGetCustomProperty001', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'TestGetCustomProperty';
       await Utils.pushPage(`customproperty/${PAGE_TAG}`, done);
       await Utils.sleep(1000)
@@ -50,7 +50,7 @@ export default function customPropertyTest(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetParentInPageTree002', 0, async (done: Function) => {
+    it('testGetParentInPageTree002', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'TestGetParentInPageTree';
       await Utils.pushPage(`customproperty/${PAGE_TAG}`, done);
       await Utils.sleep(1000)
@@ -71,7 +71,7 @@ export default function customPropertyTest(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetActiveChildrenInfo003', 0, async (done: Function) => {
+    it('testGetActiveChildrenInfo003', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'TestGetActiveChildrenInfo';
       await Utils.pushPage(`customproperty/${PAGE_TAG}`, done);
       await Utils.sleep(1000)
@@ -92,7 +92,7 @@ export default function customPropertyTest(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetCurrentPageRootNode004', 0, async (done: Function) => {
+    it('testGetCurrentPageRootNode004', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'TestGetCurrentPageRootNode';
       await Utils.pushPage(`customproperty/${PAGE_TAG}`, done);
       await Utils.sleep(1000)
@@ -113,7 +113,7 @@ export default function customPropertyTest(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testIsCreatedByNDK005', 0, async (done: Function) => {
+    it('testIsCreatedByNDK005', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'TestIsCreatedByNDK';
       await Utils.pushPage(`customproperty/${PAGE_TAG}`, done);
       await Utils.sleep(1000)
@@ -129,7 +129,7 @@ export default function customPropertyTest(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetNodeType006', 0, async (done: Function) => {
+    it('testGetNodeType006', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'TestGetNodeType';
       await Utils.pushPage(`customproperty/${PAGE_TAG}`, done);
       await Utils.sleep(1000)
@@ -145,7 +145,7 @@ export default function customPropertyTest(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomPropertyDestroy007', 0, async (done: Function) => {
+    it('testCustomPropertyDestroy007', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'TestCustomPropertyDestroy';
       await Utils.pushPage(`customproperty/${PAGE_TAG}`, done);
       await Utils.sleep(1000)
@@ -161,7 +161,7 @@ export default function customPropertyTest(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomPropertyGetStringValue008', 0, async (done: Function) => {
+    it('testCustomPropertyGetStringValue008', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'TestCustomPropertyGetStringValue';
       await Utils.pushPage(`customproperty/${PAGE_TAG}`, done);
       await Utils.sleep(1000)
@@ -177,7 +177,7 @@ export default function customPropertyTest(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testActiveChildrenInfoDestroy009', 0, async (done: Function) => {
+    it('testActiveChildrenInfoDestroy009', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'TestActiveChildrenInfoDestroy';
       await Utils.pushPage(`customproperty/${PAGE_TAG}`, done);
       await Utils.sleep(1000)
@@ -198,7 +198,7 @@ export default function customPropertyTest(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testActiveChildrenInfoGetNodeByIndex010', 0, async (done: Function) => {
+    it('testActiveChildrenInfoGetNodeByIndex010', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'TestActiveChildrenInfoGetNodeByIndex';
       await Utils.pushPage(`customproperty/${PAGE_TAG}`, done);
       await Utils.sleep(1000)
@@ -219,7 +219,7 @@ export default function customPropertyTest(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testActiveChildrenInfoGetCount011', 0, async (done: Function) => {
+    it('testActiveChildrenInfoGetCount011', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'TestActiveChildrenInfoGetNodeByIndex';
       await Utils.pushPage(`customproperty/${PAGE_TAG}`, done);
       await Utils.sleep(1000)

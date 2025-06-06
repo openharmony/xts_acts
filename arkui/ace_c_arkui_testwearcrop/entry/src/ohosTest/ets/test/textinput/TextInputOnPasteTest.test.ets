@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 
 export default function textInputOnPasteTest() {
@@ -34,7 +34,7 @@ export default function textInputOnPasteTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testTextInputOnPaste001', 0, async (done: Function) => {
+    it('testTextInputOnPaste001', Level.LEVEL1, async  (done: Function) => {
       focusControl.requestFocus('OnPasteTestTextInput')
       await Utils.sleep(1000)
       await Utils.longClickComponent('OnPasteTestTextInput')

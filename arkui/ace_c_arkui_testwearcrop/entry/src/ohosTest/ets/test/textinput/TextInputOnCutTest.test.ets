@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 
 export default function textInputOnCutTest() {
@@ -34,7 +34,7 @@ export default function textInputOnCutTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testTextInputOnCut001', 0, async (done: Function) => {
+    it('testTextInputOnCut001', Level.LEVEL1, async  (done: Function) => {
       focusControl.requestFocus('OnCutTestTextInput')
       await Utils.sleep(2000)
       await Utils.longClickComponent('OnCutTestTextInput')
