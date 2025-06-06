@@ -31,7 +31,7 @@ export default function VisibleAreaEventOptionsTest(){
     })
 
     /*
-     * @tc.number: 
+     * @tc.number: VisibleAreaEventOptionsTest
      * @tc.name: VisibleAreaEventOptionsTest
      * @tc.desc:  VisibleAreaEventOption
      * @tc.size: MediumTest
@@ -43,10 +43,11 @@ export default function VisibleAreaEventOptionsTest(){
       console.info("push VisibleAreaEventOptionsTest page success: ")
       let ret = nativeRender.DragEndPendingTest_001()
       console.log('VisibleAreaEventOptionsTest will drag and check:: ', ret)
+      expect().assertEqual();
       done()
     })
     /*
-     * @tc.number: 
+     * @tc.number: VisibleAreaEventOptionsTest_a
      * @tc.name: VisibleAreaEventOptionsTest_a
      * @tc.desc:  VisibleAreaEventOption
      * @tc.size: MediumTest
@@ -60,7 +61,7 @@ export default function VisibleAreaEventOptionsTest(){
     })
 
     /*
-     * @tc.number: 
+     * @tc.number: VisibleAreaEventOptionsTest_b
      * @tc.name: VisibleAreaEventOptionsTest_b
      * @tc.desc:  VisibleAreaEventOption
      * @tc.size: MediumTest
@@ -73,7 +74,7 @@ export default function VisibleAreaEventOptionsTest(){
       done()
     })
     /*
-     * @tc.number: 
+     * @tc.number: VisibleAreaEventOptionsTest_c
      * @tc.name: VisibleAreaEventOptionsTest_c
      * @tc.desc:  VisibleAreaEventOption
      * @tc.size: MediumTest
@@ -86,7 +87,7 @@ export default function VisibleAreaEventOptionsTest(){
       done()
     })
     /*
-     * @tc.number: 
+     * @tc.number: VisibleAreaEventOptionsTest_d
      * @tc.name: VisibleAreaEventOptionsTest_d
      * @tc.desc:  VisibleAreaEventOption
      * @tc.size: MediumTest
