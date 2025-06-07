@@ -22,10 +22,14 @@
 
 #include <arkui/native_interface_accessibility.h>
 #include <hilog/log.h>
-#include "AccessibilityManager.h"
+#include "AccessibilityManagerTest.h"
 #include <cassert>
 #include <string>
 const unsigned int LOG_PRINT_DOMAIN = 0xFF00;
+static int NUMBER_100 = 100;
+static int NUMBER_500 = 500;
+static int NUMBER_800 = 800;
+
 class AccessibleObject {
 public:
     AccessibleObject(const std::string &name) : name_(name), originName_(name) {}
@@ -50,14 +54,10 @@ public:
 
         OH_ArkUI_AccessibilityElementInfoSetEnabled(element, true);
 
-//         OH_ArkUI_AccessibilityElementInfoSetClickable(element, Clickable());
         OH_ArkUI_AccessibilityElementInfoSetFocusable(element, Focusable());
         OH_ArkUI_AccessibilityElementInfoSetFocused(element, Focused());
         OH_ArkUI_AccessibilityElementInfoSetAccessibilityLevel(element, "yes");
         OH_ArkUI_AccessibilityElementInfoSetEditable(element, true);
-//         OH_ArkUI_AccessibilityElementInfoSetClickable(element, true);
-//         OH_ArkUI_AccessibilityElementInfoSetFocusable(element, true);
-//         OH_ArkUI_AccessibilityElementInfoSetFocused(element, true);
 
         ArkUI_AccessibleAction actions[12];
         int index = 0;
@@ -128,7 +128,7 @@ public:
         for (int i = 0; i < objects.size(); i++) {
             objects[i]->SetName(objects[i]->OriginName() + instanceId);
         }
-        return objects; 
+        return objects;
     }
 
     AccessibleObject *getChild(int elementId) const {
@@ -233,8 +233,9 @@ void AccessibilityManager::Initialize(const std::string &id, ArkUI_NodeHandle ha
     }
 
     // 2.注册回调函数
-//    ret = OH_ArkUI_AccessibilityProviderRegisterCallback(provider, &accessibilityProviderCallbacks_);
-    auto ret = OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance(id.c_str(), provider, &accessibilityProviderCallbacksWithInstance_);
+    auto ret = OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance(id.c_str(),
+                                                                          provider,
+                                                                          &accessibilityProviderCallbacksWithInstance_);
     if (ret != 0) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
                      "InterfaceDesignTest OH_ArkUI_AccessibilityProviderRegisterCallback failed");
@@ -243,12 +244,13 @@ void AccessibilityManager::Initialize(const std::string &id, ArkUI_NodeHandle ha
     g_provider = provider;
 }
 
-int32_t AccessibilityManager::FindAccessibilityNodeInfosById(const char* instanceId, int64_t elementId, ArkUI_AccessibilitySearchMode mode,
+int32_t AccessibilityManager::FindAccessibilityNodeInfosById(const char* instanceId, int64_t elementId,
+                                                             ArkUI_AccessibilitySearchMode mode,
                                                              int32_t requestId,
                                                              ArkUI_AccessibilityElementInfoList *elementList) {
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
-                 "FindAccessibilityNodeInfosById start,instanceId %{public}s elementId: %{public}ld, requestId: %{public}d, mode: %{public}d",instanceId,
-                 elementId, requestId, static_cast<int32_t>(mode));
+                 "FindAccessibilityNodeInfosById start,instanceId %{public}s elementId: %{public}ld, requestId: %{public}d, mode: %{public}d",
+                 instanceId, elementId, requestId, static_cast<int32_t>(mode));
 
     if (elementList == nullptr) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
@@ -275,8 +277,8 @@ int32_t AccessibilityManager::FindAccessibilityNodeInfosById(const char* instanc
         ArkUI_AccessibleRect rect;
         rect.leftTopX = 0;
         rect.leftTopY = 0;
-        rect.rightBottomX = 800;
-        rect.rightBottomY = 800;
+        rect.rightBottomX = NUMBER_800;
+        rect.rightBottomY = NUMBER_800;
         ret = OH_ArkUI_AccessibilityElementInfoSetScreenRect(rootNode, &rect);
         OH_ArkUI_AccessibilityElementInfoSetAccessibilityLevel(rootNode, "no");
         auto objects = FakeWidget::instance().getAllObjects(instanceId);
@@ -286,7 +288,7 @@ int32_t AccessibilityManager::FindAccessibilityNodeInfosById(const char* instanc
 
             childNodes[i] = elementId;
         }
-//  ret = OH_ArkUI_AccessibilityElementInfoSetChildNodeIds(rootNode, objects.size(), childNodes);
+
         for (int i = 0; i < objects.size(); i++) {
             int elementId = i + 1;
 
@@ -298,10 +300,10 @@ int32_t AccessibilityManager::FindAccessibilityNodeInfosById(const char* instanc
             objects[i]->fillAccessibilityElement(child);
 
             ArkUI_AccessibleRect rect;
-            rect.leftTopX = i * 100;
-            rect.leftTopY = 100;
-            rect.rightBottomX = i * 100 + 100;
-            rect.rightBottomY = 500;
+            rect.leftTopX = i * NUMBER_100;
+            rect.leftTopY = NUMBER_100;
+            rect.rightBottomX = i * NUMBER_100 + NUMBER_100;
+            rect.rightBottomY = NUMBER_500;
             OH_ArkUI_AccessibilityElementInfoSetScreenRect(child, &rect);
         }
 
@@ -328,14 +330,14 @@ int32_t AccessibilityManager::FindAccessibilityNodeInfosById(const char* instanc
                 if (elementId == 0) {
                     rect.leftTopX = 0;
                     rect.leftTopY = 0;
-                    rect.rightBottomX = 800;
-                    rect.rightBottomY = 800;
+                    rect.rightBottomX = NUMBER_800;
+                    rect.rightBottomY = NUMBER_800;
                 } else {
                     int i = elementId - 1;
-                    rect.leftTopX = i * 100;
-                    rect.leftTopY = 100;
-                    rect.rightBottomX = i * 100 + 100;
-                    rect.rightBottomY = 500;
+                    rect.leftTopX = i * NUMBER_100;
+                    rect.leftTopY = NUMBER_100;
+                    rect.rightBottomX = i * NUMBER_100 + NUMBER_100;
+                    rect.rightBottomY = NUMBER_500;
                 }
 
                 OH_ArkUI_AccessibilityElementInfoSetScreenRect(node, &rect);
@@ -354,33 +356,36 @@ int32_t AccessibilityManager::FindAccessibilityNodeInfosById(const char* instanc
                         objects[i]->fillAccessibilityElement(child);
 
                         ArkUI_AccessibleRect rect;
-                        rect.leftTopX = i * 100;
+                        rect.leftTopX = i * NUMBER_100;
                         rect.leftTopY = 0;
-                        rect.rightBottomX = i * 100 + 100;
-                        rect.rightBottomY = 500;
+                        rect.rightBottomX = i * NUMBER_100 + NUMBER_100;
+                        rect.rightBottomY = NUMBER_500;
                         OH_ArkUI_AccessibilityElementInfoSetScreenRect(child, &rect);
                     }
 
                     ret = OH_ArkUI_AccessibilityElementInfoSetChildNodeIds(node, objects.size(), childNodes);
-                   OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
-                     "FindAccessibilityNodeInfosById child2 count: %{public}ld",
-                     objects.size());
+                    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
+                        "FindAccessibilityNodeInfosById child2 count: %{public}ld",
+                        objects.size());
                 }
             }
         }
     }
 
-
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT, "FindAccessibilityNodeInfosById end");
     return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
 }
 
-int32_t AccessibilityManager::FindAccessibilityNodeInfosByText(const char* instanceId, int64_t elementId, const char *text, int32_t requestId,
-                                                               ArkUI_AccessibilityElementInfoList *elementList) {
+int32_t AccessibilityManager::FindAccessibilityNodeInfosByText(const char* instanceId, int64_t elementId,
+                                                               const char *text,
+                                                               int32_t requestId,
+                                                               ArkUI_AccessibilityElementInfoList *elementList)
+{
     return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
 }
 
-int32_t AccessibilityManager::FindFocusedAccessibilityNode(const char* instanceId, int64_t elementId, ArkUI_AccessibilityFocusType focusType,
+int32_t AccessibilityManager::FindFocusedAccessibilityNode(const char* instanceId, int64_t elementId,
+                                                           ArkUI_AccessibilityFocusType focusType,
                                                            int32_t requestId,
                                                            ArkUI_AccessibilityElementInfo *elementInfo)
 
@@ -391,7 +396,6 @@ int32_t AccessibilityManager::FindFocusedAccessibilityNode(const char* instanceI
 
         // TODO
 
-        
     return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
 }
 
@@ -404,11 +408,10 @@ int32_t AccessibilityManager::FindNextFocusAccessibilityNode(const char* instanc
                  "zhk FindNextFocusAccessibilityNode instanceId %{public}s elementId: %{public}ld, requestId: %{public}d, direction: %{public}d",
                  instanceId, elementId, requestId, static_cast<int32_t>(direction));
 
-   
     auto objects = FakeWidget::instance().getAllObjects(instanceId);
     
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
-                 "zhk objects.size() %{public}d",objects.size());
+                 "zhk objects.size() %{public}d", objects.size());
     // object.size 不包含 root节点
     if ((elementId < 0) || (elementId > objects.size())) {
         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
@@ -428,18 +431,14 @@ int32_t AccessibilityManager::FindNextFocusAccessibilityNode(const char* instanc
     }
     
     if (nextElementId >  objects.size()) {
-        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
-                 "zhk 2");
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT, "zhk 2");
         return OH_NATIVEXCOMPONENT_RESULT_FAILED;
     }
     
     if (nextElementId <=  0) {
-        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
-                 "zhk 3");
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT, "zhk 3");
         return OH_NATIVEXCOMPONENT_RESULT_FAILED;
     }
-    
-    
     
     OH_ArkUI_AccessibilityElementInfoSetElementId(elementInfo, nextElementId);
     OH_ArkUI_AccessibilityElementInfoSetParentId(elementInfo, 0);
@@ -448,14 +447,13 @@ int32_t AccessibilityManager::FindNextFocusAccessibilityNode(const char* instanc
     objects[nextElementId - 1]->fillAccessibilityElement(elementInfo);
 
     ArkUI_AccessibleRect rect;
-    rect.leftTopX = nextElementId * 100;
+    rect.leftTopX = nextElementId * NUMBER_100;
     rect.leftTopY = 0;
-    rect.rightBottomX = nextElementId * 100 + 100;
-    rect.rightBottomY = 500;
+    rect.rightBottomX = nextElementId * NUMBER_100 + NUMBER_100;
+    rect.rightBottomY = NUMBER_500;
     OH_ArkUI_AccessibilityElementInfoSetScreenRect(elementInfo, &rect);
     
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
-             "zhk 4 %{public}ld",nextElementId);
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT, "zhk 4 %{public}ld", nextElementId);
     return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
 }
 
@@ -464,12 +462,14 @@ ArkUI_AccessibilityProvider* AccessibilityManager::getProvider()
     return provider;
 }
 
-int32_t AccessibilityManager::ExecuteAccessibilityAction(const char* instanceId, int64_t elementId, ArkUI_Accessibility_ActionType action,
+int32_t AccessibilityManager::ExecuteAccessibilityAction(const char* instanceId, int64_t elementId,
+                                                         ArkUI_Accessibility_ActionType action,
                                                          ArkUI_AccessibilityActionArguments *actionArguments,
                                                          int32_t requestId) {
 
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
-                 "ExecuteAccessibilityAction elementId: %{public}ld, requestId: %{public}ld,  action: %{public}d", elementId, requestId, action);
+                 "ExecuteAccessibilityAction elementId: %{public}ld, requestId: %{public}ld,  action: %{public}d",
+                 elementId, requestId, action);
     auto object = FakeWidget::instance().getChild(elementId);
 
     if (!object)
@@ -484,8 +484,6 @@ int32_t AccessibilityManager::ExecuteAccessibilityAction(const char* instanceId,
             object->onClick();
             object->fillAccessibilityElement(element);
         }
-//         AccessibilityManager::SendAccessibilityAsyncEvent(element, ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_CLICKED);
-        //AccessibilityManager::SendAccessibilityAsyncEvent(element, ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_ELEMENT_INFO_CHANGE);
         break;
     case ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_GAIN_ACCESSIBILITY_FOCUS:
         if (object) {
@@ -512,12 +510,15 @@ int32_t AccessibilityManager::ExecuteAccessibilityAction(const char* instanceId,
     return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
 }
 
-int32_t AccessibilityManager::ClearFocusedFocusAccessibilityNode(const char* instanceId) {
+int32_t AccessibilityManager::ClearFocusedFocusAccessibilityNode(const char* instanceId)
+{
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT, "ClearFocusedFocusAccessibilityNode");
     return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
 }
 
-int32_t AccessibilityManager::GetAccessibilityNodeCursorPosition(const char* instanceId, int64_t elementId, int32_t requestId, int32_t *index) {
+int32_t AccessibilityManager::GetAccessibilityNodeCursorPosition(const char* instanceId, int64_t elementId,
+                                                                 int32_t requestId, int32_t *index)
+{
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT, "GetAccessibilityNodeCursorPosition");
     return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
 }

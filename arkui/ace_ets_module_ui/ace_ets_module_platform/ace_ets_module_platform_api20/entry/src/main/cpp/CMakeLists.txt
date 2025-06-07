@@ -14,7 +14,7 @@ include_directories(
 add_library(nativerender SHARED
     render/EGLRender.cpp
     napi_render_init.cpp
-    AccessibilityManager.cpp
+    AccessibilityManagerTest.cpp
 )
 
 # add_library(nativefunc SHARED
