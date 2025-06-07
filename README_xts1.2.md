@@ -26,9 +26,9 @@ hypium获取地址：https://gitee.com/openharmony/xts_tools/tree/OpenHarmony_fe
 
 签名网址：https://gitee.com/openharmony/xts_acts/wikis/XTS%E7%AD%BE%E5%90%8D/%E7%AD%BE%E5%90%8D%E5%B7%A5%E5%85%B7%E8%8E%B7%E5%8F%96%E6%96%B9%E5%BC%8F
 
-##### 1.5 如上图 (5) 中的BUIGD.gn文件，可以按照整改的xts1.1数据填写
+##### 1.5 如上图 (5) 中的BUIGD.gn文件，可以按照整改的xts1.1数据填写，（需要看注意事项）
 
-##### 1.6 如上图 (6) 中的Test.json文件，可以按照整改的xts1.1数据填写
+##### 1.6 如上图 (6) 中的Test.json文件，可以按照整改的xts1.1数据填写，（需要看注意事项）
 
 ### 2、注意事项，非常重要，一定要看
 
