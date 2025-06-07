@@ -329,6 +329,7 @@ export default function nativeAVScreenCaptureNdkTest() {
       console.info(Tag + "normalAVScreenCaptureSetCaptureAreaTest-------------before click:");
       let result: number = myScreenCaptureNdk.normalAVScreenCaptureSetCaptureAreaTest();
       console.info(Tag + "normalAVScreenCaptureSetCaptureAreaTest-------------res:" + result);
+      console.info(Tag + "normalAVScreenCaptureSetCaptureAreaTest-------------res:" + result);
       expect(result).assertEqual(0);
 
       let isShowDialog: number = await Utils.btnTextScreenCapture();
