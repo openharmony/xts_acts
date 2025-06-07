@@ -31,3 +31,4 @@ export const normalAVScreenCaptureStrategyForKeepCaptureDuringCallTrue: () => nu
 export const normalAVScreenCaptureContentChangedCallback: () => number;
 export const normalAVScreenCaptureSetCaptureAreaTest: () => number;
 export const normalAVScreenCaptureSetCaptureAreaTestStop: () => number;
+export const normalAVScreenCaptureSelectionCallbackSuccess: () => number;
