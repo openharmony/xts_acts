@@ -16,7 +16,7 @@ import("//test/xts/tools/build/suite.gni")
 # xts_acts_arkts1.2/ability/ability_runtime/actsAbilitytest2
 ohos_js_app_static_suite("ActsAbility2StaticTest") {
 #   test_hap = true
-#   testonly = true
+  testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsAbility2StaticTest"
   part_name = "ability_runtime"
