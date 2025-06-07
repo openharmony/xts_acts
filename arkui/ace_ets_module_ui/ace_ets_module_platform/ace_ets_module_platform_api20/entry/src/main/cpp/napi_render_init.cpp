@@ -23,7 +23,7 @@
 #include <arkui/native_node_napi.h>
 #include <arkui/native_node.h>
 #include <arkui/native_interface.h>
-#include "AccessibilityManager.h"
+#include "AccessibilityManagerTest.h"
 
 #include <arkui/native_node.h>
 #include <arkui/native_gesture.h>
@@ -538,7 +538,7 @@ void DispatchKeyEventCB(OH_NativeXComponent *component, void *window)
     // 修饰键
     uint64_t keys = 0u;
     ret = OH_NativeXComponent_GetKeyEventModifierKeyStates(keyEvent, &keys);
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0xff00, "wds", 
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0xff00, "wds",
         "OH_NativeXComponent_GetKeyEventModifierKeyStates: %{public}d", ret);
 
     if ((keys & ArkUI_ModifierKeyName::ARKUI_MODIFIER_KEY_CTRL) > 0) {
@@ -753,7 +753,7 @@ napi_value setNeedSoftKeyboard(napi_env env, napi_callback_info info)
     auto node = nodeHandleMap[nodeId];
     
     bool needSoftKeyboard = false;
-    napi_get_value_bool( env, args[1], &needSoftKeyboard);
+    napi_get_value_bool(env, args[1], &needSoftKeyboard);
     int32_t status = OH_ArkUI_XComponent_SetNeedSoftKeyboard(node, needSoftKeyboard);
 
     napi_value statusCode;

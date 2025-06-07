@@ -13,9 +13,7 @@
  * limitations under the License.
  */
 
-//
 // Created on 2024/12/2.
-//
 // Node APIs are not fully supported. To solve the compilation error of the interface cannot be found,
 // please include "napi/native_api.h".
 
@@ -40,9 +38,9 @@ GLuint LoadShader(GLenum type, const char* shaderSrc)
 
 GLuint createShaderProgram(const char* vertexShader, const char* fragShader)
 {
-     if ((vertexShader == nullptr) || (fragShader == nullptr)) {
+    if ((vertexShader == nullptr) || (fragShader == nullptr)) {
         return 0;
-     }
+    }
     GLuint vertex = LoadShader(GL_VERTEX_SHADER, vertexShader);
     GLuint fragment = LoadShader(GL_FRAGMENT_SHADER, fragShader);
     GLuint program = glCreateProgram();
@@ -210,7 +208,7 @@ void EGLRender::DrawStar()
     glFlush();
     glFinish();
     float ratio = 0.5 * height_ / width_ ;
-    GLfloat corners[24] = { 
+    GLfloat corners[24] = {
         1.0, -1.0, 1.f - ratio, -1.0, 1.0, -0.5,
         -1., 1., -1.f + ratio, 1., -1., 0.5,
         1., 1., 1., 0.5, 1.f - ratio, 1.,
@@ -233,6 +231,6 @@ EGLRender::~EGLRender()
     }
 
     if ((eglDisplay_ == nullptr) || (!eglTerminate(eglDisplay_))) {
-       OH_LOG_Print(LOG_APP, LOG_ERROR, 0xff00, "EGLCore", "Release eglDestroySurface failed");
+        OH_LOG_Print(LOG_APP, LOG_ERROR, 0xff00, "EGLCore", "Release eglDestroySurface failed");
     }
 }

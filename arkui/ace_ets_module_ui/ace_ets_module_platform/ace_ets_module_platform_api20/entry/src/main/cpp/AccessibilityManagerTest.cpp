@@ -13,9 +13,7 @@
  * limitations under the License.
  */
 
-//
 // Created on 2024/12/3.
-//
 // Node APIs are not fully supported. To solve the compilation error of the interface cannot be found,
 // please include "napi/native_api.h".
 
@@ -46,7 +44,8 @@ public:
     virtual void onClick() {}
     virtual bool Clickable() const { return false; }
 
-    void fillAccessibilityElement(ArkUI_AccessibilityElementInfo *element) {
+    void fillAccessibilityElement(ArkUI_AccessibilityElementInfo *element)
+    {
         OH_ArkUI_AccessibilityElementInfoSetComponentType(element, ObjectType());
         OH_ArkUI_AccessibilityElementInfoSetContents(element, Name().data());
         OH_ArkUI_AccessibilityElementInfoSetHintText(element, Hint());
@@ -98,7 +97,8 @@ public:
     FakeButton(const std::string &name) : AccessibleObject(name) {}
     const char *Hint() const { return "It's a button"; }
     virtual const char *ObjectType() const { return "QButton"; }
-    virtual void onClick() {
+    virtual void onClick()
+    {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "AccessibleObject", "FakeButton onClick");
     }
     virtual bool Clickable() const { return true; }
@@ -110,7 +110,8 @@ public:
 
     const char *Hint() const { return "It's a text"; }
     virtual const char *ObjectType() const { return "QText"; }
-    virtual void onClick() {
+    virtual void onClick()
+    {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "AccessibleObject", "FakeText onClick");
     }
     virtual bool Clickable() const { return false; }
@@ -119,19 +120,22 @@ public:
 
 class FakeWidget : public AccessibleObject {
 public:
-    static FakeWidget &instance() {
+    static FakeWidget &instance()
+    {
         static FakeWidget w;
         return w;
     }
 
-    const std::vector<AccessibleObject *> &getAllObjects(std::string instanceId) const {
+    const std::vector<AccessibleObject *> &getAllObjects(std::string instanceId) const
+    {
         for (int i = 0; i < objects.size(); i++) {
             objects[i]->SetName(objects[i]->OriginName() + instanceId);
         }
         return objects;
     }
 
-    AccessibleObject *getChild(int elementId) const {
+    AccessibleObject *getChild(int elementId) const
+    {
         if (elementId <= 0) {
             return nullptr;
         }
@@ -144,12 +148,14 @@ public:
     virtual bool Focusable() const { return false; }
     virtual const char *Hint() const { return "It's a widget"; }
     virtual const char *ObjectType() const { return "QWidget"; }
-    virtual void onClick() {
+    virtual void onClick()
+    {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "AccessibleObject", "FakeWidget onClick");
     }
 
 private:
-    FakeWidget() : AccessibleObject("fakeWidget") {
+    FakeWidget() : AccessibleObject("fakeWidget")
+    {
         this->AddButton();
         this->AddButton();
         this->AddButton();
@@ -157,19 +163,22 @@ private:
         this->AddText();
         this->AddText();
     }
-    ~FakeWidget() {
+    ~FakeWidget()
+    {
         for (auto &obj : objects) {
             delete obj;
         }
     }
 
 private:
-    void AddButton() {
+    void AddButton()
+    {
         static int i = 1;
         objects.push_back(new FakeButton("button" + std::to_string(i)));
         i++;
     }
-    void AddText() {
+    void AddText()
+    {
         static int i = 1;
         objects.push_back(new FakeText("text" + std::to_string(i)));
         i++;
@@ -182,7 +191,8 @@ private:
 const char *LOG_PRINT_TEXT = "AccessibilityManager";
 
 void FillEvent(ArkUI_AccessibilityEventInfo *eventInfo, ArkUI_AccessibilityElementInfo *elementInfo,
-               ArkUI_AccessibilityEventType eventType) {
+               ArkUI_AccessibilityEventType eventType)
+{
     if (eventInfo == nullptr) {
         return;
     }
@@ -198,8 +208,8 @@ void FillEvent(ArkUI_AccessibilityEventInfo *eventInfo, ArkUI_AccessibilityEleme
 ArkUI_AccessibilityProvider *g_provider = nullptr;
 
 void AccessibilityManager::SendAccessibilityAsyncEvent(ArkUI_AccessibilityElementInfo *elementInfo,
-                                                       ArkUI_AccessibilityEventType eventType) {
-
+                                                       ArkUI_AccessibilityEventType eventType)
+{
     auto eventInfo = OH_ArkUI_CreateAccessibilityEventInfo();
 
     // 1.填写event内容
@@ -212,7 +222,8 @@ void AccessibilityManager::SendAccessibilityAsyncEvent(ArkUI_AccessibilityElemen
     OH_ArkUI_SendAccessibilityAsyncEvent(g_provider, eventInfo, callback);
 }
 
-AccessibilityManager::AccessibilityManager() {
+AccessibilityManager::AccessibilityManager()
+{
     accessibilityProviderCallbacksWithInstance_.findAccessibilityNodeInfosById = FindAccessibilityNodeInfosById;
     accessibilityProviderCallbacksWithInstance_.findAccessibilityNodeInfosByText = FindAccessibilityNodeInfosByText;
     accessibilityProviderCallbacksWithInstance_.findFocusedAccessibilityNode = FindFocusedAccessibilityNode;
@@ -222,8 +233,8 @@ AccessibilityManager::AccessibilityManager() {
     accessibilityProviderCallbacksWithInstance_.getAccessibilityNodeCursorPosition = GetAccessibilityNodeCursorPosition;
 }
 
-void AccessibilityManager::Initialize(const std::string &id, ArkUI_NodeHandle handle) {
-
+void AccessibilityManager::Initialize(const std::string &id, ArkUI_NodeHandle handle)
+{
     provider = OH_ArkUI_AccessibilityProvider_Create(handle);
     OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT, "wds get provider=%{public}p", provider);
 
@@ -247,7 +258,8 @@ void AccessibilityManager::Initialize(const std::string &id, ArkUI_NodeHandle ha
 int32_t AccessibilityManager::FindAccessibilityNodeInfosById(const char* instanceId, int64_t elementId,
                                                              ArkUI_AccessibilitySearchMode mode,
                                                              int32_t requestId,
-                                                             ArkUI_AccessibilityElementInfoList *elementList) {
+                                                             ArkUI_AccessibilityElementInfoList *elementList)
+{
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
                  "FindAccessibilityNodeInfosById start,instanceId %{public}s elementId: %{public}ld, requestId: %{public}d, mode: %{public}d",
                  instanceId, elementId, requestId, static_cast<int32_t>(mode));
@@ -388,13 +400,10 @@ int32_t AccessibilityManager::FindFocusedAccessibilityNode(const char* instanceI
                                                            ArkUI_AccessibilityFocusType focusType,
                                                            int32_t requestId,
                                                            ArkUI_AccessibilityElementInfo *elementInfo)
-
 {
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
                  "FindFocusedAccessibilityNode elementId: %{public}ld, requestId: %{public}d, focusType: %{public}d",
                  elementId, requestId, static_cast<int32_t>(focusType));
-
-        // TODO
 
     return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
 }
@@ -402,8 +411,8 @@ int32_t AccessibilityManager::FindFocusedAccessibilityNode(const char* instanceI
 int32_t AccessibilityManager::FindNextFocusAccessibilityNode(const char* instanceId, int64_t elementId,
                                                              ArkUI_AccessibilityFocusMoveDirection direction,
                                                              int32_t requestId,
-                                                             ArkUI_AccessibilityElementInfo *elementInfo) {
-
+                                                             ArkUI_AccessibilityElementInfo *elementInfo)
+{
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
                  "zhk FindNextFocusAccessibilityNode instanceId %{public}s elementId: %{public}ld, requestId: %{public}d, direction: %{public}d",
                  instanceId, elementId, requestId, static_cast<int32_t>(direction));
@@ -414,8 +423,7 @@ int32_t AccessibilityManager::FindNextFocusAccessibilityNode(const char* instanc
                  "zhk objects.size() %{public}d", objects.size());
     // object.size 不包含 root节点
     if ((elementId < 0) || (elementId > objects.size())) {
-        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
-                 "zhk 1");
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT, "zhk 1");
         return OH_NATIVEXCOMPONENT_RESULT_FAILED;
     }
     int64_t nextElementId = -1;
@@ -465,8 +473,8 @@ ArkUI_AccessibilityProvider* AccessibilityManager::getProvider()
 int32_t AccessibilityManager::ExecuteAccessibilityAction(const char* instanceId, int64_t elementId,
                                                          ArkUI_Accessibility_ActionType action,
                                                          ArkUI_AccessibilityActionArguments *actionArguments,
-                                                         int32_t requestId) {
-
+                                                         int32_t requestId)
+{
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
                  "ExecuteAccessibilityAction elementId: %{public}ld, requestId: %{public}ld,  action: %{public}d",
                  elementId, requestId, action);
