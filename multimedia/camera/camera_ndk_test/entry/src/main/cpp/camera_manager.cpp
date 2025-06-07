@@ -526,12 +526,8 @@ Camera_ErrorCode NDKCamera::CreateVideoOutput(char* videoId)
 {
     LOG("ndkXTS CreateVideoOutput start.");
     videoProfile_ = cameraOutputCapability_->videoProfiles[0];
-    LOG("DEFAULT_VIDEO_PROFILE.size.width: %d", DEFAULT_VIDEO_PROFILE.size.width);
-    LOG("DEFAULT_VIDEO_PROFILE.size.height: %d", DEFAULT_VIDEO_PROFILE.size.height);
     for (decltype(cameraOutputCapability_->videoProfilesSize) i = 0; i < cameraOutputCapability_->videoProfilesSize;
          i++) {
-        LOG("cameraOutputCapability_->videoProfiles[i]->size.width: %d", cameraOutputCapability_->videoProfiles[i]->size.width);
-        LOG("cameraOutputCapability_->videoProfiles[i]->size.height: %d", cameraOutputCapability_->videoProfiles[i]->size.height);
         if (cameraOutputCapability_->videoProfiles[i]->size.width == DEFAULT_VIDEO_PROFILE.size.width &&
             cameraOutputCapability_->videoProfiles[i]->size.height == DEFAULT_VIDEO_PROFILE.size.height) {
             videoProfile_ = cameraOutputCapability_->videoProfiles[i];
