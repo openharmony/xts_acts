@@ -1105,7 +1105,7 @@ export default function ReminderAgentManagerTest() {
                         type: 0,
                     }
                 ],
-                RingChannel: reminderAgent.RingChannel.RING_CHANNEL_ALARM
+                ringChannel: reminderAgent.RingChannel.RING_CHANNEL_ALARM
             }
             let timer = {
               reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,

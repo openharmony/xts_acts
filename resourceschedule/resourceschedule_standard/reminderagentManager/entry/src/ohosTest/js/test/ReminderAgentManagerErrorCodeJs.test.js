@@ -311,6 +311,71 @@ export default function ReminderAgentManagerErrorCodeTest() {
             } catch (error) {
                 console.log("reminderErrorCode_0700 publishReminder error.code:" + error.code);
             }
+        })
+
+        /**
+         * @tc.number: reminderErrorCode_0800
+         * @tc.name: reminderErrorCode_0800
+         * @tc.desc: test updateReminder promise function with reminderId is not exist
+         * @tc.level: Level 3
+         * @tc.type: Function
+         * @tc.size: MediumTest
+         */
+        it("reminderErrorCode_0800", Level.LEVEL3, async function (done) {
+            console.info('----------------------reminderErrorCode_0800---------------------------');
+            reminderAgent.cancelAllReminders().then((err, data) => {
+                console.info('reminderErrorCode_0800 cancelAllReminders success');
+                expect(true).assertTrue();
+            });
+            const reminderId = 1231;
+            let timer = {
+              reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
+              triggerTimeInSeconds: 10
+            }
+            try {
+                    reminderAgent.updateReminder(reminderId, timer).then(() => {
+                        console.log("reminderErrorCode_0800 update reminder succeed");
+                        expect(true).assertTrue();
+                        done();
+                    }).catch((err) => {
+                        console.error("promise err code:" + err.code + " message:" + err.message);
+                        expect(err.code == 1700003).assertTrue();
+                        done();
+                    });         
+            } catch (error) {
+                console.log("reminderErrorCode_0800 publishReminder error.code:" + error.code);
+            }
+        })
+        
+        /**
+         * @tc.number: reminderErrorCode_0900
+         * @tc.name: reminderErrorCode_0900
+         * @tc.desc: test updateReminder promise function with reminderId is -1
+         * @tc.level: Level 3
+         * @tc.type: Function
+         * @tc.size: MediumTest
+         */
+        it("reminderErrorCode_0900", Level.LEVEL3, async function (done) {
+            console.info('----------------------reminderErrorCode_0900---------------------------');
+            reminderAgent.cancelAllReminders().then((err, data) => {
+                console.info('reminderErrorCode_0900 cancelAllReminders success');
+            });
+            const reminderId = -1;
+            let timer = {
+              reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
+              triggerTimeInSeconds: 10
+            }
+            try {
+                reminderAgent.updateReminder(reminderId, timer).then(() => {
+                    console.log("reminderErrorCode_0900 update reminder succeed");
+                }).catch((err) => {
+                    console.error("reminderErrorCode_0900 promise err code:" + err.code + " message:" + err.message);
+                });         
+            } catch (error) {
+                console.log("reminderErrorCode_0900 updateReminder error.code:" + error.code);
+                expect(error.code == 1700007).assertTrue();
+                done();
+            }
         })     
 
     })
