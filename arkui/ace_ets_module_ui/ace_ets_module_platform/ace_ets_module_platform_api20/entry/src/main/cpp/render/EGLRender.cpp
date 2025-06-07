@@ -30,15 +30,16 @@
 #include <hilog/log.h>
 #include <iostream>
 
-
-GLuint LoadShader(GLenum type, const char* shaderSrc) {
+GLuint LoadShader(GLenum type, const char* shaderSrc)
+{
     GLuint shader = glCreateShader(type);
     glShaderSource(shader, 1, &shaderSrc, nullptr);
     glCompileShader(shader);
     return shader;
 }
 
-GLuint createShaderProgram(const char* vertexShader, const char* fragShader) {
+GLuint createShaderProgram(const char* vertexShader, const char* fragShader)
+{
      if ((vertexShader == nullptr) || (fragShader == nullptr)) {
         return 0;
      }
@@ -54,7 +55,8 @@ GLuint createShaderProgram(const char* vertexShader, const char* fragShader) {
     return program;
 }
 
-void EGLRender::createStar() {
+void EGLRender::createStar() 
+{
     starVertices.clear();
     float ratio = 1.f * height_ / width_;
     float inner = 0.3;
@@ -65,12 +67,12 @@ void EGLRender::createStar() {
     for (int i = 0; i < 5; ++i) {
         starVertices.push_back(CenterX);
         starVertices.push_back(CenterY);
-        starVertices.push_back(inner * cosf(-PI * 0.5f - pentaAngle * 2.f - pentaAngle * i ) * ratio);
-        starVertices.push_back(inner * sinf(-PI * 0.5f - pentaAngle * 2.f - pentaAngle * i ));
-        starVertices.push_back(outer * cosf(PI * 0.5f - pentaAngle * i ) * ratio);
-        starVertices.push_back(outer * sinf(PI * 0.5f - pentaAngle * i ) );
-        starVertices.push_back(inner * cosf(-PI * 0.5f - pentaAngle * 3.f - pentaAngle * i ) * ratio);
-        starVertices.push_back(inner * sinf(-PI * 0.5f - pentaAngle * 3.f - pentaAngle * i ));
+        starVertices.push_back(inner * cosf(-PI * 0.5f - pentaAngle * 2.f - pentaAngle * i) * ratio);
+        starVertices.push_back(inner * sinf(-PI * 0.5f - pentaAngle * 2.f - pentaAngle * i));
+        starVertices.push_back(outer * cosf(PI * 0.5f - pentaAngle * i) * ratio);
+        starVertices.push_back(outer * sinf(PI * 0.5f - pentaAngle * i));
+        starVertices.push_back(inner * cosf(-PI * 0.5f - pentaAngle * 3.f - pentaAngle * i) * ratio);
+        starVertices.push_back(inner * sinf(-PI * 0.5f - pentaAngle * 3.f - pentaAngle * i));
     }
 }
 
@@ -98,7 +100,8 @@ void EGLRender::createStarColor()
     }
 }
 
-void EGLRender::SetUpEGLContext(void* window, int64_t surface_id) {
+void EGLRender::SetUpEGLContext(void* window, int64_t surface_id)
+{
     this->surface_id = surface_id;
     eglWindow_ = (EGLNativeWindowType)(window);
     eglDisplay_ = eglGetDisplay(EGL_DEFAULT_DISPLAY);
@@ -117,13 +120,15 @@ void EGLRender::SetUpEGLContext(void* window, int64_t surface_id) {
     createStarColor();
 }
 
-void EGLRender::SetEGLWindowSize(int width, int height) {
+void EGLRender::SetEGLWindowSize(int width, int height)
+{
     width_ = width;
     height_ = height;
     createStar();
 }
 
-void EGLRender::drawTriangleFan(const GLfloat shapeVertices[], uint32_t length) {
+void EGLRender::drawTriangleFan(const GLfloat shapeVertices[], uint32_t length)
+{
     glVertexAttribPointer(shader_vertex_position, 2, GL_FLOAT, GL_FALSE, 0, shapeVertices);
     glEnableVertexAttribArray(shader_vertex_position);
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, starColors.data());
@@ -133,7 +138,8 @@ void EGLRender::drawTriangleFan(const GLfloat shapeVertices[], uint32_t length) 
     glDisableVertexAttribArray(1);
 }
 
-void EGLRender::drawTriangleFanColor(const GLfloat* color, const GLfloat shapeVertices[], uint32_t length) {
+void EGLRender::drawTriangleFanColor(const GLfloat* color, const GLfloat shapeVertices[], uint32_t length)
+{
     glVertexAttribPointer(shader_vertex_position, 2, GL_FLOAT, GL_FALSE, 0, shapeVertices);
     glEnableVertexAttribArray(shader_vertex_position);
     glVertexAttrib4fv(1, color);
@@ -141,7 +147,8 @@ void EGLRender::drawTriangleFanColor(const GLfloat* color, const GLfloat shapeVe
     glDisableVertexAttribArray(shader_vertex_position);
 }
 
-void EGLRender::drawTriangles(const GLfloat* color, const GLfloat shapeVertices[], uint32_t length) {
+void EGLRender::drawTriangles(const GLfloat* color, const GLfloat shapeVertices[], uint32_t length)
+{
     glVertexAttribPointer(shader_vertex_position, 2, GL_FLOAT, GL_FALSE, 0, shapeVertices);
     glEnableVertexAttribArray(shader_vertex_position);
     glVertexAttrib4fv(1, color);
@@ -149,7 +156,8 @@ void EGLRender::drawTriangles(const GLfloat* color, const GLfloat shapeVertices[
     glDisableVertexAttribArray(shader_vertex_position);
 }
 
-void EGLRender::DrawBackground(const GLfloat* color) {
+void EGLRender::DrawBackground(const GLfloat* color)
+{
     eglMakeCurrent(eglDisplay_, eglSurface_, eglSurface_, eglContext_);
     glViewport(0, 0, width_, height_);
     glClearColor(0.9, 0.9, 0.9, 1);
@@ -161,7 +169,8 @@ void EGLRender::DrawBackground(const GLfloat* color) {
     eglSwapBuffers(eglDisplay_, eglSurface_);
 }
 
-void EGLRender::drawLine(const GLfloat* color, const GLfloat lneVertices[], uint32_t length) {
+void EGLRender::drawLine(const GLfloat* color, const GLfloat lneVertices[], uint32_t length)
+{
     glVertexAttribPointer(shader_vertex_position, 2, GL_FLOAT, GL_FALSE, 0, lneVertices);
     glEnableVertexAttribArray(shader_vertex_position);
     glVertexAttrib4fv(1, color);
@@ -170,19 +179,16 @@ void EGLRender::drawLine(const GLfloat* color, const GLfloat lneVertices[], uint
     glDisableVertexAttribArray(shader_vertex_position);
 }
 
-void EGLRender::DrawOnFrame() {
+void EGLRender::DrawOnFrame()
+{
     frameCnt += 1;
     frameCnt %= 100;
     eglMakeCurrent(eglDisplay_, eglSurface_, eglSurface_, eglContext_);
     glViewport(frameCnt * 10, 0, width_, height_);
-    //glViewport(0, 0, width_, height_);
     glClearColor(0.9, 0.9, 0.9, 1);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glUseProgram(program_);
     const GLfloat red[] = {1, 0, 0, 1.0f};
-//    GLfloat linePoint[] = {
-//        -1.0f + frameCnt / 100.f * 2.f, -1.0, -1.0f + frameCnt / 100.f * 2.f, 1.0f
-//    };
         GLfloat linePoint[] = {
         -1.0f , -1.0, -1.0f, 1.0f
     };
@@ -192,7 +198,8 @@ void EGLRender::DrawOnFrame() {
     eglSwapBuffers(eglDisplay_, eglSurface_);
 }
 
-void EGLRender::DrawStar() {
+void EGLRender::DrawStar()
+{
     eglMakeCurrent(eglDisplay_, eglSurface_, eglSurface_, eglContext_);
     glViewport(0, 0, width_, height_);
     glClearColor(0.9, 0.9, 0.9, 1);
@@ -215,7 +222,8 @@ void EGLRender::DrawStar() {
     auto ret = eglSwapBuffers(eglDisplay_, eglSurface_);
 }
 
-EGLRender::~EGLRender() {
+EGLRender::~EGLRender()
+{
     if ((eglDisplay_ == nullptr) || (eglSurface_ == nullptr) || (!eglDestroySurface(eglDisplay_, eglSurface_))) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, 0xff00, "EGLCore", "Release eglDestroySurface failed");
     }

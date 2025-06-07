@@ -29,6 +29,8 @@
 #include <arkui/native_gesture.h>
 #include <arkui/native_interface.h>
 
+static int NUMBER_200 = 200;
+
 // libraryname模式不要使用xcomponentId区分组件
 static std::unordered_map<std::string, ArkUI_NodeHandle> nodeHandleMap;
 static std::unordered_map<std::string, AccessibilityManager*> accessibilityProviderMap;
@@ -376,13 +378,14 @@ ArkUI_NativeNodeAPI_1 * nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1*>(
         OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1")
     );
 
-std::string value2String(napi_env env, napi_value value){
+std::string value2String(napi_env env, napi_value value)
+{
     size_t stringSize = 0;
     napi_get_value_string_utf8(env, value, nullptr, 0, &stringSize);
     std::string valueString;
     valueString.resize(stringSize);
     napi_get_value_string_utf8(env, value, &valueString[0], stringSize+1, &stringSize);
-    if(valueString.size() == 9) valueString.pop_back();
+    if (valueString.size() == 9) valueString.pop_back();
     return valueString;
 }
 
@@ -402,11 +405,11 @@ void OnSurfaceChanged(OH_ArkUI_SurfaceHolder* holder, uint64_t width, uint64_t h
     if (rendererMap.count(holder)) {
         auto render = rendererMap[holder];
         render->SetEGLWindowSize(width, height);
-//        render->DrawStar();
     }
 }
 
-void OnSurfaceDestroyed(OH_ArkUI_SurfaceHolder* holder) {
+void OnSurfaceDestroyed(OH_ArkUI_SurfaceHolder* holder)
+{
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0xff00, "wds", "on destroyed");
     auto window = OH_ArkUI_XComponent_GetNativeWindow(holder);
     if (rendererMap.count(holder)) {
@@ -441,54 +444,58 @@ void OnSurfaceHide(OH_ArkUI_SurfaceHolder* holder)
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0xff00, "wds", "on surface hide");
 }
 
-void SetXComponentID(ArkUI_NodeHandle node,  const char* id) {
+void SetXComponentID(ArkUI_NodeHandle node,  const char* id)
+{
     ArkUI_AttributeItem item = {nullptr, 0, id};
     nodeAPI->setAttribute(node, NODE_XCOMPONENT_ID, &item);
     return;
 }
 
-void SetHeight(ArkUI_NodeHandle node, float height) {
+void SetHeight(ArkUI_NodeHandle node, float height)
+{
     ArkUI_NumberValue value[] = {{.f32 = height}};
     ArkUI_AttributeItem item = {value, 1};
     nodeAPI->setAttribute(node, NODE_HEIGHT, &item);
     return;
 }
-void SetWidth(ArkUI_NodeHandle node, float width) {
+void SetWidth(ArkUI_NodeHandle node, float width)
+{
     ArkUI_NumberValue value[] = {{.f32 = width}};
     ArkUI_AttributeItem item = {value, 1};
     nodeAPI->setAttribute(node, NODE_WIDTH, &item);
     return;
 }
 
-void focusable(ArkUI_NodeHandle handle, bool focusable) 
+void focusable(ArkUI_NodeHandle handle, bool focusable)
 {
     ArkUI_NumberValue value[] = {{.i32 = static_cast<int>(focusable)}};
     ArkUI_AttributeItem item = {value, 1};
     nodeAPI->setAttribute(handle, NODE_FOCUSABLE, &item);
 }
 
-void defaultFocus(ArkUI_NodeHandle handle, bool defaultFocus) 
+void defaultFocus(ArkUI_NodeHandle handle, bool defaultFocus)
 {
     ArkUI_NumberValue value[] = {{.i32 = static_cast<int>(defaultFocus)}};
     ArkUI_AttributeItem item = {value, 1};
     nodeAPI->setAttribute(handle, NODE_DEFAULT_FOCUS, &item);
 }
 
-void focusOnTouch(ArkUI_NodeHandle handle, bool focusOnTouch) 
+void focusOnTouch(ArkUI_NodeHandle handle, bool focusOnTouch)
 {
     ArkUI_NumberValue value[] = {{.i32 = static_cast<int>(focusOnTouch)}};
     ArkUI_AttributeItem item = {value, 1};
     nodeAPI->setAttribute(handle, NODE_FOCUS_ON_TOUCH, &item);
 }
 
-void setBackgroundColor(ArkUI_NodeHandle handle) 
+void setBackgroundColor(ArkUI_NodeHandle handle)
 {
     ArkUI_NumberValue value[] = { {.u32=0xFFFF0000} };
     ArkUI_AttributeItem item = { value, sizeof(value)/sizeof(ArkUI_NumberValue) };
     nodeAPI->setAttribute(handle, NODE_BACKGROUND_COLOR, &item);
 }
 
-void DispatchMouseEventCB(OH_NativeXComponent *component, void *window) {
+void DispatchMouseEventCB(OH_NativeXComponent *component, void *window)
+{
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0xff00, "wds", "DispatchMouseEventCB");
     OH_NativeXComponent_ExtraMouseEventInfo *extMouseEvent = nullptr;
     OH_NativeXComponent_MouseEvent mouseEvent;
@@ -518,7 +525,8 @@ void DispatchMouseEventCB(OH_NativeXComponent *component, void *window) {
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0xff00, "wds", "mouse: %{public}s", mouseStateString.c_str());
 }
 
-void DispatchKeyEventCB(OH_NativeXComponent *component, void *window) {
+void DispatchKeyEventCB(OH_NativeXComponent *component, void *window)
+{
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0xff00, "wds", "DispatchKeyEventCB");
     OH_NativeXComponent_KeyEvent *keyEvent = nullptr;
     int ret = OH_NativeXComponent_GetKeyEvent(component, &keyEvent);
@@ -530,7 +538,8 @@ void DispatchKeyEventCB(OH_NativeXComponent *component, void *window) {
     // 修饰键
     uint64_t keys = 0u;
     ret = OH_NativeXComponent_GetKeyEventModifierKeyStates(keyEvent, &keys);
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0xff00, "wds", "OH_NativeXComponent_GetKeyEventModifierKeyStates: %{public}d", ret);
+    OH_LOG_Print(LOG_APP, LOG_ERROR, 0xff00, "wds", 
+        "OH_NativeXComponent_GetKeyEventModifierKeyStates: %{public}d", ret);
 
     if ((keys & ArkUI_ModifierKeyName::ARKUI_MODIFIER_KEY_CTRL) > 0) {
         // Ctrl键被按下
@@ -554,7 +563,7 @@ void DispatchKeyEventCB(OH_NativeXComponent *component, void *window) {
     if (ret != ARKUI_ERROR_CODE_NO_ERROR) {
         // 错误处理
     }
-    if(isCapsLockOn) {
+    if (isCapsLockOn) {
         stateString += " capslock: on;";
         indicatorStateString = "key: " + keyname + " capslock: on";
     } else {
@@ -566,7 +575,7 @@ void DispatchKeyEventCB(OH_NativeXComponent *component, void *window) {
     if (ret != ARKUI_ERROR_CODE_NO_ERROR) {
         // 错误处理
     }
-    if(isNumLockOn) {
+    if (isNumLockOn) {
         stateString += " numlock: on;";
         indicatorStateString = "key: " + keyname + " numlock: on";
     } else {
@@ -578,7 +587,7 @@ void DispatchKeyEventCB(OH_NativeXComponent *component, void *window) {
     if (ret != ARKUI_ERROR_CODE_NO_ERROR) {
         // 错误处理
     }
-    if(isScrollLockOn) {
+    if (isScrollLockOn) {
         stateString += " scrolllock: on;";
         indicatorStateString = "key: " + keyname + " scrolllock: on";
     } else {
@@ -587,21 +596,21 @@ void DispatchKeyEventCB(OH_NativeXComponent *component, void *window) {
     OH_LOG_Print(LOG_APP, LOG_ERROR, 0xff00, "wds", "key: %{public}s", stateString.c_str());
 }
 
-napi_value GetKeyString(napi_env env, napi_callback_info info) 
+napi_value GetKeyString(napi_env env, napi_callback_info info)
 {
     napi_value cppStr;
     napi_create_string_latin1(env, keyStateString.c_str(), keyStateString.size(), &(cppStr));
     return cppStr;
 }
 
-napi_value GetIndicatorString(napi_env env, napi_callback_info info) 
+napi_value GetIndicatorString(napi_env env, napi_callback_info info)
 {
     napi_value cppStr;
     napi_create_string_latin1(env, indicatorStateString.c_str(), indicatorStateString.size(), &(cppStr));
     return cppStr;
 }
 
-napi_value GetMouseString(napi_env env, napi_callback_info info) 
+napi_value GetMouseString(napi_env env, napi_callback_info info)
 {
     napi_value cppStr;
     napi_create_string_latin1(env, mouseStateString.c_str(), mouseStateString.size(), &(cppStr));
@@ -634,10 +643,10 @@ napi_value createNativeNode(napi_env env, napi_callback_info info)
     ArkUI_NodeHandle xcNode = nullptr;
     xcNode = nodeAPI->createNode(ARKUI_NODE_XCOMPONENT);
     SetXComponentID(xcNode, "surfaceRect");
-    SetWidth(xcNode, 200);
-    SetHeight(xcNode, 200);
+    SetWidth(xcNode, NUMBER_200);
+    SetHeight(xcNode, NUMBER_200);
     setBackgroundColor(xcNode);
-    focusable(xcNode,true);
+    focusable(xcNode, true);
     defaultFocus(xcNode, true);
     focusOnTouch(xcNode, true);
 
@@ -647,16 +656,16 @@ napi_value createNativeNode(napi_env env, napi_callback_info info)
     static OH_NativeXComponent_MouseEvent_Callback mouseCallback = {
         .DispatchMouseEvent = DispatchMouseEventCB,
     };
-    OH_NativeXComponent_RegisterMouseEventCallback(nativeXComponent, &mouseCallback );
+    OH_NativeXComponent_RegisterMouseEventCallback(nativeXComponent, &mouseCallback);
 
     OH_ArkUI_NodeContent_SetUserData(nodeContentHandle_, xcNode);
 
-    auto nodeContentEvent = [](ArkUI_NodeContentEvent *event){
+    auto nodeContentEvent = [](ArkUI_NodeContentEvent *event) {
         ArkUI_NodeContentHandle handle = OH_ArkUI_NodeContentEvent_GetNodeContentHandle(event);
         auto xc = reinterpret_cast<ArkUI_NodeHandle>(OH_ArkUI_NodeContent_GetUserData(handle));
         if (xc == nullptr) return;
     
-        if (OH_ArkUI_NodeContentEvent_GetEventType(event) == NODE_CONTENT_EVENT_ON_ATTACH_TO_WINDOW){
+        if (OH_ArkUI_NodeContentEvent_GetEventType(event) == NODE_CONTENT_EVENT_ON_ATTACH_TO_WINDOW) {
             OH_ArkUI_NodeContent_AddNode(handle, xc);
         } else {
             OH_ArkUI_NodeContent_RemoveNode(handle, xc);
@@ -669,7 +678,8 @@ napi_value createNativeNode(napi_env env, napi_callback_info info)
     return nullptr;
 }
 
-napi_value bindNode(napi_env env, napi_callback_info info) {
+napi_value bindNode(napi_env env, napi_callback_info info)
+{
     size_t argc = 2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
@@ -689,12 +699,11 @@ napi_value bindNode(napi_env env, napi_callback_info info) {
     OH_ArkUI_XComponent_RegisterOnFrameCallback(handle, OnFrameCallback);
     OH_ArkUI_SurfaceHolder_AddSurfaceCallback(holder, callback);
     
-    //OH_ArkUI_XComponent_UnregisterOnFrameCallback(handle);
-    
     return nullptr;
 }
 
-napi_value unbindNode(napi_env env, napi_callback_info info) {
+napi_value unbindNode(napi_env env, napi_callback_info info)
+{
     size_t argc = 1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
@@ -705,7 +714,8 @@ napi_value unbindNode(napi_env env, napi_callback_info info) {
     return nullptr;
 }
 
-napi_value setFrameRate(napi_env env, napi_callback_info info) {
+napi_value setFrameRate(napi_env env, napi_callback_info info)
+{
     size_t argc = 4;
     napi_value args[4] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
@@ -713,7 +723,7 @@ napi_value setFrameRate(napi_env env, napi_callback_info info) {
     auto node = nodeHandleMap[nodeId];
     
     int32_t min = 0;
-    napi_get_value_int32( env, args[1], &min);
+    napi_get_value_int32(env, args[1], &min);
 
     int32_t max = 0;
     napi_get_value_int32(env, args[2], &max);
@@ -734,7 +744,8 @@ napi_value setFrameRate(napi_env env, napi_callback_info info) {
     return statusCode;
 }
 
-napi_value setNeedSoftKeyboard(napi_env env, napi_callback_info info) {
+napi_value setNeedSoftKeyboard(napi_env env, napi_callback_info info)
+{
     size_t argc = 2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
@@ -750,7 +761,8 @@ napi_value setNeedSoftKeyboard(napi_env env, napi_callback_info info) {
     return statusCode;
 }
 
-napi_value disposeProvider(napi_env env, napi_callback_info info) {
+napi_value disposeProvider(napi_env env, napi_callback_info info)
+{
     size_t argc = 1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
@@ -763,7 +775,8 @@ napi_value disposeProvider(napi_env env, napi_callback_info info) {
     return nullptr;
 }
 
-napi_value createProvider(napi_env env, napi_callback_info info) {
+napi_value createProvider(napi_env env, napi_callback_info info)
+{
     size_t argc = 1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
@@ -774,7 +787,8 @@ napi_value createProvider(napi_env env, napi_callback_info info) {
     return nullptr;
 }
 
-napi_value registerFrameCallback(napi_env env, napi_callback_info info) {
+napi_value registerFrameCallback(napi_env env, napi_callback_info info)
+{
     size_t argc = 1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
@@ -788,7 +802,8 @@ napi_value registerFrameCallback(napi_env env, napi_callback_info info) {
     return statusCode;
 }
 
-napi_value unregisterFrameCallback(napi_env env, napi_callback_info info) {
+napi_value unregisterFrameCallback(napi_env env, napi_callback_info info)
+{
     size_t argc = 1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);

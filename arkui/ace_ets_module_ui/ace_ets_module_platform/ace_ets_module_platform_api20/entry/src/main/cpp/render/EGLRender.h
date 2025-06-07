@@ -60,8 +60,7 @@ public:
     OH_NativeXComponent_Callback renderCallback_;
     OH_NativeXComponent_ExpectedRateRange renderFrameRate_;
 
-    
-private:    
+private:
     int frameCnt = 0;
     void createStar();
     
