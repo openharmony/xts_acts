@@ -53,7 +53,7 @@
 
 #### 9 用例名命名
 
-![输入图片说明](/figures/images1.2/778404BE-B5B2-4D1C-D9AF-29255DFE7542.png)
+![用例名图片](/figures/images1.2/778404BE-B5B2-4D1C-D9AF-29255DFE7542.png)
 
 |arkts类型|示例|
 |-|-|
@@ -61,9 +61,9 @@
 |1.2|abilityConstant_WindowMode_static_[***static***]()_0100|
 |1.2|abilityConstant_WindowMode_static_[***interop***]()_0100|
 
-#### 10 BUILD.gn文件由于当前ohosTest不能使用，故test_hap字段需注释
+#### 10 BUILD.gn文件由于当前ohosTest不可用，故test_hap字段需注释
 
-![输入图片说明](/figures/images1.2/2F962E71-41E3-4529-C392-AA15B944208D.png)
+![test_hap图](/figures/images1.2/6EC0A8B3-1ADD-4613-CA9F-17A8CFD89397.png)
 
 #### 11 BUILD.gn必须使用1.2模板名ohos_js_app_static_suite，否则编译环境是1.1
 
@@ -74,11 +74,11 @@
 
 #### 12 Test.json中的"module-name"字段当前必须写成 entry 
 
-![输入图片说明](/figures/images1.2/AC2489E4-1156-43FC-ED74-0FD9D65AADF7.png)
+![module_name图](/figures/images1.2/AC2489E4-1156-43FC-ED74-0FD9D65AADF7.png)
 
 #### 13 Test.json中的"test-file-name" 需要和BUILD.gn中的hap_name名字相同
 
-![输入图片说明](/figures/images1.2/C04F87D7-BB2C-4BE9-815F-84C9C925EEF3.png)
+![test_file_name图](/figures/images1.2/C04F87D7-BB2C-4BE9-815F-84C9C925EEF3.png)
 
-![输入图片说明](/figures/images1.2/E5F26AE2-57F1-437E-A605-C1FD2AD39CF9.png)
+![hap_name2图](/figures/images1.2/E5F26AE2-57F1-437E-A605-C1FD2AD39CF9.png)
 

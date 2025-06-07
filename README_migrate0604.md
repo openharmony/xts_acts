@@ -16,4 +16,4 @@ hypium获取地址：https://gitee.com/openharmony/xts_tools/tree/OpenHarmony_fe
 
 #### 4、 ohostest中的测试用例迁移到main/src文件夹下，然后删除掉ohostest，如果main下没有src，则可以手动创建
 
-![输入图片说明](/figures/images1.2/21374103-0610-45CD-9F03-15094602BEB7.png)
+![xts代码图片](/figures/images1.2/21374103-0610-45CD-9F03-15094602BEB7.png)
