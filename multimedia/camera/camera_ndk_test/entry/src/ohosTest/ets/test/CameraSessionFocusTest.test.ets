@@ -431,23 +431,17 @@ export default function cameraSessionFocusTest() {
      */
     it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_MODE_PROMISE_004', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_MODE_PROMISE_004--------------");
-      let sessionIsFocusModeSupported = cameraObj.sessionIsFocusModeSupported(Camera_FocusMode.FOCUS_MODE_CONTINUOUS_AUTO);
-      if (sessionIsFocusModeSupported) {
-        cameraObj.sessionSetFocusMode(Camera_FocusMode.FOCUS_MODE_CONTINUOUS_AUTO);
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_MODE_PROMISE_004 finish");
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_MODE_PROMISE_004 PASSED with FocusMode is: " + 1);
-        let focusMode = cameraObj.sessionGetFocusMode();
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_MODE_PROMISE_004 finish");
-        if (focusMode == Camera_FocusMode.FOCUS_MODE_CONTINUOUS_AUTO) {
-          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_MODE_PROMISE_004 PASSED with FocusMode is: " + focusMode);
-        }
-        else {
-          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_MODE_PROMISE_004 FAILED with FocusMode is: " + focusMode);
-          expect().assertFail();
-        }
+      cameraObj.sessionSetFocusMode(Camera_FocusMode.FOCUS_MODE_CONTINUOUS_AUTO);
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_MODE_PROMISE_004 finish");
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_MODE_PROMISE_004 PASSED with FocusMode is: " + 1);
+      let focusMode = cameraObj.sessionGetFocusMode();
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_MODE_PROMISE_004 finish");
+      if (focusMode == Camera_FocusMode.FOCUS_MODE_CONTINUOUS_AUTO) {
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_MODE_PROMISE_004 PASSED with FocusMode is: " + focusMode);
       }
       else {
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_MODE_PROMISE_004 sessionIsFocusModeSupported = " + sessionIsFocusModeSupported);
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_MODE_PROMISE_004 FAILED with FocusMode is: " + focusMode);
+        expect().assertFail();
       }
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_MODE_PROMISE_004 ends here");
     });
@@ -482,23 +476,17 @@ export default function cameraSessionFocusTest() {
      */
     it('SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_MODE_PROMISE_006', Level.LEVEL2, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_MODE_PROMISE_006--------------");
-      let sessionIsFocusModeSupported = cameraObj.sessionIsFocusModeSupported(Camera_FocusMode.FOCUS_MODE_AUTO);
-      if (sessionIsFocusModeSupported) {
-        cameraObj.sessionSetFocusMode(Camera_FocusMode.FOCUS_MODE_AUTO);
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_MODE_PROMISE_006 finish");
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_MODE_PROMISE_006 PASSED with FocusMode is: " + 2);
-        let focusMode = cameraObj.sessionGetFocusMode();
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_MODE_PROMISE_006 finish");
-        if (focusMode == Camera_FocusMode.FOCUS_MODE_AUTO) {
-          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_MODE_PROMISE_006 PASSED with FocusMode is: " + focusMode);
-        }
-        else {
-          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_MODE_PROMISE_006 FAILED with FocusMode is: " + focusMode);
-          expect().assertFail();
-        }
+      cameraObj.sessionSetFocusMode(Camera_FocusMode.FOCUS_MODE_AUTO);
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_MODE_PROMISE_006 finish");
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_MODE_PROMISE_006 PASSED with FocusMode is: " + 2);
+      let focusMode = cameraObj.sessionGetFocusMode();
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_MODE_PROMISE_006 finish");
+      if (focusMode == Camera_FocusMode.FOCUS_MODE_AUTO) {
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_MODE_PROMISE_006 PASSED with FocusMode is: " + focusMode);
       }
       else {
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_MODE_PROMISE_006 sessionIsFocusModeSupported = " + sessionIsFocusModeSupported);
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_MODE_PROMISE_006 FAILED with FocusMode is: " + focusMode);
+        expect().assertFail();
       }
       console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_SESSION_SET_GET_FOCUS_MODE_PROMISE_006 ends here");
     });
