@@ -14,7 +14,7 @@
  */
 
 import webSocketTest from './WebSocketTest';
-import webSocketHasNetTest from './WebSocketHasNetTest';
+import webSocketHasNetTest from './WebSocketHasNetTest.test';
 import connection from '@ohos.net.connection';
 let netHandle = connection.getDefaultNetSync();
 
