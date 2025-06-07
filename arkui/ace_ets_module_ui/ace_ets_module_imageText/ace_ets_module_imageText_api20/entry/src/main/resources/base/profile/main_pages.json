@@ -20,6 +20,9 @@
     "MainAbility/pages/TextArea/TextAreaEnableAutoSpacing",
     "MainAbility/pages/TextInput/TextInputEnableAutoSpacing",
     "MainAbility/pages/TextInput/TextInputEnableAutoFillAnimation",
-    "MainAbility/pages/TextArea/TextAreaMinLines"
+    "MainAbility/pages/TextArea/TextAreaMinLines",
+    "MainAbility/pages/Text/TextShaderStyle",
+    "MainAbility/pages/SymbolGlyph/SymbolGlyphShaderStyle",
+    "MainAbility/pages/StyledString/TextStyleSuperscript"
   ]
 }
