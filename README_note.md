@@ -61,7 +61,7 @@
 |1.2|abilityConstant_WindowMode_static_[***static***]()_0100|
 |1.2|abilityConstant_WindowMode_static_[***interop***]()_0100|
 
-#### 10 BUILD.gn文件由于当前ohosTest不可用，故test_hap字段需注释
+#### 10 由于当前ohosTest不可用，故BUILD.gn文件中test_hap字段需注释
 
 ![test_hap图](/figures/images1.2/6EC0A8B3-1ADD-4613-CA9F-17A8CFD89397.png)
 
