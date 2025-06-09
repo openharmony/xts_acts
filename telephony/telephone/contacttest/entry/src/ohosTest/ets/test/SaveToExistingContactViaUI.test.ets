@@ -207,11 +207,21 @@ export default function SaveToExistingContactViaUITest() {
             } else {
                 console.log(`${caseName} addContact: success>${JSON.stringify(err)}`);
                 ExpectTrue(data > 0);
-                let promise = contact.saveToExistingContactViaUI(context, {
+                contact.saveToExistingContactViaUI(context, {
                     phoneNumbers: [{
                         phoneNumber: "13555558888"
                     }],
+                }).then((data: number) => {
+                    console.log(`${caseName} SaveToExistingContactViaUI: data>${JSON.stringify(data)}`);
+                    ExpectTrue(data > 0);
+                    done();
+                }).catch((err: BusinessError) => {
+                    console.log(`${caseName} SaveToExistingContactViaUI: err>${JSON.stringify(err)}`);
+                    expect(err.code).assertEqual(801);
+                    done();
                 });
+                await delay(1000);
+
                 try {
                     let driver: Driver = Driver.create();
                     let onType2: On = ON.text('小李');
@@ -227,15 +237,6 @@ export default function SaveToExistingContactViaUITest() {
                     ExpectFail();
                     done();
                 }
-                promise.then((data: number) => {
-                    console.log(`${caseName} SaveToExistingContactViaUI: data>${JSON.stringify(data)}`);
-                    ExpectTrue(data > 0);
-                    done();
-                }).catch((err: BusinessError) => {
-                    console.log(`${caseName} SaveToExistingContactViaUI: err>${JSON.stringify(err)}`);
-                    expect(err.code).assertEqual(801);
-                    done();
-                });
             }
         });
       } catch (err) {
@@ -267,11 +268,21 @@ export default function SaveToExistingContactViaUITest() {
             } else {
                 console.log(`${caseName} addContact: success>${JSON.stringify(err)}`);
                 ExpectTrue(data > 0);
-                let promise = contact.saveToExistingContactViaUI(context, {
+                contact.saveToExistingContactViaUI(context, {
                     phoneNumbers: [{
                         phoneNumber: "13555558888"
                     }],
+                }).then((data: number) => {
+                    console.log(`${caseName} SaveToExistingContactViaUI: data>${JSON.stringify(data)}`);
+                    ExpectTrue(data == -1);
+                    done();
+                }).catch((err: BusinessError) => {
+                    console.log(`${caseName} SaveToExistingContactViaUI: err>${JSON.stringify(err)}`);
+                    expect(err.code).assertEqual(801);
+                    done();
                 });
+                await delay(1000);
+
                 try {
                     let driver: Driver = Driver.create();
                     let onType2: On = ON.text('小李');
@@ -291,15 +302,6 @@ export default function SaveToExistingContactViaUITest() {
                     ExpectFail();
                     done();
                 }
-                promise.then((data: number) => {
-                    console.log(`${caseName} SaveToExistingContactViaUI: data>${JSON.stringify(data)}`);
-                    ExpectTrue(data == -1);
-                    done();
-                }).catch((err: BusinessError) => {
-                    console.log(`${caseName} SaveToExistingContactViaUI: err>${JSON.stringify(err)}`);
-                    expect(err.code).assertEqual(801);
-                    done();
-                });
             }
         });
       } catch (err) {
