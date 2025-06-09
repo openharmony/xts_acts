@@ -14,7 +14,7 @@ export default function ActsNotificationEmitterPublishTest() {
 
         /*
           * @tc.number : Sub_Notification_Emitter_Publish_Emit_Static_0500
-          * @tc.name   : emitter.on()
+          * @tc.name   : Sub_Notification_Emitter_Publish_Emit_Static_0500
           * @tc.desc   : emitter.on 1   emitter.off 1   emitter.emit 1
           * @tc.size   : MediumTest
           * @tc.type   : Function
@@ -60,7 +60,7 @@ export default function ActsNotificationEmitterPublishTest() {
 
         /*
           * @tc.number : Sub_Notification_Emitter_Publish_Emit_Static_0600
-          * @tc.name   : emitter.once()
+          * @tc.name   : Sub_Notification_Emitter_Publish_Emit_Static_0600
           * @tc.desc   : emitter.once 1   emitter.off 1   emitter.emit 1
           * @tc.size   : MediumTest
           * @tc.type   : Function
@@ -98,7 +98,7 @@ export default function ActsNotificationEmitterPublishTest() {
 
         /*
           * @tc.number : Sub_Notification_Emitter_Publish_Emit_Static_0700
-          * @tc.name   : emitter.emit()
+          * @tc.name   : Sub_Notification_Emitter_Publish_Emit_Static_0700
           * @tc.desc   : emitter.on 1   emitter.off 2   emitter.emit 1
           * @tc.size   : MediumTest
           * @tc.type   : Function
@@ -144,7 +144,7 @@ export default function ActsNotificationEmitterPublishTest() {
 
         /*
           * @tc.number : Sub_Notification_Emitter_Publish_Emit_Static_0800
-          * @tc.name   : emitter.once()
+          * @tc.name   : Sub_Notification_Emitter_Publish_Emit_Static_0800
           * @tc.desc   : emitter.once 1   emitter.off 1   emitter.emit 1
           * @tc.size   : MediumTest
           * @tc.type   : Function
