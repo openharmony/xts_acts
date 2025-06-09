@@ -43,9 +43,11 @@ struct pasteButton {
   @State top: number = 4
   @State bottom: number = 4
   @State middle: number = 4
+  @State compWidth: number|undefined = undefined
+  @State compHeight: number|undefined = undefined
   @State clipSet: boolean = false
-  @State columnWidth: string = '100%'
-  @State columnHeight: string = '100%'
+  @State rowWidth: number = 100
+  @State rowHeight: number|undefined = undefined
   @State pbAlign: Alignment = Alignment.Center
   private stateChangeCallBack = (eventData:events_emitter.EventData) => {
     if (eventData != null && eventData.data != undefined) {
@@ -125,14 +127,28 @@ struct pasteButton {
       if (eventData.data.middle != null) {
         this.middle = eventData.data.middle;
       }
+      if (eventData.data.buWidth != null) {
+        this.compWidth = eventData.data.buWidth;
+      }else{
+        this.compWidth = undefined
+      }
+      if (eventData.data.buHeight != null) {
+        this.compHeight = eventData.data.buHeight;
+      }else{
+        this.compHeight = undefined
+      }
       if (eventData.data.clipSet != null) {
         this.clipSet = eventData.data.clipSet;
       }
-      if (eventData.data.columnWidth != null) {
-        this.columnWidth = eventData.data.columnWidth;
+      if (eventData.data.rowWidth != null) {
+        this.rowWidth = eventData.data.rowWidth;
+      }else{
+        this.rowWidth = 100
       }
-      if (eventData.data.columnHeight != null) {
-        this.columnHeight = eventData.data.columnHeight;
+      if (eventData.data.rowHeight != null) {
+        this.rowHeight = eventData.data.rowHeight;
+      }else{
+        this.rowHeight = undefined
       }
       if (eventData.data.columnHeight != null) {
         this.pbAlign = eventData.data.align;
@@ -194,9 +210,10 @@ struct pasteButton {
             .borderRadius(this.borderRad)
             .padding({ left: this.left, right: this.right, top: this.top, bottom: this.bottom })
             .textIconSpace(this.middle)
+            .size({width: this.compWidth, height: this.compHeight})
             .align(this.pbAlign)
             .id("keyPaste")
-        }.width(100)
+        }.width(this.rowWidth).height(this.rowHeight)
       }.width('100%').alignItems(HorizontalAlign.Center)
     }.height('100%')
   }
