@@ -427,6 +427,15 @@
         "srcEntrance": "./ets/FormAbility/FormAbility.ts",
         "type": "callerInfoQuery",
         "visible": true
+    },
+    {
+        "description": "$string:form_description",
+        "icon": "$media:icon",
+        "label": "$string:entry_label",
+        "name": "appService",
+        "srcEntrance": "./ets/FormAbility/FormAbility.ts",
+        "type": "appService",
+        "visible": true
     }
   ],
   "requestPermissions": [
