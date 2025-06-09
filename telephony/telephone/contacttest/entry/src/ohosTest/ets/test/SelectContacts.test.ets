@@ -119,8 +119,6 @@ export default function SelectContactsTest() {
         let data: number = await contact.addContact(context, contactData);
         console.info(`${caseName} addContact: success data->${JSON.stringify(data)}`);
 
-        let promise = contact.selectContacts({ isMultiSelect: true });
-
         contact.selectContacts({ isMultiSelect: false }).then((data: contact.Contact[]) => {
             console.info(`${caseName} selectContacts: success data->${JSON.stringify(data)}`);
             ExpectTrue(data.length > 0);
@@ -521,7 +519,7 @@ export default function SelectContactsTest() {
             filterClause: {
                 focusModeList: [{ filterCondition: 2, value: '1' }]
             },
-            filterType: 2
+            filterType: 1
         }
         contact.selectContacts({ isMultiSelect: false, filter: filter }).then((data: contact.Contact[]) => {
             console.info(`${caseName} selectContacts: success data->${JSON.stringify(data)}`);
