@@ -956,7 +956,7 @@ export default function NetfirewallErrorCode01() {
       try{
         let ipRuleUpd: netFirewall.NetFirewallRule = {
           userId:555,
-          id: CURRENT_ID,
+          id: 1,
           name: "rule2",
           description: "rule1 description update",
           direction: netFirewall.NetFirewallRuleDirection.RULE_IN,
