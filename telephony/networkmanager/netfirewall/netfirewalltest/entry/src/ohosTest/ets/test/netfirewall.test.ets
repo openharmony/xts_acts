@@ -41,8 +41,8 @@ export default function netfirewallTest() {
     let updateCurrentId: (caseName: string) => void = async (caseName: string)=>{
       try{
         await netFirewall.getNetFirewallRules(userId, ruleParam).then((result: netFirewall.FirewallRulePage) => {
-          if(result.data.length == 0) CURRENT_ID = -1
-          else CURRENT_ID = result.data[0].id == undefined ? -1: result.data[0].id
+          if(result.data.length == 0) Current_Ruler_ID = -1
+          else Current_Ruler_ID = result.data[0].id == undefined ? -1: result.data[0].id
         }, (error: BusinessError) => {
           console.error(caseName, " get firewall rules failed err in : " + JSON.stringify(error));
         });
@@ -53,9 +53,9 @@ export default function netfirewallTest() {
     let removedAll:  (deleteNum: number) => void = async (deleteNum: number)=>{
       try {
         let i = 0
-        while (i<deleteNum && CURRENT_ID !=-1){
+        while (i<deleteNum && Current_Ruler_ID !=-1){
           i++;
-          await netFirewall.removeNetFirewallRule(userId,CURRENT_ID).catch((error : BusinessError) => {
+          await netFirewall.removeNetFirewallRule(userId,Current_Ruler_ID).catch((error : BusinessError) => {
             i = 2000
             console.error(" delete firewall rule failed: " + JSON.stringify(error));
           });
