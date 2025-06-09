@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 import PostOnIdleTest from "./onIdle/PostOnIdleTest.test"
+import EmbeddedComponentOptionTest from "./EmbeddedComponentOption/EmbeddedComponentOptionTest.test"
 
 export default function testsuite() {
   PostOnIdleTest();
+  EmbeddedComponentOptionTest();
 }
