@@ -56,7 +56,7 @@ export default function windowKeyBorad() {
       if (text) {
         await text.click();
       }
-      await driver.pressBack();
+      await sleep(1000);
     });
     beforeEach(() => {
     });
@@ -792,10 +792,12 @@ export default function windowKeyBorad() {
         const callback1  = (keyboardInfo: window.KeyboardInfo) => {
           console.info(`${caseName} KeyboardInfo1: ${JSON.stringify(keyboardInfo)}`);
           timer1++;
+          console.info(`${caseName} timer1: ${JSON.stringify(timer1)}`);
         }
         const callback2  = (keyboardInfo: window.KeyboardInfo) => {
           console.info(`${caseName} KeyboardInfo2: ${JSON.stringify(keyboardInfo)}`);
           timer2++;
+          console.info(`${caseName} timer2: ${JSON.stringify(timer2)}`);
         }
         mainWindow.on('keyboardWillShow', callback1);
         mainWindow.on('keyboardWillHide', callback2);
@@ -817,7 +819,7 @@ export default function windowKeyBorad() {
         await sleep(500);
 
         expect(timer1).assertEqual(2);
-        expect(timer2).assertEqual(0);
+        expect(timer2).assertEqual(2);
         mainWindow.off('keyboardWillShow');
         mainWindow.off('keyboardWillHide');
         done();

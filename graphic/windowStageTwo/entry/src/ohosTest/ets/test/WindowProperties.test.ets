@@ -4556,6 +4556,11 @@ export default function windowPropertiesTest() {
             console.info(`${caseName}: this device is not pc or autowindow is false.`)
           }
           subWindowClass = await windowStage.createSubWindow('testGetGlobalWindowMode_Fullscreen_And_Subwindow');
+          await sleep(200);
+          await subWindowClass.setUIContent('testability/pages/First/index2');
+          await sleep(200);
+          await subWindowClass.showWindow();
+          await sleep(200);
           window.getGlobalWindowMode(0).then(async (data: number) => {
             console.info(`${caseName} Succeeded in calling getGlobalWindowMode. data: ${data}`);
             expect(data).assertEqual(5);
@@ -4586,61 +4591,67 @@ export default function windowPropertiesTest() {
         }
       })
 
-      // it('testGetGlobalWindowMode_Fullscreen_And_Float', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async(done: Function) => {
-      //   let caseName = 'testGetGlobalWindowMode_Fullscreen_And_Float';
-      //   // SUB_BASIC_WMS_GETGLOBALWINDOWMODE_0500	testGetGlobalWindowMode_Fullscreen_And_Float
-      //   // 前台存在全屏窗口和自由窗口模式的float系统窗口getGlobalWindowMode查询前台窗口模式		"
-      //   // 1、pc或自由多窗:主窗maximize全屏，其他设备跳过此步
-      //   // 2、createwindow创建悬浮窗
-      //   // 3、window.getGlobalWindowMode(0)
-      //   // 4、主窗还原、销毁悬浮窗"	返回5	1
-      //   let subWindowClass: window.Window | undefined;
-      //   let mainWindow = windowStage.getMainWindowSync();
-      //   try {
-      //     if (isPCStatus == '' || isAutoWindow == 'false') {
-      //       console.info(`${caseName}: this device is not pc or autowindow is false.`)
-      //     } else {
-      //       await mainWindow.maximize();
-      //       await sleep(200);
-      //     }
-      //     subWindowClass = await windowStage.createSubWindow('testGetGlobalWindowMode_Fullscreen_And_Subwindow');
-      //     let config: window.Configuration = {
-      //       name: "floatWindow",
-      //       windowType: window.WindowType.TYPE_FLOAT,
-      //       ctx: context
-      //     };
-      //     subWindowClass = await window.createWindow(config);
-      //     window.getGlobalWindowMode(0).then(async (data: number) => {
-      //       console.info(`${caseName} Succeeded in calling getGlobalWindowMode. data: ${data}`);
-      //       expect(data).assertEqual(5);
-      //       await mainWindow.recover();
-      //       await subWindowClass?.destroyWindow();
-      //       done();
-      //     }).catch(async (err: BusinessError) => {
-      //       console.error(`${caseName} Failed to call getGlobalWindowMode. Cause: ${JSON.stringify(err)}`);
-      //       if (isPCStatus != '' || isAutoWindow == 'true') {
-      //         await mainWindow.recover();
-      //       }
-      //       await subWindowClass?.destroyWindow();
-      //       if (err.code === 801) {
-      //         done();
-      //       } else {
-      //         expect().assertFail();
-      //         done();
-      //       }
-      //     });
-      //   } catch (error) {
-      //     console.error(`${caseName} Failed2 to call getGlobalWindowMode. Cause: ${JSON.stringify(error)}`);
-      //     if (isPCStatus != '' || isAutoWindow == 'true') {
-      //       await mainWindow.recover();
-      //     }
-      //     await subWindowClass?.destroyWindow();
-      //     expect().assertFail();
-      //     done();
-      //   }
-      // })
-      //
-
+      /**
+       * @tc.number    : SUB_BASIC_WMS_GETGLOBALWINDOWMODE_0500
+       * @tc.name      : testGetGlobalWindowMode_Fullscreen_And_Float
+       * @tc.desc      : testGetGlobalWindowMode_Fullscreen_And_Float
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level1
+       */
+      it('testGetGlobalWindowMode_Fullscreen_And_Float', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async(done: Function) => {
+        let caseName = 'testGetGlobalWindowMode_Fullscreen_And_Float';
+        let subWindowClass: window.Window | undefined;
+        let mainWindow = windowStage.getMainWindowSync();
+        try {
+          if (isPCStatus == '' || isAutoWindow == 'false') {
+            console.info(`${caseName}: this device is not pc or autowindow is false.`)
+          } else {
+            await mainWindow.maximize();
+            await sleep(200);
+          }
+          subWindowClass = await windowStage.createSubWindow('testGetGlobalWindowMode_Fullscreen_And_Float');
+          await sleep(200);
+          await subWindowClass.setUIContent('testability/pages/First/index2');
+          await sleep(200);
+          await subWindowClass.showWindow();
+          await sleep(200);
+          let config: window.Configuration = {
+            name: "floatWindow",
+            windowType: window.WindowType.TYPE_FLOAT,
+            ctx: context
+          };
+          subWindowClass = await window.createWindow(config);
+          window.getGlobalWindowMode(0).then(async (data: number) => {
+            console.info(`${caseName} Succeeded in calling getGlobalWindowMode. data: ${data}`);
+            expect(data).assertEqual(5);
+            await mainWindow.recover();
+            await subWindowClass?.destroyWindow();
+            done();
+          }).catch(async (err: BusinessError) => {
+            console.error(`${caseName} Failed to call getGlobalWindowMode. Cause: ${JSON.stringify(err)}`);
+            if (isPCStatus != '' || isAutoWindow == 'true') {
+              await mainWindow.recover();
+            }
+            await subWindowClass?.destroyWindow();
+            if (err.code === 801) {
+              done();
+            } else {
+              expect().assertFail();
+              done();
+            }
+          });
+        } catch (error) {
+          console.error(`${caseName} Failed2 to call getGlobalWindowMode. Cause: ${JSON.stringify(error)}`);
+          if (isPCStatus != '' || isAutoWindow == 'true') {
+            await mainWindow.recover();
+          }
+          await subWindowClass?.destroyWindow();
+          expect().assertFail();
+          done();
+        }
+      })
+      
       // it('testGetGlobalWindowMode_Fullscreen_And_Hide_Subwindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async(done: Function) => {
       //   let caseName = 'testGetGlobalWindowMode_Fullscreen_And_Hide_Subwindow';
       //   let subWindowClass: window.Window | undefined;
@@ -4706,6 +4717,8 @@ export default function windowPropertiesTest() {
           let config: pipWindow.PiPConfiguration = {
             context: context,
             componentController: mXComponentController,
+            contentWidth: 500,
+            contentHeight: 500
           };
           pipController =  await pipWindow.create(config);
           console.info(`${caseName} Succeeded in creating pip controller.`);
@@ -4766,7 +4779,7 @@ export default function windowPropertiesTest() {
        * @tc.level     : Level2
        */
       it('testGetGlobalWindowMode_Fullscreen_And_Dialog', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async(done: Function) => {
-        let caseName = 'testGetGlobalWindowMode_Fullscreen_And_Dialog'; 
+        let caseName = 'testGetGlobalWindowMode_Fullscreen_And_Dialog';
         let subWindowClass: window.Window | undefined;
         let mainWindow = windowStage.getMainWindowSync();
         try {
@@ -4783,6 +4796,10 @@ export default function windowPropertiesTest() {
           };
           subWindowClass = await window.createWindow(config);
           sleep(200);
+          await subWindowClass.setUIContent('testability/pages/First/index2');
+          await sleep(200);
+          await subWindowClass.showWindow();
+          await sleep(200);
           window.getGlobalWindowMode(0).then(async (data: number) => {
             console.info(`${caseName} Succeeded in calling getGlobalWindowMode. data: ${data}`);
             expect(data).assertEqual(5);
@@ -4908,6 +4925,8 @@ export default function windowPropertiesTest() {
         let config:pipWindow.PiPConfiguration = {
           context: context,
           componentController: mXComponentController,
+          contentWidth: 500,
+          contentHeight: 500
         };
         try {
           // let mainWindow = windowStage.getMainWindowSync();
@@ -4959,6 +4978,8 @@ export default function windowPropertiesTest() {
         let config:pipWindow.PiPConfiguration = {
           context: context,
           componentController: mXComponentController,
+          contentWidth: 500,
+          contentHeight: 500
         };
         let isMaximized = false;
         let subWindowClass: window.Window | undefined;
