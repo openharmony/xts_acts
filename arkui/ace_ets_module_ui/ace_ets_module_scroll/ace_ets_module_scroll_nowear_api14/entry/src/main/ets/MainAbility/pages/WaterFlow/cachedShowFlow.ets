@@ -52,6 +52,7 @@ struct cachedCountShowFlowExample {
           FlowItem() {
             Column() {
               Text('N' + item)
+                .id('show_flow_' + item)
                 .width('100%')
                 .height('34%')
                 .fontSize(16)
