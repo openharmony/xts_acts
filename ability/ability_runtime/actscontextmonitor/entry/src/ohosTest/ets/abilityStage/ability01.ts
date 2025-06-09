@@ -24,13 +24,6 @@ export default class AbilityStage01 extends AbilityStage {
     hilog.info(0x0000, 'testTag', '%{public}s', `eventCallback success, argOne is: ${argOne}, argTwo is: ${argTwo}`);
     globalThis.argOneResult = argOne;
     globalThis.argTwoResult = argTwo;
-    // if (argOne === 1 && argTwo === 2) {
-    //   setTimeout(()=>{
-    //     commonEventManager.publish('ACTS_TEST_DESTROY', commonEventData, function () {
-    //       hilog.info(0x0000, 'testTag', '%{public}s', 'abilityStage01 entry publish ACTS_TEST_DESTROY');
-    //     });
-    //   }, 2000);
-    // };
   }
 
   onCreate(): void {
