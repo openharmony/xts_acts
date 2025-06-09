@@ -199,19 +199,44 @@ export default function SaveToExistingContactViaUITest() {
       console.info(`${caseName} test start `);
       try {
         let context: Context = AppStorage.get('context') as Context;
-        let promise = contact.saveToExistingContactViaUI(context, {
-          phoneNumbers: [{
-            phoneNumber: "13555558888"
-          }],
-        });
-        promise.then((data: number) => {
-          console.log(`${caseName} SaveToExistingContactViaUI: data>${JSON.stringify(data)}`);
-          done();
-        }).catch((err: BusinessError) => {
-            console.log(`${caseName} SaveToExistingContactViaUI: err>${JSON.stringify(err)}`);
-            expect(err.code).assertEqual(801);
-            done();
-        });
+        contact.addContact(context, contactData, async (err: BusinessError, data: number) => {
+            if(err) {
+                console.log(`${caseName} addContact: err>${JSON.stringify(err)}`);
+                ExpectFail();
+                done();
+            } else {
+                console.log(`${caseName} addContact: success>${JSON.stringify(err)}`);
+                ExpectTrue(data > 0);
+                let promise = contact.saveToExistingContactViaUI(context, {
+                    phoneNumbers: [{
+                        phoneNumber: "13555558888"
+                    }],
+                });
+                try {
+                    let driver: Driver = Driver.create();
+                    let onType2: On = ON.text('小李');
+                    let item2: Component = await driver.findComponent(onType2);
+                    if (item2) {
+                        await getComponent(driver, onType2);
+                        await delay(500);
+                        let onType: On = ON.id('save_click_btn');
+                        await getComponent(driver, onType);
+                    }
+                } catch (err) {
+                    console.log(`${caseName} --ger component catch: err>${JSON.stringify(err)}`);
+                    ExpectFail();
+                    done();
+                }
+                promise.then((data: number) => {
+                    console.log(`${caseName} SaveToExistingContactViaUI: data>${JSON.stringify(data)}`);
+                    ExpectTrue(data > 0);
+                    done();
+                }).catch((err: BusinessError) => {
+                    console.log(`${caseName} SaveToExistingContactViaUI: err>${JSON.stringify(err)}`);
+                    expect(err.code).assertEqual(801);
+                    done();
+                });
+            }
       } catch (err) {
         console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
         done();
@@ -233,19 +258,48 @@ export default function SaveToExistingContactViaUITest() {
       console.info(`${caseName} test start `);
       try {
         let context: Context = AppStorage.get('context') as Context;
-        let promise = contact.saveToExistingContactViaUI(context, {
-          phoneNumbers: [{
-            phoneNumber: "13555558888"
-          }],
-        });
-        promise.then((data: number) => {
-          console.log(`${caseName} SaveToExistingContactViaUI: data>${JSON.stringify(data)}`);
-          done();
-        }).catch((err: BusinessError) => {
-          console.log(`${caseName} SaveToExistingContactViaUI: err>${JSON.stringify(err)}`);
-          expect(err.code).assertEqual(801);
-          done();
-        });
+        contact.addContact(context, contactData, async (err: BusinessError, data: number) => {
+            if(err) {
+                console.log(`${caseName} addContact: err>${JSON.stringify(err)}`);
+                ExpectFail();
+                done();
+            } else {
+                console.log(`${caseName} addContact: success>${JSON.stringify(err)}`);
+                ExpectTrue(data > 0);
+                let promise = contact.saveToExistingContactViaUI(context, {
+                    phoneNumbers: [{
+                        phoneNumber: "13555558888"
+                    }],
+                });
+                try {
+                    let driver: Driver = Driver.create();
+                    let onType2: On = ON.text('小李');
+                    let item2: Component = await driver.findComponent(onType2);
+                    if (item2) {
+                        await getComponent(driver, onType2);
+                        await delay(500);
+                        let onType: On = ON.id('cancel_btn');
+                        await getComponent(driver, onType);
+                        await delay(500);
+                        let onType1: On = ON.text('不保存');
+                        await getComponent(driver, onType1);
+                        await delay(500);
+                    }
+                } catch (err) {
+                    console.log(`${caseName} --ger component catch: err>${JSON.stringify(err)}`);
+                    ExpectFail();
+                    done();
+                }
+                promise.then((data: number) => {
+                    console.log(`${caseName} SaveToExistingContactViaUI: data>${JSON.stringify(data)}`);
+                    ExpectTrue(data == -1);
+                    done();
+                }).catch((err: BusinessError) => {
+                    console.log(`${caseName} SaveToExistingContactViaUI: err>${JSON.stringify(err)}`);
+                    expect(err.code).assertEqual(801);
+                    done();
+                });
+            }
       } catch (err) {
         console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
         done();
