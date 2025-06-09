@@ -121,22 +121,7 @@ napi_value EmbeddedComponentOptionTest::testEmbeddedComponentOption001(napi_env 
     nodeAPI->removeChild(root, ec);
     nodeAPI->disposeNode(ec);
     OH_ArkUI_EmbeddedComponentOption_Dispose(ec_option);
-    
-//    ArkUI_ActiveChildrenInfo* activeChildrenInfo2;
-//        OH_ArkUI_NodeUtils_GetActiveChildrenInfo(root, &activeChildrenInfo2);
-//    auto count2 = OH_ArkUI_ActiveChildrenInfo_GetCount(activeChildrenInfo2);
-//    
-//    OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Manager", "count1 :%{public}d", count2);
-//    
-//    if (count2 == 2) {
-//        ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_GREEN}};
-//        ArkUI_AttributeItem background_color_item = {background_color_value,
-//            sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
-//        nodeAPI->setAttribute(text1, NODE_BACKGROUND_COLOR, &background_color_item);
-//    }
-    
-    
-    
+
     std::string id(xComponentID);
     if (OH_NativeXComponent_AttachNativeRootNode(PluginManager::GetInstance()->GetNativeXComponent(id), root) ==
         INVALID_PARAM) {
