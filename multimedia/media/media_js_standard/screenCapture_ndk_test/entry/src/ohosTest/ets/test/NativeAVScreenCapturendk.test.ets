@@ -275,7 +275,7 @@ export default function nativeAVScreenCaptureNdkTest() {
 
     /**
      * @tc.number       SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_SetSelectionCallback_0100
-     * @tc.name         OH_AVScreenCapture_StartScreenCapture_SetSelectionCallback_Success
+     * @tc.name         SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_SetSelectionCallback_0100
      * @tc.desc         OH_AVScreenCapture_StartScreenCapture_SetSelectionCallback_Success
      * @tc.size         MediumTest
      * @tc.type         Function
