@@ -16,6 +16,7 @@ import events_emitter from '@ohos.events.emitter';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import { Hypium } from '@ohos/hypium';
 import testsuite from '../../test/List.test';
+import { waitForExist } from '../../test/WaitTest.test';
 import Utils from '../../test/Utils';
 
 let loadedUrl: string;
@@ -24,18 +25,18 @@ let loadedUrl: string;
 @Component
 struct Index {
   controller: WebController = new WebController();
-  @State str: string = "emitOnRefreshAccessedHistory";
-  @State loadedResource: string = "";
-  @State progress: string = "";
-  @State newUrl: string = "";
-  @State pageBegin: string = "";
-  @State pageEnd: string = "";
-  @State console: string = "";
-  @State confirm: string = "";
-  @State alert: string = "";
-  @State errorReceive: string = "";
+  @State str: string = 'emitOnRefreshAccessedHistory';
+  @State loadedResource: string = '';
+  @State progress: string = '';
+  @State newUrl: string = '';
+  @State pageBegin: string = '';
+  @State pageEnd: string = '';
+  @State console: string = '';
+  @State confirm: string = '';
+  @State alert: string = '';
+  @State errorReceive: string = '';
   @State httpErrorReceive: number = 0;
-  @State titleReceive: string = "";
+  @State titleReceive: string = '';
   @State isDownloadStart: boolean = false;
   @State javaScriptAccess: boolean = true;
   @State fileAccess: boolean = true;
@@ -58,6 +59,7 @@ struct Index {
   @State isProgressFinish: boolean = false;
   @State isHttpErrorReceive: boolean = false;
   @State isLargeThan: boolean = false;
+  @State isComplete: number = -1;
 
   onPageShow() {
     let valueChangeEvent: events_emitter.InnerEvent = {
@@ -68,9 +70,9 @@ struct Index {
   }
 
   private valueChangeCallBack = (eventData: events_emitter.EventData) => {
-    console.info("web page valueChangeCallBack");
+    console.info('web page valueChangeCallBack');
     if (eventData != null) {
-      console.info("valueChangeCallBack:" + JSON.stringify(eventData));
+      console.info('valueChangeCallBack:' + JSON.stringify(eventData));
       if (eventData.data?.ACTION != null) {
         this.str = eventData.data.ACTION;
       }
@@ -81,11 +83,11 @@ struct Index {
       Utils.emitEvent(res, 102);
     },
     toString: (str: ESObject) => {
-      console.info("ets toString:" + String(str));
+      console.info('ets toString:' + String(str));
     },
     register: (res: ESObject) => {
       Utils.emitEvent(res, 86);
-      return "web222";
+      return 'web222';
     }
   }
 
@@ -99,44 +101,45 @@ struct Index {
   build() {
     Column() {
       Row() {
-        Button("web click").key('webcomponent').onClick(async () => {
-          console.info("key==>" + this.str);
+        Button('web click').key('webcomponent').onClick(async () => {
+          console.info('key==>' + this.str);
+          await waitForExist(()=>this.isComplete, 'ActsAceWebDevTest', 0, 1000)
           switch (this.str) {
-            case "emitOnRefreshAccessedHistory": {
-              this.controller.loadUrl({ url: "resource://rawfile/second.html" });
+            case 'emitOnRefreshAccessedHistory': {
+              this.controller.loadUrl({ url: 'resource://rawfile/second.html' });
               setTimeout(() => {
                 Utils.emitEvent(this.newUrl, 116);
               }, 3000)
               break;
             }
-            case "emitAccessBackward": {
-              let isCan = this.controller.accessBackward() + "";
+            case 'emitAccessBackward': {
+              let isCan = this.controller.accessBackward() + '';
               Utils.emitEvent(isCan, 128);
               break;
             }
-            case "emitAccessForward": {
-              let isCan = this.controller.accessForward() + "";
+            case 'emitAccessForward': {
+              let isCan = this.controller.accessForward() + '';
               Utils.emitEvent(isCan, 130);
               break;
             }
-            case "emitAccessStep": {
-              let isCan = this.controller.accessStep(-1) + "";
+            case 'emitAccessStep': {
+              let isCan = this.controller.accessStep(-1) + '';
               Utils.emitEvent(isCan, 132);
               break;
             }
-            case "emitBackward": {
+            case 'emitBackward': {
               this.controller.backward()
-              this.controller.loadUrl({ url: "resource://rawfile/index.html" });
+              this.controller.loadUrl({ url: 'resource://rawfile/index.html' });
               setTimeout(() => {
                 this.controller.runJavaScript({
-                  script: "getTitle()", callback: (res) => {
+                  script: 'getTitle()', callback: (res) => {
                     Utils.emitEvent(res, 134);
                   }
                 })
               }, 3000)
               break;
             }
-            case "emitForward": {
+            case 'emitForward': {
               this.controller.forward();
               setTimeout(() => {
                 Utils.emitEvent(this.newUrl, 136);
@@ -144,28 +147,28 @@ struct Index {
               break;
             }
             default:
-              console.info("can not match case");
+              console.info('can not match case');
           }
         })
       }
 
-      TextInput({ placeholder: "inputs your words" })
+      TextInput({ placeholder: 'inputs your words' })
         .key('textInput')
         .type(InputType.Normal)
         .placeholderColor(Color.Blue)
-        .placeholderFont({ size: 20, weight: FontWeight.Normal, family: "sans-serif", style: FontStyle.Normal })
+        .placeholderFont({ size: 20, weight: FontWeight.Normal, family: 'sans-serif', style: FontStyle.Normal })
         .enterKeyType(EnterKeyType.Next)
         .caretColor(Color.Green)
         .height(60)
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
-        .fontFamily("cursive")
+        .fontFamily('cursive')
         .fontStyle(FontStyle.Italic)
         .fontColor(Color.Red)
         .maxLength(20)
         .border({ width: 1, color: 0x317AF7, radius: 10, style: BorderStyle.Solid })
         .onClick(() => {
-          console.info("TextInput click")
+          console.info('TextInput click')
         })
       Web({ src: $rawfile('index.html'), controller: this.controller })
         .visibility(this.webVisibility)
@@ -181,13 +184,20 @@ struct Index {
         .mixedMode(this.mixedMode)
         .javaScriptProxy({
           object: this.jsObj,
-          name: "backToEts",
-          methodList: ["test", "toString"],
+          name: 'backToEts',
+          methodList: ['test', 'toString'],
           controller: this.controller
         })
         .onRefreshAccessedHistory((event) => {
-          console.info("onRefreshAccessedHistory==>");
+          console.info('onRefreshAccessedHistory==>' + event.url);
           this.newUrl = event.url;
+        })
+        .onPageBegin((event) => {
+          console.log('onPageBegin ==>' + event.url);
+        })
+        .onPageEnd((event) => {
+          console.log('onPageEnd ==>' + event.url);
+          this.isComplete = 0
         })
     }
   }
