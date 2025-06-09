@@ -154,9 +154,9 @@ export default function AVPlayerVideoScaleTypeTest() {
         it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_VIDEOSCALETYPE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
             let operationRecord: Record<string, Function> = {}
             operationRecord[PREPARED] = async () => {
-                avPlayer.videoScaleType = media.VideoScaleType.VIDEO_SCALE_TYPE_FIT_ASPECT;
+                avPlayer.videoScaleType = media.VideoScaleType.VIDEO_SCALE_TYPE_SCALED_ASPECT;
                 console.info('case videoScaleType is ' + avPlayer.videoScaleType);
-                expect(avPlayer.videoScaleType).assertEqual(media.VideoScaleType.VIDEO_SCALE_TYPE_FIT_ASPECT);
+                expect(avPlayer.videoScaleType).assertEqual(media.VideoScaleType.VIDEO_SCALE_TYPE_SCALED_ASPECT);
                 done();
             }
             await testVideoScaleType(avFd, done, operationRecord)
@@ -173,9 +173,9 @@ export default function AVPlayerVideoScaleTypeTest() {
         it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_VIDEOSCALETYPE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
             let operationRecord: Record<string, Function> = {}
             operationRecord[PLAYING] = async () => {
-                avPlayer.videoScaleType = media.VideoScaleType.VIDEO_SCALE_TYPE_FIT_ASPECT;
+                avPlayer.videoScaleType = media.VideoScaleType.VIDEO_SCALE_TYPE_SCALED_ASPECT;
                 console.info('case videoScaleType is ' + avPlayer.videoScaleType);
-                expect(avPlayer.videoScaleType).assertEqual(media.VideoScaleType.VIDEO_SCALE_TYPE_FIT_ASPECT);
+                expect(avPlayer.videoScaleType).assertEqual(media.VideoScaleType.VIDEO_SCALE_TYPE_SCALED_ASPECT);
                 done();
             }
             await testVideoScaleType(avFd, done, operationRecord)
@@ -197,9 +197,9 @@ export default function AVPlayerVideoScaleTypeTest() {
                 }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
             }
             operationRecord[PAUSED] = async () => {
-                avPlayer.videoScaleType = media.VideoScaleType.VIDEO_SCALE_TYPE_FIT_ASPECT;
+                avPlayer.videoScaleType = media.VideoScaleType.VIDEO_SCALE_TYPE_SCALED_ASPECT;
                 console.info('case videoScaleType is ' + avPlayer.videoScaleType);
-                expect(avPlayer.videoScaleType).assertEqual(media.VideoScaleType.VIDEO_SCALE_TYPE_FIT_ASPECT);
+                expect(avPlayer.videoScaleType).assertEqual(media.VideoScaleType.VIDEO_SCALE_TYPE_SCALED_ASPECT);
                 done();
             }
             await testVideoScaleType(avFd, done, operationRecord)
@@ -216,9 +216,9 @@ export default function AVPlayerVideoScaleTypeTest() {
         it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_VIDEOSCALETYPE_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
             let operationRecord: Record<string, Function> = {}
             operationRecord[COMPLETED] = async () => {
-                avPlayer.videoScaleType = media.VideoScaleType.VIDEO_SCALE_TYPE_FIT_ASPECT;
+                avPlayer.videoScaleType = media.VideoScaleType.VIDEO_SCALE_TYPE_SCALED_ASPECT;
                 console.info('case videoScaleType is ' + avPlayer.videoScaleType);
-                expect(avPlayer.videoScaleType).assertEqual(media.VideoScaleType.VIDEO_SCALE_TYPE_FIT_ASPECT);
+                expect(avPlayer.videoScaleType).assertEqual(media.VideoScaleType.VIDEO_SCALE_TYPE_SCALED_ASPECT);
                 done();
             }
             await testVideoScaleType(avFd, done, operationRecord)
@@ -235,7 +235,7 @@ export default function AVPlayerVideoScaleTypeTest() {
         it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_VIDEOSCALETYPE_ERROR_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
             let operationRecord: Record<string, Function> = {}
             operationRecord[IDLE] = async () => {
-                avPlayer.videoScaleType = media.VideoScaleType.VIDEO_SCALE_TYPE_FIT_ASPECT;
+                avPlayer.videoScaleType = media.VideoScaleType.VIDEO_SCALE_TYPE_SCALED_ASPECT;
             }
             operationRecord[PLAYING] = async () => {
                 await avPlayer.reset()
@@ -259,7 +259,7 @@ export default function AVPlayerVideoScaleTypeTest() {
         it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_VIDEOSCALETYPE_ERROR_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
             let operationRecord: Record<string, Function> = {}
             operationRecord[INITIALIZED] = async () => {
-                avPlayer.videoScaleType = media.VideoScaleType.VIDEO_SCALE_TYPE_FIT_ASPECT;
+                avPlayer.videoScaleType = media.VideoScaleType.VIDEO_SCALE_TYPE_SCALED_ASPECT;
             }
             let errCallback: ErrorCallback = (error: BusinessError) => {
                 console.info('SUB_MULTIMEDIA_MEDIA_AVPLAYER_VIDEOSCALETYPE_ERROR_0200 error: ' + JSON.stringify(error))
@@ -280,7 +280,7 @@ export default function AVPlayerVideoScaleTypeTest() {
         it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_VIDEOSCALETYPE_ERROR_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
             let operationRecord: Record<string, Function> = {}
             operationRecord[STOPPED] = async () => {
-                avPlayer.videoScaleType = media.VideoScaleType.VIDEO_SCALE_TYPE_FIT_ASPECT;
+                avPlayer.videoScaleType = media.VideoScaleType.VIDEO_SCALE_TYPE_SCALED_ASPECT;
             }
             operationRecord[PLAYING] = async () => {
                 await avPlayer.stop()
@@ -304,7 +304,7 @@ export default function AVPlayerVideoScaleTypeTest() {
         it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_VIDEOSCALETYPE_ERROR_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
             let operationRecord: Record<string, Function> = {}
             operationRecord[RELEASED] = async () => {
-                avPlayer.videoScaleType = media.VideoScaleType.VIDEO_SCALE_TYPE_FIT_ASPECT;
+                avPlayer.videoScaleType = media.VideoScaleType.VIDEO_SCALE_TYPE_SCALED_ASPECT;
             }
             operationRecord[INITIALIZED] = async () => {
                 await avPlayer.release()
