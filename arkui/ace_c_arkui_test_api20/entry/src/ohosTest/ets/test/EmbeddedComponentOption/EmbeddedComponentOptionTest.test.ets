@@ -33,7 +33,7 @@ export default function EmbeddedComponentOptionTest(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testEmbeddedComponentOption001', 0, async (done: Function) => {
+    it('testEmbeddedComponentOption001', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'TestEmbeddedComponentOption';
       await Utils.pushPage(`EmbeddedComponentOption/${PAGE_TAG}`);
       await Utils.sleep(1000)
