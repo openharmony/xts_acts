@@ -412,5 +412,52 @@ export default function wifiSta() {
 	        }
 	        done();
         })
+
+        /**
+         * @tc.number SUB_Communication_WiFi_XTS_Sta_0046
+         * @tc.name SUB_Communication_WiFi_XTS_Sta_0046
+         * @tc.desc Test DisableWifi Sync API functionality.
+         * @tc.size:LARGETEST
+         * @tc.type Function
+         * @tc.level Level 0
+         */
+        it('SUB_Communication_WiFi_XTS_Sta_0046', TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done:Function) =>{
+            try {
+		        let status = wifiMg.isWifiActive();
+                console.info("isWifiActive result:" + status);
+                if(!status) {
+                    console.info("wifi is close,enableWifi start.");
+                    wifiMg.enableWifi();
+                    await sleep(2000);
+                    let state1 = wifiMg.isWifiActive();
+                    console.info("isWifiActive result:" + state1);
+                    expect(state1).assertTrue();
+                    console.info("enableWifi success.");
+                }
+                console.info("wifi is open,disableWifi start.");
+                wifiMg.disableWifi();
+                await sleep(2000);
+                let state2 = wifiMg.isWifiActive();
+                console.info("isWifiActive result:" + state2);
+                expect(state2).assertFalse();
+                console.info("disableWifi success.");
+                console.info("wifi is close,enableWifi start.");
+                wifiMg.enableWifi();
+                await sleep(2000);
+                let state3 = wifiMg.isWifiActive();
+                console.info("isWifiActive result:" + state3);
+                expect(state3).assertTrue();
+                console.info("enableWifi success.");
+	        }catch(error){
+		        console.error("failed:" + JSON.stringify(error));
+                if (error.code == 801) {
+                    console.info('[wifi_js]api is not support');
+                    expect(true).assertTrue();
+                } else {
+                    expect().assertFail();
+                }
+	        }
+	        done();
+        })
   })
 }
