@@ -19,7 +19,7 @@ group("ans_standard") {
       "actsNotificationBadgeTest:ActsNotificationBadgeTest",
       "actsNotificationDistributedTest:ActsNotificationDistributedTest",
       "actsNotificationEmitterNewTest:ActsNotificationEmitterNewTest",
-      "actsNotificationEmitterNewTestStatic:ActsNotificationEmitterNewTestStatic",
+      "actsNotificationEmitterNewTestStatic:ActsNotificationEmitterNewStaticTest",
       "actsNotificationEmitterTest:ActsNotificationEmitterTest",
       "actsNotificationInterfaceChangeTest:ActsNotificationInterfaceChangeTest",
       "actsNotificationManagerSlotTest:ActsNotificationManagerSlotTest",
