@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,20 +13,33 @@
  * limitations under the License.
  */
 
-import maintainPosition from './SwiperTest/maintainPosition.test';
-import barMarginGrid from './GridTest/barMarginGrid.test';
-import barMarginList from './ListTest/barMarginList.test';
-import barMarginScroll from './ScrollTest/barMarginScroll.test';
-import curvesTabs from './TabsTest/curvesTabs.test';
-import maxDownRefresh from './RefreshTest/maxDownRefresh.test';
-import scrollBarColor from './ScrollBarTest/scrollBarColor.test';
+{
+  "app": {
+    "signingConfigs": [
 
-export default function testsuite() {
-  maintainPosition()
-  barMarginGrid()
-  barMarginList()
-  barMarginScroll()
-  curvesTabs()
-  maxDownRefresh()
-  scrollBarColor()
+    ],
+    "products": [
+      {
+        "name": "default",
+        "signingConfig": "default",
+        "compileSdkVersion": 20,
+        "compatibleSdkVersion": 20,
+        "runtimeOS": "OpenHarmony"
+      }
+    ]
+  },
+  "modules": [
+    {
+      "name": "entry",
+      "srcPath": "./entry",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    }
+  ]
 }

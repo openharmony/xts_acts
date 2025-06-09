@@ -12,21 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-import maintainPosition from './SwiperTest/maintainPosition.test';
-import barMarginGrid from './GridTest/barMarginGrid.test';
-import barMarginList from './ListTest/barMarginList.test';
-import barMarginScroll from './ScrollTest/barMarginScroll.test';
-import curvesTabs from './TabsTest/curvesTabs.test';
-import maxDownRefresh from './RefreshTest/maxDownRefresh.test';
-import scrollBarColor from './ScrollBarTest/scrollBarColor.test';
+import barMarginFlow from './WaterFlowTest/barMarginFlow.test';
+import focusWrapDefault from './GridTest/focusWrapDefault.test';
+import focusWrapWrap from './GridTest/focusWrapWrap.test';
 
 export default function testsuite() {
-  maintainPosition()
-  barMarginGrid()
-  barMarginList()
-  barMarginScroll()
-  curvesTabs()
-  maxDownRefresh()
-  scrollBarColor()
+  barMarginFlow()
+  focusWrapDefault()
+  focusWrapWrap()
 }
