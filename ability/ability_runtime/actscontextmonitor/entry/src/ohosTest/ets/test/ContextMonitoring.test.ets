@@ -86,33 +86,9 @@ export default function contextMonitoringTest() {
     it('SUB_Ability_AbilityRuntime_AMS_Context_ContextMonitoring_5100', Level.LEVEL0,(done: Function) => {
       let tag = `ContextMonitoring_5100`;
       hilog.info(0x0000, 'testTag', `${tag}, it begin`);
-      commonEventManager.createSubscriber(ACTS_EVENT)
-        .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
-          subscriber = commonEventSubscriber;
-          let unSubscribeCallback = () => {
-            setTimeout(async () => {
-              hilog.info(0x0000, 'testTag', `${tag} unSubscribeCallback`);
-              done();
-            }, 1000);
-          }
-          let subscribeCallBack = (err: BusinessError, data: commonEventManager.CommonEventData) => {
-            hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success`)
-            if (data.event == 'ACTS_TEST_START') {
-              hilog.info(0x0000, 'testTag', '%{public}s', `${tag} wait abilityStage load`);
-            }
-            if (data.event == 'ACTS_TEST_DESTROY') {
-              expect(data.parameters?.resultA).assertEqual(1)
-              expect(data.parameters?.resultB).assertEqual(2)
-              setTimeout(() => {
-                commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
-              }, 500);
-            }
-          }
-          commonEventManager.subscribe(subscriber, subscribeCallBack);
-          setTimeout(() => {
-            commonEventManager.publish('ACTS_TEST_START', publishCB);
-          }, 100)
-        })
+      expect(globalThis.argOneResult).assertEqual(1)
+      expect(globalThis.argTwoResult).assertEqual(2)
+      done();
     });
 
     /*
@@ -765,13 +741,13 @@ export default function contextMonitoringTest() {
 function eventCallback01(argOne?: number, argTwo?: number):void {
   a = argOne
   b = argTwo
+  count++
   hilog.info(0x0000, 'testTag', '%{public}s', `eventCallback01 success, a is: ${a}, b is: ${b}`);
 }
 
 function eventCallback02(argOne?: number, argTwo?: number):void {
   c = argOne
   d = argTwo
-  count++
   hilog.info(0x0000, 'testTag', '%{public}s', `eventCallback02 success, c is: ${c}, d is: ${d}`);
 }
 

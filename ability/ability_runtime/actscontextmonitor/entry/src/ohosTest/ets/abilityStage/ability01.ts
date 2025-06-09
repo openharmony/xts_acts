@@ -22,19 +22,15 @@ export default class AbilityStage01 extends AbilityStage {
 
   public eventCallback(argOne?: number, argTwo?: number): void {
     hilog.info(0x0000, 'testTag', '%{public}s', `eventCallback success, argOne is: ${argOne}, argTwo is: ${argTwo}`);
-    let commonEventData: commonEventManager.CommonEventPublishData = {
-      parameters: {
-        'resultA': argOne,
-        'resultB': argTwo,
-      }
-    };
-    if (argOne === 1 && argTwo === 2) {
-      setTimeout(()=>{
-        commonEventManager.publish('ACTS_TEST_DESTROY', commonEventData, function () {
-          hilog.info(0x0000, 'testTag', '%{public}s', 'abilityStage01 entry publish ACTS_TEST_DESTROY');
-        });
-      }, 2000);
-    };
+    globalThis.argOneResult = argOne;
+    globalThis.argTwoResult = argTwo;
+    // if (argOne === 1 && argTwo === 2) {
+    //   setTimeout(()=>{
+    //     commonEventManager.publish('ACTS_TEST_DESTROY', commonEventData, function () {
+    //       hilog.info(0x0000, 'testTag', '%{public}s', 'abilityStage01 entry publish ACTS_TEST_DESTROY');
+    //     });
+    //   }, 2000);
+    // };
   }
 
   onCreate(): void {
