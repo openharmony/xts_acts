@@ -51,12 +51,38 @@ async function exitInputMethod() {
   }
 }
 
+async function getInputMethodPermission() {
+    let driver = Driver.create()
+    await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+    await driver.delayMs(2000)
+    let TextInput = await driver.findComponent(ON.type('TextInput'))
+    if (TextInput == null) {
+      let scorll = await driver.findComponent(ON.type('Scroll'))
+      TextInput = await scorll.scrollSearch(ON.type('TextInput'))
+    }
+    await TextInput.click()
+    await driver.delayMs(1000)
+    let permissionBtn1 = await driver.findComponent(ON.text('同意'))
+    if (permissionBtn1 != null) {
+      await permissionBtn1.click()
+      await driver.delayMs(1000)
+    }
+    let permissionBtn2 = await driver.findComponent(ON.text('下一步'))
+    if (permissionBtn2 != null) {
+      await permissionBtn2.click()
+      await driver.delayMs(1000)
+    }
+    await stopApplication('com.uitestScene.acts')
+}
+
+
 export default function UiTest() {
   describe('UiTest_API20', () => {
     let driver: Driver
     beforeAll(async (done: Function) => {
       driver = Driver.create()
       await driver.delayMs(1000)
+      await getInputMethodPermission()
       done()
     })
 
@@ -113,12 +139,32 @@ export default function UiTest() {
       console.log(TestTag, 'testNewMouseDrag over');
     })
 
+    /*
+     * @tc.number: uiTest_20021
+     * @tc.name: testPressHomeWithId
+     * @tc.desc: pressHome test
+     */
+    it('testPressHomeWithId', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.log(TestTag, 'testPressHomeWithId start');
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+      await driver.delayMs(waitUiReadyMs)
+      let disPlay = display.getDefaultDisplaySync();
+      console.log(`${TestTag}, testPressHomeWithId disPlay is: ${JSON.stringify(disPlay)}`);
+      await driver.pressHome(disPlay.id)
+      await driver.delayMs(1000)
+      let button = await driver.findComponent(ON.belongingDisplay(disPlay.id).text('next page'))
+      expect(button == null).assertTrue()
+      await stopApplication('com.uitestScene.acts')
+      console.log(TestTag, 'testPressHomeWithId over');
+    })
+
   })
   describe('UiTest_API16', () => {
     let driver: Driver
     beforeAll(async (done: Function) => {
       driver = Driver.create()
       await driver.delayMs(1000)
+      await getInputMethodPermission()
       done()
     })
 
@@ -173,6 +219,7 @@ export default function UiTest() {
     beforeAll(async (done: Function) => {
       driver = Driver.create()
       await driver.delayMs(1000)
+      await getInputMethodPermission()
       done()
     })
 
@@ -210,6 +257,7 @@ export default function UiTest() {
     beforeAll(async (done: Function) => {
       driver = Driver.create()
       await driver.delayMs(1000)
+      await getInputMethodPermission()
       done()
     })
 
@@ -261,6 +309,7 @@ export default function UiTest() {
     beforeAll(async (done: Function) => {
       driver = Driver.create()
       await driver.delayMs(1000)
+      await getInputMethodPermission()
       done()
     })
 
