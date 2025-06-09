@@ -150,7 +150,7 @@ struct saveButton {
       if (eventData.data.clipSet != null) {
         this.clipSet = eventData.data.clipSet;
       }
-     if (eventData.data.rowWidth != null) {
+      if (eventData.data.rowWidth != null) {
         this.rowWidth = eventData.data.rowWidth;
       }else{
         this.rowWidth = 100
