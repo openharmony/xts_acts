@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import TreeMap from "@ohos.util.TreeMap";
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium'
 export default function TreeMapTest() {
 describe("TreeMapTest", function () {
                           
@@ -21,7 +21,7 @@ describe("TreeMapTest", function () {
    * @tc.name: testConstructor001
    * @tc.desc: Create an TreeMap instance. For example: let treeMap = new TreeMap().
    */
-  it("testConstructor001", 0, function () {
+  it("testConstructor001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     try {
       let treeMap = new TreeMap();
       expect(treeMap != undefined).assertEqual(true);
@@ -40,7 +40,7 @@ describe("TreeMapTest", function () {
    * @tc.type: Function
    * @tc.level: Level 2
    */
-  it("testConstructor002", 0, function () {
+  it("testConstructor002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     try {
       let treeMap = new TreeMap((a, b) => {return a > b});
       expect(treeMap != undefined).assertEqual(true);
@@ -64,7 +64,7 @@ describe("TreeMapTest", function () {
    * @tc.name: testSet002
    * @tc.desc: Add a pair of key value pairs to the TreeMap. For example: treeMap.set(0, "四").
    */
-  it("testSet002", 0, function () {
+  it("testSet002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let treeMap = new TreeMap();
     treeMap.set(0, "四");
     let res = treeMap.get(0);
@@ -75,7 +75,7 @@ describe("TreeMapTest", function () {
    * @tc.name: testSet003
    * @tc.desc: Add a pair of key value pairs to the TreeMap. For example: treeMap.set(0, 8).
    */
-  it("testSet003", 0, function () {
+  it("testSet003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let treeMap = new TreeMap();
     treeMap.set(0, 8);
     let res = treeMap.get(0);
@@ -86,7 +86,7 @@ describe("TreeMapTest", function () {
    * @tc.name: testSet004
    * @tc.desc: Add a pair of key value pairs to the TreeMap.
    */
-  it("testSet004", 0, function () {
+  it("testSet004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let treeMap = new TreeMap();
     let a = [1, 2, 3, 4];
     treeMap.set(0, a);
@@ -98,7 +98,7 @@ describe("TreeMapTest", function () {
    * @tc.name: testSet005
    * @tc.desc: Add a pair of key value pairs to the TreeMap.
    */
-  it("testSet005", 0, function () {
+  it("testSet005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let treeMap = new TreeMap();
     let a = {name: "lala", age: "13"};
     treeMap.set(0, a);
@@ -110,7 +110,7 @@ describe("TreeMapTest", function () {
    * @tc.name: testSet006
    * @tc.desc: Add a pair of key value pairs to the TreeMap. For example: treeMap.set(2, "*").
    */
-  it("testSet006", 0, function () {
+  it("testSet006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let treeMap = new TreeMap();
     treeMap.set(2, "*");
     let res = treeMap.get(2);
@@ -121,7 +121,7 @@ describe("TreeMapTest", function () {
    * @tc.name: testSet007
    * @tc.desc: Add a pair of key value pairs to the TreeMap. For example: treeMap.set(-2, 3.14).
    */
-  it("testSet007", 0, function () {
+  it("testSet007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let treeMap = new TreeMap();
     treeMap.set(-2, 3.14);
     let res = treeMap.get(-2);
@@ -132,7 +132,7 @@ describe("TreeMapTest", function () {
    * @tc.name: testSet008
    * @tc.desc: Add a pair of key value pairs to the TreeMap. For example: treeMap.set(100, true).
    */
-  it("testSet008", 0, function () {
+  it("testSet008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let treeMap = new TreeMap();
     treeMap.set(100, true);
     let res = treeMap.get(100);
@@ -143,7 +143,7 @@ describe("TreeMapTest", function () {
    * @tc.name: testSet009
    * @tc.desc: Add a pair of key value pairs to the TreeMap. For example: treeMap.set(100, true).
    */
-  it("testSet009", 0, function () {
+  it("testSet009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let treeMap = new TreeMap();
     treeMap.set(100, "");
     let res = treeMap.get(100);
@@ -154,7 +154,7 @@ describe("TreeMapTest", function () {
    * @tc.name: testSet010
    * @tc.desc: Add a pair of key value pairs to the TreeMap. For example: treeMap.set("a", "四").
    */
-  it("testSet010", 0, function () {
+  it("testSet010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let treeMap = new TreeMap();
     treeMap.set("a", "四");
     let res = treeMap.get("a");
@@ -165,7 +165,7 @@ describe("TreeMapTest", function () {
    * @tc.name: testSet011
    * @tc.desc: Add a pair of key value pairs to the TreeMap.
    */
-  it("testSet011", 0, function () {
+  it("testSet011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let treeMap = new TreeMap();
     for (let i = 0; i < 10000; i++) {
       treeMap.set(0, 8);
@@ -179,7 +179,7 @@ describe("TreeMapTest", function () {
    * @tc.name: testHasKey012
    * @tc.desc: Determine whether the TreeMap contains the specified key. For example: treeMap.hasKey(1).
    */
-  it("testHasKey012", 0, function () {
+  it("testHasKey012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let treeMap = new TreeMap();
     treeMap.set(0, "a");
     treeMap.set(1, "b");
@@ -193,7 +193,7 @@ describe("TreeMapTest", function () {
    * @tc.name: testHasValue013
    * @tc.desc: Determine whether the TreeMap contains the specified Value. For example: treeMap.hasValue("a").
    */
-  it("testHasValue013", 0, function () {
+  it("testHasValue013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeMap = new TreeMap();
     treeMap.set(0, "a");
     treeMap.set(1, "b");
@@ -208,7 +208,7 @@ describe("TreeMapTest", function () {
    * @tc.name: testGet014
    * @tc.desc: Get the corresponding value through the key. For example: treeMap.get(1).
    */
-  it("testGet014", 0, function () {
+  it("testGet014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeMap = new TreeMap();
     treeMap.set(0, "a");
     treeMap.set(1, "b");
@@ -221,7 +221,7 @@ describe("TreeMapTest", function () {
    * @tc.name: testGet015
    * @tc.desc: Get the corresponding value through the key. For example: treeMap.get(1).
    */
-  it("testGet015", 0, function () {
+  it("testGet015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeMap = new TreeMap();
     let res = treeMap.get(1);
     expect(res).assertEqual(undefined);
@@ -231,7 +231,7 @@ describe("TreeMapTest", function () {
    * @tc.name: testGet016
    * @tc.desc: Get the corresponding value through the key. For example: treeMap.get(0).
    */
-  it("testGet016", 0, function () {
+  it("testGet016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeMap = new TreeMap();
     treeMap.set(0, "a");
     treeMap.clear();
@@ -244,7 +244,7 @@ describe("TreeMapTest", function () {
    * @tc.name: testGetFirstKey017
    * @tc.desc: Get the key that ranks first in the TreeMap instance. For example: treeMap.getFirstKey().
    */
-  it("testGetFirstKey017", 0, function () {
+  it("testGetFirstKey017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeMap = new TreeMap();
     treeMap.set(0, "a");
     treeMap.set(1, "b");
@@ -257,7 +257,7 @@ describe("TreeMapTest", function () {
    * @tc.name: testGetFirstKey018
    * @tc.desc: Get the key that ranks first in the TreeMap instance. For example: treeMap.getFirstKey().
    */
-  it("testGetFirstKey018", 0, function () {
+  it("testGetFirstKey018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeMap = new TreeMap();
     let res = treeMap.getFirstKey();
     expect(res).assertEqual(undefined);
@@ -267,7 +267,7 @@ describe("TreeMapTest", function () {
    * @tc.name: testGetLastKey019
    * @tc.desc: Get the last sorted key in the TreeMap instance. For example: treeMap.getLastKey().
    */
-  it("testGetLastKey019", 0, function () {
+  it("testGetLastKey019", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeMap = new TreeMap();
     treeMap.set(0, "a");
     treeMap.set(1, "b");
@@ -280,7 +280,7 @@ describe("TreeMapTest", function () {
    * @tc.name: testGetLastKey020
    * @tc.desc: Get the last sorted key in the TreeMap instance. For example: treeMap.getLastKey().
    */
-  it("testGetLastKey020", 0, function () {
+  it("testGetLastKey020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeMap = new TreeMap();
     let res = treeMap.getLastKey();
     expect(res).assertEqual(undefined);
@@ -290,7 +290,7 @@ describe("TreeMapTest", function () {
    * @tc.name: testSetAll021
    * @tc.desc: Copy key value pairs from one HashMap to another. For example: treeMap.setAll(treeMap1).
    */
-  it("testSetAll021", 0, function () {
+  it("testSetAll021", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeMap = new TreeMap();
     treeMap.set(0, "a");
     treeMap.set(1, "b");
@@ -311,7 +311,7 @@ describe("TreeMapTest", function () {
    * @tc.name: testRemove022
    * @tc.desc: Delete key value pairs according to key. For example: treeMap.remove(1).
    */
-  it("testRemove022", 0, function () {
+  it("testRemove022", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeMap = new TreeMap();
     treeMap.set(0, "a");
     treeMap.set(1, "b");
@@ -324,7 +324,7 @@ describe("TreeMapTest", function () {
    * @tc.name: testRemove023
    * @tc.desc: Delete key value pairs according to key. For example: treeMap.remove(1).
    */
-  it("testRemove023", 0, function () {
+  it("testRemove023", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeMap = new TreeMap();
     treeMap.set(0, "a");
     let res = treeMap.remove(1);
@@ -335,7 +335,7 @@ describe("TreeMapTest", function () {
    * @tc.name: testClear024
    * @tc.desc: Clear all key value pairs in TreeMap. For example: treeMap.clear().
    */
-  it("testClear024", 0, function () {
+  it("testClear024", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeMap = new TreeMap();
     treeMap.set(0, "a");
     treeMap.set(1, "b");
@@ -349,7 +349,7 @@ describe("TreeMapTest", function () {
    * @tc.name: testClear025
    * @tc.desc: Clear all key value pairs in TreeMap. For example: treeMap.clear().
    */
-  it("testClear025", 0, function () {
+  it("testClear025", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeMap = new TreeMap();
     treeMap.set(0, "a");
     treeMap.set(1, "b");
@@ -367,7 +367,7 @@ describe("TreeMapTest", function () {
    * @tc.desc: Get a key that is a little lower than the specified key sort. 
    * For example: treeMap.getLowerKey(2).
    */
-  it("testGetLowerKey026", 0, function () {
+  it("testGetLowerKey026", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeMap = new TreeMap();
     treeMap.set(0, "a");
     treeMap.set(1, "b");
@@ -382,7 +382,7 @@ describe("TreeMapTest", function () {
    * @tc.name: testGetLowerKey027
    * @tc.desc: Get a key that is a little lower than the specified key sort. For example: treeMap.getLowerKey(2).
    */
-  it("testGetLowerKey027", 0, function () {
+  it("testGetLowerKey027", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeMap = new TreeMap();
     let res = treeMap.getLowerKey(2);
     expect(res).assertEqual(undefined);
@@ -392,7 +392,7 @@ describe("TreeMapTest", function () {
    * @tc.name: testGetHigherKey028
    * @tc.desc: Get a key that is a little higher than the specified key sort. For example: treeMap.getLowerKey(2).
    */
-  it("testGetHigherKey028", 0, function () {
+  it("testGetHigherKey028", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeMap = new TreeMap();
     treeMap.set(0, "a");
     treeMap.set(1, "b");
@@ -407,7 +407,7 @@ describe("TreeMapTest", function () {
    * @tc.name: testGetHigherKey029
    * @tc.desc: Get a key that is a little higher than the specified key sort. For example: treeMap.getLowerKey(2).
    */
-  it("testGetHigherKey029", 0, function () {
+  it("testGetHigherKey029", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeMap = new TreeMap();
     let res = treeMap.getHigherKey(2);
     expect(res).assertEqual(undefined);
@@ -417,7 +417,7 @@ describe("TreeMapTest", function () {
    * @tc.name: testKeys030
    * @tc.desc: Get a collection of all the keys in the TreeMap. For example: treeMap.keys().
    */
-  it("testKeys030", 0, function () {
+  it("testKeys030", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeMap = new TreeMap();
     treeMap.set(0, "a");
     treeMap.set(1, "b");
@@ -436,7 +436,7 @@ describe("TreeMapTest", function () {
    * @tc.name: testValues031
    * @tc.desc: Get a collection of all the values in the TreeMap. For example: treeMap.values().
    */
-  it("testValues031", 0, function () {
+  it("testValues031", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeMap = new TreeMap();
     treeMap.set(0, "a");
     treeMap.set(1, "b");
@@ -455,7 +455,7 @@ describe("TreeMapTest", function () {
    * @tc.name: testReplace032
    * @tc.desc: Modify the corresponding value according to the specified key. For example: treeMap.replace(2, "B").
    */
-  it("testReplace032", 0, function () {
+  it("testReplace032", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeMap = new TreeMap();
     treeMap.set(0, "a");
     treeMap.set(1, "b");
@@ -471,7 +471,7 @@ describe("TreeMapTest", function () {
    * @tc.name: testReplace033
    * @tc.desc: Modify the corresponding value according to the specified key. For example: treeMap.replace(2, "B").
    */
-  it("testReplace033", 0, function () {
+  it("testReplace033", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeMap = new TreeMap();
     treeMap.set(0, "a");
     let res = treeMap.replace(2, "B");
@@ -484,7 +484,7 @@ describe("TreeMapTest", function () {
    * @tc.name: testLength034
    * @tc.desc: Get the number of key value pairs in the TreeMap instance. For example: treeMap.length.
    */
-  it("testLength034", 0, function () {
+  it("testLength034", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeMap = new TreeMap();
     treeMap.set(0, "a");
     treeMap.set(1, "b");
@@ -499,7 +499,7 @@ describe("TreeMapTest", function () {
    * @tc.name: testLength035
    * @tc.desc: Get the number of key value pairs in the TreeMap instance. For example: treeMap.length.
    */
-  it("testLength035", 0, function () {
+  it("testLength035", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeMap = new TreeMap();
     let res = treeMap.length;
     expect(res).assertEqual(0);
@@ -509,7 +509,7 @@ describe("TreeMapTest", function () {
    * @tc.name: testForEach036
    * @tc.desc: Traverse all key value pairs in the TreeMap instance.
    */
-  it("testForEach036", 0, function () {
+  it("testForEach036", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeMap = new TreeMap();
     treeMap.set(0, "a");
     treeMap.set(1, "b");
@@ -538,7 +538,7 @@ describe("TreeMapTest", function () {
    * @tc.name: testEntries037
    * @tc.desc: Get all key value pairs collection in TreeMap.
    */
-  it("testEntries037", 0, function () {
+  it("testEntries037", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeMap = new TreeMap();
     treeMap.set(0, "a");
     treeMap.set(1, "b");
@@ -562,7 +562,7 @@ describe("TreeMapTest", function () {
    * @tc.name: testIterator038
    * @tc.desc: Traverse all key value pairs in the TreeMap instance.
    */
-  it("testIterator038", 0, function () {
+  it("testIterator038", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeMap = new TreeMap();
     treeMap.set(0, "a");
     treeMap.set(1, "b");
@@ -583,7 +583,7 @@ describe("TreeMapTest", function () {
    * @tc.name: testIterator039
    * @tc.desc: Traverse all key value pairs in the TreeMap instance. For example: treeMap[Symbol.iterator]().
    */
-  it("testIterator039", 0, function () {
+  it("testIterator039", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeMap = new TreeMap();
     treeMap.set(0, "a");
     treeMap.set(1, "b");
@@ -607,7 +607,7 @@ describe("TreeMapTest", function () {
    * @tc.name: testIsEmpty040
    * @tc.desc: Determine whether the TreeMap instance is empty. For example: treeMap.isEmpty().
    */                                                                                              
-  it("testIsEmpty040", 0, function () {
+  it("testIsEmpty040", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeMap = new TreeMap();
     treeMap.set(0, "a");
     treeMap.set(1, "b");
@@ -625,7 +625,7 @@ describe("TreeMapTest", function () {
    * @tc.name: testSetAll041
    * @tc.desc: Copy key value pairs from one HashMap to another. For example: treeMap.setAll([1, 2, 3]).
    */
-  it("testSetAll041", 0, function () {
+  it("testSetAll041", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let treeMap = new TreeMap();
     treeMap.set(0, "a");
     treeMap.set(1, "b");

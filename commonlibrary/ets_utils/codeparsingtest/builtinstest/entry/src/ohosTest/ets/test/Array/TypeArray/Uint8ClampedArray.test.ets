@@ -59,9 +59,9 @@ export default function Uint8ClampedArrayTest() {
      * @tc.desc       : Testing Constructor of Uint8ClampedArray without param.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUint8ClampedArrayConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUint8ClampedArrayConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUint8ClampedArrayConstructor0001";
       try {
         let array = new Uint8ClampedArray();
@@ -78,9 +78,9 @@ export default function Uint8ClampedArrayTest() {
      * @tc.desc       : Testing Constructor of Uint8ClampedArray with length 0,and set index 0 with 3.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUint8ClampedArrayConstructor0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUint8ClampedArrayConstructor0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUint8ClampedArrayConstructor0002";
       try {
         let array = new Uint8ClampedArray(0);
@@ -98,9 +98,9 @@ export default function Uint8ClampedArrayTest() {
      * @tc.desc       : Testing Constructor of Uint8ClampedArray with length 10,and set index 0 with 3.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUint8ClampedArrayConstructor0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUint8ClampedArrayConstructor0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUint8ClampedArrayConstructor0003";
       try {
         let array = new Uint8ClampedArray(10);
@@ -118,9 +118,9 @@ export default function Uint8ClampedArrayTest() {
      * @tc.desc       : Testing Constructor of Uint8ClampedArray with length 10,and set index 0 with 3.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUint8ClampedArrayConstructor0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUint8ClampedArrayConstructor0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUint8ClampedArrayConstructor0004";
       try {
         let array = new Uint8ClampedArray(10);
@@ -138,9 +138,9 @@ export default function Uint8ClampedArrayTest() {
      * @tc.desc       : Testing Constructor of Uint8ClampedArray with length 10,and get value of index 1.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUint8ClampedArrayConstructor0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUint8ClampedArrayConstructor0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUint8ClampedArrayConstructor0005";
       try {
         let array = new Uint8ClampedArray(10);
@@ -157,9 +157,9 @@ export default function Uint8ClampedArrayTest() {
      * @tc.desc       : Testing Constructor of Uint8ClampedArray with 'q',and get value of index 0.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUint8ClampedArrayConstructor0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUint8ClampedArrayConstructor0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUint8ClampedArrayConstructor0006";
       try {
         const array = Constants.uint8ClampedConstructTestArray1;
@@ -176,9 +176,9 @@ export default function Uint8ClampedArrayTest() {
      * @tc.desc       : Testing Constructor of Uint8ClampedArray with '56',and get value of index 1.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUint8ClampedArrayConstructor0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUint8ClampedArrayConstructor0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUint8ClampedArrayConstructor0007";
       try {
         const array = Constants.uint8ClampedConstructTestArray2;
@@ -196,9 +196,9 @@ export default function Uint8ClampedArrayTest() {
      * @tc.desc       : Testing Constructor of Uint8ClampedArray with array[21,31],and get value of index 0.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUint8ClampedArrayConstructor0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUint8ClampedArrayConstructor0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUint8ClampedArrayConstructor0008";
       try {
         let array = new Uint8ClampedArray([21, 31]);
@@ -215,9 +215,9 @@ export default function Uint8ClampedArrayTest() {
      * @tc.desc       : Testing Constructor of Uint8ClampedArray with array[21,31],and get value of index 1.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUint8ClampedArrayConstructor0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUint8ClampedArrayConstructor0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUint8ClampedArrayConstructor0009";
       try {
         let array = new Uint8ClampedArray([21, 31]);
@@ -234,9 +234,9 @@ export default function Uint8ClampedArrayTest() {
      * @tc.desc       : Testing Constructor of Uint8ClampedArray with array[21,31],and get value of index 3.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUint8ClampedArrayConstructor0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUint8ClampedArrayConstructor0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUint8ClampedArrayConstructor0010";
       try {
         let array = new Uint8ClampedArray([21, 31]);
@@ -253,9 +253,9 @@ export default function Uint8ClampedArrayTest() {
      * @tc.desc       : Testing Constructor of Uint8ClampedArray with array[21,31],and set value of index 10,get value of index 10.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUint8ClampedArrayConstructor0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUint8ClampedArrayConstructor0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUint8ClampedArrayConstructor0011";
       try {
         let array = new Uint8ClampedArray([21, 31]);
@@ -273,9 +273,9 @@ export default function Uint8ClampedArrayTest() {
      * @tc.desc       : Testing Constructor of Uint8ClampedArray with Uint8ClampedArray which construct by array [21,31],and get value of index 0.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUint8ClampedArrayConstructor0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUint8ClampedArrayConstructor0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUint8ClampedArrayConstructor0012";
       try {
         let array = new Uint8ClampedArray(new Uint8ClampedArray([21, 31]));
@@ -292,9 +292,9 @@ export default function Uint8ClampedArrayTest() {
      * @tc.desc       : Testing Constructor of Uint8ClampedArray with Uint8ClampedArray which construct by array [21,31],and get value of index 0.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUint8ClampedArrayConstructor0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUint8ClampedArrayConstructor0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUint8ClampedArrayConstructor0013";
       try {
         let array = new Uint8ClampedArray(new Uint8ClampedArray([21, 31]));
@@ -311,9 +311,9 @@ export default function Uint8ClampedArrayTest() {
      * @tc.desc       : Testing Constructor of Uint8ClampedArray with Uint8ClampedArray which construct by array [21,31],and get value of index 3.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUint8ClampedArrayConstructor0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUint8ClampedArrayConstructor0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testUint8ClampedArrayConstructor0014";
       try {
         let array = new Uint8ClampedArray(new Uint8ClampedArray([21, 31]));

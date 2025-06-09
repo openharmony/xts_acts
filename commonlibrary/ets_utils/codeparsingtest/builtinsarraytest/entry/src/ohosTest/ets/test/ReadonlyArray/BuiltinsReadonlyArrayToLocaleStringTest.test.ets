@@ -59,9 +59,9 @@ export default function builtinsReadonlyArrayToLocaleStringTest() {
      * @tc.desc Test number ReadonlyArray
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 0
      */
-    it('builtinsReadonlyArrayToLocaleStringTest1001', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
+    it('builtinsReadonlyArrayToLocaleStringTest1001', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL0, () => {
       let arr: readonly number[] = [1, 2, 3];
       expect(arr.toLocaleString()).assertEqual("1,2,3");
     });

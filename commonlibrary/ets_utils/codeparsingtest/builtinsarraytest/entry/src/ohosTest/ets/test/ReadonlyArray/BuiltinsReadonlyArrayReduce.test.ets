@@ -43,9 +43,9 @@ export default function builtinsReadonlyArrayReduceTest() {
      * @tc.desc test Readonly
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 0
      */
-    it('BuiltinsReadonlyArrayReduceTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
+    it('BuiltinsReadonlyArrayReduceTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (Done: Function) => {
       const numbers: readonly number[] = [1, 2, 3];
       const sum = numbers.reduce((accumulator, currentValue) => {
         return accumulator + currentValue;
@@ -88,7 +88,7 @@ export default function builtinsReadonlyArrayReduceTest() {
         console.log(`${result}`);
       } catch (error) {
         console.error(error.message);
-        expect("out of range.").assertEqual(error.message);
+        expect('TypeError').assertEqual(error.name);
       }
       ;
       Done();

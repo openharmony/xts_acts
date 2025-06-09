@@ -46,9 +46,9 @@ export default function builtinsReadonlyArrayMapTest() {
      * @tc.desc test Array
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 0
      */
-    it('buildinsReadonlyArrayMapTest1001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('buildinsReadonlyArrayMapTest1001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (Done: Function) => {
 
         console.info('testTag', '%{public}s', 'it begin');

@@ -52,9 +52,9 @@ export default function builtinsArrayBufferLikeTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('buildinsArrayBufferLikeTest1001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('buildinsArrayBufferLikeTest1001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (Done: Function) => {
         type ArrayBufferLike = ArrayBuffer | SharedArrayBuffer
         let bbb: ArrayBufferLike = new ArrayBuffer(12);
@@ -68,7 +68,7 @@ export default function builtinsArrayBufferLikeTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('buildinsArrayBufferLikeTest1002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {

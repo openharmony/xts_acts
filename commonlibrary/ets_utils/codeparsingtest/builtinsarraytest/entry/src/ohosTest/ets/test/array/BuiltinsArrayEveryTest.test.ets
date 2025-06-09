@@ -47,9 +47,9 @@ export default function builtinsArrayEveryTest() {
      * @tc.desc test every
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('builtinsArrayEveryTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('builtinsArrayEveryTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (Done: Function) => {
       const caseName = 'builtinsArrayEveryTest0100'
       console.info(`${caseName} test start`)
       let arr: Array<number> = [1, 2, 3]
@@ -67,9 +67,9 @@ export default function builtinsArrayEveryTest() {
      * @tc.desc test every
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('builtinsArrayEveryTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('builtinsArrayEveryTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (Done: Function) => {
       const caseName = 'builtinsArrayEveryTest0200'
       console.info(`${caseName} test start`)
       let arr: Array<number> = [1, 2, 3]
@@ -87,7 +87,7 @@ export default function builtinsArrayEveryTest() {
      * @tc.desc test every
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayEveryTest0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'builtinsArrayEveryTest0300'
@@ -105,7 +105,7 @@ export default function builtinsArrayEveryTest() {
      * @tc.desc test every
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayEveryTest0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'builtinsArrayEveryTest0400'
@@ -123,7 +123,7 @@ export default function builtinsArrayEveryTest() {
      * @tc.desc test every
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayEveryTest0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'builtinsArrayEveryTest0500'
@@ -141,7 +141,7 @@ export default function builtinsArrayEveryTest() {
      * @tc.desc test every
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayEveryTest0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'builtinsArrayEveryTest0600'
@@ -159,7 +159,7 @@ export default function builtinsArrayEveryTest() {
      * @tc.desc test every
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayEveryTest0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'builtinsArrayEveryTest0700'
@@ -177,7 +177,7 @@ export default function builtinsArrayEveryTest() {
      * @tc.desc test every
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayEveryTest0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'builtinsArrayEveryTest0800'
@@ -195,7 +195,7 @@ export default function builtinsArrayEveryTest() {
      * @tc.desc test every
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayEveryTest0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'builtinsArrayEveryTest0900'
@@ -216,7 +216,7 @@ export default function builtinsArrayEveryTest() {
      * @tc.desc test every
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayEveryTest1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'builtinsArrayEveryTest1000'
@@ -237,7 +237,7 @@ export default function builtinsArrayEveryTest() {
      * @tc.desc test every
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayEveryTest1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'builtinsArrayEveryTest1100'
@@ -257,7 +257,7 @@ export default function builtinsArrayEveryTest() {
      * @tc.desc test every
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayEveryTest1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'builtinsArrayEveryTest1200'
@@ -275,7 +275,7 @@ export default function builtinsArrayEveryTest() {
      * @tc.desc test every
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayEveryTest1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'builtinsArrayEveryTest1300'
@@ -293,7 +293,7 @@ export default function builtinsArrayEveryTest() {
      * @tc.desc test every
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayEveryTest1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
@@ -313,7 +313,7 @@ export default function builtinsArrayEveryTest() {
      * @tc.desc test every
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayEveryTest1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'builtinsArrayEveryTest1500'

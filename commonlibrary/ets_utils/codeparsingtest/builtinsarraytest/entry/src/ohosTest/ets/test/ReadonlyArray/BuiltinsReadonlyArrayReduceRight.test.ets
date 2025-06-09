@@ -57,9 +57,9 @@ export default function builtinsReadonlyArrayReduceRightTest() {
      * @tc.desc test Readonly
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 0
      */
-    it('BuiltinsReadonlyArrayReduceTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
+    it('BuiltinsReadonlyArrayReduceTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (Done: Function) => {
       const numbers: readonly number[] = [1, 2, 3];
       const sum = numbers.reduceRight((accumulator, currentValue) => {
         return accumulator + currentValue;

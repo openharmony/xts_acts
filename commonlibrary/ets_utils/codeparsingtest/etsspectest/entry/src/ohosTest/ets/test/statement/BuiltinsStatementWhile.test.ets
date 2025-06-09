@@ -45,9 +45,9 @@ export default function builtinsStatementWhileTest() {
      * @tc.desc test while and do while
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 0
      */
-    it('builtinsStatementWhileTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
+    it('builtinsStatementWhileTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (Done: Function) => {
       let executed1 = false;
       while (0) {
         console.log('print:this is while statement' + 0);
@@ -70,9 +70,9 @@ export default function builtinsStatementWhileTest() {
      * @tc.desc test while and do while
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 0
      */
-    it('builtinsStatementWhileTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
+    it('builtinsStatementWhileTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (Done: Function) => {
       let executed1 = false;
       while (NaN) {
         console.log('print:this is while statement' + NaN);
@@ -94,9 +94,9 @@ export default function builtinsStatementWhileTest() {
      * @tc.desc test while and do while
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 0
      */
-    it('builtinsStatementWhileTest0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (Done: Function) => {
+    it('builtinsStatementWhileTest0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (Done: Function) => {
       let executed1 = false;
       while ("") {
         console.log('print:this is while statement' + "");

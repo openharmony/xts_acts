@@ -46,9 +46,9 @@ export default function builtinsArrayToSplicedTest() {
      * @tc.desc Test basic splice with replacement
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('builtinsArrayToSplicedTest1001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('builtinsArrayToSplicedTest1001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       expect(toSplicedRes([1, 2, 3, 4, 5], 2, 2, 'a', 'b'))
         .assertDeepEquals([1, 2, 'a', 'b', 5]);
       expect(toSplicedRes([1, 2, 3, 4, 5], 2, -1, 'a', 'b'))
@@ -61,7 +61,7 @@ export default function builtinsArrayToSplicedTest() {
      * @tc.desc Test insertion at beginning
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayToSplicedTest1002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       expect(toSplicedRes([2, 3, 4], 0, 0, 1))
@@ -74,7 +74,7 @@ export default function builtinsArrayToSplicedTest() {
      * @tc.desc Test insertion beyond array length
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayToSplicedTest1003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       expect(toSplicedRes([1, 2], 2, 0, 3))
@@ -87,7 +87,7 @@ export default function builtinsArrayToSplicedTest() {
      * @tc.desc Test empty array insertion
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayToSplicedTest1004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       expect(toSplicedRes([], 0, 0, 1))
@@ -100,7 +100,7 @@ export default function builtinsArrayToSplicedTest() {
      * @tc.desc Handle sparse arrays
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayToSplicedTest1005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       expect(toSplicedRes([1, , 3], 1, 1, 2))
@@ -113,7 +113,7 @@ export default function builtinsArrayToSplicedTest() {
      * @tc.desc Insert undefined/null values
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayToSplicedTest1006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       expect(toSplicedRes([1, 2, 3, 4, 5], -2, 1))
@@ -130,7 +130,7 @@ export default function builtinsArrayToSplicedTest() {
      * @tc.desc Insert number
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayToSplicedTest1007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       expect(toSplicedRes([1, 2, 3], 0, 3))
@@ -145,7 +145,7 @@ export default function builtinsArrayToSplicedTest() {
      * @tc.desc Insert string
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayToSplicedTest1008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       expect(toSplicedRes([1, 2, 3], 1, 0, 'a', 'b'))
@@ -158,7 +158,7 @@ export default function builtinsArrayToSplicedTest() {
      * @tc.desc Handle special characters
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayToSplicedTest1009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const testData: SpliceString[] = [
@@ -251,7 +251,7 @@ export default function builtinsArrayToSplicedTest() {
      * @tc.desc Test number handling
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayToSplicedTest1010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const numberTestData: SpliceNumber[] = [
@@ -350,7 +350,7 @@ export default function builtinsArrayToSplicedTest() {
      * @tc.desc Test boolean handling
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayToSplicedTest1011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const booleanTestData: SpliceBoolean[] = [

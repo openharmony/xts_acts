@@ -32,9 +32,9 @@ describe('JsonTest', function () {
    * @tc.desc: Parsing JSON strings
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 0
    */
-  it("testparse0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testparse0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     const jsonText = '{"name": "John", "age": 30}';
     let obj = JSON.parse(jsonText);
     expect( obj.hasOwnProperty('name')).assertEqual(true);
@@ -46,9 +46,9 @@ describe('JsonTest', function () {
    * @tc.desc: Parsing JSON strings
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 0
    */
-  it("testparse0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testparse0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     function reviverFunc(key, value) {
       if (key === "age") {
         return value + 1;
@@ -66,9 +66,9 @@ describe('JsonTest', function () {
    * @tc.desc: Parsing JSON strings
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 0
    */
-  it("testparse0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testparse0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let obj = JSON.parse("null");
     expect(obj).assertEqual(null);
   });
@@ -79,9 +79,9 @@ describe('JsonTest', function () {
    * @tc.desc: Parsing JSON strings
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 0
    */
-  it("testparse0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testparse0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let obj = JSON.parse("true");
     expect(obj).assertEqual(true);
   });
@@ -92,9 +92,9 @@ describe('JsonTest', function () {
    * @tc.desc: Parsing JSON strings
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 0
    */
-  it("testparse0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testparse0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let obj = JSON.parse("false");
     expect(obj).assertEqual(false);
   });
@@ -105,9 +105,9 @@ describe('JsonTest', function () {
    * @tc.desc: Convert a JavaScript object or value to a JSON string
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 0
    */
-  it("teststringify0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("teststringify0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let obj = JSON.stringify({});
     expect(obj).assertEqual("{}");
   });
@@ -118,9 +118,9 @@ describe('JsonTest', function () {
    * @tc.desc: Convert a JavaScript object or value to a JSON string
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 0
    */
-  it("teststringify0007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("teststringify0007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let obj = JSON.stringify({name: "joy", age: 30});
     expect(obj).assertEqual('{"name":"joy","age":30}');
   });
@@ -131,9 +131,9 @@ describe('JsonTest', function () {
    * @tc.desc: Convert a JavaScript object or value to a JSON string
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 0
    */
-  it("teststringify0008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("teststringify0008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let arr = [1, 2];
     let obj = {1: "John", 2: 30, 3: "New York"};
     let rst = JSON.stringify(obj, arr);
@@ -146,9 +146,9 @@ describe('JsonTest', function () {
    * @tc.desc: Convert a JavaScript object or value to a JSON string
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 0
    */
-  it("teststringify0009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("teststringify0009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let arr = [1, 2];
     let obj = {1: "John", 2: 30, 3: "New York"};
     let rst = JSON.stringify(obj, arr, 1);
@@ -161,9 +161,9 @@ describe('JsonTest', function () {
    * @tc.desc: Convert a JavaScript object or value to a JSON string
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 0
    */
-  it("teststringify0010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("teststringify0010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let arr = [1, 2];
     let obj = {1: "John", 2: 30, 3: "New York"};
     let rst = JSON.stringify(obj, arr, "www");
@@ -176,7 +176,7 @@ describe('JsonTest', function () {
    * @tc.desc: Convert a JavaScript object or value to a JSON string
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
   it("teststringify0011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arr = [1, 2];
@@ -191,7 +191,7 @@ describe('JsonTest', function () {
    * @tc.desc: Convert a JavaScript object or value to a JSON string
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
   it("teststringify0012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let arr = [];
@@ -206,7 +206,7 @@ describe('JsonTest', function () {
    * @tc.desc: Convert a JavaScript object or value to a JSON string
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
   it("teststringify0013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     const replacer = (key, value) => {
@@ -227,7 +227,7 @@ describe('JsonTest', function () {
    * @tc.desc: Convert a JavaScript object or value to a JSON string
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
   it("teststringify0014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     const replacer = (key, value) => {
@@ -248,7 +248,7 @@ describe('JsonTest', function () {
    * @tc.desc: Convert a JavaScript object or value to a JSON string
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
   it("teststringify0015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     const replacer = (key, value) => {
@@ -269,7 +269,7 @@ describe('JsonTest', function () {
    * @tc.desc: Checks whether the object parsed from a JSON string contains the property.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
   it("testhas0016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     const obj = {"name": "John", "age": 30, "city": "New York"};
@@ -283,7 +283,7 @@ describe('JsonTest', function () {
    * @tc.desc: Checks whether the object parsed from a JSON string contains the property.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
   it("testhas0017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     const obj = {"name": "John", "age": 30, "city": "New York"};
@@ -297,7 +297,7 @@ describe('JsonTest', function () {
    * @tc.desc: Removes a property from the object parsed from a JSON string.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
   it("tesremove0018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     const obj = {"name": "John", "age": 30, "city": "New York"};
@@ -312,7 +312,7 @@ describe('JsonTest', function () {
    * @tc.desc: Removes a property from the object parsed from a JSON string.
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
   it("tesremove0019", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     const obj = {"name": "John", "age": 30, "city": "New York"};
@@ -327,7 +327,7 @@ describe('JsonTest', function () {
    * @tc.desc: Parsing JSON strings
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
     it("testparse0020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
       try {
@@ -344,7 +344,7 @@ describe('JsonTest', function () {
    * @tc.desc: Parsing JSON strings
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
   it("testparse0021", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     try {
@@ -361,7 +361,7 @@ describe('JsonTest', function () {
    * @tc.desc: Parsing JSON strings
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
   it("testparse0022", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let rst = JSON.parse('\t\r \n{\t\r \n' +
@@ -379,7 +379,7 @@ describe('JsonTest', function () {
    * @tc.desc: Parsing JSON strings
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
   it("testparse0023", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     try {
@@ -396,7 +396,7 @@ describe('JsonTest', function () {
    * @tc.desc: Parsing JSON strings
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
   it("testparse0024", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let rst = JSON.parse('"abc"');
@@ -409,7 +409,7 @@ describe('JsonTest', function () {
    * @tc.desc: Parsing JSON strings
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
   it("testparse0025", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     try {
@@ -427,7 +427,7 @@ describe('JsonTest', function () {
    * @tc.desc: Parsing JSON strings
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
   it("testparse0026", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     try {
@@ -444,7 +444,7 @@ describe('JsonTest', function () {
    * @tc.desc: Parsing JSON strings
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
   it("testparse0027", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let rst = JSON.parse('"\\u0058"');
@@ -457,7 +457,7 @@ describe('JsonTest', function () {
    * @tc.desc: Parsing JSON strings
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
   it("testparse0028", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let rst = JSON.parse('"\\\\"');
@@ -470,7 +470,7 @@ describe('JsonTest', function () {
    * @tc.desc: Parsing JSON strings
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
   it("testparse0029", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     var nullChars = new Array();
@@ -489,7 +489,7 @@ describe('JsonTest', function () {
    * @tc.desc: Parsing JSON strings supports BigInt
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
   it("testparse0030", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let options = {
@@ -506,7 +506,7 @@ describe('JsonTest', function () {
    * @tc.desc: Parsing JSON strings supports BigInt
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
   it("testparse0031", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let options = {
@@ -523,7 +523,7 @@ describe('JsonTest', function () {
    * @tc.desc: Parsing JSON strings supports BigInt
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
   it("testparse0032", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let options = {
@@ -540,7 +540,7 @@ describe('JsonTest', function () {
    * @tc.desc: Parsing JSON strings supports BigInt
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
   it("testparse0033", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let options = {
@@ -557,7 +557,7 @@ describe('JsonTest', function () {
    * @tc.desc: Parsing JSON strings supports BigInt
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
   it("testparse0034", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let options = {
@@ -574,7 +574,7 @@ describe('JsonTest', function () {
    * @tc.desc: Parsing JSON strings supports BigInt
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
   it("testparse0035", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let options = {
@@ -591,7 +591,7 @@ describe('JsonTest', function () {
    * @tc.desc: Parsing JSON strings supports BigInt
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
   it("testparse0036", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let options = {
@@ -614,7 +614,7 @@ describe('JsonTest', function () {
    * @tc.desc: Parsing JSON strings supports BigInt
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
   it("testparse0037", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let options = {
@@ -637,7 +637,7 @@ describe('JsonTest', function () {
    * @tc.desc: Convert a JavaScript object or value to a JSON string
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
   it("teststringify0038", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let options = {
@@ -661,7 +661,7 @@ describe('JsonTest', function () {
    * @tc.desc: Convert a JavaScript object or value to a JSON string
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
   it("teststringify0039", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let obj = JSON.stringify(null);
@@ -674,7 +674,7 @@ describe('JsonTest', function () {
    * @tc.desc: Convert a JavaScript object or value to a JSON string
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
   it("teststringify0040", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let obj = JSON.stringify(undefined);
@@ -687,7 +687,7 @@ describe('JsonTest', function () {
    * @tc.desc: Convert a JavaScript object or value to a JSON string
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
   it("teststringify0041", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let obj = JSON.stringify(123);
@@ -700,7 +700,7 @@ describe('JsonTest', function () {
    * @tc.desc: Convert a JavaScript object or value to a JSON string
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
   it("teststringify0042", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let obj = JSON.stringify(-123);
@@ -713,7 +713,7 @@ describe('JsonTest', function () {
    * @tc.desc: Convert a JavaScript object or value to a JSON string
    * @tc.size: MediumTest
    * @tc.type: Function
-   * @tc.level: Level 2
+   * @tc.level: Level 1
    */
   it("teststringify0043", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let rst = " ";

@@ -58,10 +58,10 @@ export default function builtinsStatementTry() {
      * @tc.desc test One catch
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 0
      */
 
-    it('builtinsStatementTry0100', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, (Done: Function) => {
+    it('builtinsStatementTry0100', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL0, (Done: Function) => {
       try {
         testTryCatch();
         throw new Error('Simulated error');
@@ -79,9 +79,9 @@ export default function builtinsStatementTry() {
      * @tc.desc test Multiple catch
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 0
      */
-    it('builtinsStatementTry0200', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
+    it('builtinsStatementTry0200', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL0, async (Done: Function) => {
       try {
         Input('@');
       } catch (error) {

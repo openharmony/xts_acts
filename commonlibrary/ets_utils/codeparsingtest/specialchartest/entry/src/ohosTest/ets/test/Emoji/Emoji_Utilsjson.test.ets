@@ -43,9 +43,9 @@ export default function demoEmojiUtilJsonTest() {
      * @tc.desc       : Test the Utils interface parse with input emoji \ud83d\ude0a.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it("testparseEmoji0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it("testparseEmoji0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testparseEmoji0001";
       try {
         const emoji = '\ud83d\ude0a';
@@ -65,9 +65,9 @@ export default function demoEmojiUtilJsonTest() {
      * @tc.desc       : Test the Utils interface parse with input emoji \ud83d\udc64.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it("testparseEmoji0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it("testparseEmoji0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testparseEmoji0002";
       try {
         const emoji = '\ud83d\udc64';
@@ -87,9 +87,9 @@ export default function demoEmojiUtilJsonTest() {
      * @tc.desc       : Test the Utils interface parse with input emoji \ud83d\udc6b.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it("testparseEmoji0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it("testparseEmoji0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testparseEmoji0003";
       try {
         const emoji = '\ud83d\udc6b';
@@ -109,9 +109,9 @@ export default function demoEmojiUtilJsonTest() {
      * @tc.desc       : Test the Utils interface parse with input emoji \u260e.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it("testparseEmoji0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it("testparseEmoji0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testparseEmoji0004";
       try {
         const emoji = '\u260e';

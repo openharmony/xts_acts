@@ -21,7 +21,7 @@ describe("HashSetTest", function () {
    * @tc.name: testConstructor001
    * @tc.desc: Create an HashSet instance. For example: let hashSet = new HashSet().
    */
-  it("testConstructor001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testConstructor001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     try {
       let hashSet = new HashSet();
     } catch (err) {
@@ -35,7 +35,7 @@ describe("HashSetTest", function () {
    * @tc.name: testAdd001
    * @tc.desc: Add element to HashSet instance. For example: hashSet.add(1).
    */
-  it("testAdd001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testAdd001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let hashSet = new HashSet();
     hashSet.add(1);
     let res = hashSet.has(1);
@@ -46,7 +46,7 @@ describe("HashSetTest", function () {
    * @tc.name: testAdd002
    * @tc.desc: Add element to HashSet instance. For example: hashSet.add("a").
    */
-  it("testAdd002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testAdd002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let hashSet = new HashSet();
     hashSet.add("b");
     hashSet.add("c");
@@ -61,7 +61,7 @@ describe("HashSetTest", function () {
    * @tc.name: testAdd003
    * @tc.desc: Add element to HashSet instance. For example: let c = [1, 2, 3]; hashSet.add(c).
    */
-  it("testAdd003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testAdd003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let hashSet = new HashSet();
     let c = [1, 2, 3];
     hashSet.add(c);
@@ -73,7 +73,7 @@ describe("HashSetTest", function () {
    * @tc.name: testAdd004
    * @tc.desc: Add element to HashSet instance. For example: let c = {name: "lili", age: "13"}; hashSet.add(c).
    */
-  it("testAdd004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testAdd004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let hashSet = new HashSet();
     let c = {name: "lili", age: "13"};
     hashSet.add(c);
@@ -85,7 +85,7 @@ describe("HashSetTest", function () {
    * @tc.name: testLength005
    * @tc.desc: Get the number of element in the HashSet instance. For example: hashSet.length.
    */
-  it("testLength005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testLength005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let hashSet = new HashSet();
     hashSet.add(1);
     hashSet.add(2);
@@ -100,7 +100,7 @@ describe("HashSetTest", function () {
    * @tc.name: testHas006
    * @tc.desc: Determine whether the HashSet instance contains the specified element. For example: hashSet.has(1).
    */
-  it("testHas006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testHas006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let hashSet = new HashSet();
     hashSet.add(4);
     hashSet.add(1);
@@ -117,7 +117,7 @@ describe("HashSetTest", function () {
    * @tc.name: testIsEmpty007
    * @tc.desc: Determine whether the HashSet instance is empty. For example: hashSet.isEmpty().
    */
-  it("testIsEmpty007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testIsEmpty007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let hashSet = new HashSet();
     hashSet.add(4);
     hashSet.add(1);
@@ -132,7 +132,7 @@ describe("HashSetTest", function () {
    * @tc.name: testRemove008
    * @tc.desc: Delete the specified element. For example: hashSet.remove(1).
    */
-  it("testRemove008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testRemove008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let hashSet = new HashSet();
     hashSet.add(4);
     hashSet.add(1);
@@ -155,7 +155,7 @@ describe("HashSetTest", function () {
    * @tc.name: testClear009
    * @tc.desc: Clear all elements of the HashSet instance. For example: hashSet.clear().
    */
-  it("testClear009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testClear009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let hashSet = new HashSet();
     hashSet.add(4);
     hashSet.add(1);
@@ -173,7 +173,7 @@ describe("HashSetTest", function () {
    * @tc.name: testValues010
    * @tc.desc: Get a collection of all elements of a HashSet instance. For example: hashSet.values().
    */
-  it("testValues010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testValues010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let hashSet = new HashSet();
     hashSet.add("A");
     hashSet.add("B");
@@ -191,7 +191,7 @@ describe("HashSetTest", function () {
    * @tc.name: testForEach011
    * @tc.desc: Traverse the collection of all elements of the HashSet instance.
    */
-  it("testForEach011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testForEach011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let hashSet = new HashSet();
     hashSet.add(1);
     hashSet.add(2);
@@ -213,7 +213,7 @@ describe("HashSetTest", function () {
    * @tc.desc: Iterate over all elements of the HashSet instance. 
    * For example: for (let item of hashSet) {arr.push(item);}.
    */
-  it("testIterator012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testIterator012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let hashSet = new HashSet();
     hashSet.add(1);
     hashSet.add(2);

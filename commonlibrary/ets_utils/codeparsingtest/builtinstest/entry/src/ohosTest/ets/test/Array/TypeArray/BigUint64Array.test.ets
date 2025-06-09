@@ -59,9 +59,9 @@ export default function BigUint64ArrayTest() {
      * @tc.desc       : Testing Constructor of BigUint64Array without param.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBigUint64ArrayConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBigUint64ArrayConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testBigUint64ArrayConstructor0001";
       try {
         let array = new BigUint64Array();
@@ -78,9 +78,9 @@ export default function BigUint64ArrayTest() {
      * @tc.desc       : Testing Constructor of BigUint64Array with length 0,and set index 0 with 3.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBigUint64ArrayConstructor0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBigUint64ArrayConstructor0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testBigUint64ArrayConstructor0002";
       try {
         let array = new BigUint64Array(0);
@@ -98,9 +98,9 @@ export default function BigUint64ArrayTest() {
      * @tc.desc       : Testing Constructor of BigUint64Array with length 10,and set index 0 with 3.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBigUint64ArrayConstructor0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBigUint64ArrayConstructor0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testBigUint64ArrayConstructor0003";
       try {
         let array = new BigUint64Array(10);
@@ -118,9 +118,9 @@ export default function BigUint64ArrayTest() {
      * @tc.desc       : Testing Constructor of BigUint64Array with length 10,and set index 0 with 3.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBigUint64ArrayConstructor0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBigUint64ArrayConstructor0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testBigUint64ArrayConstructor0004";
       try {
         let array = new BigUint64Array(10);
@@ -138,9 +138,9 @@ export default function BigUint64ArrayTest() {
      * @tc.desc       : Testing Constructor of BigUint64Array with length 10,and get value of index 1.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBigUint64ArrayConstructor0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBigUint64ArrayConstructor0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testBigUint64ArrayConstructor0005";
       try {
         let array = new BigUint64Array(10);
@@ -157,9 +157,9 @@ export default function BigUint64ArrayTest() {
      * @tc.desc       : Testing Constructor of BigUint64Array with 'q',and get value of index 0.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBigUint64Constructor0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBigUint64Constructor0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testBigUint64Constructor0006";
       try {
         const array = Constants.bigUint64ConstructTestArray1;
@@ -176,9 +176,9 @@ export default function BigUint64ArrayTest() {
      * @tc.desc       : Testing Constructor of BigUint64Array with '56',and get value of index 1.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testBigUint64Constructor0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testBigUint64Constructor0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testBigUint64Constructor0007";
       try {
         const array = Constants.bigUint64ConstructTestArray2;

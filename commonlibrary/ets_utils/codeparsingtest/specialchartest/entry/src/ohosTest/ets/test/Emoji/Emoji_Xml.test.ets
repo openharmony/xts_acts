@@ -43,9 +43,9 @@ export default function EmojiXmlTest() {
      * @tc.desc       : Testing the XML interface constructor with input emoji \ud83d\ude0a
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testXmlConstructorEmoji0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testXmlConstructorEmoji0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testXmlConstructorEmoji0001";
       try {
         let arrayBuffer = new ArrayBuffer(20);
@@ -62,9 +62,9 @@ export default function EmojiXmlTest() {
      * @tc.desc       : Testing the XML interface constructor with input emoji \ud83d\udc64
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testXmlConstructorEmoji0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testXmlConstructorEmoji0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testXmlConstructorEmoji0002";
       try {
         let arrayBuffer = new ArrayBuffer(20);
@@ -81,9 +81,9 @@ export default function EmojiXmlTest() {
      * @tc.desc       : Testing the XML interface constructor with input emoji \ud83d\udc6b
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testXmlConstructorEmoji0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testXmlConstructorEmoji0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testXmlConstructorEmoji0003";
       try {
         let arrayBuffer = new ArrayBuffer(20);
@@ -100,9 +100,9 @@ export default function EmojiXmlTest() {
      * @tc.desc       : Testing the XML interface constructor with input emoji \u260e
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testXmlConstructorEmoji0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testXmlConstructorEmoji0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testXmlConstructorEmoji0004";
       try {
         let arrayBuffer = new ArrayBuffer(20);
@@ -119,9 +119,9 @@ export default function EmojiXmlTest() {
      * @tc.desc       : Testing the XML interface constructor with input emoji \ud83d\udc79
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testXmlConstructorEmoji0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testXmlConstructorEmoji0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testXmlConstructorEmoji0005";
       try {
         let arrayBuffer = new ArrayBuffer(20);
@@ -138,9 +138,9 @@ export default function EmojiXmlTest() {
      * @tc.desc       : Testing the XML interface constructor with input emoji \ud83d\udd5b
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testXmlConstructorEmoji0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testXmlConstructorEmoji0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testXmlConstructorEmoji0006";
       try {
         let arrayBuffer = new ArrayBuffer(20);

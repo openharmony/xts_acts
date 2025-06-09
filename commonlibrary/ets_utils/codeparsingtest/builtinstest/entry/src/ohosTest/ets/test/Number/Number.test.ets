@@ -52,9 +52,9 @@ export default function NumberTest() {
      * @tc.desc       : Test the function of the Interface toExponential().
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testNumberExpo0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testNumberExpo0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testNumberExpo0001";
       try {
         const result: string = expo(123456, 2);
@@ -70,9 +70,9 @@ export default function NumberTest() {
      * @tc.desc       : Test the function of the Interface toExponential().
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testNumberExpo0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testNumberExpo0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testNumberExpo0002";
       try {
         const result: string = expo(123543, 2);
@@ -88,9 +88,9 @@ export default function NumberTest() {
      * @tc.desc       : Test the function of the Interface toExponential().
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testNumberExpo0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testNumberExpo0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testNumberExpo0003";
       try {
         const result: string = expo(123456, 2.5);
@@ -106,9 +106,9 @@ export default function NumberTest() {
      * @tc.desc       : Test the function of the Interface toExponential().
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testNumberExpo0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testNumberExpo0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testNumberExpo0004";
       try {
         const result: string = expo(123456, -1);
@@ -124,9 +124,9 @@ export default function NumberTest() {
      * @tc.desc       : Test the function of the Interface toExponential().
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testNumberExpo0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testNumberExpo0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testNumberExpo0005";
       try {
         const result: string = expo(123456, 101);

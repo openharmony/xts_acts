@@ -46,9 +46,9 @@ export default function builtinsReadonlyArrayIndexOfTest() {
      * @tc.desc test IndexOf
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 0
      */
-    it('BuiltinsReadonlyArrayIndexOfTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('BuiltinsReadonlyArrayIndexOfTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (Done: Function) => {
         const inputArray: readonly number[] = [1, 2, 3];
         const callbackFn = (ele: number) => {
@@ -67,9 +67,9 @@ export default function builtinsReadonlyArrayIndexOfTest() {
      * @tc.desc test IndexOf
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 0
      */
-    it('BuiltinsReadonlyArrayIndexOfTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('BuiltinsReadonlyArrayIndexOfTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (Done: Function) => {
         const inputArray: readonly number[] = [1, 2, 3];
         const callbackFn = (ele: number) => {
@@ -88,9 +88,9 @@ export default function builtinsReadonlyArrayIndexOfTest() {
      * @tc.desc test IndexOf
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 0
      */
-    it('BuiltinsReadonlyArrayIndexOfTest0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('BuiltinsReadonlyArrayIndexOfTest0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (Done: Function) => {
         const inputArray: readonly number[] = [1, 2, 3, 2, 4];
         const callbackFn = (ele1: number, ele2: number) => {

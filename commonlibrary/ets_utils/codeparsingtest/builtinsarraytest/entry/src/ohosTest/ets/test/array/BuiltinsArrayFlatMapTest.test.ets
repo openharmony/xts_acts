@@ -45,9 +45,9 @@ export default function builtinsArrayFlatMapTest() {
      * @tc.desc Verify basic flatten mapping with multiplier
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('builtinsArrayFlatMapTest1001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('builtinsArrayFlatMapTest1001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const arr = [1, 2, 3];
       const result = arr.flatMap(x => [x, x * 2]);
       expect(JSON.stringify(result)).assertEqual(JSON.stringify([1, 2, 2, 4, 3, 6]));
@@ -59,7 +59,7 @@ export default function builtinsArrayFlatMapTest() {
      * @tc.desc Verify non-array return values
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayFlatMapTest1002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const arr = [1, 2, 3];
@@ -73,7 +73,7 @@ export default function builtinsArrayFlatMapTest() {
      * @tc.desc Verify single-level array preservation
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayFlatMapTest1003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const arr = [1, [2, 3], 4];
@@ -86,7 +86,7 @@ export default function builtinsArrayFlatMapTest() {
      * @tc.desc Verify deep nested arrays are not flattened
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayFlatMapTest1004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const arr = [1, [2, [3, 4], 5], 6];
@@ -99,7 +99,7 @@ export default function builtinsArrayFlatMapTest() {
      * @tc.desc Verify empty slots are removed
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayFlatMapTest1005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const arr = [1, , 3];
@@ -113,7 +113,7 @@ export default function builtinsArrayFlatMapTest() {
      * @tc.desc Verify nested empty slots handling
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayFlatMapTest1006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const arr = [1, [, 3], 4];
@@ -126,7 +126,7 @@ export default function builtinsArrayFlatMapTest() {
      * @tc.desc Verify empty array returns empty
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayFlatMapTest1007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       expect([].flatMap(x => [x])).assertDeepEquals([]);
@@ -138,7 +138,7 @@ export default function builtinsArrayFlatMapTest() {
      * @tc.desc Verify nested empty arrays handling
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayFlatMapTest1008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const arr = [[], [1], [2]];
@@ -151,7 +151,7 @@ export default function builtinsArrayFlatMapTest() {
      * @tc.desc Verify identity mapping behavior
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayFlatMapTest1009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const arr = [1, 2, 3];
@@ -164,7 +164,7 @@ export default function builtinsArrayFlatMapTest() {
      * @tc.desc Verify thisArg parameter binding
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayFlatMapTest1010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const arr = [1, 2, 3];
@@ -181,7 +181,7 @@ export default function builtinsArrayFlatMapTest() {
      * @tc.desc Verify undefined return handling
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayFlatMapTest1011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const arr = [1, 2, 3, 4, 5];
@@ -196,7 +196,7 @@ export default function builtinsArrayFlatMapTest() {
      * @tc.desc Verify null/undefined element handling
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayFlatMapTest1012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const arr = [null, [undefined, 3]];
@@ -210,7 +210,7 @@ export default function builtinsArrayFlatMapTest() {
      * @tc.desc Verify object references are preserved
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('builtinsArrayFlatMapTest1013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const obj: FlatObj = {

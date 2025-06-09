@@ -74,9 +74,9 @@ export default function IntlTest() {
      * @tc.desc       : Test the function of the Interface Intl_new().
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testIntlConstructorNoNew0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testIntlConstructorNoNew0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let TAG = 'testIntlConstructorNoNew0001';
       try {
         let intl = Intl.Collator();
@@ -92,9 +92,9 @@ export default function IntlTest() {
      * @tc.desc       : Test the function of the Interface Intl_new().
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testIntlConstructorNoNew0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testIntlConstructorNoNew0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let TAG = 'testIntlConstructorNoNew0002';
       try {
         let locales = "de";
@@ -111,9 +111,9 @@ export default function IntlTest() {
      * @tc.desc       : Test the function of the Interface Intl_new().
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testIntlConstructorNoNew0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testIntlConstructorNoNew0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let TAG = 'testIntlConstructorNoNew0003';
       try {
         let locales = [];
@@ -130,9 +130,9 @@ export default function IntlTest() {
      * @tc.desc       : Test the function of the Interface Intl_new().
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testIntlConstructorNoNew0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testIntlConstructorNoNew0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let TAG = 'testIntlConstructorNoNew0004';
       try {
         let locales = ["de", "en-US"];
@@ -149,9 +149,9 @@ export default function IntlTest() {
      * @tc.desc       : Test the function of the Interface Intl_new().
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testIntlConstructorNoNew0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testIntlConstructorNoNew0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let TAG = 'testIntlConstructorNoNew0005';
       try {
         let locales = "de";
@@ -171,9 +171,9 @@ export default function IntlTest() {
      * @tc.desc       : Test the function of the Interface Intl_new().
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testIntlConstructorNoNew0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testIntlConstructorNoNew0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let TAG = 'testIntlConstructorNoNew0006';
       try {
         let locales = "de";
@@ -193,9 +193,9 @@ export default function IntlTest() {
      * @tc.desc       : Test the function of the Interface Intl_new().
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testIntlConstructorNoNew0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testIntlConstructorNoNew0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let TAG = 'testIntlConstructorNoNew0007';
       try {
         let locales = "de";
@@ -216,9 +216,9 @@ export default function IntlTest() {
      * @tc.desc       : Test the function of the Interface Intl_new().
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testIntlConstructorNoNew0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testIntlConstructorNoNew0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let TAG = 'testIntlConstructorNoNew0008';
       try {
         let locales = "de";
@@ -238,9 +238,9 @@ export default function IntlTest() {
      * @tc.desc       : Test the function of the Interface Intl_new().
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testIntlConstructorNoNew0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testIntlConstructorNoNew0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let TAG = 'testIntlConstructorNoNew0009';
       try {
         let locales = "de";
@@ -260,9 +260,9 @@ export default function IntlTest() {
      * @tc.desc       : Test the function of the Interface Intl_new().
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testIntlConstructorNoNew0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testIntlConstructorNoNew0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let TAG = 'testIntlConstructorNoNew0010';
       try {
         let locales = "de";
@@ -282,9 +282,9 @@ export default function IntlTest() {
      * @tc.desc       : Test the function of the Interface Intl_new().
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testIntlConstructorNoNew0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testIntlConstructorNoNew0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let TAG = 'testIntlConstructorNoNew0011';
       try {
         let locales = "de";
@@ -304,9 +304,9 @@ export default function IntlTest() {
      * @tc.desc       : Test the function of the Interface Intl_new().
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testIntlConstructorNoNew0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testIntlConstructorNoNew0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let TAG = 'testIntlConstructorNoNew0012';
       try {
         let locales = "de";
@@ -326,9 +326,9 @@ export default function IntlTest() {
      * @tc.desc       : Test the function of the Interface Intl_new().
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testIntlConstructorNoNew0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testIntlConstructorNoNew0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let TAG = 'testIntlConstructorNoNew0013';
       try {
         let locales = "de";
@@ -349,9 +349,9 @@ export default function IntlTest() {
      * @tc.desc       : Test the function of the Interface Intl_new().
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testIntlConstructorNoNew0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testIntlConstructorNoNew0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let TAG = 'testIntlConstructorNoNew0014';
       try {
         let locales = "de";
@@ -371,9 +371,9 @@ export default function IntlTest() {
      * @tc.desc       : Test the function of the Interface Intl_new().
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testIntlConstructorNoNew0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testIntlConstructorNoNew0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let TAG = 'testIntlConstructorNoNew0015';
       try {
         let locales = "de";
@@ -393,9 +393,9 @@ export default function IntlTest() {
      * @tc.desc       : Test the function of the Interface Intl_new().
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testIntlConstructorNoNew0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testIntlConstructorNoNew0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let TAG = 'testIntlConstructorNoNew0016';
       try {
         let locales = "de";
@@ -415,9 +415,9 @@ export default function IntlTest() {
      * @tc.desc       : Test the function of the Interface Intl_new().
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testIntlConstructorNoNew0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testIntlConstructorNoNew0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let TAG = 'testIntlConstructorNoNew0017';
       try {
         let locales = "de";
@@ -437,9 +437,9 @@ export default function IntlTest() {
      * @tc.desc       : Test the function of the Interface Intl_new().
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testIntlConstructorNoNew0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testIntlConstructorNoNew0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let TAG = 'testIntlConstructorNoNew0018';
       try {
         let locales = "de";
@@ -457,9 +457,9 @@ export default function IntlTest() {
      * @tc.desc       : Test the function of the Interface Intl_new().
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testIntlConstructorNoNew0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testIntlConstructorNoNew0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let TAG = 'testIntlConstructorNoNew0019';
       try {
         let locales = "de";
@@ -484,9 +484,9 @@ export default function IntlTest() {
      * @tc.desc       : Test the function of the Interface Intl_new().
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testIntlConstructorNoNew0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testIntlConstructorNoNew0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let TAG = 'testIntlConstructorNoNew0019';
       try {
         let locales = "de";
@@ -506,9 +506,9 @@ export default function IntlTest() {
      * @tc.desc       : Test the function of the Interface Intl_new().
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testIntlConstructorNoNew0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testIntlConstructorNoNew0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let TAG = 'testIntlConstructorNoNew0021';
       try {
         let locales = "de";
@@ -528,9 +528,9 @@ export default function IntlTest() {
      * @tc.desc       : Test the function of the Interface Intl_new().
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testIntlConstructorNoNew0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testIntlConstructorNoNew0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let TAG = 'testIntlConstructorNoNew0022';
       try {
         let locales = "de";
@@ -550,9 +550,9 @@ export default function IntlTest() {
      * @tc.desc       : Test the function of the Interface Intl_new().
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testIntlConstructorNoNew0023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testIntlConstructorNoNew0023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let TAG = 'testIntlConstructorNoNew0023';
       try {
         let locales = "de";
@@ -572,9 +572,9 @@ export default function IntlTest() {
      * @tc.desc       : Test the function of the Interface Intl_new().
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testIntlConstructorNoNew0024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testIntlConstructorNoNew0024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let TAG = 'testIntlConstructorNoNew0024';
       try {
         let locales = "de";
@@ -594,9 +594,9 @@ export default function IntlTest() {
      * @tc.desc       : Test the function of the Interface Intl_new().
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testIntlConstructorNoNew0025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testIntlConstructorNoNew0025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let TAG = 'testIntlConstructorNoNew0025';
       try {
         let locales = "de";
@@ -616,9 +616,9 @@ export default function IntlTest() {
      * @tc.desc       : Test the function of the Interface Intl_new().
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testIntlConstructorNoNew0026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testIntlConstructorNoNew0026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let TAG = 'testIntlConstructorNoNew0026';
       try {
         let locales: string | undefined = undefined;
@@ -635,9 +635,9 @@ export default function IntlTest() {
      * @tc.desc       : Test the function of the Interface Intl_new().
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testIntlConstructorNoNew0027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testIntlConstructorNoNew0027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       let TAG = 'testIntlConstructorNoNew0027';
       try {
         let locales: string | undefined = undefined;
