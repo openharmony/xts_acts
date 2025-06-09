@@ -23,6 +23,7 @@
     "MainAbility/pages/TextArea/TextAreaMinLines",
     "MainAbility/pages/Text/TextShaderStyle",
     "MainAbility/pages/SymbolGlyph/SymbolGlyphShaderStyle",
-    "MainAbility/pages/StyledString/TextStyleSuperscript"
+    "MainAbility/pages/StyledString/TextStyleSuperscript",
+    "MainAbility/pages/ImageError/ImageOnError"
   ]
 }

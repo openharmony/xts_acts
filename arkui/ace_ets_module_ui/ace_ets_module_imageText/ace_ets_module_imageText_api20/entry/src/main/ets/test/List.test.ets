@@ -24,6 +24,7 @@ import StyledStringStrokeTest from './TextTest/StyledStringStrokeTest.test';
 import TextInputEnableAutoFillAnimationTest from './TextInputTest/TextInputEnableAutoFillAnimation.test';
 import TextShaderStyleTest from './TextTest/TextShaderStyle.test';
 import TextStyleSuperscriptTest from './StyledStringTest/TextStyleSuperscript.test';
+import ImageOnErrorTest from './ImageErrorTest/ImageOnError.test';
 
 
 export default function testsuite() {
@@ -38,4 +39,5 @@ export default function testsuite() {
   TextInputEnableAutoFillAnimationTest();
   TextShaderStyleTest();
   TextStyleSuperscriptTest();
+  ImageOnErrorTest();
 }
