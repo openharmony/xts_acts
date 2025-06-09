@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,14 +14,8 @@
  */
 
 {
-  "license": "",
-  "devDependencies": {
-    "@types/libnativerender.so": "file:./src/main/cpp/types/libnativerender"
-  },
-  "author": "",
-  "name": "entry",
-  "description": "Please describe the basic information.",
-  "main": "",
-  "version": "1.0.0",
-  "dependencies": {}
+  "name": "libnativerender.so",
+  "types": "./index.d.ts",
+  "version": "",
+  "description": "Please describe the basic information."
 }
