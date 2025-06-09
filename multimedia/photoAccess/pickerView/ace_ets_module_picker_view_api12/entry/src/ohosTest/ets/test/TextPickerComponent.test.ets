@@ -153,9 +153,20 @@ export default function TextPicker() {
   describe('testPicker', () => {
     const isExecutePicker = canIUse('SystemCapability.FileManagement.PhotoAccessHelper.Core');
     let driver: Driver;
+    driver = Driver.create();
+
+    beforeAll(async (done: Function) => {
+      let maxButton = await driver.findComponent(ON.id("EnhanceMaximizeBtn"));
+      await CommonFunc.sleep(1000);
+      if(maxButton !== null){
+        await maxButton.click();
+      }
+      await CommonFunc.sleep(1000);
+      done();
+    });
+    
     beforeEach(async (done: Function) => {
       console.info("testPicker beforeEach start");
-      driver = Driver.create();
       await CommonFunc.sleep(5000);
       done();
     });
