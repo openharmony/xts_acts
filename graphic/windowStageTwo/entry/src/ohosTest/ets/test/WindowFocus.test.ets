@@ -1578,55 +1578,55 @@ export default function windowFocusTest() {
       }
     });
 
-    // /**
-    //  * @tc.number    : SUB_BASIC_WMS_SHOWWINDOW_FOCUSONSHOW_0500
-    //  * @tc.name      : test_SHOWWINDOW_FOCUSONSHOW_0500
-    //  * @tc.desc      : test_SHOWWINDOW_FOCUSONSHOW_0500
-    //  * @tc.size      : MediumTest
-    //  * @tc.type      : Function
-    //  * @tc.level     : Level 0
-    //  */
-    // it('test_SHOWWINDOW_FOCUSONSHOW_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
-    //   let caseName: string = 'test_SHOWWINDOW_FOCUSONSHOW_0500 ';
-    //   console.log(caseName + 'begin');
-    //   let config: window.Configuration = {
-    //     name: "test_SHOWWINDOW_FOCUSONSHOW_0500",
-    //     windowType: window.WindowType.TYPE_FLOAT,
-    //     ctx: context
-    //   };
-    //   const subWindowClass = await window.createWindow(config);
-    //   console.info(`${caseName} Succeeded in creating the float window.`);
-    //   try {
-    //     await subWindowClass.setUIContent('testability/pages/First/index2');
-    //     await sleep(1000);
-    //     let focusOnshowOptions: window.ShowWindowOptions = {
-    //       focusOnShow: true
-    //     }
-    //     let promise =  subWindowClass.showWindow(focusOnshowOptions);
-    //     promise.then(async () => {
-    //       console.info(caseName + 'Succeeded in showWindow.');
-    //       console.info(`${caseName} subWindowClass isFocused: ${subWindowClass.isFocused()}`)
-    //       expect(subWindowClass.isFocused()).assertEqual(true);
-    //       await subWindowClass.destroyWindow();
-    //       done()
-    //     }).catch(async (err: BusinessError) => {
-    //       console.error(`${caseName} Failed in showWindow. Cause code: ${err.code}, message: ${err.message}`);
-    //       if (err.code === 801) {
-    //         await subWindowClass.destroyWindow();
-    //         done()
-    //       } else {
-    //         expect().assertFail();
-    //         await subWindowClass.destroyWindow();
-    //         done()
-    //       }
-    //     });
-    //   } catch (e) {
-    //     console.error(`${caseName} Failed2 in showWindow. Cause: ${JSON.stringify(e)}`);
-    //     expect().assertFail();
-    //     await subWindowClass.destroyWindow();
-    //     done()
-    //   }
-    // });
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SHOWWINDOW_FOCUSONSHOW_0500
+     * @tc.name      : test_SHOWWINDOW_FOCUSONSHOW_0500
+     * @tc.desc      : test_SHOWWINDOW_FOCUSONSHOW_0500
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_SHOWWINDOW_FOCUSONSHOW_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let caseName: string = 'test_SHOWWINDOW_FOCUSONSHOW_0500 ';
+      console.log(caseName + 'begin');
+      let config: window.Configuration = {
+        name: "test_SHOWWINDOW_FOCUSONSHOW_0500",
+        windowType: window.WindowType.TYPE_FLOAT,
+        ctx: context
+      };
+      const subWindowClass = await window.createWindow(config);
+      console.info(`${caseName} Succeeded in creating the float window.`);
+      try {
+        await subWindowClass.setUIContent('testability/pages/First/index2');
+        await sleep(1000);
+        let focusOnshowOptions: window.ShowWindowOptions = {
+          focusOnShow: true
+        }
+        let promise =  subWindowClass.showWindow(focusOnshowOptions);
+        promise.then(async () => {
+          console.info(caseName + 'Succeeded in showWindow.');
+          console.info(`${caseName} subWindowClass isFocused: ${subWindowClass.isFocused()}`)
+          expect(subWindowClass.isFocused()).assertEqual(true);
+          await subWindowClass.destroyWindow();
+          done()
+        }).catch(async (err: BusinessError) => {
+          console.error(`${caseName} Failed in showWindow. Cause code: ${err.code}, message: ${err.message}`);
+          if (err.code === 801) {
+            await subWindowClass.destroyWindow();
+            done()
+          } else {
+            expect().assertFail();
+            await subWindowClass.destroyWindow();
+            done()
+          }
+        });
+      } catch (e) {
+        console.error(`${caseName} Failed2 in showWindow. Cause: ${JSON.stringify(e)}`);
+        expect().assertFail();
+        await subWindowClass.destroyWindow();
+        done()
+      }
+    });
 
   })
 }

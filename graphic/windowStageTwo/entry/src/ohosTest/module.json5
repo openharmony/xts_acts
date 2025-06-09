@@ -178,6 +178,9 @@
         "name": "ohos.permission.VISIBLE_WINDOW_INFO"
       },
       {
+        "name": "ohos.permission.SYSTEM_FLOAT_WINDOW"
+      },
+      {
         "name": "ohos.permission.WINDOW_TOPMOST",
         "usedScene": {
           "abilities": [
