@@ -13,8 +13,8 @@ export default function ActsNotificationEmitterPublishTest() {
         hilog.info(domain, TAG, '%{public}s', 'describe start');
 
         /*
-          * @tc.number : Sub_Notification_Emitter_Publish_Emit_0500
-          * @tc.name   : Sub_Notification_Emitter_Publish_Emit_0500
+          * @tc.number : Sub_Notification_Emitter_Publish_Emit_Static_0500
+          * @tc.name   : emitter.on
           * @tc.desc   : emitter.on 1   emitter.off 1   emitter.emit 1
           * @tc.size   : MediumTest
           * @tc.type   : Function
@@ -59,8 +59,8 @@ export default function ActsNotificationEmitterPublishTest() {
         })
 
         /*
-          * @tc.number : Sub_Notification_Emitter_Publish_Emit_0600
-          * @tc.name   : Sub_Notification_Emitter_Publish_Emit_0600
+          * @tc.number : Sub_Notification_Emitter_Publish_Emit_Static_0600
+          * @tc.name   : emitter.once
           * @tc.desc   : emitter.once 1   emitter.off 1   emitter.emit 1
           * @tc.size   : MediumTest
           * @tc.type   : Function
@@ -97,8 +97,8 @@ export default function ActsNotificationEmitterPublishTest() {
         })
 
         /*
-          * @tc.number : Sub_Notification_Emitter_Publish_Emit_0700
-          * @tc.name   : Sub_Notification_Emitter_Publish_Emit_0700
+          * @tc.number : Sub_Notification_Emitter_Publish_Emit_Static_0700
+          * @tc.name   : emitter.emit
           * @tc.desc   : emitter.on 1   emitter.off 2   emitter.emit 1
           * @tc.size   : MediumTest
           * @tc.type   : Function
@@ -143,8 +143,8 @@ export default function ActsNotificationEmitterPublishTest() {
         })
 
         /*
-          * @tc.number : Sub_Notification_Emitter_Publish_Emit_0800
-          * @tc.name   : Sub_Notification_Emitter_Publish_Emit_0800
+          * @tc.number : Sub_Notification_Emitter_Publish_Emit_Static_0800
+          * @tc.name   : emitter.once
           * @tc.desc   : emitter.once 1   emitter.off 1   emitter.emit 1
           * @tc.size   : MediumTest
           * @tc.type   : Function
