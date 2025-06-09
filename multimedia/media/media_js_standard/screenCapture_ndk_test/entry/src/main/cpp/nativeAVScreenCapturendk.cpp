@@ -922,6 +922,7 @@ static napi_value normalAVScreenCaptureSelectionCallbackSuccess(napi_env env, na
     OH_AVScreenCapture_SetStateCallback(screenCaptureNormal, OnStateChange, nullptr);
     OH_AVScreenCapture_SetDataCallback(screenCaptureNormal, OnBufferAvailable, nullptr);
     OH_AVScreenCapture_SetSelectionCallback(screenCaptureNormal, OnUserSelected, nullptr);
+    g_contentFilter = OH_AVScreenCapture_CreateContentFilter();
 
     OH_AVSCREEN_CAPTURE_ErrCode result1 = OH_AVScreenCapture_Init(screenCaptureNormal, config_);
     OH_AVSCREEN_CAPTURE_ErrCode result2 = OH_AVScreenCapture_StartScreenCapture(screenCaptureNormal);
