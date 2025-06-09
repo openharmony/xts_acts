@@ -13,14 +13,12 @@
  * limitations under the License.
  */
 
-import getDisplayId from './DragTest/getDisplayId.test';
-import tapLocationTest from './TapGestureTest/tapLocation.test';
-import PanGestureTest from './PanGestureTest/observer.test';
-import FrameNodeTest from './frameNode/framenode.test';
+import { typeNode } from '@kit.ArkUI';
 
-export default function testsuite() {
-  getDisplayId();
-  tapLocationTest();
-  PanGestureTest();
-  FrameNodeTest();
-}
+type IFrameNode = typeNode.Button;
+
+type StyleCallback = (currentUIStates: number, node: IFrameNode) => void;
+
+export { StyleCallback }
+
+export { IFrameNode }
