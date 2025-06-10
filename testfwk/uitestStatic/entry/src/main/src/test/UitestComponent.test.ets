@@ -47,176 +47,183 @@ export default function uitestComponentTest() {
       await stopApplication('com.uitestScene.acts');
     })
 
-    it('testClearText', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
-      hilog.info(domain, tag, `testClearText start `);
+    it('testClearText_static', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
+      hilog.info(domain, tag, `testClearText_static start `);
       try {
         let driver = Driver.create();
         await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
         await driver.delayMs(1000);
         let textInput = await driver.findComponent(ON.type("TextInput"));
-        hilog.info(domain, tag, `testClearText textInput, ${JSON.stringify(textInput)} `);
+        hilog.info(domain, tag, `testClearText_static textInput, ${JSON.stringify(textInput)} `);
         await driver.delayMs(1000);
         expect(textInput != null).assertTrue()
         if (textInput != null) {
           await textInput.clearText();
-          hilog.info(domain, tag, `testClearText clearText`);
+          hilog.info(domain, tag, `testClearText_static clearText`);
           await driver.delayMs(1000);
         }
         let textInput1 = await driver.findComponent(ON.type("TextInput"));
-        hilog.info(domain, tag, `testClearText textInput1, ${JSON.stringify(textInput1)}`);
+        hilog.info(domain, tag, `testClearText_static textInput1, ${JSON.stringify(textInput1)}`);
         await driver.delayMs(1000);
         expect(textInput1 != null).assertTrue()
         if (textInput1 != null) {
           let text1 = await textInput1.getText();
-          hilog.info(domain, tag, `testClearText text1, ${JSON.stringify(text1)}`);
+          hilog.info(domain, tag, `testClearText_static text1, ${JSON.stringify(text1)}`);
           expect(text1).assertEqual('');
         }
       } catch(error) {
-        hilog.info(domain, tag, `testClearText error, ${JSON.stringify(error)} `);
+        hilog.info(domain, tag, `testClearText_static error, ${JSON.stringify(error)} `);
         expect().assertFail();
       }
       await stopApplication('com.uitestScene.acts');
-      hilog.info(domain, tag, `testClearText end `);
+      hilog.info(domain, tag, `testClearText_static end `);
     })
-    it('testScrollToBottom', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
+    it('testScrollToBottom_static', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
       try {
-        hilog.info(domain, tag, "testScrollToBottom Start!!!!!!!!!!!!!!!!!!!!!!!!!！")
+        hilog.info(domain, tag, "testScrollToBottom_static Start!!!!!!!!!!!!!!!!!!!!!!!!!！")
         let driver = Driver.create();
         await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
         await driver.delayMs(1000);
         let scrollBar = await driver.findComponent(ON.type('Scroll'))
-        hilog.info(domain, tag, `testScrollToBottom scrollBar, ${JSON.stringify(scrollBar)} `);
+        hilog.info(domain, tag, `testScrollToBottom_static scrollBar, ${JSON.stringify(scrollBar)} `);
         expect(scrollBar != null).assertTrue()
         if (scrollBar != null) {
           await scrollBar.scrollToBottom();
-          hilog.info(domain, tag, `testScrollToBottom scrollToBottom success`);
+          hilog.info(domain, tag, `testScrollToBottom_static scrollToBottom success`);
           await driver.delayMs(1000);
         }
         let bottom = await driver.findComponent(ON.text('bottom'));
-        hilog.info(domain, tag, `testScrollToBottom bottom, ${JSON.stringify(bottom)} `);
+        hilog.info(domain, tag, `testScrollToBottom_static bottom, ${JSON.stringify(bottom)} `);
         expect(bottom != null).assertTrue();
+        if (bottom != null) {
+          let msg = await bottom.getText();
+          hilog.info(domain, tag, `testScrollToBottom_static msg, ${JSON.stringify(msg)} `);
+        }
       } catch (error : Error) {
-        hilog.info(domain, tag, `testScrollToBottom error, ${JSON.stringify(error)} `);
+        hilog.info(domain, tag, `testScrollToBottom_static error, ${JSON.stringify(error)} `);
         expect().assertFail();
       }
-      hilog.info(domain, tag, "testScrollToBottom end !!!!!!!!!!!!!!!!!!!!!!!!!！");
+      hilog.info(domain, tag, "testScrollToBottom_static end !!!!!!!!!!!!!!!!!!!!!!!!!！");
       await stopApplication('com.uitestScene.acts');
     })
-    it('testScrollToBottomSpeed',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
+    it('testScrollToBottom_speed_static',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
       try {
-        hilog.info(domain, tag, "testScrollToBottomSpeed Start!!!!!!!!!!!!!!!!!!!!!!!!!！")
+        hilog.info(domain, tag, "testScrollToBottom_speed_static Start!!!!!!!!!!!!!!!!!!!!!!!!!！")
         let driver = Driver.create();
         await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
         await driver.delayMs(1000);
         let scrollBar = await driver.findComponent(ON.type('Scroll'))
-        hilog.info(domain, tag, `testScrollToBottomSpeed driver, ${JSON.stringify(scrollBar)} `);
+        hilog.info(domain, tag, `testScrollToBottom_speed_static driver, ${JSON.stringify(scrollBar)} `);
         expect(scrollBar != null).assertTrue()
         if (scrollBar != null) {
           await scrollBar.scrollToBottom(2000);
-          hilog.info(domain, tag, `testScrollToBottomSpeed scrollToBottom success`);
+          hilog.info(domain, tag, `testScrollToBottom_speed_static scrollToBottom success`);
         }
         await driver.delayMs(1000);
         let bottom = await driver.findComponent(ON.text('bottom'));
-        hilog.info(domain, tag, `testScrollToBottom bottom, ${JSON.stringify(bottom)} `);
+        hilog.info(domain, tag, `testScrollToBottom_speed_static bottom, ${JSON.stringify(bottom)} `);
         expect(bottom != null).assertTrue();
+        if (bottom != null) {
+          let msg = await bottom.getText();
+          hilog.info(domain, tag, `testScrollToBottom_speed_static msg, ${JSON.stringify(msg)} `);
+        }
       } catch (error : Error) {
-        hilog.info(domain, tag, `testScrollToBottomSpeed error, ${JSON.stringify(error)} `);
+        hilog.info(domain, tag, `testScrollToBottom_speed_static error, ${JSON.stringify(error)} `);
         expect().assertFail();
       }
       await stopApplication('com.uitestScene.acts');
-      hilog.info(domain, tag, "testScrollToBottomSpeed end !!!!!!!!!!!!!!!!!!!!!!!!!！")
+      hilog.info(domain, tag, "testScrollToBottom_speed_static end ")
     })
-    it('testScrollToTop',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
+    it('testScrollToTop_static',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
       try {
-        hilog.info(domain, tag, "testScrollToTop Start!!!!!!!!!!!!!!!!!!!!!!!!!！")
+        hilog.info(domain, tag, "testScrollToTop_static Start")
         let driver = Driver.create();
         await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
         await driver.delayMs(1000);
         let scrollBar = await driver.findComponent(ON.type('Scroll'))
-        hilog.info(domain, tag, `testScrollToTop scrollBar, ${JSON.stringify(scrollBar)} `);
+        hilog.info(domain, tag, `testScrollToTop_static scrollBar, ${JSON.stringify(scrollBar)} `);
         expect(scrollBar != null).assertTrue()
         if (scrollBar != null) {
           await scrollBar.scrollToBottom(2000);
-          hilog.info(domain, tag, `testScrollToTop scrollToBottom success`);
+          hilog.info(domain, tag, `testScrollToTop_static scrollToBottom success`);
         }
         await driver.delayMs(1000);
         if (scrollBar != null) {
           await scrollBar.scrollToTop();
-          hilog.info(domain, tag, `testScrollToTop scrollToTop success`);
+          hilog.info(domain, tag, `testScrollToTop_static scrollToTop success`);
           await driver.delayMs(1000);
         }
         await driver.delayMs(1000);
         let bottom = await driver.findComponent(ON.text('next page'));
-        hilog.info(domain, tag, `testScrollToTop bottom, ${JSON.stringify(bottom)} `);
+        hilog.info(domain, tag, `testScrollToTop_static bottom, ${JSON.stringify(bottom)} `);
         expect(bottom != null).assertTrue();
       } catch (error) {
-        hilog.info(domain, tag, `testScrollToTop error, ${JSON.stringify(error)} `);
+        hilog.info(domain, tag, `testScrollToTop_static error, ${JSON.stringify(error)} `);
         expect().assertFail();
       }
-      hilog.info(domain, tag, "testScrollToTop end !!!!!!!!!!!!!!!!!!!!!!!!!！");
+      hilog.info(domain, tag, "testScrollToTop_static end ");
       await stopApplication('com.uitestScene.acts');
     })
-    it('testScrollToTopSpeed',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
+    it('testScrollToTop_speed_static',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
       try {
-        hilog.info(domain, tag, "testScrollToTopSpeed Start!!!!!!!!!!!!!!!!!!!!!!!!!！")
+        hilog.info(domain, tag, "testScrollToTop_speed_static Start")
         let driver = Driver.create();
         await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
         await driver.delayMs(1000);
         let scrollBar = await driver.findComponent(ON.type('Scroll'))
-        hilog.info(domain, tag, `testScrollToTopSpeed driver, ${JSON.stringify(scrollBar)} `);
         expect(scrollBar != null).assertTrue()
         if (scrollBar != null) {
           await scrollBar.scrollToBottom(2000);
-          hilog.info(domain, tag, `testScrollToTopSpeed scrollToBottom success`);
+          hilog.info(domain, tag, `testScrollToTop_speed_static scrollToBottom success`);
         }
         await driver.delayMs(1000);
         if (scrollBar != null) {
           await scrollBar.scrollToTop(1500);
-          hilog.info(domain, tag, `testScrollToTopSpeed scrollToTop success`);
+          hilog.info(domain, tag, `testScrollToTop_speed_static scrollToTop success`);
         }
         let bottom = await driver.findComponent(ON.text('next page'));
-        hilog.info(domain, tag, `testScrollToTop bottom, ${JSON.stringify(bottom)} `);
+        hilog.info(domain, tag, `testScrollToTop_speed_static bottom, ${JSON.stringify(bottom)} `);
         expect(bottom != null).assertTrue();
       } catch (error : Error) {
-        hilog.info(domain, tag, `testScrollToTopSpeed error, ${JSON.stringify(error)} `);
+        hilog.info(domain, tag, `testScrollToTop_speed_static error, ${JSON.stringify(error)} `);
       }
-      hilog.info(domain, tag, "testScrollToTopSpeed end !!!!!!!!!!!!!!!!!!!!!!!!!！");
       await stopApplication('com.uitestScene.acts');
+      hilog.info(domain, tag, "testScrollToTop_speed_static end");
     })
-    it('testScrollSearch',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
-      hilog.info(domain, tag, `testScrollSearch start `);
+    it('testScrollSearch_static',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
+      hilog.info(domain, tag, `testScrollSearch_static start `);
       try {
         let driver = Driver.create();
         await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
         await driver.delayMs(1000);
         let scrollBar = await driver.findComponent(ON.type('Scroll'));
-        hilog.info(domain, tag, `testScrollSearch scrollBar, ${JSON.stringify(scrollBar)} `);
+        hilog.info(domain, tag, `testScrollSearch_static scrollBar, ${JSON.stringify(scrollBar)} `);
         expect(scrollBar != null).assertTrue()
         if (scrollBar != null) {
           let button = await scrollBar.scrollSearch(ON.text('next page'));
-          hilog.info(domain, tag, `testScrollSearch button, ${JSON.stringify(button)} `);
+          hilog.info(domain, tag, `testScrollSearch_static button, ${JSON.stringify(button)} `);
           expect(button != null).assertTrue()
           if (button != null ) {
             let text = await button.getText();
-            hilog.info(domain, tag, `testScrollSearch text, ${JSON.stringify(text)} `);
+            hilog.info(domain, tag, `testScrollSearch_static text, ${JSON.stringify(text)} `);
             expect(text).assertEqual('next page');
           }
         }
       } catch(error) {
-        hilog.info(domain, tag, `testScrollSearch error, ${JSON.stringify(error)} `);
+        hilog.info(domain, tag, `testScrollSearch_static error, ${JSON.stringify(error)} `);
         expect().assertFail();
       }
-      hilog.info(domain, tag, `testScrollSearch end `);
+      hilog.info(domain, tag, `testScrollSearch_static end `);
       await stopApplication('com.uitestScene.acts');
     })
-    it('testScrollSearchVertical',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
+    it('testScrollSearchVertical_static',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
       hilog.info(domain, tag, `testScrollSearchVertical start `);
       try {
         let driver = Driver.create();
         await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
         await driver.delayMs(1000);
         let button = await driver.findComponent(ON.text('scroll'));
-        hilog.info(domain, tag, `testScrollSearchVertical button, ${JSON.stringify(button)} `);
+        hilog.info(domain, tag, `testScrollSearchVertical_static button, ${JSON.stringify(button)} `);
         await driver.delayMs(1000);
         expect(button != null).assertTrue()
         if (button != null) {
@@ -224,284 +231,302 @@ export default function uitestComponentTest() {
         }
         await driver.delayMs(1000);
         let scrollBar = await driver.findComponent(ON.id('verticalScroll'));
-        hilog.info(domain, tag, `testScrollSearchVertical scrollBar, ${JSON.stringify(scrollBar)} `);
+        hilog.info(domain, tag, `testScrollSearchVertical_static scrollBar, ${JSON.stringify(scrollBar)} `);
         await driver.delayMs(1000);
         expect(scrollBar != null).assertTrue()
         if (scrollBar != null) {
           let text1 = await scrollBar.scrollSearch(ON.text('1'), true, 80);
           await driver.delayMs(1000);
-          hilog.info(domain, tag, `testScrollSearchVertical text1, ${JSON.stringify(text1)} `);
+          hilog.info(domain, tag, `testScrollSearchVertical_static text1, ${JSON.stringify(text1)} `);
           expect(text1 != null).assertTrue()
           if (text1 != null) {
             let text1Msg = await text1.getText();
-            hilog.info(domain, tag, `testScrollSearchVertical text1Msg, ${JSON.stringify(text1Msg)} `);
+            hilog.info(domain, tag, `testScrollSearchVertical_static text1Msg, ${JSON.stringify(text1Msg)} `);
             expect(text1Msg).assertEqual('1');
           }
           let text2 = await scrollBar.scrollSearch(ON.text('2'), true);
-          hilog.info(domain, tag, `testScrollSearchVertical text2, ${JSON.stringify(text2)} `);
+          hilog.info(domain, tag, `testScrollSearchVertical_static text2, ${JSON.stringify(text2)} `);
           expect(text2 != null).assertTrue()
           if (text2 != null) {
             let text2Msg = await text2.getText();
-            hilog.info(domain, tag, `testScrollSearchVertical text2Msg, ${JSON.stringify(text2Msg)} `);
+            hilog.info(domain, tag, `testScrollSearchVertical_static text2Msg, ${JSON.stringify(text2Msg)} `);
             expect(text2Msg).assertEqual('2');
           }
           let text3 = await scrollBar.scrollSearch(ON.text('3'));
-          hilog.info(domain, tag, `testScrollSearchVertical text3, ${JSON.stringify(text3)} `);
+          hilog.info(domain, tag, `testScrollSearchVertical_static text3, ${JSON.stringify(text3)} `);
           expect(text3 != null).assertTrue()
           if (text3 != null) {
             let text3Msg = await text3.getText();
-            hilog.info(domain, tag, `testScrollSearchVertical text3Msg, ${JSON.stringify(text3Msg)} `);
+            hilog.info(domain, tag, `testScrollSearchVertical_static text3Msg, ${JSON.stringify(text3Msg)} `);
             expect(text3Msg).assertEqual('3');
           }
         }
       } catch(error) {
-        hilog.info(domain, tag, `testComponentscrollTo error, ${JSON.stringify(error)} `);
+        hilog.info(domain, tag, `testScrollSearchVertical_static error, ${JSON.stringify(error)} `);
         expect().assertFail();
       }
-      hilog.info(domain, tag, `testScrollSearchVertical end `);
+      hilog.info(domain, tag, `testScrollSearchVertical_static end `);
       await stopApplication('com.uitestScene.acts');
     })
-    it('testPinch',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
-      hilog.info(domain, tag, `testPinch start `);
+    it('testPinch_static',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
+      hilog.info(domain, tag, `testPinch_static start `);
       try {
         let driver = Driver.create();
         await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
         await driver.delayMs(1000);
         let button = await driver.findComponent(ON.id('jump'));
-        hilog.info(domain, tag, `testPinch button, ${JSON.stringify(button)} `);
+        if (button == null) {
+          let scrollBar = await driver.findComponent(ON.type('Scroll'));
+          if (scrollBar != null) {
+            button = await scrollBar.scrollSearch(ON.id('jump'))
+          }
+        }
+        hilog.info(domain, tag, `testPinch_static button, ${JSON.stringify(button)} `);
         expect(button != null).assertTrue()
         if (button != null) {
           await button.click();
         }
         await driver.delayMs(1000);
         let image1 = await driver.findComponent(ON.id('test_pict'));
-        hilog.info(domain, tag, `testPinch image1, ${JSON.stringify(image1)} `);
+        hilog.info(domain, tag, `testPinch_static image1, ${JSON.stringify(image1)} `);
         expect(image1 != null).assertTrue()
         if (image1 != null) {
           let bounds1 = await image1.getBounds();
-          hilog.info(domain, tag, `testPinch bounds1, ${JSON.stringify(bounds1)} `);
+          hilog.info(domain, tag, `testPinch_static bounds1, ${JSON.stringify(bounds1)} `);
           await image1.pinchIn(0.5);
           await driver.delayMs(1000);
           let image2 = await driver.findComponent(ON.id('test_pict'));
-          hilog.info(domain, tag, `testPinch image2, ${JSON.stringify(image2)} `);
+          hilog.info(domain, tag, `testPinch_static image2, ${JSON.stringify(image2)} `);
           expect(image2 != null).assertTrue()
           if (image2 != null) {
             let bounds2 = await image2.getBounds();
-            hilog.info(domain, tag, `testPinch bounds2, ${JSON.stringify(bounds2)} `);
+            hilog.info(domain, tag, `testPinch_static bounds2, ${JSON.stringify(bounds2)} `);
             expect(bounds1 != bounds2).assertTrue();
           }
         }
       } catch(error) {
-        hilog.info(domain, tag, `testPinch error, ${JSON.stringify(error)} `);
+        hilog.info(domain, tag, `testPinch_static error, ${JSON.stringify(error)} `);
         expect().assertFail();
       }
-      hilog.info(domain, tag, `testPinch end `);
+      hilog.info(domain, tag, `testPinch_static end `);
       await stopApplication('com.uitestScene.acts');
     })
-    it('testPinchOut',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
-      hilog.info(domain, tag, `testPinchOut start `);
+    it('testPinchOut_static',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
+      hilog.info(domain, tag, `testPinchOut_static start `);
       try {
         let driver = Driver.create();
         await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
         await driver.delayMs(1000);
         let button = await driver.findComponent(ON.id('jump'));
-        hilog.info(domain, tag, `testPinchOut button, ${JSON.stringify(button)} `);
+        if (button == null) {
+          let scrollBar = await driver.findComponent(ON.type('Scroll'));
+          if (scrollBar != null) {
+            button = await scrollBar.scrollSearch(ON.id('jump'))
+          }
+        }
+        hilog.info(domain, tag, `testPinchOut_static button, ${JSON.stringify(button)} `);
         expect(button != null).assertTrue()
         if (button != null) {
           await button.click();
         }
         await driver.delayMs(1000);
         let image1 = await driver.findComponent(ON.id('test_pict'));
-        hilog.info(domain, tag, `testPinchOut image1, ${JSON.stringify(image1)} `);
+        hilog.info(domain, tag, `testPinchOut_static image1, ${JSON.stringify(image1)} `);
         expect(image1 != null).assertTrue()
         if (image1 != null) {
           let bounds1 = await image1.getBounds();
-          hilog.info(domain, tag, `testPinchOut bounds1, ${JSON.stringify(bounds1)} `);
+          hilog.info(domain, tag, `testPinchOut_static bounds1, ${JSON.stringify(bounds1)} `);
           await image1.pinchOut(1.2);
           await driver.delayMs(1000);
           let image2 = await driver.findComponent(ON.id('test_pict'));
-          hilog.info(domain, tag, `testPinchOut image2, ${JSON.stringify(image2)} `);
+          hilog.info(domain, tag, `testPinchOut_static image2, ${JSON.stringify(image2)} `);
           expect(image2 != null).assertTrue()
           if (image2 != null) {
             let bounds2 = await image2.getBounds();
-            hilog.info(domain, tag, `testPinchOut bounds2, ${JSON.stringify(bounds2)} `);
+            hilog.info(domain, tag, `testPinchOut_static bounds2, ${JSON.stringify(bounds2)} `);
             expect(bounds1 != bounds2).assertTrue();
           }
         }
       } catch(error) {
-        hilog.info(domain, tag, `testPinchOut error, ${JSON.stringify(error)} `);
+        hilog.info(domain, tag, `testPinchOut_static error, ${JSON.stringify(error)} `);
         expect().assertFail();
       }
-      hilog.info(domain, tag, `testPinchOut end `);
+      hilog.info(domain, tag, `testPinchOut_static end `);
       await stopApplication('com.uitestScene.acts');
     })
-    it('testLongClick',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
-      hilog.info(domain, tag, `testLongClick start `);
+    it('testUiComponentLongClick_static',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
+      hilog.info(domain, tag, `testUiComponentLongClick_static start `);
       try {
         let driver = Driver.create();
         await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
         await driver.delayMs(1000);
         let nextPage = await driver.findComponent(ON.text('next page'));
-        hilog.info(domain, tag, `testLongClick error, ${JSON.stringify(nextPage)} `);
+        hilog.info(domain, tag, `testUiComponentLongClick_static error, ${JSON.stringify(nextPage)} `);
         expect(nextPage != null).assertTrue()
         if (nextPage != null) {
           let center = await nextPage.getBoundsCenter();
           let test = await nextPage.longClick();
           let newButton = await driver.findComponent(ON.text('longClick'));
-          hilog.info(domain, tag, `testLongClick newButton, ${JSON.stringify(newButton)} `);
+          hilog.info(domain, tag, `testUiComponentLongClick_static newButton, ${JSON.stringify(newButton)} `);
           expect(newButton != null).assertTrue()
           await driver.delayMs(1000);
           if (newButton != null) {
             let text = await newButton.getText();
-            hilog.info(domain, tag, `testLongClick text, ${JSON.stringify(text)} `);
+            hilog.info(domain, tag, `testUiComponentLongClick_static text, ${JSON.stringify(text)} `);
             expect(text == 'longClick').assertTrue();
           }
         }
       } catch (error) {
-        hilog.info(domain, tag, `testLongClick error, ${JSON.stringify(error)} `);
+        hilog.info(domain, tag, `testUiComponentLongClick_static error, ${JSON.stringify(error)} `);
         expect().assertFail();
       }
-      hilog.info(domain, tag, `testLongClick end `);
+      hilog.info(domain, tag, `testUiComponentLongClick_static end `);
       await stopApplication('com.uitestScene.acts');
     })
-    it('tesInputText',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
-      hilog.info(domain, tag, "tesInputText start !!!!")
+    it('testInputText_static',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
+      hilog.info(domain, tag, "testInputText_static start !!!!")
       try {
         let driver = Driver.create();
         await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
         await driver.delayMs(1000);
         let text = await driver.findComponent(ON.type('TextInput'));
-        hilog.info(domain, tag, `tesInputText text, ${ JSON.stringify(text) }`);
+        if (text == null) {
+          let scrollBar = await driver.findComponent(ON.type('Scroll'));
+          if (scrollBar != null) {
+            text = await scrollBar.scrollSearch(ON.type('TextInput'))
+          }
+        }
+        hilog.info(domain, tag, `testInputText_static text, ${ JSON.stringify(text) }`);
         expect(text != null).assertTrue()
         if (text != null) {
-          let center = await text.getBoundsCenter();
-          hilog.info(domain, tag, `tesInputText center, ${ JSON.stringify(center) }`);
-          await text.inputText('123456');
+          await text.inputText('123');
         }
 
         await driver.delayMs(1000);
+        await exitInputMethod()
+        await driver.delayMs(2000)
         let text1 = await driver.findComponent(ON.type('TextInput'));
-        hilog.info(domain, tag, `tesInputText text1, ${ JSON.stringify(text1) }`);
+        hilog.info(domain, tag, `testInputText_static text1, ${ JSON.stringify(text1) }`);
         expect(text1 != null).assertTrue()
         if (text1 != null) {
           let inputText = await text1.getText();
-          hilog.info(domain, tag, `tesInputText inputText, ${ JSON.stringify(inputText) }`);
-          expect(inputText).assertEqual('123456');
+          hilog.info(domain, tag, `testInputText_static inputText, ${ JSON.stringify(inputText) }`);
+          expect(inputText).assertEqual('123');
         }
       } catch(error) {
-        hilog.info(domain, tag, `tesInputText error, ${ JSON.stringify(error) }`);
+        hilog.info(domain, tag, `testInputText_static error, ${ JSON.stringify(error) }`);
         expect().assertFail();
       }
-      hilog.info(domain, tag, "tesInputText over!!!!");
+      hilog.info(domain, tag, "testInputText_static end");
       await stopApplication('com.uitestScene.acts');
     })
-    it('testGetBoundsCenter',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
-      hilog.info(domain, tag, `testGetBoundsCenter start`);
+    it('testGetUiComponentBoundsCenter_static',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
+      hilog.info(domain, tag, `testGetUiComponentBoundsCenter_static start`);
       try {
         const driver1 = Driver.create();
         await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
         await driver1.delayMs(1000);
         let button = await driver1.findComponent(ON.text('next page'));
-        hilog.info(domain, tag, `testGetBoundsCenter button, ${ JSON.stringify(button) }`);
+        hilog.info(domain, tag, `testGetUiComponentBoundsCenter_static button, ${ JSON.stringify(button) }`);
         expect(button != null).assertTrue()
         if (button != null) {
           let center = await button.getBoundsCenter();
-          hilog.info(domain, tag, `testGetBoundsCenter center, ${ JSON.stringify(center) }`);
+          hilog.info(domain, tag, `testGetUiComponentBoundsCenter_static center, ${ JSON.stringify(center) }`);
           expect(center instanceof Point).assertTrue();
         }
       } catch(error) {
-        hilog.info(domain, tag, `testGetBoundsCenter error, ${ JSON.stringify(error) }`);
+        hilog.info(domain, tag, `testGetUiComponentBoundsCenter_static error, ${ JSON.stringify(error) }`);
         expect().assertFail();
       }
-      hilog.info(domain, tag, `testGetBoundsCenter end`);
+      hilog.info(domain, tag, `testGetUiComponentBoundsCenter_static end`);
       await stopApplication('com.uitestScene.acts');
     })
-    it('testGetBounds',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
-      hilog.info(domain, tag, `testGetBounds start`);
+    it('testGetUiComponentBounds_static',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
+      hilog.info(domain, tag, `testGetUiComponentBounds_static start`);
       try {
         const driver1 = Driver.create();
         await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
         await driver1.delayMs(1000);
         let button = await driver1.findComponent(ON.text('next page'));
-        hilog.info(domain, tag, `testGetBounds button, ${ JSON.stringify(button) }`);
+        hilog.info(domain, tag, `testGetUiComponentBounds_static button, ${ JSON.stringify(button) }`);
         expect(button != null).assertTrue()
         if (button != null) {
           let center = await button.getBounds();
-          hilog.info(domain, tag, `testGetBounds center, ${ JSON.stringify(center) }`);
+          hilog.info(domain, tag, `testGetUiComponentBounds_static center, ${ JSON.stringify(center) }`);
           expect(center instanceof Rect).assertTrue();
         }
       } catch(error) {
-        hilog.info(domain, tag, `testGetBounds error, ${ JSON.stringify(error) }`);
+        hilog.info(domain, tag, `testGetUiComponentBounds_static error, ${ JSON.stringify(error) }`);
         expect().assertFail();
       }
-      hilog.info(domain, tag, `testGetBounds end`);
+      hilog.info(domain, tag, `testGetUiComponentBounds_static end`);
       await stopApplication('com.uitestScene.acts');
     })
-    it('testDragTo',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
-      hilog.info(domain, tag, `testDragTo start`);
+    it('testDragTo_static',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
+      hilog.info(domain, tag, `testDragTo_static start`);
       try {
         const driver = Driver.create();
         await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
         await driver.delayMs(1000);
         let button = await driver.findComponent(ON.id('jump'));
-        hilog.info(domain, tag, `testDragTo button, ${JSON.stringify(button)}`);
+        hilog.info(domain, tag, `testDragTo_static button, ${JSON.stringify(button)}`);
         expect(button != null).assertTrue()
         if (button != null) {
           await button.longClick();
-          hilog.info(domain, tag, `testDragTo longClick`);
+          hilog.info(domain, tag, `testDragTo_static longClick`);
         }
         await driver.delayMs(1000);
         let text1 = await driver.findComponent(ON.text('one'));
-        hilog.info(domain, tag, `testDragTo text1, ${JSON.stringify(text1)}`);
+        hilog.info(domain, tag, `testDragTo_static text1, ${JSON.stringify(text1)}`);
         expect(text1 != null).assertTrue()
         let text2 = await driver.findComponent(ON.text('two'));
-        hilog.info(domain, tag, `testDragTo text2, ${JSON.stringify(text2)}`);
+        hilog.info(domain, tag, `testDragTo_static text2, ${JSON.stringify(text2)}`);
         expect(text2 != null).assertTrue()
         if (text1 != null && text2 != null) {
           await text1.dragTo(text2);
-          hilog.info(domain, tag, `testDragTo dragTo`);
+          hilog.info(domain, tag, `testDragTo_static dragTo`);
           let text = await driver.findComponent(ON.text('one').isBefore(ON.text('two')));
-          hilog.info(domain, tag, `testDragTo text, ${JSON.stringify(text)}`);
+          hilog.info(domain, tag, `testDragTo_static text, ${JSON.stringify(text)}`);
           expect(text == null).assertTrue()
         }
         await driver.delayMs(1000);
       } catch(error) {
-        hilog.info(domain, tag, `testDragTo error, ${JSON.stringify(error)}`);
+        hilog.info(domain, tag, `testDragTo_static error, ${JSON.stringify(error)}`);
         expect().assertFail();
       }
-      hilog.info(domain, tag, `testDragTo end`);
+      hilog.info(domain, tag, `testDragTo_static end`);
       await stopApplication('com.uitestScene.acts');
     })
-    it('testDoubleClick',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
+    it('testUiComponentDoubleClick_static',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
       try {
         let driver = Driver.create();
         await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
         await driver.delayMs(1000);
         let button = await driver.findComponent(ON.text('Click twice'));
-        hilog.info(domain, tag, `testDoubleClick button, ${ JSON.stringify(button)}`);
+        hilog.info(domain, tag, `testUiComponentDoubleClick_static button, ${ JSON.stringify(button)}`);
         expect(button != null).assertTrue()
         if (button != null) {
           await button.doubleClick();
-          hilog.info(domain, tag, `testDoubleClick longClick`);
+          hilog.info(domain, tag, `testUiComponentDoubleClick_static longClick`);
           let newButton = await driver.findComponent(ON.text('doubleClick'));
-          hilog.info(domain, tag, `testDoubleClick newButton, ${ JSON.stringify(newButton)} }`);
+          hilog.info(domain, tag, `testUiComponentDoubleClick_static newButton, ${ JSON.stringify(newButton)} }`);
           expect(newButton != null).assertTrue();
           await driver.delayMs(1000);
           if (newButton) {
             let text = await newButton.getText();
-            hilog.info(domain, tag, `testDoubleClick text, ${ JSON.stringify(text)} }`);
+            hilog.info(domain, tag, `testUiComponentDoubleClick_static text, ${ JSON.stringify(text)} }`);
             expect(text == 'doubleClick').assertTrue();
           }
         }
       } catch(error) {
-        hilog.info(domain, tag, `testDoubleClick error, ${ JSON.stringify(error) }`);
+        hilog.info(domain, tag, `testUiComponentDoubleClick_static error, ${ JSON.stringify(error) }`);
         expect().assertFail();
       }
-      hilog.info(domain, tag, "testDoubleClick over!!!!");
+      hilog.info(domain, tag, "testUiComponentDoubleClick_static over!!!!");
       await stopApplication('com.uitestScene.acts');
     })
-    it('testClick',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
-      hilog.info(domain, tag, `testClick start`);
+    it('testUiComponentClick_static',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
+      hilog.info(domain, tag, `testUiComponentClick_static start`);
       try {
         let driver = Driver.create();
         await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
@@ -511,22 +536,20 @@ export default function uitestComponentTest() {
         // 点击页面中的next page 按钮。
         if (button != null) {
           await button.click();
-          hilog.info(domain, tag, `testClick sccessful`);
-
         }
         let newButton = await driver.findComponent(ON.text('back to index'));
-        hilog.info(domain, tag, `testClick newButton, ${ JSON.stringify(newButton) }`);
+        hilog.info(domain, tag, `testUiComponentClick_static newButton, ${ JSON.stringify(newButton) }`);
         expect(newButton != null);
         if (newButton != null) {
           let text = await newButton.getText();
-          hilog.info(domain, tag, `testClick text, ${ JSON.stringify(text) }`);
+          hilog.info(domain, tag, `testUiComponentClick_static text, ${ JSON.stringify(text) }`);
           expect(text == 'back to index').assertTrue()
         }
       } catch(error) {
-        hilog.info(domain, tag, `testClick error, ${ error }`);
+        hilog.info(domain, tag, `testUiComponentClick_static error, ${ error }`);
         expect().assertFail();
       }
-      hilog.info(domain, tag, `testClick end`);
+      hilog.info(domain, tag, `testUiComponentClick_static end`);
       await stopApplication('com.uitestScene.acts');
     })
   })

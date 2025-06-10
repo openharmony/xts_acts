@@ -21,7 +21,7 @@ class Utils{
         }
         resolve(true)
       } catch(error: Error) {
-        hilog.info(domain, tag, `loadAndSetUpUiTest, isloadAndSetUpUiTest: ${JSON.stringify(error)}`);
+        hilog.info(domain, tag, `loadAndSetUpUiTest error, : ${JSON.stringify(error)}`);
         reject(error)
       }
     })

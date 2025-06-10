@@ -1,8 +1,12 @@
-import abilityTest from "./Ability.test";
 import uitestComponentTest from './UitestComponent.test';
 import uitestDriverTest from './UitestDriver.test';
+import uitestEnumTest from './UitestEnum.test';
+import uitestOnTest from './UitestOn.test';
+import uitestUiWindowTest from './UitestUiWindow.test';
 export default function testsuite() {
-  abilityTest();
+  uitestEnumTest();
   uitestComponentTest();
   uitestDriverTest();
+  uitestOnTest();
+  uitestUiWindowTest()
 }
