@@ -60,6 +60,9 @@
       },
       {
         "name": "ohos.permission.GET_DISTRIBUTED_DEVICE_INFO"
+      },
+      {
+        "name": "ohos.permission.ACCESS_BLUETOOTH"
       }
     ]
   }

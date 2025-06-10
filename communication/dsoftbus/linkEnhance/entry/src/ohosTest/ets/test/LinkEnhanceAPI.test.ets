@@ -19,7 +19,9 @@ import linkEnhance from '@ohos.distributedsched.linkEnhance';
 import { Driver, ON } from '@ohos.UiTest';
 import abilityAccessCtrl ,{ Permissions } from '@ohos.abilityAccessCtrl';
 import {common} from '@kit.AbilityKit';
+import btAccess from '@ohos.bluetooth.access';
 
+let OPEN_BT_TEXT:string = "开启";
 
 let logTag = "[linkEnhance_log]";
 async function sleep(ms:number): Promise<void>{
@@ -37,6 +39,11 @@ async function driveFn(){
     await sleep(1000);
     await button.click();
     await sleep(1000);
+    let button2 = await driver.findComponent(ON.text('允许'));
+    console.info(logTag + `button2 is ${JSON.stringify(button2)}`);
+    await sleep(1000);
+    await button2.click();
+    await sleep(1000);
   }catch (err){
     console.error(logTag + "driveFn err is "+ err);
     return;
@@ -50,18 +57,52 @@ async function requestPermission(){
     abilityAccessCtrl.createAtManager();
   atManager.requestPermissionsFromUser(context, permissions).then((data) => {
     console.info("request success" + JSON.stringify(data));
-    // let granStatus: Array<number> = data.authResults;
-    // let length: number = granStatus.length;
-    // for (let i = 0; i < length; i++){
-    //   if (granStatus[i] === 0){// 用户授权，可以继续访问目标操作
-    //   }else {
-    //     return;
-    //   }
-    // }
   })
-
 }
-
+async function clickRequestPermission(text:string) {
+  console.info(logTag +'[bluetooth_js] clickRequestPermission start');
+  let driver = await Driver.create();
+  try {
+    let button = await driver.findComponent(ON.text(text));
+    await sleep(1000);
+    await button.click();
+    await sleep(1000);
+    console.info(logTag +'[bluetooth_js] clickRequestPermission end');
+  } catch (err) {
+    console.info(logTag +'[bluetooth_js] clickRequestPermission failed. ' + err);
+  }
+}
+async function tryToEnableBt() {
+  let sta = btAccess.getState();
+  console.info(logTag +'[bluetooth_js] bt turn off:'+ JSON.stringify(sta));
+  switch(sta){
+    case 0:
+      btAccess.enableBluetooth();
+      await sleep(5000);
+      await clickRequestPermission(OPEN_BT_TEXT);
+      await sleep(10000);
+      let sta1 = btAccess.getState();
+      console.info(logTag +'[bluetooth_js] bt turn off1:'+ JSON.stringify(sta1));
+      break;
+    case 1:
+      console.info(logTag +'[bluetooth_js] bt turning on2:'+ JSON.stringify(sta));
+      await sleep(3000);
+      break;
+    case 2:
+      console.info(logTag +'[bluetooth_js] bt turn on3:'+ JSON.stringify(sta));
+      break;
+    case 3:
+      btAccess.enableBluetooth();
+      await sleep(3000);
+      await clickRequestPermission(OPEN_BT_TEXT);
+      await sleep(10000);
+      let sta2 = btAccess.getState();
+      console.info(logTag +'[bluetooth_js] bt turning off4:'+ JSON.stringify(sta2));
+      break;
+    default:
+      console.info(logTag +'[bluetooth_js] enable success');
+  }
+}
 
 export default function LinkEnhanceAPI() {
   describe('LinkEnhanceAPI', () => {
@@ -71,6 +112,8 @@ export default function LinkEnhanceAPI() {
       await requestPermission();
       await sleep(1000);
       await driveFn();
+      await sleep(1000);
+      await tryToEnableBt()
       await sleep(1000);
       done();
       // Presets an action, which is performed only once before all test cases of the test suite start.
@@ -86,9 +129,9 @@ export default function LinkEnhanceAPI() {
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: clear action function.
     })
-    afterAll(() => {
-      // Presets a clear action, which is performed after all test cases of the test suite end.
-      // This API supports only one parameter: clear action function.
+    afterAll(async (done: Function) => {
+      console.info(logTag +'[bluetooth_js] bt close');
+      btAccess.disableBluetooth();
     })
     /**
      * @tc.number     : SUB_DSoftbus_Trans_linkEnhance_API_createConnection_0100
@@ -804,6 +847,47 @@ export default function LinkEnhanceAPI() {
         expect(error.message == null).assertTrue();
       }
       console.info(logTag + "----------end SUB_DSoftbus_Trans_linkEnhance_API_ConnectionOff_0300----------------");
+    });
+    /**
+     * @tc.number     : SUB_DSoftbus_Trans_linkEnhance_API_disconnect_0100
+     * @tc.name       : SUB_DSoftbus_Trans_linkEnhance_API_disconnect_0100
+     * @tc.desc       : linkEnhance.connection.disconnet接口入调用成功
+     * @tc.size       : MediumTest
+     * @tc.type       : Compatibility
+     * @tc.level      : Level 3
+     */
+    it('SUB_DSoftbus_Trans_linkEnhance_API_disconnect_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      console.info(logTag + "----------start SUB_DSoftbus_Trans_linkEnhance_API_disconnect_0100----------------");
+      let flag = false;
+      let arraybuffer = new ArrayBuffer(10);
+      console.info(logTag +"SUB_DSoftbus_Trans_linkEnhance_API_disconnect_0100 dataLength" + arraybuffer.byteLength);
+      try {
+        let connection: linkEnhance.Connection = linkEnhance.createConnection("11:22:33:44:55:66", "demo");
+        console.info(logTag+"SUB_DSoftbus_Trans_linkEnhance_API_disconnect_0100 connection is" + connection);
+        try {
+          console.info(logTag+"SUB_DSoftbus_Trans_linkEnhance_API_disconnect_0100 connect_on  start");
+          connection.off('dataReceived',null);
+        }catch (error) {
+          flag = true;
+          console.info(logTag + "SUB_DSoftbus_Trans_linkEnhance_API_disconnect_0100 error.code is " + error.code);
+          console.info(logTag + "SUB_DSoftbus_Trans_linkEnhance_API_disconnect_0100 error.message is " + error.message);
+          expect(error.code == 32390206).assertTrue();
+          expect(error.message != null).assertTrue();
+        }finally {
+          if(flag == false){
+            console.error(logTag + "[ERROR] SUB_DSoftbus_Trans_linkEnhance_API_disconnect_0100 createConnection success" +
+              ",ecpect fail");
+          }
+          expect(flag == true).assertTrue();
+          connection.close();
+          console.info(logTag + "reclaim done");
+        }
+      }catch (error) {
+        console.info(logTag + "SUB_DSoftbus_Trans_linkEnhance_API_disconnect_0100 createConnection error.code is:" + error.code);
+        expect(error.message == null).assertTrue();
+      }
+      console.info(logTag + "----------end SUB_DSoftbus_Trans_linkEnhance_API_disconnect_0100----------------");
     });
   })
 }

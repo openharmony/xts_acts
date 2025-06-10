@@ -13,7 +13,11 @@
  * limitations under the License.
  */
 import LinkEnhanceAPI from './LinkEnhanceAPI.test';
+import parameter from '@ohos.systemparameter';
 
+let info = parameter.getSync("const.SystemCapability.Communication.Bluetooth.Core", "false");
 export default function testsuite() {
-  LinkEnhanceAPI();
+  if (info != "false") {
+    LinkEnhanceAPI();
+  }
 }

@@ -11,7 +11,8 @@
           "SystemCapability.Ability.AbilityRuntime.AbilityCore",
           "SystemCapability.Ability.AbilityRuntime.Core",
           "SystemCapability.Window.SessionManager",
-          "SystemCapability.WindowManager.WindowManager.Core"
+          "SystemCapability.WindowManager.WindowManager.Core",
+          "SystemCapability.Communication.Bluetooth.Core"
         ]
 
     }]
