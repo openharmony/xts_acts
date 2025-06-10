@@ -241,6 +241,7 @@ export default function SaveToExistingContactViaUITest() {
         });
       } catch (err) {
         console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
         done();
       }
       console.info(`${caseName} test end `);
@@ -306,6 +307,7 @@ export default function SaveToExistingContactViaUITest() {
         });
       } catch (err) {
         console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
         done();
       }
       console.info(`${caseName} test end `);
