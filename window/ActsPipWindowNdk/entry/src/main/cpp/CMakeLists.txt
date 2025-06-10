@@ -11,7 +11,7 @@ endif()
 include_directories(${NATIVERENDER_ROOT_PATH}
                     ${NATIVERENDER_ROOT_PATH}/include)
 
-add_library(entry SHARED napi_init.cpp)
+add_library(entry SHARED ActsPipWindowTest.cpp)
 target_link_libraries(entry PUBLIC libace_napi.z.so)
 target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
 target_link_libraries(entry PUBLIC libnative_window_manager.so)

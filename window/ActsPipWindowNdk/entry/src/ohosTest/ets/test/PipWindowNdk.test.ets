@@ -152,16 +152,16 @@ export default function PipWindowNdkTest() {
         console.log(`${caseName} mainWindowId: ${JSON.stringify(mainWindowId)}`);
         let result = testNapi.testCreatePip(mainWindowId);
         console.log(`${caseName} result: ${JSON.stringify(result)}`);
-        expect(result).assertEqual(0);
-        done();
-      } catch (err) {
-        console.error(`${caseName} error: ${JSON.stringify(err)}`);
-        if (err.code === 801) {
-          done();
+        if (result === 801) {
+          done()
         } else {
-          expect(false).assertTrue();
+          expect(result).assertEqual(0);
           done();
         }
+      } catch (err) {
+        console.error(`${caseName} error: ${JSON.stringify(err)}`);
+        expect(false).assertTrue();
+        done();
       }
     })
 
@@ -183,16 +183,16 @@ export default function PipWindowNdkTest() {
         console.log(`${caseName} mainWindowId: ${JSON.stringify(mainWindowId)}`);
         let result = testNapi.testCreatePip_ControllerId_Nullptr(mainWindowId);
         console.log(`${caseName} result: ${JSON.stringify(result)}`);
-        expect(result).assertEqual(1300016);
-        done();
-      } catch (err) {
-        console.error(`${caseName} error: ${JSON.stringify(err)}`);
-        if (err.code === 801) {
-          done();
+        if (result === 801) {
+          done()
         } else {
-          expect(false).assertTrue();
+          expect(result).assertEqual(1300016);
           done();
         }
+      } catch (err) {
+        console.error(`${caseName} error: ${JSON.stringify(err)}`);
+        expect(false).assertTrue();
+        done();
       }
     })
 
@@ -214,16 +214,16 @@ export default function PipWindowNdkTest() {
         console.log(`${caseName} mainWindowId: ${JSON.stringify(mainWindowId)}`);
         let result = testNapi.testCreatePip_SetPipMainWindowId_Zero(mainWindowId);
         console.log(`${caseName} result: ${JSON.stringify(result)}`);
-        expect(result).assertEqual(1300016);
-        done();
-      } catch (err) {
-        console.error(`${caseName} error: ${JSON.stringify(err)}`);
-        if (err.code === 801) {
-          done();
+        if (result === 801) {
+          done()
         } else {
-          expect(false).assertTrue();
+          expect(result).assertEqual(1300016);
           done();
         }
+      } catch (err) {
+        console.error(`${caseName} error: ${JSON.stringify(err)}`);
+        expect(false).assertTrue();
+        done();
       }
     })
 
@@ -245,16 +245,16 @@ export default function PipWindowNdkTest() {
         console.log(`${caseName} mainWindowId: ${JSON.stringify(mainWindowId)}`);
         let result = testNapi.testCreatePip_SetErrPipTemplateType(mainWindowId);
         console.log(`${caseName} result: ${JSON.stringify(result)}`);
-        expect(result).assertEqual(1300016);
-        done();
-      } catch (err) {
-        console.error(`${caseName} error: ${JSON.stringify(err)}`);
-        if (err.code === 801) {
-          done();
+        if (result === 801) {
+          done()
         } else {
-          expect(false).assertTrue();
+          expect(result).assertEqual(1300016);
           done();
         }
+      } catch (err) {
+        console.error(`${caseName} error: ${JSON.stringify(err)}`);
+        expect(false).assertTrue();
+        done();
       }
     })
 
@@ -276,16 +276,16 @@ export default function PipWindowNdkTest() {
         console.log(`${caseName} mainWindowId: ${JSON.stringify(mainWindowId)}`);
         let result = testNapi.testStartStopPip(mainWindowId);
         console.log(`${caseName} result: ${JSON.stringify(result)}`);
-        expect(result).assertEqual(0);
-        done();
-      } catch (err) {
-        console.error(`${caseName} error: ${JSON.stringify(err)}`);
-        if (err.code === 801) {
-          done();
+        if (result === 801) {
+          done()
         } else {
-          expect(false).assertTrue();
+          expect(result).assertEqual(0);
           done();
         }
+      } catch (err) {
+        console.error(`${caseName} error: ${JSON.stringify(err)}`);
+        expect(false).assertTrue();
+        done();
       }
     })
 
@@ -307,16 +307,16 @@ export default function PipWindowNdkTest() {
         console.log(`${caseName} mainWindowId: ${JSON.stringify(mainWindowId)}`);
         let result = testNapi.testStartPipRepeat(mainWindowId);
         console.log(`${caseName} result: ${JSON.stringify(result)}`);
-        expect(result).assertEqual(1300015);
-        done();
-      } catch (err) {
-        console.error(`${caseName} error: ${JSON.stringify(err)}`);
-        if (err.code === 801) {
-          done();
+        if (result === 801) {
+          done()
         } else {
-          expect(false).assertTrue();
+          expect(result).assertEqual(1300015);
           done();
         }
+      } catch (err) {
+        console.error(`${caseName} error: ${JSON.stringify(err)}`);
+        expect(false).assertTrue();
+        done();
       }
     })
 
@@ -338,16 +338,16 @@ export default function PipWindowNdkTest() {
         console.log(`${caseName} mainWindowId: ${JSON.stringify(mainWindowId)}`);
         let result = testNapi.testStopPipRepeat(mainWindowId);
         console.log(`${caseName} result: ${JSON.stringify(result)}`);
-        expect(result).assertEqual(1300012);
-        done();
-      } catch (err) {
-        console.error(`${caseName} error: ${JSON.stringify(err)}`);
-        if (err.code === 801) {
-          done();
+        if (result === 801) {
+          done()
         } else {
-          expect(false).assertTrue();
+          expect(result).assertEqual(1300012);
           done();
         }
+      } catch (err) {
+        console.error(`${caseName} error: ${JSON.stringify(err)}`);
+        expect(false).assertTrue();
+        done();
       }
     })
 
@@ -369,16 +369,16 @@ export default function PipWindowNdkTest() {
         console.log(`${caseName} mainWindowId: ${JSON.stringify(mainWindowId)}`);
         let result = testNapi.testDeletePipWithStopPip(mainWindowId);
         console.log(`${caseName} result: ${JSON.stringify(result)}`);
-        expect(result).assertEqual(0);
-        done();
-      } catch (err) {
-        console.error(`${caseName} error: ${JSON.stringify(err)}`);
-        if (err.code === 801) {
-          done();
+        if (result === 801) {
+          done()
         } else {
-          expect(false).assertTrue();
+          expect(result).assertEqual(0);
           done();
         }
+      } catch (err) {
+        console.error(`${caseName} error: ${JSON.stringify(err)}`);
+        expect(false).assertTrue();
+        done();
       }
     })
 
@@ -400,16 +400,16 @@ export default function PipWindowNdkTest() {
         console.log(`${caseName} mainWindowId: ${JSON.stringify(mainWindowId)}`);
         let result = testNapi.testDeletePipWithoutStopPip(mainWindowId);
         console.log(`${caseName} result: ${JSON.stringify(result)}`);
-        expect(result).assertEqual(1300016);
-        done();
-      } catch (err) {
-        console.error(`${caseName} error: ${JSON.stringify(err)}`);
-        if (err.code === 801) {
-          done();
+        if (result === 801) {
+          done()
         } else {
-          expect(false).assertTrue();
+          expect(result).assertEqual(1300016);
           done();
         }
+      } catch (err) {
+        console.error(`${caseName} error: ${JSON.stringify(err)}`);
+        expect(false).assertTrue();
+        done();
       }
     })
 
@@ -431,16 +431,16 @@ export default function PipWindowNdkTest() {
         console.log(`${caseName} mainWindowId: ${JSON.stringify(mainWindowId)}`);
         let result = testNapi.testUpdatePipContentSize(mainWindowId);
         console.log(`${caseName} result: ${JSON.stringify(result)}`);
-        expect(result).assertEqual(0);
-        done();
-      } catch (err) {
-        console.error(`${caseName} error: ${JSON.stringify(err)}`);
-        if (err.code === 801) {
-          done();
+        if (result === 801) {
+          done()
         } else {
-          expect(false).assertTrue();
+          expect(result).assertEqual(0);
           done();
         }
+      } catch (err) {
+        console.error(`${caseName} error: ${JSON.stringify(err)}`);
+        expect(false).assertTrue();
+        done();
       }
     })
 
@@ -462,16 +462,16 @@ export default function PipWindowNdkTest() {
         console.log(`${caseName} mainWindowId: ${JSON.stringify(mainWindowId)}`);
         let result = testNapi.testUpdatePipContentStatus(mainWindowId);
         console.log(`${caseName} result: ${JSON.stringify(result)}`);
-        expect(result).assertEqual(0);
-        done();
-      } catch (err) {
-        console.error(`${caseName} error: ${JSON.stringify(err)}`);
-        if (err.code === 801) {
-          done();
+        if (result === 801) {
+          done()
         } else {
-          expect(false).assertTrue();
+          expect(result).assertEqual(0);
           done();
         }
+      } catch (err) {
+        console.error(`${caseName} error: ${JSON.stringify(err)}`);
+        expect(false).assertTrue();
+        done();
       }
     })
 
@@ -493,16 +493,16 @@ export default function PipWindowNdkTest() {
         console.log(`${caseName} mainWindowId: ${JSON.stringify(mainWindowId)}`);
         let result = testNapi.testUpdatePipContentEnabled(mainWindowId);
         console.log(`${caseName} result: ${JSON.stringify(result)}`);
-        expect(result).assertEqual(0);
-        done();
-      } catch (err) {
-        console.error(`${caseName} error: ${JSON.stringify(err)}`);
-        if (err.code === 801) {
-          done();
+        if (result === 801) {
+          done()
         } else {
-          expect(false).assertTrue();
+          expect(result).assertEqual(0);
           done();
         }
+      } catch (err) {
+        console.error(`${caseName} error: ${JSON.stringify(err)}`);
+        expect(false).assertTrue();
+        done();
       }
     })
 
@@ -524,16 +524,16 @@ export default function PipWindowNdkTest() {
         console.log(`${caseName} mainWindowId: ${JSON.stringify(mainWindowId)}`);
         let result = testNapi.testRegisterStartPipCallback(mainWindowId);
         console.log(`${caseName} result: ${JSON.stringify(result)}`);
-        expect(result).assertEqual(0);
-        done();
-      } catch (err) {
-        console.error(`${caseName} error: ${JSON.stringify(err)}`);
-        if (err.code === 801) {
-          done();
+        if (result === 801) {
+          done()
         } else {
-          expect(false).assertTrue();
+          expect(result).assertEqual(0);
           done();
         }
+      } catch (err) {
+        console.error(`${caseName} error: ${JSON.stringify(err)}`);
+        expect(false).assertTrue();
+        done();
       }
     })
 
@@ -555,16 +555,16 @@ export default function PipWindowNdkTest() {
         console.log(`${caseName} mainWindowId: ${JSON.stringify(mainWindowId)}`);
         let result = testNapi.testTwoRegisterStartPipCallback(mainWindowId);
         console.log(`${caseName} result: ${JSON.stringify(result)}`);
-        expect(result).assertEqual(0);
-        done();
-      } catch (err) {
-        console.error(`${caseName} error: ${JSON.stringify(err)}`);
-        if (err.code === 801) {
-          done();
+        if (result === 801) {
+          done()
         } else {
-          expect(false).assertTrue();
+          expect(result).assertEqual(0);
           done();
         }
+      } catch (err) {
+        console.error(`${caseName} error: ${JSON.stringify(err)}`);
+        expect(false).assertTrue();
+        done();
       }
     })
 
@@ -586,16 +586,16 @@ export default function PipWindowNdkTest() {
         console.log(`${caseName} mainWindowId: ${JSON.stringify(mainWindowId)}`);
         let result = testNapi.testUnregisterStartPipCallback(mainWindowId);
         console.log(`${caseName} result: ${JSON.stringify(result)}`);
-        expect(result).assertEqual(0);
-        done();
-      } catch (err) {
-        console.error(`${caseName} error: ${JSON.stringify(err)}`);
-        if (err.code === 801) {
-          done();
+        if (result === 801) {
+          done()
         } else {
-          expect(false).assertTrue();
+          expect(result).assertEqual(0);
           done();
         }
+      } catch (err) {
+        console.error(`${caseName} error: ${JSON.stringify(err)}`);
+        expect(false).assertTrue();
+        done();
       }
     })
 
@@ -617,16 +617,16 @@ export default function PipWindowNdkTest() {
         console.log(`${caseName} mainWindowId: ${JSON.stringify(mainWindowId)}`);
         let result = testNapi.testUnregisterAllStartPipCallbacks(mainWindowId);
         console.log(`${caseName} result: ${JSON.stringify(result)}`);
-        expect(result).assertEqual(0);
-        done();
-      } catch (err) {
-        console.error(`${caseName} error: ${JSON.stringify(err)}`);
-        if (err.code === 801) {
-          done();
+        if (result === 801) {
+          done()
         } else {
-          expect(false).assertTrue();
+          expect(result).assertEqual(0);
           done();
         }
+      } catch (err) {
+        console.error(`${caseName} error: ${JSON.stringify(err)}`);
+        expect(false).assertTrue();
+        done();
       }
     })
 
@@ -648,16 +648,16 @@ export default function PipWindowNdkTest() {
         console.log(`${caseName} mainWindowId: ${JSON.stringify(mainWindowId)}`);
         let result = testNapi.testRegisterResizeListener(mainWindowId);
         console.log(`${caseName} result: ${JSON.stringify(result)}`);
-        expect(result).assertEqual(0);
-        done();
-      } catch (err) {
-        console.error(`${caseName} error: ${JSON.stringify(err)}`);
-        if (err.code === 801) {
-          done();
+        if (result === 801) {
+          done()
         } else {
-          expect(false).assertTrue();
+          expect(result).assertEqual(0);
           done();
         }
+      } catch (err) {
+        console.error(`${caseName} error: ${JSON.stringify(err)}`);
+        expect(false).assertTrue();
+        done();
       }
     })
 
@@ -679,16 +679,16 @@ export default function PipWindowNdkTest() {
         console.log(`${caseName} mainWindowId: ${JSON.stringify(mainWindowId)}`);
         let result = testNapi.testTwoRegisterResizeListener(mainWindowId);
         console.log(`${caseName} result: ${JSON.stringify(result)}`);
-        expect(result).assertEqual(0);
-        done();
-      } catch (err) {
-        console.error(`${caseName} error: ${JSON.stringify(err)}`);
-        if (err.code === 801) {
-          done();
+        if (result === 801) {
+          done()
         } else {
-          expect(false).assertTrue();
+          expect(result).assertEqual(0);
           done();
         }
+      } catch (err) {
+        console.error(`${caseName} error: ${JSON.stringify(err)}`);
+        expect(false).assertTrue();
+        done();
       }
     })
 
@@ -710,16 +710,16 @@ export default function PipWindowNdkTest() {
         console.log(`${caseName} mainWindowId: ${JSON.stringify(mainWindowId)}`);
         let result = testNapi.testUnregisterResizeListener(mainWindowId);
         console.log(`${caseName} result: ${JSON.stringify(result)}`);
-        expect(result).assertEqual(0);
-        done();
-      } catch (err) {
-        console.error(`${caseName} error: ${JSON.stringify(err)}`);
-        if (err.code === 801) {
-          done();
+        if (result === 801) {
+          done()
         } else {
-          expect(false).assertTrue();
+          expect(result).assertEqual(0);
           done();
         }
+      } catch (err) {
+        console.error(`${caseName} error: ${JSON.stringify(err)}`);
+        expect(false).assertTrue();
+        done();
       }
     })
 
@@ -741,16 +741,16 @@ export default function PipWindowNdkTest() {
         console.log(`${caseName} mainWindowId: ${JSON.stringify(mainWindowId)}`);
         let result = testNapi.testUnregisterAllResizeListeners(mainWindowId);
         console.log(`${caseName} result: ${JSON.stringify(result)}`);
-        expect(result).assertEqual(0);
-        done();
-      } catch (err) {
-        console.error(`${caseName} error: ${JSON.stringify(err)}`);
-        if (err.code === 801) {
-          done();
+        if (result === 801) {
+          done()
         } else {
-          expect(false).assertTrue();
+          expect(result).assertEqual(0);
           done();
         }
+      } catch (err) {
+        console.error(`${caseName} error: ${JSON.stringify(err)}`);
+        expect(false).assertTrue();
+        done();
       }
     })
 
@@ -772,16 +772,16 @@ export default function PipWindowNdkTest() {
         console.log(`${caseName} mainWindowId: ${JSON.stringify(mainWindowId)}`);
         let result = testNapi.testRegisterControlEventListener(mainWindowId);
         console.log(`${caseName} result: ${JSON.stringify(result)}`);
-        expect(result).assertEqual(0);
-        done();
-      } catch (err) {
-        console.error(`${caseName} error: ${JSON.stringify(err)}`);
-        if (err.code === 801) {
-          done();
+        if (result === 801) {
+          done()
         } else {
-          expect(false).assertTrue();
+          expect(result).assertEqual(0);
           done();
         }
+      } catch (err) {
+        console.error(`${caseName} error: ${JSON.stringify(err)}`);
+        expect(false).assertTrue();
+        done();
       }
     })
 
@@ -803,16 +803,16 @@ export default function PipWindowNdkTest() {
         console.log(`${caseName} mainWindowId: ${JSON.stringify(mainWindowId)}`);
         let result = testNapi.testUnregisterControlEventListener(mainWindowId);
         console.log(`${caseName} result: ${JSON.stringify(result)}`);
-        expect(result).assertEqual(0);
-        done();
-      } catch (err) {
-        console.error(`${caseName} error: ${JSON.stringify(err)}`);
-        if (err.code === 801) {
-          done();
+        if (result === 801) {
+          done()
         } else {
-          expect(false).assertTrue();
+          expect(result).assertEqual(0);
           done();
         }
+      } catch (err) {
+        console.error(`${caseName} error: ${JSON.stringify(err)}`);
+        expect(false).assertTrue();
+        done();
       }
     })
 
@@ -834,16 +834,16 @@ export default function PipWindowNdkTest() {
         console.log(`${caseName} mainWindowId: ${JSON.stringify(mainWindowId)}`);
         let result = testNapi.testUnregisterAllControlEventListeners(mainWindowId);
         console.log(`${caseName} result: ${JSON.stringify(result)}`);
-        expect(result).assertEqual(0);
-        done();
-      } catch (err) {
-        console.error(`${caseName} error: ${JSON.stringify(err)}`);
-        if (err.code === 801) {
-          done();
+        if (result === 801) {
+          done()
         } else {
-          expect(false).assertTrue();
+          expect(result).assertEqual(0);
           done();
         }
+      } catch (err) {
+        console.error(`${caseName} error: ${JSON.stringify(err)}`);
+        expect(false).assertTrue();
+        done();
       }
     })
 
@@ -865,16 +865,16 @@ export default function PipWindowNdkTest() {
         console.log(`${caseName} mainWindowId: ${JSON.stringify(mainWindowId)}`);
         let result = testNapi.testRegisterLifeCycleListener(mainWindowId);
         console.log(`${caseName} result: ${JSON.stringify(result)}`);
-        expect(result).assertEqual(0);
-        done();
-      } catch (err) {
-        console.error(`${caseName} error: ${JSON.stringify(err)}`);
-        if (err.code === 801) {
-          done();
+        if (result === 801) {
+          done()
         } else {
-          expect(false).assertTrue();
+          expect(result).assertEqual(0);
           done();
         }
+      } catch (err) {
+        console.error(`${caseName} error: ${JSON.stringify(err)}`);
+        expect(false).assertTrue();
+        done();
       }
     })
 
@@ -896,16 +896,16 @@ export default function PipWindowNdkTest() {
         console.log(`${caseName} mainWindowId: ${JSON.stringify(mainWindowId)}`);
         let result = testNapi.testTwoRegisterLifeCycleListener(mainWindowId);
         console.log(`${caseName} result: ${JSON.stringify(result)}`);
-        expect(result).assertEqual(0);
-        done();
-      } catch (err) {
-        console.error(`${caseName} error: ${JSON.stringify(err)}`);
-        if (err.code === 801) {
-          done();
+        if (result === 801) {
+          done()
         } else {
-          expect(false).assertTrue();
+          expect(result).assertEqual(0);
           done();
         }
+      } catch (err) {
+        console.error(`${caseName} error: ${JSON.stringify(err)}`);
+        expect(false).assertTrue();
+        done();
       }
     })
 
@@ -927,16 +927,16 @@ export default function PipWindowNdkTest() {
         console.log(`${caseName} mainWindowId: ${JSON.stringify(mainWindowId)}`);
         let result = testNapi.testUnregisterLifeCycleListener(mainWindowId);
         console.log(`${caseName} result: ${JSON.stringify(result)}`);
-        expect(result).assertEqual(0);
-        done();
-      } catch (err) {
-        console.error(`${caseName} error: ${JSON.stringify(err)}`);
-        if (err.code === 801) {
-          done();
+        if (result === 801) {
+          done()
         } else {
-          expect(false).assertTrue();
+          expect(result).assertEqual(0);
           done();
         }
+      } catch (err) {
+        console.error(`${caseName} error: ${JSON.stringify(err)}`);
+        expect(false).assertTrue();
+        done();
       }
     })
 
@@ -958,16 +958,16 @@ export default function PipWindowNdkTest() {
         console.log(`${caseName} mainWindowId: ${JSON.stringify(mainWindowId)}`);
         let result = testNapi.testUnregisterAllLifeCycleListeners(mainWindowId);
         console.log(`${caseName} result: ${JSON.stringify(result)}`);
-        expect(result).assertEqual(0);
-        done();
-      } catch (err) {
-        console.error(`${caseName} error: ${JSON.stringify(err)}`);
-        if (err.code === 801) {
-          done();
+        if (result === 801) {
+          done()
         } else {
-          expect(false).assertTrue();
+          expect(result).assertEqual(0);
           done();
         }
+      } catch (err) {
+        console.error(`${caseName} error: ${JSON.stringify(err)}`);
+        expect(false).assertTrue();
+        done();
       }
     })
 
