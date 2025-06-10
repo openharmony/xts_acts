@@ -132,6 +132,7 @@ export default function LinkEnhanceAPI() {
     afterAll(async (done: Function) => {
       console.info(logTag +'[bluetooth_js] bt close');
       btAccess.disableBluetooth();
+      done();
     })
     /**
      * @tc.number     : SUB_DSoftbus_Trans_linkEnhance_API_createConnection_0100
