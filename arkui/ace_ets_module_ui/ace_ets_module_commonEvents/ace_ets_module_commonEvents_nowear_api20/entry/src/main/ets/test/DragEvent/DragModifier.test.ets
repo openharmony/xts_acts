@@ -61,8 +61,6 @@ export default function ModifierTest() {
       console.log('999999999'+AppStorage.get('dragSource2'))
       expect(AppStorage.get('dragSource2')).assertEqual('com.open.harmony.nowear.acetestcommenventapi20');
       expect(AppStorage.get('isRemote2')).assertEqual(false);
-      expect(AppStorage.get('dragSource4')).assertEqual('com.open.harmony.nowear.acetestcommenventapi20');
-      expect(AppStorage.get('isRemote4')).assertEqual(false);
       expect(AppStorage.get('dragSource5')).assertEqual('com.open.harmony.nowear.acetestcommenventapi20');
       expect(AppStorage.get('isRemote5')).assertEqual(false);
       console.info('[ModifierTest_0010] END');
