@@ -47,6 +47,7 @@ group("ability_runtime") {
       "actschildprocessmanager:actschildprocessmanagertest",
       "actscleantemptest:cleantempfiles",
       "actscollaborateresulttest:actscollaborateresulttest",
+      "actscontextmonitor:ActsContextMonitorTest",
       "actscompletionhandlertest:actscompletionhandlertest",
       "actscreatedisplaycontexttest:actscreatedisplaycontexttest",
       "actscrosscall:actscrosscall",

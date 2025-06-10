@@ -25,6 +25,7 @@
     "MainAbility/pages/SymbolGlyph/SymbolGlyphShaderStyle",
     "MainAbility/pages/StyledString/TextStyleSuperscript",
     "MainAbility/pages/Text/TextLineSpacing",
-    "MainAbility/pages/TextArea/TextAreaLineSpacing"
+    "MainAbility/pages/TextArea/TextAreaLineSpacing",
+    "MainAbility/pages/ImageError/ImageOnError"
   ]
 }
