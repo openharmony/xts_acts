@@ -11,8 +11,7 @@
           "SystemCapability.Ability.AbilityRuntime.AbilityCore",
           "SystemCapability.Ability.AbilityRuntime.Core",
           "SystemCapability.Window.SessionManager",
-          "SystemCapability.WindowManager.WindowManager.Core",
-          "SystemCapability.Base"
+          "SystemCapability.WindowManager.WindowManager.Core"
         ]
 
     }]
