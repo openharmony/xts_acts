@@ -2,6 +2,17 @@
     "src": [
         "MainAbility/pages/index/index",
         "MainAbility/pages/Flex/FlexLayoutPolicyPage",
-        "MainAbility/pages/GridRow/GridRowNoColumnsPage"
+        "MainAbility/pages/GridRow/GridRowNoColumnsPage",
+
+        "MainAbility/pages/Column/ColumnMatchParent",
+        "MainAbility/pages/Column/ColumnWrapContent",
+        "MainAbility/pages/Flex/FlexWrapContent",
+        "MainAbility/pages/Row/RowMatchParent",
+        "MainAbility/pages/Row/RowWrapContent",
+        "MainAbility/pages/Stack/StackMatchParent",
+        "MainAbility/pages/Stack/StackWrapContent",
+        "MainAbility/pages/BoxAlign/ButtonAlign",
+        "MainAbility/pages/Stack/StackSafeArea",
+        "MainAbility/pages/Stack/StackChildAlignment" 
     ]
 }
