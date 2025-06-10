@@ -49,7 +49,7 @@ export default function ModifierTest() {
 
     /**
      * @tc.number    ModifierTest_0010
-     * @tc.name      Test the api of Modifier
+     * @tc.name      ModifierTest_0010
      * @tc.desc      api
      * @tc.level:    Level 0
      * @tc.type :
