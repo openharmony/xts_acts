@@ -21,7 +21,7 @@ describe("StackTest", function () {
    * @tc.name: testConstructor001
    * @tc.desc: Create an Stack instance. For example: let stack = new Stack().
    */
-  it("testConstructor001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testConstructor001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     try {
       let stack = new Stack();
       expect(stack != undefined).assertEqual(true);
@@ -36,7 +36,7 @@ describe("StackTest", function () {
    * @tc.name: testPush002
    * @tc.desc: Insert element at top of stack.For example: stack.push("四").
    */
-  it("testPush002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testPush002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let stack = new Stack();
     stack.push("四");
     let res = stack.peek();
@@ -47,7 +47,7 @@ describe("StackTest", function () {
    * @tc.name: testPush003
    * @tc.desc: Insert element at top of stack.For example: stack.push(8).
    */
-  it("testPush003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testPush003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let stack = new Stack();
     stack.push(8);
     let res = stack.peek();
@@ -58,7 +58,7 @@ describe("StackTest", function () {
    * @tc.name: testPush004
    * @tc.desc: Insert element at top of stack.For example: let a = {name: "lala", age: "13岁"}; stack.push(a).
    */
-  it("testPush004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testPush004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let stack = new Stack();
     let a = {name: "lala", age: "13岁"};
     stack.push(a);
@@ -70,7 +70,7 @@ describe("StackTest", function () {
    * @tc.name: testPush005
    * @tc.desc: Insert element at top of stack.For example: let a = [1, 2, 3, 4]; stack.push(a).
    */
-  it("testPush005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testPush005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let stack = new Stack();
     let a = [1, 2, 3, 4];
     stack.push(a);
@@ -82,7 +82,7 @@ describe("StackTest", function () {
    * @tc.name: testPeek006
    * @tc.desc: Get stack top element. For example: stack.peek().
    */
-  it("testPeek006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testPeek006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let stack = new Stack();
     let a = [1, 2, 3, 4];
     stack.push(a);
@@ -97,7 +97,7 @@ describe("StackTest", function () {
    * @tc.name: testLocate007
    * @tc.desc: Get the index corresponding to the element in the stack. For example: stack.locate("A").
    */
-  it("testLocate007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testLocate007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let stack = new Stack();
     let a = [1, 2, 3, 4];
     stack.push(8);
@@ -115,7 +115,7 @@ describe("StackTest", function () {
    * @tc.name: testPop008
    * @tc.desc: Delete top of stack element. For example: stack.pop().
    */
-  it("testPop008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testPop008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let stack = new Stack();
     stack.push("B");
     stack.push(1);
@@ -129,7 +129,7 @@ describe("StackTest", function () {
    * @tc.name: testForEach009
    * @tc.desc: Traversing elements in stack instances. For example: stack.forEach((item, index) => {arr.push(item);}).
    */
-  it("testForEach009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testForEach009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let stack = new Stack();
     stack.push(8);
     stack.push("三");
@@ -152,7 +152,7 @@ describe("StackTest", function () {
    * @tc.name: testIterator010
    * @tc.desc: Iterate over all elements in the stack instance. For example: for (let item of stack) {arr.push(item);}.
    */
-  it("testIterator010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testIterator010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let stack = new Stack();
     stack.push(8);
     stack.push("一");
@@ -177,7 +177,7 @@ describe("StackTest", function () {
    * @tc.name: testLength011
    * @tc.desc: Get the number of elements in the stack instance. For example: stack.length.
    */
-  it("testLength011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testLength011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let stack = new Stack();
     stack.push(8);
     stack.push("一");
@@ -191,7 +191,7 @@ describe("StackTest", function () {
    * @tc.name: testLength012
    * @tc.desc: Get the number of elements in the stack instance. For example: stack.length.
    */
-  it("testLength012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testLength012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let stack = new Stack();
     let res = stack.length;
     expect(0).assertEqual(res);
@@ -201,7 +201,7 @@ describe("StackTest", function () {
    * @tc.name: testIsEmpty013
    * @tc.desc: Determine whether the Stack instance is empty. For example: stack.isEmpty().
    */
-  it("testIsEmpty013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testIsEmpty013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let stack = new Stack();
     stack.push(8);
     stack.push("一");

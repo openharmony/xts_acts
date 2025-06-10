@@ -21,7 +21,7 @@ describe("HashMapTest", function () {
    * @tc.name: testConstructor001
    * @tc.desc: Create an HashMap instance. For example: let hashMap = new HashMap().
    */
-  it("testConstructor001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testConstructor001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     try {
       let hashMap = new HashMap();
       expect(hashMap != undefined).assertEqual(true);
@@ -36,7 +36,7 @@ describe("HashMapTest", function () {
    * @tc.name: testSet002
    * @tc.desc: Add a pair of key value pairs to the HashMap. For example: hashMap.set(1, "A").
    */
-  it("testSet002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testSet002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let hashMap = new HashMap();
     hashMap.set(1, "A");
     let res = hashMap.get(1);
@@ -47,7 +47,7 @@ describe("HashMapTest", function () {
    * @tc.name: testSet003
    * @tc.desc: Add a pair of key value pairs to the HashMap. For example: hashMap.set(1, 2).
    */
-  it("testSet003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testSet003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let hashMap = new HashMap();
     hashMap.set(1, 2);
     let res = hashMap.get(1);
@@ -58,7 +58,7 @@ describe("HashMapTest", function () {
    * @tc.name: testSet004
    * @tc.desc: Add a pair of key value pairs to the HashMap. For example: let c = [1, 2, 3]; hashMap.set(1, c).
    */
-  it("testSet004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testSet004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let hashMap = new HashMap();
     let c = [1, 2, 3];
     hashMap.set(1, c);
@@ -71,7 +71,7 @@ describe("HashMapTest", function () {
    * @tc.desc: Add a pair of key value pairs to the HashMap. 
    * For example: let c = {name: "lili", age: "13"}; hashMap.set(1, c).
    */
-  it("testSet005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testSet005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let hashMap = new HashMap();
     let c = {name: "lili", age: "13"};
     hashMap.set(1, c);
@@ -83,7 +83,7 @@ describe("HashMapTest", function () {
    * @tc.name: testSet006
    * @tc.desc: Add a pair of key value pairs to the HashMap. For example: hashMap.set("a", "A").
    */
-  it("testSet006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testSet006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let hashMap = new HashMap();
     hashMap.set("a", "A");
     let res = hashMap.get("a");
@@ -94,7 +94,7 @@ describe("HashMapTest", function () {
    * @tc.name: testSet007
    * @tc.desc: Add a pair of key value pairs to the HashMap. For example: hashMap.set("", "A").
    */
-  it("testSet007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testSet007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let hashMap = new HashMap();
     hashMap.set("", "A");
     let res = hashMap.get("");
@@ -105,7 +105,7 @@ describe("HashMapTest", function () {
    * @tc.name: testSet008
    * @tc.desc: Add a pair of key value pairs to the HashMap. For example: hashMap.set("$", "A").
    */
-  it("testSet008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testSet008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let hashMap = new HashMap();
     hashMap.set("$", "A");
     let res = hashMap.get("$");
@@ -116,7 +116,7 @@ describe("HashMapTest", function () {
    * @tc.name: testSet009
    * @tc.desc: Add a pair of key value pairs to the HashMap. For example: hashMap.set(3.14, "A").
    */
-  it("testSet009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testSet009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let hashMap = new HashMap();
     hashMap.set(3.14, "A");
     let res = hashMap.get(3.14);
@@ -127,7 +127,7 @@ describe("HashMapTest", function () {
    * @tc.name: testSet010
    * @tc.desc: Add a pair of key value pairs to the HashMap. For example: hashMap.set(0.3, "A").
    */
-  it("testSet010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testSet010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let hashMap = new HashMap();
     hashMap.set(0.3, "A");
     let res = hashMap.get(0.3);
@@ -138,7 +138,7 @@ describe("HashMapTest", function () {
    * @tc.name: testSet011
    * @tc.desc: Add a pair of key value pairs to the HashMap. For example: hashMap.set(-1, "A").
    */
-  it("testSet011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testSet011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let hashMap = new HashMap();
     hashMap.set(-1, "A");
     let res = hashMap.get(-1);
@@ -149,7 +149,7 @@ describe("HashMapTest", function () {
    * @tc.name: testSet012
    * @tc.desc: Add a pair of key value pairs to the HashMap. For example: let a = {}; hashMap.set(a, "A").
    */
-  it("testSet012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testSet012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let hashMap = new HashMap();
     let a = {};
     hashMap.set(a, "A");
@@ -161,7 +161,7 @@ describe("HashMapTest", function () {
    * @tc.name: testSet013
    * @tc.desc: Add a pair of key value pairs to the HashMap. For example: hashMap.set(1, null).
    */
-  it("testSet013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testSet013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let hashMap = new HashMap();
     hashMap.set(1, null);
     let res = hashMap.get(1);
@@ -172,7 +172,7 @@ describe("HashMapTest", function () {
    * @tc.name: testSet014
    * @tc.desc: Add a pair of key value pairs to the HashMap. For example: hashMap.set(1, "$").
    */
-  it("testSet014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testSet014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let hashMap = new HashMap();
     hashMap.set(1, "$");
     let res = hashMap.get(1);
@@ -183,7 +183,7 @@ describe("HashMapTest", function () {
    * @tc.name: testSet015
    * @tc.desc: Add a pair of key value pairs to the HashMap. For example: hashMap.set(1, "3.14").
    */
-  it("testSet015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testSet015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let hashMap = new HashMap();
     hashMap.set(1, 3.14);
     let res = hashMap.get(1);
@@ -194,7 +194,7 @@ describe("HashMapTest", function () {
    * @tc.name: testSet016
    * @tc.desc: Add a pair of key value pairs to the HashMap. For example: hashMap.set(1, -1).
    */
-  it("testSet016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testSet016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let hashMap = new HashMap();
     hashMap.set(1, -1);
     let res = hashMap.get(1);
@@ -205,7 +205,7 @@ describe("HashMapTest", function () {
    * @tc.name: testSet017
    * @tc.desc: Add a pair of key value pairs to the HashMap. For example: let a = {}; hashMap.set(1, a).
    */
-  it("testSet017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testSet017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let hashMap = new HashMap();
     let a = {};
     hashMap.set(1, a);
@@ -218,7 +218,7 @@ describe("HashMapTest", function () {
    * @tc.desc: Add a pair of key value pairs to the HashMap. 
    * For example: for (let i = 0; i < 100; i++) {hashMap.set(1, i);}.
    */
-  it("testSet018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testSet018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let hashMap = new HashMap();
     for (let i = 0; i < 100; i++) {
       hashMap.set(1, i);
@@ -233,7 +233,7 @@ describe("HashMapTest", function () {
    * @tc.name: testSet019
    * @tc.desc: Add a pair of key value pairs to the HashMap.
    */
-  it("testSet019", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testSet019", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let hashMap = new HashMap();
     for (let i = 0; i < 100; i++) {
       hashMap.set(i, 1);
@@ -248,7 +248,7 @@ describe("HashMapTest", function () {
    * @tc.name: testLength020
    * @tc.desc: Get the number of key value pairs in the HashMap instance. For example: hashMap.length.
    */
-  it("testLength020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+  it("testLength020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let hashMap = new HashMap();
     hashMap.set(1, "A");
     hashMap.set(2, "B");

@@ -66,9 +66,9 @@ export default function builtinsStatementReturnTest() {
      * @tc.desc test Inside the body of a function or method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 0
      */
-    it('builtinsStatementReturnTest_0100', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
+    it('builtinsStatementReturnTest_0100', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL0,
       async (Done: Function) => {
         const result = addNumbers(5, 10);
         expect(15).assertEqual(result);

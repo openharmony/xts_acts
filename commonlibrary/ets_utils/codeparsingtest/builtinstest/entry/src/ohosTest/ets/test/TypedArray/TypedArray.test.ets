@@ -41,9 +41,9 @@ export default function TypedArrayTest() {
      * @tc.desc       : Test the function of the interface TypedArray.from().
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testTypedArrayFrom0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testTypedArrayFrom0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testTypedArrayFrom0001";
       try {
         let s = new Set([1, 2, 3]);
@@ -61,9 +61,9 @@ export default function TypedArrayTest() {
      * @tc.desc       : Test the function of the interface TypedArray.from().
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testTypedArrayFrom0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testTypedArrayFrom0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testTypedArrayFrom0002";
       try {
         let s = new Set([1, 2, 3]);
@@ -81,9 +81,9 @@ export default function TypedArrayTest() {
      * @tc.desc       : Test the function of the interface TypedArray.from().
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testTypedArrayFrom0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testTypedArrayFrom0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testTypedArrayFrom0003";
       try {
         let s = new Set([1, 2, 3]);
@@ -101,9 +101,9 @@ export default function TypedArrayTest() {
      * @tc.desc       : Test the function of the interface TypedArray.from().
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testTypedArrayFrom0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testTypedArrayFrom0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testTypedArrayFrom0004";
       try {
         let s = new Set([1, 2, 3]);
@@ -121,9 +121,9 @@ export default function TypedArrayTest() {
      * @tc.desc       : Test the function of the interface TypedArray.from().
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testTypedArrayFrom0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testTypedArrayFrom0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testTypedArrayFrom0005";
       try {
         let s = new Set([1, 2, 3]);
@@ -141,9 +141,9 @@ export default function TypedArrayTest() {
      * @tc.desc       : Test the function of the interface TypedArray.from().
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testTypedArrayFrom0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testTypedArrayFrom0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testTypedArrayFrom0006";
       try {
         let s = new Set([1, 2, 3]);
@@ -161,9 +161,9 @@ export default function TypedArrayTest() {
      * @tc.desc       : Test the function of the interface TypedArray.from().
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testTypedArrayFrom0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testTypedArrayFrom0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testTypedArrayFrom0007";
       try {
         let s = new Set([1, 2, 3]);
@@ -181,9 +181,9 @@ export default function TypedArrayTest() {
      * @tc.desc       : Test the function of the interface TypedArray.from().
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testTypedArrayFrom0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testTypedArrayFrom0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testTypedArrayFrom0008";
       try {
         let s = new Set([1, 2, 3]);
@@ -201,9 +201,9 @@ export default function TypedArrayTest() {
      * @tc.desc       : Test the function of the interface TypedArray.from().
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testTypedArrayFrom0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testTypedArrayFrom0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testTypedArrayFrom0009";
       try {
         let s = new Set([1, 2, 3]);
@@ -221,9 +221,9 @@ export default function TypedArrayTest() {
      * @tc.desc       : Test the function of the interface TypedArray.from().
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testTypedArrayFrom0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testTypedArrayFrom0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testTypedArrayFrom0010";
       try {
         let s = new Set([1n, 2n, 3n]);
@@ -242,9 +242,9 @@ export default function TypedArrayTest() {
      * @tc.desc       : Test the function of the interface TypedArray.from().
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testTypedArrayFrom0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testTypedArrayFrom0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testTypedArrayFrom0011";
       try {
         let s = new Set([1n, 2n, 3n]);
@@ -263,9 +263,9 @@ export default function TypedArrayTest() {
      * @tc.desc       : Test the function of the interface TypedArray.of().
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testTypedArrayOf0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testTypedArrayOf0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testTypedArrayOf0001";
       try {
         let value = Uint8Array.of(1, 2, 3);
@@ -282,9 +282,9 @@ export default function TypedArrayTest() {
      * @tc.desc       : Test the function of the interface TypedArray.of().
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testTypedArrayOf0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testTypedArrayOf0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testTypedArrayOf0002";
       try {
         let value = Int8Array.of(1, 2, 3);
@@ -301,9 +301,9 @@ export default function TypedArrayTest() {
      * @tc.desc       : Test the function of the interface TypedArray.of().
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testTypedArrayOf0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testTypedArrayOf0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testTypedArrayOf0003";
       try {
         let value = Uint8ClampedArray.of(1, 2, 3);

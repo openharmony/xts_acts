@@ -48,9 +48,9 @@ export default function builtinsArrayAtTest() {
      * @tc.desc test Array
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('buildinsArrayAtTest1001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('buildinsArrayAtTest1001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (Done: Function) => {
       let array = [1, 2, 3, 4, 5]
       expect(at(array, 0)).assertEqual(1)
       Done()
@@ -62,9 +62,9 @@ export default function builtinsArrayAtTest() {
      * @tc.desc test Array
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('buildinsArrayAtTest1002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('buildinsArrayAtTest1002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (Done: Function) => {
       let array = [1, 2, 3, 4, 5]
       expect(at(array, 2)).assertEqual(3)
       Done()
@@ -76,9 +76,9 @@ export default function builtinsArrayAtTest() {
      * @tc.desc test Array
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('buildinsArrayAtTest1003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('buildinsArrayAtTest1003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (Done: Function) => {
       let array = [1, 2, 3, 4, 5]
       expect(at(array, -1)).assertEqual(5)
       Done()
@@ -91,7 +91,7 @@ export default function builtinsArrayAtTest() {
      * @tc.desc test Array
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('buildinsArrayAtTest1004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let array = [1, 2, 3, 4, 5]
@@ -105,7 +105,7 @@ export default function builtinsArrayAtTest() {
      * @tc.desc test Array
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('buildinsArrayAtTest1005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let array = [1, 2, 3, 4, 5]
@@ -120,7 +120,7 @@ export default function builtinsArrayAtTest() {
      * @tc.desc test Array
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('buildinsArrayAtTest1006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let array = [1, 2, 3, 4, 5]
@@ -134,7 +134,7 @@ export default function builtinsArrayAtTest() {
      * @tc.desc test Array
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('buildinsArrayAtTest1007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let array = [1, 2, 3, 4, 5]
@@ -148,7 +148,7 @@ export default function builtinsArrayAtTest() {
      * @tc.desc test Array
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('buildinsArrayAtTest1008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let array = [1, 2, 3, 4, 5]
@@ -162,7 +162,7 @@ export default function builtinsArrayAtTest() {
      * @tc.desc test Array
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('buildinsArrayAtTest1009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let array = []
@@ -176,7 +176,7 @@ export default function builtinsArrayAtTest() {
      * @tc.desc test Array
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('buildinsArrayAtTest1010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let array = []
@@ -190,7 +190,7 @@ export default function builtinsArrayAtTest() {
      * @tc.desc test Array
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('buildinsArrayAtTest1011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let array = [1, 2, 3, 4, 5]
@@ -204,7 +204,7 @@ export default function builtinsArrayAtTest() {
      * @tc.desc test Array
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('buildinsArrayAtTest1012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let array = [1, 2, 3, 4, 5]
@@ -218,7 +218,7 @@ export default function builtinsArrayAtTest() {
      * @tc.desc test Array
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('buildinsArrayAtTest1013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let array = [1, 2, 3, 4, 5]
@@ -232,7 +232,7 @@ export default function builtinsArrayAtTest() {
      * @tc.desc test Array
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('buildinsArrayAtTest1014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let array = [1, 2, 3, 4, 5]
@@ -246,7 +246,7 @@ export default function builtinsArrayAtTest() {
      * @tc.desc test Array
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('buildinsArrayAtTest1015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       try {
@@ -263,7 +263,7 @@ export default function builtinsArrayAtTest() {
      * @tc.desc test Array
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('buildinsArrayAtTest1016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let array = undefined
@@ -281,7 +281,7 @@ export default function builtinsArrayAtTest() {
      * @tc.desc test Array
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('buildinsArrayAtTest1017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let array = []
@@ -299,7 +299,7 @@ export default function builtinsArrayAtTest() {
      * @tc.desc test Array
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('buildinsArrayAtTest1018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let array = []
@@ -314,7 +314,7 @@ export default function builtinsArrayAtTest() {
      * @tc.desc test Array
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('buildinsArrayAtTest1019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let array = []

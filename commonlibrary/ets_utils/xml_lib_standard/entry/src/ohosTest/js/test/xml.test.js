@@ -24,9 +24,9 @@ describe('XmlSerializerXmlPullParserTest', function () {
      * @tc.desc: Writes xml declaration with encoding. For example: <?xml version="1.0" encoding="utf-8"?>.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 1
+     * @tc.level: Level 0
      */
-    it('testSetDeclaration001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+    it('testSetDeclaration001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         var arrayBuffer = new ArrayBuffer(2048);
         var thatSer = new xml.XmlSerializer(arrayBuffer,"utf-8");
         thatSer.setDeclaration();
@@ -45,9 +45,9 @@ describe('XmlSerializerXmlPullParserTest', function () {
      * @tc.desc: Writes xml declaration with encoding. For example: <?xml version="1.0" encoding="utf-8"?>.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 1
+     * @tc.level: Level 0
      */
-    it('testSetDeclaration002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+    it('testSetDeclaration002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         var arrayBuffer = new ArrayBuffer(2048);
         var thatSer = new xml.XmlSerializer(arrayBuffer,"utf-8");
         thatSer.setDeclaration();
@@ -66,9 +66,9 @@ describe('XmlSerializerXmlPullParserTest', function () {
      * @tc.desc: Writes xml declaration with encoding. For example: <?xml version="1.0" encoding="utf-8"?>.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 1
+     * @tc.level: Level 0
      */
-    it('testSetDeclaration003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+    it('testSetDeclaration003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         var arrayBuffer = new ArrayBuffer(2048);
         var thatSer = new xml.XmlSerializer(arrayBuffer,"utf-8");
         thatSer.setDeclaration();
@@ -87,9 +87,9 @@ describe('XmlSerializerXmlPullParserTest', function () {
      * @tc.desc: Writes xml declaration with encoding. For example: <?xml version="1.0" encoding="utf-8"?>.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 1
+     * @tc.level: Level 0
      */
-    it('testSetDeclaration004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+    it('testSetDeclaration004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         var arrayBuffer = new ArrayBuffer(2048);
         var thatSer = new xml.XmlSerializer(arrayBuffer);
         thatSer.setDeclaration();
@@ -108,9 +108,9 @@ describe('XmlSerializerXmlPullParserTest', function () {
      * @tc.desc: Writes xml declaration with encoding. For example: <?xml version="1.0" encoding="utf-8"?>.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 1
+     * @tc.level: Level 0
      */
-    it('testSetDeclaration005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+    it('testSetDeclaration005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         var arrayBuffer = new ArrayBuffer(2048);
         var thatSer = new xml.XmlSerializer(arrayBuffer);
         thatSer.setDeclaration();
@@ -129,9 +129,9 @@ describe('XmlSerializerXmlPullParserTest', function () {
      * @tc.desc: Writes an elemnet start tag with the given name.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 1
+     * @tc.level: Level 0
      */
-    it('testStartElement001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+    it('testStartElement001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         const myMAX = 2048;
         var arrayBuffer = new ArrayBuffer(myMAX);
         var thatSer = new xml.XmlSerializer(arrayBuffer);
@@ -152,9 +152,9 @@ describe('XmlSerializerXmlPullParserTest', function () {
      * @tc.desc: Writes an elemnet start tag with the given name.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 1
+     * @tc.level: Level 0
      */
-    it('testStartElement002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+    it('testStartElement002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         const myMAX = 2048;
         var arrayBuffer = new ArrayBuffer(myMAX);
         var thatSer = new xml.XmlSerializer(arrayBuffer);
@@ -177,9 +177,9 @@ describe('XmlSerializerXmlPullParserTest', function () {
      * @tc.desc: Writes an elemnet start tag with the given name.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 1
+     * @tc.level: Level 0
      */
-    it('testStartElement003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+    it('testStartElement003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         const myMAX = 2048;
         var arrayBuffer = new ArrayBuffer(myMAX);
         var thatSer = new xml.XmlSerializer(arrayBuffer);
@@ -202,9 +202,9 @@ describe('XmlSerializerXmlPullParserTest', function () {
      * @tc.desc: Writes an elemnet start tag with the given name.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 1
+     * @tc.level: Level 0
      */
-    it('testStartElement004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+    it('testStartElement004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         const myMAX = 2048;
         var arrayBuffer = new ArrayBuffer(myMAX);
         var thatSer = new xml.XmlSerializer(arrayBuffer);
@@ -229,9 +229,9 @@ describe('XmlSerializerXmlPullParserTest', function () {
      * @tc.desc: Writes an elemnet start tag with the given name.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 1
+     * @tc.level: Level 0
      */
-    it('testStartElement005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+    it('testStartElement005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         const myMAX = 2048;
         var arrayBuffer = new ArrayBuffer(myMAX);
         var thatSer = new xml.XmlSerializer(arrayBuffer);
@@ -256,9 +256,9 @@ describe('XmlSerializerXmlPullParserTest', function () {
      * @tc.desc: Write an attribute.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 1
+     * @tc.level: Level 0
      */
-    it('testSetAttributes001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+    it('testSetAttributes001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         const myMAX = 2048;
         var arrayBuffer = new ArrayBuffer(myMAX);
         var thatSer = new xml.XmlSerializer(arrayBuffer);
@@ -280,9 +280,9 @@ describe('XmlSerializerXmlPullParserTest', function () {
      * @tc.desc: Write an attribute.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 1
+     * @tc.level: Level 0
      */
-    it('testSetAttributes002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+    it('testSetAttributes002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         const myMAX = 2048;
         var arrayBuffer = new ArrayBuffer(myMAX);
         var thatSer = new xml.XmlSerializer(arrayBuffer);
@@ -305,9 +305,9 @@ describe('XmlSerializerXmlPullParserTest', function () {
      * @tc.desc: Write an attribute.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 1
+     * @tc.level: Level 0
      */
-    it('testSetAttributes003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+    it('testSetAttributes003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         const myMAX = 2048;
         var arrayBuffer = new ArrayBuffer(myMAX);
         var thatSer = new xml.XmlSerializer(arrayBuffer);
@@ -331,9 +331,9 @@ describe('XmlSerializerXmlPullParserTest', function () {
      * @tc.desc: Write an attribute.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 1
+     * @tc.level: Level 0
      */
-    it('testSetAttributes004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+    it('testSetAttributes004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         const myMAX = 2048;
         var arrayBuffer = new ArrayBuffer(myMAX);
         var thatSer = new xml.XmlSerializer(arrayBuffer);
@@ -358,9 +358,9 @@ describe('XmlSerializerXmlPullParserTest', function () {
      * @tc.desc: Write an attribute.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 1
+     * @tc.level: Level 0
      */
-    it('testSetAttributes005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+    it('testSetAttributes005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         const myMAX = 2048;
         var arrayBuffer = new ArrayBuffer(myMAX);
         var thatSer = new xml.XmlSerializer(arrayBuffer);
@@ -385,9 +385,9 @@ describe('XmlSerializerXmlPullParserTest', function () {
      * @tc.desc: Writes end tag of the element.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 1
+     * @tc.level: Level 0
      */
-    it('testEndElement001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+    it('testEndElement001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         const myMAX = 2048;
         var arrayBuffer = new ArrayBuffer(myMAX);
         var thatSer = new xml.XmlSerializer(arrayBuffer);
@@ -408,9 +408,9 @@ describe('XmlSerializerXmlPullParserTest', function () {
      * @tc.desc: Writes end tag of the element.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 1
+     * @tc.level: Level 0
      */
-    it('testEndElement002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+    it('testEndElement002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         const myMAX = 2048;
         var arrayBuffer = new ArrayBuffer(myMAX);
         var thatSer = new xml.XmlSerializer(arrayBuffer);
@@ -432,9 +432,9 @@ describe('XmlSerializerXmlPullParserTest', function () {
      * @tc.desc: Writes end tag of the element.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 1
+     * @tc.level: Level 0
      */
-    it('testEndElement003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+    it('testEndElement003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         const myMAX = 2048;
         var arrayBuffer = new ArrayBuffer(myMAX);
         var thatSer = new xml.XmlSerializer(arrayBuffer);
@@ -456,9 +456,9 @@ describe('XmlSerializerXmlPullParserTest', function () {
      * @tc.desc: Writes end tag of the element.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 1
+     * @tc.level: Level 0
      */
-    it('testEndElement004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+    it('testEndElement004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         const myMAX = 2048;
         var arrayBuffer = new ArrayBuffer(myMAX);
         var thatSer = new xml.XmlSerializer(arrayBuffer);
@@ -481,9 +481,9 @@ describe('XmlSerializerXmlPullParserTest', function () {
      * @tc.desc: Writes end tag of the element.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 1
+     * @tc.level: Level 0
      */
-    it('testEndElement005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+    it('testEndElement005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         const myMAX = 2048;
         var arrayBuffer = new ArrayBuffer(myMAX);
         var thatSer = new xml.XmlSerializer(arrayBuffer);
@@ -505,9 +505,9 @@ describe('XmlSerializerXmlPullParserTest', function () {
      * @tc.desc: Writes the text.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 1
+     * @tc.level: Level 0
      */
-    it('testSetText001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+    it('testSetText001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         const myMAX = 2048;
         var arrayBuffer = new ArrayBuffer(myMAX);
         var thatSer = new xml.XmlSerializer(arrayBuffer);
@@ -530,9 +530,9 @@ describe('XmlSerializerXmlPullParserTest', function () {
      * @tc.desc: Writes the text.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 1
+     * @tc.level: Level 0
      */
-    it('testSetText002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+    it('testSetText002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         const myMAX = 2048;
         var arrayBuffer = new ArrayBuffer(myMAX);
         var thatSer = new xml.XmlSerializer(arrayBuffer);
@@ -555,9 +555,9 @@ describe('XmlSerializerXmlPullParserTest', function () {
      * @tc.desc: Writes the text.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 1
+     * @tc.level: Level 0
      */
-    it('testSetText003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+    it('testSetText003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         const myMAX = 2048;
         var arrayBuffer = new ArrayBuffer(myMAX);
         var thatSer = new xml.XmlSerializer(arrayBuffer);
@@ -3090,5 +3090,167 @@ describe('XmlSerializerXmlPullParserTest', function () {
             result += String.fromCodePoint(uint8[i]);
         }
         expect(result).assertEqual(xmlStr);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_12400
+     * @tc.name: testParseXml014
+     * @tc.desc: Starts parsing the XML file.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testParseXml014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        let strXml =
+            '<?xml version="1.0" encoding="UTF-8"?>' +
+            '<note importance="high" logged="true">' +
+            '<company><![CDATA[SYSTEM</company>' +
+            '<todo>work</todo>' +
+            '</note>';
+        let textEncoder = new util.TextEncoder();
+        let uint8 = textEncoder.encodeInto(strXml);
+        let pullParse = new xml.XmlPullParser(uint8.buffer);
+        let result = '';
+        function func(name, value) {
+            result += name + value;
+            return true;
+        }
+        let options = {supportDoctype:true, ignoreNameSpace:true, tagValueCallbackFunction:func}
+        try {    
+            pullParse.parseXml(options);
+            expect().assertFail();
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: Cannot find the ']]>' in xml string.");
+            expect(e.code).assertEqual(401);
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_12500
+     * @tc.name: testParseXml015
+     * @tc.desc: Starts parsing the XML file.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testParseXml015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        let strXml =
+            '<?xml version="1.0" encoding="UTF-8"?>' +
+            '<note importance="high" logged="true">' +
+            '<company><![CDATA[';
+        let textEncoder = new util.TextEncoder();
+        let uint8 = textEncoder.encodeInto(strXml);
+        let pullParse = new xml.XmlPullParser(uint8.buffer);
+        let result = '';
+        function func(name, value) {
+            result += name + value;
+            return true;
+        }
+        let options = {supportDoctype:true, ignoreNameSpace:true, tagValueCallbackFunction:func}
+        try {    
+            pullParse.parseXml(options);
+            expect().assertFail();
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: Cannot find the ']]>' in xml string.");
+            expect(e.code).assertEqual(401);
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_12600
+     * @tc.name: testParseXml016
+     * @tc.desc: Starts parsing the XML file.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testParseXml016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        let strXml =
+            '<?xml version="1.0" encoding="utf-8"?>' +
+            '<note importance="high" logged="true">' +
+            '<title>Happy</title>' +
+            '<?go there' +
+            '</note>';
+        let textEncoder = new util.TextEncoder();
+        let uint8 = textEncoder.encodeInto(strXml);
+        let pullParse = new xml.XmlPullParser(uint8.buffer);
+        let result = '';
+        function func(name, value) {
+            result += name + value;
+            return true;
+        }
+        let options = {supportDoctype:true, ignoreNameSpace:true, tagValueCallbackFunction:func}
+        try {
+            pullParse.parseXml(options);
+            expect().assertFail();
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: Cannot find the '?>' in xml string.");
+            expect(e.code).assertEqual(401);
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_12700
+     * @tc.name: testParseXml017
+     * @tc.desc: Starts parsing the XML file.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testParseXml017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        let strXml =
+            '<?xml version="1.0" encoding="utf-8"?>' +
+            '<note importance="high" logged="true">' +
+            '<title>Happy</title>' +
+            '<?go there';
+        let textEncoder = new util.TextEncoder();
+        let uint8 = textEncoder.encodeInto(strXml);
+        let pullParse = new xml.XmlPullParser(uint8.buffer);
+        let result = '';
+        function func(name, value) {
+            result += name + value;
+            return true;
+        }
+        let options = {supportDoctype:true, ignoreNameSpace:true, tagValueCallbackFunction:func}
+        try {
+            pullParse.parseXml(options);
+            expect().assertFail();
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: Cannot find the '?>' in xml string.");
+            expect(e.code).assertEqual(401);
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_12800
+     * @tc.name: testParseXml018
+     * @tc.desc: Starts parsing the XML file.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testParseXml018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        let strXml =
+            '<?xml version="1.0" encoding="utf-8"?>' +
+            '<note importance="high" logged="true">' +
+            '<title>Happy</title>' +
+            '<!--comment' +
+            '</note>';
+        let textEncoder = new util.TextEncoder();
+        let uint8 = textEncoder.encodeInto(strXml);
+        let pullParse = new xml.XmlPullParser(uint8.buffer);
+        let result = '';
+        function func(name, value) {
+            result += name + value;
+            return true;
+        }
+        let options = {supportDoctype:true, ignoreNameSpace:true, tagValueCallbackFunction:func}
+        try {
+            pullParse.parseXml(options);
+            expect().assertFail();
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: Cannot find the '--' in xml string.");
+            expect(e.code).assertEqual(401);
+        }
     })
 })}

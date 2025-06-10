@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import PlainArray from "@ohos.util.PlainArray";
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium'
 export default function PlainArrayTest() {
 describe("PlainArrayTest", function () {
               
@@ -21,7 +21,7 @@ describe("PlainArrayTest", function () {
    * @tc.name: testConstructor001
    * @tc.desc: Create an PlainArray instance. For example: let plainArray = new PlainArray().
    */
-  it("testConstructor001", 0, function () {
+  it("testConstructor001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     try {
       let plainArray = new PlainArray();
     } catch (err) {
@@ -35,7 +35,7 @@ describe("PlainArrayTest", function () {
    * @tc.name: testAdd002
    * @tc.desc: Add a pair of key value pairs to the PlainArray. For example: plainArray.add(1, "A").
    */
-  it("testAdd002", 0, function () {
+  it("testAdd002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let plainArray = new PlainArray();
     plainArray.add(1, "A");
     let res = plainArray.get(1);
@@ -46,7 +46,7 @@ describe("PlainArrayTest", function () {
    * @tc.name: testAdd003
    * @tc.desc: Add a pair of key value pairs to the PlainArray.
    */
-  it("testAdd003", 0, function () {
+  it("testAdd003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let plainArray = new PlainArray();
     let a = [1, 2, 3, 4];
     plainArray.add(2, a);
@@ -58,7 +58,7 @@ describe("PlainArrayTest", function () {
    * @tc.name: testAdd004
    * @tc.desc: Add a pair of key value pairs to the PlainArray.
    */
-  it("testAdd004", 0, function () {
+  it("testAdd004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let plainArray = new PlainArray();
     let c = {name: "lili", age: "13"};
     plainArray.add(1, c);
@@ -70,7 +70,7 @@ describe("PlainArrayTest", function () {
    * @tc.name: testAdd005
    * @tc.desc: Add a pair of key value pairs to the PlainArray.
    */
-  it("testAdd005", 0, function () {
+  it("testAdd005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let plainArray = new PlainArray();
     let c = false;
     plainArray.add(1, c);
@@ -82,7 +82,7 @@ describe("PlainArrayTest", function () {
    * @tc.name: testAdd006
    * @tc.desc: Add a pair of key value pairs to the PlainArray.
    */
-  it("testAdd006", 0, function () {
+  it("testAdd006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let plainArray = new PlainArray();
     plainArray.add(1, 3);
     let res = plainArray.get(1);
@@ -93,7 +93,7 @@ describe("PlainArrayTest", function () {
    * @tc.name: testGet007
    * @tc.desc: Get the corresponding value through the key. For example: plainArray.get(4).
    */
-  it("testGet007", 0, function () {
+  it("testGet007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let plainArray = new PlainArray();
     plainArray.add(1, "A");
     plainArray.add(2, "B");
@@ -110,7 +110,7 @@ describe("PlainArrayTest", function () {
    * @tc.name: testLength008
    * @tc.desc: Get the number of key value pairs in the PlainArray instance. For example: plainArray.length.
    */
-  it("testLength008", 0, function () {
+  it("testLength008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let plainArray = new PlainArray();
     let res = plainArray.length;
     expect(res).assertEqual(0);
@@ -127,7 +127,7 @@ describe("PlainArrayTest", function () {
    * @tc.name: testClone009
    * @tc.desc: Clone an PlainArray instance. For example: plainArray.clone().
    */
-  it("testClone009", 0, function () {
+  it("testClone009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let plainArray = new PlainArray();
     let clonePlainarray = plainArray.clone();
     let cloneLength = clonePlainarray.length;
@@ -152,7 +152,7 @@ describe("PlainArrayTest", function () {
    * @tc.name: testClear010
    * @tc.desc: Clear all key value pairs in PlainArray. For example: plainArray.clear().
    */
-  it("testClear010", 0, function () {
+  it("testClear010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let plainArray = new PlainArray();
     plainArray.add(1, "A");
     plainArray.add(2, "B");
@@ -173,7 +173,7 @@ describe("PlainArrayTest", function () {
    * @tc.name: testHas011
    * @tc.desc: Check whether the PlainArray contains a specified element. For example: plainArray.has(6).
    */
-  it("testHas011", 0, function () {
+  it("testHas011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let plainArray = new PlainArray();
     plainArray.add(1, "A");
     plainArray.add(2, "B");
@@ -191,7 +191,7 @@ describe("PlainArrayTest", function () {
    * @tc.desc: Find the index of the key value pair according to the corresponding key. 
    * If no key is specified, return -1.
    */
-  it("testGetIndexOfKey012", 0, function () {
+  it("testGetIndexOfKey012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let plainArray = new PlainArray();
     plainArray.add(1, "A");
     plainArray.add(2, "B");
@@ -209,7 +209,7 @@ describe("PlainArrayTest", function () {
    * @tc.desc: Find the index of the key value pair according to the corresponding value. 
    * If no key is specified, return -1.
    */
-  it("testGetIndexOfValue013", 0, function () {
+  it("testGetIndexOfValue013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let plainArray = new PlainArray();
     plainArray.add(1, "A");
     plainArray.add(2, "B");
@@ -226,7 +226,7 @@ describe("PlainArrayTest", function () {
    * @tc.name: testIsEmpty014
    * @tc.desc: Determine whether the PlainArray instance is empty. For example: plainArray.isEmpty().
    */
-  it("testIsEmpty014", 0, function () {
+  it("testIsEmpty014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let plainArray = new PlainArray();
     let result = plainArray.length;
     expect(result).assertEqual(0);
@@ -244,7 +244,7 @@ describe("PlainArrayTest", function () {
    * @tc.desc: Find the key of the key value pair according to the corresponding index. 
    * For example: plainArray.getKeyAt(2).
    */
-  it("testGetKeyAt015", 0, function () {
+  it("testGetKeyAt015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let plainArray = new PlainArray();
     plainArray.add(1, "A");
     plainArray.add(2, "B");
@@ -259,7 +259,7 @@ describe("PlainArrayTest", function () {
    * @tc.name: testReMove016
    * @tc.desc: Delete key value pairs according to key. For example: plainArray.remove(2).
    */
-  it("testReMove016", 0, function () {
+  it("testReMove016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let plainArray = new PlainArray();
     plainArray.add(1, "A");
     plainArray.add(2, "B");
@@ -278,7 +278,7 @@ describe("PlainArrayTest", function () {
    * @tc.name: testReMoveAt017
    * @tc.desc: Delete key value pairs according to index. For example: plainArray.removeAt(2).
    */
-  it("testReMoveAt017", 0, function () {
+  it("testReMoveAt017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let plainArray = new PlainArray();
     plainArray.add(1, "A");
     plainArray.add(2, "B");
@@ -296,7 +296,7 @@ describe("PlainArrayTest", function () {
    * @tc.desc: Deletes the specified number of elements from the specified starting index. 
    * For example: plainArray.removeRangeFrom(2, 2).
    */
-  it("testReMoveRangeFrom018", 0, function () {
+  it("testReMoveRangeFrom018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
     let plainArray = new PlainArray();
     plainArray.add(1, "A");
     plainArray.add(2, "B");
@@ -332,7 +332,7 @@ describe("PlainArrayTest", function () {
    * @tc.desc: Modify the value of the key value pair according to the corresponding index. 
    * For example: plainArray.setValueAt(2, "V").
    */
-  it("testSetValueAt019", 0, function () {
+  it("testSetValueAt019", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let plainArray = new PlainArray();
     plainArray.add(1, "A");
     plainArray.add(2, "B");
@@ -360,7 +360,7 @@ describe("PlainArrayTest", function () {
    * @tc.desc: Use "," to splice the elements in the LightWeightMap instance into a string. 
    * For example: plainArray.toString().
    */
-  it("testToString020", 0, function () {
+  it("testToString020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let plainArray = new PlainArray();
     let res1 = plainArray.toString();
     expect(res1).assertEqual("");
@@ -375,7 +375,7 @@ describe("PlainArrayTest", function () {
    * @tc.name: testForEach021
    * @tc.desc: Traverse all key value pairs in the PlainArray instance.
    */
-  it("testForEach021", 0, function () {
+  it("testForEach021", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let plainArray = new PlainArray();
     plainArray.add(1, "A");
     plainArray.add(2, "B");
@@ -396,7 +396,7 @@ describe("PlainArrayTest", function () {
    * @tc.name: testIterator022
    * @tc.desc: Iterate over all key value pairs in the PlainArray. 
    */
-  it("testIterator022", 0, function () {
+  it("testIterator022", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let plainArray = new PlainArray();
     plainArray.add(1, "A");
     plainArray.add(2, "B");
@@ -415,7 +415,7 @@ describe("PlainArrayTest", function () {
    * @tc.desc: Get the value of the key value pair according to the corresponding index. 
    * For example: plainArray.getValueAt(2).
    */
-  it("testGetValueAt023", 0, function () {
+  it("testGetValueAt023", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let plainArray = new PlainArray();
     plainArray.add(1, "A");
     plainArray.add(2, "B");
@@ -430,7 +430,7 @@ describe("PlainArrayTest", function () {
    * @tc.name: testAdd024
    * @tc.desc: Add a pair of key value pairs to the PlainArray.For example: plainArray.add(1, 3.1).
    */
-  it("testAdd024", 0, function () {
+  it("testAdd024", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let plainArray = new PlainArray();
     plainArray.add(1, 3.1);
     let res = plainArray.get(1);
@@ -441,7 +441,7 @@ describe("PlainArrayTest", function () {
    * @tc.name: testAdd025
    * @tc.desc: Add a pair of key value pairs to the PlainArray.For example: plainArray.add(1, null).
    */
-  it("testAdd025", 0, function () {
+  it("testAdd025", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let plainArray = new PlainArray();
     plainArray.add(1, null);
     let res = plainArray.get(1);
@@ -452,7 +452,7 @@ describe("PlainArrayTest", function () {
    * @tc.name: testAdd026
    * @tc.desc: Add a pair of key value pairs to the PlainArray.For example: plainArray.add("a", null).
    */
-  it("testAdd026", 0, function () {
+  it("testAdd026", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let plainArray = new PlainArray();
     try {
       let res = plainArray.add("a", null);
@@ -468,7 +468,7 @@ describe("PlainArrayTest", function () {
    * @tc.name: testGet027
    * @tc.desc: Get the corresponding value through the key. For example: plainArray.get(8).
    */
-  it("testGet027", 0, function () {
+  it("testGet027", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let plainArray = new PlainArray();
     plainArray.add(1, "A");
     plainArray.add(2, "B");
@@ -484,7 +484,7 @@ describe("PlainArrayTest", function () {
    * @tc.desc: Find the index of the key value pair according to the corresponding key. 
    * If no key is specified, return -1.
    */
-  it("testGetIndexOfKey028", 0, function () {
+  it("testGetIndexOfKey028", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let plainArray = new PlainArray();
     plainArray.add(1, "A");
     plainArray.add(2, "B");
@@ -500,7 +500,7 @@ describe("PlainArrayTest", function () {
    * @tc.desc: Find the index of the key value pair according to the corresponding value. 
    * If no key is specified, return -1.
    */
-  it("testGetIndexOfValue029", 0, function () {
+  it("testGetIndexOfValue029", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let plainArray = new PlainArray();
     plainArray.add(1, "A");
     plainArray.add(2, "B");
@@ -516,7 +516,7 @@ describe("PlainArrayTest", function () {
    * @tc.desc: Find the key of the key value pair according to the corresponding index. 
    * For example: plainArray.getKeyAt(50).
    */
-  it("testGetKeyAt030", 0, function () {
+  it("testGetKeyAt030", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let plainArray = new PlainArray();
     plainArray.add(1, "A");
     plainArray.add(2, "B");
@@ -532,7 +532,7 @@ describe("PlainArrayTest", function () {
    * @tc.desc: Find the value of the key value pair according to the corresponding index. 
    * For example: plainArray.getValueAt(50).
    */
-  it("testGetValueAt031", 0, function () {
+  it("testGetValueAt031", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let plainArray = new PlainArray();
     plainArray.add(1, "A");
     plainArray.add(2, "B");
@@ -553,7 +553,7 @@ describe("PlainArrayTest", function () {
    * @tc.name: testRemove032
    * @tc.desc: Delete key value pairs according to key. For example: plainArray.remove(2).
    */
-  it("testRemove032", 0, function () {
+  it("testRemove032", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let plainArray = new PlainArray();
     let res = plainArray.remove(2);
     expect(res).assertEqual(undefined);
@@ -563,7 +563,7 @@ describe("PlainArrayTest", function () {
    * @tc.name: testRemoveAt033
    * @tc.desc: Delete key value pairs according to index. For example: plainArray.removeAt("a").
    */
-  it("testRemoveAt033", 0, function () {
+  it("testRemoveAt033", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let plainArray = new PlainArray();
     try {
       let res = plainArray.removeAt("a");
@@ -580,7 +580,7 @@ describe("PlainArrayTest", function () {
    * @tc.desc: Deletes the specified number of elements from the specified starting index. 
    * For example: plainArray.removeRangeFrom(0, 5).
    */
-  it("testReMoveRangeFrom034", 0, function () {
+  it("testReMoveRangeFrom034", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let plainArray = new PlainArray();
     plainArray.add(1, "A");
     plainArray.add(2, "B");
@@ -597,7 +597,7 @@ describe("PlainArrayTest", function () {
    * @tc.desc: Modify the value of the key value pair according to the corresponding index. 
    * For example: plainArray.setValueAt(8, "V").
    */
-  it("testSetValueAt035", 0, function () {
+  it("testSetValueAt035", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let plainArray = new PlainArray();
     plainArray.add(1, "A");
     plainArray.add(2, "B");
@@ -618,7 +618,7 @@ describe("PlainArrayTest", function () {
    * @tc.name: testAdd036
    * @tc.desc: Add a pair of key value pairs to the PlainArray.
    */
-  it("testAdd036", 0, function () {
+  it("testAdd036", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let plainArray = new PlainArray();
     for (let i = 0; i < 100; i++) {
       plainArray.add(i, i + 1);
@@ -633,7 +633,7 @@ describe("PlainArrayTest", function () {
    * @tc.name: testAdd037
    * @tc.desc: Add a pair of key value pairs to the PlainArray.
    */
-  it("testAdd037", 0, function () {
+  it("testAdd037", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let plainArray = new PlainArray();
     for (let i = 0; i < 1000; i++) {
       plainArray.add(i, i + 1);
@@ -648,7 +648,7 @@ describe("PlainArrayTest", function () {
    * @tc.name: testAdd038
    * @tc.desc: Add a pair of key value pairs to the PlainArray.
    */
-  it("testAdd038", 0, function () {
+  it("testAdd038", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let plainArray = new PlainArray();
     plainArray.add(3, "a");
     plainArray.add(1, "b");
@@ -663,7 +663,7 @@ describe("PlainArrayTest", function () {
    * @tc.name: testAdd039
    * @tc.desc: Add a pair of key value pairs to the PlainArray.
    */
-  it("testAdd039", 0, function () {
+  it("testAdd039", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let plainArray = new PlainArray();
     plainArray.add(1, "ABCd");
     plainArray.add(2, "~!@#$^&*()_+-*/=.?<>:;|{}[]");
@@ -683,7 +683,7 @@ describe("PlainArrayTest", function () {
    * @tc.name: testAdd040
    * @tc.desc: Add a pair of key value pairs to the PlainArray.
    */
-  it("testAdd040", 0, function () {
+  it("testAdd040", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let plainArray = new PlainArray();
     plainArray.add(-2, "b");
     try {
@@ -702,7 +702,7 @@ describe("PlainArrayTest", function () {
    * @tc.name: testAdd041
    * @tc.desc: Add a pair of key value pairs to the PlainArray.
    */
-  it("testAdd041", 0, function () {
+  it("testAdd041", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let plainArray = new PlainArray();
     plainArray.add(1, 1);
     plainArray.add(2, "b");
@@ -719,7 +719,7 @@ describe("PlainArrayTest", function () {
    * @tc.name: testIterator042
    * @tc.desc: Iterate over all key value pairs in the PlainArray. 
    */
-  it("testIterator042", 0, function () {
+  it("testIterator042", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let plainArray = new PlainArray();
     plainArray.add(1, "A");
     plainArray.add(2, "B");
@@ -743,7 +743,7 @@ describe("PlainArrayTest", function () {
    * @tc.name: testAdd043
    * @tc.desc: Add a pair of key value pairs to the PlainArray. For example: plainArray.add(1.23, "a").
    */
-  it("testAdd043", 0, function () {
+  it("testAdd043", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let plainArray = new PlainArray();
     plainArray.add(-2, "b");
     try {
@@ -762,7 +762,7 @@ describe("PlainArrayTest", function () {
    * @tc.name: testHas044
    * @tc.desc: Check whether the PlainArray contains a specified element. For example: plainArray.has("a").
    */
-  it("testHas044", 0, function () {
+  it("testHas044", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let plainArray = new PlainArray();
     plainArray.add(1, "A");
     plainArray.add(2, "B");
@@ -783,7 +783,7 @@ describe("PlainArrayTest", function () {
    * @tc.name: testGet045
    * @tc.desc: Get the corresponding value through the key. For example: plainArray.get("a").
    */
-   it("testGet045", 0, function () {
+   it("testGet045", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let plainArray = new PlainArray();
     plainArray.add(1, "A");
     plainArray.add(2, "B");
@@ -805,7 +805,7 @@ describe("PlainArrayTest", function () {
    * @tc.desc: Find the index of the key value pair according to the corresponding key. 
    * If no key is specified, return -1.
    */
-  it("testGetIndexOfKey046", 0, function () {
+  it("testGetIndexOfKey046", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let plainArray = new PlainArray();
     plainArray.add(1, "A");
     plainArray.add(2, "B");
@@ -827,7 +827,7 @@ describe("PlainArrayTest", function () {
    * @tc.desc: Find the key of the key value pair according to the corresponding index. 
    * For example: plainArray.getKeyAt("a").
    */
-  it("testGetKeyAt047", 0, function () {
+  it("testGetKeyAt047", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let plainArray = new PlainArray();
     plainArray.add(1, "A");
     plainArray.add(2, "B");
@@ -848,7 +848,7 @@ describe("PlainArrayTest", function () {
    * @tc.name: testReMoveAt048
    * @tc.desc: Delete key value pairs according to index. For example: plainArray.removeAt(12).
    */
-  it("testReMoveAt048", 0, function () {
+  it("testReMoveAt048", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
     let plainArray = new PlainArray();
     plainArray.add(1, "A");
     plainArray.add(2, "B");

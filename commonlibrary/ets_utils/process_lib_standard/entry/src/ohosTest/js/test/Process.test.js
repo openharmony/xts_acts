@@ -25,7 +25,7 @@ describe('ProcessTest', function () {
      * @tc.name: testGetUid001
      * @tc.desc: returns the digital user id of the process.
      */
-    it('testGetUid001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+    it('testGetUid001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         let result = process.uid
         if (result > 0) {
             var flag = true
@@ -37,7 +37,7 @@ describe('ProcessTest', function () {
      * @tc.name: testGetUid002
      * @tc.desc: returns the digital user id of the process.
      */
-    it('testGetUid002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+    it('testGetUid002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         for (let i = 0; i < 3; i++) {
             let result = process.uid
             if (result != null) {
@@ -53,7 +53,7 @@ describe('ProcessTest', function () {
      * @tc.name: testGetUid003
      * @tc.desc: returns the digital user id of the process.
      */
-    it('testGetUid003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+    it('testGetUid003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         for (let i = 0; i < 6; i++) {
             let result = process.uid
             if (result != null) {
@@ -69,7 +69,7 @@ describe('ProcessTest', function () {
      * @tc.name: testGetUid004
      * @tc.desc: returns the digital user id of the process.
      */
-    it('testGetUid004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+    it('testGetUid004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         for (let i = 0; i < 8; i++) {
             let result = process.uid
             if (result != null) {
@@ -85,7 +85,7 @@ describe('ProcessTest', function () {
      * @tc.name: testGetUid005
      * @tc.desc: returns the digital user id of the process.
      */
-    it('testGetUid005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+    it('testGetUid005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         for (let i = 0; i < 5; i++){
             let result = process.uid
             if (result != null) {
@@ -101,7 +101,7 @@ describe('ProcessTest', function () {
      * @tc.name: testKill001
      * @tc.desc: Return whether the signal was sent successfully.
      */
-    it('testKill001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+    it('testKill001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         let result = process.kill(3, 123)
         expect(result).assertEqual(false)
     })
@@ -110,7 +110,7 @@ describe('ProcessTest', function () {
      * @tc.name: testKill002
      * @tc.desc: Return whether the signal was sent successfully.
      */
-    it('testKill002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+    it('testKill002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         let pres = process.pid
         let result = process.kill(23, pres)
         expect(result).assertEqual(true)
@@ -120,7 +120,7 @@ describe('ProcessTest', function () {
      * @tc.name: testKill003
      * @tc.desc: Return whether the signal was sent successfully.
      */
-    it('testKill003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+    it('testKill003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         let pres = process.pid
         let result = process.kill(28, pres)
         expect(result).assertEqual(true)
@@ -130,7 +130,7 @@ describe('ProcessTest', function () {
      * @tc.name: testKill004
      * @tc.desc: Return whether the signal was sent successfully.
      */
-    it('testKill004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+    it('testKill004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         let pres = process.pid
         let result = process.kill(17, pres)
         expect(result).assertEqual(true)
@@ -140,7 +140,7 @@ describe('ProcessTest', function () {
      * @tc.name: testKill005
      * @tc.desc: Return whether the signal was sent successfully.
      */
-    it('testKill005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+    it('testKill005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         let result = process.kill(3, 113)
         expect(result).assertEqual(false)
     })
@@ -149,7 +149,7 @@ describe('ProcessTest', function () {
      * @tc.name: testKill006
      * @tc.desc: Return whether the signal was sent successfully.
      */
-    it('testKill006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+    it('testKill006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         let pres = process.pid
         let result = process.kill('17', pres)
         expect(result).assertEqual(true)
@@ -159,7 +159,7 @@ describe('ProcessTest', function () {
      * @tc.name: testUptime001
      * @tc.desc: Returns the running time of the system.
      */
-    it('testUptime001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+    it('testUptime001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
         let result1 = process.uptime()
         function sleep(d){
             while(process.uptime() - result1 <= d);
@@ -177,7 +177,7 @@ describe('ProcessTest', function () {
      * @tc.name: testUptime002
      * @tc.desc: Returns the running time of the system.
      */
-    it('testUptime002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function ()  {
+    it('testUptime002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function ()  {
         let result1 = process.uptime()
         await delay(4000);
         let result2 = process.uptime()
@@ -192,7 +192,7 @@ describe('ProcessTest', function () {
      * @tc.name: testUptime003
      * @tc.desc: Returns the running time of the system.
      */
-    it('testUptime003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function ()  {
+    it('testUptime003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function ()  {
         let result1 = process.uptime()
         await delay(2000);
         let result2 = process.uptime()
@@ -207,7 +207,7 @@ describe('ProcessTest', function () {
      * @tc.name: testUptime004
      * @tc.desc: Returns the running time of the system.
      */
-    it('testUptime004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function ()  {
+    it('testUptime004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function ()  {
         let result1 = process.uptime()
         await delay(3000);
         let result2 = process.uptime()

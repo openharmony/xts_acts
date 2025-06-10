@@ -45,9 +45,9 @@ export default function builtinsArrayBufferIsViewTest() {
      * @tc.desc test Array
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 0
      */
-    it('buildinsArrayBufferIsViewTest1001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('buildinsArrayBufferIsViewTest1001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (Done: Function) => {
         console.info('testTag', '%{public}s', 'it begin');
         let data = new Uint8Array(8)
@@ -62,9 +62,9 @@ export default function builtinsArrayBufferIsViewTest() {
      * @tc.desc test Array
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 0
      */
-    it('buildinsArrayBufferIsViewTest1002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('buildinsArrayBufferIsViewTest1002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (Done: Function) => {
         console.info('testTag', '%{public}s', 'it begin');
         let data = new Uint8Array(0)
@@ -80,9 +80,9 @@ export default function builtinsArrayBufferIsViewTest() {
      * @tc.desc test Array
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 0
      */
-    it('buildinsArrayBufferIsViewTest1003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+    it('buildinsArrayBufferIsViewTest1003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (Done: Function) => {
         console.info('testTag', '%{public}s', 'it begin');
         let data = new Uint8Array(new ArrayBuffer(8).slice(0, 4))
