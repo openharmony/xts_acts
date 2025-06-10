@@ -15,7 +15,7 @@
 
 import { taskpool, collections} from '@kit.ArkTS'
 import { BusinessError } from '@ohos.base'
-import { StrCat, A, B, printStrArgs, printArgs, multiplyFunc } from './exportFunclist'
+import { StrCat, A, B, printStrArgs, printArgs, multiplyFunc, getLongString } from './exportFunclist'
 import HashMap from '@ohos.util.HashMap';
 import { errorManager } from '@kit.AbilityKit';
 import { SendableClass, SimpleSendable, SendableClassTest } from './sendable';
@@ -449,4 +449,63 @@ export async function measureTest(): Promise<boolean> {
     fontSize: '150px'
   });
   return textWidth != 0;
+}
+
+@Concurrent
+export function loop(): Error | number {
+  let start: number = Date.now();
+  while (Date.now() - start < 500) {
+  }
+  if (taskpool.Task.isCanceled()) {
+    return 0;
+  }
+  while (Date.now() - start < 1000) {
+  }
+  if (taskpool.Task.isCanceled()) {
+    throw new Error("this is loop error");
+  }
+  return 1;
+}
+
+@Concurrent
+export function returnError(delay:number): Error {
+  let start: number = Date.now();
+  while (Date.now() - start < delay) {}
+  return new Error("this is return error");
+}
+
+@Concurrent
+export function longString(delay:number): string {
+  let start: number = Date.now();
+  while (Date.now() - start < delay) {
+  }
+  return getLongString();
+}
+
+@Concurrent
+export function sendableClassArrFunc(arr: collections.Array<SendableClass>): collections.Array<SendableClass> {
+  let start: number = Date.now();
+  while (Date.now() - start < 500) {
+  }
+  if (taskpool.Task.isCanceled()) {
+    return arr;
+  }
+  while (Date.now() - start < 1000) {
+  }
+  return new collections.Array<SendableClass>();
+}
+
+@Concurrent
+export async function promiseNumber(num: number): Promise<void> {
+  "use concurrent"
+  let t = Date.now();
+  while ((Date.now() - t) < 1000) {
+    continue;
+  }
+  let p = await new Promise<void>((resolve: Function, reject: Function) => {
+    setTimeout(() => {
+      resolve(num);
+    }, 200);
+  })
+  return p;
 }

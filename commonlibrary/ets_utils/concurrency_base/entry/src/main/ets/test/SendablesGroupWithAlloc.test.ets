@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, afterAll, it, expect } from '@ohos/hypium'
+import { describe, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium'
 
 import { testManySendablesToGroup, testSendableToGroupAndUpdate, testSendablesFromOtherTaskWithAlloc } from './SendablesGroupTestWithAlloc'
 import { skipConditional } from './utils'
@@ -32,9 +32,9 @@ export default function SendableGroupWithAllocTest() {
          * @tc.author: oleg-ignatenko
          * @tc.size: MediumTest
          * @tc.type: Function
-         * @tc.level: Level 2
+         * @tc.level: Level 0
          */
-        it('testManySendablesToGroup', 0, async (done: Function) => {
+        it('testManySendablesToGroup', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
            let result = await testManySendablesToGroup();
            expect(result).assertEqual("PASSED");
            done();
@@ -49,7 +49,7 @@ export default function SendableGroupWithAllocTest() {
          * @tc.type: Function
          * @tc.level: Level 2
          */
-        it("testSendableToGroupAndUpdateWithAlloc", 0, async (done: Function) => {
+        it("testSendableToGroupAndUpdateWithAlloc", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
            let result = await skipConditional(
              "testSendableToGroupAndUpdateWithAlloc in progress", true, testSendableToGroupAndUpdate);
            expect(result).assertEqual("PASSED");
@@ -65,7 +65,7 @@ export default function SendableGroupWithAllocTest() {
          * @tc.type: Function
          * @tc.level: Level 2
          */
-        it("testSendablesFromOtherTaskWithAlloc", 0, async (done: Function) => {
+        it("testSendablesFromOtherTaskWithAlloc", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
            let result = await skipConditional(
              "testSendablesFromOtherTaskWithAlloc excluded", true, testSendablesFromOtherTaskWithAlloc);
            expect(result).assertEqual("PASSED");

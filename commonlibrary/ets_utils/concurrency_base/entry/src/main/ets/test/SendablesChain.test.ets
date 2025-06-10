@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, afterAll, it, expect } from '@ohos/hypium'
+import { describe, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium'
 
 import { testChainedPath1, testChainedPath0, testChainedPath0Negative,  testChainedPath2 } from './SendablesChainTest';
 import { skipConditional } from './utils';
@@ -32,9 +32,9 @@ export default function SendableChainTest() {
          * @tc.author: oleg-ignatenko
          * @tc.size: MediumTest
          * @tc.type: Function
-         * @tc.level: Level 2
+         * @tc.level: Level 0
          */
-        it('testChainedPath0', 0, async (done: Function) => {
+        it('testChainedPath0', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
            let result = await skipConditional("testChainedPath0 in progress", true, testChainedPath0);
            expect(result).assertEqual("PASSED");
            done();
@@ -49,7 +49,7 @@ export default function SendableChainTest() {
          * @tc.type: Function
          * @tc.level: Level 2
          */
-        it('testChainedPath1', 0, async (done: Function) => {
+        it('testChainedPath1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
            let result = await testChainedPath1();
            expect(result).assertEqual("PASSED");
            done();
@@ -64,7 +64,7 @@ export default function SendableChainTest() {
          * @tc.type: Function
          * @tc.level: Level 2
          */
-        it('testChainedPath0Negative', 0, async (done: Function) => {
+        it('testChainedPath0Negative', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
            let result = await skipConditional("testChainedPath0Negative in progress", true, testChainedPath0Negative);
            expect(result).assertEqual("PASSED");
            done();
@@ -79,7 +79,7 @@ export default function SendableChainTest() {
          * @tc.type: Function
          * @tc.level: Level 2
          */
-        it('In_Progress_testChainedPath2', 0, async (done: Function) => {
+        it('In_Progress_testChainedPath2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
            let result = await skipConditional("testChainedPath2 in progress", true, testChainedPath2);
            expect(result).assertEqual("PASSED");
            done();

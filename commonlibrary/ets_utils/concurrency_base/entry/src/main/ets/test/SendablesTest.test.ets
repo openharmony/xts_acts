@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, afterAll, it, expect } from '@ohos/hypium'
+import { describe, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium'
 import { testSendableSimpleDate, testSendableSimpleString, testSendableSimpleNumber, testSendableSimpleBoolean,
   testSendableSimpleSharedArrayBuffer, testSendableSimpleSharedArrayBufferAndUndefined,
   testSendableSimpleSharedArrayBufferAndNull, testSendableSimpleCombined0, testSendableSimpleCombined1,
@@ -38,9 +38,9 @@ export default function SendablesTestWithAlloc() {
      * @tc.author: maxim-khramov
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 1
+     * @tc.level: Level 0
      */
-    it('testSendableSimpleDate', 0, async (done: Function) => {
+    it('testSendableSimpleDate', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: Object = await testSendableSimpleDate();
       expect(result).assertEqual("PASSED");
       done();
@@ -53,9 +53,9 @@ export default function SendablesTestWithAlloc() {
      * @tc.author: maxim-khramov
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 1
+     * @tc.level: Level 0
      */
-    it('testSendableSimpleString', 0, async (done: Function) => {
+    it('testSendableSimpleString', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: Object = await testSendableSimpleString();
       expect(result).assertEqual("PASSED");
       done();
@@ -68,9 +68,9 @@ export default function SendablesTestWithAlloc() {
      * @tc.author: maxim-khramov
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 1
+     * @tc.level: Level 0
      */
-    it('testSendableSimpleNumber', 0, async (done: Function) => {
+    it('testSendableSimpleNumber', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: Object = await testSendableSimpleNumber();
       expect(result).assertEqual("PASSED");
       done();
@@ -83,9 +83,9 @@ export default function SendablesTestWithAlloc() {
      * @tc.author: maxim-khramov
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 1
+     * @tc.level: Level 0
      */
-    it('testSendableSimpleBoolean', 0, async (done: Function) => {
+    it('testSendableSimpleBoolean', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: Object = await testSendableSimpleBoolean();
       expect(result).assertEqual("PASSED");
       done();
@@ -98,9 +98,9 @@ export default function SendablesTestWithAlloc() {
      * @tc.author: maxim-khramov
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 1
+     * @tc.level: Level 0
      */
-    it('testSendableSimpleSharedArrayBuffer', 0, async (done: Function) => {
+    it('testSendableSimpleSharedArrayBuffer', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: Object = await testSendableSimpleSharedArrayBuffer();
       expect(result).assertEqual("PASSED");
       done();
@@ -113,9 +113,9 @@ export default function SendablesTestWithAlloc() {
      * @tc.author: maxim-khramov
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 1
+     * @tc.level: Level 0
      */
-    it('testSendableSimpleSharedArrayBufferAndUndefined', 0, async (done: Function) => {
+    it('testSendableSimpleSharedArrayBufferAndUndefined', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: Object = await testSendableSimpleSharedArrayBufferAndUndefined();
       expect(result).assertEqual("PASSED");
       done();
@@ -130,7 +130,7 @@ export default function SendablesTestWithAlloc() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableSimpleSharedArrayBufferAndNull', 0, async (done: Function) => {
+    it('testSendableSimpleSharedArrayBufferAndNull', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: Object = await testSendableSimpleSharedArrayBufferAndNull();
       expect(result).assertEqual("PASSED");
       done();
@@ -145,7 +145,7 @@ export default function SendablesTestWithAlloc() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableSimpleCombined0', 0, async (done: Function) => {
+    it('testSendableSimpleCombined0', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: Object = await testSendableSimpleCombined0();
       expect(result).assertEqual("PASSED");
       done();
@@ -160,7 +160,7 @@ export default function SendablesTestWithAlloc() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableSimpleCombined1', 0, async (done: Function) => {
+    it('testSendableSimpleCombined1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: Object = await testSendableSimpleCombined1();
       expect(result).assertEqual("PASSED");
       done();
@@ -175,7 +175,7 @@ export default function SendablesTestWithAlloc() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableSimpleCombined2', 0, async (done: Function) => {
+    it('testSendableSimpleCombined2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: Object = await testSendableSimpleCombined2();
       expect(result).assertEqual("PASSED");
       done();
@@ -190,7 +190,7 @@ export default function SendablesTestWithAlloc() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableSimpleCombinedAsType1', 0, async (done: Function) => {
+    it('testSendableSimpleCombinedAsType1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: Object = await testSendableSimpleCombinedAsType1();
       expect(result).assertEqual("PASSED");
       done();
@@ -205,7 +205,7 @@ export default function SendablesTestWithAlloc() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableSimpleCombinedAsType2', 0, async (done: Function) => {
+    it('testSendableSimpleCombinedAsType2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: Object = await testSendableSimpleCombinedAsType2();
       expect(result).assertEqual("PASSED");
       done();
@@ -220,7 +220,7 @@ export default function SendablesTestWithAlloc() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableContainerWithString', 0, async (done: Function) => {
+    it('testSendableContainerWithString', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: Object = await testSendableContainerWithString();
       expect(result).assertEqual("PASSED");
       done();
@@ -235,7 +235,7 @@ export default function SendablesTestWithAlloc() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableContainerWithNumber', 0, async (done: Function) => {
+    it('testSendableContainerWithNumber', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: Object = await testSendableContainerWithNumber();
       expect(result).assertEqual("PASSED");
       done();
@@ -250,7 +250,7 @@ export default function SendablesTestWithAlloc() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableContainerWithNested', 0, async (done: Function) => {
+    it('testSendableContainerWithNested', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: Object = await testSendableContainerWithNested();
       expect(result).assertEqual("PASSED");
       done();
@@ -265,7 +265,7 @@ export default function SendablesTestWithAlloc() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableContainerWithNullableString', 0, async (done: Function) => {
+    it('testSendableContainerWithNullableString', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: Object = await testSendableContainerWithNullableString();
       expect(result).assertEqual("PASSED");
       done();
@@ -280,7 +280,7 @@ export default function SendablesTestWithAlloc() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableContainerWithNullableNullField', 0, async (done: Function) => {
+    it('testSendableContainerWithNullableNullField', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: Object = await testSendableContainerWithNullableNullField();
       expect(result).assertEqual("PASSED");
       done();
@@ -295,7 +295,7 @@ export default function SendablesTestWithAlloc() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableContainerWithUndefinedString', 0, async (done: Function) => {
+    it('testSendableContainerWithUndefinedString', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: Object = await testSendableContainerWithUndefinedString();
       expect(result).assertEqual("PASSED");
       done();
@@ -310,7 +310,7 @@ export default function SendablesTestWithAlloc() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableContainerWithUndefinedField', 0, async (done: Function) => {
+    it('testSendableContainerWithUndefinedField', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: Object = await testSendableContainerWithUndefinedField();
       expect(result).assertEqual("PASSED");
       done();
@@ -325,7 +325,7 @@ export default function SendablesTestWithAlloc() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableWithGenericSendableField', 0, async (done: Function) => {
+    it('testSendableWithGenericSendableField', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: Object = await testSendableWithGenericSendableField();
       expect(result).assertEqual("PASSED");
       done();
@@ -340,7 +340,7 @@ export default function SendablesTestWithAlloc() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableContainerWithNullableNested', 0, async (done: Function) => {
+    it('testSendableContainerWithNullableNested', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: Object = await testSendableContainerWithNullableNested();
       expect(result).assertEqual("PASSED");
       done();
@@ -355,7 +355,7 @@ export default function SendablesTestWithAlloc() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSendableImportedInitializer', 0, async (done: Function) => {
+    it('testSendableImportedInitializer', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: Object = await testSendableImportedInitializer();
       expect(result).assertEqual("PASSED");
       done();

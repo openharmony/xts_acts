@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, afterAll, it, expect } from '@ohos/hypium'
+import { describe, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium'
 
 import { testPixMapWriteTask, testPixMapWriteTaskGroup, testPixMapWriteSingleTaskGroup } from './PixMapTest';
 import { skipConditional } from './utils';
@@ -32,9 +32,9 @@ export default function PixMapTest() {
      * @tc.author: oleg-ignatenko
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 1
+     * @tc.level: Level 0
      */
-    it('testPixMapWriteTask', 0, async (done: Function) => {
+    it('testPixMapWriteTask', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: Object = await skipConditional("testPixMapWriteTask in progress", true, testPixMapWriteTask);
       expect(result).assertEqual("PASSED");
       done();
@@ -49,7 +49,7 @@ export default function PixMapTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testPixMapWriteTaskGroup', 0, async (done: Function) => {
+    it('testPixMapWriteTaskGroup', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: Object = await skipConditional(
         "testPixMapWriteTaskGroup in progress", true, testPixMapWriteTaskGroup);
       expect(result).assertEqual("PASSED");
@@ -65,7 +65,7 @@ export default function PixMapTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testPixMapWriteSingleTaskGroup', 0, async (done: Function) => {
+    it('testPixMapWriteSingleTaskGroup', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let result: Object = await skipConditional(
         "testPixMapWriteSingleTaskGroup in progress", true, testPixMapWriteSingleTaskGroup);
       expect(result).assertEqual("PASSED");

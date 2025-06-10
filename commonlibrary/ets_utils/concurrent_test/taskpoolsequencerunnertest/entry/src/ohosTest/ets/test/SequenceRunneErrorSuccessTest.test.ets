@@ -64,9 +64,9 @@ export default function SequenceRunnerErrorSuccessTest() {
      * @tc.desc Testing Task
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('TestSequenceRunnerErrorSuccess0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('TestSequenceRunnerErrorSuccess0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
       Count1.count = 0
       Count3.count = 0
@@ -108,9 +108,9 @@ export default function SequenceRunnerErrorSuccessTest() {
      * @tc.desc Testing Task
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('TestSequenceRunnerErrorSuccess0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('TestSequenceRunnerErrorSuccess0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
       Count1.count = 0
       Count3.count = 0
@@ -152,7 +152,7 @@ export default function SequenceRunnerErrorSuccessTest() {
      * @tc.desc Testing Task onEnqueued
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('TestSequenceRunnerErrorSuccess020300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
@@ -202,7 +202,7 @@ export default function SequenceRunnerErrorSuccessTest() {
      * @tc.desc Testing Task onStartExecution
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('TestSequenceRunnerErrorSuccess020400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
@@ -258,7 +258,7 @@ export default function SequenceRunnerErrorSuccessTest() {
      * @tc.desc Testing Task onExecutionFailed
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('TestSequenceRunnerErrorSuccess020500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
@@ -314,7 +314,7 @@ export default function SequenceRunnerErrorSuccessTest() {
      * @tc.desc Testing Task onExecutionSucceeded
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('TestSequenceRunnerErrorSuccess020600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let sequenceRunner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
@@ -371,7 +371,7 @@ export default function SequenceRunnerErrorSuccessTest() {
      * @tc.desc Testing Task onReceiveData
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('TestSequenceRunnerErrorSuccess020700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
@@ -428,7 +428,7 @@ export default function SequenceRunnerErrorSuccessTest() {
      * @tc.desc Testing Task
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('TestSequenceRunnerErrorSuccess020800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
@@ -482,7 +482,7 @@ export default function SequenceRunnerErrorSuccessTest() {
      * @tc.desc Testing Task
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('TestSequenceRunnerErrorSuccess020900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
@@ -535,7 +535,7 @@ export default function SequenceRunnerErrorSuccessTest() {
      * @tc.desc Testing Task
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('TestSequenceRunnerErrorSuccess021000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
@@ -584,7 +584,7 @@ export default function SequenceRunnerErrorSuccessTest() {
      * @tc.desc Testing Task asyncLock
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('TestSequenceRunnerErrorSuccess021100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
@@ -633,7 +633,7 @@ export default function SequenceRunnerErrorSuccessTest() {
      * @tc.desc Testing Task asyncLock-then
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('TestSequenceRunnerErrorSuccess021200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
@@ -682,7 +682,7 @@ export default function SequenceRunnerErrorSuccessTest() {
      * @tc.desc Testing Task asyncLock-catch
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('TestSequenceRunnerErrorSuccess021300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
@@ -731,7 +731,7 @@ export default function SequenceRunnerErrorSuccessTest() {
      * @tc.desc Testing Task  asyncLock-finally
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('TestSequenceRunnerErrorSuccess021400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
@@ -780,7 +780,7 @@ export default function SequenceRunnerErrorSuccessTest() {
      * @tc.desc Testing Task task-promise
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('TestSequenceRunnerErrorSuccess021500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
@@ -829,7 +829,7 @@ export default function SequenceRunnerErrorSuccessTest() {
      * @tc.desc Testing Task task-promise-then
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('TestSequenceRunnerErrorSuccess021600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
@@ -878,7 +878,7 @@ export default function SequenceRunnerErrorSuccessTest() {
      * @tc.desc Testing Task task-promise-catch
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('TestSequenceRunnerErrorSuccess021700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
@@ -927,7 +927,7 @@ export default function SequenceRunnerErrorSuccessTest() {
      * @tc.desc Testing Task task-promise-finally
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('TestSequenceRunnerErrorSuccess021800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
@@ -976,7 +976,7 @@ export default function SequenceRunnerErrorSuccessTest() {
      * @tc.desc Testing Task task-settimeout
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('TestSequenceRunnerErrorSuccess021900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
@@ -1024,7 +1024,7 @@ export default function SequenceRunnerErrorSuccessTest() {
      * @tc.desc Testing Task async-task-error
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('TestSequenceRunnerErrorSuccess022000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
@@ -1081,7 +1081,7 @@ export default function SequenceRunnerErrorSuccessTest() {
      * @tc.desc Testing Task await error
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('TestSequenceRunnerErrorSuccess022100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
@@ -1133,7 +1133,7 @@ export default function SequenceRunnerErrorSuccessTest() {
      * @tc.desc Testing Task await-then-error
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('TestSequenceRunnerErrorSuccess022200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
@@ -1184,7 +1184,7 @@ export default function SequenceRunnerErrorSuccessTest() {
      * @tc.desc Testing Task await-catch-error
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('TestSequenceRunnerErrorSuccess022300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
@@ -1236,7 +1236,7 @@ export default function SequenceRunnerErrorSuccessTest() {
      * @tc.desc Testing Task await-finally-error
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('TestSequenceRunnerErrorSuccess022400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.

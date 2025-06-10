@@ -56,9 +56,9 @@ export default function taskPoolSequenceRunnerActTest() {
      * @tc.desc test SequenceRunner-worker-then
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('taskPoolSequenceRunnerActTest1001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('taskPoolSequenceRunnerActTest1001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const runner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
       let count1 = 0;
       let count2 = 0;
@@ -111,7 +111,7 @@ export default function taskPoolSequenceRunnerActTest() {
      * @tc.desc test SequenceRunner-二级-then
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolSequenceRunnerActTest1002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const runner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
@@ -155,7 +155,7 @@ export default function taskPoolSequenceRunnerActTest() {
      * @tc.desc test SequenceRunner-asyncLock-then
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolSequenceRunnerActTest1003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const runner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
@@ -200,7 +200,7 @@ export default function taskPoolSequenceRunnerActTest() {
      * @tc.desc test SequenceRunner-promise-then
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolSequenceRunnerActTest1004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const runner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
@@ -245,7 +245,7 @@ export default function taskPoolSequenceRunnerActTest() {
      * @tc.desc test SequenceRunner-promise-cancel
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolSequenceRunnerActTest1005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const runner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
@@ -291,7 +291,7 @@ export default function taskPoolSequenceRunnerActTest() {
      * @tc.desc test SequenceRunner-setTimeOut-then
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolSequenceRunnerActTest1006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const runner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
@@ -330,7 +330,7 @@ export default function taskPoolSequenceRunnerActTest() {
      * @tc.desc test SequenceRunner-async-then
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolSequenceRunnerActTest1007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const runner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
@@ -375,7 +375,7 @@ export default function taskPoolSequenceRunnerActTest() {
      * @tc.desc test SequenceRunner-wait-then
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolSequenceRunnerActTest1008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const runner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
@@ -420,7 +420,7 @@ export default function taskPoolSequenceRunnerActTest() {
      * @tc.desc test SequenceRunner-waitfor-then
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolSequenceRunnerActTest1009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const runner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
