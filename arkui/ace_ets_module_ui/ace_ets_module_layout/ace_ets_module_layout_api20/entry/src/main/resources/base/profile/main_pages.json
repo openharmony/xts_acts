@@ -3,15 +3,20 @@
         "MainAbility/pages/index/index",
         "MainAbility/pages/Flex/FlexLayoutPolicyPage",
         "MainAbility/pages/GridRow/GridRowNoColumnsPage",
-
+        "MainAbility/pages/GridRow/GridRowFixAtIdealSizePage",
+        "MainAbility/pages/GridCol/GridColFixAtIdealSizePage",
         "MainAbility/pages/Column/ColumnMatchParent",
         "MainAbility/pages/Column/ColumnWrapContent",
+        "MainAbility/pages/Column/ColumnFixAtIdealSizePage",
         "MainAbility/pages/Flex/FlexWrapContent",
+        "MainAbility/pages/Flex/FlexFixAtIdealSizePage",
         "MainAbility/pages/Row/RowMatchParent",
         "MainAbility/pages/Row/RowWrapContent",
+        "MainAbility/pages/Row/RowFixAtIdealSizePage",
         "MainAbility/pages/Stack/FolderStackMatchParent",
         "MainAbility/pages/Stack/StackMatchParent",
         "MainAbility/pages/Stack/StackWrapContent",
+        "MainAbility/pages/Stack/StackFixAtIdealSizePage",
         "MainAbility/pages/inspector/layoutInspector"
     ]
 }
