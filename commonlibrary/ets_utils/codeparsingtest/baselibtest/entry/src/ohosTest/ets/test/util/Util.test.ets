@@ -15,7 +15,6 @@
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 import taskpool from '@ohos.taskpool';
 import util from '@ohos.util';
-import worker, { MessageEvents } from '@ohos.worker';
 import { ArrayList, JSON } from '@kit.ArkTS';
 
 let falg = 0;
