@@ -22,14 +22,14 @@ export default class UiAbility03 extends UIAbility {
   onCreate(want, launchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', `UiAbility03 onCreate`);
     let uri = want?.uri
-    globalThis.uiAbilityContext3 = this.context
+    globalThis.uiAbilityContext3 = this.context;
     commonEventManager.publish('UiAbility03_onCreate', function () {
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0200 publish UiAbility03_onCreate');
     });
     hilog.info(0x0000, 'testTag', '%{public}s', `UiAbility03 want is, ${JSON.stringify(want)}`);
   }
 
-  onDestroy() {
+  onDestroy(): void {
     hilog.info(0x0000, 'testTag', '%{public}s', `UiAbility03 onDestroy`);
     commonEventManager.publish('UiAbility03_onDestroy', function () {
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0200 publish UiAbility03_onDestroy');
@@ -39,7 +39,7 @@ export default class UiAbility03 extends UIAbility {
     });
   }
 
-  onWindowStageCreate(windowStage: window.WindowStage) {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
     hilog.info(0x0000, 'testTag', '%{public}s', `UiAbility03 onWindowStageCreate`);
     commonEventManager.publish('UiAbility03_onWindowStageCreate', function () {
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0200 publish UiAbility03_onWindowStageCreate');
@@ -57,11 +57,11 @@ export default class UiAbility03 extends UIAbility {
 
   }
 
-  onWindowStageDestroy() {
+  onWindowStageDestroy(): void {
     hilog.info(0x0000, 'testTag', '%{public}s', `UiAbility03 onWindowStageDestroy`);
   }
 
-  onForeground() {
+  onForeground(): void {
     hilog.info(0x0000, 'testTag', '%{public}s', `UiAbility03 onForeground`);
     commonEventManager.publish('UiAbility03_onForeground', function () {
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0200 publish UiAbility03_onForeground');
@@ -72,7 +72,7 @@ export default class UiAbility03 extends UIAbility {
     }, 5000);
   }
 
-  onBackground() {
+  onBackground(): void {
     // Ability has back to background
     hilog.info(0x0000, 'testTag', '%{public}s', `UiAbility03 onBackground`);
     commonEventManager.publish('UiAbility03_onBackground', function () {

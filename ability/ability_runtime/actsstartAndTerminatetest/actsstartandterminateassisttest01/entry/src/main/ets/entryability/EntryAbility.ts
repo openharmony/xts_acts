@@ -18,22 +18,22 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility onCreate');
     commonEventManager.publish('EntryAbility_onCreate', function () {
       hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility publish EntryAbility_onCreate');
     });
-    globalThis.abilityAssistEntry01 = this.context
+    globalThis.abilityAssistEntry01 = this.context;
   }
 
-  onDestroy() {
+  onDestroy(): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility onDestroy');
     commonEventManager.publish('EntryAbility_onDestroy', function () {
       hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility publish UiAbility04_onDestroy');
     });
   }
 
-  onWindowStageCreate(windowStage: window.WindowStage) {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
     // Main window is created, set main page for this ability
     hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility onWindowStageCreate');
     commonEventManager.publish('EntryAbility_onWindowStageCreate', function () {
@@ -48,24 +48,24 @@ export default class EntryAbility extends UIAbility {
     });
   }
 
-  onWindowStageDestroy() {
+  onWindowStageDestroy(): void {
     // Main window is destroyed, release UI related resources
     hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility onWindowStageDestroy');
   }
 
-  onForeground() {
+  onForeground(): void {
     // Ability has brought to foreground
     hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility onForeground');
     commonEventManager.publish('EntryAbility_onForeground', function () {
       hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility publish EntryAbility_onForeground');
       setTimeout(() => {
         // destroy assistHap
-        globalThis.abilityAssistEntry01.terminateSelf()
+        globalThis.abilityAssistEntry01.terminateSelf();
       }, 5000);
     });
   }
 
-  onBackground() {
+  onBackground(): void {
     // Ability has back to background
     hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility onBackground');
     commonEventManager.publish('EntryAbility_onBackground', function () {

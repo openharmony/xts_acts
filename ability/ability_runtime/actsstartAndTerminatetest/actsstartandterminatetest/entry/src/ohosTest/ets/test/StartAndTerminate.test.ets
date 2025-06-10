@@ -140,8 +140,8 @@ export default function startAndTerminateTest() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0100
-     * @tc.name   : Within the same application and HAP package, Ability1 launches Ability2 and then terminates itself.
-     * @tc.desc   : Function test
+     * @tc.name   : SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0100
+     * @tc.desc   : Within the same application and HAP package, Ability1 launches Ability2 and then terminates itself.
      * @tc.size:   MediumTest
      * @tc.type:   Function
      * @tc.level  : 0
@@ -176,31 +176,31 @@ export default function startAndTerminateTest() {
           }
           let subscribeCallBack = (err: BusinessError, data: commonEventManager.CommonEventData) => {
             hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success`)
-            if (data.event == 'UiAbility01_onCreate') {
+            if (data.event === 'UiAbility01_onCreate') {
               uiAbility01OnCreate = 'uiAbility01OnCreateSuccess';
             };
-            if (data.event == 'UiAbility01_onDestroy') {
+            if (data.event === 'UiAbility01_onDestroy') {
               uiAbility01OnDestroy = 'uiAbility01OnDestroySuccess';
             };
-            if (data.event == 'UiAbility01_onWindowStageCreate') {
+            if (data.event === 'UiAbility01_onWindowStageCreate') {
               uiAbility01OnWindowStageCreate = 'uiAbility01OnWindowStageCreateSuccess';
             };
-            if (data.event == 'UiAbility01_onForeground') {
+            if (data.event === 'UiAbility01_onForeground') {
               uiAbility01OnForeground = 'uiAbility01OnForegroundSuccess';
             };
-            if (data.event == 'UiAbility01_onBackground') {
+            if (data.event === 'UiAbility01_onBackground') {
               uiAbility01OnBackground = 'uiAbility01OnBackgroundSuccess';
             };
-            if (data.event == 'UiAbility02_onCreate') {
+            if (data.event === 'UiAbility02_onCreate') {
               uiAbility02OnCreate = 'uiAbility02OnCreateSuccess';
             };
-            if (data.event == 'UiAbility02_onWindowStageCreate') {
+            if (data.event === 'UiAbility02_onWindowStageCreate') {
               uiAbility02OnWindowStageCreate = 'uiAbility02OnWindowStageCreateSuccess';
             };
-            if (data.event == 'UiAbility02_onForeground') {
+            if (data.event === 'UiAbility02_onForeground') {
               uiAbility02OnForeground = 'uiAbility02OnForegroundSuccess';
             };
-            if (data.event == 'ACTS_TEST_START01') {
+            if (data.event === 'ACTS_TEST_START01') {
               setTimeout(() => {
                 try {
                   context.startAbility(
@@ -215,7 +215,7 @@ export default function startAndTerminateTest() {
                 }
               }, 500);
             }
-            if (data.event == 'ACTS_TEST_START02') {
+            if (data.event === 'ACTS_TEST_START02') {
               setTimeout(() => {
                 try {
                   globalThis.uiAbilityContext1.startAbility(
@@ -230,7 +230,7 @@ export default function startAndTerminateTest() {
                 }
               }, 500);
             }
-            if (data.event == 'ACTS_TEST_DESTROY') {
+            if (data.event === 'ACTS_TEST_DESTROY') {
               setTimeout(() => {
                 commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
               }, 500);
@@ -245,8 +245,8 @@ export default function startAndTerminateTest() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0200
-     * @tc.name   : In the same application but different HAPs, Ability 1 launches Ability 2 and then closes itself (Ability 1).
-     * @tc.desc   : Function test
+     * @tc.name   : SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0200
+     * @tc.desc   : In the same application but different HAPs, Ability 1 launches Ability 2 and then closes itself (Ability 1).
      * @tc.size:   MediumTest
      * @tc.type:   Function
      * @tc.level  : 0
@@ -281,31 +281,31 @@ export default function startAndTerminateTest() {
           }
           let subscribeCallBack = (err: BusinessError, data: commonEventManager.CommonEventData) => {
             hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success`)
-            if (data.event == 'UiAbility03_onCreate') {
+            if (data.event === 'UiAbility03_onCreate') {
               uiAbility03OnCreate = 'uiAbility03OnCreateSuccess';
             };
-            if (data.event == 'UiAbility03_onDestroy') {
+            if (data.event === 'UiAbility03_onDestroy') {
               uiAbility03OnDestroy = 'uiAbility03OnDestroySuccess';
             };
-            if (data.event == 'UiAbility03_onWindowStageCreate') {
+            if (data.event === 'UiAbility03_onWindowStageCreate') {
               uiAbility03OnWindowStageCreate = 'uiAbility03OnWindowStageCreateSuccess';
             };
-            if (data.event == 'UiAbility03_onForeground') {
+            if (data.event === 'UiAbility03_onForeground') {
               uiAbility03OnForeground = 'uiAbility03OnForegroundSuccess';
             };
-            if (data.event == 'UiAbility03_onBackground') {
+            if (data.event === 'UiAbility03_onBackground') {
               uiAbility03OnBackground = 'uiAbility03OnBackgroundSuccess';
             };
-            if (data.event == 'EntryAbility_onCreate') {
+            if (data.event === 'EntryAbility_onCreate') {
               entryAbilityOnCreate = 'entryAbilityOnCreateSuccess';
             };
-            if (data.event == 'EntryAbility_onWindowStageCreate') {
+            if (data.event === 'EntryAbility_onWindowStageCreate') {
               entryAbilityOnWindowStageCreate = 'entryAbilityOnWindowStageCreateSuccess';
             };
-            if (data.event == 'EntryAbility_onForeground') {
+            if (data.event === 'EntryAbility_onForeground') {
               entryAbilityOnForeground = 'entryAbilityOnForegroundSuccess';
             };
-            if (data.event == 'ACTS_TEST_START01') {
+            if (data.event === 'ACTS_TEST_START01') {
               setTimeout(() => {
                 try {
                   context.startAbility(
@@ -320,7 +320,7 @@ export default function startAndTerminateTest() {
                 }
               }, 500);
             }
-            if (data.event == 'ACTS_TEST_START02') {
+            if (data.event === 'ACTS_TEST_START02') {
               setTimeout(() => {
                 try {
                   globalThis.uiAbilityContext3.startAbility(
@@ -335,7 +335,7 @@ export default function startAndTerminateTest() {
                 }
               }, 500);
             }
-            if (data.event == 'ACTS_TEST_DESTROY') {
+            if (data.event === 'ACTS_TEST_DESTROY') {
               setTimeout(() => {
                 commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
               }, 500);
@@ -350,9 +350,9 @@ export default function startAndTerminateTest() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0300
-     * @tc.name   : Within the same application but across different HAPs, Ability 1 initiates the launch of Ability 2
+     * @tc.name   : SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0300
+     * @tc.desc   : Within the same application but across different HAPs, Ability 1 initiates the launch of Ability 2
      * and subsequently terminates it.
-     * @tc.desc   : Function test
      * @tc.size:   MediumTest
      * @tc.type:   Function
      * @tc.level  : 0
@@ -391,46 +391,46 @@ export default function startAndTerminateTest() {
           }
           let subscribeCallBack = (err: BusinessError, data: commonEventManager.CommonEventData) => {
             hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success`)
-            if (data.event == 'EntryAbility_onCreate') {
+            if (data.event === 'EntryAbility_onCreate') {
               entryAbilityOnCreate = 'entryAbilityOnCreateSuccess';
             };
 
-            if (data.event == 'EntryAbility_onWindowStageCreate') {
+            if (data.event === 'EntryAbility_onWindowStageCreate') {
               entryAbilityOnWindowStageCreate = 'entryAbilityOnWindowStageCreateSuccess';
             };
 
-            if (data.event == 'EntryAbility_onForeground') {
+            if (data.event === 'EntryAbility_onForeground') {
               entryAbilityOnForeground = 'entryAbilityOnForegroundSuccess';
             };
 
-            if (data.event == 'EntryAbility_onDestroy') {
+            if (data.event === 'EntryAbility_onDestroy') {
               entryAbilityOnDestroy = 'entryAbilityOnDestroySuccess';
             };
 
-            if (data.event == 'EntryAbility_onBackground') {
+            if (data.event === 'EntryAbility_onBackground') {
               entryAbilityOnBackground = 'entryAbilityOnBackgroundSuccess';
             };
 
-            if (data.event == 'UiAbility04_onCreate') {
+            if (data.event === 'UiAbility04_onCreate') {
               uiAbility04OnCreate = 'uiAbility04OnCreateSuccess';
             };
 
-            if (data.event == 'UiAbility04_onWindowStageCreate') {
+            if (data.event === 'UiAbility04_onWindowStageCreate') {
               uiAbility04OnWindowStageCreate = 'uiAbility04OnWindowStageCreateSuccess';
             };
 
-            if (data.event == 'UiAbility04_onForeground_01') {
+            if (data.event === 'UiAbility04_onForeground_01') {
               uiAbility04OnForeground01 = 'uiAbility04OnForeground01Success';
             };
 
-            if (data.event == 'UiAbility04_onForeground_02') {
+            if (data.event === 'UiAbility04_onForeground_02') {
               uiAbility04OnForeground02 = 'uiAbility04OnForeground02Success';
             };
 
-            if (data.event == 'UiAbility04_onBackground') {
+            if (data.event === 'UiAbility04_onBackground') {
               uiAbility04OnBackground = 'uiAbility04OnBackgroundSuccess';
             };
-            if (data.event == 'ACTS_TEST_START01') {
+            if (data.event === 'ACTS_TEST_START01') {
               setTimeout(() => {
                 try {
                   context.startAbility(
@@ -445,7 +445,7 @@ export default function startAndTerminateTest() {
                 }
               }, 500);
             }
-            if (data.event == 'ACTS_TEST_START02') {
+            if (data.event === 'ACTS_TEST_START02') {
               setTimeout(() => {
                 try {
                   globalThis.uiAbilityContext4.startAbility(
@@ -460,7 +460,7 @@ export default function startAndTerminateTest() {
                 }
               }, 500);
             }
-            if (data.event == 'ACTS_TEST_DESTROY') {
+            if (data.event === 'ACTS_TEST_DESTROY') {
               setTimeout(() => {
                 commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
               }, 500);
@@ -475,9 +475,9 @@ export default function startAndTerminateTest() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0900
-     * @tc.name   : Under the same application and same HAP, the ability chain-based launch mechanism works as
+     * @tc.name   : SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0900
+     * @tc.desc   : Under the same application and same HAP, the ability chain-based launch mechanism works as
      * follows: Ability 1 launches Ability 2, and Ability 2 then launches Ability 3.
-     * @tc.desc   : Function test
      * @tc.size:   MediumTest
      * @tc.type:   Function
      * @tc.level  : 0
@@ -518,50 +518,50 @@ export default function startAndTerminateTest() {
           }
           let subscribeCallBack = (err: BusinessError, data: commonEventManager.CommonEventData) => {
             hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success`)
-            if (data.event == 'UiAbility05_onCreate') {
+            if (data.event === 'UiAbility05_onCreate') {
               uiAbility05OnCreate = 'uiAbility05OnCreateSuccess';
             };
 
-            if (data.event == 'UiAbility05_onWindowStageCreate') {
+            if (data.event === 'UiAbility05_onWindowStageCreate') {
               uiAbility05OnWindowStageCreate = 'uiAbility05OnWindowStageCreateSuccess';
             };
 
-            if (data.event == 'UiAbility05_onForeground') {
+            if (data.event === 'UiAbility05_onForeground') {
               uiAbility05OnForeground = 'uiAbility05OnForegroundSuccess';
             };
 
-            if (data.event == 'UiAbility05_onBackground') {
+            if (data.event === 'UiAbility05_onBackground') {
               uiAbility05OnBackground = 'uiAbility05OnBackgroundSuccess';
             };
 
-            if (data.event == 'UiAbility06_onCreate') {
+            if (data.event === 'UiAbility06_onCreate') {
               uiAbility06OnCreate = 'uiAbility06OnCreateSuccess';
             };
 
-            if (data.event == 'UiAbility06_onWindowStageCreate') {
+            if (data.event === 'UiAbility06_onWindowStageCreate') {
               uiAbility06OnWindowStageCreate = 'uiAbility06OnWindowStageCreateSuccess';
             };
 
-            if (data.event == 'UiAbility06_onForeground') {
+            if (data.event === 'UiAbility06_onForeground') {
               uiAbility06OnForeground = 'uiAbility06OnForegroundSuccess';
             };
 
-            if (data.event == 'UiAbility06_onBackground') {
+            if (data.event === 'UiAbility06_onBackground') {
               uiAbility06OnBackground = 'uiAbility06OnBackgroundSuccess';
             };
 
-            if (data.event == 'UiAbility07_onCreate') {
+            if (data.event === 'UiAbility07_onCreate') {
               uiAbility07OnCreate = 'uiAbility07OnCreateSuccess';
             };
 
-            if (data.event == 'UiAbility07_onWindowStageCreate') {
+            if (data.event === 'UiAbility07_onWindowStageCreate') {
               uiAbility07OnWindowStageCreate = 'uiAbility07OnWindowStageCreateSuccess';
             };
 
-            if (data.event == 'UiAbility07_onForeground') {
+            if (data.event === 'UiAbility07_onForeground') {
               uiAbility07OnForeground = 'uiAbility07OnForegroundSuccess';
             };
-            if (data.event == 'ACTS_TEST_START01') {
+            if (data.event === 'ACTS_TEST_START01') {
               setTimeout(() => {
                 try {
                   context.startAbility(
@@ -576,7 +576,7 @@ export default function startAndTerminateTest() {
                 }
               }, 500);
             }
-            if (data.event == 'ACTS_TEST_START02') {
+            if (data.event === 'ACTS_TEST_START02') {
               setTimeout(() => {
                 try {
                   globalThis.uiAbilityContext5.startAbility(
@@ -591,7 +591,7 @@ export default function startAndTerminateTest() {
                 }
               }, 500);
             }
-            if (data.event == 'ACTS_TEST_START03') {
+            if (data.event === 'ACTS_TEST_START03') {
               setTimeout(() => {
                 try {
                   globalThis.uiAbilityContext6.startAbility(
@@ -606,12 +606,12 @@ export default function startAndTerminateTest() {
                 }
               }, 500);
             }
-            if (data.event == 'ACTS_TEST_ONBACKGROUND') {
+            if (data.event === 'ACTS_TEST_ONBACKGROUND') {
               if(data.parameters){
                 expect(data.parameters.result).assertEqual('onBackground')
               }
             }
-            if (data.event == 'ACTS_TEST_DESTROY') {
+            if (data.event === 'ACTS_TEST_DESTROY') {
               setTimeout(() => {
                 commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
               }, 500);
@@ -626,8 +626,8 @@ export default function startAndTerminateTest() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_1200
-     * @tc.name   : Ability loop launch: 1 calls 2, and 2 calls back to 1 (singleton);
-     * @tc.desc   : Function test
+     * @tc.name   : SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_1200
+     * @tc.desc   : Ability loop launch: 1 calls 2, and 2 calls back to 1 (singleton);
      * @tc.size:   MediumTest
      * @tc.type:   Function
      * @tc.level  : 0
@@ -664,42 +664,42 @@ export default function startAndTerminateTest() {
           }
           let subscribeCallBack = (err: BusinessError, data: commonEventManager.CommonEventData) => {
             hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success`)
-            if (data.event == 'UiAbility08_onCreate') {
+            if (data.event === 'UiAbility08_onCreate') {
               uiAbility08OnCreate = 'uiAbility08OnCreateSuccess';
             };
 
-            if (data.event == 'UiAbility08_onWindowStageCreate') {
+            if (data.event === 'UiAbility08_onWindowStageCreate') {
               uiAbility08OnWindowStageCreate = 'uiAbility08OnWindowStageCreateSuccess';
             };
 
-            if (data.event == 'UiAbility08_onForeground_01') {
+            if (data.event === 'UiAbility08_onForeground_01') {
               uiAbility08OnForeground01 = 'uiAbility08OnForeground01Success';
             };
 
-            if (data.event == 'UiAbility08_onForeground_02') {
+            if (data.event === 'UiAbility08_onForeground_02') {
               uiAbility08OnForeground02 = 'uiAbility08OnForeground02Success';
             };
 
-            if (data.event == 'UiAbility08_onBackground') {
+            if (data.event === 'UiAbility08_onBackground') {
               uiAbility08OnBackground = 'uiAbility08OnBackgroundSuccess';
             };
 
-            if (data.event == 'AbilityTest01_onCreate') {
+            if (data.event === 'AbilityTest01_onCreate') {
               abilityTest01OnCreate = 'abilityTest01OnCreateSuccess';
             };
 
-            if (data.event == 'AbilityTest01_onWindowStageCreate') {
+            if (data.event === 'AbilityTest01_onWindowStageCreate') {
               abilityTest01OnWindowStageCreate = 'abilityTest01OnWindowStageCreateSuccess';
             };
 
-            if (data.event == 'AbilityTest01_onForeground') {
+            if (data.event === 'AbilityTest01_onForeground') {
               abilityTest01OnForeground = 'abilityTest01OnForegroundSuccess';
             };
 
-            if (data.event == 'AbilityTest01_onBackground') {
+            if (data.event === 'AbilityTest01_onBackground') {
               abilityTest01OnBackground = 'abilityTest01OnBackgroundSuccess';
             };
-            if (data.event == 'ACTS_TEST_START01') {
+            if (data.event === 'ACTS_TEST_START01') {
               setTimeout(() => {
                 try {
                   context.startAbility(
@@ -714,7 +714,7 @@ export default function startAndTerminateTest() {
                 }
               }, 500);
             }
-            if (data.event == 'ACTS_TEST_DESTROY') {
+            if (data.event === 'ACTS_TEST_DESTROY') {
               setTimeout(() => {
                 commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
               }, 500);
@@ -729,8 +729,8 @@ export default function startAndTerminateTest() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2200
-     * @tc.name   : Start an ability, and after it ends, restart the ability (singleton);
-     * @tc.desc   : Function test
+     * @tc.name   : SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2200
+     * @tc.desc   : Start an ability, and after it ends, restart the ability (singleton);
      * @tc.size:   MediumTest
      * @tc.type:   Function
      * @tc.level  : 0
@@ -769,7 +769,7 @@ export default function startAndTerminateTest() {
           }
           let subscribeCallBack = (err: BusinessError, data: commonEventManager.CommonEventData) => {
             hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success`)
-            if (data.event == 'ACTS_TEST_START01') {
+            if (data.event === 'ACTS_TEST_START01') {
               setTimeout(() => {
                 try {
                   context.startAbility(
@@ -787,42 +787,42 @@ export default function startAndTerminateTest() {
                 }
               }, 500);
             }
-            if (data.event == 'UiAbility09_onCreate_01') {
+            if (data.event === 'UiAbility09_onCreate_01') {
               uiAbility09OnCreate01 = 'uiAbility09OnCreate01Success';
             };
 
-            if (data.event == 'UiAbility09_onCreate_02') {
+            if (data.event === 'UiAbility09_onCreate_02') {
               uiAbility09OnCreate02 = 'uiAbility09OnCreate02Success';
             };
 
-            if (data.event == 'UiAbility09_onDestroy_02') {
+            if (data.event === 'UiAbility09_onDestroy_02') {
               uiAbility09OnDestroy02 = 'uiAbility09OnDestroy02Success';
             };
 
-            if (data.event == 'UiAbility09_onWindowStageCreate_01') {
+            if (data.event === 'UiAbility09_onWindowStageCreate_01') {
               uiAbility09OnWindowStageCreate01 = 'uiAbility09OnWindowStageCreate01Success';
             };
 
-            if (data.event == 'UiAbility09_onWindowStageCreate_02') {
+            if (data.event === 'UiAbility09_onWindowStageCreate_02') {
               uiAbility09OnWindowStageCreate02 = 'uiAbility09OnWindowStageCreate02Success';
             };
 
-            if (data.event == 'UiAbility09_onForeground_02') {
+            if (data.event === 'UiAbility09_onForeground_02') {
               uiAbility09OnForeground02 = 'uiAbility09OnForeground02Success';
             };
 
-            if (data.event == 'UiAbility09_onBackground_01') {
+            if (data.event === 'UiAbility09_onBackground_01') {
               uiAbility09OnBackground01 = 'uiAbility09OnBackground01Success';
             };
 
-            if (data.event == 'UiAbility09_onBackground_02') {
+            if (data.event === 'UiAbility09_onBackground_02') {
               uiAbility09OnBackground02 = 'uiAbility09OnBackground02Success';
             };
-            if (data.event == 'UiAbility09_onForeground_01') {
+            if (data.event === 'UiAbility09_onForeground_01') {
               uiAbility09OnForeground01 = 'uiAbility09OnForeground01Success';
               globalThis.uiAbilityContext9.terminateSelf();
             }
-            if (data.event == 'UiAbility09_onDestroy_01') {
+            if (data.event === 'UiAbility09_onDestroy_01') {
               uiAbility09OnDestroy01 = 'uiAbility09OnDestroy01Success';
               setTimeout(() => {
                 try {
@@ -841,7 +841,7 @@ export default function startAndTerminateTest() {
                 }
               }, 500);
             }
-            if (data.event == 'ACTS_TEST_DESTROY') {
+            if (data.event === 'ACTS_TEST_DESTROY') {
               globalThis.uiAbilityContext9.terminateSelf();
               setTimeout(() => {
                 commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
@@ -858,8 +858,8 @@ export default function startAndTerminateTest() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_5100
-     * @tc.name   : Carry one key-value pair, where the key, and the value is a JSON object;
-     * @tc.desc   : Function test
+     * @tc.name   : SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_5100
+     * @tc.desc   : Carry one key-value pair, where the key, and the value is a JSON object;
      * @tc.size:   MediumTest
      * @tc.type:   Function
      * @tc.level  : 0
@@ -884,18 +884,18 @@ export default function startAndTerminateTest() {
           }
           let subscribeCallBack = (err: BusinessError, data: commonEventManager.CommonEventData) => {
             hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success`)
-            if (data.event == 'UiAbility10_onCreate') {
+            if (data.event === 'UiAbility10_onCreate') {
               uiAbility10OnCreate = 'uiAbility10OnCreateSuccess';
             };
 
-            if (data.event == 'UiAbility10_onWindowStageCreate') {
+            if (data.event === 'UiAbility10_onWindowStageCreate') {
               uiAbility10OnWindowStageCreate = 'uiAbility10OnWindowStageCreateSuccess';
             };
 
-            if (data.event == 'UiAbility10_onForeground') {
+            if (data.event === 'UiAbility10_onForeground') {
               uiAbility10OnForeground = 'uiAbility10OnForegroundSuccess';
             };
-            if (data.event == 'ACTS_TEST_START01') {
+            if (data.event === 'ACTS_TEST_START01') {
               setTimeout(() => {
                 try {
                   context.startAbility(
@@ -915,7 +915,7 @@ export default function startAndTerminateTest() {
                 }
               }, 500);
             }
-            if (data.event == 'ACTS_TEST_DESTROY') {
+            if (data.event === 'ACTS_TEST_DESTROY') {
               setTimeout(() => {
                 globalThis.uiAbilityContext10.terminateSelf();
                 commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
@@ -931,8 +931,8 @@ export default function startAndTerminateTest() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_5400
-     * @tc.name   : The ability with corresponding entities (custom, array length > 1) starts successfully.
-     * @tc.desc   : Function test
+     * @tc.name   : SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_5400
+     * @tc.desc   : The ability with corresponding entities (custom, array length > 1) starts successfully.
      * @tc.size:   MediumTest
      * @tc.type:   Function
      * @tc.level  : 0
@@ -957,18 +957,18 @@ export default function startAndTerminateTest() {
           }
           let subscribeCallBack = (err: BusinessError, data: commonEventManager.CommonEventData) => {
             hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success`)
-            if (data.event == 'UiAbility10_onCreate') {
+            if (data.event === 'UiAbility10_onCreate') {
               uiAbility10OnCreate = 'uiAbility10OnCreateSuccess';
             };
 
-            if (data.event == 'UiAbility10_onWindowStageCreate') {
+            if (data.event === 'UiAbility10_onWindowStageCreate') {
               uiAbility10OnWindowStageCreate = 'uiAbility10OnWindowStageCreateSuccess';
             };
 
-            if (data.event == 'UiAbility10_onForeground') {
+            if (data.event === 'UiAbility10_onForeground') {
               uiAbility10OnForeground = 'uiAbility10OnForegroundSuccess';
             };
-            if (data.event == 'ACTS_TEST_START01') {
+            if (data.event === 'ACTS_TEST_START01') {
               setTimeout(() => {
                 try {
                   context.startAbility(
@@ -985,7 +985,7 @@ export default function startAndTerminateTest() {
                 }
               }, 500);
             }
-            if (data.event == 'ACTS_TEST_DESTROY') {
+            if (data.event === 'ACTS_TEST_DESTROY') {
               globalThis.uiAbilityContext10.terminateSelf();
               setTimeout(() => {
                 commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
@@ -1001,8 +1001,8 @@ export default function startAndTerminateTest() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3800
-     * @tc.name   : Verify system service startup of the ability;
-     * @tc.desc   : Function test
+     * @tc.name   : SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3800
+     * @tc.desc   : FVerify system service startup of the ability;
      * @tc.size:   MediumTest
      * @tc.type:   Function
      * @tc.level  : 0
@@ -1028,18 +1028,18 @@ export default function startAndTerminateTest() {
           }
           let subscribeCallBack = (err: BusinessError, data: commonEventManager.CommonEventData) => {
             hilog.info(0x0000, 'testTag', '%{public}s', `subscribeCallBack success`)
-            if (data.event == 'UiAbility10_onCreate') {
+            if (data.event === 'UiAbility10_onCreate') {
               uiAbility10OnCreate = 'uiAbility10OnCreateSuccess';
             };
 
-            if (data.event == 'UiAbility10_onWindowStageCreate') {
+            if (data.event === 'UiAbility10_onWindowStageCreate') {
               uiAbility10OnWindowStageCreate = 'uiAbility10OnWindowStageCreateSuccess';
             };
 
-            if (data.event == 'UiAbility10_onForeground') {
+            if (data.event === 'UiAbility10_onForeground') {
               uiAbility10OnForeground = 'uiAbility10OnForegroundSuccess';
             };
-            if (data.event == 'ACTS_TEST_START01') {
+            if (data.event === 'ACTS_TEST_START01') {
               setTimeout(async () => {
                 await abilityDelegator.executeShellCommand('aa start -a UiAbility10 -b com.test.actsstartandterminatetest')
                   .then(data => {
@@ -1053,7 +1053,7 @@ export default function startAndTerminateTest() {
                   });
               }, 500);
             }
-            if (data.event == 'ACTS_TEST_DESTROY') {
+            if (data.event === 'ACTS_TEST_DESTROY') {
               globalThis.uiAbilityContext10.terminateSelf();
               setTimeout(() => {
                 commonEventManager.unsubscribe(subscriber, unSubscribeCallback);

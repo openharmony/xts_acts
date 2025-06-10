@@ -24,15 +24,15 @@ export default class UiAbility06 extends UIAbility {
     commonEventManager.publish('UiAbility06_onCreate', function () {
       hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility06 publish UiAbility06_onCreate');
     });
-    globalThis.uiAbilityContext6 = this.context
+    globalThis.uiAbilityContext6 = this.context;
     hilog.info(0x0000, 'testTag', '%{public}s', `UiAbility06 want is, ${JSON.stringify(want)}`);
   }
 
-  onDestroy() {
+  onDestroy(): void {
     console.info('UiAbility06 onDestroy');
   }
 
-  onWindowStageCreate(windowStage: window.WindowStage) {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility06 onWindowStageCreate');
     commonEventManager.publish('UiAbility06_onWindowStageCreate', function () {
       hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility06 publish UiAbility06_onWindowStageCreate');
@@ -47,11 +47,11 @@ export default class UiAbility06 extends UIAbility {
 
   }
 
-  onWindowStageDestroy() {
+  onWindowStageDestroy(): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility06 onWindowStageDestroy');
   }
 
-  onForeground() {
+  onForeground(): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility06 onForeground');
     commonEventManager.publish('UiAbility06_onForeground', function () {
       hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility06 publish UiAbility06_onForeground');
@@ -61,7 +61,7 @@ export default class UiAbility06 extends UIAbility {
     });
   }
 
-  onBackground() {
+  onBackground(): void {
     // Ability has back to background
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility06 onBackground');
     commonEventManager.publish('UiAbility06_onBackground', function () {

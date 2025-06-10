@@ -21,18 +21,18 @@ import { commonEventManager } from '@kit.BasicServicesKit';
 export default class UiAbility02 extends UIAbility {
   onCreate(want, launchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility02 onCreate');
-    globalThis.uiAbilityContext2 = this.context
+    globalThis.uiAbilityContext2 = this.context;
     hilog.info(0x0000, 'testTag', '%{public}s', `UiAbility02 want is, ${JSON.stringify(want)}`);
     commonEventManager.publish('UiAbility02_onCreate', function () {
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_0100 publish UiAbility02_onCreate');
     });
   }
 
-  onDestroy() {
+  onDestroy(): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility02 onDestroy');
   }
 
-  onWindowStageCreate(windowStage: window.WindowStage) {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
     // Main window is created, set main page for this ability
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility02 onWindowStageCreate');
     commonEventManager.publish('UiAbility02_onWindowStageCreate', function () {
@@ -47,12 +47,12 @@ export default class UiAbility02 extends UIAbility {
     });
   }
 
-  onWindowStageDestroy() {
+  onWindowStageDestroy(): void {
     // Main window is destroyed, release UI related resources
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility02 onWindowStageDestroy');
   }
 
-  onForeground() {
+  onForeground(): void {
     // Ability has brought to foreground
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility02 onForeground');
     commonEventManager.publish('UiAbility02_onForeground', function () {
@@ -64,7 +64,7 @@ export default class UiAbility02 extends UIAbility {
     }, 6000);
   }
 
-  onBackground() {
+  onBackground(): void {
     // Ability has back to background
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility02 onBackground');
   }

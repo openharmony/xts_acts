@@ -25,7 +25,7 @@ export default class MainAbility extends Ability {
         hilog.info(0x0000, 'testTag', '%{public}s', 'launchParam:' + JSON.stringify(launchParam) ?? '');
     }
 
-    onDestroy() {
+    onDestroy(): void {
         hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
         hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
     }
@@ -46,19 +46,19 @@ export default class MainAbility extends Ability {
         });
     }
 
-    onWindowStageDestroy() {
+    onWindowStageDestroy(): void {
         // Main window is destroyed, release UI related resources
         hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
         hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
     }
 
-    onForeground() {
+    onForeground(): void {
         // Ability has brought to foreground
         hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
         hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
     }
 
-    onBackground() {
+    onBackground(): void {
         // Ability has back to background
         hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
         hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');

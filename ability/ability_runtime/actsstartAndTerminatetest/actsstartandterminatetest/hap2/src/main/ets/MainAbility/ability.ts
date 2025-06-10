@@ -15,26 +15,26 @@
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
-import app, { AppResponse } from '@system.app'
+import app, { AppResponse } from '@system.app';
 import { commonEventManager } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility onDestroy');
     commonEventManager.publish('EntryAbility_hap3_onCreate', function () {
       hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility publish EntryAbility_hap3_onCreate');
     });
-    globalThis.abilityAssistEntry03 = this.context
+    globalThis.abilityAssistEntry03 = this.context;
   }
 
-  onDestroy() {
+  onDestroy(): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility onDestroy');
     commonEventManager.publish('ACTS_TEST_DESTROY', function () {
       console.info('commonEventManager EntryAbility publish ACTS_TEST_DESTROY');
     });
   }
 
-  onWindowStageCreate(windowStage: window.WindowStage) {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
     // Main window is created, set main page for this ability
     hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility onWindowStageCreate');
     commonEventManager.publish('EntryAbility_hap3_onWindowStageCreate', function () {
@@ -49,12 +49,12 @@ export default class EntryAbility extends UIAbility {
     });
   }
 
-  onWindowStageDestroy() {
+  onWindowStageDestroy(): void {
     // Main window is destroyed, release UI related resources
     hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility onWindowStageDestroy');
   }
 
-  onForeground() {
+  onForeground(): void {
     // Ability has brought to foreground
     hilog.info(0x0000, 'testTag', '%{public}s', 'EntryAbility onForeground');
     commonEventManager.publish('EntryAbility_hap3_onForeground', function () {
@@ -62,11 +62,11 @@ export default class EntryAbility extends UIAbility {
     });
     setTimeout(() => {
       // destroy assistHap
-      globalThis.abilityAssistEntry03.terminateSelf()
+      globalThis.abilityAssistEntry03.terminateSelf();
     }, 2500);
   }
 
-  onBackground() {
+  onBackground(): void {
     // Ability has back to background
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
   }

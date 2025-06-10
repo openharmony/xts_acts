@@ -26,18 +26,18 @@ export default class UiAbility04 extends UIAbility {
       hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility04 publish UiAbility04_onCreate');
     });
     let uri = want?.uri
-    globalThis.uiAbilityContext4 = this.context
+    globalThis.uiAbilityContext4 = this.context;
     hilog.info(0x0000, 'testTag', '%{public}s', `UiAbility04 want is, ${JSON.stringify(want)}`);
   }
 
-  onDestroy() {
+  onDestroy(): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility04 onDestroy');
     commonEventManager.publish('ACTS_TEST_DESTROY', function () {
       hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility04 publish ACTS_TEST_DESTROY');
     });
   }
 
-  onWindowStageCreate(windowStage: window.WindowStage) {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility04 onWindowStageCreate');
     commonEventManager.publish('UiAbility04_onWindowStageCreate', function () {
       hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility04 publish UiAbility04_onWindowStageCreate');
@@ -55,11 +55,11 @@ export default class UiAbility04 extends UIAbility {
 
   }
 
-  onWindowStageDestroy() {
+  onWindowStageDestroy(): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility04 onWindowStageDestroy');
   }
 
-  onForeground() {
+  onForeground(): void {
     testNum++
     if (testNum === 2) {
       commonEventManager.publish('UiAbility04_onForeground_01', function () {
@@ -78,7 +78,7 @@ export default class UiAbility04 extends UIAbility {
     };
   }
 
-  onBackground() {
+  onBackground(): void {
     // Ability has back to background
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility04 onBackground');
     commonEventManager.publish('UiAbility04_onBackground', function () {

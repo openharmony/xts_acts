@@ -24,7 +24,7 @@ export default class UiAbility09 extends UIAbility {
 
   onCreate(want, launchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility09 onCreate');
-    globalThis.uiAbilityContext9 = this.context
+    globalThis.uiAbilityContext9 = this.context;
     hilog.info(0x0000, 'testTag', '%{public}s', `UiAbility09 want is, ${JSON.stringify(want)}`);
     UiAbility09.isFirstStart = want.parameters.isFirstStart
     if (UiAbility09.isFirstStart) {
@@ -38,7 +38,7 @@ export default class UiAbility09 extends UIAbility {
     }
   }
 
-  onDestroy() {
+  onDestroy(): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility09 onDestroy');
     if (UiAbility09.isFirstStart) {
       commonEventManager.publish('UiAbility09_onDestroy_01', function () {
@@ -51,7 +51,7 @@ export default class UiAbility09 extends UIAbility {
     }
   }
 
-  onWindowStageCreate(windowStage: window.WindowStage) {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility09 onWindowStageCreate');
     if (UiAbility09.isFirstStart) {
       commonEventManager.publish('UiAbility09_onWindowStageCreate_01', function () {
@@ -71,11 +71,11 @@ export default class UiAbility09 extends UIAbility {
     });
   }
 
-  onWindowStageDestroy() {
+  onWindowStageDestroy(): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility09 onWindowStageDestroy');
   }
 
-  onForeground() {
+  onForeground(): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility09 onForeground');
     if (UiAbility09.isFirstStart) {
       commonEventManager.publish('UiAbility09_onForeground_01', function () {
@@ -91,7 +91,7 @@ export default class UiAbility09 extends UIAbility {
     }
   }
 
-  onBackground() {
+  onBackground(): void {
     // Ability has back to background
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility09 onBackground');
 
