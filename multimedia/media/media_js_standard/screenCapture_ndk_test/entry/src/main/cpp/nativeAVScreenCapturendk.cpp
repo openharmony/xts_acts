@@ -1059,7 +1059,6 @@ static napi_value normalAVScreenCaptureSelectionCallbackStop(napi_env env, napi_
     int32_t result = TEST_FAILED;
     if (result2 == AV_SCREEN_CAPTURE_ERR_OK) {
         result = TEST_PASS;
- 
     } else {
         result = TEST_FAILED;
     }
