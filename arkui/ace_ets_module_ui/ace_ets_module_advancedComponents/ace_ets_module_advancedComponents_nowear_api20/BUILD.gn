@@ -16,7 +16,7 @@ import("//test/xts/tools/build/suite.gni")
 ohos_app_assist_suite("ActsAceEtsModuleAdvancedComponentsNoWearApi20TestMain") {
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsAceEtsModuleAdvancedComponentsNoWearApi12TestMain"
+  hap_name = "ActsAceEtsModuleAdvancedComponentsNoWearApi20TestMain"
   part_name = "ace_engine"
   subsystem_name = "arkui"
 }
