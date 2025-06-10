@@ -29,13 +29,7 @@
         let moduleName = abilityDelegatorArguments.parameters['-m'];
         let context = abilityDelegator.getAppContext().getApplicationContext().createModuleContext(moduleName);
         let mResourceManager = context.resourceManager;
-        let imageSource: image.ImageSource = image.createImageSource(
-            mResourceManager.getRawFdSync('videoProcessTsSample.jpeg'));
-        let opts: image.DecodingOptions = {
-            desiredPixelFormat : 3,
-            editable : true,
-            desiredSize:{width:1080, height:2440}
-        }
+        let imageSource: image.ImageSource = image.createImageSource(mResourceManager.getRawFdSync('sample_image.png'));
     
     /**
      * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCODEC_VIDEOENCODER_VIDEO_PROCESS_TS_001
@@ -49,8 +43,8 @@
         try {
             let sourceImage = await imageSource.createPixelMap() as image.PixelMap;
             const imageInfo: image.ImageInfo = await sourceImage.getImageInfo();
-            let targetWidth = imageInfo.size.width * 0.5;
-            let targetHeight = imageInfo.size.height * 0.5;
+            let targetWidth = imageInfo.size.width * 2;
+            let targetHeight = imageInfo.size.height * 2;
             let imageProcessor = videoProcessingEngine.create() as videoProcessingEngine.ImageProcessor;
             expect(imageProcessor != null).assertTrue();
             done();
@@ -77,8 +71,8 @@
         try {
             let sourceImage = await imageSource.createPixelMap() as image.PixelMap;
             const imageInfo: image.ImageInfo = await sourceImage.getImageInfo();
-            let targetWidth = imageInfo.size.width * 0.5;
-            let targetHeight = imageInfo.size.height * 0.5;
+            let targetWidth = imageInfo.size.width * 2;
+            let targetHeight = imageInfo.size.height * 2;
             let imageProcessor = videoProcessingEngine.create() as videoProcessingEngine.ImageProcessor;
             expect(imageProcessor != null).assertTrue();
             let enhancedPixelmap: image.PixelMap = imageProcessor.enhanceDetailSync(
@@ -108,8 +102,8 @@
         try {
             let sourceImage = await imageSource.createPixelMap() as image.PixelMap;
             const imageInfo: image.ImageInfo = await sourceImage.getImageInfo();
-            let targetWidth = imageInfo.size.width * 0.5;
-            let targetHeight = imageInfo.size.height * 0.5;
+            let targetWidth = imageInfo.size.width * 2;
+            let targetHeight = imageInfo.size.height * 2;
             let imageProcessor = videoProcessingEngine.create() as videoProcessingEngine.ImageProcessor;
             expect(imageProcessor != null).assertTrue();
             let enhancedPixelmap: image.PixelMap = imageProcessor.enhanceDetailSync(
@@ -139,8 +133,8 @@
         try {
             let sourceImage = await imageSource.createPixelMap() as image.PixelMap;
             const imageInfo: image.ImageInfo = await sourceImage.getImageInfo();
-            let targetWidth = imageInfo.size.width * 0.5;
-            let targetHeight = imageInfo.size.height * 0.5;
+            let targetWidth = imageInfo.size.width * 2;
+            let targetHeight = imageInfo.size.height * 2;
             let imageProcessor = videoProcessingEngine.create() as videoProcessingEngine.ImageProcessor;
             expect(imageProcessor != null).assertTrue();
             let enhancedPixelmap: image.PixelMap = imageProcessor.enhanceDetailSync(
@@ -170,8 +164,8 @@
         try {
             let sourceImage = await imageSource.createPixelMap() as image.PixelMap;
             const imageInfo: image.ImageInfo = await sourceImage.getImageInfo();
-            let targetWidth = imageInfo.size.width * 0.5;
-            let targetHeight = imageInfo.size.height * 0.5;
+            let targetWidth = imageInfo.size.width * 2;
+            let targetHeight = imageInfo.size.height * 2;
             let imageProcessor = videoProcessingEngine.create() as videoProcessingEngine.ImageProcessor;
             expect(imageProcessor != null).assertTrue();
             let enhancedPixelmap: image.PixelMap = imageProcessor.enhanceDetailSync(
@@ -201,8 +195,8 @@
         try {
             let sourceImage = await imageSource.createPixelMap() as image.PixelMap;
             const imageInfo: image.ImageInfo = await sourceImage.getImageInfo();
-            let targetWidth = imageInfo.size.width * 0.5;
-            let targetHeight = imageInfo.size.height * 0.5;
+            let targetWidth = imageInfo.size.width * 2;
+            let targetHeight = imageInfo.size.height * 2;
             let imageProcessor = videoProcessingEngine.create() as videoProcessingEngine.ImageProcessor;
             expect(imageProcessor != null).assertTrue();
             let enhancedPixelmap: image.PixelMap = imageProcessor.enhanceDetailSync(
@@ -234,7 +228,7 @@
             let imageProcessor = videoProcessingEngine.create() as videoProcessingEngine.ImageProcessor;
             expect(imageProcessor != null).assertTrue();
             let enhancedPixelmap: image.PixelMap = imageProcessor.enhanceDetailSync(
-                sourceImage, 0.5, videoProcessingEngine.QualityLevel.NONE);
+                sourceImage, 2, videoProcessingEngine.QualityLevel.NONE);
             expect(enhancedPixelmap != null).assertTrue();
             done();
         } catch (err) {
@@ -260,8 +254,8 @@
         try {
             let sourceImage = await imageSource.createPixelMap() as image.PixelMap;
             const imageInfo: image.ImageInfo = await sourceImage.getImageInfo();
-            let targetWidth = imageInfo.size.width * 0.5;
-            let targetHeight = imageInfo.size.height * 0.5;
+            let targetWidth = imageInfo.size.width * 2;
+            let targetHeight = imageInfo.size.height * 2;
             let imageProcessor = videoProcessingEngine.create() as videoProcessingEngine.ImageProcessor;
             expect(imageProcessor != null).assertTrue();
             let enhancedPixelmap: image.PixelMap = await imageProcessor.enhanceDetail(
@@ -293,7 +287,7 @@
             let imageProcessor = videoProcessingEngine.create() as videoProcessingEngine.ImageProcessor;
             expect(imageProcessor != null).assertTrue();
             let enhancedPixelmap: image.PixelMap = await imageProcessor.enhanceDetail(
-                sourceImage, 0.5, videoProcessingEngine.QualityLevel.NONE);
+                sourceImage, 2, videoProcessingEngine.QualityLevel.NONE);
             expect(enhancedPixelmap != null).assertTrue();
             done();
         } catch (err) {
