@@ -5,7 +5,7 @@ import window from '@ohos.window';
 import { BusinessError } from '@ohos.base';
 import hilog from '@ohos.hilog';
 import { MyCallback } from '../models/MyCallback';
-import { AppStorage } from 'arkui.stateManagement.storages.appStorage'
+import { AppStorage } from '@ohos.arkui.stateManagement'
 import common from '@ohos.app.ability.common';
 
 class EntryAbility extends UIAbility {

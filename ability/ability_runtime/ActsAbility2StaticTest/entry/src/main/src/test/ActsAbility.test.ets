@@ -4,7 +4,7 @@ import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry
 import common from '@ohos.app.ability.common';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import Utils from './Util.test';
-import { AppStorage } from 'arkui.stateManagement.storages.appStorage'
+import { AppStorage } from '@ohos.arkui.stateManagement';
 import abilityConstant from '@ohos.app.ability.AbilityConstant';
 
 let domain: number = 0x0000;
