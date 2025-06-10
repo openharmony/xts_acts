@@ -49,7 +49,7 @@ export default function exportArrayTest() {
      * @tc.desc Test name *
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
     it('exportArrayTestTest1001', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       expect(arr4.default).assertDeepEquals([1, 2, 3]);
@@ -64,7 +64,7 @@ export default function exportArrayTest() {
      * @tc.desc Test default let array
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('exportArrayTestTest1002', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       expect(arr).assertDeepEquals([1, 2, 3]);
@@ -76,7 +76,7 @@ export default function exportArrayTest() {
      * @tc.desc Test type array
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('exportArrayTestTest1003', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       let arr: typeArr<number> = [6, 7, 8];
@@ -89,7 +89,7 @@ export default function exportArrayTest() {
      * @tc.desc Test let inline array
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('exportArrayTestTest1004', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       expect(arr1).assertDeepEquals([2, 3, 4]);
@@ -101,7 +101,7 @@ export default function exportArrayTest() {
      * @tc.desc Test let array
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('exportArrayTestTest1005', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       expect(arr2).assertDeepEquals([3, 4, 5]);
@@ -113,7 +113,7 @@ export default function exportArrayTest() {
      * @tc.desc Test name array
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('exportArrayTestTest1006', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       expect(arr3).assertDeepEquals([3, 4, 5]);
@@ -125,7 +125,7 @@ export default function exportArrayTest() {
      * @tc.desc Test *
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('exportArrayTestTest1007', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       expect(arr5.arr1).assertDeepEquals([2, 3, 4]);
@@ -139,7 +139,7 @@ export default function exportArrayTest() {
      * @tc.desc Test default array
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('exportArrayTestTest1008', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       expect(defaultArr).assertDeepEquals([4, 5, 6]);
@@ -151,7 +151,7 @@ export default function exportArrayTest() {
      * @tc.desc Test default type array
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('exportArrayTestTest1009', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       let arr: defaultTypeArr<number> = [7, 8, 9];
