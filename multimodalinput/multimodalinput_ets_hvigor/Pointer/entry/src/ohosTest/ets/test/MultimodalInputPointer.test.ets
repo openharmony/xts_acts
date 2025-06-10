@@ -1540,5 +1540,49 @@ export default function MultimodalInputPointerTest() {
         done();
       }
     });
+
+     /**
+     * @tc.number: SUB_MMI_Input_Api_Pointer_RightClickType_0100
+     * @tc.name: SUB_MMI_Input_Api_Pointer_RightClickType_0100
+     * @tc.desc: Test Pointer interface RightClickType TOUCHPAD_TWO_FINGER_TAP_OR_RIGHT_BUTTON 
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it("SUB_MMI_Input_Api_Pointer_RightClickType_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function)=> {
+      let caseName = "SUB_MMI_Input_Api_Pointer_RightClickType_0100";
+      try {
+        let TOUCHPAD_TWO_FINGER_TAP_OR_RIGHT_BUTTON = pointer.RightClickType.TOUCHPAD_TWO_FINGER_TAP_OR_RIGHT_BUTTON;
+        console.info(`${caseName} TOUCHPAD_TWO_FINGER_TAP_OR_RIGHT_BUTTON: ${JSON.stringify(TOUCHPAD_TWO_FINGER_TAP_OR_RIGHT_BUTTON)}`);
+        ExpectTrue(TOUCHPAD_TWO_FINGER_TAP_OR_RIGHT_BUTTON == 4);
+        done();
+      } catch (error) {
+        console.info(`${caseName} failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+        ExpectFalse(true);
+        done();
+      }
+    });
+
+     /**
+     * @tc.number: SUB_MMI_Input_Api_Pointer_RightClickType_0200
+     * @tc.name: SUB_MMI_Input_Api_Pointer_RightClickType_0200
+     * @tc.desc: Test Pointer interface RightClickType TOUCHPAD_TWO_FINGER_TAP_OR_LEFT_BUTTON 
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it("SUB_MMI_Input_Api_Pointer_RightClickType_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function)=> {
+      let caseName = "SUB_MMI_Input_Api_Pointer_RightClickType_0200";
+      try {
+        let TOUCHPAD_TWO_FINGER_TAP_OR_LEFT_BUTTON = pointer.RightClickType.TOUCHPAD_TWO_FINGER_TAP_OR_LEFT_BUTTON;
+        console.info(`${caseName} TOUCHPAD_TWO_FINGER_TAP_OR_LEFT_BUTTON: ${JSON.stringify(TOUCHPAD_TWO_FINGER_TAP_OR_LEFT_BUTTON)}`);
+        ExpectTrue(TOUCHPAD_TWO_FINGER_TAP_OR_LEFT_BUTTON == 5);
+        done();
+      } catch (error) {
+        console.info(`${caseName} failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+        ExpectFalse(true);
+        done();
+      }
+    });
   });
 }
