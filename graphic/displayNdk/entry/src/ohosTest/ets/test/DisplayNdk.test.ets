@@ -584,8 +584,8 @@ export default function DisplayNdkTest() {
 
     /**
      * @tc.number    : OH_NativeDisplayManager_CreateAvailableAreaErrCode_140003
-     * @tc.name      : test_OH_NativeDisplayManager_CreateAvailableAreaErrCode_140003
-     * @tc.desc      : test_OH_NativeDisplayManager_CreateAvailableAreaErrCode_140003
+     * @tc.name      : test_OH_NativeDisplayManager_CreateAvailableArea_ErrCode140003
+     * @tc.desc      : test_OH_NativeDisplayManager_CreateAvailableArea_ErrCode140003
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -627,7 +627,7 @@ export default function DisplayNdkTest() {
     })
 
     /**
-     * @tc.number    : OH_NativeDisplayManager_GetDisplaySourceMode
+     * @tc.number    : test_OH_NativeDisplayManager_GetDisplaySourceMode_1
      * @tc.name      : test_OH_NativeDisplayManager_GetDisplaySourceMode_1
      * @tc.desc      : test_OH_NativeDisplayManager_GetDisplaySourceMode_1
      * @tc.size      : MediumTest
@@ -649,7 +649,7 @@ export default function DisplayNdkTest() {
     })
 
     /**
-     * @tc.number    : OH_NativeDisplayManager_GetDisplaySourceMode
+     * @tc.number    : test_OH_NativeDisplayManager_GetDisplaySourceMode_2
      * @tc.name      : test_OH_NativeDisplayManager_GetDisplaySourceMode_2
      * @tc.desc      : test_OH_NativeDisplayManager_GetDisplaySourceMode_2
      * @tc.size      : MediumTest
@@ -685,7 +685,7 @@ export default function DisplayNdkTest() {
     })
 
     /**
-     * @tc.number    : OH_NativeDisplayManager_GetDisplaySourceMode
+     * @tc.number    : test_OH_NativeDisplayManager_GetDisplaySourceMode_4
      * @tc.name      : test_OH_NativeDisplayManager_GetDisplaySourceMode_4
      * @tc.desc      : test_OH_NativeDisplayManager_GetDisplaySourceMode_4
      * @tc.size      : MediumTest
@@ -723,7 +723,7 @@ export default function DisplayNdkTest() {
     })
 
     /**
-     * @tc.number    : OH_NativeDisplayManager_GetDisplaySourceMode
+     * @tc.number    : test_OH_NativeDisplayManager_GetDisplaySourceMode_ErrCode140003
      * @tc.name      : test_OH_NativeDisplayManager_GetDisplaySourceMode_ErrCode140003
      * @tc.desc      : test_OH_NativeDisplayManager_GetDisplaySourceMode_ErrCode140003
      * @tc.size      : MediumTest
@@ -745,7 +745,7 @@ export default function DisplayNdkTest() {
     })
 
     /**
-     * @tc.number    : OH_NativeDisplayManager_GetDisplayPosition
+     * @tc.number    : test_OH_NativeDisplayManager_GetDisplayPosition
      * @tc.name      : test_OH_NativeDisplayManager_GetDisplayPosition
      * @tc.desc      : test_OH_NativeDisplayManager_GetDisplayPosition
      * @tc.size      : MediumTest
@@ -929,8 +929,8 @@ export default function DisplayNdkTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('OH_NativeDisplayManager_RegisterDisplayRemoveListener', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
-      let caseName = 'OH_NativeDisplayManager_RegisterDisplayRemoveListener';
+    it('test_OH_NativeDisplayManager_RegisterDisplayRemoveListener', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
+      let caseName = 'test_OH_NativeDisplayManager_RegisterDisplayRemoveListener';
       try{
         let result  = testNapi.registerDisplayRemoveListener();
         console.log(`${caseName} result: ${JSON.stringify(result)}`);
