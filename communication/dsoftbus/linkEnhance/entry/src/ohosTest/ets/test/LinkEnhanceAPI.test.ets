@@ -22,6 +22,7 @@ import {common} from '@kit.AbilityKit';
 import btAccess from '@ohos.bluetooth.access';
 
 let OPEN_BT_TEXT:string = "开启";
+let CLOSE_BT_TEXT:string = "关闭";
 
 let logTag = "[linkEnhance_log]";
 async function sleep(ms:number): Promise<void>{
@@ -132,6 +133,8 @@ export default function LinkEnhanceAPI() {
     afterAll(async (done: Function) => {
       console.info(logTag +'[bluetooth_js] bt close');
       btAccess.disableBluetooth();
+      await sleep(5000);
+      await clickRequestPermission(CLOSE_BT_TEXT);
       done();
     })
     /**
