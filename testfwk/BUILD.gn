@@ -24,9 +24,9 @@ group("testfwk") {
     deps = [
       "uitest:ActsUiTest",
       "uitestScene:ActsUiTestScene",
+      "uitestStatic:ActsUiStaticTest",
       "uitest_errorcode:ActsUiTestErrorCodeTest",
       "uitest_quarantine:ActsUiTestQuarTest",
-	  "uitestStatic:ActsUiStaticTest",
     ]
   }
 }

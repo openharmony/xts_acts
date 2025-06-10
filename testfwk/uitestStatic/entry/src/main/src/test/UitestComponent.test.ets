@@ -47,6 +47,11 @@ export default function uitestComponentTest() {
       await stopApplication('com.uitestScene.acts');
     })
 
+    /*
+    * @tc.number: uitestComponentTest_0001
+    * @tc.name: testClearText_static
+    * @tc.desc: clear text of the target UiComponent.
+    */
     it('testClearText_static', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
       hilog.info(domain, tag, `testClearText_static start `);
       try {
@@ -78,6 +83,12 @@ export default function uitestComponentTest() {
       await stopApplication('com.uitestScene.acts');
       hilog.info(domain, tag, `testClearText_static end `);
     })
+
+    /*
+    * @tc.number: uitestComponentTest_0002
+    * @tc.name: testScrollToBottom_static
+    * @tc.desc: scroll on this UiComponent to the bottom.
+    */
     it('testScrollToBottom_static', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
       try {
         hilog.info(domain, tag, "testScrollToBottom_static Start!!!!!!!!!!!!!!!!!!!!!!!!!！")
@@ -106,6 +117,12 @@ export default function uitestComponentTest() {
       hilog.info(domain, tag, "testScrollToBottom_static end !!!!!!!!!!!!!!!!!!!!!!!!!！");
       await stopApplication('com.uitestScene.acts');
     })
+
+    /*
+    * @tc.number: uitestComponentTest_0003
+    * @tc.name: testScrollToBottom_speed_static
+    * @tc.desc: scroll on this UiComponent to the bottom.
+    */
     it('testScrollToBottom_speed_static',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
       try {
         hilog.info(domain, tag, "testScrollToBottom_speed_static Start!!!!!!!!!!!!!!!!!!!!!!!!!！")
@@ -134,6 +151,12 @@ export default function uitestComponentTest() {
       await stopApplication('com.uitestScene.acts');
       hilog.info(domain, tag, "testScrollToBottom_speed_static end ")
     })
+
+    /*
+    * @tc.number: uitestComponentTest_0004
+    * @tc.name: testScrollToTop_static
+    * @tc.desc: scroll on this UiComponent to the top.
+    */
     it('testScrollToTop_static',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
       try {
         hilog.info(domain, tag, "testScrollToTop_static Start")
@@ -164,6 +187,12 @@ export default function uitestComponentTest() {
       hilog.info(domain, tag, "testScrollToTop_static end ");
       await stopApplication('com.uitestScene.acts');
     })
+
+    /*
+    * @tc.number: uitestComponentTest_0005
+    * @tc.name: testScrollToTop_speed_static
+    * @tc.desc: scroll on this UiComponent to the top.
+    */
     it('testScrollToTop_speed_static',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
       try {
         hilog.info(domain, tag, "testScrollToTop_speed_static Start")
@@ -190,6 +219,12 @@ export default function uitestComponentTest() {
       await stopApplication('com.uitestScene.acts');
       hilog.info(domain, tag, "testScrollToTop_speed_static end");
     })
+
+    /*
+    * @tc.number: uitestComponentTest_0006
+    * @tc.name: testScrollSearch_static
+    * @tc.desc: scroll on this UiComponent to find matched UiComponent.
+    */
     it('testScrollSearch_static',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
       hilog.info(domain, tag, `testScrollSearch_static start `);
       try {
@@ -216,6 +251,12 @@ export default function uitestComponentTest() {
       hilog.info(domain, tag, `testScrollSearch_static end `);
       await stopApplication('com.uitestScene.acts');
     })
+
+    /*
+    * @tc.number: uitestComponentTest_0007
+    * @tc.name: testScrollSearchVertical_static
+    * @tc.desc: scroll vertically on this UiComponent to find matched UiComponent.
+    */
     it('testScrollSearchVertical_static',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
       hilog.info(domain, tag, `testScrollSearchVertical start `);
       try {
@@ -268,6 +309,12 @@ export default function uitestComponentTest() {
       hilog.info(domain, tag, `testScrollSearchVertical_static end `);
       await stopApplication('com.uitestScene.acts');
     })
+
+    /*
+    * @tc.number: uitestComponentTest_0008
+    * @tc.name: testPinch_static
+    * @tc.desc: pinch enlarge this UiComponent to the target scale.
+    */
     it('testPinch_static',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
       hilog.info(domain, tag, `testPinch_static start `);
       try {
@@ -311,6 +358,12 @@ export default function uitestComponentTest() {
       hilog.info(domain, tag, `testPinch_static end `);
       await stopApplication('com.uitestScene.acts');
     })
+
+    /*
+    * @tc.number: uitestComponentTest_0009
+    * @tc.name: testPinchOut_static
+    * @tc.desc: pinch enlarge this UiComponent to the target scale.
+    */
     it('testPinchOut_static',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
       hilog.info(domain, tag, `testPinchOut_static start `);
       try {
@@ -354,6 +407,12 @@ export default function uitestComponentTest() {
       hilog.info(domain, tag, `testPinchOut_static end `);
       await stopApplication('com.uitestScene.acts');
     })
+
+    /*
+    * @tc.number: uitestComponentTest_0010
+    * @tc.name: testUiComponentLongClick_static
+    * @tc.desc: longClick this ComponentClick.
+    */
     it('testUiComponentLongClick_static',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
       hilog.info(domain, tag, `testUiComponentLongClick_static start `);
       try {
@@ -383,6 +442,12 @@ export default function uitestComponentTest() {
       hilog.info(domain, tag, `testUiComponentLongClick_static end `);
       await stopApplication('com.uitestScene.acts');
     })
+
+    /*
+    * @tc.number: uitestComponentTest_0011
+    * @tc.name: testInputText_static
+    * @tc.desc: inject text to the target UiComponent.
+    */
     it('testInputText_static',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
       hilog.info(domain, tag, "testInputText_static start !!!!")
       try {
@@ -420,6 +485,12 @@ export default function uitestComponentTest() {
       hilog.info(domain, tag, "testInputText_static end");
       await stopApplication('com.uitestScene.acts');
     })
+
+    /*
+    * @tc.number: uitestComponentTest_0012
+    * @tc.name: testGetUiComponentBoundsCenter_static
+    * @tc.desc: get the boundsCenter of this @link UiComponent.
+    */
     it('testGetUiComponentBoundsCenter_static',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
       hilog.info(domain, tag, `testGetUiComponentBoundsCenter_static start`);
       try {
@@ -441,6 +512,12 @@ export default function uitestComponentTest() {
       hilog.info(domain, tag, `testGetUiComponentBoundsCenter_static end`);
       await stopApplication('com.uitestScene.acts');
     })
+
+    /*
+    * @tc.number: uitestComponentTest_0013
+    * @tc.name: testGetUiComponentBounds_static
+    * @tc.desc: get the bounds of this UiComponent.
+    */
     it('testGetUiComponentBounds_static',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
       hilog.info(domain, tag, `testGetUiComponentBounds_static start`);
       try {
@@ -462,6 +539,12 @@ export default function uitestComponentTest() {
       hilog.info(domain, tag, `testGetUiComponentBounds_static end`);
       await stopApplication('com.uitestScene.acts');
     })
+
+    /*
+    * @tc.number: uitestComponentTest_0014
+    * @tc.name: testDragTo_static
+    * @tc.desc: drag this UiComponent to the bounds rect of target UiComponent.
+    */
     it('testDragTo_static',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
       hilog.info(domain, tag, `testDragTo_static start`);
       try {
@@ -497,6 +580,12 @@ export default function uitestComponentTest() {
       hilog.info(domain, tag, `testDragTo_static end`);
       await stopApplication('com.uitestScene.acts');
     })
+
+    /*
+    * @tc.number: uitestComponentTest_0015
+    * @tc.name: testUiComponentDoubleClick_static
+    * @tc.desc: doubleClick this UiComponentClick.
+    */
     it('testUiComponentDoubleClick_static',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
       try {
         let driver = Driver.create();
@@ -525,6 +614,12 @@ export default function uitestComponentTest() {
       hilog.info(domain, tag, "testUiComponentDoubleClick_static over!!!!");
       await stopApplication('com.uitestScene.acts');
     })
+
+    /*
+    * @tc.number: uitestComponentTest_0016
+    * @tc.name: testUiComponentClick_static
+    * @tc.desc: click this UiComponentClick.
+    */
     it('testUiComponentClick_static',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
       hilog.info(domain, tag, `testUiComponentClick_static start`);
       try {

@@ -42,6 +42,11 @@ export default function uitestEnumTest() {
       hilog.info(domain, tag, "uitestEnumTest loadup over!!!!!")
     })
 
+    /*
+   * @tc.number: uitestEnumTest_001
+   * @tc.name: testWindowModeEnum_static
+   * @tc.desc: MatchPattern test.
+   */
     it('testWindowModeEnum_static', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (): void => {
       hilog.info(domain, tag, `testWindowModeEnum_static start `);
       hilog.info(domain, tag, `WindowMode.FULLSCREEN is: ${WindowMode.FULLSCREEN}`);
@@ -54,6 +59,12 @@ export default function uitestEnumTest() {
       expect(JSON.stringify(WindowMode.FLOATING)).assertEqual('3');
       hilog.info(domain, tag, `testWindowModeEnum_static end `);
     })
+
+    /*
+     * @tc.number: uitestEnumTest_002
+     * @tc.name: testUiDirectionEnum_static
+     * @tc.desc: MatchPattern test.
+     */
     it('testUiDirectionEnum_static', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (): void => {
       hilog.info(domain, tag, `testUiDirectionEnum_static start `);
       hilog.info(domain, tag, `UiDirection.LEFT is: ${UiDirection.LEFT}`);
@@ -67,6 +78,11 @@ export default function uitestEnumTest() {
       hilog.info(domain, tag, `testUiDirectionEnum_static end `);
     })
 
+    /*
+     * @tc.number: uitestEnumTest_003
+     * @tc.name: testResizeDirectionEnum_static
+     * @tc.desc: MatchPattern test.
+     */
     it('testResizeDirectionEnum_static', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (): void => {
       hilog.info(domain, tag, `testResizeDirectionEnum_static start `);
       hilog.info(domain, tag, `ResizeDirection.LEFT is: ${ResizeDirection.LEFT}`);
@@ -88,6 +104,12 @@ export default function uitestEnumTest() {
       hilog.info(domain, tag, `testResizeDirectionEnum_static end `);
     })
 
+
+    /*
+     * @tc.number: uitestEnumTest_004
+     * @tc.name: testMouseButtonEnum_static
+     * @tc.desc: MatchPattern test.
+     */
     it('testMouseButtonEnum_static', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (): void => {
       hilog.info(domain, tag, `testMouseButtonEnum_static start `);
       hilog.info(domain, tag, `MouseButton.MOUSE_BUTTON_LEFT is: ${MouseButton.MOUSE_BUTTON_LEFT}`);
@@ -99,6 +121,11 @@ export default function uitestEnumTest() {
       hilog.info(domain, tag, `testMouseButtonEnum_static end `);
     })
 
+    /*
+     * @tc.number: uitestEnumTest_004
+     * @tc.name: testMatchPatternEnum_static
+     * @tc.desc: MatchPattern test.
+     */
     it('testMatchPatternEnum_static', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (): void => {
       hilog.info(domain, tag, `testMatchPatternEnum_static start `);
       hilog.info(domain, tag, `MatchPattern.EQUALS is: ${MatchPattern.EQUALS}`);
@@ -116,6 +143,11 @@ export default function uitestEnumTest() {
       hilog.info(domain, tag, `testMatchPatternEnum_static end `);
     })
 
+    /*
+     * @tc.number: uitestEnumTest_005
+     * @tc.name: testDisplayRotationEnum_static
+     * @tc.desc: MatchPattern test.
+     */
     it('testDisplayRotationEnum_static', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, (): void => {
       hilog.info(domain, tag, `testDisplayRotationEnum_static start `);
       hilog.info(domain, tag, `DisplayRotation.ROTATION_0 is: ${DisplayRotation.ROTATION_0}`);
