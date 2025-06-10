@@ -1733,5 +1733,626 @@ export default function requestConfigSavesTest() {
       }
     });
 
+    /*
+     * @tc.number: SUB_Request_Download_minSped_0100
+     * @tc.name: SUB_Request_Download_minSped_0100
+     * @tc.desc: speed error.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('SUB_Request_Download_minSped_0100', Level.LEVEL2, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_Download_minSped_0100 is starting-----------------------");
+      let minSpeed: request.agent.MinSpeed = {
+        speed: -1,
+        duration: 1,
+      }
+
+      let config:request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
+        title: 'createTest',
+        description: 'XTS download test!',
+        saveas: './SUB_Request_Download_minSped_0100',
+        network: request.agent.Network.ANY,
+        minSpeed: minSpeed,
+        overwrite: true
+      };
+      let task: request.agent.Task | null = null;
+      try {
+        task = await request.agent.create(baseContext, config);
+        console.info("====>SUB_Request_Download_minSped_0100 create success");
+        expect().assertFail();
+      } catch (err) {
+        console.info("====>SUB_Request_Download_minSped_0100 catch err: " + JSON.stringify(err));
+        expect(err.code).assertEqual(401);
+        if (task !== null){
+          await removeTask(task);
+          console.info("====>SUB_Request_Download_minSped_0100 removeTask");
+        }
+        done();
+      }
+    });
+
+    /*
+     * @tc.number: SUB_Request_Download_minSped_0200
+     * @tc.name: SUB_Request_Download_minSped_0200
+     * @tc.desc: duration error.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('SUB_Request_Download_minSped_0200', Level.LEVEL2, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_Download_minSped_0200 is starting-----------------------");
+      let minSpeed: request.agent.MinSpeed = {
+        speed: 1,
+        duration: -1,
+      }
+
+      let config:request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
+        title: 'createTest',
+        description: 'XTS download test!',
+        saveas: './SUB_Request_Download_minSped_0200',
+        network: request.agent.Network.ANY,
+        minSpeed: minSpeed,
+        overwrite: true
+      };
+      let task: request.agent.Task | null = null;
+      try {
+        task = await request.agent.create(baseContext, config);
+        console.info("====>SUB_Request_Download_minSped_0200 create success");
+        expect().assertFail();
+      } catch (err) {
+        console.info("====>SUB_Request_Download_minSped_0200 catch err: " + JSON.stringify(err));
+        expect(err.code).assertEqual(401);
+        if (task !== null){
+          await removeTask(task);
+          console.info("====>SUB_Request_Download_minSped_0200 removeTask");
+        }
+        done();
+      }
+    });
+
+    /*
+     * @tc.number: SUB_Request_Download_minSped_0400
+     * @tc.name: SUB_Request_Download_minSped_0400
+     * @tc.desc: minSpeed less duration.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('SUB_Request_Download_minSped_0400', Level.LEVEL1, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_Download_minSped_0400 is starting-----------------------");
+      let minSpeed: request.agent.MinSpeed = {
+        speed: 1024 * 1024 * 1024,
+        duration: 5,
+      }
+      let config:request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/BigFile.txt',
+        title: 'createTest',
+        description: 'XTS download test!',
+        saveas: './SUB_Request_Download_minSped_0400',
+        network: request.agent.Network.ANY,
+        minSpeed: minSpeed,
+        overwrite: true
+      };
+      try {
+
+        let task: request.agent.Task = await request.agent.create(baseContext, config);
+        console.info("====>SUB_Request_Download_minSped_0400 create success");
+        let faultsCallback = (faults: request.agent.Faults) => {
+          try {
+            task.off('faultOccur', faultsCallback);
+            console.info("====>SUB_Request_Download_minSped_0400 faults: " + JSON.stringify(faults));
+            expect(faults).assertEqual(request.agent.Faults.LOW_SPEED);
+            done();
+          } catch (err) {
+            console.info("====>SUB_Request_Download_minSped_0400 err: " + JSON.stringify(err));
+            done();
+          }
+        }
+        task.on('faultOccur', faultsCallback)
+        await task.start();
+        console.info("====>SUB_Request_Download_minSped_0400 task.start");
+      } catch (err) {
+        console.info("====>SUB_Request_Download_minSped_0400 create catch err: " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /*
+     * @tc.number: SUB_Request_Download_minSped_0900
+     * @tc.name: SUB_Request_Download_minSped_0900
+     * @tc.desc: maxSpeed less than minSpeed.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('SUB_Request_Download_minSped_0900', Level.LEVEL2, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_Download_minSped_0900 is starting-----------------------");
+      let minSpeed: request.agent.MinSpeed = {
+        speed: 16385,
+        duration: 60,
+      }
+
+      let config:request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
+        title: 'createTest',
+        description: 'XTS download test!',
+        saveas: './SUB_Request_Download_minSped_0900',
+        network: request.agent.Network.ANY,
+        minSpeed: minSpeed,
+        overwrite: true
+      };
+      let task: request.agent.Task | null = null;
+      try {
+        task = await request.agent.create(baseContext, config);
+        console.info("====>SUB_Request_Download_minSped_0900 create success");
+        task.setMaxSpeed(16 * 1024);
+        console.info("====>SUB_Request_Download_minSped_0900 setMaxSpeed success");
+        expect().assertFail();
+      } catch (err) {
+        console.info("====>SUB_Request_Download_minSped_0900 catch err: " + JSON.stringify(err));
+        expect(err.code).assertEqual(401);
+        if (task !== null){
+          await removeTask(task);
+          console.info("====>SUB_Request_Download_minSped_0900 removeTask");
+        }
+        done();
+      }
+    });
+
+    /*
+     * @tc.number: SUB_Request_Download_minSped_1000
+     * @tc.name: SUB_Request_Download_minSped_1000
+     * @tc.desc: minSpeed right.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('SUB_Request_Download_minSped_1000', Level.LEVEL1, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_Download_minSped_1000 is starting-----------------------");
+      let minSpeed: request.agent.MinSpeed = {
+        speed: 1024 * 1024 * 1024,
+        duration: 0,
+      }
+      let config:request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
+        title: 'createTest',
+        description: 'XTS download test!',
+        saveas: './SUB_Request_Download_minSped_1000',
+        network: request.agent.Network.ANY,
+        minSpeed: minSpeed,
+        overwrite: true
+      };
+      try {
+
+        let task: request.agent.Task = await request.agent.create(baseContext, config);
+        console.info("====>SUB_Request_Download_minSped_1000 create success");
+        let completed = (pro: request.agent.Progress) => {
+          try {
+            task.off('completed');
+            console.info("====>SUB_Request_Download_minSped_1000 completed pro: " + JSON.stringify(pro));
+            expect(pro.state).assertEqual(64);
+            done();
+          } catch (err) {
+            console.info("====>SUB_Request_Download_minSped_1000 err: " + JSON.stringify(err));
+            done();
+          }
+        }
+        task.on('completed', completed)
+        await task.start();
+        console.info("====>SUB_Request_Download_minSped_1000 task.start");
+      } catch (err) {
+        console.info("====>SUB_Request_Download_minSped_1000 create catch err: " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    });
+
+
+    /*
+     * @tc.number: SUB_Request_Download_minSped_1100
+     * @tc.name: SUB_Request_Download_minSped_1100
+     * @tc.desc: minSpeed right.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('SUB_Request_Download_minSped_1100', Level.LEVEL1, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_Download_minSped_1100 is starting-----------------------");
+      let minSpeed: request.agent.MinSpeed = {
+        speed: 0,
+        duration: 1,
+      }
+      let config:request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
+        title: 'createTest',
+        description: 'XTS download test!',
+        saveas: './SUB_Request_Download_minSped_1100',
+        network: request.agent.Network.ANY,
+        minSpeed: minSpeed,
+        overwrite: true
+      };
+      try {
+
+        let task: request.agent.Task = await request.agent.create(baseContext, config);
+        console.info("====>SUB_Request_Download_minSped_1100 create success");
+        let completed = (pro: request.agent.Progress) => {
+          try {
+            task.off('completed');
+            console.info("====>SUB_Request_Download_minSped_1100 completed pro: " + JSON.stringify(pro));
+            expect(pro.state).assertEqual(64);
+            done();
+          } catch (err) {
+            console.info("====>SUB_Request_Download_minSped_1100 err: " + JSON.stringify(err));
+            done();
+          }
+        }
+        task.on('completed', completed)
+        await task.start();
+        console.info("====>SUB_Request_Download_minSped_1100 task.start");
+      } catch (err) {
+        console.info("====>SUB_Request_Download_minSped_1100 create catch err: " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number  SUB_Request_Download_off_faultOccur_0100
+     * @tc.name    SUB_Request_Download_off_faultOccur_0100
+     * @tc.desc    on faultOccur.
+     * @tc.size    MEDIUMTEST
+     * @tc.type    : Function
+     * @tc.level   : Level 2
+     */
+    it('SUB_Request_Download_off_faultOccur_0100', Level.LEVEL2, async (done: Function) => {
+      console.info("-----------------------SUB_Request_Download_off_faultOccur_0100 is starting-----------------------");
+      let config: request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/V1.0/test1.txt',
+        title: 'reeateTest',
+        overwrite: true,
+        description: 'XTS download test!',
+        saveas: './SUB_Request_Download_off_faultOccur_0100.txt',
+        network: request.agent.Network.ANY,
+        mode:request.agent.Mode.BACKGROUND
+      };
+
+      let arr: Array<number> = new Array();
+      let arr1 = [2, 3];
+      let faultOccurCallBack1 = (faults: request.agent.Faults) => {
+        console.info("====>SUB_Request_Download_off_faultOccur_0100 faultOccurCallBack1 faults: " + faults);
+        arr.push(1);
+      }
+      let faultOccurCallBack2 = (faults: request.agent.Faults) => {
+        console.info("====>SUB_Request_Download_off_faultOccur_0100 faultOccurCallBack2 faults: " + faults);
+        arr.push(2);
+      }
+      let faultOccurCallBack3 = (faults: request.agent.Faults) => {
+        try {
+          task.off('faultOccur')
+          console.info("====>SUB_Request_Download_off_faultOccur_0100 faultOccurCallBack3 faults: " + faults);
+          arr.push(3);
+          console.info("====>SUB_Request_Download_off_faultOccur_0100 task3 progress on arr: " + JSON.stringify(arr));
+          expect(arr.join()).assertEqual(arr1.join());
+          done();
+        } catch (err) {
+          console.info("====>SUB_Request_Download_off_faultOccur_0100 catch err: " + JSON.stringify(err));
+          done();
+        }
+      }
+      let task: request.agent.Task = await request.agent.create(baseContext, config);
+      console.info("====>SUB_Request_Download_off_faultOccur_0100 create task success");
+      task.on('faultOccur', faultOccurCallBack1);
+      task.off('faultOccur', faultOccurCallBack1);
+      task.on('faultOccur', faultOccurCallBack2);
+      task.on('faultOccur', faultOccurCallBack3);
+      await task.start();
+    });
+
+    /**
+     * @tc.number  SUB_Request_Download_off_faultOccur_0200
+     * @tc.name    SUB_Request_Download_off_faultOccur_0200
+     * @tc.desc    on faultOccur.
+     * @tc.size    MEDIUMTEST
+     * @tc.type    : Function
+     * @tc.level   : Level 2
+     */
+    it('SUB_Request_Download_off_faultOccur_0200', Level.LEVEL2, async (done: Function) => {
+      console.info("-----------------------SUB_Request_Download_off_faultOccur_0200 is starting-----------------------");
+      let config: request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/V1.0/test1.txt',
+        title: 'reeateTest',
+        overwrite: true,
+        description: 'XTS download test!',
+        saveas: './SUB_Request_Download_off_faultOccur_0200.txt',
+        network: request.agent.Network.ANY,
+        mode:request.agent.Mode.BACKGROUND
+      };
+
+      let arr: Array<number> = new Array();
+      let faultOccurCallBack1 = (faults: request.agent.Faults) => {
+        console.info("====>SUB_Request_Download_off_faultOccur_0200 faultOccurCallBack1 faults: " + faults);
+        arr.push(1);
+      }
+      let faultOccurCallBack2 = (faults: request.agent.Faults) => {
+        console.info("====>SUB_Request_Download_off_faultOccur_0200 faultOccurCallBack2 faults: " + faults);
+        arr.push(2);
+      }
+      let faultOccurCallBack3 = (faults: request.agent.Faults) => {
+        console.info("====>SUB_Request_Download_off_faultOccur_0200 faultOccurCallBack3 faults: " + faults);
+        arr.push(3);
+      }
+
+      let task: request.agent.Task = await request.agent.create(baseContext, config);
+      console.info("====>SUB_Request_Download_off_faultOccur_0200 create task success");
+      task.on('faultOccur', faultOccurCallBack1);
+      task.on('faultOccur', faultOccurCallBack2);
+      task.on('faultOccur', faultOccurCallBack3);
+      task.off('faultOccur');
+      await task.start();
+      let t = setTimeout(() => {
+        clearTimeout(t);
+        console.info("====>SUB_Request_Download_off_faultOccur_0200 create task success");
+        try {
+          console.info("====>SUB_Request_Download_off_faultOccur_0200 task3 progress on arr: " + JSON.stringify(arr));
+          expect(arr.join()).assertEqual('');
+          done();
+        } catch (err) {
+          console.info("====>SUB_Request_Download_off_faultOccur_0200 catch err: " + JSON.stringify(err));
+          done();
+        }
+      }, 1000)
+    });
+
+    /**
+     * @tc.number  SUB_Request_Download_on_faultOccur_0300
+     * @tc.name    SUB_Request_Download_on_faultOccur_0300
+     * @tc.desc    on faultOccur.
+     * @tc.size    MEDIUMTEST
+     * @tc.type    : Function
+     * @tc.level   : Level 2
+     */
+    it('SUB_Request_Download_on_faultOccur_0300', Level.LEVEL2, async (done: Function) => {
+      console.info("-----------------------SUB_Request_Download_on_faultOccur_0300 is starting-----------------------");
+      let config: request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https:////',
+        title: 'reeateTest',
+        overwrite: true,
+        description: 'XTS download test!',
+        saveas: './SUB_Request_Download_on_faultOccur_0300.txt',
+        network: request.agent.Network.ANY,
+        mode:request.agent.Mode.BACKGROUND
+      };
+
+      let arr: Array<number> = new Array();
+      let arr1 = [1, 2, 3];
+      let faultOccurCallBack1 = (faults: request.agent.Faults) => {
+        console.info("====>SUB_Request_Download_on_faultOccur_0300 faultOccurCallBack1 faults: " + faults);
+        arr.push(1);
+      }
+      let faultOccurCallBack2 = (faults: request.agent.Faults) => {
+        console.info("====>SUB_Request_Download_on_faultOccur_0300 faultOccurCallBack2 faults: " + faults);
+        arr.push(2);
+      }
+      let faultOccurCallBack3 = (faults: request.agent.Faults) => {
+        try {
+          task.off('faultOccur')
+          console.info("====>SUB_Request_Download_on_faultOccur_0300 faultOccurCallBack3 faults: " + faults);
+          arr.push(3);
+          console.info("====>SUB_Request_Download_on_faultOccur_0300 task3 progress on arr: " + JSON.stringify(arr));
+          expect(arr.join()).assertEqual(arr1.join());
+          done();
+        } catch (err) {
+          console.info("====>SUB_Request_Download_on_faultOccur_0300 catch err: " + JSON.stringify(err));
+          done();
+        }
+      }
+      let task: request.agent.Task = await request.agent.create(baseContext, config);
+      console.info("====>SUB_Request_Download_on_faultOccur_0300 create task success");
+      task.on('faultOccur', faultOccurCallBack1);
+      task.on('faultOccur', faultOccurCallBack2);
+      task.on('faultOccur', faultOccurCallBack3);
+      await task.start();
+    });
+
+    /**
+     * @tc.number  SUB_Request_Download_timeOut_0200
+     * @tc.name    SUB_Request_Download_timeOut_0200
+     * @tc.desc    connectionTimeout error.
+     * @tc.size    MEDIUMTEST
+     * @tc.type    : Function
+     * @tc.level   : Level 2
+     */
+    it('SUB_Request_Download_timeOut_0200', Level.LEVEL2, async (done: Function) => {
+      console.info("-----------------------SUB_Request_Download_timeOut_0200 is starting-----------------------");
+      let timeOut: request.agent.Timeout = {
+        connectionTimeout: 0,
+      }
+      let config: request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'http://222.111.222.111',
+        title: 'reeateTest',
+        overwrite: true,
+        description: 'XTS download test!',
+        saveas: './SUB_Request_Download_timeOut_0200.txt',
+        network: request.agent.Network.ANY,
+        timeout: timeOut,
+        mode:request.agent.Mode.BACKGROUND
+      };
+      try {
+        let task: request.agent.Task = await request.agent.create(baseContext, config);
+        console.info("====>SUB_Request_Download_timeOut_0200 create task success");
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info("====>SUB_Request_Download_timeOut_0200 faultOccurCallBack err: " + JSON.stringify(err));
+        expect(err.code).assertEqual(401);
+        done();
+      }
+    });
+
+    /**
+     * @tc.number  SUB_Request_Download_timeOut_0300
+     * @tc.name    SUB_Request_Download_timeOut_0300
+     * @tc.desc    totalTimeout error.
+     * @tc.size    MEDIUMTEST
+     * @tc.type    : Function
+     * @tc.level   : Level 2
+     */
+    it('SUB_Request_Download_timeOut_0300', Level.LEVEL2, async (done: Function) => {
+      console.info("-----------------------SUB_Request_Download_timeOut_0300 is starting-----------------------");
+      let timeOut: request.agent.Timeout = {
+        totalTimeout: 0,
+      }
+      let config: request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'http://222.111.222.111',
+        title: 'reeateTest',
+        overwrite: true,
+        description: 'XTS download test!',
+        saveas: './SUB_Request_Download_timeOut_0300.txt',
+        network: request.agent.Network.ANY,
+        timeout: timeOut,
+        mode:request.agent.Mode.BACKGROUND
+      };
+      try {
+        let task: request.agent.Task = await request.agent.create(baseContext, config);
+        console.info("====>SUB_Request_Download_timeOut_0300 create task success");
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info("====>SUB_Request_Download_timeOut_0300 faultOccurCallBack err: " + JSON.stringify(err));
+        expect(err.code).assertEqual(401);
+        done();
+      }
+    });
+
+    /**
+     * @tc.number  SUB_Request_Download_timeOut_0400
+     * @tc.name    SUB_Request_Download_timeOut_0400
+     * @tc.desc    totalTimeout error.
+     * @tc.size    MEDIUMTEST
+     * @tc.type    : Function
+     * @tc.level   : Level 2
+     */
+    it('SUB_Request_Download_timeOut_0400', Level.LEVEL2, async (done: Function) => {
+      console.info("-----------------------SUB_Request_Download_timeOut_0400 is starting-----------------------");
+      let timeOut: request.agent.Timeout = {
+        totalTimeout: 604801,
+      }
+      let config: request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'http://222.111.222.111',
+        title: 'reeateTest',
+        overwrite: true,
+        description: 'XTS download test!',
+        saveas: './SUB_Request_Download_timeOut_0400.txt',
+        network: request.agent.Network.ANY,
+        timeout: timeOut,
+        mode:request.agent.Mode.BACKGROUND
+      };
+      try {
+        let task: request.agent.Task = await request.agent.create(baseContext, config);
+        console.info("====>SUB_Request_Download_timeOut_0400 create task success");
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info("====>SUB_Request_Download_timeOut_0400 faultOccurCallBack err: " + JSON.stringify(err));
+        expect(err.code).assertEqual(401);
+        done();
+      }
+    });
+
+    /**
+     * @tc.number  SUB_Request_Download_timeOut_0500
+     * @tc.name    SUB_Request_Download_timeOut_0500
+     * @tc.desc    totalTimeout error.
+     * @tc.size    MEDIUMTEST
+     * @tc.type    : Function
+     * @tc.level   : Level 2
+     */
+    it('SUB_Request_Download_timeOut_0500', Level.LEVEL2, async (done: Function) => {
+      console.info("-----------------------SUB_Request_Download_timeOut_0500 is starting-----------------------");
+      let timeOut: request.agent.Timeout = {
+        totalTimeout: 604800,
+      }
+      let config: request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'http://222.111.222.111',
+        title: 'reeateTest',
+        overwrite: true,
+        description: 'XTS download test!',
+        saveas: './SUB_Request_Download_timeOut_0500.txt',
+        network: request.agent.Network.ANY,
+        timeout: timeOut,
+        mode:request.agent.Mode.BACKGROUND
+      };
+      try {
+        let task: request.agent.Task = await request.agent.create(baseContext, config);
+        console.info("====>SUB_Request_Download_timeOut_0500 create task success");
+        expect(task !== null).assertTrue();
+        done();
+      } catch (err) {
+        console.info("====>SUB_Request_Download_timeOut_0500 faultOccurCallBack err: " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number  SUB_Request_Download_timeOut_0600
+     * @tc.name    SUB_Request_Download_timeOut_0600
+     * @tc.desc    totalTimeout error.
+     * @tc.size    MEDIUMTEST
+     * @tc.type    : Function
+     * @tc.level   : Level 2
+     */
+    it('SUB_Request_Download_timeOut_0600', Level.LEVEL2, async (done: Function) => {
+      console.info("-----------------------SUB_Request_Download_timeOut_0600 is starting-----------------------");
+      let timeOut: request.agent.Timeout = {
+        connectionTimeout: 15,
+        totalTimeout: 2
+      }
+      let config: request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'http://222.111.222.111',
+        title: 'reeateTest',
+        overwrite: true,
+        description: 'XTS download test!',
+        saveas: './SUB_Request_Download_timeOut_0600.txt',
+        network: request.agent.Network.ANY,
+        timeout: timeOut,
+        mode:request.agent.Mode.BACKGROUND
+      };
+
+      let faultsCallBack = (faults: request.agent.Faults) => {
+        try {
+          task.off('faultOccur', faultsCallBack);
+          console.info("====>SUB_Request_Download_on_faultOccur_0700 faults: " + faults);
+          expect(faults).assertEqual(request.agent.Faults.TIMEOUT);
+          done();
+        } catch (err) {
+          console.info("====>SUB_Request_Download_on_faultOccur_0700 faultOccurCallBack err: " + JSON.stringify(err));
+          done();
+        }
+      };
+      let task: request.agent.Task = await request.agent.create(baseContext, config);
+      console.info("====>SUB_Request_Download_timeOut_0600 create task success");
+      task.on('faultOccur', faultsCallBack);
+      task.start();
+    });
+
   });
 };
