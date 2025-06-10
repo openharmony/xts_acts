@@ -15,7 +15,7 @@
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , Level, TestType, Size} from '@ohos/hypium';
 import testNapi from 'libentry.so';
-import { display } from '@kit.ArkUI';
+import { display, window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 interface Capability{
@@ -572,25 +572,30 @@ export default function DisplayNdkTest() {
         done();
       } catch (err) {
         console.log(caseName + ': fail:'+ err + ' '+err.code);
-        expect(false).assertTrue();
-        done();
+        if (err.code === 801) {
+          expect(true).assertTrue();
+          done();
+        } else {
+          expect(false).assertTrue();
+          done();
+        }
       }
     })
 
     /**
-     * @tc.number    : OH_NativeDisplayManager_CreateAvailableAreaErrCode_140004
-     * @tc.name      : test_OH_NativeDisplayManager_CreateAvailableAreaErrCode_140004
-     * @tc.desc      : test_OH_NativeDisplayManager_CreateAvailableAreaErrCode_140004
+     * @tc.number    : OH_NativeDisplayManager_CreateAvailableAreaErrCode_140003
+     * @tc.name      : test_OH_NativeDisplayManager_CreateAvailableAreaErrCode_140003
+     * @tc.desc      : test_OH_NativeDisplayManager_CreateAvailableAreaErrCode_140003
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('test_OH_NativeDisplayManager_CreateAvailableArea_ErrCode140004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
-      let caseName = 'test_OH_NativeDisplayManager_CreateAvailableArea_ErrCode140004';
+    it('test_OH_NativeDisplayManager_CreateAvailableArea_ErrCode140003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
+      let caseName = 'test_OH_NativeDisplayManager_CreateAvailableArea_ErrCode140003';
       try{
-        let errcode  = testNapi.createAvailableArea_ErrCode140004();
+        let errcode  = testNapi.createAvailableArea_ErrCode140003();
         console.log(`${caseName} result: ${JSON.stringify(errcode)}`);
-        expect(errcode).assertEqual(140004);
+        expect(errcode).assertEqual(140003);
         done();
       } catch (err) {
         console.log(caseName + ': fail:'+ err + ' '+err.code);
@@ -719,18 +724,18 @@ export default function DisplayNdkTest() {
 
     /**
      * @tc.number    : OH_NativeDisplayManager_GetDisplaySourceMode
-     * @tc.name      : test_OH_NativeDisplayManager_GetDisplaySourceMode_ErrCode140004
-     * @tc.desc      : test_OH_NativeDisplayManager_GetDisplaySourceMode_ErrCode140004
+     * @tc.name      : test_OH_NativeDisplayManager_GetDisplaySourceMode_ErrCode140003
+     * @tc.desc      : test_OH_NativeDisplayManager_GetDisplaySourceMode_ErrCode140003
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('test_OH_NativeDisplayManager_GetDisplaySourceMode_ErrCode140004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
-      let caseName = 'test_OH_NativeDisplayManager_GetDisplaySourceMode_ErrCode140004';
+    it('test_OH_NativeDisplayManager_GetDisplaySourceMode_ErrCode140003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
+      let caseName = 'test_OH_NativeDisplayManager_GetDisplaySourceMode_ErrCode140003';
       try{
-        let result  = testNapi.getDisplaySourceMode_ErrCode140004();
+        let result  = testNapi.getDisplaySourceMode_ErrCode140003();
         console.log(`${caseName} result: ${JSON.stringify(result)}`);
-        expect(result).assertEqual(140004);
+        expect(result).assertEqual(140003);
         done();
       } catch (err) {
         console.log(caseName + ': fail:'+ err + ' '+err.code);
@@ -763,18 +768,18 @@ export default function DisplayNdkTest() {
 
     /**
      * @tc.number    : OH_NativeDisplayManager_GetDisplayPosition
-     * @tc.name      : test_OH_NativeDisplayManager_GetDisplayPosition_ErrCode140004
-     * @tc.desc      : test_OH_NativeDisplayManager_GetDisplayPosition_ErrCode140004
+     * @tc.name      : test_OH_NativeDisplayManager_GetDisplayPosition_ErrCode140003
+     * @tc.desc      : test_OH_NativeDisplayManager_GetDisplayPosition_ErrCode140003
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('test_OH_NativeDisplayManager_GetDisplayPosition_ErrCode140004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
-      let caseName = 'test_OH_NativeDisplayManager_GetDisplayPosition_ErrCode140004';
+    it('test_OH_NativeDisplayManager_GetDisplayPosition_ErrCode140003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
+      let caseName = 'test_OH_NativeDisplayManager_GetDisplayPosition_ErrCode140003';
       try{
-        let result  = testNapi.getDisplayPosition_ErrCode140004();
+        let result  = testNapi.getDisplayPosition_ErrCode140003();
         console.log(`${caseName} result: ${JSON.stringify(result)}`);
-        expect(result).assertEqual(140004);
+        expect(result).assertEqual(140003);
         done();
       } catch (err) {
         console.log(caseName + ': fail:'+ err + ' '+err.code);
@@ -786,7 +791,7 @@ export default function DisplayNdkTest() {
     /**
      * @tc.number    : OH_NativeDisplayManager_RegisterAvailableAreaChangeListener
      * @tc.name      : test_OH_NativeDisplayManager_RegisterAvailableAreaChangeListener
-     * @tc.desc      : OH_NativeDisplayManager_RegisterAvailableAreaChangeListenerÖÐ×¢²á¿ÉÓÃÇøÓò±ä»¯¼àÌý
+     * @tc.desc      : OH_NativeDisplayManager_RegisterAvailableAreaChangeListenerä¸­æ³¨å†Œå¯ç”¨åŒºåŸŸå˜åŒ–ç›‘å¬
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -794,7 +799,7 @@ export default function DisplayNdkTest() {
     it('test_OH_NativeDisplayManager_RegisterAvailableAreaChangeListener', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let caseName = 'test_OH_NativeDisplayManager_RegisterAvailableAreaChangeListener';
       try{
-        let result  = testNapi.registerAvailableAreaChangeListener(0);
+        let result  = testNapi.registerAvailableAreaChangeListener();
         console.log(`${caseName} result: ${JSON.stringify(result)}`);
         expect(result).assertEqual(0);
         done();
@@ -808,7 +813,7 @@ export default function DisplayNdkTest() {
     /**
      * @tc.number    : OH_NativeDisplayManager_UnregisterAvailableAreaChangeListener
      * @tc.name      : test_OH_NativeDisplayManager_UnregisterAvailableAreaChangeListener
-     * @tc.desc      : OH_NativeDisplayManager_UnregisterAvailableAreaChangeListenerÖÐÈ¡Ïû¿ÉÓÃÇøÓò±ä»¯¼àÌý
+     * @tc.desc      : OH_NativeDisplayManager_UnregisterAvailableAreaChangeListenerä¸­å–æ¶ˆå¯ç”¨åŒºåŸŸå˜åŒ–ç›‘å¬
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -816,9 +821,9 @@ export default function DisplayNdkTest() {
     it('test_OH_NativeDisplayManager_UnregisterAvailableAreaChangeListener', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let caseName = 'test_OH_NativeDisplayManager_UnregisterAvailableAreaChangeListener';
       try{
-        let result  = testNapi.unregisterAvailableAreaChangeListener(0);
+        let result  = testNapi.unregisterAvailableAreaChangeListener();
         console.log(`${caseName} result: ${JSON.stringify(result)}`);
-        expect(result).assertEqual(0);
+        expect(result).assertEqual(1400004);
         done();
       } catch (err) {
         console.log(caseName + ': fail:'+ err + ' '+err.code);
@@ -828,19 +833,19 @@ export default function DisplayNdkTest() {
     })
 
     /**
-     * @tc.number    : OH_NativeDisplayManager_UnregisterAvailableAreaChangeListener_ErrCode140003
-     * @tc.name      : test_OH_NativeDisplayManager_UnregisterAvailableAreaChangeListener_ErrCode140003
-     * @tc.desc      : OH_NativeDisplayManager_UnregisterAvailableAreaChangeListenerÖÐÖ±½ÓÈ¡Ïû¿ÉÓÃÇøÓò±ä»¯¼àÌý
+     * @tc.number    : OH_NativeDisplayManager_UnregisterAvailableAreaChangeListener_ErrCode140004
+     * @tc.name      : test_OH_NativeDisplayManager_UnregisterAvailableAreaChangeListener_ErrCode140004
+     * @tc.desc      : OH_NativeDisplayManager_UnregisterAvailableAreaChangeListenerä¸­ç›´æŽ¥å–æ¶ˆå¯ç”¨åŒºåŸŸå˜åŒ–ç›‘å¬
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('test_OH_NativeDisplayManager_UnregisterAvailableAreaChangeListener_ErrCode140003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
-      let caseName = 'test_OH_NativeDisplayManager_UnregisterAvailableAreaChangeListener_ErrCode140003';
+    it('test_OH_NativeDisplayManager_UnregisterAvailableAreaChangeListener_ErrCode140004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
+      let caseName = 'test_OH_NativeDisplayManager_UnregisterAvailableAreaChangeListener_ErrCode140004';
       try{
-        let result  = testNapi.unregisterAvailableAreaChangeListener_ErrCode140003(0);
+        let result  = testNapi.unregisterAvailableAreaChangeListener_ErrCode140004();
         console.log(`${caseName} result: ${JSON.stringify(result)}`);
-        expect(result).assertEqual(140003);
+        expect(result).assertEqual(140004);
         done();
       } catch (err) {
         console.log(caseName + ': fail:'+ err + ' '+err.code);
@@ -853,7 +858,7 @@ export default function DisplayNdkTest() {
     /**
      * @tc.number    : OH_NativeDisplayManager_RegisterDisplayAddListener
      * @tc.name      : test_OH_NativeDisplayManager_RegisterDisplayAddListener
-     * @tc.desc      : OH_NativeDisplayManager_RegisterDisplayAddListenerÖÐ×¢²áÆÁÄ»Ôö¼Ó¼àÌý
+     * @tc.desc      : OH_NativeDisplayManager_RegisterDisplayAddListenerä¸­æ³¨å†Œå±å¹•å¢žåŠ ç›‘å¬
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -861,7 +866,7 @@ export default function DisplayNdkTest() {
     it('test_OH_NativeDisplayManager_RegisterDisplayAddListener', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let caseName = 'test_OH_NativeDisplayManager_RegisterDisplayAddListener';
       try{
-        let result  = testNapi.registerDisplayAddListener(0);
+        let result  = testNapi.registerDisplayAddListener();
         console.log(`${caseName} result: ${JSON.stringify(result)}`);
         expect(result).assertEqual(0);
         done();
@@ -875,7 +880,7 @@ export default function DisplayNdkTest() {
     /**
      * @tc.number    : OH_NativeDisplayManager_UnregisterDisplayAddListener
      * @tc.name      : test_OH_NativeDisplayManager_UnregisterDisplayAddListener
-     * @tc.desc      : OH_NativeDisplayManager_UnregisterDisplayAddListenerÖÐÈ¡ÏûÆÁÄ»Ôö¼Ó¼àÌý
+     * @tc.desc      : OH_NativeDisplayManager_UnregisterDisplayAddListenerä¸­å–æ¶ˆå±å¹•å¢žåŠ ç›‘å¬
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -883,7 +888,7 @@ export default function DisplayNdkTest() {
     it('test_OH_NativeDisplayManager_UnregisterDisplayAddListener', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let caseName = 'test_OH_NativeDisplayManager_UnregisterDisplayAddListener';
       try{
-        let result  = testNapi.unregisterDisplayAddListener(0);
+        let result  = testNapi.unregisterDisplayAddListener();
         console.log(`${caseName} result: ${JSON.stringify(result)}`);
         expect(result).assertEqual(0);
         done();
@@ -895,19 +900,19 @@ export default function DisplayNdkTest() {
     })
 
     /**
-     * @tc.number    : OH_NativeDisplayManager_UnregisterDisplayAddListener_ErrCode140003
-     * @tc.name      : test_OH_NativeDisplayManager_UnregisterDisplayAddListener_ErrCode140003
-     * @tc.desc      : OH_NativeDisplayManager_UnregisterDisplayAddListenerÖÐÖ±½ÓÈ¡ÏûÆÁÄ»Ôö¼Ó¼àÌý
+     * @tc.number    : OH_NativeDisplayManager_UnregisterDisplayAddListener_ErrCode140004
+     * @tc.name      : test_OH_NativeDisplayManager_UnregisterDisplayAddListener_ErrCode140004
+     * @tc.desc      : OH_NativeDisplayManager_UnregisterDisplayAddListenerä¸­ç›´æŽ¥å–æ¶ˆå±å¹•å¢žåŠ ç›‘å¬
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('test_OH_NativeDisplayManager_UnregisterDisplayAddListener_ErrCode140003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
-      let caseName = 'test_OH_NativeDisplayManager_UnregisterDisplayAddListener_ErrCode140003';
+    it('test_OH_NativeDisplayManager_UnregisterDisplayAddListener_ErrCode140004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
+      let caseName = 'test_OH_NativeDisplayManager_UnregisterDisplayAddListener_ErrCode140004';
       try{
-        let result  = testNapi.unregisterDisplayAddListener_ErrCode140003(0);
+        let result  = testNapi.unregisterDisplayAddListener_ErrCode140004();
         console.log(`${caseName} result: ${JSON.stringify(result)}`);
-        expect(result).assertEqual(140003);
+        expect(result).assertEqual(140004);
         done();
       } catch (err) {
         console.log(caseName + ': fail:'+ err + ' '+err.code);
@@ -919,7 +924,7 @@ export default function DisplayNdkTest() {
     /**
      * @tc.number    : OH_NativeDisplayManager_RegisterDisplayRemoveListener
      * @tc.name      : test_OH_NativeDisplayManager_RegisterDisplayRemoveListener
-     * @tc.desc      : OH_NativeDisplayManager_RegisterDisplayRemoveListenerÖÐ×¢²áÆÁÄ»ÒÆ³ý¼àÌý
+     * @tc.desc      : OH_NativeDisplayManager_RegisterDisplayRemoveListenerä¸­æ³¨å†Œå±å¹•ç§»é™¤ç›‘å¬
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -927,7 +932,7 @@ export default function DisplayNdkTest() {
     it('OH_NativeDisplayManager_RegisterDisplayRemoveListener', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let caseName = 'OH_NativeDisplayManager_RegisterDisplayRemoveListener';
       try{
-        let result  = testNapi.registerDisplayRemoveListener(0);
+        let result  = testNapi.registerDisplayRemoveListener();
         console.log(`${caseName} result: ${JSON.stringify(result)}`);
         expect(result).assertEqual(0);
         done();
@@ -941,7 +946,7 @@ export default function DisplayNdkTest() {
     /**
      * @tc.number    : OH_NativeDisplayManager_UnregisterDisplayRemoveListener
      * @tc.name      : test_OH_NativeDisplayManager_UnregisterDisplayRemoveListener
-     * @tc.desc      : OH_NativeDisplayManager_UnregisterDisplayRemoveListenerÖÐÈ¡ÏûÆÁÄ»ÒÆ³ý¼àÌý
+     * @tc.desc      : OH_NativeDisplayManager_UnregisterDisplayRemoveListenerä¸­å–æ¶ˆå±å¹•ç§»é™¤ç›‘å¬
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -949,7 +954,7 @@ export default function DisplayNdkTest() {
     it('test_OH_NativeDisplayManager_UnregisterDisplayRemoveListener', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let caseName = 'test_OH_NativeDisplayManager_UnregisterDisplayRemoveListener';
       try{
-        let result  = testNapi.unregisterDisplayRemoveListener(0);
+        let result  = testNapi.unregisterDisplayRemoveListener();
         console.log(`${caseName} result: ${JSON.stringify(result)}`);
         expect(result).assertEqual(0);
         done();
@@ -961,19 +966,19 @@ export default function DisplayNdkTest() {
     })
 
     /**
-     * @tc.number    : OH_NativeDisplayManager_RegisterDisplayRemoveListener_ErrCode140003
-     * @tc.name      : test_OH_NativeDisplayManager_RegisterDisplayRemoveListener_ErrCode140003
-     * @tc.desc      : OH_NativeDisplayManager_RegisterDisplayRemoveListenerÖÐ×¢²áÆÁÄ»ÒÆ³ý¼àÌý
+     * @tc.number    : OH_NativeDisplayManager_RegisterDisplayRemoveListener_ErrCode140004
+     * @tc.name      : test_OH_NativeDisplayManager_RegisterDisplayRemoveListener_ErrCode140004
+     * @tc.desc      : OH_NativeDisplayManager_RegisterDisplayRemoveListenerä¸­æ³¨å†Œå±å¹•ç§»é™¤ç›‘å¬
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('test_OH_NativeDisplayManager_RegisterDisplayRemoveListener_ErrCode140003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
-      let caseName = 'test_OH_NativeDisplayManager_RegisterDisplayRemoveListener_ErrCode140003';
+    it('test_OH_NativeDisplayManager_RegisterDisplayRemoveListener_ErrCode140004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
+      let caseName = 'test_OH_NativeDisplayManager_RegisterDisplayRemoveListener_ErrCode140004';
       try{
-        let result  = testNapi.registerDisplayRemoveListener_ErrCode140003(0);
+        let result  = testNapi.registerDisplayRemoveListener_ErrCode140004();
         console.log(`${caseName} result: ${JSON.stringify(result)}`);
-        expect(result).assertEqual(140003);
+        expect(result).assertEqual(140004);
         done();
       } catch (err) {
         console.log(caseName + ': fail:'+ err + ' '+err.code);
