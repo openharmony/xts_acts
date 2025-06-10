@@ -383,7 +383,7 @@ export default function PipWindowNdkTest() {
     })
 
     /**
-     * @tc.number    : SUB_BASIC_WMS_WINDOW_PIP_NDK_DELETEPIP_0100
+     * @tc.number    : SUB_BASIC_WMS_WINDOW_PIP_NDK_DELETEPIP_0200
      * @tc.name      : testDeletePipWithoutStopPip
      * @tc.desc      : 验证画中画未关闭删除控制器报错误码1300016
      * @tc.size      : MediumTest

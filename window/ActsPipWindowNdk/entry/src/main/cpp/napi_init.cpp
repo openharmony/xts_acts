@@ -16,7 +16,7 @@
 #include <cstddef>
 #include <cstdint>
 #include <cstdio>
-#define LOG_TAG "PipWindow_NDK"
+#define LOG_TAG "PipWindow"
 #include <hilog/log.h>
 #include <window_manager/oh_window_pip.h>
 
@@ -45,14 +45,14 @@ constexpr int32_t FAIL = -1;
 constexpr int32_t SUCCESS = 0;
 constexpr int32_t WIDTH = 50;
 constexpr int32_t HEIGHT = 50;
-int32_t timer1 = 0;
-int32_t timer2 = 0;
-int32_t timer3 = 0;
-int32_t timer4 = 0;
-int32_t timer5 = 0;
-int32_t timer6 = 0;
-int32_t timer7 = 0;
-int32_t timer8 = 0;
+int32_t g_timer1 = 0;
+int32_t g_timer2 = 0;
+int32_t g_timer3 = 0;
+int32_t g_timer4 = 0;
+int32_t g_timer5 = 0;
+int32_t g_timer6 = 0;
+int32_t g_timer7 = 0;
+int32_t g_timer8 = 0;
 
 static napi_value TestPipTemplateTypeEnum(napi_env env, napi_callback_info info)
 {
@@ -120,8 +120,8 @@ static napi_value TestPipControlGroupEnum(napi_env env, napi_callback_info info)
         PictureInPicture_PipControlGroup::VIDEO_MEETING_MICROPHONE_SWITCH != THREE_ZERO_FOUR ||
         PictureInPicture_PipControlGroup::VIDEO_LIVE_VIDEO_PLAY_PAUSE != FOUR_ZERO_ONE ||
         PictureInPicture_PipControlGroup::VIDEO_LIVE_MUTE_SWITCH != FOUR_ZERO_TWO) {
-         napi_create_int32(env, FAIL, &result);
-         return result;
+            napi_create_int32(env, FAIL, &result);
+            return result;
     }
     napi_create_int32(env, SUCCESS, &result);
     return result;
@@ -158,8 +158,8 @@ static napi_value TestPipControlTypeEnum(napi_env env, napi_callback_info info)
         PictureInPicture_PipControlType::MICROPHONE_SWITCH != SIX ||
         PictureInPicture_PipControlType::CAMERA_SWITCH != SEVEN ||
         PictureInPicture_PipControlType::MUTE_SWITCH != EIGHT) {
-         napi_create_int32(env, FAIL, &result);
-         return result;
+            napi_create_int32(env, FAIL, &result);
+            return result;
     }
     napi_create_int32(env, SUCCESS, &result);
     return result;
@@ -181,8 +181,8 @@ static napi_value TestPipControlStatusEnum(napi_env env, napi_callback_info info
         PictureInPicture_PipControlStatus::PAUSE != 0 ||
         PictureInPicture_PipControlStatus::OPEN != 1 ||
         PictureInPicture_PipControlStatus::CLOSE != 0) {
-         napi_create_int32(env, FAIL, &result);
-         return result;
+            napi_create_int32(env, FAIL, &result);
+            return result;
     }
     napi_create_int32(env, SUCCESS, &result);
     return result;
@@ -592,7 +592,7 @@ static napi_value TestUpdatePipContentEnabled(napi_env env, napi_callback_info i
 
 void WebPipStartPipCallback1(uint32_t controllerId, uint8_t requestId, uint64_t surfaceId)
 {
-    timer1++;
+    g_timer1++;
     OH_LOG_INFO(LOG_APP, "WebPipStartPipCallback1 controllerId=%{public}lu.", controllerId);
     OH_LOG_INFO(LOG_APP, "WebPipStartPipCallback1 requestId=%{public}lu.", requestId);
     OH_LOG_INFO(LOG_APP, "WebPipStartPipCallback1 surfaceId=%{public}lu.", surfaceId);
@@ -600,7 +600,7 @@ void WebPipStartPipCallback1(uint32_t controllerId, uint8_t requestId, uint64_t 
 
 void WebPipStartPipUnRegisterCallback1(uint32_t controllerId, uint8_t requestId, uint64_t surfaceId)
 {
-    timer1--;
+    g_timer1--;
     OH_LOG_INFO(LOG_APP, "WebPipStartPipUnRegisterCallback1 controllerId=%{public}lu.", controllerId);
     OH_LOG_INFO(LOG_APP, "WebPipStartPipUnRegisterCallback1 requestId=%{public}lu.", requestId);
     OH_LOG_INFO(LOG_APP, "WebPipStartPipUnRegisterCallback1 surfaceId=%{public}lu.", surfaceId);
@@ -608,7 +608,7 @@ void WebPipStartPipUnRegisterCallback1(uint32_t controllerId, uint8_t requestId,
 
 void WebPipStartPipCallback2(uint32_t controllerId, uint8_t requestId, uint64_t surfaceId)
 {
-    timer2++;
+    g_timer2++;
     OH_LOG_INFO(LOG_APP, "WebPipStartPipCallback2 controllerId=%{public}lu.", controllerId);
     OH_LOG_INFO(LOG_APP, "WebPipStartPipCallback2 requestId=%{public}lu.", requestId);
     OH_LOG_INFO(LOG_APP, "WebPipStartPipCallback2 surfaceId=%{public}lu.", surfaceId);
@@ -616,7 +616,7 @@ void WebPipStartPipCallback2(uint32_t controllerId, uint8_t requestId, uint64_t 
 
 void WebPipStartPipUnRegisterCallback2(uint32_t controllerId, uint8_t requestId, uint64_t surfaceId)
 {
-    timer2--;
+    g_timer2--;
     OH_LOG_INFO(LOG_APP, "WebPipStartPipUnRegisterCallback2 controllerId=%{public}lu.", controllerId);
     OH_LOG_INFO(LOG_APP, "WebPipStartPipUnRegisterCallback2 requestId=%{public}lu.", requestId);
     OH_LOG_INFO(LOG_APP, "WebPipStartPipUnRegisterCallback2 surfaceId=%{public}lu.", surfaceId);
@@ -656,8 +656,8 @@ static napi_value TestRegisterStartPipCallback(napi_env env, napi_callback_info 
     ret = OH_PictureInPicture_DeletePip(controllerId);
     OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_DeletePip ret=%{public}d", ret);
     
-    OH_LOG_INFO(LOG_APP, "TestRegisterStartPipCallback timer1=%{public}d", timer1);
-    if (ret != 0 || timer1 != 1) {
+    OH_LOG_INFO(LOG_APP, "TestRegisterStartPipCallback g_timer1=%{public}d", g_timer1);
+    if (ret != 0 || g_timer1 != 1) {
         napi_create_int32(env, FAIL, &result);
         return result;
     }
@@ -701,9 +701,9 @@ static napi_value TestTwoRegisterStartPipCallback(napi_env env, napi_callback_in
     ret = OH_PictureInPicture_DeletePip(controllerId);
     OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_DeletePip ret=%{public}d", ret);
     
-    OH_LOG_INFO(LOG_APP, "TestTwoRegisterStartPipCallback timer1=%{public}d", timer1);
-    OH_LOG_INFO(LOG_APP, "TestTwoRegisterStartPipCallback timer2=%{public}d", timer2);
-    if (ret != 0 || timer1 != 1 || timer2 != 1) {
+    OH_LOG_INFO(LOG_APP, "TestTwoRegisterStartPipCallback g_timer1=%{public}d", g_timer1);
+    OH_LOG_INFO(LOG_APP, "TestTwoRegisterStartPipCallback g_timer2=%{public}d", g_timer2);
+    if (ret != 0 || g_timer1 != 1 || g_timer2 != 1) {
         napi_create_int32(env, FAIL, &result);
         return result;
     }
@@ -749,9 +749,9 @@ static napi_value TestUnregisterStartPipCallback(napi_env env, napi_callback_inf
     ret = OH_PictureInPicture_DeletePip(controllerId);
     OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_DeletePip ret=%{public}d", ret);
     
-    OH_LOG_INFO(LOG_APP, "TestUnregisterStartPipCallback timer1=%{public}d", timer1);
-    OH_LOG_INFO(LOG_APP, "TestUnregisterStartPipCallback timer2=%{public}d", timer2);
-    if (ret != 0 || timer1 != 0 || timer2 != 1) {
+    OH_LOG_INFO(LOG_APP, "TestUnregisterStartPipCallback g_timer1=%{public}d", g_timer1);
+    OH_LOG_INFO(LOG_APP, "TestUnregisterStartPipCallback g_timer2=%{public}d", g_timer2);
+    if (ret != 0 || g_timer1 != 0 || g_timer2 != 1) {
         napi_create_int32(env, FAIL, &result);
         return result;
     }
@@ -796,9 +796,9 @@ static napi_value TestUnregisterAllStartPipCallbacks(napi_env env, napi_callback
     ret = OH_PictureInPicture_DeletePip(controllerId);
     OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_DeletePip ret=%{public}d", ret);
     
-    OH_LOG_INFO(LOG_APP, "TestUnregisterStartPipCallback timer1=%{public}d", timer1);
-    OH_LOG_INFO(LOG_APP, "TestUnregisterStartPipCallback timer2=%{public}d", timer2);
-    if (ret != 0 || timer1 != 0 || timer2 != 0) {
+    OH_LOG_INFO(LOG_APP, "TestUnregisterStartPipCallback g_timer1=%{public}d", g_timer1);
+    OH_LOG_INFO(LOG_APP, "TestUnregisterStartPipCallback g_timer2=%{public}d", g_timer2);
+    if (ret != 0 || g_timer1 != 0 || g_timer2 != 0) {
         napi_create_int32(env, FAIL, &result);
         return result;
     }
@@ -808,7 +808,7 @@ static napi_value TestUnregisterAllStartPipCallbacks(napi_env env, napi_callback
 
 void WebPipResizeCallback1(uint32_t controllerId, uint32_t width, uint32_t height, double scale)
 {
-    timer3++;
+    g_timer3++;
     OH_LOG_INFO(LOG_APP, "WebPipResizeCallback1 controllerId=%{public}lu.", controllerId);
     OH_LOG_INFO(LOG_APP, "WebPipResizeCallback1 width=%{public}lu.", width);
     OH_LOG_INFO(LOG_APP, "WebPipResizeCallback1 height=%{public}lu.", height);
@@ -817,7 +817,7 @@ void WebPipResizeCallback1(uint32_t controllerId, uint32_t width, uint32_t heigh
 
 void WebPipResizeUnRegisterCallback1(uint32_t controllerId, uint32_t width, uint32_t height, double scale)
 {
-    timer3--;
+    g_timer3--;
     OH_LOG_INFO(LOG_APP, "WebPipResizeUnRegisterCallback1 controllerId=%{public}lu.", controllerId);
     OH_LOG_INFO(LOG_APP, "WebPipResizeUnRegisterCallback1 width=%{public}lu.", width);
     OH_LOG_INFO(LOG_APP, "WebPipResizeUnRegisterCallback1 height=%{public}lu.", height);
@@ -826,7 +826,7 @@ void WebPipResizeUnRegisterCallback1(uint32_t controllerId, uint32_t width, uint
 
 void WebPipResizeCallback2(uint32_t controllerId, uint32_t width, uint32_t height, double scale)
 {
-    timer4++;
+    g_timer4++;
     OH_LOG_INFO(LOG_APP, "WebPipResizeCallback2 controllerId=%{public}lu.", controllerId);
     OH_LOG_INFO(LOG_APP, "WebPipResizeCallback2 width=%{public}lu.", width);
     OH_LOG_INFO(LOG_APP, "WebPipResizeCallback2 height=%{public}lu.", height);
@@ -835,7 +835,7 @@ void WebPipResizeCallback2(uint32_t controllerId, uint32_t width, uint32_t heigh
 
 void WebPipResizeUnRegisterCallback2(uint32_t controllerId, uint32_t width, uint32_t height, double scale)
 {
-    timer4--;
+    g_timer4--;
     OH_LOG_INFO(LOG_APP, "WebPipResizeUnRegisterCallback2 controllerId=%{public}lu.", controllerId);
     OH_LOG_INFO(LOG_APP, "WebPipResizeUnRegisterCallback2 width=%{public}lu.", width);
     OH_LOG_INFO(LOG_APP, "WebPipResizeUnRegisterCallback2 height=%{public}lu.", height);
@@ -878,8 +878,8 @@ static napi_value TestRegisterResizeListener(napi_env env, napi_callback_info in
     ret = OH_PictureInPicture_DeletePip(controllerId);
     OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_DeletePip ret=%{public}d", ret);
     
-    OH_LOG_INFO(LOG_APP, "TestRegisterResizeListener timer3=%{public}d", timer3);
-    if (ret != 0 || timer3 != 1) {
+    OH_LOG_INFO(LOG_APP, "TestRegisterResizeListener g_timer3=%{public}d", g_timer3);
+    if (ret != 0 || g_timer3 != 1) {
         napi_create_int32(env, FAIL, &result);
         return result;
     }
@@ -925,9 +925,9 @@ static napi_value TestTwoRegisterResizeListener(napi_env env, napi_callback_info
     ret = OH_PictureInPicture_DeletePip(controllerId);
     OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_DeletePip ret=%{public}d", ret);
     
-    OH_LOG_INFO(LOG_APP, "TestTwoRegisterResizeListener timer3=%{public}d", timer3);
-    OH_LOG_INFO(LOG_APP, "TestTwoRegisterResizeListener timer4=%{public}d", timer4);
-    if (ret != 0 || timer3 != 1 || timer4 != 1) {
+    OH_LOG_INFO(LOG_APP, "TestTwoRegisterResizeListener g_timer3=%{public}d", g_timer3);
+    OH_LOG_INFO(LOG_APP, "TestTwoRegisterResizeListener g_timer4=%{public}d", g_timer4);
+    if (ret != 0 || g_timer3 != 1 || g_timer4 != 1) {
         napi_create_int32(env, FAIL, &result);
         return result;
     }
@@ -975,9 +975,9 @@ static napi_value TestUnregisterResizeListener(napi_env env, napi_callback_info 
     ret = OH_PictureInPicture_DeletePip(controllerId);
     OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_DeletePip ret=%{public}d", ret);
     
-    OH_LOG_INFO(LOG_APP, "TestUnregisterResizeListener timer3=%{public}d", timer3);
-    OH_LOG_INFO(LOG_APP, "TestUnregisterResizeListener timer4=%{public}d", timer4);
-    if (ret != 0 || timer1 != 0 || timer4 != 1) {
+    OH_LOG_INFO(LOG_APP, "TestUnregisterResizeListener g_timer3=%{public}d", g_timer3);
+    OH_LOG_INFO(LOG_APP, "TestUnregisterResizeListener g_timer4=%{public}d", g_timer4);
+    if (ret != 0 || g_timer1 != 0 || g_timer4 != 1) {
         napi_create_int32(env, FAIL, &result);
         return result;
     }
@@ -1024,9 +1024,9 @@ static napi_value TestUnregisterAllResizeListeners(napi_env env, napi_callback_i
     ret = OH_PictureInPicture_DeletePip(controllerId);
     OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_DeletePip ret=%{public}d", ret);
     
-    OH_LOG_INFO(LOG_APP, "TestUnregisterAllResizeListeners timer3=%{public}d", timer3);
-    OH_LOG_INFO(LOG_APP, "TestUnregisterAllResizeListeners timer4=%{public}d", timer4);
-    if (ret != 0 || timer3 != 0 || timer4 != 0) {
+    OH_LOG_INFO(LOG_APP, "TestUnregisterAllResizeListeners g_timer3=%{public}d", g_timer3);
+    OH_LOG_INFO(LOG_APP, "TestUnregisterAllResizeListeners g_timer4=%{public}d", g_timer4);
+    if (ret != 0 || g_timer3 != 0 || g_timer4 != 0) {
         napi_create_int32(env, FAIL, &result);
         return result;
     }
@@ -1037,7 +1037,7 @@ static napi_value TestUnregisterAllResizeListeners(napi_env env, napi_callback_i
 void WebPipControlEventCallback1(uint32_t controllerId, PictureInPicture_PipControlType controlType,
     PictureInPicture_PipControlStatus status)
 {
-    timer5++;
+    g_timer5++;
     OH_LOG_INFO(LOG_APP, "WebPipControlEventCallback1 controllerId=%{public}lu.", controllerId);
     OH_LOG_INFO(LOG_APP, "WebPipControlEventCallback1 controlType=%{public}lu.", controlType);
     OH_LOG_INFO(LOG_APP, "WebPipControlEventCallback1 status=%{public}lu.", status);
@@ -1046,7 +1046,7 @@ void WebPipControlEventCallback1(uint32_t controllerId, PictureInPicture_PipCont
 void WebPipControlEventUnRegisterCallback1(uint32_t controllerId, PictureInPicture_PipControlType controlType,
     PictureInPicture_PipControlStatus status)
 {
-    timer5--;
+    g_timer5--;
     OH_LOG_INFO(LOG_APP, "WebPipControlEventUnRegisterCallback1 controllerId=%{public}lu.", controllerId);
     OH_LOG_INFO(LOG_APP, "WebPipControlEventUnRegisterCallback1 controlType=%{public}lu.", controlType);
     OH_LOG_INFO(LOG_APP, "WebPipControlEventUnRegisterCallback1 status=%{public}lu.", status);
@@ -1055,7 +1055,7 @@ void WebPipControlEventUnRegisterCallback1(uint32_t controllerId, PictureInPictu
 void WebPipControlEventCallback2(uint32_t controllerId, PictureInPicture_PipControlType controlType,
     PictureInPicture_PipControlStatus status)
 {
-    timer6++;
+    g_timer6++;
     OH_LOG_INFO(LOG_APP, "WebPipControlEventCallback2 controllerId=%{public}lu.", controllerId);
     OH_LOG_INFO(LOG_APP, "WebPipControlEventCallback2 controlType=%{public}lu.", controlType);
     OH_LOG_INFO(LOG_APP, "WebPipControlEventCallback2 status=%{public}lu.", status);
@@ -1064,7 +1064,7 @@ void WebPipControlEventCallback2(uint32_t controllerId, PictureInPicture_PipCont
 void WebPipControlEventUnRegisterCallback2(uint32_t controllerId, PictureInPicture_PipControlType controlType,
     PictureInPicture_PipControlStatus status)
 {
-    timer6--;
+    g_timer6--;
     OH_LOG_INFO(LOG_APP, "WebPipControlEventUnRegisterCallback2 controllerId=%{public}lu.", controllerId);
     OH_LOG_INFO(LOG_APP, "WebPipControlEventUnRegisterCallback2 controlType=%{public}lu.", controlType);
     OH_LOG_INFO(LOG_APP, "WebPipControlEventUnRegisterCallback2 status=%{public}lu.", status);
@@ -1106,8 +1106,8 @@ static napi_value TestRegisterControlEventListener(napi_env env, napi_callback_i
     ret = OH_PictureInPicture_DeletePip(controllerId);
     OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_DeletePip ret=%{public}d", ret);
     
-    OH_LOG_INFO(LOG_APP, "TestRegisterControlEventListener timer5=%{public}d", timer5);
-    if (ret != 0 || timer5 != 1) {
+    OH_LOG_INFO(LOG_APP, "TestRegisterControlEventListener g_timer5=%{public}d", g_timer5);
+    if (ret != 0 || g_timer5 != 1) {
         napi_create_int32(env, FAIL, &result);
         return result;
     }
@@ -1154,9 +1154,9 @@ static napi_value TestUnregisterControlEventListener(napi_env env, napi_callback
     ret = OH_PictureInPicture_DeletePip(controllerId);
     OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_DeletePip ret=%{public}d", ret);
     
-    OH_LOG_INFO(LOG_APP, "TestUnregisterControlEventListener timer5=%{public}d", timer5);
-    OH_LOG_INFO(LOG_APP, "TestUnregisterControlEventListener timer6=%{public}d", timer6);
-    if (ret != 0 || timer5 != 0 || timer6 != 1) {
+    OH_LOG_INFO(LOG_APP, "TestUnregisterControlEventListener g_timer5=%{public}d", g_timer5);
+    OH_LOG_INFO(LOG_APP, "TestUnregisterControlEventListener g_timer6=%{public}d", g_timer6);
+    if (ret != 0 || g_timer5 != 0 || g_timer6 != 1) {
         napi_create_int32(env, FAIL, &result);
         return result;
     }
@@ -1203,9 +1203,9 @@ static napi_value TestUnregisterAllControlEventListeners(napi_env env, napi_call
     ret = OH_PictureInPicture_DeletePip(controllerId);
     OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_DeletePip ret=%{public}d", ret);
     
-    OH_LOG_INFO(LOG_APP, "TestUnregisterAllControlEventListeners timer5=%{public}d", timer5);
-    OH_LOG_INFO(LOG_APP, "TestUnregisterAllControlEventListeners timer6=%{public}d", timer6);
-    if (ret != 0 || timer5 != 0 || timer6 != 0) {
+    OH_LOG_INFO(LOG_APP, "TestUnregisterAllControlEventListeners g_timer5=%{public}d", g_timer5);
+    OH_LOG_INFO(LOG_APP, "TestUnregisterAllControlEventListeners g_timer6=%{public}d", g_timer6);
+    if (ret != 0 || g_timer5 != 0 || g_timer6 != 0) {
         napi_create_int32(env, FAIL, &result);
         return result;
     }
@@ -1215,7 +1215,7 @@ static napi_value TestUnregisterAllControlEventListeners(napi_env env, napi_call
 
 void WebPipLifecycleCallback1(uint32_t controllerId, PictureInPicture_PipState state, int32_t errcode)
 {
-    timer7++;
+    g_timer7++;
     OH_LOG_INFO(LOG_APP, "WebPipLifecycleCallback1 controllerId=%{public}lu.", controllerId);
     OH_LOG_INFO(LOG_APP, "WebPipLifecycleCallback1 state=%{public}lu.", state);
     OH_LOG_INFO(LOG_APP, "WebPipLifecycleCallback1 errcode=%{public}lu.", errcode);
@@ -1223,7 +1223,7 @@ void WebPipLifecycleCallback1(uint32_t controllerId, PictureInPicture_PipState s
 
 void WebPipLifecycleUnRegisterCallback1(uint32_t controllerId, PictureInPicture_PipState state, int32_t errcode)
 {
-    timer7 = timer7 - 2;
+    g_timer7 = g_timer7 - TWO;
     OH_LOG_INFO(LOG_APP, "WebPipLifecycleUnRegisterCallback1 controllerId=%{public}lu.", controllerId);
     OH_LOG_INFO(LOG_APP, "WebPipLifecycleUnRegisterCallback1 state=%{public}lu.", state);
     OH_LOG_INFO(LOG_APP, "WebPipLifecycleUnRegisterCallback1 errcode=%{public}lu.", errcode);
@@ -1231,7 +1231,7 @@ void WebPipLifecycleUnRegisterCallback1(uint32_t controllerId, PictureInPicture_
 
 void WebPipLifecycleCallback2(uint32_t controllerId, PictureInPicture_PipState state, int32_t errcode)
 {
-    timer8++;
+    g_timer8++;
     OH_LOG_INFO(LOG_APP, "WebPipLifecycleCallback2 controllerId=%{public}lu.", controllerId);
     OH_LOG_INFO(LOG_APP, "WebPipLifecycleCallback2 state=%{public}lu.", state);
     OH_LOG_INFO(LOG_APP, "WebPipLifecycleCallback2 errcode=%{public}lu.", errcode);
@@ -1239,7 +1239,7 @@ void WebPipLifecycleCallback2(uint32_t controllerId, PictureInPicture_PipState s
 
 void WebPipLifecycleUnRegisterCallback2(uint32_t controllerId, PictureInPicture_PipState state, int32_t errcode)
 {
-    timer8 = timer8 - 2;
+    g_timer8 = g_timer8 - TWO;
     OH_LOG_INFO(LOG_APP, "WebPipLifecycleUnRegisterCallback2 controllerId=%{public}lu.", controllerId);
     OH_LOG_INFO(LOG_APP, "WebPipLifecycleUnRegisterCallback2 state=%{public}lu.", state);
     OH_LOG_INFO(LOG_APP, "WebPipLifecycleUnRegisterCallback2 errcode=%{public}lu.", errcode);
@@ -1279,8 +1279,8 @@ static napi_value TestRegisterLifeCycleListener(napi_env env, napi_callback_info
     ret = OH_PictureInPicture_DeletePip(controllerId);
     OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_DeletePip ret=%{public}d", ret);
     
-    OH_LOG_INFO(LOG_APP, "TestRegisterResizeListener timer7=%{public}d", timer7);
-    if (ret != 0 || timer7 != TWO) {
+    OH_LOG_INFO(LOG_APP, "TestRegisterResizeListener g_timer7=%{public}d", g_timer7);
+    if (ret != 0 || g_timer7 != TWO) {
         napi_create_int32(env, FAIL, &result);
         return result;
     }
@@ -1324,9 +1324,9 @@ static napi_value TestTwoRegisterLifeCycleListener(napi_env env, napi_callback_i
     ret = OH_PictureInPicture_DeletePip(controllerId);
     OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_DeletePip ret=%{public}d", ret);
     
-    OH_LOG_INFO(LOG_APP, "TestTwoRegisterLifeCycleListener timer7=%{public}d", timer7);
-    OH_LOG_INFO(LOG_APP, "TestTwoRegisterLifeCycleListener timer8=%{public}d", timer8);
-    if (ret != 0 || timer7 != TWO || timer8 != TWO) {
+    OH_LOG_INFO(LOG_APP, "TestTwoRegisterLifeCycleListener g_timer7=%{public}d", g_timer7);
+    OH_LOG_INFO(LOG_APP, "TestTwoRegisterLifeCycleListener g_timer8=%{public}d", g_timer8);
+    if (ret != 0 || g_timer7 != TWO || g_timer8 != TWO) {
         napi_create_int32(env, FAIL, &result);
         return result;
     }
@@ -1372,9 +1372,9 @@ static napi_value TestUnregisterLifeCycleListener(napi_env env, napi_callback_in
     ret = OH_PictureInPicture_DeletePip(controllerId);
     OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_DeletePip ret=%{public}d", ret);
     
-    OH_LOG_INFO(LOG_APP, "TestUnregisterLifeCycleListener timer7=%{public}d", timer7);
-    OH_LOG_INFO(LOG_APP, "TestUnregisterLifeCycleListener timer8=%{public}d", timer8);
-    if (ret != 0 || timer7 != 0 || timer8 != TWO) {
+    OH_LOG_INFO(LOG_APP, "TestUnregisterLifeCycleListener g_timer7=%{public}d", g_timer7);
+    OH_LOG_INFO(LOG_APP, "TestUnregisterLifeCycleListener g_timer8=%{public}d", g_timer8);
+    if (ret != 0 || g_timer7 != 0 || g_timer8 != TWO) {
         napi_create_int32(env, FAIL, &result);
         return result;
     }
@@ -1419,9 +1419,9 @@ static napi_value TestUnregisterAllLifeCycleListeners(napi_env env, napi_callbac
     ret = OH_PictureInPicture_DeletePip(controllerId);
     OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_DeletePip ret=%{public}d", ret);
     
-    OH_LOG_INFO(LOG_APP, "TestUnregisterAllLifeCycleListeners timer7=%{public}d", timer7);
-    OH_LOG_INFO(LOG_APP, "TestUnregisterAllLifeCycleListeners timer8=%{public}d", timer8);
-    if (ret != 0 || timer7 != 0 || timer8 != 0) {
+    OH_LOG_INFO(LOG_APP, "TestUnregisterAllLifeCycleListeners g_timer7=%{public}d", g_timer7);
+    OH_LOG_INFO(LOG_APP, "TestUnregisterAllLifeCycleListeners g_timer8=%{public}d", g_timer8);
+    if (ret != 0 || g_timer7 != 0 || g_timer8 != 0) {
         napi_create_int32(env, FAIL, &result);
         return result;
     }
@@ -1433,10 +1433,14 @@ EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] = {
-        { "testPipTemplateTypeEnum", nullptr, TestPipTemplateTypeEnum, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "testPipControlGroupEnum", nullptr, TestPipControlGroupEnum, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "testPipControlTypeEnum", nullptr, TestPipControlTypeEnum, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "testPipControlStatusEnum", nullptr, TestPipControlStatusEnum, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "testPipTemplateTypeEnum", nullptr, TestPipTemplateTypeEnum,
+            nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "testPipControlGroupEnum", nullptr, TestPipControlGroupEnum,
+            nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "testPipControlTypeEnum", nullptr, TestPipControlTypeEnum,
+            nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "testPipControlStatusEnum", nullptr, TestPipControlStatusEnum,
+            nullptr, nullptr, nullptr, napi_default, nullptr },
         { "testCreatePip", nullptr, TestCreatePip, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "testCreatePip_ControllerId_Nullptr", nullptr, TestCreatePip_ControllerId_Nullptr,
             nullptr, nullptr, nullptr, napi_default, nullptr },
@@ -1447,21 +1451,30 @@ static napi_value Init(napi_env env, napi_value exports)
         { "testStartStopPip", nullptr, TestStartStopPip, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "testStartPipRepeat", nullptr, TestStartPipRepeat, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "testStopPipRepeat", nullptr, TestStopPipRepeat, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "testDeletePipWithStopPip", nullptr, TestDeletePipWithStopPip, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "testDeletePipWithoutStopPip", nullptr, TestDeletePipWithoutStopPip, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "testUpdatePipContentSize", nullptr, TestUpdatePipContentSize, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "testUpdatePipContentStatus", nullptr, TestUpdatePipContentStatus, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "testUpdatePipContentEnabled", nullptr, TestUpdatePipContentEnabled, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "testDeletePipWithStopPip", nullptr, TestDeletePipWithStopPip,
+            nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "testDeletePipWithoutStopPip", nullptr, TestDeletePipWithoutStopPip,
+            nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "testUpdatePipContentSize", nullptr, TestUpdatePipContentSize,
+            nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "testUpdatePipContentStatus", nullptr, TestUpdatePipContentStatus,
+            nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "testUpdatePipContentEnabled", nullptr, TestUpdatePipContentEnabled,
+            nullptr, nullptr, nullptr, napi_default, nullptr },
         { "testRegisterStartPipCallback", nullptr, TestRegisterStartPipCallback,
             nullptr, nullptr, nullptr, napi_default, nullptr },
         { "testTwoRegisterStartPipCallback", nullptr, TestTwoRegisterStartPipCallback,
             nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "testUnregisterStartPipCallback", nullptr, TestUnregisterStartPipCallback, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "testUnregisterStartPipCallback", nullptr, TestUnregisterStartPipCallback,
+            nullptr, nullptr, nullptr, napi_default, nullptr },
         { "testUnregisterAllStartPipCallbacks", nullptr, TestUnregisterAllStartPipCallbacks,
             nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "testRegisterResizeListener", nullptr, TestRegisterResizeListener, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "testTwoRegisterResizeListener", nullptr, TestTwoRegisterResizeListener, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "testUnregisterResizeListener", nullptr, TestUnregisterResizeListener, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "testRegisterResizeListener", nullptr, TestRegisterResizeListener,
+            nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "testTwoRegisterResizeListener", nullptr, TestTwoRegisterResizeListener,
+            nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "testUnregisterResizeListener", nullptr, TestUnregisterResizeListener,
+            nullptr, nullptr, nullptr, napi_default, nullptr },
         { "testUnregisterAllResizeListeners", nullptr, TestUnregisterAllResizeListeners,
             nullptr, nullptr, nullptr, napi_default, nullptr },
         { "testRegisterControlEventListener", nullptr, TestRegisterControlEventListener,
@@ -1470,7 +1483,8 @@ static napi_value Init(napi_env env, napi_value exports)
             nullptr, nullptr, nullptr, napi_default, nullptr },
         { "testUnregisterAllControlEventListeners", nullptr, TestUnregisterAllControlEventListeners,
             nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "testRegisterLifeCycleListener", nullptr, TestRegisterLifeCycleListener, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "testRegisterLifeCycleListener", nullptr, TestRegisterLifeCycleListener,
+            nullptr, nullptr, nullptr, napi_default, nullptr },
         { "testTwoRegisterLifeCycleListener", nullptr, TestTwoRegisterLifeCycleListener,
             nullptr, nullptr, nullptr, napi_default, nullptr },
         { "testUnregisterLifeCycleListener", nullptr, TestUnregisterLifeCycleListener,
