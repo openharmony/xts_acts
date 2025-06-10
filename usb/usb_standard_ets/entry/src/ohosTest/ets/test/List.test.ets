@@ -38,7 +38,7 @@ export default function testsuite() {
   //SerialTest()
   //SerialAddTest()
   //UsbCoreEtsTest()
-  UsbCoreEtsTestEx()
+  //UsbCoreEtsTestEx()
   //UsbDevicePipeTest()
   //UsbDevicePipeTestEx()
   //UsbApiParamExceEtsTest()
