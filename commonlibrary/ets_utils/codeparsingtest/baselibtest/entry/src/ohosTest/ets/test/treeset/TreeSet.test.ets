@@ -45,9 +45,9 @@ export default function TreeSetTest() {
      * @tc.desc       : Test the function of the interface Constructor.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testConstructor0001";
       try {
         const treeSet: TreeSet<number> = new TreeSet();
@@ -66,9 +66,9 @@ export default function TreeSetTest() {
      * @tc.desc       : Test the function of the interface Constructor.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testConstructor0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testConstructor0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testConstructor0002";
       try {
         let treeSet: TreeSet<string> = new TreeSet<string>((firstValue: string, secondValue: string): boolean => {
@@ -91,9 +91,9 @@ export default function TreeSetTest() {
      * @tc.desc       : Test the function of the interface Constructor.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testConstructor0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testConstructor0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testConstructor0003";
       try {
         class TestEntry {
@@ -125,9 +125,9 @@ export default function TreeSetTest() {
      * @tc.desc       : Test the function of the interface Constructor.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testConstructor0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testConstructor0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testConstructor0004";
       try {
         class TestEntry {
@@ -158,9 +158,9 @@ export default function TreeSetTest() {
      * @tc.desc       : Test the function of the interface isEmpty.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testIsEmpty0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testIsEmpty0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testIsEmpty0001";
       try {
         const treeSet: TreeSet<string | number | boolean | Object> = new TreeSet();
@@ -178,9 +178,9 @@ export default function TreeSetTest() {
      * @tc.desc       : Test the function of the interface isEmpty.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testIsEmpty0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testIsEmpty0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testIsEmpty0002";
       try {
         let treeSet: TreeSet<string> = new TreeSet();

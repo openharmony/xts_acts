@@ -48,9 +48,9 @@ export default function StackTest() {
      * @tc.desc       : Testing Stack push by number.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testStackPush0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testStackPush0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testStackPush0001";
       try {
         let stack: Stack<number> = new Stack();
@@ -68,9 +68,9 @@ export default function StackTest() {
      * @tc.desc       : Testing Stack push by string.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testStackPush0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testStackPush0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testStack0002";
       try {
         let stack: Stack<string> = new Stack();
@@ -88,9 +88,9 @@ export default function StackTest() {
      * @tc.desc       : Testing Stack push by object.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testStackPush0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testStackPush0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testStackPush0003";
       try {
         let stack: Stack<object> = new Stack();
@@ -111,9 +111,9 @@ export default function StackTest() {
      * @tc.desc       : Testing Stack push by object or string or number.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testStackPush0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testStackPush0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = "testStackPush0004";
       try {
         let stack: Stack<number | string | object> = new Stack();

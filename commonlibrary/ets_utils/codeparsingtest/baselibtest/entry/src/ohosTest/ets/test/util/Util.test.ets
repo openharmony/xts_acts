@@ -13,7 +13,9 @@
 * limitations under the License.
 */
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
+import taskpool from '@ohos.taskpool';
 import util from '@ohos.util';
+import worker, { MessageEvents } from '@ohos.worker';
 import { ArrayList, JSON } from '@kit.ArkTS';
 
 let falg = 0;
@@ -21,6 +23,15 @@ let falg = 0;
 function sleep(ms: number) {
   return new Promise<void>((resolve, reject) => setTimeout(resolve, ms));
 }
+
+function blockSleep(duration: number) {
+  duration = duration * 1000;
+  const start = Date.now();
+  while (Date.now() - start < duration) {}
+}
+
+@Concurrent
+
 
 async function fn() {
   return 'hello world';
@@ -79,9 +90,9 @@ export default function utilTest() {
      * @tc.desc       : Testing the format interface with value null.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUtilFormat001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUtilFormat001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testUtilFormat001';
       try {
         let value1 = null;
@@ -99,9 +110,9 @@ export default function utilTest() {
      * @tc.desc       : Testing the format interface with value undefined.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUtilFormat002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUtilFormat002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testUtilFormat002';
       try {
         let value1 = undefined;
@@ -119,9 +130,9 @@ export default function utilTest() {
      * @tc.desc       : Testing the format interface with value 'string+number'.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUtilFormat003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUtilFormat003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testUtilFormat003';
       try {
         let value1 = 'testPara1';
@@ -140,9 +151,9 @@ export default function utilTest() {
      * @tc.desc       : Testing the errnoToString interface with value null.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUtilErrnoToString001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUtilErrnoToString001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testUtilErrnoToString001';
       try {
         let value = null;
@@ -160,9 +171,9 @@ export default function utilTest() {
      * @tc.desc       : Testing the errnoToString interface with value undefined.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUtilErrnoToString002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUtilErrnoToString002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testUtilErrnoToString002';
       try {
         let value = undefined;
@@ -180,9 +191,9 @@ export default function utilTest() {
      * @tc.desc       : Testing the errnoToString interface with value -401.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUtilErrnoToString006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUtilErrnoToString006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testUtilErrnoToString006';
       try {
         let value = -401;
@@ -199,9 +210,9 @@ export default function utilTest() {
      * @tc.desc       : Testing the errnoToString interface with value -1.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUtilErrnoToString007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUtilErrnoToString007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testUtilErrnoToString007';
       try {
         let value = -1;
@@ -219,9 +230,9 @@ export default function utilTest() {
      * @tc.desc       : Testing the errnoToString interface with value 401.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUtilErrnoToString008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUtilErrnoToString008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testUtilErrnoToString008';
       try {
         let value = 401;
@@ -239,9 +250,9 @@ export default function utilTest() {
      * @tc.desc       : Testing the errnoToString interface with value 0.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUtilErrnoToString009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUtilErrnoToString009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testUtilErrnoToString009';
       try {
         let value = 0;
@@ -259,9 +270,9 @@ export default function utilTest() {
      * @tc.desc       : Testing the errnoToString interface with value 401.6895487.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUtilErrnoToString010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUtilErrnoToString010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testUtilErrnoToString010';
       try {
         let value = 401.6895487;
@@ -279,9 +290,9 @@ export default function utilTest() {
      * @tc.desc       : Testing the errnoToString interface with value Number.MAX_SAFE_INTEGER.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testUtilErrnoToString011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testUtilErrnoToString011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testUtilErrnoToString011';
       try {
         let value = Number.MAX_SAFE_INTEGER;
@@ -2664,6 +2675,733 @@ export default function utilTest() {
         expect(e.message).assertContain("decoder error, U_BUFFER_OVERFLOW_ERROR");
       }
     });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UTIL_0100
+     * @tc.name       : testPromisify0001
+     * @tc.desc       : Test the function of the interface promisify.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testPromisify0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+      const TAG = 'testPromisify0001';
+      try {
+        const addCall = util.promisify(util.callbackWrapper(fn));
+        let res: string = await addCall();
+        expect(res.toString()).assertEqual('hello world');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UTIL_0200
+     * @tc.name       : testGenerateRandomBinaryUUID0001
+     * @tc.desc       : Test the function of the interface generateRandomBinaryUUID.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testGenerateRandomBinaryUUID0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testGenerateRandomBinaryUUID0001';
+      try {
+        let uuid1 = util.generateRandomBinaryUUID();
+        expect(uuid1 instanceof Uint8Array).assertEqual(true);
+        expect(uuid1.length).assertEqual(16);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    });
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UTIL_0300
+     * @tc.name       : testGenerateRandomBinaryUUID0002
+     * @tc.desc       : Test the function of the interface generateRandomBinaryUUID.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testGenerateRandomBinaryUUID0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testGenerateRandomBinaryUUID0002';
+      try {
+        let uuid2 = util.generateRandomBinaryUUID(true);
+        expect(uuid2 instanceof Uint8Array).assertEqual(true);
+        expect(uuid2.length).assertEqual(16);
+        let uuid3 = util.generateRandomBinaryUUID(false);
+        expect(uuid3 instanceof Uint8Array).assertEqual(true);
+        expect(uuid3.length).assertEqual(16);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UTIL_0400
+     * @tc.name       : testGenerateRandomBinaryUUID0003
+     * @tc.desc       : Test the function of the interface generateRandomBinaryUUID.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testGenerateRandomBinaryUUID0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testGenerateRandomBinaryUUID0003';
+      try {
+        let uuid = util.generateRandomBinaryUUID(null);
+        console.info(JSON.stringify(uuid));
+        expect(uuid instanceof Uint8Array).assertEqual(true);
+        expect(uuid instanceof Uint8Array).assertTrue();
+        expect(uuid.length).assertEqual(16)
+        const versionByte = uuid[6];
+        expect((versionByte & 0xF0) === 0x40).assertTrue();
+      } catch (e) {
+        console.error(`${TAG} failed: ${e.message}`);
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UTIL_0500
+     * @tc.name       : testGenerateRandomBinaryUUID0004
+     * @tc.desc       : Test the function of the interface generateRandomBinaryUUID.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testGenerateRandomBinaryUUID0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testGenerateRandomBinaryUUID0004';
+      try {
+        let uuid = util.generateRandomBinaryUUID(Boolean(NaN));
+        console.info(JSON.stringify(uuid));
+        expect(uuid instanceof Uint8Array).assertEqual(true);
+        expect(uuid instanceof Uint8Array).assertTrue();
+        expect(uuid.length).assertEqual(16);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UTIL_0600
+     * @tc.name       : testGenerateRandomBinaryUUID0005
+     * @tc.desc       : Test the function of the interface generateRandomBinaryUUID.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testGenerateRandomBinaryUUID0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testGenerateRandomBinaryUUID0005';
+      try {
+        let uuid = util.generateRandomBinaryUUID(Boolean(""));
+        console.info(JSON.stringify(uuid));
+        expect(uuid instanceof Uint8Array).assertEqual(true);
+        expect(uuid instanceof Uint8Array).assertTrue();
+        expect(uuid.length).assertEqual(16);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UTIL_0700
+     * @tc.name       : testGenerateRandomBinaryUUID0006
+     * @tc.desc       : Test the function of the interface generateRandomBinaryUUID.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testGenerateRandomBinaryUUID0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testGenerateRandomBinaryUUID0006';
+      try {
+        let uuid = util.generateRandomBinaryUUID(Boolean(0));
+        console.info(JSON.stringify(uuid));
+        expect(uuid instanceof Uint8Array).assertEqual(true);
+        expect(uuid instanceof Uint8Array).assertTrue();
+        expect(uuid.length).assertEqual(16);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UTIL_0800
+     * @tc.name       : testGenerateRandomBinaryUUID0007
+     * @tc.desc       : Test the function of the interface generateRandomBinaryUUID.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testGenerateRandomBinaryUUID0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testGenerateRandomBinaryUUID0007';
+      try {
+        let uuid = util.generateRandomBinaryUUID(Boolean(!"s"));
+        console.info(JSON.stringify(uuid));
+        expect(uuid instanceof Uint8Array).assertEqual(true);
+        expect(uuid instanceof Uint8Array).assertTrue();
+        expect(uuid.length).assertEqual(16);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UTIL_0900
+     * @tc.name       : testGenerateRandomBinaryUUID0008
+     * @tc.desc       : Test the function of the interface generateRandomBinaryUUID.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testGenerateRandomBinaryUUID0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testGenerateRandomBinaryUUID0008';
+      try {
+        let uuid = util.generateRandomBinaryUUID(!0);
+        console.info(JSON.stringify(uuid));
+        expect(uuid instanceof Uint8Array).assertEqual(true);
+        expect(uuid instanceof Uint8Array).assertTrue();
+        expect(uuid.length).assertEqual(16);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UTIL_1000
+     * @tc.name       : testGenerateRandomUUID90001
+     * @tc.desc       : Test the function of the interface generateRandomUUID9.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testGenerateRandomUUID90001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testGenerateRandomUUID90001';
+      try {
+        let uuid = util.generateRandomUUID();
+        console.info("RFC 4122 Version 4 UUID:" + uuid);
+        const regex = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+        expect(regex.test(uuid)).assertTrue();
+        expect(uuid.length).assertEqual(36);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UTIL_1100
+     * @tc.name       : testGenerateRandomUUID90002
+     * @tc.desc       : Test the function of the interface generateRandomUUID9.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testGenerateRandomUUID90002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testGenerateRandomUUID90002';
+      try {
+        let uuid = util.generateRandomUUID(null);
+        console.info("RFC 4122 Version 4 UUID:" + uuid);
+        const regex = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+        expect(regex.test(uuid)).assertTrue();
+        expect(uuid.length).assertEqual(36);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UTIL_1200
+     * @tc.name       : testGenerateRandomUUID90003
+     * @tc.desc       : Test the function of the interface generateRandomUUID9.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testGenerateRandomUUID90003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testGenerateRandomUUID90003';
+      try {
+        let uuid = util.generateRandomUUID(Boolean(NaN));
+        console.info("RFC 4122 Version 4 UUID:" + uuid);
+        const regex = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+        expect(regex.test(uuid)).assertTrue();
+        expect(uuid.length).assertEqual(36);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UTIL_1300
+     * @tc.name       : testGenerateRandomUUID90004
+     * @tc.desc       : Test the function of the interface generateRandomUUID9.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testGenerateRandomUUID90004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testGenerateRandomUUID90004';
+      try {
+        let uuid = util.generateRandomUUID(Boolean(""));
+        console.info("RFC 4122 Version 4 UUID:" + uuid);
+        const regex = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+        expect(regex.test(uuid)).assertTrue();
+        expect(uuid.length).assertEqual(36);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UTIL_1400
+     * @tc.name       : testGenerateRandomUUID90005
+     * @tc.desc       : Test the function of the interface generateRandomUUID9.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testGenerateRandomUUID90005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testGenerateRandomUUID90005';
+      try {
+        let uuid = util.generateRandomUUID(Boolean(0));
+        console.info("RFC 4122 Version 4 UUID:" + uuid);
+        const regex = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+        expect(regex.test(uuid)).assertTrue();
+        expect(uuid.length).assertEqual(36);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UTIL_1500
+     * @tc.name       : testGenerateRandomUUID90006
+     * @tc.desc       : Test the function of the interface generateRandomUUID9.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testGenerateRandomUUID90006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testGenerateRandomUUID90006';
+      try {
+        let uuid = util.generateRandomUUID(Boolean(!"S"));
+        console.info("RFC 4122 Version 4 UUID:" + uuid);
+        const regex = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+        expect(regex.test(uuid)).assertTrue();
+        expect(uuid.length).assertEqual(36);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UTIL_1600
+     * @tc.name       : testGenerateRandomUUID90007
+     * @tc.desc       : Test the function of the interface generateRandomUUID9.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testGenerateRandomUUID90007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testGenerateRandomUUID90007';
+      try {
+        const uuid = util.generateRandomUUID(!0);
+        console.info("RFC 4122 Version 4 UUID:" + uuid);
+
+        const regex = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+        expect(regex.test(uuid)).assertTrue();
+        expect(uuid.length).assertEqual(36);
+        // const start = Date.now();
+        // for (let i = 0; i < 1000; i++) {
+        //   util.generateRandomUUID();
+        // }
+        // const duration = Date.now() - start;
+        // expect(duration < 1000).assertTrue();
+
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UTIL_1700
+     * @tc.name       : testTextDecoder00001
+     * @tc.desc       : Test the function of the interface TextDecoderCreate.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTextDecoder00001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTextDecoder00001';
+      try {
+        const textDecoder = util.TextDecoder.create();
+        expect(textDecoder.encoding).assertEqual('utf-8');
+        expect(textDecoder.fatal).assertEqual(false);
+        expect(textDecoder.ignoreBOM).assertEqual(false);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UTIL_1800
+     * @tc.name       : testTextDecoder00002
+     * @tc.desc       : Test the function of the interface TextDecoderCreate.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTextDecoder00002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTextDecoder00002';
+      try {
+        let textDecoderOptions: util.TextDecoderOptions = {
+          fatal: false,
+          ignoreBOM: true
+        }
+        const textDecoder = util.TextDecoder.create('', textDecoderOptions);
+        expect(textDecoder.encoding).assertEqual('utf-8');
+        expect(textDecoder.fatal).assertEqual(false);
+        expect(textDecoder.ignoreBOM).assertEqual(true);
+
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UTIL_1900
+     * @tc.name       : testTextDecoder00003
+     * @tc.desc       : Test the function of the interface TextDecoderCreate.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTextDecoder00003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTextDecoder00003';
+      try {
+        const textDecoder = util.TextDecoder.create('base64');
+        expect(textDecoder.encoding).assertEqual('base64');
+        expect(textDecoder.fatal).assertEqual(false);
+        expect(textDecoder.ignoreBOM).assertEqual(false);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UTIL_2000
+     * @tc.name       : testTextDecoder00004
+     * @tc.desc       : Test the function of the interface TextDecoderCreate.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTextDecoder00004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTextDecoder00004';
+      try {
+        const textDecoder = util.TextDecoder.create('base64', {
+          fatal: true, ignoreBOM: true
+        });
+        expect(textDecoder.encoding).assertEqual('base64');
+        expect(textDecoder.fatal).assertEqual(true);
+        expect(textDecoder.ignoreBOM).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UTIL_2100
+     * @tc.name       : testTextDecoder00005
+     * @tc.desc       : Test the function of the interface TextDecoderCreate.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTextDecoder00005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTextDecoder00005';
+      try {
+        const textDecoder = util.TextDecoder.create('utf-8');
+        expect(textDecoder.encoding).assertEqual('utf-8');
+        expect(textDecoder.fatal).assertEqual(false);
+        expect(textDecoder.ignoreBOM).assertEqual(false);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UTIL_2200
+     * @tc.name       : testTextDecoder00006
+     * @tc.desc       : Test the function of the interface TextDecoderCreate.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTextDecoder00006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTextDecoder00006';
+      try {
+        const textDecoder = util.TextDecoder.create('utf-8', {
+          fatal: true, ignoreBOM: true
+        });
+        expect(textDecoder.encoding).assertEqual('utf-8');
+        expect(textDecoder.fatal).assertEqual(true);
+        expect(textDecoder.ignoreBOM).assertEqual(true);
+
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UTIL_2300
+     * @tc.name       : testTextDecoder00007
+     * @tc.desc       : Test the function of the interface TextDecoderCreate.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTextDecoder00007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTextDecoder00007';
+      try {
+        const textDecoder = util.TextDecoder.create(undefined);
+        expect(textDecoder.encoding).assertEqual('utf-8');
+        expect(textDecoder.fatal).assertEqual(false);
+        expect(textDecoder.ignoreBOM).assertEqual(false);
+
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UTIL_2400
+     * @tc.name       : testTextDecoder00008
+     * @tc.desc       : Test the function of the interface TextDecoderCreate.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTextDecoder00008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTextDecoder00008';
+      try {
+        const textDecoder = util.TextDecoder.create(undefined, {
+          fatal: true, ignoreBOM: true
+        });
+        expect(textDecoder.encoding).assertEqual('utf-8');
+        expect(textDecoder.fatal).assertEqual(true);
+        expect(textDecoder.ignoreBOM).assertEqual(true);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UTIL_2500
+     * @tc.name       : testTextDecoder00009
+     * @tc.desc       : Test the function of the interface TextDecoderDecodeToString.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTextDecoder00009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTextDecoder00009';
+      try {
+        let textDecoderOptions: util.TextDecoderOptions = {
+          fatal: false,
+          ignoreBOM: true
+        }
+        let textDecoder = util.TextDecoder.create('utf-8', textDecoderOptions);
+        let uint8 = new Uint8Array([0xEF, 0xBB, 0xBF, 0x61, 0x62, 0x63]);
+        let retStr = textDecoder.decodeToString(uint8);
+        console.info("retStr = " + retStr);
+        expect(retStr).assertEqual('abc');
+        expect(textDecoder.encoding).assertEqual('utf-8');
+        expect(textDecoder.fatal).assertEqual(false);
+        expect(textDecoder.ignoreBOM).assertEqual(true);
+
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UTIL_2600
+     * @tc.name       : testTextDecoder00010
+     * @tc.desc       : Test the function of the interface TextDecoderDecodeToString.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTextDecoder00010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTextDecoder00010';
+      try {
+
+        let textDecoderOptions: util.TextDecoderOptions = {
+          fatal: false,
+          ignoreBOM: true
+        }
+        let decodeToStringOptions: util.DecodeToStringOptions = {
+          stream: false
+        }
+        let textDecoder = util.TextDecoder.create('utf-8', textDecoderOptions);
+        let uint8 = new Uint8Array([0xEF, 0xBB, 0xBF, 0x61, 0x62, 0x63]);
+        let retStr = textDecoder.decodeToString(uint8, decodeToStringOptions);
+        console.info("retStr = " + retStr);
+        expect(retStr).assertEqual('abc');
+        expect(textDecoder.encoding).assertEqual('utf-8');
+        expect(textDecoder.fatal).assertEqual(false);
+        expect(textDecoder.ignoreBOM).assertEqual(true);
+        expect(textDecoder.decodeToString(uint8, decodeToStringOptions)).assertEqual('abc');
+        expect(textDecoder.decodeToString(uint8, {
+          stream: true
+        })).assertEqual('abc');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UTIL_2700
+     * @tc.name       : testTextEncoder0001
+     * @tc.desc       : Test the function of the interface TextEncoder-TextEncoder.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTextEncoder0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTextEncoder0001';
+      try {
+        let textEncoder = new util.TextEncoder();
+        let textEncoder1 = util.TextEncoder.create();
+        expect(textEncoder.encoding).assertEqual('utf-8');
+        expect(textEncoder1.encoding).assertEqual('utf-8');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UTIL_2800
+     * @tc.name       : testTextEncoder0002
+     * @tc.desc       : Test the function of the interface TextEncoder-TextEncoder.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTextEncoder0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTextEncoder0002';
+      try {
+        let textEncoder = new util.TextEncoder('utf-8');
+
+        let textEncoder1 = util.TextEncoder.create("utf-8");
+        expect(textEncoder.encoding).assertEqual('utf-8');
+        expect(textEncoder1.encoding).assertEqual('utf-8');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UTIL_2900
+     * @tc.name       : testTextEncoder0003
+     * @tc.desc       : Test the function of the interface TextEncoder-TextEncoder.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTextEncoder0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTextEncoder0003';
+      try {
+        new util.TextEncoder('base64');
+        util.TextEncoder.create('base64');
+        expect().assertFail();
+      } catch (e) {
+        console.error(`${TAG} failed: ${e.message}`);
+        expect(e.message)
+          .assertEqual('assertion (CheckEncodingFormat(buffer)) failed: Wrong encoding format, the current encoding format is not support')
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UTIL_3000
+     * @tc.name       : testTextEncoder0004
+     * @tc.desc       : Test the function of the interface TextEncoder-TextEncoder.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTextEncoder0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTextEncoder0004';
+      try {
+        let textEncoder = new util.TextEncoder(undefined);
+        let textEncoder1 = util.TextEncoder.create(undefined);
+        expect(textEncoder.encoding).assertEqual('utf-8');
+        expect(textEncoder1.encoding).assertEqual('utf-8');
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UTIL_3100
+     * @tc.name       : testTextEncoder0005
+     * @tc.desc       : Test the function of the interface TextEncoder-encodeInto.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTextEncoder0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTextEncoder0005';
+      try {
+        let textEncoder = new util.TextEncoder();
+        let result = textEncoder.encodeInto("\uD800¥¥");
+        console.info("result = " + result);
+        console.log(`${TAG} result:::  ${result}`);
+        expect(result.toString()).assertEqual('237,160,128,194,165,194,165')
+
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UTIL_3200
+     * @tc.name       : testTextEncoder0006
+     * @tc.desc       : Test the function of the interface TextEncoder-encodeInto.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTextEncoder0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTextEncoder0006';
+      try {
+        let textEncoder = new util.TextEncoder();
+        let result = textEncoder.encodeInto();
+        console.info("result = " + result);
+        console.log(`${TAG} result:::  ${result}`);
+        expect(result).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_UTIL_3300
+     * @tc.name       : testTextEncoder0007
+     * @tc.desc       : Test the function of the interface TextEncoder-encodeInto.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTextEncoder0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testTextEncoder0007';
+      try {
+        let textEncoder = new util.TextEncoder();
+        let result = textEncoder.encodeInto(undefined);
+        console.info("result = " + result);
+        console.log(`${TAG} result:::  ${result}`);
+        expect(result).assertEqual(undefined);
+      } catch (err) {
+        console.error(`${TAG} failed, error: ${err.message}`);
+        expect().assertFail();
+      }
+    })
+
+
 
   })
 }

@@ -70,9 +70,9 @@ export default function TimerTest() {
      * @tc.desc       : Test the timer and execute the accumulation result after 1 second.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testSetTimer001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testSetTimer001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       setTimeout(() => {
         add();
       }, 1000);
@@ -87,9 +87,9 @@ export default function TimerTest() {
      * @tc.desc       : Test the timer and execute the accumulation result after 1 second.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testSetTimer002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testSetTimer002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       count = 0;
       setTimeout(() => {
         expect(count).assertEqual(0);
@@ -107,9 +107,9 @@ export default function TimerTest() {
      * @tc.desc       : Test the cumulative results of executing multiple timers.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testSetTimer003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testSetTimer003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       count = 0;
       let result1 = setTimeout(() => {
         add();
@@ -132,9 +132,9 @@ export default function TimerTest() {
      * @tc.desc       : Test the string assignment result of the Settimer execution.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testSetTimer004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testSetTimer004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       flag = 'a';
       let result1 = setTimeout(() => {
         flag = 'b';
@@ -150,9 +150,9 @@ export default function TimerTest() {
      * @tc.desc       : Test the results of string assignment executed by multiple timers.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testSetTimer005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testSetTimer005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       flag = 'a';
       let result1 = setTimeout(() => {
         flag = 'b';
