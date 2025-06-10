@@ -134,9 +134,9 @@ export default function windowPropertiesTest() {
      * @tc.desc      : snapshot mainWIndow
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 0
      */
-    it('testSnapShotSync_mainWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('testSnapShotSync_mainWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'testSnapShotSync_mainWindow';
       let mainWindow = await windowStage.getMainWindow();
       console.info(`${caseName} Succeeded in creating the mainWindow. Data: ` + JSON.stringify(mainWindow));
@@ -169,9 +169,9 @@ export default function windowPropertiesTest() {
      * @tc.desc      : snapshot mainWIndow
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 0
      */
-    it('testSnapShotSync_mainWindow_Privacy', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('testSnapShotSync_mainWindow_Privacy', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName = 'testSnapShotSync_mainWindow_Privacy';
       let mainWindow = await windowStage.getMainWindow();
       console.info(`${caseName} Succeeded in creating the mainWindow. Data: ` + JSON.stringify(mainWindow));
@@ -205,9 +205,9 @@ export default function windowPropertiesTest() {
      * @tc.desc      : snapshot subWIndow
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('testSnapShotSync_subWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('testSnapShotSync_subWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName = 'testSnapShotSync_subWindow';
       let subWindow = await windowStage.createSubWindow('testSnapShotSync_subWindow');
       console.info(`${caseName} Succeeded in creating the subwindow. Data: ` + JSON.stringify(subWindow));
@@ -244,9 +244,9 @@ export default function windowPropertiesTest() {
      * @tc.desc      : snapshot testSnapShotSync_subWindow_Privacy
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('testSnapShotSync_subWindow_Privacy', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('testSnapShotSync_subWindow_Privacy', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName = 'testSnapShotSync_subWindow_Privacy';
       let subWindow = await windowStage.createSubWindow('testSnapShotSync_subWindow_Privacy');
       console.info(`${caseName} Succeeded in creating the subwindow. Data: ` + JSON.stringify(subWindow));
@@ -284,9 +284,9 @@ export default function windowPropertiesTest() {
      * @tc.desc      : snapshot testSnapShotSync_dialogWindow
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('testSnapShotSync_dialogWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('testSnapShotSync_dialogWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName = 'testSnapShotSync_dialogWindow';
       let config : window.Configuration = {
         name: "testSnapShotSync_dialogWindow",
@@ -328,9 +328,9 @@ export default function windowPropertiesTest() {
      * @tc.desc      : snapshot testSnapShotSync_dialogWindow_Privacy
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 3
+     * @tc.level     : Level 2
      */
-    it('testSnapShotSync_dialogWindow_Privacy', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('testSnapShotSync_dialogWindow_Privacy', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName = 'testSnapShotSync_dialogWindow_Privacy';
       let config : window.Configuration = {
         name: "testSnapShotSync_dialogWindow_Privacy",
