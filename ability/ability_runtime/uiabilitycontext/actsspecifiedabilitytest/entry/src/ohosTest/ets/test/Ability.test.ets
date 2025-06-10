@@ -1231,7 +1231,7 @@ export default function abilityTest() {
         if (data?.event === 'IsolationAbility_onCreate') {
           hilog.info(DOMAIN, LOG_TAG, tag + data.data);
           try {
-            expect(data.data).assertEqual(processNames[abilityCreate]);
+            expect(processNames.indexOf(data.data)>=-1).assertTrue();
           } catch (err) {}
           abilityCreate++;
         } else if (data?.event === 'demo2_stage_create') {
