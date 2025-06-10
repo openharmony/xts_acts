@@ -80,11 +80,11 @@ export default function windowKeyBorad() {
     it('testMainWindow_onKeyboradWillShow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testMainWindow_onKeyboradWillShow ';
       console.log(caseName + 'begin');
+      let mainWindow = windowStage.getMainWindowSync();
       try {
         if (isPCStatus != '' || isAutoWindow == 'true') {
           done();
         }
-        let mainWindow = windowStage.getMainWindowSync();
         const callback  = (keyboardInfo: window.KeyboardInfo) => {
           console.info(`${caseName} KeyboardInfo: ${JSON.stringify(keyboardInfo)}`);
           let displayInfo = display.getDefaultDisplaySync();
@@ -105,6 +105,8 @@ export default function windowKeyBorad() {
           } else {
             expect(true).assertFalse();
           }
+          mainWindow.off('keyboardWillShow');
+          done();
         }
         mainWindow.on('keyboardWillShow', callback);
         let driver: Driver = Driver.create();
@@ -115,10 +117,9 @@ export default function windowKeyBorad() {
         await sleep(500);
         await driver.pressBack();
         await sleep(500);
-        mainWindow.off('keyboardWillShow');
-        done();
       } catch (err) {
         console.error(caseName + 'Failed. Cause:' + JSON.stringify(err));
+        mainWindow.off('keyboardWillShow');
         if (err.code === 801) {
           done();
         } else {
@@ -141,12 +142,16 @@ export default function windowKeyBorad() {
       console.log(caseName + 'begin');
       const subWindowClass = await windowStage.createSubWindow('testSubWindow_onKeyboradWillShow');
       console.info(`${caseName} Succeeded in creating the sub window.`);
+      await subWindowClass.setUIContent('testability/pages/First/index2');
+      await sleep(200);
+      await subWindowClass.showWindow();
+      await sleep(200);
       try {
         if (isPCStatus != '' || isAutoWindow == 'true') {
           await subWindowClass.destroyWindow()
           done();
         }
-        const callback  = (keyboardInfo: window.KeyboardInfo) => {
+        const callback  = async (keyboardInfo: window.KeyboardInfo) => {
           console.info(`${caseName} KeyboardInfo: ${JSON.stringify(keyboardInfo)}`);
           let displayInfo = display.getDefaultDisplaySync();
           console.info(`${caseName} dispalyInfo: ${JSON.stringify(displayInfo)}`);
@@ -166,6 +171,9 @@ export default function windowKeyBorad() {
           } else {
             expect(true).assertFalse();
           }
+          subWindowClass.off('keyboardWillShow');
+          await subWindowClass.destroyWindow()
+          done();
         }
         subWindowClass.on('keyboardWillShow', callback);
         let driver: Driver = Driver.create();
@@ -176,11 +184,9 @@ export default function windowKeyBorad() {
         await sleep(500);
         await driver.pressBack();
         await sleep(500);
-        subWindowClass.off('keyboardWillShow');
-        await subWindowClass.destroyWindow()
-        done();
       } catch (err) {
         console.error(caseName + 'Failed. Cause:' + JSON.stringify(err));
+        subWindowClass.off('keyboardWillShow');
         await subWindowClass.destroyWindow()
         if (err.code === 801) {
           done();
@@ -209,12 +215,16 @@ export default function windowKeyBorad() {
       };
       const subWindowClass = await window.createWindow(config);
       console.info(`${caseName} Succeeded in creating the dialog window.`);
+      await subWindowClass.setUIContent('testability/pages/First/index2');
+      await sleep(200);
+      await subWindowClass.showWindow();
+      await sleep(200);
       try {
         if (isPCStatus != '' || isAutoWindow == 'true') {
           await subWindowClass.destroyWindow()
           done();
         }
-        const callback  = (keyboardInfo: window.KeyboardInfo) => {
+        const callback  = async (keyboardInfo: window.KeyboardInfo) => {
           console.info(`${caseName} KeyboardInfo: ${JSON.stringify(keyboardInfo)}`);
           let displayInfo = display.getDefaultDisplaySync();
           console.info(`${caseName} dispalyInfo: ${JSON.stringify(displayInfo)}`);
@@ -234,6 +244,9 @@ export default function windowKeyBorad() {
           } else {
             expect(true).assertFalse();
           }
+          subWindowClass.off('keyboardWillShow');
+          await subWindowClass.destroyWindow();
+          done();
         }
         subWindowClass.on('keyboardWillShow', callback);
         let driver: Driver = Driver.create();
@@ -244,11 +257,9 @@ export default function windowKeyBorad() {
         await sleep(500);
         await driver.pressBack();
         await sleep(500);
-        subWindowClass.off('keyboardWillShow');
-        await subWindowClass.destroyWindow();
-        done();
       } catch (err) {
         console.error(caseName + 'Failed. Cause:' + JSON.stringify(err));
+        subWindowClass.off('keyboardWillShow');
         await subWindowClass.destroyWindow();
         if (err.code === 801) {
           done();
@@ -272,6 +283,10 @@ export default function windowKeyBorad() {
       console.log(caseName + 'begin');
       const subWindowClass = await windowStage.createSubWindow('testSubWindowDestroy_onKeyboradWillShow');
       console.info(`${caseName} Succeeded in creating the sub window.`);
+      await subWindowClass.setUIContent('testability/pages/First/index2');
+      await sleep(200);
+      await subWindowClass.showWindow();
+      await sleep(200);
       try {
         if (isPCStatus != '' || isAutoWindow == 'true') {
           await subWindowClass.destroyWindow()
@@ -303,6 +318,10 @@ export default function windowKeyBorad() {
       console.log(caseName + 'begin');
       const subWindowClass = await windowStage.createSubWindow('testSubWindowDestroy_onKeyboradWillShow');
       console.info(`${caseName} Succeeded in creating the sub window.`);
+      await subWindowClass.setUIContent('testability/pages/First/index2');
+      await sleep(200);
+      await subWindowClass.showWindow();
+      await sleep(200);
       try {
         if (isPCStatus != '' || isAutoWindow == 'true') {
           await subWindowClass.destroyWindow()
@@ -357,6 +376,8 @@ export default function windowKeyBorad() {
           } else {
             expect(true).assertFalse();
           }
+          mainWindow.off('keyboardWillHide');
+          done();
         }
         mainWindow.on('keyboardWillHide', callback);
         let driver: Driver = Driver.create();
@@ -367,10 +388,9 @@ export default function windowKeyBorad() {
         await sleep(500);
         await driver.pressBack();
         await sleep(500);
-        mainWindow.off('keyboardWillHide');
-        done();
       } catch (err) {
         console.error(caseName + 'Failed. Cause:' + JSON.stringify(err));
+        mainWindow.off('keyboardWillHide');
         if (err.code === 801) {
           done();
         } else {
@@ -394,12 +414,16 @@ export default function windowKeyBorad() {
       console.log(caseName + 'begin');
       const subWindowClass = await windowStage.createSubWindow('testSubWindow_onKeyboradWillShow');
       console.info(`${caseName} Succeeded in creating the sub window.`);
+      await subWindowClass.setUIContent('testability/pages/First/index2');
+      await sleep(200);
+      await subWindowClass.showWindow();
+      await sleep(200);
       try {
         if (isPCStatus != '' || isAutoWindow == 'true') {
           await subWindowClass.destroyWindow();
           done();
         }
-        const callback  = (keyboardInfo: window.KeyboardInfo) => {
+        const callback  = async (keyboardInfo: window.KeyboardInfo) => {
           console.info(`${caseName} KeyboardInfo: ${JSON.stringify(keyboardInfo)}`);
           let displayInfo = display.getDefaultDisplaySync();
           console.info(`${caseName} dispalyInfo: ${JSON.stringify(displayInfo)}`);
@@ -418,6 +442,9 @@ export default function windowKeyBorad() {
           } else {
             expect(true).assertFalse();
           }
+          subWindowClass.off('keyboardWillHide');
+          await subWindowClass.destroyWindow();
+          done();
         }
         subWindowClass.on('keyboardWillHide', callback);
         let driver: Driver = Driver.create();
@@ -428,11 +455,9 @@ export default function windowKeyBorad() {
         await sleep(500);
         await driver.pressBack();
         await sleep(500);
-        subWindowClass.off('keyboardWillHide');
-        await subWindowClass.destroyWindow();
-        done();
       } catch (err) {
         console.error(caseName + 'Failed. Cause:' + JSON.stringify(err));
+        subWindowClass.off('keyboardWillHide');
         await subWindowClass.destroyWindow();
         if (err.code === 801) {
           done();
@@ -461,12 +486,16 @@ export default function windowKeyBorad() {
       };
       const subWindowClass = await window.createWindow(config);
       console.info(`${caseName} Succeeded in creating the dialog window.`);
+      await subWindowClass.setUIContent('testability/pages/First/index2');
+      await sleep(200);
+      await subWindowClass.showWindow();
+      await sleep(200);
       try {
         if (isPCStatus != '' || isAutoWindow == 'true') {
           await subWindowClass.destroyWindow();
           done();
         }
-        const callback  = (keyboardInfo: window.KeyboardInfo) => {
+        const callback  = async (keyboardInfo: window.KeyboardInfo) => {
           console.info(`${caseName} KeyboardInfo: ${JSON.stringify(keyboardInfo)}`);
           let displayInfo = display.getDefaultDisplaySync();
           console.info(`${caseName} dispalyInfo: ${JSON.stringify(displayInfo)}`);
@@ -485,6 +514,9 @@ export default function windowKeyBorad() {
           } else {
             expect(true).assertFalse();
           }
+          subWindowClass.off('keyboardWillHide');
+          await subWindowClass.destroyWindow();
+          done();
         }
         subWindowClass.on('keyboardWillHide', callback);
         let driver: Driver = Driver.create();
@@ -495,11 +527,9 @@ export default function windowKeyBorad() {
         await sleep(500);
         await driver.pressBack();
         await sleep(500);
-        subWindowClass.off('keyboardWillHide');
-        await subWindowClass.destroyWindow();
-        done();
       } catch (err) {
         console.error(caseName + 'Failed. Cause:' + JSON.stringify(err));
+        subWindowClass.off('keyboardWillHide');
         await subWindowClass.destroyWindow();
         if (err.code === 801) {
           done();
@@ -523,6 +553,10 @@ export default function windowKeyBorad() {
       console.log(caseName + 'begin');
       const subWindowClass = await windowStage.createSubWindow('testSubWindowDestroy_onKeyboradWillShow');
       console.info(`${caseName} Succeeded in creating the sub window.`);
+      await subWindowClass.setUIContent('testability/pages/First/index2');
+      await sleep(200);
+      await subWindowClass.showWindow();
+      await sleep(200);
       try {
         if (isPCStatus != '' || isAutoWindow == 'true') {
           await subWindowClass.destroyWindow()
@@ -554,6 +588,10 @@ export default function windowKeyBorad() {
       console.log(caseName + 'begin');
       const subWindowClass = await windowStage.createSubWindow('testSubWindowDestroy_onKeyboradWillShow');
       console.info(`${caseName} Succeeded in creating the sub window.`);
+      await subWindowClass.setUIContent('testability/pages/First/index2');
+      await sleep(200);
+      await subWindowClass.showWindow();
+      await sleep(200);
       try {
         if (isPCStatus != '' || isAutoWindow == 'true') {
           await subWindowClass.destroyWindow()
@@ -594,20 +632,24 @@ export default function windowKeyBorad() {
         const callback1  = (keyboardInfo: window.KeyboardInfo) => {
           console.info(`${caseName} KeyboardInfo1: ${JSON.stringify(keyboardInfo)}`);
           timer1++;
+          console.info(`${caseName} callback1 timer1: ${JSON.stringify(timer1)}`);
         }
         const callback2  = (keyboardInfo: window.KeyboardInfo) => {
           console.info(`${caseName} KeyboardInfo2: ${JSON.stringify(keyboardInfo)}`);
           timer1++;
+          console.info(`${caseName} callback2 timer1: ${JSON.stringify(timer1)}`);
         }
         mainWindow.on('keyboardWillShow', callback1);
         mainWindow.on('keyboardWillShow', callback2);
         const callback3  = (keyboardInfo: window.KeyboardInfo) => {
           console.info(`${caseName} KeyboardInfo3: ${JSON.stringify(keyboardInfo)}`);
           timer2++;
+          console.info(`${caseName} callback3 timer2: ${JSON.stringify(timer2)}`);
         }
         const callback4  = (keyboardInfo: window.KeyboardInfo) => {
           console.info(`${caseName} KeyboardInfo4: ${JSON.stringify(keyboardInfo)}`);
           timer2++;
+          console.info(`${caseName} callback4 timer2: ${JSON.stringify(timer2)}`);
         }
         mainWindow.on('keyboardWillHide', callback3);
         mainWindow.on('keyboardWillHide', callback4);
@@ -626,11 +668,11 @@ export default function windowKeyBorad() {
         done();
       } catch (err) {
         console.error(caseName + 'Failed. Cause:' + JSON.stringify(err));
+        mainWindow.off('keyboardWillShow');
+        mainWindow.off('keyboardWillHide');
         if (err.code === 801) {
           done();
         } else {
-          mainWindow.off('keyboardWillShow');
-          mainWindow.off('keyboardWillHide');
           expect().assertFail();
           done();
         }
@@ -659,20 +701,24 @@ export default function windowKeyBorad() {
         const callback1  = (keyboardInfo: window.KeyboardInfo) => {
           console.info(`${caseName} KeyboardInfo1: ${JSON.stringify(keyboardInfo)}`);
           timer1++;
+          console.info(`${caseName} callback1 timer1: ${JSON.stringify(timer1)}`);
         }
         const callback2  = (keyboardInfo: window.KeyboardInfo) => {
           console.info(`${caseName} KeyboardInfo2: ${JSON.stringify(keyboardInfo)}`);
           timer1++;
+          console.info(`${caseName} callback2 timer1: ${JSON.stringify(timer1)}`);
         }
         mainWindow.on('keyboardWillShow', callback1);
         mainWindow.on('keyboardWillShow', callback2);
         const callback3  = (keyboardInfo: window.KeyboardInfo) => {
           console.info(`${caseName} KeyboardInfo3: ${JSON.stringify(keyboardInfo)}`);
           timer2++;
+          console.info(`${caseName} callback3 timer2: ${JSON.stringify(timer2)}`);
         }
         const callback4  = (keyboardInfo: window.KeyboardInfo) => {
           console.info(`${caseName} KeyboardInfo4: ${JSON.stringify(keyboardInfo)}`);
           timer2++;
+          console.info(`${caseName} callback4 timer2: ${JSON.stringify(timer2)}`);
         }
         mainWindow.on('keyboardWillHide', callback3);
         mainWindow.on('keyboardWillHide', callback4);
@@ -693,11 +739,11 @@ export default function windowKeyBorad() {
         done();
       } catch (err) {
         console.error(caseName + 'Failed. Cause:' + JSON.stringify(err));
+        mainWindow.off('keyboardWillShow');
+        mainWindow.off('keyboardWillHide');
         if (err.code === 801) {
           done();
         } else {
-          mainWindow.off('keyboardWillShow');
-          mainWindow.off('keyboardWillHide');
           expect().assertFail();
           done();
         }
@@ -726,20 +772,24 @@ export default function windowKeyBorad() {
         const callback1  = (keyboardInfo: window.KeyboardInfo) => {
           console.info(`${caseName} KeyboardInfo1: ${JSON.stringify(keyboardInfo)}`);
           timer1++;
+          console.info(`${caseName} callback1 timer1: ${JSON.stringify(timer1)}`);
         }
         const callback2  = (keyboardInfo: window.KeyboardInfo) => {
           console.info(`${caseName} KeyboardInfo2: ${JSON.stringify(keyboardInfo)}`);
           timer1++;
+          console.info(`${caseName} callback2 timer1: ${JSON.stringify(timer1)}`);
         }
         mainWindow.on('keyboardWillShow', callback1);
         mainWindow.on('keyboardWillShow', callback2);
         const callback3  = (keyboardInfo: window.KeyboardInfo) => {
           console.info(`${caseName} KeyboardInfo3: ${JSON.stringify(keyboardInfo)}`);
           timer2++;
+          console.info(`${caseName} callback3 timer2: ${JSON.stringify(timer2)}`);
         }
         const callback4  = (keyboardInfo: window.KeyboardInfo) => {
           console.info(`${caseName} KeyboardInfo4: ${JSON.stringify(keyboardInfo)}`);
           timer2++;
+          console.info(`${caseName} callback4 timer2: ${JSON.stringify(timer2)}`);
         }
         mainWindow.on('keyboardWillHide', callback3);
         mainWindow.on('keyboardWillHide', callback4);
@@ -759,11 +809,11 @@ export default function windowKeyBorad() {
         done();
       } catch (err) {
         console.error(caseName + 'Failed. Cause:' + JSON.stringify(err));
+        mainWindow.off('keyboardWillShow');
+        mainWindow.off('keyboardWillHide');
         if (err.code === 801) {
           done();
         } else {
-          mainWindow.off('keyboardWillShow');
-          mainWindow.off('keyboardWillHide');
           expect().assertFail();
           done();
         }
@@ -792,12 +842,12 @@ export default function windowKeyBorad() {
         const callback1  = (keyboardInfo: window.KeyboardInfo) => {
           console.info(`${caseName} KeyboardInfo1: ${JSON.stringify(keyboardInfo)}`);
           timer1++;
-          console.info(`${caseName} timer1: ${JSON.stringify(timer1)}`);
+          console.info(`${caseName} callback1 timer1: ${JSON.stringify(timer1)}`);
         }
         const callback2  = (keyboardInfo: window.KeyboardInfo) => {
           console.info(`${caseName} KeyboardInfo2: ${JSON.stringify(keyboardInfo)}`);
           timer2++;
-          console.info(`${caseName} timer2: ${JSON.stringify(timer2)}`);
+          console.info(`${caseName} callback2 timer2: ${JSON.stringify(timer2)}`);
         }
         mainWindow.on('keyboardWillShow', callback1);
         mainWindow.on('keyboardWillHide', callback2);
@@ -825,11 +875,11 @@ export default function windowKeyBorad() {
         done();
       } catch (err) {
         console.error(caseName + 'Failed. Cause:' + JSON.stringify(err));
+        mainWindow.off('keyboardWillShow');
+        mainWindow.off('keyboardWillHide');
         if (err.code === 801) {
           done();
         } else {
-          mainWindow.off('keyboardWillShow');
-          mainWindow.off('keyboardWillHide');
           expect().assertFail();
           done();
         }

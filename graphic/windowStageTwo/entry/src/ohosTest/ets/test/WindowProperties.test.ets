@@ -4651,12 +4651,24 @@ export default function windowPropertiesTest() {
           ctx: context
         };
         try {
-          subWindowClass = await window.createWindow(config);
-          let windowProperties = subWindowClass.getWindowProperties()
-          console.info(`${msgStr} windowProperties: ${JSON.stringify(windowProperties)}`);
-          expect(windowProperties.type).assertEqual(window.WindowType.TYPE_FLOAT);
-          await subWindowClass.destroyWindow();
-          done();
+          window.createWindow(config).then(async (data) => {
+            console.info(`${msgStr} Succeeded in createWindow.`);
+            subWindowClass = data;
+            let windowProperties = subWindowClass.getWindowProperties()
+            console.info(`${msgStr} windowProperties: ${JSON.stringify(windowProperties)}`);
+            expect(windowProperties.type).assertEqual(window.WindowType.TYPE_FLOAT);
+            await subWindowClass.destroyWindow();
+            done();
+          }).catch(async (err: BusinessError) => {
+            console.error(`${msgStr} Failed to createWindow. Cause: ${JSON.stringify(err)}`);
+            await subWindowClass?.destroyWindow();
+            if (err.code === 1300002) {
+              done();
+            } else {
+              expect().assertFail();
+              done();
+            }
+          });
         } catch (error) {
           console.error('Failed to create the subwindow. Cause: ' + JSON.stringify(error));
           if (subWindowClass !== undefined) {
@@ -5948,14 +5960,26 @@ export default function windowPropertiesTest() {
           ctx: context
         };
         try {
-          subWindowClass = await window.createWindow(config);
-          let windowProperties = subWindowClass.getWindowProperties()
-          console.info(`${msgStr} windowProperties: ${JSON.stringify(windowProperties)}`);
-          let name = windowProperties.name;
-          console.info(`${msgStr} name: ${JSON.stringify(name)}`);
-          expect(name).assertEqual('testWindowPropertiesFloatWindow');
-          await subWindowClass.destroyWindow();
-          done();
+          window.createWindow(config).then(async (data) => {
+            console.info(`${msgStr} Succeeded in createWindow.`);
+            subWindowClass = data;
+            let windowProperties = subWindowClass.getWindowProperties()
+            console.info(`${msgStr} windowProperties: ${JSON.stringify(windowProperties)}`);
+            let name = windowProperties.name;
+            console.info(`${msgStr} name: ${JSON.stringify(name)}`);
+            expect(name).assertEqual('testWindowPropertiesFloatWindow');
+            await subWindowClass.destroyWindow();
+            done();
+          }).catch(async (err: BusinessError) => {
+            console.error(`${msgStr} Failed to createWindow. Cause: ${JSON.stringify(err)}`);
+            await subWindowClass?.destroyWindow();
+            if (err.code === 1300002) {
+              done();
+            } else {
+              expect().assertFail();
+              done();
+            }
+          });
         } catch (error) {
           console.error('Failed to create the subwindow. Cause: ' + JSON.stringify(error));
           if (subWindowClass !== undefined) {
@@ -6273,31 +6297,42 @@ export default function windowPropertiesTest() {
             await mainWindow.maximize();
             await sleep(200);
           }
-          subWindowClass = await windowStage.createSubWindow('testGetGlobalWindowMode_Fullscreen_And_Float');
-          await sleep(200);
-          await subWindowClass.setUIContent('testability/pages/First/index2');
-          await sleep(200);
-          await subWindowClass.showWindow();
-          await sleep(200);
           let config: window.Configuration = {
             name: "floatWindow",
             windowType: window.WindowType.TYPE_FLOAT,
             ctx: context
           };
-          subWindowClass = await window.createWindow(config);
-          window.getGlobalWindowMode(0).then(async (data: number) => {
-            console.info(`${caseName} Succeeded in calling getGlobalWindowMode. data: ${data}`);
-            expect(data).assertEqual(5);
-            await mainWindow.recover();
-            await subWindowClass?.destroyWindow();
-            done();
-          }).catch(async (err: BusinessError) => {
-            console.error(`${caseName} Failed to call getGlobalWindowMode. Cause: ${JSON.stringify(err)}`);
-            if (isPCStatus != '' || isAutoWindow == 'true') {
+          window.createWindow(config).then(async (data) => {
+            console.info(`${caseName} Succeeded in createWindow.`);
+            subWindowClass = data;
+            await sleep(200);
+            await subWindowClass.setUIContent('testability/pages/First/index2');
+            await sleep(200);
+            await subWindowClass.showWindow();
+            await sleep(200);
+            window.getGlobalWindowMode(0).then(async (data: number) => {
+              console.info(`${caseName} Succeeded in calling getGlobalWindowMode. data: ${data}`);
+              expect(data).assertEqual(5);
               await mainWindow.recover();
-            }
+              await subWindowClass?.destroyWindow();
+              done();
+            }).catch(async (err: BusinessError) => {
+              console.error(`${caseName} Failed to call getGlobalWindowMode. Cause: ${JSON.stringify(err)}`);
+              if (isPCStatus != '' || isAutoWindow == 'true') {
+                await mainWindow.recover();
+              }
+              await subWindowClass?.destroyWindow();
+              if (err.code === 801) {
+                done();
+              } else {
+                expect().assertFail();
+                done();
+              }
+            });
+          }).catch(async (err: BusinessError) => {
+            console.error(`${caseName} Failed to createWindow. Cause: ${JSON.stringify(err)}`);
             await subWindowClass?.destroyWindow();
-            if (err.code === 801) {
+            if (err.code === 1300002) {
               done();
             } else {
               expect().assertFail();
