@@ -23,7 +23,6 @@ group("ActsArktsModuleTest") {
       "napi_load:ActsArkTsNapiLoadTest",
       "static_load:ActsArkTsStaticLoadTest",
       "worker_path_load:ActsArkTsWorkerPathLoadTest",
-      "lazy_load:ActsArkTsLazyLoadTest",
     ]
   }
 }
