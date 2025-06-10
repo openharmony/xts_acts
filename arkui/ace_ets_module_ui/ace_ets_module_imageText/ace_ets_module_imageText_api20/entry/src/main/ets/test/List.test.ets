@@ -23,6 +23,10 @@ import StyledStringStrokeTest from './TextTest/StyledStringStrokeTest.test';
 import TextInputEnableAutoFillAnimationTest from './TextInputTest/TextInputEnableAutoFillAnimation.test';
 import TextShaderStyleTest from './TextTest/TextShaderStyle.test';
 import TextStyleSuperscriptTest from './StyledStringTest/TextStyleSuperscript.test';
+import TextEnableAutoSpacingTest from './TextTest/TextEnableAutoSpacing.test';
+import SearchEnableAutoSpacingTest from './SearchTest/SearchEnableAutoSpacing.test';
+import TextAreaEnableAutoSpacingTest from './TextAreaTest/TextAreaEnableAutoSpacing.test';
+import TextInputEnableAutoSpacingTest from './TextInputTest/TextInputEnableAutoSpacing.test';
 import ImageOnErrorTest from './ImageErrorTest/ImageOnError.test';
 
 
@@ -37,5 +41,9 @@ export default function testsuite() {
   TextInputEnableAutoFillAnimationTest();
   TextShaderStyleTest();
   TextStyleSuperscriptTest();
+  TextEnableAutoSpacingTest();
+  SearchEnableAutoSpacingTest();
+  TextAreaEnableAutoSpacingTest();
+  TextInputEnableAutoSpacingTest();
   ImageOnErrorTest();
 }
