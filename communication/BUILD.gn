@@ -28,6 +28,7 @@ group("communication") {
       "dsoftbus/ipc_stage/ipc_stagetest:ActsIPCEtsTest",
       "dsoftbus/rpc:ActsRpcJsTest",
       "dsoftbus/rpc_request:ActsRpcRequestJsTest",
+      "dsoftbus/linkEnhance:ActslinkEnhanceTest",
       "netstack_http_nop:ActsHttpNopStageTest",
       "netstack_socket_nop:ActsSocketNoPermissionTest",
       "nfc_Controller:ActsNFCJSTest",
