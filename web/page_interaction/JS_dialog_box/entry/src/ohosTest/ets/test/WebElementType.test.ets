@@ -19,8 +19,8 @@ import Utils from './Utils';
 // import router from '@system.router';
 import router from '@ohos.router';
 import { accessibility, config } from '@kit.AccessibilityKit';
-const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
-const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
+// const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+// const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 let emitKey = "WebElementType01";
 export default function WebElementTypeJsunit() {
   describe('WebElementTypeTest',  () =>{
@@ -44,11 +44,11 @@ export default function WebElementTypeJsunit() {
       done()
     });
     beforeEach(async  (done: Function) =>{
-      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
-        console.info(`enable success`);
-      }).catch((err: object) => {
-        console.error(`failed to enable, ${err}`);
-      })
+      // config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+      //  console.info(`enable success`);
+      // }).catch((err: object) => {
+      //   console.error(`failed to enable, ${err}`);
+      //  })
       await Utils.sleep(2000);
       console.info("WebElementType beforeEach start");
       done();
