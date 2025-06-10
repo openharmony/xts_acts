@@ -115,19 +115,19 @@ struct ParticleEmitter {
         if (filterTree) {
           let myjson: string = 'XHQ' + JSON.stringify(JSON.parse(filterTree)?.$attrs?.particles)
           console.log('XHQ' + JSON.stringify(JSON.parse(filterTree)?.$attrs?.particles[0]?.emitter?.annulusRegion));
-          console.log('XHQ' + + JSON.stringify(JSON.parse(filterTree)?.$attrs?.particles[0]?.emitter?.annulusRegion?.center?.x));
+          console.log('XHQ' + JSON.stringify(JSON.parse(filterTree)?.$attrs?.particles[0]?.emitter?.annulusRegion?.center?.x));
           AppStorage.setOrCreate('xValue', JSON.stringify(JSON.parse(filterTree)?.$attrs?.particles[0]?.emitter?.annulusRegion?.center?.x)); 
-          console.log('XHQ' + + JSON.stringify(JSON.parse(filterTree)?.$attrs?.particles[0]?.emitter?.annulusRegion?.center?.y));
+          console.log('XHQ' + JSON.stringify(JSON.parse(filterTree)?.$attrs?.particles[0]?.emitter?.annulusRegion?.center?.y));
           AppStorage.setOrCreate('yValue', JSON.stringify(JSON.parse(filterTree)?.$attrs?.particles[0]?.emitter?.annulusRegion?.center?.y));
-          console.log('XHQ' + + JSON.stringify(JSON.parse(filterTree)?.$attrs?.particles[0]?.emitter?.annulusRegion?.innerRadius));
+          console.log('XHQ' + JSON.stringify(JSON.parse(filterTree)?.$attrs?.particles[0]?.emitter?.annulusRegion?.innerRadius));
           AppStorage.setOrCreate('innerRadius', JSON.stringify(JSON.parse(filterTree)?.$attrs?.particles[0]?.emitter?.annulusRegion?.innerRadius));
-          console.log('XHQ' + + JSON.stringify(JSON.parse(filterTree)?.$attrs?.particles[0]?.emitter?.annulusRegion?.outerRadius));
+          console.log('XHQ' + JSON.stringify(JSON.parse(filterTree)?.$attrs?.particles[0]?.emitter?.annulusRegion?.outerRadius));
           AppStorage.setOrCreate('outerRadius', JSON.stringify(JSON.parse(filterTree)?.$attrs?.particles[0]?.emitter?.annulusRegion?.outerRadius));
-          console.log('XHQ' + + JSON.stringify(JSON.parse(filterTree)?.$attrs?.particles[0]?.emitter?.annulusRegion?.startAngle));
+          console.log('XHQ' + JSON.stringify(JSON.parse(filterTree)?.$attrs?.particles[0]?.emitter?.annulusRegion?.startAngle));
           AppStorage.setOrCreate('startAngle', JSON.stringify(JSON.parse(filterTree)?.$attrs?.particles[0]?.emitter?.annulusRegion?.startAngle));
-          console.log('XHQ' + + JSON.stringify(JSON.parse(filterTree)?.$attrs?.particles[0]?.emitter?.annulusRegion?.endAngle));
+          console.log('XHQ' + JSON.stringify(JSON.parse(filterTree)?.$attrs?.particles[0]?.emitter?.annulusRegion?.endAngle));
           AppStorage.setOrCreate('endAngle', JSON.stringify(JSON.parse(filterTree)?.$attrs?.particles[0]?.emitter?.annulusRegion?.endAngle));
-          console.log('XHQ2' + + JSON.stringify(JSON.parse(filterTree)?.$attrs?.emitter));
+          console.log('XHQ2' + JSON.stringify(JSON.parse(filterTree)?.$attrs?.emitter));
         }
       })
       Button('Update').onClick(()=>{
