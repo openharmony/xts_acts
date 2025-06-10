@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,8 +13,15 @@
  * limitations under the License.
  */
 
-import localUnitTest from './LocalUnit.test';
+import { hilog } from '@kit.PerformanceAnalysisKit'
+hilog.info(0x0000, 'testTag', 'Lazy import LazyDynamicImportClass.ets executed')
 
-export default function testsuite() {
-  localUnitTest();
+export class User {
+  public name: string;
+  public num: number;
+
+  constructor(name: string, num: number) {
+    this.name = name;
+    this.num = num;
+  }
 }

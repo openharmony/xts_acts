@@ -46,9 +46,9 @@ export default function ExportMapTest() {
      * @tc.desc test Interface
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('ExportMapTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('ExportMapTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (Done: Function) => {
       await sleep(3000);
       const instance = A.getInstance();
       const hasKey = instance.map.has('exampleKey');

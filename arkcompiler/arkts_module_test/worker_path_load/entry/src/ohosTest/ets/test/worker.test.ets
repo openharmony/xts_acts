@@ -35,7 +35,7 @@ export default function workerLoad() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testWorkerLoadingInHap01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+    it('testWorkerLoadingInHap01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       const caseName: string = "testWorkerLoadingInHap01";
       try {
         let state: boolean = false;
@@ -66,7 +66,7 @@ export default function workerLoad() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testWorkerLoadingInHap02', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+    it('testWorkerLoadingInHap02', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       const caseName: string = "testWorkerLoadingInHap02";
       try {
         let state: boolean = false;
@@ -97,7 +97,7 @@ export default function workerLoad() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testWorkerLoadingInHap03', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+    it('testWorkerLoadingInHap03', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       const caseName: string = "testWorkerLoadingInHap03";
       try {
         let state: boolean = false;

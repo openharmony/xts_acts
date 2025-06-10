@@ -53,9 +53,9 @@ export default function exportNumberTest() {
      * @tc.desc test Default the number type is exported based on the default type
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('exportNumberTest0100', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
+    it('exportNumberTest0100', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL0, async (Done: Function) => {
       let a: myNumber = 12;
       await sleep(100);
       expect(12).assertEqual(a);
@@ -68,7 +68,7 @@ export default function exportNumberTest() {
      * @tc.desc test Default define and export in a single statement
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('exportNumberTest0200', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       let a = myNumber2.toString();
@@ -83,7 +83,7 @@ export default function exportNumberTest() {
      * @tc.desc test Default define first, then export the object
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('exportNumberTest0300', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       let a = exportObject.number;
@@ -97,7 +97,7 @@ export default function exportNumberTest() {
      * @tc.desc test Define and export in a single statement
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('exportNumberTest0400', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       let a = myExport.number;
@@ -112,7 +112,7 @@ export default function exportNumberTest() {
      * @tc.desc test Define first, then export the object
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('exportNumberTest0500', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       let a = exportObject2.number;
@@ -127,7 +127,7 @@ export default function exportNumberTest() {
      * @tc.desc test Define and export objects with aliases
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('exportNumberTest0600', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       let a = exportedNumberObj.number;
@@ -142,7 +142,7 @@ export default function exportNumberTest() {
      * @tc.desc test Exporting all files is equivalent to passing the export
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('exportNumberTest0700', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       let a = myNumberObject.number;
@@ -160,7 +160,7 @@ export default function exportNumberTest() {
      * @tc.desc test Export file aliases
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('exportNumberTest0800', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       let a = aaExport.myNumberObject.number;
@@ -177,7 +177,7 @@ export default function exportNumberTest() {
      * @tc.desc test Type export
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('exportNumberTest0900', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       let a: myNumberType = 1;
