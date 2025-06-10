@@ -722,6 +722,94 @@ export default function WebsocketServerTest() {
     });
 
     /* *
+     * @tc.number: SUB_NetworkMgr_WebSocket_WebSocketServerSend_0200
+     * @tc.name  : testNetworkMgrWebSocketWebSocketServerSend0200
+     * @tc.desc  : WebSocketServer send a massage(errorCode:2302006)
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : level 3
+     */
+    it('testNetworkMgrWebSocketWebSocketServerSend0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrWebSocketWebSocketServerSend0200';
+      console.info(`${caseName} test start`);
+      try {
+        let server: webSocket.WebSocketServer= webSocket.createWebSocketServer()
+        if(!server) {
+          console.info(`${caseName} Server is nullptr`);
+          ExpectTrue(true,`${caseName}`);
+          done();
+          console.info(`${caseName} test end`);
+        }else {
+          let serverConfig: webSocket.WebSocketServerConfig = {
+            serverIP: "0.0.0.0",
+            serverPort: 8088,
+            maxConcurrentClientsNumber: 10,
+            maxConnectionsForOneClient: 4,
+          }
+          await server.start(serverConfig).then((success: boolean) => {
+            if (success){
+              console.log(`${caseName} webSocketServer start success`)
+            }else {
+              expectFail(`${caseName} webSocketServer start fail`)
+              done()
+              console.info(`${caseName} test end`);
+            }
+          }).catch((error: BusinessError) => {
+            console.info(`${caseName} test result error ${JSON.stringify(error)}`);
+            expectFail(`${caseName} test result error ${JSON.stringify(error)}`)
+            done()
+            console.info(`${caseName} test end`);
+          })
+          await new Promise<string>((resolve)=> {
+            let client: webSocket.WebSocket = webSocket.createWebSocket()
+            console.info(`${caseName}client-- >${client}`)
+            client.connect('ws://127.0.0.1:8088', (err: BusinessError, value: boolean) => {
+              if (value) {
+                console.info(`${caseName} test connect success and value is ${value}`);
+              } else {
+                console.info(`${caseName} test connect fail ${JSON.stringify(err)}`);
+                expectFail(`${caseName}`)
+                done()
+                console.info(`${caseName} test end test end`);
+              }
+              resolve('ok')
+            });
+
+          })
+          await sleep(20)
+          let wrongConnection: webSocket.WebSocketConnection = {
+            clientIP: '1.1.1.1',
+            clientPort: 8888
+          }
+          server.send("hello client", wrongConnection).then((success: boolean)=>{
+            if (success){
+              console.info(`${caseName} send success`)
+              expectFail(`${caseName} send success`)
+              done()
+              console.info(`${caseName} test end`);
+            }else{
+              console.info(`${caseName} send fail`);
+              expectFail(`${caseName} send fail`)
+              done()
+              console.info(`${caseName} test end`);
+            }
+          }).catch((error: BusinessError) => {
+            console.info(`${caseName} test send fail ${JSON.stringify(error)}`);
+            ExpectTrue(error.code == 2302006,`${caseName} test send error`);
+            server.stop()
+            done();
+            console.info(`${caseName} test end`);
+          })
+        }
+      } catch (err) {
+        console.info(`${caseName} catch error ${JSON.stringify(err)}`);
+        ExpectTrue(err.code == 230006, `${caseName} fail,errInfo->${JSON.stringify(err)}`);
+        done();
+        console.info(`${caseName} test end`);
+      }
+    });
+
+    /* *
      * @tc.number: SUB_NetworkMgr_WebSocket_WebSocketServerClose_0100
      * @tc.name  : testNetworkMgrWebSocketWebSocketServerClose0100
      * @tc.desc  : WebSocketServer close a connection
@@ -785,6 +873,83 @@ export default function WebsocketServerTest() {
         }
       } catch (err) {
         console.info(`${caseName} catch error ${JSON.stringify(err)}`);
+        expectFail(`${caseName} fail,errInfo->${JSON.stringify(err)}`);
+        done();
+        console.info(`${caseName} test end`);
+      }
+    });
+
+    /* *
+     * @tc.number: SUB_NetworkMgr_WebSocket_WebSocketServerClose_0200
+     * @tc.name  : testNetworkMgrWebSocketWebSocketServerClose0200
+     * @tc.desc  : WebSocketServer close a connection(errorCode:2302006)
+     * @tc.size  : MediumTest
+     * @tc.type  : Function
+     * @tc.level : level 3
+     */
+    it('testNetworkMgrWebSocketWebSocketServerClose0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let caseName: string = 'testNetworkMgrWebSocketWebSocketServerClose0200';
+      console.info(`${caseName} test start`);
+      try {
+        if(!server) {
+          console.info(`${caseName} Server is nullptr`);
+          ExpectTrue(true,`${caseName}`);
+          done();
+          console.info(`${caseName} test end`);
+        }else {
+          await server.start(serverConfig).then((success: boolean) => {
+            if (success){
+              console.log(`${caseName} webSocketServer start success`)
+            }else {
+              expectFail(`${caseName} client connect to server`)
+              done()
+              console.info(`${caseName} test end`);
+            }
+          }).catch((error: BusinessError) => {
+            console.info(`${caseName} test result error ${JSON.stringify(error)}`);
+            expectFail(`${caseName} test result error ${JSON.stringify(error)}`)
+            done()
+            console.info(`${caseName} test end`);
+          })
+          let client: webSocket.WebSocket = webSocket.createWebSocket()
+          console.info(`${caseName}client-- >${client}`)
+          client.connect('ws://127.0.0.1:8088', (err: BusinessError, value: boolean) => {
+            if (value) {
+              console.info(`${caseName} test connect success and value is ${value}`);
+            } else {
+              console.info(`${caseName} test connect fail ${JSON.stringify(err)}`);
+              expectFail(`${caseName}`)
+              done()
+              console.info(`${caseName} test end test end`);
+            }
+          });
+          await sleep(20)
+          let wrongConnection: webSocket.WebSocketConnection = {
+            clientIP: '1.1.1.1',
+            clientPort: 8888
+          }
+          server.close(wrongConnection).then((success: boolean) => {
+            if (success) {
+              expectFail(`${caseName} server close success`)
+              console.info(`${caseName} server close success`)
+              done()
+              server.stop()
+              console.info(`${caseName} test end`);
+            } else{
+              expectFail(`${caseName} server close fail`)
+              done()
+              server.stop()
+              console.info(`${caseName} test end`);
+            }
+          }).catch((err: BusinessError) => {
+            ExpectTrue(err.code == 2302006,`${caseName} server close err: ${JSON.stringify(err)}`)
+            done()
+            server.stop()
+            console.info(`${caseName} test end`);
+          })
+        }
+      } catch (err) {
+        ExpectTrue(err.code == 2302006,`${caseName} server close err: ${JSON.stringify(err)}`)
         expectFail(`${caseName} fail,errInfo->${JSON.stringify(err)}`);
         done();
         console.info(`${caseName} test end`);
