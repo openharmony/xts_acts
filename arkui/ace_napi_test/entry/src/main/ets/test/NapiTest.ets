@@ -48,9 +48,9 @@ export default function napiApiTest() {
      * @tc.desc      : Testing GetLastErrorInfo NAPI interface.
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 0
      */
-    it('testGetLastErrorInfo0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testGetLastErrorInfo0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info('testGetLastErrorInfo0001 START');
       try {
         let value = napitest.getLastErrorInfo();
