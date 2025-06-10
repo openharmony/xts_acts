@@ -18,6 +18,8 @@ import ColumnFixAtIdealSizeTest from './Column/ColumnFixAtIdealSizeTest.ets'
 import RowFixAtIdealSizeTest from './Row/RowFixAtIdealSizeTest.ets'
 import StackFixAtIdealSizeTest from './Stack/StackFixAtIdealSizeTest.ets'
 import FlexFixAtIdealSizeTest from './Flex/FlexFixAtIdealSizeTest.ets'
+import GridRowFixAtIdealSizeTest from './GridRow/GridRowFixAtIdealSizeTest.ets'
+import GridColFixAtIdealSizeTest from './GridCol/GridColFixAtIdealSizeTest.ets'
 
 export default function testsuite() {
   FlexLayoutPolicyTest();
@@ -26,5 +28,7 @@ export default function testsuite() {
   RowFixAtIdealSizeTest();
   StackFixAtIdealSizeTest();
   FlexFixAtIdealSizeTest();
+  GridRowFixAtIdealSizeTest();
+  GridColFixAtIdealSizeTest();
 
 }
