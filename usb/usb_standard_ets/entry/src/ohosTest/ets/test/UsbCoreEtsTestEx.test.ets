@@ -540,7 +540,7 @@ export default function UsbCoreEtsTestEx() {
     /**
      * @tc.number   : SUB_USB_HostManager_JS_Reset_0200
      * @tc.name     : testResetUsbDeviceErrorCode
-     * @tc.desc     : Negative test: resetUsbDevice error code 14400001 overwrite
+     * @tc.desc     : Negative test: resetUsbDevice error code 14400008 overwrite
      * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 3
