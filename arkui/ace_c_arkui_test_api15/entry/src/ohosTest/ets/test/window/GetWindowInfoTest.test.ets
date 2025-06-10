@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import { Driver, ON, PointerMatrix, Rect } from '@ohos.UiTest';
 import Utils from '../common/Utils';
 
@@ -33,7 +33,7 @@ export default function getWindowInfoTest(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGetWindowInfo001', 0, async (done: Function) => {
+    it('testGetWindowInfo001', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'TestGetWindowInfo';
       await Utils.pushPage(`window/${PAGE_TAG}`);
       await Utils.sleep(1000)
@@ -62,7 +62,7 @@ export default function getWindowInfoTest(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testHostWindowInfoGetName002', 0, async (done: Function) => {
+    it('testHostWindowInfoGetName002', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'TestHostWindowInfoGetName';
       await Utils.pushPage(`window/${PAGE_TAG}`);
       await Utils.sleep(1000)
@@ -83,7 +83,7 @@ export default function getWindowInfoTest(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testHostWindowInfoDestroy003', 0, async (done: Function) => {
+    it('testHostWindowInfoDestroy003', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'TestHostWindowInfoDestroy';
       await Utils.pushPage(`window/${PAGE_TAG}`);
       await Utils.sleep(1000)

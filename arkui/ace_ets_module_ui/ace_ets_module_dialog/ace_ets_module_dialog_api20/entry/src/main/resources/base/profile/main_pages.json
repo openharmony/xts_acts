@@ -2,6 +2,7 @@
   "src": [
     "MainAbility/pages/index/index",
     "MainAbility/pages/Menu/subMenuExpandSymbol",
-    "MainAbility/pages/customdialog/customdialog"
+    "MainAbility/pages/customdialog/customdialog",
+    "MainAbility/pages/Rating/ratingStarStyle"
   ]
 }

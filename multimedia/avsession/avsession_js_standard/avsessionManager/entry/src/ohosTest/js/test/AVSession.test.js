@@ -3565,7 +3565,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let metadata0 = {
                 assetId: '121278',
                 filter: avSession.ProtocolType.TYPE_DLNA
@@ -3599,7 +3599,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let metadata = {
                 assetId: '121278',
                 drmSchemes: ["abcdefghjkl","asdfghjklqw"]
@@ -3633,7 +3633,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let metadata = {
                 assetId: '121278',
                 singleLyricText: 'dream it possible'
@@ -3667,7 +3667,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_SUPPORTEDDRMCAPABILITIES_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_SUPPORTEDDRMCAPABILITIES_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 session.getOutputDevice((err, value) => {
                     if (err) {
@@ -3703,7 +3703,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_GETALLCASTDISPLAYS_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_GETALLCASTDISPLAYS_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             const isExtendedDisplayCast = canIUse('SystemCapability.Multimedia.AVSession.ExtendedDisplayCast');
             if (isExtendedDisplayCast) {
                 try {

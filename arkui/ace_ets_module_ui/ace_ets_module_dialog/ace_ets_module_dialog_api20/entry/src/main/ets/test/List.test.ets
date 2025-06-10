@@ -14,8 +14,10 @@
  */
 import menuSubMenuExpandSymbolTest from './MenuTest/subMenuExpandSymbol.test';
 import customDialogGetstateTest from './customdialogTest/customdialog.test';
+import ratingStarStyle from './RatingTest/ratingStarStyle.test';
 
 export default function testsuite() {
   menuSubMenuExpandSymbolTest();
   customDialogGetstateTest();
+  ratingStarStyle();
 }

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level  } from '@ohos/hypium';
 import { Driver, ON, PointerMatrix, Rect } from '@ohos.UiTest';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so';
@@ -35,7 +35,7 @@ export default function textPickerEnableHapticFeedbackTest() {
    * @tc.level      : Level 1
    */
 
-  it('TestTextPickerEnableHapticFeedback0001', 0, async (done: Function) => {
+  it('TestTextPickerEnableHapticFeedback0001', Level.LEVEL1, async (done: Function) => {
     console.info('TestTextPickerEnableHapticFeedback0001 START');
     let PAGE_TAG = 'TextPickerEnableHapticFeedback';
     await Utils.pushPage(`textPicker/textPickerEnableHapticFeedback`)
@@ -58,7 +58,7 @@ export default function textPickerEnableHapticFeedbackTest() {
    * @tc.level      : Level 1
    */
 
-  it('TestTextPickerEnableHapticFeedback002', 0, async (done: Function) => {
+  it('TestTextPickerEnableHapticFeedback002', Level.LEVEL1, async (done: Function) => {
     console.info('TestTextPickerEnableHapticFeedback0002 START');
     let PAGE_TAG = 'TextPickerEnableHapticFeedback';
     await Utils.pushPage(`textPicker/textPickerEnableHapticFeedback`)
@@ -81,7 +81,7 @@ export default function textPickerEnableHapticFeedbackTest() {
    * @tc.level      : Level 1
    */
 
-  it('TestTextPickerEnableHapticFeedback0003', 0, async (done: Function) => {
+  it('TestTextPickerEnableHapticFeedback0003', Level.LEVEL1, async (done: Function) => {
     console.info('TestTextPickerEnableHapticFeedback0003 START');
     let PAGE_TAG = 'TextPickerEnableHapticFeedback';
     await Utils.pushPage(`textPicker/textPickerEnableHapticFeedback`)

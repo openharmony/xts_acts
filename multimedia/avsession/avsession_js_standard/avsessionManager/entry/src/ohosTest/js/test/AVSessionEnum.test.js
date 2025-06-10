@@ -171,7 +171,7 @@ export default function AVSessionEnum() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_AVCASTPICKERSTYLE_ENUM_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_AVCASTPICKERSTYLE_ENUM_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info(`AVCastPickerStyle STYLE_PANEL is ${AVCastPickerStyle.STYLE_PANEL}`);
             expect(AVCastPickerStyle.STYLE_PANEL).assertEqual(0);
 
@@ -188,7 +188,7 @@ export default function AVSessionEnum() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_AVCASTPICKERCOLORMODE_ENUM_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_AVCASTPICKERCOLORMODE_ENUM_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info(`AVCastPickerColorMode AUTO is ${AVCastPickerColorMode.AUTO}`);
             expect(AVCastPickerColorMode.AUTO).assertEqual(0);
 

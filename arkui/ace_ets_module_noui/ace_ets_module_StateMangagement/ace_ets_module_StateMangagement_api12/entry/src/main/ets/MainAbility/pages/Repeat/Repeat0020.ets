@@ -15,8 +15,8 @@
 
 @ObservedV2
 class DemoGridItemInfo {
-  @Trace name: string;
-  @Trace url: string;
+  @Trace public name: string;
+  @Trace public url: string;
   constructor(name: string, url: string) {
     this.name = name;
     this.url = url;
@@ -28,19 +28,21 @@ class DemoGridItemInfo {
 struct Repeat0020 {
   @Local itemList: Array<DemoGridItemInfo> = [];
   @Local swipeStartIndex: number = -1;
-  @Local repeat0020_1: string = "-1";
-  @Local repeat0020_2: string = "-1";
+  @Local repeat0020_1: string = '-1';
+  @Local repeat0020_2: string = '-1';
+  @Local isLoading: boolean = true;
+  @Local hasError: boolean = false;
   private imagesUrl: Array<string> = [
-    "https://consumer.huawei.com/content/dam/huawei-cbg-site/cn/mkt/launch/241126/plp/phones/new/huawei-phones-ai.jpg",
-    "https://consumer.huawei.com/content/dam/huawei-cbg-site/cn/mkt/launch/241126/plp/phones/new/huawei-phones-camera.jpg",
-    "https://consumer.huawei.com/content/dam/huawei-cbg-site/cn/mkt/launch/250320/plp/phones/pura-x-design.jpg",
-    "https://consumer.huawei.com/content/dam/huawei-cbg-site/cn/mkt/plp/new-phones/images/reason/huawei-phones-communication.jpeg"
+    'app.media.img1',
+    'app.media.img2',
+    'app.media.img3',
+    'app.media.img4'
   ]
   private GridScroller: Scroller = new Scroller();
 
   aboutToAppear(): void {
     for (let i = 0; i < 50; i++) {
-      this.itemList.push(new DemoGridItemInfo("img" + i, this.imagesUrl[i % 4]));
+      this.itemList.push(new DemoGridItemInfo('img' + i, this.imagesUrl[i % 4]));
     }
   }
 
@@ -48,16 +50,20 @@ struct Repeat0020 {
     Column({space: 10}) {
       Column() {
         Button('toIndex[2]')
-          .id("toIndex[2]")
+          .id('toIndex[2]')
+          .height('3%')
           .onClick(() => {
-            let rect = this.GridScroller.getItemRect(this.swipeStartIndex);
             this.GridScroller.scrollToIndex(2)
-            this.GridScroller.scrollBy(0, -rect.y);
           })
         Text(this.repeat0020_1)
-          .id("repeat0020_1")
+          .id('repeat0020_1')
+          .height('3%')
         Text(this.repeat0020_2)
-          .id("repeat0020_2")
+          .id('repeat0020_2')
+          .height('3%')
+        Text(this.isLoading && !this.hasError ? 'Normal display' : 'Error display')
+          .id('display_status')
+          .height('3%')
       }
 
       Grid(this.GridScroller) {
@@ -65,13 +71,23 @@ struct Repeat0020 {
           .each((obj: RepeatItem<DemoGridItemInfo>) => {
             GridItem() {
               Stack() {
-                Image(obj.item.url)
+                Image($r(obj.item.url))
+                  .onComplete(() => {
+                    if (!this.hasError) {
+                      this.isLoading = true
+                      this.hasError = false
+                    }
+                  })
+                  .onError(() => {
+                    this.isLoading = false
+                    this.hasError = true
+                  })
                 Text(obj.item.name)
                   .backgroundColor(Color.White)
                   .border({width: 10})
               }
             }
-            .height("50%")
+            .height('50%')
             .margin(10)
             .onAttach(() => {
               this.repeat0020_2 = obj.item.name;
@@ -88,7 +104,7 @@ struct Repeat0020 {
       })
       .columnsTemplate('1fr')
       .cachedCount(0)
-      .height('100%')
+      .layoutWeight(1)
     }
   }
 }

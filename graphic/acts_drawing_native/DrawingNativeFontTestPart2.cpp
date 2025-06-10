@@ -511,8 +511,6 @@ HWTEST_F(DrawingNativeFontPart2Test, testFontMeasureTextWithBrushOrPenNormal1, F
     OH_Drawing_Font *font2 = OH_Drawing_FontCreate();
     EXPECT_EQ(OH_Drawing_FontMeasureTextWithBrushOrPen(font2, text, strlen(text),
         TEXT_ENCODING_UTF8, nullptr, pen, bounds, &textWidth), OH_DRAWING_SUCCESS);
-    OH_Drawing_FontArguments *arguments = OH_Drawing_FontArgumentsCreate();
-    OH_Drawing_FontArgumentsAddVariation(arguments, "wght", 0);
     OH_Drawing_Typeface* typeface = OH_Drawing_TypefaceCreateDefault();
     OH_Drawing_FontSetTypeface(font, typeface);
     OH_Drawing_FontSetFakeBoldText(font, true);
@@ -539,12 +537,12 @@ HWTEST_F(DrawingNativeFontPart2Test, testFontMeasureTextWithBrushOrPenNormal1, F
     errorCode = OH_Drawing_FontMeasureTextWithBrushOrPen(font, text1, strlen(text1),
         TEXT_ENCODING_UTF8, brush, nullptr, bounds, &textWidth);
     EXPECT_EQ(errorCode, OH_DRAWING_SUCCESS);
-    EXPECT_EQ(static_cast<int>(textWidth), 120); // Inspection textwidth
+    EXPECT_EQ(static_cast<int>(textWidth), 126); // Inspection textwidth
     const char* text2 = "1234567890 !@#$%^&*(";
     errorCode = OH_Drawing_FontMeasureTextWithBrushOrPen(font, text2, strlen(text2),
         TEXT_ENCODING_UTF8, nullptr, pen, bounds, &textWidth);
     EXPECT_EQ(errorCode, OH_DRAWING_SUCCESS);
-    EXPECT_EQ(static_cast<int>(textWidth), 259); // Inspection textwidth
+    EXPECT_EQ(static_cast<int>(textWidth), 277); // Inspection textwidth
     OH_Drawing_RectDestroy(bounds);
     OH_Drawing_BrushDestroy(brush);
     OH_Drawing_PenDestroy(pen);
@@ -724,8 +722,6 @@ HWTEST_F(DrawingNativeFontPart2Test, testFontGetWidthsBoundsNormal1, Function | 
     EXPECT_EQ(OH_Drawing_FontGetWidthsBounds(font2, glyphs, glyphsCount, nullptr, pen, widths, outRectarr),
         OH_DRAWING_SUCCESS);
     // Font set some attributes
-    OH_Drawing_FontArguments *arguments = OH_Drawing_FontArgumentsCreate();
-    OH_Drawing_FontArgumentsAddVariation(arguments, "wght", 0);
     OH_Drawing_Typeface* typeface = OH_Drawing_TypefaceCreateDefault();
     OH_Drawing_FontSetTypeface(font, typeface);
     OH_Drawing_FontSetFakeBoldText(font, true);

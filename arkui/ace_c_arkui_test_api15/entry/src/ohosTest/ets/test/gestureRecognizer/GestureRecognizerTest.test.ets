@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium'
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium'
 import { Driver, ON } from '@ohos.UiTest'
 import Utils from '../common/Utils'
 import nativeRender from 'libnativerender.so'
@@ -43,7 +43,7 @@ export default function GestureCaseTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('GestureCaseTest001', 0, async (done: Function) => {
+    it('GestureCaseTest001', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'GestureRecognizerTest'
       await Utils.pushPage(`gestureRecognizer/${PAGE_TAG}`)
       await click('image')
@@ -61,7 +61,7 @@ export default function GestureCaseTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('GestureCaseTest002', 0, async (done: Function) => {
+    it('GestureCaseTest002', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'GestureRecognizerTest'
       await Utils.pushPage(`gestureRecognizer/${PAGE_TAG}`)
       let driver = Driver.create()

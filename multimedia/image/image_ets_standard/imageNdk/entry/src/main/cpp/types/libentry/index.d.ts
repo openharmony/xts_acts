@@ -106,3 +106,7 @@ export const AssertImageSize: (width:number, height:number) => number;
 export const GetPropertyWithNull: () => number;
 export const GetMimeTypeWithNull: () => number;
 export const GetImagePropertyWithNull: (fd:number) => number;
+export const GetImagePackerSupportedFormats: () => Array<string>;
+export const GetImageSourceSupportedFormats: () => Array<string>;
+export const GetImagePackerSupportedFormatsError: (flag: boolean) => number;
+export const GetImageSourceSupportedFormatsError: (flag: boolean) => number;

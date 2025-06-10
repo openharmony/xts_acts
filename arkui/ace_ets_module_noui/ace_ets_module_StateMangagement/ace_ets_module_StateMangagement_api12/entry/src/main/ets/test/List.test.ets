@@ -199,6 +199,9 @@ import LocalStorageDeleteTest0120 from './StorageTest/LocalStorageDeleteTest0120
 import LazyForEachTest0120 from './LazyForEach/LazyForEachTest0120.test';
 import LazyForEachChangeTest0020 from './LazyForEach/LazyForEachChangeTest0020.test';
 import RepeatTest0020 from './RepeatTest/RepeatTest0020.test';
+import LazyForEachInterface from './LazyForEach/LazyForEachInterface.test';
+import RepeatTest0010 from './RepeatTest/RepeatTest0010.test';
+import RepeatTest0400 from './RepeatTest/RepeatTest0400.test';
 
 export default function testsuite() {
     ExtendTrackTest();
@@ -386,5 +389,8 @@ export default function testsuite() {
     LocalStorageDeleteTest0120();
     LazyForEachTest0120();
     LazyForEachChangeTest0020();
+    LazyForEachInterface();
 	RepeatTest0020();
+    RepeatTest0010();
+    RepeatTest0400();
 }

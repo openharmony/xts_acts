@@ -35,3 +35,10 @@ target_link_libraries(rdbvector PUBLIC
      libhilog_ndk.z.so
      libnative_rdb_ndk.z.so
 )
+
+add_library(cryptoParam SHARED rdb_crypto_param_test.cpp)
+target_link_libraries(cryptoParam PUBLIC
+     libace_napi.z.so
+     libhilog_ndk.z.so
+     libnative_rdb_ndk.z.so
+)

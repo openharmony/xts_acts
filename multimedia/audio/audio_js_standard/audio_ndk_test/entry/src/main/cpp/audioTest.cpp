@@ -1069,6 +1069,9 @@ static napi_value AudioStreamBuilderSetCapturerCallback(napi_env env, napi_callb
 
     OH_AudioCapturer_Callbacks callbacks;
     callbacks.OH_AudioCapturer_OnReadData = AudioCapturerOnReadData;
+    callbacks.OH_AudioCapturer_OnStreamEvent = nullptr;
+    callbacks.OH_AudioCapturer_OnInterruptEvent = nullptr;
+    callbacks.OH_AudioCapturer_OnError = nullptr;
     OH_AudioStream_Result result = OH_AudioStreamBuilder_SetCapturerCallback(builder, callbacks, NULL);
 
     OH_AudioStreamBuilder_Destroy(builder);
@@ -4138,6 +4141,9 @@ static napi_value audioCapturerGetOverflowCount_001(napi_env env, napi_callback_
 
     OH_AudioCapturer_Callbacks callbacks;
     callbacks.OH_AudioCapturer_OnReadData = AudioCapturerOnReadData;
+    callbacks.OH_AudioCapturer_OnStreamEvent = nullptr;
+    callbacks.OH_AudioCapturer_OnInterruptEvent = nullptr;
+    callbacks.OH_AudioCapturer_OnError = nullptr;
     OH_AudioStreamBuilder_SetCapturerCallback(builder, callbacks, NULL);
 
     OH_AudioCapturer* audioCapturer;

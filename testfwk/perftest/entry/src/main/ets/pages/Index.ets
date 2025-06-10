@@ -12,20 +12,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import { router } from '@kit.ArkUI'
+
 @Entry
 @Component
 struct Index {
-  @State message: string = 'Hello World'
-
   build() {
     Row() {
       Column() {
-        Text(this.message)
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
+        Button('ListPage')
+        .fontSize(25)
+        .fontWeight(FontWeight.Bold)
+        .onClick(async () => {
+          await router.pushUrl({ url: "pages/ListPage"})
+        })
       }
       .width('100%')
     }
     .height('100%')
   }
 }
+

@@ -4,6 +4,7 @@
     "MainAbility/pages/LazyForEach/LazyForEachReload",
     "MainAbility/pages/RepeatMixedComponent/RepeatWaterFlowBoolean",
     "MainAbility/pages/RepeatMixedComponent/RepeatWaterFlowNumber",
-    "MainAbility/pages/makeObserved/makeObserved0140"
+    "MainAbility/pages/makeObserved/makeObserved0140",
+    "MainAbility/pages/Repeat/Repeat0030"
   ]
 }

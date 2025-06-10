@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import { Driver, ON, PointerMatrix, Rect } from '@ohos.UiTest';
 import Utils from '../common/Utils';
 
@@ -33,7 +33,7 @@ export default function expectedFrameRateRangeCallback(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('ExpectedFrameRateRangeCallback001', 0, async (done: Function) => {
+    it('ExpectedFrameRateRangeCallback001', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ExpectedFrameRateRangeCallback';
       await Utils.pushPage(`ExpectedFrameRateRange/${PAGE_TAG}`);
       await Utils.sleep(1000)

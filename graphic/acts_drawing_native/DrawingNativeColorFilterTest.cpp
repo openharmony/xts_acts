@@ -523,6 +523,78 @@ HWTEST_F(DrawingNativeColorFilterTest, testColorFilterDestroyNULL, Function | Sm
     EXPECT_TRUE(true);
 }
 
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_COLOR_FILTER_0800
+ * @tc.name: testColorFilterCreateLightingNormal
+ * @tc.desc: test for testColorFilterCreateLightingNormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateLightingNormal, Function | SmallTest | Level0) {
+    // 1. OH_Drawing_ColorFilterCreateLighting passes parameters normally.
+    OH_Drawing_ColorFilter *colorFilter = OH_Drawing_ColorFilterCreateLighting(0xFF00FF00, 0XFF0000FF);
+    EXPECT_NE(colorFilter, nullptr);;
+    // 2. Destroy colorFilter
+    OH_Drawing_ColorFilterDestroy(colorFilter);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_COLOR_FILTER_0801
+ * @tc.name: testColorFilterCreateLightingNULL
+ * @tc.desc: test for testColorFilterCreateLightingNULL.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateLightingNULL, Function | SmallTest | Level3) {
+    // 1. OH_Drawing_ColorFilterCreateLighting passes NULL.
+    OH_Drawing_ColorFilter *colorFilter1 = OH_Drawing_ColorFilterCreateLighting(0, 0XFF0000FF);
+    EXPECT_NE(colorFilter1, nullptr);;
+    // 2. OH_Drawing_ColorFilterCreateLighting passes NULL.
+    OH_Drawing_ColorFilter *colorFilter2 = OH_Drawing_ColorFilterCreateLighting(0xFF00FF00, 0);
+    EXPECT_NE(colorFilter2, nullptr);;
+    // 3. Destroy colorFilter
+    OH_Drawing_ColorFilterDestroy(colorFilter1);
+    OH_Drawing_ColorFilterDestroy(colorFilter2);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_COLOR_FILTER_0802
+ * @tc.name: testColorFilterCreateLightingAbnormal
+ * @tc.desc: test for testColorFilterCreateLightingAbnormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateLightingAbnormal, Function | SmallTest | Level3) {
+    // 1. OH_Drawing_ColorFilterCreateLighting passes maximum value.
+    OH_Drawing_ColorFilter *colorFilter1 = OH_Drawing_ColorFilterCreateLighting(0xFFFFFFFF, 0XFF0000FF);
+    EXPECT_NE(colorFilter1, nullptr);;
+    // 2. OH_Drawing_ColorFilterCreateLighting passes maximum value.
+    OH_Drawing_ColorFilter *colorFilter2 = OH_Drawing_ColorFilterCreateLighting(0xFF00FF00, 0xFFFFFFFF);
+    EXPECT_NE(colorFilter2, nullptr);;
+    // 3. Destroy colorFilter
+    OH_Drawing_ColorFilterDestroy(colorFilter1);
+    OH_Drawing_ColorFilterDestroy(colorFilter2);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_COLOR_FILTER_0803
+ * @tc.name: testColorFilterCreateLightingMultipleCalls
+ * @tc.desc: test for testColorFilterCreateLightingMultipleCalls.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateLightingMultipleCalls, Function | SmallTest | Level3) {
+    // 1. OH_Drawing_ColorFilterCreateLighting is called multiple times.
+    for (int i = 0; i < 10; i++) {
+        OH_Drawing_ColorFilter *colorFilter = OH_Drawing_ColorFilterCreateLighting(0xFFFFFFFF, 0XFF0000FF);
+        EXPECT_NE(colorFilter, nullptr);;
+        OH_Drawing_ColorFilterDestroy(colorFilter);
+    }
+}
 } // namespace Drawing
 } // namespace Rosen
 } // namespace OHOS

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level  } from '@ohos/hypium';
 import { Driver, ON, PointerMatrix, Rect } from '@ohos.UiTest';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
@@ -34,7 +34,7 @@ export default function textPickerRangeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextPicker001', 0, async (done: Function) => {
+    it('testTextPicker001', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'testTextPickerRange';
       await Utils.pushPage(`textPicker/${PAGE_TAG}`);
       await Utils.sleep(3000)
@@ -53,7 +53,7 @@ export default function textPickerRangeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextPicker002', 0, async (done: Function) => {
+    it('testTextPicker002', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'testTextPickerRange';
       await Utils.pushPage(`textPicker/${PAGE_TAG}`);
       await Utils.sleep(3000)
