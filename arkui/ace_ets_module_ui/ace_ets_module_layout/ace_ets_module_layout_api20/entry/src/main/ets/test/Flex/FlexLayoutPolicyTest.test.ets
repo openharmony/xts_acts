@@ -59,18 +59,16 @@ export default function FlexLayoutPolicyTest() {
 
       let flex_parent: RectValue = CommonFunc.getComponentRect('FlexLayoutPolicyTest_0100_Flex_parent');
       let flex_child: RectValue = CommonFunc.getComponentRect('FlexLayoutPolicyTest_0100_Flex_child');
-      let flex_parent_width = flex_parent.right - flex_parent.left;
-      let flex_parent_height = flex_parent.bottom - flex_parent.top;
-      let flex_child_width = flex_child.right - flex_child.left;
-      let flex_child_height = flex_child.bottom - flex_child.top;
-      console.log('[FlexLayoutPolicyTest_0100] flex_parent_width is:' + flex_parent_width);
-      console.log('[FlexLayoutPolicyTest_0100] flex_parent_height is:' + flex_parent_height);
-      console.log('[FlexLayoutPolicyTest_0100] flex_child_width is:' + flex_child_width);
-      console.log('[FlexLayoutPolicyTest_0100] flex_child_height is:' + flex_child_height);
-      
-      // padding(20*2) + border(5*2) + safeAreaPadding(10*2)
-      expect(Math.floor(Math.abs(flex_parent_width - flex_child_width - vp2px(70))) <= 1).assertTrue();
-      expect(Math.floor(Math.abs(flex_parent_height - flex_child_height - vp2px(70))) <= 1).assertTrue();
+
+      // padding(20) + border(5) + safeAreaPadding(10)
+      console.log('[FlexLayoutPolicyTest_0100] flex_child.left - flex_parent.left - vp2px(35) is:' + (flex_child.left - flex_parent.left - vp2px(35)));
+      console.log('[FlexLayoutPolicyTest_0100] flex_parent.right - flex_child.right - vp2px(35) is:' + (flex_parent.right - flex_child.right - vp2px(35)));
+      console.log('[FlexLayoutPolicyTest_0100] flex_child.top - flex_parent.top - vp2px(35) is:' + (flex_child.top - flex_parent.top - vp2px(35)));
+      console.log('[FlexLayoutPolicyTest_0100] flex_parent.bottom - flex_child.bottom - vp2px(35) is:' + (flex_parent.bottom - flex_child.bottom - vp2px(35)));
+      expect(Math.floor(Math.abs(flex_child.left - flex_parent.left - vp2px(35))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(flex_parent.right - flex_child.right - vp2px(35))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(flex_child.top - flex_parent.top - vp2px(35))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(flex_parent.bottom - flex_child.bottom - vp2px(35))) <= 1).assertTrue();
 
       console.info('[FlexLayoutPolicyTest_0100] END');
       done();
