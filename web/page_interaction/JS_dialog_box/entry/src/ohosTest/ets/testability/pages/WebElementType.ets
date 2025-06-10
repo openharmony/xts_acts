@@ -34,7 +34,7 @@ struct SelectionMenuLongPress {
   @Builder PreviewBuilder($$: PreviewBuilderParam){
     Column() {
       Stack(){
-        Text("")
+        Text('')
           .padding(5)
           .width('100%')
           .textAlign(TextAlign.Start)
@@ -89,7 +89,7 @@ struct SelectionMenuLongPress {
   @State progressValue:number = 0;
   @State progressVisible:boolean = true;
   @State isReceive: number = -1;
-  @State str: string = "WebElementType01"
+  @State str: string = 'WebElementType01'
 
   @Builder
   MenuBuilder() {
@@ -192,15 +192,15 @@ struct SelectionMenuLongPress {
               this.linkURL = event.param.getLinkUrl();
             }
             let hitTestValue = this.controller.getLastHitTest();
-            console.log("lzy hitTestValue extral", hitTestValue.extra);
-            console.log("lzy hitTestValue", hitTestValue.type)
-            console.log("lzy event getLinkUrl", event.param.getLinkUrl())
-            console.log("lzy linkURL:", this.linkURL)
-            console.log("lzy sourceURL", event.param.getSourceUrl())
-            console.log("lzy previewWidth", event.param.getPreviewWidth())
-            console.log("lzy previewHeight", event.param.getPreviewHeight())
-            console.log("lzy x", event.param.x())
-            console.log("lzy y", event.param.y())
+            console.log('lzy hitTestValue extral', hitTestValue.extra);
+            console.log('lzy hitTestValue', hitTestValue.type)
+            console.log('lzy event getLinkUrl', event.param.getLinkUrl())
+            console.log('lzy linkURL:', this.linkURL)
+            console.log('lzy sourceURL', event.param.getSourceUrl())
+            console.log('lzy previewWidth', event.param.getPreviewWidth())
+            console.log('lzy previewHeight', event.param.getPreviewHeight())
+            console.log('lzy x', event.param.x())
+            console.log('lzy y', event.param.y())
             return true;
           }
           return false;
