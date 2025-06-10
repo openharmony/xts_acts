@@ -287,7 +287,7 @@ export default function nativeAVScreenCaptureNdkTest() {
       console.info(Tag + "normalAVScreenCaptureSelectionCallbackSuccess-------------result:" + result);
       expect(result).assertEqual(0);
       let isShowDialog: number = await Utils.btnTextScreenCapture();
-      let resultStop: number = myScreenCaptureNdk.normalAVScreenCaptureTestStop();
+      let resultStop: number = myScreenCaptureNdk.normalAVScreenCaptureSelectionCallbackStop();
       console.info(Tag + "normalAVScreenCaptureSelectionCallbackSuccess-------------resultStop:" + resultStop);
       expect(resultStop).assertEqual(0);
       expect(isShowDialog).assertEqual(0);
