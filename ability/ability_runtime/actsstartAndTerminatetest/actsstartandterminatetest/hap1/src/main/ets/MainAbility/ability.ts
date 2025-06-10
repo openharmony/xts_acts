@@ -65,7 +65,7 @@ export default class EntryAbility extends UIAbility {
           abilityName: 'Ability02'
         }).then(() => {
         hilog.info(0x0000, 'testTag', '%{public}s', 'startAbility com.acts.actsstartandterminateassisttest03');
-      })
+      });
     } catch (err) {
       hilog.info(0x0000, 'testTag', '%{public}s', `startAbility fail ${err}`);
     }
