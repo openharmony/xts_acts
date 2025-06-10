@@ -34,6 +34,7 @@ struct ShareAcquireShareDataIndex {
           .fontWeight(FontWeight.Bold)
 
         Button('停止自己')
+          .size({ width: '1%', height: '1%' })
           .margin({top: 10})
           .id('SUB_Ability_AbilityRuntime_AppManager_ShareAcquireShareData_2200')
           .onClick(() => {
@@ -77,6 +78,7 @@ struct ShareAcquireShareDataIndex {
         Text(this.killProcessResult)
 
         Button('清理自己')
+          .size({ width: '1%', height: '1%' })
           .margin({top: 10})
           .id('SUB_Ability_AbilityRuntime_AppManager_ShareAcquireShareData_2300')
           .onClick(() => {
@@ -120,6 +122,7 @@ struct ShareAcquireShareDataIndex {
         Text(this.clearUpResult)
 
         Button('acquireShare')
+          .size({ width: '1%', height: '1%' })
           .margin({top: 10})
           .id('SUB_Ability_AbilityRuntime_AppManager_ShareAcquireShareData_3100')
           .onClick(() => {
