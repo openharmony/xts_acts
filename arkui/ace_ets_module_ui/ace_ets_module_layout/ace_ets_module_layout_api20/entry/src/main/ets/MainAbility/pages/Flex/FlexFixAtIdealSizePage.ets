@@ -20,6 +20,11 @@ struct FlexFixAtIdealSizePage {
   @State height1: number = 50
   build() {
     Column() {
+      Button('w=160 h=120').onClick(() => {
+        this.width1 = 160
+        this.height1 = 120
+      }).key('FlexFixAtIdealSizePage_Btn').padding({bottom: 10})
+
       Column() {
         Text('fixAtIdealSize')
         // fixAtIdealSize生效时，当前组件会与其子组件大小相等，宽度不可超过父组件（100vp）,高度可超过父组件（80vp）
@@ -28,18 +33,12 @@ struct FlexFixAtIdealSizePage {
         Flex() {
           Flex().width(this.width1).height(this.height1)
         }
-        .id('FlexFixAtIdealSizePage_Flex')
+        .key('FlexFixAtIdealSizePage_Flex')
         .backgroundColor(Color.Pink)
         .width(LayoutPolicy.fixAtIdealSize)
         .height(LayoutPolicy.fixAtIdealSize)
         .constraintSize({ maxWidth: 150, maxHeight: 100 })
       }.width(100).height(80)
-
-      Button('w=160 h=120').onClick(() => {
-        this.width1 = 160
-        this.height1 = 120
-      }).id('FlexFixAtIdealSizePage_Btn').padding({top: 10})
-
     }.width('100%').height('100%')
   }
 }

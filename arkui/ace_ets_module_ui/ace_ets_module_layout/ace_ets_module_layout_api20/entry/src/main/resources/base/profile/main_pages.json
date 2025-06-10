@@ -3,6 +3,8 @@
         "MainAbility/pages/index/index",
         "MainAbility/pages/Flex/FlexLayoutPolicyPage",
         "MainAbility/pages/GridRow/GridRowNoColumnsPage",
+        "MainAbility/pages/GridRow/GridRowFixAtIdealSizePage",
+        "MainAbility/pages/GridCol/GridColFixAtIdealSizePage",
         "MainAbility/pages/Column/ColumnMatchParent",
         "MainAbility/pages/Column/ColumnWrapContent",
         "MainAbility/pages/Column/ColumnFixAtIdealSizePage",
