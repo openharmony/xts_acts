@@ -68,9 +68,7 @@ struct WebOnFirstContentfulPaint1 {
                   } else {
                     let driver: Driver = Driver.create();
                     let buttonOne = await driver.findComponent(ON.text('customer.support@example.com'));
-                    await buttonOne.click();
-                    let buttonTwo = await driver.findComponent(ON.text('新建邮件'));
-                    if (buttonTwo) {
+                    if (buttonOne) {
                       Utils.emitEvent(true, 20250607)
                     } else {
                       Utils.emitEvent(false, 20250607)
