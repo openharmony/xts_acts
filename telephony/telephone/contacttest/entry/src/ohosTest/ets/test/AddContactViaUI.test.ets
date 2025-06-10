@@ -219,6 +219,7 @@ export default function AddContactViaUITest() {
         }
       } catch (err) {
         console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
         done();
       }
       console.info(`${caseName} test end `);
@@ -260,6 +261,7 @@ export default function AddContactViaUITest() {
         }
       } catch (err) {
         console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
         done();
       }
       console.info(`${caseName} test end `);
