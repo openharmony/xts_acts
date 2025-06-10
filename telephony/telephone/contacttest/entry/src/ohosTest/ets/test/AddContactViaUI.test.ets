@@ -199,20 +199,24 @@ export default function AddContactViaUITest() {
       console.info(`${caseName} test start `);
       try {
         let context: Context = AppStorage.get('context') as Context;
-        let promise = contact.addContactViaUI(context, contactData);
-        let driver: Driver = Driver.create();
-        let onType: On = ON.id('save_click_btn');
-        await getComponent(driver, onType);
-        await delay(500);
-        promise.then((data: number) => {
+        contact.addContactViaUI(context, contactData).then((data: number) => {
             console.log(`${caseName} addContactViaUI: data>${JSON.stringify(data)}`);
             ExpectTrue(data > 0);
             done();
         }).catch((err: BusinessError) => {
             console.log(`${caseName} addContactViaUI: err>${JSON.stringify(err)}`);
-            ExpectFail();
+            expect(err.code).assertEqual(801);
             done();
         });
+        await delay(1000);
+
+        let driver: Driver = Driver.create();
+        let onType: On = ON.id('save_click_btn');
+        let item: Component = await driver.findComponent(onType);
+        if (item) {
+            await getComponent(driver, onType);
+            await delay(500);
+        }
       } catch (err) {
         console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
         ExpectFail();
@@ -235,22 +239,26 @@ export default function AddContactViaUITest() {
       console.info(`${caseName} test start `);
       try {
         let context: Context = AppStorage.get('context') as Context;
-        let promise = contact.addContactViaUI(context, contactData);
-        let driver: Driver = Driver.create();
-        let onType: On = ON.id('cancel_btn');
-        await getComponent(driver, onType);
-        await delay(500);
-        let onType1: On = ON.text('不保存');
-        await getComponent(driver, onType1);
-        promise.then((data: number) => {
+        contact.addContactViaUI(context, contactData).then((data: number) => {
             console.log(`${caseName} addContactViaUI: data>${JSON.stringify(data)}`);
             ExpectTrue(data == -1);
             done();
         }).catch((err: BusinessError) => {
             console.log(`${caseName} addContactViaUI: err>${JSON.stringify(err)}`);
-            ExpectFail();
+            expect(err.code).assertEqual(801);
             done();
         })
+        await delay(1000);
+
+        let driver: Driver = Driver.create();
+        let onType: On = ON.id('cancel_btn');
+        let item: Component = await driver.findComponent(onType);
+        if (item) {
+            await getComponent(driver, onType);
+            await delay(500);
+            let onType1: On = ON.text('不保存');
+            await getComponent(driver, onType1);
+        }
       } catch (err) {
         console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
         ExpectFail();

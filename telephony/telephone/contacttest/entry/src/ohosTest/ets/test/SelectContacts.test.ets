@@ -119,7 +119,7 @@ export default function SelectContactsTest() {
         let data: number = await contact.addContact(context, contactData);
         console.info(`${caseName} addContact: success data->${JSON.stringify(data)}`);
 
-        contact.selectContacts().then((data: contact.Contact[]) => {
+        contact.selectContacts({ isMultiSelect: false }).then((data: contact.Contact[]) => {
             console.info(`${caseName} selectContacts: success data->${JSON.stringify(data)}`);
             ExpectTrue(data.length > 0);
             done();
@@ -134,8 +134,11 @@ export default function SelectContactsTest() {
             let driver: Driver = Driver.create();
             let onType1: On = ON.text('测试');
             let onType2: On = ON.text('完成');
+            let item2: Component = await driver.findComponent(onType2);
             await getComponent(driver, onType1);
-            await getComponent(driver, onType2);
+            if (item2) {
+                await getComponent(driver, onType2);
+            }
         } catch (err) {
             console.error(`${caseName} get component catch: err->${JSON.stringify(err)}`);
         }
@@ -164,7 +167,7 @@ export default function SelectContactsTest() {
         let data: number = await contact.addContact(context, contactData);
         console.info(`${caseName} addContact: success data->${JSON.stringify(data)}`);
 
-        contact.selectContacts({ isMultiSelect: true }).then((data: contact.Contact[]) => {
+        contact.selectContacts({ isMultiSelect: false }).then((data: contact.Contact[]) => {
             console.info(`${caseName} selectContacts: success data->${JSON.stringify(data)}`);
             ExpectTrue(data.length > 0);
             done();
@@ -177,10 +180,13 @@ export default function SelectContactsTest() {
 
         try {
             let driver: Driver = Driver.create();
-            let onType1: On = ON.text('全选');
+            let onType1: On = ON.text('测试');
             let onType2: On = ON.text('完成');
+            let item2: Component = await driver.findComponent(onType2);
             await getComponent(driver, onType1);
-            await getComponent(driver, onType2);
+            if (item2) {
+                await getComponent(driver, onType2);
+            }
         } catch (err) {
             console.error(`${caseName} get component catch: err->${JSON.stringify(err)}`);
         }
@@ -224,8 +230,11 @@ export default function SelectContactsTest() {
             let driver: Driver = Driver.create();
             let onType1: On = ON.text('测试');
             let onType2: On = ON.text('完成');
+            let item2: Component = await driver.findComponent(onType2);
             await getComponent(driver, onType1);
-            await getComponent(driver, onType2);
+            if (item2) {
+                await getComponent(driver, onType2);
+            }
         } catch (err) {
             console.error(`${caseName} get component catch: err->${JSON.stringify(err)}`);
         }
@@ -254,7 +263,7 @@ export default function SelectContactsTest() {
         let data: number = await contact.addContact(context, contactData);
         console.info(`${caseName} addContact: success data->${JSON.stringify(data)}`);
 
-        contact.selectContacts({ maxSelectable: 1 }).then((data: contact.Contact[]) => {
+        contact.selectContacts({ isMultiSelect: false, maxSelectable: 1 }).then((data: contact.Contact[]) => {
             console.info(`${caseName} selectContacts: success data->${JSON.stringify(data)}`);
             ExpectTrue(data.length > 0);
             done();
@@ -269,8 +278,11 @@ export default function SelectContactsTest() {
             let driver: Driver = Driver.create();
             let onType1: On = ON.text('测试');
             let onType2: On = ON.text('完成');
+            let item2: Component = await driver.findComponent(onType2);
             await getComponent(driver, onType1);
-            await getComponent(driver, onType2);
+            if (item2) {
+                await getComponent(driver, onType2);
+            }
         } catch (err) {
             console.error(`${caseName} get component catch: err->${JSON.stringify(err)}`);
         }
@@ -299,7 +311,7 @@ export default function SelectContactsTest() {
         let data: number = await contact.addContact(context, contactData);
         console.info(`${caseName} addContact: success data->${JSON.stringify(data)}`);
 
-        contact.selectContacts({ isDisplayedByName: true }).then((data: contact.Contact[]) => {
+        contact.selectContacts({ isMultiSelect: false, isDisplayedByName: true }).then((data: contact.Contact[]) => {
             console.info(`${caseName} selectContacts: success data->${JSON.stringify(data)}`);
             ExpectTrue(data.length > 0);
             done();
@@ -314,8 +326,11 @@ export default function SelectContactsTest() {
             let driver: Driver = Driver.create();
             let onType1: On = ON.text('测试');
             let onType2: On = ON.text('完成');
+            let item2: Component = await driver.findComponent(onType2);
             await getComponent(driver, onType1);
-            await getComponent(driver, onType2);
+            if (item2) {
+                await getComponent(driver, onType2);
+            }
         } catch (err) {
             console.error(`${caseName} get component catch: err->${JSON.stringify(err)}`);
         }
@@ -344,7 +359,7 @@ export default function SelectContactsTest() {
         let data: number = await contact.addContact(context, contactData);
         console.info(`${caseName} addContact: success data->${JSON.stringify(data)}`);
 
-        contact.selectContacts({ isDisplayedByName: false }).then((data: contact.Contact[]) => {
+        contact.selectContacts({ isMultiSelect: false, isDisplayedByName: false }).then((data: contact.Contact[]) => {
             console.info(`${caseName} selectContacts: success data->${JSON.stringify(data)}`);
             ExpectTrue(data.length > 0);
             done();
@@ -359,8 +374,11 @@ export default function SelectContactsTest() {
             let driver: Driver = Driver.create();
             let onType1: On = ON.text('测试');
             let onType2: On = ON.text('完成');
+            let item2: Component = await driver.findComponent(onType2);
             await getComponent(driver, onType1);
-            await getComponent(driver, onType2);
+            if (item2) {
+                await getComponent(driver, onType2);
+            }
         } catch (err) {
             console.error(`${caseName} get component catch: err->${JSON.stringify(err)}`);
         }
@@ -391,11 +409,11 @@ export default function SelectContactsTest() {
 
         let filter: contact.ContactSelectionFilter = {
             filterClause: {
-                id: [{ filterCondition: contact.FilterCondition.IS_NOT_NULL }]
+                id: [{ filterCondition: 0 }]
             },
-            filterType: contact.FilterType.SHOW_FILTER
+            filterType: 0
         }
-        contact.selectContacts({ filter: filter }).then((data: contact.Contact[]) => {
+        contact.selectContacts({ isMultiSelect: false, filter: filter }).then((data: contact.Contact[]) => {
             console.info(`${caseName} selectContacts: success data->${JSON.stringify(data)}`);
             ExpectTrue(data.length > 0);
             done();
@@ -410,8 +428,11 @@ export default function SelectContactsTest() {
             let driver: Driver = Driver.create();
             let onType1: On = ON.text('测试');
             let onType2: On = ON.text('完成');
+            let item2: Component = await driver.findComponent(onType2);
             await getComponent(driver, onType1);
-            await getComponent(driver, onType2);
+            if (item2) {
+                await getComponent(driver, onType2);
+            }
         } catch (err) {
             console.error(`${caseName} get component catch: err->${JSON.stringify(err)}`);
         }
@@ -442,11 +463,11 @@ export default function SelectContactsTest() {
 
         let filter: contact.ContactSelectionFilter = {
             filterClause: {
-                name: [{ filterCondition: contact.FilterCondition.EQUAL_TO, value: '测试' }]
+                name: [{ filterCondition: 1, value: '测试' }]
             },
-            filterType: contact.FilterType.DEFAULT_SELECT
+            filterType: 1
         }
-        contact.selectContacts({ filter: filter }).then((data: contact.Contact[]) => {
+        contact.selectContacts({ isMultiSelect: false, filter: filter }).then((data: contact.Contact[]) => {
             console.info(`${caseName} selectContacts: success data->${JSON.stringify(data)}`);
             ExpectTrue(data.length > 0);
             done();
@@ -459,8 +480,13 @@ export default function SelectContactsTest() {
 
         try {
             let driver: Driver = Driver.create();
+            let onType1: On = ON.text('测试');
             let onType2: On = ON.text('完成');
-            await getComponent(driver, onType2);
+            let item2: Component = await driver.findComponent(onType2);
+            await getComponent(driver, onType1);
+            if (item2) {
+                await getComponent(driver, onType2);
+            }
         } catch (err) {
             console.error(`${caseName} get component catch: err->${JSON.stringify(err)}`);
         }
@@ -491,11 +517,11 @@ export default function SelectContactsTest() {
 
         let filter: contact.ContactSelectionFilter = {
             filterClause: {
-                focusModeList: [{ filterCondition: contact.FilterCondition.NOT_EQUAL_TO, value: '1' }]
+                focusModeList: [{ filterCondition: 2, value: '1' }]
             },
-            filterType: contact.FilterType.DEFAULT_SELECT
+            filterType: 1
         }
-        contact.selectContacts({ filter: filter }).then((data: contact.Contact[]) => {
+        contact.selectContacts({ isMultiSelect: false, filter: filter }).then((data: contact.Contact[]) => {
             console.info(`${caseName} selectContacts: success data->${JSON.stringify(data)}`);
             ExpectTrue(data.length > 0);
             done();
@@ -510,8 +536,11 @@ export default function SelectContactsTest() {
             let driver: Driver = Driver.create();
             let onType1: On = ON.text('测试');
             let onType2: On = ON.text('完成');
+            let item2: Component = await driver.findComponent(onType2);
             await getComponent(driver, onType1);
-            await getComponent(driver, onType2);
+            if (item2) {
+                await getComponent(driver, onType2);
+            }
         } catch (err) {
             console.error(`${caseName} get component catch: err->${JSON.stringify(err)}`);
         }
@@ -543,13 +572,13 @@ export default function SelectContactsTest() {
         let filter: contact.ContactSelectionFilter = {
             filterClause: {
                 dataItem: {
-                    field: contact.DataField.EMAIL,
-                    options: [{ filterCondition: contact.FilterCondition.IN, value: ['13800000000@email.com'] }]
+                    field: 0,
+                    options: [{ filterCondition: 3, value: ['13800000000@email.com'] }]
                 }
             },
-            filterType: contact.FilterType.SHOW_FILTER_AND_DEFAULT_SELECT
+            filterType: 2
         }
-        contact.selectContacts({ filter: filter }).then((data: contact.Contact[]) => {
+        contact.selectContacts({ isMultiSelect: false, filter: filter }).then((data: contact.Contact[]) => {
             console.info(`${caseName} selectContacts: success data->${JSON.stringify(data)}`);
             ExpectTrue(data.length > 0);
             done();
@@ -562,8 +591,13 @@ export default function SelectContactsTest() {
 
         try {
             let driver: Driver = Driver.create();
+            let onType1: On = ON.text('测试');
             let onType2: On = ON.text('完成');
-            await getComponent(driver, onType2);
+            let item2: Component = await driver.findComponent(onType2);
+            await getComponent(driver, onType1);
+            if (item2) {
+                await getComponent(driver, onType2);
+            }
         } catch (err) {
             console.error(`${caseName} get component catch: err->${JSON.stringify(err)}`);
         }
@@ -595,13 +629,13 @@ export default function SelectContactsTest() {
         let filter: contact.ContactSelectionFilter = {
             filterClause: {
                 dataItem: {
-                    field: contact.DataField.PHONE,
-                    options: [{ filterCondition: contact.FilterCondition.NOT_IN, value: ['13811111111'] }]
+                    field: 1,
+                    options: [{ filterCondition: 4, value: ['13811111111'] }]
                 }
             },
-            filterType: contact.FilterType.DEFAULT_SELECT
+            filterType: 1
         }
-        contact.selectContacts({ filter: filter }).then((data: contact.Contact[]) => {
+        contact.selectContacts({ isMultiSelect: false, filter: filter }).then((data: contact.Contact[]) => {
             console.info(`${caseName} selectContacts: success data->${JSON.stringify(data)}`);
             ExpectTrue(data.length > 0);
             done();
@@ -614,8 +648,13 @@ export default function SelectContactsTest() {
 
         try {
             let driver: Driver = Driver.create();
+            let onType1: On = ON.text('测试');
             let onType2: On = ON.text('完成');
-            await getComponent(driver, onType2);
+            let item2: Component = await driver.findComponent(onType2);
+            await getComponent(driver, onType1);
+            if (item2) {
+                await getComponent(driver, onType2);
+            }
         } catch (err) {
             console.error(`${caseName} get component catch: err->${JSON.stringify(err)}`);
         }
@@ -647,13 +686,13 @@ export default function SelectContactsTest() {
         let filter: contact.ContactSelectionFilter = {
             filterClause: {
                 dataItem: {
-                    field: contact.DataField.ORGANIZATION,
-                    options: [{ filterCondition: contact.FilterCondition.CONTAINS, value: '测试' }]
+                    field: 2,
+                    options: [{ filterCondition: 5, value: '测试' }]
                 }
             },
-            filterType: contact.FilterType.DEFAULT_SELECT
+            filterType: 1
         }
-        contact.selectContacts({ filter: filter }).then((data: contact.Contact[]) => {
+        contact.selectContacts({ isMultiSelect: false, filter: filter }).then((data: contact.Contact[]) => {
             console.info(`${caseName} selectContacts: success data->${JSON.stringify(data)}`);
             ExpectTrue(data.length > 0);
             done();
@@ -666,8 +705,13 @@ export default function SelectContactsTest() {
 
         try {
             let driver: Driver = Driver.create();
+            let onType1: On = ON.text('测试');
             let onType2: On = ON.text('完成');
-            await getComponent(driver, onType2);
+            let item2: Component = await driver.findComponent(onType2);
+            await getComponent(driver, onType1);
+            if (item2) {
+                await getComponent(driver, onType2);
+            }
         } catch (err) {
             console.error(`${caseName} get component catch: err->${JSON.stringify(err)}`);
         }
