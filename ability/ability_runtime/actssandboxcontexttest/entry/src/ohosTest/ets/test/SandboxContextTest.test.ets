@@ -65,7 +65,7 @@ export default function sandboxContextTest() {
         }).catch((err: BusinessError) => {
           hilog.info(0x0000, TAG, '[%{public}s] notifySaveAsResult fail, err: %{public}s', TAG, JSON.stringify(err));
           try {
-            expect(err.code).assertEqual(401);
+            expect().assertFail();
           } catch {
           }
           done();
@@ -93,7 +93,7 @@ export default function sandboxContextTest() {
           if (err && err.code != 0) {
             hilog.info(0x0000, TAG, '[%{public}s] notifySaveAsResult fail, err: %{public}s', TAG, JSON.stringify(err));
             try {
-              expect(err.code).assertEqual(401);
+              expect().assertFail();
             } catch {
             }
             done();
