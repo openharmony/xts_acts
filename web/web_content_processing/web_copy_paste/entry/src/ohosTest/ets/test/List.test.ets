@@ -12,9 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import webOnDataResubmitted from './WebOnDataResubmitted.test';
-import WebEnableDataDetector from './WebEnableDataDetector.test.ets';
+ 
+import WebViewUndoingRedo from './WebViewUndoingRedo.test';
+
 export default function testsuite() {
-  webOnDataResubmitted()
-  WebEnableDataDetector()
+  WebViewUndoingRedo()
 }

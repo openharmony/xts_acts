@@ -12,9 +12,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import webOnDataResubmitted from './WebOnDataResubmitted.test';
-import WebEnableDataDetector from './WebEnableDataDetector.test.ets';
-export default function testsuite() {
-  webOnDataResubmitted()
-  WebEnableDataDetector()
+
+export interface JsProxyObject {
+  test(res: object);
+
+  toString(res: string);
+
+  register(res: object);
+}
+
+export class ComponentInfo {
+  $type: string;
+  $rect: Object[];
+}
+
+export class RectInfo {
+  left: number;
+  top: number;
+  right: number;
+  bottom: number;
 }
