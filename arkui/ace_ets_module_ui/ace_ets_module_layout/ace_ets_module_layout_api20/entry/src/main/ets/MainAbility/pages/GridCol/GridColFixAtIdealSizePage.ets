@@ -27,10 +27,7 @@ struct GridColFixAtIdealSizePage {
 
       Column() {
         Text('fixAtIdealSize')
-        // GridCol仅height属性支持设置LayoutPolicy.fixAtIdealSize
-        // fixAtIdealSize生效时，GridCol的height与其子组件高度相等，可以超过其父组件高度（80vp）
-        // 但会受自身constraintSize（150vp * 100vp）约束
-        // 因此当height1=120时， GridCol组件高度为100vp
+
         GridRow() {
           GridCol() {
             Row().height(this.height1).backgroundColor(Color.Green)

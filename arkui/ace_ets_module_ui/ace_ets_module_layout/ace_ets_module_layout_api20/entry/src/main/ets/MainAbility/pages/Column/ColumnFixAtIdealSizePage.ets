@@ -27,9 +27,7 @@ struct ColumnFixAtIdealSizePage {
 
       Column() {
         Text('fixAtIdealSize')
-        // fixAtIdealSize生效时，当前组件会与其子组件大小相等，可以超过父组件内容大小（100vp * 80vp）
-        // 但会受自身constraintSize（150vp * 100vp）约束
-        // 因此当width1=160、height1=120时， Column组件大小为150vp * 100vp
+
         Column() {
           Flex().width(this.width1).height(this.height1)
         }
