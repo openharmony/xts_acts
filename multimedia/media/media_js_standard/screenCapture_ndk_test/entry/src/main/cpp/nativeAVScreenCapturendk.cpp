@@ -932,8 +932,6 @@ static napi_value normalAVScreenCaptureSetCaptureAreaTestStop(napi_env env, napi
     return res;
 }
 
-// SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_SetSelectionCallback_0100
-
 static napi_value normalAVScreenCaptureStrategyForPrivacyMaskModeScreen(napi_env env, napi_callback_info info)
 {
     screenCaptureStrategyForPrivacyMaskMode = OH_AVScreenCapture_Create();
@@ -1123,6 +1121,8 @@ static napi_value Init(napi_env env, napi_value exports)
         {"normalAVScreenCaptureStrategyForPrivacyMaskModeTestStop", nullptr,
             normalAVScreenCaptureStrategyForPrivacyMaskModeTestStop, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"normalAVScreenCaptureSelectionCallbackSuccess", nullptr, normalAVScreenCaptureSelectionCallbackSuccess,
+            nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"normalAVScreenCaptureSelectionCallbackStop", nullptr, normalAVScreenCaptureSelectionCallbackStop,
             nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
