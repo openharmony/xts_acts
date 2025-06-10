@@ -49,7 +49,7 @@ export default function normalDragTest() {
 
     /**
      * @tc.number    normalDragExample_0010
-     * @tc.name      Test the api of normalDrag
+     * @tc.name      normalDragExample_0010
      * @tc.desc      api
      * @tc.level:    Level 0
      * @tc.type :
