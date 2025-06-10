@@ -27,12 +27,9 @@ import extensionWindowPropertiesTest from './ExtensionWindowProperties.test';
 import windowFocusTest from './WindowFocus.test';
 import windowPCTest from './WindowPC.test';
 import windowRotationTest from './WindowRotation.test';
-<<<<<<< HEAD
+import windowEventTest from './WindowEvent.test';
 import windowControlsTest from './WindowControls.test';
 import windowKeyBorad from './WindowKeyBorad.test';
-=======
-import windowEventTest from './WindowEvent.test';
->>>>>>> fa892f88886212018443e919a8fefe2bd28f281e
 
 export default function testsuite() {
   windowFocusTest();
@@ -46,12 +43,9 @@ export default function testsuite() {
   windowMaximizeTest();
   windowImmersiveTest();
   windowPCTest();
-<<<<<<< HEAD
+  windowEventTest();
   windowControlsTest();
   windowKeyBorad()
-=======
-  windowEventTest();
->>>>>>> fa892f88886212018443e919a8fefe2bd28f281e
   windowRotationTest();
   windowPropertiesTest();
   windowPropertiesTest2();
