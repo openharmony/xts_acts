@@ -37,6 +37,16 @@
 #include <unistd.h>
 #include <atomic>
 
+#undef LOG_DOMAIN
+#undef LOG_TAG
+#define LOG_DOMAIN 0x3200
+#define LOG_TAG "avScreenCaptureRecorder"
+
+#define LOGI(...) ((void)OH_LOG_Print(LOG_APP, LOG_INFO, LOG_DOMAIN, LOG_TAG, __VA_ARGS__))
+#define LOGD(...) ((void)OH_LOG_Print(LOG_APP, LOG_DEBUG, LOG_DOMAIN, LOG_TAG, __VA_ARGS__))
+#define LOGW(...) ((void)OH_LOG_Print(LOG_APP, LOG_WARN, LOG_DOMAIN, LOG_TAG, __VA_ARGS__))
+#define LOGE(...) ((void)OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_DOMAIN, LOG_TAG, __VA_ARGS__))
+
 using namespace std;
 static int32_t g_recordTimeHalf = 500000;
 static int32_t g_recordTimeOne = 1000000;
@@ -1067,6 +1077,59 @@ static napi_value normalAVScreenCaptureSelectionCallbackStop(napi_env env, napi_
     return res;
 }
 
+static napi_value multiAVScreenCaptureCreate(napi_env env, napi_callback_info info)
+{
+    OH_AVScreenCapture *screenCaptureCreate11 = OH_AVScreenCapture_Create();
+    if (screenCaptureCreate11 == nullptr) {
+        napi_throw_error((env), nullptr, "error : expect screenCaptureCreate11 is not nullptr");
+    }
+    OH_AVScreenCapture *screenCaptureCreate12 = OH_AVScreenCapture_Create();
+    if (screenCaptureCreate12 == nullptr) {
+        napi_throw_error((env), nullptr, "error : expect screenCaptureCreate12 is not nullptr");
+    }
+    OH_AVScreenCapture *screenCaptureCreate13 = OH_AVScreenCapture_Create();
+    if (screenCaptureCreate13 == nullptr) {
+        napi_throw_error((env), nullptr, "error : expect screenCaptureCreate13 is not nullptr");
+    }
+    OH_AVSCREEN_CAPTURE_ErrCode result1 = OH_AVScreenCapture_Release(screenCaptureCreate11);
+    OH_AVScreenCapture *screenCaptureCreate14 = OH_AVScreenCapture_Create();
+    if (screenCaptureCreate14 == nullptr) {
+        napi_throw_error((env), nullptr, "error : expect screenCaptureCreate14 is not nullptr");
+    }
+    OH_AVScreenCapture *screenCaptureCreate15 = OH_AVScreenCapture_Create();
+    if (screenCaptureCreate15 == nullptr) {
+        napi_throw_error((env), nullptr, "error : expect screenCaptureCreate15 is not nullptr");
+    }
+    OH_AVScreenCapture *screenCaptureCreate16 = OH_AVScreenCapture_Create();
+    if (screenCaptureCreate16 != nullptr) {
+        napi_throw_error((env), nullptr, "error : expect screenCaptureCreate16 is not nullptr");
+    }
+
+    OH_AVSCREEN_CAPTURE_ErrCode result2 = OH_AVScreenCapture_Release(screenCaptureCreate12);
+    if (result2 != 0) {
+        napi_throw_error((env), nullptr, "error : expect screenCaptureCreate12 is not Fail");
+    }
+    result2 = OH_AVScreenCapture_Release(screenCaptureCreate13);
+    if (result2 != 0) {
+        napi_throw_error((env), nullptr, "error : expect screenCaptureCreate13 is not Fail");
+    }
+    result2 = OH_AVScreenCapture_Release(screenCaptureCreate14);
+    if (result2 != 0) {
+        napi_throw_error((env), nullptr, "error : expect screenCaptureCreate14 is not Fail");
+    }
+    result2 = OH_AVScreenCapture_Release(screenCaptureCreate15);
+    if (result2 != 0) {
+        napi_throw_error((env), nullptr, "error : expect screenCaptureCreate15 is not Fail");
+    }
+    result2 = OH_AVScreenCapture_Release(screenCaptureCreate16);
+    if (result2 != 3) {
+        napi_throw_error((env), nullptr, "error : expect screenCaptureCreate16 is not Fail");
+    }
+    napi_value res;
+    napi_create_int32(env, result2, &res);
+    return res;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -1122,6 +1185,8 @@ static napi_value Init(napi_env env, napi_value exports)
         {"normalAVScreenCaptureSelectionCallbackSuccess", nullptr, normalAVScreenCaptureSelectionCallbackSuccess,
             nullptr, nullptr, nullptr, napi_default, nullptr},
         {"normalAVScreenCaptureSelectionCallbackStop", nullptr, normalAVScreenCaptureSelectionCallbackStop,
+            nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"multiAVScreenCaptureCreate", nullptr, multiAVScreenCaptureCreate,
             nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
