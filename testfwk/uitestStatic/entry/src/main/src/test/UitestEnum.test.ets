@@ -122,7 +122,7 @@ export default function uitestEnumTest() {
     })
 
     /*
-     * @tc.number: uitestEnumTest_004
+     * @tc.number: uitestEnumTest_005
      * @tc.name: testMatchPatternEnum_static
      * @tc.desc: MatchPattern test.
      */
@@ -144,7 +144,7 @@ export default function uitestEnumTest() {
     })
 
     /*
-     * @tc.number: uitestEnumTest_005
+     * @tc.number: uitestEnumTest_006
      * @tc.name: testDisplayRotationEnum_static
      * @tc.desc: MatchPattern test.
      */

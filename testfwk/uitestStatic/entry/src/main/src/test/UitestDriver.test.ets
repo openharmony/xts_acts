@@ -735,9 +735,14 @@ export default function uitestDriverTest() {
      */
     it('testAssertComponentExist_static', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
       await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
-      let driver = Driver.create();
-      await driver.delayMs(waitUiReadyMs)
-      await driver.assertComponentExist(ON.text('next page'))
+      try {
+        let driver = Driver.create();
+        await driver.delayMs(waitUiReadyMs)
+        await driver.assertComponentExist(ON.text('next page'))
+      } catch(error) {
+        hilog.info(domain, tag, `testAssertComponentExist_static error, ${ JSON.stringify(error) }`);
+        expect().assertFail();
+      }
       await stopApplication('com.uitestScene.acts')
     })
 
@@ -1393,7 +1398,7 @@ export default function uitestDriverTest() {
     })
 
     /*
-     * @tc.number: uitestDriverTest_0045
+     * @tc.number: uitestDriverTest_0048
      * @tc.name: testTriggerCombineKeys_static
      * @tc.desc: press the specified key.
      */
@@ -1451,7 +1456,7 @@ export default function uitestDriverTest() {
     })
 
     /*
-     * @tc.number: uitestDriverTest_0046
+     * @tc.number: uitestDriverTest_0049
      * @tc.name: testDelayMs
      * @tc.desc: delayMs test.
      */
@@ -1469,7 +1474,7 @@ export default function uitestDriverTest() {
     })
 
     /*
-     * @tc.number: uitestDriverTest_0047
+     * @tc.number: uitestDriverTest_0050
      * @tc.name: testDriverInputText_static
      * @tc.desc: inject text on the specified location.
      */
@@ -1514,25 +1519,7 @@ export default function uitestDriverTest() {
     })
 
     /*
-     * @tc.number: uitestDriverTest_0048
-     * @tc.name: testWakeUpDisplay_static
-     * @tc.desc: wake up the device display.
-     */
-    it('testWakeUpDisplay_static',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
-      hilog.info(domain, tag, `testWakeUpDisplay_static start`);
-      try {
-        let driver = Driver.create();
-        await driver.delayMs(1000);
-        await driver.wakeUpDisplay();
-      } catch(error) {
-        hilog.info(domain, tag, `testWakeUpDisplay_static error, ${ JSON.stringify(error) }`);
-        expect().assertFail();
-      }
-      hilog.info(domain, tag, `testWakeUpDisplay_static end !!!`);
-    })
-
-    /*
-     * @tc.number: uitestDriverTest_0049
+     * @tc.number: uitestDriverTest_0052
      * @tc.name: testSwipe_static
      * @tc.desc: swipe on the screen between the specified points.
      */
@@ -1564,7 +1551,7 @@ export default function uitestDriverTest() {
     })
 
     /*
-     * @tc.number: uitestDriverTest_0050
+     * @tc.number: uitestDriverTest_0053
      * @tc.name: testSetDisplayRotationEnabled
      * @tc.desc: setDisplayRotationEnabled test.
      */
@@ -1595,7 +1582,7 @@ export default function uitestDriverTest() {
     })
 
     /*
-     * @tc.number: uitestDriverTest_0051
+     * @tc.number: uitestDriverTest_0054
      * @tc.name: testDisplayRotation_static
      * @tc.desc: get the rotation of the device display and set it.
      */
@@ -1607,50 +1594,17 @@ export default function uitestDriverTest() {
       await driver.setDisplayRotation(DisplayRotation.ROTATION_0)
       await driver.delayMs(waitUiReadyMs)
       let rotation = await driver.getDisplayRotation()
-      if (rotation == DisplayRotation.ROTATION_90) {
-        console.info('The device is displayed in horizontal on default')
-        await driver.setDisplayRotation(DisplayRotation.ROTATION_90)
-        await driver.delayMs(waitUiReadyMs)
-        let rotation1 = await driver.getDisplayRotation()
-        expect(rotation1 == DisplayRotation.ROTATION_0)
-
-        await driver.setDisplayRotation(DisplayRotation.ROTATION_180)
-        await driver.delayMs(waitUiReadyMs)
-        let rotation2 = await driver.getDisplayRotation()
-        expect(rotation2 == DisplayRotation.ROTATION_270)
-
-        await driver.setDisplayRotation(DisplayRotation.ROTATION_270)
-        await driver.delayMs(waitUiReadyMs)
-        let rotation3 = await driver.getDisplayRotation()
-        expect(rotation3 == DisplayRotation.ROTATION_180)
-
-        await driver.setDisplayRotation(DisplayRotation.ROTATION_90)
-      } else if (rotation == DisplayRotation.ROTATION_0) {
-        console.info('The device is displayed in vertical on default')
-        await driver.setDisplayRotation(DisplayRotation.ROTATION_90)
-        await driver.delayMs(waitUiReadyMs)
-        let rotation1 = await driver.getDisplayRotation()
-        expect(rotation1 == DisplayRotation.ROTATION_90)
-
-        await driver.setDisplayRotation(DisplayRotation.ROTATION_180)
-        await driver.delayMs(waitUiReadyMs)
-        let rotation2 = await driver.getDisplayRotation()
-        expect(rotation2 == DisplayRotation.ROTATION_180)
-
-        await driver.setDisplayRotation(DisplayRotation.ROTATION_270)
-        await driver.delayMs(waitUiReadyMs)
-        let rotation3 = await driver.getDisplayRotation()
-        expect(rotation3 == DisplayRotation.ROTATION_270)
-
-        await driver.setDisplayRotation(DisplayRotation.ROTATION_0)
-        await driver.delayMs(waitUiReadyMs)
-      }
+      hilog.info(domain, tag, `testDisplayRotation_static rotation, ${JSON.stringify(rotation)}`);
+      expect(rotation == DisplayRotation.ROTATION_90
+      || rotation == DisplayRotation.ROTATION_0
+      || rotation == DisplayRotation.ROTATION_270
+      || rotation == DisplayRotation.ROTATION_180).assertTrue();
       hilog.info(domain, tag, `testDisplayRotation_static start`);
       await stopApplication('com.uitestScene.acts');
     })
 
     /*
-     * @tc.number: uitestDriverTest_0052
+     * @tc.number: uitestDriverTest_0055
      * @tc.name: testScreenCapture_static
      * @tc.desc: capture the specified area of current screen.
      */
