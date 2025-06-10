@@ -37,5 +37,29 @@
         }
       ]
     },
+    {
+      "name": "hap1",
+      "srcPath": "./hap1",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "hap2",
+      "srcPath": "./hap2",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    }
   ]
 }

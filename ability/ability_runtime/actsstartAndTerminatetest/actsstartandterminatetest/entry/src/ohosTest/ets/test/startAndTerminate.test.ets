@@ -732,8 +732,9 @@ export default function startAndTerminateTest() {
                 try {
                   globalThis.uiAbilityContext5.startAbility(
                     {
-                      bundleName: 'com.acts.actsstartandterminateassisttest02',
-                      abilityName: 'EntryAbility'
+                      bundleName: 'com.test.actsstartandterminatetest',
+                      moduleName: 'hap1',
+                      abilityName: 'Ability01'
                     }).then(() => {
                     hilog.info(0x0000, 'testTag', '%{public}s', `${tag} startAbility end====>`);
                   })
