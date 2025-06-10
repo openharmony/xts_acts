@@ -109,6 +109,12 @@ export default function abilityTest() {
         await driver.delayMs(1000);
         let Button: Component = await driver.findComponent(ON.id('TestCase4'));
         await Button.click();
+        await driver.delayMs(1000);
+        let Button2: Component = await driver.findComponent(ON.text('amsdialog', MatchPattern.CONTAINS));
+        if(Button2){
+          await Button.click();
+          await driver1.delayMs(1000);
+        }
         const  driver1 =Driver.create();
         await driver1.delayMs(1000);
         let Button1: Component = await driver1.findComponent(ON.text('label'));
