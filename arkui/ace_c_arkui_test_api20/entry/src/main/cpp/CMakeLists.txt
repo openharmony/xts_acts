@@ -14,6 +14,7 @@ add_library(nativerender SHARED
     manager/plugin_manager.cpp
     napi_render_init.cpp
     onIdle/post_on_idle_test.cpp
+    EmbeddedComponentOption/EmbeddedComponentOptionTest.cpp
 )
 
 add_library(nativefunc SHARED
