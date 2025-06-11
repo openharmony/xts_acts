@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, afterAll, it, expect } from '@ohos/hypium'
+import { describe, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium'
 import { testHappyPath, testTwoTasks, testManyTasks, testTwoTasksChained, testManyTasksChained, testRepeats } from './TaskPoolTest';
 import { skipConditional } from './utils'
 
@@ -32,9 +32,9 @@ export default function TaskPoolTest() {
      * @tc.author: oleg-ignatenko
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 1
+     * @tc.level: Level 0
      */
-    it('testHappyPath', 0, async (done: Function) => {
+    it('testHappyPath', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: Object = await testHappyPath();
       expect(result).assertEqual("PASSED");
       done();
@@ -47,9 +47,9 @@ export default function TaskPoolTest() {
      * @tc.author: oleg-ignatenko
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 0
      */
-    it('testTwoTasks', 0, async (done: Function) => {
+    it('testTwoTasks', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: Object = await testTwoTasks();
       expect(result).assertEqual("PASSED");
       done();
@@ -64,7 +64,7 @@ export default function TaskPoolTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testManyTasks', 0, async (done: Function) => {
+    it('testManyTasks', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let result: Object = await testManyTasks();
       expect(result).assertEqual("PASSED");
       done();
@@ -79,7 +79,7 @@ export default function TaskPoolTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testTwoTasksChained', 0, async (done: Function) => {
+    it('testTwoTasksChained', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let result: Object = await testTwoTasksChained();
       expect(result).assertEqual("PASSED");
       done();
@@ -94,7 +94,7 @@ export default function TaskPoolTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testManyTasksChained', 0, async (done: Function) => {
+    it('testManyTasksChained', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let result: Object = await testManyTasksChained();
       expect(result).assertEqual("PASSED");
       done();
@@ -109,7 +109,7 @@ export default function TaskPoolTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testRepeats', 0, async (done: Function) => {
+    it('testRepeats', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let result: Object = await testRepeats();
       expect(result).assertEqual("PASSED");
       done();

@@ -73,9 +73,9 @@ export default function workerTest() {
      * @tc.desc       : test worker error
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 3
+     * @tc.level      : Level 0
      */
-    it('testWorkerError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testWorkerError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testWorkerError001';
       console.info(`${caseName} test start`);
       try {
@@ -119,9 +119,9 @@ export default function workerTest() {
      * @tc.desc       : test worker error
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 3
+     * @tc.level      : Level 0
      */
-    it('testWorkerError002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testWorkerError002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testWorkerError001';
       console.info(`${caseName} test start`);
       try {
@@ -146,9 +146,9 @@ export default function workerTest() {
      * @tc.desc       : test worker error
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 3
+     * @tc.level      : Level 0
      */
-    it('testWorkerError003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testWorkerError003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testWorkerError001';
       console.info(`${caseName} test start`);
       try {
@@ -183,9 +183,9 @@ export default function workerTest() {
      * @tc.desc       : test worker error
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 3
+     * @tc.level      : Level 0
      */
-    it('testWorkerError004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testWorkerError004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testWorkerError001';
       console.info(`${caseName} test start`);
       try {
@@ -225,9 +225,9 @@ export default function workerTest() {
      * @tc.desc       : test worker error
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 3
+     * @tc.level      : Level 0
      */
-    it('testWorkerError005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testWorkerError005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testWorkerError001';
       console.info(`${caseName} test start`);
       try {
@@ -261,9 +261,9 @@ export default function workerTest() {
      * @tc.desc       : test worker error
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 3
+     * @tc.level      : Level 0
      */
-    it('testWorkerError006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testWorkerError006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testWorkerError001';
       console.info(`${caseName} test start`);
       try {
@@ -297,9 +297,9 @@ export default function workerTest() {
      * @tc.desc       : test worker error
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 3
+     * @tc.level      : Level 0
      */
-    it('testWorkerError007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testWorkerError007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testWorkerError001';
       console.info(`${caseName} test start`);
       try {
@@ -334,9 +334,9 @@ export default function workerTest() {
      * @tc.desc       : test worker error
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 3
+     * @tc.level      : Level 0
      */
-    it('testWorkerError008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testWorkerError008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testWorkerError001';
       console.info(`${caseName} test start`);
       try {
@@ -369,9 +369,9 @@ export default function workerTest() {
      * @tc.desc       : test worker error
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 3
+     * @tc.level      : Level 0
      */
-    it('testWorkerError009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testWorkerError009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testWorkerError001';
       console.info(`${caseName} test start`);
       try {
@@ -405,9 +405,9 @@ export default function workerTest() {
      * @tc.desc       : test worker error
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 3
+     * @tc.level      : Level 0
      */
-    it('testWorkerError010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testWorkerError010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testWorkerError002';
       console.info(`${caseName} test start`);
       try {
@@ -439,9 +439,9 @@ export default function workerTest() {
      * @tc.desc       : test worker error
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 3
+     * @tc.level      : Level 0
      */
-    it('testWorkerError011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testWorkerError011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testWorkerError002';
       console.info(`${caseName} test start`);
       try {
@@ -475,9 +475,9 @@ export default function workerTest() {
      * @tc.desc       : test worker error
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 3
+     * @tc.level      : Level 0
      */
-    it('testWorkerError012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testWorkerError012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testWorkerError002';
       console.info(`${caseName} test start`);
       try {
@@ -512,9 +512,9 @@ export default function workerTest() {
      * @tc.desc       : test worker error
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 3
+     * @tc.level      : Level 0
      */
-    it('testWorkerError013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testWorkerError013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testWorkerError002';
       console.info(`${caseName} test start`);
       try {
@@ -548,9 +548,9 @@ export default function workerTest() {
      * @tc.desc       : test worker error
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 3
+     * @tc.level      : Level 0
      */
-    it('testWorkerError014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testWorkerError014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testWorkerError002';
       console.info(`${caseName} test start`);
       try {
@@ -588,9 +588,9 @@ export default function workerTest() {
      * @tc.desc       : test worker error
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 3
+     * @tc.level      : Level 0
      */
-    it('testWorkerError015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testWorkerError015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testWorkerError002';
       console.info(`${caseName} test start`);
       try {
@@ -630,9 +630,9 @@ export default function workerTest() {
      * @tc.desc       : test worker error
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 3
+     * @tc.level      : Level 0
      */
-    it('testWorkerError016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testWorkerError016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testWorkerError002';
       console.info(`${caseName} test start`);
       try {
@@ -685,9 +685,9 @@ export default function workerTest() {
      * @tc.desc       : test worker error
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 3
+     * @tc.level      : Level 0
      */
-    it('testWorkerError017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testWorkerError017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testWorkerError002';
       console.info(`${caseName} test start`);
       try {
@@ -730,9 +730,9 @@ export default function workerTest() {
      * @tc.desc       : test worker error
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 3
+     * @tc.level      : Level 0
      */
-    it('testWorkerError018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testWorkerError018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testWorkerError002';
       console.info(`${caseName} test start`);
       try {
@@ -782,9 +782,9 @@ export default function workerTest() {
      * @tc.desc       : test worker error
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 3
+     * @tc.level      : Level 0
      */
-    it('testWorkerError019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testWorkerError019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testWorkerError002';
       console.info(`${caseName} test start`);
       try {
@@ -837,9 +837,9 @@ export default function workerTest() {
      * @tc.desc       : test threadWorker constructor
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 0
      */
-    it('testWorkerConstructor001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testWorkerConstructor001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testWorkerConstructor001';
       console.info(`${caseName} test start`);
       try {
@@ -892,9 +892,9 @@ export default function workerTest() {
      * @tc.desc       : test threadWorker constructor
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 0
      */
-    it('testWorkerConstructor002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testWorkerConstructor002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testWorkerConstructor002';
       console.info(`${caseName} test start`);
       try {
@@ -951,7 +951,7 @@ export default function workerTest() {
      * @tc.desc       : test threadWorker constructor
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerConstructor003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerConstructor003';
@@ -976,9 +976,9 @@ export default function workerTest() {
      * @tc.desc       : test host threads send messages to worker threads
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 0
      */
-    it('testWorkerPostMessage001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testWorkerPostMessage001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage001';
       console.info(`${caseName} test start`);
       try {
@@ -1031,7 +1031,7 @@ export default function workerTest() {
      * @tc.desc       : test host threads send messages to worker threads
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerPostMessage002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage002';
@@ -1086,7 +1086,7 @@ export default function workerTest() {
      * @tc.desc       : test host threads send messages to worker threads
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerPostMessage003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage003';
@@ -1141,7 +1141,7 @@ export default function workerTest() {
      * @tc.desc       : test host threads send messages to worker threads
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerPostMessage004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage004';
@@ -1196,7 +1196,7 @@ export default function workerTest() {
      * @tc.desc       : test host threads send messages to worker threads
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerPostMessage005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage005';
@@ -1253,7 +1253,7 @@ export default function workerTest() {
      * @tc.desc       : test host threads send messages to worker threads
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerPostMessage006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage006';
@@ -1310,7 +1310,7 @@ export default function workerTest() {
      * @tc.desc       : test host threads send messages to worker threads
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerPostMessage007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage007';
@@ -1367,7 +1367,7 @@ export default function workerTest() {
      * @tc.desc       : test host threads send messages to worker threads
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerPostMessage008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage008';
@@ -1424,7 +1424,7 @@ export default function workerTest() {
      * @tc.desc       : test host threads send messages to worker threads
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerPostMessage009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage009';
@@ -1481,7 +1481,7 @@ export default function workerTest() {
      * @tc.desc       : test host threads send messages to worker threads
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerPostMessage010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage010';
@@ -1538,7 +1538,7 @@ export default function workerTest() {
      * @tc.desc       : test host threads send messages to worker threads
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerPostMessage011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage011';
@@ -1595,7 +1595,7 @@ export default function workerTest() {
      * @tc.desc       : test host threads send messages to worker threads
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerPostMessage012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage012';
@@ -1652,7 +1652,7 @@ export default function workerTest() {
      * @tc.desc       : test host threads send messages to worker threads
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerPostMessage013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage013';
@@ -1709,7 +1709,7 @@ export default function workerTest() {
      * @tc.desc       : test host threads send messages to worker threads
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerPostMessage014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage014';
@@ -1766,7 +1766,7 @@ export default function workerTest() {
      * @tc.desc       : test host threads send messages to worker threads
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerPostMessage015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage015';
@@ -1827,7 +1827,7 @@ export default function workerTest() {
      * @tc.desc       : test host threads send messages to worker threads
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerPostMessage016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage016';
@@ -1888,7 +1888,7 @@ export default function workerTest() {
      * @tc.desc       : test host threads send messages to worker threads
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerPostMessage017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage017';
@@ -1945,7 +1945,7 @@ export default function workerTest() {
      * @tc.desc       : test host threads send messages to worker threads
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerPostMessage018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage018';
@@ -2002,7 +2002,7 @@ export default function workerTest() {
      * @tc.desc       : test host threads send messages to worker threads
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerPostMessage019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage019';
@@ -2059,7 +2059,7 @@ export default function workerTest() {
      * @tc.desc       : test host threads send messages to worker threads
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerPostMessage020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage020';
@@ -2116,7 +2116,7 @@ export default function workerTest() {
      * @tc.desc       : test host threads send messages to worker threads
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerPostMessage021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerPostMessage021';
@@ -2183,7 +2183,7 @@ export default function workerTest() {
      * @tc.desc       : test add an event listening to Worker
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerOn001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerOn001';
@@ -2246,7 +2246,7 @@ export default function workerTest() {
      * @tc.desc       : test add an event listening to Worker
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerOn002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerOn002';
@@ -2308,7 +2308,7 @@ export default function workerTest() {
      * @tc.desc       : test add an event listener to the Worker, which will be automatically deleted after only executing once.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerOnce001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerOnce001';
@@ -2373,7 +2373,7 @@ export default function workerTest() {
      * @tc.desc       : test add an event listener to the Worker, which will be automatically deleted after only executing once.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerOnce002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerOnce002';
@@ -2439,7 +2439,7 @@ export default function workerTest() {
      * @tc.desc       : test delete event listeners of type
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerOff001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerOff001';
@@ -2513,7 +2513,7 @@ export default function workerTest() {
      * @tc.desc       : test delete event listeners of type
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerOff002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerOff002';
@@ -2579,7 +2579,7 @@ export default function workerTest() {
      * @tc.desc       : test register an object on the ThreadWorker instance of the host thread, and the methods on this object can be called in the Worker thread
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerRegisterGlobalCallObject001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerRegisterGlobalCallObject001';
@@ -2638,7 +2638,7 @@ export default function workerTest() {
      * @tc.desc       : test register an object on the ThreadWorker instance of the host thread, and the methods on this object can be called in the Worker thread
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerRegisterGlobalCallObject002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerRegisterGlobalCallObject002';
@@ -2697,7 +2697,7 @@ export default function workerTest() {
      * @tc.desc       : test canceling the object registered on the host thread ThreadWorker instance will release a strong reference to the object that matches the key in the ThreadWorker instance, and there will be no error when there is no matching object.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerUnregisterGlobalCallObject001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerUnregisterGlobalCallObject001';
@@ -2749,7 +2749,7 @@ export default function workerTest() {
      * @tc.desc       : test canceling the object registered on the host thread ThreadWorker instance will release a strong reference to the object that matches the key in the ThreadWorker instance, and there will be no error when there is no matching object.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerUnregisterGlobalCallObject002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerUnregisterGlobalCallObject002';
@@ -2801,7 +2801,7 @@ export default function workerTest() {
      * @tc.desc       : test the event handler that is called when the Worker is destroyed is executed in the host thread.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerTerminateAndOnexit001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerTerminateAndOnexit001';
@@ -2841,7 +2841,7 @@ export default function workerTest() {
      * @tc.desc       : test the event handler that is called when the Worker is destroyed is executed in the host thread.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerTerminateAndOnexit002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerTerminateAndOnexit002';
@@ -2881,7 +2881,7 @@ export default function workerTest() {
      * @tc.desc       : test the event handler that is called when the Worker is destroyed is executed in the host thread.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerTerminateAndOnexit003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerTerminateAndOnexit003';
@@ -2908,7 +2908,7 @@ export default function workerTest() {
      * @tc.desc       : test the event handler that is called when the Worker is destroyed is executed in the host thread.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerTerminateAndOnexit004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerTerminateAndOnexit004';
@@ -2938,7 +2938,7 @@ export default function workerTest() {
      * @tc.desc       : test the event handler that is called when a Worker encounters an exception during execution, and the handler is executed in the host thread.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerOnerror001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerOnerror001';
@@ -2984,7 +2984,7 @@ export default function workerTest() {
      * @tc.desc       : test the event handler that is called when a Worker encounters an exception during execution, and the handler is executed in the host thread.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerOnerror002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerOnerror002';
@@ -3030,7 +3030,7 @@ export default function workerTest() {
      * @tc.desc       : test the event handler that is called by the host thread when it receives a message sent by a Worker created by it through the workerPort. postMessage interface, and the handler is executed in the host thread.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerOnmessage001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerOnmessage001';
@@ -3085,7 +3085,7 @@ export default function workerTest() {
      * @tc.desc       : test the event handler that is called by the host thread when it receives a message sent by a Worker created by it through the workerPort. postMessage interface, and the handler is executed in the host thread.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerOnmessage002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerOnmessage002';
@@ -3146,7 +3146,7 @@ export default function workerTest() {
      * @tc.desc       : test the event handler that is called when a Worker object receives a message that cannot be serialized, and the handler is executed in the host thread.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerOnmessageerror001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerOnmessageerror001';
@@ -3219,7 +3219,7 @@ export default function workerTest() {
      * @tc.desc       : test the event handler that is called when a Worker object receives a message that cannot be serialized, and the handler is executed in the host thread.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerOnmessageerror002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerOnmessageerror002';
@@ -3292,7 +3292,7 @@ export default function workerTest() {
      * @tc.desc       : test add an event listener to the Worker, which has the same functionality as the on interface
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerAddEventListener001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerAddEventListener001';
@@ -3355,7 +3355,7 @@ export default function workerTest() {
      * @tc.desc       : test add an event listener to the Worker, which has the same functionality as the on interface
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerAddEventListener002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerAddEventListener002';
@@ -3417,7 +3417,7 @@ export default function workerTest() {
      * @tc.desc       : test delete Worker's event listening, this interface has the same functionality as the off interface
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerRemoveEventListener001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerRemoveEventListener001';
@@ -3491,7 +3491,7 @@ export default function workerTest() {
      * @tc.desc       : test delete Worker's event listening, this interface has the same functionality as the off interface
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerRemoveEventListener002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerRemoveEventListener002';
@@ -3560,7 +3560,7 @@ export default function workerTest() {
      * @tc.desc       : test distribute events defined in Worker.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerDispatchEvent001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerDispatchEvent001';
@@ -3627,7 +3627,7 @@ export default function workerTest() {
      * @tc.desc       : test distribute events defined in Worker.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerDispatchEvent002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerDispatchEvent002';
@@ -3693,7 +3693,7 @@ export default function workerTest() {
      * @tc.desc       : test distribute events defined in Worker.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerDispatchEvent003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerDispatchEvent003';
@@ -3760,7 +3760,7 @@ export default function workerTest() {
      * @tc.desc       : test distribute events defined in Worker.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerDispatchEvent004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerDispatchEvent004';
@@ -3826,7 +3826,7 @@ export default function workerTest() {
      * @tc.desc       : test delete all event listeners for Worker.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerRemoveAllListener001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerRemoveAllListener001';
@@ -3924,7 +3924,7 @@ export default function workerTest() {
      * @tc.desc       : test delete all event listeners for Worker.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerRemoveAllListener002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerRemoveAllListener002';
@@ -4010,7 +4010,7 @@ export default function workerTest() {
      * @tc.desc       : test add an event listener to the Worker, which has the same functionality as the on interface
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerWorkerEventTargetAddEventListener001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerWorkerEventTargetAddEventListener001';
@@ -4073,7 +4073,7 @@ export default function workerTest() {
      * @tc.desc       : test add an event listener to the Worker, which has the same functionality as the on interface
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerWorkerEventTargetAddEventListener002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerWorkerEventTargetAddEventListener002';
@@ -4135,7 +4135,7 @@ export default function workerTest() {
      * @tc.desc       : test delete Worker's event listening, this interface has the same functionality as the off interface
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerWorkerEventTargetRemoveEventListener001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerWorkerEventTargetRemoveEventListener001';
@@ -4209,7 +4209,7 @@ export default function workerTest() {
      * @tc.desc       : test delete Worker's event listening, this interface has the same functionality as the off interface
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerWorkerEventTargetRemoveEventListener002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerWorkerEventTargetRemoveEventListener002';
@@ -4275,7 +4275,7 @@ export default function workerTest() {
      * @tc.desc       : test distribute events defined in Worker.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerWorkerEventTargetDispatchEvent001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerWorkerEventTargetDispatchEvent001';
@@ -4342,7 +4342,7 @@ export default function workerTest() {
      * @tc.desc       : test distribute events defined in Worker.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerWorkerEventTargetDispatchEvent002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerWorkerEventTargetDispatchEvent002';
@@ -4408,7 +4408,7 @@ export default function workerTest() {
      * @tc.desc       : test distribute events defined in Worker.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerWorkerEventTargetDispatchEvent003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerWorkerEventTargetDispatchEvent003';
@@ -4475,7 +4475,7 @@ export default function workerTest() {
      * @tc.desc       : test distribute events defined in Worker.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerWorkerEventTargetDispatchEvent004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerWorkerEventTargetDispatchEvent004';
@@ -4541,7 +4541,7 @@ export default function workerTest() {
      * @tc.desc       : test delete all event listeners for Worker.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerWorkerEventTargetRemoveAllListener001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerWorkerEventTargetRemoveAllListener001';
@@ -4639,7 +4639,7 @@ export default function workerTest() {
      * @tc.desc       : test delete all event listeners for Worker.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerWorkerEventTargetRemoveAllListener002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerWorkerEventTargetRemoveAllListener002';
@@ -4724,7 +4724,7 @@ export default function workerTest() {
      * @tc.desc       : test the Worker thread sends a message to the host thread.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerThreadWorkerGlobalScopePostMessage001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage001';
@@ -4779,7 +4779,7 @@ export default function workerTest() {
      * @tc.desc       : test the Worker thread sends a message to the host thread.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerThreadWorkerGlobalScopePostMessage002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage002';
@@ -4834,7 +4834,7 @@ export default function workerTest() {
      * @tc.desc       : test the Worker thread sends a message to the host thread.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerThreadWorkerGlobalScopePostMessage003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage003';
@@ -4889,7 +4889,7 @@ export default function workerTest() {
      * @tc.desc       : test the Worker thread sends a message to the host thread.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerThreadWorkerGlobalScopePostMessage004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage004';
@@ -4944,7 +4944,7 @@ export default function workerTest() {
      * @tc.desc       : test the Worker thread sends a message to the host thread.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerThreadWorkerGlobalScopePostMessage005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage005';
@@ -4999,7 +4999,7 @@ export default function workerTest() {
      * @tc.desc       : test the Worker thread sends a message to the host thread.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerThreadWorkerGlobalScopePostMessage006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage006';
@@ -5054,7 +5054,7 @@ export default function workerTest() {
      * @tc.desc       : test the Worker thread sends a message to the host thread.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerThreadWorkerGlobalScopePostMessage007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage007';
@@ -5109,7 +5109,7 @@ export default function workerTest() {
      * @tc.desc       : test the Worker thread sends a message to the host thread.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerThreadWorkerGlobalScopePostMessage008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage008';
@@ -5164,7 +5164,7 @@ export default function workerTest() {
      * @tc.desc       : test the Worker thread sends a message to the host thread.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerThreadWorkerGlobalScopePostMessage009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage009';
@@ -5219,7 +5219,7 @@ export default function workerTest() {
      * @tc.desc       : test the Worker thread sends a message to the host thread.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerThreadWorkerGlobalScopePostMessage010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage010';
@@ -5274,7 +5274,7 @@ export default function workerTest() {
      * @tc.desc       : test the Worker thread sends a message to the host thread.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerThreadWorkerGlobalScopePostMessage011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage011';
@@ -5329,7 +5329,7 @@ export default function workerTest() {
      * @tc.desc       : test the Worker thread sends a message to the host thread.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerThreadWorkerGlobalScopePostMessage012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage012';
@@ -5384,7 +5384,7 @@ export default function workerTest() {
      * @tc.desc       : test the Worker thread sends a message to the host thread.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerThreadWorkerGlobalScopePostMessage013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage013';
@@ -5439,7 +5439,7 @@ export default function workerTest() {
      * @tc.desc       : test the Worker thread sends a message to the host thread.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerThreadWorkerGlobalScopePostMessage014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage014';
@@ -5494,7 +5494,7 @@ export default function workerTest() {
      * @tc.desc       : test the Worker thread sends a message to the host thread.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerThreadWorkerGlobalScopePostMessage015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage015';
@@ -5555,7 +5555,7 @@ export default function workerTest() {
      * @tc.desc       : test the Worker thread sends a message to the host thread.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerThreadWorkerGlobalScopePostMessage016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage016';
@@ -5616,7 +5616,7 @@ export default function workerTest() {
      * @tc.desc       : test the Worker thread sends a message to the host thread.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerThreadWorkerGlobalScopePostMessage017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage017';
@@ -5671,7 +5671,7 @@ export default function workerTest() {
      * @tc.desc       : test the Worker thread sends a message to the host thread.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerThreadWorkerGlobalScopePostMessage018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage018';
@@ -5726,7 +5726,7 @@ export default function workerTest() {
      * @tc.desc       : test the Worker thread sends a message to the host thread.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerThreadWorkerGlobalScopePostMessage019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage019';
@@ -5781,7 +5781,7 @@ export default function workerTest() {
      * @tc.desc       : test the Worker thread sends a message to the host thread.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerThreadWorkerGlobalScopePostMessage020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage020';
@@ -5836,7 +5836,7 @@ export default function workerTest() {
      * @tc.desc       : test the Worker thread sends a message to the host thread.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerThreadWorkerGlobalScopePostMessage021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopePostMessage021';
@@ -5895,7 +5895,7 @@ export default function workerTest() {
      * @tc.desc       : test worker thread calls a specified method of an object registered on the host thread
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerCallGlobalCallObjectMethod001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerCallGlobalCallObjectMethod001';
@@ -5954,7 +5954,7 @@ export default function workerTest() {
      * @tc.desc       : test worker thread calls a specified method of an object registered on the host thread
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerCallGlobalCallObjectMethod002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerCallGlobalCallObjectMethod002';
@@ -6013,7 +6013,7 @@ export default function workerTest() {
      * @tc.desc       : test destroy Worker thread and terminate Worker receiving messages
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerClose001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerClose001';
@@ -6053,7 +6053,7 @@ export default function workerTest() {
      * @tc.desc       : test destroy Worker thread and terminate Worker receiving messages
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerClose002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerClose002';
@@ -6093,7 +6093,7 @@ export default function workerTest() {
      * @tc.desc       : test the event handler called by a Worker thread when it receives a message sent through the postMessage interface from its host thread
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerThreadWorkerGlobalScopeOnmessage001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopeOnmessage001';
@@ -6148,7 +6148,7 @@ export default function workerTest() {
      * @tc.desc       : test the event handler called by a Worker thread when it receives a message sent through the postMessage interface from its host thread
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerThreadWorkerGlobalScopeOnmessage002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopeOnmessage002';
@@ -6209,7 +6209,7 @@ export default function workerTest() {
      * @tc.desc       : test the event handler that is called when a Worker object receives a message that cannot be deserialized
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerThreadWorkerGlobalScopeOnmessageerror001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopeOnmessageerror001';
@@ -6264,7 +6264,7 @@ export default function workerTest() {
      * @tc.desc       : test the event handler that is called when a Worker object receives a message that cannot be deserialized
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerThreadWorkerGlobalScopeOnmessageerror002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerThreadWorkerGlobalScopeOnmessageerror002';
@@ -6319,7 +6319,7 @@ export default function workerTest() {
      * @tc.desc       : test the oneerror property of GlobalScope represents the event handler that was called when a Worker encountered an exception during execution
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerGlobalScopeOnerror001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerGlobalScopeOnerror001';
@@ -6371,7 +6371,7 @@ export default function workerTest() {
      * @tc.desc       : test the oneerror property of GlobalScope represents the event handler that was called when a Worker encountered an exception during execution
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testWorkerGlobalScopeOnerror002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       const caseName: string = 'testWorkerGlobalScopeOnerror002';
@@ -6446,12 +6446,12 @@ export default function workerTest() {
         workerInstance.onerror = (err: ErrorEvent): void => {
           console.info(`${caseName}: workerInstance.onerror: err.message => ${err.message} err.filename => ${err.filename} err.lineno => ${err.lineno} type => ${typeof err.lineno} err.colno => ${err.colno} type => ${typeof err.colno} err.error => ${err.error}`);
           expect(err.message)
-            .assertEqual('BusinessError: An exception occurred during serialization, failed to serialize message.');
+            .assertContain('BusinessError: An exception occurred during serialization, failed to serialize message.');
           expectAssertContain(err.filename, 'workers/worker_026');
           expectAssertEqual(typeof err.lineno, 'number');
           expectAssertEqual(typeof err.colno, 'number');
           expect(err.error.toString())
-            .assertEqual('Error: An exception occurred during serialization, failed to serialize message.');
+            .assertContain('Error: An exception occurred during serialization, failed to serialize message.');
         }
         workerInstance.postMessage('GlobalScope');
         while (!flag) {

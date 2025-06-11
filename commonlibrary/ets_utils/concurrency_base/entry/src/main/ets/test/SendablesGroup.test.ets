@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, afterAll, it, expect } from '@ohos/hypium'
+import { describe, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium'
 
 import { testManySendablesToGroup, testSendableToGroupAndUpdate, testSendablesFromOtherTask,
   testSendablesFromOtherTask_1, testSendablesFromOtherTask_2, testSendablesFromOtherTask_2_1,
@@ -35,9 +35,9 @@ export default function SendableGroupTest() {
          * @tc.author: oleg-ignatenko
          * @tc.size: MediumTest
          * @tc.type: Function
-         * @tc.level: Level 1
+         * @tc.level: Level 0
          */
-        it('testManySendablesToGroup', 0, async (done: Function) => {
+        it('testManySendablesToGroup', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
            let result = await testManySendablesToGroup();
            expect(result).assertEqual("PASSED");
            done();
@@ -52,7 +52,7 @@ export default function SendableGroupTest() {
          * @tc.type: Function
          * @tc.level: Level 2
          */
-        it('testSendablesFromOtherTask', 0, async (done: Function) => {
+        it('testSendablesFromOtherTask', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
            let result = await skipConditional("testSendablesFromOtherTask excluded", true, testSendablesFromOtherTask);
            expect(result).assertEqual("PASSED");
            done();
@@ -65,9 +65,9 @@ export default function SendableGroupTest() {
          * @tc.author: oleg-ignatenko
          * @tc.size: MediumTest
          * @tc.type: Function
-         * @tc.level: Level 2
+         * @tc.level: Level 1
          */
-        it('testSendablesFromOtherTask_1', 0, async (done: Function) => {
+        it('testSendablesFromOtherTask_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
            let result = await skipConditional(
              "testSendablesFromOtherTask_1 excluded", true, testSendablesFromOtherTask_1);
            expect(result).assertEqual("PASSED");
@@ -83,7 +83,7 @@ export default function SendableGroupTest() {
          * @tc.type: Function
          * @tc.level: Level 2
          */
-        it('testSendableToGroupAndUpdate', 0, async (done: Function) => {
+        it('testSendableToGroupAndUpdate', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
            let result = await skipConditional(
              "testSendableToGroupAndUpdate excluded", true, testSendableToGroupAndUpdate);
            expect(result).assertEqual("PASSED");
@@ -99,7 +99,7 @@ export default function SendableGroupTest() {
          * @tc.type: Function
          * @tc.level: Level 2
          */
-        it('testSendablesFromOtherTask_2', 0, async (done: Function) => {
+        it('testSendablesFromOtherTask_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
           let result = await skipConditional(
             "testSendablesFromOtherTask_2 excluded", true, testSendablesFromOtherTask_2);
           expect(result).assertEqual("PASSED");
@@ -115,7 +115,7 @@ export default function SendableGroupTest() {
          * @tc.type: Function
          * @tc.level: Level 2
          */
-        it('testSendablesFromOtherTask_2_1', 0, async (done: Function) => {
+        it('testSendablesFromOtherTask_2_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
           let result = await skipConditional(
             "testSendablesFromOtherTask_2_1 excluded", true, testSendablesFromOtherTask_2_1);
           expect(result).assertEqual("PASSED");
@@ -131,7 +131,7 @@ export default function SendableGroupTest() {
          * @tc.type: Function
          * @tc.level: Level 2
          */
-        it('testSendablesFromOtherTask_3', 0, async (done: Function) => {
+        it('testSendablesFromOtherTask_3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
           let result = await skipConditional(
             "testSendablesFromOtherTask_3 excluded", true, testSendablesFromOtherTask_3);
           expect(result).assertEqual("PASSED");
@@ -147,7 +147,7 @@ export default function SendableGroupTest() {
          * @tc.type: Function
          * @tc.level: Level 2
          */
-        it('testSendablesFromOtherTask_3_1', 0, async (done: Function) => {
+        it('testSendablesFromOtherTask_3_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
           let result = await skipConditional(
             "testSendablesFromOtherTask_3_1 excluded", true, testSendablesFromOtherTask_3_1);
           expect(result).assertEqual("PASSED");

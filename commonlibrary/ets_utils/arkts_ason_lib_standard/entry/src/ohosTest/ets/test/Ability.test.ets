@@ -28,7 +28,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("ASONTestClass001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it("ASONTestClass001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let options : ArkTSUtils.ASON.ParseOptions = {
         bigIntMode: ArkTSUtils.ASON.BigIntMode.PARSE_AS_BIGINT,
         parseReturnType: ArkTSUtils.ASON.ParseReturnType.OBJECT,
@@ -47,7 +47,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("ASONTestClass002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it("ASONTestClass002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let jsonText = '123';
       let obj = ArkTSUtils.ASON.parse(jsonText) as lang.ISendable;
       expect(obj).assertEqual(123);
@@ -62,7 +62,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("ASONTestClass003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it("ASONTestClass003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let jsonText = '{"number":123}';
       let obj = ArkTSUtils.ASON.parse(jsonText) as lang.ISendable;
       expect((obj as object)?.["number"]).assertEqual(123);
@@ -77,7 +77,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("ASONTestClass004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it("ASONTestClass004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let jsonText = '{"string":"testASON"}';
       let obj = ArkTSUtils.ASON.parse(jsonText) as lang.ISendable;
       expect((obj as object)?.["string"]).assertEqual("testASON");
@@ -90,7 +90,7 @@ export default function abilityTest() {
      * @tc.desc      : ArkTS ASON parse string
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
      */
     it("ASONTestClass005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let jsonText = '"testASON"';
@@ -105,7 +105,7 @@ export default function abilityTest() {
      * @tc.desc      : ArkTS ASON parse array
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
      */
     it("ASONTestClass006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let jsonText = '[1,2,3]';
@@ -120,7 +120,7 @@ export default function abilityTest() {
      * @tc.desc      : ArkTS ASON parse array
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
      */
     it("ASONTestClass007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let jsonText = '{"arr":[1,3,5]}';
@@ -136,7 +136,7 @@ export default function abilityTest() {
      * @tc.desc      : ArkTS ASON parse true
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
      */
     it("ASONTestClass008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let jsonText = 'true';
@@ -151,7 +151,7 @@ export default function abilityTest() {
      * @tc.desc      : ArkTS ASON parse false
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
      */
     it("ASONTestClass009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let jsonText = 'false';
@@ -166,7 +166,7 @@ export default function abilityTest() {
      * @tc.desc      : ArkTS ASON parse obj
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
      */
     it("ASONTestClass010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let jsonText = '{}';
@@ -181,7 +181,7 @@ export default function abilityTest() {
      * @tc.desc      : ArkTS ASON parse obj
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
      */
     it("ASONTestClass011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let jsonText = '{"123":"123"}';
@@ -196,7 +196,7 @@ export default function abilityTest() {
      * @tc.desc      : ArkTS ASON parse Map
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
      */
     it("ASONTestClass012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let options : ArkTSUtils.ASON.ParseOptions = {
@@ -215,7 +215,7 @@ export default function abilityTest() {
      * @tc.desc      : ArkTS ASON parse Map
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
      */
     it("ASONTestClass013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let options : ArkTSUtils.ASON.ParseOptions = {
@@ -234,7 +234,7 @@ export default function abilityTest() {
      * @tc.desc      : ArkTS ASON parse Map
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
      */
     it("ASONTestClass014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let options : ArkTSUtils.ASON.ParseOptions = {
@@ -255,7 +255,7 @@ export default function abilityTest() {
      * @tc.desc      : ArkTS ASON parse Map Error
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
      */
     it("ASONTestClass015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let options : ArkTSUtils.ASON.ParseOptions = {
@@ -277,7 +277,7 @@ export default function abilityTest() {
      * @tc.desc      : ArkTS ASON parse obj Error
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
      */
     it("ASONTestClass016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let options : ArkTSUtils.ASON.ParseOptions = {
@@ -299,7 +299,7 @@ export default function abilityTest() {
      * @tc.desc      : ArkTS ASON parse Map Error
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
      */
     it("ASONTestClass017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let options : ArkTSUtils.ASON.ParseOptions = {
@@ -321,7 +321,7 @@ export default function abilityTest() {
      * @tc.desc      : ArkTS ASON parse obj Error
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
      */
     it("ASONTestClass018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let options : ArkTSUtils.ASON.ParseOptions = {
@@ -343,7 +343,7 @@ export default function abilityTest() {
      * @tc.desc      : ArkTS ASON stringify
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
      */
     it("ASONTestClass019", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let obj = 1122;
@@ -358,7 +358,7 @@ export default function abilityTest() {
      * @tc.desc      : ArkTS ASON stringify
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
      */
     it("ASONTestClass020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let obj = "test ASON";
@@ -373,7 +373,7 @@ export default function abilityTest() {
      * @tc.desc      : ArkTS ASON stringify
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
      */
     it("ASONTestClass021", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let obj = true;
@@ -388,7 +388,7 @@ export default function abilityTest() {
      * @tc.desc      : ArkTS ASON stringify
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
      */
     it("ASONTestClass022", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let obj = false;
@@ -403,7 +403,7 @@ export default function abilityTest() {
      * @tc.desc      : ArkTS ASON stringify
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
      */
     it("ASONTestClass023", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let obj = null;
@@ -418,7 +418,7 @@ export default function abilityTest() {
      * @tc.desc      : ArkTS ASON stringify
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
      */
     it("ASONTestClass024", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let obj = new collections.Array<number>(1, 3, 5);
@@ -433,7 +433,7 @@ export default function abilityTest() {
      * @tc.desc      : ArkTS ASON stringify
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
      */
     it("ASONTestClass025", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let jsonText = '{"string":"testASON"}';
@@ -449,7 +449,7 @@ export default function abilityTest() {
      * @tc.desc      : ArkTS ASON stringify
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
      */
     it("ASONTestClass026", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let jsonText = '{}';
@@ -465,7 +465,7 @@ export default function abilityTest() {
      * @tc.desc      : ArkTS ASON stringify
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
      */
     it("ASONTestClass027", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let obj = 112233445566778899n;
@@ -480,7 +480,7 @@ export default function abilityTest() {
      * @tc.desc      : ArkTS ASON stringify
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
      */
     it("ASONTestClass028", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let options : ArkTSUtils.ASON.ParseOptions = {
@@ -500,7 +500,7 @@ export default function abilityTest() {
      * @tc.desc      : ArkTS ASON parse Map
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
      */
     it("ASONTestClass029", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let options : ArkTSUtils.ASON.ParseOptions = {
@@ -520,7 +520,7 @@ export default function abilityTest() {
      * @tc.desc      : ArkTS ASON stringify Map and Set
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
      */
     it("ASONTestClass030", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let jsonText = '{"text":"ASON support MAP Test Start","largeNumber":112233445566778899,"people":{"name":"Mary","sex":"1","height":"165"}}';
@@ -540,7 +540,7 @@ export default function abilityTest() {
      * @tc.desc      : ArkTS ASON stringify Map and Set
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
      */
     it("ASONTestClass031", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let jsonText = '{"args1":true,"args2":false,"args3":null}';
@@ -560,7 +560,7 @@ export default function abilityTest() {
      * @tc.desc      : ArkTS ASON stringify Map and Set
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
      */
     it("ASONTestClass032", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let jsonText = '{"people":{"name":"Mary","sex":"1","height":165,"args":{"arr":[1,2,3],"check":true,"num":null}}}';
@@ -580,7 +580,7 @@ export default function abilityTest() {
      * @tc.desc      : ArkTS ASON stringify Map and Set
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
      */
     it("ASONTestClass033", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let set = new Set<number>();
@@ -598,7 +598,7 @@ export default function abilityTest() {
      * @tc.desc      : ArkTS ASON stringify Map and Set
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
      */
     it("ASONTestClass034", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let set = new collections.Set<number>();
@@ -616,7 +616,7 @@ export default function abilityTest() {
      * @tc.desc      : ArkTS ASON stringify Map and Set
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
      */
     it("ASONTestClass035", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let set = new HashSet<number>();
@@ -634,7 +634,7 @@ export default function abilityTest() {
      * @tc.desc      : ArkTS ASON stringify Map and Set
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
      */
     it("ASONTestClass036", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let arr = new collections.Array<string>();
@@ -655,7 +655,7 @@ export default function abilityTest() {
      * @tc.desc      : ArkTS ASON stringify Map and Set
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
      */
     it("ASONTestClass037", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let arr = new Array<string>();
@@ -680,7 +680,7 @@ export default function abilityTest() {
      * @tc.desc      : ArkTS ASON stringify Map and Set
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
      */
     it("ASONTestClass038", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let map = new Map<string, Object>();
@@ -705,7 +705,7 @@ export default function abilityTest() {
      * @tc.desc      : ArkTS ASON stringify Map and Set
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
      */
     it("ASONTestClass039", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let map = new Map<string | null | number | boolean, string | null | number | boolean>();
@@ -724,7 +724,7 @@ export default function abilityTest() {
      * @tc.desc      : ArkTS ASON stringify Map and Set
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
      */
     it("ASONTestClass040", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let map = new collections.Map<string | null | number | boolean, string | null | number | boolean>();
@@ -743,7 +743,7 @@ export default function abilityTest() {
      * @tc.desc      : ArkTS ASON stringify Map and Set
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
      */
     it("ASONTestClass041", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let set = new Set<string | null | number | boolean>();
@@ -762,7 +762,7 @@ export default function abilityTest() {
      * @tc.desc      : ArkTS ASON stringify Map and Set
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 1
      */
     it("ASONTestClass042", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let set = new collections.Set<string | null | number | boolean>();

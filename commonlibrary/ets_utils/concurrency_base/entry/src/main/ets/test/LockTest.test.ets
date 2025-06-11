@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, afterAll, it, expect } from '@ohos/hypium'
+import { describe, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium'
 import { skipConditional } from './utils'
 import { exclusiveSingleTest, exclusiveMultiTest, exclusiveMultiWorkerTest, sharedSingleTest, sharedMultiTest,
   sharedMultiWorkerTest, isAvailableTest, isNotAvailableTest, queryTest, abortTest, twoLocksSingleTest,
@@ -42,9 +42,9 @@ export default function LockTest() {
      * @tc.author: konstantin-grebenschikov
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 0
      */
-    it('exclusiveSingleTest', 0, async (done: Function) => {
+    it('exclusiveSingleTest', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: Object = await exclusiveSingleTest();
       expect(result).assertEqual("PASSED");
       done();
@@ -57,9 +57,9 @@ export default function LockTest() {
      * @tc.author: konstantin-grebenschikov
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 0
      */
-    it('exclusiveMultiTest', 0, async (done: Function) => {
+    it('exclusiveMultiTest', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: Object = await exclusiveMultiTest();
       expect(result).assertEqual("PASSED");
       done();
@@ -72,9 +72,9 @@ export default function LockTest() {
      * @tc.author: konstantin-grebenschikov
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 0
      */
-    it('exclusiveMultiWorkerTest', 0, async (done: Function) => {
+    it('exclusiveMultiWorkerTest', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: Object = await exclusiveMultiWorkerTest();
       expect(result).assertEqual("PASSED");
       done();
@@ -87,9 +87,9 @@ export default function LockTest() {
      * @tc.author: konstantin-grebenschikov
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 0
      */
-    it('sharedSingleTest', 0, async (done: Function) => {
+    it('sharedSingleTest', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: Object = await sharedSingleTest();
       expect(result).assertEqual("PASSED");
       done();
@@ -102,9 +102,9 @@ export default function LockTest() {
      * @tc.author: konstantin-grebenschikov
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 0
      */
-    it('sharedMultiTest', 0, async (done: Function) => {
+    it('sharedMultiTest', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: Object = await sharedMultiTest();
       expect(result).assertEqual("PASSED");
       done();
@@ -117,9 +117,9 @@ export default function LockTest() {
      * @tc.author: konstantin-grebenschikov
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 0
      */
-    it('sharedMultiWorkerTest', 0, async (done: Function) => {
+    it('sharedMultiWorkerTest', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: Object = await sharedMultiWorkerTest();
       expect(result).assertEqual("PASSED");
       done();
@@ -132,9 +132,9 @@ export default function LockTest() {
      * @tc.author: konstantin-grebenschikov
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 0
      */
-    it('isAvailableTest', 0, async (done: Function) => {
+    it('isAvailableTest', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: Object = await isAvailableTest();
       expect(result).assertEqual("PASSED");
       done();
@@ -147,9 +147,9 @@ export default function LockTest() {
      * @tc.author: konstantin-grebenschikov
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 0
      */
-    it('isNotAvailableTest', 0, async (done: Function) => {
+    it('isNotAvailableTest', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: Object = await isNotAvailableTest();
       expect(result).assertEqual("PASSED");
       done();
@@ -162,9 +162,9 @@ export default function LockTest() {
      * @tc.author: konstantin-grebenschikov
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 0
      */
-    it('queryTest', 0, async (done: Function) => {
+    it('queryTest', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: Object = await queryTest();
       expect(result).assertEqual("PASSED");
       done();
@@ -177,9 +177,9 @@ export default function LockTest() {
      * @tc.author: konstantin-grebenschikov
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 0
      */
-    it('abortTest', 0, async (done: Function) => {
+    it('abortTest', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: Object = await abortTest();
       expect(result).assertEqual("PASSED");
       done();
@@ -192,9 +192,9 @@ export default function LockTest() {
      * @tc.author: konstantin-grebenschikov
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 0
      */
-    it('twoLocksSingleTest', 0, async (done: Function) => {
+    it('twoLocksSingleTest', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: Object = await twoLocksSingleTest();
       expect(result).assertEqual("PASSED");
       done();
@@ -207,9 +207,9 @@ export default function LockTest() {
      * @tc.author: konstantin-grebenschikov
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 0
      */
-    it('twoThreadsAcquireOwnLocks', 0, async (done: Function) => {
+    it('twoThreadsAcquireOwnLocks', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: Object = await twoThreadsAcquireOwnLocks();
       expect(result).assertEqual("PASSED");
       done();
@@ -222,9 +222,9 @@ export default function LockTest() {
      * @tc.author: konstantin-grebenschikov
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 0
      */
-    it('multipleWakeupTest', 0, async (done: Function) => {
+    it('multipleWakeupTest', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result = await multipleWakeupTest();
       expect(result).assertEqual("PASSED");
       done();
@@ -237,9 +237,9 @@ export default function LockTest() {
      * @tc.author: konstantin-grebenschikov
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 2
+     * @tc.level: Level 0
      */
-    it('waitForLock', 0, async (done: Function) => {
+    it('waitForLock', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: Object = await waitForLock();
       expect(result).assertEqual("PASSED");
       done();
@@ -254,7 +254,7 @@ export default function LockTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('dontWaitForLock', 0, async (done: Function) => {
+    it('dontWaitForLock', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let result: Object = await dontWaitForLock();
       expect(result).assertEqual("PASSED");
       done();
@@ -269,7 +269,7 @@ export default function LockTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('sequentialLock', 0, async (done: Function) => {
+    it('sequentialLock', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let result: Object = await sequentialLock();
       expect(result).assertEqual("PASSED");
       done();
@@ -284,7 +284,7 @@ export default function LockTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('sequentialLockWorkerTest', 0, async (done: Function) => {
+    it('sequentialLockWorkerTest', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let result: Object = await sequentialLockWorkerTest();
       expect(result).assertEqual("PASSED");
       done();
@@ -299,7 +299,7 @@ export default function LockTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('sequentialLockInf', 0, async (done: Function) => {
+    it('sequentialLockInf', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let result: Object = await sequentialLockInf();
       expect(result).assertEqual("PASSED");
       done();
@@ -314,7 +314,7 @@ export default function LockTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('sequentialLockUnlocked', 0, async (done: Function) => {
+    it('sequentialLockUnlocked', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let result: Object = await sequentialLockUnlocked();
       expect(result).assertEqual("PASSED");
       done();
@@ -329,7 +329,7 @@ export default function LockTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('sequentialLockUnlocked1', 0, async (done: Function) => {
+    it('sequentialLockUnlocked1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let result: Object = await sequentialLockUnlocked1();
       expect(result).assertEqual("PASSED");
       done();
@@ -344,7 +344,7 @@ export default function LockTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('sequentialLockUnlocked3', 0, async (done: Function) => {
+    it('sequentialLockUnlocked3', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let result: Object = await sequentialLockUnlocked3();
       expect(result).assertEqual("PASSED");
       done();
@@ -359,7 +359,7 @@ export default function LockTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('fourThreadsApplyForSameLockExclusive', 0, async (done: Function) => {
+    it('fourThreadsApplyForSameLockExclusive', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let result: Object = await fourThreadsApplyForSameLockExclusive();
       expect(result).assertEqual("PASSED");
       done();
@@ -374,7 +374,7 @@ export default function LockTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('fourThreadsApplyForSameLockShared', 0, async (done: Function) => {
+    it('fourThreadsApplyForSameLockShared', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let result: Object = await fourThreadsApplyForSameLockShared();
       expect(result).assertEqual("PASSED");
       done();
@@ -389,7 +389,7 @@ export default function LockTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('acquireLockTwiceSharedSharedAvailable', 0, async (done: Function) => {
+    it('acquireLockTwiceSharedSharedAvailable', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let result: Object = await acquireLockTwiceSharedSharedAvailable();
       expect(result).assertEqual("PASSED");
       done();
@@ -404,7 +404,7 @@ export default function LockTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('acquireLockTwiceSharedSharedNotAvailable', 0, async (done: Function) => {
+    it('acquireLockTwiceSharedSharedNotAvailable', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let result: Object = await acquireLockTwiceSharedSharedNotAvailable();
       expect(result).assertEqual("PASSED");
       done();
@@ -419,7 +419,7 @@ export default function LockTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('acquireLockTwiceSharedExclusiveAvailable', 0, async (done: Function) => {
+    it('acquireLockTwiceSharedExclusiveAvailable', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let result: Object = await acquireLockTwiceSharedExclusiveAvailable();
       expect(result).assertEqual("PASSED");
       done();
@@ -434,7 +434,7 @@ export default function LockTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('acquireLockTwiceSharedExclusiveNotAvailable', 0, async (done: Function) => {
+    it('acquireLockTwiceSharedExclusiveNotAvailable', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let result: Object = await acquireLockTwiceSharedExclusiveNotAvailable();
       expect(result).assertEqual("PASSED");
       done();
@@ -449,7 +449,7 @@ export default function LockTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('acquireLockTwiceExclusiveSharedAvailable', 0, async (done: Function) => {
+    it('acquireLockTwiceExclusiveSharedAvailable', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let result: Object = await acquireLockTwiceExclusiveSharedAvailable();
       expect(result).assertEqual("PASSED");
       done();
@@ -464,7 +464,7 @@ export default function LockTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('acquireLockTwiceExclusiveSharedNotAvailable', 0, async (done: Function) => {
+    it('acquireLockTwiceExclusiveSharedNotAvailable', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let result: Object = await acquireLockTwiceExclusiveSharedNotAvailable();
       expect(result).assertEqual("PASSED");
       done();
@@ -479,7 +479,7 @@ export default function LockTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('acquireLockTwiceExclusiveExclusiveAvailable', 0, async (done: Function) => {
+    it('acquireLockTwiceExclusiveExclusiveAvailable', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let result: Object = await acquireLockTwiceExclusiveExclusiveAvailable();
       expect(result).assertEqual("PASSED");
       done();
@@ -494,7 +494,7 @@ export default function LockTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('acquireLockTwiceExclusiveExclusiveNotAvailable', 0, async (done: Function) => {
+    it('acquireLockTwiceExclusiveExclusiveNotAvailable', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let result: Object = await acquireLockTwiceExclusiveExclusiveNotAvailable();
       expect(result).assertEqual("PASSED");
       done();
@@ -509,7 +509,7 @@ export default function LockTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('pressureTest', 0, async (done: Function) => {
+    it('pressureTest', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let result: Object = await pressureTest();
       expect(result).assertEqual("PASSED");
       done();
@@ -524,7 +524,7 @@ export default function LockTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('disarmTimeoutTest', 0, async (done: Function) => {
+    it('disarmTimeoutTest', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let result: Object = await disarmTimeoutTest();
       expect(result).assertEqual("PASSED");
       done();
@@ -539,7 +539,7 @@ export default function LockTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('disarmTimeoutLongAwaitTest', 0, async (done: Function) => {
+    it('disarmTimeoutLongAwaitTest', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let result: Object = await disarmTimeoutLongAwaitTest();
       expect(result).assertEqual("PASSED");
       done();
@@ -554,7 +554,7 @@ export default function LockTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('doubleExitSharedLockTest', 0, async (done: Function) => {
+    it('doubleExitSharedLockTest', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let result: Object = await doubleExitSharedLockTest();
       expect(result).assertEqual("PASSED");
       done();

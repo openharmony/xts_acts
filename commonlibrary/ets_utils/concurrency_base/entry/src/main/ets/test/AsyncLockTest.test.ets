@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, afterAll, it, expect } from '@ohos/hypium'
+import { describe, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium'
 import {
     setDelayRequestAndCloseWorkerInstantlyTest,
     gcAfterLockAsyncTest,
@@ -37,9 +37,9 @@ export default function AsyncLockTest() {
     * @tc.author: liu-zelin
     * @tc.size: MediumTest
     * @tc.type: Function
-    * @tc.level: Level 2
+    * @tc.level: Level 0
     */
-    it('setDelayRequestAndCloseWorkerInstantlyTest', 0, async (done: Function) => {
+    it('setDelayRequestAndCloseWorkerInstantlyTest', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let result: Object = await setDelayRequestAndCloseWorkerInstantlyTest();
       expect(result).assertEqual('PASSED');
       done();
@@ -54,7 +54,7 @@ export default function AsyncLockTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('gcAfterLockAsyncTest0', 0, async (done: Function) => {
+    it('gcAfterLockAsyncTest0', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let result: Object = await gcAfterLockAsyncTest();
       expect(result).assertEqual("PASSED");
       done();
@@ -69,7 +69,7 @@ export default function AsyncLockTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('timeoutLockWithEnvDestroyedTest', 0, async (done: Function) => {
+    it('timeoutLockWithEnvDestroyedTest', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let result: Object = await doubleExitSharedLockTest();
       expect(result).assertEqual("PASSED");
       done();
@@ -84,7 +84,7 @@ export default function AsyncLockTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('pendingSharedRequestAfterGC', 0, async (done: Function) => {
+    it('pendingSharedRequestAfterGC', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let result: Object = await pendingSharedRequestAfterGC();
       expect(result).assertEqual("PASSED");
       done();

@@ -56,9 +56,9 @@ export default function taskPoolErrorSuccess2Test() {
      * @tc.desc test worker error
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('taskPoolTaskGroupExecute1025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('taskPoolTaskGroupExecute1025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
 
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       
@@ -98,7 +98,7 @@ export default function taskPoolErrorSuccess2Test() {
      * @tc.desc test worker-onmessage error
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolTaskGroupExecute1026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
@@ -145,7 +145,7 @@ export default function taskPoolErrorSuccess2Test() {
      * @tc.desc test task-二级-error
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolTaskGroupExecute1027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
@@ -186,7 +186,7 @@ export default function taskPoolErrorSuccess2Test() {
      * @tc.desc test task-二级-error-then
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolTaskGroupExecute1028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
@@ -227,7 +227,7 @@ export default function taskPoolErrorSuccess2Test() {
      * @tc.desc test task-二级-error-catch
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolTaskGroupExecute1029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 
@@ -268,7 +268,7 @@ export default function taskPoolErrorSuccess2Test() {
      * @tc.desc test task-二级-error-catch
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolTaskGroupExecute1030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
 

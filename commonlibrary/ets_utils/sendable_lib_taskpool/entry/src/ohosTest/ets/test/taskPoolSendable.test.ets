@@ -139,7 +139,7 @@ export default function taskPoolSendableTest() {
      * @tc.desc  : Sendable class can only inherit from Sendable class.
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 0
      */
     it('testSendableExecute0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = "testSendableExecute0100";
@@ -169,9 +169,9 @@ export default function taskPoolSendableTest() {
      * @tc.desc  : Sendable class can only inherit from Sendable class.
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 0
      */
-    it('testSendableExecute0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testSendableExecute0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = "testSendableExecute0200";
       console.log(`${caseName} test start `);
       let sendAble: SendAbleClassB = new SendAbleClassB();
@@ -199,9 +199,9 @@ export default function taskPoolSendableTest() {
      * @tc.desc  : Sendable class can only inherit from Sendable class.
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 0
      */
-    it('testSendableExecute0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testSendableExecute0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = "testSendableExecute0300";
       console.log(`${caseName} test start `);
       let sendAble: SendAbleClassB = new SendAbleClassB();
@@ -229,9 +229,9 @@ export default function taskPoolSendableTest() {
      * @tc.desc  : Sendable class can only inherit from Sendable class.
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 0
      */
-    it('testSendableExecute0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testSendableExecute0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = "testSendableExecute0400";
       console.log(`${caseName} test start `);
       let sendAble: SendAbleClassB = new SendAbleClassB();
@@ -259,9 +259,9 @@ export default function taskPoolSendableTest() {
      * @tc.desc  : Sendable class can only inherit from Sendable class.
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 0
      */
-    it('testSendableExecute0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testSendableExecute0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = "testSendableExecute0500";
       console.log(`${caseName} test start `);
       let arr1: collections.Array<number> = new collections.Array<number>();
@@ -291,9 +291,9 @@ export default function taskPoolSendableTest() {
      * @tc.desc  : Sendable class can only inherit from Sendable class.
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 0
      */
-    it('testSendableExecute0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testSendableExecute0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = "testSendableExecute0600";
       console.log(`${caseName} test start `);
       const myMap: collections.Map<number, string> = new collections.Map<number, string>([
@@ -325,9 +325,9 @@ export default function taskPoolSendableTest() {
      * @tc.desc  : Sendable class can only inherit from Sendable class.
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 0
      */
-    it('testSendableExecute0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('testSendableExecute0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = "testSendableExecute0700";
       console.log(`${caseName} test start `);
       let mySet: collections.Set<string> = new collections.Set<string>();
@@ -356,7 +356,7 @@ export default function taskPoolSendableTest() {
      * @tc.desc  : Sendable class can only inherit from Sendable class.
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 1
      */
     it('testSendableExecute0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = "testSendableExecute0800";
@@ -386,7 +386,7 @@ export default function taskPoolSendableTest() {
      * @tc.desc  : Sendable class can only inherit from Sendable class.
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 1
      */
     it('testSendableExecute0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = "testSendableExecute0900";
@@ -416,7 +416,7 @@ export default function taskPoolSendableTest() {
      * @tc.desc  : Sendable class can only inherit from Sendable class.
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 1
      */
     it('testSendableExecute1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = "testSendableExecute1000";
@@ -446,7 +446,7 @@ export default function taskPoolSendableTest() {
      * @tc.desc  : Sendable class can only inherit from Sendable class.
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 1
      */
     it('testSendableExecute1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = "testSendableExecute1100";
@@ -483,7 +483,7 @@ export default function taskPoolSendableTest() {
      * @tc.desc  : Sendable class can only inherit from Sendable class.
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 1
      */
     it('testSendableExecute1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = "testSendableExecute1200";
@@ -524,7 +524,7 @@ export default function taskPoolSendableTest() {
      * @tc.desc  : Sendable class can only inherit from Sendable class.
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 1
      */
     it('testSendableExecute1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = "testSendableExecute1300";
@@ -554,7 +554,7 @@ export default function taskPoolSendableTest() {
      * @tc.desc  : Sendable class can only inherit from Sendable class.
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 1
      */
     it('testSendableSetCloneList0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = "testSendableSetCloneList0100";
@@ -585,7 +585,7 @@ export default function taskPoolSendableTest() {
      * @tc.desc  : Sendable class can only inherit from Sendable class.
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 1
      */
     it('testSendableSetCloneList0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = "testSendableSetCloneList0200";
@@ -616,7 +616,7 @@ export default function taskPoolSendableTest() {
      * @tc.desc  : Sendable class can only inherit from Sendable class.
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 1
      */
     it('testSendableSetCloneList0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = "testSendableSetCloneList0300";
@@ -647,7 +647,7 @@ export default function taskPoolSendableTest() {
      * @tc.desc  : Sendable class can only inherit from Sendable class.
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 1
      */
     it('testSendableSetCloneList0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = "testSendableSetCloneList0400";
@@ -678,7 +678,7 @@ export default function taskPoolSendableTest() {
      * @tc.desc  : Sendable class can only inherit from Sendable class.
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 1
      */
     it('testSendableSetCloneList0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = "testSendableSetCloneList0500";
@@ -711,7 +711,7 @@ export default function taskPoolSendableTest() {
      * @tc.desc  : Sendable class can only inherit from Sendable class.
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 1
      */
     it('testSendableSetCloneList0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = "testSendableSetCloneList0600";
@@ -746,7 +746,7 @@ export default function taskPoolSendableTest() {
      * @tc.desc  : Sendable class can only inherit from Sendable class.
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 1
      */
     it('testSendableSetCloneList0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = "testSendableSetCloneList0700";
@@ -778,7 +778,7 @@ export default function taskPoolSendableTest() {
      * @tc.desc  : Sendable class can only inherit from Sendable class.
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 1
      */
     it('testSendableSetCloneList0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = "testSendableSetCloneList0800";
@@ -809,7 +809,7 @@ export default function taskPoolSendableTest() {
      * @tc.desc  : Sendable class can only inherit from Sendable class.
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 1
      */
     it('testSendableSetCloneList0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = "testSendableSetCloneList0900";
@@ -840,7 +840,7 @@ export default function taskPoolSendableTest() {
      * @tc.desc  : Sendable class can only inherit from Sendable class.
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 1
      */
     it('testSendableSetCloneList1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = "testSendableSetCloneList1000";
@@ -871,7 +871,7 @@ export default function taskPoolSendableTest() {
      * @tc.desc  : Sendable class can only inherit from Sendable class.
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 1
      */
     it('testSendableSetCloneList1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = "testSendableSetCloneList1100";
@@ -910,7 +910,7 @@ export default function taskPoolSendableTest() {
      * @tc.desc  : Sendable class can only inherit from Sendable class.
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 1
      */
     it('testSendableSetCloneList1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = "testSendableSetCloneList1200";
@@ -950,7 +950,7 @@ export default function taskPoolSendableTest() {
      * @tc.desc  : Sendable class can only inherit from Sendable class.
      * @tc.size  : MediumTest
      * @tc.type  : Function
-     * @tc.level : level 3
+     * @tc.level : level 1
      */
     it('testSendableSetCloneList1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = "testSendableSetCloneList1300";

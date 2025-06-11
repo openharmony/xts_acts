@@ -63,9 +63,9 @@ export default function taskPoolSequenceRunnerMultipleUITest() {
      * @tc.desc test task ui
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('taskPoolSequenceRunnerMultipleUITest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('taskPoolSequenceRunnerMultipleUITest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       const caseName = 'taskPoolSequenceRunnerMultipleUITest0100'
       console.info(`${caseName} test start`)
@@ -121,7 +121,7 @@ export default function taskPoolSequenceRunnerMultipleUITest() {
      * @tc.desc test task ui
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolSequenceRunnerMultipleUITest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.

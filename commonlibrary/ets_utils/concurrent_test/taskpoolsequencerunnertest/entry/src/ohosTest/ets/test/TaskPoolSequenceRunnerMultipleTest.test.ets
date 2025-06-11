@@ -59,9 +59,9 @@ export default function taskPoolSequenceRunnerMultipleTest() {
      * @tc.desc test worker error
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('taskPoolSequenceRunnerMultipleTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+    it('taskPoolSequenceRunnerMultipleTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
 
       const caseName = 'taskPoolSequenceRunnerMultipleTest0100'
@@ -122,7 +122,7 @@ export default function taskPoolSequenceRunnerMultipleTest() {
      * @tc.desc test worker error
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolSequenceRunnerMultipleTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
@@ -185,7 +185,7 @@ export default function taskPoolSequenceRunnerMultipleTest() {
      * @tc.desc test worker error
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolSequenceRunnerMultipleTest0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
@@ -248,7 +248,7 @@ export default function taskPoolSequenceRunnerMultipleTest() {
      * @tc.desc test worker error
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolSequenceRunnerMultipleTest0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
@@ -310,7 +310,7 @@ export default function taskPoolSequenceRunnerMultipleTest() {
      * @tc.desc test worker error
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('taskPoolSequenceRunnerMultipleTest0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.

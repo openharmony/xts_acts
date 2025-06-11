@@ -43,9 +43,9 @@ export default function abilityTest() {
      * @tc.desc       : test worker total amount limited with error log
      * @tc.size       : SmallTest
      * @tc.type       : Function
-     * @tc.level      : Level 3
+     * @tc.level      : Level 0
      */
-      it('testWorkerMix001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      it('testWorkerMix001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
         await abilityDelegator.startAbility({
           bundleName: PUBLISH_BUNDLE_NAME,
           abilityName: 'EntryAbility'
