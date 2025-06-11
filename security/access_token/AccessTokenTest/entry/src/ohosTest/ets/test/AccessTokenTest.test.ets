@@ -487,7 +487,7 @@ export default function AccessTokenTest() {
 
     /**
      * @tc.number Test_getSelfPermissionStatus_001
-     * @tc.name Test atManager.getSelfPermissionStatus.
+     * @tc.name Test_getSelfPermissionStatus_001
      * @tc.desc After the installation, user_grant permission is not granted by default(Promise).
      * @tc.level: Level0
      * @tc.size: MediumTest
@@ -506,7 +506,7 @@ export default function AccessTokenTest() {
 
     /**
      * @tc.number Test_getSelfPermissionStatus_002
-     * @tc.name Test atManager.getSelfPermissionStatus.
+     * @tc.name Test_getSelfPermissionStatus_002
      * @tc.desc After the installation, system_grant permission is granted by default(Promise).
      * @tc.level: Level1
      * @tc.size: MediumTest
@@ -525,7 +525,7 @@ export default function AccessTokenTest() {
 
     /**
      * @tc.number Test_getSelfPermissionStatus_003
-     * @tc.name Test atManager.getSelfPermissionStatus.
+     * @tc.name Test_getSelfPermissionStatus_003
      * @tc.desc Call getSelfPermissionStatus with invalid value
      * @tc.level: Level1
      * @tc.size: MediumTest
@@ -548,7 +548,7 @@ export default function AccessTokenTest() {
 
     /**
      * @tc.number Test_getSelfPermissionStatus_004
-     * @tc.name Test atManager.getSelfPermissionStatus.
+     * @tc.name Test_getSelfPermissionStatus_004
      * @tc.desc Call getSelfPermissionStatus with invalid value
      * @tc.level: Level1
      * @tc.size: MediumTest
@@ -575,7 +575,7 @@ export default function AccessTokenTest() {
 
     /**
      * @tc.number Test_getSelfPermissionStatus_005
-     * @tc.name Test atManager.getSelfPermissionStatus.
+     * @tc.name Test_getSelfPermissionStatus_005
      * @tc.desc Call getSelfPermissionStatus with invalid value
      * @tc.level: Level1
      * @tc.size: MediumTest
