@@ -56,7 +56,7 @@ export default function webOnOffTwoTest() {
     })
 
     /*
-    * @tc.number      : SUB_WEB_EMITONOFFONE_0100
+    * @tc.number      : SUB_WEB_EMITONOFFONETWO_0100
     * @tc.name        : emitOnOffTwo
     * @tc.desc        : test on normal
     * @tc.size        : MediumTest
