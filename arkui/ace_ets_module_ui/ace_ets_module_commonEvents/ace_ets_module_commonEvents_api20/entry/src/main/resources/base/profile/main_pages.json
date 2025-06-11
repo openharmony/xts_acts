@@ -2,6 +2,7 @@
     "src": [
         "MainAbility/pages/index/index",
         "MainAbility/pages/Drag/getDisplayId",
+        "MainAbility/pages/Drag/dragSpringLoading",
         "MainAbility/pages/TapGesture/tapLocation",
         "MainAbility/pages/PanGesture/observer",
         "MainAbility/pages/frameNode/framenode"
