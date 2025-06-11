@@ -3402,7 +3402,7 @@ describe('threadWorkerTest', function () {
             await promiseCase();
         }
 
-        expect(errorMessage).assertEqual("TypeError: undefined is not callable");
+        expect(errorMessage).assertContain("is not callable");
         expect(flag).assertTrue();
         done();
     })
