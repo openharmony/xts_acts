@@ -24,6 +24,9 @@
     "MainAbility/pages/Text/TextShaderStyle",
     "MainAbility/pages/SymbolGlyph/SymbolGlyphShaderStyle",
     "MainAbility/pages/StyledString/TextStyleSuperscript",
-    "MainAbility/pages/ImageError/ImageOnError"
+    "MainAbility/pages/Text/TextLineSpacing",
+    "MainAbility/pages/TextArea/TextAreaLineSpacing",
+    "MainAbility/pages/ImageError/ImageOnError",
+    "MainAbility/pages/RichEditor/RichEditorUndoStyle"
   ]
 }
