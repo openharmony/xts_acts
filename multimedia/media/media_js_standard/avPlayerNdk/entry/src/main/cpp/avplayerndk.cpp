@@ -64,6 +64,7 @@
 #define WAV_PATH "/data/storage/el2/base/files/vorbis_48000_32_1.wav"
 static int32_t g_gPlaytime = 100;
 int g_currentPathId = 0;
+static int32_t g_delaytime = 10;
 
 #undef LOG_DOMIN 0x3200
 #define LOG_TAG "AVPlayerNdk_xtsDemo"
@@ -2708,6 +2709,7 @@ static napi_value OhAvPlayerCompleteSetPlaybackRate(napi_env env, napi_callback_
     LOG("OH_AVPlayer_SetOnInfoCallback errCode:%{public}d", errCode);
     GetFDSourceInfo(player, WAV_PATH);
     while (true) {
+        std::this_thread::sleep_for(std::chrono::milliseconds(g_delaytime));
         float delta = std::abs(ndkAVPlayerUser->rate - rate);
         LOG("OhAvPlayerPrepareSetPlaybackRate errCode:%{public}d, rate:%{public}f, delta: %{public}f",
             ndkAVPlayerUser->errorCode, ndkAVPlayerUser->rate, delta);
