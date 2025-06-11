@@ -356,6 +356,14 @@ export default function errCodeQueryTest() {
               }
             })
           })
+          .catch((err: BusinessError) => {
+            console.error(`[${TAG}] Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
+            try {
+              expect().assertFail();
+            } catch {
+            }
+            done();
+          })
       } else if (mpEnable === 'false') {
         console.info(`${TAG} error, current device not support MoveAbilityToBackground,please check: ${JSON.stringify(mpEnable)}`);
         done();
@@ -407,6 +415,14 @@ export default function errCodeQueryTest() {
                 console.info(`[${TAG}] startEntryAbility succeed`);
               }
             })
+          })
+          .catch((err: BusinessError) => {
+            console.error(`[${TAG}] Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
+            try {
+              expect().assertFail();
+            } catch {
+            }
+            done();
           })
       } else if (mpEnable === 'false') {
         console.info(`${TAG} error, current device not support MoveAbilityToBackground,please check: ${JSON.stringify(mpEnable)}`);
@@ -460,6 +476,14 @@ export default function errCodeQueryTest() {
               }
             })
           })
+          .catch((err: BusinessError) => {
+            console.error(`[${TAG}] Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
+            try {
+              expect().assertFail();
+            } catch {
+            }
+            done();
+          })
       } else if (mpEnable === 'false') {
         console.info(`${TAG} error, current device not support MoveAbilityToBackground,please check: ${JSON.stringify(mpEnable)}`);
         done();
@@ -511,6 +535,14 @@ export default function errCodeQueryTest() {
                 console.info(`[${TAG}] startEntryAbility succeed`);
               }
             })
+          })
+          .catch((err: BusinessError) => {
+            console.error(`[${TAG}] Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
+            try {
+              expect().assertFail();
+            } catch {
+            }
+            done();
           })
       } else if (mpEnable === 'false') {
         console.info(`${TAG} error, current device not support MoveAbilityToBackground,please check: ${JSON.stringify(mpEnable)}`);
@@ -564,6 +596,14 @@ export default function errCodeQueryTest() {
               }
             })
           })
+          .catch((err: BusinessError) => {
+            console.error(`[${TAG}] Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
+            try {
+              expect().assertFail();
+            } catch {
+            }
+            done();
+          })
       } else if (mpEnable === 'false') {
         console.info(`${TAG} error, current device not support MoveAbilityToBackground,please check: ${JSON.stringify(mpEnable)}`);
         done();
@@ -615,6 +655,14 @@ export default function errCodeQueryTest() {
                 console.info(`[${TAG}] startEntryAbility succeed`);
               }
             })
+          })
+          .catch((err: BusinessError) => {
+            console.error(`[${TAG}] Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
+            try {
+              expect().assertFail();
+            } catch {
+            }
+            done();
           })
       } else if (mpEnable === 'false') {
         console.info(`${TAG} error, current device not support MoveAbilityToBackground,please check: ${JSON.stringify(mpEnable)}`);
@@ -668,6 +716,14 @@ export default function errCodeQueryTest() {
               }
             })
           })
+          .catch((err: BusinessError) => {
+            console.error(`[${TAG}] Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
+            try {
+              expect().assertFail();
+            } catch {
+            }
+            done();
+          })
       } else if (mpEnable === 'false') {
         console.info(`${TAG} error, current device not support MoveAbilityToBackground,please check: ${JSON.stringify(mpEnable)}`);
         done();
@@ -719,6 +775,14 @@ export default function errCodeQueryTest() {
                 console.info(`[${TAG}] startEntryAbility succeed`);
               }
             })
+          })
+          .catch((err: BusinessError) => {
+            console.error(`[${TAG}] Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
+            try {
+              expect().assertFail();
+            } catch {
+            }
+            done();
           })
       } else if (mpEnable === 'false') {
         console.info(`${TAG} error, current device not support MoveAbilityToBackground,please check: ${JSON.stringify(mpEnable)}`);
@@ -772,6 +836,14 @@ export default function errCodeQueryTest() {
               }
             })
           })
+          .catch((err: BusinessError) => {
+            console.error(`[${TAG}] Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
+            try {
+              expect().assertFail();
+            } catch {
+            }
+            done();
+          })
       } else if (mpEnable === 'false') {
         console.info(`${TAG} error, current device not support MoveAbilityToBackground,please check: ${JSON.stringify(mpEnable)}`);
         done();
@@ -823,6 +895,14 @@ export default function errCodeQueryTest() {
                 console.info(`[${TAG}] startEntryAbility succeed`);
               }
             })
+          })
+          .catch((err: BusinessError) => {
+            console.error(`[${TAG}] Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
+            try {
+              expect().assertFail();
+            } catch {
+            }
+            done();
           })
       } else if (mpEnable === 'false') {
         console.info(`${TAG} error, current device not support MoveAbilityToBackground,please check: ${JSON.stringify(mpEnable)}`);
