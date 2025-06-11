@@ -20,6 +20,7 @@ import StackFixAtIdealSizeTest from './Stack/StackFixAtIdealSizeTest.ets'
 import FlexFixAtIdealSizeTest from './Flex/FlexFixAtIdealSizeTest.ets'
 import GridRowFixAtIdealSizeTest from './GridRow/GridRowFixAtIdealSizeTest.ets'
 import GridColFixAtIdealSizeTest from './GridCol/GridColFixAtIdealSizeTest.ets'
+import LayoutInspectorTest from './inspector/layoutInspector.test.ets'
 
 import ColumnMatchParentTest from './Column/ColumnMatchParentTest.ets'
 import ColumnWrapContentTest from './Column/ColumnWrapContentTest.ets'
@@ -52,5 +53,5 @@ export default function testsuite() {
   FlexFixAtIdealSizeTest();
   GridRowFixAtIdealSizeTest();
   GridColFixAtIdealSizeTest();
-
+  LayoutInspectorTest();
 }
