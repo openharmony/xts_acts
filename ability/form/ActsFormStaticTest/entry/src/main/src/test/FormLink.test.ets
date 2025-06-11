@@ -35,7 +35,7 @@ export default function formLinkTest() {
 
         /**
          * @tc.number: FormLinkStaticTest001
-         * @tc.name: check FormLink
+         * @tc.name: FormLinkStaticTest001
          * @tc.desc: check FormLink
          */
         it("FormLinkStaticTest001", TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: () => void): Promise<void> => {
@@ -72,7 +72,7 @@ export default function formLinkTest() {
 
         /**
          * @tc.number: FormLinkOptionsStaticTest001
-         * @tc.name: check FormLinkOptions
+         * @tc.name: FormLinkOptionsStaticTest001
          * @tc.desc: check FormLinkOptions
          */
         it("FormLinkOptionsStaticTest001", TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: () => void): Promise<void> => {

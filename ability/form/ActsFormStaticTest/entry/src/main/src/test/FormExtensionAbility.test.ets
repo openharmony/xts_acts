@@ -34,7 +34,7 @@ export default function formExtensionAbilityTest() {
 
         /**
          * @tc.number: OnStopStaticTest001
-         * @tc.name: check OnStop
+         * @tc.name: OnStopStaticTest001
          * @tc.desc: check OnStop
          */
         it("OnStopStaticTest001", TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: () => void): Promise<void> => {

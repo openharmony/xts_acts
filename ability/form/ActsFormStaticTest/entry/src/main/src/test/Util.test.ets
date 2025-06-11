@@ -66,7 +66,6 @@ export default class Utils{
       }).then(() => {
         hilog.info(DOMAIN, TAG, `start ${abilityName} success.`);
         isSuccessStartAbility = true;
-        // return true;
       });
       await Utils.msSleep(500);
     } catch (error: BusinessError) {

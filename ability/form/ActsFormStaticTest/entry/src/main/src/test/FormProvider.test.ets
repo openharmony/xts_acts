@@ -29,7 +29,7 @@ export default function formProviderTest() {
 
         /**
          * @tc.number: FormProviderStaticTest001
-         * @tc.name: check FormProvider
+         * @tc.name: FormProviderStaticTest001
          * @tc.desc: check FormProvider
          */
         it("FormProviderStaticTest001", TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: () => void): Promise<void> => {
@@ -58,7 +58,7 @@ export default function formProviderTest() {
 
         /**
          * @tc.number: FormProviderStaticTest002
-         * @tc.name: check FormProvider
+         * @tc.name: FormProviderStaticTest002
          * @tc.desc: check FormProvider
          */
         it("FormProviderStaticTest002", TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: () => void): Promise<void> => {

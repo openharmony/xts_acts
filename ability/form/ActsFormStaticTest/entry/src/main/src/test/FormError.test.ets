@@ -28,7 +28,7 @@ export default function formErrorTest() {
 
         /**
          * @tc.number: FormErrorTest001
-         * @tc.name: check formError
+         * @tc.name: FormErrorTest001
          * @tc.desc: check formError
          */
         it("FormErrorStaticTest001", TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: () => void): Promise<void> => {

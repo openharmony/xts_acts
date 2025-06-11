@@ -29,7 +29,7 @@ export default function formInfoTest() {
 
         /**
          * @tc.number: FormInfoStaticTest001
-         * @tc.name: check formInfo
+         * @tc.name: FormInfoStaticTest001
          * @tc.desc: check formInfo
          */
         it("FormInfoStaticTest001", TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: () => void): Promise<void> => {
@@ -115,7 +115,7 @@ export default function formInfoTest() {
 
         /**
          * @tc.number: FormInfoStaticTest002
-         * @tc.name: check formInfo
+         * @tc.name: FormInfoStaticTest002
          * @tc.desc: check formInfo
          */
         it("FormInfoStaticTest002", TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: () => void): Promise<void> => {
@@ -190,7 +190,7 @@ export default function formInfoTest() {
 
         /**
          * @tc.number: FormInfoStaticTest003
-         * @tc.name: check formInfo
+         * @tc.name: FormInfoStaticTest003
          * @tc.desc: check formInfo
          */
         it("FormInfoStaticTest003", TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: () => void): Promise<void> => {

@@ -1,3 +1,18 @@
+/*
+ * Copyright (c) 2025 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the 'License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 {
   "app": {
     "signingConfigs": [
@@ -6,11 +21,11 @@
         "material": {
           "certpath": "C:/Users/c30067149/.ohos/config/openharmony/default_0605_xts_demo_C4L_bZFNxhGGqSCJpHVEUFLc6WoAGzD2H54tSIVjLnA=.cer",
           "keyAlias": "debugKey",
-          "keyPassword": "0000001BE288BBCBAD2F08583C00837DD7F5CFC7A3509F1A4065FB2F48DA695297F665446724C4AAE29897",
+          "keyPassword": "0000001B5CABC026F76BADBEEC8525AB17014B5DD16CAA211B504A066581202A8D0B98587873D0BBFC622D",
           "profile": "C:/Users/c30067149/.ohos/config/openharmony/default_0605_xts_demo_C4L_bZFNxhGGqSCJpHVEUFLc6WoAGzD2H54tSIVjLnA=.p7b",
           "signAlg": "SHA256withECDSA",
           "storeFile": "C:/Users/c30067149/.ohos/config/openharmony/default_0605_xts_demo_C4L_bZFNxhGGqSCJpHVEUFLc6WoAGzD2H54tSIVjLnA=.p12",
-          "storePassword": "0000001BD46FD5A3B0C9D7EB3460A136BDB2AB664297FF301513D179ED20F7FBCA5A3A9C19CD2F80B179CE"
+          "storePassword": "0000001B2E5F93EF62F82418FBCFFA2536A469BFAD41997F52068F37E5467E45F8B1F85AE0C657CF315EEF"
         }
       }
     ],

@@ -36,7 +36,8 @@ struct XtsFormLink {
       Text('XTS FormLink').fontSize(20)
         .onAppear(() => {
           CommonEventManager.publish('XTS_FormLinkTest_commonEvent', () => {
-            hilog.info(DOMAIN, TAG, 'FormLinkTest001 commonEvent publish');})
+            hilog.info(DOMAIN, TAG, 'FormLinkTest001 commonEvent publish');
+          })
         })
     }
   }

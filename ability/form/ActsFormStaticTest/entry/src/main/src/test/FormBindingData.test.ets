@@ -28,7 +28,7 @@ export default function formBindingDataTest() {
 
         /**
          * @tc.number: FormBindingDataStaticTest001
-         * @tc.name: check formBindingData
+         * @tc.name: FormBindingDataStaticTest001
          * @tc.desc: check formBindingData
          */
         it("FormBindingDataStaticTest001", TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: () => void): Promise<void> => {

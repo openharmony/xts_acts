@@ -33,20 +33,12 @@ export default class EntryFormAbility extends FormExtensionAbility {
       this.onStop = () => {
         hilog.info(DOMAIN, TAG, 'OnStop callback success');
         CommonEventManager.publish('XTS_FormExtensionAbilityOnStopTest_commonEvent', () => {
-          hilog.info(DOMAIN, TAG, 'OnStopTest001 commonEvent publish');})
+          hilog.info(DOMAIN, TAG, 'OnStopTest001 commonEvent publish');
+        })
       }
       hilog.info(DOMAIN, TAG, 'OnStop register success');
     } catch (error) {
       hilog.error(DOMAIN, TAG, 'OnStop catch error');
-    }
-
-    try {
-      this.onAcquireFormState = () => {
-        hilog.info(DOMAIN, TAG, 'onAcquireFormState callback success');
-      }
-      hilog.info(DOMAIN, TAG, 'onAcquireFormState register success');
-    } catch (error) {
-      hilog.error(DOMAIN, TAG, 'onAcquireFormState catch error');
     }
   }
 
