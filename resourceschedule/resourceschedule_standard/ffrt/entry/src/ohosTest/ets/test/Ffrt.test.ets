@@ -1393,5 +1393,59 @@ export default function ffrtTest() {
       let flag = entry.sharedMutexTest001();
       expect(flag).assertEqual(0);
     })
+    /**
+     * @tc.number : SUB_KERNEL_DISPATCH_entry_9800
+     * @tc.name   : submitHFTest001
+     * @tc.desc   : Test submitHBasic api
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 0
+     */
+    it('submitHFTest001', Level.LEVEL0, () => {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      let flag = entry.submitHFTest001();
+      expect(flag).assertEqual(0);
+    })
+
+    /**
+     * @tc.number : SUB_KERNEL_DISPATCH_entry_9900
+     * @tc.name   : submitHFTest002
+     * @tc.desc   : Test submitHBasic api
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 0
+     */
+    it('submitHFTest002', Level.LEVEL0, () => {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      let flag = entry.submitHFTest002();
+      expect(flag).assertEqual(0);
+    })
+    /**
+     * @tc.number : SUB_KERNEL_DISPATCH_entry_10000
+     * @tc.name   : queueApiTest014
+     * @tc.desc   : Test queue api
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 0
+     */
+    it('queueApiTest014', Level.LEVEL0, () => {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      let flag = entry.queueApiTest014();
+      expect(flag).assertEqual(0);
+    })
+
+    /**
+     * @tc.number : SUB_KERNEL_DISPATCH_entry_10100
+     * @tc.name   : queueApiTest015
+     * @tc.desc   : Test queue api
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 0
+     */
+    it('queueApiTest015', Level.LEVEL0, () => {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      let flag = entry.queueApiTest015();
+      expect(flag).assertEqual(0);
+    })
   })
 }
