@@ -21,9 +21,31 @@ import FlexFixAtIdealSizeTest from './Flex/FlexFixAtIdealSizeTest.ets'
 import GridRowFixAtIdealSizeTest from './GridRow/GridRowFixAtIdealSizeTest.ets'
 import GridColFixAtIdealSizeTest from './GridCol/GridColFixAtIdealSizeTest.ets'
 
+import ColumnMatchParentTest from './Column/ColumnMatchParentTest.ets'
+import ColumnWrapContentTest from './Column/ColumnWrapContentTest.ets'
+import FlexWrapContentTest from './Flex/FlexWrapContentTest.ets'
+import RowMatchParentTest from './Row/RowMatchParentTest.ets'
+import RowWrapContentTest from './Row/RowWrapContentTest.ets'
+import StackMatchParentTest from './Stack/StackMatchParentTest.ets'
+import StackWrapContentTest from './Stack/StackWrapContentTest.ets'
+import ButtonAlignTest from './BoxAlign/ButtonAlignTest.ets'
+import StackSafeAreaTest from './Stack/StackSafeAreaTest.ets'
+import StackChildAlignmentTest from './Stack/StackChildAlignmentTest.ets'
+
 export default function testsuite() {
   FlexLayoutPolicyTest();
   GridRowNoColumnsTest();
+
+  ColumnMatchParentTest();
+  ColumnWrapContentTest();
+  FlexWrapContentTest();
+  RowMatchParentTest();
+  RowWrapContentTest();
+  StackMatchParentTest();
+  StackWrapContentTest();
+  ButtonAlignTest();
+  StackSafeAreaTest();
+  StackChildAlignmentTest();
   ColumnFixAtIdealSizeTest();
   RowFixAtIdealSizeTest();
   StackFixAtIdealSizeTest();
