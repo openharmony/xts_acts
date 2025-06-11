@@ -19,6 +19,7 @@
 #include <arkui/native_node.h>
 #include <string>
 static ArkUI_NodeHandle root = nullptr;
+static int NUMBER_2 = 2;
 namespace ArkUICapiTest {
 
 static void onErrorLBYNDK(int32_t code, const char* name, const char* message) 
@@ -44,7 +45,7 @@ static void OnEventReceive11(ArkUI_NodeEvent *event)
         OH_ArkUI_NodeUtils_GetActiveChildrenInfo(root, &activeChildrenInfo);
         
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Manager", "count9 :%{public}d", OH_ArkUI_ActiveChildrenInfo_GetCount(activeChildrenInfo));
-        if (OH_ArkUI_ActiveChildrenInfo_GetCount(activeChildrenInfo) == 2) {
+        if (OH_ArkUI_ActiveChildrenInfo_GetCount(activeChildrenInfo) == NUMBER_2) {
             ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_GREEN}};
             ArkUI_AttributeItem background_color_item = {background_color_value,
                 sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
