@@ -51,9 +51,9 @@ export default function ExportInterfaceTest() {
      * @tc.desc test Interface
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('ExportInterfaceTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('ExportInterfaceTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (Done: Function) => {
       const newUser: User = {
         name: 'John Doe',
         age: 30,
@@ -72,7 +72,7 @@ export default function ExportInterfaceTest() {
      * @tc.desc test Interface
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('ExportInterfaceTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       expect(User1.name).assertContain('John Doe');
@@ -88,7 +88,7 @@ export default function ExportInterfaceTest() {
      * @tc.desc test Interface
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('ExportInterfaceTest0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       expect(User2.name).assertContain('John Doe');
@@ -104,7 +104,7 @@ export default function ExportInterfaceTest() {
      * @tc.desc test Interface
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('ExportInterfaceTest0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const newUser1: User3 = {
@@ -125,7 +125,7 @@ export default function ExportInterfaceTest() {
      * @tc.desc test Interface
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('ExportInterfaceTest0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const newUser2: User4 = {
@@ -146,7 +146,7 @@ export default function ExportInterfaceTest() {
      * @tc.desc test Interface
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('ExportInterfaceTest0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const newUser3: User5 = {
@@ -167,7 +167,7 @@ export default function ExportInterfaceTest() {
      * @tc.desc test Interface
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('ExportInterfaceTest0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const newUser4: User6Name = {
@@ -188,7 +188,7 @@ export default function ExportInterfaceTest() {
      * @tc.desc test Interface
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('ExportInterfaceTest0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       expect(newUser7.name).assertContain('John Doe');
@@ -204,7 +204,7 @@ export default function ExportInterfaceTest() {
      * @tc.desc test Interface
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('ExportInterfaceTest0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       expect(newUser8.newUser7.name).assertContain('John Doe');

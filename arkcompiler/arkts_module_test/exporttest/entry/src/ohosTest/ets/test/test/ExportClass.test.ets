@@ -65,7 +65,7 @@ export default function exportClassTest() {
      * @tc.type Function
      * @tc.level Level 0
      */
-    it('exportClassTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
+    it('exportClassTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done: Function) => {
       const caseName = 'exportClassTest0100';
       console.info(`${caseName} test start`);
       try {
@@ -86,7 +86,7 @@ export default function exportClassTest() {
      * @tc.desc Testing export default class type
      * @tc.size SmallTest
      * @tc.type Function
-     * @tc.level Level 0
+     * @tc.level Level 1
      */
     it('exportClassTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'exportClassTest0200';
@@ -110,7 +110,7 @@ export default function exportClassTest() {
      * @tc.desc Testing export default class type
      * @tc.size SmallTest
      * @tc.type Function
-     * @tc.level Level 0
+     * @tc.level Level 1
      */
     it('exportClassTest0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'exportClassTest0300';
@@ -133,7 +133,7 @@ export default function exportClassTest() {
      * @tc.desc Testing export default class type
      * @tc.size SmallTest
      * @tc.type Function
-     * @tc.level Level 0
+     * @tc.level Level 1
      */
     it('exportClassTest0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'exportClassTest0400';
@@ -175,7 +175,7 @@ export default function exportClassTest() {
      * @tc.desc Testing export default class type
      * @tc.size SmallTest
      * @tc.type Function
-     * @tc.level Level 0
+     * @tc.level Level 1
      */
     it('exportClassTest0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'exportClassTest0500';
@@ -198,7 +198,7 @@ export default function exportClassTest() {
      * @tc.desc Testing export default class type
      * @tc.size SmallTest
      * @tc.type Function
-     * @tc.level Level 0
+     * @tc.level Level 1
      */
     it('exportClassTest0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'exportClassTest0600';
@@ -221,7 +221,7 @@ export default function exportClassTest() {
      * @tc.desc Testing export default class type
      * @tc.size SmallTest
      * @tc.type Function
-     * @tc.level Level 0
+     * @tc.level Level 1
      */
     it('exportClassTest0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'exportClassTest0700';
@@ -244,7 +244,7 @@ export default function exportClassTest() {
      * @tc.desc Testing export default class type
      * @tc.size SmallTest
      * @tc.type Function
-     * @tc.level Level 0
+     * @tc.level Level 1
      */
     it('exportClassTest0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'exportClassTest0800';
@@ -271,7 +271,7 @@ export default function exportClassTest() {
      * @tc.desc Testing export default class type
      * @tc.size SmallTest
      * @tc.type Function
-     * @tc.level Level 0
+     * @tc.level Level 1
      */
     it('exportClassTest0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (done: Function) => {
       const caseName = 'exportClassTest0900';

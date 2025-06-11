@@ -51,9 +51,9 @@ export default function ExportBooleanTest() {
      * @tc.desc test Boolean
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 0
      */
-    it('ExportBooleanTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
+    it('ExportBooleanTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (Done: Function) => {
       expect(appConfig).assertTrue();
       Done();
     });
@@ -65,7 +65,7 @@ export default function ExportBooleanTest() {
      * @tc.desc test Boolean
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('ExportBooleanTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       expect(appConfig1.bool).assertTrue();
@@ -80,7 +80,7 @@ export default function ExportBooleanTest() {
      * @tc.desc test Boolean
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('ExportBooleanTest0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       expect(appConfig2.bool).assertTrue();
@@ -95,7 +95,7 @@ export default function ExportBooleanTest() {
      * @tc.desc test Boolean
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('ExportBooleanTest0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let appConfig3: appConfig3 = true;
@@ -110,7 +110,7 @@ export default function ExportBooleanTest() {
      * @tc.desc test Boolean
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('ExportBooleanTest0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       expect(appConfig4.bool).assertTrue();
@@ -125,7 +125,7 @@ export default function ExportBooleanTest() {
      * @tc.desc test Boolean
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('ExportBooleanTest0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       expect(appConfig5.bool).assertTrue();
@@ -140,7 +140,7 @@ export default function ExportBooleanTest() {
      * @tc.desc test Boolean
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('ExportBooleanTest0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       expect(appConfig6Name.bool).assertTrue();
@@ -155,7 +155,7 @@ export default function ExportBooleanTest() {
      * @tc.desc test Boolean
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('ExportBooleanTest0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       expect(appConfig7.bool).assertTrue();
@@ -170,7 +170,7 @@ export default function ExportBooleanTest() {
      * @tc.desc test Boolean
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 2
+     * @tc.level Level 1
      */
     it('ExportBooleanTest0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       expect(appConfig8.appConfig7.bool).assertTrue();

@@ -27,7 +27,7 @@ export default function workerImport() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testWorkerImportLibrary', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+    it('testWorkerImportLibrary', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let workerImportLibrary = 'failed';
       let threadWorker = new worker.ThreadWorker('./workers/workerImportLibrary')
       threadWorker.postMessage("ModuleTest host to worker")
@@ -46,7 +46,7 @@ export default function workerImport() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testWorkerImportHar', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+    it('testWorkerImportHar', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let workerImportHar = 'failed';
       let threadWorker = new worker.ThreadWorker('./workers/workerImportHar')
       threadWorker.postMessage("ModuleTest host to worker")
@@ -65,7 +65,7 @@ export default function workerImport() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testWorkerImportRelativePath', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+    it('testWorkerImportRelativePath', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let workerImportRelative = 'failed';
       let threadWorker = new worker.ThreadWorker('./workers/workerRelativePath')
       threadWorker.postMessage("ModuleTest host to worker")
@@ -84,7 +84,7 @@ export default function workerImport() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testWorkerImportSystem', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+    it('testWorkerImportSystem', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let workerImportSystem = 'failed';
       let threadWorker = new worker.ThreadWorker('./workers/workerSystem')
       threadWorker.postMessage("ModuleTest host to worker")
@@ -103,7 +103,7 @@ export default function workerImport() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testWorkerImportNapi', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async () => {
+    it('testWorkerImportNapi', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async () => {
       let workerImportNapi = 'failed';
       let threadWorker = new worker.ThreadWorker('./workers/workerTestNapi')
       threadWorker.postMessage("ModuleTest host to worker")
