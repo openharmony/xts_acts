@@ -148,6 +148,9 @@ void OnCaptureContentChanged(struct OH_AVScreenCapture *capture, OH_AVScreenCapt
 static napi_value NormalAVScreenCaptureTest(napi_env env, napi_callback_info info)
 {
     screenCaptureNormal = OH_AVScreenCapture_Create();
+    if (screenCaptureNormal == nullptr) {
+        napi_throw_error((env), nullptr, "error : expect screenCaptureNormal is not nullptr");
+    }
     OH_AVScreenCaptureConfig config_;
     SetConfig(config_);
 	
@@ -213,6 +216,9 @@ static napi_value normalAVScreenCaptureTestStop(napi_env env, napi_callback_info
 static napi_value NormalAVScreenRecordTest(napi_env env, napi_callback_info info)
 {
     screenCaptureRecord = OH_AVScreenCapture_Create();
+    if (screenCaptureRecord == nullptr) {
+        napi_throw_error((env), nullptr, "error : expect screenCaptureRecord is not nullptr");
+    }
     OH_AVScreenCaptureConfig config_;
     OH_RecorderInfo recorderInfo;
     const std::string screenCaptureRoot = "/data/storage/el2/base/files/";
@@ -266,6 +272,9 @@ static napi_value normalAVScreenCaptureDisplayCallbackSuccess(napi_env env, napi
 {
     g_displaySelectedId = -1;
     screenCaptureNormal = OH_AVScreenCapture_Create();
+    if (screenCaptureNormal == nullptr) {
+        napi_throw_error((env), nullptr, "error : expect screenCaptureNormal is not nullptr");
+    }
     OH_AVScreenCaptureConfig config_;
     SetConfig(config_);
 	
@@ -305,6 +314,9 @@ static napi_value normalAVScreenCaptureSetDisplayCallbackFail(napi_env env, napi
 {
     g_displaySelectedId = -1;
     screenCaptureNormal = OH_AVScreenCapture_Create();
+    if (screenCaptureNormal == nullptr) {
+        napi_throw_error((env), nullptr, "error : expect screenCaptureNormal is not nullptr");
+    }
     OH_AVScreenCaptureConfig config_;
     SetConfig(config_);
 	
@@ -374,6 +386,9 @@ void OnNewOutputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, v
 static napi_value NormalAVScreenCaptureSurfaceTest(napi_env env, napi_callback_info info)
 {
     screenCaptureSurface = OH_AVScreenCapture_Create();
+    if (screenCaptureSurface == nullptr) {
+        napi_throw_error((env), nullptr, "error : expect screenCaptureSurface is not nullptr");
+    }
     OH_AVScreenCaptureConfig config_;
     SetConfig(config_);
 
@@ -657,6 +672,9 @@ static napi_value OriginAVScreenCaptureTest(napi_env env, napi_callback_info inf
 {
     FILE *audioFile = nullptr;
     OH_AVScreenCapture *screenCapture = OH_AVScreenCapture_Create();
+    if (screenCapture == nullptr) {
+        napi_throw_error((env), nullptr, "error : expect screenCapture is not nullptr");
+    }
     OH_AVScreenCaptureConfig config_;
     SetConfig(config_);
     config_.videoInfo.videoCapInfo.videoSource = OH_VIDEO_SOURCE_SURFACE_RGBA;
@@ -689,6 +707,9 @@ static napi_value OriginAVScreenCaptureTest(napi_env env, napi_callback_info inf
 static napi_value normalAVScreenCaptureShowCursorTest(napi_env env, napi_callback_info info)
 {
     screenCaptureNormal = OH_AVScreenCapture_Create();
+    if (screenCaptureNormal == nullptr) {
+        napi_throw_error((env), nullptr, "error : expect screenCaptureNormal is not nullptr");
+    }
     OH_AVScreenCaptureConfig config_;
     SetConfig(config_);
 	
@@ -755,6 +776,9 @@ static napi_value normalAVScreenCaptureShowCursorWithParaNullFalse(napi_env env,
 {
     bool isMicrophone = false;
     screenCaptureNormal = OH_AVScreenCapture_Create();
+    if (screenCaptureNormal == nullptr) {
+        napi_throw_error((env), nullptr, "error : expect screenCaptureNormal is not nullptr");
+    }
     OH_AVSCREEN_CAPTURE_ErrCode result = OH_AVScreenCapture_ShowCursor(nullptr, false);
     int resCapture = TEST_FAILED;
     if (result == AV_SCREEN_CAPTURE_ERR_INVALID_VAL) {
@@ -771,6 +795,9 @@ static napi_value normalAVScreenCaptureShowCursorWithParaNullTrue(napi_env env, 
 {
     bool isMicrophone = false;
     screenCaptureNormal = OH_AVScreenCapture_Create();
+    if (screenCaptureNormal == nullptr) {
+        napi_throw_error((env), nullptr, "error : expect screenCaptureNormal is not nullptr");
+    }
     OH_AVSCREEN_CAPTURE_ErrCode result = OH_AVScreenCapture_ShowCursor(nullptr, true);
     int resCapture = TEST_FAILED;
     if (result == AV_SCREEN_CAPTURE_ERR_INVALID_VAL) {
@@ -785,6 +812,9 @@ static napi_value normalAVScreenCaptureShowCursorWithParaNullTrue(napi_env env, 
 static napi_value normalAVScreenCaptureStrategyForKeepCaptureDuringCallFalse(napi_env env, napi_callback_info info)
 {
     screenCaptureNormal = OH_AVScreenCapture_Create();
+    if (screenCaptureNormal == nullptr) {
+        napi_throw_error((env), nullptr, "error : expect screenCaptureNormal is not nullptr");
+    }
     OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureStrategy();
     OH_AVSCREEN_CAPTURE_ErrCode result = OH_AVScreenCapture_StrategyForKeepCaptureDuringCall(strategy, false);
     if (result == AV_SCREEN_CAPTURE_ERR_OK) {
@@ -808,6 +838,9 @@ static napi_value normalAVScreenCaptureStrategyForKeepCaptureDuringCallFalse(nap
 static napi_value normalAVScreenCaptureStrategyForKeepCaptureDuringCallTrue(napi_env env, napi_callback_info info)
 {
     screenCaptureNormal = OH_AVScreenCapture_Create();
+    if (screenCaptureNormal == nullptr) {
+        napi_throw_error((env), nullptr, "error : expect screenCaptureNormal is not nullptr");
+    }
     OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureStrategy();
     OH_AVSCREEN_CAPTURE_ErrCode result = OH_AVScreenCapture_StrategyForKeepCaptureDuringCall(strategy, true);
     if (result == AV_SCREEN_CAPTURE_ERR_OK) {
@@ -831,6 +864,9 @@ static napi_value normalAVScreenCaptureStrategyForKeepCaptureDuringCallTrue(napi
 static napi_value normalAVScreenCaptureContentChangedCallback(napi_env env, napi_callback_info info)
 {
     screenCaptureContentChange = OH_AVScreenCapture_Create();
+    if (screenCaptureContentChange == nullptr) {
+        napi_throw_error((env), nullptr, "error : expect screenCaptureContentChange is not nullptr");
+    }
     OH_AVScreenCaptureConfig config_;
     SetConfig(config_);
 
@@ -877,6 +913,9 @@ static napi_value normalAVScreenCaptureContentChangedTestStop(napi_env env, napi
 static napi_value normalAVScreenCaptureSetCaptureAreaTest(napi_env env, napi_callback_info info)
 {
     screenCaptureNormal = OH_AVScreenCapture_Create();
+    if (screenCaptureNormal == nullptr) {
+        napi_throw_error((env), nullptr, "error : expect screenCaptureNormal is not nullptr");
+    }
     OH_AVScreenCaptureConfig config_;
     SetConfig(config_);
 	
@@ -940,6 +979,9 @@ static napi_value normalAVScreenCaptureSetCaptureAreaTestStop(napi_env env, napi
 static napi_value normalAVScreenCaptureStrategyForPrivacyMaskModeScreen(napi_env env, napi_callback_info info)
 {
     screenCaptureStrategyForPrivacyMaskMode = OH_AVScreenCapture_Create();
+    if (screenCaptureStrategyForPrivacyMaskMode == nullptr) {
+        napi_throw_error((env), nullptr, "error : expect screenCaptureStrategyForPrivacyMaskMode is not nullptr");
+    }
     OH_AVScreenCaptureConfig config_;
     SetConfig(config_);
 
@@ -971,6 +1013,9 @@ static napi_value normalAVScreenCaptureStrategyForPrivacyMaskModeScreen(napi_env
 static napi_value normalAVScreenCaptureStrategyForPrivacyMaskModeDisplay(napi_env env, napi_callback_info info)
 {
     screenCaptureStrategyForPrivacyMaskMode = OH_AVScreenCapture_Create();
+    if (screenCaptureStrategyForPrivacyMaskMode == nullptr) {
+        napi_throw_error((env), nullptr, "error : expect screenCaptureStrategyForPrivacyMaskMode is not nullptr");
+    }
     OH_AVScreenCaptureConfig config_;
     SetConfig(config_);
 
@@ -1024,6 +1069,9 @@ static napi_value normalAVScreenCaptureSelectionCallbackSuccess(napi_env env, na
     g_userSelectedType = -1;
     g_userSelectedDisplayId = -1;
     screenCaptureNormal = OH_AVScreenCapture_Create();
+    if (screenCaptureNormal == nullptr) {
+        napi_throw_error((env), nullptr, "error : expect screenCaptureNormal is not nullptr");
+    }
     OH_AVScreenCaptureConfig config_;
     SetConfig(config_);
 	
