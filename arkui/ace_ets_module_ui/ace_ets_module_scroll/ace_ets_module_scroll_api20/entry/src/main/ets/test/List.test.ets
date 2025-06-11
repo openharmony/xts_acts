@@ -19,6 +19,10 @@ import barMarginList from './ListTest/barMarginList.test';
 import barMarginScroll from './ScrollTest/barMarginScroll.test';
 import curvesTabs from './TabsTest/curvesTabs.test';
 import maxDownRefresh from './RefreshTest/maxDownRefresh.test';
+import scrollBarColor from './ScrollBarTest/scrollBarColor.test';
+import canOverGrid from './GridTest/canOverGrid.test';
+import canOverList from './ListTest/canOverList.test';
+import canOverScroll from './ScrollTest/canOverScroll.test';
 
 export default function testsuite() {
   maintainPosition()
@@ -27,4 +31,8 @@ export default function testsuite() {
   barMarginScroll()
   curvesTabs()
   maxDownRefresh()
+  scrollBarColor()
+  canOverGrid()
+  canOverList()
+  canOverScroll()
 }
