@@ -45,9 +45,9 @@ export default function builtinsArrayToStringTest() {
      * @tc.desc Test basic numeric array
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 0
+     * @tc.level Level 2
      */
-    it('builtinsArrayToStringTest1001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('builtinsArrayToStringTest1001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       expect([1, 2, 3].toString()).assertEqual("1,2,3");
     });
 
@@ -57,7 +57,7 @@ export default function builtinsArrayToStringTest() {
      * @tc.desc Test string elements
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayToStringTest1002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       expect(['apple', 'banana', 'cherry'].toString())
@@ -70,7 +70,7 @@ export default function builtinsArrayToStringTest() {
      * @tc.desc Test empty array
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayToStringTest1003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       expect([].toString()).assertEqual("");
@@ -82,7 +82,7 @@ export default function builtinsArrayToStringTest() {
      * @tc.desc Test single element array
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayToStringTest1004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       expect([5].toString()).assertEqual("5");
@@ -94,7 +94,7 @@ export default function builtinsArrayToStringTest() {
      * @tc.desc Test sparse array handling
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayToStringTest1005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const sparseArr = [1, , 3];
@@ -107,7 +107,7 @@ export default function builtinsArrayToStringTest() {
      * @tc.desc Test null/undefined elements
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayToStringTest1006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       expect([1, null, undefined, 3].toString()).assertEqual("1,,,3");
@@ -119,7 +119,7 @@ export default function builtinsArrayToStringTest() {
      * @tc.desc Test object elements
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayToStringTest1007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const e: Empty = {};
@@ -136,7 +136,7 @@ export default function builtinsArrayToStringTest() {
      * @tc.desc Test nested arrays
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayToStringTest1008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       expect([[1, 2], [3, 4]].toString()).assertEqual("1,2,3,4");
@@ -148,7 +148,7 @@ export default function builtinsArrayToStringTest() {
      * @tc.desc Test Date object handling
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayToStringTest1009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const date = new Date();
@@ -161,7 +161,7 @@ export default function builtinsArrayToStringTest() {
      * @tc.desc Test numeric special values
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayToStringTest1010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const testCases: ToStringNumber[] = [
@@ -205,7 +205,7 @@ export default function builtinsArrayToStringTest() {
      * @tc.desc Test string special values
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayToStringTest1011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const testData: ToStringString[] = [
@@ -240,7 +240,7 @@ export default function builtinsArrayToStringTest() {
      * @tc.desc Test boolean values
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayToStringTest1012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       expect([true, false].toString()).assertEqual("true,false");

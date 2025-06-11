@@ -46,9 +46,9 @@ export default function builtinsReadonlyArrayEveryTest() {
      * @tc.desc readonlyArray every
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 0
+     * @tc.level Level 1
      */
-    it('builtinsReadonlyArrayEveryTest0100', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL0, (done: Function) => {
+    it('builtinsReadonlyArrayEveryTest0100', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, (done: Function) => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       const caseName = 'builtinsReadonlyArrayEveryTest0100';
       console.info(`${caseName} test start`);

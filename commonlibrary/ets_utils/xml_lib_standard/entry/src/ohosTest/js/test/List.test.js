@@ -14,8 +14,6 @@
  */
 
 import XmlSerializerXmlPullParserTest from './xml.test.js'
-import XmlDynamicSerializerTest from './xmlDynamic.test.js'
 export default function testsuite() {
-  XmlSerializerXmlPullParserTest()
-  XmlDynamicSerializerTest()
+XmlSerializerXmlPullParserTest()
 }

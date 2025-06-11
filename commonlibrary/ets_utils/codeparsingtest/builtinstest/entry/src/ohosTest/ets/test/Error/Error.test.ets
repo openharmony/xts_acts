@@ -41,9 +41,9 @@ export default function ErrorTest() {
      * @tc.desc       : Test the function of the ImportError
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testImportError0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testImportError0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testImportError0001";
       try {
         throw Error("Whoops!");
@@ -58,9 +58,9 @@ export default function ErrorTest() {
      * @tc.desc       : Test the function of the ImportError
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testImportError0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testImportError0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testImportError0002";
       try {
         throw Error("Whoops!");
@@ -76,9 +76,9 @@ export default function ErrorTest() {
      * @tc.desc       : Test the function of the ImportError
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testImportError0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testImportError0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testImportError0003";
       try {
         throw new Error("Whoops!");
@@ -93,9 +93,9 @@ export default function ErrorTest() {
      * @tc.desc       : Test the function of the ImportError
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testImportError0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testImportError0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testImportError0004";
       try {
         throw new Error("Whoops!");
@@ -110,9 +110,9 @@ export default function ErrorTest() {
      * @tc.desc       : Test the function of the ImportError
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testImportError0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testImportError0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testImportError0005";
       try {
         throw new Error();
@@ -127,9 +127,9 @@ export default function ErrorTest() {
      * @tc.desc       : Test the function of the ImportError
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testImportError0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testImportError0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testImportError0006";
       try {
         throw new Error();
@@ -144,9 +144,9 @@ export default function ErrorTest() {
      * @tc.desc       : Test the function of the ImportError
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testImportError0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testImportError0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testImportError0007";
       try {
         throw new Error('');
@@ -161,9 +161,9 @@ export default function ErrorTest() {
      * @tc.desc       : Test the function of the ImportError
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testImportError0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testImportError0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testImportError0008";
       try {
         throw new Error('');

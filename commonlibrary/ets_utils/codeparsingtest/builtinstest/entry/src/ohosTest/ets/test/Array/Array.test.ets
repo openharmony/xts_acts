@@ -22,9 +22,9 @@ export default function ArrayTest() {
      * @tc.desc       : Test the function of the interface Constructor
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testConstructor0001";
       try {
         let element0 = 'app';
@@ -42,9 +42,9 @@ export default function ArrayTest() {
      * @tc.desc       : Test the function of the interface Constructor
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testConstructor0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testConstructor0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testConstructor0002";
       try {
         let element0 = 'app';
@@ -62,9 +62,9 @@ export default function ArrayTest() {
      * @tc.desc       : Test the function of the interface Constructor
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testConstructor0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testConstructor0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testConstructor0003";
       try {
         let element0 = 'app0';
@@ -83,9 +83,9 @@ export default function ArrayTest() {
      * @tc.desc       : Test the function of the interface Constructor
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testConstructor0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testConstructor0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testConstructor0004";
       try {
         let element0 = 'app0';
@@ -104,9 +104,9 @@ export default function ArrayTest() {
      * @tc.desc       : Test the function of the interface From
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testFrom0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testFrom0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testFrom0001";
       try {
         const set = new Set(["foo", "bar", "baz", "foo"]);
@@ -124,9 +124,9 @@ export default function ArrayTest() {
      * @tc.desc       : Test the function of the interface From
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testFrom0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testFrom0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testFrom0002";
       try {
         let obj = Array.from('ABC');
@@ -143,9 +143,9 @@ export default function ArrayTest() {
      * @tc.desc       : Test the function of the interface From
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testFrom0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testFrom0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testFrom0003";
       try {
         const map = new Map([
@@ -167,9 +167,9 @@ export default function ArrayTest() {
      * @tc.desc       : Test the function of the interface IsArray
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testIsArray0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testIsArray0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIsArray0001";
       try {
         let result = Array.isArray([]);
@@ -186,9 +186,9 @@ export default function ArrayTest() {
      * @tc.desc       : Test the function of the interface IsArray
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testIsArray0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testIsArray0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIsArray0002";
       try {
         let result = Array.isArray([1]);
@@ -205,9 +205,9 @@ export default function ArrayTest() {
      * @tc.desc       : Test the function of the interface IsArray
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testIsArray0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testIsArray0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIsArray0003";
       try {
         let result = Array.isArray(new Array());
@@ -224,9 +224,9 @@ export default function ArrayTest() {
      * @tc.desc       : Test the function of the interface IsArray
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testIsArray0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testIsArray0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIsArray0004";
       try {
         let result = Array.isArray(new Array("a", "b", "c", "d"));
@@ -243,9 +243,9 @@ export default function ArrayTest() {
      * @tc.desc       : Test the function of the interface IsArray
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testIsArray0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testIsArray0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIsArray0005";
       try {
         let result = Array.isArray(new Array(3));
@@ -262,9 +262,9 @@ export default function ArrayTest() {
      * @tc.desc       : Test the function of the interface IsArray
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testIsArray0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testIsArray0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIsArray0006";
       try {
         let result = Array.isArray(Array);
@@ -281,9 +281,9 @@ export default function ArrayTest() {
      * @tc.desc       : Test the function of the interface IsArray
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testIsArray0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testIsArray0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIsArray0008";
       try {
         let result = Array.isArray({});
@@ -300,9 +300,9 @@ export default function ArrayTest() {
      * @tc.desc       : Test the function of the interface IsArray
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testIsArray0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testIsArray0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIsArray0009";
       try {
         let result = Array.isArray(null);
@@ -319,9 +319,9 @@ export default function ArrayTest() {
      * @tc.desc       : Test the function of the interface IsArray
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testIsArray0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testIsArray0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIsArray0010";
       try {
         let result = Array.isArray(undefined);
@@ -338,9 +338,9 @@ export default function ArrayTest() {
      * @tc.desc       : Test the function of the interface IsArray
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testIsArray0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testIsArray0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIsArray0011";
       try {
         let result = Array.isArray(17);
@@ -357,9 +357,9 @@ export default function ArrayTest() {
      * @tc.desc       : Test the function of the interface IsArray
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testIsArray0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testIsArray0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIsArray0012";
       try {
         let result = Array.isArray("Array");
@@ -376,9 +376,9 @@ export default function ArrayTest() {
      * @tc.desc       : Test the function of the interface IsArray
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testIsArray0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testIsArray0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testIsArray0013";
       try {
         let result = Array.isArray(true);

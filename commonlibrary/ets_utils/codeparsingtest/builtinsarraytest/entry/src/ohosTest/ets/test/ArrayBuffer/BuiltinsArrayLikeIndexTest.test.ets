@@ -47,9 +47,9 @@ export default function builtinsArrayLikeIndexTest() {
      * @tc.desc Test index 0 access
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 0
+     * @tc.level Level 1
      */
-    it('builtinsArrayLikeIndexTest1001', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL0, () => {
+    it('builtinsArrayLikeIndexTest1001', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       expect(arr.index(0)).assertEqual(1);
     });
 
@@ -73,7 +73,7 @@ export default function builtinsArrayLikeIndexTest() {
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('builtinsArrayLikeIndexTest1003', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL0, () => {
+    it('builtinsArrayLikeIndexTest1003', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       expect(arr.index(-1)).assertUndefined();
     });
 

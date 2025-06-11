@@ -23,9 +23,9 @@ export default function actscodeparsingtest() {
      * @tc.desc: Hexadecimal parsing.
      * @tc.size: MediumTest
      * @tc.type  : Function
-     * @tc.level: Level 0
+     * @tc.level: Level 3
      */
-    it('SUB_Runtime_Language_PublicFundation_StringParsing_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+    it('SUB_Runtime_Language_PublicFundation_StringParsing_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
       async (done: Function) => {
         let TAG = 'SUB_Runtime_Language_PublicFundation_StringParsing_0100 ';
         let ustr1 = '\\uD800\\uDC11';

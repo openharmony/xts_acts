@@ -55,9 +55,9 @@ export default function builtinsStatementThrowTest() {
      * @tc.desc test Throw one
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 0
+     * @tc.level Level 1
      */
-    it('builtinsStatementThrow0100', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL0, (Done: Function) => {
+    it('builtinsStatementThrow0100', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, (Done: Function) => {
       try {
         throwDivisor(1, 0);
       } catch (error) {

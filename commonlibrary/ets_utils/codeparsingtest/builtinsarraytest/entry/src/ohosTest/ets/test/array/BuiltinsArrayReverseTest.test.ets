@@ -45,9 +45,9 @@ export default function builtinsArrayReverseTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 0
+     * @tc.level Level 2
      */
-    it('Builtins_Array_Reverse_Test_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (Done: Function) => {
+    it('Builtins_Array_Reverse_Test_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const Tag: string = 'Builtins_Array_Reverse_Test_1000'
       let array: Array<number> = [1, 2, 3];
       let revers = array.reverse()
@@ -61,7 +61,7 @@ export default function builtinsArrayReverseTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('Builtins_Array_Reverse_Test_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const Tag: string = 'Builtins_Array_Reverse_Test_1100'
@@ -77,7 +77,7 @@ export default function builtinsArrayReverseTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('Builtins_Array_Reverse_Test_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const Tag: string = 'Builtins_Array_Reverse_Test_1200'
@@ -93,7 +93,7 @@ export default function builtinsArrayReverseTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('Builtins_Array_Reverse_Test_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const Tag: string = 'Builtins_Array_Reverse_Test_1300'
@@ -111,7 +111,7 @@ export default function builtinsArrayReverseTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('Builtins_Array_Reverse_Test_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const Tag: string = 'Builtins_Array_Reverse_Test_1400'
@@ -129,7 +129,7 @@ export default function builtinsArrayReverseTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('Builtins_Array_Reverse_Test_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const Tag: string = 'Builtins_Array_Reverse_Test_1500'
@@ -147,7 +147,7 @@ export default function builtinsArrayReverseTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('Builtins_Array_Reverse_Test_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const Tag: string = 'Builtins_Array_Reverse_Test_1600'
@@ -165,7 +165,7 @@ export default function builtinsArrayReverseTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('Builtins_Array_Reverse_Test_1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const Tag: string = 'Builtins_Array_Reverse_Test_1800'
@@ -183,7 +183,7 @@ export default function builtinsArrayReverseTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('Builtins_Array_Reverse_Test_1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const Tag: string = 'Builtins_Array_Reverse_Test_1900'
@@ -201,7 +201,7 @@ export default function builtinsArrayReverseTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('Builtins_Array_Reverse_Test_2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const Tag: string = 'Builtins_Array_Reverse_Test_2000'

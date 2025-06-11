@@ -43,9 +43,9 @@ export default function EmojiUtilsTest() {
      * @tc.desc       : Test the Buffer interface includes request with input emoji \ud83d\ude0a.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testUtilsRequest_0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testUtilsRequest_0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       let TAG = 'testUtilsRequest_0001';
       try {
         let lockName = '\ud83d\ude0a';

@@ -44,9 +44,9 @@ export default function abilityTest() {
      * @tc.desc       : Test the function of the Interface BigInt.asIntN().
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testBigIntAsIntN0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testBigIntAsIntN0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBigIntAsIntN0001";
       try {
         const I64_CEIL = 2n**63n;
@@ -64,9 +64,9 @@ export default function abilityTest() {
      * @tc.desc       : Test the function of the Interface BigInt.asIntN().
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testBigIntAsIntN0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testBigIntAsIntN0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBigIntAsIntN0002";
       try {
         const I64_CEIL = 2n**63n;
@@ -84,9 +84,9 @@ export default function abilityTest() {
      * @tc.desc       : Test the function of the Interface BigInt.asIntN().
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testBigIntAsIntN0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testBigIntAsIntN0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBigIntAsIntN0003";
       try {
         const I64_CEIL = 2n**63n;
@@ -104,9 +104,9 @@ export default function abilityTest() {
      * @tc.desc       : Test the function of the Interface BigInt.asIntN().
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testBigIntAsIntN0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testBigIntAsIntN0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBigIntAsIntN0004";
       try {
         const I64_CEIL = 2n**63n;

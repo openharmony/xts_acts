@@ -66,9 +66,9 @@ export default function ReflectTest() {
      * @tc.desc       : Test the function of the interface Reflect.get.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testGet0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testGet0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGet0001";
       try {
         let obj: GeneratedObjectLiteralInterface_1 = {

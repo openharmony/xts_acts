@@ -43,9 +43,9 @@ export default function EmojiBufferTest() {
      * @tc.desc       : Testing the Buffer interface Alloc with input emoji \ud83d\ude0a
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testBufferAllocEmoji0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testBufferAllocEmoji0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEmoji0001";
       try {
         const emoji = '\ud83d\ude0a';
@@ -67,9 +67,9 @@ export default function EmojiBufferTest() {
      * @tc.desc       : Testing the Buffer interface Alloc with input emoji \ud83d\udc64
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testBufferAllocEmoji0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testBufferAllocEmoji0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEmoji0002";
       try {
         const emoji = '\ud83d\udc64';
@@ -90,9 +90,9 @@ export default function EmojiBufferTest() {
      * @tc.desc       : Testing the Buffer interface Alloc with input emoji \ud83d\udc6b
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testBufferAllocEmoji0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testBufferAllocEmoji0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEmoji0003";
       try {
         const emoji = '\ud83d\udc6b';
@@ -113,9 +113,9 @@ export default function EmojiBufferTest() {
      * @tc.desc       : Testing the Buffer interface Alloc with input emoji \u260e
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testBufferAllocEmoji0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testBufferAllocEmoji0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEmoji0004";
       try {
         const emoji = '\u260e';
@@ -136,9 +136,9 @@ export default function EmojiBufferTest() {
      * @tc.desc       : Testing the Buffer interface Alloc with input emoji \ud83d\udc79
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testBufferAllocEmoji0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testBufferAllocEmoji0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEmoji0005";
       try {
         const emoji = '\ud83d\udc79';
@@ -159,9 +159,9 @@ export default function EmojiBufferTest() {
      * @tc.desc       : Testing the Buffer interface Alloc with input emoji \ud83d\udd5b
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testBufferAllocEmoji0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testBufferAllocEmoji0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEmoji0006";
       try {
         const emoji = '\ud83d\udd5b';
@@ -182,9 +182,9 @@ export default function EmojiBufferTest() {
      * @tc.desc       : Testing the Buffer interface Alloc with input emoji \ud83c\udf4f
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testBufferAllocEmoji0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testBufferAllocEmoji0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEmoji0007";
       try {
         const emoji = '\ud83c\udf4f';
@@ -205,9 +205,9 @@ export default function EmojiBufferTest() {
      * @tc.desc       : Testing the Buffer interface Alloc with input emoji \ud83d\udd03
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testBufferAllocEmoji0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testBufferAllocEmoji0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEmoji0008";
       try {
         const emoji = '\ud83d\udd03';
@@ -228,9 +228,9 @@ export default function EmojiBufferTest() {
      * @tc.desc       : Testing the Buffer interface Alloc with input emoji \ud83c\udf41
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testBufferAllocEmoji0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testBufferAllocEmoji0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEmoji0009";
       try {
         const emoji = '\ud83c\udf41';
@@ -251,9 +251,9 @@ export default function EmojiBufferTest() {
      * @tc.desc       : Testing the Buffer interface Alloc with input emoji \u2666
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testBufferAllocEmoji0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testBufferAllocEmoji0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEmoji0010";
       try {
         const emoji = '\u2666';
@@ -274,9 +274,9 @@ export default function EmojiBufferTest() {
      * @tc.desc       : Testing the Buffer interface Alloc with input emoji \ud83d\udc48
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testBufferAllocEmoji0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testBufferAllocEmoji0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBufferAllocEmoji0011";
       try {
         const emoji = '\ud83d\udc48';

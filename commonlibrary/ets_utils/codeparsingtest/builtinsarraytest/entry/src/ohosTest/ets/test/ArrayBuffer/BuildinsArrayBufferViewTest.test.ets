@@ -52,9 +52,9 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 0
+     * @tc.level Level 2
      */
-    it('buildinsArrayBufferViewTest1001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+    it('buildinsArrayBufferViewTest1001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
         let buffer = new ArrayBuffer(16);
         let uint = new Uint8Array(buffer, 0, 8);
@@ -69,9 +69,9 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 0
+     * @tc.level Level 2
      */
-    it('buildinsArrayBufferViewTest1002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+    it('buildinsArrayBufferViewTest1002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
         let buffer = new ArrayBuffer(16);
         let uint = new Uint8Array(buffer, 8, 4);
@@ -86,9 +86,9 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 0
+     * @tc.level Level 2
      */
-    it('buildinsArrayBufferViewTest1003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+    it('buildinsArrayBufferViewTest1003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
         try {
           let buffer = new ArrayBuffer(16);
@@ -105,7 +105,7 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('buildinsArrayBufferViewTest1004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -124,7 +124,7 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('buildinsArrayBufferViewTest1005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -141,7 +141,7 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('buildinsArrayBufferViewTest1006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -158,7 +158,7 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('buildinsArrayBufferViewTest1007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -177,7 +177,7 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('buildinsArrayBufferViewTest1008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -196,7 +196,7 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('buildinsArrayBufferViewTest1009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -213,7 +213,7 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('buildinsArrayBufferViewTest1010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -230,7 +230,7 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('buildinsArrayBufferViewTest1011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -249,7 +249,7 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('buildinsArrayBufferViewTest1012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -268,7 +268,7 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('buildinsArrayBufferViewTest1013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -285,7 +285,7 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('buildinsArrayBufferViewTest1014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -302,7 +302,7 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('buildinsArrayBufferViewTest1015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -321,7 +321,7 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('buildinsArrayBufferViewTest1016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -340,7 +340,7 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('buildinsArrayBufferViewTest1017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -357,7 +357,7 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('buildinsArrayBufferViewTest1018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -374,7 +374,7 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('buildinsArrayBufferViewTest1019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -393,7 +393,7 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('buildinsArrayBufferViewTest1020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -412,7 +412,7 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('buildinsArrayBufferViewTest1021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -429,7 +429,7 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('buildinsArrayBufferViewTest1022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -446,7 +446,7 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('buildinsArrayBufferViewTest1023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -465,7 +465,7 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('buildinsArrayBufferViewTest1024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -484,7 +484,7 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('buildinsArrayBufferViewTest1025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -501,7 +501,7 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('buildinsArrayBufferViewTest1026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -518,7 +518,7 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('buildinsArrayBufferViewTest1027', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -537,7 +537,7 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('buildinsArrayBufferViewTest1028', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -556,7 +556,7 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('buildinsArrayBufferViewTest1029', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -573,7 +573,7 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('buildinsArrayBufferViewTest1030', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -590,7 +590,7 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('buildinsArrayBufferViewTest1031', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -609,7 +609,7 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('buildinsArrayBufferViewTest1032', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -628,7 +628,7 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('buildinsArrayBufferViewTest1033', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -645,7 +645,7 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('buildinsArrayBufferViewTest1034', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -662,7 +662,7 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('buildinsArrayBufferViewTest1035', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -681,7 +681,7 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('buildinsArrayBufferViewTest1036', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -700,7 +700,7 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('buildinsArrayBufferViewTest1037', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -717,7 +717,7 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('buildinsArrayBufferViewTest1038', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -734,7 +734,7 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('buildinsArrayBufferViewTest1039', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
@@ -753,7 +753,7 @@ export default function builtinsArrayBufferViewTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('buildinsArrayBufferViewTest1040', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {

@@ -59,9 +59,9 @@ export default function Int8ArrayTest() {
      * @tc.desc       : Testing Constructor of Int8Array without param.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testInt8Constructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testInt8Constructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testInt8Constructor0001";
       try {
         let array = new Int8Array();
@@ -78,9 +78,9 @@ export default function Int8ArrayTest() {
      * @tc.desc       : Testing Constructor of Int8Array with length 0,and set index 0 with 3.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testInt8Constructor0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testInt8Constructor0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testInt8Constructor0002";
       try {
         let array = new Int8Array(0);
@@ -98,9 +98,9 @@ export default function Int8ArrayTest() {
      * @tc.desc       : Testing Constructor of Int8Array with length 10,and set index 0 with 3.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testInt8Constructor0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testInt8Constructor0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testInt8Constructor0003";
       try {
         let array = new Int8Array(10);
@@ -118,9 +118,9 @@ export default function Int8ArrayTest() {
      * @tc.desc       : Testing Constructor of Int8Array with length 10,and set index 0 with 3.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testInt8Constructor0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testInt8Constructor0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testInt8Constructor0004";
       try {
         let array = new Int8Array(10);
@@ -138,9 +138,9 @@ export default function Int8ArrayTest() {
      * @tc.desc       : Testing Constructor of Int8Array with length 10,and get value of index 1.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testInt8Constructor0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testInt8Constructor0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testInt8Constructor0005";
       try {
         let array = new Int8Array(10);
@@ -157,9 +157,9 @@ export default function Int8ArrayTest() {
      * @tc.desc       : Testing Constructor of Int8Array with 'q',and get value of index 0.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testInt8Constructor0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testInt8Constructor0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testInt8Constructor0006";
       try {
         const array = Constants.int8ConstructTestArray1;
@@ -176,9 +176,9 @@ export default function Int8ArrayTest() {
      * @tc.desc       : Testing Constructor of Int8Array with '56',and get value of index 1.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testInt8Constructor0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testInt8Constructor0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testInt8Constructor0007";
       try {
         const array = Constants.int8ConstructTestArray2;
@@ -196,9 +196,9 @@ export default function Int8ArrayTest() {
      * @tc.desc       : Testing Constructor of Int8Array with array[21,31],and get value of index 0.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testInt8Constructor0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testInt8Constructor0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testInt8Constructor0008";
       try {
         let array = new Int8Array([21, 31]);
@@ -215,9 +215,9 @@ export default function Int8ArrayTest() {
      * @tc.desc       : Testing Constructor of Int8Array with array[21,31],and get value of index 1.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testInt8Constructor0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testInt8Constructor0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testInt8Constructor0009";
       try {
         let array = new Int8Array([21, 31]);
@@ -234,9 +234,9 @@ export default function Int8ArrayTest() {
      * @tc.desc       : Testing Constructor of Int8Array with array[21,31],and get value of index 3.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testInt8Constructor0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testInt8Constructor0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testInt8Constructor0010";
       try {
         let array = new Int8Array([21, 31]);
@@ -253,9 +253,9 @@ export default function Int8ArrayTest() {
      * @tc.desc       : Testing Constructor of Int8Array with array[21,31],and set value of index 10,get value of index 10.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testInt8Constructor0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testInt8Constructor0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testInt8Constructor0011";
       try {
         let array = new Int8Array([21, 31]);
@@ -273,9 +273,9 @@ export default function Int8ArrayTest() {
      * @tc.desc       : Testing Constructor of Int8Array with Int8Array which construct by array [21,31],and get value of index 0.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testInt8Constructor0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testInt8Constructor0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testInt8Constructor0012";
       try {
         let array = new Int8Array(new Int8Array([21,31]));

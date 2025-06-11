@@ -22,9 +22,9 @@ export default function WeakMapTest() {
      * @tc.desc       : Test the function of the weakMap function.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testWeakMap0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testWeakMap0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testWeakMap0001";
       try {
         let weakMap: WeakMap<object, number> = new WeakMap();

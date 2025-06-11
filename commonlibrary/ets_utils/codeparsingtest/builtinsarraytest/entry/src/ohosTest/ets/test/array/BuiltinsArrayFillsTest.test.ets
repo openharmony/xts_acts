@@ -46,9 +46,9 @@ export default function builtinsArrayFillTest() {
      * @tc.desc Test fill method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 0
+     * @tc.level Level 2
      */
-    it('builtinsArrayFillTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('builtinsArrayFillTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const inputArray = [1, 2, 3, 4, 5];
       const result = inputArray.fill(0);
       console.log('result:', JSON.stringify(result))
@@ -62,9 +62,9 @@ export default function builtinsArrayFillTest() {
      * @tc.desc Test fill method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 0
+     * @tc.level Level 2
      */
-    it('builtinsArrayFillTest0101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('builtinsArrayFillTest0101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const inputArray = [1, 2, 3, 4, 5];
       const result = inputArray.fill(0, 1);
       console.log('result:', JSON.stringify(result))
@@ -78,9 +78,9 @@ export default function builtinsArrayFillTest() {
      * @tc.desc Test fill method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 0
+     * @tc.level Level 2
      */
-    it('builtinsArrayFillTest0102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('builtinsArrayFillTest0102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const inputArray = [1, 2, 3, 4, 5];
       const result = inputArray.fill(0, 1, 3);
       console.log('result:', JSON.stringify(result));
@@ -94,7 +94,7 @@ export default function builtinsArrayFillTest() {
      * @tc.desc Test fill method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 3
      */
     it('builtinsArrayFillTest0103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const inputArray = [1, 2, 3, 4, 5];
@@ -110,7 +110,7 @@ export default function builtinsArrayFillTest() {
      * @tc.desc Test fill method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 4
      */
     it('builtinsArrayFillTest0104', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const inputArray = [1, 2, 3, 4, 5];
@@ -126,7 +126,7 @@ export default function builtinsArrayFillTest() {
      * @tc.desc Test fill method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 5
      */
     it('builtinsArrayFillTest0105', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const inputArray = [1, 2, 3, 4, 5];
@@ -142,7 +142,7 @@ export default function builtinsArrayFillTest() {
      * @tc.desc Test fill method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 6
      */
     it('builtinsArrayFillTest0106', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const inputArray = [1, 2, 3, 4, 5];
@@ -158,7 +158,7 @@ export default function builtinsArrayFillTest() {
      * @tc.desc Test fill method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 7
      */
     it('builtinsArrayFillTest0107', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const inputArray: (number | string)[] = [1, 2, 3, 4, 5];
@@ -174,7 +174,7 @@ export default function builtinsArrayFillTest() {
      * @tc.desc Test fill method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 8
      */
     it('builtinsArrayFillTest0108', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       interface Item {
@@ -215,7 +215,7 @@ export default function builtinsArrayFillTest() {
      * @tc.desc Test fill method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayFillTest0109', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       interface EmptyObject {
@@ -234,7 +234,7 @@ export default function builtinsArrayFillTest() {
      * @tc.desc Test fill method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayFillTest0110', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const inputArray = [1, 2, 3, 4, 5]
@@ -250,7 +250,7 @@ export default function builtinsArrayFillTest() {
      * @tc.desc Test fill method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayFillTest0111', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const inputArray = [1, 2, 3, 4, 5]
@@ -266,7 +266,7 @@ export default function builtinsArrayFillTest() {
      * @tc.desc Test fill method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayFillTest0112', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const inputArray = [1, 2, 3, 4, 5]
@@ -282,7 +282,7 @@ export default function builtinsArrayFillTest() {
      * @tc.desc Test fill method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayFillTest0113', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const inputArray = [1, 2, 3, 4, 5]
@@ -298,7 +298,7 @@ export default function builtinsArrayFillTest() {
      * @tc.desc Test fill method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayFillTest0114', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const inputArray = [1, 2, 3, 4, 5]
@@ -314,7 +314,7 @@ export default function builtinsArrayFillTest() {
      * @tc.desc Test fill method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayFillTest0115', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const inputArray = [1, 2, 3, 4, 5]
@@ -330,7 +330,7 @@ export default function builtinsArrayFillTest() {
      * @tc.desc Test fill method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayFillTest0116', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const inputArray = [1, 2, 3, 4, 5]
@@ -345,7 +345,7 @@ export default function builtinsArrayFillTest() {
      * @tc.desc Test fill method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
 
     it('builtinsArrayFillTest0117', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
@@ -362,7 +362,7 @@ export default function builtinsArrayFillTest() {
      * @tc.desc Test fill method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayFillTest0118', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const inputArray: null[] = new Array(3);
@@ -378,7 +378,7 @@ export default function builtinsArrayFillTest() {
      * @tc.desc Test fill method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayFillTest0119', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const inputArray = [1];
@@ -394,7 +394,7 @@ export default function builtinsArrayFillTest() {
      * @tc.desc Test with method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayWithTest0120', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const inputArray: string[] = new Array(1);
@@ -410,7 +410,7 @@ export default function builtinsArrayFillTest() {
      * @tc.desc Test with method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayWithTest0121', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const inputArray: string[] = new Array(3);
@@ -426,7 +426,7 @@ export default function builtinsArrayFillTest() {
      * @tc.desc Test with method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayWithTest0122', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const inputArray: string[] = new Array(3);
@@ -442,7 +442,7 @@ export default function builtinsArrayFillTest() {
      * @tc.desc Test with method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayWithTest0123', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const inputArray: string[] = new Array(3);
@@ -458,7 +458,7 @@ export default function builtinsArrayFillTest() {
      * @tc.desc Test with method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayWithTest0124', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const inputArray: string[] = new Array(3);
@@ -476,7 +476,7 @@ export default function builtinsArrayFillTest() {
      * @tc.desc Test with method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayWithTest0125', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const inputArray: string[] = new Array(3);
@@ -496,7 +496,7 @@ export default function builtinsArrayFillTest() {
      * @tc.desc Test with method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
 
     it('builtinsArrayWithTest0126', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
@@ -519,7 +519,7 @@ export default function builtinsArrayFillTest() {
     //  * @tc.desc Test with method
     //  * @tc.size MediumTest
     //  * @tc.type Function
-    //  * @tc.level Level 1
+    //  * @tc.level Level 2
     //  */
     it('builtinsArrayWithTest0127', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const arr: Array<number> = new Array(5);
@@ -542,7 +542,7 @@ export default function builtinsArrayFillTest() {
      * @tc.desc Test with method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayWithTest0128', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const arr: Array<number> = new Array(5);
@@ -565,7 +565,7 @@ export default function builtinsArrayFillTest() {
      * @tc.desc Test with method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayWithTest0129', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const inputArray: boolean[] = new Array(3);
@@ -581,7 +581,7 @@ export default function builtinsArrayFillTest() {
      * @tc.desc Test with method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayWithTest0130', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const inputArray: boolean[] = new Array(3);
@@ -597,7 +597,7 @@ export default function builtinsArrayFillTest() {
      * @tc.desc Test with method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayWithTest0131', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const inputArray: boolean[] = new Array(3);
@@ -613,7 +613,7 @@ export default function builtinsArrayFillTest() {
      * @tc.desc Test with method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayWithTest0132', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const inputArray: boolean[] = new Array(3);
@@ -629,7 +629,7 @@ export default function builtinsArrayFillTest() {
      * @tc.desc Test with method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayWithTest0133', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const arr: Array<number> = new Array(3);

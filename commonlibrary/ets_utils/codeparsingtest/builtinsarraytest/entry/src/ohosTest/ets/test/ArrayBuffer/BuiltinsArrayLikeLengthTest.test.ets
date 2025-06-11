@@ -44,9 +44,9 @@ export default function builtinsArrayLikeLengthTest() {
      * @tc.desc Verify empty ArrayLike length
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 0
+     * @tc.level Level 1
      */
-    it('builtinsArrayLikeLengthTest1001', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL0, () => {
+    it('builtinsArrayLikeLengthTest1001', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       const arr = new ArrayLikeTest<number>({
         length: 0
       });

@@ -58,9 +58,9 @@ export default function Uint32ArrayTest() {
      * @tc.desc       : Testing Constructor of Uint32Array without param.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testUint32ArrayConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testUint32ArrayConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUint32ArrayConstructor0001";
       try {
         let array = new Uint32Array();
@@ -77,9 +77,9 @@ export default function Uint32ArrayTest() {
      * @tc.desc       : Testing Constructor of Uint32Array with length 0,and set index 0 with 3.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testUint32ArrayConstructor0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testUint32ArrayConstructor0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUint32ArrayConstructor0002";
       try {
         let array = new Uint32Array(0);
@@ -97,9 +97,9 @@ export default function Uint32ArrayTest() {
      * @tc.desc       : Testing Constructor of Uint32Array with length 10,and set index 0 with 3.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testUint32ArrayConstructor0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testUint32ArrayConstructor0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUint32ArrayConstructor0003";
       try {
         let array = new Uint32Array(10);
@@ -117,9 +117,9 @@ export default function Uint32ArrayTest() {
      * @tc.desc       : Testing Constructor of Uint32Array with length 10,and set index 0 with 3.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testUint32ArrayConstructor0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testUint32ArrayConstructor0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUint32ArrayConstructor0004";
       try {
         let array = new Uint32Array(10);
@@ -137,9 +137,9 @@ export default function Uint32ArrayTest() {
      * @tc.desc       : Testing Constructor of Uint32Array with length 10,and get value of index 1.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testUint32ArrayConstructor0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testUint32ArrayConstructor0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUint32ArrayConstructor0005";
       try {
         let array = new Uint32Array(10);
@@ -156,9 +156,9 @@ export default function Uint32ArrayTest() {
      * @tc.desc       : Testing Constructor of Uint32Array with 'q',and get value of index 0.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testUint32ArrayConstructor0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testUint32ArrayConstructor0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUint32ArrayConstructor0006";
       try {
         const array = Constants.uint32ConstructTestArray1;
@@ -175,9 +175,9 @@ export default function Uint32ArrayTest() {
      * @tc.desc       : Testing Constructor of Uint32Array with '56',and get value of index 1.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testUint32ArrayConstructor0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testUint32ArrayConstructor0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUint32ArrayConstructor0007";
       try {
         const array = Constants.uint32ConstructTestArray2;
@@ -195,9 +195,9 @@ export default function Uint32ArrayTest() {
      * @tc.desc       : Testing Constructor of Uint32Array with array[21,31],and get value of index 0.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testUint32ArrayConstructor0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testUint32ArrayConstructor0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUint32ArrayConstructor0008";
       try {
         let array = new Uint32Array([21, 31]);
@@ -214,9 +214,9 @@ export default function Uint32ArrayTest() {
      * @tc.desc       : Testing Constructor of Uint32Array with array[21,31],and get value of index 1.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testUint32ArrayConstructor0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testUint32ArrayConstructor0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUint32ArrayConstructor0009";
       try {
         let array = new Uint32Array([21, 31]);
@@ -233,9 +233,9 @@ export default function Uint32ArrayTest() {
      * @tc.desc       : Testing Constructor of Uint32Array with array[21,31],and get value of index 3.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testUint32ArrayConstructor0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testUint32ArrayConstructor0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUint32ArrayConstructor0010";
       try {
         let array = new Uint32Array([21, 31]);
@@ -252,9 +252,9 @@ export default function Uint32ArrayTest() {
      * @tc.desc       : Testing Constructor of Uint32Array with array[21,31],and set value of index 10,get value of index 10.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testUint32ArrayConstructor0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testUint32ArrayConstructor0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUint32ArrayConstructor0011";
       try {
         let array = new Uint32Array([21, 31]);
@@ -272,9 +272,9 @@ export default function Uint32ArrayTest() {
      * @tc.desc       : Testing Constructor of Uint32Array with Uint32Array which construct by array [21,31],and get value of index 0.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testUint32ArrayConstructor0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testUint32ArrayConstructor0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUint32ArrayConstructor0012";
       try {
         let array = new Uint32Array(new Uint32Array([21, 31]));
@@ -291,9 +291,9 @@ export default function Uint32ArrayTest() {
      * @tc.desc       : Testing Constructor of Uint32Array with Uint32Array which construct by array [21,31],and get value of index 0.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testUint32ArrayConstructor0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testUint32ArrayConstructor0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testUint32ArrayConstructor0013";
       try {
         let array = new Uint32Array(new Uint32Array([21, 31]));

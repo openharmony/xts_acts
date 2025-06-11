@@ -47,9 +47,9 @@ export default function dateTest() {
      * @tc.desc       : Test the function of the interface GetDate.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testGetDate0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testGetDate0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetDate0001";
       try {
         const birthday = new Date();
@@ -69,9 +69,9 @@ export default function dateTest() {
      * @tc.desc       : Test the function of the interface GetDate.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testGetDate0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testGetDate0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetDate0002";
       try {
         const birthday = new Date('August 1, 1975 23:15:30');
@@ -90,9 +90,9 @@ export default function dateTest() {
      * @tc.desc       : Test the function of the interface GetDate.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testGetDate0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testGetDate0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetDate0003";
       try {
         const birthday = new Date('August 19, 1975 23:15:30');
@@ -111,9 +111,9 @@ export default function dateTest() {
      * @tc.desc       : Test the function of the interface GetDate.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testGetDate0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testGetDate0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetDate0004";
       try {
         const birthday = new Date('August 31, 1975 23:15:30');
@@ -132,9 +132,9 @@ export default function dateTest() {
      * @tc.desc       : Test the function of the interface GetDate.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testGetDate0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testGetDate0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetDate0005";
       try {
         const birthday = new Date('February 31, 1975 23:15:30');
@@ -153,9 +153,9 @@ export default function dateTest() {
      * @tc.desc       : Test the function of the interface GetDate.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testGetDate0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testGetDate0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetDate0006";
       try {
         const birthday = new Date('April 31, 1975 23:15:30');
@@ -174,9 +174,9 @@ export default function dateTest() {
      * @tc.desc       : Test the function of the interface GetDate.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testGetDate0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testGetDate0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetDate0007";
       try {
         const birthday = new Date('February 29, 2024 23:15:30');
@@ -195,9 +195,9 @@ export default function dateTest() {
      * @tc.desc       : Test the function of the interface GetDate.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testGetDate0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testGetDate0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetDate0008";
       try {
         const birthday = new Date('August 0, 1975 23:15:30');
@@ -216,9 +216,9 @@ export default function dateTest() {
      * @tc.desc       : Test the function of the interface GetDate.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testGetDate0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testGetDate0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetDate0009";
       try {
         const birthday = new Date('August 32, 1975 23:15:30');
@@ -237,9 +237,9 @@ export default function dateTest() {
      * @tc.desc       : Test the function of the interface GetDate.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testGetDate0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testGetDate0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetDate0010";
       try {
         const birthday = new Date('');
@@ -258,9 +258,9 @@ export default function dateTest() {
      * @tc.desc       : Test the function of the interface GetDay.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testGetDay0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testGetDay0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetDay0001";
       try {
         const birthday = new Date();
@@ -279,9 +279,9 @@ export default function dateTest() {
      * @tc.desc       : Test the function of the interface GetDay.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testGetDay0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testGetDay0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetDay0002";
       try {
         const birthday = new Date('August 17, 1975 23:15:30');
@@ -300,9 +300,9 @@ export default function dateTest() {
      * @tc.desc       : Test the function of the interface GetDay.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testGetDay0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testGetDay0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetDay0003";
       try {
         const birthday = new Date('August 19, 1975 23:15:30');
@@ -321,9 +321,9 @@ export default function dateTest() {
      * @tc.desc       : Test the function of the interface GetDay.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testGetDay0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testGetDay0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetDay0004";
       try {
         const birthday = new Date('August 23, 1975 23:15:30');
@@ -342,9 +342,9 @@ export default function dateTest() {
      * @tc.desc       : Test the function of the interface GetDay.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testGetDay0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testGetDay0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetDay0005";
       try {
         const birthday = new Date('August 0, 1975 23:15:30');
@@ -362,9 +362,9 @@ export default function dateTest() {
      * @tc.desc       : Test the function of the interface GetDay.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testGetDay0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testGetDay0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetDay0006";
       try {
         const birthday = new Date('August 32, 1975 23:15:30');
@@ -383,9 +383,9 @@ export default function dateTest() {
      * @tc.desc       : Test the function of the interface GetDay.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testGetDay0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testGetDay0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetDay0007";
       try {
         const birthday = new Date('');
@@ -404,9 +404,9 @@ export default function dateTest() {
      * @tc.desc       : Test the function of the interface GetFullYear.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testGetFullYear0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testGetFullYear0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetFullYear0001";
       try {
         const birthday = new Date();
@@ -426,9 +426,9 @@ export default function dateTest() {
      * @tc.desc       : Test the function of the interface GetFullYear.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testGetFullYear0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testGetFullYear0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetFullYear0002";
       try {
         const moonLanding = new Date('July 20, 50 00:20:18');
@@ -447,9 +447,9 @@ export default function dateTest() {
      * @tc.desc       : Test the function of the interface GetFullYear.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testGetFullYear0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testGetFullYear0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetFullYear0003";
       try {
         const moonLanding = new Date('July 20, 00 00:20:18');
@@ -468,9 +468,9 @@ export default function dateTest() {
      * @tc.desc       : Test the function of the interface GetFullYear.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testGetFullYear0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testGetFullYear0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetFullYear0004";
       try {
         const moonLanding = new Date('July 20, 49 00:20:18');
@@ -489,9 +489,9 @@ export default function dateTest() {
      * @tc.desc       : Test the function of the interface GetFullYear.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testGetFullYear0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testGetFullYear0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetFullYear0005";
       try {
         const moonLanding = new Date('');
@@ -510,9 +510,9 @@ export default function dateTest() {
      * @tc.desc       : Test the function of the interface GetHours.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testGetHours0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testGetHours0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetHours0001";
       try {
         const birthday = new Date();
@@ -532,9 +532,9 @@ export default function dateTest() {
      * @tc.desc       : Test the function of the interface GetHours.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testGetHours0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testGetHours0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetHours0002";
       try {
         const birthday = new Date('March 13, 08 00:20');
@@ -553,9 +553,9 @@ export default function dateTest() {
      * @tc.desc       : Test the function of the interface GetHours.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testGetHours0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testGetHours0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetHours0003";
       try {
         const birthday = new Date('March 13, 08 04:20');
@@ -574,9 +574,9 @@ export default function dateTest() {
      * @tc.desc       : Test the function of the interface GetHours.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testGetHours0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testGetHours0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetHours0004";
       try {
         const birthday = new Date('March 13, 08 23:00');
@@ -595,9 +595,9 @@ export default function dateTest() {
      * @tc.desc       : Test the function of the interface GetHours.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testGetHours0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testGetHours0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testGetHours0005";
       try {
         const birthday = new Date('');

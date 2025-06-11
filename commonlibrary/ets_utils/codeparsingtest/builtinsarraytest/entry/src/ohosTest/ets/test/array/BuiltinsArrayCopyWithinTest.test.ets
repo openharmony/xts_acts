@@ -47,9 +47,9 @@ export default function builtinsArrayCopyWithinTest() {
      * @tc.desc test copyWithin
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 0
+     * @tc.level Level 2
      */
-    it('builtinsArrayCopyWithinTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (Done: Function) => {
+    it('builtinsArrayCopyWithinTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'builtinsArrayCopyWithinTest0100'
       console.info(`${caseName} test start`)
       let arr: Array<number> = [1, 2, 3, 4, 5]
@@ -65,9 +65,9 @@ export default function builtinsArrayCopyWithinTest() {
      * @tc.desc test copyWithin
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 0
+     * @tc.level Level 2
      */
-    it('builtinsArrayCopyWithinTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (Done: Function) => {
+    it('builtinsArrayCopyWithinTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'builtinsArrayCopyWithinTest0200'
       console.info(`${caseName} test start`)
       let arr: Array<number> = [1, 2, 3, 4, 5]
@@ -83,9 +83,9 @@ export default function builtinsArrayCopyWithinTest() {
      * @tc.desc test copyWithin
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 0
+     * @tc.level Level 2
      */
-    it('builtinsArrayCopyWithinTest0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (Done: Function) => {
+    it('builtinsArrayCopyWithinTest0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'builtinsArrayCopyWithinTest0300'
       console.info(`${caseName} test start`)
       let arr: Array<number> = [1, 2, 3, 4, 5]
@@ -101,7 +101,7 @@ export default function builtinsArrayCopyWithinTest() {
      * @tc.desc test copyWithin
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayCopyWithinTest2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'builtinsArrayCopyWithinTest2400'
@@ -119,7 +119,7 @@ export default function builtinsArrayCopyWithinTest() {
      * @tc.desc test copyWithin
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayCopyWithinTest0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'builtinsArrayCopyWithinTest0400'
@@ -137,7 +137,7 @@ export default function builtinsArrayCopyWithinTest() {
      * @tc.desc test copyWithin
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayCopyWithinTest0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'builtinsArrayCopyWithinTest0500'
@@ -155,7 +155,7 @@ export default function builtinsArrayCopyWithinTest() {
      * @tc.desc test copyWithin
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayCopyWithinTest0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'builtinsArrayCopyWithinTest0600'
@@ -173,7 +173,7 @@ export default function builtinsArrayCopyWithinTest() {
      * @tc.desc test copyWithin
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayCopyWithinTest0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'builtinsArrayCopyWithinTest0700'
@@ -191,7 +191,7 @@ export default function builtinsArrayCopyWithinTest() {
      * @tc.desc test copyWithin
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayCopyWithinTest0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'builtinsArrayCopyWithinTest0800'
@@ -209,7 +209,7 @@ export default function builtinsArrayCopyWithinTest() {
      * @tc.desc test copyWithin
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayCopyWithinTest0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'builtinsArrayCopyWithinTest0900'
@@ -227,7 +227,7 @@ export default function builtinsArrayCopyWithinTest() {
      * @tc.desc test copyWithin
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayCopyWithinTest1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'builtinsArrayCopyWithinTest1000'
@@ -245,7 +245,7 @@ export default function builtinsArrayCopyWithinTest() {
      * @tc.desc test copyWithin
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayCopyWithinTest1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'builtinsArrayCopyWithinTest1100'
@@ -263,7 +263,7 @@ export default function builtinsArrayCopyWithinTest() {
      * @tc.desc test copyWithin
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayCopyWithinTest1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'builtinsArrayCopyWithinTest1200'
@@ -281,7 +281,7 @@ export default function builtinsArrayCopyWithinTest() {
      * @tc.desc test copyWithin
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayCopyWithinTest1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'builtinsArrayCopyWithinTest1300'
@@ -299,7 +299,7 @@ export default function builtinsArrayCopyWithinTest() {
      * @tc.desc test copyWithin
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayCopyWithinTest1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'builtinsArrayCopyWithinTest1400'
@@ -317,7 +317,7 @@ export default function builtinsArrayCopyWithinTest() {
      * @tc.desc test copyWithin
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayCopyWithinTest1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'builtinsArrayCopyWithinTest1500'
@@ -335,7 +335,7 @@ export default function builtinsArrayCopyWithinTest() {
      * @tc.desc test copyWithin
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayCopyWithinTest1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'builtinsArrayCopyWithinTest1600'
@@ -353,7 +353,7 @@ export default function builtinsArrayCopyWithinTest() {
      * @tc.desc test copyWithin
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayCopyWithinTest1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'builtinsArrayCopyWithinTest1700'
@@ -371,7 +371,7 @@ export default function builtinsArrayCopyWithinTest() {
      * @tc.desc test copyWithin
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayCopyWithinTest1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'builtinsArrayCopyWithinTest1800'
@@ -389,7 +389,7 @@ export default function builtinsArrayCopyWithinTest() {
      * @tc.desc test copyWithin
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayCopyWithinTest1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'builtinsArrayCopyWithinTest1900'
@@ -407,7 +407,7 @@ export default function builtinsArrayCopyWithinTest() {
      * @tc.desc test copyWithin
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayCopyWithinTest2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'builtinsArrayCopyWithinTest2000'
@@ -425,7 +425,7 @@ export default function builtinsArrayCopyWithinTest() {
      * @tc.desc test copyWithin
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayCopyWithinTest2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'builtinsArrayCopyWithinTest2100'
@@ -443,7 +443,7 @@ export default function builtinsArrayCopyWithinTest() {
      * @tc.desc test copyWithin
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayCopyWithinTest2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'builtinsArrayCopyWithinTest2200'
@@ -461,7 +461,7 @@ export default function builtinsArrayCopyWithinTest() {
      * @tc.desc test copyWithin
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayCopyWithinTest2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const caseName = 'builtinsArrayCopyWithinTest2300'

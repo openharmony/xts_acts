@@ -22,9 +22,9 @@ export default function WeakRefTest() {
      * @tc.desc       : A WeakRef object lets you hold a weak reference to another object, without preventing that object from getting garbage-collected.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testWeakRef0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testWeakRef0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testWeakRef0001";
       try {
         let ret = new WeakRef(Object);

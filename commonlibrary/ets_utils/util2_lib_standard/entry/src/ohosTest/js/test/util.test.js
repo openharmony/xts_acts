@@ -50,7 +50,7 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is of the number object type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
     it('testIsNumberObject001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
@@ -64,9 +64,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is of the number object type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsNumberObject002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsNumberObject002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isNumberObject(new Number(10));
         expect(result).assertEqual(true);
@@ -78,9 +78,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is of the number object type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsNumberObject003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsNumberObject003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isNumberObject(new Number(200));
         expect(result).assertEqual(true);
@@ -92,9 +92,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is of the number object type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsNumberObject004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsNumberObject004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isNumberObject(0);
         expect(result).assertEqual(false);
@@ -106,9 +106,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is of the number object type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsNumberObject005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsNumberObject005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isNumberObject(100);
         expect(result).assertEqual(false);
@@ -120,9 +120,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is of promise type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsPromise001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsPromise001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isPromise(Promise.resolve(42));
         expect(result).assertEqual(true);
@@ -134,9 +134,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is of promise type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsPromise002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsPromise002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isPromise(Promise.resolve(33));
         expect(result).assertEqual(true);
@@ -148,9 +148,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is of promise type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsPromise003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsPromise003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isPromise(Promise.resolve(44));
         expect(result).assertEqual(true);
@@ -162,9 +162,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is of promise type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsPromise004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsPromise004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var err = Error(33);
         var result = proc.isPromise(Promise.reject(err));
@@ -177,9 +177,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is of promise type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsPromise005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsPromise005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var err = Error(23);
         var result = proc.isPromise(Promise.reject(err));
@@ -192,9 +192,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the value entered is of proxy type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsProxy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsProxy001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         const target = {};
         const proxy = new Proxy(target, {});
@@ -208,9 +208,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the value entered is of proxy type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsProxy002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsProxy002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         const target = {};
         const proxy = new Proxy(target, {});
@@ -224,9 +224,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the value entered is of proxy type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsProxy003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsProxy003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         const handler = {
             get: function(obj, prop) {
@@ -244,9 +244,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the value entered is of proxy type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsProxy004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsProxy004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         const handler = {
             get: function(obj, prop) {
@@ -264,9 +264,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the value entered is of proxy type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsProxy005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsProxy005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         const handler = {
             get: function(obj, prop) {
@@ -284,9 +284,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is of type regexp.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsRegExp001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsRegExp001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isRegExp(new RegExp('abc'));
         expect(result).assertEqual(true);
@@ -298,9 +298,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is of type regexp.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsRegExp002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsRegExp002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isRegExp(/abc/);
         expect(result).assertEqual(true);
@@ -312,9 +312,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is of type regexp.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsRegExp003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsRegExp003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isRegExp(new RegExp('fgd'));
         expect(result).assertEqual(true);
@@ -326,9 +326,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is of type regexp.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsRegExp004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsRegExp004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isRegExp(new RegExp('123'));
         expect(result).assertEqual(true);
@@ -340,9 +340,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is of type regexp.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsRegExp005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsRegExp005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isRegExp(new RegExp(/ab+c/, 'i'));
         expect(result).assertEqual(true);
@@ -354,9 +354,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is of type set.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsSet001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsSet001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isSet(new Set());
         expect(result).assertEqual(true);
@@ -368,9 +368,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is of type set.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsSet002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsSet002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isSet(new Map());
         expect(result).assertEqual(false);
@@ -382,9 +382,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is of type set.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsSet003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsSet003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isSet(new String());
         expect(result).assertEqual(false);
@@ -396,9 +396,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is of type set.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsSet004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsSet004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isSet(new Boolean());
         expect(result).assertEqual(false);
@@ -410,9 +410,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is of type set.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsSet005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsSet005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isSet(new WeakSet());
         expect(result).assertEqual(false);
@@ -424,9 +424,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is the iterator type of set.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsSetIterator001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsSetIterator001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         const set = new Set();
         var result = proc.isSetIterator(set.keys());
@@ -439,9 +439,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is the iterator type of set.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsSetIterator002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsSetIterator002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         const set = new Set();
         var result = proc.isSetIterator(set.values());
@@ -454,9 +454,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is the iterator type of set.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsSetIterator003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsSetIterator003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         const set = new Set();
         var result = proc.isSetIterator(set.entries());
@@ -469,9 +469,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is the iterator type of set.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsSetIterator004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsSetIterator004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         const set = new Set();
         var result = proc.isSetIterator(set[Symbol.iterator]());
@@ -484,9 +484,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is the iterator type of set.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsSetIterator005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsSetIterator005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         const set = new Set();
         var result = proc.isSetIterator(set);
@@ -499,9 +499,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is of type sharedarraybuffer.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsSharedArrayBuffer001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsSharedArrayBuffer001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isSharedArrayBuffer(new SharedArrayBuffer([]));
         expect(result).assertEqual(true);
@@ -513,9 +513,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is of type sharedarraybuffer.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsSharedArrayBuffer002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsSharedArrayBuffer002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isSharedArrayBuffer(new Int16Array([]));
         expect(result).assertEqual(false);
@@ -527,9 +527,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is of type sharedarraybuffer.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsSharedArrayBuffer003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsSharedArrayBuffer003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isSharedArrayBuffer(new Int32Array([]));
         expect(result).assertEqual(false);
@@ -541,9 +541,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is of type sharedarraybuffer.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsSharedArrayBuffer004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsSharedArrayBuffer004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isSharedArrayBuffer(new ArrayBuffer([]));
         expect(result).assertEqual(false);
@@ -555,9 +555,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is of type sharedarraybuffer.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsSharedArrayBuffer005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsSharedArrayBuffer005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isSharedArrayBuffer(new Uint8Array([]));
         expect(result).assertEqual(false);
@@ -569,9 +569,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is a string object type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsStringObject001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsStringObject001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isStringObject(new String('foo'));
         expect(result).assertEqual(true);
@@ -583,9 +583,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is a string object type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsStringObject002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsStringObject002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isStringObject(new String('twoo'));
         expect(result).assertEqual(true);
@@ -597,9 +597,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is a string object type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsStringObject003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsStringObject003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isStringObject(new String('fdfsfd'));
         expect(result).assertEqual(true);
@@ -611,9 +611,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is a string object type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsStringObject004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsStringObject004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isStringObject('ffds111');
         expect(result).assertEqual(false);
@@ -625,9 +625,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is a string object type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsStringObject005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsStringObject005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isStringObject('foo');
         expect(result).assertEqual(false);
@@ -639,9 +639,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is a symbol object type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsSymbolObject001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsSymbolObject001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         const symbols = Symbol('foo');
         var result = proc.isSymbolObject(Object(symbols));
@@ -654,9 +654,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is a symbol object type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsSymbolObject002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsSymbolObject002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         const symbols = Symbol('s12');
         var result = proc.isSymbolObject(Object(symbols));
@@ -669,9 +669,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is a symbol object type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsSymbolObject003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsSymbolObject003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         const symbols = Symbol('sads');
         var result = proc.isSymbolObject(Object(symbols));
@@ -684,9 +684,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is a symbol object type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsSymbolObject004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsSymbolObject004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         const symbols = Symbol('asdd');
         var result = proc.isSymbolObject(symbols);
@@ -699,9 +699,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is a symbol object type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsSymbolObject005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsSymbolObject005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         const symbols = Symbol('foo');
         var result = proc.isSymbolObject(symbols);
@@ -714,9 +714,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is a type contained in typedarray.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsTypedArray001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsTypedArray001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isTypedArray(new Float64Array([]));
         expect(result).assertEqual(true);
@@ -728,9 +728,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is a type contained in typedarray.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsTypedArray002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsTypedArray002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isTypedArray(new Uint8Array([]));
         expect(result).assertEqual(true);
@@ -742,9 +742,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is a type contained in typedarray.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsTypedArray003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsTypedArray003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isTypedArray(new Uint16Array([]));
         expect(result).assertEqual(true);
@@ -756,9 +756,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is a type contained in typedarray.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsTypedArray004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsTypedArray004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isTypedArray(new Uint32Array([]));
         expect(result).assertEqual(true);
@@ -770,9 +770,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is a type contained in typedarray.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsTypedArray005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsTypedArray005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isTypedArray(new ArrayBuffer());
         expect(result).assertEqual(false);
@@ -784,9 +784,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is the uint8array array type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsUint8Array001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsUint8Array001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isUint8Array(new Uint8Array([]));
         expect(result).assertEqual(true);
@@ -798,9 +798,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is the uint8array array type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsUint8Array002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsUint8Array002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isUint8Array(new Uint16Array([]));
         expect(result).assertEqual(false);
@@ -812,9 +812,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is the uint8array array type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsUint8Array003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsUint8Array003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isUint8Array(new Uint32Array([]));
         expect(result).assertEqual(false);
@@ -826,9 +826,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is the uint8array array type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsUint8Array004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsUint8Array004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isUint8Array(new Int8Array([]));
         expect(result).assertEqual(false);
@@ -840,9 +840,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is the uint8array array type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsUint8Array005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsUint8Array005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isUint8Array(new Int16Array([]));
         expect(result).assertEqual(false);
@@ -854,9 +854,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is the uint8clapedarray array type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsUint8ClampedArray001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsUint8ClampedArray001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isUint8ClampedArray(new Uint8ClampedArray([]));
         expect(result).assertEqual(true);
@@ -868,9 +868,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is the uint8clapedarray array type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsUint8ClampedArray002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsUint8ClampedArray002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isUint8ClampedArray(new Int8Array([]));
         expect(result).assertEqual(false);
@@ -882,9 +882,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is the uint8clapedarray array type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsUint8ClampedArray003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsUint8ClampedArray003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isUint8ClampedArray(new Int16Array([]));
         expect(result).assertEqual(false);
@@ -896,9 +896,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is the uint8clapedarray array type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsUint8ClampedArray004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsUint8ClampedArray004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isUint8ClampedArray(new Int32Array([]));
         expect(result).assertEqual(false);
@@ -910,9 +910,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is the uint8clapedarray array type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsUint8ClampedArray005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsUint8ClampedArray005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isUint8ClampedArray(new Uint32Array([]));
         expect(result).assertEqual(false);
@@ -924,9 +924,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is the uint16array array array type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsUint16Array001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsUint16Array001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isUint16Array(new Uint16Array([]));
         expect(result).assertEqual(true);
@@ -938,9 +938,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is the uint16array array array type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsUint16Array002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsUint16Array002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isUint16Array(new Uint8Array([]));
         expect(result).assertEqual(false);
@@ -952,9 +952,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is the uint16array array array type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsUint16Array003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsUint16Array003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isUint16Array(new Uint32Array([]));
         expect(result).assertEqual(false);
@@ -966,9 +966,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is the uint16array array array type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsUint16Array004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsUint16Array004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isUint16Array(new Uint8ClampedArray([]));
         expect(result).assertEqual(false);
@@ -980,9 +980,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is the uint16array array array type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsUint16Array005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsUint16Array005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isUint16Array(new Int8Array([]));
         expect(result).assertEqual(false);
@@ -994,9 +994,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is the uint32array array type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsUint32Array001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsUint32Array001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isUint32Array(new Uint32Array([]));
         expect(result).assertEqual(true);
@@ -1008,9 +1008,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is the uint32array array type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsUint32Array002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsUint32Array002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isUint32Array(new Uint8Array([]));
         expect(result).assertEqual(false);
@@ -1022,9 +1022,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is the uint32array array type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsUint32Array003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsUint32Array003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isUint32Array(new Uint16Array([]));
         expect(result).assertEqual(false);
@@ -1036,9 +1036,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is the uint32array array type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsUint32Array004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsUint32Array004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isUint32Array(new Int8Array([]));
         expect(result).assertEqual(false);
@@ -1050,9 +1050,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is the uint32array array type.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsUint32Array005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsUint32Array005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isUint32Array(new Uint8ClampedArray([]));
         expect(result).assertEqual(false);
@@ -1064,9 +1064,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is of type weakmap.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsWeakMap001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsWeakMap001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isWeakMap(new WeakMap());
         expect(result).assertEqual(true);
@@ -1078,9 +1078,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is of type weakmap.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsWeakMap002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsWeakMap002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isWeakMap(new Map());
         expect(result).assertEqual(false);
@@ -1092,9 +1092,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is of type weakmap.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsWeakMap003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsWeakMap003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isWeakMap(new Set());
         expect(result).assertEqual(false);
@@ -1106,9 +1106,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is of type weakmap.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsWeakMap004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsWeakMap004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isWeakMap(new String());
         expect(result).assertEqual(false);
@@ -1120,9 +1120,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is of type weakmap.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsWeakMap005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsWeakMap005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isWeakMap(new WeakSet());
         expect(result).assertEqual(false);
@@ -1134,9 +1134,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is of type weakset.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsWeakSet001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsWeakSet001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isWeakSet(new WeakSet());
         expect(result).assertEqual(true);
@@ -1148,9 +1148,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is of type weakset.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsWeakSet002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsWeakSet002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isWeakSet(new WeakMap());
         expect(result).assertEqual(false);
@@ -1162,9 +1162,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is of type weakset.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsWeakSet003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsWeakSet003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isWeakSet(new String());
         expect(result).assertEqual(false);
@@ -1176,9 +1176,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is of type weakset.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsWeakSet004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsWeakSet004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isWeakSet(new Set());
         expect(result).assertEqual(false);
@@ -1190,9 +1190,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Check whether the entered value is of type weakset.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testIsWeakSet005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('testIsWeakSet005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var proc = new util.types();
         var result = proc.isWeakSet(new Map());
         expect(result).assertEqual(false);
@@ -1204,9 +1204,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Generate a random RFC 4122 version 4 UUID.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testUtilRandomUUID001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
+    it('testUtilRandomUUID001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         var result = util.randomUUID(true);
         expect(result.length).assertEqual(36);
     })
@@ -1217,9 +1217,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Generate a random RFC 4122 version 4 UUID.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testUtilRandomUUID002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
+    it('testUtilRandomUUID002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         var result = util.randomUUID(false);
         expect(result.length).assertEqual(36);
     })
@@ -1230,9 +1230,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Generate a random RFC 4122 version 4 UUID.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testUtilRandomBinaryUUID001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
+    it('testUtilRandomBinaryUUID001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         var result = util.randomBinaryUUID(true);
         expect(result.length).assertEqual(16);
     })
@@ -1243,9 +1243,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Generate a random RFC 4122 version 4 UUID.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testUtilRandomBinaryUUID002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
+    it('testUtilRandomBinaryUUID002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         var result = util.randomBinaryUUID(false);
         expect(result.length).assertEqual(16);
     })
@@ -1256,9 +1256,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Generate a random RFC 4122 version 4 UUID.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testUtilParseUUID001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
+    it('testUtilParseUUID001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         var result = util.parseUUID('84bdf796-66cc-4655-9b89-d6218d100f9c');
         expect(result.length).assertEqual(16);
     })
@@ -1269,9 +1269,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Generate a random RFC 4122 version 4 UUID.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testUtilParseUUID002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
+    it('testUtilParseUUID002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         try {
             var result = util.parseUUID('84df796-66cc-4655-9b89-d6218d100f9c');
         } catch(e) {
@@ -1285,9 +1285,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Generate a random RFC 4122 version 4 UUID.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testUtilParseUUID003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
+    it('testUtilParseUUID003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         try {
             var result = util.parseUUID('84Wdf796-66cc-4655-9b89-d6218d100f9c');
         } catch(e) {
@@ -1301,9 +1301,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Generate a random RFC 4122 version 4 UUID.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testUtilgenerateRandomUUID001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
+    it('testUtilgenerateRandomUUID001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         var result = util.generateRandomUUID(true);
         expect(result.length).assertEqual(36);
     })
@@ -1314,9 +1314,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Generate a random RFC 4122 version 4 UUID.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testUtilgenerateRandomUUID002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
+    it('testUtilgenerateRandomUUID002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         var result = util.generateRandomUUID(false);
         expect(result.length).assertEqual(36);
     })
@@ -1327,9 +1327,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Generate a random RFC 4122 version 4 UUID.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testUtilgenerateRandomUUID003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
+    it('testUtilgenerateRandomUUID003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         let sum = 0
         for (let i = 0; i < 10; i++) {
           let result = util.generateRandomUUID(true);
@@ -1346,9 +1346,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Generate a random RFC 4122 version 4 UUID.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testUtilgenerateRandomBinaryUUID001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
+    it('testUtilgenerateRandomBinaryUUID001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         var result = util.generateRandomBinaryUUID(true);
         expect(result.length).assertEqual(16);
     })
@@ -1359,9 +1359,9 @@ describe('TextEncoderTest', function () {
      * @tc.desc: Generate a random RFC 4122 version 4 UUID.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('testUtilgenerateRandomBinaryUUID002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function () {
+    it('testUtilgenerateRandomBinaryUUID002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function () {
         var result = util.generateRandomBinaryUUID(false);
         expect(result.length).assertEqual(16);
     })
@@ -1374,9 +1374,9 @@ describe('ScopeHelperTest', function () {
      * @tc.desc: Obtains the lower bound of the current range.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('test_getLower_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('test_getLower_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.getLower()
         expect(result.toString()).assertEqual('30')
     })
@@ -1387,9 +1387,9 @@ describe('ScopeHelperTest', function () {
      * @tc.desc: Obtains the lower bound of the current range.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('test_getLower_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('test_getLower_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHpFir.getLower()
         expect(result.toString()).assertEqual('35')
     })
@@ -1400,9 +1400,9 @@ describe('ScopeHelperTest', function () {
      * @tc.desc: Obtains the lower bound of the current range.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('test_getLower_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('test_getLower_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHpSec.getLower()
         expect(result.toString()).assertEqual('20')
     })
@@ -1413,9 +1413,9 @@ describe('ScopeHelperTest', function () {
      * @tc.desc: Obtains the lower bound of the current range.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('test_getLower_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('test_getLower_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHpThi.getLower()
         expect(result.toString()).assertEqual('20')
     })
@@ -1426,9 +1426,9 @@ describe('ScopeHelperTest', function () {
      * @tc.desc: Obtains the lower bound of the current range.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('test_getLower_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('test_getLower_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHpFif.getLower()
         expect(result.toString()).assertEqual('35')
     })
@@ -1439,9 +1439,9 @@ describe('ScopeHelperTest', function () {
      * @tc.desc: Obtains the upper bound of the current range.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('test_getUpper_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('test_getUpper_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.getUpper()
         expect(result.toString()).assertEqual('40')
     })
@@ -1452,9 +1452,9 @@ describe('ScopeHelperTest', function () {
      * @tc.desc: Obtains the upper bound of the current range.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('test_getUpper_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('test_getUpper_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHpFir.getUpper()
         expect(result.toString()).assertEqual('39')
     })
@@ -1465,9 +1465,9 @@ describe('ScopeHelperTest', function () {
      * @tc.desc: Obtains the upper bound of the current range.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('test_getUpper_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('test_getUpper_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHpSec.getUpper()
         expect(result.toString()).assertEqual('45')
     })
@@ -1478,9 +1478,9 @@ describe('ScopeHelperTest', function () {
      * @tc.desc: Obtains the upper bound of the current range.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('test_getUpper_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('test_getUpper_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHpThi.getUpper()
         expect(result.toString()).assertEqual('35')
     })
@@ -1491,9 +1491,9 @@ describe('ScopeHelperTest', function () {
      * @tc.desc: Obtains the upper bound of the current range.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('test_getUpper_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('test_getUpper_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHpFif.getUpper()
         expect(result.toString()).assertEqual('45')
     })
@@ -1504,9 +1504,9 @@ describe('ScopeHelperTest', function () {
      * @tc.desc: Clamps a given value to the current range.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('test_clamp_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('test_clamp_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.clamp(tempLess)
         expect(result.toString()).assertEqual('30')
     })
@@ -1517,9 +1517,9 @@ describe('ScopeHelperTest', function () {
      * @tc.desc: Clamps a given value to the current range.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('test_clamp_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('test_clamp_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.clamp(tempMiDF)
         expect(result.toString()).assertEqual('35')
     })
@@ -1530,9 +1530,9 @@ describe('ScopeHelperTest', function () {
      * @tc.desc: Clamps a given value to the current range.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('test_clamp_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('test_clamp_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.clamp(tempMore)
         expect(result.toString()).assertEqual('40')
     })
@@ -1543,9 +1543,9 @@ describe('ScopeHelperTest', function () {
      * @tc.desc: Clamps a given value to the current range.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('test_clamp_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('test_clamp_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.clamp(tempLower)
         expect(result.toString()).assertEqual('30')
     })
@@ -1556,9 +1556,9 @@ describe('ScopeHelperTest', function () {
      * @tc.desc: Clamps a given value to the current range.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('test_clamp_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('test_clamp_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.clamp(tempUpper)
         expect(result.toString()).assertEqual('40')
     })
@@ -1569,9 +1569,9 @@ describe('ScopeHelperTest', function () {
      * @tc.desc: Checks whether a given value is within the current range.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('test_contains_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('test_contains_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.contains(tempLess)
         expect(result).assertEqual(false)
     })
@@ -1582,9 +1582,9 @@ describe('ScopeHelperTest', function () {
      * @tc.desc: Checks whether a given value is within the current range.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('test_contains_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('test_contains_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.contains(tempMiDF)
         expect(result).assertEqual(true)
     })
@@ -1595,9 +1595,9 @@ describe('ScopeHelperTest', function () {
      * @tc.desc: Checks whether a given value is within the current range.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('test_contains_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('test_contains_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.contains(tempMore)
         expect(result).assertEqual(false)
     })
@@ -1608,9 +1608,9 @@ describe('ScopeHelperTest', function () {
      * @tc.desc: Checks whether a given value is within the current range.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('test_contains_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('test_contains_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.contains(tempLower)
         expect(result).assertEqual(true)
     })
@@ -1621,9 +1621,9 @@ describe('ScopeHelperTest', function () {
      * @tc.desc: Checks whether a given value is within the current range.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('test_contains_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('test_contains_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.contains(tempUpper)
         expect(result).assertEqual(true)
     })
@@ -1634,9 +1634,9 @@ describe('ScopeHelperTest', function () {
      * @tc.desc: Checks whether a given range is within the current range.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('test_contains_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('test_contains_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.contains(rangeHpFir)
         expect(result).assertEqual(true)
     })
@@ -1647,9 +1647,9 @@ describe('ScopeHelperTest', function () {
      * @tc.desc: Checks whether a given range is within the current range.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('test_contains_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('test_contains_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.contains(rangeHpSec)
         expect(result).assertEqual(false)
     })
@@ -1660,9 +1660,9 @@ describe('ScopeHelperTest', function () {
      * @tc.desc: Checks whether a given range is within the current range.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('test_contains_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('test_contains_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.contains(rangeHpThi)
         expect(result).assertEqual(false)
     })
@@ -1673,9 +1673,9 @@ describe('ScopeHelperTest', function () {
      * @tc.desc: Checks whether a given range is within the current range.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('test_contains_009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('test_contains_009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.contains(rangeHpFif)
         expect(result).assertEqual(false)
     })
@@ -1686,9 +1686,9 @@ describe('ScopeHelperTest', function () {
      * @tc.desc: Checks whether a given range is within the current range.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('test_contains_010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('test_contains_010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.contains(rangeHp)
         expect(result).assertEqual(true)
     })
@@ -1699,9 +1699,9 @@ describe('ScopeHelperTest', function () {
      * @tc.desc: Creates the smallest range that includes the current range and the given lower and upper bounds.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('test_expand_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('test_expand_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.expand(tempMiDF, tempMidS)
         expect(result.toString()).assertEqual('[30, 40]')
     })
@@ -1712,9 +1712,9 @@ describe('ScopeHelperTest', function () {
      * @tc.desc: Creates the smallest range that includes the current range and the given lower and upper bounds.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('test_expand_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('test_expand_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.expand(tempLess, tempMore)
         expect(result.toString()).assertEqual('[20, 45]')
     })
@@ -1725,9 +1725,9 @@ describe('ScopeHelperTest', function () {
      * @tc.desc: Creates the smallest range that includes the current range and the given lower and upper bounds.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('test_expand_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('test_expand_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.expand(tempLess, tempMiDF)
         expect(result.toString()).assertEqual('[20, 40]')
     })
@@ -1738,9 +1738,9 @@ describe('ScopeHelperTest', function () {
      * @tc.desc: Creates the smallest range that includes the current range and the given lower and upper bounds.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('test_expand_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('test_expand_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.expand(tempMiDF, tempMore)
         expect(result.toString()).assertEqual('[30, 45]')
     })
@@ -1751,9 +1751,9 @@ describe('ScopeHelperTest', function () {
      * @tc.desc: Creates the smallest range that includes the current range and the given lower and upper bounds.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('test_expand_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('test_expand_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.expand(tempLower, tempUpper)
         expect(result.toString()).assertEqual('[30, 40]')
     })
@@ -1764,9 +1764,9 @@ describe('ScopeHelperTest', function () {
      * @tc.desc: Creates the smallest range that includes the current range and a given range.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('test_expand_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('test_expand_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.expand(rangeHpFir)
         expect(result.toString()).assertEqual('[30, 40]')
     })
@@ -1777,9 +1777,9 @@ describe('ScopeHelperTest', function () {
      * @tc.desc: Creates the smallest range that includes the current range and a given range.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('test_expand_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('test_expand_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.expand(rangeHpSec)
         expect(result.toString()).assertEqual('[20, 45]')
     })
@@ -1790,9 +1790,9 @@ describe('ScopeHelperTest', function () {
      * @tc.desc: Creates the smallest range that includes the current range and a given range.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('test_expand_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('test_expand_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.expand(rangeHpThi)
         expect(result.toString()).assertEqual('[20, 40]')
     })
@@ -1803,9 +1803,9 @@ describe('ScopeHelperTest', function () {
      * @tc.desc: Creates the smallest range that includes the current range and a given range.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('test_expand_009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('test_expand_009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.expand(rangeHpFif)
         expect(result.toString()).assertEqual('[30, 45]')
     })
@@ -1816,9 +1816,9 @@ describe('ScopeHelperTest', function () {
      * @tc.desc: Creates the smallest range that includes the current range and a given range.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('test_expand_010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('test_expand_010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.expand(rangeHp)
         expect(result.toString()).assertEqual('[30, 40]')
     })
@@ -1829,9 +1829,9 @@ describe('ScopeHelperTest', function () {
      * @tc.desc: Creates the smallest range that includes the current range and a given value.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('test_expand_011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('test_expand_011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.expand(tempMiDF)
         expect(result.toString()).assertEqual('[30, 40]')
     })
@@ -1842,9 +1842,9 @@ describe('ScopeHelperTest', function () {
      * @tc.desc: Creates the smallest range that includes the current range and a given value.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('test_expand_012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('test_expand_012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.expand(tempLess)
         expect(result.toString()).assertEqual('[20, 40]')
     })
@@ -1857,7 +1857,7 @@ describe('ScopeHelperTest', function () {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('test_expand_013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('test_expand_013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.expand(tempMore)
         expect(result.toString()).assertEqual('[30, 45]')
     })
@@ -1868,9 +1868,9 @@ describe('ScopeHelperTest', function () {
      * @tc.desc: Creates the smallest range that includes the current range and a given value.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('test_expand_014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('test_expand_014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.expand(tempLower)
         expect(result.toString()).assertEqual('[30, 40]')
     })
@@ -1881,9 +1881,9 @@ describe('ScopeHelperTest', function () {
      * @tc.desc: Creates the smallest range that includes the current range and a given value.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('test_expand_015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('test_expand_015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.expand(tempUpper)
         expect(result.toString()).assertEqual('[30, 40]')
     })
@@ -1894,9 +1894,9 @@ describe('ScopeHelperTest', function () {
      * @tc.desc: Returns the intersection of a given range and the current range.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('test_intersect_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('test_intersect_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.intersect(rangeHpFir)
         expect(result.toString()).assertEqual('[35, 39]')
     })
@@ -1907,9 +1907,9 @@ describe('ScopeHelperTest', function () {
      * @tc.desc: Returns the intersection of a given range and the current range.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('test_intersect_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('test_intersect_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.intersect(rangeHpSec)
         expect(result.toString()).assertEqual('[30, 40]')
     })
@@ -1920,9 +1920,9 @@ describe('ScopeHelperTest', function () {
      * @tc.desc: Returns the intersection of a given range and the current range.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('test_intersect_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('test_intersect_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.intersect(rangeHpThi)
         expect(result.toString()).assertEqual('[30, 35]')
     })
@@ -1933,9 +1933,9 @@ describe('ScopeHelperTest', function () {
      * @tc.desc: Returns the intersection of a given range and the current range.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('test_intersect_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('test_intersect_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.intersect(rangeHpFif)
         expect(result.toString()).assertEqual('[35, 40]')
     })
@@ -1946,9 +1946,9 @@ describe('ScopeHelperTest', function () {
      * @tc.desc: Returns the intersection of a given range and the current range.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('test_intersect_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('test_intersect_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.intersect(rangeHp)
         expect(result.toString()).assertEqual('[30, 40]')
     })
@@ -1960,9 +1960,9 @@ describe('ScopeHelperTest', function () {
        the given lower and upper bounds.
        @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('test_intersect_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('test_intersect_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.intersect(tempMiDF, tempMidS)
         expect(result.toString()).assertEqual('[35, 39]')
     })
@@ -1974,9 +1974,9 @@ describe('ScopeHelperTest', function () {
        the given lower and upper bounds.
        @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('test_intersect_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('test_intersect_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.intersect(tempLess, tempMore)
         expect(result.toString()).assertEqual('[30, 40]')
     })
@@ -1988,9 +1988,9 @@ describe('ScopeHelperTest', function () {
        the given lower and upper bounds.
        @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('test_intersect_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('test_intersect_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.intersect(tempLess, tempMiDF)
         expect(result.toString()).assertEqual('[30, 35]')
     })
@@ -2002,9 +2002,9 @@ describe('ScopeHelperTest', function () {
        the given lower and upper bounds.
        @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('test_intersect_009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('test_intersect_009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.intersect(tempMiDF, tempMore)
         expect(result.toString()).assertEqual('[35, 40]')
     })
@@ -2016,9 +2016,9 @@ describe('ScopeHelperTest', function () {
        the given lower and upper bounds.
        @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level: Level 0
+     * @tc.level: Level 1
      */
-    it('test_intersect_010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
+    it('test_intersect_010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
         var result = rangeHp.intersect(tempLower, tempUpper)
         expect(result.toString()).assertEqual('[30, 40]')
     })

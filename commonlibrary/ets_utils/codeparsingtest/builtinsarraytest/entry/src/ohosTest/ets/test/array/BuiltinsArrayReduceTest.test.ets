@@ -52,9 +52,9 @@ export default function builtinsArrayReduceTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 0
+     * @tc.level Level 2
      */
-    it('builtinsArrayReduceTest1001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (Done: Function) => {
+    it('builtinsArrayReduceTest1001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let array: Array<number> = [1, 2, 3];
       let reducedValue = array.reduce((acc, curr) => acc + curr, 0);
       expect(6).assertEqual(reducedValue);
@@ -67,7 +67,7 @@ export default function builtinsArrayReduceTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayReduceTest1002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let array: Array<number> = [1, 2, 3];
@@ -82,7 +82,7 @@ export default function builtinsArrayReduceTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayReduceTest1003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let array: number[] = [];
@@ -90,7 +90,7 @@ export default function builtinsArrayReduceTest() {
         let reducedValue = array.reduce((acc, curr) => acc + curr);
       } catch (error) {
         console.info('======', error)
-        expect('TypeError').assertEqual(error.name);
+        expect('out of range.').assertEqual(error.message);
         Done();
       }
     })
@@ -101,7 +101,7 @@ export default function builtinsArrayReduceTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayReduceTest1004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let array: number[] = [];
@@ -116,7 +116,7 @@ export default function builtinsArrayReduceTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayReduceTest1005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let array: Array<number | undefined> = [1, , 3];
@@ -131,7 +131,7 @@ export default function builtinsArrayReduceTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayReduceTest1006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let array: Array<number> = [5];
@@ -146,7 +146,7 @@ export default function builtinsArrayReduceTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayReduceTest1007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let array: Array<number | undefined> = [,];
@@ -161,7 +161,7 @@ export default function builtinsArrayReduceTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayReduceTest1008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let array: Array<Array<number>> = [[1, 2], [3, 4], [5, 6]];
@@ -177,7 +177,7 @@ export default function builtinsArrayReduceTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayReduceTest1009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let array: Array<Array<number | undefined> | null> = [null, [undefined, 3]];
@@ -192,7 +192,7 @@ export default function builtinsArrayReduceTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayReduceTest1010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let array: Array<person> = [{
@@ -209,7 +209,7 @@ export default function builtinsArrayReduceTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayReduceTest1011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let array: Array<string> = ['a', 'b', 'c', 'd'];
@@ -224,7 +224,7 @@ export default function builtinsArrayReduceTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayReduceTest1012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let array: Array<number> = [Math.floor(1.5)];
@@ -239,7 +239,7 @@ export default function builtinsArrayReduceTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayReduceTest1013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let array: Array<number> = [Number.EPSILON, Number.MIN_VALUE, Number.MAX_VALUE];
@@ -254,7 +254,7 @@ export default function builtinsArrayReduceTest() {
      * @tc.desc test builtins
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayReduceTest1014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let array: Array<number> = [123.456, 0xcafebabe, 0x0102];

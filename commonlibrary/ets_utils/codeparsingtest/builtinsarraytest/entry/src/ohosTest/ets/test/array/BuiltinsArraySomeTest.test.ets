@@ -31,9 +31,9 @@ export default function BuiltinsArraySomeTest() {
      * @tc.desc test Some
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 0
+     * @tc.level Level 2
      */
-    it('BuiltinsArraySomeTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (Done: Function) => {
+    it('BuiltinsArraySomeTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const inputArray: Array<number> = [1, 2, 3, 4, 5]
       const even = (num: number) => num > 3;
       const res = inputArray.some(even)
@@ -49,7 +49,7 @@ export default function BuiltinsArraySomeTest() {
      * @tc.desc test Some
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('BuiltinsArraySomeTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const inputArray: Array<number> = [1, 2, 3, 4, 5]
@@ -69,7 +69,7 @@ export default function BuiltinsArraySomeTest() {
      * @tc.desc test Some
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('BuiltinsArraySomeTest0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const inputArray: Array<number> = [1, 2, 3, 4, 5]
@@ -90,7 +90,7 @@ export default function BuiltinsArraySomeTest() {
      * @tc.desc test Some
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('BuiltinsArraySomeTest0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const inputArray: Array<number> = [1, 2, 3, 4, 5]
@@ -108,7 +108,7 @@ export default function BuiltinsArraySomeTest() {
      * @tc.desc test Some
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('BuiltinsArraySomeTest0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const inputArray: Array<number> = []
@@ -126,7 +126,7 @@ export default function BuiltinsArraySomeTest() {
      * @tc.desc test Some
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('BuiltinsArraySomeTest0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const inputArray: Array<number> = [5]
@@ -144,7 +144,7 @@ export default function BuiltinsArraySomeTest() {
      * @tc.desc test Some
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('BuiltinsArraySomeTest0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const inputArray: Array<number> = [2]
@@ -162,7 +162,7 @@ export default function BuiltinsArraySomeTest() {
      * @tc.desc test Some
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('BuiltinsArraySomeTest0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const inputArray: [Record<string, never>, [], () => void] = [
@@ -187,7 +187,7 @@ export default function BuiltinsArraySomeTest() {
      * @tc.desc test Some
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('BuiltinsArraySomeTest0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const inputArray: Array<number> = [1, 2, 3, 4, 5]
@@ -205,7 +205,7 @@ export default function BuiltinsArraySomeTest() {
      * @tc.desc test Some
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('BuiltinsArraySomeTest1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const inputArray: Array<number> = [1, 2, 3, 4, 5]
@@ -223,7 +223,7 @@ export default function BuiltinsArraySomeTest() {
      * @tc.desc test Some
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('BuiltinsArraySomeTest1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       interface obj {
@@ -264,7 +264,7 @@ export default function BuiltinsArraySomeTest() {
      * @tc.desc test Some
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('BuiltinsArraySomeTest1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const inputArray: Array<number[]> = [[1, 2], [3, 4], [5, 6]]
@@ -282,7 +282,7 @@ export default function BuiltinsArraySomeTest() {
      * @tc.desc test Some
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('BuiltinsArraySomeTest1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const inputArray: Array<number | undefined | null> = [1, null, 3, undefined, 4]
@@ -299,7 +299,7 @@ export default function BuiltinsArraySomeTest() {
      * @tc.desc test Some
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('BuiltinsArraySomeTest1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       const inputArray: Array<string> = ['apple', '', 'banana', 'cherry']

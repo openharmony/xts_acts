@@ -41,9 +41,9 @@ export default function MapTest() {
      * @tc.desc       : Test the function of the interface MapPrototypeClear.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testMapPrototypeClear0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testMapPrototypeClear0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testMapPrototypeClear0001";
       try {
         const map1: Map<string, string> = new Map();
@@ -64,9 +64,9 @@ export default function MapTest() {
      * @tc.desc       : Test the function of the interface MapPrototypeClear.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testMapPrototypeClear0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testMapPrototypeClear0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testMapPrototypeClear0002";
       try {
         const map1: Map<string, string> = new Map();
@@ -88,9 +88,9 @@ export default function MapTest() {
      * @tc.desc       : Test the function of the interface MapPrototypeClear.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testMapPrototypeClear0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testMapPrototypeClear0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testMapPrototypeClear0003";
       try {
         const map1: Map<string, string> = new Map();

@@ -109,9 +109,9 @@ export default function NativeJsonTest() {
      * @tc.desc       : Test the JSON.parse() function with multiple scenarios.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testNativeJsonParse0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testNativeJsonParse0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testNativeJsonParse0001";
       try {
         let obj1 = JSON.parse(jsonText1, undefined) as text1;

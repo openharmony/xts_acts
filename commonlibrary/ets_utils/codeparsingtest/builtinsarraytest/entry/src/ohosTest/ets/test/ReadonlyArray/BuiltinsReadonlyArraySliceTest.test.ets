@@ -46,9 +46,9 @@ export default function builtinsReadonlyArraySliceTest() {
      * @tc.desc test Slice
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 0
+     * @tc.level Level 1
      */
-    it('BuiltinsReadonlyArraySliceTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+    it('BuiltinsReadonlyArraySliceTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
         const inputArray: readonly number[] = [1, 2, 3, 4, 5];
         const res: Array<number> = inputArray.slice(1, 3);

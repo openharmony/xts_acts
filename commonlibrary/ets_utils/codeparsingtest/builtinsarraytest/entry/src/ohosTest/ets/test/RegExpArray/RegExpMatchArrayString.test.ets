@@ -45,9 +45,9 @@ export default function builtinsRegExpMatchArrayStringTest() {
      * @tc.desc Testing RegExpMatchArray string
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 0
+     * @tc.level Level 1
      */
-    it('builtinsRegExpMatchArrayStringTest0100', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL0,
+    it('builtinsRegExpMatchArrayStringTest0100', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1,
       (done: Function) => {
         // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
         const caseName = 'builtinsRegExpMatchArrayStringTest0100';

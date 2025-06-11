@@ -48,9 +48,9 @@ export default function builtinsArrayFromTest() {
      * @tc.desc Test with method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 0
+     * @tc.level Level 2
      */
-    it('builtinsArrayFromTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('builtinsArrayFromTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const map: Map<number, string> = new Map([
         [1, 'a'],
         [2, 'b'],
@@ -66,7 +66,7 @@ export default function builtinsArrayFromTest() {
      * @tc.desc Test with method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayFromTest0101', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const inputArray = [1, 2, 3];
@@ -83,7 +83,7 @@ export default function builtinsArrayFromTest() {
      * @tc.desc Test with method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayFromTest0102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const inputArray = [1, 2, 3];
@@ -102,7 +102,7 @@ export default function builtinsArrayFromTest() {
      * @tc.desc Test with method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayFromTest0103', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const originalArray = [1, 2, 3];
@@ -119,7 +119,7 @@ export default function builtinsArrayFromTest() {
      * @tc.desc Test with method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayFromTest0104', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const inputArray = [1, 2, 3];
@@ -134,7 +134,7 @@ export default function builtinsArrayFromTest() {
      * @tc.desc Test with method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayFromTest0105', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const result = Array.from('!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~');
@@ -152,7 +152,7 @@ export default function builtinsArrayFromTest() {
      * @tc.desc Test with method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayFromTest0107', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const result: string[] = Array.from('undefined');
@@ -167,7 +167,7 @@ export default function builtinsArrayFromTest() {
      * @tc.desc Test with method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayFromTest0108', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const result: string[] = Array.from('null');
@@ -182,7 +182,7 @@ export default function builtinsArrayFromTest() {
      * @tc.desc Test with method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayFromTest0109', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const unicodeCodePoint = 0x1F60A;
@@ -199,7 +199,7 @@ export default function builtinsArrayFromTest() {
      * @tc.desc Test with method
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 1
+     * @tc.level Level 2
      */
     it('builtinsArrayFromTest0110', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const inputString = 'a\uD800b\uD800\uDC00c';

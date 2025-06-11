@@ -45,9 +45,9 @@ export default function builtinsReadonlyArrayToStringTest() {
      * @tc.desc Test basic numeric ReadonlyArray
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 0
+     * @tc.level Level 1
      */
-    it('builtinsReadonlyArrayToStringTest1001', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL0, () => {
+    it('builtinsReadonlyArrayToStringTest1001', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       let arr: readonly number[] = [1, 2, 3];
       expect(arr.toString()).assertEqual("1,2,3");
     });

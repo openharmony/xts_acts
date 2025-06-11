@@ -47,9 +47,9 @@ export default function builtinsArrayMapTest() {
      * @tc.desc test Array
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 0
+     * @tc.level Level 2
      */
-    it('buildinsArrayMapTest1001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (Done: Function) => {
+    it('buildinsArrayMapTest1001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let array = [1, 2, 3]
       let result = array.map(element => element * 2)
       expect(result[0]).assertEqual(2)

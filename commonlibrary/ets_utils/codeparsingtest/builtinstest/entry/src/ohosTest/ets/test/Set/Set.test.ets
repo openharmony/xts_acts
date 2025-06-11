@@ -41,9 +41,9 @@ export default function SetTest() {
      * @tc.desc       : Test the function of the interface SetPrototypeAdd.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testSetPrototypeAdd0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testSetPrototypeAdd0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetPrototypeAdd0001";
       try {
         const odds = new Set(["a", "b"]);
@@ -61,9 +61,9 @@ export default function SetTest() {
      * @tc.desc       : Test the function of the interface SetPrototypeAdd.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testSetPrototypeAdd0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testSetPrototypeAdd0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testSetPrototypeAdd0002";
       try {
         const odds = new Set(["a", "b"]);

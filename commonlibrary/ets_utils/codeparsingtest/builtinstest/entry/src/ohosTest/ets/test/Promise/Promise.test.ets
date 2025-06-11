@@ -43,9 +43,9 @@ export default function promiseTest() {
      * @tc.desc       : Test the function by promise
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testPromise0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('testPromise0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let flag = true;
       let array: Array<string> = await dealPromise(flag);
       expect(array[0]).assertEqual('resolve result : success');

@@ -53,9 +53,9 @@ export default function DecimalTest() {
      * @tc.desc       : Testing the decimal comparedTo with "Nah".
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testComparedTo0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testComparedTo0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testComparedTo0001';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -73,9 +73,9 @@ export default function DecimalTest() {
      * @tc.desc       : Testing the decimal comparedTo with 0.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testComparedTo0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testComparedTo0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testComparedTo0002';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -93,9 +93,9 @@ export default function DecimalTest() {
      * @tc.desc       : Testing the decimal comparedTo with "0".
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testComparedTo0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testComparedTo0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testComparedTo0003';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -113,9 +113,9 @@ export default function DecimalTest() {
      * @tc.desc       : Testing the decimal comparedTo with new Decimal(0).
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testComparedTo0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testComparedTo0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testComparedTo0004';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -134,9 +134,9 @@ export default function DecimalTest() {
      * @tc.desc       : Testing the decimal comparedTo -0.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testComparedTo0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testComparedTo0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testComparedTo0005';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -154,9 +154,9 @@ export default function DecimalTest() {
      * @tc.desc       : Testing the decimal comparedTo "-0".
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testComparedTo0006',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testComparedTo0006',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testComparedTo0006';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -174,9 +174,9 @@ export default function DecimalTest() {
      * @tc.desc       : Testing the decimal comparedTo new Decimal(-0).
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testComparedTo0007',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testComparedTo0007',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testComparedTo0007';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -194,9 +194,9 @@ export default function DecimalTest() {
      * @tc.desc       : Testing the decimal comparedTo Infinity.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testComparedTo0008',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testComparedTo0008',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testComparedTo0008';
       try {
         let a: Decimal = new Decimal(0);
@@ -214,9 +214,9 @@ export default function DecimalTest() {
      * @tc.desc       : Testing the decimal comparedTo -Infinity.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testComparedTo0009',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testComparedTo0009',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testComparedTo0009';
       try {
         let a: Decimal = new Decimal(0);
@@ -234,9 +234,9 @@ export default function DecimalTest() {
      * @tc.desc       : Testing the decimal comparedTo with new Decimal(Infinity).
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testComparedTo0010',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testComparedTo0010',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testComparedTo0010';
       try {
         let a: Decimal = new Decimal(0);
@@ -254,9 +254,9 @@ export default function DecimalTest() {
      * @tc.desc       : Testing the decimal comparedTo with number in scientific notation (5e3).
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testComparedTo0011',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testComparedTo0011',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testComparedTo0011';
       try {
         let a: Decimal = new Decimal(5000);
@@ -274,9 +274,9 @@ export default function DecimalTest() {
      * @tc.desc       : Testing the decimal comparedTo with various types of real numbers.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testComparedTo0012',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testComparedTo0012',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testComparedTo0012';
       try {
         let a: Decimal = new Decimal(10);
@@ -303,9 +303,9 @@ export default function DecimalTest() {
      * @tc.desc       : Testing the decimal comparedTo with 'Infinity'.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testComparedTo0013',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testComparedTo0013',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testComparedTo0013';
       try {
         let a: Decimal = new Decimal(0);
@@ -323,9 +323,9 @@ export default function DecimalTest() {
      * @tc.desc       : Testing the decimal comparedTo with '-Infinity'.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testComparedTo0014',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testComparedTo0014',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testComparedTo0014';
       try {
         let a: Decimal = new Decimal(0);
@@ -343,9 +343,9 @@ export default function DecimalTest() {
      * @tc.desc       : Testing the decimal comparedTo with new Decimal(-Infinity).
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testComparedTo0015',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testComparedTo0015',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testComparedTo0015';
       try {
         let a: Decimal = new Decimal(0);
@@ -363,9 +363,9 @@ export default function DecimalTest() {
      * @tc.desc       : Testing the decimal comparedTo with new Decimal("Nah").
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testComparedTo0016',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testComparedTo0016',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testComparedTo0016';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -384,9 +384,9 @@ export default function DecimalTest() {
      * @tc.desc       : Testing the decimal comparedTo with Decimal in scientific notation (5e3).
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testComparedTo0017',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testComparedTo0017',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testComparedTo0017';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -405,9 +405,9 @@ export default function DecimalTest() {
      * @tc.desc       : Testing the decimal comparedTo with new Decimal("0").
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testComparedTo0018',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testComparedTo0018',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testComparedTo0018';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -426,9 +426,9 @@ export default function DecimalTest() {
      * @tc.desc       : Testing the decimal comparedTo new Decimal(0) in new Decimal().
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testComparedTo0019',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testComparedTo0019',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testComparedTo0019';
       try {
         let a: Decimal = new Decimal(Infinity);
@@ -447,9 +447,9 @@ export default function DecimalTest() {
      * @tc.desc       : Testing the decimal comparedTo with new Decimal(realNum).
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testComparedTo0020',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testComparedTo0020',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testComparedTo0020';
       try {
         let a: Decimal = new Decimal(10);
@@ -482,9 +482,9 @@ export default function DecimalTest() {
      * @tc.desc       : Testing the decimal comparedTo with new Decimal("-0").
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testComparedTo0021',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testComparedTo0021',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = 'testComparedTo0021';
       try {
         let a: Decimal = new Decimal(-Infinity);

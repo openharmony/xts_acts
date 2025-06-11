@@ -41,9 +41,9 @@ export default function RegExpTest() {
      * @tc.desc       : Test the function of the interface RegExpPrototypeExec.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testRegExpPrototypeExec0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testRegExpPrototypeExec0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testRegExpPrototypeExec0001";
       try {
         const regex1 = new RegExp('foo*', 'g');

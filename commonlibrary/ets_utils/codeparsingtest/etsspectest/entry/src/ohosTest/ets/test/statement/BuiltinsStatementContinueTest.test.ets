@@ -31,9 +31,9 @@ export default function BuiltinsStatementContinueTest() {
      * @tc.desc test Continue
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 0
+     * @tc.level Level 1
      */
-    it('BuiltinsStatementContinueTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+    it('BuiltinsStatementContinueTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
         let num = 1;
         let flag = false
@@ -55,9 +55,9 @@ export default function BuiltinsStatementContinueTest() {
      * @tc.desc test Continue
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 0
+     * @tc.level Level 1
      */
-    it('BuiltinsStatementContinueTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+    it('BuiltinsStatementContinueTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
       async (Done: Function) => {
         let count = 1;
         let flag = false

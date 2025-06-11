@@ -48,9 +48,9 @@ export default function builtinsConcatArrayIndexTest() {
      * @tc.desc Test index 0 access
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 0
+     * @tc.level Level 1
      */
-    it('builtinsConcatArrayIndexTest1001', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL0, () => {
+    it('builtinsConcatArrayIndexTest1001', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       expect(arr.index(0)).assertEqual(1);
     });
 
@@ -60,9 +60,9 @@ export default function builtinsConcatArrayIndexTest() {
      * @tc.desc Test index 1 access
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 0
+     * @tc.level Level 1
      */
-    it('builtinsConcatArrayIndexTest1002', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL0, () => {
+    it('builtinsConcatArrayIndexTest1002', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       expect(arr.index(1)).assertEqual(2);
     });
 

@@ -44,9 +44,9 @@ export default function builtinsConcatArrayLengthTest() {
      * @tc.desc Verify empty ConcatArray length
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 0
+     * @tc.level Level 1
      */
-    it('builtinsConcatArrayLengthTest1001', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL0, () => {
+    it('builtinsConcatArrayLengthTest1001', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, () => {
       const arr = new ConcatArrayTest<number>([]);
       arr.setLength(0);
       expect(arr.length()).assertEqual(0);

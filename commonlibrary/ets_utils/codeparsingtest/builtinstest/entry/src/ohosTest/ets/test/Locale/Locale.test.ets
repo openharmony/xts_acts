@@ -41,9 +41,9 @@ export default function LocaleTest() {
      * @tc.desc       : Test the function of the interface constructor.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testLocaleConstructor0001',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async() => {
+    it('testLocaleConstructor0001',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async() => {
       const TAG = "testLocaleConstructor0001";
       try {
         const us = new Intl.Locale("en-US");
@@ -62,9 +62,9 @@ export default function LocaleTest() {
      * @tc.desc       : Test the function of the interface constructor.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testLocaleConstructor0002',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async() => {
+    it('testLocaleConstructor0002',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async() => {
       const TAG = "testLocaleConstructor0002";
       try {
         const locale = new Intl.Locale("en-US", {
@@ -85,9 +85,9 @@ export default function LocaleTest() {
      * @tc.desc       : Test the function of the interface constructor.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testLocaleConstructor0003',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async() => {
+    it('testLocaleConstructor0003',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async() => {
       const TAG = "testLocaleConstructor0003";
       try {
         const locale = new Intl.Locale("en-US", {
@@ -108,9 +108,9 @@ export default function LocaleTest() {
      * @tc.desc       : Test the function of the interface constructor.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testLocaleConstructor0004',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async() => {
+    it('testLocaleConstructor0004',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async() => {
       const TAG = "testLocaleConstructor0004";
       try {
         const locale = new Intl.Locale("en-US", {
@@ -131,9 +131,9 @@ export default function LocaleTest() {
      * @tc.desc       : Test the function of the interface constructor.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testLocaleConstructor0005',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async() => {
+    it('testLocaleConstructor0005',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async() => {
       const TAG = "testLocaleConstructor0005";
       try {
         const locale = new Intl.Locale("en-US", {

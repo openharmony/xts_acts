@@ -22,9 +22,9 @@ export default function BooleanTest() {
      * @tc.desc       : Boolean()transfer parameters 0 return false
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testBooleanConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testBooleanConstructor0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBooleanConstructor0001";
       try {
         let result = new Boolean(0);
@@ -40,9 +40,9 @@ export default function BooleanTest() {
      * @tc.desc       : Boolean()transfer parameters null  return false
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testBooleanConstructor0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testBooleanConstructor0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBooleanConstructor0002";
       try {
         let result = new Boolean(null);
@@ -58,9 +58,9 @@ export default function BooleanTest() {
      * @tc.desc       : Boolean()transfer parameters undefined  return false
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 0
+     * @tc.level      : Level 1
      */
-    it('testBooleanConstructor0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+    it('testBooleanConstructor0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
       const TAG = "testBooleanConstructor0003";
       try {
         let result = new Boolean(undefined);

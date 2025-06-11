@@ -45,9 +45,9 @@ export default function BuiltinsStatementBreakTest() {
      * @tc.desc test Break
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 0
+     * @tc.level Level 1
      */
-    it('BuiltinsStatementBreakTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (Done: Function) => {
+    it('BuiltinsStatementBreakTest0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let count = 0;
       while (true) {
         console.log(`count: ${count}`);
@@ -67,9 +67,9 @@ export default function BuiltinsStatementBreakTest() {
      * @tc.desc test Break
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 0
+     * @tc.level Level 1
      */
-    it('BuiltinsStatementBreakTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (Done: Function) => {
+    it('BuiltinsStatementBreakTest0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (Done: Function) => {
       let count = 0;
       for (count; count <= 10; count++) {
         console.log(`count: ${count}`);

@@ -54,9 +54,9 @@ export default function builtinsStatementForOfTest() {
      * @tc.desc test let declare variables
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 0
+     * @tc.level Level 1
      */
-    it('builtinsStatementForOfTest0100', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL0, async (Done: Function) => {
+    it('builtinsStatementForOfTest0100', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       let arr: number[] = [10, 20, 30];
       let doubledArr: number[] = [];
       for (let value of arr) {
@@ -77,9 +77,9 @@ export default function builtinsStatementForOfTest() {
      * @tc.desc test let declare variables
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 0
+     * @tc.level Level 1
      */
-    it('builtinsStatementForOfTest0200', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL0, async (Done: Function) => {
+    it('builtinsStatementForOfTest0200', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       let arr: number[] = [10, 20, 30];
       let doubledArr: number[] = [];
       for (const value of arr) {
@@ -98,9 +98,9 @@ export default function builtinsStatementForOfTest() {
      * @tc.desc test The array is empty
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 0
+     * @tc.level Level 1
      */
-    it('builtinsStatementForOfTest0300', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL0, async (Done: Function) => {
+    it('builtinsStatementForOfTest0300', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       let arr: number[] = [10, 20, 30];
       let processedResults = processArray(arr);
       await sleep(100);
@@ -115,9 +115,9 @@ export default function builtinsStatementForOfTest() {
      * @tc.desc test The let array is undfined
      * @tc.size MediumTest
      * @tc.type Function
-     * @tc.level Level 0
+     * @tc.level Level 1
      */
-    it('builtinsStatementForOfTest0400', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL0, async (Done: Function) => {
+    it('builtinsStatementForOfTest0400', TestType.FUNCTION | Size.SMALLTEST | Level.LEVEL1, async (Done: Function) => {
       let arr = [1, 2, undefined, 4, 5];
       let undefinedIndexes: number = 0;
       for (let i = 0; i < arr.length; i++) {
