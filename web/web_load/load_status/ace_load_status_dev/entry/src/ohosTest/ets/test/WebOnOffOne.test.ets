@@ -56,7 +56,7 @@ export default function webOnOffOneTest() {
     })
 
     /*
-    * @tc.number      : SUB_WEB_EMITONOFFONE_0100
+    * @tc.number      : SUB_WEB_EMITONOFFONETWO_0100
     * @tc.name        : testOnOffOne001
     * @tc.desc        : test on normal
     * @tc.size        : MediumTest
