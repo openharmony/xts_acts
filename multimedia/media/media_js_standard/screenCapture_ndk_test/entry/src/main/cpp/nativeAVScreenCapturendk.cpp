@@ -1158,7 +1158,7 @@ static napi_value multiAVScreenCaptureCreate(napi_env env, napi_callback_info in
         napi_throw_error((env), nullptr, "error : expect screenCaptureCreate14 is not Fail");
     }
     result2 = OH_AVScreenCapture_Release(screenCaptureCreate15);
-    if (result2 != AV_SCREEN_CAPTURE_ERR_OK0) {
+    if (result2 != AV_SCREEN_CAPTURE_ERR_OK) {
         napi_throw_error((env), nullptr, "error : expect screenCaptureCreate15 is not Fail");
     }
     result2 = OH_AVScreenCapture_Release(screenCaptureCreate16);
