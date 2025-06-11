@@ -13,11 +13,13 @@
 
 import("//test/xts/tools/build/suite.gni")
 
+# xts_acts_arkts1.2/ability/ability_runtime/actsAbilitytest2
 ohos_js_app_static_suite("ActsUiStaticTest") {
-# test_hap = true
+#   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsUiStaticTest"
   part_name = "arkxtest"
   subsystem_name = "testfwk"
 }
+
