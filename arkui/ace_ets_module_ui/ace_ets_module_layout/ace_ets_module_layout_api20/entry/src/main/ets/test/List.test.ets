@@ -20,7 +20,7 @@ import ColumnWrapContentTest from './Column/ColumnWrapContentTest.ets'
 import FlexWrapContentTest from './Flex/FlexWrapContentTest.ets'
 import RowMatchParentTest from './Row/RowMatchParentTest.ets'
 import RowWrapContentTest from './Row/RowWrapContentTest.ets'
-import FolderStackMatchParentTest from './Stack/FolderStackMatchParentTest.ets'
+
 import StackMatchParentTest from './Stack/StackMatchParentTest.ets'
 import StackWrapContentTest from './Stack/StackWrapContentTest.ets'
 import ColumnFixAtIdealSizeTest from './Column/ColumnFixAtIdealSizeTest.ets'
@@ -30,6 +30,10 @@ import FlexFixAtIdealSizeTest from './Flex/FlexFixAtIdealSizeTest.ets'
 import GridRowFixAtIdealSizeTest from './GridRow/GridRowFixAtIdealSizeTest.ets'
 import GridColFixAtIdealSizeTest from './GridCol/GridColFixAtIdealSizeTest.ets'
 
+import ButtonAlignTest from './BoxAlign/ButtonAlignTest.ets'
+import StackSafeAreaTest from './Stack/StackSafeAreaTest.ets'
+import StackChildAlignmentTest from './Stack/StackChildAlignmentTest.ets'
+
 export default function testsuite() {
   FlexLayoutPolicyTest();
   GridRowNoColumnsTest();
@@ -38,7 +42,7 @@ export default function testsuite() {
   FlexWrapContentTest();
   RowMatchParentTest();
   RowWrapContentTest();
-  FolderStackMatchParentTest();
+ 
   StackMatchParentTest();
   StackWrapContentTest();
   LayoutInspectorTest();
@@ -48,5 +52,9 @@ export default function testsuite() {
   FlexFixAtIdealSizeTest();
   GridRowFixAtIdealSizeTest();
   GridColFixAtIdealSizeTest();
+
+  ButtonAlignTest();
+  StackSafeAreaTest();
+  StackChildAlignmentTest();
 
 }
