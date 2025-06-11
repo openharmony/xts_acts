@@ -11,14 +11,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-group("ActsWebHistoryTest") {
+import("//test/xts/tools/build/suite.gni")
+
+ohos_js_app_suite("ActsWebHistoryEnhancedFourTest") {
+  test_hap = true
   testonly = true
-  if (is_standard_system) {
-    deps = [
-      "ace_web_history_enhanced_four:ActsWebHistoryEnhancedFourTest",
-      "ace_web_history_enhanced_one:ActsWebHistoryEnhancedTest",
-      "ace_web_history_enhanced_three:ActsWebHistoryEnhancedThreeTest",
-      "ace_web_history_enhanced_two:ActsWebHistoryEnhancedTwoTest",
-    ]
-  }
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsWebHistoryEnhancedFourTest"
+  part_name = "webview"
+  subsystem_name = "web"
 }
