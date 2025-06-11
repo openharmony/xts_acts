@@ -195,7 +195,7 @@ static napi_value TestCreatePip(napi_env env, napi_callback_info info)
     uint32_t mainWindowId;
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     napi_get_value_uint32(env, args[0], &mainWindowId);
-    OH_LOG_INFO(LOG_APP, "mainWindowId =%{public}d.", mainWindowId);
+    OH_LOG_INFO(LOG_APP, "TestCreatePip mainWindowId =%{public}d.", mainWindowId);
     napi_value result;
     PictureInPicture_PipControlGroup controlGroup[1] = {
         PictureInPicture_PipControlGroup::VIDEO_PLAY_FAST_FORWARD_BACKWARD
@@ -210,7 +210,7 @@ static napi_value TestCreatePip(napi_env env, napi_callback_info info)
     OH_PictureInPicture_SetPipNapiEnv(pipConfig, env);
     uint32_t controllerId = 0;
     int32_t ret = OH_PictureInPicture_CreatePip(pipConfig, &controllerId);
-    OH_LOG_INFO(LOG_APP, "ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestCreatePip ret=%{public}d", ret);
     OH_PictureInPicture_DestroyPipConfig(&pipConfig);
     napi_create_int32(env, ret, &result);
     return result;
@@ -223,7 +223,7 @@ static napi_value TestCreatePip_ControllerId_Nullptr(napi_env env, napi_callback
     uint32_t mainWindowId;
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     napi_get_value_uint32(env, args[0], &mainWindowId);
-    OH_LOG_INFO(LOG_APP, "mainWindowId =%{public}d.", mainWindowId);
+    OH_LOG_INFO(LOG_APP, "TestCreatePip_ControllerId_Nullptr mainWindowId =%{public}d.", mainWindowId);
     napi_value result;
     PictureInPicture_PipControlGroup controlGroup[1] = {
         PictureInPicture_PipControlGroup::VIDEO_PLAY_FAST_FORWARD_BACKWARD
@@ -238,7 +238,7 @@ static napi_value TestCreatePip_ControllerId_Nullptr(napi_env env, napi_callback
     OH_PictureInPicture_SetPipNapiEnv(pipConfig, env);
     uint32_t controllerId = 0;
     int32_t ret = OH_PictureInPicture_CreatePip(pipConfig, &controllerId);
-    OH_LOG_INFO(LOG_APP, "ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestCreatePip_ControllerId_Nullptr ret=%{public}d", ret);
     OH_PictureInPicture_DestroyPipConfig(&pipConfig);
     napi_create_int32(env, ret, &result);
     return result;
@@ -251,7 +251,7 @@ static napi_value TestCreatePip_SetPipMainWindowId_Zero(napi_env env, napi_callb
     uint32_t mainWindowId;
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     napi_get_value_uint32(env, args[0], &mainWindowId);
-    OH_LOG_INFO(LOG_APP, "mainWindowId =%{public}d.", mainWindowId);
+    OH_LOG_INFO(LOG_APP, "TestCreatePip_SetPipMainWindowId_Zero mainWindowId =%{public}d.", mainWindowId);
     napi_value result;
     PictureInPicture_PipControlGroup controlGroup[1] = {
         PictureInPicture_PipControlGroup::VIDEO_PLAY_FAST_FORWARD_BACKWARD
@@ -266,7 +266,7 @@ static napi_value TestCreatePip_SetPipMainWindowId_Zero(napi_env env, napi_callb
     OH_PictureInPicture_SetPipNapiEnv(pipConfig, env);
     uint32_t controllerId = 0;
     int32_t ret = OH_PictureInPicture_CreatePip(pipConfig, &controllerId);
-    OH_LOG_INFO(LOG_APP, "ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestCreatePip_SetPipMainWindowId_Zero ret=%{public}d", ret);
     OH_PictureInPicture_DestroyPipConfig(&pipConfig);
     
     napi_create_int32(env, ret, &result);
@@ -280,7 +280,7 @@ static napi_value TestCreatePip_SetErrPipTemplateType(napi_env env, napi_callbac
     uint32_t mainWindowId;
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     napi_get_value_uint32(env, args[0], &mainWindowId);
-    OH_LOG_INFO(LOG_APP, "mainWindowId =%{public}d.", mainWindowId);
+    OH_LOG_INFO(LOG_APP, "TestCreatePip_SetErrPipTemplateType mainWindowId =%{public}d.", mainWindowId);
     napi_value result;
     PictureInPicture_PipControlGroup controlGroup[1] = {
         PictureInPicture_PipControlGroup::VIDEO_PLAY_FAST_FORWARD_BACKWARD
@@ -295,7 +295,7 @@ static napi_value TestCreatePip_SetErrPipTemplateType(napi_env env, napi_callbac
     OH_PictureInPicture_SetPipNapiEnv(pipConfig, env);
     uint32_t controllerId = 0;
     int32_t ret = OH_PictureInPicture_CreatePip(pipConfig, &controllerId);
-    OH_LOG_INFO(LOG_APP, "ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestCreatePip_SetErrPipTemplateType ret=%{public}d", ret);
     OH_PictureInPicture_DestroyPipConfig(&pipConfig);
     
     napi_create_int32(env, ret, &result);
@@ -309,7 +309,7 @@ static napi_value TestStartStopPip(napi_env env, napi_callback_info info)
     uint32_t mainWindowId;
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     napi_get_value_uint32(env, args[0], &mainWindowId);
-    OH_LOG_INFO(LOG_APP, "mainWindowId =%{public}d.", mainWindowId);
+    OH_LOG_INFO(LOG_APP, "TestStartStopPip mainWindowId =%{public}d.", mainWindowId);
     napi_value result;
     PictureInPicture_PipControlGroup controlGroup[1] = {
         PictureInPicture_PipControlGroup::VIDEO_PLAY_FAST_FORWARD_BACKWARD
@@ -326,7 +326,7 @@ static napi_value TestStartStopPip(napi_env env, napi_callback_info info)
     OH_PictureInPicture_CreatePip(pipConfig, &controllerId);
     OH_PictureInPicture_DestroyPipConfig(&pipConfig);
     int32_t ret = OH_PictureInPicture_StartPip(controllerId);
-    OH_LOG_INFO(LOG_APP, "ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestStartStopPip ret=%{public}d", ret);
     OH_PictureInPicture_StopPip(controllerId);
     
     napi_create_int32(env, ret, &result);
@@ -340,7 +340,7 @@ static napi_value TestStartPipRepeat(napi_env env, napi_callback_info info)
     uint32_t mainWindowId;
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     napi_get_value_uint32(env, args[0], &mainWindowId);
-    OH_LOG_INFO(LOG_APP, "mainWindowId =%{public}d.", mainWindowId);
+    OH_LOG_INFO(LOG_APP, "TestStartPipRepeat mainWindowId =%{public}d.", mainWindowId);
     napi_value result;
     PictureInPicture_PipControlGroup controlGroup[1] = {
         PictureInPicture_PipControlGroup::VIDEO_PLAY_FAST_FORWARD_BACKWARD
@@ -358,7 +358,7 @@ static napi_value TestStartPipRepeat(napi_env env, napi_callback_info info)
     OH_PictureInPicture_DestroyPipConfig(&pipConfig);
     OH_PictureInPicture_StartPip(controllerId);
     int32_t ret = OH_PictureInPicture_StartPip(controllerId);
-    OH_LOG_INFO(LOG_APP, "ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestStartPipRepeat ret=%{public}d", ret);
     OH_PictureInPicture_StopPip(controllerId);
     
     napi_create_int32(env, ret, &result);
@@ -372,7 +372,7 @@ static napi_value TestStopPipRepeat(napi_env env, napi_callback_info info)
     uint32_t mainWindowId;
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     napi_get_value_uint32(env, args[0], &mainWindowId);
-    OH_LOG_INFO(LOG_APP, "mainWindowId =%{public}d.", mainWindowId);
+    OH_LOG_INFO(LOG_APP, "TestStopPipRepeat mainWindowId =%{public}d.", mainWindowId);
     napi_value result;
     PictureInPicture_PipControlGroup controlGroup[1] = {
         PictureInPicture_PipControlGroup::VIDEO_PLAY_FAST_FORWARD_BACKWARD
@@ -390,7 +390,7 @@ static napi_value TestStopPipRepeat(napi_env env, napi_callback_info info)
     OH_PictureInPicture_DestroyPipConfig(&pipConfig);
     OH_PictureInPicture_StartPip(controllerId);
     int32_t ret = OH_PictureInPicture_StopPip(controllerId);
-    OH_LOG_INFO(LOG_APP, "ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestStopPipRepeat ret=%{public}d", ret);
     OH_PictureInPicture_StopPip(controllerId);
     
     napi_create_int32(env, ret, &result);
@@ -404,7 +404,7 @@ static napi_value TestDeletePipWithStopPip(napi_env env, napi_callback_info info
     uint32_t mainWindowId;
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     napi_get_value_uint32(env, args[0], &mainWindowId);
-    OH_LOG_INFO(LOG_APP, "mainWindowId =%{public}d.", mainWindowId);
+    OH_LOG_INFO(LOG_APP, "TestDeletePipWithStopPip mainWindowId =%{public}d.", mainWindowId);
     napi_value result;
     PictureInPicture_PipControlGroup controlGroup[1] = {
         PictureInPicture_PipControlGroup::VIDEO_PLAY_FAST_FORWARD_BACKWARD
@@ -423,7 +423,7 @@ static napi_value TestDeletePipWithStopPip(napi_env env, napi_callback_info info
     OH_PictureInPicture_StartPip(controllerId);
     OH_PictureInPicture_StopPip(controllerId);
     int32_t ret = OH_PictureInPicture_DeletePip(controllerId);
-    OH_LOG_INFO(LOG_APP, "ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestDeletePipWithStopPip ret=%{public}d", ret);
     
     napi_create_int32(env, ret, &result);
     return result;
@@ -436,7 +436,7 @@ static napi_value TestDeletePipWithoutStopPip(napi_env env, napi_callback_info i
     uint32_t mainWindowId;
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     napi_get_value_uint32(env, args[0], &mainWindowId);
-    OH_LOG_INFO(LOG_APP, "mainWindowId =%{public}d.", mainWindowId);
+    OH_LOG_INFO(LOG_APP, "TestDeletePipWithoutStopPip mainWindowId =%{public}d.", mainWindowId);
     napi_value result;
     PictureInPicture_PipControlGroup controlGroup[1] = {
         PictureInPicture_PipControlGroup::VIDEO_PLAY_FAST_FORWARD_BACKWARD
@@ -454,7 +454,7 @@ static napi_value TestDeletePipWithoutStopPip(napi_env env, napi_callback_info i
     OH_PictureInPicture_DestroyPipConfig(&pipConfig);
     OH_PictureInPicture_StartPip(controllerId);
     int32_t ret = OH_PictureInPicture_DeletePip(controllerId);
-    OH_LOG_INFO(LOG_APP, "ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestDeletePipWithoutStopPip ret=%{public}d", ret);
     napi_create_int32(env, ret, &result);
     return result;
 }
@@ -466,7 +466,7 @@ static napi_value TestUpdatePipContentSize(napi_env env, napi_callback_info info
     uint32_t mainWindowId;
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     napi_get_value_uint32(env, args[0], &mainWindowId);
-    OH_LOG_INFO(LOG_APP, "mainWindowId =%{public}d.", mainWindowId);
+    OH_LOG_INFO(LOG_APP, "TestUpdatePipContentSize mainWindowId =%{public}d.", mainWindowId);
     napi_value result;
     PictureInPicture_PipControlGroup controlGroup[1] = {
         PictureInPicture_PipControlGroup::VIDEO_PLAY_FAST_FORWARD_BACKWARD
@@ -484,7 +484,7 @@ static napi_value TestUpdatePipContentSize(napi_env env, napi_callback_info info
     OH_PictureInPicture_DestroyPipConfig(&pipConfig);
     OH_PictureInPicture_StartPip(controllerId);
     int32_t ret = OH_PictureInPicture_UpdatePipContentSize(controllerId, 1, 1);
-    OH_LOG_INFO(LOG_APP, "ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestUpdatePipContentSize ret=%{public}d", ret);
     OH_PictureInPicture_StopPip(controllerId);
     OH_PictureInPicture_DeletePip(controllerId);
     
@@ -499,7 +499,7 @@ static napi_value TestUpdatePipContentStatus(napi_env env, napi_callback_info in
     uint32_t mainWindowId;
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     napi_get_value_uint32(env, args[0], &mainWindowId);
-    OH_LOG_INFO(LOG_APP, "mainWindowId =%{public}d.", mainWindowId);
+    OH_LOG_INFO(LOG_APP, "TestUpdatePipContentStatus mainWindowId =%{public}d.", mainWindowId);
     napi_value result;
     PictureInPicture_PipControlGroup controlGroup[1] = {
         PictureInPicture_PipControlGroup::VIDEO_PLAY_FAST_FORWARD_BACKWARD
@@ -517,9 +517,9 @@ static napi_value TestUpdatePipContentStatus(napi_env env, napi_callback_info in
     OH_PictureInPicture_DestroyPipConfig(&pipConfig);
     
     int32_t ret0 = OH_PictureInPicture_StartPip(controllerId);
-    OH_LOG_INFO(LOG_APP, "ret0=%{public}d", ret0);
+    OH_LOG_INFO(LOG_APP, "TestUpdatePipContentStatus ret0=%{public}d", ret0);
     if (ret0 != 0) {
-        napi_create_int32(env, FAIL, &result);
+        napi_create_int32(env, ret0, &result);
         return result;
     }
     uint32_t controlType = 0;
@@ -528,12 +528,12 @@ static napi_value TestUpdatePipContentStatus(napi_env env, napi_callback_info in
     int32_t ret = OH_PictureInPicture_UpdatePipControlStatus(controllerId,
         static_cast<PictureInPicture_PipControlType>(controlType),
         static_cast<PictureInPicture_PipControlStatus>(status));
-    OH_LOG_INFO(LOG_APP, "ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestUpdatePipContentStatus ret=%{public}d", ret);
     int32_t ret2 = OH_PictureInPicture_SetPipControlEnabled(controllerId,
         static_cast<PictureInPicture_PipControlType>(controlType), status2);
-    OH_LOG_INFO(LOG_APP, "ret2=%{public}d", ret2);
+    OH_LOG_INFO(LOG_APP, "TestUpdatePipContentStatus ret2=%{public}d", ret2);
     if (ret != 0 || ret2 != 0) {
-        napi_create_int32(env, FAIL, &result);
+        napi_create_int32(env, ret == 0? ret2: ret, &result);
         return result;
     }
     OH_PictureInPicture_StopPip(controllerId);
@@ -549,7 +549,7 @@ static napi_value TestUpdatePipContentEnabled(napi_env env, napi_callback_info i
     uint32_t mainWindowId;
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     napi_get_value_uint32(env, args[0], &mainWindowId);
-    OH_LOG_INFO(LOG_APP, "mainWindowId =%{public}d.", mainWindowId);
+    OH_LOG_INFO(LOG_APP, "TestUpdatePipContentEnabled mainWindowId =%{public}d.", mainWindowId);
     napi_value result;
     PictureInPicture_PipControlGroup controlGroup[1] = {
         PictureInPicture_PipControlGroup::VIDEO_PLAY_FAST_FORWARD_BACKWARD
@@ -567,20 +567,20 @@ static napi_value TestUpdatePipContentEnabled(napi_env env, napi_callback_info i
     OH_PictureInPicture_DestroyPipConfig(&pipConfig);
     
     int32_t ret0 = OH_PictureInPicture_StartPip(0);
-    OH_LOG_INFO(LOG_APP, "ret0=%{public}d", ret0);
+    OH_LOG_INFO(LOG_APP, "TestUpdatePipContentEnabled ret0=%{public}d", ret0);
     if (ret0 != 0) {
-        napi_create_int32(env, FAIL, &result);
+        napi_create_int32(env, ret0, &result);
         return result;
     }
     uint32_t controlType = 0;
     int32_t ret = OH_PictureInPicture_SetPipControlEnabled(controllerId,
         static_cast<PictureInPicture_PipControlType>(controlType), 1);
-    OH_LOG_INFO(LOG_APP, "ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestUpdatePipContentEnabled ret=%{public}d", ret);
     int32_t ret2 = OH_PictureInPicture_SetPipControlEnabled(controllerId,
         static_cast<PictureInPicture_PipControlType>(controlType), 0);
-    OH_LOG_INFO(LOG_APP, "ret2=%{public}d", ret2);
+    OH_LOG_INFO(LOG_APP, "TestUpdatePipContentEnabled ret2=%{public}d", ret2);
     if (ret != 0 || ret2 != 0) {
-        napi_create_int32(env, FAIL, &result);
+        napi_create_int32(env, ret == 0? ret2: ret, &result);
         return result;
     }
    
@@ -629,7 +629,7 @@ static napi_value TestRegisterStartPipCallback(napi_env env, napi_callback_info 
     uint32_t mainWindowId;
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     napi_get_value_uint32(env, args[0], &mainWindowId);
-    OH_LOG_INFO(LOG_APP, "mainWindowId =%{public}d.", mainWindowId);
+    OH_LOG_INFO(LOG_APP, "TestRegisterStartPipCallback mainWindowId =%{public}d.", mainWindowId);
     napi_value result;
     PictureInPicture_PipControlGroup controlGroup[1] = {
         PictureInPicture_PipControlGroup::VIDEO_PLAY_FAST_FORWARD_BACKWARD
@@ -649,16 +649,16 @@ static napi_value TestRegisterStartPipCallback(napi_env env, napi_callback_info 
     OH_PictureInPicture_RegisterStartPipCallback(controllerId, WebPipStartPipCallback1);
     
     int32_t ret = OH_PictureInPicture_StartPip(0);
-    OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_StartPip ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestRegisterStartPipCallback OH_PictureInPicture_StartPip ret=%{public}d", ret);
     
     ret = OH_PictureInPicture_StopPip(controllerId);
-    OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_StopPip ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestRegisterStartPipCallback OH_PictureInPicture_StopPip ret=%{public}d", ret);
     ret = OH_PictureInPicture_DeletePip(controllerId);
-    OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_DeletePip ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestRegisterStartPipCallback OH_PictureInPicture_DeletePip ret=%{public}d", ret);
     
     OH_LOG_INFO(LOG_APP, "TestRegisterStartPipCallback g_timer1=%{public}d", g_timer1);
     if (ret != 0 || g_timer1 != 1) {
-        napi_create_int32(env, FAIL, &result);
+        napi_create_int32(env, ret == 0? g_timer1: ret, &result);
         return result;
     }
     OH_PictureInPicture_UnregisterStartPipCallback(controllerId, WebPipStartPipUnRegisterCallback1);
@@ -673,7 +673,7 @@ static napi_value TestTwoRegisterStartPipCallback(napi_env env, napi_callback_in
     uint32_t mainWindowId;
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     napi_get_value_uint32(env, args[0], &mainWindowId);
-    OH_LOG_INFO(LOG_APP, "mainWindowId =%{public}d.", mainWindowId);
+    OH_LOG_INFO(LOG_APP, "TestTwoRegisterStartPipCallback mainWindowId =%{public}d.", mainWindowId);
     napi_value result;
     PictureInPicture_PipControlGroup controlGroup[1] = {
         PictureInPicture_PipControlGroup::VIDEO_PLAY_FAST_FORWARD_BACKWARD
@@ -694,17 +694,17 @@ static napi_value TestTwoRegisterStartPipCallback(napi_env env, napi_callback_in
     OH_PictureInPicture_RegisterStartPipCallback(controllerId, WebPipStartPipCallback2);
     
     int32_t ret = OH_PictureInPicture_StartPip(0);
-    OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_StartPip ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestTwoRegisterStartPipCallback OH_PictureInPicture_StartPip ret=%{public}d", ret);
     
     ret = OH_PictureInPicture_StopPip(controllerId);
-    OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_StopPip ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestTwoRegisterStartPipCallback OH_PictureInPicture_StopPip ret=%{public}d", ret);
     ret = OH_PictureInPicture_DeletePip(controllerId);
-    OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_DeletePip ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestTwoRegisterStartPipCallback OH_PictureInPicture_DeletePip ret=%{public}d", ret);
     
     OH_LOG_INFO(LOG_APP, "TestTwoRegisterStartPipCallback g_timer1=%{public}d", g_timer1);
     OH_LOG_INFO(LOG_APP, "TestTwoRegisterStartPipCallback g_timer2=%{public}d", g_timer2);
     if (ret != 0 || g_timer1 != 1 || g_timer2 != 1) {
-        napi_create_int32(env, FAIL, &result);
+        napi_create_int32(env, ret == 0? (g_timer1 == 1? g_timer2: g_timer1): ret, &result);
         return result;
     }
     OH_PictureInPicture_UnregisterStartPipCallback(controllerId, WebPipStartPipUnRegisterCallback1);
@@ -720,7 +720,7 @@ static napi_value TestUnregisterStartPipCallback(napi_env env, napi_callback_inf
     uint32_t mainWindowId;
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     napi_get_value_uint32(env, args[0], &mainWindowId);
-    OH_LOG_INFO(LOG_APP, "mainWindowId =%{public}d.", mainWindowId);
+    OH_LOG_INFO(LOG_APP, "TestUnregisterStartPipCallback mainWindowId =%{public}d.", mainWindowId);
     napi_value result;
     PictureInPicture_PipControlGroup controlGroup[1] = {
         PictureInPicture_PipControlGroup::VIDEO_PLAY_FAST_FORWARD_BACKWARD
@@ -742,17 +742,17 @@ static napi_value TestUnregisterStartPipCallback(napi_env env, napi_callback_inf
     OH_PictureInPicture_UnregisterStartPipCallback(controllerId, WebPipStartPipUnRegisterCallback1);
     
     int32_t ret = OH_PictureInPicture_StartPip(0);
-    OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_StartPip ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestUnregisterStartPipCallback OH_PictureInPicture_StartPip ret=%{public}d", ret);
     
     ret = OH_PictureInPicture_StopPip(controllerId);
-    OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_StopPip ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestUnregisterStartPipCallback OH_PictureInPicture_StopPip ret=%{public}d", ret);
     ret = OH_PictureInPicture_DeletePip(controllerId);
-    OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_DeletePip ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestUnregisterStartPipCallback OH_PictureInPicture_DeletePip ret=%{public}d", ret);
     
     OH_LOG_INFO(LOG_APP, "TestUnregisterStartPipCallback g_timer1=%{public}d", g_timer1);
     OH_LOG_INFO(LOG_APP, "TestUnregisterStartPipCallback g_timer2=%{public}d", g_timer2);
     if (ret != 0 || g_timer1 != 0 || g_timer2 != 1) {
-        napi_create_int32(env, FAIL, &result);
+        napi_create_int32(env, ret == 0? (g_timer1 == 0? g_timer2: g_timer1): ret, &result);
         return result;
     }
     OH_PictureInPicture_UnregisterStartPipCallback(controllerId, WebPipStartPipUnRegisterCallback2);
@@ -767,7 +767,7 @@ static napi_value TestUnregisterAllStartPipCallbacks(napi_env env, napi_callback
     uint32_t mainWindowId;
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     napi_get_value_uint32(env, args[0], &mainWindowId);
-    OH_LOG_INFO(LOG_APP, "mainWindowId =%{public}d.", mainWindowId);
+    OH_LOG_INFO(LOG_APP, "TestUnregisterAllStartPipCallbacks mainWindowId =%{public}d.", mainWindowId);
     napi_value result;
     PictureInPicture_PipControlGroup controlGroup[1] = {
         PictureInPicture_PipControlGroup::VIDEO_PLAY_FAST_FORWARD_BACKWARD
@@ -789,17 +789,17 @@ static napi_value TestUnregisterAllStartPipCallbacks(napi_env env, napi_callback
     OH_PictureInPicture_UnregisterAllStartPipCallbacks(controllerId);
     
     int32_t ret = OH_PictureInPicture_StartPip(0);
-    OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_StartPip ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestUnregisterAllStartPipCallbacks OH_PictureInPicture_StartPip ret=%{public}d", ret);
     
     ret = OH_PictureInPicture_StopPip(controllerId);
-    OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_StopPip ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestUnregisterAllStartPipCallbacks OH_PictureInPicture_StopPip ret=%{public}d", ret);
     ret = OH_PictureInPicture_DeletePip(controllerId);
-    OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_DeletePip ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestUnregisterAllStartPipCallbacks OH_PictureInPicture_DeletePip ret=%{public}d", ret);
     
     OH_LOG_INFO(LOG_APP, "TestUnregisterStartPipCallback g_timer1=%{public}d", g_timer1);
     OH_LOG_INFO(LOG_APP, "TestUnregisterStartPipCallback g_timer2=%{public}d", g_timer2);
     if (ret != 0 || g_timer1 != 0 || g_timer2 != 0) {
-        napi_create_int32(env, FAIL, &result);
+        napi_create_int32(env, ret == 0? (g_timer1 == 0? g_timer2: g_timer1): ret, &result);
         return result;
     }
     napi_create_int32(env, SUCCESS, &result);
@@ -849,7 +849,7 @@ static napi_value TestRegisterResizeListener(napi_env env, napi_callback_info in
     uint32_t mainWindowId;
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     napi_get_value_uint32(env, args[0], &mainWindowId);
-    OH_LOG_INFO(LOG_APP, "mainWindowId =%{public}d.", mainWindowId);
+    OH_LOG_INFO(LOG_APP, "TestRegisterResizeListener mainWindowId =%{public}d.", mainWindowId);
     napi_value result;
     PictureInPicture_PipControlGroup controlGroup[1] = {
         PictureInPicture_PipControlGroup::VIDEO_PLAY_FAST_FORWARD_BACKWARD
@@ -869,18 +869,18 @@ static napi_value TestRegisterResizeListener(napi_env env, napi_callback_info in
     OH_PictureInPicture_RegisterResizeListener(controllerId, WebPipResizeCallback1);
     
     int32_t ret = OH_PictureInPicture_StartPip(0);
-    OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_StartPip ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestRegisterResizeListener OH_PictureInPicture_StartPip ret=%{public}d", ret);
     ret = OH_PictureInPicture_UpdatePipContentSize(controllerId, WIDTH, HEIGHT);
-    OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_UpdatePipContentSize ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestRegisterResizeListener OH_PictureInPicture_UpdatePipContentSize ret=%{public}d", ret);
     
     ret = OH_PictureInPicture_StopPip(controllerId);
-    OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_StopPip ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestRegisterResizeListener OH_PictureInPicture_StopPip ret=%{public}d", ret);
     ret = OH_PictureInPicture_DeletePip(controllerId);
-    OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_DeletePip ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestRegisterResizeListener OH_PictureInPicture_DeletePip ret=%{public}d", ret);
     
     OH_LOG_INFO(LOG_APP, "TestRegisterResizeListener g_timer3=%{public}d", g_timer3);
     if (ret != 0 || g_timer3 != 1) {
-        napi_create_int32(env, FAIL, &result);
+        napi_create_int32(env, ret == 0? g_timer3: ret, &result);
         return result;
     }
     OH_PictureInPicture_UnregisterResizeListener(controllerId, WebPipResizeUnRegisterCallback1);
@@ -895,7 +895,7 @@ static napi_value TestTwoRegisterResizeListener(napi_env env, napi_callback_info
     uint32_t mainWindowId;
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     napi_get_value_uint32(env, args[0], &mainWindowId);
-    OH_LOG_INFO(LOG_APP, "mainWindowId =%{public}d.", mainWindowId);
+    OH_LOG_INFO(LOG_APP, "TestTwoRegisterResizeListener mainWindowId =%{public}d.", mainWindowId);
     napi_value result;
     PictureInPicture_PipControlGroup controlGroup[1] = {
         PictureInPicture_PipControlGroup::VIDEO_PLAY_FAST_FORWARD_BACKWARD
@@ -916,19 +916,19 @@ static napi_value TestTwoRegisterResizeListener(napi_env env, napi_callback_info
     OH_PictureInPicture_RegisterResizeListener(controllerId, WebPipResizeCallback2);
     
     int32_t ret = OH_PictureInPicture_StartPip(0);
-    OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_StartPip ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestTwoRegisterResizeListener OH_PictureInPicture_StartPip ret=%{public}d", ret);
     ret = OH_PictureInPicture_UpdatePipContentSize(controllerId, WIDTH, HEIGHT);
-    OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_UpdatePipContentSize ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestTwoRegisterResizeListener OH_PictureInPicture_UpdatePipContentSize ret=%{public}d", ret);
     
     ret = OH_PictureInPicture_StopPip(controllerId);
-    OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_StopPip ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestTwoRegisterResizeListener OH_PictureInPicture_StopPip ret=%{public}d", ret);
     ret = OH_PictureInPicture_DeletePip(controllerId);
-    OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_DeletePip ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestTwoRegisterResizeListener OH_PictureInPicture_DeletePip ret=%{public}d", ret);
     
     OH_LOG_INFO(LOG_APP, "TestTwoRegisterResizeListener g_timer3=%{public}d", g_timer3);
     OH_LOG_INFO(LOG_APP, "TestTwoRegisterResizeListener g_timer4=%{public}d", g_timer4);
     if (ret != 0 || g_timer3 != 1 || g_timer4 != 1) {
-        napi_create_int32(env, FAIL, &result);
+        napi_create_int32(env, ret == 0? (g_timer3 == 1? g_timer4: g_timer3): ret, &result);
         return result;
     }
     OH_PictureInPicture_UnregisterResizeListener(controllerId, WebPipResizeUnRegisterCallback1);
@@ -944,7 +944,7 @@ static napi_value TestUnregisterResizeListener(napi_env env, napi_callback_info 
     uint32_t mainWindowId;
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     napi_get_value_uint32(env, args[0], &mainWindowId);
-    OH_LOG_INFO(LOG_APP, "mainWindowId =%{public}d.", mainWindowId);
+    OH_LOG_INFO(LOG_APP, "TestUnregisterResizeListener mainWindowId =%{public}d.", mainWindowId);
     napi_value result;
     PictureInPicture_PipControlGroup controlGroup[1] = {
         PictureInPicture_PipControlGroup::VIDEO_PLAY_FAST_FORWARD_BACKWARD
@@ -966,19 +966,19 @@ static napi_value TestUnregisterResizeListener(napi_env env, napi_callback_info 
     OH_PictureInPicture_UnregisterResizeListener(controllerId, WebPipResizeUnRegisterCallback1);
     
     int32_t ret = OH_PictureInPicture_StartPip(0);
-    OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_StartPip ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestUnregisterResizeListener OH_PictureInPicture_StartPip ret=%{public}d", ret);
     ret = OH_PictureInPicture_UpdatePipContentSize(controllerId, WIDTH, HEIGHT);
-    OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_UpdatePipContentSize ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestUnregisterResizeListener OH_PictureInPicture_UpdatePipContentSize ret=%{public}d", ret);
     
     ret = OH_PictureInPicture_StopPip(controllerId);
-    OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_StopPip ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestUnregisterResizeListener OH_PictureInPicture_StopPip ret=%{public}d", ret);
     ret = OH_PictureInPicture_DeletePip(controllerId);
-    OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_DeletePip ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestUnregisterResizeListener OH_PictureInPicture_DeletePip ret=%{public}d", ret);
     
     OH_LOG_INFO(LOG_APP, "TestUnregisterResizeListener g_timer3=%{public}d", g_timer3);
     OH_LOG_INFO(LOG_APP, "TestUnregisterResizeListener g_timer4=%{public}d", g_timer4);
-    if (ret != 0 || g_timer1 != 0 || g_timer4 != 1) {
-        napi_create_int32(env, FAIL, &result);
+    if (ret != 0 || g_timer3 != 0 || g_timer4 != 1) {
+        napi_create_int32(env, ret == 0? (g_timer3 == 0? g_timer4: g_timer3): ret, &result);
         return result;
     }
     OH_PictureInPicture_UnregisterResizeListener(controllerId, WebPipResizeUnRegisterCallback2);
@@ -993,7 +993,7 @@ static napi_value TestUnregisterAllResizeListeners(napi_env env, napi_callback_i
     uint32_t mainWindowId;
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     napi_get_value_uint32(env, args[0], &mainWindowId);
-    OH_LOG_INFO(LOG_APP, "mainWindowId =%{public}d.", mainWindowId);
+    OH_LOG_INFO(LOG_APP, "TestUnregisterAllResizeListeners mainWindowId =%{public}d.", mainWindowId);
     napi_value result;
     PictureInPicture_PipControlGroup controlGroup[1] = {
         PictureInPicture_PipControlGroup::VIDEO_PLAY_FAST_FORWARD_BACKWARD
@@ -1015,19 +1015,19 @@ static napi_value TestUnregisterAllResizeListeners(napi_env env, napi_callback_i
     OH_PictureInPicture_UnregisterAllResizeListeners(controllerId);
     
     int32_t ret = OH_PictureInPicture_StartPip(0);
-    OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_StartPip ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestUnregisterAllResizeListeners OH_PictureInPicture_StartPip ret=%{public}d", ret);
     ret = OH_PictureInPicture_UpdatePipContentSize(controllerId, WIDTH, HEIGHT);
-    OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_UpdatePipContentSize ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestUnregisterAllResizeListeners UpdatePipContentSize ret=%{public}d", ret);
     
     ret = OH_PictureInPicture_StopPip(controllerId);
-    OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_StopPip ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestUnregisterAllResizeListeners OH_PictureInPicture_StopPip ret=%{public}d", ret);
     ret = OH_PictureInPicture_DeletePip(controllerId);
-    OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_DeletePip ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestUnregisterAllResizeListeners OH_PictureInPicture_DeletePip ret=%{public}d", ret);
     
     OH_LOG_INFO(LOG_APP, "TestUnregisterAllResizeListeners g_timer3=%{public}d", g_timer3);
     OH_LOG_INFO(LOG_APP, "TestUnregisterAllResizeListeners g_timer4=%{public}d", g_timer4);
     if (ret != 0 || g_timer3 != 0 || g_timer4 != 0) {
-        napi_create_int32(env, FAIL, &result);
+        napi_create_int32(env, ret == 0? (g_timer3 == 0? g_timer4: g_timer3): ret, &result);
         return result;
     }
     napi_create_int32(env, SUCCESS, &result);
@@ -1077,7 +1077,7 @@ static napi_value TestRegisterControlEventListener(napi_env env, napi_callback_i
     uint32_t mainWindowId;
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     napi_get_value_uint32(env, args[0], &mainWindowId);
-    OH_LOG_INFO(LOG_APP, "mainWindowId =%{public}d.", mainWindowId);
+    OH_LOG_INFO(LOG_APP, "TestRegisterControlEventListener mainWindowId =%{public}d.", mainWindowId);
     napi_value result;
     PictureInPicture_PipControlGroup controlGroup[1] = {
         PictureInPicture_PipControlGroup::VIDEO_PLAY_FAST_FORWARD_BACKWARD
@@ -1097,18 +1097,18 @@ static napi_value TestRegisterControlEventListener(napi_env env, napi_callback_i
     OH_PictureInPicture_RegisterControlEventListener(controllerId, WebPipControlEventCallback1);
     
     int32_t ret = OH_PictureInPicture_StartPip(0);
-    OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_StartPip ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestRegisterControlEventListener OH_PictureInPicture_StartPip ret=%{public}d", ret);
     ret = OH_PictureInPicture_UpdatePipContentSize(controllerId, WIDTH, HEIGHT);
-    OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_UpdatePipContentSize ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestRegisterControlEventListener UpdatePipContentSize ret=%{public}d", ret);
     
     ret = OH_PictureInPicture_StopPip(controllerId);
-    OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_StopPip ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestRegisterControlEventListener OH_PictureInPicture_StopPip ret=%{public}d", ret);
     ret = OH_PictureInPicture_DeletePip(controllerId);
     OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_DeletePip ret=%{public}d", ret);
     
     OH_LOG_INFO(LOG_APP, "TestRegisterControlEventListener g_timer5=%{public}d", g_timer5);
     if (ret != 0 || g_timer5 != 1) {
-        napi_create_int32(env, FAIL, &result);
+        napi_create_int32(env, ret == 0? g_timer5: ret, &result);
         return result;
     }
     OH_PictureInPicture_UnregisterControlEventListener(controllerId, WebPipControlEventUnRegisterCallback1);
@@ -1123,7 +1123,7 @@ static napi_value TestUnregisterControlEventListener(napi_env env, napi_callback
     uint32_t mainWindowId;
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     napi_get_value_uint32(env, args[0], &mainWindowId);
-    OH_LOG_INFO(LOG_APP, "mainWindowId =%{public}d.", mainWindowId);
+    OH_LOG_INFO(LOG_APP, "TestUnregisterControlEventListener mainWindowId =%{public}d.", mainWindowId);
     napi_value result;
     PictureInPicture_PipControlGroup controlGroup[1] = {
         PictureInPicture_PipControlGroup::VIDEO_PLAY_FAST_FORWARD_BACKWARD
@@ -1145,19 +1145,19 @@ static napi_value TestUnregisterControlEventListener(napi_env env, napi_callback
     OH_PictureInPicture_UnregisterControlEventListener(controllerId, WebPipControlEventUnRegisterCallback1);
     
     int32_t ret = OH_PictureInPicture_StartPip(0);
-    OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_StartPip ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestUnregisterControlEventListener OH_PictureInPicture_StartPip ret=%{public}d", ret);
     ret = OH_PictureInPicture_UpdatePipContentSize(controllerId, WIDTH, HEIGHT);
-    OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_UpdatePipContentSize ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestUnregisterControlEventListener UpdatePipContentSize ret=%{public}d", ret);
     
     ret = OH_PictureInPicture_StopPip(controllerId);
-    OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_StopPip ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestUnregisterControlEventListener OH_PictureInPicture_StopPip ret=%{public}d", ret);
     ret = OH_PictureInPicture_DeletePip(controllerId);
-    OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_DeletePip ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestUnregisterControlEventListener OH_PictureInPicture_DeletePip ret=%{public}d", ret);
     
     OH_LOG_INFO(LOG_APP, "TestUnregisterControlEventListener g_timer5=%{public}d", g_timer5);
     OH_LOG_INFO(LOG_APP, "TestUnregisterControlEventListener g_timer6=%{public}d", g_timer6);
     if (ret != 0 || g_timer5 != 0 || g_timer6 != 1) {
-        napi_create_int32(env, FAIL, &result);
+        napi_create_int32(env, ret == 0? (g_timer5 == 0? g_timer6: g_timer5): ret, &result);
         return result;
     }
     OH_PictureInPicture_UnregisterControlEventListener(controllerId, WebPipControlEventUnRegisterCallback2);
@@ -1172,7 +1172,7 @@ static napi_value TestUnregisterAllControlEventListeners(napi_env env, napi_call
     uint32_t mainWindowId;
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     napi_get_value_uint32(env, args[0], &mainWindowId);
-    OH_LOG_INFO(LOG_APP, "mainWindowId =%{public}d.", mainWindowId);
+    OH_LOG_INFO(LOG_APP, "TestUnregisterAllControlEventListeners mainWindowId =%{public}d.", mainWindowId);
     napi_value result;
     PictureInPicture_PipControlGroup controlGroup[1] = {
         PictureInPicture_PipControlGroup::VIDEO_PLAY_FAST_FORWARD_BACKWARD
@@ -1194,19 +1194,19 @@ static napi_value TestUnregisterAllControlEventListeners(napi_env env, napi_call
     OH_PictureInPicture_UnregisterAllControlEventListeners(controllerId);
     
     int32_t ret = OH_PictureInPicture_StartPip(0);
-    OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_StartPip ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestUnregisterAllControlEventListeners OH_PictureInPicture_StartPip ret=%{public}d", ret);
     ret = OH_PictureInPicture_UpdatePipContentSize(controllerId, WIDTH, HEIGHT);
-    OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_UpdatePipContentSize ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestUnregisterAllControlEventListeners UpdatePipContentSize ret=%{public}d", ret);
     
     ret = OH_PictureInPicture_StopPip(controllerId);
-    OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_StopPip ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestUnregisterAllControlEventListeners OH_PictureInPicture_StopPip ret=%{public}d", ret);
     ret = OH_PictureInPicture_DeletePip(controllerId);
-    OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_DeletePip ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestUnregisterAllControlEventListeners OH_PictureInPicture_DeletePip ret=%{public}d", ret);
     
     OH_LOG_INFO(LOG_APP, "TestUnregisterAllControlEventListeners g_timer5=%{public}d", g_timer5);
     OH_LOG_INFO(LOG_APP, "TestUnregisterAllControlEventListeners g_timer6=%{public}d", g_timer6);
     if (ret != 0 || g_timer5 != 0 || g_timer6 != 0) {
-        napi_create_int32(env, FAIL, &result);
+        napi_create_int32(env, ret == 0? (g_timer5 == 0? g_timer6: g_timer5): ret, &result);
         return result;
     }
     napi_create_int32(env, SUCCESS, &result);
@@ -1252,7 +1252,7 @@ static napi_value TestRegisterLifeCycleListener(napi_env env, napi_callback_info
     uint32_t mainWindowId;
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     napi_get_value_uint32(env, args[0], &mainWindowId);
-    OH_LOG_INFO(LOG_APP, "mainWindowId =%{public}d.", mainWindowId);
+    OH_LOG_INFO(LOG_APP, "TestRegisterLifeCycleListener mainWindowId =%{public}d.", mainWindowId);
     napi_value result;
     PictureInPicture_PipControlGroup controlGroup[1] = {
         PictureInPicture_PipControlGroup::VIDEO_PLAY_FAST_FORWARD_BACKWARD
@@ -1272,16 +1272,16 @@ static napi_value TestRegisterLifeCycleListener(napi_env env, napi_callback_info
     OH_PictureInPicture_RegisterLifecycleListener(controllerId, WebPipLifecycleCallback1);
     
     int32_t ret = OH_PictureInPicture_StartPip(0);
-    OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_StartPip ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestRegisterLifeCycleListener OH_PictureInPicture_StartPip ret=%{public}d", ret);
     
     ret = OH_PictureInPicture_StopPip(controllerId);
-    OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_StopPip ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestRegisterLifeCycleListener OH_PictureInPicture_StopPip ret=%{public}d", ret);
     ret = OH_PictureInPicture_DeletePip(controllerId);
-    OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_DeletePip ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestRegisterLifeCycleListener OH_PictureInPicture_DeletePip ret=%{public}d", ret);
     
     OH_LOG_INFO(LOG_APP, "TestRegisterResizeListener g_timer7=%{public}d", g_timer7);
     if (ret != 0 || g_timer7 != TWO) {
-        napi_create_int32(env, FAIL, &result);
+        napi_create_int32(env, ret == 0? g_timer7: ret, &result);
         return result;
     }
     OH_PictureInPicture_UnregisterLifecycleListener(controllerId, WebPipLifecycleUnRegisterCallback1);
@@ -1296,7 +1296,7 @@ static napi_value TestTwoRegisterLifeCycleListener(napi_env env, napi_callback_i
     uint32_t mainWindowId;
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     napi_get_value_uint32(env, args[0], &mainWindowId);
-    OH_LOG_INFO(LOG_APP, "mainWindowId =%{public}d.", mainWindowId);
+    OH_LOG_INFO(LOG_APP, "TestTwoRegisterLifeCycleListener mainWindowId =%{public}d.", mainWindowId);
     napi_value result;
     PictureInPicture_PipControlGroup controlGroup[1] = {
         PictureInPicture_PipControlGroup::VIDEO_PLAY_FAST_FORWARD_BACKWARD
@@ -1317,17 +1317,17 @@ static napi_value TestTwoRegisterLifeCycleListener(napi_env env, napi_callback_i
     OH_PictureInPicture_RegisterLifecycleListener(controllerId, WebPipLifecycleCallback2);
     
     int32_t ret = OH_PictureInPicture_StartPip(0);
-    OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_StartPip ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestTwoRegisterLifeCycleListener OH_PictureInPicture_StartPip ret=%{public}d", ret);
     
     ret = OH_PictureInPicture_StopPip(controllerId);
-    OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_StopPip ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestTwoRegisterLifeCycleListener OH_PictureInPicture_StopPip ret=%{public}d", ret);
     ret = OH_PictureInPicture_DeletePip(controllerId);
-    OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_DeletePip ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestTwoRegisterLifeCycleListener OH_PictureInPicture_DeletePip ret=%{public}d", ret);
     
     OH_LOG_INFO(LOG_APP, "TestTwoRegisterLifeCycleListener g_timer7=%{public}d", g_timer7);
     OH_LOG_INFO(LOG_APP, "TestTwoRegisterLifeCycleListener g_timer8=%{public}d", g_timer8);
     if (ret != 0 || g_timer7 != TWO || g_timer8 != TWO) {
-        napi_create_int32(env, FAIL, &result);
+        napi_create_int32(env, ret == 0? (g_timer7 == TWO? g_timer8: g_timer7): ret, &result);
         return result;
     }
     OH_PictureInPicture_UnregisterLifecycleListener(controllerId, WebPipLifecycleUnRegisterCallback1);
@@ -1343,7 +1343,7 @@ static napi_value TestUnregisterLifeCycleListener(napi_env env, napi_callback_in
     uint32_t mainWindowId;
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     napi_get_value_uint32(env, args[0], &mainWindowId);
-    OH_LOG_INFO(LOG_APP, "mainWindowId =%{public}d.", mainWindowId);
+    OH_LOG_INFO(LOG_APP, "TestUnregisterLifeCycleListener mainWindowId =%{public}d.", mainWindowId);
     napi_value result;
     PictureInPicture_PipControlGroup controlGroup[1] = {
         PictureInPicture_PipControlGroup::VIDEO_PLAY_FAST_FORWARD_BACKWARD
@@ -1365,17 +1365,17 @@ static napi_value TestUnregisterLifeCycleListener(napi_env env, napi_callback_in
     OH_PictureInPicture_UnregisterLifecycleListener(controllerId, WebPipLifecycleUnRegisterCallback1);
     
     int32_t ret = OH_PictureInPicture_StartPip(0);
-    OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_StartPip ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestUnregisterLifeCycleListener OH_PictureInPicture_StartPip ret=%{public}d", ret);
     
     ret = OH_PictureInPicture_StopPip(controllerId);
-    OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_StopPip ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestUnregisterLifeCycleListener OH_PictureInPicture_StopPip ret=%{public}d", ret);
     ret = OH_PictureInPicture_DeletePip(controllerId);
-    OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_DeletePip ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestUnregisterLifeCycleListener OH_PictureInPicture_DeletePip ret=%{public}d", ret);
     
     OH_LOG_INFO(LOG_APP, "TestUnregisterLifeCycleListener g_timer7=%{public}d", g_timer7);
     OH_LOG_INFO(LOG_APP, "TestUnregisterLifeCycleListener g_timer8=%{public}d", g_timer8);
     if (ret != 0 || g_timer7 != 0 || g_timer8 != TWO) {
-        napi_create_int32(env, FAIL, &result);
+        napi_create_int32(env, ret == 0? (g_timer7 == 0? g_timer8: g_timer7): ret, &result);
         return result;
     }
     OH_PictureInPicture_UnregisterLifecycleListener(controllerId, WebPipLifecycleUnRegisterCallback2);
@@ -1390,7 +1390,7 @@ static napi_value TestUnregisterAllLifeCycleListeners(napi_env env, napi_callbac
     uint32_t mainWindowId;
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     napi_get_value_uint32(env, args[0], &mainWindowId);
-    OH_LOG_INFO(LOG_APP, "mainWindowId =%{public}d.", mainWindowId);
+    OH_LOG_INFO(LOG_APP, "TestUnregisterAllLifeCycleListeners mainWindowId =%{public}d.", mainWindowId);
     napi_value result;
     PictureInPicture_PipControlGroup controlGroup[1] = {
         PictureInPicture_PipControlGroup::VIDEO_PLAY_FAST_FORWARD_BACKWARD
@@ -1412,25 +1412,24 @@ static napi_value TestUnregisterAllLifeCycleListeners(napi_env env, napi_callbac
     OH_PictureInPicture_UnregisterAllLifecycleListeners(controllerId);
     
     int32_t ret = OH_PictureInPicture_StartPip(0);
-    OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_StartPip ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestUnregisterAllLifeCycleListeners OH_PictureInPicture_StartPip ret=%{public}d", ret);
     
     ret = OH_PictureInPicture_StopPip(controllerId);
-    OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_StopPip ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestUnregisterAllLifeCycleListeners OH_PictureInPicture_StopPip ret=%{public}d", ret);
     ret = OH_PictureInPicture_DeletePip(controllerId);
-    OH_LOG_INFO(LOG_APP, "OH_PictureInPicture_DeletePip ret=%{public}d", ret);
+    OH_LOG_INFO(LOG_APP, "TestUnregisterAllLifeCycleListeners OH_PictureInPicture_DeletePip ret=%{public}d", ret);
     
     OH_LOG_INFO(LOG_APP, "TestUnregisterAllLifeCycleListeners g_timer7=%{public}d", g_timer7);
     OH_LOG_INFO(LOG_APP, "TestUnregisterAllLifeCycleListeners g_timer8=%{public}d", g_timer8);
     if (ret != 0 || g_timer7 != 0 || g_timer8 != 0) {
-        napi_create_int32(env, FAIL, &result);
+        napi_create_int32(env, ret == 0? (g_timer7 == 0? g_timer8: g_timer7): ret, &result);
         return result;
     }
     napi_create_int32(env, SUCCESS, &result);
     return result;
 }
 
-EXTERN_C_START
-static napi_value Init(napi_env env, napi_value exports)
+static napi_value pipWindowInit(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] = {
         { "testPipTemplateTypeEnum", nullptr, TestPipTemplateTypeEnum,
@@ -1475,6 +1474,16 @@ static napi_value Init(napi_env env, napi_value exports)
             nullptr, nullptr, nullptr, napi_default, nullptr },
         { "testUnregisterResizeListener", nullptr, TestUnregisterResizeListener,
             nullptr, nullptr, nullptr, napi_default, nullptr },
+    };
+    napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+    return exports;
+}
+
+EXTERN_C_START
+static napi_value Init(napi_env env, napi_value exports)
+{
+    pipWindowInit(env, exports);
+    napi_property_descriptor desc[] = {
         { "testUnregisterAllResizeListeners", nullptr, TestUnregisterAllResizeListeners,
             nullptr, nullptr, nullptr, napi_default, nullptr },
         { "testRegisterControlEventListener", nullptr, TestRegisterControlEventListener,
