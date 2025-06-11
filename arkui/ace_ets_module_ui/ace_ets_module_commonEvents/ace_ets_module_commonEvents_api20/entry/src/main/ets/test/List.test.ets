@@ -15,8 +15,12 @@
 
 import getDisplayId from './DragTest/getDisplayId.test';
 import tapLocationTest from './TapGestureTest/tapLocation.test';
+import PanGestureTest from './PanGestureTest/observer.test';
+import FrameNodeTest from './frameNode/framenode.test';
 
 export default function testsuite() {
   getDisplayId();
   tapLocationTest();
+  PanGestureTest();
+  FrameNodeTest();
 }

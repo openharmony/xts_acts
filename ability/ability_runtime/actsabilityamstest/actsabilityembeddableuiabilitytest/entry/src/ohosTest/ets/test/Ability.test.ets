@@ -40,7 +40,9 @@ export default function abilityTest() {
       }
       context.startAbility(want1);
     })
-    beforeEach(() => {
+    beforeEach(async (done:Function) => {
+      await sleep(2000);
+      done();
     })
 
 

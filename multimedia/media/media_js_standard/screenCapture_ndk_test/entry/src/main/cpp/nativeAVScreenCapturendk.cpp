@@ -41,6 +41,8 @@ using namespace std;
 static int32_t g_recordTimeHalf = 500000;
 static int32_t g_recordTimeOne = 1000000;
 static uint64_t g_displaySelectedId = -1;
+static int32_t g_userSelectedType = -1;
+static uint64_t g_userSelectedDisplayId = -1;
 
 OH_AVCodec *g_videoEnc;
 constexpr uint32_t DEFAULT_WIDTH = 720;
@@ -56,6 +58,7 @@ static struct OH_AVScreenCapture_ContentFilter *g_contentFilter;
 static OH_AVScreenCapture *screenCaptureRecord;
 static OH_AVScreenCapture *screenCaptureSurface;
 static OH_AVScreenCapture *screenCaptureContentChange;
+static OH_AVScreenCapture *screenCaptureStrategyForPrivacyMaskMode;
 
 void SetConfig(OH_AVScreenCaptureConfig &config)
 {
@@ -99,6 +102,20 @@ void OnDisplaySelected(struct OH_AVScreenCapture *capture, uint64_t displayId, v
     (void)capture;
     (void)displayId;
     g_displaySelectedId = displayId;
+    (void)userData;
+}
+
+void OnUserSelected(OH_AVScreenCapture* capture, OH_AVScreenCapture_UserSelectionInfo* selections, void *userData)
+{
+    (void)capture;
+    int* selectType = new int;
+    uint64_t* displayId = new uint64_t;
+    OH_AVScreenCapture_GetCaptureTypeSelected(selections, selectType);
+    OH_AVScreenCapture_GetDisplayIdSelected(selections, displayId);
+    g_userSelectedType = *selectType;
+    g_userSelectedDisplayId = *displayId;
+    OH_LOG_INFO(LOG_APP, "OnUserSelected g_userSelectedType=%{public}d, g_userSelectedDisplayId=%{public}lu",
+        g_userSelectedType, g_userSelectedDisplayId);
     (void)userData;
 }
 
@@ -771,6 +788,9 @@ static napi_value normalAVScreenCaptureStrategyForKeepCaptureDuringCallFalse(nap
     if (result == AV_SCREEN_CAPTURE_ERR_OK) {
         result = OH_AVScreenCapture_ReleaseCaptureStrategy(strategy);
     }
+    if (result == AV_SCREEN_CAPTURE_ERR_OK) {
+        result = OH_AVScreenCapture_Release(screenCaptureNormal);
+    }
     int resCapture = TEST_FAILED;
     if (result == AV_SCREEN_CAPTURE_ERR_OK) {
         resCapture = TEST_PASS;
@@ -790,6 +810,9 @@ static napi_value normalAVScreenCaptureStrategyForKeepCaptureDuringCallTrue(napi
     }
     if (result == AV_SCREEN_CAPTURE_ERR_OK) {
         result = OH_AVScreenCapture_ReleaseCaptureStrategy(strategy);
+    }
+    if (result == AV_SCREEN_CAPTURE_ERR_OK) {
+        result = OH_AVScreenCapture_Release(screenCaptureNormal);
     }
     int resCapture = TEST_FAILED;
     if (result == AV_SCREEN_CAPTURE_ERR_OK) {
@@ -819,6 +842,24 @@ static napi_value normalAVScreenCaptureContentChangedCallback(napi_env env, napi
 
     OH_AVSCREEN_CAPTURE_ErrCode result = AV_SCREEN_CAPTURE_ERR_OK;
     if (result2 == AV_SCREEN_CAPTURE_ERR_OK) {
+        result = AV_SCREEN_CAPTURE_ERR_OK;
+    } else {
+        result = AV_SCREEN_CAPTURE_ERR_OPERATE_NOT_PERMIT;
+    }
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+// SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_CONTENT_CHANGED_0100
+static napi_value normalAVScreenCaptureContentChangedTestStop(napi_env env, napi_callback_info info)
+{
+    usleep(g_recordTimeOne);
+    OH_AVSCREEN_CAPTURE_ErrCode result1 = OH_AVScreenCapture_StopScreenCapture(screenCaptureContentChange);
+    OH_AVSCREEN_CAPTURE_ErrCode result2 = OH_AVScreenCapture_Release(screenCaptureContentChange);
+
+    OH_AVSCREEN_CAPTURE_ErrCode result = AV_SCREEN_CAPTURE_ERR_OK;
+    if (result1 == AV_SCREEN_CAPTURE_ERR_OK && result2 == AV_SCREEN_CAPTURE_ERR_OK) {
         result = AV_SCREEN_CAPTURE_ERR_OK;
     } else {
         result = AV_SCREEN_CAPTURE_ERR_OPERATE_NOT_PERMIT;
@@ -891,6 +932,141 @@ static napi_value normalAVScreenCaptureSetCaptureAreaTestStop(napi_env env, napi
     return res;
 }
 
+static napi_value normalAVScreenCaptureStrategyForPrivacyMaskModeScreen(napi_env env, napi_callback_info info)
+{
+    screenCaptureStrategyForPrivacyMaskMode = OH_AVScreenCapture_Create();
+    OH_AVScreenCaptureConfig config_;
+    SetConfig(config_);
+
+    bool isMicrophone = false;
+    OH_AVScreenCapture_SetMicrophoneEnabled(screenCaptureStrategyForPrivacyMaskMode, isMicrophone);
+    OH_AVScreenCapture_SetErrorCallback(screenCaptureStrategyForPrivacyMaskMode, OnError, nullptr);
+    OH_AVScreenCapture_SetStateCallback(screenCaptureStrategyForPrivacyMaskMode, OnStateChange, nullptr);
+    OH_AVScreenCapture_SetDataCallback(screenCaptureStrategyForPrivacyMaskMode, OnBufferAvailable, nullptr);
+
+    OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureStrategy();
+    OH_AVScreenCapture_StrategyForPrivacyMaskMode(strategy, 0);
+    OH_AVScreenCapture_SetCaptureStrategy(screenCaptureStrategyForPrivacyMaskMode, strategy);
+
+    OH_AVSCREEN_CAPTURE_ErrCode result1 = OH_AVScreenCapture_Init(screenCaptureStrategyForPrivacyMaskMode, config_);
+    OH_AVSCREEN_CAPTURE_ErrCode result2 = OH_AVScreenCapture_StartScreenCapture(
+        screenCaptureStrategyForPrivacyMaskMode);
+
+    OH_AVSCREEN_CAPTURE_ErrCode result = AV_SCREEN_CAPTURE_ERR_OK;
+    if (result2 == AV_SCREEN_CAPTURE_ERR_OK) {
+        result = AV_SCREEN_CAPTURE_ERR_OK;
+    } else {
+        result = AV_SCREEN_CAPTURE_ERR_OPERATE_NOT_PERMIT;
+    }
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value normalAVScreenCaptureStrategyForPrivacyMaskModeDisplay(napi_env env, napi_callback_info info)
+{
+    screenCaptureStrategyForPrivacyMaskMode = OH_AVScreenCapture_Create();
+    OH_AVScreenCaptureConfig config_;
+    SetConfig(config_);
+
+    bool isMicrophone = false;
+    OH_AVScreenCapture_SetMicrophoneEnabled(screenCaptureStrategyForPrivacyMaskMode, isMicrophone);
+    OH_AVScreenCapture_SetErrorCallback(screenCaptureStrategyForPrivacyMaskMode, OnError, nullptr);
+    OH_AVScreenCapture_SetStateCallback(screenCaptureStrategyForPrivacyMaskMode, OnStateChange, nullptr);
+    OH_AVScreenCapture_SetDataCallback(screenCaptureStrategyForPrivacyMaskMode, OnBufferAvailable, nullptr);
+
+    OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureStrategy();
+    OH_AVScreenCapture_StrategyForPrivacyMaskMode(strategy, 1);
+    OH_AVScreenCapture_SetCaptureStrategy(screenCaptureStrategyForPrivacyMaskMode, strategy);
+
+    OH_AVSCREEN_CAPTURE_ErrCode result1 = OH_AVScreenCapture_Init(screenCaptureStrategyForPrivacyMaskMode, config_);
+    OH_AVSCREEN_CAPTURE_ErrCode result2 = OH_AVScreenCapture_StartScreenCapture(
+        screenCaptureStrategyForPrivacyMaskMode);
+
+    OH_AVSCREEN_CAPTURE_ErrCode result = AV_SCREEN_CAPTURE_ERR_OK;
+    if (result2 == AV_SCREEN_CAPTURE_ERR_OK) {
+        result = AV_SCREEN_CAPTURE_ERR_OK;
+    } else {
+        result = AV_SCREEN_CAPTURE_ERR_OPERATE_NOT_PERMIT;
+    }
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+// SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_STRATEGY_FOR_PRIVACY_MASKMODE
+static napi_value normalAVScreenCaptureStrategyForPrivacyMaskModeTestStop(napi_env env, napi_callback_info info)
+{
+    usleep(g_recordTimeOne);
+    OH_AVSCREEN_CAPTURE_ErrCode result1 = OH_AVScreenCapture_StopScreenCapture(
+        screenCaptureStrategyForPrivacyMaskMode);
+    OH_AVSCREEN_CAPTURE_ErrCode result2 = OH_AVScreenCapture_Release(screenCaptureStrategyForPrivacyMaskMode);
+
+    OH_AVSCREEN_CAPTURE_ErrCode result = AV_SCREEN_CAPTURE_ERR_OK;
+    if (result1 == AV_SCREEN_CAPTURE_ERR_OK && result2 == AV_SCREEN_CAPTURE_ERR_OK) {
+        result = AV_SCREEN_CAPTURE_ERR_OK;
+    } else {
+        result = AV_SCREEN_CAPTURE_ERR_OPERATE_NOT_PERMIT;
+    }
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+// SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_SetSelectionCallback_0100
+static napi_value normalAVScreenCaptureSelectionCallbackSuccess(napi_env env, napi_callback_info info)
+{
+    g_userSelectedType = -1;
+    g_userSelectedDisplayId = -1;
+    screenCaptureNormal = OH_AVScreenCapture_Create();
+    OH_AVScreenCaptureConfig config_;
+    SetConfig(config_);
+	
+    bool isMicrophone = false;
+    OH_AVScreenCapture_SetMicrophoneEnabled(screenCaptureNormal, isMicrophone);
+    OH_AVScreenCapture_SetErrorCallback(screenCaptureNormal, OnError, nullptr);
+    OH_AVScreenCapture_SetStateCallback(screenCaptureNormal, OnStateChange, nullptr);
+    OH_AVScreenCapture_SetDataCallback(screenCaptureNormal, OnBufferAvailable, nullptr);
+    OH_AVScreenCapture_SetSelectionCallback(screenCaptureNormal, OnUserSelected, nullptr);
+
+    OH_AVSCREEN_CAPTURE_ErrCode result1 = OH_AVScreenCapture_Init(screenCaptureNormal, config_);
+    OH_AVSCREEN_CAPTURE_ErrCode result2 = OH_AVScreenCapture_StartScreenCapture(screenCaptureNormal);
+
+    OH_AVSCREEN_CAPTURE_ErrCode result = AV_SCREEN_CAPTURE_ERR_OK;
+    if (result2 == AV_SCREEN_CAPTURE_ERR_OK) {
+        result = AV_SCREEN_CAPTURE_ERR_OK;
+    } else {
+        result = AV_SCREEN_CAPTURE_ERR_INVALID_VAL;
+    }
+    if (result == AV_SCREEN_CAPTURE_ERR_OK) {
+        OH_LOG_INFO(LOG_APP, "g_userSelectedType=%{public}d, g_userSelectedDisplayId=%{public}lu",
+            g_userSelectedType, g_userSelectedDisplayId);
+        result = g_userSelectedType >= 0 ? AV_SCREEN_CAPTURE_ERR_OK : AV_SCREEN_CAPTURE_ERR_INVALID_VAL;
+        result = g_userSelectedDisplayId >= 0 ? AV_SCREEN_CAPTURE_ERR_OK : AV_SCREEN_CAPTURE_ERR_INVALID_VAL;
+    }
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+// SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_SetSelectionCallback_0100
+static napi_value normalAVScreenCaptureSelectionCallbackStop(napi_env env, napi_callback_info info)
+{
+    usleep(g_recordTimeHalf);
+    OH_AVSCREEN_CAPTURE_ErrCode result1 = OH_AVScreenCapture_StopScreenCapture(screenCaptureNormal);
+    OH_AVSCREEN_CAPTURE_ErrCode result2 = OH_AVScreenCapture_Release(screenCaptureNormal);
+
+    int32_t result = TEST_FAILED;
+    if (result2 == AV_SCREEN_CAPTURE_ERR_OK) {
+        result = TEST_PASS;
+    } else {
+        result = TEST_FAILED;
+    }
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -931,10 +1107,22 @@ static napi_value Init(napi_env env, napi_value exports)
             nullptr},
         {"normalAVScreenCaptureContentChangedCallback", nullptr, normalAVScreenCaptureContentChangedCallback,
             nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"normalAVScreenCaptureContentChangedTestStop", nullptr, normalAVScreenCaptureContentChangedTestStop,
+            nullptr, nullptr, nullptr, napi_default, nullptr},
         {"normalAVScreenCaptureSetCaptureAreaTest", nullptr, normalAVScreenCaptureSetCaptureAreaTest,
-        nullptr, nullptr, nullptr, napi_default, nullptr},
+            nullptr, nullptr, nullptr, napi_default, nullptr},
         {"normalAVScreenCaptureSetCaptureAreaTestStop", nullptr, normalAVScreenCaptureSetCaptureAreaTestStop,
-        nullptr, nullptr, nullptr, napi_default, nullptr},
+            nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"normalAVScreenCaptureStrategyForPrivacyMaskModeScreen", nullptr,
+            normalAVScreenCaptureStrategyForPrivacyMaskModeScreen, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"normalAVScreenCaptureStrategyForPrivacyMaskModeDisplay", nullptr,
+            normalAVScreenCaptureStrategyForPrivacyMaskModeDisplay, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"normalAVScreenCaptureStrategyForPrivacyMaskModeTestStop", nullptr,
+            normalAVScreenCaptureStrategyForPrivacyMaskModeTestStop, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"normalAVScreenCaptureSelectionCallbackSuccess", nullptr, normalAVScreenCaptureSelectionCallbackSuccess,
+            nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"normalAVScreenCaptureSelectionCallbackStop", nullptr, normalAVScreenCaptureSelectionCallbackStop,
+            nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;

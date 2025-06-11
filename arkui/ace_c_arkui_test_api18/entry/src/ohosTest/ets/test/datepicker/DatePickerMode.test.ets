@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import { Driver, ON, PointerMatrix, Rect } from '@ohos.UiTest';
 import Utils from '../common/Utils';
 
@@ -34,7 +34,7 @@ export default function datePickerTest(){
      * @tc.level      : Level 1
      */
 
-    it('testDatePickerMode001', 0, async (done: Function) => {
+    it('testDatePickerMode001', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'TestDatePickerMode';
       await Utils.pushPage(`datePicker/${PAGE_TAG}`);
       await Utils.sleep(3000)
@@ -52,7 +52,7 @@ export default function datePickerTest(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDatePickerMode002', 0, async (done: Function) => {
+    it('testDatePickerMode002', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'TestDatePickerMode';
       await Utils.pushPage(`datePicker/${PAGE_TAG}`);
       await Utils.sleep(3000)
@@ -70,7 +70,7 @@ export default function datePickerTest(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDatePickerMode003', 0, async (done: Function) => {
+    it('testDatePickerMode003', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'TestDatePickerMode';
       await Utils.pushPage(`datePicker/${PAGE_TAG}`);
       await Utils.sleep(3000)

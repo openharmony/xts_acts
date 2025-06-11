@@ -13,11 +13,13 @@
  * limitations under the License.
  */
 import PostOnIdleTest from "./onIdle/PostOnIdleTest.test"
+import EmbeddedComponentOptionTest from "./EmbeddedComponentOption/EmbeddedComponentOptionTest.test"
 import CustomComponentOnDrawFrontTest from "./customcomponent/CustomComponentOnDrawFrontTest.test"
 import CustomComponentOnDrawBehindTest from "./customcomponent/CustomComponentOnDrawBehindTest.test"
 
 export default function testsuite() {
   PostOnIdleTest();
+  EmbeddedComponentOptionTest();
   CustomComponentOnDrawFrontTest();
   CustomComponentOnDrawBehindTest();
 }

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function calendarPickerTextStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCalendarPickerTextStyle001', 0, async (done: Function) => {
+    it('testCalendarPickerTextStyle001', Level.LEVEL1, async  (done: Function) => {
       expect(nativeFunc.testCalendarPickerTextStyle001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function calendarPickerTextStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCalendarPickerTextStyle002', 0, async (done: Function) => {
+    it('testCalendarPickerTextStyle002', Level.LEVEL1, async  (done: Function) => {
       expect(nativeFunc.testCalendarPickerTextStyle002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function calendarPickerTextStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCalendarPickerTextStyle003', 0, async (done: Function) => {
+    it('testCalendarPickerTextStyle003', Level.LEVEL1, async  (done: Function) => {
       expect(nativeFunc.testCalendarPickerTextStyle003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function calendarPickerTextStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCalendarPickerTextStyle004', 0, async (done: Function) => {
+    it('testCalendarPickerTextStyle004', Level.LEVEL1, async  (done: Function) => {
       expect(nativeFunc.testCalendarPickerTextStyle004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function calendarPickerTextStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCalendarPickerTextStyle005', 0, async (done: Function) => {
+    it('testCalendarPickerTextStyle005', Level.LEVEL1, async  (done: Function) => {
       expect(nativeFunc.testCalendarPickerTextStyle005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function calendarPickerTextStyleTest() {
   * @tc.type       : Function
   * @tc.level      : Level 1
   */
-    it('testCalendarPickerTextStyle006', 0, async (done: Function) => {
+    it('testCalendarPickerTextStyle006', Level.LEVEL1, async  (done: Function) => {
       expect(nativeFunc.testCalendarPickerTextStyle006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function calendarPickerTextStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCalendarPickerTextStyle007', 0, async (done: Function) => {
+    it('testCalendarPickerTextStyle007', Level.LEVEL1, async  (done: Function) => {
       expect(nativeFunc.testCalendarPickerTextStyle007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function calendarPickerTextStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCalendarPickerTextStyle008', 0, async (done: Function) => {
+    it('testCalendarPickerTextStyle008', Level.LEVEL1, async  (done: Function) => {
       expect(nativeFunc.testCalendarPickerTextStyle008()).assertEqual(0)
       done()
     })
@@ -138,7 +138,7 @@ export default function calendarPickerTextStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCalendarPickerTextStyle009', 0, async (done: Function) => {
+    it('testCalendarPickerTextStyle009', Level.LEVEL1, async  (done: Function) => {
       expect(nativeFunc.testCalendarPickerTextStyle009()).assertEqual(0)
       done()
     })
@@ -151,7 +151,7 @@ export default function calendarPickerTextStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCalendarPickerTextStyle010', 0, async (done: Function) => {
+    it('testCalendarPickerTextStyle010', Level.LEVEL1, async  (done: Function) => {
       expect(nativeFunc.testCalendarPickerTextStyle010()).assertEqual(0)
       done()
     })
@@ -164,7 +164,7 @@ export default function calendarPickerTextStyleTest() {
  * @tc.type       : Function
  * @tc.level      : Level 1
  */
-    it('testCalendarPickerTextStyle011', 0, async (done: Function) => {
+    it('testCalendarPickerTextStyle011', Level.LEVEL1, async  (done: Function) => {
       expect(nativeFunc.testCalendarPickerTextStyle011()).assertEqual(0)
       done()
     })
@@ -177,7 +177,7 @@ export default function calendarPickerTextStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCalendarPickerTextStyle012', 0, async (done: Function) => {
+    it('testCalendarPickerTextStyle012', Level.LEVEL1, async  (done: Function) => {
       expect(nativeFunc.testCalendarPickerTextStyle012()).assertEqual(0)
       done()
     })
@@ -190,7 +190,7 @@ export default function calendarPickerTextStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCalendarPickerTextStyle013', 0, async (done: Function) => {
+    it('testCalendarPickerTextStyle013', Level.LEVEL1, async  (done: Function) => {
       expect(nativeFunc.testCalendarPickerTextStyle013()).assertEqual(0)
       done()
     })
@@ -203,7 +203,7 @@ export default function calendarPickerTextStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCalendarPickerTextStyle014', 0, async (done: Function) => {
+    it('testCalendarPickerTextStyle014', Level.LEVEL1, async  (done: Function) => {
       expect(nativeFunc.testCalendarPickerTextStyle014()).assertEqual(0)
       done()
     })
@@ -216,7 +216,7 @@ export default function calendarPickerTextStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCalendarPickerTextStyle015', 0, async (done: Function) => {
+    it('testCalendarPickerTextStyle015', Level.LEVEL1, async  (done: Function) => {
       expect(nativeFunc.testCalendarPickerTextStyle015()).assertEqual(0)
       done()
     })
@@ -229,7 +229,7 @@ export default function calendarPickerTextStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testCalendarPickerTextStyle016', 0, async (done: Function) => {
+    it('testCalendarPickerTextStyle016', Level.LEVEL1, async  (done: Function) => {
       expect(nativeFunc.testCalendarPickerTextStyle016()).assertEqual(0)
       done()
     })

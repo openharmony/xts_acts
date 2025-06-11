@@ -93,7 +93,7 @@ export default function cachedShowFlow() {
       }
       await CommonFunc.sleep(2000);
       let driver = await Driver.create()
-      let onText: Component = await driver.findComponent(ON.type('Text').isAfter(ON.text('N8')));
+      let onText = await driver.findComponent(ON.id('show_flow_9'));
       console.info("[cachedShowFlow_0200] onText is: " + onText);
       expect(onText).assertEqual(null);
       console.info('[cachedShowFlow_0200] END');
@@ -128,7 +128,7 @@ export default function cachedShowFlow() {
       }
       await CommonFunc.sleep(2000);
       let driver = await Driver.create()
-      let onText: Component = await driver.findComponent(ON.type('Text').isAfter(ON.text('N8')));
+      let onText = await driver.findComponent(ON.id('show_flow_9'));
       console.info("[cachedShowFlow_0300] onText is: " + onText);
       expect(onText).assertEqual(null);
       console.info('[cachedShowFlow_0300] END');
@@ -163,7 +163,7 @@ export default function cachedShowFlow() {
       }
       await CommonFunc.sleep(2000);
       let driver = await Driver.create()
-      let onText: Component = await driver.findComponent(ON.type('Text').isAfter(ON.text('N8')));
+      let onText = await driver.findComponent(ON.id('show_flow_9'));
       let text = await onText.getText();
       console.info("[cachedShowFlow_0400'] text is: " + text);
       await driver.assertComponentExist(ON.text('N9'));
@@ -199,7 +199,7 @@ export default function cachedShowFlow() {
       }
       await CommonFunc.sleep(2000);
       let driver = await Driver.create()
-      let onText: Component = await driver.findComponent(ON.type('Text').isAfter(ON.text('N8')));
+      let onText = await driver.findComponent(ON.id('show_flow_9'));
       console.info("[cachedShowFlow_0500] onText is: " + onText);
       expect(onText).assertEqual(null);
       console.info('[cachedShowFlow_0500] END');
@@ -234,7 +234,7 @@ export default function cachedShowFlow() {
       }
       await CommonFunc.sleep(2000);
       let driver = await Driver.create()
-      let onText: Component = await driver.findComponent(ON.type('Text').isAfter(ON.text('N8')));
+      let onText = await driver.findComponent(ON.id('show_flow_9'));
       console.info("[cachedShowFlow_0600] onText is: " + onText);
       expect(onText).assertEqual(null);
       console.info('[cachedShowFlow_0600] END');

@@ -70,7 +70,7 @@ struct Repeat0030 {
           .height('3%')
       }
 
-      WaterFlow({ scroller: this.scroller }) {
+      WaterFlow({ scroller: this.scroller, layoutMode: 1 }) {
         Repeat<WaterFlowItemInfo>(this.itemList)
           .each((obj: RepeatItem<WaterFlowItemInfo>) => {
             FlowItem() {

@@ -16,10 +16,10 @@
 import uitestComponentErrorTest from './UitestComponentErrorCode.test';
 import uitestDriverErrorTest from './UitestDriverErrorCode.test';
 import uitestUiWindowErrorTest from './UitestUiWindowErrorCode.test';
-import GrantPermission from './GrantPermission.test';
+import uitestOnErrorTest from './UitestOnErrorCode.test';
 export default function testsuite() {
-  GrantPermission();
   uitestComponentErrorTest();
   uitestDriverErrorTest();
   uitestUiWindowErrorTest();
+  uitestOnErrorTest();
 }

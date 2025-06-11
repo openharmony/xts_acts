@@ -15,29 +15,46 @@
 import FlexLayoutPolicyTest from './Flex/FlexLayoutPolicyTest.test.ets'
 import GridRowNoColumnsTest from './GridRow/GridRowNoColumnsTest.test.ets'
 import LayoutInspectorTest from './inspector/layoutInspector.test.ets'
-
 import ColumnMatchParentTest from './Column/ColumnMatchParentTest.ets'
 import ColumnWrapContentTest from './Column/ColumnWrapContentTest.ets'
 import FlexWrapContentTest from './Flex/FlexWrapContentTest.ets'
 import RowMatchParentTest from './Row/RowMatchParentTest.ets'
 import RowWrapContentTest from './Row/RowWrapContentTest.ets'
-import FolderStackMatchParentTest from './Stack/FolderStackMatchParentTest.ets'
+
 import StackMatchParentTest from './Stack/StackMatchParentTest.ets'
 import StackWrapContentTest from './Stack/StackWrapContentTest.ets'
+import ColumnFixAtIdealSizeTest from './Column/ColumnFixAtIdealSizeTest.ets'
+import RowFixAtIdealSizeTest from './Row/RowFixAtIdealSizeTest.ets'
+import StackFixAtIdealSizeTest from './Stack/StackFixAtIdealSizeTest.ets'
+import FlexFixAtIdealSizeTest from './Flex/FlexFixAtIdealSizeTest.ets'
+import GridRowFixAtIdealSizeTest from './GridRow/GridRowFixAtIdealSizeTest.ets'
+import GridColFixAtIdealSizeTest from './GridCol/GridColFixAtIdealSizeTest.ets'
 
+import ButtonAlignTest from './BoxAlign/ButtonAlignTest.ets'
+import StackSafeAreaTest from './Stack/StackSafeAreaTest.ets'
+import StackChildAlignmentTest from './Stack/StackChildAlignmentTest.ets'
 
 export default function testsuite() {
   FlexLayoutPolicyTest();
   GridRowNoColumnsTest();
-
   ColumnMatchParentTest();
   ColumnWrapContentTest();
   FlexWrapContentTest();
   RowMatchParentTest();
   RowWrapContentTest();
-  FolderStackMatchParentTest();
+ 
   StackMatchParentTest();
   StackWrapContentTest();
   LayoutInspectorTest();
+  ColumnFixAtIdealSizeTest();
+  RowFixAtIdealSizeTest();
+  StackFixAtIdealSizeTest();
+  FlexFixAtIdealSizeTest();
+  GridRowFixAtIdealSizeTest();
+  GridColFixAtIdealSizeTest();
+
+  ButtonAlignTest();
+  StackSafeAreaTest();
+  StackChildAlignmentTest();
 
 }

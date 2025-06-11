@@ -18,6 +18,7 @@
 #include "onIdle/post_on_idle_test.h"
 #include "customcomponent/customcomponent_ondraw_front_test.h"
 #include "customcomponent/customcomponent_ondraw_behind_test.h"
+#include "EmbeddedComponentOption/EmbeddedComponentOptionTest.h"
 
 namespace ArkUICapiTest
 {
@@ -39,6 +40,8 @@ namespace ArkUICapiTest
              nullptr, nullptr, nullptr, napi_default, nullptr},
             {"customComponentOnDrawBehindTest", nullptr, CustomComponentOnDrawBehindTest::CreateNativeNode,
              nullptr, nullptr, nullptr, napi_default, nullptr},
+            {"testEmbeddedComponentOption", nullptr, EmbeddedComponentOptionTest::testEmbeddedComponentOption001,
+            nullptr, nullptr, nullptr, napi_default, nullptr},
         };
         if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok)
         {

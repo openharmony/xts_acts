@@ -35,6 +35,7 @@ import {
   ClickType,
   BaseItemInfo,
   SaveMode,
+  ItemDisplayRatio
 } from '@ohos.file.PhotoPickerComponent';
 import { AlbumPickerComponent, AlbumPickerOptions, AlbumInfo } from '@ohos.file.AlbumPickerComponent';
 import photoAccessHelper from '@ohos.file.photoAccessHelper';
@@ -153,9 +154,20 @@ export default function TextPicker() {
   describe('testPicker', () => {
     const isExecutePicker = canIUse('SystemCapability.FileManagement.PhotoAccessHelper.Core');
     let driver: Driver;
+    driver = Driver.create();
+
+    beforeAll(async (done: Function) => {
+      let maxButton = await driver.findComponent(ON.id("EnhanceMaximizeBtn"));
+      await CommonFunc.sleep(1000);
+      if(maxButton !== null){
+        await maxButton.click();
+      }
+      await CommonFunc.sleep(1000);
+      done();
+    });
+    
     beforeEach(async (done: Function) => {
       console.info("testPicker beforeEach start");
-      driver = Driver.create();
       await CommonFunc.sleep(5000);
       done();
     });
@@ -1864,13 +1876,14 @@ export default function TextPicker() {
       let code: number = EventType.PHOTO_PICKER_INFO;
       let pickerOptions: PickerOptions = getDefaultPickerOptions();
       pickerOptions.singleLineConfig = {
-        itemDisplayRatio: 1,
+        itemDisplayRatio: ItemDisplayRatio.SQUARE_RATIO,
         itemBorderRadius: {
           topLeft: 8,
           bottomRight: 8
         },
         itemGap: '10vp'
       };
+      pickerOptions.singleLineConfig.itemDisplayRatio = ItemDisplayRatio.ORIGINAL_SIZE_RATIO;
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/PickerComponent',
         params: {

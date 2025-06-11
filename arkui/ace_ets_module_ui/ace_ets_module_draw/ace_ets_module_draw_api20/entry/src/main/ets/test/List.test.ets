@@ -14,6 +14,27 @@
  */
 import RoundRectTest from './CanvasRenderingContext2D/RoundRectTest.test';
 
+import StartImageAnalyzerErrorCodeTest from './CanvasRenderingContext2D/StartImageAnalyzerErrorCodeTest';
+import CircleResourceTest from './Circle/CircleResourceTest';
+import EllipseResourceTest from './Ellipse/EllipseResourceTest';
+import LineResourceTest from './Line/LineResourceTest';
+import PathResourceTest from './Path/PathResourceTest';
+import PolygonResourceTest from './Polygon/PolygonResourceTest';
+import PolylineResourceTest from './Polyline/PolylineResourceTest';
+import RectResourceTest from './Rect/RectResourceTest';
+import ShapeResourceTest from './Shape/ShapeResourceTest';
+
 export default function testsuite() {
   RoundRectTest(); 
+
+  StartImageAnalyzerErrorCodeTest();
+  CircleResourceTest();
+  EllipseResourceTest();
+  LineResourceTest();
+  PathResourceTest();
+  PolygonResourceTest();
+  PolylineResourceTest();
+  RectResourceTest();
+  ShapeResourceTest();
+
 }
