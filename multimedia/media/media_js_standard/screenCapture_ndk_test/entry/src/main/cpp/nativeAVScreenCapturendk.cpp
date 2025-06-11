@@ -37,15 +37,8 @@
 #include <unistd.h>
 #include <atomic>
 
-#undef LOG_DOMAIN
-#undef LOG_TAG
 #define LOG_DOMAIN 0x3200
-#define LOG_TAG "avScreenCaptureRecorder"
-
-#define LOGI(...) ((void)OH_LOG_Print(LOG_APP, LOG_INFO, LOG_DOMAIN, LOG_TAG, __VA_ARGS__))
-#define LOGD(...) ((void)OH_LOG_Print(LOG_APP, LOG_DEBUG, LOG_DOMAIN, LOG_TAG, __VA_ARGS__))
-#define LOGW(...) ((void)OH_LOG_Print(LOG_APP, LOG_WARN, LOG_DOMAIN, LOG_TAG, __VA_ARGS__))
-#define LOGE(...) ((void)OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_DOMAIN, LOG_TAG, __VA_ARGS__))
+#define LOG_TAG "avScreenCapture_xts"
 
 using namespace std;
 static int32_t g_recordTimeHalf = 500000;
@@ -767,6 +760,7 @@ static napi_value normalAVScreenCaptureShowCursorWithParaNullFalse(napi_env env,
     if (result == AV_SCREEN_CAPTURE_ERR_INVALID_VAL) {
         resCapture = TEST_PASS;
     }
+    OH_AVScreenCapture_Release(screenCaptureNormal);
     napi_value res;
     napi_create_int32(env, resCapture, &res);
     return res;
@@ -782,6 +776,7 @@ static napi_value normalAVScreenCaptureShowCursorWithParaNullTrue(napi_env env, 
     if (result == AV_SCREEN_CAPTURE_ERR_INVALID_VAL) {
         resCapture = TEST_PASS;
     }
+    OH_AVScreenCapture_Release(screenCaptureNormal);
     napi_value res;
     napi_create_int32(env, resCapture, &res);
     return res;
@@ -1125,6 +1120,7 @@ static napi_value multiAVScreenCaptureCreate(napi_env env, napi_callback_info in
     if (result2 != 3) {
         napi_throw_error((env), nullptr, "error : expect screenCaptureCreate16 is not Fail");
     }
+    OH_LOG_INFO(LOG_APP, "multiAVScreenCaptureCreate release result2=%{public}d", result2);
     napi_value res;
     napi_create_int32(env, result2, &res);
     return res;

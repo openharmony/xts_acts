@@ -274,6 +274,22 @@ export default function nativeAVScreenCaptureNdkTest() {
     });  
 
     /**
+     * @tc.number       SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_STRATEGY_FOR_PRIVACY_MASKMODE_0402
+     * @tc.name         SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_STRATEGY_FOR_PRIVACY_MASKMODE_0402
+     * @tc.desc         OH_AVScreenCapture_StrategyForPrivacyMaskMode 1
+     * @tc.size         MediumTest
+     * @tc.type         Function
+     * @tc.level        Level 0
+     */
+    it('SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_STRATEGY_FOR_PRIVACY_MASKMODE_0402', Level.LEVEL0,async (done: Function) => {
+      console.info(Tag + "multiAVScreenCaptureCreate-------------start :");
+      let result: number = myScreenCaptureNdk.multiAVScreenCaptureCreate();
+      console.info(Tag + "multiAVScreenCaptureCreate-------------res:" + result);
+      expect(result).assertEqual(3);
+      done();
+    });
+
+    /**
      * @tc.number       SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_SetSelectionCallback_0100
      * @tc.name         SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_SetSelectionCallback_0100
      * @tc.desc         OH_AVScreenCapture_StartScreenCapture_SetSelectionCallback_Success
@@ -425,7 +441,6 @@ export default function nativeAVScreenCaptureNdkTest() {
       let result: number = myScreenCaptureNdk.multiAVScreenCaptureCreate();
       console.info(Tag + "multiAVScreenCaptureCreate-------------res:" + result);
       expect(result).assertEqual(3);
-
       done();
     });
 
