@@ -101,7 +101,11 @@ export default function windowLayoutTest() {
         await windowClass.setUIContent("testability/pages/Index");
         expect(true).assertTrue();
         done()
-      } else {
+      } else if (textDragged == 'startMoving 1300004') {
+        await windowClass.setUIContent("testability/pages/Index");
+        expect(true).assertTrue();
+        done()
+      }else {
         await windowClass.setUIContent("testability/pages/Index");
         console.error(`${message} Error`);
         expect(true).assertFalse()

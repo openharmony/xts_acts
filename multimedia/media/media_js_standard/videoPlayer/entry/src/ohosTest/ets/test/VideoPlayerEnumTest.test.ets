@@ -119,6 +119,10 @@ export default function VideoPlayerEnumTest() {
     it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_ENUM_CONTAINER_FORMAT_TYPE_0100', Level.LEVEL0,async (done: Function) => {
       expect(media.ContainerFormatType.CFT_MPEG_4).assertEqual("mp4");
       expect(media.ContainerFormatType.CFT_MPEG_4A).assertEqual("m4a");
+      expect(media.ContainerFormatType.CFT_MP3).assertEqual("mp3");
+      expect(media.ContainerFormatType.CFT_WAV).assertEqual("wav");
+      expect(media.ContainerFormatType.CFT_AMR).assertEqual("amr");
+      expect(media.ContainerFormatType.CFT_AAC).assertEqual("aac");
       done();
     });
     /* *

@@ -182,98 +182,118 @@ struct IndexPage {
   }
 
   build() {
-    Column() {
-      Row() {
-        Text('ActsValidator')
-          .fontColor(Color.White)
-          .fontSize('22fp')
-        Row() {
-          Button() {
-            Image($r('app.media.ic_public_delete'))
-              .width('30vp')
-              .height('30vp')
-          }.backgroundColor(Color.Black)
-          .onClick(() => {
-            AlertDialog.show(
-              {
-                message: "是否删除所有记录",
-                primaryButton: {
-                  value: 'Yes',
-                  action: () => {
-                    this.ClearText();
+    Scroll() {
+      Column() {
+        Scroll() {
+          Row() {
+            Row() {
+              Text('ActsValidator')
+                .fontColor(Color.White)
+                .fontSize(20)
+            }
+
+            Row({ space: 20 }) {
+              Button() {
+                Image($r('app.media.ic_public_delete'))
+                  .width('30vp')
+                  .height('30vp')
+              }
+              .backgroundColor(Color.Black)
+              .onClick(() => {
+                AlertDialog.show(
+                  {
+                    message: "是否删除所有记录",
+                    primaryButton: {
+                      value: 'Yes',
+                      action: () => {
+                        this.ClearText();
+                        promptAction.showToast({
+                          message: '结果已删除', duration: 1000
+                        });
+                      }
+                    },
+                    secondaryButton: {
+                      value: 'No',
+                      action: () => {
+
+                      }
+                    },
+                    cancel: () => {
+
+                    }
+                  }
+                )
+              })
+
+              Button() {
+                Image($r('app.media.ic_public_save'))
+                  .width('30vp')
+                  .height('30vp')
+              }
+              .backgroundColor(Color.Black)
+              .onClick(() => {
+                this.SaveXml();
+                AlertDialog.show({
+                  message: "报告已生成，请将设备连接pc，通过run.bat确认测试已结束，获取可视化报告",
+                  confirm: {
+                    value: 'OK',
+                    action: () => {
+                      promptAction.showToast({
+                        message: '总报告已生成', duration: 1000
+                      })
+                    }
+                  },
+                  cancel: () => {
                     promptAction.showToast({
-                      message: '结果已删除', duration: 1000
+                      message: '总报告已生成', duration: 1000
                     });
                   }
-                },
-                secondaryButton: {
-                  value: 'No',
-                  action: () => {
-
-                  }
-                },
-                cancel: () => {
-
-                }
-              }
-            )
-          })
-
-          Button() {
-            Image($r('app.media.ic_public_save'))
-              .width('30vp')
-              .height('30vp')
-              .margin({ left: 30 })
-          }.backgroundColor(Color.Black)
-          .onClick(() => {
-            this.SaveXml();
-            AlertDialog.show({
-              message: "报告已生成，请将设备连接pc，通过run.bat确认测试已结束，获取可视化报告",
-              confirm: {
-                value: 'OK',
-                action: () => {
-                  promptAction.showToast({
-                    message: '总报告已生成', duration: 1000
-                  })
-                }
-              },
-              cancel: () => {
-                promptAction.showToast({
-                  message: '总报告已生成', duration: 1000
-                });
-              }
-            })
-          })
-        }
-      }.width('100%').justifyContent(FlexAlign.SpaceAround).margin({ top: '15vp' }).height('6%')
-
-      List({}) {
-        ForEach(this.TestCaseList, (item: TestCase, index: number) => {
-          ListItem() {
-            Row() {
-              Text(item.title).fontSize(20).fontColor(Color.White)
-            }
-            .width('100%')
-            .height(50)
-            .alignItems(VerticalAlign.Center)
-            .backgroundColor(this.ColorObject[index])
-            .onClick(() => {
-              router.pushUrl({
-                url: item.uri,
+                })
               })
-              let dateTimeUtil = new DateTimeUtil();
-              let time = `${dateTimeUtil.getFullYear()}-${dateTimeUtil.getMonth()}-${dateTimeUtil.getDay()} ${dateTimeUtil.getHour()}:${dateTimeUtil.getMinute()}:${dateTimeUtil.getSecond()}`;
-              let TimePath = path + "/Time.txt";
-              let OP = fs.openSync(TimePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-              let buf = new ArrayBuffer(4096);
-              fs.readSync(OP.fd, buf);
-              let Log = (time + ";").toString();
-              fs.writeSync(OP.fd, Log);
-            })
-          }
-        }, (item: TestCase) => item.title)
-      }.width('100%').height('92%').divider({ strokeWidth: 1, color: Color.Grey })
-    }.width('100%').height('100%').backgroundColor(Color.Black)
+
+            }
+
+          }.width('130%').height('20%').justifyContent(FlexAlign.Center)
+        }.scrollable(ScrollDirection.Horizontal).scrollBar(BarState.On).scrollBarColor(Color.Orange)
+
+        List({}) {
+          ForEach(this.TestCaseList, (item: TestCase, index: number) => {
+            ListItem() {
+              Row() {
+                Text(item.title).fontSize(15).fontColor(Color.White)
+              }
+              .width('100%')
+              .height(50)
+              .alignItems(VerticalAlign.Center)
+              .backgroundColor(this.ColorObject[index])
+              .justifyContent(FlexAlign.Center)
+              .onClick(() => {
+                router.pushUrl({
+                  url: item.uri,
+                })
+                let dateTimeUtil = new DateTimeUtil();
+                let time =
+                  `${dateTimeUtil.getFullYear()}-${dateTimeUtil.getMonth()}-${dateTimeUtil.getDay()} ${dateTimeUtil.getHour()}:${dateTimeUtil.getMinute()}:${dateTimeUtil.getSecond()}`;
+                let TimePath = path + "/Time.txt";
+                let OP = fs.openSync(TimePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+                let buf = new ArrayBuffer(4096);
+                fs.readSync(OP.fd, buf);
+                let Log = (time + ";").toString();
+                fs.writeSync(OP.fd, Log);
+              })
+            }
+          }, (item: TestCase) => item.title)
+        }.width('100%').divider({ strokeWidth: 1, color: Color.Grey })
+      }
+    }
+    .backgroundColor(Color.Black)
+    .border({width:1,color:Color.White})
+    .width('100%')
+    .height('100%')
+    .scrollBar(BarState.On)
+    .scrollable(ScrollDirection.Vertical)
+    .scrollBarColor(Color.Orange)
+    .margin({bottom:80})
   }
 
   ClearText() {

@@ -1563,7 +1563,17 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let subcomponment = CommonFunc.getComponentRect('1');
       let top =  subcomponment.top;
       let bottom  =  subcomponment.bottom;
-      expect(Math.abs(Math.floor((swiperTop - swiperbottom) -  (3 *(top - bottom) - vp2px(15 + 6)))) <= 1).assertTrue();
+      let subcomponment2 = CommonFunc.getComponentRect('2');
+      let top2 =  subcomponment2.top;
+      let bottom2  =  subcomponment2.bottom;
+      let subcomponment3 = CommonFunc.getComponentRect('3');
+      let top3 =  subcomponment3.top;
+      let bottom3  =  subcomponment3.bottom;
+      console.info(`[SwiperNextPrevMarginAddJsunit_0060] swiperTop - swiperbottom=
+      ${(swiperTop - swiperbottom)}`);
+      console.info(`[SwiperNextPrevMarginAddJsunit_0060] ((top - bottom) + (top2 - bottom2) + (top3 - bottom3) - vp2px(15 + 6))=
+      ${((top - bottom) + (top2 - bottom2) + (top3 - bottom3) - vp2px(15 + 6))}`);  
+      expect(Math.abs(Math.floor((swiperTop - swiperbottom) -  ((top - bottom) + (top2 - bottom2) + (top3 - bottom3) - vp2px(15 + 6)))) <= 1).assertTrue();
       done();
     });
 
@@ -1970,6 +1980,12 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let subcomponment = CommonFunc.getComponentRect('1');
       let top =  subcomponment.top;
       let bottom  =  subcomponment.bottom;
+      let subcomponment2 = CommonFunc.getComponentRect('2');
+      let top2 =  subcomponment2.top;
+      let bottom2  =  subcomponment2.bottom;
+      let subcomponment3 = CommonFunc.getComponentRect('3');
+      let top3 =  subcomponment3.top;
+      let bottom3  =  subcomponment3.bottom;
 
       // calculate
       let strJson = getInspectorByKey('swiperNextPrevMargin52');
@@ -1982,7 +1998,11 @@ export default function SwiperNextPrevMarginAddJsunit() {
       expect(nextMargin).assertEqual("15.00vp");
       expect(prevMargin).assertEqual("6.00vp");
 
-      expect(Math.abs(Math.floor((swiperTop - swiperbottom) -  (3 *(top - bottom) - vp2px(15 + 6)))) <= 1).assertTrue();
+      console.info(`[SwiperNextPrevMarginAddJsunit_0052] swiperTop - swiperbottom=
+      ${(swiperTop - swiperbottom)}`);
+      console.info(`[SwiperNextPrevMarginAddJsunit_0052] ((top - bottom) + (top2 - bottom2) + (top3 - bottom3) - vp2px(15 + 6))=
+      ${((top - bottom) + (top2 - bottom2) + (top3 - bottom3) - vp2px(15 + 6))}`);  
+      expect(Math.abs(Math.floor((swiperTop - swiperbottom) -  ((top - bottom) + (top2 - bottom2) + (top3 - bottom3) - vp2px(15 + 6)))) <= 1).assertTrue();
       done();
     });
 

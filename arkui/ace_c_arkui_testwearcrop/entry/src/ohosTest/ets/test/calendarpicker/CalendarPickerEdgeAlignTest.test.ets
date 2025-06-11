@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function calendarPickerEdgeAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCalendarPickerEdgeAlign001', 0, async (done: Function) => {
+    it('testCalendarPickerEdgeAlign001', Level.LEVEL1, async  (done: Function) => {
       expect(nativeFunc.testCalendarPickerEdgeAlign001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function calendarPickerEdgeAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCalendarPickerEdgeAlign002', 0, async (done: Function) => {
+    it('testCalendarPickerEdgeAlign002', Level.LEVEL1, async  (done: Function) => {
       expect(nativeFunc.testCalendarPickerEdgeAlign002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function calendarPickerEdgeAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCalendarPickerEdgeAlign003', 0, async (done: Function) => {
+    it('testCalendarPickerEdgeAlign003', Level.LEVEL1, async  (done: Function) => {
       expect(nativeFunc.testCalendarPickerEdgeAlign003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function calendarPickerEdgeAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testCalendarPickerEdgeAlign004', 0, async (done: Function) => {
+    it('testCalendarPickerEdgeAlign004', Level.LEVEL1, async  (done: Function) => {
       expect(nativeFunc.testCalendarPickerEdgeAlign004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function calendarPickerEdgeAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCalendarPickerEdgeAlign005', 0, async (done: Function) => {
+    it('testCalendarPickerEdgeAlign005', Level.LEVEL1, async  (done: Function) => {
       expect(nativeFunc.testCalendarPickerEdgeAlign005()).assertEqual(0)
       done()
     })

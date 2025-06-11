@@ -9,6 +9,9 @@
         "MainAbility/pages/Tabs/barBackground",
         "MainAbility/pages/Grid/setGridEvent",
         "MainAbility/pages/List/setListEvent",
-        "MainAbility/pages/Scroll/setScrollEvent"
+        "MainAbility/pages/Scroll/setScrollEvent",
+        "MainAbility/pages/List/listDividerOptions",
+        "MainAbility/pages/List/stackFromEndList",
+        "MainAbility/pages/LazyVGridLayout/LazyVGridLayout"
     ]
 }

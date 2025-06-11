@@ -89,7 +89,15 @@ export default function GridRowJsunit() {
       console.info("[GridRowJsunit_0200] breakpoints: " + JSON.stringify(obj.$attrs.breakpoints));
       console.info("[GridRowJsunit_0200] direction: " + JSON.stringify(obj.$attrs.direction));
       console.info("[GridRowJsunit_0200] gutter: " + JSON.stringify(obj.$attrs.gutter));
-      expect(obj.$attrs.columns).assertEqual('12');
+      if (px2vp(globalThis.winWidth) < 320) {
+        expect(obj.$attrs.columns).assertEqual('2');
+      } else if (px2vp(globalThis.winWidth) < 600) {
+        expect(obj.$attrs.columns).assertEqual('4');
+      } else if (px2vp(globalThis.winWidth) < 840) {
+        expect(obj.$attrs.columns).assertEqual('8');
+      } else {
+        expect(obj.$attrs.columns).assertEqual('12');
+      }
       expect(obj.$attrs.breakpoints).assertEqual('[320vp, 600vp, 840vp,]');
       expect(obj.$attrs.direction).assertEqual('Row');
       let x = vp2px(0).toFixed(6);
@@ -122,7 +130,15 @@ export default function GridRowJsunit() {
       console.info("[GridRowJsunit_0300] breakpoints: " + JSON.stringify(obj.$attrs.breakpoints));
       console.info("[GridRowJsunit_0300] direction: " + JSON.stringify(obj.$attrs.direction));
       console.info("[GridRowJsunit_0300] gutter: " + JSON.stringify(obj.$attrs.gutter));
-      expect(obj.$attrs.columns).assertEqual('12');
+      if (px2vp(globalThis.winWidth) < 320) {
+        expect(obj.$attrs.columns).assertEqual('2');
+      } else if (px2vp(globalThis.winWidth) < 600) {
+        expect(obj.$attrs.columns).assertEqual('4');
+      } else if (px2vp(globalThis.winWidth) < 840) {
+        expect(obj.$attrs.columns).assertEqual('8');
+      } else {
+        expect(obj.$attrs.columns).assertEqual('12');
+      }
       expect(obj.$attrs.breakpoints).assertEqual('[320vp, 600vp, 840vp,]');
       expect(obj.$attrs.direction).assertEqual('Row');
       let x = vp2px(-10).toFixed(6);
@@ -143,7 +159,15 @@ export default function GridRowJsunit() {
       console.info("[GridRowJsunit_0400] breakpoints: " + JSON.stringify(obj.$attrs.breakpoints));
       console.info("[GridRowJsunit_0400] direction: " + JSON.stringify(obj.$attrs.direction));
       console.info("[GridRowJsunit_0400] gutter: " + JSON.stringify(obj.$attrs.gutter));
-      expect(obj.$attrs.columns).assertEqual('12');
+      if (px2vp(globalThis.winWidth) < 320) {
+        expect(obj.$attrs.columns).assertEqual('2');
+      } else if (px2vp(globalThis.winWidth) < 600) {
+        expect(obj.$attrs.columns).assertEqual('4');
+      } else if (px2vp(globalThis.winWidth) < 840) {
+        expect(obj.$attrs.columns).assertEqual('8');
+      } else {
+        expect(obj.$attrs.columns).assertEqual('12');
+      }
       expect(obj.$attrs.gutter).assertEqual('<0.000000, 0.000000');
       expect(obj.$attrs.breakpoints).assertEqual('[320vp, 600vp, 840vp,]');
       expect(obj.$attrs.direction).assertEqual('Row');

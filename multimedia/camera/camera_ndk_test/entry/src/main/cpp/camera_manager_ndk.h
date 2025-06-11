@@ -136,6 +136,8 @@ public:
     Camera_ImageRotation imageRotation_;
     Camera_ImageRotation previewRotation_;
     bool isCreatePhotoOutputWithoutSurface_;
+    bool isMacroSupported_;
+    bool isEnableMacro_;
 
     //callback
     static CameraCallbackCode cameraCallbackCode_;
@@ -348,6 +350,8 @@ public:
     Camera_ErrorCode CameraManagerRegisterFoldStatusCallback(int useCaseCode);
     Camera_ErrorCode CameraManagerUnregisterFoldStatusCallback(int useCaseCode);
     int32_t ColorSpace(void);
+    Camera_ErrorCode SessionIsMacroSupported(int useCaseCode);
+    Camera_ErrorCode SessionEnableMacro(int useCaseCode, bool enable);
 
     // test aid
     Camera_ErrorCode SetSceneMode(int useCaseCode);

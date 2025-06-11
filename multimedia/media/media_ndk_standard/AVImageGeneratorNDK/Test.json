@@ -38,6 +38,7 @@
             "run-command": [
                 "chmod -R 777 /data/app/el2/100/base/com.example.avimagegeneratorndk/haps/entry_test/files/*",
                 "power-shell wakeup",
+                "power-shell timeout -o 2147483647",
                 "power-shell setmode 602"
             ]
         }

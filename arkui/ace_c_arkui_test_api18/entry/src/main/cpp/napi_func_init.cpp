@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 #include "common/common.h"
-#include "customdialog/customdialog_background.cpp"
-#include "customdialog/customdialog_test.cpp"
+#include "swiper/swiper_dot_indicator_test.cpp"
+#include "swiper/swiper_arrowStyle_test.cpp"
 
 namespace ArkUICapiTest {
 EXTERN_C_START
@@ -26,27 +26,20 @@ static napi_value Init(napi_env env, napi_value exports)
     }
 
     napi_property_descriptor desc[] = {
-        {"testCustomDialog001", nullptr, TestCustomDialog001, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testCustomDialog002", nullptr, TestCustomDialog002, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testCustomDialogWidth", nullptr, TestCustomDialogWidth, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testCustomDialogHeight", nullptr, TestCustomDialogHeight, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testCustomDialogBorderWidth", nullptr, TestCustomDialogBorderWidth, nullptr, nullptr, nullptr, napi_default,
-            nullptr},
-        {"testCustomDialogBorderColor", nullptr, TestCustomDialogBorderColor, nullptr, nullptr, nullptr, napi_default,
-            nullptr},
-        {"testCustomDialogBorderStyle", nullptr, TestCustomDialogBorderStyle, nullptr, nullptr, nullptr, napi_default,
-            nullptr},
-        {"testCustomDialogShadow", nullptr, TestCustomDialogShadow, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testCustomDialogCustomShadow", nullptr, TestCustomDialogCustomShadow, nullptr, nullptr, nullptr,
-            napi_default, nullptr},
-        {"testCustomDialogBackgroundBlurStyle", nullptr, TestCustomDialogBackgroundBlurStyle, nullptr, nullptr,
-            nullptr, napi_default, nullptr},
-        {"testCustomDialogKeyboardAvoidMode", nullptr, TestCustomDialogKeyboardAvoidMode, nullptr, nullptr, nullptr,
-            napi_default, nullptr},
-        {"testCustomDialogEnableHoverMode", nullptr, TestCustomDialogEnableHoverMode, nullptr, nullptr, nullptr,
-            napi_default, nullptr},
-        {"testCustomDialogHoverModeArea", nullptr, TestCustomDialogHoverModeArea, nullptr, nullptr, nullptr,
-            napi_default, nullptr}
+        {"testSwiperDigitIndicator001", nullptr, TestSwiperDigitIndicator001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSwiperDigitIndicator002", nullptr, TestSwiperDigitIndicator002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSwiperDigitIndicator003", nullptr, TestSwiperDigitIndicator003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSwiperDigitIndicator004", nullptr, TestSwiperDigitIndicator004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSwiperDigitIndicator005", nullptr, TestSwiperDigitIndicator005, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSwiperDigitIndicator006", nullptr, TestSwiperDigitIndicator006, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSwiperDigitIndicator007", nullptr, TestSwiperDigitIndicator007, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSwiperDigitIndicator008", nullptr, TestSwiperDigitIndicator008, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSwiperArrowStyle001", nullptr, TestSwiperArrowStyle001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSwiperArrowStyle002", nullptr, TestSwiperArrowStyle002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSwiperArrowStyle003", nullptr, TestSwiperArrowStyle003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSwiperArrowStyle004", nullptr, TestSwiperArrowStyle004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSwiperArrowStyle005", nullptr, TestSwiperArrowStyle005, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSwiperArrowStyle006", nullptr, TestSwiperArrowStyle006, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");

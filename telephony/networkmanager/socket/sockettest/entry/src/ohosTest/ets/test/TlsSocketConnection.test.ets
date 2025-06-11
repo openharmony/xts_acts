@@ -196,7 +196,9 @@ export default function TLSSocketConnectionTest() {
           },
           ALPNProtocols: ["spdy/1", "http/1.1"]
         };
-        await tlsServer.listen(tlsConnectOptions26);
+        await tlsServer.listen(tlsConnectOptions26).catch((err:BusinessError) => {
+                    console.info('fail to listen' + err.code.toString());
+                });
         tlsServer.on('connect', (conn: socket.TLSSocketConnection) => {
           let sendBuf: string = '\0\0\0';
           sendBuf += 'abcd';
@@ -317,7 +319,9 @@ export default function TLSSocketConnectionTest() {
             }
           })
         }).catch((err: Object) => {})
-        await tlsServer.listen(tlsConnectOptions14);
+        await tlsServer.listen(tlsConnectOptions14).catch((err:BusinessError) => {
+                    console.info('fail to listen' + err.code.toString());
+                });
       } catch (err) {
         expectFail(false);
         done();
@@ -379,7 +383,9 @@ export default function TLSSocketConnectionTest() {
           },
           ALPNProtocols: ["spdy/1", "http/1.1"]
         };
-        await tlsServer.listen(tlsConnectOptions13);
+        await tlsServer.listen(tlsConnectOptions13).catch((err:BusinessError) => {
+                    console.info('fail to listen' + err.code.toString());
+                });
         tlsServer.on('connect', (conn: socket.TLSSocketConnection) => {
           let sendBuf: string = '\0\0\0';
           sendBuf += 'abcd';
@@ -477,7 +483,9 @@ export default function TLSSocketConnectionTest() {
           },
           ALPNProtocols: ["spdy/1", "http/1.1"]
         };
-        await tlsServer.listen(tlsConnectOptions11);
+        await tlsServer.listen(tlsConnectOptions11).catch((err:BusinessError) => {
+                    console.info('fail to listen' + err.code.toString());
+                });
         tlsServer.on('connect', (conn: socket.TLSSocketConnection) => {
           let sendBuf: string = '\0\0\0';
           sendBuf += 'abcd';
@@ -577,7 +585,9 @@ export default function TLSSocketConnectionTest() {
           },
           ALPNProtocols: ["spdy/1", "http/1.1"]
         };
-        await tlsServer.listen(tlsConnectOptions10);
+        await tlsServer.listen(tlsConnectOptions10).catch((err:BusinessError) => {
+                    console.info('fail to listen' + err.code.toString());
+                });
         tlsServer.on('connect', (conn: socket.TLSSocketConnection) => {
           let sendBuf: string = '\0\0\0';
           sendBuf += 'abcd';
@@ -680,7 +690,9 @@ export default function TLSSocketConnectionTest() {
           },
           ALPNProtocols: ["spdy/1", "http/1.1"]
         };
-        await tlsServer.listen(tlsConnectOptions9);
+        await tlsServer.listen(tlsConnectOptions9).catch((err:BusinessError) => {
+                    console.info('fail to listen' + err.code.toString());
+                });
         tlsServer.on('connect', (conn: socket.TLSSocketConnection) => {
           let sendBuf: string = '\0\0\0';
           sendBuf += 'abcd';
@@ -783,7 +795,9 @@ export default function TLSSocketConnectionTest() {
           },
           ALPNProtocols: ["spdy/1", "http/1.1"]
         };
-        await tlsServer.listen(tlsConnectOptions8);
+        await tlsServer.listen(tlsConnectOptions8).catch((err:BusinessError) => {
+                    console.info('fail to listen' + err.code.toString());
+                });
         tlsServer.on('connect', (conn: socket.TLSSocketConnection) => {
           let sendBuf: string = '\0\0\0';
           sendBuf += 'abcd';
@@ -892,7 +906,9 @@ export default function TLSSocketConnectionTest() {
           },
           ALPNProtocols: ["spdy/1", "http/1.1"]
         };
-        await tlsServer.listen(tlsConnectOptions);
+        await tlsServer.listen(tlsConnectOptions).catch((err:BusinessError) => {
+                    console.info('fail to listen' + err.code.toString());
+                });
         tlsServer.on('connect', (conn: socket.TLSSocketConnection) => {
           let sendBuf: string = '\0\0\0';
           sendBuf += 'abcd';

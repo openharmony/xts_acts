@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium'
+import { beforeAll, beforeEach, describe, expect, it, Level } from '@ohos/hypium'
 import mediaavsourcendk from 'libmediaavsourcendk.so'
 import fs from '@ohos.file.fs';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
@@ -80,7 +80,7 @@ export default function mediaAvSourceNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAVSourceCreateWithURI001', 0, async (done: Function) => {
+    it('testOHAVSourceCreateWithURI001', Level.LEVEL0, async (done: Function) => {
       expect(mediaavsourcendk.OH_AVSource_CreateWithURI()).assertEqual(-1);
       done();
     });
@@ -93,7 +93,7 @@ export default function mediaAvSourceNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAVSourceCreateWithFD001', 0, async (done: Function) => {
+    it('testOHAVSourceCreateWithFD001', Level.LEVEL0, async (done: Function) => {
       expect(mediaavsourcendk.OH_AVSource_CreateWithFD()).assertEqual(0);
       done();
     });
@@ -106,7 +106,7 @@ export default function mediaAvSourceNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAVSourceDestroy001', 0, async (done: Function) => {
+    it('testOHAVSourceDestroy001', Level.LEVEL0, async (done: Function) => {
       expect(mediaavsourcendk.OH_AVSource_Destroy()).assertEqual(0);
       done();
     });
@@ -119,7 +119,7 @@ export default function mediaAvSourceNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAVSourceGetSourceFormat001', 0, async (done: Function) => {
+    it('testOHAVSourceGetSourceFormat001', Level.LEVEL0, async (done: Function) => {
       expect(mediaavsourcendk.OH_AVSource_GetSourceFormat()).assertEqual(0);
       done();
     });
@@ -132,7 +132,7 @@ export default function mediaAvSourceNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAVSourceGetTrackFormat001', 0, async (done: Function) => {
+    it('testOHAVSourceGetTrackFormat001', Level.LEVEL0, async (done: Function) => {
       expect(mediaavsourcendk.OH_AVSource_GetTrackFormat()).assertEqual(0);
       done();
     });

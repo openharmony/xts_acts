@@ -81,10 +81,6 @@ struct webViewAvoidArea {
             switch (this.emitKey) {
               case 'emitWebViewAvoidArea01': {
                 try {
-                  if (Utils.isPC(this.controller) ) {
-                    Utils.emitEvent(this.ViewportFitArr[ViewportFit.CONTAINS], 6201);
-                    return
-                  }
                   this.isCreateSuccess = false;
                   this.controller.loadUrl($rawfile('contain.html'));
                 } catch (error) {
@@ -95,10 +91,6 @@ struct webViewAvoidArea {
               }
               case 'emitWebViewAvoidArea02': {
                 try {
-                  if (Utils.isPC(this.controller) ) {
-                    Utils.emitEvent(this.ViewportFitArr[ViewportFit.AUTO], 6202);
-                    return
-                  }
                   this.isCreateSuccess = false;
                   this.controller.loadUrl($rawfile('auto.html'));
                   if (this.isCreateSuccess === false) {
@@ -111,10 +103,6 @@ struct webViewAvoidArea {
                 break;
               }
               case 'emitWebViewAvoidArea03': {
-                if (Utils.isPC(this.controller) ) {
-                  Utils.emitEvent(this.ViewportFitArr[ViewportFit.COVER], 6203);
-                  return
-                }
                 try {
                   this.isCreateSuccess = false;
                   this.controller.loadUrl($rawfile('cover.html'));
@@ -126,10 +114,6 @@ struct webViewAvoidArea {
               }
               case 'emitWebViewAvoidArea04': {
                 try {
-                  if (Utils.isPC(this.controller) ) {
-                    Utils.emitEvent(this.ViewportFitArr[ViewportFit.AUTO], 6204);
-                    return
-                  }
                   this.isCreateSuccess = false;
                   this.controller.loadUrl($rawfile('default.html'));
                   if (this.isCreateSuccess === false) {
@@ -143,10 +127,6 @@ struct webViewAvoidArea {
               }
               case 'emitWebViewAvoidAreaOther': {
                 try {
-                  if (Utils.isPC(this.controller) ) {
-                    Utils.emitEvent('success', 6206);
-                    return
-                  }
                   this.isCreateSuccess = false
                   this.controller.loadUrl($rawfile('viewportOther.html'));
                   if (this.isCreateSuccess === false) {

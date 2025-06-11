@@ -13,9 +13,14 @@
  * limitations under the License.
  */
 
-import NetworkManagerDnsGetAddrInfo1Test from './NetworkManagerDnsGetAddrInfo1.test'
+import NetworkManagerDnsGetAddrInfo1Test from './NetworkManagerDnsGetAddrInfo1.test';
+import NetworkManagerDnsGetAddrHasNetTest from './NetworkManagerDnsGetAddrHasNet.test'
+import connection from '@ohos.net.connection';
+let netHandle = connection.getDefaultNetSync();
 
 export default function testsuite() {
+  if(netHandle.netId >= 100){
+	NetworkManagerDnsGetAddrHasNetTest();
+  }
   NetworkManagerDnsGetAddrInfo1Test()
-
 }

@@ -42,6 +42,8 @@ import drawingTsMatrixPart2Test from './MatrixPart2.test';
 import roundRectTest from './RoundRect.test';
 import shadowEffectTest from './ShaderEffect.test'
 import toolTest from './Tool.test'
+import typefaceArguments from './TypefaceArguments.test'
+import rectUtils from './RectUtils.test'
 
 export default function testsuite() {
   samplingOptionsTest();
@@ -74,4 +76,6 @@ export default function testsuite() {
   roundRectTest();
   shadowEffectTest();
   toolTest();
+  typefaceArguments();
+  rectUtils();
 }

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import { Driver, ON, PointerMatrix, Rect } from '@ohos.UiTest';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so';
@@ -34,7 +34,7 @@ export default function textPickerTest(){
      * @tc.type: Function
      * @tc.level: Level 1
       */
-    it('TestTextPickerColumnWidths001', 0, async (done: Function) => {
+    it('TestTextPickerColumnWidths001', Level.LEVEL1, async (done: Function) => {
       console.info('TestTextPickerColumnWidths001 START');
       let PAGE_TAG = 'TextPickerColumnWidthsTest';
       await Utils.pushPage(`textPicker/${PAGE_TAG}`);
@@ -61,7 +61,7 @@ export default function textPickerTest(){
        * @tc.type: Function
        * @tc.level: Level 1
      */
-    it('TestTextPickerColumnWidths002', 0, async (done: Function) => {
+    it('TestTextPickerColumnWidths002', Level.LEVEL1, async (done: Function) => {
       console.info('TestTextPickerColumnWidths002 START');
       let PAGE_TAG = 'TextPickerColumnWidthsTest';
       await Utils.pushPage(`textPicker/${PAGE_TAG}`);
@@ -87,7 +87,7 @@ export default function textPickerTest(){
       * @tc.type: Function
       * @tc.level: Level 1
       */
-    it('TestTextPickerColumnWidths003', 0, async (done: Function) => {
+    it('TestTextPickerColumnWidths003', Level.LEVEL1, async (done: Function) => {
       console.info('TestTextPickerColumnWidths003 START');
       let PAGE_TAG = 'TextPickerColumnWidthsTest';
       await Utils.pushPage(`textPicker/${PAGE_TAG}`);

@@ -14,7 +14,9 @@
  */
 
 import AVPlayerNdkTest from './AVPlayerNdk.test';
+import AVPlayerNdkTest2 from './AVPlayerNdk2.test';
 
 export default function testsuite() {
   AVPlayerNdkTest();
+  AVPlayerNdkTest2();
 }

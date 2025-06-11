@@ -5,8 +5,6 @@
     "MainAbility/pages/calendarPicker/calendarPickerStartEndTest",
     "MainAbility/pages/datePickerDialog/DatePickerDialogMode",
     "MainAbility/pages/timePickerDialog/timePickerDialogEnableHapticFeedback",
-    "MainAbility/pages/calendarPicker/disableDateRangeAndMarkToday",
-    "MainAbility/pages/calendarPickerDialog/dialogDisableDateRangeAndMarkToday",
     "MainAbility/pages/timePickerDialog/timePickerDialogSelectedArea",
     "MainAbility/pages/textPickerDialog/textPickerDialogSelectedArea",
     "MainAbility/pages/textPickerDialog/textPickerDialogEnableHapticFeedback",

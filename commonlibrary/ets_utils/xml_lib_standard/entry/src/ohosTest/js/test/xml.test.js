@@ -3091,4 +3091,166 @@ describe('XmlSerializerXmlPullParserTest', function () {
         }
         expect(result).assertEqual(xmlStr);
     })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_12400
+     * @tc.name: testParseXml014
+     * @tc.desc: Starts parsing the XML file.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testParseXml014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        let strXml =
+            '<?xml version="1.0" encoding="UTF-8"?>' +
+            '<note importance="high" logged="true">' +
+            '<company><![CDATA[SYSTEM</company>' +
+            '<todo>work</todo>' +
+            '</note>';
+        let textEncoder = new util.TextEncoder();
+        let uint8 = textEncoder.encodeInto(strXml);
+        let pullParse = new xml.XmlPullParser(uint8.buffer);
+        let result = '';
+        function func(name, value) {
+            result += name + value;
+            return true;
+        }
+        let options = {supportDoctype:true, ignoreNameSpace:true, tagValueCallbackFunction:func}
+        try {    
+            pullParse.parseXml(options);
+            expect().assertFail();
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: Cannot find the ']]>' in xml string.");
+            expect(e.code).assertEqual(401);
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_12500
+     * @tc.name: testParseXml015
+     * @tc.desc: Starts parsing the XML file.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testParseXml015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        let strXml =
+            '<?xml version="1.0" encoding="UTF-8"?>' +
+            '<note importance="high" logged="true">' +
+            '<company><![CDATA[';
+        let textEncoder = new util.TextEncoder();
+        let uint8 = textEncoder.encodeInto(strXml);
+        let pullParse = new xml.XmlPullParser(uint8.buffer);
+        let result = '';
+        function func(name, value) {
+            result += name + value;
+            return true;
+        }
+        let options = {supportDoctype:true, ignoreNameSpace:true, tagValueCallbackFunction:func}
+        try {    
+            pullParse.parseXml(options);
+            expect().assertFail();
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: Cannot find the ']]>' in xml string.");
+            expect(e.code).assertEqual(401);
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_12600
+     * @tc.name: testParseXml016
+     * @tc.desc: Starts parsing the XML file.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testParseXml016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        let strXml =
+            '<?xml version="1.0" encoding="utf-8"?>' +
+            '<note importance="high" logged="true">' +
+            '<title>Happy</title>' +
+            '<?go there' +
+            '</note>';
+        let textEncoder = new util.TextEncoder();
+        let uint8 = textEncoder.encodeInto(strXml);
+        let pullParse = new xml.XmlPullParser(uint8.buffer);
+        let result = '';
+        function func(name, value) {
+            result += name + value;
+            return true;
+        }
+        let options = {supportDoctype:true, ignoreNameSpace:true, tagValueCallbackFunction:func}
+        try {
+            pullParse.parseXml(options);
+            expect().assertFail();
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: Cannot find the '?>' in xml string.");
+            expect(e.code).assertEqual(401);
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_12700
+     * @tc.name: testParseXml017
+     * @tc.desc: Starts parsing the XML file.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testParseXml017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        let strXml =
+            '<?xml version="1.0" encoding="utf-8"?>' +
+            '<note importance="high" logged="true">' +
+            '<title>Happy</title>' +
+            '<?go there';
+        let textEncoder = new util.TextEncoder();
+        let uint8 = textEncoder.encodeInto(strXml);
+        let pullParse = new xml.XmlPullParser(uint8.buffer);
+        let result = '';
+        function func(name, value) {
+            result += name + value;
+            return true;
+        }
+        let options = {supportDoctype:true, ignoreNameSpace:true, tagValueCallbackFunction:func}
+        try {
+            pullParse.parseXml(options);
+            expect().assertFail();
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: Cannot find the '?>' in xml string.");
+            expect(e.code).assertEqual(401);
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_12800
+     * @tc.name: testParseXml018
+     * @tc.desc: Starts parsing the XML file.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testParseXml018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, function () {
+        let strXml =
+            '<?xml version="1.0" encoding="utf-8"?>' +
+            '<note importance="high" logged="true">' +
+            '<title>Happy</title>' +
+            '<!--comment' +
+            '</note>';
+        let textEncoder = new util.TextEncoder();
+        let uint8 = textEncoder.encodeInto(strXml);
+        let pullParse = new xml.XmlPullParser(uint8.buffer);
+        let result = '';
+        function func(name, value) {
+            result += name + value;
+            return true;
+        }
+        let options = {supportDoctype:true, ignoreNameSpace:true, tagValueCallbackFunction:func}
+        try {
+            pullParse.parseXml(options);
+            expect().assertFail();
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: Cannot find the '--' in xml string.");
+            expect(e.code).assertEqual(401);
+        }
+    })
 })}

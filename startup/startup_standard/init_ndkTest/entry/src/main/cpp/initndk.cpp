@@ -18,6 +18,8 @@
 #include <syscap_ndk.h>
 #include <string>
 #include <cstring>
+#include <hilog/log.h>
+const unsigned int LOG_PRINT_DOMAIN = 0xFF00;
 
 #define FAIL -1
 #define SUCCESS 0
@@ -150,6 +152,22 @@ static napi_value OHGetSdkApiVersion(napi_env env, napi_callback_info info)
     return result;
 }
 
+static napi_value OHGetSdkMinorApiVersion(napi_env env, napi_callback_info info)
+{
+    int resultValue = OH_GetSdkMinorApiVersion();
+    napi_value result = nullptr;
+    napi_create_int32(env, resultValue, &result);
+    return result;
+}
+
+static napi_value OHGetSdkPatchApiVersion(napi_env env, napi_callback_info info)
+{
+    int resultValue = OH_GetSdkPatchApiVersion();
+    napi_value result = nullptr;
+    napi_create_int32(env, resultValue, &result);
+    return result;
+}
+
 static napi_value OHGetFirstApiVersion(napi_env env, napi_callback_info info)
 {
     int resultValue = OH_GetFirstApiVersion();
@@ -266,6 +284,30 @@ static napi_value CanIUseOther(napi_env env, napi_callback_info info)
     return result;
 }
 
+static napi_value OHIsApiVersionGreaterOrEqual(napi_env env, napi_callback_info info)
+{
+    size_t argc = 3;
+    napi_value argv[3] = {nullptr};
+    napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
+    
+    int32_t majorVersion = 0;
+    int32_t minorVersion = 0;
+    int32_t patchVersion = 0;
+    napi_get_value_int32(env, argv[0], &majorVersion);
+    napi_get_value_int32(env, argv[1], &minorVersion);
+    napi_get_value_int32(env, argv[2], &patchVersion);
+    bool ret = OH_IsApiVersionGreaterOrEqual(majorVersion, minorVersion, patchVersion);    
+    OH_LOG_WARN(LOG_APP, "OH_IsApiVersionGreaterOrEqual result: %{public}d", ret);
+    
+    int value = 0;
+    if (ret) {
+        value = 1;
+    }    
+    napi_value result = nullptr;
+    napi_create_int32(env, value, &result);
+    return result;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports) {
     napi_property_descriptor desc[] = {
@@ -285,6 +327,8 @@ static napi_value Init(napi_env env, napi_value exports) {
         {"oHGetOsReleaseType", nullptr, OHGetOsReleaseType, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"oHGetOSFullName", nullptr, OHGetOSFullName, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"oHGetSdkApiVersion", nullptr, OHGetSdkApiVersion, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"oHGetSdkMinorApiVersion", nullptr, OHGetSdkMinorApiVersion, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"oHGetSdkPatchApiVersion", nullptr, OHGetSdkPatchApiVersion, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"oHGetFirstApiVersion", nullptr, OHGetFirstApiVersion, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"oHGetVersionId", nullptr, OHGetVersionId, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"oHGetBuildType", nullptr, OHGetBuildType, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -297,7 +341,8 @@ static napi_value Init(napi_env env, napi_value exports) {
         {"oHGetDistributionOSApiVersion", nullptr, OHGetDistributionOSApiVersion, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"oHGetDistributionOSReleaseType", nullptr, OHGetDistributionOSReleaseType, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"canIUse", nullptr, CanIUse, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"canIUseOther", nullptr, CanIUseOther, nullptr, nullptr, nullptr, napi_default, nullptr}
+        {"canIUseOther", nullptr, CanIUseOther, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"oHIsApiVersionGreaterOrEqual", nullptr, OHIsApiVersionGreaterOrEqual, nullptr, nullptr, nullptr, napi_default, nullptr}
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;

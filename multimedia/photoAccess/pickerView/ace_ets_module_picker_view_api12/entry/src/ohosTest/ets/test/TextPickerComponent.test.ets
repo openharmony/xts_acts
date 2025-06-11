@@ -35,6 +35,7 @@ import {
   ClickType,
   BaseItemInfo,
   SaveMode,
+  ItemDisplayRatio
 } from '@ohos.file.PhotoPickerComponent';
 import { AlbumPickerComponent, AlbumPickerOptions, AlbumInfo } from '@ohos.file.AlbumPickerComponent';
 import photoAccessHelper from '@ohos.file.photoAccessHelper';
@@ -153,9 +154,20 @@ export default function TextPicker() {
   describe('testPicker', () => {
     const isExecutePicker = canIUse('SystemCapability.FileManagement.PhotoAccessHelper.Core');
     let driver: Driver;
+    driver = Driver.create();
+
+    beforeAll(async (done: Function) => {
+      let maxButton = await driver.findComponent(ON.id("EnhanceMaximizeBtn"));
+      await CommonFunc.sleep(1000);
+      if(maxButton !== null){
+        await maxButton.click();
+      }
+      await CommonFunc.sleep(1000);
+      done();
+    });
+    
     beforeEach(async (done: Function) => {
       console.info("testPicker beforeEach start");
-      driver = Driver.create();
       await CommonFunc.sleep(5000);
       done();
     });
@@ -1845,6 +1857,46 @@ export default function TextPicker() {
         console.error(`testPicker38, PhotoViewPicker.select failed with err: ${err.code}, ${err.message}`);
       }
       console.info("testPicker38 finish");
+      done();
+    });
+
+    /* *
+     * @tc.number    : testPicker39
+     * @tc.name      : testPicker39
+     * @tc.desc      : Testing PhotoPickerComponent singleLineConfig
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+    */
+    it('testPicker39', Level.LEVEL0, async (done: Function) => {
+      if (!isExecutePicker) {
+        done();
+        return;
+      }
+      let code: number = EventType.PHOTO_PICKER_INFO;
+      let pickerOptions: PickerOptions = getDefaultPickerOptions();
+      pickerOptions.singleLineConfig = {
+        itemDisplayRatio: ItemDisplayRatio.SQUARE_RATIO,
+        itemBorderRadius: {
+          topLeft: 8,
+          bottomRight: 8
+        },
+        itemGap: '10vp'
+      };
+      pickerOptions.singleLineConfig.itemDisplayRatio = ItemDisplayRatio.ORIGINAL_SIZE_RATIO;
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/PickerComponent',
+        params: {
+          eventId: code,
+          pickerOptions: pickerOptions,
+        }
+      }
+      await routeToUrl(options);
+      let strJson: string = getInspectorByKey('PhotoPickerComponent');
+      console.info("testPicker39 JSON.parse(strJson) is" + strJson);
+      expect(JSON.parse(strJson).$attrs.visibility).assertEqual('Visibility.Visible');
+      router.back();
+      console.info("testPicker39 finish");
       done();
     });
   })

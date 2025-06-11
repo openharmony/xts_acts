@@ -203,11 +203,11 @@ export default function imageDecodeOptionsYuvTest() {
               pixelMap.getColorSpace().getColorSpaceName() === colorSpaceManager.getColorSpaceName()) {
               result = true
             }
+            imageSourceApi?.release();
           })
         }).catch((err: BusinessError) => {
           hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' getImageInfo err ' + JSON.stringify(err));
         })
-        await imageSourceApi?.release();
     }
 
     const callBackCreate = async (TAG: string, imageSourceApi: image.ImageSource,
@@ -230,12 +230,12 @@ export default function imageDecodeOptionsYuvTest() {
               pixelMap.getColorSpace().getColorSpaceName() === colorSpaceManager.getColorSpaceName()) {
               result = true
             }
+            imageSourceApi?.release();
           })
         } else {
           hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' getImageInfo err ' + JSON.stringify(err));
         }
       })
-      await imageSourceApi?.release();
     }
 
     const syncCreate = async (TAG: string, imageSourceApi: image.ImageSource,
@@ -256,8 +256,8 @@ export default function imageDecodeOptionsYuvTest() {
           globalPixelMap.getColorSpace().getColorSpaceName() === colorSpaceManager.getColorSpaceName()) {
           result = true
         }
+        imageSourceApi?.release();
       })
-      await imageSourceApi?.release();
     }
 
     const VerifyPixelMap = async (TAG: string, imageSourceApi: image.ImageSource, width: number, height: number,
@@ -278,8 +278,8 @@ export default function imageDecodeOptionsYuvTest() {
           imageInfo.alphaType === alphaType) {
           result = true
         }
+        imageSourceApi?.release();
       })
-      await imageSourceApi?.release();
     }
 
     beforeAll(() => {

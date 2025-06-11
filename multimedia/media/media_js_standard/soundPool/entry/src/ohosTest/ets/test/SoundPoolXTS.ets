@@ -32,14 +32,17 @@ let uri1: string = "";
 let uri2: string = "";
 let uri3: string = "";
 let uri4: string = "";
+let uri5: string = "";
 let fd1 = -1;
 let fd2 = -1;
 let fd3 = -1;
 let fd4 = -1;
+let fd5 = -1;
 let length1 = -1;
 let length2 = -1;
 let length3 = -1;
 let length4 = -1;
+let length5 = -1;
 let audioRendererInfo: audio.AudioRendererInfo = {
   content: audio.ContentType.CONTENT_TYPE_SPEECH,
   usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
@@ -107,6 +110,11 @@ async function getFileUrl(path: string, uri: string) {
         fd4 = file.fd;
         length4 = stat.size;
         break;
+      case uri5:
+        uri5 = 'fd://' + (file.fd).toString()
+        fd5 = file.fd;
+        length5 = stat.size;
+        break;
     }
   }).catch((err: BusinessError) => {
     console.info(`${TAG}: open file failed with error message: ${err.message}, error code: ${err.code}`);
@@ -139,8 +147,9 @@ export default function soundPoolTest() {
       await getFileUrl('/test_02.mp3', uri2);
       await getFileUrl('/test_03.mp3', uri3);
       await getFileUrl('/test_04.mp3', uri4);
-      console.info(`${TAG}: uri1 is: ${uri1}; uri2 is: ${uri2}; uri3 is: ${uri3}; uri4 is: ${uri4}`);
-      console.info(`${TAG}: fd1 is: ${fd1}; fd2 is: ${fd2}; fd3 is: ${fd3}; fd4 is: ${fd4}`);
+      await getFileUrl('/test_05.wav', uri5);
+      console.info(`${TAG}: uri1 is: ${uri1}; uri2 is: ${uri2}; uri3 is: ${uri3}; uri4 is: ${uri4}; uri5 is: ${uri5}`);
+      console.info(`${TAG}: fd1 is: ${fd1}; fd2 is: ${fd2}; fd3 is: ${fd3}; fd4 is: ${fd4}; fd5 is: ${fd5}`);
     });
     beforeEach(async () => {
       console.info(`${TAG}: beforeEach in`);
@@ -5461,6 +5470,105 @@ export default function soundPoolTest() {
       }
       done();
       return;
+    })
+
+    /* *
+      * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_ERROR_OCCURRED_0100
+      * @tc.name      : test on('errorOccurred') when load error
+      * @tc.desc      : Function test
+    */
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_ERROR_OCCURRED_0100', Level.LEVEL0, async (done: Function) => {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_ERROR_OCCURRED_0100 in`);
+      try {
+        let soundId = 0;
+        let isExpected = false;
+        await createSoundPool();
+        if (!soundPool) {
+          console.error(`${TAG}:createSoundPool soundPool is null`);
+          expectFalse();
+          done();
+          return;
+        }
+        soundPool.on('errorOccurred', (errorInfo_) => {
+          console.error(`${TAG}: onErrorOccurred called! error happened, message is: ${errorInfo_.errorCode.message}`);
+          isExpected = errorInfo_.soundId == soundId && errorInfo_.errorType == 1 &&
+            errorInfo_.errorCode.code == 5400103;
+        })
+        await soundPool.load(uri5).then((soundId_) => {
+          if (soundId_ > 0) {
+            console.info(`${TAG}: load success, soundId: ${soundId_}`);
+            soundId = soundId_;
+          } else {
+            console.info(`${TAG}: load fail! soundId: ${soundId_}`);
+            expectFalse();
+          }
+        }).catch((error: BusinessError) => {
+          console.info(`${TAG}: load fail! catch error, error: [${error.code}, ${error.message}]`);
+          expectFalse();
+        })
+        await sleep(500);
+        if (isExpected) {
+            console.info(`${TAG}: Test onErrorOccurred when loadfailed success`);
+        } else {
+            console.error(`${TAG}:Test onErrorOccurred when loadfailed failed`);
+            expectFalse();
+        }
+      } catch (error) {
+          console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
+          expectFalse();
+      }
+      done();
+      return;
+    })
+
+    /* *
+      * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_ERROR_OCCURRED_0200
+      * @tc.name      : test off('errorOccurred') test
+      * @tc.desc      : Function test
+    */
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_ERROR_OCCURRED_0200', Level.LEVEL0, async (done: Function) => {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_ERROR_OCCURRED_0200 in`);
+      let flag = false;
+      try {
+        await createSoundPool();
+        if (!soundPool) {
+          console.error(`${TAG}:createSoundPool soundPool is null`);
+          expectFalse();
+          done();
+          return;
+        }
+        soundPool.on('errorOccurred', (errorInfo_) => {
+          console.error(`${TAG}: onErrorOccurred called! error happened, message is: ${errorInfo_.errorCode.message}`);
+          flag = true;
+        })
+        soundPool.off('errorOccurred');
+        await sleep(500);
+        await soundPool.load(uri5).then((soundId_) => {
+          if (soundId_ > 0) {
+            console.info(`${TAG}: load success, soundId: ${soundId_}`);
+          } else {
+            console.info(`${TAG}: load fail! soundId: ${soundId_}`);
+            expectFalse();
+          }
+        }).catch((error: BusinessError) => {
+          console.info(`${TAG}: load fail! catch error, error: [${error.code}, ${error.message}]`);
+          expectFalse();
+        })
+        await sleep(500);
+        if (flag) {
+          console.error(`${TAG}: errorOccurred off fail, on errorOccurred called!`);
+          expectFalse();
+        } else {
+          console.info(`${TAG}: errorOccurred off`);
+        }
+        done();
+        return;
+      } catch (error) {
+        console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
+        expectFalse();
+        done();
+        return;
+      }
     })
 
   })

@@ -158,22 +158,6 @@ struct webViewObjectEmbedEnhance {
           .onClick(async () => {
             console.info('emitKey-->'+ this.emitKey)
             await Utils.sleep(2000);
-            if (Utils.isPC (this.controller) ) {
-              Utils.emitEvent('success', 1001);
-              Utils.emitEvent('success', 1002);
-              Utils.emitEvent('success', 1003);
-              Utils.emitEvent('success', 1004);
-              Utils.emitEvent('success', 1005);
-              Utils.emitEvent('success', 1006);
-              Utils.emitEvent('success', 1007);
-              Utils.emitEvent('success', 1008);
-              Utils.emitEvent('success', 1009);
-              Utils.emitEvent('success', 1010);
-              Utils.emitEvent('success', 1011);
-              Utils.emitEvent('success', 1012);
-              Utils.emitEvent('success', 1014);
-              return
-            }
             switch (this.emitKey) {
               case 'emitWebViewObjectEmbedId':
               case 'emitWebViewObjectEmbedType':

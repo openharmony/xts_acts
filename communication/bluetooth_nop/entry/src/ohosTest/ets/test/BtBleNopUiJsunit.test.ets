@@ -22,6 +22,7 @@ const PARAM_ERROR_CODE = 401
 const OPERATION_FAILED_CODE = 2900099
 const TAG: string = 'BtBleTestTag';
 const Domain: number = 0x0000;
+const INVALID_ADVERTISING_ID = 2902055;
 
 function getAdvertisingParams() {
   let manufactureValueBuffer = new Uint8Array(4);
@@ -104,7 +105,7 @@ export default function btBleNopUiJsunit() {
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `stopAdvertising error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(Number(e.code)).assertEqual(OPERATION_FAILED_CODE);
+        expect(Number(e.code)).assertEqual(INVALID_ADVERTISING_ID);
       }
       done();
     })
@@ -135,7 +136,7 @@ export default function btBleNopUiJsunit() {
         expect(true).assertFalse();
       } catch (error) {
         hilog.error(Domain, TAG, `callback stopAdvertising error, error code is: ${error.code}, error message is: ${error.message}`);
-        expect(Number(error.code)).assertEqual(OPERATION_FAILED_CODE);
+        expect(Number(error.code)).assertEqual(INVALID_ADVERTISING_ID);
       }
       done();
     })
@@ -157,7 +158,7 @@ export default function btBleNopUiJsunit() {
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `Promise enableAdvertising error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(Number(e.code)).assertEqual(OPERATION_FAILED_CODE)
+        expect(Number(e.code)).assertEqual(INVALID_ADVERTISING_ID)
       }
       done();
     })
@@ -191,7 +192,7 @@ export default function btBleNopUiJsunit() {
         expect(true).assertFalse();
       } catch (error) {
         hilog.error(Domain, TAG, `callback enableAdvertising error, error code is: ${error.code}, error message is: ${error.message}`);
-        expect(Number(error.code)).assertEqual(OPERATION_FAILED_CODE);
+        expect(Number(error.code)).assertEqual(INVALID_ADVERTISING_ID);
       }
       done();
     })
@@ -263,7 +264,7 @@ export default function btBleNopUiJsunit() {
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `Promise disableAdvertising error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(Number(e.code)).assertEqual(OPERATION_FAILED_CODE);
+        expect(Number(e.code)).assertEqual(INVALID_ADVERTISING_ID);
       }
       done();
     })
@@ -297,7 +298,7 @@ export default function btBleNopUiJsunit() {
         expect(true).assertFalse();
       } catch (error) {
         hilog.error(Domain, TAG, `callback disableAdvertising error, error code is: ${error.code}, error message is: ${error.message}`);
-        expect(Number(error.code)).assertEqual(OPERATION_FAILED_CODE);
+        expect(Number(error.code)).assertEqual(INVALID_ADVERTISING_ID);
       }
       done();
     })
@@ -432,7 +433,7 @@ export default function btBleNopUiJsunit() {
         expect(true).assertFalse();
       } catch (error) {
         hilog.error(Domain, TAG, `stopAdvertising no param error, error code is: ${error.code}, error message is: ${error.message}`);
-        expect(Number(error.code)).assertEqual(OPERATION_FAILED_CODE);
+        expect(Number(error.code)).assertEqual(INVALID_ADVERTISING_ID);
       }
       done();
     })

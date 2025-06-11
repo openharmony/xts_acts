@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, beforeEach, describe, expect, it, Level } from '@ohos/hypium'
+import { beforeAll, beforeEach, describe, expect, it, Level, Size, TestType } from '@ohos/hypium'
 import avplayer from 'libavplayerndk.so'
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
 import fs from '@ohos.file.fs'
@@ -25,6 +25,27 @@ function getContext(): Context {
   let context = abilityDelegator.getAppContext();
   return context;
 }
+const PATH_DEMO =  "demo_no_audio_10s.mp4"
+const g_currentPathId = 0;
+async function copyFile(dir: string, filename: string) {
+  try {
+    let ml_face_model_file = dir + filename;
+    getContext().resourceManager.getRawFileContent(filename, (error, model_buffer) => {
+      if (error) {
+        console.log(
+          `[rawfile_copy_to_sandbox] demo.mp4 is
+          copy failed:${error.code}, message: ${error.message}.`);
+      } else {
+        let file = fs.openSync(ml_face_model_file, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+        fs.writeSync(file.fd, model_buffer.buffer);
+        fs.closeSync(file);
+        console.log("[rawfile_copy_to_sandbox] demo.mp4 is copy success");
+      }
+    });
+  } catch (error) {
+    console.info("[rawfile_copy_to_sandbox] getRawFileDescriptor api run failed" + error);
+  }
+}
 
 export default function AVPlayerNdkTest() {
   describe('AVPlayerTest', () => {
@@ -33,23 +54,28 @@ export default function AVPlayerNdkTest() {
       let context = getContext()
       let dir = context.filesDir + "/";
       try {
-        let ml_face_model_file = dir + "demo.mp4";
-        context.resourceManager.getRawFileContent("demo.mp4", (error, model_buffer) => {
+        let ml_face_model_file = dir + PATH_DEMO;
+        context.resourceManager.getRawFileContent(PATH_DEMO, (error, model_buffer) => {
           if (error) {
             console.log(
-              `[rawfile_copy_to_sandbox] demo.mp4 is
+              `[rawfile_copy_to_sandbox] demo_no_audio_10s.mp4 is
               copy failed:${error.code}, message: ${error.message}.`);
           } else {
             let file = fs.openSync(ml_face_model_file, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
             fs.writeSync(file.fd, model_buffer.buffer);
             fs.closeSync(file);
-            console.log("[rawfile_copy_to_sandbox] demo.mp4 is copy success");
+            console.log("[rawfile_copy_to_sandbox] demo_no_audio_10s.mp4 is copy success");
           }
         });
       } catch (error) {
         console.info("[rawfile_copy_to_sandbox] getRawFileDescriptor api run failed" + error);
       }
 
+      await copyFile(dir,"No_Support_Format.mov")
+      await copyFile(dir,"H264_AAC.mkv")
+      await copyFile(dir,"01.mp3")
+      await copyFile(dir,"AAC_48000_32_1.aac")
+      await copyFile(dir,"vorbis_48000_32_1.wav")
       console.info("[rawfile_copy_to_sandbox] sandbox path:" + dir);
       await Utils.sleep(2000)
     })
@@ -57,16 +83,17 @@ export default function AVPlayerNdkTest() {
     beforeEach(async () => {
       let dir = getContext().filesDir + "/";
 
-      let ml_face_model = dir + "demo.mp4";
+      let ml_face_model = dir + PATH_DEMO;
       await fs.stat(ml_face_model).then(async (res) => {
         if (res) {
-          console.info("demo.mp4 file exists");
-          console.info(`demo.mp4 size:${res.size}`);
+          console.info("demo_no_audio_10s.mp4 file exists");
+          console.info(`demo_no_audio_10s.mp4 size:${res.size}`);
         }
       }).catch((err: BusinessError) => {
-        console.info("MindSporeDemo demo.mp4 file does not exists! access failed with error message: " +
+        console.info("MindSporeDemo demo_no_audio_10s.mp4 file does not exists! access failed with error message: " +
         err.message + ", error code: " + err.code);
       });
+      avplayer.OhAvPlayerSetCurrentPathId(g_currentPathId);
       await Utils.sleep(2000)
     })
 
@@ -182,6 +209,20 @@ export default function AVPlayerNdkTest() {
     });
 
     /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_SETAUDIORENDERERINFO_0100
+     * @tc.name       : testOhAvPlayerSetVolumeMode001
+     * @tc.desc       : test OH_AVPlayer_SetVolumeMode
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerSetVolumeMode001', Level.LEVEL0,async (done: Function) => {
+      let result: number = avplayer.AvPlayerSetVolumeMode();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
      * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_SETAUDIOINTERRUPTMODE_0100
      * @tc.name       : testOhAvPlayerSetAudioInterruptMode001
      * @tc.desc       : test OH_AVPlayer_SetAudioInterruptMode
@@ -205,7 +246,7 @@ export default function AVPlayerNdkTest() {
      */
     it('testOhAvPlayerSetAudioEffectMode001', Level.LEVEL0,async (done: Function) => {
       let result: number = avplayer.AvPlayerSetAudioEffectMode();
-      expect(result).assertEqual(0);
+      expect(result).assertEqual(-1);
       done();
     });
     
@@ -260,7 +301,7 @@ export default function AVPlayerNdkTest() {
      * @tc.level      : Level 0
      */
     it('testOhAvPlayerPlay001', Level.LEVEL0,async (done: Function) => {
-      let result: number = avplayer.AvPlayerPlay(1, 1, 1, 1);
+      let result: number = avplayer.AvPlayerPlay(1, 1, 1, 0);
       expect(result).assertEqual(0);
       done();
     });
@@ -315,7 +356,7 @@ export default function AVPlayerNdkTest() {
      * @tc.level      : Level 0
      */
     it('testOhAvPlayerPause001', Level.LEVEL0,async (done: Function) => {
-      let result: number = avplayer.AvPlayerPause(1, 1, 1, 1, 1);
+      let result: number = avplayer.AvPlayerPause(1, 1, 1, 1, 0);
       expect(result).assertEqual(0);
       done();
     });
@@ -384,7 +425,7 @@ export default function AVPlayerNdkTest() {
      * @tc.level      : Level 0
      */
     it('testOhAvPlayerStop001', Level.LEVEL0,async (done: Function) => {
-      let result: number = avplayer.AvPlayerStop(1, 1, 1, 1);
+      let result: number = avplayer.AvPlayerStop(1, 1, 1, 0);
       expect(result).assertEqual(0);
       done();
     });
@@ -593,7 +634,7 @@ export default function AVPlayerNdkTest() {
      */
     it('testOhAvPlayerSeek001', Level.LEVEL0,async (done: Function) => {
       let result: number = avplayer.AvPlayerSeek();
-      expect(result).assertEqual(0);
+      expect(result).assertEqual(-1);
       done();
     });
 
@@ -621,7 +662,7 @@ export default function AVPlayerNdkTest() {
      */
     it('testOhAvPlayerGetCurrentTime001', Level.LEVEL0,async (done: Function) => {
       let result: number = avplayer.AvPlayerGetCurrentTime();
-      expect(result).assertEqual(0);
+      expect(result).assertEqual(-1);
       done();
     });
 
@@ -705,7 +746,7 @@ export default function AVPlayerNdkTest() {
      */
     it('testOhAvPlayerSetPlaybackSpeed001', Level.LEVEL0,async (done: Function) => {
       let result: number = avplayer.AvPlayerSetPlaybackSpeed();
-      expect(result).assertEqual(0);
+      expect(result).assertEqual(-1);
       done();
     });
 
@@ -733,7 +774,7 @@ export default function AVPlayerNdkTest() {
     */
     it('testOhAvPlayerSetPlaybackSpeed003', Level.LEVEL0,async (done: Function) => {
       let result: number = avplayer.AvPlayerSetPlaybackSpeedNormalThree();
-      expect(result).assertEqual(0);
+      expect(result).assertEqual(-1);
       done();
     });
 
@@ -761,7 +802,7 @@ export default function AVPlayerNdkTest() {
      */
     it('testOhAvPlayerGetPlaybackSpeed001', Level.LEVEL0,async (done: Function) => {
       let result: number = avplayer.AvPlayerGetPlaybackSpeed();
-      expect(result).assertEqual(0);
+      expect(result).assertEqual(-1);
       done();
     });
 
@@ -789,7 +830,7 @@ export default function AVPlayerNdkTest() {
     */
     it('testOhAvPlayerGetPlaybackSpeed003', Level.LEVEL0,async (done: Function) => {
       let result: number = avplayer.AvPlayerGetPlaybackSpeedNormalThree();
-      expect(result).assertEqual(0);
+      expect(result).assertEqual(-1);
       done();
     });
 
@@ -878,7 +919,7 @@ export default function AVPlayerNdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_SETVIDEOSURFACE_0100
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_SETVIDEOSURFACE_0400
      * @tc.name       : testOhAvPlayerSetVideoSurface004
      * @tc.desc       : test OH_AVPlayer_SetVideoSurface
      * @tc.size       : MediumTest
@@ -901,7 +942,7 @@ export default function AVPlayerNdkTest() {
      */
     it('testOhAvPlayerGetDuration001', Level.LEVEL0,async (done: Function) => {
       let result: number = avplayer.AvPlayerGetDuration();
-      expect(result).assertEqual(0);
+      expect(result).assertEqual(-1);
       done();
     });
 
@@ -983,7 +1024,7 @@ export default function AVPlayerNdkTest() {
      */
     it('testOhAvPlayerIsPlaying001', Level.LEVEL0,async (done: Function) => {
       let result: number = avplayer.AvPlayerIsPlaying();
-      expect(result).assertEqual(0);
+      expect(result).assertEqual(-1);
       done();
     });
 
@@ -1011,7 +1052,7 @@ export default function AVPlayerNdkTest() {
      */
     it('testOhAvPlayerIsLooping001', Level.LEVEL0,async (done: Function) => {
       let result: number = avplayer.AvPlayerIsLooping();
-      expect(result).assertEqual(0);
+      expect(result).assertEqual(-1);
       done();
     });
 
@@ -1039,7 +1080,7 @@ export default function AVPlayerNdkTest() {
      */
     it('testOhAvPlayerSetLooping001', Level.LEVEL0,async (done: Function) => {
       let result: number = avplayer.AvPlayerSetLooping();
-      expect(result).assertEqual(0);
+      expect(result).assertEqual(-1);
       done();
     });
 
@@ -1123,7 +1164,7 @@ export default function AVPlayerNdkTest() {
      */
     it('testOhAvPlayerSelectTrack001', Level.LEVEL0,async (done: Function) => {
       let result: number = avplayer.AvPlayerSelectTrack();
-      expect(result).assertEqual(0);
+      expect(result).assertEqual(-1);
       done();
     });
 
@@ -1151,7 +1192,7 @@ export default function AVPlayerNdkTest() {
      */
     it('testOhAvPlayerDeselectTrack001', Level.LEVEL0,async (done: Function) => {
       let result: number = avplayer.AvPlayerDeselectTrack();
-      expect(result).assertEqual(0);
+      expect(result).assertEqual(-1);
       done();
     });
 
@@ -1179,7 +1220,7 @@ export default function AVPlayerNdkTest() {
      */
     it('testOhAvPlayerGetCurrentTrack001', Level.LEVEL0,async (done: Function) => {
       let result: number = avplayer.AvPlayerGetCurrentTrack();
-      expect(result).assertEqual(0);
+      expect(result).assertEqual(-1);
       done();
     });
 
@@ -1459,6 +1500,482 @@ export default function AVPlayerNdkTest() {
      */
     it('testOhAvPlayerSetOnErrorCallbackAbnormal005', Level.LEVEL0,async (done: Function) => {
       let result: number = avplayer.AvPlayerSetOnErrorCallbackAbnormal(1, 0, 0, 0);
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_SETPLAYBACKRATE_0100
+     * @tc.name       : testOhAvPlayerPrepareSetPlaybackRate001
+     * @tc.desc       : test OH_AVPlayer_SetPlaybackRate with rate 0.125
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerPrepareSetPlaybackRate001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerPrepareSetPlaybackRate(0.125);
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_SETPLAYBACKRATE_0200
+     * @tc.name       : testOhAvPlayerPrepareSetPlaybackRate002
+     * @tc.desc       : test OH_AVPlayer_SetPlaybackRate with rate 0.25
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerPrepareSetPlaybackRate002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerPrepareSetPlaybackRate(0.25);
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_SETPLAYBACKRATE_0300
+     * @tc.name       : testOhAvPlayerPrepareSetPlaybackRate003
+     * @tc.desc       : test OH_AVPlayer_SetPlaybackRate with rate 0.5
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerPrepareSetPlaybackRate003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerPrepareSetPlaybackRate(0.5);
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_SETPLAYBACKRATE_0400
+     * @tc.name       : testOhAvPlayerPrepareSetPlaybackRate004
+     * @tc.desc       : test OH_AVPlayer_SetPlaybackRate with rate 0.75
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerPrepareSetPlaybackRate004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerPrepareSetPlaybackRate(0.75);
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_SETPLAYBACKRATE_0500
+     * @tc.name       : testOhAvPlayerPlaySetPlaybackRate001
+     * @tc.desc       : test OH_AVPlayer_SetPlaybackRate during play with rate 1.0
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerPlaySetPlaybackRate001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerPlaySetPlaybackRate(1.0);
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_SETPLAYBACKRATE_0600
+     * @tc.name       : testOhAvPlayerPlaySetPlaybackRate002
+     * @tc.desc       : test OH_AVPlayer_SetPlaybackRate during play with rate 1.25
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerPlaySetPlaybackRate002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerPlaySetPlaybackRate(1.25);
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_SETPLAYBACKRATE_0700
+     * @tc.name       : testOhAvPlayerPlaySetPlaybackRate003
+     * @tc.desc       : test OH_AVPlayer_SetPlaybackRate during play with rate 1.75
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerPlaySetPlaybackRate003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerPlaySetPlaybackRate(1.75);
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_SETPLAYBACKRATE_0800
+     * @tc.name       : testOhAvPlayerPlaySetPlaybackRate004
+     * @tc.desc       : test OH_AVPlayer_SetPlaybackRate during play with rate 2.0
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerPlaySetPlaybackRate004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerPlaySetPlaybackRate(2.0);
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_SETPLAYBACKRATE_0900
+     * @tc.name       : testOhAvPlayerPauseSetPlaybackRate001
+     * @tc.desc       : test OH_AVPlayer_SetPlaybackRate during pause with rate 2.25
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerPauseSetPlaybackRate001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerPauseSetPlaybackRate(2.25);
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_SETPLAYBACKRATE_1000
+     * @tc.name       : testOhAvPlayerPauseSetPlaybackRate002
+     * @tc.desc       : test OH_AVPlayer_SetPlaybackRate during pause with rate 2.5
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerPauseSetPlaybackRate002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerPauseSetPlaybackRate(2.5);
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_SETPLAYBACKRATE_1100
+     * @tc.name       : testOhAvPlayerPauseSetPlaybackRate003
+     * @tc.desc       : test OH_AVPlayer_SetPlaybackRate during pause with rate 2.75
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerPauseSetPlaybackRate003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerPauseSetPlaybackRate(2.75);
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_SETPLAYBACKRATE_1200
+     * @tc.name       : testOhAvPlayerPauseSetPlaybackRate004
+     * @tc.desc       : test OH_AVPlayer_SetPlaybackRate during pause with rate 3.0
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerPauseSetPlaybackRate004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerPauseSetPlaybackRate(3.0);
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_SETPLAYBACKRATE_1300
+     * @tc.name       : testOhAvPlayerPauseSetPlaybackRate005
+     * @tc.desc       : test OH_AVPlayer_SetPlaybackRate during prepare with rate 3.25
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testAvPlayerCompleteSetPlaybackRate001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerCompleteSetPlaybackRate(3.25);
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_SETPLAYBACKRATE_1400
+     * @tc.name       : testOhAvPlayerPauseSetPlaybackRate006
+     * @tc.desc       : test OH_AVPlayer_SetPlaybackRate during prepare with rate 3.5
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testAvPlayerCompleteSetPlaybackRate002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerCompleteSetPlaybackRate(3.5);
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_SETPLAYBACKRATE_1500
+     * @tc.name       : testOhAvPlayerPauseSetPlaybackRate007
+     * @tc.desc       : test OH_AVPlayer_SetPlaybackRate during prepare with rate 3.75
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testAvPlayerCompleteSetPlaybackRate003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerCompleteSetPlaybackRate(3.75);
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_SETPLAYBACKRATE_1600
+     * @tc.name       : testOhAvPlayerPauseSetPlaybackRate008
+     * @tc.desc       : test OH_AVPlayer_SetPlaybackRate during prepare with rate 4.0
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testAvPlayerCompleteSetPlaybackRate004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerCompleteSetPlaybackRate(4.0);
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_SETPLAYBACKRATE_1700
+     * @tc.name       : testOhAvPlayerSetPlaybackRateBoundaryValue001
+     * @tc.desc       : test OH_AVPlayer_SetPlaybackRate with boundary value 0.126
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerSetPlaybackRateBoundaryValue001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerPrepareSetPlaybackRate(0.126);
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_SETPLAYBACKRATE_1800
+     * @tc.name       : testOhAvPlayerSetPlaybackRateBoundaryValue002
+     * @tc.desc       : test OH_AVPlayer_SetPlaybackRate with boundary value 3.999
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerSetPlaybackRateBoundaryValue002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerPrepareSetPlaybackRate(3.999);
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_SETPLAYBACKRATE_1900
+     * @tc.name       : testOhAvPlayerSetPlaybackRateError001
+     * @tc.desc       : test OH_AVPlayer_SetPlaybackRate with error value 0.124
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerSetPlaybackRateError001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerSetPlaybackRateError(0.124);
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_SETPLAYBACKRATE_2000
+     * @tc.name       : testOhAvPlayerSetPlaybackRateError002
+     * @tc.desc       : test OH_AVPlayer_SetPlaybackRate with error value 4.001
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerSetPlaybackRateError002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerSetPlaybackRateError(4.001);
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_SETPLAYBACKRATE_2100
+     * @tc.name       : testOhAvPlayerSetPlaybackRateError003
+     * @tc.desc       : test OH_AVPlayer_SetPlaybackRate with error value 0
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerSetPlaybackRateError003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerSetPlaybackRateError(0);
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_SETPLAYBACKRATE_2200
+     * @tc.name       : testOhAvPlayerSetPlaybackRateError004
+     * @tc.desc       : test OH_AVPlayer_SetPlaybackRate with error value -1
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerSetPlaybackRateError004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerSetPlaybackRateError(-1);
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_SETPLAYBACKRATE_2300
+     * @tc.name       : testOhAvPlayerSetPlaybackRateError005
+     * @tc.desc       : test OH_AVPlayer_SetPlaybackRate with error value 10000
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerSetPlaybackRateError005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerSetPlaybackRateError(10000);
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_SETPLAYBACKRATE_2400
+     * @tc.name       : testOhAvPlayerSetPlaybackRateTwice001
+     * @tc.desc       : test OH_AVPlayer_SetPlaybackRate twice with rates 1.0 and 2.0
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerSetPlaybackRateTwice001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerSetPlaybackRateTwice(1.0, 2.0);
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_SETPLAYBACKRATE_2500
+     * @tc.name       : testOhAvPlayerSetPlaybackRateTwice002
+     * @tc.desc       : test OH_AVPlayer_SetPlaybackRate twice with rates 2.0 and 0.5
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerSetPlaybackRateTwice002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerSetPlaybackRateTwice(2.0, 0.5);
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_SETPLAYBACKRATE_2600
+     * @tc.name       : testOhAvPlayerSetPlaybackRateTwice003
+     * @tc.desc       : test OH_AVPlayer_SetPlaybackRate twice with rates 0.125 and 4.0
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerSetPlaybackRateTwice003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerSetPlaybackRateTwice(0.125, 4.0);
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_SETPLAYBACKRATE_2700
+     * @tc.name       : testOhAvPlayerSetPlaybackRateTwice004
+     * @tc.desc       : test OH_AVPlayer_SetPlaybackRate twice with rates 4.0 and 0.125
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerSetPlaybackRateTwice004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerSetPlaybackRateTwice(4.0, 0.125);
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_SETPLAYBACKRATE_2800
+     * @tc.name       : testOhAvPlayerSetPlaybackRateAfterSeek001
+     * @tc.desc       : test OH_AVPlayer_SetPlaybackRate after seek with rate 2.0
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerSetPlaybackRateAfterSeek001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerSetPlaybackRateAfterSeek(2.0);
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_SETPLAYBACKRATE_2900
+     * @tc.name       : testOhAvPlayerSetPlaybackRateBeforeSeek001
+     * @tc.desc       : test OH_AVPlayer_SetPlaybackRate before seek with rate 2.0
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerSetPlaybackRateBeforeSeek001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerSetPlaybackRateBeforeSeek(2.0);
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_SETPLAYBACKRATE_3000
+     * @tc.name       : testOhAvPlayerStopSetPlaybackRate
+     * @tc.desc       : test OH_AVPlayer_SetPlaybackRate during stop with rate 2.0
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerStopSetPlaybackRate', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerStopSetPlaybackRate(2.0);
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_SETPLAYBACKRATE_3100
+     * @tc.name       : testOhAvPlayerIdleSetPlaybackRate
+     * @tc.desc       : test OH_AVPlayer_SetPlaybackRate during idle with rate 2.0
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerIdleSetPlaybackRate', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerIdleSetPlaybackRate(2.0);
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_SETPLAYBACKRATE_3200
+     * @tc.name       : testOhAvPlayerInitSetPlaybackRate
+     * @tc.desc       : test OH_AVPlayer_SetPlaybackRate during init with rate 2.0
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerInitSetPlaybackRate', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerInitSetPlaybackRate(2.0);
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_SETPLAYBACKRATE_3300
+     * @tc.name       : testOhAvPlayerReleaseSetPlaybackRate
+     * @tc.desc       : test OH_AVPlayer_SetPlaybackRate during release with rate 2.0
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerReleaseSetPlaybackRate', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerReleaseSetPlaybackRate(2.0);
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_SETPLAYBACKRATE_3400
+     * @tc.name       : testOhAvPlayerSetPlaybackRateBeforeSeek001
+     * @tc.desc       : test OH_AVPlayer_SetPlaybackRate before pause with rate 2.0
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerSetPlaybackRateBeforePause', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerSetPlaybackRateBeforePause(2.0);
       expect(result).assertEqual(0);
       done();
     });

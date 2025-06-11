@@ -47,13 +47,31 @@
     ],
     "requestPermissions": [
       {
-        "name": "ohos.permission.READ_WRITE_DOWNLOAD_DIRECTORY"
+        "name": "ohos.permission.READ_WRITE_DOWNLOAD_DIRECTORY",
+        "reason": "$string:ceshi",
+        "usedScene": {
+          "abilities": [
+            "FormAbility"
+          ]
+        }
       },
       {
-        "name": "ohos.permission.READ_WRITE_DESKTOP_DIRECTORY"
+        "name": "ohos.permission.READ_WRITE_DESKTOP_DIRECTORY",
+        "reason": "$string:ceshi",
+        "usedScene": {
+          "abilities": [
+            "FormAbility"
+          ]
+        }
       },
       {
-        "name": "ohos.permission.READ_WRITE_DOCUMENTS_DIRECTORY"
+        "name": "ohos.permission.READ_WRITE_DOCUMENTS_DIRECTORY",
+        "reason": "$string:ceshi",
+        "usedScene": {
+          "abilities": [
+            "FormAbility"
+          ]
+        }
       }
     ]
   }

@@ -50,9 +50,13 @@ export default class EntryAbility extends UIAbility {
         try {
           let properties : window.WindowProperties = windowClass.getWindowProperties();
           let wRect : window.Rect =  properties.windowRect;
+          hilog.info(0x0000, 'testTag', 'wRect:' + JSON.stringify(wRect) );
           globalThis.winLeft = wRect.left;
           globalThis.winTop = wRect.top;
+          globalThis.winWidth = wRect.width;
+          globalThis.winHeight = wRect.height;
           hilog.info(0x0000, 'testTag', 'Succeeded get winLeft:' + globalThis.winLeft + ',winTop:' + globalThis.winTop );
+          hilog.info(0x0000, 'testTag', 'Succeeded get winWidth:' + globalThis.winWidth + ',winHeight:' + globalThis.winHeight );
         } catch (exception) {
           hilog.error(0x0000, 'testTag', 'Failed to obtain the window properties. Cause: ' + JSON.stringify(exception));
         }

@@ -873,5 +873,121 @@ export default function SerialAddTest() {
         expect().assertFail();
       }
     })
+
+    /**
+     * @tc.number   : SUB_USB_HostMgr_Serial_JS_getAttribute_Func_3400
+     * @tc.name     : testGetAttribute031
+     * @tc.desc     : getAttribute successfully.
+     */
+    it('testGetAttribute031', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      try {
+        console.info(TAG, 'testGetAttribute031 start');
+        if (await checkDevice() === false) {
+          done();
+          return;
+        }
+        let attribute: serial.SerialAttribute = {
+          baudRate: serial.BaudRates.BAUDRATE_460800,
+          dataBits: serial.DataBits.DATABIT_6,
+          parity: serial.Parity.PARITY_ODD,
+          stopBits: serial.StopBits.STOPBIT_1
+        };
+        serial.open(openPortId);
+        serial.setAttribute(openPortId, attribute);
+        expect(serial.getAttribute(openPortId).stopBits).assertEqual(serial.StopBits.STOPBIT_1);
+        serial.close(openPortId);
+        done();
+      } catch (error) {
+        console.error(TAG, 'testGetAttribute031 catch err code: ', error.code, ', message: ', error.message);
+        expect().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number   : SUB_USB_HostMgr_Serial_JS_getAttribute_Func_3500
+     * @tc.name     : testGetAttribute032
+     * @tc.desc     : getAttribute successfully.
+     */
+    it('testGetAttribute032', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      try {
+        console.info(TAG, 'testGetAttribute032 start');
+        if (await checkDevice() === false) {
+          done();
+          return;
+        }
+        let attribute: serial.SerialAttribute = {
+          baudRate: serial.BaudRates.BAUDRATE_921600,
+          dataBits: serial.DataBits.DATABIT_6,
+          parity: serial.Parity.PARITY_ODD,
+          stopBits: serial.StopBits.STOPBIT_1
+        };
+        serial.open(openPortId);
+        serial.setAttribute(openPortId, attribute);
+        expect(serial.getAttribute(openPortId).stopBits).assertEqual(serial.StopBits.STOPBIT_1);
+        serial.close(openPortId);
+        done();
+      } catch (error) {
+        console.error(TAG, 'testGetAttribute032 catch err code: ', error.code, ', message: ', error.message);
+        expect().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number   : SUB_USB_HostMgr_Serial_JS_getAttribute_Func_3600
+     * @tc.name     : testGetAttribute033
+     * @tc.desc     : getAttribute successfully.
+     */
+    it('testGetAttribute033', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      try {
+        console.info(TAG, 'testGetAttribute033 start');
+        if (await checkDevice() === false) {
+          done();
+          return;
+        }
+        let attribute: serial.SerialAttribute = {
+          baudRate: serial.BaudRates.BAUDRATE_1000000,
+          dataBits: serial.DataBits.DATABIT_6,
+          parity: serial.Parity.PARITY_ODD,
+          stopBits: serial.StopBits.STOPBIT_1
+        };
+        serial.open(openPortId);
+        serial.setAttribute(openPortId, attribute);
+        expect(serial.getAttribute(openPortId).stopBits).assertEqual(serial.StopBits.STOPBIT_1);
+        serial.close(openPortId);
+        done();
+      } catch (error) {
+        console.error(TAG, 'testGetAttribute033 catch err code: ', error.code, ', message: ', error.message);
+        expect().assertFail();
+      }
+    })
+
+    /**
+     * @tc.number   : SUB_USB_HostMgr_Serial_JS_getAttribute_Func_3700
+     * @tc.name     : testGetAttribute034
+     * @tc.desc     : getAttribute successfully.
+     */
+    it('testGetAttribute034', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      try {
+        console.info(TAG, 'testGetAttribute034 start');
+        if (await checkDevice() === false) {
+          done();
+          return;
+        }
+        let attribute: serial.SerialAttribute = {
+          baudRate: serial.BaudRates.BAUDRATE_1500000,
+          dataBits: serial.DataBits.DATABIT_7,
+          parity: serial.Parity.PARITY_SPACE,
+          stopBits: serial.StopBits.STOPBIT_1
+        };
+        serial.open(openPortId);
+        serial.setAttribute(openPortId, attribute);
+        expect(serial.getAttribute(openPortId).stopBits).assertEqual(serial.StopBits.STOPBIT_1);
+        serial.close(openPortId);
+        done();
+      } catch (error) {
+        console.error(TAG, 'testGetAttribute034 catch err code: ', error.code, ', message: ', error.message);
+        expect().assertFail();
+      }
+    })
   })
 }

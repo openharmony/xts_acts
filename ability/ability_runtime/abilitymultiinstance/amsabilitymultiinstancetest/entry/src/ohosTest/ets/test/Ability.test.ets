@@ -22,7 +22,7 @@ import { BusinessError } from '@ohos.base';
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
 import systemParameterEnhance from '@ohos.systemParameterEnhance';
 
-let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
+let deviceSupport  = systemParameterEnhance.getSync('persist.sys.abilityms.move_ui_ability_to_background_api_enable');
 let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
 
 class Params {
@@ -155,7 +155,7 @@ export default function abilityTest(testAbilityContext: common.UIAbilityContext)
           } else if (data.event == "MultiInstanceStartNext") {
             console.log('ACTS_AbilityMultiInstance_Single_0100 callBackSeq = ' + data.data);
             expect(data.data).assertEqual(checkEventResults[checkIndex++]);
-            if (checkIndex === 2 && deviceType === '2in1') {
+            if (checkIndex === 2 && deviceSupport === 'false') {
               clearTimeout(id);
                 commonEvent.unsubscribe(subscriber, () => {
                   console.debug("====>UnSubscribe CallBack====>");
@@ -220,7 +220,7 @@ export default function abilityTest(testAbilityContext: common.UIAbilityContext)
           } else if (data.event == "MultiInstanceStartNext") {
             console.log('ACTS_AbilityMultiInstance_Single_0200 callBackSeq = ' + data.data);
             expect(data.data).assertEqual(checkEventResults[checkIndex++]);
-            if (checkIndex === 2 && deviceType === '2in1') {
+            if (checkIndex === 2 && deviceSupport === 'false') {
               clearTimeout(id);
                 commonEvent.unsubscribe(subscriber, () => {
                   console.debug("====>UnSubscribe CallBack====>");
@@ -259,7 +259,7 @@ export default function abilityTest(testAbilityContext: common.UIAbilityContext)
     */
     it('ACTS_AbilityMultiInstance_Single_0300', Level.LEVEL0, async (done: Function) => {
       console.log('ACTS_AbilityMultiInstance_Single_0300====<begin');
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }
@@ -318,7 +318,7 @@ export default function abilityTest(testAbilityContext: common.UIAbilityContext)
     */
     it('ACTS_AbilityMultiInstance_Single_0400', Level.LEVEL0, async (done: Function) => {
       console.log('ACTS_AbilityMultiInstance_Single_0400====<begin');
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }
@@ -377,7 +377,7 @@ export default function abilityTest(testAbilityContext: common.UIAbilityContext)
     */
     it('ACTS_AbilityMultiInstance_Single_0600', Level.LEVEL0, async (done: Function) => {
       console.log('ACTS_AbilityMultiInstance_Single_0600====<begin');
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }
@@ -436,7 +436,7 @@ export default function abilityTest(testAbilityContext: common.UIAbilityContext)
     */
     it('ACTS_AbilityMultiInstance_Single_0700', Level.LEVEL0, async (done: Function) => {
       console.log('ACTS_AbilityMultiInstance_Single_0700====<begin');
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }
@@ -495,7 +495,7 @@ export default function abilityTest(testAbilityContext: common.UIAbilityContext)
     */
     it('ACTS_AbilityMultiInstance_Single_0800', Level.LEVEL0, async (done: Function) => {
       console.log('ACTS_AbilityMultiInstance_Single_0800====<begin');
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }
@@ -555,7 +555,7 @@ export default function abilityTest(testAbilityContext: common.UIAbilityContext)
     it('ACTS_AbilityMultiInstance_Single_0900', Level.LEVEL0, async (done: Function) => {
       console.log('ACTS_AbilityMultiInstance_Single_0900====<begin');
       let subscriber: commonEventManager.CommonEventSubscriber;
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }
@@ -614,7 +614,7 @@ export default function abilityTest(testAbilityContext: common.UIAbilityContext)
     */
     it('ACTS_AbilityMultiInstance_Single_1000', Level.LEVEL0, async (done: Function) => {
       console.log('ACTS_AbilityMultiInstance_Single_1000====<begin');
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }
@@ -674,7 +674,7 @@ export default function abilityTest(testAbilityContext: common.UIAbilityContext)
     */
     it('ACTS_AbilityMultiInstance_Single_1100', Level.LEVEL0, async (done: Function) => {
       console.log('ACTS_AbilityMultiInstance_Single_1100====<begin');
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }
@@ -733,7 +733,7 @@ export default function abilityTest(testAbilityContext: common.UIAbilityContext)
     */
     it('ACTS_AbilityMultiInstance_Single_1200', Level.LEVEL0, async (done: Function) => {
       console.log('ACTS_AbilityMultiInstance_Single_1200====<begin');
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }
@@ -792,7 +792,7 @@ export default function abilityTest(testAbilityContext: common.UIAbilityContext)
     */
     it('ACTS_AbilityMultiInstance_Single_1300', Level.LEVEL0, async (done: Function) => {
       console.log('ACTS_AbilityMultiInstance_Single_1300====<begin');
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }
@@ -850,7 +850,7 @@ export default function abilityTest(testAbilityContext: common.UIAbilityContext)
     */
     it('ACTS_AbilityMultiInstance_Single_1400', Level.LEVEL0, async (done: Function) => {
       console.log('ACTS_AbilityMultiInstance_Single_1400====<begin');
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }
@@ -909,7 +909,7 @@ export default function abilityTest(testAbilityContext: common.UIAbilityContext)
             */
     it('ACTS_AbilityMultiInstance_Single_1500', Level.LEVEL0, async (done: Function) => {
       console.log('ACTS_AbilityMultiInstance_Single_1500====<begin');
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }

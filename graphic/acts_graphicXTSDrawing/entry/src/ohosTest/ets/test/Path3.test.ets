@@ -678,7 +678,7 @@ export default function drawingTsPath3Test() {
 
     })
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_3301
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_001
      * @tc.name      : testPathGetSegmentNormal
      * @tc.desc      : testPathGetSegmentNormal
      * @tc.size      : MediumTest
@@ -709,7 +709,7 @@ export default function drawingTsPath3Test() {
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_3302
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_002
      * @tc.name      : testPathGetSegmentAbnormal
      * @tc.desc      : testPathGetSegmentAbnormal
      * @tc.size      : MediumTest

@@ -60,6 +60,7 @@ import provide1 from './Zhuang/provide1.test.ets'
 import state1 from './Zhuang/state1.test.ets'
 import StorageDeprecatedTest from './Zhuang/StorageDeprecatedTest.test';
 import PersistentTest0040 from './Zhuang/PersistentTest0040.test';
+import NonUICallBackTest from './Zhuang/NonUICallBackTest.test';
 
 
 export default function testsuite() {
@@ -108,4 +109,5 @@ export default function testsuite() {
   state1();
   StorageDeprecatedTest();
   PersistentTest0040();
+  NonUICallBackTest();
 }

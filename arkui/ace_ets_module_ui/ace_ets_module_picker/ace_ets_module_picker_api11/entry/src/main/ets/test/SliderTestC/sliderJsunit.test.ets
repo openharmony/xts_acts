@@ -455,27 +455,28 @@ export default function sliderJsunitSliderTest() {
                 await CommonFunc.sleep(1000)
                 globalThis.value.message.notify({ name: "step", value: 0.9 })
                 await CommonFunc.sleep(2000)
-                let sliderT =
-                    CommonFunc.getComponentRectOnScreen("sliderConstructor")
-                let top = sliderT.top
-                let bottom = sliderT.bottom
-                let left = sliderT.left
-                let right = sliderT.right
-                let x = Math.round(left + (right - left) / 2)
+
                 let driver = await Driver.create()
+                let slider = await driver.findComponent(ON.id('sliderConstructor'));
+                let rect = await slider.getBounds();
+
+                let top = rect.top
+                let bottom = rect.bottom
+                let left = rect.left
+                let right = rect.right
+                let x = Math.round(left + (right - left) / 2)
+                let y = Math.round(top + (bottom - top) / 2)
+
                 await driver.delayMs(waitUiReadyMs)
-                await driver.swipe(
-                    x,
-                    Math.round(bottom - vp2px(14)),
-                    x,
-                    Math.round(top + vp2px(34))
-                )
+                await driver.swipe(left,y,x,y)
+
                 await driver.delayMs(waitUiReadyMs)
                 let strJson = getInspectorByKey("tex")
                 let obj: ESObject = JSON.parse(strJson)
                 console.info(
                     "[sliderJsunitSliderTest_0800] obj: " + JSON.stringify(obj)
                 )
+                console.info("[sliderJsunitSliderTest_0800] obj.$attrs.content: " + JSON.stringify(obj.$attrs.content))
                 expect(Math.round(obj.$attrs.content)).assertEqual(50)
                 let strJson1 = getInspectorByKey("modeT")
                 let obj1: ESObject = JSON.parse(strJson1)

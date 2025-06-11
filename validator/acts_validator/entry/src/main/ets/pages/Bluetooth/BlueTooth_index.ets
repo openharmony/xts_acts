@@ -160,132 +160,131 @@ struct BlueTooth_index {
   }
 
   build() {
-    Column() {
-      Row() {
-        Button() {
-          Image($r('app.media.ic_public_back'))
-            .width('20vp')
-            .height('18vp')
-        }
-        .backgroundColor(Color.Black)
-        .size({ width: '40vp', height: '30vp' })
-        .onClick(() => {
-          router.back();
-        })
-
-        Row() {
-          Text('Bluetooth')
-            .fontColor(Color.White)
-            .fontSize('22fp')
-        }
-        .justifyContent(FlexAlign.SpaceAround)
-        .backgroundColor(Color.Black)
-
-        Row() {
-          Button() {
-            Image($r('app.media.ic_public_delete'))
-              .width('30vp')
-              .height('30vp')
-          }.backgroundColor(Color.Black)
-          .onClick(() => {
-            AlertDialog.show(
-              {
-                message: "是否删除所有记录",
-                primaryButton: {
-                  value: 'Yes',
-                  action: () => {
-                    this.ClearAll = true;
-                    this.ColorObject.forEach((value, index) => {
-                      this.ColorObject[index] = 'none ';
-                    });
-                    this.ClearText();
-                    router.replaceUrl({
-                      url: 'pages/BlueTooth/BlueTooth_index',
-                    })
-                    promptAction.showToast({
-                      message: '结果已删除', duration: 1000
-                    });
-                  }
-                },
-                secondaryButton: {
-                  value: 'No',
-                  action: () => {
-
-                  }
-                },
-                cancel: () => {
-
-                }
+    Scroll() {
+      Column() {
+        Scroll(){
+          Row({ space: 20 }) {
+            Row({ space: 20 }) {
+              Button() {
+                Image($r('app.media.ic_public_back'))
+                  .width('30vp')
+                  .height('30vp')
               }
-            )
-          })
-
-          Button() {
-            Image($r('app.media.ic_public_save'))
-              .width('30vp')
-              .height('30vp')
-              .margin({ left: 30 })
-          }.backgroundColor(Color.Black)
-          .onClick(() => {
-            this.ReadTextParseXml();
-            AlertDialog.show({
-              message: "报告已生成，如需查看通过命令行输入'hdc_std file recv /data/app/el2/100/base/com.example.actsvalidator/haps/entry/files/BlueTooth/BlueToothTest.xml -本地路径'",
-              confirm: {
-                value: 'OK',
-                action: () => {
-                  promptAction.showToast({
-                    message: '报告已生成', duration: 1000
-                  })
-                }
-              },
-              cancel: () => {
-                promptAction.showToast({
-                  message: '报告已生成', duration: 1000
-                });
-              }
-            })
-          })
-        }
-      }
-      .width('100%')
-      .justifyContent(FlexAlign.SpaceAround)
-      .margin({ top: '15vp' })
-      .height('6%')
-      .backgroundColor(Color.Black)
-
-      List({}) {
-        ForEach(this.TestCaseList, (item: TestCase, index) => {
-          ListItem() {
-            Row() {
-              Text(item.title)
-                .fontSize(20)
-                .fontColor(Color.White)
-            }
-            .width('100%')
-            .height(50)
-            .alignItems(VerticalAlign.Center)
-            .linearGradient(this.count === 0 && this.TEST === 0 ? {
-              angle: 90,
-              colors: [[0x000000, 0.0], [0x000000, 1.0]]
-            } : { angle: 90, colors: [[this.ColorTrue[index], 0.0], [this.ColorTrue2[index], 0.618]] })
-            .onClick(() => {
-              this.count = 1;
-              this.ClearAll = false;
-              this.current = index;
-              router.push({
-                url: item.uri,
+              .backgroundColor(Color.Black)
+              .onClick(() => {
+                router.back();
               })
-            })
-          }
-        }, (item: TestCase) => item.title)
+
+              Row() {
+                Text('Bluetooth')
+                  .fontColor(Color.White)
+                  .fontSize(15)
+              }
+            }
+            Row({ space: 20 }) {
+              Button() {
+                Image($r('app.media.ic_public_delete'))
+                  .width('30vp')
+                  .height('30vp')
+              }
+              .backgroundColor(Color.Black)
+              .onClick(() => {
+                AlertDialog.show(
+                  {
+                    message: "是否删除所有记录",
+                    primaryButton: {
+                      value: 'Yes',
+                      action: () => {
+                        this.ClearAll = true;
+                        this.ColorObject.forEach((value, index) => {
+                          this.ColorObject[index] = 'none ';
+                        });
+                        this.ClearText();
+                        router.replaceUrl({
+                          url: 'pages/BlueTooth/BlueTooth_index',
+                        })
+                        promptAction.showToast({
+                          message: '结果已删除', duration: 1000
+                        });
+                      }
+                    },
+                    secondaryButton: {
+                      value: 'No',
+                      action: () => {
+
+                      }
+                    },
+                    cancel: () => {
+
+                    }
+                  }
+                )
+              })
+
+              Button() {
+                Image($r('app.media.ic_public_save'))
+                  .width('30vp')
+                  .height('30vp')
+              }.backgroundColor(Color.Black)
+              .onClick(() => {
+                this.ReadTextParseXml();
+                AlertDialog.show({
+                  message: "报告已生成，如需查看通过命令行输入'hdc_std file recv /data/app/el2/100/base/com.example.actsvalidator/haps/entry/files/BlueTooth/BlueToothTest.xml -本地路径'",
+                  confirm: {
+                    value: 'OK',
+                    action: () => {
+                      promptAction.showToast({
+                        message: '报告已生成', duration: 1000
+                      })
+                    }
+                  },
+                  cancel: () => {
+                    promptAction.showToast({
+                      message: '报告已生成', duration: 1000
+                    });
+                  }
+                })
+              })
+            }
+
+          }.width('130%').height('20%').justifyContent(FlexAlign.Center)
+        }.scrollable(ScrollDirection.Horizontal).scrollBar(BarState.On).scrollBarColor(Color.Orange)
+        List({}) {
+          ForEach(this.TestCaseList, (item: TestCase, index) => {
+            ListItem() {
+              Row() {
+                Text(item.title)
+                  .fontSize(15)
+                  .fontColor(Color.White)
+              }
+              .width('100%')
+              .height(50)
+              .alignItems(VerticalAlign.Center)
+              .justifyContent(FlexAlign.Center)
+              .linearGradient(this.count === 0 && this.TEST === 0 ? {
+                angle: 90,
+                colors: [[0x000000, 0.0], [0x000000, 1.0]]
+              } : { angle: 90, colors: [[this.ColorTrue[index], 0.0], [this.ColorTrue2[index], 0.618]] })
+              .onClick(() => {
+                this.count = 1;
+                this.ClearAll = false;
+                this.current = index;
+                router.push({
+                  url: item.uri,
+                })
+              })
+            }
+          }, (item: TestCase) => item.title)
+        }.width('100%').divider({ strokeWidth: 1, color: Color.Grey }).height('100%')
+
       }
-      .width('100%')
-      .height('92%')
-      .divider({ strokeWidth: 1, color: Color.Grey })
-    }
+    }.backgroundColor(Color.Black)
+    .border({width:1,color:Color.White})
     .width('100%')
     .height('100%')
-    .backgroundColor(Color.Black)
+    .scrollBar(BarState.On)
+    .scrollable(ScrollDirection.Vertical)
+    .scrollBarColor(Color.Orange)
   }
 
   ClearText() {

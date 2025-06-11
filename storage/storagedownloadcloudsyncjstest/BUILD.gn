@@ -19,5 +19,5 @@ ohos_js_app_suite("storagedownloadcloudsync_js_test") {
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsStorageDownloadcloudsyncJsTest"
   subsystem_name = "filemanagement"
-  part_name = "storage_service"
+  part_name = "dfs_service"
 }

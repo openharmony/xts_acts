@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level} from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 import { Component, Driver, ON } from '@ohos.UiTest';
@@ -36,7 +36,7 @@ export default function KeyEventGetTypeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('KeyEventGetTypeTest_001', 0, async (done: Function) => {
+    it('KeyEventGetTypeTest_001', Level.LEVEL1, async (done: Function) => {
       console.info('KeyEventGetTypeTest_001 START');
       await Utils.sleep(500);
       let driver = await Driver.create()

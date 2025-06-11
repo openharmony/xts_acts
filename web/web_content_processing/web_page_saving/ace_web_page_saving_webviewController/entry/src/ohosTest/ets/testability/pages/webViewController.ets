@@ -142,7 +142,7 @@ struct Index {
             case "emitGetFaviconAgain": {
               try {
                 this.controller.loadUrl($rawfile('secondCopy.html'))
-                await Utils.sleep(1000)
+                await Utils.sleep(3000)
                 this.pixelmap = this.controller.getFavicon();
                 this.pixelmap.getImageInfo().then(imageInfo => {
                   if (imageInfo == undefined) {

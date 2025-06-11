@@ -40,13 +40,13 @@ struct SetCircle {
         Column() {
           Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
             Toggle({ type: ToggleType.Button, isOn: false }) {
-              Text('Red').fontSize(16)
-            }.size({ width: '25%', height: '20%' })
+              Text('Red').fontSize(10).fontColor(Color.Black)
+            }.size({ width: '25%', height: '100%' })
             .onClick(() => {
-              this.context.clearRect(100, 160, 150, 100);
+              this.context.clearRect(40, 20, 150, 100);
               this.FillColor = '#FFFF0000';
               this.context.fillStyle = this.FillColor;
-              this.context.fillRect(100, 160, 150, 100);
+              this.context.fillRect(40, 20, 150, 100);
               this.num1 = 1;
               if (this.num1 == this.num3 && this.num2 == 1) {
                 this.Vue = true;
@@ -54,13 +54,13 @@ struct SetCircle {
             })
 
             Toggle({ type: ToggleType.Button, isOn: false }) {
-              Text('Yellow').fontSize(16)
-            }.size({ width: '25%', height: '20%' })
+              Text('Yellow').fontSize(10).fontColor(Color.Black)
+            }.size({ width: '25%', height: '100%' })
             .onClick(() => {
-              this.context.clearRect(100, 160, 150, 100);
+              this.context.clearRect(40, 20, 150, 100);
               this.FillColor = '#fffffc3c';
               this.context.fillStyle = this.FillColor;
-              this.context.fillRect(100, 160, 150, 100);
+              this.context.fillRect(40, 20, 150, 100);
               this.num2 = 1;
               if (this.num1 == 1 && this.num3 == this.num2) {
                 this.Vue = true;
@@ -68,19 +68,19 @@ struct SetCircle {
             })
 
             Toggle({ type: ToggleType.Button, isOn: false }) {
-              Text('Green').fontSize(16)
-            }.size({ width: '25%', height: '20%' })
+              Text('Green').fontSize(10).fontColor(Color.Black)
+            }.size({ width: '25%', height: '100%' })
             .onClick(() => {
-              this.context.clearRect(100, 160, 150, 100);
+              this.context.clearRect(40, 20, 150, 100);
               this.FillColor = '#ff19fa00';
               this.context.fillStyle = this.FillColor;
-              this.context.fillRect(100, 160, 150, 100);
+              this.context.fillRect(40, 20, 150, 100);
               this.num3 = 1;
               if (this.num1 == 1 && this.num3 == this.num2) {
                 this.Vue = true;
               }
             })
-          }.width('70%').height('30%')
+          }.width('70%').height('20%')
 
           Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
             Canvas(this.context)
@@ -89,11 +89,11 @@ struct SetCircle {
               .backgroundColor('#ffffffff')
               .onReady(() => {
                 this.context.fillStyle = this.FillColor;
-                this.context.fillRect(100, 160, 150, 100);
+                this.context.fillRect(40, 20, 150, 100);
               })
           }
           .width('100%')
-          .height('70%')
+          .height('80%')
         }
       }
       .scrollBarWidth('6vp')

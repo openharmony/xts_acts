@@ -30,8 +30,6 @@
             "type": "PushKit",
             "pre-push": [],
             "push": [
-                "./resource/image/0801_sdr2.heic ->/data/app/el2/100/base/ohos.acts.multimedia.image.pictureNdk/haps/entry_test/files",
-                "./resource/image/testExif.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.pictureNdk/haps/entry_test/files",
                 "./resource/image/JPEGISOSingle.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.pictureNdk/haps/entry_test/files",
                 "./resource/image/HEIFISOMultiChannelBaseColor0512V12.heic ->/data/app/el2/100/base/ohos.acts.multimedia.image.pictureNdk/haps/entry_test/files",
                 "./resource/image/test.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.pictureNdk/haps/entry_test/files",
@@ -53,6 +51,7 @@
             "run-command": [
                 "chmod -R 777 /data/app/el2/100/base/ohos.acts.multimedia.image.pictureNdk/haps/entry_test/files/*",
                 "power-shell wakeup",
+                "power-shell timeout -o 2147483647",
                 "power-shell setmode 602"
             ]
         }

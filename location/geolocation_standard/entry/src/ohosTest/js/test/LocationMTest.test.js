@@ -766,6 +766,23 @@ export default function geolocationTest_geo7() {
             expect(true).assertEqual(location.directionAccuracy != -1)
             expect(true).assertEqual(location.uncertaintyOfTimeSinceBoot != -1)
             expect(true).assertEqual(location.sourceType != -1)
+            expect(true).assertEqual(location.poi != null)
+            if (location.poi != null) {
+                let poiArray = location.poi.poiArray
+                expect(true).assertEqual(poiArray != null)
+                if (poiArray && poiArray.length > 0) {
+                    expect(true).assertEqual(poiArray[0].id != 'NA')
+                    expect(true).assertEqual(poiArray[0].confidence != -1)
+                    expect(true).assertEqual(poiArray[0].name != 'NA')
+                    expect(true).assertEqual(poiArray[0].latitude != -1)
+                    expect(true).assertEqual(poiArray[0].lontitude != -1)
+                    expect(true).assertEqual(poiArray[0].administrativeArea != 'NA')
+                    expect(true).assertEqual(poiArray[0].locatity != 'NA')
+                    expect(true).assertEqual(poiArray[0].subLocality != 'NA')
+                    expect(true).assertEqual(poiArray[0].address != 'NA')
+                }
+                expect(true).assertEqual(location.poi.timestamp != -1)
+            }
         };
         try {
             geolocationm.on('locationChange', requestInfo, locationChange);
@@ -1480,7 +1497,7 @@ export default function geolocationTest_geo7() {
     */
     it('testLocationChange36', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
         enableLocationSwitch();
-        let requestInfo1 = {'interval': 1, 'locationScenario': 0x603, 'sportsType': geolocationm.SportsType.RUNNING};
+        let requestInfo1 = {'interval': 1, 'locationScenario': 0x603, 'sportsType': geolocationm.SportsType.RUNNING, 'needPoi': false};
         var locationChange1 = (location) => {
             console.log('[lbs_js] SUB_HSS_LOCATIONSYSTEM_LOCREQUEST_3600 data:' + JSON.stringify(location));
             expect(true).assertEqual(locationChange1 !=null);
@@ -2609,7 +2626,7 @@ export default function geolocationTest_geo7() {
      * @tc.level     : Level 2
      */
     it('testGetCurrentLocation36', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
-        let singleLocationRequest = { 'locatingTimeoutMs': 1000, 'locatingPriority': 0x501 };
+        let singleLocationRequest = { 'locatingTimeoutMs': 1000, 'locatingPriority': 0x501, 'needPoi': false };
         try {
             geolocationm.getCurrentLocation(singleLocationRequest, (err, result) => {
                 if (err) {

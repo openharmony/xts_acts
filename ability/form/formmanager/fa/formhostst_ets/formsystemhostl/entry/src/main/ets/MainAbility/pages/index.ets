@@ -60,6 +60,7 @@ struct Index {
   }
 
   async aboutToAppear() {
+    console.log(`${this.TAG} aboutToAppear start`);
     const onDeleteEventSubscriber = await commonEvent.createSubscriber(this.subscriberFormDeleteEvent);
     commonEvent.subscribe(onDeleteEventSubscriber, async (err, data) => {
       console.info(`${this.TAG} deleteCallBack start:====> ${JSON.stringify(data)}`);
@@ -75,6 +76,7 @@ struct Index {
       console.info(`${this.TAG} deleteCallBack end ====>`);
     });
 
+    console.info(`${this.TAG} aboutToAppear:getWant start`);
     featureAbility.getWant()
       .then((want: Want) => {
         console.info(`${this.TAG} getWant data: ${JSON.stringify(want)}`);
@@ -102,6 +104,7 @@ struct Index {
         }
 
         if (!this.canCreateForm && this.requestForm) {
+          console.log(`${this.TAG} aboutToAppear: requestForm start`);
           let commonEventPublishData:CommonEventManager.CommonEventPublishData | null = null;
           formHost.requestForm(this.requestId)
             .then((data) => {
@@ -123,11 +126,13 @@ struct Index {
               };
               commonEvent.publish(this.formOnRequestEvent, commonEventPublishData, this.onRequestCallback);
             });
+          console.log(`${this.TAG} aboutToAppear: requestForm end`);
         }
       })
       .catch((error:BusinessError) => {
         console.error(`${this.TAG} Operation failed. Cause: ${JSON.stringify(error)}`);
       })
+    console.log(`${this.TAG} aboutToAppear end`);
   }
 
   build() {
@@ -147,12 +152,17 @@ struct Index {
             .allowUpdate(this.allowUpdate)
             .visibility(this.isShowing ? Visibility.Visible : Visibility.Hidden)
             .onAcquired((form:InfoType) => {
+              console.log(`${this.TAG} onAcquired start`);
               console.info(`${this.TAG} onAcquired, form id: ${form.id}`);
               this.formId = form.id;
               const commonEventPublishData:CommonEventManager.CommonEventPublishData = {
                 data: this.formId.toString()
               };
-              commonEvent.publish(this.formOnAcquiredEvent, commonEventPublishData, this.onAcquiredCallback);
+              setTimeout(()=>{
+                console.log(`${this.TAG} publish formOnAcquiredEvent:` + this.formOnAcquiredEvent);
+                commonEvent.publish(this.formOnAcquiredEvent, commonEventPublishData, this.onAcquiredCallback);
+              }, 500);
+              console.log(`${this.TAG} onAcquired end`);
             })
             .onUninstall((info:InfoType) => {
               console.info(`${this.TAG} onUninstall: ${JSON.stringify(info)}`);

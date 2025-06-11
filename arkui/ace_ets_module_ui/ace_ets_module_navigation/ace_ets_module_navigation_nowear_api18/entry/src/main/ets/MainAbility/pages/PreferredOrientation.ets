@@ -1,4 +1,5 @@
 import { window } from '@kit.ArkUI';
+import { display } from '@kit.ArkUI';
 
 @Component
 struct PortraitPage {
@@ -6,10 +7,18 @@ struct PortraitPage {
   build() {
     NavDestination() {
       Stack({alignContent: Alignment.Center}) {
-        Button('push LANDSCAPE page').onClick(() => {
-          this.stack?.pushPath({name: 'landscape'})
-        })
-          .id('landscapeId')
+        Column({space: '10vp'}) {
+          Button('push LANDSCAPE page').onClick(() => {
+            this.stack?.pushPath({name: 'landscape'})
+          })
+            .id('landscapeId').margin({bottom: '10vp'})
+          Button('getPortraitPage').onClick(() => {
+            let displayClass: display.Display | null = null;
+            displayClass = display.getDefaultDisplaySync();
+            console.log('getPortraitPage displayClass is ', displayClass?.orientation)
+            AppStorage.setOrCreate('testOrientation', displayClass?.orientation);
+          }).id('getPortraitPage')
+        }
       }.width('100%').height('100%')
     }
     .width('100%').height('100%')
@@ -30,10 +39,18 @@ struct LandscapePage {
   build() {
     NavDestination() {
       Stack({alignContent: Alignment.Center}) {
-        Button('push UnspecifiedPage page').onClick(() => {
-          this.stack?.pushPath({name: 'UNSPECIFIED'})
-        })
-          .id('unspecifiedId')
+        Column({space: '10vp'}) {
+          Button('push UnspecifiedPage page').onClick(() => {
+            this.stack?.pushPath({ name: 'UNSPECIFIED' })
+          })
+            .id('unspecifiedId')
+          Button('getLandscapePage').onClick(() => {
+            let displayClass: display.Display | null = null;
+            displayClass = display.getDefaultDisplaySync();
+            console.log('getLandscapePage displayClass is ', displayClass?.orientation)
+            AppStorage.setOrCreate('testOrientation', displayClass?.orientation);
+          }).id('getLandscapePage')
+        }
       }.width('100%').height('100%')
     }
     .width('100%').height('100%')
@@ -53,10 +70,17 @@ struct UnspecifiedPage {
   build() {
     NavDestination() {
       Stack({alignContent: Alignment.Center}) {
-        Button('push PORTRAIT_INVERTED page').onClick(() => {
-          this.stack?.pushPath({name: 'PORTRAIT_INVERTED'})
-        })
-          .id('portraitInvertedId')
+        Column({space: '10vp'}) {
+          Button('push PORTRAIT_INVERTED page').onClick(() => {
+            this.stack?.pushPath({ name: 'PORTRAIT_INVERTED' })
+          })
+            .id('portraitInvertedId')
+          Button('getUnspecifiedPage').onClick(() => {
+            let displayClass: display.Display | null = null;
+            displayClass = display.getDefaultDisplaySync();
+            AppStorage.setOrCreate('testOrientation', displayClass?.orientation);
+          }).id('getUnspecifiedPage')
+        }
       }.width('100%').height('100%')
     }
     .width('100%').height('100%')
@@ -76,10 +100,18 @@ struct PortraitInvertedPage {
   build() {
     NavDestination() {
       Stack({alignContent: Alignment.Center}) {
-        Button('push LANDSCAPE_INVERTED page').onClick(() => {
-          this.stack?.pushPath({name: 'LANDSCAPE_INVERTED'})
-        })
-          .id('lanscapeInvertedId')
+        Column({space: '10vp'}) {
+          Button('push LANDSCAPE_INVERTED page').onClick(() => {
+            this.stack?.pushPath({ name: 'LANDSCAPE_INVERTED' })
+          })
+            .id('lanscapeInvertedId')
+          Button('getPortraitInvertedPage').onClick(() => {
+            let displayClass: display.Display | null = null;
+            displayClass = display.getDefaultDisplaySync();
+            console.log('getPortraitInvertedPage displayClass is ', displayClass?.orientation)
+            AppStorage.setOrCreate('testOrientation', displayClass?.orientation);
+          }).id('getPortraitInvertedPage')
+        }
       }.width('100%').height('100%')
     }
     .width('100%').height('100%')
@@ -99,10 +131,18 @@ struct LandscapInvertedPage {
   build() {
     NavDestination() {
       Stack({alignContent: Alignment.Center}) {
-        Button('push PORTRAIT page').onClick(() => {
-          this.stack?.pushPath({name: 'portrait'})
-        })
-        .id('portraitId')
+        Column({space: '10vp'}) {
+          Button('push PORTRAIT page').onClick(() => {
+            this.stack?.pushPath({ name: 'portrait' })
+          })
+            .id('portraitId')
+          Button('getLandscapInvertedPage').onClick(() => {
+            let displayClass: display.Display | null = null;
+            displayClass = display.getDefaultDisplaySync();
+            console.log('getLandscapInvertedPage displayClass is ', displayClass?.orientation)
+            AppStorage.setOrCreate('testOrientation', displayClass?.orientation);        
+          }).id('getLandscapInvertedPage')
+        }
       }.width('100%').height('100%')
     }
     .width('100%').height('100%')
