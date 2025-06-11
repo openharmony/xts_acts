@@ -68,19 +68,19 @@ struct StyledStringStrokeTest {
         })
         .clip(true)
       Row(){
-        Button('spanStyle1')
+        Button('spanStyle1').width('30%')
           .onClick(() => {
             this.mutableStyledString.setStyle(this.spanStyle1)
             this.controller.setStyledString(this.mutableStyledString)
           })
           .id('spanStyle1')
-        Button('spanStyle2')
+        Button('spanStyle2').width('30%')
           .onClick(() => {
             this.mutableStyledString.replaceStyle(this.spanStyle2)
             this.controller.setStyledString(this.mutableStyledString)
           })
           .id('spanStyle2')
-        Button('spanStyle3')
+        Button('spanStyle3').width('30%')
           .onClick(() => {
             this.mutableStyledString.setStyle(this.spanStyle3)
             this.controller.setStyledString(this.mutableStyledString)
