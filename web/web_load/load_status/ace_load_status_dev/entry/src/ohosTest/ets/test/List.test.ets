@@ -13,7 +13,12 @@
  * limitations under the License.
  */
 import webJsunit from './WebJsunit.test';
-
+import webOnOffOne from './WebOnOffOne.test';
+import webOnOffTwo from './WebOnOffTwo.test';
+import waitForAttached from './WaitForAttached.test';
 export default function testsuite() {
   webJsunit();
+  webOnOffOne();
+  webOnOffTwo();
+  waitForAttached();
 }
