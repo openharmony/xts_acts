@@ -12,24 +12,32 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { LengthMetrics } from '@kit.ArkUI'
 
 @Entry
 @Component
-struct FolderStackMatchParent1 {
+struct PathResource {
   build() {
-    FolderStack() {
-      FolderStack().backgroundColor(Color.Pink)
-        .width(LayoutPolicy.matchParent)
-        .height(LayoutPolicy.matchParent)
-        .id('FolderStack1')
-    }
-    .width(150)
-    .height(150)
-    .padding(20)
-    .border({ width: 5, color: Color.Yellow })
-    .safeAreaPadding(LengthMetrics.vp(10))
-    .backgroundColor(Color.Red)
-    .id('FolderStack2')
+    Column({space:5}) {
+
+      Path({
+        commands: 'M0 300 S100 0 240 300 Z',
+        width: 100,
+        height: 50
+      })
+        .id('PathResource1')
+
+      Path({
+        commands: $r('app.string.Path_commands'),
+        width: $r('app.string.Width_100'),
+        height: $r('app.string.Height_50')
+      }).id('PathResource2')
+
+      Path()
+        .commands($r('app.string.Path_commands'))
+        .width($r('app.string.Width_100'))
+        .height($r('app.string.Height_50'))
+        .id('PathResource3')
+
+    }.width('100%')
   }
 }

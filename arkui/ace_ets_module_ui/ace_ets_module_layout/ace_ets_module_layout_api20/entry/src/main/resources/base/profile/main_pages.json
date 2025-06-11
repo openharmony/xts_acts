@@ -13,10 +13,14 @@
         "MainAbility/pages/Row/RowMatchParent",
         "MainAbility/pages/Row/RowWrapContent",
         "MainAbility/pages/Row/RowFixAtIdealSizePage",
-        "MainAbility/pages/Stack/FolderStackMatchParent",
+      
         "MainAbility/pages/Stack/StackMatchParent",
         "MainAbility/pages/Stack/StackWrapContent",
         "MainAbility/pages/Stack/StackFixAtIdealSizePage",
-        "MainAbility/pages/inspector/layoutInspector"
+        "MainAbility/pages/inspector/layoutInspector",
+        
+        "MainAbility/pages/BoxAlign/ButtonAlign",
+        "MainAbility/pages/Stack/StackSafeArea",
+        "MainAbility/pages/Stack/StackChildAlignment" 
     ]
 }

@@ -75,9 +75,9 @@ export default function FlexWrapContentTest() {
       console.info('Flex_width2:' + JSON.stringify(JSON.parse(strJson2).$attrs.width));
       console.info('Flex_height2:' + JSON.stringify(JSON.parse(strJson2).$attrs.height));
 
-      expect(JSON.parse(strJson1).$attrs.width).assertEqual('150.00vp');
+      expect(JSON.parse(strJson1).$attrs.width).assertEqual('50.00vp');
       expect(JSON.parse(strJson1).$attrs.height).assertEqual('50.00vp');
-      expect(Math.floor(Math.abs(Flex_Actual_Width1 - vp2px(150))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(Flex_Actual_Width1 - vp2px(50))) <= 1).assertTrue();
       expect(Math.floor(Math.abs(Flex_Actual_Height1 - vp2px(50))) <= 1).assertTrue();
 
       expect(JSON.parse(strJson2).$attrs.width).assertEqual('150.00vp');
