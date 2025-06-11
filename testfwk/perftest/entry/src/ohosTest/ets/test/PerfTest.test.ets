@@ -83,7 +83,7 @@ export default function PerfTestTest() {
      * @tc.name: testPerfTestPageSwipe
      * @tc.desc: Test the performance of page swipe scenarios
      */
-    it('testPerfTestPageSwitch', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('testPerfTestPageSwipe', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       await startAbility('com.perftestScene.acts', 'EntryAbility');
       let driver = Driver.create()
       await driver.delayMs(3000)
