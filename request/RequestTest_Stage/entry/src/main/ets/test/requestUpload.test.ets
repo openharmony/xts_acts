@@ -886,7 +886,7 @@ export default function requestUploadJSUnit() {
       let pathDir = baseContext.cacheDir;
       let filePath = pathDir + '/test9.txt';
       let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-      let test = ''.padEnd(1 * 1024, '666');
+      let test = ''.padEnd(1 * 1024, 'SUB_REQUEST_FileUpload_ResponseBody_0100');
       fs.writeSync(file.fd, test);
       fs.closeSync(file);
       console.info('====>beforeAll: file generate test9.txt');
@@ -940,7 +940,7 @@ export default function requestUploadJSUnit() {
       let pathDir = baseContext.cacheDir;
       let filePath = pathDir + '/test10.txt';
       let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-      let test = ''.padEnd(1 * 1024, '888');
+      let test = ''.padEnd(1 * 1024, 'SUB_REQUEST_FileUpload_ResponseBody_0200');
       fs.writeSync(file.fd, test);
       fs.closeSync(file);
       console.info('====>beforeAll: file generate test10.txt');
