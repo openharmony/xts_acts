@@ -49,9 +49,9 @@ export default function uriTest() {
      * @tc.desc       : Testing if URIs with different special symbols in the host part are not considered equal.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testEqualsToSpecialSymbolsHostStr2vsStr30001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testEqualsToSpecialSymbolsHostStr2vsStr30001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testEqualsToSpecialSymbolsHostStr2vsStr30001';
       try {
         const uri1 = 'https://username:password@host' + str2 + ':8080/directory/file/?key1=value1#qwer=da';
@@ -72,9 +72,9 @@ export default function uriTest() {
      * @tc.desc       : Testing if a URI with special characters in the host part is correctly recognized as absolute.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testCheckIsAbsoluteSpecialSymbolsHostStr20001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testCheckIsAbsoluteSpecialSymbolsHostStr20001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testCheckIsAbsoluteSpecialSymbolsHostStr20001';
       try {
         const uri1 = 'https://username:password@host' + str2 + ':8080/directory/file/?key1=value1#qwer=da';
@@ -93,9 +93,9 @@ export default function uriTest() {
      * @tc.desc       : Testing if a URI with encoded special characters in the host part is correctly recognized as absolute.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testCheckIsAbsoluteSpecialSymbolsHostStr30002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testCheckIsAbsoluteSpecialSymbolsHostStr30002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testCheckIsAbsoluteSpecialSymbolsHostStr30002';
       try {
         const uri1 = 'https://username:password@host' + str3 + ':8080/directory/file/?key1=value1#qwer=da';
@@ -114,9 +114,9 @@ export default function uriTest() {
      * @tc.desc       : Testing if a URI with special characters in the fragment part is correctly recognized as absolute.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testCheckIsAbsoluteSpecialSymbolsFragmentStr20001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testCheckIsAbsoluteSpecialSymbolsFragmentStr20001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testCheckIsAbsoluteSpecialSymbolsFragmentStr20001';
       try {
         const uri1 = 'https://username:password@host:8080/directory/file?key1=value1#qwer=da' + str2;
@@ -135,9 +135,9 @@ export default function uriTest() {
      * @tc.desc       : Testing if a URI with encoded special characters in the fragment part is correctly recognized as absolute.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testCheckIsAbsoluteSpecialSymbolsFragmentStr30002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testCheckIsAbsoluteSpecialSymbolsFragmentStr30002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testCheckIsAbsoluteSpecialSymbolsFragmentStr30002';
       try {
         const uri1 = 'https://username:password@host:8080/directory/file?key1=value1#qwer=da' + str3;
@@ -156,9 +156,9 @@ export default function uriTest() {
      * @tc.desc       : Testing if a URI with special characters in the path part is correctly recognized as absolute.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testCheckIsAbsoluteSpecialSymbolsPathStr20001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testCheckIsAbsoluteSpecialSymbolsPathStr20001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testCheckIsAbsoluteSpecialSymbolsPathStr20001';
       try {
         const uri1 = 'https://username:password@host:8080/directory/file' + str2 + '?key1=value1#qwer=da';
@@ -177,9 +177,9 @@ export default function uriTest() {
      * @tc.desc       : Testing if a URI with encoded special characters in the path part is correctly recognized as absolute.
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testCheckIsAbsoluteSpecialSymbolsPathStr30002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testCheckIsAbsoluteSpecialSymbolsPathStr30002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testCheckIsAbsoluteSpecialSymbolsPathStr30002';
       try {
         const uri1 = 'https://username:password@host:8080/directory/file' + str3 + '?key1=value1#qwer=da';
@@ -198,9 +198,9 @@ export default function uriTest() {
      * @tc.desc: Testing the URI creation with special characters in the scheme which should produce a BusinessError.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testCheckIsAbsoluteSpecialSymbolsSchemeStr20001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testCheckIsAbsoluteSpecialSymbolsSchemeStr20001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       try {
         const uri1 = `https${str2}://username:password@host:8080/directory/file/?key1=value1#qwer=da`;
         new uri.URI(uri1);
@@ -216,9 +216,9 @@ export default function uriTest() {
      * @tc.desc: Testing the URI creation with valid special characters in the scheme to check if it is considered absolute.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testCheckIsAbsoluteSpecialSymbolsScheme0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testCheckIsAbsoluteSpecialSymbolsScheme0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'checkIsAbsoluteSpecialSymbolsScheme0002';
       try {
         const uri1 = 'https-+.test0002://username:password@host:8080/directory/file/?key1=value1#qwer=da';
@@ -237,9 +237,9 @@ export default function uriTest() {
      * @tc.desc: Testing the URI creation with special characters in the port which should produce a BusinessError.
      * @tc.size: MediumTest
      * @tc.type: Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
-    it('testCheckIsAbsoluteSpecialSymbolsPortStr20001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+    it('testCheckIsAbsoluteSpecialSymbolsPortStr20001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
       const TAG = 'testCheckIsAbsoluteSpecialSymbolsPortStr20001';
       try {
         const uri1 = `https://username:password@host:8080${str2}/directory/file/?key1=value1#qwer=da`;
