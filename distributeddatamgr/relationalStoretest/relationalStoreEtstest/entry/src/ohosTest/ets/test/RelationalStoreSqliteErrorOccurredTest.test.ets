@@ -253,6 +253,28 @@ export default function rdbStoreSqliteErrorOccurredTest() {
       }
       console.log(TAG + "************* testRdbStoreOnsqliteErrorOccurred0005 end *************");
     })
+	/**
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_onSqliteErrorOccurredJsAPITest_0600
+     * @tc.name testRdbStoreOnsqliteErrorOccurred0006
+     * @tc.desc 1.create db 2.close db 3.OffsqliteErrorOccurred
+     */
+    it('testRdbStoreOnsqliteErrorOccurred0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      console.log(TAG + "************* testRdbStoreOnsqliteErrorOccurred0006 start *************");
+      try {
+        rdbStore.close();
+        let exceptionMessage: data_relationalStore.ExceptionMessage;
+        rdbStore.off('sqliteErrorOccurred', exceptionMessage => {
+          console.log(TAG + `error log is ${exceptionMessage.code}`)
+          expect().assertFail();
+          done();
+        });
+      } catch (err) {
+        expect(err.code == 14800014).assertTrue();
+        console.log(TAG + `error is failed code:${err.code},message:${err.message}`);
+        done();
+      }
+      console.log(TAG + "************* testRdbStoreOnsqliteErrorOccurred0006 end *************");
+    })
     console.log(TAG + "*************Unit Test End*************");
   })
 }
