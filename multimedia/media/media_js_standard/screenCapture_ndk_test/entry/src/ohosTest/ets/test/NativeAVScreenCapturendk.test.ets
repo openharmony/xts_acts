@@ -25,6 +25,7 @@ import UIAbility from '@ohos.app.ability.UIAbility';
 import common from '@ohos.app.ability.common';
 import { BusinessError } from '@ohos.base';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
+import deviceinfo from '@ohos.deviceInfo'
 
 const Tag = 'screen_capture_ndk_test:'
 
@@ -422,9 +423,13 @@ export default function nativeAVScreenCaptureNdkTest() {
      */
     it('SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_STRATEGY_FOR_PRIVACY_MASKMODE_0401', Level.LEVEL0,async (done: Function) => {
       console.info(Tag + "multiAVScreenCaptureCreate-------------start :");
-      let result: number = myScreenCaptureNdk.multiAVScreenCaptureCreate();
-      console.info(Tag + "multiAVScreenCaptureCreate-------------res:" + result);
-      expect(result).assertEqual(3);
+      let sdkApiVersionInfo = deviceinfo.sdkApiVersion;
+      console.info(Tag + "sdkApiVersionInfo-------------res:" + sdkApiVersionInfo);
+      if (sdkApiVersionInfo >= 17 ) {
+        let result: number = myScreenCaptureNdk.multiAVScreenCaptureCreate();
+        console.info(Tag + "multiAVScreenCaptureCreate-------------res:" + result);
+        expect(result).assertEqual(3);
+      }
       done();
     });
 

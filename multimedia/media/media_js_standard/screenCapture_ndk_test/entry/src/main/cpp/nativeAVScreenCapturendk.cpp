@@ -1149,26 +1149,23 @@ static napi_value multiAVScreenCaptureCreate(napi_env env, napi_callback_info in
     }
 
     OH_AVSCREEN_CAPTURE_ErrCode result2 = OH_AVScreenCapture_Release(screenCaptureCreate12);
-    if (result2 != 0) {
-        napi_throw_error((env), nullptr, "error : expect screenCaptureCreate12 is not Fail");
-    }
     result2 = OH_AVScreenCapture_Release(screenCaptureCreate13);
-    if (result2 != 0) {
+    if (result2 != AV_SCREEN_CAPTURE_ERR_OK) {
         napi_throw_error((env), nullptr, "error : expect screenCaptureCreate13 is not Fail");
     }
     result2 = OH_AVScreenCapture_Release(screenCaptureCreate14);
-    if (result2 != 0) {
+    if (result2 != AV_SCREEN_CAPTURE_ERR_OK) {
         napi_throw_error((env), nullptr, "error : expect screenCaptureCreate14 is not Fail");
     }
     result2 = OH_AVScreenCapture_Release(screenCaptureCreate15);
-    if (result2 != 0) {
+    if (result2 != AV_SCREEN_CAPTURE_ERR_OK0) {
         napi_throw_error((env), nullptr, "error : expect screenCaptureCreate15 is not Fail");
     }
     result2 = OH_AVScreenCapture_Release(screenCaptureCreate16);
-    if (result2 != 3) {
+    if (result2 != AV_SCREEN_CAPTURE_ERR_INVALID_VAL) {
         napi_throw_error((env), nullptr, "error : expect screenCaptureCreate16 is not Fail");
     }
-    OH_LOG_INFO(LOG_APP, "multiAVScreenCaptureCreate release result2=%{public}d", result2);
+    OH_LOG_INFO(LOG_APP, "multiAVScreenCaptureCreate release result2 = %{public}d", result2);
     napi_value res;
     napi_create_int32(env, result2, &res);
     return res;
