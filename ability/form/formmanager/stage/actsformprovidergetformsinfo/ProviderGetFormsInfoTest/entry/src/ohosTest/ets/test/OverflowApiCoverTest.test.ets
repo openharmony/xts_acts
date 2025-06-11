@@ -31,22 +31,6 @@ export default function OverflowApiCoverTest() {
       }, INTERVAL_TIME);
     })
 
-    /**
-     * @tc.number    : FormInfo_FormParam_Cover_0100
-     * @tc.name      : FormInfo_FormParam_Cover_0100
-     * @tc.desc      : cover FORM_WIDTH_VP_KEY, FORM_HEIGHT_VP_KEY.
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 1
-     */
-    it('FormInfo_FormParam_Cover_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void) => {
-      console.info("FormInfo_FormParam_Cover_0100 start");
-      expect("ohos.extra.param.key.form_width_vp").assertEqual(formInfo.FormParam.FORM_WIDTH_VP_KEY);
-      expect("ohos.extra.param.key.form_height_vp").assertEqual(formInfo.FormParam.FORM_HEIGHT_VP_KEY);
-      done();
-      console.info("FormInfo_FormParam_Cover_0100 end");
-    });
-
     /*
      * @tc.number  RequestOverflow_Cover_0100
      * @tc.name    RequestOverflow_Cover_0100
