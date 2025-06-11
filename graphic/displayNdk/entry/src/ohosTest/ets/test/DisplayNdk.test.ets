@@ -595,7 +595,7 @@ export default function DisplayNdkTest() {
       try{
         let errcode  = testNapi.createAvailableArea_ErrCode140003();
         console.log(`${caseName} result: ${JSON.stringify(errcode)}`);
-        expect(errcode).assertEqual(140003);
+        expect(errcode).assertEqual(1400003);
         done();
       } catch (err) {
         console.log(caseName + ': fail:'+ err + ' '+err.code);
@@ -735,7 +735,7 @@ export default function DisplayNdkTest() {
       try{
         let result  = testNapi.getDisplaySourceMode_ErrCode140003();
         console.log(`${caseName} result: ${JSON.stringify(result)}`);
-        expect(result).assertEqual(140003);
+        expect(result).assertEqual(1400003);
         done();
       } catch (err) {
         console.log(caseName + ': fail:'+ err + ' '+err.code);
@@ -779,7 +779,7 @@ export default function DisplayNdkTest() {
       try{
         let result  = testNapi.getDisplayPosition_ErrCode140003();
         console.log(`${caseName} result: ${JSON.stringify(result)}`);
-        expect(result).assertEqual(140003);
+        expect(result).assertEqual(1400003);
         done();
       } catch (err) {
         console.log(caseName + ': fail:'+ err + ' '+err.code);
@@ -845,7 +845,7 @@ export default function DisplayNdkTest() {
       try{
         let result  = testNapi.unregisterAvailableAreaChangeListener_ErrCode140004();
         console.log(`${caseName} result: ${JSON.stringify(result)}`);
-        expect(result).assertEqual(140004);
+        expect(result).assertEqual(1400004);
         done();
       } catch (err) {
         console.log(caseName + ': fail:'+ err + ' '+err.code);
@@ -912,7 +912,7 @@ export default function DisplayNdkTest() {
       try{
         let result  = testNapi.unregisterDisplayAddListener_ErrCode140004();
         console.log(`${caseName} result: ${JSON.stringify(result)}`);
-        expect(result).assertEqual(140004);
+        expect(result).assertEqual(1400004);
         done();
       } catch (err) {
         console.log(caseName + ': fail:'+ err + ' '+err.code);
@@ -978,7 +978,7 @@ export default function DisplayNdkTest() {
       try{
         let result  = testNapi.registerDisplayRemoveListener_ErrCode140004();
         console.log(`${caseName} result: ${JSON.stringify(result)}`);
-        expect(result).assertEqual(140004);
+        expect(result).assertEqual(1400004);
         done();
       } catch (err) {
         console.log(caseName + ': fail:'+ err + ' '+err.code);
