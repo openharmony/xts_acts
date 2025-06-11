@@ -39,6 +39,7 @@ const LABEL_SAMBA_CLIENT = "sambaClient";
 const LABEL_SAMBA_SERVER = "sambaServer";
 const LABEL_REMOTE_DESK = "remoteDesk";
 const LABEL_REMOTE_DIAGNOSIS = "remoteDiagnosis";
+const LABEL_SET_APN = "setApn";
 
 export default function restrictionsTest() {
   describe('restrictions_test', () => {
@@ -49,6 +50,7 @@ export default function restrictionsTest() {
     testAddDisallowedListForAccountPolicy();
     testRemoveDisallowedListForAccountPolicy();
     testGetDisallowedListForAccountPolicy();
+    testSetUserRestrictionPolicy();
   })
 }
 
@@ -1786,6 +1788,73 @@ function testGetDisallowedListForAccountPolicy() {
       expect(error.code == 401).assertTrue();
     } finally {
       await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+}
+
+function testSetUserRestrictionPolicy() {
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_USER_RESTRICTION_JS_0100
+   * @tc.name      : test_set_user_restriction_0100
+   * @tc.desc      : test setUserRestriction with unActiveadmin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_user_restriction_0100", Level.LEVEL2, async (done: Function) => {
+    try {
+      restrictions.setUserRestriction(SELFWANT, LABEL_SET_APN, true);
+      expect(false).assertTrue();
+    } catch (error) {
+      console.info(' --- test_set_user_restriction_0100 error 9200001 or 801 is expected, actually catch: '
+        + error.code);
+      expect((error.code == 9200001) || (error.code == 801)).assertTrue();
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_USER_RESTRICTION_JS_0200
+   * @tc.name      : test_set_user_restriction_0200
+   * @tc.desc      : test setUserRestriction with normal admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_user_restriction_0200", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+    try {
+      restrictions.setUserRestriction(SELFWANT, LABEL_SET_APN, true);
+      expect(false).assertTrue();
+    } catch (error) {
+      console.info(' --- test_set_user_restriction_0200 error 9200002 or 801 is expected, actually catch: '
+        + error.code);
+      expect((error.code == 9200002) || (error.code == 801)).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_USER_RESTRICTION_JS_0300
+   * @tc.name      : test_set_user_restriction_0300
+   * @tc.desc      : test setUserRestriction with super admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_user_restriction_0300", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      restrictions.setUserRestriction(SELFWANT, LABEL_SET_APN, true);
+    } catch (error) {
+      console.info(' --- test_set_user_restriction_0300 error 801 is expected, actually catch: ' + error.code);
+      expect(error.code == 801).assertTrue();
+    } finally {
+      restrictions.setUserRestriction(SELFWANT, LABEL_SET_APN, false);
+      await adminManager.disableAdmin(SELFWANT);
     }
     done();
   });
