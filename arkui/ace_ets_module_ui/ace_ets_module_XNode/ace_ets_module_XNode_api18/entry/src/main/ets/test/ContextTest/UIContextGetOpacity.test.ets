@@ -47,9 +47,9 @@ export default function UIContextGetOpacityTest() {
     });
 
     /**
-     * @tc.number    UIContextWithoutWindowTest_0100
-     * @tc.name      UIContextWithoutWindowTest_0100
-     * @tc.desc      frameNode: UIContext Without Window Test
+     * @tc.number    UIContextGetOpacityTest_0100
+     * @tc.name      UIContextGetOpacityTest
+     * @tc.desc      frameNode: GetOpacity Test
      * @tc.level:    Level 0
      * @tc.type :
      * @tc.size :
