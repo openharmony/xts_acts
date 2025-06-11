@@ -14,6 +14,12 @@
  */
 import FlexLayoutPolicyTest from './Flex/FlexLayoutPolicyTest.test.ets'
 import GridRowNoColumnsTest from './GridRow/GridRowNoColumnsTest.test.ets'
+import ColumnFixAtIdealSizeTest from './Column/ColumnFixAtIdealSizeTest.ets'
+import RowFixAtIdealSizeTest from './Row/RowFixAtIdealSizeTest.ets'
+import StackFixAtIdealSizeTest from './Stack/StackFixAtIdealSizeTest.ets'
+import FlexFixAtIdealSizeTest from './Flex/FlexFixAtIdealSizeTest.ets'
+import GridRowFixAtIdealSizeTest from './GridRow/GridRowFixAtIdealSizeTest.ets'
+import GridColFixAtIdealSizeTest from './GridCol/GridColFixAtIdealSizeTest.ets'
 
 import ColumnMatchParentTest from './Column/ColumnMatchParentTest.ets'
 import ColumnWrapContentTest from './Column/ColumnWrapContentTest.ets'
@@ -40,4 +46,11 @@ export default function testsuite() {
   ButtonAlignTest();
   StackSafeAreaTest();
   StackChildAlignmentTest();
+  ColumnFixAtIdealSizeTest();
+  RowFixAtIdealSizeTest();
+  StackFixAtIdealSizeTest();
+  FlexFixAtIdealSizeTest();
+  GridRowFixAtIdealSizeTest();
+  GridColFixAtIdealSizeTest();
+
 }

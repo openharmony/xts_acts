@@ -18,6 +18,7 @@ import webAttributeTest from './WebAttributeTest.test'
 import WebOnPermissionRequest from './WebOnPermissionRequest.test'
 import webInitTest from './WebInitTest.test'
 import WebPreviewMenuOptions from './WebPreviewMenuOptions.test'
+import WebElementType from  './WebElementType.test'
 
 export default function testsuite() {
   webInitTest()
@@ -26,4 +27,5 @@ export default function testsuite() {
   WebOnPermissionRequest()
   WebViewEnumAndFontLibrary()
   WebPreviewMenuOptions()
+  WebElementType()
 }

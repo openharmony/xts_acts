@@ -13,6 +13,12 @@
         "MainAbility/pages/Stack/StackWrapContent",
         "MainAbility/pages/BoxAlign/ButtonAlign",
         "MainAbility/pages/Stack/StackSafeArea",
-        "MainAbility/pages/Stack/StackChildAlignment" 
+        "MainAbility/pages/Stack/StackChildAlignment" ,
+        "MainAbility/pages/GridRow/GridRowFixAtIdealSizePage",
+        "MainAbility/pages/GridCol/GridColFixAtIdealSizePage",
+        "MainAbility/pages/Column/ColumnFixAtIdealSizePage",
+        "MainAbility/pages/Flex/FlexFixAtIdealSizePage",
+        "MainAbility/pages/Row/RowFixAtIdealSizePage",
+        "MainAbility/pages/Stack/StackFixAtIdealSizePage"
     ]
 }

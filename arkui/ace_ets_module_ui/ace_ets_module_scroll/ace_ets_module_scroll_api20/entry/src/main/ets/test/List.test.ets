@@ -19,6 +19,7 @@ import barMarginList from './ListTest/barMarginList.test';
 import barMarginScroll from './ScrollTest/barMarginScroll.test';
 import curvesTabs from './TabsTest/curvesTabs.test';
 import maxDownRefresh from './RefreshTest/maxDownRefresh.test';
+import scrollBarColor from './ScrollBarTest/scrollBarColor.test';
 
 export default function testsuite() {
   maintainPosition()
@@ -27,4 +28,5 @@ export default function testsuite() {
   barMarginScroll()
   curvesTabs()
   maxDownRefresh()
+  scrollBarColor()
 }
