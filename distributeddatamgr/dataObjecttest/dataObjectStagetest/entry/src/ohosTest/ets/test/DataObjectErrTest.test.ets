@@ -441,7 +441,7 @@ export default function DataObjectErrTest() {
         console.info(TAG + 'on change 20 success.');
       } catch (err) {
         console.error(TAG + 'Failed to on change20. code: ' + err.code + '.message:' + err.message);
-        expect(err.code).assertEqual('401')
+        expect().assertFail();
       }
       console.info(TAG + '************ DataObjectErrTest14 end ************')
     })
