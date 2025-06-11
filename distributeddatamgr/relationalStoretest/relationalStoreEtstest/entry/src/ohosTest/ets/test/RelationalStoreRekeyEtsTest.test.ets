@@ -913,6 +913,32 @@ export default function rdbstoreRekeyEtsTest() {
       }
       console.log(TAG + "************* testRekey0025 end *************");
     });
+    /**
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_reKeyJsAPITest_2600
+     * @tc.name testRekey0026
+     * @tc.desc other parameters rekey test
+     */
+    it('testRekey0026', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async  (done:Function) => {
+      console.log(TAG + "************* testRekey0026 start *************");
+      let storeConfig: data_relationalStore.StoreConfig = {
+        name: "testRekey.db",
+        securityLevel: data_relationalStore.SecurityLevel.S2,
+        encrypt: true,
+      }
+      rdbStore = await data_relationalStore.getRdbStore(context, storeConfig);
+      await rdbStore.executeSql(CREATE_TABLE_TEST);
+	  rdbStore.close();
+      try {
+        await rdbStore.rekey();
+		expect().assertFail();
+        done();
+      } catch (err) {
+        console.log(TAG + "catch err: failed, err: code=" + err.code + " message=" + err.message);
+        expect(err.code == 14800014).assertTrue();
+        done();
+      }
+      console.log(TAG + "************* testRekey0026 end *************");
+    });
     console.log(TAG + "*************Unit Test End*************");
   })
 }
