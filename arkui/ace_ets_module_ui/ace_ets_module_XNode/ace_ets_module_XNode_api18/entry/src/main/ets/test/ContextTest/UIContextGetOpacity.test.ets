@@ -48,7 +48,7 @@ export default function UIContextGetOpacityTest() {
 
     /**
      * @tc.number    UIContextGetOpacityTest_0100
-     * @tc.name      UIContextGetOpacityTest
+     * @tc.name      UIContextGetOpacityTest_0100
      * @tc.desc      frameNode: GetOpacity Test
      * @tc.level:    Level 0
      * @tc.type :
