@@ -13,7 +13,7 @@
 * limitations under the License.
 */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { describe, beforeEach, afterEach, it, expect, TestType, Size, Level } from '@ohos/hypium'
 import { Driver, ON, PointerMatrix, Rect } from '@ohos.UiTest';
 import Utils from '../common/Utils';
 
@@ -33,7 +33,7 @@ export default function datePickerEnableHapticFeedbackTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('TestDatePickerEnableHapticFeedback001', 0, async (done: Function) => {
+    it('TestDatePickerEnableHapticFeedback001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('TestDatePickerEnableHapticFeedback001 START');
       let PAGE_TAG = 'TextPickerColumnWidthsTest';
       await Utils.pushPage('datePicker/datePickerEnableHapticFeedback')
@@ -55,7 +55,7 @@ export default function datePickerEnableHapticFeedbackTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('TestDatePickerEnableHapticFeedback002', 0, async (done: Function) => {
+    it('TestDatePickerEnableHapticFeedback002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('TestDatePickerEnableHapticFeedback002 START');
       let PAGE_TAG = 'DatePickerEnableHapticFeedback';
       await Utils.pushPage('datePicker/datePickerEnableHapticFeedback')
@@ -77,7 +77,7 @@ export default function datePickerEnableHapticFeedbackTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('TestDatePickerEnableHapticFeedback003', 0, async (done: Function) => {
+    it('TestDatePickerEnableHapticFeedback003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('TestDatePickerEnableHapticFeedback003 START');
       let PAGE_TAG = 'DatePickerEnableHapticFeedback';
       await Utils.pushPage('datePicker/datePickerEnableHapticFeedback')
@@ -93,4 +93,3 @@ export default function datePickerEnableHapticFeedbackTest() {
 
   })
 }
-

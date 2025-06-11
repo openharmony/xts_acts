@@ -30,16 +30,12 @@ export const createTestImagePacker: () => void;
 export const createTestPackingOptions: () => void;
 export const setMimeTypeToTestPackingOptions: (format: string) => void;
 export const setDynamicRangeToTestPackingOptions: (dynamicRange: number) => void;
-export const setQualityToTestPackingOptions: (quality: number) => void;
 export const createTestImageSource: (uri: string) => void;
 export const createTestPixelmapByImageSource: (pixelFormat: image.PixelMapFormat) => number;
 export const clonedMetadataGetProperty: (key: string) => string;
 export const clonedMetadataRelease: () => number;
 export const pictureMetadataGetProperty: (metadataType: image.MetadataType, key: string) => string;
 export const auxiliaryMetadataGetProperty: (metadataType: image.MetadataType, key: string) => string;
-export const GetPixelmapImageSize: () => image.Size;
-export const GetPixelmapPixelFormat: () => image.PixelMapFormat;
-export const PixelMapReadPixels: (dst: ArrayBuffer) => number;
 export const GetPixelmapBuffer: (src: ArrayBuffer) => ArrayBuffer;
 export const setNeedsPackPropertiesToTestPackingOptions: (needpackExif: boolean) => void;
 export const compareArrayBuffer: (arrayBuffer1: ArrayBuffer, arrayBuffer2: ArrayBuffer) => boolean;
@@ -112,7 +108,6 @@ export const AuxiliarySinglePictureSetInfo: (auxInfo: IAuxInfo, auxPicture: imag
 // Pixelmap info
 export const GetSingleMainPixelmapInfo: () => IAuxInfo;
 export const GetHdrPixelmapInfo: () => IAuxInfo;
-export const GetHdrPixelmapInfoForArgb: () => IAuxInfo;
 
 // Error Code
 export const AuxiliaryPictureInfoSetTypeErrorCode: (auxType: image.AuxiliaryPictureType | number) => number;

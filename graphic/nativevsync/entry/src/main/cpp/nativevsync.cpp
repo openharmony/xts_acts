@@ -41,8 +41,11 @@
 #define ARR_NUMBER_1 1
 #define ARR_NUMBER_2 2
 #define ARR_NUMBER_3 3
+#define ARR_NUMBER_4 4
+
 static bool g_flag = false;
 static void OnVSync(long long timestamp, void *data) { g_flag = true; }
+static OH_NativeVSync *g_nativeVsync = nullptr;
 
 static napi_value OHNativeVSyncCreate(napi_env env, napi_callback_info info)
 {
@@ -648,6 +651,72 @@ static napi_value OHNativeVSyncRequestFrameWithMultiCallbackAbNormal01(napi_env 
     return result;
 }
 
+static napi_value OHNativeVSyncSetExpectedFrameRateRange001(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    if (OH_NativeVSync_SetExpectedFrameRateRange(nullptr, nullptr) != 0) {
+        napi_create_int32(env, SUCCESS, &result);
+    } else {
+        napi_create_int32(env, FAIL, &result);
+    }
+    return result;
+}
+
+static napi_value OHNativeVSyncSetExpectedFrameRateRange002(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    OH_NativeVSync_ExpectedRateRange range = {60, 120, 120};
+    if (OH_NativeVSync_SetExpectedFrameRateRange(g_nativeVsync, &range) != 0) {
+        napi_create_int32(env, SUCCESS, &result);
+    } else {
+        napi_create_int32(env, FAIL, &result);
+    }
+    return result;
+}
+
+static napi_value OHNativeVSyncSetExpectedFrameRateRange003(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_create_array_with_length(env, ARR_NUMBER_4, &result);
+    napi_value result1 = nullptr;
+    napi_value result2 = nullptr;
+    napi_value result3 = nullptr;
+    napi_value result4 = nullptr;
+
+    OH_NativeVSync_ExpectedRateRange range = {0, 160, 0};
+    if (OH_NativeVSync_SetExpectedFrameRateRange(g_nativeVsync, &range) != 0) {
+        napi_create_int32(env, SUCCESS, &result1);
+    } else {
+        napi_create_int32(env, FAIL, &result1);
+    }
+    napi_set_element(env, result, ARR_NUMBER_0, result1);
+
+    range = {-60, 120, 120};
+    if (OH_NativeVSync_SetExpectedFrameRateRange(g_nativeVsync, &range) != 0) {
+        napi_create_int32(env, SUCCESS, &result2);
+    } else {
+        napi_create_int32(env, FAIL, &result2);
+    }
+    napi_set_element(env, result, ARR_NUMBER_1, result2);
+
+    range = {60, 30, 30};
+    if (OH_NativeVSync_SetExpectedFrameRateRange(g_nativeVsync, &range) != 0) {
+        napi_create_int32(env, SUCCESS, &result3);
+    } else {
+        napi_create_int32(env, FAIL, &result3);
+    }
+    napi_set_element(env, result, ARR_NUMBER_2, result3);
+
+    range = {0, 60, 120};
+    if (OH_NativeVSync_SetExpectedFrameRateRange(g_nativeVsync, &range) != 0) {
+        napi_create_int32(env, SUCCESS, &result4);
+    } else {
+        napi_create_int32(env, FAIL, &result4);
+    }
+    napi_set_element(env, result, ARR_NUMBER_3, result4);
+    return result;
+}
+
 static napi_value vsyncInit(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] = {
@@ -659,6 +728,12 @@ static napi_value vsyncInit(napi_env env, napi_value exports)
          OHNativeVSyncRequestFrameWithMultiCallbackAbNormal, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"oHNativeVSyncRequestFrameWithMultiCallbackAbNormal01", nullptr,
          OHNativeVSyncRequestFrameWithMultiCallbackAbNormal01, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"oHNativeVSyncSetExpectedFrameRateRange001", nullptr,
+         OHNativeVSyncSetExpectedFrameRateRange001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"oHNativeVSyncSetExpectedFrameRateRange002", nullptr,
+         OHNativeVSyncSetExpectedFrameRateRange002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"oHNativeVSyncSetExpectedFrameRateRange003", nullptr,
+         OHNativeVSyncSetExpectedFrameRateRange003, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;

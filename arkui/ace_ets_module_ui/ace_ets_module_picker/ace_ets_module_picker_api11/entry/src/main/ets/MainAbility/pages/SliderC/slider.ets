@@ -139,6 +139,7 @@ struct SliderExample {
           }).key('sliderConstructor2')
       }
       .height('40%')
+      .width('90%')
     }
     .width('100%')
     .height('100%')

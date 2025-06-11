@@ -766,6 +766,403 @@ HWTEST_F(DrawingNativePathPart3Test, testPathGetSegmentMultiplies, Function | Sm
     OH_Drawing_PathDestroy(path);
     OH_Drawing_PathDestroy(dstPath);
 }
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_PATH_4200
+ * @tc.name: testPathSetPathNormal
+ * @tc.desc: test for testPathSetPathNormal
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativePathPart3Test, testPathSetPathNormal, Function | SmallTest | Level0) {
+    // 1. Create a path object using OH_Drawing_PathCreate.
+    OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    EXPECT_NE(path, nullptr);
+    // 2. Set the starting point of the path using OH_Drawing_PathMoveTo.
+    OH_Drawing_PathMoveTo(path, 100, 100);
+    // 3. Add two lines segment from the starting point to the target point using OH_Drawing_PathLineTo.
+    OH_Drawing_PathLineTo(path, 100, 200);
+    OH_Drawing_PathLineTo(path, 200, 200);
+    // 4. Create a other path object using OH_Drawing_PathCreate.
+    OH_Drawing_Path *other = OH_Drawing_PathCreate();
+    EXPECT_NE(other, nullptr);
+    OH_Drawing_PathAddCircle(other, 200, 200, 150, OH_Drawing_PathDirection::PATH_DIRECTION_CW);
+    // 5. The function OH_Drawing_PathSetPath is called normally.
+    OH_Drawing_ErrorCode errorCode = OH_Drawing_PathSetPath(path, other);
+    EXPECT_EQ(errorCode, OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+    // 6. Free the memory.
+    OH_Drawing_PathDestroy(path);
+    OH_Drawing_PathDestroy(other);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_PATH_4201
+ * @tc.name: testPathSetPathNull
+ * @tc.desc: test for testPathSetPathNull
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativePathPart3Test, testPathSetPathNull, Function | SmallTest | Level3) {
+    // 1. Create a path object using OH_Drawing_PathCreate.
+    OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    EXPECT_NE(path, nullptr);
+    // 2. Set the starting point of the path using OH_Drawing_PathMoveTo.
+    OH_Drawing_PathMoveTo(path, 100, 100);
+    // 3. Add two lines segment from the starting point to the target point using OH_Drawing_PathLineTo.
+    OH_Drawing_PathLineTo(path, 100, 200);
+    OH_Drawing_PathLineTo(path, 200, 200);
+    // 4. Create a other path object using OH_Drawing_PathCreate.
+    OH_Drawing_Path *other = OH_Drawing_PathCreate();
+    EXPECT_NE(other, nullptr);
+    OH_Drawing_PathAddCircle(other, 200, 200, 150, OH_Drawing_PathDirection::PATH_DIRECTION_CW);
+    // 5. The function OH_Drawing_PathSetPath passes to nullptr.
+    OH_Drawing_ErrorCode errorCode;
+    errorCode = OH_Drawing_PathSetPath(nullptr, other);
+    EXPECT_EQ(errorCode, OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    errorCode = OH_Drawing_PathSetPath(path, nullptr);
+    EXPECT_EQ(errorCode, OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    // 6. Free the memory.
+    OH_Drawing_PathDestroy(path);
+    OH_Drawing_PathDestroy(other);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_PATH_4202
+ * @tc.name: testPathSetPathMulptiCalls
+ * @tc.desc: test for testPathSetPathMulptiCalls
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativePathPart3Test, testPathSetPathMulptiCalls, Function | SmallTest | Level3) {
+    // 1. Create a path object using OH_Drawing_PathCreate.
+    OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    EXPECT_NE(path, nullptr);
+    // 2. Set the starting point of the path using OH_Drawing_PathMoveTo.
+    OH_Drawing_PathMoveTo(path, 100, 100);
+    // 3. Add two lines segment from the starting point to the target point using OH_Drawing_PathLineTo.
+    OH_Drawing_PathLineTo(path, 100, 200);
+    OH_Drawing_PathLineTo(path, 200, 200);
+    // 4. Create a other path object using OH_Drawing_PathCreate.
+    OH_Drawing_Path *other = OH_Drawing_PathCreate();
+    EXPECT_NE(other, nullptr);
+    OH_Drawing_PathAddCircle(other, 200, 200, 150, OH_Drawing_PathDirection::PATH_DIRECTION_CW);
+    // 5. The function OH_Drawing_PathSetPath is called 10 times.
+    OH_Drawing_ErrorCode errorCode;
+    for (int i = 0; i < 10; i++) {
+        errorCode = OH_Drawing_PathSetPath(path, other);
+        EXPECT_EQ(errorCode, OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+    }
+    // 6. Free the memory.
+    OH_Drawing_PathDestroy(path);
+    OH_Drawing_PathDestroy(other);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_PATH_4300
+ * @tc.name: testPathIsEmptyNormal
+ * @tc.desc: test for testPathIsEmptyNormal
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativePathPart3Test, testPathIsEmptyNormal, Function | SmallTest | Level0) {
+    // 1. Create a path object using OH_Drawing_PathCreate.
+    OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    EXPECT_NE(path, nullptr);
+    // 2. Set the starting point of the path using OH_Drawing_PathMoveTo.
+    OH_Drawing_PathMoveTo(path, 100, 100);
+    // 3. Add two lines segment from the starting point to the target point using OH_Drawing_PathLineTo.
+    OH_Drawing_PathLineTo(path, 100, 200);
+    OH_Drawing_PathLineTo(path, 200, 200);
+    // 4. Initialization of variable.
+    bool isEmpty = true;
+    // 5. The function OH_Drawing_PathIsEmpty is called normally.
+    OH_Drawing_ErrorCode errorCode = OH_Drawing_PathIsEmpty(path, &isEmpty);
+    EXPECT_EQ(isEmpty, false);
+    EXPECT_EQ(errorCode, OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+    // 6. Free the memory.
+    OH_Drawing_PathDestroy(path);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_PATH_4301
+ * @tc.name: testPathIsEmptyNull
+ * @tc.desc: test for testPathIsEmptyNull
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativePathPart3Test, testPathIsEmptyNull, Function | SmallTest | Level3) {
+    // 1. Create a path object using OH_Drawing_PathCreate.
+    OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    EXPECT_NE(path, nullptr);
+    // 2. Set the starting point of the path using OH_Drawing_PathMoveTo.
+    OH_Drawing_PathMoveTo(path, 100, 100);
+    // 3. Add two lines segment from the starting point to the target point using OH_Drawing_PathLineTo.
+    OH_Drawing_PathLineTo(path, 100, 200);
+    OH_Drawing_PathLineTo(path, 200, 200);
+    // 4. Initialization of variable.
+    bool isEmpty = false;
+    // 5. The function OH_Drawing_PathIsEmpty passes to nullptr.
+    OH_Drawing_ErrorCode errorCode;
+    errorCode = OH_Drawing_PathIsEmpty(nullptr, &isEmpty);
+    EXPECT_EQ(isEmpty, false);
+    EXPECT_EQ(errorCode, OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    errorCode = OH_Drawing_PathIsEmpty(path, nullptr);
+    EXPECT_EQ(isEmpty, false);
+    EXPECT_EQ(errorCode, OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    // 6. Free the memory.
+    OH_Drawing_PathDestroy(path);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_PATH_4302
+ * @tc.name: testPathIsEmptyMultipleCalls
+ * @tc.desc: test for testPathIsEmptyMultipleCalls
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativePathPart3Test, testPathIsEmptyMultipleCalls, Function | SmallTest | Level3) {
+    // 1. Create a path object using OH_Drawing_PathCreate.
+    OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    EXPECT_NE(path, nullptr);
+    // 2. Set the starting point of the path using OH_Drawing_PathMoveTo.
+    OH_Drawing_PathMoveTo(path, 100, 100);
+    // 3. Add two lines segment from the starting point to the target point using OH_Drawing_PathLineTo.
+    OH_Drawing_PathLineTo(path, 100, 200);
+    OH_Drawing_PathLineTo(path, 200, 200);
+    // 4. Initialization of variable.
+    bool isEmpty = true;
+    // 5. The function OH_Drawing_PathIsEmpty is called 10 times.
+    OH_Drawing_ErrorCode errorCode;
+    for (int i = 0; i < 10; i++) {
+        errorCode = OH_Drawing_PathIsEmpty(path, &isEmpty);
+        EXPECT_EQ(isEmpty, false);
+        EXPECT_EQ(errorCode, OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+    }
+    // 6. Free the memory.
+    OH_Drawing_PathDestroy(path);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_PATH_4400
+ * @tc.name: testPathIsRectNormal
+ * @tc.desc: test for testPathIsRectNormal
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativePathPart3Test, testPathIsRectNormal, Function | SmallTest | Level0) {
+    // 1. Create a path object using OH_Drawing_PathCreate.
+    OH_Drawing_Path *path1 = OH_Drawing_PathCreate();
+    EXPECT_NE(path1, nullptr);
+    // 2. Set the starting point of the path using OH_Drawing_PathMoveTo.
+    OH_Drawing_PathMoveTo(path1, 100, 100);
+    // 3. Add two lines segment from the starting point to the target point using OH_Drawing_PathLineTo.
+    OH_Drawing_PathLineTo(path1, 100, 200);
+    OH_Drawing_PathLineTo(path1, 200, 200);
+    // 4. Create a rect object.
+    OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    // 5. Initialization of variable.
+    bool isRect = true;
+    // 6. The function OH_Drawing_PathIsRect is called normally.
+    OH_Drawing_ErrorCode errorCode = OH_Drawing_PathIsRect(path1, rect, &isRect);
+    EXPECT_EQ(isRect, false);
+    EXPECT_EQ(errorCode, OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+    // 7. Create a path object using OH_Drawing_PathCreate.
+    OH_Drawing_Path *path2 = OH_Drawing_PathCreate();
+    EXPECT_NE(path2, nullptr);
+    // 8. Set the path to a rectangle.
+    OH_Drawing_PathAddRect(path2, 0, 0, 200, 200, OH_Drawing_PathDirection::PATH_DIRECTION_CW);
+    // 9. The function OH_Drawing_PathIsRect is called normally.
+    errorCode = OH_Drawing_PathIsRect(path2, rect, &isRect);
+    EXPECT_EQ(isRect, true);
+    EXPECT_EQ(errorCode, OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+    // 10. Free the memory.
+    OH_Drawing_RectDestroy(rect);
+    OH_Drawing_PathDestroy(path1);
+    OH_Drawing_PathDestroy(path2);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_PATH_4401
+ * @tc.name: testPathIsRectNull
+ * @tc.desc: test for testPathIsRectNull
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativePathPart3Test, testPathIsRectNull, Function | SmallTest | Level3) {
+    // 1. Create a path object using OH_Drawing_PathCreate.
+    OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    EXPECT_NE(path, nullptr);
+    // 2. Set the starting point of the path using OH_Drawing_PathMoveTo.
+    OH_Drawing_PathMoveTo(path, 100, 100);
+    // 3. Add two lines segment from the starting point to the target point using OH_Drawing_PathLineTo.
+    OH_Drawing_PathLineTo(path, 100, 200);
+    OH_Drawing_PathLineTo(path, 200, 200);
+    // 4. Create a rect object.
+    OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    // 5. Initialization of variable.
+    bool isRect = true;
+    // 6. The first parameter of the interface OH_Drawing_PathIsRect is passed to nullptr.
+    OH_Drawing_ErrorCode errorCode = OH_Drawing_PathIsRect(nullptr, rect, &isRect);
+    EXPECT_EQ(isRect, true);
+    EXPECT_EQ(errorCode, OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    // 7. The second parameter of the interface OH_Drawing_PathIsRect is passed to nullptr.
+    errorCode = OH_Drawing_PathIsRect(path, nullptr, &isRect);
+    EXPECT_EQ(isRect, false);
+    EXPECT_EQ(errorCode, OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+    // 8. The third parameter of the interface OH_Drawing_PathIsRect is passed to nullptr.
+    errorCode = OH_Drawing_PathIsRect(path, rect, nullptr);
+    EXPECT_EQ(isRect, false);
+    EXPECT_EQ(errorCode, OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    // 9. Free the memory.
+    OH_Drawing_RectDestroy(rect);
+    OH_Drawing_PathDestroy(path);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_PATH_4402
+ * @tc.name: testPathIsRectMultipleCalls
+ * @tc.desc: test for testPathIsRectMultipleCalls
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativePathPart3Test, testPathIsRectMultipleCalls, Function | SmallTest | Level3) {
+    // 1. Create a path object using OH_Drawing_PathCreate.
+    OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    EXPECT_NE(path, nullptr);
+    // 2. Set the starting point of the path using OH_Drawing_PathMoveTo.
+    OH_Drawing_PathMoveTo(path, 100, 100);
+    // 3. Add two lines segment from the starting point to the target point using OH_Drawing_PathLineTo.
+    OH_Drawing_PathLineTo(path, 100, 200);
+    OH_Drawing_PathLineTo(path, 200, 200);
+    // 4. Create a rect object.
+    OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    // 5. Initialization of variable.
+    bool isRect = true;
+    // 6. The interface OH_Drawing_PathIsRect is called 10 times.
+    OH_Drawing_ErrorCode errorCode;
+    for (int i = 0; i < 10; i++) {
+        errorCode = OH_Drawing_PathIsRect(path, rect, &isRect);
+        EXPECT_EQ(isRect, false);
+        EXPECT_EQ(errorCode, OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+    }
+    // 7. Free the memory.
+    OH_Drawing_RectDestroy(rect);
+    OH_Drawing_PathDestroy(path);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_PATH_4500
+ * @tc.name: testPathGetFillTypeNormal
+ * @tc.desc: test for testPathGetFillTypeNormal
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativePathPart3Test, testPathGetFillTypeNormal, Function | SmallTest | Level0) {
+    // 1. Create a path object using OH_Drawing_PathCreate.
+    OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    EXPECT_NE(path, nullptr);
+    // 2. Set the starting point of the path using OH_Drawing_PathMoveTo.
+    OH_Drawing_PathMoveTo(path, 100, 100);
+    // 3. Add two lines segment from the starting point to the target point using OH_Drawing_PathLineTo.
+    OH_Drawing_PathLineTo(path, 100, 200);
+    OH_Drawing_PathLineTo(path, 200, 200);
+    // 4. Enumeration traversal.
+    OH_Drawing_PathFillType pathFillType = PATH_FILL_TYPE_WINDING;
+    OH_Drawing_PathSetFillType(path, pathFillType);
+    OH_Drawing_ErrorCode errorCode = OH_Drawing_PathGetFillType(path, &pathFillType);
+    EXPECT_EQ(pathFillType, OH_Drawing_PathFillType::PATH_FILL_TYPE_WINDING);
+    EXPECT_EQ(errorCode, OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+
+    pathFillType = PATH_FILL_TYPE_EVEN_ODD;
+    OH_Drawing_PathSetFillType(path, pathFillType);
+    errorCode = OH_Drawing_PathGetFillType(path, &pathFillType);
+    EXPECT_EQ(pathFillType, OH_Drawing_PathFillType::PATH_FILL_TYPE_EVEN_ODD);
+    EXPECT_EQ(errorCode, OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+
+    pathFillType = PATH_FILL_TYPE_INVERSE_WINDING;
+    OH_Drawing_PathSetFillType(path, pathFillType);
+    errorCode = OH_Drawing_PathGetFillType(path, &pathFillType);
+    EXPECT_EQ(pathFillType, OH_Drawing_PathFillType::PATH_FILL_TYPE_INVERSE_WINDING);
+    EXPECT_EQ(errorCode, OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+
+    pathFillType = PATH_FILL_TYPE_INVERSE_EVEN_ODD;
+    OH_Drawing_PathSetFillType(path, pathFillType);
+    errorCode = OH_Drawing_PathGetFillType(path, &pathFillType);
+    EXPECT_EQ(pathFillType, OH_Drawing_PathFillType::PATH_FILL_TYPE_INVERSE_EVEN_ODD);
+    EXPECT_EQ(errorCode, OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+    // 5. Free the memory.
+    OH_Drawing_PathDestroy(path);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_PATH_4501
+ * @tc.name: testPathGetFillTypeNull
+ * @tc.desc: test for testPathGetFillTypeNull
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativePathPart3Test, testPathGetFillTypeNull, Function | SmallTest | Level3) {
+    // 1. Create a path object using OH_Drawing_PathCreate.
+    OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    EXPECT_NE(path, nullptr);
+    // 2. Set the starting point of the path using OH_Drawing_PathMoveTo.
+    OH_Drawing_PathMoveTo(path, 100, 100);
+    // 3. Add two lines segment from the starting point to the target point using OH_Drawing_PathLineTo.
+    OH_Drawing_PathLineTo(path, 100, 200);
+    OH_Drawing_PathLineTo(path, 200, 200);
+    // 4. The function OH_Drawing_PathIsEmpty passes to nullptr.
+    OH_Drawing_PathFillType pathFillType = PATH_FILL_TYPE_WINDING;
+    OH_Drawing_PathSetFillType(path, pathFillType);
+    OH_Drawing_ErrorCode errorCode = OH_Drawing_PathGetFillType(nullptr, &pathFillType);
+    EXPECT_EQ(errorCode, OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+
+    pathFillType = PATH_FILL_TYPE_EVEN_ODD;
+    OH_Drawing_PathSetFillType(path, pathFillType);
+    errorCode = OH_Drawing_PathGetFillType(path, nullptr);
+    EXPECT_EQ(errorCode, OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    // 5. Free the memory.
+    OH_Drawing_PathDestroy(path);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_PATH_4502
+ * @tc.name: testPathGetFillTypeMultipleCalls
+ * @tc.desc: test for testPathGetFillTypeMultipleCalls
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativePathPart3Test, testPathGetFillTypeMultipleCalls, Function | SmallTest | Level3) {
+    // 1. Create a path object using OH_Drawing_PathCreate.
+    OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    EXPECT_NE(path, nullptr);
+    // 2. Set the starting point of the path using OH_Drawing_PathMoveTo.
+    OH_Drawing_PathMoveTo(path, 100, 100);
+    // 3. Add two lines segment from the starting point to the target point using OH_Drawing_PathLineTo.
+    OH_Drawing_PathLineTo(path, 100, 200);
+    OH_Drawing_PathLineTo(path, 200, 200);
+    // 4. The function OH_Drawing_PathIsEmpty is called 10 times.
+    OH_Drawing_ErrorCode errorCode;
+    OH_Drawing_PathFillType pathFillType = PATH_FILL_TYPE_WINDING;
+    OH_Drawing_PathSetFillType(path, pathFillType);
+    for (int i = 0; i < 10; i++) {
+        errorCode = OH_Drawing_PathGetFillType(path, &pathFillType);
+        EXPECT_EQ(errorCode, OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
+    }
+    // 5. Free the memory.
+    OH_Drawing_PathDestroy(path);
+}
 } // namespace Drawing
 } // namespace Rosen
 } // namespace OHOS

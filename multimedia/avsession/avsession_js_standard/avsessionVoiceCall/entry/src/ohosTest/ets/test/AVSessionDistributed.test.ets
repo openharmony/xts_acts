@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import avSession from '@ohos.multimedia.avsession';
 import { BusinessError } from '@ohos.base';
 
@@ -97,7 +97,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_GETEXTRASWITHEVENT__0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_GETEXTRASWITHEVENT__0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
         console.info(`${TAG}: before SUB_MULTIMEDIA_AVSESSION_GETEXTRASWITHEVENT__0100 ${controller}`);
         const COMMON_COMMAND_STRING = undefined;
         await controller.getExtrasWithEvent(COMMON_COMMAND_STRING).then(() => {
@@ -118,7 +118,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_GETEXTRASWITHEVENT__0200', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_GETEXTRASWITHEVENT__0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
         const COMMON_COMMAND_STRING = "AUDIO_GET_XXX";
         await controller.getExtrasWithEvent(COMMON_COMMAND_STRING).then(() => {
             console.info(`${TAG}: getExtrasWithEvent successfully`);
@@ -142,7 +142,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_GETEXTRASWITHEVENT__0300', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_GETEXTRASWITHEVENT__0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
         const COMMON_COMMAND_STRING = "AUDIO_GET_VOLUME";
         let extras: avSession.ExtraInfo = await controller.getExtrasWithEvent(COMMON_COMMAND_STRING);
         console.info(`${TAG}: aduio get volume with ${JSON.stringify(extras)}`);
@@ -163,7 +163,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_GETEXTRASWITHEVENT__0400', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_GETEXTRASWITHEVENT__0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
         const COMMON_COMMAND_STRING = "AUDIO_GET_AVAILABLE_DEVICES";
         controller.getExtrasWithEvent(COMMON_COMMAND_STRING).then((extras: avSession.ExtraInfo) => {
             console.info(` AUDIO_GET_AVAILABLE_DEVICES ${extras[COMMON_COMMAND_STRING]}`);
@@ -183,7 +183,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_GETEXTRASWITHEVENT__0500', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_GETEXTRASWITHEVENT__0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
         const COMMON_COMMAND_STRING = "AUDIO_GET_PREFERRED_OUTPUT_DEVICE_FOR_RENDERER_INFO";
         controller.getExtrasWithEvent(COMMON_COMMAND_STRING).then((extras: avSession.ExtraInfo) => {
             console.info(` AUDIO_GET_PREFERRED_OUTPUT_DEVICE_FOR_RENDERER_INFO ${extras[COMMON_COMMAND_STRING]}`);

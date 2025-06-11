@@ -17,6 +17,7 @@ group("WebContentProcessing") {
     deps = [
       "password_padding:ActsWebPasswordPaddingTest",
       "upload_and_download:uploadAndDownload",
+      "web_copy_paste:ActsWebPageCopyPasteTest",
       "web_page_download:ActsWebPageDownloadTest",
       "web_page_saving:ActsWebPageSavingTest",
     ]

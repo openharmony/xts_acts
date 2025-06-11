@@ -318,7 +318,7 @@ export default function imageSync() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0500', Level.LEVEL0, async (done: Function) => {
-            testGetImageInfo(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0500", "test.dng", 5976, 3992, "image/raw",
+            testGetImageInfo(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0500", "test.dng", 5976, 3992, "image/x-adobe-dng",
                 0);
         });
         /**
@@ -360,7 +360,7 @@ export default function imageSync() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0800', Level.LEVEL0, async (done: Function) => {
-            testGetImageInfo(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0800", "test.ico", 64, 64, "image/x-ico", 0);
+            testGetImageInfo(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0800", "test.ico", 64, 64, "image/x-icon", 0);
         });
         /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0900

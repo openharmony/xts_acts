@@ -80,6 +80,28 @@ export default function imageHDR() {
       });
     };
 
+    const checkMimeType = async(done: Function, TAG: string, picture: string, mimeType:string) => {
+      try {
+        await getFd(picture);
+        let imageSourceApi = image.createImageSource(fdNumber);
+        if (imageSourceApi != undefined) {
+          globalimageSource = imageSourceApi;
+          let imageInfo = imageSourceApi.getImageInfoSync();
+          console.info(TAG + ' imageInfo.mimeType is ' + imageInfo.mimeType);
+          expect(imageInfo.mimeType == mimeType).assertTrue();
+          done();
+        } else {
+          console.info(TAG + ' create imageSource fail');
+          expect(false).assertTrue();
+          done();
+        }
+      } catch (error) {
+        console.info(TAG + ' check imageInfo.mimeType fail');
+        expect(false).assertTrue();
+        done();
+      }
+    }
+
     /**
      * @tc.number   : SUB_MULTIMEDIA_IMAGE_DECODE_HDR_0100
      * @tc.name     : decode hdr image
@@ -231,5 +253,162 @@ export default function imageHDR() {
         done();
       }
     })
+
+    /**
+     * @tc.number   : SUB_MULTIMEDIA_IMAGE_MIMETYPE_0100
+     * @tc.name     : check mimetype values
+     * @tc.desc     : 1.getimagepath,2.createImageSourceFromFd,3.getImageInfo from ImageSource,4.check the mimetype of different pictures
+     * @tc.size     : MediumTest
+     * @tc.type     : Functional
+     * @tc.level    : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_MIMETYPE_0100", Level.LEVEL0, async (done: Function) => {
+      let tag = 'SUB_MULTIMEDIA_IMAGE_MIMETYPE_0100';
+      await checkMimeType(done, tag, 'mimeType_test.jpg', 'image/jpeg');
+    })
+
+    /**
+     * @tc.number   : SUB_MULTIMEDIA_IMAGE_MIMETYPE_0200
+     * @tc.name     : check mimetype values
+     * @tc.desc     : 1.getimagepath,2.createImageSourceFromFd,3.getImageInfo from ImageSource,4.check the mimetype of different pictures
+     * @tc.size     : MediumTest
+     * @tc.type     : Functional
+     * @tc.level    : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_MIMETYPE_0200", Level.LEVEL0, async (done: Function) => {
+      let tag = 'SUB_MULTIMEDIA_IMAGE_MIMETYPE_0200';
+      await checkMimeType(done, tag, 'mimeType_test.ico', 'image/x-icon');
+    })
+
+    /**
+     * @tc.number   : SUB_MULTIMEDIA_IMAGE_MIMETYPE_0300
+     * @tc.name     : check mimetype values
+     * @tc.desc     : 1.getimagepath,2.createImageSourceFromFd,3.getImageInfo from ImageSource,4.check the mimetype of different pictures
+     * @tc.size     : MediumTest
+     * @tc.type     : Functional
+     * @tc.level    : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_MIMETYPE_0300", Level.LEVEL0, async (done: Function) => {
+      let tag = 'SUB_MULTIMEDIA_IMAGE_MIMETYPE_0300';
+      await checkMimeType(done, tag, 'mimeType_test.dng', 'image/x-adobe-dng');
+    })
+
+    /**
+     * @tc.number   : SUB_MULTIMEDIA_IMAGE_MIMETYPE_0400
+     * @tc.name     : check mimetype values
+     * @tc.desc     : 1.getimagepath,2.createImageSourceFromFd,3.getImageInfo from ImageSource,4.check the mimetype of different pictures
+     * @tc.size     : MediumTest
+     * @tc.type     : Functional
+     * @tc.level    : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_MIMETYPE_0400", Level.LEVEL0, async (done: Function) => {
+      let tag = 'SUB_MULTIMEDIA_IMAGE_MIMETYPE_0400';
+      await checkMimeType(done, tag, 'mimeType_test.cr2', 'image/x-canon-cr2');
+    })
+
+    /**
+     * @tc.number   : SUB_MULTIMEDIA_IMAGE_MIMETYPE_0500
+     * @tc.name     : check mimetype values
+     * @tc.desc     : 1.getimagepath,2.createImageSourceFromFd,3.getImageInfo from ImageSource,4.check the mimetype of different pictures
+     * @tc.size     : MediumTest
+     * @tc.type     : Functional
+     * @tc.level    : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_MIMETYPE_0500", Level.LEVEL0, async (done: Function) => {
+      let tag = 'SUB_MULTIMEDIA_IMAGE_MIMETYPE_0500';
+      await checkMimeType(done, tag, 'mimeType_test.raf', 'image/x-fuji-raf');
+    })
+
+    /**
+     * @tc.number   : SUB_MULTIMEDIA_IMAGE_MIMETYPE_0600
+     * @tc.name     : check mimetype values
+     * @tc.desc     : 1.getimagepath,2.createImageSourceFromFd,3.getImageInfo from ImageSource,4.check the mimetype of different pictures
+     * @tc.size     : MediumTest
+     * @tc.type     : Functional
+     * @tc.level    : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_MIMETYPE_0600", Level.LEVEL0, async (done: Function) => {
+      let tag = 'SUB_MULTIMEDIA_IMAGE_MIMETYPE_0600';
+      await checkMimeType(done, tag, 'mimeType_test.nrw', 'image/x-nikon-nrw');
+    })
+
+    /**
+     * @tc.number   : SUB_MULTIMEDIA_IMAGE_MIMETYPE_0700
+     * @tc.name     : check mimetype values
+     * @tc.desc     : 1.getimagepath,2.createImageSourceFromFd,3.getImageInfo from ImageSource,4.check the mimetype of different pictures
+     * @tc.size     : MediumTest
+     * @tc.type     : Functional
+     * @tc.level    : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_MIMETYPE_0700", Level.LEVEL0, async (done: Function) => {
+      let tag = 'SUB_MULTIMEDIA_IMAGE_MIMETYPE_0700';
+      await checkMimeType(done, tag, 'mimeType_test.rw2', 'image/x-panasonic-rw2');
+    })
+
+    /**
+     * @tc.number   : SUB_MULTIMEDIA_IMAGE_MIMETYPE_0800
+     * @tc.name     : check mimetype values
+     * @tc.desc     : 1.getimagepath,2.createImageSourceFromFd,3.getImageInfo from ImageSource,4.check the mimetype of different pictures
+     * @tc.size     : MediumTest
+     * @tc.type     : Functional
+     * @tc.level    : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_MIMETYPE_0800", Level.LEVEL0, async (done: Function) => {
+      let tag = 'SUB_MULTIMEDIA_IMAGE_MIMETYPE_0800';
+      await checkMimeType(done, tag, 'mimeType_test.pef', 'image/x-pentax-pef');
+    })
+
+    /**
+     * @tc.number   : SUB_MULTIMEDIA_IMAGE_MIMETYPE_0900
+     * @tc.name     : check mimetype values
+     * @tc.desc     : 1.getimagepath,2.createImageSourceFromFd,3.getImageInfo from ImageSource,4.check the mimetype of different pictures
+     * @tc.size     : MediumTest
+     * @tc.type     : Functional
+     * @tc.level    : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_MIMETYPE_0900", Level.LEVEL0, async (done: Function) => {
+      let tag = 'SUB_MULTIMEDIA_IMAGE_MIMETYPE_0900';
+      await checkMimeType(done, tag, 'mimeType_test.arw', 'image/x-sony-arw');
+    })
+
+    /**
+     * @tc.number   : SUB_MULTIMEDIA_IMAGE_MIMETYPE_1000
+     * @tc.name     : check mimetype values
+     * @tc.desc     : 1.getimagepath,2.createImageSourceFromFd,3.getImageInfo from ImageSource,4.check the mimetype of different pictures
+     * @tc.size     : MediumTest
+     * @tc.type     : Functional
+     * @tc.level    : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_MIMETYPE_1000", Level.LEVEL0, async (done: Function) => {
+      let tag = 'SUB_MULTIMEDIA_IMAGE_MIMETYPE_1000';
+      await checkMimeType(done, tag, 'mimeType_test.nef', 'image/x-nikon-nef');
+    })
+
+    /**
+     * @tc.number   : SUB_MULTIMEDIA_IMAGE_MIMETYPE_1100
+     * @tc.name     : check mimetype values
+     * @tc.desc     : 1.getimagepath,2.createImageSourceFromFd,3.getImageInfo from ImageSource,4.check the mimetype of different pictures
+     * @tc.size     : MediumTest
+     * @tc.type     : Functional
+     * @tc.level    : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_MIMETYPE_1100", Level.LEVEL0, async (done: Function) => {
+      let tag = 'SUB_MULTIMEDIA_IMAGE_MIMETYPE_1100';
+      await checkMimeType(done, tag, 'mimeType_test.orf', 'image/x-olympus-orf');
+    })
+
+    /**
+     * @tc.number   : SUB_MULTIMEDIA_IMAGE_MIMETYPE_1200
+     * @tc.name     : check mimetype values
+     * @tc.desc     : 1.getimagepath,2.createImageSourceFromFd,3.getImageInfo from ImageSource,4.check the mimetype of different pictures
+     * @tc.size     : MediumTest
+     * @tc.type     : Functional
+     * @tc.level    : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_MIMETYPE_1200", Level.LEVEL0, async (done: Function) => {
+      let tag = 'SUB_MULTIMEDIA_IMAGE_MIMETYPE_1200';
+      await checkMimeType(done, tag, 'mimeType_test.srw', 'image/x-samsung-srw');
+    })
+
   })
 }

@@ -46,6 +46,7 @@ struct cachedCountShowListExample {
         ForEach(this.arr, (item: string) => {
           ListItem() {
             Text(item)
+              .id('show_list_' + item)
               .width('100%')
               .height('34%')
               .fontSize(16)

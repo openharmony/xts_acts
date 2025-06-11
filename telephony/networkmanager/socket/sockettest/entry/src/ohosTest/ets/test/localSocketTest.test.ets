@@ -183,7 +183,9 @@ export default function LocalSocketTest() {
         }
         await server.listen(localAddr).then(() => {
           console.log(`${caseName} listen success`)
-        })
+        }).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let connectOpt: socket.LocalConnectOptions = {
           address: localAddr,
           timeout: 6000
@@ -230,7 +232,9 @@ export default function LocalSocketTest() {
         }
         await server.listen(localAddr).then(() => {
           console.log('listen success')
-        })
+        }).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let connectOpt: socket.LocalConnectOptions = {
           address: localAddr,
           timeout: 6000
@@ -278,7 +282,9 @@ export default function LocalSocketTest() {
         }
         await server.listen(localAddr).then(() => {
           console.log('listen success')
-        })
+        }).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let connectOpt: socket.LocalConnectOptions = {
           address: localAddr,
           timeout: 6000
@@ -327,7 +333,9 @@ export default function LocalSocketTest() {
         }
         await server.listen(localAddr).then(() => {
           console.log('listen success')
-        })
+        }).catch((err:BusinessError) => {
+          console.info('fail to listen' + err.code.toString());
+        });
         let connectOpt: socket.LocalConnectOptions = {
           address: localAddr,
           timeout: 6000
@@ -373,7 +381,9 @@ export default function LocalSocketTest() {
         }
         await server.listen(localAddr).then(() => {
           console.log('listen success')
-        })
+        }).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let connectOpt: socket.LocalConnectOptions = {
           address: localAddr,
           timeout: 6000
@@ -419,7 +429,9 @@ export default function LocalSocketTest() {
         }
         await server.listen(localAddr).then(() => {
           console.log('listen success')
-        })
+        }).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let connectOpt: socket.LocalConnectOptions = {
           address: localAddr,
           timeout: 6000
@@ -465,7 +477,9 @@ export default function LocalSocketTest() {
         }
         await server.listen(localAddr).then(() => {
           console.log('listen success')
-        })
+        }).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let connectOpt: socket.LocalConnectOptions = {
           address: localAddr,
           timeout: 6000
@@ -512,12 +526,16 @@ export default function LocalSocketTest() {
         }
         await server.listen(localAddr).then(() => {
           console.log('listen success')
-        })
+        }).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
         let sendOpt: socket.LocalSendOptions = {
           data: 'Hello world!'
         }
         server.on('connect', async (connection: socket.LocalSocketConnection) => {
-          await connection.send(sendOpt);
+          await connection.send(sendOpt).catch((err:BusinessError) => {
+            console.info('fail to send' + err.code.toString());
+        });
         });
         let callback: Callback<socket.LocalSocketMessageInfo> = (data: socket.LocalSocketMessageInfo)=>{
           const uintArray = new Uint8Array(data.message)
@@ -573,8 +591,10 @@ export default function LocalSocketTest() {
         }
         await server.listen(localAddr).then(() => {
           console.log('listen success')
-        })
-        await server.on('connect', async (connection: socket.LocalSocketConnection) => {
+        }).catch((err:BusinessError) => {
+            console.info('fail to listen' + err.code.toString());
+        });
+        server.on('connect', async (connection: socket.LocalSocketConnection) => {
           console.info("Connection clientId:" + connection.clientId)
           expectTrue(connection.clientId != undefined)
         });

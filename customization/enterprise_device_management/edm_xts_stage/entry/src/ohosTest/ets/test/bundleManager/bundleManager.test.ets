@@ -31,6 +31,7 @@ import {
 import adminManager from '@ohos.enterprise.adminManager';
 import bundleManager from '@ohos.enterprise.bundleManager';
 import systemparameter from '@ohos.systemparameter';
+import { BmsBundleInfo, BundleManagerHelper } from './BundleManagerHelper';
 
 export default function bundleManagerTest() {
   describe('bundleManager_test', () => {
@@ -1713,6 +1714,168 @@ export default function bundleManagerTest() {
         await bundleManager.uninstall(SELFWANT, BUNDLENAME1, DEFAULT_USER_ID, true);
       } catch (error) {
         expect(false).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
+      }
+      done();
+    })
+    
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_GET_INSTALLED_BUNDLE_LIST_001
+     * @tc.name      : test_get_installed_bundle_list_001
+     * @tc.desc      : test get installed bundle list method without admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_get_installed_bundle_list_001", Level.LEVEL2, async (done: Function) => {
+      try {
+        await bundleManager.getInstalledBundleList(SELFWANT, DEFAULT_USER_ID);
+        expect(false).assertTrue();
+      } catch (error) {
+        expect(error.code == 9200001).assertTrue();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_GET_INSTALLED_BUNDLE_LIST_002
+     * @tc.name      : test_get_installed_bundle_list_002
+     * @tc.desc      : test get installed bundle list method with normal admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_get_installed_bundle_list_002", Level.LEVEL2, async (done: Function) => {
+      await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+      try {
+        await bundleManager.getInstalledBundleList(SELFWANT, DEFAULT_USER_ID);
+        expect(false).assertTrue();
+      } catch (error) {
+        expect(error.code == 9200002).assertTrue();
+      } finally {
+        await adminManager.disableAdmin(SELFWANT);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_GET_INSTALLED_BUNDLE_LIST_003
+     * @tc.name      : test_get_installed_bundle_list_003
+     * @tc.desc      : test get installed bundle list method unsupported accountId
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_get_installed_bundle_list_003", Level.LEVEL2, async (done: Function) => {
+      await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+      try {
+        await bundleManager.getInstalledBundleList(SELFWANT, 100000);
+        expect(false).assertTrue();
+      } catch (error) {
+        expect(error.code == 401).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_GET_INSTALLED_BUNDLE_LIST_004
+     * @tc.name      : test_get_installed_bundle_list_004
+     * @tc.desc      : test get installed bundle list method with super admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_get_installed_bundle_list_004", Level.LEVEL2, async (done: Function) => {
+      await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+      try {
+        let bundleInfos: bundleManager.BundleInfo[] = await bundleManager.getInstalledBundleList(SELFWANT,
+            DEFAULT_USER_ID);
+        expect(bundleInfos).not().assertUndefined();
+      } catch (error) {
+        expect().assertFail();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_GET_INSTALLED_BUNDLE_LIST_005
+     * @tc.name      : test_get_installed_bundle_list_005
+     * @tc.desc      : test get installed bundle list method with super admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_get_installed_bundle_list_005", Level.LEVEL2, async (done: Function) => {
+      await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+      try {
+        let bundleInfos: bundleManager.BundleInfo[] = await bundleManager.getInstalledBundleList(SELFWANT,
+            DEFAULT_USER_ID);
+        expect(bundleInfos).not().assertUndefined();
+        let edmBundleInfo = bundleInfos.find((bundleInfo) => {
+          return bundleInfo.name === 'com.example.myapplication';
+        })
+        expect(edmBundleInfo).not().assertUndefined();
+        let bundleManagerHelper: BundleManagerHelper = new BundleManagerHelper();
+        let bmsBundleInfo: BmsBundleInfo | undefined = await bundleManagerHelper.getBmsBundleInfo();
+        expect(bmsBundleInfo).not().assertUndefined();
+        console.log('test_get_installed_bundle_list_005 edmBundleInfo name' + edmBundleInfo?.name);
+
+        expect(edmBundleInfo?.name === bmsBundleInfo?.name).assertTrue();
+        expect(edmBundleInfo?.vendor === bmsBundleInfo?.vendor).assertTrue();
+        expect(edmBundleInfo?.versionCode === bmsBundleInfo?.versionCode).assertTrue();
+        expect(edmBundleInfo?.versionName === bmsBundleInfo?.versionName).assertTrue();
+        expect(edmBundleInfo?.minCompatibleVersionCode === bmsBundleInfo?.minCompatibleVersionCode).assertTrue();
+        expect(edmBundleInfo?.targetVersion === bmsBundleInfo?.targetVersion).assertTrue();
+        expect(edmBundleInfo?.installTime === bmsBundleInfo?.installTime).assertTrue();
+        expect(edmBundleInfo?.updateTime === bmsBundleInfo?.updateTime).assertTrue();
+        expect(edmBundleInfo?.appIndex === bmsBundleInfo?.appIndex).assertTrue();
+        expect(edmBundleInfo?.firstInstallTime === bmsBundleInfo?.firstInstallTime).assertTrue();
+        
+        expect(edmBundleInfo?.appInfo?.name === bmsBundleInfo?.appInfo?.name).assertTrue();
+        expect(edmBundleInfo?.appInfo?.description === bmsBundleInfo?.appInfo?.description).assertTrue();
+        expect(edmBundleInfo?.appInfo?.descriptionId === bmsBundleInfo?.appInfo?.descriptionId).assertTrue();
+        expect(edmBundleInfo?.appInfo?.enabled === bmsBundleInfo?.appInfo?.enabled).assertTrue();
+        expect(edmBundleInfo?.appInfo?.label === bmsBundleInfo?.appInfo?.label).assertTrue();
+        expect(edmBundleInfo?.appInfo?.labelId === bmsBundleInfo?.appInfo?.labelId).assertTrue();
+        expect(edmBundleInfo?.appInfo?.icon === bmsBundleInfo?.appInfo?.icon).assertTrue();
+        expect(edmBundleInfo?.appInfo?.iconId === bmsBundleInfo?.appInfo?.iconId).assertTrue();
+        expect(edmBundleInfo?.appInfo?.process === bmsBundleInfo?.appInfo?.process).assertTrue();
+        expect(edmBundleInfo?.appInfo?.codePath === bmsBundleInfo?.appInfo?.codePath).assertTrue();
+        expect(edmBundleInfo?.appInfo?.removable === bmsBundleInfo?.appInfo?.removable).assertTrue();
+        expect(edmBundleInfo?.appInfo?.accessTokenId === bmsBundleInfo?.appInfo?.accessTokenId).assertTrue();
+        expect(edmBundleInfo?.appInfo?.uid === bmsBundleInfo?.appInfo?.uid).assertTrue();
+
+        expect(edmBundleInfo?.appInfo?.iconResource?.bundleName === bmsBundleInfo?.appInfo?.iconResource?.bundleName).assertTrue();
+        expect(edmBundleInfo?.appInfo?.iconResource?.moduleName === bmsBundleInfo?.appInfo?.iconResource?.moduleName).assertTrue();
+        expect(edmBundleInfo?.appInfo?.iconResource?.id === bmsBundleInfo?.appInfo?.iconResource?.id).assertTrue();
+        expect(edmBundleInfo?.appInfo?.labelResource?.bundleName === bmsBundleInfo?.appInfo?.labelResource?.bundleName).assertTrue();
+        expect(edmBundleInfo?.appInfo?.labelResource?.moduleName === bmsBundleInfo?.appInfo?.labelResource?.moduleName).assertTrue();
+        expect(edmBundleInfo?.appInfo?.labelResource?.id === bmsBundleInfo?.appInfo?.labelResource?.id).assertTrue();
+        expect(edmBundleInfo?.appInfo?.descriptionResource?.bundleName === bmsBundleInfo?.appInfo?.descriptionResource?.bundleName).assertTrue();
+        expect(edmBundleInfo?.appInfo?.descriptionResource?.moduleName === bmsBundleInfo?.appInfo?.descriptionResource?.moduleName).assertTrue();
+        expect(edmBundleInfo?.appInfo?.descriptionResource?.id === bmsBundleInfo?.appInfo?.descriptionResource?.id).assertTrue();
+
+        expect(edmBundleInfo?.appInfo?.appDistributionType === bmsBundleInfo?.appInfo?.appDistributionType).assertTrue();
+        expect(edmBundleInfo?.appInfo?.appProvisionType === bmsBundleInfo?.appInfo?.appProvisionType).assertTrue();
+        expect(edmBundleInfo?.appInfo?.systemApp === bmsBundleInfo?.appInfo?.systemApp).assertTrue();
+        expect(edmBundleInfo?.appInfo?.debug === bmsBundleInfo?.appInfo?.debug).assertTrue();
+        expect(edmBundleInfo?.appInfo?.dataUnclearable === bmsBundleInfo?.appInfo?.dataUnclearable).assertTrue();
+        expect(edmBundleInfo?.appInfo?.nativeLibraryPath === bmsBundleInfo?.appInfo?.nativeLibraryPath).assertTrue();
+        expect(edmBundleInfo?.appInfo?.appIndex === bmsBundleInfo?.appInfo?.appIndex).assertTrue();
+        expect(edmBundleInfo?.appInfo?.installSource === bmsBundleInfo?.appInfo?.installSource).assertTrue();
+        expect(edmBundleInfo?.appInfo?.releaseType === bmsBundleInfo?.appInfo?.releaseType).assertTrue();
+
+        expect(edmBundleInfo?.signatureInfo?.appId === bmsBundleInfo?.signatureInfo?.appId).assertTrue();
+        expect(edmBundleInfo?.signatureInfo?.fingerprint === bmsBundleInfo?.signatureInfo?.fingerprint).assertTrue();
+        expect(edmBundleInfo?.signatureInfo?.appIdentifier === bmsBundleInfo?.signatureInfo?.appIdentifier).assertTrue();
+        expect(edmBundleInfo?.signatureInfo?.certificate === bmsBundleInfo?.signatureInfo?.certificate).assertTrue();
+      } catch (error) {
+        expect().assertFail();
       } finally {
         await adminManager.disableSuperAdmin(SELFHAPNAME);
       }

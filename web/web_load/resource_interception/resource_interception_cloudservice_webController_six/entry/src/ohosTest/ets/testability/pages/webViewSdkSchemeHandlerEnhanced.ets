@@ -15,6 +15,7 @@
 import events_emitter from '@ohos.events.emitter'
 import webview from '@ohos.web.webview'
 import Utils from '../../test/Utils'
+import { waitForExist } from '../../test/WaitTest.test';
 import business_error from '@ohos.base'
 import buffer from '@ohos.buffer'
 import { WebNetErrorList } from '@ohos.web.netErrorList'
@@ -26,6 +27,7 @@ struct webViewSdkSchemeHandlerEnhanced {
   httpBodyStream: webview.WebHttpBodyStream|null = null
   existHttpBodyStream: webview.WebHttpBodyStream|null = null
   @State emitKey: string = '';
+  @State isComplete: number = -1;
   @State javaScriptAccess: boolean = true;
   @State fileAccess: boolean = true;
   @State domStorageAccess: boolean = true;
@@ -72,7 +74,8 @@ struct webViewSdkSchemeHandlerEnhanced {
               .onClick(async () => {
                   console.info('key==>' + this.emitKey)
                   this.controller.loadUrl($rawfile('chunked_post_stream.html'))
-                  await Utils.sleep(2000)
+                  await waitForExist(()=>this.isComplete, 'ActsAceWebViewSdkSchemeHandlerEnhanced', 0, 1000)
+                  this.isComplete = -1
                   this.controller.runJavaScript('test(\'https://www.example.com/xhr\')', (error, result) => {
                   })
                   await Utils.sleep(1000)
@@ -185,6 +188,14 @@ struct webViewSdkSchemeHandlerEnhanced {
                 console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
               }
             })
+            .onPageBegin((event) => {
+              console.log('onPageBegin ==>' + event.url);
+            })
+            .onPageEnd((event) => {
+              console.log('onPageEnd ==>' + event.url);
+              this.isComplete = 0
+            })
+
       }
   }
 }

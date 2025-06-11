@@ -29,7 +29,7 @@ const ENTINFO1: adminManager.EnterpriseInfo = {
 };
 
 const SELFWANT: Want = {
-  bundleName: "com.example.myapplication",
+  bundleName: "com.edm.acts.nopermission",
   abilityName: "com.example.myapplication.EnterpriseAdminAbility"
 };
 
@@ -38,7 +38,7 @@ const INVALID_WANT: Want = {
 }
 
 const AUTOSTARTAPP1: Want = {
-  bundleName: "com.example.myapplication",
+  bundleName: "com.edm.acts.nopermission",
   abilityName: "com.example.myapplication.MainAbility"
 };
 
@@ -46,7 +46,7 @@ const AUTOSTARTAPP2: Want = {
   bundleName: "com.example.extensionzerotest",
   abilityName: "com.example.extensionzerotest.MainAbility"
 };
-const SELFHAPNAME = "com.example.myapplication"
+const SELFHAPNAME = "com.edm.acts.nopermission"
 const COMPANYNAME2 = "company2"
 const DESCRIPTION2 = "edm demo2"
 const NOT_EXIST_BUNDLE = "bundle.not.exist"
@@ -172,6 +172,8 @@ let INVALID_PARAMETERS: Record<string, string> = {
 const DEFAULT_ACCOUNT_ID = 100;
 const INVALID_ACCOUNT_ID = 200;
 
+const DEFAULT_APP_INDEX = 0;
+
 export {
   BUNDLENAME1, ENTINFO1, SELFWANT, AUTOSTARTAPP1, AUTOSTARTAPP2, SELFHAPNAME, COMPANYNAME2, DESCRIPTION2,
   ENTINFO2, NETWORK_ETH_LOCAL, NETWORK_ETH_INVALID, DEFAULT_USER_ID, INVALID_USER_ID,
@@ -181,5 +183,5 @@ export {
   INVALID_WANT, TEST_TOKEN_ID, TEST_CLIPBOARD_POLICY, UPDATE_VERSION, INVALID_UPDATE_VERSION, getPixelMap,
   PIXEL_MAP, WATERMARK_BUNDLE_NAME, TEST_BUNDLENAME, PARAMETERS_LOWER_BOUND, INVALID_PARAMETERS,
   INVALID_PARAMETERS_LOWER_THAN_UPPER_BOUND, DEFAULT_ACCOUNT_ID, INVALID_ACCOUNT_ID,CURRENT_USER_ID,
-  getCurrentUserId
+  getCurrentUserId, DEFAULT_APP_INDEX
 }

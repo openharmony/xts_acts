@@ -55,6 +55,8 @@ export const DecodingOptionsSetDesiredSize: (options: image.DecodingOptions, wid
 export const DecodingOptionsGetDesiredRegion: (options: image.DecodingOptions) => image.Region;
 export const DecodingOptionsSetDesiredRegion: (options: image.DecodingOptions, x:number, y:number, wihth:number,
                                                height:number) => Number;
+export const DecodingOptionsGetCropRegion: (options: image.DecodingOptions) => image.Region;
+export const DecodingOptionsSetCropRegion: (options: image.DecodingOptions, x:number, y:number, wihth:number, height:number) => Number;
 export const DecodingOptionsGetCropAndScaleStrategy: (options: image.DecodingOptions) => number;
 export const DecodingOptionsSetCropAndScaleStrategy: (options: image.DecodingOptions,
                                                       cropAndScaleStrategy:number) => Number;
@@ -101,3 +103,10 @@ export const PackingOptionsSetDesiredDynamicRange: (packing:image.PackingOption,
 export const PackingOptionsGetNeedsPackProperties: (packing:image.PackingOption) => number;
 export const PackingOptionsSetNeedsPackProperties: (packing:image.PackingOption, needsPackProperties:number) => number;
 export const AssertImageSize: (width:number, height:number) => number;
+export const GetPropertyWithNull: () => number;
+export const GetMimeTypeWithNull: () => number;
+export const GetImagePropertyWithNull: (fd:number) => number;
+export const GetImagePackerSupportedFormats: () => Array<string>;
+export const GetImageSourceSupportedFormats: () => Array<string>;
+export const GetImagePackerSupportedFormatsError: (flag: boolean) => number;
+export const GetImageSourceSupportedFormatsError: (flag: boolean) => number;

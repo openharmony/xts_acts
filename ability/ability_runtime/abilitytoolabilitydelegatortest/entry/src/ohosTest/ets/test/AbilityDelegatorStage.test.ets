@@ -25,7 +25,7 @@ const TAG: string = 'ActsAbilityDelegatorTest';
 const TEST_SUITE_NAME: string = 'ActsAbilityDelegatorStageTest';
 const CODE_ERROR = 401;
 const WAIT_TIME_500:number = 500;
-let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
+let deviceSupport  = systemParameterEnhance.getSync('persist.sys.abilityms.move_ui_ability_to_background_api_enable');
 let commonEventSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
     events: ["AbilityDelegator_Destory"]
 };
@@ -72,7 +72,7 @@ export default function AbilityDelegatorStageTest() {
                 let state = abilityDelegator.getAbilityState(ability);
                 console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====> state --in Foregroundcallback: ${state}`);
                 expect(state).assertEqual(AbilityDelegatorRegistry.AbilityLifecycleState.FOREGROUND);
-                if (deviceType === '2in1') {
+                if (deviceSupport === 'false') {
                   abilityDelegator.removeAbilityMonitor(monitor)
                     .then(() => {
                       console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>removeAbilityMonitor====`)
@@ -150,7 +150,7 @@ export default function AbilityDelegatorStageTest() {
                 let state = abilityDelegator.getAbilityState(ability);
                 console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====> state --in Foregroundcallback: ${state}`);
                 expect(state).assertEqual(AbilityDelegatorRegistry.AbilityLifecycleState.FOREGROUND);
-                if (deviceType === '2in1') {
+                if (deviceSupport === 'false') {
                   abilityDelegator.removeAbilityMonitor(monitor)
                     .then(() => {
                       console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>removeAbilityMonitor====`)

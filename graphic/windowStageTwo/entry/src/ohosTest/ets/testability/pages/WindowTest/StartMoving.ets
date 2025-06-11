@@ -41,6 +41,8 @@ struct StartMoving {
                 }).catch((err: BusinessError) => {
                   if (err.code == 801) {
                     this.message = 'startMoving 801'
+                  }else if (err.code == 1300004) {
+                    this.message = 'startMoving 1300004'
                   }
                   console.error('start moving : ' + err.code + ',message:' + err.message)
                 })

@@ -14,7 +14,7 @@
 */
 
 import avSession from '@ohos.multimedia.avsession';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import featureAbility from '@ohos.ability.featureAbility';
 
 export default function AVSessionManager() {
@@ -59,7 +59,7 @@ export default function AVSessionManager() {
          * @tc.type      : Function
          * @tc.level     : Level0
          */
-        it('SUB_MULTIMEDIA_AVSESSION_CREATEAVSESSION_PROMISE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_CREATEAVSESSION_PROMISE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await avSession.createAVSession(context, tag, "audio").then((data) => {
                 currentAVSession = data;
                 if (currentAVSession.sessionId.length === 64) {
@@ -85,7 +85,7 @@ export default function AVSessionManager() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_CREATEAVSESSION_PROMISE_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_CREATEAVSESSION_PROMISE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await avSession.createAVSession(context, tag, 'aaa').then((data) => {
                 console.info('TestLog: avSession create successfully');
             }).catch((err) => {
@@ -105,7 +105,7 @@ export default function AVSessionManager() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_CREATEAVSESSION_PROMISE_0300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_CREATEAVSESSION_PROMISE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await avSession.createAVSession(context, '', type).then((data) => {
                 console.info('TestLog: avSession create successfully');
             }).catch((err) => {
@@ -125,7 +125,7 @@ export default function AVSessionManager() {
          * @tc.type      : Function
          * @tc.level     : Level0
          */
-        it('SUB_MULTIMEDIA_AVSESSION_CREATEAVSESSION_PROMISE_0400', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_CREATEAVSESSION_PROMISE_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await avSession.createAVSession(context, tag, "video").then((data) => {
                 currentAVSession = data;
                 if (currentAVSession.sessionId.length === 64) {
@@ -155,7 +155,7 @@ export default function AVSessionManager() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_GETAVCASTCONTROLLER_CALLBACK_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_GETAVCASTCONTROLLER_CALLBACK_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 await avSession.createAVSession(context, tag, "audio").then((data) => {
                     currentAVSession = data;
@@ -190,7 +190,7 @@ export default function AVSessionManager() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_GETAVCASTCONTROLLER_PROMISE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_GETAVCASTCONTROLLER_PROMISE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 currentAVSession = await avSession.createAVSession(context, tag, "audio");
                 console.info(`CreateAVSession 111BusinessError: code: `);
@@ -222,7 +222,7 @@ export default function AVSessionManager() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_STOPCASTING_CALLBACK_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_STOPCASTING_CALLBACK_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 await avSession.createAVSession(context, tag, "audio").then((data) => {
                     currentAVSession = data;
@@ -257,7 +257,7 @@ export default function AVSessionManager() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_STOPCASTING_PROMISE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_STOPCASTING_PROMISE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 await avSession.createAVSession(context, tag, "audio").then((data) => {
                     currentAVSession = data;
@@ -290,7 +290,7 @@ export default function AVSessionManager() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_GETCURRENTITEM_CALLBACK_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_GETCURRENTITEM_CALLBACK_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 await avSession.createAVSession(context, tag, "audio").then((data) => {
                     currentAVSession = data;
@@ -331,7 +331,7 @@ export default function AVSessionManager() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_GETCURRENTITEM_PROMISE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_GETCURRENTITEM_PROMISE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 await avSession.createAVSession(context, tag, "audio").then((data) => {
                     currentAVSession = data;

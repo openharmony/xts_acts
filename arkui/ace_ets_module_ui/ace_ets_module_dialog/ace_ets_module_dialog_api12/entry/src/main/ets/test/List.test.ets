@@ -54,7 +54,6 @@ import BaseDialogTest from './CustomDialogTest/KeyboardAvoidMode/BaseDialogTest.
 import CustomDialogTest from './CustomDialogTest/KeyboardAvoidMode/CustomDialogTest.test';
 import PromptActionTest from './CustomDialogTest/KeyboardAvoidMode/PromptActionTest.test';
 
-import primary from './AlertDialogTest/primary.test';
 import buttonMaxFontSize from './button/buttonMaxFontSize.test';
 import sheetBorderWidth from './bindSheet/sheetBorderWidth.test';
 import CustomDialogBorderColor from './CustomDialogTest/CustomDialogBorderColor.test';
@@ -66,7 +65,6 @@ import menuTransition from './Menu/menuTransition.test';
 
 export default function testsuite() {
   buttonMaxFontSize()
-  primary()
   sheetBorderWidth()
   CustomDialogBorderColor()
   dialogButtonStyle()

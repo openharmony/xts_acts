@@ -393,7 +393,7 @@ export default function actsterminateselfwithresulttest() {
         expect().assertFail();
         done();
       }
-      await sleep(4000);
+      await sleep(6000);
       commonEvent.unsubscribe(subscriber);
       hilog.info(0x0000, TAG, '%{public}s',
         `${TEST_SUITE_NAME}#${TEST_CASE_NAME} startAbilityForResult onFirstEntryCreateFlag is === ${onFirstEntryCreateFlag}`);

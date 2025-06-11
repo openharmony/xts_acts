@@ -2118,6 +2118,54 @@ export default function audioManagerApi9() {
       }
       done();
     })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_ONAUDIOSCENECHANGE_0100
+     * @tc.name      : OnAudioSceneChange - audioManager
+     * @tc.desc      : OnAudioSceneChange - audioManager
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_ONAUDIOSCENECHANGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      try {
+        audioManager.on('audioSceneChange', (audioScene) => {
+          console.info(`AudioSceneChange event: ${audioScene} `);
+        });
+        expect(true).assertTrue();
+        done();
+      } catch (err) {
+        console.log('err :' + err.message)
+        expect(false).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_OFFAUDIOSCENECHANGE_0100
+     * @tc.name      : OffAudioSceneChange - audioManager
+     * @tc.desc      : OffAudioSceneChange - audioManager
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_OFFAUDIOSCENECHANGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let cb = (audioScene: audio.AudioScene) => {
+          console.info(`AudioSceneChange event: ${audioScene} `);
+      }
+      try {
+        audioManager.on('audioSceneChange', cb);
+        audioManager.off('audioSceneChange', cb);
+        audioManager.on('audioSceneChange', cb);
+        audioManager.off('audioSceneChange');
+        expect(true).assertTrue();
+        done();
+      } catch (err) {
+        console.log('err :' + err.message)
+        expect(false).assertTrue();
+        done();
+      }
+    })
   })
 
 }

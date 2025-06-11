@@ -13,13 +13,27 @@
 * limitations under the License.
 */
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
+import taskpool from '@ohos.taskpool';
 import util from '@ohos.util';
+import worker, { MessageEvents } from '@ohos.worker';
 import { ArrayList, JSON } from '@kit.ArkTS';
 
 let falg = 0;
 
 function sleep(ms: number) {
   return new Promise<void>((resolve, reject) => setTimeout(resolve, ms));
+}
+
+function blockSleep(duration: number) {
+  duration = duration * 1000;
+  const start = Date.now();
+  while (Date.now() - start < duration) {}
+}
+
+@Concurrent
+function taskpoolFunc() {
+  let stackTrace = util.getMainThreadStackTrace();
+  return stackTrace;
 }
 
 async function fn() {
@@ -3389,5 +3403,88 @@ export default function utilTest() {
         expect().assertFail();
       }
     })
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_GET_MAIN_THREAD_STACK_TRACE_001
+     * @tc.name       : testGetMainThreadStackTrace001
+     * @tc.desc       : Testing the getMainThreadStackTrace interface in main thread.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testGetMainThreadStackTrace001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      let recursion = (n: number): string => {
+        if (n == 1) {
+          return util.getMainThreadStackTrace();
+        }
+        return recursion(n - 1);
+      }
+      let stackTrace = recursion(10);
+      expect(stackTrace).assertContain('getMainThreadStackTrace');
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_GET_MAIN_THREAD_STACK_TRACE_002
+     * @tc.name       : testGetMainThreadStackTrace002
+     * @tc.desc       : Testing the getMainThreadStackTrace interface in worker thread.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testGetMainThreadStackTrace002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      let stackTrace = "";
+      let isTerminate = false;
+      let newWorker = new worker.ThreadWorker('./worker.ets');
+      newWorker.onexit = () => {
+        isTerminate = true;
+      }
+      newWorker.onmessage = (e: MessageEvents): void => {
+        stackTrace = e.data;
+        newWorker.terminate();
+      }
+      let recursion = (n: number): void => {
+        if (n == 1) {
+          newWorker.postMessage("");
+          blockSleep(1);
+          return;
+        }
+        return recursion(n - 1);
+      }
+      recursion(10);
+      while (!isTerminate) {
+        await sleep(100);
+      }
+      expect(stackTrace).assertContain('blockSleep');
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_GET_MAIN_THREAD_STACK_TRACE_003
+     * @tc.name       : testGetMainThreadStackTrace003
+     * @tc.desc       : Testing the getMainThreadStackTrace interface in taskpool.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testGetMainThreadStackTrace003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      let task = new taskpool.Task(taskpoolFunc);
+      let recursion = (n: number): void => {
+        if (n == 1) {
+          blockSleep(1);
+          return;
+        }
+        return recursion(n - 1);
+      }
+      taskpool.execute(task).then(
+        (value: object) => {
+          expect(value).assertContain('blockSleep');
+        }
+      )
+      recursion(10);
+      let stackTrace = await taskpool.execute(task);
+      expect(stackTrace).assertEqual('');
+      done();
+    });
+
   })
 }

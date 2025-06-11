@@ -41,7 +41,6 @@
     "MainAbility/pages/CustomDialog/KeyboardAvoidMode/BaseDialog",
     "MainAbility/pages/CustomDialog/KeyboardAvoidMode/CustomDialog",
     "MainAbility/pages/CustomDialog/KeyboardAvoidMode/PromptAction",
-    "MainAbility/pages/AlertDialog/primary",
     "MainAbility/pages/button/buttonMaxFontSize",
     "MainAbility/pages/bindSheet/sheetBorderWidth",
     "MainAbility/pages/CustomDialog/CustomDialogBorderColor",

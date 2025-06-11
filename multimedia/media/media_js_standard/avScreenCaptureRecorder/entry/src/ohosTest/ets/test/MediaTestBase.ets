@@ -231,8 +231,7 @@ export default class MediaTestBase {
         break;
       case this.AV_CREATEAVPLAYER:
         steps.shift();
-        let sampleRate: ESObject = avConfig.audioSampleRate;
-        this.AvPlayerMp4(this.outputName, sampleRate, done)
+        this.AvPlayerMp4(this.outputName, avConfig, done)
         break;
       default:
         break;
@@ -351,15 +350,14 @@ export default class MediaTestBase {
         break;
       case this.AV_CREATEAVPLAYER:
         steps.shift();
-        let sampleRate: ESObject = avConfig2.audioSampleRate;
-        this.AvPlayerMp4(this.outputName, sampleRate, done)
+        this.AvPlayerMp4(this.outputName, avConfig2, done)
         break;
       default:
         break;
     }
   }
 
-  AvPlayerMp4(outputName: string, audioSampleRate: number, done: Function) {
+  AvPlayerMp4(outputName: string, avConfig: media.AVScreenCaptureRecordConfig, done: Function) {
     media.createAVPlayer((err, video) => {
       console.info(`case media err: ${err}`)
       if (typeof (video) != 'undefined') {
@@ -405,7 +403,7 @@ export default class MediaTestBase {
               break;
             case this.AV_PREPARED:
               if (this.avPlayer != null) {
-                this.getTrackDescriptionTest(this.avPlayer, audioSampleRate, done)
+                this.getTrackDescriptionTest(this.avPlayer, avConfig, done)
               }
               this.avPlayer?.play().then(() => {
                 console.info('Succeeded in playing');
@@ -415,7 +413,7 @@ export default class MediaTestBase {
               break;
             case this.AV_PLAYING:
               if (this.avPlayer != null) {
-                this.getTrackDescriptionTest(this.avPlayer, audioSampleRate, done)
+                this.getTrackDescriptionTest(this.avPlayer, avConfig, done)
               }
 
               this.avPlayer?.stop().then(() => {
@@ -460,14 +458,15 @@ export default class MediaTestBase {
 
   }
 
-  getTrackDescriptionTest(avPlayer: media.AVPlayer, audioSampleRate: number, done: Function) {
+  getTrackDescriptionTest(avPlayer: media.AVPlayer, avConfig: media.AVScreenCaptureRecordConfig, done: Function) {
 
     avPlayer?.getTrackDescription((error: BusinessError, arrList: Array<media.MediaDescription>) => {
       if (arrList != null) {
         for (let i = 0; i < arrList.length; i++) {
           console.info(`case getTrackDescription is ${JSON.stringify(arrList[i])}`);
           if (arrList[i]['codec_mime'].toString() == "audio/mp4a-latm") {
-            expect(arrList[i]['bitrate']).assertLess(audioSampleRate / 3)
+            expect(Number(arrList[i]['bitrate']) / 3).assertLess(avConfig.audioBitrate);
+            expect(Number(arrList[i]['sample_rate'])).assertEqual(avConfig.audioSampleRate);
           }
         }
         done();

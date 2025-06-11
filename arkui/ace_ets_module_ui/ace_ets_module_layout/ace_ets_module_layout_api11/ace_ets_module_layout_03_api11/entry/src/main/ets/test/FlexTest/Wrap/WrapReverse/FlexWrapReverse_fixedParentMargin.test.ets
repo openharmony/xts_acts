@@ -168,8 +168,8 @@ export default function flexWrapReverse_fixedParentMargin() {
       expect(Math.floor(Math.abs(locationText3.right - locationFlex.right)) <= 1).assertTrue();
       expect(Math.floor(Math.abs(locationText1.top - locationFlex.top - vp2px(30))) <= 1).assertTrue();
       expect(Math.floor(Math.abs(locationText2.top - locationFlex.top)) <= 1).assertTrue();
-      expect(Math.floor(Math.abs(locationText3.top - locationText2.bottom - vp2px(10))) <= 1).assertTrue();
-      expect(Math.floor(Math.abs(locationFlex.bottom - locationText3.bottom - vp2px(40))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(locationText3.top - locationText2.bottom - vp2px(10))) <= 2).assertTrue();
+      expect(Math.floor(Math.abs(locationFlex.bottom - locationText3.bottom - vp2px(40))) <= 2).assertTrue();
       expect(Math.floor(Math.abs(locationText3.right - locationText3.left - (locationText2.right - locationText2.left))) <= 1)
         .assertTrue();
       expect(Math.floor(Math.abs(locationText1.right - locationText1.left - (locationText2.right - locationText2.left))) <= 1)

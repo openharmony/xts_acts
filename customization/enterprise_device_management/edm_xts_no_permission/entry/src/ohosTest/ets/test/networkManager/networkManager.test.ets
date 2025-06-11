@@ -565,8 +565,7 @@ function testTurnOnMobileData() {
    * @tc.type      : Function
    * @tc.size      : MediumTest
    */
-  it("   * @tc.name      : test_turnon_mobile_data_0002
-", Level.LEVEL2, async (done: Function) => {
+  it("test_turnon_mobile_data_0002", Level.LEVEL2, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
     try {
       networkManager.turnOnMobileData(SELFWANT, false);

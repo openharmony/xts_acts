@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach, beforeEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, beforeEach, Level } from '@ohos/hypium';
 import { Driver, ON, PointerMatrix, Rect } from '@ohos.UiTest';
 import router from '@ohos.router';
 import nativeRender from 'libnativerender.so'
@@ -30,31 +30,71 @@ export default function VisibleAreaEventOptionsTest(){
       done()
     })
 
-    it('VisibleAreaEventOptionsTest', 0, async (done: Function) => {
+    /*
+     * @tc.number: VisibleAreaEventOptionsTest
+     * @tc.name: VisibleAreaEventOptionsTest
+     * @tc.desc:  VisibleAreaEventOption
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+
+    it('VisibleAreaEventOptionsTest', Level.LEVEL1, async (done: Function) => {
       console.info("push VisibleAreaEventOptionsTest page success: ")
       let ret = nativeRender.DragEndPendingTest_001()
       console.log('VisibleAreaEventOptionsTest will drag and check:: ', ret)
+      expect().assertEqual();
       done()
     })
-
-    it('VisibleAreaEventOptionsTest_a', 0, async (done: Function) => {
+    /*
+     * @tc.number: VisibleAreaEventOptionsTest_a
+     * @tc.name: VisibleAreaEventOptionsTest_a
+     * @tc.desc:  VisibleAreaEventOption
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('VisibleAreaEventOptionsTest_a', Level.LEVEL1, async (done: Function) => {
       expect(nativeRender.VisibleAreaEventOptionsTest_a()).assertEqual(0)
       await Utils.sleep(100)
       done()
     })
-    it('VisibleAreaEventOptionsTest_b', 0, async (done: Function) => {
+
+    /*
+     * @tc.number: VisibleAreaEventOptionsTest_b
+     * @tc.name: VisibleAreaEventOptionsTest_b
+     * @tc.desc:  VisibleAreaEventOption
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('VisibleAreaEventOptionsTest_b', Level.LEVEL1, async (done: Function) => {
       expect(nativeRender.VisibleAreaEventOptionsTest_b()).assertEqual(0)
       await Utils.sleep(100)
       done()
     })
-
-    it('VisibleAreaEventOptionsTest_c', 0, async (done: Function) => {
+    /*
+     * @tc.number: VisibleAreaEventOptionsTest_c
+     * @tc.name: VisibleAreaEventOptionsTest_c
+     * @tc.desc:  VisibleAreaEventOption
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('VisibleAreaEventOptionsTest_c', Level.LEVEL1, async (done: Function) => {
       expect(nativeRender.VisibleAreaEventOptionsTest_c()).assertEqual(0)
       await Utils.sleep(100)
       done()
     })
-
-    it('VisibleAreaEventOptionsTest_d', 0, async (done: Function) => {
+    /*
+     * @tc.number: VisibleAreaEventOptionsTest_d
+     * @tc.name: VisibleAreaEventOptionsTest_d
+     * @tc.desc:  VisibleAreaEventOption
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('VisibleAreaEventOptionsTest_d', Level.LEVEL1, async (done: Function) => {
       expect(nativeRender.VisibleAreaEventOptionsTest_d()).assertEqual(0)
       await Utils.sleep(100)
       done()

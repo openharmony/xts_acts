@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import { Driver, ON, PointerMatrix, Rect } from '@ohos.UiTest';
 import Utils from '../common/Utils';
 
@@ -33,7 +33,7 @@ export default function ProgressLinearStyleTest(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testProgressLinearStyle001', 0, async (done: Function) => {
+    it('testProgressLinearStyle001', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'TestProgressLinearStyle';
       await Utils.pushPage(`progress/${PAGE_TAG}`);
       await Utils.sleep(1000)
@@ -58,7 +58,7 @@ export default function ProgressLinearStyleTest(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testProgressLinearStyle002', 0, async (done: Function) => {
+    it('testProgressLinearStyle002', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'TestProgressLinearStyle';
       await Utils.pushPage(`progress/${PAGE_TAG}`);
       await Utils.sleep(1000)
@@ -81,7 +81,7 @@ export default function ProgressLinearStyleTest(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testProgressLinearStyle003', 0, async (done: Function) => {
+    it('testProgressLinearStyle003', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'TestProgressLinearStyle';
       await Utils.pushPage(`progress/${PAGE_TAG}`);
       await Utils.sleep(1000)
@@ -109,7 +109,7 @@ export default function ProgressLinearStyleTest(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testProgressLinearStyle004', 0, async (done: Function) => {
+    it('testProgressLinearStyle004', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'TestProgressLinearStyle';
       await Utils.pushPage(`progress/${PAGE_TAG}`);
       await Utils.sleep(1000)

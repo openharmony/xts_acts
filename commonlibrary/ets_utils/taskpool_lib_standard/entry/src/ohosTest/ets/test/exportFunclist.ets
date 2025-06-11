@@ -68,3 +68,12 @@ export function cancelById(taskId: number) {
 export function multiplyFunc(args: number): number {
   return args * 2;
 }
+
+export function getLongString(): string {
+  let res = "";
+  let size = 100 * 1024;
+  for (let i = 0; i < size; i++) {
+    res += "a";
+  }
+  return res;
+}

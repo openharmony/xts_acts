@@ -28,6 +28,10 @@ import PreDownLoadTest from './PreDownLoadTest.test'
 import AVPlayerSelectTrackTest from './AVPlayerSelectTrackTest.test'
 import AVPlayerFlvFuncTest from './AVPlayerFlvFuncTest.test'
 import AVPlayerPostProcessorTest from './AVPlayerPostProcessorTest.test'
+import AVPlayerSetPlaybackRateTest from './AVPlayerSetPlaybackRateTest.test'
+import AVPlayerVideoScaleTypeTest from './AVPlayerVideoScaleTypeTest.test'
+import AVPlayerAudioGetTrackDesTest from './AVPlayerAudioGetTrackDesTest.test'
+import AVPlayerVideoSeekTest from './AVPlayerVideoSeekTest.test'
 
 export default function testsuite() {
   // AVPlayerHlsFuncTest()
@@ -46,4 +50,8 @@ export default function testsuite() {
   AVPlayerSelectTrackTest();
   AVPlayerFlvFuncTest();
   AVPlayerPostProcessorTest();
+  AVPlayerSetPlaybackRateTest();
+  AVPlayerVideoScaleTypeTest();
+  AVPlayerVideoSeekTest();
+  AVPlayerAudioGetTrackDesTest();
 }

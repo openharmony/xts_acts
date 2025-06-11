@@ -31,8 +31,10 @@ import SecureCameraTest from './SecureCamera.test';
 import PhotoTest from './PhotoTest.test';
 import CameraSessionCameraRotationTest from './CameraSessionCameraRotationTest.test';
 import CameraSessionAutoDeviceSwitchTest from './CameraSessionAutoDeviceSwitchTest.test';
-import CameraSessionQualityPrioritizationTest from './CameraSessionQualityPrioritizationTest.test'
-import VideoMirrorTest from './VideoMirror.test'
+import CameraSessionQualityPrioritizationTest from './CameraSessionQualityPrioritizationTest.test';
+import VideoMirrorTest from './VideoMirror.test';
+import SecureCameraErrorCodeTest from './SecureCameraErrorCodeTest.test';
+import CameraSessionMacroTest from './CameraSessionMacroTest.test';
 
 let voice = call.hasVoiceCapability()
 
@@ -41,8 +43,10 @@ export default function testsuite() {
   PhotoTest();
   SessionTest();
   SecureCameraTest();
+  SecureCameraErrorCodeTest();
   CameraManagerTest();
   VideoMirrorTest();
+  CameraSessionMacroTest();
 
   if (voice){
     CameraSessionExposureTest();

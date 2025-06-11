@@ -153,7 +153,11 @@ napi_property_descriptor desc[] = {
     {"oHDrawingGetRunPositions001", nullptr, OHDrawingGetRunPositions001,
      nullptr, nullptr, nullptr, napi_default, nullptr},
     {"oHDrawingGetFontCollectionGlobalInstance001", nullptr, OHDrawingGetFontCollectionGlobalInstance001,
-     nullptr, nullptr, nullptr, napi_default, nullptr}
+     nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"oHDrawingSetTextStyleBadgeType001", nullptr, OHDrawingSetTextStyleBadgeType001,
+     nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"oHDrawingSetTextStyleBadgeType002", nullptr, OHDrawingSetTextStyleBadgeType002,
+     nullptr, nullptr, nullptr, napi_default, nullptr},
 };
 
 EXTERN_C_START

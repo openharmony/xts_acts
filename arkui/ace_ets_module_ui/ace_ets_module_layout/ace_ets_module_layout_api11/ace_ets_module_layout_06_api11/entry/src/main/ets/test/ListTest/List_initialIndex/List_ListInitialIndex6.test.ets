@@ -81,6 +81,11 @@ export default function list_ListInitialIndex6Test() {
       let twelfthListItem: RectValue = CommonFunc.getComponentRect('List_ListInitialIndex6_12');
       let listContainer: RectValue = CommonFunc.getComponentRect('List_ListInitialIndex6_Container01');
       let listContainerStrJson = getInspectorByKey('List_ListInitialIndex6_Container01');
+      
+      let listContainer_width = listContainer.right - listContainer.left
+      let listContainer_height = listContainer.bottom - listContainer.top
+      console.info('[testListInitialIndexToThreeWithTwoLane] listContainer_width: ' + listContainer_width);
+      console.info('[testListInitialIndexToThreeWithTwoLane] listContainer_height: ' + listContainer_height);
 
       expect(JSON.parse(listContainerStrJson).$type).assertEqual('List');
 
@@ -142,9 +147,9 @@ export default function list_ListInitialIndex6Test() {
 
 
       let driver = Driver.create();
-      await driver.swipe(Math.round(globalThis.winLeft + thirdListItem.left + ((thirdListItem.right - thirdListItem.left) / 2)),
-        Math.round(globalThis.winTop + thirdListItem.bottom), Math.round(globalThis.winLeft + fifthListItem.left + (fifthListItem.right - fifthListItem.left) / 2),
-        Math.round(globalThis.winTop + fifthListItem.bottom));
+      await driver.swipe(Math.round(globalThis.winLeft + listContainer.left + listContainer_width / 2),
+        Math.round(globalThis.winTop + listContainer.top + listContainer_height / 6), Math.round(globalThis.winLeft + listContainer.left + listContainer_width / 2),
+        Math.round(globalThis.winTop + listContainer.bottom - listContainer_height / 6));
       await CommonFunc.sleep(2000);
       firstListItem = CommonFunc.getComponentRect('List_ListInitialIndex6_1');
       secondListItem = CommonFunc.getComponentRect('List_ListInitialIndex6_2');

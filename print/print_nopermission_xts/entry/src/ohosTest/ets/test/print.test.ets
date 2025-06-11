@@ -72,7 +72,7 @@ export default function printTest() {
         done();
       } catch (error) {
         console.log('print_function_0100 expect failed, err: ' + JSON.stringify(error));
-        expect(error.code).assertEqual(201);
+        expect(error).assertEqual(201);
         done();
       }
     })
@@ -94,7 +94,7 @@ export default function printTest() {
         done();
       } catch (error) {
         console.log('print_function_0101 expect failed, err: ' + JSON.stringify(error));
-        expect(error.code).assertEqual(401);
+        expect(error).assertEqual(401);
         done();
       }
     })
@@ -114,7 +114,7 @@ export default function printTest() {
         try {
           if (err) {  
             console.log('print_function_0200 expect failed, err: ' + JSON.stringify(err));
-            expect(err.code).assertEqual(201);
+            expect(err).assertEqual(201);
             done();
           } else {
             expect(false).assertTrue();
@@ -141,7 +141,7 @@ export default function printTest() {
         try {
           if (err) {  
             console.log('print_function_0201 expect failed, err: ' + JSON.stringify(err));
-            expect(err.code).assertEqual(401);
+            expect(err).assertEqual(401);
             done();
           } else {
             expect(false).assertTrue();
@@ -169,7 +169,7 @@ export default function printTest() {
         try {
           if (err) {  
             console.log('print_function_0300 expect failed, err: ' + JSON.stringify(err));
-            expect(err.code).assertEqual(201);
+            expect(err).assertEqual(201);
             done();
           } else {
             expect(false).assertTrue();
@@ -197,7 +197,7 @@ export default function printTest() {
         try {
           if (err) {  
             console.log('print_function_0301 expect failed, err: ' + JSON.stringify(err));
-            expect(err.code).assertEqual(401);
+            expect(err).assertEqual(401);
             done();
           } else {
             expect(false).assertTrue();
@@ -227,7 +227,7 @@ export default function printTest() {
         done();
       } catch (error) {
         console.log('print_function_0400 expect failed, err: ' + JSON.stringify(error));
-        expect(error.code).assertEqual(201);
+        expect(error).assertEqual(201);
         done();
       }
     })
@@ -250,7 +250,7 @@ export default function printTest() {
         done();
       } catch (error) {
         console.log('print_function_0401 expect failed, err: ' + JSON.stringify(error));
-        expect(error.code).assertEqual(401);
+        expect(error).assertEqual(401);
         done();
       }
     })
@@ -333,7 +333,7 @@ export default function printTest() {
         done();
       } catch (error) {
         console.log('print_function_0500 expect failed, err: ' + JSON.stringify(error));
-        expect(error.code).assertEqual(201);
+        expect(error).assertEqual(201);
         done();
       }
     });
@@ -390,7 +390,7 @@ export default function printTest() {
         done();
       } catch (error) {
         console.log('print_function_0600 expect failed, err: ' + JSON.stringify(error));
-        expect(error.code).assertEqual(201);
+        expect(error).assertEqual(201);
         done();
       }
     })
@@ -426,7 +426,7 @@ export default function printTest() {
         done();
       } catch (error) {
         console.log('print_function_0700 expect failed, err: ' + JSON.stringify(error));
-        expect(error.code).assertEqual(201);
+        expect(error).assertEqual(201);
         done();
       }
     })
@@ -449,7 +449,7 @@ export default function printTest() {
         done();
       } catch (error) {
         console.log('print_function_0800 expect failed, err: ' + JSON.stringify(error));
-        expect(error.code).assertEqual(201);
+        expect(error).assertEqual(201);
         done();
       }
     })
@@ -472,7 +472,7 @@ export default function printTest() {
         done();
       } catch (error) {
         console.log('print_function_0900 expect failed, err: ' + JSON.stringify(error));
-        expect(error.code).assertEqual(201);
+        expect(error).assertEqual(201);
         done();
       }
     })
@@ -493,7 +493,7 @@ export default function printTest() {
         done();
       } catch (error) {
         console.log('print_function_1000 expect failed, err: ' + JSON.stringify(error));
-        expect(error.code).assertEqual(201);
+        expect(error).assertEqual(201);
         done();
       }
     })

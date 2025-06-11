@@ -5,6 +5,7 @@
       "testability/pages/WebRunJavaScriptOnDocumentEndTest",
       "testability/pages/WebRunJavaScriptOnHeadEndTest",
       "testability/pages/WebJavaScriptOnDocumentStartTest",
-      "testability/pages/WebJavaScriptOnDocumentEndTest"
+      "testability/pages/WebJavaScriptOnDocumentEndTest",
+      "testability/pages/WebviewRegisterJavaScriptProxyErrorCode"
   ]
 }

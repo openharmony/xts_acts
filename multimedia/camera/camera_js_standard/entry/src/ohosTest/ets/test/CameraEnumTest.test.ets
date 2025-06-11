@@ -442,5 +442,21 @@ export default function cameraEnumTest() {
       console.info(`${TAG} SmoothZoomMode.NORMAL:${camera.SmoothZoomMode.NORMAL}`);
       done();
     })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_ENUM_CONCURRENT_TYPE_0100
+     * @tc.name      : test concurrent type  enums
+     * @tc.desc      : assert all concurrent type  enums
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_CAMERA_ENUM_CONCURRENT_TYPE_0100', Level.LEVEL0, async (done: Function) => {
+      expect(camera.CameraConcurrentType.CAMERA_LIMITED_CAPABILITY == 0).assertTrue();
+      console.info(`${TAG} CameraConcurrentType.CAMERA_LIMITED_CAPABILITY:${camera.CameraConcurrentType.CAMERA_LIMITED_CAPABILITY}`);
+      expect(camera.CameraConcurrentType.CAMERA_FULL_CAPABILITY == 1).assertTrue();
+      console.info(`${TAG} CameraConcurrentType.CAMERA_FULL_CAPABILITY:${camera.CameraConcurrentType.CAMERA_FULL_CAPABILITY}`);
+      done();
+    })
   })
 }

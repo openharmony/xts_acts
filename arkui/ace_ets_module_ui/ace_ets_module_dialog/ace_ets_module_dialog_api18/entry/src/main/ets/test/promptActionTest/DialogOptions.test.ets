@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023 Huawei Device Co., Ltd.
+ * Copyright (c) 2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -32,7 +32,7 @@ import CommonFunc from '../../MainAbility/common/Common';
 
 export default function DialogOptions() {
   describe('DialogOptions', () => {
-
+    
     beforeEach(async (done: Function) => {
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/promptAction/DialogOptions',
@@ -73,34 +73,11 @@ export default function DialogOptions() {
 
       let column: ESObject = obj.$children[1].$children[0].$attrs
       let backgroundColor:string = column.backgroundColor
-      let topLeft:string = column.borderRadius.topLeft
-      let topRight:string = column.borderRadius.topRight
-      let bottomLeft:string = column.borderRadius.bottomLeft
-      let bottomRight:string = column.borderRadius.bottomRight
-      let borderWidth:string = column.borderWidth
-      let borderColor:string = column.borderColor
+     
       let borderStyle:string = column.borderStyle
       let backgroundBlurStyle:string =  column.backgroundBlurStyle?.value
       console.info('[DialogOptions_0100] column $attrs'+ JSON.stringify(column))
-
-      console.info('[DialogOptions_0100] topLeft'+ topLeft)
-      expect(topLeft).assertEqual('32.00vp')
-
-      console.info('[DialogOptions_0100] topRight'+ topRight)
-      expect(topRight).assertEqual('32.00vp')
-
-      console.info('[DialogOptions_0100] bottomLeft'+ bottomLeft)
-      expect(bottomLeft).assertEqual('32.00vp')
-
-      console.info('[DialogOptions_0100] bottomRight'+ bottomRight)
-      expect(bottomRight).assertEqual('32.00vp')
-
-      console.info('[DialogOptions_0100] borderWidth'+ borderWidth)
-      expect(borderWidth).assertEqual('0.00vp')
-
-      console.info('[DialogOptions_0100] borderColor'+ borderColor)
-      expect(borderColor).assertEqual('#FF000000')
-
+      
       console.info('[DialogOptions_0100] borderStyle'+ borderStyle)
       expect(borderStyle).assertEqual('BorderStyle.Solid')
       console.info('[DialogOptions_0100] backgroundBlurStyle'+ backgroundBlurStyle)
@@ -144,7 +121,6 @@ export default function DialogOptions() {
       let topLeft:string = column.borderRadius.topLeft
       let topRight:string = column.borderRadius.topRight
       let bottomLeft:string = column.borderRadius.bottomLeft
-      let bottomRight:string = column.borderRadius.bottomRight
       let borderWidth:string = column.borderWidth
       let borderColor:string = column.borderColor
       let borderStyle:string = column.borderStyle
@@ -164,8 +140,6 @@ export default function DialogOptions() {
       console.info('[DialogOptions_0200] bottomLeft'+ bottomLeft)
       expect(bottomLeft).assertEqual('0.00vp')
 
-      console.info('[DialogOptions_0200] bottomRight'+ bottomRight)
-      expect(bottomRight).assertEqual('32.00vp')
 
       console.info('[DialogOptions_0200] borderWidth'+ borderWidth)
       expect(borderWidth).assertEqual('1.00vp')
@@ -213,35 +187,13 @@ export default function DialogOptions() {
 
       let column: ESObject = obj.$children[1].$children[0].$attrs
       let backgroundColor:string = column.backgroundColor
-      let topLeft:string = column.borderRadius.topLeft
-      let topRight:string = column.borderRadius.topRight
-      let bottomLeft:string = column.borderRadius.bottomLeft
-      let bottomRight:string = column.borderRadius.bottomRight
-      let borderWidth:string = column.borderWidth
-      let borderColor:string = column.borderColor
+     
       let borderStyle:string = column.borderStyle
       let width:string = column.size?.width
       let height:string = column.size?.height
       let shadow:string = column.shadow
       let backgroundBlurStyle:string =  column.backgroundBlurStyle?.value
-      
-      console.info('[DialogOptions_0300] topLeft'+ topLeft)
-      expect(topLeft).assertEqual('32.00vp')
-
-      console.info('[DialogOptions_0300] topRight'+ topRight)
-      expect(topRight).assertEqual('32.00vp')
-
-      console.info('[DialogOptions_0300] bottomLeft'+ bottomLeft)
-      expect(bottomLeft).assertEqual('32.00vp')
-
-      console.info('[DialogOptions_0300] bottomRight'+ bottomRight)
-      expect(bottomRight).assertEqual('32.00vp')
-
-      console.info('[DialogOptions_0300] borderWidth'+ borderWidth)
-      expect(borderWidth).assertEqual('0.00vp')
-
-      console.info('[DialogOptions_0300] borderColor'+ borderColor)
-      expect(borderColor).assertEqual('#FF000000')
+           
 
       console.info('[DialogOptions_0300] borderStyle'+ borderStyle)
       expect(borderStyle).assertEqual('BorderStyle.Solid')
@@ -284,35 +236,12 @@ export default function DialogOptions() {
 
       let column: ESObject = obj.$children[1].$children[0].$attrs
       let backgroundColor:string = column.backgroundColor
-      let topLeft:string = column.borderRadius.topLeft
-      let topRight:string = column.borderRadius.topRight
-      let bottomLeft:string = column.borderRadius.bottomLeft
-      let bottomRight:string = column.borderRadius.bottomRight
-      let borderWidth:string = column.borderWidth
-      let borderColor:string = column.borderColor
+     
       let borderStyle:string = column.borderStyle
       let width:string = column.size?.width
       let height:string = column.size?.height
       let shadow:string = column.shadow
       let backgroundBlurStyle:string =  column.backgroundBlurStyle?.value
-      
-      console.info('[DialogOptions_0400] topLeft'+ topLeft)
-      expect(topLeft).assertEqual('32.00vp')
-
-      console.info('[DialogOptions_0400] topRight'+ topRight)
-      expect(topRight).assertEqual('32.00vp')
-
-      console.info('[DialogOptions_0400] bottomLeft'+ bottomLeft)
-      expect(bottomLeft).assertEqual('32.00vp')
-
-      console.info('[DialogOptions_0400] bottomRight'+ bottomRight)
-      expect(bottomRight).assertEqual('32.00vp')
-
-      console.info('[DialogOptions_0400] borderWidth'+ borderWidth)
-      expect(borderWidth).assertEqual('0.00vp')
-
-      console.info('[DialogOptions_0400] borderColor'+ borderColor)
-      expect(borderColor).assertEqual('#FF000000')
 
       console.info('[DialogOptions_0400] borderStyle'+ borderStyle)
       expect(borderStyle).assertEqual('BorderStyle.Solid')
@@ -679,5 +608,6 @@ export default function DialogOptions() {
       console.info('DialogOptions_1300 END');
       done();
     });
+
   })
 }

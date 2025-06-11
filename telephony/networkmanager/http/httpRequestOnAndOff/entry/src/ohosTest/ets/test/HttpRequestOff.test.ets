@@ -34,6 +34,12 @@ const ExpectTrue = (n: boolean) => {
   }
 }
 
+function sleep(time:number):Promise<string> {
+    return new Promise<string>((resolve) => {setTimeout(()=>{
+      resolve('ok')},time)
+ });
+}
+
 export default function HttpRequestOffTest() {
   describe('HttpRequestOffTest', () => {
     let XTS_TEST_HTTP_URL: string = 'http://www.baidu.com/';
@@ -67,13 +73,14 @@ export default function HttpRequestOffTest() {
             httpRequest.on("headersReceive", callback);
             httpRequest.off("headersReceive", callback);
             httpRequest.request(XTS_TEST_HTTP_URL,
-              (err: BusinessError) => {
+             async (err: BusinessError) => {
                 if (err) {
                   console.info(`${caseName} request err: ${JSON.stringify(err)}`);
                   ExpectFail();
                   httpRequest.destroy();
                   done();
                 } else {
+                  await sleep(100);
                   console.info(`${caseName} count: ${count}`);
                   ExpectTrue(count == 1);
                   httpRequest.destroy();
@@ -116,13 +123,14 @@ export default function HttpRequestOffTest() {
               console.info(`${caseName} header: ${JSON.stringify(header)}`);
             });
             httpRequest.off("headersReceive");
-            httpRequest.request(XTS_TEST_HTTP_URL, (err: BusinessError) => {
+            httpRequest.request(XTS_TEST_HTTP_URL, async(err: BusinessError) => {
               if (err) {
                 console.info(`${caseName} request err: ${JSON.stringify(err)}`);
                 ExpectFail();
                 httpRequest.destroy();
                 done();
               } else {
+                await sleep(100);
                 console.info(`${caseName} count: ${count}`);
                 ExpectTrue(count == 1);
                 httpRequest.destroy();
@@ -165,13 +173,14 @@ export default function HttpRequestOffTest() {
               console.info(`${caseName} dataReceive length: ${JSON.stringify(data.byteLength)}`);
             });
             httpRequest.off("dataReceive");
-            httpRequest.request(XTS_TEST_STREAM_HTTPS_URL, (err: BusinessError) => {
+            httpRequest.request(XTS_TEST_STREAM_HTTPS_URL, async(err: BusinessError) => {
               if (err) {
                 console.info(`${caseName} request err: ${JSON.stringify(err)}`);
                 ExpectFail();
                 httpRequest.destroy();
                 done();
               } else {
+                await sleep(100);
                 console.info(`${caseName} count: ${count}`);
                 ExpectTrue(count == 1);
                 httpRequest.destroy();
@@ -214,13 +223,14 @@ export default function HttpRequestOffTest() {
             }
             httpRequest.on("dataReceive", callback);
             httpRequest.off("dataReceive", callback);
-            httpRequest.requestInStream(XTS_TEST_STREAM_HTTPS_URL, (err: BusinessError) => {
+            httpRequest.requestInStream(XTS_TEST_STREAM_HTTPS_URL,async(err: BusinessError) => {
               if (err) {
                 console.info(`${caseName} request err: ${JSON.stringify(err)}`);
                 ExpectFail();
                 httpRequest.destroy();
                 done();
               } else {
+                await sleep(100);
                 console.info(`${caseName} count: ${count}`);
                 ExpectTrue(count == 1);
                 httpRequest.destroy();
@@ -263,13 +273,14 @@ export default function HttpRequestOffTest() {
               console.info(`${caseName} Receive dataEnd`);
             });
             httpRequest.off("dataEnd");
-            httpRequest.requestInStream(XTS_TEST_STREAM_HTTPS_URL, (err: BusinessError) => {
+            httpRequest.requestInStream(XTS_TEST_STREAM_HTTPS_URL, async(err: BusinessError) => {
               if (err) {
                 console.info(`${caseName} request err: ${JSON.stringify(err)}`);
                 ExpectFail();
                 httpRequest.destroy();
                 done();
               } else {
+                await sleep(100);
                 console.info(`${caseName} count: ${count}`);
                 ExpectTrue(count == 1);
                 httpRequest.destroy();
@@ -313,13 +324,14 @@ export default function HttpRequestOffTest() {
             }
             httpRequest.on("dataEnd", callback);
             httpRequest.off("dataEnd", callback);
-            httpRequest.requestInStream(XTS_TEST_STREAM_HTTPS_URL, (err: BusinessError) => {
+            httpRequest.requestInStream(XTS_TEST_STREAM_HTTPS_URL, async(err: BusinessError) => {
               if (err) {
                 console.info(`${caseName} request err: ${JSON.stringify(err)}`);
                 ExpectFail();
                 httpRequest.destroy();
                 done();
               } else {
+                await sleep(100);
                 console.info(`${caseName} count: ${count}`);
                 ExpectTrue(count == 1);
                 httpRequest.destroy();
@@ -368,13 +380,14 @@ export default function HttpRequestOffTest() {
               console.info(`${caseName} dataReceiveProgress:${JSON.stringify(data)}`);
             });
             httpRequest.off("dataReceiveProgress");
-            httpRequest.requestInStream(XTS_TEST_STREAM_HTTPS_URL, (err: BusinessError) => {
+            httpRequest.requestInStream(XTS_TEST_STREAM_HTTPS_URL, async(err: BusinessError) => {
               if (err) {
                 console.info(`${caseName} request err: ${JSON.stringify(err)}`);
                 ExpectFail();
                 httpRequest.destroy();
                 done();
               } else {
+                await sleep(100);
                 console.info(`${caseName} count: ${count}`);
                 ExpectTrue(count == 1);
                 httpRequest.destroy();
@@ -424,13 +437,14 @@ export default function HttpRequestOffTest() {
             }
             httpRequest.on("dataReceiveProgress", callback);
             httpRequest.off("dataReceiveProgress", callback);
-            httpRequest.requestInStream(XTS_TEST_STREAM_HTTPS_URL, (err: BusinessError) => {
+            httpRequest.requestInStream(XTS_TEST_STREAM_HTTPS_URL,async (err: BusinessError) => {
               if (err) {
                 console.info(`${caseName} request err: ${JSON.stringify(err)}`);
                 ExpectFail();
                 httpRequest.destroy();
                 done();
               } else {
+                await sleep(100);
                 console.info(`${caseName} count: ${count}`);
                 ExpectTrue(count == 1);
                 httpRequest.destroy();
@@ -479,13 +493,14 @@ export default function HttpRequestOffTest() {
               console.info(`${caseName} dataSendProgress: ${JSON.stringify(data)}`);
             });
             httpRequest.off("dataSendProgress");
-            httpRequest.request(XTS_TEST_HTTP_URL, (err: BusinessError) => {
+            httpRequest.request(XTS_TEST_HTTP_URL, async(err: BusinessError) => {
               if (err) {
                 console.info(`${caseName} request err: ${JSON.stringify(err)}`);
                 ExpectFail();
                 httpRequest.destroy();
                 done();
               } else {
+                await sleep(100);
                 console.info(`${caseName} count: ${count}`);
                 ExpectTrue(count == 1);
                 httpRequest.destroy();
@@ -535,13 +550,14 @@ export default function HttpRequestOffTest() {
             }
             httpRequest.on("dataSendProgress", callback);
             httpRequest.off("dataSendProgress", callback);
-            httpRequest.request(XTS_TEST_HTTP_URL, (err: BusinessError) => {
+            httpRequest.request(XTS_TEST_HTTP_URL,async (err: BusinessError) => {
               if (err) {
                 console.info(`${caseName} request err: ${JSON.stringify(err)}`);
                 ExpectFail();
                 httpRequest.destroy();
                 done();
               } else {
+                await sleep(100);
                 console.info(`${caseName} count: ${count}`);
                 ExpectTrue(count == 1);
                 httpRequest.destroy();
@@ -585,13 +601,14 @@ export default function HttpRequestOffTest() {
             }
             httpRequest.on("headerReceive", callback);
             httpRequest.off("headerReceive", callback);
-            httpRequest.request(XTS_TEST_HTTP_URL, (err: BusinessError) => {
+            httpRequest.request(XTS_TEST_HTTP_URL, async(err: BusinessError) => {
               if (err) {
                 console.info(`${caseName} request err: ${JSON.stringify(err)}`);
                 ExpectFail();
                 httpRequest.destroy();
                 done();
               } else {
+                await sleep(100);
                 console.info(`${caseName} count: ${count}`);
                 ExpectTrue(count == 1);
                 httpRequest.destroy();
@@ -634,13 +651,14 @@ export default function HttpRequestOffTest() {
               console.info(`${caseName} data: ${JSON.stringify(data)}`);
             });
             httpRequest.off("headerReceive");
-            httpRequest.request(XTS_TEST_HTTP_URL, (err: BusinessError) => {
+            httpRequest.request(XTS_TEST_HTTP_URL,async (err: BusinessError) => {
               if (err) {
                 console.info(`${caseName} request err: ${JSON.stringify(err)}`);
                 ExpectFail();
                 httpRequest.destroy();
                 done();
               } else {
+                await sleep(100);
                 console.info(`${caseName} count: ${count}`);
                 ExpectTrue(count == 1);
                 httpRequest.destroy();
@@ -683,13 +701,14 @@ export default function HttpRequestOffTest() {
               console.info(`${caseName} data: ${JSON.stringify(data)}`);
             }
             httpRequest.off("headerReceive", callback);
-            httpRequest.request(XTS_TEST_HTTP_URL, (err: BusinessError) => {
+            httpRequest.request(XTS_TEST_HTTP_URL,async (err: BusinessError) => {
               if (err) {
                 console.info(`${caseName} request err: ${JSON.stringify(err)}`);
                 ExpectFail();
                 httpRequest.destroy();
                 done();
               } else {
+                await sleep(100);
                 console.info(`${caseName} count: ${count}`);
                 ExpectTrue(count == 1);
                 httpRequest.destroy();
@@ -732,13 +751,14 @@ export default function HttpRequestOffTest() {
               console.info(`${caseName} header: ${JSON.stringify(header)}`);
             }
             httpRequest.off("headersReceive", callback);
-            httpRequest.request(XTS_TEST_HTTP_URL, (err: BusinessError) => {
+            httpRequest.request(XTS_TEST_HTTP_URL,async (err: BusinessError) => {
               if (err) {
                 console.info(`${caseName} request err: ${JSON.stringify(err)}`);
                 ExpectFail();
                 httpRequest.destroy();
                 done();
               } else {
+                await sleep(100);
                 console.info(`${caseName} count: ${count}`);
                 ExpectTrue(count == 1);
                 httpRequest.destroy();
@@ -781,13 +801,14 @@ export default function HttpRequestOffTest() {
               console.info(`${caseName} dataReceive length: ${JSON.stringify(data.byteLength)}`);
             }
             httpRequest.off("dataReceive", callback);
-            httpRequest.requestInStream(XTS_TEST_STREAM_HTTPS_URL, (err: BusinessError) => {
+            httpRequest.requestInStream(XTS_TEST_STREAM_HTTPS_URL,async (err: BusinessError) => {
               if (err) {
                 console.info(`${caseName} request err: ${JSON.stringify(err)}`);
                 ExpectFail();
                 httpRequest.destroy();
                 done();
               } else {
+                await sleep(100);
                 console.info(`${caseName} count: ${count}`);
                 ExpectTrue(count == 1);
                 httpRequest.destroy();
@@ -830,13 +851,14 @@ export default function HttpRequestOffTest() {
               console.info(`${caseName} Receive dataEnd`);
             }
             httpRequest.off("dataEnd", callback);
-            httpRequest.requestInStream(XTS_TEST_STREAM_HTTPS_URL, (err: BusinessError) => {
+            httpRequest.requestInStream(XTS_TEST_STREAM_HTTPS_URL,async (err: BusinessError) => {
               if (err) {
                 console.info(`${caseName} request err: ${JSON.stringify(err)}`);
                 ExpectFail();
                 httpRequest.destroy();
                 done();
               } else {
+                await sleep(100);
                 console.info(`${caseName} count: ${count}`);
                 ExpectTrue(count == 1);
                 httpRequest.destroy();
@@ -887,13 +909,14 @@ export default function HttpRequestOffTest() {
               console.info(`${caseName} dataReceiveProgress:${JSON.stringify(data)}`);
             }
             httpRequest.off("dataReceiveProgress", callback);
-            httpRequest.requestInStream(XTS_TEST_STREAM_HTTPS_URL, (err: BusinessError) => {
+            httpRequest.requestInStream(XTS_TEST_STREAM_HTTPS_URL,async (err: BusinessError) => {
               if (err) {
                 console.info(`${caseName} request err: ${JSON.stringify(err)}`);
                 ExpectFail();
                 httpRequest.destroy();
                 done();
               } else {
+                await sleep(100);
                 console.info(`${caseName} count: ${count}`);
                 ExpectTrue(count == 1);
                 httpRequest.destroy();
@@ -942,13 +965,14 @@ export default function HttpRequestOffTest() {
               console.info(`${caseName} dataSendProgress: ${JSON.stringify(data)}`);
             }
             httpRequest.off("dataSendProgress", callback);
-            httpRequest.request(XTS_TEST_HTTP_URL, (err: BusinessError) => {
+            httpRequest.request(XTS_TEST_HTTP_URL,async (err: BusinessError) => {
               if (err) {
                 console.info(`${caseName} request err: ${JSON.stringify(err)}`);
                 ExpectFail();
                 httpRequest.destroy();
                 done();
               } else {
+                await sleep(100);
                 console.info(`${caseName} count: ${count}`);
                 ExpectTrue(count == 1);
                 httpRequest.destroy();
@@ -992,13 +1016,14 @@ export default function HttpRequestOffTest() {
             }
             httpRequest.off("headersReceive", callback);
             httpRequest.on("headersReceive", callback);
-            httpRequest.request(XTS_TEST_HTTP_URL, (err: BusinessError) => {
+            httpRequest.request(XTS_TEST_HTTP_URL,async (err: BusinessError) => {
               if (err) {
                 console.info(`${caseName} request err: ${JSON.stringify(err)}`);
                 ExpectFail();
                 httpRequest.destroy();
                 done();
               } else {
+                await sleep(100);
                 console.info(`${caseName} count: ${count}`);
                 ExpectTrue(count == 2);
                 httpRequest.destroy();
@@ -1042,13 +1067,14 @@ export default function HttpRequestOffTest() {
               count = count + 1;
               console.info(`${caseName} header: ${JSON.stringify(header)}`);
             });
-            httpRequest.request(XTS_TEST_HTTP_URL, (err: BusinessError) => {
+            httpRequest.request(XTS_TEST_HTTP_URL,async (err: BusinessError) => {
               if (err) {
                 console.info(`${caseName} request err: ${JSON.stringify(err)}`);
                 ExpectFail();
                 httpRequest.destroy();
                 done();
               } else {
+                await sleep(100);
                 console.info(`${caseName} count: ${count}`);
                 ExpectTrue(count == 2);
                 httpRequest.destroy();
@@ -1092,13 +1118,14 @@ export default function HttpRequestOffTest() {
               count = count + 1;
               console.info(`${caseName} dataReceive length: ${JSON.stringify(data.byteLength)}`);
             });
-            httpRequest.requestInStream(XTS_TEST_STREAM_HTTPS_URL, (err: BusinessError) => {
+            httpRequest.requestInStream(XTS_TEST_STREAM_HTTPS_URL,async (err: BusinessError) => {
               if (err) {
                 console.info(`${caseName} request err: ${JSON.stringify(err)}`);
                 ExpectFail();
                 httpRequest.destroy();
                 done();
               } else {
+                await sleep(100);
                 console.info(`${caseName} count: ${count}`);
                 ExpectTrue(count == 2);
                 httpRequest.destroy();
@@ -1143,13 +1170,14 @@ export default function HttpRequestOffTest() {
             }
             httpRequest.off("dataReceive", callback);
             httpRequest.on("dataReceive", callback);
-            httpRequest.requestInStream(XTS_TEST_STREAM_HTTPS_URL, (err: BusinessError) => {
+            httpRequest.requestInStream(XTS_TEST_STREAM_HTTPS_URL,async (err: BusinessError) => {
               if (err) {
                 console.info(`${caseName} request err: ${JSON.stringify(err)}`);
                 ExpectFail();
                 httpRequest.destroy();
                 done();
               } else {
+                await sleep(100);
                 console.info(`${caseName} count: ${count}`);
                 ExpectTrue(count == 2);
                 httpRequest.destroy();
@@ -1194,13 +1222,14 @@ export default function HttpRequestOffTest() {
             }
             httpRequest.off("headerReceive", callback);
             httpRequest.on("headerReceive", callback);
-            httpRequest.request(XTS_TEST_HTTP_URL, (err: BusinessError) => {
+            httpRequest.request(XTS_TEST_HTTP_URL,async (err: BusinessError) => {
               if (err) {
                 console.info(`${caseName} request err: ${JSON.stringify(err)}`);
                 ExpectFail();
                 httpRequest.destroy();
                 done();
               } else {
+                await sleep(100);
                 console.info(`${caseName} count: ${count}`);
                 ExpectTrue(count == 2);
                 httpRequest.destroy();
@@ -1244,13 +1273,14 @@ export default function HttpRequestOffTest() {
               count = count + 1;
               console.info(`${caseName} data: ${JSON.stringify(data)}`);
             });
-            httpRequest.request(XTS_TEST_HTTP_URL, (err: BusinessError) => {
+            httpRequest.request(XTS_TEST_HTTP_URL,async (err: BusinessError) => {
               if (err) {
                 console.info(`${caseName} request err: ${JSON.stringify(err)}`);
                 ExpectFail();
                 httpRequest.destroy();
                 done();
               } else {
+                await sleep(100);
                 console.info(`${caseName} count: ${count}`);
                 ExpectTrue(count == 2);
                 httpRequest.destroy();
@@ -1298,13 +1328,14 @@ export default function HttpRequestOffTest() {
               console.info(`${caseName} header: ${JSON.stringify(header)}`);
             });
             httpRequest.off("headersReceive");
-            httpRequest.request(XTS_TEST_HTTP_URL, (err: BusinessError) => {
+            httpRequest.request(XTS_TEST_HTTP_URL,async (err: BusinessError) => {
               if (err) {
                 console.info(`${caseName} request err: ${JSON.stringify(err)}`);
                 ExpectFail();
                 httpRequest.destroy();
                 done();
               } else {
+                await sleep(100);
                 console.info(`${caseName} count: ${count}`);
                 ExpectTrue(count == 2);
                 httpRequest.destroy();
@@ -1348,13 +1379,14 @@ export default function HttpRequestOffTest() {
               console.info(`${caseName} data: ${JSON.stringify(data)}`);
             });
             httpRequest.off("headersReceive");
-            httpRequest.request(XTS_TEST_HTTP_URL, (err: BusinessError) => {
+            httpRequest.request(XTS_TEST_HTTP_URL,async (err: BusinessError) => {
               if (err) {
                 console.info(`${caseName} request err: ${JSON.stringify(err)}`);
                 ExpectFail();
                 httpRequest.destroy();
                 done();
               } else {
+                await sleep(100);
                 console.info(`${caseName} count: ${count}`);
                 ExpectTrue(count == 2);
                 httpRequest.destroy();
@@ -1397,7 +1429,8 @@ export default function HttpRequestOffTest() {
               console.info(`${caseName} header: ${JSON.stringify(header)}`);
             });
             httpRequest.off("headersReceive");
-            httpRequest.request(XTS_TEST_HTTP_URL).then(() => {
+            httpRequest.request(XTS_TEST_HTTP_URL).then(async() => {
+              await sleep(100);
               console.info(`${caseName} count---${count}`);
               ExpectTrue(count == 1);
               httpRequest.destroy();
@@ -1444,7 +1477,8 @@ export default function HttpRequestOffTest() {
             }
             httpRequest.on("headersReceive", callback);
             httpRequest.off("headersReceive", callback);
-            httpRequest.request(XTS_TEST_HTTP_URL).then(() => {
+            httpRequest.request(XTS_TEST_HTTP_URL).then(async() => {
+              await sleep(100);
               console.info(`${caseName} count---${count}`);
               ExpectTrue(count == 1);
               httpRequest.destroy();
@@ -1490,7 +1524,8 @@ export default function HttpRequestOffTest() {
               console.info(`${caseName} Receive dataEnd`);
             });
             httpRequest.off("dataEnd");
-            httpRequest.requestInStream(XTS_TEST_STREAM_HTTPS_URL).then(() => {
+            httpRequest.requestInStream(XTS_TEST_STREAM_HTTPS_URL).then(async() => {
+              await sleep(100);
               console.info(`${caseName} count---${count}`);
               ExpectTrue(count == 1);
               httpRequest.destroy();
@@ -1537,7 +1572,8 @@ export default function HttpRequestOffTest() {
             }
             httpRequest.on("dataEnd", callback);
             httpRequest.off("dataEnd", callback);
-            httpRequest.requestInStream(XTS_TEST_STREAM_HTTPS_URL).then(() => {
+            httpRequest.requestInStream(XTS_TEST_STREAM_HTTPS_URL).then(async() => {
+              await sleep(100);
               console.info(`${caseName} count---${count}`);
               ExpectTrue(count == 1);
               httpRequest.destroy();
@@ -1589,7 +1625,8 @@ export default function HttpRequestOffTest() {
               console.info(`${caseName} dataReceiveProgress: ${JSON.stringify(data)}`);
             });
             httpRequest.off("dataReceiveProgress");
-            httpRequest.request(XTS_TEST_STREAM_HTTPS_URL).then(() => {
+            httpRequest.request(XTS_TEST_STREAM_HTTPS_URL).then(async() => {
+              await sleep(100);
               console.info(`${caseName} count---${count}`);
               ExpectTrue(count == 1);
               httpRequest.destroy();
@@ -1642,7 +1679,8 @@ export default function HttpRequestOffTest() {
             }
             httpRequest.on("dataReceiveProgress", callback);
             httpRequest.off("dataReceiveProgress", callback);
-            httpRequest.requestInStream(XTS_TEST_STREAM_HTTPS_URL).then(() => {
+            httpRequest.requestInStream(XTS_TEST_STREAM_HTTPS_URL).then(async() => {
+              await sleep(100);
               console.info(`${caseName} count---${count}`);
               ExpectTrue(count == 1);
               httpRequest.destroy();
@@ -1694,7 +1732,8 @@ export default function HttpRequestOffTest() {
               console.info(`${caseName} dataSendProgress: ${JSON.stringify(data)}`);
             });
             httpRequest.off("dataSendProgress");
-            httpRequest.request(XTS_TEST_HTTP_URL).then(() => {
+            httpRequest.request(XTS_TEST_HTTP_URL).then(async() => {
+              await sleep(100);
               console.info(`${caseName} count---${count}`);
               ExpectTrue(count == 1);
               httpRequest.destroy();
@@ -1747,7 +1786,8 @@ export default function HttpRequestOffTest() {
             }
             httpRequest.on("dataSendProgress", callback);
             httpRequest.off("dataSendProgress", callback);
-            httpRequest.request(XTS_TEST_HTTP_URL).then(() => {
+            httpRequest.request(XTS_TEST_HTTP_URL).then(async() => {
+              await sleep(100);
               console.info(`${caseName} count---${count}`);
               ExpectTrue(count == 1);
               httpRequest.destroy();
@@ -1794,7 +1834,8 @@ export default function HttpRequestOffTest() {
             }
             httpRequest.on("headerReceive", callback);
             httpRequest.off("headerReceive", callback);
-            httpRequest.request(XTS_TEST_HTTP_URL).then(() => {
+            httpRequest.request(XTS_TEST_HTTP_URL).then(async() => {
+              await sleep(100);
               console.info(`${caseName} count---${count}`);
               ExpectTrue(count == 1);
               httpRequest.destroy();
@@ -1840,7 +1881,8 @@ export default function HttpRequestOffTest() {
               console.info(`${caseName} data: ${JSON.stringify(data)}`);
             });
             httpRequest.off("headerReceive");
-            httpRequest.request(XTS_TEST_HTTP_URL).then(() => {
+            httpRequest.request(XTS_TEST_HTTP_URL).then(async() => {
+              await sleep(100);
               console.info(`${caseName} count---${count}`);
               ExpectTrue(count == 1);
               httpRequest.destroy();
@@ -1886,7 +1928,8 @@ export default function HttpRequestOffTest() {
               console.info(`${caseName} data: ${JSON.stringify(data)}`);
             }
             httpRequest.off("headerReceive", callback);
-            httpRequest.request(XTS_TEST_HTTP_URL).then(() => {
+            httpRequest.request(XTS_TEST_HTTP_URL).then(async() => {
+              await sleep(100);
               console.info(`${caseName} count---${count}`);
               ExpectTrue(count == 1);
               httpRequest.destroy();
@@ -1933,7 +1976,8 @@ export default function HttpRequestOffTest() {
               console.info(`${caseName} header: ${JSON.stringify(header)}`);
             }
             httpRequest.off("headersReceive", callback);
-            httpRequest.requestInStream(XTS_TEST_STREAM_HTTPS_URL).then(() => {
+            httpRequest.requestInStream(XTS_TEST_STREAM_HTTPS_URL).then(async() => {
+              await sleep(100);
               console.info(`${caseName} count---${count}`);
               ExpectTrue(count == 1);
               httpRequest.destroy();
@@ -1980,7 +2024,8 @@ export default function HttpRequestOffTest() {
               console.info(`${caseName} dataReceive length: ${JSON.stringify(data.byteLength)}`);
             }
             httpRequest.off("dataReceive", callback);
-            httpRequest.requestInStream(XTS_TEST_STREAM_HTTPS_URL).then(() => {
+            httpRequest.requestInStream(XTS_TEST_STREAM_HTTPS_URL).then(async() => {
+              await sleep(100);
               console.info(`${caseName} count---${count}`);
               ExpectTrue(count == 1);
               httpRequest.destroy();
@@ -2026,7 +2071,8 @@ export default function HttpRequestOffTest() {
               console.info(`${caseName} Receive dataEnd`);
             }
             httpRequest.off("dataEnd", callback);
-            httpRequest.requestInStream(XTS_TEST_STREAM_HTTPS_URL).then(() => {
+            httpRequest.requestInStream(XTS_TEST_STREAM_HTTPS_URL).then(async() => {
+              await sleep(100);
               console.info(`${caseName} count---${count}`);
               ExpectTrue(count == 1);
               httpRequest.destroy();
@@ -2079,7 +2125,8 @@ export default function HttpRequestOffTest() {
               console.info(`${caseName} dataReceiveProgress:${JSON.stringify(data)}`);
             }
             httpRequest.off("dataReceiveProgress", callback);
-            httpRequest.requestInStream(XTS_TEST_STREAM_HTTPS_URL).then(() => {
+            httpRequest.requestInStream(XTS_TEST_STREAM_HTTPS_URL).then(async() => {
+              await sleep(100);
               console.info(`${caseName} count---${count}`);
               ExpectTrue(count == 1);
               httpRequest.destroy();
@@ -2131,7 +2178,8 @@ export default function HttpRequestOffTest() {
               console.info(`${caseName} dataSendProgress: ${JSON.stringify(data)}`);
             }
             httpRequest.off("dataSendProgress", callback);
-            httpRequest.request(XTS_TEST_HTTP_URL).then(() => {
+            httpRequest.request(XTS_TEST_HTTP_URL).then(async() => {
+              await sleep(100);
               console.info(`${caseName} count---${count}`);
               ExpectTrue(count == 1);
               httpRequest.destroy();
@@ -2178,7 +2226,8 @@ export default function HttpRequestOffTest() {
             }
             httpRequest.off("headersReceive", callback);
             httpRequest.on("headersReceive", callback);
-            httpRequest.request(XTS_TEST_HTTP_URL).then(() => {
+            httpRequest.request(XTS_TEST_HTTP_URL).then(async() => {
+              await sleep(100);
               console.info(`${caseName} count---${count}`);
               ExpectTrue(count == 2);
               httpRequest.destroy();
@@ -2225,7 +2274,8 @@ export default function HttpRequestOffTest() {
               count = count + 1;
               console.info(`${caseName} header: ${JSON.stringify(header)}`);
             });
-            httpRequest.request(XTS_TEST_HTTP_URL).then(() => {
+            httpRequest.request(XTS_TEST_HTTP_URL).then(async() => {
+              await sleep(100);
               console.info(`${caseName} count---${count}`);
               ExpectTrue(count == 2);
               httpRequest.destroy();
@@ -2272,7 +2322,8 @@ export default function HttpRequestOffTest() {
               count = count + 1;
               console.info(`${caseName} dataReceive length: ${JSON.stringify(data.byteLength)}`);
             });
-            httpRequest.requestInStream(XTS_TEST_STREAM_HTTPS_URL).then(() => {
+            httpRequest.requestInStream(XTS_TEST_STREAM_HTTPS_URL).then(async() => {
+              await sleep(100);
               console.info(`${caseName} count---${count}`);
               ExpectTrue(count == 2);
               httpRequest.destroy();
@@ -2319,7 +2370,8 @@ export default function HttpRequestOffTest() {
             }
             httpRequest.off("dataReceive", callback);
             httpRequest.on("dataReceive", callback);
-            httpRequest.requestInStream(XTS_TEST_STREAM_HTTPS_URL).then(() => {
+            httpRequest.requestInStream(XTS_TEST_STREAM_HTTPS_URL).then(async() => {
+              await sleep(100);
               console.info(`${caseName} count---${count}`);
               ExpectTrue(count == 2);
               httpRequest.destroy();
@@ -2369,7 +2421,8 @@ export default function HttpRequestOffTest() {
             }
             httpRequest.off("headerReceive", callback);
             httpRequest.on("headerReceive", callback);
-            httpRequest.request(XTS_TEST_HTTP_URL).then(() => {
+            httpRequest.request(XTS_TEST_HTTP_URL).then(async() => {
+              await sleep(100);
               console.info(`${caseName} count---${count}`);
               ExpectTrue(count == 2);
               httpRequest.destroy();
@@ -2417,7 +2470,8 @@ export default function HttpRequestOffTest() {
               count = count + 1;
               console.info(`${caseName} data: ${JSON.stringify(data)}`);
             });
-            httpRequest.request(XTS_TEST_HTTP_URL).then(() => {
+            httpRequest.request(XTS_TEST_HTTP_URL).then(async() => {
+              await sleep(100);
               console.info(`${caseName} count---${count}`);
               ExpectTrue(count == 2);
               httpRequest.destroy();
@@ -2469,7 +2523,8 @@ export default function HttpRequestOffTest() {
               console.info(`${caseName} header: ${JSON.stringify(header)}`);
             });
             httpRequest.off("headersReceive");
-            httpRequest.request(XTS_TEST_HTTP_URL).then(() => {
+            httpRequest.request(XTS_TEST_HTTP_URL).then(async() => {
+              await sleep(100);
               console.info(`${caseName} count---${count}`);
               ExpectTrue(count == 2);
               httpRequest.destroy();
@@ -2517,7 +2572,8 @@ export default function HttpRequestOffTest() {
               console.info(`${caseName} data: ${JSON.stringify(data)}`);
             });
             httpRequest.off("headersReceive");
-            httpRequest.request(XTS_TEST_HTTP_URL).then(() => {
+            httpRequest.request(XTS_TEST_HTTP_URL).then(async() => {
+              await sleep(100);
               console.info(`${caseName} count---${count}`);
               ExpectTrue(count == 2);
               httpRequest.destroy();
@@ -2565,7 +2621,8 @@ export default function HttpRequestOffTest() {
               console.info(`${caseName} dataReceive length: ${JSON.stringify(data.byteLength)}`);
             });
             httpRequest.off("dataReceive");
-            httpRequest.requestInStream(XTS_TEST_STREAM_HTTPS_URL).then(() => {
+            httpRequest.requestInStream(XTS_TEST_STREAM_HTTPS_URL).then(async() => {
+              await sleep(100);
               console.info(`${caseName} count---${count}`);
               ExpectTrue(count == 1);
               httpRequest.destroy();
@@ -2614,7 +2671,8 @@ export default function HttpRequestOffTest() {
             }
             httpRequest.on("dataReceive", callback);
             httpRequest.off("dataReceive", callback);
-            httpRequest.requestInStream(XTS_TEST_STREAM_HTTPS_URL).then(() => {
+            httpRequest.requestInStream(XTS_TEST_STREAM_HTTPS_URL).then(async() => {
+              await sleep(100);
               console.info(`${caseName} count---${count}`);
               ExpectTrue(count == 1);
               httpRequest.destroy();

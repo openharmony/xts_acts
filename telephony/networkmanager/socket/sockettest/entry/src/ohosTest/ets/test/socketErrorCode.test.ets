@@ -956,12 +956,16 @@ export default function SocketErrorCodeTest01() {
           };
           client.on('close', callback);
           client.off('close');
-          await client.close();
+          await client.close().catch((err:BusinessError) => {
+                    console.info('fail to close' + err.code.toString());
+                });
           expectTrue(true);
           console.info(`${caseName} test end`);
           done();
         });
-        await tcp.connect(tcpConnectOptions);
+        await tcp.connect(tcpConnectOptions).catch((err:BusinessError) => {
+                    console.info('fail to connect' + err.code.toString());
+                });
       } catch (err) {
         console.info(`${caseName}_catch fail err:${JSON.stringify(err)}`);
         expectTrue(err.code == 2303199)

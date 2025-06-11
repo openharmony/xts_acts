@@ -16,7 +16,9 @@
  */
 
 import WebSocketPermissionDeniedTest from './WebSocketPermissionDenied.test';
+import WebSocketServerPermissionDeniedTest from './WebSocketServerPermissionDenied.test'
 
 export default function testsuite() {
   WebSocketPermissionDeniedTest();
+  WebSocketServerPermissionDeniedTest();
 }

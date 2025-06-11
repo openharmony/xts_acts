@@ -30,7 +30,10 @@ import PopupOptionsTest from './PopupTest/PopupApiTest/PopupApiTest.test';
 import DismissReasonTest from './PopupTest/DismissReason.test';
 import DateTimeOptions from './TimePickerDialogTest/DateTimeOptions.test';
 
+import primary from './AlertDialogTest/primary.test';
+
 export default function testsuite() {
+  primary()
   TextPickerDialog();
   DatePickerDialog();
   TimePickerDialog();

@@ -13,6 +13,9 @@
  * limitations under the License.
  */
 import HidebugrawTest from './hidebugraw.test';
+import HidebuggwpasanTest from './HiDeBugGwpAsan.test';
+
 export default function testsuite() {
   HidebugrawTest();
+  HidebuggwpasanTest();
 }

@@ -1641,6 +1641,288 @@ HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectDestroyNull, Function | 
     EXPECT_TRUE(true);
 }
 
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_SHADOW_EFFECT_1000
+ * @tc.name: testShaderEffectCreateSweepGradientWithLocalMatrixNormal
+ * @tc.desc: test for testShaderEffectCreateSweepGradientWithLocalMatrixNormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateSweepGradientWithLocalMatrixNormal,
+    Function | SmallTest | Level0) {
+    OH_Drawing_Point *centerPt = OH_Drawing_PointCreate(200, 200);
+    uint32_t colors[] = {0xFF00FFFF, 0xFFFFFF00};
+    float pos[] = {0.0f, 1.0f}; // 1.0f: gradient color points
+    uint32_t size = 2; // colors' number
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    EXPECT_NE(matrix, nullptr);
+    OH_Drawing_MatrixSetMatrix(matrix, 1, 1, 1, 1, 1, 1, 1, 1, 1);
+    // 1. OH_Drawing_ShaderEffectCreateSweepGradientWithLocalMatrix enumeration traversal and sets the unit matrix.
+    OH_Drawing_ShaderEffect *shaderEffect1 = OH_Drawing_ShaderEffectCreateSweepGradientWithLocalMatrix(
+        centerPt, colors, pos, size, OH_Drawing_TileMode::CLAMP, matrix);
+    EXPECT_NE(shaderEffect1, nullptr);
+    OH_Drawing_ShaderEffect *shaderEffect2 = OH_Drawing_ShaderEffectCreateSweepGradientWithLocalMatrix(
+        centerPt, colors, pos, size, OH_Drawing_TileMode::REPEAT, matrix);
+    EXPECT_NE(shaderEffect2, nullptr);
+    OH_Drawing_ShaderEffect *shaderEffect3 = OH_Drawing_ShaderEffectCreateSweepGradientWithLocalMatrix(
+        centerPt, colors, pos, size, OH_Drawing_TileMode::MIRROR, matrix);
+    EXPECT_NE(shaderEffect3, nullptr);
+    OH_Drawing_ShaderEffect *shaderEffect4 = OH_Drawing_ShaderEffectCreateSweepGradientWithLocalMatrix(
+        centerPt, colors, pos, size, OH_Drawing_TileMode::DECAL, matrix);
+    EXPECT_NE(shaderEffect4, nullptr);
+    // 2. OH_Drawing_ShaderEffectCreateSweepGradientWithLocalMatrix sets the non-identity matrix.
+    OH_Drawing_MatrixSetMatrix(matrix, 1, 2, 3, 4, 5, 6, 7, 8, 9);
+    OH_Drawing_ShaderEffect *shaderEffect5 = OH_Drawing_ShaderEffectCreateSweepGradientWithLocalMatrix(
+        centerPt, colors, pos, size, OH_Drawing_TileMode::CLAMP, matrix);
+    EXPECT_NE(shaderEffect5, nullptr);
+    // 3.The last parameter of the interface passes to nullptr.
+    OH_Drawing_ShaderEffect *shaderEffect6 = OH_Drawing_ShaderEffectCreateSweepGradientWithLocalMatrix(
+        centerPt, colors, pos, size, OH_Drawing_TileMode::CLAMP, nullptr);
+    EXPECT_NE(shaderEffect6, nullptr);
+    // 4. Destroy objects.
+    OH_Drawing_PointDestroy(centerPt);
+    OH_Drawing_MatrixDestroy(matrix);
+    OH_Drawing_ShaderEffectDestroy(shaderEffect1);
+    OH_Drawing_ShaderEffectDestroy(shaderEffect2);
+    OH_Drawing_ShaderEffectDestroy(shaderEffect3);
+    OH_Drawing_ShaderEffectDestroy(shaderEffect4);
+    OH_Drawing_ShaderEffectDestroy(shaderEffect5);
+    OH_Drawing_ShaderEffectDestroy(shaderEffect6);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_SHADOW_EFFECT_1001
+ * @tc.name: testShaderEffectCreateSweepGradientWithLocalMatrixNull
+ * @tc.desc: test for testShaderEffectCreateSweepGradientWithLocalMatrixNull.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateSweepGradientWithLocalMatrixNull,
+    Function | SmallTest | Level3) {
+    OH_Drawing_Point *centerPt1 = OH_Drawing_PointCreate(0, 0);
+    OH_Drawing_Point *centerPt2 = OH_Drawing_PointCreate(200, 200);
+    uint32_t colors[] = {0xFF00FFFF, 0xFFFFFF00};
+    float pos[] = {0.0f, 1.0f}; // 1.0f: gradient color points
+    uint32_t size = 2; // colors' number
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    EXPECT_NE(matrix, nullptr);
+    OH_Drawing_MatrixSetMatrix(matrix, 1, 1, 1, 1, 1, 1, 1, 1, 1);
+    // 1.The first parameter of the interface passes to nullptr.
+    OH_Drawing_ShaderEffect *shaderEffect1 = OH_Drawing_ShaderEffectCreateSweepGradientWithLocalMatrix(
+        nullptr, colors, pos, size, OH_Drawing_TileMode::CLAMP, matrix);
+    EXPECT_EQ(shaderEffect1, nullptr);
+    // 2.The first parameter of the interface passes to 0.
+    OH_Drawing_ShaderEffect *shaderEffect2 = OH_Drawing_ShaderEffectCreateSweepGradientWithLocalMatrix(
+        centerPt1, colors, pos, size, OH_Drawing_TileMode::REPEAT, matrix);
+    EXPECT_NE(shaderEffect2, nullptr);
+    // 3.The second parameter of the interface passes to nullptr.
+    OH_Drawing_ShaderEffect *shaderEffect3 = OH_Drawing_ShaderEffectCreateSweepGradientWithLocalMatrix(
+        centerPt2, nullptr, pos, size, OH_Drawing_TileMode::MIRROR, matrix);
+    EXPECT_EQ(shaderEffect3, nullptr);
+    // 4.The third parameter of the interface passes to nullptr.
+    OH_Drawing_ShaderEffect *shaderEffect4 = OH_Drawing_ShaderEffectCreateSweepGradientWithLocalMatrix(
+        centerPt2, colors, nullptr, size, OH_Drawing_TileMode::DECAL, matrix);
+    EXPECT_NE(shaderEffect4, nullptr);
+    // 5.The forth parameter of the interface passes to nullptr.
+    OH_Drawing_ShaderEffect *shaderEffect5 = OH_Drawing_ShaderEffectCreateSweepGradientWithLocalMatrix(
+        centerPt2, colors, pos, 0, OH_Drawing_TileMode::CLAMP, matrix);
+    EXPECT_NE(shaderEffect5, nullptr);
+    // 6.The last parameter of the interface passes to nullptr.
+    OH_Drawing_ShaderEffect *shaderEffect6 = OH_Drawing_ShaderEffectCreateSweepGradientWithLocalMatrix(
+        centerPt2, colors, pos, size, OH_Drawing_TileMode::CLAMP, nullptr);
+    EXPECT_NE(shaderEffect6, nullptr);
+    // 7. Destroy objects.
+    OH_Drawing_PointDestroy(centerPt1);
+    OH_Drawing_PointDestroy(centerPt2);
+    OH_Drawing_MatrixDestroy(matrix);
+    OH_Drawing_ShaderEffectDestroy(shaderEffect1);
+    OH_Drawing_ShaderEffectDestroy(shaderEffect2);
+    OH_Drawing_ShaderEffectDestroy(shaderEffect3);
+    OH_Drawing_ShaderEffectDestroy(shaderEffect4);
+    OH_Drawing_ShaderEffectDestroy(shaderEffect5);
+    OH_Drawing_ShaderEffectDestroy(shaderEffect6);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_SHADOW_EFFECT_1002
+ * @tc.name: testShaderEffectCreateSweepGradientWithLocalMatrixAbnormal
+ * @tc.desc: test for testShaderEffectCreateSweepGradientWithLocalMatrixAbnormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateSweepGradientWithLocalMatrixAbnormal,
+    Function | SmallTest | Level3) {
+    OH_Drawing_Point *centerPt = OH_Drawing_PointCreate(200, 200);
+    uint32_t colors1[] = {0xFF00FFFF, 0xFFFFFF00};
+    uint32_t colors2[] = {0xFFFFFFFF};
+    float pos1[] = {0.0f, 1.0f}; // 1.0f: gradient color points
+    float pos2[] = {-1.0f}; // -1.0f: gradient color points
+    float pos3[] = {0xFFFFFFFF};
+    uint32_t size = 2; // colors' number
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    EXPECT_NE(matrix, nullptr);
+    OH_Drawing_MatrixSetMatrix(matrix, 1, 1, 1, 1, 1, 1, 1, 1, 1);
+    // 1.The second parameter of the interface passes to maximum value.
+    OH_Drawing_ShaderEffect *shaderEffect1 = OH_Drawing_ShaderEffectCreateSweepGradientWithLocalMatrix(
+        centerPt, colors2, pos1, size, OH_Drawing_TileMode::CLAMP, matrix);
+    EXPECT_NE(shaderEffect1, nullptr);
+    // 2.The third parameter of the interface passes to negative value.
+    OH_Drawing_ShaderEffect *shaderEffect2 = OH_Drawing_ShaderEffectCreateSweepGradientWithLocalMatrix(
+        centerPt, colors1, pos2, size, OH_Drawing_TileMode::REPEAT, matrix);
+    EXPECT_NE(shaderEffect2, nullptr);
+    // 3.The third parameter of the interface passes to maximum value.
+    OH_Drawing_ShaderEffect *shaderEffect3 = OH_Drawing_ShaderEffectCreateSweepGradientWithLocalMatrix(
+        centerPt, colors1, pos3, size, OH_Drawing_TileMode::MIRROR, matrix);
+    EXPECT_NE(shaderEffect3, nullptr);
+    // 4.The fourth parameter of the interface does not match the second parameter.
+    OH_Drawing_ShaderEffect *shaderEffect4 = OH_Drawing_ShaderEffectCreateSweepGradientWithLocalMatrix(
+        centerPt, colors1, pos1, 3, OH_Drawing_TileMode::CLAMP, matrix);
+    EXPECT_NE(shaderEffect4, nullptr);
+    // 5. Destroy objects.
+    OH_Drawing_PointDestroy(centerPt);
+    OH_Drawing_MatrixDestroy(matrix);
+    OH_Drawing_ShaderEffectDestroy(shaderEffect1);
+    OH_Drawing_ShaderEffectDestroy(shaderEffect2);
+    OH_Drawing_ShaderEffectDestroy(shaderEffect3);
+    OH_Drawing_ShaderEffectDestroy(shaderEffect4);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_SHADOW_EFFECT_1003
+ * @tc.name: testShaderEffectCreateSweepGradientWithLocalMatrixMultipleCalls
+ * @tc.desc: test for testShaderEffectCreateSweepGradientWithLocalMatrixMultipleCalls.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateSweepGradientWithLocalMatrixMultipleCalls,
+    Function | SmallTest | Level3) {
+    OH_Drawing_Point *centerPt = OH_Drawing_PointCreate(200, 200);
+    uint32_t colors[] = {0xFF00FFFF, 0xFFFFFF00};
+    float pos[] = {0.0f, 1.0f}; // 1.0f: gradient color points
+    uint32_t size = 2; // colors' number
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    EXPECT_NE(matrix, nullptr);
+    OH_Drawing_MatrixSetMatrix(matrix, 1, 1, 1, 1, 1, 1, 1, 1, 1);
+    // 1.OH_Drawing_ShaderEffectCreateSweepGradientWithLocalMatrix is called multiple times.
+    for (int i = 0; i < 10; i++) {
+        OH_Drawing_ShaderEffect *shaderEffect = OH_Drawing_ShaderEffectCreateSweepGradientWithLocalMatrix(
+            centerPt, colors, pos, size, OH_Drawing_TileMode::CLAMP, matrix);
+        EXPECT_NE(shaderEffect, nullptr);
+        OH_Drawing_ShaderEffectDestroy(shaderEffect);
+    }
+    // 2. Destroy objects.
+    OH_Drawing_PointDestroy(centerPt);
+    OH_Drawing_MatrixDestroy(matrix);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_SHADOW_EFFECT_1100
+ * @tc.name: testShaderEffectCreateComposeEnumTraversal
+ * @tc.desc: test for testShaderEffectCreateComposeEnumTraversal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateComposeEnumTraversal,
+    Function | SmallTest | Level0) {
+    std::vector<OH_Drawing_BlendMode > blendMode = {
+        BLEND_MODE_CLEAR,
+        BLEND_MODE_SRC,
+        BLEND_MODE_DST,
+        BLEND_MODE_SRC_OVER,
+        BLEND_MODE_DST_OVER,
+        BLEND_MODE_SRC_IN,
+        BLEND_MODE_DST_IN,
+        BLEND_MODE_SRC_OUT,
+        BLEND_MODE_DST_OUT,
+        BLEND_MODE_SRC_ATOP,
+        BLEND_MODE_DST_ATOP,
+        BLEND_MODE_XOR,
+        BLEND_MODE_PLUS,
+        BLEND_MODE_MODULATE,
+        BLEND_MODE_SCREEN,
+        BLEND_MODE_OVERLAY,
+        BLEND_MODE_DARKEN,
+        BLEND_MODE_LIGHTEN,
+        BLEND_MODE_COLOR_DODGE,
+        BLEND_MODE_COLOR_BURN,
+        BLEND_MODE_HARD_LIGHT,
+        BLEND_MODE_SOFT_LIGHT,
+        BLEND_MODE_DIFFERENCE,
+        BLEND_MODE_EXCLUSION,
+        BLEND_MODE_MULTIPLY,
+        BLEND_MODE_HUE,
+        BLEND_MODE_SATURATION,
+        BLEND_MODE_COLOR,
+        BLEND_MODE_LUMINOSITY
+    };
+    OH_Drawing_ShaderEffect *src = OH_Drawing_ShaderEffectCreateColorShader(0xFF00FF00);
+    OH_Drawing_ShaderEffect *dst = OH_Drawing_ShaderEffectCreateColorShader(0xFF0000FF);
+    // 1.OH_Drawing_ShaderEffectCreateCompose passes parameters normally and traversals enumeration.
+    for (int i = 0; i < blendMode.size(); i++) {
+        OH_Drawing_ShaderEffect *shaderEffect = OH_Drawing_ShaderEffectCreateCompose(dst, src, blendMode[i]);
+        EXPECT_NE(shaderEffect, nullptr);
+        OH_Drawing_ShaderEffectDestroy(shaderEffect);
+    }
+    // 2. Destroy objects.
+    OH_Drawing_ShaderEffectDestroy(src);
+    OH_Drawing_ShaderEffectDestroy(dst);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_SHADOW_EFFECT_1101
+ * @tc.name: testShaderEffectCreateComposeNull
+ * @tc.desc: test for testShaderEffectCreateComposeNull.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateComposeNull,
+    Function | SmallTest | Level3) {
+    OH_Drawing_ShaderEffect *src = OH_Drawing_ShaderEffectCreateColorShader(0xFF00FF00);
+    OH_Drawing_ShaderEffect *dst = OH_Drawing_ShaderEffectCreateColorShader(0xFF0000FF);
+    // 1. The first parameter of the interface passes to nullptr.
+    OH_Drawing_ShaderEffect *shaderEffect1 =
+        OH_Drawing_ShaderEffectCreateCompose(nullptr, src, OH_Drawing_BlendMode::BLEND_MODE_SRC);
+    EXPECT_EQ(shaderEffect1, nullptr);
+    // 2. The second parameter of the interface passes to nullptr.
+    OH_Drawing_ShaderEffect *shaderEffect2 =
+        OH_Drawing_ShaderEffectCreateCompose(dst, nullptr, OH_Drawing_BlendMode::BLEND_MODE_SRC);
+    EXPECT_EQ(shaderEffect2, nullptr);
+    // 3. Destroy objects.
+    OH_Drawing_ShaderEffectDestroy(src);
+    OH_Drawing_ShaderEffectDestroy(dst);
+    OH_Drawing_ShaderEffectDestroy(shaderEffect1);
+    OH_Drawing_ShaderEffectDestroy(shaderEffect2);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_SHADOW_EFFECT_1102
+ * @tc.name: testShaderEffectCreateComposeMultipleCalls
+ * @tc.desc: test for testShaderEffectCreateComposeMultipleCalls.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateComposeMultipleCalls,
+    Function | SmallTest | Level3) {
+    OH_Drawing_ShaderEffect *src = OH_Drawing_ShaderEffectCreateColorShader(0xFF00FF00);
+    OH_Drawing_ShaderEffect *dst = OH_Drawing_ShaderEffectCreateColorShader(0xFF0000FF);
+    // 1. The interface is called multiple times.
+    for (int i = 0; i < 10; i++) {
+        OH_Drawing_ShaderEffect *shaderEffect =
+        OH_Drawing_ShaderEffectCreateCompose(dst, src, OH_Drawing_BlendMode::BLEND_MODE_SRC);
+        EXPECT_NE(shaderEffect, nullptr);
+        OH_Drawing_ShaderEffectDestroy(shaderEffect);
+    }
+    // 2. Destroy objects.
+    OH_Drawing_ShaderEffectDestroy(src);
+    OH_Drawing_ShaderEffectDestroy(dst);
+}
 } // namespace Drawing
 } // namespace Rosen
 } // namespace OHOS

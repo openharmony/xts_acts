@@ -20,7 +20,7 @@ import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry
 import { getContext } from './common/getContext';
 import systemParameterEnhance from '@ohos.systemParameterEnhance';
 
-let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
+let deviceSupport = systemParameterEnhance.getSync('persist.sys.abilityms.move_ui_ability_to_background_api_enable');
 let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
 let ACTS_CallFunction: commonEvent.CommonEventSubscribeInfo = {
   events: ['0100', '0200', '0300', '0400', '0500', '0600', '0700', '0800', '0900', '1000', '1100', '1200', '1300',
@@ -320,7 +320,7 @@ export default function abilityTest() {
      */
     it('SUB_Ability_AbilityRuntime_UIExtensionStartAbilityForResultAsCaller_0700', Level.LEVEL0, async (done: Function) => {
       await sleep(500);
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }

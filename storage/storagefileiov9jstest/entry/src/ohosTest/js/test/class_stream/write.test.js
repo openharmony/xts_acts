@@ -1230,5 +1230,36 @@ describe('fileIO_fs_stream_write', function () {
       expect(false).assertTrue();
     }
   });
+
+  /**
+     * @tc.number SUB_STORAGE_FILEIO_RANDOMACCESSFILE_WRITE_ASYNC_1400
+     * @tc.name fileIO_randomaccessfile_write_async_014
+     * @tc.desc Test write() interface.
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 0
+     * @tc.require
+     */
+    it('fileIO_randomaccessfile_write_async_014', Level.LEVEL0, async function (done) {
+        let fpath = await nextFileName('fileIO_randomaccessfile_write_async_014');
+
+        try {
+            let randomaccessfile = fileIO.createRandomAccessFileSync(fpath, fileIO.OpenMode.CREATE | fileIO.OpenMode.READ_WRITE);
+            randomaccessfile.write('hello world', function(err, bytesWritten) {
+                console.info('fileIO_randomaccessfile_write_async_014 bytesWritten: ' + bytesWritten);
+                let readerIterator = fileIO.readLinesSync(fpath);
+                for (let it = readerIterator.next(); !it.done; it = readerIterator.next()) {
+                    console.info("fileIO_randomaccessfile_write_async_014 content: " + it.value);
+                    expect(it.value == 'hello world').assertTrue();
+                }
+                randomaccessfile.close();
+                fileIO.unlinkSync(fpath);
+                done();
+            });
+        } catch(err) {
+            console.info('fileIO_randomaccessfile_write_async_014 has failed for ' + err);
+            expect(false).assertTrue();
+        }
+    });
 })
 }
