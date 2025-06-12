@@ -51,14 +51,22 @@
                 "./resource/image/test.webp ->/data/app/el2/100/base/ohos.acts.multimedia.imageSourceNDK/haps/entry_test/files",
                 "./resource/image/all_auxtype.heic ->/data/app/el2/100/base/ohos.acts.multimedia.imageSourceNDK/haps/entry_test/files",
                 "./resource/image/CUVAHdr.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.imageSourceNDK/haps/entry_test/files",
-                "./resource/image/test_exif.png ->/data/app/el2/100/base/ohos.acts.multimedia.imageSourceNDK/haps/entry_test/files"
+                "./resource/image/test_exif.png ->/data/app/el2/100/base/ohos.acts.multimedia.imageSourceNDK/haps/entry_test/files",
+                "./resource/image/test_exif_v2.webp ->/data/app/el2/100/base/ohos.acts.multimedia.imageSourceNDK/haps/entry_test/files",
+                "./resource/image/testExif.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.imageSourceNDK/haps/entry_test/files",
+                "./resource/image/test.ico ->/data/app/el2/100/base/ohos.acts.multimedia.imageSourceNDK/haps/entry_test/files",
+                "./resource/image/food.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.imageSourceNDK/haps/entry_test/files",
+                "./resource/image/food_notHW.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.imageSourceNDK/haps/entry_test/files",
+                "./resource/image/food_notHW2.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.imageSourceNDK/haps/entry_test/files",
+                "./resource/image/test_exif1.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.imageSourceNDK/haps/entry_test/files",
+                "./resource/image/test_exif_v3.heic ->/data/app/el2/100/base/ohos.acts.multimedia.imageSourceNDK/haps/entry_test/files"
             ]
         },
         {
             "type": "ShellKit",
             "run-command": [
                 "hilog -Q pidoff",
-                "chmod 777 /data/app/el2/100/base/ohos.acts.multimedia.imageSourceNDK/haps/entry_test/files/*"
+                "chmod -R 777 /data/app/el2/100/base/ohos.acts.multimedia.imageSourceNDK/haps/entry_test/*"
             ],
             "teardown-command": [
                 "rm -rf /data/app/el2/100/base/ohos.acts.multimedia.imageSourceNDK/*"

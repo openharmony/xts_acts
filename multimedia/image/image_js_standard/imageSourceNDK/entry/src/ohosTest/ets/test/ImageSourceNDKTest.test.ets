@@ -29,6 +29,7 @@ import fs from '@ohos.file.fs';
 const CODE_SUCCESS = 0;
 const CODE_ERROR = -1;
 const PARA_ERROR_CODE = 7700204;
+const ERROR_CODE = 401;
 let uiContext: common.UIAbilityContext;
 const RANGE_AUTO = image.DecodingDynamicRange.AUTO;
 const RANGE_SDR = image.DecodingDynamicRange.SDR;
@@ -38,6 +39,12 @@ let globalPixelMap: image.PixelMap | undefined;
 let globalDecoingOption: image.DecodingOptions | undefined;
 let isSupportHdr: Boolean;
 let isSupportHEIFDecode: boolean;
+let isSupportHEICEncode: boolean;
+
+interface RecordKeyValue {
+    key: image.PropertyKey,
+    value: string
+}
 
 function logger(caseName: string): ESObject {
     return {
@@ -77,6 +84,12 @@ async function getFd(fileName: string): Promise<(string | number)[]> {
         console.info("image getFd " + error);
     }
     return [filePath!, fdNumber!];
+}
+
+function getFdFilesDir (fileName: string) {
+    const uri: string = uiContext.filesDir + "/" + fileName;
+    const file: fs.File = fs.openSync(uri, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    return file.fd;
 }
 
 function checkNdkRes(res: ESObject) {
@@ -387,6 +400,174 @@ async function testGetPixelMapForColorSpace(done: Function, testNum: string, pic
     done();
 }
 
+function testCreatePackOptions (format: string, quality: number, needsPackProperties: boolean) {
+    let packOpt: image.PackingOption = mdkTest.CreatePackingOptions();
+    mdkTest.SetMimeTypeToTestPackingOptions(packOpt, format);
+    mdkTest.SetQualityToTestPackingOptions(packOpt, quality);
+    mdkTest.SetNeedsPackPropertiesToTestPackingOptions(packOpt, needsPackProperties);
+    return packOpt;
+}
+
+async function checkMakerNoteInfo(done: Function, testNum: string, imageSource: image.ImageSource, prop: RecordKeyValue) {
+    let log: ESObject = logger(testNum);
+    try {
+    let makerNote: string | number = mdkTest.GetMakerNoteImageProperty(imageSource, prop.key);
+    if (makerNote != undefined && typeof(makerNote) != "number") {
+        if (prop.value == "HW") {
+            expect(makerNote == "HwMnoteCaptureMode:0").assertTrue();
+        } else {
+            expect(makerNote == prop.value).assertTrue();
+        }
+        log.log("get imageSource MaterNote: " + makerNote);
+    }
+    log.log("checkMakerNoteInfo successfully");
+    } catch (error) {
+        log.log("getImageProperty error: " + error);
+        expect(false).assertTrue();
+        done();
+    }
+}
+
+async function imagePackerPackToFile(done: Function, testNum: string, fd: number, packOpts: image.PackingOption,
+    writeFd: number) {
+    let log: ESObject = logger(testNum);
+    try {
+        let opts: image.DecodingOptions = mdkTest.createDecodingOptions();
+        if (opts == undefined) {
+            log.log('Failed to create DecodingOptions.');
+            expect(false).assertTrue();
+            done();
+        }
+        let pixelMap: image.PixelMap = mdkTest.createPixelmap(fd, opts);
+        if (pixelMap == undefined) {
+            log.log('Failed to create PixelMap.');
+            expect(false).assertTrue();
+            done();
+        }
+        let errorCode: number = mdkTest.testPackPixelMapToFile(pixelMap, packOpts, writeFd);
+        expect(errorCode == CODE_SUCCESS).assertTrue();
+        log.log("ImagePacker PackToFile success.");
+        mdkTest.releaseDecodingOptions(opts);
+        mdkTest.releasePixelMap(pixelMap);
+    } catch (error) {
+        log.log("testPackPixelMapToFile error: " + error);
+        expect(false).assertFail();
+        done();
+    }
+}
+
+async function testModifyMakerNoteImageProperty(done :Function, testNum: string, picName: string,
+    prop: RecordKeyValue, isEncoding: boolean, packOpts?: image.PackingOption, writeFd?: number) {
+        let log: ESObject = logger(testNum);
+    try {
+        let fd: number = getFdFilesDir(picName);
+        let imageSource: image.ImageSource = mdkTest.createImageSource(fd);
+        if (imageSource == undefined) {
+            log.log('create image source failed.');
+            expect(false).assertTrue();
+            done();
+        }
+        let errCode: number = mdkTest.ModifyMakerNoteImageProperty(imageSource, prop.key, prop.value);
+        if (errCode != CODE_SUCCESS) {
+            log.log('Failed to modify image property.');
+            expect(false).assertTrue();
+            done();
+        }
+        if (isEncoding && writeFd != undefined && packOpts != undefined) {
+            await imagePackerPackToFile(done, testNum, fd, packOpts, writeFd);
+            let imageSourceApi: image.ImageSource = mdkTest.createImageSource(writeFd);
+            await checkMakerNoteInfo(done, testNum, imageSourceApi, prop);
+            if (imageSourceApi != undefined) {
+                mdkTest.releaseImageSource(imageSourceApi);
+                log.log("releaseImageSource successfully");
+            }
+        } else {
+            await checkMakerNoteInfo(done, testNum, imageSource, prop);
+        }
+        [fd, writeFd].forEach((descriptor) => {
+            if (descriptor != undefined) {
+                fileio.closeSync(descriptor);
+            }
+        });
+        if (imageSource != undefined) {
+            mdkTest.releaseImageSource(imageSource);
+            log.log("releaseImageSource successfully");
+        }
+        done();
+    } catch (error) {
+        log.log("testModifyMakerNoteImageProperty error: " + error);
+        expect(false).assertTrue();
+        done();
+    }
+}
+
+async function testModifyMakerNoteImagePropertyErr(done :Function, testNum: string, picName: string, prop: RecordKeyValue) {
+    let log: ESObject = logger(testNum);
+    try {
+        let fd: number = getFdFilesDir(picName);
+        let imageSource: image.ImageSource = mdkTest.createImageSource(fd);
+        if (imageSource == undefined) {
+            log.log('create image source failed.');
+            expect(false).assertTrue();
+            done();
+        }
+        let errCode: number = mdkTest.ModifyMakerNoteImageProperty(imageSource, prop.key, prop.value);
+        if (errCode == ERROR_CODE) {
+            log.log('ModifyMakerNoteImageProperty promise: ' + errCode);
+            expect(errCode == ERROR_CODE).assertTrue();
+        } else {
+            log.log('ModifyMakerNoteImageProperty error: ' + errCode);
+            expect(false).assertTrue();
+        }
+        if (fd != undefined) {
+            fs.closeSync(fd);
+        }
+        if (imageSource != undefined) {
+            mdkTest.releaseImageSource(imageSource);
+            log.log("releaseImageSource successfully");
+        }
+        done();
+    } catch (error) {
+        log.log("testModifyMakerNoteImageProperty error: " + error);
+        expect(false).assertTrue();
+        done();
+    }
+}
+
+async function testGetMakerNoteImagePropertyErr(done :Function, testNum: string, picName: string) {
+    let log: ESObject = logger(testNum);
+    try {
+        let fd: number = getFdFilesDir(picName);
+        let imageSource: image.ImageSource = mdkTest.createImageSource(fd);
+        if (imageSource == undefined) {
+            log.log('create image source failed.');
+            expect(false).assertTrue();
+            done();
+        }
+        let makerNote: string | number = mdkTest.GetMakerNoteImageProperty(imageSource, image.PropertyKey.MAKER_NOTE);
+        if (makerNote != undefined && typeof(makerNote) == "number") {
+            log.log('GetMakerNoteImageProperty promise: ' + makerNote);
+            expect(makerNote == ERROR_CODE).assertTrue();
+            done();
+        } else {
+            log.log('GetMakerNoteImageProperty promise: ' + makerNote);
+            expect(false).assertTrue();
+        }
+        if (fd != undefined) {
+            fs.closeSync(fd);
+        }
+        if (imageSource != undefined) {
+            mdkTest.releaseImageSource(imageSource);
+            log.log("releaseImageSource successfully");
+        }
+        done();
+    } catch (error) {
+        log.log("testGetMakerNoteImagePropertyErr error: " + error);
+        expect(false).assertTrue();
+        done();
+    }
+}
+
 export default function ImageSourceNDKTest() {
     describe('ImageSourceNDKTest', () => {
         beforeAll(async () => {
@@ -395,6 +576,7 @@ export default function ImageSourceNDKTest() {
                 image.createImageSource(uiContext.filesDir + '/' + "test.jpg").supportedFormats.includes("image/heic");
             isSupportHdr = !display.getDefaultDisplaySync().hdrFormats.includes(hdrCapability.HDRFormat.NONE) &&
                 display.getDefaultDisplaySync().hdrFormats.length != 0;
+            isSupportHEICEncode = image.createImagePacker().supportedFormats.includes("image/heic");
             console.info('beforeAll case');
         });
         beforeEach(() => {
@@ -2786,6 +2968,486 @@ export default function ImageSourceNDKTest() {
             log.log("Failed to set DecodingOpt nullPtr. errorCode : " + errorCode);
             expect(errorCode == PARA_ERROR_CODE).assertTrue();
             done();
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MODIFY_MAKERNOTE_PROPERTY_0100
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MODIFY_MAKERNOTE_PROPERTY_0100
+         * @tc.desc      : test Modify Maker Note Image Property, get Maker Note Image Property
+         *                 1.create imageSource
+         *                 2.call ModifyMakerNoteImageProperty, GetMakerNoteImageProperty
+         *                 3.Use test_exif.jpg format images
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MODIFY_MAKERNOTE_PROPERTY_0100',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+            let writeFd: number = getFdFilesDir("test_makernote_XXX.jpeg");
+            let packOpts: image.PackingOption = testCreatePackOptions("image/jpeg", 98, true);
+
+            let prop: RecordKeyValue = {
+                key: image.PropertyKey.MAKER_NOTE, value: "XXX"
+            };
+            await testModifyMakerNoteImageProperty(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MODIFY_MAKERNOTE_PROPERTY_0100",
+                "test_exif.jpg", prop, true, packOpts, writeFd);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MODIFY_MAKERNOTE_PROPERTY_0200
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MODIFY_MAKERNOTE_PROPERTY_0200
+         * @tc.desc      : test Modify Maker Note Image Property, get Maker Note Image Property
+         *                 1.create imagesource
+         *                 2.call ModifyMakerNoteImageProperty, GetMakerNoteImageProperty
+         *                 3.Use test_exif_v3.heic format images
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MODIFY_MAKERNOTE_PROPERTY_0200",
+          TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+          if (!isSupportHEIFDecode || !isSupportHEICEncode) {
+            if (!isSupportHEIFDecode) {
+              console.info(`SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MODIFY_MAKERNOTE_PROPERTY_0200 device is not support heif decode`);
+            } else {
+              console.info(`SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MODIFY_MAKERNOTE_PROPERTY_0200 device is not support heic encode`);
+            }
+            expect(true).assertTrue();
+            done();
+          } else {
+            let writeFd: number = getFdFilesDir("test_makernote_heic.heic");
+            let packOpts: image.PackingOption = testCreatePackOptions("image/heic", 98, true);
+      
+            let prop: RecordKeyValue = {
+              key: image.PropertyKey.MAKER_NOTE, value: "XXXXXXXXXXXXXX"
+            };
+            await testModifyMakerNoteImageProperty(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MODIFY_MAKERNOTE_PROPERTY_0200",
+              "test_exif_v3.heic", prop, true, packOpts, writeFd);
+          }
+        });
+    
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MODIFY_MAKERNOTE_PROPERTY_0300
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MODIFY_MAKERNOTE_PROPERTY_0300
+         * @tc.desc      : test Modify Maker Note Image Property, get Maker Note Image Property
+         *                 1.create imagesource
+         *                 2.call ModifyMakerNoteImageProperty, GetMakerNoteImageProperty
+         *                 3.Use test_exif.png format images
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MODIFY_MAKERNOTE_PROPERTY_0300",
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done :Function) => {
+            let writeFd: number = getFdFilesDir("test_makernote_png.png");
+            let packOpts: image.PackingOption = testCreatePackOptions("image/png", 98, true);
+        
+            let prop: RecordKeyValue = {
+                key: image.PropertyKey.MAKER_NOTE, value: "123456789"
+            };
+            await testModifyMakerNoteImageProperty(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MODIFY_MAKERNOTE_PROPERTY_0300",
+                "test_exif.png", prop, true, packOpts, writeFd);
+        });
+    
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MODIFY_MAKERNOTE_PROPERTY_0400
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MODIFY_MAKERNOTE_PROPERTY_0400
+         * @tc.desc      : test Modify Maker Note Image Property, get Maker Note Image Property
+         *                 1.create imagesource
+         *                 2.call ModifyMakerNoteImageProperty, GetMakerNoteImageProperty
+         *                 3.Use test_exif_v2.webp format images
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MODIFY_MAKERNOTE_PROPERTY_0400",
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done :Function) => {
+            let prop: RecordKeyValue = {
+                key: image.PropertyKey.MAKER_NOTE, value: "!@#$%^&*()"
+            };
+            await testModifyMakerNoteImageProperty(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MODIFY_MAKERNOTE_PROPERTY_0400",
+                "test_exif_v2.webp", prop, false);
+        });
+    
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MODIFY_MAKERNOTE_PROPERTY_0500
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MODIFY_MAKERNOTE_PROPERTY_0500
+         * @tc.desc      : test Modify Maker Note Image Property, get Maker Note Image Property
+         *                 1.create imagesource
+         *                 2.call ModifyMakerNoteImageProperty, GetMakerNoteImageProperty
+         *                 3.Use test_dng.dng format images
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MODIFY_MAKERNOTE_PROPERTY_0500",
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done :Function) => {
+            let prop: RecordKeyValue = {
+                key: image.PropertyKey.MAKER_NOTE, value: "manufacturer_information"
+            };
+            await testModifyMakerNoteImageProperty(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MODIFY_MAKERNOTE_PROPERTY_0500",
+                "test_dng.dng", prop, false);
+        });
+    
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MODIFY_MAKERNOTE_PROPERTY_0600
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MODIFY_MAKERNOTE_PROPERTY_0600
+         * @tc.desc      : test Modify Maker Note Image Property, get Maker Note Image Property
+         *                 1.create imagesource
+         *                 2.call ModifyMakerNoteImageProperty, GetMakerNoteImageProperty
+         *                 3.Use test.jpg format images
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MODIFY_MAKERNOTE_PROPERTY_0600",
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+            let prop: RecordKeyValue = {
+                key: image.PropertyKey.MAKER_NOTE, value: "QWERTYUIOP"
+            };
+            await testModifyMakerNoteImageProperty(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MODIFY_MAKERNOTE_PROPERTY_0600",
+                "test.jpg", prop, false);
+        });
+    
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MODIFY_MAKERNOTE_PROPERTY_0700
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MODIFY_MAKERNOTE_PROPERTY_0700
+         * @tc.desc      : test get Maker Note Image Property
+         *                 1.create imagesource
+         *                 2.call GetMakerNoteImageProperty
+         *                 3.Use food.jpg format images
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MODIFY_MAKERNOTE_PROPERTY_0700",
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+            let log: ESObject = logger("SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MODIFY_MAKERNOTE_PROPERTY_0700");
+            let writeFd: number = getFdFilesDir("food.jpg");
+            let imageSourceApi: image.ImageSource = mdkTest.createImageSource(writeFd);
+            fs.closeSync(writeFd!!);
+            let makerNote: string | number = mdkTest.GetMakerNoteImageProperty(imageSourceApi, image.PropertyKey.MAKER_NOTE);
+            if (makerNote != undefined && typeof(makerNote) != "number") {
+                log.log('GetMakerNoteImageProperty promise: ' + makerNote);
+                if (imageSourceApi != undefined) {
+                    mdkTest.releaseImageSource(imageSourceApi);
+                }
+                expect(true).assertTrue();
+                done();
+            } else {
+                log.log('GetMakerNoteImageProperty error: ' + makerNote);
+                if (imageSourceApi != undefined) {
+                    mdkTest.releaseImageSource(imageSourceApi);
+                }
+                expect(false).assertTrue();
+                done();
+            }
+        });
+    
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MODIFY_MAKERNOTE_PROPERTY_0800
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MODIFY_MAKERNOTE_PROPERTY_0800
+         * @tc.desc      : test Modify Maker Note Image Property, get Maker Note Image Property
+         *                 1.create imagesource
+         *                 2.call ModifyMakerNoteImageProperty, GetMakerNoteImageProperty
+         *                 3.Use food.jpg format images
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MODIFY_MAKERNOTE_PROPERTY_0800",
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+            let prop: RecordKeyValue = {
+                key: image.PropertyKey.MAKER_NOTE, value: "QWE!@#123"
+            };
+            await testModifyMakerNoteImageProperty(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MODIFY_MAKERNOTE_PROPERTY_0800",
+                "food.jpg", prop, false);
+        });
+    
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MODIFY_MAKERNOTE_PROPERTY_0900
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MODIFY_MAKERNOTE_PROPERTY_0900
+         * @tc.desc      : test Modify Maker Note Image Property, get Maker Note Image Property
+         *                 1.create imagesource
+         *                 2.call ModifyMakerNoteImageProperty, GetMakerNoteImageProperty
+         *                 3.Use food_notHW.jpg format images
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MODIFY_MAKERNOTE_PROPERTY_0900",
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+            let prop: RecordKeyValue = {
+                key: image.PropertyKey.MAKER_NOTE, value: "123456"
+            };
+            await testModifyMakerNoteImageProperty(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MODIFY_MAKERNOTE_PROPERTY_0900",
+                "food_notHW.jpg", prop, false);
+        });
+    
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MODIFY_MAKERNOTE_PROPERTY_1000
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MODIFY_MAKERNOTE_PROPERTY_1000
+         * @tc.desc      : test Modify Maker Note Image Property, get Maker Note Image Property
+         *                 1.create imagesource
+         *                 2.call ModifyMakerNoteImageProperty, GetMakerNoteImageProperty
+         *                 3.Use food_notHW.jpg format images
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MODIFY_MAKERNOTE_PROPERTY_1000",
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+            let prop: RecordKeyValue = {
+                key: image.PropertyKey.MAKER_NOTE, value: "HW"
+            };
+            await testModifyMakerNoteImageProperty(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MODIFY_MAKERNOTE_PROPERTY_1000",
+                "food_notHW.jpg", prop, false);
+        });
+    
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MODIFY_MAKERNOTE_PROPERTY_1100
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MODIFY_MAKERNOTE_PROPERTY_1100
+         * @tc.desc      : test Modify Maker Note Image Property
+         *                 1.create imagesource
+         *                 2.call ModifyMakerNoteImageProperty
+         *                 3.test_exif.jpg write characters longer than 64*1024
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MODIFY_MAKERNOTE_PROPERTY_1100",
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+            let str: string = new Array(64*1024-1).fill('A').join('');
+            str = str.substring(0, 64*1024-1).padEnd(64*1024-1, 'Hello World');
+            let prop: RecordKeyValue = {
+                key: image.PropertyKey.MAKER_NOTE, value: str
+            };
+            await testModifyMakerNoteImageProperty(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MODIFY_MAKERNOTE_PROPERTY_1100",
+                "test_exif.png", prop, false);
+        });
+    
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_SOURCENDK_MODIFY_MAKERNOTE_PROPERTY_ERR_0100
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCENDK_MODIFY_MAKERNOTE_PROPERTY_ERR_0100
+         * @tc.desc      : test Modify Maker Note Image Property
+         *                 1.create imagesource
+         *                 2.call ModifyMakerNoteImageProperty
+         *                 3.Use test.bmp format images
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_SOURCENDK_MODIFY_MAKERNOTE_PROPERTY_ERR_0100",
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+            let prop: RecordKeyValue = {
+                key: image.PropertyKey.MAKER_NOTE, value: "123456789"
+            };
+            await testModifyMakerNoteImagePropertyErr(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_MODIFY_MAKERNOTE_PROPERTY_ERR_0100",
+                "test.bmp", prop);
+        });
+    
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_SOURCENDK_MODIFY_MAKERNOTE_PROPERTY_ERR_0200
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCENDK_MODIFY_MAKERNOTE_PROPERTY_ERR_0200
+         * @tc.desc      : test Modify Maker Note Image Property
+         *                 1.create imagesource
+         *                 2.call ModifyMakerNoteImageProperty
+         *                 3.Use moving_test.gif format images
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_SOURCENDK_MODIFY_MAKERNOTE_PROPERTY_ERR_0200",
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+            let prop: RecordKeyValue = {
+                key: image.PropertyKey.MAKER_NOTE, value: "123456789"
+            };
+            await testModifyMakerNoteImagePropertyErr(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_MODIFY_MAKERNOTE_PROPERTY_ERR_0200",
+                "moving_test.gif", prop);
+        });
+    
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_SOURCENDK_MODIFY_MAKERNOTE_PROPERTY_ERR_0300
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCENDK_MODIFY_MAKERNOTE_PROPERTY_ERR_0300
+         * @tc.desc      : test Modify Maker Note Image Property
+         *                 1.create imagesource
+         *                 2.call ModifyMakerNoteImageProperty
+         *                 3.Use test.ico format images
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_SOURCENDK_MODIFY_MAKERNOTE_PROPERTY_ERR_0300",
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+            let prop: RecordKeyValue = {
+                key: image.PropertyKey.MAKER_NOTE, value: "123456789"
+            };
+            await testModifyMakerNoteImagePropertyErr(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_MODIFY_MAKERNOTE_PROPERTY_ERR_0300",
+                "test.ico", prop);
+        });
+    
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_SOURCENDK_MODIFY_MAKERNOTE_PROPERTY_ERR_0400
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCENDK_MODIFY_MAKERNOTE_PROPERTY_ERR_0400
+         * @tc.desc      : test Modify Maker Note Image Property
+         *                 1.create imagesource
+         *                 2.call ModifyMakerNoteImageProperty
+         *                 3.Use test_large.svg format images
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_SOURCENDK_MODIFY_MAKERNOTE_PROPERTY_ERR_0400",
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+            let prop: RecordKeyValue = {
+                key: image.PropertyKey.MAKER_NOTE, value: "123456789"
+            };
+            await testModifyMakerNoteImagePropertyErr(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_MODIFY_MAKERNOTE_PROPERTY_ERR_0400",
+                "test_large.svg", prop);
+        });
+    
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_SOURCENDK_MODIFY_MAKERNOTE_PROPERTY_ERR_0500
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCENDK_MODIFY_MAKERNOTE_PROPERTY_ERR_0500
+         * @tc.desc      : test Modify Maker Note Image Property
+         *                 1.create imagesource
+         *                 2.call ModifyMakerNoteImageProperty
+         *                 3.test_exif.jpg write characters that are less than or equal to 0
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_SOURCENDK_MODIFY_MAKERNOTE_PROPERTY_ERR_0500",
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+            let prop: RecordKeyValue = {
+                key: image.PropertyKey.MAKER_NOTE, value: ""
+            };
+            await testModifyMakerNoteImagePropertyErr(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_MODIFY_MAKERNOTE_PROPERTY_ERR_0500",
+                "test_exif.jpg", prop);
+        });
+    
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_SOURCENDK_MODIFY_MAKERNOTE_PROPERTY_ERR_0600
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCENDK_MODIFY_MAKERNOTE_PROPERTY_ERR_0600
+         * @tc.desc      : test Modify Maker Note Image Property
+         *                 1.create imagesource
+         *                 2.call ModifyMakerNoteImageProperty
+         *                 3.test_exif.jpg write characters longer than 64*1024
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_SOURCENDK_MODIFY_MAKERNOTE_PROPERTY_ERR_0600",
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+            let str: string = new Array(64*1024).fill('A').join('');
+            str = str.substring(0, 64*1024).padEnd(64*1024, 'Hello World');
+            let prop: RecordKeyValue = {
+                key: image.PropertyKey.MAKER_NOTE, value: str
+            };
+            await testModifyMakerNoteImagePropertyErr(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_MODIFY_MAKERNOTE_PROPERTY_ERR_0600",
+                "test_exif.jpg", prop);
+        });
+    
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MAKERNOTE_PROPERTY_ERR_0700
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MAKERNOTE_PROPERTY_ERR_0700
+         * @tc.desc      : test Get Maker Note Image Property
+         *                 1.create imagesource
+         *                 2.call GetMakerNoteImageProperty
+         *                 3.Use test.bmp format images
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MAKERNOTE_PROPERTY_ERR_0700",
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+            await testGetMakerNoteImagePropertyErr(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MAKERNOTE_PROPERTY_ERR_0700",
+                "test.bmp");
+        });
+    
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MAKERNOTE_PROPERTY_ERR_0800
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MAKERNOTE_PROPERTY_ERR_0800
+         * @tc.desc      : test Get Maker Note Image Property
+         *                 1.create imagesource
+         *                 2.call GetMakerNoteImageProperty
+         *                 3.Use moving_test.gif format images
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MAKERNOTE_PROPERTY_ERR_0800",
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+            await testGetMakerNoteImagePropertyErr(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MAKERNOTE_PROPERTY_ERR_0800",
+                "moving_test.gif");
+        });
+    
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MAKERNOTE_PROPERTY_ERR_0900
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MAKERNOTE_PROPERTY_ERR_0900
+         * @tc.desc      : test Get Maker Note Image Property
+         *                 1.create imagesource
+         *                 2.call GetMakerNoteImageProperty
+         *                 3.Use test.ico format images
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MAKERNOTE_PROPERTY_ERR_0900",
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+            await testGetMakerNoteImagePropertyErr(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MAKERNOTE_PROPERTY_ERR_0900",
+                "test.ico");
+        });
+    
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MAKERNOTE_PROPERTY_ERR_1000
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MAKERNOTE_PROPERTY_ERR_1000
+         * @tc.desc      : test Get Maker Note Image Property
+         *                 1.create imagesource
+         *                 2.call GetMakerNoteImageProperty
+         *                 3.Use test_large.svg format images
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MAKERNOTE_PROPERTY_ERR_1000",
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+            await testGetMakerNoteImagePropertyErr(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MAKERNOTE_PROPERTY_ERR_1000",
+                "test_large.svg");
+        });
+    
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MAKERNOTE_PROPERTY_ERR_1100
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MAKERNOTE_PROPERTY_ERR_1100
+         * @tc.desc      : test get Maker Note Image Property
+         *                 1.create imagesource
+         *                 2.call GetMakerNoteImageProperty
+         *                 3.testExif.jpg no makernote info
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MAKERNOTE_PROPERTY_ERR_1100",
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+            await testGetMakerNoteImagePropertyErr(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MAKERNOTE_PROPERTY_ERR_1100",
+                "testExif.jpg");
+        });
+    
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MAKERNOTE_PROPERTY_ERR_1200
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MAKERNOTE_PROPERTY_ERR_1200
+         * @tc.desc      : test get Maker Note Image Property
+         *                 1.create imagesource
+         *                 2.call GetMakerNoteImageProperty
+         *                 3.food_notHW2.jpg
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MAKERNOTE_PROPERTY_ERR_1200",
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+            await testGetMakerNoteImagePropertyErr(done, "SUB_MULTIMEDIA_IMAGE_SOURCENDK_GET_MAKERNOTE_PROPERTY_ERR_1200",
+                "food_notHW2.jpg");
         });
     })
 }

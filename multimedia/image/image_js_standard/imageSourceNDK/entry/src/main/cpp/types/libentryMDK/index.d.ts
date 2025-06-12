@@ -32,3 +32,12 @@ export const createPixelmap: (fd: number, opts: image.DecodingOptions) => image.
 export const releaseImageSource: (imageSource: image.ImageSource) => number;
 export const releaseDecodingOptions: (opts: image.DecodingOptions) => number;
 export const releasePixelMap: (pixelMap: image.PixelMap) => number;
+export const ModifyMakerNoteImageProperty: (imageSource: image.ImageSource, key: image.PropertyKey,
+    value: string) => number;
+export const GetMakerNoteImageProperty: (imageSource: image.ImageSource, key: image.PropertyKey) => string | number;
+export const testPackPixelMapToFile: (pixelMap: image.PixelMap, packOpts: image.PackingOption,
+    writeFd: number) => number;
+export const SetMimeTypeToTestPackingOptions: (packing: image.PackingOption, format: string) => void;
+export const SetQualityToTestPackingOptions: (packing: image.PackingOption, quality: number) => void;
+export const SetNeedsPackPropertiesToTestPackingOptions: (packing: image.PackingOption, needpackExif: boolean) => void;
+export const CreatePackingOptions: () => image.PackingOption;

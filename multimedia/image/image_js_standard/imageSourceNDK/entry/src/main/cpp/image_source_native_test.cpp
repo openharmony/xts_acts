@@ -18,6 +18,7 @@
 #include <map>
 #include <uv.h>
 #include <cstddef>
+#include <cstdint>
 #include "node_api.h"
 #include "hilog/log.h"
 #include "image_source_native_test.h"
@@ -33,6 +34,24 @@ static constexpr uint32_t NUM_0 = 0;
 static constexpr uint32_t NUM_1 = 1;
 static constexpr uint32_t NUM_2 = 2;
 static constexpr uint32_t NUM_3 = 3;
+static constexpr uint32_t MAX_STRING_SIZE = 128;
+static constexpr uint32_t MAKER_NOTE_SIZE_MAX = 64 * 1024;
+
+const unsigned char INIT_HW_DATA[] = {
+    0x48, 0x55, 0x41, 0x57, 0x45, 0x49, 0x00, 0x00, // Offset 0x06: "HWEI" (Industry standard identifier, 已更改为通用描述)
+    //order_offset = 6+8
+    0x4D, 0x4D,                          // Offset 0x0E: "MM" (Motorola 字节序，大端序)
+    0x00, 0x2A,                          // Offset 0x10: 固定值 0x002A (TIFF 文件标志)
+    0x00, 0x00, 0x00, 0x08,              // Offset 0x12: 偏移量 0x08 (指向 IFD 的起始位置)
+    //ifd_data_offset = 6+8+8
+    0x00, 0x01,                          // Offset 0x16: IFD 条目数量 (1 个条目)
+    0x02, 0x00,                          // Offset 0x18: 条目 1 的 Tag = 0x0200
+    0x00, 0x04,                          // Offset 0x1A: 条目 1 的 Format = 4 (LONG 类型)
+    0x00, 0x00, 0x00, 0x01,              // Offset 0x1C: 条目 1 的 Components = 1 (1 个组件)
+    0x00, 0x00, 0x00, 0x00,              // Offset 0x20: 条目 1 的数据偏移量或值 (此处为 0)
+    0x00, 0x00, 0x00, 0x00,              // Offset 0x24: 填充字节（保留字段或对齐用）
+    0x00, 0x00, 0x00, 0x00               // Offset 0x28: 填充字节（保留字段或对齐用）
+};
 
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
@@ -92,6 +111,34 @@ static napi_value Init(napi_env env, napi_value exports)
         },
         {
             "releasePixelMap", nullptr, ImageSourceTest::releasePixelMap,
+            nullptr, nullptr, nullptr, napi_static, nullptr
+        },
+        {
+            "ModifyMakerNoteImageProperty", nullptr, ImageSourceTest::ModifyMakerNoteImageProperty,
+            nullptr, nullptr, nullptr, napi_static, nullptr
+        },
+        {
+            "GetMakerNoteImageProperty", nullptr, ImageSourceTest::GetMakerNoteImageProperty,
+            nullptr, nullptr, nullptr, napi_static, nullptr
+        },
+        {
+            "testPackPixelMapToFile", nullptr, ImageSourceTest::testPackPixelMapToFile,
+            nullptr, nullptr, nullptr, napi_static, nullptr
+        },
+        {
+            "SetMimeTypeToTestPackingOptions", nullptr, ImageSourceTest::SetMimeTypeToTestPackingOptions,
+            nullptr, nullptr, nullptr, napi_static, nullptr
+        },
+        {
+            "SetQualityToTestPackingOptions", nullptr, ImageSourceTest::SetQualityToTestPackingOptions,
+            nullptr, nullptr, nullptr, napi_static, nullptr
+        },
+        {
+            "SetNeedsPackPropertiesToTestPackingOptions", nullptr,
+            ImageSourceTest::SetNeedsPackPropertiesToTestPackingOptions, nullptr, nullptr, nullptr, napi_static, nullptr
+        },
+        {
+            "CreatePackingOptions", nullptr, ImageSourceTest::CreatePackingOptions,
             nullptr, nullptr, nullptr, napi_static, nullptr
         }
     };
@@ -530,6 +577,260 @@ napi_value ImageSourceTest::releasePixelMap(napi_env env, napi_callback_info inf
         return result;
     }
     napi_create_int32(env, IMAGE_SUCCESS, &result);
+    return result;
+}
+
+OH_ImageSourceNative* GetImageSourceFromArgs(napi_env env, napi_value arg)
+{
+    void *ptr = nullptr;
+    napi_get_value_external(env, arg, &ptr);
+    return reinterpret_cast<OH_ImageSourceNative *>(ptr);
+}
+
+Image_String CreateImageStringFromArg(napi_env env, napi_value arg)
+{
+    Image_String imgStr = {0};
+    size_t strLen = 0;
+    napi_get_value_string_utf8(env, arg, nullptr, 0, &strLen);
+    imgStr.size = strLen;
+    if (strLen > MAKER_NOTE_SIZE_MAX) {
+        return imgStr;
+    }
+    imgStr.data = static_cast<char *>(malloc(strLen + 1));
+    if (imgStr.data == NULL) {
+        imgStr.size = 0;
+        return imgStr;
+    }
+    napi_get_value_string_utf8(env, arg, imgStr.data, strLen + 1, &strLen);
+    return imgStr;
+}
+
+void SetHwData(Image_String &value)
+{
+    free(value.data);
+    value.size = sizeof(INIT_HW_DATA);
+    value.data = static_cast<char *>(malloc(value.size));
+    memcpy(value.data, INIT_HW_DATA, value.size);
+}
+
+void FreeImageString(Image_String &imgStr)
+{
+    if (imgStr.data != nullptr) {
+        free(imgStr.data);
+        imgStr.data = nullptr;
+    }
+}
+
+napi_value ImageSourceTest::ModifyMakerNoteImageProperty(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_value argValue[NUM_3] = {0};
+    size_t argCount = NUM_3;
+    napi_get_undefined(env, &result);
+
+    if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok || argCount < NUM_3) {
+        LOG("ModifyMakerNoteImageProperty: Invalid input parameters");
+        return result;
+    }
+
+    OH_ImageSourceNative *imageSource = GetImageSourceFromArgs(env, argValue[NUM_0]);
+    if (imageSource == nullptr) {
+        LOG("ModifyMakerNoteImageProperty: Failed to get image source");
+        return result;
+    }
+
+    Image_String key = CreateImageStringFromArg(env, argValue[NUM_1]);
+    Image_String value = CreateImageStringFromArg(env, argValue[NUM_2]);
+    if (std::strcmp(value.data, "HW") == NUM_0) {
+        SetHwData(value);
+    }
+
+    Image_ErrorCode errCode = OH_ImageSourceNative_ModifyImageProperty(imageSource, &key, &value);
+    FreeImageString(key);
+    FreeImageString(value);
+    if (errCode != IMAGE_SUCCESS) {
+        LOG("ModifyMakerNoteImageProperty failed: err = %{public}d.", errCode);
+        napi_create_int32(env, errCode, &result);
+        return result;
+    }
+    napi_create_int32(env, errCode, &result);
+    LOG("ModifyMakerNoteImageProperty: ModifyImageProperty successfully");
+    return result;
+}
+
+napi_value ImageSourceTest::GetMakerNoteImageProperty(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_value argValue[NUM_2] = {0};
+    size_t argCount = NUM_2;
+    napi_get_undefined(env, &result);
+
+    if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok || argCount < NUM_2) {
+        LOG("GetMakerNoteImageProperty: Invalid input parameters");
+        return result;
+    }
+
+    OH_ImageSourceNative *imageSource = GetImageSourceFromArgs(env, argValue[NUM_0]);
+    if (imageSource == nullptr) {
+        LOG("ModifyMakerNoteImageProperty: Failed to get image source");
+        return result;
+    }
+    Image_String key = CreateImageStringFromArg(env, argValue[NUM_1]);
+    Image_String value;
+
+    Image_ErrorCode errCode = OH_ImageSourceNative_GetImageProperty(imageSource, &key, &value);
+    if (errCode != IMAGE_SUCCESS) {
+        LOG("OH_ImageSourceNative_GetImageProperty failed: err = %{public}d.", errCode);
+        FreeImageString(key);
+        FreeImageString(value);
+        napi_create_int32(env, errCode, &result);
+        return result;
+    }
+
+    napi_create_string_utf8(env, value.data, value.size, &result);
+    FreeImageString(key);
+    FreeImageString(value);
+    LOG("GetMakerNoteImageProperty: GetImageProperty successfully");
+    return result;
+}
+
+napi_value ImageSourceTest::testPackPixelMapToFile(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_get_undefined(env, &result);
+    napi_value argValue[NUM_3] = {0};
+    size_t argCount = NUM_3;
+
+    if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok || argCount < NUM_3) {
+        LOG("testPackPixelMapToFile: Invalid input parameters");
+        return result;
+    }
+
+    OH_ImagePackerNative *packer = nullptr;
+    if (OH_ImagePackerNative_Create(&packer) != IMAGE_SUCCESS) {
+        LOG("testPackPixelMapToFile create image packer failed");
+        return result;
+    }
+
+    void *ptr = nullptr;
+    napi_get_value_external(env, argValue[NUM_0], &ptr);
+    OH_PixelmapNative *pixMap = reinterpret_cast<OH_PixelmapNative *>(ptr);
+    ptr = nullptr;
+    napi_get_value_external(env, argValue[NUM_1], &ptr);
+    OH_PackingOptions *opts = reinterpret_cast<OH_PackingOptions *>(ptr);
+    int writeFd;
+    napi_get_value_int32(env, argValue[NUM_2], &writeFd);
+
+    Image_ErrorCode errCode = OH_ImagePackerNative_PackToFileFromPixelmap(packer, opts, pixMap, writeFd);
+    if (errCode != IMAGE_SUCCESS) {
+        LOG("testPackPixelMapToFile Failed: err = %{public}d.", errCode);
+        OH_ImagePackerNative_Release(packer);
+        napi_create_int32(env, errCode, &result);
+        return result;
+    }
+    OH_ImagePackerNative_Release(packer);
+    napi_create_int32(env, errCode, &result);
+    return result;
+}
+
+napi_value ImageSourceTest::SetMimeTypeToTestPackingOptions(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    napi_value argValue[NUM_2] = {0};
+    size_t argCount = NUM_2;
+
+    napi_get_undefined(env, &result);
+    if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok || argCount < NUM_2) {
+        LOG("SetMimeTypeToTestPackingOptions get MimeType failed");
+        return result;
+    }
+
+    void *ptr = nullptr;
+    napi_get_value_external(env, argValue[NUM_0], &ptr);
+    OH_PackingOptions *packingOptions = reinterpret_cast<OH_PackingOptions *>(ptr);
+
+    char format[MAX_STRING_SIZE] = {NUM_0};
+    size_t formatSize = NUM_0;
+    napi_get_value_string_utf8(env, argValue[NUM_1], format, MAX_STRING_SIZE, &formatSize);
+    Image_MimeType mimeType = {.data = format, .size = formatSize};
+
+    if (OH_PackingOptions_SetMimeType(packingOptions, &mimeType) != IMAGE_SUCCESS) {
+        LOG("OH_PackingOptions_SetMimeType failed");
+        return result;
+    }
+    return result;
+}
+
+napi_value ImageSourceTest::SetQualityToTestPackingOptions(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    napi_value argValue[NUM_2] = {0};
+    size_t argCount = NUM_2;
+
+    napi_get_undefined(env, &result);
+    if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok || argCount < NUM_2) {
+        LOG("SetQualityToTestPackingOptions get Quality failed");
+        return result;
+    }
+
+    void *ptr = nullptr;
+    napi_get_value_external(env, argValue[NUM_0], &ptr);
+    OH_PackingOptions *packingOptions = reinterpret_cast<OH_PackingOptions *>(ptr);
+
+    int32_t quality = NUM_0;
+    napi_get_value_int32(env, argValue[NUM_1], &quality);
+
+    if (OH_PackingOptions_SetQuality(packingOptions, quality) != IMAGE_SUCCESS) {
+        LOG("OH_PackingOptions_SetQuality failed");
+        return result;
+    }
+    return result;
+}
+
+napi_value ImageSourceTest::SetNeedsPackPropertiesToTestPackingOptions(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    napi_value argValue[NUM_2] = {0};
+    size_t argCount = NUM_2;
+
+    napi_get_undefined(env, &result);
+    if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok || argCount < NUM_2) {
+        LOG("SetNeedsPackPropertiesToTestPackingOptions get needsPackProperties failed");
+        return result;
+    }
+
+    void *ptr = nullptr;
+    napi_get_value_external(env, argValue[NUM_0], &ptr);
+    OH_PackingOptions *packingOptions = reinterpret_cast<OH_PackingOptions *>(ptr);
+
+    bool needsPackProperties = true;
+    napi_get_value_bool(env, argValue[NUM_1], &needsPackProperties);
+
+    if (OH_PackingOptions_SetNeedsPackProperties(packingOptions, needsPackProperties) != IMAGE_SUCCESS) {
+        LOG("OH_PackingOptions_SetNeedsPackProperties failed");
+        return result;
+    }
+    return result;
+}
+
+napi_value ImageSourceTest::CreatePackingOptions(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+
+    napi_get_undefined(env, &result);
+
+    OH_PackingOptions *res = nullptr;
+    Image_ErrorCode errorCode = OH_PackingOptions_Create(&res);
+    if (errorCode != IMAGE_SUCCESS) {
+        napi_create_int32(env, errorCode, &result);
+        return result;
+    }
+
+    napi_status status = napi_create_external(env, reinterpret_cast<void *>(res), nullptr, nullptr, &result);
+    if (status != napi_ok) {
+        napi_throw_error(env, nullptr, "Failed to create external object");
+        return nullptr;
+    }
     return result;
 }
 } // namespace Media
