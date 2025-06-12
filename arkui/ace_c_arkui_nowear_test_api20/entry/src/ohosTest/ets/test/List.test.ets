@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 import buttonGetTypeTest from './button/ButtonGetTypeTest.test'
+import enableDropDisallowedBadgeTest from './dropBadge/enableDropDisallowedBadge.test'
 
 export default function testsuite() {
   buttonGetTypeTest();
+  enableDropDisallowedBadgeTest();
 }

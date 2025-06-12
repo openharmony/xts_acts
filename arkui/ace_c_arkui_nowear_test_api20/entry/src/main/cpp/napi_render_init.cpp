@@ -16,6 +16,7 @@
 #include "common/common.h"
 #include "manager/plugin_manager.h"
 #include "button/button_gettype_test.h"
+#include "dropBadge/EnableDropDisallowedBadgeTest.h"
 
 namespace ArkUICapiTest
 {
@@ -31,6 +32,8 @@ namespace ArkUICapiTest
 
         napi_property_descriptor desc[] = {
             {"buttonGetTypeTest", nullptr, ButtonGetTypeTest::CreateNativeNode, nullptr, nullptr,
+            nullptr, napi_default, nullptr},
+            {"enableDropDisallowedBadge", nullptr, EnableDropDisallowedBadgeTest::CreateNativeNode, nullptr, nullptr,
             nullptr, napi_default, nullptr},
         };
         if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok)

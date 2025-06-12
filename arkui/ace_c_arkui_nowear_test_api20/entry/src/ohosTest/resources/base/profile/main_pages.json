@@ -2,6 +2,7 @@
   "src": [
     "MainAbility/pages/XTSIndex",
     "MainAbility/pages/testgesture",
-    "MainAbility/pages/button/ButtonGetTypeTest"
+    "MainAbility/pages/button/ButtonGetTypeTest",
+    "MainAbility/pages/dropBadge/enableDropDisallowedBadge"
   ]
 }
