@@ -32,13 +32,13 @@ struct IndexA {
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
         Button('Terminate AAA')
+          .width('1%')
+          .height('1%')
         .type(ButtonType.Capsule)
         .margin({
           top: 20
         })
         .backgroundColor('#0D9FFB')
-        .width('35%')
-        .height('5%')
         .onClick(() => {
           try {
             let context = getContext(this) as common.UIAbilityContext;

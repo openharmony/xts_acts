@@ -44,8 +44,8 @@ struct IndexD {
             top: 20
           })
           .backgroundColor('#0D9FFB')
-          .width('35%')
-          .height('5%')
+          .width('1%')
+          .height('1%')
           .onClick(() => {
             try {
               let context = getContext(this) as common.UIAbilityContext;

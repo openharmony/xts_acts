@@ -59,7 +59,8 @@ struct UIExtensionPage {
           .id('userSendData')
           .type(ButtonType.Capsule)
           .offset({ x: 0, y: 60 })
-          .width('80%')
+          .width('1%')
+          .height('1%')
           .type(ButtonType.Capsule)
           .margin({
             top: 20

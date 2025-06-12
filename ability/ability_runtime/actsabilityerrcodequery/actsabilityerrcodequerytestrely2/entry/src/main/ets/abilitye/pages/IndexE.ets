@@ -32,6 +32,8 @@ struct IndexE {
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
         Button('Terminate EEE')
+          .width('1%')
+          .height('1%')
         .type(ButtonType.Capsule)
         .margin({
           top: 20
