@@ -1409,15 +1409,15 @@ export default function ffrtTest() {
 
     /**
      * @tc.number : SUB_KERNEL_DISPATCH_entry_9900
-     * @tc.name   : submitHFTest002
+     * @tc.name   : submitFTest001
      * @tc.desc   : Test submitHBasic api
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 0
      */
-    it('submitHFTest002', Level.LEVEL0, () => {
+    it('submitFTest001', Level.LEVEL0, () => {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      let flag = entry.submitHFTest002();
+      let flag = entry.submitFTest001();
       expect(flag).assertEqual(0);
     })
     /**
