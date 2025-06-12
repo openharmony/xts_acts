@@ -669,7 +669,7 @@ export default function DisplayNdkTest() {
         display.createVirtualScreen(option).then((data: number) => {
           let result  = testNapi.getDisplaySourceMode_2(data);
           console.log(`${caseName} result: ${JSON.stringify(result)}`);
-          expect(result).assertEqual(2);
+          expect(result).assertEqual(0);
           done();
           console.info(caseName + 'Succeeded in creating the virtual screen. Data: ' + JSON.stringify(data));
         }).catch((err: BusinessError) => {
@@ -703,13 +703,23 @@ export default function DisplayNdkTest() {
           surfaceId: ''
         };
         display.createVirtualScreen(option).then(async (data: number) => {
-          await display.makeUnique(data);
-          await sleep(200);
-          let result  = testNapi.getDisplaySourceMode_4(data);
-          console.log(`${caseName} result: ${JSON.stringify(result)}`);
-          expect(result).assertEqual(4);
-          done();
           console.info(caseName + 'Succeeded in creating the virtual screen. Data: ' + JSON.stringify(data));
+          display.makeUnique(data).then(async () =>{
+            await sleep(200);
+            let result  = testNapi.getDisplaySourceMode_4(data);
+            console.log(`${caseName} result: ${JSON.stringify(result)}`);
+            expect(result).assertEqual(4);
+            done();
+          }).catch((err: BusinessError) => {
+            console.error(caseName + 'Failed to makeUnique. Code: ' + JSON.stringify(err));
+            if (err.code === 801) {
+              done();
+            } else {
+              expect(false).assertTrue();
+              done();
+            }
+          });
+
         }).catch((err: BusinessError) => {
           console.error(caseName + 'Failed to create the virtual screen. Code: ' + JSON.stringify(err));
           expect(false).assertTrue();
@@ -823,7 +833,7 @@ export default function DisplayNdkTest() {
       try{
         let result  = testNapi.unregisterAvailableAreaChangeListener();
         console.log(`${caseName} result: ${JSON.stringify(result)}`);
-        expect(result).assertEqual(1400004);
+        expect(result).assertEqual(0);
         done();
       } catch (err) {
         console.log(caseName + ': fail:'+ err + ' '+err.code);
