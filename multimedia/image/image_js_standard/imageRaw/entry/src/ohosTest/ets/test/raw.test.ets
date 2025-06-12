@@ -856,7 +856,7 @@ export default function imageRaw() {
         desiredRegion: {
           size: {
             height: 1, width: 2
-          } as ESObject, x: 10000, y: 0
+          } as ESObject, x: 1000, y: 0
         } as ESObject,
         index: 0,
       };
@@ -885,7 +885,7 @@ export default function imageRaw() {
         desiredRegion: {
           size: {
             height: 1, width: 2
-          } as ESObject, x: 0, y: 10000
+          } as ESObject, x: 0, y: 1000
         } as ESObject,
         index: 0,
       };
@@ -1030,7 +1030,7 @@ export default function imageRaw() {
         desiredRegion: {
           size: {
             height: 1, width: 2
-          } as ESObject, x: 10000, y: 0
+          } as ESObject, x: 1000, y: 0
         } as ESObject,
         index: 0,
       };
@@ -1059,7 +1059,7 @@ export default function imageRaw() {
         desiredRegion: {
           size: {
             height: 1, width: 2
-          } as ESObject, x: 0, y: 10000
+          } as ESObject, x: 0, y: 1000
         } as ESObject,
         index: 0,
       };
