@@ -15,7 +15,14 @@
 
 import { describe, expect, it, beforeEach, afterEach, Level, Size, TestType } from '@ohos/hypium';
 import http from '@ohos.net.http';
-import { BusinessError } from '@ohos.base'
+import { BusinessError } from '@ohos.base';
+
+function sleep (time:number):Promise<string>{
+  return new Promise<string>((resolve)=>{
+    setTimeout(()=>{
+      resolve('ok')},time)
+  });
+}
 
 export default function httpRequestJsunit() {
   describe("HttpRequestJsunitTest", () => {
@@ -305,20 +312,21 @@ export default function httpRequestJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_http_HttpRequest_once_headersReceive_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done:Function) => {
+    it("SUB_Telephony_http_HttpRequest_once_headersReceive_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let casename = "SUB_Telephony_http_HttpRequest_once_headersReceive_0100";
       console.log("-----------------------HttpRequest_once_headersReceive Test is starting-----------------------");
       try {
         let httpRequest = http.createHttp();
-        httpRequest.once('headersReceive', (data) => {
+        httpRequest.once('headersReceive', async (data) => {
           console.log(casename + " data: " + JSON.stringify(data));
           expect(true).assertTrue();
+          await sleep(250);
           httpRequest.destroy();
           console.log("-----------------------HttpRequest_on_headersReceive Test end-----------------------");
           done();
         });
         httpRequest.request("https://www.baidu.com/", (err, data) => {
-          console.log(casename + " data: " + JSON.stringify(data.responseCode) + " err: " + JSON.stringify(err));
+          console.log(casename + " data: " + JSON.stringify(data?.responseCode) + " err: " + JSON.stringify(err));
         });
       } catch (error) {
         console.log("SUB_Telephony_http_HttpRequest_once_headersReceive_010 : error = " + error);
