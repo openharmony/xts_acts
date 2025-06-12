@@ -209,6 +209,11 @@ export default function lastExitReasonTest() {
       try {
         await startRely1();
         await sleep(1000);
+        let button = await driver.waitForComponent(ON.text('Start Second'), 3000);
+        await sleep(100);
+        expect(button != null).assertTrue();
+        await button.click();
+        await sleep(1000);
         let subscribeInfo: CommonEventManager.CommonEventSubscribeInfo = {
           events: [event1, event2, event3]
         };
@@ -241,12 +246,6 @@ export default function lastExitReasonTest() {
         }
         CommonEventManager.subscribe(subscriber, subscribeCB);
         await sleep(500);
-        let button = await driver.waitForComponent(ON.text('Start Second'), 3000);
-        await sleep(100);
-        expect(button != null).assertTrue();
-        await button.click();
-        await sleep(1000);
-
         button = await driver.waitForComponent(ON.text('Second Js Crash'), 3000);
         expect(button != null).assertTrue();
         await button.click();
