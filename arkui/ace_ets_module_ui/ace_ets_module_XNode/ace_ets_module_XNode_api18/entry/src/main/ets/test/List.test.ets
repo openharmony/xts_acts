@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 import UIContextWithoutWindowTest from './ContextTest/UIContextWithoutWindow.test';
+import UIContextGetOpacityTest from './ContextTest/UIContextGetOpacity.test';
 
 export default function testsuite() {
   UIContextWithoutWindowTest();
+  UIContextGetOpacityTest();
 }
