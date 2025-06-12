@@ -153,7 +153,7 @@ struct WebConfigCookieSync {
                   break
                 }
                 case 'emitConfigCookieSync008': {
-                  let resultCode = testNapi.setConfigCookieSync(URL_EXAMPLE, 'age=11\0d8; Secure; HttpOnly;', false, true)
+                  let resultCode = testNapi.setConfigCookieSync(URL_EXAMPLE, 'age=11\0abc123; Secure; HttpOnly;', false, true)
                   console.log('emitConfigCookieSync008 setConfigCookieSync resultCode:' + resultCode)
                   let resultValue = testNapi.getFetchCookieSync(URL_EXAMPLE, false, true)
                   console.log('emitConfigCookieSync008 getFetchCookieSync resultValue:' + resultValue)

@@ -21,7 +21,8 @@
 #include "web/arkweb_interface.h"
 
 
-char *GetStringValue(napi_env env, napi_value value) {
+char *GetStringValue(napi_env env, napi_value value)
+{
     size_t size = 0;
     napi_get_value_string_utf8(env, value, nullptr, 0, &size);
     char *paramValue = new (std::nothrow) char[size + 1];
@@ -30,13 +31,15 @@ char *GetStringValue(napi_env env, napi_value value) {
     return paramValue;
 }
 
-bool GetBoolValue(napi_env env, napi_value value) {
+bool GetBoolValue(napi_env env, napi_value value)
+{
     bool result;
     napi_get_value_bool(env, value, &result);
     return result;
 }
 
-static napi_value SetConfigCookieSync(napi_env env, napi_callback_info info) {
+static napi_value SetConfigCookieSync(napi_env env, napi_callback_info info)
+{
     size_t argc = 4;
     napi_value args[4] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
@@ -44,13 +47,13 @@ static napi_value SetConfigCookieSync(napi_env env, napi_callback_info info) {
     char *url = GetStringValue(env,args[0]);
     OH_LOG_INFO(LOG_APP,  "SetConfigCookieSync url: %{public}s", url);
 
-    char *cookieValue = GetStringValue(env,args[1]);
+    char *cookieValue = GetStringValue(env, args[1]);
     OH_LOG_INFO(LOG_APP,  "SetConfigCookieSync cookieValue: %{public}s", cookieValue);
 
-    bool incognito = GetBoolValue(env,args[2]);
+    bool incognito = GetBoolValue(env, args[2]);
     OH_LOG_INFO(LOG_APP,  "SetConfigCookieSync incognito: %{public}d", incognito);
 
-    bool includeHttpOnly = GetBoolValue(env,args[3]);
+    bool includeHttpOnly = GetBoolValue(env, args[3]);
     OH_LOG_INFO(LOG_APP,  "SetConfigCookieSync includeHttpOnly: %{public}d", includeHttpOnly);
 
     static ArkWeb_CookieManagerAPI *cookieManager = nullptr;
@@ -66,18 +69,19 @@ static napi_value SetConfigCookieSync(napi_env env, napi_callback_info info) {
 }
 
 
-static napi_value GetFetchCookieSync(napi_env env, napi_callback_info info) {
+static napi_value GetFetchCookieSync(napi_env env, napi_callback_info info)
+{
     size_t argc = 3;
     napi_value args[3] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
-    char *url = GetStringValue(env,args[0]);
+    char *url = GetStringValue(env, args[0]);
     OH_LOG_INFO(LOG_APP,  "GetFetchCookieSync url: %{public}s", url);
 
-    bool incognito = GetBoolValue(env,args[1]);
+    bool incognito = GetBoolValue(env, args[1]);
     OH_LOG_INFO(LOG_APP,  "GetFetchCookieSync incognito: %{public}d", incognito);
 
-    bool includeHttpOnly = GetBoolValue(env,args[2]);
+    bool includeHttpOnly = GetBoolValue(env, args[2]);
     OH_LOG_INFO(LOG_APP,  "GetFetchCookieSync includeHttpOnly: %{public}d", includeHttpOnly);
 
     static ArkWeb_CookieManagerAPI *cookieManager = nullptr;
@@ -85,7 +89,7 @@ static napi_value GetFetchCookieSync(napi_env env, napi_callback_info info) {
 
     char *cookieValue;
     ArkWeb_ErrorCode resultCode = cookieManager->fetchCookieSync(url, incognito, includeHttpOnly, &cookieValue);
-    OH_LOG_INFO(LOG_APP,  "GetFetchCookieSync fetchCookieSync resultCode: %{public}d, cookieValue: %{public}s", resultCode, cookieValue);
+    OH_LOG_INFO(LOG_APP,  "fetchCookieSync resultCode: %{public}d, cookieValue: %{public}s", resultCode, cookieValue);
 
 
     napi_value resultValue;
