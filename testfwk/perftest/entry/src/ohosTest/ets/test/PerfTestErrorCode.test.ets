@@ -321,7 +321,7 @@ export default function perfTestErrorTest() {
 
     /*
      * @tc.number: perfTestErrorTest_009
-     * @tc.name: test_PerfTest_run_32400002_actionCodeTimeOut
+     * @tc.name: test_PerfTest_run_32400004_actionCodeTimeOut
      * @tc.desc: run 32400004 test.
      */
     it('test_PerfTest_run_32400004_actionCodeTimeOut', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
