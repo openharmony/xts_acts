@@ -33,7 +33,7 @@ struct SelectionMenuOptionsDemo {
         .onReady(() => {
           this.controllerR.addTextSpan('测试文本', {
             style: {
-              fontSize: '15vp'
+              fontSize: '30vp'
             }
           });
           
