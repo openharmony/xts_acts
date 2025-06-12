@@ -113,7 +113,7 @@ export default function abilityTest() {
         let Button2: Component = await driver.findComponent(ON.text('amsdialog', MatchPattern.CONTAINS));
         if(Button2){
           await Button.click();
-          await driver1.delayMs(1000);
+          await driver.delayMs(1000);
         }
         const  driver1 =Driver.create();
         await driver1.delayMs(1000);
