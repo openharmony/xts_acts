@@ -1391,7 +1391,7 @@ static napi_value testUbrk_clone_0200(napi_env env, napi_callback_info info)
     brk = ubrk_clone(someUterators[0], &status);
     pos = ubrk_next(brk);
     brk2 = ubrk_clone(brk, &status);
-    pos2 = ubrk_next(brk2);
+    pos2 = ubrk_current(brk2);
     brk3 = ubrk_clone(brk2, &status);
     pos3 = ubrk_next(brk3);
     bool flagA = (pos == 4);
