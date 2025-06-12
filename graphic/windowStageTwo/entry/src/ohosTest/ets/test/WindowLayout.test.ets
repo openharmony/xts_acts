@@ -1431,5 +1431,389 @@ it('testSetResizeByDragEnabledTrue_0100', TestType.FUNCTION | Size.MEDIUMTEST | 
 
     })
 
+    /**
+     * @tc.number     : SUB_BASIC_WMS_XTS_SYSTEMAPI_ENABLEDRAG_0100
+     * @tc.name       : testWindowEnableDragNull
+     * @tc.desc       : test the err.code = 401
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level1
+     */
+    it('testWindowEnableDragNull', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let windowClass: window.Window;
+      let config: window.Configuration = {
+        name: 'dialog',
+        windowType: window.WindowType.TYPE_DIALOG,
+        ctx: context,
+        decorEnabled: true,
+        title: 'dialog'
+      };
+      try {
+        window.createWindow(config).then(async (data) => {
+          windowClass = data;
+          await windowClass.setUIContent("testability/pages/Index1")
+          await windowClass.resize(800, 1000);
+          await windowClass.moveWindowTo(300, 300);
+          await windowClass.showWindow();
+          await sleep(1000);
+          console.info('testWindowEnableDragNull! Succeeded in creating the window. Data:' + JSON.stringify(data));
+          try {
+            windowClass.enableDrag(null).then(async () => {
+              console.info('testWindowEnableDragNull! Succeed in setting window draggable')
+              expect().assertFail();
+              await windowClass?.destroyWindow();
+              done();
+            }).catch(async (err: BusinessError) => {
+              console.error(`testWindowEnableDragNull! Failed to set window draggable. Cause code: ${err.code}, message: ${err.message}`);
+              expect(err.code).assertEqual(801);
+              await windowClass?.destroyWindow();
+              done();
+            })
+          } catch (exception) {
+            console.error(`testWindowEnableDragNull! Failed to set window draggable. Cause code: ${exception.code}, message: ${exception.message}`);
+            expect(exception.code).assertEqual(401);
+            await windowClass?.destroyWindow();
+            done();
+          }
+        }).catch(async (err: BusinessError) => {
+          console.error(`testWindowEnableDragNull! Failed to create the window. Cause code: ${err.code}, message: ${err.message}`);
+          await windowClass?.destroyWindow();
+          expect().assertFail();
+          done();
+        });
+      } catch (exception) {
+        console.error(`testWindowEnableDragNull! Failed to create the window. Cause code: ${exception.code}, message: ${exception.message}`);
+        expect().assertFail();
+        done();
+      }
+
+    })
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_XTS_SYSTEMAPI_ENABLEDRAG_0200
+     * @tc.name       : testWindowEnableDragDestroy
+     * @tc.desc       : test the err.code = 1300002 when window destroy
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level1
+     */
+    it('testWindowEnableDragDestroy', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let windowClass: window.Window;
+      let caseName = 'testWindowEnableDragDestroy!'
+      let config: window.Configuration = {
+        name: 'dialog',
+        windowType: window.WindowType.TYPE_DIALOG,
+        ctx: context,
+        decorEnabled: true,
+        title: 'dialog'
+      };
+      try {
+        window.createWindow(config).then(async (data) => {
+          windowClass = data;
+          await windowClass.setUIContent("testability/pages/Index1");
+          await windowClass.resize(800, 1000);
+          await windowClass.moveWindowTo(300, 300);
+          await windowClass.showWindow();
+          await sleep(1000);
+          console.info(caseName + 'Succeeded in creating the window. Data:' + JSON.stringify(data));
+          await windowClass.destroyWindow()
+          await sleep(1000);
+          try {
+            windowClass.enableDrag(true).then(() => {
+              console.info(caseName + 'Succeed in setting window draggable')
+              expect().assertFail();
+              done();
+            }).catch((err: BusinessError) => {
+              console.error(caseName + `Failed to set window draggable. Cause code: ${err.code}, message: ${err.message}`);
+              console.error(caseName + `err.code == 1300002 || err.code == 801: ${err.code == 1300002 || err.code == 801}`);
+              expect(err.code == 1300002 || err.code == 801).assertTrue();
+              done();
+            })
+          } catch (exception) {
+            console.error(caseName + `Failed to set window draggable. Cause code: ${exception.code}, message: ${exception.message}`);
+            expect().assertFail();
+            done();
+          }
+
+        }).catch((err: BusinessError) => {
+          console.error(caseName + `promise Failed to create the window. Cause code: ${err.code}, message: ${err.message}`);
+          expect().assertFail();
+          done();
+        });
+      } catch (exception) {
+        console.error(caseName + `Failed to create the window. Cause code: ${exception.code}, message: ${exception.message}`);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_XTS_SYSTEMAPI_ENABLEDRAG_0300
+     * @tc.name       : testWindowEnableDragTrueSubWindow
+     * @tc.desc       : testWindowEnableDragTrueSubWindow
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level1
+     */
+    it('testWindowEnableDragTrueSubWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: Function) => {
+        let windowClass: window.Window;
+        let driver: Driver = Driver.create();
+        let caseName = 'testWindowEnableDragTrueSubWindow!'
+        try {
+          windowStage.createSubWindow('test').then(async (data) => {
+            windowClass = data;
+            await windowClass.setUIContent("testability/pages/Index1");
+            await windowClass.resize(800, 1000);
+            await windowClass.moveWindowTo(300, 300);
+            windowClass.setWindowBackgroundColor('#00ff33')
+            await windowClass.showWindow();
+            await sleep(1000);
+            console.info(caseName + 'Succeeded in creating the window. Data:' + JSON.stringify(data));
+            try {
+              windowClass.enableDrag(true).then(async () => {
+                console.info(caseName + 'Succeed in setting window draggable')
+                let windowRect = windowClass.getWindowProperties().windowRect;
+                console.log(caseName + `windowRect:${JSON.stringify(windowRect)}`)
+                let pointWidth = windowRect.left;
+                let pointHeight = windowRect.top + windowRect.height / 2;
+                console.log(caseName +
+                  `pointWidth:${JSON.stringify(pointWidth)}, pointHeight: ${JSON.stringify(pointHeight)}`)
+                await driver.mouseDrag({x: pointWidth, y: pointHeight}, {x: pointWidth + 50, y: pointHeight}, 200);
+                await sleep(300);
+                let windowRect2 = windowClass.getWindowProperties().windowRect;
+                console.log(caseName + `windowRect2:${JSON.stringify(windowRect2)}`);
+                expect(windowRect2.width).assertEqual(windowRect.width - 50);
+                await windowClass?.destroyWindow();
+                done();
+              }).catch(async (err: BusinessError) => {
+                console.info(caseName + 'the context..' + windowClass)
+                console.error(caseName + `Failed to set window draggable. Cause code: ${err.code}, message: ${err.message}`);
+                await windowClass?.destroyWindow();
+                expect(err.code).assertEqual(801);
+                done();
+              })
+            } catch (exception) {
+              console.error(caseName + `Failed to set window draggable. Cause code: ${exception.code}, message: ${exception.message}`);
+              expect().assertFail();
+              done();
+            }
+
+          }).catch(async (err: BusinessError) => {
+            console.error(caseName + `Failed to create the window. Cause code: ${err.code}, message: ${err.message}`);
+            await windowClass?.destroyWindow();
+            expect().assertFail();
+            done();
+          });
+        } catch (exception) {
+          console.error(caseName + `Failed to create the window. Cause code: ${exception.code}, message: ${exception.message}`);
+          expect().assertFail();
+          done();
+        }
+
+      })
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_XTS_SYSTEMAPI_ENABLEDRAG_0400
+     * @tc.name       : testWindowEnableDragFalseSubWindow
+     * @tc.desc       : testWindowEnableDragFalseSubWindow
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level1
+     */
+    it('testWindowEnableDragFalseSubWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: Function) => {
+        let windowClass: window.Window;
+        let driver: Driver = Driver.create();
+        let caseName = 'testWindowEnableDragFalseSubWindow!'
+        try {
+          windowStage.createSubWindow('test').then(async (data) => {
+            windowClass = data;
+            await windowClass.setUIContent("testability/pages/Index1");
+            await windowClass.resize(800, 1000);
+            await windowClass.moveWindowTo(300, 300);
+            windowClass.setWindowBackgroundColor('#00ff33')
+            await windowClass.showWindow();
+            await sleep(500);
+            console.info(caseName + 'Succeeded in creating the window. Data:' + JSON.stringify(data));
+            try {
+              windowClass.enableDrag(false).then(async () => {
+                console.info(caseName + 'Succeed in setting window draggable')
+                let windowRect = windowClass.getWindowProperties().windowRect;
+                console.log(caseName + `windowRect:${JSON.stringify(windowRect)}`)
+                let pointWidth = windowRect.left;
+                let pointHeight = windowRect.top + windowRect.height / 2;
+                console.log(caseName + `pointWidth:${JSON.stringify(pointWidth)}, pointHeight: ${JSON.stringify(pointHeight)}`)
+                await driver.mouseDrag({x: pointWidth, y: pointHeight}, {x: pointWidth + 50, y: pointHeight}, 200);
+                await sleep(300);
+                let windowRect2 = windowClass.getWindowProperties().windowRect;
+                console.log(caseName + `windowRect2:${JSON.stringify(windowRect2)}`);
+                expect(windowRect2.width).assertEqual(windowRect.width);
+                await windowClass?.destroyWindow();
+                done();
+              }).catch(async (err: BusinessError) => {
+                console.info(caseName + 'the context..' + windowClass)
+                console.error(caseName + `Failed to set window draggable. Cause code: ${err.code}, message: ${err.message}`);
+                await windowClass?.destroyWindow();
+                expect(err.code).assertEqual(801);
+                done();
+              })
+            } catch (exception) {
+              console.error(caseName + `Failed to set window draggable. Cause code: ${exception.code}, message: ${exception.message}`);
+              expect().assertFail();
+              done();
+            }
+
+          }).catch(async (err: BusinessError) => {
+            console.error(caseName + `Failed to create the window. Cause code: ${err.code}, message: ${err.message}`);
+            await windowClass?.destroyWindow();
+            expect().assertFail();
+            done();
+          });
+        } catch (exception) {
+          console.error(caseName + `Failed to create the window. Cause code: ${exception.code}, message: ${exception.message}`);
+          expect().assertFail();
+          done();
+        }
+
+      })
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_XTS_SYSTEMAPI_ENABLEDRAG_0500
+     * @tc.name       : testWindowEnableDragTrueDialogWindow
+     * @tc.desc       : testWindowEnableDragTrueDialogWindow
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level1
+     */
+    it('testWindowEnableDragTrueDialogWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: Function) => {
+        let windowClass: window.Window;
+        let driver: Driver = Driver.create();
+        let caseName = 'testWindowEnableDragTrueDialogWindow!'
+        let config: window.Configuration = {
+          name: 'testWindowEnableDragTrueDialogWindow',
+          windowType: window.WindowType.TYPE_DIALOG,
+          ctx: context
+        };
+        try {
+          window.createWindow(config).then(async (data) => {
+            windowClass = data;
+            console.info(caseName + 'Succeeded in creating the window. Data:' + JSON.stringify(data));
+            await windowClass.setUIContent('testability/pages/Index1')
+            console.info(caseName + 'Succeeded in loadContent. Data:' + JSON.stringify(data));
+            await windowClass.resize(800, 1000);
+            await windowClass.moveWindowTo(300, 300);
+            windowClass.setWindowBackgroundColor('#00ff33');
+            await windowClass.showWindow();
+            await sleep(1000);
+            try {
+              windowClass.enableDrag(true).then(async () => {
+                console.info(caseName + 'Succeed in setting window draggable')
+                let windowRect = windowClass.getWindowProperties().windowRect;
+                console.log(caseName + `windowRect:${JSON.stringify(windowRect)}`)
+                let pointWidth = windowRect.left;
+                let pointHeight = windowRect.top + windowRect.height / 2;
+                console.log(caseName + `pointWidth:${JSON.stringify(pointWidth)}, pointHeight: ${JSON.stringify(pointHeight)}`)
+                await driver.mouseDrag({x: pointWidth, y: pointHeight}, {x: pointWidth - 50, y: pointHeight}, 200);
+                await sleep(300);
+                let windowRect2 = windowClass.getWindowProperties().windowRect;
+                console.log(caseName + `windowRect2:${JSON.stringify(windowRect2)}`);
+                expect(windowRect2.width).assertEqual(windowRect.width + 50);
+                await windowClass?.destroyWindow();
+                done();
+              }).catch(async (err: BusinessError) => {
+                console.error(caseName + `Failed to set window draggable. Cause code: ${err.code}, message: ${err.message}`);
+                await windowClass?.destroyWindow();
+                expect(err.code).assertEqual(801);
+                done();
+              })
+            } catch (exception) {
+              console.error(caseName + `Failed to set window draggable. Cause code: ${exception.code}, message: ${exception.message}`);
+              expect().assertFail();
+              done();
+            }
+          }).catch(async (err: BusinessError) => {
+            console.error(caseName + `Failed to create the window. Cause code: ${err.code}, message: ${err.message}`);
+            await windowClass?.destroyWindow();
+            expect().assertFail();
+            done();
+          });
+        } catch (exception) {
+          console.error(caseName + `Failed to create the window. Cause code: ${exception.code}, message: ${exception.message}`);
+          expect().assertFail();
+          done();
+        }
+      })
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_XTS_SYSTEMAPI_ENABLEDRAG_0500
+     * @tc.name       : testWindowEnableDragFalseDialogWindow
+     * @tc.desc       : testWindowEnableDragFalseDialogWindow
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level1
+     */
+    it('testWindowEnableDragFalseDialogWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: Function) => {
+        let windowClass: window.Window;
+        let driver: Driver = Driver.create();
+        let caseName = 'testWindowEnableDragFalseDialogWindow!'
+        let config: window.Configuration = {
+          name: 'testWindowEnableDragFalseDialogWindow',
+          windowType: window.WindowType.TYPE_DIALOG,
+          ctx: context
+        };
+        try {
+          window.createWindow(config).then(async (data) => {
+            windowClass = data;
+            await windowClass.setUIContent('testability/pages/Index1')
+            await windowClass.resize(800, 1000);
+            await windowClass.moveWindowTo(300, 300);
+            windowClass.setWindowBackgroundColor('#00ff33');
+            await windowClass.showWindow();
+            await sleep(500);
+            console.info(caseName + 'Succeeded in creating the window. Data:' + JSON.stringify(data));
+            try {
+              windowClass.enableDrag(false).then(async () => {
+                console.info(caseName + 'Succeed in setting window draggable')
+                let windowRect = windowClass.getWindowProperties().windowRect;
+                console.log(caseName + `windowRect:${JSON.stringify(windowRect)}`)
+                let pointWidth = windowRect.left;
+                let pointHeight = windowRect.top + windowRect.height / 2;
+                console.log(caseName + `pointWidth:${JSON.stringify(pointWidth)}, pointHeight: ${JSON.stringify(pointHeight)}`)
+                await driver.mouseDrag({x: pointWidth, y: pointHeight}, {x: pointWidth - 50, y: pointHeight}, 200);
+                await sleep(300);
+                let windowRect2 = windowClass.getWindowProperties().windowRect;
+                console.log(caseName + `windowRect2:${JSON.stringify(windowRect2)}`);
+                expect(windowRect2.width).assertEqual(windowRect.width);
+                await windowClass?.destroyWindow();
+                done();
+              }).catch(async (err: BusinessError) => {
+                console.info(caseName + 'the context..' + windowClass)
+                console.error(caseName + `Failed to set window draggable. Cause code: ${err.code}, message: ${err.message}`);
+                await windowClass?.destroyWindow();
+                expect(err.code).assertEqual(801);
+                done();
+              })
+            } catch (exception) {
+              console.error(caseName + `Failed to set window draggable. Cause code: ${exception.code}, message: ${exception.message}`);
+              expect().assertFail();
+              done();
+            }
+
+          }).catch(async (err: BusinessError) => {
+            console.error(caseName + `Failed to create the window. Cause code: ${err.code}, message: ${err.message}`);
+            await windowClass?.destroyWindow();
+            expect().assertFail();
+            done();
+          });
+        } catch (exception) {
+          console.error(caseName + `Failed to create the window. Cause code: ${exception.code}, message: ${exception.message}`);
+          expect().assertFail();
+          done();
+        }
+      })
+
   })
 }
