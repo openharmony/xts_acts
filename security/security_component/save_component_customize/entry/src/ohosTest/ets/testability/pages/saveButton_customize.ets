@@ -180,17 +180,17 @@ struct savebutton_customize {
               try {
                 let clickData:events_emitter.EventData = {
                   data: {
-                    "clickResult": result,
+                    'clickResult': result,
                   }
                 }
                 let clickEvent:events_emitter.InnerEvent = {
                   eventId: 2,
                   priority: events_emitter.EventPriority.LOW
                 }
-                console.debug("====>page_saveButton onclick result:" + JSON.stringify(result))
+                console.debug('====>page_saveButton onclick result:' + JSON.stringify(result))
                 events_emitter.emit(clickEvent, clickData)
               } catch (err) {
-                console.debug("====>page_saveButton emit action state err: " + JSON.stringify(err.message))
+                console.debug('====>page_saveButton emit action state err: ' + JSON.stringify(err.message))
               }
             })
             .iconSize(this.iconSize)

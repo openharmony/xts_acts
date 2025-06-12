@@ -30,22 +30,22 @@ export default function saveCompCustomizeTest() {
       try {
         router.clear();
         let pages = router.getState();
-        console.info("====>saveCompCustomizeTest get state success " + JSON.stringify(pages));
-        if (!("saveButton" == pages.name)) {
-          console.info("====>saveCompCustomizeTest get state success " + JSON.stringify(pages.name));
+        console.info('====>saveCompCustomizeTest get state success ' + JSON.stringify(pages));
+        if (!('saveButton_customize' == pages.name)) {
+          console.info('====>saveCompCustomizeTest get state success ' + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("====>saveCompCustomizeTest push page success " + JSON.stringify(result));
+          console.info('====>saveCompCustomizeTest push page success ' + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("====>saveCompCustomizeTest push page error: " + err);
+        console.error('====>saveCompCustomizeTest push page error: ' + err);
       }
       done()
     });
 
     afterEach(async () => {
       await Utils.sleep(1000);
-      console.info("====>saveCompCustomizeTest after each called");
+      console.info('====>saveCompCustomizeTest after each called');
     });
 
     /**
@@ -94,23 +94,23 @@ export default function saveCompCustomizeTest() {
       try {
         let clickCallback = (clickData:events_emitter.EventData) => {
           if(clickData.data !=undefined){
-            console.info("====>[Test_Security_Button_Save_Customize_0100] get clickEvent result is: " + JSON.stringify(clickEvent));
-            console.info("====>[Test_Security_Button_Save_Customize_0100] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
+            console.info('====>[Test_Security_Button_Save_Customize_0100] get clickEvent result is: ' + JSON.stringify(clickEvent));
+            console.info('====>[Test_Security_Button_Save_Customize_0100] get clickData.data.clickResult is: ' + JSON.stringify(clickData.data.clickResult));
             if (clickData.data.clickResult == SaveButtonOnClickResult.SUCCESS) {
-              console.info("====>[Test_Security_Button_Save_Customize_0100] 设置权限成功");
+              console.info('====>[Test_Security_Button_Save_Customize_0100] 设置权限成功');
               expect(clickData.data.clickResult == SaveButtonOnClickResult.SUCCESS).assertTrue();
-              console.info("====>[Test_Security_Button_Save_Customize_0100] END====");
+              console.info('====>[Test_Security_Button_Save_Customize_0100] END====');
               done();
             } else {
-              console.info("====>[Test_Security_Button_Save_Customize_0100] 设置权限失败");
+              console.info('====>[Test_Security_Button_Save_Customize_0100] 设置权限失败');
               expect().assertFail()
-              console.info("====>[Test_Security_Button_Save_Customize_0100] END====");
+              console.info('====>[Test_Security_Button_Save_Customize_0100] END====');
               done();
             }
           } else {
-            console.info("====>[Test_Security_Button_Save_Customize_0100] case ERR");
+            console.info('====>[Test_Security_Button_Save_Customize_0100] ERR CASE 失败');
             expect().assertFail()
-            console.info("====>[Test_Security_Button_Save_Customize_0100] END====");
+            console.info('====>[Test_Security_Button_Save_Customize_0100] END====');
             done();
           }
         }
@@ -120,26 +120,26 @@ export default function saveCompCustomizeTest() {
         }
         events_emitter.once(clickEvent, clickCallback);
       } catch (err) {
-        console.info("====>[Test_Security_Button_Save_Customize_0100] once clickEvent err : " + JSON.stringify(err));
+        console.info('====>[Test_Security_Button_Save_Customize_0100] once clickEvent err : ' + JSON.stringify(err));
       }
       try {
         let driver = Driver.create();
         let button = await driver.findComponent(ON.type('SaveButton'));
         await Utils.sleep(500);
-        console.info("====>[Test_Security_Button_Save_Customize_0100] button is:" + JSON.stringify(button));
+        console.info('====>[Test_Security_Button_Save_Customize_0100] button is:' + JSON.stringify(button));
         await button.click();
         await Utils.sleep(1000);
         let allowBtn = await driver.findComponent(ON.text('允许'));
-        console.info("====>[Test_Security_Button_Save_Customize_0100] allowBtn is:" + JSON.stringify(allowBtn));
+        console.info('====>[Test_Security_Button_Save_Customize_0100] allowBtn is:' + JSON.stringify(allowBtn));
         if(allowBtn !== null){
-          console.info("====>[Test_Security_Button_Save_Customize_0100] allowBtnClick START====");
+          console.info('====>[Test_Security_Button_Save_Customize_0100] allowBtnClick START====');
           await allowBtn.click();
-          console.info("====>[Test_Security_Button_Save_Customize_0100] reClick====");
+          console.info('====>[Test_Security_Button_Save_Customize_0100] reClick====');
         }else{
           expect(false).assertTrue();
         }
       } catch (err) {
-        console.info("====>[Test_Security_Button_Save_Customize_0100] clickSecComponent err : " + JSON.stringify(err));
+        console.info('====>[Test_Security_Button_Save_Customize_0100] clickSecComponent err : ' + JSON.stringify(err));
       }
     });
 
@@ -193,32 +193,32 @@ export default function saveCompCustomizeTest() {
           eventId: 1,
           priority: events_emitter.EventPriority.LOW
         }
-        console.info("====>[Test_Security_Button_Save_Customize_0200] start to publish emit");
+        console.info('====>[Test_Security_Button_Save_Customize_0200] start to publish emit');
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.info("====>[Test_Security_Button_Save_Customize_0200] change component data error: " + err.message);
+        console.info('====>[Test_Security_Button_Save_Customize_0200] change component data error: ' + err.message);
       }
       await Utils.sleep(1000);
       try {
         let clickCallback = (clickData:events_emitter.EventData) => {
           if(clickData.data !=undefined){
-            console.info("====>[Test_Security_Button_Save_Customize_0200] get clickEvent result is: " + JSON.stringify(clickEvent));
-            console.info("====>[Test_Security_Button_Save_Customize_0200] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
+            console.info('====>[Test_Security_Button_Save_Customize_0200] get clickEvent result is: ' + JSON.stringify(clickEvent));
+            console.info('====>[Test_Security_Button_Save_Customize_0200] get clickData.data.clickResult is: ' + JSON.stringify(clickData.data.clickResult));
             if (clickData.data.clickResult == SaveButtonOnClickResult.SUCCESS) {
-              console.info("====>[Test_Security_Button_Save_Customize_0200] 设置权限成功");
+              console.info('====>[Test_Security_Button_Save_Customize_0200] 设置权限成功');
               expect(clickData.data.clickResult == SaveButtonOnClickResult.SUCCESS).assertTrue();
-              console.info("====>[Test_Security_Button_Save_Customize_0200] END====");
+              console.info('====>[Test_Security_Button_Save_Customize_0200] END====');
               done();
             } else {
-              console.info("====>[Test_Security_Button_Save_Customize_0200] 设置权限失败");
+              console.info('====>[Test_Security_Button_Save_Customize_0200] 设置权限失败');
               expect().assertFail()
-              console.info("====>[Test_Security_Button_Save_Customize_0200] END====");
+              console.info('====>[Test_Security_Button_Save_Customize_0200] END====');
               done();
             }
           } else {
-            console.info("====>[Test_Security_Button_Save_Customize_0200] 设置权限失败");
+            console.info('====>[Test_Security_Button_Save_Customize_0200] ERR CASE 失败');
             expect().assertFail()
-            console.info("====>[Test_Security_Button_Save_Customize_0200] END====");
+            console.info('====>[Test_Security_Button_Save_Customize_0200] END====');
             done();
           }
         }
@@ -228,24 +228,24 @@ export default function saveCompCustomizeTest() {
         }
         events_emitter.once(clickEvent, clickCallback);
       } catch (err) {
-        console.info("====>[Test_Security_Button_Save_Customize_0200] once clickEvent err : " + JSON.stringify(err));
+        console.info('====>[Test_Security_Button_Save_Customize_0200] once clickEvent err : ' + JSON.stringify(err));
       }
       try {
         let driver = Driver.create();
         let button = await driver.findComponent(ON.type('SaveButton'));
         await Utils.sleep(500);
-        console.info("====>[Test_Security_Button_Save_Customize_0200] button is:" + JSON.stringify(button));
+        console.info('====>[Test_Security_Button_Save_Customize_0200] button is:' + JSON.stringify(button));
         await button.click();
         await Utils.sleep(1000);
         let allowBtn = await driver.findComponent(ON.text('允许'));
-        console.info("====>[Test_Security_Button_Save_Customize_0200] allowBtn is:" + JSON.stringify(allowBtn));
+        console.info('====>[Test_Security_Button_Save_Customize_0200] allowBtn is:' + JSON.stringify(allowBtn));
         if(allowBtn !== null){
-          console.info("====>[Test_Security_Button_Save_Customize_0200] allowBtnClick START====");
+          console.info('====>[Test_Security_Button_Save_Customize_0200] allowBtnClick START====');
           await allowBtn.click();
-          console.info("====>[Test_Security_Button_Save_Customize_0200] reClick====");
+          console.info('====>[Test_Security_Button_Save_Customize_0200] reClick====');
         }
       } catch (err) {
-        console.info("====>[Test_Security_Button_Save_Customize_0200] clickSecComponent err : " + JSON.stringify(err));
+        console.info('====>[Test_Security_Button_Save_Customize_0200] clickSecComponent err : ' + JSON.stringify(err));
       }
     });
   })
