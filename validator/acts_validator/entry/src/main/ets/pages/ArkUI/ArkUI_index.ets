@@ -116,7 +116,8 @@ struct IndexPage {
     { title: 'AccessibilityDefaultFocusPage', uri: 'pages/ArkUI/AccessibilityDefaultFocusPage' },
     { title: 'AccessibilityScrollTriggerablePage', uri: 'pages/ArkUI/AccessibilityScrollTriggerablePage' },
     { title: 'OnAccessibilityActionIntercept', uri: 'pages/ArkUI/OnAccessibilityActionIntercept' },
-    
+    { title: 'KeyEvent', uri: 'pages/ArkUI/KeyEvent' },
+
   ]
   @State ColorObject: Object[] = letColor;
   @State ColorTrue: number[] = [];
