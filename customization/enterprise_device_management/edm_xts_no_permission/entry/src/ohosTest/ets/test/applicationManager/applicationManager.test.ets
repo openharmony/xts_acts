@@ -311,5 +311,48 @@ export default function applicationManagerTest() {
       }
       done();
     })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_SETALLOWEDKIOSKAPPS_001
+     * @tc.name      : test_setAllowedKioskApps_001
+     * @tc.desc      : test setAllowedKioskApps method
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_setAllowedKioskApps_001", Level.LEVEL2, async (done: Function) => {
+      try {
+        await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+        let bundleNames: Array<string> = [];
+        applicationManager.setAllowedKioskApps(SELFWANT, bundleNames);
+        expect(false).assertTrue();
+      } catch (error) {
+        expect(error.code == 201).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_GETALLOWEDKIOSKAPPS_001
+     * @tc.name      : test_getAllowedKioskApps_001
+     * @tc.desc      : test getAllowedKioskApps method
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_getAllowedKioskApps_001", Level.LEVEL2, async (done: Function) => {
+      try {
+        await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+        let bundleNames: Array<string> = applicationManager.getAllowedKioskApps(SELFWANT);
+        expect(false).assertTrue();
+      } catch (error) {
+        expect(error.code == 201).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
+      }
+      done();
+    })
   })
 }
