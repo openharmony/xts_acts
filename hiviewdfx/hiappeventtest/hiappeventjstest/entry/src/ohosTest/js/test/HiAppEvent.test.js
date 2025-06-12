@@ -1018,7 +1018,13 @@ describe('HiAppEventApiTest', function () {
         console.info('testHiAppEventApi41 start');
         let configInfo = {};
         let expectErr = createError(401, "Invalid param value for event config.");
-        setEventConfigV9Test("MAIN_THREAD_JANK", configInfo, expectErr, done);
+        HiAppEventV9.setEventConfig("MAIN_THREAD_JANK", configInfo).then((data) => {
+            expect(data).assertEqual(0);
+            done();
+        }).catch((err) => {
+            assertErrorEqual(err, expectErr);
+            done();
+        });
         console.info('testHiAppEventApi41 end');
     });
 
