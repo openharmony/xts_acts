@@ -1182,4 +1182,45 @@ describe("SensorJsTest_sensor_42", function () {
             done();
         }
     })
+
+    /*
+     * @tc.number:SUB_SensorsSystem_NEWGRAVITY_JsTest_0270
+     * @tc.name: newGravity_SensorJsTest027
+     * @tc.desc: Functional Use Cases
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
+     */
+    it("newGravity_SensorJsTest027", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------newGravity_SensorJsTest027--------------');
+        const TAG = 'newGravity_SensorJsTest027'
+        try{
+            const deviceId = -1;
+            const result = sensor.getSingleSensorByDeviceSync(sensor.SensorId.GRAVITY, deviceId);
+            if (result.length === 0) {
+                console.info('No sensors found, Test case will return true.');
+                done();
+            } else {
+                const sensorInfoParam = {
+                    deviceId: result[0].deviceId,
+                    sensorIndex: result[0].sensorIndex
+                };
+                const options = {
+                    interval: 100000000,
+                    sensorInfoParam: sensorInfoParam
+                };
+                sensor.on(sensor.SensorId.GRAVITY, callback, options);
+                setTimeout(() => {
+                    console.info('----------------------newGravity_SensorJsTest027 off in--------------');
+                    sensor.off(sensor.SensorId.GRAVITY, sensorInfoParam, callback);
+                    console.info('----------------------newGravity_SensorJsTest027 off end--------------');
+                    done();
+                }, 1000);
+            }
+        } catch (error) {
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
+            done();
+        }
+    })
 })}

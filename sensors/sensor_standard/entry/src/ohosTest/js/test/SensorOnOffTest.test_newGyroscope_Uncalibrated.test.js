@@ -482,4 +482,45 @@ describe("SensorJsTest_sensor_44", function () {
             done();
         }, 1000);
     })
+
+    /*
+     * @tc.number:SUB_SensorsSystem_GYROSCOPE_UNCALIBRATED_JSTest_0310
+     * @tc.name: newGyroscope_Uncalibrated_SensorJsTest031
+     * @tc.desc: Functional Use Cases
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
+     */
+    it("newGyroscope_Uncalibrated_SensorJsTest031", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------newGyroscope_Uncalibrated_SensorJsTest031--------------');
+        const TAG = 'newGyroscope_Uncalibrated_SensorJsTest031'
+        try{
+            const deviceId = -1;
+            const result = sensor.getSingleSensorByDeviceSync(sensor.SensorId.GYROSCOPE_UNCALIBRATED, deviceId);
+            if (result.length === 0) {
+                console.info('No sensors found, Test case will return true.');
+                done();
+            } else {
+                const sensorInfoParam = {
+                    deviceId: result[0].deviceId,
+                    sensorIndex: result[0].sensorIndex
+                };
+                const options = {
+                    interval: 100000000,
+                    sensorInfoParam: sensorInfoParam
+                };
+                sensor.on(sensor.SensorId.GYROSCOPE_UNCALIBRATED, callback, options);
+                setTimeout(() => {
+                    console.info('--------------------newGyroscope_Uncalibrated_SensorJsTest031 off in------------');
+                    sensor.off(sensor.SensorId.GYROSCOPE_UNCALIBRATED, sensorInfoParam, callback);
+                    console.info('--------------------newGyroscope_Uncalibrated_SensorJsTest031 off end------------');
+                    done();
+                }, 1000);
+            }
+        } catch (error) {
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
+            done();
+        }
+    })
 })}

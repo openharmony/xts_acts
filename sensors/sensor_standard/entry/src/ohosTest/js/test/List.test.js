@@ -52,6 +52,8 @@ import SensorJsTest_sensor_63 from './SensorOnOffTest.test_SensorFrequencyTest.t
 import SensorJsTest_sensor_64 from './SensorOnOffTest.test_newSensorSync.test.js'
 import SensorOnOff_ErrCode_Test from './SensorOnOff_ErrCode_Test.test.js'
 import SensorJsTest_sensor_58 from './SensorOnOffTest.test_newHeart_Rate_errorCode.test.js'
+import SensorJsTest_getSensorListbyDevice from './SensorOnOffTestGetSensorListByDevice.test.js'
+import SensorJsTest_getSingleSensorbyDevice from './SensorOnOffTestGetSingleSensorTypeByDevice.test.js'
 export default function testsuite() {
 		SystemParameterTest()
 		SensorJsTest_sensor_2()
@@ -70,7 +72,7 @@ export default function testsuite() {
 		SensorJsTest_sensor_4()
 		SensorJsTest_sensor_31()
 		SensorJsTest_sensor_42()
-		SensorJsTest_sensor_9()			
+		SensorJsTest_sensor_9()
 		SensorJsTest_sensor_37()
 		SensorJsTest_sensor_15()
 		SensorJsTest_sensor_49()
@@ -93,4 +95,6 @@ export default function testsuite() {
         SensorJsTest_sensor_64()
         SensorOnOff_ErrCode_Test()
 		SensorJsTest_sensor_58()
-}                    
+		SensorJsTest_getSensorListbyDevice()
+		SensorJsTest_getSingleSensorbyDevice()
+}

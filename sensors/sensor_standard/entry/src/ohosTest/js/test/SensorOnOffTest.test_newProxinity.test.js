@@ -291,5 +291,46 @@ describe("SensorJsTest_sensor_54", function () {
             done();
         }
     })
+
+    /*
+     * @tc.number:SUB_SensorsSystem_Proxinity_JSTest_0230
+     * @tc.name: newProxinity_SensorJsTest023
+     * @tc.desc: Functional Use Cases
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
+     */
+    it("newProxinity_SensorJsTest023", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------newProxinity_SensorJsTest023--------------');
+        const TAG = 'newProxinity_SensorJsTest023'
+        try{
+            const deviceId = -1;
+            const result = sensor.getSingleSensorByDeviceSync(sensor.SensorId.PROXIMITY, deviceId);
+            if (result.length === 0) {
+                console.info('No sensors found, Test case will return true.');
+                done();
+            } else {
+                const sensorInfoParam = {
+                    deviceId: result[0].deviceId,
+                    sensorIndex: result[0].sensorIndex
+                };
+                const options = {
+                    interval: 100000000,
+                    sensorInfoParam: sensorInfoParam
+                };
+                sensor.on(sensor.SensorId.PROXIMITY, callback, options);
+                setTimeout(() => {
+                    console.info('-------------------newProxinity_SensorJsTest023 off in------------');
+                    sensor.off(sensor.SensorId.PROXIMITY, sensorInfoParam, callback);
+                    console.info('-------------------newProxinity_SensorJsTest023 off end-----------');
+                    done();
+                }, 1000);
+            }
+        } catch (error) {
+            console.info(TAG + ' fail, errCode:' + error.code + ' ,msg:' + error.message);
+            expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
+            done();
+        }
+    })
 })
 }
