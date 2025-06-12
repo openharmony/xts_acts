@@ -20,6 +20,7 @@ group("storage") {
       "storagebackupextensionjstest:storagebackupextension_js_test",
       "storagedownloadcloudsyncjstest:storagedownloadcloudsync_js_test",
       "storageenvironmentjstest:storageenvironment_js_test",
+      "storageenvironmentjsteststatic:storageenvironment_js_test_static",
       "storageenvironmentndktest:ActsStorageEnvironmentNdkTest",
       "storagefileioerrorjstest:storagefileioerror_js_test",
       "storagefileiojstest:storagefileio_js_test",
