@@ -552,9 +552,7 @@ static napi_value TestUpdatePipContentStatus(napi_env env, napi_callback_info in
         napi_create_int32(env, ret0, &result);
         return result;
     }
-    uint32_t controlType = 0;
-    uint32_t status = 1;
-    uint32_t status2 = 0;
+    uint32_t controlType, status2 = 0, status = 1;
     int32_t ret = OH_PictureInPicture_UpdatePipControlStatus(controllerId,
         static_cast<PictureInPicture_PipControlType>(controlType),
         static_cast<PictureInPicture_PipControlStatus>(status));
