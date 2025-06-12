@@ -12,9 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, TestType, Size, Level } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 import huks from '@ohos.security.huks';
-import { GenParam, GetDataBySize, DeleteParam } from './utils/HuksOptionUtil';
+import { DeleteParam, GenParam } from './utils/huks/HuksOptionsUtils';
+import { GetDataBySize } from './utils/CommonUtils';
 
 export default function SecurityHUKSKeyGenerateListAliasesTest() {
   let DEOption: huks.HuksOptions;

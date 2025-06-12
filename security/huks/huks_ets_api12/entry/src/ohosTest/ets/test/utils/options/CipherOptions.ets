@@ -12,10 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { huks } from "@kit.UniversalKeystoreKit";
-import { StringToUint8Array } from "../utils/CommonUtil";
-import { SetParam } from "../utils/HuksOptionUtil";
-import { GetAesGenerateOption } from "./GenerateKeyOptions";
+import { huks } from '@kit.UniversalKeystoreKit';
+import { StringToUint8Array } from '../CommonUtils';
+import { SetParam } from '../huks/HuksOptionsUtils';
+import { GetAesGenerateOption } from './GenerateKeyOptions';
 
 
 export function GetAesGcmOptions(): huks.HuksOptions {

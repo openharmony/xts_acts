@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import { huks } from '@kit.UniversalKeystoreKit';
-import { SetParam } from '../utils/HuksOptionUtil';
+import { SetParam } from '../huks/HuksOptionsUtils';
 
 export function GetAccessControlOptions(): huks.HuksOptions {
   let huksOption: huks.HuksOptions = {
