@@ -171,6 +171,7 @@ export default function startAndTerminateTest() {
               expect(uiAbility02OnCreate).assertEqual('uiAbility02OnCreateSuccess');
               expect(uiAbility02OnWindowStageCreate).assertEqual('uiAbility02OnWindowStageCreateSuccess');
               expect(uiAbility02OnForeground).assertEqual('uiAbility02OnForegroundSuccess');
+              hilog.info(0x0000, 'testTag', '%{public}s', `${tag}, it end`);
               done();
             }, 1000);
           }
@@ -276,6 +277,7 @@ export default function startAndTerminateTest() {
               expect(entryAbilityOnCreate).assertEqual('entryAbilityOnCreateSuccess');
               expect(entryAbilityOnWindowStageCreate).assertEqual('entryAbilityOnWindowStageCreateSuccess');
               expect(entryAbilityOnForeground).assertEqual('entryAbilityOnForegroundSuccess');
+              hilog.info(0x0000, 'testTag', '%{public}s', `${tag}, it end`);
               done();
             }, 1000);
           }
@@ -386,6 +388,7 @@ export default function startAndTerminateTest() {
               expect(uiAbility04OnForeground01).assertEqual('uiAbility04OnForeground01Success');
               expect(uiAbility04OnForeground02).assertEqual('uiAbility04OnForeground02Success');
               expect(uiAbility04OnBackground).assertEqual('uiAbility04OnBackgroundSuccess');
+              hilog.info(0x0000, 'testTag', '%{public}s', `${tag}, it end`);
               done();
             }, 1000);
           }
@@ -513,6 +516,7 @@ export default function startAndTerminateTest() {
               expect(uiAbility07OnCreate).assertEqual('uiAbility07OnCreateSuccess');
               expect(uiAbility07OnWindowStageCreate).assertEqual('uiAbility07OnWindowStageCreateSuccess');
               expect(uiAbility07OnForeground).assertEqual('uiAbility07OnForegroundSuccess');
+              hilog.info(0x0000, 'testTag', '%{public}s', `${tag}, it end`);
               done();
             }, 1000);
           }
@@ -659,6 +663,7 @@ export default function startAndTerminateTest() {
               expect(abilityTest01OnWindowStageCreate).assertEqual('abilityTest01OnWindowStageCreateSuccess');
               expect(abilityTest01OnForeground).assertEqual('abilityTest01OnForegroundSuccess');
               expect(abilityTest01OnBackground).assertEqual('abilityTest01OnBackgroundSuccess');
+              hilog.info(0x0000, 'testTag', '%{public}s', `${tag}, it end`);
               done();
             }, 1000);
           }
@@ -764,6 +769,7 @@ export default function startAndTerminateTest() {
               expect(uiAbility09OnForeground02).assertEqual('uiAbility09OnForeground02Success');
               expect(uiAbility09OnBackground01).assertEqual('uiAbility09OnBackground01Success');
               expect(uiAbility09OnBackground02).assertEqual('uiAbility09OnBackground02Success');
+              hilog.info(0x0000, 'testTag', '%{public}s', `${tag}, it end`);
               done();
             }, 1000);
           }
@@ -879,6 +885,7 @@ export default function startAndTerminateTest() {
               expect(uiAbility10OnCreate).assertEqual('uiAbility10OnCreateSuccess');
               expect(uiAbility10OnWindowStageCreate).assertEqual('uiAbility10OnWindowStageCreateSuccess');
               expect(uiAbility10OnForeground).assertEqual('uiAbility10OnForegroundSuccess');
+              hilog.info(0x0000, 'testTag', '%{public}s', `${tag}, it end`);
               done();
             }, 1000);
           }
@@ -952,6 +959,7 @@ export default function startAndTerminateTest() {
               expect(uiAbility10OnCreate).assertEqual('uiAbility10OnCreateSuccess');
               expect(uiAbility10OnWindowStageCreate).assertEqual('uiAbility10OnWindowStageCreateSuccess');
               expect(uiAbility10OnForeground).assertEqual('uiAbility10OnForegroundSuccess');
+              hilog.info(0x0000, 'testTag', '%{public}s', `${tag}, it end`);
               done();
             }, 1000);
           }
@@ -1023,6 +1031,7 @@ export default function startAndTerminateTest() {
               expect(uiAbility10OnCreate).assertEqual('uiAbility10OnCreateSuccess');
               expect(uiAbility10OnWindowStageCreate).assertEqual('uiAbility10OnWindowStageCreateSuccess');
               expect(uiAbility10OnForeground).assertEqual('uiAbility10OnForegroundSuccess');
+              hilog.info(0x0000, 'testTag', '%{public}s', `${tag}, it end`);
               done();
             }, 1000);
           }
