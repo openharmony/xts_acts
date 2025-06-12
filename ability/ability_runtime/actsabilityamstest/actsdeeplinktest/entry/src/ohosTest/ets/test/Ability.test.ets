@@ -19,7 +19,7 @@ import{ appManager, common, Want } from '@kit.AbilityKit';
 import{ BusinessError, commonEventManager } from '@kit.BasicServicesKit';
 import{ data } from '@kit.TelephonyKit';
 import { systemParameterEnhance } from '@kit.BasicServicesKit';
-import { Driver, ON ,Component } from '@kit.TestKit';
+import { Driver, ON, Component, MatchPattern } from '@kit.TestKit';
 
 const TAG: string = 'ProcessModel';
 const DOMAIN_NUMBER: number = 0xFF00;
