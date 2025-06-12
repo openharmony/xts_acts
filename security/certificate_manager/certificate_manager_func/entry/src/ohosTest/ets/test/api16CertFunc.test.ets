@@ -915,5 +915,85 @@ export default function api16CertFuncTestUnit() {
       done();
     });
 
+    /**
+     * @tc.number SUB_Security_CertManager_getCertificateStorePath_0150
+     * @tc.name test getCertificateStorePath interface
+     * @tc.desc abnormal test
+     * @tc.size SmallTest
+     * @tc.level Level2
+     * @tc.type Function
+     */
+    it('SUB_Security_CertManager_getCertificateStorePath_0150', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      console.info('SUB_Security_CertManager_getCertificateStorePath_0150 start');
+      let property : certManager.CertStoreProperty = {
+        certType: certManager.CertType.CA_CERT_SYSTEM,
+        certAlg: 299,
+      };
+
+      try {
+        let smSystemCAPath = certManager.getCertificateStorePath(property);
+        console.info(`SUB_Security_CertManager_getCertificateStorePath_0150 get SM system ca path: ${smSystemCAPath}`);
+      } catch (err) {
+        console.error(`SUB_Security_CertManager_getCertificateStorePath_0150 Failed to get store path. Code: ${err.code}, message: ${err.message}`);
+        expect(err.code).assertEqual(401);
+      }
+      console.info('SUB_Security_CertManager_getCertificateStorePath_0150 end');
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_CertManager_getCertificateStorePath_0151
+     * @tc.name test getCertificateStorePath interface
+     * @tc.desc abnormal test
+     * @tc.size SmallTest
+     * @tc.level Level2
+     * @tc.type Function
+     */
+    it('SUB_Security_CertManager_getCertificateStorePath_0151', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      console.info('SUB_Security_CertManager_getCertificateStorePath_0151 start');
+      let property : certManager.CertStoreProperty = {
+        certType: certManager.CertType.CA_CERT_SYSTEM,
+        certAlg: 1,
+      };
+
+      try {
+        let smSystemCAPath = certManager.getCertificateStorePath(property);
+        console.info(`SUB_Security_CertManager_getCertificateStorePath_0151 get SM system ca path: ${smSystemCAPath}`);
+        expect(smSystemCAPath).assertEqual('/etc/security/certificates')
+      } catch (err) {
+        console.error(`SUB_Security_CertManager_getCertificateStorePath_0151 Failed to get store path. Code: ${err.code}, message: ${err.message}`);
+        expect(null).assertFail();
+      }
+      console.info('SUB_Security_CertManager_getCertificateStorePath_0151 end');
+      done();
+    });
+
+        /**
+     * @tc.number SUB_Security_CertManager_getCertificateStorePath_0154
+     * @tc.name test getCertificateStorePath interface
+     * @tc.desc abnormal test
+     * @tc.size SmallTest
+     * @tc.level Level3
+     * @tc.type Function
+     */
+    it('SUB_Security_CertManager_getCertificateStorePath_0154', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      console.info('SUB_Security_CertManager_getCertificateStorePath_0154 start');
+      let property : certManager.CertStoreProperty = {
+        certType: certManager.CertType.CA_CERT_USER,
+        certScope: certManager.CertScope.CURRENT_USER,
+        certAlg: certManager.CertAlgorithm.SM,
+      };
+
+      try {
+        let userCACurrentPath = certManager.getCertificateStorePath(property);
+        console.info(`SUB_Security_CertManager_getCertificateStorePath_0154 getCertificateStorePath Success to get current user's user ca path: ${userCACurrentPath}`);
+        expect(userCACurrentPath).assertEqual('/data/certificates/user_cacerts/100');
+      } catch (err) {
+        console.error(`SUB_Security_CertManager_getCertificateStorePath_0154 Failed to get store path. Code: ${err.code}, message: ${err.message}`);
+        expect(null).assertFail();
+      }
+      console.info('SUB_Security_CertManager_getCertificateStorePath_0154 end');
+      done();
+    });
   })
 }
