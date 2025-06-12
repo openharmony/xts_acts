@@ -1747,7 +1747,7 @@ it('testSetResizeByDragEnabledTrue_0100', TestType.FUNCTION | Size.MEDIUMTEST | 
       })
 
     /**
-     * @tc.number     : SUB_BASIC_WMS_XTS_SYSTEMAPI_ENABLEDRAG_0500
+     * @tc.number     : SUB_BASIC_WMS_XTS_SYSTEMAPI_ENABLEDRAG_0600
      * @tc.name       : testWindowEnableDragFalseDialogWindow
      * @tc.desc       : testWindowEnableDragFalseDialogWindow
      * @tc.size       : MediumTest
