@@ -29,6 +29,8 @@ import SearchEnableAutoSpacingTest from './SearchTest/SearchEnableAutoSpacing.te
 import TextAreaEnableAutoSpacingTest from './TextAreaTest/TextAreaEnableAutoSpacing.test';
 import TextInputEnableAutoSpacingTest from './TextInputTest/TextInputEnableAutoSpacing.test';
 import ImageOnErrorTest from './ImageErrorTest/ImageOnError.test';
+import TextAreaMinLinesTest from './TextAreaTest/TextAreaMinLines.test';
+import RichEditorUndoStyleTest from './RichEditorTest/RichEditorUndoStyle.test';
 
 
 export default function testsuite() {
@@ -48,4 +50,6 @@ export default function testsuite() {
   TextAreaEnableAutoSpacingTest();
   TextInputEnableAutoSpacingTest();
   ImageOnErrorTest();
+  TextAreaMinLinesTest();
+  RichEditorUndoStyleTest();
 }
