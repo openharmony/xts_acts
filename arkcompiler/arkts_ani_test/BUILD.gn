@@ -1,4 +1,4 @@
-# Copyright (C) 2023 Huawei Device Co., Ltd.
+# Copyright (c) 2024 Huawei Device Co., Ltd.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -11,16 +11,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//build/ohos_var.gni")
+import("//test/xts/tools/build/suite.gni")
 
-group("arkcompiler") {
+ohos_js_app_static_suite("ActsArktsAniStaticTest") {
+#   test_hap = true
   testonly = true
-  if (is_standard_system) {
-    deps = [
-      "arkts_module_test:ActsArktsModuleTest",
-      "ecmanewfeatures:ActsEcmaNewFeaturesTest",
-      "esmodule:esmodule",
-      "arkts_ani_test:ActsArktsAniStaticTest",
-    ]
-  }
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsArktsAniStaticTest"
+  part_name = "ets_runtime"
+  subsystem_name = "arkcompiler"
 }
+
