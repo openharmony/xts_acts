@@ -546,7 +546,7 @@ export default function nativeAVScreenCaptureNdkTest() {
       console.info(Tag + "multiAVScreenCaptureCreate-------------start :");
       let sdkApiVersionInfo = deviceinfo.sdkApiVersion;
       console.info(Tag + "sdkApiVersionInfo-------------res:" + sdkApiVersionInfo);
-      if (sdkApiVersionInfo >= 17 ) {
+      if (sdkApiVersionInfo > 17 ) {
         let result: number = myScreenCaptureNdk.multiAVScreenCaptureCreate();
         console.info(Tag + "multiAVScreenCaptureCreate-------------res:" + result);
         expect(result).assertEqual(3);
