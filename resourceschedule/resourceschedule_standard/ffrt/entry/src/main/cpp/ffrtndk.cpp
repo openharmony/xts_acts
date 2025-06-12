@@ -1539,11 +1539,12 @@ static napi_value QueueApiTest014(napi_env env, napi_callback_info info)
     if (queue_handle == nullptr) {
         result += 1;
     }
-    ffrt_task_handle_t handle = ffrt_queue_submit_h_f(queue_handle, OnePlusForTest, &result, nullptr);
-    if (handle == nullptr) {
+    int a = 0;
+    ffrt_task_handle_t handle = ffrt_queue_submit_h_f(queue_handle, OnePlusForTest, &a, nullptr);
+    ffrt_queue_wait(handle);
+    if (a != 1) {
         result += 1;
     }
-    ffrt_queue_wait(handle);
     // 销毁队列
     ffrt_queue_attr_destroy(&queue_attr);
     ffrt_task_handle_destroy(handle);
@@ -1563,7 +1564,12 @@ static napi_value QueueApiTest015(napi_env env, napi_callback_info info)
     if (queue_handle == nullptr) {
         result += 1;
     }
-    ffrt_queue_submit_f(queue_handle, OnePlusForTest, &result, nullptr);
+    int a = 0;
+    ffrt_queue_submit_f(queue_handle, OnePlusForTest, &a, nullptr);
+    usleep(SLEEP_TIME);
+    if (a != 1) {
+        result += 1;
+    }
     // 销毁队列
     ffrt_queue_attr_destroy(&queue_attr);
     ffrt_queue_destroy(queue_handle);
@@ -2656,17 +2662,16 @@ static napi_value SubmitHBasicTest002(napi_env env, napi_callback_info info)
 static napi_value SubmitHFTest001(napi_env env, napi_callback_info info)
 {
     int result = 0;
-    const uint32_t sleepTime = 5 * 1000;
+    int a = 0;
     ffrt_task_attr_t attr;
     ffrt_task_attr_init(&attr);
-    ffrt_task_handle_t task = ffrt_submit_h_f(OnePlusForTest, &result, nullptr, nullptr, &attr);
-    if (task == nullptr) {
-        result += 1;
-    }
+    ffrt_task_handle_t task = ffrt_submit_h_f(OnePlusForTest, &a, nullptr, nullptr, &attr);
     const std::vector<ffrt_dependence_t> wait_deps = {{ffrt_dependence_task, task}};
     ffrt_deps_t wait{static_cast<uint32_t>(wait_deps.size()), wait_deps.data()};
     ffrt_wait_deps(&wait);
-    usleep(sleepTime);
+    if (a != 1) {
+        result += 1;
+    }
     ffrt_task_attr_destroy(&attr);
     ffrt_task_handle_destroy(task);
     napi_value flag = nullptr;
@@ -2674,14 +2679,17 @@ static napi_value SubmitHFTest001(napi_env env, napi_callback_info info)
     return flag;
 }
 
-static napi_value SubmitHFTest002(napi_env env, napi_callback_info info)
+static napi_value SubmitFTest001(napi_env env, napi_callback_info info)
 {
     int result = 0;
-    const uint32_t sleepTime = 5 * 1000;
+    int a = 0;
     ffrt_task_attr_t attr;
     ffrt_task_attr_init(&attr);
-    ffrt_submit_f(OnePlusForTest, &result, nullptr, nullptr, &attr);
-    usleep(sleepTime);
+    ffrt_submit_f(OnePlusForTest, &a, nullptr, nullptr, &attr);
+    ffrt_wait();
+    if (a != 1) {
+        result += 1;
+    }
     ffrt_task_attr_destroy(&attr);
     napi_value flag = nullptr;
     napi_create_double(env, result, &flag);
@@ -3973,7 +3981,7 @@ static napi_value Init(napi_env env, napi_value exports)
         { "submitHBasicTest001", nullptr, SubmitHBasicTest001, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "submitHBasicTest002", nullptr, SubmitHBasicTest002, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "submitHFTest001", nullptr, SubmitHFTest001, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "submitHFTest002", nullptr, SubmitHFTest002, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "submitFTest001", nullptr, SubmitFTest001, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "submitHInDependEmptyTest", nullptr, SubmitHInDependEmptyTest, nullptr, nullptr, nullptr,
             napi_default, nullptr },
         { "submitHInDependNullptrTest", nullptr, SubmitHInDependNullptrTest, nullptr, nullptr, nullptr,
