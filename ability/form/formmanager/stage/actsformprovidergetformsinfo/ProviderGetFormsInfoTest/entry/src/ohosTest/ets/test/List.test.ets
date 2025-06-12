@@ -14,8 +14,10 @@
  */
 import getFormsInfoTest from './GetFormsInfoTest.test'
 import formApiCoverTest from './FormApiCoverTest.test';
+import OverflowApiCoverTest from './OverflowApiCoverTest.test';
 
 export default function testsuite() {
   getFormsInfoTest();
   formApiCoverTest();
+  OverflowApiCoverTest();
 }
