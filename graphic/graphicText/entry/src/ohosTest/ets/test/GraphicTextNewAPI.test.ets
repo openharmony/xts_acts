@@ -80,7 +80,7 @@ export default function graphicTextNewAPI() {
         let paragraphBuilder: text.ParagraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
         let textData = "测试 loadFontSync 加载字体HarmonyClock_01.ttf";
         paragraphBuilder.addText(textData);
-        expect().assertTrue();
+        expect(true).assertTrue();
         let paragraph: text.Paragraph = paragraphBuilder.build();
         params.backgroundRect = {
           color: {
