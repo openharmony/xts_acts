@@ -6424,36 +6424,37 @@ export default function windowPropertiesTest() {
           console.info(`${caseName} isPiPSupported: ${enabled}`);
           if (!enabled) {
             done();
-          }
-          let windowStatusType = mainWindow.getWindowStatus();
-          console.info(`${caseName} windowStatusType: ${JSON.stringify(windowStatusType)}`);
-          if (windowStatusType !== window.WindowStatusType.FULL_SCREEN) {
-            await mainWindow.maximize();
+          } else {
+            let windowStatusType = mainWindow.getWindowStatus();
+            console.info(`${caseName} windowStatusType: ${JSON.stringify(windowStatusType)}`);
+            if (windowStatusType !== window.WindowStatusType.FULL_SCREEN) {
+              await mainWindow.maximize();
+              await sleep(200);
+              isMaximize = true;
+            }
+            await pipController.startPiP();
             await sleep(200);
-            isMaximize = true;
+            window.getGlobalWindowMode(0).then(async (data: number) => {
+              console.info(`${caseName} Succeeded in calling getGlobalWindowMode. data: ${data}`);
+              expect(data).assertEqual(9);
+              if (isMaximize) {
+                await mainWindow.recover();
+              }
+              await pipController?.stopPiP();
+              done();
+            }).catch(async (err: BusinessError) => {
+              console.error(`${caseName} Failed to call getGlobalWindowMode. Cause: ${JSON.stringify(err)}`);
+              if (isMaximize) {
+                await mainWindow.recover();
+              }
+              if (err.code === 801) {
+                done();
+              } else {
+                expect().assertFail();
+                done();
+              }
+            });
           }
-          await pipController.startPiP();
-          await sleep(200);
-          window.getGlobalWindowMode(0).then(async (data: number) => {
-            console.info(`${caseName} Succeeded in calling getGlobalWindowMode. data: ${data}`);
-            expect(data).assertEqual(9);
-            if (isMaximize) {
-              await mainWindow.recover();
-            }
-            await pipController?.stopPiP();
-            done();
-          }).catch(async (err: BusinessError) => {
-            console.error(`${caseName} Failed to call getGlobalWindowMode. Cause: ${JSON.stringify(err)}`);
-            if (isMaximize) {
-              await mainWindow.recover();
-            }
-            if (err.code === 801) {
-              done();
-            } else {
-              expect().assertFail();
-              done();
-            }
-          });
         } catch (error) {
           console.error(`${caseName} Failed2 to call getGlobalWindowMode. Cause: ${JSON.stringify(error)}`);
           if (isMaximize) {
@@ -6493,17 +6494,26 @@ export default function windowPropertiesTest() {
             ctx: context
           };
           subWindowClass = await window.createWindow(config);
+
           sleep(200);
           await subWindowClass.setUIContent('testability/pages/First/index2');
           await sleep(200);
           await subWindowClass.showWindow();
           await sleep(200);
+          console.info(`${caseName} Succeeded in showWindow`);
           window.getGlobalWindowMode(0).then(async (data: number) => {
             console.info(`${caseName} Succeeded in calling getGlobalWindowMode. data: ${data}`);
             expect(data).assertEqual(5);
-            await mainWindow.recover();
             await subWindowClass?.destroyWindow();
-            done();
+            try{
+              await mainWindow.recover();
+              done()
+            }catch (err) {
+              console.error(`${caseName} recover failed. data: ${err.code}`);
+              if(err.code == 801){
+                done()
+              }
+            }
           }).catch(async (err: BusinessError) => {
             console.error(`${caseName} Failed to call getGlobalWindowMode. Cause: ${JSON.stringify(err)}`);
             if (isPCStatus != '' || isAutoWindow == 'true') {
@@ -6627,29 +6637,34 @@ export default function windowPropertiesTest() {
           contentHeight: 500
         };
         try {
-          // let mainWindow = windowStage.getMainWindowSync();
           pipController = await pipWindow.create(config);
           await sleep(200);
-          await pipController.startPiP();
-          await sleep(200);
-          window.getGlobalWindowMode(0).then(async (data: number) => {
-            console.info(`${caseName} Succeeded in calling getGlobalWindowMode. data: ${data}`);
-            if (isPCStatus != '' || isAutoWindow == 'true') {
-              expect(data).assertEqual(12);
-            }
-            await pipController?.stopPiP();
-
+          let enabled = pipController.isPiPSupported();
+          console.info(`${caseName} isPiPSupported: ${enabled}`);
+          if (!enabled) {
             done();
-          }).catch(async (err: BusinessError) => {
-            console.error(`${caseName} Failed to call getGlobalWindowMode. Cause: ${JSON.stringify(err)}`);
-            await pipController?.stopPiP();
-            if (err.code === 801) {
+          } else {
+            await pipController.startPiP();
+            await sleep(200);
+            window.getGlobalWindowMode(0).then(async (data: number) => {
+              console.info(`${caseName} Succeeded in calling getGlobalWindowMode. data: ${data}`);
+              if (isPCStatus != '' || isAutoWindow == 'true') {
+                expect(data).assertEqual(12);
+              }
+              await pipController?.stopPiP();
+
               done();
-            } else {
-              expect().assertFail();
-              done();
-            }
-          });
+            }).catch(async (err: BusinessError) => {
+              console.error(`${caseName} Failed to call getGlobalWindowMode. Cause: ${JSON.stringify(err)}`);
+              await pipController?.stopPiP();
+              if (err.code === 801) {
+                done();
+              } else {
+                expect().assertFail();
+                done();
+              }
+            });
+          }
         } catch (error) {
           console.error(`${caseName} Failed2 to call getGlobalWindowMode. Cause: ${JSON.stringify(error)}`);
           if (error.code === 801) {
@@ -6692,36 +6707,41 @@ export default function windowPropertiesTest() {
           }
           pipController = await pipWindow.create(config);
           await sleep(200);
-          await pipController.startPiP();
-          await sleep(200);
-          subWindowClass = await windowStage.createSubWindow('testGetGlobalWindowMode_FullScreeen_Pip_And_Float');
-          await subWindowClass.setUIContent('testability/pages/First/index2');
-          await sleep(200);
-          await subWindowClass.showWindow();
-          await sleep(200);
-          window.getGlobalWindowMode(0).then(async (data: number) => {
-            console.info(`${caseName} Succeeded in calling getGlobalWindowMode. data: ${data}`);
-            expect(data).assertEqual(13);
-            await pipController?.stopPiP();
-            await subWindowClass?.destroyWindow();
-            if (isMaximized) {
-              await mainWindow.recover();
-            }
+          if(!pipController.isPiPSupported()){
+            console.info(`${caseName} pipController.isPiPSupported(). data: ${pipController.isPiPSupported()}`);
             done();
-          }).catch(async (err: BusinessError) => {
-            console.error(`${caseName} Failed to call getGlobalWindowMode. Cause: ${JSON.stringify(err)}`);
-            await pipController?.stopPiP();
-            await subWindowClass?.destroyWindow();
-            if (isMaximized) {
-              await mainWindow.recover();
-            }
-            if (err.code === 801) {
+          } else {
+            await pipController.startPiP();
+            await sleep(200);
+            subWindowClass = await windowStage.createSubWindow('testGetGlobalWindowMode_FullScreeen_Pip_And_Float');
+            await subWindowClass.setUIContent('testability/pages/First/index2');
+            await sleep(200);
+            await subWindowClass.showWindow();
+            await sleep(200);
+            window.getGlobalWindowMode(0).then(async (data: number) => {
+              console.info(`${caseName} Succeeded in calling getGlobalWindowMode. data: ${data}`);
+              expect(data).assertEqual(13);
+              await pipController?.stopPiP();
+              await subWindowClass?.destroyWindow();
+              console.error(`${caseName} isMaximized: ${isMaximized}`);
+              if (isMaximized) {
+                await mainWindow.recover();
+              }
               done();
-            } else {
-              expect().assertFail();
-              done();
-            }
-          });
+            }).catch(async (err: BusinessError) => {
+              console.error(`${caseName} Failed to call getGlobalWindowMode. Cause: ${JSON.stringify(err)}`);
+              if (err.code === 801) {
+                console.error(`${caseName} 11111...`);
+                done();
+              } else {
+                if (isMaximized) {
+                  await mainWindow.recover();
+                }
+                expect().assertFail();
+                done();
+              }
+            });
+          }
         } catch (error) {
           console.error(`${caseName} Failed2 to call getGlobalWindowMode. Cause: ${JSON.stringify(error)}`);
           await subWindowClass?.destroyWindow();
