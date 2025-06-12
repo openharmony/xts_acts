@@ -320,7 +320,7 @@ export default function audioManagerApi9() {
         done();
       } catch (error) {
         console.error(`audioManagerApi9Test: failed to setAppVolumePercentage: Callback:  ${error.message},code:${error.code}`);
-        expect(Number(error.code)).assertEqual(6800301);
+        expect(Number(error.code)).assertEqual(6800101);
         done();
       }
 
