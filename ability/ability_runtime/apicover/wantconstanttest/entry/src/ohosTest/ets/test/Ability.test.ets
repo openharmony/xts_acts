@@ -104,5 +104,18 @@ export default function abilityTest() {
         .assertEqual('ohos.param.atomicservice.subpackageName');
       done();
     })
+
+    /*
+     * @tc.number  SUB_AA_OpenHarmony_WantConstantCover_0600
+     * @tc.name    test_ability_abilityBase_wantConstant_0600
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+    it('test_ability_abilityBase_wantConstant_0600', Level.LEVEL0, async (done: Function) => {
+      TAG = 'SUB_AA_OpenHarmony_WantConstantCover_0600 ==>';
+      expect(wantConstant.Params.ATOMIC_SERVICE_SHARE_ROUTER)
+        .assertEqual('ohos.params.atomicservice.shareRouter');
+      done();
+    })
   })
 }
