@@ -44,7 +44,7 @@ static napi_value SetConfigCookieSync(napi_env env, napi_callback_info info)
     napi_value args[4] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
-    char *url = GetStringValue(env,args[0]);
+    char *url = GetStringValue(env, args[0]);
     OH_LOG_INFO(LOG_APP,  "SetConfigCookieSync url: %{public}s", url);
 
     char *cookieValue = GetStringValue(env, args[1]);
@@ -91,7 +91,6 @@ static napi_value GetFetchCookieSync(napi_env env, napi_callback_info info)
     ArkWeb_ErrorCode resultCode = cookieManager->fetchCookieSync(url, incognito, includeHttpOnly, &cookieValue);
     OH_LOG_INFO(LOG_APP,  "fetchCookieSync resultCode: %{public}d, cookieValue: %{public}s", resultCode, cookieValue);
 
-
     napi_value resultValue;
     napi_create_string_utf8(env, cookieValue, NAPI_AUTO_LENGTH, &resultValue);
 
@@ -103,7 +102,8 @@ static napi_value GetFetchCookieSync(napi_env env, napi_callback_info info)
 
 
 EXTERN_C_START
-static napi_value Init(napi_env env, napi_value exports) {
+static napi_value Init(napi_env env, napi_value exports)
+{
     napi_property_descriptor desc[] = {
         {"setConfigCookieSync", nullptr, SetConfigCookieSync, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"getFetchCookieSync", nullptr, GetFetchCookieSync, nullptr, nullptr, nullptr, napi_default, nullptr},
