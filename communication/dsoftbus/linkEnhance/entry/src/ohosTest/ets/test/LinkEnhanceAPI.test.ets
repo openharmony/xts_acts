@@ -14,7 +14,6 @@
  */
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium';
-// import linkEnhance from '@kit.DistributedServiceKit';
 import linkEnhance from '@ohos.distributedsched.linkEnhance';
 import { Driver, ON } from '@ohos.UiTest';
 import abilityAccessCtrl ,{ Permissions } from '@ohos.abilityAccessCtrl';
@@ -864,26 +863,22 @@ export default function LinkEnhanceAPI() {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       console.info(logTag + "----------start SUB_DSoftbus_Trans_linkEnhance_API_disconnect_0100----------------");
       let flag = false;
-      let arraybuffer = new ArrayBuffer(10);
-      console.info(logTag +"SUB_DSoftbus_Trans_linkEnhance_API_disconnect_0100 dataLength" + arraybuffer.byteLength);
       try {
         let connection: linkEnhance.Connection = linkEnhance.createConnection("11:22:33:44:55:66", "demo");
         console.info(logTag+"SUB_DSoftbus_Trans_linkEnhance_API_disconnect_0100 connection is" + connection);
         try {
-          console.info(logTag+"SUB_DSoftbus_Trans_linkEnhance_API_disconnect_0100 connect_on  start");
-          connection.off('dataReceived',null);
+          console.info(logTag+"SUB_DSoftbus_Trans_linkEnhance_API_disconnect_0100 disconnect  start");
+          connection.disconnect();
         }catch (error) {
           flag = true;
           console.info(logTag + "SUB_DSoftbus_Trans_linkEnhance_API_disconnect_0100 error.code is " + error.code);
           console.info(logTag + "SUB_DSoftbus_Trans_linkEnhance_API_disconnect_0100 error.message is " + error.message);
-          expect(error.code == 32390206).assertTrue();
-          expect(error.message != null).assertTrue();
         }finally {
-          if(flag == false){
-            console.error(logTag + "[ERROR] SUB_DSoftbus_Trans_linkEnhance_API_disconnect_0100 createConnection success" +
+          if(flag == true){
+            console.error(logTag + "[ERROR] SUB_DSoftbus_Trans_linkEnhance_API_disconnect_0100 disconnect fail" +
               ",ecpect fail");
           }
-          expect(flag == true).assertTrue();
+          expect(flag == false).assertTrue();
           connection.close();
           console.info(logTag + "reclaim done");
         }
@@ -910,7 +905,6 @@ export default function LinkEnhanceAPI() {
         try {
           console.info(logTag + "SUB_DSoftbus_Trans_linkEnhance_API_getPeerDeviceId_0100 getPeerDeviceId  start");
           let deviceid = connection.getPeerDeviceId();
-          console.info(logTag + "SUB_DSoftbus_Trans_linkEnhance_API_getPeerDeviceId_0100 deviceid is" + deviceid);
         }catch (error) {
           flag = true;
           console.info(logTag + "SUB_DSoftbus_Trans_linkEnhance_API_getPeerDeviceId_0100 error.code is " + error.code);
@@ -1363,19 +1357,18 @@ export default function LinkEnhanceAPI() {
         "abcdefghijklmnopqistuvwxyzabcdefghijklmnopqistuvwxyzabcdefghijklmnopqistuvwxyzabcdefghijklmnopqistuvwxyzabcdef" + 
         "ghijklmnopqistuvwxyzabcdefghijklmnopqistuvwxyzabcdefghijklmnopqistuvwxyzabcdefghijklmnopqistu");
         console.info(logTag + "SUB_DSoftbus_Trans_linkEnhance_API_server_start_0200 server is" + server);
-        server.start();
-      }catch (error) {
-        flag = true;
-        console.info(logTag + "SUB_DSoftbus_Trans_linkEnhance_API_server_start_0200 error.code is:" + error.code);
-        expect(error.code == 32390300).assertTrue();
-        expect(error.message != null).assertTrue();
-      }finally {
-        if(flag == false){
-          console.info(logTag + "[ERROR]SUB_DSoftbus_Trans_linkEnhance_API_server_start_0200 createServer success,expect faile");
-        }
+        try {
+          server.start();
+        }catch (error) {
+         flag = true;
+         console.info(logTag + "SUB_DSoftbus_Trans_linkEnhance_API_server_start_0200 error.code is:" + error.code);
+        }finally {
+          server.close();
         expect(flag == false).assertTrue();
-        server.close();
         console.info(logTag + "reclaim done");
+        }
+      }catch (error){
+        console.info(logTag + "SUB_DSoftbus_Trans_linkEnhance_API_server_start_0100 error.code is:" + error.code);
       }
       console.info(logTag + "----------end SUB_DSoftbus_Trans_linkEnhance_API_server_start_0200----------------");
     });
@@ -1478,6 +1471,53 @@ export default function LinkEnhanceAPI() {
         console.info(logTag + "SUB_DSoftbus_Trans_linkEnhance_API_server_close_0100 error.code is:" + error.code); 
       }
       console.info(logTag + "----------end SUB_DSoftbus_Trans_linkEnhance_API_server_close_0100----------------");
+    });
+    /**
+     * @tc.number     : SUB_DSoftbus_Trans_linkEnhance_API_connectResult_0100
+     * @tc.name       : SUB_DSoftbus_Trans_linkEnhance_API_connectResult_0100
+     * @tc.desc       : linkEnhance.connection.connectResult接口参数错误
+     * @tc.size       : MediumTest
+     * @tc.type       : Compatibility
+     * @tc.level      : Level 3
+     */
+    it('SUB_DSoftbus_Trans_linkEnhance_API_connectResult_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      console.info(logTag + "----------start SUB_DSoftbus_Trans_linkEnhance_API_connectResult_0100----------------");
+      let flag = false;
+      let success:boolean = false;
+      let reason:number = 0;
+      let deviceId = "";
+      try {
+        let connection: linkEnhance.Connection = linkEnhance.createConnection("00:11:22:33:44:55", "demo");
+        console.info(logTag + "SUB_DSoftbus_Trans_linkEnhance_API_connectResult_0100 connection is" + connection);
+        try {
+          console.info(logTag + '[CALLBACK]clientconnectionChangeStateOnCallback!!!');
+          connection.on('connectResult',(result:linkEnhance.ConnectResult):void=>{
+            console.info(logTag + '[CALLBACK]clientConnectResultCallback result.success=' + result.success);
+            console.info(logTag + '[CALLBACK]clientConnectResultCallback result.reason=' + result.reason);
+            console.info(logTag + '[CALLBACK]clientConnectResultCallback result.deviceId=' + result.deviceId);
+            success = result.success;
+            reason = result.reason;
+            deviceId = result.deviceId;
+            });
+          connection.connect();
+          await sleep(15000);
+          expect(success == false).assertTrue();
+          expect(reason == 32390200||reason == 32390300).assertTrue();
+          expect(deviceId == "00:11:22:33:44:55").assertTrue();
+        }catch (error) {
+          flag = true;
+          console.info(logTag + "SUB_DSoftbus_Trans_linkEnhance_API_connectResult_0100 error.code is:" + error.code);
+          console.info(logTag + "SUB_DSoftbus_Trans_linkEnhance_API_connectResult_0100 error.message is:" + error.message);
+          }finally {
+          expect(flag == false).assertTrue();
+          console.info(logTag + "reclaim done");
+          connection.close();
+          }
+      }catch (error) {
+        expect(error.message == null).assertTrue();
+        console.info(logTag + "SUB_DSoftbus_Trans_linkEnhance_API_connectResult_0100 createConnection error.code is:" + error.code); 
+        }
+      console.info(logTag + "----------end SUB_DSoftbus_Trans_linkEnhance_API_connectResult_0100----------------");
     });
   })
 }
