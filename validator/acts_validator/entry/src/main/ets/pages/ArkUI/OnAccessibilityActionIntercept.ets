@@ -312,6 +312,15 @@ struct OnAccessibilityActionIntercept {
           console.info('InterceptDadB:no')
           return AccessibilityActionInterceptResult.ACTION_CONTINUE;
         })
+        Text('Modifier')
+          .onAccessibilityActionIntercept((action) => {
+            if (action === AccessibilityAction.UNDEFINED_ACTION) {
+              console.info('InterceptChild:ok');
+              return AccessibilityActionInterceptResult.ACTION_RISE;
+            }
+            console.info('InterceptChild:no');
+            return AccessibilityActionInterceptResult.ACTION_INTERCEPT;
+          })
         Column(){
           Row() {
             Text('Modifier message')
