@@ -905,7 +905,7 @@ function testSetAutoUnlockAfterReboot() {
     try {
       systemManager.setAutoUnlockAfterReboot(SELFWANT, true);
       let rel: boolean = systemManager.getAutoUnlockAfterReboot(SELFWANT)
-      except(rel).assertTrue();
+      expect(rel).assertTrue();
     } catch (error) {
       expect(false).assertTrue();
     } finally {
@@ -918,7 +918,7 @@ function testSetAutoUnlockAfterReboot() {
   /**
    * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_AUTO_UNLOCK_AFTER_REBOOT_JS_0003
    * @tc.name      : test_set_auto_unlock_after_reboot_0003
-   * @tc.desc      : test systemManager setAutoUnlockAfterReboot with invalid isAllowed
+   * @tc.desc      : test systemManager setAutoUnlockAfterReboot with invalid server
    * @tc.level     : Level 2
    * @tc.type      : Function
    * @tc.size      : MediumTest
@@ -928,7 +928,7 @@ function testSetAutoUnlockAfterReboot() {
     try {
       systemManager.setAutoUnlockAfterReboot(SELFWANT, false);
       let rel: boolean = systemManager.getAutoUnlockAfterReboot(SELFWANT)
-      except(rel).assertFalse();
+      expect(rel).assertFalse();
     } catch (error) {
       expect(false).assertTrue();
     } finally {
