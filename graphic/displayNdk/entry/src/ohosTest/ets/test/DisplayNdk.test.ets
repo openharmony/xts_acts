@@ -15,7 +15,9 @@
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect , Level, TestType, Size} from '@ohos/hypium';
 import testNapi from 'libentry.so';
-import { display } from '@kit.ArkUI';
+import { display, window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 interface Capability{
   foldStatus:string;
   foldDisplayMode:string;
@@ -27,6 +29,7 @@ interface CapabilityData{
 }
 export default function DisplayNdkTest() {
   describe('ActsDisplayNdkTest', () => {
+    let sleep = (sleepMs: number) => new Promise<string>(resolve => setTimeout(resolve, sleepMs));
     let displayClass = display.getDefaultDisplaySync();
     let foldStatus:string= '';
     let foldDisplayMode:string= '';
@@ -546,6 +549,453 @@ export default function DisplayNdkTest() {
       }
     })
 
+    /**
+     * @tc.number    : OH_NativeDisplayManager_CreateAvailableArea
+     * @tc.name      : test_OH_NativeDisplayManager_CreateAvailableArea
+     * @tc.desc      : test_OH_NativeDisplayManager_CreateAvailableArea
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_OH_NativeDisplayManager_CreateAvailableArea', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
+      let caseName = 'test_OH_NativeDisplayManager_CreateAvailableArea';
+      try{
+        let result  = testNapi.createAvailableArea();
+        console.log(`${caseName} createAvailableArea result: ${JSON.stringify(result)}`);
+        expect(result.errcode).assertEqual(0);
+        let availableArea = await displayClass.getAvailableArea();
+        console.log(`${caseName} getAvailableArea availableArea: ${JSON.stringify(availableArea)}`);
+        expect(Math.abs(availableArea.left - result.left)).assertLessOrEqual(0);
+        expect(Math.abs(availableArea.top - result.top)).assertLessOrEqual(0);
+        expect(Math.abs(availableArea.width - result.width)).assertLessOrEqual(0);
+        expect(Math.abs(availableArea.height - result.height)).assertLessOrEqual(0);
+        done();
+      } catch (err) {
+        console.log(caseName + ': fail:'+ err + ' '+err.code);
+        if (err.code === 801) {
+          expect(true).assertTrue();
+          done();
+        } else {
+          expect(false).assertTrue();
+          done();
+        }
+      }
+    })
+
+    /**
+     * @tc.number    : OH_NativeDisplayManager_CreateAvailableAreaErrCode_140003
+     * @tc.name      : test_OH_NativeDisplayManager_CreateAvailableArea_ErrCode140003
+     * @tc.desc      : test_OH_NativeDisplayManager_CreateAvailableArea_ErrCode140003
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('test_OH_NativeDisplayManager_CreateAvailableArea_ErrCode140003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
+      let caseName = 'test_OH_NativeDisplayManager_CreateAvailableArea_ErrCode140003';
+      try{
+        let errcode  = testNapi.createAvailableArea_ErrCode140003();
+        console.log(`${caseName} result: ${JSON.stringify(errcode)}`);
+        expect(errcode).assertEqual(1400003);
+        done();
+      } catch (err) {
+        console.log(caseName + ': fail:'+ err + ' '+err.code);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : OH_NativeDisplayManager_DestroyAvailableArea
+     * @tc.name      : test_OH_NativeDisplayManager_DestroyAvailableArea
+     * @tc.desc      : test_OH_NativeDisplayManager_DestroyAvailableArea
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_OH_NativeDisplayManager_DestroyAvailableArea', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
+      let caseName = 'test_OH_NativeDisplayManager_DestroyAvailableArea';
+      try{
+        let errcode  = testNapi.destroyAvailableArea();
+        console.log(`${caseName} result: ${JSON.stringify(errcode)}`);
+        expect(errcode).assertEqual(0);
+        done();
+      } catch (err) {
+        console.log(caseName + ': fail:'+ err + ' '+err.code);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : test_OH_NativeDisplayManager_GetDisplaySourceMode_1
+     * @tc.name      : test_OH_NativeDisplayManager_GetDisplaySourceMode_1
+     * @tc.desc      : test_OH_NativeDisplayManager_GetDisplaySourceMode_1
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_OH_NativeDisplayManager_GetDisplaySourceMode_1', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
+      let caseName = 'test_OH_NativeDisplayManager_GetDisplaySourceMode_1';
+      try{
+        let result  = testNapi.getDisplaySourceMode_1();
+        console.log(`${caseName} result: ${JSON.stringify(result)}`);
+        expect(result).assertEqual(1);
+        done();
+      } catch (err) {
+        console.log(caseName + ': fail:'+ err + ' '+err.code);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : test_OH_NativeDisplayManager_GetDisplaySourceMode_2
+     * @tc.name      : test_OH_NativeDisplayManager_GetDisplaySourceMode_2
+     * @tc.desc      : test_OH_NativeDisplayManager_GetDisplaySourceMode_2
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_OH_NativeDisplayManager_GetDisplaySourceMode_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
+      let caseName = 'test_OH_NativeDisplayManager_GetDisplaySourceMode_2';
+      try{
+        let option : display.VirtualScreenConfig = {
+          name: 'screen01',
+          width: 1080,
+          height: 2340,
+          density: 2,
+          surfaceId: ''
+        };
+        display.createVirtualScreen(option).then((data: number) => {
+          let result  = testNapi.getDisplaySourceMode_2(data);
+          console.log(`${caseName} result: ${JSON.stringify(result)}`);
+          expect(result).assertEqual(0);
+          done();
+          console.info(caseName + 'Succeeded in creating the virtual screen. Data: ' + JSON.stringify(data));
+        }).catch((err: BusinessError) => {
+          console.error(caseName + 'Failed to create the virtual screen. Code: ' + JSON.stringify(err));
+          expect(false).assertTrue();
+          done();
+        });
+      } catch (err) {
+        console.log(caseName + ': fail:'+ err + ' '+err.code);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : test_OH_NativeDisplayManager_GetDisplaySourceMode_4
+     * @tc.name      : test_OH_NativeDisplayManager_GetDisplaySourceMode_4
+     * @tc.desc      : test_OH_NativeDisplayManager_GetDisplaySourceMode_4
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_OH_NativeDisplayManager_GetDisplaySourceMode_4', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
+      let caseName = 'test_OH_NativeDisplayManager_GetDisplaySourceMode_4';
+      try{
+        let option : display.VirtualScreenConfig = {
+          name: 'screen01',
+          width: 1080,
+          height: 2340,
+          density: 2,
+          surfaceId: ''
+        };
+        display.createVirtualScreen(option).then(async (data: number) => {
+          console.info(caseName + 'Succeeded in creating the virtual screen. Data: ' + JSON.stringify(data));
+          display.makeUnique(data).then(async () =>{
+            await sleep(200);
+            let result  = testNapi.getDisplaySourceMode_4(data);
+            console.log(`${caseName} result: ${JSON.stringify(result)}`);
+            expect(result).assertEqual(4);
+            done();
+          }).catch((err: BusinessError) => {
+            console.error(caseName + 'Failed to makeUnique. Code: ' + JSON.stringify(err));
+            if (err.code === 801) {
+              done();
+            } else {
+              expect(false).assertTrue();
+              done();
+            }
+          });
+
+        }).catch((err: BusinessError) => {
+          console.error(caseName + 'Failed to create the virtual screen. Code: ' + JSON.stringify(err));
+          expect(false).assertTrue();
+          done();
+        });
+      } catch (err) {
+        console.log(caseName + ': fail:'+ err + ' '+err.code);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : test_OH_NativeDisplayManager_GetDisplaySourceMode_ErrCode140003
+     * @tc.name      : test_OH_NativeDisplayManager_GetDisplaySourceMode_ErrCode140003
+     * @tc.desc      : test_OH_NativeDisplayManager_GetDisplaySourceMode_ErrCode140003
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('test_OH_NativeDisplayManager_GetDisplaySourceMode_ErrCode140003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
+      let caseName = 'test_OH_NativeDisplayManager_GetDisplaySourceMode_ErrCode140003';
+      try{
+        let result  = testNapi.getDisplaySourceMode_ErrCode140003();
+        console.log(`${caseName} result: ${JSON.stringify(result)}`);
+        expect(result).assertEqual(1400003);
+        done();
+      } catch (err) {
+        console.log(caseName + ': fail:'+ err + ' '+err.code);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : test_OH_NativeDisplayManager_GetDisplayPosition
+     * @tc.name      : test_OH_NativeDisplayManager_GetDisplayPosition
+     * @tc.desc      : test_OH_NativeDisplayManager_GetDisplayPosition
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_OH_NativeDisplayManager_GetDisplayPosition', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
+      let caseName = 'test_OH_NativeDisplayManager_GetDisplayPosition';
+      try{
+        let result  = testNapi.getDisplayPosition();
+        console.log(`${caseName} result: ${JSON.stringify(result)}`);
+        expect(result).assertEqual(0);
+        done();
+      } catch (err) {
+        console.log(caseName + ': fail:'+ err + ' '+err.code);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : OH_NativeDisplayManager_GetDisplayPosition
+     * @tc.name      : test_OH_NativeDisplayManager_GetDisplayPosition_ErrCode140003
+     * @tc.desc      : test_OH_NativeDisplayManager_GetDisplayPosition_ErrCode140003
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('test_OH_NativeDisplayManager_GetDisplayPosition_ErrCode140003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
+      let caseName = 'test_OH_NativeDisplayManager_GetDisplayPosition_ErrCode140003';
+      try{
+        let result  = testNapi.getDisplayPosition_ErrCode140003();
+        console.log(`${caseName} result: ${JSON.stringify(result)}`);
+        expect(result).assertEqual(1400003);
+        done();
+      } catch (err) {
+        console.log(caseName + ': fail:'+ err + ' '+err.code);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : OH_NativeDisplayManager_RegisterAvailableAreaChangeListener
+     * @tc.name      : test_OH_NativeDisplayManager_RegisterAvailableAreaChangeListener
+     * @tc.desc      : OH_NativeDisplayManager_RegisterAvailableAreaChangeListener中注册可用区域变化监听
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_OH_NativeDisplayManager_RegisterAvailableAreaChangeListener', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
+      let caseName = 'test_OH_NativeDisplayManager_RegisterAvailableAreaChangeListener';
+      try{
+        let result  = testNapi.registerAvailableAreaChangeListener();
+        console.log(`${caseName} result: ${JSON.stringify(result)}`);
+        expect(result).assertEqual(0);
+        done();
+      } catch (err) {
+        console.log(caseName + ': fail:'+ err + ' '+err.code);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : OH_NativeDisplayManager_UnregisterAvailableAreaChangeListener
+     * @tc.name      : test_OH_NativeDisplayManager_UnregisterAvailableAreaChangeListener
+     * @tc.desc      : OH_NativeDisplayManager_UnregisterAvailableAreaChangeListener中取消可用区域变化监听
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_OH_NativeDisplayManager_UnregisterAvailableAreaChangeListener', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
+      let caseName = 'test_OH_NativeDisplayManager_UnregisterAvailableAreaChangeListener';
+      try{
+        let result  = testNapi.unregisterAvailableAreaChangeListener();
+        console.log(`${caseName} result: ${JSON.stringify(result)}`);
+        expect(result).assertEqual(0);
+        done();
+      } catch (err) {
+        console.log(caseName + ': fail:'+ err + ' '+err.code);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : OH_NativeDisplayManager_UnregisterAvailableAreaChangeListener_ErrCode140004
+     * @tc.name      : test_OH_NativeDisplayManager_UnregisterAvailableAreaChangeListener_ErrCode140004
+     * @tc.desc      : OH_NativeDisplayManager_UnregisterAvailableAreaChangeListener中直接取消可用区域变化监听
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('test_OH_NativeDisplayManager_UnregisterAvailableAreaChangeListener_ErrCode140004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
+      let caseName = 'test_OH_NativeDisplayManager_UnregisterAvailableAreaChangeListener_ErrCode140004';
+      try{
+        let result  = testNapi.unregisterAvailableAreaChangeListener_ErrCode140004();
+        console.log(`${caseName} result: ${JSON.stringify(result)}`);
+        expect(result).assertEqual(1400004);
+        done();
+      } catch (err) {
+        console.log(caseName + ': fail:'+ err + ' '+err.code);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+
+
+    /**
+     * @tc.number    : OH_NativeDisplayManager_RegisterDisplayAddListener
+     * @tc.name      : test_OH_NativeDisplayManager_RegisterDisplayAddListener
+     * @tc.desc      : OH_NativeDisplayManager_RegisterDisplayAddListener中注册屏幕增加监听
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_OH_NativeDisplayManager_RegisterDisplayAddListener', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
+      let caseName = 'test_OH_NativeDisplayManager_RegisterDisplayAddListener';
+      try{
+        let result  = testNapi.registerDisplayAddListener();
+        console.log(`${caseName} result: ${JSON.stringify(result)}`);
+        expect(result).assertEqual(0);
+        done();
+      } catch (err) {
+        console.log(caseName + ': fail:'+ err + ' '+err.code);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : OH_NativeDisplayManager_UnregisterDisplayAddListener
+     * @tc.name      : test_OH_NativeDisplayManager_UnregisterDisplayAddListener
+     * @tc.desc      : OH_NativeDisplayManager_UnregisterDisplayAddListener中取消屏幕增加监听
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_OH_NativeDisplayManager_UnregisterDisplayAddListener', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
+      let caseName = 'test_OH_NativeDisplayManager_UnregisterDisplayAddListener';
+      try{
+        let result  = testNapi.unregisterDisplayAddListener();
+        console.log(`${caseName} result: ${JSON.stringify(result)}`);
+        expect(result).assertEqual(0);
+        done();
+      } catch (err) {
+        console.log(caseName + ': fail:'+ err + ' '+err.code);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : OH_NativeDisplayManager_UnregisterDisplayAddListener_ErrCode140004
+     * @tc.name      : test_OH_NativeDisplayManager_UnregisterDisplayAddListener_ErrCode140004
+     * @tc.desc      : OH_NativeDisplayManager_UnregisterDisplayAddListener中直接取消屏幕增加监听
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('test_OH_NativeDisplayManager_UnregisterDisplayAddListener_ErrCode140004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
+      let caseName = 'test_OH_NativeDisplayManager_UnregisterDisplayAddListener_ErrCode140004';
+      try{
+        let result  = testNapi.unregisterDisplayAddListener_ErrCode140004();
+        console.log(`${caseName} result: ${JSON.stringify(result)}`);
+        expect(result).assertEqual(1400004);
+        done();
+      } catch (err) {
+        console.log(caseName + ': fail:'+ err + ' '+err.code);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : OH_NativeDisplayManager_RegisterDisplayRemoveListener
+     * @tc.name      : test_OH_NativeDisplayManager_RegisterDisplayRemoveListener
+     * @tc.desc      : OH_NativeDisplayManager_RegisterDisplayRemoveListener中注册屏幕移除监听
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_OH_NativeDisplayManager_RegisterDisplayRemoveListener', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
+      let caseName = 'test_OH_NativeDisplayManager_RegisterDisplayRemoveListener';
+      try{
+        let result  = testNapi.registerDisplayRemoveListener();
+        console.log(`${caseName} result: ${JSON.stringify(result)}`);
+        expect(result).assertEqual(0);
+        done();
+      } catch (err) {
+        console.log(caseName + ': fail:'+ err + ' '+err.code);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : OH_NativeDisplayManager_UnregisterDisplayRemoveListener
+     * @tc.name      : test_OH_NativeDisplayManager_UnregisterDisplayRemoveListener
+     * @tc.desc      : OH_NativeDisplayManager_UnregisterDisplayRemoveListener中取消屏幕移除监听
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('test_OH_NativeDisplayManager_UnregisterDisplayRemoveListener', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
+      let caseName = 'test_OH_NativeDisplayManager_UnregisterDisplayRemoveListener';
+      try{
+        let result  = testNapi.unregisterDisplayRemoveListener();
+        console.log(`${caseName} result: ${JSON.stringify(result)}`);
+        expect(result).assertEqual(0);
+        done();
+      } catch (err) {
+        console.log(caseName + ': fail:'+ err + ' '+err.code);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : OH_NativeDisplayManager_RegisterDisplayRemoveListener_ErrCode140004
+     * @tc.name      : test_OH_NativeDisplayManager_RegisterDisplayRemoveListener_ErrCode140004
+     * @tc.desc      : OH_NativeDisplayManager_RegisterDisplayRemoveListener中注册屏幕移除监听
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('test_OH_NativeDisplayManager_RegisterDisplayRemoveListener_ErrCode140004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
+      let caseName = 'test_OH_NativeDisplayManager_RegisterDisplayRemoveListener_ErrCode140004';
+      try{
+        let result  = testNapi.registerDisplayRemoveListener_ErrCode140004();
+        console.log(`${caseName} result: ${JSON.stringify(result)}`);
+        expect(result).assertEqual(1400004);
+        done();
+      } catch (err) {
+        console.log(caseName + ': fail:'+ err + ' '+err.code);
+        expect(false).assertTrue();
+        done();
+      }
+    })
 
 
   })
