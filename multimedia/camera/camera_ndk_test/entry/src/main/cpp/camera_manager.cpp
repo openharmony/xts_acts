@@ -2951,7 +2951,7 @@ Camera_ErrorCode NDKCamera::GetCameraDevice(int useCaseCode)
             return ret_;
         }
         ret_ = OH_CameraManager_GetCameraDevice(cameraManager_,
-            Camera_Position::CAMERA_POSITION_BACK, Camera_Type::CAMERA_TYPE_DEFAULT, cameranow);
+            Camera_Position::CAMERA_POSITION_UNSPECIFIED, Camera_Type::CAMERA_TYPE_DEFAULT, cameranow);
     }
     return ret_;
 }
