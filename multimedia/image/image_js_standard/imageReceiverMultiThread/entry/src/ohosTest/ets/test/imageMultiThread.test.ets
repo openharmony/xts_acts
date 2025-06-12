@@ -155,7 +155,7 @@ let sleep = (ms: number): Promise<ESObject> => {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-const THREAD_COUNT = 3;
+const THREAD_COUNT = 2;
 
 async function promiseCase() {
   return new Promise<string>((resolve, reject) => {
