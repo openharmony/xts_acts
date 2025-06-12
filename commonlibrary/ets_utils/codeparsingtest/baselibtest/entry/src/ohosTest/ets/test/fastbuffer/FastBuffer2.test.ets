@@ -781,8 +781,9 @@ export default function ActsFastBufferTest() {
         expect().assertFail();
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
+        expect(err.code).assertEqual(10200001);
         expect(err.message)
-          .assertEqual('The value of "totalLength" is out of range. It must be >= 0 and <= 4294967296. Received value is: -1');
+          .assertEqual('The value of "totalLength" is out of range. It must be >= 0 and <= 4294967295. Received value is: -1');
       }
     })
     /**
@@ -2823,7 +2824,7 @@ export default function ActsFastBufferTest() {
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect(err.code).assertEqual(10200001);
-         expect(err.message)
+        expect(err.message)
           .assertEqual('The value of "sourceEnd" is out of range. It must be >= 0 and <= 26. Received value is: inf');
       }
     })
@@ -12908,6 +12909,21 @@ export default function ActsFastBufferTest() {
         expect(err.message)
           .assertEqual('The value of "value" is out of range. It must be >= 0 and <= 4294967295. Received value is: 72623859790382848');
       }
+    })
+
+    /**
+     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_READUINTLE_0500
+     * @tc.name       : testBufferReadUIntLE0005
+     * @tc.desc       : 
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it("testBufferReadUIntLE0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testBufferReadUIntLE0005 == ';
+      let buf = buffer.from([0x12, 0x34, 0x56, 0x78, 0x90, 0xab]);
+      console.info(TAG + buf.readUIntLE(0, 6).toString(16));
+      expect(buf.readUIntLE(0, 6).toString(16)).assertEqual('ab9078563412');
     })
   });
 }

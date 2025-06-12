@@ -7401,7 +7401,7 @@ export default function FastBufferTest() {
       } catch (err) {
         console.error(`${TAG} err is ${err}`);
         expect(err.code).assertUndefined();
-        expect(err.meassage).assertEqual('Cannot set property on Container');
+        expect(err.message).assertContain('Cannot set property on Container');
       }
     });
 
@@ -7521,7 +7521,7 @@ export default function FastBufferTest() {
       } catch (err) {
         console.error(`${TAG} err is ${err}`);
         expect(err.code).assertUndefined();
-        expect(err.meassage).assertEqual('Cannot set property on Container');
+        expect(err.message).assertContain('Cannot set property on Container');
       }
     });
 
