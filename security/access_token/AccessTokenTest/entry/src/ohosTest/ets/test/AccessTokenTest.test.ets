@@ -485,5 +485,117 @@ export default function AccessTokenTest() {
       }
     })
 
+    /**
+     * @tc.number Test_getSelfPermissionStatus_001
+     * @tc.name Test_getSelfPermissionStatus_001
+     * @tc.desc After the installation, user_grant permission is not granted by default(Promise).
+     * @tc.level: Level0
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     */
+    it('Test_getSelfPermissionStatus_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
+        console.info("Test_getSelfPermissionStatus_001 start");
+        let atManager = abilityAccessCtrl.createAtManager();
+        let result = atManager.getSelfPermissionStatus(permissionNameUser);
+        console.info("Test_getSelfPermissionStatus_001 result: " + result);
+        expect(result).assertEqual(abilityAccessCtrl.PermissionStatus.NOT_DETERMINED);
+
+        done();
+      })
+
+    /**
+     * @tc.number Test_getSelfPermissionStatus_002
+     * @tc.name Test_getSelfPermissionStatus_002
+     * @tc.desc After the installation, system_grant permission is granted by default(Promise).
+     * @tc.level: Level1
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     */
+    it('Test_getSelfPermissionStatus_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: Function) => {
+        console.info("Test_getSelfPermissionStatus_002 start");
+        let atManager = abilityAccessCtrl.createAtManager();
+        let result = atManager.getSelfPermissionStatus(permissionNameSystem);
+        console.info("Test_getSelfPermissionStatus_002 result: " + result);
+        expect(result).assertEqual(abilityAccessCtrl.PermissionStatus.GRANTED);
+
+        done();
+      })
+
+    /**
+     * @tc.number Test_getSelfPermissionStatus_003
+     * @tc.name Test_getSelfPermissionStatus_003
+     * @tc.desc Call getSelfPermissionStatus with invalid value
+     * @tc.level: Level1
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     */
+    it('Test_getSelfPermissionStatus_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: Function) => {
+        console.info("Test_getSelfPermissionStatus_003 start");
+        try {
+          let atManager = abilityAccessCtrl.createAtManager();
+          let permissionName: Permissions = "" as Permissions;
+          let result = atManager.getSelfPermissionStatus(permissionName);
+        } catch (error) {
+          console.error("Test_getSelfPermissionStatus_003 error code " + error.code + " error message " +
+          error.message);
+          expect(error.code).assertEqual(ERR_PARAM_INVALID);
+          done();
+        }
+      })
+
+    /**
+     * @tc.number Test_getSelfPermissionStatus_004
+     * @tc.name Test_getSelfPermissionStatus_004
+     * @tc.desc Call getSelfPermissionStatus with invalid value
+     * @tc.level: Level1
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     */
+    it('Test_getSelfPermissionStatus_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: Function) => {
+        console.info("Test_getSelfPermissionStatus_004 start");
+        try {
+          let atManager = abilityAccessCtrl.createAtManager();
+          let permissionName: Permissions =
+            "ohos.permission.testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttest"
+              + "testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest"
+              +
+              "testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest" as Permissions;
+          let result = atManager.getSelfPermissionStatus(permissionName);
+        } catch (error) {
+          console.error("Test_getSelfPermissionStatus_004 error code " + error.code + " error message " +
+          error.message);
+          expect(error.code).assertEqual(ERR_PARAM_INVALID);
+          done();
+        }
+      })
+
+    /**
+     * @tc.number Test_getSelfPermissionStatus_005
+     * @tc.name Test_getSelfPermissionStatus_005
+     * @tc.desc Call getSelfPermissionStatus with invalid value
+     * @tc.level: Level1
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     */
+    it('Test_getSelfPermissionStatus_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: Function) => {
+        console.info("Test_getSelfPermissionStatus_005 start");
+        let atManager = abilityAccessCtrl.createAtManager();
+        let permissionName: Permissions = "ohos.permission.INVALID_PERM" as Permissions;
+        let result = atManager.getSelfPermissionStatus(permissionName);
+        console.info("Test_getSelfPermissionStatus_005 result: " + result);
+        expect(result).assertEqual(abilityAccessCtrl.PermissionStatus.INVALID);
+
+        let result2 = atManager.getSelfPermissionStatus("ohos.permission.LOCATION");
+        console.info("Test_getSelfPermissionStatus_005 result2: " + result2);
+        expect(result2).assertEqual(abilityAccessCtrl.PermissionStatus.INVALID);
+
+        done();
+      })
+
   })
 }

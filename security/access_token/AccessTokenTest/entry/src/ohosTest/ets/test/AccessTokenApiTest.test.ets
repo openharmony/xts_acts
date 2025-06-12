@@ -17,6 +17,7 @@ import { describe, beforeAll, afterEach, it, expect, TestType, Size, Level } fro
 import bundleManager from '@ohos.bundle.bundleManager'
 import { abilityAccessCtrl, common, Permissions } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { UiDriver, BY, Driver, ON } from "@ohos.UiTest";
 
 
 let tokenID = 0;
@@ -176,6 +177,8 @@ export default function AccessTokenApiTest() {
       try {
         atManager.requestGlobalSwitch(context, type).then((data) => {
           console.info('Test_requestGlobalSwitch_005 data:' + data);
+          expect(data).assertTrue();
+          done();
         }).catch((err: BusinessError) => {
           console.error('Test_requestGlobalSwitch_005 err.code:' + JSON.stringify(err));
           if (err.code == 12100013 || err.code == 12100001) {
@@ -186,6 +189,15 @@ export default function AccessTokenApiTest() {
             done();
           }
         });
+
+        let driver = Driver.create();
+        console.info("Test_requestGlobalSwitch_005 come in driverFn");
+        let toggle = await driver.findComponent(ON.type("Toggle"));
+        let button = await driver.findComponent(ON.text("确定"));
+        await toggle.click();
+        await button.click();
+        console.info("Test_requestGlobalSwitch_005 click over");
+        
       } catch (error) {
         console.info('Test_requestGlobalSwitch_005 error.code: ' + error.code);
         expect(error.code).assertEqual(401);
