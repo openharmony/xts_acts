@@ -995,5 +995,6 @@ export default function api16CertFuncTestUnit() {
       console.info('SUB_Security_CertManager_getCertificateStorePath_0154 end');
       done();
     });
+
   })
 }
