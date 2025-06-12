@@ -10351,7 +10351,7 @@ export default function IntlTest() {
         };
         let rtf = new Intl.RelativeTimeFormat(locales, options);
         let format = rtf.format(4, "quarter");
-        expect(format).assertEqual("in 4 qtrs.");
+        expect(format).assertEqual("in 4q");
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
@@ -10420,7 +10420,7 @@ export default function IntlTest() {
         };
         let rtf = new Intl.RelativeTimeFormat(locales, options);
         let format = rtf.format(10, "months");
-        expect(format).assertEqual("in 10 mo.");
+        expect(format).assertEqual("in 10mo");
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
@@ -10512,7 +10512,7 @@ export default function IntlTest() {
         };
         let rtf = new Intl.RelativeTimeFormat(locales, options);
         let format = rtf.format(-40, "days");
-        expect(format).assertEqual('40 days ago');
+        expect(format).assertEqual('40d ago');
       } catch (error) {
         console.error(`${TAG} failed,error: ${error.message}`);
         expect().assertFail();
@@ -10794,7 +10794,7 @@ export default function IntlTest() {
           console.log(`${JSON.stringify(item)}`);
         })
         expect(`${JSON.stringify(format)}`)
-          .assertEqual('[{"type":"literal","value":"in "},{"type":"integer","value":"4","unit":"quarter"},{"type":"literal","value":" qtrs."}]');
+          .assertEqual('[{"type":"literal","value":"in "},{"type":"integer","value":"4","unit":"quarter"},{"type":"literal","value":"q"}]');
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
@@ -10878,7 +10878,7 @@ export default function IntlTest() {
           console.log(`${JSON.stringify(item)}`);
         })
         expect(`${JSON.stringify(format)}`)
-          .assertEqual('[{"type":"literal","value":"in "},{"type":"integer","value":"10","unit":"month"},{"type":"literal","value":" mo."}]');
+          .assertEqual('[{"type":"literal","value":"in "},{"type":"integer","value":"10","unit":"month"},{"type":"literal","value":"mo"}]');
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
@@ -10986,7 +10986,7 @@ export default function IntlTest() {
           console.log(`${JSON.stringify(item)}`);
         })
         expect(`${JSON.stringify(format)}`)
-          .assertEqual('[{"type":"integer","value":"40","unit":"day"},{"type":"literal","value":" days ago"}]');
+          .assertEqual('[{"type":"integer","value":"40","unit":"day"},{"type":"literal","value":"d ago"}]');
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
@@ -11069,7 +11069,7 @@ export default function IntlTest() {
           console.log(`${JSON.stringify(item)}`);
         });
         expect(`${JSON.stringify(format)}`)
-          .assertEqual('[{"type":"integer","value":"5","unit":"minute"},{"type":"literal","value":" min. ago"}]');
+          .assertEqual('[{"type":"integer","value":"5","unit":"minute"},{"type":"literal","value":"m ago"}]');
       } catch (err) {
         console.error(`${TAG} failed, error: ${err.message}`);
         expect().assertFail();
