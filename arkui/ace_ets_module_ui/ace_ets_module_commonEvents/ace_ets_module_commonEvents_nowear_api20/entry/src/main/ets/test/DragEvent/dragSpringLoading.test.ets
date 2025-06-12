@@ -28,7 +28,7 @@ export default function dragSpringLoadingTest() {
         router.clear();
         let pages = router.getState();
         console.info('get dragSpringLoadingTest state pages: ' + JSON.stringify(pages));
-        if (!('dragSpringLoading' == pages.name)) {
+        if (!('NormalEts' == pages.name)) {
           console.info('get dragSpringLoadingTest state pages.name: ' + JSON.stringify(pages.name));
           let result = await router.replace(options);
           await CommonFunc.sleep(2000);
