@@ -1,6 +1,11 @@
 {
   "src": [
     "pages/Index",
-    "pages/ListPage"
+    "pages/ListPage",
+    "pages/Back",
+    "pages/grid",
+    "pages/navigation",
+    "pages/waterflow",
+    "pages/scroll"
   ]
 }
