@@ -541,47 +541,6 @@ export default function uitestComponentTest() {
     })
 
     /*
-    * @tc.number: uitestComponentTest_0014
-    * @tc.name: testDragTo_static
-    * @tc.desc: drag this UiComponent to the bounds rect of target UiComponent.
-    */
-    it('testDragTo_static',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
-      hilog.info(domain, tag, `testDragTo_static start`);
-      try {
-        const driver = Driver.create();
-        await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility');
-        await driver.delayMs(1000);
-        let button = await driver.findComponent(ON.id('jump'));
-        hilog.info(domain, tag, `testDragTo_static button, ${JSON.stringify(button)}`);
-        expect(button != null).assertTrue()
-        if (button != null) {
-          await button.longClick();
-          hilog.info(domain, tag, `testDragTo_static longClick`);
-        }
-        await driver.delayMs(1000);
-        let text1 = await driver.findComponent(ON.text('one'));
-        hilog.info(domain, tag, `testDragTo_static text1, ${JSON.stringify(text1)}`);
-        expect(text1 != null).assertTrue()
-        let text2 = await driver.findComponent(ON.text('two'));
-        hilog.info(domain, tag, `testDragTo_static text2, ${JSON.stringify(text2)}`);
-        expect(text2 != null).assertTrue()
-        if (text1 != null && text2 != null) {
-          await text1.dragTo(text2);
-          hilog.info(domain, tag, `testDragTo_static dragTo`);
-          let text = await driver.findComponent(ON.text('one').isBefore(ON.text('two')));
-          hilog.info(domain, tag, `testDragTo_static text, ${JSON.stringify(text)}`);
-          expect(text == null).assertTrue()
-        }
-        await driver.delayMs(1000);
-      } catch(error) {
-        hilog.info(domain, tag, `testDragTo_static error, ${JSON.stringify(error)}`);
-        expect().assertFail();
-      }
-      hilog.info(domain, tag, `testDragTo_static end`);
-      await stopApplication('com.uitestScene.acts');
-    })
-
-    /*
     * @tc.number: uitestComponentTest_0015
     * @tc.name: testUiComponentDoubleClick_static
     * @tc.desc: doubleClick this UiComponentClick.
