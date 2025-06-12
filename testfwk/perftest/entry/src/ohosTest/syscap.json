@@ -1,10 +1,10 @@
 {
     "devices": {
-        "general": ["default"],
+        "general": [],
         "custom": [
             {
                 "xts": [
-                    "SystemCapability.Startup.SystemInfo"
+                    "SystemCapability.Test.PerfTest"
                 ]
             }
         ]

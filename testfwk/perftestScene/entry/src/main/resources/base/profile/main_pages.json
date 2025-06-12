@@ -2,10 +2,6 @@
   "src": [
     "pages/Index",
     "pages/ListPage",
-    "pages/Back",
-    "pages/grid",
-    "pages/navigation",
-    "pages/waterflow",
-    "pages/scroll"
+    "pages/navigation"
   ]
 }

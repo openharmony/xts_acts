@@ -29,32 +29,6 @@ struct Index {
           console.info('jump to ListPage over')
         })
         Button() {
-          Text('grid')
-            .fontSize(25)
-            .fontWeight(FontWeight.Bold)
-        }
-        .key('my-key2')
-        .type(ButtonType.Capsule)
-        .margin({ top: 20 })
-        .onClick(() => {
-          console.info('jump to grid')
-          router.pushUrl({url: "pages/grid"})
-          console.info('jump to grid over')
-        })
-        Button() {
-          Text('waterflow')
-            .fontSize(25)
-            .fontWeight(FontWeight.Bold)
-        }
-        .key('my-key2')
-        .type(ButtonType.Capsule)
-        .margin({ top: 20 })
-        .onClick(() => {
-          console.info('jump to waterflow')
-          router.pushUrl({url: "pages/waterflow"})
-          console.info('jump to waterflow over')
-        })
-        Button() {
           Text('navigation')
             .fontSize(25)
             .fontWeight(FontWeight.Bold)
@@ -66,18 +40,6 @@ struct Index {
           console.info('jump to navigation')
           router.pushUrl({url: "pages/navigation"})
           console.info('jump to navigation over')
-        })
-        Button() {
-          Text('scroll')
-            .fontSize(25)
-            .fontWeight(FontWeight.Bold)
-        }
-        .type(ButtonType.Capsule)
-        .margin({ top: 20 })
-        .onClick(() => {
-          console.info('jump to scroll')
-          router.pushUrl({ url:"pages/scroll" })
-          console.info('jump to scroll over')
         })
       }
       .width('100%')

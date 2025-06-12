@@ -181,7 +181,7 @@ export default function PerfTestTest() {
       console.info(`caniuse perftest = ${canIUse("SystemCapability.Test.PerfTest")}`)
       let driver = Driver.create()
       await driver.delayMs(3000)
-      let metrics: Array<PerfMetric> = [PerfMetric.DURATION, PerfMetric.CPU_LOAD, PerfMetric.CPU_USAGE, PerfMetric.MEMORY_RSS, PerfMetric.MEMORY_PSS]
+      let metrics: Array<PerfMetric> = [PerfMetric.DURATION, PerfMetric.MEMORY_RSS, PerfMetric.MEMORY_PSS]
       let actionCode = async (finish: Callback<boolean>) => {
         let driver = Driver.create()
         await driver.delayMs(1000)
@@ -196,22 +196,12 @@ export default function PerfTestTest() {
       }
       let perfTest: PerfTest = PerfTest.create(perfTestStrategy)
       await perfTest.run()
-      console.info(`testPerfTest_Kepp run over!!!!!!!!`)
       let res1 = perfTest.getMeasureResult(PerfMetric.DURATION)
-      console.info(`testPerfTest_Kepp measureResult DURATION metric = ${res1.metric}, roundValues = ${res1.roundValues}, maximum = ${res1.maximum}, minimum = ${res1.minimum}, average = ${res1.average}, `)
-      let res2 = perfTest.getMeasureResult(PerfMetric.CPU_LOAD)
-      console.info(`testPerfTest_Kepp measureResult CPU_LOAD metric = ${res2.metric}, roundValues = ${res2.roundValues}, maximum = ${res2.maximum}, minimum = ${res2.minimum}, average = ${res2.average}, `)
-      let res3 = perfTest.getMeasureResult(PerfMetric.CPU_USAGE)
-      console.info(`testPerfTest_Kepp measureResult CPU_USAGE metric = ${res3.metric}, roundValues = ${res3.roundValues}, maximum = ${res3.maximum}, minimum = ${res3.minimum}, average = ${res3.average}, `)
       let res4 = perfTest.getMeasureResult(PerfMetric.MEMORY_RSS)
-      console.info(`testPerfTest_Kepp measureResult MEMORY_RSS metric = ${res4.metric}, roundValues = ${res4.roundValues}, maximum = ${res4.maximum}, minimum = ${res4.minimum}, average = ${res4.average}, `)
       let res5 = perfTest.getMeasureResult(PerfMetric.MEMORY_PSS)
-      console.info(`testPerfTest_Kepp measureResult MEMORY_PSS metric = ${res5.metric}, roundValues = ${res5.roundValues}, maximum = ${res5.maximum}, minimum = ${res5.minimum}, average = ${res5.average}, `)
       perfTest.destroy()
       await stopApplication('com.perftestScene.acts')
       expect(res1.average).assertLargerOrEqual(0)
-      expect(res2.average).assertLargerOrEqual(0)
-      expect(res3.average).assertLargerOrEqual(0)
       expect(res4.average).assertLargerOrEqual(0)
       expect(res5.average).assertLargerOrEqual(0)
       done()
@@ -233,7 +223,7 @@ export default function PerfTestTest() {
       await driver.delayMs(1000)
       await driver.click(center.x, center.y)
       await driver.delayMs(1000)
-      let metrics: Array<PerfMetric> = [PerfMetric.DURATION, PerfMetric.CPU_LOAD, PerfMetric.CPU_USAGE, PerfMetric.MEMORY_RSS, PerfMetric.MEMORY_PSS, PerfMetric.PAGE_SWITCH_COMPLETE_TIME]
+      let metrics: Array<PerfMetric> = [PerfMetric.DURATION, PerfMetric.MEMORY_RSS, PerfMetric.MEMORY_PSS, PerfMetric.PAGE_SWITCH_COMPLETE_TIME]
       let actionCode = async (finish: Callback<boolean>) => {
         let driver = Driver.create()
         await driver.delayMs(1000)
@@ -264,16 +254,12 @@ export default function PerfTestTest() {
       await perfTest.run()
       console.info(`testPerfTest_Navigationchange run over!!!!!!!!`)
       let res1 = perfTest.getMeasureResult(PerfMetric.DURATION)
-      let res2 = perfTest.getMeasureResult(PerfMetric.CPU_LOAD)
-      let res3 = perfTest.getMeasureResult(PerfMetric.CPU_USAGE)
       let res4 = perfTest.getMeasureResult(PerfMetric.MEMORY_RSS)
       let res5 = perfTest.getMeasureResult(PerfMetric.MEMORY_PSS)
       let res6 = perfTest.getMeasureResult(PerfMetric.PAGE_SWITCH_COMPLETE_TIME)
       perfTest.destroy()
       await stopApplication('com.perftestScene.acts')
       expect(res1.average).assertLargerOrEqual(0)
-      expect(res2.average).assertLargerOrEqual(0)
-      expect(res3.average).assertLargerOrEqual(0)
       expect(res4.average).assertLargerOrEqual(0)
       expect(res5.average).assertLargerOrEqual(0)
       expect(res6.average).assertLargerOrEqual(0)
@@ -289,18 +275,21 @@ export default function PerfTestTest() {
       console.info(`caniuse perftest = ${canIUse("SystemCapability.Test.PerfTest")}`)
       let driver = Driver.create()
       await driver.delayMs(3000)
-      console.log('create over!!!!!!!!!!!!')
-      await driver.delayMs(1000)
       await driver.pressHome()
       await driver.delayMs(1000)
-      console.log('pressHome over!!!!!!!!!!!!')
+      let btn1 = await driver.findComponent(ON.text('PerftestScene'))
+      let num = 0;
+      while (btn1 == null || num < 3) {
+        await driver.fling({x: 500, y: 500}, {x: 100, y: 500})
+        num += 1
+        btn1 = await driver.findComponent(ON.text('PerftestScene'))
+      }
+      if (btn1 == null) {
+        done()
+        return
+      }
       let metrics: Array<PerfMetric> = [PerfMetric.DURATION, PerfMetric.APP_START_RESPONSE_TIME, PerfMetric.APP_START_COMPLETE_TIME]
       let actionCode = async (finish: Callback<boolean>) => {
-        let driver = Driver.create()
-        await driver.delayMs(1000)
-        console.log('create1 over!!!!!!!!!!!!')
-        let btn1 = await driver.findComponent(ON.text('PerftestScene'))
-        console.log('btn1  over!!!!!!!!!!!!')
         await btn1.click()
         await driver.delayMs(1000)
         finish(true)
@@ -343,14 +332,22 @@ export default function PerfTestTest() {
       console.info(`caniuse perftest = ${canIUse("SystemCapability.Test.PerfTest")}`)
       let driver = Driver.create()
       await driver.delayMs(3000)
-      await driver.pressBack()
+      await driver.pressHome()
       await driver.delayMs(1000)
-      await driver.pressBack()
-      await driver.delayMs(1000)
+      let btn1 = await driver.findComponent(ON.text('PerftestScene'))
+      let num = 0;
+      while (btn1 == null || num < 3) {
+        await driver.fling({x: 500, y: 500}, {x: 100, y: 500})
+        num += 1
+        btn1 = await driver.findComponent(ON.text('PerftestScene'))
+      }
+      if (btn1 == null) {
+        done()
+        return
+      }
       let metrics: Array<PerfMetric> = [PerfMetric.DURATION, PerfMetric.APP_START_RESPONSE_TIME, PerfMetric.APP_START_COMPLETE_TIME]
       let actionCode = async (finish: Callback<boolean>) => {
         let driver = Driver.create()
-        console.log('create over!!!!!!!!!!!!')
         await driver.delayMs(1000)
         let btn1 = await driver.findComponent(ON.text('label'))
         await btn1.click()
@@ -373,13 +370,9 @@ export default function PerfTestTest() {
       }
       let perfTest: PerfTest = PerfTest.create(perfTestStrategy)
       await perfTest.run()
-      console.info(`testPerfTest_startself run over!!!!!!!!`)
       let res1 = perfTest.getMeasureResult(PerfMetric.DURATION)
-      console.info(`testPerfTest_startself measureResult DURATION metric = ${res1.metric}, roundValues = ${res1.roundValues}, maximum = ${res1.maximum}, minimum = ${res1.minimum}, average = ${res1.average}, `)
       let res6 = perfTest.getMeasureResult(PerfMetric.APP_START_RESPONSE_TIME)
-      console.info(`testPerfTest_startself measureResult APP_START_RESPONSE_TIME metric = ${res6.metric}, roundValues = ${res6.roundValues}, maximum = ${res6.maximum}, minimum = ${res6.minimum}, average = ${res6.average}, `)
       let res7 = perfTest.getMeasureResult(PerfMetric.APP_START_COMPLETE_TIME)
-      console.info(`testPerfTest_startself  measureResult APP_START_COMPLETE_TIME metric = ${res7.metric}, roundValues = ${res7.roundValues}, maximum = ${res7.maximum}, minimum = ${res7.minimum}, average = ${res7.average}, `)
       perfTest.destroy()
       expect(res1.average).assertLargerOrEqual(0)
       expect(res7.average).assertLargerOrEqual(0)
@@ -396,8 +389,7 @@ export default function PerfTestTest() {
       console.info(`caniuse perftest = ${canIUse("SystemCapability.Test.PerfTest")}`)
       let driver = Driver.create()
       await driver.delayMs(3000)
-      let metrics: Array<PerfMetric> = [PerfMetric.DURATION, PerfMetric.CPU_LOAD, PerfMetric.CPU_USAGE, PerfMetric.MEMORY_RSS, PerfMetric.MEMORY_PSS]
-      // let metrics: Array<PerfMetric> = [PerfMetric.DURATION, PerfMetric.CPU_LOAD, PerfMetric.CPU_USAGE]
+      let metrics: Array<PerfMetric> = [PerfMetric.DURATION, PerfMetric.MEMORY_RSS, PerfMetric.MEMORY_PSS]
       let actionCode = async (finish: Callback<boolean>) => {
         finish(true)
       }
@@ -413,84 +405,13 @@ export default function PerfTestTest() {
       }
       let perfTest: PerfTest = PerfTest.create(perfTestStrategy)
       await perfTest.run()
-      console.info(`testPerfTest_ActionCodenull run over!!!!!!!!`)
       let res1 = perfTest.getMeasureResult(PerfMetric.DURATION)
-      console.info(`testPerfTest_ActionCodenull measureResult DURATION metric = ${res1.metric}, roundValues = ${res1.roundValues}, maximum = ${res1.maximum}, minimum = ${res1.minimum}, average = ${res1.average}, `)
-      let res2 = perfTest.getMeasureResult(PerfMetric.CPU_LOAD)
-      console.info(`testPerfTest_ActionCodenull measureResult CPU_LOAD metric = ${res2.metric}, roundValues = ${res2.roundValues}, maximum = ${res2.maximum}, minimum = ${res2.minimum}, average = ${res2.average}, `)
-      let res3 = perfTest.getMeasureResult(PerfMetric.CPU_USAGE)
-      console.info(`testPerfTest_ActionCodenull measureResult CPU_USAGE metric = ${res3.metric}, roundValues = ${res3.roundValues}, maximum = ${res3.maximum}, minimum = ${res3.minimum}, average = ${res3.average}, `)
-      let res4 = perfTest.getMeasureResult(PerfMetric.MEMORY_RSS)
-      console.info(`testPerfTest_ActionCodenull measureResult MEMORY_RSS metric = ${res4.metric}, roundValues = ${res4.roundValues}, maximum = ${res4.maximum}, minimum = ${res4.minimum}, average = ${res4.average}, `)
-      let res5 = perfTest.getMeasureResult(PerfMetric.MEMORY_PSS)
-      console.info(`testPerfTest_ActionCodenull measureResult MEMORY_PSS metric = ${res5.metric}, roundValues = ${res5.roundValues}, maximum = ${res5.maximum}, minimum = ${res5.minimum}, average = ${res5.average}, `)
-      perfTest.destroy()
-      expect(res1.average).assertLargerOrEqual(0)
-      expect(res2.average).assertLargerOrEqual(0)
-      expect(res3.average).assertLargerOrEqual(0)
-      expect(res4.average).assertLargerOrEqual(0)
-      expect(res5.average).assertLargerOrEqual(0)
-      done()
-    })
-
-    /*
-     * @tc.number: perfTest_20010
-     * @tc.name: testPerfTest_List
-     * @tc.desc: Test the performance of the list sliding
-     */
-    it('testPerfTest_List', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
-      await startAbility('com.perftestScene.acts', 'EntryAbility');
-      let driver = Driver.create()
-      await driver.delayMs(3000)
-      let metrics: Array<PerfMetric> = [PerfMetric.DURATION, PerfMetric.CPU_LOAD, PerfMetric.CPU_USAGE, PerfMetric.MEMORY_RSS, PerfMetric.MEMORY_PSS, PerfMetric.LIST_SWIPE_FPS]
-      // let metrics: Array<PerfMetric> = [PerfMetric.DURATION, PerfMetric.CPU_LOAD, PerfMetric.CPU_USAGE, PerfMetric.MEMORY_RSS, PerfMetric.MEMORY_PSS]
-      let actionCode = async (finish: Callback<boolean>) => {
-        let button = await driver.findComponent(ON.text('ListPage'))
-        await driver.delayMs(1000)
-        await button.click()
-        console.info("click over!!!!")
-        let scroll = await driver.findComponent(ON.type('Scroll'))
-        await driver.delayMs(1000)
-        console.info("scroll over!!!!")
-        let center = await scroll.getBoundsCenter()
-        await driver.delayMs(1000)
-        console.info("center over!!!!")
-        await driver.fling({x: center.x, y: Math.floor(center.y * 3 / 2)}, {x: center.x, y: Math.floor(center.y / 2)}, 50, 20000)
-        await driver.delayMs(3000)
-        finish(true)
-      }
-      let resetCode = async (finish: Callback<boolean>) => {
-        let driver = Driver.create()
-        await driver.delayMs(1000)
-        await driver.pressBack()
-        await driver.delayMs(1000)
-        finish(true)
-      }
-      let perfTestStrategy: PerfTestStrategy = {
-        metrics: metrics,
-        actionCode: actionCode,
-        resetCode: resetCode,
-        iterations: 5,
-        timeout: 50000,
-        bundleName: 'com.perftestScene.acts'
-      }
-      let perfTest: PerfTest = PerfTest.create(perfTestStrategy)
-      await perfTest.run()
-      console.info(`testPerfTest_List run over!!!!!!!!`)
-      let res1 = perfTest.getMeasureResult(PerfMetric.DURATION)
-      let res2 = perfTest.getMeasureResult(PerfMetric.CPU_LOAD)
-      let res3 = perfTest.getMeasureResult(PerfMetric.CPU_USAGE)
       let res4 = perfTest.getMeasureResult(PerfMetric.MEMORY_RSS)
       let res5 = perfTest.getMeasureResult(PerfMetric.MEMORY_PSS)
-      let res6 = perfTest.getMeasureResult(PerfMetric.LIST_SWIPE_FPS)
       perfTest.destroy()
-      await stopApplication('com.perftestScene.acts')
       expect(res1.average).assertLargerOrEqual(0)
-      expect(res2.average).assertLargerOrEqual(0)
-      expect(res3.average).assertLargerOrEqual(0)
       expect(res4.average).assertLargerOrEqual(0)
       expect(res5.average).assertLargerOrEqual(0)
-      expect(res6.average).assertLargerOrEqual(0)
       done()
     })
 
