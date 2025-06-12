@@ -305,7 +305,7 @@ export default function audioManagerApi9() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SET_VOLUME_PERCENTAGE_0200
-     * @tc.name      : setAppVolumePercentage - Null_Parameter - 6800101
+     * @tc.name      : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SET_VOLUME_PERCENTAGE_0200
      * @tc.desc      : setAppVolumePercentage - Null_Parameter - 6800101
      * @tc.size      : MEDIUM
      * @tc.type      : Function
