@@ -19,6 +19,7 @@ import TextAreaTypeTest from './TextAreaTest/TextAreaType.test';
 import TextInputTypeTest from './TextInputTest/TextInputType.test';
 import ResourceNormalTest from './TextTest/ResourceNormal.test';
 import ResourceModifierTest from './TextTest/ResourceModifier.test';
+import TextStrokeTest from './TextTest/TextStrokeTest.test';
 import StyledStringStrokeTest from './TextTest/StyledStringStrokeTest.test';
 import TextInputEnableAutoFillAnimationTest from './TextInputTest/TextInputEnableAutoFillAnimation.test';
 import TextShaderStyleTest from './TextTest/TextShaderStyle.test';
@@ -28,6 +29,8 @@ import SearchEnableAutoSpacingTest from './SearchTest/SearchEnableAutoSpacing.te
 import TextAreaEnableAutoSpacingTest from './TextAreaTest/TextAreaEnableAutoSpacing.test';
 import TextInputEnableAutoSpacingTest from './TextInputTest/TextInputEnableAutoSpacing.test';
 import ImageOnErrorTest from './ImageErrorTest/ImageOnError.test';
+import TextAreaMinLinesTest from './TextAreaTest/TextAreaMinLines.test';
+import RichEditorUndoStyleTest from './RichEditorTest/RichEditorUndoStyle.test';
 
 
 export default function testsuite() {
@@ -37,6 +40,7 @@ export default function testsuite() {
   TextInputTypeTest();
   ResourceNormalTest();
   ResourceModifierTest();
+  TextStrokeTest();
   StyledStringStrokeTest();
   TextInputEnableAutoFillAnimationTest();
   TextShaderStyleTest();
@@ -46,4 +50,6 @@ export default function testsuite() {
   TextAreaEnableAutoSpacingTest();
   TextInputEnableAutoSpacingTest();
   ImageOnErrorTest();
+  TextAreaMinLinesTest();
+  RichEditorUndoStyleTest();
 }
