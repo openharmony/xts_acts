@@ -15,6 +15,8 @@
 export const normalAVScreenCaptureTest: () => number;
 export const normalAVScreenCaptureTestStop: () => number;
 export const normalAVScreenRecordTest: () => number;
+export const normalAVScreenRecordingTest: () => number;
+export const normalAVScreenRecordTestStoping: () => number;
 export const normalAVScreenRecordTestStop: () => number;
 export const normalAVScreenCaptureSurfaceTest: () => number;
 export const normalAVScreenCaptureSurfaceTestStop: () => number;
