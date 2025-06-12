@@ -1406,7 +1406,7 @@ export default function LinkEnhanceAPI() {
     /**
      * @tc.number     : SUB_DSoftbus_Trans_linkEnhance_API_server_stop_0100
      * @tc.name       : SUB_DSoftbus_Trans_linkEnhance_API_server_stop_0100
-     * @tc.desc       : linkEnhance.server.stop接口回调为空
+     * @tc.desc       : linkEnhance.server.stop接口调用正常
      * @tc.size       : MediumTest
      * @tc.type       : Compatibility
      * @tc.level      : Level 3
