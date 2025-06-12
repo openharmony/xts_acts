@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, it, expect, Level} from '@ohos/hypium'
 import { UiComponent, UiDriver, Component, Driver, ON, BY, } from '@ohos.UiTest';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -49,12 +49,12 @@ export default function dragSpringLoadingTest() {
     /**
      * @tc.number dragSpringLoadingTest_0010
      * @tc.name dragSpringLoadingTest
-     * @tc.desc api dragSpringLoading
-     * @tc.level: Leve0
+     * @tc.desc api
+     * @tc.level: Leve 0
      * @tc.type :
      * @tc.size :
      */
-    it('dragSpringLoadingTest_0010', 0, async (done: Function) => {
+    it('dragSpringLoadingTest_0010', Level.LEVEL0, async (done: Function) => {
       console.info('dragSpringLoadingTest_0010 START');
       let driver = await Driver.create();
       let abortBegin = await driver.findComponent(ON.id('abortBegin'));
@@ -63,7 +63,7 @@ export default function dragSpringLoadingTest() {
       let strJson = getInspectorByKey('abortBegin');
       let obj: ESObject = JSON.parse(strJson);
       console.info('[dragSpringLoadingTest_0010] dragSpringLoading: ' + JSON.stringify(obj.$attrs));
-      console.info('[dragSpringLoadingTest_0010] dragSpringLoadingLabel: ' + JSON.stringify(obj.$attrs.label));
+      console.info('[dragSpringLoadingTest_0010] dragSpringLoadingLabelObj: ' + JSON.stringify(obj.$attrs.label));
       expect(obj.$attrs.label).assertEqual('begin: true');
 
       let image1 = await driver.findComponent(ON.id('image1'));
@@ -76,23 +76,23 @@ export default function dragSpringLoadingTest() {
       await CommonFunc.sleep(1000);
       let strJson1 = getInspectorByKey('currentNotifySequence');
       let obj1: ESObject = JSON.parse(strJson1);
-      console.info('[dragSpringLoadingTest_0010] dragSpringLoadingLabel: ' + JSON.stringify(obj1.$attrs.content));
+      console.info('[dragSpringLoadingTest_0010] dragSpringLoadingLabelObj1: ' + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual('1');
 
       let strJson2 = getInspectorByKey('beginInfo');
       let obj2: ESObject = JSON.parse(strJson2);
-      console.info('[dragSpringLoadingTest_0010] dragSpringLoadingLabel: ' + JSON.stringify(obj2.$attrs.content));
+      console.info('[dragSpringLoadingTest_0010] dragSpringLoadingLabelObj2: ' + JSON.stringify(obj2.$attrs.content));
       expect(obj2.$attrs.content).assertContain('24');
       expect(obj2.$attrs.content).assertContain('.png');
 
       let strJson3 = getInspectorByKey('beginConfig');
       let obj3: ESObject = JSON.parse(strJson3);
-      console.info('[dragSpringLoadingTest_0010] dragSpringLoadingLabel: ' + JSON.stringify(obj3.$attrs.content));
+      console.info('[dragSpringLoadingTest_0010] dragSpringLoadingLabelObj3: ' + JSON.stringify(obj3.$attrs.content));
       expect(obj3.$attrs.content).assertEqual('0,0,3,100');
 
       let strJson4 = getInspectorByKey('cancel');
       let obj4: ESObject = JSON.parse(strJson4);
-      console.info('[dragSpringLoadingTest_0010] dragSpringLoadingLabel: ' + JSON.stringify(obj4.$attrs.content));
+      console.info('[dragSpringLoadingTest_0010] dragSpringLoadingLabelObj4: ' + JSON.stringify(obj4.$attrs.content));
       expect(obj4.$attrs.content).assertEqual('DragSpringLoading cancel');
       console.info('[dragSpringLoadingTest_0010] END');
       done();
@@ -101,12 +101,12 @@ export default function dragSpringLoadingTest() {
     /**
      * @tc.number dragSpringLoadingTest_0020
      * @tc.name dragSpringLoadingTest
-     * @tc.desc api dragSpringLoading
+     * @tc.desc api
      * @tc.level: Level 0
      * @tc.type :
      * @tc.size :
      */
-    it('dragSpringLoadingTest_0020', 0, async (done: Function) => {
+    it('dragSpringLoadingTest_0020', Level.LEVEL0, async (done: Function) => {
       console.info('dragSpringLoadingTest_0020 START');
       let driver = await Driver.create();
       let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
@@ -118,7 +118,7 @@ export default function dragSpringLoadingTest() {
       await CommonFunc.sleep(500);
       let strJson = getInspectorByKey('updateThree');
       let obj: ESObject = JSON.parse(strJson);
-      console.info('[dragSpringLoadingTest_0020] dragSpringLoadingLabel: ' + JSON.stringify(obj.$attrs.label));
+      console.info('[dragSpringLoadingTest_0020] dragSpringLoadingLabelObj: ' + JSON.stringify(obj.$attrs.label));
       expect(obj.$attrs.label).assertEqual('threeUpdate: true');
 
       let updateStillTimeLimit = await driver.findComponent(ON.id('updateStillTimeLimit'));
@@ -126,7 +126,7 @@ export default function dragSpringLoadingTest() {
       await CommonFunc.sleep(500);
       let strJson1 = getInspectorByKey('updateStillTimeLimit');
       let obj1: ESObject = JSON.parse(strJson1);
-      console.info('[dragSpringLoadingTest_0020] dragSpringLoadingLabel: ' + JSON.stringify(obj1.$attrs.label));
+      console.info('[dragSpringLoadingTest_0020] dragSpringLoadingLabelObj1: ' + JSON.stringify(obj1.$attrs.label));
       expect(obj1.$attrs.label).assertEqual('stillTimeLimit: 0');
 
       let updateInterval = await driver.findComponent(ON.id('updateInterval'));
@@ -134,7 +134,7 @@ export default function dragSpringLoadingTest() {
       await CommonFunc.sleep(500);
       let strJson2 = getInspectorByKey('updateInterval');
       let obj2: ESObject = JSON.parse(strJson2);
-      console.info('[dragSpringLoadingTest_0020] dragSpringLoadingLabel: ' + JSON.stringify(obj2.$attrs.label));
+      console.info('[dragSpringLoadingTest_0020] dragSpringLoadingLabelObj2: ' + JSON.stringify(obj2.$attrs.label));
       expect(obj2.$attrs.label).assertEqual('updateInterval: 0');
 
       let updateNotifyCount = await driver.findComponent(ON.id('updateNotifyCount'));
@@ -142,7 +142,7 @@ export default function dragSpringLoadingTest() {
       await CommonFunc.sleep(500);
       let strJson3 = getInspectorByKey('updateNotifyCount');
       let obj3: ESObject = JSON.parse(strJson3);
-      console.info('[dragSpringLoadingTest_0020] dragSpringLoadingLabel: ' + JSON.stringify(obj3.$attrs.label));
+      console.info('[dragSpringLoadingTest_0020] dragSpringLoadingLabelObj3: ' + JSON.stringify(obj3.$attrs.label));
       expect(obj3.$attrs.label).assertEqual('updateNotifyCount: 0');
 
       let updateToFinishInterval = await driver.findComponent(ON.id('updateToFinishInterval'));
@@ -150,7 +150,7 @@ export default function dragSpringLoadingTest() {
       await CommonFunc.sleep(500);
       let strJson4 = getInspectorByKey('updateToFinishInterval');
       let obj4: ESObject = JSON.parse(strJson4);
-      console.info('[dragSpringLoadingTest_0020] dragSpringLoadingLabel: ' + JSON.stringify(obj4.$attrs.label));
+      console.info('[dragSpringLoadingTest_0020] dragSpringLoadingLabelObj4: ' + JSON.stringify(obj4.$attrs.label));
       expect(obj4.$attrs.label).assertEqual('updateToFinishInterval: 0');
 
       let scrollBar1: Component = await driver.findComponent(ON.type('Scroll'));
@@ -168,7 +168,7 @@ export default function dragSpringLoadingTest() {
 
       let strJson5 = getInspectorByKey('endConfig');
       let obj5: ESObject = JSON.parse(strJson5);
-      console.info('[dragSpringLoadingTest_0020] dragSpringLoadingLabel: ' + JSON.stringify(obj5.$attrs.content));
+      console.info('[dragSpringLoadingTest_0020] dragSpringLoadingLabelObj5: ' + JSON.stringify(obj5.$attrs.content));
       expect(obj5.$attrs.content).assertEqual('0,0,0,0');
 
       console.info('[dragSpringLoadingTest_0020] END');

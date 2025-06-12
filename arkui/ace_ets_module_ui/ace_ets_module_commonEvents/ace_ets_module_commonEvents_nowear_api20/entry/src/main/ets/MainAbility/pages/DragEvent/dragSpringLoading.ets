@@ -122,21 +122,21 @@ struct dragSpringLoading {
             .onDrop((event) => {
               console.log("Drag Drop" + json.stringify(event));
             })
-            .onDragSpringLoading((Context: SpringLoadingContext) => {
-              this.currentNotifySequence = Context.currentNotifySequence
+            .onDragSpringLoading((context: SpringLoadingContext) => {
+              this.currentNotifySequence = context.currentNotifySequence
               this.cancel = ''
-              if (Context.state == 0) {
-                this.beginConfig = Context.currentConfig?.stillTimeLimit + ','
-                  + Context.currentConfig?.updateInterval + ',' + Context.currentConfig?.updateNotifyCount + ',' +
-                  Context.currentConfig?.updateToFinishInterval
-                this.beginInfo = "extraInfos totalSize: " + Context.dragInfos?.dataSummary?.totalSize + '\n' +
-                  " summary: " + Context.dragInfos?.dataSummary?.summary + '\n' + "extraInfos:" +
-                  Context.dragInfos?.extraInfos
+              if (context.state == 0) {
+                this.beginConfig = context.currentConfig?.stillTimeLimit + ','
+                  + context.currentConfig?.updateInterval + ',' + context.currentConfig?.updateNotifyCount + ','
+                  + context.currentConfig?.updateToFinishInterval
+                this.beginInfo = "extraInfos totalSize: " + context.dragInfos?.dataSummary?.totalSize + '\n'
+                  + " summary: " + context.dragInfos?.dataSummary?.summary + '\n' + "extraInfos:"
+                  + context.dragInfos?.extraInfos
                 if (this.isAbort0 == true) {
-                  Context.abort()
+                  context.abort()
                 }
                 if (this.isUpdate1 == true) {
-                  Context.updateConfiguration({
+                  context.updateConfiguration({
                     stillTimeLimit: this.begin[this.beginIndex],
                     updateInterval: this.update[this.updateIndex],
                     updateNotifyCount: this.updateCount[this.updateCountIndex],
@@ -144,20 +144,20 @@ struct dragSpringLoading {
                   })
                 }
 
-              } else if (Context.state == 1) {
-                if (Context.currentNotifySequence == 1) {
+              } else if (context.state == 1) {
+                if (context.currentNotifySequence == 1) {
                   this.color1 = Color.Blue
-                } else if (Context.currentNotifySequence == 2) {
+                } else if (context.currentNotifySequence == 2) {
                   this.color1 = Color.Pink
-                } else if (Context.currentNotifySequence == 3) {
+                } else if (context.currentNotifySequence == 3) {
                   this.color1 = Color.Blue
                 }
 
                 if (this.isAbort1 == true) {
-                  Context.abort()
+                  context.abort()
                 }
-                if (this.isAbort4 == true && Context.currentNotifySequence == 2) {
-                  Context.abort()
+                if (this.isAbort4 == true && context.currentNotifySequence == 2) {
+                  context.abort()
                 }
                 if (this.isChange == true) {
                   this.folderSize = 300
@@ -168,33 +168,33 @@ struct dragSpringLoading {
                 if (this.isPopup == true) {
                   this.handlePopup = true
                 }
-                if (this.isPush1 == true && Context.currentNotifySequence == 2) {
+                if (this.isPush1 == true && context.currentNotifySequence == 2) {
                   router.pushUrl({ url: "pages/pushPage" })
                 }
-                if (this.isUpdate2 == true && Context.currentNotifySequence == 1) {
-                  Context.updateConfiguration({
+                if (this.isUpdate2 == true && context.currentNotifySequence == 1) {
+                  context.updateConfiguration({
                     stillTimeLimit: this.begin[this.beginIndex],
                     updateInterval: this.update[this.updateIndex],
                     updateNotifyCount: this.updateCount[this.updateCountIndex],
                     updateToFinishInterval: this.end[this.endIndex]
                   })
                 }
-              } else if (Context.state == 2) {
+              } else if (context.state == 2) {
                 this.color1 = Color.Pink
-                this.endConfig = Context.currentConfig?.stillTimeLimit + ','
-                  + Context.currentConfig?.updateInterval + ',' + Context.currentConfig?.updateNotifyCount + ',' +
-                  Context.currentConfig?.updateToFinishInterval
+                this.endConfig = context.currentConfig?.stillTimeLimit + ','
+                  + context.currentConfig?.updateInterval + ',' + context.currentConfig?.updateNotifyCount + ','
+                  + context.currentConfig?.updateToFinishInterval
                 if (this.isAbort2 == true) {
-                  Context.abort()
+                  context.abort()
                 }
                 if (this.isPush == true) {
                   router.pushUrl({ url: "pages/pushPage" })
                 }
-              } else if (Context.state == 3) {
+              } else if (context.state == 3) {
                 this.color1 = Color.Pink
                 this.cancel = "DragSpringLoading cancel"
                 if (this.isAbort3 == true) {
-                  Context.abort()
+                  context.abort()
                 }
               }
 
