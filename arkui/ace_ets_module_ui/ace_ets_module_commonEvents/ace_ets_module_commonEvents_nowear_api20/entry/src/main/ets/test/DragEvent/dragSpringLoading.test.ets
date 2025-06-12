@@ -22,13 +22,13 @@ export default function dragSpringLoadingTest() {
   describe('dragSpringLoadingTest', () => {
     beforeEach(async (done: Function) => {
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/Drag/dragSpringLoading',
+        url: 'MainAbility/pages/DragEvent/dragSpringLoading',
       }
       try {
         router.clear();
         let pages = router.getState();
         console.info('get dragSpringLoadingTest state pages: ' + JSON.stringify(pages));
-        if (!('NormalEts' == pages.name)) {
+        if (!('dragSpringLoading' == pages.name)) {
           console.info('get dragSpringLoadingTest state pages.name: ' + JSON.stringify(pages.name));
           let result = await router.replace(options);
           await CommonFunc.sleep(2000);
@@ -47,10 +47,10 @@ export default function dragSpringLoadingTest() {
     });
 
     /**
-     * @tc.number dragSpringLoadingTest_0010
-     * @tc.name dragSpringLoadingTest
-     * @tc.desc api
-     * @tc.level: Leve 0
+     * @tc.number    dragSpringLoadingTest_0010
+     * @tc.name      dragSpringLoadingTest_0010
+     * @tc.desc      api
+     * @tc.level:    Level 0
      * @tc.type :
      * @tc.size :
      */
@@ -99,10 +99,10 @@ export default function dragSpringLoadingTest() {
     });
 
     /**
-     * @tc.number dragSpringLoadingTest_0020
-     * @tc.name dragSpringLoadingTest
-     * @tc.desc api
-     * @tc.level: Level 0
+     * @tc.number    dragSpringLoadingTest_0020
+     * @tc.name      dragSpringLoadingTest_0020
+     * @tc.desc      api
+     * @tc.level:    Level 0
      * @tc.type :
      * @tc.size :
      */

@@ -182,7 +182,8 @@ struct dragSpringLoading {
               } else if (context.state == 2) {
                 this.color1 = Color.Pink
                 this.endConfig = context.currentConfig?.stillTimeLimit + ','
-                  + context.currentConfig?.updateInterval + ',' + context.currentConfig?.updateNotifyCount + ','
+                  + context.currentConfig?.updateInterval + ','
+                  + context.currentConfig?.updateNotifyCount + ','
                   + context.currentConfig?.updateToFinishInterval
                 if (this.isAbort2 == true) {
                   context.abort()
@@ -207,20 +208,20 @@ struct dragSpringLoading {
               }
             )
         }
-        Text('isabort()').fontColor(0xCCCCCC).width('90%').height("5%")
+        Text('isabort()').fontColor(0xCCCCCC).width('90%').height('5%')
         Row() {
           Button('begin: ' + this.isAbort0)
             .id('abortBegin')
             .onClick(() => {
               this.isAbort0 = !this.isAbort0
             })
-        }.width('90%').height("5%")
+        }.width('90%').height('5%')
 
-        Text('Update By updateConfiguration').fontColor(0xCCCCCC).width('90%').height("5%")
+        Text('Update By updateConfiguration').fontColor(0xCCCCCC).width('90%').height('5%')
         Button('threeUpdate: ' + this.isUpdate2)
           .id('updateThree')
           .width('90%')
-          .height("5%")
+          .height('5%')
           .type(ButtonType.Normal)
           .fontColor(Color.Black)
           .backgroundColor(Color.Pink)
@@ -233,7 +234,7 @@ struct dragSpringLoading {
         Button('stillTimeLimit: ' + this.begin[this.beginIndex])
           .id('updateStillTimeLimit')
           .width('90%')
-          .height("5%")
+          .height('5%')
           .onClick(() => {
             this.beginIndex++
             if (this.beginIndex > 5) {
@@ -243,7 +244,7 @@ struct dragSpringLoading {
         Button('updateInterval: ' + this.update[this.updateIndex])
           .id('updateInterval')
           .width('90%')
-          .height("5%")
+          .height('5%')
           .onClick(() => {
             this.updateIndex++
             if (this.updateIndex > 5) {
@@ -253,7 +254,7 @@ struct dragSpringLoading {
         Button('updateNotifyCount: ' + this.updateCount[this.updateCountIndex])
           .id('updateNotifyCount')
           .width('90%')
-          .height("5%")
+          .height('5%')
           .onClick(() => {
             this.updateCountIndex++
             if (this.updateCountIndex > 7) {
@@ -263,7 +264,7 @@ struct dragSpringLoading {
         Button('updateToFinishInterval: ' + this.end[this.endIndex])
           .id('updateToFinishInterval')
           .width('90%')
-          .height("5%")
+          .height('5%')
           .onClick(() => {
             this.endIndex++
             if (this.endIndex > 5) {
