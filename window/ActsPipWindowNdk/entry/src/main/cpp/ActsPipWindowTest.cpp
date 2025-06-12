@@ -237,7 +237,7 @@ static napi_value TestCreatePip_ControllerId_Nullptr(napi_env env, napi_callback
     OH_PictureInPicture_SetPipControlGroup(pipConfig, controlGroup, 1);
     OH_PictureInPicture_SetPipNapiEnv(pipConfig, env);
     uint32_t controllerId = 0;
-    int32_t ret = OH_PictureInPicture_CreatePip(pipConfig, &controllerId);
+    int32_t ret = OH_PictureInPicture_CreatePip(pipConfig, nullptr);
     OH_LOG_INFO(LOG_APP, "TestCreatePip_ControllerId_Nullptr ret=%{public}d", ret);
     OH_PictureInPicture_DestroyPipConfig(&pipConfig);
     napi_create_int32(env, ret, &result);
@@ -323,7 +323,12 @@ static napi_value TestStartStopPip(napi_env env, napi_callback_info info)
     OH_PictureInPicture_SetPipControlGroup(pipConfig, controlGroup, 1);
     OH_PictureInPicture_SetPipNapiEnv(pipConfig, env);
     uint32_t controllerId = 0;
-    OH_PictureInPicture_CreatePip(pipConfig, &controllerId);
+    int32_t res = OH_PictureInPicture_CreatePip(pipConfig, &controllerId);
+    OH_LOG_INFO(LOG_APP, "TestStartStopPip res=%{public}d", res);
+    if (res != 0) {
+        napi_create_int32(env, res, &result);
+        return result;
+    }
     OH_PictureInPicture_DestroyPipConfig(&pipConfig);
     int32_t ret = OH_PictureInPicture_StartPip(controllerId);
     OH_LOG_INFO(LOG_APP, "TestStartStopPip ret=%{public}d", ret);
@@ -354,7 +359,12 @@ static napi_value TestStartPipRepeat(napi_env env, napi_callback_info info)
     OH_PictureInPicture_SetPipControlGroup(pipConfig, controlGroup, 1);
     OH_PictureInPicture_SetPipNapiEnv(pipConfig, env);
     uint32_t controllerId = 0;
-    OH_PictureInPicture_CreatePip(pipConfig, &controllerId);
+    int32_t res = OH_PictureInPicture_CreatePip(pipConfig, &controllerId);
+    OH_LOG_INFO(LOG_APP, "TestStartPipRepeat res=%{public}d", res);
+    if (res != 0) {
+        napi_create_int32(env, res, &result);
+        return result;
+    }
     OH_PictureInPicture_DestroyPipConfig(&pipConfig);
     OH_PictureInPicture_StartPip(controllerId);
     int32_t ret = OH_PictureInPicture_StartPip(controllerId);
@@ -386,12 +396,18 @@ static napi_value TestStopPipRepeat(napi_env env, napi_callback_info info)
     OH_PictureInPicture_SetPipControlGroup(pipConfig, controlGroup, 1);
     OH_PictureInPicture_SetPipNapiEnv(pipConfig, env);
     uint32_t controllerId = 0;
-    OH_PictureInPicture_CreatePip(pipConfig, &controllerId);
+    int32_t res = OH_PictureInPicture_CreatePip(pipConfig, &controllerId);
+    OH_LOG_INFO(LOG_APP, "TestStopPipRepeat res=%{public}d", res);
+    if (res != 0) {
+        napi_create_int32(env, res, &result);
+        return result;
+    }
     OH_PictureInPicture_DestroyPipConfig(&pipConfig);
     OH_PictureInPicture_StartPip(controllerId);
     int32_t ret = OH_PictureInPicture_StopPip(controllerId);
     OH_LOG_INFO(LOG_APP, "TestStopPipRepeat ret=%{public}d", ret);
-    OH_PictureInPicture_StopPip(controllerId);
+    ret = OH_PictureInPicture_StopPip(controllerId);
+    OH_LOG_INFO(LOG_APP, "TestStopPipRepeat 2 ret=%{public}d", ret);
     
     napi_create_int32(env, ret, &result);
     return result;
@@ -418,7 +434,12 @@ static napi_value TestDeletePipWithStopPip(napi_env env, napi_callback_info info
     OH_PictureInPicture_SetPipControlGroup(pipConfig, controlGroup, 1);
     OH_PictureInPicture_SetPipNapiEnv(pipConfig, env);
     uint32_t controllerId = 0;
-    OH_PictureInPicture_CreatePip(pipConfig, &controllerId);
+    int32_t res = OH_PictureInPicture_CreatePip(pipConfig, &controllerId);
+    OH_LOG_INFO(LOG_APP, "TestDeletePipWithStopPip res=%{public}d", res);
+    if (res != 0) {
+        napi_create_int32(env, res, &result);
+        return result;
+    }
     OH_PictureInPicture_DestroyPipConfig(&pipConfig);
     OH_PictureInPicture_StartPip(controllerId);
     OH_PictureInPicture_StopPip(controllerId);
@@ -480,7 +501,12 @@ static napi_value TestUpdatePipContentSize(napi_env env, napi_callback_info info
     OH_PictureInPicture_SetPipControlGroup(pipConfig, controlGroup, 1);
     OH_PictureInPicture_SetPipNapiEnv(pipConfig, env);
     uint32_t controllerId = 0;
-    OH_PictureInPicture_CreatePip(pipConfig, &controllerId);
+    int32_t res = OH_PictureInPicture_CreatePip(pipConfig, &controllerId);
+    OH_LOG_INFO(LOG_APP, "TestUpdatePipContentSize res=%{public}d", res);
+    if (res != 0) {
+        napi_create_int32(env, res, &result);
+        return result;
+    }
     OH_PictureInPicture_DestroyPipConfig(&pipConfig);
     OH_PictureInPicture_StartPip(controllerId);
     int32_t ret = OH_PictureInPicture_UpdatePipContentSize(controllerId, 1, 1);
@@ -499,7 +525,6 @@ static napi_value TestUpdatePipContentStatus(napi_env env, napi_callback_info in
     uint32_t mainWindowId;
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     napi_get_value_uint32(env, args[0], &mainWindowId);
-    OH_LOG_INFO(LOG_APP, "TestUpdatePipContentStatus mainWindowId =%{public}d.", mainWindowId);
     napi_value result;
     PictureInPicture_PipControlGroup controlGroup[1] = {
         PictureInPicture_PipControlGroup::VIDEO_PLAY_FAST_FORWARD_BACKWARD
@@ -513,7 +538,12 @@ static napi_value TestUpdatePipContentStatus(napi_env env, napi_callback_info in
     OH_PictureInPicture_SetPipControlGroup(pipConfig, controlGroup, 1);
     OH_PictureInPicture_SetPipNapiEnv(pipConfig, env);
     uint32_t controllerId = 0;
-    OH_PictureInPicture_CreatePip(pipConfig, &controllerId);
+    int32_t res = OH_PictureInPicture_CreatePip(pipConfig, &controllerId);
+    OH_LOG_INFO(LOG_APP, "TestUpdatePipContentStatus res=%{public}d", res);
+    if (res != 0) {
+        napi_create_int32(env, res, &result);
+        return result;
+    }
     OH_PictureInPicture_DestroyPipConfig(&pipConfig);
     
     int32_t ret0 = OH_PictureInPicture_StartPip(controllerId);
@@ -549,7 +579,6 @@ static napi_value TestUpdatePipContentEnabled(napi_env env, napi_callback_info i
     uint32_t mainWindowId;
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     napi_get_value_uint32(env, args[0], &mainWindowId);
-    OH_LOG_INFO(LOG_APP, "TestUpdatePipContentEnabled mainWindowId =%{public}d.", mainWindowId);
     napi_value result;
     PictureInPicture_PipControlGroup controlGroup[1] = {
         PictureInPicture_PipControlGroup::VIDEO_PLAY_FAST_FORWARD_BACKWARD
@@ -563,7 +592,12 @@ static napi_value TestUpdatePipContentEnabled(napi_env env, napi_callback_info i
     OH_PictureInPicture_SetPipControlGroup(pipConfig, controlGroup, 1);
     OH_PictureInPicture_SetPipNapiEnv(pipConfig, env);
     uint32_t controllerId = 0;
-    OH_PictureInPicture_CreatePip(pipConfig, &controllerId);
+    int32_t res = OH_PictureInPicture_CreatePip(pipConfig, &controllerId);
+    OH_LOG_INFO(LOG_APP, "TestUpdatePipContentEnabled res=%{public}d", res);
+    if (res != 0) {
+        napi_create_int32(env, res, &result);
+        return result;
+    }
     OH_PictureInPicture_DestroyPipConfig(&pipConfig);
     
     int32_t ret0 = OH_PictureInPicture_StartPip(0);
@@ -643,7 +677,12 @@ static napi_value TestRegisterStartPipCallback(napi_env env, napi_callback_info 
     OH_PictureInPicture_SetPipControlGroup(pipConfig, controlGroup, 1);
     OH_PictureInPicture_SetPipNapiEnv(pipConfig, env);
     uint32_t controllerId = 0;
-    OH_PictureInPicture_CreatePip(pipConfig, &controllerId);
+    int32_t res = OH_PictureInPicture_CreatePip(pipConfig, &controllerId);
+    OH_LOG_INFO(LOG_APP, "TestRegisterStartPipCallback res=%{public}d", res);
+    if (res != 0) {
+        napi_create_int32(env, res, &result);
+        return result;
+    }
     OH_PictureInPicture_DestroyPipConfig(&pipConfig);
     
     OH_PictureInPicture_RegisterStartPipCallback(controllerId, WebPipStartPipCallback1);
@@ -687,7 +726,12 @@ static napi_value TestTwoRegisterStartPipCallback(napi_env env, napi_callback_in
     OH_PictureInPicture_SetPipControlGroup(pipConfig, controlGroup, 1);
     OH_PictureInPicture_SetPipNapiEnv(pipConfig, env);
     uint32_t controllerId = 0;
-    OH_PictureInPicture_CreatePip(pipConfig, &controllerId);
+    int32_t res = OH_PictureInPicture_CreatePip(pipConfig, &controllerId);
+    OH_LOG_INFO(LOG_APP, "TestTwoRegisterStartPipCallback res=%{public}d", res);
+    if (res != 0) {
+        napi_create_int32(env, res, &result);
+        return result;
+    }
     OH_PictureInPicture_DestroyPipConfig(&pipConfig);
     
     OH_PictureInPicture_RegisterStartPipCallback(controllerId, WebPipStartPipCallback1);
@@ -734,7 +778,12 @@ static napi_value TestUnregisterStartPipCallback(napi_env env, napi_callback_inf
     OH_PictureInPicture_SetPipControlGroup(pipConfig, controlGroup, 1);
     OH_PictureInPicture_SetPipNapiEnv(pipConfig, env);
     uint32_t controllerId = 0;
-    OH_PictureInPicture_CreatePip(pipConfig, &controllerId);
+    int32_t res = OH_PictureInPicture_CreatePip(pipConfig, &controllerId);
+    OH_LOG_INFO(LOG_APP, "TestUnregisterStartPipCallback res=%{public}d", res);
+    if (res != 0) {
+        napi_create_int32(env, res, &result);
+        return result;
+    }
     OH_PictureInPicture_DestroyPipConfig(&pipConfig);
     
     OH_PictureInPicture_RegisterStartPipCallback(controllerId, WebPipStartPipCallback1);
@@ -781,7 +830,12 @@ static napi_value TestUnregisterAllStartPipCallbacks(napi_env env, napi_callback
     OH_PictureInPicture_SetPipControlGroup(pipConfig, controlGroup, 1);
     OH_PictureInPicture_SetPipNapiEnv(pipConfig, env);
     uint32_t controllerId = 0;
-    OH_PictureInPicture_CreatePip(pipConfig, &controllerId);
+    int32_t res = OH_PictureInPicture_CreatePip(pipConfig, &controllerId);
+    OH_LOG_INFO(LOG_APP, "TestUnregisterAllStartPipCallbacks res=%{public}d", res);
+    if (res != 0) {
+        napi_create_int32(env, res, &result);
+        return result;
+    }
     OH_PictureInPicture_DestroyPipConfig(&pipConfig);
     
     OH_PictureInPicture_RegisterStartPipCallback(controllerId, WebPipStartPipCallback1);
@@ -863,7 +917,12 @@ static napi_value TestRegisterResizeListener(napi_env env, napi_callback_info in
     OH_PictureInPicture_SetPipControlGroup(pipConfig, controlGroup, 1);
     OH_PictureInPicture_SetPipNapiEnv(pipConfig, env);
     uint32_t controllerId = 0;
-    OH_PictureInPicture_CreatePip(pipConfig, &controllerId);
+    int32_t res = OH_PictureInPicture_CreatePip(pipConfig, &controllerId);
+    OH_LOG_INFO(LOG_APP, "TestRegisterResizeListener res=%{public}d", res);
+    if (res != 0) {
+        napi_create_int32(env, res, &result);
+        return result;
+    }
     OH_PictureInPicture_DestroyPipConfig(&pipConfig);
     
     OH_PictureInPicture_RegisterResizeListener(controllerId, WebPipResizeCallback1);
@@ -909,7 +968,12 @@ static napi_value TestTwoRegisterResizeListener(napi_env env, napi_callback_info
     OH_PictureInPicture_SetPipControlGroup(pipConfig, controlGroup, 1);
     OH_PictureInPicture_SetPipNapiEnv(pipConfig, env);
     uint32_t controllerId = 0;
-    OH_PictureInPicture_CreatePip(pipConfig, &controllerId);
+    int32_t res = OH_PictureInPicture_CreatePip(pipConfig, &controllerId);
+    OH_LOG_INFO(LOG_APP, "TestTwoRegisterResizeListener res=%{public}d", res);
+    if (res != 0) {
+        napi_create_int32(env, res, &result);
+        return result;
+    }
     OH_PictureInPicture_DestroyPipConfig(&pipConfig);
     
     OH_PictureInPicture_RegisterResizeListener(controllerId, WebPipResizeCallback1);
@@ -958,7 +1022,12 @@ static napi_value TestUnregisterResizeListener(napi_env env, napi_callback_info 
     OH_PictureInPicture_SetPipControlGroup(pipConfig, controlGroup, 1);
     OH_PictureInPicture_SetPipNapiEnv(pipConfig, env);
     uint32_t controllerId = 0;
-    OH_PictureInPicture_CreatePip(pipConfig, &controllerId);
+    int32_t res = OH_PictureInPicture_CreatePip(pipConfig, &controllerId);
+    OH_LOG_INFO(LOG_APP, "TestUnregisterResizeListener res=%{public}d", res);
+    if (res != 0) {
+        napi_create_int32(env, res, &result);
+        return result;
+    }
     OH_PictureInPicture_DestroyPipConfig(&pipConfig);
     
     OH_PictureInPicture_RegisterResizeListener(controllerId, WebPipResizeCallback1);
@@ -1007,7 +1076,12 @@ static napi_value TestUnregisterAllResizeListeners(napi_env env, napi_callback_i
     OH_PictureInPicture_SetPipControlGroup(pipConfig, controlGroup, 1);
     OH_PictureInPicture_SetPipNapiEnv(pipConfig, env);
     uint32_t controllerId = 0;
-    OH_PictureInPicture_CreatePip(pipConfig, &controllerId);
+    int32_t res = OH_PictureInPicture_CreatePip(pipConfig, &controllerId);
+    OH_LOG_INFO(LOG_APP, "TestUnregisterAllResizeListeners res=%{public}d", res);
+    if (res != 0) {
+        napi_create_int32(env, res, &result);
+        return result;
+    }
     OH_PictureInPicture_DestroyPipConfig(&pipConfig);
     
     OH_PictureInPicture_RegisterResizeListener(controllerId, WebPipResizeCallback1);
@@ -1091,7 +1165,12 @@ static napi_value TestRegisterControlEventListener(napi_env env, napi_callback_i
     OH_PictureInPicture_SetPipControlGroup(pipConfig, controlGroup, 1);
     OH_PictureInPicture_SetPipNapiEnv(pipConfig, env);
     uint32_t controllerId = 0;
-    OH_PictureInPicture_CreatePip(pipConfig, &controllerId);
+    int32_t res = OH_PictureInPicture_CreatePip(pipConfig, &controllerId);
+    OH_LOG_INFO(LOG_APP, "TestRegisterControlEventListener res=%{public}d", res);
+    if (res != 0) {
+        napi_create_int32(env, res, &result);
+        return result;
+    }
     OH_PictureInPicture_DestroyPipConfig(&pipConfig);
     
     OH_PictureInPicture_RegisterControlEventListener(controllerId, WebPipControlEventCallback1);
@@ -1137,7 +1216,12 @@ static napi_value TestUnregisterControlEventListener(napi_env env, napi_callback
     OH_PictureInPicture_SetPipControlGroup(pipConfig, controlGroup, 1);
     OH_PictureInPicture_SetPipNapiEnv(pipConfig, env);
     uint32_t controllerId = 0;
-    OH_PictureInPicture_CreatePip(pipConfig, &controllerId);
+    int32_t res = OH_PictureInPicture_CreatePip(pipConfig, &controllerId);
+    OH_LOG_INFO(LOG_APP, "TestUnregisterControlEventListener res=%{public}d", res);
+    if (res != 0) {
+        napi_create_int32(env, res, &result);
+        return result;
+    }
     OH_PictureInPicture_DestroyPipConfig(&pipConfig);
     
     OH_PictureInPicture_RegisterControlEventListener(controllerId, WebPipControlEventCallback1);
@@ -1186,7 +1270,12 @@ static napi_value TestUnregisterAllControlEventListeners(napi_env env, napi_call
     OH_PictureInPicture_SetPipControlGroup(pipConfig, controlGroup, 1);
     OH_PictureInPicture_SetPipNapiEnv(pipConfig, env);
     uint32_t controllerId = 0;
-    OH_PictureInPicture_CreatePip(pipConfig, &controllerId);
+    int32_t res = OH_PictureInPicture_CreatePip(pipConfig, &controllerId);
+    OH_LOG_INFO(LOG_APP, "TestUnregisterAllControlEventListeners res=%{public}d", res);
+    if (res != 0) {
+        napi_create_int32(env, res, &result);
+        return result;
+    }
     OH_PictureInPicture_DestroyPipConfig(&pipConfig);
     
     OH_PictureInPicture_RegisterControlEventListener(controllerId, WebPipControlEventCallback1);
@@ -1266,7 +1355,12 @@ static napi_value TestRegisterLifeCycleListener(napi_env env, napi_callback_info
     OH_PictureInPicture_SetPipControlGroup(pipConfig, controlGroup, 1);
     OH_PictureInPicture_SetPipNapiEnv(pipConfig, env);
     uint32_t controllerId = 0;
-    OH_PictureInPicture_CreatePip(pipConfig, &controllerId);
+    int32_t res = OH_PictureInPicture_CreatePip(pipConfig, &controllerId);
+    OH_LOG_INFO(LOG_APP, "TestRegisterLifeCycleListener res=%{public}d", res);
+    if (res != 0) {
+        napi_create_int32(env, res, &result);
+        return result;
+    }
     OH_PictureInPicture_DestroyPipConfig(&pipConfig);
     
     OH_PictureInPicture_RegisterLifecycleListener(controllerId, WebPipLifecycleCallback1);
@@ -1310,7 +1404,12 @@ static napi_value TestTwoRegisterLifeCycleListener(napi_env env, napi_callback_i
     OH_PictureInPicture_SetPipControlGroup(pipConfig, controlGroup, 1);
     OH_PictureInPicture_SetPipNapiEnv(pipConfig, env);
     uint32_t controllerId = 0;
-    OH_PictureInPicture_CreatePip(pipConfig, &controllerId);
+    int32_t res = OH_PictureInPicture_CreatePip(pipConfig, &controllerId);
+    OH_LOG_INFO(LOG_APP, "TestTwoRegisterLifeCycleListener res=%{public}d", res);
+    if (res != 0) {
+        napi_create_int32(env, res, &result);
+        return result;
+    }
     OH_PictureInPicture_DestroyPipConfig(&pipConfig);
     
     OH_PictureInPicture_RegisterLifecycleListener(controllerId, WebPipLifecycleCallback1);
@@ -1357,7 +1456,12 @@ static napi_value TestUnregisterLifeCycleListener(napi_env env, napi_callback_in
     OH_PictureInPicture_SetPipControlGroup(pipConfig, controlGroup, 1);
     OH_PictureInPicture_SetPipNapiEnv(pipConfig, env);
     uint32_t controllerId = 0;
-    OH_PictureInPicture_CreatePip(pipConfig, &controllerId);
+    int32_t res = OH_PictureInPicture_CreatePip(pipConfig, &controllerId);
+    OH_LOG_INFO(LOG_APP, "TestUnregisterLifeCycleListener res=%{public}d", res);
+    if (res != 0) {
+        napi_create_int32(env, res, &result);
+        return result;
+    }
     OH_PictureInPicture_DestroyPipConfig(&pipConfig);
     
     OH_PictureInPicture_RegisterLifecycleListener(controllerId, WebPipLifecycleCallback1);
@@ -1404,7 +1508,12 @@ static napi_value TestUnregisterAllLifeCycleListeners(napi_env env, napi_callbac
     OH_PictureInPicture_SetPipControlGroup(pipConfig, controlGroup, 1);
     OH_PictureInPicture_SetPipNapiEnv(pipConfig, env);
     uint32_t controllerId = 0;
-    OH_PictureInPicture_CreatePip(pipConfig, &controllerId);
+    int32_t res = OH_PictureInPicture_CreatePip(pipConfig, &controllerId);
+    OH_LOG_INFO(LOG_APP, "TestUnregisterAllLifeCycleListeners res=%{public}d", res);
+    if (res != 0) {
+        napi_create_int32(env, res, &result);
+        return result;
+    }
     OH_PictureInPicture_DestroyPipConfig(&pipConfig);
     
     OH_PictureInPicture_RegisterLifecycleListener(controllerId, WebPipLifecycleCallback1);

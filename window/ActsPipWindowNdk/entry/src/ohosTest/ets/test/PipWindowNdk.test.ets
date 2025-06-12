@@ -212,7 +212,7 @@ export default function PipWindowNdkTest() {
         console.log(`${caseName} properties: ${JSON.stringify(properties)}`);
         let mainWindowId = properties.id;
         console.log(`${caseName} mainWindowId: ${JSON.stringify(mainWindowId)}`);
-        let result = testNapi.testCreatePip_SetPipMainWindowId_Zero(mainWindowId);
+        let result = testNapi.testCreatePip_SetPipMainWindowId_Zero(0);
         console.log(`${caseName} result: ${JSON.stringify(result)}`);
         if (result === 801) {
           done()
