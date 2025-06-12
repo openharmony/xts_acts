@@ -41,7 +41,7 @@ export default function pixelMapNewAPI() {
       }
       try {
         image.createPixelMapUsingAllocator(color, opts, image.AllocatorType.AUTO)
-        expect().assertTrue();
+        expect(true).assertTrue();
         done();
       } catch(error){
         console.error(`www data Failed to getMetaData. code is ${error.code}, message is ${error.message}`);
@@ -65,7 +65,7 @@ export default function pixelMapNewAPI() {
       }
       try {
         image.createPixelMapUsingAllocator(color, opts, image.AllocatorType.DMA)
-        expect().assertTrue();
+        expect(true).assertTrue();
         done();
       } catch(error){
         console.error(`www data Failed to getMetaData. code is ${error.code}, message is ${error.message}`);
@@ -89,7 +89,7 @@ export default function pixelMapNewAPI() {
       }
       try {
         image.createPixelMapUsingAllocator(color, opts, image.AllocatorType.SHARE_MEMORY)
-        expect().assertTrue();
+        expect(true).assertTrue();
         done();
       } catch(error){
         console.error(`www data Failed to getMetaData. code is ${error.code}, message is ${error.message}`);
@@ -113,7 +113,7 @@ export default function pixelMapNewAPI() {
       }
       try {
         image.createPixelMapUsingAllocatorSync(color, opts, image.AllocatorType.SHARE_MEMORY)
-        expect().assertTrue();
+        expect(true).assertTrue();
         done();
       } catch(error){
         console.error(`www data Failed to getMetaData. code is ${error.code}, message is ${error.message}`);
@@ -137,7 +137,7 @@ export default function pixelMapNewAPI() {
       }
       try {
         image.createPixelMapUsingAllocatorSync(color, opts, image.AllocatorType.DMA)
-        expect().assertTrue();
+        expect(true).assertTrue();
         done();
       } catch(error){
         console.error(`www data Failed to getMetaData. code is ${error.code}, message is ${error.message}`);
@@ -161,7 +161,7 @@ export default function pixelMapNewAPI() {
       }
       try {
         image.createPixelMapUsingAllocatorSync(color, opts, image.AllocatorType.AUTO)
-        expect().assertTrue();
+        expect(true).assertTrue();
         done();
       } catch(error){
         console.error(`www data Failed to getMetaData. code is ${error.code}, message is ${error.message}`);
@@ -184,7 +184,7 @@ export default function pixelMapNewAPI() {
       }
       try {
         image.createPixelMapUsingAllocatorSync(opts, image.AllocatorType.SHARE_MEMORY)
-        expect().assertTrue();
+        expect(true).assertTrue();
         done();
       } catch(error){
         console.error(`www data Failed to getMetaData. code is ${error.code}, message is ${error.message}`);
@@ -207,7 +207,7 @@ export default function pixelMapNewAPI() {
       }
       try {
         image.createPixelMapUsingAllocatorSync(opts, image.AllocatorType.DMA)
-        expect().assertTrue();
+        expect(true).assertTrue();
         done();
       } catch(error){
         console.error(`www data Failed to getMetaData. code is ${error.code}, message is ${error.message}`);
@@ -230,7 +230,7 @@ export default function pixelMapNewAPI() {
       }
       try {
         image.createPixelMapUsingAllocatorSync(opts, image.AllocatorType.AUTO)
-        expect().assertTrue();
+        expect(true).assertTrue();
         done();
       } catch(error){
         console.error(`www data Failed to getMetaData. code is ${error.code}, message is ${error.message}`);
