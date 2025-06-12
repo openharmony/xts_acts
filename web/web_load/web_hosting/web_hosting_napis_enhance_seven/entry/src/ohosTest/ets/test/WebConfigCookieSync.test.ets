@@ -70,9 +70,9 @@ export default function WebConfigCookieSync() {
     * @tc.desc       : test configCookieSync Set the cache value to include \n
     * @tc.size       : MediumTest
     * @tc.type       : Function
-    * @tc.level      : Level 2
+    * @tc.level      : Level 0
     */
-    it('testConfigCookieSync001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('testConfigCookieSync001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("emitConfigCookieSync001", 612)
       Utils.registerBaseEvent("testConfigCookieSync001", true, 2025061201, done, (backData: events_emitter.EventData, expected: Object) => {
         expect(backData?.data?.ACTION).assertEqual(expected);
@@ -134,9 +134,9 @@ export default function WebConfigCookieSync() {
     * @tc.desc       : test configCookieSync Set the cache value to include \n httpOnly
     * @tc.size       : MediumTest
     * @tc.type       : Function
-    * @tc.level      : Level 2
+    * @tc.level      : Level 0
     */
-    it('testConfigCookieSync005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('testConfigCookieSync005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("emitConfigCookieSync005", 612)
       Utils.registerBaseEvent("testConfigCookieSync005", true, 2025061205, done, (backData: events_emitter.EventData, expected: Object) => {
         expect(backData?.data?.ACTION).assertEqual(expected);
@@ -198,9 +198,9 @@ export default function WebConfigCookieSync() {
      * @tc.desc       : test configCookieSync Set the cache value to include \n clearAllCookiesSync success
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 0
      */
-    it('testConfigCookieSync009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('testConfigCookieSync009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("emitConfigCookieSync009", 612)
       Utils.registerBaseEvent("testConfigCookieSync009", true, 2025061209, done, (backData: events_emitter.EventData, expected: Object) => {
         expect(backData?.data?.ACTION).assertEqual(expected);
@@ -214,9 +214,9 @@ export default function WebConfigCookieSync() {
      * @tc.desc       : test configCookieSync Set the cache value to include \r httpOnly clearAllCookiesSync success
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 0
      */
-    it('testConfigCookieSync010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('testConfigCookieSync010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       Utils.emitEvent("emitConfigCookieSync010", 612)
       Utils.registerBaseEvent("testConfigCookieSync010", true, 2025061210, done, (backData: events_emitter.EventData, expected: Object) => {
         expect(backData?.data?.ACTION).assertEqual(expected);
