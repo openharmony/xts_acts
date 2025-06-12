@@ -24,18 +24,20 @@ import LineMetricsTest from './LineMetricsTest.test'
 import LineMetricsTwoTest from './LineMetricsTwoTest.test'
 import FontDescriptorTest from './FontDescriptorTest.test'
 import FontDescriptorTest1 from './FontDescriptorTest1.test'
+import graphicTextNewAPI from './GraphicTextNewAPI.test'
 
 export default function testsuite() {
-  graphicTextATest()
-  graphicTextBTest()
-  graphicTextCTest()
+  graphicTextATest();
+  graphicTextBTest();
+  graphicTextCTest();
   graphicTextClass();
   graphicTextEnum();
-  graphicTextHadTest()
+  graphicTextHadTest();
   graphicTextInterface();
-  graphicFontDescriptorTest()
+  graphicFontDescriptorTest();
   LineMetricsTest();
-  LineMetricsTwoTest()
-  FontDescriptorTest()
-  FontDescriptorTest1()
+  LineMetricsTwoTest();
+  FontDescriptorTest();
+  FontDescriptorTest1();
+  graphicTextNewAPI();
 }
