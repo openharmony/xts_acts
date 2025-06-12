@@ -27,8 +27,8 @@ export default function formErrorTest() {
         hilog.info(DOMAIN, TAG, 'formErrorTest describe start');
 
         /**
-         * @tc.number: FormErrorTest001
-         * @tc.name: FormErrorTest001
+         * @tc.number: FormErrorStaticTest001
+         * @tc.name: FormErrorStaticTest001
          * @tc.desc: check formError
          */
         it("FormErrorStaticTest001", TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: () => void): Promise<void> => {
