@@ -30,7 +30,7 @@ export default function nativeTest() {
       * @tc.name      budnleNdkNativeTest004
       * @tc.desc      budnleNdkNativeTest
     */
-    it('BundleNdkTest004', 0, (done: Function) => {
+    it('budnleNdkNativeTest004', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, (done: Function) => {
       try{
         let data = entry_add.IsDebugMode();
         hilog.info(0x0000, 'Debug_Metadata_test', 'IsDebugModeTest %{public}s ', data);
@@ -47,7 +47,7 @@ export default function nativeTest() {
       * @tc.name      budnleNdkNativeTest005
       * @tc.desc      budnleNdkNativeTest
     */
-    it('BundleNdkTest005', 0, () => {
+    it('budnleNdkNativeTest005', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
       try{
         let data  = entry_add.GetModuleMetadata();
         hilog.info(0x0000, 'Debug_Metadata_test ', '%{public}s', JSON.stringify(data));
