@@ -44,6 +44,11 @@
           }
         ]
       }
+    ],
+    "requestPermissions": [
+      {
+        "name": "ohos.permission.ACCESS_VIRTUAL_SCREEN",
+      }
     ]
   },
 }

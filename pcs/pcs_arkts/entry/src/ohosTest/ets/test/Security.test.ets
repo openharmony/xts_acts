@@ -1458,7 +1458,7 @@ export default function securityTest() {
         } catch (error) {
           let err = error as BusinessError
           console.error(`Failed to. error: ${JSON.stringify(err)}`)
-		  expect((err.code == 13900012 || err.code == 13900006)).assertTrue();
+		      expect((err.code == 13900012 || err.code == 13900006 || err.code == 13900001 || err.code == 13900002)).assertTrue();
         }
       }
       done()

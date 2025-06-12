@@ -14,17 +14,30 @@
  */
 
 import image from "@ohos.multimedia.image";
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from '@ohos/hypium';
 import fileio from "@ohos.fileio";
 import ndkTest from 'libentry.so';
 import mdkTest from 'libentryMDK.so';
 import { testJpg } from './testImg';
 import { BusinessError } from "@kit.BasicServicesKit";
 import { common } from '@kit.AbilityKit';
+import colorSpaceManager from '@ohos.graphics.colorSpaceManager';
+import display from '@ohos.display';
+import hdrCapability from '@ohos.graphics.hdrCapability';
+import fs from '@ohos.file.fs';
 
 const CODE_SUCCESS = 0;
 const CODE_ERROR = -1;
+const PARA_ERROR_CODE = 7700204;
 let uiContext: common.UIAbilityContext;
+const RANGE_AUTO = image.DecodingDynamicRange.AUTO;
+const RANGE_SDR = image.DecodingDynamicRange.SDR;
+const RANGE_HDR = image.DecodingDynamicRange.HDR;
+let globalImagesource: image.ImageSource | undefined;
+let globalPixelMap: image.PixelMap | undefined;
+let globalDecoingOption: image.DecodingOptions | undefined;
+let isSupportHdr: Boolean;
+let isSupportHEIFDecode: boolean;
 
 function logger(caseName: string): ESObject {
     return {
@@ -52,7 +65,7 @@ async function getFd(fileName: string): Promise<(string | number)[]> {
     try {
         filePath = await getPath(fileName);
         console.info("image case filePath is " + filePath);
-        await fileio.open(filePath, 0o2, 0o777).then((data) => {
+        await fileio.open(filePath, fs.OpenMode.READ_WRITE, fs.OpenMode.CREATE).then((data) => {
             fdNumber = data;
             console.info("image case open fd success " + fdNumber);
         }, (err:BusinessError) => {
@@ -323,16 +336,98 @@ function createImageSourceErr(done :Function, testNum: string, source: string) {
     }
 }
 
+async function testGetPixelMapForColorSpace(done: Function, testNum: string, picName: string,
+    colorSpaceName: colorSpaceManager.ColorSpace, checkProps: Function, desiredDynamicRange: image.DecodingDynamicRange) {
+    let log: ESObject = logger(testNum);
+    log.log(`Starting test: ${testNum}`);
+
+    let fdResult = await getFd(picName);
+    let fd: number = fdResult[1] as number;
+    let imageSource: image.ImageSource = mdkTest.createImageSource(fd);
+    globalImagesource = imageSource;
+    let opts: image.DecodingOptions = mdkTest.createDecodingOptions();
+    if (opts == undefined) {
+        log.log('Failed to create DecodingOptions.');
+        expect(false).assertTrue();
+        done();
+    }
+    globalDecoingOption = opts;
+    mdkTest.SetDesiredDynamicRangeToDecodingOptions(opts, desiredDynamicRange);
+
+    let errorCode: number = mdkTest.setDecodingOptColorSpace(opts, colorSpaceName);
+    if (errorCode == CODE_ERROR) {
+        log.log("Failed to unsupported color space. errorCode : " + errorCode);
+        expect(errorCode == CODE_ERROR).assertTrue();
+        done();
+    }
+    let decodingColorSpace: number = mdkTest.getDecodingOptColorSpace(opts);
+    if (decodingColorSpace == undefined) {
+        log.log("DecodingOptions color space verification failed.");
+        expect(false).assertTrue();
+        done();
+    }
+    log.log(`DecodingOptions color space verified: ${decodingColorSpace}`);
+    expect(decodingColorSpace == colorSpaceName).assertTrue();
+
+    let pixelMap: image.PixelMap = mdkTest.createPixelmap(fd, opts);
+    if (pixelMap == undefined) {
+        log.log('Failed to create PixelMap.');
+        expect(false).assertTrue();
+        done();
+    }
+    globalPixelMap = pixelMap;
+    let pixelMapColorSpace: number = mdkTest.getPixelMapForColorSpace(pixelMap);
+    if (pixelMapColorSpace == undefined) {
+        log.log('Failed to get PixelMap color space.');
+        expect(false).assertTrue();
+        done();
+    }
+    log.log(`PixelMap color space verified: ${pixelMapColorSpace}`);
+    checkProps(pixelMapColorSpace);
+    done();
+}
+
 export default function ImageSourceNDKTest() {
     describe('ImageSourceNDKTest', () => {
-        beforeAll(() => {
-            uiContext = globalThis.uiContext
+        beforeAll(async () => {
+            uiContext = globalThis.uiContext;
+            isSupportHEIFDecode =
+                image.createImageSource(uiContext.filesDir + '/' + "test.jpg").supportedFormats.includes("image/heic");
+            isSupportHdr = !display.getDefaultDisplaySync().hdrFormats.includes(hdrCapability.HDRFormat.NONE) &&
+                display.getDefaultDisplaySync().hdrFormats.length != 0;
             console.info('beforeAll case');
         });
         beforeEach(() => {
             console.info('beforeEach case');
         });
         afterEach(() => {
+            if (globalImagesource != undefined) {
+                console.info("globalImagesource release start");
+                try {
+                    mdkTest.releaseImageSource(globalImagesource);
+                    globalImagesource = undefined;
+                } catch (error) {
+                  console.info("globalImagesource release fail");
+                }
+            }
+            if (globalDecoingOption != undefined) {
+                console.info("globalDecoingOption release start");
+                try {
+                    mdkTest.releaseDecodingOptions(globalDecoingOption);
+                    globalDecoingOption = undefined;
+                } catch (error) {
+                  console.info("globalDecoingOption release fail");
+                }
+            }
+            if (globalPixelMap != undefined) {
+              console.info("globalPixelMap release start");
+              try {
+                  mdkTest.releasePixelMap(globalPixelMap);
+                  globalPixelMap = undefined;
+              } catch (error) {
+                console.info("globalPixelMap release fail");
+              }
+            }
             console.info('afterEach case');
         });
         afterAll(() => {
@@ -1821,6 +1916,875 @@ export default function ImageSourceNDKTest() {
             mlg.log('fd = ' + fd);
             let result = mdkTest.JsModifyImageProperty(fd, 'GIFLoopCount', '3');
             expect(result == undefined).assertTrue();
+            done();
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_0100
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_0100
+         * @tc.desc      : testGetPixelMapForColorSpace
+         *                 1.create imageSource
+         *                 2.test.jpg
+         *                 3.ColorSpace.ADOBE_RGB_1998 = 1
+         *                 4.testGetPixelMapForColorSpace
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_0100',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+            let log: ESObject = logger("SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_0100");
+            let checkProps = (result: number) => {
+                expect(result == colorSpaceManager.ColorSpace.ADOBE_RGB_1998).assertTrue();
+                log.log("checkProps success.");
+            }
+            await testGetPixelMapForColorSpace(done, "SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_0100",
+                "test.jpg", colorSpaceManager.ColorSpace.ADOBE_RGB_1998, checkProps, RANGE_SDR);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_0200
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_0200
+         * @tc.desc      : testGetPixelMapForColorSpace
+         *                 1.create imageSource
+         *                 2.test.jpg
+         *                 3.ColorSpace.DCI_P3 = 2
+         *                 4.testGetPixelMapForColorSpace
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_0200',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+            let log: ESObject = logger("SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_0200");
+            let checkProps = (result: number) => {
+                expect(result == colorSpaceManager.ColorSpace.DCI_P3).assertTrue();
+                log.log("checkProps success.");
+            }
+            await testGetPixelMapForColorSpace(done, "SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_0200",
+                "test.jpg", colorSpaceManager.ColorSpace.DCI_P3, checkProps, RANGE_SDR);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_0300
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_0300
+         * @tc.desc      : testGetPixelMapForColorSpace
+         *                 1.create imageSource
+         *                 2.test.jpg
+         *                 3.ColorSpace.DISPLAY_P3 = 3
+         *                 4.testGetPixelMapForColorSpace
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_0300',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+            let log: ESObject = logger("SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_0300");
+            let checkProps = (result: number) => {
+                expect(result == colorSpaceManager.ColorSpace.DISPLAY_P3).assertTrue();
+                log.log("checkProps success.");
+            }
+            await testGetPixelMapForColorSpace(done, "SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_0300",
+                "test.jpg", colorSpaceManager.ColorSpace.DISPLAY_P3, checkProps, RANGE_SDR);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_0400
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_0400
+         * @tc.desc      : testGetPixelMapForColorSpace
+         *                 1.create imageSource
+         *                 2.test.jpg
+         *                 3.ColorSpace.SRGB = 4
+         *                 4.testGetPixelMapForColorSpace
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_0400',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+            let log: ESObject = logger("SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_0400");
+            let checkProps = (result: number) => {
+                expect(result == colorSpaceManager.ColorSpace.SRGB).assertTrue();
+                log.log("checkProps success.");
+            }
+            await testGetPixelMapForColorSpace(done, "SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_0400",
+                "test.jpg", 4, checkProps, RANGE_SDR);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_0500
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_0500
+         * @tc.desc      : testGetPixelMapForColorSpace
+         *                 1.create imageSource
+         *                 2.test_exif.png
+         *                 3.ColorSpace.BT709 = 6
+         *                 4.testGetPixelMapForColorSpace
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_0500',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+            let log: ESObject = logger("SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_0500");
+            let checkProps = (result: number) => {
+                expect(result == 6).assertTrue();
+                log.log("checkProps success.");
+            }
+            await testGetPixelMapForColorSpace(done, "SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_0500",
+                "test_exif.png", colorSpaceManager.ColorSpace.BT709, checkProps, RANGE_SDR);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_0600
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_0600
+         * @tc.desc      : testGetPixelMapForColorSpace
+         *                 1.create imageSource
+         *                 2.test_exif.png
+         *                 3.ColorSpace.BT601_EBU = 7
+         *                 4.testGetPixelMapForColorSpace
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_0600',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+            let log: ESObject = logger("SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_0600");
+            let checkProps = (result: number) => {
+                expect(result == 7).assertTrue();
+                log.log("checkProps success.");
+            }
+            await testGetPixelMapForColorSpace(done, "SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_0600",
+                "test_exif.png", colorSpaceManager.ColorSpace.BT601_EBU, checkProps, RANGE_SDR);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_0700
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_0700
+         * @tc.desc      : testGetPixelMapForColorSpace
+         *                 1.create imageSource
+         *                 2.test_exif.png
+         *                 3.ColorSpace.BT601_SMPTE_C = 8
+         *                 4.testGetPixelMapForColorSpace
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_0700',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+            let log: ESObject = logger("SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_0700");
+
+            let checkProps = (result: number) => {
+                expect(result == 8).assertTrue();
+                log.log("checkProps success.");
+            }
+            await testGetPixelMapForColorSpace(done, "SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_0700",
+                "test_exif.png", 8, checkProps, RANGE_SDR);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_0800
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_0800
+         * @tc.desc      : testGetPixelMapForColorSpace
+         *                 1.create imageSource
+         *                 2.test_dng.dng
+         *                 3.ColorSpace.BT2020_HLG = 9
+         *                 4.testGetPixelMapForColorSpace
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_0800',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+            let log: ESObject = logger("SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_0800");
+            let checkProps = (result: number) => {
+                expect(result == 9).assertTrue();
+                log.log("checkProps success.");
+            }
+            await testGetPixelMapForColorSpace(done, "SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_0800",
+                "test_dng.dng", colorSpaceManager.ColorSpace.BT2020_HLG, checkProps, RANGE_SDR);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_0900
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_0900
+         * @tc.desc      : testGetPixelMapForColorSpace
+         *                 1.create imageSource
+         *                 2.test_dng.dng
+         *                 3.ColorSpace.BT2020_PQ = 10
+         *                 4.testGetPixelMapForColorSpace
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_0900',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+            let log: ESObject = logger("SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_0900");
+            let checkProps = (result: number) => {
+                expect(result == colorSpaceManager.ColorSpace.BT2020_PQ).assertTrue();
+                log.log("checkProps success.");
+            }
+            await testGetPixelMapForColorSpace(done, "SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_0900",
+                "test_dng.dng", colorSpaceManager.ColorSpace.BT2020_PQ, checkProps, RANGE_SDR);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_1000
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_1000
+         * @tc.desc      : testGetPixelMapForColorSpace
+         *                 1.create imageSource
+         *                 2.test_dng.dng
+         *                 3.ColorSpace.P3_HLG = 11
+         *                 4.testGetPixelMapForColorSpace
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_1000',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+            let log: ESObject = logger("SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_1000");
+            let checkProps = (result: number) => {
+                expect(result == colorSpaceManager.ColorSpace.P3_HLG).assertTrue();
+                log.log("checkProps success.");
+            }
+            await testGetPixelMapForColorSpace(done, "SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_1000",
+                "test_dng.dng", 11, checkProps, RANGE_SDR);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_1100
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_1100
+         * @tc.desc      : testGetPixelMapForColorSpace
+         *                 1.create imageSource
+         *                 2.test_dng.dng
+         *                 3.ColorSpace.P3_PQ = 12
+         *                 4.testGetPixelMapForColorSpace
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_1100',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+            let log: ESObject = logger("SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_1100");
+            let checkProps = (result: number) => {
+                expect(result == colorSpaceManager.ColorSpace.P3_PQ).assertTrue();
+                log.log("checkProps success.");
+            }
+            await testGetPixelMapForColorSpace(done, "SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_1100",
+                "test_dng.dng", colorSpaceManager.ColorSpace.P3_PQ, checkProps, RANGE_SDR);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_1200
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_1200
+         * @tc.desc      : testGetPixelMapForColorSpace
+         *                 1.create imageSource
+         *                 2.test.bmp
+         *                 3.ColorSpace.ADOBE_RGB_1998_LIMIT = 13
+         *                 4.testGetPixelMapForColorSpace
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_1200',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+            let log: ESObject = logger("SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_1200");
+            let checkProps = (result: number) => {
+                expect(result == colorSpaceManager.ColorSpace.ADOBE_RGB_1998_LIMIT).assertTrue();
+                log.log("checkProps success.");
+            }
+            await testGetPixelMapForColorSpace(done, "SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_1200",
+                "test.bmp", colorSpaceManager.ColorSpace.ADOBE_RGB_1998_LIMIT, checkProps, RANGE_SDR);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_1300
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_1300
+         * @tc.desc      : testGetPixelMapForColorSpace
+         *                 1.create imageSource
+         *                 2.test.bmp
+         *                 3.ColorSpace.DISPLAY_P3_LIMIT = 14
+         *                 4.testGetPixelMapForColorSpace
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_1300',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+            let log: ESObject = logger("SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_1300");
+            let checkProps = (result: number) => {
+                expect(result == colorSpaceManager.ColorSpace.DISPLAY_P3_LIMIT).assertTrue();
+                log.log("checkProps success.");
+            }
+            await testGetPixelMapForColorSpace(done, "SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_1300",
+                "test.bmp", 14, checkProps, RANGE_SDR);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_1400
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_1400
+         * @tc.desc      : testGetPixelMapForColorSpace
+         *                 1.create imageSource
+         *                 2.test.bmp
+         *                 3.ColorSpace.SRGB_LIMIT = 15
+         *                 4.testGetPixelMapForColorSpace
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_1400',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+            let log: ESObject = logger("SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_1400");
+            let checkProps = (result: number) => {
+                expect(result == colorSpaceManager.ColorSpace.SRGB_LIMIT).assertTrue();
+                log.log("checkProps success.");
+            }
+            await testGetPixelMapForColorSpace(done, "SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_1400",
+                "test.bmp", colorSpaceManager.ColorSpace.SRGB_LIMIT, checkProps, RANGE_SDR);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_1500
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_1500
+         * @tc.desc      : testGetPixelMapForColorSpace
+         *                 1.create imageSource
+         *                 2.test.bmp
+         *                 3.ColorSpace.BT709_LIMIT = 16
+         *                 4.testGetPixelMapForColorSpace
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_1500',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+            let log: ESObject = logger("SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_1500");
+            let checkProps = (result: number) => {
+                expect(result == colorSpaceManager.ColorSpace.BT709_LIMIT).assertTrue();
+                log.log("checkProps success.");
+            }
+            await testGetPixelMapForColorSpace(done, "SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_1500",
+                "test.bmp", colorSpaceManager.ColorSpace.BT709_LIMIT, checkProps, RANGE_SDR);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_1600
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_1600
+         * @tc.desc      : testGetPixelMapForColorSpace
+         *                 1.create imageSource
+         *                 2.test.webp
+         *                 3.ColorSpace.BT601_EBU_LIMIT = 17
+         *                 4.testGetPixelMapForColorSpace
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_1600',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+            let log: ESObject = logger("SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_1600");
+            let checkProps = (result: number) => {
+                expect(result == colorSpaceManager.ColorSpace.BT601_EBU_LIMIT).assertTrue();
+                log.log("checkProps success.");
+            }
+            await testGetPixelMapForColorSpace(done, "SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_1600",
+                "test.webp", 17, checkProps, RANGE_SDR);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_1700
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_1700
+         * @tc.desc      : testGetPixelMapForColorSpace
+         *                 1.create imageSource
+         *                 2.test.webp
+         *                 3.ColorSpace.BT601_SMPTE_C_LIMIT = 18
+         *                 4.testGetPixelMapForColorSpace
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_1700',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+            let log: ESObject = logger("SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_1700");
+            let checkProps = (result: number) => {
+                expect(result == colorSpaceManager.ColorSpace.BT601_SMPTE_C_LIMIT).assertTrue();
+                log.log("checkProps success.");
+            }
+            await testGetPixelMapForColorSpace(done, "SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_1700",
+                "test.webp", colorSpaceManager.ColorSpace.BT601_SMPTE_C_LIMIT, checkProps, RANGE_SDR);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_1800
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_1800
+         * @tc.desc      : testGetPixelMapForColorSpace
+         *                 1.create imageSource
+         *                 2.test.webp
+         *                 3.ColorSpace.BT2020_HLG_LIMIT = 19
+         *                 4.testGetPixelMapForColorSpace
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_1800',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+            let log: ESObject = logger("SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_1800");
+            let checkProps = (result: number) => {
+                expect(result == colorSpaceManager.ColorSpace.BT2020_HLG_LIMIT).assertTrue();
+                log.log("checkProps success.");
+            }
+            await testGetPixelMapForColorSpace(done, "SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_1800",
+                "test.webp", colorSpaceManager.ColorSpace.BT2020_HLG_LIMIT, checkProps, RANGE_SDR);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_1900
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_1900
+         * @tc.desc      : testGetPixelMapForColorSpace
+         *                 1.create imageSource
+         *                 2.test.webp
+         *                 3.ColorSpace.BT2020_PQ_LIMIT = 20
+         *                 4.testGetPixelMapForColorSpace
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_1900',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+            let log: ESObject = logger("SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_1900");
+            let checkProps = (result: number) => {
+                expect(result == colorSpaceManager.ColorSpace.BT2020_PQ_LIMIT).assertTrue();
+                log.log("checkProps success.");
+            }
+            await testGetPixelMapForColorSpace(done, "SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_1900",
+                "test.webp", 20, checkProps, RANGE_SDR);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_2000
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_2000
+         * @tc.desc      : testGetPixelMapForColorSpace
+         *                 1.create imageSource
+         *                 2.moving_test.gif
+         *                 3.ColorSpace.P3_HLG_LIMIT = 21
+         *                 4.testGetPixelMapForColorSpace
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_2000',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+            let log: ESObject = logger("SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_2000");
+            let checkProps = (result: number) => {
+                expect(result == colorSpaceManager.ColorSpace.P3_HLG_LIMIT).assertTrue();
+                log.log("checkProps success.");
+            }
+            await testGetPixelMapForColorSpace(done, "SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_2000",
+                "moving_test.gif", colorSpaceManager.ColorSpace.P3_HLG_LIMIT, checkProps, RANGE_SDR);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_2100
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_2100
+         * @tc.desc      : testGetPixelMapForColorSpace
+         *                 1.create imageSource
+         *                 2.moving_test.gif
+         *                 3.ColorSpace.P3_PQ_LIMIT = 22
+         *                 4.testGetPixelMapForColorSpace
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_2100',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+            let log: ESObject = logger("SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_2100");
+            let checkProps = (result: number) => {
+                expect(result == colorSpaceManager.ColorSpace.P3_PQ_LIMIT).assertTrue();
+                log.log("checkProps success.");
+            }
+            await testGetPixelMapForColorSpace(done, "SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_2100",
+                "moving_test.gif", colorSpaceManager.ColorSpace.P3_PQ_LIMIT, checkProps, RANGE_SDR);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_2200
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_2200
+         * @tc.desc      : testGetPixelMapForColorSpace
+         *                 1.create imageSource
+         *                 2.moving_test.gif
+         *                 3.ColorSpace.LINEAR_P3 = 23
+         *                 4.testGetPixelMapForColorSpace
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_2200',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+            let log: ESObject = logger("SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_2200");
+            let checkProps = (result: number) => {
+                expect(result == colorSpaceManager.ColorSpace.LINEAR_P3).assertTrue();
+                log.log("checkProps success.");
+            }
+            await testGetPixelMapForColorSpace(done, "SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_2200",
+                "moving_test.gif", 23, checkProps, RANGE_SDR);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_2300
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_2300
+         * @tc.desc      : testGetPixelMapForColorSpace
+         *                 1.create imageSource
+         *                 2.moving_test.gif
+         *                 3.ColorSpace.LINEAR_SRGB = 24
+         *                 4.testGetPixelMapForColorSpace
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_2300',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+            let log: ESObject = logger("SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_2300");
+            let checkProps = (result: number) => {
+                expect(result == colorSpaceManager.ColorSpace.LINEAR_SRGB).assertTrue();
+                log.log("checkProps success.");
+            }
+            await testGetPixelMapForColorSpace(done, "SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_2300",
+                "moving_test.gif", 24, checkProps, RANGE_SDR);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_2400
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_2400
+         * @tc.desc      : testGetPixelMapForColorSpace
+         *                 1.create imageSource
+         *                 2.test.ico
+         *                 3.ColorSpace.LINEAR_BT709 = LINEAR_SRGB = 24
+         *                 4.testGetPixelMapForColorSpace
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_2400',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+            let log: ESObject = logger("SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_2400");
+            let checkProps = (result: number) => {
+                expect(result == colorSpaceManager.ColorSpace.LINEAR_SRGB).assertTrue();
+                log.log("checkProps success.");
+            }
+            await testGetPixelMapForColorSpace(done, "SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_2400",
+                "test.ico", colorSpaceManager.ColorSpace.LINEAR_BT709, checkProps, RANGE_SDR);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_2500
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_2500
+         * @tc.desc      : testGetPixelMapForColorSpace
+         *                 1.create imageSource
+         *                 2.test.ico
+         *                 3.ColorSpace.LINEAR_BT2020 = 25
+         *                 4.testGetPixelMapForColorSpace
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_2500',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+            let log: ESObject = logger("SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_2500");
+            let checkProps = (result: number) => {
+                expect(result == colorSpaceManager.ColorSpace.LINEAR_BT2020).assertTrue();
+                log.log("checkProps success.");
+            }
+            await testGetPixelMapForColorSpace(done, "SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_2500",
+                "test.ico", 25, checkProps, RANGE_SDR);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_2600
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_2600
+         * @tc.desc      : testGetPixelMapForColorSpace
+         *                 1.create imageSource
+         *                 2.test.ico
+         *                 3.ColorSpace.DISPLAY_SRGB = SRGB = 4
+         *                 4.testGetPixelMapForColorSpace
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_2600',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+            let log: ESObject = logger("SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_2600");
+            let checkProps = (result: number) => {
+                expect(result == colorSpaceManager.ColorSpace.SRGB).assertTrue();
+                log.log("checkProps success.");
+            }
+            await testGetPixelMapForColorSpace(done, "SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_2600",
+                "test.ico", colorSpaceManager.ColorSpace.DISPLAY_SRGB, checkProps, RANGE_SDR);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_2700
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_2700
+         * @tc.desc      : testGetPixelMapForColorSpace
+         *                 1.create imageSource
+         *                 2.test.ico
+         *                 3.ColorSpace.DISPLAY_P3_SRGB = DISPLAY_P3 = 3
+         *                 4.testGetPixelMapForColorSpace
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_2700',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+            let log: ESObject = logger("SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_2700");
+            let checkProps = (result: number) => {
+                expect(result == colorSpaceManager.ColorSpace.DISPLAY_P3).assertTrue();
+                log.log("checkProps success.");
+            }
+            await testGetPixelMapForColorSpace(done, "SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_2700",
+                "test.ico", colorSpaceManager.ColorSpace.DISPLAY_P3_SRGB, checkProps, RANGE_SDR);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_2800
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_2800
+         * @tc.desc      : testGetPixelMapForColorSpace
+         *                 1.create imageSource
+         *                 2.test.jpg
+         *                 3.ColorSpace.DISPLAY_P3_HLG = P3_HLG = 11
+         *                 4.testGetPixelMapForColorSpace
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_2800',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+            let log: ESObject = logger("SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_2900");
+            let checkProps = (result: number) => {
+                expect(result == colorSpaceManager.ColorSpace.P3_HLG).assertTrue();
+                log.log("checkProps success.");
+            }
+            await testGetPixelMapForColorSpace(done, "SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_2800",
+                "test.jpg", colorSpaceManager.ColorSpace.DISPLAY_P3_HLG, checkProps, RANGE_SDR);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_2900
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_2900
+         * @tc.desc      : testGetPixelMapForColorSpace
+         *                 1.create imageSource
+         *                 2.test.jpg
+         *                 3.ColorSpace.DISPLAY_P3_PQ = P3_PQ = 12
+         *                 4.testGetPixelMapForColorSpace
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_2900',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+            let log: ESObject = logger("SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_3000");
+            let checkProps = (result: number) => {
+                expect(result == colorSpaceManager.ColorSpace.P3_PQ).assertTrue();
+                log.log("checkProps success.");
+            }
+            await testGetPixelMapForColorSpace(done, "SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_2900",
+                "test.jpg", colorSpaceManager.ColorSpace.DISPLAY_P3_PQ, checkProps, RANGE_SDR);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_3000
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_3000
+         * @tc.desc      : testGetPixelMapForColorSpace
+         *                 1.create imageSource
+         *                 2.all_auxtype.heic
+         *                 3.ColorSpace.ADOBE_RGB_1998 = 1
+         *                 4.testGetPixelMapForColorSpace
+         *                 5.pixelMapColorSpace = ColorSpace.BT2020_HLG = 9
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_3000',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done :Function) => {
+            let log: ESObject = logger("SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_3000");
+            if (!isSupportHEIFDecode || !isSupportHdr) {
+                if (!isSupportHEIFDecode) {
+                    log.log("device is not support heif decode");
+                } else {
+                    log.log("device is not support HDR");
+                }
+                expect(true).assertTrue();
+                done();
+            } else {
+                let checkProps = (result: number) => {
+                    expect(result == colorSpaceManager.ColorSpace.BT2020_HLG).assertTrue();
+                    log.log("checkProps success.");
+                }
+                await testGetPixelMapForColorSpace(done, "SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_3000",
+                    "all_auxtype.heic", colorSpaceManager.ColorSpace.ADOBE_RGB_1998, checkProps, RANGE_HDR);
+            }
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_3100
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_3100
+         * @tc.desc      : testGetPixelMapForColorSpace
+         *                 1.create imageSource
+         *                 2.CUVAHdr.jpg
+         *                 3.ColorSpace.DISPLAY_P3 = 3
+         *                 4.testGetPixelMapForColorSpace
+         *                 5.pixelMapColorSpace = ColorSpace.BT2020_HLG = 9
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_3100',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done :Function) => {
+            let log: ESObject = logger("SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_3100");
+
+            if (!isSupportHEIFDecode || !isSupportHdr) {
+                if (!isSupportHEIFDecode) {
+                    log.log("device is not support heif decode");
+                } else {
+                    log.log("device is not support HDR");
+                }
+                expect(true).assertTrue();
+                done();
+            } else {
+                let checkProps = (result: number) => {
+                    expect(result == colorSpaceManager.ColorSpace.BT2020_HLG).assertTrue();
+                    log.log("checkProps success.");
+                }
+                await testGetPixelMapForColorSpace(done, "SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_3100",
+                    "CUVAHdr.jpg", colorSpaceManager.ColorSpace.DISPLAY_P3, checkProps, RANGE_HDR);
+            }
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_ERR_0100
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_ERR_0100
+         * @tc.desc      : setDecodingOptColorSpace
+         *                 1.set ColorSpace is 0
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_ERR_0100',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done :Function) => {
+            let log: ESObject = logger("SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_ERR_0100");
+            let opts: image.DecodingOptions = mdkTest.createDecodingOptions();
+            globalDecoingOption = opts;
+            if (opts == undefined) {
+                log.log('Failed to create DecodingOptions.');
+                expect(false).assertTrue();
+                done();
+            }
+            let errorCode: number = mdkTest.setDecodingOptColorSpace(opts, 0);
+            log.log("Failed to set ColorSpace nullPtr. errorCode : " + errorCode);
+            expect(errorCode == PARA_ERROR_CODE).assertTrue();
+            done();
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_ERR_0200
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_ERR_0200
+         * @tc.desc      : setDecodingOptColorSpace
+         *                 1.create imageSource
+         *                 2.ColorSpace.CUSTOM = 5
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_ERR_0200',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+            let log: ESObject = logger("SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_ERR_0200");
+            let opts: image.DecodingOptions = mdkTest.createDecodingOptions();
+            globalDecoingOption = opts;
+            if (opts == undefined) {
+                log.log('Failed to create DecodingOptions.');
+                expect(false).assertTrue();
+                done();
+            }
+            let errorCode: number = mdkTest.setDecodingOptColorSpace(opts, colorSpaceManager.ColorSpace.CUSTOM);
+            log.log("Failed to set ColorSpace nullPtr. errorCode : " + errorCode);
+            expect(errorCode == PARA_ERROR_CODE).assertTrue();
+            done();
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_ERR_0300
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_ERR_0300
+         * @tc.desc      : setDecodingOptColorSpace
+         *                 1.set ColorSpace is 26
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_ERR_0300',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done :Function) => {
+            let log: ESObject = logger("SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_ERR_0300");
+            let opts: image.DecodingOptions = mdkTest.createDecodingOptions();
+            globalDecoingOption = opts;
+            if (opts == undefined) {
+                log.log('Failed to create DecodingOptions.');
+                expect(false).assertTrue();
+                done();
+            }
+            let errorCode: number = mdkTest.setDecodingOptColorSpace(opts, 26);
+            log.log("Failed to set ColorSpace nullPtr. errorCode : " + errorCode);
+            expect(errorCode == PARA_ERROR_CODE).assertTrue();
+            done();
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_ERR_0400
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_ERR_0400
+         * @tc.desc      : setDecodingOptColorSpaceErr
+         *                 1.set DecodingOptions nullPtr
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_ERR_0400',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done :Function) => {
+            let log: ESObject = logger("SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_SET_COLOR_SPACE_ERR_0400");
+            let errorCode: number = mdkTest.setDecodingOptColorSpaceErr();
+            log.log("Failed to set DecodingOpt nullPtr. errorCode : " + errorCode);
+            expect(errorCode == PARA_ERROR_CODE).assertTrue();
+            done();
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_GET_COLOR_SPACE_ERR_0500
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_GET_COLOR_SPACE_ERR_0500
+         * @tc.desc      : getDecodingOptColorSpaceErr
+         *                 1.get DecodingOptions nullPtr
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_GET_COLOR_SPACE_ERR_0500',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done :Function) => {
+            let log: ESObject = logger("SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_GET_COLOR_SPACE_ERR_0500");
+            let errorCode: number = mdkTest.getDecodingOptColorSpaceErr();
+            log.log("Failed to set DecodingOpt nullPtr. errorCode : " + errorCode);
+            expect(errorCode == PARA_ERROR_CODE).assertTrue();
+            done();
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_GET_COLOR_SPACE_ERR_0600
+         * @tc.name      : SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_GET_COLOR_SPACE_ERR_0600
+         * @tc.desc      : getDecodingOptColorSpaceErr
+         *                 1.get colorSpace nullPtr
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_GET_COLOR_SPACE_ERR_0600',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done :Function) => {
+            let log: ESObject = logger("SUB_MULTIMEDIA_IMAGE_PIXEL_MAP_GET_COLOR_SPACE_ERR_0600");
+            let opts: image.DecodingOptions = mdkTest.createDecodingOptions();
+            globalDecoingOption = opts;
+            let errorCode: number = mdkTest.getDecodingOptColorSpaceErr(opts);
+            log.log("Failed to set DecodingOpt nullPtr. errorCode : " + errorCode);
+            expect(errorCode == PARA_ERROR_CODE).assertTrue();
             done();
         });
     })

@@ -14,6 +14,9 @@
  */
 
 import FrameNodeAnimation from './FrameNodeAnimation.test'
+import ParticleEmitter from './ParticleEmitter.test'
+
 export default function testsuite() {
   FrameNodeAnimation();
+  ParticleEmitter();
 }

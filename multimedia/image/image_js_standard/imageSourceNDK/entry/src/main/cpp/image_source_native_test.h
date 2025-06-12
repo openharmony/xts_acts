@@ -27,6 +27,18 @@ class ImageSourceTest {
 public:
     static napi_value JsGetImageProperty(napi_env env, napi_callback_info info);
     static napi_value JsModifyImageProperty(napi_env env, napi_callback_info info);
+    static napi_value setDecodingOptColorSpace(napi_env env, napi_callback_info info);
+    static napi_value setDecodingOptColorSpaceErr(napi_env env, napi_callback_info info);
+    static napi_value getDecodingOptColorSpace(napi_env env, napi_callback_info info);
+    static napi_value getDecodingOptColorSpaceErr(napi_env env, napi_callback_info info);
+    static napi_value getPixelMapForColorSpace(napi_env env, napi_callback_info info);
+    static napi_value SetDesiredDynamicRangeToDecodingOptions(napi_env env, napi_callback_info info);
+    static napi_value createImageSource(napi_env env, napi_callback_info info);
+    static napi_value createDecodingOptions(napi_env env, napi_callback_info info);
+    static napi_value createPixelmap(napi_env env, napi_callback_info info);
+    static napi_value releaseImageSource(napi_env env, napi_callback_info info);
+    static napi_value releaseDecodingOptions(napi_env env, napi_callback_info info);
+    static napi_value releasePixelMap(napi_env env, napi_callback_info info);
     static std::string getStringFromArgs(napi_env env, napi_value arg);
 private:
 };

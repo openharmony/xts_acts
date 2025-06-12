@@ -13,5 +13,22 @@
  * limitations under the License. 
  */
 
+import image from "@ohos.multimedia.image";
+import colorSpaceManager from "@ohos.graphics.colorSpaceManager";
 export const JsGetImageProperty: (a: number, b: string) => number;
 export const JsModifyImageProperty: (a: number, b: string, c: string) => number;
+export const setDecodingOptColorSpace: (opts: image.DecodingOptions,
+    colorSpace: colorSpaceManager.ColorSpace) => number;
+export const setDecodingOptColorSpaceErr: (opts?: image.DecodingOptions,
+    colorSpace?: colorSpaceManager.ColorSpace) => number;
+export const getDecodingOptColorSpace: (opts: image.DecodingOptions) => number;
+export const getDecodingOptColorSpaceErr: (opts?: image.DecodingOptions) => number;
+export const getPixelMapForColorSpace: (pixelMap: image.PixelMap) => number;
+export const SetDesiredDynamicRangeToDecodingOptions: (opts: image.DecodingOptions,
+    desiredDynamicRange: image.DecodingDynamicRange) => number;
+export const createImageSource: (fd: number) => image.ImageSource;
+export const createDecodingOptions: () => image.DecodingOptions;
+export const createPixelmap: (fd: number, opts: image.DecodingOptions) => image.PixelMap;
+export const releaseImageSource: (imageSource: image.ImageSource) => number;
+export const releaseDecodingOptions: (opts: image.DecodingOptions) => number;
+export const releasePixelMap: (pixelMap: image.PixelMap) => number;
