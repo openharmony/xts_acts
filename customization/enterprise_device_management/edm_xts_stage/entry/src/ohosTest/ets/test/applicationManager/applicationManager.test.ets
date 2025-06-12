@@ -1181,7 +1181,7 @@ export default function applicationManagerTest() {
 
     /**
      * @tc.number    : SUB_CUSTOMIZATION_EDM_ISMODITYKEEPALIVEAPP_001
-     * @tc.name      : test_ isModifyKeepAliveAppsDisallowed_001
+     * @tc.name      : test_isModifyKeepAliveAppsDisallowed_001
      * @tc.desc      : test isModifyKeepAliveAppsDisallowed method with unActive admin
      * @tc.level     : Level 2
      * @tc.type      : Function
@@ -1201,7 +1201,7 @@ export default function applicationManagerTest() {
 
     /**
      * @tc.number    : SUB_CUSTOMIZATION_EDM_ISMODITYKEEPALIVEAPP_002
-     * @tc.name      : test_g isModifyKeepAliveAppsDisallowed_002
+     * @tc.name      : test_isModifyKeepAliveAppsDisallowed_002
      * @tc.desc      : test isModifyKeepAliveAppsDisallowed method with normal admin
      * @tc.level     : Level 2
      * @tc.type      : Function
