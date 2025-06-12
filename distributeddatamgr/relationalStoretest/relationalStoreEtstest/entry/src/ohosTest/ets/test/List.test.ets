@@ -50,6 +50,10 @@ import relationalStoreErrorCode51Test from './relationalStoreErrorCode51Test.tes
 import relationalStoreErrorCode01Test from './relationalStoreErrorCode01Test.test';
 import relationalStoreErrorCode32Test from './relationalStoreErrorCode32Test.test';
 import RelationalStoreSetDistributedTables from './RelationalStoreSetDistributedTables.test';
+import relationalStoreHavingTest from './RelationalStoreHavingTest.test';
+import PerfStatEtsTest from './RelationalStorePerfStatEtsTest.test'
+import rdbstoreRekeyEtsTest from './RelationalStoreRekeyEtsTest.test'
+import rdbStoreSqliteErrorOccurredTest from './RelationalStoreSqliteErrorOccurredTest.test'
 
 export default function testsuite() {
   relationalStoreEncryptTest()
@@ -90,5 +94,9 @@ export default function testsuite() {
   relationalStoreErrorCode51Test()
   relationalStoreErrorCode01Test()
   RelationalStoreSetDistributedTables()
+  relationalStoreHavingTest()
+  PerfStatEtsTest()
+  rdbstoreRekeyEtsTest()
+  rdbStoreSqliteErrorOccurredTest()
 }
 
