@@ -45,11 +45,12 @@ export default function SecurityHuksAccessControlUserAuthTest() {
     })
 
     /**
-     * @tc.number SUB_Security_HUKS_AccessControl_UserAuth_Api20_Func_0100
-     * @tc.name Test tui-pin user auth, process fail
-     * @tc.size Small
-     * @tc.type Func
-     * @tc.level Level3
+     * @tc.number : SUB_Security_HUKS_AccessControl_UserAuth_Api20_Func_0100
+     * @tc.name   : SUB_Security_HUKS_AccessControl_UserAuth_Api20_Func_0100
+     * @tc.desc   : generate key with tui pin, error code 12000001
+     * @tc.size   : Small
+     * @tc.type   : Func
+     * @tc.level  : Level3
      */
     it('SUB_Security_HUKS_AccessControl_UserAuth_Api20_Func_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       let testNumber: string = "SUB_Security_HUKS_AccessControl_UserAuth_Api20_Func_0100";
@@ -67,11 +68,12 @@ export default function SecurityHuksAccessControlUserAuthTest() {
     })
 
     /**
-     * @tc.number SUB_Security_HUKS_AccessControl_UserAuth_Api20_Func_0200
-     * @tc.name Test tui-pin user auth, process fail
-     * @tc.size Small
-     * @tc.type Func
-     * @tc.level Level3
+     * @tc.number : SUB_Security_HUKS_AccessControl_UserAuth_Api20_Func_0200
+     * @tc.name   : SUB_Security_HUKS_AccessControl_UserAuth_Api20_Func_0200
+     * @tc.desc   : import key with tui pin, error code 12000001
+     * @tc.size   : Small
+     * @tc.type   : Func
+     * @tc.level  : Level3
      */
     it('SUB_Security_HUKS_AccessControl_UserAuth_Api20_Func_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       let testNumber: string = "SUB_Security_HUKS_AccessControl_UserAuth_Api20_Func_0200";

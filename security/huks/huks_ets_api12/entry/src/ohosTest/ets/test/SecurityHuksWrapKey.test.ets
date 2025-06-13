@@ -44,8 +44,8 @@ export default function SecurityHuksWrapKeyTest() {
 
     /**
      * @tc.number : SUB_Security_HUKS_KeyGenerate_WrapKey_Api20_Func_0100
-     * @tc.name   : test wrapKeyItem, process success
-     * @tc.desc   : import key, encrypt, decrypt
+     * @tc.name   : SUB_Security_HUKS_KeyGenerate_WrapKey_Api20_Func_0100
+     * @tc.desc   : wrap key, error code 801
      * @tc.size   : SmallTest
      * @tc.type   : Function
      * @tc.level  : Level3
@@ -76,8 +76,8 @@ export default function SecurityHuksWrapKeyTest() {
 
     /**
      * @tc.number : SUB_Security_HUKS_KeyGenerate_UnwrapKey_Api20_Func_0100
-     * @tc.name   : test unwrapKeyItem, process success
-     * @tc.desc   : import key, encrypt, decrypt
+     * @tc.name   : SUB_Security_HUKS_KeyGenerate_UnwrapKey_Api20_Func_0100
+     * @tc.desc   : unwrap key, error code 801
      * @tc.size   : SmallTest
      * @tc.type   : Function
      * @tc.level  : Level3
