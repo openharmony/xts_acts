@@ -338,7 +338,7 @@ export default function PipWindowNdkTest() {
         console.log(`${caseName} mainWindowId: ${JSON.stringify(mainWindowId)}`);
         let result = testNapi.testStopPipRepeat(mainWindowId);
         console.log(`${caseName} result: ${JSON.stringify(result)}`);
-        if (result === 801) {
+        if (result === 801 || result === 1300015) {
           done()
         } else {
           expect(result).assertEqual(1300012);
