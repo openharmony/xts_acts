@@ -13,9 +13,16 @@
  * limitations under the License.
  */
 
-import { describe, expect, it, beforeEach, afterEach } from '@ohos/hypium';
+import { describe, expect, it, beforeEach, afterEach, Level, Size, TestType } from '@ohos/hypium';
 import http from '@ohos.net.http';
-import { BusinessError } from '@ohos.base'
+import { BusinessError } from '@ohos.base';
+
+function sleep (time:number):Promise<string>{
+  return new Promise<string>((resolve)=>{
+    setTimeout(()=>{
+      resolve('ok')},time)
+  });
+}
 
 export default function httpRequestJsunit() {
   describe("HttpRequestJsunitTest", () => {
@@ -33,7 +40,7 @@ export default function httpRequestJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_http_HttpRequest_request_0100", 0, async (done:Function) => {
+    it("SUB_Telephony_http_HttpRequest_request_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let casename = "SUB_Telephony_http_HttpRequest_request_0100";
       console.log("-----------------------HttpRequest_request Test is starting-----------------------");
       try {
@@ -65,7 +72,7 @@ export default function httpRequestJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_http_HttpRequest_request_0200", 0, async (done:Function) => {
+    it("SUB_Telephony_http_HttpRequest_request_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let casename = "SUB_Telephony_http_HttpRequest_request_0200";
       console.log("-----------------------HttpRequest_request_01 Test is starting-----------------------");
       try {
@@ -91,7 +98,7 @@ export default function httpRequestJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_http_HttpRequest_request_0300", 0, async (done:Function) => {
+    it("SUB_Telephony_http_HttpRequest_request_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let casename = "SUB_Telephony_http_HttpRequest_request_0300";
       console.log("-----------------------HttpRequest_request_02 Test is starting-----------------------");
       try {
@@ -127,7 +134,7 @@ export default function httpRequestJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_http_HttpRequest_destroy_0100", 0, async (done:Function) => {
+    it("SUB_Telephony_http_HttpRequest_destroy_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let casename = "SUB_Telephony_http_HttpRequest_destroy_0100";
       console.log("-----------------------HttpRequest_destroy Test is starting-----------------------");
       try {
@@ -164,7 +171,7 @@ export default function httpRequestJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_http_HttpRequest_on_headerReceive_0100", 0, async (done:Function) => {
+    it("SUB_Telephony_http_HttpRequest_on_headerReceive_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let casename = "SUB_Telephony_http_HttpRequest_on_headerReceive_0100";
       console.log("-----------------------HttpRequest_on_headerReceive Test is starting-----------------------");
       try {
@@ -192,7 +199,7 @@ export default function httpRequestJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_http_HttpRequest_off_headerReceive_0100", 0, async (done:Function) => {
+    it("SUB_Telephony_http_HttpRequest_off_headerReceive_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let casename = "SUB_Telephony_http_HttpRequest_off_headerReceive_0100";
       console.log("-----------------------HttpRequest_off_headerReceive Test is starting-----------------------");
       try {
@@ -224,7 +231,7 @@ export default function httpRequestJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_http_HttpRequest_on_headersReceive_0100", 0, (done:Function) => {
+    it("SUB_Telephony_http_HttpRequest_on_headersReceive_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done:Function) => {
       let casename = "SUB_Telephony_http_HttpRequest_on_headersReceive_0100";
       console.log("-----------------------HttpRequest_on_headersReceive Test is starting-----------------------");
       try {
@@ -252,7 +259,7 @@ export default function httpRequestJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_http_HttpRequest_off_headersReceive_0100", 0, (done:Function) => {
+    it("SUB_Telephony_http_HttpRequest_off_headersReceive_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done:Function) => {
       let casename = "SUB_Telephony_http_HttpRequest_off_headersReceive_0100";
       console.log("-----------------------HttpRequest_off_headersReceive Test is starting-----------------------");
       try {
@@ -282,7 +289,7 @@ export default function httpRequestJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_http_HttpRequest_off_headersReceive_0200", 0, (done:Function) => {
+    it("SUB_Telephony_http_HttpRequest_off_headersReceive_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (done:Function) => {
       console.log("-----------------------HttpRequest_off_headersReceive Test is starting-----------------------");
       try {
         let httpRequest = http.createHttp();
@@ -305,20 +312,21 @@ export default function httpRequestJsunit() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_Telephony_http_HttpRequest_once_headersReceive_0100", 0, (done:Function) => {
+    it("SUB_Telephony_http_HttpRequest_once_headersReceive_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       let casename = "SUB_Telephony_http_HttpRequest_once_headersReceive_0100";
       console.log("-----------------------HttpRequest_once_headersReceive Test is starting-----------------------");
       try {
         let httpRequest = http.createHttp();
-        httpRequest.once('headersReceive', (data) => {
+        httpRequest.once('headersReceive', async (data) => {
           console.log(casename + " data: " + JSON.stringify(data));
           expect(true).assertTrue();
+          await sleep(250);
           httpRequest.destroy();
           console.log("-----------------------HttpRequest_on_headersReceive Test end-----------------------");
           done();
         });
         httpRequest.request("https://www.baidu.com/", (err, data) => {
-          console.log(casename + " data: " + JSON.stringify(data.responseCode) + " err: " + JSON.stringify(err));
+          console.log(casename + " data: " + JSON.stringify(data?.responseCode) + " err: " + JSON.stringify(err));
         });
       } catch (error) {
         console.log("SUB_Telephony_http_HttpRequest_once_headersReceive_010 : error = " + error);
