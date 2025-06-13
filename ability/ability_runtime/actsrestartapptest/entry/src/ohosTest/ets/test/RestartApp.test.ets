@@ -43,9 +43,9 @@ export default function abilityTest() {
      * @tc.desc   : Function test
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : 0
+     * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_restartApp_0100', Level.LEVEL0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_restartApp_0100', Level.LEVEL3, async (done:Function) => {
       let caseName = 'SUB_Ability_AbilityRuntime_restartApp_0100';
       console.log(`${caseName} starts.`);
       let want: Want = {
@@ -98,9 +98,9 @@ export default function abilityTest() {
      * @tc.desc   : Function test
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : 0
+     * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_restartApp_0200', Level.LEVEL0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_restartApp_0200', Level.LEVEL3, async (done:Function) => {
       let caseName = 'SUB_Ability_AbilityRuntime_restartApp_0200';
       console.log(`${caseName} starts.`);
       let want: Want = {
@@ -153,9 +153,9 @@ export default function abilityTest() {
      * @tc.desc   : Function test
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : 0
+     * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_restartApp_0300', Level.LEVEL0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_restartApp_0300', Level.LEVEL3, async (done:Function) => {
       let caseName = 'SUB_Ability_AbilityRuntime_restartApp_0300';
       console.log(`${caseName} starts.`);
       let want: Want = {
@@ -210,9 +210,9 @@ export default function abilityTest() {
      * @tc.desc   : Function test
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : 0
+     * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_restartApp_0400', Level.LEVEL0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_restartApp_0400', Level.LEVEL3, async (done:Function) => {
       let caseName = 'SUB_Ability_AbilityRuntime_restartApp_0400';
       console.log(`${caseName} starts.`);
       let want: Want = {
@@ -267,9 +267,9 @@ export default function abilityTest() {
      * @tc.desc   : Function test
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : 0
+     * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_restartApp_0500', Level.LEVEL0, async (done:Function) => {
+    it('SUB_Ability_AbilityRuntime_restartApp_0500', Level.LEVEL3, async (done:Function) => {
       let caseName = 'SUB_Ability_AbilityRuntime_restartApp_0500';
       console.log(`${caseName} starts.`);
       let want: Want = {
