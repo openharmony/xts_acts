@@ -55,14 +55,14 @@ export default function colorSpaceManagerTest() {
     })
 
     /**
-     * @tc.number SUB_GRAPHIC_ENUMCOLORSPACE_JSAPI_static_001
-     * @tc.name Test enumcolorspace_Test_001
-     * @tc.desc test the value of enum color space
+     * @tc.number: SUB_GRAPHIC_COLOR_SPACE_API_static_001
+     * @tc.name: SUB_GRAPHIC_COLOR_SPACE_API_static_001
+     * @tc.desc: color space API ArkTS1.2
      * @tc.size      : SmallTest
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('SUB_GRAPHIC_ENUMCOLORSPACE_JSAPI_static_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+    it('SUB_GRAPHIC_COLOR_SPACE_API_static_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (done: () => void): Promise<void> => {
         console.info('test the enum value of ColorSpace Manager begin');
         try {
@@ -106,14 +106,14 @@ export default function colorSpaceManagerTest() {
       })
 
     /**
-     * @tc.number SUB_GRAPHIC_CREATE_JSAPI_static_002
-     * @tc.name Test createcolorspacemanager_Test_002
-     * @tc.desc test the interface of create
+     * @tc.number: SUB_GRAPHIC_COLOR_SPACE_API_static_002
+     * @tc.name: SUB_GRAPHIC_COLOR_SPACE_API_static_002
+     * @tc.desc: color space API ArkTS1.2
      * @tc.size      : SmallTest
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('SUB_GRAPHIC_CREATE_JSAPI_static_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+    it('SUB_GRAPHIC_COLOR_SPACE_API_static_002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (done: () => void): Promise<void> => {
       console.info('test createcolorspacemanager begin');
       try {
@@ -131,14 +131,14 @@ export default function colorSpaceManagerTest() {
     })
 
     /**
-     * @tc.number SUB_GRAPHIC_CREATE_JSAPI_003
-     * @tc.name Test createcolorspacemanager_Test_003
-     * @tc.desc test the interface of create
+     * @tc.number: SUB_GRAPHIC_COLOR_SPACE_API_static_003
+     * @tc.name: SUB_GRAPHIC_COLOR_SPACE_API_static_003
+     * @tc.desc: color space API ArkTS1.2
      * @tc.size      : SmallTest
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('SUB_GRAPHIC_CREATE_JSAPI_static_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+    it('SUB_GRAPHIC_COLOR_SPACE_API_static_003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (done: () => void): Promise<void> => {
       console.info('test createcolorspacemanager begin');
       try {
@@ -156,14 +156,14 @@ export default function colorSpaceManagerTest() {
     })
 
     /**
-     * @tc.number SUB_GRAPHIC_CREATE_JSAPI_static_004
-     * @tc.name Test createcolorspacemanager_Test_004
-     * @tc.desc test the interface of create
+     * @tc.number: SUB_GRAPHIC_COLOR_SPACE_API_static_004
+     * @tc.name: SUB_GRAPHIC_COLOR_SPACE_API_static_004
+     * @tc.desc: color space API ArkTS1.2
      * @tc.size      : SmallTest
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('SUB_GRAPHIC_CREATE_JSAPI_static_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+    it('SUB_GRAPHIC_COLOR_SPACE_API_static_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (done: () => void): Promise<void> => {
       console.info('test createcolorspacemanager begin');
       try {
@@ -181,14 +181,14 @@ export default function colorSpaceManagerTest() {
     })
 
     /**
-     * @tc.number SUB_GRAPHIC_CREATE_JSAPI_005
-     * @tc.name Test createcolorspacemanager_Test_005
-     * @tc.desc test the interface of create
+     * @tc.number: SUB_GRAPHIC_COLOR_SPACE_API_static_005
+     * @tc.name: SUB_GRAPHIC_COLOR_SPACE_API_static_005
+     * @tc.desc: color space API ArkTS1.2
      * @tc.size      : SmallTest
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('SUB_GRAPHIC_CREATE_JSAPI_static_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+    it('SUB_GRAPHIC_COLOR_SPACE_API_static_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (done: () => void): Promise<void> => {
       console.info('test createcolorspacemanager begin');
       try {
@@ -206,14 +206,14 @@ export default function colorSpaceManagerTest() {
     })
 
     /**
-     * @tc.number SUB_GRAPHIC_CREATE_JSAPI_006
-     * @tc.name Test createcolorspacemanager_Test_006
-     * @tc.desc test the interface of create
+     * @tc.number: SUB_GRAPHIC_COLOR_SPACE_API_static_006
+     * @tc.name: SUB_GRAPHIC_COLOR_SPACE_API_static_006
+     * @tc.desc: color space API ArkTS1.2
      * @tc.size      : SmallTest
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('SUB_GRAPHIC_CREATE_JSAPI_static_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+    it('SUB_GRAPHIC_COLOR_SPACE_API_static_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (done: () => void): Promise<void> => {
       console.info('test createcolorspacemanager begin');
       try {
@@ -231,14 +231,14 @@ export default function colorSpaceManagerTest() {
     })
 
     /**
-     * @tc.number SUB_GRAPHIC_CREATE_JSAPI_007
-     * @tc.name Test createcolorspacemanager_Test_007
-     * @tc.desc test the interface of create colorSpaceManager.ColorSpace.CUSTOM invalid
+     * @tc.number: SUB_GRAPHIC_COLOR_SPACE_API_static_007
+     * @tc.name: SUB_GRAPHIC_COLOR_SPACE_API_static_007
+     * @tc.desc: color space API ArkTS1.2
      * @tc.size      : SmallTest
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('SUB_GRAPHIC_CREATE_JSAPI_static_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+    it('SUB_GRAPHIC_COLOR_SPACE_API_static_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (done: () => void): Promise<void> => {
       console.info('test createcolorspacemanager begin');
       try {
@@ -256,14 +256,14 @@ export default function colorSpaceManagerTest() {
     })
 
     /**
-     * @tc.number SUB_GRAPHIC_CREATE_JSAPI_008
-     * @tc.name Test createcolorspacemanager_Test_008
-     * @tc.desc test the interface of create
+     * @tc.number: SUB_GRAPHIC_COLOR_SPACE_API_static_008
+     * @tc.name: SUB_GRAPHIC_COLOR_SPACE_API_static_008
+     * @tc.desc: color space API ArkTS1.2
      * @tc.size      : SmallTest
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('SUB_GRAPHIC_CREATE_JSAPI_static_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+    it('SUB_GRAPHIC_COLOR_SPACE_API_static_008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (done: () => void): Promise<void> => {
       console.info('test createcolorspacemanager08 begin');
       try {
@@ -296,14 +296,14 @@ export default function colorSpaceManagerTest() {
     })
 
     /**
-     * @tc.number SUB_GRAPHIC_CREATE_JSAPI_009
-     * @tc.name Test createcolorspacemanager_Test_009
-     * @tc.desc test the interface of create
+     * @tc.number: SUB_GRAPHIC_COLOR_SPACE_API_static_009
+     * @tc.name: SUB_GRAPHIC_COLOR_SPACE_API_static_009
+     * @tc.desc: color space API ArkTS1.2
      * @tc.size      : SmallTest
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('SUB_GRAPHIC_CREATE_JSAPI_static_009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+    it('SUB_GRAPHIC_COLOR_SPACE_API_static_009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (done: () => void): Promise<void> => {
       console.info('test createcolorspacemanager begin');
       try {
@@ -322,14 +322,14 @@ export default function colorSpaceManagerTest() {
     })
 
     /**
-     * @tc.number SUB_GRAPHIC_CREATE_JSAPI_010
-     * @tc.name Test createcolorspacemanager_Test_010
-     * @tc.desc test the interface of create
+     * @tc.number: SUB_GRAPHIC_COLOR_SPACE_API_static_010
+     * @tc.name: SUB_GRAPHIC_COLOR_SPACE_API_static_010
+     * @tc.desc: color space API ArkTS1.2
      * @tc.size      : SmallTest
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('SUB_GRAPHIC_CREATE_JSAPI_static_010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+    it('SUB_GRAPHIC_COLOR_SPACE_API_static_010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
       async (done: () => void): Promise<void> => {
       console.info('test createcolorspacemanager begin');
       try {
@@ -344,7 +344,5 @@ export default function colorSpaceManagerTest() {
         done();
       }
     })
-
   })
-
 }
