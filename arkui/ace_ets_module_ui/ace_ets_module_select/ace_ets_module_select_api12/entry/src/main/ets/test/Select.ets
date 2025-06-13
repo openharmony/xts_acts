@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium'
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
@@ -54,7 +54,7 @@ export default function select() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('ArkUI_Stage_Select_Layout_0100', 0, async (done: Function) => {
+    it('ArkUI_Stage_Select_Layout_0100', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_Stage_Select_Layout_0100 start");
       let strJson = getInspectorByKey('selectTest');
       
@@ -71,7 +71,7 @@ export default function select() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('ArkUI_Stage_Select_Layout_0200', 0, async (done: Function) => {
+    it('ArkUI_Stage_Select_Layout_0200', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_Stage_Select_Layout_0200 start");
       try {
         let eventData: events_emitter.EventData = {
@@ -105,7 +105,7 @@ export default function select() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('ArkUI_Stage_Select_Layout_0300', 0, async (done: Function) => {
+    it('ArkUI_Stage_Select_Layout_0300', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_Stage_Select_Layout_0300 start");
       try {
         let eventData: events_emitter.EventData = {
@@ -139,7 +139,7 @@ export default function select() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('ArkUI_Stage_Select_Layout_0400', 0, async (done: Function) => {
+    it('ArkUI_Stage_Select_Layout_0400', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_Stage_Select_Layout_0400 start");
       try {
         let eventData: events_emitter.EventData = {
@@ -173,7 +173,7 @@ export default function select() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('ArkUI_Stage_Select_Space_0100', 0, async (done: Function) => {
+    it('ArkUI_Stage_Select_Space_0100', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_Stage_Select_Space_0100 start");
       let strJson = getInspectorByKey('selectTest');
       
@@ -190,7 +190,7 @@ export default function select() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('ArkUI_Stage_Select_Space_0200', 0, async (done: Function) => {
+    it('ArkUI_Stage_Select_Space_0200', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_Stage_Select_Space_0200 start");
       try {
         let eventData: events_emitter.EventData = {
@@ -224,7 +224,7 @@ export default function select() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('ArkUI_Stage_Select_Space_0300', 0, async (done: Function) => {
+    it('ArkUI_Stage_Select_Space_0300', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_Stage_Select_Space_0300 start");
       try {
         let eventData: events_emitter.EventData = {
@@ -258,7 +258,7 @@ export default function select() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('ArkUI_Stage_Select_Space_0400', 0, async (done: Function) => {
+    it('ArkUI_Stage_Select_Space_0400', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_Stage_Select_Space_0400 start");
       try {
         let eventData: events_emitter.EventData = {
@@ -292,7 +292,7 @@ export default function select() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('ArkUI_Stage_Select_Space_0500', 0, async (done: Function) => {
+    it('ArkUI_Stage_Select_Space_0500', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_Stage_Select_Space_0500 start");
       try {
         let eventData: events_emitter.EventData = {
@@ -326,7 +326,7 @@ export default function select() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('ArkUI_Stage_Select_Space_0600', 0, async (done: Function) => {
+    it('ArkUI_Stage_Select_Space_0600', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_Stage_Select_Space_0600 start");
       try {
         let eventData: events_emitter.EventData = {
@@ -360,7 +360,7 @@ export default function select() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('ArkUI_Stage_Select_Space_0700', 0, async (done: Function) => {
+    it('ArkUI_Stage_Select_Space_0700', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_Stage_Select_Space_0700 start");
       try {
         let eventData: events_emitter.EventData = {
@@ -395,7 +395,7 @@ export default function select() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('ArkUI_Stage_Select_Space_0800', 0, async (done: Function) => {
+    it('ArkUI_Stage_Select_Space_0800', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_Stage_Select_Space_0800 start");
       try {
         let eventData: events_emitter.EventData = {
@@ -429,7 +429,7 @@ export default function select() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('ArkUI_Stage_Select_Space_0900', 0, async (done: Function) => {
+    it('ArkUI_Stage_Select_Space_0900', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_Stage_Select_Space_0900 start");
       try {
         let eventData: events_emitter.EventData = {
@@ -463,7 +463,7 @@ export default function select() {
      * @tc.type: Function
      * @tc.level: Level 0
      */
-    it('ArkUI_Stage_Select_Size_1000', 0, async (done: Function) => {
+    it('ArkUI_Stage_Select_Size_1000', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_Stage_Select_Size_1000 start");
       let strJson = getInspectorByKey('ArkUI_Stage_Select_Size_1000');
       

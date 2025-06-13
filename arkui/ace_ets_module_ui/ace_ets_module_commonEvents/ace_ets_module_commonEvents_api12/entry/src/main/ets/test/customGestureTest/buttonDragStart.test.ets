@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
 import {
@@ -65,7 +65,7 @@ export default function btnDragStart() {
      * @tc.type
      */
 
-    it('btnDragStart_001', 0, async (done: Function) => {
+    it('btnDragStart_001', Level.LEVEL0, async (done: Function) => {
       console.info('[btnDragStart_001] START');
       let str1 = getInspectorByKey("bttonDrag_key1");
       // get column left and top on screen

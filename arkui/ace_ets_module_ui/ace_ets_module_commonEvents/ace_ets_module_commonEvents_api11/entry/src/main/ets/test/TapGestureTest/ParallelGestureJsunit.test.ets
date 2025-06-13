@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeEach, afterEach, it, expect,beforeAll } from "@ohos/hypium"
+import { describe, beforeEach, afterEach, it, expect,beforeAll, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
 import events_emitter from '@ohos.events.emitter';
@@ -56,7 +56,7 @@ config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
       console.info("parallelGesture after each called");
     });
 
-    it('parallelGestureTest_0100', 0, async (done: Function) => {
+    it('parallelGestureTest_0100', Level.LEVEL0, async (done: Function) => {
       await CommonFunc.sleep(1000)
       let rect = CommonFunc.getComponentRect('tapGesture')
       console.info("parallelGestureTest_0100 rectInfo is " + JSON.stringify(rect));

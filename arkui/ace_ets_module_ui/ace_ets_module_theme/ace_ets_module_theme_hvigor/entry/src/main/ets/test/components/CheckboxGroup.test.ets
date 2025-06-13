@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterAll, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterAll, beforeAll, beforeEach, describe, it, expect , Level} from '@ohos/hypium';
 import router from '@ohos.router';
 import { CheckBoxKeys, checkBoxThemeProperty } from '../../MainAbility/pages/components/CheckboxPage';
 import { greenCustomTheme, redCustomTheme } from '../../MainAbility/themes/CustomTheme';
@@ -76,7 +76,7 @@ export default function checkboxGroupThemeTest() {
       * @tc.size      : MediumTest
       * @tc.type      : Function
       */
-    it(`ActsCheckBoxGroupThemeColors_0100`, 0, () => {
+    it(`ActsCheckBoxGroupThemeColors_0100`, Level.LEVEL2, () => {
       const CASE: string = `ActsCheckBoxGroupThemeColors_0100`;
       console.info(`${SUITE} ${CASE} START`);
       const checkboxJSON: string = getInspectorByKey(CheckBoxKeys.checkboxGroupSystem);
@@ -101,7 +101,7 @@ export default function checkboxGroupThemeTest() {
       * @tc.size      : MediumTest
       * @tc.type      : Function
       */
-    it(`ActsCheckBoxGroupThemeColors_0200`, 0, () => {
+    it(`ActsCheckBoxGroupThemeColors_0200`, Level.LEVEL2, () => {
       const CASE: string = `ActsCheckBoxGroupThemeColors_0200`;
       console.info(`${SUITE} ${CASE} START`);
       const checkboxJSON = getInspectorByKey(CheckBoxKeys.checkboxGroupWithTheme);
@@ -130,7 +130,7 @@ export default function checkboxGroupThemeTest() {
       * @tc.size      : MediumTest
       * @tc.type      : Function
       */
-    it(`ActsCheckBoxGroupThemeColors_0300`, 0, async () => {
+    it(`ActsCheckBoxGroupThemeColors_0300`, Level.LEVEL0, async () => {
       const CASE: string = `ActsCheckBoxGroupThemeColors_0300`;
       console.info(`${SUITE} ${CASE} START`);
       await sleep(frameTime);

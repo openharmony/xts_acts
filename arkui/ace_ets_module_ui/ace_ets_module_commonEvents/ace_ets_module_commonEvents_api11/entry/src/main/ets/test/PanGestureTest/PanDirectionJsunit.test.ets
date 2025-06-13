@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect,beforeAll } from "@ohos/hypium"
+import { describe, beforeEach, afterEach, it, expect,beforeAll, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from '../../MainAbility/common/Utils';
 import config from '@ohos.accessibility.config';
@@ -54,7 +54,7 @@ config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
       console.info("panDirection after each called");
     });
 
-    it('panDirectionText_0100', 0, async (done: Function) => {
+    it('panDirectionText_0100', Level.LEVEL0, async (done: Function) => {
       console.info('panDirectionText_0100 START');
       let strJson: string = getInspectorByKey('panDirection');
       console.info("panDirectionText_0100 component strJson:" + strJson);

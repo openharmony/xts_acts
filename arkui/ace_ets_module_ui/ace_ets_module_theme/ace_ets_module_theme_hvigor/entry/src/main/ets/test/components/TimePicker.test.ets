@@ -14,7 +14,7 @@
  */
 import { colorValuesKey } from '../../MainAbility/pages/index/index';
 import router from '@ohos.router';
-import { afterAll, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterAll, beforeAll, beforeEach, describe, it, expect , Level} from '@ohos/hypium';
 import { brownCustomTheme, greenCustomTheme, redCustomTheme } from '../../MainAbility/themes/CustomTheme';
 import { frameTime, sleep } from '../Utils';
 import {
@@ -93,7 +93,7 @@ export default function timePickerThemeTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it(`ActsTimePickerThemeColors_0100`, 0, async () => {
+    it(`ActsTimePickerThemeColors_0100`, Level.LEVEL0, async () => {
       const CASE: string = `ActsTimePickerThemeColors_0100`;
       console.info(`${SUITE} ${CASE} START`);
       await sleep(frameTime)
@@ -112,7 +112,7 @@ export default function timePickerThemeTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it(`ActsTimePickerThemeColors_0200`, 0, async () => {
+    it(`ActsTimePickerThemeColors_0200`, Level.LEVEL0, async () => {
       const CASE: string = `ActsTimePickerThemeColors_0200`;
       console.info(`${SUITE} ${CASE} START`);
       await sleep(frameTime)
@@ -133,7 +133,7 @@ export default function timePickerThemeTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it(`ActsTimePickerThemeColors_0300`, 0, async () => {
+    it(`ActsTimePickerThemeColors_0300`, Level.LEVEL0, async () => {
       const CASE: string = `ActsTimePickerThemeColors_0300`
       console.info(`${SUITE} ${CASE} START`)
       await sleep(frameTime)
@@ -154,7 +154,7 @@ export default function timePickerThemeTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it(`ActsTimePickerThemeColors_0400`, 0, async () => {
+    it(`ActsTimePickerThemeColors_0400`, Level.LEVEL0, async () => {
       const CASE: string = `ActsTimePickerThemeColors_0400`
       console.info(`${SUITE} ${CASE} START`)
       await sleep(frameTime)
@@ -174,7 +174,7 @@ export default function timePickerThemeTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it(`ActsTimePickerThemeColors_0500`, 0, async () => {
+    it(`ActsTimePickerThemeColors_0500`, Level.LEVEL0, async () => {
       const CASE: string = `ActsTimePickerThemeColors_0500`
       console.info(`${SUITE} ${CASE} START`)
       await sleep(frameTime);
@@ -193,7 +193,7 @@ export default function timePickerThemeTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it(`ActsTimePickerThemeColors_0600`, 0, async () => {
+    it(`ActsTimePickerThemeColors_0600`, Level.LEVEL0, async () => {
       const CASE: string = `ActsTimePickerThemeColors_0600`
       console.info(`${SUITE} ${CASE} START`)
       await sleep(frameTime);
@@ -214,7 +214,7 @@ export default function timePickerThemeTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it(`ActsTimePickerThemeColors_0700`, 0, async () => {
+    it(`ActsTimePickerThemeColors_0700`, Level.LEVEL0, async () => {
       const CASE: string = `ActsTimePickerThemeColors_0700`;
       console.info(`${SUITE} ${CASE} START`);
       await sleep(frameTime);
@@ -236,7 +236,7 @@ export default function timePickerThemeTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it(`ActsTimePickerThemeColors_0800`, 0, async () => {
+    it(`ActsTimePickerThemeColors_0800`, Level.LEVEL0, async () => {
       const CASE: string = `ActsTimePickerThemeColors_0800`;
       console.info(`${SUITE} ${CASE} START`);
       await sleep(frameTime);

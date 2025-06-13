@@ -14,7 +14,7 @@
  */
 import events_emitter from '@ohos.events.emitter';
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from '../../MainAbility/common/Utils'
 import config from '@ohos.accessibility.config';
 import accessibility from '@ohos.accessibility';
@@ -60,7 +60,7 @@ done();
         * @tc.name         testgestureSetDirection0001
         * @tc.desic         acegestureSetDirectionEtsTest0001
         */
-    it('testgestureSetDirection0001', 0, async () => {
+    it('testgestureSetDirection0001', Level.LEVEL0, async () => {
       console.info('gestureSetDirection testgestureSetDirection0001 START');
       await Utils.sleep(2000);
       try {
@@ -86,7 +86,7 @@ done();
      * @tc.name         testgestureSetDistance0002
      * @tc.desic         acegestureSetDistanceEtsTest0002
      */
-    it('testgestureSetDistance0002', 0, async () => {
+    it('testgestureSetDistance0002', Level.LEVEL0, async () => {
       console.info('gestureSetDistance testgestureSetDistance0002 START');
       await Utils.sleep(2000);
       try {
@@ -112,7 +112,7 @@ done();
      * @tc.name         testgestureSetFingers0003
      * @tc.desic         acegestureSetFingersEtsTest0003
      */
-    it('testgestureSetFingers0003', 0, async () => {
+    it('testgestureSetFingers0003', Level.LEVEL0, async () => {
       console.info('gestureSetFingers testgestureSetFingers0003 START');
       await Utils.sleep(2000);
       try {

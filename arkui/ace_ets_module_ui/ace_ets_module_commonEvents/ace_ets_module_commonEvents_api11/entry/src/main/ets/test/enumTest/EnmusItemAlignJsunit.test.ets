@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect,beforeAll } from "@ohos/hypium"
+import { describe, beforeEach, afterEach, it, expect,beforeAll, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from '../../MainAbility/common/Utils';
 import config from '@ohos.accessibility.config';
@@ -55,7 +55,7 @@ config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
       console.info('[ afterEach ] ===================enumsFlexItemTest test after each called===================');
     });
 
-    it('enumsItemAlignTest_0100', 0, async (done: Function) => {
+    it('enumsItemAlignTest_0100', Level.LEVEL0, async (done: Function) => {
       console.info('enumsItemAlignTest_0100 START');
       await Utils.sleep(1000);
       let strJson: string = getInspectorByKey('itemAlign');

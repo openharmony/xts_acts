@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterAll, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterAll, beforeAll, beforeEach, describe, it, expect , Level} from '@ohos/hypium';
 import router from '@ohos.router';
 import { frameTime, sleep } from '../Utils';
 import { colorValuesKey } from '../../MainAbility/pages/index/index';
@@ -99,7 +99,7 @@ export default function sliderThemeTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it(`ActsSliderThemeColors_0100`, 0, () => {
+    it(`ActsSliderThemeColors_0100`, Level.LEVEL2, () => {
       const CASE: string = `ActsSliderThemeColors_0100`;
       console.info(`${SUITE} ${CASE} START`);
       sliderKeys.forEach((key) => {
@@ -116,7 +116,7 @@ export default function sliderThemeTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it(`ActsSliderThemeColors_0200`, 0, () => {
+    it(`ActsSliderThemeColors_0200`, Level.LEVEL2, () => {
       const CASE: string = `ActsSliderThemeColors_0200`;
       console.info(`${SUITE} ${CASE} START`);
       sliderKeys.forEach((key) => {
@@ -135,7 +135,7 @@ export default function sliderThemeTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it(`ActsSliderThemeColors_0300`, 0, async () => {
+    it(`ActsSliderThemeColors_0300`, Level.LEVEL0, async () => {
       const CASE: string = `ActsSliderThemeColors_0300`
       console.info(`${SUITE} ${CASE} START`)
       await sleep(frameTime);
@@ -155,7 +155,7 @@ export default function sliderThemeTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it(`ActsSliderThemeColors_0400`, 0, async () => {
+    it(`ActsSliderThemeColors_0400`, Level.LEVEL0, async () => {
       const CASE: string = `ActsSliderThemeColors_0400`
       console.info(`${SUITE} ${CASE} START`)
       await sleep(frameTime);

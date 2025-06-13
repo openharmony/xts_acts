@@ -15,7 +15,7 @@
 
 import events_emitter from '@ohos.events.emitter';
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from '../../MainAbility/common/Utils'
 import config from '@ohos.accessibility.config';
 import accessibility from '@ohos.accessibility';
@@ -63,7 +63,7 @@ done();
      * @tc.name         testlazyForEachOnDataAdd0001
      * @tc.desic         acelazyForEachOnDataAddEtsTest0001
      */
-    it('testlazyForEachOnDataAdd0001', 0, async () => {
+    it('testlazyForEachOnDataAdd0001', Level.LEVEL0, async () => {
       console.info('lazyForEachOnDataAdd testlazyForEachOnDataAdd0001 START');
 
       let innerEvent1: events_emitter.InnerEvent = {
@@ -95,7 +95,7 @@ done();
      * @tc.name         testlazyForEachOnDataAdd0002
      * @tc.desic         acelazyForEachOnDataAddEtsTest0002
      */
-    it('testlazyForEachOnDataAdd0002', 0, async () => {
+    it('testlazyForEachOnDataAdd0002', Level.LEVEL0, async () => {
       console.info('lazyForEachOnDataAdd testlazyForEachOnDataAdd0002 START');
 
       let innerEvent2: events_emitter.InnerEvent = {
@@ -127,7 +127,7 @@ done();
      * @tc.name         testlazyForEachOnDataAdd0003
      * @tc.desic         acelazyForEachOnDataAddEtsTest0003
      */
-    it('testlazyForEachOnDataAdd0003', 0, async () => {
+    it('testlazyForEachOnDataAdd0003', Level.LEVEL0, async () => {
       console.info('lazyForEachOnDataAdd testlazyForEachOnDataAdd0003 START');
 
       let innerEvent3: events_emitter.InnerEvent = {
@@ -159,7 +159,7 @@ done();
      * @tc.name         testlazyForEachOnDataAdd0004
      * @tc.desic         acelazyForEachOnDataAddEtsTest0004
      */
-    it('testlazyForEachOnDataAdd0004', 0, async () => {
+    it('testlazyForEachOnDataAdd0004', Level.LEVEL0, async () => {
       console.info('lazyForEachOnDataAdd testlazyForEachOnDataAdd0004 START');
 
       let innerEvent4: events_emitter.InnerEvent = {
