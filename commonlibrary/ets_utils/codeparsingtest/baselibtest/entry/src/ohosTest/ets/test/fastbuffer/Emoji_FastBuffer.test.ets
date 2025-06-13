@@ -38,7 +38,7 @@ export default function EmojiFastBufferTest() {
       // This API supports only one parameter: clear action function.
     })
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_0100
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_0100
      * @tc.name       : testBufferAllocEmoji0001
      * @tc.desc       : Testing the Buffer interface Alloc with input emoji \ud83d\ude0a
      * @tc.size       : MediumTest
@@ -62,7 +62,7 @@ export default function EmojiFastBufferTest() {
     })
 
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_0200
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_0200
      * @tc.name       : testBufferAllocEmoji0002
      * @tc.desc       : Testing the Buffer interface Alloc with input emoji \ud83d\udc64
      * @tc.size       : MediumTest
@@ -85,7 +85,7 @@ export default function EmojiFastBufferTest() {
       }
     })
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_0300
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_0300
      * @tc.name       : testBufferAllocEmoji0003
      * @tc.desc       : Testing the Buffer interface Alloc with input emoji \ud83d\udc6b
      * @tc.size       : MediumTest
@@ -108,7 +108,7 @@ export default function EmojiFastBufferTest() {
       }
     })
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_0400
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_0400
      * @tc.name       : testBufferAllocEmoji0004
      * @tc.desc       : Testing the Buffer interface Alloc with input emoji \u260e
      * @tc.size       : MediumTest
@@ -131,7 +131,7 @@ export default function EmojiFastBufferTest() {
       }
     })
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_0500
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_0500
      * @tc.name       : testBufferAllocEmoji0005
      * @tc.desc       : Testing the Buffer interface Alloc with input emoji \ud83d\udc79
      * @tc.size       : MediumTest
@@ -154,7 +154,7 @@ export default function EmojiFastBufferTest() {
       }
     })
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_0600
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_0600
      * @tc.name       : testBufferAllocEmoji0006
      * @tc.desc       : Testing the Buffer interface Alloc with input emoji \ud83d\udd5b
      * @tc.size       : MediumTest
@@ -177,7 +177,7 @@ export default function EmojiFastBufferTest() {
       }
     })
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_0700
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_0700
      * @tc.name       : testBufferAllocEmoji0007
      * @tc.desc       : Testing the Buffer interface Alloc with input emoji \ud83c\udf4f
      * @tc.size       : MediumTest
@@ -200,7 +200,7 @@ export default function EmojiFastBufferTest() {
       }
     })
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_0800
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_0800
      * @tc.name       : testBufferAllocEmoji0008
      * @tc.desc       : Testing the Buffer interface Alloc with input emoji \ud83d\udd03
      * @tc.size       : MediumTest
@@ -223,7 +223,7 @@ export default function EmojiFastBufferTest() {
       }
     })
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_0900
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_0900
      * @tc.name       : testBufferAllocEmoji0009
      * @tc.desc       : Testing the Buffer interface Alloc with input emoji \ud83c\udf41
      * @tc.size       : MediumTest
@@ -246,7 +246,7 @@ export default function EmojiFastBufferTest() {
       }
     })
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_1000
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_1000
      * @tc.name       : testBufferAllocEmoji0010
      * @tc.desc       : Testing the Buffer interface Alloc with input emoji \u2666
      * @tc.size       : MediumTest
@@ -269,7 +269,7 @@ export default function EmojiFastBufferTest() {
       }
     })
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_1100
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_1100
      * @tc.name       : testBufferAllocEmoji0011
      * @tc.desc       : Testing the Buffer interface Alloc with input emoji \ud83d\udc48
      * @tc.size       : MediumTest
@@ -292,7 +292,7 @@ export default function EmojiFastBufferTest() {
       }
     })
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_1200
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_1200
      * @tc.name       : testBufferAllocEmoji0012
      * @tc.desc       : Testing the Buffer interface Alloc with input emoji \ud83e\udd3c\u200d\u2642\ufe0f
      * @tc.size       : MediumTest
@@ -322,7 +322,7 @@ export default function EmojiFastBufferTest() {
       }
     })
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_1300
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_1300
      * @tc.name       : testBufferByteLength0001
      * @tc.desc       : Testing the Buffer interface buffer.byteLength with input emoji \ud83d\ude0a
      * @tc.size       : MediumTest
@@ -341,7 +341,7 @@ export default function EmojiFastBufferTest() {
       }
     })
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_1400
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_1400
      * @tc.name       : testBufferByteLength0002
      * @tc.desc       : Testing the Buffer interface buffer.byteLength with input emoji \ud83d\udc64
      * @tc.size       : MediumTest
@@ -360,7 +360,7 @@ export default function EmojiFastBufferTest() {
       }
     })
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_1500
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_1500
      * @tc.name       : testBufferByteLength0003
      * @tc.desc       : Testing the Buffer interface buffer.byteLength with input emoji \ud83d\udc6b
      * @tc.size       : MediumTest
@@ -379,7 +379,7 @@ export default function EmojiFastBufferTest() {
       }
     })
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_1600
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_1600
      * @tc.name       : testBufferByteLength0004
      * @tc.desc       : Testing the Buffer interface buffer.byteLength with input emoji \u260e
      * @tc.size       : MediumTest
@@ -398,7 +398,7 @@ export default function EmojiFastBufferTest() {
       }
     })
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_1700
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_1700
      * @tc.name       : testBufferByteLength0005
      * @tc.desc       : Testing the Buffer interface buffer.byteLength with input emoji \ud83d\udc79
      * @tc.size       : MediumTest
@@ -417,7 +417,7 @@ export default function EmojiFastBufferTest() {
       }
     })
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_1800
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_1800
      * @tc.name       : testBufferByteLength0006
      * @tc.desc       : Testing the Buffer interface buffer.byteLength with input emoji \ud83d\udc79
      * @tc.size       : MediumTest
@@ -436,7 +436,7 @@ export default function EmojiFastBufferTest() {
       }
     })
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_1900
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_1900
      * @tc.name       : testBufferByteLength0007
      * @tc.desc       : Testing the Buffer interface buffer.byteLength with input emoji \ud83d\udc79
      * @tc.size       : MediumTest
@@ -455,7 +455,7 @@ export default function EmojiFastBufferTest() {
       }
     })
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_2000
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_2000
      * @tc.name       : testBufferByteLength0008
      * @tc.desc       : Testing the Buffer interface buffer.byteLength with input emoji \ud83d\udd03
      * @tc.size       : MediumTest
@@ -474,7 +474,7 @@ export default function EmojiFastBufferTest() {
       }
     })
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_2100
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_2100
      * @tc.name       : testBufferByteLength0009
      * @tc.desc       : Testing the Buffer interface buffer.byteLength with input emoji \ud83c\udf41
      * @tc.size       : MediumTest
@@ -493,7 +493,7 @@ export default function EmojiFastBufferTest() {
       }
     })
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_2200
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_2200
      * @tc.name       : testBufferByteLength00010
      * @tc.desc       : Testing the Buffer interface buffer.byteLength with input emoji \u2666
      * @tc.size       : MediumTest
@@ -512,7 +512,7 @@ export default function EmojiFastBufferTest() {
       }
     })
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_2300
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_2300
      * @tc.name       : testBufferByteLength00011
      * @tc.desc       : Testing the Buffer interface buffer.byteLength with input emoji \ud83d\udc48
      * @tc.size       : MediumTest
@@ -531,7 +531,7 @@ export default function EmojiFastBufferTest() {
       }
     })
     /*
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_2400
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_2400
      * @tc.name       : testBufferByteLength00012
      * @tc.desc       : Testing the Buffer interface buffer.byteLength with input emoji \ud83e\udd3c\u200d\u2642\ufe0f
      * @tc.size       : MediumTest
@@ -550,7 +550,7 @@ export default function EmojiFastBufferTest() {
       }
     })
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_2500
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_2500
      * @tc.name       : testBufferIsEncoding0001
      * @tc.desc       : Testing the Buffer interface buffer.isEncoding with input emoji \ud83d\ude0a
      * @tc.size       : MediumTest
@@ -569,7 +569,7 @@ export default function EmojiFastBufferTest() {
       }
     })
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_2600
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_2600
      * @tc.name       : testBufferIsEncoding0002
      * @tc.desc       : Testing the Buffer interface buffer.isEncoding with input emoji \ud83d\udc64
      * @tc.size       : MediumTest
@@ -588,7 +588,7 @@ export default function EmojiFastBufferTest() {
       }
     })
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_2700
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_2700
      * @tc.name       : testBufferIsEncoding0003
      * @tc.desc       : Testing the Buffer interface buffer.isEncoding with input emoji \ud83d\udc6b
      * @tc.size       : MediumTest
@@ -607,7 +607,7 @@ export default function EmojiFastBufferTest() {
       }
     })
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_2800
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_2800
      * @tc.name       : testBufferIsEncoding0004
      * @tc.desc       : Testing the Buffer interface buffer.isEncoding with input emoji \u260e
      * @tc.size       : MediumTest
@@ -626,7 +626,7 @@ export default function EmojiFastBufferTest() {
       }
     })
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_2900
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_2900
      * @tc.name       : testBufferIsEncoding0005
      * @tc.desc       : Testing the Buffer interface buffer.isEncoding with input emoji \ud83d\udc79
      * @tc.size       : MediumTest
@@ -645,7 +645,7 @@ export default function EmojiFastBufferTest() {
       }
     })
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_3000
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_3000
      * @tc.name       : testBufferIsEncoding0006
      * @tc.desc       : Testing the Buffer interface buffer.isEncoding with input emoji \ud83d\udd5b
      * @tc.size       : MediumTest
@@ -664,7 +664,7 @@ export default function EmojiFastBufferTest() {
       }
     })
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_3100
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_3100
      * @tc.name       : testBufferIsEncoding0007
      * @tc.desc       : Testing the Buffer interface buffer.isEncoding with input emoji \ud83c\udf4f
      * @tc.size       : MediumTest
@@ -683,7 +683,7 @@ export default function EmojiFastBufferTest() {
       }
     })
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_3200
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_3200
      * @tc.name       : testBufferIsEncoding0008
      * @tc.desc       : Testing the Buffer interface buffer.isEncoding with input emoji \ud83d\udd03
      * @tc.size       : MediumTest
@@ -702,7 +702,7 @@ export default function EmojiFastBufferTest() {
       }
     })
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_3300
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_3300
      * @tc.name       : testBufferIsEncoding0009
      * @tc.desc       : Testing the Buffer interface buffer.isEncoding with input emoji \ud83c\udf41
      * @tc.size       : MediumTest
@@ -721,7 +721,7 @@ export default function EmojiFastBufferTest() {
       }
     })
     /*
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_3400
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_3400
      * @tc.name       : testBufferIsEncoding00010
      * @tc.desc       : Testing the Buffer interface buffer.isEncoding with input emoji \u2666
      * @tc.size       : MediumTest
@@ -740,7 +740,7 @@ export default function EmojiFastBufferTest() {
       }
     })
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_3500
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_3500
      * @tc.name       : testBufferIsEncoding00011
      * @tc.desc       : Testing the Buffer interface buffer.isEncoding with input emoji \ud83d\udc48
      * @tc.size       : MediumTest
@@ -759,7 +759,7 @@ export default function EmojiFastBufferTest() {
       }
     })
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_3600
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_3600
      * @tc.name       : testBufferIsEncoding00012
      * @tc.desc       : Testing the Buffer interface buffer.isEncoding with input emoji \ud83e\udd3c\u200d\u2642\ufe0f
      * @tc.size       : MediumTest
@@ -778,7 +778,7 @@ export default function EmojiFastBufferTest() {
       }
     })
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_Buffer_EMOJI_3700
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_Buffer_EMOJI_3700
      * @tc.name       : testfillEmoji_0001
      * @tc.desc       : Test the Buffer interface fill with input emoji \ud83d\ude0a.
      * @tc.size       : MediumTest
@@ -801,7 +801,7 @@ export default function EmojiFastBufferTest() {
       }
     });
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_Buffer_EMOJI_3800
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_Buffer_EMOJI_3800
      * @tc.name       : testfillEmoji_0002
      * @tc.desc       : Test the Buffer interface fill with input emoji \ud83d\udc64.
      * @tc.size       : MediumTest
@@ -824,7 +824,7 @@ export default function EmojiFastBufferTest() {
       }
     });
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_Buffer_EMOJI_3900
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_Buffer_EMOJI_3900
      * @tc.name       : testfillEmoji_0003
      * @tc.desc       : Test the Buffer interface fill with input emoji \ud83d\udc6b.
      * @tc.size       : MediumTest
@@ -847,7 +847,7 @@ export default function EmojiFastBufferTest() {
       }
     });
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_Buffer_EMOJI_4000
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_Buffer_EMOJI_4000
      * @tc.name       : testfillEmoji_0004
      * @tc.desc       : Test the Buffer interface fill with input emoji \u260e.
      * @tc.size       : MediumTest
@@ -870,7 +870,7 @@ export default function EmojiFastBufferTest() {
       }
     });
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_Buffer_EMOJI_4100
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_Buffer_EMOJI_4100
      * @tc.name       : testfillEmoji_0005
      * @tc.desc       : Test the Buffer interface fill with input emoji \ud83d\udc79.
      * @tc.size       : MediumTest
@@ -893,7 +893,7 @@ export default function EmojiFastBufferTest() {
       }
     });
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_Buffer_EMOJI_4200
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_Buffer_EMOJI_4200
      * @tc.name       : testfillEmoji_0006
      * @tc.desc       : Test the Buffer interface fill with input emoji \ud83d\udd5b.
      * @tc.size       : MediumTest
@@ -916,7 +916,7 @@ export default function EmojiFastBufferTest() {
       }
     });
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_Buffer_EMOJI_4300
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_Buffer_EMOJI_4300
      * @tc.name       : testfillEmoji_0007
      * @tc.desc       : Test the Buffer interface fill with input emoji \ud83c\udf4f.
      * @tc.size       : MediumTest
@@ -939,7 +939,7 @@ export default function EmojiFastBufferTest() {
       }
     });
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_Buffer_EMOJI_4400
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_Buffer_EMOJI_4400
      * @tc.name       : testfillEmoji_0008
      * @tc.desc       : Test the Buffer interface fill with input emoji \ud83d\udd03.
      * @tc.size       : MediumTest
@@ -962,7 +962,7 @@ export default function EmojiFastBufferTest() {
       }
     });
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_Buffer_EMOJI_4500
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_Buffer_EMOJI_4500
      * @tc.name       : testfillEmoji_0009
      * @tc.desc       : Test the Buffer interface fill with input emoji  \ud83c\udf41.
      * @tc.size       : MediumTest
@@ -985,7 +985,7 @@ export default function EmojiFastBufferTest() {
       }
     });
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_Buffer_EMOJI_4600
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_Buffer_EMOJI_4600
      * @tc.name       : testfillEmoji_0010
      * @tc.desc       : Test the Buffer interface fill with input emoji \u2666.
      * @tc.size       : MediumTest
@@ -1008,7 +1008,7 @@ export default function EmojiFastBufferTest() {
       }
     });
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_Buffer_EMOJI_4700
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_Buffer_EMOJI_4700
      * @tc.name       : testfillEmoji_0011
      * @tc.desc       : Test the Buffer interface fill with input emoji \ud83d\udc48.
      * @tc.size       : MediumTest
@@ -1031,7 +1031,7 @@ export default function EmojiFastBufferTest() {
       }
     });
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_Buffer_EMOJI_4800
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_Buffer_EMOJI_4800
      * @tc.name       : testfillEmoji_0012
      * @tc.desc       : Test the Buffer interface fill with input emoji \ud83e\udd3c\u200d\u2642\ufe0f.
      * @tc.size       : MediumTest
@@ -1054,7 +1054,7 @@ export default function EmojiFastBufferTest() {
       }
     });
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_Buffer_EMOJI_4900
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_Buffer_EMOJI_4900
      * @tc.name       : testincludesEmoji_0001
      * @tc.desc       : Test the Buffer interface includes with input emoji \ud83d\ude0a.
      * @tc.size       : MediumTest
@@ -1074,7 +1074,7 @@ export default function EmojiFastBufferTest() {
       }
     });
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_Buffer_EMOJI_5000
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_Buffer_EMOJI_5000
      * @tc.name       : testincludesEmoji_0002
      * @tc.desc       : Test the Buffer interface includes with input emoji \ud83d\udc64.
      * @tc.size       : MediumTest
@@ -1094,7 +1094,7 @@ export default function EmojiFastBufferTest() {
       }
     });
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_Buffer_EMOJI_5100
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_Buffer_EMOJI_5100
      * @tc.name       : testincludesEmoji_0003
      * @tc.desc       : Test the Buffer interface includes with input emoji \ud83d\udc6b.
      * @tc.size       : MediumTest
@@ -1114,7 +1114,7 @@ export default function EmojiFastBufferTest() {
       }
     });
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_Buffer_EMOJI_5200
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_Buffer_EMOJI_5200
      * @tc.name       : testincludesEmoji_0004
      * @tc.desc       : Test the Buffer interface includes with input emoji \u260e.
      * @tc.size       : MediumTest
@@ -1134,7 +1134,7 @@ export default function EmojiFastBufferTest() {
       }
     });
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_Buffer_EMOJI_5300
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_Buffer_EMOJI_5300
      * @tc.name       : testincludesEmoji_0005
      * @tc.desc       : Test the Buffer interface includes with input emoji \ud83d\udc79.
      * @tc.size       : MediumTest
@@ -1154,7 +1154,7 @@ export default function EmojiFastBufferTest() {
       }
     });
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_Buffer_EMOJI_5400
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_Buffer_EMOJI_5400
      * @tc.name       : testincludesEmoji_0006
      * @tc.desc       : Test the Buffer interface includes with input emoji \ud83d\udd5b.
      * @tc.size       : MediumTest
@@ -1174,7 +1174,7 @@ export default function EmojiFastBufferTest() {
       }
     });
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_Buffer_EMOJI_5500
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_Buffer_EMOJI_5500
      * @tc.name       : testincludesEmoji_0007
      * @tc.desc       : Test the Buffer interface includes with input emoji \ud83c\udf4f.
      * @tc.size       : MediumTest
@@ -1194,7 +1194,7 @@ export default function EmojiFastBufferTest() {
       }
     });
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_Buffer_EMOJI_5600
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_Buffer_EMOJI_5600
      * @tc.name       : testincludesEmoji_0008
      * @tc.desc       : Test the Buffer interface includes with input emoji \ud83d\udd03.
      * @tc.size       : MediumTest
@@ -1214,7 +1214,7 @@ export default function EmojiFastBufferTest() {
       }
     });
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_Buffer_EMOJI_5700
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_Buffer_EMOJI_5700
      * @tc.name       : testincludesEmoji_0009
      * @tc.desc       : Test the Buffer interface includes with input emoji \ud83c\udf41.
      * @tc.size       : MediumTest
@@ -1234,7 +1234,7 @@ export default function EmojiFastBufferTest() {
       }
     });
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_Buffer_EMOJI_5800
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_Buffer_EMOJI_5800
      * @tc.name       : testincludesEmoji_0010
      * @tc.desc       : Test the Buffer interface includes with input emoji \u2666.
      * @tc.size       : MediumTest
@@ -1254,7 +1254,7 @@ export default function EmojiFastBufferTest() {
       }
     });
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_Buffer_EMOJI_5900
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_Buffer_EMOJI_5900
      * @tc.name       : testincludesEmoji_0011
      * @tc.desc       : Test the Buffer interface includes with input emoji \ud83d\udc48.
      * @tc.size       : MediumTest
@@ -1274,7 +1274,7 @@ export default function EmojiFastBufferTest() {
       }
     });
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_Buffer_EMOJI_6000
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_Buffer_EMOJI_6000
      * @tc.name       : testincludesEmoji_0012
      * @tc.desc       : Test the Buffer interface includes with input emoji \ud83e\udd3c\u200d\u2642\ufe0f.
      * @tc.size       : MediumTest
@@ -1295,7 +1295,7 @@ export default function EmojiFastBufferTest() {
     });
    
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_8500
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_8500
      * @tc.name       : testBuffertoJSONEmoji0001
      * @tc.desc       : Test the function of the interface toJSON with input emoji \ud83d\ude0a.
      * @tc.size       : MediumTest
@@ -1315,7 +1315,7 @@ export default function EmojiFastBufferTest() {
     })
 
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_8600
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_8600
      * @tc.name       : testBuffertoJSONEmoji0002
      * @tc.desc       : Test the function of the interface toJSON with input emoji \ud83d\udc64.
      * @tc.size       : MediumTest
@@ -1336,7 +1336,7 @@ export default function EmojiFastBufferTest() {
     })
 
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_8700
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_8700
      * @tc.name       : testBuffertoJSONEmoji0003
      * @tc.desc       : Test the function of the interface toJSON with input emoji  \ud83d\udc6b.
      * @tc.size       : MediumTest
@@ -1357,7 +1357,7 @@ export default function EmojiFastBufferTest() {
     })
 
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_8800
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_8800
      * @tc.name       : testBuffertoJSONEmoji0004
      * @tc.desc       : Test the function of the interface toJSON with input emoji \u260e .
      * @tc.size       : MediumTest
@@ -1378,7 +1378,7 @@ export default function EmojiFastBufferTest() {
     })
 
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_8900
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_8900
      * @tc.name       : testBuffertoJSONEmoji0005
      * @tc.desc       : Test the function of the interface toJSON with input emoji \ud83d\udc79 .
      * @tc.size       : MediumTest
@@ -1398,7 +1398,7 @@ export default function EmojiFastBufferTest() {
     })
 
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_9000
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_9000
      * @tc.name       : testBuffertoJSONEmoji0006
      * @tc.desc       : Test the function of the interface toJSON with input emoji  \ud83d\udd5b.
      * @tc.size       : MediumTest
@@ -1419,7 +1419,7 @@ export default function EmojiFastBufferTest() {
     })
 
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_9100
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_9100
      * @tc.name       : testBuffertoJSONEmoji0007
      * @tc.desc       : Test the function of the interface toJSON with input emoji \ud83c\udf4f.
      * @tc.size       : MediumTest
@@ -1441,7 +1441,7 @@ export default function EmojiFastBufferTest() {
     })
 
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_9200
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_9200
      * @tc.name       : testBuffertoJSONEmoji0008
      * @tc.desc       : Test the function of the interface toJSON with input emoji \ud83d\udd03.
      * @tc.size       : MediumTest
@@ -1462,7 +1462,7 @@ export default function EmojiFastBufferTest() {
     })
 
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_9300
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_9300
      * @tc.name       : testBuffertoJSONEmoji0009
      * @tc.desc       : Test the function of the interface toJSON with input emoji \ud83c\udf41.
      * @tc.size       : MediumTest
@@ -1484,7 +1484,7 @@ export default function EmojiFastBufferTest() {
 
 
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_9400
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_9400
      * @tc.name       : testBuffertoJSONEmoji0010
      * @tc.desc       : Test the function of the interface toJSON with input emoji \u2666.
      * @tc.size       : MediumTest
@@ -1506,7 +1506,7 @@ export default function EmojiFastBufferTest() {
     })
 
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_9500
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_9500
      * @tc.name       : testBuffertoJSONEmoji0011
      * @tc.desc       : Test the function of the interface toJSON with input emoji \ud83d\udc48.
      * @tc.size       : MediumTest
@@ -1527,7 +1527,7 @@ export default function EmojiFastBufferTest() {
     })
 
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_9600
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_9600
      * @tc.name       : testBuffertoJSONEmoji0012
      * @tc.desc       : Test the function of the interface toJSON with input emoji \ud83e\udd3c\u200d\u2642\ufe0f.
      * @tc.size       : MediumTest
@@ -1551,7 +1551,7 @@ export default function EmojiFastBufferTest() {
     })
 
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_9700
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_9700
      * @tc.name       : testBuffertoStringEmoji0001
      * @tc.desc       : Test the function of the interface toString with input emoji \ud83d\ude0a.
      * @tc.size       : MediumTest
@@ -1572,7 +1572,7 @@ export default function EmojiFastBufferTest() {
     })
 
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_9800
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_9800
      * @tc.name       : testBuffertoStringEmoji0002
      * @tc.desc       : Test the function of the interface toString with input emoji \ud83d\udc64.
      * @tc.size       : MediumTest
@@ -1593,7 +1593,7 @@ export default function EmojiFastBufferTest() {
     })
 
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_9900
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_9900
      * @tc.name       : testBuffertoStringEmoji0003
      * @tc.desc       : Test the function of the interface toString with input emoji \ud83d\udc64.
      * @tc.size       : MediumTest
@@ -1614,7 +1614,7 @@ export default function EmojiFastBufferTest() {
     })
 
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_10000
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_10000
      * @tc.name       : testBuffertoStringEmoji0004
      * @tc.desc       : Test the function of the interface toString with input emoji \u260e.
      * @tc.size       : MediumTest
@@ -1635,7 +1635,7 @@ export default function EmojiFastBufferTest() {
     })
 
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_10100
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_10100
      * @tc.name       : testBuffertoStringEmoji0005
      * @tc.desc       : Test the function of the interface toString with input emoji \ud83d\udc79.
      * @tc.size       : MediumTest
@@ -1656,7 +1656,7 @@ export default function EmojiFastBufferTest() {
     })
 
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_10200
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_10200
      * @tc.name       : testBuffertoStringEmoji0006
      * @tc.desc       : Test the function of the interface toString with input emoji \ud83d\udd5b.
      * @tc.size       : MediumTest
@@ -1677,7 +1677,7 @@ export default function EmojiFastBufferTest() {
     })
 
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_10300
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_10300
      * @tc.name       : testBuffertoStringEmoji0007
      * @tc.desc       : Test the function of the interface toString with input emoji \ud83c\udf4f.
      * @tc.size       : MediumTest
@@ -1698,7 +1698,7 @@ export default function EmojiFastBufferTest() {
     })
 
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_10400
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_10400
      * @tc.name       : testBuffertoStringEmoji0008
      * @tc.desc       : Test the function of the interface toString with input emoji \ud83d\udd03.
      * @tc.size       : MediumTest
@@ -1719,7 +1719,7 @@ export default function EmojiFastBufferTest() {
     })
 
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_10500
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_10500
      * @tc.name       : testBuffertoStringEmoji0009
      * @tc.desc       : Test the function of the interface toString with input emoji \ud83c\udf41.
      * @tc.size       : MediumTest
@@ -1740,7 +1740,7 @@ export default function EmojiFastBufferTest() {
     })
 
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_10600
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_10600
      * @tc.name       : testBuffertoStringEmoji0010
      * @tc.desc       : Test the function of the interface toString with input emoji \u2666.
      * @tc.size       : MediumTest
@@ -1761,7 +1761,7 @@ export default function EmojiFastBufferTest() {
     })
 
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_10700
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_10700
      * @tc.name       : testBuffertoStringEmoji0011
      * @tc.desc       : Test the function of the interface toString with input emoji \ud83d\udc48.
      * @tc.size       : MediumTest
@@ -1782,7 +1782,7 @@ export default function EmojiFastBufferTest() {
     })
 
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_10800
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_10800
      * @tc.name       : testBuffertoStringEmoji0012
      * @tc.desc       : Test the function of the interface toString with input emoji \ud83d\udc48.
      * @tc.size       : MediumTest
@@ -1802,7 +1802,7 @@ export default function EmojiFastBufferTest() {
       }
     })
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_10900
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_10900
      * @tc.name       : testBufferwriteEmoji0001
      * @tc.desc       : Testing the Buffer interface Alloc with input emoji \ud83d\ude0a
      * @tc.size       : MediumTest
@@ -1822,7 +1822,7 @@ export default function EmojiFastBufferTest() {
       }
     });
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_11000
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_11000
      * @tc.name       : testBufferwriteEmoji0002
      * @tc.desc       : Testing the Buffer interface Alloc with input emoji \ud83d\uc64
      * @tc.size       : MediumTest
@@ -1842,7 +1842,7 @@ export default function EmojiFastBufferTest() {
       }
     });
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_11100
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_11100
      * @tc.name       : testBufferwriteEmoji0003
      * @tc.desc       : Testing the Buffer interface Alloc with input emoji  \ud83d\udc6b
      * @tc.size       : MediumTest
@@ -1862,7 +1862,7 @@ export default function EmojiFastBufferTest() {
       }
     });
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_11200
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_11200
      * @tc.name       : testBufferwriteEmoji0004
      * @tc.desc       : Testing the Buffer interface Alloc with input emoji   \u260e
      * @tc.size       : MediumTest
@@ -1882,7 +1882,7 @@ export default function EmojiFastBufferTest() {
       }
     });
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_11300
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_11300
      * @tc.name       : testBufferwriteEmoji0005
      * @tc.desc       : Testing the Buffer interface Alloc with input emoji \ud83d\udc79
      * @tc.size       : MediumTest
@@ -1902,7 +1902,7 @@ export default function EmojiFastBufferTest() {
       }
     });
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_11400
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_11400
      * @tc.name       : testBufferwriteEmoji0006
      * @tc.desc       : Testing the Buffer interface Alloc with input emoji \ud83d\udd5b
      * @tc.size       : MediumTest
@@ -1922,7 +1922,7 @@ export default function EmojiFastBufferTest() {
       }
     });
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_11500
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_11500
      * @tc.name       : testBufferwriteEmoji0007
      * @tc.desc       : Testing the Buffer interface Alloc with input emoji \ud83c\udf4f
      * @tc.size       : MediumTest
@@ -1942,7 +1942,7 @@ export default function EmojiFastBufferTest() {
       }
     });
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_11600
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_11600
      * @tc.name       : testBufferwriteEmoji0008
      * @tc.desc       : Testing the Buffer interface Alloc with input emoji \ud83d\udd03
      * @tc.size       : MediumTest
@@ -1962,7 +1962,7 @@ export default function EmojiFastBufferTest() {
       }
     });
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_11700
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_11700
      * @tc.name       : testBufferwriteEmoji0009
      * @tc.desc       : Testing the Buffer interface Alloc with input emoji \ud83c\udf41
      * @tc.size       : MediumTest
@@ -1982,7 +1982,7 @@ export default function EmojiFastBufferTest() {
       }
     });
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_11800
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_11800
      * @tc.name       : testBufferwriteEmoji0010
      * @tc.desc       : Testing the Buffer interface Alloc with input emoji \u2666
      * @tc.size       : MediumTest
@@ -2002,7 +2002,7 @@ export default function EmojiFastBufferTest() {
       }
     });
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_11900
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_11900
      * @tc.name       : testBufferwriteEmoji0011
      * @tc.desc       : Testing the Buffer interface Alloc with input emoji  \ud83d\udc48
      * @tc.size       : MediumTest
@@ -2022,7 +2022,7 @@ export default function EmojiFastBufferTest() {
       }
     });
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_BUFFER_EMOJI_12000
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_BUFFER_EMOJI_12000
      * @tc.name       : testBufferwriteEmoji0012
      * @tc.desc       : Testing the Buffer interface Alloc with input emoji   \ud83e\udd3c\u200d\u2642\ufe0f
      * @tc.size       : MediumTest

@@ -38,7 +38,7 @@ export default function ActsFastBuffer3Test() {
     })
 
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_STRINGDECODER_0700
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_STRINGDECODER_0700
      * @tc.name       : testArrayScenarios0400
      * @tc.desc       : Test ENCODER and DOCODER.
      * @tc.size       : MediumTest
@@ -91,7 +91,7 @@ export default function ActsFastBuffer3Test() {
     })
 
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_STRINGDECODER_0800
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_STRINGDECODER_0800
      * @tc.name       : testArrayScenarios0500
      * @tc.desc       : Test ENCODER and DOCODER.
      * @tc.size       : MediumTest
