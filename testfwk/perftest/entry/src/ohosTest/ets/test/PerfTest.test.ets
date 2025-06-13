@@ -16,7 +16,7 @@
 import { describe, beforeAll, it, expect, TestType, Level, Size } from '@ohos/hypium';
 import Want from '@ohos.app.ability.Want';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
-import { Driver, ON } from '@ohos.UiTest';
+import { Driver, ON, UiDirection } from '@ohos.UiTest'
 import { PerfMetric, PerfTest, PerfTestStrategy, PerfMeasureResult } from '@ohos.test.PerfTest';
 import { BusinessError, Callback } from '@kit.BasicServicesKit';
 import { PerfUtils } from '../../../main/ets/utils/PerfUtils';
@@ -40,7 +40,6 @@ async function stopApplication(bundleName: string) {
 
 export default function PerfTestTest() {
   describe('PerfTestTest', () => {
-
 
     beforeAll(async (done: Function) => {
       done()
@@ -71,10 +70,11 @@ export default function PerfTestTest() {
       let res4 = perfTest.getMeasureResult(PerfMetric.MEMORY_RSS)
       let res5 = perfTest.getMeasureResult(PerfMetric.MEMORY_PSS)
       perfTest.destroy()
+      expect(res1.metric).assertEqual(PerfMetric.DURATION)
+      expect(res1.average).assertLargerOrEqual(0)
       expect(res1.maximum).assertLargerOrEqual(0)
       expect(res1.minimum).assertLargerOrEqual(0)
-      expect(res1.average).assertLargerOrEqual(0)
-      expect(res2.metric).assertLargerOrEqual(0)
+      expect(res1.roundValues.length).assertLargerOrEqual(5)
       expect(res2.average).assertLargerOrEqual(0)
       expect(res3.average).assertLargerOrEqual(0)
       expect(res4.average).assertLargerOrEqual(0)
@@ -84,10 +84,10 @@ export default function PerfTestTest() {
 
     /*
      * @tc.number: perfTest_20002
-     * @tc.name: testPerfTestPageJump
-     * @tc.desc: Test the performance of page jump
+     * @tc.name: testPerfTestPageSwipe
+     * @tc.desc: Test the performance of page swipe scenarios
      */
-    it('testPerfTestPageJump', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('testPerfTestPageSwitch', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       await startAbility('com.perftestScene.acts', 'EntryAbility');
       let driver = Driver.create()
       await driver.delayMs(3000)
@@ -132,24 +132,19 @@ export default function PerfTestTest() {
       let button = await driver.findComponent(ON.text('ListPage'))
       await driver.delayMs(1000)
       await button.click()
-      console.info("click over!!!!")
       await driver.delayMs(1000)
       let metrics: Array<PerfMetric> = [PerfMetric.LIST_SWIPE_FPS]
-      console.info("create metrics over!!!!")
       let actionCode = async (finish: Callback<boolean>) => {
         let scroll = await driver.findComponent(ON.type('Scroll'))
         await driver.delayMs(1000)
-        console.info("scroll over!!!!")
         let center = await scroll.getBoundsCenter()
         await driver.delayMs(1000)
-        console.info("center over!!!!")
         await driver.fling({x: center.x, y: Math.floor(center.y * 3 / 2)}, {x: center.x, y: Math.floor(center.y / 2)}, 50, 20000)
         await driver.delayMs(3000)
         finish(true)
       }
       let resetCode = async (finish: Callback<boolean>) => {
         let scroll = await driver.findComponent(ON.type('Scroll'))
-        console.info("scroll1 over!!!!")
         await driver.delayMs(1000)
         await scroll.scrollToTop(40000)
         await driver.delayMs(1000)
@@ -161,7 +156,6 @@ export default function PerfTestTest() {
         resetCode: resetCode,
         iterations: 5,
         timeout: 50000,
-        // bundleName: "com.perftest.acts"
       }
       let perfTest: PerfTest = PerfTest.create(perfTestStrategy)
       await perfTest.run()
@@ -279,8 +273,9 @@ export default function PerfTestTest() {
       await driver.delayMs(1000)
       let btn1 = await driver.findComponent(ON.text('PerftestScene'))
       let num = 0;
-      while (btn1 == null || num < 3) {
-        await driver.fling({x: 500, y: 500}, {x: 100, y: 500})
+      while (btn1 == null && num < 3) {
+        await driver.fling(UiDirection.RIGHT, 2000)
+		await driver.delayMs(1000)
         num += 1
         btn1 = await driver.findComponent(ON.text('PerftestScene'))
       }
@@ -320,63 +315,6 @@ export default function PerfTestTest() {
       expect(res1.average).assertLargerOrEqual(0)
       expect(res6.average).assertLargerOrEqual(0)
       expect(res7.average).assertLargerOrEqual(0)
-      done()
-    })
-
-    /*
-     * @tc.number: perfTest_20008
-     * @tc.name: testPerfTest_Startself
-     * @tc.desc: Test the performance of the app launches on its own
-     */
-    it('testPerfTest_Startself', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
-      console.info(`caniuse perftest = ${canIUse("SystemCapability.Test.PerfTest")}`)
-      let driver = Driver.create()
-      await driver.delayMs(3000)
-      await driver.pressHome()
-      await driver.delayMs(1000)
-      let btn1 = await driver.findComponent(ON.text('PerftestScene'))
-      let num = 0;
-      while (btn1 == null || num < 3) {
-        await driver.fling({x: 500, y: 500}, {x: 100, y: 500})
-        num += 1
-        btn1 = await driver.findComponent(ON.text('PerftestScene'))
-      }
-      if (btn1 == null) {
-        done()
-        return
-      }
-      let metrics: Array<PerfMetric> = [PerfMetric.DURATION, PerfMetric.APP_START_RESPONSE_TIME, PerfMetric.APP_START_COMPLETE_TIME]
-      let actionCode = async (finish: Callback<boolean>) => {
-        let driver = Driver.create()
-        await driver.delayMs(1000)
-        let btn1 = await driver.findComponent(ON.text('label'))
-        await btn1.click()
-        await driver.delayMs(1000)
-        finish(true)
-      }
-      let resetCode = async (finish: Callback<boolean>) => {
-        let driver = Driver.create()
-        await driver.delayMs(1000)
-        await driver.pressBack()
-        await driver.delayMs(1000)
-        finish(true)
-      }
-      let perfTestStrategy: PerfTestStrategy = {
-        metrics: metrics,
-        actionCode: actionCode,
-        resetCode: resetCode,
-        timeout: 50000,
-        iterations: 5,
-      }
-      let perfTest: PerfTest = PerfTest.create(perfTestStrategy)
-      await perfTest.run()
-      let res1 = perfTest.getMeasureResult(PerfMetric.DURATION)
-      let res6 = perfTest.getMeasureResult(PerfMetric.APP_START_RESPONSE_TIME)
-      let res7 = perfTest.getMeasureResult(PerfMetric.APP_START_COMPLETE_TIME)
-      perfTest.destroy()
-      expect(res1.average).assertLargerOrEqual(0)
-      expect(res7.average).assertLargerOrEqual(0)
-      expect(res6.average).assertLargerOrEqual(0)
       done()
     })
 
