@@ -752,7 +752,7 @@ static napi_value OH_UdmfOptions_GetKey_002(napi_env env, napi_callback_info inf
 {
     OH_UdmfOptions* options = OH_UdmfOptions_Create();
     const char* getKey = OH_UdmfOptions_GetKey(options);
-    NAPI_ASSERT(env, strcmp(getKey, "") == 0 , "OH_UdmfOptions_GetKey is fail.");
+    NAPI_ASSERT(env, strcmp(getKey, "") == 0, "OH_UdmfOptions_GetKey is fail.");
     napi_value res;
     napi_create_int32(env, 1, &res);
     return res;
@@ -2534,7 +2534,7 @@ static napi_value OH_UdmfDataLoadInfo_SetTypeAndGetTypes001(napi_env env, napi_c
     OH_UdmfDataLoadInfo*  dataLoadInfo = OH_UdmfDataLoadInfo_Create();
     OH_UdmfDataLoadInfo_SetType(dataLoadInfo, "image");
     OH_UdmfDataLoadInfo_SetType(dataLoadInfo, "text");
-    OH_UdmfDataLoadInfo_SetType(dataLoadInfo, "text"); 
+    OH_UdmfDataLoadInfo_SetType(dataLoadInfo, "text");
     unsigned int count = 0;
     OH_UdmfDataLoadInfo_GetTypes(dataLoadInfo, &count);
     int num = 2;
