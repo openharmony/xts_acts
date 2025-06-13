@@ -33,6 +33,7 @@ import timePickerDialogBGColorTest from './timePickerDialog/timePickerDialogBGCo
 import timePickerDialogShadowTest from './timePickerDialog/timePickerDialogShadow.test';
 import textPickerDialogEnableHapticFeedback from './textPickerDialog/textPickerDialogEnableHapticFeedback.test'
 import SliderEnableHapticFeedbackTest from './slider/SliderEnableHapticFeedbackTest.test'
+import columnWidths from './textPicker/columnWidths.test';
 
 export default function testsuite() {
     datePickerDialogMode()
@@ -56,4 +57,5 @@ export default function testsuite() {
     timePickerDialogShadowTest();
     textPickerDialogEnableHapticFeedback();
     SliderEnableHapticFeedbackTest();
+    columnWidths();
 }
