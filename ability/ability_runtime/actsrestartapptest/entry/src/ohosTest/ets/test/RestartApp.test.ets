@@ -40,7 +40,7 @@ export default function abilityTest() {
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_restartApp_0100
      * @tc.name   : SUB_Ability_AbilityRuntime_restartApp_0100
-     * @tc.desc   : Function test
+     * @tc.desc   : The parameter 'ableName' is not Uiability, and calling the RestartApp interface returns 16000063
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : 3
@@ -95,7 +95,7 @@ export default function abilityTest() {
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_restartApp_0200
      * @tc.name   : SUB_Ability_AbilityRuntime_restartApp_0200
-     * @tc.desc   : Function test
+     * @tc.desc   : The parameter 'ableName' is ' ', calling the RestartApp interface returns 401
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : 3
@@ -150,7 +150,7 @@ export default function abilityTest() {
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_restartApp_0300
      * @tc.name   : SUB_Ability_AbilityRuntime_restartApp_0300
-     * @tc.desc   : Function test
+     * @tc.desc   : The parameter 'ableName' is an illegal value. Calling the RestartApp interface returns 16000063
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : 3
@@ -207,7 +207,7 @@ export default function abilityTest() {
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_restartApp_0400
      * @tc.name   : SUB_Ability_AbilityRuntime_restartApp_0400
-     * @tc.desc   : Function test
+     * @tc.desc   : Parameter ableName is undefined, calling the RestartApp interface returns 401
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : 3
@@ -264,7 +264,7 @@ export default function abilityTest() {
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_restartApp_0500
      * @tc.name   : SUB_Ability_AbilityRuntime_restartApp_0500
-     * @tc.desc   : Function test
+     * @tc.desc   : Parameter Want is empty, calling the RestartApp interface returns 401
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : 3
