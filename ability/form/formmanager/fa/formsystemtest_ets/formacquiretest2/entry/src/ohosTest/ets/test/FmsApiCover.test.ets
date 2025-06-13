@@ -77,15 +77,15 @@ export default function ApiCoverTest() {
       expect(FormInfo.FormDimension.DIMENSION_2_3).assertEqual(FormInfo.FormDimension.DIMENSION_2_3);
       expect(FormInfo.FormDimension.DIMENSION_3_3).assertEqual(FormInfo.FormDimension.DIMENSION_3_3);
 
-      expect(-1).assertEqual(FormInfo.formLocation.OTHER);
-      expect(0).assertEqual(FormInfo.formLocation.DESKTOP);
-      expect(1).assertEqual(FormInfo.formLocation.FORM_CENTER);
-      expect(2).assertEqual(FormInfo.formLocation.FORM_MANAGER);
-      expect(3).assertEqual(FormInfo.formLocation.NEGATIVE_SCREEN);
-      expect(4).assertEqual(FormInfo.formLocation.FORM_CENTER_NEGATIVE_SCREEN);
-      expect(5).assertEqual(FormInfo.formLocation.FORM_MANAGER_NEGATIVE_SCREEN);
-      expect(6).assertEqual(FormInfo.formLocation.SCREEN_LOCK);
-      expect(7).assertEqual(FormInfo.formLocation.AI_SUGGESTION);
+      expect(-1).assertEqual(FormInfo.FormLocation.OTHER);
+      expect(0).assertEqual(FormInfo.FormLocation.DESKTOP);
+      expect(1).assertEqual(FormInfo.FormLocation.FORM_CENTER);
+      expect(2).assertEqual(FormInfo.FormLocation.FORM_MANAGER);
+      expect(3).assertEqual(FormInfo.FormLocation.NEGATIVE_SCREEN);
+      expect(4).assertEqual(FormInfo.FormLocation.FORM_CENTER_NEGATIVE_SCREEN);
+      expect(5).assertEqual(FormInfo.FormLocation.FORM_MANAGER_NEGATIVE_SCREEN);
+      expect(6).assertEqual(FormInfo.FormLocation.SCREEN_LOCK);
+      expect(7).assertEqual(FormInfo.FormLocation.AI_SUGGESTION);
 
       console.info("FMS_apiCoverTest_001 end");
       done();
