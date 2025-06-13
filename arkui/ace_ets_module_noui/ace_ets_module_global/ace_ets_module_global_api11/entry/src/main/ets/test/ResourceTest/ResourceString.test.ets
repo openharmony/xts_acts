@@ -52,6 +52,16 @@ export default function ResourceString() {
       }
       done();
     });
+
+        /*
+         * @tc.number       ResourceString_0100
+         * @tc.name         ResourceString_0100
+         * @tc.desic         ResourceString
+         * @tc.size       : MediumTest
+         * @tc.type       : Function
+         * @tc.level      : LEVEL0
+         */
+
     it('ResourceString_0100', Level.LEVEL0, async (done: Function) => {
       console.info('ResourceString_0100 START');
       let strJson = getInspectorByKey('string');
@@ -62,6 +72,15 @@ export default function ResourceString() {
       console.info('[ResourceString_0100] END');
       done();
     });
+
+        /*
+         * @tc.number       ResourceString_0200
+         * @tc.name         ResourceString_0200
+         * @tc.desic         ResourceString
+         * @tc.size       : MediumTest
+         * @tc.type       : Function
+         * @tc.level      : LEVEL0
+         */
     it('ResourceString_0200', Level.LEVEL0, async (done: Function) => {
       console.info('ResourceString_0200 START');
       let driver = Driver.create();

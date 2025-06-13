@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import router from '@ohos.router';
 import Utils from '../../MainAbility/common/Utils'
@@ -61,7 +61,11 @@ export default function web9Jsunit() {
      * tc.number SUB_ACE_BASIC_ETS_API_0001
      * tc.name WebContextMenuResult
      * tc.desic webContextMenuResult
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
      */
+
     it('webContextMenuResultTest001', Level.LEVEL0, async () => {
       emitKey = "emitwebContextMenuResult";
       Utils.registerContainEvent("webContextMenuResult", true, 1101);
@@ -70,7 +74,11 @@ export default function web9Jsunit() {
      * tc.number SUB_ACE_BASIC_ETS_API_0002
      * tc.name  HitTestValue
      * tc.desic webContextMenuResult
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
      */
+
     it('setWebControllerTest002', Level.LEVEL0, async () => {
       emitKey = "emitsetWebController";
       Utils.registerContainEvent("setWebController", true, 1102);
@@ -79,7 +87,11 @@ export default function web9Jsunit() {
     * tc.number SUB_ACE_BASIC_ETS_API_0002
     * tc.name  HitTestValue
     * tc.desic webContextMenuResult
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
     */
+
     it('setWebControllerTest003', Level.LEVEL0, async () => {
       emitKey = "emitHitTestValue";
       Utils.registerContainEvent("HitTestValue", true, 1103);

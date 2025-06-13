@@ -44,7 +44,11 @@ export default function globalJsunit() {
      * @tc.number ACE_global_setTimeout
      * @tc.name setTimeout()
      * @tc.desc Test setTimeout
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : LEVEL0
      */
+
     it('ACE_global_setTimeout', Level.LEVEL0, async (done: Function) => {
       let caseName: string = "ACE_global_setTimeout"
       console.info(`${caseName} START`);
@@ -58,7 +62,11 @@ export default function globalJsunit() {
      * @tc.number ACE_global_canIUse
      * @tc.name canIUse()
      * @tc.desc Test canIUse
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : LEVEL0
      */
+
     it('ACE_global_canIUse', Level.LEVEL0, async (done: Function) => {
       let caseName: string = "ACE_global_canIUse"
       console.info(`${caseName} START`);
@@ -72,6 +80,9 @@ export default function globalJsunit() {
      * @tc.number ACE_global_console_log_0100
      * @tc.name console::log
      * @tc.desc Test console log printing
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : LEVEL0
      */
     it("ACE_global_console_log_0100", Level.LEVEL0, async (done: Function) => {
       let casename: string = "ACE_global_001";
@@ -91,6 +102,9 @@ export default function globalJsunit() {
      * @tc.number ACE_global_console_info_0100
      * @tc.name console::info
      * @tc.desc Test console info printing
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : LEVEL0
      */
     it("ACE_global_console_info_0100", Level.LEVEL0, async (done: Function) => {
       let casename: string = "ACE_global_002";
@@ -110,6 +124,9 @@ export default function globalJsunit() {
      * @tc.number ACE_global_console_warn_0100
      * @tc.name console::warn
      * @tc.desc Test console warn printing
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : LEVEL0
      */
     it("ACE_global_console_warn_0100", Level.LEVEL0, async (done: Function) => {
       let casename: string = "ACE_global_003";

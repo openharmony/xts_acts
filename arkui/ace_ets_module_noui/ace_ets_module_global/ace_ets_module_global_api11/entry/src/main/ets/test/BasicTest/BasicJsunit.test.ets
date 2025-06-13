@@ -22,6 +22,14 @@ export default function basicJsunit() {
       console.log(data);
       expect(true).assertTrue();
     }
+   /*
+     * @tc.number     : testBasic01
+     * @tc.name       : testBasic01
+     * @tc.desc       : testBasic
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : LEVEL0
+     */
     it('testBasic01', Level.LEVEL0, async (done: Function) => {
       console.info('[testBasic01] START');
       callbackTest(callback);

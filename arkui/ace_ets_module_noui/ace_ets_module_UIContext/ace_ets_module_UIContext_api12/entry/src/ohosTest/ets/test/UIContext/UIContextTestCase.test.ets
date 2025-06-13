@@ -49,7 +49,9 @@ export default function UIContextTestCase() {
      * @tc.type :
      * @tc.size :
      */
-    it('UIContextTestCase_0100', Level.LEVEL0, async (done: Function) => {
+
+
+    it('UIContextTestCase_0100', Level.LEVEL2, async (done: Function) => {
       console.info('UIContextTestCase_0100');
       await CommonFunc.sleep(1000);
       // to get the getHostContext object
@@ -68,7 +70,9 @@ export default function UIContextTestCase() {
      * @tc.type :
      * @tc.size :
      */
-    it('UIContextTestCase_0200', Level.LEVEL0, async (done: Function) => {
+
+
+    it('UIContextTestCase_0200', Level.LEVEL2, async (done: Function) => {
       console.info('UIContextTestCase_0200');
       await CommonFunc.sleep(1000);
       // to get the getHostContext object

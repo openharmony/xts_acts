@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 
 export default function TextPrivacySensitive() {
@@ -44,7 +44,7 @@ export default function TextPrivacySensitive() {
     *@tc.type       : Function
     *@tc.level      : Level 1
     */
-    it('ArkUIHDS_Text_privacySensitive_0100', 0, (done: Function) => {
+    it('ArkUIHDS_Text_privacySensitive_0100', Level.LEVEL1, (done: Function) => {
       console.info('ArkUIHDS_Text_privacySensitive_0100 START');
       setTimeout(() => {
         try {
@@ -71,7 +71,7 @@ export default function TextPrivacySensitive() {
     *@tc.type       : Function
     *@tc.level      : Level 1
     */
-    it('ArkUIHDS_Text_privacySensitive_0200', 0, (done: Function) => {
+    it('ArkUIHDS_Text_privacySensitive_0200', Level.LEVEL1, (done: Function) => {
       console.info('ArkUIHDS_Text_privacySensitive_0200 START');
       setTimeout(() => {
         try {
@@ -98,7 +98,7 @@ export default function TextPrivacySensitive() {
     *@tc.type       : Function
     *@tc.level      : Level 1
     */
-    it('ArkUIHDS_Text_privacySensitive_0300', 0, (done: Function) => {
+    it('ArkUIHDS_Text_privacySensitive_0300', Level.LEVEL1, (done: Function) => {
       console.info('ArkUIHDS_Text_privacySensitive_0300 START');
       setTimeout(() => {
         try {
@@ -125,7 +125,7 @@ export default function TextPrivacySensitive() {
     *@tc.type       : Function
     *@tc.level      : Level 1
     */
-    it('ArkUIHDS_Text_privacySensitive_0400', 0, (done: Function) => {
+    it('ArkUIHDS_Text_privacySensitive_0400', Level.LEVEL1, (done: Function) => {
       console.info('ArkUIHDS_Text_privacySensitive_0400 START');
       setTimeout(() => {
         try {
@@ -152,7 +152,7 @@ export default function TextPrivacySensitive() {
     *@tc.type       : Function
     *@tc.level      : Level 1
     */
-    it('ArkUIHDS_Image_privacySensitive_0100', 0, (done: Function) => {
+    it('ArkUIHDS_Image_privacySensitive_0100', Level.LEVEL1, (done: Function) => {
       console.info('ArkUIHDS_Image_privacySensitive_0100 START');
       setTimeout(() => {
         try {
@@ -179,7 +179,7 @@ export default function TextPrivacySensitive() {
     *@tc.type       : Function
     *@tc.level      : Level 1
     */
-    it('ArkUIHDS_Image_privacySensitive_0200', 0, (done: Function) => {
+    it('ArkUIHDS_Image_privacySensitive_0200', Level.LEVEL1, (done: Function) => {
       console.info('ArkUIHDS_Image_privacySensitive_0200 START');
       setTimeout(() => {
         try {
@@ -206,7 +206,7 @@ export default function TextPrivacySensitive() {
     *@tc.type       : Function
     *@tc.level      : Level 1
     */
-    it('ArkUIHDS_Image_privacySensitive_0300', 0, (done: Function) => {
+    it('ArkUIHDS_Image_privacySensitive_0300', Level.LEVEL1, (done: Function) => {
       console.info('ArkUIHDS_Image_privacySensitive_0300 START');
       setTimeout(() => {
         try {
@@ -233,7 +233,7 @@ export default function TextPrivacySensitive() {
     *@tc.type       : Function
     *@tc.level      : Level 1
     */
-    it('ArkUIHDS_Image_privacySensitive_0400', 0, (done: Function) => {
+    it('ArkUIHDS_Image_privacySensitive_0400', Level.LEVEL1, (done: Function) => {
       console.info('ArkUIHDS_Image_privacySensitive_0400 START');
       setTimeout(() => {
         try {

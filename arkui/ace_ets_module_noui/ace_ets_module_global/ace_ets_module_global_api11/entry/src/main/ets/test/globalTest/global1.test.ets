@@ -45,7 +45,11 @@ export default function globalJsunit1() {
      * @tc.number       SUB_ACE_BASIC_ETS_API_0001
      * @tc.name         testglobal_getInspectorTree0001
      * @tc.desic         aceGlobal_getInspectorTree0001
+    * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : LEVEL0
      */
+
     it('testglobal_getInspectorTree0001', Level.LEVEL0, async () => {
       console.info('testglobal_getInspectorTree0001 START');
       await Utils.sleep(2000);
@@ -57,7 +61,11 @@ export default function globalJsunit1() {
      * @tc.number       SUB_ACE_BASIC_ETS_API_0002
      * @tc.name         testglobal_sendKeyEvent0002
      * @tc.desic         aceGlobal_sendKeyEvent0002
+    * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : LEVEL0
      */
+
     it('testglobal_sendKeyEvent0002', Level.LEVEL0, async () => {
       console.info('testglobal_sendKeyEvent0002 START');
       await Utils.sleep(2000);
@@ -85,7 +93,11 @@ export default function globalJsunit1() {
      * @tc.number       SUB_ACE_BASIC_ETS_API_0003
      * @tc.name         testglobal_sendMouseEvent0003
      * @tc.desic         aceGlobal_sendMouseEvent0003
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : LEVEL0
      */
+
     it('testglobal_sendMouseEvent0003', Level.LEVEL0, async () => {
       console.info('testglobal_sendMouseEvent0003 START');
       await Utils.sleep(2000);

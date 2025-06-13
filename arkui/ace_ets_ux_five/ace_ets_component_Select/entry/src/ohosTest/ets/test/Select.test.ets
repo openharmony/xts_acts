@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import router from '@ohos.router';
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 
 export default function SelectTest() {
   describe('SelectTest', () => {
@@ -41,8 +41,13 @@ export default function SelectTest() {
      *@tc.number ArkUX_Select_Visual_0030
      *@tc.name   Support modifying the select optionWidth and optionHeight change of Select component
      *@tc.desc   Sets the optionWidth and optionHeight property parameter to 200
+     *@tc.size       : MediumTest
+     *@tc.type       : Function
+     *@tc.level      : Level 0   
      */
-    it('ArkUX_Select_Visual_0030', 0, async (done: Function) => {
+
+
+    it('ArkUX_Select_Visual_0030', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Select_Visual_0030 START');
       setTimeout(() => {
         try {
@@ -67,8 +72,13 @@ export default function SelectTest() {
      *@tc.number ArkUX_Select_Visual_0040
      *@tc.name   Support modifying the select optionWidth and optionHeight change of Select component
      *@tc.desc   Sets the optionWidth and optionHeight property parameter to 400
+     *@tc.size       : MediumTest
+     *@tc.type       : Function
+     *@tc.level      : Level 0  
      */
-    it('ArkUX_Select_Visual_0040', 0, async (done: Function) => {
+
+
+    it('ArkUX_Select_Visual_0040', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Select_Visual_0040 START');
       setTimeout(() => {
         try {
@@ -93,8 +103,13 @@ export default function SelectTest() {
      *@tc.number ArkUX_Select_Visual_0050
      *@tc.name   Support modifying the select optionWidth and optionHeight change of Select component
      *@tc.desc   Sets the optionWidth and optionHeight property parameter to FIT_TRIGGER and 600
+     *@tc.size       : MediumTest
+     *@tc.type       : Function
+     *@tc.level      : Level 0  
      */
-    it('ArkUX_Select_Visual_0050', 0, async (done: Function) => {
+
+
+    it('ArkUX_Select_Visual_0050', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Select_Visual_0050 START');
       setTimeout(() => {
         try {
@@ -119,8 +134,13 @@ export default function SelectTest() {
      *@tc.number ArkUX_Select_Visual_0060
      *@tc.name   Support modifying the select optionWidth and optionHeight change of Select component
      *@tc.desc   Sets the optionWidth and optionHeight property parameter to FIT_CONTENT and 600
+     *@tc.size       : MediumTest
+     *@tc.type       : Function
+     *@tc.level      : Level 0  
      */
-    it('ArkUX_Select_Visual_0060', 0, async (done: Function) => {
+
+
+    it('ArkUX_Select_Visual_0060', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Select_Visual_0060 START');
       setTimeout(() => {
         try {
@@ -145,8 +165,13 @@ export default function SelectTest() {
      *@tc.number ArkUX_Select_Visual_0070
      *@tc.name   Support modifying the select optionWidth and optionHeight change of Select component
      *@tc.desc   Sets the optionWidth and optionHeight property parameter to default value
+     *@tc.size       : MediumTest
+     *@tc.type       : Function
+     *@tc.level      : Level 0  
      */
-    it('ArkUX_Select_Visual_0070', 0, async (done: Function) => {
+
+
+    it('ArkUX_Select_Visual_0070', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Select_Visual_0070 START');
       setTimeout(() => {
         try {
