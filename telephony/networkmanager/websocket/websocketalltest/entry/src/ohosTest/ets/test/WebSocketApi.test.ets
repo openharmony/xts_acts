@@ -89,7 +89,7 @@ let sendLongMessage: string = '创建要上传或下载的任务，并将其排�
   '创建要上传或下载的任务，并将其排入队列，每个应用最多支持创建10个未完成的任务。使用callback异步回调。'
 
 let ws: webSocket.WebSocket;
-let availableWebSocketAddress: string = 'wss://ws.welive.huawei.com/';
+let availableWebSocketAddress: string = 'ws://124.222.6.60:8800';
 
 export default function WebSocketApiTest() {
   describe('webSocketApiTest', () => {

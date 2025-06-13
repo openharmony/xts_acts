@@ -47,7 +47,7 @@ let options: webSocket.WebSocketRequestOptions = {
   }
 };
 let ws: webSocket.WebSocket;
-let availableWebSocketAddress: string = 'wss://ws.welive.huawei.com/';
+let availableWebSocketAddress: string = 'ws://124.222.6.60:8800';
 
 export default function WebSocketTest() {
   describe('webSocketTest', () => {
