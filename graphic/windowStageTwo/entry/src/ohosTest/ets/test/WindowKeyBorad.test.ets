@@ -45,20 +45,22 @@ export default function windowKeyBorad() {
       let mainWindow =  windowStage.getMainWindowSync();
       await mainWindow.setUIContent('testability/pages/WindowTest/KeyBoradTest');
       await sleep(1000);
-      let driver: Driver = Driver.create();
-      await sleep(1000);
-      let input = await driver.findComponent(ON.id('textInput'));
-      await sleep(1000);
-      await input.click();
-      await sleep(1000);
-      let text = await driver.findComponent(ON.text('下一步'));
-      await sleep(1000);
-      if (text) {
-        await text.click();
-      } else{
-        await driver.pressBack();
+      if (isPCStatus==''||isAutoWindow == 'false') {
+        let driver: Driver = Driver.create();
+        await sleep(1000);
+        let input = await driver.findComponent(ON.id('textInput'));
+        await sleep(1000);
+        await input.click();
+        await sleep(1000);
+        let text = await driver.findComponent(ON.text('下一步'));
+        await sleep(1000);
+        if (text) {
+          await text.click();
+        } else{
+          await driver.pressBack();
+        }
+        await sleep(1000);
       }
-      await sleep(1000);
     });
     beforeEach(() => {
     });
