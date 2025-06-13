@@ -66,6 +66,7 @@ export default function abilityWMSTest() {
     it('SUB_Ability_AbilityRuntime_AMS_AbilityWMS_0900', Level.LEVEL3, async (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_AMS_AbilityWMS_0900`;
       hilog.info(0x0000, 'testTag', '%{public}s', `${tag}, it begin`);
+      let result:boolean = false;
       try{
         let applicationContext = context.getApplicationContext();
         applicationContext.killAllProcesses();
@@ -75,6 +76,8 @@ export default function abilityWMSTest() {
         let code = (err as BusinessError).code;
         let message = (err as BusinessError).message;
         hilog.info(0x0000, 'testTag', '%{public}s', `applicationContext.killAllProcesses failed, error.code: ${code}, error.message: ${message}`);
+        expect().assertFail()
+        done();
       }
     });
   })

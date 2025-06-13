@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import abilityWMSTest from './abilityWms.test';
+import abilityWMSTest from './AbilityWms.test';
 
 export default function testsuite() {
   abilityWMSTest();
