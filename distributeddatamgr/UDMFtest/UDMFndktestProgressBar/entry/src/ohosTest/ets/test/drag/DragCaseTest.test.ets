@@ -100,7 +100,7 @@ export default function DragTest(){
       done();
     })
 
-    /*
+    /**
      * @tc.number     : SUB_UDMFndk_CASE_003
      * @tc.name       : UDMFCaseTest003
      * @tc.desc       : testing List maintainVisibleContentPosition
@@ -118,6 +118,96 @@ export default function DragTest(){
       await Utils.sleep(100);
       let dataArray: number[] = nativeRender.GetResult();
       console.log('UDMFCaseTest003', dataArray[0]);
+      expect( dataArray[0] == 0 ).assertEqual(true);
+      done();
+    })
+
+    /**
+     * @tc.number     : SUB_UDMFndk_CASE_004
+     * @tc.name       : UDMFCaseTest004
+     * @tc.desc       : testing List maintainVisibleContentPosition
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('SUB_UDMFndk_CASE_004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let driver = Driver.create();
+      let PAGE_TAG:string = 'ContentCardTest1';
+      await Utils.pushPage(`drag/${PAGE_TAG}`);
+      let button = await driver.findComponent(ON.id('card'));
+      await Utils.sleep(100);
+      await button?.click();
+      await Utils.sleep(10000);
+      let smallCard = await driver.findComponent(ON.id('smallCard'));
+      let strJson = getInspectorByKey('smallCard');
+      let obj: ESObject = JSON.parse(strJson);
+      expect( JSON.stringify(obj) != '').assertEqual(true);
+      done();
+    })
+    /**
+     * @tc.number     : SUB_UDMFndk_CASE_005
+     * @tc.name       : UDMFCaseTest005
+     * @tc.desc       : testing List maintainVisibleContentPosition
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('SUB_UDMFndk_CASE_005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let driver = Driver.create();
+      let PAGE_TAG:string = 'ContentCardTest2';
+      await Utils.pushPage(`drag/${PAGE_TAG}`);
+      let button = await driver.findComponent(ON.id('card'));
+      await Utils.sleep(100);
+      await button?.click();
+      await Utils.sleep(10000);
+      let midCard = await driver.findComponent(ON.id('midCard'));
+      let strJson = getInspectorByKey('midCard');
+      let obj: ESObject = JSON.parse(strJson);
+      expect( JSON.stringify(obj) != '').assertEqual(true);
+      done();
+    })
+    /**
+     * @tc.number     : SUB_UDMFndk_CASE_006
+     * @tc.name       : UDMFCaseTest006
+     * @tc.desc       : testing List maintainVisibleContentPosition
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('SUB_UDMFndk_CASE_006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let driver = Driver.create();
+      let PAGE_TAG:string = 'ContentCardTest3';
+      await Utils.pushPage(`drag/${PAGE_TAG}`);
+      let button = await driver.findComponent(ON.id('card'));
+      await Utils.sleep(100);
+      await button?.click();
+      await Utils.sleep(10000);
+      let bigCard = await driver.findComponent(ON.id('bigCard'));
+      let strJson = getInspectorByKey('bigCard');
+      let obj: ESObject = JSON.parse(strJson);
+      expect( JSON.stringify(obj) != '').assertEqual(true);
+      done();
+    })
+
+        /*
+     * @tc.number     : SUB_UDMFndk_CASE_002
+     * @tc.name       : 002
+     * @tc.desc       : testing List contentStartOffset And contentAndOffset
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('UDMFCaseTest004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let driver = Driver.create();
+      let PAGE_TAG:string = 'DragCaseTest4';
+      await Utils.pushPage(`drag/${PAGE_TAG}`);
+      await panAndPinchGesture('image');
+      await Utils.sleep(100);
+      let button = await driver.findComponent(ON.text('取消'));
+      await button?.click();
+      await Utils.sleep(100);
+      let dataArray: number[] = nativeRender.GetResult();
+      console.log('UDMFCaseTest004', dataArray[0]);
       expect( dataArray[0] == 0 ).assertEqual(true);
       done();
     })

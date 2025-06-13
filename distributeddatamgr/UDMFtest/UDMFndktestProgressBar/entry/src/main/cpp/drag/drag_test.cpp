@@ -159,6 +159,68 @@ static void OnEventReceive(ArkUI_NodeEvent* event)
     }
 }
 
+
+static void OnEventOnDrag1(ArkUI_DragEvent* dragEvent)
+{
+    const char* destUri = "file://com.example.sr20240506003108/data/storage/el2/distributedfiles/";
+    OH_Udmf_DataProgressListener dataProgressListener = [](OH_Udmf_ProgressInfo* progressInfo, OH_UdmfData* data) {
+        bool resultUdmf = OH_UdmfData_HasType(data, UDMF_META_GENERAL_FILE_URI);
+        if (resultUdmf) {
+            unsigned int recordsCount = 0;
+            OH_UdmfRecord** records = OH_UdmfData_GetRecords(data, &recordsCount);
+            int returnStatus;
+            for (int i = 0; i < recordsCount; i++) {
+                OH_UdsFileUri* imageValue = OH_UdsFileUri_Create();
+                returnStatus = OH_UdmfRecord_GetFileUri(records[i], imageValue);
+                const char* fileUri = OH_UdsFileUri_GetFileUri(imageValue);
+                OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "DragTest",
+                    "returnStatus = %{public}d"
+                    "fileUri = %{public}s",
+                    returnStatus, fileUri);
+                OH_UdsFileUri_Destroy(imageValue);
+            }
+        }
+        OH_UdmfProgressInfo_GetProgress(progressInfo);
+        OH_UdmfProgressInfo_GetStatus(progressInfo);
+    };
+    OH_UdmfDataLoadInfo *info2 = OH_UdmfDataLoadInfo_Create();
+    OH_UdmfDataLoadInfo_SetType(info2, "general.file");
+    OH_UdmfDataLoadInfo_SetRecordCount(info2, 100);
+    OH_UdmfGetDataParams* params = OH_UdmfGetDataParams_Create();
+    unsigned int keyLen = UDMF_KEY_BUFFER_LEN;
+    OH_UdmfGetDataParams_SetDestUri(params, destUri);
+    OH_UdmfGetDataParams_SetFileConflictOptions(params, Udmf_FileConflictOptions::UDMF_OVERWRITE);
+    OH_UdmfGetDataParams_SetProgressIndicator(params, Udmf_ProgressIndicator::UDMF_DEFAULT);
+    OH_UdmfGetDataParams_SetAcceptableInfo(params, info2);
+    OH_UdmfGetDataParams_SetDataProgressListener(params, dataProgressListener);
+
+    char* key = new char[keyLen];
+    int ret = OH_ArkUI_DragEvent_StartDataLoading(dragEvent, params, key, keyLen);
+
+    PushBackIntToData(DragTest::result, ret);
+    OH_UdmfGetDataParams_Destroy(params);
+}
+
+static void OnEventReceive1(ArkUI_NodeEvent* event)
+{
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DragTest", "OnEventReceive");
+    if (event == nullptr) {
+        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "DragTest", "OnEventReceive: event is null");
+        return;
+    }
+
+    auto eventId = OH_ArkUI_NodeEvent_GetEventType(event);
+    auto dragEvent = OH_ArkUI_NodeEvent_GetDragEvent(event);
+
+    if (eventId == NODE_ON_DRAG_START) {
+        OnEventDragStart(dragEvent);
+    }
+    if (eventId == NODE_ON_DROP) {
+        OnEventOnDrag1(dragEvent);
+    }
+}
+
+
 napi_value DragTest::TestDragStartDataLoading001(napi_env env, napi_callback_info info)
 {
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "startDataLoading", "CreateNativeNode");
@@ -281,6 +343,45 @@ napi_value DragTest::TestDragCancelDataLoading003(napi_env env, napi_callback_in
 
     return exports;
 }
+napi_value DragTest::TestDragDisableDropDataDelay004(napi_env env, napi_callback_info info)
+{
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DisableDropDataPrefetch", "CreateNativeNode");
+
+    size_t argc = 2;
+    napi_value args[2] = { nullptr };
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    size_t length = PARAM_64;
+    size_t strLength = PARAM_0;
+    char xComponentID[PARAM_64] = { PARAM_0 };
+    napi_get_value_string_utf8(env, args[PARAM_0], xComponentID, length, &strLength);
+
+    if ((env == nullptr) || (info == nullptr)) {
+        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "DisableDropDataPrefetch", "GetContext env or info is null");
+        return nullptr;
+    }
+
+    ArkUI_NativeNodeAPI_1* nodeAPI = nullptr;
+    OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI);
+
+    auto column = createColumn(false);
+
+    nodeAPI->registerNodeEventReceiver(&OnEventReceive1);
+
+    std::string id(xComponentID);
+    if (OH_NativeXComponent_AttachNativeRootNode(PluginManager::GetInstance()->GetNativeXComponent(id), column) ==
+        INVALID_PARAM) {
+        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "DisableDropDataPrefetch",
+            "OH_NativeXComponent_AttachNativeRootNode failed");
+    }
+
+    napi_value exports;
+    if (napi_create_object(env, &exports) != napi_ok) {
+        napi_throw_type_error(env, nullptr, "napi_create_object failed");
+        return nullptr;
+    }
+
+    return exports;
+}
 
 napi_value DragTest::GetResult(napi_env env, napi_callback_info info)
 {
@@ -291,4 +392,7 @@ napi_value DragTest::GetResult(napi_env env, napi_callback_info info)
     DragTest::result.clear();
     return result;
 }
+
+
+
 } // namespace ArkUICapiTest
