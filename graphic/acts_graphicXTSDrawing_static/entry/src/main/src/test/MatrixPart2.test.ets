@@ -63,7 +63,7 @@ export default function drawingTsMatrixPart2Test() {
         // widths = matrix.getAll();
         // expect(widths.length == 9).assertTrue();
         expect(matrix != null).assertTrue();
-        console.info(msg + ' reset successed,width:'+ widths.length + JSON.stringify(matrix));
+        // console.info(msg + ' reset successed,width:'+ widths.length + JSON.stringify(matrix));
       } catch (e: BusinessError) {
         console.info(msg + ` reset errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail()
