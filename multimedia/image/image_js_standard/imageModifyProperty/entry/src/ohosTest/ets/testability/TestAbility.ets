@@ -31,6 +31,10 @@ export default class TestAbility extends UIAbility {
         abilityDelegatorArguments = abilityDelegatorRegistry.getArguments();
         hilog.info(0x0000, 'testTag', '%{public}s', 'start run testcase!!!');
         Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
+        let pathDir: string = this.context.filesDir;
+        let writeDir: string = this.context.cacheDir;
+        AppStorage.setOrCreate<string>('pathDir', pathDir);
+        AppStorage.setOrCreate<string>('cacheDir', writeDir);
     }
 
     onDestroy() {
