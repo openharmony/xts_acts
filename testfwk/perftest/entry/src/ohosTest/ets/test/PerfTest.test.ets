@@ -16,7 +16,7 @@
 import { describe, beforeAll, it, expect, TestType, Level, Size } from '@ohos/hypium';
 import Want from '@ohos.app.ability.Want';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
-import { Driver, ON } from '@ohos.UiTest'
+import { Driver, ON, UiDirection } from '@ohos.UiTest'
 import { PerfMetric, PerfTest, PerfTestStrategy, PerfMeasureResult } from '@ohos.test.PerfTest';
 import { BusinessError, Callback } from '@kit.BasicServicesKit';
 import { PerfUtils } from '../../../main/ets/utils/PerfUtils';
@@ -70,7 +70,11 @@ export default function PerfTestTest() {
       let res4 = perfTest.getMeasureResult(PerfMetric.MEMORY_RSS)
       let res5 = perfTest.getMeasureResult(PerfMetric.MEMORY_PSS)
       perfTest.destroy()
+      expect(res1.metric).assertEqual(PerfMetric.DURATION)
       expect(res1.average).assertLargerOrEqual(0)
+      expect(res1.maximum).assertLargerOrEqual(0)
+      expect(res1.minimum).assertLargerOrEqual(0)
+      expect(res1.roundValues.length).assertLargerOrEqual(5)
       expect(res2.average).assertLargerOrEqual(0)
       expect(res3.average).assertLargerOrEqual(0)
       expect(res4.average).assertLargerOrEqual(0)
@@ -80,10 +84,10 @@ export default function PerfTestTest() {
 
     /*
      * @tc.number: perfTest_20002
-     * @tc.name: testPerfTestPageSwipe
+     * @tc.name: testPerfTestPageSwitch
      * @tc.desc: Test the performance of page swipe scenarios
      */
-    it('testPerfTestPageSwipe', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('testPerfTestPageSwitch', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       await startAbility('com.perftestScene.acts', 'EntryAbility');
       let driver = Driver.create()
       await driver.delayMs(3000)
@@ -160,5 +164,194 @@ export default function PerfTestTest() {
       expect(res1.average).assertLargerOrEqual(0)
       done()
     })
+
+    /*
+     * @tc.number: perfTest_20004
+     * @tc.name: testPerfTest_Keep
+     * @tc.desc: Test the performance of Page keep
+     */
+    it('testPerfTest_Keep', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      await startAbility('com.perftestScene.acts', 'EntryAbility');
+      console.info(`caniuse perftest = ${canIUse("SystemCapability.Test.PerfTest")}`)
+      let driver = Driver.create()
+      await driver.delayMs(3000)
+      let metrics: Array<PerfMetric> = [PerfMetric.DURATION, PerfMetric.MEMORY_RSS, PerfMetric.MEMORY_PSS]
+      let actionCode = async (finish: Callback<boolean>) => {
+        let driver = Driver.create()
+        await driver.delayMs(1000)
+        finish(true)
+      }
+      let perfTestStrategy: PerfTestStrategy = {
+        metrics: metrics,
+        actionCode: actionCode,
+        iterations: 5,
+        timeout: 50000,
+        bundleName: "com.perftestScene.acts"
+      }
+      let perfTest: PerfTest = PerfTest.create(perfTestStrategy)
+      await perfTest.run()
+      let res1 = perfTest.getMeasureResult(PerfMetric.DURATION)
+      let res4 = perfTest.getMeasureResult(PerfMetric.MEMORY_RSS)
+      let res5 = perfTest.getMeasureResult(PerfMetric.MEMORY_PSS)
+      perfTest.destroy()
+      await stopApplication('com.perftestScene.acts')
+      expect(res1.average).assertLargerOrEqual(0)
+      expect(res4.average).assertLargerOrEqual(0)
+      expect(res5.average).assertLargerOrEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number: perfTest_20005
+     * @tc.name: testPerfTest_Navigationchange
+     * @tc.desc: Test the performance of Page switching(Navigation)
+     */
+    it('testPerfTest_Navigationchange', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      await startAbility('com.perftestScene.acts', 'EntryAbility');
+      console.info(`caniuse perftest = ${canIUse("SystemCapability.Test.PerfTest")}`)
+      let driver = Driver.create()
+      await driver.delayMs(3000)
+      let textCom = await driver.findComponent(ON.text('navigation'))
+      await driver.delayMs(1000)
+      let center = await textCom.getBoundsCenter()
+      await driver.delayMs(1000)
+      await driver.click(center.x, center.y)
+      await driver.delayMs(1000)
+      let metrics: Array<PerfMetric> = [PerfMetric.DURATION, PerfMetric.MEMORY_RSS, PerfMetric.MEMORY_PSS, PerfMetric.PAGE_SWITCH_COMPLETE_TIME]
+      let actionCode = async (finish: Callback<boolean>) => {
+        let driver = Driver.create()
+        await driver.delayMs(1000)
+        let textCom1 = await driver.findComponent(ON.text('push Page01'))
+        await driver.delayMs(1000)
+        let center1 = await textCom1.getBoundsCenter()
+        await driver.delayMs(1000)
+        await driver.click(center1.x, center1.y)
+        await driver.delayMs(1000)
+        finish(true)
+      }
+      let resetCode = async (finish: Callback<boolean>) => {
+        let driver = Driver.create()
+        await driver.delayMs(1000)
+        await driver.pressBack()
+        await driver.delayMs(1000)
+        finish(true)
+      }
+      let perfTestStrategy: PerfTestStrategy = {
+        metrics: metrics,
+        actionCode: actionCode,
+        iterations: 5,
+        resetCode: resetCode,
+        timeout: 50000,
+        bundleName: "com.perftestScene.acts"
+      }
+      let perfTest: PerfTest = PerfTest.create(perfTestStrategy)
+      await perfTest.run()
+      console.info(`testPerfTest_Navigationchange run over!!!!!!!!`)
+      let res1 = perfTest.getMeasureResult(PerfMetric.DURATION)
+      let res4 = perfTest.getMeasureResult(PerfMetric.MEMORY_RSS)
+      let res5 = perfTest.getMeasureResult(PerfMetric.MEMORY_PSS)
+      let res6 = perfTest.getMeasureResult(PerfMetric.PAGE_SWITCH_COMPLETE_TIME)
+      perfTest.destroy()
+      await stopApplication('com.perftestScene.acts')
+      expect(res1.average).assertLargerOrEqual(0)
+      expect(res4.average).assertLargerOrEqual(0)
+      expect(res5.average).assertLargerOrEqual(0)
+      expect(res6.average).assertLargerOrEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number: perfTest_20007
+     * @tc.name: testPerfTest_Start
+     * @tc.desc: Test the performance of App launch
+     */
+    it('testPerfTest_Start', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      console.info(`caniuse perftest = ${canIUse("SystemCapability.Test.PerfTest")}`)
+      let driver = Driver.create()
+      await driver.delayMs(3000)
+      await driver.pressHome()
+      await driver.delayMs(1000)
+      let btn1 = await driver.findComponent(ON.text('PerftestScene'))
+      let num = 0;
+      while (btn1 == null && num < 3) {
+        await driver.fling(UiDirection.RIGHT, 2000)
+		await driver.delayMs(1000)
+        num += 1
+        btn1 = await driver.findComponent(ON.text('PerftestScene'))
+      }
+      if (btn1 == null) {
+        done()
+        return
+      }
+      let metrics: Array<PerfMetric> = [PerfMetric.DURATION, PerfMetric.APP_START_RESPONSE_TIME, PerfMetric.APP_START_COMPLETE_TIME]
+      let actionCode = async (finish: Callback<boolean>) => {
+        await btn1.click()
+        await driver.delayMs(1000)
+        finish(true)
+      }
+      let resetCode = async (finish: Callback<boolean>) => {
+        let driver = Driver.create()
+        await driver.delayMs(1000)
+        await stopApplication('com.perftestScene.acts')
+        await driver.delayMs(1000)
+        finish(true)
+      }
+      let perfTestStrategy: PerfTestStrategy = {
+        metrics: metrics,
+        actionCode: actionCode,
+        resetCode: resetCode,
+        timeout: 50000,
+        iterations: 5,
+        bundleName: "com.perftestScene.acts"
+      }
+      let perfTest: PerfTest = PerfTest.create(perfTestStrategy)
+      await perfTest.run()
+      console.info(`testPerfTest_start run over!!!!!!!!`)
+      let res1 = perfTest.getMeasureResult(PerfMetric.DURATION)
+      let res6 = perfTest.getMeasureResult(PerfMetric.APP_START_RESPONSE_TIME)
+      let res7 = perfTest.getMeasureResult(PerfMetric.APP_START_COMPLETE_TIME)
+      perfTest.destroy()
+      await stopApplication('com.perftestScene.acts')
+      expect(res1.average).assertLargerOrEqual(0)
+      expect(res6.average).assertLargerOrEqual(0)
+      expect(res7.average).assertLargerOrEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number: perfTest_20009
+     * @tc.name: testPerfTest_ActionCodenull
+     * @tc.desc: Test the performance of the ActionCodenull
+     */
+    it('testPerfTest_ActionCodenull', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      console.info(`caniuse perftest = ${canIUse("SystemCapability.Test.PerfTest")}`)
+      let driver = Driver.create()
+      await driver.delayMs(3000)
+      let metrics: Array<PerfMetric> = [PerfMetric.DURATION, PerfMetric.MEMORY_RSS, PerfMetric.MEMORY_PSS]
+      let actionCode = async (finish: Callback<boolean>) => {
+        finish(true)
+      }
+      let resetCode = async (finish: Callback<boolean>) => {
+        finish(true)
+      }
+      let perfTestStrategy: PerfTestStrategy = {
+        metrics: metrics,
+        actionCode: actionCode,
+        resetCode: resetCode,
+        timeout: 50000,
+        iterations: 5,
+      }
+      let perfTest: PerfTest = PerfTest.create(perfTestStrategy)
+      await perfTest.run()
+      let res1 = perfTest.getMeasureResult(PerfMetric.DURATION)
+      let res4 = perfTest.getMeasureResult(PerfMetric.MEMORY_RSS)
+      let res5 = perfTest.getMeasureResult(PerfMetric.MEMORY_PSS)
+      perfTest.destroy()
+      expect(res1.average).assertLargerOrEqual(0)
+      expect(res4.average).assertLargerOrEqual(0)
+      expect(res5.average).assertLargerOrEqual(0)
+      done()
+    })
+
   })
 }
