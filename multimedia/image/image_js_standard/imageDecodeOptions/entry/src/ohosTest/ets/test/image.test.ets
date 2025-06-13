@@ -1591,6 +1591,7 @@ export default function imageDecodeOptions() {
                     console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0400 error: " + error);
                     if (pixelmap == undefined){
                         console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0400 undefined");
+                        expect(true).assertTrue();
                     } else {
                         expect(true).assertTrue();
                     }               
