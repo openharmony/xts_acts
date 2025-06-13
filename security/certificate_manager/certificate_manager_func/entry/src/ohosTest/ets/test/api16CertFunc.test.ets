@@ -970,7 +970,7 @@ export default function api16CertFuncTestUnit() {
 
         /**
      * @tc.number SUB_Security_CertManager_getCertificateStorePath_0154
-     * @tc.name getCertificateStorePath
+     * @tc.name getCertificateStorePathApi18
      * @tc.desc abnormal test
      * @tc.size SmallTest
      * @tc.level Level3
