@@ -752,7 +752,7 @@ static napi_value OH_UdmfOptions_GetKey_002(napi_env env, napi_callback_info inf
 {
     OH_UdmfOptions* options = OH_UdmfOptions_Create();
     const char* getKey = OH_UdmfOptions_GetKey(options);
-    NAPI_ASSERT(env,strcmp(getKey, "") == 0 , "OH_UdmfOptions_GetKey is fail.");
+    NAPI_ASSERT(env, strcmp(getKey, "") == 0 , "OH_UdmfOptions_GetKey is fail.");
     napi_value res;
     napi_create_int32(env, 1, &res);
     return res;
@@ -767,7 +767,7 @@ static napi_value OH_UdmfOptions_GetKey_003(napi_env env, napi_callback_info inf
     NAPI_ASSERT(env, strcmp(getKey, "testKey") == 0, "OH_UdmfOptions_GetKey is fail.");
     OH_UdmfOptions_Destroy(options);
     napi_value res;
-    napi_create_int32(env, 1, &res);  
+    napi_create_int32(env, 1, &res);
     return res;
 }
 
@@ -1048,7 +1048,7 @@ static napi_value OH_Udmf_GetUnifiedDataByOptions_001(napi_env env, napi_callbac
     NAPI_ASSERT(env, getRes == UDMF_E_OK, "OH_UdmfOptions_Reset is fail.");
     unsigned int dataSize2 = 0;
     OH_UdmfData* dataArray2 = nullptr;
-    OH_Udmf_DeleteUnifiedData(options1, &dataArray2, &dataSize2);   
+    OH_Udmf_DeleteUnifiedData(options1, &dataArray2, &dataSize2);
     napi_value res;
     napi_create_int32(env, 1, &res);
     OH_Udmf_DestroyDataArray(&dataArray1, dataSize1);
@@ -1081,7 +1081,7 @@ static napi_value OH_Udmf_GetUnifiedDataByOptions_002(napi_env env, napi_callbac
     NAPI_ASSERT(env, getRes == UDMF_E_INVALID_PARAM, "OH_UdmfOptions_Reset is fail.");
     unsigned int dataSize2 = 0;
     OH_UdmfData* dataArray2 = nullptr;
-    OH_Udmf_DeleteUnifiedData(options, &dataArray2, &dataSize2);   
+    OH_Udmf_DeleteUnifiedData(options, &dataArray2, &dataSize2);
     napi_value res;
     napi_create_int32(env, 1, &res);
     OH_Udmf_DestroyDataArray(&dataArray1, dataSize1);
@@ -1385,7 +1385,7 @@ static napi_value OH_Udmf_SetUnifiedDataByOptions_004(napi_env env, napi_callbac
     napi_value res;
     napi_create_int32(env, setRes == UDMF_E_INVALID_PARAM, &res);
     return res;
-} 
+}
 
 static napi_value OH_Udmf_SetUnifiedDataByOptions_005(napi_env env, napi_callback_info info)
 {
@@ -2246,7 +2246,7 @@ static napi_value OH_Udmf_DeleteUnifiedData_006(napi_env env, napi_callback_info
     int dateleRes = OH_Udmf_DeleteUnifiedData(options, &dataArray, &dataSize);
     NAPI_ASSERT(env, dateleRes == UDMF_E_OK, "OH_Udmf_DeleteUnifiedData is fail.");
     NAPI_ASSERT(env, dataArray != nullptr, "OH_Udmf_DeleteUnifiedData is fail.");
-    OH_Udmf_DestroyDataArray(&dataArray, dataSize); 
+    OH_Udmf_DestroyDataArray(&dataArray, dataSize);
     OH_UdsFileUri_Destroy(fileUri);
     OH_UdmfRecord_Destroy(record);
     OH_UdmfData_Destroy(udmfUnifiedData);
@@ -2394,8 +2394,9 @@ static napi_value OH_Udmf_DestroyDataArray_004(napi_env env, napi_callback_info 
     Udmf_Intention testIntention = UDMF_INTENTION_DATA_HUB;
     OH_UdmfOptions_SetIntention(options, testIntention);
     char key[UDMF_KEY_BUFFER_LEN];
-    for (int i = 0; i < 10; i++) {
-      OH_Udmf_SetUnifiedDataByOptions(options, udmfUnifiedData, key, UDMF_KEY_BUFFER_LEN);
+    int num = 10;
+    for (int i = 0; i < num; i++) {
+        OH_Udmf_SetUnifiedDataByOptions(options, udmfUnifiedData, key, UDMF_KEY_BUFFER_LEN);
     }
     unsigned int dataSize = 0;
     OH_UdmfData* dataArray = nullptr;
@@ -2427,8 +2428,9 @@ static napi_value OH_Udmf_DestroyDataArray_005(napi_env env, napi_callback_info 
     Udmf_Intention testIntention = UDMF_INTENTION_DATA_HUB;
     OH_UdmfOptions_SetIntention(options, testIntention);
     char key[UDMF_KEY_BUFFER_LEN];
-    for (int i = 0; i < 10; i++) {
-      OH_Udmf_SetUnifiedDataByOptions(options, udmfUnifiedData, key, UDMF_KEY_BUFFER_LEN);
+    int num = 10;
+    for (int i = 0; i < num; i++) {
+        OH_Udmf_SetUnifiedDataByOptions(options, udmfUnifiedData, key, UDMF_KEY_BUFFER_LEN);
     }
     unsigned int dataSize = 0;
     OH_UdmfData* dataArray = nullptr;
@@ -2481,8 +2483,8 @@ static napi_value OH_UdmfData_CreateAndGetUnifiedDataByOptions_001(napi_env env,
     size_t bufferSize = 0;
     napi_get_value_string_latin1(env, args[0], nullptr, 0, &bufferSize);
     char str[bufferSize + 1];
-    size_t str_length;
-    napi_get_value_string_utf8(env, args[0], str, sizeof(str), &str_length);
+    size_t strLength;
+    napi_get_value_string_utf8(env, args[0], str, sizeof(str), &strLength);
     OH_UdmfOptions* options = OH_UdmfOptions_Create();
     int result = OH_UdmfOptions_SetKey(options, str);
     NAPI_ASSERT(env, result == UDMF_E_OK, "OH_Udmf_GetUnifiedDataByOptions is fail.");
@@ -2511,7 +2513,7 @@ static napi_value OH_UdmfDataLoadParams_Create001(napi_env env, napi_callback_in
 
 static napi_value OH_UdmfDataLoadParams_Create002(napi_env env, napi_callback_info info)
 {
-    OH_UdmfDataLoadParams*  dataLoadParams = OH_UdmfDataLoadParams_Create(); 
+    OH_UdmfDataLoadParams*  dataLoadParams = OH_UdmfDataLoadParams_Create();
     napi_value result;
     napi_create_int32(env, dataLoadParams != nullptr, &result);
     OH_UdmfDataLoadParams_Destroy(dataLoadParams);
@@ -2520,7 +2522,7 @@ static napi_value OH_UdmfDataLoadParams_Create002(napi_env env, napi_callback_in
 
 static napi_value OH_UdmfDataLoadInfo_Create001(napi_env env, napi_callback_info info)
 {
-    OH_UdmfDataLoadInfo*  dataLoadInfo= OH_UdmfDataLoadInfo_Create();
+    OH_UdmfDataLoadInfo*  dataLoadInfo = OH_UdmfDataLoadInfo_Create();
     napi_value result;
     napi_create_int32(env, dataLoadInfo != nullptr, &result);
     OH_UdmfDataLoadInfo_Destroy(dataLoadInfo);
@@ -2529,14 +2531,15 @@ static napi_value OH_UdmfDataLoadInfo_Create001(napi_env env, napi_callback_info
 
 static napi_value OH_UdmfDataLoadInfo_SetTypeAndGetTypes001(napi_env env, napi_callback_info info)
 {
-    OH_UdmfDataLoadInfo*  dataLoadInfo= OH_UdmfDataLoadInfo_Create();
+    OH_UdmfDataLoadInfo*  dataLoadInfo = OH_UdmfDataLoadInfo_Create();
     OH_UdmfDataLoadInfo_SetType(dataLoadInfo, "image");
     OH_UdmfDataLoadInfo_SetType(dataLoadInfo, "text");
     OH_UdmfDataLoadInfo_SetType(dataLoadInfo, "text"); 
     unsigned int count = 0;
     OH_UdmfDataLoadInfo_GetTypes(dataLoadInfo, &count);
+    int num = 2;
     napi_value result;
-    napi_create_int32(env, count == 2, &result);
+    napi_create_int32(env, count == num, &result);
     OH_UdmfDataLoadInfo_Destroy(dataLoadInfo);
     return result;
 }
@@ -2585,7 +2588,7 @@ static napi_value OH_UdmfDataLoadInfo_GetTypes002(napi_env env, napi_callback_in
 
 static napi_value OH_UdmfDataLoadInfo_SetRecordCountAndGetRecordCount001(napi_env env, napi_callback_info info)
 {
-    OH_UdmfDataLoadInfo*  dataLoadInfo= OH_UdmfDataLoadInfo_Create();
+    OH_UdmfDataLoadInfo*  dataLoadInfo = OH_UdmfDataLoadInfo_Create();
     int num = 10;
     OH_UdmfDataLoadInfo_SetRecordCount(dataLoadInfo, num);
     int count = OH_UdmfDataLoadInfo_GetRecordCount(dataLoadInfo);
@@ -2597,7 +2600,7 @@ static napi_value OH_UdmfDataLoadInfo_SetRecordCountAndGetRecordCount001(napi_en
 
 static napi_value OH_UdmfDataLoadInfo_SetRecordCountAndGetRecordCount002(napi_env env, napi_callback_info info)
 {
-    OH_UdmfDataLoadInfo*  dataLoadInfo= OH_UdmfDataLoadInfo_Create();
+    OH_UdmfDataLoadInfo*  dataLoadInfo = OH_UdmfDataLoadInfo_Create();
     OH_UdmfDataLoadInfo_SetRecordCount(dataLoadInfo, 1);
     int count = OH_UdmfDataLoadInfo_GetRecordCount(dataLoadInfo);
     napi_value result;
@@ -2608,7 +2611,7 @@ static napi_value OH_UdmfDataLoadInfo_SetRecordCountAndGetRecordCount002(napi_en
 
 static napi_value OH_UdmfDataLoadInfo_SetRecordCountAndGetRecordCount003(napi_env env, napi_callback_info info)
 {
-    OH_UdmfDataLoadInfo*  dataLoadInfo= OH_UdmfDataLoadInfo_Create();
+    OH_UdmfDataLoadInfo*  dataLoadInfo = OH_UdmfDataLoadInfo_Create();
     OH_UdmfDataLoadInfo_SetRecordCount(dataLoadInfo, 0);
     int count = OH_UdmfDataLoadInfo_GetRecordCount(dataLoadInfo);
     napi_value result;
@@ -2619,7 +2622,7 @@ static napi_value OH_UdmfDataLoadInfo_SetRecordCountAndGetRecordCount003(napi_en
 
 static napi_value OH_UdmfDataLoadInfo_SetRecordCountAndGetRecordCount004(napi_env env, napi_callback_info info)
 {
-    OH_UdmfDataLoadInfo*  dataLoadInfo= OH_UdmfDataLoadInfo_Create();
+    OH_UdmfDataLoadInfo*  dataLoadInfo = OH_UdmfDataLoadInfo_Create();
     OH_UdmfDataLoadInfo_SetRecordCount(dataLoadInfo, -1);
     int count = OH_UdmfDataLoadInfo_GetRecordCount(dataLoadInfo);
     napi_value result;
@@ -2640,11 +2643,11 @@ static napi_value OH_UdmfDataLoadParams_SetDataLoadInfo001(napi_env env, napi_ca
 {
     int code = 0;
     OH_UdmfDataLoadParams*  dataLoadParams = OH_UdmfDataLoadParams_Create();
-    OH_UdmfDataLoadInfo*  dataLoadInfo= OH_UdmfDataLoadInfo_Create();
+    OH_UdmfDataLoadInfo*  dataLoadInfo = OH_UdmfDataLoadInfo_Create();
     OH_UdmfDataLoadInfo_SetType(dataLoadInfo, "general.plain-text");
     OH_UdmfDataLoadInfo_SetType(dataLoadInfo, "general.html");
     int num = 2
-    OH_UdmfDataLoadInfo_SetRecordCount(dataLoadInfo,num);
+    OH_UdmfDataLoadInfo_SetRecordCount(dataLoadInfo, num);
     OH_UdmfDataLoadParams_SetDataLoadInfo(dataLoadParams, dataLoadInfo);
     int count = OH_UdmfDataLoadInfo_GetRecordCount(dataLoadInfo);
     napi_value result;

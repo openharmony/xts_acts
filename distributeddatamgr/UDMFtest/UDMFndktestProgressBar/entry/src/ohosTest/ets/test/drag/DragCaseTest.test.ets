@@ -56,7 +56,7 @@ export default function DragTest(){
     })
     /*
      * @tc.number     : SUB_UDMFndk_CASE_001
-     * @tc.name       : UDMFCaseTest001
+     * @tc.name       : 001
      * @tc.desc       : testing List lanes
      * @tc.size       : MediumTest
      * @tc.type       : Function
@@ -79,7 +79,7 @@ export default function DragTest(){
 
     /*
      * @tc.number     : SUB_UDMFndk_CASE_002
-     * @tc.name       : 0UDMFCaseTest002
+     * @tc.name       : 002
      * @tc.desc       : testing List contentStartOffset And contentAndOffset
      * @tc.size       : MediumTest
      * @tc.type       : Function
@@ -102,7 +102,7 @@ export default function DragTest(){
 
     /**
      * @tc.number     : SUB_UDMFndk_CASE_003
-     * @tc.name       : UDMFCaseTest003
+     * @tc.name       : 003
      * @tc.desc       : testing List maintainVisibleContentPosition
      * @tc.size       : MediumTest
      * @tc.type       : Function
@@ -124,7 +124,7 @@ export default function DragTest(){
 
     /**
      * @tc.number     : SUB_UDMFndk_CASE_004
-     * @tc.name       : UDMFCaseTest004
+     * @tc.name       : 004
      * @tc.desc       : testing List maintainVisibleContentPosition
      * @tc.size       : MediumTest
      * @tc.type       : Function
@@ -146,7 +146,7 @@ export default function DragTest(){
     })
     /**
      * @tc.number     : SUB_UDMFndk_CASE_005
-     * @tc.name       : UDMFCaseTest005
+     * @tc.name       : 005
      * @tc.desc       : testing List maintainVisibleContentPosition
      * @tc.size       : MediumTest
      * @tc.type       : Function
@@ -168,7 +168,7 @@ export default function DragTest(){
     })
     /**
      * @tc.number     : SUB_UDMFndk_CASE_006
-     * @tc.name       : UDMFCaseTest006
+     * @tc.name       : 006
      * @tc.desc       : testing List maintainVisibleContentPosition
      * @tc.size       : MediumTest
      * @tc.type       : Function
@@ -191,7 +191,7 @@ export default function DragTest(){
 
     /*
      * @tc.number     : SUB_UDMFndk_CASE_07
-     * @tc.name       : UDMFCaseTest007
+     * @tc.name       : UDMF007
      * @tc.desc       : testing List contentStartOffset And contentAndOffset
      * @tc.size       : MediumTest
      * @tc.type       : Function
