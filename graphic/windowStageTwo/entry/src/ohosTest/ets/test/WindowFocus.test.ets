@@ -108,6 +108,7 @@ export default function windowFocusTest() {
         console.log(msg + 'windowHighlightChange, isBool = ' + isBool)
         if (isBool) {
           count++;
+          console.log(msg + 'windowHighlightChange, count = ' + count);
         }
       }
       try {
@@ -116,14 +117,17 @@ export default function windowFocusTest() {
 
         let win1 = await windowStage.createSubWindow('win1');
         await win1.setUIContent('testability/pages/Index');
+        console.log(msg + 'getWindowLimits, minWidth = ' + win1.getWindowLimits().minWidth+' , minHeight:'+win1.getWindowLimits().minHeight);
         await win1.resize(win1.getWindowLimits().minWidth ?? 0 + 100, win1.getWindowLimits().minHeight ?? 0 + 100)
 
         await win1.showWindow()
         await sleep(500)
+        console.log(msg + '1 count = ' + count);
         expect(count == 0).assertTrue()
 
         await win1.destroyWindow()
         await sleep(300)
+        console.log(msg + '2 count = ' + count);
         expect(count == 1).assertTrue()
 
         windowClass.off('windowHighlightChange')
