@@ -56,8 +56,6 @@ export default function windowKeyBorad() {
         await sleep(1000);
         if (text) {
           await text.click();
-        } else{
-          await driver.pressBack();
         }
         await sleep(1000);
       }
