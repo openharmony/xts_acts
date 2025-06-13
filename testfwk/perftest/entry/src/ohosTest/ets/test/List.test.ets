@@ -14,6 +14,8 @@
  */
 
 import PerfTestTest from './PerfTest.test';
+import perfTestErrorTest from './PerfTestErrorCode.test'
 export default function testsuite() {
   PerfTestTest()
+  perfTestErrorTest()
 }
