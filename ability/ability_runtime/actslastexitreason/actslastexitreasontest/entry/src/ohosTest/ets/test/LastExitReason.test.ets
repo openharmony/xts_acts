@@ -59,12 +59,6 @@ export default function lastExitReasonTest() {
       try {
         await startRely1();
         await sleep(1000);
-        let button = await driver.waitForComponent(ON.text(jsCrashText), 3000);
-        await sleep(100);
-        expect(button != null).assertTrue();
-        await button.click();
-        await sleep(1000);
-
         let subscribeInfo: CommonEventManager.CommonEventSubscribeInfo = {
           events: [event1]
         };
@@ -87,6 +81,11 @@ export default function lastExitReasonTest() {
         }
         CommonEventManager.subscribe(subscriber, subscribeCB);
         await sleep(500);
+        let button = await driver.waitForComponent(ON.text(jsCrashText), 3000);
+        await sleep(100);
+        expect(button != null).assertTrue();
+        await button.click();
+        await sleep(1000);
         await startRely1();
       } catch (err) {
         console.error(`${tag} error, errorCode: ${JSON.stringify(err)}`);
@@ -107,16 +106,9 @@ export default function lastExitReasonTest() {
     it('SUB_Ability_AbilityRuntime_FaultManagement_7800', Level.LEVEL0, async (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_FaultManagement_7800`;
       console.log(`${tag}, it begin`);
-
       try {
         await startRely1();
         await sleep(1000);
-        let button = await driver.waitForComponent(ON.text('TerminateSelf'), 3000);
-        await sleep(100);
-        expect(button != null).assertTrue();
-        await button.click();
-        await sleep(1000);
-
         let subscribeInfo: CommonEventManager.CommonEventSubscribeInfo = {
           events: [event1]
         };
@@ -139,6 +131,11 @@ export default function lastExitReasonTest() {
         }
         CommonEventManager.subscribe(subscriber, subscribeCB);
         await sleep(500);
+        let button = await driver.waitForComponent(ON.text('TerminateSelf'), 3000);
+        await sleep(100);
+        expect(button != null).assertTrue();
+        await button.click();
+        await sleep(1000);
         await startRely1();
       } catch (err) {
         console.error(`${tag} error, errorCode: ${JSON.stringify(err)}`);
@@ -162,9 +159,7 @@ export default function lastExitReasonTest() {
       try {
         await startRely1();
         await sleep(1000);
-        await abilityDelegator.executeShellCommand("aa force-stop com.acts.lastexitreasonrely1");
-        await sleep(1000);
-
+        
         let subscribeInfo: CommonEventManager.CommonEventSubscribeInfo = {
           events: [event1]
         };
@@ -187,6 +182,8 @@ export default function lastExitReasonTest() {
         }
         CommonEventManager.subscribe(subscriber, subscribeCB);
         await sleep(500);
+        await abilityDelegator.executeShellCommand("aa force-stop com.acts.lastexitreasonrely1");
+        await sleep(1000);
         await startRely1();
       } catch (err) {
         console.error(`${tag} error, errorCode: ${JSON.stringify(err)}`);
@@ -217,12 +214,6 @@ export default function lastExitReasonTest() {
         expect(button != null).assertTrue();
         await button.click();
         await sleep(1000);
-
-        button = await driver.waitForComponent(ON.text('Second Js Crash'), 3000);
-        expect(button != null).assertTrue();
-        await button.click();
-        await sleep(1000);
-
         let subscribeInfo: CommonEventManager.CommonEventSubscribeInfo = {
           events: [event1, event2, event3]
         };
@@ -255,6 +246,10 @@ export default function lastExitReasonTest() {
         }
         CommonEventManager.subscribe(subscriber, subscribeCB);
         await sleep(500);
+        button = await driver.waitForComponent(ON.text('Second Js Crash'), 3000);
+        expect(button != null).assertTrue();
+        await button.click();
+        await sleep(1000);
 
         await startRely1();
         await sleep(1000);
@@ -291,9 +286,6 @@ export default function lastExitReasonTest() {
       try {
         await startRely1();
         await sleep(1000);
-        await abilityDelegator.executeShellCommand("aa force-stop com.acts.lastexitreasonrely1");
-        await sleep(1000);
-
         let subscribeInfo: CommonEventManager.CommonEventSubscribeInfo = {
           events: [event1]
         };
@@ -325,6 +317,8 @@ export default function lastExitReasonTest() {
         }
         CommonEventManager.subscribe(subscriber, subscribeCB);
         await sleep(500);
+        await abilityDelegator.executeShellCommand("aa force-stop com.acts.lastexitreasonrely1");
+        await sleep(1000);
         await startRely1();
       } catch (err) {
         console.error(`${tag} error, errorCode: ${JSON.stringify(err)}`);

@@ -188,7 +188,15 @@ export default class EntryAbility extends UIAbility {
     applicationContext = this.context.getApplicationContext();
     applicationTempDir = applicationContext.tempDir;
   }
-
+  onNewWant(want): void {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onNewWant');
+    actionStr = want.parameters.key;
+    tempDir = this.context.tempDir;
+    currentContext = this.context;
+    applicationContext = this.context.getApplicationContext();
+    applicationTempDir = applicationContext.tempDir;
+    onForegroundInner(actionStr);
+  }
   onDestroy(): void {
     hilog.info(0x0000, 'EntryAbility', '%{public}s', 'Ability onDestroy');
   }
