@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 import menuSubMenuExpandSymbolTest from './MenuTest/subMenuExpandSymbol.test';
+import ratingStarStyle from './RatingTest/ratingStarStyle.test';
 
 export default function testsuite() {
   menuSubMenuExpandSymbolTest()
+  ratingStarStyle();
 }
