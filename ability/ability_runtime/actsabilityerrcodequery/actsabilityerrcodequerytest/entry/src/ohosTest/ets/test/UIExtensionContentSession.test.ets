@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, Level } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, Level, expect } from '@ohos/hypium';
 import { commonEventManager, systemParameterEnhance } from '@kit.BasicServicesKit';
 import base, { BusinessError } from '@ohos.base';
 import { abilityAccessCtrl, common } from '@kit.AbilityKit';
@@ -59,8 +59,8 @@ export default function UIExtensionContentSessionTest() {
 
     /*
      * @tc.number : Sub_UIExtensionContentSession_errorCode_0100
-     * @tc.name   : session.loadContent
-     * @tc.desc   : Function test
+     * @tc.name   : Sub_UIExtensionContentSession_errorCode_0100
+     * @tc.desc   : session.loadContent
      * @tc.size:   MediumTest
      * @tc.type:   Function
      * @tc.level  : 0
@@ -73,6 +73,7 @@ export default function UIExtensionContentSessionTest() {
           let unSubscribeCallback = () => {
             setTimeout(async () => {
               console.info(`====>${tag} unSubscribeCallback`);
+              expect(globalThis.errCode).assertEqual(401)
               done();
             }, 1000);
           }
@@ -106,8 +107,8 @@ export default function UIExtensionContentSessionTest() {
 
     /*
      * @tc.number : Sub_UIExtensionContentSession_errorCode_0200
-     * @tc.name   : session.loadContentByName
-     * @tc.desc   : Function test
+     * @tc.name   : Sub_UIExtensionContentSession_errorCode_0200
+     * @tc.desc   : session.loadContentByName
      * @tc.size:   MediumTest
      * @tc.type:   Function
      * @tc.level  : 0
@@ -120,6 +121,7 @@ export default function UIExtensionContentSessionTest() {
           let unSubscribeCallback = () => {
             setTimeout(async () => {
               console.info(`====>${tag} unSubscribeCallback`);
+              expect(globalThis.errCode).assertEqual(401)
               done();
             }, 1000);
           }
@@ -153,8 +155,8 @@ export default function UIExtensionContentSessionTest() {
 
     /*
      * @tc.number : Sub_UIExtensionContentSession_errorCode_0300
-     * @tc.name   : session.terminateSelfWithResult callback
-     * @tc.desc   : Function test
+     * @tc.name   : Sub_UIExtensionContentSession_errorCode_0300
+     * @tc.desc   : session.terminateSelfWithResult callback
      * @tc.size:   MediumTest
      * @tc.type:   Function
      * @tc.level  : 0
@@ -167,6 +169,7 @@ export default function UIExtensionContentSessionTest() {
           let unSubscribeCallback = () => {
             setTimeout(async () => {
               console.info(`====>${tag} unSubscribeCallback`);
+              expect(globalThis.errCode).assertEqual(401)
               done();
             }, 1000);
           }
@@ -200,8 +203,8 @@ export default function UIExtensionContentSessionTest() {
 
     /*
      * @tc.number : Sub_UIExtensionContentSession_errorCode_0400
-     * @tc.name   : session.terminateSelfWithResult promise
-     * @tc.desc   : Function test
+     * @tc.name   : Sub_UIExtensionContentSession_errorCode_0400
+     * @tc.desc   : session.terminateSelfWithResult promise
      * @tc.size:   MediumTest
      * @tc.type:   Function
      * @tc.level  : 0
@@ -214,6 +217,7 @@ export default function UIExtensionContentSessionTest() {
           let unSubscribeCallback = () => {
             setTimeout(async () => {
               console.info(`====>${tag} unSubscribeCallback`);
+              expect(globalThis.errCode).assertEqual(401)
               done();
             }, 1000);
           }
@@ -247,8 +251,8 @@ export default function UIExtensionContentSessionTest() {
 
     /*
      * @tc.number : Sub_UIExtensionContentSession_errorCode_0500
-     * @tc.name   : session.setWindowPrivacyMode promise
-     * @tc.desc   : Function test
+     * @tc.name   : Sub_UIExtensionContentSession_errorCode_0500
+     * @tc.desc   : session.setWindowPrivacyMode promise
      * @tc.size:   MediumTest
      * @tc.type:   Function
      * @tc.level  : 0
@@ -261,6 +265,7 @@ export default function UIExtensionContentSessionTest() {
           let unSubscribeCallback = () => {
             setTimeout(async () => {
               console.info(`====>${tag} unSubscribeCallback`);
+              expect(globalThis.errCode).assertEqual(401)
               done();
             }, 1000);
           }
@@ -294,8 +299,8 @@ export default function UIExtensionContentSessionTest() {
 
     /*
      * @tc.number : Sub_UIExtensionContentSession_errorCode_0600
-     * @tc.name   : session.setWindowPrivacyMode callback
-     * @tc.desc   : Function test
+     * @tc.name   : Sub_UIExtensionContentSession_errorCode_0600
+     * @tc.desc   : session.setWindowPrivacyMode callback
      * @tc.size:   MediumTest
      * @tc.type:   Function
      * @tc.level  : 0
@@ -308,6 +313,7 @@ export default function UIExtensionContentSessionTest() {
           let unSubscribeCallback = () => {
             setTimeout(async () => {
               console.info(`====>${tag} unSubscribeCallback`);
+              expect(globalThis.errCode).assertEqual(401)
               done();
             }, 1000);
           }
@@ -341,8 +347,8 @@ export default function UIExtensionContentSessionTest() {
 
     /*
      * @tc.number : Sub_UIExtensionContentSession_errorCode_0700
-     * @tc.name   : session.startAbilityByType callback
-     * @tc.desc   : Function test
+     * @tc.name   : Sub_UIExtensionContentSession_errorCode_0700
+     * @tc.desc   : session.startAbilityByType callback
      * @tc.size:   MediumTest
      * @tc.type:   Function
      * @tc.level  : 0
@@ -355,6 +361,7 @@ export default function UIExtensionContentSessionTest() {
           let unSubscribeCallback = () => {
             setTimeout(async () => {
               console.info(`====>${tag} unSubscribeCallback`);
+              expect(globalThis.errCode).assertEqual(16000050)
               done();
             }, 1000);
           }
@@ -388,8 +395,8 @@ export default function UIExtensionContentSessionTest() {
 
     /*
      * @tc.number : Sub_UIExtensionContentSession_errorCode_0800
-     * @tc.name   : session.startAbilityByType promise
-     * @tc.desc   : Function test
+     * @tc.name   : Sub_UIExtensionContentSession_errorCode_0800
+     * @tc.desc   : session.startAbilityByType promise
      * @tc.size:   MediumTest
      * @tc.type:   Function
      * @tc.level  : 0
@@ -402,6 +409,7 @@ export default function UIExtensionContentSessionTest() {
           let unSubscribeCallback = () => {
             setTimeout(async () => {
               console.info(`====>${tag} unSubscribeCallback`);
+              expect(globalThis.errCode).assertEqual(16000050)
               done();
             }, 1000);
           }
