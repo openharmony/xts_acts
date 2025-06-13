@@ -60,6 +60,8 @@ export default function APIsetOnTouchTest() {
      * @tc.type :
      * @tc.size :
      */
+
+
     it('APIsetOnTouchTest_0100', Level.LEVEL0, async (done: Function) => {
       console.info('APIsetOnTouchTest_0100 START');
       let driver = await Driver.create()

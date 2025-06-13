@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import router from '@ohos.router';
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import { i18n } from '@kit.LocalizationKit';
 import display from '@ohos.display';
 import CommonFunc from '../TestAbility/common/Common';
@@ -58,7 +58,7 @@ export default function GeneralLayoutOffsetTest() {
      *@tc.type       : Function
      *@tc.level      : Level 1
      */
-    it('ArkUIHDS_General_Layout_1900', 0, async (done: Function) => {
+    it('ArkUIHDS_General_Layout_1900', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUIHDS_General_Layout_1900 START');
       i18n.System.setAppPreferredLanguage("zh-Hans");
       await CommonFunc.sleep(1000);
@@ -102,7 +102,7 @@ export default function GeneralLayoutOffsetTest() {
      *@tc.type       : Function
      *@tc.level      : Level 1
      */
-    it('ArkUIHDS_General_Layout_2000', 0, async (done: Function) => {
+    it('ArkUIHDS_General_Layout_2000', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUIHDS_General_Layout_2000 START');
       i18n.System.setAppPreferredLanguage("zh-Hans");
       await CommonFunc.sleep(1000);
@@ -148,7 +148,7 @@ export default function GeneralLayoutOffsetTest() {
      *@tc.type       : Function
      *@tc.level      : Level 1
      */
-    it('ArkUIHDS_General_Layout_2100', 0, async (done: Function) => {
+    it('ArkUIHDS_General_Layout_2100', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUIHDS_General_Layout_2100 START');
       i18n.System.setAppPreferredLanguage("zh-Hans");
       await CommonFunc.sleep(1000);
@@ -194,7 +194,7 @@ export default function GeneralLayoutOffsetTest() {
      *@tc.type       : Function
      *@tc.level      : Level 1
      */
-    it('ArkUIHDS_General_Layout_2200', 0, async (done: Function) => {
+    it('ArkUIHDS_General_Layout_2200', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUIHDS_General_Layout_2200 START');
       i18n.System.setAppPreferredLanguage("zh-Hans");
       await CommonFunc.sleep(1000);
@@ -247,7 +247,7 @@ export default function GeneralLayoutOffsetTest() {
      *@tc.type       : Function
      *@tc.level      : Level 1
      */
-    it('ArkUIHDS_General_Layout_2300', 0, async (done: Function) => {
+    it('ArkUIHDS_General_Layout_2300', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUIHDS_General_Layout_2300 START');
       i18n.System.setAppPreferredLanguage("zh-Hans");
       await CommonFunc.sleep(1000);
@@ -291,7 +291,7 @@ export default function GeneralLayoutOffsetTest() {
      *@tc.type       : Function
      *@tc.level      : Level 1
      */
-    it('ArkUIHDS_General_Layout_2400', 0, async (done: Function) => {
+    it('ArkUIHDS_General_Layout_2400', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUIHDS_General_Layout_2400 START');
       i18n.System.setAppPreferredLanguage("zh-Hans");
       await CommonFunc.sleep(1000);
@@ -345,7 +345,7 @@ export default function GeneralLayoutOffsetTest() {
      *@tc.type       : Function
      *@tc.level      : Level 1
      */
-    it('ArkUIHDS_General_Layout_2500', 0, async (done: Function) => {
+    it('ArkUIHDS_General_Layout_2500', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUIHDS_General_Layout_2500 START');
       i18n.System.setAppPreferredLanguage("zh-Hans");
       await CommonFunc.sleep(1000);
@@ -383,7 +383,7 @@ export default function GeneralLayoutOffsetTest() {
      *@tc.type       : Function
      *@tc.level      : Level 1
      */
-    it('ArkUIHDS_General_Layout_2600', 0, async (done: Function) => {
+    it('ArkUIHDS_General_Layout_2600', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUIHDS_General_Layout_2600 START');
       i18n.System.setAppPreferredLanguage("zh-Hans");
       await CommonFunc.sleep(1000);
@@ -420,7 +420,7 @@ export default function GeneralLayoutOffsetTest() {
      *@tc.type       : Function
      *@tc.level      : Level 1
      */
-    it('ArkUIHDS_General_Layout_2700', 0, async (done: Function) => {
+    it('ArkUIHDS_General_Layout_2700', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUIHDS_General_Layout_2700 START');
       i18n.System.setAppPreferredLanguage("zh-Hans");
       await CommonFunc.sleep(1000);

@@ -47,6 +47,8 @@ export default function APIsetOnFocusTest() {
      * @tc.type :
      * @tc.size :
      */
+
+
     it('APIsetOnFocusTest_0100', Level.LEVEL0, async (done: Function) => {
       console.info('APIsetOnFocusTest_0100 START');
       let strJson = getInspectorByKey('setOnFocus_1');
@@ -70,6 +72,8 @@ export default function APIsetOnFocusTest() {
      * @tc.type :
      * @tc.size :
      */
+
+
     it('APIsetOnFocusTest_0200', Level.LEVEL0, async (done: Function) => {
       console.info('APIsetOnFocusTest_0200 START');
       let driver = await Driver.create()

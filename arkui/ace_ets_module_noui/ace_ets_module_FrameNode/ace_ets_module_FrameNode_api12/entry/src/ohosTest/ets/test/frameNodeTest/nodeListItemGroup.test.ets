@@ -52,6 +52,8 @@ export default function nodeListItemGroup() {
     * @tc.type :
     * @tc.size :
     */
+
+
     it('nodeListItemGroup_0100', Level.LEVEL0, async (done: Function) => {
       console.info('nodeListItemGroup_0100 START');
       await CommonFunc.sleep(1000);

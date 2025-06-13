@@ -44,8 +44,12 @@ export default function componentSnapshotSync() {
     /**
      * @tc.number SUB_ACE_UI_SNAPSHOT_GETSYNC_0550
      * @tc.name testButton
-     * @tc.desc
+     * @tc.desc api
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0    
      */
+
     it('componentSnapshotSync_0100', Level.LEVEL0, async (done: Function) => {
       console.info('componentSnapshotSync_0100 START');
       await CommonFunc.sleep(1000);
@@ -64,8 +68,12 @@ export default function componentSnapshotSync() {
     /**
      * @tc.number SUB_ACE_UI_SNAPSHOT_GETSYNC_0190
      * @tc.name testButton
-     * @tc.desc
+     * @tc.desc api
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
      */
+
     it('componentSnapshotSync_0200', Level.LEVEL0, async (done: Function) => {
       console.info('componentSnapshotSync_0200 START');
       await CommonFunc.sleep(1000);
@@ -84,8 +92,12 @@ export default function componentSnapshotSync() {
     /**
      * @tc.number SUB_ACE_UI_SNAPSHOT_GETSYNC_0210
      * @tc.name testButton
-     * @tc.desc
+     * @tc.desc api
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
      */
+
     it('componentSnapshotSync_0300', Level.LEVEL0, async (done: Function) => {
       console.info('componentSnapshotSync_0300 START');
       await CommonFunc.sleep(1000);
@@ -104,8 +116,12 @@ export default function componentSnapshotSync() {
     /**
      * @tc.number SUB_ACE_UI_SNAPSHOT_GETSYNC_0180
      * @tc.name testButton
-     * @tc.desc
+     * @tc.desc  api
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
      */
+
     it('componentSnapshotSync_0400', Level.LEVEL0, async (done: Function) => {
       console.info('componentSnapshotSync_0400 START');
       await CommonFunc.sleep(1000);
@@ -124,8 +140,12 @@ export default function componentSnapshotSync() {
     /**
      * @tc.number SUB_ACE_UI_SNAPSHOT_GETSYNC_0170
      * @tc.name testButton
-     * @tc.desc
+     * @tc.desc api
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
      */
+
     it('componentSnapshotSync_0500', Level.LEVEL0, async (done: Function) => {
       console.info('componentSnapshotSync_0500 START');
       await CommonFunc.sleep(1000);

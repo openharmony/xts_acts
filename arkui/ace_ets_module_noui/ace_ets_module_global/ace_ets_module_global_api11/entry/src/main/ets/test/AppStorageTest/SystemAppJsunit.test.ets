@@ -16,6 +16,14 @@ import { describe, it, Level, expect } from "@ohos/hypium"
 import app, { ScreenOnVisibleOptions } from '@system.app';
 export default function systemAppJsunit() {
   describe('appInfoTest_four_9', () => {
+/*
+     * @tc.number     : systemAppTest_0100
+     * @tc.name       : systemAppTest_0100
+     * @tc.desc       : systemAppTest
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : LEVEL0
+     */
     it('systemAppTest_0100', Level.LEVEL0, async (done: Function) => {
       console.info('systemAppTest_0100 START');
       let a: ESObject = app.getInfo();
@@ -28,6 +36,14 @@ export default function systemAppJsunit() {
       }
       done();
     });
+    /*
+     * @tc.number     : systemAppTest_0200
+     * @tc.name       : systemAppTest_0200
+     * @tc.desc       : systemAppTest
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : LEVEL0
+     */
     it('systemAppTest_0200', Level.LEVEL0, async (done: Function) => {
       console.info('systemAppTest_0200 START');
       let a: ESObject = app.getInfo();
@@ -40,6 +56,14 @@ export default function systemAppJsunit() {
       console.info('systemAppTest_0200 END');
       done();
     });
+    /*
+     * @tc.number     : systemAppTest_0300
+     * @tc.name       : systemAppTest_0300
+     * @tc.desc       : systemAppTest
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : LEVEL0
+     */
     it('systemAppTest_0300', Level.LEVEL0, async (done: Function) => {
       console.info('systemAppTest_0300 START');
       let a: ESObject = app.getInfo();
@@ -52,6 +76,14 @@ export default function systemAppJsunit() {
       console.info('systemAppTest_0300 END');
       done();
     });
+    /*
+     * @tc.number     : systemAppTest_0400
+     * @tc.name       : systemAppTest_0400
+     * @tc.desc       : systemAppTest
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : LEVEL0
+     */
     it('systemAppTest_0400', Level.LEVEL0, async (done: Function) => {
       console.info('systemAppTest_0400 START');
       try {
@@ -64,6 +96,14 @@ export default function systemAppJsunit() {
       console.info('systemAppTest_0400 END');
       done();
     });
+    /*
+     * @tc.number     : systemAppTest_0500
+     * @tc.name       : systemAppTest_0500
+     * @tc.desc       : systemAppTest
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : LEVEL0
+     */
     it('systemAppTest_0500', Level.LEVEL0, async (done: Function) => {
       console.info('systemAppTest_0500 START');
       try {
@@ -77,6 +117,14 @@ export default function systemAppJsunit() {
       console.info('systemAppTest_0500 END');
       done();
     });
+  /*
+     * @tc.number     : systemAppTest_0600
+     * @tc.name       : systemAppTest_0600
+     * @tc.desc       : systemAppTest
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : LEVEL0
+     */
     it('systemAppTest_0600', Level.LEVEL0, async (done: Function) => {
       console.info('systemAppTest_0600 START');
       let a = 100;
@@ -84,6 +132,14 @@ export default function systemAppJsunit() {
       console.info('systemAppTest_0600 END');
       done();
     });
+/*
+     * @tc.number     : systemAppTest_0700
+     * @tc.name       : systemAppTest_0700
+     * @tc.desc       : systemAppTest
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : LEVEL0
+     */
     it('systemAppTest_0700', Level.LEVEL0, async (done: Function) => {
       console.info('systemAppTest_0700 START');
       let a = 104857600;
@@ -91,6 +147,14 @@ export default function systemAppJsunit() {
       console.info('systemAppTest_0700 END');
       done();
     });
+/*
+     * @tc.number     : systemAppTest_0800
+     * @tc.name       : systemAppTest_0800
+     * @tc.desc       : systemAppTest
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : LEVEL0
+     */
     it('systemAppTest_0800', Level.LEVEL0, async (done: Function) => {
       console.info('systemAppTest_0800 START');
       let a = 1048;
@@ -98,6 +162,14 @@ export default function systemAppJsunit() {
       console.info('systemAppTest_0800 END');
       done();
     });
+/*
+     * @tc.number     : systemAppTest_0900
+     * @tc.name       : systemAppTest_0900
+     * @tc.desc       : systemAppTest
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : LEVEL0
+     */
     it('systemAppTest_0900', Level.LEVEL0, async (done: Function) => {
       console.info('systemAppTest_0900 START');
       app.terminate();

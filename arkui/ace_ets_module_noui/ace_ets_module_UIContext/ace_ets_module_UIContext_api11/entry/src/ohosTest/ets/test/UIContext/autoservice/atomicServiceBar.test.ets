@@ -14,7 +14,7 @@
  */
 
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@system.router';
 import { UIContext, AtomicServiceBar, KeyboardAvoidMode } from '@ohos.arkui.UIContext';
 
@@ -51,8 +51,12 @@ export default function atomicServiceBarTest() {
      * @tc.number    SUB_ARKUI_ARKUICONTEXT_001
      * @tc.name      ArkuiContext_0100
      * @tc.desc      test setVisible interface
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
      */
-    it('ArkuiContext_0100', 0, async (done: Function) => {
+
+    it('ArkuiContext_0100', Level.LEVEL0, async  (done: Function) => {
       console.info('ArkuiContext_0100 START');
       setTimeout(()=>{
         try{
@@ -78,8 +82,12 @@ export default function atomicServiceBarTest() {
      * @tc.number    SUB_ARKUI_ARKUICONTEXT_002
      * @tc.name      ArkuiContext_0200
      * @tc.desc      test setBackgroundColor interface
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
      */
-    it('ArkuiContext_0200', 0, async (done: Function) => {
+
+    it('ArkuiContext_0200', Level.LEVEL0, async  (done: Function) => {
       console.info('ArkuiContext_0200 START');
       setTimeout(()=>{
         try{
@@ -104,8 +112,12 @@ export default function atomicServiceBarTest() {
      * @tc.number    SUB_ARKUI_ARKUICONTEXT_003
      * @tc.name      ArkuiContext_0300
      * @tc.desc      test setTitleContent interface
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
      */
-    it('ArkuiContext_0300', 0, async (done: Function) => {
+
+    it('ArkuiContext_0300', Level.LEVEL0, async  (done: Function) => {
       console.info('ArkuiContext_0300 START');
       setTimeout(()=>{
         try{
@@ -131,8 +143,12 @@ export default function atomicServiceBarTest() {
      * @tc.number    SUB_ARKUI_ARKUICONTEXT_005
      * @tc.name      ArkuiContext_0500
      * @tc.desc      test setTitleFontStyle interface
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
      */
-    it('ArkuiContext_0500', 0, async (done: Function) => {
+
+    it('ArkuiContext_0500', Level.LEVEL0, async  (done: Function) => {
       console.info('ArkuiContext_0500 START');
       setTimeout(()=>{
         try{
@@ -158,8 +174,12 @@ export default function atomicServiceBarTest() {
      * @tc.number    SUB_ARKUI_ARKUICONTEXT_006
      * @tc.name      ArkuiContext_0600
      * @tc.desc      test setIconColor interface
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
      */
-    it('ArkuiContext_0600', 0, async (done: Function) => {
+
+    it('ArkuiContext_0600', Level.LEVEL0, async  (done: Function) => {
       console.info('ArkuiContext_0600 START');
       setTimeout(()=>{
         try{
@@ -184,8 +204,12 @@ export default function atomicServiceBarTest() {
      * @tc.number    SUB_ARKUI_ARKUICONTEXT_007
      * @tc.name      ArkuiContext_0700
      * @tc.desc      test getKeyboardAvoidMode interface
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
      */
-    it('ArkuiContext_0700', 0, async (done: Function) => {
+
+    it('ArkuiContext_0700', Level.LEVEL0, async  (done: Function) => {
       console.info('ArkuiContext_0700 START');
       setTimeout(()=>{
         try{

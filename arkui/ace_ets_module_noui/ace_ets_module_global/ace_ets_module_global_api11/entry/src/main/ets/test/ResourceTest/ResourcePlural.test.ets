@@ -52,6 +52,15 @@ export default function ResourcePlural() {
       }
       done();
     });
+   /*
+         * @tc.number       ResourcePlural_0100
+         * @tc.name         ResourcePlural_0100
+         * @tc.desic         ResourcePlural
+         * @tc.size       : MediumTest
+         * @tc.type       : Function
+         * @tc.level      : LEVEL0
+         */
+
     it('ResourcePlural_0100', Level.LEVEL0, async (done: Function) => {
       console.info('ResourcePlural_0100 START');
       let strJson = getInspectorByKey('plural');
@@ -62,6 +71,15 @@ export default function ResourcePlural() {
       console.info('[ResourcePlural_0100] END');
       done();
     });
+
+   /*
+         * @tc.number       ResourcePlural_0200
+         * @tc.name         ResourcePlural_0200
+         * @tc.desic         ResourcePlural
+         * @tc.size       : MediumTest
+         * @tc.type       : Function
+         * @tc.level      : LEVEL0
+         */
     it('ResourcePlural_0200', Level.LEVEL0, async (done: Function) => {
       console.info('ResourcePlural_0200 START');
       let driver = Driver.create();

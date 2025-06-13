@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import router from '@ohos.router';
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import display from '@ohos.display';
 import { i18n } from '@kit.LocalizationKit';
 import CommonFunc from '../TestAbility/common/Common';
@@ -55,7 +55,7 @@ export default function GeneralLayoutOriginalTest() {
      *@tc.type       : Function
      *@tc.level      : Level 1
      */
-    it('ArkUIHDS_General_Layout_2800', 0, async (done: Function) => {
+    it('ArkUIHDS_General_Layout_2800', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUIHDS_General_Layout_2800 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('Original_0100');
@@ -81,7 +81,7 @@ export default function GeneralLayoutOriginalTest() {
      *@tc.type       : Function
      *@tc.level      : Level 1
      */
-    it('ArkUIHDS_General_Layout_2900', 0, async (done: Function) => {
+    it('ArkUIHDS_General_Layout_2900', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUIHDS_General_Layout_2900 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('Original_0200');
@@ -113,7 +113,7 @@ export default function GeneralLayoutOriginalTest() {
      *@tc.type       : Function
      *@tc.level      : Level 1
      */
-    it('ArkUIHDS_General_Layout_3000', 0, async (done: Function) => {
+    it('ArkUIHDS_General_Layout_3000', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUIHDS_General_Layout_3000 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('Original_0300');
@@ -139,7 +139,7 @@ export default function GeneralLayoutOriginalTest() {
      *@tc.type       : Function
      *@tc.level      : Level 1
      */
-    it('ArkUIHDS_General_Layout_3100', 0, async (done: Function) => {
+    it('ArkUIHDS_General_Layout_3100', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUIHDS_General_Layout_3100 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('Original_0400');
@@ -173,7 +173,7 @@ export default function GeneralLayoutOriginalTest() {
      *@tc.type       : Function
      *@tc.level      : Level 1
      */
-    it('ArkUIHDS_General_Layout_3200', 0, async (done: Function) => {
+    it('ArkUIHDS_General_Layout_3200', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUIHDS_General_Layout_3200 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('Original_0500');
@@ -210,7 +210,7 @@ export default function GeneralLayoutOriginalTest() {
      *@tc.type       : Function
      *@tc.level      : Level 1
      */
-    it('ArkUIHDS_General_Layout_3300', 0, async (done: Function) => {
+    it('ArkUIHDS_General_Layout_3300', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUIHDS_General_Layout_3300 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('Original_0600');
@@ -243,7 +243,7 @@ export default function GeneralLayoutOriginalTest() {
      *@tc.type       : Function
      *@tc.level      : Level 1
      */
-    it('ArkUIHDS_General_Layout_3400', 0, async (done: Function) => {
+    it('ArkUIHDS_General_Layout_3400', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUIHDS_General_Layout_3400 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('Original_0700');
@@ -280,7 +280,7 @@ export default function GeneralLayoutOriginalTest() {
      *@tc.type       : Function
      *@tc.level      : Level 1
      */
-    it('ArkUIHDS_General_Layout_3500', 0, async (done: Function) => {
+    it('ArkUIHDS_General_Layout_3500', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUIHDS_General_Layout_3500 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('Original_0800');
