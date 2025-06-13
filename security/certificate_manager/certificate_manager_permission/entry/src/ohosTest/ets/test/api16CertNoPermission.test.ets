@@ -234,7 +234,7 @@ export default function api16CertNoPermissionTestUnit() {
 
     /**
      * @tc.number SUB_Security_CertManager_openAuthorzeDialog_0102
-     * @tc.name openzeDialog
+     * @tc.name SUB_Security_CertManager_openAuthorzeDialog_0102
      * @tc.desc abnormal test
      * @tc.size MediumTest
      * @tc.level Level2
