@@ -1,8 +1,6 @@
 {
     "src": [
         "MainAbility/pages/index/index",
-        "MainAbility/pages/WaterFlow/barMarginFlow",
-        "MainAbility/pages/Grid/focusWrapDefault",
-        "MainAbility/pages/Grid/focusWrapWrap"
+        "MainAbility/pages/WaterFlow/barMarginFlow"
     ]
 }
