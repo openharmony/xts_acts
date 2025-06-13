@@ -102,3 +102,21 @@ export const OH_Value_Put_0100: () => number;
 export const OH_Values_Put_0100: () => number;
 export const OH_Value_PutFloatVector_0100: () => number;
 export const OH_Values_PutFloatVector_0100: () => number;
+
+export const OH_Rdb_SetTokenizer0100: () => number;
+export const OH_Rdb_IsTokenizerSupported0100: () => number;
+export const OH_Cursor_GetFloatVectorCount0100: () => number;
+export const OH_RdbTrans_Commit0100: () => number;
+export const OH_RdbTrans_InsertWithConflictResolution0100: () => number;
+export const OH_Rdb_SetCustomDir0100: () => number;
+export const OH_Rdb_SetReadOnly0100: () => number;
+export const OH_Rdb_SetPlugins0100: () => number;
+
+export const OH_Rdb_DestroyCryptoParam0100: () => number;
+export const OH_Rdb_CreateCryptoParam0100: () => number;
+export const OH_Rdb_CreateCryptoParam0200: () => number;
+export const OH_Rdb_CreateCryptoParam0300: () => number;
+export const OH_Rdb_CreateCryptoParam0400: () => number;
+export const OH_Rdb_CreateCryptoParam0500: () => number;
+export const OH_Rdb_CreateCryptoParam0600: () => number;
+export const OH_Rdb_CreateCryptoParam0700: () => number;

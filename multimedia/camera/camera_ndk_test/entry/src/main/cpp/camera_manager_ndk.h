@@ -136,6 +136,8 @@ public:
     Camera_ImageRotation imageRotation_;
     Camera_ImageRotation previewRotation_;
     bool isCreatePhotoOutputWithoutSurface_;
+    bool isMacroSupported_;
+    bool isEnableMacro_;
 
     //callback
     static CameraCallbackCode cameraCallbackCode_;
@@ -203,6 +205,8 @@ public:
     Camera_ErrorCode SessionIsFlashModeSupported(uint32_t mode);
     Camera_ErrorCode SessionGetFlashMode(void);
     Camera_ErrorCode SessionSetFlashMode(uint32_t mode);
+    Camera_ErrorCode GetCameraDevice(int useCaseCode);     // 基于位置和类型获取相机实例。
+    Camera_ErrorCode GetCameraConcurrentInfos(int useCaseCode);   // 获取相机并发信息。
 
     Camera_ErrorCode SessionIsExposureModeSupported(uint32_t mode);
     Camera_ErrorCode SessionGetExposureMode(void);
@@ -346,6 +350,8 @@ public:
     Camera_ErrorCode CameraManagerRegisterFoldStatusCallback(int useCaseCode);
     Camera_ErrorCode CameraManagerUnregisterFoldStatusCallback(int useCaseCode);
     int32_t ColorSpace(void);
+    Camera_ErrorCode SessionIsMacroSupported(int useCaseCode);
+    Camera_ErrorCode SessionEnableMacro(int useCaseCode, bool enable);
 
     // test aid
     Camera_ErrorCode SetSceneMode(int useCaseCode);

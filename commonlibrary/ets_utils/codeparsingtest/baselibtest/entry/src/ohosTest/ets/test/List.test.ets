@@ -41,6 +41,11 @@ import streamTest from './stream/Stream.test';
 import specialChar from './specialchar/SpecialChar.test';
 import consoleTest from './console/Console.test';
 import LRUCacheTest from './LRUCache/LRUCache.test';
+import emojiFastBufferTest from './fastbuffer/Emoji_FastBuffer.test.ets';
+import escapeFastBufferTest from './fastbuffer/Escape_FastBuffer.test.ets';
+import fastBuffer1Test from './fastbuffer/FastBuffer1.test.ets';
+import fastBuffer2Test from './fastbuffer/FastBuffer2.test.ets';
+import fastBuffer3Test from './fastbuffer/FastBuffer3.test.ets';
 
 export default function testsuite() {
   buffer1Test();
@@ -71,4 +76,10 @@ export default function testsuite() {
   specialChar();
   consoleTest();
   LRUCacheTest();
+  //fastbuffer
+  emojiFastBufferTest();
+  escapeFastBufferTest();
+  fastBuffer1Test();
+  fastBuffer2Test();
+  fastBuffer3Test();
 }

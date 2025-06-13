@@ -330,5 +330,82 @@ describe('btA2dpTest', () => {
         }
         done();
     })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTHA2DP_CONSTANT_0500
+     * @tc.name testCodecBitRate
+     * @tc.desc Test CodecBitRate api19.
+     * @tc.type Function
+     * @tc.size MediumTest
+     * @tc.level Level 0
+     */
+     it('SUB_COMMUNICATION_BLUETOOTHA2DP_CONSTANT_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done : Function) => {
+        try {
+            let CODEC_BIT_RATE_96000 = bluetooth.CodecBitRate.CODEC_BIT_RATE_96000;
+            console.info("[bluetooth_js]CODEC_BIT_RATE_96000: " + CODEC_BIT_RATE_96000);
+            expect(CODEC_BIT_RATE_96000).assertEqual(0);
+
+            let CODEC_BIT_RATE_128000 = bluetooth.CodecBitRate.CODEC_BIT_RATE_128000;
+            console.info("[bluetooth_js]CODEC_BIT_RATE_128000: " + CODEC_BIT_RATE_128000);
+            expect(CODEC_BIT_RATE_128000).assertEqual(1);
+            
+
+            let CODEC_BIT_RATE_192000 = bluetooth.CodecBitRate.CODEC_BIT_RATE_192000;
+            console.info("[bluetooth_js]CODEC_BIT_RATE_192000: " + CODEC_BIT_RATE_192000);
+            expect(CODEC_BIT_RATE_192000).assertEqual(2);
+
+            let CODEC_BIT_RATE_256000 = bluetooth.CodecBitRate.CODEC_BIT_RATE_256000;
+            console.info("[bluetooth_js]CODEC_BIT_RATE_256000: " + CODEC_BIT_RATE_256000);
+            expect(CODEC_BIT_RATE_256000).assertEqual(3);
+
+            let CODEC_BIT_RATE_320000 = bluetooth.CodecBitRate.CODEC_BIT_RATE_320000;
+            console.info("[bluetooth_js]CODEC_BIT_RATE_320000: " + CODEC_BIT_RATE_320000);
+            expect(CODEC_BIT_RATE_320000).assertEqual(4);
+
+            let CODEC_BIT_RATE_480000 = bluetooth.CodecBitRate.CODEC_BIT_RATE_480000;
+            console.info("[bluetooth_js]CODEC_BIT_RATE_480000: " + CODEC_BIT_RATE_480000);
+            expect(CODEC_BIT_RATE_480000).assertEqual(5);
+
+            let CODEC_BIT_RATE_640000 = bluetooth.CodecBitRate.CODEC_BIT_RATE_640000;
+            console.info("[bluetooth_js]CODEC_BIT_RATE_640000: " + CODEC_BIT_RATE_640000);
+            expect(CODEC_BIT_RATE_640000).assertEqual(6);
+
+            let CODEC_BIT_RATE_960000 = bluetooth.CodecBitRate.CODEC_BIT_RATE_960000;
+            console.info("[bluetooth_js]CODEC_BIT_RATE_960000: " + CODEC_BIT_RATE_960000);
+            expect(CODEC_BIT_RATE_960000).assertEqual(7);
+
+            let CODEC_BIT_RATE_ABR = bluetooth.CodecBitRate.CODEC_BIT_RATE_ABR;
+            console.info("[bluetooth_js]CODEC_BIT_RATE_ABR: " + CODEC_BIT_RATE_ABR);
+            expect(CODEC_BIT_RATE_ABR).assertEqual(8);
+        } catch (err) {
+            console.info("bluetooth a2dp CodecBitRate errCode:" + err.code + ",bluetooth a2dp CodecBitRate errMessage:" + err.message);
+            expect().assertFail();
+        }
+        done();
+    })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTHA2DP_CONSTANT_0600
+     * @tc.name testCodecFrameLength
+     * @tc.desc Test CodecFrameLength api19.
+     * @tc.type Function
+     * @tc.size MediumTest
+     * @tc.level Level 0
+     */
+     it('SUB_COMMUNICATION_BLUETOOTHA2DP_CONSTANT_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done : Function) => {
+        try {
+            let CODEC_FRAME_LENGTH_5MS = bluetooth.CodecFrameLength.CODEC_FRAME_LENGTH_5MS;
+            console.info("[bluetooth_js]CODEC_FRAME_LENGTH_5MS: " + CODEC_FRAME_LENGTH_5MS);
+            expect(CODEC_FRAME_LENGTH_5MS).assertEqual(0);
+
+            let CODEC_FRAME_LENGTH_10MS = bluetooth.CodecFrameLength.CODEC_FRAME_LENGTH_10MS;
+            console.info("[bluetooth_js]CODEC_FRAME_LENGTH_10MS: " + CODEC_FRAME_LENGTH_10MS);
+            expect(CODEC_FRAME_LENGTH_10MS).assertEqual(1);
+        } catch (err) {
+            console.info("bluetooth a2dp CodecFrameLength errCode:" + err.code + ",bluetooth a2dp CodecFrameLength errMessage:" + err.message);
+            expect().assertFail();
+        }
+        done();
+    })
 })
 }

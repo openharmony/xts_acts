@@ -443,5 +443,53 @@ export default function nativeVsyncTest() {
       expect(result[2]).assertEqual(0);
       done();
     });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_NATIVE_VSYNC_SetExpectedFrameRateRange001
+     * @tc.name       : testOHNativeVSyncSetExpectedFrameRateRange001
+     * @tc.desc       : test OHNativeVSyncSetExpectedFrameRateRange001
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHNativeVSyncSetExpectedFrameRateRange001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
+      let result: number = vsync.oHNativeVSyncSetExpectedFrameRateRange001();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_NATIVE_VSYNC_SetExpectedFrameRateRange002
+     * @tc.name       : testOHNativeVSyncSetExpectedFrameRateRange002
+     * @tc.desc       : test OHNativeVSyncSetExpectedFrameRateRange002
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHNativeVSyncSetExpectedFrameRateRange002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
+      let result: number = vsync.oHNativeVSyncSetExpectedFrameRateRange002();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_NATIVE_VSYNC_SetExpectedFrameRateRange003
+     * @tc.name       : testOHNativeVSyncSetExpectedFrameRateRange003
+     * @tc.desc       : test OHNativeVSyncSetExpectedFrameRateRange003
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHNativeVSyncSetExpectedFrameRateRange003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
+      let result: Array<number> = vsync.oHNativeVSyncSetExpectedFrameRateRange003();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      expect(result[2]).assertEqual(0);
+      expect(result[3]).assertEqual(0);
+      done();
+    });
   })
 }

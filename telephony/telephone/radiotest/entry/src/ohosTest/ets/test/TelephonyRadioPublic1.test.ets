@@ -152,47 +152,56 @@ export default function telephonyRadioPublicNeedCardTest() {
     it('testTelephonyRadioGetNetworkState0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testTelephonyRadioGetNetworkState0100';
       console.info(`${caseName} test start`);
-      try {
-        sim.isSimActive(SLOT_0).then((data: boolean) => {
-          console.info(`${caseName} isSimCard success, promise: data->${JSON.stringify(data)}`);
-          if (data) {
-            radio.getNetworkState((err: BusinessError, data: radio.NetworkState) => {
-              if (err) {
-                console.info(`${caseName} failed, callback: err->${JSON.stringify(err)}`);
-                ExpectTrue(false);
+      let simState: sim.SimState = await sim.getSimStateSync(0);
+      if (simState == sim.SimState.SIM_STATE_UNKNOWN) {
+        console.info(`${caseName} failed, SIM STATE IS UNKNOWN`);
+        console.info(`${caseName} test end`);
+        done();
+      } else {
+        try {
+          sim.isSimActive(SLOT_0).then((data: boolean) => {
+            console.info(`${caseName} isSimCard success, promise: data->${JSON.stringify(data)}`);
+            if (data) {
+              radio.getNetworkState((err: BusinessError, data: radio.NetworkState) => {
+                if (err) {
+                  console.info(`${caseName} failed, callback: err->${JSON.stringify(err)}`);
+                  ExpectTrue(false);
+                  console.info(`${caseName} test end`);
+                  done();
+                } else {
+                  console.info(`${caseName} success, callback: data->${JSON.stringify(data)}`);
+                  ExpectTrue(typeof data.longOperatorName === 'string'
+                    && typeof data.shortOperatorName === 'string'
+                    && typeof data.plmnNumeric === 'string'
+                    && typeof data.isRoaming === 'boolean'
+                    && typeof data.isCaActive === 'boolean'
+                    && typeof data.isEmergency === 'boolean');
+                }
                 console.info(`${caseName} test end`);
                 done();
-              } else {
-                console.info(`${caseName} success, callback: data->${JSON.stringify(data)}`);
-                ExpectTrue(typeof data.longOperatorName === 'string'
-                  && typeof data.shortOperatorName === 'string'
-                  && typeof data.plmnNumeric === 'string'
-                  && typeof data.isRoaming === 'boolean'
-                  && typeof data.isCaActive === 'boolean'
-                  && typeof data.isEmergency === 'boolean');
-              }
+              });
+            }
+            else {
+              ExpectTrue(data);
               console.info(`${caseName} test end`);
               done();
-            });
-          }
-          else {
-            ExpectTrue(data);
+              console.info(`${caseName} isSimCard unactivated `);
+            }
+          }).catch((err: BusinessError) => {
+            console.info(`${caseName} isSimCard failed, promise: err->${JSON.stringify(err)}`);
+            ExpectTrue(false);
             console.info(`${caseName} test end`);
             done();
-            console.info(`${caseName} isSimCard unactivated `);
-          }
-        }).catch((err: BusinessError) => {
-          console.info(`${caseName} isSimCard failed, promise: err->${JSON.stringify(err)}`);
+          });
+        } catch {
+          console.info(`${caseName} failed`);
           ExpectTrue(false);
           console.info(`${caseName} test end`);
           done();
-        });
-      } catch {
-        console.info(`${caseName} failed`);
-        ExpectTrue(false);
-        console.info(`${caseName} test end`);
-        done();
+        }
       }
+
+
     });
     /*
      * @tc.number: SUB_Telephony_Radio_GetNetworkState_0200
@@ -205,46 +214,54 @@ export default function telephonyRadioPublicNeedCardTest() {
     it('testTelephonyRadioGetNetworkState0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testTelephonyRadioGetNetworkState0200';
       console.info(`${caseName} test start`);
-      try {
-        sim.isSimActive(SLOT_0).then((data: boolean) => {
-          console.info(`${caseName} isSimActive success, promise: data->${JSON.stringify(data)}`);
-          if (data) {
-            radio.getNetworkState(SLOT_0, (err: BusinessError, data: radio.NetworkState) => {
-              if (err) {
-                console.info(`${caseName} failed, callback: err->${JSON.stringify(err)}`);
-                ExpectTrue(false);
-                console.info(`${caseName} test end`);
-                done();
-              } else {
-                console.info(`${caseName} success, callback: data->${JSON.stringify(data)}`);
-                ExpectTrue(typeof data.longOperatorName === 'string'
-                  && typeof data.shortOperatorName === 'string'
-                  && typeof data.plmnNumeric === 'string'
-                  && typeof data.isRoaming === 'boolean'
-                  && typeof data.isCaActive === 'boolean'
-                  && typeof data.isEmergency === 'boolean');
-                console.info(`${caseName} test end`);
-                done();
-              }
-            });
-          } else {
-            ExpectTrue(data);
+      let simState: sim.SimState = await sim.getSimStateSync(0);
+      if (simState == sim.SimState.SIM_STATE_UNKNOWN) {
+        console.info(`${caseName} failed, SIM STATE IS UNKNOWN`);
+        console.info(`${caseName} test end`);
+        done();
+      } else {
+        try {
+          sim.isSimActive(SLOT_0).then((data: boolean) => {
+            console.info(`${caseName} isSimActive success, promise: data->${JSON.stringify(data)}`);
+            if (data) {
+              radio.getNetworkState(SLOT_0, (err: BusinessError, data: radio.NetworkState) => {
+                if (err) {
+                  console.info(`${caseName} failed, callback: err->${JSON.stringify(err)}`);
+                  ExpectTrue(false);
+                  console.info(`${caseName} test end`);
+                  done();
+                } else {
+                  console.info(`${caseName} success, callback: data->${JSON.stringify(data)}`);
+                  ExpectTrue(typeof data.longOperatorName === 'string'
+                    && typeof data.shortOperatorName === 'string'
+                    && typeof data.plmnNumeric === 'string'
+                    && typeof data.isRoaming === 'boolean'
+                    && typeof data.isCaActive === 'boolean'
+                    && typeof data.isEmergency === 'boolean');
+                  console.info(`${caseName} test end`);
+                  done();
+                }
+              });
+            } else {
+              ExpectTrue(data);
+              console.info(`${caseName} test end`);
+              done();
+              console.info(`${caseName} isSimCard unactivated `);
+            }
+          }).catch((err: BusinessError) => {
+            console.info(`${caseName} isSimActive failed, promise: err->${JSON.stringify(err)}`);
+            ExpectTrue(false);
             console.info(`${caseName} test end`);
             done();
-            console.info(`${caseName} isSimCard unactivated `);
-          }
-        }).catch((err: BusinessError) => {
-          console.info(`${caseName} isSimActive failed, promise: err->${JSON.stringify(err)}`);
+          });
+        } catch {
+          console.info(`${caseName} failed`);
           ExpectTrue(false);
           console.info(`${caseName} test end`);
           done();
-        });
-      } catch {
-        console.info(`${caseName} failed`);
-        ExpectTrue(false);
-        console.info(`${caseName} test end`);
-        done();
+        }
       }
+
     });
     /*
      * @tc.number: SUB_Telephony_Radio_GetNetworkState_0600
@@ -257,44 +274,52 @@ export default function telephonyRadioPublicNeedCardTest() {
     it('testTelephonyRadioGetNetworkState0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testTelephonyRadioGetNetworkState0600';
       console.info(`${caseName} test start`);
-      try {
-        sim.isSimActive(SLOT_0).then((data: boolean) => {
-          console.info(`${caseName} isSimActive success, promise: data->${JSON.stringify(data)}`);
-          if (data) {
-            radio.getNetworkState(SLOT_0).then((data: radio.NetworkState) => {
-              console.info(`${caseName} success, promise: data->${JSON.stringify(data)}`);
-              ExpectTrue(typeof data.longOperatorName === 'string'
-                && typeof data.shortOperatorName === 'string'
-                && typeof data.plmnNumeric === 'string'
-                && typeof data.isRoaming === 'boolean'
-                && typeof data.isCaActive === 'boolean'
-                && typeof data.isEmergency === 'boolean');
-              console.info(`${caseName} test end`);
-              done();
-            }).catch((err: BusinessError) => {
-              console.info(`${caseName} failed, promise: err->${JSON.stringify(err)}`);
+      let simState: sim.SimState = await sim.getSimStateSync(0);
+      if (simState == sim.SimState.SIM_STATE_UNKNOWN) {
+        console.info(`${caseName} failed, SIM STATE IS UNKNOWN`);
+        console.info(`${caseName} test end`);
+        done();
+      } else {
+        try {
+          sim.isSimActive(SLOT_0).then((data: boolean) => {
+            console.info(`${caseName} isSimActive success, promise: data->${JSON.stringify(data)}`);
+            if (data) {
+              radio.getNetworkState(SLOT_0).then((data: radio.NetworkState) => {
+                console.info(`${caseName} success, promise: data->${JSON.stringify(data)}`);
+                ExpectTrue(typeof data.longOperatorName === 'string'
+                  && typeof data.shortOperatorName === 'string'
+                  && typeof data.plmnNumeric === 'string'
+                  && typeof data.isRoaming === 'boolean'
+                  && typeof data.isCaActive === 'boolean'
+                  && typeof data.isEmergency === 'boolean');
+                console.info(`${caseName} test end`);
+                done();
+              }).catch((err: BusinessError) => {
+                console.info(`${caseName} failed, promise: err->${JSON.stringify(err)}`);
+                ExpectTrue(false);
+                console.info(`${caseName} test end`);
+                done();
+              });
+            } else {
+              console.info(`${caseName} sim unactivated`);
               ExpectTrue(false);
               console.info(`${caseName} test end`);
               done();
-            });
-          } else {
-            console.info(`${caseName} sim unactivated`);
+            }
+          }).catch((err: BusinessError) => {
+            console.info(`${caseName} isSimActive failed, promise: err->${JSON.stringify(err)}`);
             ExpectTrue(false);
             console.info(`${caseName} test end`);
             done();
-          }
-        }).catch((err: BusinessError) => {
-          console.info(`${caseName} isSimActive failed, promise: err->${JSON.stringify(err)}`);
+          });
+        } catch {
+          console.info(`${caseName} failed`);
           ExpectTrue(false);
           console.info(`${caseName} test end`);
           done();
-        });
-      } catch {
-        console.info(`${caseName} failed`);
-        ExpectTrue(false);
-        console.info(`${caseName} test end`);
-        done();
+        }
       }
+
     });
     /*
      * @tc.number: SUB_Telephony_Radio_GetNetworkState_1000
@@ -307,43 +332,50 @@ export default function telephonyRadioPublicNeedCardTest() {
     it('testTelephonyRadioGetNetworkState1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testTelephonyRadioGetNetworkState1000';
       console.info(`${caseName} test start`);
-      try {
-        sim.isSimActive(SLOT_0).then((data: boolean) => {
-          console.info(`${caseName} isSimActive success, promise: data->${JSON.stringify(data)}`);
-          if (data) {
-            radio.getNetworkState().then((data: radio.NetworkState) => {
-              console.info(`${caseName} success, promise: data->${JSON.stringify(data)}`);
-              ExpectTrue(typeof data.longOperatorName === 'string'
-                && typeof data.shortOperatorName === 'string'
-                && typeof data.plmnNumeric === 'string'
-                && typeof data.isRoaming === 'boolean'
-                && typeof data.isCaActive === 'boolean'
-                && typeof data.isEmergency === 'boolean');
-              console.info(`${caseName} test end`);
-              done();
-            }).catch((err: BusinessError) => {
-              console.info(`${caseName} failed, promise: err->${JSON.stringify(err)}`);
+      let simState: sim.SimState = await sim.getSimStateSync(0);
+      if (simState == sim.SimState.SIM_STATE_UNKNOWN) {
+        console.info(`${caseName} failed, SIM STATE IS UNKNOWN`);
+        console.info(`${caseName} test end`);
+        done();
+      } else {
+        try {
+          sim.isSimActive(SLOT_0).then((data: boolean) => {
+            console.info(`${caseName} isSimActive success, promise: data->${JSON.stringify(data)}`);
+            if (data) {
+              radio.getNetworkState().then((data: radio.NetworkState) => {
+                console.info(`${caseName} success, promise: data->${JSON.stringify(data)}`);
+                ExpectTrue(typeof data.longOperatorName === 'string'
+                  && typeof data.shortOperatorName === 'string'
+                  && typeof data.plmnNumeric === 'string'
+                  && typeof data.isRoaming === 'boolean'
+                  && typeof data.isCaActive === 'boolean'
+                  && typeof data.isEmergency === 'boolean');
+                console.info(`${caseName} test end`);
+                done();
+              }).catch((err: BusinessError) => {
+                console.info(`${caseName} failed, promise: err->${JSON.stringify(err)}`);
+                ExpectTrue(false);
+                console.info(`${caseName} test end`);
+                done();
+              });
+            } else {
+              console.info(`${caseName} sim unactivated`);
               ExpectTrue(false);
               console.info(`${caseName} test end`);
               done();
-            });
-          } else {
-            console.info(`${caseName} sim unactivated`);
+            }
+          }).catch((err: BusinessError) => {
             ExpectTrue(false);
             console.info(`${caseName} test end`);
             done();
-          }
-        }).catch((err: BusinessError) => {
+            console.info(`${caseName} isSimActive failed, promise: err->${JSON.stringify(err)}`);
+          });
+        } catch {
+          console.info(`${caseName} failed`);
           ExpectTrue(false);
           console.info(`${caseName} test end`);
           done();
-          console.info(`${caseName} isSimActive failed, promise: err->${JSON.stringify(err)}`);
-        });
-      } catch {
-        console.info(`${caseName} failed`);
-        ExpectTrue(false);
-        console.info(`${caseName} test end`);
-        done();
+        }
       }
     });
     /*
@@ -357,26 +389,33 @@ export default function telephonyRadioPublicNeedCardTest() {
     it('testTelephonyRadioGetNetworkSelectionModeAsync0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testTelephonyRadioGetNetworkSelectionModeAsync0100';
       console.info(`${caseName} test start`);
-      if (isSim0Active) {
-        ExpectFail();
+      let simState: sim.SimState = await sim.getSimStateSync(0);
+      if (simState == sim.SimState.SIM_STATE_UNKNOWN) {
+        console.info(`${caseName} failed, SIM STATE IS UNKNOWN`);
         console.info(`${caseName} test end`);
         done();
-      }
-      else {
-        radio.getNetworkSelectionMode(SLOT_0, (err: BusinessError, data: radio.NetworkSelectionMode) => {
-          if (err) {
-            console.info(`${caseName} failed, err->${JSON.stringify(err)}`);
-            ExpectFail();
-            console.info(`${caseName} test end`);
-            done();
-          }
-          else {
-            console.info(`${caseName} success, data->${JSON.stringify(data)}`);
-            ExpectTrue(data >= 0);
-            console.info(`${caseName} test end`);
-            done();
-          }
-        });
+      } else {
+        if (isSim0Active) {
+          ExpectFail();
+          console.info(`${caseName} test end`);
+          done();
+        }
+        else {
+          radio.getNetworkSelectionMode(SLOT_0, (err: BusinessError, data: radio.NetworkSelectionMode) => {
+            if (err) {
+              console.info(`${caseName} failed, err->${JSON.stringify(err)}`);
+              ExpectFail();
+              console.info(`${caseName} test end`);
+              done();
+            }
+            else {
+              console.info(`${caseName} success, data->${JSON.stringify(data)}`);
+              ExpectTrue(data >= 0);
+              console.info(`${caseName} test end`);
+              done();
+            }
+          });
+        }
       }
     });
     /*
@@ -390,24 +429,32 @@ export default function telephonyRadioPublicNeedCardTest() {
     it('testTelephonyRadioGetNetworkSelectionModePromise0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testTelephonyRadioGetNetworkSelectionModePromise0100';
       console.info(`${caseName} test start`);
-      if (isSim0Active) {
-        ExpectFail();
+      let simState: sim.SimState = await sim.getSimStateSync(0);
+      if (simState == sim.SimState.SIM_STATE_UNKNOWN) {
+        console.info(`${caseName} failed, SIM STATE IS UNKNOWN`);
         console.info(`${caseName} test end`);
         done();
-      }
-      else {
-        radio.getNetworkSelectionMode(SLOT_0).then((data: radio.NetworkSelectionMode) => {
-          console.info(`${caseName} success, data->${JSON.stringify(data)}`);
-          ExpectTrue(data >= 0);
-          console.info(`${caseName} test end`);
-          done();
-        }).catch((err: BusinessError) => {
-          console.info(`${caseName} failed, err->${JSON.stringify(err)}`);
+      } else {
+        if (isSim0Active) {
           ExpectFail();
           console.info(`${caseName} test end`);
           done();
-        });
+        }
+        else {
+          radio.getNetworkSelectionMode(SLOT_0).then((data: radio.NetworkSelectionMode) => {
+            console.info(`${caseName} success, data->${JSON.stringify(data)}`);
+            ExpectTrue(data >= 0);
+            console.info(`${caseName} test end`);
+            done();
+          }).catch((err: BusinessError) => {
+            console.info(`${caseName} failed, err->${JSON.stringify(err)}`);
+            ExpectFail();
+            console.info(`${caseName} test end`);
+            done();
+          });
+        }
       }
+
     });
     /*
      * @tc.number: SUB_Telephony_Radio_GetISOCountryCodeForNetwork_Async_0100
@@ -515,29 +562,36 @@ export default function telephonyRadioPublicNeedCardTest() {
     it('testTelephonyRadioGetPrimarySlotId0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testTelephonyRadioGetPrimarySlotId0100';
       console.info(`${caseName} test start`);
-      radio.setPrimarySlotId(SLOT_0, (err: BusinessError) => {
-        if (err) {
-          console.info(`${caseName} failed, callback: err->${JSON.stringify(err)}`);
-          ExpectFail();
-          console.info(`${caseName} test end`);
-          done();
-        } else {
-          console.info(`${caseName} success.`);
-          radio.getPrimarySlotId((err: BusinessError, data: number) => {
-            if (err) {
-              console.info(`${caseName} failed, callback: err->${JSON.stringify(err)}`);
-              ExpectFail();
-              console.info(`${caseName} test end`);
-              done();
-            } else {
-              console.info(`${caseName} success, callback: data->${JSON.stringify(data)}`);
-              ExpectTrue(data === SLOT_0);
-              console.info(`${caseName} test end`);
-              done();
-            }
-          });
-        }
-      });
+      let simState: sim.SimState = await sim.getSimStateSync(0);
+      if (simState == sim.SimState.SIM_STATE_UNKNOWN) {
+        console.info(`${caseName} failed, SIM STATE IS UNKNOWN`);
+        console.info(`${caseName} test end`);
+        done();
+      } else {
+        radio.setPrimarySlotId(SLOT_0, (err: BusinessError) => {
+          if (err) {
+            console.info(`${caseName} failed, callback: err->${JSON.stringify(err)}`);
+            ExpectFail();
+            console.info(`${caseName} test end`);
+            done();
+          } else {
+            console.info(`${caseName} success.`);
+            radio.getPrimarySlotId((err: BusinessError, data: number) => {
+              if (err) {
+                console.info(`${caseName} failed, callback: err->${JSON.stringify(err)}`);
+                ExpectFail();
+                console.info(`${caseName} test end`);
+                done();
+              } else {
+                console.info(`${caseName} success, callback: data->${JSON.stringify(data)}`);
+                ExpectTrue(data === SLOT_0);
+                console.info(`${caseName} test end`);
+                done();
+              }
+            });
+          }
+        });
+      }
     });
     /*
      * @tc.number: SUB_Telephony_Radio_GetPrimarySlotId_0400
@@ -550,26 +604,33 @@ export default function telephonyRadioPublicNeedCardTest() {
     it('testTelephonyRadioGetPrimarySlotId0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testTelephonyRadioGetPrimarySlotId0400';
       console.info(`${caseName} test start`);
-      radio.setPrimarySlotId(SLOT_0, (err: BusinessError) => {
-        if (err) {
-          console.info(`setPrimarySlotId failed, callback: err->${JSON.stringify(err)}`);
-          ExpectFail();
-          console.info(`${caseName} test end`);
-          done();
-        } else {
-          console.info(`setPrimarySlotId success.`);
-          radio.getPrimarySlotId().then((data: number) => {
-            console.info(`${caseName} success, promise: data->${JSON.stringify(data)}`);
-            ExpectTrue(data === SLOT_0);
-            done()
-          }).catch((err: BusinessError) => {
-            console.info(`${caseName} failed, promise: err->${JSON.stringify(err)}`);
+      let simState: sim.SimState = await sim.getSimStateSync(0);
+      if (simState == sim.SimState.SIM_STATE_UNKNOWN) {
+        console.info(`${caseName} failed, SIM STATE IS UNKNOWN`);
+        console.info(`${caseName} test end`);
+        done();
+      } else {
+        radio.setPrimarySlotId(SLOT_0, (err: BusinessError) => {
+          if (err) {
+            console.info(`setPrimarySlotId failed, callback: err->${JSON.stringify(err)}`);
             ExpectFail();
             console.info(`${caseName} test end`);
             done();
-          });
-        }
-      });
+          } else {
+            console.info(`setPrimarySlotId success.`);
+            radio.getPrimarySlotId().then((data: number) => {
+              console.info(`${caseName} success, promise: data->${JSON.stringify(data)}`);
+              ExpectTrue(data === SLOT_0);
+              done()
+            }).catch((err: BusinessError) => {
+              console.info(`${caseName} failed, promise: err->${JSON.stringify(err)}`);
+              ExpectFail();
+              console.info(`${caseName} test end`);
+              done();
+            });
+          }
+        });
+      }
     });
     /*
        * @tc.number: SUB_Telephony_Radio_GetSignalInformation_0100
@@ -648,29 +709,36 @@ export default function telephonyRadioPublicNeedCardTest() {
     it('testTelephonyRadioIsRadioOn0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testTelephonyRadioIsRadioOn0100';
       console.info(`${caseName} test start`);
-      radio.setPrimarySlotId(SLOT_0, (err: BusinessError) => {
-        if (err) {
-          console.info(`${caseName} failed, callback: err->${JSON.stringify(err)}`);
-          ExpectFail();
-          console.info(`${caseName} test end`);
-          done();
-        } else {
-          console.info(`${caseName} success.`);
-          radio.isRadioOn((err: BusinessError, data: boolean) => {
-            if (err) {
-              console.info(`${caseName} failed, callback: err->${JSON.stringify(err)}`);
-              ExpectFail();
-              console.info(`${caseName} test end`);
-              done();
-            } else {
-              console.info(`${caseName} success, callback: data->${JSON.stringify(data)}`);
-              ExpectTrue(true);
-              console.info(`${caseName} test end`);
-              done();
-            }
-          });
-        }
-      });
+      let simState: sim.SimState = await sim.getSimStateSync(0);
+      if (simState == sim.SimState.SIM_STATE_UNKNOWN) {
+        console.info(`${caseName} failed, SIM STATE IS UNKNOWN`);
+        console.info(`${caseName} test end`);
+        done();
+      } else {
+        radio.setPrimarySlotId(SLOT_0, (err: BusinessError) => {
+          if (err) {
+            console.info(`${caseName} failed, callback: err->${JSON.stringify(err)}`);
+            ExpectFail();
+            console.info(`${caseName} test end`);
+            done();
+          } else {
+            console.info(`${caseName} success.`);
+            radio.isRadioOn((err: BusinessError, data: boolean) => {
+              if (err) {
+                console.info(`${caseName} failed, callback: err->${JSON.stringify(err)}`);
+                ExpectFail();
+                console.info(`${caseName} test end`);
+                done();
+              } else {
+                console.info(`${caseName} success, callback: data->${JSON.stringify(data)}`);
+                ExpectTrue(true);
+                console.info(`${caseName} test end`);
+                done();
+              }
+            });
+          }
+        });
+      }
     });
     /*
     * @tc.number: SUB_Telephony_Radio_IsRadioOn_0900
@@ -683,24 +751,31 @@ export default function telephonyRadioPublicNeedCardTest() {
     it('testTelephonyRadioIsRadioOn0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testTelephonyRadioIsRadioOn0900';
       console.info(`${caseName} test start`);
-      let isSimActive = sim.isSimActiveSync(SLOT_0);
-      if (isSimActive === true) {
-        radio.isRadioOn(SLOT_0).then((data: boolean) => {
-          console.info(`${caseName} success, promise: data->${JSON.stringify(data)}`);
-          ExpectTrue(true);
-          console.info(`${caseName} test end`);
-          done();
-        }).catch((err: BusinessError) => {
-          console.info(`${caseName} failed, promise: err->${JSON.stringify(err)}`);
+      let simState: sim.SimState = await sim.getSimStateSync(0);
+      if (simState == sim.SimState.SIM_STATE_UNKNOWN) {
+        console.info(`${caseName} failed, SIM STATE IS UNKNOWN`);
+        console.info(`${caseName} test end`);
+        done();
+      } else {
+        let isSimActive = sim.isSimActiveSync(SLOT_0);
+        if (isSimActive === true) {
+          radio.isRadioOn(SLOT_0).then((data: boolean) => {
+            console.info(`${caseName} success, promise: data->${JSON.stringify(data)}`);
+            ExpectTrue(true);
+            console.info(`${caseName} test end`);
+            done();
+          }).catch((err: BusinessError) => {
+            console.info(`${caseName} failed, promise: err->${JSON.stringify(err)}`);
+            ExpectFail();
+            console.info(`${caseName} test end`);
+            done();
+          });
+        } else {
+          console.info(`${caseName} SIM not activated`);
           ExpectFail();
           console.info(`${caseName} test end`);
           done();
-        });
-      } else {
-        console.info(`${caseName} SIM not activated`);
-        ExpectFail();
-        console.info(`${caseName} test end`);
-        done();
+        }
       }
     });
   });

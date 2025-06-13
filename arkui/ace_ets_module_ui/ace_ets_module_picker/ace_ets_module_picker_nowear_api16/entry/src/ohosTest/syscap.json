@@ -1,12 +1,14 @@
 {
     "devices": {
-        "general": [],
+        "general": [
+            "default",
+            "tablet",
+            "2in1"
+        ],
         "custom": [
             {
                 "xts": [
-                    "SystemCapability.ArkUI.ArkUI.Full",
-                    "SystemCapability.ArkUI.ArkUI.Lite",
-                    "SystemCapability.ArkUI.ArkUI.Circle"
+                    "SystemCapability.Startup.SystemInfo"
                 ]
             }
         ]

@@ -74,6 +74,8 @@ export default function AudioRecorderEnumTest() {
       expect(media.CodecMimeType.AUDIO_AAC).assertEqual('audio/mp4a-latm');
       expect(media.CodecMimeType.AUDIO_VORBIS).assertEqual('audio/vorbis');
       expect(media.CodecMimeType.AUDIO_FLAC).assertEqual('audio/flac');
+      expect(media.CodecMimeType.AUDIO_AMR_NB).assertEqual('audio/3gpp');
+      expect(media.CodecMimeType.AUDIO_AMR_WB).assertEqual('audio/amr-wb');
       done();
     });
   })

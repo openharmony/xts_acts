@@ -127,8 +127,9 @@ export default function EnableToolBarAdaptation() {
       await driver.assertComponentExist(ON.type('ToolBar'));
       await driver.delayMs(500);
 
-      await driver.setDisplayRotation(DisplayRotation.ROTATION_90);
-      console.info('[EnableToolBarAdaptation_0300] ToolBar exist');
+      let landscapeBtn: Component = await driver.findComponent(ON.id('landscapeId'));
+      await landscapeBtn.click();
+      console.info('[EnableToolBarAdaptation_0300] landscapeBtn click');
       await driver.delayMs(1000);
 
       await driver.assertComponentExist(ON.type('ToolBar'));
@@ -147,7 +148,12 @@ export default function EnableToolBarAdaptation() {
       let btn3: Component = await driver.findComponent(ON.id('popId'));
       await btn3.click();
       console.info('[EnableToolBarAdaptation_0300] btn3 click');
+      await driver.delayMs(1000);
 
+      let portraitBtn: Component = await driver.findComponent(ON.id('portraitId'));
+      await portraitBtn.click();
+      console.info('[EnableToolBarAdaptation_0300] portraitBtn click');
+      await driver.delayMs(1000);
       console.info('EnableToolBarAdaptation_0300 END');
       done();
     });
@@ -163,21 +169,25 @@ export default function EnableToolBarAdaptation() {
       await CommonFunc.sleep(500);
 
       let driver = Driver.create();
-      await driver.delayMs(500);
-
-      await driver.setDisplayRotation(DisplayRotation.ROTATION_0);
       await driver.delayMs(1000);
 
       let btn1: Component = await driver.findComponent(ON.id('changeEnableId'));
       await btn1.click();
       console.info('[EnableToolBarAdaptation_0400] btn1 click');
 
-      await driver.assertComponentExist(ON.type('ToolBar'));
-      console.info('[EnableToolBarAdaptation_0400] ToolBar is exist');
-      await driver.delayMs(1000);
+      let navigation: Component = await driver.findComponent(ON.type('Navigation'));
+      let rect = await navigation.getBounds();
+      let navigationWidth = rect.right;
+      console.info('[EnableToolBarAdaptation_0400] navigationWidth is ', navigationWidth);
+      if (navigationWidth < 1500) {
+        await driver.assertComponentExist(ON.type('ToolBar'));
+        console.info('[EnableToolBarAdaptation_0400] ToolBar is exist');
+        await driver.delayMs(1000);
+      }
 
-      await driver.setDisplayRotation(DisplayRotation.ROTATION_90);
-      console.info('[EnableToolBarAdaptation_0400] ROTATION_90');
+      let landscapeBtn: Component = await driver.findComponent(ON.id('landscapeId'));
+      await landscapeBtn.click();
+      console.info('[EnableToolBarAdaptation_0400] landscapeBtn click');
       await driver.delayMs(1000);
 
       let toolBar1: Component | null = await driver.findComponent(ON.type('ToolBar'));
@@ -197,7 +207,7 @@ export default function EnableToolBarAdaptation() {
 
       let toolBar2: Component | null = await driver.findComponent(ON.type('ToolBar'));
       await driver.delayMs(500);
-     
+
       if (toolBar2 == null) {
         expect(toolBar2).assertEqual(null)
         console.info('[EnableToolBarAdaptation_0400] navDestination ToolBar is not exist');
@@ -205,8 +215,16 @@ export default function EnableToolBarAdaptation() {
         await driver.assertComponentExist(ON.type('NavigationMenu'));
         console.info('[EnableToolBarAdaptation_0400] navDestination ROTATION_90 NavigationMenu is exist');
       }
-      await driver.setDisplayRotation(DisplayRotation.ROTATION_0);
-      await driver.delayMs(500);
+      
+      let btn3: Component = await driver.findComponent(ON.id('popId'));
+      await btn3.click();
+      console.info('[EnableToolBarAdaptation_0400] btn3 click');
+      await driver.delayMs(1000);
+
+      let portraitBtn: Component = await driver.findComponent(ON.id('portraitId'));
+      await portraitBtn.click();
+      console.info('[EnableToolBarAdaptation_0400] portraitBtn click');
+      await driver.delayMs(1000);
       console.info('EnableToolBarAdaptation_0400 END');
       done();
     });

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect, beforeAll, beforeEach } from "@ohos/hypium"
+import { describe, it, expect, beforeAll, beforeEach, Level } from "@ohos/hypium"
 import nativeavdemuxer from 'libnativeavdemuxerndk.so'
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
 import Utils from './Utils';
@@ -80,7 +80,7 @@ export default function nativeavdemuxerNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAVDemuxerReadSample001', 0, async (done: Function) => {
+    it('testOHAVDemuxerReadSample001', Level.LEVEL0, async (done: Function) => {
       let result: number = nativeavdemuxer.oHAVDemuxerReadSample();
       expect(result).assertEqual(0);
       done();
@@ -94,7 +94,7 @@ export default function nativeavdemuxerNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAVDemuxerCreateWithSource001', 0, async (done: Function) => {
+    it('testOHAVDemuxerCreateWithSource001', Level.LEVEL0, async (done: Function) => {
       let result: number = nativeavdemuxer.oHAVDemuxerCreateWithSource();
       expect(result).assertEqual(0);
       done();
@@ -108,7 +108,7 @@ export default function nativeavdemuxerNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAVDemuxerDestroy001', 0, async (done: Function) => {
+    it('testOHAVDemuxerDestroy001', Level.LEVEL0, async (done: Function) => {
       let result: number = nativeavdemuxer.oHAVDemuxerDestroy();
       expect(result).assertEqual(0);
       done();
@@ -122,7 +122,7 @@ export default function nativeavdemuxerNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAVDemuxerUnselectTrackByID001', 0, async (done: Function) => {
+    it('testOHAVDemuxerUnselectTrackByID001', Level.LEVEL0, async (done: Function) => {
       let result: number = nativeavdemuxer.oHAVDemuxerUnselectTrackByID();
       expect(result).assertEqual(0);
       done();
@@ -136,7 +136,7 @@ export default function nativeavdemuxerNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAVDemuxerSeekToTime001', 0, async (done: Function) => {
+    it('testOHAVDemuxerSeekToTime001', Level.LEVEL0, async (done: Function) => {
       let result: number = nativeavdemuxer.oHAVDemuxerSeekToTime();
       expect(result).assertEqual(0);
       done();
@@ -150,7 +150,7 @@ export default function nativeavdemuxerNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testOHAVDemuxerSelectTrackByID001', 0, async (done: Function) => {
+    it('testOHAVDemuxerSelectTrackByID001', Level.LEVEL0, async (done: Function) => {
       let result: number = nativeavdemuxer.oHAVDemuxerSelectTrackByID();
       expect(result).assertEqual(0);
       done();

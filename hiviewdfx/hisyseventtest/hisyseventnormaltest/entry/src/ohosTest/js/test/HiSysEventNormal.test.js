@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import hiSysEvent from '@ohos.hiSysEvent'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size} from '@ohos/hypium'
 
 export default function hiSysEventNormalTest() {
 describe('hiSysEventNormalTest', function () {
@@ -38,7 +38,7 @@ describe('hiSysEventNormalTest', function () {
 	 * @tc.name testHiSysEventApi58
 	 * @tc.desc 验证普通应用调用write接口使用callback方式进行回调处理，返回错误码202
 	 */
-	it('testHiSysEventApi58', 1, async function (done) {
+	it('testHiSysEventApi58', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 		console.info('testHiSysEventApi58 start')
 		try {
 			hiSysEvent.write({
@@ -68,7 +68,7 @@ describe('hiSysEventNormalTest', function () {
 	 * @tc.name testHiSysEventApi59
 	 * @tc.desc 验证普通应用调用write接口使用Promise方式进行回调处理，返回错误码202
 	 */
-	it('testHiSysEventApi59', 1, async function (done) {
+	it('testHiSysEventApi59', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 		console.info('testHiSysEventApi59 start')
 		try {
 			hiSysEvent.write({
@@ -101,7 +101,7 @@ describe('hiSysEventNormalTest', function () {
 	 * @tc.name testHiSysEventApi60
 	 * @tc.desc 验证普通应用调用订阅接口，规则为domain+eventName, rule=PREFIX，返回错误码202
 	 */
-	it('testHiSysEventApi60', 3, async function (done) {
+	it('testHiSysEventApi60', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
 		console.info('testHiSysEventApi60 start')
 		let watcher = {
 			rules: [{
@@ -143,7 +143,7 @@ describe('hiSysEventNormalTest', function () {
 	 * @tc.name testHiSysEventApi61
 	 * @tc.desc 验证普通应用调用订阅接口，规则为domain+eventName, rule=REGULAR，返回错误码202
 	 */
-	it('testHiSysEventApi61', 3, async function (done) {
+	it('testHiSysEventApi61', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
 		console.info('testHiSysEventApi61 start')
 		let watcher = {
 			rules: [{
@@ -184,7 +184,7 @@ describe('hiSysEventNormalTest', function () {
 	 * @tc.name testHiSysEventApi62
 	 * @tc.desc 验证普通应用调用订阅接口，规则为domain+eventName, rule=WHOLE_WORD，返回错误码202
 	 */
-	it('testHiSysEventApi62', 3, async function (done) {
+	it('testHiSysEventApi62', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
 		console.info('testHiSysEventApi62 start')
 		let watcher = {
 			rules: [{
@@ -225,7 +225,7 @@ describe('hiSysEventNormalTest', function () {
 	 * @tc.name testHiSysEventApi63
 	 * @tc.desc 验证普通应用调用订阅接口，规则为domain+eventName+tag, rule=PREFIX，返回错误码202
 	 */
-	it('testHiSysEventApi63', 3, async function (done) {
+	it('testHiSysEventApi63', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
 		console.info('testHiSysEventApi63 start')
 		let watcher = {
 			rules: [{
@@ -267,7 +267,7 @@ describe('hiSysEventNormalTest', function () {
 	 * @tc.name testHiSysEventApi64
 	 * @tc.desc 验证普通应用调用订阅接口，规则为tag, rule=REGULAR，返回错误码202
 	 */
-	it('testHiSysEventApi64', 3, async function (done) {
+	it('testHiSysEventApi64', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
 		console.info('testHiSysEventApi64 start')
 		let watcher = {
 			rules: [{
@@ -307,7 +307,7 @@ describe('hiSysEventNormalTest', function () {
 	 * @tc.name testHiSysEventApi65
 	 * @tc.desc 验证普通应用调用删除订阅接口，返回错误码202
 	 */
-	it('testHiSysEventApi65', 3, async function (done) {
+	it('testHiSysEventApi65', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
 		console.info('testHiSysEventApi18 start')
 		let watcher = {
 			rules: [{
@@ -350,7 +350,7 @@ describe('hiSysEventNormalTest', function () {
 	 * @tc.name testHiSysEventApi66
 	 * @tc.desc 验证普通应用调用查询订阅接口，返回错误码202
 	 */
-	it('testHiSysEventApi66', 1, async function (done) {
+	it('testHiSysEventApi66', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
 		console.info('testHiSysEventApi66 start')
 		try {
 			hiSysEvent.query({
@@ -381,7 +381,7 @@ describe('hiSysEventNormalTest', function () {
 	 * @tc.name testHiSysEventBox01
 	 * @tc.desc 验证普通应用调用exportSysEvents接口，返回错误码202
 	 */
-	it('testHiSysEventBox01', 1, async function (done) {
+	it('testHiSysEventBox01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
 		console.info('testHiSysEventBox01 start')
 		try {
 			hiSysEvent.exportSysEvents({
@@ -408,7 +408,7 @@ describe('hiSysEventNormalTest', function () {
 	 * @tc.name testHiSysEventBox02
 	 * @tc.desc 验证普通应用调用subscribe接口，返回错误码202
 	 */
-	it('testHiSysEventBox02', 1, async function (done) {
+	it('testHiSysEventBox02', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
 		console.info('testHiSysEventBox02 start')
 		try {
 			hiSysEvent.subscribe([{
@@ -431,7 +431,7 @@ describe('hiSysEventNormalTest', function () {
 	 * @tc.name testHiSysEventBox03
 	 * @tc.desc 验证普通应用调用unsubscribe接口，返回错误码202
 	 */
-	it('testHiSysEventBox03', 1, async function (done) {
+	it('testHiSysEventBox03', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
 		console.info('testHiSysEventBox03 start')
 		try {
 			hiSysEvent.unsubscribe();

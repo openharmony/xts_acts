@@ -193,6 +193,31 @@ export default function publishReminderNopTest() {
       });
         console.info('--------SUB_deleteExcludeDates001----after----');
     })
+
+    /*
+     * @tc.number:SUB_updateReminder001
+     * @tc.name: SUB_updateReminder001
+     * @tc.desc:Using the updateReminder then method without permission
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
+     */
+    it("SUB_updateReminder001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      console.info('--------SUB_updateReminder001----before----');
+      let reminderId: number = 1;
+      let timer: reminderAgentManager.ReminderRequestTimer = {
+        reminderType: reminderAgentManager.ReminderType.REMINDER_TYPE_TIMER,
+        triggerTimeInSeconds: 10
+      }
+      reminderAgentManager.updateReminder(reminderId, timer).then(() => {
+        console.log("SUB_updateReminder001 updateReminder promise");
+      }).catch((err: BusinessError) => {
+        console.error("SUB_updateReminder001 promise err code:" + err.code + " message:" + err.message);
+        expect(err.code).assertEqual(PERMISSION_DENIED_CODE);
+        done();
+      });
+        console.info('--------SUB_updateReminder001----after----');
+    })
     
   })
 }

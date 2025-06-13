@@ -14,7 +14,7 @@
  */
 
 import image from '@ohos.multimedia.image';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import mypixelmap from "libentry.so";
 import { BusinessError } from '@ohos.base';
 
@@ -46,7 +46,7 @@ export default function nativeApiImageJsunit() {
         * @tc.level     : FWK Layer
     */
 
-    it('TC_001', 0, async (done: Function) => {
+    it('TC_001', Level.LEVEL0, async (done: Function) => {
       const color = new ArrayBuffer(96);
       let opts: image.InitializationOptions = {
         alphaType: 0,

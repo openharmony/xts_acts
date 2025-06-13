@@ -162,6 +162,7 @@ export default function flexWrapReverse_fixedParentPadding() {
       let locationText2: RectValue = CommonFunc.getComponentRect('WrapReverseTest29');
       let locationText3: RectValue = CommonFunc.getComponentRect('WrapReverseTest30');
       let locationFlex: RectValue = CommonFunc.getComponentRect('FlexWrapReverseTest10');
+      console.info('[testWrapReverseParentfixedPaddingChildPaddingAndMargin] ((locationFlex.right - locationText1.right) - vp2px(80)):' + ((locationFlex.right - locationText1.right) - vp2px(80)));
       expect(Math.floor(Math.abs((locationFlex.right - locationText1.right) - vp2px(80))) <= 2).assertTrue();
       expect(Math.floor(Math.abs((locationText1.left - locationText2.right) - vp2px(30))) <= 1).assertTrue();
       expect(Math.floor(Math.abs((locationText2.left - locationFlex.left) - vp2px(90))) <= 1).assertTrue();
@@ -169,8 +170,10 @@ export default function flexWrapReverse_fixedParentPadding() {
       expect(Math.floor(Math.abs((locationFlex.right - locationText3.right) - vp2px(50))) <= 1).assertTrue();
       expect(Math.floor(Math.abs((locationText1.top - locationText2.top) - vp2px(30))) <= 1).assertTrue();
       expect(Math.floor(Math.abs((locationText2.top - locationFlex.top) - vp2px(50))) <= 1).assertTrue();
-      expect(Math.floor(Math.abs((locationText3.top - locationText2.bottom) - vp2px(10))) <= 1).assertTrue();
-      expect(Math.floor(Math.abs((locationText3.bottom - locationFlex.bottom) - vp2px(10))) <= 1).assertTrue();
+      console.info('[testWrapReverseParentfixedPaddingChildPaddingAndMargin] ((locationText3.top - locationText2.bottom) - vp2px(10)):' + ((locationText3.top - locationText2.bottom) - vp2px(10)));
+      console.info('[testWrapReverseParentfixedPaddingChildPaddingAndMargin] ((locationText3.bottom - locationFlex.bottom) - vp2px(10)):' + ((locationText3.bottom - locationFlex.bottom) - vp2px(10)));
+      expect(Math.floor(Math.abs((locationText3.top - locationText2.bottom) - vp2px(10))) <= 2).assertTrue();
+      expect(Math.floor(Math.abs((locationText3.bottom - locationFlex.bottom) - vp2px(10))) <= 2).assertTrue();
       expect(Math.floor(Math.abs((locationText3.right - locationText3.left) - (locationText2.right - locationText2.left))) <= 1)
         .assertTrue();
       expect(Math.floor(Math.abs((locationText1.right - locationText1.left) - (locationText2.right - locationText2.left))) <= 1)

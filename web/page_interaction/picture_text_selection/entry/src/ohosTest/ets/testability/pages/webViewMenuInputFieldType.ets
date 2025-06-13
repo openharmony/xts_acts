@@ -40,6 +40,7 @@ struct WebViewMenuInputFieldType {
       ['DONE', inputMethodEngine.ENTER_KEY_TYPE_DONE],
       ['PREVIOUS', inputMethodEngine.ENTER_KEY_TYPE_PREVIOUS]
     ])
+  @State FieldTypeArr:ContextMenuInputFieldType[] = [ContextMenuInputFieldType.None,ContextMenuInputFieldType.PlainText,ContextMenuInputFieldType.Password,ContextMenuInputFieldType.Number,ContextMenuInputFieldType.Telephone,ContextMenuInputFieldType.Other]
 
   controller: webView.WebviewController = new webView.WebviewController();
 
@@ -150,19 +151,19 @@ struct WebViewMenuInputFieldType {
         .key("WebViewMenuInputFieldTypeTestWebView")
         .onContextMenuShow((event) => {
           if (event) {
-            if (event.param.getInputFieldType() == 3) {
+            if (event.param.getInputFieldType() == ContextMenuInputFieldType.Number) {
               Utils.emitEvent(true, 2901)
             }
-            if (event.param.getInputFieldType() == 1) {
+            if (event.param.getInputFieldType() == ContextMenuInputFieldType.PlainText) {
               Utils.emitEvent(true, 2902)
             }
-            if (event.param.getInputFieldType() == 2) {
+            if (event.param.getInputFieldType() == ContextMenuInputFieldType.Password) {
               Utils.emitEvent(true, 2903)
             }
-            if (event.param.getInputFieldType() == 4) {
+            if (event.param.getInputFieldType() == ContextMenuInputFieldType.Telephone) {
               Utils.emitEvent(true, 2904)
             }
-            if (event.param.getInputFieldType() == 5) {
+            if (event.param.getInputFieldType() == ContextMenuInputFieldType.Other) {
               Utils.emitEvent(true, 2905)
             }
             event.result.closeContextMenu()

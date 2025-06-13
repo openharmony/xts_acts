@@ -10,7 +10,8 @@
       "compatible": 7,
       "releaseType": "Release",
       "target": 8
-    }
+    },
+    "debug": false
   },
   "deviceConfig": {},
   "module": {
@@ -24,6 +25,11 @@
       "wearable",
       "car"
     ],
+    "metadata": [{
+      "name": "module_metadata",
+      "value": "a test demo for module metadata",
+      "resource": ""
+    }],
     "distro": {
       "deliveryWithInstall": true,
       "moduleName": "entry",

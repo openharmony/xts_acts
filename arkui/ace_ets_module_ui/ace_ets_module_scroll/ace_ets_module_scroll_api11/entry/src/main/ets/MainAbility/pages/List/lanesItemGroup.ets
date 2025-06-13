@@ -29,7 +29,7 @@ struct lanesItemGroupExample {
                 Text('Group:' + (groupIndex + 1) + ', Item:' + item)
                   .id('group_ver_' + (groupIndex + 1) + '_' + item)
                   .width('100%')
-                  .height(60)
+                  .height('20%')
                   .fontSize(20)
                   .textAlign(TextAlign.Center)
                   .backgroundColor(Color.Pink)

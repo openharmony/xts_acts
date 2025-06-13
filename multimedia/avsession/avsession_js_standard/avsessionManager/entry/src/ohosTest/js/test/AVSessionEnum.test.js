@@ -15,7 +15,7 @@
 
 import avSession from '@ohos.multimedia.avsession';
 import { AVCastPickerState, AVCastPickerStyle, AVCastPickerColorMode} from '@ohos.multimedia.avCastPickerParam';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 
 export default function AVSessionEnum() {
     describe('AVSessionEnum', function () {
@@ -44,7 +44,7 @@ export default function AVSessionEnum() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_CONNECTION_STATE_ENUM_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_CONNECTION_STATE_ENUM_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info(`ConnectionState STATE_CONNECTING is ${avSession.ConnectionState.STATE_CONNECTING}`);
             expect(avSession.ConnectionState.STATE_CONNECTING).assertEqual(0);
             console.info(`ConnectionState STATE_CONNECTED is ${avSession.ConnectionState.STATE_CONNECTED}`);
@@ -62,7 +62,7 @@ export default function AVSessionEnum() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_AVCAST_CATEGORY_ENUM_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_AVCAST_CATEGORY_ENUM_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info(`AVCastCategory CATEGORY_LOCAL is ${avSession.AVCastCategory.CATEGORY_LOCAL}`);
             expect(avSession.AVCastCategory.CATEGORY_LOCAL).assertEqual(0);
             console.info(`AVCastCategory CATEGORY_REMOTE is ${avSession.AVCastCategory.CATEGORY_REMOTE}`);
@@ -78,7 +78,7 @@ export default function AVSessionEnum() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_DEVICE_TYPE_ENUM_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_DEVICE_TYPE_ENUM_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info(`DeviceType DEVICE_TYPE_LOCAL is ${avSession.DeviceType.DEVICE_TYPE_LOCAL}`);
             expect(avSession.DeviceType.DEVICE_TYPE_LOCAL).assertEqual(0);
             console.info(`DeviceType DEVICE_TYPE_TV is ${avSession.DeviceType.DEVICE_TYPE_TV}`);
@@ -98,7 +98,7 @@ export default function AVSessionEnum() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_PLAYBACKSTATE_ENUM_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_PLAYBACKSTATE_ENUM_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info(`PlaybackState PLAYBACK_STATE_COMPLETED is ${avSession.PlaybackState.PLAYBACK_STATE_COMPLETED}`);
             expect(avSession.PlaybackState.PLAYBACK_STATE_COMPLETED).assertEqual(7);
             console.info(`PlaybackState PLAYBACK_STATE_RELEASED is ${avSession.PlaybackState.PLAYBACK_STATE_RELEASED}`);
@@ -116,7 +116,7 @@ export default function AVSessionEnum() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_ERROR_CODE_ENUM_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_ERROR_CODE_ENUM_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info(`AVSessionErrorCode ERR_CODE_SERVICE_EXCEPTION is ${avSession.AVSessionErrorCode.ERR_CODE_SERVICE_EXCEPTION}`);
             expect(avSession.AVSessionErrorCode.ERR_CODE_SERVICE_EXCEPTION).assertEqual(6600101);
 
@@ -154,7 +154,7 @@ export default function AVSessionEnum() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_AVCASTPICKERSTATE_ENUM_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_AVCASTPICKERSTATE_ENUM_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info(`AVCastPickerState STATE_APPEARING is ${AVCastPickerState.STATE_APPEARING}`);
             expect(AVCastPickerState.STATE_APPEARING).assertEqual(0);
 
@@ -171,7 +171,7 @@ export default function AVSessionEnum() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_AVCASTPICKERSTYLE_ENUM_0100', 2, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_AVCASTPICKERSTYLE_ENUM_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info(`AVCastPickerStyle STYLE_PANEL is ${AVCastPickerStyle.STYLE_PANEL}`);
             expect(AVCastPickerStyle.STYLE_PANEL).assertEqual(0);
 
@@ -188,7 +188,7 @@ export default function AVSessionEnum() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_AVCASTPICKERCOLORMODE_ENUM_0100', 2, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_AVCASTPICKERCOLORMODE_ENUM_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info(`AVCastPickerColorMode AUTO is ${AVCastPickerColorMode.AUTO}`);
             expect(AVCastPickerColorMode.AUTO).assertEqual(0);
 

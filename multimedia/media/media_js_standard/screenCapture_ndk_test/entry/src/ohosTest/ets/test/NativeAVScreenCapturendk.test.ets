@@ -25,6 +25,7 @@ import UIAbility from '@ohos.app.ability.UIAbility';
 import common from '@ohos.app.ability.common';
 import { BusinessError } from '@ohos.base';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
+import deviceinfo from '@ohos.deviceInfo'
 
 const Tag = 'screen_capture_ndk_test:'
 
@@ -271,6 +272,166 @@ export default function nativeAVScreenCaptureNdkTest() {
       console.info(Tag + "normalAVScreenCaptureShowCursorWithParaNullTrue-------------res:" + result);
       expect(result).assertEqual(0);
       done();
-    });  
+    });
+
+    /**
+     * @tc.number       SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_SetSelectionCallback_0100
+     * @tc.name         SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_SetSelectionCallback_0100
+     * @tc.desc         OH_AVScreenCapture_StartScreenCapture_SetSelectionCallback_Success
+     * @tc.size         MediumTest
+     * @tc.type         Function
+     * @tc.level        Level 1
+     */
+    it('SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_SetSelectionCallback_0100', Level.LEVEL0, async (done: Function) => {
+      console.info(Tag + "normalAVScreenCaptureSelectionCallbackSuccess-------------before click:");
+      let result: number = myScreenCaptureNdk.normalAVScreenCaptureSelectionCallbackSuccess();
+      console.info(Tag + "normalAVScreenCaptureSelectionCallbackSuccess-------------result:" + result);
+      expect(result).assertEqual(0);
+      let isShowDialog: number = await Utils.btnTextScreenCapture();
+      let resultStop: number = myScreenCaptureNdk.normalAVScreenCaptureSelectionCallbackStop();
+      console.info(Tag + "normalAVScreenCaptureSelectionCallbackSuccess-------------resultStop:" + resultStop);
+      expect(resultStop).assertEqual(0);
+      expect(isShowDialog).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number       SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_KEEP_DURING_CALL_0100
+     * @tc.name         SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_KEEP_DURING_CALL_0100
+     * @tc.desc         OH_AVScreenCapture_StrategyForKeepCaptureDuringCall-False
+     * @tc.size         MediumTest
+     * @tc.type         Function
+     * @tc.level        Level 0
+     */
+    it('SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_KEEP_DURING_CALL_0100', Level.LEVEL0, async (done: Function) => {
+      let result: number = myScreenCaptureNdk.normalAVScreenCaptureStrategyForKeepCaptureDuringCallFalse();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number       SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_KEEP_DURING_CALL_0200
+     * @tc.name         SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_KEEP_DURING_CALL_0200
+     * @tc.desc         OH_AVScreenCapture_StrategyForKeepCaptureDuringCall-True
+     * @tc.size         MediumTest
+     * @tc.type         Function
+     * @tc.level        Level 0
+     */
+    it('SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_KEEP_DURING_CALL_0200', Level.LEVEL0, async (done: Function) => {
+      let result: number = myScreenCaptureNdk.normalAVScreenCaptureStrategyForKeepCaptureDuringCallTrue();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number       SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_CONTENT_CHANGED_0100
+     * @tc.name         SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_CONTENT_CHANGED_0100
+     * @tc.desc         OH_AVScreenCapture_SetCaptureContentChangedCallback
+     * @tc.size         MediumTest
+     * @tc.type         Function
+     * @tc.level        Level 1
+     */
+    it('SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_CONTENT_CHANGED_0100', Level.LEVEL0,async (done: Function) => {
+      console.info(Tag + "normalAVScreenCaptureContentChangedCallback-------------before click:");
+      let result: number = myScreenCaptureNdk.normalAVScreenCaptureContentChangedCallback();
+      console.info(Tag + "normalAVScreenCaptureContentChangedCallback-------------res:" + result);
+      expect(result).assertEqual(0);
+
+      let isShowDialog: number = await Utils.btnTextScreenCapture();
+      let resultStop: number = myScreenCaptureNdk.normalAVScreenCaptureContentChangedTestStop();
+      console.info(Tag + "normalAVScreenCaptureContentChangedTestStop-------------resultStop:" + resultStop);
+      expect(resultStop).assertEqual(0);
+      expect(isShowDialog).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number       SUB_MULTIMEDIA_SCREEN_CAPTURE_SET_CAPTURE_AREA_0100
+     * @tc.name         OH_AVScreenCapture_StartScreenCapture_SetCaptureArea_True
+     * @tc.desc         OH_AVScreenCapture_StartScreenCapture_SetCaptureArea_True
+     * @tc.size         MediumTest
+     * @tc.type         Function
+     * @tc.level        Level 1
+     */
+    it('SUB_MULTIMEDIA_SCREEN_CAPTURE_SET_CAPTURE_AREA_0100', Level.LEVEL0, async (done: Function) => {
+      console.info(Tag + "normalAVScreenCaptureSetCaptureAreaTest-------------before click:");
+      let result: number = myScreenCaptureNdk.normalAVScreenCaptureSetCaptureAreaTest();
+      console.info(Tag + "normalAVScreenCaptureSetCaptureAreaTest-------------res:" + result);
+      expect(result).assertEqual(0);
+
+      let isShowDialog: number = await Utils.btnTextScreenCapture();
+      let resultStop: number = myScreenCaptureNdk.normalAVScreenCaptureSetCaptureAreaTestStop();
+      console.info(Tag + "normalAVScreenCaptureSetCaptureAreaTestStop-------------resultStop:" + resultStop);
+      expect(resultStop).assertEqual(0);
+      expect(isShowDialog).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number       SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_STRATEGY_FOR_PRIVACY_MASKMODE_0100
+     * @tc.name         SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_STRATEGY_FOR_PRIVACY_MASKMODE_0100
+     * @tc.desc         OH_AVScreenCapture_StrategyForPrivacyMaskMode 0
+     * @tc.size         MediumTest
+     * @tc.type         Function
+     * @tc.level        Level 1
+     */
+    it('SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_STRATEGY_FOR_PRIVACY_MASKMODE_0100', Level.LEVEL0,async (done: Function) => {
+      console.info(Tag + "normalAVScreenCaptureStrategyForPrivacyMaskModeScreen-------------before click:");
+      let result: number = myScreenCaptureNdk.normalAVScreenCaptureStrategyForPrivacyMaskModeScreen();
+      console.info(Tag + "normalAVScreenCaptureStrategyForPrivacyMaskModeScreen-------------res:" + result);
+      expect(result).assertEqual(0);
+
+      let isShowDialog: number = await Utils.btnTextScreenCapture();
+      let resultStop: number = myScreenCaptureNdk.normalAVScreenCaptureStrategyForPrivacyMaskModeTestStop();
+      console.info(Tag + "normalAVScreenCaptureStrategyForPrivacyMaskModeTestStop-------------resultStop:" +
+          resultStop);
+      expect(resultStop).assertEqual(0);
+      expect(isShowDialog).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number       SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_STRATEGY_FOR_PRIVACY_MASKMODE_0101
+     * @tc.name         SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_STRATEGY_FOR_PRIVACY_MASKMODE_0101
+     * @tc.desc         OH_AVScreenCapture_StrategyForPrivacyMaskMode 1
+     * @tc.size         MediumTest
+     * @tc.type         Function
+     * @tc.level        Level 1
+     */
+    it('SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_STRATEGY_FOR_PRIVACY_MASKMODE_0101', Level.LEVEL0,async (done: Function) => {
+      console.info(Tag + "normalAVScreenCaptureStrategyForPrivacyMaskModeDisplay-------------before click:");
+      let result: number = myScreenCaptureNdk.normalAVScreenCaptureStrategyForPrivacyMaskModeDisplay();
+      console.info(Tag + "normalAVScreenCaptureStrategyForPrivacyMaskModeDisplay-------------res:" + result);
+      expect(result).assertEqual(0);
+
+      let isShowDialog: number = await Utils.btnTextScreenCapture();
+      let resultStop: number = myScreenCaptureNdk.normalAVScreenCaptureStrategyForPrivacyMaskModeTestStop();
+      console.info(Tag + "normalAVScreenCaptureStrategyForPrivacyMaskModeTestStop-------------resultStop:" +
+          resultStop);
+      expect(resultStop).assertEqual(0);
+      expect(isShowDialog).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number       SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_STRATEGY_FOR_PRIVACY_MASKMODE_0401
+     * @tc.name         SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_STRATEGY_FOR_PRIVACY_MASKMODE_0401
+     * @tc.desc         OH_AVScreenCapture_StrategyForPrivacyMaskMode 1
+     * @tc.size         MediumTest
+     * @tc.type         Function
+     * @tc.level        Level 0
+     */
+    it('SUB_MULTIMEDIA_SCREEN_CAPTURE_NORMAL_STRATEGY_FOR_PRIVACY_MASKMODE_0401', Level.LEVEL0,async (done: Function) => {
+      console.info(Tag + "multiAVScreenCaptureCreate-------------start :");
+      let sdkApiVersionInfo = deviceinfo.sdkApiVersion;
+      console.info(Tag + "sdkApiVersionInfo-------------res:" + sdkApiVersionInfo);
+      if (sdkApiVersionInfo >= 17 ) {
+        let result: number = myScreenCaptureNdk.multiAVScreenCaptureCreate();
+        console.info(Tag + "multiAVScreenCaptureCreate-------------res:" + result);
+        expect(result).assertEqual(3);
+      }
+      done();
+    });
+
   })
 }

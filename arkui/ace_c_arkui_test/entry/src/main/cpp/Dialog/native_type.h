@@ -3745,6 +3745,56 @@ float OH_ArkUI_CustomSpanDrawInfo_GetLineBottom(ArkUI_CustomSpanDrawInfo* info);
  * @since 12
 */
 float OH_ArkUI_CustomSpanDrawInfo_GetBaseline(ArkUI_CustomSpanDrawInfo* info);
+void OH_ArkUI_AccessibilityValue_SetRangeMin(ArkUI_AccessibilityValue* value, int32_t rangeMin);
+
+/**
+ * @brief Get accessibility minimum value.
+ *
+ * @param value accessibility value object.
+ * @return minimum value based on range components, The default value is -1.
+ *         If the function parameter is abnormal, return -1.
+ * @since 18
+*/
+int32_t OH_ArkUI_AccessibilityValue_GetRangeMin(ArkUI_AccessibilityValue* value);
+
+/**
+ * @brief Set accessibility maximum value.
+ *
+ * @param value accessibility value object.
+ * @param rangeMax maximum value based on range components, The default value is -1.
+ * @since 18
+*/
+void OH_ArkUI_AccessibilityValue_SetRangeMax(ArkUI_AccessibilityValue* value, int32_t rangeMax);
+
+/**
+ * @brief Get accessibility maximum value.
+ *
+ * @param value accessibility value object.
+ * @return maximum value based on range components, The default value is -1.
+ *         If the function parameter is abnormal, return -1.
+ * @since 18
+*/
+int32_t OH_ArkUI_AccessibilityValue_GetRangeMax(ArkUI_AccessibilityValue* value);
+
+/**
+ * @brief Set accessibility current value.
+ *
+ * @param value accessibility value object.
+ * @param rangeCurrent value based on range components, The default value is -1.
+ * @since 18
+*/
+void OH_ArkUI_AccessibilityValue_SetRangeCurrent(ArkUI_AccessibilityValue* value, int32_t rangeCurrent);
+
+/**
+ * @brief Get accessibility current value.
+ *
+ * @param value accessibility value object.
+ * @return current value based on range components, The default value is -1.
+ *         If the function parameter is abnormal, return -1.
+ * @since 18
+*/
+int32_t OH_ArkUI_AccessibilityValue_GetRangeCurrent(ArkUI_AccessibilityValue* value);
+
 #ifdef __cplusplus
 };
 #endif

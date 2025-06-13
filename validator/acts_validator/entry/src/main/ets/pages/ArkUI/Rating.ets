@@ -145,15 +145,12 @@ struct RatingDemo {
       .width('100%')
       .justifyContent(FlexAlign.SpaceBetween)
 
-      Column() {
+      Column({space: 5}) {
         Text('请对你购买的商品进行评价')
-          .fontSize(24)
-          .margin({ top: 28 })
+          .fontColor('rgba(24,36,49,0.60)')
 
         Image($r('app.media.pen'))
-          .width(100)
-          .height(100)
-          .margin({ top: 28 })
+          .width('10%')
 
         Rating({ rating: this.rating, indicator: false })
           .stars(5)
@@ -163,21 +160,18 @@ struct RatingDemo {
             foregroundUri: '/pages/ArkUI/Images/starAll.png',
             secondaryUri: '/pages/ArkUI/Images/starHalf.png'
           })
-          .margin({ top: 24 })
           .onChange((value: number) => {
             console.info(`${TAG},onChange value=` + value)
             this.ratingNext = value
           })
-          .margin({ top: 48 })
 
         Text('满分5分，您给的评价为 ' + this.ratingNext.toString() + '分')
-          .fontSize(18)
           .fontColor('rgba(24,36,49,0.60)')
-          .margin({ top: 28 })
       }
       .height('80%')
       .width('100%')
       .backgroundColor(Color.White)
+      .justifyContent(FlexAlign.Center)
 
       Row() {
         this.PassBtn($r('app.string.btn_fullscreen'), true);
@@ -215,4 +209,3 @@ struct RatingDemo {
     .backgroundColor('#F1F3F5')
   }
 }
-

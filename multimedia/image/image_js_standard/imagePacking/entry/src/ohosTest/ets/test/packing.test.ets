@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import image from "@ohos.multimedia.image";
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import common from '@ohos.app.ability.common';
 import { BusinessError } from '@ohos.base';
 import fs from '@ohos.file.fs'
@@ -35,6 +35,14 @@ interface packOpts {
   format?: string,
   quality?: number,
   bufferSize?: number
+};
+
+let sleep = async (delay: number): Promise<void> => {
+  return new Promise((resolve, _) => {
+    setTimeout(async () => {
+      resolve();
+    }, delay);
+  });
 };
 
 export default function imagePacking() {
@@ -65,6 +73,7 @@ export default function imagePacking() {
       console.info("beforeEach case");
     });
     afterEach(async () => {
+      await sleep(1000);
       console.info("afterEach case");
     });
 
@@ -118,8 +127,12 @@ export default function imagePacking() {
                   expect().assertFail();
                   done();
                 });
+            imagePackerApi?.release();
+            done();
             }
           }
+          pixelmap?.release();
+          done();
         })
         .catch((error: BusinessError) => {
           console.log("createpixelmap error: " + error);
@@ -172,8 +185,12 @@ export default function imagePacking() {
                 expect(data != undefined).assertTrue();
                 done();
               });
+              imagePackerApi?.release();
+              done();
             }
           }
+          pixelmap?.release();
+          done();
         })
         .catch((error: BusinessError) => {
           console.log(`${testNum} createpixelmap error: ` + error);
@@ -214,7 +231,11 @@ export default function imagePacking() {
                 done();
               });
             }
+            imagePackerApi?.release();
+            done();
           }
+          pixelmap?.release();
+          done();
         })
         .catch((error: BusinessError) => {
           console.log(`${testNum} createpixelmap error:` + error);
@@ -261,7 +282,11 @@ export default function imagePacking() {
                   done();
                 });
             }
+            imagePackerApi?.release();
+            done();
           }
+          pixelmap?.release();
+          done();
         })
         .catch((error: BusinessError) => {
           console.log("createpixelmap error: " + error);
@@ -340,6 +365,7 @@ export default function imagePacking() {
         let disposalTypes = await imgSource.getDisposalTypeList();
         let loopcount: ESObject = await imgSource.getImageProperties([image.PropertyKey.GIF_LOOP_COUNT]);
         let imageInfo = imgSource.getImageInfoSync();
+        await imgSource?.release();
         console.log(`checkPackingForSequenceResult delayTimes ${delayTimes}`);
         console.log(`checkPackingForSequenceResult disposalTypes ${disposalTypes}`);
         console.log(`checkPackingForSequenceResult loopcount ${loopcount}`);
@@ -411,6 +437,8 @@ export default function imagePacking() {
         expect().assertFail();
         done();
       });
+      globalPacker?.release();
+      done();
     }
 
     let testPackingForSequencePromiseError = (done: ESObject, testNum: ESObject, pictureSize: ESObject,
@@ -431,6 +459,8 @@ export default function imagePacking() {
         expect(error.code == ERROR_CODE).assertTrue();
         done();
       });
+      globalPacker?.release();
+      done();
     }
 
     let checkPackToDataResult = async (buffer: ESObject, picSize: ESObject) => {
@@ -492,6 +522,9 @@ export default function imagePacking() {
             done();
           }
         }
+        await source?.release();
+        await globalPacker?.release();
+        done();
       }
 
     let testPackGifToData =
@@ -503,6 +536,8 @@ export default function imagePacking() {
           source = globalpixelmap;
         }
         await packGifToData(done, testNum, source, picSize, type);
+        await source?.release();
+        done();
       }
     /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKING_PROMISE_0100
@@ -514,7 +549,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKING_PROMISE_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKING_PROMISE_0100", Level.LEVEL0, async (done: Function) => {
       let packOpts: packOpts = {
         format: "image/jpeg",
         quality: 99
@@ -532,7 +567,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKING_PROMISE_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKING_PROMISE_0200", Level.LEVEL0, async (done: Function) => {
       let packOpts: packOpts = {
         format: "image/jpeg",
         quality: 123
@@ -549,7 +584,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKING_PROMISE_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKING_PROMISE_0300", Level.LEVEL0, async (done: Function) => {
       let packOpts: packOpts = {
         format: "image/jpeg"
       };
@@ -566,7 +601,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKING_PROMISE_0400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKING_PROMISE_0400", Level.LEVEL0, async (done: Function) => {
       let packOpts: packOpts = {
         quality: 99
       };
@@ -582,7 +617,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKING_PROMISE_0500", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKING_PROMISE_0500", Level.LEVEL0, async (done: Function) => {
       let packOpts: packOpts = {
         format: "image/txt", quality: 99
       };
@@ -599,7 +634,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKING_PROMISE_0600", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKING_PROMISE_0600", Level.LEVEL0, async (done: Function) => {
       let packOpts: packOpts = {
         format: "image/jpeg", quality: 50
       };
@@ -615,7 +650,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKING_PROMISE_0700", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKING_PROMISE_0700", Level.LEVEL0, async (done: Function) => {
       let packOpts: packOpts = {
         format: "image/jpeg", quality: 123
       };
@@ -632,7 +667,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKING_PROMISE_0800", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKING_PROMISE_0800", Level.LEVEL0, async (done: Function) => {
       let packOpts: packOpts = {
         format: "image/jpeg"
       };
@@ -648,7 +683,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKING_PROMISE_0900", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKING_PROMISE_0900", Level.LEVEL0, async (done: Function) => {
       let packOpts: packOpts = {
         quality: 99
       };
@@ -665,7 +700,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKING_PROMISE_1000", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKING_PROMISE_1000", Level.LEVEL0, async (done: Function) => {
       let packOpts: packOpts = {
         format: "image/txt", quality: 99
       };
@@ -682,7 +717,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKING_PROMISE_1100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKING_PROMISE_1100", Level.LEVEL0, async (done: Function) => {
       let packOpts: packOpts = {
         format: "image/gif"
       };
@@ -699,7 +734,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKING_CALLBACK_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKING_CALLBACK_0100", Level.LEVEL0, async (done: Function) => {
       let packOpts: packOpts = {
         format: "image/jpeg", quality: 99
       };
@@ -716,7 +751,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKING_CALLBACK_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKING_CALLBACK_0200", Level.LEVEL0, async (done: Function) => {
       let packOpts: packOpts = {
         format: "image/jpeg", quality: 123
       };
@@ -732,7 +767,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKING_CALLBACK_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKING_CALLBACK_0300", Level.LEVEL0, async (done: Function) => {
       let packOpts: packOpts = {
         format: "image/jpeg"
       };
@@ -749,7 +784,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKING_CALLBACK_0400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKING_CALLBACK_0400", Level.LEVEL0, async (done: Function) => {
       let packOpts: packOpts = {
         quality: 99
       };
@@ -765,7 +800,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKING_CALLBACK_0500", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKING_CALLBACK_0500", Level.LEVEL0, async (done: Function) => {
       let packOpts: packOpts = {
         format: "image/txt", quality: 99
       };
@@ -782,7 +817,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKING_CALLBACK_0600", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKING_CALLBACK_0600", Level.LEVEL0, async (done: Function) => {
       let packOpts: packOpts = {
         format: "image/jpeg", quality: 50
       };
@@ -798,7 +833,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKING_CALLBACK_0700", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKING_CALLBACK_0700", Level.LEVEL0, async (done: Function) => {
       let packOpts: packOpts = {
         format: "image/jpeg", quality: 123
       };
@@ -815,7 +850,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKING_CALLBACK_0800", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKING_CALLBACK_0800", Level.LEVEL0, async (done: Function) => {
       let packOpts: packOpts = {
         format: "image/jpeg"
       };
@@ -831,7 +866,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKING_CALLBACK_0900", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKING_CALLBACK_0900", Level.LEVEL0, async (done: Function) => {
       let packOpts: packOpts = {
         quality: 99
       };
@@ -848,7 +883,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKING_CALLBACK_1000", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKING_CALLBACK_1000", Level.LEVEL0, async (done: Function) => {
       let packOpts: packOpts = {
         format: "image/txt", quality: 99
       };
@@ -865,7 +900,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKING_CALLBACK_1200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKING_CALLBACK_1200", Level.LEVEL0, async (done: Function) => {
       let packOpts: packOpts = {
         format: "image/gif", quality: 123
       };
@@ -883,7 +918,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_PROMISE_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_PROMISE_0100", Level.LEVEL0, async (done: Function) => {
       try {
         let fdNumber: ESObject = await getFd("test.png");
         const imageSourceApi = image.createImageSource(fdNumber);
@@ -912,7 +947,11 @@ export default function imagePacking() {
                 expect(false).assertFail();
                 done();
               });
+            await imageSourceApi?.release();
+            done();
           }
+          await imagePackerApi?.release();
+          done();
         }
       } catch (error) {
         console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_PROMISE_0100 error: " + error);
@@ -931,7 +970,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0100", Level.LEVEL0, async (done: Function) => {
       try {
         let fdNumber: ESObject = await getFd("test.png");
         const imageSourceApi = image.createImageSource(fdNumber);
@@ -956,7 +995,11 @@ export default function imagePacking() {
               expect(data != undefined).assertTrue();
               done();
             });
+            await imageSourceApi?.release();
+            done();
           }
+          await imagePackerApi?.release();
+          done();
         }
       } catch (error) {
         console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0100 error: " + error);
@@ -975,7 +1018,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0200", Level.LEVEL0, async (done: Function) => {
       try {
         let fdNumber: ESObject = await getFd("test.png");
         const imageSourceApi: ESObject = image.createImageSource(fdNumber);
@@ -999,7 +1042,11 @@ export default function imagePacking() {
               console.info(data);
               done();
             });
+            await imageSourceApi?.release();
+            done();
           }
+          await imagePackerApi?.release();
+          done();
         }
       } catch (error) {
         console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0200 error: " + error);
@@ -1018,7 +1065,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKING_CREATEIMAGEPACKER_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKING_CREATEIMAGEPACKER_0100", Level.LEVEL0, async (done: Function) => {
       try {
         let fdNumber: ESObject = await getFd("test.png");
         const imageSourceApi = image.createImageSource(fdNumber);
@@ -1034,9 +1081,12 @@ export default function imagePacking() {
             done();
           } else {
             console.info("SUB_MULTIMEDIA_IMAGE_PACKING_CREATEIMAGEPACKER_0100 create image packer success");
+            await imagePackerApi.release();
             expect(true).assertTrue();
             done();
           }
+          await imageSourceApi?.release();
+          done();
         }
       } catch (error) {
         console.info("SUB_MULTIMEDIA_IMAGE_PACKING_CREATEIMAGEPACKER_0100 error: " + error);
@@ -1056,7 +1106,7 @@ export default function imagePacking() {
      * @tc.level     : Level 1
      */
 
-    it("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_PROMISE_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_PROMISE_0200", Level.LEVEL0, async (done: Function) => {
       try {
         let fdNumber: ESObject = await getFd("test.png");
         const imageSourceApi: ESObject = image.createImageSource(fdNumber);
@@ -1086,7 +1136,11 @@ export default function imagePacking() {
                 expect(true).assertTrue();
                 done();
               });
+            await imageSourceApi?.release();
+            done();
           }
+          await imagePackerApi?.release();
+          done();
         }
       } catch (error) {
         console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_PROMISE_0200 error: " + error);
@@ -1105,7 +1159,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_PROMISE_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_PROMISE_0300", Level.LEVEL0, async (done: Function) => {
       try {
         let fdNumber: ESObject = await getFd("test.png");
         const imageSourceApi: ESObject = image.createImageSource(fdNumber);
@@ -1135,7 +1189,11 @@ export default function imagePacking() {
                 expect(true).assertTrue();
                 done();
               });
+            await imageSourceApi?.release();
+            done();
           }
+          await imagePackerApi?.release();
+          done();
         }
       } catch (error) {
         console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_PROMISE_0300 error: " + error);
@@ -1155,7 +1213,7 @@ export default function imagePacking() {
      * @tc.level     : Level 1
      */
 
-    it("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0400", Level.LEVEL0, async (done: Function) => {
       try {
         let fdNumber: ESObject = await getFd("test.png");
         const imageSourceApi = image.createImageSource(fdNumber);
@@ -1190,7 +1248,11 @@ export default function imagePacking() {
                 done();
               }
             });
+            await imageSourceApi?.release();
+            done();
           }
+          await imagePackerApi?.release();
+          done();
         }
       } catch (error) {
         console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0400 error: " + error);
@@ -1209,7 +1271,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0500", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0500", Level.LEVEL0, async (done: Function) => {
       try {
         let fdNumber: ESObject = await getFd("test.png");
         const imageSourceApi = image.createImageSource(fdNumber);
@@ -1232,7 +1294,11 @@ export default function imagePacking() {
               expect(data != undefined).assertTrue();
               done();
             });
+            await imageSourceApi?.release();
+            done();
           }
+          await imagePackerApi?.release();
+          done();
         }
       } catch (error) {
         console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0500 error: " + error);
@@ -1251,7 +1317,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0600", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0600", Level.LEVEL0, async (done: Function) => {
       try {
         let fdNumber: ESObject = await getFd("test.png");
         const imageSourceApi = image.createImageSource(fdNumber);
@@ -1274,7 +1340,11 @@ export default function imagePacking() {
               expect(data == undefined).assertTrue();
               done();
             });
+            await imageSourceApi?.release();
+            done();
           }
+          await imagePackerApi?.release();
+          done();
         }
       } catch (error) {
         console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0600 error: " + error);
@@ -1294,7 +1364,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_PROMISE_0700", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_PROMISE_0700", Level.LEVEL0, async (done: Function) => {
       try {
         let fdNumber: ESObject = await getFd("moving_test.gif");
         const imageSourceApi: ESObject = image.createImageSource(fdNumber);
@@ -1324,7 +1394,11 @@ export default function imagePacking() {
                 expect(true).assertTrue();
                 done();
               });
+            await imageSourceApi?.release();
+            done();
           }
+          await imagePackerApi?.release();
+          done();
         }
       } catch (error) {
         console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_PROMISE_0700 error: " + error);
@@ -1344,7 +1418,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0800", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0800", Level.LEVEL0, async (done: Function) => {
       try {
         let fdNumber: ESObject = await getFd("moving_test.gif");
         const imageSourceApi = image.createImageSource(fdNumber);
@@ -1367,7 +1441,11 @@ export default function imagePacking() {
               expect(data == undefined).assertTrue();
               done();
             });
+            await imageSourceApi?.release();
+            done();
           }
+          await imagePackerApi?.release();
+          done();
         }
       } catch (error) {
         console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0800 error: " + error);
@@ -1386,7 +1464,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKING_RELEASE_IMAGEPACKER_PROMISE_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKING_RELEASE_IMAGEPACKER_PROMISE_0100", Level.LEVEL0, async (done: Function) => {
       const imagePackerApi = image.createImagePacker();
       if (imagePackerApi == undefined) {
         console.info("SUB_MULTIMEDIA_IMAGE_PACKING_RELEASE_IMAGEPACKER_PROMISE_0100 create image packer failed");
@@ -1406,6 +1484,8 @@ export default function imagePacking() {
             done();
           });
       }
+      await imagePackerApi?.release();
+      done();
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKING_RELEASE_IMAGEPACKER_CALLBACK_0100
@@ -1417,7 +1497,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKING_RELEASE_IMAGEPACKER_CALLBACK_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKING_RELEASE_IMAGEPACKER_CALLBACK_0100", Level.LEVEL0, async (done: Function) => {
       const imagePackerApi = image.createImagePacker();
       if (imagePackerApi == undefined) {
         console.info("SUB_MULTIMEDIA_IMAGE_PACKING_RELEASE_IMAGEPACKER_CALLBACK_0100 create image packer failed");
@@ -1430,6 +1510,8 @@ export default function imagePacking() {
           done();
         });
       }
+      await imagePackerApi?.release();
+      done();
     });
 
     /**
@@ -1442,7 +1524,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKING_ADDBUFFERSIZE_PROMISE_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKING_ADDBUFFERSIZE_PROMISE_0100", Level.LEVEL0, async (done: Function) => {
       let packOpts: packOpts = {
         format: "image/jpeg", quality: 99, bufferSize: 10485760
       };
@@ -1458,7 +1540,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKING_ADDBUFFERSIZE_PROMISE_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKING_ADDBUFFERSIZE_PROMISE_0200", Level.LEVEL0, async (done: Function) => {
       let packOpts: packOpts = {
         format: "image/jpeg", quality: 99, bufferSize: 20480
       };
@@ -1476,7 +1558,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKING_ADDBUFFERSIZE_PROMISE_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKING_ADDBUFFERSIZE_PROMISE_0300", Level.LEVEL0, async (done: Function) => {
       let packOpts: packOpts = {
         format: "image/jpeg", quality: 99, bufferSize: 20000000
       };
@@ -1492,7 +1574,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKING_ADDBUFFERSIZE_CALLBACK_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKING_ADDBUFFERSIZE_CALLBACK_0100", Level.LEVEL0, async (done: Function) => {
       let packOpts: packOpts = {
         format: "image/jpeg", quality: 99, bufferSize: 10485760
       };
@@ -1509,7 +1591,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKING_ADDBUFFERSIZE_CALLBACK_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKING_ADDBUFFERSIZE_CALLBACK_0200", Level.LEVEL0, async (done: Function) => {
       let packOpts: packOpts = {
         format: "image/jpeg", quality: 99, bufferSize: 20480
       };
@@ -1525,7 +1607,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKING_ADDBUFFERSIZE_CALLBACK_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKING_ADDBUFFERSIZE_CALLBACK_0300", Level.LEVEL0, async (done: Function) => {
       let packOpts: packOpts = {
         format: "image/jpeg", quality: 99, bufferSize: 20000000
       };
@@ -1543,7 +1625,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKINGFORSEQUENCE_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKINGFORSEQUENCE_0100", Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -1571,7 +1653,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKINGFORSEQUENCE_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKINGFORSEQUENCE_0200", Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -1600,7 +1682,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKINGFORSEQUENCE_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKINGFORSEQUENCE_0300", Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -1625,7 +1707,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKINGFORSEQUENCE_0400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKINGFORSEQUENCE_0400", Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -1651,7 +1733,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKINGFORSEQUENCE_0500", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKINGFORSEQUENCE_0500", Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -1677,7 +1759,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKINGFORSEQUENCE_0600", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKINGFORSEQUENCE_0600", Level.LEVEL0, async (done: Function) => {
         if (!isSupportGifEncode) {
           console.info("This device does not support GIF encoding.")
           expect(true).assertTrue();
@@ -1703,7 +1785,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKINGFORSEQUENCE_0700", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKINGFORSEQUENCE_0700", Level.LEVEL0, async (done: Function) => {
         if (!isSupportGifEncode) {
           console.info("This device does not support GIF encoding.")
           expect(true).assertTrue();
@@ -1729,7 +1811,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKINGFORSEQUENCE_0800", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKINGFORSEQUENCE_0800", Level.LEVEL0, async (done: Function) => {
         if (!isSupportGifEncode) {
           console.info("This device does not support GIF encoding.")
           expect(true).assertTrue();
@@ -1755,7 +1837,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKINGFORSEQUENCE_0900", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKINGFORSEQUENCE_0900", Level.LEVEL0, async (done: Function) => {
         if (!isSupportGifEncode) {
           console.info("This device does not support GIF encoding.")
           expect(true).assertTrue();
@@ -1781,7 +1863,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKINGFORSEQUENCE_1000", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKINGFORSEQUENCE_1000", Level.LEVEL0, async (done: Function) => {
         if (!isSupportGifEncode) {
           console.info("This device does not support GIF encoding.")
           expect(true).assertTrue();
@@ -1807,7 +1889,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKINGFORSEQUENCE_1100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKINGFORSEQUENCE_1100", Level.LEVEL0, async (done: Function) => {
         if (!isSupportGifEncode) {
           console.info("This device does not support GIF encoding.")
           expect(true).assertTrue();
@@ -1833,7 +1915,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKINGFORSEQUENCE_1200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKINGFORSEQUENCE_1200", Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -1862,7 +1944,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKINGFORSEQUENCE_1300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKINGFORSEQUENCE_1300", Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -1891,7 +1973,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKINGFORSEQUENCE_1400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKINGFORSEQUENCE_1400", Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -1920,7 +2002,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKINGFORSEQUENCE_1500", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKINGFORSEQUENCE_1500", Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -1949,7 +2031,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKINGFORSEQUENCE_1600", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKINGFORSEQUENCE_1600", Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -1978,7 +2060,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKINGFORSEQUENCE_1700", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKINGFORSEQUENCE_1700", Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -2007,7 +2089,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKINGFORSEQUENCE_1800", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKINGFORSEQUENCE_1800", Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -2036,7 +2118,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKINGFORSEQUENCE_1900", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKINGFORSEQUENCE_1900", Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -2072,7 +2154,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKINGFORSEQUENCE_ERROR_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKINGFORSEQUENCE_ERROR_0100", Level.LEVEL0, async (done: Function) => {
         if (!isSupportGifEncode) {
           console.info("This device does not support GIF encoding.")
           expect(true).assertTrue();
@@ -2098,7 +2180,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKINGFORSEQUENCE_ERROR_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKINGFORSEQUENCE_ERROR_0200", Level.LEVEL0, async (done: Function) => {
         if (!isSupportGifEncode) {
           console.info("This device does not support GIF encoding.")
           expect(true).assertTrue();
@@ -2124,7 +2206,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKINGFORSEQUENCE_ERROR_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKINGFORSEQUENCE_ERROR_0300", Level.LEVEL0, async (done: Function) => {
         if (!isSupportGifEncode) {
           console.info("This device does not support GIF encoding.")
           expect(true).assertTrue();
@@ -2150,7 +2232,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKINGFORSEQUENCE_ERROR_0400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKINGFORSEQUENCE_ERROR_0400", Level.LEVEL0, async (done: Function) => {
         if (!isSupportGifEncode) {
           console.info("This device does not support GIF encoding.")
           expect(true).assertTrue();
@@ -2176,7 +2258,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKINGFORSEQUENCE_ERROR_0500", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKINGFORSEQUENCE_ERROR_0500", Level.LEVEL0, async (done: Function) => {
         if (!isSupportGifEncode) {
           console.info("This device does not support GIF encoding.")
           expect(true).assertTrue();
@@ -2202,7 +2284,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_PACKING_PIXELMAPLIST_ERROR_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_PACKING_PIXELMAPLIST_ERROR_0100", Level.LEVEL0, async (done: Function) => {
         if (!isSupportGifEncode) {
           console.info("This device does not support GIF encoding.")
           expect(true).assertTrue();
@@ -2228,7 +2310,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GIF_PACKINGTODATA_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GIF_PACKINGTODATA_0100", Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -2256,7 +2338,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GIF_PACKINGTODATA_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GIF_PACKINGTODATA_0200", Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -2286,7 +2368,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GIF_PACKINGTODATA_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GIF_PACKINGTODATA_0300", Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -2314,7 +2396,7 @@ export default function imagePacking() {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_GIF_PACKINGTODATA_0400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_GIF_PACKINGTODATA_0400", Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();

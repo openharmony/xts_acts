@@ -20,6 +20,11 @@ import { SplitLayout } from '@ohos.arkui.advanced.SplitLayout';
 struct splitLayoutTest {
   @State demoImage: Resource = $r('app.media.icon')
 
+  @Builder
+  Builder1() {
+    Text('Builder')
+  }
+
   build() {
     Column() {
       SplitLayout({
@@ -27,9 +32,12 @@ struct splitLayoutTest {
         primaryText: 'primaryText',
         secondaryText: 'secondaryText',
         tertiaryText: 'tertiaryText',
+        container: () => {
+          this.Builder1()
+        },
       }) {
         Text('示例：空白区域容器内可添加组件')
-          .margin({top:36})
+          .margin({ top: 36 })
       }
     }
     .justifyContent(FlexAlign.SpaceBetween)

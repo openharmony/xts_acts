@@ -173,8 +173,8 @@ export default function errorCodeTest2() {
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_ErrorCode_0003 start');
       if (mpEnable == 'true') {
         let want: Want = {
-          bundleName: 'com.ability.errcode.assist',
-          abilityName: 'EntryAbility',
+          bundleName: 'com.acts.ability.errcode2',
+          abilityName: 'NewAbility',
           parameters: {
             [wantConstant.Params.APP_INSTANCE_KEY]: "app_instance_100",
             [wantConstant.Params.CREATE_APP_INSTANCE_KEY]: true,

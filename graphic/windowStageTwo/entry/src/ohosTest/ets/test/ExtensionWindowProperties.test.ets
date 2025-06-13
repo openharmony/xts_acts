@@ -122,7 +122,8 @@ export default function extensionWindowPropertiesTest() {
             let hw = await driver.findComponent(ON.id('testNum'))
             let testNum = await hw.getText()
             console.log(caseName + 'testNum : ' + testNum)
-            expect(testNum == '2').assertTrue()
+            // pad设备不支持监听，rectChange报801
+            expect(testNum == '2' || testNum == '801').assertTrue()
             await subWindowClass.destroyWindow()
           }
         }).catch((error: BusinessError) => {
@@ -186,8 +187,8 @@ export default function extensionWindowPropertiesTest() {
             let hw = await driver.findComponent(ON.id('testNum'))
             let testNum = await hw.getText()
             console.log(caseName + 'testNum : ' + testNum)
-            // 只有一个回调函数被响应
-            expect(testNum == '2').assertTrue()
+            // 只有一个回调函数被响应, pad设备不支持监听，rectChange报801
+            expect(testNum == '2' || testNum == '801').assertTrue()
             await subWindowClass.destroyWindow()
           }
         }).catch((error: BusinessError) => {
@@ -251,8 +252,8 @@ export default function extensionWindowPropertiesTest() {
             let hw = await driver.findComponent(ON.id('testNum'))
             let testNum = await hw.getText()
             console.log(caseName + 'testNum : ' + testNum)
-            // 没有回调函数被响应
-            expect(testNum == '0').assertTrue()
+            // 没有回调函数被响应, 设备不支持监听时报801
+            expect(testNum == '0' || testNum == '801').assertTrue()
             await subWindowClass.destroyWindow()
           }
         }).catch((error: BusinessError) => {
@@ -317,8 +318,8 @@ export default function extensionWindowPropertiesTest() {
             let hw = await driver.findComponent(ON.id('errorMessage'))
             let testNum = await hw.getText()
             console.log(caseName + 'testNum : ' + testNum)
-            // 传null，错误码为401
-            expect(testNum == '401').assertTrue()
+            // 传null，错误码为401, 设备不支持监听时报801
+            expect(testNum == '401' || testNum == '801').assertTrue()
             await subWindowClass.destroyWindow()
           }
         }).catch((error: BusinessError) => {

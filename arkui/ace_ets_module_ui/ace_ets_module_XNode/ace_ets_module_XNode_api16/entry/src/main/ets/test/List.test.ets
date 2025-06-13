@@ -23,6 +23,7 @@ import componentContentDisposeTest from './FrameNodeTest/componentContentDispose
 import blendColorErrorCodeTest from './FrameNodeTest/blendColorErrorCode.test';
 import resourceColorErrorCodeTest from './FrameNodeTest/resourceColorErrorCode.test';
 import setCrossLanguageOptionsErrorCodeTest from './FrameNodeTest/setCrossLanguageOptionsErrorCode.test';
+import postFrameCallbackTest from './PostFrameTest/postFrameCallback.test';
 
 export default function testsuite() {
   frameNodeIsVisibleTest();
@@ -36,4 +37,5 @@ export default function testsuite() {
   blendColorErrorCodeTest();
   resourceColorErrorCodeTest();
   setCrossLanguageOptionsErrorCodeTest();
+  postFrameCallbackTest();
 }

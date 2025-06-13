@@ -26,6 +26,7 @@ describe('ActsNetworkSearchTest',  () => {
     afterEach(async (done: Function) => {
         try {
             expect(radio.RadioTechnology.RADIO_TECHNOLOGY_UNKNOWN === 0).assertTrue();
+            expect(radio.RadioTechnology.RADIO_TECHNOLOGY_GSM === 1).assertTrue();
             expect(radio.RadioTechnology.RADIO_TECHNOLOGY_1XRTT === 2).assertTrue();
             expect(radio.RadioTechnology.RADIO_TECHNOLOGY_WCDMA === 3).assertTrue();
             expect(radio.RadioTechnology.RADIO_TECHNOLOGY_HSPA === 4).assertTrue();

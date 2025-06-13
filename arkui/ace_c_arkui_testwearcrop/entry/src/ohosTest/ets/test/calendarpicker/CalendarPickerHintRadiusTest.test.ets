@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function calendarPickerHintRadiusTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testCalendarPickerHintRadius001', 0, async (done: Function) => {
+    it('testCalendarPickerHintRadius001', Level.LEVEL1, async  (done: Function) => {
       expect(nativeFunc.testCalendarPickerHintRadius001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function calendarPickerHintRadiusTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testCalendarPickerHintRadius002', 0, async (done: Function) => {
+    it('testCalendarPickerHintRadius002', Level.LEVEL1, async  (done: Function) => {
       expect(nativeFunc.testCalendarPickerHintRadius002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function calendarPickerHintRadiusTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testCalendarPickerHintRadius003', 0, async (done: Function) => {
+    it('testCalendarPickerHintRadius003', Level.LEVEL1, async  (done: Function) => {
       expect(nativeFunc.testCalendarPickerHintRadius003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function calendarPickerHintRadiusTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testCalendarPickerHintRadius004', 0, async (done: Function) => {
+    it('testCalendarPickerHintRadius004', Level.LEVEL1, async  (done: Function) => {
       expect(nativeFunc.testCalendarPickerHintRadius004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function calendarPickerHintRadiusTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testCalendarPickerHintRadius005', 0, async (done: Function) => {
+    it('testCalendarPickerHintRadius005', Level.LEVEL1, async  (done: Function) => {
       expect(nativeFunc.testCalendarPickerHintRadius005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function calendarPickerHintRadiusTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testCalendarPickerHintRadius006', 0, async (done: Function) => {
+    it('testCalendarPickerHintRadius006', Level.LEVEL1, async  (done: Function) => {
       expect(nativeFunc.testCalendarPickerHintRadius006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function calendarPickerHintRadiusTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testCalendarPickerHintRadius007', 0, async (done: Function) => {
+    it('testCalendarPickerHintRadius007', Level.LEVEL1, async  (done: Function) => {
       expect(nativeFunc.testCalendarPickerHintRadius007()).assertEqual(0)
       done()
     })

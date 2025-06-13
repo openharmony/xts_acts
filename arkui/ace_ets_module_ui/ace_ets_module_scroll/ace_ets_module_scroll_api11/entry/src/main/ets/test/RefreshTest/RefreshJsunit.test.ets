@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
+import { describe, beforeEach, afterEach, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import Utils from '../../MainAbility/common/Utils';;
 
@@ -55,6 +55,7 @@ export default function refreshJsunit() {
 
     it('testRefresh02', 0, async (done: Function) => {
       console.info('[testRefresh02] START');
+      console.info("[testRefresh02] OverDrag: " + JSON.stringify(RefreshStatus.OverDrag));
       expect(RefreshStatus.OverDrag).assertEqual(2);
       console.info('[testRefresh02] END');
       done();
@@ -62,8 +63,57 @@ export default function refreshJsunit() {
 
     it('testRefresh03', 0, async (done: Function) => {
       console.info('[testRefresh03] START');
+      console.info("[testRefresh03] Inactive: " + JSON.stringify(RefreshStatus.Inactive));
       expect(RefreshStatus.Inactive).assertEqual(0);
       console.info('[testRefresh03] END');
+      done();
+    });
+
+    /**
+     * @tc.number    testRefresh04
+     * @tc.name      testRefresh04
+     * @tc.desc      RefreshStatus.Drag.
+     * @tc.level     Level 0
+     * @tc.type
+     * @tc.size
+     */
+    it('testRefresh04', Level.LEVEL0, async (done: Function) => {
+      console.info('[testRefresh04] START');
+      console.info("[testRefresh04] Drag: " + JSON.stringify(RefreshStatus.Drag));
+      expect(RefreshStatus.Drag).assertEqual(1);
+      console.info('[testRefresh04] END');
+      done();
+    });
+
+    /**
+     * @tc.number    testRefresh05
+     * @tc.name      testRefresh05
+     * @tc.desc      RefreshStatus.Refresh.
+     * @tc.level     Level 0
+     * @tc.type
+     * @tc.size
+     */
+    it('testRefresh05', Level.LEVEL0, async (done: Function) => {
+      console.info('[testRefresh05] START');
+      console.info("[testRefresh05] Refresh: " + JSON.stringify(RefreshStatus.Refresh));
+      expect(RefreshStatus.Refresh).assertEqual(3);
+      console.info('[testRefresh05] END');
+      done();
+    });
+
+    /**
+     * @tc.number    testRefresh06
+     * @tc.name      testRefresh06
+     * @tc.desc      RefreshStatus.Done.
+     * @tc.level     Level 0
+     * @tc.type
+     * @tc.size
+     */
+    it('testRefresh06', Level.LEVEL0, async (done: Function) => {
+      console.info('[testRefresh06] START');
+      console.info("[testRefresh06] Done: " + JSON.stringify(RefreshStatus.Done));
+      expect(RefreshStatus.Done).assertEqual(4);
+      console.info('[testRefresh06] END');
       done();
     });
   });

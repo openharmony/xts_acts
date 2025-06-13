@@ -81,6 +81,8 @@ struct TouchStrategyExample {
     .backgroundColor(Color.Blue)
     .onChildTouchTest((TouchTestInfo)=>{
       for(let i = 0; i<TouchTestInfo.length; i++){
+        console.log('x:' + TouchTestInfo[i].x)
+        console.log("windowX:" + TouchTestInfo[i].windowX)
         if(TouchTestInfo[i].id == 'list_TouchStrategy'){
           console.log("list_TouchStrategy: FORWARD_COMPETITION")
           return{id: TouchTestInfo[i].id, strategy: TouchTestStrategy.FORWARD_COMPETITION}

@@ -60,7 +60,20 @@ struct ListItemGroupNoneExample {
       .sticky(StickyStyle.None)
       .scrollBar(BarState.Off)
       .onScrollVisibleContentChange((start: VisibleListContentInfo, end: VisibleListContentInfo) => {
-        this.text = 'itemGroupArea: ' + start.itemGroupArea
+        if (start.itemGroupArea === 0) {
+          //列表项组区域为无,ListItemGroup内部ListItem区域、header区域以及footer区域以外的区域
+          this.text = 'ListItemGroupArea.NONE'
+          console.info('ListItemGroupArea NONE success')
+        } else if (start.itemGroupArea === 1) {  //ListItemGroup内部ListItem区域
+          this.text = 'ListItemGroupArea.IN_LIST_ITEM_AREA'
+          console.info('ListItemGroupArea IN_LIST_ITEM_AREA success')
+        } else if (start.itemGroupArea === 2) {  //ListItemGroup内部header区域
+          this.text = 'ListItemGroupArea.IN_HEADER_AREA'
+          console.info('ListItemGroupArea IN_HEADER_AREA success')
+        } else if (start.itemGroupArea === 3) {  //ListItemGroup内部footer区域
+          this.text = 'ListItemGroupArea.IN_FOOTER_AREA'
+          console.info('ListItemGroupArea IN_FOOTER_AREA success')
+        }
         console.log(' start index: ' + start.index +
           ' start item group area: ' + start.itemGroupArea +
           ' start index in group: ' + start.itemIndexInGroup)

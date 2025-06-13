@@ -15,7 +15,7 @@
 import hidebug from '@ohos.hidebug';
 import hilog from '@ohos.hilog';
 import testNapi from "libhidebugndk.so";
-import {describe, it, expect} from '@ohos/hypium';
+import {describe, it, expect, TestType, Level, Size} from '@ohos/hypium';
 
 
 export default function HidebugCTest() {
@@ -29,7 +29,7 @@ describe('HidebugCTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiDebugC01', 1, async function (done) {
+    it('testHiDebugC01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         try {
             let totalMem = testNapi.getTotalMem();
             console.info(`SUB_DFX_DFT_HiDebug_Mem_C_0100 > totalMem =: ${totalMem}`);
@@ -56,7 +56,7 @@ describe('HidebugCTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiDebugC02', 1, async function (done) {
+    it('testHiDebugC02', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         try {
             let pss = testNapi.getPss();
             console.info(`SUB_DFX_DFT_HiDebug_Mem_C_0200 > pss =: ${pss}`);
@@ -86,7 +86,7 @@ describe('HidebugCTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiDebugC03', 1, async function (done) {
+    it('testHiDebugC03', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         try {
             let rssLimit = testNapi.getRssLimit();
             console.info(`SUB_DFX_DFT_HiDebug_Mem_C_0300 > rssLimit =: ${rssLimit}`);
@@ -109,7 +109,7 @@ describe('HidebugCTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiDebugC04', 1, async function (done) {
+    it('testHiDebugC04', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         try {
             let sharedClean = testNapi.getSharedClean();
             console.info(`SUB_DFX_DFT_HiDebug_Mem_C_0400 > sharedClean =: ${sharedClean}`);
@@ -132,7 +132,7 @@ describe('HidebugCTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiDebugC05', 1, async function (done) {
+    it('testHiDebugC05', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         try {
             let n_sysCpuUsage1 = testNapi.getSysCpuUsage();
             console.info(`SUB_DFX_DFT_HiDebug_CPU_C_0100 > c_sysCpuUsage =: ${n_sysCpuUsage1}`);
@@ -161,7 +161,7 @@ describe('HidebugCTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiDebugC06', 1, async function (done) {
+    it('testHiDebugC06', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         try {
             let appThreadCpuUsage = testNapi.getAppThreadCpuUsage();
             console.info(`SUB_DFX_DFT_HiDebug_CPU_C_0200 > length =: ${appThreadCpuUsage.length}`);
@@ -188,7 +188,7 @@ describe('HidebugCTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiDebugC07', 1, async function (done) {
+    it('testHiDebugC07', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         try {
             let appCpuUsage = 0;
             while (appCpuUsage == 0) {
@@ -213,7 +213,7 @@ describe('HidebugCTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiDebugC08', 1, async function (done) {
+    it('testHiDebugC08', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         try {
             let errCode = testNapi.startAppTraceCapture(1, 500 * 1024 * 1024, 256);
             console.info(`SUB_DFX_DFT_Trace_Collect_C_0100 > start errCode : ${errCode}`);
@@ -245,7 +245,7 @@ describe('HidebugCTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiDebugC09', 1, async function (done) {
+    it('testHiDebugC09', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         try {
             let errCode = testNapi.startAppTraceCapture(2, 1, 256);
             console.info(`SUB_DFX_DFT_Trace_Collect_C_0200 > start errCode : ${errCode}`);
@@ -268,7 +268,7 @@ describe('HidebugCTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiDebugC10', 1, async function (done) {
+    it('testHiDebugC10', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         try {
             let errCode = testNapi.startAppTraceCaptureTag();
             console.info(`SUB_DFX_DFT_Trace_Collect_C_0300 > start errCode : ${errCode}`);
@@ -289,7 +289,7 @@ describe('HidebugCTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiDebugC11', 1, async function (done) {
+    it('testHiDebugC11', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         try {
             let errCode = testNapi.startAppTraceCapture(2, 0, 256);
             console.info(`SUB_DFX_DFT_Trace_Collect_C_0400 > start errCode : ${errCode}`);
@@ -310,7 +310,7 @@ describe('HidebugCTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiDebugC12', 1, async function (done) {
+    it('testHiDebugC12', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         try {
             let errCode = testNapi.startAppTraceCapture(3, 1, 256);
             console.info(`SUB_DFX_DFT_Trace_Collect_C_0500 > start errCode : ${errCode}`);
@@ -331,7 +331,7 @@ describe('HidebugCTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiDebugC13', 1, async function (done) {
+    it('testHiDebugC13', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         try {
             let errCode = testNapi.startAppTraceCapture(1, 1024 * 1024, 256);
             errCode = testNapi.startAppTraceCapture(1, 1024 * 1024, 256);
@@ -354,7 +354,7 @@ describe('HidebugCTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiDebugC14', 1, async function (done) {
+    it('testHiDebugC14', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         try {
             let errCode = testNapi.stopAppTraceCapture();
             console.info(`SUB_DFX_DFT_Trace_Collect_C_0700 > stop errCode : ${errCode}`);
@@ -375,7 +375,7 @@ describe('HidebugCTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiDebugC15', 1, async function (done) {
+    it('testHiDebugC15', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         try {
             let errCode = testNapi.getGraphicsMemory();
             console.info(`SUB_DFX_DFT_Trace_Collect_C_0800 > start errCode : ${errCode}`);
@@ -396,7 +396,7 @@ describe('HidebugCTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-      it('testHiDebugC16', 1, async function (done) {
+      it('testHiDebugC16', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         try {
             let errCode = testNapi.getGraphicsMemoryArray();
             console.info(`SUB_DFX_DFT_Trace_Collect_C_0900 > start errCode : ${errCode}`);
@@ -417,7 +417,7 @@ describe('HidebugCTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiDebugC17', 1, async function (done) {
+    it('testHiDebugC17', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         try {
             let errCode = testNapi.getGraphicsMemoryNULL();
             console.info(`SUB_DFX_DFT_Trace_Collect_C_1100 > start errCode : ${errCode}`);

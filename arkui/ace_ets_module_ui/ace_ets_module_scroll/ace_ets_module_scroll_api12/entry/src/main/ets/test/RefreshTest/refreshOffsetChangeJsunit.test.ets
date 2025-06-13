@@ -233,7 +233,7 @@ export default function refreshOffsetChangeJsunit() {
       let width = right - left;
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
-      await driver.swipe(Math.round(left + width*0.2),Math.round(top + height*0.1),Math.round(left + width*0.2),Math.round(top + height*0.5));
+      await driver.swipe(Math.round(left + width*0.2),Math.round(top + height*0.1),Math.round(left + width*0.2),Math.round(top + height*0.7));
       await CommonFunc.sleep(1000);
       let strJson1 = getInspectorByKey('refresh_mess1_1');
       let obj1: ESObject = JSON.parse(strJson1);

@@ -37,7 +37,15 @@ napi_value CustomPropertyTest::testAddCustomProperty001(napi_env env, napi_callb
             "GetContext env or info is null");
         return nullptr;
     }
-    
+    ArkUI_AccessibilityValue* accessibilityvalue = OH_ArkUI_AccessibilityValue_Create();
+    OH_ArkUI_AccessibilityValue_SetRangeMin(accessibilityvalue, PARAM_100);
+    OH_ArkUI_AccessibilityValue_SetRangeMax(accessibilityvalue, PARAM_100);
+    OH_ArkUI_AccessibilityValue_SetRangeCurrent(accessibilityvalue, PARAM_100);
+    ASSERT_EQ(OH_ArkUI_AccessibilityValue_GetRangeMin(accessibilityvalue), PARAM_100);
+    ASSERT_EQ(OH_ArkUI_AccessibilityValue_GetRangeMax(accessibilityvalue), PARAM_100);
+    ASSERT_EQ(OH_ArkUI_AccessibilityValue_GetRangeCurrent(accessibilityvalue), PARAM_100);
+    OH_ArkUI_AccessibilityValue_Dispose(accessibilityvalue);
+
     ArkUI_NativeNodeAPI_1 *nodeAPI = nullptr;
     OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI);
     

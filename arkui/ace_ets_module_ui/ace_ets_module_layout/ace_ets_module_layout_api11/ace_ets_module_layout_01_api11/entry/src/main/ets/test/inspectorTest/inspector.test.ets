@@ -15,7 +15,8 @@
 
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, Level, expect } from "@ohos/hypium"
+import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 
 export default function inspectorJsunit() {
@@ -49,7 +50,7 @@ export default function inspectorJsunit() {
      * @tc.name         testlazyForEachOnDataAdd0001
      * @tc.desic         acelazyForEachOnDataAddEtsTest0001
      */
-    it('testInspectorTestAdd0001', 0, async () => {
+    it('testInspectorTestAdd0001', Level.LEVEL0, async () => {
       console.info('Inspector testInspectorTestAdd0001 START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('inspectorApiOne');
@@ -66,7 +67,7 @@ export default function inspectorJsunit() {
      * @tc.name         testInspectorTestAdd0002
      * @tc.desic         aceTestInspectorTestAdd0002
      */
-    it('testInspectorTestAdd0002', 0, async () => {
+    it('testInspectorTestAdd0002', Level.LEVEL0, async () => {
       console.info('Inspector testInspectorTestAdd0002 START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('inspectorApiOne');
@@ -83,7 +84,7 @@ export default function inspectorJsunit() {
      * @tc.name         testInspectorTestAdd0003
      * @tc.desic         aceTestInspectorTestAdd0003
      */
-    it('testInspectorTestAdd0003', 0, async () => {
+    it('testInspectorTestAdd0003', Level.LEVEL0, async () => {
       console.info("testInspectorTestAdd0003 start test");
       let innerEvent1: events_emitter.InnerEvent = {
         eventId: 60208,
@@ -118,7 +119,7 @@ export default function inspectorJsunit() {
      * @tc.name         testInspectorTestAdd0004
      * @tc.desic         aceTestInspectorTestAdd0004
      */
-    it('testInspectorTestAdd0004', 0, async () => {
+    it('testInspectorTestAdd0004', Level.LEVEL0, async () => {
       let innerEvent2: events_emitter.InnerEvent = {
         eventId: 60209,
         priority: events_emitter.EventPriority.LOW
@@ -150,7 +151,7 @@ export default function inspectorJsunit() {
      * @tc.name         testInspectorTestAdd0005
      * @tc.desic         aceTestInspectorTestAdd0005
      */
-    it('testInspectorTestAdd0005', 0, async () => {
+    it('testInspectorTestAdd0005', Level.LEVEL0, async () => {
       console.info('testInspectorTestAdd0005 START');
       try {
         let eventData: events_emitter.EventData = {
@@ -174,7 +175,7 @@ export default function inspectorJsunit() {
      * @tc.name         testInspectorTestAdd0006
      * @tc.desic         aceTestInspectorTestAdd0006
      */
-    it('testInspectorTestAdd0006', 0, async () => {
+    it('testInspectorTestAdd0006', Level.LEVEL0, async () => {
       let innerEvent3: events_emitter.InnerEvent = {
         eventId: 60210,
         priority: events_emitter.EventPriority.LOW
@@ -197,5 +198,47 @@ export default function inspectorJsunit() {
         console.info("inspector_103 on events_emitter err : " + JSON.stringify(err));
       }
     });
+
+    /*
+     * @tc.number       SUB_ACE_BASIC_ETS_API_0007
+     * @tc.name         testInspectorTestAdd0007
+     * @tc.desic         aceTestInspectorTestAdd0007
+     */
+    it('testInspectorTestAdd007', Level.LEVEL0, async (done: Function) => {
+      console.info('testInspectorTestAdd007 START');
+      let driver = await Driver.create()
+      await CommonFunc.sleep(1000);
+      let btn = await driver.findComponent(ON.id('getFilteredInspectorTree'))
+      await btn.click()
+      await CommonFunc.sleep(1000);
+      let strJson = getInspectorByKey('text01_id');
+      let obj: ESObject = JSON.parse(strJson);
+      console.info("response: " + JSON.stringify(obj.$attrs.content));
+      expect(obj.$attrs.content).assertContain("401");
+      console.info('[testInspectorTestAdd007] END');
+      done();
+    });
+
+    /*
+     * @tc.number       SUB_ACE_BASIC_ETS_API_0008
+     * @tc.name         testInspectorTestAdd0008
+     * @tc.desic         aceTestInspectorTestAdd0008
+     */
+    it('testInspectorTestAdd008', Level.LEVEL0, async (done: Function) => {
+      console.info('testInspectorTestAdd008 START');
+      let driver = await Driver.create()
+      await CommonFunc.sleep(1000);
+      let btn = await driver.findComponent(ON.id('getFilteredInspectorTreeById'))
+      await btn.click()
+      await CommonFunc.sleep(1000);
+      let strJson = getInspectorByKey('text02_id');
+      let obj: ESObject = JSON.parse(strJson);
+      console.info("response: " + JSON.stringify(obj.$attrs.content));
+      expect(obj.$attrs.content).assertContain("401");
+      console.info('[testInspectorTestAdd008] END');
+      done();
+    });
+
+
   })
 }

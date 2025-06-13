@@ -14,7 +14,7 @@
  */
 
 import image from "@ohos.multimedia.image";
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 
 export default function Image() {
 describe("Image", function () {
@@ -57,7 +57,7 @@ describe("Image", function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_RGBA_CREATE_PIXELMAP_PROMISE_0100", 0, async function (done) {
+    it("SUB_MULTIMEDIA_IMAGE_RGBA_CREATE_PIXELMAP_PROMISE_0100", Level.LEVEL0, async function (done) {
         const Color = new ArrayBuffer(96);
         let opts = { editable: true, pixelFormat: RGBA_F16, size: { height: 4, width: 6 } };
         image
@@ -87,7 +87,7 @@ describe("Image", function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_RGBA_CREATE_PIXELMAP_CALLBACK_0100", 0, async function (done) {
+    it("SUB_MULTIMEDIA_IMAGE_RGBA_CREATE_PIXELMAP_CALLBACK_0100", Level.LEVEL0, async function (done) {
         const Color = new ArrayBuffer(96);
         let opts = { editable: true, pixelFormat: RGBA_F16, size: { height: 4, width: 6 } };
         image.createPixelMap(Color, opts, (err, pixelmap) => {
@@ -116,7 +116,7 @@ describe("Image", function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_RGBA_CREATE_PIXELMAP_PROMISE_0200", 0, async function (done) {
+    it("SUB_MULTIMEDIA_IMAGE_RGBA_CREATE_PIXELMAP_PROMISE_0200", Level.LEVEL0, async function (done) {
         const Color = new ArrayBuffer(96);
         let opts = { editable: false, pixelFormat: RGBA_F16, size: { height: 4, width: 6 } };
         image
@@ -146,7 +146,7 @@ describe("Image", function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_RGBA_CREATE_PIXELMAP_CALLBACK_0200", 0, async function (done) {
+    it("SUB_MULTIMEDIA_IMAGE_RGBA_CREATE_PIXELMAP_CALLBACK_0200", Level.LEVEL0, async function (done) {
         const Color = new ArrayBuffer(96);
         let opts = { editable: false, pixelFormat: RGBA_F16, size: { height: 4, width: 6 } };
         image.createPixelMap(Color, opts, (err, pixelmap) => {
@@ -175,7 +175,7 @@ describe("Image", function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_RGBA_CREATE_PIXELMAP_PROMISE_0300", 0, async function (done) {
+    it("SUB_MULTIMEDIA_IMAGE_RGBA_CREATE_PIXELMAP_PROMISE_0300", Level.LEVEL0, async function (done) {
         const Color = new ArrayBuffer(96);
         let opts = { editable: true, pixelFormat: ALPHA_8, size: { height: 4, width: 6 } };
         image
@@ -205,7 +205,7 @@ describe("Image", function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_RGBA_CREATE_PIXELMAP_PROMISE_0400", 0, async function (done) {
+    it("SUB_MULTIMEDIA_IMAGE_RGBA_CREATE_PIXELMAP_PROMISE_0400", Level.LEVEL0, async function (done) {
         const Color = new ArrayBuffer(96);
         let opts = { editable: true, pixelFormat: RGB_565, size: { height: 4, width: 6 } };
         image
@@ -235,7 +235,7 @@ describe("Image", function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_RGBA_CREATE_PIXELMAP_PROMISE_0500", 0, async function (done) {
+    it("SUB_MULTIMEDIA_IMAGE_RGBA_CREATE_PIXELMAP_PROMISE_0500", Level.LEVEL0, async function (done) {
         const Color = new ArrayBuffer(96);
         let opts = { editable: true, pixelFormat: ARGB_8888, size: { height: 4, width: 6 } };
         image
@@ -265,7 +265,7 @@ describe("Image", function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_RGBA_CREATE_PIXELMAP_CALLBACK_0300", 0, async function (done) {
+    it("SUB_MULTIMEDIA_IMAGE_RGBA_CREATE_PIXELMAP_CALLBACK_0300", Level.LEVEL0, async function (done) {
         const Color = new ArrayBuffer(96);
         let opts = { editable: true, pixelFormat: ALPHA_8, size: { height: 4, width: 6 } };
         image.createPixelMap(Color, opts, (err, pixelmap) => {
@@ -294,7 +294,7 @@ describe("Image", function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_RGBA_CREATE_PIXELMAP_CALLBACK_0400", 0, async function (done) {
+    it("SUB_MULTIMEDIA_IMAGE_RGBA_CREATE_PIXELMAP_CALLBACK_0400", Level.LEVEL0, async function (done) {
         const Color = new ArrayBuffer(96);
         let opts = { editable: true, pixelFormat: RGB_565, size: { height: 4, width: 6 } };
         image.createPixelMap(Color, opts, (err, pixelmap) => {
@@ -323,7 +323,7 @@ describe("Image", function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_RGBA_CREATE_PIXELMAP_CALLBACK_0500", 0, async function (done) {
+    it("SUB_MULTIMEDIA_IMAGE_RGBA_CREATE_PIXELMAP_CALLBACK_0500", Level.LEVEL0, async function (done) {
         const Color = new ArrayBuffer(96);
         let opts = { editable: true, pixelFormat: ARGB_8888, size: { height: 4, width: 6 } };
         image.createPixelMap(Color, opts, (err, pixelmap) => {
@@ -351,7 +351,7 @@ describe("Image", function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_RGBA_CREATE_PIXELMAP_CALLBACK_0600", 0, async function (done) {
+    it("SUB_MULTIMEDIA_IMAGE_RGBA_CREATE_PIXELMAP_CALLBACK_0600", Level.LEVEL0, async function (done) {
         const Color = new ArrayBuffer(96);
         let opts = { editable: true, pixelFormat: UNKNOWN, size: { height: -1, width: 8 } };
         image.createPixelMap(Color, opts, (err, pixelmap) => {
@@ -378,7 +378,7 @@ describe("Image", function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_RGBA_CREATE_PIXELMAP_CALLBACK_0700", 0, async function (done) {
+    it("SUB_MULTIMEDIA_IMAGE_RGBA_CREATE_PIXELMAP_CALLBACK_0700", Level.LEVEL0, async function (done) {
         const Color = new ArrayBuffer(96);
         let opts = { editable: true, pixelFormat: ARGB_8888, size: { height: 6, width: -1 } };
         image.createPixelMap(Color, opts, (err, pixelmap) => {
@@ -405,7 +405,7 @@ describe("Image", function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_RGBA_CREATE_PIXELMAP_PROMISE_0600", 0, async function (done) {
+    it("SUB_MULTIMEDIA_IMAGE_RGBA_CREATE_PIXELMAP_PROMISE_0600", Level.LEVEL0, async function (done) {
         const Color = new ArrayBuffer(96);
         let opts = { editable: true, pixelFormat: UNKNOWN, size: { height: -1, width: 8 } };
         image
@@ -433,7 +433,7 @@ describe("Image", function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_RGBA_CREATE_PIXELMAP_PROMISE_0700", 0, async function (done) {
+    it("SUB_MULTIMEDIA_IMAGE_RGBA_CREATE_PIXELMAP_PROMISE_0700", Level.LEVEL0, async function (done) {
         const Color = new ArrayBuffer(96);
         let opts = { editable: true, pixelFormat: UNKNOWN, size: { height: 6, width: -1 } };
         image
@@ -462,7 +462,7 @@ describe("Image", function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_RGBA_CREATE_PIXELMAP_PROMISE_0800", 0, async function (done) {
+    it("SUB_MULTIMEDIA_IMAGE_RGBA_CREATE_PIXELMAP_PROMISE_0800", Level.LEVEL0, async function (done) {
         const Color = new ArrayBuffer(96);
         let opts = { editable: true, pixelFormat: BGRA_8888, size: { height: 4, width: 6 } };
         image
@@ -493,7 +493,7 @@ describe("Image", function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_RGBA_CREATE_PIXELMAP_PROMISE_0900", 0, async function (done) {
+    it("SUB_MULTIMEDIA_IMAGE_RGBA_CREATE_PIXELMAP_PROMISE_0900", Level.LEVEL0, async function (done) {
         const Color = new ArrayBuffer(96);
         let opts = { editable: true, pixelFormat: RGB_888, size: { height: 4, width: 6 } };
         image
@@ -523,7 +523,7 @@ describe("Image", function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_RGBA_CREATE_PIXELMAP_CALLBACK_0800", 0, async function (done) {
+    it("SUB_MULTIMEDIA_IMAGE_RGBA_CREATE_PIXELMAP_CALLBACK_0800", Level.LEVEL0, async function (done) {
         const Color = new ArrayBuffer(96);
         let opts = { editable: true, pixelFormat: BGRA_8888, size: { height: 4, width: 6 } };
         image.createPixelMap(Color, opts, (err, pixelmap) => {
@@ -552,7 +552,7 @@ describe("Image", function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_RGBA_CREATE_PIXELMAP_CALLBACK_0900", 0, async function (done) {
+    it("SUB_MULTIMEDIA_IMAGE_RGBA_CREATE_PIXELMAP_CALLBACK_0900", Level.LEVEL0, async function (done) {
         const Color = new ArrayBuffer(96);
         let opts = { editable: true, pixelFormat: RGB_888, size: { height: 4, width: 6 } };
         image.createPixelMap(Color, opts, (err, pixelmap) => {

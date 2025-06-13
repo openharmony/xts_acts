@@ -23,27 +23,27 @@ export default function flexExceed_StartJsunit() {
   describe('flexItemAlignStartTest2', () => {
     beforeEach(async () => {
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/Flex/alignItems/ItemAlign_Start/FlexExceed',
+        url: 'MainAbility/pages/Flex/alignItems/ItemAlign_Start/ItemAlign_Start_FlexExceed',
       }
       try {
         router.clear();
         await CommonFunc.sleep(1000);
         let pages = router.getState();
-        console.info("get FlexExceed state success " + JSON.stringify(pages));
-        if (!("FlexExceed" == pages.name)) {
-          console.info("get FlexExceed state success " + JSON.stringify(pages.name));
+        console.info("get ItemAlign_Start_FlexExceed state success " + JSON.stringify(pages));
+        if (!("ItemAlign_Start_FlexExceed" == pages.name)) {
+          console.info("get ItemAlign_Start_FlexExceed state success " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options)
-          console.info("push FlexExceed page success " + JSON.stringify(result));
+          console.info("push ItemAlign_Start_FlexExceed page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push FlexExceed page error " + JSON.stringify(err));
+        console.error("push ItemAlign_Start_FlexExceed page error " + JSON.stringify(err));
       }
       await CommonFunc.sleep(2000);
 
     });
     afterEach(async () => {
       await CommonFunc.sleep(1000);
-      console.info("FlexExceed after each called");
+      console.info("ItemAlign_Start_FlexExceed after each called");
     });
 
     /**
@@ -60,12 +60,12 @@ export default function flexExceed_StartJsunit() {
         name: 'margin', value: 10
       });
       await CommonFunc.sleep(2000);
-      let strJson1 = getInspectorByKey('flexExceed01');
+      let strJson1 = getInspectorByKey('ItemAlign_Start_flexExceed01');
 
-      let textExceed01: RectValue = CommonFunc.getComponentRect('textExceed01');
-      let textExceed02: RectValue = CommonFunc.getComponentRect('textExceed02');
-      let textExceed03: RectValue = CommonFunc.getComponentRect('textExceed03');
-      let flexExceed01: RectValue = CommonFunc.getComponentRect('flexExceed01');
+      let textExceed01: RectValue = CommonFunc.getComponentRect('ItemAlign_Start_textExceed01');
+      let textExceed02: RectValue = CommonFunc.getComponentRect('ItemAlign_Start_textExceed02');
+      let textExceed03: RectValue = CommonFunc.getComponentRect('ItemAlign_Start_textExceed03');
+      let flexExceed01: RectValue = CommonFunc.getComponentRect('ItemAlign_Start_flexExceed01');
 
       expect(Math.abs(textExceed01.left - flexExceed01.left - vp2px(10)) <= 1).assertTrue()
       expect(Math.abs(textExceed01.right - textExceed02.left) <= 1).assertTrue()
@@ -102,12 +102,12 @@ export default function flexExceed_StartJsunit() {
         name: 'margin', value: 30
       });
       await CommonFunc.sleep(2000);
-      let strJson1 = getInspectorByKey('flexExceed01');
+      let strJson1 = getInspectorByKey('ItemAlign_Start_flexExceed01');
 
-      let textExceed01: RectValue = CommonFunc.getComponentRect('textExceed01');
-      let textExceed02: RectValue = CommonFunc.getComponentRect('textExceed02');
-      let textExceed03: RectValue = CommonFunc.getComponentRect('textExceed03');
-      let flexExceed01: RectValue = CommonFunc.getComponentRect('flexExceed01');
+      let textExceed01: RectValue = CommonFunc.getComponentRect('ItemAlign_Start_textExceed01');
+      let textExceed02: RectValue = CommonFunc.getComponentRect('ItemAlign_Start_textExceed02');
+      let textExceed03: RectValue = CommonFunc.getComponentRect('ItemAlign_Start_textExceed03');
+      let flexExceed01: RectValue = CommonFunc.getComponentRect('ItemAlign_Start_flexExceed01');
 
       expect(Math.abs(textExceed01.left - flexExceed01.left - vp2px(30)) <= 1).assertTrue()
       expect(Math.abs(textExceed01.right - textExceed02.left) <= 1).assertTrue()

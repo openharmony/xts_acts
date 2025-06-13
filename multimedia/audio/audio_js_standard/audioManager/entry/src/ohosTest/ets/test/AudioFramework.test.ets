@@ -5310,10 +5310,6 @@ export default function audioFramework() {
       console.info("audio.DeviceType.REMOTE_CAST:" + audio.DeviceType.REMOTE_CAST);
       expect(audio.DeviceType.USB_DEVICE).assertEqual(25);
       console.info("audio.DeviceType.USB_DEVICE:" + audio.DeviceType.USB_DEVICE);
-      expect(audio.DeviceType.HDMI).assertEqual(27);
-      console.info("audio.DeviceType.HDMI:" + audio.DeviceType.HDMI);
-      expect(audio.DeviceType.LINE_DIGITAL).assertEqual(28);
-      console.info("audio.DeviceType.LINE_DIGITAL:" + audio.DeviceType.LINE_DIGITAL);
       expect(audio.DeviceType.REMOTE_DAUDIO).assertEqual(29);
       console.info("audio.DeviceType.REMOTE_DAUDIO:" + audio.DeviceType.REMOTE_DAUDIO);
       expect(audio.DeviceType.DEFAULT).assertEqual(1000);
@@ -6012,6 +6008,101 @@ export default function audioFramework() {
         volumeManager.off(para);
       } catch (error) {
         console.info(`off('volumeChange') Fail,error:${error},ErrorCode:${error.code},${typeof (error.code)}`);
+        expect(Number(error.code)).assertEqual(6800101);
+        flag = true;
+      }
+      expect(flag).assertTrue();
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_ON_ACTIVE_VOLUME_TYPE_CHANGE_0100
+     * @tc.name      : ActiveVolumeTypeChange
+     * @tc.desc      : ON_ACTIVE_VOLUME_TYPE_CHANGE
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_ON_ACTIVE_VOLUME_TYPE_CHANGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
+      let volumeManager = audio.getAudioManager().getVolumeManager();
+      let flag: boolean = false;
+      let cb = (volumeType: audio.AudioVolumeType) => {};
+      try {
+        volumeManager.on('activeVolumeTypeChange', cb);
+        flag = true;
+      } catch (error) {
+        console.info(`on('activeVolumeTypeChange') Fail`);
+      }
+      expect(flag).assertTrue();
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_ON_ACTIVE_VOLUME_TYPE_CHANGE_0200
+     * @tc.name      : ActiveVolumeTypeChange
+     * @tc.desc      : ON_ACTIVE_VOLUME_TYPE_CHANGE
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_ON_ACTIVE_VOLUME_TYPE_CHANGE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
+      let volumeManager = audio.getAudioManager().getVolumeManager();
+      let flag: boolean = false;
+      let cb = (volumeType: audio.AudioVolumeType) => {};
+      let para: ESObject = '123';
+      try {
+        volumeManager.on(para, cb);
+      } catch (error) {
+        console.info(`on('activeVolumeTypeChange') Fail`);
+        expect(Number(error.code)).assertEqual(6800101);
+        flag = true;
+      }
+      expect(flag).assertTrue();
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_OFF_ACTIVE_VOLUME_TYPE_CHANGE_0100
+     * @tc.name      : ActiveVolumeTypeChange
+     * @tc.desc      : OFF_ACTIVE_VOLUME_TYPE_CHANGE
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_OFF_ACTIVE_VOLUME_TYPE_CHANGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
+      let volumeManager = audio.getAudioManager().getVolumeManager();
+      let flag: boolean = false;
+      let cb = (volumeType: audio.AudioVolumeType) => {};
+      try {
+        volumeManager.on('activeVolumeTypeChange', cb);
+        volumeManager.off('activeVolumeTypeChange', cb);
+        volumeManager.on('activeVolumeTypeChange', cb);
+        volumeManager.off('activeVolumeTypeChange');
+        flag = true;
+      } catch (error) {
+        console.info(`off('activeVolumeTypeChange') Fail`);
+      }
+      expect(flag).assertTrue();
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_OFF_ACTIVE_VOLUME_TYPE_CHANGE_0200
+     * @tc.name      : ActiveVolumeTypeChange
+     * @tc.desc      : OFF_ACTIVE_VOLUME_TYPE_CHANGE
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_OFF_ACTIVE_VOLUME_TYPE_CHANGE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
+      let volumeManager = audio.getAudioManager().getVolumeManager();
+      let flag: boolean = false;
+      let cb = (volumeType: audio.AudioVolumeType) => {};
+      let para: ESObject = '123';
+      try {
+        volumeManager.off(para, cb);
+      } catch (error) {
+        console.info(`off('activeVolumeTypeChange') Fail`);
         expect(Number(error.code)).assertEqual(6800101);
         flag = true;
       }

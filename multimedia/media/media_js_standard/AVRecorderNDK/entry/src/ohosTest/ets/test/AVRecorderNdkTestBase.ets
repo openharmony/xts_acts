@@ -57,6 +57,7 @@ export default class AVRecorderNdkTestBase {
   CHECK_VIDEO_EVENT = 'check_video';
   GET_RECORDER_CONFIG = 'get_recorder_config';
   GET_AVAILABLE_ENCODER = 'get_available_encoder';
+  SET_WILL_MUTE_WHEN_INTERRUPTED = 'set_will_mute_when_interrupted';
   END_EVENT = 'end';
   AV_CREATEAVPLAYER = 'createAVPlayer';
   AV_IDLE = 'idle';
@@ -235,6 +236,12 @@ export default class AVRecorderNdkTestBase {
           this.toNextStep(config, fdNumber, steps, done);
           break;
 
+        case this.SET_WILL_MUTE_WHEN_INTERRUPTED:
+          this.result = await testNapi.setWillMuteWhenInterrupted();
+          expect(this.result).assertEqual(0);
+          this.toNextStep(config, fdNumber, steps, done);
+          break;
+
         default:
           break;
       }
@@ -358,6 +365,12 @@ export default class AVRecorderNdkTestBase {
   resourceMP3Name() {
     let timestamp = Date.now();
     let filename = `avRecorder_${timestamp}.mp3`;
+    return filename;
+  }
+
+  resourceAACName() {
+    let timestamp = Date.now();
+    let filename = `avRecorder_${timestamp}.aac`;
     return filename;
   }
 

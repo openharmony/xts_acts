@@ -42,7 +42,7 @@ export default class EntryAbility extends UIAbility {
     setTimeout(() => {
       // destroy assistHap
       globalThis.abilityAssist.terminateSelf()
-    }, 1200);
+    }, 3500);
   }
 
   onWindowStageDestroy() {

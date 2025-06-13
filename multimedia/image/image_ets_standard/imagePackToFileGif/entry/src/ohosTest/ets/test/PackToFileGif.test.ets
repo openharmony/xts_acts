@@ -14,7 +14,7 @@
  */
 
 import image from "@ohos.multimedia.image";
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import fileio from "@ohos.fileio";
 import display from '@ohos.display';
 import hdrCapability from '@ohos.graphics.hdrCapability';
@@ -431,7 +431,7 @@ export default function imagePackToFileGif() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_PACKTOFILEFORSEQUENCE_0100", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_PACKTOFILEFORSEQUENCE_0100", Level.LEVEL0, async (done: Function) => {
             if (!isSupportGifEncode) {
                 console.info("This device does not support GIF encoding.")
                 expect(true).assertTrue();
@@ -459,7 +459,7 @@ export default function imagePackToFileGif() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-         it("SUB_MULTIMEDIA_IMAGE_PACKTOFILEFORSEQUENCE_0200", 0, async (done: Function) => {
+         it("SUB_MULTIMEDIA_IMAGE_PACKTOFILEFORSEQUENCE_0200", Level.LEVEL0, async (done: Function) => {
             if (!isSupportGifEncode) {
                 console.info("This device does not support GIF encoding.")
                 expect(true).assertTrue();
@@ -487,7 +487,7 @@ export default function imagePackToFileGif() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_PACKTOFILEFORSEQUENCE_0300", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_PACKTOFILEFORSEQUENCE_0300", Level.LEVEL0, async (done: Function) => {
             if (!isSupportGifEncode) {
                 console.info("This device does not support GIF encoding.")
                 expect(true).assertTrue();
@@ -515,7 +515,7 @@ export default function imagePackToFileGif() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_PACKTOFILEFORSEQUENCE_0400", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_PACKTOFILEFORSEQUENCE_0400", Level.LEVEL0, async (done: Function) => {
             if (!isSupportGifEncode) {
                 console.info("This device does not support GIF encoding.")
                 expect(true).assertTrue();
@@ -543,7 +543,7 @@ export default function imagePackToFileGif() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_PACKTOFILEFORSEQUENCE_0500", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_PACKTOFILEFORSEQUENCE_0500", Level.LEVEL0, async (done: Function) => {
             if (!isSupportGifEncode) {
                 console.info("This device does not support GIF encoding.")
                 expect(true).assertTrue();
@@ -573,7 +573,7 @@ export default function imagePackToFileGif() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_PACKTOFILEFORSEQUENCE_0600", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_PACKTOFILEFORSEQUENCE_0600", Level.LEVEL0, async (done: Function) => {
             if (!isSupportGifEncode) {
                 console.info("This device does not support GIF encoding.")
                 expect(true).assertTrue();
@@ -602,7 +602,7 @@ export default function imagePackToFileGif() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_PACKTOFILEFORSEQUENCE_0700", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_PACKTOFILEFORSEQUENCE_0700", Level.LEVEL0, async (done: Function) => {
             if (!isSupportGifEncode) {
                 console.info("This device does not support GIF encoding.")
                 expect(true).assertTrue();
@@ -631,7 +631,7 @@ export default function imagePackToFileGif() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_PACKTOFILEFORSEQUENCE_0800", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_PACKTOFILEFORSEQUENCE_0800", Level.LEVEL0, async (done: Function) => {
             if (!isSupportGifEncode) {
                 console.info("This device does not support GIF encoding.")
                 expect(true).assertTrue();
@@ -660,7 +660,7 @@ export default function imagePackToFileGif() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_PACKTOFILEFORSEQUENCE_0900", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_PACKTOFILEFORSEQUENCE_0900", Level.LEVEL0, async (done: Function) => {
             if (!isSupportGifEncode) {
                 console.info("This device does not support GIF encoding.")
                 expect(true).assertTrue();
@@ -689,7 +689,7 @@ export default function imagePackToFileGif() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_PACKTOFILEFORSEQUENCE_1000", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_PACKTOFILEFORSEQUENCE_1000", Level.LEVEL0, async (done: Function) => {
             if (!isSupportGifEncode) {
                 console.info("This device does not support GIF encoding.")
                 expect(true).assertTrue();
@@ -718,7 +718,7 @@ export default function imagePackToFileGif() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_PACKTOFILEFORSEQUENCE_1100", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_PACKTOFILEFORSEQUENCE_1100", Level.LEVEL0, async (done: Function) => {
             if (!isSupportGifEncode) {
                 console.info("This device does not support GIF encoding.")
                 expect(true).assertTrue();
@@ -747,7 +747,7 @@ export default function imagePackToFileGif() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-         it("SUB_MULTIMEDIA_IMAGE_PACKTOFILEFORSEQUENCE_1200", 0, async (done: Function) => {
+         it("SUB_MULTIMEDIA_IMAGE_PACKTOFILEFORSEQUENCE_1200", Level.LEVEL0, async (done: Function) => {
             if (!isSupportGifEncode) {
                 console.info("This device does not support GIF encoding.")
                 expect(true).assertTrue();
@@ -775,7 +775,7 @@ export default function imagePackToFileGif() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-         it("SUB_MULTIMEDIA_IMAGE_PACKTOFILEFORSEQUENCE_1300", 0, async (done: Function) => {
+         it("SUB_MULTIMEDIA_IMAGE_PACKTOFILEFORSEQUENCE_1300", Level.LEVEL0, async (done: Function) => {
             if (!isSupportGifEncode) {
                 console.info("This device does not support GIF encoding.")
                 expect(true).assertTrue();
@@ -803,7 +803,7 @@ export default function imagePackToFileGif() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-         it("SUB_MULTIMEDIA_IMAGE_PACKTOFILEFORSEQUENCE_1400", 0, async (done: Function) => {
+         it("SUB_MULTIMEDIA_IMAGE_PACKTOFILEFORSEQUENCE_1400", Level.LEVEL0, async (done: Function) => {
             if (!isSupportGifEncode) {
                 console.info("This device does not support GIF encoding.")
                 expect(true).assertTrue();
@@ -831,7 +831,7 @@ export default function imagePackToFileGif() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-         it("SUB_MULTIMEDIA_IMAGE_PACKTOFILEFORSEQUENCE_1500", 0, async (done: Function) => {
+         it("SUB_MULTIMEDIA_IMAGE_PACKTOFILEFORSEQUENCE_1500", Level.LEVEL0, async (done: Function) => {
             if (!isSupportGifEncode) {
                 console.info("This device does not support GIF encoding.")
                 expect(true).assertTrue();
@@ -859,7 +859,7 @@ export default function imagePackToFileGif() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-         it("SUB_MULTIMEDIA_IMAGE_PACKTOFILEFORSEQUENCE_1600", 0, async (done: Function) => {
+         it("SUB_MULTIMEDIA_IMAGE_PACKTOFILEFORSEQUENCE_1600", Level.LEVEL0, async (done: Function) => {
             if (!isSupportGifEncode) {
                 console.info("This device does not support GIF encoding.")
                 expect(true).assertTrue();
@@ -887,7 +887,7 @@ export default function imagePackToFileGif() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-         it("SUB_MULTIMEDIA_IMAGE_PACKTOFILEFORSEQUENCE_1700", 0, async (done: Function) => {
+         it("SUB_MULTIMEDIA_IMAGE_PACKTOFILEFORSEQUENCE_1700", Level.LEVEL0, async (done: Function) => {
             if (!isSupportGifEncode) {
                 console.info("This device does not support GIF encoding.")
                 expect(true).assertTrue();
@@ -915,7 +915,7 @@ export default function imagePackToFileGif() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-         it("SUB_MULTIMEDIA_IMAGE_PACKTOFILEFORSEQUENCE_1800", 0, async (done: Function) => {
+         it("SUB_MULTIMEDIA_IMAGE_PACKTOFILEFORSEQUENCE_1800", Level.LEVEL0, async (done: Function) => {
             if (!isSupportGifEncode) {
                 console.info("This device does not support GIF encoding.")
                 expect(true).assertTrue();
@@ -943,7 +943,7 @@ export default function imagePackToFileGif() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-         it("SUB_MULTIMEDIA_IMAGE_PACKTOFILEFORSEQUENCE_1900", 0, async (done: Function) => {
+         it("SUB_MULTIMEDIA_IMAGE_PACKTOFILEFORSEQUENCE_1900", Level.LEVEL0, async (done: Function) => {
             if (!isSupportGifEncode) {
                 console.info("This device does not support GIF encoding.")
                 expect(true).assertTrue();
@@ -979,7 +979,7 @@ export default function imagePackToFileGif() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_PACKTOFILEFORSEQUENCE_ERROR_0100", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_PACKTOFILEFORSEQUENCE_ERROR_0100", Level.LEVEL0, async (done: Function) => {
             if (!isSupportGifEncode) {
                 console.info("This device does not support GIF encoding.")
                 expect(true).assertTrue();
@@ -1008,7 +1008,7 @@ export default function imagePackToFileGif() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_PACKTOFILEFORSEQUENCE_ERROR_0200", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_PACKTOFILEFORSEQUENCE_ERROR_0200", Level.LEVEL0, async (done: Function) => {
             if (!isSupportGifEncode) {
                 console.info("This device does not support GIF encoding.")
                 expect(true).assertTrue();
@@ -1037,7 +1037,7 @@ export default function imagePackToFileGif() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_PACKTOFILEFORSEQUENCE_ERROR_0300", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_PACKTOFILEFORSEQUENCE_ERROR_0300", Level.LEVEL0, async (done: Function) => {
             if (!isSupportGifEncode) {
                 console.info("This device does not support GIF encoding.")
                 expect(true).assertTrue();
@@ -1066,7 +1066,7 @@ export default function imagePackToFileGif() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_PACKTOFILEFORSEQUENCE_ERROR_0400", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_PACKTOFILEFORSEQUENCE_ERROR_0400", Level.LEVEL0, async (done: Function) => {
             if (!isSupportGifEncode) {
                 console.info("This device does not support GIF encoding.")
                 expect(true).assertTrue();
@@ -1095,7 +1095,7 @@ export default function imagePackToFileGif() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_PACKTOFILEFORSEQUENCE_ERROR_0500", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_PACKTOFILEFORSEQUENCE_ERROR_0500", Level.LEVEL0, async (done: Function) => {
             if (!isSupportGifEncode) {
                 console.info("This device does not support GIF encoding.")
                 expect(true).assertTrue();
@@ -1124,7 +1124,7 @@ export default function imagePackToFileGif() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_PACKTOFILE_PIXELMAPLIST_ERROR_0100", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_PACKTOFILE_PIXELMAPLIST_ERROR_0100", Level.LEVEL0, async (done: Function) => {
             if (!isSupportGifEncode) {
                 console.info("This device does not support GIF encoding.")
                 expect(true).assertTrue();
@@ -1153,7 +1153,7 @@ export default function imagePackToFileGif() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_GIF_PACKTOFILE_0100", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_GIF_PACKTOFILE_0100", Level.LEVEL0, async (done: Function) => {
             if (!isSupportGifEncode) {
                 console.info("This device does not support GIF encoding.")
                 expect(true).assertTrue();
@@ -1180,7 +1180,7 @@ export default function imagePackToFileGif() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_GIF_PACKTOFILE_0200", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_GIF_PACKTOFILE_0200", Level.LEVEL0, async (done: Function) => {
             if (!isSupportGifEncode) {
                 console.info("This device does not support GIF encoding.")
                 expect(true).assertTrue();
@@ -1207,7 +1207,7 @@ export default function imagePackToFileGif() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_GIF_PACKTOFILE_0300", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_GIF_PACKTOFILE_0300", Level.LEVEL0, async (done: Function) => {
             if (!isSupportGifEncode) {
                 console.info("This device does not support GIF encoding.")
                 expect(true).assertTrue();
@@ -1234,7 +1234,7 @@ export default function imagePackToFileGif() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_GIF_PACKTOFILE_0400", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_GIF_PACKTOFILE_0400", Level.LEVEL0, async (done: Function) => {
             if (!isSupportGifEncode) {
                 console.info("This device does not support GIF encoding.")
                 expect(true).assertTrue();
@@ -1261,7 +1261,7 @@ export default function imagePackToFileGif() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_PACK_TO_FILE_CALLBACK_ERR_0100", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_PACK_TO_FILE_CALLBACK_ERR_0100", Level.LEVEL0, async (done: Function) => {
             let globalpixelmap = await getPixelMapData()
             expect(globalpixelmap != undefined).assertTrue();
             let fpath: string = cacheDir + "/" + "pack_multiFrames_err_001.gif";
@@ -1284,7 +1284,7 @@ export default function imagePackToFileGif() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_PACK_TO_FILE_CALLBACK_ERR_0200", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_PACK_TO_FILE_CALLBACK_ERR_0200", Level.LEVEL0, async (done: Function) => {
             let source = await getImageSourceData("moving_test.gif");
             expect(source != undefined).assertTrue();
             let fpath: string = cacheDir + "/" + "pack_multiFrames_err_002.gif";
@@ -1309,7 +1309,7 @@ export default function imagePackToFileGif() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_PACK_TO_FILE_PROMISE_ERR_0300", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_PACK_TO_FILE_PROMISE_ERR_0300", Level.LEVEL0, async (done: Function) => {
             let globalpixelmap = await getPixelMapData()
             expect(globalpixelmap != undefined).assertTrue();
             let fpath: string = cacheDir + "/" + "pack_multiFrames_err_003.gif";
@@ -1332,7 +1332,7 @@ export default function imagePackToFileGif() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it("SUB_MULTIMEDIA_IMAGE_PACK_TO_FILE_PROMISE_ERR_0400", 0, async (done: Function) => {
+        it("SUB_MULTIMEDIA_IMAGE_PACK_TO_FILE_PROMISE_ERR_0400", Level.LEVEL0, async (done: Function) => {
             let source = await getImageSourceData("moving_test.gif");
             expect(source != undefined).assertTrue();
             let fpath: string = cacheDir + "/" + "pack_multiFrames_err_004.gif";

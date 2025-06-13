@@ -45,6 +45,28 @@
         ],
         "startWindowIcon": "$media:icon",
         "startWindowBackground": "$color:start_window_background"
+      },
+      {
+        "name": "StartAbility",
+        "srcEntry": "./ets/MainAbility/StartAbility.ts",
+        "description": "$string:phone_entry_main",
+        "icon": "$media:icon",
+        "label": "$string:entry_label",
+        "visible": true,
+        "orientation": "portrait",
+        "removeMissionAfterTerminate": true,
+        "skills": [
+          {
+            "actions": [
+              "action.system.home"
+            ],
+            "entities": [
+              "entity.system.home"
+            ]
+          }
+        ],
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background"
       }
     ],
     "requestPermissions": [

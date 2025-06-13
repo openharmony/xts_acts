@@ -13,7 +13,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
-<list class="container">
+<list class="container" onswipe="swipeEvent">
   <list-item style="height: 40px; width: 100%;"> </list-item>
   <list-item class="titleContainerStyle">
     <text class="titleTextStyle">

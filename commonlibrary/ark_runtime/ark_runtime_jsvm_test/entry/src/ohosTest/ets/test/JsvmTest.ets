@@ -12852,5 +12852,17 @@ export default function JsvmJsunit() {
    `;
       expect(napitest.runJsVm(script)).assertEqual(true);
     });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0959
+     * @tc.name      JsvmTest0959
+     * @tc.desc      open and close debug option,return ok
+     * @tc.type      Function
+     * @tc.level     Level 0
+     */
+    it('JsvmTest0959', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+      let rst: number = napitest.testSetDebugOption();
+      console.info('JsvmTest0959 testString result is:' + JSON.stringify(rst));
+      expect(rst).assertEqual(0);
+    });
   });
 }

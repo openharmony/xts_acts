@@ -15,7 +15,7 @@
 
 import image from "@ohos.multimedia.image";
 import fileio from "@ohos.fileio";
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import featureAbility from "@ohos.ability.featureAbility";
 import { BusinessError } from '@kit.BasicServicesKit';
 import fs from '@ohos.file.fs'
@@ -245,7 +245,7 @@ export default function imageSvg() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_SVG_PROMISE_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_SVG_PROMISE_0100", Level.LEVEL0, async (done: Function) => {
       let decodeOpts: ESObject = {
         sampleSize: 1,
         editable: true,
@@ -273,7 +273,7 @@ export default function imageSvg() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_MULTIMEDIA_IMAGE_SVG_CALLBACK_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_SVG_CALLBACK_0100", Level.LEVEL0, async (done: Function) => {
       let decodeOpts: ESObject = {
         sampleSize: 1,
         editable: true,
@@ -301,7 +301,7 @@ export default function imageSvg() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it("SUB_MULTIMEDIA_IMAGE_SVG_CALLBACK_ERR_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_SVG_CALLBACK_ERR_0100", Level.LEVEL0, async (done: Function) => {
       let decodingOption: ESObject = {
         sampleSize: -1,
         editable: true,
@@ -331,7 +331,7 @@ export default function imageSvg() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it("SUB_MULTIMEDIA_IMAGE_SVG_CALLBACK_ERR_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_SVG_CALLBACK_ERR_0200", Level.LEVEL0, async (done: Function) => {
       let decodingOption: ESObject = {
         sampleSize: 1,
         editable: true,
@@ -361,7 +361,7 @@ export default function imageSvg() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it("SUB_MULTIMEDIA_IMAGE_SVG_CALLBACK_ERR_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_SVG_CALLBACK_ERR_0300", Level.LEVEL0, async (done: Function) => {
       let decodingOption: ESObject = {
         sampleSize: 1,
         editable: true,
@@ -391,7 +391,7 @@ export default function imageSvg() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it("SUB_MULTIMEDIA_IMAGE_SVG_CALLBACK_ERR_0400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_SVG_CALLBACK_ERR_0400", Level.LEVEL0, async (done: Function) => {
       let decodingOption: ESObject = {
         sampleSize: 1,
         editable: false,
@@ -421,7 +421,7 @@ export default function imageSvg() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it("SUB_MULTIMEDIA_IMAGE_SVG_CALLBACK_ERR_0500", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_SVG_CALLBACK_ERR_0500", Level.LEVEL0, async (done: Function) => {
       let decodingOption: ESObject = {
         sampleSize: 1,
         editable: true,
@@ -451,7 +451,7 @@ export default function imageSvg() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it("SUB_MULTIMEDIA_IMAGE_SVG_CALLBACK_ERR_0600", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_SVG_CALLBACK_ERR_0600", Level.LEVEL0, async (done: Function) => {
       let decodingOption: ESObject = {
         sampleSize: 1,
         editable: true,
@@ -481,7 +481,7 @@ export default function imageSvg() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it("SUB_MULTIMEDIA_IMAGE_SVG_PROMISE_ERR_0100", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_SVG_PROMISE_ERR_0100", Level.LEVEL0, async (done: Function) => {
       let decodingOption: ESObject = {
         sampleSize: -1,
         editable: true,
@@ -510,7 +510,7 @@ export default function imageSvg() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it("SUB_MULTIMEDIA_IMAGE_SVG_PROMISE_ERR_0200", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_SVG_PROMISE_ERR_0200", Level.LEVEL0, async (done: Function) => {
       let decodingOption: ESObject = {
         sampleSize: 1,
         editable: true,
@@ -540,7 +540,7 @@ export default function imageSvg() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it("SUB_MULTIMEDIA_IMAGE_SVG_PROMISE_ERR_0300", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_SVG_PROMISE_ERR_0300", Level.LEVEL0, async (done: Function) => {
       let decodingOption: ESObject = {
         sampleSize: 1,
         editable: true,
@@ -569,7 +569,7 @@ export default function imageSvg() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it("SUB_MULTIMEDIA_IMAGE_SVG_PROMISE_ERR_0400", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_SVG_PROMISE_ERR_0400", Level.LEVEL0, async (done: Function) => {
       let decodingOption: ESObject = {
         sampleSize: 1,
         editable: false,
@@ -599,7 +599,7 @@ export default function imageSvg() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it("SUB_MULTIMEDIA_IMAGE_SVG_PROMISE_ERR_0500", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_SVG_PROMISE_ERR_0500", Level.LEVEL0, async (done: Function) => {
       let decodingOption: ESObject = {
         sampleSize: 1,
         editable: true,
@@ -628,7 +628,7 @@ export default function imageSvg() {
      * @tc.type      : Functional
      * @tc.level     : Level 3
      */
-    it("SUB_MULTIMEDIA_IMAGE_SVG_PROMISE_ERR_0600", 0, async (done: Function) => {
+    it("SUB_MULTIMEDIA_IMAGE_SVG_PROMISE_ERR_0600", Level.LEVEL0, async (done: Function) => {
       let decodingOption: ESObject = {
         sampleSize: 1,
         editable: true,

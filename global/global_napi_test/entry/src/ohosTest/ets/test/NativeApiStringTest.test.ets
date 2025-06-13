@@ -683,5 +683,281 @@ export default function abilityTest() {
       console.log("getRawFileContent_nativeTest_0020 dataString:" + dataString);
       expect(dataString == 'qwem7890weasd123').assertTrue();
     })
+
+    /* *
+    * @tc.number    : SUB_GLOBAL_ResourceManager_Plural_0790
+    * @tc.name      : testGetIntPluralStringById0790_082
+    * @tc.desc      : OH_ResourceManager_GetIntPluralString with resID
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    it('testGetIntPluralStringById0790_082', Level.LEVEL0, () => {
+      console.log("testGetIntPluralStringById0790_082 start");
+      let value = nativeTest.testGetIntPluralStringById0790_082(resManager.resourceManager, $r('app.plural.p_str7').id);
+      console.log("testGetIntPluralStringById0790_082" + value);
+      expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number    : SUB_GLOBAL_ResourceManager_Plural_0790
+    * @tc.name      : testGetIntPluralStringByName0790_082
+    * @tc.desc      : OH_ResourceManager_GetIntPluralStringByName with resName
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    it('testGetIntPluralStringByName0790_082', Level.LEVEL0, () => {
+      console.log("testGetIntPluralStringByName0790_082 start");
+      let value = nativeTest.testGetIntPluralStringByName0790_082(resManager.resourceManager, 'p_str7');
+      console.log("testGetIntPluralStringByName0790_082" + value);
+      expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number    : SUB_GLOBAL_ResourceManager_Plural_0790
+    * @tc.name      : testGetDoublePluralStringById0790_082
+    * @tc.desc      : OH_ResourceManager_GetDoublePluralString with resID
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    it('testGetDoublePluralStringById0790_082', Level.LEVEL0, () => {
+      console.log("testGetDoublePluralStringById0790_082 start");
+      let value =
+        nativeTest.testGetDoublePluralStringById0790_082(resManager.resourceManager, $r('app.plural.p_str7').id);
+      console.log("testGetDoublePluralStringById0790_082" + value);
+      expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number    : SUB_GLOBAL_ResourceManager_Plural_0790
+    * @tc.name      : testGetDoublePluralStringByName0790_082
+    * @tc.desc      : OH_ResourceManager_GetDoublePluralStringByName with resName
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    it('testGetDoublePluralStringByName0790_082', Level.LEVEL0, () => {
+      console.log("testGetDoublePluralStringByName0790_082 start");
+      let value =
+        nativeTest.testGetDoublePluralStringByName0790_082(resManager.resourceManager, 'p_str7');
+      console.log("testGetDoublePluralStringByName0790_082" + value);
+      expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number    : SUB_GLOBAL_ResourceManager_Plural_1190
+    * @tc.name      : testGetIntPluralStringById119
+    * @tc.desc      : error code 401
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 3
+    */
+    it('testGetIntPluralStringById119', Level.LEVEL3, () => {
+      console.log("testGetIntPluralStringById119 start");
+      let value = nativeTest.testGetIntPluralStringById119(resManager.resourceManager, $r('app.plural.p_str4').id);
+      console.log("testGetIntPluralStringById119" + value);
+      expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number    : SUB_GLOBAL_ResourceManager_Plural_1210
+    * @tc.name      : testGetDoublePluralStringById120
+    * @tc.desc      : error code 401
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 3
+    */
+    it('testGetDoublePluralStringById120', Level.LEVEL3, () => {
+      console.log("testGetDoublePluralStringById120 start");
+      let value = nativeTest.testGetDoublePluralStringById120(resManager.resourceManager, $r('app.plural.p_str4').id);
+      console.log("testGetDoublePluralStringById120" + value);
+      expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number    : SUB_GLOBAL_ResourceManager_Plural_1310
+    * @tc.name      : testGetIntPluralStringById125
+    * @tc.desc      : error code 9001001
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 3
+    */
+    it('testGetIntPluralStringById125', Level.LEVEL3, () => {
+      console.log("testGetIntPluralStringById125 start");
+      let value = nativeTest.testGetIntPluralStringById125(resManager.resourceManager, $r('app.plural.p_str4').id);
+      console.log("testGetIntPluralStringById125" + value);
+      expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number    : SUB_GLOBAL_ResourceManager_Plural_1330
+    * @tc.name      : testGetDoublePluralStringById126
+    * @tc.desc      : error code 9001001
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 3
+    */
+    it('testGetDoublePluralStringById126', Level.LEVEL3, () => {
+      console.log("testGetDoublePluralStringById126 start");
+      let value = nativeTest.testGetDoublePluralStringById126(resManager.resourceManager, $r('app.plural.p_str4').id);
+      console.log("testGetDoublePluralStringById126" + value);
+      expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number    : SUB_GLOBAL_ResourceManager_Plural_1350
+    * @tc.name      : testGetIntPluralStringById127
+    * @tc.desc      : error code 9001002
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 3
+    */
+    it('testGetIntPluralStringById127', Level.LEVEL3, () => {
+      console.log("testGetIntPluralStringById127 start");
+      let value = nativeTest.testGetIntPluralStringById127(resManager.resourceManager, $r('app.plural.p_str4').id,
+        $r('app.media.icon').id);
+      console.log("testGetIntPluralStringById127" + value);
+      expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number    : SUB_GLOBAL_ResourceManager_Plural_1370
+    * @tc.name      : testGetDoublePluralStringById128
+    * @tc.desc      : error code 9001002
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 3
+    */
+    it('testGetDoublePluralStringById128', Level.LEVEL3, () => {
+      console.log("testGetDoublePluralStringById128 start");
+      let value = nativeTest.testGetDoublePluralStringById128(resManager.resourceManager, $r('app.plural.p_str4').id,
+        $r('app.media.icon').id);
+      console.log("testGetDoublePluralStringById128" + value);
+      expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number    : SUB_GLOBAL_ResourceManager_Plural_1390
+    * @tc.name      : testGetIntPluralStringById129
+    * @tc.desc      : error code 9001006
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 3
+    */
+    it('testGetIntPluralStringById129', Level.LEVEL3, () => {
+      console.log("testGetIntPluralStringById129 start");
+      let value = nativeTest.testGetIntPluralStringById129(resManager.resourceManager, $r('app.plural.p_str4').id,
+        $r('app.plural.test_cyc').id);
+      console.log("testGetIntPluralStringById129" + value);
+      expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number    : SUB_GLOBAL_ResourceManager_Plural_1410
+    * @tc.name      : testGetDoublePluralStringById130
+    * @tc.desc      : error code 9001006
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 3
+    */
+    it('testGetDoublePluralStringById130', Level.LEVEL3, () => {
+      console.log("testGetDoublePluralStringById130 start");
+      let value = nativeTest.testGetDoublePluralStringById130(resManager.resourceManager, $r('app.plural.p_str4').id,
+        $r('app.plural.test_cyc').id);
+      console.log("testGetDoublePluralStringById130" + value);
+      expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number    : SUB_GLOBAL_ResourceManager_Plural_1470
+    * @tc.name      : testGetIntPluralStringByName133
+    * @tc.desc      : error code 401
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 3
+    */
+    it('testGetIntPluralStringByName133', Level.LEVEL3, () => {
+      console.log("testGetIntPluralStringByName133 start");
+      let value = nativeTest.testGetIntPluralStringByName133(resManager.resourceManager, 'p_str4');
+      console.log("testGetIntPluralStringByName133" + value);
+      expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number    : SUB_GLOBAL_ResourceManager_Plural_1480
+    * @tc.name      : testGetDoublePluralStringByName134
+    * @tc.desc      : error code 401
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 3
+    */
+    it('testGetDoublePluralStringByName134', Level.LEVEL3, () => {
+      console.log("testGetDoublePluralStringByName134 start");
+      let value = nativeTest.testGetDoublePluralStringByName134(resManager.resourceManager, 'p_str4');
+      console.log("testGetDoublePluralStringByName134" + value);
+      expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number    : SUB_GLOBAL_ResourceManager_Plural_1530
+    * @tc.name      : testGetIntPluralStringByName139
+    * @tc.desc      : error code 9001003
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 3
+    */
+    it('testGetIntPluralStringByName139', Level.LEVEL3, () => {
+      console.log("testGetIntPluralStringByName139 start");
+      let value = nativeTest.testGetIntPluralStringByName139(resManager.resourceManager, 'p_str4');
+      console.log("testGetIntPluralStringByName139" + value);
+      expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number    : SUB_GLOBAL_ResourceManager_Plural_1540
+    * @tc.name      : testGetDoublePluralStringByName140
+    * @tc.desc      : error code 9001003
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 3
+    */
+    it('testGetDoublePluralStringByName140', Level.LEVEL3, () => {
+      console.log("testGetDoublePluralStringByName140 start");
+      let value = nativeTest.testGetDoublePluralStringByName140(resManager.resourceManager, 'p_str4');
+      console.log("testGetDoublePluralStringByName140" + value);
+      expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number    : SUB_GLOBAL_ResourceManager_Plural_1550
+    * @tc.name      : testGetIntPluralStringByName141
+    * @tc.desc      : error code 9001006
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 3
+    */
+    it('testGetIntPluralStringByName141', Level.LEVEL3, () => {
+      console.log("testGetIntPluralStringByName141 start");
+      let value = nativeTest.testGetIntPluralStringByName141(resManager.resourceManager, 'p_str4');
+      console.log("testGetIntPluralStringByName141" + value);
+      expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number    : SUB_GLOBAL_ResourceManager_Plural_1560
+    * @tc.name      : testGetDoublePluralStringByName142
+    * @tc.desc      : error code 9001006
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 3
+    */
+    it('testGetDoublePluralStringByName142', Level.LEVEL3, () => {
+      console.log("testGetDoublePluralStringByName142 start");
+      let value = nativeTest.testGetDoublePluralStringByName142(resManager.resourceManager, 'p_str4');
+      console.log("testGetDoublePluralStringByName142" + value);
+      expect(value).assertTrue();
+    })
   })
 }

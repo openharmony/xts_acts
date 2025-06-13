@@ -161,6 +161,27 @@ export default function MultimodalInputDeviceTest() {
     });
 
     /**
+     * @tc.number: SUB_MMI_Input_Api_IptDev_getDeviceInfoSync_0200
+     * @tc.name: SUB_MMI_Input_Api_IptDev_getDeviceInfoSync_0200
+     * @tc.desc: Test getDeviceInfoSync interface invalid input parameter
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it("SUB_MMI_Input_Api_IptDev_getDeviceInfoSync_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
+      let caseName = "SUB_MMI_Input_Api_IptDev_getDeviceInfoSync_0200";
+      try {
+        let deviceData: inputDevice.InputDeviceData = inputDevice.getDeviceInfoSync(undefined);
+        ExpectFalse(true);
+        done();
+      } catch (error) {
+        console.info(`${caseName} Failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+        ExpectTrue(error.code == 401);
+        done();
+      }
+    });
+
+    /**
      * @tc.number: SUB_MMI_Input_Api_IptDev_off_0100
      * @tc.name: SUB_MMI_Input_Api_IptDev_off_0100
      * @tc.desc: Test callback on and off interfaces to cancel the hot swap event for the specified input device.
@@ -476,6 +497,27 @@ export default function MultimodalInputDeviceTest() {
     });
 
     /**
+     * @tc.number: SUB_MMI_Input_Api_IptDev_getKeyboardTypeSync_0200
+     * @tc.name: SUB_MMI_Input_Api_IptDev_getKeyboardTypeSync_0200
+     * @tc.desc: Test getKeyboardTypeSync interface invalid input parameter
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it("SUB_MMI_Input_Api_IptDev_getKeyboardTypeSync_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
+      let caseName = "SUB_MMI_Input_Api_IptDev_getKeyboardTypeSync_0200";
+      try {
+        let type: number = inputDevice.getKeyboardTypeSync(undefined);
+        ExpectFalse(true);
+        done();
+      } catch (error) {
+        console.info(`${caseName} Failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+        ExpectTrue(error.code == 401);
+        done();
+      }
+    });
+
+    /**
      * @tc.number: SUB_MMI_Input_Api_IptDev_getAllSystemHotkeys_0100
      * @tc.name: SUB_MMI_Input_Api_IptDev_getAllSystemHotkeys_0100
      * @tc.desc: Test promise getAllSystemHotkeys interface to get all the system hotkeys.
@@ -578,7 +620,9 @@ export default function MultimodalInputDeviceTest() {
     it("SUB_MMI_Input_Api_IptDev_isFunctionKeyEnabled_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function)=> {
       let caseName = "SUB_MMI_Input_Api_IptDev_isFunctionKeyEnabled_0300";
       try {
-        let CAPS_LOCK: inputDevice.FunctionKey.CAPS_LOCK = 1;
+        let CAPS_LOCK = inputDevice.FunctionKey.CAPS_LOCK;
+        console.info(`${caseName} CAPS_LOCK: ${JSON.stringify(CAPS_LOCK)}`);
+        ExpectTrue(CAPS_LOCK == 1);
         await inputDevice.isFunctionKeyEnabled(CAPS_LOCK).then((state1) => {
           console.info(`${caseName} capslock state1: ${JSON.stringify(state1)}`);
           ExpectTrue(Number(state1) == 0 || Number(state1) == 1);

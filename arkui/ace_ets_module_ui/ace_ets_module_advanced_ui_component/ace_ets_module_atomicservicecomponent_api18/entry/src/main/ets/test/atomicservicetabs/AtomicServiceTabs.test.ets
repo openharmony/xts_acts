@@ -25,7 +25,7 @@ export default function atomicservicetabsTest() {
     beforeEach(async (done: Function) => {
       console.info("atomicservicetabsTest beforeEach start");
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/atomicservicetabs/AtomicserviceTabsTest',
+        url: 'MainAbility/pages/atomicservicetabs/AtomicServiceTabsTest',
       };
       try {
         router.clear();
@@ -65,7 +65,7 @@ export default function atomicservicetabsTest() {
       let driver = await Driver.create();
       await driver.delayMs(2000);
       // 查看atomicservicetabsTest是否存在以下入口。
-      let tab1 = await driver.findComponent(ON.text("修改placeholder"));
+      let tab1 = await driver.findComponent(ON.text("绿色"));
       expect(tab1 !== null).assertTrue();
       console.info('[atomicservicetabsTest_0100] END');
       done();

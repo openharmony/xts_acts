@@ -798,7 +798,9 @@ export default function UDPSocketTest() {
           data: 'Hello, server!',
           address: UDPAddr2
         };
-        await udp.bind(UDPAddr1);
+        await udp.bind(UDPAddr1).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         udp.send(sendOptions, (err: BusinessError) => {
           if (err) {
             console.info(`${caseName} err: ${JSON.stringify(err)}`);
@@ -835,7 +837,9 @@ export default function UDPSocketTest() {
           data: stringToArrayBuffer('Hello, server!'),
           address: UDPAddr2
         };
-        await udp.bind(UDPAddr1);
+        await udp.bind(UDPAddr1).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         udp.send(sendOptions, (err: BusinessError) => {
           if (err) {
             console.info(`${caseName} err: ${JSON.stringify(err)}`);
@@ -876,7 +880,9 @@ export default function UDPSocketTest() {
             family: 1
           }
         };
-        await udp.bind(UDPAddr1);
+        await udp.bind(UDPAddr1).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         udp.send(sendOptions, (err: BusinessError) => {
           if (err) {
             console.info(`${caseName} err: ${JSON.stringify(err)}`);
@@ -917,7 +923,9 @@ export default function UDPSocketTest() {
             family: 1
           }
         };
-        await udp.bind(UDPAddr1);
+        await udp.bind(UDPAddr1).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         udp.send(sendOptions, (err: BusinessError) => {
           if (err) {
             console.info(`${caseName} err: ${JSON.stringify(err)}`);
@@ -958,7 +966,9 @@ export default function UDPSocketTest() {
             family: 1
           }
         };
-        await udp.bind(UDPAddr1);
+        await udp.bind(UDPAddr1).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         udp.send(sendOptions, (err: BusinessError) => {
           if (err) {
             console.info(`${caseName} err: ${JSON.stringify(err)}`);
@@ -999,7 +1009,9 @@ export default function UDPSocketTest() {
             family: 3
           }
         };
-        await udp.bind(UDPAddr1);
+        await udp.bind(UDPAddr1).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         udp.send(sendOptions, (err: BusinessError) => {
           if (err) {
             console.info(`${caseName} err: ${JSON.stringify(err)}`);
@@ -1032,7 +1044,9 @@ export default function UDPSocketTest() {
       console.info(`${caseName} test start`);
       try {
         let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
-        await udp.bind(UDPAddr1);
+        await udp.bind(UDPAddr1).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         udp.send(null, (err: BusinessError) => {
           if (err) {
             console.info(`${caseName} err: ${JSON.stringify(err)}`);
@@ -1065,7 +1079,9 @@ export default function UDPSocketTest() {
       console.info(`${caseName} test start`);
       try {
         let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
-        await udp.bind(UDPAddr1);
+        await udp.bind(UDPAddr1).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         udp.send(undefined, (err: BusinessError) => {
           if (err) {
             console.info(`${caseName} err: ${JSON.stringify(err)}`);
@@ -1102,7 +1118,9 @@ export default function UDPSocketTest() {
           data: 'Hello, server!',
           address: UDPAddr2
         };
-        await udp.bind(UDPAddr1);
+        await udp.bind(UDPAddr1).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         udp.send(sendOptions).then(() => {
           expectTrue(true);
           console.info(`${caseName} test end`);
@@ -1140,7 +1158,9 @@ export default function UDPSocketTest() {
           data: stringToArrayBuffer('Hello, server!'),
           address: UDPAddr2
         };
-        await udp.bind(UDPAddr1);
+        await udp.bind(UDPAddr1).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         udp.send(sendOptions).then(() => {
           expectTrue(true);
           console.info(`${caseName} test end`);
@@ -1178,7 +1198,9 @@ export default function UDPSocketTest() {
           data: '',
           address: UDPAddr2
         };
-        await udp.bind(UDPAddr1);
+        await udp.bind(UDPAddr1).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         udp.send(sendOptions).then(() => {
           expectTrue(true);
           console.info(`${caseName} test end`);
@@ -1216,7 +1238,9 @@ export default function UDPSocketTest() {
           data: new ArrayBuffer(0),
           address: UDPAddr2
         };
-        await udp.bind(UDPAddr1);
+        await udp.bind(UDPAddr1).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         udp.send(sendOptions).then(() => {
           expectTrue(true);
           console.info(`${caseName} test end`);
@@ -1258,7 +1282,9 @@ export default function UDPSocketTest() {
             family: 1
           }
         };
-        await udp.bind(UDPAddr1);
+        await udp.bind(UDPAddr1).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         udp.send(sendOptions).then(() => {
           expectFail();
           console.info(`${caseName} test end`);
@@ -1300,7 +1326,9 @@ export default function UDPSocketTest() {
             family: 1
           }
         };
-        await udp.bind(UDPAddr1);
+        await udp.bind(UDPAddr1).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         udp.send(sendOptions).then(() => {
           expectTrue(true);
           console.info(`${caseName} test end`);
@@ -1342,7 +1370,9 @@ export default function UDPSocketTest() {
             family: 1
           }
         };
-        await udp.bind(UDPAddr1);
+        await udp.bind(UDPAddr1).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         udp.send(sendOptions).then(() => {
           expectTrue(true);
           console.info(`${caseName} test end`);
@@ -1384,7 +1414,9 @@ export default function UDPSocketTest() {
             family: 3
           }
         };
-        await udp.bind(UDPAddr1);
+        await udp.bind(UDPAddr1).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         udp.send(sendOptions).then(() => {
           expectFail();
           console.info(`${caseName} test end`);
@@ -1426,7 +1458,9 @@ export default function UDPSocketTest() {
             family: 1
           }
         };
-        await udp.bind(UDPAddr1);
+        await udp.bind(UDPAddr1).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         udp.send(sendOptions).then(() => {
           expectFail();
           console.info(`${caseName} test end`);
@@ -1460,7 +1494,9 @@ export default function UDPSocketTest() {
       console.info(`${caseName} test start`);
       try {
         let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
-        await udp.bind(UDPAddr1);
+        await udp.bind(UDPAddr1).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         udp.send(null).then(() => {
           expectFail();
           console.info(`${caseName} test end`);
@@ -1494,7 +1530,9 @@ export default function UDPSocketTest() {
       console.info(`${caseName} test start`);
       try {
         let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
-        await udp.bind(UDPAddr1);
+        await udp.bind(UDPAddr1).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         udp.send(undefined).then(() => {
           expectFail();
           console.info(`${caseName} test end`);
@@ -1528,7 +1566,9 @@ export default function UDPSocketTest() {
       console.info(`${caseName} test start`);
       try {
         let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
-        await udp.bind(UDPAddr1);
+        await udp.bind(UDPAddr1).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         udp.close((err: BusinessError) => {
           if (err) {
             console.info(`${caseName} err: ${JSON.stringify(err)}`);
@@ -1592,7 +1632,9 @@ export default function UDPSocketTest() {
       console.info(`${caseName} test start`);
       try {
         let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
-        await udp.bind(UDPAddr1);
+        await udp.bind(UDPAddr1).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         udp.close().then(() => {
           expectTrue(true);
           console.info(`${caseName} test end`);
@@ -1657,7 +1699,9 @@ export default function UDPSocketTest() {
       console.info(`${caseName} test start`);
       try {
         let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
-        await udp.bind(UDPAddr1);
+        await udp.bind(UDPAddr1).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         udp.getState((err: BusinessError, data: socket.SocketStateBase) => {
           if (err) {
             console.info(`${caseName} err: ${JSON.stringify(err)}`);
@@ -1695,8 +1739,12 @@ export default function UDPSocketTest() {
       console.info(`${caseName} test start`);
       try {
         let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
-        await udp.bind(UDPAddr1);
-        await udp.close();
+        await udp.bind(UDPAddr1).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
+        await udp.close().catch((err:BusinessError) => {
+            console.info('fail to close' + err.code.toString());
+        });
         udp.getState((err: BusinessError, data: socket.SocketStateBase) => {
           if (err) {
             console.info(`${caseName} err: ${JSON.stringify(err)}`);
@@ -1768,7 +1816,9 @@ export default function UDPSocketTest() {
       console.info(`${caseName} test start`);
       try {
         let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
-        await udp.bind(UDPAddr1);
+        await udp.bind(UDPAddr1).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         udp.getState().then((data: socket.SocketStateBase) => {
           console.info(`${caseName} data: ${JSON.stringify(data)}`);
           expectTrue(data != null);
@@ -1806,8 +1856,12 @@ export default function UDPSocketTest() {
       console.info(`${caseName} test start`);
       try {
         let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
-        await udp.bind(UDPAddr1);
-        await udp.close();
+        await udp.bind(UDPAddr1).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
+        await udp.close().catch((err:BusinessError) => {
+            console.info('fail to close' + err.code.toString());
+        });
         udp.getState().then((data: socket.SocketStateBase) => {
           console.info(`${caseName} data: ${JSON.stringify(data)}`);
           expectTrue(data != null);
@@ -1879,7 +1933,9 @@ export default function UDPSocketTest() {
       console.info(`${caseName} test start`);
       try {
         let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
-        await udp.bind(UDPAddr1);
+        await udp.bind(UDPAddr1).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         let udpextraoptions: socket.UDPExtraOptions = {
           receiveBufferSize: 1000,
           sendBufferSize: 1000,
@@ -1919,7 +1975,9 @@ export default function UDPSocketTest() {
       console.info(`${caseName} test start`);
       try {
         let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
-        await udp.bind(UDPAddr1);
+        await udp.bind(UDPAddr1).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         let udpextraoptions: socket.UDPExtraOptions = {
           sendBufferSize: 100,
         }
@@ -1955,7 +2013,9 @@ export default function UDPSocketTest() {
       console.info(`${caseName} test start`);
       try {
         let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
-        await udp.bind(UDPAddr1);
+        await udp.bind(UDPAddr1).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         let udpextraoptions: socket.UDPExtraOptions = {
           receiveBufferSize: 0,
           sendBufferSize: 0,
@@ -1995,7 +2055,9 @@ export default function UDPSocketTest() {
       console.info(`${caseName} test start`);
       try {
         let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
-        await udp.bind(UDPAddr1);
+        await udp.bind(UDPAddr1).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         let udpextraoptions: socket.UDPExtraOptions = {
           receiveBufferSize: -1,
           sendBufferSize: -1,
@@ -2035,7 +2097,9 @@ export default function UDPSocketTest() {
       console.info(`${caseName} test start`);
       try {
         let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
-        await udp.bind(UDPAddr1);
+        await udp.bind(UDPAddr1).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         let udpextraoptions: socket.UDPExtraOptions = {
           receiveBufferSize: 0,
           sendBufferSize: 0,
@@ -2075,7 +2139,9 @@ export default function UDPSocketTest() {
       console.info(`${caseName} test start`);
       try {
         let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
-        await udp.bind(UDPAddr1);
+        await udp.bind(UDPAddr1).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         udp.setExtraOptions(null, (err: BusinessError) => {
           if (err) {
             console.info(`${caseName} err: ${JSON.stringify(err)}`);
@@ -2108,7 +2174,9 @@ export default function UDPSocketTest() {
       console.info(`${caseName} test start`);
       try {
         let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
-        await udp.bind(UDPAddr1);
+        await udp.bind(UDPAddr1).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         udp.setExtraOptions(undefined, (err: BusinessError) => {
           if (err) {
             console.info(`${caseName} err: ${JSON.stringify(err)}`);
@@ -2141,7 +2209,9 @@ export default function UDPSocketTest() {
       console.info(`${caseName} test start`);
       try {
         let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
-        await udp.bind(UDPAddr1);
+        await udp.bind(UDPAddr1).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         let udpextraoptions: socket.UDPExtraOptions = {
           receiveBufferSize: 1000,
           sendBufferSize: 1000,
@@ -2181,7 +2251,9 @@ export default function UDPSocketTest() {
       console.info(`${caseName} test start`);
       try {
         let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
-        await udp.bind(UDPAddr1);
+        await udp.bind(UDPAddr1).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         let udpextraoptions: socket.UDPExtraOptions = {
           sendBufferSize: 100,
         }
@@ -2218,7 +2290,9 @@ export default function UDPSocketTest() {
       console.info(`${caseName} test start`);
       try {
         let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
-        await udp.bind(UDPAddr1);
+        await udp.bind(UDPAddr1).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         let udpextraoptions: socket.UDPExtraOptions = {
           receiveBufferSize: 0,
           sendBufferSize: 0,
@@ -2259,7 +2333,9 @@ export default function UDPSocketTest() {
       console.info(`${caseName} test start`);
       try {
         let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
-        await udp.bind(UDPAddr1);
+        await udp.bind(UDPAddr1).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         let udpextraoptions: socket.UDPExtraOptions = {
           receiveBufferSize: -1,
           sendBufferSize: -1,
@@ -2300,7 +2376,9 @@ export default function UDPSocketTest() {
       console.info(`${caseName} test start`);
       try {
         let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
-        await udp.bind(UDPAddr1);
+        await udp.bind(UDPAddr1).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         let udpextraoptions: socket.UDPExtraOptions = {
           receiveBufferSize: 0,
           sendBufferSize: 0,
@@ -2341,7 +2419,9 @@ export default function UDPSocketTest() {
       console.info(`${caseName} test start`);
       try {
         let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
-        await udp.bind(UDPAddr1);
+        await udp.bind(UDPAddr1).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         udp.setExtraOptions(null).then(() => {
           expectFail();
           console.info(`${caseName} test end`);
@@ -2375,7 +2455,9 @@ export default function UDPSocketTest() {
       console.info(`${caseName} test start`);
       try {
         let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
-        await udp.bind(UDPAddr1);
+        await udp.bind(UDPAddr1).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         udp.setExtraOptions(undefined).then(() => {
           expectFail();
           console.info(`${caseName} test end`);
@@ -2410,8 +2492,12 @@ export default function UDPSocketTest() {
       try {
         let udp1: socket.UDPSocket = socket.constructUDPSocketInstance();
         let udp2: socket.UDPSocket = socket.constructUDPSocketInstance();
-        await udp1.bind(UDPAddr1);
-        await udp2.bind(UDPAddr2);
+        await udp1.bind(UDPAddr1).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
+        await udp2.bind(UDPAddr2).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         let sendOptions: socket.UDPSendOptions = {
           data: 'Hello, server!',
           address: UDPAddr2
@@ -2449,8 +2535,12 @@ export default function UDPSocketTest() {
       try {
         let udp1: socket.UDPSocket = socket.constructUDPSocketInstance();
         let udp2: socket.UDPSocket = socket.constructUDPSocketInstance();
-        await udp1.bind(UDPAddr1);
-        await udp2.bind(UDPAddr2);
+        await udp1.bind(UDPAddr1).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
+        await udp2.bind(UDPAddr2).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         let sendOptions: socket.UDPSendOptions = {
           data: 'Hello, server!',
           address: UDPAddr2
@@ -2467,7 +2557,9 @@ export default function UDPSocketTest() {
         };
         udp2.on('message', callback);
         udp2.off('message', callback);
-        await udp1.send(sendOptions);
+        await udp1.send(sendOptions).catch((err:BusinessError) => {
+            console.info('fail to send' + err.code.toString());
+        });
         expectTrue(true);
         console.info(`${caseName} test end`);
         done();
@@ -2493,8 +2585,12 @@ export default function UDPSocketTest() {
       try {
         let udp1: socket.UDPSocket = socket.constructUDPSocketInstance();
         let udp2: socket.UDPSocket = socket.constructUDPSocketInstance();
-        await udp1.bind(UDPAddr1);
-        await udp2.bind(UDPAddr2);
+        await udp1.bind(UDPAddr1).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
+        await udp2.bind(UDPAddr2).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         let sendOptions: socket.UDPSendOptions = {
           data: 'Hello, server!',
           address: UDPAddr2
@@ -2518,7 +2614,9 @@ export default function UDPSocketTest() {
         udp2.on('message', callback1);
         udp2.on('message', callback2);
         udp2.off('message', callback2);
-        await udp1.send(sendOptions);
+        await udp1.send(sendOptions).catch((err:BusinessError) => {
+            console.info('fail to send' + err.code.toString());
+        });
         expectTrue(true);
         console.info(`${caseName} test end`);
         udp1.close();
@@ -2546,8 +2644,12 @@ export default function UDPSocketTest() {
       try {
         let udp1: socket.UDPSocket = socket.constructUDPSocketInstance();
         let udp2: socket.UDPSocket = socket.constructUDPSocketInstance();
-        await udp1.bind(UDPAddr1);
-        await udp2.bind(UDPAddr2);
+        await udp1.bind(UDPAddr1).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
+        await udp2.bind(UDPAddr2).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         let sendOptions: socket.UDPSendOptions = {
           data: 'Hello, server!',
           address: UDPAddr2
@@ -2571,7 +2673,9 @@ export default function UDPSocketTest() {
         udp2.on('message', callback1);
         udp2.on('message', callback2);
         udp2.off('message');
-        await udp1.send(sendOptions);
+        await udp1.send(sendOptions).catch((err:BusinessError) => {
+            console.info('fail to send' + err.code.toString());
+        });
         expectTrue(true);
         console.info(`${caseName} test end`);
         udp1.close();
@@ -2598,7 +2702,9 @@ export default function UDPSocketTest() {
       console.info(`${caseName} test start`);
       try {
         let udp1: socket.UDPSocket = socket.constructUDPSocketInstance();
-        await udp1.bind(UDPAddr1);
+        await udp1.bind(UDPAddr1).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         let callback: Callback<void> = () => {
           console.info(`${caseName} closed`);
           expectTrue(true);
@@ -2628,7 +2734,9 @@ export default function UDPSocketTest() {
       console.info(`${caseName} test start`);
       try {
         let udp1: socket.UDPSocket = socket.constructUDPSocketInstance();
-        await udp1.bind(UDPAddr1);
+        await udp1.bind(UDPAddr1).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         let callback1: Callback<void> = () => {
           console.info(`${caseName} cb1 closed`);
           expectFail();
@@ -2644,7 +2752,9 @@ export default function UDPSocketTest() {
         udp1.on('close', callback1);
         udp1.on('close', callback2);
         udp1.off('close', callback2);
-        await udp1.close();
+        await udp1.close().catch((err:BusinessError) => {
+            console.info('fail to close' + err.code.toString());
+        });
         expectTrue(true);
         console.info(`${caseName} test end`);
         done();
@@ -2669,7 +2779,9 @@ export default function UDPSocketTest() {
       console.info(`${caseName} test start`);
       try {
         let udp1: socket.UDPSocket = socket.constructUDPSocketInstance();
-        await udp1.bind(UDPAddr1);
+        await udp1.bind(UDPAddr1).catch((err:BusinessError) => {
+            console.info('fail to bind' + err.code.toString());
+        });
         let callback1: Callback<void> = () => {
           console.info(`${caseName} closed`);
           expectFail();
@@ -2685,7 +2797,9 @@ export default function UDPSocketTest() {
         udp1.on('close', callback1);
         udp1.on('close', callback2);
         udp1.off('close');
-        await udp1.close();
+        await udp1.close().catch((err:BusinessError) => {
+            console.info('fail to close' + err.code.toString());
+        });
         expectTrue(true);
         console.info(`${caseName} test end`);
         done();

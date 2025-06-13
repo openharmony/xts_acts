@@ -95,11 +95,11 @@ export default function ApiCommponentAddJsunit() {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
-      let gridTop = CommonFunc.getComponentRect('listadd');
+      let gridTop = CommonFunc.getComponentRectOnScreen('listadd');
       let top = gridTop.top;
-      let gridBottom = CommonFunc.getComponentRect('listadd');
+      let gridBottom = CommonFunc.getComponentRectOnScreen('listadd');
       let bottom = gridBottom.bottom;
-      let gridRight = CommonFunc.getComponentRect('listadd');
+      let gridRight = CommonFunc.getComponentRectOnScreen('listadd');
       let right = gridRight.right;
       let left = gridRight.left;
       let driver = await Driver.create();
@@ -199,7 +199,7 @@ export default function ApiCommponentAddJsunit() {
       console.info('apiCommponentAddJsunit_0600 START');
       ohosrouter.clear();
       ohosrouter.pushUrl({
-        url: 'MainAbility/pages/Swiper/swiperUI/swipe_add',
+        url: 'MainAbility/pages/Scroll/swipe_add',
         params: {
           data1: 'message',
           data2: {

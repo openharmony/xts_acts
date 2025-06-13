@@ -13,7 +13,8 @@
  * limitations under the License.
  */
 import webOnDataResubmitted from './WebOnDataResubmitted.test';
-
+import WebEnableDataDetector from './WebEnableDataDetector.test.ets';
 export default function testsuite() {
   webOnDataResubmitted()
+  WebEnableDataDetector()
 }

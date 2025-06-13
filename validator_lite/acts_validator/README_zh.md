@@ -90,12 +90,12 @@
   文件格式如下：
   
   ~~~
-  char(bar);false;char(line);true ;
+  char(bar):false;char(line):true ;
   ~~~
   
-  说明：`char(bar);false;`表示char组件的柱状图测试失败
+  说明：`char(bar):false;`表示char组件的柱状图测试失败
   
-  ​		    `char(line);true ;`表示char组件的线形图测试成功
+  ​		    `char(line):true ;`表示char组件的线形图测试成功
   
 - ## 约束
 

@@ -20,7 +20,6 @@ import { BusinessError } from '@ohos.base';
 import { GlobalContext } from '../../../../src/main/ets/pages/HomePage';
 import certManagerDialog from '@ohos.security.certManagerDialog';
 import * as commonParameter from './utils/common/common_parameter';
-import deviceInfo from '@ohos.deviceInfo';
 
 let caCert = new Uint8Array([0x30, 0x82, 0x04, 0x31, 0x30, 0x82, 0x03, 0x19, 0xa0, 0x03, 0x02, 0x01, 0x02, 0x02, 0x01, 0x00,
   0x30, 0x0d, 0x06, 0x09, 0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x01, 0x05, 0x05, 0x00, 0x30,
@@ -374,54 +373,76 @@ export default function certManagerPubCertJsAPIFunctionTestUnit() {
      */
     it('SUB_Security_CertManager_OpenInstallCertificateDialogCertJsApi_Func_0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log("SUB_Security_CertManager_OpenInstallCertificateDialogCertJsApi_Func_0020: started ");
-      if (deviceInfo.deviceType == '2in1') {
-        const context :common.Context = GlobalContext.getContext();
-        let certificateType: certManagerDialog.CertificateType = certManagerDialog.CertificateType.CA_CERT;
-        let certificateScope: certManagerDialog.CertificateScope = certManagerDialog.CertificateScope.CURRENT_USER;
-        try {
-          await certManagerDialog.openInstallCertificateDialog(null, certificateType, certificateScope, caCert)
-          expect(null).assertFail()
-        } catch (err) {
+      const context :common.Context = GlobalContext.getContext();
+      let certificateType: certManagerDialog.CertificateType = certManagerDialog.CertificateType.CA_CERT;
+      let certificateScope: certManagerDialog.CertificateScope = certManagerDialog.CertificateScope.CURRENT_USER;
+      try {
+        await certManagerDialog.openInstallCertificateDialog(null, certificateType, certificateScope, caCert)
+        expect(null).assertFail()
+      } catch (err) {
+        if (err.code == 29700004) {
+          done();
+        } else {
           console.log("SUB_Security_CertManager_OpenInstallCertificateDialogCertJsApi_Func_0020: e.code " + err.code);
           expect(err.code).assertEqual(certManager.CMErrorCode.CM_ERROR_INVALID_PARAMS);
         }
+      }
 
-        try {
-          await certManagerDialog.openInstallCertificateDialog(context, null, certificateScope, caCert)
-          expect(null).assertFail()
-        } catch (err) {
+      try {
+        await certManagerDialog.openInstallCertificateDialog(context, null, certificateScope, caCert)
+        expect(null).assertFail()
+      } catch (err) {
+        if (err.code == 29700004) {
+          done();
+        } else {
           console.log("SUB_Security_CertManager_OpenInstallCertificateDialogCertJsApi_Func_0020: e.code " + err.code);
           expect(err.code).assertEqual(certManager.CMErrorCode.CM_ERROR_INVALID_PARAMS);
         }
+      }
 
-        try {
-          await certManagerDialog.openInstallCertificateDialog(context, 2, certificateScope, caCert)
-          expect(null).assertFail()
-        } catch (err) {
+      try {
+        await certManagerDialog.openInstallCertificateDialog(context, 2, certificateScope, caCert)
+        expect(null).assertFail()
+      } catch (err) {
+        if (err.code == 29700004) {
+          done();
+        } else {
           console.log("SUB_Security_CertManager_OpenInstallCertificateDialogCertJsApi_Func_0020: e.code " + err.code);
           expect(err.code).assertEqual(certManager.CMErrorCode.CM_ERROR_INVALID_PARAMS);
         }
+      }
 
-        try {
-          await certManagerDialog.openInstallCertificateDialog(context, certificateType, null, caCert)
-          expect(null).assertFail()
-        } catch (err) {
+      try {
+        await certManagerDialog.openInstallCertificateDialog(context, certificateType, null, caCert)
+        expect(null).assertFail()
+      } catch (err) {
+        if (err.code == 29700004) {
+          done();
+        } else {
           console.log("SUB_Security_CertManager_OpenInstallCertificateDialogCertJsApi_Func_0020: e.code " + err.code);
           expect(err.code).assertEqual(certManager.CMErrorCode.CM_ERROR_INVALID_PARAMS);
         }
+      }
 
-        try {
-          await certManagerDialog.openInstallCertificateDialog(context, certificateType, 3, caCert)
-          expect(null).assertFail()
-        } catch (err) {
+      try {
+        await certManagerDialog.openInstallCertificateDialog(context, certificateType, 3, caCert)
+        expect(null).assertFail()
+      } catch (err) {
+        if (err.code == 29700004) {
+          done();
+        } else {
           console.log("SUB_Security_CertManager_OpenInstallCertificateDialogCertJsApi_Func_0020: e.code " + err.code);
           expect(err.code).assertEqual(certManager.CMErrorCode.CM_ERROR_INVALID_PARAMS);
         }
+      }
 
-        try {
-          await certManagerDialog.openInstallCertificateDialog(context, certificateType, certificateScope, null)
-          expect(null).assertFail()
-        } catch (err) {
+      try {
+        await certManagerDialog.openInstallCertificateDialog(context, certificateType, certificateScope, null)
+        expect(null).assertFail()
+      } catch (err) {
+        if (err.code == 29700004) {
+          done();
+        } else {
           console.log("SUB_Security_CertManager_OpenInstallCertificateDialogCertJsApi_Func_0020: e.code " + err.code);
           expect(err.code).assertEqual(certManager.CMErrorCode.CM_ERROR_INVALID_PARAMS);
         }
@@ -439,16 +460,18 @@ export default function certManagerPubCertJsAPIFunctionTestUnit() {
      */
     it('SUB_Security_CertManager_OpenInstallCertificateDialogCertJsApi_Func_0040', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log("SUB_Security_CertManager_OpenInstallCertificateDialogCertJsApi_Func_0040: started ");
-      if (deviceInfo.deviceType != '2in1') {
-        const context :common.Context = GlobalContext.getContext();
-        let certificateType: certManagerDialog.CertificateType = certManagerDialog.CertificateType.CA_CERT;
-        let certificateScope: certManagerDialog.CertificateScope = certManagerDialog.CertificateScope.CURRENT_USER;
-        try {
-          await certManagerDialog.openInstallCertificateDialog(null, certificateType, certificateScope, caCert)
-          expect(null).assertFail()
-        } catch (err) {
+      const context :common.Context = GlobalContext.getContext();
+      let certificateType: certManagerDialog.CertificateType = certManagerDialog.CertificateType.CA_CERT;
+      let certificateScope: certManagerDialog.CertificateScope = certManagerDialog.CertificateScope.CURRENT_USER;
+      try {
+        await certManagerDialog.openInstallCertificateDialog(null, certificateType, certificateScope, caCert)
+        expect(null).assertFail()
+      } catch (err) {
+        if (err.code == 29700004) {
           console.log("SUB_Security_CertManager_OpenInstallCertificateDialogCertJsApi_Func_0040: e.code " + err.code);
           expect(err.code).assertEqual(29700004);
+        } else {
+          done();
         }
       }
       done();
@@ -465,13 +488,15 @@ export default function certManagerPubCertJsAPIFunctionTestUnit() {
     it('SUB_Security_CertManager_OpenInstallCertificateDialog_0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       console.log("SUB_Security_CertManager_OpenInstallCertificateDialog_0011: started ");
       const context :common.Context = GlobalContext.getContext();
-      if (deviceInfo.deviceType == '2in1') {
-        let certificateType: certManagerDialog.CertificateType = certManagerDialog.CertificateType.CA_CERT;
-        let certificateScope: certManagerDialog.CertificateScope = certManagerDialog.CertificateScope.GLOBAL_USER;
-        try {
-          await certManagerDialog.openInstallCertificateDialog(context, certificateType, certificateScope, caCert)
-          expect(null).assertFail();
-        } catch (err) {
+      let certificateType: certManagerDialog.CertificateType = certManagerDialog.CertificateType.CA_CERT;
+      let certificateScope: certManagerDialog.CertificateScope = certManagerDialog.CertificateScope.GLOBAL_USER;
+      try {
+        await certManagerDialog.openInstallCertificateDialog(context, certificateType, certificateScope, caCert)
+        expect(null).assertFail();
+      } catch (err) {
+        if (err.code == 29700004) {
+          done();
+        } else {
           console.log("SUB_Security_CertManager_OpenInstallCertificateDialog_0011: e.code " + err.code);
           expect(err.code).assertEqual(29700005);
         }

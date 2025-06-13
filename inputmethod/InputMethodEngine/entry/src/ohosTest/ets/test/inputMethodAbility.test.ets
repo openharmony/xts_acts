@@ -488,6 +488,18 @@ export default function inputMethodAbility() {
       let keyType = inputMethodEngine.PATTERN_PASSWORD_SCREEN_LOCK;
       console.info("====>inputMethodEngine_test_027 result:" + keyType);
       expect(keyType).assertEqual(9);
+      let user_name: number = inputMethodEngine.PATTERN_USER_NAME;
+      console.info("====>inputMethodEngine_test_027 result:" + user_name);
+      expect(user_name).assertEqual(10);
+      let new_password: number = inputMethodEngine.PATTERN_NEW_PASSWORD;
+      console.info("====>inputMethodEngine_test_027 result:" + new_password);
+      expect(new_password).assertEqual(11);
+      let number_decimal: number = inputMethodEngine.PATTERN_NUMBER_DECIMAL;
+      console.info("====>inputMethodEngine_test_027 result:" + number_decimal);
+      expect(number_decimal).assertEqual(12);
+      let one_time_code: number = inputMethodEngine.PATTERN_ONE_TIME_CODE;
+      console.info("====>inputMethodEngine_test_027 result:" + one_time_code);
+      expect(one_time_code).assertEqual(13);
       done();
     });
 

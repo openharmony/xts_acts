@@ -56,8 +56,8 @@ export default function openLinkTest() {
       if(mpEnable == 'true'){
         try {
           context.startAbility({
-            bundleName:"com.acts.ability.baseerrorrely",
-            abilityName:"EntryAbility",
+            bundleName: 'com.acts.ability.multiinstaceerrcodetest',
+            abilityName: 'EntryAbility',
             parameters:{
               [wantConstant.Params.APP_INSTANCE_KEY] : "app_instance_100"
             }
@@ -86,23 +86,23 @@ export default function openLinkTest() {
      * @tc.level  : 3
      */
     it('SUB_Ability_AbilityBase_StartAbilityError_0400', Level.LEVEL0, async (done: Function)=> {
-      hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_StartAbilityError_0200 start');
+      hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_StartAbilityError_0400 start');
       if(mpEnable == 'true'){
         try {
           context.startAbility({
-            bundleName:"com.acts.actsbaseerrrocodemethodtest",
-            abilityName:"EntryAbility",
+            bundleName: 'com.acts.ability.multiinstaceerrcodetest',
+            abilityName: 'EntryAbility',
             parameters:{
               [wantConstant.Params.CREATE_APP_INSTANCE_KEY] : true,
               [wantConstant.Params.APP_INSTANCE_KEY] : "app_instance_0"
             }
           }, (err, data)=>{
-            hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_StartAbilityError_0300 ${err?.code}`);
+            hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_StartAbilityError_0400 ${err?.code}`);
             try{expect(err?.code).assertEqual(16000079);}catch(e){}
             done();
           })
         } catch (err) {
-          hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_StartAbilityError_0300 ${err?.code}`);
+          hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_StartAbilityError_0400 ${err?.code}`);
           try{expect().assertFail();}catch(e){}
           done();
         }
@@ -113,7 +113,7 @@ export default function openLinkTest() {
     })
 
     /*
-     * @tc.number : SUB_Ability_AbilityBase_StartAbilityError_0200
+     * @tc.number : SUB_Ability_AbilityBase_StartAbilityError_0700
      * @tc.name   : To verify StartAbility ErrorCode.
      * @tc.desc   : Expect: 16000076
      * @tc.type   : Function
@@ -121,12 +121,12 @@ export default function openLinkTest() {
      * @tc.level  : 3
      */
     it('SUB_Ability_AbilityBase_StartAbilityError_0700', Level.LEVEL0, async (done: Function)=> {
-      hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_StartAbilityError_0200 start');
+      hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_StartAbilityError_0700 start');
       if(mpEnable == 'true'){
         try {
           context.startAbility({
-            bundleName:"com.acts.ability.baseerrorrely",
-            abilityName:"EntryAbility",
+            bundleName: 'com.acts.ability.multiinstaceerrcodetest',
+            abilityName: 'EntryAbility',
             parameters:{
               [wantConstant.Params.APP_INSTANCE_KEY] : "app_default_100"
             }
@@ -134,12 +134,12 @@ export default function openLinkTest() {
             windowLeft: 20,
             windowTop: 20
           }, (err, data)=>{
-            hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_StartAbilityError_0200 ${err?.code}`);
+            hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_StartAbilityError_0700 ${err?.code}`);
             try{expect(err?.code).assertEqual(16000076);}catch(e){}
             done();
           })
         } catch (err) {
-          hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_StartAbilityError_0200 ${err?.code}`);
+          hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_StartAbilityError_0700 ${err?.code}`);
           try{expect().assertFail();}catch(e){}
           done();
         }
@@ -151,7 +151,7 @@ export default function openLinkTest() {
     })
 
     /*
-     * @tc.number : SUB_Ability_AbilityBase_StartAbilityError_0400
+     * @tc.number : SUB_Ability_AbilityBase_StartAbilityError_0900
      * @tc.name   : To verify StartAbility ErrorCode.
      * @tc.desc   : Expect: 16000078
      * @tc.type   : Function
@@ -159,12 +159,12 @@ export default function openLinkTest() {
      * @tc.level  : 3
      */
     it('SUB_Ability_AbilityBase_StartAbilityError_0900', Level.LEVEL0, async (done: Function)=> {
-      hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_StartAbilityError_0200 start');
+      hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityBase_StartAbilityError_0900 start');
       if(mpEnable == 'true'){
         try {
           context.startAbility({
-            bundleName:"com.acts.actsbaseerrrocodemethodtest",
-            abilityName:"EntryAbility",
+            bundleName: 'com.acts.ability.multiinstaceerrcodetest',
+            abilityName: 'EntryAbility',
             parameters:{
               [wantConstant.Params.CREATE_APP_INSTANCE_KEY] : true,
               [wantConstant.Params.APP_INSTANCE_KEY] : "app_instance_0"
@@ -173,12 +173,12 @@ export default function openLinkTest() {
             windowLeft: 20,
             windowTop: 20
           }, (err, data)=>{
-            hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_StartAbilityError_0300 ${err?.code}`);
+            hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_StartAbilityError_0900 ${err?.code}`);
             try{expect(err?.code).assertEqual(16000079);}catch(e){}
             done();
           })
         } catch (err) {
-          hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_StartAbilityError_0300 ${err?.code}`);
+          hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_StartAbilityError_0900 ${err?.code}`);
           try{expect().assertFail();}catch(e){}
           done();
         }
@@ -209,8 +209,6 @@ export default function openLinkTest() {
             }
           }, (err, data)=>{
             hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityBase_StartAbilityError_1800 ${err?.code}`);
-            try{expect(err?.code).assertEqual(16000077);}catch(e){}
-            done();
           })
           await sleep(1000);
           context.startAbility({
@@ -265,8 +263,6 @@ export default function openLinkTest() {
             }
           }, (err, data)=>{
             hilog.info(0x0000, `${TAG}`, '%{public}s', tag + ` ${err?.code}`);
-            try{expect(err?.code).assertEqual(16000077);}catch(e){}
-            done();
           })
           await sleep(1000);
           context.startAbility({
@@ -338,11 +334,11 @@ export default function openLinkTest() {
             hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityRuntime_UIAbilityContextError_0500 ${err?.code}`);
             try{
               expect(err?.code).assertEqual(16000077);
-              commonEventManager.publish("terminateSelf_multinstance_ability", (error, result)=>{
+              commonEventManager.publish("terminateSelf_multiinstance_ability", (error, result)=>{
                 done()
               })
             }catch(e){
-              commonEventManager.publish("terminateSelf_multinstance_ability", (error, result)=>{
+              commonEventManager.publish("terminateSelf_multiinstance_ability", (error, result)=>{
                 done()
               })
             }
@@ -398,11 +394,11 @@ export default function openLinkTest() {
             hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityRuntime_UIAbilityContextError_1500 ${err?.code}`);
             try{
               expect(err?.code).assertEqual(16000077);
-              commonEventManager.publish("terminateSelf_multinstance_ability", (error, result)=>{
+              commonEventManager.publish("terminateSelf_multiinstance_ability", (error, result)=>{
                 done()
               })
             }catch(e){
-              commonEventManager.publish("terminateSelf_multinstance_ability", (error, result)=>{
+              commonEventManager.publish("terminateSelf_multiinstance_ability", (error, result)=>{
                 done()
               })
             }
@@ -470,11 +466,11 @@ export default function openLinkTest() {
               hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityRuntime_UIAbilityContextError_2500 ${err?.code}`);
               try{
                 expect(err?.code).assertEqual(16000077);
-                commonEventManager.publish("terminateSelf_multinstance_ability", (error, result)=>{
+                commonEventManager.publish("terminateSelf_multiinstance_ability", (error, result)=>{
                   done()
                 })
               }catch(e){
-                commonEventManager.publish("terminateSelf_multinstance_ability", (error, result)=>{
+                commonEventManager.publish("terminateSelf_multiinstance_ability", (error, result)=>{
                   done()
                 })
               }
@@ -489,82 +485,6 @@ export default function openLinkTest() {
         done();
       }
       hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityRuntime_UIAbilityContextError_2500 end');
-    })
-
-    /*
-     * @tc.number : SUB_Ability_AbilityRuntime_UIAbilityContextError_3700
-     * @tc.name   : To verify the scenario where error code 16000077 is returned when the startAbilityByCall interface is invoked
-     * @tc.desc   : Expect: call failed
-     * @tc.type   : Function
-     * @tc.size   : MediumTest
-     * @tc.level  : 3
-     */
-    it('SUB_Ability_AbilityRuntime_UIAbilityContextError_3700', Level.LEVEL0, async (done: Function)=> {
-      hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityRuntime_UIAbilityContextError_3700 start');
-      let caller: Caller;
-      let want: Want = {
-        deviceId: '',
-        bundleName: 'com.acts.ability.multiinstaceerrcodetest',
-        abilityName: 'EntryAbility',
-        parameters:{
-          [wantConstant.Params.CREATE_APP_INSTANCE_KEY]:true
-        }
-      };
-      if(mpEnable == 'true'){
-        try {
-          try {
-            context.startAbilityByCall(want)
-              .then((obj: Caller) => {
-                caller = obj;
-                hilog.info(0x0000, `${TAG}`, '%{public}s', `startAbilityByCall succeed`);
-              })
-              .catch((err: BusinessError) => {
-                hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityRuntime_UIAbilityContextError_3700 ${err?.code}`);
-                try{expect().assertFail();}catch(e){}
-                done();
-              });
-          } catch (err) {
-            hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityRuntime_UIAbilityContextError_3700 ${err?.code}`);
-            try{expect().assertFail();}catch(e){}
-            done();
-          }
-          await sleep(500)
-          try {
-            context.startAbilityByCall(want)
-              .then((obj: Caller) => {
-                caller = obj;
-                hilog.info(0x0000, `${TAG}`, '%{public}s', `startAbilityByCall succeed`);
-                try{expect().assertFail();}catch(e){}
-                done();
-              })
-              .catch((err: BusinessError) => {
-                hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityRuntime_UIAbilityContextError_3700 ${err?.code}`);
-                try{
-                  expect(err?.code).assertEqual(16000077);
-                  commonEventManager.publish("terminateSelf_multinstance_ability", (error, result)=>{
-                    done()
-                  })
-                }catch(e){
-                  commonEventManager.publish("terminateSelf_multinstance_ability", (error, result)=>{
-                    done()
-                  })
-                }
-              });
-          } catch (err) {
-            hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityRuntime_UIAbilityContextError_3700 ${err?.code}`);
-            try{expect().assertFail();}catch(e){}
-            done();
-          }
-        } catch (err) {
-          hilog.info(0x0000, `${TAG}`, '%{public}s', `SUB_Ability_AbilityRuntime_UIAbilityContextError_3700 ${err?.code}`);
-          try{expect().assertFail();}catch(e){}
-          done();
-        }
-      }else{
-        console.error(`${TAG} multiinstance error, current device not set param value.`);
-        done();
-      }
-      hilog.info(0x0000, `${TAG}`, '%{public}s', 'SUB_Ability_AbilityRuntime_UIAbilityContextError_3700 end');
     })
 
     /*

@@ -14,7 +14,7 @@
  */
 
 import avSession from '@ohos.multimedia.avsession';
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import image from '@ohos.multimedia.image';
 import ohosWantAgent from '@ohos.wantAgent';
 import WantAgent from '@ohos.app.ability.wantAgent';
@@ -113,7 +113,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_READ_SESSION_ID_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_READ_SESSION_ID_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             if (session.sessionId.length === 64 && controller.sessionId.length === 64) {
                 console.info('TestLog: Read AVSession & Controler sessionId successfully');
                 expect(true).assertTrue();
@@ -132,7 +132,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level0
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let metadata0 = {
                 assetId: '121278',
             };
@@ -167,7 +167,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let metadata1 = {
                 assetId: '121278',
                 artist: 'Eminem',
@@ -201,7 +201,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_0300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let metadata2 = {
                 assetId: '121278',
                 author: 'ST',
@@ -235,7 +235,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_0400', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let metadata3 = {
                 assetId: '121278',
                 album: 'Slim shady',
@@ -269,7 +269,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_0500', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let metadata4 = {
                 assetId: '121278',
                 writer: 'ST',
@@ -303,7 +303,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_0600', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let metadata5 = {
                 assetId: '121278',
                 composer: 'ST',
@@ -337,7 +337,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_0700', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let metadata6 = {
                 assetId: '121278',
                 duration: 2222,
@@ -372,7 +372,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_0800', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let metadata7 = {
                 assetId: '121278',
                 mediaImage: 'https://img2.baidu.com/it/u=3583435814,2833583486&fm=253&fmt=auto&app=138&f=JPEG?w=526&h=500',
@@ -406,7 +406,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_0900', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info('TestLog: Creat pixelmap');
             let pixelMap = await getPixelMap();
             let readBuffer0 = new ArrayBuffer(96);
@@ -457,7 +457,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1000', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let metadata9 = {
                 assetId: '121278',
                 publishDate: new Date(1994, 1, 1, 1),
@@ -491,7 +491,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let metadata10 = {
                 assetId: '121278',
                 subtitle: '8 Mile',
@@ -525,7 +525,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let metadata11 = {
                 assetId: '121278',
                 description: 'Rap',
@@ -559,7 +559,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let metadata12 = {
                 assetId: '121278',
                 lyric: 'https://lyric.tingmall.com/lyric/58/970/589710004-LRC-LRC.lrc?t=1649918948000',
@@ -593,7 +593,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1400', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let metadata13 = {
                 assetId: '121278',
                 previousAssetId: '121277',
@@ -629,7 +629,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-         it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1500', 0, async function (done) {
+         it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let metadata = {
                 assetId: '121278',
                 filter: avSession.ProtocolType.TYPE_CAST_PLUS_STREAM
@@ -663,7 +663,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1600', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let metadata = {
                 assetId: '121278',
                 filter: avSession.ProtocolType.TYPE_LOCAL
@@ -697,7 +697,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1700', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let metadata = {
                 assetId: '121278',
                 filter: avSession.ProtocolType.TYPE_CAST_PLUS_MIRROR
@@ -731,7 +731,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1800', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let metadata = {
                 assetId: '121278',
                 skipIntervals: avSession.SkipIntervals.SECONDS_10
@@ -765,7 +765,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1900', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info('TestLog: Creat pixelmap');
             let pixelMap = await getPixelMap();
             let readBuffer0 = new ArrayBuffer(96);
@@ -820,7 +820,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_2000', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let metadata = {
                 assetId: '121278',
                 avQueueName: '121278',
@@ -858,7 +858,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_2100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let metadata = {
                 assetId: '121278',
                 displayTags: avSession.DisplayTag.TAG_AUDIO_VIVID
@@ -892,7 +892,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level0
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let PlaybackState1 = {
                 state: avSession.PlaybackState.PLAYBACK_STATE_PLAY,
                 activeItemId: 0,
@@ -927,7 +927,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let PlaybackState2 = {
                 speed: 2.6,
             };
@@ -962,7 +962,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_0300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let PlaybackState3 = {
                 position: { elapsedTime: 10, updateTime: (new Date()).getTime() },
             };
@@ -997,7 +997,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_0400', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let PlaybackState4 = {
                 bufferedTime: 1000,
             };
@@ -1032,7 +1032,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_0500', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let PlaybackState5 = {
                 loopMode: avSession.LoopMode.LOOP_MODE_SEQUENCE,
             };
@@ -1067,7 +1067,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_0600', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let PlaybackState6 = {
                 loopMode: avSession.LoopMode.LOOP_MODE_SINGLE,
             };
@@ -1102,7 +1102,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_0700', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let PlaybackState7 = {
                 loopMode: avSession.LoopMode.LOOP_MODE_LIST,
             };
@@ -1137,7 +1137,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_0800', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let PlaybackState8 = {
                 loopMode: avSession.LoopMode.LOOP_MODE_SHUFFLE,
             };
@@ -1172,7 +1172,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_0900', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let PlaybackState9 = {
                 isFavorite: true,
             };
@@ -1207,7 +1207,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1000', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let PlaybackState12 = {
                 state: avSession.PlaybackState.PLAYBACK_STATE_INITIAL,
             };
@@ -1242,7 +1242,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let PlaybackState13 = {
                 state: avSession.PlaybackState.PLAYBACK_STATE_PREPARE,
             };
@@ -1277,7 +1277,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let PlaybackState14 = {
                 state: avSession.PlaybackState.PLAYBACK_STATE_PAUSE,
             };
@@ -1312,7 +1312,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let PlaybackState15 = {
                 state: avSession.PlaybackState.PLAYBACK_STATE_FAST_FORWARD,
             };
@@ -1347,7 +1347,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1400', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let PlaybackState16 = {
                 state: avSession.PlaybackState.PLAYBACK_STATE_REWIND,
             };
@@ -1382,7 +1382,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1500', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let PlaybackState17 = {
                 state: avSession.PlaybackState.PLAYBACK_STATE_STOP,
             };
@@ -1417,7 +1417,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1600', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let PlaybackState18 = {
                 state: avSession.PlaybackState.PLAYBACK_STATE_IDLE,
             };
@@ -1451,7 +1451,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1700', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let playbackState = {
                 state: avSession.PlaybackState.PLAYBACK_STATE_BUFFERING,
             };
@@ -1485,7 +1485,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1800', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let PlaybackState5 = {
                 loopMode: avSession.LoopMode.LOOP_MODE_CUSTOM,
             };
@@ -1520,7 +1520,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1900', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let PlaybackState = {
                 maxVolume: 6
             };
@@ -1555,7 +1555,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_2000', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let PlaybackState = {
                 muted: false
             };
@@ -1590,7 +1590,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_2100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_2100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let PlaybackState = {
                 videoWidth: 1920,
                 videoHeight: 1080
@@ -1626,7 +1626,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_2200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let PlaybackState = {
                 duration: 100
             };
@@ -1661,7 +1661,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level1
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SETLAUNCHABILITY_PROMISE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SETLAUNCHABILITY_PROMISE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let wantAgentInfo = {
                 wants: [
                     {
@@ -1715,7 +1715,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level1
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SESSIONACTIVATE_PROMISE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SESSIONACTIVATE_PROMISE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await session.activate().then(() => {
                 console.info('TestLog: Set session active successfully');
             }).catch((err) => {
@@ -1746,7 +1746,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level1
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SESSIONDEACTIVATE_PROMISE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SESSIONDEACTIVATE_PROMISE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await session.activate().then(() => {
                 console.info('TestLog: Set session active');
             }).catch((err) => {
@@ -1784,7 +1784,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SESSIONACTIVATE_CALLBACK_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SESSIONACTIVATE_CALLBACK_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 session.activate((err) => {
                     if (err) {
@@ -1825,7 +1825,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SESSIONDEACTIVATE_CALLBACK_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SESSIONDEACTIVATE_CALLBACK_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await session.activate().then(() => {
                 console.info('TestLog: Set session active');
             }).catch((err) => {
@@ -1874,7 +1874,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_ONPLAY_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_ONPLAY_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             session.on('play', () => {
                 console.info('TestLog: Play command callback registration successful');
                 expect(true).assertTrue();
@@ -1898,7 +1898,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_ONPAUSE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_ONPAUSE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             session.on('pause', () => {
                 console.info('TestLog: Pause command callback registration successful');
                 expect(true).assertTrue();
@@ -1922,7 +1922,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_ONSTOP_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_ONSTOP_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             session.on('stop', () => {
                 console.info('TestLog: Stop command callback registration successful');
                 expect(true).assertTrue();
@@ -1946,7 +1946,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_ONPLAYNEXT_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_ONPLAYNEXT_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             session.on('playNext', () => {
                 console.info('TestLog: PlayNext command callback registration successful');
                 expect(true).assertTrue();
@@ -1970,7 +1970,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_ONPLAYPREVIOUS_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_ONPLAYPREVIOUS_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             session.on('playPrevious', () => {
                 console.info('TestLog: PlayPrevious command callback registration successful');
                 expect(true).assertTrue();
@@ -1994,7 +1994,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_ONFASTFORWARD_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_ONFASTFORWARD_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             session.on('fastForward', () => {
                 console.info('TestLog: FastForward command callback registration successful');
                 expect(true).assertTrue();
@@ -2018,7 +2018,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_ONFASTFORWARD_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_ONFASTFORWARD_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             session.on('fastForward', (time) => {
                 if (time == avSession.SkipIntervals.SECONDS_10) {
                     console.info('TestLog: FastForward command callback registration successful');
@@ -2046,7 +2046,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_ONFASTFORWARD_0300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_ONFASTFORWARD_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             session.on('fastForward', (time) => {
                 if (time == avSession.SkipIntervals.SECONDS_15) {
                     console.info('TestLog: FastForward command callback registration successful');
@@ -2074,7 +2074,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_ONFASTFORWARD_0400', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_ONFASTFORWARD_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             session.on('fastForward', (time) => {
                 if (time == avSession.SkipIntervals.SECONDS_30) {
                     console.info('TestLog: FastForward command callback registration successful');
@@ -2102,7 +2102,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_ONREWIND_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_ONREWIND_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             session.on('rewind', () => {
                 console.info('TestLog: Rewind command callback registration successful');
                 expect(true).assertTrue();
@@ -2126,7 +2126,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_ONREWIND_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_ONREWIND_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             session.on('rewind', (time) => {
                 if (time == avSession.SkipIntervals.SECONDS_10) {
                     console.info('TestLog: Rewind command callback registration successful');
@@ -2154,7 +2154,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_ONREWIND_0300', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_ONREWIND_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             session.on('rewind', (time) => {
                 if (time == avSession.SkipIntervals.SECONDS_15) {
                     console.info('TestLog: Rewind command callback registration successful');
@@ -2182,7 +2182,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_ONREWIND_0400', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_ONREWIND_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             session.on('rewind', (time) => {
                 if (time == avSession.SkipIntervals.SECONDS_30) {
                     console.info('TestLog: Rewind command callback registration successful');
@@ -2210,7 +2210,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_ONSEEK_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_ONSEEK_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             session.on('seek', (callback) => {
                 if (callback === 10) {
                     console.info('TestLog: Seek command callback registration successful');
@@ -2239,7 +2239,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_ONSETSPEED_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_ONSETSPEED_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             session.on('setSpeed', (callback) => {
                 if (callback === 2.6) {
                     console.info('TestLog: SetSpeed command callback registration successful');
@@ -2268,7 +2268,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_ONSETLOOPMODE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_ONSETLOOPMODE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             session.on('setLoopMode', (callback) => {
                 if (callback === 1) {
                     console.info('TestLog: Set LoopMode command callback registration successful');
@@ -2300,7 +2300,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_ONTOGGLEFAVORITE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_ONTOGGLEFAVORITE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             session.on('toggleFavorite', (callback) => {
                 if (callback === 'false') {
                     console.info('TestLog: Set toggleFavorite command callback registration successful');
@@ -2330,7 +2330,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_ONHANDLEKEYEVENT_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_ONHANDLEKEYEVENT_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             session.on('handleKeyEvent', (callback) => {
                 if (callback.action === 2) {
                     console.info('TestLog: Handle keyEvent callback registration successful');
@@ -2359,7 +2359,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_ONWRONGCALLBACK_0100', 0, function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_ONWRONGCALLBACK_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function (done) {
             try {
                 session.on('wrongCall', () => {
                     console.info('TestLog: Wrong callback registration successful');
@@ -2379,7 +2379,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_OFFPLAY_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_OFFPLAY_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             function callback1() {
                 console.info('TestLog: Play command registration1 success');
                 expect(false).assertTrue();
@@ -2414,7 +2414,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_OFFPLAY_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_OFFPLAY_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             function callback1() {
                 console.info('TestLog: Play command registration1 success');
                 expect(false).assertTrue();
@@ -2450,7 +2450,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_OFFPAUSE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_OFFPAUSE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             function callback1() {
                 console.info('TestLog: Pause command registration1 success');
                 expect(false).assertTrue();
@@ -2485,7 +2485,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_OFFPAUSE_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_OFFPAUSE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             function callback1() {
                 console.info('TestLog: Pause command registration1 success');
                 expect(false).assertTrue();
@@ -2520,7 +2520,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_OFFSTOP_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_OFFSTOP_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             function callback1() {
                 console.info('TestLog: Stop command registration1 success');
                 expect(false).assertTrue();
@@ -2555,7 +2555,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_OFFSTOP_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_OFFSTOP_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             function callback1() {
                 console.info('TestLog: Stop command registration1 success');
                 expect(false).assertTrue();
@@ -2590,7 +2590,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_OFFPLAYNEXT_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_OFFPLAYNEXT_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             function callback1() {
                 console.info('TestLog: PlayNext command registration1 success');
                 expect(false).assertTrue();
@@ -2625,7 +2625,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_OFFPLAYNEXT_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_OFFPLAYNEXT_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             function callback1() {
                 console.info('TestLog: PlayNext command registration1 success');
                 expect(false).assertTrue();
@@ -2660,7 +2660,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_OFFPLAYPREVIOUS_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_OFFPLAYPREVIOUS_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             function callback1() {
                 console.info('TestLog: PlayPrevious command registration1 success');
                 expect(false).assertTrue();
@@ -2695,7 +2695,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_OFFPLAYPREVIOUS_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_OFFPLAYPREVIOUS_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             function callback1() {
                 console.info('TestLog: PlayPrevious command registration1 success');
                 expect(false).assertTrue();
@@ -2730,7 +2730,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_OFFFASTFORWARD_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_OFFFASTFORWARD_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             function callback1() {
                 console.info('TestLog: FastForward command registration1 success');
                 expect(false).assertTrue();
@@ -2765,7 +2765,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_OFFFASTFORWARD_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_OFFFASTFORWARD_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             function callback1() {
                 console.info('TestLog: FastForward command registration1 success');
                 expect(false).assertTrue();
@@ -2800,7 +2800,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_OFFREWIND_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_OFFREWIND_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             function callback1() {
                 console.info('TestLog: Rewind command registration1 success');
                 expect(false).assertTrue();
@@ -2835,7 +2835,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_OFFREWIND_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_OFFREWIND_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             function callback1() {
                 console.info('TestLog: Rewind command registration1 success');
                 expect(false).assertTrue();
@@ -2870,7 +2870,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_OFFSEEK_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_OFFSEEK_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             function callback1(data) {
                 if (data === 5) {
                     console.info('TestLog: offSeek callback1 registration');
@@ -2909,7 +2909,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_OFFSEEK_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_OFFSEEK_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             function callback1(data) {
                 if (data === 5) {
                     console.info('TestLog: offSeek callback1 registration');
@@ -2948,7 +2948,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_OFFSETSPEED_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_OFFSETSPEED_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             function callback1(data) {
                 if (data === 1.0) {
                     console.info('TestLog: SetSpend command registration1 success');
@@ -2987,7 +2987,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_OFFSETSPEED_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_OFFSETSPEED_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             function callback1(data) {
                 if (data === 1.0) {
                     console.info('TestLog: SetSpend command registration1 success');
@@ -3026,7 +3026,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_OFFSETLOOPMODE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_OFFSETLOOPMODE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             function callback1(data) {
                 if (data === 1) {
                     console.info('TestLog: SetLoopMode command registration1 success');
@@ -3068,7 +3068,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_OFFSETLOOPMODE_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_OFFSETLOOPMODE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             function callback1(data) {
                 if (data === 2) {
                     console.info('TestLog: SetLoopMode command registration1 success');
@@ -3110,7 +3110,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_OFFTOGGLEFAVORITE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_OFFTOGGLEFAVORITE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             function callback1(data) {
                 if (data === 'true') {
                     console.info('TestLog: ToggleFavorite command registration1 success');
@@ -3149,7 +3149,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_OFFTOGGLEFAVORITE_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_OFFTOGGLEFAVORITE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             function callback1(data) {
                 if (data === 'true') {
                     console.info('TestLog: ToggleFavorite command registration1 success');
@@ -3188,7 +3188,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_OFFHANDLEKEYEVENT_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_OFFHANDLEKEYEVENT_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let flag = true;
             function callback1(data) {
                 if (data.action === 1) {
@@ -3236,7 +3236,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_OFFHANDLEKEYEVENT_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_OFFHANDLEKEYEVENT_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             function callback1(data) {
                 if (data.action === 1) {
                     console.info('TestLog: HandleKeyEvent command registration1 success');
@@ -3275,7 +3275,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_PROMISE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_PROMISE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             session.on('outputDeviceChange', (callback) => {
                 if (!callback.isRemote) {
                     console.info(callback.audioDeviceId.size);
@@ -3324,7 +3324,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_CALLBACK_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_CALLBACK_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 session.getOutputDevice((err, value) => {
                     if (err) {
@@ -3362,7 +3362,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_CALLBACK_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_CALLBACK_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 session.getOutputDevice((err, value) => {
                     if (err) {
@@ -3396,7 +3396,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_GETCONTROLLER_PROMISE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_GETCONTROLLER_PROMISE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await session.getController().then((data) => {
                 console.info('Get controller successfully');
                 expect(true).assertTrue();
@@ -3416,7 +3416,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_GETCONTROLLER_CALLBACK_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_GETCONTROLLER_CALLBACK_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 session.getController((err, data) => {
                     if (err) {
@@ -3443,7 +3443,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_CALLBACK_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_CALLBACK_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 controller.sendAVKeyEvent(event, (err, data) => {
                     if (err) {
@@ -3470,7 +3470,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_PROMISE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_PROMISE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await controller.sendAVKeyEvent(event).then(() => {
                 console.info('sendAVKeyEvent Successfully');
                 expect(true).assertTrue();
@@ -3489,7 +3489,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_GETREALPLAYBACKPOSITIONSYNC_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_GETREALPLAYBACKPOSITIONSYNC_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let realPosition = -1;
             try {
                 realPosition = controller.getRealPlaybackPositionSync();
@@ -3515,7 +3515,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_GETVALIDCOMMANDS_PROMISE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_GETVALIDCOMMANDS_PROMISE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             session.on('play', () => {});
             await sleep(500);
             await controller.getValidCommands().then((data) => {
@@ -3536,7 +3536,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_GETVALIDCOMMANDS_CALLBACK_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_GETVALIDCOMMANDS_CALLBACK_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 session.on('play', () => {});
                 await sleep(500);
@@ -3565,7 +3565,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_2200', 2, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let metadata0 = {
                 assetId: '121278',
                 filter: avSession.ProtocolType.TYPE_DLNA
@@ -3599,7 +3599,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_2300', 2, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let metadata = {
                 assetId: '121278',
                 drmSchemes: ["abcdefghjkl","asdfghjklqw"]
@@ -3633,7 +3633,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_2400', 2, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let metadata = {
                 assetId: '121278',
                 singleLyricText: 'dream it possible'
@@ -3667,7 +3667,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_SUPPORTEDDRMCAPABILITIES_0100', 2, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_SUPPORTEDDRMCAPABILITIES_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             try {
                 session.getOutputDevice((err, value) => {
                     if (err) {
@@ -3703,7 +3703,7 @@ export default function AVSession() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it('SUB_MULTIMEDIA_AVSESSION_GETALLCASTDISPLAYS_0100', 2, async function (done) {
+        it('SUB_MULTIMEDIA_AVSESSION_GETALLCASTDISPLAYS_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             const isExtendedDisplayCast = canIUse('SystemCapability.Multimedia.AVSession.ExtendedDisplayCast');
             if (isExtendedDisplayCast) {
                 try {

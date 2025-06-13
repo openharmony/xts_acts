@@ -77,7 +77,7 @@ export default function abilityTest() {
     * @tc.type    User
     * @tc.level   Level 1
     */
-    it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0201', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
+    it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0201', TestType.FUNCTION | Size.SmallTest| Level.LEVEL0, async function (done) {
       console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0201');
       accessibility.getAccessibilityExtensionList('audible', 'install').then((result) => {
         console.info(`AccessibilityErrCodeTest: SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0201 result ${result.length}`);
@@ -781,7 +781,7 @@ export default function abilityTest() {
     * @tc.type    User
     * @tc.level   Level 1
     */
-    it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0101', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
+    it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0101', TestType.FUNCTION | Size.SmallTest| Level.LEVEL0, async function (done) {
       let captionsManager = accessibility.getCaptionsManager();
       expect(captionsManager.enabled == true || captionsManager.enabled == false).assertTrue();
       expect(captionsManager.style != null).assertTrue();
@@ -802,7 +802,7 @@ export default function abilityTest() {
     * @tc.type    User
     * @tc.level   Level 1
     */
-    it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_1000', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
+    it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_1000', TestType.FUNCTION | Size.SmallTest| Level.LEVEL0, async function (done) {
       let gesturePath = new GesturePath.GesturePath(20);
       let gesturePoint = new GesturePoint.GesturePoint(1, 2);
       gesturePath.points.push(gesturePoint);
@@ -912,7 +912,7 @@ export default function abilityTest() {
     * @tc.type    User
     * @tc.level   Level 1
     */
-    it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0400', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
+    it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0400', TestType.FUNCTION | Size.SmallTest| Level.LEVEL0, async function (done) {
       if (axContext != null) {
         try {
           axContext.getFocusElement().then((rootElement) => {
@@ -966,7 +966,7 @@ export default function abilityTest() {
     * @tc.type    User
     * @tc.level   Level 1
     */
-    it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0401', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
+    it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0401', TestType.FUNCTION | Size.SmallTest| Level.LEVEL0, async function (done) {
       if (axContext != null) {
         try {
           axContext.getFocusElement((err, rootElement) => {
@@ -1178,7 +1178,7 @@ export default function abilityTest() {
     * @tc.type    User
     * @tc.level   Level 1
     */
-    it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0500', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
+    it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0500', TestType.FUNCTION | Size.SmallTest| Level.LEVEL0, async function (done) {
       if (axContext != null) {
         try {
           axContext.getWindowRootElement().then((data) => {
@@ -1208,7 +1208,7 @@ export default function abilityTest() {
     * @tc.type    User
     * @tc.level   Level 1
     */
-    it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0501', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
+    it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0501', TestType.FUNCTION | Size.SmallTest| Level.LEVEL0, async function (done) {
       if (axContext != null) {
         try {
           axContext.getWindowRootElement((err, data) => {
@@ -1263,7 +1263,7 @@ export default function abilityTest() {
     * @tc.type    User
     * @tc.level   Level 1
     */
-    it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0600', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
+    it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0600', TestType.FUNCTION | Size.SmallTest| Level.LEVEL0, async function (done) {
       if (axContext != null) {
         try {
           axContext.getWindows().then((data) => {
@@ -1306,7 +1306,7 @@ export default function abilityTest() {
     * @tc.type    User
     * @tc.level   Level 1
     */
-    it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0601', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
+    it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0601', TestType.FUNCTION | Size.SmallTest| Level.LEVEL0, async function (done) {
       if (axContext != null) {
         try {
           axContext.getWindows((err, data) => {

@@ -33,16 +33,19 @@ struct ScrollExample {
             Button('toast').fontSize(25).fontWeight(FontWeight.Bold)
               .onClick(() => {
                 try {
+                  console.info('toastShow start')
                   promptAction.showToast({
                     message: 'toastShow',
                     duration: 60000
                   });
+                  console.info('toastShow over')
                 } catch (error) {
                   console.error(`showToast args error code is ${error.code}, message is ${error.message}`);
                 };
               })
             Button('dialog').fontSize(25).fontWeight(FontWeight.Bold)
               .onClick(() => {
+                console.info('dialog start')
                 AlertDialog.show(
                   {
                     title: '',
@@ -56,6 +59,7 @@ struct ScrollExample {
                     }
                   }
                 )
+                console.info('dialog over')
               })
             Button() {
               Text('next page')
@@ -66,12 +70,24 @@ struct ScrollExample {
             .type(ButtonType.Capsule)
             .margin({ top: 20 })
             .onClick(() => {
+              console.info('jump to second')
               router.push({ uri: 'pages/second' })
+              console.info('jump to second over')
             })
             .gesture(
               LongPressGesture({ repeat: false })
                 .onAction((event: GestureEvent) => {
+                  console.info('jump to fourth')
                   router.push({ uri: 'pages/fourth' })
+                  console.info('jump to fourth over')
+                })
+            )
+            .gesture(
+              LongPressGesture({ repeat: false, duration: 1800 })
+                .onAction((event: GestureEvent) => {
+                  console.info('duration 1800 jump to fourth')
+                  router.push({ uri: 'pages/fourth' })
+                  console.info('duration 1800 jump to fourth over')
                 })
             )
             Button() {
@@ -84,7 +100,17 @@ struct ScrollExample {
             .gesture(
               TapGesture({ count: 1 })
                 .onAction(() => {
+                  console.info('jump to third')
                   router.push({ uri: 'pages/third' })
+                  console.info('jump to third over')
+                })
+            )
+            .gesture(
+              LongPressGesture({ repeat: false })
+                .onAction((event: GestureEvent) => {
+                  console.info('jump to wearList')
+                  router.push({ uri: 'pages/wearList' })
+                  console.info('jump to wearList over')
                 })
             )
             Button() {
@@ -96,11 +122,14 @@ struct ScrollExample {
             .key('jump')
             .margin({ top: 20 })
             .onHover((isHover: boolean) => {
+              console.info('hover start')
               if (isHover) {
                 this.hoverText = 'hover'
               }
+              console.info('hover over')
             })
             .onMouse((event: MouseEvent) => {
+              console.info('Mouse operation events start')
               switch (event.button) {
                 case MouseButton.Left :
                   this.hoverText = 'left'
@@ -112,14 +141,19 @@ struct ScrollExample {
                   this.hoverText = 'middle'
                   break
               }
+              console.info('Mouse operation events over')
             })
             .onClick(() => {
+              console.info('jump to pinch')
               router.push({ uri: 'pages/pinch' })
+              console.info('jump to pinch over')
             })
             .gesture(
               LongPressGesture({ repeat: false })
                 .onAction((event: GestureEvent) => {
+                  console.info('jump to drag')
                   router.push({ uri: 'pages/drag' })
+                  console.info('jump to drag over')
                 })
             )
             Button() {
@@ -130,7 +164,9 @@ struct ScrollExample {
             .type(ButtonType.Capsule)
             .margin({ top: 20 })
             .onClick(() => {
+              console.info('jump to scroll')
               router.push({ uri: 'pages/scroll' })
+              console.info('jump to scroll over')
             })
             Checkbox({ name: 'hi' })
               .size({ width: 30, height: 30 })
@@ -160,7 +196,9 @@ struct ScrollExample {
               top: 20, left: 150
             })
             .onClick(() => {
+              console.info('jump to second')
               router.push({ uri: 'pages/second' })
+              console.info('jump to second over')
             })
           }.width('100%')
         }

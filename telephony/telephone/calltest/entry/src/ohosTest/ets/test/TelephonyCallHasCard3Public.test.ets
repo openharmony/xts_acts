@@ -631,6 +631,7 @@ export default function HasCard2PublicNeedCardTest() {
     it('testTelephonySmsNoPermission0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testTelephonySmsNoPermission0200';
       console.info(`${caseName} test start`);
+      if(sim.getMaxSimCount()>1){
       try {
         let hasSim: boolean = sim.hasSimCardSync(0);
         ExpectTrue(hasSim);
@@ -657,6 +658,11 @@ export default function HasCard2PublicNeedCardTest() {
       } catch (err) {
         console.info(`${caseName} err:${err}`);
         ExpectFail();
+        done();
+      }
+      }else{
+        console.info(`${caseName}：Not support dual SIM cards.`);
+        ExpectTrue(true);
         done();
       }
       console.info(`${caseName} test end`);

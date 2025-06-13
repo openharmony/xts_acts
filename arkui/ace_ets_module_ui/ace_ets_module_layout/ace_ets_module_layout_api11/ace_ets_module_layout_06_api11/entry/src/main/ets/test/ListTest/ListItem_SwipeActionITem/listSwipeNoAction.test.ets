@@ -67,8 +67,17 @@ export default function listSwipeNoActionJsunit() {
 
       console.info("[SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0050] current component obj is: " + JSON.stringify(JSON.parse(strJson)));
       // swipe the listItem
+      let ListItem_00: RectValue = CommonFunc.getComponentRect('lSwipeActionNoAction0');
+      let right: number = ListItem_00.right;
+      let left: number = ListItem_00.left;
+      let top: number = ListItem_00.top;
+      let bottom: number = ListItem_00.bottom;
+      let width = right - left;
+      let height = bottom -top;
+      console.info("SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0050 value is" + left + " --" + right + "--" + top + "--" + bottom);
+      // swipe the listItem
       await driver.swipe(
-        Math.round(vp2px(50)), Math.round(vp2px(108)), Math.round(vp2px(53)), Math.round(vp2px(108))
+        Math.round(globalThis.winLeft + left + vp2px(50)), Math.round(globalThis.winTop + top + height/2), Math.round(globalThis.winLeft + left + vp2px(60)), Math.round(globalThis.winTop  + top + height/2)
       );
       await CommonFunc.sleep(4000);
       // judge the swipeActionState

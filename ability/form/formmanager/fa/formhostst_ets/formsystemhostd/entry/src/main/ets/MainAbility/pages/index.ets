@@ -92,13 +92,14 @@ struct Index {
   }
 
   aboutToAppear() {
+    console.log(`${this.TAG} aboutToAppear start`);
     commonEvent.createSubscriber(this.subscriberFormDeleteEvent).then(async (data) => {
         console.info(`====>${this.TAG} formsystemhost Subscriber FormDelete data:====>`, JSON.stringify(data)); 
         this.subscriberDel = data;     
         await commonEvent.subscribe(this.subscriberDel, this.deleteCallBack);
     })
 
-    console.error(`${this.TAG} getWant`);
+    console.info(`${this.TAG} aboutToAppear:getWant start`);
     featureAbility.getWant()
     .then((want: Want) => {
       this.formId = parseInt(want.parameters?.formId??0);
@@ -137,12 +138,12 @@ struct Index {
       }
       setTimeout(() => {
         this.canCreateForm = want.parameters?.isCreate ?? false;
-        console.error(`${this.TAG} getWant canCreateForm:`+ this.canCreateForm); 
+        console.info(`${this.TAG} aboutToAppear:getWant canCreateForm:`+ this.canCreateForm); 
       }, 10); 
-      console.error(`${this.TAG} getWant end`+ JSON.stringify(want));
+      console.info(`${this.TAG} aboutToAppear:getWant end`+ JSON.stringify(want));
 
       if(!(want.parameters?.isCreate??false) && this.deleteForm) {
-        console.log(`${this.TAG} formsystemhost deleteForm start`);
+        console.log(`${this.TAG} aboutToAppear:formsystemhost deleteForm start`);
         formHost.deleteForm(this.deleteId)
           .then((data) => {
           console.info(`${this.TAG} formsystemhost deleteForm result:` + data);
@@ -165,11 +166,11 @@ struct Index {
           commonEvent.publish(this.formOnDeletedEvent, commonEventPublishData, this.publishOnDeletedCallBack);
         });
       
-        console.log(`${this.TAG} formsystemhost deleteForm end`);
+        console.log(`${this.TAG} aboutToAppear:formsystemhost deleteForm end`);
       }
 
       if(!(want.parameters?.isCreate??false) && this.releaseForm) {
-        console.log(`${this.TAG} formsystemhost releaseForm start`);
+        console.log(`${this.TAG} aboutToAppear:formsystemhost releaseForm start`);
         formHost.releaseForm(this.releaseId)
           .then((data) => {
           console.info(`${this.TAG} formsystemhost releaseForm result:` + data);
@@ -192,7 +193,7 @@ struct Index {
           commonEvent.publish(this.formOnReleasedEvent, commonEventPublishData, this.publishOnReleasedCallBack);
         });
       
-        console.log(`${this.TAG} formsystemhost releaseForm end`);
+        console.log(`${this.TAG} aboutToAppear:formsystemhost releaseForm end`);
       }
 
     })
@@ -219,10 +220,11 @@ struct Index {
             .allowUpdate(this.allowUpate)
             .visibility(this.isShowing ? Visibility.Visible : Visibility.Hidden)
             .onAcquired((form:InfoType) => {
+              console.log(`${this.TAG} onAcquired start`);
               console.log(`${this.TAG} get form, form id:` + form.id);
               this.formId = form.id;
               if(this.castForm) {
-                console.log(`${this.TAG} castTempForm start`);
+                console.log(`${this.TAG} onAcquired:castTempForm start`);
                 formHost.castTempForm(this.temporaryId)
                     .then((data) => {
                     console.info(`${this.TAG} castTempForm result:` + data);
@@ -248,9 +250,9 @@ struct Index {
                       commonEvent.publish(this.formCastEvent, commonEventPublishData, this.publishCastCallBack);
                     }, 5);
                   });               
-                console.log(`${this.TAG} castTempForm end`);
+                console.log(`${this.TAG} onAcquired:castTempForm end`);
               } else if(this.deleteForm) {
-                console.log(`${this.TAG} deleteForm start`);
+                console.log(`${this.TAG} onAcquired:deleteForm start`);
                 if(this.deleteId == "self") {
                   this.deleteId = this.formId.toString();
                 }
@@ -277,10 +279,10 @@ struct Index {
                     commonEvent.publish(this.formOnDeletedEvent, commonEventPublishData, this.publishOnDeletedCallBack);
                   });
                
-                  console.log(`${this.TAG} deleteForm end`);
+                  console.log(`${this.TAG} onAcquired:deleteForm end`);
                 }, 1000);                
               } else if(this.releaseForm) {
-                console.log(`${this.TAG} releaseForm start`);
+                console.log(`${this.TAG} onAcquired:releaseForm start`);
                 if(this.releaseId == "self") {
                   this.releaseId = this.formId.toString();
                 }
@@ -301,14 +303,20 @@ struct Index {
                     commonEvent.publish(this.formOnReleasedEvent, commonEventPublishData, this.publishOnReleasedCallBack);
                   });
                
-                  console.log(`${this.TAG} releaseForm end`);
+                  console.log(`${this.TAG} onAcquired:releaseForm end`);
                 }, 1000);                
-              } else {                
+              } else {           
+                console.log(`${this.TAG} onAcquired:else start`);
                 let commonEventPublishData:CommonEventManager.CommonEventPublishData = {
                     data: this.formId.toString()
                 };
-                commonEvent.publish(this.formOnAcquiredEvent, commonEventPublishData, this.publishOnAcquiredCallBack);
+                setTimeout(()=>{
+                  console.log(`${this.TAG} publish formOnAcquiredEvent:` + this.formOnAcquiredEvent);
+                  commonEvent.publish(this.formOnAcquiredEvent, commonEventPublishData, this.publishOnAcquiredCallBack);
+                  console.log(`${this.TAG} onAcquired:else end`);
+                }, 500);
               }
+              console.log(`${this.TAG} onAcquired end`);
             })
             // .onUninstall((info) => {
             //   console.log("[FormComponent] onUninstall:" + JSON.stringify(info));

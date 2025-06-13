@@ -15,7 +15,7 @@
  */
 
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import fileio from "@ohos.fileio";
 import fs from '@ohos.file.fs';
 import ndkTest from 'libentry.so'
@@ -631,7 +631,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_CREATE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_CREATE_0100', Level.LEVEL0, async (done: Function) => {
 
       await createTest(done, "SUB_MULTIMEDIA_IMAGE_PACKERNDK_CREATE_0100");
       done();
@@ -645,7 +645,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_INIT_NATIVE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_INIT_NATIVE_0100', Level.LEVEL0, async (done: Function) => {
       await nativeInitTest(done, "SUB_MULTIMEDIA_IMAGE_PACKERNDK_INIT_NATIVE_0100");
       done();
     });
@@ -659,7 +659,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_IMAGE_SOURCE_TO_JPG_DATA_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_IMAGE_SOURCE_TO_JPG_DATA_0100', Level.LEVEL0, async (done: Function) => {
       let source: image.ImageSource = await createTestImageSource("test.png");
       expect(source != undefined).assertTrue();
       let packOpts: image.PackingOption = {
@@ -679,7 +679,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_IMAGE_SOURCE_TO_JPG_FILE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_IMAGE_SOURCE_TO_JPG_FILE_0100', Level.LEVEL0, async (done: Function) => {
       let log: ESObject = logger("SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_IMAGE_SOURCE_TO_JPG_FILE_0100");
       let source: image.ImageSource  = await createTestImageSource("test.png");
       expect(source != undefined).assertTrue();
@@ -708,7 +708,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_IMAGE_SOURCE_TO_WEBP_DATA_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_IMAGE_SOURCE_TO_WEBP_DATA_0200', Level.LEVEL0, async (done: Function) => {
       let source: image.ImageSource  = await createTestImageSource("test.png");
       expect(source != undefined).assertTrue();
       let packOpts: image.PackingOption = {
@@ -729,7 +729,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_IMAGE_SOURCE_TO_WEBP_FILE_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_IMAGE_SOURCE_TO_WEBP_FILE_0200', Level.LEVEL0, async (done: Function) => {
       let log: ESObject = logger("SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_IMAGE_SOURCE_TO_WEBP_FILE_0200");
       let source: image.ImageSource  = await createTestImageSource("test.png");
       expect(source != undefined).assertTrue();
@@ -759,7 +759,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_IMAGE_SOURCE_TO_PNG_DATA_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_IMAGE_SOURCE_TO_PNG_DATA_0300', Level.LEVEL0, async (done: Function) => {
       let source: image.ImageSource  = await createTestImageSource("test.png");
       expect(source != undefined).assertTrue();
       let packOpts: image.PackingOption = {
@@ -780,7 +780,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_IMAGE_SOURCE_TO_PNG_FILE_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_IMAGE_SOURCE_TO_PNG_FILE_0300', Level.LEVEL0, async (done: Function) => {
       let log: ESObject = logger("SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_IMAGE_SOURCE_TO_PNG_FILE_0300");
       let source: image.ImageSource  = await createTestImageSource("test.png");
       expect(source != undefined).assertTrue();
@@ -809,7 +809,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_PIXEL_MAP_TO_JPG_DATA_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_PIXEL_MAP_TO_JPG_DATA_0400', Level.LEVEL0, async (done: Function) => {
       let source = await createTestPixelMap();
       expect(source != undefined).assertTrue();
       let packOpts: image.PackingOption = {
@@ -827,7 +827,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_PIXEL_MAP_TO_JPG_FILE_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_PIXEL_MAP_TO_JPG_FILE_0400', Level.LEVEL0, async (done: Function) => {
       let log: ESObject = logger("SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_PIXEL_MAP_TO_JPG_FILE_0400");
       let source = await createTestPixelMap();
       expect(source != undefined).assertTrue();
@@ -855,7 +855,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_PIXEL_MAP_TO_WEBP_DATA_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_PIXEL_MAP_TO_WEBP_DATA_0500', Level.LEVEL0, async (done: Function) => {
       let source = await createTestPixelMap();
       expect(source != undefined).assertTrue();
       let packOpts: image.PackingOption = {
@@ -873,7 +873,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_PIXEL_MAP_TO_WEBP_FILE_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_PIXEL_MAP_TO_WEBP_FILE_0500', Level.LEVEL0, async (done: Function) => {
       let log: ESObject = logger("SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_PIXEL_MAP_TO_WEBP_FILE_0500");
       let source = await createTestPixelMap();
       console.log('pixel map ' + (source != undefined));
@@ -903,7 +903,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_PIXEL_MAP_TO_PNG_DATA_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_PIXEL_MAP_TO_PNG_DATA_0600', Level.LEVEL0, async (done: Function) => {
       let source: PixelMap  = await createTestPixelMap();
       expect(source != undefined).assertTrue();
       let packOpts: image.PackingOption = {
@@ -921,7 +921,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_PIXEL_MAP_TO_PNG_FILE_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_PIXEL_MAP_TO_PNG_FILE_0600', Level.LEVEL0, async (done: Function) => {
       let log: ESObject = logger("SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_PIXEL_MAP_TO_PNG_FILE_0600");
       let source = await createTestPixelMap();
       expect(source != undefined).assertTrue();
@@ -950,7 +950,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_RELEASE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_RELEASE_0100', Level.LEVEL0, async (done: Function) => {
       await releaseTest(done, "SUB_MULTIMEDIA_IMAGE_PACKERNDK_RELEASE_0100");
       done();
     });
@@ -964,7 +964,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_IMAGE_SOURCE_TO_DATA_ERR_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_IMAGE_SOURCE_TO_DATA_ERR_0100', Level.LEVEL0, async (done: Function) => {
       let source: image.ImageSource  = await createTestImageSource("test.png");
       expect(source != undefined).assertTrue();
       let packOpts: image.PackingOption = {
@@ -984,7 +984,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_IMAGE_SOURCE_TO_DATA_ERR_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_IMAGE_SOURCE_TO_DATA_ERR_0200', Level.LEVEL0, async (done: Function) => {
       let source: image.ImageSource  = await createTestImageSource("test.png");
       expect(source != undefined).assertTrue();
       let packOpts: image.PackingOption = {
@@ -1004,7 +1004,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_IMAGE_SOURCE_TO_DATA_ERR_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_IMAGE_SOURCE_TO_DATA_ERR_0300', Level.LEVEL0, async (done: Function) => {
       let source: image.ImageSource  = await createTestImageSource("test.png");
       expect(source != undefined).assertTrue();
       let packOpts: PackingOption_format = {
@@ -1024,7 +1024,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_IMAGE_SOURCE_TO_DATA_ERR_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_IMAGE_SOURCE_TO_DATA_ERR_0400', Level.LEVEL0, async (done: Function) => {
       let source: image.ImageSource  = await createTestImageSource("test.png");
       expect(source != undefined).assertTrue();
       let packOpts: PackingOption_quality = {
@@ -1044,7 +1044,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_IMAGE_SOURCE_TO_FILE_ERR_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_IMAGE_SOURCE_TO_FILE_ERR_0100', Level.LEVEL0, async (done: Function) => {
       let source: image.ImageSource  = await createTestImageSource("test.png");
       expect(source != undefined).assertTrue();
       let path: string, fd: number;
@@ -1068,7 +1068,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_IMAGE_SOURCE_TO_FILE_ERR_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_IMAGE_SOURCE_TO_FILE_ERR_0200', Level.LEVEL0, async (done: Function) => {
       let source: image.ImageSource  = await createTestImageSource("test.png");
       expect(source != undefined).assertTrue();
       let path: string, fd: number;
@@ -1093,7 +1093,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_IMAGE_SOURCE_TO_FILE_ERR_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_IMAGE_SOURCE_TO_FILE_ERR_0300', Level.LEVEL0, async (done: Function) => {
       let source: image.ImageSource  = await createTestImageSource("test.png");
       expect(source != undefined).assertTrue();
       let path: string, fd: number;
@@ -1117,7 +1117,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_IMAGE_SOURCE_TO_FILE_ERR_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_IMAGE_SOURCE_TO_FILE_ERR_0400', Level.LEVEL0, async (done: Function) => {
       let source: image.ImageSource  = await createTestImageSource("test.png");
       expect(source != undefined).assertTrue();
       let path: string, fd: number;
@@ -1142,7 +1142,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_0100', Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -1168,7 +1168,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_0200', Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -1194,7 +1194,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_0300', Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -1219,7 +1219,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_0400', Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -1245,7 +1245,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_0500', Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -1270,7 +1270,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_0600', Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -1296,7 +1296,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_0700', Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -1322,7 +1322,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_0800', Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -1348,7 +1348,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_0900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_0900', Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -1374,7 +1374,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_1000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_1000', Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -1400,7 +1400,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_1100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_1100', Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -1426,7 +1426,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_1200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_1200', Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -1452,7 +1452,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_1300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_1300', Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -1478,7 +1478,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_1400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_1400', Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -1504,7 +1504,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_1500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_1500', Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -1530,7 +1530,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_1600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILEMULTIFRAMES_1600', Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -1556,7 +1556,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILE_BAD_PARAMETER_IMAGEPACKER_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILE_BAD_PARAMETER_IMAGEPACKER_0100', Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -1584,7 +1584,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILE_BAD_PARAMETER_PACKINGOPTIONS_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILE_BAD_PARAMETER_PACKINGOPTIONS_0200', Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -1612,7 +1612,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILE_BAD_PARAMETER_PIXELMAPS_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTOFILE_BAD_PARAMETER_PIXELMAPS_0300', Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -1638,7 +1638,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_0100', Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -1663,7 +1663,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_0200', Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -1688,7 +1688,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_0300', Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -1712,7 +1712,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_0400', Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -1737,7 +1737,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_0500', Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -1761,7 +1761,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_0600', Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -1786,7 +1786,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_0700', Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -1811,7 +1811,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_0800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_0800', Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -1836,7 +1836,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_0900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_0900', Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -1861,7 +1861,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_1000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_1000', Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -1886,7 +1886,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_1100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_1100', Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -1911,7 +1911,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_ERROR_1200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_ERROR_1200', Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -1936,7 +1936,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_ERROR_1300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_ERROR_1300', Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -1961,7 +1961,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_ERROR_1400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_ERROR_1400', Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -1986,7 +1986,7 @@ export default function ImagePackingNDKTest() {
     * @tc.type      : Functional
     * @tc.level     : Level 0
     */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_ERROR_1500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_ERROR_1500', Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -2011,7 +2011,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_ERROR_1600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATAMULTIFRAMES_ERROR_1600', Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -2037,7 +2037,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATA_BAD_PARAMETER_IMAGEPACKER_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATA_BAD_PARAMETER_IMAGEPACKER_0100', Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -2064,7 +2064,7 @@ export default function ImagePackingNDKTest() {
     * @tc.type      : Functional
     * @tc.level     : Level 0
     */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATA_BAD_PARAMETER_PACKINGOPTIONS_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATA_BAD_PARAMETER_PACKINGOPTIONS_0200', Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -2091,7 +2091,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATA_BAD_PARAMETER_PIXELMAPS_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATA_BAD_PARAMETER_PIXELMAPS_0300', Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -2118,7 +2118,7 @@ export default function ImagePackingNDKTest() {
     * @tc.type      : Functional
     * @tc.level     : Level 0
     */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATA_BAD_PARAMETER_OUTDATA_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACKTODATA_BAD_PARAMETER_OUTDATA_0400', Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -2145,7 +2145,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_GIF_TO_FILE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_GIF_TO_FILE_0100', Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -2170,7 +2170,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_GIF_TO_FILE_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_GIF_TO_FILE_0200', Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -2195,7 +2195,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_GIF_TO_DATA_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_GIF_TO_DATA_0100', Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -2220,7 +2220,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_GIF_TO_DATA_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_GIF_TO_DATA_0200', Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -2246,7 +2246,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_GIF_TO_FILE_ERROR_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_GIF_TO_FILE_ERROR_0100', Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -2274,7 +2274,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_GIF_TO_FILE_ERROR_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_GIF_TO_FILE_ERROR_0200', Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -2301,7 +2301,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_GIF_TO_DATA_ERROR_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_GIF_TO_DATA_ERROR_0100', Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();
@@ -2328,7 +2328,7 @@ export default function ImagePackingNDKTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_GIF_TO_DATA_ERROR_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_GIF_TO_DATA_ERROR_0200', Level.LEVEL0, async (done: Function) => {
       if (!isSupportGifEncode) {
         console.info("This device does not support GIF encoding.")
         expect(true).assertTrue();

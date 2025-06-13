@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import hiSysEvent from '@ohos.hiSysEvent'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size} from '@ohos/hypium'
 
 export default function hiSysEventJsTest() {
 describe('hiSysEventJsTest', function () {
@@ -38,7 +38,7 @@ describe('hiSysEventJsTest', function () {
 	 * @tc.name testHiSysEventApi01
 	 * @tc.desc 添加Js打点事件-callback方式进行回调处理
 	 */
-	it('testHiSysEventApi01', 1, async function (done) {
+	it('testHiSysEventApi01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 		console.info('testHiSysEventApi01 start')
 		hiSysEvent.write({
 			domain: "RELIABILITY",
@@ -64,7 +64,7 @@ describe('hiSysEventJsTest', function () {
 	 * @tc.name testHiSysEventApi02
 	 * @tc.desc 添加Js打点事件-Promise方式中then()方法进行打点成功回调处理
 	 */
-	it('testHiSysEventApi02', 1, async function (done) {
+	it('testHiSysEventApi02', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
 		console.info('testHiSysEventApi02 start')
 		hiSysEvent.write({
 			domain: "RELIABILITY",
@@ -90,7 +90,7 @@ describe('hiSysEventJsTest', function () {
 	 * @tc.name testHiSysEventApi03
 	 * @tc.desc 验证调用HiSysEvent write接口，打点fault类型事件，支持基础数据类型自定义传参
 	 */
-	it('testHiSysEventApi03', 1, async function (done) {
+	it('testHiSysEventApi03', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 		console.info('testHiSysEventApi03 start')
 		try {
 			hiSysEvent.write({
@@ -134,7 +134,7 @@ describe('hiSysEventJsTest', function () {
 	 * @tc.name testHiSysEventApi04
 	 * @tc.desc 验证调用HiSysEvent write接口，打点statistic类型事件，支持基础数据类型自定义传参
 	 */
-	it('testHiSysEventApi04', 3, async function (done) {
+	it('testHiSysEventApi04', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 		console.info('testHiSysEventApi04 start')
 		try {
 			hiSysEvent.write({
@@ -178,7 +178,7 @@ describe('hiSysEventJsTest', function () {
 	 * @tc.name testHiSysEventApi05
 	 * @tc.desc 验证调用HiSysEvent write接口，打点security类型事件，支持基础数据类型自定义传参
 	 */
-	it('testHiSysEventApi05', 3, async function (done) {
+	it('testHiSysEventApi05', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 		console.info('testHiSysEventApi05 start')
 		try {
 			hiSysEvent.write({
@@ -222,7 +222,7 @@ describe('hiSysEventJsTest', function () {
 	 * @tc.name testHiSysEventApi06
 	 * @tc.desc 验证调用HiSysEvent write接口，打点behavior类型事件，支持基础数据类型自定义传参
 	 */
-	it('testHiSysEventApi06', 3, async function (done) {
+	it('testHiSysEventApi06', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 		console.info('testHiSysEventApi06 start')
 		try {
 			hiSysEvent.write({
@@ -266,7 +266,7 @@ describe('hiSysEventJsTest', function () {
 	 * @tc.name testHiSysEventApi07
 	 * @tc.desc 验证调用HiSysEvent write接口，支持自定义传参最大字符串10k
 	 */
-	it('testHiSysEventApi07', 3, async function (done) {
+	it('testHiSysEventApi07', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 		console.info('testHiSysEventApi07 start')
 		try {
 			hiSysEvent.write({
@@ -301,7 +301,7 @@ describe('hiSysEventJsTest', function () {
 	 * @tc.name testHiSysEventApi08
 	 * @tc.desc 验证调用HiSysEvent write接口，支持自定义传参最多参数个数128个
 	 */
-	it('testHiSysEventApi08', 3, async function (done) {
+	it('testHiSysEventApi08', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 		console.info('testHiSysEventApi08 start')
 		let largeParams = {}
 		for (let i = 0; i < 128; i++) {
@@ -338,7 +338,7 @@ describe('hiSysEventJsTest', function () {
 	 * @tc.name testHiSysEventApi09
 	 * @tc.desc 验证调用HiSysEvent write接口，支持自定义传参最长数组个数100个
 	 */
-	it('testHiSysEventApi09', 3, async function (done) {
+	it('testHiSysEventApi09', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 		console.info('testHiSysEventApi09 start')
 		let msgArray = []
 		for (let i = 0; i < 100; i++) {
@@ -377,7 +377,7 @@ describe('hiSysEventJsTest', function () {
 	 * @tc.name testHiSysEventApi10
 	 * @tc.desc 验证可成功调用addwatcher接口，订阅规则domain+eventName+tag, rule=PREFIX
 	 */
-	it('testHiSysEventApi10', 3, async function (done) {
+	it('testHiSysEventApi10', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 		console.info('testHiSysEventApi10 start')
 		let watcher110
 		watcher110 = {
@@ -434,7 +434,7 @@ describe('hiSysEventJsTest', function () {
 	 * @tc.name testHiSysEventApi11
 	 * @tc.desc 验证可成功调用addwatcher接口，订阅规则domain+eventName+tag, rule=REGULAR
 	 */
-	it('testHiSysEventApi11', 3, async function (done) {
+	it('testHiSysEventApi11', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 		console.info('testHiSysEventApi11 start')
 		let watcher111
 		watcher111 = {
@@ -491,7 +491,7 @@ describe('hiSysEventJsTest', function () {
 	 * @tc.name testHiSysEventApi12
 	 * @tc.desc 验证可成功调用addwatcher接口，订阅规则domain+eventName+tag, rule=WHOLE_WORD
 	 */
-	it('testHiSysEventApi12', 3, async function (done) {
+	it('testHiSysEventApi12', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 		console.info('testHiSysEventApi12 start')
 		let watcher112
 		watcher112 = {
@@ -548,7 +548,7 @@ describe('hiSysEventJsTest', function () {
 	 * @tc.name testHiSysEventApi13
 	 * @tc.desc 验证可成功调用addwatcher接口，订阅规则domain+eventNameg, rule=PREFIX
 	 */
-	it('testHiSysEventApi13', 3, async function (done) {
+	it('testHiSysEventApi13', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 		console.info('testHiSysEventApi13 start')
 		let watcher113
 		watcher113 = {
@@ -604,7 +604,7 @@ describe('hiSysEventJsTest', function () {
 	 * @tc.name testHiSysEventApi14
 	 * @tc.desc 验证可成功调用addwatcher接口，订阅规则domain+eventName, rule=REGULAR
 	 */
-	it('testHiSysEventApi14', 3, async function (done) {
+	it('testHiSysEventApi14', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 		console.info('testHiSysEventApi14 start')
 		let watcher114
 		watcher114 = {
@@ -660,7 +660,7 @@ describe('hiSysEventJsTest', function () {
 	 * @tc.name testHiSysEventApi15
 	 * @tc.desc 验证可成功调用addwatcher接口，订阅规则domain+eventName, rule=WHOLE_WORD
 	 */
-	it('testHiSysEventApi15', 3, async function (done) {
+	it('testHiSysEventApi15', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 		console.info('testHiSysEventApi15 start')
 		let watcher115
 		watcher115 = {
@@ -716,7 +716,7 @@ describe('hiSysEventJsTest', function () {
 	 * @tc.name testHiSysEventApi16
 	 * @tc.desc 验证可成功调用addwatcher接口，订阅规则tag, rule=PREFIX
 	 */
-	it('testHiSysEventApi16', 3, async function (done) {
+	it('testHiSysEventApi16', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 		console.info('testHiSysEventApi16 start')
 		let watcher116
 		watcher116 = {
@@ -773,7 +773,7 @@ describe('hiSysEventJsTest', function () {
 	 * @tc.name testHiSysEventApi17
 	 * @tc.desc 验证可成功调用addwatcher接口，订阅规则tag, rule=REGULAR
 	 */
-	it('testHiSysEventApi17', 3, async function (done) {
+	it('testHiSysEventApi17', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 		console.info('testHiSysEventApi17 start')
 		let watcher117
 		watcher117 = {
@@ -830,7 +830,7 @@ describe('hiSysEventJsTest', function () {
 	 * @tc.name testHiSysEventApi18
 	 * @tc.desc 验证可成功调用addwatcher接口，订阅规则tag, rule=WHOLE_WORD
 	 */
-	it('testHiSysEventApi18', 3, async function (done) {
+	it('testHiSysEventApi18', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 		console.info('testHiSysEventApi18 start')
 		let watcher118
 		watcher118 = {
@@ -887,7 +887,7 @@ describe('hiSysEventJsTest', function () {
 	 * @tc.name testHiSysEventApi19
 	 * @tc.desc 验证可添加订阅者后调用removewatcher接口删除订阅者
 	 */
-	it('testHiSysEventApi19', 3, async function (done) {
+	it('testHiSysEventApi19', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 		console.info('testHiSysEventApi19 start')
 		let watcher119 = {
 			rules: [{
@@ -920,7 +920,7 @@ describe('hiSysEventJsTest', function () {
 	 * @tc.name testHiSysEventApi20
 	 * @tc.desc 验证调用addwatcher接口，可添加20个规则
 	 */
-	it('testHiSysEventApi20', 3, async function (done) {
+	it('testHiSysEventApi20', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
 		console.info('testHiSysEventApi20 start')
 		let msgArray = []
 		for (let i = 0; i < 20; i++) {
@@ -955,7 +955,7 @@ describe('hiSysEventJsTest', function () {
 	 * @tc.name testHiSysEventApi21
 	 * @tc.desc 验证调用addwatcher接口，可添加20个订阅者
 	 */
-	it('testHiSysEventApi21', 3, async function (done) {
+	it('testHiSysEventApi21', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
 		console.info('testHiSysEventApi21 start')
 		let maxNumber = 20
 		var watcher = []
@@ -998,7 +998,7 @@ describe('hiSysEventJsTest', function () {
 	 * @tc.name testHiSysEventApi22
 	 * @tc.desc 验证调用query接口，可添加100条查询规则
 	 */
-	it('testHiSysEventApi22', 3, async function (done) {
+	it('testHiSysEventApi22', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
 		console.info('testHiSysEventApi22 start')
 		try {
 			let msgArray = []
@@ -1037,7 +1037,7 @@ describe('hiSysEventJsTest', function () {
 	 * @tc.name testHiSysEventApi24
 	 * @tc.desc HiSysEvent查询接口测试-查询成功回调函数被调用（查询一个事件）
 	 */
-	it('testHiSysEventApi24', 1, async function (done) {
+	it('testHiSysEventApi24', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
 		console.info('testHiSysEventApi24 start')
 		try {
 			hiSysEvent.write({
@@ -1108,7 +1108,7 @@ describe('hiSysEventJsTest', function () {
 	 * @tc.name testHiSysEventApi25
 	 * @tc.desc HiSysEvent查询接口测试-查询成功回调函数被调用（查询多个事件）
 	 */
-	it('testHiSysEventApi25', 1, async function (done) {
+	it('testHiSysEventApi25', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
 		console.info('testHiSysEventApi25 start')
 		try {
 			hiSysEvent.write({

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import testNapi from 'libentry.so'
 
 interface GeneratedObjectLiteralInterface_1 {
@@ -128,7 +128,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_001', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_001', Level.LEVEL0, () => {
       let c:number = testNapi.Test_KeySystemSupported(systemName);
       expect(c).assertEqual(Drm_Support.DRM_TRUE);
     });
@@ -140,7 +140,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_002', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_002', Level.LEVEL0, () => {
       let c:number = testNapi.Test_KeySystemSupported("com.drm.wiseplay");
       expect(c).assertEqual(Drm_Support.DRM_FALSE);
     });
@@ -152,7 +152,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_003', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_003', Level.LEVEL0, () => {
       let c:number = testNapi.Test_KeySystemSupported("");
       expect(c).assertEqual(Drm_Support.DRM_FALSE);
     });
@@ -164,7 +164,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_004', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_004', Level.LEVEL0, () => {
       let c:number = testNapi.Test_KeySystemSupported(" ");
       expect(c).assertEqual(Drm_Support.DRM_FALSE);
     });
@@ -176,7 +176,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_005', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_005', Level.LEVEL0, () => {
       let c:number = testNapi.Test_KeySystemSupported2(systemName, "video/mp4");
       expect(c).assertEqual(Drm_Support.DRM_TRUE);
     });
@@ -188,7 +188,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_006', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_006', Level.LEVEL0, () => {
       let c:number = testNapi.Test_KeySystemSupported2("com..drm", "video/mp4");
       expect(c).assertEqual(Drm_Support.DRM_FALSE);
     });
@@ -200,7 +200,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_007', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_007', Level.LEVEL0, () => {
       let c:number = testNapi.Test_KeySystemSupported2("", "video/mp4");
       expect(c).assertEqual(Drm_Support.DRM_FALSE);
     });
@@ -212,7 +212,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_008', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_008', Level.LEVEL0, () => {
       let c:number = testNapi.Test_KeySystemSupported2(" ", "video/mp4");
       expect(c).assertEqual(Drm_Support.DRM_FALSE);
     });
@@ -224,7 +224,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_009', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_009', Level.LEVEL0, () => {
       let c:number = testNapi.Test_KeySystemSupported2(systemName, "111/mp4");
       if (clearPlay === 1) {
         expect(c).assertEqual(Drm_Support.DRM_FALSE);
@@ -240,7 +240,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_010', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_010', Level.LEVEL0, () => {
       let c:number = testNapi.Test_KeySystemSupported2(systemName, "");
       expect(c).assertEqual(Drm_Support.DRM_FALSE);
     });
@@ -252,7 +252,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_011', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_011', Level.LEVEL0, () => {
       let c:number = testNapi.Test_KeySystemSupported2(systemName, " ");
       expect(c).assertEqual(Drm_Support.DRM_FALSE);
     });
@@ -264,7 +264,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0OH_VideoDecoder_CreateByName
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_012', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_012', Level.LEVEL0, () => {
       let c:number = testNapi.Test_KeySystemSupported3(systemName, "video/mp4",
         Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_UNKNOWN);
       expect(c).assertEqual(Drm_Support.DRM_FALSE);
@@ -277,7 +277,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_013', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_013', Level.LEVEL0, () => {
       let c:number = testNapi.Test_KeySystemSupported3(systemName, "video/mp4",
         Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO);
       expect(c).assertEqual(Drm_Support.DRM_TRUE);
@@ -290,7 +290,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_014', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_014', Level.LEVEL0, () => {
       let c:number = testNapi.Test_KeySystemSupported3(systemName, "video/mp4",
         Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_HW_CRYPTO);
       console.log("XX SUB_MULTIMEDIA_DRM_C_API_014 isSysSupport is", c);
@@ -304,7 +304,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_015', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_015', Level.LEVEL0, () => {
       let c:number = testNapi.Test_KeySystemSupported3(systemName, "video/mp4",
         Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_ENHANCED_HW_CRYPTO);
       console.log("XX SUB_MULTIMEDIA_DRM_C_API_015 isSysSupport is", c);
@@ -318,7 +318,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_016', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_016', Level.LEVEL0, () => {
       let c:number =
         testNapi.Test_KeySystemSupported3(systemName, "video/mp4", Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_MAX);
       expect(c).assertEqual(Drm_Support.DRM_FALSE);
@@ -331,7 +331,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_017', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_017', Level.LEVEL0, () => {
       let c:number = testNapi.Test_KeySystemSupported3(systemName, "video/mp4", 5);
       expect(c).assertEqual(Drm_Support.DRM_FALSE);
     });
@@ -343,7 +343,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_018', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_018', Level.LEVEL0, () => {
       let c:number = testNapi.Test_KeySystemSupported3("", "video/mp4",
         Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO);
       expect(c).assertEqual(Drm_Support.DRM_FALSE);
@@ -356,7 +356,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_019', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_019', Level.LEVEL0, () => {
       let c:number = testNapi.Test_KeySystemSupported3(" ", "video/mp4",
         Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO);
       expect(c).assertEqual(Drm_Support.DRM_FALSE);
@@ -369,7 +369,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_020', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_020', Level.LEVEL0, () => {
       let c:number = testNapi.Test_KeySystemSupported3("wiseplay.drm", "video/mp4",
         Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO);
       expect(c).assertEqual(Drm_Support.DRM_FALSE);
@@ -382,7 +382,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_021', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_021', Level.LEVEL0, () => {
       let c:number =
         testNapi.Test_KeySystemSupported3(systemName, "", Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO);
       expect(c).assertEqual(Drm_Support.DRM_FALSE);
@@ -395,7 +395,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_022', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_022', Level.LEVEL0, () => {
       let c:number = testNapi.Test_KeySystemSupported3(systemName, "111/mp4",
         Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO);
       if (clearPlay === 1) {
@@ -412,7 +412,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_023', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_023', Level.LEVEL0, () => {
       let c:number =
         testNapi.Test_KeySystemSupported3(systemName, " ", Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO);
       expect(c).assertEqual(Drm_Support.DRM_FALSE);
@@ -425,7 +425,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_024', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_024', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySystem_Create(systemName, "ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
     });
@@ -437,7 +437,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_025', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_025', Level.LEVEL0, () => {
       for (let i = 0; i < 500; i++) {
         let a:number = testNapi.Test_KeySystemSupported("com.drm.wiseplay");
         expect(a).assertEqual(Drm_Support.DRM_FALSE);
@@ -453,7 +453,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_026', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_026', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySystem_Create(" ", "ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -465,7 +465,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_027', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_027', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySystem_Create("", "ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -477,7 +477,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_028', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_028', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySystem_Create(systemName, " ");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -489,7 +489,7 @@ export default function abilityTest() {
      * @tc.type      : Function test
      * @tc.level     : Level0
      */
-    it('SUB_MULTIMEDIA_DRM_C_API_029', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_029', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySystem_SetConfigurationString("ptr", "version", "2.2");
       if (clearPlay === 1) {
         expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
@@ -505,7 +505,7 @@ export default function abilityTest() {
      * @tc.type      : Function test
      * @tc.level     : Level0
      */
-    it('SUB_MULTIMEDIA_DRM_C_API_030', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_030', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySystem_SetConfigurationString(" ", "version", "2.2");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -517,7 +517,7 @@ export default function abilityTest() {
      * @tc.type      : Function test
      * @tc.level     : Level0
      */
-    it('SUB_MULTIMEDIA_DRM_C_API_031', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_031', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySystem_SetConfigurationString("ptr", " ", "2.2");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -529,7 +529,7 @@ export default function abilityTest() {
      * @tc.type      : Function test
      * @tc.level     : Level0
      */
-    it('SUB_MULTIMEDIA_DRM_C_API_032', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_032', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySystem_SetConfigurationString("ptr", "version", " ");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -541,7 +541,7 @@ export default function abilityTest() {
      * @tc.type      : Function test
      * @tc.level     : Level0
      */
-    it('SUB_MULTIMEDIA_DRM_C_API_033', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_033', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySystem_SetConfigurationString("ptr", "", "2.2");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -553,7 +553,7 @@ export default function abilityTest() {
      * @tc.type      : Function test
      * @tc.level     : Level0
      */
-    it('SUB_MULTIMEDIA_DRM_C_API_034', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_034', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySystem_SetConfigurationString("ptr", "version", "");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -565,7 +565,7 @@ export default function abilityTest() {
      * @tc.type      : Function test
      * @tc.level     : Level0
      */
-    it('SUB_MULTIMEDIA_DRM_C_API_035', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_035', Level.LEVEL0, () => {
       let expectLen:number = 100;
       let c:number = testNapi.Test_MediaKeySystem_GetConfigurationString("ptr", "version", "ptr", expectLen);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
@@ -578,7 +578,7 @@ export default function abilityTest() {
      * @tc.type      : Function test
      * @tc.level     : Level0
      */
-    it('SUB_MULTIMEDIA_DRM_C_API_036', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_036', Level.LEVEL0, () => {
       let expectLen:number = 100;
       let c:number = testNapi.Test_MediaKeySystem_GetConfigurationString("ptr", "maxSessionNum", "ptr", expectLen);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
@@ -591,7 +591,7 @@ export default function abilityTest() {
      * @tc.type      : Function test
      * @tc.level     : Level0
      */
-    it('SUB_MULTIMEDIA_DRM_C_API_037', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_037', Level.LEVEL0, () => {
       let expectLen:number = 100;
       let c:number = testNapi.Test_MediaKeySystem_GetConfigurationString("ptr", "vendor", "ptr", expectLen);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
@@ -604,7 +604,7 @@ export default function abilityTest() {
      * @tc.type      : Function test
      * @tc.level     : Level0
      */
-    it('SUB_MULTIMEDIA_DRM_C_API_038', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_038', Level.LEVEL0, () => {
       let expectLen:number = 1000;
       let c:number = testNapi.Test_MediaKeySystem_GetConfigurationString("ptr", "algorithms", "ptr", expectLen);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
@@ -617,7 +617,7 @@ export default function abilityTest() {
      * @tc.type      : Function test
      * @tc.level     : Level0
      */
-    it('SUB_MULTIMEDIA_DRM_C_API_039', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_039', Level.LEVEL0, () => {
       let expectLen:number = 100;
       let c:number = testNapi.Test_MediaKeySystem_GetConfigurationString("ptr", "currentHDCPLevel", "ptr", expectLen);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
@@ -630,7 +630,7 @@ export default function abilityTest() {
      * @tc.type      : Function test
      * @tc.level     : Level0
      */
-    it('SUB_MULTIMEDIA_DRM_C_API_040', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_040', Level.LEVEL0, () => {
       let expectLen:number = 100;
       let c:number = testNapi.Test_MediaKeySystem_GetConfigurationString(" ", "version", "ptr", expectLen);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
@@ -644,7 +644,7 @@ export default function abilityTest() {
      * @tc.type      : Function test
      * @tc.level     : Level0
      */
-    it('SUB_MULTIMEDIA_DRM_C_API_041', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_041', Level.LEVEL0, () => {
       let expectLen:number = 100;
       let c:number = testNapi.Test_MediaKeySystem_GetConfigurationString("ptr", " ", "ptr", expectLen);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
@@ -658,7 +658,7 @@ export default function abilityTest() {
      * @tc.type      : Function test
      * @tc.level     : Level0
      */
-    it('SUB_MULTIMEDIA_DRM_C_API_042', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_042', Level.LEVEL0, () => {
       let expectLen:number = 100;
       let c:number = testNapi.Test_MediaKeySystem_GetConfigurationString("ptr", "version", " ", expectLen);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
@@ -672,7 +672,7 @@ export default function abilityTest() {
      * @tc.type      : Function test
      * @tc.level     : Level0
      */
-    it('SUB_MULTIMEDIA_DRM_C_API_043', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_043', Level.LEVEL0, () => {
       let expectLen:number = -1;
       let c:number = testNapi.Test_MediaKeySystem_GetConfigurationString("ptr", "version", "ptr", expectLen);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
@@ -686,7 +686,7 @@ export default function abilityTest() {
      * @tc.type      : Function test
      * @tc.level     : Level0
      */
-    it('SUB_MULTIMEDIA_DRM_C_API_044', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_044', Level.LEVEL0, () => {
       let expectLen:number = 0;
       let c:number = testNapi.Test_MediaKeySystem_GetConfigurationString("ptr", "version", "ptr", expectLen);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
@@ -700,7 +700,7 @@ export default function abilityTest() {
      * @tc.type      : Function test
      * @tc.level     : Level0
      */
-    it('SUB_MULTIMEDIA_DRM_C_API_045', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_045', Level.LEVEL0, () => {
       let expectLen:number = 1;
       let c:number = testNapi.Test_MediaKeySystem_GetConfigurationString("ptr", "version", "ptr", expectLen);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
@@ -714,7 +714,7 @@ export default function abilityTest() {
      * @tc.type      : Function test
      * @tc.level     : Level0
      */
-    it('SUB_MULTIMEDIA_DRM_C_API_046', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_046', Level.LEVEL0, () => {
       let expectLen:number = 100;
       let c:number = testNapi.Test_MediaKeySystem_GetConfigurationString("ptr", "", "ptr", expectLen);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
@@ -728,7 +728,7 @@ export default function abilityTest() {
      * @tc.type      : Function test
      * @tc.level     : Level0
      */
-    it('SUB_MULTIMEDIA_DRM_C_API_047', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_047', Level.LEVEL0, () => {
       let dataString:string = "414141416933427a633267414141414131373232333936313536";
       let c:number = testNapi.Test_MediaKeySystem_SetConfigurationByteArray("ptr", "description", dataString, dataString.length);
       if (clearPlay === 1) {
@@ -745,7 +745,7 @@ export default function abilityTest() {
      * @tc.type      : Function test
      * @tc.level     : Level0
      */
-    it('SUB_MULTIMEDIA_DRM_C_API_048', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_048', Level.LEVEL0, () => {
       let dataString:string = "414141416933427a633267414141414131373232333936313536";
       let c:number = testNapi.Test_MediaKeySystem_SetConfigurationByteArray(" ", "description", dataString, dataString.length);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL); // 空指针
@@ -758,7 +758,7 @@ export default function abilityTest() {
      * @tc.type      : Function test
      * @tc.level     : Level0
      */
-    it('SUB_MULTIMEDIA_DRM_C_API_049', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_049', Level.LEVEL0, () => {
       let dataString:string = "414141416933427a633267414141414131373232333936313536";
       let c:number = testNapi.Test_MediaKeySystem_SetConfigurationByteArray("ptr", " ", dataString, dataString.length);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL); // 空指针
@@ -771,7 +771,7 @@ export default function abilityTest() {
      * @tc.type      : Function test
      * @tc.level     : Level0
      */
-    it('SUB_MULTIMEDIA_DRM_C_API_050', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_050', Level.LEVEL0, () => {
       let dataString:string = "414141416933427a633267414141414131373232333936313536";
       let c:number = testNapi.Test_MediaKeySystem_SetConfigurationByteArray("ptr", "", dataString, dataString.length);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL); // 空字符串
@@ -784,7 +784,7 @@ export default function abilityTest() {
      * @tc.type      : Function test
      * @tc.level     : Level0
      */
-    it('SUB_MULTIMEDIA_DRM_C_API_051', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_051', Level.LEVEL0, () => {
       let dataString:string = "414141416933427a633267414141414131373232333936313536";
       let c:number = testNapi.Test_MediaKeySystem_SetConfigurationByteArray("ptr", "description", " ", dataString.length);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL); // 空指针
@@ -797,7 +797,7 @@ export default function abilityTest() {
      * @tc.type      : Function test
      * @tc.level     : Level0
      */
-    it('SUB_MULTIMEDIA_DRM_C_API_052', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_052', Level.LEVEL0, () => {
       let dataString:string = "414141416933427a633267414141414131373232333936313536";
       let c:number = testNapi.Test_MediaKeySystem_SetConfigurationByteArray("ptr", "description", dataString, -1);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
@@ -810,7 +810,7 @@ export default function abilityTest() {
      * @tc.type      : Function test
      * @tc.level     : Level0
      */
-    it('SUB_MULTIMEDIA_DRM_C_API_053', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_053', Level.LEVEL0, () => {
       let dataString:string = "414141416933427a633267414141414131373232333936313536";
       let c:number = testNapi.Test_MediaKeySystem_SetConfigurationByteArray("ptr", "description", dataString, 0);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
@@ -823,7 +823,7 @@ export default function abilityTest() {
      * @tc.type      : Function test
      * @tc.level     : Level0
      */
-    it('SUB_MULTIMEDIA_DRM_C_API_054', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_054', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySystem_GetConfigurationByteArray("ptr", "deviceUniqueId", "ptr", "ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
     });
@@ -835,7 +835,7 @@ export default function abilityTest() {
      * @tc.type      : Function test
      * @tc.level     : Level0
      */
-    it('SUB_MULTIMEDIA_DRM_C_API_055', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_055', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySystem_GetConfigurationByteArray(" ", "description", "ptr", "ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -847,7 +847,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_056', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_056', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySystem_GetConfigurationByteArray("ptr", " ", "ptr", "ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -859,7 +859,7 @@ export default function abilityTest() {
      * @tc.type      : Function test
      * @tc.level     : Level0
      */
-    it('SUB_MULTIMEDIA_DRM_C_API_057', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_057', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySystem_GetConfigurationByteArray("ptr", "", "ptr", "ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -871,7 +871,7 @@ export default function abilityTest() {
      * @tc.type      : Function test
      * @tc.level     : Level0
      */
-    it('SUB_MULTIMEDIA_DRM_C_API_058', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_058', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySystem_GetConfigurationByteArray("ptr", "description", " ", "ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -883,7 +883,7 @@ export default function abilityTest() {
      * @tc.type      : Function test
      * @tc.level     : Level0
      */
-    it('SUB_MULTIMEDIA_DRM_C_API_059', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_059', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySystem_GetConfigurationByteArray("ptr", "description", "ptr", " ");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -895,7 +895,7 @@ export default function abilityTest() {
      * @tc.type      : Function test
      * @tc.level     : Level0
      */
-    it('SUB_MULTIMEDIA_DRM_C_API_060', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_060', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySystem_GetStatistics("ptr", "ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
     });
@@ -907,7 +907,7 @@ export default function abilityTest() {
      * @tc.type      : Function test
      * @tc.level     : Level0
      */
-    it('SUB_MULTIMEDIA_DRM_C_API_061', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_061', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySystem_GetStatistics(" ", "ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -919,7 +919,7 @@ export default function abilityTest() {
      * @tc.type      : Function test
      * @tc.level     : Level0
      */
-    it('SUB_MULTIMEDIA_DRM_C_API_062', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_062', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySystem_GetStatistics("ptr", " ");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -931,7 +931,7 @@ export default function abilityTest() {
      * @tc.type      : Function test
      * @tc.level     : Level0
      */
-    it('SUB_MULTIMEDIA_DRM_C_API_063', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_063', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySystem_GetMaxContentProtectionLevel("ptr", "ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
     });
@@ -943,7 +943,7 @@ export default function abilityTest() {
      * @tc.type      : Function test
      * @tc.level     : Level0
      */
-    it('SUB_MULTIMEDIA_DRM_C_API_064', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_064', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySystem_GetMaxContentProtectionLevel(" ", "ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -955,7 +955,7 @@ export default function abilityTest() {
      * @tc.type      : Function test
      * @tc.level     : Level0
      */
-    it('SUB_MULTIMEDIA_DRM_C_API_065', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_065', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySystem_GetMaxContentProtectionLevel("ptr", " ");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -967,7 +967,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_066', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_066', Level.LEVEL0, () => {
       let c:number =
         testNapi.Test_CreateMediaKeySession("ptr", Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_UNKNOWN, "ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
@@ -980,7 +980,7 @@ export default function abilityTest() {
      * @tc.type      : Function test
      * @tc.level     : Level0
      */
-    it('SUB_MULTIMEDIA_DRM_C_API_067', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_067', Level.LEVEL0, () => {
       let c:number = testNapi.Test_CreateMediaKeySession("ptr", Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO,
         "ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
@@ -993,7 +993,7 @@ export default function abilityTest() {
      * @tc.type      : Function test
      * @tc.level     : Level0
      */
-    it('SUB_MULTIMEDIA_DRM_C_API_068', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_068', Level.LEVEL0, () => {
       let drmMaxLevel:number = testNapi.GetMaxContentProtectionLevel("ptr", "ptr");
       console.log("SUB_MULTIMEDIA_DRM_C_API_068 GetMaxContentProtectionLevel is ", drmMaxLevel);
       if(drmMaxLevel === Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_HW_CRYPTO){
@@ -1010,7 +1010,7 @@ export default function abilityTest() {
      * @tc.type      : Function test
      * @tc.level     : Level0
      */
-    it('SUB_MULTIMEDIA_DRM_C_API_069', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_069', Level.LEVEL0, () => {
       let c:number = testNapi.Test_CreateMediaKeySession("ptr",
         Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_ENHANCED_HW_CRYPTO, "ptr");
       console.log("XX SUB_MULTIMEDIA_DRM_C_API_069 isSysSupport is", c);
@@ -1024,7 +1024,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_070', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_070', Level.LEVEL0, () => {
       let c:number =
         testNapi.Test_CreateMediaKeySession("ptr", Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_MAX, "ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
@@ -1037,7 +1037,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_071', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_071', Level.LEVEL0, () => {
       let c:number = testNapi.Test_CreateMediaKeySession("ptr", 5, "ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -1049,7 +1049,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_072', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_072', Level.LEVEL0, () => {
       let c:number = testNapi.Test_CreateMediaKeySession("ptr", -1, "ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -1061,7 +1061,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_073', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_073', Level.LEVEL0, () => {
       let c:number =
         testNapi.Test_CreateMediaKeySession(" ", Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO, "ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
@@ -1074,7 +1074,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_074', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_074', Level.LEVEL0, () => {
       let c:number =
         testNapi.Test_CreateMediaKeySession("ptr", Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO, " ");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
@@ -1087,7 +1087,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_075', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_075', Level.LEVEL0, () => {
       let status:number = testNapi.GetCertificateStatus();
       console.log("testCL_status = ",status);
       if(status != Drm_CertificateStatus.CERT_STATUS_PROVISIONED) {
@@ -1103,7 +1103,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_076', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_076', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySystem_GenerateKeySystemRequest(" ", "ptr", "ptr", "ptr", 1);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -1115,7 +1115,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_077', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_077', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySystem_GenerateKeySystemRequest("ptr", " ", "ptr", "ptr", 1);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -1127,7 +1127,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_078', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_078', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySystem_GenerateKeySystemRequest("ptr", "ptr", " ", "ptr", 1);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
 
@@ -1140,7 +1140,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_079', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_079', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySystem_GenerateKeySystemRequest("ptr", "ptr", "ptr", " ", 12);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -1152,7 +1152,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_080', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_080', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySystem_GenerateKeySystemRequest("ptr", "ptr", "ptr", "ptr", 0);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -1164,7 +1164,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_081', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_081', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySystem_GenerateKeySystemRequest("ptr", "ptr", "ptr", "ptr", -1);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -1176,7 +1176,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_082', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_082', Level.LEVEL0, () => {
       let status: number = testNapi.GetCertificateStatus();
       if (status != Drm_CertificateStatus.CERT_STATUS_PROVISIONED) {
         let c: number = testNapi.Test_MediaKeySystem_ProcessKeySystemResponse("ptr", "genResponse", 100);
@@ -1191,7 +1191,7 @@ export default function abilityTest() {
      * @tc.type      : Function test
      * @tc.level     : Level0
      */
-    it('SUB_MULTIMEDIA_DRM_C_API_083', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_083', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySystem_GetOfflineMediaKeyIds("ptr", "ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
     });
@@ -1203,7 +1203,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_084', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_084', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySystem_GetOfflineMediaKeyIds(" ", "ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -1215,7 +1215,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_085', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_085', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySystem_GetOfflineMediaKeyIds("ptr", " ");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -1227,7 +1227,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_086', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_086', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySystem_GetOfflineMediaKeyStatus("ptr", "genKey", 100, "ptr", Drm_OfflineKeyStatus.OFFLINE_MEDIA_KEY_STATUS_USABLE);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
     });
@@ -1239,7 +1239,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_087', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_087', Level.LEVEL0, () => {
       let keyId:string =testNapi.GetOfflineMediaKeyIds();
       console.log("testCL_SUB_MULTIMEDIA_DRM_C_API_092 keyId = " +keyId);
       if(keyId != "GetOfflineMediaKeyIds failed"){
@@ -1255,7 +1255,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_088', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_088', Level.LEVEL0, () => {
       let keyStr = "11223344";
       let c:number = testNapi.Test_MediaKeySystem_GetOfflineMediaKeyStatus("ptr", keyStr, keyStr.length, "ptr", Drm_OfflineKeyStatus.OFFLINE_MEDIA_KEY_STATUS_UNKNOWN);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
@@ -1268,7 +1268,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_089', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_089', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySystem_GetOfflineMediaKeyStatus(" ", "genKey", 100, "ptr", Drm_OfflineKeyStatus.OFFLINE_MEDIA_KEY_STATUS_UNKNOWN);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -1280,7 +1280,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_090', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_090', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySystem_GetOfflineMediaKeyStatus("ptr", " ", 100, "ptr", Drm_OfflineKeyStatus.OFFLINE_MEDIA_KEY_STATUS_UNKNOWN);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -1292,7 +1292,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_091', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_091', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySystem_GetOfflineMediaKeyStatus("ptr", "genKey", -1, "ptr", Drm_OfflineKeyStatus.OFFLINE_MEDIA_KEY_STATUS_UNKNOWN);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -1304,7 +1304,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_092', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_092', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySystem_GetOfflineMediaKeyStatus("ptr", "genKey", 0, "ptr", Drm_OfflineKeyStatus.OFFLINE_MEDIA_KEY_STATUS_UNKNOWN);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -1316,7 +1316,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_093', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_093', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySystem_GetOfflineMediaKeyStatus("ptr", "genKey", 1, " ", Drm_OfflineKeyStatus.OFFLINE_MEDIA_KEY_STATUS_UNKNOWN);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -1328,7 +1328,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_094', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_094', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySystem_ClearOfflineMediaKeys("ptr", "genKey", 1);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
     });
@@ -1340,7 +1340,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_095', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_095', Level.LEVEL0, () => {
       let keyId:string =testNapi.GetOfflineMediaKeyIds();
       if(keyId != "GetOfflineMediaKeyIds failed") {
         let c: number = testNapi.Test_MediaKeySystem_ClearOfflineMediaKeys("ptr", keyId, keyId.length);
@@ -1355,7 +1355,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_096', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_096', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySystem_ClearOfflineMediaKeys(" ", "genKey", 1);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -1367,7 +1367,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_097', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_097', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySystem_ClearOfflineMediaKeys("ptr", " ", 1);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -1379,7 +1379,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_098', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_098', Level.LEVEL0, () => {
       let keyStr = "1122334455667788";
       let c:number = testNapi.Test_MediaKeySystem_ClearOfflineMediaKeys("ptr", keyStr, keyStr.length);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
@@ -1392,7 +1392,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_099', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_099', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySystem_ClearOfflineMediaKeys("ptr", "genKey", 0);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -1404,7 +1404,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_100', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_100', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySystem_ClearOfflineMediaKeys("ptr", "genKey", -1);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -1416,7 +1416,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_101', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_101', Level.LEVEL0, () => {
       let c:number =
         testNapi.Test_MediaKeySystem_GetCertificateStatus("ptr", "ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
@@ -1429,7 +1429,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_102', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_102', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySystem_GetCertificateStatus(" ", "ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -1441,7 +1441,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_103', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_103', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySystem_GetCertificateStatus("ptr", " ");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -1453,7 +1453,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_104', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_104', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySystem_Destroy("ptr", 1);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
     });
@@ -1465,7 +1465,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_105', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_105', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySystem_Destroy(" ", 1);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -1477,7 +1477,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_106', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_106', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySystem_Destroy("ptr", 2);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -1489,7 +1489,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_107', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_107', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySystem_SetMediaKeySystemCallback("ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
     });
@@ -1501,7 +1501,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_108', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_108', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySystem_SetMediaKeySystemCallback(" ");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -1513,7 +1513,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_109', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_109', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySession_GenerateMediaKeyRequest("ptr", "ptr", "ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
     });
@@ -1525,7 +1525,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_110', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_110', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySession_GenerateMediaKeyRequest(" ", "ptr", "ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -1537,7 +1537,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_111', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_111', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySession_GenerateMediaKeyRequest("ptr", " ", "ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -1549,7 +1549,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_112', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_112', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySession_GenerateMediaKeyRequest("ptr", "ptr", " ");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -1562,7 +1562,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_113', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_113', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySession_GenerateMediaKeyRequest("ptr", "err_data", "ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
     });
@@ -1574,7 +1574,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_114', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_114', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySession_GenerateMediaKeyRequest("ptr", "err_dataLen", "ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -1586,7 +1586,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_115', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_115', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySession_GenerateMediaKeyRequest("ptr", "err_optCount", "ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -1598,7 +1598,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_116', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_116', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySession_GenerateMediaKeyRequest("ptr", "err_mineType", "ptr");
       if (clearPlay === 1) {
         expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
@@ -1614,7 +1614,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_117', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_117', Level.LEVEL0, () => {
       let responseStr:string;
       let length:number;
       if (clearPlay) {
@@ -1636,7 +1636,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_118', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_118', Level.LEVEL0, () => {
       let responseStr:string;
       let length:number;
       if (clearPlay) {
@@ -1658,7 +1658,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_119', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_119', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySession_ProcessMediaKeyResponse("ptr", " ", 10, "ptr", "ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -1670,7 +1670,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_120', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_120', Level.LEVEL0, () => {
       let responseStr = "11,11,11,11,11,11,11,11,11,111";
       let len = 10;
       let c:number = testNapi.Test_MediaKeySession_ProcessMediaKeyResponse("ptr", responseStr, len, "ptr", "ptr");
@@ -1684,7 +1684,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_121', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_121', Level.LEVEL0, () => {
       let responseStr:string;
       let length:number;
       if (clearPlay) {
@@ -1707,7 +1707,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_122', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_122', Level.LEVEL0, () => {
       let responseStr:string;
       let length:number;
       if (clearPlay) {
@@ -1730,7 +1730,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_123', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_123', Level.LEVEL0, () => {
       let responseStr:string;
       let length:number;
       if (clearPlay) {
@@ -1752,7 +1752,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_124', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_124', Level.LEVEL0, () => {
       let responseStr:string;
       let length:number;
       if (clearPlay) {
@@ -1774,7 +1774,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_125', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_125', Level.LEVEL0, () => {
       let c: number = testNapi.Test_MediaKeySession_CheckMediaKeyStatus("ptr", "ptr", 1);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
     });
@@ -1786,7 +1786,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_126', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_126', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySession_CheckMediaKeyStatus("ptr", "ptr", 5);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
     });
@@ -1798,7 +1798,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_127', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_127', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySession_CheckMediaKeyStatus("ptr", "ptr", 0);
       if (clearPlay === 1) {
         expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
@@ -1814,7 +1814,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_128', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_128', Level.LEVEL0, () => {
       let c: number = testNapi.Test_MediaKeySession_CheckMediaKeyStatus(" ", "ptr", 1);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -1826,7 +1826,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_129', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_129', Level.LEVEL0, () => {
       let c: number = testNapi.Test_MediaKeySession_CheckMediaKeyStatus("ptr", " ", 1);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -1838,7 +1838,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_130', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_130', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySession_ClearMediaKeys("ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
     });
@@ -1850,7 +1850,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_131', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_131', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySession_ClearMediaKeys(" ");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -1862,7 +1862,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_132', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_132', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySession_GetContentProtectionLevel("ptr", "ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
     });
@@ -1874,7 +1874,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_133', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_133', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySession_GetContentProtectionLevel(" ", "ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -1886,7 +1886,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_134', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_134', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySession_GetContentProtectionLevel("ptr", " ");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -1898,7 +1898,7 @@ export default function abilityTest() {
     * @tc.type      : Function test ---clearplay不支持
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_135', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_135', Level.LEVEL0, () => {
       let c: number = testNapi.Test_MediaKeySession_RequireSecureDecoderModule("hw", "video/avc", "ptr", true);
       console.log("XX SUB_MULTIMEDIA_DRM_C_API_0140 result is", c);
       expect(c).not().assertUndefined();
@@ -1911,7 +1911,7 @@ export default function abilityTest() {
     * @tc.type      : Function test ---clearplay不支持
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_136', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_136', Level.LEVEL0, () => {
       let c: number = testNapi.Test_MediaKeySession_RequireSecureDecoderModule("hw", "video/avs3", "ptr", true);
       console.log("XX SUB_MULTIMEDIA_DRM_C_API_0141 result is", c);
       expect(c).not().assertUndefined();
@@ -1924,7 +1924,7 @@ export default function abilityTest() {
     * @tc.type      : Function test ---clearplay不支持
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_137', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_137', Level.LEVEL0, () => {
       let c: number = testNapi.Test_MediaKeySession_RequireSecureDecoderModule("hw", "video/hevc", "ptr", true);
       console.log("XX SUB_MULTIMEDIA_DRM_C_API_0141 result is", c);
       expect(c).not().assertUndefined();
@@ -1937,7 +1937,7 @@ export default function abilityTest() {
     * @tc.type      : Function test ---clearplay不支持
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_138', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_138', Level.LEVEL0, () => {
       let c: number = testNapi.Test_MediaKeySession_RequireSecureDecoderModule("sw", "video/avc", "ptr", false);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
     });
@@ -1949,7 +1949,7 @@ export default function abilityTest() {
     * @tc.type      : Function test ---clearplay不支持
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_139', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_139', Level.LEVEL0, () => {
       let c: number = testNapi.Test_MediaKeySession_RequireSecureDecoderModule("enhanced_hw", "video/hevc", "ptr", true);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -1961,7 +1961,7 @@ export default function abilityTest() {
     * @tc.type      : Function test ---clearplay不支持
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_140', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_140', Level.LEVEL0, () => {
       let c: number = testNapi.Test_MediaKeySession_RequireSecureDecoderModule("max", "video/hevc", "ptr", true);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -1973,7 +1973,7 @@ export default function abilityTest() {
     * @tc.type      : Function test ---clearplay不支持
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_141', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_141', Level.LEVEL0, () => {
       let c: number = testNapi.Test_MediaKeySession_RequireSecureDecoderModule("unknow", "video/hevc", "ptr", true);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -1985,7 +1985,7 @@ export default function abilityTest() {
     * @tc.type      : Function test ---clearplay不支持
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_142', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_142', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySession_RequireSecureDecoderModule(" ", "video/mp4", "ptr", false);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -1997,7 +1997,7 @@ export default function abilityTest() {
     * @tc.type      : Function test ---clearplay不支持
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_143', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_143', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySession_RequireSecureDecoderModule("hw", " ", "ptr", false);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -2009,7 +2009,7 @@ export default function abilityTest() {
     * @tc.type      : Function test ---clearplay不支持
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_144', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_144', Level.LEVEL0, () => {
       let c: number = testNapi.Test_MediaKeySession_RequireSecureDecoderModule("hw", "111/222", "ptr", false);
       if (clearPlay === 1) {
         expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
@@ -2025,7 +2025,7 @@ export default function abilityTest() {
     * @tc.type      : Function test ---clearplay不支持
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_145', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_145', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySession_RequireSecureDecoderModule("hw", "video/mp4", " ", false);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -2037,7 +2037,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_146', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_146', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySession_SetMediaKeySessionCallback("ptr", "ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
     });
@@ -2049,7 +2049,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_147', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_147', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySession_SetMediaKeySessionCallback(" ", "ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -2061,7 +2061,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_148', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_148', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySession_SetMediaKeySessionCallback("ptr", " ");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -2073,7 +2073,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_149', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_149', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySession_GenerateOfflineReleaseRequest("ptr", "genKey", 1, "ptr", "ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
     });
@@ -2085,7 +2085,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_150', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_150', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySession_GenerateOfflineReleaseRequest(" ", "genKey", 1, "ptr", "ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -2097,7 +2097,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_151', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_151', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySession_GenerateOfflineReleaseRequest("ptr", " ", 1, "ptr", "ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -2109,7 +2109,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_152', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_152', Level.LEVEL0, () => {
       let licenseIdStr = "11,11,11,11,12,22";
       let len = 6;
       let c:number = testNapi.Test_MediaKeySession_GenerateOfflineReleaseRequest("ptr", licenseIdStr, len, "ptr", "ptr");
@@ -2123,7 +2123,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_153', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_153', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySession_GenerateOfflineReleaseRequest("ptr", "genKey", 0, "ptr", "ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -2135,7 +2135,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_154', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_154', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySession_GenerateOfflineReleaseRequest("ptr", "genKey", -1, "ptr", "ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -2147,7 +2147,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_155', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_155', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySession_GenerateOfflineReleaseRequest("ptr", "genKey", 1, " ", "ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -2159,7 +2159,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_156', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_156', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySession_GenerateOfflineReleaseRequest("ptr", "genKey", 1, "ptr", " ");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -2171,7 +2171,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_157', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_157', Level.LEVEL0, () => {
       if (clearPlay) {
         let responseArray =
           new Uint8Array([0x31, 0x56, 0x55, 0x52, 0x53, 0x54, 0x56, 0x39, 0x55, 0x52, 0x56, 0x4E, 0x55, 0x58, 0x30,
@@ -2191,7 +2191,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_158', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_158', Level.LEVEL0, () => {
       if (clearPlay) {
         let responseArray =
           new Uint8Array([0x31, 0x56, 0x55, 0x52, 0x53, 0x54, 0x56, 0x39, 0x55, 0x52, 0x56, 0x4E, 0x55, 0x58, 0x30,
@@ -2211,7 +2211,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_159', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_159', Level.LEVEL0, () => {
       if (clearPlay) {
         let responseArray =
           new Uint8Array([0x31, 0x56, 0x55, 0x52, 0x53, 0x54, 0x56, 0x39, 0x55, 0x52, 0x56, 0x4E, 0x55, 0x58, 0x30,
@@ -2231,7 +2231,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_160', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_160', Level.LEVEL0, () => {
       if (clearPlay) {
         let responseArray =
           new Uint8Array([0x31, 0x56, 0x55, 0x52, 0x53, 0x54, 0x56, 0x39, 0x55, 0x52, 0x56, 0x4E, 0x55, 0x58, 0x30,
@@ -2251,7 +2251,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_161', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_161', Level.LEVEL0, () => {
       if (clearPlay) {
         let responseArray =
           new Uint8Array([0x31, 0x56, 0x55, 0x52, 0x53, 0x54, 0x56, 0x39, 0x55, 0x52, 0x56, 0x4E, 0x55, 0x58, 0x30,
@@ -2271,7 +2271,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_162', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_162', Level.LEVEL0, () => {
       if (clearPlay) {
         let responseArray =
           new Uint8Array([0x31, 0x56, 0x55, 0x52, 0x53, 0x54, 0x56, 0x39, 0x55, 0x52, 0x56, 0x4E, 0x55, 0x58, 0x30,
@@ -2291,7 +2291,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_163', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_163', Level.LEVEL0, () => {
       if (clearPlay) {
         let responseArray =
           new Uint8Array([0x31, 0x56, 0x55, 0x52, 0x53, 0x54, 0x56, 0x39, 0x55, 0x52, 0x56, 0x4E, 0x55, 0x58, 0x30,
@@ -2310,7 +2310,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_164', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_164', Level.LEVEL0, () => {
       if (clearPlay) {
         let responseArray =
           new Uint8Array([0x31, 0x56, 0x55, 0x52, 0x53, 0x54, 0x56, 0x39, 0x55, 0x52, 0x56, 0x4E, 0x55, 0x58, 0x30,
@@ -2329,7 +2329,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_165', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_165', Level.LEVEL0, () => {
       if (clearPlay) {
         let keyArray =
           new Uint8Array([0x76, 0x76, 0x76, 0x35, 0x6b, 0x6f, 0x30, 0x6e, 0x38, 0x36, 0x30, 0x74, 0x33, 0x6c, 0x37,
@@ -2353,7 +2353,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_166', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_166', Level.LEVEL0, () => {
       if (clearPlay) {
         let responseArray = new Uint8Array([0x34, 0x36, 0x47, 0x5A, 0x36, 0x42, 0x41, 0x3D, 0x3D]);
         let responseStr = responseArray.toString();
@@ -2370,7 +2370,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_167', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_167', Level.LEVEL0, () => {
       let keyArray =
         new Uint8Array([0x31, 0x56, 0x55, 0x30, 0x36, 0x72, 0x34, 0x36, 0x47, 0x5A, 0x36, 0x42, 0x41, 0x3D, 0x3D]);
       let keyStr = keyArray.toString();
@@ -2393,7 +2393,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_168', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_168', Level.LEVEL0, () => {
       if (clearPlay) {
         let responseStr = "";
         let len = 10;
@@ -2409,7 +2409,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_169', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_169', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySession_RestoreOfflineMediaKeys("ptr", "getKey", 1);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
     });
@@ -2421,7 +2421,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_170', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_170', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySession_RestoreOfflineMediaKeys(" ", "getKey", 1);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -2433,7 +2433,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_171', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_171', Level.LEVEL0, () => {
       let licenseResponseStr = "11,11,11,11,11,111,11,111";
       let len = 8;
       let c:number = testNapi.Test_MediaKeySession_RestoreOfflineMediaKeys("ptr", licenseResponseStr, len);
@@ -2447,7 +2447,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_172', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_172', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySession_RestoreOfflineMediaKeys("ptr", " ", 1);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -2459,7 +2459,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_173', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_173', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySession_RestoreOfflineMediaKeys("ptr", "getKey", 0);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -2471,7 +2471,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_174', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_174', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySession_RestoreOfflineMediaKeys("ptr", "getKey", -1);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -2484,7 +2484,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_175', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_175', Level.LEVEL0, () => {
       let c:number = testNapi.Test_CreateMediaKeySession_multi(64);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
     })
@@ -2496,7 +2496,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_176', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_176', Level.LEVEL0, () => {
       let c:number = testNapi.Test_CreateMediaKeySession_multi(65);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     })
@@ -2508,7 +2508,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_177', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_177', Level.LEVEL0, () => {
       if(clearPlay) {
         let c: number = testNapi.Test_MediaKeySession_ProcessOfflineReleaseResponse_multi(100);
         expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
@@ -2522,7 +2522,7 @@ export default function abilityTest() {
    * @tc.type      : Function test
    * @tc.level     : Level0
    */
-    it('SUB_MULTIMEDIA_DRM_C_API_178', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_178', Level.LEVEL0, () => {
       if (clearPlay == 1) {
         let c:number = testNapi.Test_MediaKeySystem_SetConfigurationString_multi();
         expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
@@ -2537,7 +2537,7 @@ export default function abilityTest() {
    * @tc.type      : Function test
    * @tc.level     : Level0
    */
-    it('SUB_MULTIMEDIA_DRM_C_API_179', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_179', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySystem_GetMediaKeySystems("ptr", "ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
     });
@@ -2549,7 +2549,7 @@ export default function abilityTest() {
    * @tc.type      : Function test
    * @tc.level     : Level0
    */
-    it('SUB_MULTIMEDIA_DRM_C_API_180', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_180', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySystem_GetMediaKeySystems(" ", "ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -2561,7 +2561,7 @@ export default function abilityTest() {
    * @tc.type      : Function test
    * @tc.level     : Level0
    */
-    it('SUB_MULTIMEDIA_DRM_C_API_181', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_181', Level.LEVEL0, () => {
       let c:number = testNapi.Test_MediaKeySystem_GetMediaKeySystems("ptr", " ");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     });
@@ -2573,7 +2573,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_182', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_182', Level.LEVEL0, () => {
       let c = testNapi.Test_MediaKeySystem_SetCallback("ptr", "ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
     })
@@ -2585,7 +2585,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_183', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_183', Level.LEVEL0, () => {
       let c = testNapi.Test_MediaKeySystem_SetCallback(" ", "ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     })
@@ -2597,7 +2597,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_184', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_184', Level.LEVEL0, () => {
       let c = testNapi.Test_MediaKeySystem_SetCallback("ptr", " ");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     })
@@ -2609,7 +2609,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_185', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_185', Level.LEVEL0, () => {
       let c = testNapi.Test_MediaKeySession_SetCallback("ptr", "ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
     })
@@ -2621,7 +2621,7 @@ export default function abilityTest() {
    * @tc.type      : Function test
    * @tc.level     : Level0
    */
-    it('SUB_MULTIMEDIA_DRM_C_API_186', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_186', Level.LEVEL0, () => {
       let c = testNapi.Test_MediaKeySession_SetCallback(" ", "ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     })
@@ -2633,7 +2633,7 @@ export default function abilityTest() {
    * @tc.type      : Function test
    * @tc.level     : Level0
    */
-    it('SUB_MULTIMEDIA_DRM_C_API_187', 0, () => {
+    it('SUB_MULTIMEDIA_DRM_C_API_187', Level.LEVEL0, () => {
       let c = testNapi.Test_MediaKeySession_SetCallback("ptr", " ");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     })

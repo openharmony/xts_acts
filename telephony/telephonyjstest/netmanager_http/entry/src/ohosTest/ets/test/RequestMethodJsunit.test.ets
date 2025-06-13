@@ -134,19 +134,19 @@ let POST_0100 = async (done: Function) => {
     let httpRequestOptions: http.HttpRequestOptions = {
       method: http.RequestMethod.POST,
       extraData: {
-        tn: "albumsdetail",
-        work: "渐变风格插画",
-        fr: "albumslist",
-        album_tab: "设计素材",
-        album_id: "409",
-        rn: "30"
+        q: "Hello World",
+        from: "en",
+        to: "zh",
+        appid: "YOUR_APP_ID",
+        salt: "1435660288",
+        sign: "YOUR_SIGNATURE"
       },
-      header: 'content-type: application/json',
+      header: 'content-type: application/x-www-form-urlencoded',
       readTimeout: 60000,
       connectTimeout: 60000
     }
     let httpRequest = http.createHttp();
-    httpRequest.request('https://image.baidu.com/search/detail', httpRequestOptions, (err, data) => {
+    httpRequest.request('https://fanyi-api.baidu.com/api/trans/vip/translate', httpRequestOptions, (err, data) => {
       console.log(casename + JSON.stringify(err) + ' data: ' + JSON.stringify(data));
       expect(data.responseCode == 200).assertTrue();
       httpRequest.destroy();
@@ -168,19 +168,19 @@ let POST_0200 = async (done: Function) => {
     let httpRequestOptions: http.HttpRequestOptions = {
       method: http.RequestMethod.POST,
       extraData: {
-        tn: "albumsdetail",
-        work: "渐变风格插画",
-        fr: "albumslist",
-        album_tab: "设计素材",
-        album_id: "409",
-        rn: "30"
+        q: "Hello World",
+        from: "en",
+        to: "zh",
+        appid: "YOUR_APP_ID",
+        salt: "1435660288",
+        sign: "YOUR_SIGNATURE"
       },
-      header: 'content-type: application/json',
+      header: 'content-type: application/x-www-form-urlencoded',
       readTimeout: 60000,
       connectTimeout: 60000
     }
     let httpRequest = http.createHttp();
-    httpRequest.request('https://image.baidu.com/search/detail', httpRequestOptions).then(data => {
+    httpRequest.request('https://fanyi-api.baidu.com/api/trans/vip/translate', httpRequestOptions).then(data => {
       console.log(casename + JSON.stringify(data));
       expect(data.responseCode == 200).assertTrue();
       httpRequest.destroy();

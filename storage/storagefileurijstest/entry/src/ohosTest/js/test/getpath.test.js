@@ -76,7 +76,7 @@ describe('file_uri_test', function () {
         if (fpath === '/storage/Users/currentUser/appdata/el2/distributedfiles/com.ohos.UserFile.ExternalFileManager/.remote_share/***/storage/Users/currentUser/Documents/test.txt'){
           expect(true).assertTrue();
         }else{
-          expect(fpath === '/data/storage/el2/share/r/com.ohos.UserFile.ExternalFileManager/data/storage/el2/distributedfiles/.remote_share/***/storage/Users/currentUser/Documents/test.txt').assertTrue();
+          expect(fpath === '/data/storage/el2/share/***/r/com.ohos.UserFile.ExternalFileManager/data/storage/el2/distributedfiles/.remote_share/***/storage/Users/currentUser/Documents/test.txt').assertTrue();
         }
       }catch(e){
         console.log('test_Fileuri_Getpath_003 has failed for:' + e.message);
@@ -172,7 +172,7 @@ describe('file_uri_test', function () {
         if (fpath === '/storage/Users/currentUser/appdata/el2/distributedfiles/com.ohos.UserFile.ExternalFileManager/.remote_share/***/storage/Users/currentUser/Documents/test'){
           expect(true).assertTrue();
         }else{
-          expect(fpath === '/data/storage/el2/share/r/com.ohos.UserFile.ExternalFileManager/data/storage/el2/distributedfiles/.remote_share/***/storage/Users/currentUser/Documents/test').assertTrue();
+          expect(fpath === '/data/storage/el2/share/**TEST!@#/r/com.ohos.UserFile.ExternalFileManager/data/storage/el2/distributedfiles/.remote_share/***/storage/Users/currentUser/Documents/test').assertTrue();
         }
       }catch(e){
         console.log('test_Fileuri_Getpath_007 has failed for:' + e.message);

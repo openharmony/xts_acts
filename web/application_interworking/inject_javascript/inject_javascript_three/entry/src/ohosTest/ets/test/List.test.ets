@@ -18,6 +18,7 @@ import webRunJavaScriptOnDocumentEndTest from './WebRunJavaScriptOnDocumentEndTe
 import webRunJavaScriptOnHeadEndTest from './WebRunJavaScriptOnHeadEndTest.test';
 import webJavaScriptOnDocumentStartTest from './WebJavaScriptOnDocumentStartTest.test';
 import webJavaScriptOnDocumentEndTest from './WebJavaScriptOnDocumentEndTest.test';
+import webViewRegisterJavaScriptProxyErrorCode from './WebViewRegisterJavaScriptProxyErrorCode.test';
 
 
 export default function testsuite() {
@@ -26,4 +27,5 @@ export default function testsuite() {
   webRunJavaScriptOnHeadEndTest();
   webJavaScriptOnDocumentStartTest();
   webJavaScriptOnDocumentEndTest();
+  webViewRegisterJavaScriptProxyErrorCode();
 }

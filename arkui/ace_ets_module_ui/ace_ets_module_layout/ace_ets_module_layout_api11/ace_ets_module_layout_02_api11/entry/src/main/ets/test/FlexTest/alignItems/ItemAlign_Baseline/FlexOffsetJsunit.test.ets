@@ -21,27 +21,27 @@ export default function flexOffset_BaselineJsunit() {
   describe('flexItemAlignBaselineTest1', () => {
     beforeEach(async () => {
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/Flex/alignItems/ItemAlign_Baseline/FlexOffset',
+        url: 'MainAbility/pages/Flex/alignItems/ItemAlign_Baseline/ItemAlign_Baseline_FlexOffset',
       }
       try {
         router.clear();
         await CommonFunc.sleep(1000);
         let pages = router.getState();
-        console.info("get FlexOffset state success " + JSON.stringify(pages));
-        if (!("FlexOffset" == pages.name)) {
-          console.info("get FlexOffset state success " + JSON.stringify(pages.name));
+        console.info("get ItemAlign_Baseline_FlexOffset state success " + JSON.stringify(pages));
+        if (!("ItemAlign_Baseline_FlexOffset" == pages.name)) {
+          console.info("get ItemAlign_Baseline_FlexOffset state success " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options)
-          console.info("push FlexOffset page success " + JSON.stringify(result));
+          console.info("push ItemAlign_Baseline_FlexOffset page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push FlexOffset page error " + JSON.stringify(err));
+        console.error("push ItemAlign_Baseline_FlexOffset page error " + JSON.stringify(err));
       }
       await CommonFunc.sleep(2000);
 
     });
     afterEach(async () => {
       await CommonFunc.sleep(1000);
-      console.info("FlexOffset after each called");
+      console.info("ItemAlign_Baseline_FlexOffset after each called");
     });
 
     /**
@@ -51,12 +51,12 @@ export default function flexOffset_BaselineJsunit() {
      */
     it('testFlexItemAlignBaselineSetOffset', 0, async () => {
       console.info('new testFlexItemAlignBaselineSetOffset START');
-      let strJson1 = getInspectorByKey('flexOffset');
+      let strJson1 = getInspectorByKey('ItemAlign_Baseline_flexOffset');
 
-      let textOffset01: RectValue = CommonFunc.getComponentRect('textOffset01');
-      let textOffset02: RectValue = CommonFunc.getComponentRect('textOffset02');
-      let textOffset03: RectValue = CommonFunc.getComponentRect('textOffset03');
-      let flexOffset: RectValue = CommonFunc.getComponentRect('flexOffset');
+      let textOffset01: RectValue = CommonFunc.getComponentRect('ItemAlign_Baseline_textOffset01');
+      let textOffset02: RectValue = CommonFunc.getComponentRect('ItemAlign_Baseline_textOffset02');
+      let textOffset03: RectValue = CommonFunc.getComponentRect('ItemAlign_Baseline_textOffset03');
+      let flexOffset: RectValue = CommonFunc.getComponentRect('ItemAlign_Baseline_flexOffset');
       expect(Math.abs(textOffset03.top - flexOffset.top) <= 1).assertTrue()
       expect(Math.abs(Math.round((textOffset01.right - textOffset02.left) * 10) / 10 - Math.round(vp2px(15) * 10) / 10) <= 1)
         .assertTrue()

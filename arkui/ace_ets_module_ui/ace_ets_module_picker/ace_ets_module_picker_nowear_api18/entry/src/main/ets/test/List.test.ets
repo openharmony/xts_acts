@@ -16,8 +16,6 @@ import calendarPickerDialogStartEndTest from './calendarPickerDialogTest/calenda
 import calendarPickerStartEndTest from './calendarPickerTest/calendarPickerStartEndTest.test';
 import datePickerDialogMode from './datePickerDialogTest/DatePickerDialogMode.test';
 import timePickerDialogEnableHapticFeedback from './timePickerDialog/timePickerDialogEnableHapticFeedback.test'
-import disableDateRangeAndMarkTodayTest from './calendarPickerTest/disableDateRangeAndMarkToday.test'
-import dialogDisableDateRangeAndMarkTodayTest from './calendarPickerDialogTest/dialogDisableDateRangeAndMarkToday.test'
 import textPickerDialogEnableHapticFeedback from './textPickerDialog/textPickerDialogEnableHapticFeedback.test'
 import EnableHapticFeedback from './datePickerDialogTest/datePickerDialogEnableHapticFeedback.test'
 import textPickerDialogSelectedAreaTest from './textPickerDialog/textPickerDialogSelectedArea.test';
@@ -38,14 +36,13 @@ import timePickerDialogBGBlurStyleTest from './timePickerDialog/timePickerDialog
 import timePickerDialogBGColorTest from './timePickerDialog/timePickerDialogBGColor.test';
 import timePickerDialogShadowTest from './timePickerDialog/timePickerDialogShadow.test';
 import enableCascadeTest from './timePickerDialog/addEnableCascadeApi.test'
+import columnWidths from './textPicker/columnWidths.test';
 
 export default function testsuite() {
     calendarPickerDialogStartEndTest()
     calendarPickerStartEndTest()
     datePickerDialogMode()
     timePickerDialogEnableHapticFeedback();
-    disableDateRangeAndMarkTodayTest();
-    dialogDisableDateRangeAndMarkTodayTest();
     EnableHapticFeedback();
     textPickerDialogSelectedAreaTest();
     timePickerDialogSelectedAreaTest();
@@ -66,4 +63,5 @@ export default function testsuite() {
     timePickerDialogBGColorTest();
     timePickerDialogShadowTest();
     enableCascadeTest();
+    columnWidths();
 }

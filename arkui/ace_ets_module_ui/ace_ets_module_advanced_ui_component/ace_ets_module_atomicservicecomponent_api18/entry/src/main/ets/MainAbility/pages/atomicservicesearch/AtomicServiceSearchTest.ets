@@ -1,110 +1,61 @@
-import { AtomicServiceSearch, SearchParams, SelectParams} from '@kit.ArkUI';
-
+import { Demo01 } from './AtomicServiceSearchDemo01'
+import { Demo02 } from './AtomicServiceSearchDemo02'
+import { Demo03 } from './AtomicServiceSearchDemo03'
+import { Demo04 } from './AtomicServiceSearchDemo04'
+import { Demo05 } from './AtomicServiceSearchDemo05'
 @Entry
 @Component
 struct AtomicServiceSearchTest {
-  @State private placeholder: string = 'Type to Search...';
-  @State private defaultValue: string = 'default';
-  @State private search?: SearchParams = {};
-  @State private select?: SelectParams = {
-    options: [
-      { value: 'Select1', icon: $r('app.media.icon') },
-      { value: 'Select2', icon: $r('app.media.icon') },
-      { value: 'Select3', icon: $r('app.media.icon') },
-      { value: 'Select4', icon: $r('app.media.icon') }
-    ],
-    selected: -1,
-    selectValue: 'Select1',
-    onSelect: (index: number) => {
-      if (index === 0) {
-        this.alert('Select1');
-      } else if (index === 1) {
-        this.alert('Select2');
-      } else if (index === 2) {
-        this.alert('Select3');
-      } else if (index === 3) {
-        this.alert('Select4');
-      }
-    }
-  };
+  @State arr: number[] = [1, 2, 3]
+  @State current: number = 1
+  @State selectWhich: number = 1;
+  @State simpleList: Array<string> = [
+    'Demo01：AtomicServiceSearchDemo01',
+    'Demo02：AtomicServiceSearchDemo02',
+    'Demo03：AtomicServiceSearchDemo03',
+    'Demo04：AtomicServiceSearchDemo04',
+    'Demo05：AtomicServiceSearchDemo05',
+  ];
 
   build() {
-    Column({ space: 8 }) {
-      Text('AtomicServiceSearch修改样式').alignSelf(ItemAlign.Start).decoration({
-        type: TextDecorationType.Underline,
-        color: Color.Black,
-        style: TextDecorationStyle.SOLID
-      }).margin({ top: 20, bottom: 20 })
+    Scroll() {
+      Column() {
+        Text('AtomicServiceSearch').margin({ top: 40 }).decoration({
+          type: TextDecorationType.Underline,
+          color: Color.Black,
+          style: TextDecorationStyle.SOLID
+        })
 
-      AtomicServiceSearch({
-        value: this.defaultValue,
-        placeholder: this.placeholder,
-        select: this.select,
-        search: this.search,
-        operation: {
-          independentItem: {
-            value: $r(`app.media.icon`),
-            action: () => {
-              this.alert('通知');
-            }
-          }
-        }
-      })
-      Button('修改placeholder')
-        .width('100%')
-        .type(ButtonType.Normal)
-        .borderRadius(20)
-        .onClick(() => {
-          if (this.placeholder === 'Search...') {
-            this.placeholder = 'Type to Search...';
-          } else {
-            this.placeholder = 'Search...';
-          }
-        });
-      Button('修改defaultValue')
-        .width('100%')
-        .type(ButtonType.Normal)
-        .borderRadius(20)
-        .onClick(() => {
-          if (this.defaultValue === 'value') {
-            this.defaultValue = 'defaultValue';
-          } else {
-            this.defaultValue = 'value';
-          }
-        });
-      Button('修改Select样式')
-        .width('100%')
-        .type(ButtonType.Normal)
-        .borderRadius(20)
-        .onClick(() => {
-          this.select = {
-            options: [
-              { value: '选项1', icon: $r('app.media.icon') },
-              { value: '选项2', icon: $r('app.media.icon') },
-            ],
-            selected: -1,
-            selectValue: '选项1',
-            onSelect: (index: number) => {
-              if (index === 0) {
-                this.alert('选项1');
-              } else if (index === 1) {
-                this.alert('选项2');
-              }
-            }
-          };
-        });
+        Scroll() {
+          Column() {
+            ForEach(this.simpleList, (item: string, index:number) => {
+              Button(item)
+                .width('100%')
+                .height(30)
+                .margin({top: 5})
+                .type(ButtonType.Normal)
+                .borderRadius(10)
+                .backgroundColor(this.selectWhich === index + 1 ? '#808080': '#75878a')
+                .align(Alignment.Start)
+                .fontColor(Color.Black)
+                .onClick(()=>{
+                  this.selectWhich = index + 1;
+                })
+            }, (item: string) => item)
+          }.width('100%');
+        }.height(180).margin({bottom: 15});
 
-      Button('修改Search样式')
-        .width('100%')
-        .type(ButtonType.Normal)
-        .borderRadius(20)
-        .onClick(() => {
-          this.search = {
-            componentBackgroundColor: '#e0eee8'
-          }
-        });
-    }.padding({ left: 16, right: 16 })
+        if (this.selectWhich === 1) {Demo01()}
+        if (this.selectWhich === 2) {Demo02()}
+        if (this.selectWhich === 3) {Demo03()}
+        if (this.selectWhich === 4) {Demo04()}
+        if (this.selectWhich === 5) {Demo05()}
+
+      }.padding({ left: 16, right: 16 })
+    }
+
   }
+
 
   private alert(message: string): void {
     AlertDialog.show({

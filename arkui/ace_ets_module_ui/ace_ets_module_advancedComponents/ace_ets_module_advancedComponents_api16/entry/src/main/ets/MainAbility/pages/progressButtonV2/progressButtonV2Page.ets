@@ -39,6 +39,7 @@ struct ProgressButtonV2Example {
           ProgressButtonV2({
             progress: this.progressIndex1,
             progressButtonWidth: this.buttonWidth,
+            progressButtonRadius: LengthMetrics.vp(8),
             content: this.textState1,
             isEnabled: this.enableState1,
             colorOptions: this.colorOptions1,

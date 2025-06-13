@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, it, expect} from '@ohos/hypium';
+import {describe, it, expect, Level, TestType, Size} from '@ohos/hypium';
 import data from '@ohos.telephony.data';
 
 
@@ -34,7 +34,7 @@ export default function dataJsunit() {
        * @tc.name    Enum DataFlowType
        * @tc.desc    Enum value test
        */
-    it("Telephony_Data_DataFlowType_DATA_FLOW_TYPE_NONE", 0, async (done:Function)=> {
+    it("Telephony_Data_DataFlowType_DATA_FLOW_TYPE_NONE", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function)=> {
       let caseName = 'Telephony_Data_DataFlowType_DATA_FLOW_TYPE_NONE';
       console.log(`==========> ${caseName} Test start ==========>`);
       expect(0).assertEqual(data.DataFlowType.DATA_FLOW_TYPE_NONE);
@@ -47,7 +47,7 @@ export default function dataJsunit() {
        * @tc.name    Enum DataFlowType
        * @tc.desc    Enum value test
        */
-    it("Telephony_Data_DataFlowType_DATA_FLOW_TYPE_DOWN", 0, async (done:Function)=> {
+    it("Telephony_Data_DataFlowType_DATA_FLOW_TYPE_DOWN", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function)=> {
       let caseName = 'Telephony_Data_DataFlowType_DATA_FLOW_TYPE_DOWN';
       console.log(`==========> ${caseName} Test start ==========>`);
       expect(1).assertEqual(data.DataFlowType.DATA_FLOW_TYPE_DOWN);
@@ -60,7 +60,7 @@ export default function dataJsunit() {
        * @tc.name    Enum DataFlowType
        * @tc.desc    Enum value test
        */
-    it("Telephony_Data_DataFlowType_DATA_FLOW_TYPE_UP", 0, async (done:Function)=> {
+    it("Telephony_Data_DataFlowType_DATA_FLOW_TYPE_UP", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function)=> {
       let caseName = 'Telephony_Data_DataFlowType_DATA_FLOW_TYPE_UP';
       console.log(`==========> ${caseName} Test start ==========>`);
       expect(2).assertEqual(data.DataFlowType.DATA_FLOW_TYPE_UP);
@@ -73,7 +73,7 @@ export default function dataJsunit() {
        * @tc.name    Enum DataFlowType
        * @tc.desc    Enum value test
        */
-    it("Telephony_Data_DataFlowType_DATA_FLOW_TYPE_UP_DOWN", 0, async (done:Function)=> {
+    it("Telephony_Data_DataFlowType_DATA_FLOW_TYPE_UP_DOWN", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function)=> {
       let caseName = 'Telephony_Data_DataFlowType_DATA_FLOW_TYPE_UP_DOWN';
       console.log(`==========> ${caseName} Test start ==========>`);
       expect(3).assertEqual(data.DataFlowType.DATA_FLOW_TYPE_UP_DOWN);
@@ -86,7 +86,7 @@ export default function dataJsunit() {
        * @tc.name    Enum DataFlowType
        * @tc.desc    Enum value test
        */
-    it("Telephony_Data_DataFlowType_DATA_FLOW_TYPE_DORMANT", 0, async (done:Function)=> {
+    it("Telephony_Data_DataFlowType_DATA_FLOW_TYPE_DORMANT", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function)=> {
       let caseName = 'Telephony_Data_DataFlowType_DATA_FLOW_TYPE_DORMANT';
       console.log(`==========> ${caseName} Test start ==========>`);
       expect(4).assertEqual(data.DataFlowType.DATA_FLOW_TYPE_DORMANT);
@@ -99,7 +99,7 @@ export default function dataJsunit() {
        * @tc.name    Enum DataConnectState
        * @tc.desc    Enum value test
        */
-    it("Telephony_Data_DataConnectState_DATA_STATE_UNKNOWN", 0, async (done:Function)=> {
+    it("Telephony_Data_DataConnectState_DATA_STATE_UNKNOWN", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function)=> {
       let caseName = 'Telephony_Data_DataConnectState_DATA_DATA_STATE_UNKNOWN';
       console.log(`==========> ${caseName} Test start ==========>`);
       expect(-1).assertEqual(data.DataConnectState.DATA_STATE_UNKNOWN);
@@ -112,7 +112,7 @@ export default function dataJsunit() {
        * @tc.name    Enum DataConnectState
        * @tc.desc    Enum value test
        */
-    it("Telephony_Data_DataConnectState_DATA_STATE_DISCONNECTED", 0, async (done:Function)=> {
+    it("Telephony_Data_DataConnectState_DATA_STATE_DISCONNECTED", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function)=> {
       let caseName = 'Telephony_Data_DataConnectState_DATA_DATA_STATE_DISCONNECTED';
       console.log(`==========> ${caseName} Test start ==========>`);
       expect(0).assertEqual(data.DataConnectState.DATA_STATE_DISCONNECTED);
@@ -125,7 +125,7 @@ export default function dataJsunit() {
        * @tc.name    Enum DataConnectState
        * @tc.desc    Enum value test
        */
-    it("Telephony_Data_DataConnectState_DATA_STATE_CONNECTING", 0, async (done:Function)=> {
+    it("Telephony_Data_DataConnectState_DATA_STATE_CONNECTING", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function)=> {
       let caseName = 'Telephony_Data_DataConnectState_DATA_STATE_CONNECTING';
       console.log(`==========> ${caseName} Test start ==========>`);
       expect(1).assertEqual(data.DataConnectState.DATA_STATE_CONNECTING);
@@ -138,7 +138,7 @@ export default function dataJsunit() {
        * @tc.name    Enum DataConnectState
        * @tc.desc    Enum value test
        */
-    it("Telephony_Data_DataConnectState_DATA_STATE_CONNECTED", 0, async (done:Function)=> {
+    it("Telephony_Data_DataConnectState_DATA_STATE_CONNECTED", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function)=> {
       let caseName = 'Telephony_Data_DataConnectState_DATA_STATE_CONNECTED';
       console.log(`==========> ${caseName} Test start ==========>`);
       expect(2).assertEqual(data.DataConnectState.DATA_STATE_CONNECTED);
@@ -151,7 +151,7 @@ export default function dataJsunit() {
        * @tc.name    Enum DataConnectState
        * @tc.desc    Enum value test
        */
-    it("Telephony_Data_DataConnectState_DATA_STATE_SUSPENDED", 0, async (done:Function)=> {
+    it("Telephony_Data_DataConnectState_DATA_STATE_SUSPENDED", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function)=> {
       let caseName = 'Telephony_Data_DataConnectState_DATA_STATE_SUSPENDED';
       console.log(`==========> ${caseName} Test start ==========>`);
       expect(3).assertEqual(data.DataConnectState.DATA_STATE_SUSPENDED);
@@ -164,7 +164,7 @@ export default function dataJsunit() {
        * @tc.name    Enum DataConnectState
        * @tc.desc    Enum value test
        */
-    it("Telephony_Data_DefaultCellularDataSimId_DATA_GET_SimId", 0, async (done:Function)=> {
+    it("Telephony_Data_DefaultCellularDataSimId_DATA_GET_SimId", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function)=> {
       let caseName = 'Telephony_Data_DefaultCellularDataSimId_DATA_GET_SimId';
       console.log(`==========> ${caseName} Test start ==========>`);
       console.log("Result: "+ data.getDefaultCellularDataSimId());

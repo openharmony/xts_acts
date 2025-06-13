@@ -67,7 +67,7 @@ export default function menuEnabledJsunit() {
       let menuEnabled = await driver.findComponent(BY.key('menuEnabled'));
       await menuEnabled.click();
       await CommonFunc.sleep(1000);
-      await driver.click(Math.round(globalThis.winLeft + vp2px(100)),Math.round(globalThis.winTop + vp2px(100)));
+      await driver.triggerKey(2070)
       await CommonFunc.sleep(1000);
       let change = await driver.findComponent(BY.key('change'));
       await change.click();

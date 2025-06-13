@@ -23,6 +23,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 const AUDIO_SOURCE = 'mjpeg_mp3.mp3';
 const VIDEO_SOURCE = 'H264_AAC_Matedata.mp4';
 const VIDEO_NOSUPPORT = 'No_Support_Format.mov'
+const HTTP_SOURCE = 'http://XXX';
 const TAG = "MetadataDemo"
 const SLEEP_TIME = 200
 let AVFileDescriptor: media.AVFileDescriptor;
@@ -978,6 +979,142 @@ export default function AVMetadata() {
       }).catch((error: BusinessError) => {
         console.error(`fetchMetadata catchCallback, error message:${error.message}`);
       });
+      done();
+    });
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_PLAYER_AVMETADATA_HDRTYPE_CALLBACK_FUNCTION_0100
+     * @tc.name      : 001.testAVMeta hdrType
+     * @tc.desc      : Local Video playback control test
+     * @tc.size      : MediumTest
+     * @tc.type      : Function Test
+     * @tc.level     : Level0
+        */
+    it('SUB_MULTIMEDIA_AUDIO_PLAYER_AVMETADATA_ALBUM_CB_FUNCTION_0100', Level.LEVEL0, (done: Function) => {
+      console.info(TAG + "0100 is success");
+      let avMetadataExtractor: media.AVMetadataExtractor;
+    
+      media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetadataExtractor) => {
+        if (error) {
+          console.error(TAG, `Failed to create AVMetadataExtractor, error message: ${JSON.stringify(error)}`);
+          done();
+          return;
+        }
+        avMetadataExtractor = extractor;
+        console.info(TAG, 'Succeeded in creating AVMetadataExtractor');
+        avMetadataExtractor.fdSrc = AVFileDescriptor;
+        avMetadataExtractor.fetchMetadata((err, metadata) => {
+          if (err) {
+            console.error(TAG, `fetchMetadata callback failed, err = ${JSON.stringify(err)}`);
+            done();
+            return;
+          }
+          console.info(TAG, `fetchMetadata callback success video album :${metadata.album}`);
+          expect(metadata.album).assertEqual("media");
+          avMetadataExtractor.release();
+          done();
+        });
+      });
+    });
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_PLAYER_AVMETADATA_SERURLSOURCE_VOID_FUNCTION_0100
+     * @tc.name      : SUB_MULTIMEDIA_PLAYER_AVMETADATA_SERURLSOURCE_VOID_FUNCTION_0100
+     * @tc.desc      : Online http Video playback control test
+     * @tc.size      : MediumTest
+     * @tc.type      : Function Test
+     * @tc.level     : Level0
+     */
+    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_SERURLSOURCE_VOID_FUNCTION_0100', Level.LEVEL0, async (done: Function) => {
+      let avMetadataExtractor = await media.createAVMetadataExtractor();
+      console.info('AVMetadataExtractor success');
+      let pixelMapLoc: image.PixelMap | undefined = undefined;
+      avMetadataExtractor.setUrlSource(HTTP_SOURCE);
+      // 初始化入参
+      let timeUs = 10000;
+      let queryOption = media.AVImageQueryOptions.AV_IMAGE_QUERY_NEXT_SYNC;
+      let param: media.PixelMapParams = {
+        width : 300,
+        height : 300
+      };
+      // 获取缩略图
+      avMetadataExtractor.fetchFrameByTime(timeUs, queryOption, param).then((pixelMap: image.PixelMap) => {
+        pixelMapLoc = pixelMap;
+        console.info(TAG, `fetchFrameByTime success`);
+      }).catch((error: BusinessError) => {
+        console.error(`fetchFrameByTime catchCallback ${error.name} code: ${error.code} message: ${error.message}`);
+      });
+      await mediaTestBase.msleepAsync(SLEEP_TIME);
+      expect(pixelMapLoc).assertUndefined();
+      avMetadataExtractor.release();
+      done();
+    });
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_PLAYER_AVMETADATA_SERURLSOURCE_VOID_FUNCTION_0200
+     * @tc.name      : SUB_MULTIMEDIA_PLAYER_AVMETADATA_SERURLSOURCE_VOID_FUNCTION_0200
+     * @tc.desc      : Online http Video with httpheader playback control test
+     * @tc.size      : MediumTest
+     * @tc.type      : Function Test
+     * @tc.level     : Level0
+     */
+    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_SERURLSOURCE_VOID_FUNCTION_0200', Level.LEVEL0, async (done: Function) => {
+      let avMetadataExtractor = await media.createAVMetadataExtractor();
+      console.info('AVMetadataExtractor success');
+      let pixelMapLoc: image.PixelMap | undefined = undefined;
+      let headers: Record<string, string> = {
+        "User-Agent" : "User-Agent-Value"
+      };
+      avMetadataExtractor.setUrlSource(HTTP_SOURCE, headers);
+      // 初始化入参
+      let timeUs = 10000;
+      let queryOption = media.AVImageQueryOptions.AV_IMAGE_QUERY_NEXT_SYNC;
+      let param: media.PixelMapParams = {
+        width : 300,
+        height : 300
+      };
+      // 获取缩略图
+      avMetadataExtractor.fetchFrameByTime(timeUs, queryOption, param).then((pixelMap: image.PixelMap) => {
+        pixelMapLoc = pixelMap;
+        console.info(TAG, `fetchFrameByTime success`);
+      }).catch((error: BusinessError) => {
+        console.error(`fetchFrameByTime catchCallback ${error.name} code: ${error.code} message: ${error.message}`);
+      });
+      await mediaTestBase.msleepAsync(SLEEP_TIME);
+      expect(pixelMapLoc).assertUndefined();
+      avMetadataExtractor.release();
+      done();
+    });
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_PLAYER_AVMETADATA_FETCHFRAME_PROMISE_FUNCTION_0100
+     * @tc.name      : SUB_MULTIMEDIA_PLAYER_AVMETADATA_FETCHFRAME_PROMISE_FUNCTION_0100
+     * @tc.desc      : Online http Video playback control test
+     * @tc.size      : MediumTest
+     * @tc.type      : Function Test
+     * @tc.level     : Level0
+     */
+    it('SUB_MULTIMEDIA_PLAYER_AVMETADATA_FETCHFRAME_PROMISE_FUNCTION_0100', Level.LEVEL0, async (done: Function) => {
+      let avMetadataExtractor = await media.createAVMetadataExtractor();
+      console.info('AVMetadataExtractor success');
+      avMetadataExtractor.fdSrc = AVFileDescriptor2;
+      // 初始化入参
+      let timeUs = 10000;
+      let queryOption = media.AVImageQueryOptions.AV_IMAGE_QUERY_NEXT_SYNC;
+      let param: media.PixelMapParams = {
+        width : 300,
+        height : 300
+      };
+      // 获取缩略图
+      avMetadataExtractor.fetchFrameByTime(timeUs, queryOption, param).then((pixelMap: image.PixelMap) => {
+        expect(pixelMap).not().assertUndefined();
+        console.info(TAG, `fetchFrameByTime success`);
+      }).catch((error: BusinessError) => {
+        console.error(`fetchFrameByTime catchCallback ${error.name} code: ${error.code} message: ${error.message}`);
+        expect().assertFail();
+      });
+      await mediaTestBase.msleepAsync(SLEEP_TIME);
+      avMetadataExtractor.release();
       done();
     });
   })

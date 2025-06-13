@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { describe, expect, it, TestType, Level, Size } from '@ohos/hypium'
 import jsLeakWatcher from '@ohos.hiviewdfx.jsLeakWatcher';
 import { BusinessError } from '@ohos.base'
 import common from '@ohos.app.ability.common';
@@ -28,7 +28,7 @@ export default function JsLeakWatcherTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testJsLeakWatcher01', 0, async (done: Function) => {
+    it('testJsLeakWatcher01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info("SUB_DFX_DFR_jsLeakWatcher_Interface_0100 start");
       try {
         jsLeakWatcher.enable(true);
@@ -53,7 +53,7 @@ export default function JsLeakWatcherTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testJsLeakWatcher02', 0, async (done: Function) => {
+    it('testJsLeakWatcher02', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info("SUB_DFX_DFR_jsLeakWatcher_Interface_0200 start");
       try {
         jsLeakWatcher.enable(true);
@@ -79,7 +79,7 @@ export default function JsLeakWatcherTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testJsLeakWatcher03', 0, async (done: Function) => {
+    it('testJsLeakWatcher03', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info("SUB_DFX_DFR_jsLeakWatcher_Interface_0300 start");
       try {
         jsLeakWatcher.enable(true);
@@ -117,7 +117,7 @@ export default function JsLeakWatcherTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testJsLeakWatcher04', 0, async (done: Function) => {
+    it('testJsLeakWatcher04', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info("SUB_DFX_DFR_jsLeakWatcher_Interface_0400 start");
       try {
         jsLeakWatcher.watch(undefined, 'test_watch')
@@ -140,7 +140,7 @@ export default function JsLeakWatcherTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testJsLeakWatcher05', 0, async (done: Function) => {
+    it('testJsLeakWatcher05', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info("SUB_DFX_DFR_jsLeakWatcher_Interface_0500 start");
       try {
         jsLeakWatcher.dump(undefined);
@@ -163,7 +163,7 @@ export default function JsLeakWatcherTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testJsLeakWatcher06', 0, async (done: Function) => {
+    it('testJsLeakWatcher06', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       console.info("SUB_DFX_DFR_jsLeakWatcher_Interface_0600 start");
       try {
         jsLeakWatcher.enable(true);

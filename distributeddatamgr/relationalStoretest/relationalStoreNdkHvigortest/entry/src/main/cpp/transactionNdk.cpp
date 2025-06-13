@@ -46,6 +46,22 @@ const char *RDB_TEST_PATH = "/data/storage/el2/database/com.example.buchongndkte
 static OH_Rdb_Store *g_transStore;
 static OH_RDB_TransOptions *g_options;
 static OH_Rdb_Config config_;
+OH_Rdb_Store *store_;
+OH_Rdb_Store *storeTestRdbStore_;
+float test_[] = { 1.2, 2.3 };
+
+static OH_Rdb_ConfigV2 *InitRdbConfig(napi_env env)
+{
+    OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
+    NAPI_ASSERT(env, config != nullptr, "OH_Rdb_ExecuteQueryV2 is fail.");
+    OH_Rdb_SetDatabaseDir(config, RDB_TEST_PATH);
+    OH_Rdb_SetStoreName(config, "rdb_vector_test.db");
+    OH_Rdb_SetBundleName(config, "com.ohos.example.distributedndk");
+    OH_Rdb_SetEncrypted(config, false);
+    OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S1);
+    OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL1);
+    return config;
+}
 
 static void InitRdbConfig()
 {
@@ -556,6 +572,181 @@ static napi_value OH_VBucket_PutUnlimitedInt0100(napi_env env, napi_callback_inf
     return result;
 }
 
+
+static napi_value OH_Rdb_SetTokenizer0100(napi_env env, napi_callback_info info)
+{
+    mkdir(RDB_TEST_PATH, 0770);
+    OH_Rdb_ConfigV2 *config = InitRdbConfig(env);
+    NAPI_ASSERT(env, OH_Rdb_ErrCode::RDB_E_INVALID_ARGS ==
+         OH_Rdb_SetTokenizer(config, static_cast<Rdb_Tokenizer>(Rdb_Tokenizer::RDB_NONE_TOKENIZER - 1)), "OH_Rdb_SetTokenizer is fail.");
+    NAPI_ASSERT(env, OH_Rdb_ErrCode::RDB_E_INVALID_ARGS ==
+         OH_Rdb_SetTokenizer(config, static_cast<Rdb_Tokenizer>(Rdb_Tokenizer::RDB_CUSTOM_TOKENIZER + 1)), "OH_Rdb_SetTokenizer is fail.");
+    NAPI_ASSERT(env, OH_Rdb_ErrCode::RDB_OK ==
+         OH_Rdb_SetTokenizer(config, Rdb_Tokenizer::RDB_NONE_TOKENIZER), "RDB_NONE_TOKENIZER is fail.");
+    NAPI_ASSERT(env, OH_Rdb_ErrCode::RDB_OK ==
+         OH_Rdb_SetTokenizer(config, Rdb_Tokenizer::RDB_CUSTOM_TOKENIZER), "RDB_CUSTOM_TOKENIZER is fail.");
+    NAPI_ASSERT(env, OH_Rdb_ErrCode::RDB_OK == OH_Rdb_SetTokenizer(config, Rdb_Tokenizer::RDB_ICU_TOKENIZER), "RDB_ICU_TOKENIZER is fail.");
+    int numType = 0;
+    const int *supportTypeList = OH_Rdb_GetSupportedDbType(&numType);
+    NAPI_ASSERT(env, supportTypeList != nullptr, "OH_Rdb_SetDbType is fail.");
+    OH_Rdb_DestroyConfig(config);
+    int returnCode = 0;
+    napi_value result;
+    napi_create_int32(env, returnCode, &result);
+    return result;
+}
+
+
+static napi_value OH_Rdb_IsTokenizerSupported0100(napi_env env, napi_callback_info info)
+{
+    bool isSupported = true;
+    int errCode = OH_Rdb_IsTokenizerSupported(RDB_NONE_TOKENIZER, &isSupported);
+    NAPI_ASSERT(env, errCode == RDB_OK, "OH_Rdb_CreateConfig is fail.");
+    errCode = OH_Rdb_IsTokenizerSupported(RDB_ICU_TOKENIZER, &isSupported);
+    NAPI_ASSERT(env, errCode == RDB_OK, "OH_Rdb_CreateConfig is fail.");
+    errCode = OH_Rdb_IsTokenizerSupported(RDB_CUSTOM_TOKENIZER, &isSupported);
+    NAPI_ASSERT(env, errCode == RDB_OK, "OH_Rdb_CreateConfig is fail.");
+    errCode = OH_Rdb_IsTokenizerSupported(static_cast<Rdb_Tokenizer>(RDB_NONE_TOKENIZER - 1), &isSupported);
+    NAPI_ASSERT(env, RDB_E_INVALID_ARGS == errCode, "OH_Rdb_CreateConfig is fail.");
+    errCode = OH_Rdb_IsTokenizerSupported(static_cast<Rdb_Tokenizer>(RDB_CUSTOM_TOKENIZER + 1), &isSupported);
+    NAPI_ASSERT(env, RDB_E_INVALID_ARGS == errCode, "OH_Rdb_CreateConfig is fail.");
+    int returnCode = 0;
+    napi_value result;
+    napi_create_int32(env, returnCode, &result);
+    return result;
+}
+
+static napi_value OH_RdbTrans_Commit0100(napi_env env, napi_callback_info info)
+{
+    OH_Rdb_Transaction *trans = nullptr;
+    const char *table = "test";
+    int ret = OH_Rdb_CreateTransaction(g_transStore, g_options, &trans);
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Rdb_CreateConfig is fail.");
+    NAPI_ASSERT(env, trans != nullptr, "OH_Rdb_CreateConfig is fail.");
+    OH_VBucket *valueBucket = OH_Rdb_CreateValuesBucket();
+    valueBucket->putText(valueBucket, "data1", "test_name4");
+    const int DATA2_VALUE = 14800;
+    valueBucket->putInt64(valueBucket, "data2", DATA2_VALUE);
+    const double DATA3_VALUE = 300.1;
+    valueBucket->putReal(valueBucket, "data3", DATA3_VALUE);
+    valueBucket->putText(valueBucket, "data5", "ABCDEFGHI");
+    int64_t rowId = -1;
+    ret = OH_RdbTrans_Insert(trans, table, valueBucket, &rowId);
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Rdb_CreateConfig is fail.");
+    NAPI_ASSERT(env, rowId == 4, "OH_Rdb_CreateConfig is fail.");
+    ret = OH_RdbTrans_Commit(trans);
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Rdb_CreateConfig is fail.");
+    valueBucket->destroy(valueBucket);
+    ret = OH_RdbTrans_Destroy(trans);
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Rdb_CreateConfig is fail.");
+
+    napi_value result;
+    napi_create_int32(env, ret, &result);
+    return result;
+}
+
+static napi_value OH_RdbTrans_InsertWithConflictResolution0100(napi_env env, napi_callback_info)
+{
+    const int64_t dataValue2 = 13800;
+    const double dataValue3 = 200.1;
+    OH_Rdb_Transaction *trans = nullptr;
+    const char *table = "test";
+    int ret = OH_Rdb_CreateTransaction(g_transStore, g_options, &trans);
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Rdb_InsertWithConflictResolution is fail.");
+    NAPI_ASSERT(env, trans != nullptr, "OH_Rdb_InsertWithConflictResolution is fail.");
+    OH_VBucket *valueBucket = OH_Rdb_CreateValuesBucket();
+    valueBucket->putText(valueBucket, "data1", "liSi");
+    valueBucket->putInt64(valueBucket, "data2", dataValue2);
+    valueBucket->putReal(valueBucket, "data3", dataValue3);
+    valueBucket->putNull(valueBucket, "data5");
+    OH_Predicates *predicates = OH_Rdb_CreatePredicates(table);
+    OH_VObject *valueObject = OH_Rdb_CreateValueObject();
+    const char *data1Value = "zhangSan";
+    valueObject->putText(valueObject, data1Value);
+    predicates->equalTo(predicates, "data1", valueObject);
+    int64_t changes = -1;
+    ret = OH_RdbTrans_InsertWithConflictResolution(trans, table, valueBucket,
+        static_cast<Rdb_ConflictResolution>(0), &changes);
+    NAPI_ASSERT(env, ret == RDB_E_INVALID_ARGS, "OH_RdbTrans_InsertWithConflictResolution is fail.");
+    ret = OH_RdbTrans_UpdateWithConflictResolution(trans, valueBucket, predicates, RDB_CONFLICT_REPLACE, &changes);
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_RdbTrans_UpdateWithConflictResolution is fail.");
+    NAPI_ASSERT(env, changes == 1, "OH_RdbTrans_UpdateWithConflictResolution is fail.");
+    valueObject->destroy(valueObject);
+    valueBucket->destroy(valueBucket);
+    ret = OH_RdbTrans_Destroy(trans);
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Rdb_InsertWithConflictResolution is fail.");
+    
+    napi_value result = nullptr;
+    napi_create_int32(env, ret, &result);
+    return result;
+}
+
+static napi_value OH_Rdb_SetCustomDir0100(napi_env env, napi_callback_info)
+{
+    const char *customDir = "test";
+    auto ret =  OH_Rdb_SetCustomDir(nullptr, customDir);
+    NAPI_ASSERT(env, ret == RDB_E_INVALID_ARGS, "OH_RdbTrans_InsertWithConflictResolution is fail.");
+    ret =  OH_Rdb_SetCustomDir(nullptr, "12345678901234567890123456789012345678901234567890"
+        "12345678901234567890123456789012345678901234567890123456789012345678901234567890");
+    NAPI_ASSERT(env, ret == RDB_E_INVALID_ARGS, "OH_RdbTrans_InsertWithConflictResolution is fail.");
+    OH_Rdb_ConfigV2 *confg = OH_Rdb_CreateConfig();
+    NAPI_ASSERT(env, confg != nullptr, "OH_RdbTrans_InsertWithConflictResolution is fail.");
+    ret =  OH_Rdb_SetCustomDir(confg, nullptr);
+    NAPI_ASSERT(env, ret == RDB_E_INVALID_ARGS, "OH_RdbTrans_InsertWithConflictResolution is fail.");
+    ret = OH_Rdb_SetCustomDir(confg, customDir);
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_RdbTrans_InsertWithConflictResolution is fail.");
+    ret = OH_Rdb_DestroyConfig(confg);
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_RdbTrans_InsertWithConflictResolution is fail.");
+
+    napi_value result = nullptr;
+    napi_create_int32(env, ret, &result);
+    return result;
+}
+
+static napi_value OH_Rdb_SetReadOnly0100(napi_env env, napi_callback_info)
+{
+    OH_Rdb_ConfigV2 *confg = OH_Rdb_CreateConfig();
+    NAPI_ASSERT(env, confg != nullptr, "OH_Rdb_CreateConfig is fail.");
+    auto ret =  OH_Rdb_SetReadOnly(nullptr, true);
+    NAPI_ASSERT(env, ret == RDB_E_INVALID_ARGS, "OH_Rdb_SetReadOnly is fail.");
+    ret = OH_Rdb_SetReadOnly(confg, true);
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Rdb_SetReadOnly is fail.");
+    ret = OH_Rdb_SetReadOnly(confg, false);
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Rdb_SetReadOnly is fail.");
+    ret = OH_Rdb_DestroyConfig(confg);
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_Rdb_DestroyConfig is fail.");
+    
+    napi_value result = nullptr;
+    napi_create_int32(env, ret, &result);
+    return result;
+}
+
+static napi_value OH_Rdb_SetPlugins0100(napi_env env, napi_callback_info)
+{
+    OH_Rdb_ConfigV2 *confg = OH_Rdb_CreateConfig();
+    NAPI_ASSERT(env, confg != nullptr, "OH_RdbTrans_InsertWithConflictResolution is fail.");
+    const char *plugins[] = {"1"};
+    auto ret =  OH_Rdb_SetPlugins(nullptr, plugins, 1);
+    NAPI_ASSERT(env, ret == RDB_E_INVALID_ARGS, "OH_RdbTrans_InsertWithConflictResolution is fail.");
+    ret = OH_Rdb_SetPlugins(confg, nullptr, 1);
+    NAPI_ASSERT(env, ret == RDB_E_INVALID_ARGS, "OH_RdbTrans_InsertWithConflictResolution is fail.");
+    ret = OH_Rdb_SetPlugins(confg, plugins, 0);
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_RdbTrans_InsertWithConflictResolution is fail.");
+    ret = OH_Rdb_SetPlugins(confg, plugins, 1);
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_RdbTrans_InsertWithConflictResolution is fail.");
+    const char *pluginsNew[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f", "0", "x"};
+    ret = OH_Rdb_SetPlugins(confg, pluginsNew, sizeof(pluginsNew) / sizeof(pluginsNew[0]) - 1);
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_RdbTrans_InsertWithConflictResolution is fail.");
+    ret = OH_Rdb_SetPlugins(confg, pluginsNew, sizeof(pluginsNew) / sizeof(pluginsNew[0]));
+    NAPI_ASSERT(env, ret == RDB_E_INVALID_ARGS, "OH_RdbTrans_InsertWithConflictResolution is fail.");
+    ret = OH_Rdb_DestroyConfig(confg);
+    NAPI_ASSERT(env, ret == RDB_OK, "OH_RdbTrans_InsertWithConflictResolution is fail.");
+    
+    napi_value result = nullptr;
+    napi_create_int32(env, ret, &result);
+    return result;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -573,7 +764,13 @@ static napi_value Init(napi_env env, napi_value exports)
         { "OH_RdbTrans_QuerySql0100", nullptr, OH_RdbTrans_QuerySql0100, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "OH_VBucket_PutFloatVector0100", nullptr, OH_VBucket_PutFloatVector0100, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "OH_VBucket_PutUnlimitedInt0100", nullptr, OH_VBucket_PutUnlimitedInt0100, nullptr, nullptr, nullptr, napi_default, nullptr },
-       
+        { "OH_Rdb_SetTokenizer0100", nullptr, OH_Rdb_SetTokenizer0100, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "OH_Rdb_IsTokenizerSupported0100", nullptr, OH_Rdb_IsTokenizerSupported0100, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "OH_RdbTrans_Commit0100", nullptr, OH_RdbTrans_Commit0100, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "OH_RdbTrans_InsertWithConflictResolution0100", nullptr, OH_RdbTrans_InsertWithConflictResolution0100, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "OH_Rdb_SetCustomDir0100", nullptr, OH_Rdb_SetCustomDir0100, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "OH_Rdb_SetReadOnly0100", nullptr, OH_Rdb_SetReadOnly0100, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "OH_Rdb_SetPlugins0100", nullptr, OH_Rdb_SetPlugins0100, nullptr, nullptr, nullptr, napi_default, nullptr },
     };
     
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);

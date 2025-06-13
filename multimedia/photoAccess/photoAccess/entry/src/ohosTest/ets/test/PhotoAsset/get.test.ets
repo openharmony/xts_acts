@@ -1134,5 +1134,43 @@ export default function getTest() {
       await getErrorKeysValue(done, testNum, fetchOps, undefined, value);
       done();
     });
+
+    /**
+     * @tc.number    : Sub_MediaLibrary_Get_MediaSuffix_001
+     * @tc.name      : get_asset_mediaSuffix_001
+     * @tc.desc      : get all asset mediaSuffix
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('get_asset_mediaSuffix_001', Level.LEVEL1, async (done: Function) => {
+      const testNum = 'get_asset_mediaSuffix_001';
+      try {
+        let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+        let fetchOptions: photoAccessHelper.FetchOptions = {
+          fetchColumns: [
+            photoAccessHelper.PhotoKeys.DISPLAY_NAME,
+            photoAccessHelper.PhotoKeys.MEDIA_SUFFIX
+          ],
+          predicates: predicates
+        };
+        let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+        let photoAssetList: Array<photoAccessHelper.PhotoAsset> = await fetchResult.getAllObjects();
+        for (let i = 0; i < photoAssetList.length; i++) {
+          let photoAsset: photoAccessHelper.PhotoAsset = photoAssetList[i];
+          let suffix: string = (photoAsset.displayName).substring(((photoAsset.displayName).lastIndexOf(".") + 1), photoAsset.displayName.length);
+          console.log(`${testNum} :: get PhotoAsset ${photoAsset.displayName} mediaSuffix = ${suffix}`);
+          let mediaSuffix: string = photoAsset.get(photoAccessHelper.PhotoKeys.MEDIA_SUFFIX).toString();
+          console.log(`${testNum} :: get  get PhotoAsset suffix key value = ${mediaSuffix}`);
+          expect(mediaSuffix).assertEqual(suffix);
+        }
+        done();
+      } catch(error) {
+        console.error(`${testNum} :: get asset mediaSuffix failed ! error = ${error}`);
+        expect(false).assertTrue();
+        done();
+      }
+    });
+
   })
 }

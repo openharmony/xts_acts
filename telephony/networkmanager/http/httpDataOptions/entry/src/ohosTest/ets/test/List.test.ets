@@ -18,11 +18,15 @@ import HttpDataTypeTest from './HttpDataType.test';
 import HttpMultiFormDataListTest from './HttpMultiFormDataList.test';
 import HttpClientCertTest from './HttpClientCert.test';
 import HttpCertificatePinTest from './HttpCertificatePin.test';
+import connection from '@ohos.net.connection';
+let netHandle = connection.getDefaultNetSync();
 
 export default function testsuite() {
-  HttpProtocolTest();
-  HttpDataTypeTest();
-  HttpMultiFormDataListTest();
-  HttpClientCertTest();
-  HttpCertificatePinTest();
+  if(netHandle.netId >= 100){
+	HttpProtocolTest();
+ 	HttpDataTypeTest();
+  	HttpMultiFormDataListTest();
+  	HttpClientCertTest();
+  }
+HttpCertificatePinTest();
 }

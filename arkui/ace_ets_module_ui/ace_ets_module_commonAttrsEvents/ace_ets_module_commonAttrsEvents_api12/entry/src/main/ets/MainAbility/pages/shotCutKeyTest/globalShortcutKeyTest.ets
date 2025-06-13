@@ -88,7 +88,7 @@ struct FunctionKeyTest {
         Button("Test short cut 5").onClick((event: ClickEvent) => {
           this.message5 = "I clicked Button 5";
           console.info("I clicked 5");
-        }).keyboardShortcut("M", [ModifierKey.CTRL])
+        }).keyboardShortcut("M", [ModifierKey.CTRL],undefined)
           .focusable(false)
         Text(this.message7).key("keyTest7")
         Button("Test short cut 7").onClick((event: ClickEvent) => {

@@ -19,7 +19,7 @@ import UIAbility from '@ohos.app.ability.UIAbility';
 import systemParameterEnhance from '@ohos.systemParameterEnhance';
 
 let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
+let deviceSupport = systemParameterEnhance.getSync('persist.sys.abilityms.move_ui_ability_to_background_api_enable');
 const START_ABILITY_TIMEOUT_TWO_THOUSAND = 1000;
 
 export default function GetAbilityStateTest() {
@@ -83,7 +83,7 @@ export default function GetAbilityStateTest() {
      */
     it("ACTS_GET_ABILITY_STATE_0002", Level.LEVEL0, async (done: Function) => {
       console.log("ACTS_GET_ABILITY_STATE_0002 :start");
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }

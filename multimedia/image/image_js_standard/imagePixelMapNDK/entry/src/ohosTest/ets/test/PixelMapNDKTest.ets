@@ -14,7 +14,7 @@
  */
 
 import image from "@ohos.multimedia.image";
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium';
 import fileio from "@ohos.fileio";
 import ndkTest from 'libentry.so';
 import { BusinessError } from "@kit.BasicServicesKit";
@@ -96,92 +96,114 @@ export default function PixelMapNDKTest() {
 
 
 
-        it('SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_JPG_0100', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_JPG_0100',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
             console.info('SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_JPG_0100 before PixelMapConvertNativeAndNapi');
             await PixelMapConvertNativeAndNapi(done, "SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_JPG_0100",
                 "test.jpg", 3);
         });
-        it('SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_JPG_0200', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_JPG_0200',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
             await PixelMapConvertNativeAndNapi(done, "SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_JPG_0200",
                 "test.jpg", 8);
         });
-        it('SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_JPG_0300', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_JPG_0300',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
             await PixelMapConvertNativeAndNapi(done, "SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_JPG_0300",
                 "test.jpg", 9);
         });
-        it('SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_WEBP_0100', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_WEBP_0100',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
             await PixelMapConvertNativeAndNapi(done, "SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_WEBP_0100",
                 "test.webp", 3);
         });
-        it('SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_WEBP_0200', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_WEBP_0200',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
             await PixelMapConvertNativeAndNapi(done, "SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_WEBP_0200",
                 "test.webp", 8);
         });
-        it('SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_WEBP_0300', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_WEBP_0300',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
             await PixelMapConvertNativeAndNapi(done, "SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_WEBP_0300",
                 "test.webp", 9);
         });
-        it('SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_PNG_0100', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_PNG_0100',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
             await PixelMapConvertNativeAndNapi(done, "SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_PNG_0100",
                 "test.png", 3);
         });
-        it('SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_PNG_0200', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_PNG_0200',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
             await PixelMapConvertNativeAndNapi(done, "SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_PNG_0200",
                 "test.png", 8);
         });
-        it('SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_PNG_0300', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_PNG_0300',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
             await PixelMapConvertNativeAndNapi(done, "SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_PNG_0300",
                 "test.png", 9);
         });
-        it('SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_GIF_0100', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_GIF_0100',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
             await PixelMapConvertNativeAndNapi(done, "SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_GIF_0100",
                 "test.gif", 3);
         });
-        it('SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_GIF_0200', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_GIF_0200',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
             await PixelMapConvertNativeAndNapi(done, "SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_GIF_0200",
                 "test.gif", 8);
         });
-        it('SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_GIF_0300', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_GIF_0300',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
             await PixelMapConvertNativeAndNapi(done, "SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_GIF_0300",
                 "test.gif", 9);
         });
-        it('SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_ICO_0100', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_ICO_0100',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
             await PixelMapConvertNativeAndNapi(done, "SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_ICO_0100",
                 "test.ico", 3);
         });
-        it('SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_ICO_0200', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_ICO_0200',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
             await PixelMapConvertNativeAndNapi(done, "SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_ICO_0200",
                 "test.ico", 8);
         });
-        it('SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_ICO_0300', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_ICO_0300',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
             await PixelMapConvertNativeAndNapi(done, "SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_ICO_0300",
                 "test.ico", 9);
         });
-        it('SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_SVG_0100', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_SVG_0100',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
             await PixelMapConvertNativeAndNapi(done, "SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_SVG_0100",
                 "test.svg", 3);
         });
-        it('SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_BMP_0100', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_BMP_0100',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
             await PixelMapConvertNativeAndNapi(done, "SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_BMP_0100",
                 "test.bmp", 3);
         });
-        it('SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_BMP_0200', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_BMP_0200',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
             await PixelMapConvertNativeAndNapi(done, "SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_BMP_0200",
                 "test.bmp", 8);
         });
-        it('SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_BMP_0300', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_BMP_0300',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
             await PixelMapConvertNativeAndNapi(done, "SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_BMP_0300",
                 "test.bmp", 9);
         });
-        it('SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_DNG_0100', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_DNG_0100',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
             await PixelMapConvertNativeAndNapi(done, "SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_DNG_0100",
                 "test_PixelMapNDKJs.dng", 3);
         });
-        it('SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_DNG_0200', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_DNG_0200',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
             await PixelMapConvertNativeAndNapi(done, "SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_DNG_0200",
                 "test_PixelMapNDKJs.dng", 8);
         });
-        it('SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_DNG_0300', 0, async (done: Function) => {
+        it('SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_DNG_0300',
+            TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
             await PixelMapConvertNativeAndNapi(done, "SUB_MULTIMEDIA_IMAGE_SOURCE_ConvertPixelmapToNapi_DNG_0300",
                 "test_PixelMapNDKJs.dng", 9);
         });

@@ -27,7 +27,7 @@ class MyAccessibilityModifier extends AttributeUpdater<CommonAttribute> {
 @Component
 struct AccessibilityOptions {
   @State name: string = 'AccessibilityFocusDrawLevel';
-  @State stepTips: string = '设备支持屏幕朗读时\n' + '操作步骤:\n' +
+  @State stepTips: string = '不支持屏幕朗读直接按照失败处理走豁免\n'+'设备支持屏幕朗读时\n' + '操作步骤:\n' +
     '1、"By Modifier"Text组件获焦\n' +
     '2、点击"ChangeTextModifier_TOP"按钮，"By Modifier"Text组件再次获焦\n' +
     '3、点击"ChangeTextModifier_SELF"按钮，"By Modifier"Text组件再次获焦\n' +
@@ -42,6 +42,10 @@ struct AccessibilityOptions {
     '5、绿框绘制在组件上，绿框绘制正常,屏幕朗读朗读“By State”\n' +
     '6、绿框绘制在组件上，绿框绘制被裁切,屏幕朗读朗读“By State”\n'
   @State vueStatus: boolean = false;
+  @State status1: boolean = false;
+  @State status2: boolean = false;
+  @State status3: boolean = false;
+  @State status4: boolean = false;
   @State active: boolean = false;
   @State intervalNum: number = 0;
   @State yesEnable: boolean = false
@@ -182,7 +186,6 @@ struct AccessibilityOptions {
               .enabled(!this.yesEnable)
               .opacity(!this.yesEnable ? 1 : 0.4)
               .onClick(async () => {
-                this.vueStatus = true
               })
           }
 
@@ -194,7 +197,6 @@ struct AccessibilityOptions {
               .onClick(async () => {
                 this.yesEnable = true
                 this.onAccessibilityHoverEnable = true
-                this.vueStatus = true
               })
           }
         }
@@ -217,13 +219,25 @@ struct AccessibilityOptions {
             Button('ChangeTextModifier_TOP')
               .accessibilityLevel('yes')
               .onClick(() => {
+                this.status1 = true;
                 this.modifier.attribute?.accessibilityFocusDrawLevel(FocusDrawLevel.TOP)
+                if(this.status1&&this.status2&&this.status3&&this.status4){
+                  this.vueStatus = true;
+                }else{
+                  this.vueStatus = false;
+                }
               })
               .margin(20)
             Button('ChangeTextModifier_SELF')
               .accessibilityLevel('yes')
               .onClick(() => {
+                this.status2 = true;
                 this.modifier.attribute?.accessibilityFocusDrawLevel(FocusDrawLevel.SELF)
+                if(this.status1&&this.status2&&this.status3&&this.status4){
+                  this.vueStatus = true;
+                }else{
+                  this.vueStatus = false;
+                }
               })
               .margin(20)
             Column() {
@@ -243,13 +257,25 @@ struct AccessibilityOptions {
             Button('Change state focusDrawLevel to TOP')
               .accessibilityLevel('yes')
               .onClick(() => {
+                this.status3 = true;
                 this.focusDrawLevel = FocusDrawLevel.TOP;
+                if(this.status1&&this.status2&&this.status3&&this.status4){
+                  this.vueStatus = true;
+                }else{
+                  this.vueStatus = false;
+                }
               })
               .margin(20)
             Button('Change state focusDrawlevel to SELF')
               .accessibilityLevel('yes')
               .onClick(() => {
+                this.status4 = true;
                 this.focusDrawLevel = FocusDrawLevel.SELF;
+                if(this.status1&&this.status2&&this.status3&&this.status4){
+                  this.vueStatus = true;
+                }else{
+                  this.vueStatus = false;
+                }
               })
               .margin(20)
           }

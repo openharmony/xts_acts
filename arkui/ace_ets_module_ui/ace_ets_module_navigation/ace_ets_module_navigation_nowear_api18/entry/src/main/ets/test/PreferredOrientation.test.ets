@@ -61,10 +61,14 @@ export default function PreferredOrientation() {
         let driver = Driver.create();
         await driver.delayMs(500);
 
-        let rotation: DisplayRotation = await driver.getDisplayRotation();
+        let btn1: Component = await driver.findComponent(ON.id('getPortraitPage'));
+        await btn1.click();
+        await driver.delayMs(2000);
+
+        let rotation: number = AppStorage.get('testOrientation') as number
         console.info('[PreferredOrientation_0100] rotation is ', rotation);
-        await driver.delayMs(1000);
         expect(rotation).assertEqual(0);
+        AppStorage.delete('testOrientation');
       }
       console.info('PreferredOrientation_0100 END');
       done();
@@ -88,9 +92,15 @@ export default function PreferredOrientation() {
         console.info('[PreferredOrientation_0200] btn1 click');
         await driver.delayMs(1000);
 
-        let rotation: DisplayRotation = await driver.getDisplayRotation();
+        let btn2: Component = await driver.findComponent(ON.id('getLandscapePage'));
+        await btn2.click();
+        await driver.delayMs(2000);
+
+        let rotation: number = AppStorage.get('testOrientation') as number
         console.info('[PreferredOrientation_0200] rotation is ', rotation);
         expect(rotation == 1 || rotation == 3).assertTrue();
+        AppStorage.delete('testOrientation');
+
       }
       console.info('PreferredOrientation_0200 END');
       done();
@@ -114,9 +124,20 @@ export default function PreferredOrientation() {
         console.info('[PreferredOrientation_0300] btn1 click');
         await driver.delayMs(1000);
 
-        let rotation: DisplayRotation = await driver.getDisplayRotation();
+        let btn2: Component = await driver.findComponent(ON.id('getUnspecifiedPage'));
+        await btn2.click();
+        await driver.delayMs(2000);
+
+        let rotation: number = AppStorage.get('testOrientation') as number
         console.info('[PreferredOrientation_0300] rotation is ', rotation);
-        expect(rotation).assertEqual(0);
+        let navigation: Component = await driver.findComponent(ON.type('Navigation'));
+        let rect = await navigation.getBounds();
+        let navigationWidth = rect.right;
+        console.info('[PreferredOrientation_0300] navigationWidth is ', navigationWidth);
+        if (navigationWidth < 1500) {
+          expect(rotation).assertEqual(0);
+        }
+        AppStorage.delete('testOrientation');
       }
       console.info('PreferredOrientation_0300 END');
       done();
@@ -140,9 +161,14 @@ export default function PreferredOrientation() {
         console.info('[PreferredOrientation_0400] btn1 click');
         await driver.delayMs(1000);
 
-        let rotation: DisplayRotation = await driver.getDisplayRotation();
+        let btn2: Component = await driver.findComponent(ON.id('getPortraitInvertedPage'));
+        await btn2.click();
+        await driver.delayMs(2000);
+
+        let rotation: number = AppStorage.get('testOrientation') as number
         console.info('[PreferredOrientation_0400] rotation is ', rotation);
         expect(rotation).assertEqual(2);
+        AppStorage.delete('testOrientation');
       }
       console.info('PreferredOrientation_0400 END');
       done();
@@ -166,13 +192,14 @@ export default function PreferredOrientation() {
         console.info('[PreferredOrientation_0500] btn1 click');
         await driver.delayMs(1000);
 
-        let rotation: DisplayRotation = await driver.getDisplayRotation();
+        let btn3: Component = await driver.findComponent(ON.id('getLandscapInvertedPage'));
+        await btn3.click();
+        await driver.delayMs(2000);
+
+        let rotation: number = AppStorage.get('testOrientation') as number
         console.info('[PreferredOrientation_0500] rotation is ', rotation);
         expect(rotation == 1 || rotation == 3).assertTrue();
-        
-        let btn2: Component = await driver.findComponent(ON.id('portraitId'));
-        await btn2.click()
-        await driver.delayMs(1000);
+        AppStorage.delete('testOrientation');
       }
       console.info('PreferredOrientation_0500 END');
       done();

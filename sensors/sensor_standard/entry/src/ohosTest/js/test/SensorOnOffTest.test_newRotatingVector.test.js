@@ -87,7 +87,8 @@ describe("SensorJsTest_sensor_49", function () {
     const SERVICE_EXCEPTION_CODE = 14500101
     const SENSOR_NO_SUPPORT_CODE = 14500102
     const PARAMETER_ERROR_MSG = 'The parameter invalid.'
-    const SERVICE_EXCEPTION_MSG = 'Service exception.'
+    const SERVICE_EXCEPTION_MSG = "Service exception.Possible causes:" +
+        "1. Sensor hdf service exception;2. Sensor service ipc exception;3. Sensor data channel exception."
     let invalid  = -1;
     let TAG  = '';
 
@@ -95,11 +96,11 @@ describe("SensorJsTest_sensor_49", function () {
      * @tc.number:SUB_SensorsSystem_NEWROTATION_VECTOR_JSTest_0010
      * @tc.name: newRotatingVector_SensorJsTest001
      * @tc.desc: Functional Use Cases
-     * @tc.level:Level 3
+     * @tc.level:Level 0
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newRotatingVector_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+    it("newRotatingVector_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info('---------newRotatingVector_SensorJsTest001--------------');
         TAG = 'newRotatingVector_SensorJsTest001';
         try{

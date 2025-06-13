@@ -23,7 +23,6 @@ add_library(nativerender SHARED
     component/swiper_component.cpp
     component/text_component.cpp
     drag/drag_test.cpp
-    ExpectedFrameRateRange/ExpectedFrameRateRange_callback_test.cpp
     move/node_util_move_test.cpp
     timePicker/time_picker_test.cpp
 )

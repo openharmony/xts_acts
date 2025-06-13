@@ -4,6 +4,9 @@
         "MainAbility/pages/ArcSwiper/arcDotIndicator",
         "MainAbility/pages/ArcSwiper/arcSwiperEvent",
         "MainAbility/pages/ArcSwiper/arcSwiperShow",
-        "MainAbility/pages/ArcSwiper/arcSwiperContent"
+        "MainAbility/pages/ArcSwiper/arcSwiperContent",
+        "MainAbility/pages/ArcScrollBar/arcScrollBar",
+        "MainAbility/pages/ArcList/childrenSizeArcList",
+        "MainAbility/pages/ArcList/swipeActionArcList"
     ]
 }

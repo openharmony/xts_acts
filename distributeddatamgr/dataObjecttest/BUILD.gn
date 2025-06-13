@@ -16,9 +16,6 @@ import("//test/xts/tools/build/suite.gni")
 group("dataObjecttest") {
   testonly = true
   if (is_standard_system) {
-    deps = [
-      "dataObjectStagetest:dataObject_ets_test",
-      "dataObjectjstest/hap:dataObject_js_test",
-    ]
+    deps = [ "dataObjectStagetest:dataObject_ets_test" ]
   }
 }

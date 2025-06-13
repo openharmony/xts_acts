@@ -1611,6 +1611,111 @@ export default function audioNDK() {
     })
 
     /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_REGISTERAUDIOSCENECHANGECALLBACK_0001
+     * @tc.name      : register AudioSceneChangeCallback
+     * @tc.desc      : test OH_GetAudioScene
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_REGISTERAUDIOSCENECHANGECALLBACK_0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result = myaudioNdk.audioManagerRegisterAudioSceneChangeCallback_01();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_REGISTERAUDIOSCENECHANGECALLBACK_0001 audioManagerRegisterAudioSceneChangeCallback_01: ${result}`);
+      expect(result).assertEqual(TEST_PASS)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_REGISTERAUDIOSCENECHANGECALLBACK_0002
+     * @tc.name      : register AudioSceneChangeCallback with invalid param
+     * @tc.desc      : test OH_GetAudioScene
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_REGISTERAUDIOSCENECHANGECALLBACK_0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let result = myaudioNdk.audioManagerRegisterAudioSceneChangeCallback_02();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_REGISTERAUDIOSCENECHANGECALLBACK_0002 audioManagerRegisterAudioSceneChangeCallback_02: ${result}`);
+      expect(result).assertEqual(TEST_PASS)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_REGISTERAUDIOSCENECHANGECALLBACK_0003
+     * @tc.name      : register AudioSceneChangeCallback with invalid param
+     * @tc.desc      : test OH_GetAudioScene
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_REGISTERAUDIOSCENECHANGECALLBACK_0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let result = myaudioNdk.audioManagerRegisterAudioSceneChangeCallback_03();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_REGISTERAUDIOSCENECHANGECALLBACK_0003 audioManagerRegisterAudioSceneChangeCallback_03: ${result}`);
+      expect(result).assertEqual(TEST_PASS)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_UNREGISTERAUDIOSCENECHANGECALLBACK_0001
+     * @tc.name      : unregister AudioSceneChangeCallback with invalid param
+     * @tc.desc      : test OH_GetAudioScene
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_UNREGISTERAUDIOSCENECHANGECALLBACK_0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let result = myaudioNdk.audioManagerUnregisterAudioSceneChangeCallback_01();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_UNREGISTERAUDIOSCENECHANGECALLBACK_0001 audioManagerUnregisterAudioSceneChangeCallback_01: ${result}`);
+      expect(result).assertEqual(TEST_PASS)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_UNREGISTERAUDIOSCENECHANGECALLBACK_0002
+     * @tc.name      : unregister AudioSceneChangeCallback with invalid param
+     * @tc.desc      : test OH_GetAudioScene
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_UNREGISTERAUDIOSCENECHANGECALLBACK_0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let result = myaudioNdk.audioManagerUnregisterAudioSceneChangeCallback_02();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_UNREGISTERAUDIOSCENECHANGECALLBACK_0002 audioManagerUnregisterAudioSceneChangeCallback_02: ${result}`);
+      expect(result).assertEqual(TEST_PASS)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_UNREGISTERAUDIOSCENECHANGECALLBACK_0003
+     * @tc.name      : unregister AudioSceneChangeCallback with invalid param
+     * @tc.desc      : test OH_GetAudioScene
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_UNREGISTERAUDIOSCENECHANGECALLBACK_0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let result = myaudioNdk.audioManagerUnregisterAudioSceneChangeCallback_03();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_UNREGISTERAUDIOSCENECHANGECALLBACK_0003 audioManagerUnregisterAudioSceneChangeCallback_03: ${result}`);
+      expect(result).assertEqual(TEST_PASS)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_UNREGISTERAUDIOSCENECHANGECALLBACK_0004
+     * @tc.name      : unregister AudioSceneChangeCallback with invalid param
+     * @tc.desc      : test OH_GetAudioScene
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_UNREGISTERAUDIOSCENECHANGECALLBACK_0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let result = myaudioNdk.audioManagerUnregisterAudioSceneChangeCallback_04();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_MANAGER_UNREGISTERAUDIOSCENECHANGECALLBACK_0004 audioManagerUnregisterAudioSceneChangeCallback_04: ${result}`);
+      expect(result).assertEqual(TEST_PASS)
+      done()
+    })
+
+    /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_ROUTING_MANAGER_GETAVAILABLEDEVICE_0001
      * @tc.name      : get available device
      * @tc.desc      : test OH_AudioRoutingManager_GetAvailableDevices
@@ -3056,6 +3161,685 @@ export default function audioNDK() {
       } finally {
         done();
       }
+    })
+
+    /**
+     * @tc.number    : audioStreamBuilderSetVolumeModeTest_001
+     * @tc.name      : test OH_AudioStreamBuilder_SetVolumeMode AUDIOSTREAM_VOLUMEMODE_SYSTEM_GLOBAL
+     * @tc.desc      : test OH_AudioStreamBuilder_SetVolumeMode AUDIOSTREAM_VOLUMEMODE_SYSTEM_GLOBAL
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('audioStreamBuilderSetVolumeModeTest_001', TestType.FUNCTION | TestType.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result: Number = myaudioNdk.audioStreamBuilderSetVolumeModeTest_001();
+      console.info(`TAG: audioStreamBuilderSetVolumeModeTest_001: 
+        result: ${result}`);
+      expect(result).assertEqual(0);
+      done();
+    })
+
+    /**
+     * @tc.number    : audioStreamBuilderSetVolumeModeTest_002
+     * @tc.name      : test OH_AudioStreamBuilder_SetVolumeMode AUDIOSTREAM_VOLUMEMODE_APP_INDIVIDUAL
+     * @tc.desc      : test OH_AudioStreamBuilder_SetVolumeMode AUDIOSTREAM_VOLUMEMODE_APP_INDIVIDUAL
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('audioStreamBuilderSetVolumeModeTest_002', TestType.FUNCTION | TestType.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result: Number = myaudioNdk.audioStreamBuilderSetVolumeModeTest_002();
+      console.info(`TAG: audioStreamBuilderSetVolumeModeTest_002: 
+        result: ${result}`);
+      expect(result).assertEqual(0);
+      done();
+    })
+
+    /**
+     * @tc.number    : audioStreamBuilderSetVolumeModeTest_003
+     * @tc.name      : test OH_AudioStreamBuilder_SetVolumeMode OH_AudioStreamBuilder parameter is nullptr
+     * @tc.desc      : test OH_AudioStreamBuilder_SetVolumeMode OH_AudioStreamBuilder parameter is nullptr
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('audioStreamBuilderSetVolumeModeTest_003', TestType.FUNCTION | TestType.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let result: Number = myaudioNdk.audioStreamBuilderSetVolumeModeTest_003();
+      console.info(`TAG: audioStreamBuilderSetVolumeModeTest_003: 
+        result: ${result}`);
+      expect(result).assertEqual(0);
+      done();
+    })
+
+    /**
+     * @tc.number    : audioStreamBuilderSetVolumeModeTest_004
+     * @tc.name      : test OH_AudioStreamBuilder_SetVolumeMode OH_AudioStream_VolumeMode parameter is invaild
+     * @tc.desc      : test OH_AudioStreamBuilder_SetVolumeMode OH_AudioStream_VolumeMode parameter is invaild
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('audioStreamBuilderSetVolumeModeTest_004', TestType.FUNCTION | TestType.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let result: Number = myaudioNdk.audioStreamBuilderSetVolumeModeTest_004();
+      console.info(`TAG: audioStreamBuilderSetVolumeModeTest_004: 
+        result: ${result}`);
+      expect(result).assertEqual(0);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_GET_AUDIOVOLUMEMANAGER_0001
+     * @tc.name      : get AudioVolumeManager
+     * @tc.desc      : test OH_AudioManager_GetAudioVolumeManager
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_GET_AUDIOVOLUMEMANAGER_0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result = myaudioNdk.audioManagerGetAudioVolumeManager_001();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GET_AUDIOVOLUMEMANAGER_0001 audioManagerGetAudioVolumeManager_001: ${result}`);
+      expect(result).assertEqual(TEST_PASS)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_GET_AUDIOVOLUMEMANAGER_0002
+     * @tc.name      : get AudioVolumeManager with nullptr
+     * @tc.desc      : test OH_AudioManager_GetAudioVolumeManager
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_GET_AUDIOVOLUMEMANAGER_0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let result = myaudioNdk.audioManagerGetAudioVolumeManager_002();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GET_AUDIOVOLUMEMANAGER_0002 audioManagerGetAudioVolumeManager_002: ${result}`);
+      expect(result).assertEqual(TEST_PASS)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_GET_MAX_VOLUME_BY_USAGE_0001
+     * @tc.name      : get max volume by usage
+     * @tc.desc      : test OH_AudioVolumeManager_GetMaxVolumeByUsage
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_GET_MAX_VOLUME_BY_USAGE_0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result = myaudioNdk.audioVolumeManagerGetMaxVolumeByUsage_001();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GET_MAX_VOLUME_BY_USAGE_0001 audioVolumeManagerGetMaxVolumeByUsage_001: ${result}`);
+      expect(result).assertEqual(TEST_PASS)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_GET_MAX_VOLUME_BY_USAGE_0002
+     * @tc.name      : get max volume by usage whit nullptr
+     * @tc.desc      : test OH_AudioVolumeManager_GetMaxVolumeByUsage
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_GET_MAX_VOLUME_BY_USAGE_0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let result = myaudioNdk.audioVolumeManagerGetMaxVolumeByUsage_002();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GET_MAX_VOLUME_BY_USAGE_0002 audioVolumeManagerGetMaxVolumeByUsage_002: ${result}`);
+      expect(result).assertEqual(TEST_PASS)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_GET_MAX_VOLUME_BY_USAGE_0003
+     * @tc.name      : get max volume by usage whit nullptr
+     * @tc.desc      : test OH_AudioVolumeManager_GetMaxVolumeByUsage
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_GET_MAX_VOLUME_BY_USAGE_0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let result = myaudioNdk.audioVolumeManagerGetMaxVolumeByUsage_003();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GET_MAX_VOLUME_BY_USAGE_0003 audioVolumeManagerGetMaxVolumeByUsage_003: ${result}`);
+      expect(result).assertEqual(TEST_PASS)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_GET_MAX_VOLUME_BY_USAGE_0004
+     * @tc.name      : get max volume by usage whit nullptr
+     * @tc.desc      : test OH_AudioVolumeManager_GetMaxVolumeByUsage
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_GET_MAX_VOLUME_BY_USAGE_0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let result = myaudioNdk.audioVolumeManagerGetMaxVolumeByUsage_004();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GET_MAX_VOLUME_BY_USAGE_0004 audioVolumeManagerGetMaxVolumeByUsage_004: ${result}`);
+      expect(result).assertEqual(TEST_PASS)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_GET_MIN_VOLUME_BY_USAGE_0001
+     * @tc.name      : get max volume by usage
+     * @tc.desc      : test OH_AudioVolumeManager_GetMinVolumeByUsage
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_GET_MIN_VOLUME_BY_USAGE_0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result = myaudioNdk.audioVolumeManagerGetMinVolumeByUsage_001();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GET_MIN_VOLUME_BY_USAGE_0001 audioVolumeManagerGetMinVolumeByUsage_001: ${result}`);
+      expect(result).assertEqual(TEST_PASS)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_GET_MIN_VOLUME_BY_USAGE_0002
+     * @tc.name      : get max volume by usage whit nullptr
+     * @tc.desc      : test OH_AudioVolumeManager_GetMaxVolumeByUsage
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_GET_MIN_VOLUME_BY_USAGE_0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let result = myaudioNdk.audioVolumeManagerGetMinVolumeByUsage_002();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GET_MIN_VOLUME_BY_USAGE_0002 audioVolumeManagerGetMinVolumeByUsage_002: ${result}`);
+      expect(result).assertEqual(TEST_PASS)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_GET_MIN_VOLUME_BY_USAGE_0003
+     * @tc.name      : get max volume by usage whit nullptr
+     * @tc.desc      : test OH_AudioVolumeManager_GetMaxVolumeByUsage
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_GET_MIN_VOLUME_BY_USAGE_0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let result = myaudioNdk.audioVolumeManagerGetMinVolumeByUsage_003();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GET_MIN_VOLUME_BY_USAGE_0003 audioVolumeManagerGetMinVolumeByUsage_003: ${result}`);
+      expect(result).assertEqual(TEST_PASS)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_GET_MIN_VOLUME_BY_USAGE_0004
+     * @tc.name      : get max volume by usage whit nullptr
+     * @tc.desc      : test OH_AudioVolumeManager_GetMaxVolumeByUsage
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_GET_MIN_VOLUME_BY_USAGE_0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let result = myaudioNdk.audioVolumeManagerGetMinVolumeByUsage_004();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GET_MIN_VOLUME_BY_USAGE_0004 audioVolumeManagerGetMinVolumeByUsage_004: ${result}`);
+      expect(result).assertEqual(TEST_PASS)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_GET_VOLUME_BY_USAGE_0001
+     * @tc.name      : get volume by usage
+     * @tc.desc      : test OH_AudioVolumeManager_GetVolumeByUsage
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_GET_VOLUME_BY_USAGE_0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result = myaudioNdk.audioVolumeManagerGetVolumeByUsage_001();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GET_VOLUME_BY_USAGE_0001 audioVolumeManagerGetVolumeByUsage_001: ${result}`);
+      expect(result).assertEqual(TEST_PASS)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_GET_VOLUME_BY_USAGE_0002
+     * @tc.name      : get volume by usage whit nullptr
+     * @tc.desc      : test OH_AudioVolumeManager_GetVolumeByUsage
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_GET_VOLUME_BY_USAGE_0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let result = myaudioNdk.audioVolumeManagerGetVolumeByUsage_002();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GET_VOLUME_BY_USAGE_0002 audioVolumeManagerGetVolumeByUsage_002: ${result}`);
+      expect(result).assertEqual(TEST_PASS)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_GET_VOLUME_BY_USAGE_0003
+     * @tc.name      : get volume by usage whit nullptr
+     * @tc.desc      : test OH_AudioVolumeManager_GetVolumeByUsage
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_GET_VOLUME_BY_USAGE_0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let result = myaudioNdk.audioVolumeManagerGetVolumeByUsage_003();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GET_VOLUME_BY_USAGE_0003 audioVolumeManagerGetVolumeByUsage_003: ${result}`);
+      expect(result).assertEqual(TEST_PASS)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_GET_VOLUME_BY_USAGE_0004
+     * @tc.name      : get volume by usage whit invaild param
+     * @tc.desc      : test OH_AudioVolumeManager_GetVolumeByUsage
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_GET_VOLUME_BY_USAGE_0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let result = myaudioNdk.audioVolumeManagerGetVolumeByUsage_004();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GET_VOLUME_BY_USAGE_0004 audioVolumeManagerGetVolumeByUsage_004: ${result}`);
+      expect(result).assertEqual(TEST_PASS)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_IS_MUTE_BY_USAGE_0001
+     * @tc.name      : get volume by usage
+     * @tc.desc      : test OH_AudioVolumeManager_IsMuteByUsage
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_IS_MUTE_BY_USAGE_0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result = myaudioNdk.audioVolumeManagerIsMuteByUsage_001();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_IS_MUTE_BY_USAGE_0001 audioVolumeManagerIsMuteByUsage_001: ${result}`);
+      expect(result).assertEqual(TEST_PASS)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_IS_MUTE_BY_USAGE_0002
+     * @tc.name      : get volume by usage whit nullptr
+     * @tc.desc      : test OH_AudioVolumeManager_IsMuteByUsage
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_IS_MUTE_BY_USAGE_0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let result = myaudioNdk.audioVolumeManagerIsMuteByUsage_002();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_IS_MUTE_BY_USAGE_0002 audioVolumeManagerIsMuteByUsage_002: ${result}`);
+      expect(result).assertEqual(TEST_PASS)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_IS_MUTE_BY_USAGE_0003
+     * @tc.name      : get volume by usage whit nullptr
+     * @tc.desc      : test OH_AudioVolumeManager_IsMuteByUsage
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_IS_MUTE_BY_USAGE_0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let result = myaudioNdk.audioVolumeManagerIsMuteByUsage_003();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_IS_MUTE_BY_USAGE_0003 audioVolumeManagerIsMuteByUsage_003: ${result}`);
+      expect(result).assertEqual(TEST_PASS)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_IS_MUTE_BY_USAGE_0004
+     * @tc.name      : get volume by usage with invaild param
+     * @tc.desc      : test OH_AudioVolumeManager_IsMuteByUsage
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_IS_MUTE_BY_USAGE_0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let result = myaudioNdk.audioVolumeManagerIsMuteByUsage_004();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_IS_MUTE_BY_USAGE_0004 audioVolumeManagerIsMuteByUsage_004: ${result}`);
+      expect(result).assertEqual(TEST_PASS)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_REGISTER_STREAM_VOLUME_CHANGE_CALLBACK_0001
+     * @tc.name      : register stream volume change callback
+     * @tc.desc      : test OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_REGISTER_STREAM_VOLUME_CHANGE_CALLBACK_0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result = myaudioNdk.audioVolumeManagerRegisterStreamVolumeChangeCallback_001();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_REGISTER_STREAM_VOLUME_CHANGE_CALLBACK_0001 audioVolumeManagerRegisterStreamVolumeChangeCallback_001: ${result}`);
+      expect(result).assertEqual(TEST_PASS)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_REGISTER_STREAM_VOLUME_CHANGE_CALLBACK_0002
+     * @tc.name      : register stream volume change callback
+     * @tc.desc      : test OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_REGISTER_STREAM_VOLUME_CHANGE_CALLBACK_0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result = myaudioNdk.audioVolumeManagerRegisterStreamVolumeChangeCallback_002();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_REGISTER_STREAM_VOLUME_CHANGE_CALLBACK_0002 audioVolumeManagerRegisterStreamVolumeChangeCallback_002: ${result}`);
+      expect(result).assertEqual(TEST_PASS)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_REGISTER_STREAM_VOLUME_CHANGE_CALLBACK_0003
+     * @tc.name      : register stream volume change callback
+     * @tc.desc      : test OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_REGISTER_STREAM_VOLUME_CHANGE_CALLBACK_0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result = myaudioNdk.audioVolumeManagerRegisterStreamVolumeChangeCallback_003();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_REGISTER_STREAM_VOLUME_CHANGE_CALLBACK_0003 audioVolumeManagerRegisterStreamVolumeChangeCallback_003: ${result}`);
+      expect(result).assertEqual(TEST_PASS)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_REGISTER_STREAM_VOLUME_CHANGE_CALLBACK_0004
+     * @tc.name      : register stream volume change callback
+     * @tc.desc      : test OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_REGISTER_STREAM_VOLUME_CHANGE_CALLBACK_0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result = myaudioNdk.audioVolumeManagerRegisterStreamVolumeChangeCallback_004();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_REGISTER_STREAM_VOLUME_CHANGE_CALLBACK_0004 audioVolumeManagerRegisterStreamVolumeChangeCallback_004: ${result}`);
+      expect(result).assertEqual(TEST_PASS)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_REGISTER_STREAM_VOLUME_CHANGE_CALLBACK_0005
+     * @tc.name      : register stream volume change callback with invalid param
+     * @tc.desc      : test OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_REGISTER_STREAM_VOLUME_CHANGE_CALLBACK_0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let result = myaudioNdk.audioVolumeManagerRegisterStreamVolumeChangeCallback_005();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_REGISTER_STREAM_VOLUME_CHANGE_CALLBACK_0005 audioVolumeManagerRegisterStreamVolumeChangeCallback_005: ${result}`);
+      expect(result).assertEqual(TEST_PASS)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_REGISTER_STREAM_VOLUME_CHANGE_CALLBACK_0006
+     * @tc.name      : register stream volume change callback with invalid param
+     * @tc.desc      : test OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_REGISTER_STREAM_VOLUME_CHANGE_CALLBACK_0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let result = myaudioNdk.audioVolumeManagerRegisterStreamVolumeChangeCallback_006();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_REGISTER_STREAM_VOLUME_CHANGE_CALLBACK_0006 audioVolumeManagerRegisterStreamVolumeChangeCallback_006: ${result}`);
+      expect(result).assertEqual(TEST_PASS)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_REGISTER_STREAM_VOLUME_CHANGE_CALLBACK_0007
+     * @tc.name      : register stream volume change callback with invalid param
+     * @tc.desc      : test OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_REGISTER_STREAM_VOLUME_CHANGE_CALLBACK_0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let result = myaudioNdk.audioVolumeManagerRegisterStreamVolumeChangeCallback_007();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_REGISTER_STREAM_VOLUME_CHANGE_CALLBACK_0007 audioVolumeManagerRegisterStreamVolumeChangeCallback_007: ${result}`);
+      expect(result).assertEqual(TEST_PASS)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_REGISTER_STREAM_VOLUME_CHANGE_CALLBACK_0008
+     * @tc.name      : register stream volume change callback with invalid param
+     * @tc.desc      : test OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_REGISTER_STREAM_VOLUME_CHANGE_CALLBACK_0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let result = myaudioNdk.audioVolumeManagerRegisterStreamVolumeChangeCallback_008();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_REGISTER_STREAM_VOLUME_CHANGE_CALLBACK_0008 audioVolumeManagerRegisterStreamVolumeChangeCallback_008: ${result}`);
+      expect(result).assertEqual(TEST_PASS)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_UNREGISTER_STREAM_VOLUME_CHANGE_CALLBACK_0001
+     * @tc.name      : unregister stream volume change callback with invalid param
+     * @tc.desc      : test OH_AudioVolumeManager_UnregisterStreamVolumeChangeCallback
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_UNREGISTER_STREAM_VOLUME_CHANGE_CALLBACK_0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let result = myaudioNdk.audioVolumeManagerUnregisterStreamVolumeChangeCallback_001();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_UNREGISTER_STREAM_VOLUME_CHANGE_CALLBACK_0001 audioVolumeManagerUnregisterStreamVolumeChangeCallback_001: ${result}`);
+      expect(result).assertEqual(TEST_PASS)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_UNREGISTER_STREAM_VOLUME_CHANGE_CALLBACK_0002
+     * @tc.name      : unregister stream volume change callback with invalid param
+     * @tc.desc      : test OH_AudioVolumeManager_UnregisterStreamVolumeChangeCallback
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_UNREGISTER_STREAM_VOLUME_CHANGE_CALLBACK_0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let result = myaudioNdk.audioVolumeManagerUnregisterStreamVolumeChangeCallback_002();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_UNREGISTER_STREAM_VOLUME_CHANGE_CALLBACK_0002 audioVolumeManagerUnregisterStreamVolumeChangeCallback_002: ${result}`);
+      expect(result).assertEqual(TEST_PASS)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_UNREGISTER_STREAM_VOLUME_CHANGE_CALLBACK_0003
+     * @tc.name      : unregister stream volume change callback with invalid param
+     * @tc.desc      : test OH_AudioVolumeManager_UnregisterStreamVolumeChangeCallback
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_UNREGISTER_STREAM_VOLUME_CHANGE_CALLBACK_0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let result = myaudioNdk.audioVolumeManagerUnregisterStreamVolumeChangeCallback_003();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_UNREGISTER_STREAM_VOLUME_CHANGE_CALLBACK_0003 audioVolumeManagerUnregisterStreamVolumeChangeCallback_003: ${result}`);
+      expect(result).assertEqual(TEST_PASS)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_UNREGISTER_STREAM_VOLUME_CHANGE_CALLBACK_0004
+     * @tc.name      : unregister stream volume change callback with invalid param
+     * @tc.desc      : test OH_AudioVolumeManager_UnregisterStreamVolumeChangeCallback
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_UNREGISTER_STREAM_VOLUME_CHANGE_CALLBACK_0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let result = myaudioNdk.audioVolumeManagerUnregisterStreamVolumeChangeCallback_004();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_UNREGISTER_STREAM_VOLUME_CHANGE_CALLBACK_0004 audioVolumeManagerUnregisterStreamVolumeChangeCallback_004: ${result}`);
+      expect(result).assertEqual(TEST_PASS)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_GET_RINGER_MODE_0001
+     * @tc.name      : get ringer mode
+     * @tc.desc      : test OH_AudioVolumeManager_GetRingerMode
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_GET_RINGER_MODE_0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result = myaudioNdk.audioVolumeManagerGetRingerMode_001();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GET_RINGER_MODE_0001 audioVolumeManagerGetRingerMode_001: ${result}`);
+      expect(result).assertEqual(TEST_PASS)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_GET_RINGER_MODE_0002
+     * @tc.name      : get ringer mode whit nullptr
+     * @tc.desc      : test OH_AudioVolumeManager_GetRingerMode
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_GET_RINGER_MODE_0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let result = myaudioNdk.audioVolumeManagerGetRingerMode_002();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GET_RINGER_MODE_0002 audioVolumeManagerGetRingerMode_002: ${result}`);
+      expect(result).assertEqual(TEST_PASS)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_GET_RINGER_MODE_0003
+     * @tc.name      : get ringer mode whit nullptr
+     * @tc.desc      : test OH_AudioVolumeManager_GetRingerMode 
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_GET_RINGER_MODE_0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let result = myaudioNdk.audioVolumeManagerGetRingerMode_003();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GET_RINGER_MODE_0003 audioVolumeManagerGetRingerMode_003: ${result}`);
+      expect(result).assertEqual(TEST_PASS)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_REGISTER_RINGER_MODE_CHANGE_CALLBACK_0001
+     * @tc.name      : register ringer mode change callback
+     * @tc.desc      : test OH_AudioVolumeManager_RegisterRingerModeChangeCallback
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_REGISTER_RINGER_MODE_CHANGE_CALLBACK_0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result = myaudioNdk.audioVolumeManagerRegisterRingerModeChangeCallback_001();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_REGISTER_RINGER_MODE_CHANGE_CALLBACK_0001 audioVolumeManagerRegisterRingerModeChangeCallback_001: ${result}`);
+      expect(result).assertEqual(TEST_PASS)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_REGISTER_RINGER_MODE_CHANGE_CALLBACK_0002
+     * @tc.name      : register ringer mode change callback with invalid param
+     * @tc.desc      : test OH_AudioVolumeManager_RegisterRingerModeChangeCallback
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_REGISTER_RINGER_MODE_CHANGE_CALLBACK_0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let result = myaudioNdk.audioVolumeManagerRegisterRingerModeChangeCallback_002();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_REGISTER_RINGER_MODE_CHANGE_CALLBACK_0002 audioVolumeManagerRegisterRingerModeChangeCallback_002: ${result}`);
+      expect(result).assertEqual(TEST_PASS)
+      done()
+     })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_REGISTER_RINGER_MODE_CHANGE_CALLBACK_0003
+     * @tc.name      : register ringer mode change callback with invalid param
+     * @tc.desc      : test OH_AudioVolumeManager_RegisterRingerModeChangeCallback
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_REGISTER_RINGER_MODE_CHANGE_CALLBACK_0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let result = myaudioNdk.audioVolumeManagerRegisterRingerModeChangeCallback_003();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_REGISTER_RINGER_MODE_CHANGE_CALLBACK_0003 audioVolumeManagerRegisterRingerModeChangeCallback_003: ${result}`);
+      expect(result).assertEqual(TEST_PASS)
+      done()
+     })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_UNREGISTER_RINGER_MODE_CHANGE_CALLBACK_0001
+     * @tc.name      : unregister ringer mode change callback with invalid param
+     * @tc.desc      : test OH_AudioVolumeManager_UnregisterRingerModeChangeCallback
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_UNREGISTER_RINGER_MODE_CHANGE_CALLBACK_0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let result = myaudioNdk.audioVolumeManagerUnregisterRingerModeChangeCallback_001();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_UNREGISTER_RINGER_MODE_CHANGE_CALLBACK_0001 audioVolumeManagerUnregisterRingerModeChangeCallback_001: ${result}`);
+      expect(result).assertEqual(TEST_PASS)
+      done()
+     })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_UNREGISTER_RINGER_MODE_CHANGE_CALLBACK_0002
+     * @tc.name      : unregister ringer mode change callback with invalid param
+     * @tc.desc      : test OH_AudioVolumeManager_UnregisterRingerModeChangeCallback
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_UNREGISTER_RINGER_MODE_CHANGE_CALLBACK_0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let result = myaudioNdk.audioVolumeManagerUnregisterRingerModeChangeCallback_002();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_UNREGISTER_RINGER_MODE_CHANGE_CALLBACK_0002 audioVolumeManagerUnregisterRingerModeChangeCallback_002: ${result}`);
+      expect(result).assertEqual(TEST_PASS)
+      done()
+     })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_UNREGISTER_RINGER_MODE_CHANGE_CALLBACK_0003
+     * @tc.name      : unregister ringer mode change callback with invalid param
+     * @tc.desc      : test OH_AudioVolumeManager_UnregisterRingerModeChangeCallback
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_UNREGISTER_RINGER_MODE_CHANGE_CALLBACK_0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let result = myaudioNdk.audioVolumeManagerUnregisterRingerModeChangeCallback_003();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_UNREGISTER_RINGER_MODE_CHANGE_CALLBACK_0003 audioVolumeManagerUnregisterRingerModeChangeCallback_003: ${result}`);
+      expect(result).assertEqual(TEST_PASS)
+      done()
+     })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_UNREGISTER_RINGER_MODE_CHANGE_CALLBACK_0004
+     * @tc.name      : unregister ringer mode change callback with invalid param
+     * @tc.desc      : test OH_AudioVolumeManager_UnregisterRingerModeChangeCallback
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_UNREGISTER_RINGER_MODE_CHANGE_CALLBACK_0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let result = myaudioNdk.audioVolumeManagerUnregisterRingerModeChangeCallback_004();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_UNREGISTER_RINGER_MODE_CHANGE_CALLBACK_0004 audioVolumeManagerUnregisterRingerModeChangeCallback_004: ${result}`);
+      expect(result).assertEqual(TEST_PASS)
+      done()
+     })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_SET_WILL_MUTE_WHEN_INTERRUPTED
+     * @tc.name      : set interrupt strategy before generate audioCaptuer
+     * @tc.desc      : test OH_AudioStreamBuilder_SetCapturerWillMuteWhenInterrupted
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_SET_WILL_MUTE_WHEN_INTERRUPTED', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let result = myaudioNdk.AudioCapturerSetWillMuteWhenInterrupted();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_SET_WILL_MUTE_WHEN_INTERRUPTED AudioCapturerSetWillMuteWhenInterrupted: ${result}`);
+      expect(result).assertEqual(0)
+      done()
     })
   })
 }

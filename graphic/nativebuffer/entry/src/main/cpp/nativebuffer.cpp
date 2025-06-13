@@ -1608,7 +1608,39 @@ static napi_value OHNativeBufferGetMetadataValueNullptr(napi_env env, napi_callb
     napi_create_int32(env, SUCCESS, &result);
     return result;
 }
-
+static napi_value OHNativeBufferY8Y16USAGEandAlloc(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    OH_NativeBuffer_Config Config = {
+        .width = 0x100,
+        .height = 0x100,
+        .format = NATIVEBUFFER_PIXEL_FMT_Y8,
+        .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA
+                 | NATIVEBUFFER_USAGE_MEM_MMZ_CACHE,
+    };
+    OH_NativeBuffer_Config Config1 = {
+        .width = 0x100,
+        .height = 0x100,
+        .format = NATIVEBUFFER_PIXEL_FMT_Y16,
+        .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA
+                 | NATIVEBUFFER_USAGE_MEM_MMZ_CACHE,
+    };
+    OH_NativeBuffer *nativeBuffer = OH_NativeBuffer_Alloc(&Config);
+    OH_NativeBuffer *nativeBuffer1 = OH_NativeBuffer_Alloc(&Config1);
+    OH_NativeBuffer_Config Config2;
+    OH_NativeBuffer_Config Config3;
+    OH_NativeBuffer_GetConfig(nativeBuffer, &Config2);
+    OH_NativeBuffer_GetConfig(nativeBuffer1, &Config3);
+    if (Config.format == Config2.format && Config1.format == Config3.format && Config.usage == Config2.usage &&
+        Config1.usage == Config3.usage) {
+        napi_create_int32(env, SUCCESS, &result);
+    } else {
+        napi_create_int32(env, FAIL, &result);
+        return result;
+    }
+    OH_NativeBuffer_Unreference(nativeBuffer);
+    return result;
+}
 napi_value NativeBufferInit(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] = {
@@ -1719,6 +1751,8 @@ static napi_value Init(napi_env env, napi_value exports)
         {"oHNativeBufferGetMetadataValueAbnormal", nullptr, OHNativeBufferGetMetadataValueAbnormal, nullptr, nullptr,
          nullptr, napi_default, nullptr},
         {"oHNativeBufferGetMetadataValueNullptr", nullptr, OHNativeBufferGetMetadataValueNullptr, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"oHNativeBufferY8Y16USAGEandAlloc", nullptr, OHNativeBufferY8Y16USAGEandAlloc, nullptr, nullptr,
          nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);

@@ -17,7 +17,7 @@ import avSession from '@ohos.multimedia.avsession';
 import featureAbility from '@ohos.ability.featureAbility';
 //import image from '@ohos.multimedia.image';
 //import resourceManager from '@ohos.resourceManager';
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 
 
 const TAG = "[AVSessionControllerJSTest]";
@@ -303,7 +303,7 @@ export default function AVSessionControllerJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_ONSESSIONEVENT_0100", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_ONSESSIONEVENT_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			controller.on('sessionEvent', dynamicLyricsCallback1);
 			await session.dispatchSessionEvent(UPDATE_LYRICS_EVENT, UPDATE_LYRICS_WANT_PARAMS).catch((err) => {
 				console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_ONSESSIONEVENT_0100 error " + JSON.stringify(err));
@@ -334,7 +334,7 @@ export default function AVSessionControllerJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_ONSESSIONEVENT_0200", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_ONSESSIONEVENT_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			controller.on('sessionEvent', dynamicLyricsCallback1);
 			controller.on('sessionEvent', dynamicLyricsCallback2);
 			await session.dispatchSessionEvent(UPDATE_LYRICS_EVENT, UPDATE_LYRICS_WANT_PARAMS).catch((err) => {
@@ -371,7 +371,7 @@ export default function AVSessionControllerJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level0
 		 */
-		it("SUB_MULTIMEDIA_AVSESSION_OFFSESSIONEVENT_0100", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_OFFSESSIONEVENT_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			controller.on('sessionEvent', dynamicLyricsCallback1);
 			controller.on('sessionEvent', dynamicLyricsCallback2);
 			controller.off('sessionEvent', dynamicLyricsCallback2);
@@ -404,7 +404,7 @@ export default function AVSessionControllerJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level0
 		 */
-		it("SUB_MULTIMEDIA_AVSESSION_OFFSESSIONEVENT_0200", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_OFFSESSIONEVENT_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			controller.on('sessionEvent', dynamicLyricsCallback1);
 			controller.on('sessionEvent', dynamicLyricsCallback2);
 			controller.off('sessionEvent', dynamicLyricsCallback1);
@@ -435,7 +435,7 @@ export default function AVSessionControllerJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level0
 		 */
-		it("SUB_MULTIMEDIA_AVSESSION_OFFSESSIONEVENT_0300", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_OFFSESSIONEVENT_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			controller.on('sessionEvent', dynamicLyricsCallback1);
 			controller.on('sessionEvent', dynamicLyricsCallback2);
 			controller.off('sessionEvent');
@@ -465,7 +465,7 @@ export default function AVSessionControllerJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_SENDCOMMONCOMMAND_0100", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_SENDCOMMONCOMMAND_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			controller.sendCommonCommand(COMMON_COMMAND_STRING, COMMON_COMMAND_PARAMS, (err) => {
 				if (err) {
 					console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_SENDCOMMONCOMMAND_0100 error " + JSON.stringify(err));
@@ -486,7 +486,7 @@ export default function AVSessionControllerJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_SENDCOMMONCOMMAND_0200", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_SENDCOMMONCOMMAND_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			await controller.sendCommonCommand(COMMON_COMMAND_STRING, COMMON_COMMAND_PARAMS).catch((err) => {
 				console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_SENDCOMMONCOMMAND_0200 error " + JSON.stringify(err));
 				expect().assertFail();
@@ -504,7 +504,7 @@ export default function AVSessionControllerJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_GETEXTRAS_0100", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_GETEXTRAS_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_GETEXTRAS_0100 start");
 			await session.setExtras(CUSTOM_EXTRAS).catch((err) => {
 				console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_GETEXTRAS_0100 error " + JSON.stringify(err));
@@ -531,7 +531,7 @@ export default function AVSessionControllerJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_GETEXTRAS_0200", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_GETEXTRAS_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_GETEXTRAS_0200 start");
 			await session.setExtras(CUSTOM_EXTRAS).catch((err) => {
 				console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_GETEXTRAS_0200 error " + JSON.stringify(err));
@@ -556,7 +556,7 @@ export default function AVSessionControllerJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_ONEXTRASCHANGE_0100", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_ONEXTRASCHANGE_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_ONEXTRASCHANGE_0100 start");
 			controller.on('extrasChange', extrasChangeCallback1);
 			await session.setExtras(CUSTOM_EXTRAS).catch((err) => {
@@ -587,7 +587,7 @@ export default function AVSessionControllerJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_ONEXTRASCHANGE_0200", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_ONEXTRASCHANGE_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_ONEXTRASCHANGE_0200 start");
 			controller.on('extrasChange', extrasChangeCallback1);
 			controller.on('extrasChange', extrasChangeCallback2);
@@ -622,7 +622,7 @@ export default function AVSessionControllerJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level0
 		 */
-		it("SUB_MULTIMEDIA_AVSESSION_OFFEXTRASCHANGE_0100", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_OFFEXTRASCHANGE_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			controller.on('extrasChange', extrasChangeCallback1);
 			controller.on('extrasChange', extrasChangeCallback2);
 			controller.off('extrasChange', extrasChangeCallback2);
@@ -654,7 +654,7 @@ export default function AVSessionControllerJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level0
 		 */
-		it("SUB_MULTIMEDIA_AVSESSION_OFFEXTRASCHANGE_0200", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_OFFEXTRASCHANGE_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			controller.on('extrasChange', extrasChangeCallback1);
 			controller.on('extrasChange', extrasChangeCallback2);
 			controller.off('extrasChange', extrasChangeCallback1);
@@ -684,7 +684,7 @@ export default function AVSessionControllerJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level0
 		 */
-		it("SUB_MULTIMEDIA_AVSESSION_OFFEXTRASCHANGE_0300", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_OFFEXTRASCHANGE_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			controller.on('extrasChange', extrasChangeCallback1);
 			controller.on('extrasChange', extrasChangeCallback2);
 			controller.off('extrasChange');
@@ -713,7 +713,7 @@ export default function AVSessionControllerJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_ONQUEUEITEMSCHANGE_0100", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_ONQUEUEITEMSCHANGE_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			controller.on('queueItemsChange', queueItemsCallback1);
 			await session.setAVQueueItems(ITEMS_ARRAY).catch((err) => {
 				console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_ONQUEUEITEMSCHANGE_0100 setAVQueueItems error " + JSON.stringify(err));
@@ -741,7 +741,7 @@ export default function AVSessionControllerJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_ONQUEUEITEMSCHANGE_0200", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_ONQUEUEITEMSCHANGE_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			controller.on('queueItemsChange', queueItemsCallback1);
 			controller.on('queueItemsChange', queueItemsCallback2);
 			await session.setAVQueueItems(ITEMS_ARRAY).catch((err) => {
@@ -770,7 +770,7 @@ export default function AVSessionControllerJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_ONQUEUETITLECHANGE_0100", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_ONQUEUETITLECHANGE_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			controller.on('queueTitleChange', queueTitleCallback1);
 			await session.setAVQueueTitle(QUEUE_TITLE).catch((err) => {
 				console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_ONQUEUETITLECHANGE_0100 setAVQueueTitle error " + JSON.stringify(err));
@@ -798,7 +798,7 @@ export default function AVSessionControllerJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_ONQUEUETITLECHANGE_0200", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_ONQUEUETITLECHANGE_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			controller.on('queueTitleChange', queueTitleCallback1);
 			controller.on('queueTitleChange', queueTitleCallback2);
 			await session.setAVQueueTitle(QUEUE_TITLE).catch((err) => {
@@ -827,7 +827,7 @@ export default function AVSessionControllerJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level0
 		 */
-		it("SUB_MULTIMEDIA_AVSESSION_OFFQUEUEITEMSCHANGE_0100", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_OFFQUEUEITEMSCHANGE_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			controller.on('queueItemsChange', queueItemsCallback1);
 			controller.on('queueItemsChange', queueItemsCallback2);
 			controller.off('queueItemsChange', queueItemsCallback2);
@@ -856,7 +856,7 @@ export default function AVSessionControllerJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level0
 		 */
-		it("SUB_MULTIMEDIA_AVSESSION_OFFQUEUEITEMSCHANGE_0200", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_OFFQUEUEITEMSCHANGE_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			controller.on('queueItemsChange', queueItemsCallback1);
 			controller.on('queueItemsChange', queueItemsCallback2);
 			controller.off('queueItemsChange', queueItemsCallback1);
@@ -886,7 +886,7 @@ export default function AVSessionControllerJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level0
 		 */
-		it("SUB_MULTIMEDIA_AVSESSION_OFFQUEUEITEMSCHANGE_0300", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_OFFQUEUEITEMSCHANGE_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			controller.on('queueItemsChange', queueItemsCallback1);
 			controller.on('queueItemsChange', queueItemsCallback2);
 			controller.off('queueItemsChange');
@@ -915,7 +915,7 @@ export default function AVSessionControllerJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level0
 		 */
-		it("SUB_MULTIMEDIA_AVSESSION_OFFQUEUETITLECHANGE_0100", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_OFFQUEUETITLECHANGE_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			controller.on('queueTitleChange', queueTitleCallback1);
 			controller.on('queueTitleChange', queueTitleCallback2);
 			controller.off('queueTitleChange', queueTitleCallback2);
@@ -944,7 +944,7 @@ export default function AVSessionControllerJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level0
 		 */
-		it("SUB_MULTIMEDIA_AVSESSION_OFFQUEUETITLECHANGE_0200", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_OFFQUEUETITLECHANGE_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			controller.on('queueTitleChange', queueTitleCallback1);
 			controller.on('queueTitleChange', queueTitleCallback2);
 			controller.off('queueTitleChange', queueTitleCallback1);
@@ -975,7 +975,7 @@ export default function AVSessionControllerJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level0
 		 */
-		it("SUB_MULTIMEDIA_AVSESSION_OFFQUEUETITLECHANGE_0300", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_OFFQUEUETITLECHANGE_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			controller.on('queueTitleChange', queueTitleCallback1);
 			controller.on('queueTitleChange', queueTitleCallback2);
 			controller.off('queueTitleChange');
@@ -1005,7 +1005,7 @@ export default function AVSessionControllerJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_0100", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			session.setAVQueueItems(ITEMS_ARRAY, (err) => {
 				if (err) {
 					console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_0100 error " + JSON.stringify(err));
@@ -1026,7 +1026,7 @@ export default function AVSessionControllerJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_0200", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			await session.setAVQueueItems(ITEMS_ARRAY).catch((err) => {
 				console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_SETAVQUEUEITEMS_0200 error " + JSON.stringify(err));
 				expect().assertFail();
@@ -1044,7 +1044,7 @@ export default function AVSessionControllerJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_SETAVQUEUETITLE_0100", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_SETAVQUEUETITLE_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			session.setAVQueueTitle(QUEUE_TITLE, (err) => {
 				if (err) {
 					console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_SETAVQUEUETITLE_0100 error " + JSON.stringify(err));
@@ -1065,7 +1065,7 @@ export default function AVSessionControllerJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_SETAVQUEUETITLE_0200", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_SETAVQUEUETITLE_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			await session.setAVQueueTitle(QUEUE_TITLE).catch((err) => {
 				console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_SETAVQUEUETITLE_0200 error " + JSON.stringify(err));
 				expect().assertFail();
@@ -1083,7 +1083,7 @@ export default function AVSessionControllerJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_SKIPTOQUEUEITEM_0100", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_SKIPTOQUEUEITEM_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			controller.skipToQueueItem(QUEUE_ITEM_ID, (err) => {
 				if (err) {
 					console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_SKIPTOQUEUEITEM_0100 error " + JSON.stringify(err));
@@ -1104,7 +1104,7 @@ export default function AVSessionControllerJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_SKIPTOQUEUEITEM_0200", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_SKIPTOQUEUEITEM_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			await controller.skipToQueueItem(QUEUE_ITEM_ID).catch((err) => {
 				console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_SKIPTOQUEUEITEM_0200 error " + JSON.stringify(err));
 				expect().assertFail();
@@ -1122,7 +1122,7 @@ export default function AVSessionControllerJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_ONSKIPTOQUEUEITEM_0100", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_ONSKIPTOQUEUEITEM_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			session.on('skipToQueueItem', skipToQueueItemCallback1);
 			await controller.skipToQueueItem(SKIP_ITEM_ID).catch((err) => {
 				console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_ONSKIPTOQUEUEITEM_0100 error " + JSON.stringify(err));
@@ -1150,7 +1150,7 @@ export default function AVSessionControllerJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_ONSKIPTOQUEUEITEM_0200", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_ONSKIPTOQUEUEITEM_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			session.on('skipToQueueItem', skipToQueueItemCallback1);
 			session.on('skipToQueueItem', skipToQueueItemCallback2);
 			await controller.skipToQueueItem(SKIP_ITEM_ID).catch((err) => {
@@ -1179,7 +1179,7 @@ export default function AVSessionControllerJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_GETAVQUEUEITEMS_0100", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_GETAVQUEUEITEMS_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			session.setAVQueueItems(ITEMS_ARRAY, (err) => {
 				if (err) {
 					console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_GETAVQUEUEITEMS_0100 error " + JSON.stringify(err));
@@ -1208,7 +1208,7 @@ export default function AVSessionControllerJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_GETAVQUEUEITEMS_0200", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_GETAVQUEUEITEMS_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			await session.setAVQueueItems(ITEMS_ARRAY).then(async () => {
 				await controller.getAVQueueItems().catch((err) => {
 					console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_GETAVQUEUEITEMS_0200 error " + JSON.stringify(err));
@@ -1230,7 +1230,7 @@ export default function AVSessionControllerJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_GETAVQUEUETITLE_0100", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_GETAVQUEUETITLE_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			session.setAVQueueTitle(QUEUE_TITLE, (err) => {
 				if (err) {
 					console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_GETAVQUEUETITLE_0100 error " + JSON.stringify(err));
@@ -1259,7 +1259,7 @@ export default function AVSessionControllerJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_GETAVQUEUETITLE_0200", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_GETAVQUEUETITLE_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			await session.setAVQueueTitle(QUEUE_TITLE).then(async () => {
 				await controller.getAVQueueTitle().catch((err) => {
 					console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_GETAVQUEUETITLE_0200 error " + JSON.stringify(err));
@@ -1281,7 +1281,7 @@ export default function AVSessionControllerJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_GETAVPLAYBACKSTATESYNC_0100", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_GETAVPLAYBACKSTATESYNC_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_GETAVPLAYBACKSTATESYNC_0100 start");
 			try {
 				let playbackState = {
@@ -1307,7 +1307,7 @@ export default function AVSessionControllerJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_GETAVMETADATASYNC_0100", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_GETAVMETADATASYNC_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_GETAVMETADATASYNC_0100 start");
 			try {
 				let metaData = {
@@ -1333,7 +1333,7 @@ export default function AVSessionControllerJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_GETAVQUEUETITLESYNC_0100", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_GETAVQUEUETITLESYNC_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_GETAVQUEUETITLESYNC_0100 start");
 			try {
 				await session.setAVQueueTitle(QUEUE_TITLE);
@@ -1356,7 +1356,7 @@ export default function AVSessionControllerJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_GETAVQUEUEITEMSYNC_0100", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_GETAVQUEUEITEMSYNC_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_GETAVQUEUEITEMSYNC_0100 start");
 			try {
 				await session.setAVQueueItems(ITEMS_ARRAY);
@@ -1379,7 +1379,7 @@ export default function AVSessionControllerJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_CONTROLLER_GETOUTPUTDEVICESYNC_0100", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_CONTROLLER_GETOUTPUTDEVICESYNC_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_CONTROLLER_GETOUTPUTDEVICESYNC_0100 start");
 			try {
 				let outputDeviceInfo = controller.getOutputDeviceSync();
@@ -1400,7 +1400,7 @@ export default function AVSessionControllerJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_ISACTIVESYNC_0100", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_ISACTIVESYNC_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_ISACTIVESYNC_0100 start");
 			try {
 				await session.activate();
@@ -1423,7 +1423,7 @@ export default function AVSessionControllerJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-		it("SUB_MULTIMEDIA_AVSESSION_GETVALIDCOMMANDSSYNC_0100", 0, async function (done) {
+		it("SUB_MULTIMEDIA_AVSESSION_GETVALIDCOMMANDSSYNC_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
 			console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_GETVALIDCOMMANDSSYNC_0100 start");
 			try {
 				session.on('play', () => { });
@@ -1446,7 +1446,7 @@ export default function AVSessionControllerJsTest() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-        it("SUB_MULTIMEDIA_AVSESSION_GETAVQUEUEITEMS_0300", 2, async function (done) {
+        it("SUB_MULTIMEDIA_AVSESSION_GETAVQUEUEITEMS_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             await session.setAVQueueItems(ITEMS_ARRAY).then(async () => {
                 await controller.getAVQueueItems().then((items) => {
                     console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_GETAVQUEUEITEMS_0300 data " + JSON.stringify(items));

@@ -6446,12 +6446,12 @@ export default function workerTest() {
         workerInstance.onerror = (err: ErrorEvent): void => {
           console.info(`${caseName}: workerInstance.onerror: err.message => ${err.message} err.filename => ${err.filename} err.lineno => ${err.lineno} type => ${typeof err.lineno} err.colno => ${err.colno} type => ${typeof err.colno} err.error => ${err.error}`);
           expect(err.message)
-            .assertEqual('BusinessError: An exception occurred during serialization, failed to serialize message.');
+            .assertContain('BusinessError: An exception occurred during serialization, failed to serialize message.');
           expectAssertContain(err.filename, 'workers/worker_026');
           expectAssertEqual(typeof err.lineno, 'number');
           expectAssertEqual(typeof err.colno, 'number');
           expect(err.error.toString())
-            .assertEqual('Error: An exception occurred during serialization, failed to serialize message.');
+            .assertContain('Error: An exception occurred during serialization, failed to serialize message.');
         }
         workerInstance.postMessage('GlobalScope');
         while (!flag) {

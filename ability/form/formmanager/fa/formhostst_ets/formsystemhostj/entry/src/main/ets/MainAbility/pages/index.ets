@@ -79,13 +79,14 @@ struct Index {
   }
 
   aboutToAppear() {
+    console.log(`${this.TAG} aboutToAppear start`);
     commonEvent.createSubscriber(this.subscriberFormDeleteEvent).then(async (data) => {
         console.info(`====>${this.TAG} formsystemhostj Subscriber FormDelete data:====>`, JSON.stringify(data)); 
         this.subscriberDel = data;     
         await commonEvent.subscribe(this.subscriberDel, this.deleteCallBack);
     })
 
-    console.error(`${this.TAG} getWant`);
+    console.info(`${this.TAG} aboutToAppear:getWant start`);
     featureAbility.getWant()
     .then((want: Want) => {
       console.info(`${this.TAG} getWant data: ${JSON.stringify(want)}`);
@@ -116,12 +117,12 @@ struct Index {
       }
       setTimeout(() => {
         this.canCreateForm = want.parameters?.isCreate ?? false;
-        console.error(`${this.TAG} getWant canCreateForm:` + this.canCreateForm); 
+        console.info(`${this.TAG} aboutToAppear:getWant canCreateForm:` + this.canCreateForm); 
       }, 10); 
-      console.error(`${this.TAG} getWant end` + JSON.stringify(want));
+      console.info(`${this.TAG} aboutToAppear:getWant end` + JSON.stringify(want));
 
       if(!(want.parameters?.isCreate ?? false) && this.deleteForm) {
-        console.log(`${this.TAG} formsystemhostj deleteForm start`);
+        console.log(`${this.TAG} aboutToAppear:formsystemhostj deleteForm start`);
         formManager.deleteForm(this.deleteId)
           .then((data) => {
           console.info(`${this.TAG} formsystemhostj deleteForm result:` + data);
@@ -143,10 +144,10 @@ struct Index {
           };
           commonEvent.publish(this.formOnErrorEvent, commonEventPublishData, this.publishOnErrorCallBack);
         });
-        console.log(`${this.TAG} formsystemhostj deleteForm end`);
+        console.log(`${this.TAG} aboutToAppear:formsystemhostj deleteForm end`);
       }
       if(!(want.parameters?.isCreate ?? false) && this.castForm) {
-        console.log(`${this.TAG} castTempForm start`);
+        console.log(`${this.TAG} aboutToAppear:castTempForm start`);
         formManager.castTempForm(this.temporaryId)
             .then((data) => {
             console.info(`${this.TAG} castTempForm result:` + data);
@@ -172,7 +173,7 @@ struct Index {
               commonEvent.publish(this.formCastEvent, commonEventPublishData, this.publishCastCallBack);
             }, 5);
           });               
-        console.log(`${this.TAG} castTempForm end`);
+        console.log(`${this.TAG} aboutToAppear:castTempForm end`);
       }
     })
     .catch((error:BusinessError) => {
@@ -198,6 +199,7 @@ struct Index {
             .allowUpdate(this.allowUpate)
             .visibility(this.isShowing ? Visibility.Visible : Visibility.Hidden)
             .onAcquired((form:InfoType) => {
+              console.log(`${this.TAG} onAcquired start`);
               console.log(`${this.TAG} get form, form id:` + form.id);
               this.formId = form.id;
               if(this.castForm) {
@@ -265,8 +267,12 @@ struct Index {
                         "formId" : this.deleteId.toString()
                       }
                 };
-                commonEvent.publish(this.formOnAcquiredEvent, commonEventPublishData, this.publishOnAcquiredCallBack);
+                setTimeout(()=>{
+                  console.log(`${this.TAG} publish formOnAcquiredEvent:` + this.formOnAcquiredEvent);
+                  commonEvent.publish(this.formOnAcquiredEvent, commonEventPublishData, this.publishOnAcquiredCallBack);
+                }, 500);
               }
+              console.log(`${this.TAG} onAcquired end`);
             })
             // .onUninstall((info) => {
             //   console.log("[FormComponent] onUninstall:" + JSON.stringify(info));

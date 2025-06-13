@@ -30,7 +30,7 @@ export default function AudioRecorderFormatCompatibilityTest() {
       let permissionNames: Array<Permissions> = [permissionName1, permissionName2, permissionName3, permissionName4];
       await mediaTestBase.getPermission(permissionNames);
       await mediaTestBase.sleep(2000);
-      await mediaTestBase.driveFnNoSleep(3);
+      await mediaTestBase.driveFn(3);
       console.info('beforeAll case');
     })
 
