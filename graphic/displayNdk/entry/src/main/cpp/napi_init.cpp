@@ -405,7 +405,7 @@ static napi_value CreateAvailableArea(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value CreateAvailableArea_ErrCode140003(napi_env env, napi_callback_info info)
+static napi_value CreateAvailableArea_ErrCode140004(napi_env env, napi_callback_info info)
 {
     NativeDisplayManager_Rect *availableAreaInfo;
     NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_CreateAvailableArea(-1, &availableAreaInfo);
@@ -485,7 +485,7 @@ static napi_value GetDisplaySourceMode_4(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GetDisplaySourceMode_ErrCode140003(napi_env env, napi_callback_info info)
+static napi_value GetDisplaySourceMode_ErrCode140004(napi_env env, napi_callback_info info)
 {
     NativeDisplayManager_SourceMode displaySourceMode;
     NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_GetDisplaySourceMode(-1, &displaySourceMode);
@@ -509,7 +509,7 @@ static napi_value GetDisplayPosition(napi_env env, napi_callback_info info)
     return errorCode;
 }
 
-static napi_value GetDisplayPosition_ErrCode140003(napi_env env, napi_callback_info info)
+static napi_value GetDisplayPosition_ErrCode140004(napi_env env, napi_callback_info info)
 {
     int32_t x;
     int32_t y;
@@ -673,7 +673,7 @@ static napi_value Init(napi_env env, napi_value exports)
             nullptr, napi_default, nullptr },
         { "createAvailableArea", nullptr, CreateAvailableArea, nullptr, nullptr,
             nullptr, napi_default, nullptr },
-        { "createAvailableArea_ErrCode140003", nullptr, CreateAvailableArea_ErrCode140003, nullptr, nullptr,
+        { "createAvailableArea_ErrCode140004", nullptr, CreateAvailableArea_ErrCode140004, nullptr, nullptr,
             nullptr, napi_default, nullptr },
         { "destroyAvailableArea", nullptr, DestroyAvailableArea, nullptr, nullptr,
             nullptr, napi_default, nullptr },
@@ -683,11 +683,11 @@ static napi_value Init(napi_env env, napi_value exports)
             nullptr, napi_default, nullptr },
         { "getDisplaySourceMode_4", nullptr, GetDisplaySourceMode_4, nullptr, nullptr,
             nullptr, napi_default, nullptr },
-        { "getDisplaySourceMode_ErrCode140003", nullptr, GetDisplaySourceMode_ErrCode140003, nullptr, nullptr,
+        { "getDisplaySourceMode_ErrCode140004", nullptr, GetDisplaySourceMode_ErrCode140004, nullptr, nullptr,
             nullptr, napi_default, nullptr },
         { "getDisplayPosition", nullptr, GetDisplayPosition, nullptr, nullptr,
             nullptr, napi_default, nullptr },
-        { "getDisplayPosition_ErrCode140003", nullptr, GetDisplayPosition_ErrCode140003, nullptr, nullptr,
+        { "getDisplayPosition_ErrCode140004", nullptr, GetDisplayPosition_ErrCode140004, nullptr, nullptr,
             nullptr, napi_default, nullptr },
         { "registerAvailableAreaChangeListener", nullptr, RegisterAvailableAreaChangeListener, nullptr, nullptr,
             nullptr, napi_default, nullptr },

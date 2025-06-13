@@ -593,7 +593,7 @@ export default function DisplayNdkTest() {
     it('test_OH_NativeDisplayManager_CreateAvailableArea_ErrCode140004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       let caseName = 'test_OH_NativeDisplayManager_CreateAvailableArea_ErrCode140004';
       try{
-        let errcode  = testNapi.createAvailableArea_ErrCode140003();
+        let errcode  = testNapi.createAvailableArea_ErrCode140004();
         console.log(`${caseName} result: ${JSON.stringify(errcode)}`);
         expect(errcode).assertEqual(1400004);
         done();
@@ -748,7 +748,7 @@ export default function DisplayNdkTest() {
     it('test_OH_NativeDisplayManager_GetDisplaySourceMode_ErrCode1400004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       let caseName = 'test_OH_NativeDisplayManager_GetDisplaySourceMode_ErrCode1400004';
       try{
-        let result  = testNapi.getDisplaySourceMode_ErrCode140003();
+        let result  = testNapi.getDisplaySourceMode_ErrCode140004();
         console.log(`${caseName} result: ${JSON.stringify(result)}`);
         expect(result).assertEqual(1400004);
         done();
@@ -792,7 +792,7 @@ export default function DisplayNdkTest() {
     it('test_OH_NativeDisplayManager_GetDisplayPosition_ErrCode140004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
       let caseName = 'test_OH_NativeDisplayManager_GetDisplayPosition_ErrCode140004';
       try{
-        let result  = testNapi.getDisplayPosition_ErrCode140003();
+        let result  = testNapi.getDisplayPosition_ErrCode140004();
         console.log(`${caseName} result: ${JSON.stringify(result)}`);
         expect(result).assertEqual(1400004);
         done();

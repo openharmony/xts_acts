@@ -41,14 +41,14 @@ export interface myObj {
   height: number;
 }
 export const createAvailableArea: () => myObj;
-export const createAvailableArea_ErrCode140003: () => number;
+export const createAvailableArea_ErrCode140004: () => number;
 export const destroyAvailableArea: () => number;
 export const getDisplaySourceMode_1: () => number;
 export const getDisplaySourceMode_2: (id: number) => number;
 export const getDisplaySourceMode_4: (id: number) => number;
-export const getDisplaySourceMode_ErrCode140003: () => number;
+export const getDisplaySourceMode_ErrCode140004: () => number;
 export const getDisplayPosition: () => number;
-export const getDisplayPosition_ErrCode140003: () => number;
+export const getDisplayPosition_ErrCode140004: () => number;
 export const registerAvailableAreaChangeListener: () => number;
 export const unregisterAvailableAreaChangeListener: () => number;
 export const unregisterAvailableAreaChangeListener_ErrCode140004: () => number;
