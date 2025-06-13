@@ -18,8 +18,8 @@ import commonEvent from '@ohos.commonEvent';
 import Base from '@ohos.base';
 import CommonEventManager from '@ohos.commonEventManager';
 
-let printLog1 = "Fa:MainAbility2:";
-let listPush1 = "Fa_MainAbility2_";
+let printLog1 = "Fa:MainAbility3:";
+let listPush1 = "Fa_MainAbility3_";
 class Test {
   onCreate() {
     console.info(printLog1 + 'onCreate');
@@ -45,7 +45,7 @@ class Test {
       }).catch((err: Base.BusinessError) => {
         console.info(printLog1 + "terminateSelf err = " + JSON.stringify(err));
       });
-    }, 2000)
+    }, 4000)
   }
   onDestroy() {
     console.info(printLog1 + 'onDestroy');
