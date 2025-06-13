@@ -232,5 +232,26 @@ export default function api16CertNoPermissionTestUnit() {
       done();
     });
 
+    /**
+     * @tc.number SUB_Security_CertManager_openAuthorzeDialog_0102
+     * @tc.name SUB_Security_CertManager_openAuthorzeDialog_0102
+     * @tc.desc abnormal test
+     * @tc.size MediumTest
+     * @tc.level Level2
+     * @tc.type Function
+     */
+    it('SUB_Security_CertManager_openAuthorzeDialog_0102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      console.log("SUB_Security_CertManager_openAuthorzeDialog_0102: started ");
+      const context: common.Context = GlobalContext.getContext();
+      try {
+        await certManagerDialog.openAuthorizeDialog(context);
+        expect(null).assertFail();
+      } catch (err) {
+        console.error(`SUB_Security_CertManager_openAuthorzeDialog_0102 Failed to authorize certificate. Code: ${err.code}, message: ${err.message}`)
+        expect(err.code).assertEqual(201);
+      }
+      done();
+    });
+
   })
 }
