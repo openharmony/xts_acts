@@ -46,8 +46,8 @@ function generateLargeString(length: number): string {
 }
 let TestAbilityContext:common.UIAbilityContext;
 let mpEnable="";
-export default function UIAbilityContex() {
-  describe('ActsAbilityTest', () => {
+export default function UIAbilityContext() {
+  describe('UIAbilityContext', () => {
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
     beforeAll(() => {
       // Presets an action, which is performed only once before all test cases of the test suite start.
@@ -518,6 +518,37 @@ export default function UIAbilityContex() {
           console.error(`startAbilityForResult failed, code is ${code}, message is ${message}`);
         }
       })
+
+    /**
+     * @tc.number: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0500
+     * @tc.name: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0500
+     * @tc.desc: The premeters within the Want carry parameters with a size of more than 200k
+     */
+    it('SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0500', Level.LEVEL0, async (done: Function) => {
+      // 构造一个超过 200KB 的对象
+      const largeObject = generateLargeString(TWO_HUNDRED_KB + 100)
+      let startWant: Want = {
+        bundleName: 'com.test.actsabilityerrcodequerytest',
+        abilityName: 'MainAbility1',
+        parameters: {
+          key: largeObject
+        }
+      };
+      try {
+        globalThis.context.startAbility(startWant, (err: BusinessError) => {
+          if (err.code) {
+            console.error(`startAbility failed, code is ${err.code}, message is ${err.message}`);
+            expect(err.code).assertEqual(16000050)
+            done();
+          }
+          console.info('startAbility succeed');
+        });
+      } catch (err) {
+        let code = (err as BusinessError).code;
+        let message = (err as BusinessError).message;
+        console.error(`startAbility failed, code is ${code}, message is ${message}`);
+      }
+    })
 
     /**
      * @tc.number: SUB_Ability_AbilityRuntime_ErrorCode_UIAbilityContext_startAbility_0100
