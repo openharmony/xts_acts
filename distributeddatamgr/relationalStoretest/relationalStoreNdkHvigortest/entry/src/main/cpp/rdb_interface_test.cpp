@@ -127,7 +127,7 @@ static napi_value OH_Rdb_UpdateWithConflictResolution0100(napi_env env, napi_cal
 static napi_value OH_Rdb_Attach0100(napi_env env, napi_callback_info)
 {
     size_t attachedNumber = 0;
-    auto ret = OH_Rdb_Detach(nullptr, "rdb_attach_test", 3, &attachedNumber);
+    auto ret = OH_Rdb_Attach(nullptr, nullptr,"rdb_attach_test", 3, &attachedNumber);
     NAPI_ASSERT(env, ret == RDB_E_INVALID_ARGS, "OH_Rdb_Detach is fail.");
     napi_value result;
     napi_create_int32(env, 0, &result);
@@ -136,8 +136,8 @@ static napi_value OH_Rdb_Attach0100(napi_env env, napi_callback_info)
 static napi_value OH_Rdb_Detach0100(napi_env env, napi_callback_info)
 {
     size_t attachedNumber = 0;
-    auto ret = OH_Rdb_Detach(storeTestRdbStore_, "rdb_attach_test", 3, &attachedNumber);
-    NAPI_ASSERT(env, ret == RDB_OK, "OH_Rdb_CreateValueObject is fail.");
+    auto ret = OH_Rdb_Detach(nullptr, "rdb_attach_test", 3, &attachedNumber);;
+    NAPI_ASSERT(env, ret == RDB_E_INVALID_ARGS, "OH_Rdb_CreateValueObject is fail.");
     napi_value result;
     napi_create_int32(env, 0, &result);
     return result;
