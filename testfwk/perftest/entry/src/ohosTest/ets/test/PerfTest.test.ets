@@ -115,8 +115,8 @@ export default function PerfTestTest() {
       await perfTest.run()
       let res1 = perfTest.getMeasureResult(PerfMetric.PAGE_SWITCH_COMPLETE_TIME)
       perfTest.destroy()
-      await stopApplication('com.perftestScene.acts')
       expect(res1.average).assertLargerOrEqual(0)
+      await stopApplication('com.perftestScene.acts')
       done()
     })
 
@@ -126,7 +126,7 @@ export default function PerfTestTest() {
      * @tc.desc: Test the performance of list swipe scenarios
      */
     it('testPerfTestListSwipe', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
-      await startAbility('com.perftestScene.acts', 'EntryAbility');
+      await startAbility('com.perftest.acts', 'EntryAbility');
       let driver = Driver.create()
       await driver.delayMs(3000)
       let button = await driver.findComponent(ON.text('ListPage'))
@@ -156,13 +156,11 @@ export default function PerfTestTest() {
         resetCode: resetCode,
         iterations: 5,
         timeout: 50000,
-		bundleName: "com.perftestScene.acts"
       }
       let perfTest: PerfTest = PerfTest.create(perfTestStrategy)
       await perfTest.run()
       let res1 = perfTest.getMeasureResult(PerfMetric.LIST_SWIPE_FPS)
       perfTest.destroy()
-	  await stopApplication('com.perftestScene.acts')
       expect(res1.average).assertLargerOrEqual(0)
       done()
     })
