@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import callerInfoTest from './callerInfoTest.test';
+import callerInfoTest from './CallerInfoTest.test';
 
 export default function testsuite() {
   callerInfoTest();
