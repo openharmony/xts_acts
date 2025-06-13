@@ -77,7 +77,7 @@ export default function printTest() {
       }
     })
 
-     /**
+    /**
      * @tc.number print_function_0101
      * @tc.name Test print
      * @tc.desc check the 401 error code of print function
@@ -112,7 +112,7 @@ export default function printTest() {
       // Permissions required: ohos.permission.PRINT
       print.print(file, (err: BusinessError, printTask: print.PrintTask) => {
         try {
-          if (err) {  
+          if (err) {
             console.log('print_function_0200 expect failed, err: ' + JSON.stringify(err));
             expect(err).assertEqual(201);
             done();
@@ -139,7 +139,7 @@ export default function printTest() {
       // Permissions required: ohos.permission.PRINT
       print.print(file, (err: BusinessError, printTask: print.PrintTask) => {
         try {
-          if (err) {  
+          if (err) {
             console.log('print_function_0201 expect failed, err: ' + JSON.stringify(err));
             expect(err).assertEqual(401);
             done();
@@ -167,7 +167,7 @@ export default function printTest() {
       // Permissions required: ohos.permission.PRINT
       print.print(file, context, (err: BusinessError, printTask: print.PrintTask) => {
         try {
-          if (err) {  
+          if (err) {
             console.log('print_function_0300 expect failed, err: ' + JSON.stringify(err));
             expect(err).assertEqual(201);
             done();
@@ -195,7 +195,7 @@ export default function printTest() {
       // Permissions required: ohos.permission.PRINT
       print.print(file, context, (err: BusinessError, printTask: print.PrintTask) => {
         try {
-          if (err) {  
+          if (err) {
             console.log('print_function_0301 expect failed, err: ' + JSON.stringify(err));
             expect(err).assertEqual(401);
             done();
@@ -257,7 +257,7 @@ export default function printTest() {
 
     class MyPrintDocumentAdapter implements print.PrintDocumentAdapter {
       onStartLayoutWrite(jobId: string, oldAttrs: print.PrintAttributes, newAttrs: print.PrintAttributes, fd: number,
-                         writeResultCallback: (jobId: string, writeResult: print.PrintFileCreationState) => void) {
+        writeResultCallback: (jobId: string, writeResult: print.PrintFileCreationState) => void) {
         writeResultCallback(jobId, print.PrintFileCreationState.PRINT_FILE_CREATED);
         writeResultCallback(jobId, print.PrintFileCreationState.PRINT_FILE_CREATION_FAILED);
         writeResultCallback(jobId, print.PrintFileCreationState.PRINT_FILE_CREATED_UNRENDERED);
@@ -514,6 +514,7 @@ export default function printTest() {
             console.log('printerChange, event: ' + event + ', printerInformation: ' + JSON.stringify(printerInformation));
           };
         print.on('printerChange', onPrinterChange);
+        expect(false).assertTrue();
         done();
       } catch (error) {
         console.log('print_function_1100 expect failed, err: ' + JSON.stringify(error));
@@ -534,6 +535,7 @@ export default function printTest() {
       // Permissions required: ohos.permission.PRINT
       try {
         print.off('printerChange');
+        expect(false).assertTrue();
         done();
       } catch (error) {
         console.log('print_function_1200 expect failed, err: ' + JSON.stringify(error));
