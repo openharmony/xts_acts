@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
@@ -49,7 +49,7 @@ export default function stepperItem() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUX_Stage_StepperItem_0100', 0, async (done: Function) => {
+    it('ArkUX_Stage_StepperItem_0100', Level.LEVEL0, async (done: Function) => {
       console.info('[ArkUX_Stage_StepperItem_0100] START');
       setTimeout(() => {
         try {
@@ -74,7 +74,7 @@ export default function stepperItem() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUX_Stage_StepperItem_0200', 0, async (done: Function) => {
+    it('ArkUX_Stage_StepperItem_0200', Level.LEVEL0, async (done: Function) => {
       console.info('[ArkUX_Stage_StepperItem_0200] START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

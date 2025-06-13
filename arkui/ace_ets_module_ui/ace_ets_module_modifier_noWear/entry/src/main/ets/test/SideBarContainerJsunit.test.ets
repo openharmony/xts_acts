@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
@@ -47,7 +47,7 @@ export default function sideBarContainerJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('sideBarContainerTest_0002', 0, async (done: Function) => {
+    it('sideBarContainerTest_0002', Level.LEVEL0, async (done: Function) => {
       console.info('sideBarContainerTest_0002 START');
       let strJsonNew = getInspectorByKey('sideBarContainer');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -68,7 +68,7 @@ export default function sideBarContainerJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('sideBarContainerTest_0003', 0, async (done: Function) => {
+    it('sideBarContainerTest_0003', Level.LEVEL0, async (done: Function) => {
       console.info('sideBarContainerTest_0003 START');
       let strJsonNew = getInspectorByKey('sideBarContainer');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -86,7 +86,7 @@ export default function sideBarContainerJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('sideBarContainerTest_0004', 0, async (done: Function) => {
+    it('sideBarContainerTest_0004', Level.LEVEL0, async (done: Function) => {
       console.info('sideBarContainerTest_0004 START');
       let strJsonNew = getInspectorByKey('sideBarContainer');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -104,7 +104,7 @@ export default function sideBarContainerJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('sideBarContainerTest_0005', 0, async (done: Function) => {
+    it('sideBarContainerTest_0005', Level.LEVEL0, async (done: Function) => {
       console.info('sideBarContainerTest_0005 START');
       let strJsonNew = getInspectorByKey('sideBarContainer');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -122,7 +122,7 @@ export default function sideBarContainerJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('sideBarContainerTest_0006', 0, async (done: Function) => {
+    it('sideBarContainerTest_0006', Level.LEVEL0, async (done: Function) => {
       console.info('sideBarContainerTest_0006 START');
       let strJsonNew = getInspectorByKey('sideBarContainer');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -140,7 +140,7 @@ export default function sideBarContainerJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('sideBarContainerTest_0007', 0, async (done: Function) => {
+    it('sideBarContainerTest_0007', Level.LEVEL0, async (done: Function) => {
       console.info('sideBarContainerTest_0007 START');
       let strJsonNew = getInspectorByKey('sideBarContainer');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -158,7 +158,7 @@ export default function sideBarContainerJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('sideBarContainerTest_0008', 0, async (done: Function) => {
+    it('sideBarContainerTest_0008', Level.LEVEL0, async (done: Function) => {
       console.info('sideBarContainerTest_0008 START');
       let strJsonNew = getInspectorByKey('sideBarContainer');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -179,7 +179,7 @@ export default function sideBarContainerJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('sideBarContainerTest_0009', 0, async (done: Function) => {
+    it('sideBarContainerTest_0009', Level.LEVEL0, async (done: Function) => {
       console.info('sideBarContainerTest_0009 START');
       let strJsonNew = getInspectorByKey('sideBarContainer');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -197,7 +197,7 @@ export default function sideBarContainerJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('sideBarContainerTest_0010', 0, async (done: Function) => {
+    it('sideBarContainerTest_0010', Level.LEVEL0, async (done: Function) => {
       console.info('sideBarContainerTest_0010 START');
       let strJsonNew = getInspectorByKey('sideBarContainer');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -215,7 +215,7 @@ export default function sideBarContainerJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('sideBarContainerTest_0011', 0, async (done: Function) => {
+    it('sideBarContainerTest_0011', Level.LEVEL0, async (done: Function) => {
       console.info('sideBarContainerTest_0011 START');
       let strJsonNew = getInspectorByKey('sideBarContainer');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -233,7 +233,7 @@ export default function sideBarContainerJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('sideBarContainerTest_0012', 0, async (done: Function) => {
+    it('sideBarContainerTest_0012', Level.LEVEL0, async (done: Function) => {
       console.info('sideBarContainerTest_0012 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

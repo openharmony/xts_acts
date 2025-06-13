@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 import {
@@ -62,7 +62,7 @@ export default function toggleJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ToggleJsunit001', 0, async (done: Function) => {
+    it('ToggleJsunit001', Level.LEVEL0, async (done: Function) => {
       console.info('[ToggleJsunit001] START');
       let strJson = getInspectorByKey('toggleCheckbox');
       let obj: ESObject = JSON.parse(strJson);
@@ -80,7 +80,7 @@ export default function toggleJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ToggleJsunit002', 0, async (done: Function) => {
+    it('ToggleJsunit002', Level.LEVEL0, async (done: Function) => {
       console.info('[ToggleJsunit002] START');
       let strJson = getInspectorByKey('toggleCheckbox');
       let obj: ESObject = JSON.parse(strJson);
@@ -98,7 +98,7 @@ export default function toggleJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ToggleJsunit003', 0, async (done: Function) => {
+    it('ToggleJsunit003', Level.LEVEL0, async (done: Function) => {
       console.info('ToggleJsunit003 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

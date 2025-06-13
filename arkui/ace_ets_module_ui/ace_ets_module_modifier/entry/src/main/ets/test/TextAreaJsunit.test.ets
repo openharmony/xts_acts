@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
@@ -48,7 +48,7 @@ export default function textAreaJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('textAreaTest_002', 0, async (done: Function) => {
+    it('textAreaTest_002', Level.LEVEL0, async (done: Function) => {
       console.info('textAreaTest_002 START');
       let strJsonNew = getInspectorByKey('textArea');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -66,7 +66,7 @@ export default function textAreaJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('textAreaTest_003', 0, async (done: Function) => {
+    it('textAreaTest_003', Level.LEVEL0, async (done: Function) => {
       console.info('textAreaTest_003 START');
       let strJsonNew = getInspectorByKey('textArea');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -85,7 +85,7 @@ export default function textAreaJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('textAreaTest_004', 0, async (done: Function) => {
+    it('textAreaTest_004', Level.LEVEL0, async (done: Function) => {
       console.info('textAreaTest_004 START');
       let strJsonNew = getInspectorByKey('textArea');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -103,7 +103,7 @@ export default function textAreaJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('textAreaTest_005', 0, async (done: Function) => {
+    it('textAreaTest_005', Level.LEVEL0, async (done: Function) => {
       console.info('textAreaTest_005 START');
       let strJsonNew = getInspectorByKey('textArea');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -122,7 +122,7 @@ export default function textAreaJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('textAreaTest_006', 0, async (done: Function) => {
+    it('textAreaTest_006', Level.LEVEL0, async (done: Function) => {
       console.info('textAreaTest_006 START');
       let strJsonNew = getInspectorByKey('textArea');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -140,7 +140,7 @@ export default function textAreaJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('textAreaTest_007', 0, async (done: Function) => {
+    it('textAreaTest_007', Level.LEVEL0, async (done: Function) => {
       console.info('textAreaTest_007 START');
       let strJsonNew = getInspectorByKey('textArea');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -158,7 +158,7 @@ export default function textAreaJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('textAreaTest_008', 0, async (done: Function) => {
+    it('textAreaTest_008', Level.LEVEL0, async (done: Function) => {
       console.info('textAreaTest_008 START');
       let strJsonNew = getInspectorByKey('textArea');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -176,7 +176,7 @@ export default function textAreaJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('textAreaTest_009', 0, async (done: Function) => {
+    it('textAreaTest_009', Level.LEVEL0, async (done: Function) => {
       console.info('textAreaTest_009 START');
       let strJsonNew = getInspectorByKey('textArea');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -194,7 +194,7 @@ export default function textAreaJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('textAreaTest_010', 0, async (done: Function) => {
+    it('textAreaTest_010', Level.LEVEL0, async (done: Function) => {
       console.info('textAreaTest_010 START');
       let strJsonNew = getInspectorByKey('textArea');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -212,7 +212,7 @@ export default function textAreaJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('textAreaTest_011', 0, async (done: Function) => {
+    it('textAreaTest_011', Level.LEVEL0, async (done: Function) => {
       console.info('textAreaTest_011 START');
       let strJsonNew = getInspectorByKey('textArea');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -230,7 +230,7 @@ export default function textAreaJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('textAreaTest_012', 0, async (done: Function) => {
+    it('textAreaTest_012', Level.LEVEL0, async (done: Function) => {
       console.info('textAreaTest_012 START');
       let strJsonNew = getInspectorByKey('textArea');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -248,7 +248,7 @@ export default function textAreaJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('textAreaTest_013', 0, async (done: Function) => {
+    it('textAreaTest_013', Level.LEVEL0, async (done: Function) => {
       console.info('textAreaTest_013 START');
       let strJsonNew = getInspectorByKey('textArea');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -266,7 +266,7 @@ export default function textAreaJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('textAreaTest_014', 0, async (done: Function) => {
+    it('textAreaTest_014', Level.LEVEL0, async (done: Function) => {
       console.info('textAreaTest_014 START');
       let strJsonNew = getInspectorByKey('textArea');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -284,7 +284,7 @@ export default function textAreaJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('textAreaTest_018', 0, async (done: Function) => {
+    it('textAreaTest_018', Level.LEVEL0, async (done: Function) => {
       console.info('textAreaTest_018 START');
       let strJsonNew = getInspectorByKey('textArea');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -302,7 +302,7 @@ export default function textAreaJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('textAreaTest_015', 0, async (done: Function) => {
+    it('textAreaTest_015', Level.LEVEL0, async (done: Function) => {
       console.info('textAreaTest_015 START');
       let strJsonNew = getInspectorByKey('textArea');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -320,7 +320,7 @@ export default function textAreaJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('textAreaTest_016', 0, async (done: Function) => {
+    it('textAreaTest_016', Level.LEVEL0, async (done: Function) => {
       console.info('textAreaTest_016 START');
       let strJsonNew = getInspectorByKey('textArea');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -338,7 +338,7 @@ export default function textAreaJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('textAreaTest_017', 0, async (done: Function) => {
+    it('textAreaTest_017', Level.LEVEL0, async (done: Function) => {
       console.info('textAreaTest_017 START');
       let strJsonNew = getInspectorByKey('textArea');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -356,7 +356,7 @@ export default function textAreaJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('textAreaTest_001', 0, async (done: Function) => {
+    it('textAreaTest_001', Level.LEVEL0, async (done: Function) => {
       console.info('textAreaTest_001 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

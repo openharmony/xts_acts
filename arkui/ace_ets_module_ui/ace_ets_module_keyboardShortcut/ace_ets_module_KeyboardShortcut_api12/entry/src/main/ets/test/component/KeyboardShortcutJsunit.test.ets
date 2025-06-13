@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router'
 import {UiDriver, UiComponent, BY, Driver, Component, ON} from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
@@ -54,7 +54,7 @@ export default function KeyboardShortcutJsunit() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('ArkUI_KeyboardShortcut_0158', 0, async (done: Function) => {
+    it('ArkUI_KeyboardShortcut_0158', Level.LEVEL1, async (done: Function) => {
       let CASE = 'ArkUI_KeyboardShortcut_0158'
       console.info(`${SUITE} ${CASE} START`);
 
@@ -81,7 +81,7 @@ export default function KeyboardShortcutJsunit() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('ArkUI_KeyboardShortcut_0159', 0, async (done: Function) => {
+    it('ArkUI_KeyboardShortcut_0159', Level.LEVEL1, async (done: Function) => {
       let CASE = 'ArkUI_KeyboardShortcut_0159'
       console.info(`${SUITE} ${CASE} START`);
 

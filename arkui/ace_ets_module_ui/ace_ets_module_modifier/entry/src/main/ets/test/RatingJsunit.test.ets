@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium';
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import router from '@ohos.router';
 import Utils from './Utils';
@@ -48,7 +48,7 @@ export default function RatingJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('RatingJsunit_0100', 0, async (done: Function) => {
+    it('RatingJsunit_0100', Level.LEVEL0, async (done: Function) => {
       console.info('[RatingJsunit_0100] START');
       let strJson = getInspectorByKey('rating1');
       let obj: ESObject = JSON.parse(strJson);
@@ -66,7 +66,7 @@ export default function RatingJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('RatingJsunit_0200', 0, async (done: Function) => {
+    it('RatingJsunit_0200', Level.LEVEL0, async (done: Function) => {
 
       console.info('[RatingJsunit_0200] START');
       let strJson = getInspectorByKey('rating1');
@@ -85,7 +85,7 @@ export default function RatingJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('RatingJsunit_0300', 0, async (done: Function) => {
+    it('RatingJsunit_0300', Level.LEVEL0, async (done: Function) => {
       console.info('[RatingJsunit_0300] START');
       let strJson = getInspectorByKey('rating1');
       let obj: ESObject = JSON.parse(strJson);
@@ -105,7 +105,7 @@ export default function RatingJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('RatingJsunit_0400', 0, async (done: Function) => {
+    it('RatingJsunit_0400', Level.LEVEL0, async (done: Function) => {
       console.info('[RatingJsunit_0400] START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

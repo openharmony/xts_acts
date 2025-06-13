@@ -15,7 +15,7 @@
 
 import events_emitter from '@ohos.events.emitter';
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium';
 import Utils from './Utils'
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest';
 
@@ -49,7 +49,7 @@ export default function listItemJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testList_item00051', 0, async (done: Function) => {
+    it('testList_item00051', Level.LEVEL0, async (done: Function) => {
       console.info('select testList_item00051 START');
       let driver = Driver.create();
       let item = await driver.findComponent(ON.id('ListItemKey1'));
@@ -67,7 +67,7 @@ export default function listItemJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testList_item00052', 0, async (done: Function) => {
+    it('testList_item00052', Level.LEVEL0, async (done: Function) => {
       console.info('select testList_item00052 START');
       let strJson = getInspectorByKey('ListItemKey1');
       console.info("[testList_item00052] obj " + JSON.stringify(JSON.parse(strJson).$attrs));
@@ -85,7 +85,7 @@ export default function listItemJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testList_item00053', 0, async (done: Function) => {
+    it('testList_item00053', Level.LEVEL0, async (done: Function) => {
       console.info('testList_item00053 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));
