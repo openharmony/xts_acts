@@ -79,7 +79,7 @@ export default function DragTest(){
 
     /*
      * @tc.number     : SUB_UDMFndk_CASE_002
-     * @tc.name       : 002
+     * @tc.name       : 0UDMFCaseTest002
      * @tc.desc       : testing List contentStartOffset And contentAndOffset
      * @tc.size       : MediumTest
      * @tc.type       : Function
@@ -189,15 +189,15 @@ export default function DragTest(){
       done();
     })
 
-        /*
-     * @tc.number     : SUB_UDMFndk_CASE_002
-     * @tc.name       : 002
+    /*
+     * @tc.number     : SUB_UDMFndk_CASE_07
+     * @tc.name       : UDMFCaseTest007
      * @tc.desc       : testing List contentStartOffset And contentAndOffset
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('UDMFCaseTest004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('SUB_UDMFndk_CASE_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let driver = Driver.create();
       let PAGE_TAG:string = 'DragCaseTest4';
       await Utils.pushPage(`drag/${PAGE_TAG}`);

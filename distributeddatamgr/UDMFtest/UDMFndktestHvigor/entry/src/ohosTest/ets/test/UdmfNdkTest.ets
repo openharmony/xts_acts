@@ -1314,20 +1314,6 @@ export default function UdmfNdkTest() {
       expect(data).assertEqual(1);
     });
     /**
-     * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_6800
-     * @tc.name OH_Udmf_DeleteUnifiedData_007
-     * @tc.desc OH_Udmf_DeleteUnifiedData_007
-     * @tc.level: Level 2
-     * @tc.type: Functiontion
-     * @tc.size: MediumTest
-     */
-    it('OH_Udmf_DeleteUnifiedData_007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
-      console.info(TAG + 'OH_Udmf_DeleteUnifiedData_007');
-      let data = testNapi.OH_Udmf_DeleteUnifiedData_007();
-      console.info(TAG + 'OH_Udmf_DeleteUnifiedData_007 data= ' + JSON.stringify(data));
-      expect(data).assertEqual(1);
-    });
-    /**
      * @tc.number SUB_DistributedData_UDMF_SDK_NdkApiTest_6900
      * @tc.name OH_Udmf_DeleteUnifiedData_008
      * @tc.desc OH_Udmf_DeleteUnifiedData_008

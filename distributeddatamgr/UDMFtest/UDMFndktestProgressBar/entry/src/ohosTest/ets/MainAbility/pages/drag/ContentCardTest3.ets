@@ -24,14 +24,14 @@ struct ContentCardTest3 {
       let thumbImage = await context.resourceManager.getMediaContent($r('app.media.foreground').id);
       this.contentForm = {
         uniformDataType: 'general.content-form',
-        title: "Content form title",
+        title: 'Content form title',
         thumbData: appIcon,
-        description: "Content form description",
+        description: 'Content form description',
         appIcon: thumbImage,
-        appName: "com.test.demo"
+        appName: 'com.test.demo'
       }; 
     } catch (err) {
-      console.info("Init data error");
+      console.info('Init data error');
     }
   }
 
@@ -55,7 +55,7 @@ struct ContentCardTest3 {
           formWidth: 110,
           formHeight: 50,
           handleOnClick: () => {
-            console.info("Clicked card");
+            console.info('Clicked card');
           }
         }).id('bigCard')
       }

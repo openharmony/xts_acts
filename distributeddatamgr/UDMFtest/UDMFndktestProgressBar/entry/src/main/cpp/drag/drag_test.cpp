@@ -185,7 +185,8 @@ static void OnEventOnDrag1(ArkUI_DragEvent* dragEvent)
     };
     OH_UdmfDataLoadInfo *info2 = OH_UdmfDataLoadInfo_Create();
     OH_UdmfDataLoadInfo_SetType(info2, "general.file");
-    OH_UdmfDataLoadInfo_SetRecordCount(info2, 100);
+    int num = 100;
+    OH_UdmfDataLoadInfo_SetRecordCount(info2, num);
     OH_UdmfGetDataParams* params = OH_UdmfGetDataParams_Create();
     unsigned int keyLen = UDMF_KEY_BUFFER_LEN;
     OH_UdmfGetDataParams_SetDestUri(params, destUri);
@@ -392,7 +393,4 @@ napi_value DragTest::GetResult(napi_env env, napi_callback_info info)
     DragTest::result.clear();
     return result;
 }
-
-
-
 } // namespace ArkUICapiTest

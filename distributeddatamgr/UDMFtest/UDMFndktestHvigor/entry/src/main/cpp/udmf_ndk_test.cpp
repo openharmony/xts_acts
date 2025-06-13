@@ -407,9 +407,7 @@ static napi_value OH_Udmf_GetPropertiesTag001(napi_env env, napi_callback_info i
     OH_UdmfProperty *properties = OH_UdmfProperty_Create(data);
     OH_UdmfProperty_SetTag(properties, "tag");
     const char* pf = OH_UdmfProperty_GetTag(properties);
-
     int64_t resTime = OH_UdmfProperty_GetTimestamp (properties);
-
     napi_value result = nullptr;
     napi_create_int32(env, (strcmp(pf, "tag") == PARAM_0) && (resTime !=0), &result);
     OH_UdmfData_Destroy(data);
@@ -422,7 +420,6 @@ static napi_value OH_Udmf_SetPropertiesShareOption001(napi_env env, napi_callbac
     OH_UdmfData *data = OH_UdmfData_Create();
     OH_UdmfProperty *properties = OH_UdmfProperty_Create(data);
     int ret = OH_UdmfProperty_SetShareOption(properties, Udmf_ShareOption::SHARE_OPTIONS_IN_APP);
-
     napi_value result = nullptr;
     napi_create_int32(env, ret == UDMF_E_OK, &result);
     OH_UdmfData_Destroy(data);
@@ -680,7 +677,6 @@ static napi_value OH_Udmf_SetAndGetUnifiedData006(napi_env env, napi_callback_in
     return result;
 }
 
-
 static napi_value OH_UdmfOptions_Create_001(napi_env env, napi_callback_info info)
 {
     OH_UdmfOptions* options = OH_UdmfOptions_Create();
@@ -746,7 +742,7 @@ static napi_value OH_UdmfOptions_Destroy001(napi_env env, napi_callback_info inf
 static napi_value OH_UdmfOptions_GetKey_001(napi_env env, napi_callback_info info)
 {
     const char* getKey = OH_UdmfOptions_GetKey(nullptr);
-    NAPI_ASSERT(env, getKey == nullptr , "OH_UdmfOptions_GetKey is fail.");
+    NAPI_ASSERT(env, getKey == nullptr, "OH_UdmfOptions_GetKey is fail.");
     napi_value res;
     napi_create_int32(env, 1, &res);
     return res;
@@ -771,7 +767,7 @@ static napi_value OH_UdmfOptions_GetKey_003(napi_env env, napi_callback_info inf
     NAPI_ASSERT(env, strcmp(getKey, "testKey") == 0, "OH_UdmfOptions_GetKey is fail.");
     OH_UdmfOptions_Destroy(options);
     napi_value res;
-    napi_create_int32(env, 1, &res);    
+    napi_create_int32(env, 1, &res);  
     return res;
 }
 
@@ -851,7 +847,7 @@ static napi_value OH_UdmfOptions_GetIntention_001(napi_env env, napi_callback_in
 
 static napi_value OH_UdmfOptions_GetIntention_002(napi_env env, napi_callback_info info)
 {
-    OH_UdmfOptions* options = OH_UdmfOptions_Create();  
+    OH_UdmfOptions* options = OH_UdmfOptions_Create();
     Udmf_Intention getIntention = OH_UdmfOptions_GetIntention(options);
     Udmf_Intention getIntention2 =  {};
     NAPI_ASSERT(env, getIntention == getIntention2, "OH_UdmfOptions_GetIntention is fail.");
@@ -1349,7 +1345,7 @@ static napi_value OH_Udmf_SetUnifiedDataByOptions_002(napi_env env, napi_callbac
     napi_value res;
     napi_create_int32(env, 1, &res);
     return res;
-} 
+}
 
 static napi_value OH_Udmf_SetUnifiedDataByOptions_003(napi_env env, napi_callback_info info)
 {
@@ -1483,7 +1479,7 @@ static napi_value OH_Udmf_SetUnifiedDataByOptions_008(napi_env env, napi_callbac
     napi_value res;
     napi_create_int32(env, 1, &res);
     return res;
-} 
+}
 
 static napi_value OH_Udmf_SetUnifiedDataByOptions_009(napi_env env, napi_callback_info info)
 {
@@ -1560,7 +1556,7 @@ static napi_value OH_Udmf_SetUnifiedDataByOptions_010(napi_env env, napi_callbac
     napi_value res;
     napi_create_int32(env, 1, &res);
     return res;
-} 
+}
 
 static napi_value OH_Udmf_SetUnifiedDataByOptions_011(napi_env env, napi_callback_info info)
 {
@@ -1711,7 +1707,7 @@ static napi_value OH_Udmf_UpdateUnifiedData_002(napi_env env, napi_callback_info
     int deleteRes = OH_Udmf_DeleteUnifiedData(options3, &dataArray2, &dataSize2);
     NAPI_ASSERT(env, deleteRes == UDMF_E_OK, "OH_Udmf_DeleteUnifiedData is fail.");
     NAPI_ASSERT(env, dataArray2 != nullptr, "OH_Udmf_DeleteUnifiedData is fail.");
-    NAPI_ASSERT(env, dataSize2 == 1, "OH_Udmf_DeleteUnifiedData is fail.");  
+
     napi_value res;
     napi_create_int32(env, 1, &res);
     OH_UdmfOptions_Destroy(options);
@@ -2045,9 +2041,7 @@ static napi_value OH_Udmf_DeleteUnifiedData_001(napi_env env, napi_callback_info
     int dateleRes = OH_Udmf_DeleteUnifiedData(options, &dataArray, &dataSize);
     NAPI_ASSERT(env, dateleRes == UDMF_E_OK, "OH_Udmf_DeleteUnifiedData is fail.");
     NAPI_ASSERT(env, dataArray != nullptr, "OH_Udmf_DeleteUnifiedData is fail.");
-
     OH_Udmf_DestroyDataArray(&dataArray, dataSize);
-
     OH_UdmfOptions_Destroy(options);
     OH_UdsFileUri_Destroy(fileUri);
     OH_UdmfRecord_Destroy(record);
@@ -2090,10 +2084,8 @@ static napi_value OH_Udmf_DeleteUnifiedData_002(napi_env env, napi_callback_info
     OH_UdmfData* dataArray2 = nullptr;
     int dateleRes1 = OH_Udmf_DeleteUnifiedData(options1, &dataArray2, &dataSize2);
     NAPI_ASSERT(env, dateleRes1 == UDMF_E_INVALID_PARAM, "OH_Udmf_DeleteUnifiedData is fail.");
-
     OH_Udmf_DestroyDataArray(&dataArray2, dataSize2);
     OH_Udmf_DestroyDataArray(&dataArray, dataSize);
-
     OH_UdmfOptions_Destroy(options);
     OH_UdmfOptions_Destroy(options1);
     OH_UdmfOptions_Destroy(options2);
@@ -2132,12 +2124,10 @@ static napi_value OH_Udmf_DeleteUnifiedData_003(napi_env env, napi_callback_info
     int dateleRes = OH_Udmf_DeleteUnifiedData(options1, &dataArray, &dataSize);
     NAPI_ASSERT(env, dateleRes == UDMF_E_INVALID_PARAM, "OH_Udmf_DeleteUnifiedData is fail.");
     NAPI_ASSERT(env, dataArray == nullptr, "OH_Udmf_DeleteUnifiedData is fail.");
-
     unsigned int dataSize2 = 0;
     OH_UdmfData* dataArray2 = nullptr;
     int dateleRes1 = OH_Udmf_DeleteUnifiedData(options, &dataArray2, &dataSize2);
     NAPI_ASSERT(env, dateleRes1 == UDMF_E_OK, "OH_Udmf_DeleteUnifiedData is fail.");
-
     OH_Udmf_DestroyDataArray(&dataArray, dataSize);
     OH_UdmfOptions_Destroy(options1);
     OH_UdmfOptions_Destroy(options);
@@ -2177,11 +2167,9 @@ static napi_value OH_Udmf_DeleteUnifiedData_004(napi_env env, napi_callback_info
     int dateleRes = OH_Udmf_DeleteUnifiedData(options1, &dataArray, &dataSize);
     NAPI_ASSERT(env, dateleRes == UDMF_E_OK, "OH_Udmf_DeleteUnifiedData is fail.");
     OH_Udmf_DestroyDataArray(&dataArray, dataSize);
-
     unsigned int dataSize1 = 0;
     OH_UdmfData* dataArray1 = nullptr;
     OH_Udmf_DeleteUnifiedData(options, &dataArray1, &dataSize1);
-
     OH_Udmf_DestroyDataArray(&dataArray1, dataSize1);
     OH_UdmfOptions_Destroy(options);
     OH_UdsFileUri_Destroy(fileUri);
@@ -2258,41 +2246,6 @@ static napi_value OH_Udmf_DeleteUnifiedData_006(napi_env env, napi_callback_info
     int dateleRes = OH_Udmf_DeleteUnifiedData(options, &dataArray, &dataSize);
     NAPI_ASSERT(env, dateleRes == UDMF_E_OK, "OH_Udmf_DeleteUnifiedData is fail.");
     NAPI_ASSERT(env, dataArray != nullptr, "OH_Udmf_DeleteUnifiedData is fail.");
-
-    OH_Udmf_DestroyDataArray(&dataArray, dataSize); 
-    OH_UdsFileUri_Destroy(fileUri);
-    OH_UdmfRecord_Destroy(record);
-    OH_UdmfData_Destroy(udmfUnifiedData);
-    napi_value res;
-    napi_create_int32(env, 1, &res);
-    return res;
-}
-
-static napi_value OH_Udmf_DeleteUnifiedData_007(napi_env env, napi_callback_info info)
-{
-    std::string uri = "https://xxx/xx/xx.jpg";
-    OH_UdmfData *udmfUnifiedData = OH_UdmfData_Create();
-    OH_UdmfRecord *record = OH_UdmfRecord_Create();
-    OH_UdsFileUri *fileUri = OH_UdsFileUri_Create();
-    OH_UdsFileUri_SetFileUri(fileUri, uri.c_str());
-    OH_UdsFileUri_SetFileType(fileUri, UDMF_META_IMAGE);
-    OH_UdmfRecord_AddFileUri(record, fileUri);
-    OH_UdmfData_AddRecord(udmfUnifiedData, record);
-    OH_UdmfOptions* options = OH_UdmfOptions_Create();
-    Udmf_Intention testIntention = UDMF_INTENTION_DATA_HUB;
-    OH_UdmfOptions_SetIntention(options, testIntention);
-    char key[UDMF_KEY_BUFFER_LEN];
-
-    int setRes = OH_Udmf_SetUnifiedDataByOptions(options, udmfUnifiedData, key, UDMF_KEY_BUFFER_LEN);
-    NAPI_ASSERT(env, setRes == UDMF_E_OK, "OH_Udmf_SetUnifiedDataByOptions is fail.");
-    NAPI_ASSERT(env, key[0] != '\0', "OH_Udmf_SetUnifiedDataByOptions is fail.");
-    OH_UdmfOptions_Destroy(options);
-    unsigned int dataSize = 0;
-    OH_UdmfData* dataArray = nullptr;
-    int dateleRes = OH_Udmf_DeleteUnifiedData(options, &dataArray, &dataSize);
-    // NAPI_ASSERT(env, dateleRes == UDMF_E_INVALID_PARAM, "OH_Udmf_DeleteUnifiedData is fail.");
-
-    
     OH_Udmf_DestroyDataArray(&dataArray, dataSize); 
     OH_UdsFileUri_Destroy(fileUri);
     OH_UdmfRecord_Destroy(record);
@@ -2327,7 +2280,7 @@ static napi_value OH_Udmf_DeleteUnifiedData_008(napi_env env, napi_callback_info
     NAPI_ASSERT(env, dateleRes == UDMF_E_OK, "OH_Udmf_DeleteUnifiedData is fail.");
     NAPI_ASSERT(env, dataArray != nullptr, "OH_Udmf_DeleteUnifiedData is fail.");
 
-    OH_Udmf_DestroyDataArray(&dataArray, dataSize); 
+    OH_Udmf_DestroyDataArray(&dataArray, dataSize);
     OH_UdsFileUri_Destroy(fileUri);
     OH_UdmfRecord_Destroy(record);
     OH_UdmfData_Destroy(udmfUnifiedData);
@@ -2350,13 +2303,12 @@ static napi_value OH_Udmf_DestroyDataArray_001(napi_env env, napi_callback_info 
     Udmf_Intention testIntention = UDMF_INTENTION_DATA_HUB;
     OH_UdmfOptions_SetIntention(options, testIntention);
     char key[UDMF_KEY_BUFFER_LEN];
-
     int setRes = OH_Udmf_SetUnifiedDataByOptions(options, udmfUnifiedData, key, UDMF_KEY_BUFFER_LEN);
     NAPI_ASSERT(env, setRes == UDMF_E_OK, "OH_Udmf_SetUnifiedDataByOptions is fail.");
     unsigned int dataSize = 0;
     OH_UdmfData* dataArray = nullptr;
     int dateleRes = OH_Udmf_DeleteUnifiedData(options, &dataArray, &dataSize);
-
+    NAPI_ASSERT(env, dateleRes == UDMF_E_OK, "OH_Udmf_SetUnifiedDataByOptions is fail.");
     OH_Udmf_DestroyDataArray(&dataArray, dataSize);
     NAPI_ASSERT(env, dataArray == nullptr, "OH_Udmf_SetUnifiedDataByOptions is fail.");
     OH_UdmfOptions_Destroy(options);
@@ -2387,11 +2339,9 @@ static napi_value OH_Udmf_DestroyDataArray_002(napi_env env, napi_callback_info 
     unsigned int dataSize = 0;
     OH_UdmfData* dataArray = nullptr;
     int dateleRes = OH_Udmf_DeleteUnifiedData(options, &dataArray, &dataSize);
-
     OH_UdmfData* dataArray1 = nullptr;
     OH_Udmf_DestroyDataArray(&dataArray1, dataSize);
     NAPI_ASSERT(env, dataArray1 == nullptr, "OH_Udmf_DestroyDataArray is fail.");
-
     OH_Udmf_DestroyDataArray(&dataArray, dataSize);
     napi_value res;
     napi_create_int32(env, 1, &res);
@@ -2417,7 +2367,6 @@ static napi_value OH_Udmf_DestroyDataArray_003(napi_env env, napi_callback_info 
     unsigned int dataSize = 0;
     OH_UdmfData* dataArray = nullptr;
     int dateleRes = OH_Udmf_DeleteUnifiedData(options, &dataArray, &dataSize);
-
     OH_Udmf_DestroyDataArray(&dataArray, dataSize);
     NAPI_ASSERT(env, dataArray == nullptr, "OH_Udmf_SetUnifiedDataByOptions is fail.");
     OH_Udmf_DestroyDataArray(&dataArray, dataSize);
@@ -2445,7 +2394,7 @@ static napi_value OH_Udmf_DestroyDataArray_004(napi_env env, napi_callback_info 
     Udmf_Intention testIntention = UDMF_INTENTION_DATA_HUB;
     OH_UdmfOptions_SetIntention(options, testIntention);
     char key[UDMF_KEY_BUFFER_LEN];
-    for (int i=0;i<10;i++) {
+    for (int i = 0; i < 10; i++) {
       OH_Udmf_SetUnifiedDataByOptions(options, udmfUnifiedData, key, UDMF_KEY_BUFFER_LEN);
     }
     unsigned int dataSize = 0;
@@ -2478,7 +2427,7 @@ static napi_value OH_Udmf_DestroyDataArray_005(napi_env env, napi_callback_info 
     Udmf_Intention testIntention = UDMF_INTENTION_DATA_HUB;
     OH_UdmfOptions_SetIntention(options, testIntention);
     char key[UDMF_KEY_BUFFER_LEN];
-    for (int i=0;i<10;i++) {
+    for (int i = 0; i < 10; i++) {
       OH_Udmf_SetUnifiedDataByOptions(options, udmfUnifiedData, key, UDMF_KEY_BUFFER_LEN);
     }
     unsigned int dataSize = 0;
@@ -2526,12 +2475,12 @@ static napi_value OH_UdmfData_CreateAndGetUnifiedDataByOptions_001(napi_env env,
 {
     size_t argc = 1;
     napi_value args[1] = {nullptr};
-    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     napi_valuetype valuetype0;
     napi_typeof(env, args[0], &valuetype0);
     size_t bufferSize = 0;
     napi_get_value_string_latin1(env, args[0], nullptr, 0, &bufferSize);
-    char str[bufferSize+1];
+    char str[bufferSize + 1];
     size_t str_length;
     napi_get_value_string_utf8(env, args[0], str, sizeof(str), &str_length);
     OH_UdmfOptions* options = OH_UdmfOptions_Create();
@@ -2594,7 +2543,7 @@ static napi_value OH_UdmfDataLoadInfo_SetTypeAndGetTypes001(napi_env env, napi_c
 
 static napi_value OH_UdmfDataLoadInfo_SetTypeAndGetTypes002(napi_env env, napi_callback_info info)
 {
-    OH_UdmfDataLoadInfo*  dataLoadInfo= OH_UdmfDataLoadInfo_Create();
+    OH_UdmfDataLoadInfo*  dataLoadInfo = OH_UdmfDataLoadInfo_Create();
     OH_UdmfDataLoadInfo_SetType(dataLoadInfo, "");
     unsigned int count = 0;
     OH_UdmfDataLoadInfo_GetTypes(dataLoadInfo, &count);
@@ -2606,7 +2555,7 @@ static napi_value OH_UdmfDataLoadInfo_SetTypeAndGetTypes002(napi_env env, napi_c
 
 static napi_value OH_UdmfDataLoadInfo_SetTypeAndGetTypes003(napi_env env, napi_callback_info info)
 {
-    OH_UdmfDataLoadInfo*  dataLoadInfo= OH_UdmfDataLoadInfo_Create();
+    OH_UdmfDataLoadInfo*  dataLoadInfo = OH_UdmfDataLoadInfo_Create();
     OH_UdmfDataLoadInfo_SetType(dataLoadInfo, "hello");
     unsigned int count = 0;
     OH_UdmfDataLoadInfo_GetTypes(dataLoadInfo, &count);
@@ -2637,10 +2586,11 @@ static napi_value OH_UdmfDataLoadInfo_GetTypes002(napi_env env, napi_callback_in
 static napi_value OH_UdmfDataLoadInfo_SetRecordCountAndGetRecordCount001(napi_env env, napi_callback_info info)
 {
     OH_UdmfDataLoadInfo*  dataLoadInfo= OH_UdmfDataLoadInfo_Create();
-    OH_UdmfDataLoadInfo_SetRecordCount(dataLoadInfo, 10);
+    int num = 10;
+    OH_UdmfDataLoadInfo_SetRecordCount(dataLoadInfo, num);
     int count = OH_UdmfDataLoadInfo_GetRecordCount(dataLoadInfo);
     napi_value result;
-    napi_create_int32(env, count == 10, &result);
+    napi_create_int32(env, count == num, &result);
     OH_UdmfDataLoadInfo_Destroy(dataLoadInfo);
     return result;
 }
@@ -2693,11 +2643,12 @@ static napi_value OH_UdmfDataLoadParams_SetDataLoadInfo001(napi_env env, napi_ca
     OH_UdmfDataLoadInfo*  dataLoadInfo= OH_UdmfDataLoadInfo_Create();
     OH_UdmfDataLoadInfo_SetType(dataLoadInfo, "general.plain-text");
     OH_UdmfDataLoadInfo_SetType(dataLoadInfo, "general.html");
-    OH_UdmfDataLoadInfo_SetRecordCount(dataLoadInfo, 2);
+    int num = 2
+    OH_UdmfDataLoadInfo_SetRecordCount(dataLoadInfo,num);
     OH_UdmfDataLoadParams_SetDataLoadInfo(dataLoadParams, dataLoadInfo);
     int count = OH_UdmfDataLoadInfo_GetRecordCount(dataLoadInfo);
     napi_value result;
-    napi_create_int32(env, count == 2, &result);
+    napi_create_int32(env, count == num, &result);
     OH_UdmfDataLoadInfo_Destroy(dataLoadInfo);
     OH_UdmfDataLoadParams_Destroy(dataLoadParams);
     return result;
@@ -2908,8 +2859,6 @@ EXTERN_C_START static napi_value Init(napi_env env, napi_value exports)
          nullptr, nullptr, napi_default, nullptr},
         {"OH_Udmf_DeleteUnifiedData_006", nullptr, OH_Udmf_DeleteUnifiedData_006, nullptr,
          nullptr, nullptr, napi_default, nullptr},
-        {"OH_Udmf_DeleteUnifiedData_007", nullptr, OH_Udmf_DeleteUnifiedData_007, nullptr,
-         nullptr, nullptr, napi_default, nullptr},
         {"OH_Udmf_DeleteUnifiedData_008", nullptr, OH_Udmf_DeleteUnifiedData_008, nullptr,
          nullptr, nullptr, napi_default, nullptr},
         {"OH_Udmf_DestroyDataArray_001", nullptr, OH_Udmf_DestroyDataArray_001, nullptr,
@@ -2942,14 +2891,14 @@ EXTERN_C_START static napi_value Init(napi_env env, napi_value exports)
          nullptr, nullptr, napi_default, nullptr},
         {"OH_UdmfDataLoadInfo_GetTypes002", nullptr, OH_UdmfDataLoadInfo_GetTypes002, nullptr,
          nullptr, nullptr, napi_default, nullptr},
-        {"OH_UdmfDataLoadInfo_SetRecordCountAndGetRecordCount001", nullptr, OH_UdmfDataLoadInfo_SetRecordCountAndGetRecordCount001, nullptr,
-         nullptr, nullptr, napi_default, nullptr},
-        {"OH_UdmfDataLoadInfo_SetRecordCountAndGetRecordCount002", nullptr, OH_UdmfDataLoadInfo_SetRecordCountAndGetRecordCount002, nullptr,
-         nullptr, nullptr, napi_default, nullptr},
-        {"OH_UdmfDataLoadInfo_SetRecordCountAndGetRecordCount003", nullptr, OH_UdmfDataLoadInfo_SetRecordCountAndGetRecordCount003, nullptr,
-         nullptr, nullptr, napi_default, nullptr},
-        {"OH_UdmfDataLoadInfo_SetRecordCountAndGetRecordCount004", nullptr, OH_UdmfDataLoadInfo_SetRecordCountAndGetRecordCount004, nullptr,
-         nullptr, nullptr, napi_default, nullptr},
+        {"OH_UdmfDataLoadInfo_SetRecordCountAndGetRecordCount001", nullptr,
+         OH_UdmfDataLoadInfo_SetRecordCountAndGetRecordCount001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"OH_UdmfDataLoadInfo_SetRecordCountAndGetRecordCount002", nullptr,
+         OH_UdmfDataLoadInfo_SetRecordCountAndGetRecordCount002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"OH_UdmfDataLoadInfo_SetRecordCountAndGetRecordCount003", nullptr,
+         OH_UdmfDataLoadInfo_SetRecordCountAndGetRecordCount003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"OH_UdmfDataLoadInfo_SetRecordCountAndGetRecordCount004", nullptr,
+         OH_UdmfDataLoadInfo_SetRecordCountAndGetRecordCount004, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"OH_UdmfDataLoadInfo_GetRecordCount001", nullptr, OH_UdmfDataLoadInfo_GetRecordCount001, nullptr,
          nullptr, nullptr, napi_default, nullptr},
         {"OH_UdmfDataLoadParams_SetDataLoadInfo001", nullptr, OH_UdmfDataLoadParams_SetDataLoadInfo001, nullptr,

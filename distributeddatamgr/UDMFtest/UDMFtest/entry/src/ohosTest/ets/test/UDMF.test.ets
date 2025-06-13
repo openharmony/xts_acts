@@ -2864,15 +2864,15 @@ export default function UDMFApiTest() {
     })
 
     /**
-     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_8200
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_8700
      * @tc.name      : CreateData type is text
      * @tc.desc      : Test UDMF creating a unifieddata with a text record.
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_8200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
-      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_8000 start');
+    it('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_8700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      console.info('SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_8700 start');
       const progressInfo:unifiedDataChannel.ProgressInfo = {
         progress: 10,
         status: unifiedDataChannel.ListenerStatus.COPY_FILE_FAILED
@@ -2896,7 +2896,7 @@ export default function UDMFApiTest() {
       expect(obj.acceptableInfo).assertEqual(getDataParams.acceptableInfo);
       expect(resProgressInfo.progress).assertEqual(progressInfo.progress);
       expect(resProgressInfo.status).assertEqual(progressInfo.status);
-      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_8200 end");
+      console.info("SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_8700 end");
       done();
     })
 
@@ -3065,7 +3065,7 @@ export default function UDMFApiTest() {
     })
 
     /**
-     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_8600
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UnifiedDataJsAPITest_8900
      * @tc.name      : CreateData type is text
      * @tc.desc      : Test UDMF creating a unifieddata with a text record.
      * @tc.size      : MEDIUM
