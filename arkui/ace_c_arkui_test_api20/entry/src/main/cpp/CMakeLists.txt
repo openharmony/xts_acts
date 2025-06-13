@@ -14,6 +14,8 @@ add_library(nativerender SHARED
     manager/plugin_manager.cpp
     napi_render_init.cpp
     onIdle/post_on_idle_test.cpp
+    customcomponent/CustomComponentOndrawFrontTest.cpp
+    customcomponent/CustomComponentOndrawBehindTest.cpp
     EmbeddedComponentOption/EmbeddedComponentOptionTest.cpp
 )
 
