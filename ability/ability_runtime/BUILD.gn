@@ -69,6 +69,7 @@ group("ability_runtime") {
       "actsrevokequickfixtest:ActsRevokeQuickFixApp",
       "actsserviceabilityclienttest:serviceability",
       "actsshellcommandfunctionalitytest:actsshellcommandfunctionalitytest",
+      "actsstartAndTerminatetest:ActsStartAndTerminate",
       "actsstartabilityforresulttest:actsstartabilityforresulttest",
       "actsstartabilitygetdisplayidtest:actsstartabilitygetdisplayidtest",
       "actsstartabilityinnewprocesstest:actsstartabilityinnewprocesstest",
