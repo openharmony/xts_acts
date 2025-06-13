@@ -551,11 +551,9 @@ static napi_value TestUpdatePipContentStatus(napi_env env, napi_callback_info in
     
     int32_t ret0 = OH_PictureInPicture_StartPip(controllerId);
     OH_LOG_INFO(LOG_APP, "TestUpdatePipContentStatus ret0=%{public}d", ret0);
-    if (ret0 != 0) {
-        napi_create_int32(env, ret0, &result);
-        return result;
-    }
-    uint32_t controlType = 0, status2 = 0, status = 1;
+    uint32_t controlType = 0;
+    uint32_t status2 = 0;
+    uint32_t status = 1;
     int32_t ret = OH_PictureInPicture_UpdatePipControlStatus(controllerId,
         static_cast<PictureInPicture_PipControlType>(controlType),
         static_cast<PictureInPicture_PipControlStatus>(status));
@@ -563,8 +561,8 @@ static napi_value TestUpdatePipContentStatus(napi_env env, napi_callback_info in
     int32_t ret2 = OH_PictureInPicture_SetPipControlEnabled(controllerId,
         static_cast<PictureInPicture_PipControlType>(controlType), status2);
     OH_LOG_INFO(LOG_APP, "TestUpdatePipContentStatus ret2=%{public}d", ret2);
-    if (ret != 0 || ret2 != 0) {
-        napi_create_int32(env, ret == 0? ret2: ret, &result);
+    if (ret != 0 || ret2 != 0 || ret0 != 0) {
+        napi_create_int32(env, ret0 == 0? (ret == 0? ret2: ret): ret0, &result);
         return result;
     }
     OH_PictureInPicture_StopPip(controllerId);
