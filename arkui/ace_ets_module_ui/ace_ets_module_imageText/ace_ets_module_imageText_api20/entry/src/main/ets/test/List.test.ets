@@ -31,6 +31,8 @@ import TextInputEnableAutoSpacingTest from './TextInputTest/TextInputEnableAutoS
 import ImageOnErrorTest from './ImageErrorTest/ImageOnError.test';
 import TextAreaMinLinesTest from './TextAreaTest/TextAreaMinLines.test';
 import RichEditorUndoStyleTest from './RichEditorTest/RichEditorUndoStyle.test';
+import TextLineSpacingTest from './TextTest/TextLineSpacing.test';
+import TextAreaLineSpacingTest from './TextAreaTest/TextAreaLineSpacing.test';
 
 
 export default function testsuite() {
@@ -52,4 +54,6 @@ export default function testsuite() {
   ImageOnErrorTest();
   TextAreaMinLinesTest();
   RichEditorUndoStyleTest();
+  TextLineSpacingTest();
+  TextAreaLineSpacingTest();
 }
