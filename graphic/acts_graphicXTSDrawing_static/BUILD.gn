@@ -15,7 +15,7 @@ import("//test/xts/tools/build/suite.gni")
 
 ohos_js_app_static_suite("ActsDrawingTsStaticTest") {
 #  test_hap = true
-#  testonly = true
+   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsDrawingTsStaticTest"
   part_name = "graphic_2d"
