@@ -900,7 +900,7 @@ export default function api16CertFuncTestTwoUnit() {
 
     /**
      * @tc.number SUB_Security_CertManager_openAuthorzeDialog_0101
-     * @tc.name test openCertificateDetailDialog
+     * @tc.name SUB_Security_CertManager_openAuthorzeDialog_0101
      * @tc.desc abnormal test
      * @tc.size MediumTest
      * @tc.level Level2
