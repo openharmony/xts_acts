@@ -352,5 +352,21 @@ export default function WebConfigCookieSync() {
       sendEventByKey('ConfigCookieSync', 10, '');
     })
 
+    /*
+    * @tc.number     : SUB_ACE_WEB_CONFIGCOOKIESYYNC_NAPI_0019
+    * @tc.name       : testConfigCookieSync019
+    * @tc.desc       : test configCookieSync Set the cache value to include \n enable incognito httpOnly
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 2
+    */
+    it('testConfigCookieSync019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      Utils.emitEvent("emitConfigCookieSync019", 612)
+      Utils.registerBaseEvent("testConfigCookieSync019", true, 2025061219, done, (backData: events_emitter.EventData, expected: Object) => {
+        expect(backData?.data?.ACTION).assertEqual(expected);
+      });
+      sendEventByKey('ConfigCookieSync', 10, '');
+    })
+
   })
 }

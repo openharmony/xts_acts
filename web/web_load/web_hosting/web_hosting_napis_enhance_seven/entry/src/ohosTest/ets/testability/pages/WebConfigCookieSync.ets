@@ -302,6 +302,18 @@ struct WebConfigCookieSync {
                   }
                   break
                 }
+                case 'emitConfigCookieSync019': {
+                  let resultCode = testNapi.setConfigCookieSync(URL_EXAMPLE, 'area=JiangNing\nArea123; Secure; HttpOnly;', true, true)
+                  console.log('emitConfigCookieSync019 setConfigCookieSync resultCode:' + resultCode)
+                  let resultValue = testNapi.getFetchCookieSync(URL_EXAMPLE, true, true)
+                  console.log('emitConfigCookieSync019 getFetchCookieSync resultValue:' + resultValue)
+                  if (resultCode === 0 &&  resultValue === 'area=JiangNing') {
+                    Utils.emitEvent(true,2025061219)
+                  } else {
+                    Utils.emitEvent(false,2025061219)
+                  }
+                  break
+                }
                 default :
                   break
               }
