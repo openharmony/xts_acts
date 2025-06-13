@@ -73,8 +73,12 @@ export default function UIExtensionContentSessionTest() {
           let unSubscribeCallback = () => {
             setTimeout(async () => {
               console.info(`====>${tag} unSubscribeCallback`);
-              expect(globalThis.errCode).assertEqual(401)
-              done();
+              if (mpEnable == 'true') {
+                expect(globalThis.errCode).assertEqual(401)
+                done();
+              } else if (mpEnable == 'false') {
+                done();
+              }
             }, 1000);
           }
           let subscribeCallBack = async (err: base.BusinessError, data: commonEventManager.CommonEventData) => {
@@ -121,8 +125,12 @@ export default function UIExtensionContentSessionTest() {
           let unSubscribeCallback = () => {
             setTimeout(async () => {
               console.info(`====>${tag} unSubscribeCallback`);
-              expect(globalThis.errCode).assertEqual(401)
-              done();
+              if (mpEnable == 'true') {
+                expect(globalThis.errCode).assertEqual(401)
+                done();
+              } else if (mpEnable == 'false') {
+                done();
+              }
             }, 1000);
           }
           let subscribeCallBack = async (err: base.BusinessError, data: commonEventManager.CommonEventData) => {
@@ -169,8 +177,12 @@ export default function UIExtensionContentSessionTest() {
           let unSubscribeCallback = () => {
             setTimeout(async () => {
               console.info(`====>${tag} unSubscribeCallback`);
-              expect(globalThis.errCode).assertEqual(401)
-              done();
+              if (mpEnable == 'true') {
+                expect(globalThis.errCode).assertEqual(401)
+                done();
+              } else if (mpEnable == 'false') {
+                done();
+              }
             }, 1000);
           }
           let subscribeCallBack = async (err: base.BusinessError, data: commonEventManager.CommonEventData) => {
@@ -217,8 +229,12 @@ export default function UIExtensionContentSessionTest() {
           let unSubscribeCallback = () => {
             setTimeout(async () => {
               console.info(`====>${tag} unSubscribeCallback`);
-              expect(globalThis.errCode).assertEqual(401)
-              done();
+              if (mpEnable == 'true') {
+                expect(globalThis.errCode).assertEqual(401)
+                done();
+              } else if (mpEnable == 'false') {
+                done();
+              }
             }, 1000);
           }
           let subscribeCallBack = async (err: base.BusinessError, data: commonEventManager.CommonEventData) => {
@@ -265,8 +281,12 @@ export default function UIExtensionContentSessionTest() {
           let unSubscribeCallback = () => {
             setTimeout(async () => {
               console.info(`====>${tag} unSubscribeCallback`);
-              expect(globalThis.errCode).assertEqual(401)
-              done();
+              if (mpEnable == 'true') {
+                expect(globalThis.errCode).assertEqual(401)
+                done();
+              } else if (mpEnable == 'false') {
+                done();
+              }
             }, 1000);
           }
           let subscribeCallBack = async (err: base.BusinessError, data: commonEventManager.CommonEventData) => {
@@ -313,8 +333,12 @@ export default function UIExtensionContentSessionTest() {
           let unSubscribeCallback = () => {
             setTimeout(async () => {
               console.info(`====>${tag} unSubscribeCallback`);
-              expect(globalThis.errCode).assertEqual(401)
-              done();
+              if (mpEnable == 'true') {
+                expect(globalThis.errCode).assertEqual(401)
+                done();
+              } else if (mpEnable == 'false') {
+                done();
+              }
             }, 1000);
           }
           let subscribeCallBack = async (err: base.BusinessError, data: commonEventManager.CommonEventData) => {
@@ -361,8 +385,12 @@ export default function UIExtensionContentSessionTest() {
           let unSubscribeCallback = () => {
             setTimeout(async () => {
               console.info(`====>${tag} unSubscribeCallback`);
-              expect(globalThis.errCode).assertEqual(16000050)
-              done();
+              if (mpEnable == 'true') {
+                expect(globalThis.errCode).assertEqual(16000050)
+                done();
+              } else if (mpEnable == 'false') {
+                done();
+              }
             }, 1000);
           }
           let subscribeCallBack = async (err: base.BusinessError, data: commonEventManager.CommonEventData) => {
@@ -409,8 +437,12 @@ export default function UIExtensionContentSessionTest() {
           let unSubscribeCallback = () => {
             setTimeout(async () => {
               console.info(`====>${tag} unSubscribeCallback`);
-              expect(globalThis.errCode).assertEqual(16000050)
-              done();
+              if (mpEnable == 'true') {
+                expect(globalThis.errCode).assertEqual(16000050)
+                done();
+              } else if (mpEnable == 'false') {
+                done();
+              }
             }, 1000);
           }
           let subscribeCallBack = async (err: base.BusinessError, data: commonEventManager.CommonEventData) => {

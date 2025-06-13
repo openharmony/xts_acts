@@ -53,7 +53,7 @@ export default class UIExtensionProvider extends UIExtensionAbility {
       } catch (error) {
         console.error(`session.loadContent fail, error: ${JSON.stringify(error)}`);
         if (error.code == 401) {
-          globalThis.errCode = err.code
+          globalThis.errCode = error.code
           commonEventManager.publish('ACTS_TEST_DESTROY', function () {
             console.info(`${caseTag} publish ACTS_TEST_DESTROY`);
             setTimeout(() => {
@@ -79,7 +79,7 @@ export default class UIExtensionProvider extends UIExtensionAbility {
       } catch (error) {
         console.error(`session.loadContentByName fail, error: ${JSON.stringify(error)}`);
         if (error.code == 401) {
-          globalThis.errCode = err.code
+          globalThis.errCode = error.code
           commonEventManager.publish('ACTS_TEST_DESTROY', function () {
             console.info(`${caseTag} publish ACTS_TEST_DESTROY`);
             setTimeout(() => {
@@ -111,7 +111,7 @@ export default class UIExtensionProvider extends UIExtensionAbility {
       } catch (error) {
         console.error(`session.terminateSelfWithResult fail, error: ${JSON.stringify(error)}`);
         if (error.code == 401) {
-          globalThis.errCode = err.code
+          globalThis.errCode = error.code
           commonEventManager.publish('ACTS_TEST_DESTROY', function () {
             console.info(`${caseTag} publish ACTS_TEST_DESTROY`);
             setTimeout(() => {
@@ -143,7 +143,7 @@ export default class UIExtensionProvider extends UIExtensionAbility {
       } catch (error) {
         console.error(`session.terminateSelfWithResult fail, error: ${JSON.stringify(error)}`);
         if (error.code == 401) {
-          globalThis.errCode = err.code
+          globalThis.errCode = error.code
           commonEventManager.publish('ACTS_TEST_DESTROY', function () {
             console.info(`${caseTag} publish ACTS_TEST_DESTROY`);
             setTimeout(() => {
@@ -175,7 +175,7 @@ export default class UIExtensionProvider extends UIExtensionAbility {
       } catch (error) {
         console.error(`session.setWindowPrivacyMode fail, error: ${JSON.stringify(error)}`);
         if (error.code == 401) {
-          globalThis.errCode = err.code
+          globalThis.errCode = error.code
           commonEventManager.publish('ACTS_TEST_DESTROY', function () {
             console.info(`${caseTag} publish ACTS_TEST_DESTROY`);
             setTimeout(() => {
@@ -207,7 +207,7 @@ export default class UIExtensionProvider extends UIExtensionAbility {
       } catch (error) {
         console.error(`session.setWindowPrivacyMode fail, error: ${JSON.stringify(error)}`);
         if (error.code == 401) {
-          globalThis.errCode = err.code
+          globalThis.errCode = error.code
           commonEventManager.publish('ACTS_TEST_DESTROY', function () {
             console.info(`${caseTag} publish ACTS_TEST_DESTROY`);
             setTimeout(() => {
