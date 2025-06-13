@@ -2646,7 +2646,7 @@ static napi_value OH_UdmfDataLoadParams_SetDataLoadInfo001(napi_env env, napi_ca
     OH_UdmfDataLoadInfo*  dataLoadInfo = OH_UdmfDataLoadInfo_Create();
     OH_UdmfDataLoadInfo_SetType(dataLoadInfo, "general.plain-text");
     OH_UdmfDataLoadInfo_SetType(dataLoadInfo, "general.html");
-    int num = 2
+    int num = 2;
     OH_UdmfDataLoadInfo_SetRecordCount(dataLoadInfo, num);
     OH_UdmfDataLoadParams_SetDataLoadInfo(dataLoadParams, dataLoadInfo);
     int count = OH_UdmfDataLoadInfo_GetRecordCount(dataLoadInfo);
