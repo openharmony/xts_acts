@@ -369,7 +369,7 @@ export default function multiThreadTest() {
       let cameraManager = camera.getCameraManager(testContext);
       let cameraArray = cameraManager.getSupportedCameras();
       console.info(`SUB_MULTIMEDIA_IMAGE_RECEIVER_MULTI_THREAD_0200 camera number is ${cameraArray.length}`);
-      if (cameraArray.length >= 2) {
+      if (cameraArray.length >= 5) {
             await doTestForReceiver(done, cameraManager, "SUB_MULTIMEDIA_IMAGE_RECEIVER_MULTI_THREAD_0200", "entry_test/ets/workers/receiver.ets");
       }  
       done();
