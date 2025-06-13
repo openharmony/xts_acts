@@ -30,6 +30,7 @@ group("graphic") {
       "effectKit:ActsEffectKitTest",
       "graphic3D:ActsGraphic3DTest",
       "graphicColorSpace:ActsColorSpaceManagerTest",
+      "graphicColorSpaceStatic:ActsColorSpaceManagerStaticTest",
       "graphicDisplaySync:ActsGraphicDisplaySyncTest",
       "graphicDrawingFont:ActsGraphicDrawingFontTest",
       "graphicEGL:ActsGraphicEglTest",
