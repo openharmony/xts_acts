@@ -19,6 +19,8 @@
 #define LOG_TAG "PipWindow"
 #include <hilog/log.h>
 #include <window_manager/oh_window_pip.h>
+#include <chrono>
+#include <thread>
 
 constexpr int32_t TWO = 2;
 constexpr int32_t THREE = 3;
@@ -406,6 +408,7 @@ static napi_value TestStopPipRepeat(napi_env env, napi_callback_info info)
     OH_PictureInPicture_StartPip(controllerId);
     int32_t ret = OH_PictureInPicture_StopPip(controllerId);
     OH_LOG_INFO(LOG_APP, "TestStopPipRepeat ret=%{public}d", ret);
+    std::this_thread::sleep_for(std::chrono::seconds(1));
     ret = OH_PictureInPicture_StopPip(controllerId);
     OH_LOG_INFO(LOG_APP, "TestStopPipRepeat 2 ret=%{public}d", ret);
     
@@ -552,7 +555,7 @@ static napi_value TestUpdatePipContentStatus(napi_env env, napi_callback_info in
         napi_create_int32(env, ret0, &result);
         return result;
     }
-    uint32_t controlType, status2 = 0, status = 1;
+    uint32_t controlType = 0, status2 = 0, status = 1;
     int32_t ret = OH_PictureInPicture_UpdatePipControlStatus(controllerId,
         static_cast<PictureInPicture_PipControlType>(controlType),
         static_cast<PictureInPicture_PipControlStatus>(status));
