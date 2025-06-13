@@ -14,7 +14,7 @@
  */
 
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { common } from '@kit.AbilityKit';
 import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -42,7 +42,7 @@ export default function abilityWMSTest() {
      * @tc.type:   Function
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_AMS_AbilityWMS_0800', 3, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_AMS_AbilityWMS_0800', Level.LEVEL3, async (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_AMS_AbilityWMS_0800`;
       hilog.info(0x0000, 'testTag', '%{public}s', `${tag}, it begin`);
       appManager.getRunningProcessInformation().then((data) => {
@@ -63,7 +63,7 @@ export default function abilityWMSTest() {
      * @tc.type:   Function
      * @tc.level  : 3
      */
-    it('SUB_Ability_AbilityRuntime_AMS_AbilityWMS_0900', 3, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_AMS_AbilityWMS_0900', Level.LEVEL3, async (done: Function) => {
       let tag = `SUB_Ability_AbilityRuntime_AMS_AbilityWMS_0900`;
       hilog.info(0x0000, 'testTag', '%{public}s', `${tag}, it begin`);
       try{
