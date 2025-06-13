@@ -13,11 +13,11 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-group("utils_static") {
-  testonly = true
-  if (is_standard_system) {
-    deps = [
-      "arkts_static:arkts_static",
-    ]
-  }
+ohos_js_app_static_suite("ActsNotificationEmitterNewStaticTest") {
+#  test_hap = true
+#  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsNotificationEmitterNewStaticTest"
+  part_name = "eventhandler"
+  subsystem_name = "notification"
 }

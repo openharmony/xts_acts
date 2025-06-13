@@ -5,7 +5,7 @@
         "test-timeout": "800000",
         "shell-timeout": "800000",
         "bundle-name": "com.buffer.standard.static",
-        "package-name": "com.buffer.standard.static"
+		"module-name": "entry"
     },
     "kits": [
         {

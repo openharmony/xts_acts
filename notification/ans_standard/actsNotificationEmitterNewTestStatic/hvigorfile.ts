@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2025 Huawei Device Co., Ltd.
+ * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,12 +13,9 @@
  * limitations under the License.
  */
 
-import BufferTest from './Buffer.test'
-import buffer1Test from './buffer/Buffer1.test';
-import buffer2Test from './buffer/Buffer2.test';
+import { appTasks } from '@ohos/hvigor-ohos-plugin';
 
-export default function testsuite() {
-  BufferTest();
-  buffer1Test();
-  buffer2Test();
+export default {
+    system: appTasks,  /* Built-in plugin of Hvigor. It cannot be modified. */
+    plugins: []         /* Custom plugin to extend the functionality of Hvigor. */
 }
