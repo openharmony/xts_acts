@@ -805,7 +805,6 @@ export default function windowKeyBorad() {
           await input2.click();
           await sleep(500);
           await driver.pressBack();
-          await driver.pressBack();
           await sleep(500);
 
           expect(timer1).assertEqual(2);
