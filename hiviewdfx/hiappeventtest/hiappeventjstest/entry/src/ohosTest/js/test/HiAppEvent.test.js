@@ -1017,12 +1017,14 @@ describe('HiAppEventApiTest', function () {
     it('testHiAppEventApi41', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info('testHiAppEventApi41 start');
         let configInfo = {};
-        try {
-            setEventConfigV9Test("MAIN_THREAD_JANK", configInfo, null, done);
-        } catch (err) {
-            expect(err.message == "Cannot read property then of undefined").assertTrue();
+        let expectErr = createError(401, "Invalid param value for event config.");
+        HiAppEventV9.setEventConfig("MAIN_THREAD_JANK", configInfo).then((data) => {
+            expect(data).assertEqual(0);
             done();
-        }
+        }).catch((err) => {
+            assertErrorEqual(err, expectErr);
+            done();
+        });
         console.info('testHiAppEventApi41 end');
     });
 

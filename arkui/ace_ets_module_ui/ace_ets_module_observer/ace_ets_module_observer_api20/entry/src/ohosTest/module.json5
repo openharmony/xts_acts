@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 {
   "module": {
     "name": "entry_test",
@@ -21,13 +22,12 @@
     "deviceTypes": [],
     "deliveryWithInstall": true,
     "installationFree": false,
-    "pages": "$profile:test_pages",
+    "pages": "$profile:main_pages",
     "abilities": [
       {
         "name": "TestAbility",
         "srcEntry": "./ets/testability/TestAbility.ets",
         "description": "$string:TestAbility_desc",
-        "orientation": "auto_rotation",
         "icon": "$media:icon",
         "label": "$string:TestAbility_label",
         "exported": true,
@@ -44,11 +44,6 @@
           }
         ]
       }
-    ],
-    "requestPermissions": [
-      {
-        "name": "ohos.permission.ACCESS_VIRTUAL_SCREEN",
-      }
     ]
-  },
+  }
 }
