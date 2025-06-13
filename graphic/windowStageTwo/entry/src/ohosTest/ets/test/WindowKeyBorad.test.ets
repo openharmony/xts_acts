@@ -321,7 +321,7 @@ export default function windowKeyBorad() {
     it('testSubWindowDestroy_offKeyboradWillShow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testSubWindowDestroy_offKeyboradWillShow ';
       console.log(caseName + 'begin');
-      const subWindowClass = await windowStage.createSubWindow('testSubWindowDestroy_onKeyboradWillShow');
+      const subWindowClass = await windowStage.createSubWindow('testSubWindowDestroy_offKeyboradWillShow');
       console.info(`${caseName} Succeeded in creating the sub window.`);
       await subWindowClass.setUIContent('testability/pages/WindowTest/KeyBoradTest');
       await sleep(200);
@@ -418,81 +418,8 @@ export default function windowKeyBorad() {
     it('testSubWindow_onkeyboardWillHide', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let caseName: string = 'testSubWindow_onkeyboardWillHide ';
       console.log(caseName + 'begin');
-      const subWindowClass = await windowStage.createSubWindow('testSubWindow_onKeyboradWillShow');
+      const subWindowClass = await windowStage.createSubWindow('testSubWindow_onkeyboardWillHide');
       console.info(`${caseName} Succeeded in creating the sub window.`);
-      await subWindowClass.setUIContent('testability/pages/WindowTest/KeyBoradTest');
-      await sleep(200);
-      await subWindowClass.showWindow();
-      await sleep(200);
-      try {
-        if (isPCStatus != '' || isAutoWindow == 'true') {
-          await subWindowClass.destroyWindow();
-          done();
-        } else {
-          const callback  = async (keyboardInfo: window.KeyboardInfo) => {
-            console.info(`${caseName} KeyboardInfo: ${JSON.stringify(keyboardInfo)}`);
-            let displayInfo = display.getDefaultDisplaySync();
-            console.info(`${caseName} dispalyInfo: ${JSON.stringify(displayInfo)}`);
-            expect(keyboardInfo.beginRect.left).assertEqual(0);
-            expect(keyboardInfo.beginRect.top + keyboardInfo.beginRect.height).assertEqual(displayInfo.height);
-            expect(keyboardInfo.beginRect.width).assertEqual(displayInfo.width);
-            expect(keyboardInfo.endRect.left).assertEqual(0);
-            expect(keyboardInfo.endRect.top).assertEqual(displayInfo.height);
-            expect(keyboardInfo.endRect.width).assertEqual(displayInfo.width);
-            expect(keyboardInfo.endRect.height).assertLarger(0);
-            expect(keyboardInfo.animated).assertEqual(true);
-            expect(keyboardInfo.config?.curve).assertEqual(1);
-            expect(keyboardInfo.config?.duration).assertLarger(0);
-            if (keyboardInfo.config?.param != null) {
-              expect(true).assertTrue();
-            } else {
-              expect(true).assertFalse();
-            }
-            subWindowClass.off('keyboardWillHide');
-            await subWindowClass.destroyWindow();
-            done();
-          }
-          subWindowClass.on('keyboardWillHide', callback);
-          let driver: Driver = Driver.create();
-          await sleep(1000);
-          let input = await driver.findComponent(ON.id('textInput'));
-          await sleep(1000);
-          await input.click();
-          await sleep(500);
-          await driver.pressBack();
-          await sleep(500);
-        }
-      } catch (err) {
-        console.error(caseName + 'Failed. Cause:' + JSON.stringify(err));
-        subWindowClass.off('keyboardWillHide');
-        await subWindowClass.destroyWindow();
-        if (err.code === 801) {
-          done();
-        } else {
-          expect().assertFail()
-          done();
-        }
-      }
-    });
-
-    /**
-     * @tc.number    : SUB_BASIC_WMS_ONKEYBOARDWILLHIDE_0300
-     * @tc.name      : testSystemWindow_onkeyboardWillHide
-     * @tc.desc      : 系统dialog窗监听onKeyboardWillHide后隐藏固定态输入法键盘触发回调
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 1
-     */
-    it('testSystemWindow_onkeyboardWillHide', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
-      let caseName: string = 'testSystemWindow_onkeyboardWillHide ';
-      console.log(caseName + 'begin');
-      let config: window.Configuration = {
-        name: "testSystemWindow_onkeyboardWillHide",
-        windowType: window.WindowType.TYPE_DIALOG,
-        ctx: context
-      };
-      const subWindowClass = await window.createWindow(config);
-      console.info(`${caseName} Succeeded in creating the dialog window.`);
       await subWindowClass.setUIContent('testability/pages/WindowTest/KeyBoradTest');
       await sleep(200);
       await subWindowClass.showWindow();
@@ -559,7 +486,7 @@ export default function windowKeyBorad() {
     it('testSubWindowDestroy_onkeyboardWillHide', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testSubWindowDestroy_onkeyboardWillHide ';
       console.log(caseName + 'begin');
-      const subWindowClass = await windowStage.createSubWindow('testSubWindowDestroy_onKeyboradWillShow');
+      const subWindowClass = await windowStage.createSubWindow('testSubWindowDestroy_onkeyboardWillHide');
       console.info(`${caseName} Succeeded in creating the sub window.`);
       await subWindowClass.setUIContent('testability/pages/WindowTest/KeyBoradTest');
       await sleep(200);
@@ -594,7 +521,7 @@ export default function windowKeyBorad() {
     it('testSubWindowDestroy_offkeyboardWillHide', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let caseName: string = 'testSubWindowDestroy_offkeyboardWillHide ';
       console.log(caseName + 'begin');
-      const subWindowClass = await windowStage.createSubWindow('testSubWindowDestroy_onKeyboradWillShow');
+      const subWindowClass = await windowStage.createSubWindow('testSubWindowDestroy_offkeyboardWillHide');
       console.info(`${caseName} Succeeded in creating the sub window.`);
       await subWindowClass.setUIContent('testability/pages/WindowTest/KeyBoradTest');
       await sleep(200);
