@@ -2,8 +2,8 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import { i18n, intl } from '@kit.LocalizationKit';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 
-export default function SixPointZero_i18nStageTest() {
-  describe('SixPointZero_i18nStageTest', () => {
+export default function SixPointZeroI18nStageTest() {
+  describe('SixPointZeroI18nStageTest', () => {
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
     beforeAll(() => {
       // Presets an action, which is performed only once before all test cases of the test suite start.
@@ -339,15 +339,15 @@ export default function SixPointZero_i18nStageTest() {
 
     /* *
     * @tc.number    : SUB_GLOBAL_I18N_getSystemLocaleInstance_0100
-    * @tc.name      : getSystemLocaleInstance interface
+    * @tc.name      : testGetSystemLocaleInstance_0100
     * @tc.desc      : obtain the locale of current system
     * @tc.size      : MediumTest
     * @tc.type      : Function
     * @tc.level     : Level 2
     */
-    it('SUB_GLOBAL_I18N_getSystemLocaleInstance_0100', Level.LEVEL2, () => {
+    it('testGetSystemLocaleInstance_0100', Level.LEVEL2, () => {
       let value = i18n.System.getSystemLocaleInstance();
-      console.log('SUB_GLOBAL_I18N_getSystemLocaleInstance_0100' + value.toString());
+      console.log('testGetSystemLocaleInstance_0100' + value.toString());
       expect(value.toString() == null).assertFalse();
       expect(value.baseName == null).assertFalse();
       expect(value.language == null).assertFalse();

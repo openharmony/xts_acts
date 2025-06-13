@@ -15,10 +15,10 @@
 
 import i18nStageTest from './i18nstage.test.ets'
 import FivePointOne_i18nStageTest from './FivePointOne_i18nstage.test.ets'
-import SixPointZero_i18nStageTest from './SixPointZero_i18nstage.test.ets';
+import SixPointZeroI18nStageTest from './SixPointZeroI18nStage.test.ets';
 
 export default function testsuite() {
   i18nStageTest()
   FivePointOne_i18nStageTest()
-  SixPointZero_i18nStageTest();
+  SixPointZeroI18nStageTest();
 }
