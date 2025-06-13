@@ -917,7 +917,7 @@ export default function api16CertFuncTestUnit() {
 
     /**
      * @tc.number SUB_Security_CertManager_getCertificateStorePath_0150
-     * @tc.name test getCertificateStorePath interface
+     * @tc.name SUB_Security_CertManager_getCertificateStorePath_0150
      * @tc.desc abnormal test
      * @tc.size SmallTest
      * @tc.level Level2
@@ -943,7 +943,7 @@ export default function api16CertFuncTestUnit() {
 
     /**
      * @tc.number SUB_Security_CertManager_getCertificateStorePath_0151
-     * @tc.name test getCertificateStorePath interface
+     * @tc.name SUB_Security_CertManager_getCertificateStorePath_0151
      * @tc.desc abnormal test
      * @tc.size SmallTest
      * @tc.level Level2
@@ -970,7 +970,7 @@ export default function api16CertFuncTestUnit() {
 
         /**
      * @tc.number SUB_Security_CertManager_getCertificateStorePath_0154
-     * @tc.name getCertificateStorePathApi18
+     * @tc.name SUB_Security_CertManager_getCertificateStorePath_0154
      * @tc.desc abnormal test
      * @tc.size SmallTest
      * @tc.level Level3
