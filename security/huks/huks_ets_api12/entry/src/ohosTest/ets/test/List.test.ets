@@ -24,6 +24,7 @@ import SecurityHuksImportTest from './SecurityHuksImport.test';
 import SecurityHuksKeyAttestationTest from './SecurityHuksKeyAttestation.test';
 import SecurityHuksInterfaceErrorCodeTest from './SecurityHuksInterfaceErrorCode.test';
 import SecurityHuksWrapKeyTest from './SecurityHuksWrapKey.test';
+import SecurityHuksAccessControlUserAuthTest from './SecurityHuksAccessControlUserAuth.test';
 
 export default function testsuite() {
   SecurityHuksAccessControlAsUserTest();
@@ -38,4 +39,5 @@ export default function testsuite() {
   SecurityHuksKeyAttestationTest();
   SecurityHuksInterfaceErrorCodeTest();
   SecurityHuksWrapKeyTest();
+  SecurityHuksAccessControlUserAuthTest();
 }
