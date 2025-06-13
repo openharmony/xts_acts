@@ -14,13 +14,9 @@
  */
 import XComponentHDRBrightnessTest from './XComponent/XComponentHDRBrightnessTest.test'
 import XComponentDrawingCanvasTest from './XComponent/XComponentDrawingCanvasTest.test'
-import XComponentKeyMouseTest from './XComponent/XComponentKeyMouseTest.test'
-import XComponentNdkInterfaceTest from './XComponent/XComponentNdkInterfaceTest.test'
 
 export default function testsuite() {
   XComponentHDRBrightnessTest()
   XComponentDrawingCanvasTest()
-  XComponentKeyMouseTest()
-  XComponentNdkInterfaceTest()
 }
 

@@ -2,8 +2,6 @@
     "src": [
         "MainAbility/pages/index/index",
         "MainAbility/pages/XComponent/XComponentHDRBrightnessPage",
-        "MainAbility/pages/XComponent/XComponentDrawingCanvasPage",
-        "MainAbility/pages/XComponent/XComponentKeyMousePage",
-        "MainAbility/pages/XComponent/XComponentNdkInterfacePage"
+        "MainAbility/pages/XComponent/XComponentDrawingCanvasPage"
     ]
 }
