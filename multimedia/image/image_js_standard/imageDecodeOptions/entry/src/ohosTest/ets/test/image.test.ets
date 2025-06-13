@@ -1568,7 +1568,7 @@ export default function imageDecodeOptions() {
                     desiredSize: { width: 1, height: 2 },
                     rotate: 10,
                     desiredPixelFormat: 2,
-                    desiredRegion: { size: { height: 1, width: 2 }, x: 1000, y: 1000 },
+                    desiredRegion: { size: { height: 1, width: 2 }, x: 200, y: 210 },
                     index: 0,
                 };
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
