@@ -41,8 +41,8 @@ export default function windowKeyBorad() {
       //isPCStatus == '' 非PC设备
       //isPCStatus == '1' PC设备状态栏dock未融合
       //isPCStatus == '0' PC设备状态栏dock融合
-      console.info(`beforeAll isPCStatus: `+ isPCStatus);
-      let mainWindow =  windowStage.getMainWindowSync();
+      console.info('beforeAll isPCStatus: ' + isPCStatus);
+      let mainWindow = windowStage.getMainWindowSync();
       await mainWindow.setUIContent('testability/pages/WindowTest/KeyBoradTest');
       let driver: Driver = Driver.create();
       await sleep(1000);
@@ -55,11 +55,11 @@ export default function windowKeyBorad() {
         await sleep(1000);
         if (text) {
           await text.click();
+        }else{
+          await driver.pressBack();
         }
-      } else{
-        await driver.pressBack();
+        await sleep(1000);
       }
-      await sleep(1000);
     });
     beforeEach(() => {
     });
