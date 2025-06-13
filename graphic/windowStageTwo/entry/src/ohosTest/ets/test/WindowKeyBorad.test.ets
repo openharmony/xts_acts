@@ -44,10 +44,9 @@ export default function windowKeyBorad() {
       console.info(`beforeAll isPCStatus: `+ isPCStatus);
       let mainWindow =  windowStage.getMainWindowSync();
       await mainWindow.setUIContent('testability/pages/WindowTest/KeyBoradTest');
+      let driver: Driver = Driver.create();
       await sleep(1000);
       if (isPCStatus==''||isAutoWindow == 'false') {
-        let driver: Driver = Driver.create();
-        await sleep(1000);
         let input = await driver.findComponent(ON.id('textInput'));
         await sleep(1000);
         await input.click();
@@ -57,8 +56,10 @@ export default function windowKeyBorad() {
         if (text) {
           await text.click();
         }
-        await sleep(1000);
+      } else{
+        await driver.pressBack();
       }
+      await sleep(1000);
     });
     beforeEach(() => {
     });
