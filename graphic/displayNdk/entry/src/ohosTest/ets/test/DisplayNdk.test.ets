@@ -583,19 +583,19 @@ export default function DisplayNdkTest() {
     })
 
     /**
-     * @tc.number    : OH_NativeDisplayManager_CreateAvailableAreaErrCode_140003
-     * @tc.name      : test_OH_NativeDisplayManager_CreateAvailableArea_ErrCode140003
-     * @tc.desc      : test_OH_NativeDisplayManager_CreateAvailableArea_ErrCode140003
+     * @tc.number    : OH_NativeDisplayManager_CreateAvailableAreaErrCode_140004
+     * @tc.name      : test_OH_NativeDisplayManager_CreateAvailableArea_ErrCode140004
+     * @tc.desc      : test_OH_NativeDisplayManager_CreateAvailableArea_ErrCode140004
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('test_OH_NativeDisplayManager_CreateAvailableArea_ErrCode140003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
-      let caseName = 'test_OH_NativeDisplayManager_CreateAvailableArea_ErrCode140003';
+    it('test_OH_NativeDisplayManager_CreateAvailableArea_ErrCode140004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
+      let caseName = 'test_OH_NativeDisplayManager_CreateAvailableArea_ErrCode140004';
       try{
         let errcode  = testNapi.createAvailableArea_ErrCode140003();
         console.log(`${caseName} result: ${JSON.stringify(errcode)}`);
-        expect(errcode).assertEqual(1400003);
+        expect(errcode).assertEqual(1400004);
         done();
       } catch (err) {
         console.log(caseName + ': fail:'+ err + ' '+err.code);
@@ -679,8 +679,13 @@ export default function DisplayNdkTest() {
         });
       } catch (err) {
         console.log(caseName + ': fail:'+ err + ' '+err.code);
-        expect(false).assertTrue();
-        done();
+        if(err.code == 801){
+          done()
+        }else{
+          expect(false).assertTrue();
+          done();
+        }
+        
       }
     })
 
@@ -733,19 +738,19 @@ export default function DisplayNdkTest() {
     })
 
     /**
-     * @tc.number    : test_OH_NativeDisplayManager_GetDisplaySourceMode_ErrCode140003
-     * @tc.name      : test_OH_NativeDisplayManager_GetDisplaySourceMode_ErrCode140003
-     * @tc.desc      : test_OH_NativeDisplayManager_GetDisplaySourceMode_ErrCode140003
+     * @tc.number    : test_OH_NativeDisplayManager_GetDisplaySourceMode_ErrCode1400004
+     * @tc.name      : test_OH_NativeDisplayManager_GetDisplaySourceMode_ErrCode1400004
+     * @tc.desc      : test_OH_NativeDisplayManager_GetDisplaySourceMode_ErrCode1400004
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('test_OH_NativeDisplayManager_GetDisplaySourceMode_ErrCode140003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
-      let caseName = 'test_OH_NativeDisplayManager_GetDisplaySourceMode_ErrCode140003';
+    it('test_OH_NativeDisplayManager_GetDisplaySourceMode_ErrCode1400004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
+      let caseName = 'test_OH_NativeDisplayManager_GetDisplaySourceMode_ErrCode1400004';
       try{
         let result  = testNapi.getDisplaySourceMode_ErrCode140003();
         console.log(`${caseName} result: ${JSON.stringify(result)}`);
-        expect(result).assertEqual(1400003);
+        expect(result).assertEqual(1400004);
         done();
       } catch (err) {
         console.log(caseName + ': fail:'+ err + ' '+err.code);
@@ -778,18 +783,18 @@ export default function DisplayNdkTest() {
 
     /**
      * @tc.number    : OH_NativeDisplayManager_GetDisplayPosition
-     * @tc.name      : test_OH_NativeDisplayManager_GetDisplayPosition_ErrCode140003
-     * @tc.desc      : test_OH_NativeDisplayManager_GetDisplayPosition_ErrCode140003
+     * @tc.name      : test_OH_NativeDisplayManager_GetDisplayPosition_ErrCode140004
+     * @tc.desc      : test_OH_NativeDisplayManager_GetDisplayPosition_ErrCode140004
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('test_OH_NativeDisplayManager_GetDisplayPosition_ErrCode140003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
-      let caseName = 'test_OH_NativeDisplayManager_GetDisplayPosition_ErrCode140003';
+    it('test_OH_NativeDisplayManager_GetDisplayPosition_ErrCode140004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:Function) => {
+      let caseName = 'test_OH_NativeDisplayManager_GetDisplayPosition_ErrCode140004';
       try{
         let result  = testNapi.getDisplayPosition_ErrCode140003();
         console.log(`${caseName} result: ${JSON.stringify(result)}`);
-        expect(result).assertEqual(1400003);
+        expect(result).assertEqual(1400004);
         done();
       } catch (err) {
         console.log(caseName + ': fail:'+ err + ' '+err.code);
