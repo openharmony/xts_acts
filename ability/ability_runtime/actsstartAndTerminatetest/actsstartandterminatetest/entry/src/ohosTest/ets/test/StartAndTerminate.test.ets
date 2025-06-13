@@ -749,8 +749,6 @@ export default function startAndTerminateTest() {
                 try {
                   context.startAbility(
                     {
-                      bundleName: 'com.test.actsstartandterminatetest',
-                      abilityName: 'UiAbility10',
                       action:"SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_5400",
                       entities: ["entity.system.home"],
                     }).then(() => {
@@ -822,7 +820,6 @@ export default function startAndTerminateTest() {
                   .then(data => {
                     hilog.info(0x0000, 'testTag', '%{public}s',
                       'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3800 data is: ' + JSON.stringify(data));
-                    res = JSON.stringify(data);
                   })
                   .catch((err: BusinessError) => {
                     hilog.info(0x0000, 'testTag', '%{public}s',

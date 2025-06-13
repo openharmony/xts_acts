@@ -230,6 +230,7 @@
           {
             "actions": [
               "action.system.home",
+              "SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_5400"
             ],
             "entities": [
               "entity.system.home",
