@@ -43,7 +43,7 @@ target_link_libraries(cryptoParam PUBLIC
      libnative_rdb_ndk.z.so
 )
 
-add_library(interfacetest SHARED rdb_interface_test.cpp)
+add_library(interfacetest SHARED RdbInterfaceTest.cpp)
 target_link_libraries(interfacetest PUBLIC 
      libace_napi.z.so 
      libhilog_ndk.z.so 
