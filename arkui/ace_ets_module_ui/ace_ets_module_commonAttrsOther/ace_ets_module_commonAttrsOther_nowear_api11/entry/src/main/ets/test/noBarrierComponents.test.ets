@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import router from '@ohos.router';
 
@@ -59,7 +59,7 @@ export default function noBarrierComponentsTest() {
     })
     
     
-    it('noBarrierComponents025', 0, async (done: Function) => {
+    it('noBarrierComponents025', Level.LEVEL0, async (done: Function) => {
       console.info('noBarrierComponents025 START');
       setTimeout(() => {
         try {
@@ -75,7 +75,7 @@ export default function noBarrierComponentsTest() {
       }, 500)
     });
     
-    it('noBarrierComponents029', 0, async (done: Function) => {
+    it('noBarrierComponents029', Level.LEVEL0, async (done: Function) => {
       console.info('noBarrierComponents029 START');
       setTimeout(() => {
         try {

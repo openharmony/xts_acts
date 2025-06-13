@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router'
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import input from '@ohos.multimodalInput.keyCode';
@@ -72,7 +72,7 @@ export default function globalShortcutKeyTest2() {
      * @tc.type :
      * @tc.size :
      */
-    it('SUB_ACE_SUPPORT_GLOBAL_SHORTCUT_KEY_REGISTRATION_0160', 0, async (done: Function) => {
+    it('SUB_ACE_SUPPORT_GLOBAL_SHORTCUT_KEY_REGISTRATION_0160', Level.LEVEL0, async (done: Function) => {
       let keyStrings: (string | FunctionKey)[] = [
         FunctionKey.TAB];
       let driver = Driver.create();

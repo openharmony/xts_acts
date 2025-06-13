@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -69,7 +69,7 @@ export default function getScrollItemRect4() {
     * @tc.desc  : set index to 0,set Visibility of column to Visibility.Visible
     * @tc.level : Level 2
     */
-    it('getScrollItemRect4_0100', 0, async (done: Function) => {
+    it('getScrollItemRect4_0100', Level.LEVEL0, async (done: Function) => {
 
       console.info('[getScrollItemRect4_0100] START');
       globalThis.value.message.notify({
@@ -131,7 +131,7 @@ export default function getScrollItemRect4() {
     * @tc.desc  : set index to 0,set Visibility of column to Visibility.Hidden
     * @tc.level : Level 2
     */
-    it('getScrollItemRect4_0200', 0, async (done: Function) => {
+    it('getScrollItemRect4_0200', Level.LEVEL0, async (done: Function) => {
 
       console.info('[getScrollItemRect4_0200] START');
       globalThis.value.message.notify({
@@ -192,7 +192,7 @@ export default function getScrollItemRect4() {
     * @tc.desc  : set index to 0,set Visibility of column to Visibility.None
     * @tc.level : Level 2
     */
-    it('getScrollItemRect4_0300', 0, async (done: Function) => {
+    it('getScrollItemRect4_0300', Level.LEVEL0, async (done: Function) => {
 
       console.info('[getScrollItemRect4_0300] START');
       globalThis.value.message.notify({

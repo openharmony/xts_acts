@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from '../../MainAbility/common/Utils'
 
 export default function hitTestModeJsunit() {
@@ -50,7 +50,7 @@ export default function hitTestModeJsunit() {
      * @tc.name         testhitTestMode0002
      * @tc.desic         acehitTestModelEtsTest0002
      */
-    it('testhitTestMode0002', 0, async (done: Function) => {
+    it('testhitTestMode0002', Level.LEVEL2, async (done: Function) => {
       console.info('hitTestMode testhitTestMode0002 START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('Block');

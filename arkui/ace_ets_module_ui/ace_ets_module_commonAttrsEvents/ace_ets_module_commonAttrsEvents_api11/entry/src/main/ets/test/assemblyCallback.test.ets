@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import inspector from '@ohos.arkui.inspector';
 import router from '@ohos.router';
 
@@ -40,7 +40,7 @@ export default function assemblyCallbackTest() {
       done()
     });
 
-    it('ArkUX_Callback_notification_0210', 0, async (done: Function) => {
+    it('ArkUX_Callback_notification_0210', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Callback_notification_0210 START');
       setTimeout(() => {
         try {
@@ -57,7 +57,7 @@ export default function assemblyCallbackTest() {
       }, 500)
     });
 
-    it('ArkUX_Callback_notification_0220', 0, async (done: Function) => {
+    it('ArkUX_Callback_notification_0220', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Callback_notification_0220 START');
       setTimeout(() => {
         try {
@@ -74,7 +74,7 @@ export default function assemblyCallbackTest() {
       }, 500)
     });
 
-    it('ArkUX_Callback_notification_0230', 0, async (done: Function) => {
+    it('ArkUX_Callback_notification_0230', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Callback_notification_0230 START');
       setTimeout(() => {
         try {
@@ -91,7 +91,7 @@ export default function assemblyCallbackTest() {
       }, 500)
     });
 
-    it('ArkUX_Callback_notification_0240', 0, async (done: Function) => {
+    it('ArkUX_Callback_notification_0240', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Callback_notification_0240 START');
       setTimeout(() => {
         try {
@@ -108,7 +108,7 @@ export default function assemblyCallbackTest() {
       }, 500)
     });
 
-    it('ArkUX_Callback_notification_0250', 0, async (done: Function) => {
+    it('ArkUX_Callback_notification_0250', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Callback_notification_0250 START');
       setTimeout(() => {
         try {
@@ -125,7 +125,7 @@ export default function assemblyCallbackTest() {
       }, 500)
     });
 
-    it('ArkUX_Callback_notification_0260', 0, async (done: Function) => {
+    it('ArkUX_Callback_notification_0260', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Callback_notification_0260 START');
       setTimeout(() => {
         try {

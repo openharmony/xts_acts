@@ -15,7 +15,7 @@
 
 import events_emitter from '@ohos.events.emitter';
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from '../../MainAbility/common/Utils'
 
 export default function commonColorModeJsunit() {
@@ -51,7 +51,7 @@ export default function commonColorModeJsunit() {
      * @tc.name         testCommonColorMode0011
      * @tc.desic        acecommonColorModeEtsTest0011
      */
-    it('testCommonColorMode0011', 0, async (done: Function) => {
+    it('testCommonColorMode0011', Level.LEVEL2, async (done: Function) => {
       console.info('commonColorMode testCommonColorMode0011 START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('ThinText');
@@ -69,7 +69,7 @@ export default function commonColorModeJsunit() {
      * @tc.name         testCommonColorMode0012
      * @tc.desic        acecommonColorModeEtsTest0012
      */
-    it('testCommonColorMode0012', 0, async (done: Function) => {
+    it('testCommonColorMode0012', Level.LEVEL2, async (done: Function) => {
       console.info('commonColorMode testCommonColorMode0012 START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('ThickText');
@@ -89,7 +89,7 @@ export default function commonColorModeJsunit() {
      * @tc.name         testCommonMiddle0001
      * @tc.desic        acecommonMiddleEtsTest0001
      */
-    it('testCommonMiddle0001', 0, async (done: Function) => {
+    it('testCommonMiddle0001', Level.LEVEL2, async (done: Function) => {
       console.info('commonMiddle testCommonMiddle0001 START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('middleText');
@@ -107,7 +107,7 @@ export default function commonColorModeJsunit() {
      * @tc.name         testCommonOutset0001
      * @tc.desic        acecommonOutsetEtsTest0001
      */
-    it('testCommonOutset0001', 0, async (done: Function) => {
+    it('testCommonOutset0001', Level.LEVEL2, async (done: Function) => {
       console.info('commonOutset testCommonOutset0001 START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('outsetText');
@@ -124,7 +124,7 @@ export default function commonColorModeJsunit() {
      * @tc.name         testCommonRepeat0001
      * @tc.desic        acecommonRepeatEtsTest0001
      */
-    it('testCommonRepeat0001', 0, async (done: Function) => {
+    it('testCommonRepeat0001', Level.LEVEL2, async (done: Function) => {
       console.info('commonRepeat testCommonRepeat0001 START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('RepeatText');
@@ -141,7 +141,7 @@ export default function commonColorModeJsunit() {
      * @tc.name         testCommonSpace0001
      * @tc.desic        acecommonSpaceEtsTest0001
      */
-    it('testCommonSpace0001', 0, async (done: Function) => {
+    it('testCommonSpace0001', Level.LEVEL2, async (done: Function) => {
       console.info('commonSpace testCommonSpace0001 START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('SpaceText');
@@ -158,7 +158,7 @@ export default function commonColorModeJsunit() {
      * @tc.name         testCommonSlice0001
      * @tc.desic        acecommonSliceEtsTest0001
      */
-    it('testCommonSlice0001', 0, async (done: Function) => {
+    it('testCommonSlice0001', Level.LEVEL2, async (done: Function) => {
       console.info('commonSlice testCommonSlice0001 START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('sliceText');
@@ -175,7 +175,7 @@ export default function commonColorModeJsunit() {
      * @tc.name         testCommonArea0001
      * @tc.desic        acecommonAreaEtsTest0001
      */
-    it('testCommonArea0001', 0, async (done: Function) => {
+    it('testCommonArea0001', Level.LEVEL2, async (done: Function) => {
       console.info('commonSlice testCommonArea0001 START');
       await Utils.sleep(500);
       try {
@@ -201,7 +201,7 @@ export default function commonColorModeJsunit() {
      * @tc.name         testCommonTouches0001
      * @tc.desic        acecommonTouchesEtsTest0001
      */
-    it('testCommonTouches0001', 0, async (done: Function) => {
+    it('testCommonTouches0001', Level.LEVEL2, async (done: Function) => {
       console.info('commonSlice testCommonTouches0001 START');
       await Utils.sleep(500);
       try {
@@ -228,7 +228,7 @@ export default function commonColorModeJsunit() {
      * @tc.name         testCommonChangedTouches0001
      * @tc.desic        acecommonTouchesEtsTest0001
      */
-    it('testCommonChangedTouches0001', 0, async (done: Function) => {
+    it('testCommonChangedTouches0001', Level.LEVEL2, async (done: Function) => {
       console.info('commonSlice testCommonChangedTouches0001 START');
       await Utils.sleep(500);
       try {

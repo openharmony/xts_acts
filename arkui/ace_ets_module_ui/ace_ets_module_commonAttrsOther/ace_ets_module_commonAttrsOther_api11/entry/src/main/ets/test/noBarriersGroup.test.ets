@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import router from '@ohos.router';
 
@@ -57,7 +57,7 @@ export default function noBarriersGroupTest() {
       // Presets a clear action, which is performed after all test cases of the test suite end.
       // This API supports only one parameter: clear action function.
     })
-    it('noBarriersGroup001', 0, async (done: Function) => {
+    it('noBarriersGroup001', Level.LEVEL0, async (done: Function) => {
       console.info('noBarriersGroup001 START');
       setTimeout(() => {
         try {
@@ -73,7 +73,7 @@ export default function noBarriersGroupTest() {
         done();
       }, 500)
     });
-    it('noBarriersGroup002', 0, async (done: Function) => {
+    it('noBarriersGroup002', Level.LEVEL0, async (done: Function) => {
       console.info('noBarriersGroup002 START');
       setTimeout(() => {
         try {
@@ -88,7 +88,7 @@ export default function noBarriersGroupTest() {
         done();
       }, 500)
     });
-    it('noBarriersGroup003', 0, async (done: Function) => {
+    it('noBarriersGroup003', Level.LEVEL0, async (done: Function) => {
       console.info('noBarriersGroup003 START');
       setTimeout(() => {
         try {
@@ -103,7 +103,7 @@ export default function noBarriersGroupTest() {
         done();
       }, 500)
     });
-    it('noBarriersGroup004', 0, async (done: Function) => {
+    it('noBarriersGroup004', Level.LEVEL0, async (done: Function) => {
       console.info('noBarriersGroup004 START');
       setTimeout(() => {
         try {
@@ -118,7 +118,7 @@ export default function noBarriersGroupTest() {
         done();
       }, 500)
     });
-    it('noBarriersGroup005', 0, async (done: Function) => {
+    it('noBarriersGroup005', Level.LEVEL0, async (done: Function) => {
       console.info('noBarriersGroup005 START');
       setTimeout(() => {
         try {
@@ -133,7 +133,7 @@ export default function noBarriersGroupTest() {
         done();
       }, 500)
     });
-    it('noBarriersGroup006', 0, async (done: Function) => {
+    it('noBarriersGroup006', Level.LEVEL0, async (done: Function) => {
       console.info('noBarriersGroup006 START');
       setTimeout(() => {
         try {
@@ -148,7 +148,7 @@ export default function noBarriersGroupTest() {
         done();
       }, 500)
     });
-    it('noBarriersGroup007', 0, async (done: Function) => {
+    it('noBarriersGroup007', Level.LEVEL0, async (done: Function) => {
       console.info('noBarriersGroup007 START');
       setTimeout(() => {
         try {
@@ -163,7 +163,7 @@ export default function noBarriersGroupTest() {
         done();
       }, 500)
     });
-    it('noBarriersGroup008', 0, async (done: Function) => {
+    it('noBarriersGroup008', Level.LEVEL0, async (done: Function) => {
       console.info('noBarriersGroup008 START');
       setTimeout(() => {
         try {
@@ -178,7 +178,7 @@ export default function noBarriersGroupTest() {
         done();
       }, 500)
     });
-    it('noBarriersGroup009', 0, async (done: Function) => {
+    it('noBarriersGroup009', Level.LEVEL0, async (done: Function) => {
       console.info('noBarriersGroup009 START');
       setTimeout(() => {
         try {
@@ -193,7 +193,7 @@ export default function noBarriersGroupTest() {
         done();
       }, 500)
     });
-    it('noBarriersGroup0010', 0, async (done: Function) => {
+    it('noBarriersGroup0010', Level.LEVEL0, async (done: Function) => {
       console.info('noBarriersGroup0010 START');
       setTimeout(() => {
         try {
@@ -208,7 +208,7 @@ export default function noBarriersGroupTest() {
         done();
       }, 500)
     });
-    it('noBarriersGroup0011', 0, async (done: Function) => {
+    it('noBarriersGroup0011', Level.LEVEL0, async (done: Function) => {
       console.info('noBarriersGroup0011 START');
       setTimeout(() => {
         try {
@@ -223,7 +223,7 @@ export default function noBarriersGroupTest() {
         done();
       }, 500)
     });
-    it('noBarriersGroup0012', 0, async (done: Function) => {
+    it('noBarriersGroup0012', Level.LEVEL0, async (done: Function) => {
       console.info('noBarriersGroup0012 START');
       setTimeout(() => {
         try {

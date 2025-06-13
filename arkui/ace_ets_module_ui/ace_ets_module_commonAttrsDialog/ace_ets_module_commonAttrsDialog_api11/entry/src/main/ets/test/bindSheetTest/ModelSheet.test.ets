@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import emitter from '@ohos.events.emitter';
 
 export default function ModelSheetTest() {
@@ -44,7 +44,7 @@ export default function ModelSheetTest() {
      *@tc.name   Support modifying the modelsheet bindSheet change of modelsheet component
      *@tc.desc   Sets the bindSheet property parameter to different value
      */
-    it('ArkUX_Model_Visual_0150', 0, async (done: Function) => {
+    it('ArkUX_Model_Visual_0150', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Model_Visual_0150 START');
       try {
         let indexEvent: emitter.InnerEvent = {
@@ -84,7 +84,7 @@ export default function ModelSheetTest() {
      *@tc.name   Support modifying the modelsheet bindSheet change of modelsheet component
      *@tc.desc   Sets the bindSheet property parameter to different value
      */
-    it('ArkUX_Model_Visual_0160', 0, async (done: Function) => {
+    it('ArkUX_Model_Visual_0160', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Model_Visual_0160 START');
       try {
         let indexEvent: emitter.InnerEvent = {
@@ -124,7 +124,7 @@ export default function ModelSheetTest() {
      *@tc.name   Support modifying the modelsheet bindSheet change of modelsheet component
      *@tc.desc   Sets the bindSheet property parameter to different value
      */
-    it('ArkUX_Model_Visual_0170', 0, async (done: Function) => {
+    it('ArkUX_Model_Visual_0170', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Model_Visual_0170 START');
       try {
         let indexEvent: emitter.InnerEvent = {
@@ -164,7 +164,7 @@ export default function ModelSheetTest() {
      *@tc.name   Support modifying the modelsheet bindSheet change of modelsheet component
      *@tc.desc   Sets the bindSheet property parameter to different value
      */
-    it('ArkUX_Model_Visual_0180', 0, async (done: Function) => {
+    it('ArkUX_Model_Visual_0180', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Model_Visual_0180 START');
       try {
         let indexEvent: emitter.InnerEvent = {
@@ -203,7 +203,7 @@ export default function ModelSheetTest() {
      *@tc.name   Support modifying the modelsheet bindSheet change of modelsheet component
      *@tc.desc   Sets the bindSheet property parameter to different value
      */
-    it('ArkUX_Model_Visual_0190', 0, async (done: Function) => {
+    it('ArkUX_Model_Visual_0190', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Model_Visual_0190 START');
       try {
         let indexEvent: emitter.InnerEvent = {
@@ -242,7 +242,7 @@ export default function ModelSheetTest() {
      *@tc.name   Support modifying the modelsheet bindSheet change of modelsheet component
      *@tc.desc   Sets the bindSheet property parameter to different value
      */
-    it('ArkUX_Model_Visual_0200', 0, async (done: Function) => {
+    it('ArkUX_Model_Visual_0200', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Model_Visual_0200 START');
       try {
         let indexEvent: emitter.InnerEvent = {
@@ -281,7 +281,7 @@ export default function ModelSheetTest() {
      *@tc.name   Support modifying the modelsheet bindSheet change of modelsheet component
      *@tc.desc   Sets the bindSheet property parameter to different value
      */
-    it('ArkUX_Model_Visual_0210', 0, async (done: Function) => {
+    it('ArkUX_Model_Visual_0210', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Model_Visual_0210 START');
       try {
         let indexEvent: emitter.InnerEvent = {
@@ -320,7 +320,7 @@ export default function ModelSheetTest() {
      *@tc.name   Support modifying the modelsheet bindSheet change of modelsheet component
      *@tc.desc   Sets the bindSheet property parameter to different value
      */
-    it('ArkUX_Model_Visual_0220', 0, async (done: Function) => {
+    it('ArkUX_Model_Visual_0220', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Model_Visual_0220 START');
       try {
         let indexEvent: emitter.InnerEvent = {

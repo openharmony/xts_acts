@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -66,7 +66,7 @@ export default function getWaterFlowItemRect5() {
     * @tc.desc  : set index to 0,set padding of waterFlow to 20
     * @tc.level : Level 2
     */
-    it('getWaterFlowItemRect5_0100', 0, async (done: Function) => {
+    it('getWaterFlowItemRect5_0100', Level.LEVEL0, async (done: Function) => {
 
       console.info('[getWaterFlowItemRect5_0100] START');
       globalThis.value.message.notify({
@@ -125,7 +125,7 @@ export default function getWaterFlowItemRect5() {
     * @tc.desc  : set index to 0,set margin of FlowItem0 to 20
     * @tc.level : Level 2
     */
-    it('getWaterFlowItemRect5_0200', 0, async (done: Function) => {
+    it('getWaterFlowItemRect5_0200', Level.LEVEL0, async (done: Function) => {
 
       console.info('[getWaterFlowItemRect5_0200] START');
 

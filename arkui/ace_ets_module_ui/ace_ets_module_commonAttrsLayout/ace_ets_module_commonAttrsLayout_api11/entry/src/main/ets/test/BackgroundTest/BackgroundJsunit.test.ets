@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach,  it, expect } from "@ohos/hypium"
+import { describe, beforeEach, afterEach,  it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../Utils';
@@ -45,7 +45,7 @@ export default function backgroundJsunit() {
       console.info("background after each called");
     });
 
-    it('testBackground_0100', 0, async (done: Function) => {
+    it('testBackground_0100', Level.LEVEL0, async (done: Function) => {
       console.info('testBackground_0100 START');
       await Utils.sleep(4000);
       let strJson = getInspectorByKey('fontColor');
@@ -57,7 +57,7 @@ export default function backgroundJsunit() {
       done();
     });
 
-    it('testBackground_0200', 0, async (done: Function) => {
+    it('testBackground_0200', Level.LEVEL0, async (done: Function) => {
       console.info('testBackground_0200 START');
       await Utils.sleep(1000);
       try {
@@ -83,7 +83,7 @@ export default function backgroundJsunit() {
       done();
     });
 
-    it('testBackground_0300', 0, async (done: Function) => {
+    it('testBackground_0300', Level.LEVEL0, async (done: Function) => {
       console.info('testBackground_0300 START');
       await Utils.sleep(4000);
       let strJson = getInspectorByKey('backgroundColor');
