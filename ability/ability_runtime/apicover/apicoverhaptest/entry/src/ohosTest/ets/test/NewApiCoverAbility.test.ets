@@ -167,5 +167,27 @@ export default function NewApiCoverTest() {
         done();
       }
     });
+
+    /**
+     * @tc.number: SUB_Ability_AbilityRuntime_restartSelfAtomicService_0200
+     * @tc.name: SUB_Ability_AbilityRuntime_restartSelfAtomicService_0200
+     * @tc.desc: Bundle Type cannot use restartSelfAtomicService.
+     * @tc.level 3
+     */
+    it('SUB_Ability_AbilityRuntime_restartSelfAtomicService_0200', Level.LEVEL3, async (done: Function) => {
+      let tag = `SUB_Ability_AbilityRuntime_restartSelfAtomicService_0200`;
+      let UIAbilityContexts:common.UIAbilityContext;
+      UIAbilityContexts = await AppStorage.get<common.UIAbilityContext>("abilityContext") as common.UIAbilityContext;
+      console.log(`${tag}, test begin`);
+      try {
+        await abilityManager.restartSelfAtomicService(UIAbilityContexts);
+        expect().assertFail();
+        done();
+      } catch (error) {
+        console.log(`${tag}, catch failed: ${JSON.stringify(error)}`);
+        expect(error?.code).assertEqual(16000090);
+        done();
+      }
+    })
   })
 }

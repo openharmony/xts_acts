@@ -309,6 +309,7 @@ export default function lastExitReasonTest() {
                 expect(lastExitDetailInfo?.rss).assertEqual(0);
                 expect(lastExitDetailInfo?.timestamp).assertEqual(0);
                 expect(lastExitDetailInfo?.uid).assertEqual(-1);
+                expect(lastExitDetailInfo?.processState).assertLarger(-1);
                 expect(launchReasonMessage).assertEqual("");
               }catch{}
               unSubscribe(subscriber, done);

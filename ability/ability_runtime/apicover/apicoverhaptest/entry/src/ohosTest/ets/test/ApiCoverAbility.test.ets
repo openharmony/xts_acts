@@ -482,8 +482,10 @@ export default function ApiCoverTest() {
       AppStorage.get<common.UIAbilityContext>("abilityContext")!.area = 0;
       let mccvalue = AppStorage.get<common.UIAbilityContext>("abilityContext")!.config?.mcc;
       let mncValue = AppStorage.get<common.UIAbilityContext>("abilityContext")!.config?.mnc;
+      let locale = AppStorage.get<common.UIAbilityContext>("abilityContext")!.config?.locale;
       console.log(`Ability: getConfiguration config.mnc: ${mccvalue}`);
       console.log(`Ability: getConfiguration config.mnc: ${mncValue}`);
+      console.log(`Ability: getConfiguration config.locale: ${locale}`);
       expect(0).assertEqual(AppStorage.get<common.UIAbilityContext>("abilityContext")!.area);
       let AbilityContext: common.UIAbilityContext;
       AbilityContext = AppStorage.get<common.UIAbilityContext>("abilityContext") as common.UIAbilityContext;
