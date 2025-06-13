@@ -56,7 +56,7 @@ export default function DragTest(){
     })
     /*
      * @tc.number     : SUB_UDMFndk_CASE_001
-     * @tc.name       : SUB_UDMFndk_CASE_001
+     * @tc.name       : UDMFCaseTest001
      * @tc.desc       : testing List lanes
      * @tc.size       : MediumTest
      * @tc.type       : Function
@@ -79,7 +79,7 @@ export default function DragTest(){
 
     /*
      * @tc.number     : SUB_UDMFndk_CASE_002
-     * @tc.name       : SUB_UDMFndk_CASE_002
+     * @tc.name       : UDMFCaseTest002
      * @tc.desc       : testing List contentStartOffset And contentAndOffset
      * @tc.size       : MediumTest
      * @tc.type       : Function
@@ -102,7 +102,7 @@ export default function DragTest(){
 
     /**
      * @tc.number     : SUB_UDMFndk_CASE_003
-     * @tc.name       : SUB_UDMFndk_CASE_003
+     * @tc.name       : UDMFCaseTest003
      * @tc.desc       : testing List maintainVisibleContentPosition
      * @tc.size       : MediumTest
      * @tc.type       : Function
@@ -167,8 +167,8 @@ export default function DragTest(){
       done();
     })
     /**
-     * @tc.number     : SUB_UDMFndk_CASE_07
-     * @tc.name       : SUB_UDMFndk_CASE_07
+     * @tc.number     : SUB_UDMFndk_CASE_006
+     * @tc.name       : SUB_UDMFndk_CASE_006
      * @tc.desc       : testing List maintainVisibleContentPosition
      * @tc.size       : MediumTest
      * @tc.type       : Function
@@ -190,8 +190,8 @@ export default function DragTest(){
     })
 
     /*
-     * @tc.number     : SUB_UDMFndk_CASE_07
-     * @tc.name       : SUB_UDMFndk_CASE_07
+     * @tc.number     : SUB_UDMFndk_CASE_007
+     * @tc.name       : SUB_UDMFndk_CASE_007
      * @tc.desc       : testing List contentStartOffset And contentAndOffset
      * @tc.size       : MediumTest
      * @tc.type       : Function
