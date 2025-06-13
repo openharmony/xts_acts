@@ -17,7 +17,7 @@ group("arkts_static") {
   testonly = true
   if (is_standard_system) {
     deps = [
-	  "buffer_standard_test_static:ActBufferStatic",
+      "buffer_standard_test_static:ActBufferStatic",
     ]
   }
 }

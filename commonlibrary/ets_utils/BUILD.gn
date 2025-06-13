@@ -47,7 +47,7 @@ group("ets_utils") {
       "worker_lib_standard3:ActsWorkerPriTest",
       "worker_lib_standard4:ActsWorkerMixTest",
       "xml_lib_standard:xml_js_test",
-	  "utils_static:utils_static",
+      "utils_static:utils_static",
     ]
   }
 }
