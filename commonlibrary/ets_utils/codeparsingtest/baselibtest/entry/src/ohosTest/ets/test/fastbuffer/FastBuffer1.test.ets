@@ -1716,7 +1716,7 @@ export default function FastBufferTest() {
     });
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_FASTBUFFER_BASETEST_WriteBigInt64BE_0100
+     * @tc.number: SUB_COMMONLIBRARY_FASTBUFFER_BASETEST_WRITEBIGUINT64BE_0100
      * @tc.name: testWriteBigUInt64BE0001
      * @tc.desc: Testing the writeInt16BE interface with two parameters: 0xdecafafecacefaden and 0.
      * @tc.size: MediumTest
@@ -1736,7 +1736,7 @@ export default function FastBufferTest() {
     });
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_FASTBUFFER_BASETEST_WriteBigInt64BE_0200
+     * @tc.number: SUB_COMMONLIBRARY_FASTBUFFER_BASETEST_WRITEBIGUINT64BE_0200
      * @tc.name: testWriteBigUInt64BE0002
      * @tc.desc: Testing the writeInt16BE interface with out-of-range 'offset' value of -1.
      * @tc.size: MediumTest
@@ -1754,7 +1754,7 @@ export default function FastBufferTest() {
     });
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_FASTBUFFER_BASETEST_WriteBigInt64BE_0300
+     * @tc.number: SUB_COMMONLIBRARY_FASTBUFFER_BASETEST_WRITEBIGUINT64BE_0300
      * @tc.name: testWriteBigUInt64BE0003
      * @tc.desc: Testing the writeInt16BE interface with undefined.
      * @tc.size: MediumTest
@@ -1772,7 +1772,7 @@ export default function FastBufferTest() {
     });
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_FASTBUFFER_BASETEST_WriteBigInt64BE_0400
+     * @tc.number: SUB_COMMONLIBRARY_FASTBUFFER_BASETEST_WRITEBIGUINT64BE_0400
      * @tc.name: testWriteBigUInt64BE0004
      * @tc.desc: Testing the writeInt16BE interface with null.
      * @tc.size: MediumTest
@@ -3615,7 +3615,7 @@ export default function FastBufferTest() {
     });
 
     /*
-     * @tc.number: SUB_COMMONLIBRARY_FASTBUFFER_BASETEST_WRITEBIGINT64BE_0100
+     * @tc.number: SUB_COMMONLIBRARY_FASTBUFFER_BASETEST_READBIGINT64BE_0100
      * @tc.name  : testReadBigInt64BE0001
      * @tc.desc  : Testing readBigInt64BE for buffer with normal value.
      * @tc.size: MediumTest
@@ -3636,7 +3636,7 @@ export default function FastBufferTest() {
     });
 
     /*
-     * @tc.number: SUB_COMMONLIBRARY_FASTBUFFER_BASETEST_WRITEBIGINT64BE_0200
+     * @tc.number: SUB_COMMONLIBRARY_FASTBUFFER_BASETEST_READBIGINT64BE_0200
      * @tc.name  : testReadBigInt64BE0002
      * @tc.desc  : Testing readBigInt64BE for buffer with value 1.
      * @tc.size: MediumTest
@@ -3657,7 +3657,7 @@ export default function FastBufferTest() {
     });
 
     /*
-     * @tc.number: SUB_COMMONLIBRARY_FASTBUFFER_BASETEST_WRITEBIGINT64BE_0300
+     * @tc.number: SUB_COMMONLIBRARY_FASTBUFFER_BASETEST_READBIGINT64BE_0300
      * @tc.name  : testReadBigInt64BE0003
      * @tc.desc  : Testing readBigInt64BE for buffer with value undefined.
      * @tc.size: MediumTest
@@ -3678,7 +3678,7 @@ export default function FastBufferTest() {
     });
 
     /*
-     * @tc.number: SUB_COMMONLIBRARY_FASTBUFFER_BASETEST_WRITEBIGINT64BE_0400
+     * @tc.number: SUB_COMMONLIBRARY_FASTBUFFER_BASETEST_READBIGINT64BE_0400
      * @tc.name  : testReadBigInt64BE0004
      * @tc.desc  : Testing readBigInt64BE for buffer with value null.
      * @tc.size: MediumTest
@@ -3699,7 +3699,7 @@ export default function FastBufferTest() {
     });
 
     /*
-     * @tc.number: SUB_COMMONLIBRARY_FASTBUFFER_BASETEST_WRITEBIGINT64LE_0100
+     * @tc.number: SUB_COMMONLIBRARY_FASTBUFFER_BASETEST_READBIGINT64LE_0100
      * @tc.name  : testReadBigInt64LE0001
      * @tc.desc  : Testing readBigInt64LE for buffer with normal value.
      * @tc.size: MediumTest
@@ -3720,7 +3720,7 @@ export default function FastBufferTest() {
     });
 
     /*
-     * @tc.number: SUB_COMMONLIBRARY_FASTBUFFER_BASETEST_WRITEBIGINT64LE_0200
+     * @tc.number: SUB_COMMONLIBRARY_FASTBUFFER_BASETEST_READBIGINT64LE_0200
      * @tc.name  : testReadBigInt64LE0002
      * @tc.desc  : Testing readBigInt64LE for buffer with value 1.
      * @tc.size: MediumTest
@@ -3741,7 +3741,7 @@ export default function FastBufferTest() {
     });
 
     /*
-     * @tc.number: SUB_COMMONLIBRARY_FASTBUFFER_BASETEST_WRITEBIGINT64LE_0300
+     * @tc.number: SUB_COMMONLIBRARY_FASTBUFFER_BASETEST_READBIGINT64LE_0300
      * @tc.name  : testReadBigInt64LE0003
      * @tc.desc  : Testing readBigInt64LE for buffer with value undefined.
      * @tc.size: MediumTest
@@ -3762,7 +3762,7 @@ export default function FastBufferTest() {
     });
 
     /*
-     * @tc.number: SUB_COMMONLIBRARY_FASTBUFFER_BASETEST_WRITEBIGINT64LE_0400
+     * @tc.number: SUB_COMMONLIBRARY_FASTBUFFER_BASETEST_READBIGINT64LE_0400
      * @tc.name  : testReadBigInt64LE0004
      * @tc.desc  : Testing readBigInt64LE for buffer with value null.
      * @tc.size: MediumTest
@@ -3783,7 +3783,7 @@ export default function FastBufferTest() {
     });
 
     /*
-     * @tc.number: SUB_COMMONLIBRARY_FASTBUFFER_BASETEST_WRITEBIGUINT64BE_0100
+     * @tc.number: SUB_COMMONLIBRARY_FASTBUFFER_BASETEST_READBIGUINT64BE_0100
      * @tc.name  : testReadBigUInt64BE0001
      * @tc.desc  : Testing readBigUInt64BE for buffer with normal value.
      * @tc.size: MediumTest
@@ -3804,7 +3804,7 @@ export default function FastBufferTest() {
     });
 
     /*
-     * @tc.number: SUB_COMMONLIBRARY_FASTBUFFER_BASETEST_WRITEBIGUINT64BE_0200
+     * @tc.number: SUB_COMMONLIBRARY_FASTBUFFER_BASETEST_READBIGUINT64BE_0200
      * @tc.name  : testReadBigUInt64BE0002
      * @tc.desc  : Testing readBigUInt64BE for buffer with value 1.
      * @tc.size: MediumTest
@@ -3825,7 +3825,7 @@ export default function FastBufferTest() {
     });
 
     /*
-     * @tc.number: SUB_COMMONLIBRARY_FASTBUFFER_BASETEST_WRITEBIGUINT64BE_0300
+     * @tc.number: SUB_COMMONLIBRARY_FASTBUFFER_BASETEST_READBIGUINT64BE_0300
      * @tc.name  : testReadBigUInt64BE0003
      * @tc.desc  : Testing readBigUInt64BE for buffer with value undefined.
      * @tc.size: MediumTest
@@ -3846,7 +3846,7 @@ export default function FastBufferTest() {
     });
 
     /*
-     * @tc.number: SUB_COMMONLIBRARY_FASTBUFFER_BASETEST_WRITEBIGUINT64BE_0400
+     * @tc.number: SUB_COMMONLIBRARY_FASTBUFFER_BASETEST_READBIGUINT64BE_0400
      * @tc.name  : testReadBigUInt64BE0004
      * @tc.desc  : Testing readBigUInt64BE for buffer with value null.
      * @tc.size: MediumTest
@@ -5745,7 +5745,7 @@ export default function FastBufferTest() {
       }
     });
     /**
-     * @tc.number: SUB_COMMONLIBRARY_FASTBUFFER_BASETEST_TOSTRING_1500
+     * @tc.number: SUB_COMMONLIBRARY_FASTBUFFER_BASETEST_TOSTRING_1400
      * @tc.name: testToString0014
      * @tc.desc: Test the toString interface by passing the parameter encoding to null.
      * @tc.size: MediumTest
@@ -8032,7 +8032,7 @@ export default function FastBufferTest() {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_FASTBUFFER_BASETEST_BUFFER_COMPARE_0500
+     * @tc.number: SUB_COMMONLIBRARY_FASTBUFFER_BASETEST_BUFFER_COMPARE_0600
      * @tc.name: testBufferCompare0006
      * @tc.desc: Test BUFFER.COMPARE
      * @tc.size: MediumTest
@@ -8051,7 +8051,7 @@ export default function FastBufferTest() {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_FASTBUFFER_BASETEST_BUFFER_COMPARE_0600
+     * @tc.number: SUB_COMMONLIBRARY_FASTBUFFER_BASETEST_BUFFER_COMPARE_0700
      * @tc.name: testBufferCompare0007
      * @tc.desc: Test BUFFER.COMPARE
      * @tc.size: MediumTest

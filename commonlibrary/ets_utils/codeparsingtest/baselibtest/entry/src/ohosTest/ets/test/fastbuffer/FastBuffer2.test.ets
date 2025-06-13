@@ -1902,15 +1902,15 @@ export default function ActsFastBufferTest() {
       }
     });
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_COMPARE_0100
-     * @tc.name       : testFastBufferCompare0001
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_FASTBUFFERCOMPARE_0100
+     * @tc.name       : testFastBufferFastBufferCompare0001
      * @tc.desc       : Test the function of the interface Compare.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFastBufferCompare0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
-      const TAG = 'testFastBufferCompare0001';
+    it('testFastBufferFastBufferCompare0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testFastBufferFastBufferCompare0001';
       try {
         const buf1 = buffer.from([1, 2, 3]);
         const buf2 = buffer.from([1, 2, 3]);
@@ -1921,15 +1921,15 @@ export default function ActsFastBufferTest() {
       }
     });
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_COMPARE_0200
-     * @tc.name       : testFastBufferCompare0002
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_FASTBUFFERCOMPARE_0200
+     * @tc.name       : testFastBufferFastBufferCompare0002
      * @tc.desc       : Test the function of the interface Compare.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFastBufferCompare0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
-      const TAG = 'testFastBufferCompare0002';
+    it('testFastBufferFastBufferCompare0002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testFastBufferFastBufferCompare0002';
       try {
         const buf1 = buffer.from([1, 2, 3]);
         const u8 = new Uint8Array([0, 2, 3]);
@@ -1940,15 +1940,15 @@ export default function ActsFastBufferTest() {
       }
     })
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_COMPARE_0300
-     * @tc.name       : testFastBufferCompare0003
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_FASTBUFFERCOMPARE_0300
+     * @tc.name       : testFastBufferFastBufferCompare0003
      * @tc.desc       : Test the function of the interface Compare.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFastBufferCompare0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
-      const TAG = 'testFastBufferCompare0003';
+    it('testFastBufferFastBufferCompare0003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testFastBufferFastBufferCompare0003';
       try {
         const buf1 = buffer.from([3, 2, 1]);
         const buf2 = buffer.from([1, 2, 3]);
@@ -1960,15 +1960,15 @@ export default function ActsFastBufferTest() {
       }
     });
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_COMPARE_0400
-     * @tc.name       : testFastBufferCompare0004
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_FASTBUFFERCOMPARE_0400
+     * @tc.name       : testFastBufferFastBufferCompare0004
      * @tc.desc       : Test the function of the interface Compare.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFastBufferCompare0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
-      const TAG = 'testFastBufferCompare0004';
+    it('testFastBufferFastBufferCompare0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testFastBufferFastBufferCompare0004';
       try {
         const buf1 = buffer.from([1, 2, 3]);
         const buf2 = buffer.from([3, 2, 1]);
@@ -1982,15 +1982,15 @@ export default function ActsFastBufferTest() {
       }
     });
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_COMPARE_0500
-     * @tc.name       : testFastBufferCompare0005
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_FASTBUFFERCOMPARE_0500
+     * @tc.name       : testFastBufferFastBufferCompare0005
      * @tc.desc       : Test the function of the interface Compare.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFastBufferCompare0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
-      const TAG = 'testFastBufferCompare0005';
+    it('testFastBufferFastBufferCompare0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testFastBufferFastBufferCompare0005';
       try {
         const buf1 = buffer.from([1, 2, 3]);
         const buf2 = buffer.from([3, 2, 1]);
@@ -2004,15 +2004,15 @@ export default function ActsFastBufferTest() {
       }
     });
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_COMPARE_0600
-     * @tc.name       : testFastBufferCompare0006
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_FASTBUFFERCOMPARE_0600
+     * @tc.name       : testFastBufferFastBufferCompare0006
      * @tc.desc       : Test the function of the interface Compare.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFastBufferCompare0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
-      const TAG = 'testFastBufferCompare0006';
+    it('testFastBufferFastBufferCompare0006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testFastBufferFastBufferCompare0006';
       try {
         const buf1 = buffer.from([1, 2, 3]);
         const buf2 = buffer.from([3, 2, 1]);
@@ -2026,15 +2026,15 @@ export default function ActsFastBufferTest() {
       }
     });
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_COMPARE_0700
-     * @tc.name       : testFastBufferCompare0007
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_FASTBUFFERCOMPARE_0700
+     * @tc.name       : testFastBufferFastBufferCompare0007
      * @tc.desc       : Test the function of the interface Compare.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFastBufferCompare0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
-      const TAG = 'testFastBufferCompare0007';
+    it('testFastBufferFastBufferCompare0007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testFastBufferFastBufferCompare0007';
       try {
         const buf1 = buffer.from([1, 2, 3]);
         const buf2 = buffer.from([3, 2, 1]);
@@ -2046,15 +2046,15 @@ export default function ActsFastBufferTest() {
       }
     });
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_COMPARE_0800
-     * @tc.name       : testFastBufferCompare0008
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_FASTBUFFERCOMPARE_0800
+     * @tc.name       : testFastBufferFastBufferCompare0008
      * @tc.desc       : Test the function of the interface Compare.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFastBufferCompare0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
-      const TAG = 'testFastBufferCompare0008';
+    it('testFastBufferFastBufferCompare0008', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testFastBufferFastBufferCompare0008';
       try {
         const buf1 = buffer.from([1, 2, 3]);
         const buf2 = buffer.from([1, 2, 3]);
@@ -2066,15 +2066,15 @@ export default function ActsFastBufferTest() {
       }
     });
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_COMPARE_0900
-     * @tc.name       : testFastBufferCompare0009
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_FASTBUFFERCOMPARE_0900
+     * @tc.name       : testFastBufferFastBufferCompare0009
      * @tc.desc       : Test the function of the interface Compare.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFastBufferCompare0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
-      const TAG = 'testFastBufferCompare0009';
+    it('testFastBufferFastBufferCompare0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testFastBufferFastBufferCompare0009';
       try {
         const buf1 = buffer.from([1, 2, 3]);
         const buf2 = buffer.from([1, 2, 3]);
@@ -2088,15 +2088,15 @@ export default function ActsFastBufferTest() {
       }
     });
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_COMPARE_1000
-     * @tc.name       : testFastBufferCompare0010
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_FASTBUFFERCOMPARE_1000
+     * @tc.name       : testFastBufferFastBufferCompare0010
      * @tc.desc       : Test the function of the interface Compare.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFastBufferCompare0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
-      const TAG = 'testFastBufferCompare0010';
+    it('testFastBufferFastBufferCompare0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testFastBufferFastBufferCompare0010';
       try {
         const buf1 = buffer.from([1, 2, 3]);
         const buf2 = buffer.from([4, 5, 6]);
@@ -2109,15 +2109,15 @@ export default function ActsFastBufferTest() {
       }
     });
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_COMPARE_1100
-     * @tc.name       : testFastBufferCompare0011
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_FASTBUFFERCOMPARE_1100
+     * @tc.name       : testFastBufferFastBufferCompare0011
      * @tc.desc       : Test the function of the interface Compare.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFastBufferCompare0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
-      const TAG = 'testFastBufferCompare0011';
+    it('testFastBufferFastBufferCompare0011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testFastBufferFastBufferCompare0011';
       try {
         const buf1 = buffer.from([1, 2, 3]);
         const buf2 = buffer.from([1, 2, 3, 4]);
@@ -2131,15 +2131,15 @@ export default function ActsFastBufferTest() {
       }
     });
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_COMPARE_1200
-     * @tc.name       : testFastBufferCompare0012
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_FASTBUFFERCOMPARE_1200
+     * @tc.name       : testFastBufferFastBufferCompare0012
      * @tc.desc       : Test the function of the interface Compare.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFastBufferCompare0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
-      const TAG = 'testFastBufferCompare0012';
+    it('testFastBufferFastBufferCompare0012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testFastBufferFastBufferCompare0012';
       try {
         const buf1 = buffer.from([1, 2, 3]);
         const buf2 = buffer.from([1, 2, 3]);
@@ -2153,15 +2153,15 @@ export default function ActsFastBufferTest() {
       }
     });
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_COMPARE_1300
-     * @tc.name       : testFastBufferCompare0013
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_FASTBUFFERCOMPARE_1300
+     * @tc.name       : testFastBufferFastBufferCompare0013
      * @tc.desc       : Test the function of the interface Compare.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFastBufferCompare0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
-      const TAG = 'testFastBufferCompare0013';
+    it('testFastBufferFastBufferCompare0013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testFastBufferFastBufferCompare0013';
       try {
         const buf1 = buffer.from([1, 2, 3]);
         const buf2 = buffer.from([1, 2, 3]);
@@ -2173,15 +2173,15 @@ export default function ActsFastBufferTest() {
       }
     });
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_COMPARE_1400
-     * @tc.name       : testFastBufferCompare0014
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_FASTBUFFERCOMPARE_1400
+     * @tc.name       : testFastBufferFastBufferCompare0014
      * @tc.desc       : Test the function of the interface Compare.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFastBufferCompare0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
-      const TAG = 'testFastBufferCompare0014';
+    it('testFastBufferFastBufferCompare0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testFastBufferFastBufferCompare0014';
       try {
         const buf1 = buffer.from([1, 2, 3]);
         const buf2 = buffer.from([4, 5, 6]);
@@ -2193,15 +2193,15 @@ export default function ActsFastBufferTest() {
       }
     })
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_COMPARE_1500
-     * @tc.name       : testFastBufferCompare0015
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_FASTBUFFERCOMPARE_1500
+     * @tc.name       : testFastBufferFastBufferCompare0015
      * @tc.desc       : Test the function of the interface Compare.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFastBufferCompare0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
-      const TAG = 'testFastBufferCompare0015';
+    it('testFastBufferFastBufferCompare0015', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testFastBufferFastBufferCompare0015';
       try {
         const buf1 = buffer.from([1, 2, 3]);
         const buf2 = buffer.from([1, 2, 3]);
@@ -2213,15 +2213,15 @@ export default function ActsFastBufferTest() {
       }
     })
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_COMPARE_1600
-     * @tc.name       : testFastBufferCompare0016
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_FASTBUFFERCOMPARE_1600
+     * @tc.name       : testFastBufferFastBufferCompare0016
      * @tc.desc       : Test the function of the interface Compare.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFastBufferCompare0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
-      const TAG = 'testFastBufferCompare0016';
+    it('testFastBufferFastBufferCompare0016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testFastBufferFastBufferCompare0016';
       try {
         const buf1 = buffer.from([1, 2, 3]);
         const buf2 = buffer.from([1, 2, 3]);
@@ -2235,15 +2235,15 @@ export default function ActsFastBufferTest() {
       }
     })
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_COMPARE_1700
-     * @tc.name       : testFastBufferCompare0017
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_FASTBUFFERCOMPARE_1700
+     * @tc.name       : testFastBufferFastBufferCompare0017
      * @tc.desc       : Test the function of the interface Compare.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFastBufferCompare0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
-      const TAG = 'testFastBufferCompare0017';
+    it('testFastBufferFastBufferCompare0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testFastBufferFastBufferCompare0017';
       try {
         const buf1 = buffer.from([1, 2, 3]);
         const buf2 = buffer.from([1, 2, 3]);
@@ -2257,15 +2257,15 @@ export default function ActsFastBufferTest() {
       }
     })
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_COMPARE_1800
-     * @tc.name       : testFastBufferCompare0018
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_FASTBUFFERCOMPARE_1800
+     * @tc.name       : testFastBufferFastBufferCompare0018
      * @tc.desc       : Test the function of the interface Compare.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFastBufferCompare0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
-      const TAG = 'testFastBufferCompare0018';
+    it('testFastBufferFastBufferCompare0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testFastBufferFastBufferCompare0018';
       try {
         const buf1 = buffer.from([1, 2, 3]);
         const buf2 = buffer.from([1, 2, 3]);
@@ -2279,15 +2279,15 @@ export default function ActsFastBufferTest() {
       }
     })
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_COMPARE_1900
-     * @tc.name       : testFastBufferCompare0019
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_FASTBUFFERCOMPARE_1900
+     * @tc.name       : testFastBufferFastBufferCompare0019
      * @tc.desc       : Test the function of the interface Compare.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFastBufferCompare0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
-      const TAG = 'testFastBufferCompare0019';
+    it('testFastBufferFastBufferCompare0019', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testFastBufferFastBufferCompare0019';
       try {
         const buf1 = buffer.from([1, 2, 3]);
         const buf2 = buffer.from([1, 2, 3]);
@@ -2299,15 +2299,15 @@ export default function ActsFastBufferTest() {
       }
     })
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_COMPARE_2000
-     * @tc.name       : testFastBufferCompare0020
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_FASTBUFFERCOMPARE_2000
+     * @tc.name       : testFastBufferFastBufferCompare0020
      * @tc.desc       : Test the function of the interface Compare.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFastBufferCompare0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
-      const TAG = 'testFastBufferCompare0020';
+    it('testFastBufferFastBufferCompare0020', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testFastBufferFastBufferCompare0020';
       try {
         const buf1 = buffer.from([1, 2, 3]);
         const buf2 = buffer.from([1, 2, 3]);
@@ -2319,15 +2319,15 @@ export default function ActsFastBufferTest() {
       }
     })
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_COMPARE_2100
-     * @tc.name       : testFastBufferCompare0021
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_FASTBUFFERCOMPARE_2100
+     * @tc.name       : testFastBufferFastBufferCompare0021
      * @tc.desc       : Test the function of the interface Compare.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFastBufferCompare0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
-      const TAG = 'testFastBufferCompare0021';
+    it('testFastBufferFastBufferCompare0021', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testFastBufferFastBufferCompare0021';
       try {
         const buf1 = buffer.from([1, 2, 3]);
         const buf2 = buffer.from([1, 2, 3]);
@@ -2339,15 +2339,15 @@ export default function ActsFastBufferTest() {
       }
     })
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_COMPARE_2200
-     * @tc.name       : testFastBufferCompare0022
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_FASTBUFFERCOMPARE_2200
+     * @tc.name       : testFastBufferFastBufferCompare0022
      * @tc.desc       : Test the function of the interface Compare.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFastBufferCompare0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
-      const TAG = 'testFastBufferCompare0022';
+    it('testFastBufferFastBufferCompare0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testFastBufferFastBufferCompare0022';
       try {
         const buf1 = buffer.from([1, 2, 3]);
         const buf2 = buffer.from([1, 2, 3]);
@@ -2360,15 +2360,15 @@ export default function ActsFastBufferTest() {
       }
     })
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_COMPARE_2300
-     * @tc.name       : testFastBufferCompare0023
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_FASTBUFFERCOMPARE_2300
+     * @tc.name       : testFastBufferFastBufferCompare0023
      * @tc.desc       : Test the function of the interface Compare.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFastBufferCompare0023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
-      const TAG = 'testFastBufferCompare0023';
+    it('testFastBufferFastBufferCompare0023', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testFastBufferFastBufferCompare0023';
       try {
         const buf1 = buffer.from([1, 2, 3]);
         const buf2 = buffer.from([1, 2, 3]);
@@ -2382,15 +2382,15 @@ export default function ActsFastBufferTest() {
       }
     })
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_COMPARE_2400
-     * @tc.name       : testFastBufferCompare0024
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_FASTBUFFERCOMPARE_2400
+     * @tc.name       : testFastBufferFastBufferCompare0024
      * @tc.desc       : Test the function of the interface Compare.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFastBufferCompare0024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
-      const TAG = 'testFastBufferCompare0024';
+    it('testFastBufferFastBufferCompare0024', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testFastBufferFastBufferCompare0024';
       try {
         const buf1 = buffer.from([1, 2, 3]);
         const buf2 = buffer.from([1, 2, 3]);
@@ -2404,15 +2404,15 @@ export default function ActsFastBufferTest() {
       }
     })
     /**
-     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_COMPARE_2500
-     * @tc.name       : testFastBufferCompare0025
+     * @tc.number     : SUB_COMMONLIBRARY_FASTBUFFER_BASE_FASTBUFFERCOMPARE_2500
+     * @tc.name       : testFastBufferFastBufferCompare0025
      * @tc.desc       : Test the function of the interface Compare.
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testFastBufferCompare0025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
-      const TAG = 'testFastBufferCompare0025';
+    it('testFastBufferFastBufferCompare0025', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, () => {
+      const TAG = 'testFastBufferFastBufferCompare0025';
       try {
         const buf1 = buffer.from([1, 2, 3]);
         const buf2 = buffer.from([1, 2, 3]);
@@ -12924,6 +12924,8 @@ export default function ActsFastBufferTest() {
       let buf = buffer.from([0x12, 0x34, 0x56, 0x78, 0x90, 0xab]);
       console.info(TAG + buf.readUIntLE(0, 6).toString(16));
       expect(buf.readUIntLE(0, 6).toString(16)).assertEqual('ab9078563412');
+      console.info(TAG + buf.readIntLE(0, 6).toString(16));
+      expect(buf.readIntLE(0, 6).toString(16)).assertEqual('-546f87a9cbee');
     })
   });
 }
