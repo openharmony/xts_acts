@@ -27,6 +27,9 @@
     "MainAbility/pages/Text/TextLineSpacing",
     "MainAbility/pages/TextArea/TextAreaLineSpacing",
     "MainAbility/pages/ImageError/ImageOnError",
-    "MainAbility/pages/RichEditor/RichEditorUndoStyle"
+    "MainAbility/pages/RichEditor/RichEditorUndoStyle",
+    "MainAbility/pages/UIContext/disableMenuItems",
+    "MainAbility/pages/UIContext/disableSystemServiceMenuItems",
+    "MainAbility/pages/RichEditor/setTypingParagraphStyle"
   ]
 }
