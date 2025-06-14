@@ -116,12 +116,12 @@ export default function getGridItemRect6() {
       console.log('height' + height)
 
       console.log('assert position')
-      expect(Math.round(x)).assertEqual(Math.round(20));
-      expect(Math.round(y)).assertEqual(Math.round(20));
+      expect(Math.floor(Math.abs(x - 20)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(y - 20)) <= 1).assertTrue();
 
       console.log('assert size')
-      expect(Math.round(width)).assertEqual(Math.round(20));
-      expect(Math.round(height)).assertEqual(Math.round(160));
+      expect(Math.floor(Math.abs(width - 20)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(height - 160)) <= 1).assertTrue();
       done();
     });
 

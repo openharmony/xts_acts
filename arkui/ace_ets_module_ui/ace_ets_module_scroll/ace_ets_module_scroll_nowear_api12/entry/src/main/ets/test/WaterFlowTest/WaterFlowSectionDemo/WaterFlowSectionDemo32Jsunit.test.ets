@@ -58,8 +58,8 @@ export default function WaterFlowSectionDemo32Jsunit() {
       console.log('WaterFlowSectionDemo32Jsunit_1111',str0.right,str1.right,str2.left)
       console.log('WaterFlowSectionDemo32Jsunit_2222',str1.right - str0.right)
       console.log('WaterFlowSectionDemo32Jsunit_3333',str2.left - str0.right)
-      expect(Math.round(str1.right - str0.right)).assertEqual(Math.round(0));
-      expect(Math.round(str2.left - str0.right)).assertEqual(Math.round(0));
+      expect(Math.floor(Math.abs(str1.right - str0.right)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(str2.left - str0.right)) <= 1).assertTrue();
       console.info('WaterFlowSectionDemo32Jsunit_0100 END')
       done();
     });

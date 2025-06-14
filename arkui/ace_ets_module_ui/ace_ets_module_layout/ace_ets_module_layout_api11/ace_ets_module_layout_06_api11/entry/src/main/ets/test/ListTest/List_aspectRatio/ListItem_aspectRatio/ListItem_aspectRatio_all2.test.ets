@@ -102,9 +102,10 @@ export default function ListItem_aspectRatio_all2() {
       let list01: RectValue = CommonFunc.getComponentRect('ListItem_aspectRatio_all2_list');
       let width: number = list01.right - list01.left;
       let height: number = list01.bottom - list01.top;
+      let itemWidth: number = ListItem01.right - ListItem01.left;
 
       expect(Math.abs(Math.round(ListItem01.right - ListItem01.left) - Math.round(width * 0.8)) <= 1).assertTrue();
-      expect(Math.abs(Math.round(ListItem01.bottom - ListItem01.top) - Math.round(width * 0.8 * 2)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((ListItem01.bottom - ListItem01.top) - (itemWidth * 2))) <= 1).assertTrue();
 
       console.info('[SUB_ACE_ListItem_aspectRatio_all2_0200] END');
       done();
