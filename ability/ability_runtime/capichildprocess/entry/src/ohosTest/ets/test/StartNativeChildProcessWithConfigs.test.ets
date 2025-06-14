@@ -348,36 +348,6 @@ export default function startNativeChildProcessWithConfigsTest() {
     });
 
     /*
-     * @tc.number : SUB_Ability_AbilityRuntime_NativeChildProcessWithConfigs_1300
-     * @tc.name   : SUB_Ability_AbilityRuntime_NativeChildProcessWithConfigs_1300
-     * @tc.desc   : Call StartNativeChildProcess to create a child process, give correct entry, configs and args
-     *              and the length of args'FdList is 17.
-     * @tc.type   : Function
-     * @tc.size   : MediumTest
-     * @tc.level  : 0
-     */
-    // it('SUB_Ability_AbilityRuntime_NativeChildProcessWithConfigs_1300', Level.LEVEL0, async (done: Function) => {
-    //   let tag = `NativeChildProcessWithConfigs_1300`;
-    //   console.log(`${tag} it begin`);
-    //   let path = "/data/storage/el2/base/haps/entry/files/test0.txt";
-    //   try {
-    //     let pid = -1;
-    //     pid = testNapi.StartNativeChildProcessWithConfigsFdlistNum17();
-    //     console.log(`${tag} StartNativeChildProcess success, pid: ${pid}`);
-    //     if(pid == 801){
-    //       done();
-    //     }else{
-    //       expect(401).assertEqual(pid);
-    //       done();
-    //     }
-    //   } catch (err) {
-    //     console.error(`${tag} StartNativeChildProcess error, errorCode: ${err.code}`);
-    //     expect().assertFail();
-    //     done();
-    //   }
-    // });
-
-    /*
      * @tc.number : SUB_Ability_AbilityRuntime_NativeChildProcessWithConfigs_1400
      * @tc.name   : Call StartNativeChildProcess to create a child process, give param correct entryPoint, args
      *              and configs

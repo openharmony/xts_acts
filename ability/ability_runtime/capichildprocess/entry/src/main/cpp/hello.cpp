@@ -489,18 +489,21 @@ static napi_value StartNativeChildProcessWithConfigs(napi_env env, napi_callback
 
     int32_t pid = -1;
     NativeChildProcess_Args args;
-    args.entryParams = (char*) malloc (sizeof(char) * 11);
-    (void)strcpy(args.entryParams, "testParams");
+    auto testParam = "testEntryParams";
+    args.entryParams = (char*)malloc(sizeof(char) * strlen(testParam) + 1);
+    (void)strcpy(args.entryParams, testParam);
 
-    args.fdList.head = (NativeChildProcess_Fd *)malloc(sizeof(NativeChildProcess_Fd));
-    args.fdList.head->fdName = (char *)malloc(sizeof(char) * 5);
-    (void)strcpy(args.fdList.head->fdName, "fd1");
-    remove("/data/storage/el2/base/haps/entry/files/test0.txt");
-    int32_t fd = open("/data/storage/el2/base/haps/entry/files/test0.txt", O_RDWR | O_CREAT, 0644);
-    write(fd, "test", 4);
+    auto fd1Name = "fd1";
+    args.fdList.head = (NativeChildProcess_Fd*)malloc(sizeof(NativeChildProcess_Fd));
+    args.fdList.head->fdName = (char*)malloc(sizeof(char) * strlen(fd1Name) + 1);
+    (void)strcpy(args.fdList.head->fdName, fd1Name);
+    
+    auto path = "data/storage/el2/base/files/test.txt";
+    int32_t fd = open(path, O_RDWR | O_CREAT | O_TRUNC, 0644);
+    auto testString = "test";
+    write(fd, testString, strlen(testString));
     close(fd);
-
-    fd = open("/data/storage/el2/base/haps/entry/files/test0.txt", O_RDWR | O_CREAT, 0644);
+    fd = open(path, O_RDWR | O_TRUNC, 0644);
     args.fdList.head->fd = fd;
     args.fdList.head->next = NULL;
 
@@ -542,7 +545,6 @@ static napi_value StartNativeChildProcessWithConfigsEntryNull(napi_env env, napi
     args.fdList.head = (NativeChildProcess_Fd *)malloc(sizeof(NativeChildProcess_Fd));
     args.fdList.head->fdName = (char *)malloc(sizeof(char) * 5);
     (void)strcpy(args.fdList.head->fdName, "fd1");
-    remove("/data/storage/el2/base/haps/entry/files/test0.txt");
     int32_t fd = open("/data/storage/el2/base/haps/entry/files/test0.txt", O_RDWR | O_CREAT, 0644);
     write(fd, "test", 4);
     close(fd);
@@ -584,20 +586,21 @@ static napi_value StartNativeChildProcessWithConfigsEntryParams200K(napi_env env
     int32_t pid = -1;
     const size_t size = 200*1024;
     NativeChildProcess_Args args;
-    args.entryParams = (char*) malloc (sizeof(char) * size);
-    for(int i=0; i < size; i++){
-        args.entryParams[i] = 'a';
-    }
+    auto testParam = "testEntryParams";
+    args.entryParams = (char*)malloc(sizeof(char) * strlen(testParam) + 1);
+    (void)strcpy(args.entryParams, testParam);
 
-    args.fdList.head = (NativeChildProcess_Fd *)malloc(sizeof(NativeChildProcess_Fd));
-    args.fdList.head->fdName = (char *)malloc(sizeof(char) * 5);
-    (void)strcpy(args.fdList.head->fdName, "fd1");
-    remove("/data/storage/el2/base/haps/entry/files/test0.txt");
-    int32_t fd = open("/data/storage/el2/base/haps/entry/files/test0.txt", O_RDWR | O_CREAT, 0644);
-    write(fd, "test", 4);
+    auto fd1Name = "fd1";
+    args.fdList.head = (NativeChildProcess_Fd*)malloc(sizeof(NativeChildProcess_Fd));
+    args.fdList.head->fdName = (char*)malloc(sizeof(char) * strlen(fd1Name) + 1);
+    (void)strcpy(args.fdList.head->fdName, fd1Name);
+    
+    auto path = "data/storage/el2/base/files/test.txt";
+    int32_t fd = open(path, O_RDWR | O_CREAT | O_TRUNC, 0644);
+    auto testString = "test";
+    write(fd, testString, strlen(testString));
     close(fd);
-
-    fd = open("/data/storage/el2/base/haps/entry/files/test0.txt", O_RDWR | O_CREAT, 0644);
+    fd = open(path, O_RDWR | O_TRUNC, 0644);
     args.fdList.head->fd = fd;
     args.fdList.head->next = NULL;
 
@@ -642,7 +645,6 @@ static napi_value StartNativeChildProcessWithConfigsFdlistNum17(napi_env env, na
     args.fdList.head = (NativeChildProcess_Fd *)malloc(sizeof(NativeChildProcess_Fd));
     args.fdList.head->fdName = (char *)malloc(sizeof(char) * 5);
     (void)strcpy(args.fdList.head->fdName, "fd1");
-    remove("/data/storage/el2/base/haps/entry/files/test0.txt");
     int32_t fd = open("/data/storage/el2/base/haps/entry/files/test0.txt", O_RDWR | O_CREAT, 0644);
     write(fd, "test", 4);
     close(fd);
