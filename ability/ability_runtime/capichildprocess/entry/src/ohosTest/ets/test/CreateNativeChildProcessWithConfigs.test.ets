@@ -72,12 +72,12 @@ export default function createNativeChildProcessWithConfigsTest() {
         let a = 123;
         let b = 456;
         expect(a + b).assertEqual(testNapi.childProcessAdd(a, b));
-        expect(1).assertEqual(testNapi.requestExitChildProcess());
+        expect(1).assertEqual(testNapi.requestExitChildProcess(0));
         await sleep(600);
 
         console.info(`${tag}: Test restart native child process`);
         expect(0).assertEqual(testNapi.CreateNativeChildProcessWithConfigs('libentry.so'));
-        expect(1).assertEqual(testNapi.requestExitChildProcess());
+        expect(1).assertEqual(testNapi.requestExitChildProcess(0));
         await sleep(600);
       } catch(err) {
         console.error(`${tag} error: ${JSON.stringify(err)}`);

@@ -341,7 +341,7 @@ export default function startNativeChildProcessWithConfigsTest() {
       let path = "/data/storage/el2/base/haps/entry/files/test0.txt";
       try {
         let pid = -1;
-        pid = testNapi.StartNativeChildProcessWithConfigsEntryParams200K("libentry.so:Main");
+        pid = testNapi.StartNativeChildProcessWithConfigsEntryParams200K();
         console.log(`${tag} StartNativeChildProcess success, pid: ${pid}`);
         expect(16010003).assertEqual(pid);
         await sleep(3000);
