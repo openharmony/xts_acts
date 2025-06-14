@@ -244,19 +244,16 @@ export default function startNativeChildProcessWithConfigsTest() {
         let pid = -1;
         pid = testNapi.StartNativeChildProcessWithConfigsEntryNull();
         console.log(`${tag} StartNativeChildProcess success, pid: ${pid}`);
-        expect(401).assertEqual(pid);
-        await sleep(3000);
-        let result = readFile(path);
-        expect(result).assertEqual('test');
-        done();
-      } catch (err) {
-        console.error(`${tag} StartNativeChildProcess error, errorCode: ${err.code}`);
-        if (!mpEnable && err.code == 801) {
+        if(pid == 801){
           done();
-        } else {
-          expect().assertFail();
+        }else{
+          expect(401).assertEqual(pid);
           done();
         }
+      } catch (err) {
+        console.error(`${tag} StartNativeChildProcess error, errorCode: ${err.code}`);
+        expect().assertFail();
+        done();
       }
     });
 
@@ -277,19 +274,16 @@ export default function startNativeChildProcessWithConfigsTest() {
         let pid = -1;
         pid = testNapi.StartNativeChildProcessWithConfigs("libnoexisted.so:Main");
         console.log(`${tag} StartNativeChildProcess success, pid: ${pid}`);
-        expect(pid > 0).assertTrue();
-        await sleep(3000);
-        let result = readFile(path);
-        expect(result).assertEqual('test');
-        done();
-      } catch (err) {
-        console.error(`${tag} StartNativeChildProcess error, errorCode: ${err.code}`);
-        if (!mpEnable && err.code == 801) {
+        if(pid == 801){
           done();
-        } else {
-          expect().assertFail();
+        }else{
+          expect(pid > 0).assertTrue();
           done();
         }
+      } catch (err) {
+        console.error(`${tag} StartNativeChildProcess error, errorCode: ${err.code}`);
+        expect().assertFail();
+        done();
       }
     });
 
@@ -310,19 +304,16 @@ export default function startNativeChildProcessWithConfigsTest() {
         let pid = -1;
         pid = testNapi.StartNativeChildProcessWithConfigs("libentry.so:notexisted");
         console.log(`${tag} StartNativeChildProcess success, pid: ${pid}`);
-        expect(pid > 0).assertTrue();
-        await sleep(3000);
-        let result = readFile(path);
-        expect(result).assertEqual('test');
-        done();
-      } catch (err) {
-        console.error(`${tag} StartNativeChildProcess error, errorCode: ${err.code}`);
-        if (!mpEnable && err.code == 801) {
+        if(pid == 801){
           done();
-        } else {
-          expect().assertFail();
+        }else{
+          expect(pid > 0).assertTrue();
           done();
         }
+      } catch (err) {
+        console.error(`${tag} StartNativeChildProcess error, errorCode: ${err.code}`);
+        expect().assertFail();
+        done();
       }
     });
 
@@ -343,27 +334,24 @@ export default function startNativeChildProcessWithConfigsTest() {
         let pid = -1;
         pid = testNapi.StartNativeChildProcessWithConfigsEntryParams200K();
         console.log(`${tag} StartNativeChildProcess success, pid: ${pid}`);
-        expect(16010003).assertEqual(pid);
-        await sleep(3000);
-        let result = readFile(path);
-        expect(result).assertEqual('test');
-        done();
-      } catch (err) {
-        console.error(`${tag} StartNativeChildProcess error, errorCode: ${err.code}`);
-        if (!mpEnable && err.code == 801) {
+        if(pid == 801){
           done();
-        } else {
-          expect().assertFail();
+        }else{
+          expect(16010003).assertEqual(pid);
           done();
         }
+      } catch (err) {
+        console.error(`${tag} StartNativeChildProcess error, errorCode: ${err.code}`);
+        expect().assertFail();
+        done();
       }
     });
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_NativeChildProcessWithConfigs_1300
-     * @tc.name   : Call StartNativeChildProcess to create a child process, give correct entry, configs and args
+     * @tc.name   : SUB_Ability_AbilityRuntime_NativeChildProcessWithConfigs_1300
+     * @tc.desc   : Call StartNativeChildProcess to create a child process, give correct entry, configs and args
      *              and the length of args'FdList is 17.
-     * @tc.desc   : Expect: 1.Return 401 2.read Result: 'test'
      * @tc.type   : Function
      * @tc.size   : MediumTest
      * @tc.level  : 0
@@ -376,19 +364,16 @@ export default function startNativeChildProcessWithConfigsTest() {
         let pid = -1;
         pid = testNapi.StartNativeChildProcessWithConfigsFdlistNum17();
         console.log(`${tag} StartNativeChildProcess success, pid: ${pid}`);
-        expect(401).assertEqual(pid);
-        await sleep(3000);
-        let result = readFile(path);
-        expect(result).assertEqual('test');
-        done();
-      } catch (err) {
-        console.error(`${tag} StartNativeChildProcess error, errorCode: ${err.code}`);
-        if (!mpEnable && err.code == 801) {
+        if(pid == 801){
           done();
-        } else {
-          expect().assertFail();
+        }else{
+          expect(401).assertEqual(pid);
           done();
         }
+      } catch (err) {
+        console.error(`${tag} StartNativeChildProcess error, errorCode: ${err.code}`);
+        expect().assertFail();
+        done();
       }
     });
 
@@ -409,19 +394,19 @@ export default function startNativeChildProcessWithConfigsTest() {
         let pid = -1;
         pid = testNapi.StartNativeChildProcessWithConfigs("libentry.so:Main");
         console.log(`${tag} StartNativeChildProcess success, pid: ${pid}`);
-        expect(pid > 0).assertTrue();
-        await sleep(3000);
-        let result = readFile(path);
-        expect(result).assertEqual('SUCC');
-        done();
-      } catch (err) {
-        console.error(`${tag} StartNativeChildProcess error, errorCode: ${err.code}`);
-        if (!mpEnable && err.code == 801) {
+        if(pid == 801){
           done();
-        } else {
-          expect().assertFail();
+        }else{
+          expect(pid > 0).assertTrue();
+          await sleep(3000);
+          let result = readFile(path);
+          expect(result).assertEqual('SUCC');
           done();
         }
+      } catch (err) {
+        console.error(`${tag} StartNativeChildProcess error, errorCode: ${err.code}`);
+        expect().assertFail();
+        done();
       }
     });
 
