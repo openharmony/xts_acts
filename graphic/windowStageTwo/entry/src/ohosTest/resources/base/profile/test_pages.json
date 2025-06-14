@@ -22,6 +22,7 @@
     "testability/pages/WindowTest/EmbeddedComponentErrorCodePage",
     "testability/pages/shiftAppWindow/subWindow",
     "testability/pages/shiftAppWindow/mainWindow",
-    "testability/pages/WindowTest/LoadContentByName"
+    "testability/pages/WindowTest/LoadContentByName",
+    "testability/pages/WindowTest/KeyBoradTest"
   ]
 }
