@@ -64,7 +64,7 @@ struct TextAreaLineSpacing {
         text:'onlyBetweenLines: false',
       })
         .id('TextArea_lineSpacing_false')
-        .lineSpacing(LengthMetrics.percent(1), { onlyBetweenLines: false })
+        .lineSpacing(LengthMetrics.percent(0.3), { onlyBetweenLines: false })
         .height('5%')
 
       TextArea({
