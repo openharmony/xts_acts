@@ -200,7 +200,7 @@ async function checkPixelValues(done: Function , testNum: string, x: number, y: 
     console.info('index + 1 is ' + bufferArr[index + 1]);
     console.info('index + 2 is ' + bufferArr[index + 2]);
     console.info('index + 3 is ' + bufferArr[index + 3]);
-    if ((bufferArr[index] == Red - 1 || bufferArr[index] == Red || bufferArr[index] == Red + 1) && (bufferArr[index + 1] == Green -1 || bufferArr[index + 1] == Green || bufferArr[index + 1] == Green + 1)&& (bufferArr[index + 2] == Blue -1 || bufferArr[index + 2] == Blue || bufferArr[index + 2] == Blue + 1)&& (bufferArr[index + 3] == Alpha -1 || bufferArr[index + 3] == Alpha || bufferArr[index + 3] == Alpha + 1)) {
+    if ((bufferArr[index] == Red - 1 || bufferArr[index] == Red || bufferArr[index] == Red + 1) && (bufferArr[index + 1] == Green - 1 || bufferArr[index + 1] == Green || bufferArr[index + 1] == Green + 1) && (bufferArr[index + 2] == Blue - 1 || bufferArr[index + 2] == Blue || bufferArr[index + 2] == Blue + 1) && (bufferArr[index + 3] == Alpha - 1 || bufferArr[index + 3] == Alpha || bufferArr[index + 3] == Alpha + 1)) {
         console.info(testNum + ' Successed in checking pixel values');
         expect(true).assertTrue();
         done();
