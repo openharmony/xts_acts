@@ -290,30 +290,31 @@ export default function test() {
 
             commonEvent.subscribe(subscriberSupply, onSupplyCallBack);
             console.info(`FMS_acquireForm_4200 featureAbility.startAbility start`);
-            await featureAbility.startAbility({
-                want: {
-                    bundleName: "com.ohos.st.formsystemhost",
-                    abilityName: "com.ohos.st.formsystemhost.MainAbility",
-                    parameters: {
-                        "formId": "0",
-                        "name": "",
-                        "bundle": "com.acts.form.formsystemtestservicea.hmservice",
-                        "ability": "FormAbility",
-                        "moduleName": "entry",
-                        "temporary": false,
-                        "isCreate": true
+            setTimeout(() => {
+                await featureAbility.startAbility({
+                    want: {
+                        bundleName: "com.ohos.st.formsystemhost",
+                        abilityName: "com.ohos.st.formsystemhost.MainAbility",
+                        parameters: {
+                            "formId": "0",
+                            "name": "",
+                            "bundle": "com.acts.form.formsystemtestservicea.hmservice",
+                            "ability": "FormAbility",
+                            "moduleName": "entry",
+                            "temporary": false,
+                            "isCreate": true
+                        }
                     }
-                }
-            }).then((res) => {
-                console.info(`FMS_acquireForm_4200 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
-                options.code = res;
-                options.data = 'FMS_FormSupply_commonEvent';
-                commonEvent.publish("FMS_FormSupply_commonEvent", options, () => {
-                    console.info(`FMS_acquireForm_4200 onSupplyCallBack publish start`)})
-            }).catch((err: BusinessError) => {
-                console.info(`FMS_acquireForm_4200 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
-            });
-
+                }).then((res) => {
+                    console.info(`FMS_acquireForm_4200 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
+                    options.code = res;
+                    options.data = 'FMS_FormSupply_commonEvent';
+                    commonEvent.publish("FMS_FormSupply_commonEvent", options, () => {
+                        console.info(`FMS_acquireForm_4200 onSupplyCallBack publish start`)})
+                }).catch((err: BusinessError) => {
+                    console.info(`FMS_acquireForm_4200 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                });
+            }, 500); 
             console.info(`FMS_acquireForm_4200 featureAbility.startAbility end`);
         });
 
