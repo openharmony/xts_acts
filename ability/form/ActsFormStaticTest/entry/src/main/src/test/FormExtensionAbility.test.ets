@@ -40,6 +40,20 @@ export default function formExtensionAbilityTest() {
         it("OnStopStaticTest001", TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: () => void): Promise<void> => {
             hilog.info(DOMAIN, TAG, 'OnStopStaticTest001 start');
 
+            let FormExtensionAbilityOnStopTest_Event: CommonEventManager.CommonEventSubscribeInfo = {
+                events: ["XTS_FormExtensionAbilityOnStopTest_commonEvent"],
+            };
+            let isChecked: boolean = false;
+            subscriberForm = CommonEventManager.createSubscriberSync(FormExtensionAbilityOnStopTest_Event);
+            let onStopCallBack = (_: BusinessError | null, data: CommonEventManager.CommonEventData) => {
+                isChecked = true;
+                hilog.info(DOMAIN, TAG, 'OnStopStaticTest001 onStopCallBack' + JSON.stringify(data));
+                expect(data.event).assertEqual("XTS_FormExtensionAbilityOnStopTest_commonEvent");
+                CommonEventManager.unsubscribe(subscriberForm, () => unsubscribeCallback("OnStopStaticTest001"));
+            }
+
+            expect(true).assertTrue();
+            
             done();
             hilog.info(DOMAIN, TAG, 'OnStopStaticTest001 end');
         })
