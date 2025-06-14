@@ -1081,7 +1081,7 @@ export default function AssetErrorCodeTest() {
       } catch (error) {
         let err = error as BusinessError;
         console.error(`SUB_Security_DataSecurity_Asset_querySyncResult_Func_0103 Failed to query sync result of Asset. Code is ${err.code}, message is ${err.message}`);
-        expect(error.code).assertEqual(PARAM_VERIFICATION_FAILED);
+        expect(error.code).assertEqual(asset.ErrorCode.PARAM_VERIFICATION_FAILED);
       }
       done();
     });
