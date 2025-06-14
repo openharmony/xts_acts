@@ -5229,7 +5229,7 @@ export default function audioFramework() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_MANAGER_INTERRUPT_0900',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_INTERRUPT_0013',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       expect(audio.InterruptHint.INTERRUPT_HINT_MUTE).assertEqual(6);
       await sleep(50);
       done();
@@ -5243,7 +5243,7 @@ export default function audioFramework() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_MANAGER_INTERRUPT_0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_INTERRUPT_0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       expect(audio.InterruptHint.INTERRUPT_HINT_UNMUTE).assertEqual(7);
       await sleep(50);
       done();
@@ -5338,6 +5338,10 @@ export default function audioFramework() {
       console.info("audio.DeviceType.REMOTE_CAST:" + audio.DeviceType.REMOTE_CAST);
       expect(audio.DeviceType.USB_DEVICE).assertEqual(25);
       console.info("audio.DeviceType.USB_DEVICE:" + audio.DeviceType.USB_DEVICE);
+      expect(audio.DeviceType.HDMI).assertEqual(27);
+      console.info("audio.DeviceType.HDMI:" + audio.DeviceType.HDMI);
+      expect(audio.DeviceType.LINE_DIGITAL).assertEqual(28);
+      console.info("audio.DeviceType.LINE_DIGITAL:" + audio.DeviceType.LINE_DIGITAL);
       expect(audio.DeviceType.REMOTE_DAUDIO).assertEqual(29);
       console.info("audio.DeviceType.REMOTE_DAUDIO:" + audio.DeviceType.REMOTE_DAUDIO);
       expect(audio.DeviceType.DEFAULT).assertEqual(1000);
