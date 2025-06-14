@@ -1892,21 +1892,27 @@ it('testSetResizeByDragEnabledTrue_0100', TestType.FUNCTION | Size.MEDIUMTEST | 
     it('testWindowEnableDragTruewithFullScreenMainWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       const caseName = 'testWindowEnableDragTruewithFullScreenMainWindow';
       console.log(caseName + 'begin.');
-      // Capability not supported. Failed to call the API due to limited device capabilities
-      let windowClass = await windowStage.getMainWindowSync();
+      try {
+      let windowClass =  windowStage.getMainWindowSync();
       let windowStatusType = windowClass.getWindowStatus();
       console.info(caseName + ' windowClass.getWindowStatus(). windowStatusType: ' + JSON.stringify(windowStatusType));
-      try {
+
         await windowClass.enableDrag(true);
         await sleep(200);
         if (windowStatusType != window.WindowStatusType.FULL_SCREEN) {
           done();
         }
+
       } catch (err) {
         console.error(`${caseName} failed, err: ${JSON.stringify(err)}`);
-        expect(err.code).assertEqual(1300004);
-        done();
-        
+        if(err.code == 801){
+          done();
+        }else{
+          expect(err.code).assertEqual(1300004);
+          done();
+        }
+
+
       }
     })
 

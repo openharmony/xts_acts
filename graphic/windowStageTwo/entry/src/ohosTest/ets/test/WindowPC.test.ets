@@ -2783,56 +2783,7 @@ export default function windowPCTest() {
       }
     })
 
-    /**
-     * @tc.number     : SUB_BASIC_WMS_WINDOW_STATUS_DID_CHANGE_0500
-     * @tc.name       : testOnwindowStatusDidChange_minimize
-     * @tc.desc       : testOnwindowStatusDidChange_minimize
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
-     */
-    // it('testOnwindowStatusDidChange_minimize', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
-    //   let caseName = "testOnwindowStatusDidChange_minimize";
-    //   let msgStr = 'jsunittest ' + caseName + ' ';
-    //   console.log(msgStr + 'begin.');
-    //   if (isPCStatus == '' && isAutoWindow != 'true') {
-    //     expect(true).assertTrue();
-    //     done();
-    //   } else {
-    //     try {
-    //       let windowClass = windowStage.getMainWindowSync();
-    //       let windowStatusType = windowClass.getWindowStatus();
-    //       console.info(caseName + ' windowClass.getWindowStatus(). windowStatusType: ' + JSON.stringify(windowStatusType));
-    //       if (windowStatusType == window.WindowStatusType.MINIMIZE) {
-    //         await windowClass.recover();
-    //         await sleep(200);
-    //       }
-    //       const callback = async (data: window.WindowStatusType) => {
-    //         console.log(`${msgStr} callback data: ${JSON.stringify(data)}`);
-    //         let windowRect2 = windowClass.getWindowProperties().windowRect;
-    //         console.log(`${msgStr} windowRect2: ${JSON.stringify(windowRect2)}`);
-    //         expect(windowRect2.width).assertEqual(0);
-    //         expect(windowRect2.height).assertEqual(0);
-    //         windowClass.off('windowStatusDidChange');
-    //         await windowClass.recover();
-    //         await sleep(200);
-    //         done()
-    //       }
-    //       windowClass.on('windowStatusDidChange', callback);
-    //       console.log(msgStr  + 'Succeeded on windowStatusDidChange ');
-    //       await windowClass.minimize();
-    //       await sleep(200)
-    //     } catch (err) {
-    //       console.error(`${caseName} failed, error: ${JSON.stringify(err)}`);
-    //       if (err.code == 801) {
-    //         done()
-    //       } else {
-    //         expect().assertFail();
-    //         done()
-    //       }
-    //     }
-    //   }
-    // })
+    
 
     /**
      * @tc.number     : SUB_BASIC_WMS_SHIFT_APP_WINDOW_TOUCH_EVENT_0100
