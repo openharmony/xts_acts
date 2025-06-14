@@ -5222,6 +5222,34 @@ export default function audioFramework() {
     })
 
     /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_INTERRUPT_0013
+     * @tc.name      : SUB_MULTIMEDIA_AUDIO_MANAGER_INTERRUPT_0013
+     * @tc.desc      : InterruptHint - INTERRUPT_HINT_MUTE
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_INTERRUPT_0900',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      expect(audio.InterruptHint.INTERRUPT_HINT_MUTE).assertEqual(6);
+      await sleep(50);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_INTERRUPT_0014
+     * @tc.name      : SUB_MULTIMEDIA_AUDIO_MANAGER_INTERRUPT_0014
+     * @tc.desc      : InterruptHint - INTERRUPT_HINT_UNMUTE
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_INTERRUPT_0010', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      expect(audio.InterruptHint.INTERRUPT_HINT_UNMUTE).assertEqual(7);
+      await sleep(50);
+      done();
+    })
+
+    /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_INTERRUPTACTIONTYPE_0100
      * @tc.name      : InterruptActionType - TYPE_ACTIVATED
      * @tc.desc      : InterruptActionType - TYPE_ACTIVATED
