@@ -5,12 +5,12 @@
         "test-timeout": "180000",
         "shell-timeout": "180000",
         "bundle-name": "com.example.helloworld",
-        "module-name": "entry_test"
+        "module-name": "entry"
     },
     "kits": [
         {
             "test-file-name": [
-                "ActsApplicationContextTest.hap"
+                "ActsAbility2StaticTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
