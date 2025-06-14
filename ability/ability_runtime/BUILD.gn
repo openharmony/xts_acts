@@ -95,6 +95,7 @@ group("ability_runtime") {
       "apicover:apicover",
       "apitest:ActsApiTest",
       "appclone:appclonetest",
+      "actsaappserviceextensioncontexttest:ActsAAppServiceExtensionContextTest",
       "capiabilityruntime:ActsCapiAbilityRuntimeTest",
       "capichildprocess:ActsCapiChildProcessTest",
       "context:context",
