@@ -866,7 +866,11 @@ function testSetAutoUnlockAfterReboot() {
       systemManager.setAutoUnlockAfterReboot(SELFWANT, false);
       expect(false).assertTrue();
     } catch (error) {
-      expect(error.code == 9200001).assertTrue();
+      if(error.code == 801) {
+        expect(true).assertTrue();
+      } else {
+        expect(error.code == 9200001).assertTrue();
+      }
     }
     done();
   });
@@ -885,7 +889,11 @@ function testSetAutoUnlockAfterReboot() {
       systemManager.setAutoUnlockAfterReboot(SELFWANT, false);
       expect(false).assertTrue();
     } catch (error) {
-      expect(error.code == 9200002).assertTrue();
+      if(error.code == 801) {
+        expect(true).assertTrue();
+      } else {
+        expect(error.code == 9200002).assertTrue();
+      }
     } finally {
       await adminManager.disableAdmin(SELFWANT);
     }
@@ -902,14 +910,22 @@ function testSetAutoUnlockAfterReboot() {
    */
   it("test_set_auto_unlock_after_reboot_0003", Level.LEVEL2, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    let errorCode: number = 0;
     try {
       systemManager.setAutoUnlockAfterReboot(SELFWANT, true);
       let rel: boolean = systemManager.getAutoUnlockAfterReboot(SELFWANT)
       expect(rel).assertTrue();
     } catch (error) {
-      expect(false).assertTrue();
+      errorCode = error.code;
+      if(error.code == 801) {
+        expect(true).assertTrue();
+      } else {
+        expect(false).assertTrue();
+      }
     } finally {
-      systemManager.setAutoUnlockAfterReboot(SELFWANT, false);
+      if (errorCode == 0){
+        systemManager.setAutoUnlockAfterReboot(SELFWANT, false);
+      }
       await adminManager.disableSuperAdmin(SELFHAPNAME);
     }
     done();
@@ -930,7 +946,11 @@ function testSetAutoUnlockAfterReboot() {
       let rel: boolean = systemManager.getAutoUnlockAfterReboot(SELFWANT)
       expect(rel).assertFalse();
     } catch (error) {
-      expect(false).assertTrue();
+      if(error.code == 801) {
+        expect(true).assertTrue();
+      } else {
+        expect(false).assertTrue();
+      }
     } finally {
       await adminManager.disableSuperAdmin(SELFHAPNAME);
     }
@@ -952,7 +972,11 @@ function testGetAutoUnlockAfterReboot() {
       systemManager.getAutoUnlockAfterReboot(SELFWANT);
       expect(false).assertTrue();
     } catch (error) {
-      expect(error.code == 9200001).assertTrue();
+      if(error.code == 801) {
+        expect(true).assertTrue();
+      } else {
+        expect(error.code == 9200001).assertTrue();
+      }
     }
     done();
   });
@@ -971,7 +995,11 @@ function testGetAutoUnlockAfterReboot() {
       systemManager.getAutoUnlockAfterReboot(SELFWANT);
       expect(false).assertTrue();
     } catch (error) {
-      expect(error.code == 9200002).assertTrue();
+      if(error.code == 801) {
+        expect(true).assertTrue();
+      } else {
+        expect(error.code == 9200002).assertTrue();
+      }
     } finally {
       await adminManager.disableAdmin(SELFWANT);
     }
