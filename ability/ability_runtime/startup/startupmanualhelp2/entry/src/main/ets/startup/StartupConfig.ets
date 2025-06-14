@@ -43,7 +43,7 @@ export default class MyStartupConfigEntry extends StartupConfigEntry {
       }
       let onCompletedCallbackfeature: string = AppStorage.get('Sample_002_onDependencyCompleted') as string;
       if (onCompletedCallbackfeature == 'Sample_001') {
-        console.log('Custom StartupTest PageAbility7 startupManager AppStorage.get success ' + onCompletedCallback07);
+        console.log('Custom StartupTest PageAbility7 startupManager AppStorage.get success ');
         commonEventManager.publish('Sample_002_onDependencyCompleted', {
           parameters: {
             'name': onCompletedCallbackfeature

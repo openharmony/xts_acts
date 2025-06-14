@@ -785,8 +785,8 @@ static napi_value Init(napi_env env, napi_value exports)
         { "createThread", nullptr, CreateThread,
             nullptr, nullptr, nullptr, napi_default, nullptr },
         { "destroyThread", nullptr, DestroyThread,
-            nullptr, nullptr, nullptr, napi_default, nullptr }
-			{ "CreateNativeChildProcessWithConfigs", nullptr, CreateNativeChildProcessWithConfigs,
+            nullptr, nullptr, nullptr, napi_default, nullptr },
+		{ "CreateNativeChildProcessWithConfigs", nullptr, CreateNativeChildProcessWithConfigs,
             nullptr, nullptr, nullptr, napi_default, nullptr },
         { "CreateNativeChildProcessWithConfigsLibNamenullptr", nullptr, CreateNativeChildProcessWithConfigsLibNamenullptr,
             nullptr, nullptr, nullptr, napi_default, nullptr },
