@@ -13,10 +13,8 @@
  * limitations under the License.
  */
 
-import abilityManagerStaticTest from './AbilityManagerStatic.test';
-import appManagerStaticTest from './AppManagerStatic.test';
+import lastExitReasonStaticTest from './LastExitReasonStatic.test';
 
 export default function testsuite() {
-    abilityManagerStaticTest();
-    appManagerStaticTest();
+    lastExitReasonStaticTest();
 }

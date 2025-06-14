@@ -20,7 +20,7 @@ class EntryAbility extends UIAbility {
         hilog.info(0x0000, 'testTag EntryAbility', 'loadContent error');
         return;
       }
-      hilog.info(0x0000, 'testTag EntryAbility', 'loadContent ok');
+      hilog.info(0x0000, 'testTag EntryAbility', 'loadContent ok'+JSON.stringify(this.context));
       hilog.info(0x0000, 'testTag EntryAbility', 'onWindowStageCreate ok');
     });
   }

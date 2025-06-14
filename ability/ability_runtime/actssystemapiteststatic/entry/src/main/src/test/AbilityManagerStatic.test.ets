@@ -14,13 +14,17 @@
  */
 
 import { describe, it, expect, TestType, Size, Level, beforeAll } from "../../../hypium/index";
+import common from '@ohos.app.ability.common';
 import { BusinessError } from '@ohos.base';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
+import Want from '@ohos.app.ability.Want';
 import hilog from '@ohos.hilog'
 import Utils from './Util.test';
 import abilityManager from "@ohos.app.ability.abilityManager"
+import { ShellCmdResult } from "application.shellCmdResult"
 
 let domain: number = 0x0000;
+let tag: string = 'testTag';
 
 export default function abilityManagerStaticTest() {
   describe('abilityManagerStaticTest', () => {
@@ -35,10 +39,10 @@ export default function abilityManagerStaticTest() {
       let tag = 'System_API_Test_Ability_Manager_Static_0400';
       let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
       abilityDelegator.executeShellCommand("aa start -a EntryAbility -b com.example.systemapitest.static");
-      await Utils.msSleep(3000);
+      await Utils.msSleep(2000);
       abilityManager.getAbilityRunningInfos()
         .then((data: abilityManager.AbilityRunningInfo[]): void => {
-          hilog.info(domain, tag, 'data: ' + JSON.stringify(data));
+          hilog.info(domain, tag, 'data: ' + JSON.stringify(data[0]));
           expect(data.length + '').assertEqual('1');
           expect(data[0].ability.bundleName).assertEqual('com.example.systemapitest.static');
           expect(data[0].pid).assertLargerOrEqual(0);

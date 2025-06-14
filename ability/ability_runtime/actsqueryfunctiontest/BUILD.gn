@@ -18,6 +18,7 @@ group("actsqueryfunctiontest") {
   if (is_standard_system) {
     deps = [
       "actsgetabilitystatestagetest:ActsGetAbilityStatestAgeTest",
+      "actsgetabilitystatestageteststatic:ActsGetAbilityStatestAgeStaticTest",
       "actsgetappcontextstageatest:ActsGetAppContextStageaTest",
       "actsgetappcontextstagebtest:ActsGetAppContextStagebTest",
       "actsgetappcontexttest:ActsGetAppContextTest",
