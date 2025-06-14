@@ -16,10 +16,12 @@ import rdbConfigV2NdkTest from './Ability.test';
 import rdbValueNdkTest from './rdbValueNdkTest.test';
 import transactionNdktest from './transactionNdk.test';
 import rdbCryptoParamNdkTest from './rdbCryptoParam.test';
+import rdbInterfaceNdkTest from './RdbInterfaceNdk.test';
 
 export default function testsuite() {
   rdbConfigV2NdkTest();
   rdbValueNdkTest();
   transactionNdktest();
   rdbCryptoParamNdkTest();
+  rdbInterfaceNdkTest();
 }
