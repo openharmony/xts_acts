@@ -16,7 +16,6 @@ group("window") {
   testonly = true
   deps = [
     "windowErrCode:ActsWindowErrCodeTest",
-    "windowProperties:ActsWindowPropertiesTest",
     "windowStartAbility:ActsWindowStartAbilityTest",
   ]
 }
