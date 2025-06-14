@@ -290,7 +290,7 @@ export default function test() {
 
             commonEvent.subscribe(subscriberSupply, onSupplyCallBack);
             console.info(`FMS_acquireForm_4200 featureAbility.startAbility start`);
-            setTimeout(() => {
+            setTimeout(async () => {
                 await featureAbility.startAbility({
                     want: {
                         bundleName: "com.ohos.st.formsystemhost",
