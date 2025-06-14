@@ -916,14 +916,14 @@ function testSetAutoUnlockAfterReboot() {
   });
   
   /**
-   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_AUTO_UNLOCK_AFTER_REBOOT_JS_0003
-   * @tc.name      : test_set_auto_unlock_after_reboot_0003
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_AUTO_UNLOCK_AFTER_REBOOT_JS_0004
+   * @tc.name      : test_set_auto_unlock_after_reboot_0004
    * @tc.desc      : test systemManager setAutoUnlockAfterReboot with invalid server
    * @tc.level     : Level 2
    * @tc.type      : Function
    * @tc.size      : MediumTest
    */
-  it("test_set_auto_unlock_after_reboot_0003", Level.LEVEL2, async (done: Function) => {
+  it("test_set_auto_unlock_after_reboot_0004", Level.LEVEL2, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
     try {
       systemManager.setAutoUnlockAfterReboot(SELFWANT, false);
