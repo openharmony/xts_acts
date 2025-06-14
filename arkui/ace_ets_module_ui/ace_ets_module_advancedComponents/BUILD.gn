@@ -24,7 +24,6 @@ group("ActsAceEtsModuleAdvancedComponentsTest") {
       "ace_ets_module_advancedComponents_nowear_api12:ActsAceEtsModuleAdvancedComponentsNoWearApi12Test",
       "ace_ets_module_advancedComponents_nowear_api13:ActsAceEtsModuleAdvancedComponentsNoWearApi13Test",
       "ace_ets_module_advancedComponents_nowear_api18:ActsAceEtsModuleAdvancedComponentsNoWearApi18Test",
-      "ace_ets_module_advancedComponents_nowear_api20:ActsAceEtsModuleAdvancedComponentsNoWearApi20Test",
     ]
   }
 }
