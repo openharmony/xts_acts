@@ -1132,7 +1132,7 @@ export default function abilityTest() {
       });
       context.startAbilityForResult({
         bundleName: 'com.acts.startupmanualhelp2',
-        abilityName: 'PageAbilityfeature',
+        abilityName: 'PageAbilityFeature',
         parameters:{
           "case":"0100"
         }
@@ -1144,14 +1144,6 @@ export default function abilityTest() {
         }
         done();
       })
-      let allowed = await driver.waitForComponent(ON.text('想要打开', MatchPattern.CONTAINS), DELY_TIME);
-      console.log(TAG + " is need to click " + JSON.stringify(allowed));
-      if(allowed){
-        let buttons = await driver.findComponents(ON.text('允许', MatchPattern.CONTAINS));
-        if(buttons && buttons.length > 0){
-          await buttons[buttons.length - 1].click();
-        }
-      }
     })
 
 
@@ -1189,7 +1181,7 @@ export default function abilityTest() {
       });
       context.startAbilityForResult({
         bundleName: 'com.acts.startupmanualhelp2',
-        abilityName: 'PageAbilityfeature',
+        abilityName: 'PageAbilityFeature',
         parameters:{
           "case":"0200"
         }
@@ -1201,14 +1193,6 @@ export default function abilityTest() {
         }
         done();
       })
-      let allowed = await driver.waitForComponent(ON.text('想要打开', MatchPattern.CONTAINS), DELY_TIME);
-      console.log(TAG + " is need to click " + JSON.stringify(allowed));
-      if(allowed){
-        let buttons = await driver.findComponents(ON.text('允许', MatchPattern.CONTAINS));
-        if(buttons && buttons.length > 0){
-          await buttons[buttons.length - 1].click();
-        }
-      }
     })
 
 
@@ -1246,7 +1230,7 @@ export default function abilityTest() {
       });
       context.startAbilityForResult({
         bundleName: 'com.acts.startupmanualhelp2',
-        abilityName: 'PageAbilityfeature',
+        abilityName: 'PageAbilityFeature',
         parameters:{
           "case":"0300"
         }
@@ -1258,14 +1242,6 @@ export default function abilityTest() {
         }
         done();
       })
-      let allowed = await driver.waitForComponent(ON.text('想要打开', MatchPattern.CONTAINS), DELY_TIME);
-      console.log(TAG + " is need to click " + JSON.stringify(allowed));
-      if(allowed){
-        let buttons = await driver.findComponents(ON.text('允许', MatchPattern.CONTAINS));
-        if(buttons && buttons.length > 0){
-          await buttons[buttons.length - 1].click();
-        }
-      }
     })
 
 
@@ -1315,14 +1291,6 @@ export default function abilityTest() {
         }
         done();
       })
-      let allowed = await driver.waitForComponent(ON.text('想要打开', MatchPattern.CONTAINS), DELY_TIME);
-      console.log(TAG + " is need to click " + JSON.stringify(allowed));
-      if(allowed){
-        let buttons = await driver.findComponents(ON.text('允许', MatchPattern.CONTAINS));
-        if(buttons && buttons.length > 0){
-          await buttons[buttons.length - 1].click();
-        }
-      }
     })
 
 
@@ -1360,7 +1328,7 @@ export default function abilityTest() {
       });
       context.startAbilityForResult({
         bundleName: 'com.acts.startupmanualhelp2',
-        abilityName: 'PageAbilityfeature',
+        abilityName: 'PageAbilityFeature',
         uri: "test://com.example.startupdemo/notification",
         parameters:{
           "customParam": "param1"
@@ -1373,14 +1341,6 @@ export default function abilityTest() {
         }
         done();
       })
-      let allowed = await driver.waitForComponent(ON.text('想要打开', MatchPattern.CONTAINS), DELY_TIME);
-      console.log(TAG + " is need to click " + JSON.stringify(allowed));
-      if(allowed){
-        let buttons = await driver.findComponents(ON.text('允许', MatchPattern.CONTAINS));
-        if(buttons && buttons.length > 0){
-          await buttons[buttons.length - 1].click();
-        }
-      }
     })
 
   })
