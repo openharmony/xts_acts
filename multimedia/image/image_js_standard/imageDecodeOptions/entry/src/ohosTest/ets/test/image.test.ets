@@ -1589,7 +1589,7 @@ export default function imageDecodeOptions() {
                     });
                 } catch (error) {
                     console.info("SUB_MULTIMEDIA_IMAGE_DECODEOPTIONS_CREATEPIXELMAP_XY_0400 error: " + error);                  
-                    expect(true).assertTrue();                                   
+                    expect(false).assertTrue();                                   
                     done(); 
                 }               
             }
