@@ -29,3 +29,16 @@ export const destroyThread: () => void;
 export const startChildIsolated: () => number;
 export const startChildNormal: () => number;
 export const startChildNoArgs: () => number;
+
+export const CreateNativeChildProcessWithConfigs: (libName: String) => number;
+export const CreateNativeChildProcessWithConfigsLibNamenullptr: () => number;
+export const CreateNativeChildProcessWithConfigsNullCallback: () => number;
+export const StartNativeChildProcessWithConfigs: (entryName: String) => number;
+export const StartNativeChildProcessWithConfigsEntryNull: () => number;
+export const StartNativeChildProcessWithConfigsFdlistNum17: () => number;
+export const StartNativeChildProcessWithConfigsEntryParams200K: () => number;
+export const SetIsolationModeConfigsNullptr: () => number;
+export const SetProcessName: (processName: String) => number;
+export const SetProcessNameConfigsNullptr: () => number;
+export const DestroyChildProcessConfigs: () => number;
+export const DestroyChildProcessConfigsNullptr: () => number;
