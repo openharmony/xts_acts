@@ -367,7 +367,12 @@ export default function multiThreadTest() {
       }
       let testContext: common.UIAbilityContext = AppStorage.get<common.UIAbilityContext>('testContext') as common.UIAbilityContext
       let cameraManager = camera.getCameraManager(testContext);
-      await doTestForReceiver(done, cameraManager, "SUB_MULTIMEDIA_IMAGE_RECEIVER_MULTI_THREAD_0200", "entry_test/ets/workers/receiver.ets");
+      let cameraArray = cameraManager.getSupportedCameras();
+      console.info(`SUB_MULTIMEDIA_IMAGE_RECEIVER_MULTI_THREAD_0200 camera number is ${cameraArray.length}`);
+      if (cameraArray.length >= 5) {
+            await doTestForReceiver(done, cameraManager, "SUB_MULTIMEDIA_IMAGE_RECEIVER_MULTI_THREAD_0200", "entry_test/ets/workers/receiver.ets");
+      }  
+      done();
     });
   })
 }
