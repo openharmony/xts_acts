@@ -33,7 +33,6 @@ class TestFormAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     this.wantUri = want.uri ?? '';
     hilog.info(DOMAIN, TAG, `onCreate, wantUri: ${this.wantUri}`);
-    hilog.info(DOMAIN, TAG, `onCreate, wantUri: ${want}`);
   }
 
   onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam): void {

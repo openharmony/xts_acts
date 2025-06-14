@@ -19,7 +19,7 @@ import { BusinessError } from '@ohos.base';
 import CommonEventManager from '@ohos.commonEventManager';
 
 
-let abilityDelegator:abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator()
+let abilityDelegator:abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 const unsubscribeCallback = (tcNumber: string) => {
   console.info(`====>${tcNumber} unsubscribeCallback====>`);
 }
@@ -28,7 +28,7 @@ let subscriberForm: CommonEventManager.CommonEventSubscriber;
 const DOMAIN: number = 0x0000;
 const TAG: string = 'testTag Utils';
 
-export default class Utils{
+export default class Utils {
   static async msSleep(count:int) : Promise<int> {
     return new Promise<int>((resolve, reject) => {
       setTimeout(() => {
