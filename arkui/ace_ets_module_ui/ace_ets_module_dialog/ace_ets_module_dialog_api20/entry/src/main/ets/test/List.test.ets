@@ -13,9 +13,9 @@
  * limitations under the License.
  */
 import menuSubMenuExpandSymbolTest from './MenuTest/subMenuExpandSymbol.test';
-import ratingStarStyle from './RatingTest/ratingStarStyle.test';
+import customDialogGetstateTest from './customdialogTest/customdialog.test';
 
 export default function testsuite() {
-  menuSubMenuExpandSymbolTest()
-  ratingStarStyle();
+  menuSubMenuExpandSymbolTest();
+  customDialogGetstateTest();
 }
