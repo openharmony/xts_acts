@@ -11,6 +11,11 @@
     "testability/pages/First/index3",
     "testability/pages/First/index1",
     "testability/pages/WindowTest/StartMoving",
+    "testability/pages/WindowTest/StartMoving2",
+    "testability/pages/WindowTest/StartMoving3",
+    "testability/pages/WindowTest/StartMoving4",
+    "testability/pages/WindowTest/StartMoving5",
+    "testability/pages/WindowTest/StartMoving6",
     "testability/pages/WindowTest/Modality",
     "testability/pages/WindowTest/extension",
     "testability/pages/WindowTest/EmbeddedComponentPage",
@@ -23,6 +28,10 @@
     "testability/pages/shiftAppWindow/subWindow",
     "testability/pages/shiftAppWindow/mainWindow",
     "testability/pages/WindowTest/LoadContentByName",
-    "testability/pages/WindowTest/KeyBoradTest"
+    "testability/pages/WindowTest/KeyBoradTest",
+     "testability/pages/WindowTest/extensionHide",
+    "testability/pages/WindowTest/extensionHide2",
+    "testability/pages/WindowTest/EmbeddedComponentHidePage",
+    "testability/pages/WindowTest/EmbeddedComponentHidePage2"
   ]
 }

@@ -135,7 +135,7 @@ export default function windowPCTest() {
           await sleep(1000)
           lastWindow = await window.getLastWindow(context)
           lastID = lastWindow.getWindowProperties().id
-      }
+        }
       } catch (error) {
         console.log('afterEach fail cause'+error)
       }
@@ -145,7 +145,7 @@ export default function windowPCTest() {
       windowClass.setUIContent('testability/pages/Index')
     });
 
-  /**
+    /**
      * @tc.number    : testSetWindowTitleMoveEnabled_0100
      * @tc.name      : testSetWindowTitleMoveEnabled_0100
      * @tc.desc      : Test the function value of setWindowTitleMoveEnabled
@@ -161,7 +161,7 @@ export default function windowPCTest() {
       console.info(`${message} windowPoint = ${JSON.stringify(windowPoint)}`)
       if(isPCStatus != ''|| isAutoWindow =='true'){
         await driver.drag(windowPoint.left + 100, windowPoint.top + 50, windowPoint.left + 200, windowPoint.top + 150)
-      await sleep(1000)
+        await sleep(1000)
       }
       windowPoint = windowClass.getWindowProperties().windowRect
       console.info(`${message} windowPoint = ${JSON.stringify(windowPoint)}`)
@@ -190,8 +190,8 @@ export default function windowPCTest() {
           done();
         }
       }
-      
-      
+
+
 
     })
 
@@ -897,7 +897,7 @@ export default function windowPCTest() {
       }
       ;
     });
- /**
+    /**
      * @tc.number    : testStartOptionsSupportWindowModes_0100
      * @tc.name      : testStartOptionsSupportWindowModes_0100
      * @tc.desc      : Test the function value of setWindowTitleMoveEnabled
@@ -919,7 +919,7 @@ export default function windowPCTest() {
         // 获取窗口状态 - 全屏
         let windowStatus = windowClass.getWindowStatus()
         console.info(`${message} windowStatus: ${windowStatus}, expect 1`);
-        expect(windowStatus).assertEqual(window.WindowStatusType.FULL_SCREEN); 
+        expect(windowStatus).assertEqual(window.WindowStatusType.FULL_SCREEN);
         //开发不兼容变更，附下changelog：https://gitee.com/openharmony/docs/pulls/65733
         // 判断是否存在最大化 - false
         let test = await assertMaximizeComponentExist(windowStatus)
@@ -1170,7 +1170,7 @@ export default function windowPCTest() {
       }
     })
 
-    
+
     /**
      * @tc.number    : testStartOptionsSupportWindowModes_0700
      * @tc.name      : testStartOptionsSupportWindowModes_0700
@@ -1212,7 +1212,7 @@ export default function windowPCTest() {
         // 获取窗口状态 - 全屏
         windowStatus = windowClass.getWindowStatus()
         console.info(`${message} windowStatus: ${windowStatus}, expect 1`);
-        expect(windowStatus).assertEqual(window.WindowStatusType.MAXIMIZE); 
+        expect(windowStatus).assertEqual(window.WindowStatusType.MAXIMIZE);
         //开发不兼容变更，附下changelog：https://gitee.com/openharmony/docs/pulls/65733
         // 判断是否存在最大化 - true
         test =
@@ -2455,7 +2455,7 @@ export default function windowPCTest() {
       }
     });
 
-    
+
     /**
      * @tc.number     : SUB_BASIC_WMS_getParentWindow_0300
      * @tc.name       : testgetParentWindow
@@ -2608,7 +2608,645 @@ export default function windowPCTest() {
       }
 
     })
-    
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_WINDOW_STATUS_DID_CHANGE_0100
+     * @tc.name       : testOnwindowStatusDidChange_1300002
+     * @tc.desc       : testOnwindowStatusDidChange_1300002
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testOnwindowStatusDidChange_1300002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let caseName = "testOnwindowStatusDidChange_1300002";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      try {
+        let windowClass = await windowStage.createSubWindow('testOnwindowStatusDidChange_1300002');
+        await windowClass.destroyWindow();
+        await sleep(500);
+        const callback = (data: window.WindowStatusType) => {
+          console.log(`${msgStr} callback data: ${JSON.stringify(data)}`);
+        }
+        windowClass.on('windowStatusDidChange', callback);
+        console.log(msgStr  + 'Succeeded on windowStatusDidChange ');
+        done()
+      } catch (err) {
+        console.error(`${caseName} failed, error: ${JSON.stringify(err)}`);
+        if (err.code == 801) {
+          done()
+        } else {
+          expect(err.code).assertEqual(1300002);
+          done()
+        }
+      }
+    })
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_WINDOW_STATUS_DID_CHANGE_0200
+     * @tc.name       : testOffwindowStatusDidChange_1300002
+     * @tc.desc       : testOffwindowStatusDidChange_1300002
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testOffwindowStatusDidChange_1300002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let caseName = "testOffwindowStatusDidChange_1300002";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      let windowClass = await windowStage.createSubWindow('testOffwindowStatusDidChange_1300002');
+      try {
+        const callback = (data: window.WindowStatusType) => {
+          console.log(`${msgStr} callback data: ${JSON.stringify(data)}`);
+        }
+        windowClass.on('windowStatusDidChange', callback);
+        await windowClass.destroyWindow();
+        windowClass.off('windowStatusDidChange', callback);
+        console.log(msgStr  + 'Succeeded on windowStatusDidChange ');
+        done()
+      } catch (err) {
+        console.error(`${caseName} failed, error: ${JSON.stringify(err)}`);
+        if (err.code == 801) {
+          done()
+        } else {
+          expect(err.code).assertEqual(1300002);
+          done()
+        }
+      }
+    })
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_WINDOW_STATUS_DID_CHANGE_0300
+     * @tc.name       : testOnwindowStatusDidChange_recover
+     * @tc.desc       : testOnwindowStatusDidChange_recover
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOnwindowStatusDidChange_recover', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let caseName = "testOnwindowStatusDidChange_recover";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      if (isPCStatus == '' && isAutoWindow != 'true') {
+        expect(true).assertTrue();
+        done();
+      } else {
+        try {
+          let windowClass = windowStage.getMainWindowSync();
+          let windowStatusType = windowClass.getWindowStatus();
+          console.info(caseName + ' windowClass.getWindowStatus(). windowStatusType: ' + JSON.stringify(windowStatusType));
+          if (windowStatusType == window.WindowStatusType.MAXIMIZE) {
+            await windowClass.recover();
+            await sleep(200);
+          }
+          let windowRect = windowClass.getWindowProperties().windowRect;
+          console.log(`${msgStr} windowRect: ${JSON.stringify(windowRect)}`);
+          await windowClass.maximize();
+          await sleep(200);
+          const callback = (data: window.WindowStatusType) => {
+            console.log(`${msgStr} callback data: ${JSON.stringify(data)}`);
+            let windowRect2 = windowClass.getWindowProperties().windowRect;
+            console.log(`${msgStr} windowRect2: ${JSON.stringify(windowRect2)}`);
+            expect(Math.abs(windowRect.left - windowRect2.left)).assertLessOrEqual(1);
+            expect(Math.abs(windowRect.top - windowRect2.top)).assertLessOrEqual(1);
+            expect(Math.abs(windowRect.width - windowRect2.width)).assertLessOrEqual(1);
+            expect(Math.abs(windowRect.height - windowRect2.height)).assertLessOrEqual(1);
+            windowClass.off('windowStatusDidChange', callback);
+            done()
+          }
+          windowClass.on('windowStatusDidChange', callback);
+          console.log(msgStr  + 'Succeeded on windowStatusDidChange ');
+          await windowClass.recover();
+          await sleep(200);
+        } catch (err) {
+          console.error(`${caseName} failed, error: ${JSON.stringify(err)}`);
+          if (err.code == 801) {
+            done()
+          } else {
+            expect().assertFail();
+            done()
+          }
+        }
+      }
+    })
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_WINDOW_STATUS_DID_CHANGE_0400
+     * @tc.name       : testOnwindowStatusDidChange_maxmize
+     * @tc.desc       : testOnwindowStatusDidChange_maxmize
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOnwindowStatusDidChange_maxmize', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let caseName = "testOnwindowStatusDidChange_maxmize";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      if (isPCStatus == '' && isAutoWindow != 'true') {
+        expect(true).assertTrue();
+        done();
+      } else {
+        try {
+          let windowClass = windowStage.getMainWindowSync();
+          let windowStatusType = windowClass.getWindowStatus();
+          console.info(caseName + ' windowClass.getWindowStatus(). windowStatusType: ' + JSON.stringify(windowStatusType));
+          if (windowStatusType == window.WindowStatusType.MAXIMIZE) {
+            await windowClass.recover();
+            await sleep(200);
+          }
+          let windowRect = windowClass.getWindowProperties().windowRect;
+          console.log(`${msgStr} windowRect: ${JSON.stringify(windowRect)}`);
+          const callback = async (data: window.WindowStatusType) => {
+            console.log(`${msgStr} callback data: ${JSON.stringify(data)}`);
+            let windowRect2 = windowClass.getWindowProperties().windowRect;
+            console.log(`${msgStr} windowRect2: ${JSON.stringify(windowRect2)}`);
+            expect(windowRect2.width - windowRect.width).assertLarger(0);
+            expect(windowRect2.height - windowRect.height).assertLarger(0);
+            windowClass.off('windowStatusDidChange', callback);
+            await windowClass.recover();
+            await sleep(200);
+            done()
+          }
+          windowClass.on('windowStatusDidChange', callback);
+          console.log(msgStr  + 'Succeeded on windowStatusDidChange ');
+          await windowClass.maximize();
+          await sleep(200)
+        } catch (err) {
+          console.error(`${caseName} failed, error: ${JSON.stringify(err)}`);
+          if (err.code == 801) {
+            done()
+          } else {
+            expect().assertFail();
+            done()
+          }
+        }
+      }
+    })
+
+    // /**
+    //  * @tc.number     : SUB_BASIC_WMS_WINDOW_STATUS_DID_CHANGE_0500
+    //  * @tc.name       : testOnwindowStatusDidChange_minimize
+    //  * @tc.desc       : testOnwindowStatusDidChange_minimize
+    //  * @tc.size       : MediumTest
+    //  * @tc.type       : Function
+    //  * @tc.level      : Level 0
+    //  */
+    // it('testOnwindowStatusDidChange_minimize', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    //   let caseName = "testOnwindowStatusDidChange_minimize";
+    //   let msgStr = 'jsunittest ' + caseName + ' ';
+    //   console.log(msgStr + 'begin.');
+    //   if (isPCStatus == '' && isAutoWindow != 'true') {
+    //     expect(true).assertTrue();
+    //     done();
+    //   } else {
+    //     try {
+    //       let windowClass = windowStage.getMainWindowSync();
+    //       let windowStatusType = windowClass.getWindowStatus();
+    //       console.info(caseName + ' windowClass.getWindowStatus(). windowStatusType: ' + JSON.stringify(windowStatusType));
+    //       if (windowStatusType == window.WindowStatusType.MINIMIZE) {
+    //         await windowClass.recover();
+    //         await sleep(200);
+    //       }
+    //       const callback = async (data: window.WindowStatusType) => {
+    //         console.log(`${msgStr} callback data: ${JSON.stringify(data)}`);
+    //         let windowRect2 = windowClass.getWindowProperties().windowRect;
+    //         console.log(`${msgStr} windowRect2: ${JSON.stringify(windowRect2)}`);
+    //         expect(windowRect2.width).assertEqual(0);
+    //         expect(windowRect2.height).assertEqual(0);
+    //         windowClass.off('windowStatusDidChange');
+    //         await windowClass.recover();
+    //         await sleep(200);
+    //         done()
+    //       }
+    //       windowClass.on('windowStatusDidChange', callback);
+    //       console.log(msgStr  + 'Succeeded on windowStatusDidChange ');
+    //       await windowClass.minimize();
+    //       await sleep(200)
+    //     } catch (err) {
+    //       console.error(`${caseName} failed, error: ${JSON.stringify(err)}`);
+    //       if (err.code == 801) {
+    //         done()
+    //       } else {
+    //         expect().assertFail();
+    //         done()
+    //       }
+    //     }
+    //   }
+    // })
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_SHIFT_APP_WINDOW_TOUCH_EVENT_0100
+     * @tc.name       : testShiftAppWindowTouchEvent_null
+     * @tc.desc       : testShiftAppWindowTouchEvent_null
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testShiftAppWindowTouchEvent_null', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let caseName = "testShiftAppWindowTouchEvent_null";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      try {
+        window.shiftAppWindowTouchEvent(null, null, null).then(() => {
+          console.info(`${caseName} Succeeded in calling shiftAppWindowTouchEvent.`);
+          expect().assertFail();
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${caseName} Failed. Cause code: ${JSON.stringify(err)}`);
+          expect().assertFail();
+          done();
+        });
+      } catch (err) {
+        console.error(`${caseName} failed, error: ${JSON.stringify(err)}`);
+        if (err.code == 801) {
+          done()
+        } else {
+          expect(err.code).assertEqual(401);
+          done()
+        }
+      }
+    })
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_SHIFT_APP_WINDOW_TOUCH_EVENT_0200
+     * @tc.name       : testShiftAppWindowTouchEvent_undefined
+     * @tc.desc       : testShiftAppWindowTouchEvent_undefined
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testShiftAppWindowTouchEvent_undefined', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let caseName = "testShiftAppWindowTouchEvent_undefined";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      try {
+        window.shiftAppWindowTouchEvent(undefined, undefined, undefined).then(() => {
+          console.info(`${caseName} Succeeded in calling shiftAppWindowTouchEvent.`);
+          expect().assertFail();
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${caseName} Failed. Cause code: ${JSON.stringify(err)}`);
+          expect().assertFail();
+          done();
+        });
+      } catch (err) {
+        console.error(`${caseName} failed, error: ${JSON.stringify(err)}`);
+        if (err.code == 801) {
+          done()
+        } else {
+          expect(err.code).assertEqual(401);
+          done()
+        }
+      }
+    })
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_SHIFT_APP_WINDOW_TOUCH_EVENT_0300
+     * @tc.name       : testShiftAppWindowTouchEvent_1300002
+     * @tc.desc       : testShiftAppWindowTouchEvent_1300002
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testShiftAppWindowTouchEvent_1300002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let caseName = "testShiftAppWindowTouchEvent_1300002";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      if(isPCStatus != '' || isAutoWindow =='true'){
+        let subWindowClass = await windowStage.createSubWindow('testShiftAppWindowTouchEvent_1300002');
+        await sleep(200);
+        // let windowLimits = subWindowClass.getWindowLimits();
+        // console.log(`${caseName} windowLimits: ${JSON.stringify(windowLimits)}`);
+        await subWindowClass.resize(500, 500);
+        await sleep(300);
+        await subWindowClass.setUIContent("testability/pages/WindowTest/StartMoving2");
+        await sleep(200);
+        await subWindowClass.showWindow();
+        await sleep(200);
+        let subWindowId = subWindowClass.getWindowProperties().id;
+        console.log(`${caseName} subWindowId: ${JSON.stringify(subWindowId)}`);
+        AppStorage.setOrCreate('subWindowId2', subWindowId);
+        try {
+          let driver = await Driver.create();
+          await sleep(1000);
+          let blank = await driver.findComponent(ON.id('startMoving2'))
+          await sleep(1000)
+          let point = await blank.getBoundsCenter();
+          await driver.drag(point.x, point.y, point.x + 50, point.y + 50, 200);
+          await sleep(1000);
+          let text = await driver.findComponent(ON.id('startMovingText2'));
+          await sleep(1000)
+          let textDragged = await text.getText();
+          console.log(`${caseName} textDragged: ${JSON.stringify(textDragged)}`);
+          if (textDragged == 'success') {
+            expect(true).assertFalse()
+          } else if (textDragged == 'startMoving 801' || textDragged == '801') {
+            expect(true).assertTrue();
+          } else if (textDragged == '1300002') {
+            expect(true).assertTrue();
+          } else {
+            console.error(`${caseName} Error.`);
+            expect(true).assertFalse()
+          }
+          await subWindowClass.destroyWindow();
+          done();
+        } catch (err) {
+          console.error(`${caseName} failed, error: ${JSON.stringify(err)}`);
+          await subWindowClass.destroyWindow();
+          if (err.code == 801) {
+            done()
+          } else {
+            expect().assertFail();
+            done()
+          }
+        }
+      }else{
+        done();
+      }
+
+    })
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_SHIFT_APP_WINDOW_TOUCH_EVENT_0400
+     * @tc.name       : testShiftAppWindowTouchEvent_1300016
+     * @tc.desc       : testShiftAppWindowTouchEvent_1300016
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testShiftAppWindowTouchEvent_1300016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let caseName = "testShiftAppWindowTouchEvent_1300016";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      if(isPCStatus != '' || isAutoWindow =='true'){
+        let subWindowClass = await windowStage.createSubWindow('testShiftAppWindowTouchEvent_1300016');
+        await sleep(200);
+        let windowLimits = subWindowClass.getWindowLimits();
+        console.log(`${caseName} windowLimits: ${JSON.stringify(windowLimits)}`);
+        await subWindowClass.resize((windowLimits.minWidth as number) + 100, (windowLimits.minHeight as number) + 100);
+        await subWindowClass.setUIContent("testability/pages/WindowTest/StartMoving3");
+        await sleep(200);
+        await subWindowClass.showWindow();
+        await sleep(200);
+        let subWindowId = subWindowClass.getWindowProperties().id;
+        console.error(`${caseName} subWindowId: ${JSON.stringify(subWindowId)}`);
+        AppStorage.setOrCreate('subWindowId3', subWindowId);
+
+
+        try {
+          let driver = await Driver.create();
+          await sleep(1000);
+          let blank = await driver.findComponent(ON.id('startMoving3'))
+          await sleep(1000)
+          let point = await blank.getBoundsCenter();
+          await driver.drag(point.x, point.y, point.x + 50, point.y + 50, 200);
+          await sleep(1000);
+          let text = await driver.findComponent(ON.id('startMovingText3'));
+          await sleep(1000)
+          let textDragged = await text.getText();
+
+          console.log(`${caseName} textDragged: ${JSON.stringify(textDragged)}`);
+          if (textDragged == 'success') {
+            expect(true).assertFalse()
+          } else if (textDragged == 'startMoving 801' || textDragged == '801') {
+            expect(true).assertTrue();
+          } else if (textDragged == '1300016') {
+            expect(true).assertTrue();
+          } else {
+            console.error(`${caseName} Error.`);
+            expect(true).assertFalse()
+          }
+          await subWindowClass.destroyWindow();
+          done();
+        } catch (err) {
+          console.error(`${caseName} failed, error: ${JSON.stringify(err)}`);
+          await subWindowClass.destroyWindow();
+          if (err.code == 801) {
+            done()
+          } else {
+            expect().assertFail();
+            done()
+          }
+        }
+      }else{
+        done();
+      }
+
+    })
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_SHIFT_APP_WINDOW_TOUCH_EVENT_0500
+     * @tc.name       : testShiftAppWindowTouchEvent_1300004
+     * @tc.desc       : testShiftAppWindowTouchEvent_1300004
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testShiftAppWindowTouchEvent_1300004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      let caseName = "testShiftAppWindowTouchEvent_1300004";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      if(isPCStatus != '' || isAutoWindow =='true'){
+        let mainWindow = windowStage.getMainWindowSync();
+        let mainWindowId = mainWindow.getWindowProperties().id;
+        console.log(`${caseName} mainwindowId: ${JSON.stringify(mainWindowId)}`);
+        AppStorage.setOrCreate('mainWindowId4', mainWindowId);
+        let config: window.Configuration = {
+          name: "dialog",
+          windowType: window.WindowType.TYPE_DIALOG,
+          ctx: context
+        };
+        const subWindowClass = await window.createWindow(config);
+        await sleep(200);
+        await subWindowClass.setUIContent("testability/pages/WindowTest/StartMoving4");
+        await sleep(200);
+        await subWindowClass.showWindow();
+        await sleep(200);
+        let subWindowId = subWindowClass.getWindowProperties().id;
+        console.log(`${caseName} subWindowId: ${JSON.stringify(subWindowId)}`);
+        AppStorage.setOrCreate('subWindowId4', subWindowId);
+        try {
+          let driver = await Driver.create();
+          await sleep(1000);
+          let blank = await driver.findComponent(ON.id('startMoving4'))
+          await sleep(1000)
+          let point = await blank.getBoundsCenter();
+          await driver.drag(point.x, point.y, point.x + 50, point.y + 50, 200);
+          await sleep(1000);
+          let text = await driver.findComponent(ON.id('startMovingText4'));
+          await sleep(1000)
+          let textDragged = await text.getText();
+
+          console.log(`${caseName} textDragged: ${JSON.stringify(textDragged)}`);
+          if (textDragged == 'success') {
+            expect(true).assertFalse()
+          } else if (textDragged == 'startMoving 801' || textDragged == '801') {
+            expect(true).assertTrue();
+          } else if (textDragged == '1300004') {
+            expect(true).assertTrue();
+          } else {
+            console.error(`${caseName} Error.`);
+            expect(true).assertFalse()
+          }
+          await subWindowClass.destroyWindow();
+          done();
+        } catch (err) {
+          console.error(`${caseName} failed, error: ${JSON.stringify(err)}`);
+          await subWindowClass.destroyWindow();
+          if (err.code == 801) {
+            done()
+          } else {
+            expect().assertFail();
+            done()
+          }
+        }
+      }else{
+        done();
+      }
+
+    })
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_SHIFT_APP_WINDOW_TOUCH_EVENT_0600
+     * @tc.name       : testShiftAppWindowTouchEvent_FromSubWindowToMainWindow
+     * @tc.desc       : testShiftAppWindowTouchEvent_FromSubWindowToMainWindow
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testShiftAppWindowTouchEvent_FromSubWindowToMainWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let caseName = "testShiftAppWindowTouchEvent_FromSubWindowToMainWindow";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      if(isPCStatus != '' || isAutoWindow =='true'){
+        let mainWindow = windowStage.getMainWindowSync();
+      let mainWindowId = mainWindow.getWindowProperties().id;
+      console.log(`${caseName} mainwindowId: ${JSON.stringify(mainWindowId)}`);
+      AppStorage.setOrCreate('mainWindowId5', mainWindowId);
+      let subWindowClass = await windowStage.createSubWindow('testShiftAppWindowTouchEvent_FromSubWindowToMainWindow');
+      await sleep(200);
+      let windowLimits = subWindowClass.getWindowLimits();
+      console.log(`${caseName} windowLimits: ${JSON.stringify(windowLimits)}`);
+      await subWindowClass.resize((windowLimits.minWidth as number) + 100, (windowLimits.minHeight as number) + 100);
+      await subWindowClass.setUIContent("testability/pages/WindowTest/StartMoving5");
+      await sleep(200);
+      await subWindowClass.showWindow();
+      await sleep(200);
+      let subWindowId = subWindowClass.getWindowProperties().id;
+      console.log(`${caseName} subWindowId: ${JSON.stringify(subWindowId)}`);
+      AppStorage.setOrCreate('subWindowId5', subWindowId);
+      try {
+        let driver = await Driver.create();
+        await sleep(1000);
+        let blank = await driver.findComponent(ON.id('startMoving5'))
+        await sleep(1000)
+        let point = await blank.getBoundsCenter();
+        await driver.drag(point.x, point.y, point.x + 50, point.y + 50, 200);
+        await sleep(1000);
+        let text = await driver.findComponent(ON.id('startMovingText5'));
+        await sleep(1000)
+        let textDragged = await text.getText();
+        console.log(`${caseName} textDragged: ${JSON.stringify(textDragged)}`);
+        if (textDragged == 'success') {
+          let isFocus = mainWindow.getWindowProperties().focusable;
+          console.log(`${caseName} mainWindow isFocus: ${isFocus}`);
+          expect(isFocus).assertEqual(true);
+        } else if (textDragged == 'startMoving 801' || textDragged == '801') {
+          expect(true).assertTrue();
+        } else {
+          console.error(`${caseName} Error.`);
+          expect(true).assertFalse()
+        }
+        await subWindowClass.destroyWindow();
+        done();
+      } catch (err) {
+        console.error(`${caseName} failed, error: ${JSON.stringify(err)}`);
+        await subWindowClass.destroyWindow();
+        if (err.code == 801) {
+          done()
+        } else {
+          expect().assertFail();
+          done()
+        }
+      }
+      }else{
+        done();
+      }
+      
+    })
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_SHIFT_APP_WINDOW_TOUCH_EVENT_0700
+     * @tc.name       : testShiftAppWindowTouchEvent_FromMainWindowToSubWindow
+     * @tc.desc       : testShiftAppWindowTouchEvent_FromMainWindowToSubWindow
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testShiftAppWindowTouchEvent_FromMainWindowToSubWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let caseName = "testShiftAppWindowTouchEvent_FromMainWindowToSubWindow";
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin.');
+      if(isPCStatus != '' || isAutoWindow =='true'){
+        let mainWindow = windowStage.getMainWindowSync();
+        AppStorage.setOrCreate('mainWindow', mainWindow);
+        await mainWindow.setUIContent("testability/pages/WindowTest/StartMoving6");
+        let mainWindowId = mainWindow.getWindowProperties().id;
+        console.log(`${caseName} mainwindowId: ${JSON.stringify(mainWindowId)}`);
+        AppStorage.setOrCreate('mainWindowId6', mainWindowId);
+        let subWindowClass = await windowStage.createSubWindow('testShiftAppWindowTouchEvent_FromSubWindowToMainWindow');
+        await sleep(200);
+        let windowLimits = subWindowClass.getWindowLimits();
+        console.log(`${caseName} windowLimits: ${JSON.stringify(windowLimits)}`);
+        await subWindowClass.resize((windowLimits.minWidth as number) + 100, (windowLimits.minHeight as number) + 100);
+        await subWindowClass.setUIContent("testability/pages/First/index2");
+        await sleep(200);
+        await subWindowClass.showWindow();
+        await sleep(200);
+        let subWindowId = subWindowClass.getWindowProperties().id;
+        console.log(`${caseName} subWindowId: ${JSON.stringify(subWindowId)}`);
+        AppStorage.setOrCreate('subWindowId6', subWindowId);
+        try {
+          let driver = await Driver.create();
+          await sleep(1000);
+          let blank = await driver.findComponent(ON.id('startMoving6'))
+          await sleep(1000)
+          let point = await blank.getBoundsCenter();
+          await driver.drag(point.x, point.y, point.x + 50, point.y + 50, 200);
+          await sleep(1000);
+          let text = await driver.findComponent(ON.id('startMovingText6'));
+          await sleep(1000)
+          let textDragged = await text.getText();
+          console.log(`${caseName} textDragged: ${JSON.stringify(textDragged)}`);
+          if (textDragged == 'success') {
+            let isFocus = subWindowClass.getWindowProperties().focusable;
+            console.log(`${caseName} subWindowClass isFocus: ${isFocus}`);
+            expect(isFocus).assertEqual(true);
+          } else if (textDragged == 'startMoving 801' || textDragged == '801') {
+            expect(true).assertTrue();
+          } else {
+            console.error(`${caseName} Error.`);
+            expect(true).assertFalse()
+          }
+          await subWindowClass.destroyWindow();
+          await mainWindow.setUIContent("testability/pages/Index");
+          done();
+        } catch (err) {
+          console.error(`${caseName} failed, error: ${JSON.stringify(err)}`);
+          await mainWindow.setUIContent("testability/pages/Index");
+          await subWindowClass.destroyWindow();
+          if (err.code == 801) {
+            done()
+          } else {
+            expect().assertFail();
+            done()
+          }
+        }
+      }else{
+        done();
+      }
+
+    })
 
   })
 }

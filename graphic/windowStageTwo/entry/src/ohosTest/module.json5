@@ -168,6 +168,22 @@
         "exported": true,
         "srcEntry": "./ets/testability/EmbeddedOccupyErrorCodeTestAbility.ets",
         "type": "embeddedUI"
+      },
+      {
+        "name": "EmbeddedHideTestAbility",
+        "description": "$string:TestAbility_desc",
+        "label": "$string:TestAbility_label",
+        "exported": true,
+        "srcEntry": "./ets/testability/EmbeddedHideTestAbility.ets",
+        "type": "embeddedUI"
+      },
+      {
+        "name": "EmbeddedHideTestAbility2",
+        "description": "$string:TestAbility_desc",
+        "label": "$string:TestAbility_label",
+        "exported": true,
+        "srcEntry": "./ets/testability/EmbeddedHideTestAbility2.ets",
+        "type": "embeddedUI"
       }
     ],
     "requestPermissions": [

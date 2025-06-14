@@ -1815,5 +1815,99 @@ it('testSetResizeByDragEnabledTrue_0100', TestType.FUNCTION | Size.MEDIUMTEST | 
         }
       })
 
+       /**
+     * @tc.number    : SUB_BASIC_WMS_STARTMOVING_0400
+     * @tc.name      : testStartMoving_0400
+     * @tc.desc      : 验证系统窗调用startmoving移动成功
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testStartMoving_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      const caseName = 'testStartMoving_0400';
+      console.log(caseName + 'begin.');
+      let config: window.Configuration = {
+        name: "testStartMoving_0400",
+        windowType: window.WindowType.TYPE_DIALOG,
+        ctx: context
+      };
+      let windowClass = await window.createWindow(config);
+      try {
+        let windowLimits = await windowClass.getWindowLimits();
+        console.info(`${caseName} windowLimits = ${JSON.stringify(windowLimits)}`);
+        await windowClass.resize(windowLimits.minWidth, windowLimits.minHeight);
+        await sleep(200);
+        await windowClass.setUIContent("testability/pages/WindowTest/StartMoving");
+        await sleep(200);
+        await windowClass.showWindow();
+        await sleep(200);
+        await windowClass.moveWindowTo(100, 100);
+        await sleep(200);
+        let windowPoint = await windowClass.getWindowProperties().windowRect;
+        console.info(`${caseName} windowPoint = ${JSON.stringify(windowPoint)}`);
+        let driver = await Driver.create();
+        await sleep(1000);
+        let blank = await driver.findComponent(ON.id('startMoving'))
+        await sleep(1000)
+        let point = await blank.getBoundsCenter();
+        await driver.drag(point.x, point.y, point.x - 50, point.y + 50, 200);
+        await sleep(1000);
+        let text = await driver.findComponent(ON.id('startMovingText'));
+        await sleep(1000)
+        let textDragged = await text.getText();
+        if (textDragged == 'startMoving success') {
+          let windowPointDragged = windowClass.getWindowProperties().windowRect
+          console.info(`${caseName} sstartMoving success, windowPoint = ${JSON.stringify(windowPointDragged)}`)
+          expect(windowPointDragged.left).assertEqual(windowPoint.left - 50)
+          expect(windowPointDragged.top).assertEqual(windowPoint.top + 50)
+        } else if (textDragged == 'startMoving 801') {
+          expect(true).assertTrue();
+        } else {
+          console.error(`${caseName} Error.`);
+          expect(true).assertFalse()
+        }
+        await windowClass.destroyWindow();
+        done();
+      } catch (err) {
+        console.error(`${caseName} failed, err: ${JSON.stringify(err)}`);
+        await windowClass.destroyWindow();
+        if (err.code === 801) {
+          done();
+        } else {
+          expect().assertFail();
+          done();
+        }
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SYSTEMAPI_ENABLEDRAG_0700
+     * @tc.name      : testWindowEnableDragTruewithFullScreenMainWindow
+     * @tc.desc      :  验证全屏主窗调用enabledrag抛1300004错误码
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testWindowEnableDragTruewithFullScreenMainWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      const caseName = 'testWindowEnableDragTruewithFullScreenMainWindow';
+      console.log(caseName + 'begin.');
+      // Capability not supported. Failed to call the API due to limited device capabilities
+      let windowClass = await windowStage.getMainWindowSync();
+      let windowStatusType = windowClass.getWindowStatus();
+      console.info(caseName + ' windowClass.getWindowStatus(). windowStatusType: ' + JSON.stringify(windowStatusType));
+      try {
+        await windowClass.enableDrag(true);
+        await sleep(200);
+        if (windowStatusType != window.WindowStatusType.FULL_SCREEN) {
+          done();
+        }
+      } catch (err) {
+        console.error(`${caseName} failed, err: ${JSON.stringify(err)}`);
+        expect(err.code).assertEqual(1300004);
+        done();
+        
+      }
+    })
+
   })
 }
