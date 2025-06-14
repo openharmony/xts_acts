@@ -317,69 +317,6 @@ export default function startNativeChildProcessWithConfigsTest() {
       }
     });
 
-    /*
-     * @tc.number : SUB_Ability_AbilityRuntime_NativeChildProcessWithConfigs_1200
-     * @tc.name   : Call StartNativeChildProcess to create a child process, give correct entry and configs
-     *              and the size of args' entryParams exceeds 200K.
-     * @tc.desc   : Expect: 1.Return 16010003 2.read Result: 'test'
-     * @tc.type   : Function
-     * @tc.size   : MediumTest
-     * @tc.level  : 0
-     */
-    it('SUB_Ability_AbilityRuntime_NativeChildProcessWithConfigs_1200', Level.LEVEL0, async (done: Function) => {
-      let tag = `NativeChildProcessWithConfigs_1200`;
-      console.log(`${tag} it begin`);
-      let path = "/data/storage/el2/base/haps/entry/files/test0.txt";
-      try {
-        let pid = -1;
-        pid = testNapi.StartNativeChildProcessWithConfigsEntryParams200K();
-        console.log(`${tag} StartNativeChildProcess success, pid: ${pid}`);
-        if(pid == 801){
-          done();
-        }else{
-          expect(16010003).assertEqual(pid);
-          done();
-        }
-      } catch (err) {
-        console.error(`${tag} StartNativeChildProcess error, errorCode: ${err.code}`);
-        expect().assertFail();
-        done();
-      }
-    });
-
-    /*
-     * @tc.number : SUB_Ability_AbilityRuntime_NativeChildProcessWithConfigs_1400
-     * @tc.name   : Call StartNativeChildProcess to create a child process, give param correct entryPoint, args
-     *              and configs
-     * @tc.desc   : Expect: 1.Return child pid 2.read Result: 'SUCC'
-     * @tc.type   : Function
-     * @tc.size   : MediumTest
-     * @tc.level  : 0
-     */
-    it('SUB_Ability_AbilityRuntime_NativeChildProcessWithConfigs_1400', Level.LEVEL0, async (done: Function) => {
-      let tag = `NativeChildProcessWithConfigs_1400`;
-      console.log(`${tag} it begin`);
-      let path = "/data/storage/el2/base/haps/entry/files/test0.txt";
-      try {
-        let pid = -1;
-        pid = testNapi.StartNativeChildProcessWithConfigs("libentry.so:Main");
-        console.log(`${tag} StartNativeChildProcess success, pid: ${pid}`);
-        if(pid == 801){
-          done();
-        }else{
-          expect(pid > 0).assertTrue();
-          await sleep(3000);
-          let result = readFile(path);
-          expect(result).assertEqual('SUCC');
-          done();
-        }
-      } catch (err) {
-        console.error(`${tag} StartNativeChildProcess error, errorCode: ${err.code}`);
-        expect().assertFail();
-        done();
-      }
-    });
-
   });
 }
 

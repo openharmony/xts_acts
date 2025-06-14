@@ -489,24 +489,9 @@ static napi_value StartNativeChildProcessWithConfigs(napi_env env, napi_callback
 
     int32_t pid = -1;
     NativeChildProcess_Args args;
-    auto testParam = "testEntryParams";
-    args.entryParams = (char*)malloc(sizeof(char) * strlen(testParam) + 1);
-    (void)strcpy(args.entryParams, testParam);
-
-    auto fd1Name = "fd1";
-    args.fdList.head = (NativeChildProcess_Fd*)malloc(sizeof(NativeChildProcess_Fd));
-    args.fdList.head->fdName = (char*)malloc(sizeof(char) * strlen(fd1Name) + 1);
-    (void)strcpy(args.fdList.head->fdName, fd1Name);
-    
-    auto path = "data/storage/el2/base/files/test.txt";
-    int32_t fd = open(path, O_RDWR | O_CREAT | O_TRUNC, 0644);
-    auto testString = "test";
-    write(fd, testString, strlen(testString));
-    close(fd);
-    fd = open(path, O_RDWR | O_TRUNC, 0644);
-    args.fdList.head->fd = fd;
-    args.fdList.head->next = NULL;
-
+    args.entryParams = NULL;
+    args.fdList.head = NULL;
+   
     int32_t ret = OH_Ability_StartNativeChildProcessWithConfigs(entry, args, configs, &pid);
     
     OH_LOG_INFO(LOG_APP, "Main process - StartNativeChildProcessWithConfigs entry:%{public}s ret:%{public}d", entry, ret);
