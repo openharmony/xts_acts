@@ -17,45 +17,37 @@ import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
 
+
 @Entry
 @Component
-struct StartMoving2 {
-  @State message: string = 'startMoving2'
+struct StartMoving7 {
+  @State message: string = 'startMoving'
 
   build() {
     Column() {
-      Button(this.message).id('startMovingText2')
+      Button(this.message).id('startMovingText')
       Blank()
-        .id('startMoving2')
+        .id('startMoving')
         .backgroundColor(Color.Gray)
         .size({ width: '80%', height: 200 })
         .hitTestBehavior(HitTestMode.Transparent)
         .onTouch((event: TouchEvent) => {
           if (event.type == TouchType.Down) {
             try {
-              window.getLastWindow(getContext(this), (err: BusinessError, windowClass) => {
-                let subWindowId = AppStorage.get('subWindowId2') as number;
-                console.log('shiftAppWindowTouchEvent subWindowId: ' + subWindowId);
+              // window.getLastWindow(getContext(this), (err: BusinessError, windowClass) => {
+              let windowClass = AppStorage.get('windowClass') as window.Window;
                 windowClass.startMoving().then(() => {
-                  this.message = 'startMoving success';
-                  window.shiftAppWindowTouchEvent(subWindowId, 20000, event.touches[0].id).then(() => {
-                    this.message = 'success';
-                  }).catch((error: BusinessError) => {
-                    if (error.code == 801) {
-                      this.message = '801'
-                    } else if (error.code == 1300002) {
-                      this.message = '1300002'
-                    }
-                    console.error('shiftAppWindowTouchEvent : ' + error.code + ',message:' + error.message)
-                  })
+                  this.message = 'startMoving success'
                   console.info('start moving successfully');
                 }).catch((err: BusinessError) => {
                   if (err.code == 801) {
                     this.message = 'startMoving 801'
+                  }else if (err.code == 1300004) {
+                    this.message = 'startMoving 1300004'
                   }
                   console.error('start moving : ' + err.code + ',message:' + err.message)
                 })
-              })
+              // })
             } catch (exception) {
               console.error(`Failed to start drag window. Cause code: ${exception.code}, message: ${exception.message}`)
             }

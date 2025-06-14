@@ -1832,12 +1832,13 @@ it('testSetResizeByDragEnabledTrue_0100', TestType.FUNCTION | Size.MEDIUMTEST | 
         ctx: context
       };
       let windowClass = await window.createWindow(config);
+      AppStorage.setOrCreate('windowClass', windowClass);
       try {
         let windowLimits = await windowClass.getWindowLimits();
         console.info(`${caseName} windowLimits = ${JSON.stringify(windowLimits)}`);
         await windowClass.resize(windowLimits.minWidth, windowLimits.minHeight);
         await sleep(200);
-        await windowClass.setUIContent("testability/pages/WindowTest/StartMoving");
+        await windowClass.setUIContent("testability/pages/WindowTest/StartMoving7");
         await sleep(200);
         await windowClass.showWindow();
         await sleep(200);
@@ -1850,7 +1851,7 @@ it('testSetResizeByDragEnabledTrue_0100', TestType.FUNCTION | Size.MEDIUMTEST | 
         let blank = await driver.findComponent(ON.id('startMoving'))
         await sleep(1000)
         let point = await blank.getBoundsCenter();
-        await driver.drag(point.x, point.y, point.x - 50, point.y + 50, 200);
+        await driver.drag(point.x, point.y, point.x + 50, point.y + 50, 200);
         await sleep(1000);
         let text = await driver.findComponent(ON.id('startMovingText'));
         await sleep(1000)
@@ -1858,7 +1859,7 @@ it('testSetResizeByDragEnabledTrue_0100', TestType.FUNCTION | Size.MEDIUMTEST | 
         if (textDragged == 'startMoving success') {
           let windowPointDragged = windowClass.getWindowProperties().windowRect
           console.info(`${caseName} sstartMoving success, windowPoint = ${JSON.stringify(windowPointDragged)}`)
-          expect(windowPointDragged.left).assertEqual(windowPoint.left - 50)
+          expect(windowPointDragged.left).assertEqual(windowPoint.left + 50)
           expect(windowPointDragged.top).assertEqual(windowPoint.top + 50)
         } else if (textDragged == 'startMoving 801') {
           expect(true).assertTrue();

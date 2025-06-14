@@ -16,6 +16,7 @@
     "testability/pages/WindowTest/StartMoving4",
     "testability/pages/WindowTest/StartMoving5",
     "testability/pages/WindowTest/StartMoving6",
+    "testability/pages/WindowTest/StartMoving7",
     "testability/pages/WindowTest/Modality",
     "testability/pages/WindowTest/extension",
     "testability/pages/WindowTest/EmbeddedComponentPage",
