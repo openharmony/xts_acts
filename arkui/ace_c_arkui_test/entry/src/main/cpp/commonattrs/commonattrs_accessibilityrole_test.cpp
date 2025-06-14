@@ -499,7 +499,8 @@ static napi_value TestCommonAttrsAccessibilityRole041(napi_env env, napi_callbac
     ArkUI_NumberValue value[] = {{.u32 = accessibilityRole}};
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_ACCESSIBILITY_ROLE, &value_item);
-    ASSERT_EQ(ret, INVALID_PARAM);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_ACCESSIBILITY_ROLE)->value[PARAM_0].u32, accessibilityRole);
     NAPI_END;
 }
 
