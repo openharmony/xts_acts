@@ -86,7 +86,9 @@ export default function RichEditorShortCutKeys019() {
       let stylesInfo = await driver.findComponent(ON.id('stylesInfo'));
       let stylesInfoText = await stylesInfo.getText();
       await CommonFunc.sleep(500);
-      let str = 'stylesInfo:start:0,length:3,styledKey:0,fontWeight:11,fontStyle:1,start:3,length:3';
+      let str = 'stylesInfo:start:0,length:6,styledKey:0,fontWeight:11,' +
+        'fontStyle:1,start:3,length:3,styledKey:100,start:0,length:3,styledKey:1,' +
+        'decoration type:1,decoration color:#FF0000FF';
       expect(stylesInfoText).assertContain(str);
       done();
     });
