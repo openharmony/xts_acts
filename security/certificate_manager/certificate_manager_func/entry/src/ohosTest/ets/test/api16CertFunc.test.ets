@@ -487,6 +487,7 @@ export default function api16CertFuncTestUnit() {
       let property: certManager.CertStoreProperty = {
         certType: certManager.CertType.CA_CERT_SYSTEM,
         certScope: certManager.CertScope.CURRENT_USER,
+        certAlg: certManager.CertAlgorithm.INTERNATIONAL,
       }
       try {
         let userCACurrentPath = certManager.getCertificateStorePath(property);
