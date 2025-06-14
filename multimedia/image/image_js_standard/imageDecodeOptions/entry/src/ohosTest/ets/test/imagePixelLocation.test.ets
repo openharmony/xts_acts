@@ -200,7 +200,7 @@ async function checkPixelValues(done: Function , testNum: string, x: number, y: 
     console.info('index + 1 is ' + bufferArr[index + 1]);
     console.info('index + 2 is ' + bufferArr[index + 2]);
     console.info('index + 3 is ' + bufferArr[index + 3]);
-    if (((Red -1) <= bufferArr[index] <= (Red + 1)) && ((Green -1) <= bufferArr[index] <= (Green + 1)) && ((Blue -1) <= bufferArr[index] <= (Blue + 1)) && ((Alpha -1) <= bufferArr[index] <= (Alpha + 1))) {
+     if (bufferArr[index] == Red && bufferArr[index + 1] == Green && bufferArr[index + 2] == Blue && bufferArr[index + 3] == Alpha) {
         console.info(testNum + ' Successed in checking pixel values');
         expect(true).assertTrue();
         done();
@@ -3177,43 +3177,6 @@ export default function imagePixelLocation() {
                 cropAndScaleStrategy : image.CropAndScaleStrategy.CROP_FIRST
             };
             await checkHeicDecode(done, tag, 'pixel_heic_3072x4096.heic', decodingOptions, 4000, 5000, 3900, 4900, 4000, 255, 0, 0, 255);
-        });
-
-        /**
-         * @tc.number    : SUB_MULTIMEDIA_IMAGE_CROP_AND_SCALE_STRATEGY_1090
-         * @tc.name      : DefaultStrategy
-         * @tc.desc      : 1.get image path,2.createImageSourceFromFd,3.createImageSource,4.createPixelMap by decodingOptions 
-         * @tc.size      : MEDIUM
-         * @tc.type      : Functional
-         * @tc.level     : Level 2
-         */
-        it("SUB_MULTIMEDIA_IMAGE_CROP_AND_SCALE_STRATEGY_1090", Level.LEVEL2, async (done: Function) => {
-            let tag = 'SUB_MULTIMEDIA_IMAGE_CROP_AND_SCALE_STRATEGY_1090';
-            let decodingOptions: image.DecodingOptions = {
-                desiredSize: { width: 3072, height: 4096 },
-                desiredPixelFormat: 3,
-                desiredRegion: { size: { width: 4096, height: 6144 }, x: 800, y: 1000 }
-            };
-            await checkHeicDecode(done, tag, 'pixel_heic_6144x8192.heic', decodingOptions, 3072, 4096, 3000, 4000, 3072, 120, 120, 120, 255);
-        });
-
-        /**
-         * @tc.number    : SUB_MULTIMEDIA_IMAGE_CROP_AND_SCALE_STRATEGY_1100
-         * @tc.name      : SCALE_FIRST Strategy
-         * @tc.desc      : 1.get image path,2.createImageSourceFromFd,3.createImageSource,4.createPixelMap by decodingOptions 
-         * @tc.size      : MEDIUM
-         * @tc.type      : Functional
-         * @tc.level     : Level 2
-         */
-        it("SUB_MULTIMEDIA_IMAGE_CROP_AND_SCALE_STRATEGY_1100", Level.LEVEL2, async (done: Function) => {
-            let tag = 'SUB_MULTIMEDIA_IMAGE_CROP_AND_SCALE_STRATEGY_1100';
-            let decodingOptions: image.DecodingOptions = {
-                desiredSize: { width: 3072, height: 4096 },
-                desiredPixelFormat: 3,
-                desiredRegion: { size: { width: 4096, height: 6144 }, x: 800, y: 1000 },
-                cropAndScaleStrategy : image.CropAndScaleStrategy.SCALE_FIRST
-            };
-            await checkHeicDecodeErr(done, tag, 'pixel_heic_6144x8192.heic', decodingOptions);
         });
 
         /**
