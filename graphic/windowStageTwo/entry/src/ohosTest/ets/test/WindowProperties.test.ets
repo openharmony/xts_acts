@@ -104,7 +104,7 @@ export default function windowPropertiesTest() {
             context = AppStorage.get('context') as common.UIAbilityContext;
             console.log('windowTest context: ' + JSON.stringify(context))
             windowStage = AppStorage.get('windowStage') as ohosWindow.WindowStage;
-            isAutoWindow = settings.getValueSync(context, 'window_pcmode_switch_status', '',settings.domainName.DEVICE_SHARED);
+            isAutoWindow = settings.getValueSync(context, 'window_pcmode_switch_status', '',settings.domainName.USER_PROPERTY);
             console.info(`isAutoWindow: ${JSON.stringify(isAutoWindow)}`);
             isPCStatus = settings.getValueSync(context, 'isStatusBarExist', '', settings.domainName.USER_PROPERTY)
             //isPCStatus == '' 非PC设备
@@ -6756,6 +6756,35 @@ export default function windowPropertiesTest() {
           }
         }
       })
+
+      /**
+       * @tc.number    : SUB_BASIC_WMS_GLOBALWINDOWMODE_ENUM_0100
+       * @tc.name      : testGlobalWindowModeEnum
+       * @tc.desc      : testGlobalWindowModeEnum
+       * @tc.size      : MediumTest
+       * @tc.type      : Function
+       * @tc.level     : Level0
+       */
+      it('testGlobalWindowModeEnum', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async(done: Function) => {
+        let caseName = 'testGlobalWindowModeEnum';
+        try {
+          console.error(`${caseName} Failed. Cause: ${window.GlobalWindowMode.FULLSCREEN}`);
+          expect(window.GlobalWindowMode.FULLSCREEN).assertEqual(1);
+          expect(window.GlobalWindowMode.SPLIT).assertEqual(2);
+          expect(window.GlobalWindowMode.FLOAT).assertEqual(4);
+          expect(window.GlobalWindowMode.PIP).assertEqual(8);
+          done()
+        } catch (error) {
+          console.error(`${caseName} Failed. Cause: ${JSON.stringify(error)}`);
+          if (error.code === 801) {
+            done();
+          } else {
+            expect().assertFail();
+            done();
+          }
+        }
+      })
+
 
     })
 }

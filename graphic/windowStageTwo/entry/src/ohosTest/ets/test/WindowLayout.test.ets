@@ -35,7 +35,7 @@ export default function windowLayoutTest() {
       //isAutoWindow == '' 非PAD设备
       //isAutoWindow == 'true' PAD设备自由多窗模式
       //isAutoWindow == 'false' PAD设备非自由多窗模式
-      isAutoWindow = settings.getValueSync(context, 'window_pcmode_switch_status', '',settings.domainName.DEVICE_SHARED);
+      isAutoWindow = settings.getValueSync(context, 'window_pcmode_switch_status', '',settings.domainName.USER_PROPERTY);
       console.info(`isAutoWindow: ${JSON.stringify(isAutoWindow)}`);
       isPCStatus = settings.getValueSync(context, 'isStatusBarExist', '', settings.domainName.USER_PROPERTY)
       //isPCStatus == '' 非PC设备
@@ -1814,6 +1814,107 @@ it('testSetResizeByDragEnabledTrue_0100', TestType.FUNCTION | Size.MEDIUMTEST | 
           done();
         }
       })
+
+       /**
+     * @tc.number    : SUB_BASIC_WMS_STARTMOVING_0400
+     * @tc.name      : testStartMoving_0400
+     * @tc.desc      : 验证系统窗调用startmoving移动成功
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testStartMoving_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      const caseName = 'testStartMoving_0400';
+      console.log(caseName + 'begin.');
+      let config: window.Configuration = {
+        name: "testStartMoving_0400",
+        windowType: window.WindowType.TYPE_DIALOG,
+        ctx: context
+      };
+      let windowClass = await window.createWindow(config);
+      AppStorage.setOrCreate('windowClass', windowClass);
+      try {
+        let windowLimits = await windowClass.getWindowLimits();
+        console.info(`${caseName} windowLimits = ${JSON.stringify(windowLimits)}`);
+        await windowClass.resize(windowLimits.minWidth, windowLimits.minHeight);
+        await sleep(200);
+        await windowClass.setUIContent("testability/pages/WindowTest/StartMoving7");
+        await sleep(200);
+        await windowClass.showWindow();
+        await sleep(200);
+        await windowClass.moveWindowTo(100, 100);
+        await sleep(200);
+        let windowPoint = await windowClass.getWindowProperties().windowRect;
+        console.info(`${caseName} windowPoint = ${JSON.stringify(windowPoint)}`);
+        let driver = await Driver.create();
+        await sleep(1000);
+        let blank = await driver.findComponent(ON.id('startMoving'))
+        await sleep(1000)
+        let point = await blank.getBoundsCenter();
+        await driver.drag(point.x, point.y, point.x + 50, point.y + 50, 200);
+        await sleep(1000);
+        let text = await driver.findComponent(ON.id('startMovingText'));
+        await sleep(1000)
+        let textDragged = await text.getText();
+        if (textDragged == 'startMoving success') {
+          let windowPointDragged = windowClass.getWindowProperties().windowRect
+          console.info(`${caseName} sstartMoving success, windowPoint = ${JSON.stringify(windowPointDragged)}`)
+          expect(windowPointDragged.left).assertEqual(windowPoint.left + 50)
+          expect(windowPointDragged.top).assertEqual(windowPoint.top + 50)
+        } else if (textDragged == 'startMoving 801') {
+          expect(true).assertTrue();
+        } else {
+          console.error(`${caseName} Error.`);
+          expect(true).assertFalse()
+        }
+        await windowClass.destroyWindow();
+        done();
+      } catch (err) {
+        console.error(`${caseName} failed, err: ${JSON.stringify(err)}`);
+        await windowClass.destroyWindow();
+        if (err.code === 801) {
+          done();
+        } else {
+          expect().assertFail();
+          done();
+        }
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SYSTEMAPI_ENABLEDRAG_0700
+     * @tc.name      : testWindowEnableDragTruewithFullScreenMainWindow
+     * @tc.desc      :  验证全屏主窗调用enabledrag抛1300004错误码
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testWindowEnableDragTruewithFullScreenMainWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      const caseName = 'testWindowEnableDragTruewithFullScreenMainWindow';
+      console.log(caseName + 'begin.');
+      try {
+      let windowClass =  windowStage.getMainWindowSync();
+      let windowStatusType = windowClass.getWindowStatus();
+      console.info(caseName + ' windowClass.getWindowStatus(). windowStatusType: ' + JSON.stringify(windowStatusType));
+
+        await windowClass.enableDrag(true);
+        await sleep(200);
+        if (windowStatusType != window.WindowStatusType.FULL_SCREEN) {
+          done();
+        }
+
+      } catch (err) {
+        console.error(`${caseName} failed, err: ${JSON.stringify(err)}`);
+        if(err.code == 801){
+          done();
+        }else{
+          expect(err.code).assertEqual(1300004);
+          done();
+        }
+
+
+      }
+    })
 
   })
 }
