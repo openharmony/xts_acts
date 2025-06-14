@@ -513,7 +513,7 @@ export default function test() {
 
 const delPublishCallBack = async (tcNumber: string, done: () => void) => {
     console.info(`${tcNumber} delPublishCallBack start`);
-    setTimeout(async () => {
+    setTimeout(() => {
         console.info(`${tcNumber} delPublishCallBack end`);
         done();
     }, 1000);
