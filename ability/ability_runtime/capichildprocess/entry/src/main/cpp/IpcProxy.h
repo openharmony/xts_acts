@@ -23,7 +23,7 @@ class IpcProxy : public IpcInterface {
 public:
     explicit IpcProxy(OHIPCRemoteProxy *ipcProxy);
     ~IpcProxy() override;
-    bool RequestExitChildProcess() override;
+    bool RequestExitChildProcess(int32_t exitCode) override;
     int32_t Add(int32_t a, int32_t b) override;
     int32_t StartNativeChildProcess() override;
     

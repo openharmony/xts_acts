@@ -15,8 +15,10 @@
 
 import nativeChildProcessTest from './NativeChildProcess.test'
 import nativeProcessWithArgsTest from './NativeChildProcessWithArgs.test'
+import nativeChildProcessExitTest from './NativeChildProcessExit.test'
 
 export default function testsuite() {
   nativeChildProcessTest();
   nativeProcessWithArgsTest();
+  nativeChildProcessExitTest();
 }

@@ -29,7 +29,7 @@ IpcProxy::~IpcProxy()
     }
 }
 
-bool IpcProxy::RequestExitChildProcess()
+bool IpcProxy::RequestExitChildProcess(int32_t exitCode)
 {
     if (ipcProxy_ == nullptr) {
         return false;
@@ -41,7 +41,8 @@ bool IpcProxy::RequestExitChildProcess()
         return false;
     }
     
-    if (!WriteInterfaceToken(data.get())) {
+    if (!WriteInterfaceToken(data.get()) ||
+        OH_IPCParcel_WriteInt32(data.get(), exitCode) != OH_IPC_SUCCESS) {
         return false;
     }
     

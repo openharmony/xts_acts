@@ -20,6 +20,10 @@
 #include <fcntl.h>
 #include <future>
 #include <unistd.h>
+#include <thread>
+#include <future>
+#include <mutex>
+#include <deque>
 #include "napi/native_api.h"
 #include "AbilityKit/native_child_process.h"
 #include "ChildProcess.h"
@@ -52,6 +56,76 @@ void NativeChildProcess_MainProc()
 
 } // extern "C"
 
+class ArkTsThread {
+    std::thread thread_;
+    napi_env env;
+    napi_ref on_message_func;
+    std::condition_variable cond;
+    std::mutex lock;
+    std::deque<std::function<void()>> jobs;
+    bool stopFlag = false;
+    public:
+        ArkTsThread();
+        ~ArkTsThread();
+        void CallFunc();
+};
+
+ArkTsThread::ArkTsThread()
+{
+    auto waiter = std::promise<bool>();
+    this->thread_ = std::thread([&]() {
+        napi_create_ark_runtime(&this->env);
+        auto env = this->env;
+
+        napi_value worker_utils;
+        napi_load_module_with_info(env, "entry/src/main/ets/pages/worker",
+            "com.example.capichildprocesstest/entry", &worker_utils);
+        napi_value on_message_func;
+        auto ret = napi_get_named_property(env, worker_utils, "onMessage", &on_message_func);
+        napi_create_reference(env, on_message_func, 1, &this->on_message_func);
+        waiter.set_value(true);
+
+        while (!stopFlag) {
+            auto l = std::unique_lock<std::mutex>(this->lock);
+            cond.wait(l, [this] {return stopFlag;});
+            for (const auto job : this->jobs) {
+                job();
+            }
+            this->jobs.clear();
+        }
+        napi_destroy_ark_runtime(&this->env);
+    });
+    waiter.get_future().wait();
+}
+
+ArkTsThread::~ArkTsThread()
+{
+    {
+        auto l = std::unique_lock<std::mutex>(this->lock);
+        stopFlag = true;
+    }
+    cond.notify_all();
+    if (this->thread_.joinable()) {
+        this->thread_.join();
+    }
+}
+
+void ArkTsThread::CallFunc()
+{
+    auto l = std::unique_lock<std::mutex>(this->lock);
+    this->jobs.push_back([this]() {
+        napi_value on_message_func;
+        napi_get_reference_value(this->env, this->on_message_func, &on_message_func);
+        napi_value ret;
+        napi_call_function(this->env, nullptr, on_message_func, 0, nullptr, &ret);
+    });
+    this->cond.notify_all();
+}
+
+namespace {
+    ArkTsThread *thread;
+}
+
 static void OnNativeChildProcessStarted(int errCode, OHIPCRemoteProxy *remoteProxy)
 {
     OH_LOG_INFO(LOG_APP, "Main process - OnNativeChildProcessStarted %{public}d", errCode);
@@ -66,6 +140,13 @@ static void OnNativeChildProcessStarted(int errCode, OHIPCRemoteProxy *remotePro
     if (g_promiseStartProcess != nullptr) {
         g_promiseStartProcess->set_value(errCode);
     }
+}
+
+static void OnNativeChildProcessExit(int32_t pid, int32_t signal)
+{
+    OH_LOG_INFO(LOG_APP, "child exit, pid:%{public}d, signal:%{public}d", pid, signal);
+    thread = new ArkTsThread();
+    thread->CallFunc();
 }
 
 static napi_value ChildProcessAdd(napi_env env, napi_callback_info info)
@@ -123,7 +204,12 @@ static napi_value StartNativeChildProcess(napi_env env, napi_callback_info info)
 static napi_value RequestExitChildProcess(napi_env env, napi_callback_info info)
 {
     int32_t ret = 0;
-    if (g_ipcProxyPnt != nullptr && g_ipcProxyPnt->RequestExitChildProcess()) {
+    size_t argc = 1;
+    napi_value args[1] = { nullptr };
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    int32_t value0;
+    napi_get_value_int32(env, args[0], &value0);
+    if (g_ipcProxyPnt != nullptr && g_ipcProxyPnt->RequestExitChildProcess(value0)) {
         ret = 1;
         delete g_ipcProxyPnt;
         g_ipcProxyPnt = nullptr;
@@ -279,6 +365,46 @@ static napi_value StartChildNoArgs(napi_env env, napi_callback_info info)
     return napiRet;
 }
 
+static napi_value RegisterNativeChildExit(napi_env env, napi_callback_info info)
+{
+    OH_LOG_INFO(LOG_APP, "===================RegisterNativeChildExit before");
+    Ability_NativeChildProcess_ErrCode ret = OH_Ability_RegisterNativeChildProcessExitCallback(
+        OnNativeChildProcessExit);
+    OH_LOG_INFO(LOG_APP, "===================Ability_NativeChildProcess_ErrCode: %{public}d", ret);
+    napi_value napiRet;
+    napi_create_int32(env, ret, &napiRet);
+    return napiRet;
+}
+
+static napi_value UnregisterNativeChildExit(napi_env env, napi_callback_info info)
+{
+    OH_LOG_INFO(LOG_APP, "===================UnregisterNativeChildExit before");
+    Ability_NativeChildProcess_ErrCode ret = OH_Ability_UnregisterNativeChildProcessExitCallback(
+        OnNativeChildProcessExit);
+    OH_LOG_INFO(LOG_APP, "===================Ability_NativeChildProcess_ErrCode: %{public}d", ret);
+    napi_value napiRet;
+    napi_create_int32(env, ret, &napiRet);
+    return napiRet;
+}
+
+
+
+static napi_value CreateThread(napi_env env, napi_callback_info info)
+{
+    thread = new ArkTsThread();
+    return {};
+}
+
+static napi_value DestroyThread(napi_env env, napi_callback_info info)
+{
+    if (thread) {
+        delete thread;
+        thread = nullptr;
+    }
+
+    return {};
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -303,6 +429,14 @@ static napi_value Init(napi_env env, napi_value exports)
         { "startChildNormal", nullptr, StartChildNormal,
             nullptr, nullptr, nullptr, napi_default, nullptr },
         { "startChildNoArgs", nullptr, StartChildNoArgs,
+            nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "registerNativeChildExit", nullptr, RegisterNativeChildExit,
+            nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "unregisterNativeChildExit", nullptr, UnregisterNativeChildExit,
+            nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "createThread", nullptr, CreateThread,
+            nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "destroyThread", nullptr, DestroyThread,
             nullptr, nullptr, nullptr, napi_default, nullptr }
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);

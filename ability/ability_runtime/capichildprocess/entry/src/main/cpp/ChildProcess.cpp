@@ -31,13 +31,19 @@ void ChildProcess::MainProc()
     mRunning = false;
 }
 
-bool ChildProcess::RequestExitChildProcess()
+bool ChildProcess::RequestExitChildProcess(int32_t exitCode)
 {
     StdUniLock autoLock(processMutex_);
     if (!mRunning) {
         return false;
     }
     
+    // mock child proces crash generate signal
+    if (exitCode > 0) {
+        int *ptr = nullptr;
+        *ptr = 3;
+        return true;
+    }
     processCondVar_.notify_all();
     return true;
 }
