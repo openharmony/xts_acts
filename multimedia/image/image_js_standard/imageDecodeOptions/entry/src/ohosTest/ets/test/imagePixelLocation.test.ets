@@ -3180,22 +3180,22 @@ export default function imagePixelLocation() {
         });
 
         /**
-         * @tc.number    : SUB_MULTIMEDIA_IMAGE_CROP_AND_SCALE_STRATEGY_1110
-         * @tc.name      : CropFirst Strategy
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_CROP_AND_SCALE_STRATEGY_1100
+         * @tc.name      : SCALE_FIRST Strategy
          * @tc.desc      : 1.get image path,2.createImageSourceFromFd,3.createImageSource,4.createPixelMap by decodingOptions 
          * @tc.size      : MEDIUM
          * @tc.type      : Functional
          * @tc.level     : Level 2
          */
-        it("SUB_MULTIMEDIA_IMAGE_CROP_AND_SCALE_STRATEGY_1110", Level.LEVEL2, async (done: Function) => {
-            let tag = 'SUB_MULTIMEDIA_IMAGE_CROP_AND_SCALE_STRATEGY_1110';
+        it("SUB_MULTIMEDIA_IMAGE_CROP_AND_SCALE_STRATEGY_1100", Level.LEVEL2, async (done: Function) => {
+            let tag = 'SUB_MULTIMEDIA_IMAGE_CROP_AND_SCALE_STRATEGY_1100';
             let decodingOptions: image.DecodingOptions = {
                 desiredSize: { width: 3072, height: 4096 },
                 desiredPixelFormat: 3,
                 desiredRegion: { size: { width: 4096, height: 6144 }, x: 800, y: 1000 },
-                cropAndScaleStrategy : image.CropAndScaleStrategy.CROP_FIRST
+                cropAndScaleStrategy : image.CropAndScaleStrategy.SCALE_FIRST
             };
-            await checkHeicDecode(done, tag, 'pixel_heic_6144x8192.heic', decodingOptions, 3072, 4096, 3000, 4000, 3072, 120, 120, 120, 255);
+            await checkHeicDecodeErr(done, tag, 'pixel_heic_6144x8192.heic', decodingOptions);
         });
 
         /**
