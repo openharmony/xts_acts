@@ -5,8 +5,7 @@
     "testability/pages/bindSelectionMenu",
     "testability/pages/WebOnPermissionRequest",
     "testability/pages/WebViewEnumAndFontLibrary",
-	"testability/pages/WebPreviewMenuOptions",
-	"testability/pages/WebElementType"
+	"testability/pages/WebPreviewMenuOptions"
   ]
 }
 
