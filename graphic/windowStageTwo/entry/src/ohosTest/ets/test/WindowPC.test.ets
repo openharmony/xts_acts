@@ -2783,14 +2783,14 @@ export default function windowPCTest() {
       }
     })
 
-    // /**
-    //  * @tc.number     : SUB_BASIC_WMS_WINDOW_STATUS_DID_CHANGE_0500
-    //  * @tc.name       : testOnwindowStatusDidChange_minimize
-    //  * @tc.desc       : testOnwindowStatusDidChange_minimize
-    //  * @tc.size       : MediumTest
-    //  * @tc.type       : Function
-    //  * @tc.level      : Level 0
-    //  */
+    /**
+     * @tc.number     : SUB_BASIC_WMS_WINDOW_STATUS_DID_CHANGE_0500
+     * @tc.name       : testOnwindowStatusDidChange_minimize
+     * @tc.desc       : testOnwindowStatusDidChange_minimize
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
     // it('testOnwindowStatusDidChange_minimize', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
     //   let caseName = "testOnwindowStatusDidChange_minimize";
     //   let msgStr = 'jsunittest ' + caseName + ' ';

@@ -39,9 +39,7 @@ struct StartMoving4 {
               let subWindowId = AppStorage.get('subWindowId4') as number
               let mainWindowId = AppStorage.get('mainWindowId4') as number
               console.log('shiftAppWindowTouchEvent subWindowId: ' + subWindowId+',mainWindowId: '+ mainWindowId);
-                // windowClass.startMoving().then(() => {
-
-                //   this.message = 'startMoving success';
+                
                   let windowProperties = windowClass.getWindowProperties();
                   console.info('windowProperties: ' + JSON.stringify(windowProperties));
                   window.shiftAppWindowTouchEvent(subWindowId, mainWindowId, event.touches[0].id).then(() => {
@@ -55,12 +53,7 @@ struct StartMoving4 {
                     console.error('shiftAppWindowTouchEvent : ' + error.code + ',message:' + error.message)
                   })
                   console.info('start moving successfully');
-                // }).catch((err: BusinessError) => {
-                //   if (err.code == 801) {
-                //     this.message = 'startMoving 801'
-                //   }
-                //   console.error('start moving : ' + err.code + ',message:' + err.message)
-                // })
+                
               })
             } catch (exception) {
               console.error(`Failed to start drag window. Cause code: ${exception.code}, message: ${exception.message}`)
