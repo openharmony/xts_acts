@@ -1899,5 +1899,145 @@ export default function TextPicker() {
       console.info("testPicker39 finish");
       done();
     });
+
+    /**
+     * @tc.number    : testPicker40
+     * @tc.name      : testPicker40
+     * @tc.desc      : Testing getPhotoPickerComponentDefaultAlbumName
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('testPicker40', Level.LEVEL0, async (done: Function) => {
+      if (!isExecutePicker) {
+        done();
+        return;
+      }
+
+      let phAccessHelper: photoAccessHelper.PhotoAccessHelper = photoAccessHelper.getPhotoAccessHelper(getContext());
+      try {
+        phAccessHelper.getPhotoPickerComponentDefaultAlbumName().then((defaultAlbumName: string) => {
+          console.info("testPicer40 getPhotoPickerComponentDefaultAlbumName, result = " + defaultAlbumName);
+          if (result) {
+            expect(true).assertTrue();
+          } else {
+            console.error("testPicker40 empty result");
+            expect(false).assertTrue();
+          }
+        })
+      } catch(error) {
+        console.error("testPicer40 error: " + JSON.stringify(error));
+        expect(false).assertTrue();
+      }
+      console.info("testPicker40 finish");
+      done();
+    });
+
+    /**
+     * @tc.number    : testPicker41
+     * @tc.name      : testPicker41
+     * @tc.desc      : Testing PhotoPickerComponent uiComponentColorMode
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('testPicker41', Level.LEVEL0, async (done: Function) => {
+      if (!isExecutePicker) {
+        done();
+        return;
+      }
+      let code: number = EventType.PHOTO_PICKER_INFO;
+      let pickerOptions: PickerOptions = getDefaultPickerOptions();
+      pickerOptions.uiComponentColorMode = PickerColorMode.AUTO;
+      pickerOptions.isPhotoTakingSupported = true;
+      pickerOptions.isSearchSupported = true;
+      pickerOptions.recommendationOptions = { textContextInfo: { text: '今年'}};
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/PickerComponent',
+        params: {
+          eventId: code,
+          pickerOptions: pickerOptions,
+        }
+      }
+      await routeToUrl(options);
+      let strJson: string = getInspectorByKey('PhotoPickerComponent');
+      console.info("testPicker41 JSON.parse(strJson) is" + strJson);
+      expect(JSON.parse(strJson).$attrs.visibility).assertEqual('Visibility.Visible');
+      router.back();
+      console.info("testPicker41 finish");
+      done();
+    });
+
+    /**
+     * @tc.number    : testPicker42
+     * @tc.name      : testPicker42
+     * @tc.desc      : Testing PhotoPickerComponent uiComponentColorMode
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('testPicker42', Level.LEVEL0, async (done: Function) => {
+      if (!isExecutePicker) {
+        done();
+        return;
+      }
+      let code: number = EventType.PHOTO_PICKER_INFO;
+      let pickerOptions: PickerOptions = getDefaultPickerOptions();
+      pickerOptions.uiComponentColorMode = PickerColorMode.LIGHT;
+      pickerOptions.backgroundColor = '#f9f9f9';
+      pickerOptions.isPhotoTakingSupported = true;
+      pickerOptions.isSearchSupported = true;
+      pickerOptions.recommendationOptions = { textContextInfo: { text: '今年'}};
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/PickerComponent',
+        params: {
+          eventId: code,
+          pickerOptions: pickerOptions,
+        }
+      }
+      await routeToUrl(options);
+      let strJson: string = getInspectorByKey('PhotoPickerComponent');
+      console.info("testPicker42 JSON.parse(strJson) is" + strJson);
+      expect(JSON.parse(strJson).$attrs.visibility).assertEqual('Visibility.Visible');
+      router.back();
+      console.info("testPicker42 finish");
+      done();
+    });
+
+    /**
+     * @tc.number    : testPicker43
+     * @tc.name      : testPicker43
+     * @tc.desc      : Testing PhotoPickerComponent uiComponentColorMode
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('testPicker43', Level.LEVEL0, async (done: Function) => {
+      if (!isExecutePicker) {
+        done();
+        return;
+      }
+      let code: number = EventType.PHOTO_PICKER_INFO;
+      let pickerOptions: PickerOptions = getDefaultPickerOptions();
+      pickerOptions.uiComponentColorMode = PickerColorMode.DARK;
+      pickerOptions.backgroundColor = '#212121';
+      pickerOptions.isPhotoTakingSupported = true;
+      pickerOptions.isSearchSupported = true;
+      pickerOptions.recommendationOptions = { textContextInfo: { text: '今年'}};
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/PickerComponent',
+        params: {
+          eventId: code,
+          pickerOptions: pickerOptions,
+        }
+      }
+      await routeToUrl(options);
+      let strJson: string = getInspectorByKey('PhotoPickerComponent');
+      console.info("testPicker43 JSON.parse(strJson) is" + strJson);
+      expect(JSON.parse(strJson).$attrs.visibility).assertEqual('Visibility.Visible');
+      router.back();
+      console.info("testPicker43 finish");
+      done();
+    });
   })
 }
