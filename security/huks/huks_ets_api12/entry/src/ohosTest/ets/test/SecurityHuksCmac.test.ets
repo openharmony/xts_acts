@@ -13,9 +13,9 @@
  * limitations under the License.
  */
 import { huks } from '@kit.UniversalKeystoreKit';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
-import { StringToUint8Array } from './utils/CommonUtil';
-import { CheckSoftware, CheckWearable, GenParam, GetDataBySize, SetParam } from './utils/HuksOptionUtil';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
+import { GetDataBySize, StringToUint8Array } from './utils/CommonUtils';
+import { CheckSoftware, CheckWearable, GenParam, SetParam } from './utils/huks/HuksOptionsUtils';
 
 export default function SecurityHuksCmacTest() {
   let useSoftware: boolean = true;

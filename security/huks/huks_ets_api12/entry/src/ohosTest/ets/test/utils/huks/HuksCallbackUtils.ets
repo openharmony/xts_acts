@@ -1,4 +1,4 @@
-import { huks } from "@kit.UniversalKeystoreKit"
+import { huks } from '@kit.UniversalKeystoreKit';
 
 
 export async function generateKeyItem(keyAlias: string, options: huks.HuksOptions): Promise<void> {

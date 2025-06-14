@@ -12,8 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { huks } from "@kit.UniversalKeystoreKit";
-import { SetParam } from "../utils/HuksOptionUtil";
+import { huks } from '@kit.UniversalKeystoreKit';
+import { SetParam } from '../huks/HuksOptionsUtils';
 
 export function GetImportPubKeyOptions(): huks.HuksOptions {
   let huksOption: huks.HuksOptions = {

@@ -12,16 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 import huks from '@ohos.security.huks';
-import { SetParam, GenParam, GetDataBySize, DeleteParam } from './utils/HuksOptionUtil';
-import { StringToUint8Array } from './utils/CommonUtil';
-import {
-  cipherAbortWithText,
-  cipherOnlyFinishWithText,
-  cipherWithText,
-  cipherWithTextCallback
-} from './utils/CipherUtil';
+import { DeleteParam, GenParam, SetParam } from './utils/huks/HuksOptionsUtils';
+import { GetDataBySize, StringToUint8Array } from './utils/CommonUtils';
+import { Cipher, cipherAbortWithText, CipherData, cipherWithText, cipherWithTextCallback } from './utils/huks/CipherUtils';
 
 
 export default function SecurityHuksCipherSM4Test() {
@@ -119,11 +114,16 @@ export default function SecurityHuksCipherSM4Test() {
      */
     it('SUB_Security_HUKS_Cipher_SM4_API12_Func_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_0300";
-      let preText: string = testNumber + GetDataBySize(240 - testNumber.length);
+      let preData: CipherData = {
+        updateDataArr: null,
+        finishData: StringToUint8Array(testNumber + GetDataBySize(240 - testNumber.length))
+      }
       SetParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_CFB);
       SetParam(cipherOption, huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_NONE);
       try {
-        let res: boolean = await cipherOnlyFinishWithText(genKeyOption, cipherOption, preText);
+        // let res: boolean = await cipherOnlyFinishWithText(genKeyOption, cipherOption, preText);
+        await huks.generateKeyItem(testNumber, genKeyOption);
+        let res: boolean = await Cipher(testNumber, cipherOption, preData);
         expect(res).assertEqual(true);
       } catch (err) {
         console.log(testNumber + `: catch error ${JSON.stringify(err)}`);
@@ -277,10 +277,16 @@ export default function SecurityHuksCipherSM4Test() {
     it('SUB_Security_HUKS_Cipher_SM4_API12_Func_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_Cipher_SM4_API12_Func_1000";
       let preText: string = testNumber + GetDataBySize(240 - testNumber.length);
+      let preData: CipherData = {
+        updateDataArr: null,
+        finishData: StringToUint8Array(testNumber + GetDataBySize(240 - testNumber.length))
+      }
       SetParam(cipherOption, huks.HuksTag.HUKS_TAG_BLOCK_MODE, huks.HuksCipherMode.HUKS_MODE_OFB);
       SetParam(cipherOption, huks.HuksTag.HUKS_TAG_PADDING, huks.HuksKeyPadding.HUKS_PADDING_NONE);
       try {
-        let res: boolean = await cipherOnlyFinishWithText(genKeyOption, cipherOption, preText);
+        // let res: boolean = await cipherOnlyFinishWithText(genKeyOption, cipherOption, preText);
+        await huks.generateKeyItem(testNumber, genKeyOption);
+        let res: boolean = await Cipher(testNumber, cipherOption, preData);
         expect(res).assertEqual(true);
       } catch (err) {
         console.log(testNumber + `: catch error ${JSON.stringify(err)}`);

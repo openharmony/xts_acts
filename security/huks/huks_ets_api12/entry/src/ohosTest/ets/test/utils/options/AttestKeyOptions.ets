@@ -14,8 +14,8 @@
  */
 
 import { huks } from '@kit.UniversalKeystoreKit';
-import { StringToUint8Array } from '../utils/CommonUtil';
-import { SetParam } from '../utils/HuksOptionUtil';
+import { StringToUint8Array } from '../CommonUtils';
+import { SetParam } from '../huks/HuksOptionsUtils';
 
 const securityLevel = StringToUint8Array("sec_level");
 const challenge = StringToUint8Array("challenge_data");
