@@ -104,7 +104,7 @@ export default function windowPropertiesTest() {
             context = AppStorage.get('context') as common.UIAbilityContext;
             console.log('windowTest context: ' + JSON.stringify(context))
             windowStage = AppStorage.get('windowStage') as ohosWindow.WindowStage;
-            isAutoWindow = settings.getValueSync(context, 'window_pcmode_switch_status', '',settings.domainName.DEVICE_SHARED);
+            isAutoWindow = settings.getValueSync(context, 'window_pcmode_switch_status', '',settings.domainName.USER_PROPERTY);
             console.info(`isAutoWindow: ${JSON.stringify(isAutoWindow)}`);
             isPCStatus = settings.getValueSync(context, 'isStatusBarExist', '', settings.domainName.USER_PROPERTY)
             //isPCStatus == '' 非PC设备
