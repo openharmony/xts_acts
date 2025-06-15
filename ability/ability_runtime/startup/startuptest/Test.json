@@ -12,7 +12,8 @@
         {
             "test-file-name": [
                 "ActsStartUpTest.hap",
-                "StartupManualHelp1.hap"
+                "StartupManualHelp1.hap",
+                "StartupManualHelp2.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

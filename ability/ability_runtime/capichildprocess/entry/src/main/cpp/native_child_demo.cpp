@@ -21,7 +21,7 @@
 #include <string>
 #include <unistd.h>
 #include <hilog/log.h>
-
+#include <vector>
 #undef LOG_DOMAIN
 #undef LOG_TAG
 #define LOG_DOMAIN 0x3200
