@@ -1317,7 +1317,7 @@ export default function abilityTest() {
           console.info(TAG + "the erris " + JSON.stringify(err))
           console.info(TAG + "the data " + JSON.stringify(commonEventData))
           try {
-            expect(commonEventData.parameters?.result).assertEqual("success");
+            expect(commonEventData.parameters?.result).assertEqual("customRule1");
             flag = true;
           } catch {
           }
@@ -1329,7 +1329,6 @@ export default function abilityTest() {
       context.startAbilityForResult({
         bundleName: 'com.acts.startupmanualhelp2',
         abilityName: 'PageAbilityFeature',
-        uri: "test://com.example.startupdemo/notification",
         parameters:{
           "customParam": "param1"
         }

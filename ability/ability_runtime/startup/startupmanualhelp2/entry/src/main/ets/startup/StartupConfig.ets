@@ -83,17 +83,19 @@ export default class MyStartupConfigEntry extends StartupConfigEntry {
     return config;
   }
   onRequestCustomMatchRule(want: Want): string {
+    console.log('testTag StartupTest onRequestCustomMatchRule_running want =' + JSON.stringify(want));
     if (want?.parameters?.customParam == 'param1') {
+      console.log('testTag StartupTest onRequestCustomMatchRule_running customRule1');
       commonEventManager.publish('onRequestCustomMatchRule_running', {
         parameters: {
-          'result': "customRule1"
+          'result': 'customRule1'
         }
       }, (err, data) => {
-        console.log('StartupTest onRequestCustomMatchRule_running end, publish msg, err=' + JSON.stringify(err));
-        console.log('StartupTest onRequestCustomMatchRule_running end, publish msg, data=' + JSON.stringify(data));
+        console.log('testTag StartupTest   end, publish msg, err=' + JSON.stringify(err));
+        console.log('testTag StartupTest onRequestCustomMatchRule_running end, publish msg, data=' + JSON.stringify(data));
       });
       return 'customRule1';
     }
-    return "customRule2";
+    return '';
   }
 }

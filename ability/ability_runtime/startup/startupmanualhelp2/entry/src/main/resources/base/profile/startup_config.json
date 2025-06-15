@@ -13,8 +13,8 @@
       ],
       "excludeFromAutoStart": false,
       "matchRules": {
-        "uris": [
-          "test://com.example.startupdemo/notification"
+        "customization": [
+          "customRule1"
         ]
       }
     },

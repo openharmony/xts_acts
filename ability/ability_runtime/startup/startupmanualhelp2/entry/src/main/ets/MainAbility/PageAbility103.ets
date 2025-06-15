@@ -44,7 +44,7 @@ export default class PageAbility103 extends UIAbility {
       'onCompleted': onCompletedCallback
     };
     let config: StartupConfig = {
-      'timeoutMs': 10000,
+      'timeoutMs': 5000,
       'startupListener': startupListener
     };
     try {
