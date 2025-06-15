@@ -36,6 +36,15 @@ export default class PageAbility103 extends UIAbility {
     let onCompletedCallback = (error: BusinessError<void>) => {
       if (error) {
         hilog.error(0x0000, 'testTag', 'onCompletedCallback error: %{public}s', JSON.stringify(error));
+        let commonEventData: commonEventManager.CommonEventPublishData = {
+          parameters: {
+            'result': error?.code,
+          }
+        }
+        commonEventManager.publish('Sample_103_init', commonEventData, (err, data)=>{
+          console.info('testTag StartupTest Sample_103_init init, publish msg, err=' + JSON.stringify(err));
+          console.info('testTag StartupTest Sample_103_init, publish msg, data=' + JSON.stringify(data));
+        })
       } else {
         hilog.info(0x0000, 'testTag', 'onCompletedCallback: success.');
       }
