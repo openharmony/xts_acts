@@ -52,7 +52,7 @@ export default function ApiCoverTest() {
      * @tc.desc    Test abilityConstant LaunchReason.START_ABILITY.
      * @tc.level   0
      */
-    it('SUB_AA_Test_AbilityConstant_0100', Level.LEVEL0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_AbilityConstant_0100', Level.LEVEL0, async (done: Function) => {
       expect(1).assertEqual(abilityConstant.LaunchReason.START_ABILITY);
       done();
     })
@@ -360,7 +360,7 @@ export default function ApiCoverTest() {
      * @tc.name    SUB_Ability_AbilityBase_AbilityConstant_2500
      * @tc.size:   MediumTest
      * @tc.type:   Function
-     * @tc.desc    Test abilityConstant LaunchReason.INSIGHT_INTENT.
+     * @tc.desc    Test abilityConstant StateType.APP_RECOVERY.
      * @tc.level   0
      */
     it('SUB_Ability_AbilityBase_AbilityConstant_2500', Level.LEVEL0, async (done: Function) => {
@@ -606,14 +606,14 @@ export default function ApiCoverTest() {
     })
 
     /*
-     * @tc.number  SUB_Ability_AbilityBase_ConfigurationConstant_0300
-     * @tc.name    SUB_Ability_AbilityBase_ConfigurationConstant_0300
+     * @tc.number  SUB_Ability_AbilityBase_ConfigurationConstant_0700
+     * @tc.name    SUB_Ability_AbilityBase_ConfigurationConstant_0700
      * @tc.size:   MediumTest
      * @tc.type:   Function
      * @tc.desc    Test ConfigurationConstant.ScreenDensity.SCREEN_DENSITY_LDPI.
      * @tc.level   0
      */
-    it('SUB_Ability_AbilityBase_ConfigurationConstant_0300', Level.LEVEL0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_ConfigurationConstant_0700', Level.LEVEL0, async (done: Function) => {
       expect(240).assertEqual(ConfigurationConstant.ScreenDensity.SCREEN_DENSITY_LDPI);
       done();
     })
@@ -659,13 +659,13 @@ export default function ApiCoverTest() {
 
     /*
      * @tc.number  SUB_Ability_AbilityBase_wantConstant_1400
-     * @tc.name    SUB_Ability_AbilityBase_wantConstant_1400
+     * @tc.name  SUB_Ability_AbilityBase_wantConstant_1400
      * @tc.size:   MediumTest
      * @tc.type:   Function
      * @tc.desc    Test wantConstant Params.ABILITY_UNIFIED_DATA_KEY.
      * @tc.level   0
      */
-    it('SUB_Ability_AbilityBase_wantConstant_1300', Level.LEVEL0, async (done: Function) => {
+    it('SUB_Ability_AbilityBase_wantConstant_1400', Level.LEVEL0, async (done: Function) => {
       expect('ohos.param.ability.udKey').assertEqual(wantConstant.Params.ABILITY_UNIFIED_DATA_KEY);
       done();
     })
