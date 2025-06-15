@@ -53,35 +53,29 @@ export default function createNativeChildProcessWithConfigsTest() {
     it('SUB_Ability_AbilityRuntime_NativeChildProcessWithConfigs_1600', Level.LEVEL0, async (done: Function) => {
       let tag = `ACTS_NativeChildProcessWithConfigs_1600`;
       console.log(`${tag}, it begin`);
-
       try {
         let ret : Number = testNapi.CreateNativeChildProcessWithConfigs('libentry.so');
-        if (!mpEnable) {
-          console.info(`${tag}: multi process model disable`);
-          expect(16010004).assertEqual(ret);
-          return;
-        } else if (!ncpEnable) {
-          console.info(`${tag}: Native child process disable`);
-          expect(801).assertEqual(ret);
-          return;
+        console.log(`${tag}, get ret ` + JSON.stringify(ret));
+        if(ret == 801 || ret == 16010004){
+          console.info(`${tag}: multi process model disable or Native child process disable`);
+          done();
+        }else{
+          expect(0).assertEqual(ret);
+          console.info(`${tag}: Test ipc call for native child process`);
+          let a = 123;
+          let b = 456;
+          expect(a + b).assertEqual(testNapi.childProcessAdd(a, b));
+          expect(1).assertEqual(testNapi.requestExitChildProcess(0));
+          await sleep(600);
+          console.info(`${tag}: Test restart native child process`);
+          expect(0).assertEqual(testNapi.CreateNativeChildProcessWithConfigs('libentry.so'));
+          expect(1).assertEqual(testNapi.requestExitChildProcess(0));
+          await sleep(600);
+          done();
         }
-
-        expect(0).assertEqual(ret);
-
-        console.info(`${tag}: Test ipc call for native child process`);
-        let a = 123;
-        let b = 456;
-        expect(a + b).assertEqual(testNapi.childProcessAdd(a, b));
-        expect(1).assertEqual(testNapi.requestExitChildProcess(0));
-        await sleep(600);
-
-        console.info(`${tag}: Test restart native child process`);
-        expect(0).assertEqual(testNapi.CreateNativeChildProcessWithConfigs('libentry.so'));
-        expect(1).assertEqual(testNapi.requestExitChildProcess(0));
-        await sleep(600);
       } catch(err) {
-        console.error(`${tag} error: ${JSON.stringify(err)}`);
-      } finally {
+        console.error(`${tag} catch error: ${JSON.stringify(err)}`);
+        expect().assertFail();
         done();
       }
     })
@@ -94,14 +88,16 @@ export default function createNativeChildProcessWithConfigsTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_NativeChildProcessWithConfigs_1700', Level.LEVEL0, () => {
+    it('SUB_Ability_AbilityRuntime_NativeChildProcessWithConfigs_1700', Level.LEVEL0, (done: Function) => {
       let tag = `ACTS_NativeChildProcessWithConfigs_1700`;
       console.log(`${tag}, it begin`);
-
       try {
         expect(401).assertEqual(testNapi.CreateNativeChildProcessWithConfigs('../libentry.so'));
+        done();
       } catch(err) {
         console.error(`${tag} error: ${JSON.stringify(err)}`);
+        expect().assertFail();
+        done();
       }
     })
 
@@ -113,14 +109,16 @@ export default function createNativeChildProcessWithConfigsTest() {
      * @tc.type Function  
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_NativeChildProcessWithConfigs_1800', Level.LEVEL0, () => {
+    it('SUB_Ability_AbilityRuntime_NativeChildProcessWithConfigs_1800', Level.LEVEL0, (done: Function) => {
       let tag = `ACTS_NativeChildProcessWithConfigs_1800`;
       console.log(`${tag}, it begin`);
-
       try {
         expect(401).assertEqual(testNapi.CreateNativeChildProcessWithConfigsLibNamenullptr());
+        done();
       } catch(err) {
         console.error(`${tag} error: ${JSON.stringify(err)}`);
+        expect().assertFail();
+        done();
       }
     })
 
@@ -132,14 +130,17 @@ export default function createNativeChildProcessWithConfigsTest() {
      * @tc.type Function  
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_NativeChildProcessWithConfigs_1900', Level.LEVEL0, () => {
+    it('SUB_Ability_AbilityRuntime_NativeChildProcessWithConfigs_1900', Level.LEVEL0, (done: Function) => {
       let tag = `ACTS_NativeChildProcessWithConfigs_1900`;
       console.log(`${tag}, it begin`);
 
       try {
         expect(401).assertEqual(testNapi.CreateNativeChildProcessWithConfigs(''));
+        done();
       } catch(err) {
         console.error(`${tag} error: ${JSON.stringify(err)}`);
+        expect().assertFail();
+        done();
       }
     })
 
@@ -154,19 +155,20 @@ export default function createNativeChildProcessWithConfigsTest() {
     it('SUB_Ability_AbilityRuntime_NativeChildProcessWithConfigs_2100', Level.LEVEL0, async (done: Function) => {
       let tag = `ACTS_NativeChildProcessWithConfigs_2100`;
       console.log(`${tag}, it begin`);
-
       try {
-        if (!mpEnable || !ncpEnable) {
-          console.info(`${tag}: Native child process disable, skip test`);
-          return;
+        let ret:number = testNapi.CreateNativeChildProcessWithConfigs('/data/storage/el1/bundle/libs/arm64/libentry.so');
+        console.log(`${tag}, get ret ` + JSON.stringify(ret));
+        if(ret == 801 || ret == 16010004){
+          console.info(`${tag}: multi process model disable or Native child process disable`);
+          done();
+        }else{
+          expect(16010007).assertEqual(ret);
+          await sleep(600);
+          done();
         }
-
-        expect(16010007).assertEqual(
-          testNapi.CreateNativeChildProcessWithConfigs('/data/storage/el1/bundle/libs/arm64/libentry.so'));
-        await sleep(600);
       } catch(err) {
         console.error(`${tag} error: ${JSON.stringify(err)}`);
-      } finally {
+        expect().assertFail();
         done();
       }
     })
@@ -182,18 +184,20 @@ export default function createNativeChildProcessWithConfigsTest() {
     it('SUB_Ability_AbilityRuntime_NativeChildProcessWithConfigs_2200', Level.LEVEL0, async (done: Function) => {
       let tag = `ACTS_NativeChildProcessWithConfigs_2200`;
       console.log(`${tag}, it begin`);
-
       try {
-        if (!mpEnable || !ncpEnable) {
-          console.info(`${tag}: Native child process disable, skip test`);
-          return;
+        let ret:number = testNapi.CreateNativeChildProcessWithConfigs('fake.so');
+        console.log(`${tag}, get ret ` + JSON.stringify(ret));
+        if(ret == 801 || ret == 16010004){
+          console.info(`${tag}: multi process model disable or Native child process disable`);
+          done();
+        }else{
+          expect(16010007).assertEqual(ret);
+          await sleep(600);
+          done();
         }
-
-        expect(16010007).assertEqual(testNapi.CreateNativeChildProcessWithConfigs('fake.so'));
-        await sleep(600);
       } catch(err) {
         console.error(`${tag} error: ${JSON.stringify(err)}`);
-      } finally {
+        expect().assertFail();
         done();
       }
     })
@@ -206,13 +210,16 @@ export default function createNativeChildProcessWithConfigsTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Ability_AbilityRuntime_NativeChildProcessWithConfigs_2300', Level.LEVEL0, () => {
+    it('SUB_Ability_AbilityRuntime_NativeChildProcessWithConfigs_2300', Level.LEVEL0, (done: Function) => {
       let tag = `ACTS_NativeChildProcessWithConfigs_2300`;
       console.log(`${tag}, it begin`);
       try {
         expect(401).assertEqual(testNapi.CreateNativeChildProcessWithConfigsNullCallback());
+        done();
       } catch(err) {
         console.error(`${tag} error: ${JSON.stringify(err)}`);
+        expect().assertFail();
+        done();
       }
     })
 

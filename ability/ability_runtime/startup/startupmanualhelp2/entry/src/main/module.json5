@@ -120,7 +120,15 @@
         "label": "$string:MainAbility_label",
         "exported": true
       },
-       {
+      {
+        "name": "Sample_101",
+        "srcEntry": "./ets/startup/Sample_101.ets",
+        "description": "Sample_101",
+        "type": "embeddedUI",
+        "label": "$string:MainAbility_label",
+        "exported": true
+      },
+      {
         "name": "Sample_102",
         "srcEntry": "./ets/startup/Sample_102.ets",
         "description": "Sample_102",

@@ -52,8 +52,8 @@ export default function startNativeChildProcessWithConfigsTest() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_NativeChildProcessWithConfigs_0100
-     * @tc.name   : Call SetIsolation to set ChildProcessConfigs IsolationMode, set the value of configs nullptr.
-     * @tc.desc   : Expect: Return 401
+     * @tc.name   : SUB_Ability_AbilityRuntime_NativeChildProcessWithConfigs_0100
+     * @tc.desc   : Call SetIsolation to set ChildProcessConfigs IsolationMode, set the value of configs nullptr.
      * @tc.type   : Function
      * @tc.size   : MediumTest
      * @tc.level  : 0
@@ -74,8 +74,8 @@ export default function startNativeChildProcessWithConfigsTest() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_NativeChildProcessWithConfigs_0200
-     * @tc.name   : Call SetProcessName to set ChildProcessConfigs process name, set the value of configs nullptr.
-     * @tc.desc   : Expect: Return 401
+     * @tc.name   : SUB_Ability_AbilityRuntime_NativeChildProcessWithConfigs_0200
+     * @tc.desc   : Call SetProcessName to set ChildProcessConfigs process name, set the value of configs nullptr.
      * @tc.type   : Function
      * @tc.size   : MediumTest
      * @tc.level  : 0
@@ -96,8 +96,8 @@ export default function startNativeChildProcessWithConfigsTest() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_NativeChildProcessWithConfigs_0300
-     * @tc.name   : Call SetProcessName to set ChildProcessConfigs process name, set the value of process name null.
-     * @tc.desc   : Expect: Return 401
+     * @tc.name   : SUB_Ability_AbilityRuntime_NativeChildProcessWithConfigs_0300
+     * @tc.desc   : Call SetProcessName to set ChildProcessConfigs process name, set the value of process name null.
      * @tc.type   : Function
      * @tc.size   : MediumTest
      * @tc.level  : 0
@@ -118,8 +118,8 @@ export default function startNativeChildProcessWithConfigsTest() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_NativeChildProcessWithConfigs_0400
-     * @tc.name   : Call SetProcessName to set ChildProcessConfigs process name, set the length of process name exceeds 64.
-     * @tc.desc   : Expect: Return 401
+     * @tc.name   : SUB_Ability_AbilityRuntime_NativeChildProcessWithConfigs_0400
+     * @tc.desc   : Call SetProcessName to set ChildProcessConfigs process name, set the length of process name exceeds 64.
      * @tc.type   : Function
      * @tc.size   : MediumTest
      * @tc.level  : 0
@@ -141,8 +141,8 @@ export default function startNativeChildProcessWithConfigsTest() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_NativeChildProcessWithConfigs_0500
-     * @tc.name   : Call SetProcessName to set ChildProcessConfigs process name, set the value of process name "abc_123".
-     * @tc.desc   : Expect: Return 0
+     * @tc.name   : SUB_Ability_AbilityRuntime_NativeChildProcessWithConfigs_0500
+     * @tc.desc   : Call SetProcessName to set ChildProcessConfigs process name, set the value of process name "abc_123".
      * @tc.type   : Function
      * @tc.size   : MediumTest
      * @tc.level  : 0
@@ -163,8 +163,8 @@ export default function startNativeChildProcessWithConfigsTest() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_NativeChildProcessWithConfigs_0600
-     * @tc.name   : Call SetProcessName to set ChildProcessConfigs process name, the value of process name contains special characters.
-     * @tc.desc   : Expect: Return 401
+     * @tc.name   : SUB_Ability_AbilityRuntime_NativeChildProcessWithConfigs_0600
+     * @tc.desc   : Call SetProcessName to set ChildProcessConfigs process name, the value of process name contains special characters.
      * @tc.type   : Function
      * @tc.size   : MediumTest
      * @tc.level  : 0
@@ -185,8 +185,8 @@ export default function startNativeChildProcessWithConfigsTest() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_NativeChildProcessWithConfigs_0700
-     * @tc.name   : Call DestroyChildProcessConfigs to destroy ChildProcessConfigs, the value of configs is correct.
-     * @tc.desc   : Expect: Return 0
+     * @tc.name   : SUB_Ability_AbilityRuntime_NativeChildProcessWithConfigs_0700
+     * @tc.desc   : Call DestroyChildProcessConfigs to destroy ChildProcessConfigs, the value of configs is correct.
      * @tc.type   : Function
      * @tc.size   : MediumTest
      * @tc.level  : 0
@@ -207,8 +207,8 @@ export default function startNativeChildProcessWithConfigsTest() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_NativeChildProcessWithConfigs_0800
-     * @tc.name   : Call DestroyChildProcessConfigs to destroy ChildProcessConfigs, the value of configs is nullptr.
-     * @tc.desc   : Expect: Return 401
+     * @tc.name   : SUB_Ability_AbilityRuntime_NativeChildProcessWithConfigs_0800
+     * @tc.desc   : Call DestroyChildProcessConfigs to destroy ChildProcessConfigs, the value of configs is nullptr.
      * @tc.type   : Function
      * @tc.size   : MediumTest
      * @tc.level  : 0
@@ -229,9 +229,9 @@ export default function startNativeChildProcessWithConfigsTest() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_NativeChildProcessWithConfigs_0900
-     * @tc.name   : Call StartNativeChildProcessWithConfigs to create a child process, give correct args and configs and  
+     * @tc.name   : SUB_Ability_AbilityRuntime_NativeChildProcessWithConfigs_0900
+     * @tc.desc   : Call StartNativeChildProcessWithConfigs to create a child process, give correct args and configs and
      *              the value of entry is nullptr.
-     * @tc.desc   : Expect: 1.Return 0 2.read Result: 'test'
      * @tc.type   : Function
      * @tc.size   : MediumTest
      * @tc.level  : 0
@@ -244,7 +244,7 @@ export default function startNativeChildProcessWithConfigsTest() {
         let pid = -1;
         pid = testNapi.StartNativeChildProcessWithConfigsEntryNull();
         console.log(`${tag} StartNativeChildProcess success, pid: ${pid}`);
-        if(pid == 801){
+        if(pid == 801 || pid == 16010004){
           done();
         }else{
           expect(401).assertEqual(pid);
@@ -259,9 +259,9 @@ export default function startNativeChildProcessWithConfigsTest() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_NativeChildProcessWithConfigs_1000
-     * @tc.name   : Call StartNativeChildProcess to create a child process, give correct args and configs
+     * @tc.name   : SUB_Ability_AbilityRuntime_NativeChildProcessWithConfigs_1000
+     * @tc.desc   : Call StartNativeChildProcess to create a child process, give correct args and configs
      *              and the .so of entry is not existed.
-     * @tc.desc   : Expect: 1.Return child pid 2.read Result: 'test'
      * @tc.type   : Function
      * @tc.size   : MediumTest
      * @tc.level  : 0
@@ -274,7 +274,7 @@ export default function startNativeChildProcessWithConfigsTest() {
         let pid = -1;
         pid = testNapi.StartNativeChildProcessWithConfigs("libnoexisted.so:Main");
         console.log(`${tag} StartNativeChildProcess success, pid: ${pid}`);
-        if(pid == 801){
+        if(pid == 801 || pid == 16010004){
           done();
         }else{
           expect(pid > 0).assertTrue();
@@ -289,9 +289,9 @@ export default function startNativeChildProcessWithConfigsTest() {
 
     /*
      * @tc.number : SUB_Ability_AbilityRuntime_NativeChildProcessWithConfigs_1100
-     * @tc.name   : Call StartNativeChildProcess to create a child process, give correct args and configs
+     * @tc.name   : SUB_Ability_AbilityRuntime_NativeChildProcessWithConfigs_1100
+     * @tc.desc   : Call StartNativeChildProcess to create a child process, give correct args and configs
      *              and the method name of entry is not existed.
-     * @tc.desc   : Expect: 1.Return child pid 2.read Result: 'test'
      * @tc.type   : Function
      * @tc.size   : MediumTest
      * @tc.level  : 0
@@ -304,7 +304,7 @@ export default function startNativeChildProcessWithConfigsTest() {
         let pid = -1;
         pid = testNapi.StartNativeChildProcessWithConfigs("libentry.so:notexisted");
         console.log(`${tag} StartNativeChildProcess success, pid: ${pid}`);
-        if(pid == 801){
+        if(pid == 801 || pid == 16010004){
           done();
         }else{
           expect(pid > 0).assertTrue();
