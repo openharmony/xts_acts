@@ -3199,5 +3199,117 @@ export default function windowPCTest() {
 
     // })
 
+    /**
+     * @tc.number    : testOutlineEnabled_0100
+     * @tc.name      : testOutlineEnabled_True
+     * @tc.desc      : Test the function value of outlineEnabled
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testOutlineEnabled_True', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      const message = 'testOutlineEnabled_True';
+      let windowClass:window.Window;
+      let options: window.SubWindowOptions = {
+        title: 'testOutlineEnabled_True',
+        decorEnabled: true,
+        outlineEnabled:true
+      };
+      windowStage.createSubWindowWithOptions('testOutlineEnabled_True', options).then(async (data) => {
+        windowClass = data
+        console.log(`${message} createSubWindowWithOptions success`);
+        await windowClass.setUIContent("testability/pages/Index");
+        windowClass.resize(1000, 1200)
+        await windowClass.showWindow()
+        await sleep(500)
+        await windowClass.destroyWindow()
+        expect(true).assertTrue();
+        done();
+      }).catch(async (err: BusinessError) => {
+        console.error(`${message} Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+        if (err.code == 801 || err.code == 1300002) {
+          console.info(`${message} Capability not supported. Failed to call the API due to limited device capabilities.`);
+          done();
+        } else {
+          expect(false).assertFalse();
+          done();
+        }
+      })
+    })
+    /**
+     * @tc.number    : testOutlineEnabled_0200
+     * @tc.name      : testOutlineEnabled_False
+     * @tc.desc      : Test the function value of outlineEnabled
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testOutlineEnabled_False', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      const message = 'testOutlineEnabled_False';
+      let windowClass:window.Window;
+      let options: window.SubWindowOptions = {
+        title: 'testOutlineEnabled_False',
+        decorEnabled: true,
+        outlineEnabled:false
+      };
+      windowStage.createSubWindowWithOptions('testOutlineEnabled_False', options).then(async (data) => {
+        windowClass = data
+        console.log(`${message} createSubWindowWithOptions success`);
+        await windowClass.setUIContent("testability/pages/Index");
+        windowClass.resize(1000, 1200)
+        await windowClass.showWindow()
+        await sleep(500)
+        await windowClass.destroyWindow()
+        expect(true).assertTrue();
+        done();
+      }).catch(async (err: BusinessError) => {
+        console.error(`${message} Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+        if (err.code == 801 || err.code == 1300002) {
+          console.info(`${message} Capability not supported. Failed to call the API due to limited device capabilities.`);
+          done();
+        } else {
+          expect(false).assertFalse();
+          done();
+        }
+      })
+    })
+    /**
+     * @tc.number    : testOutlineEnabled_0300
+     * @tc.name      : testOutlineEnabled_Undifined
+     * @tc.desc      : Test the function value of outlineEnabled
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testOutlineEnabled_Undifined', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      const message = 'testOutlineEnabled_Undifined';
+      let windowClass:window.Window;
+      let options: window.SubWindowOptions = {
+        title: 'testOutlineEnabled_Undifined',
+        decorEnabled: true,
+        outlineEnabled:undefined
+      };
+      windowStage.createSubWindowWithOptions('testOutlineEnabled_Undifined', options).then(async (data) => {
+        windowClass = data
+        console.log(`${message} createSubWindowWithOptions success`);
+        await windowClass.setUIContent("testability/pages/Index");
+        windowClass.resize(1000, 1200)
+        await windowClass.showWindow()
+        await sleep(500)
+        await windowClass.destroyWindow()
+        expect(true).assertTrue();
+        done();
+      }).catch(async (err: BusinessError) => {
+        console.error(`${message} Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+        if (err.code == 801 || err.code == 1300002) {
+          console.info(`${message} Capability not supported. Failed to call the API due to limited device capabilities.`);
+          done();
+        } else {
+          expect(false).assertFalse();
+          done();
+        }
+      })
+    })
+
   })
 }

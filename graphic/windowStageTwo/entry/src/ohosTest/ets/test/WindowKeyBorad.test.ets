@@ -842,5 +842,23 @@ export default function windowKeyBorad() {
       }
     });
 
+    /**
+     * @tc.number    : testWindowAnimationCurve_0100
+     * @tc.name      : testWindowAnimationCurve_0100
+     * @tc.desc      : Test the function value of WindowAnimationCurve
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testWindowAnimationCurveEnum', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      const caseName = 'testWindowAnimationCurveEnum';
+      console.log(caseName + 'begin.');
+      console.log(caseName + 'window.WindowAnimationCurve.LINEAR: '+window.WindowAnimationCurve.LINEAR);
+      console.log(caseName + 'window.WindowAnimationCurve.INTERPOLATION_SPRING: '+window.WindowAnimationCurve.INTERPOLATION_SPRING);
+      expect(window.WindowAnimationCurve.LINEAR).assertEqual(0);
+      expect(window.WindowAnimationCurve.INTERPOLATION_SPRING).assertEqual(1);
+      done();
+    })
+
   })
 }
