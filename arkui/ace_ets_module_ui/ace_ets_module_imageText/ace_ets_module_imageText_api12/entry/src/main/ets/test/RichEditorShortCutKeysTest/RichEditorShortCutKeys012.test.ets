@@ -91,7 +91,11 @@ export default function RichEditorShortCutKeys012() {
       expect(styleText).assertContain('"fontStyle":0');
       expect(styleText).assertContain('"fontWeight":11');
       expect(styleText).assertContain('"fontFamily":"' + Utils.FONT_FAMILY + '"');
-      expect(styleText).assertContain('"decoration":{"type":0,"color":"#FF000000","style":0}');
+      expect(styleText).assertContain('"decoration"');
+      expect(styleText).assertContain('"type":0');
+      expect(styleText).assertContain('"color":"#FF000000"');
+      expect(styleText).assertContain('"style":0');
+      expect(styleText).assertContain('"thicknessScale":1');
       expect(styleText).assertContain('"lineHeight":30');
       expect(styleText).assertContain('"letterSpacing":30');
       expect(styleText).assertContain('"fontFeature":"\'ss01\' 1"');
