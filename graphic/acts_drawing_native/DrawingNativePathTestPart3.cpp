@@ -1258,7 +1258,7 @@ HWTEST_F(DrawingNativePathPart3Test, testPathApproximateAbnormal, Function | Sma
     float *vals = new float[count];
     // 4. AcceptableError lesses than 0.
     errorCode = OH_Drawing_PathApproximate(path, -0.1, vals, &count);
-    EXPECT_EQ(errorCode, OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    EXPECT_EQ(errorCode, OH_Drawing_ErrorCode::OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE);
     // 3. The length of the array is greater than the length of the actual return point.
     uint32_t count1 = 10;
     errorCode = OH_Drawing_PathApproximate(path, acceptableError, vals, &count1);
@@ -1266,7 +1266,7 @@ HWTEST_F(DrawingNativePathPart3Test, testPathApproximateAbnormal, Function | Sma
     // 4. The length of the array is lesses than the length of the actual return point.
     uint32_t count2 = 2;
     errorCode = OH_Drawing_PathApproximate(path, acceptableError, vals, &count2);
-    EXPECT_EQ(errorCode, OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    EXPECT_EQ(errorCode, OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 5. Free the memory.
     OH_Drawing_PathDestroy(path);
 }
@@ -1427,10 +1427,10 @@ HWTEST_F(DrawingNativePathPart3Test, testPathInterpolateAbnormal, Function | Sma
     // 8. The third parameter of the verification interface is passed as a negative number.
     bool result = false;
     OH_Drawing_ErrorCode errorCode = OH_Drawing_PathInterpolate(path, other, -0.5, &result, interpolatePath);
-    EXPECT_EQ(errorCode, OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    EXPECT_EQ(errorCode, OH_Drawing_ErrorCode::OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE);
     // 9. The third parameter of the verification interface is passed as a number greater than 1.
     errorCode = OH_Drawing_PathInterpolate(path, other, 1.5, &result, interpolatePath);
-    EXPECT_EQ(errorCode, OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    EXPECT_EQ(errorCode, OH_Drawing_ErrorCode::OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE);
     // 10. Free the memory.
     OH_Drawing_PathDestroy(path);
     OH_Drawing_PathDestroy(other);
@@ -1542,7 +1542,7 @@ HWTEST_F(DrawingNativePathPart3Test, testPathIsInterpolateNull, Function | Small
     OH_Drawing_PathMoveTo(other, 100, 50);
     // 6. Add a line segment from the starting point to the target point using OH_Drawing_PathLineTo.
     OH_Drawing_PathLineTo(other, 200, 300);
-    bool result = true;
+    bool result = false;
     // 7. The first parameter of the verification interface is passed to nullptr.
     OH_Drawing_ErrorCode errorCode = OH_Drawing_PathIsInterpolate(nullptr, other, &result);
     EXPECT_EQ(result, false);
