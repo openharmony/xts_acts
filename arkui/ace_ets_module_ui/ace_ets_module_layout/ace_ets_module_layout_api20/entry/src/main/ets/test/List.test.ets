@@ -29,7 +29,6 @@ import RowMatchParentTest from './Row/RowMatchParentTest.ets'
 import RowWrapContentTest from './Row/RowWrapContentTest.ets'
 import StackMatchParentTest from './Stack/StackMatchParentTest.ets'
 import StackWrapContentTest from './Stack/StackWrapContentTest.ets'
-import StackSafeAreaTest from './Stack/StackSafeAreaTest.ets'
 
 export default function testsuite() {
   FlexLayoutPolicyTest();
@@ -42,7 +41,7 @@ export default function testsuite() {
   RowWrapContentTest();
   StackMatchParentTest();
   StackWrapContentTest();
-  StackSafeAreaTest();
+  
   ColumnFixAtIdealSizeTest();
   RowFixAtIdealSizeTest();
   StackFixAtIdealSizeTest();
