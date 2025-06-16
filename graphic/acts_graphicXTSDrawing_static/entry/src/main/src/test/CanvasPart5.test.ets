@@ -55,15 +55,15 @@ export default function drawingTsCanvasPart5Test() {
       // This API supports only one parameter: clear action function.
     })
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_CANVAS_3300
-     * @tc.name      : testCanvasDrawImageRectNormal
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_CANVAS_STATIC_3300
+     * @tc.name      : testCanvasDrawImageRectNormalStatic
      * @tc.desc      : testCanvasDrawImageRectNormal
      * @tc.size      : SmallTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCanvasDrawImageRectNormal', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
-      const msg = 'testCanvasDrawImageRectNormal';
+    it('testCanvasDrawImageRectNormalStatic', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+      const msg = 'testCanvasDrawImageRectNormalStatic';
       const canvas = new drawing.Canvas(pixel);
       const maxVal = Number.MAX_VALUE;
       try {
@@ -106,15 +106,15 @@ export default function drawingTsCanvasPart5Test() {
 
 
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_CANVAS_3301
-     * @tc.name      : testCanvasDrawImageRectMultipleCalls
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_CANVAS_STATIC_3301
+     * @tc.name      : testCanvasDrawImageRectMultipleCallsStatic
      * @tc.desc      : testCanvasDrawImageRectMultipleCalls
      * @tc.size      : SmallTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCanvasDrawImageRectMultipleCalls', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
-      const msg = 'testCanvasDrawImageRectMultipleCalls';
+    it('testCanvasDrawImageRectMultipleCallsStatic', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+      const msg = 'testCanvasDrawImageRectMultipleCallsStatic';
       const canvas = new drawing.Canvas(pixel);
       try {
         for (let i = 0; i < 20; i += 1) {

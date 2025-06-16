@@ -52,15 +52,15 @@ export default function colorFilterTest() {
       // This API supports only one parameter: clear action function.
     })
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_COLORFILTER_0100
-     * @tc.name      : testColorFilterCreateBlendModeColorFilterNormal
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_COLORFILTER_STATIC_0100
+     * @tc.name      : testColorFilterCreateBlendModeColorFilterNormalStatic
      * @tc.desc      : Test for testColorFilterCreateBlendModeColorFilterNormal.
      * @tc.size      : SmallTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testColorFilterCreateBlendModeColorFilterNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
-      const msg = 'testColorFilterCreateBlendModeColorFilterNormal';
+    it('testColorFilterCreateBlendModeColorFilterNormalStatic', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
+      const msg = 'testColorFilterCreateBlendModeColorFilterNormalStatic';
       try {
         drawing.ColorFilter.createBlendModeColorFilter({alpha: 255, red: 255, green: 0, blue: 0}, drawing.BlendMode.CLEAR);
         drawing.ColorFilter.createBlendModeColorFilter({alpha: 255, red: 255, green: 0, blue: 0}, drawing.BlendMode.SRC);
@@ -108,15 +108,15 @@ export default function colorFilterTest() {
       }
     });
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_COLORFILTER_0103
-     * @tc.name      : testColorFilterCreateBlendModeColorFilterMultipleCalls
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_COLORFILTER_STATIC_0103
+     * @tc.name      : testColorFilterCreateBlendModeColorFilterMultipleCallsStatic
      * @tc.desc      : Test for testColorFilterCreateBlendModeColorFilterMultipleCalls.
      * @tc.size      : SmallTest
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testColorFilterCreateBlendModeColorFilterMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
-      const msg = 'testColorFilterCreateBlendModeColorFilterMultipleCalls';
+    it('testColorFilterCreateBlendModeColorFilterMultipleCallsStatic', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
+      const msg = 'testColorFilterCreateBlendModeColorFilterMultipleCallsStatic';
 
       for (let i = 0; i < 20; i++) {
         const randomColor: common2D.Color = {
@@ -136,15 +136,15 @@ export default function colorFilterTest() {
     });
 
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_COLORFILTER_0104
-     * @tc.name      : testColorFilterCreateBlendModeColorFilterBoundaryValue
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_COLORFILTER_STATIC_0104
+     * @tc.name      : testColorFilterCreateBlendModeColorFilterBoundaryValueStatic
      * @tc.desc      : Test for testColorFilterCreateBlendModeColorFilterBoundaryValue.
      * @tc.size      : SmallTest
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testColorFilterCreateBlendModeColorFilterBoundaryValue', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
-      const msg = 'testColorFilterCreateBlendModeColorFilterBoundaryValue';
+    it('testColorFilterCreateBlendModeColorFilterBoundaryValueStatic', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
+      const msg = 'testColorFilterCreateBlendModeColorFilterBoundaryValueStatic';
 
       const randomColor : common2D.Color = {
         alpha: Math.floor(Math.random() * 256),

@@ -41,15 +41,15 @@ export default function roundRectTest() {
       // This API supports only one parameter: clear action function.
     })
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_ROUNDRECT_0100
-     * @tc.name      : testRoundRectConstructorNormal
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_ROUNDRECT_STATIC_0100
+     * @tc.name      : testRoundRectConstructorNormalStatic
      * @tc.desc      : Test for testRoundRectConstructorNormal.
      * @tc.size      : SmallTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testRoundRectConstructorNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
-      const msg = 'testRoundRectConstructorNormal';
+    it('testRoundRectConstructorNormalStatic', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
+      const msg = 'testRoundRectConstructorNormalStatic';
 
       try {
         let roundRect = new drawing.RoundRect({
@@ -133,15 +133,15 @@ export default function roundRectTest() {
     });
 
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_ROUNDRECT_0103
-     * @tc.name      : testRoundRectConstructorMultipleCalls
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_ROUNDRECT_STATIC_0103
+     * @tc.name      : testRoundRectConstructorMultipleCallsStatic
      * @tc.desc      : Test for testRoundRectConstructorMultipleCalls.
      * @tc.size      : SmallTest
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testRoundRectConstructorMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
-      const msg = 'testRoundRectConstructorMultipleCalls';
+    it('testRoundRectConstructorMultipleCallsStatic', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
+      const msg = 'testRoundRectConstructorMultipleCallsStatic';
 
       for ( let i = 0 ; i < 20 ; i ++ ) {
         try {

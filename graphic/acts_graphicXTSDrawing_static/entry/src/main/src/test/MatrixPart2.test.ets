@@ -42,15 +42,15 @@ export default function drawingTsMatrixPart2Test() {
       // This API supports only one parameter: clear action function.
     })
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_MATRIX_1600
-     * @tc.name      : testMatrixResetNormal
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_MATRIX_STATIC_1600
+     * @tc.name      : testMatrixResetNormalStatic
      * @tc.desc      : testMatrixResetNormal
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('testMatrixResetNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
-      const msg = 'testMatrixResetNormal';
+    it('testMatrixResetNormalStatic', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
+      const msg = 'testMatrixResetNormalStatic';
       try {
         let matrix = new drawing.Matrix();
         matrix.reset();
@@ -71,15 +71,15 @@ export default function drawingTsMatrixPart2Test() {
     })
 
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_MATRIX_1602
-     * @tc.name      : testMatrixResetMultipleCalls
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_MATRIX_STATIC_1602
+     * @tc.name      : testMatrixResetMultipleCallsStatic
      * @tc.desc      : testMatrixResetMultipleCalls
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testMatrixResetMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
-      const msg = 'testMatrixResetMultipleCalls';
+    it('testMatrixResetMultipleCallsStatic', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
+      const msg = 'testMatrixResetMultipleCallsStatic';
       try {
         let matrix = new drawing.Matrix();
         // matrix.preTranslate(100,100);

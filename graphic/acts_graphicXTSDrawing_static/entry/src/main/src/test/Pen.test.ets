@@ -41,15 +41,15 @@ export default function penTest() {
       // This API supports only one parameter: clear action function.
     })
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PEN_0800
-     * @tc.name      : testPenSetBlendModeNormal
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PEN_STATIC_0800
+     * @tc.name      : testPenSetBlendModeNormalStatic
      * @tc.desc      : Test for testPenSetBlendModeNormal.
      * @tc.size      : SmallTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testPenSetBlendModeNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
-      const msg = 'testPenSetBlendModeNormal';
+    it('testPenSetBlendModeNormalStatic', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
+      const msg = 'testPenSetBlendModeNormalStatic';
       try {
         const pen = new drawing.Pen();
         pen.setBlendMode(drawing.BlendMode.SRC);
@@ -60,15 +60,15 @@ export default function penTest() {
       }
     });
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PEN_0803
-     * @tc.name      : testPenSetBlendModeMultipleCalls
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PEN_STATIC_0803
+     * @tc.name      : testPenSetBlendModeMultipleCallsStatic
      * @tc.desc      : Test for testPenSetBlendModeMultipleCalls.
      * @tc.size      : SmallTest
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testPenSetBlendModeMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
-      const msg = 'testPenSetBlendModeMultipleCalls';
+    it('testPenSetBlendModeMultipleCallsStatic', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
+      const msg = 'testPenSetBlendModeMultipleCallsStatic';
       const pen = new drawing.Pen();
       for (let i = 0; i < 20; i++) {
         try {

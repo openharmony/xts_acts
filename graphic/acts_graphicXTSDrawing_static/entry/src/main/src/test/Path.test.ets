@@ -39,15 +39,15 @@ export default function drawingTsPathTest() {
       // This API supports only one parameter: clear action function.
     })
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_0300
-     * @tc.name      : testPathArcToNormal
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_STATIC_0300
+     * @tc.name      : testPathArcToNormalStatic
      * @tc.desc      : testPathArcToNormal
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('testPathArcToNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
-      const msg = 'testPathArcToNormal';
+    it('testPathArcToNormalStatic', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
+      const msg = 'testPathArcToNormalStatic';
       try {
         let path = new drawing.Path();
         path.arcTo(10, 15, 10, 10, 0, 360);
@@ -63,15 +63,15 @@ export default function drawingTsPathTest() {
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_0303
-     * @tc.name      : testPathArcToMultipleCalls
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_STATIC_0303
+     * @tc.name      : testPathArcToMultipleCallsStatic
      * @tc.desc      : testPathArcToMultipleCalls
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testPathArcToMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
-      const msg = 'testPathArcToMultipleCalls';
+    it('testPathArcToMultipleCallsStatic', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
+      const msg = 'testPathArcToMultipleCallsStatic';
       try {
         let path = new drawing.Path();
         for (let index = 0; index < 20; index++) {
@@ -86,15 +86,15 @@ export default function drawingTsPathTest() {
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_0700
-     * @tc.name      : testPathResetNormal
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_STATIC_0700
+     * @tc.name      : testPathResetNormalStatic
      * @tc.desc      : testPathResetNormal
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('testPathResetNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
-      const msg = 'testPathResetNormal';
+    it('testPathResetNormalStatic', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
+      const msg = 'testPathResetNormalStatic';
       try {
         let path = new drawing.Path();
         path.reset();
@@ -106,15 +106,15 @@ export default function drawingTsPathTest() {
     })
 
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_0701
-     * @tc.name      : testPathResetMultipleCalls
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_STATIC_0701
+     * @tc.name      : testPathResetMultipleCallsStatic
      * @tc.desc      : testPathResetMultipleCalls
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testPathResetMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
-      const msg = 'testPathResetMultipleCalls';
+    it('testPathResetMultipleCallsStatic', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
+      const msg = 'testPathResetMultipleCallsStatic';
       let path = new drawing.Path();
       try {
         for (let index = 0; index < 20; index++) {

@@ -41,15 +41,15 @@ export default function fontTest() {
       // This API supports only one parameter: clear action function.
     })
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_FONT_0400
-     * @tc.name      : testFontSetGetSizeNormal
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_FONT_STATIC_0400
+     * @tc.name      : testFontSetGetSizeNormalStatic
      * @tc.desc      : Test for testFontSetGetSizeNormal.
      * @tc.size      : SmallTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testFontSetGetSizeNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
-      const msg = 'testFontSetGetSizeNormal';
+    it('testFontSetGetSizeNormalStatic', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
+      const msg = 'testFontSetGetSizeNormalStatic';
       let font = new drawing.Font(); // Create a new Font object
 
       try {
@@ -91,15 +91,15 @@ export default function fontTest() {
       }
     });
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_FONT_0403
-     * @tc.name      : testFontSetGetSizeMultipleCalls
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_FONT_STATIC_0403
+     * @tc.name      : testFontSetGetSizeMultipleCallsStatic
      * @tc.desc      : Test for testFontSetGetSizeMultipleCalls.
      * @tc.size      : SmallTest
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testFontSetGetSizeMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
-      const msg = 'testFontSetGetSizeMultipleCalls';
+    it('testFontSetGetSizeMultipleCallsStatic', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
+      const msg = 'testFontSetGetSizeMultipleCallsStatic';
       let font = new drawing.Font(); // Step 1: Create a new Font object
 
       for (let i = 0; i < 20; i++) {
@@ -128,15 +128,15 @@ export default function fontTest() {
     });
 
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_FONT_0404
-     * @tc.name      : testFontSetGetSizeWhenNoSet
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_FONT_STATIC_0404
+     * @tc.name      : testFontSetGetSizeWhenNoSetStatic
      * @tc.desc      : Test for testFontSetGetSizeWhenNoSet.
      * @tc.size      : SmallTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testFontSetGetSizeWhenNoSet', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, () => {
-      const msg = 'testFontSetGetSizeWhenNoSet';
+    it('testFontSetGetSizeWhenNoSetStatic', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, () => {
+      const msg = 'testFontSetGetSizeWhenNoSetStatic';
       let font = new drawing.Font();
       try {
         font.getSize();
@@ -147,15 +147,15 @@ export default function fontTest() {
       }
     });
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_FONT_0500
-     * @tc.name      : testFontSetGetTypeFaceNormal
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_FONT_STATIC_0500
+     * @tc.name      : testFontSetGetTypeFaceNormalStatic
      * @tc.desc      : Test for testFontSetGetTypeFaceNormal.
      * @tc.size      : SmallTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testFontSetGetTypeFaceNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
-      const msg = 'testFontSetGetTypeFaceNormal';
+    it('testFontSetGetTypeFaceNormalStatic', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
+      const msg = 'testFontSetGetTypeFaceNormalStatic';
       let font = new drawing.Font();
 
       try {
@@ -194,15 +194,15 @@ export default function fontTest() {
       }
     });
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_FONT_0503
-     * @tc.name      : testFontSetGetTypeFaceMultipleCalls
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_FONT_STATIC_0503
+     * @tc.name      : testFontSetGetTypeFaceMultipleCallsStatic
      * @tc.desc      : Test for testFontSetGetTypeFaceMultipleCalls.
      * @tc.size      : SmallTest
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testFontSetGetTypeFaceMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
-      const msg = 'testFontSetGetTypeFaceMultipleCalls';
+    it('testFontSetGetTypeFaceMultipleCallsStatic', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
+      const msg = 'testFontSetGetTypeFaceMultipleCallsStatic';
       let font = new drawing.Font();
       for (let i = 0; i < 20; i++) {
         try {
@@ -217,15 +217,15 @@ export default function fontTest() {
     });
 
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_FONT_0504
-     * @tc.name      : testFontSetGetTypeFaceWhenNoSet
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_FONT_STATIC_0504
+     * @tc.name      : testFontSetGetTypeFaceWhenNoSetStatic
      * @tc.desc      : Test for testFontSetGetTypeFaceWhenNoSet.
      * @tc.size      : SmallTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('testFontSetGetTypeFaceWhenNoSet', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, () => {
-      const msg = 'testFontSetGetTypeFaceWhenNoSet';
+    it('testFontSetGetTypeFaceWhenNoSetStatic', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, () => {
+      const msg = 'testFontSetGetTypeFaceWhenNoSetStatic';
       try {
         const font = new drawing.Font();
         font.getTypeface();
@@ -236,15 +236,15 @@ export default function fontTest() {
       }
     });
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_FONT_0600
-     * @tc.name      : testFontGetMetricsNormal
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_FONT_STATIC_0600
+     * @tc.name      : testFontGetMetricsNormalStatic
      * @tc.desc      : Test for testFontGetMetricsNormal.
      * @tc.size      : SmallTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testFontGetMetricsNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
-      const msg = 'testFontGetMetricsNormal';
+    it('testFontGetMetricsNormalStatic', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
+      const msg = 'testFontGetMetricsNormalStatic';
       try {
         const font = new drawing.Font();
         let metrics = font.getMetrics();
@@ -271,15 +271,15 @@ export default function fontTest() {
       }
     });
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_FONT_0602
-     * @tc.name      : testFontGetMetricsMultipleCalls
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_FONT_STATIC_0602
+     * @tc.name      : testFontGetMetricsMultipleCallsStatic
      * @tc.desc      : Test for testFontGetMetricsMultipleCalls.
      * @tc.size      : SmallTest
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testFontGetMetricsMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
-      const msg = 'testFontGetMetricsMultipleCalls';
+    it('testFontGetMetricsMultipleCallsStatic', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
+      const msg = 'testFontGetMetricsMultipleCallsStatic';
       for (let i = 0; i < 20; i++) {
         try {
           const font = new drawing.Font();

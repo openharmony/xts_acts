@@ -52,15 +52,15 @@ export default function drawingTsCanvasPart2Test() {
       // This API supports only one parameter: clear action function.
     })
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_CANVAS_1200
-     * @tc.name      : testCanvasAttachBrushDetachBrushNormal
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_CANVAS_STATIC_1200
+     * @tc.name      : testCanvasAttachBrushDetachBrushNormalStatic
      * @tc.desc      : testCanvasAttachBrushDetachBrushNormal
      * @tc.size      : SmallTest
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('testCanvasAttachBrushDetachBrushNormal', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
-      const msg = 'testCanvasAttachBrushDetachBrushNormal';
+    it('testCanvasAttachBrushDetachBrushNormalStatic', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+      const msg = 'testCanvasAttachBrushDetachBrushNormalStatic';
       try {
         const canvas = new drawing.Canvas(pixel);
         const brush = new drawing.Brush();
@@ -85,15 +85,15 @@ export default function drawingTsCanvasPart2Test() {
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_CANVAS_1203
-     * @tc.name      : testCanvasAttachBrushDetachBrushMultipleCalls
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_CANVAS_STATIC_1203
+     * @tc.name      : testCanvasAttachBrushDetachBrushMultipleCallsStatic
      * @tc.desc      : testCanvasAttachBrushDetachBrushMultipleCalls
      * @tc.size      : SmallTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCanvasAttachBrushDetachBrushMultipleCalls', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
-      const msg = 'testCanvasAttachBrushDetachBrushMultipleCalls';
+    it('testCanvasAttachBrushDetachBrushMultipleCallsStatic', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+      const msg = 'testCanvasAttachBrushDetachBrushMultipleCallsStatic';
       try {
         const canvas = new drawing.Canvas(pixel);
         const brush = new drawing.Brush();
@@ -133,15 +133,15 @@ export default function drawingTsCanvasPart2Test() {
     })
 
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_CANVAS_1204
-     * @tc.name      : testCanvasAttachBrushOly
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_CANVAS_STATIC_1204
+     * @tc.name      : testCanvasAttachBrushOlyStatic
      * @tc.desc      : testCanvasAttachBrushOly
      * @tc.size      : SmallTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCanvasAttachBrushOly', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
-      const msg = 'testCanvasAttachBrushOly';
+    it('testCanvasAttachBrushOlyStatic', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+      const msg = 'testCanvasAttachBrushOlyStatic';
       try {
         const canvas = new drawing.Canvas(pixel);
         const brush = new drawing.Brush();
@@ -166,15 +166,15 @@ export default function drawingTsCanvasPart2Test() {
     })
 
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_CANVAS_1205
-     * @tc.name      : testCanvasDttachBrushOly
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_CANVAS_STATIC_1205
+     * @tc.name      : testCanvasDttachBrushOlyStatic
      * @tc.desc      : testCanvasDttachBrushOly
      * @tc.size      : SmallTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCanvasDttachBrushOly', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
-      const msg = 'testCanvasDttachBrushOly';
+    it('testCanvasDttachBrushOlyStatic', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+      const msg = 'testCanvasDttachBrushOlyStatic';
       try {
         const canvas = new drawing.Canvas(pixel);
         canvas.detachBrush();
@@ -185,15 +185,15 @@ export default function drawingTsCanvasPart2Test() {
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_CANVAS_1800
-     * @tc.name      : testCanvasRotateNormal
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_CANVAS_STATIC_1800
+     * @tc.name      : testCanvasRotateNormalStatic
      * @tc.desc      : testCanvasRotateNormal
      * @tc.size      : SmallTest
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('testCanvasRotateNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
-      const msg = 'testCanvasRotateNormal';
+    it('testCanvasRotateNormalStatic', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
+      const msg = 'testCanvasRotateNormalStatic';
       try {
         const canvas = new drawing.Canvas(pixel);
         const pen = new drawing.Pen();
@@ -216,15 +216,15 @@ export default function drawingTsCanvasPart2Test() {
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_CANVAS_1803
-     * @tc.name      : testCanvasRotateMultipleCalls
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_CANVAS_STATIC_1803
+     * @tc.name      : testCanvasRotateMultipleCallsStatic
      * @tc.desc      : testCanvasRotateMultipleCalls
      * @tc.size      : SmallTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCanvasRotateMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
-      const msg = 'testCanvasRotateMultipleCalls';
+    it('testCanvasRotateMultipleCallsStatic', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
+      const msg = 'testCanvasRotateMultipleCallsStatic';
       try {
         const canvas = new drawing.Canvas(pixel);
         const pen = new drawing.Pen();

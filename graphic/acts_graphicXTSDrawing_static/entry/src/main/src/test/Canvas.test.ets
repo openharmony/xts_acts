@@ -52,15 +52,15 @@ export default function drawingTsCanvasTest() {
       // This API supports only one parameter: clear action function.
     })
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_CANVAS_0100
-     * @tc.name      : testCanvasConstructorNormal
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_CANVAS_STATIC_0100
+     * @tc.name      : testCanvasConstructorNormalStatic
      * @tc.desc      : testCanvasConstructorNormal
      * @tc.size      : SmallTest
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('testCanvasConstructorNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
-      const msg = 'testCanvasConstructorNormal';
+    it('testCanvasConstructorNormalStatic', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
+      const msg = 'testCanvasConstructorNormalStatic';
       try {
         new drawing.Canvas(pixel);
         console.info(msg + 'canvasConstructor successed');
@@ -71,15 +71,15 @@ export default function drawingTsCanvasTest() {
     })
 
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_CANVAS_0103
-     * @tc.name      : testCanvasConstructorMultipleCalls
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_CANVAS_STATIC_0103
+     * @tc.name      : testCanvasConstructorMultipleCallsStatic
      * @tc.desc      : testCanvasConstructorMultipleCalls
      * @tc.size      : SmallTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCanvasConstructorMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
-      const msg = 'testCanvasConstructorMultipleCalls';
+    it('testCanvasConstructorMultipleCallsStatic', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
+      const msg = 'testCanvasConstructorMultipleCallsStatic';
       try {
         for (let index = 0; index < 20; index++) {
           new drawing.Canvas(pixel);

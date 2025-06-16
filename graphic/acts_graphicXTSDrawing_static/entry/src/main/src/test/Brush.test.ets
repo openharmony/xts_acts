@@ -41,15 +41,15 @@ export default function brushTest() {
       // This API supports only one parameter: clear action function.
     });
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_BRUSH_1600
-     * @tc.name      : testBrushResetNormal
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_BRUSH_STATIC_1600
+     * @tc.name      : testBrushResetNormalStatic
      * @tc.desc      : Test for testBrushResetNormal.
      * @tc.size      : SmallTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testBrushResetNormal', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
-      const msg = 'testBrushResetNormal';
+    it('testBrushResetNormalStatic', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+      const msg = 'testBrushResetNormalStatic';
       const brush = new drawing.Brush();
       try {
         brush.reset();
@@ -68,15 +68,15 @@ export default function brushTest() {
       }
     });
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_BRUSH_1602
-     * @tc.name      : testBrushResetMultipleCalls
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_BRUSH_STATIC_1602
+     * @tc.name      : testBrushResetMultipleCallsStatic
      * @tc.desc      : Test for testBrushResetMultipleCalls.
      * @tc.size      : SmallTest
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testBrushResetMultipleCalls', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
-      const msg = 'testBrushResetMultipleCalls';
+    it('testBrushResetMultipleCallsStatic', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+      const msg = 'testBrushResetMultipleCallsStatic';
       const brush = new drawing.Brush();
       for (let i = 0; i < 20; i++) {
         try {
@@ -89,15 +89,15 @@ export default function brushTest() {
       }
     });
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_BRUSH_0700
-     * @tc.name      : testBrushSetBlendModeNormal
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_BRUSH_STATIC_0700
+     * @tc.name      : testBrushSetBlendModeNormalStatic
      * @tc.desc      : Test for testBrushSetBlendModeNormal.
      * @tc.size      : SmallTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testBrushSetBlendModeNormal', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
-      const msg = 'testBrushSetBlendModeNormal';
+    it('testBrushSetBlendModeNormalStatic', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+      const msg = 'testBrushSetBlendModeNormalStatic';
       const brush = new drawing.Brush();
       try {
         brush.setBlendMode(drawing.BlendMode.CLEAR);
@@ -136,15 +136,15 @@ export default function brushTest() {
       }
     });
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_BRUSH_0703
-     * @tc.name      : testBrushSetBlendModeMultipleCalls
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_BRUSH_STATIC_0703
+     * @tc.name      : testBrushSetBlendModeMultipleCallsStatic
      * @tc.desc      : Test for testBrushSetBlendModeMultipleCalls.
      * @tc.size      : SmallTest
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testBrushSetBlendModeMultipleCalls', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
-      const msg = 'testBrushSetBlendModeMultipleCalls';
+    it('testBrushSetBlendModeMultipleCallsStatic', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+      const msg = 'testBrushSetBlendModeMultipleCallsStatic';
       const brush = new drawing.Brush();
       for (let i = 0; i < 20; i++) {
         try {
@@ -157,15 +157,15 @@ export default function brushTest() {
       }
     });
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_BRUSH_1100
-     * @tc.name      : testBrushConstructorNormal
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_BRUSH_STATIC_1100
+     * @tc.name      : testBrushConstructorNormalStatic
      * @tc.desc      : Test for testBrushConstructorNormal.
      * @tc.size      : SmallTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testBrushConstructorNormal', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
-      const msg = 'testBrushConstructorNormal';
+    it('testBrushConstructorNormalStatic', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+      const msg = 'testBrushConstructorNormalStatic';
       const brush = new drawing.Brush();
       try {
         let brush = new drawing.Brush();
@@ -196,15 +196,15 @@ export default function brushTest() {
       }
     });
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_BRUSH_1103
-     * @tc.name      : testBrushConstructorMultipleCalls
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_BRUSH_STATIC_1103
+     * @tc.name      : testBrushConstructorMultipleCallsStatic
      * @tc.desc      : Test for testBrushConstructorMultipleCalls.
      * @tc.size      : SmallTest
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testBrushConstructorMultipleCalls', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
-      const msg = 'testBrushConstructorMultipleCalls';
+    it('testBrushConstructorMultipleCallsStatic', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+      const msg = 'testBrushConstructorMultipleCallsStatic';
       const brush = new drawing.Brush();
       for (let i = 0; i < 20; i++) {
         try {

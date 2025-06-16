@@ -40,15 +40,15 @@ export default function drawingTsMatrixTest() {
       // This API supports only one parameter: clear action function.
     })
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_MATRIX_0100
-     * @tc.name      : testMatrixConstructorNormal
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_MATRIX_STATIC_0100
+     * @tc.name      : testMatrixConstructorNormalStatic
      * @tc.desc      : testMatrixConstructorNormal
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('testMatrixConstructorNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
-      const msg = 'testMatrixConstructorNormal';
+    it('testMatrixConstructorNormalStatic', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
+      const msg = 'testMatrixConstructorNormalStatic';
       try {
         let matrix = new drawing.Matrix();
         console.info(msg + ' Matrix successed');
@@ -59,15 +59,15 @@ export default function drawingTsMatrixTest() {
     })
 
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_MATRIX_0103
-     * @tc.name      : testMatrixConstructorMultipleCalls
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_MATRIX_STATIC_0103
+     * @tc.name      : testMatrixConstructorMultipleCallsStatic
      * @tc.desc      : testMatrixConstructorMultipleCalls
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testMatrixConstructorMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
-      const msg = 'testMatrixConstructorMultipleCalls';
+    it('testMatrixConstructorMultipleCallsStatic', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
+      const msg = 'testMatrixConstructorMultipleCallsStatic';
       try {
         for (let i = 0; i < loop_times; i++) {
           let matrix = new drawing.Matrix();

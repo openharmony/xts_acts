@@ -41,15 +41,15 @@ export default function typefaceTest() {
       // This API supports only one parameter: clear action function.
     })
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_TYPEFACE_0200
-     * @tc.name      : testTypeFaceMakeFromFileNormal
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_TYPEFACE_STATIC_0200
+     * @tc.name      : testTypeFaceMakeFromFileNormalStatic
      * @tc.desc      : testTypeFaceMakeFromFileNormal
      * @tc.size      : SmallTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testTypeFaceMakeFromFileNormal', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
-      const msg = 'testTypeFaceMakeFromFileNormal';
+    it('testTypeFaceMakeFromFileNormalStatic', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+      const msg = 'testTypeFaceMakeFromFileNormalStatic';
       let font = new drawing.Font();
       try {
         let str = FONT_PATH;
@@ -62,15 +62,15 @@ export default function typefaceTest() {
       }
     });
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_TYPEFACE_0202
-     * @tc.name      : testTypeFaceMakeFromFileMultipleCalls
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_TYPEFACE_STATIC_0202
+     * @tc.name      : testTypeFaceMakeFromFileMultipleCallsStatic
      * @tc.desc      : testTypeFaceMakeFromFileMultipleCalls
      * @tc.size      : SmallTest
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testTypeFaceMakeFromFileMultipleCalls', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
-      const msg = 'testTypeFaceMakeFromFileMultipleCalls';
+    it('testTypeFaceMakeFromFileMultipleCallsStatic', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+      const msg = 'testTypeFaceMakeFromFileMultipleCallsStatic';
       let font = new drawing.Font();
       try {
         for (let i = 0; i < 20; i += 1) {
@@ -84,15 +84,15 @@ export default function typefaceTest() {
       }
     });
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_TYPEFACE_0203
-     * @tc.name      : testTypeFaceMakeFromFileAbnormal
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_TYPEFACE_STATIC_0203
+     * @tc.name      : testTypeFaceMakeFromFileAbnormalStatic
      * @tc.desc      : testTypeFaceMakeFromFileAbnormal
      * @tc.size      : SmallTest
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testTypeFaceMakeFromFileAbnormal', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
-      const msg = 'testTypeFaceMakeFromFileAbnormal';
+    it('testTypeFaceMakeFromFileAbnormalStatic', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+      const msg = 'testTypeFaceMakeFromFileAbnormalStatic';
       try {
         const mytypeface = drawing.Typeface.makeFromFile("hello_world");
         console.info(msg + ' test failed.');

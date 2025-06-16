@@ -41,15 +41,15 @@ export default function drawingTsPath3Test() {
       // This API supports only one parameter: clear action function.
     })
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_2000
-     * @tc.name      : testPathConstructorNormal
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_STATIC_2000
+     * @tc.name      : testPathConstructorNormalStatic
      * @tc.desc      : testPathConstructorNormal
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testPathConstructorNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
-      const msg = 'testPathConstructorNormal';
+    it('testPathConstructorNormalStatic', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
+      const msg = 'testPathConstructorNormalStatic';
       try {
         let path: drawing.Path = new drawing.Path();
         let newPath = new drawing.Path(path);
@@ -66,15 +66,15 @@ export default function drawingTsPath3Test() {
     })
 
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_2001
-     * @tc.name      : testPathConstructorMultipleCalls
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_STATIC_2001
+     * @tc.name      : testPathConstructorMultipleCallsStatic
      * @tc.desc      : testPathConstructorMultipleCalls
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testPathConstructorMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
-      const msg = 'testPathConstructorMultipleCalls';
+    it('testPathConstructorMultipleCallsStatic', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
+      const msg = 'testPathConstructorMultipleCallsStatic';
       try {
         for (let i = 0; i < 20; i += 1) {
           let path = new drawing.Path();

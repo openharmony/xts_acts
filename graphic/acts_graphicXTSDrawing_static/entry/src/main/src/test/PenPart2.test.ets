@@ -41,15 +41,15 @@ export default function penPart2Test() {
       // This API supports only one parameter: clear action function.
     })
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PEN_1700
-     * @tc.name      : testPenConstructorNormal
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PEN_STATIC_1700
+     * @tc.name      : testPenConstructorNormalStatic
      * @tc.desc      : Test for testPenConstructorNormal.
      * @tc.size      : SmallTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testPenConstructorNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
-      const msg = 'testPenConstructorNormal';
+    it('testPenConstructorNormalStatic', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
+      const msg = 'testPenConstructorNormalStatic';
       const pen = new drawing.Pen();
 
       try {
@@ -82,15 +82,15 @@ export default function penPart2Test() {
     });
 
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PEN_1703
-     * @tc.name      : testPenConstructorMultipleCalls
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PEN_STATIC_1703
+     * @tc.name      : testPenConstructorMultipleCallsStatic
      * @tc.desc      : Test for testPenConstructorMultipleCalls.
      * @tc.size      : SmallTest
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testPenConstructorMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
-      const msg = 'testPenConstructorMultipleCalls';
+    it('testPenConstructorMultipleCallsStatic', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
+      const msg = 'testPenConstructorMultipleCallsStatic';
 
       for ( let i = 0 ; i < 20 ; i ++ ) {
         try {
@@ -104,15 +104,15 @@ export default function penPart2Test() {
       }
     });
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PEN_2400
-     * @tc.name      : testPenResetNormal
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PEN_STATIC_2400
+     * @tc.name      : testPenResetNormalStatic
      * @tc.desc      : Test for testPenResetNormal.
      * @tc.size      : SmallTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testPenResetNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
-      const msg = 'testPenResetNormal';
+    it('testPenResetNormalStatic', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
+      const msg = 'testPenResetNormalStatic';
       const pen = new drawing.Pen();
 
       try {
@@ -140,15 +140,15 @@ export default function penPart2Test() {
     });
 
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PEN_2402
-     * @tc.name      : testPenResetMultipleCalls
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PEN_STATIC_2402
+     * @tc.name      : testPenResetMultipleCallsStatic
      * @tc.desc      : Test for testPenResetMultipleCalls.
      * @tc.size      : SmallTest
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testPenResetMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
-      const msg = 'testPenResetMultipleCalls';
+    it('testPenResetMultipleCallsStatic', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
+      const msg = 'testPenResetMultipleCallsStatic';
       const pen = new drawing.Pen();
 
       for ( let i = 0 ; i < 20 ; i ++ ) {

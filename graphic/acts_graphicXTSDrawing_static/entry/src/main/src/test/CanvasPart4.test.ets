@@ -52,15 +52,15 @@ export default function drawingTsCanvasPart4Test() {
       // This API supports only one parameter: clear action function.
     })
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_CANVAS_2500
-     * @tc.name      : testCanvasSaveLayerNormal
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_CANVAS_STATIC_2500
+     * @tc.name      : testCanvasSaveLayerNormalStatic
      * @tc.desc      : testCanvasSaveLayerNormal
      * @tc.size      : SmallTest
      * @tc.type      : Function
      * @tc.level     : Level0
      */
-    it('testCanvasSaveLayerNormal', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
-      const msg = 'testCanvasSaveLayerNormal';
+    it('testCanvasSaveLayerNormalStatic', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, () => {
+      const msg = 'testCanvasSaveLayerNormalStatic';
       try {
         const canvas = new drawing.Canvas(pixel);
         const rect: common2D.Rect = {
@@ -80,15 +80,15 @@ export default function drawingTsCanvasPart4Test() {
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_CANVAS_2501
-     * @tc.name      : testCanvasSaveLayerUndefined
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_CANVAS_STATIC_2501
+     * @tc.name      : testCanvasSaveLayerUndefinedStatic
      * @tc.desc      : testCanvasSaveLayerUndefined
      * @tc.size      : SmallTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testCanvasSaveLayerUndefined', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
-      const msg = 'testCanvasSaveLayerUndefined';
+    it('testCanvasSaveLayerUndefinedStatic', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+      const msg = 'testCanvasSaveLayerUndefinedStatic';
       const canvas = new drawing.Canvas(pixel);
       const brush = new drawing.Brush();
       const rect: common2D.Rect = {

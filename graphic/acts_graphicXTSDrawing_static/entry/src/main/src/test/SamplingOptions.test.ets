@@ -41,15 +41,15 @@ export default function samplingOptionsTest() {
       // This API supports only one parameter: clear action function.
     })
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_SAMPLINGOPTIONS_0100
-     * @tc.name      : testSamplingOptionsConstructorNormal
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_SAMPLINGOPTIONS_STATIC_0100
+     * @tc.name      : testSamplingOptionsConstructorNormalStatic
      * @tc.desc      : Test for testSamplingOptionsConstructorNormal.
      * @tc.size      : SmallTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('testSamplingOptionsConstructorNormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
-      const msg = 'testSamplingOptionsConstructorNormal';
+    it('testSamplingOptionsConstructorNormalStatic', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
+      const msg = 'testSamplingOptionsConstructorNormalStatic';
       try {
         new drawing.SamplingOptions();
         console.info(msg + ' SamplingOptions successed');
@@ -68,15 +68,15 @@ export default function samplingOptionsTest() {
     });
 
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_SAMPLINGOPTIONS_0103
-     * @tc.name      : testSamplingOptionsConstructorMultipleCalls
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_SAMPLINGOPTIONS_STATIC_0103
+     * @tc.name      : testSamplingOptionsConstructorMultipleCallsStatic
      * @tc.desc      : Test for testSamplingOptionsConstructorMultipleCalls.
      * @tc.size      : SmallTest
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSamplingOptionsConstructorMultipleCalls', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
-      const msg = 'testSamplingOptionsConstructorMultipleCalls';
+    it('testSamplingOptionsConstructorMultipleCallsStatic', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
+      const msg = 'testSamplingOptionsConstructorMultipleCallsStatic';
 
       for (let i = 0; i < 20; i++) {
         try {
