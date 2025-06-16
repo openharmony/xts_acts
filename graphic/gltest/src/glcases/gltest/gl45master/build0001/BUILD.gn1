@@ -368,7 +368,7 @@ ohos_moduletest_suite("ActsGl45masterTestSuite0001") {
     "../sample_variables/Gl45mastersamples2Test.cpp",
     "../sample_variables/Gl45mastersamples4Test.cpp",
     "../sample_variables/Gl45mastersamples8Test.cpp",
-    "../sample_variables/Gl45masternon-fixedTest.cpp",
+    "../sample_variables/Gl45masternonfixedTest.cpp",
     "../sample_variables/Gl45masterfixedTest.cpp",
     "../shader_multisample_interpolation/Gl45masterapiTest.cpp",
     "../shader_multisample_interpolation/Gl45masterrgba8Test.cpp",
