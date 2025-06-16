@@ -64,7 +64,7 @@
 #define WAV_PATH "/data/storage/el2/base/files/vorbis_48000_32_1.wav"
 static int32_t g_gPlaytime = 100;
 int g_currentPathId = 0;
-static int32_t g_delaytime = 10;
+float g_minDelta = 0.001;
 
 #undef LOG_DOMIN 0x3200
 #define LOG_TAG "AVPlayerNdk_xtsDemo"
@@ -2687,9 +2687,8 @@ static napi_value OhAvPlayerCompleteSetPlaybackRate(napi_env env, napi_callback_
     napi_get_value_double(env, args[0], &rate);
     int backParam = FAIL;
     NdkAVPlayerSetPlaybackRateUser *ndkAVPlayerUser = nullptr;
-    OH_AVPlayer *player = OH_AVPlayer_Create();
     ndkAVPlayerUser = new NdkAVPlayerSetPlaybackRateUser();
-    ndkAVPlayerUser->player = player;
+    ndkAVPlayerUser->player = OH_AVPlayer_Create();
     ndkAVPlayerUser->setRate = rate;
     ndkAVPlayerUser->stateChangeFuncs_ = {
         { AV_PREPARED,
@@ -2705,22 +2704,37 @@ static napi_value OhAvPlayerCompleteSetPlaybackRate(napi_env env, napi_callback_
             }
         },
     };
-    OH_AVErrCode errCode = OH_AVPlayer_SetOnInfoCallback(player, AVPlayerSetPlaybackRateOnInfoCallbackImpl, ndkAVPlayerUser);
+    OH_AVErrCode errCode = OH_AVPlayer_SetOnInfoCallback(ndkAVPlayerUser->player,
+        AVPlayerSetPlaybackRateOnInfoCallbackImpl, ndkAVPlayerUser);
     LOG("OH_AVPlayer_SetOnInfoCallback errCode:%{public}d", errCode);
-    GetFDSourceInfo(player, WAV_PATH);
-    while (true) {
-        std::this_thread::sleep_for(std::chrono::milliseconds(g_delaytime));
-        float delta = std::abs(ndkAVPlayerUser->rate - rate);
-        LOG("OhAvPlayerPrepareSetPlaybackRate errCode:%{public}d, rate:%{public}f, delta: %{public}f",
-            ndkAVPlayerUser->errorCode, ndkAVPlayerUser->rate, delta);
-        if (ndkAVPlayerUser->errorCode == AV_ERR_OK && delta < 0.001) {
-            backParam = SUCCESS;
-            break;
-        }
+    GetFDSourceInfo(ndkAVPlayerUser->player, WAV_PATH);
+    napi_create_external(env, reinterpret_cast<void *>(ndkAVPlayerUser), nullptr, nullptr, &result);
+    return result;
+}
+
+static napi_value CheckAvPlayerPlaybackRate(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    int backParam = FAIL;
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    void *ptr = nullptr;
+    napi_get_value_external(env, args[0], &ptr);
+    NdkAVPlayerSetPlaybackRateUser *ndkAVPlayerUser = reinterpret_cast<NdkAVPlayerSetPlaybackRateUser *>(ptr);
+    float delta = std::abs(ndkAVPlayerUser->rate - ndkAVPlayerUser->setRate);
+    LOG("CheckAvPlayerPlaybackRate errCode:%{public}d, rate:%{public}f, delta: %{public}f",
+        ndkAVPlayerUser->errorCode, ndkAVPlayerUser->rate, delta);
+    if (ndkAVPlayerUser->errorCode == AV_ERR_OK && delta < g_minDelta) {
+        backParam = SUCCESS;
+        OH_AVPlayer_ReleaseSync(ndkAVPlayerUser->player);
+        ndkAVPlayerUser->player = nullptr;
+        delete ndkAVPlayerUser;
+        ndkAVPlayerUser = nullptr;
+    } else {
+        backParam = FAIL;
     }
-    OH_AVPlayer_ReleaseSync(player);
     napi_create_int32(env, backParam, &result);
-    delete ndkAVPlayerUser;
     return result;
 }
 
@@ -2876,6 +2890,8 @@ static napi_value Init(napi_env env, napi_value exports)
         {"AvPlayerCompleteSetPlaybackRate", nullptr, OhAvPlayerCompleteSetPlaybackRate, nullptr,
             nullptr, nullptr, napi_default, nullptr},
         {"AvPlayerSetPlaybackRateBeforePause", nullptr, OhAvPlayerSetPlaybackRateBeforePause, nullptr,
+            nullptr, nullptr, napi_default, nullptr},
+        {"CheckAvPlayerPlaybackRate", nullptr, CheckAvPlayerPlaybackRate, nullptr,
             nullptr, nullptr, napi_default, nullptr}
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
