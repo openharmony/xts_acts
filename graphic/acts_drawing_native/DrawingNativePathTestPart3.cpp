@@ -1270,7 +1270,7 @@ HWTEST_F(DrawingNativePathPart3Test, testPathApproximateAbnormal, Function | Sma
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_PATH_4602
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_PATH_4603
  * @tc.name: testPathApproximateMultiCalls
  * @tc.desc: test for testPathApproximateMultiCalls
  * @tc.size  : SmallTest
