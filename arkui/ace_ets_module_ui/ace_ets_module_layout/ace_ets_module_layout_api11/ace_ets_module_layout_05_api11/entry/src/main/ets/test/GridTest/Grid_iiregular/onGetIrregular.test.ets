@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 
 import {
@@ -66,7 +66,7 @@ export default function onGetIrregularJsunit() {
     * @tc.desc  : Set onGetIrregularSizeByIndex[-1,1], columns Template layout only supports rows to 1, one row and one column
     * @tc.level : Level 2
     */
-    it('onGetIrregularJsunit_0001', 0, async (done: Function) => {
+    it('onGetIrregularJsunit_0001',  Level.LEVEL0, async (done: Function) => {
       console.info('[onGetIrregularJsunit_0000] START');
       let Grid: RectValue = CommonFunc.getComponentRect('GridGetIrregular');
       await CommonFunc.sleep(1000);

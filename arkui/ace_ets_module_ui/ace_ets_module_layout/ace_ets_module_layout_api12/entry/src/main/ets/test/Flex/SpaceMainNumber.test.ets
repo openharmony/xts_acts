@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -50,7 +50,7 @@ export default function SpaceMainNumberJsunit() {
      * @tc.type :
      * @tc.size :
      */
-    it('space1Test_0010', 0, async (done: Function) => {
+    it('space1Test_0010',  Level.LEVEL0, async (done: Function) => {
       console.info('space1Test_0010 START');
       let strJson = getInspectorByKey('flex_main_number_1');
       let obj: ESObject = JSON.parse(strJson);
@@ -68,7 +68,7 @@ export default function SpaceMainNumberJsunit() {
      * @tc.type :
      * @tc.size :
      */
-    it('space1Test_0020', 0, async (done: Function) => {
+    it('space1Test_0020',  Level.LEVEL0, async (done: Function) => {
       console.info('space1Test_0020 START');
       let strJson = getInspectorByKey('flex_main_number_2');
       let obj: ESObject = JSON.parse(strJson);
@@ -86,7 +86,7 @@ export default function SpaceMainNumberJsunit() {
      * @tc.type :
      * @tc.size :
      */
-    it('space1Test_0030', 0, async (done: Function) => {
+    it('space1Test_0030',  Level.LEVEL0, async (done: Function) => {
       console.info('space1Test_0030 START');
       let strJson = getInspectorByKey('flex_main_number_3');
       let obj: ESObject = JSON.parse(strJson);
@@ -104,7 +104,7 @@ export default function SpaceMainNumberJsunit() {
      * @tc.type :
      * @tc.size :
      */
-    it('space1Test_0040', 0, async (done: Function) => {
+    it('space1Test_0040',  Level.LEVEL0, async (done: Function) => {
       console.info('space1Test_0040 START');
       let strJson = getInspectorByKey('flex_main_number_4');
       let obj: ESObject = JSON.parse(strJson);
@@ -122,7 +122,7 @@ export default function SpaceMainNumberJsunit() {
      * @tc.type :
      * @tc.size :
      */
-    it('space1Test_0050', 0, async (done: Function) => {
+    it('space1Test_0050',  Level.LEVEL0, async (done: Function) => {
       console.info('space1Test_0050 START');
       let strJson = getInspectorByKey('flex_main_number_5');
       let obj: ESObject = JSON.parse(strJson);

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
@@ -51,7 +51,7 @@ export default function Row_layoutWeight_Default() {
      * @tc.name testLayoutWeight
      * @tc.desc row1 set layoutWeight(undefined),row1, row2, and row3 are displayed according to their own height
      */
-    it('SUB_ACE_Row_layoutWeight_Default_TEST_0100', 0, async (done: Function) => {
+    it('SUB_ACE_Row_layoutWeight_Default_TEST_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_Row_layoutWeight_Default_TEST_0100] START');
       globalThis.value.message.notify({
         name: 'addLayoutWeight1', value: undefined
@@ -104,7 +104,7 @@ export default function Row_layoutWeight_Default() {
      * @tc.name testLayoutWeight
      * @tc.desc row1 set layoutWeight(null),row1, row2, and row3 are displayed according to their own height
      */
-    it('SUB_ACE_Row_layoutWeight_Default_TEST_0200', 0, async (done: Function) => {
+    it('SUB_ACE_Row_layoutWeight_Default_TEST_0200',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_Row_layoutWeight_Default_TEST_0200] START');
       globalThis.value.message.notify({
         name: 'addLayoutWeight1', value: null
@@ -157,7 +157,7 @@ export default function Row_layoutWeight_Default() {
      * @tc.name testLayoutWeight
      * @tc.desc row1 set layoutWeight(-10),row1, row2, and row3 are displayed according to their own height
      */
-    it('SUB_ACE_Row_layoutWeight_Default_TEST_0300', 0, async (done: Function) => {
+    it('SUB_ACE_Row_layoutWeight_Default_TEST_0300',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_Row_layoutWeight_Default_TEST_0300] START');
       globalThis.value.message.notify({
         name: 'addLayoutWeight1', value: -10
@@ -210,7 +210,7 @@ export default function Row_layoutWeight_Default() {
      * @tc.name testLayoutWeight
      * @tc.desc row1 set layoutWeight(-10),row1, row2, and row3 are displayed according to their own height
      */
-    it('SUB_ACE_Row_layoutWeight_Default_TEST_0400', 0, async (done: Function) => {
+    it('SUB_ACE_Row_layoutWeight_Default_TEST_0400',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_Row_layoutWeight_Default_TEST_0400] START');
       globalThis.value.message.notify({
         name: 'addLayoutWeight2', value: 'aaa'

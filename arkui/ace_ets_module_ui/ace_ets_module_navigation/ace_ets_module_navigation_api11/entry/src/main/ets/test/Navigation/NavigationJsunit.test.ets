@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
@@ -43,7 +43,7 @@ export default function NavigationJsunit() {
       done();
     });
 
-    it('NavigationJsunit_0100', 0, async (done: Function) => {
+    it('NavigationJsunit_0100',  Level.LEVEL0, async (done: Function) => {
       // Get the information of the Navigation component
       console.info('[NavigationJsunit_0100] START');
       await CommonFunc.sleep(1000);
@@ -74,7 +74,7 @@ export default function NavigationJsunit() {
       done();
     });
 
-    it('NavigationJsunit_0300', 0, async (done: Function) => {
+    it('NavigationJsunit_0300',  Level.LEVEL0, async (done: Function) => {
       // Verify onTitleModeChange event of Navigation component
       console.info('[NavigationJsunit_0300] START');
       await CommonFunc.sleep(1000);
@@ -86,7 +86,7 @@ export default function NavigationJsunit() {
       done();
     });
 
-    it('NavigationJsunit_0400', 0, async (done: Function) => {
+    it('NavigationJsunit_0400',  Level.LEVEL0, async (done: Function) => {
       // Verify onNavBarStateChange event of Navigation component
       console.info('[NavigationJsunit_0400] START');
       await CommonFunc.sleep(1000);
@@ -100,7 +100,7 @@ export default function NavigationJsunit() {
       done();
     });
 
-    it('NavigationJsunit_0600', 0, async (done: Function) => {
+    it('NavigationJsunit_0600',  Level.LEVEL0, async (done: Function) => {
       // Modify atrributes of Navigation component 
       console.info('[NavigationJsunit_0600] START');
       globalThis.value.message.notify({name:'hideToolBar',value:true})
@@ -140,7 +140,7 @@ export default function NavigationJsunit() {
       done();
     });
 
-    it('NavigationJsunit_0700', 0, async (done: Function) => {
+    it('NavigationJsunit_0700',  Level.LEVEL0, async (done: Function) => {
       // Modify the titleMode of Navigation component 
       console.info('[NavigationJsunit_0700] START');
       globalThis.value.message.notify({name:'titleMode',value:NavigationTitleMode.Mini})
@@ -160,7 +160,7 @@ export default function NavigationJsunit() {
       done();
     });
 
-    it('NavigationJsunit_0800', 0, async (done: Function) => {
+    it('NavigationJsunit_0800',  Level.LEVEL0, async (done: Function) => {
       // Modify the mode of Navigation component 
       console.info('[NavigationJsunit_0800] START');
       globalThis.value.message.notify({name:'mode',value:NavigationMode.Auto})
@@ -180,7 +180,7 @@ export default function NavigationJsunit() {
       done();
     });
 
-    it('NavigationJsunit_0900', 0, async (done: Function) => {
+    it('NavigationJsunit_0900',  Level.LEVEL0, async (done: Function) => {
       // Illegal modification of properties of Navigation component
       console.info('[NavigationJsunit_0900] START');
       globalThis.value.message.notify({name:'titleMode',value:123})

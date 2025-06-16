@@ -14,7 +14,7 @@
  */
 
 
-import { afterEach, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterEach, beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 
 function sleep(time: number) {
@@ -61,7 +61,7 @@ export default function rowSplitJsunit() {
      * @tc.name testRowSplitGetInspectorByKey010
      * @tc.desc aceEtsTest
      */
-    it('testRowSplitGetInspectorByKey010', 0, async (done: Function) => {
+    it('testRowSplitGetInspectorByKey010',  Level.LEVEL0, async (done: Function) => {
       console.info('testGetInspectorByKey START');
       let strJson = getInspectorByKey('rowSplit');
       let obj: ESObject = JSON.parse(strJson);
@@ -79,7 +79,7 @@ export default function rowSplitJsunit() {
      * @tc.name testRowSplitGetInspectorByKey020
      * @tc.desc aceEtsTest
      */
-    it('testRowSplitGetInspectorByKey020', 0, async (done: Function) => {
+    it('testRowSplitGetInspectorByKey020',  Level.LEVEL0, async (done: Function) => {
       let strJson = getInspectorByKey('rowSplit1');
       let obj: ESObject = JSON.parse(strJson);
       console.info("cd rowSplit1 component obj is: " + JSON.stringify(obj));

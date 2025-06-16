@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterEach, beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 
 function sleep(time: number) {
@@ -61,7 +61,7 @@ export default function columnJsunit() {
      * @tc.name testColumn010
      * @tc.desc aceEtsTest
      */
-    it('testColumn010', 0, async (done: Function) => {
+    it('testColumn010',  Level.LEVEL0, async (done: Function) => {
       console.info('new Column0 START');
       let strJson = getInspectorByKey('column');
       let obj: ESObject = JSON.parse(strJson);
@@ -79,7 +79,7 @@ export default function columnJsunit() {
      * @tc.name testColumn020
      * @tc.desc aceEtsTest
      */
-    it('testColumn020', 0, async (done: Function) => {
+    it('testColumn020',  Level.LEVEL0, async (done: Function) => {
       console.info('new Column1 START');
       let strJson = getInspectorByKey('column1');
       let obj: ESObject = JSON.parse(strJson);
@@ -95,7 +95,7 @@ export default function columnJsunit() {
      * @tc.name testColumn030
      * @tc.desc aceEtsTest
      */
-    it('testColumn030', 0, async (done: Function) => {
+    it('testColumn030',  Level.LEVEL0, async (done: Function) => {
       console.info('new Column2 START');
       let strJson = getInspectorByKey('column2');
       let obj: ESObject = JSON.parse(strJson);

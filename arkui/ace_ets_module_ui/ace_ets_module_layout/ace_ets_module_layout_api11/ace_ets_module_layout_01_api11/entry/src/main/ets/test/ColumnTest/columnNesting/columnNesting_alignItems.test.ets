@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from '../../../MainAbility/common/Common';
@@ -52,7 +52,7 @@ export default function columnNesting_alignItems() {
      * @tc.name testColumnSpace
      * @tc.desc column_1 and column_01, column_02 settings justifyContent do not affect each other
      */
-    it('SUB_ACE_columnNesting_alignItems_TEST_0100', 0, async () => {
+    it('SUB_ACE_columnNesting_alignItems_TEST_0100',  Level.LEVEL0, async () => {
       console.info('[SUB_ACE_columnNesting_alignItems_TEST_0100] START');
       await CommonFunc.sleep(4000);
       console.log('get Initial value')

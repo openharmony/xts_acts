@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
@@ -56,7 +56,7 @@ export default function AlignContent_End_FlexP_Fixed_Visibility() {
      *               property of the subcomponent to Hidden.
      */
 
-    it('testAlignContentEndFlexfixedVisibilityHidden', 0, async () => {
+    it('testAlignContentEndFlexfixedVisibilityHidden',  Level.LEVEL0, async () => {
       console.info('testAlignContentEndFlexfixedVisibilityHidden START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'visibility', value: Visibility.Hidden
@@ -123,7 +123,7 @@ export default function AlignContent_End_FlexP_Fixed_Visibility() {
      *               property of the subcomponent to None.
      */
 
-    it('testAlignContentEndFlexfixedVisibilityNone', 0, async () => {
+    it('testAlignContentEndFlexfixedVisibilityNone',  Level.LEVEL0, async () => {
       console.info('testAlignContentEndFlexfixedVisibilityNone START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'visibility', value: Visibility.None

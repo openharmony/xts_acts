@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from "../../../MainAbility/common/Common";
@@ -49,7 +49,7 @@ export default function ColumnSetMargin_SubChangeMar() {
      * @tc.name      testColumnParentMarginSubMargin
      * @tc.desc      Parent component and subcomponent both set margin.
      */
-    it('testColumnParentMarginSubMargin', 0, async () => {
+    it('testColumnParentMarginSubMargin',  Level.LEVEL0, async () => {
       console.info('new testColumnParentMarginSubMargin START');
       await CommonFunc.sleep(2000);
       let columnSetMar_1: RectValue = CommonFunc.getComponentRect('columnSetMar_1');

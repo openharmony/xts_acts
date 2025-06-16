@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import {
@@ -70,7 +70,7 @@ export default function ListItem_Delete_Start_Default() {
     //  * @tc.name      testListItem
     //  * @tc.desc      Do not set actionAreaDistance and slide 56
     //  */
-    // it('SUB_ACE_ListItem_Delete_Start_Default_0100', 0, async  (done: Function)=> {
+    // it('SUB_ACE_ListItem_Delete_Start_Default_0100',  Level.LEVEL0, async  (done: Function)=> {
     //   console.info('[SUB_ACE_ListItem_Delete_Start_Default_0100] START');
     //   await CommonFunc.sleep(1000);
     //   let ListItem_00:RectValue = CommonFunc.getComponentRect('ListItem_Delete_Start_Default_ListItem_00');
@@ -105,7 +105,7 @@ export default function ListItem_Delete_Start_Default() {
      * @tc.name testListItem
      * @tc.desc Do not set actionAreaDistance and slide 70
      */
-    it('SUB_ACE_ListItem_Delete_Start_Default_0200', 0, async (done: Function) => {
+    it('SUB_ACE_ListItem_Delete_Start_Default_0200',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_ListItem_Delete_Start_Default_0200] START');
       await CommonFunc.sleep(1000);
       let ListItem_00: RectValue = CommonFunc.getComponentRect('ListItem_Delete_Start_Default_ListItem_00');
@@ -145,7 +145,7 @@ export default function ListItem_Delete_Start_Default() {
      * @tc.name testListItem
      * @tc.desc Do not set actionAreaDistance and slide 40
      */
-    it('SUB_ACE_ListItem_Delete_Start_Default_0300', 0, async (done: Function) => {
+    it('SUB_ACE_ListItem_Delete_Start_Default_0300',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_ListItem_Delete_Start_Default_0300] START');
       await CommonFunc.sleep(1000);
 

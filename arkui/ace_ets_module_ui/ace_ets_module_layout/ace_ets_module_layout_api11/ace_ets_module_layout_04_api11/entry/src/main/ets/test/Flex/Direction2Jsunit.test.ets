@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from '../Utils';
 import events_emitter from '@ohos.events.emitter';
@@ -44,7 +44,7 @@ export default function direction2Jsunit(){
       console.info("direction after each called");
     });
 
-    it('direction2Test_0200', 0, async (done: Function) => {
+    it('direction2Test_0200',  Level.LEVEL0, async (done: Function) => {
       console.info('direction2Test_0200 START');
       try {
         let eventData: events_emitter.EventData = {
@@ -70,7 +70,7 @@ export default function direction2Jsunit(){
       done();
     });
 
-   it('direction2Test_0100', 0, async (done: Function) => {
+   it('direction2Test_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('direction2Test_0100 START');
       let strJson = getInspectorByKey('direction_2');
       console.info("direction2Test_0100 component strJson:" + strJson);
@@ -80,7 +80,7 @@ export default function direction2Jsunit(){
       done();
     });
 
-    it('direction2Test_0300', 0, async (done: Function) => {
+    it('direction2Test_0300',  Level.LEVEL0, async (done: Function) => {
       console.info('direction2Test_0300 START');
       try {
         let eventData: events_emitter.EventData = {

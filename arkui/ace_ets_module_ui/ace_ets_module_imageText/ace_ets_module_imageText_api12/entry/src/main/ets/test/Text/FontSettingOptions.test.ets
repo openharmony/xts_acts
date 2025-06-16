@@ -14,7 +14,7 @@
  */
 
 import CommonFunc from '../../MainAbility/common/Common';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
@@ -50,7 +50,7 @@ export default function FontSettingOptions() {
      * @tc.type :
      * @tc.size :
      */
-    it('FontSettingOptions_0010', 0, async (done: Function) => {
+    it('FontSettingOptions_0010',  Level.LEVEL0, async (done: Function) => {
       console.info('FontSettingOptions_0010 START');
       let FontSettingOptions_1 = getInspectorByKey('FontTestText_01');
       console.info('--------------'+JSON.parse(FontSettingOptions_1).$attrs.font)
@@ -67,7 +67,7 @@ export default function FontSettingOptions() {
      * @tc.type :
      * @tc.size :
      */
-    it('FontSettingOptions_0020', 0, async (done: Function) => {
+    it('FontSettingOptions_0020',  Level.LEVEL0, async (done: Function) => {
       console.info('FontSettingOptions_0020 START');
       let FontSettingOptions_2 = getInspectorByKey('FontTestText_02');
       console.info('--------------'+JSON.parse(FontSettingOptions_2).$attrs.fontWeight)

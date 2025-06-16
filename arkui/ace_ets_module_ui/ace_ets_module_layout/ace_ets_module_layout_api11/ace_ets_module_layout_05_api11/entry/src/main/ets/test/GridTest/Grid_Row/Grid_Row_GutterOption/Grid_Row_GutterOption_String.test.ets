@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 
@@ -51,7 +51,7 @@ export default function Grid_Row_GutterOption_String() {
      * @tc.name testGutterLengthString
      * @tc.desc Set the GridRowSizeOption of GridRow to '80px'
      */
-    it('SUB_ACE_GridRowGutterOption_STRING_0100', 0, async (done: Function) => {
+    it('SUB_ACE_GridRowGutterOption_STRING_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('SUB_ACE_GridRowGutterOption_STRING_0100 START');
       globalThis.value.message.notify({
         name: 'length', value: '80px'
@@ -74,7 +74,7 @@ export default function Grid_Row_GutterOption_String() {
      * @tc.name testGutterLengthString
      * @tc.desc Set the GridRowSizeOption of GridRow to '30%'
      */
-    it('SUB_ACE_GridRowGutterOption_STRING_0200', 0, async (done: Function) => {
+    it('SUB_ACE_GridRowGutterOption_STRING_0200',  Level.LEVEL0, async (done: Function) => {
       console.info('SUB_ACE_GridRowGutterOption_STRING_0200 START');
       globalThis.value.message.notify({
         name: 'length', value: '30%'

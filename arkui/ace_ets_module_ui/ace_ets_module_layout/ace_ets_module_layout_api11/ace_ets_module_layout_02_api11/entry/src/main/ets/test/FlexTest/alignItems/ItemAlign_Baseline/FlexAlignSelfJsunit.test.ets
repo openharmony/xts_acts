@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
 
@@ -50,7 +50,7 @@ export default function flexAlignSelf_BaselineJsunit() {
      * @tc.name testFlexItemAlignBaselineSetAlignSelf
      * @tc.desc The first subcomponent set ItemAlign.End attribute.
      */
-    it('testFlexItemAlignBaselineSetAlignSelf', 0, async () => {
+    it('testFlexItemAlignBaselineSetAlignSelf',  Level.LEVEL0, async () => {
       console.info('new testFlexItemAlignBaselineSetAlignSelf START');
       let strJson1 = getInspectorByKey('ItemAlign_Baseline_flexAlignSelf');
 

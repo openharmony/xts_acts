@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
@@ -51,7 +51,7 @@ export default function flexVisibility_AutoJsunit() {
      * @tc.name testFlexItemAlignAutoFlexVisibilityNone
      * @tc.desc The first subcomponent set Visibility.None attribute.
      */
-    it('testFlexItemAlignAutoFlexVisibilityNone', 0, async () => {
+    it('testFlexItemAlignAutoFlexVisibilityNone',  Level.LEVEL0, async () => {
       console.info('new testFlexItemAlignAutoFlexVisibilityNone START');
       try {
         GlobalContext.getContext().getObject<number>('value').message.notify({
@@ -97,7 +97,7 @@ export default function flexVisibility_AutoJsunit() {
      * @tc.name testFlexItemAlignAutoFlexVisibilityHidden
      * @tc.desc The first subcomponent set Visibility.Hidden attribute.
      */
-    it('testFlexItemAlignAutoFlexVisibilityHidden', 0, async () => {
+    it('testFlexItemAlignAutoFlexVisibilityHidden',  Level.LEVEL0, async () => {
       console.info('new testFlexItemAlignAutoFlexVisibilityHidden START');
       try {
         GlobalContext.getContext().getObject<number>('value').message.notify({

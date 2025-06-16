@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import {
@@ -68,7 +68,7 @@ export default function List_divider_string() {
      * @tc.name testListItem
      * @tc.desc Set strokeWidth to 'abc'
      */
-    it('SUB_ACE_List_divider_string_0100', 0, async (done: Function) => {
+    it('SUB_ACE_List_divider_string_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_List_divider_string_0100] START');
       globalThis.value.message.notify({
         name: 'strokeWidth', value: 'abc'
@@ -92,7 +92,7 @@ export default function List_divider_string() {
      * @tc.name testListItem
      * @tc.desc Set strokeWidth to '10%'
      */
-    it('SUB_ACE_List_divider_string_0200', 0, async (done: Function) => {
+    it('SUB_ACE_List_divider_string_0200',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_List_divider_string_0200] START');
       globalThis.value.message.notify({
         name: 'strokeWidth', value: '10%'
@@ -116,7 +116,7 @@ export default function List_divider_string() {
      * @tc.name testListItem
      * @tc.desc Set strokeWidth to '10px'
      */
-    it('SUB_ACE_List_divider_string_0300', 0, async (done: Function) => {
+    it('SUB_ACE_List_divider_string_0300',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_List_divider_string_0300] START');
       globalThis.value.message.notify({
         name: 'strokeWidth', value: '10px'
@@ -139,7 +139,7 @@ export default function List_divider_string() {
      * @tc.name testListItem
      * @tc.desc Set list to 2,set strokeWidth to '10px'
      */
-    it('SUB_ACE_List_divider_string_0400', 0, async (done: Function) => {
+    it('SUB_ACE_List_divider_string_0400',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_List_divider_string_0400] START');
       globalThis.value.message.notify({
         name: 'strokeWidth', value: '10px'
@@ -165,7 +165,7 @@ export default function List_divider_string() {
      * @tc.name testListItem
      * @tc.desc Set strokeWidth to '10abc'
      */
-    it('SUB_ACE_List_divider_string_0500', 0, async (done: Function) => {
+    it('SUB_ACE_List_divider_string_0500',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_List_divider_string_0500] START');
       globalThis.value.message.notify({
         name: 'strokeWidth', value: '10abc'

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import events_emitter from '@ohos.events.emitter';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
@@ -58,7 +58,7 @@ export default function flex_NoWrap_PaddingTest() {
      * @tc.desc The size of the parent component in the main axis direction is not enough for
      *               the layout of the child components when the parent component set padding
      */
-    it('testWrapNoWrapFlexPaddingOverflow', 0, async () => {
+    it('testWrapNoWrapFlexPaddingOverflow',  Level.LEVEL0, async () => {
       console.info('[testWrapNoWrapFlexPaddingOverflow] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'flexPadding', value: 60
@@ -102,7 +102,7 @@ export default function flex_NoWrap_PaddingTest() {
      * @tc.desc The size of the parent component in the main axis direction meets
      *               the layout of the child components when the parent component set padding
      */
-    it('testWrapNoWrapFlexPaddingMeet', 0, async () => {
+    it('testWrapNoWrapFlexPaddingMeet',  Level.LEVEL0, async () => {
       console.info('[testWrapNoWrapFlexPaddingMeet] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'flexPadding', value: 10
@@ -147,7 +147,7 @@ export default function flex_NoWrap_PaddingTest() {
      * @tc.desc The size of the parent component in the main axis direction meets
      *               the layout of the child components when the parent component set margin
      */
-    it('testWrapNoWrapFlexMargin', 0, async () => {
+    it('testWrapNoWrapFlexMargin',  Level.LEVEL0, async () => {
       console.info('[testWrapNoWrapFlexMargin] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'flexMargin', value: 10
@@ -199,7 +199,7 @@ export default function flex_NoWrap_PaddingTest() {
      * @tc.desc The size of the parent component in the main axis direction
      *               meets the layout of the child components when the parent component set margin and padding
      */
-    it('testWrapNoWrapFlexMarPad', 0, async () => {
+    it('testWrapNoWrapFlexMarPad',  Level.LEVEL0, async () => {
       console.info('[testWrapNoWrapFlexMarPad] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'flexMargin', value: 10

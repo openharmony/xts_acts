@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
@@ -50,7 +50,7 @@ export default function Grid_Col_Offset_Number() {
      * @tc.name testGridColOffset
      * @tc.desc GridCol set offset to -2
      */
-    it('SUB_ACE_Grid_Col_Offset_Number_TEST_0100', 0, async (done: Function) => {
+    it('SUB_ACE_Grid_Col_Offset_Number_TEST_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_Grid_Col_Offset_Number_TEST_0100] START');
       globalThis.value.message.notify({
         name: 'addOffset', value: -2
@@ -105,7 +105,7 @@ export default function Grid_Col_Offset_Number() {
      * @tc.name testGridColOffset
      * @tc.desc GridCol set offset to 0
      */
-    it('SUB_ACE_Grid_Col_Offset_Number_TEST_0200', 0, async (done: Function) => {
+    it('SUB_ACE_Grid_Col_Offset_Number_TEST_0200',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_Grid_Col_Offset_Number_TEST_0200] START');
       globalThis.value.message.notify({
         name: 'addOffset', value: 0
@@ -158,7 +158,7 @@ export default function Grid_Col_Offset_Number() {
      * @tc.name testGridColOffset
      * @tc.desc GridCol set offset to 1
      */
-    it('SUB_ACE_Grid_Col_Offset_Number_TEST_0300', 0, async (done: Function) => {
+    it('SUB_ACE_Grid_Col_Offset_Number_TEST_0300',  Level.LEVEL0, async (done: Function) => {
       console.info('[SUB_ACE_Grid_Col_Offset_Number_TEST_0300] START');
       globalThis.value.message.notify({
         name: 'addOffset', value: 1

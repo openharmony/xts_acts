@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router'
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
@@ -48,7 +48,7 @@ export default function NavigationParamTest() {
      *tc.name   Set Navigation.title with Resource
      *tc.desc   Set Navigation.title with Resource
      */
-    it('ArkUI_Navigation_0100', 0, async (done: Function) => {
+    it('ArkUI_Navigation_0100',  Level.LEVEL0, async (done: Function) => {
       let CASE: string = 'ArkUI_Navigation_0100'
       console.info(`${SUITE} ${CASE} START`)
       let strJson: string = getInspectorByKey('NavigationParam_Navigation1')
@@ -62,7 +62,7 @@ export default function NavigationParamTest() {
      *tc.name   Set Navigation.title with string
      *tc.desc   Set Navigation.title with string
      */
-    it('ArkUI_Navigation_0200', 0, async (done: Function) => {
+    it('ArkUI_Navigation_0200',  Level.LEVEL0, async (done: Function) => {
       let CASE: string = 'ArkUI_Navigation_0200'
       console.info(`${SUITE} ${CASE} START`)
       let strJson: string = getInspectorByKey('NavigationParam_Navigation2')

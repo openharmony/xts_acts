@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from '../../../MainAbility/common/Common';
@@ -51,7 +51,7 @@ export default function flexGrow_Default() {
      * @tc.name testFlexGrow
      * @tc.desc colum1、colum2、colum3 set flexGrow(null)
      */
-    it('SUB_ACE_flexGrow_Default_TEST_0100', 0, async () => {
+    it('SUB_ACE_flexGrow_Default_TEST_0100',  Level.LEVEL0, async () => {
       console.info('[SUB_ACE_flexGrow_Default_TEST_0100] START');
       GlobalContext.getContext().getObject<null>('value').message.notify({
         name: 'addflexGrow', value: null
@@ -103,7 +103,7 @@ export default function flexGrow_Default() {
      * @tc.name testFlexGrow
      * @tc.desc colum1、colum2、colum3 set flexGrow(undefined)
      */
-    it('SUB_ACE_flexGrow_Default_TEST_0200', 0, async () => {
+    it('SUB_ACE_flexGrow_Default_TEST_0200',  Level.LEVEL0, async () => {
       console.info('[SUB_ACE_flexGrow_Default_TEST_0200] START');
       GlobalContext.getContext().getObject<undefined>('value').message.notify({
         name: 'addflexGrow', value: undefined
@@ -155,7 +155,7 @@ export default function flexGrow_Default() {
      * @tc.name testFlexGrow
      * @tc.desc colum1、colum2、colum3 set flexGrow(-5)
      */
-    it('SUB_ACE_flexGrow_Default_TEST_0300', 0, async () => {
+    it('SUB_ACE_flexGrow_Default_TEST_0300',  Level.LEVEL0, async () => {
       console.info('[SUB_ACE_flexGrow_Default_TEST_0300] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'addflexGrow', value: -5
@@ -207,7 +207,7 @@ export default function flexGrow_Default() {
      * @tc.name testFlexGrow
      * @tc.desc colum1、colum2 and colum3 do not set flexGrow
      */
-    it('SUB_ACE_flexGrow_Default_TEST_0400', 0, async () => {
+    it('SUB_ACE_flexGrow_Default_TEST_0400',  Level.LEVEL0, async () => {
       console.info('[SUB_ACE_flexGrow_Default_TEST_0400] START');
       await CommonFunc.sleep(3000);
       console.log('get Initial value')

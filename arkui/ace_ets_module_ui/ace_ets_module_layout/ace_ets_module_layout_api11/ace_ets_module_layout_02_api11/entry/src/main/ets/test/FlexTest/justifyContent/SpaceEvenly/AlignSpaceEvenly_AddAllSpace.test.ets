@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
@@ -51,7 +51,7 @@ export default function AlignSpaceEvenly_AddAllSpace() {
      * @tc.name testFlexAlignSpaceEvenlyFlexSpaceOverflow
      * @tc.desc the space of parent component set to 30
      */
-    it('testFlexAlignSpaceEvenlyFlexSpaceOverflow', 0, async () => {
+    it('testFlexAlignSpaceEvenlyFlexSpaceOverflow',  Level.LEVEL0, async () => {
       console.info('[testFlexAlignSpaceEvenlyFlexSpaceOverflow] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'DadAllSpace', value: 30
@@ -105,7 +105,7 @@ export default function AlignSpaceEvenly_AddAllSpace() {
      * @tc.name testFlexAlignSpaceEvenlyFlexSpaceMeet
      * @tc.desc the space of parent component set to 20
      */
-    it('testFlexAlignSpaceEvenlyFlexSpaceMeet', 0, async () => {
+    it('testFlexAlignSpaceEvenlyFlexSpaceMeet',  Level.LEVEL0, async () => {
       console.info('[testFlexAlignSpaceEvenlyFlexSpaceMeet] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'DadAllSpace', value: 20

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
 import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
@@ -51,7 +51,7 @@ export default function flexBase_EndJsunit() {
      * @tc.name testFlexItemAlignEnd
      * @tc.desc The subcomponent is inside the parent component.
      */
-    it('testFlexItemAlignEnd', 0, async () => {
+    it('testFlexItemAlignEnd',  Level.LEVEL0, async () => {
       console.info('new testFlexItemAlignEnd START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 200
@@ -91,7 +91,7 @@ export default function flexBase_EndJsunit() {
      * @tc.name testFlexItemAlignEndExceed
      * @tc.desc The subcomponent exceeds the parent component.
      */
-    it('testFlexItemAlignEndExceed', 0, async () => {
+    it('testFlexItemAlignEndExceed',  Level.LEVEL0, async () => {
       console.info('new testFlexItemAlignEndExceed START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 140

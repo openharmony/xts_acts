@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium"
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../Utils';
@@ -46,7 +46,7 @@ export default function sharedTransitionJsunit() {
       console.info("sharedTransition after each called");
     });
 
-    it('sharedTransitionTest_0100', 0, async (done: Function) => {
+    it('sharedTransitionTest_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('sharedTransitionTest_0100 START');
       let strJson: string = getInspectorByKey('Navigator');
 
@@ -56,7 +56,7 @@ export default function sharedTransitionJsunit() {
       done();
     });
 
-    it('sharedTransitionTest_0200', 0, async (done: Function) => {
+    it('sharedTransitionTest_0200',  Level.LEVEL0, async (done: Function) => {
       console.info('sharedTransitionTest_0200 START');
       let strJson: string = getInspectorByKey('Navigator');
 
@@ -67,7 +67,7 @@ export default function sharedTransitionJsunit() {
       done();
     });
 
-    it('sharedTransitionTest_0300', 0, async (done: Function) => {
+    it('sharedTransitionTest_0300',  Level.LEVEL0, async (done: Function) => {
       console.info('sharedTransitionTest_0300 START');
       let strJson: string = getInspectorByKey('Navigator');
 
@@ -78,7 +78,7 @@ export default function sharedTransitionJsunit() {
       done();
     });
 
-    it('sharedTransitionTest_0400', 0, async (done: Function) => {
+    it('sharedTransitionTest_0400',  Level.LEVEL0, async (done: Function) => {
       console.info('sharedTransitionTest_0400 START');
       try {
         let eventData: events_emitter.EventData = {

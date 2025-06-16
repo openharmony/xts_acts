@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
@@ -54,7 +54,7 @@ export default function flexWrapReverse_fixedParentChildVisibility() {
      * @tc.desc The layout space of the parent component is fixed, and the visibility none is set for the child
      *               component, and the layout range of remaining components exceeds the container space
      */
-    it('testWrapReverseParentfixedVisibilityNoneAndOtherOutRange', 0, async () => {
+    it('testWrapReverseParentfixedVisibilityNoneAndOtherOutRange',  Level.LEVEL0, async () => {
       console.info('new testWrapReverseParentfixedVisibilityNoneAndOtherOutRange START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'test1Width', value: 150
@@ -98,7 +98,7 @@ export default function flexWrapReverse_fixedParentChildVisibility() {
      * @tc.desc The layout space of the parent component is fixed, and the visibility none is set for the child
      *               component, and the remaining component layout range does not exceed the container space
      */
-    it('testWrapReverseParentfixedVisibilityNoneAndOtherInRange', 0, async () => {
+    it('testWrapReverseParentfixedVisibilityNoneAndOtherInRange',  Level.LEVEL0, async () => {
       console.info('new testWrapReverseParentfixedVisibilityNoneAndOtherInRange START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'test1Width', value: 200
@@ -141,7 +141,7 @@ export default function flexWrapReverse_fixedParentChildVisibility() {
      * @tc.name testWrapReverseParentfixedVisibilityHiddenAndOtherInRange
      * @tc.desc The layout space of the parent component is fixed, and visibility hidden is set for child component
      */
-    it('testWrapReverseParentfixedVisibilityHiddenAndOtherInRange', 0, async () => {
+    it('testWrapReverseParentfixedVisibilityHiddenAndOtherInRange',  Level.LEVEL0, async () => {
       console.info('new testWrapReverseParentfixedVisibilityHiddenAndOtherInRange START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'test1Width', value: 200

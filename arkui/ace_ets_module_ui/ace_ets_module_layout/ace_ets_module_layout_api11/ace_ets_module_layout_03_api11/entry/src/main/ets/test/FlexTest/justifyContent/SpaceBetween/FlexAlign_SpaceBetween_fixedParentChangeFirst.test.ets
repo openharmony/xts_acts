@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
@@ -53,7 +53,7 @@ export default function flexAlign_SpaceBetween_fixedParentChangeFirst() {
      * @tc.name testAlignSpaceBetweenRowNoWrapChangeFirstLayoutWeight122
      * @tc.desc Parent component fixed, child component binding layoutWeight first1 second2 third2 properties
      */
-    it('testAlignSpaceBetweenRowNoWrapChangeFirstLayoutWeight122', 0, async () => {
+    it('testAlignSpaceBetweenRowNoWrapChangeFirstLayoutWeight122',  Level.LEVEL0, async () => {
       console.info('new testAlignSpaceBetweenRowNoWrapChangeFirstLayoutWeight122 START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'testFirstlayoutWeight', value: 1
@@ -105,7 +105,7 @@ export default function flexAlign_SpaceBetween_fixedParentChangeFirst() {
      * @tc.name testAlignSpaceBetweenRowNoWrapChangeFirstLayoutWeight120
      * @tc.desc Parent component fixed, child component binding layoutWeight first1 second2 third0 properties
      */
-    it('testAlignSpaceBetweenRowNoWrapChangeFirstLayoutWeight120', 0, async () => {
+    it('testAlignSpaceBetweenRowNoWrapChangeFirstLayoutWeight120',  Level.LEVEL0, async () => {
       console.info('new testAlignSpaceBetweenRowNoWrapChangeFirstLayoutWeight120 START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'testFirstlayoutWeight', value: 1

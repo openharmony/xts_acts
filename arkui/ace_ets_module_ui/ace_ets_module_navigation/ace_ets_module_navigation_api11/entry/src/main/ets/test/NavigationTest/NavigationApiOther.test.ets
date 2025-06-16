@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from '../../MainAbility/common/Utils'
 
 export default function NavigationApiOther() {
@@ -52,7 +52,7 @@ export default function NavigationApiOther() {
      * @tc.type
      * @tc.size
      */
-    it('NavigationApi_001', 0, async (done: Function) => {
+    it('NavigationApi_001',  Level.LEVEL0, async (done: Function) => {
       console.info('[NavigationApi_001] START');
       await Utils.sleep(2000);
 

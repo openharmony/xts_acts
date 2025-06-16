@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
@@ -52,7 +52,7 @@ export default function AlignCenter_AddPadding() {
      * @tc.desc After subtracting the padding from the parent component layout space, the interface
      * display that does not meet the spindle layout of the child component
      */
-    it('testFlexAlignCenterFlexPadOverflow', 0, async () => {
+    it('testFlexAlignCenterFlexPadOverflow',  Level.LEVEL0, async () => {
       console.info('[testFlexAlignCenterFlexPadOverflow] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'DadPadding', value: 30
@@ -98,7 +98,7 @@ export default function AlignCenter_AddPadding() {
      * @tc.desc After subtracting the padding from the parent component layout space, the interface that
      * satisfies the spindle layout of the child component is displayed
      */
-    it('testFlexAlignCenterFlexPadMeet', 0, async () => {
+    it('testFlexAlignCenterFlexPadMeet',  Level.LEVEL0, async () => {
       console.info('[testFlexAlignCenterFlexPadMeet] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'DadPadding', value: 20

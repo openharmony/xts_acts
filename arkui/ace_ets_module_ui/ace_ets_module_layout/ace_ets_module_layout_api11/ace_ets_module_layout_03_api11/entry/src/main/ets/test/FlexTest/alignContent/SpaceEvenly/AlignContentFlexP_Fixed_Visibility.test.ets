@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext'
@@ -56,7 +56,7 @@ export default function AlignContentFlexP_Fixed_Visibility() {
      * @tc.desc Set the visibility property of the subcomponents of flex to Visibility.Hidden.
      */
 
-    it('testAlignContentSpaceEvenlyFlexfixedVisibilityHidden', 0, async () => {
+    it('testAlignContentSpaceEvenlyFlexfixedVisibilityHidden',  Level.LEVEL0, async () => {
       console.info('testAlignContentSpaceEvenlyFlexfixedVisibilityHidden START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'visibility', value: Visibility.Hidden
@@ -117,7 +117,7 @@ export default function AlignContentFlexP_Fixed_Visibility() {
      * @tc.desc Set the visibility property of the subcomponents of flex to Visibility.None.
      */
 
-    it('testAlignContentSpaceEvenlyFlexfixedVisibilityNone', 0, async () => {
+    it('testAlignContentSpaceEvenlyFlexfixedVisibilityNone',  Level.LEVEL0, async () => {
       console.info('testAlignContentSpaceEvenlyFlexfixedVisibilityNone START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'visibility', value: Visibility.None

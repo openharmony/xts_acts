@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
@@ -51,7 +51,7 @@ export default function AlignEnd_AddVisibility() {
      * @tc.name testFlexAlignEndVisibilityNone
      * @tc.desc The subcomponent sets the visibility. None, the child components are hidden in the interface display
      */
-    it('testFlexAlignEndVisibilityNone', 0, async () => {
+    it('testFlexAlignEndVisibilityNone',  Level.LEVEL0, async () => {
       console.info('[testFlexAlignEndVisibilityNone] START');
       try {
         GlobalContext.getContext().getObject<number>('value').message.notify({
@@ -96,7 +96,7 @@ export default function AlignEnd_AddVisibility() {
      * @tc.desc When the subcomponent sets visibility.hidden, the interface of the subcomponent does not occupy the
      * position
      */
-    it('testFlexAlignEndVisibilityHidden', 0, async () => {
+    it('testFlexAlignEndVisibilityHidden',  Level.LEVEL0, async () => {
       console.info('[testFlexAlignEndVisibilityHidden] START');
       try {
         GlobalContext.getContext().getObject<number>('value').message.notify({
@@ -154,7 +154,7 @@ export default function AlignEnd_AddVisibility() {
      * @tc.desc The subcomponent sets the visibility. Visible, the subcomponent does not occupy a position in the
      * interface display
      */
-    it('testFlexAlignEndVisibilityVisible', 0, async () => {
+    it('testFlexAlignEndVisibilityVisible',  Level.LEVEL0, async () => {
       console.info('[testFlexAlignEndVisibilityVisible] START');
       try {
         GlobalContext.getContext().getObject<number>('value').message.notify({

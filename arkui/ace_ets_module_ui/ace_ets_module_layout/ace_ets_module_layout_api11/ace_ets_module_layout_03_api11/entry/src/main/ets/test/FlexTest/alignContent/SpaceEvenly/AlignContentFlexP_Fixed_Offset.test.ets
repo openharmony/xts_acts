@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext'
@@ -56,7 +56,7 @@ export default function AlignContentFlexP_Fixed_Offset() {
      * @tc.desc Set offsize to the flex child component.
      */
 
-    it('testAlignContentSpaceEvenlyFlexPfixedOffset', 0, async () => {
+    it('testAlignContentSpaceEvenlyFlexPfixedOffset',  Level.LEVEL0, async () => {
       console.info('testAlignContentSpaceEvenlyFlexPfixedOffset START');
       let strJson = getInspectorByKey('AlignContentFlexP_fixed_Offset_flex');
 

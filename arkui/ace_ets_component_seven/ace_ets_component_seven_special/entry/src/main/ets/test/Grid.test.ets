@@ -15,7 +15,7 @@
 
 import router from '@ohos.router'
 import events_emitter from '@ohos.events.emitter';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import Utils from './Utils'
 
 export default function gridMaxCountJsunit() {

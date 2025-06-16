@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium"
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../Utils';
@@ -44,7 +44,7 @@ export default function blank3Jsunit() {
       console.info("blank after each called");
     })
 
-    it('testBlank01', 0, async (done: Function) => {
+    it('testBlank01',  Level.LEVEL0, async (done: Function) => {
       console.info('[testBlank01] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('blank3Jsunit_blank');
@@ -55,7 +55,7 @@ export default function blank3Jsunit() {
       done();
     });
 
-    it('testBlank02', 0, async (done: Function) => {
+    it('testBlank02',  Level.LEVEL0, async (done: Function) => {
       console.info('[testBlank02] START');
       await Utils.sleep(1000);
       try {

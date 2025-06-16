@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
 import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
@@ -51,7 +51,7 @@ export default function flexHeightModify_BaselineJsunit() {
      * @tc.name testFlexItemAlignBaselineDefaultSize
      * @tc.desc Modify the first subcomponent's height.
      */
-    it('testFlexItemAlignBaselineDefaultSize', 0, async () => {
+    it('testFlexItemAlignBaselineDefaultSize',  Level.LEVEL0, async () => {
       console.info('new testFlexItemAlignBaselineDefaultSize START');
       let strJson1 = getInspectorByKey('ItemAlign_Baseline_flexHeightModify');
 
@@ -88,7 +88,7 @@ export default function flexHeightModify_BaselineJsunit() {
      * @tc.name testFlexItemAlignBaselineHeightModify
      * @tc.desc Modify the first subcomponent's height.
      */
-    it('testFlexItemAlignBaselineHeightModify', 0, async () => {
+    it('testFlexItemAlignBaselineHeightModify',  Level.LEVEL0, async () => {
       console.info('new testFlexItemAlignBaselineHeightModify START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 80

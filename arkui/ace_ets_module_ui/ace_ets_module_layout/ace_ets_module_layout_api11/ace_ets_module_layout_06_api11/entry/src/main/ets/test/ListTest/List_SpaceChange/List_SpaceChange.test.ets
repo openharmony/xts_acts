@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import {
@@ -65,7 +65,7 @@ export default function list_SpaceChangeTest() {
      * @tc.name testListSpaceChangeUnfill
      * @tc.desc set the space of list to 20
      */
-    it('testListSpaceChangeUnfill', 0, async (done: Function) => {
+    it('testListSpaceChangeUnfill',  Level.LEVEL0, async (done: Function) => {
       console.info('[testListSpaceChangeUnfill] START');
       globalThis.value.message.notify({
         name: 'Space', value: 20
@@ -136,7 +136,7 @@ export default function list_SpaceChangeTest() {
      * @tc.name testListSpaceChangeFill
      * @tc.desc set the space of list to 40
      */
-    it('testListSpaceChangeFill', 0, async (done: Function) => {
+    it('testListSpaceChangeFill',  Level.LEVEL0, async (done: Function) => {
       console.info('[testListSpaceChangeFill] START');
       globalThis.value.message.notify({
         name: 'Space', value: 40
@@ -211,7 +211,7 @@ export default function list_SpaceChangeTest() {
      * @tc.name testListSpaceChangeOverflow
      * @tc.desc set the space of list to 60
      */
-    it('testListSpaceChangeOverflow', 0, async (done: Function) => {
+    it('testListSpaceChangeOverflow',  Level.LEVEL0, async (done: Function) => {
       console.info('[testListSpaceChangeOverflow] START');
       globalThis.value.message.notify({
         name: 'Space', value: 60

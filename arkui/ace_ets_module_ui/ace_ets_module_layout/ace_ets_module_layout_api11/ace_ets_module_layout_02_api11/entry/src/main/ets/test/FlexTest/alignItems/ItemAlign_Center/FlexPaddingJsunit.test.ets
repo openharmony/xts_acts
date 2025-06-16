@@ -14,7 +14,7 @@
  */
 
 import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
@@ -51,7 +51,7 @@ export default function flexPadding_CenterJsunit() {
      * @tc.name testFlexItemAlignCenterParentSetPadding
      * @tc.desc Parent component set paddding,subcomponent does not exceed the parent component.
      */
-    it('testFlexItemAlignCenterParentSetPadding', 0, async () => {
+    it('testFlexItemAlignCenterParentSetPadding',  Level.LEVEL0, async () => {
       console.info('new testFlexItemAlignCenterParentSetPadding START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 10

@@ -52,7 +52,7 @@ export default function symbolSpanApi1() {
      * @tc.type
     * @tc.size
      */
-    it('symbolSpanApi1_0100', 0, async (done: Function) => {
+    it('symbolSpanApi1_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('[symbolSpanApi1_0100] START');
       await CommonFunc.sleep(2000);
 

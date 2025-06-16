@@ -14,7 +14,7 @@
  */
 
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common'
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
@@ -57,7 +57,7 @@ export default function Row_Margin() {
      * @tc.desc Setting the Margin for the Row component
      */
 
-    it('testParentComponentChangedRowMargin', 0, async (done: Function) => {
+    it('testParentComponentChangedRowMargin',  Level.LEVEL0, async (done: Function) => {
       console.info('testParentComponentChangedRowMargin START');
       globalThis.value.message.notify({
         name: 'margin', value: 5

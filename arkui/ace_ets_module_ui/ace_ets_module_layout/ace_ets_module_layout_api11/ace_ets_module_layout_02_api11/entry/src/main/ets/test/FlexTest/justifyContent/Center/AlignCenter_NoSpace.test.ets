@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
@@ -52,7 +52,7 @@ export default function AlignCenter_NoSpace() {
      * @tc.desc The parent component layout space does not meet the interface display of the spindle layout of
      * the child component
      */
-    it('testFlexAlignCenterFlexWidthOverflow', 0, async () => {
+    it('testFlexAlignCenterFlexWidthOverflow',  Level.LEVEL0, async () => {
       console.info('[testFlexAlignCenterFlexWidthOverflow] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'DadWidth', value: 400
@@ -92,7 +92,7 @@ export default function AlignCenter_NoSpace() {
      * @tc.desc The interface display where the parent component layout space satisfies the spindle layout of
      * the child component
      */
-    it('testFlexAlignCenterFlexWidthMeet', 0, async () => {
+    it('testFlexAlignCenterFlexWidthMeet',  Level.LEVEL0, async () => {
       console.info('[testFlexAlignCenterFlexWidthMeet] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'DadWidth', value: 500

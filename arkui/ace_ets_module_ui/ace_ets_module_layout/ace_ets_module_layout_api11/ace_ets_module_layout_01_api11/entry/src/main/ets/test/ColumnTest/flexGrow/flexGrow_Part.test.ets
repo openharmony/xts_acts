@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from '../../../MainAbility/common/Common';
@@ -51,7 +51,7 @@ export default function flexGrow_Part() {
      * @tc.name testFlexGrow
      * @tc.desc colum1 set layoutWeight(1), colum2、colum3 set flexGrow(1)
      */
-    it('SUB_ACE_flexGrow_Part_TEST_0100', 0, async () => {
+    it('SUB_ACE_flexGrow_Part_TEST_0100',  Level.LEVEL0, async () => {
       console.info('[SUB_ACE_flexGrow_Part_TEST_0100] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'addflexGrow2', value: 1
@@ -100,7 +100,7 @@ export default function flexGrow_Part() {
      * @tc.name testFlexGrow
      * @tc.desc colum1 set layoutWeight(1),colum2、colum3 set flexGrow(2)
      */
-    it('SUB_ACE_flexGrow_Part_TEST_0200', 0, async () => {
+    it('SUB_ACE_flexGrow_Part_TEST_0200',  Level.LEVEL0, async () => {
       console.info('[SUB_ACE_flexGrow_Part_TEST_0200] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'addflexGrow2', value: 2
@@ -148,7 +148,7 @@ export default function flexGrow_Part() {
      * @tc.name testFlexGrow
      * @tc.desc colum1 set layoutWeight(1),colum2、colum3 set flexGrow(3)
      */
-    it('SUB_ACE_flexGrow_Part_TEST_0300', 0, async () => {
+    it('SUB_ACE_flexGrow_Part_TEST_0300',  Level.LEVEL0, async () => {
       console.info('[SUB_ACE_flexGrow_Part_TEST_0300] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'addflexGrow2', value: 3
@@ -196,7 +196,7 @@ export default function flexGrow_Part() {
      * @tc.name testFlexGrow
      * @tc.desc colum1 set layoutWeight(1),colum2、colum3 set flexGrow(3)
      */
-    it('SUB_ACE_flexGrow_Part_TEST_0400', 0, async () => {
+    it('SUB_ACE_flexGrow_Part_TEST_0400',  Level.LEVEL0, async () => {
       console.info('[SUB_ACE_flexGrow_Part_TEST_0400] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'addflexGrow1', value: 3
@@ -247,7 +247,7 @@ export default function flexGrow_Part() {
      * @tc.name testFlexGrow
      * @tc.desc colum1、colum2 and colum3 do not set flexGrow
      */
-    it('SUB_ACE_flexGrow_Part_TEST_0500', 0, async () => {
+    it('SUB_ACE_flexGrow_Part_TEST_0500',  Level.LEVEL0, async () => {
       console.info('[SUB_ACE_flexGrow_Part_TEST_0500] START');
       await CommonFunc.sleep(3000);
       console.log('get Initial value')

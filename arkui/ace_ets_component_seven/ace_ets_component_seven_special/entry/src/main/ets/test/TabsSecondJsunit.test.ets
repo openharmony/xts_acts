@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium'
 import Utils from './Utils';
 import router from '@ohos.router'
 
@@ -49,7 +49,7 @@ export default function tabsSecondJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_Tabs_BarOverlap_0200', 0, async (done: Function) => {
+    it('ArkUI_Tabs_BarOverlap_0200', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_Tabs_BarOverlap_0200 start");
       let strJson = getInspectorByKey('TabsOverlapTest2');
       let obj: ESObject = JSON.parse(strJson);
@@ -66,7 +66,7 @@ export default function tabsSecondJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_Tabs_BarBackgroundColor_0100', 0, async (done: Function) => {
+    it('ArkUI_Tabs_BarBackgroundColor_0100', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_Tabs_BarBackgroundColor start");
       let strJson = getInspectorByKey('TabsOverlapTest1');
 
@@ -85,7 +85,7 @@ export default function tabsSecondJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_Tabs_Attrs_0100', 0, async (done: Function) => {
+    it('ArkUI_Tabs_Attrs_0100', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_Tabs_Attrs_0100 start");
       let strJson = getInspectorByKey('TabsOverlapTest1');
       let obj: ESObject = JSON.parse(strJson);
@@ -101,7 +101,7 @@ export default function tabsSecondJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_Tabs_Attrs_0200', 0, async (done: Function) => {
+    it('ArkUI_Tabs_Attrs_0200', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_Tabs_Attrs_0200 start");
       let strJson = getInspectorByKey('TabsOverlapTest1');
       let obj: ESObject = JSON.parse(strJson);
@@ -118,7 +118,7 @@ export default function tabsSecondJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_Tabs_Attrs_0300', 0, async (done: Function) => {
+    it('ArkUI_Tabs_Attrs_0300', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_Tabs_Attrs_0300 start");
       let strJson = getInspectorByKey('TabsOverlapTest1');
       let obj: ESObject = JSON.parse(strJson);
@@ -135,7 +135,7 @@ export default function tabsSecondJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_Tabs_Attrs_0400', 0, async (done: Function) => {
+    it('ArkUI_Tabs_Attrs_0400', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_Tabs_Attrs_0400 start");
       let strJson = getInspectorByKey('TabsOverlapTest1');
       console.info("barWidth: "+ Math.round(JSON.parse(strJson).$attrs.barWidth));
@@ -151,7 +151,7 @@ export default function tabsSecondJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_Tabs_Attrs_0500', 0, async (done: Function) => {
+    it('ArkUI_Tabs_Attrs_0500', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_Tabs_Attrs_0500 start");
       let strJson = getInspectorByKey('TabsOverlapTest1');
       console.info("barHeight: "+ Math.round(JSON.parse(strJson).$attrs.barHeight));
@@ -167,7 +167,7 @@ export default function tabsSecondJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_Tabs_Attrs_0600', 0, async (done: Function) => {
+    it('ArkUI_Tabs_Attrs_0600', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_Tabs_Attrs_0600 start");
       let strJson = getInspectorByKey('TabsOverlapTest1');
       let obj: ESObject = JSON.parse(strJson);

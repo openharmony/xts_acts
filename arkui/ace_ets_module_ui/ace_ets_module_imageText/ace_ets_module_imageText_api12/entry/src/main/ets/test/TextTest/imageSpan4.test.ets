@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -51,7 +51,7 @@ export default function imageSpanTest4() {
      * @tc.type : 
      * @tc.size :
      */
-    it('imageSpanTest4_0100', 0, async (done: Function) => {
+    it('imageSpanTest4_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('imageSpanTest4_0100 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ImageSpan_onComplete_41');
@@ -70,7 +70,7 @@ export default function imageSpanTest4() {
      * @tc.type :
      * @tc.size :
      */
-    it('imageSpanTest4_0200', 0, async (done: Function) => {
+    it('imageSpanTest4_0200',  Level.LEVEL0, async (done: Function) => {
       console.info('imageSpanTest4_0200 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ImageSpan_onComplete_42');
@@ -90,7 +90,7 @@ export default function imageSpanTest4() {
      * @tc.type :
      * @tc.size :
      */
-    it('imageSpanTest4_0300', 0, async (done: Function) => {
+    it('imageSpanTest4_0300',  Level.LEVEL0, async (done: Function) => {
       console.info('imageSpanTest4_0300 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ImageSpan_onComplete_43');
@@ -109,7 +109,7 @@ export default function imageSpanTest4() {
      * @tc.type :
      * @tc.size :
      */
-    it('imageSpanTest4_0400', 0, async (done: Function) => {
+    it('imageSpanTest4_0400',  Level.LEVEL0, async (done: Function) => {
       console.info('imageSpanTest4_0400 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ImageSpan_onComplete_44');
@@ -128,7 +128,7 @@ export default function imageSpanTest4() {
      * @tc.type :
      * @tc.size :
      */
-    it('imageSpanTest4_0500', 0, async (done: Function) => {
+    it('imageSpanTest4_0500',  Level.LEVEL0, async (done: Function) => {
       console.info('imageSpanTest4_0500 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ImageSpan_onComplete_45');

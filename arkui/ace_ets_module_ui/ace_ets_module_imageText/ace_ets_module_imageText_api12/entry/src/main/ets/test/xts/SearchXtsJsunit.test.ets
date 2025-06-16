@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, it, expect } from '@ohos/hypium';
+import { describe, beforeEach, it, expect, Level } from '@ohos/hypium';
 import { Driver, ON } from '@ohos.UiTest';
 import events_emitter from '@ohos.events.emitter';
 import router from '@ohos.router';
@@ -50,7 +50,7 @@ export default function SearchXtsJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('SearchXtsJsunit_0101', 0, async (done: Function) => {
+    it('SearchXtsJsunit_0101',  Level.LEVEL0, async (done: Function) => {
       console.info('[SearchXtsJsunit_0101] START');
       let strJson = getInspectorByKey('key_search_inputFilter');
       let obj: Record<string, ESObject> = JSON.parse(strJson);
@@ -68,7 +68,7 @@ export default function SearchXtsJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('SearchXtsJsunit_0102', 0, async (done: Function) => {
+    it('SearchXtsJsunit_0102',  Level.LEVEL0, async (done: Function) => {
       console.info('[SearchXtsJsunit_0102] START');
       let strJson = getInspectorByKey('key_search_selectedBackgroundColor');
       let obj: Record<string, ESObject> = JSON.parse(strJson);
@@ -87,7 +87,7 @@ export default function SearchXtsJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('SearchXtsJsunit_0103', 0, async (done: Function) => {
+    it('SearchXtsJsunit_0103',  Level.LEVEL0, async (done: Function) => {
       console.info('[SearchXtsJsunit_0103] START');
       let strJson = getInspectorByKey('key_search_textIndent');
       let obj: Record<string, ESObject> = JSON.parse(strJson);
@@ -106,7 +106,7 @@ export default function SearchXtsJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('SearchXtsTest_0105', 0, async (done: Function) => {
+    it('SearchXtsTest_0105',  Level.LEVEL0, async (done: Function) => {
       console.info('SearchXtsTest_0105 START');
       let driver1 = Driver.create();
       let button = await driver1.findComponent(ON.id('key_search_onEditChange'));
@@ -127,7 +127,7 @@ export default function SearchXtsJsunit() {
     //  * @tc.type Function
     //  * @tc.level 0
     //  */
-    // it('SearchXtsTest_0106', 0, async (done: Function) => {
+    // it('SearchXtsTest_0106',  Level.LEVEL0, async (done: Function) => {
     //   console.info('SearchXtsTest_0106 START');
     //   let driver1 = Driver.create();
     //   let button = await driver1.findComponent(ON.id('key_search_setTextSelection'));

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
@@ -70,7 +70,7 @@ export default function List_ListDirection() {
      * @tc.name testListListDirectionAxisVertical
      * @tc.desc List parent component binding direction property and value set to Axis.Vertical
      */
-    it('testListListDirectionAxisVertical', 0, async (done: Function) => {
+    it('testListListDirectionAxisVertical',  Level.LEVEL0, async (done: Function) => {
       console.info('testListListDirectionAxisVertical START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('List_ListDirection_01');
@@ -120,7 +120,7 @@ export default function List_ListDirection() {
     //     * @tc.name      testListListDirectionAxisHorizontal
     //     * @tc.desc      List parent component binding direction property and value set to Axis.Horizontal
     //     */
-    //    it('testListListDirectionAxisHorizontal', 0, async  (done: Function)=> {
+    //    it('testListListDirectionAxisHorizontal',  Level.LEVEL0, async  (done: Function)=> {
     //      console.info('testListListDirectionAxisHorizontal START');
     //      globalThis.value.message.notify({name:'addListDirection', value:Axis.Horizontal})
     //      await CommonFunc.sleep(3000);

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
@@ -69,7 +69,7 @@ export default function listItem_SizeChange() {
      * @tc.name testListItemSizeChangeHeight120Width300
      * @tc.desc The ListItem subcomponent changes the width 300 and height 120 attributes
      */
-    it('testListItemSizeChangeHeight120Width300', 0, async (done: Function) => {
+    it('testListItemSizeChangeHeight120Width300',  Level.LEVEL0, async (done: Function) => {
       console.info('new testListItemSizeChangeHeight120Width300 START');
       globalThis.value.message.notify({
         name: 'height', value: 120
@@ -126,7 +126,7 @@ export default function listItem_SizeChange() {
      * @tc.name testListItemSizeChangeHeight160Width300
      * @tc.desc The ListItem subcomponent changes the width 300 and height 160 attributes
      */
-    it('testListItemSizeChangeHeight160Width300', 0, async (done: Function) => {
+    it('testListItemSizeChangeHeight160Width300',  Level.LEVEL0, async (done: Function) => {
       console.info('new testListItemSizeChangeHeight160Width300 START');
       globalThis.value.message.notify({
         name: 'height', value: 160
@@ -183,7 +183,7 @@ export default function listItem_SizeChange() {
      * @tc.name testListItemSizeChangeHeight100Width100
      * @tc.desc The ListItem subcomponent changes the width 100 and height 100 attributes
      */
-    it('testListItemSizeChangeHeight100Width100', 0, async (done: Function) => {
+    it('testListItemSizeChangeHeight100Width100',  Level.LEVEL0, async (done: Function) => {
       console.info('new testListItemSizeChangeHeight100Width100 START');
       globalThis.value.message.notify({
         name: 'height', value: 100
@@ -240,7 +240,7 @@ export default function listItem_SizeChange() {
      * @tc.name testListItemSizeChangeHeight100Width380
      * @tc.desc The ListItem subcomponent changes the width 380 and height 100 attributes
      */
-    it('testListItemSizeChangeHeight100Width380', 0, async (done: Function) => {
+    it('testListItemSizeChangeHeight100Width380',  Level.LEVEL0, async (done: Function) => {
       console.info('new testListItemSizeChangeHeight100Width380 START');
       globalThis.value.message.notify({
         name: 'height', value: 100
@@ -296,7 +296,7 @@ export default function listItem_SizeChange() {
      * @tc.name testListItemSizeChangeHeight160Width380
      * @tc.desc The ListItem subcomponent changes the width 380 and height 100 attributes
      */
-    it('testListItemSizeChangeHeight160Width380', 0, async (done: Function) => {
+    it('testListItemSizeChangeHeight160Width380',  Level.LEVEL0, async (done: Function) => {
       console.info('new testListItemSizeChangeHeight160Width380 START');
       globalThis.value.message.notify({
         name: 'height', value: 160

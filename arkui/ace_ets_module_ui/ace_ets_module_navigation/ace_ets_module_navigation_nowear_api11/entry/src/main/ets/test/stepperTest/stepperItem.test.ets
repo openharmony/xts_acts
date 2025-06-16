@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from '../../MainAbility/common/Utils'
 
 export default function stepperItemDisabledJsunit() {
@@ -50,7 +50,7 @@ export default function stepperItemDisabledJsunit() {
      * @tc.name         teststepperItemDisabled0001
      * @tc.desic         acestepperItemDisabledEtsTest0001
      */
-    it('teststepperItemDisabled0001', 0, async (done: Function) => {
+    it('teststepperItemDisabled0001',  Level.LEVEL0, async (done: Function) => {
       console.info('stepperItemDisabled teststepperItemDisabled0001 START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('StepperItem');

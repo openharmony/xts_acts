@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
@@ -51,7 +51,7 @@ export default function flex_NoWrap_FlexSizeTest() {
      * @tc.desc The size of the parent component in the main axis direction
      *               meets the layout of the child components
      */
-    it('testWrapNoWrapFlexSizeMeet', 0, async () => {
+    it('testWrapNoWrapFlexSizeMeet',  Level.LEVEL0, async () => {
       console.info('[testWrapNoWrapFlexSizeMeet] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'width', value: 500
@@ -99,7 +99,7 @@ export default function flex_NoWrap_FlexSizeTest() {
      * @tc.desc The size of the parent component in the main axis direction
      *               is not enough for the layout of the child components,and the cross axis meets
      */
-    it('testWrapNoWrapFlexSizeMainAxisOverflow', 0, async () => {
+    it('testWrapNoWrapFlexSizeMainAxisOverflow',  Level.LEVEL0, async () => {
       console.info('[testWrapNoWrapFlexSizeMainAxisOverflow] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'width', value: 400
@@ -147,7 +147,7 @@ export default function flex_NoWrap_FlexSizeTest() {
      * @tc.desc The size of the parent component in the main axis directionmeets the layout of
      *               the child components,and the cross axis is not enough for the layout of the child components
      */
-    it('testWrapNoWrapFlexSizeAllAxisOverflow', 0, async () => {
+    it('testWrapNoWrapFlexSizeAllAxisOverflow',  Level.LEVEL0, async () => {
       console.info('[testWrapNoWrapFlexSizeAllAxisOverflow] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'width', value: 500

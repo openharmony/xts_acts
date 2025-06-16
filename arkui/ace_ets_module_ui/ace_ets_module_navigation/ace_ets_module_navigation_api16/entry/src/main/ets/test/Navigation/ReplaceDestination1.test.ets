@@ -14,7 +14,7 @@
  */
 
 import CommonFunc from '../../MainAbility/common/Common';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
@@ -54,7 +54,7 @@ export default function ReplaceDestination1Test() {
      * @tc.desc      Test replaceDestination error code 100006
      * @tc.level     Level 2
      */
-    it('ReplaceDestination1_0100', 0, async (done: Function) => {
+    it('ReplaceDestination1_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('ReplaceDestination1_0100 START');
       await CommonFunc.sleep(500);
 
@@ -82,7 +82,7 @@ export default function ReplaceDestination1Test() {
      * @tc.desc      Test replaceDestination undefined error code 401
      * @tc.level     Level 2
      */
-    it('ReplaceDestination1_0200', 0, async (done: Function) => {
+    it('ReplaceDestination1_0200',  Level.LEVEL0, async (done: Function) => {
       console.info('ReplaceDestination1_0200 START');
       await CommonFunc.sleep(500);
 
@@ -110,7 +110,7 @@ export default function ReplaceDestination1Test() {
      * @tc.desc      Test replaceDestination undefined error code 401
      * @tc.level     Level 2
      */
-    it('ReplaceDestination1_0300', 0, async (done: Function) => {
+    it('ReplaceDestination1_0300',  Level.LEVEL0, async (done: Function) => {
       console.info('ReplaceDestination1_0300 START');
       await CommonFunc.sleep(500);
 
@@ -138,7 +138,7 @@ export default function ReplaceDestination1Test() {
      * @tc.desc      Test replaceDestination normal
      * @tc.level     Level 2
      */
-    it('ReplaceDestination1_0400', 0, async (done: Function) => {
+    it('ReplaceDestination1_0400',  Level.LEVEL0, async (done: Function) => {
       console.info('ReplaceDestination1_0400 START');
       await CommonFunc.sleep(500);
 
@@ -166,7 +166,7 @@ export default function ReplaceDestination1Test() {
      * @tc.desc      Test replaceDestination and LaunchMode.MOVE_TO_TOP_SINGLETON
      * @tc.level     Level 2
      */
-    it('ReplaceDestination1_0500', 0, async (done: Function) => {
+    it('ReplaceDestination1_0500',  Level.LEVEL0, async (done: Function) => {
       console.info('ReplaceDestination1_0500 START');
       await CommonFunc.sleep(500);
 
@@ -215,7 +215,7 @@ export default function ReplaceDestination1Test() {
      * @tc.desc      Test replaceDestination and LaunchMode.POP_TO_SINGLETON
      * @tc.level     Level 2
      */
-    it('ReplaceDestination1_0600', 0, async (done: Function) => {
+    it('ReplaceDestination1_0600',  Level.LEVEL0, async (done: Function) => {
       console.info('ReplaceDestination1_0600 START');
       await CommonFunc.sleep(500);
 

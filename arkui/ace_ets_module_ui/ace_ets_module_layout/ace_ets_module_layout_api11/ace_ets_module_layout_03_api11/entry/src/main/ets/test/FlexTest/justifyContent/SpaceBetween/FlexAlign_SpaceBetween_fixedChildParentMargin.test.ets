@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
@@ -53,7 +53,7 @@ export default function flexAlign_SpaceBetween_fixedChildParentMargin() {
      * @tc.name testAlignSpaceBetweenRowNoWrapMargin
      * @tc.desc The child component is fixed, and the parent component is bound with margin attributes
      */
-    it('testAlignSpaceBetweenRowNoWrapMargin', 0, async () => {
+    it('testAlignSpaceBetweenRowNoWrapMargin',  Level.LEVEL0, async () => {
       console.info('new testAlignSpaceBetweenRowNoWrapMargin START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'margin', value: 20

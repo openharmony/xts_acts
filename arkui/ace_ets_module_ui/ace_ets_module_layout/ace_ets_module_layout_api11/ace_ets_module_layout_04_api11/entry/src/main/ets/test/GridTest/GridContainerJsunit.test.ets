@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterEach, beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 
 function sleep(time: number) {
@@ -59,7 +59,7 @@ export default function gridContainerJsunit() {
      * @tc.name testGridContainer010
      * @tc.desc aceEtsTest
      */
-    it('testGridContainer010', 0, async (done: Function) => {
+    it('testGridContainer010',  Level.LEVEL0, async (done: Function) => {
       console.info('new GridContainer0 START');
       let strJson = getInspectorByKey('gridContainer');
       let obj: ESObject = JSON.parse(strJson);
@@ -76,7 +76,7 @@ export default function gridContainerJsunit() {
      * @tc.name testGridContainer020
      * @tc.desc aceEtsTest
      */
-    it('testGridContainer020', 0, async (done: Function) => {
+    it('testGridContainer020',  Level.LEVEL0, async (done: Function) => {
       console.info('new GridContainer1 START');
       let strJson = getInspectorByKey('gridContainer1');
       let obj: ESObject = JSON.parse(strJson);
@@ -92,7 +92,7 @@ export default function gridContainerJsunit() {
      * @tc.name testGridContainer030
      * @tc.desc aceEtsTest
      */
-    it('testGridContainer030', 0, async (done: Function) => {
+    it('testGridContainer030',  Level.LEVEL0, async (done: Function) => {
       console.info('new GridContainer2 START');
       let strJson = getInspectorByKey('gridContainer2');
       let obj: ESObject = JSON.parse(strJson);
@@ -108,7 +108,7 @@ export default function gridContainerJsunit() {
      * @tc.name testGridContainer040
      * @tc.desc aceEtsTest
      */
-    it('testGridContainer040', 0, async (done: Function) => {
+    it('testGridContainer040',  Level.LEVEL0, async (done: Function) => {
       console.info('new GridContainer3 START');
       let strJson = getInspectorByKey('gridContainer3');
       let obj: ESObject = JSON.parse(strJson);
@@ -124,7 +124,7 @@ export default function gridContainerJsunit() {
      * @tc.name testGridContainer050
      * @tc.desc aceEtsTest
      */
-    it('testGridContainer050', 0, async (done: Function) => {
+    it('testGridContainer050',  Level.LEVEL0, async (done: Function) => {
       console.info('new GridContainer4 START');
       let strJson = getInspectorByKey('gridContainer4');
       let obj: ESObject = JSON.parse(strJson);

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -50,7 +50,7 @@ export default function SpaceMain5JustifyContentJsunit() {
      * @tc.type :
      * @tc.size :
      */
-    it('SpaceMain5JustifyContentTest_0010', 0, async (done: Function) => {
+    it('SpaceMain5JustifyContentTest_0010',  Level.LEVEL0, async (done: Function) => {
       console.info('SpaceMain5JustifyContentTest_0010 START');
       let strJson = getInspectorByKey('SpaceMain5NoWrap_1');
       let obj: ESObject = JSON.parse(strJson);
@@ -69,7 +69,7 @@ export default function SpaceMain5JustifyContentJsunit() {
      * @tc.type :
      * @tc.size :
      */
-    it('SpaceMain5JustifyContentTest_0020', 0, async (done: Function) => {
+    it('SpaceMain5JustifyContentTest_0020',  Level.LEVEL0, async (done: Function) => {
       console.info('SpaceMain5JustifyContentTest_0020 START');
       let strJson = getInspectorByKey('SpaceMain5JustifyContent_Start');
       let obj: ESObject = JSON.parse(strJson);
@@ -88,7 +88,7 @@ export default function SpaceMain5JustifyContentJsunit() {
      * @tc.type :
      * @tc.size :
      */
-    it('SpaceMain5JustifyContentTest_0030', 0, async (done: Function) => {
+    it('SpaceMain5JustifyContentTest_0030',  Level.LEVEL0, async (done: Function) => {
       console.info('SpaceMain5JustifyContentTest_0030 START');
       let strJson = getInspectorByKey('SpaceMain5JustifyContent_Center');
       let obj: ESObject = JSON.parse(strJson);
@@ -107,7 +107,7 @@ export default function SpaceMain5JustifyContentJsunit() {
      * @tc.type :
      * @tc.size :
      */
-    it('SpaceMain5JustifyContentTest_0040', 0, async (done: Function) => {
+    it('SpaceMain5JustifyContentTest_0040',  Level.LEVEL0, async (done: Function) => {
       console.info('SpaceMain5JustifyContentTest_0040 START');
       let strJson = getInspectorByKey('SpaceMain5JustifyContent_End');
       let obj: ESObject = JSON.parse(strJson);
@@ -126,7 +126,7 @@ export default function SpaceMain5JustifyContentJsunit() {
      * @tc.type :
      * @tc.size :
      */
-    it('SpaceMain5JustifyContentTest_0050', 0, async (done: Function) => {
+    it('SpaceMain5JustifyContentTest_0050',  Level.LEVEL0, async (done: Function) => {
       console.info('SpaceMain5JustifyContentTest_0050 START');
       let strJson = getInspectorByKey('SpaceMain5JustifyContent_SpaceBetween');
       let obj: ESObject = JSON.parse(strJson);
@@ -145,7 +145,7 @@ export default function SpaceMain5JustifyContentJsunit() {
      * @tc.type :
      * @tc.size :
      */
-    it('SpaceMain5JustifyContentTest_0060', 0, async (done: Function) => {
+    it('SpaceMain5JustifyContentTest_0060',  Level.LEVEL0, async (done: Function) => {
       console.info('SpaceMain5JustifyContentTest_0060 START');
       let strJson = getInspectorByKey('SpaceMain5JustifyContent_SpaceAround');
       let obj: ESObject = JSON.parse(strJson);
@@ -164,7 +164,7 @@ export default function SpaceMain5JustifyContentJsunit() {
      * @tc.type :
      * @tc.size :
      */
-    it('SpaceMain5JustifyContentTest_0070', 0, async (done: Function) => {
+    it('SpaceMain5JustifyContentTest_0070',  Level.LEVEL0, async (done: Function) => {
       console.info('SpaceMain5JustifyContentTest_0070 START');
       let strJson = getInspectorByKey('SpaceMain5JustifyContent_SpaceEvenly');
       let obj: ESObject = JSON.parse(strJson);

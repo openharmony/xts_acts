@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from '../../../MainAbility/common/Common';
@@ -50,7 +50,7 @@ export default function flexBasis_Default() {
      * @tc.name testFlexBasis
      * @tc.desc column1 is set to flexBasis(null) , the height of column1 is  the original height
      */
-    it('SUB_ACE_flexBasis_Default_TEST_0100', 0, async () => {
+    it('SUB_ACE_flexBasis_Default_TEST_0100',  Level.LEVEL0, async () => {
       console.info('[SUB_ACE_flexBasis_Default_TEST_0100] START');
       GlobalContext.getContext().getObject<null>('value').message.notify({
         name: 'addflexBasis', value: null
@@ -93,7 +93,7 @@ export default function flexBasis_Default() {
      * @tc.name testFlexBasis
      * @tc.desc column1 is set to flexBasis(undefined) , the height of column1 is  the original height
      */
-    it('SUB_ACE_flexBasis_Default_TEST_0200', 0, async () => {
+    it('SUB_ACE_flexBasis_Default_TEST_0200',  Level.LEVEL0, async () => {
       console.info('[SUB_ACE_flexBasis_Default_TEST_0200] START');
       GlobalContext.getContext().getObject<undefined>('value').message.notify({
         name: 'addflexBasis', value: undefined
@@ -136,7 +136,7 @@ export default function flexBasis_Default() {
      * @tc.name testFlexBasis
      * @tc.desc column1 is set to flexBasis(-5) , the height of column1 is  the original height
      */
-    it('SUB_ACE_flexBasis_Default_TEST_0300', 0, async () => {
+    it('SUB_ACE_flexBasis_Default_TEST_0300',  Level.LEVEL0, async () => {
       console.info('[SUB_ACE_flexBasis_Default_TEST_0300] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'addflexBasis', value: -5
@@ -180,7 +180,7 @@ export default function flexBasis_Default() {
      * @tc.name testFlexBasis
      * @tc.desc column1、column2 and column3 do not set  flexBasis, the height of column1 is  the original height
      */
-    it('SUB_ACE_flexBasis_Default_TEST_0400', 0, async () => {
+    it('SUB_ACE_flexBasis_Default_TEST_0400',  Level.LEVEL0, async () => {
       console.info('[SUB_ACE_flexBasis_Default_TEST_0400] START');
       await CommonFunc.sleep(3000);
       let Column_flexBasis_021: RectValue = CommonFunc.getComponentRect('Column_flexBasis_021');

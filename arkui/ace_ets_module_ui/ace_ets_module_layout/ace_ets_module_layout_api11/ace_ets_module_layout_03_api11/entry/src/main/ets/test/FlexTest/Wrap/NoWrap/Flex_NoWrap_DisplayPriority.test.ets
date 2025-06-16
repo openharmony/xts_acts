@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
@@ -51,7 +51,7 @@ export default function flex_NoWrap_DisplayPriorityTest() {
      * @tc.desc The size of the parent component in the main axis direction is not enough for the layout
      *               of the child components when display_priority of the child components set different values
      */
-    it('testWrapNoWrapTextDisplayPriority', 0, async () => {
+    it('testWrapNoWrapTextDisplayPriority',  Level.LEVEL0, async () => {
       console.info('[testWrapNoWrapTextDisplayPriority] START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'firstTextPriority', value: 1

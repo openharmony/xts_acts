@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
@@ -70,7 +70,7 @@ export default function List_alignListItem() {
      * @tc.name testListAlignListItemStart
      * @tc.desc The List parent component binds the alignListItem property ListItemAlign.Start
      */
-    it('testListAlignListItemStart', 0, async (done: Function) => {
+    it('testListAlignListItemStart',  Level.LEVEL0, async (done: Function) => {
       console.info('testListAlignListItemStart START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('List_alignListItem_01');
@@ -124,7 +124,7 @@ export default function List_alignListItem() {
      * @tc.name testListAlignListItemCenter
      * @tc.desc The List parent component binds the alignListItem property ListItemAlign.Center
      */
-    it('testListAlignListItemCenter', 0, async (done: Function) => {
+    it('testListAlignListItemCenter',  Level.LEVEL0, async (done: Function) => {
       console.info('testListAlignListItemCenter START');
       globalThis.value.message.notify({
         name: 'addAlignListItem', value: ListItemAlign.Center
@@ -184,7 +184,7 @@ export default function List_alignListItem() {
      * @tc.name testListAlignListItemEnd
      * @tc.desc The List parent component binds the alignListItem property ListItemAlign.End
      */
-    it('testListAlignListItemEnd', 0, async (done: Function) => {
+    it('testListAlignListItemEnd',  Level.LEVEL0, async (done: Function) => {
       console.info('testListAlignListItemEnd START');
       globalThis.value.message.notify({
         name: 'addAlignListItem', value: ListItemAlign.End

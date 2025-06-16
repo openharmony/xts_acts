@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
@@ -51,7 +51,7 @@ export default function flexPadding_AutoJsunit() {
      * @tc.name testFlexItemAlignAutoFlexPadMeet
      * @tc.desc Parent component set paddding,subcomponent does not exceed the parent component.
      */
-    it('testFlexItemAlignAutoFlexPadMeet', 0, async () => {
+    it('testFlexItemAlignAutoFlexPadMeet',  Level.LEVEL0, async () => {
       console.info('new testFlexItemAlignAutoFlexPadMeet START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 10
@@ -89,7 +89,7 @@ export default function flexPadding_AutoJsunit() {
      * @tc.name testFlexItemAlignAutoFlexPadOverflow
      * @tc.desc Parent component set paddding,subcomponent exceedS the parent component.
      */
-    it('testFlexItemAlignAutoFlexPadOverflow', 0, async () => {
+    it('testFlexItemAlignAutoFlexPadOverflow',  Level.LEVEL0, async () => {
       console.info('new testFlexItemAlignAutoFlexPadOverflow START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 30

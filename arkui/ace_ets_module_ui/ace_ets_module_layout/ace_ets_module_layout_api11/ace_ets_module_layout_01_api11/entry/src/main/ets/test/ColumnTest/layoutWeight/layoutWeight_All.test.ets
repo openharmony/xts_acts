@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from '../../../MainAbility/common/Common';
@@ -51,7 +51,7 @@ export default function layoutWeight_All() {
      * @tc.name testLayoutWeight
      * @tc.desc colum1 ,column2 and column3 set layoutWeight('3')
      */
-    it('SUB_ACE_layoutWeight_All_TEST_0100', 0, async () => {
+    it('SUB_ACE_layoutWeight_All_TEST_0100',  Level.LEVEL0, async () => {
       console.info('[SUB_ACE_layoutWeight_All_TEST_0100] START');
       GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'layoutWeight1', value: '3'
@@ -108,7 +108,7 @@ export default function layoutWeight_All() {
      * @tc.name testLayoutWeight
      * @tc.desc colum1 set layoutWeight('3') , column2 set layoutWeight('2'),column3 set layoutWeight('1')
      */
-    it('SUB_ACE_layoutWeight_All_TEST_0200', 0, async () => {
+    it('SUB_ACE_layoutWeight_All_TEST_0200',  Level.LEVEL0, async () => {
       console.info('[SUB_ACE_layoutWeight_All_TEST_0200] START');
       GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'layoutWeight1', value: '3'

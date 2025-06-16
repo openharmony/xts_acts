@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
@@ -50,7 +50,7 @@ export default function flex_AlignContent_SpaceAround_TextOffsetTest() {
      * @tc.name testFlexAlignContentSpaceAroundTextOffset
      * @tc.desc The offset of first subcomponent set to {x:10, y:10}
      */
-    it('testFlexAlignContentSpaceAroundTextOffset', 0, async () => {
+    it('testFlexAlignContentSpaceAroundTextOffset',  Level.LEVEL0, async () => {
       console.info('[testFlexAlignContentSpaceAroundTextOffset] START');
       let firstText: RectValue = CommonFunc.getComponentRect('AlignContent_SpaceAround_TextOffset01');
       let secondText: RectValue = CommonFunc.getComponentRect('AlignContent_SpaceAround_TextOffset02');

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 
@@ -50,7 +50,7 @@ export default function Grid_RowCol_LayoutDirection() {
      * @tc.name testGridRowColGridLayoutDirection
      * @tc.desc The Grid layout layoutDirection property does not take effect
      */
-    it('testGridRowColGridLayoutDirection', 0, async (done: Function) => {
+    it('testGridRowColGridLayoutDirection',  Level.LEVEL0, async (done: Function) => {
       console.info('[testGridRowColGridLayoutDirection] START');
       await CommonFunc.sleep(3000);
       let gridContainerStrJson = getInspectorByKey('Grid_RowCol_LayoutDirection_01');

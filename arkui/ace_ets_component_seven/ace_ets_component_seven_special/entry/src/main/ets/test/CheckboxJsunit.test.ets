@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium'
 import router from '@ohos.router'
 import Utils from './Utils';
 
@@ -49,7 +49,7 @@ export default function checkboxJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUX_Stage_Checkbox_0100', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_0100', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_0100 START');
       setTimeout(() => {
         try {
@@ -75,7 +75,7 @@ export default function checkboxJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUX_Stage_Checkbox_0400', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_0400', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_0400 START');
       setTimeout(() => {
         try {
@@ -101,7 +101,7 @@ export default function checkboxJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUX_Stage_Checkbox_0300', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_0300', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_0300 START');
       setTimeout(() => {
         try {
@@ -128,7 +128,7 @@ export default function checkboxJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUX_Stage_Checkbox_attrs_0200', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_attrs_0200', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_attrs_0200 START');
       setTimeout(() => {
         try {

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
@@ -49,7 +49,7 @@ export default function AlignStart_AddVisibility() {
      * @tc.name testFlexAlignStartTextVisibilityNone
      * @tc.desc The subcomponent sets the visibility. None, the child components are hidden in the interface display
      */
-    it('testFlexAlignStartTextVisibilityNone', 0, async () => {
+    it('testFlexAlignStartTextVisibilityNone',  Level.LEVEL0, async () => {
       console.info('[testFlexAlignStartTextVisibilityNone] START');
       try {
         GlobalContext.getContext().getObject<number>('value').message.notify({
@@ -89,7 +89,7 @@ export default function AlignStart_AddVisibility() {
      * @tc.desc When the subcomponent sets visibility.hidden, the interface of the subcomponent does not occupy the
      * position
      */
-    it('testFlexAlignStartTextVisibilityHidden', 0, async () => {
+    it('testFlexAlignStartTextVisibilityHidden',  Level.LEVEL0, async () => {
       console.info('[testFlexAlignStartTextVisibilityHidden] START');
       try {
         GlobalContext.getContext().getObject<number>('value').message.notify({
@@ -134,7 +134,7 @@ export default function AlignStart_AddVisibility() {
      * @tc.desc The subcomponent sets the visibility. Visible, the subcomponent does not occupy a position in the
      * interface display
      */
-    it('testFlexAlignStartTextVisibilityVisible', 0, async () => {
+    it('testFlexAlignStartTextVisibilityVisible',  Level.LEVEL0, async () => {
       console.info('[testFlexAlignStartTextVisibilityVisible] START');
       try {
         GlobalContext.getContext().getObject<number>('value').message.notify({

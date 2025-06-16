@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext'
@@ -57,7 +57,7 @@ export default function AlignContent_FlexAlign_SpaceEvenly_padding() {
      *               of the flex component so that it does not meet the child component size requirements.
      */
 
-    it('testAlignContentSpaceEvenlyFlexPaddingNoSatisfy', 0, async () => {
+    it('testAlignContentSpaceEvenlyFlexPaddingNoSatisfy',  Level.LEVEL0, async () => {
       console.info('testAlignContentSpaceEvenlyFlexPaddingNoSatisfy START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 40
@@ -121,7 +121,7 @@ export default function AlignContent_FlexAlign_SpaceEvenly_padding() {
      * @tc.desc Set the alignContent property of the flex component to FlexAlign.SpaceEvenly and the padding of the
      *               flex component to meet the child component sizing requirements.
      */
-    it('testAlignContentSpaceEvenlyFlexPaddingSatisfy', 0, async () => {
+    it('testAlignContentSpaceEvenlyFlexPaddingSatisfy',  Level.LEVEL0, async () => {
       console.info('testAlignContentSpaceEvenlyFlexPaddingSatisfy START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 15

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../Utils';
@@ -45,7 +45,7 @@ export default function gradientDirectionJsunit() {
       console.info('[ afterEach ] ===================GradientDirection test after each called===================');
     });
 
-    it('GradientDirectionTest_0100', 0, async (done: Function) => {
+    it('GradientDirectionTest_0100',  Level.LEVEL0, async (done: Function) => {
       console.info('GradientDirectionTest_0100 START');
       let strJson = getInspectorByKey('GradientDirection');
       console.info("GradientDirectionTest_0100 component strJson:" + strJson);
@@ -56,7 +56,7 @@ export default function gradientDirectionJsunit() {
       done();
     });
 
-    it('GradientDirectionTest_0200', 0, async (done: Function) => {
+    it('GradientDirectionTest_0200',  Level.LEVEL0, async (done: Function) => {
       console.info('GradientDirectionTest_0200 START');
       try {
         let eventData: events_emitter.EventData = {
@@ -83,7 +83,7 @@ export default function gradientDirectionJsunit() {
       done();
     });
 
-    it('GradientDirectionTest_0300', 0, async (done: Function) => {
+    it('GradientDirectionTest_0300',  Level.LEVEL0, async (done: Function) => {
       console.info('GradientDirectionTest_0300 START');
       try {
         let eventData: events_emitter.EventData = {
@@ -110,7 +110,7 @@ export default function gradientDirectionJsunit() {
       done();
     });
 
-    it('GradientDirectionTest_0400', 0, async (done: Function) => {
+    it('GradientDirectionTest_0400',  Level.LEVEL0, async (done: Function) => {
       console.info('GradientDirectionTest_0400 START');
       try {
         let eventData: events_emitter.EventData = {

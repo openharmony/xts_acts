@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
@@ -70,7 +70,7 @@ export default function List_Padding() {
      * @tc.name testListPaddingToTwenty
      * @tc.desc List parent component binding padding property and value set to 20
      */
-    it('testListPaddingToTwenty', 0, async (done: Function) => {
+    it('testListPaddingToTwenty',  Level.LEVEL0, async (done: Function) => {
       console.info('testListPaddingToTwenty START');
       globalThis.value.message.notify({
         name: 'addPadding', value: 20

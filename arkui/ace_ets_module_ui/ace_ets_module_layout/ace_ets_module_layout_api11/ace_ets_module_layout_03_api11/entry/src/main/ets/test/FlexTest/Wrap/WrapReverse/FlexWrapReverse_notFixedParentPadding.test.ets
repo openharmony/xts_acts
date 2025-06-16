@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext'
@@ -54,7 +54,7 @@ export default function flexWrapReverse_notFixedParentPadding() {
      * @tc.desc The parent component changes location and space of layout, affecting layout of child components,
      *               parent component setting padding, the remaining layout space meets the requirements
      */
-    it('testWrapReverseChildfixedParentPaddingInRange', 0, async () => {
+    it('testWrapReverseChildfixedParentPaddingInRange',  Level.LEVEL0, async () => {
       console.info('new testWrapReverseChildfixedParentPaddingInRange START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 300
@@ -102,7 +102,7 @@ export default function flexWrapReverse_notFixedParentPadding() {
      * @tc.desc The parent component changes location and space of layout, affecting layout of child components,
      *               parent component setting padding, the remaining layout space does not meet the requirements
      */
-    it('testWrapReverseChildfixedParentPaddingOutRange', 0, async () => {
+    it('testWrapReverseChildfixedParentPaddingOutRange',  Level.LEVEL0, async () => {
       console.info('new testWrapReverseChildfixedParentPaddingOutRange START');
       GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 300

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
@@ -49,7 +49,7 @@ export default function navigationNavbar02() {
        * @tc.desc  : Set navbarWidth to -2
        * @tc.level : Level 2
        */
-    it('navigationNavbar02_001', 0, async  (done:Function) =>{
+    it('navigationNavbar02_001',  Level.LEVEL0, async  (done:Function) =>{
 
       console.info('[navigationNavbar02_001] START');
       globalThis.value.message.notify({name:'navBarWidth', value: -2 });
@@ -69,7 +69,7 @@ export default function navigationNavbar02() {
        * @tc.desc  : Set navbarWidth to 0
        * @tc.level : Level 2
        */
-    it('navigationNavbar02_002', 0, async  (done:Function) =>{
+    it('navigationNavbar02_002',  Level.LEVEL0, async  (done:Function) =>{
 
       console.info('[navigationNavbar02_002] START');
       globalThis.value.message.notify({name:'navBarWidth', value: 0 });
@@ -90,7 +90,7 @@ export default function navigationNavbar02() {
        * @tc.desc  : Set navbarWidth to 260
        * @tc.level : Level 2
        */
-    it('navigationNavbar02_003', 0, async  (done:Function) =>{
+    it('navigationNavbar02_003',  Level.LEVEL0, async  (done:Function) =>{
 
       console.info('[navigationNavbar02_003] START');
       globalThis.value.message.notify({name:'navBarWidth', value: 260 });
@@ -111,7 +111,7 @@ export default function navigationNavbar02() {
        * @tc.desc  : Set mode to NavigationMode.Stack
        * @tc.level : Level 2
        */
-    it('navigationNavbar02_004', 0, async  (done:Function) =>{
+    it('navigationNavbar02_004',  Level.LEVEL0, async  (done:Function) =>{
 
       console.info('[navigationNavbar02_004] START');
       globalThis.value.message.notify({name:'navModeIndex', value: 1 });
@@ -132,7 +132,7 @@ export default function navigationNavbar02() {
        * @tc.desc  : Set hideNavBar to true
        * @tc.level : Level 2
        */
-    it('navigationNavbar02_005', 0, async  (done:Function) =>{
+    it('navigationNavbar02_005',  Level.LEVEL0, async  (done:Function) =>{
 
       console.info('[navigationNavbar02_005] START');
       globalThis.value.message.notify({name:'hideNavBar', value: true });
@@ -153,7 +153,7 @@ export default function navigationNavbar02() {
        * @tc.desc  : Set minContentWidth to -2
        * @tc.level : Level 2
        */
-    it('navigationNavbar02_006', 0, async  (done:Function) =>{
+    it('navigationNavbar02_006',  Level.LEVEL0, async  (done:Function) =>{
 
       console.info('[navigationNavbar02_006] START');
       globalThis.value.message.notify({name:'minContentWidth', value: -2 });
@@ -174,7 +174,7 @@ export default function navigationNavbar02() {
        * @tc.desc  : Set minContentWidth to 0
        * @tc.level : Level 2
        */
-    // it('navigationNavbar02_007', 0, async  (done:Function) =>{
+    // it('navigationNavbar02_007',  Level.LEVEL0, async  (done:Function) =>{
     //
     //   console.info('[navigationNavbar02_007] START');
     //   globalThis.value.message.notify({name:'minContentWidth', value: 0 });
@@ -195,7 +195,7 @@ export default function navigationNavbar02() {
        * @tc.desc  : Set minContentWidth to 360
        * @tc.level : Level 2
        */
-    it('navigationNavbar02_008', 0, async  (done:Function) =>{
+    it('navigationNavbar02_008',  Level.LEVEL0, async  (done:Function) =>{
 
       console.info('[navigationNavbar02_008] START');
       globalThis.value.message.notify({name:'minContentWidth', value: 360 });
@@ -216,7 +216,7 @@ export default function navigationNavbar02() {
        * @tc.desc  : Set mode to NavigationMode.Split
        * @tc.level : Level 2
        */
-    it('navigationNavbar02_009', 0, async  (done:Function) =>{
+    it('navigationNavbar02_009',  Level.LEVEL0, async  (done:Function) =>{
 
       console.info('[navigationNavbar02_011] START');
       globalThis.value.message.notify({name:'navModeIndex', value: 0 });
@@ -237,7 +237,7 @@ export default function navigationNavbar02() {
        * @tc.desc  : Set mode to NavigationMode.Auto
        * @tc.level : Level 2
        */
-    it('navigationNavbar02_010', 0, async  (done:Function) =>{
+    it('navigationNavbar02_010',  Level.LEVEL0, async  (done:Function) =>{
 
       console.info('[navigationNavbar02_012] START');
       globalThis.value.message.notify({name:'navModeIndex', value: 2 });
