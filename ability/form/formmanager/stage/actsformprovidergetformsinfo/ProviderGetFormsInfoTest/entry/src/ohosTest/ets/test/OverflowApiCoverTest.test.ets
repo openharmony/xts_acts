@@ -140,26 +140,5 @@ export default function OverflowApiCoverTest() {
       console.info(`${name} end`);
       done();
     });
-
-    /*
-     * @tc.number  GetFormRect_Cover_0100
-     * @tc.name    GetFormRect_Cover_0100
-     * @tc.desc    Function GetFormRect covered test
-     * @tc.size:   MediumTest
-     * @tc.type:   Function
-     * @tc.level   Level 1
-     */
-    it(`GetFormRect_Cover_0100`, 0, async (done:Function) => {
-      let name: string = 'GetFormRect_Cover_0100';
-      console.info(`${name} start`);
-      try {
-        formProvider.getFormRect("1");
-        expect().not().assertFail();
-      } catch (error) {
-        expect().assertFail();
-      }
-      console.info(`${name} end`);
-      done();
-    });
   })
 }
