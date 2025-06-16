@@ -1181,7 +1181,7 @@ HWTEST_F(DrawingNativePathPart3Test, testPathApproximateNormal, Function | Small
     // 3. Add a line segment from the starting point to the target point using OH_Drawing_PathLineTo.
     OH_Drawing_PathLineTo(path, 200, 200);
     float acceptableError = 0.1;
-    uin32_t count = 0;
+    uint32_t count = 0;
     OH_Drawing_ErrorCode errorCode = OH_Drawing_PathApproximate(path, acceptableError, nullptr, &count);
     float *vals = new float[count];
     // 4. The interface OH_Drawing_PathApproximate is called normally.
@@ -1211,7 +1211,7 @@ HWTEST_F(DrawingNativePathPart3Test, testPathApproximateNull, Function | SmallTe
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     EXPECT_NE(path, nullptr);
     float acceptableError = 0.1;
-    uin32_t count = 0;
+    uint32_t count = 0;
     OH_Drawing_ErrorCode errorCode = OH_Drawing_PathApproximate(path, acceptableError, nullptr, &count);
     float *vals = new float[count];
     // 2. Verify the empty path.
@@ -1253,17 +1253,19 @@ HWTEST_F(DrawingNativePathPart3Test, testPathApproximateAbnormal, Function | Sma
     // 3. Add a line segment from the starting point to the target point using OH_Drawing_PathLineTo.
     OH_Drawing_PathLineTo(path, 200, 200);
     float acceptableError = 0.1;
-    uin32_t count = 0;
+    uint32_t count = 0;
     OH_Drawing_ErrorCode errorCode = OH_Drawing_PathApproximate(path, acceptableError, nullptr, &count);
     float *vals = new float[count];
     // 4. AcceptableError lesses than 0.
     errorCode = OH_Drawing_PathApproximate(path, -0.1, vals, &count);
     EXPECT_EQ(errorCode, OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 3. The length of the array is greater than the length of the actual return point.
-    errorCode = OH_Drawing_PathApproximate(path, acceptableError, vals, 10);
+    uint32_t count1 = 10;
+    errorCode = OH_Drawing_PathApproximate(path, acceptableError, vals, &count1);
     EXPECT_EQ(errorCode, OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
     // 4. The length of the array is lesses than the length of the actual return point.
-    errorCode = OH_Drawing_PathApproximate(path, acceptableError, vals, 2);
+    uint32_t count2 = 2;
+    errorCode = OH_Drawing_PathApproximate(path, acceptableError, vals, &count2);
     EXPECT_EQ(errorCode, OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 5. Free the memory.
     OH_Drawing_PathDestroy(path);
@@ -1286,7 +1288,7 @@ HWTEST_F(DrawingNativePathPart3Test, testPathApproximateMultiCalls, Function | S
     // 3. Add a line segment from the starting point to the target point using OH_Drawing_PathLineTo.
     OH_Drawing_PathLineTo(path, 200, 200);
     float acceptableError = 0.1;
-    uin32_t count = 0;
+    uint32_t count = 0;
     OH_Drawing_ErrorCode errorCode = OH_Drawing_PathApproximate(path, acceptableError, nullptr, &count);
     float *vals = new float[count];
     // 4. The interface is called in a loop 10 times.
