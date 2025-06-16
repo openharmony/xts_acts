@@ -38,7 +38,7 @@ export default function SixPointZeroI18nStageTest() {
       let date = new Date(2025, 3, 13);
       let zoneOffsetTransition: i18n.ZoneOffsetTransition = zoneRules.nextTransition(date.getTime());
       let sj = zoneOffsetTransition.getMilliseconds();
-      let dateTimeFormat: intl.DateTimeFormat = new intl.DateTimeFormat('zh', {
+      let dateTimeFormat: Intl.DateTimeFormat = new Intl.DateTimeFormat('zh', {
         timeZone: 'Africa/Cairo',
         dateStyle: 'long',
         timeStyle: 'long',
@@ -47,7 +47,7 @@ export default function SixPointZeroI18nStageTest() {
       let dateFormat = dateTimeFormat.format(new Date(sj));
       let sj2 = zoneOffsetTransition.getOffsetAfter() / 3600000;
       let sj3 = zoneOffsetTransition.getOffsetBefore() / 3600000;
-      expect(dateFormat).assertEqual('2025年4月25日 GMT+3 1:00:00');
+      expect(dateFormat).assertEqual('2025/4/25 GMT+3 1:00:00');
       expect(sj2).assertEqual(3);
       expect(sj3).assertEqual(2);
     })
@@ -66,7 +66,7 @@ export default function SixPointZeroI18nStageTest() {
       let date = new Date(2025, 4, 13);
       let zoneOffsetTransition: i18n.ZoneOffsetTransition = zoneRules.nextTransition(date.getTime());
       let sj = zoneOffsetTransition.getMilliseconds();
-      let dateTimeFormat: intl.DateTimeFormat = new intl.DateTimeFormat('zh', {
+      let dateTimeFormat: Intl.DateTimeFormat = new Intl.DateTimeFormat('zh', {
         timeZone: 'America/Tijuana',
         dateStyle: 'long',
         timeStyle: 'long',
@@ -95,7 +95,7 @@ export default function SixPointZeroI18nStageTest() {
       let zoneOffsetTransition: i18n.ZoneOffsetTransition = zoneRules.nextTransition(date.getTime());
       let sj = zoneOffsetTransition.getMilliseconds();
       let tmzid = timeZone.getID();
-      let dateTimeFormat: intl.DateTimeFormat = new intl.DateTimeFormat('zh', {
+      let dateTimeFormat: Intl.DateTimeFormat = new Intl.DateTimeFormat('zh', {
         timeZone: tmzid,
         dateStyle: 'long',
         timeStyle: 'long',
@@ -123,7 +123,7 @@ export default function SixPointZeroI18nStageTest() {
       let date = new Date(2025, 1, 13);
       let zoneOffsetTransition: i18n.ZoneOffsetTransition = zoneRules.nextTransition(date.getTime());
       let sj = zoneOffsetTransition.getMilliseconds();
-      let dateTimeFormat: intl.DateTimeFormat = new intl.DateTimeFormat('zh', {
+      let dateTimeFormat: Intl.DateTimeFormat = new Intl.DateTimeFormat('zh', {
         dateStyle: 'long',
         timeStyle: 'long',
         hour12: false
