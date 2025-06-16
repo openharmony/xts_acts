@@ -90,8 +90,8 @@ export default function inputMethodAuthorityJSUnit() {
 
         /*
          * @tc.number  inputmethodNomal_test_hideSoftKeyboard_static_001
-         * @tc.name    Test Indicates the input method which will hide softboard with calback.
-         * @tc.desc    Function test
+         * @tc.name    inputmethodNomal_test_hideSoftKeyboard_static_001
+         * @tc.desc    Test Indicates the input method which will hide softboard with calback.
          * @tc.size    MediumTest
          * @tc.type    Function
          * @tc.level   Level2
@@ -134,8 +134,8 @@ export default function inputMethodAuthorityJSUnit() {
 
         /*
          * @tc.number  inputmethodNomal_test_hideSoftKeyboard_static_002
-         * @tc.name    Test Indicates the input method which will hide softboard with Promise.
-         * @tc.desc    Function test
+         * @tc.name    inputmethodNomal_test_hideSoftKeyboard_static_002
+         * @tc.desc    Test Indicates the input method which will hide softboard with Promise.
          * @tc.size    MediumTest
          * @tc.type    Function
          * @tc.level   Level2
@@ -171,8 +171,8 @@ export default function inputMethodAuthorityJSUnit() {
 
         /*
          * @tc.number  inputMethod_test_switchCurrentInputMethodSubtype_static_001
-         * @tc.name    Switch current input method subtype.
-         * @tc.desc    Function test
+         * @tc.name    inputMethod_test_switchCurrentInputMethodSubtype_static_001
+         * @tc.desc    Switch current input method subtype.
          * @tc.level   2
          */
         it('inputMethod_test_switchCurrentInputMethodSubtype_static_001', Level.LEVEL2, async (done: () => void) => {
@@ -200,8 +200,8 @@ export default function inputMethodAuthorityJSUnit() {
 
         /*
          * @tc.number  inputMethod_test_switchCurrentInputMethodSubtype_static_002
-         * @tc.name    Switch current input method subtype.
-         * @tc.desc    Function test
+         * @tc.name    inputMethod_test_switchCurrentInputMethodSubtype_static_002
+         * @tc.desc    Switch current input method subtype.
          * @tc.level   2
          */
         it('inputMethod_test_switchCurrentInputMethodSubtype_static_002', Level.LEVEL2, async (done: () => void) => {

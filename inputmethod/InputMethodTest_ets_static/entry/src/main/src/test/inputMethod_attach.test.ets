@@ -20,8 +20,8 @@ export default function inputMethodAttachTest() {
     describe('inputMethod_attach', () => {
         /**
          * @tc.number SUB_Misc_inputMethod_attach_Async_static_0100
-         * @tc.name Call the attach interface in Async mode. Optional input parameter showkeyboard=true
-         * @tc.desc Function test
+         * @tc.name SUB_Misc_inputMethod_attach_Async_static_0100
+         * @tc.desc Call the attach interface in Async mode. Optional input parameter showkeyboard=true
          */
         it('SUB_Misc_inputMethod_attach_Async_static_0100', Level.LEVEL2, async (done: () => void) => {
             const CASE_NAME = 'SUB_Misc_inputMethod_attach_Async_static_0100';
@@ -63,8 +63,8 @@ export default function inputMethodAttachTest() {
 
         /**
          * @tc.number SUB_Misc_inputMethod_attach_Async_static_0200
-         * @tc.name Call the attach interface in Async mode. Optional input parameter showkeyboard=false
-         * @tc.desc Function test
+         * @tc.name SUB_Misc_inputMethod_attach_Async_static_0200
+         * @tc.desc Call the attach interface in Async mode. Optional input parameter showkeyboard=false
          */
         it('SUB_Misc_inputMethod_attach_Async_static_0200', Level.LEVEL2, async (done: () => void) => {
             const CASE_NAME = 'SUB_Misc_inputMethod_attach_Async_static_0200';
@@ -95,8 +95,8 @@ export default function inputMethodAttachTest() {
 
         /**
          * @tc.number SUB_Misc_inputMethod_attach_Promise_static_0100
-         * @tc.name Call the attach interface in Promise mode. Optional input parameter showkeyboard=true
-         * @tc.desc Function test
+         * @tc.name SUB_Misc_inputMethod_attach_Promise_static_0100
+         * @tc.desc Call the attach interface in Promise mode. Optional input parameter showkeyboard=true
          */
         it('SUB_Misc_inputMethod_attach_Promise_static_0100', Level.LEVEL2, async (done: () => void) => {
             const CASE_NAME = 'SUB_Misc_inputMethod_attach_Promise_static_0100';
@@ -119,8 +119,8 @@ export default function inputMethodAttachTest() {
 
         /**
          * @tc.number SUB_Misc_inputMethod_attach_Promise_static_0200
-         * @tc.name Call the attach interface in Promise mode. Optional input parameter showkeyboard=false
-         * @tc.desc Function test
+         * @tc.name SUB_Misc_inputMethod_attach_Promise_static_0200
+         * @tc.desc Call the attach interface in Promise mode. Optional input parameter showkeyboard=false
          */
         it('SUB_Misc_inputMethod_attach_Promise_static_0200', Level.LEVEL2, async (done: () => void) => {
             const CASE_NAME = 'SUB_Misc_inputMethod_attach_Promise_static_0200';
@@ -143,8 +143,8 @@ export default function inputMethodAttachTest() {
 
         /**
          * @tc.number SUB_Misc_inputMethod_attach_Promise_static_0300
-         * @tc.name Call the attach interface in Promise mode.
-         * @tc.desc Function test
+         * @tc.name SUB_Misc_inputMethod_attach_Promise_static_0300
+         * @tc.desc Call the attach interface in Promise mode.
          */
         it('SUB_Misc_inputMethod_attach_Promise_static_0300', Level.LEVEL2, async (done: () => void) => {
             const CASE_NAME = 'SUB_Misc_inputMethod_attach_Promise_static_0300';

@@ -40,8 +40,8 @@ export default function inputMethodTest() {
 
         /*
           * @tc.number  inputmethodNomal_test_switchInputMethod_static_001
-          * @tc.name    Test Indicates the input method which will replace the current one.
-          * @tc.desc    Function test
+          * @tc.name    inputmethodNomal_test_switchInputMethod_static_001
+          * @tc.desc    Test Indicates the input method which will replace the current one.
           * @tc.size    MediumTest
           * @tc.type    Function
           * @tc.level   Level2
@@ -74,8 +74,8 @@ export default function inputMethodTest() {
 
         /*
           * @tc.number  inputmethodNomal_test_switchInputMethod_static_002
-          * @tc.name    Test Indicates the input method which will replace the current one.
-          * @tc.desc    Function test
+          * @tc.name    inputmethodNomal_test_switchInputMethod_static_002
+          * @tc.desc    Test Indicates the input method which will replace the current one.
           * @tc.size    MediumTest
           * @tc.type    Function
           * @tc.level   Level2
@@ -106,8 +106,8 @@ export default function inputMethodTest() {
 
         /*
          * @tc.number  inputmethodNomal_test_hideSoftKeyboard_static_001
-         * @tc.name    Test Indicates the input method which will hide softboard with calback.
-         * @tc.desc    Function test
+         * @tc.name    inputmethodNomal_test_hideSoftKeyboard_static_001
+         * @tc.desc    Test Indicates the input method which will hide softboard with calback.
          * @tc.size    MediumTest
          * @tc.type    Function
          * @tc.level   Level2
@@ -136,8 +136,8 @@ export default function inputMethodTest() {
 
         /*
          * @tc.number  inputmethodNomal_test_hideSoftKeyboard_static_002
-         * @tc.name    Test Indicates the input method which will hide softboard with Promise.
-         * @tc.desc    Function test
+         * @tc.name    inputmethodNomal_test_hideSoftKeyboard_static_002
+         * @tc.desc    Test Indicates the input method which will hide softboard with Promise.
          * @tc.size    MediumTest
          * @tc.type    Function
          * @tc.level   Level2
@@ -161,8 +161,8 @@ export default function inputMethodTest() {
 
         /*
          * @tc.number  inputmethod_test_getCurrentInputMethod_static_001
-         * @tc.name    return The InputMethodProperty object of the current input method.
-         * @tc.desc    Get current input method
+         * @tc.name    inputmethod_test_getCurrentInputMethod_static_001
+         * @tc.desc    return The InputMethodProperty object of the current input method.
          * @tc.size    MediumTest
          * @tc.type    Function
          * @tc.level   1
@@ -455,8 +455,8 @@ export default function inputMethodTest() {
 
         /*
          * @tc.number  inputMethod_test_getCurrentInputMethodSubtype_static_001
-         * @tc.name    Get the current input method subtype
-         * @tc.desc    Function test
+         * @tc.name    inputMethod_test_getCurrentInputMethodSubtype_static_001
+         * @tc.desc    Get the current input method subtype
          * @tc.size    MEDIUMTEST
          * @tc.type    Function
          * @tc.level   2
@@ -533,8 +533,8 @@ export default function inputMethodTest() {
         });
         /*
         * @tc.number  inputMethod_test_listCurrentInputMethodSubtype_static_001
-        * @tc.name   List subtype of the specified input method
-        * @tc.desc    Function test
+        * @tc.name    inputMethod_test_listCurrentInputMethodSubtype_static_001
+        * @tc.desc    List subtype of the specified input method
         * @tc.size    MEDIUMTEST
         * @tc.type    Function
         * @tc.level   2
@@ -564,8 +564,8 @@ export default function inputMethodTest() {
 
         /*
          * @tc.number  inputMethod_test_listInputMethodSubtype_static_003
-         * @tc.name    List subtype of current input method
-         * @tc.desc    Function test
+         * @tc.name    inputMethod_test_listInputMethodSubtype_static_003
+         * @tc.desc    List subtype of current input method
          * @tc.size    MEDIUMTEST
          * @tc.type    Function
          * @tc.level   2
@@ -589,8 +589,8 @@ export default function inputMethodTest() {
 
         /*
          * @tc.number  inputMethod_test_listInputMethodSubtype_static_001
-         * @tc.name   List subtype of the specified input method
-         * @tc.desc    Function test
+         * @tc.name    inputMethod_test_listInputMethodSubtype_static_001
+         * @tc.desc    List subtype of the specified input method
          * @tc.size    MEDIUMTEST
          * @tc.type    Function
          * @tc.level   2
@@ -621,8 +621,8 @@ export default function inputMethodTest() {
 
         /*
         * @tc.number  inputMethod_test_listInputMethodSubtype_static_002
-        * @tc.name   List subtype of the specified input method
-        * @tc.desc    Function test
+        * @tc.name    inputMethod_test_listInputMethodSubtype_static_002
+        * @tc.desc    List subtype of the specified input method
         * @tc.size    MEDIUMTEST
         * @tc.type    Function
         * @tc.level   2
@@ -664,8 +664,8 @@ export default function inputMethodTest() {
 
         /*
          * @tc.number  inputMethod_test_listInputMethodSubtype_static_003
-         * @tc.name   List subtype of the specified input method
-         * @tc.desc    Function test
+         * @tc.name    inputMethod_test_listInputMethodSubtype_static_003
+         * @tc.desc    List subtype of the specified input method
          * @tc.size    MEDIUMTEST
          * @tc.type    Function
          * @tc.level   2
@@ -698,8 +698,8 @@ export default function inputMethodTest() {
 
         /*
          * @tc.number  inputMethod_test_listInputMethodSubtype_static_004
-         * @tc.name   List subtype of the specified input method
-         * @tc.desc    Function test
+         * @tc.name    inputMethod_test_listInputMethodSubtype_static_004
+         * @tc.desc    List subtype of the specified input method
          * @tc.size    MEDIUMTEST
          * @tc.type    Function
          * @tc.level   2
