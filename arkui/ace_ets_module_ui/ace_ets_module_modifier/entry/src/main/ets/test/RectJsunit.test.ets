@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium';
 import Utils from './Utils'
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest';
 
@@ -49,7 +49,7 @@ export default function rectJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testrect_radiusHeight', 0, async (done: Function) => {
+    it('testrect_radiusHeight', Level.LEVEL0, async (done: Function) => {
       console.info('[testrect_radiusHeight] START');
       let strJson = getInspectorByKey('Rect1');
       let obj: ESObject = JSON.parse(strJson);
@@ -71,7 +71,7 @@ export default function rectJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testrect_radius', 0, async (done: Function) => {
+    it('testrect_radius', Level.LEVEL0, async (done: Function) => {
       console.info('[testrect_radius] START');
       let strJson = getInspectorByKey('Rect2');
       let obj: ESObject = JSON.parse(strJson);
@@ -93,7 +93,7 @@ export default function rectJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testrect_radiusWidth', 0, async (done: Function) => {
+    it('testrect_radiusWidth', Level.LEVEL0, async (done: Function) => {
       console.info('[testrect_radiusWidth] START');
       let strJson = getInspectorByKey('Rect3');
       let obj: ESObject = JSON.parse(strJson);
@@ -115,7 +115,7 @@ export default function rectJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testrect__001', 0, async (done: Function) => {
+    it('testrect__001', Level.LEVEL0, async (done: Function) => {
       console.info('testrect__001 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

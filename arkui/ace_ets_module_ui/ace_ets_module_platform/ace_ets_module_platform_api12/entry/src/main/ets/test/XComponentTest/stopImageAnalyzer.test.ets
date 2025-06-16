@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -63,7 +63,7 @@ export default function stopImageAnalyzerJsunit() {
      * @tc.type :
      * @tc.size :
      */
-    it('startImageAnalyzerTest_0010', 0, async (done: Function) => {
+    it('startImageAnalyzerTest_0010', Level.LEVEL2, async (done: Function) => {
       console.info('startImageAnalyzerTest_0010 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
@@ -85,7 +85,7 @@ export default function stopImageAnalyzerJsunit() {
      * @tc.type :
      * @tc.size :
      */
-    it('stopImageAnalyzerTest_0020', 0, async (done: Function) => {
+    it('stopImageAnalyzerTest_0020', Level.LEVEL2, async (done: Function) => {
       console.info('stopImageAnalyzerTest_0020 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);

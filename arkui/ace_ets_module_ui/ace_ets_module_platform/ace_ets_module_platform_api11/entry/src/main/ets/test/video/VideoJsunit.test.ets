@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 
 function sleep(time: number) {
@@ -61,7 +61,7 @@ export default function videoJsunit() {
      * @tc.name videoAppInfoTest001
      * @tc.desc aceEtsTest
      */
-    it('videoAppInfoTest001', 0, async () => {
+    it('videoAppInfoTest001', Level.LEVEL1, async () => {
       console.info('videoAppInfoTest001 START');
       await sleep(1)
       let strJson = getInspectorByKey('video');

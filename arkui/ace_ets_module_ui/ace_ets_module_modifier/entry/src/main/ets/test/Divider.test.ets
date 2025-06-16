@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
@@ -47,7 +47,7 @@ export default function dividerJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('dividerTest_0001', 0, async (done: Function) => {
+    it('dividerTest_0001', Level.LEVEL0, async (done: Function) => {
       console.info('dividerTest_0001 START');
       let strJsonNew = getInspectorByKey('divider');
       console.info("dividerTest_0001 component  is: " + JSON.stringify(JSON.parse(strJsonNew).$attrs));
@@ -65,7 +65,7 @@ export default function dividerJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('dividerTest_0002', 0, async (done: Function) => {
+    it('dividerTest_0002', Level.LEVEL0, async (done: Function) => {
       console.info('dividerTest_0002 START');
       let strJsonNew = getInspectorByKey('divider');
       console.info("dividerTest_0002 component  is: " + JSON.stringify(JSON.parse(strJsonNew).$attrs));
@@ -83,7 +83,7 @@ export default function dividerJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('dividerTest_0003', 0, async (done: Function) => {
+    it('dividerTest_0003', Level.LEVEL0, async (done: Function) => {
       console.info('dividerTest_0003 START');
       let strJsonNew = getInspectorByKey('divider');
       console.info("dividerTest_0003 component  is: " + JSON.stringify(JSON.parse(strJsonNew).$attrs));
@@ -101,7 +101,7 @@ export default function dividerJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('dividerTest_0004', 0, async (done: Function) => {
+    it('dividerTest_0004', Level.LEVEL0, async (done: Function) => {
       console.info('dividerTest_0004 START');
       let strJsonNew = getInspectorByKey('divider');
       console.info("dividerTest_0004 component  is: " + JSON.stringify(JSON.parse(strJsonNew).$attrs));
@@ -119,7 +119,7 @@ export default function dividerJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('dividerTest_0005', 0, async (done: Function) => {
+    it('dividerTest_0005', Level.LEVEL0, async (done: Function) => {
 
       console.info('dividerTest_0005 START');
       let driver = Driver.create();

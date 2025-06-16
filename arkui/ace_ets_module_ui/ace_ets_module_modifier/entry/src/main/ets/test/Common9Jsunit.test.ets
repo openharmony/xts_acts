@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 
@@ -52,7 +52,7 @@ export default function common9Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('common_focusable', 0, async (done: Function) => {
+    it('common_focusable', Level.LEVEL0, async (done: Function) => {
       console.info('[common_focusable] START');
       let strJson = getInspectorByKey('buttonModifier');
       console.info("[common_focusable] JSON.parse(strJson) is : " + JSON.stringify(JSON.parse(strJson).$attrs));
@@ -69,7 +69,7 @@ export default function common9Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('common_tabIndex', 0, async (done: Function) => {
+    it('common_tabIndex', Level.LEVEL0, async (done: Function) => {
       console.info('[common_tabIndex] START');
       let strJson = getInspectorByKey('buttonModifier');
 
@@ -87,7 +87,7 @@ export default function common9Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('common_defaultFocus', 0, async (done: Function) => {
+    it('common_defaultFocus', Level.LEVEL0, async (done: Function) => {
       console.info('[common_defaultFocus] START');
       let strJson = getInspectorByKey('buttonModifier');
 
@@ -105,7 +105,7 @@ export default function common9Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('common_groupDefaultFocus', 0, async (done: Function) => {
+    it('common_groupDefaultFocus', Level.LEVEL0, async (done: Function) => {
       console.info('[common_groupDefaultFocus] START');
       let strJson = getInspectorByKey('buttonModifier');
 
@@ -123,7 +123,7 @@ export default function common9Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('common_focusOnTouch', 0, async (done: Function) => {
+    it('common_focusOnTouch', Level.LEVEL0, async (done: Function) => {
       console.info('[common_focusOnTouch] START');
       let strJson = getInspectorByKey('buttonModifier');
 
@@ -141,7 +141,7 @@ export default function common9Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('common_brightness', 0, async (done: Function) => {
+    it('common_brightness', Level.LEVEL0, async (done: Function) => {
       console.info('[common_brightness] START');
       let strJson = getInspectorByKey('textModifier');
 
@@ -159,7 +159,7 @@ export default function common9Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('common_contrast', 0, async (done: Function) => {
+    it('common_contrast', Level.LEVEL0, async (done: Function) => {
       console.info('[common_contrast] START');
       let strJson = getInspectorByKey('textModifier');
 
@@ -177,7 +177,7 @@ export default function common9Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('common_grayscale', 0, async (done: Function) => {
+    it('common_grayscale', Level.LEVEL0, async (done: Function) => {
       console.info('[common_grayscale] START');
       let strJson = getInspectorByKey('textModifier');
 
@@ -195,7 +195,7 @@ export default function common9Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('common_colorBlend', 0, async (done: Function) => {
+    it('common_colorBlend', Level.LEVEL0, async (done: Function) => {
       console.info('[common_colorBlend] START');
       let strJson = getInspectorByKey('textModifier');
 
@@ -213,7 +213,7 @@ export default function common9Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('common_saturate', 0, async (done: Function) => {
+    it('common_saturate', Level.LEVEL0, async (done: Function) => {
       console.info('[common_saturate] START');
       let strJson = getInspectorByKey('textModifier');
 
@@ -231,7 +231,7 @@ export default function common9Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('common_foregroundColor', 0, async (done: Function) => {
+    it('common_foregroundColor', Level.LEVEL0, async (done: Function) => {
       console.info('[common_foregroundColor] START');
       let strJson = getInspectorByKey('textModifier');
 
@@ -249,7 +249,7 @@ export default function common9Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('common_borderImage', 0, async (done: Function) => {
+    it('common_borderImage', Level.LEVEL0, async (done: Function) => {
       console.info('[common_borderImage] START');
       let strJson = getInspectorByKey('textModifier');
 
@@ -268,7 +268,7 @@ export default function common9Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('common_borderWidth', 0, async (done: Function) => {
+    it('common_borderWidth', Level.LEVEL0, async (done: Function) => {
       console.info('[common_borderWidth] START');
       let strJson = getInspectorByKey('textModifier2');
 
@@ -289,7 +289,7 @@ export default function common9Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('common_borderColor', 0, async (done: Function) => {
+    it('common_borderColor', Level.LEVEL0, async (done: Function) => {
       console.info('[common_borderColor] START');
       let strJson = getInspectorByKey('textModifier2');
 
@@ -310,7 +310,7 @@ export default function common9Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('common_borderStyle', 0, async (done: Function) => {
+    it('common_borderStyle', Level.LEVEL0, async (done: Function) => {
       console.info('[common_borderStyle] START');
       let strJson = getInspectorByKey('textModifier2');
 
@@ -328,7 +328,7 @@ export default function common9Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('common_borderRadius', 0, async (done: Function) => {
+    it('common_borderRadius', Level.LEVEL0, async (done: Function) => {
       console.info('[common_borderRadius] START');
       let strJson = getInspectorByKey('textModifier2');
 
@@ -349,7 +349,7 @@ export default function common9Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('common_border', 0, async (done: Function) => {
+    it('common_border', Level.LEVEL0, async (done: Function) => {
       console.info('[common_border] START');
       let strJson = getInspectorByKey('textModifier3');
       let obj: ESObject = JSON.parse(strJson);
@@ -394,7 +394,7 @@ export default function common9Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('common_backgroundBlurStyle', 0, async (done: Function) => {
+    it('common_backgroundBlurStyle', Level.LEVEL0, async (done: Function) => {
       console.info('[common_backgroundBlurStyle] START');
       let strJson = getInspectorByKey('textModifier3');
 
@@ -418,7 +418,7 @@ export default function common9Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('common_monopolizeEvents', 0, async (done: Function) => {
+    it('common_monopolizeEvents', Level.LEVEL0, async (done: Function) => {
       console.info('[common_monopolizeEvents] START');
       let strJson = getInspectorByKey('imageModifier');
 
@@ -436,7 +436,7 @@ export default function common9Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('common_backgroundImage', 0, async (done: Function) => {
+    it('common_backgroundImage', Level.LEVEL0, async (done: Function) => {
       console.info('[common_backgroundImage] START');
       let strJson = getInspectorByKey('rowModifier');
 
@@ -454,7 +454,7 @@ export default function common9Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('common_backgroundImageSize', 0, async (done: Function) => {
+    it('common_backgroundImageSize', Level.LEVEL0, async (done: Function) => {
       console.info('[common_backgroundImageSize] START');
       let strJson = getInspectorByKey('rowModifier');
 
@@ -474,7 +474,7 @@ export default function common9Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('common_backgroundImagePosition', 0, async (done: Function) => {
+    it('common_backgroundImagePosition', Level.LEVEL0, async (done: Function) => {
       console.info('[common_backgroundImagePosition] START');
       let strJson = getInspectorByKey('rowModifier');
 
@@ -493,7 +493,7 @@ export default function common9Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('common_size', 0, async (done: Function) => {
+    it('common_size', Level.LEVEL0, async (done: Function) => {
       console.info('[common_size] START');
       let strJson = getInspectorByKey('rowModifier');
 
@@ -513,7 +513,7 @@ export default function common9Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('common_pixelStretchEffect', 0, async (done: Function) => {
+    it('common_pixelStretchEffect', Level.LEVEL0, async (done: Function) => {
       console.info('[common_pixelStretchEffect] START');
       let strJson = getInspectorByKey('textModifier');
 
@@ -535,7 +535,7 @@ export default function common9Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('common_backgroundBrightness', 0, async (done: Function) => {
+    it('common_backgroundBrightness', Level.LEVEL0, async (done: Function) => {
       console.info('[common_backgroundBrightness] START');
       let strJson = getInspectorByKey('textModifier2');
 
@@ -554,7 +554,7 @@ export default function common9Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('common_dragPreviewOptions', 0, async (done: Function) => {
+    it('common_dragPreviewOptions', Level.LEVEL0, async (done: Function) => {
       console.info('[common_dragPreviewOptions] START');
       let strJson = getInspectorByKey('textModifier2');
 
@@ -573,7 +573,7 @@ export default function common9Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('common_layoutWeight', 0, async (done: Function) => {
+    it('common_layoutWeight', Level.LEVEL0, async (done: Function) => {
       console.info('[common_layoutWeight] START');
       let strJson = getInspectorByKey('textModifier3');
 
@@ -591,7 +591,7 @@ export default function common9Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('common_constraintSize', 0, async (done: Function) => {
+    it('common_constraintSize', Level.LEVEL0, async (done: Function) => {
       console.info('[common_constraintSize] START');
       let strJson = getInspectorByKey('textModifier3');
 
@@ -610,7 +610,7 @@ export default function common9Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('common_useEffect', 0, async (done: Function) => {
+    it('common_useEffect', Level.LEVEL0, async (done: Function) => {
       console.info('[common_useEffect] START');
       let strJson = getInspectorByKey('textModifier3');
 
@@ -628,7 +628,7 @@ export default function common9Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('common_sphericalEffect', 0, async (done: Function) => {
+    it('common_sphericalEffect', Level.LEVEL0, async (done: Function) => {
       console.info('[common_sphericalEffect] START');
       let strJson = getInspectorByKey('textModifier3');
 
@@ -646,7 +646,7 @@ export default function common9Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('common_hitTestBehavior', 0, async (done: Function) => {
+    it('common_hitTestBehavior', Level.LEVEL0, async (done: Function) => {
       console.info('[common_hitTestBehavior] START');
       let strJson = getInspectorByKey('buttonModifier2');
 
@@ -665,7 +665,7 @@ export default function common9Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('common_lightUpEffect', 0, async (done: Function) => {
+    it('common_lightUpEffect', Level.LEVEL0, async (done: Function) => {
       console.info('[common_lightUpEffect] START');
       let strJson = getInspectorByKey('textModifier3');
 
@@ -683,7 +683,7 @@ export default function common9Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('common_width', 0, async (done: Function) => {
+    it('common_width', Level.LEVEL0, async (done: Function) => {
       console.info('[common_width] START');
       let strJson = getInspectorByKey('imageModifier');
 
@@ -701,7 +701,7 @@ export default function common9Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('common_height', 0, async (done: Function) => {
+    it('common_height', Level.LEVEL0, async (done: Function) => {
       console.info('[common_height] START');
       let strJson = getInspectorByKey('imageModifier');
 
@@ -719,7 +719,7 @@ export default function common9Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('common_expandSafeArea', 0, async (done: Function) => {
+    it('common_expandSafeArea', Level.LEVEL0, async (done: Function) => {
       console.info('[common_expandSafeArea] START');
       let strJson = getInspectorByKey('rowModifier');
 
@@ -737,7 +737,7 @@ export default function common9Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('common_responseRegion', 0, async (done: Function) => {
+    it('common_responseRegion', Level.LEVEL0, async (done: Function) => {
       console.info('[common_responseRegion] START');
       let strJson = getInspectorByKey('rowModifier');
 
@@ -756,7 +756,7 @@ export default function common9Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('common_visibility', 0, async (done: Function) => {
+    it('common_visibility', Level.LEVEL0, async (done: Function) => {
       console.info('[common_visibility] START');
       let strJson = getInspectorByKey('buttonModifier2');
 
@@ -774,7 +774,7 @@ export default function common9Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('common_opacity', 0, async (done: Function) => {
+    it('common_opacity', Level.LEVEL0, async (done: Function) => {
       console.info('[common_opacity] START');
       let strJson = getInspectorByKey('buttonModifier2');
 
@@ -792,7 +792,7 @@ export default function common9Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('common_margin', 0, async (done: Function) => {
+    it('common_margin', Level.LEVEL0, async (done: Function) => {
       console.info('[common_margin] START');
       let strJson = getInspectorByKey('buttonModifier2');
 
@@ -810,7 +810,7 @@ export default function common9Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('common_padding', 0, async (done: Function) => {
+    it('common_padding', Level.LEVEL0, async (done: Function) => {
       console.info('[common_padding] START');
       let strJson = getInspectorByKey('buttonModifier2');
 
@@ -828,7 +828,7 @@ export default function common9Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('common_backgroundColor', 0, async (done: Function) => {
+    it('common_backgroundColor', Level.LEVEL0, async (done: Function) => {
       console.info('[common_backgroundColor] START');
       let strJson = getInspectorByKey('buttonModifier2');
 
@@ -846,7 +846,7 @@ export default function common9Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('common_linearGradient', 0, async (done: Function) => {
+    it('common_linearGradient', Level.LEVEL0, async (done: Function) => {
       console.info('[common_linearGradient] START');
       let strJson = getInspectorByKey('imageModifier');
 
@@ -864,7 +864,7 @@ export default function common9Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('common_linearGradientBlur', 0, async (done: Function) => {
+    it('common_linearGradientBlur', Level.LEVEL0, async (done: Function) => {
       console.info('[common_linearGradientBlur] START');
       let strJson = getInspectorByKey('imageModifier');
 
@@ -883,7 +883,7 @@ export default function common9Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('common_blendMode', 0, async (done: Function) => {
+    it('common_blendMode', Level.LEVEL0, async (done: Function) => {
       console.info('[common_blendMode] START');
       let strJson = getInspectorByKey('rowModifier');
 
@@ -900,7 +900,7 @@ export default function common9Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('common_accessibilityLevel', 0, async (done: Function) => {
+    it('common_accessibilityLevel', Level.LEVEL0, async (done: Function) => {
       console.info('[common_accessibilityLevel] START');
       let strJson = getInspectorByKey('rowModifier');
 
@@ -918,7 +918,7 @@ export default function common9Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('common_accessibilityDescription', 0, async (done: Function) => {
+    it('common_accessibilityDescription', Level.LEVEL0, async (done: Function) => {
       console.info('[common_accessibilityDescription] START');
       let strJson = getInspectorByKey('rowModifier');
 
@@ -937,7 +937,7 @@ export default function common9Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('common_accessibilityText', 0, async (done: Function) => {
+    it('common_accessibilityText', Level.LEVEL0, async (done: Function) => {
       console.info('[common_accessibilityText] START');
       let strJson = getInspectorByKey('rowModifier');
 
@@ -955,7 +955,7 @@ export default function common9Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('common_accessibilityGroup', 0, async (done: Function) => {
+    it('common_accessibilityGroup', Level.LEVEL0, async (done: Function) => {
       console.info('[common_accessibilityGroup] START');
       let strJson = getInspectorByKey('rowModifier');
 
@@ -974,7 +974,7 @@ export default function common9Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('common_restoreId', 0, async (done: Function) => {
+    it('common_restoreId', Level.LEVEL0, async (done: Function) => {
       console.info('[common_restoreId] START');
       let strJson = getInspectorByKey('rowModifier');
 
@@ -992,7 +992,7 @@ export default function common9Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('common_allowDrop', 0, async (done: Function) => {
+    it('common_allowDrop', Level.LEVEL0, async (done: Function) => {
       console.info('[common_allowDrop] START');
       let strJson = getInspectorByKey('rowModifier');
 
@@ -1010,7 +1010,7 @@ export default function common9Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('common_alignRules', 0, async (done: Function) => {
+    it('common_alignRules', Level.LEVEL0, async (done: Function) => {
       console.info('[common_alignRules] START');
       let strJson = getInspectorByKey('rowModifier');
 
@@ -1028,7 +1028,7 @@ export default function common9Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('common_foregroundBlurStyle', 0, async (done: Function) => {
+    it('common_foregroundBlurStyle', Level.LEVEL0, async (done: Function) => {
       console.info('[common_foregroundBlurStyle] START');
       let strJson = getInspectorByKey('rowModifier');
 

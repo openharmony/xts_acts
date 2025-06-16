@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level} from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest';
@@ -49,7 +49,7 @@ export default function checkBoxGroupTest() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUX_Stage_CheckboxGroup_1000', 0, async (done: Function) => {
+    it('ArkUX_Stage_CheckboxGroup_1000', Level.LEVEL0, async (done: Function) => {
       try {
         console.info('ArkUX_Stage_CheckboxGroup_1000 START');
         let strJson = getInspectorByKey('checkboxNO');
@@ -73,7 +73,7 @@ export default function checkBoxGroupTest() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1001', 0, async (done: Function) => {
+    it('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1001', Level.LEVEL0, async (done: Function) => {
       try {
         console.info('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1001 START');
         let strJson = getInspectorByKey('checkboxNO');
@@ -95,7 +95,7 @@ export default function checkBoxGroupTest() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1002', 0, async (done: Function) => {
+    it('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1002', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1002 START');
       let strJson = getInspectorByKey('checkboxNO');
       console.info('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1002 START  :' + JSON.stringify(strJson));
@@ -112,7 +112,7 @@ export default function checkBoxGroupTest() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1003', 0, async (done: Function) => {
+    it('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1003', Level.LEVEL0, async (done: Function) => {
       try {
         console.info('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1003 START');
         let strJson = getInspectorByKey('checkboxNO');
@@ -134,7 +134,7 @@ export default function checkBoxGroupTest() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1004', 0, async (done: Function) => {
+    it('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1004', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUX_Stage_CheckboxGroup_CheckMarkWidth_1004 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

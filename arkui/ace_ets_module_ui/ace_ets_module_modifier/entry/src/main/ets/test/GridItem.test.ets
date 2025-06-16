@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it,Level } from '@ohos/hypium';
 import Utils from './Utils';
 import { Driver, ON } from '@ohos.UiTest';
 
@@ -48,7 +48,7 @@ export default function gridItemJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testGridItem_0100', 0, async (done: Function) => {
+    it('testGridItem_0100', Level.LEVEL0, async (done: Function) => {
       console.info('[testGridItem_0100] START');
       let driver = Driver.create();
       let item = await driver.findComponent(ON.id('GridItemKey1'));
@@ -66,7 +66,7 @@ export default function gridItemJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testGridItem_0101', 0, async (done: Function) => {
+    it('testGridItem_0101', Level.LEVEL0, async (done: Function) => {
       console.info('[testGridItem_0101] START');
       let strJson = getInspectorByKey('GridItemKey1');
 
@@ -86,7 +86,7 @@ export default function gridItemJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testGridItem_0102', 0, async (done: Function) => {
+    it('testGridItem_0102', Level.LEVEL0, async (done: Function) => {
       console.info('[testGridItem_0102] START');
       let strJson = getInspectorByKey('GridItemKey1');
 
@@ -106,7 +106,7 @@ export default function gridItemJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testGridItem_0103', 0, async (done: Function) => {
+    it('testGridItem_0103', Level.LEVEL0, async (done: Function) => {
       console.info('[testGridItem_0103] START');
       let strJson = getInspectorByKey('GridItemKey1');
 
@@ -126,7 +126,7 @@ export default function gridItemJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testGridItem_0104', 0, async (done: Function) => {
+    it('testGridItem_0104', Level.LEVEL0, async (done: Function) => {
       console.info('[testGridItem_0104] START');
       let strJson = getInspectorByKey('GridItemKey1');
 
@@ -146,7 +146,7 @@ export default function gridItemJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testGridItem_0105', 0, async (done: Function) => {
+    it('testGridItem_0105', Level.LEVEL0, async (done: Function) => {
       console.info('[testGridItem_0105] START');
       let strJson = getInspectorByKey('GridItemKey1');
 
@@ -166,7 +166,7 @@ export default function gridItemJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testGridItem_0106', 0, async (done: Function) => {
+    it('testGridItem_0106', Level.LEVEL0, async (done: Function) => {
       console.info('testGridItem_0106 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

@@ -15,7 +15,7 @@
 
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium';
 import Utils from './Utils'
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 
@@ -49,7 +49,7 @@ export default function gridJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('GridJsunit_0100', 0, async (done: Function) => {
+    it('GridJsunit_0100', Level.LEVEL0, async (done: Function) => {
       console.info('[GridJsunit_0100] START');
       let strJson = getInspectorByKey('GridKey1');
 
@@ -69,7 +69,7 @@ export default function gridJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('GridJsunit_0101', 0, async (done: Function) => {
+    it('GridJsunit_0101', Level.LEVEL0, async (done: Function) => {
       console.info('[GridJsunit_0101] START');
       let strJson = getInspectorByKey('GridKey1');
 
@@ -89,7 +89,7 @@ export default function gridJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('GridJsunit_0103', 0, async (done: Function) => {
+    it('GridJsunit_0103', Level.LEVEL0, async (done: Function) => {
       console.info('[GridJsunit_0103] START');
       let strJson = getInspectorByKey('GridKey1');
 
@@ -109,7 +109,7 @@ export default function gridJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('GridJsunit_0104', 0, async (done: Function) => {
+    it('GridJsunit_0104', Level.LEVEL0, async (done: Function) => {
       console.info('[GridJsunit_0104] START');
       let strJson = getInspectorByKey('GridKey1');
 
@@ -129,7 +129,7 @@ export default function gridJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('GridJsunit_0105', 0, async (done: Function) => {
+    it('GridJsunit_0105', Level.LEVEL0, async (done: Function) => {
       console.info('[GridJsunit_0105] START');
       let strJson = getInspectorByKey('GridKey1');
 
@@ -149,7 +149,7 @@ export default function gridJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('GridJsunit_0106', 0, async (done: Function) => {
+    it('GridJsunit_0106', Level.LEVEL0, async (done: Function) => {
       console.info('[GridJsunit_0106] START');
       let strJson = getInspectorByKey('GridKey1');
 
@@ -168,7 +168,7 @@ export default function gridJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('GridJsunit_0107', 0, async (done: Function) => {
+    it('GridJsunit_0107', Level.LEVEL0, async (done: Function) => {
       console.info('[GridJsunit_0107] START');
       let strJson = getInspectorByKey('GridKey1');
 
@@ -188,7 +188,7 @@ export default function gridJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('GridJsunit_0108', 0, async (done: Function) => {
+    it('GridJsunit_0108', Level.LEVEL0, async (done: Function) => {
       console.info('[GridJsunit_0108] START');
       let strJson = getInspectorByKey('GridKey1');
 
@@ -208,7 +208,7 @@ export default function gridJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('GridJsunit_0109', 0, async (done: Function) => {
+    it('GridJsunit_0109', Level.LEVEL0, async (done: Function) => {
       console.info('[GridJsunit_0109] START');
       let strJson = getInspectorByKey('GridKey1');
 
@@ -228,7 +228,7 @@ export default function gridJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('GridJsunit_0110', 0, async (done: Function) => {
+    it('GridJsunit_0110', Level.LEVEL0, async (done: Function) => {
       console.info('[GridJsunit_0110] START');
       let strJson = getInspectorByKey('GridKey1');
 
@@ -248,7 +248,7 @@ export default function gridJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('GridJsunit_0111', 0, async (done: Function) => {
+    it('GridJsunit_0111', Level.LEVEL0, async (done: Function) => {
       console.info('[GridJsunit_0111] START');
       let strJson = getInspectorByKey('GridKey1');
 
@@ -268,7 +268,7 @@ export default function gridJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('GridJsunit_0113', 0, async (done: Function) => {
+    it('GridJsunit_0113', Level.LEVEL0, async (done: Function) => {
       console.info('[GridJsunit_0113] START');
       let strJson = getInspectorByKey('GridKey1');
 
@@ -288,7 +288,7 @@ export default function gridJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('GridJsunit_0114', 0, async (done: Function) => {
+    it('GridJsunit_0114', Level.LEVEL0, async (done: Function) => {
       console.info('[GridJsunit_0114] START');
       let strJson = getInspectorByKey('GridKey1');
 
@@ -308,7 +308,7 @@ export default function gridJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('GridJsunit_0115', 0, async (done: Function) => {
+    it('GridJsunit_0115', Level.LEVEL0, async (done: Function) => {
       console.info('[GridJsunit_0115] START');
       let strJson = getInspectorByKey('GridKey1');
 
@@ -328,7 +328,7 @@ export default function gridJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('GridJsunit_0116', 0, async (done: Function) => {
+    it('GridJsunit_0116', Level.LEVEL0, async (done: Function) => {
       console.info('[GridJsunit_0116] START');
       let strJson = getInspectorByKey('GridKey1');
 
@@ -348,7 +348,7 @@ export default function gridJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('GridJsunit_0117', 0, async (done: Function) => {
+    it('GridJsunit_0117', Level.LEVEL0, async (done: Function) => {
       console.info('[GridJsunit_0117] START');
       let strJson = getInspectorByKey('GridKey1');
 
@@ -368,7 +368,7 @@ export default function gridJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('GridJsunit_0118', 0, async (done: Function) => {
+    it('GridJsunit_0118', Level.LEVEL0, async (done: Function) => {
       console.info('[GridJsunit_0118] START');
       let strJson = getInspectorByKey('GridKey1');
 
@@ -388,7 +388,7 @@ export default function gridJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('GridJsunit_0120', 0, async (done: Function) => {
+    it('GridJsunit_0120', Level.LEVEL0, async (done: Function) => {
       console.info('[GridJsunit_0120] START');
       let strJson = getInspectorByKey('GridKey1');
 
@@ -408,7 +408,7 @@ export default function gridJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('GridJsunit_0119', 0, async (done: Function) => {
+    it('GridJsunit_0119', Level.LEVEL0, async (done: Function) => {
       console.info('GridJsunit_0119 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

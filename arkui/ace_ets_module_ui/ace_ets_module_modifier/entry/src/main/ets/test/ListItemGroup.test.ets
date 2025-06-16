@@ -15,7 +15,7 @@
 
 import events_emitter from '@ohos.events.emitter';
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium';
 import Utils from './Utils'
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest';
 
@@ -49,7 +49,7 @@ export default function listItemGroupJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testList_item_group0007', 0, async (done: Function) => {
+    it('testList_item_group0007', Level.LEVEL0, async (done: Function) => {
       console.info('testList_item_group0007 START');
       let strJson = getInspectorByKey('ListItemGroupKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -72,7 +72,7 @@ export default function listItemGroupJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testList_item_group0008', 0, async (done: Function) => {
+    it('testList_item_group0008', Level.LEVEL0, async (done: Function) => {
       console.info('testList_item_group0008 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

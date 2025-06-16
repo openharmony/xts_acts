@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium';
 import Utils from './Utils'
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest';
 
@@ -48,7 +48,7 @@ export default function lineNeJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testLineNe00071', 0, async (done: Function) => {
+    it('testLineNe00071', Level.LEVEL0, async (done: Function) => {
       console.info('lineNe testLineNe00071 START');
       let strJson = getInspectorByKey('LineKey1');
       console.info("[testLineNe00071] obj value :" + JSON.parse(strJson).$attrs);
@@ -65,7 +65,7 @@ export default function lineNeJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testLineNe00072', 0, async (done: Function) => {
+    it('testLineNe00072', Level.LEVEL0, async (done: Function) => {
       console.info('lineNe testLineNe00072 START');
       let strJson = getInspectorByKey('LineKey1');
       console.info("[testLineNe00072] obj value :" + JSON.parse(strJson).$attrs);
@@ -82,7 +82,7 @@ export default function lineNeJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testLineNe00073', 0, async (done: Function) => {
+    it('testLineNe00073', Level.LEVEL0, async (done: Function) => {
       console.info('testLineNe00073 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

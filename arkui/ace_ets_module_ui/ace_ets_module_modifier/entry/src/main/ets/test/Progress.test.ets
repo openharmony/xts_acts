@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium';
 import Utils from './Utils'
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 
@@ -48,7 +48,7 @@ export default function progressStyleJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testProgressStyle0001', 0, async (done: Function) => {
+    it('testProgressStyle0001', Level.LEVEL0, async (done: Function) => {
       console.info('testProgressStyle0001 START');
       let strJson = getInspectorByKey('ProgressKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -68,7 +68,7 @@ export default function progressStyleJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testProgressStyle0002', 0, async (done: Function) => {
+    it('testProgressStyle0002', Level.LEVEL0, async (done: Function) => {
       console.info('testProgressStyle0002 START');
       let strJson = getInspectorByKey('ProgressKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -88,7 +88,7 @@ export default function progressStyleJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testProgressStyle0003', 0, async (done: Function) => {
+    it('testProgressStyle0003', Level.LEVEL0, async (done: Function) => {
       console.info('testProgressStyle0003 START');
       let strJson = getInspectorByKey('ProgressKey1');
       let obj: ESObject = JSON.parse(strJson);
@@ -106,7 +106,7 @@ export default function progressStyleJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testProgressStyle0004', 0, async (done: Function) => {
+    it('testProgressStyle0004', Level.LEVEL0, async (done: Function) => {
       console.info('testProgressStyle0004 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));
