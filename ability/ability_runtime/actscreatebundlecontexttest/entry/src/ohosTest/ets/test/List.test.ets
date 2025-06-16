@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import createModuleContextTest from './createModuleContext.test'
+import createModuleContextTest from './CreateModuleContext.test'
 
 export default function testsuite() {
   createModuleContextTest();
