@@ -15,8 +15,10 @@
 
 import DragModifier from './DragEvent/DragModifier.test';
 import normalDrag from './DragEvent/normalDrag.test';
+import dragSpringLoading from './DragEvent/dragSpringLoading.test';
 
 export default function testsuite() {
-  DragModifier()
-  normalDrag()
+  DragModifier();
+  normalDrag();
+  dragSpringLoading();
 }
