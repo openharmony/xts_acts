@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -45,7 +45,7 @@ export default function listItemJsunit2() {
       console.info("listItem after each called");
     });
 
-    it('testListItem01', 0, async (done: Function) => {
+    it('testListItem01', Level.LEVEL1, async (done: Function) => {
       console.info('[testListItem01] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ListItem');
@@ -56,7 +56,7 @@ export default function listItemJsunit2() {
       done();
     });
 
-    it('testListItem02', 0, async (done: Function) => {
+    it('testListItem02', Level.LEVEL1, async (done: Function) => {
       console.info('[testListItem02] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -82,7 +82,7 @@ export default function listItemJsunit2() {
       done();
     });
 
-    it('testListItem03', 0, async (done: Function) => {
+    it('testListItem03', Level.LEVEL1, async (done: Function) => {
       console.info('[testListItem03] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('List');
@@ -93,7 +93,7 @@ export default function listItemJsunit2() {
       done();
     });
 
-    it('testListItem04', 0, async (done: Function) => {
+    it('testListItem04', Level.LEVEL1, async (done: Function) => {
       console.info('[testEllipse03] START');
       try {
         let eventData: events_emitter.EventData = {

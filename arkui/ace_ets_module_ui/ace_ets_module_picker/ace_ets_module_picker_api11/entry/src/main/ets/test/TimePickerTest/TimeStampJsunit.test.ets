@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium"
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from '../Utils';
 import events_emitter from '@ohos.events.emitter';
@@ -44,7 +44,7 @@ export default function timeStampJsunit() {
       console.info("timeStamp after each called");
     });
 
-    it('timeStampTest_0100', 0, async (done: Function) => {
+    it('timeStampTest_0100', Level.LEVEL1, async (done: Function) => {
       console.info('timeStampTest_0100 START');
       await Utils.sleep(1500);
       let callback = (indexEvent: events_emitter.EventData) => {

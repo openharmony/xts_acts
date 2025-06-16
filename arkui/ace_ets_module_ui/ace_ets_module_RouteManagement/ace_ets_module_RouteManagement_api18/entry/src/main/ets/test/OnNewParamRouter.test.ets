@@ -14,7 +14,7 @@
  */
 
 import CommonFunc from '../MainAbility/common/Common';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import events_emitter from '@ohos.events.emitter'
@@ -54,8 +54,10 @@ export default function OnNewParamRouter() {
      * @tc.name      OnNewParamRouter_0100
      * @tc.desc      Test Router OnNewParam by pushUrl router.RouterMode.Single
      * @tc.level     Level 2
+     * @tc.type
+     * @tc.size
      */
-    it('OnNewParamRouter_0100', 0, async (done: Function) => {
+    it('OnNewParamRouter_0100', Level.LEVEL2, async (done: Function) => {
       console.info('OnNewParamRouter_0100 START');
       let indexEvent: events_emitter.InnerEvent = {
         eventId: 51,
@@ -98,7 +100,7 @@ export default function OnNewParamRouter() {
      * @tc.desc      Test Router OnNewParam by replaceUrl router.RouterMode.Single
      * @tc.level     Level 2
      */
-    it('OnNewParamRouter_0200', 0, async (done: Function) => {
+    it('OnNewParamRouter_0200', Level.LEVEL2, async (done: Function) => {
       console.info('OnNewParamRouter_0200 START');
       let indexEvent: events_emitter.InnerEvent = {
         eventId: 52,
@@ -141,7 +143,7 @@ export default function OnNewParamRouter() {
      * @tc.desc      Test Router OnNewParam by pushNamedRoute router.RouterMode.Single
      * @tc.level     Level 2
      */
-    it('OnNewParamRouter_0300', 0, async (done: Function) => {
+    it('OnNewParamRouter_0300', Level.LEVEL2, async (done: Function) => {
       console.info('OnNewParamRouter_0300 START');
       let indexEvent: events_emitter.InnerEvent = {
         eventId: 53,

@@ -44,7 +44,7 @@ export default function showTimePickerDialogBlurStyleOptionsTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('showTimePickerDialogBlurStyleOptions_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('showTimePickerDialogBlurStyleOptions_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let tagName = 'showTimePickerDialogBlurStyleOptions';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000);
@@ -86,7 +86,7 @@ export default function showTimePickerDialogBlurStyleOptionsTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('showTimePickerDialogBlurStyleOptions_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('showTimePickerDialogBlurStyleOptions_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let tagName = 'showTimePickerDialogBlurStyleOptions_0200';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000);
@@ -118,7 +118,7 @@ export default function showTimePickerDialogBlurStyleOptionsTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('showTimePickerDialogBlurStyleOptions_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('showTimePickerDialogBlurStyleOptions_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let tagName = 'showTimePickerDialogBlurStyleOptions_0300';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000);

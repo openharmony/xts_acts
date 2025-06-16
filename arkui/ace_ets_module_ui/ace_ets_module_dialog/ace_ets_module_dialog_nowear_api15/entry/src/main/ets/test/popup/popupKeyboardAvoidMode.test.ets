@@ -20,6 +20,7 @@ import {
     afterAll,
     it,
     expect,
+    Level
 } from "@ohos/hypium"
 import router from "@ohos.router"
 import {
@@ -88,7 +89,7 @@ export default function popupKeyboardAvoidMode() {
          * @tc.type :
          * @tc.size :
          */
-        it("popupKeyboardAvoidMode_0100", 1, async (done: Function) => {
+        it("popupKeyboardAvoidMode_0100", Level.LEVEL1, async (done: Function) => {
             console.info("popupKeyboardAvoidMode_0100 START")
             if (!currentDeviceIsPC) {
                 await CommonFunc.sleep(1000)
@@ -126,7 +127,7 @@ export default function popupKeyboardAvoidMode() {
          * @tc.type :
          * @tc.size :
          */
-        it("popupKeyboardAvoidMode_0200", 1, async (done: Function) => {
+        it("popupKeyboardAvoidMode_0200", Level.LEVEL1, async (done: Function) => {
             console.info("popupKeyboardAvoidMode_0200 START")
             if (!currentDeviceIsPC) {
                 await CommonFunc.sleep(1000)
@@ -161,7 +162,7 @@ export default function popupKeyboardAvoidMode() {
          * @tc.type :
          * @tc.size :
          */
-        it("popupKeyboardAvoidMode_0300", 1, async (done: Function) => {
+        it("popupKeyboardAvoidMode_0300", Level.LEVEL1, async (done: Function) => {
             console.info("popupKeyboardAvoidMode_0300 START")
             if (!currentDeviceIsPC) {
                 await CommonFunc.sleep(1000)
@@ -207,7 +208,7 @@ export default function popupKeyboardAvoidMode() {
          * @tc.type :
          * @tc.size :
          */
-        it("popupKeyboardAvoidMode_0400", 1, async (done: Function) => {
+        it("popupKeyboardAvoidMode_0400", Level.LEVEL1, async (done: Function) => {
             console.info("popupKeyboardAvoidMode_0400 START")
             if (!currentDeviceIsPC) {
                 await CommonFunc.sleep(1000)

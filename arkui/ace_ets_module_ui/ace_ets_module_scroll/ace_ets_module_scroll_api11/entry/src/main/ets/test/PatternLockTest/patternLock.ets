@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium'
 let emitKey = "emitUserAgent";
 export default function patternLockTest() {
 
@@ -49,7 +49,7 @@ export default function patternLockTest() {
      *tc.name   Support setting the dot color
      *tc.desc   Sets the setChallengeResult property parameter to undefined
      */
-     it('ArkUX_Stage_PatternLock_setChallengeResult_0100', 0, async (done: Function) => {
+     it('ArkUX_Stage_PatternLock_setChallengeResult_0100', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_PatternLock_setChallengeResult_0100 START');
       try {
         let strJson = getInspectorByKey('lock');
@@ -70,7 +70,7 @@ export default function patternLockTest() {
      *tc.name   Support getting the dot index
      *tc.desc   Sets the onDotConnect property parameter to undefined
      */
-    it('ArkUX_Stage_PatternLock_onDotConnect_0100', 0, async (done: Function) => {
+    it('ArkUX_Stage_PatternLock_onDotConnect_0100', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_PatternLock_onDotConnect_0100 START');
       try {
         let strJson = getInspectorByKey('lock');

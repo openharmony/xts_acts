@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../../MainAbility/common/Utils';
@@ -44,7 +44,7 @@ export default function calendarJsunit() {
       console.info("calendar after each called");
     })
 
-    it('ACE_calendar_CurrentDayStyle_colSpace', 0, async (done: Function) => {
+    it('ACE_calendar_CurrentDayStyle_colSpace', Level.LEVEL2, async (done: Function) => {
       console.info('[ACE_calendar_CurrentDayStyle_colSpace] START');
       await Utils.sleep(1000);
       try {
@@ -65,7 +65,7 @@ export default function calendarJsunit() {
       done();
     });
 
-    it('ACE_calendar_CurrentDayStyle_dailyFiveRowSpace', 0, async (done: Function) => {
+    it('ACE_calendar_CurrentDayStyle_dailyFiveRowSpace', Level.LEVEL2, async (done: Function) => {
       console.info('[ACE_calendar_CurrentDayStyle_dailyFiveRowSpace] START');
       await Utils.sleep(1000);
       try {
@@ -87,7 +87,7 @@ export default function calendarJsunit() {
     });
 
 
-    it('ACE_calendar_CurrentDayStyle_dailySixRowSpace', 0, async (done: Function) => {
+    it('ACE_calendar_CurrentDayStyle_dailySixRowSpace', Level.LEVEL2, async (done: Function) => {
       console.info('[ACE_calendar_CurrentDayStyle_dailySixRowSpace] START');
       await Utils.sleep(1000);
       try {
@@ -109,7 +109,7 @@ export default function calendarJsunit() {
     });
 
 
-    it('ACE_calendar_CurrentDayStyle_lunarHeight', 0, async (done: Function) => {
+    it('ACE_calendar_CurrentDayStyle_lunarHeight', Level.LEVEL2, async (done: Function) => {
       console.info('[ACE_calendar_CurrentDayStyle_lunarHeight] START');
       await Utils.sleep(1000);
       try {
@@ -131,7 +131,7 @@ export default function calendarJsunit() {
     });
 
 
-    it('ACE_calendar_CurrentDayStyle_underscoreWidth', 0, async (done: Function) => {
+    it('ACE_calendar_CurrentDayStyle_underscoreWidth', Level.LEVEL2, async (done: Function) => {
       console.info('[ACE_calendar_CurrentDayStyle_underscoreWidth] START');
       await Utils.sleep(1000);
       try {
@@ -153,7 +153,7 @@ export default function calendarJsunit() {
     });
 
 
-    it('ACE_calendar_CurrentDayStyle_underscoreLength', 0, async (done: Function) => {
+    it('ACE_calendar_CurrentDayStyle_underscoreLength', Level.LEVEL2, async (done: Function) => {
       console.info('[ACE_calendar_CurrentDayStyle_underscoreLength] START');
       await Utils.sleep(1000);
       try {
@@ -175,7 +175,7 @@ export default function calendarJsunit() {
     });
 
 
-    it('ACE_calendar_CurrentDayStyle_scheduleMarkerRadius', 0, async (done: Function) => {
+    it('ACE_calendar_CurrentDayStyle_scheduleMarkerRadius', Level.LEVEL2, async (done: Function) => {
       console.info('[ACE_calendar_CurrentDayStyle_scheduleMarkerRadius] START');
       await Utils.sleep(1000);
       try {
@@ -197,7 +197,7 @@ export default function calendarJsunit() {
     });
 
 
-    it('ACE_calendar_CurrentDayStyle_boundaryRowOffset', 0, async (done: Function) => {
+    it('ACE_calendar_CurrentDayStyle_boundaryRowOffset', Level.LEVEL2, async (done: Function) => {
       console.info('[ACE_calendar_CurrentDayStyle_boundaryRowOffset] START');
       await Utils.sleep(1000);
       try {
@@ -218,7 +218,7 @@ export default function calendarJsunit() {
       done();
     });
 
-    it('ACE_calendar_WeekStyle_weekAndDayRowSpace', 0, async (done: Function) => {
+    it('ACE_calendar_WeekStyle_weekAndDayRowSpace', Level.LEVEL2, async (done: Function) => {
       console.info('[ACE_calendar_WeekStyle_weekAndDayRowSpace] START');
       await Utils.sleep(1000);
       try {
@@ -240,7 +240,7 @@ export default function calendarJsunit() {
     });
 
 
-    it('ACE_calendar_CalendarAttribute_direction', 0, async (done: Function) => {
+    it('ACE_calendar_CalendarAttribute_direction', Level.LEVEL2, async (done: Function) => {
       console.info('[ACE_calendar_CalendarAttribute_direction] START');
       await Utils.sleep(1000);
       try {

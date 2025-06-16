@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from '../../MainAbility/common/Utils';
 import { Driver, ON } from '@ohos.UiTest';
 import inputEventClient from '@ohos.multimodalInput.inputEventClient';
@@ -53,7 +53,7 @@ export default function RatingAdvancedTest() {
      * @tc.desc        indicator = false, dont set focusable
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_RATING_HOVERKEYBOARD_0040', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_RATING_HOVERKEYBOARD_0040', Level.LEVEL3, async (done: Function) => {
       console.info('[SUB_ACE_UI_COMPONENT_BUTTON_RATING_HOVERKEYBOARD_0040] START');
       await routerPush("ratingFocus01")
       await Utils.sleep(2000);
@@ -74,7 +74,7 @@ export default function RatingAdvancedTest() {
      * @tc.desc        indicator = true, don't set focusable
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_RATING_HOVERKEYBOARD_0050', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_RATING_HOVERKEYBOARD_0050', Level.LEVEL3, async (done: Function) => {
       console.info('[SUB_ACE_UI_COMPONENT_BUTTON_RATING_HOVERKEYBOARD_0050] START');
       await routerPush("ratingFocus02")
       await Utils.sleep(2000);
@@ -95,7 +95,7 @@ export default function RatingAdvancedTest() {
      * @tc.desc        indicator = false , focusable = true
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_RATING_HOVERKEYBOARD_0060', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_RATING_HOVERKEYBOARD_0060', Level.LEVEL3, async (done: Function) => {
       console.info('[SUB_ACE_UI_COMPONENT_BUTTON_RATING_HOVERKEYBOARD_0060] START');
       await routerPush("ratingFocus03")
       await Utils.sleep(2000);
@@ -116,7 +116,7 @@ export default function RatingAdvancedTest() {
      * @tc.desc        indicator = false , focusable = false
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_RATING_HOVERKEYBOARD_0070', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_RATING_HOVERKEYBOARD_0070', Level.LEVEL3, async (done: Function) => {
       console.info('[SUB_ACE_UI_COMPONENT_BUTTON_RATING_HOVERKEYBOARD_0070] START');
       await routerPush("ratingFocus04")
       await Utils.sleep(2000);
@@ -137,7 +137,7 @@ export default function RatingAdvancedTest() {
      * @tc.desc        indicator = true , focusable = true
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_RATING_HOVERKEYBOARD_0080', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_RATING_HOVERKEYBOARD_0080', Level.LEVEL3, async (done: Function) => {
       console.info('[SUB_ACE_UI_COMPONENT_BUTTON_RATING_HOVERKEYBOARD_0080] START');
       await routerPush("ratingFocus05")
       await Utils.sleep(2000);
@@ -158,7 +158,7 @@ export default function RatingAdvancedTest() {
      * @tc.desc        indicator = true , focusable = false
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_RATING_HOVERKEYBOARD_0090', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_RATING_HOVERKEYBOARD_0090', Level.LEVEL3, async (done: Function) => {
       console.info('[SUB_ACE_UI_COMPONENT_BUTTON_RATING_HOVERKEYBOARD_0090] START');
       await routerPush("ratingFocus06")
       await Utils.sleep(2000);
@@ -179,7 +179,7 @@ export default function RatingAdvancedTest() {
      * @tc.desc        indicator = false , observe onChange
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_RATING_INTERFACE_0010', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_RATING_INTERFACE_0010', Level.LEVEL3, async (done: Function) => {
       console.info('[SUB_ACE_UI_COMPONENT_BUTTON_RATING_INTERFACE_0010] START');
       await routerPush("rating01")
       await Utils.sleep(2000);
@@ -202,7 +202,7 @@ export default function RatingAdvancedTest() {
      * @tc.desc        indicator = true , observe onChange
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_RATING_INTERFACE_0020', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_RATING_INTERFACE_0020', Level.LEVEL3, async (done: Function) => {
       console.info('[SUB_ACE_UI_COMPONENT_BUTTON_RATING_INTERFACE_0020] START');
       await routerPush("rating02")
       await Utils.sleep(2000);
@@ -225,7 +225,7 @@ export default function RatingAdvancedTest() {
      * @tc.desc        stepSize = 0.05
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_RATING_INTERFACE_0170', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_RATING_INTERFACE_0170', Level.LEVEL3, async (done: Function) => {
       console.info('[SUB_ACE_UI_COMPONENT_BUTTON_RATING_INTERFACE_0170] START');
       await routerPush("rating03")
       await Utils.sleep(2000);
@@ -253,7 +253,7 @@ export default function RatingAdvancedTest() {
      * @tc.desc        width 300 , height 300
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_RATING_LAYOUT_0010', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_RATING_LAYOUT_0010', Level.LEVEL3, async (done: Function) => {
       console.info('[SUB_ACE_UI_COMPONENT_BUTTON_RATING_LAYOUT_0010] START');
       await routerPush("rating04")
       await Utils.sleep(2000);
@@ -275,7 +275,7 @@ export default function RatingAdvancedTest() {
      * @tc.desc        set height , observe width
      * @tc.level       Level 3
      */
-    it('SUB_ACE_UI_COMPONENT_BUTTON_RATING_LAYOUT_0040', 3, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_BUTTON_RATING_LAYOUT_0040', Level.LEVEL3, async (done: Function) => {
       console.info('[SUB_ACE_UI_COMPONENT_BUTTON_RATING_LAYOUT_0040] START');
       await routerPush("rating05")
       await Utils.sleep(2000);

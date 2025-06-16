@@ -44,7 +44,7 @@ export default function showTextPickerDialogBackgroundEffectTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('showTextPickerDialogBackgroundEffectTest_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('showTextPickerDialogBackgroundEffectTest_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let tagName = 'showTextPickerDialogBackgroundEffectTest_0100';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000);
@@ -92,7 +92,7 @@ export default function showTextPickerDialogBackgroundEffectTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('showTextPickerDialogBackgroundEffectTest_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('showTextPickerDialogBackgroundEffectTest_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let tagName = 'showTextPickerDialogDialogBackgroundEffectTest_0200';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000);
@@ -127,7 +127,7 @@ export default function showTextPickerDialogBackgroundEffectTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('showTextPickerDialogBackgroundEffectTest_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('showTextPickerDialogBackgroundEffectTest_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let tagName = 'showTextPickerDialogBackgroundEffectTest_0300';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000);

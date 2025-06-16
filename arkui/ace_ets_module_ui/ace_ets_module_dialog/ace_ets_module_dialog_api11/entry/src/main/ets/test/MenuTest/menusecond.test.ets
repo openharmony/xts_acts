@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 
 function sleep(time: number) {
@@ -52,7 +52,7 @@ export default function menuSecondTest() {
      * @tc.name Tests whether the menu enabled is displayed
      * @tc.desc Tests whether the menu enabled is displayed
      */
-    it('ArkUX_Stage_Menu_Enabled_0100', 0, async () => {
+    it('ArkUX_Stage_Menu_Enabled_0100', Level.LEVEL2, async () => {
       let obj: ESObject = JSON.parse(getInspectorByKey("Menu"))
       console.info('ArkUX_Stage_Menu_Enabled_0100 bindMenuEnabled :' + JSON.stringify(obj.$attrs.bindMenuEnabled));
     })
@@ -62,7 +62,7 @@ export default function menuSecondTest() {
      * @tc.name Test the hover menu preview display
      * @tc.desc Test the hover menu preview display
      */
-    it('ArkUX_Stage_Menu_Preview_0100', 0, async () => {
+    it('ArkUX_Stage_Menu_Preview_0100', Level.LEVEL2, async () => {
       let obj: ESObject = JSON.parse(getInspectorByKey("floatingMenuImage"))
       console.info('ArkUX_Stage_Menu_Preview_0100 preview :' + JSON.stringify(obj.$attrs.preview));
     })
@@ -72,7 +72,7 @@ export default function menuSecondTest() {
      * @tc.name Test the hover menu preview display
      * @tc.desc Test the hover menu preview display
      */
-    it('ArkUX_Stage_Menu_Preview_0200', 0, async () => {
+    it('ArkUX_Stage_Menu_Preview_0200', Level.LEVEL2, async () => {
       let obj: ESObject = JSON.parse(getInspectorByKey("floatingMenuBuilder"))
       console.info('ArkUX_Stage_Menu_Preview_0200 preview :' + JSON.stringify(obj.$attrs.preview));
     })

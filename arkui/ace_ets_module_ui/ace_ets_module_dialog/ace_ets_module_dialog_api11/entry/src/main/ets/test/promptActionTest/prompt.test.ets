@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from '../../MainAbility/common/Utils'
 import events_emitter from '@ohos.events.emitter';
 
@@ -50,7 +50,7 @@ export default function promptShowDialogJsunit() {
      * @tc.name         testpromptShowDialog001
      * @tc.desic         acepromptShowDialogEtsTest001
      */
-    it('testpromptShowDialog001', 0, async () => {
+    it('testpromptShowDialog001', Level.LEVEL2, async () => {
       console.info('promptShowDialog testpromptShowDialog001 START');
       await Utils.sleep(1000);
       try {
@@ -76,7 +76,7 @@ export default function promptShowDialogJsunit() {
      * @tc.name         testshowActionMenu0001
      * @tc.desic         aceshowActionMenuEtsTest0001
      */
-    it('testshowActionMenu0001', 0, async () => {
+    it('testshowActionMenu0001', Level.LEVEL2, async () => {
       console.info('promptShowDialog testshowActionMenu0001 START');
       await Utils.sleep(1000);
       try {

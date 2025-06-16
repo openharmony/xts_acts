@@ -15,7 +15,7 @@
 
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from '../../MainAbility/common/Utils'
 
 export default function alphabetIndexerOnSelectJsunit() {
@@ -50,7 +50,7 @@ export default function alphabetIndexerOnSelectJsunit() {
      * @tc.name         testalphabetIndexer0001
      * @tc.desic         acealphabetIndexerEtsTest0001
      */
-    it('testalphabetIndexerWidth0001', 0, async () => {
+    it('testalphabetIndexerWidth0001', Level.LEVEL1, async () => {
       console.info('alphabetIndexerWidth testalphabetIndexerWidth0001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('alphabetIndexer');
@@ -67,7 +67,7 @@ export default function alphabetIndexerOnSelectJsunit() {
      * @tc.name         testalphabetIndexer0002
      * @tc.desic         acealphabetIndexerEtsTest0002
      */
-    it('testalphabetIndexerHeight0002', 0, async () => {
+    it('testalphabetIndexerHeight0002', Level.LEVEL1, async () => {
       console.info('alphabetIndexerHeight testalphabetIndexerHeight0002 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('alphabetIndexer');
@@ -84,7 +84,7 @@ export default function alphabetIndexerOnSelectJsunit() {
      * @tc.name         testalphabetIndexer0003
      * @tc.desic         acealphabetIndexerEtsTest0003
      */
-    it('testalphabetIndexerColor0003', 0, async () => {
+    it('testalphabetIndexerColor0003', Level.LEVEL1, async () => {
       console.info('alphabetIndexerColor testalphabetIndexerColor0003 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('alphabetIndexer');
@@ -101,7 +101,7 @@ export default function alphabetIndexerOnSelectJsunit() {
      * @tc.name         testalphabetIndexer0004
      * @tc.desic         acealphabetIndexerEtsTest0004
      */
-    it('testalphabetIndexerSelectedColor0004', 0, async () => {
+    it('testalphabetIndexerSelectedColor0004', Level.LEVEL1, async () => {
       console.info('alphabetIndexerSelectedColor testalphabetIndexerSelectedColor0004 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('alphabetIndexer');
@@ -120,7 +120,7 @@ export default function alphabetIndexerOnSelectJsunit() {
      * @tc.name         testalphabetIndexer0005
      * @tc.desic         acealphabetIndexerEtsTest0005
      */
-    it('testalphabetIndexerPopupColor0005', 0, async () => {
+    it('testalphabetIndexerPopupColor0005', Level.LEVEL1, async () => {
       console.info('alphabetIndexerPopupColor testalphabetIndexerPopupColor0005 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('alphabetIndexer');
@@ -137,7 +137,7 @@ export default function alphabetIndexerOnSelectJsunit() {
      * @tc.name         testalphabetIndexer0006
      * @tc.desic         acealphabetIndexerEtsTest0006
      */
-    it('testalphabetIndexerSelectedBackgroundColor0006', 0, async () => {
+    it('testalphabetIndexerSelectedBackgroundColor0006', Level.LEVEL1, async () => {
       console.info('alphabetIndexerSelectedBackgroundColor testalphabetIndexerSelectedBackgroundColor0006 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('alphabetIndexer');
@@ -156,7 +156,7 @@ export default function alphabetIndexerOnSelectJsunit() {
      * @tc.name         testalphabetIndexer0007
      * @tc.desic         acealphabetIndexerEtsTest0007
      */
-    it('testalphabetIndexerPopupBackground0007', 0, async () => {
+    it('testalphabetIndexerPopupBackground0007', Level.LEVEL1, async () => {
       console.info('alphabetIndexerPopupBackground testalphabetIndexerPopupBackground0007 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('alphabetIndexer');
@@ -175,7 +175,7 @@ export default function alphabetIndexerOnSelectJsunit() {
      * @tc.name         testalphabetIndexer0009
      * @tc.desic         acealphabetIndexerEtsTest0009
      */
-    it('testalphabetIndexerUsingPopup0009', 0, async () => {
+    it('testalphabetIndexerUsingPopup0009', Level.LEVEL1, async () => {
       console.info('alphabetIndexerUsingPopup testalphabetIndexerUsingPopup009 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('alphabetIndexer');
@@ -192,7 +192,7 @@ export default function alphabetIndexerOnSelectJsunit() {
      * @tc.name         testalphabetIndexer0010
      * @tc.desic         acealphabetIndexerEtsTest0010
      */
-    it('testalphabetIndexerItemSize0010', 0, async () => {
+    it('testalphabetIndexerItemSize0010', Level.LEVEL1, async () => {
       console.info('alphabetIndexerItemSize testalphabetIndexerItemSize0010 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('alphabetIndexer');
@@ -209,7 +209,7 @@ export default function alphabetIndexerOnSelectJsunit() {
      * @tc.name         testalphabetIndexer0011
      * @tc.desic         acealphabetIndexerEtsTest0011
      */
-    it('testalphabetIndexerAlignStyle0011', 0, async () => {
+    it('testalphabetIndexerAlignStyle0011', Level.LEVEL1, async () => {
       console.info('alphabetIndexerAlignStyle testalphabetIndexerAlignStyle0011 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('alphabetIndexer');
@@ -226,7 +226,7 @@ export default function alphabetIndexerOnSelectJsunit() {
      * @tc.name         testalphabetIndexerOnSelect0012
      * @tc.desic         acealphabetIndexerOnSelectEtsTest0012
      */
-    it('testalphabetIndexerOnSelect0012', 0, async () => {
+    it('testalphabetIndexerOnSelect0012', Level.LEVEL1, async () => {
       console.info('alphabetIndexerOnSelect testalphabetIndexerOnSelect0011 START');
       await Utils.sleep(2000);
       try {

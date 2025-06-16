@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { Driver } from '@ohos.UiTest';
 import { router } from '@kit.ArkUI';
 import Utils from '../../MainAbility/common/Utils';
@@ -41,7 +41,7 @@ export default function TextPickerDialogEnableHapticFeedbackTest() {
       console.info('TextPickerDialogEnableHapticFeedback beforeEach end');
       done();
     });
-     it('TextPickerDialog_EnableHapticFeedback_001', 0, async (done: Function) => {
+     it('TextPickerDialog_EnableHapticFeedback_001', Level.LEVEL1, async (done: Function) => {
       let tagName = 'TextPickerDialog_EnableHapticFeedback_001';
       console.info('[' + tagName + '] START============================');
       await CommonFunc.sleep(1000);
@@ -59,7 +59,7 @@ export default function TextPickerDialogEnableHapticFeedbackTest() {
       done();
     });
 
-   it('TextPickerDialog_EnableHapticFeedback_002', 0, async (done: Function) => {
+   it('TextPickerDialog_EnableHapticFeedback_002', Level.LEVEL1, async (done: Function) => {
       let tagName = 'TextPickerDialog_EnableHapticFeedback_002';
       console.info('[' + tagName + '] START============================');
       await CommonFunc.sleep(1000);
@@ -77,7 +77,7 @@ export default function TextPickerDialogEnableHapticFeedbackTest() {
       done();
     });
 
-    it('TextPickerDialog_EnableHapticFeedback_003', 0, async (done: Function) => {
+    it('TextPickerDialog_EnableHapticFeedback_003', Level.LEVEL1, async (done: Function) => {
         let tagName = 'TextPickerDialog_EnableHapticFeedback_003';
         console.info('[' + tagName + '] START============================');
         await CommonFunc.sleep(1000);
@@ -96,7 +96,7 @@ export default function TextPickerDialogEnableHapticFeedbackTest() {
       });
 
 
-      it('TextPickerDialog_EnableHapticFeedback_004', 0, async (done: Function) => {
+      it('TextPickerDialog_EnableHapticFeedback_004', Level.LEVEL1, async (done: Function) => {
         let tagName = 'TextPickerDialog_EnableHapticFeedback_004';
         console.info('[' + tagName + '] START============================');
         await CommonFunc.sleep(1000);

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from '../../MainAbility/common/Utils';
 import { Driver, ON } from '@ohos.UiTest';
 
@@ -53,7 +53,7 @@ export default function SliderContentModifier() {
     * @tc.desc        Testing TriggerChange to Trigger Slider Changes
     * @tc.level       Level 2
     */
-    it('SliderContentModifier_001', 0, async (done: Function) => {
+    it('SliderContentModifier_001', Level.LEVEL1, async (done: Function) => {
       console.info('[SliderContentModifier_001] START');
       await Utils.sleep(1000);
 

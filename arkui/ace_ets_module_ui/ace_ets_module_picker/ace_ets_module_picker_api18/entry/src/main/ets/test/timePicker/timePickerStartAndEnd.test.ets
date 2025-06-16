@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { BY, UiDriver } from '@kit.TestKit';
 import { router } from '@kit.ArkUI';
 import Utils from '../../MainAbility/common/Utils';
@@ -49,7 +49,7 @@ export default function TimePickerStartAndEnd() {
      * @tc.type
      * @tc.size
      */
-    it('TimePickerStartAndEnd_001', 0, async (done: Function) => {
+    it('TimePickerStartAndEnd_001', Level.LEVEL1, async (done: Function) => {
       let strJson = getInspectorByKey('TimePicker');
       console.log('TimePickerStartAndEnd_001')
       await Utils.sleep(1000)
@@ -67,7 +67,7 @@ export default function TimePickerStartAndEnd() {
      * @tc.type
      * @tc.size
      */
-    it('TimePickerStartAndEnd_002', 0, async (done: Function) => {
+    it('TimePickerStartAndEnd_002', Level.LEVEL1, async (done: Function) => {
       let strJson = getInspectorByKey('TimePicker');
       console.log('TimePickerStartAndEnd_002')
       await Utils.sleep(1000)
@@ -85,7 +85,7 @@ export default function TimePickerStartAndEnd() {
      * @tc.type
      * @tc.size
      */
-    it('TimePickerStartAndEnd_003', 0, async (done: Function) => {
+    it('TimePickerStartAndEnd_003', Level.LEVEL1, async (done: Function) => {
       let strJson = getInspectorByKey('TimePicker2');
       console.log('TimePickerStartAndEnd_003')
       await Utils.sleep(1000)
@@ -103,7 +103,7 @@ export default function TimePickerStartAndEnd() {
      * @tc.type
      * @tc.size
      */
-    it('TimePickerStartAndEnd_004', 0, async (done: Function) => {
+    it('TimePickerStartAndEnd_004', Level.LEVEL1, async (done: Function) => {
       let strJson = getInspectorByKey('TimePicker2');
       console.log('TimePickerStartAndEnd_004')
       await Utils.sleep(1000)
@@ -121,7 +121,7 @@ export default function TimePickerStartAndEnd() {
      * @tc.type
      * @tc.size
      */
-    it('TimePickerStartAndEnd_005', 0, async (done: Function) => {
+    it('TimePickerStartAndEnd_005', Level.LEVEL1, async (done: Function) => {
       let strJson = getInspectorByKey('TimePicker3');
       console.log('TimePickerStartAndEnd_005')
       await Utils.sleep(1000)
@@ -139,7 +139,7 @@ export default function TimePickerStartAndEnd() {
      * @tc.type
      * @tc.size
      */
-    it('TimePickerStartAndEnd_006', 0, async (done: Function) => {
+    it('TimePickerStartAndEnd_006', Level.LEVEL1, async (done: Function) => {
       let strJson = getInspectorByKey('TimePicker3');
       console.log('TimePickerStartAndEnd_006')
       await Utils.sleep(1000)

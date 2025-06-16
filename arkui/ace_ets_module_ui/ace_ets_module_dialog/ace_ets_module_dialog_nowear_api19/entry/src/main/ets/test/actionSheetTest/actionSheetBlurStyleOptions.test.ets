@@ -44,7 +44,7 @@ export default function actionSheetBlurStyleOptionsTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('actionSheetBlurStyleOptionsTest_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('actionSheetBlurStyleOptionsTest_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let tagName = 'actionSheetBlurStyleOptionsTest_0100';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000);
@@ -86,7 +86,7 @@ export default function actionSheetBlurStyleOptionsTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('actionSheetBlurStyleOptionsTest_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('actionSheetBlurStyleOptionsTest_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let tagName = 'actionSheetBlurStyleOptionsTest_0200';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000);
@@ -118,7 +118,7 @@ export default function actionSheetBlurStyleOptionsTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('actionSheetBlurStyleOptionsTest_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('actionSheetBlurStyleOptionsTest_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let tagName = 'actionSheetBlurStyleOptionsTest_0300';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000);

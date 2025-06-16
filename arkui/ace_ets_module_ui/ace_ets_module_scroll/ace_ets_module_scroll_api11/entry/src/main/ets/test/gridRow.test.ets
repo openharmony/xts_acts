@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from './Utils.ets'
 
 export default function gridRowXlJsunit() {
@@ -50,7 +50,7 @@ export default function gridRowXlJsunit() {
      * @tc.name         testgridRowXl0001
      * @tc.desic         acegridRowXlEtsTest0001
      */
-    it('testgridRowXl0001', 0, async (done: Function) => {
+    it('testgridRowXl0001', Level.LEVEL1, async (done: Function) => {
       console.info('gridRowXl testgridRowXl0001 START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('GridRowColumnOption——xl');

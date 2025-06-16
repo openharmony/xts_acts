@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 
@@ -81,7 +81,7 @@ export default function swiperTest() {
      * @tc.name Tests the selectedItemWidth property of the swiper component
      * @tc.desc set the selectedItemWidth property parameter to 5
      */
-    it('ArkUX_Stage_Swiper_SelectedItemWidth_0100', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_SelectedItemWidth_0100', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_SelectedItemWidth_0100 START');
       setTimeout(() => {
         try {
@@ -111,7 +111,7 @@ export default function swiperTest() {
      * @tc.name Tests the selectedItemWidth property of the swiper component
      * @tc.desc Set the selectedItemWidth property parameter to ""
      */
-    it('ArkUX_Stage_Swiper_SelectedItemWidth_0200', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_SelectedItemWidth_0200', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_SelectedItemWidth_0200 START');
       setTimeout(() => {
         try {
@@ -141,7 +141,7 @@ export default function swiperTest() {
      * @tc.name Tests the selectedItemWidth property of the swiper component
      * @tc.desc Set the selectedItemWidth property parameter to "9999vp"
      */
-    it('ArkUX_Stage_Swiper_SelectedItemWidth_0300', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_SelectedItemWidth_0300', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_SelectedItemWidth_0300 START');
       setTimeout(() => {
         try {
@@ -171,7 +171,7 @@ export default function swiperTest() {
      * @tc.name Tests the selectedItemWidth property of the swiper component
      * @tc.desc Set the selectedItemWidth property parameter to -1
      */
-    it('ArkUX_Stage_Swiper_SelectedItemWidth_0400', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_SelectedItemWidth_0400', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_SelectedItemWidth_0400 START');
       setTimeout(() => {
         try {
@@ -201,7 +201,7 @@ export default function swiperTest() {
      * @tc.name Tests the selectedItemWidth property of the swiper component
      * @tc.desc Set the selectedItemWidth property parameter to "abc"
      */
-    it('ArkUX_Stage_Swiper_SelectedItemWidth_0500', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_SelectedItemWidth_0500', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_SelectedItemWidth_0500 START');
       setTimeout(() => {
         try {
@@ -231,7 +231,7 @@ export default function swiperTest() {
      * @tc.name Tests the selectedItemWidth property of the swiper component
      * @tc.desc Set the selectedItemWidth property parameter to 0
      */
-    it('ArkUX_Stage_Swiper_SelectedItemWidth_0600', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_SelectedItemWidth_0600', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_SelectedItemWidth_0600 START');
       setTimeout(() => {
         try {
@@ -261,7 +261,7 @@ export default function swiperTest() {
      * @tc.name Tests the selectedItemWidth property of the swiper component
      * @tc.desc Set the selectedItemWidth property parameter to "8fp"
      */
-    it('ArkUX_Stage_Swiper_SelectedItemWidth_0700', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_SelectedItemWidth_0700', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_SelectedItemWidth_0700 START');
       setTimeout(() => {
         try {
@@ -291,7 +291,7 @@ export default function swiperTest() {
      * @tc.name Tests the selectedItemWidth property of the swiper component
      * @tc.desc Set the selectedItemWidth property parameter to "8lpx"
      */
-    it('ArkUX_Stage_Swiper_SelectedItemWidth_0800', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_SelectedItemWidth_0800', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_SelectedItemWidth_0800 START');
       setTimeout(() => {
         try {
@@ -321,7 +321,7 @@ export default function swiperTest() {
      * @tc.name Tests the selectedItemHeight property of the swiper component
      * @tc.desc Set the selectedItemHeight property parameter to 3
      */
-    it('ArkUX_Stage_Swiper_SelectedItemHeight_0100', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_SelectedItemHeight_0100', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_SelectedItemHeight_0100 START');
       setTimeout(() => {
         try {
@@ -351,7 +351,7 @@ export default function swiperTest() {
      * @tc.name Tests the selectedItemHeight property of the swiper component
      * @tc.desc Set the selectedItemHeight property parameter to ""
      */
-    it('ArkUX_Stage_Swiper_SelectedItemHeight_0200', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_SelectedItemHeight_0200', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_SelectedItemHeight_0200 START');
       setTimeout(() => {
         try {
@@ -381,7 +381,7 @@ export default function swiperTest() {
      * @tc.name Tests the selectedItemHeight property of the swiper component
      * @tc.desc Set the selectedItemHeight property parameter to "9999fp"
      */
-    it('ArkUX_Stage_Swiper_SelectedItemHeight_0300', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_SelectedItemHeight_0300', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_SelectedItemHeight_0300 START');
       setTimeout(() => {
         try {
@@ -411,7 +411,7 @@ export default function swiperTest() {
      * @tc.name Tests the selectedItemHeight property of the swiper component
      * @tc.desc Set the selectedItemHeight property parameter to -1
      */
-    it('ArkUX_Stage_Swiper_SelectedItemHeight_0400', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_SelectedItemHeight_0400', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_SelectedItemHeight_0400 START');
       setTimeout(() => {
         try {
@@ -441,7 +441,7 @@ export default function swiperTest() {
      * @tc.name Tests the selectedItemHeight property of the swiper component
      * @tc.desc Set the selectedItemHeight property parameter to "abc"
      */
-    it('ArkUX_Stage_Swiper_SelectedItemHeight_0500', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_SelectedItemHeight_0500', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_SelectedItemHeight_0500 START');
       setTimeout(() => {
         try {
@@ -471,7 +471,7 @@ export default function swiperTest() {
      * @tc.name Tests the selectedItemHeight property of the swiper component
      * @tc.desc Set the selectedItemHeight property parameter to 0
      */
-    it('ArkUX_Stage_Swiper_SelectedItemHeight_0600', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_SelectedItemHeight_0600', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_SelectedItemHeight_0600 START');
       setTimeout(() => {
         try {
@@ -501,7 +501,7 @@ export default function swiperTest() {
      * @tc.name Tests the selectedItemHeight property of the swiper component
      * @tc.desc Set the selectedItemHeight property parameter to "8vp"
      */
-    it('ArkUX_Stage_Swiper_SelectedItemHeight_0700', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_SelectedItemHeight_0700', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_SelectedItemHeight_0700 START');
       setTimeout(() => {
         try {
@@ -531,7 +531,7 @@ export default function swiperTest() {
      * @tc.name Tests the selectedItemHeight property of the swiper component
      * @tc.desc Set the selectedItemHeight property parameter to "8lpx"
      */
-    it('ArkUX_Stage_Swiper_SelectedItemHeight_0800', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_SelectedItemHeight_0800', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_SelectedItemHeight_0800 START');
       setTimeout(() => {
         try {
@@ -561,7 +561,7 @@ export default function swiperTest() {
      * @tc.name Tests the itemWidth property of the swiper component
      * @tc.desc Set the itemWidth property parameter to 3
      */
-    it('ArkUX_Stage_Swiper_ItemWidth_0100', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_ItemWidth_0100', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_ItemWidth_0100 START');
       setTimeout(() => {
         try {
@@ -591,7 +591,7 @@ export default function swiperTest() {
      * @tc.name Tests the itemWidth property of the swiper component
      * @tc.desc Set the itemWidth property parameter to ""
      */
-    it('ArkUX_Stage_Swiper_ItemWidth_0200', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_ItemWidth_0200', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_ItemWidth_0200 START');
       setTimeout(() => {
         try {
@@ -621,7 +621,7 @@ export default function swiperTest() {
      * @tc.name Tests the itemWidth property of the swiper component
      * @tc.desc Set the itemWidth property parameter to "9999lpx"
      */
-    it('ArkUX_Stage_Swiper_ItemWidth_0300', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_ItemWidth_0300', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_ItemWidth_0300 START');
       setTimeout(() => {
         try {
@@ -651,7 +651,7 @@ export default function swiperTest() {
      * @tc.name Tests the itemWidth property of the swiper component
      * @tc.desc Set the itemWidth property parameter to -1
      */
-    it('ArkUX_Stage_Swiper_ItemWidth_0400', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_ItemWidth_0400', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_ItemWidth_0400 START');
       setTimeout(() => {
         try {
@@ -681,7 +681,7 @@ export default function swiperTest() {
      * @tc.name Tests the itemWidth property of the swiper component
      * @tc.desc Set the itemWidth property parameter to "abc"
      */
-    it('ArkUX_Stage_Swiper_ItemWidth_0500', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_ItemWidth_0500', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_ItemWidth_0500 START');
       setTimeout(() => {
         try {
@@ -711,7 +711,7 @@ export default function swiperTest() {
      * @tc.name Tests the itemWidth property of the swiper component
      * @tc.desc Set the itemWidth property parameter to "8px"
      */
-    it('ArkUX_Stage_Swiper_ItemWidth_0600', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_ItemWidth_0600', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_ItemWidth_0600 START');
       setTimeout(() => {
         try {
@@ -741,7 +741,7 @@ export default function swiperTest() {
      * @tc.name Tests the itemWidth property of the swiper component
      * @tc.desc Set the itemWidth property parameter to "8fp"
      */
-    it('ArkUX_Stage_Swiper_ItemWidth_0700', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_ItemWidth_0700', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_ItemWidth_0700 START');
       setTimeout(() => {
         try {
@@ -771,7 +771,7 @@ export default function swiperTest() {
      * @tc.name Tests the itemHeight property of the swiper component
      * @tc.desc Set the itemHeight property parameter to 3
      */
-    it('ArkUX_Stage_Swiper_ItemHeight_0100', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_ItemHeight_0100', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_ItemHeight_0100 START');
       setTimeout(() => {
         try {
@@ -801,7 +801,7 @@ export default function swiperTest() {
      * @tc.name Tests the itemHeight property of the swiper component
      * @tc.desc Set the itemHeight property parameter to ""
      */
-    it('ArkUX_Stage_Swiper_ItemHeight_0200', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_ItemHeight_0200', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_ItemHeight_0200 START');
       setTimeout(() => {
         try {
@@ -831,7 +831,7 @@ export default function swiperTest() {
      * @tc.name Tests the itemHeight property of the swiper component
      * @tc.desc Set the itemHeight property parameter to "9999vp"
      */
-    it('ArkUX_Stage_Swiper_ItemHeight_0300', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_ItemHeight_0300', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_ItemHeight_0300 START');
       setTimeout(() => {
         try {
@@ -861,7 +861,7 @@ export default function swiperTest() {
      * @tc.name Tests the itemHeight property of the swiper component
      * @tc.desc Set the itemHeight property parameter to -1
      */
-    it('ArkUX_Stage_Swiper_ItemHeight_0400', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_ItemHeight_0400', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_ItemHeight_0400 START');
       setTimeout(() => {
         try {
@@ -891,7 +891,7 @@ export default function swiperTest() {
      * @tc.name Tests the itemHeight property of the swiper component
      * @tc.desc Set the itemHeight property parameter to "abc"
      */
-    it('ArkUX_Stage_Swiper_ItemHeight_0500', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_ItemHeight_0500', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_ItemHeight_0500 START');
       setTimeout(() => {
         try {
@@ -921,7 +921,7 @@ export default function swiperTest() {
      * @tc.name Tests the itemHeight property of the swiper component
      * @tc.desc Set the itemHeight property parameter to "8fp"
      */
-    it('ArkUX_Stage_Swiper_ItemHeight_0600', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_ItemHeight_0600', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_ItemHeight_0500 START');
       setTimeout(() => {
         try {
@@ -951,7 +951,7 @@ export default function swiperTest() {
      * @tc.name Tests the itemHeight property of the swiper component
      * @tc.desc Set the itemHeight property parameter to "8lpx"
      */
-    it('ArkUX_Stage_Swiper_ItemHeight_0700', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_ItemHeight_0700', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_ItemHeight_0700 START');
       setTimeout(() => {
         try {
@@ -981,7 +981,7 @@ export default function swiperTest() {
      * @tc.name Tests the selectedFontColor property of the swiper component
      * @tc.desc Set the selectedFontColor property parameter to 0x00ff00
      */
-    it('ArkUX_Stage_Swiper_SelectedFontColor_0100', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_SelectedFontColor_0100', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_SelectedFontColor_0100 START');
       setTimeout(() => {
         try {
@@ -1011,7 +1011,7 @@ export default function swiperTest() {
      * @tc.name Tests the selectedFontColor property of the swiper component
      * @tc.desc Set the selectedFontColor property parameter to "#FFFF0000"
      */
-    it('ArkUX_Stage_Swiper_SelectedFontColor_0200', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_SelectedFontColor_0200', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_SelectedFontColor_0200 START');
       setTimeout(() => {
         try {
@@ -1041,7 +1041,7 @@ export default function swiperTest() {
      * @tc.name Tests the selectedFontColor property of the swiper component
      * @tc.desc Set the selectedFontColor property parameter to "rgb(138,43,226)"
      */
-    it('ArkUX_Stage_Swiper_SelectedFontColor_0300', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_SelectedFontColor_0300', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_SelectedFontColor_0300 START');
       setTimeout(() => {
         try {
@@ -1071,7 +1071,7 @@ export default function swiperTest() {
      * @tc.name Tests the selectedFontColor property of the swiper component
      * @tc.desc Set the selectedFontColor property parameter to Color.Pink
      */
-    it('ArkUX_Stage_Swiper_SelectedFontColor_0400', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_SelectedFontColor_0400', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_SelectedFontColor_0400 START');
       setTimeout(() => {
         try {
@@ -1101,7 +1101,7 @@ export default function swiperTest() {
      * @tc.name Tests the selectedFontColor property of the swiper component
      * @tc.desc Set the selectedFontColor property parameter to ""
      */
-    it('ArkUX_Stage_Swiper_SelectedFontColor_0500', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_SelectedFontColor_0500', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_SelectedFontColor_0500 START');
       setTimeout(() => {
         try {
@@ -1131,7 +1131,7 @@ export default function swiperTest() {
      * @tc.name Tests the selectedFontColor property of the swiper component
      * @tc.desc Set the selectedFontColor property parameter to null
      */
-    it('ArkUX_Stage_Swiper_SelectedFontColor_0600', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_SelectedFontColor_0600', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_SelectedFontColor_0600 START');
       setTimeout(() => {
         try {
@@ -1161,7 +1161,7 @@ export default function swiperTest() {
      * @tc.name Tests the selectedFontColor property of the swiper component
      * @tc.desc Set the selectedFontColor property parameter to $r("app.color.selected_font_color_test")
      */
-    it('ArkUX_Stage_Swiper_SelectedFontColor_0700', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_SelectedFontColor_0700', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_SelectedFontColor_0700 START');
       setTimeout(() => {
         try {
@@ -1192,7 +1192,7 @@ export default function swiperTest() {
      * @tc.name Tests the selectedFontColor property of the swiper component
      * @tc.desc Set the selectedFontColor property parameter to "bgr(138,43,226)"
      */
-    it('ArkUX_Stage_Swiper_SelectedFontColor_0800', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_SelectedFontColor_0800', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_SelectedFontColor_0800 START');
       setTimeout(() => {
         try {
@@ -1222,7 +1222,7 @@ export default function swiperTest() {
      * @tc.name Tests the selectedFontColor property of the swiper component
      * @tc.desc Set the selectedFontColor property parameter to undefined
      */
-    it('ArkUX_Stage_Swiper_SelectedFontColor_0900', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_SelectedFontColor_0900', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_SelectedFontColor_0900 START');
       setTimeout(() => {
         try {
@@ -1253,7 +1253,7 @@ export default function swiperTest() {
      * @tc.desc Set the selectedFontColor attribute parameter to "rgb (138,43,226)",
      *               and set the selectedFontColor attribute parameter to the normal value Color.Gray again
      */
-    it('ArkUX_Stage_Swiper_SelectedFontColor_1000', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_SelectedFontColor_1000', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_SelectedFontColor_1000 START');
       setTimeout(() => {
         try {
@@ -1284,7 +1284,7 @@ export default function swiperTest() {
      * @tc.desc Set the selectedFontColor property parameter to 0x00ff00,
      *               and set the general property backgroundColor parameter to Color.Pink
      */
-    it('ArkUX_Stage_Swiper_SelectedFontColor_1100', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_SelectedFontColor_1100', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_SelectedFontColor_1100 START');
       setTimeout(() => {
         try {
@@ -1315,7 +1315,7 @@ export default function swiperTest() {
      * @tc.desc Set the selectedFontColor property parameter to "rgb (255,0,0)",
      *               and set the selectedFontColor property parameter to the outlier undefined again
      */
-    it('ArkUX_Stage_Swiper_SelectedFontColor_1200', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_SelectedFontColor_1200', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_SelectedFontColor_1200 START');
       setTimeout(() => {
         try {
@@ -1345,7 +1345,7 @@ export default function swiperTest() {
      * @tc.name Tests the fontColor property of the swiper component
      * @tc.desc Set the fontColor property parameter to 0x00ff00
      */
-    it('ArkUX_Stage_Swiper_FontColor_0100', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_FontColor_0100', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_FontColor_0100 START');
       setTimeout(() => {
         try {
@@ -1375,7 +1375,7 @@ export default function swiperTest() {
      * @tc.name Tests the fontColor property of the swiper component
      * @tc.desc Set the fontColor property parameter to "#FFFF0000"
      */
-    it('ArkUX_Stage_Swiper_FontColor_0200', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_FontColor_0200', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_FontColor_0200 START');
       setTimeout(() => {
         try {
@@ -1405,7 +1405,7 @@ export default function swiperTest() {
      * @tc.name Tests the fontColor property of the swiper component
      * @tc.desc Set the fontColor property parameter to "rgb(138,43,226)"
      */
-    it('ArkUX_Stage_Swiper_FontColor_0300', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_FontColor_0300', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_FontColor_0300 START');
       setTimeout(() => {
         try {
@@ -1435,7 +1435,7 @@ export default function swiperTest() {
      * @tc.name Tests the fontColor property of the swiper component
      * @tc.desc Set the fontColor property parameter to Color.Pink
      */
-    it('ArkUX_Stage_Swiper_FontColor_0400', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_FontColor_0400', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_FontColor_0400 START');
       setTimeout(() => {
         try {
@@ -1465,7 +1465,7 @@ export default function swiperTest() {
      * @tc.name Tests the fontColor property of the swiper component
      * @tc.desc Set the fontColor property parameter to ""
      */
-    it('ArkUX_Stage_Swiper_FontColor_0500', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_FontColor_0500', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_FontColor_0500 START');
       setTimeout(() => {
         try {
@@ -1495,7 +1495,7 @@ export default function swiperTest() {
      * @tc.name Tests the fontColor property of the swiper component
      * @tc.desc Set the fontColor property parameter to null
      */
-    it('ArkUX_Stage_Swiper_FontColor_0600', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_FontColor_0600', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_FontColor_0600 START');
       setTimeout(() => {
         try {
@@ -1525,7 +1525,7 @@ export default function swiperTest() {
      * @tc.name Tests the fontColor property of the swiper component
      * @tc.desc Set the fontColor property parameter to $r("app.color.font_color_test")
      */
-    it('ArkUX_Stage_Swiper_FontColor_0700', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_FontColor_0700', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_FontColor_0700 START');
       setTimeout(() => {
         try {
@@ -1556,7 +1556,7 @@ export default function swiperTest() {
      * @tc.name Tests the fontColor property of the swiper component
      * @tc.desc Set the fontColor property parameter to "bgr(138,43,226)"
      */
-    it('ArkUX_Stage_Swiper_FontColor_0800', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_FontColor_0800', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_FontColor_0800 START');
       setTimeout(() => {
         try {
@@ -1586,7 +1586,7 @@ export default function swiperTest() {
      * @tc.name Tests the fontColor property of the swiper component
      * @tc.desc Set the fontColor property parameter to undefined
      */
-    it('ArkUX_Stage_Swiper_FontColor_0900', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_FontColor_0900', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_FontColor_0900 START');
       setTimeout(() => {
         try {
@@ -1617,7 +1617,7 @@ export default function swiperTest() {
      * @tc.desc Set the fontColor attribute parameter to "rgb (138,43,226)",
      *               and set the fontColor attribute parameter to the normal value Color.Gray again
      */
-    it('ArkUX_Stage_Swiper_FontColor_1000', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_FontColor_1000', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_FontColor_1000 START');
       setTimeout(() => {
         try {
@@ -1648,7 +1648,7 @@ export default function swiperTest() {
      * @tc.desc Set the fontColor property parameter to 0x00ff00,
      *               and set the general property backgroundColor parameter to Color.Pink
      */
-    it('ArkUX_Stage_Swiper_FontColor_1100', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_FontColor_1100', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_FontColor_1100 START');
       setTimeout(() => {
         try {
@@ -1679,7 +1679,7 @@ export default function swiperTest() {
      * @tc.desc Set the fontColor property parameter to "rgb (255,0,0)",
      *               and set the fontColor property parameter to the outlier undefined again
      */
-    it('ArkUX_Stage_Swiper_FontColor_1200', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_FontColor_1200', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_FontColor_1200 START');
       setTimeout(() => {
         try {

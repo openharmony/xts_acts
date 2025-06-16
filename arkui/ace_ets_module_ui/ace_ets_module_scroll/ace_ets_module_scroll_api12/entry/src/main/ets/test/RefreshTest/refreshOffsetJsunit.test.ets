@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
@@ -55,7 +55,7 @@ export default function refreshOffsetJsunit() {
     * @tc.type :
     * @tc.size :
     */
-    it('refreshOffsetJsunit_0100', 0, async (done: Function) => {
+    it('refreshOffsetJsunit_0100', Level.LEVEL1, async (done: Function) => {
       console.info('refreshOffsetJsunit_0100 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('Refresh_Offset');
@@ -78,7 +78,7 @@ export default function refreshOffsetJsunit() {
     * @tc.type :
     * @tc.size :
     */
-    it('refreshOffsetJsunit_0200', 0, async (done: Function) => {
+    it('refreshOffsetJsunit_0200', Level.LEVEL1, async (done: Function) => {
       console.info('refreshOffsetJsunit_0200 START');
       let swiperOffset = CommonFunc.getComponentRectOnScreen('Refresh_Offset');
       let top = swiperOffset.top;

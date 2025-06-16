@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../MainAbility/common/Common";
 import {
@@ -67,7 +67,7 @@ export default function swiperIndex() {
     //     * @tc.name      Swiper_IndexChanged_SetIndexValue
     //     * @tc.desc      Set swiper's  index normal value.
     //     */
-    //    it('SUB_ACE_SWIPER_INDEXCHANGED_0100', 0, async  (done:Function)=> {
+    //    it('SUB_ACE_SWIPER_INDEXCHANGED_0100', Level.LEVEL1, async  (done:Function)=> {
     //      console.info('new SUB_ACE_SWIPER_INDEXCHANGED_0100 START');
     //      globalThis.value.message.notify({name:'swiperIndex', value: 3});
     //      await CommonFunc.sleep(1000);
@@ -115,7 +115,7 @@ export default function swiperIndex() {
     //     * @tc.name      Swiper_IndexChanged_SetIndexValue
     //     * @tc.desc      Set swiper's  index  value ' -1 '.
     //     */
-    //    it('SUB_ACE_SWIPER_INDEXCHANGED_0200', 0, async  (done:Function)=> {
+    //    it('SUB_ACE_SWIPER_INDEXCHANGED_0200', Level.LEVEL1, async  (done:Function)=> {
     //      console.info('new SUB_ACE_SWIPER_INDEXCHANGED_0200 START');
     //      globalThis.value.message.notify({name:'swiperIndex', value: -1});
     //      await CommonFunc.sleep(1000);
@@ -165,7 +165,7 @@ export default function swiperIndex() {
     //     * @tc.name      Swiper_IndexChanged_SetIndexValue
     //     * @tc.desc      Set swiper's  index  value ' 11 '.
     //     */
-    //    it('SUB_ACE_SWIPER_INDEXCHANGED_0300', 0, async  (done:Function)=> {
+    //    it('SUB_ACE_SWIPER_INDEXCHANGED_0300', Level.LEVEL1, async  (done:Function)=> {
     //      console.info('new SUB_ACE_SWIPER_INDEXCHANGED_0300 START');
     //      globalThis.value.message.notify({name:'swiperIndex', value: 11});
     //      await CommonFunc.sleep(1000);

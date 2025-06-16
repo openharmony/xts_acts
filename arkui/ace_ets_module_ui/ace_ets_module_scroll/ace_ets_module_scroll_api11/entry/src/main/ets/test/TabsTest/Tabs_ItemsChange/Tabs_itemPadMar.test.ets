@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import {
@@ -69,7 +69,7 @@ export default function Tabs_itemPadMar() {
      * @tc.name testTabsItemPad
      * @tc.desc Set 20 padding for TabContent
      */
-    it('testTabsItemPad', 0, async (done: Function) => {
+    it('testTabsItemPad', Level.LEVEL1, async (done: Function) => {
       console.info('[testTabsItemPad] START');
       globalThis.value.message.notify({
         name: 'dadPadding', value: 20
@@ -176,7 +176,7 @@ export default function Tabs_itemPadMar() {
      * @tc.name testTabsItemMar
      * @tc.desc Set 20 margin for TabContent
      */
-    it('testTabsItemMar', 0, async (done: Function) => {
+    it('testTabsItemMar', Level.LEVEL1, async (done: Function) => {
       console.info('[testTabsItemMar] START');
       globalThis.value.message.notify({
         name: 'dadPadding', value: 0
@@ -288,7 +288,7 @@ export default function Tabs_itemPadMar() {
      * @tc.name testTabsItemPadMar
      * @tc.desc Set 20 padding and 20 margin for TabContent
      */
-    it('testTabsItemPadMar', 0, async (done: Function) => {
+    it('testTabsItemPadMar', Level.LEVEL1, async (done: Function) => {
       console.info('[testTabsItemPadMar] START');
       globalThis.value.message.notify({
         name: 'dadPadding', value: 20

@@ -1,4 +1,4 @@
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { router } from '@kit.ArkUI';
 import { Component, Driver, On, ON, MouseButton } from '@kit.TestKit';
 
@@ -27,7 +27,7 @@ export default function ScrollBackToTopTest() {
      * @tc.name   :test scroll back to top
      * @tc.desc   :test whether backToTop events are effective
      */
-    it('ScrollTest1_0100', 0, async () => {
+    it('ScrollTest1_0100', Level.LEVEL1, async () => {
       console.info('ScrollTest_0100 START');
       await sleep(1000)
       let driverScroll: Driver = Driver.create();

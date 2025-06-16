@@ -44,7 +44,7 @@ export default function actionSheetBackgroundEffectTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('actionSheetBackgroundEffectTest_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('actionSheetBackgroundEffectTest_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let tagName = 'actionSheetBackgroundEffectTest_0100';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000);
@@ -92,7 +92,7 @@ export default function actionSheetBackgroundEffectTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('actionSheetBackgroundEffectTest_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('actionSheetBackgroundEffectTest_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let tagName = 'actionSheetBackgroundEffectTest_0200';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000);
@@ -127,7 +127,7 @@ export default function actionSheetBackgroundEffectTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('actionSheetBackgroundEffectTest_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('actionSheetBackgroundEffectTest_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let tagName = 'actionSheetBackgroundEffectTest_0300';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000);

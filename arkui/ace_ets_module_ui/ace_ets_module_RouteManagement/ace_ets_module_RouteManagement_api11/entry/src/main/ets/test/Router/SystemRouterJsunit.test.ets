@@ -12,14 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, it, expect } from "@ohos/hypium"
+import { describe, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from '../../MainAbility/common/Utils';
 import events_emitter from '@ohos.events.emitter';
 
 export default function systemRouterJsunit() {
   describe('systemRouterTest', () => {
-    it('systemRouterTest001', 0, async (done: Function) => {
+    it('systemRouterTest001', Level.LEVEL2, async (done: Function) => {
       console.info('[systemRouterTest001] START');
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/Router/systemRouterA',
@@ -38,7 +38,7 @@ export default function systemRouterJsunit() {
       done();
     });
 
-    it('systemRouterTest002', 0, async (done: Function) => {
+    it('systemRouterTest002', Level.LEVEL2, async (done: Function) => {
       console.info('[systemRouterTest002] START');
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/Router/systemRouterA'
@@ -73,7 +73,7 @@ export default function systemRouterJsunit() {
       done();
     });
 
-    it('systemRouterTest003', 0, async (done: Function) => {
+    it('systemRouterTest003', Level.LEVEL2, async (done: Function) => {
       console.info('[systemRouterTest003] START');
       await Utils.sleep(1000);
       router.clear();
@@ -85,7 +85,7 @@ export default function systemRouterJsunit() {
       done();
     });
 
-    it('systemRouterTest004', 0, async (done: Function) => {
+    it('systemRouterTest004', Level.LEVEL2, async (done: Function) => {
       console.info('[systemRouterTest004] START');
       router.clear();
       await Utils.sleep(1000);
@@ -115,7 +115,7 @@ export default function systemRouterJsunit() {
       done();
     });
 
-    it('systemRouterTest005', 0, async (done: Function) => {
+    it('systemRouterTest005', Level.LEVEL2, async (done: Function) => {
       console.info('[systemRouterTest005] START');
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/Router/systemRouterB'

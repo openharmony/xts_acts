@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium';
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium';
 import { Driver, ON } from '@ohos.UiTest';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
@@ -54,7 +54,7 @@ export default function ListFlingCallbackJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ListFlingCallbackTest_0100', 0, async (done: Function) => {
+    it('ListFlingCallbackTest_0100', Level.LEVEL1, async (done: Function) => {
       console.info('ListFlingCallbackTest_0100 START');
       let driver1 = Driver.create();
       let button = await driver1.findComponent(ON.id('btn_list_fling_01'));
@@ -75,7 +75,7 @@ export default function ListFlingCallbackJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ListFlingCallbackTest_0200', 0, async (done: Function) => {
+    it('ListFlingCallbackTest_0200', Level.LEVEL1, async (done: Function) => {
       console.info('ListFlingCallbackTest_0200 START');
       let driver1 = Driver.create();
       let button = await driver1.findComponent(ON.id('btn_list_fling_02'));

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium"
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -45,7 +45,7 @@ export default function gridJsunit() {
       console.info('[ afterEach ] ===================grid test after each called===================');
     });
 
-    it('gridTest01', 0, async (done: Function) => {
+    it('gridTest01', Level.LEVEL1, async (done: Function) => {
       console.info('gridTest01==================== start');
       await CommonFunc.sleep(1000)
       let strJson = getInspectorByKey('grid');
@@ -79,7 +79,7 @@ export default function gridJsunit() {
       done();
     });
 
-    it('gridTest02', 0, async (done: Function) => {
+    it('gridTest02', Level.LEVEL1, async (done: Function) => {
       console.info('[ gridTest02 ] ==================== start');
       await CommonFunc.sleep(1000)
       let strJson = getInspectorByKey('grid');
@@ -113,7 +113,7 @@ export default function gridJsunit() {
       done();
     });
 
-    it('gridTest03', 0, async (done: Function) => {
+    it('gridTest03', Level.LEVEL1, async (done: Function) => {
       console.info('[ gridTest03 ] ==================== start');
       await CommonFunc.sleep(1000)
       let strJson = getInspectorByKey('grid');
@@ -147,7 +147,7 @@ export default function gridJsunit() {
       done();
     });
 
-    it('gridTest04', 0, async (done: Function) => {
+    it('gridTest04', Level.LEVEL1, async (done: Function) => {
       console.info('[ gridTest04 ] ==================== start');
       await CommonFunc.sleep(1000)
       let strJson = getInspectorByKey('grid');

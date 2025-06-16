@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../MainAbility/common/Common";
 import {
@@ -66,7 +66,7 @@ export default function swiperLoopFalse() {
      * @tc.name testSwiperSetLoopFalse
      * @tc.desc Set swiper's  Loop  value ' false '.
      */
-    it('testSwiperSetLoopFalse', 0, async (done: Function) => {
+    it('testSwiperSetLoopFalse', Level.LEVEL1, async (done: Function) => {
       console.info('new testSwiperSetLoopFalse START');
       await CommonFunc.sleep(2000);
       // Page turning.

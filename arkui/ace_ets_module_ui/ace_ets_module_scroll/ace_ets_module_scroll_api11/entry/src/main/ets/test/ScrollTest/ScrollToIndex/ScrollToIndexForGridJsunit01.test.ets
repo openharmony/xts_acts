@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
@@ -50,7 +50,7 @@ export default function ScrollToIndexForGridJsunit01() {
      * @tc.type: Function
      * @tc.level   2
      */
-    it('ScrollToIndexForGridJsunit01_0100', 0, async (done: Function) => {
+    it('ScrollToIndexForGridJsunit01_0100', Level.LEVEL1, async (done: Function) => {
       console.info('[ScrollToIndexForGridJsunit01_0100] START');
 
       let driver = Driver.create();
@@ -74,7 +74,7 @@ export default function ScrollToIndexForGridJsunit01() {
      * @tc.type: Function
      * @tc.level   2
      */
-    it('ScrollToIndexForGridJsunit01_0200', 0, async (done: Function) => {
+    it('ScrollToIndexForGridJsunit01_0200', Level.LEVEL1, async (done: Function) => {
       console.info('[ScrollToIndexForGridJsunit01_0200] START');
 
       let driver = Driver.create();
@@ -103,7 +103,7 @@ export default function ScrollToIndexForGridJsunit01() {
      * @tc.type: Function
      * @tc.level   2
      */
-    it('ScrollToIndexForGridJsunit01_0300', 0, async (done: Function) => {
+    it('ScrollToIndexForGridJsunit01_0300', Level.LEVEL1, async (done: Function) => {
       console.info('[ScrollToIndexForGridJsunit01_0300] START');
 
       let driver = Driver.create();
@@ -131,7 +131,7 @@ export default function ScrollToIndexForGridJsunit01() {
      * @tc.type: Function
      * @tc.level   2
      */
-    it('ScrollToIndexForGridJsunit01_0400', 0, async (done: Function) => {
+    it('ScrollToIndexForGridJsunit01_0400', Level.LEVEL1, async (done: Function) => {
       console.info('[ScrollToIndexForGridJsunit01_0400] START');
 
       let driver = Driver.create();
@@ -167,7 +167,7 @@ export default function ScrollToIndexForGridJsunit01() {
      * @tc.type: Function
      * @tc.level   2
      */
-    it('ScrollToIndexForGridJsunit01_0500', 0, async (done: Function) => {
+    it('ScrollToIndexForGridJsunit01_0500', Level.LEVEL1, async (done: Function) => {
       console.info('[ScrollToIndexForGridJsunit01_0500] START');
 
       let driver = Driver.create();
@@ -209,7 +209,7 @@ export default function ScrollToIndexForGridJsunit01() {
      * @tc.type: Function
      * @tc.level   2
      */
-    it('ScrollToIndexForGridJsunit01_0600', 0, async (done: Function) => {
+    it('ScrollToIndexForGridJsunit01_0600', Level.LEVEL1, async (done: Function) => {
       console.info('[ScrollToIndexForGridJsunit01_0600] START');
 
       let driver = Driver.create();
@@ -245,7 +245,7 @@ export default function ScrollToIndexForGridJsunit01() {
      * @tc.type: Function
      * @tc.level   2
      */
-    it('ScrollToIndexForGridJsunit01_0700', 0, async (done: Function) => {
+    it('ScrollToIndexForGridJsunit01_0700', Level.LEVEL1, async (done: Function) => {
       let driver = Driver.create();
       console.info('[ScrollToIndexForGridJsunit01_0700] START');
 
@@ -276,7 +276,7 @@ export default function ScrollToIndexForGridJsunit01() {
      * @tc.type: Function
      * @tc.level   2
      */
-    it('ScrollToIndexForGridJsunit01_0800', 0, async (done: Function) => {
+    it('ScrollToIndexForGridJsunit01_0800', Level.LEVEL1, async (done: Function) => {
       console.info('[ScrollToIndexForGridJsunit01_0800] START');
 
       let driver = Driver.create();

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { router } from '@kit.ArkUI';
 import Utils from '../../MainAbility/common/Utils';
 import { Driver, ON, Component } from '@kit.TestKit';
@@ -50,7 +50,7 @@ export default function SliderEnableHapticFeedbackTest() {
     * @tc.type: Function
     * @tc.level: Level 1
     */
-    it('SliderAddEnableHapticFeedbackApi_001', 0, async (done: Function) => {
+    it('SliderAddEnableHapticFeedbackApi_001', Level.LEVEL1, async (done: Function) => {
       console.info('[SliderAddEnableHapticFeedbackApi_001] START');
       await Utils.sleep(1000);
       let driver: Driver = Driver.create();
@@ -74,7 +74,7 @@ export default function SliderEnableHapticFeedbackTest() {
     * @tc.type: Function
     * @tc.level: Level 1
     */
-    it('SliderAddEnableHapticFeedbackApi_002', 0, async (done: Function) => {
+    it('SliderAddEnableHapticFeedbackApi_002', Level.LEVEL1, async (done: Function) => {
       console.info('[SliderAddEnableHapticFeedbackApi_002] START');
       await Utils.sleep(1000);
       let driver: Driver = Driver.create();
@@ -98,7 +98,7 @@ export default function SliderEnableHapticFeedbackTest() {
     * @tc.type: Function
     * @tc.level: Level 1
     */
-    it('SliderAddEnableHapticFeedbackApi_003', 0, async (done: Function) => {
+    it('SliderAddEnableHapticFeedbackApi_003', Level.LEVEL1, async (done: Function) => {
       console.info('[SliderAddEnableHapticFeedbackApi_003] START');
       await Utils.sleep(1000);
       let driver: Driver = Driver.create();
@@ -122,7 +122,7 @@ export default function SliderEnableHapticFeedbackTest() {
     * @tc.type: Function
     * @tc.level: Level 1
     */
-    it('SliderAddEnableHapticFeedbackApi_004', 0, async (done: Function) => {
+    it('SliderAddEnableHapticFeedbackApi_004', Level.LEVEL1, async (done: Function) => {
       console.info('[SliderAddEnableHapticFeedbackApi_004] START');
       await Utils.sleep(1000);
       let driver: Driver = Driver.create();

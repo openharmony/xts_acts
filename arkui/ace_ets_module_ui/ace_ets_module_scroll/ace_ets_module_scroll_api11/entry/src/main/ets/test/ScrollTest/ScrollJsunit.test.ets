@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterEach, beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 
 function sleep(time: number) {
@@ -59,7 +59,7 @@ export default function ScrollJsunit() {
      * @tc.name testScrollGetInspectorByKey010
      * @tc.desc aceEtsTest
      */
-    it('testScrollGetInspectorByKey010', 0, async (done: Function) => {
+    it('testScrollGetInspectorByKey010', Level.LEVEL1, async (done: Function) => {
       console.info('testGetInspectorByKey START');
       let strJson = getInspectorByKey('scroll');
       let obj: ESObject = JSON.parse(strJson);
@@ -82,7 +82,7 @@ export default function ScrollJsunit() {
      * @tc.name testScrollGetInspectorByKey020
      * @tc.desc aceEtsTest
      */
-    it('testScrollGetInspectorByKey020', 0, async (done: Function) => {
+    it('testScrollGetInspectorByKey020', Level.LEVEL1, async (done: Function) => {
       let strJson = getInspectorByKey('scroll1');
       let obj: ESObject = JSON.parse(strJson);
       console.info("cd scroll1 component obj is: " + JSON.stringify(obj));
@@ -99,7 +99,7 @@ export default function ScrollJsunit() {
      * @tc.name testScrollGetInspectorByKey030
      * @tc.desc aceEtsTest
      */
-    it('testScrollGetInspectorByKey030', 0, async (done: Function) => {
+    it('testScrollGetInspectorByKey030', Level.LEVEL1, async (done: Function) => {
       let strJson: ESObject = getInspectorByKey('scroll2');
       let obj: ESObject = JSON.parse(strJson);
       console.info("cd scroll2 component obj is: " + JSON.stringify(obj));
@@ -116,7 +116,7 @@ export default function ScrollJsunit() {
      * @tc.name testScrollGetInspectorByKey040
      * @tc.desc aceEtsTest
      */
-    it('testScrollGetInspectorByKey040', 0, async (done: Function) => {
+    it('testScrollGetInspectorByKey040', Level.LEVEL1, async (done: Function) => {
       let strJson = getInspectorByKey('scroll3');
       let obj: ESObject = JSON.parse(strJson);
       console.info("cd scroll3 component obj is: " + JSON.stringify(obj));

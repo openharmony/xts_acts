@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 
 function sleep(time: number) {
@@ -61,7 +61,7 @@ export default function tabJsunit() {
      * @tc.name tabTest001
      * @tc.desc aceEtsTest
      */
-    it('tabTest001', 0, async () => {
+    it('tabTest001', Level.LEVEL1, async () => {
       console.info('++++++++++++++++ Tab TestCase 1 START ++++++++++++++++');
       let strJson = getInspectorByKey('tab');
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -86,7 +86,7 @@ export default function tabJsunit() {
      * @tc.name tabTest003
      * @tc.desc aceEtsTest
      */
-    it('tabTest003', 0, async () => {
+    it('tabTest003', Level.LEVEL1, async () => {
       console.info('++++++++++++++++ Tab TestCase 3 START ++++++++++++++++');
       let strJson = getInspectorByKey('tab2');
       let obj: Record<string, Object> = JSON.parse(strJson);

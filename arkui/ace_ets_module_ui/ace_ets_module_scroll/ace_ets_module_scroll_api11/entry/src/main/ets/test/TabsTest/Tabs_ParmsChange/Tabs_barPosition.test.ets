@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import {
@@ -69,7 +69,7 @@ export default function Tabs_barPosition() {
      * @tc.name TabsBarPositionStartWithVerticalFalse
      * @tc.desc When vertical is set to the default value of false, barPosition is set to barPosition.Start
      */
-    it('TabsBarPositionStartWithVerticalFalse', 0, async (done: Function) => {
+    it('TabsBarPositionStartWithVerticalFalse', Level.LEVEL1, async (done: Function) => {
       console.info('[TabsBarPositionStartWithVerticalFalse] START');
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Tabs_barPosition_01');
@@ -183,7 +183,7 @@ export default function Tabs_barPosition() {
      * @tc.name TabsBarPositionEndWithVerticalFalse
      * @tc.desc When vertical takes the default value of false, barPosition is set to barPosition.End
      */
-    it('TabsBarPositionEndWithVerticalFalse', 0, async (done: Function) => {
+    it('TabsBarPositionEndWithVerticalFalse', Level.LEVEL1, async (done: Function) => {
       console.info('[TabsBarPositionEndWithVerticalFalse] START');
       globalThis.value.message.notify({
         name: 'changeBarPosition', value: BarPosition.End
@@ -297,7 +297,7 @@ export default function Tabs_barPosition() {
      * @tc.name TabsBarPositionStartWithVerticalTrue
      * @tc.desc When vertical is set to the default value of true, barPosition is set to barPosition.Start
      */
-    it('TabsBarPositionStartWithVerticalTrue', 0, async (done: Function) => {
+    it('TabsBarPositionStartWithVerticalTrue', Level.LEVEL1, async (done: Function) => {
       console.info('[TabsBarPositionStartWithVerticalTrue] START');
       globalThis.value.message.notify({
         name: 'setBarWidth', value: 56
@@ -419,7 +419,7 @@ export default function Tabs_barPosition() {
      * @tc.name TabsBarPositionEndWithVerticalTrue
      * @tc.desc When vertical takes the default value of true, barPosition is set to barPosition.End
      */
-    it('TabsBarPositionEndWithVerticalTrue', 0, async (done: Function) => {
+    it('TabsBarPositionEndWithVerticalTrue', Level.LEVEL1, async (done: Function) => {
       console.info('[TabsBarPositionEndWithVerticalTrue] START');
       globalThis.value.message.notify({
         name: 'setBarWidth', value: 56

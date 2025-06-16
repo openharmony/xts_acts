@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from './Utils.ets'
 
 export default function gridColXlJsunit() {
@@ -50,7 +50,7 @@ export default function gridColXlJsunit() {
      * @tc.name         testgridColXl0001
      * @tc.desic         acegridColXlEtsTest0001
      */
-    it('testgridColXl0001', 0, async (done: Function) => {
+    it('testgridColXl0001', Level.LEVEL1, async (done: Function) => {
       console.info('gridColXl testgridColXl0001 START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('GridCol');
@@ -66,7 +66,7 @@ export default function gridColXlJsunit() {
      * @tc.name         testgridColXl0002
      * @tc.desic         acegridColXlEtsTest0002
      */
-    it('testgridColXl0002', 0, async (done: Function) => {
+    it('testgridColXl0002', Level.LEVEL1, async (done: Function) => {
       console.info('gridColXl testgridColXl0002 START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('GridCol');

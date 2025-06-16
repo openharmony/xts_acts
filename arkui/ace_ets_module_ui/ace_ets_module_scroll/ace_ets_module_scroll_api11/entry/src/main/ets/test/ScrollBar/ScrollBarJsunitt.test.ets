@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -45,7 +45,7 @@ export default function scrollBarJsunitt() {
       console.info("scrollBar after each called");
     });
 
-    it('testScrollBar001', 0, async (done: Function) => {
+    it('testScrollBar001', Level.LEVEL1, async (done: Function) => {
       console.info('[testScrollBar001] START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('scroll');
@@ -56,7 +56,7 @@ export default function scrollBarJsunitt() {
       done();
     });
 
-    it('testScrollBar002', 0, async (done: Function) => {
+    it('testScrollBar002', Level.LEVEL1, async (done: Function) => {
       console.info('[testScrollBar002] START');
       let object: ESObject = {
         "directionValue": "ScrollBarDirection.Horizontal"
@@ -85,7 +85,7 @@ export default function scrollBarJsunitt() {
       done();
     });
 
-    it('testScrollBar003', 0, async (done: Function) => {
+    it('testScrollBar003', Level.LEVEL1, async (done: Function) => {
       console.info('[testScrollBar003] START');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('scroll');
@@ -96,7 +96,7 @@ export default function scrollBarJsunitt() {
       done();
     });
 
-    it('testScrollBar004', 0, async (done: Function) => {
+    it('testScrollBar004', Level.LEVEL1, async (done: Function) => {
       console.info('[testScrollBar004] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -122,7 +122,7 @@ export default function scrollBarJsunitt() {
       done();
     });
 
-    it('testScrollBar005', 0, async (done: Function) => {
+    it('testScrollBar005', Level.LEVEL1, async (done: Function) => {
       console.info('[testScrollBar005] START');
       try {
         let eventData: events_emitter.EventData = {

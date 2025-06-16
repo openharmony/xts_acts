@@ -14,7 +14,7 @@
  */
 
 
-import { afterEach, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterEach, beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 
 function sleep(time: number) {
@@ -69,7 +69,7 @@ export default function scrollbarJsunit() {
      * @tc.name testScrollbar010
      * @tc.desc aceEtsTest
      */
-    it('testScrollbar010', 0, async (done: Function) => {
+    it('testScrollbar010', Level.LEVEL1, async (done: Function) => {
       console.info('testScrollbar010 START');
       let strJson = getInspectorByKey('scrollbar1');
       let obj: ESObject = JSON.parse(strJson);
@@ -87,7 +87,7 @@ export default function scrollbarJsunit() {
      * @tc.name testScrollbar020
      * @tc.desc aceEtsTest
      */
-    it('testScrollbar020', 0, async (done: Function) => {
+    it('testScrollbar020', Level.LEVEL1, async (done: Function) => {
       console.info('testScrollbar020 START');
       let strJson = getInspectorByKey('scrollbar2');
       let obj: ESObject = JSON.parse(strJson);
@@ -105,7 +105,7 @@ export default function scrollbarJsunit() {
      * @tc.name testScrollbar030
      * @tc.desc aceEtsTest
      */
-    it('testScrollbar030', 0, async (done: Function) => {
+    it('testScrollbar030', Level.LEVEL1, async (done: Function) => {
       console.info('testScrollbar030 START');
       let strJson = getInspectorByKey('scrollbar3');
       let obj: ESObject = JSON.parse(strJson);
@@ -122,7 +122,7 @@ export default function scrollbarJsunit() {
      * @tc.name testScrollbar040
      * @tc.desc aceEtsTest
      */
-    it('testScrollbar040', 0, async (done: Function) => {
+    it('testScrollbar040', Level.LEVEL1, async (done: Function) => {
       console.info('testScrollbar040 START');
       let strJson = getInspectorByKey('scrollbar4');
       let obj: ESObject = JSON.parse(strJson);
@@ -139,7 +139,7 @@ export default function scrollbarJsunit() {
      * @tc.name testScrollbar050
      * @tc.desc aceEtsTest
      */
-    it('testScrollbar050', 0, async (done: Function) => {
+    it('testScrollbar050', Level.LEVEL1, async (done: Function) => {
       console.info('testScrollbar050 START');
       let strJson = getInspectorByKey('scrollbar5');
       let obj: ESObject = JSON.parse(strJson);
@@ -156,7 +156,7 @@ export default function scrollbarJsunit() {
      * @tc.name testScrollbar060
      * @tc.desc aceEtsTest
      */
-    it('testScrollbar060', 0, async (done: Function) => {
+    it('testScrollbar060', Level.LEVEL1, async (done: Function) => {
       console.info('testScrollbar060 START');
       let strJson = getInspectorByKey('scrollbar6');
       let obj: ESObject = JSON.parse(strJson);

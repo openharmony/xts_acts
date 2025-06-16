@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { Driver, ON, Component } from '@kit.TestKit';
 import { router } from '@kit.ArkUI';
 import Utils from '../../MainAbility/common/Utils';
@@ -57,7 +57,7 @@ export default function enableCascadeTest() {
     * @tc.type
     * @tc.size
     */
-    it('TimePickerApienableCascade_001', 0, async (done: Function) => {
+    it('TimePickerApienableCascade_001', Level.LEVEL1, async (done: Function) => {
       console.info('[TimePickerApienableCascade_001] START');
       let driver: Driver = Driver.create();
       await Utils.sleep(1000);
@@ -87,7 +87,7 @@ export default function enableCascadeTest() {
     * @tc.type
     * @tc.size
     */
-    it('TimePickerApienableCascade_002', 0, async (done: Function) => {
+    it('TimePickerApienableCascade_002', Level.LEVEL1, async (done: Function) => {
       console.info('[TimePickerApienableCascade_002] START');
       let driver: Driver = Driver.create();
       await Utils.sleep(1000);
@@ -117,7 +117,7 @@ export default function enableCascadeTest() {
     * @tc.type
     * @tc.size
     */
-    it('TimePickerApienableCascade_003', 0, async (done: Function) => {
+    it('TimePickerApienableCascade_003', Level.LEVEL1, async (done: Function) => {
       console.info('[TimePickerApienableCascade_003] START');
       let driver: Driver = Driver.create();
       await Utils.sleep(1000);
@@ -147,7 +147,7 @@ export default function enableCascadeTest() {
     * @tc.type
     * @tc.size
     */
-    it('TimePickerApienableCascade_004', 0, async (done: Function) => {
+    it('TimePickerApienableCascade_004', Level.LEVEL1, async (done: Function) => {
       console.info('[TimePickerApienableCascade_004] START');
       let driver: Driver = Driver.create();
       await Utils.sleep(1000);

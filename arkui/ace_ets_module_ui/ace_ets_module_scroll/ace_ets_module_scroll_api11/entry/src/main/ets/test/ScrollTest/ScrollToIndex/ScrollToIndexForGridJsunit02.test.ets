@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
@@ -48,7 +48,7 @@ export default function ScrollToIndexForGridJsunit02() {
      * @tc.type: Function
      * @tc.level   2
      */
-    it('ScrollToIndexForGridJsunit02_0100', 0, async (done: Function) => {
+    it('ScrollToIndexForGridJsunit02_0100', Level.LEVEL1, async (done: Function) => {
       console.info('[ScrollToIndexForGridJsunit02_0100] START');
 
       let driver = Driver.create();
@@ -89,7 +89,7 @@ export default function ScrollToIndexForGridJsunit02() {
      * @tc.type: Function
      * @tc.level   2
      */
-    it('ScrollToIndexForGridJsunit02_0200', 0, async (done: Function) => {
+    it('ScrollToIndexForGridJsunit02_0200', Level.LEVEL1, async (done: Function) => {
       console.info('[ScrollToIndexForGridJsunit02_0200] START');
       let driver = Driver.create();
       await driver.delayMs(1000)
@@ -122,7 +122,7 @@ export default function ScrollToIndexForGridJsunit02() {
      * @tc.type: Function
      * @tc.level   2
      */
-    it('ScrollToIndexForGridJsunit02_0300', 0, async (done: Function) => {
+    it('ScrollToIndexForGridJsunit02_0300', Level.LEVEL1, async (done: Function) => {
       console.info('[ScrollToIndexForGridJsunit02_0300] START');
       let driver = Driver.create();
       await driver.delayMs(1000);
@@ -158,7 +158,7 @@ export default function ScrollToIndexForGridJsunit02() {
      * @tc.type: Function
      * @tc.level   2
      */
-    it('ScrollToIndexForGridJsunit02_0400', 0, async (done: Function) => {
+    it('ScrollToIndexForGridJsunit02_0400', Level.LEVEL1, async (done: Function) => {
       console.info('[ScrollToIndexForGridJsunit02_0400] START');
       let driver = Driver.create();
       await driver.delayMs(2000);
