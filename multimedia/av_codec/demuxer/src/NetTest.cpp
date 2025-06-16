@@ -250,8 +250,8 @@ HWTEST_F(DemuxerNet2NdkTest, DEMUXER_WAV_ALAW_NET_FUNC_0006, TestSize.Level2)
     OpenUri(uri, &source, &demuxer);
     CheckTrackCount(&sourceFormat, source, &g_trackCount, 1);
     CheckTrackSelect(g_trackCount, demuxer);
-    ASSERT_EQ(AV_ERR_OK, OH_AVDemuxer_SeekToTime(demuxer, seekTime / thousand, OH_AVSeekMode::SEEK_MODE_NEXT_SYNC));
-    CountAudioFrames(demuxer, memory, g_trackCount, 20, 20);
+    ASSERT_EQ(AV_ERR_OK, OH_AVDemuxer_SeekToTime(demuxer, seekTime / thousand, OH_AVSeekMode::SEEK_MODE_CLOSEST_SYNC));
+    CountAudioFrames(demuxer, memory, g_trackCount, 21, 21);
 }
 
 /**
@@ -277,7 +277,7 @@ HWTEST_F(DemuxerNet2NdkTest, DEMUXER_WAV_ALAW_NET_FUNC_0008, TestSize.Level2)
 {
     int32_t seekTime = 2816000;
     int32_t thousand = 1000;
-    const char *uri = "http://192.168.3.17:8080/share/audio/wav_alaw_16K_8b_2.wav";
+    const char *uri = "http://192.168.3.17:8080/share/audio/wav_alaw_48K_8b_1.wav";
     OpenUri(uri, &source, &demuxer);
     CheckTrackCount(&sourceFormat, source, &g_trackCount, 1);
     CheckTrackSelect(g_trackCount, demuxer);
