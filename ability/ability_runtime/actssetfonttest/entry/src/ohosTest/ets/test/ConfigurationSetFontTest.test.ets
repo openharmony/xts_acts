@@ -192,7 +192,7 @@ export default function setFontTest() {
         await sleep(500);
         abilityDelegator.executeShellCommand(cmd, (err: BusinessError, data: abilityDelegatorRegistry.ShellCmdResult) => {
           hilog.info(0x0000, TAG, "[%{public}s] ExecuteShellCommand succeed. ShellCmdResult: %{public}s", TAG, JSON.stringify(data));
-          flag = (data.stdResult.includes("UpdateConfiguration, name:{\"0#ohos.application.font\":\"font1\"}")) && !(data.stdResult.includes("TestAbility onConfigurationUpdate"));
+          flag = (data.stdResult.includes("UpdateConfiguration, name:{\"0#ohos.application.font\":\"font1\"}")) && !(data.stdResult.includes("TestAbility onConfigurationUpdate")) && !(data.stdResult.includes("EntryAbility onConfigurationUpdate"));
         });
         await sleep(500);
         hilog.info(0x0000, TAG, "[%{public}s] flag: %{public}s", TAG, JSON.stringify(flag));
