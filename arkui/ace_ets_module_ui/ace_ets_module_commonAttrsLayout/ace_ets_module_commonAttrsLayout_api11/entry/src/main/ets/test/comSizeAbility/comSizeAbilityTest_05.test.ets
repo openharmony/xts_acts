@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { expect, it, afterEach, afterAll, beforeEach, beforeAll, describe } from "@ohos/hypium"
+import { expect, it, afterEach, afterAll, beforeEach, beforeAll, describe, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -60,7 +60,7 @@ export default function comSizeAbilityTest_05() {
         * @tc.desc  : test the size of component
         * @tc.level : Level 2
         */
-    it('comSizeAbilityTestJsunit_12', 0, async (done: Function) => {
+    it('comSizeAbilityTestJsunit_12', Level.LEVEL0, async (done: Function) => {
       console.info('comSizeAbilityTestJsunit_12 START')
       await CommonFunc.sleep(1000);
       let driver = Driver.create();
@@ -107,7 +107,7 @@ export default function comSizeAbilityTest_05() {
         * @tc.desc  : test the size of component
         * @tc.level : Level 2
         */
-    it('comSizeAbilityTestJsunit_13', 0, async (done: Function) => {
+    it('comSizeAbilityTestJsunit_13', Level.LEVEL0, async (done: Function) => {
       console.info('comSizeAbilityTestJsunit_13 START')
       await CommonFunc.sleep(1000);
       let driver = Driver.create();
@@ -152,7 +152,7 @@ export default function comSizeAbilityTest_05() {
         * @tc.desc  : test the size of component
         * @tc.level : Level 2
         */
-    it('comSizeAbilityTestJsunit_14', 0, async (done: Function) => {
+    it('comSizeAbilityTestJsunit_14', Level.LEVEL0, async (done: Function) => {
       console.info('comSizeAbilityTestJsunit_14 START')
       await CommonFunc.sleep(1000);
       let driver = Driver.create();

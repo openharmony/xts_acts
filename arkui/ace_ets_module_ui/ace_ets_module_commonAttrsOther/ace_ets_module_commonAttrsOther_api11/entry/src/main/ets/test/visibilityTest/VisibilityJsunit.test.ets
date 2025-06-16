@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -45,7 +45,7 @@ export default function visibilityJsunit() {
       console.info("visibility after each called");
     });
 
-    it('testVisibility01', 0, async () => {
+    it('testVisibility01', Level.LEVEL0, async () => {
       console.info('[testVisibility01] START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('box');
@@ -56,7 +56,7 @@ export default function visibilityJsunit() {
 
     });
 
-    it('testVisibility02', 0, async () => {
+    it('testVisibility02', Level.LEVEL0, async () => {
       console.info('[testVisibility02] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -82,7 +82,7 @@ export default function visibilityJsunit() {
 
     });
 
-    it('testVisibility03', 0, async () => {
+    it('testVisibility03', Level.LEVEL0, async () => {
       console.info('[testVisibility03] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -108,7 +108,7 @@ export default function visibilityJsunit() {
 
     });
 
-    it('testVisibility04', 0, async () => {
+    it('testVisibility04', Level.LEVEL0, async () => {
       console.info('[testVisibility04] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -133,7 +133,7 @@ export default function visibilityJsunit() {
       console.info('[testVisibility04] END');
     });
 
-    it('testVisibility05', 0, async () => {
+    it('testVisibility05', Level.LEVEL0, async () => {
       console.info('[testVisibility05] START');
       try {
         let eventData: events_emitter.EventData = {

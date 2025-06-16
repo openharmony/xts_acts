@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import CommonFunc from '../../../MainAbility/common/Common';
 import { Driver, ON } from '@ohos.UiTest';
 
@@ -53,7 +53,7 @@ export default function FocusScopeId18() {
      * @tc.desc      Test support for directional key focus group penetration ability
      * @tc.level     Level 2
      */
-    it('FocusScopeId18_0100', 0, async (done: Function) => {
+    it('FocusScopeId18_0100', Level.LEVEL0, async (done: Function) => {
       console.info('[FocusScopeId18_0100] START');
       await CommonFunc.sleep(1000);
 

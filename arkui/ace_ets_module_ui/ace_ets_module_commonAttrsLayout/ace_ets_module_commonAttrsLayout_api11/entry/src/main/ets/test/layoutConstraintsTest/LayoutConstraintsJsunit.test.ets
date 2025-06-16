@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../Utils';
@@ -46,7 +46,7 @@ export default function layoutConstraintsJsunit() {
       console.info("layoutConstraints after each called");
     });
 
-    it('testLayoutConstraints001', 0, async (done: Function) => {
+    it('testLayoutConstraints001', Level.LEVEL0, async (done: Function) => {
       console.info('[testLayoutConstraints001] START');
       await Utils.sleep(1000);
       let strJson: string = getInspectorByKey('aspectRatio');
@@ -56,7 +56,7 @@ export default function layoutConstraintsJsunit() {
       done()
     });
 
-    it('testLayoutConstraints002', 0, async (done: Function) => {
+    it('testLayoutConstraints002', Level.LEVEL0, async (done: Function) => {
       console.info('[testLayoutConstraints002] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -81,7 +81,7 @@ export default function layoutConstraintsJsunit() {
       done()
     });
 
-    it('testLayoutConstraints003', 0, async (done: Function) => {
+    it('testLayoutConstraints003', Level.LEVEL0, async (done: Function) => {
       console.info('[testLayoutConstraints003] START');
       await Utils.sleep(1000);
       let strJson: string = getInspectorByKey('displayPriority');
@@ -91,7 +91,7 @@ export default function layoutConstraintsJsunit() {
       done()
     });
 
-    it('testLayoutConstraints004', 0, async (done: Function) => {
+    it('testLayoutConstraints004', Level.LEVEL0, async (done: Function) => {
       console.info('[testLayoutConstraints004] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -116,7 +116,7 @@ export default function layoutConstraintsJsunit() {
       done();
     });
 
-    it('testLayoutConstraints005', 0, async (done: Function) => {
+    it('testLayoutConstraints005', Level.LEVEL0, async (done: Function) => {
       console.info('[testLayoutConstraints005] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -141,7 +141,7 @@ export default function layoutConstraintsJsunit() {
       done()
     });
 
-    it('testLayoutConstraints006', 0, async (done: Function) => {
+    it('testLayoutConstraints006', Level.LEVEL0, async (done: Function) => {
       console.info('[testLayoutConstraints006] START');
       try {
         let eventData: events_emitter.EventData = {

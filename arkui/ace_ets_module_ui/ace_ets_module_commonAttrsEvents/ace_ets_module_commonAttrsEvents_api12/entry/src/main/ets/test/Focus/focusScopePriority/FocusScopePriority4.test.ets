@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import CommonFunc from '../../../MainAbility/common/Common';
 import { Driver, ON } from '@ohos.UiTest';
 
@@ -53,7 +53,7 @@ export default function FocusScopePriority4() {
      * @tc.desc      Test FocusScopePriority
      * @tc.level     Level 2
      */
-    it('FocusScopePriority4_0100', 0, async (done: Function) => {
+    it('FocusScopePriority4_0100', Level.LEVEL0, async (done: Function) => {
       console.info('[FocusScopePriority4_0100] START');
       await CommonFunc.sleep(1000);
 

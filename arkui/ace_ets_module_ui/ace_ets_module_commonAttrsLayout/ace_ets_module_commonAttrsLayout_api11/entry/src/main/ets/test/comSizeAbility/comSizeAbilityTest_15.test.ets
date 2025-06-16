@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { expect, it, afterEach, afterAll, beforeEach, beforeAll, describe } from "@ohos/hypium"
+import { expect, it, afterEach, afterAll, beforeEach, beforeAll, describe, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -60,7 +60,7 @@ export default function comSizeAbilityTest_15() {
         * @tc.desc  : test the size of component
         * @tc.level : Level 2
         */
-    it('comSizeAbilityTestJsunit_40', 0, async (done: Function) => {
+    it('comSizeAbilityTestJsunit_40', Level.LEVEL0, async (done: Function) => {
       console.info('comSizeAbilityTestJsunit_40 START')
       await CommonFunc.sleep(1000);
       let modePosition: componentUtils.ComponentInfo = componentUtils.getRectangleById("TabContent_Size");

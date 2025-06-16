@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { Driver, ON } from '@ohos.UiTest';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
@@ -60,7 +60,7 @@ export default function counterDirectionTest() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testCounterDirection_0100', 0, async (done: Function) => {
+    it('testCounterDirection_0100', Level.LEVEL0, async (done: Function) => {
       console.log("[testCounterDirection_0100] START");
       const driver = await Driver.create();
       let buttonAuto = await driver.findComponent(ON.id("Auto"));

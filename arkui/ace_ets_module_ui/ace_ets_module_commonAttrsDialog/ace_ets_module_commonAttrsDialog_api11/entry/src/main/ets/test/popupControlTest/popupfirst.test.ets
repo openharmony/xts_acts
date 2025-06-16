@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 
 export default function abilityTest() {
@@ -41,7 +41,7 @@ export default function abilityTest() {
      * @tc.name      Popup added enableArrow and placement interface coverage
      * @tc.desc      Popup added enableArrow and placement interface coverage
      */
-    it('ArkUX_Stage_Popup_0100', 0, async (done:Function) =>{
+    it('ArkUX_Stage_Popup_0100', Level.LEVEL0, async (done:Function) =>{
       console.info('ArkUX_Stage_Popup_0100 START');
       setTimeout(() => {
         try {
