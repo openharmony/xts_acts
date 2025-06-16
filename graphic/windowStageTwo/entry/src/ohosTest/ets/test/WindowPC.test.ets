@@ -3057,147 +3057,119 @@ export default function windowPCTest() {
 
     })
 
-    // /**
-    //  * @tc.number     : SUB_BASIC_WMS_SHIFT_APP_WINDOW_TOUCH_EVENT_0600
-    //  * @tc.name       : testShiftAppWindowTouchEvent_FromSubWindowToMainWindow
-    //  * @tc.desc       : testShiftAppWindowTouchEvent_FromSubWindowToMainWindow
-    //  * @tc.size       : MediumTest
-    //  * @tc.type       : Function
-    //  * @tc.level      : Level 3
-    //  */
-    // it('testShiftAppWindowTouchEvent_FromSubWindowToMainWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
-    //   let caseName = "testShiftAppWindowTouchEvent_FromSubWindowToMainWindow";
-    //   let msgStr = 'jsunittest ' + caseName + ' ';
-    //   console.log(msgStr + 'begin.');
-    //   if(isPCStatus != '' || isAutoWindow =='true'){
-    //     let mainWindow = windowStage.getMainWindowSync();
-    //   let mainWindowId = mainWindow.getWindowProperties().id;
-    //   console.log(`${caseName} mainwindowId: ${JSON.stringify(mainWindowId)}`);
-    //   AppStorage.setOrCreate('mainWindowId5', mainWindowId);
-    //   let subWindowClass = await windowStage.createSubWindow('testShiftAppWindowTouchEvent_FromSubWindowToMainWindow');
-    //   await sleep(200);
-    //   let windowLimits = subWindowClass.getWindowLimits();
-    //   console.log(`${caseName} windowLimits: ${JSON.stringify(windowLimits)}`);
-    //   await subWindowClass.resize((windowLimits.minWidth as number) + 100, (windowLimits.minHeight as number) + 100);
-    //   await subWindowClass.setUIContent("testability/pages/WindowTest/StartMoving5");
-    //   await sleep(200);
-    //   await subWindowClass.showWindow();
-    //   await sleep(200);
-    //   let subWindowId = subWindowClass.getWindowProperties().id;
-    //   console.log(`${caseName} subWindowId: ${JSON.stringify(subWindowId)}`);
-    //   AppStorage.setOrCreate('subWindowId5', subWindowId);
-    //   try {
-    //     let driver = await Driver.create();
-    //     await sleep(1000);
-    //     let blank = await driver.findComponent(ON.id('startMoving5'))
-    //     await sleep(1000)
-    //     let point = await blank.getBoundsCenter();
-    //     await driver.drag(point.x, point.y, point.x + 50, point.y + 50, 200);
-    //     await sleep(1000);
-    //     let text = await driver.findComponent(ON.id('startMovingText5'));
-    //     await sleep(1000)
-    //     let textDragged = await text.getText();
-    //     console.log(`${caseName} textDragged: ${JSON.stringify(textDragged)}`);
-    //     if (textDragged == 'success') {
-    //       let isFocus = mainWindow.getWindowProperties().focusable;
-    //       console.log(`${caseName} mainWindow isFocus: ${isFocus}`);
-    //       expect(isFocus).assertEqual(true);
-    //     } else if (textDragged == 'startMoving 801' || textDragged == '801') {
-    //       expect(true).assertTrue();
-    //     } else {
-    //       console.error(`${caseName} Error.`);
-    //       expect(true).assertFalse()
-    //     }
-    //     await subWindowClass.destroyWindow();
-    //     done();
-    //   } catch (err) {
-    //     console.error(`${caseName} failed, error: ${JSON.stringify(err)}`);
-    //     await subWindowClass.destroyWindow();
-    //     if (err.code == 801) {
-    //       done()
-    //     } else {
-    //       expect().assertFail();
-    //       done()
-    //     }
-    //   }
-    //   }else{
-    //     done();
-    //   }
-      
-    // })
+    
 
-    // /**
-    //  * @tc.number     : SUB_BASIC_WMS_SHIFT_APP_WINDOW_TOUCH_EVENT_0700
-    //  * @tc.name       : testShiftAppWindowTouchEvent_FromMainWindowToSubWindow
-    //  * @tc.desc       : testShiftAppWindowTouchEvent_FromMainWindowToSubWindow
-    //  * @tc.size       : MediumTest
-    //  * @tc.type       : Function
-    //  * @tc.level      : Level 3
-    //  */
-    // it('testShiftAppWindowTouchEvent_FromMainWindowToSubWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
-    //   let caseName = "testShiftAppWindowTouchEvent_FromMainWindowToSubWindow";
-    //   let msgStr = 'jsunittest ' + caseName + ' ';
-    //   console.log(msgStr + 'begin.');
-    //   if(isPCStatus != '' || isAutoWindow =='true'){
-    //     let mainWindow = windowStage.getMainWindowSync();
-    //     AppStorage.setOrCreate('mainWindow', mainWindow);
-    //     await mainWindow.setUIContent("testability/pages/WindowTest/StartMoving6");
-    //     let mainWindowId = mainWindow.getWindowProperties().id;
-    //     console.log(`${caseName} mainwindowId: ${JSON.stringify(mainWindowId)}`);
-    //     AppStorage.setOrCreate('mainWindowId6', mainWindowId);
-    //     let subWindowClass = await windowStage.createSubWindow('testShiftAppWindowTouchEvent_FromSubWindowToMainWindow');
-    //     await sleep(200);
-    //     let windowLimits = subWindowClass.getWindowLimits();
-    //     console.log(`${caseName} windowLimits: ${JSON.stringify(windowLimits)}`);
-    //     await subWindowClass.resize((windowLimits.minWidth as number) + 100, (windowLimits.minHeight as number) + 100);
-    //     await subWindowClass.setUIContent("testability/pages/First/index2");
-    //     await sleep(200);
-    //     await subWindowClass.showWindow();
-    //     await sleep(200);
-    //     let subWindowId = subWindowClass.getWindowProperties().id;
-    //     console.log(`${caseName} subWindowId: ${JSON.stringify(subWindowId)}`);
-    //     AppStorage.setOrCreate('subWindowId6', subWindowId);
-    //     try {
-    //       let driver = await Driver.create();
-    //       await sleep(1000);
-    //       let blank = await driver.findComponent(ON.id('startMoving6'))
-    //       await sleep(1000)
-    //       let point = await blank.getBoundsCenter();
-    //       await driver.drag(point.x, point.y, point.x + 50, point.y + 50, 200);
-    //       await sleep(1000);
-    //       let text = await driver.findComponent(ON.id('startMovingText6'));
-    //       await sleep(1000)
-    //       let textDragged = await text.getText();
-    //       console.log(`${caseName} textDragged: ${JSON.stringify(textDragged)}`);
-    //       if (textDragged == 'success') {
-    //         let isFocus = subWindowClass.getWindowProperties().focusable;
-    //         console.log(`${caseName} subWindowClass isFocus: ${isFocus}`);
-    //         expect(isFocus).assertEqual(true);
-    //       } else if (textDragged == 'startMoving 801' || textDragged == '801') {
-    //         expect(true).assertTrue();
-    //       } else {
-    //         console.error(`${caseName} Error.`);
-    //         expect(true).assertFalse()
-    //       }
-    //       await subWindowClass.destroyWindow();
-    //       await mainWindow.setUIContent("testability/pages/Index");
-    //       done();
-    //     } catch (err) {
-    //       console.error(`${caseName} failed, error: ${JSON.stringify(err)}`);
-    //       await mainWindow.setUIContent("testability/pages/Index");
-    //       await subWindowClass.destroyWindow();
-    //       if (err.code == 801) {
-    //         done()
-    //       } else {
-    //         expect().assertFail();
-    //         done()
-    //       }
-    //     }
-    //   }else{
-    //     done();
-    //   }
-
-    // })
+    /**
+     * @tc.number    : testOutlineEnabled_0100
+     * @tc.name      : testOutlineEnabled_True
+     * @tc.desc      : Test the function value of outlineEnabled
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testOutlineEnabled_True', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      const message = 'testOutlineEnabled_True';
+      let windowClass:window.Window;
+      let options: window.SubWindowOptions = {
+        title: 'testOutlineEnabled_True',
+        decorEnabled: true,
+        outlineEnabled:true
+      };
+      windowStage.createSubWindowWithOptions('testOutlineEnabled_True', options).then(async (data) => {
+        windowClass = data
+        console.log(`${message} createSubWindowWithOptions success`);
+        await windowClass.setUIContent("testability/pages/Index");
+        windowClass.resize(1000, 1200)
+        await windowClass.showWindow()
+        await sleep(500)
+        await windowClass.destroyWindow()
+        expect(true).assertTrue();
+        done();
+      }).catch(async (err: BusinessError) => {
+        console.error(`${message} Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+        if (err.code == 801 || err.code == 1300002) {
+          console.info(`${message} Capability not supported. Failed to call the API due to limited device capabilities.`);
+          done();
+        } else {
+          expect(false).assertFalse();
+          done();
+        }
+      })
+    })
+    /**
+     * @tc.number    : testOutlineEnabled_0200
+     * @tc.name      : testOutlineEnabled_False
+     * @tc.desc      : Test the function value of outlineEnabled
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testOutlineEnabled_False', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      const message = 'testOutlineEnabled_False';
+      let windowClass:window.Window;
+      let options: window.SubWindowOptions = {
+        title: 'testOutlineEnabled_False',
+        decorEnabled: true,
+        outlineEnabled:false
+      };
+      windowStage.createSubWindowWithOptions('testOutlineEnabled_False', options).then(async (data) => {
+        windowClass = data
+        console.log(`${message} createSubWindowWithOptions success`);
+        await windowClass.setUIContent("testability/pages/Index");
+        windowClass.resize(1000, 1200)
+        await windowClass.showWindow()
+        await sleep(500)
+        await windowClass.destroyWindow()
+        expect(true).assertTrue();
+        done();
+      }).catch(async (err: BusinessError) => {
+        console.error(`${message} Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+        if (err.code == 801 || err.code == 1300002) {
+          console.info(`${message} Capability not supported. Failed to call the API due to limited device capabilities.`);
+          done();
+        } else {
+          expect(false).assertFalse();
+          done();
+        }
+      })
+    })
+    /**
+     * @tc.number    : testOutlineEnabled_0300
+     * @tc.name      : testOutlineEnabled_Undifined
+     * @tc.desc      : Test the function value of outlineEnabled
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testOutlineEnabled_Undifined', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      const message = 'testOutlineEnabled_Undifined';
+      let windowClass:window.Window;
+      let options: window.SubWindowOptions = {
+        title: 'testOutlineEnabled_Undifined',
+        decorEnabled: true,
+        outlineEnabled:undefined
+      };
+      windowStage.createSubWindowWithOptions('testOutlineEnabled_Undifined', options).then(async (data) => {
+        windowClass = data
+        console.log(`${message} createSubWindowWithOptions success`);
+        await windowClass.setUIContent("testability/pages/Index");
+        windowClass.resize(1000, 1200)
+        await windowClass.showWindow()
+        await sleep(500)
+        await windowClass.destroyWindow()
+        expect(true).assertTrue();
+        done();
+      }).catch(async (err: BusinessError) => {
+        console.error(`${message} Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+        if (err.code == 801 || err.code == 1300002) {
+          console.info(`${message} Capability not supported. Failed to call the API due to limited device capabilities.`);
+          done();
+        } else {
+          expect(false).assertFalse();
+          done();
+        }
+      })
+    })
 
   })
 }
