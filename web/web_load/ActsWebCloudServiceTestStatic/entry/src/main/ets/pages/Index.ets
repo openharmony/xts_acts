@@ -42,7 +42,7 @@ struct MyStateSample {
   @State errorReceive: string = ""
   @State loadIntercept: string = ""
   @State loadedUrl: string = ""
-  @State clickEvent: string = "OnErrorReceive"
+  @State clickEvent: string = 'OnErrorReceive'
   @State testObjtest: TestObj = new TestObj()
 
   aboutToAppear() {
@@ -58,7 +58,7 @@ struct MyStateSample {
           try {
             this.clickEvent = eventData?.data?.get("ACTION") as string;
             hilog.info(0x0000, 'testTag', "valueChangeCallBack clickEvent=" + this.clickEvent);
-            this.webviewController.loadUrl("resource://rawfile/first.html");
+            this.webviewController.loadUrl('resource://rawfile/first.html');
           } catch (error) {
             hilog.info(0x0000, 'testTag', 'ErrorCode: error');
           }
@@ -66,11 +66,6 @@ struct MyStateSample {
       }
     })
   }
-
-  // aboutToDisappear() {
-  //   hilog.info(0x0000, 'testTag', "aboutToDisappear");
-  //   emitter.off(10)
-  // }
 
   build() {
     Column(undefined) {
@@ -100,9 +95,9 @@ struct MyStateSample {
               try {
                 this.pageEnd = ''
                 this.webviewController.loadUrl("resource://rawfile/second.html")
-                // setTimeout(() => {
-                //   Utils.emitEvent(this.pageEnd, 101);
-                // }, 2000)
+                setTimeout(() => {
+                  Utils.emitEvent(this.pageEnd, 101);
+                }, 2000)
               } catch (error) {
                 hilog.info(0x0000, 'testTag', 'ErrorCode: error');
               }
@@ -118,7 +113,7 @@ struct MyStateSample {
                 setTimeout(() => {
                   this.errorReceive = ''
                   this.webviewController.loadUrl("https://untrusted-root.badssl.com/")
-                }, 5000)
+                }, 2000)
               } catch (error) {
                 hilog.info(0x0000, 'testTag', 'ErrorCode: error');
               }
@@ -127,8 +122,12 @@ struct MyStateSample {
             case "OnErrorReceive": {
               try {
                 setTimeout(() => {
+                  this.errorReceive = ''
+                  this.webviewController.loadUrl("https://untrusted-root.badssl.com/")
+                }, 2000)
+                setTimeout(() => {
                   hilog.info(0x0000, 'testTag', 'OnErrorReceive Mock');
-                  // Utils.emitEvent(this.errorReceive, 103);
+                  Utils.emitEvent(this.errorReceive, 103);
                 }, 2000)
               } catch (error) {
                 hilog.info(0x0000, 'testTag', 'ErrorCode: error');
@@ -139,9 +138,9 @@ struct MyStateSample {
               try {
                 this.loadIntercept = '';
                 this.webviewController.loadUrl("resource://rawfile/second.html");
-                // setTimeout(() => {
-                  // Utils.emitEvent(this.loadIntercept, 104);
-                // }, 2000)
+                setTimeout(() => {
+                  Utils.emitEvent(this.loadIntercept, 104);
+                }, 2000)
               } catch (error) {
                 hilog.info(0x0000, 'testTag', 'ErrorCode: error');
               }
@@ -203,7 +202,7 @@ struct MyStateSample {
                 );
                 setTimeout(() => {
                   let title: string = this.webviewController.getTitle();
-                  // Utils.emitEvent(title, 107);
+                  Utils.emitEvent(title, 107);
                 }, 2000)
               } catch (error) {
                 hilog.info(0x0000, 'testTag', 'ErrorCode: error');
@@ -225,7 +224,7 @@ struct MyStateSample {
                   customUserAgent = "true";
                 }
                 let result = userAgent + "*" + customUserAgent + "*" + url + "*" + originUrl;
-                // Utils.emitEvent(result, 111);
+                Utils.emitEvent(result, 111);
               } catch (error) {
                 hilog.info(0x0000, 'testTag', 'ErrorCode: error');
               }
@@ -261,7 +260,7 @@ struct MyStateSample {
                       this.webviewController.clearHistory();
                       result += "*";
                       result += this.webviewController.accessForward() ? "true" : "false";
-                      // Utils.emitEvent(result, 117);
+                      Utils.emitEvent(result, 117);
                     }, 1000)
                   }, 1000)
                 }, 1000)
@@ -326,7 +325,7 @@ struct MyStateSample {
               try {
                 let proxyRules: Array<webView.ProxyRule>;
                 let proxyConfig: webView.ProxyConfig = new webView.ProxyConfig();
-                proxyConfig.insertProxyRule("https://proxy.XXX.com", webView.ProxySchemeFilter.MATCH_HTTP);
+                proxyConfig.insertProxyRule("https://www.example.com", webView.ProxySchemeFilter.MATCH_HTTP);
                 proxyRules = proxyConfig.getProxyRules();
                 for (let i = 0; i < proxyRules.length; i++) {
                   hilog.info(0x0000, 'testTag', 'Proxy SchemeFiletr=' + proxyRules[i].getSchemeFilter());
@@ -438,23 +437,22 @@ struct MyStateSample {
         .onPageBegin((event: OnPageBeginEvent): void => {
           if (event) {
             this.pageBegin = event.url
-            hilog.info(0x0000, 'testTag', "onPageBegin==> event.url:" + event.url)
+            hilog.info(0x0000, 'testTag', 'onPageBegin==> event.url:' + event.url)
           }
         })
         .onProgressChange((event: OnProgressChangeEvent): void => {
           if (event) {
             this.progress = event.newProgress + ""
-            hilog.info(0x0000, 'testTag', "onProgressChange==> event.progress:" + event.newProgress)
+            hilog.info(0x0000, 'testTag', 'onProgressChange==> event.progress:' + event.newProgress)
           }
         })
         .onPageEnd((event: OnPageEndEvent): void => {
           if (event) {
             this.pageEnd = event.url
-            hilog.info(0x0000, 'testTag', "onPageEnd==> event.url:" + event.url)
+            hilog.info(0x0000, 'testTag', 'onPageEnd==> event.url:' + event.url)
           }
         })
 
-      // Child({stateVar: this.stateVar} as __Options_Child)
     }
   }
 }
