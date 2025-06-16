@@ -723,13 +723,6 @@ export default function windowKeyBorad() {
         if (isPCStatus != '' || isAutoWindow == 'true') {
           done();
         } else {
-          const callback5  = async (keyboardInfo: window.KeyboardInfo) => {
-            console.info(`${caseName} KeyboardInfo: ${JSON.stringify(keyboardInfo)}`);
-            mainWindow.off('keyboardWillShow');
-            await driver.pressBack();
-            await sleep(500);
-          }
-          mainWindow.on('keyboardWillShow', callback5);
           const callback1  = (keyboardInfo: window.KeyboardInfo) => {
             console.info(`${caseName} KeyboardInfo1: ${JSON.stringify(keyboardInfo)}`);
             timer1++;
@@ -762,6 +755,8 @@ export default function windowKeyBorad() {
           let input = await driver.findComponent(ON.id('textInput'));
           await sleep(1000);
           await input.click();
+          await sleep(500);
+          await driver.pressBack();
           await sleep(500);
           expect(timer1).assertEqual(0);
           expect(timer2).assertEqual(0);
