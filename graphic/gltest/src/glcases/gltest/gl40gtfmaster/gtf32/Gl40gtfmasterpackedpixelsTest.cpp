@@ -15,25 +15,22 @@
 
 #include <climits>
 #include <gtest/gtest.h>
-#include "../Gl46masterBaseFunc.h"
-#include "../ActsGl46master0001TestSuite.h"
+#include "../Gl40gtfmasterBaseFunc.h"
+#include "../ActsGl40gtfmaster0001TestSuite.h"
 #include "shrinkdefine.h"
 
 using namespace std;
 using namespace testing::ext;
 using namespace OHOS;
 
-static SHRINK_HWTEST_SF(ActsGl46master0001TestSuite, TestCase_008005,
-    "KHR-GL46.sample_variables.position.non-fixed.samples_0");
+static SHRINK_HWTEST_SF(ActsGl40gtfmaster0001TestSuite, TestCase_001559,
+    "GTF-GL40.gtf32.GL3Tests.packed_pixels.packed_pixels_init");
 
-static SHRINK_HWTEST_SF(ActsGl46master0001TestSuite, TestCase_008006,
-    "KHR-GL46.sample_variables.position.non-fixed.samples_1");
+static SHRINK_HWTEST_SF(ActsGl40gtfmaster0001TestSuite, TestCase_001560,
+    "GTF-GL40.gtf32.GL3Tests.packed_pixels.packed_pixels");
 
-static SHRINK_HWTEST_SF(ActsGl46master0001TestSuite, TestCase_008007,
-    "KHR-GL46.sample_variables.position.non-fixed.samples_2");
+static SHRINK_HWTEST_SF(ActsGl40gtfmaster0001TestSuite, TestCase_001561,
+    "GTF-GL40.gtf32.GL3Tests.packed_pixels.packed_pixels_pixelstore");
 
-static SHRINK_HWTEST_SF(ActsGl46master0001TestSuite, TestCase_008008,
-    "KHR-GL46.sample_variables.position.non-fixed.samples_4");
-
-static SHRINK_HWTEST_SF(ActsGl46master0001TestSuite, TestCase_008009,
-    "KHR-GL46.sample_variables.position.non-fixed.samples_8");
+static SHRINK_HWTEST_SF(ActsGl40gtfmaster0001TestSuite, TestCase_001562,
+    "GTF-GL40.gtf32.GL3Tests.packed_pixels.packed_pixels_pbo");
