@@ -163,11 +163,11 @@ static void CountAudioFrames(OH_AVDemuxer *audioDemuxer, OH_AVMemory *mem,
 }
 
 /**
- * @tc.number    : DEMUXER_WAV_ALAW_FUNC_0001
- * @tc.name      : demuxer wav_alaw_410_8b_1, read, 网络流
+ * @tc.number    : DEMUXER_WAV_ALAW_NET_FUNC_0001
+ * @tc.name      : DEMUXER_WAV_ALAW_NET_FUNC_0001
  * @tc.desc      : function test
  */
-HWTEST_F(DemuxerNet2NdkTest, DEMUXER_WAV_ALAW_FUNC_0001, TestSize.Level2)
+HWTEST_F(DemuxerNet2NdkTest, DEMUXER_WAV_ALAW_NET_FUNC_0001, TestSize.Level2)
 {
     const char *uri = "http://192.168.3.17:8080/share/audio/wav_alaw_410_8b_1.wav";
     OpenUri(uri, &source, &demuxer);
@@ -177,11 +177,11 @@ HWTEST_F(DemuxerNet2NdkTest, DEMUXER_WAV_ALAW_FUNC_0001, TestSize.Level2)
 }
 
 /**
- * @tc.number    : DEMUXER_WAV_ALAW_FUNC_0002
- * @tc.name      : demuxer wav_alaw_410_8b_1, seek, 网络流
+ * @tc.number    : DEMUXER_WAV_ALAW_NET_FUNC_0002
+ * @tc.name      : DEMUXER_WAV_ALAW_NET_FUNC_0002
  * @tc.desc      : function test
  */
-HWTEST_F(DemuxerNet2NdkTest, DEMUXER_WAV_ALAW_FUNC_0002, TestSize.Level2)
+HWTEST_F(DemuxerNet2NdkTest, DEMUXER_WAV_ALAW_NET_FUNC_0002, TestSize.Level2)
 {
     int64_t seekTime = 0;
     const char *uri = "http://192.168.3.17:8080/share/audio/wav_alaw_410_8b_1.wav";
@@ -193,11 +193,11 @@ HWTEST_F(DemuxerNet2NdkTest, DEMUXER_WAV_ALAW_FUNC_0002, TestSize.Level2)
 }
 
 /**
- * @tc.number    : DEMUXER_WAV_ALAW_FUNC_0003
- * @tc.name      : demuxer wav_alaw_8K_8b_2, read, 网络流
+ * @tc.number    : DEMUXER_WAV_ALAW_NET_FUNC_0003
+ * @tc.name      : DEMUXER_WAV_ALAW_NET_FUNC_0003
  * @tc.desc      : function test
  */
-HWTEST_F(DemuxerNet2NdkTest, DEMUXER_WAV_ALAW_FUNC_0003, TestSize.Level2)
+HWTEST_F(DemuxerNet2NdkTest, DEMUXER_WAV_ALAW_NET_FUNC_0003, TestSize.Level2)
 {
     const char *uri = "http://192.168.3.17:8080/share/audio/wav_alaw_8K_8b_2.wav";
     OpenUri(uri, &source, &demuxer);
@@ -207,11 +207,11 @@ HWTEST_F(DemuxerNet2NdkTest, DEMUXER_WAV_ALAW_FUNC_0003, TestSize.Level2)
 }
 
 /**
- * @tc.number    : DEMUXER_WAV_ALAW_FUNC_0004
- * @tc.name      : demuxer wav_alaw_8K_8b_2, seek, 网络流
+ * @tc.number    : DEMUXER_WAV_ALAW_NET_FUNC_0004
+ * @tc.name      : DEMUXER_WAV_ALAW_NET_FUNC_0004
  * @tc.desc      : function test
  */
-HWTEST_F(DemuxerNet2NdkTest, DEMUXER_WAV_ALAW_FUNC_0004, TestSize.Level2)
+HWTEST_F(DemuxerNet2NdkTest, DEMUXER_WAV_ALAW_NET_FUNC_0004, TestSize.Level2)
 {
     int32_t seekTime = 2304000;
     int32_t thousand = 1000;
@@ -224,11 +224,11 @@ HWTEST_F(DemuxerNet2NdkTest, DEMUXER_WAV_ALAW_FUNC_0004, TestSize.Level2)
 }
 
 /**
- * @tc.number    : DEMUXER_WAV_ALAW_FUNC_0005
- * @tc.name      : demuxer wav_alaw_16K_8b_2, read, 网络流
+ * @tc.number    : DEMUXER_WAV_ALAW_NET_FUNC_0005
+ * @tc.name      : DEMUXER_WAV_ALAW_NET_FUNC_0005
  * @tc.desc      : function test
  */
-HWTEST_F(DemuxerNet2NdkTest, DEMUXER_WAV_ALAW_FUNC_0005, TestSize.Level2)
+HWTEST_F(DemuxerNet2NdkTest, DEMUXER_WAV_ALAW_NET_FUNC_0005, TestSize.Level2)
 {
     const char *uri = "http://192.168.3.17:8080/share/audio/wav_alaw_16K_8b_2.wav";
     OpenUri(uri, &source, &demuxer);
@@ -238,11 +238,11 @@ HWTEST_F(DemuxerNet2NdkTest, DEMUXER_WAV_ALAW_FUNC_0005, TestSize.Level2)
 }
 
 /**
- * @tc.number    : DEMUXER_WAV_ALAW_FUNC_0006
- * @tc.name      : demuxer wav_alaw_16K_8b_2, seek, 网络流
+ * @tc.number    : DEMUXER_WAV_ALAW_NET_FUNC_0006
+ * @tc.name      : DEMUXER_WAV_ALAW_NET_FUNC_0006
  * @tc.desc      : function test
  */
-HWTEST_F(DemuxerNet2NdkTest, DEMUXER_WAV_ALAW_FUNC_0006, TestSize.Level2)
+HWTEST_F(DemuxerNet2NdkTest, DEMUXER_WAV_ALAW_NET_FUNC_0006, TestSize.Level2)
 {
     int32_t seekTime = 2432000;
     int32_t thousand = 1000;
@@ -255,11 +255,11 @@ HWTEST_F(DemuxerNet2NdkTest, DEMUXER_WAV_ALAW_FUNC_0006, TestSize.Level2)
 }
 
 /**
- * @tc.number    : DEMUXER_WAV_ALAW_FUNC_0007
- * @tc.name      : demuxer wav_alaw_48K_8b_1, read, 网络流
+ * @tc.number    : DEMUXER_WAV_ALAW_NET_FUNC_0007
+ * @tc.name      : DEMUXER_WAV_ALAW_NET_FUNC_0007
  * @tc.desc      : function test
  */
-HWTEST_F(DemuxerNet2NdkTest, DEMUXER_WAV_ALAW_FUNC_0007, TestSize.Level2)
+HWTEST_F(DemuxerNet2NdkTest, DEMUXER_WAV_ALAW_NET_FUNC_0007, TestSize.Level2)
 {
     const char *uri = "http://192.168.3.17:8080/share/audio/wav_alaw_48K_8b_1.wav";
     OpenUri(uri, &source, &demuxer);
@@ -269,11 +269,11 @@ HWTEST_F(DemuxerNet2NdkTest, DEMUXER_WAV_ALAW_FUNC_0007, TestSize.Level2)
 }
 
 /**
- * @tc.number    : DEMUXER_WAV_ALAW_FUNC_0008
- * @tc.name      : demuxer wav_alaw_48K_8b_1, seek, 网络流
+ * @tc.number    : DEMUXER_WAV_ALAW_NET_FUNC_0008
+ * @tc.name      : DEMUXER_WAV_ALAW_NET_FUNC_0008
  * @tc.desc      : function test
  */
-HWTEST_F(DemuxerNet2NdkTest, DEMUXER_WAV_ALAW_FUNC_0008, TestSize.Level2)
+HWTEST_F(DemuxerNet2NdkTest, DEMUXER_WAV_ALAW_NET_FUNC_0008, TestSize.Level2)
 {
     int32_t seekTime = 2816000;
     int32_t thousand = 1000;
@@ -286,11 +286,11 @@ HWTEST_F(DemuxerNet2NdkTest, DEMUXER_WAV_ALAW_FUNC_0008, TestSize.Level2)
 }
 
 /**
- * @tc.number    : DEMUXER_WAV_ALAW_FUNC_0009
- * @tc.name      : demuxer wav_alaw_768001_8b_2, read, 网络流
+ * @tc.number    : DEMUXER_WAV_ALAW_NET_FUNC_0009
+ * @tc.name      : DEMUXER_WAV_ALAW_NET_FUNC_0009
  * @tc.desc      : function test
  */
-HWTEST_F(DemuxerNet2NdkTest, DEMUXER_WAV_ALAW_FUNC_0009, TestSize.Level2)
+HWTEST_F(DemuxerNet2NdkTest, DEMUXER_WAV_ALAW_NET_FUNC_0009, TestSize.Level2)
 {
     const char *uri = "http://192.168.3.17:8080/share/audio/wav_alaw_768001_8b_2.wav";
     OpenUri(uri, &source, &demuxer);
@@ -300,11 +300,11 @@ HWTEST_F(DemuxerNet2NdkTest, DEMUXER_WAV_ALAW_FUNC_0009, TestSize.Level2)
 }
 
 /**
- * @tc.number    : DEMUXER_WAV_ALAW_FUNC_0010
- * @tc.name      : demuxer wav_alaw_768001_8b_2, seek, 网络流
+ * @tc.number    : DEMUXER_WAV_ALAW_NET_FUNC_0010
+ * @tc.name      : DEMUXER_WAV_ALAW_NET_FUNC_0010
  * @tc.desc      : function test
  */
-HWTEST_F(DemuxerNet2NdkTest, DEMUXER_WAV_ALAW_FUNC_0010, TestSize.Level2)
+HWTEST_F(DemuxerNet2NdkTest, DEMUXER_WAV_ALAW_NET_FUNC_0010, TestSize.Level2)
 {
     int32_t seekTime = 4973326;
     int32_t thousand = 1000;
