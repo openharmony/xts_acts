@@ -114,6 +114,58 @@ static int64_t GetFileSize(const char *fileName)
     return fileSize;
 }
 
+static void OpenFile(const char *fileName, int fd, OH_AVSource **src, OH_AVDemuxer **audioDemuxer)
+{
+    int64_t size = GetFileSize(fileName);
+    cout << fileName << "----------------------" << fd << "---------" << size << endl;
+    *src = OH_AVSource_CreateWithFD(fd, 0, size);
+    ASSERT_NE(*src, nullptr);
+
+    *audioDemuxer = OH_AVDemuxer_CreateWithSource(*src);
+    ASSERT_NE(*audioDemuxer, nullptr);
+}
+
+static void CheckTrackCount(OH_AVFormat **srcFormat, OH_AVSource *src, int32_t *trackCount, int trackNum)
+{
+    *srcFormat = OH_AVSource_GetSourceFormat(src);
+    ASSERT_TRUE(OH_AVFormat_GetIntValue(*srcFormat, OH_MD_KEY_TRACK_COUNT, trackCount));
+    ASSERT_EQ(trackNum, *trackCount);
+}
+
+static void CheckTrackSelect(int32_t trackCount, OH_AVDemuxer *audioDemuxer)
+{
+    for (int32_t index = 0; index < g_trackCount; index++) {
+        ASSERT_EQ(AV_ERR_OK, OH_AVDemuxer_SelectTrackByID(demuxer, index));
+    }
+}
+
+static void CountAudioFrames(OH_AVDemuxer *audioDemuxer, OH_AVMemory *mem,
+                             int32_t trackCount, int audioFrameNum, int audioKeyNum)
+{
+    int audioFrame = 0;
+    int keyCount = 0;
+    bool audioIsEnd = false;
+    OH_AVCodecBufferAttr attr;
+
+    while (!audioIsEnd) {
+        for (int32_t index = 0; index < trackCount; index++) {
+            ASSERT_EQ(AV_ERR_OK, OH_AVDemuxer_ReadSample(audioDemuxer, index, mem, &attr));
+            if (attr.flags & OH_AVCodecBufferFlags::AVCODEC_BUFFER_FLAGS_EOS) {
+                audioIsEnd = true;
+                cout << audioFrame << "    audio is end !!!!!!!!!!!!!!!" << endl;
+                continue;
+            }
+
+            audioFrame++;
+            if (attr.flags & OH_AVCodecBufferFlags::AVCODEC_BUFFER_FLAGS_SYNC_FRAME) {
+                keyCount++;
+            }
+        }
+    }
+    ASSERT_EQ(audioFrame, audioFrameNum);
+    ASSERT_EQ(keyCount, audioKeyNum);
+}
+
 /**
  * @tc.number    : SUB_MEDIA_DEMUXER_VTT_6100
  * @tc.name      : create vtt demuxer with error file -- alternating Up and Down Times
@@ -163,4 +215,178 @@ HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_META_0090, TestSize.Level0)
 {
     OH_AVFormat *metaFormat= OH_AVSource_GetCustomMetadataFormat(nullptr);
     ASSERT_EQ(metaFormat, nullptr);
+}
+
+/**
+ * @tc.number    : DEMUXER_WAV_ALAW_FUNC_0001
+ * @tc.name      : DEMUXER_WAV_ALAW_FUNC_0001
+ * @tc.desc      : function test
+ */
+HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_WAV_ALAW_FUNC_0001, TestSize.Level2)
+{
+    const char *file = "/data/test/media/audio/wav_alaw_410_8b_1.wav";
+    int fd = open(file, O_RDONLY);
+    OpenFile(file, fd, &source, &demuxer);
+    CheckTrackCount(&sourceFormat, source, &g_trackCount, 1);
+    CheckTrackSelect(g_trackCount, demuxer);
+    CountAudioFrames(demuxer, memory, g_trackCount, 1, 1);
+    close(fd);
+}
+
+/**
+ * @tc.number    : DEMUXER_WAV_ALAW_FUNC_0002
+ * @tc.name      : DEMUXER_WAV_ALAW_FUNC_0002
+ * @tc.desc      : function test
+ */
+HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_WAV_ALAW_FUNC_0002, TestSize.Level2)
+{
+    int64_t seekTime = 0;
+    const char *file = "/data/test/media/audio/wav_alaw_410_8b_1.wav";
+    int fd = open(file, O_RDONLY);
+    OpenFile(file, fd, &source, &demuxer);
+    CheckTrackCount(&sourceFormat, source, &g_trackCount, 1);
+    CheckTrackSelect(g_trackCount, demuxer);
+    ASSERT_EQ(AV_ERR_OK, OH_AVDemuxer_SeekToTime(demuxer, seekTime, SEEK_MODE_NEXT_SYNC));
+    CountAudioFrames(demuxer, memory, g_trackCount, 1, 1);
+    close(fd);
+}
+
+/**
+ * @tc.number    : DEMUXER_WAV_ALAW_FUNC_0003
+ * @tc.name      : DEMUXER_WAV_ALAW_FUNC_0003
+ * @tc.desc      : function test
+ */
+HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_WAV_ALAW_FUNC_0003, TestSize.Level0)
+{
+    const char *file = "/data/test/media/audio/wav_alaw_8K_8b_2.wav";
+    int fd = open(file, O_RDONLY);
+    OpenFile(file, fd, &source, &demuxer);
+    CheckTrackCount(&sourceFormat, source, &g_trackCount, 1);
+    CheckTrackSelect(g_trackCount, demuxer);
+    CountAudioFrames(demuxer, memory, g_trackCount, 20, 20);
+    close(fd);
+}
+
+/**
+ * @tc.number    : DEMUXER_WAV_ALAW_FUNC_0004
+ * @tc.name      : DEMUXER_WAV_ALAW_FUNC_0004
+ * @tc.desc      : function test
+ */
+HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_WAV_ALAW_FUNC_0004, TestSize.Level1)
+{
+    int32_t seekTime = 2304000;
+    int32_t thousand = 1000;
+    const char *file = "/data/test/media/audio/wav_alaw_8K_8b_2.wav";
+    int fd = open(file, O_RDONLY);
+    OpenFile(file, fd, &source, &demuxer);
+    CheckTrackCount(&sourceFormat, source, &g_trackCount, 1);
+    CheckTrackSelect(g_trackCount, demuxer);
+    ASSERT_EQ(AV_ERR_OK, OH_AVDemuxer_SeekToTime(demuxer, seekTime / thousand, SEEK_MODE_PREVIOUS_SYNC));
+    CountAudioFrames(demuxer, memory, g_trackCount, 11, 11);
+    close(fd);
+}
+
+/**
+ * @tc.number    : DEMUXER_WAV_ALAW_FUNC_0005
+ * @tc.name      : DEMUXER_WAV_ALAW_FUNC_0005
+ * @tc.desc      : function test
+ */
+HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_WAV_ALAW_FUNC_0005, TestSize.Level2)
+{
+    const char *file = "/data/test/media/audio/wav_alaw_16K_8b_2.wav";
+    int fd = open(file, O_RDONLY);
+    OpenFile(file, fd, &source, &demuxer);
+    CheckTrackCount(&sourceFormat, source, &g_trackCount, 1);
+    CheckTrackSelect(g_trackCount, demuxer);
+    CountAudioFrames(demuxer, memory, g_trackCount, 40, 40);
+    close(fd);
+}
+
+/**
+ * @tc.number    : DEMUXER_WAV_ALAW_FUNC_0006
+ * @tc.name      : DEMUXER_WAV_ALAW_FUNC_0006
+ * @tc.desc      : function test
+ */
+HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_WAV_ALAW_FUNC_0006, TestSize.Level2)
+{
+    int32_t seekTime = 2432000;
+    int32_t thousand = 1000;
+    const char *file = "/data/test/media/audio/wav_alaw_16K_8b_2.wav";
+    int fd = open(file, O_RDONLY);
+    OpenFile(file, fd, &source, &demuxer);
+    CheckTrackCount(&sourceFormat, source, &g_trackCount, 1);
+    CheckTrackSelect(g_trackCount, demuxer);
+    ASSERT_EQ(AV_ERR_OK, OH_AVDemuxer_SeekToTime(demuxer, seekTime / thousand, SEEK_MODE_CLOSEST_SYNC));
+    CountAudioFrames(demuxer, memory, g_trackCount, 21, 21);
+    close(fd);
+}
+
+/**
+ * @tc.number    : DEMUXER_WAV_ALAW_FUNC_0007
+ * @tc.name      : DEMUXER_WAV_ALAW_FUNC_0007
+ * @tc.desc      : function test
+ */
+HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_WAV_ALAW_FUNC_0007, TestSize.Level2)
+{
+    const char *file = "/data/test/media/audio/wav_alaw_48K_8b_1.wav";
+    int fd = open(file, O_RDONLY);
+    OpenFile(file, fd, &source, &demuxer);
+    CheckTrackCount(&sourceFormat, source, &g_trackCount, 1);
+    CheckTrackSelect(g_trackCount, demuxer);
+    CountAudioFrames(demuxer, memory, g_trackCount, 59, 59);
+    close(fd);
+}
+
+/**
+ * @tc.number    : DEMUXER_WAV_ALAW_FUNC_0008
+ * @tc.name      : DEMUXER_WAV_ALAW_FUNC_0008
+ * @tc.desc      : function test
+ */
+HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_WAV_ALAW_FUNC_0008, TestSize.Level2)
+{
+    int32_t seekTime = 2816000;
+    int32_t thousand = 1000;
+    const char *file = "/data/test/media/audio/wav_alaw_48K_8b_1.wav";
+    int fd = open(file, O_RDONLY);
+    OpenFile(file, fd, &source, &demuxer);
+    CheckTrackCount(&sourceFormat, source, &g_trackCount, 1);
+    CheckTrackSelect(g_trackCount, demuxer);
+    ASSERT_EQ(AV_ERR_OK, OH_AVDemuxer_SeekToTime(demuxer, seekTime / thousand, SEEK_MODE_NEXT_SYNC));
+    CountAudioFrames(demuxer, memory, g_trackCount, 26, 26);
+    close(fd);
+}
+
+/**
+ * @tc.number    : DEMUXER_WAV_ALAW_FUNC_0009
+ * @tc.name      : DEMUXER_WAV_ALAW_FUNC_0009
+ * @tc.desc      : function test
+ */
+HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_WAV_ALAW_FUNC_0009, TestSize.Level2)
+{
+    const char *file = "/data/test/media/audio/wav_alaw_768001_8b_2.wav";
+    int fd = open(file, O_RDONLY);
+    OpenFile(file, fd, &source, &demuxer);
+    CheckTrackCount(&sourceFormat, source, &g_trackCount, 1);
+    CheckTrackSelect(g_trackCount, demuxer);
+    CountAudioFrames(demuxer, memory, g_trackCount, 1876, 1876);
+    close(fd);
+}
+
+/**
+ * @tc.number    : DEMUXER_WAV_ALAW_FUNC_0010
+ * @tc.name      : DEMUXER_WAV_ALAW_FUNC_0010
+ * @tc.desc      : function test
+ */
+HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_WAV_ALAW_FUNC_0010, TestSize.Level2)
+{
+    int32_t seekTime = 4973326;
+    int32_t thousand = 1000;
+    const char *file = "/data/test/media/audio/wav_alaw_768001_8b_2.wav";
+    int fd = open(file, O_RDONLY);
+    OpenFile(file, fd, &source, &demuxer);
+    CheckTrackCount(&sourceFormat, source, &g_trackCount, 1);
+    CheckTrackSelect(g_trackCount, demuxer);
+    ASSERT_EQ(AV_ERR_OK, OH_AVDemuxer_SeekToTime(demuxer, seekTime / thousand, SEEK_MODE_PREVIOUS_SYNC));
+    CountAudioFrames(demuxer, memory, g_trackCount, 11, 11);
+    close(fd);
 }
