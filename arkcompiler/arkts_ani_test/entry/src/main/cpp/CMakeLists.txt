@@ -12,3 +12,7 @@ include_directories(${NATIVERENDER_ROOT_PATH}
                     ${NATIVERENDER_ROOT_PATH}/include)
 
 add_library(entry SHARED AniTest.cpp)
+
+add_definitions("-DLOG_DOMAIN=0x0000")
+add_definitions("-DLOG_TAG=\"testTag\"")
+target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
