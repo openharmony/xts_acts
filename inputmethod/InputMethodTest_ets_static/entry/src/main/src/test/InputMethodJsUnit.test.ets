@@ -563,8 +563,8 @@ export default function inputMethodTest() {
         });
 
         /*
-         * @tc.number  inputMethod_test_listInputMethodSubtype_static_003
-         * @tc.name    inputMethod_test_listInputMethodSubtype_static_003
+         * @tc.number  inputMethod_test_listCurrentInputMethodSubtype_002
+         * @tc.name    inputMethod_test_listCurrentInputMethodSubtype_002
          * @tc.desc    List subtype of current input method
          * @tc.size    MEDIUMTEST
          * @tc.type    Function

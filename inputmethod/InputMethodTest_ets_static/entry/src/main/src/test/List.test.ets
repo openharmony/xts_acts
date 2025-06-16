@@ -1,7 +1,7 @@
-import inputMethodTest from "./inputMethod.test";
-import inputMethodShowHideTest from "./inputMethod_showTextInput_hideTextInput_detach.test"
-import inputMethodAttachTest from "./inputMethod_attach.test"
-import inputMethodOnOffTest from "./inputMethod_on_off.test"
+import inputMethodTest from "./InputMethodJsUnit.test";
+import inputMethodShowHideTest from "./InputMethodTextInput.test"
+import inputMethodAttachTest from "./InputMethodAttach.test"
+import inputMethodOnOffTest from "./InputMethodOnOff.test"
 export default function testsuite() {
     inputMethodTest();
     inputMethodShowHideTest();
