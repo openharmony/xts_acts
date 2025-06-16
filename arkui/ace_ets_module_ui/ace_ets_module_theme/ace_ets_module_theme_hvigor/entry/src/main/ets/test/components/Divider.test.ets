@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import router from '@ohos.router';
-import { afterAll, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterAll, beforeAll, beforeEach, describe, it, expect , Level} from '@ohos/hypium';
 import { DividerKeys, dividerThemeProperty } from '../../MainAbility/pages/components/DividerPage';
 import { colorValuesKey } from '../../MainAbility/pages/index/index';
 import { greenCustomTheme, redCustomTheme } from '../../MainAbility/themes/CustomTheme';
@@ -80,7 +80,7 @@ export default function dividerThemeTest() {
       * @tc.size      : MediumTest
       * @tc.type      : Function
       */
-    it(`ActsDividerThemeColors_0100`, 0, () => {
+    it(`ActsDividerThemeColors_0100`, Level.LEVEL2, () => {
       const CASE: string = `ActsDividerThemeColors_0100`;
       console.info(`${SUITE} ${CASE} START`);
       const dividerJSON = getInspectorByKey(DividerKeys.dividerSystem);
@@ -98,7 +98,7 @@ export default function dividerThemeTest() {
       * @tc.size      : MediumTest
       * @tc.type      : Function
       */
-    it(`ActsDividerThemeColors_0200`, 0, () => {
+    it(`ActsDividerThemeColors_0200`, Level.LEVEL2, () => {
       const CASE: string = `ActsDividerThemeColors_0200`;
       console.info(`${SUITE} ${CASE} START`);
       const dividerJSON = getInspectorByKey(DividerKeys.dividerWithTheme);
@@ -118,7 +118,7 @@ export default function dividerThemeTest() {
       * @tc.size      : MediumTest
       * @tc.type      : Function
       */
-    it(`ActsDividerThemeColors_0300`, 0, async () => {
+    it(`ActsDividerThemeColors_0300`, Level.LEVEL0, async () => {
       const CASE: string = `ActsDividerThemeColors_0300`;
       console.info(`${SUITE} ${CASE} START`);
       await sleep(frameTime);
@@ -139,7 +139,7 @@ export default function dividerThemeTest() {
       * @tc.size      : MediumTest
       * @tc.type      : Function
       */
-    it(`ActsDividerThemeColors_0400`, 0, async () => {
+    it(`ActsDividerThemeColors_0400`, Level.LEVEL0, async () => {
       const CASE: string = `ActsDividerThemeColors_0400`;
       console.info(`${SUITE} ${CASE} START`);
       await sleep(frameTime);
@@ -160,7 +160,7 @@ export default function dividerThemeTest() {
       * @tc.size      : MediumTest
       * @tc.type      : Function
       */
-    it(`ActsDividerThemeColors_0500`, 0, async () => {
+    it(`ActsDividerThemeColors_0500`, Level.LEVEL0, async () => {
       const CASE: string = `ActsDividerThemeColors_0500`;
       console.info(`${SUITE} ${CASE} START`);
       await sleep(frameTime);

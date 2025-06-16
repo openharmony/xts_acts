@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, it, expect} from "@ohos/hypium"
+import {describe, beforeAll, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium';
 import {UiComponent, UiDriver, Component, Driver, ON, BY, } from '@ohos.UiTest';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -55,7 +55,7 @@ export default function allowedTypesTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('allowedTypes_0010', 0, async (done: Function) => {
+    it('allowedTypes_0010', Level.LEVEL0, async (done: Function) => {
       console.info('allowedTypes_0010 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('allowedTypes_button');

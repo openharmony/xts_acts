@@ -15,7 +15,7 @@
 
 import events_emitter from '@ohos.events.emitter';
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import Utils from './Utils'
 
 export default function selectOnSelectJsunit() {
@@ -50,7 +50,7 @@ export default function selectOnSelectJsunit() {
      * @tc.name         testselectOnSelect0001
      * @tc.desic         aceselectOnSelectEtsTest0001
      */
-    it('testselectOnSelect0001', 0, async () => {
+    it('testselectOnSelect0001', Level.LEVEL0, async () => {
       console.info('selectOnSelect testselectOnSelect0001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Select');
@@ -67,7 +67,7 @@ export default function selectOnSelectJsunit() {
      * @tc.name         testselectOnSelect0002
      * @tc.desic         aceselectOnSelectEtsTest0002
      */
-    it('testselectOnSelect0002', 0, async () => {
+    it('testselectOnSelect0002', Level.LEVEL0, async () => {
       console.info('selectOnSelect testselectOnSelect0002 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Select');

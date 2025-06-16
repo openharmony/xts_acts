@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
@@ -47,7 +47,7 @@ export default function panGestureEventTest() {
     * @tc.desc  : To test the new item of GestureEvent.
     * @tc.level : Level 2
     */
-    it('PanGesture1_0100', 0, async (done: Function) => {
+    it('PanGesture1_0100', Level.LEVEL0, async (done: Function) => {
       console.info('PanGesture1_0100 START');
       await CommonFunc.sleep(1000);
       let areaObj1 = CommonFunc.getComponentRectOnScreen('PanGesture1');

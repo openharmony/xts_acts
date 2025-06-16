@@ -12,8 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, it, beforeAll, afterAll } from '@ohos/hypium';
-import { expect } from '@ohos/hypium';
+import { describe, it, beforeAll, afterAll, Level,expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import { systemTheme } from '../../MainAbility/pages/themeTokensPages/SystemThemeTestPage';
 import { fillMap } from '../../test/Utils';
@@ -60,7 +59,7 @@ export default function systemThemeTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsSystemThemeColors_0100', 0, () => {
+    it('ActsSystemThemeColors_0100', Level.LEVEL2, () => {
       const CASE: string = 'ActsSystemThemeColors_0100';
       console.info(`${SUITE} ${CASE} START`);
       expect(colorValues?.size).assertLarger(0); // ensure that colorValues is not empty
@@ -81,7 +80,7 @@ export default function systemThemeTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it('ActsSystemThemeColors_0200', 0, () => {
+    it('ActsSystemThemeColors_0200', Level.LEVEL2, () => {
       const CASE: string = 'ActsSystemThemeColors_0200';
       const checkKeys: string[] = Object.keys(checkColorTokens);
       const checkValues = (Object.values(checkColorTokens) as string[]);

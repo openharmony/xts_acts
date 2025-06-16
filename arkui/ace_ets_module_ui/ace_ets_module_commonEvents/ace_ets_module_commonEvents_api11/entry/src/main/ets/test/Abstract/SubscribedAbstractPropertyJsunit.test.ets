@@ -12,11 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, it } from "@ohos/hypium"
+import { describe, it, Level } from '@ohos/hypium';
 
 export default function subscribedAbstractPropertyJsunit() {
   describe('appInfoTest_four_8', () => {
-    it('subscribedAbstractProperty0100', 0, async (done: Function) => {
+    it('subscribedAbstractProperty0100', Level.LEVEL0, async (done: Function) => {
       console.info('[subscribedAbstractProperty0100] START');
       if (true) {
         done();

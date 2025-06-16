@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -49,7 +49,7 @@ export default function SnapshotOptions_region() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('SnapshotOptions_region_0100', 0, async (done: Function) => {
+    it('SnapshotOptions_region_0100', Level.LEVEL0, async (done: Function) => {
       console.info('[SnapshotOptions_region_0100] START');
       let driver: Driver = Driver.create();
       let button1 = await driver.findComponent(ON.id('SnapshotRegion'));
@@ -78,7 +78,7 @@ export default function SnapshotOptions_region() {
       * @tc.type   Function
       * @tc.level  0
       */
-     it('SnapshotOptions_region_0200', 0, async (done: Function) => {
+     it('SnapshotOptions_region_0200', Level.LEVEL0, async (done: Function) => {
        console.info('[SnapshotOptions_region_0200] START');
        let driver: Driver = Driver.create();
        let button2 = await driver.findComponent(ON.id('LocalizedSnapshotRegion'));
@@ -108,7 +108,7 @@ export default function SnapshotOptions_region() {
       * @tc.type   Function
       * @tc.level  0
       */
-     it('SnapshotOptions_region_0300', 0, async (done: Function) => {
+     it('SnapshotOptions_region_0300', Level.LEVEL0, async (done: Function) => {
        console.info('[SnapshotOptions_region_0300] START');
        let driver: Driver = Driver.create();
        let button1 = await driver.findComponent(ON.id('SnapshotRegion1'));
@@ -138,7 +138,7 @@ export default function SnapshotOptions_region() {
       * @tc.type   Function
       * @tc.level  0
       */
-     it('SnapshotOptions_region_0400', 0, async (done: Function) => {
+     it('SnapshotOptions_region_0400', Level.LEVEL0, async (done: Function) => {
        console.info('[SnapshotOptions_region_0400] START');
        let driver: Driver = Driver.create();
        let button2 = await driver.findComponent(ON.id('LocalizedSnapshotRegion1'));

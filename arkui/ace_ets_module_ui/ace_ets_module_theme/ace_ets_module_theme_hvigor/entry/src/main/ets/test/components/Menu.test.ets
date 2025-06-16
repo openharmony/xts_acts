@@ -14,7 +14,7 @@
  */
 import { colorValuesKey } from '../../MainAbility/pages/index/index';
 import router from '@ohos.router';
-import { afterAll, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterAll, beforeAll, beforeEach, describe, it, expect , Level} from '@ohos/hypium';
 import { MenuKeys, menuThemeProperty } from '../../MainAbility/pages/components/MenuPage';
 import { greenCustomTheme, redCustomTheme } from '../../MainAbility/themes/CustomTheme';
 import { frameTime, sleep } from '../Utils';
@@ -76,7 +76,7 @@ export default function menuThemeTest() {
       * @tc.size      : MediumTest
       * @tc.type      : Function
       */
-    it(`ActsMenuThemeColors_0100`, 0, () => {
+    it(`ActsMenuThemeColors_0100`, Level.LEVEL2, () => {
       const CASE: string = `ActsMenuThemeColors_0100`;
       console.info(`${SUITE} ${CASE} START`);
       const menuJSON = getInspectorByKey(MenuKeys.menuSystem);
@@ -94,7 +94,7 @@ export default function menuThemeTest() {
       * @tc.size      : MediumTest
       * @tc.type      : Function
       */
-    it(`ActsMenuThemeColors_0200`, 0, () => {
+    it(`ActsMenuThemeColors_0200`, Level.LEVEL2, () => {
       const CASE: string = `ActsMenuThemeColors_0200`;
       console.info(`${SUITE} ${CASE} START`);
       const menuJSON = getInspectorByKey(MenuKeys.menuWithTheme);
@@ -114,7 +114,7 @@ export default function menuThemeTest() {
       * @tc.size      : MediumTest
       * @tc.type      : Function
       */
-    it(`ActsMenuThemeColors_0300`, 0, async () => {
+    it(`ActsMenuThemeColors_0300`, Level.LEVEL0, async () => {
       const CASE: string = `ActsMenuThemeColors_0300`;
       console.info(`${SUITE} ${CASE} START`);
       await sleep(frameTime);

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent,MouseButton, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
@@ -58,7 +58,7 @@ export default function TapGestureAllowedTypesTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('TapGestureAllowedTypesTest_0010', 0, async (done: Function) => {
+    it('TapGestureAllowedTypesTest_0010', Level.LEVEL0, async (done: Function) => {
       console.info('TapGestureAllowedTypesTest_0010 START');
       await CommonFunc.sleep(1000);
       let windowOffsetX:number = globalThis.winLeft

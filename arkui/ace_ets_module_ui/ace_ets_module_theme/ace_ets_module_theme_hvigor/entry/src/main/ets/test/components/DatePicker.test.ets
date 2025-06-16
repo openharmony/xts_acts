@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import router from '@ohos.router'
-import { afterAll, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterAll, beforeAll, beforeEach, describe, it, expect , Level} from '@ohos/hypium';
 import {
   datePickerIsLunarProperty,
   DatePickerKeys,
@@ -95,7 +95,7 @@ export default function datePickerThemeTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it(`ActsDatePickerThemeColors_0100`, 0, () => {
+    it(`ActsDatePickerThemeColors_0100`, Level.LEVEL2, () => {
       const CASE: string = `ActsDatePickerThemeColors_0100`;
       console.info(`${SUITE} ${CASE} START`);
       datePickerKeys.forEach((key) => {
@@ -113,7 +113,7 @@ export default function datePickerThemeTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it(`ActsDatePickerThemeColors_0200`, 0, () => {
+    it(`ActsDatePickerThemeColors_0200`, Level.LEVEL2, () => {
       const CASE: string = `ActsDatePickerThemeColors_0200`;
       console.info(`${SUITE} ${CASE} START`);
       datePickerKeys.forEach((key) => {
@@ -132,7 +132,7 @@ export default function datePickerThemeTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it(`ActsDatePickerThemeColors_0300`, 0, async () => {
+    it(`ActsDatePickerThemeColors_0300`, Level.LEVEL0, async () => {
       const CASE: string = `ActsDatePickerThemeColors_0300`;
       console.info(`${SUITE} ${CASE} START`);
       await sleep(frameTime);
@@ -152,7 +152,7 @@ export default function datePickerThemeTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it(`ActsDatePickerThemeColors_0400`, 0, async () => {
+    it(`ActsDatePickerThemeColors_0400`, Level.LEVEL0, async () => {
       const CASE: string = `ActsDatePickerThemeColors_0400`;
       console.info(`${SUITE} ${CASE} START`);
       await sleep(frameTime * 2);
@@ -172,7 +172,7 @@ export default function datePickerThemeTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it(`ActsDatePickerThemeColors_0500`, 0, async () => {
+    it(`ActsDatePickerThemeColors_0500`, Level.LEVEL0, async () => {
       const CASE: string = `ActsDatePickerThemeColors_0500`;
       console.info(`${SUITE} ${CASE} START`);
       await sleep(frameTime * 2);
@@ -191,7 +191,7 @@ export default function datePickerThemeTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it(`ActsDatePickerThemeColors_0600`, 0, async () => {
+    it(`ActsDatePickerThemeColors_0600`, Level.LEVEL0, async () => {
       const CASE: string = `ActsDatePickerThemeColors_0600`;
       console.info(`${SUITE} ${CASE} START`);
       await sleep(frameTime * 2);
@@ -212,7 +212,7 @@ export default function datePickerThemeTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it(`ActsDatePickerThemeColors_0700`, 0, async () => {
+    it(`ActsDatePickerThemeColors_0700`, Level.LEVEL0, async () => {
       const CASE: string = `ActsDatePickerThemeColors_0700`;
       console.info(`${SUITE} ${CASE} START`);
       await sleep(frameTime * 2);
@@ -233,7 +233,7 @@ export default function datePickerThemeTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-    it(`ActsDatePickerThemeColors_0800`, 0, async () => {
+    it(`ActsDatePickerThemeColors_0800`, Level.LEVEL0, async () => {
       const CASE: string = `ActsDatePickerThemeColors_0800`;
       console.info(`${SUITE} ${CASE} START`);
       await sleep(frameTime * 2);
