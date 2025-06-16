@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function imageBorderRadiusTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageBorderRadius001', 0, async (done: Function) => {
+    it('testImageBorderRadius001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageBorderRadius001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function imageBorderRadiusTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageBorderRadius002', 0, async (done: Function) => {
+    it('testImageBorderRadius002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageBorderRadius002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function imageBorderRadiusTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageBorderRadius003', 0, async (done: Function) => {
+    it('testImageBorderRadius003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageBorderRadius003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function imageBorderRadiusTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageBorderRadius004', 0, async (done: Function) => {
+    it('testImageBorderRadius004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageBorderRadius004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function imageBorderRadiusTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageBorderRadius005', 0, async (done: Function) => {
+    it('testImageBorderRadius005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageBorderRadius005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function imageBorderRadiusTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageBorderRadius006', 0, async (done: Function) => {
+    it('testImageBorderRadius006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageBorderRadius006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function imageBorderRadiusTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testImageBorderRadius007', 0, async (done: Function) => {
+    it('testImageBorderRadius007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageBorderRadius007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function imageBorderRadiusTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testImageBorderRadius008', 0, async (done: Function) => {
+    it('testImageBorderRadius008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageBorderRadius008()).assertEqual(0)
       done()
     })

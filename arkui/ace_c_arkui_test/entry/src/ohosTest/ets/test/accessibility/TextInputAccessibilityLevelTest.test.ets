@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textInputAccessibilityLevelTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextInputAccessibilityLevel001', 0, async (done: Function) => {
+    it('testTextInputAccessibilityLevel001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputAccessibilityLevel001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function textInputAccessibilityLevelTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextInputAccessibilityLevel002', 0, async (done: Function) => {
+    it('testTextInputAccessibilityLevel002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputAccessibilityLevel002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function textInputAccessibilityLevelTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextInputAccessibilityLevel003', 0, async (done: Function) => {
+    it('testTextInputAccessibilityLevel003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputAccessibilityLevel003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function textInputAccessibilityLevelTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextInputAccessibilityLevel004', 0, async (done: Function) => {
+    it('testTextInputAccessibilityLevel004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputAccessibilityLevel004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function textInputAccessibilityLevelTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTextInputAccessibilityLevel005', 0, async (done: Function) => {
+    it('testTextInputAccessibilityLevel005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputAccessibilityLevel005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function textInputAccessibilityLevelTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTextInputAccessibilityLevel006', 0, async (done: Function) => {
+    it('testTextInputAccessibilityLevel006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputAccessibilityLevel006()).assertEqual(0)
       done()
     })

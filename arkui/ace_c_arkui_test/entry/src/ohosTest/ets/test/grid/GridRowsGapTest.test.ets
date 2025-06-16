@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, expect, describe, it } from '@ohos/hypium';
+import { beforeEach, expect, describe, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function gridRowsGapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGridRowsGap001', 0, async (done: Function) => {
+    it('testGridRowsGap001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testGridRowsGap001()).assertEqual(0)
       done();
     })
@@ -47,7 +47,7 @@ export default function gridRowsGapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGridRowsGap002', 0, async (done: Function) => {
+    it('testGridRowsGap002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testGridRowsGap002()).assertEqual(0)
       done();
     })
@@ -60,7 +60,7 @@ export default function gridRowsGapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGridRowsGap003', 0, async (done: Function) => {
+    it('testGridRowsGap003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testGridRowsGap003()).assertEqual(0)
       done();
     })
@@ -73,7 +73,7 @@ export default function gridRowsGapTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGridRowsGap004', 0, async (done: Function) => {
+    it('testGridRowsGap004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testGridRowsGap004()).assertEqual(0)
       done();
     })

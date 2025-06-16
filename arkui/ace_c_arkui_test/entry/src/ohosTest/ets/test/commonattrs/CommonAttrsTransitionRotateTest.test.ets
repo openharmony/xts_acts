@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function commonAttrsTransitionEffectRotateTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsTransitionRotate001', 0, async (done: Function) => {
+    it('testCommonAttrsTransitionRotate001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsTransitionRotate001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function commonAttrsTransitionEffectRotateTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsTransitionRotate002', 0, async (done: Function) => {
+    it('testCommonAttrsTransitionRotate002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsTransitionRotate002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function commonAttrsTransitionEffectRotateTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsTransitionRotate003', 0, async (done: Function) => {
+    it('testCommonAttrsTransitionRotate003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsTransitionRotate003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function commonAttrsTransitionEffectRotateTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsTransitionRotate004', 0, async (done: Function) => {
+    it('testCommonAttrsTransitionRotate004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsTransitionRotate004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function commonAttrsTransitionEffectRotateTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsTransitionRotate005', 0, async (done: Function) => {
+    it('testCommonAttrsTransitionRotate005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsTransitionRotate005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function commonAttrsTransitionEffectRotateTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsTransitionRotate006', 0, async (done: Function) => {
+    it('testCommonAttrsTransitionRotate006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsTransitionRotate006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function commonAttrsTransitionEffectRotateTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsTransitionRotate007', 0, async (done: Function) => {
+    it('testCommonAttrsTransitionRotate007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsTransitionRotate007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function commonAttrsTransitionEffectRotateTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsTransitionRotate008', 0, async (done: Function) => {
+    it('testCommonAttrsTransitionRotate008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsTransitionRotate008()).assertEqual(0)
       done()
     })

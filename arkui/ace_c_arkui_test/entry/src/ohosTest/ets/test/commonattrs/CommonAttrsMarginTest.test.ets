@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function commonAttrsMarginTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsMargin001', 0, async (done: Function) => {
+    it('testCommonAttrsMargin001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsMargin001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function commonAttrsMarginTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsMargin002', 0, async (done: Function) => {
+    it('testCommonAttrsMargin002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsMargin002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function commonAttrsMarginTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsMargin003', 0, async (done: Function) => {
+    it('testCommonAttrsMargin003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsMargin003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function commonAttrsMarginTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsMargin004', 0, async (done: Function) => {
+    it('testCommonAttrsMargin004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsMargin004()).assertEqual(0)
       done()
     })

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeRender from 'libnativerender.so'
 
@@ -35,7 +35,7 @@ export default function textAreaOnEditChangeTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testTextAreaOnEditChange001', 0, async (done: Function) => {
+    it('testTextAreaOnEditChange001', Level.LEVEL1, async (done: Function) => {
       focusControl.requestFocus('OnEditChangeTestTextArea')
       await Utils.sleep(1000)
       let dataArray: number[][] = nativeRender.getTextAreaEditChangeData();

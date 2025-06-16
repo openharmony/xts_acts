@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textAreaContentLineCountTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaContentLineCount001', 0, async (done: Function) => {
+    it('testTextAreaContentLineCount001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaContentLineCount001()).assertEqual(0)
       done();
     });
@@ -46,7 +46,7 @@ export default function textAreaContentLineCountTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaContentLineCount002', 0, async (done: Function) => {
+    it('testTextAreaContentLineCount002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaContentLineCount002()).assertEqual(0)
       done();
     });
@@ -58,7 +58,7 @@ export default function textAreaContentLineCountTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaContentLineCount003', 0, async (done: Function) => {
+    it('testTextAreaContentLineCount003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaContentLineCount003()).assertEqual(0)
       done();
     });

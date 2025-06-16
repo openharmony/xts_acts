@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 
 export default function customComponentOnDrawTest() {
@@ -34,7 +34,7 @@ export default function customComponentOnDrawTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCustomComponentOnDraw001', 0, async (done: Function) => {
+    it('testCustomComponentOnDraw001', Level.LEVEL1, async (done: Function) => {
       expect(Utils.getComponentInfoByKey('OnDrawTest').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done()
     })

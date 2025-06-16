@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textInputLineHeightTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputLineHeight001', 0, async (done: Function) => {
+    it('testTextInputLineHeight001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputLineHeight001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function textInputLineHeightTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputLineHeight002', 0, async (done: Function) => {
+    it('testTextInputLineHeight002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputLineHeight002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function textInputLineHeightTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputLineHeight003', 0, async (done: Function) => {
+    it('testTextInputLineHeight003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputLineHeight003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function textInputLineHeightTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputLineHeight004', 0, async (done: Function) => {
+    it('testTextInputLineHeight004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputLineHeight004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function textInputLineHeightTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputLineHeight005', 0, async (done: Function) => {
+    it('testTextInputLineHeight005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputLineHeight005()).assertEqual(0)
       done()
     })

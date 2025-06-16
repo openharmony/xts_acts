@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect, afterEach } from '@ohos/hypium';
+import { describe, it, expect, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import { Driver } from '@ohos.UiTest';
 
@@ -34,7 +34,7 @@ export default function textAreaOnBlurTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaOnBlur001', 0, async (done: Function) => {
+    it('testTextAreaOnBlur001', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'TextAreaOnBlurTest';
       let driver: Driver = Driver.create();
       await Utils.sleep(500);

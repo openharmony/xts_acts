@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function swiperBackgroundImageTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSwiperBackgroundImage001', 0, async (done: Function) => {
+    it('testSwiperBackgroundImage001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperBackgroundImage001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function swiperBackgroundImageTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSwiperBackgroundImage002', 0, async (done: Function) => {
+    it('testSwiperBackgroundImage002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperBackgroundImage002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function swiperBackgroundImageTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSwiperBackgroundImage003', 0, async (done: Function) => {
+    it('testSwiperBackgroundImage003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperBackgroundImage003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function swiperBackgroundImageTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSwiperBackgroundImage004', 0, async (done: Function) => {
+    it('testSwiperBackgroundImage004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperBackgroundImage004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function swiperBackgroundImageTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testSwiperBackgroundImage005', 0, async (done: Function) => {
+    it('testSwiperBackgroundImage005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperBackgroundImage005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function swiperBackgroundImageTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testSwiperBackgroundImage006', 0, async (done: Function) => {
+    it('testSwiperBackgroundImage006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperBackgroundImage006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function swiperBackgroundImageTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSwiperBackgroundImage007', 0, async (done: Function) => {
+    it('testSwiperBackgroundImage007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperBackgroundImage007()).assertEqual(0)
       done()
     })

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textInputCaretOffsetTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputCaretOffset001', 0, async (done: Function) => {
+    it('testTextInputCaretOffset001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputCaretOffset001()).assertEqual(0)
       done();
     });
@@ -46,7 +46,7 @@ export default function textInputCaretOffsetTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputCaretOffset002', 0, async (done: Function) => {
+    it('testTextInputCaretOffset002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputCaretOffset002()).assertEqual(0)
       done();
     });
@@ -58,7 +58,7 @@ export default function textInputCaretOffsetTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputCaretOffset003', 0, async (done: Function) => {
+    it('testTextInputCaretOffset003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputCaretOffset003()).assertEqual(0)
       done();
     });

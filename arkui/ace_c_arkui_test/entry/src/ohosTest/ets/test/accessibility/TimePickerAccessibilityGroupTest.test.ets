@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function timePickerAccessibilityGroupTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTimePickerAccessibilityGroup001', 0, async (done: Function) => {
+    it('testTimePickerAccessibilityGroup001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTimePickerAccessibilityGroup001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function timePickerAccessibilityGroupTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTimePickerAccessibilityGroup002', 0, async (done: Function) => {
+    it('testTimePickerAccessibilityGroup002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTimePickerAccessibilityGroup002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function timePickerAccessibilityGroupTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTimePickerAccessibilityGroup003', 0, async (done: Function) => {
+    it('testTimePickerAccessibilityGroup003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTimePickerAccessibilityGroup003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function timePickerAccessibilityGroupTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTimePickerAccessibilityGroup004', 0, async (done: Function) => {
+    it('testTimePickerAccessibilityGroup004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTimePickerAccessibilityGroup004()).assertEqual(0)
       done()
     })

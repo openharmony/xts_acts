@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textInputTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputType001', 0, async (done: Function) => {
+    it('testTextInputType001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputType001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function textInputTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputType002', 0, async (done: Function) => {
+    it('testTextInputType002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputType002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function textInputTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputType003', 0, async (done: Function) => {
+    it('testTextInputType003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputType003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function textInputTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputType004', 0, async (done: Function) => {
+    it('testTextInputType004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputType004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function textInputTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputType005', 0, async (done: Function) => {
+    it('testTextInputType005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputType005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function textInputTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputType006', 0, async (done: Function) => {
+    it('testTextInputType006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputType006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function textInputTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputType007', 0, async (done: Function) => {
+    it('testTextInputType007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputType007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function textInputTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputType008', 0, async (done: Function) => {
+    it('testTextInputType008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputType008()).assertEqual(0)
       done()
     })
@@ -138,7 +138,7 @@ export default function textInputTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputType009', 0, async (done: Function) => {
+    it('testTextInputType009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputType009()).assertEqual(0)
       done()
     })
@@ -151,7 +151,7 @@ export default function textInputTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputType010', 0, async (done: Function) => {
+    it('testTextInputType010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputType010()).assertEqual(0)
       done()
     })
@@ -164,7 +164,7 @@ export default function textInputTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testTextInputType011', 0, async (done: Function) => {
+    it('testTextInputType011', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputType011()).assertEqual(0)
       done()
     })

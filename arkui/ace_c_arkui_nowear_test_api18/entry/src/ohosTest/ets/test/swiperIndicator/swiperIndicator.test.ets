@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach, beforeEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, beforeEach, Level } from '@ohos/hypium';
 import { Driver, ON, PointerMatrix, Rect } from '@ohos.UiTest';
 import router from '@ohos.router';
 import nativeRender from 'libnativerender.so'
@@ -28,7 +28,7 @@ export default function SwiperIndicatorTest(){
       done()
     })
 
-    it('SwiperIndicatorTest_a', 0, async (done: Function) => {
+    it('SwiperIndicatorTest_a',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.SwiperIndicatorTest_a()).assertEqual(0)
       console.log('SwiperIndicatorTest_a will drag and check:: ')
       await Utils.sleep(200)
@@ -36,7 +36,7 @@ export default function SwiperIndicatorTest(){
       done()
     })
 
-    it('SwiperIndicatorTest_b', 0, async (done: Function) => {
+    it('SwiperIndicatorTest_b',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.SwiperIndicatorTest_b()).assertEqual(0)
       console.log('SwiperIndicatorTest_b will drag and check:: ')
       await Utils.sleep(200)
@@ -44,7 +44,7 @@ export default function SwiperIndicatorTest(){
       done()
     })
 
-    it('SwiperIndicatorTest_a1', 0, async (done: Function) => {
+    it('SwiperIndicatorTest_a1',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.SwiperIndicatorTest_a1()).assertEqual(0)
       console.log('SwiperIndicatorTest_a1 will drag and check:: ')
       await Utils.sleep(200)
@@ -52,7 +52,7 @@ export default function SwiperIndicatorTest(){
       done()
     })
 
-    it('SwiperIndicatorTest_b1', 0, async (done: Function) => {
+    it('SwiperIndicatorTest_b1',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.SwiperIndicatorTest_b1()).assertEqual(0)
       console.log('SwiperIndicatorTest_b1 will drag and check:: ')
       await Utils.sleep(200)

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it, afterEach } from '@ohos/hypium';
+import { describe, expect, it, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import { Driver, ON, MouseButton  } from '@kit.TestKit';
 
@@ -50,7 +50,7 @@ export default function commonEventEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCommonEvent001', 0, async (done: Function) => {
+    it('testCommonEvent001', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'CommonEventOnHoverTest';
       await Utils.pushPage(`commonevent/${PAGE_TAG}`);
       await mouseMoveToCommonEvent("onHoverTest")
@@ -67,7 +67,7 @@ export default function commonEventEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCommonEvent002', 0, async (done: Function) => {
+    it('testCommonEvent002', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'CommonEventOnMouseTest';
       await Utils.pushPage(`commonevent/${PAGE_TAG}`);
       await MouseClickComponent('onMouseRightTest',MouseButton.MOUSE_BUTTON_RIGHT);
@@ -90,7 +90,7 @@ export default function commonEventEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCommonEvent003', 0, async (done: Function) => {
+    it('testCommonEvent003', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'CommonEventOnDisappearTest';
       await Utils.pushPage(`commonevent/${PAGE_TAG}`);
       await Utils.clickComponent('onDisappearTestButtonClick');
@@ -107,7 +107,7 @@ export default function commonEventEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCommonEvent004', 0, async (done: Function) => {
+    it('testCommonEvent004', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'CommonEventOnVisibleAreaChangeTest';
       await Utils.pushPage(`commonevent/${PAGE_TAG}`);
       await Utils.clickComponent('onVisibleAreaChangeTestButtonClick');
@@ -124,7 +124,7 @@ export default function commonEventEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCommonEvent005', 0, async (done: Function) => {
+    it('testCommonEvent005', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'CommonEventOnTouchPropagationTest';
       await Utils.pushPage(`commonevent/${PAGE_TAG}`);
       await Utils.clickComponent('buttonPropagation');
@@ -143,7 +143,7 @@ export default function commonEventEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCommonEvent006', 0, async (done: Function) => {
+    it('testCommonEvent006', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'CommonEventOnTouchInterceptDefaultTest';
       await Utils.pushPage(`commonevent/${PAGE_TAG}`);
       await Utils.clickComponent('defaultItself');
@@ -163,7 +163,7 @@ export default function commonEventEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCommonEvent007', 0, async (done: Function) => {
+    it('testCommonEvent007', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'CommonEventOnTouchInterceptBlockTest';
       await Utils.pushPage(`commonevent/${PAGE_TAG}`);
       await Utils.clickComponent('blockItself');
@@ -183,7 +183,7 @@ export default function commonEventEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCommonEvent008', 0, async (done: Function) => {
+    it('testCommonEvent008', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'CommonEventOnTouchInterceptTransparentTest';
       await Utils.pushPage(`commonevent/${PAGE_TAG}`);
       await Utils.clickComponent('transparentItself');
@@ -203,7 +203,7 @@ export default function commonEventEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCommonEvent009', 0, async (done: Function) => {
+    it('testCommonEvent009', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'CommonEventOnTouchInterceptNoneTest';
       await Utils.pushPage(`commonevent/${PAGE_TAG}`);
       await Utils.clickComponent('noneItself');

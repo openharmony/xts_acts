@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption001', 0, async (done: Function) => {
+    it('testAnimatorOption001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption002', 0, async (done: Function) => {
+    it('testAnimatorOption002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption003', 0, async (done: Function) => {
+    it('testAnimatorOption003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption004', 0, async (done: Function) => {
+    it('testAnimatorOption004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption004()).assertEqual(0)
       done()
     })
@@ -87,7 +87,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption005', 0, async (done: Function) => {
+    it('testAnimatorOption005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption005()).assertEqual(0)
       done()
     })
@@ -100,7 +100,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption006', 0, async (done: Function) => {
+    it('testAnimatorOption006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption006()).assertEqual(0)
       done()
     })
@@ -113,7 +113,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption007', 0, async (done: Function) => {
+    it('testAnimatorOption007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption007()).assertEqual(0)
       done()
     })
@@ -126,7 +126,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption008', 0, async (done: Function) => {
+    it('testAnimatorOption008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption008()).assertEqual(0)
       done()
     })
@@ -139,7 +139,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption009', 0, async (done: Function) => {
+    it('testAnimatorOption009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption009()).assertEqual(0)
       done()
     })
@@ -152,7 +152,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption010', 0, async (done: Function) => {
+    it('testAnimatorOption010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption010()).assertEqual(0)
       done()
     })
@@ -165,7 +165,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption011', 0, async (done: Function) => {
+    it('testAnimatorOption011', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption011()).assertEqual(0)
       done()
     })
@@ -178,7 +178,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption012', 0, async (done: Function) => {
+    it('testAnimatorOption012', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption012()).assertEqual(0)
       done()
     })
@@ -191,7 +191,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption013', 0, async (done: Function) => {
+    it('testAnimatorOption013', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption013()).assertEqual(0)
       done()
     })
@@ -204,7 +204,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption014', 0, async (done: Function) => {
+    it('testAnimatorOption014', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption014()).assertEqual(0)
       done()
     })
@@ -217,7 +217,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption015', 0, async (done: Function) => {
+    it('testAnimatorOption015', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption015()).assertEqual(0)
       done()
     })
@@ -230,7 +230,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption016', 0, async (done: Function) => {
+    it('testAnimatorOption016', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption016()).assertEqual(0)
       done()
     })
@@ -243,7 +243,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption017', 0, async (done: Function) => {
+    it('testAnimatorOption017', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption017()).assertEqual(0)
       done()
     })
@@ -256,7 +256,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption018', 0, async (done: Function) => {
+    it('testAnimatorOption018', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption018()).assertEqual(0)
       done()
     })
@@ -269,7 +269,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption019', 0, async (done: Function) => {
+    it('testAnimatorOption019', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption019()).assertEqual(0)
       done()
     })
@@ -282,7 +282,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption020', 0, async (done: Function) => {
+    it('testAnimatorOption020', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption020()).assertEqual(0)
       done()
     })
@@ -295,7 +295,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption021', 0, async (done: Function) => {
+    it('testAnimatorOption021', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption021()).assertEqual(0)
       done()
     })
@@ -308,7 +308,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption022', 0, async (done: Function) => {
+    it('testAnimatorOption022', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption022()).assertEqual(0)
       done()
     })
@@ -321,7 +321,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption023', 0, async (done: Function) => {
+    it('testAnimatorOption023', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption023()).assertEqual(0)
       done()
     })
@@ -334,7 +334,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption024', 0, async (done: Function) => {
+    it('testAnimatorOption024', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption024()).assertEqual(0)
       done()
     })
@@ -347,7 +347,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption025', 0, async (done: Function) => {
+    it('testAnimatorOption025', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption025()).assertEqual(0)
       done()
     })
@@ -360,7 +360,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption026', 0, async (done: Function) => {
+    it('testAnimatorOption026', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption026()).assertEqual(0)
       done()
     })
@@ -373,7 +373,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption027', 0, async (done: Function) => {
+    it('testAnimatorOption027', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption027()).assertEqual(0)
       done()
     })
@@ -386,7 +386,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption028', 0, async (done: Function) => {
+    it('testAnimatorOption028', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption028()).assertEqual(0)
       done()
     })
@@ -399,7 +399,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption029', 0, async (done: Function) => {
+    it('testAnimatorOption029', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption029()).assertEqual(0)
       done()
     })
@@ -412,7 +412,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption030', 0, async (done: Function) => {
+    it('testAnimatorOption030', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption030()).assertEqual(0)
       done()
     })
@@ -425,7 +425,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption031', 0, async (done: Function) => {
+    it('testAnimatorOption031', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption031()).assertEqual(0)
       done()
     })
@@ -438,7 +438,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption032', 0, async (done: Function) => {
+    it('testAnimatorOption032', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption032()).assertEqual(0)
       done()
     })
@@ -451,7 +451,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption033', 0, async (done: Function) => {
+    it('testAnimatorOption033', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption033()).assertEqual(0)
       done()
     })
@@ -464,7 +464,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption034', 0, async (done: Function) => {
+    it('testAnimatorOption034', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption034()).assertEqual(0)
       done()
     })
@@ -477,7 +477,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption035', 0, async (done: Function) => {
+    it('testAnimatorOption035', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption035()).assertEqual(0)
       done()
     })
@@ -490,7 +490,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption036', 0, async (done: Function) => {
+    it('testAnimatorOption036', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption036()).assertEqual(0)
       done()
     })
@@ -503,7 +503,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption037', 0, async (done: Function) => {
+    it('testAnimatorOption037', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption037()).assertEqual(0)
       done()
     })
@@ -516,7 +516,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption038', 0, async (done: Function) => {
+    it('testAnimatorOption038', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption038()).assertEqual(0)
       done()
     })
@@ -529,7 +529,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption039', 0, async (done: Function) => {
+    it('testAnimatorOption039', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption039()).assertEqual(0)
       done()
     })
@@ -542,7 +542,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption040', 0, async (done: Function) => {
+    it('testAnimatorOption040', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption040()).assertEqual(0)
       done()
     })
@@ -555,7 +555,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption041', 0, async (done: Function) => {
+    it('testAnimatorOption041', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption041()).assertEqual(0)
       done()
     })
@@ -568,7 +568,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption042', 0, async (done: Function) => {
+    it('testAnimatorOption042', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption042()).assertEqual(0)
       done()
     })
@@ -581,7 +581,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption043', 0, async (done: Function) => {
+    it('testAnimatorOption043', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption043()).assertEqual(0)
       done()
     })
@@ -594,7 +594,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption044', 0, async (done: Function) => {
+    it('testAnimatorOption044', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption044()).assertEqual(0)
       done()
     })
@@ -607,7 +607,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption045', 0, async (done: Function) => {
+    it('testAnimatorOption045', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption045()).assertEqual(0)
       done()
     })
@@ -620,7 +620,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption046', 0, async (done: Function) => {
+    it('testAnimatorOption046', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption046()).assertEqual(0)
       done()
     })
@@ -633,7 +633,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption048', 0, async (done: Function) => {
+    it('testAnimatorOption048', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption048()).assertEqual(0)
       done()
     })
@@ -646,7 +646,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption049', 0, async (done: Function) => {
+    it('testAnimatorOption049', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption049()).assertEqual(0)
       done()
     })
@@ -659,7 +659,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption051', 0, async (done: Function) => {
+    it('testAnimatorOption051', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption051()).assertEqual(0)
       done()
     })
@@ -672,7 +672,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption052', 0, async (done: Function) => {
+    it('testAnimatorOption052', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption052()).assertEqual(0)
       done()
     })
@@ -685,7 +685,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption054', 0, async (done: Function) => {
+    it('testAnimatorOption054', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption054()).assertEqual(0)
       done()
     })
@@ -698,7 +698,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption055', 0, async (done: Function) => {
+    it('testAnimatorOption055', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption055()).assertEqual(0)
       done()
     })
@@ -711,7 +711,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption057', 0, async (done: Function) => {
+    it('testAnimatorOption057', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption057()).assertEqual(0)
       done()
     })
@@ -724,7 +724,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption058', 0, async (done: Function) => {
+    it('testAnimatorOption058', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption058()).assertEqual(0)
       done()
     })
@@ -737,7 +737,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption059', 0, async (done: Function) => {
+    it('testAnimatorOption059', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption059()).assertEqual(0)
       done()
     })
@@ -750,7 +750,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption060', 0, async (done: Function) => {
+    it('testAnimatorOption060', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption060()).assertEqual(0)
       done()
     })
@@ -763,7 +763,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption061', 0, async (done: Function) => {
+    it('testAnimatorOption061', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption061()).assertEqual(0)
       done()
     })
@@ -776,7 +776,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption063', 0, async (done: Function) => {
+    it('testAnimatorOption063', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption063()).assertEqual(0)
       done()
     })
@@ -789,7 +789,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption064', 0, async (done: Function) => {
+    it('testAnimatorOption064', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption064()).assertEqual(0)
       done()
     })
@@ -802,7 +802,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption065', 0, async (done: Function) => {
+    it('testAnimatorOption065', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption065()).assertEqual(0)
       done()
     })
@@ -815,7 +815,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption066', 0, async (done: Function) => {
+    it('testAnimatorOption066', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption066()).assertEqual(0)
       done()
     })
@@ -828,7 +828,7 @@ export default function animatorOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption067', 0, async (done: Function) => {
+    it('testAnimatorOption067', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAnimatorOption067()).assertEqual(0)
       done()
     })

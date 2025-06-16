@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 
 export default function customComponentEventTest() {
@@ -32,7 +32,7 @@ export default function customComponentEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCustomComponentEvent001', 0, async (done: Function) => {
+    it('testCustomComponentEvent001', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'CustomComponentEventTest';
       await Utils.pushPage(`customcomponent/${PAGE_TAG}`, done);
       await Utils.sleep(2000)

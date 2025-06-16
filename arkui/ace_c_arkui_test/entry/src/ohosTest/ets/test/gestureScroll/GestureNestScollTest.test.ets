@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach, beforeEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, beforeEach, Level } from '@ohos/hypium';
 import { Driver, ON, PointerMatrix, Rect } from '@ohos.UiTest';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
@@ -58,7 +58,7 @@ export default function gestureNestScrollTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGestureNestScroll001', 0, async (done: Function) => {
+    it('testGestureNestScroll001', Level.LEVEL1, async (done: Function) => {
       let driver = Driver.create();
       await Utils.sleep(500);
       // inner list scroll
@@ -93,7 +93,7 @@ export default function gestureNestScrollTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGestureNestScroll002', 0, async (done: Function) => {
+    it('testGestureNestScroll002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.gestureTestParaMeter001()).assertEqual(0)
       done();
     });
@@ -106,7 +106,7 @@ export default function gestureNestScrollTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGestureNestScroll003', 0, async (done: Function) => {
+    it('testGestureNestScroll003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.gestureTestParaMeter002()).assertEqual(0)
       done();
     });
@@ -119,7 +119,7 @@ export default function gestureNestScrollTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGestureNestScroll004', 0, async (done: Function) => {
+    it('testGestureNestScroll004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.gestureTestParaMeter003()).assertEqual(0)
       done();
     });
@@ -132,7 +132,7 @@ export default function gestureNestScrollTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGestureNestScroll005', 0, async (done: Function) => {
+    it('testGestureNestScroll005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.gestureTestParaMeter004()).assertEqual(0)
       done();
     });
@@ -145,7 +145,7 @@ export default function gestureNestScrollTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGestureNestScroll006', 0, async (done: Function) => {
+    it('testGestureNestScroll006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.gestureTestParaMeter005()).assertEqual(0)
       done();
     });
@@ -158,7 +158,7 @@ export default function gestureNestScrollTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGestureNestScroll007', 0, async (done: Function) => {
+    it('testGestureNestScroll007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.gestureTestParaMeter006()).assertEqual(0)
       done();
     });
@@ -171,7 +171,7 @@ export default function gestureNestScrollTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGestureNestScroll008', 0, async (done: Function) => {
+    it('testGestureNestScroll008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.gestureTestParaMeter007()).assertEqual(0)
       done();
     });
@@ -184,7 +184,7 @@ export default function gestureNestScrollTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGestureNestScroll009', 0, async (done: Function) => {
+    it('testGestureNestScroll009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.gestureTestParaMeter008()).assertEqual(0)
       done();
     });
@@ -196,7 +196,7 @@ export default function gestureNestScrollTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGestureNestScroll010', 0, async (done: Function) => {
+    it('testGestureNestScroll010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.gestureTestParaMeter009()).assertEqual(0)
       done();
     });

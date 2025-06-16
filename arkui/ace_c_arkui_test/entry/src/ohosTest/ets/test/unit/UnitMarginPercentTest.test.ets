@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function unitMarginPercentTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUnitMarginPercent001', 0, async (done: Function) => {
+    it('testUnitMarginPercent001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testUnitMarginPercent001()).assertEqual(0)
       done();
     });
@@ -46,7 +46,7 @@ export default function unitMarginPercentTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUnitMarginPercent002', 0, async (done: Function) => {
+    it('testUnitMarginPercent002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testUnitMarginPercent002()).assertEqual(0)
       done();
     });
@@ -58,7 +58,7 @@ export default function unitMarginPercentTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUnitMarginPercent003', 0, async (done: Function) => {
+    it('testUnitMarginPercent003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testUnitMarginPercent003()).assertEqual(0)
       done();
     });
@@ -70,7 +70,7 @@ export default function unitMarginPercentTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUnitMarginPercent004', 0, async (done: Function) => {
+    it('testUnitMarginPercent004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testUnitMarginPercent004()).assertEqual(0)
       done();
     });
@@ -82,7 +82,7 @@ export default function unitMarginPercentTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUnitMarginPercent005', 0, async (done: Function) => {
+    it('testUnitMarginPercent005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testUnitMarginPercent005()).assertEqual(0)
       done();
     });

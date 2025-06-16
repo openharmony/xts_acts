@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function checkboxShapeTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCheckboxShape001', 0, async (done: Function) => {
+    it('testCheckboxShape001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCheckboxShape001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function checkboxShapeTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCheckboxShape002', 0, async (done: Function) => {
+    it('testCheckboxShape002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCheckboxShape002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function checkboxShapeTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCheckboxShape003', 0, async (done: Function) => {
+    it('testCheckboxShape003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCheckboxShape003()).assertEqual(0)
       done()
     })

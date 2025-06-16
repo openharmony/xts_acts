@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textFontWeightTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextFontWeight001', 0, async (done: Function) => {
+    it('testTextFontWeight001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextFontWeight001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function textFontWeightTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextFontWeight002', 0, async (done: Function) => {
+    it('testTextFontWeight002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextFontWeight002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function textFontWeightTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextFontWeight003', 0, async (done: Function) => {
+    it('testTextFontWeight003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextFontWeight003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function textFontWeightTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextFontWeight004', 0, async (done: Function) => {
+    it('testTextFontWeight004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextFontWeight004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function textFontWeightTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextFontWeight005', 0, async (done: Function) => {
+    it('testTextFontWeight005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextFontWeight005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function textFontWeightTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextFontWeight006', 0, async (done: Function) => {
+    it('testTextFontWeight006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextFontWeight006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function textFontWeightTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextFontWeight007', 0, async (done: Function) => {
+    it('testTextFontWeight007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextFontWeight007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function textFontWeightTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextFontWeight008', 0, async (done: Function) => {
+    it('testTextFontWeight008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextFontWeight008()).assertEqual(0)
       done()
     })
@@ -138,7 +138,7 @@ export default function textFontWeightTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextFontWeight009', 0, async (done: Function) => {
+    it('testTextFontWeight009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextFontWeight009()).assertEqual(0)
       done()
     })
@@ -151,7 +151,7 @@ export default function textFontWeightTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextFontWeight010', 0, async (done: Function) => {
+    it('testTextFontWeight010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextFontWeight010()).assertEqual(0)
       done()
     })
@@ -164,7 +164,7 @@ export default function textFontWeightTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextFontWeight011', 0, async (done: Function) => {
+    it('testTextFontWeight011', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextFontWeight011()).assertEqual(0)
       done()
     })
@@ -177,7 +177,7 @@ export default function textFontWeightTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextFontWeight012', 0, async (done: Function) => {
+    it('testTextFontWeight012', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextFontWeight012()).assertEqual(0)
       done()
     })
@@ -190,7 +190,7 @@ export default function textFontWeightTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextFontWeight013', 0, async (done: Function) => {
+    it('testTextFontWeight013', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextFontWeight013()).assertEqual(0)
       done()
     })
@@ -203,7 +203,7 @@ export default function textFontWeightTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextFontWeight014', 0, async (done: Function) => {
+    it('testTextFontWeight014', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextFontWeight014()).assertEqual(0)
       done()
     })
@@ -216,7 +216,7 @@ export default function textFontWeightTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextFontWeight015', 0, async (done: Function) => {
+    it('testTextFontWeight015', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextFontWeight015()).assertEqual(0)
       done()
     })
@@ -229,7 +229,7 @@ export default function textFontWeightTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTextFontWeight016', 0, async (done: Function) => {
+    it('testTextFontWeight016', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextFontWeight016()).assertEqual(0)
       done()
     })

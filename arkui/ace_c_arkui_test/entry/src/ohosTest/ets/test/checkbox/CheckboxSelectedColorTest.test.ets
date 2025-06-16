@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function checkboxSelectedColorTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCheckboxSelectedColor001', 0, async (done: Function) => {
+    it('testCheckboxSelectedColor001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCheckboxSelectedColor001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function checkboxSelectedColorTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCheckboxSelectedColor002', 0, async (done: Function) => {
+    it('testCheckboxSelectedColor002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCheckboxSelectedColor002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function checkboxSelectedColorTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCheckboxSelectedColor003', 0, async (done: Function) => {
+    it('testCheckboxSelectedColor003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCheckboxSelectedColor003()).assertEqual(0)
       done()
     })

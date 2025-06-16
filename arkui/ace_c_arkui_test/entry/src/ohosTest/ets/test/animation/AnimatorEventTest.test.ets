@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import { Driver, ON, PointerMatrix, Rect } from '@ohos.UiTest';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
@@ -35,7 +35,7 @@ export default function animatorEventTest(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testKeyframeRegisterOnFinish_001', 0, async (done: Function) => {
+    it('testKeyframeRegisterOnFinish_001', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'TestKeyframeRegisterOnFinish';
       await Utils.pushPage(`animation/${PAGE_TAG}`, done);
       await Utils.sleep(1000)
@@ -56,7 +56,7 @@ export default function animatorEventTest(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testKeyframeRegisterOnEvent_002', 0, async (done: Function) => {
+    it('testKeyframeRegisterOnEvent_002', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'TestKeyframeRegisterOnEvent';
       await Utils.pushPage(`animation/${PAGE_TAG}`, done);
       await Utils.sleep(1000)
@@ -77,7 +77,7 @@ export default function animatorEventTest(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorRegisterOnFrame_003', 0, async (done: Function) => {
+    it('testAnimatorRegisterOnFrame_003', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'TestAnimatorRegisterOnFrame';
       await Utils.pushPage(`animation/${PAGE_TAG}`, done);
       await Utils.sleep(1000)
@@ -98,7 +98,7 @@ export default function animatorEventTest(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorRegisterOnFinish_004', 0, async (done: Function) => {
+    it('testAnimatorRegisterOnFinish_004', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'TestAnimatorRegisterOnFinish';
       await Utils.pushPage(`animation/${PAGE_TAG}`, done);
       await Utils.sleep(1000)
@@ -122,7 +122,7 @@ export default function animatorEventTest(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorRegisterOnCancel_005', 0, async (done: Function) => {
+    it('testAnimatorRegisterOnCancel_005', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'TestAnimatorRegisterOnCancel';
       await Utils.pushPage(`animation/${PAGE_TAG}`, done);
       await Utils.sleep(1000)
@@ -146,7 +146,7 @@ export default function animatorEventTest(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorRegisterOnRepeat_006', 0, async (done: Function) => {
+    it('testAnimatorRegisterOnRepeat_006', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'TestAnimatorRegisterOnRepeat';
       await Utils.pushPage(`animation/${PAGE_TAG}`, done);
       await Utils.sleep(1000)

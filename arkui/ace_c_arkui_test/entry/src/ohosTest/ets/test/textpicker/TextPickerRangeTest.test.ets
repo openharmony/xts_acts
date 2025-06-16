@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textPickerRangeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextPickerRange001', 0, async (done: Function) => {
+    it('testTextPickerRange001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextPickerRange001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function textPickerRangeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextPickerRange002', 0, async (done: Function) => {
+    it('testTextPickerRange002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextPickerRange002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function textPickerRangeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextPickerRange003', 0, async (done: Function) => {
+    it('testTextPickerRange003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextPickerRange003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function textPickerRangeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextPickerRange004', 0, async (done: Function) => {
+    it('testTextPickerRange004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextPickerRange004()).assertEqual(0)
       done()
     })

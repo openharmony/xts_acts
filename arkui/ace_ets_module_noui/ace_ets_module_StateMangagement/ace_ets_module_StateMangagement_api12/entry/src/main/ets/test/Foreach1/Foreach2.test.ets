@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -63,7 +63,7 @@ export default function Foreach2() {
      * @tc.name ForEachKey
      * @tc.desc aceEtsTest
      */
-    it('ForEachKey001', 0, async () => {
+    it('ForEachKey001', Level.LEVEL0, async () => {
       console.info('ForEachKey001 START');
       expect(!!getInspectorByKey('one')).assertTrue();
       console.info('ForEachKey001 END');
@@ -74,7 +74,7 @@ export default function Foreach2() {
      * @tc.name ForEachKey
      * @tc.desc aceEtsTest
      */
-    it('ForEachKey002', 0, async () => {
+    it('ForEachKey002', Level.LEVEL0, async () => {
       console.info('ForEachKey001 START');
       expect(!getInspectorByKey('one2')).assertTrue();
       console.info('ForEachKey001 END');

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -33,7 +33,7 @@ export default function textAreaMaxLinesTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaMaxLines002', 0, async (done: Function) => {
+    it('testTextAreaMaxLines002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaMaxLines002()).assertEqual(0)
       done();
     });
@@ -45,7 +45,7 @@ export default function textAreaMaxLinesTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaMaxLines003', 0, async (done: Function) => {
+    it('testTextAreaMaxLines003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaMaxLines003()).assertEqual(0)
       done();
     });
@@ -57,7 +57,7 @@ export default function textAreaMaxLinesTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaMaxLines004', 0, async (done: Function) => {
+    it('testTextAreaMaxLines004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaMaxLines004()).assertEqual(0)
       done();
     });  

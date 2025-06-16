@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach, beforeEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, beforeEach, Level } from '@ohos/hypium';
 import { Driver, ON, PointerMatrix, Rect } from '@ohos.UiTest';
 import router from '@ohos.router';
 import nativeRender from 'libnativerender.so'
@@ -28,7 +28,7 @@ export default function ArkuiXComponentTest(){
       done()
     })
 
-    it('ArkuiXComponentTest_a', 0, async (done: Function) => {
+    it('ArkuiXComponentTest_a',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.DragEndPendingTest_a()).assertEqual(0)
       console.log('DragEndPendingTest_a will drag and check:: ')
       await Utils.sleep(200)
@@ -36,7 +36,7 @@ export default function ArkuiXComponentTest(){
       done()
     })
 
-    it('ArkuiXComponentTest_b', 0, async (done: Function) => {
+    it('ArkuiXComponentTest_b',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.ArkuiXComponentTest_b()).assertEqual(0)
       console.log('ArkuiXComponentTest_b will drag and check:: ')
       await Utils.sleep(200)
@@ -44,7 +44,7 @@ export default function ArkuiXComponentTest(){
       done()
     })
 
-    it('ArkuiXComponentTest_c', 0, async (done: Function) => {
+    it('ArkuiXComponentTest_c',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.ArkuiXComponentTest_c()).assertEqual(0)
       console.log('ArkuiXComponentTest_c will drag and check:: ')
       await Utils.sleep(200)
@@ -52,7 +52,7 @@ export default function ArkuiXComponentTest(){
       done()
     })
 
-    it('ArkuiXComponentTest_d', 0, async (done: Function) => {
+    it('ArkuiXComponentTest_d',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.ArkuiXComponentTest_d()).assertEqual(0)
       console.log('ArkuiXComponentTest_d will drag and check:: ')
       await Utils.sleep(200)
@@ -60,7 +60,7 @@ export default function ArkuiXComponentTest(){
       done()
     })
 
-    it('ArkuiXComponentTest_e', 0, async (done: Function) => {
+    it('ArkuiXComponentTest_e',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.ArkuiXComponentTest_e()).assertEqual(0)
       console.log('ArkuiXComponentTest_e will drag and check:: ')
       await Utils.sleep(200)
@@ -68,7 +68,7 @@ export default function ArkuiXComponentTest(){
       done()
     })
 
-    it('ArkuiXComponentTest_f', 0, async (done: Function) => {
+    it('ArkuiXComponentTest_f',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.ArkuiXComponentTest_f()).assertEqual(0)
       console.log('ArkuiXComponentTest_f will drag and check:: ')
       await Utils.sleep(200)
@@ -76,7 +76,7 @@ export default function ArkuiXComponentTest(){
       done()
     })
 
-    it('ArkuiXComponentTest_g', 0, async (done: Function) => {
+    it('ArkuiXComponentTest_g',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.ArkuiXComponentTest_g()).assertEqual(0)
       console.log('ArkuiXComponentTest_g will drag and check:: ')
       await Utils.sleep(200)
@@ -84,7 +84,7 @@ export default function ArkuiXComponentTest(){
       done()
     })
 
-    it('ArkuiXComponentTest_g1', 0, async (done: Function) => {
+    it('ArkuiXComponentTest_g1',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.ArkuiXComponentTest_g1()).assertEqual(0)
       console.log('ArkuiXComponentTest_g1 will drag and check:: ')
       await Utils.sleep(200)
@@ -92,7 +92,7 @@ export default function ArkuiXComponentTest(){
       done()
     })
 
-    it('ArkuiXComponentTest_h', 0, async (done: Function) => {
+    it('ArkuiXComponentTest_h',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.ArkuiXComponentTest_h()).assertEqual(0)
       console.log('ArkuiXComponentTest_h will drag and check:: ')
       await Utils.sleep(200)
@@ -100,7 +100,7 @@ export default function ArkuiXComponentTest(){
       done()
     })
 
-    it('ArkuiXComponentTest_h1', 0, async (done: Function) => {
+    it('ArkuiXComponentTest_h1',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.ArkuiXComponentTest_h1()).assertEqual(0)
       console.log('ArkuiXComponentTest_h1 will drag and check:: ')
       await Utils.sleep(200)
@@ -108,7 +108,7 @@ export default function ArkuiXComponentTest(){
       done()
     })
 
-    it('ArkuiXComponentTest_i', 0, async (done: Function) => {
+    it('ArkuiXComponentTest_i',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.ArkuiXComponentTest_i()).assertEqual(0)
       console.log('ArkuiXComponentTest_i will drag and check:: ')
       await Utils.sleep(200)
@@ -116,7 +116,7 @@ export default function ArkuiXComponentTest(){
       done()
     })
 
-    it('ArkuiXComponentTest_i1', 0, async (done: Function) => {
+    it('ArkuiXComponentTest_i1',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.ArkuiXComponentTest_i1()).assertEqual(0)
       console.log('ArkuiXComponentTest_i1 will drag and check:: ')
       await Utils.sleep(200)
@@ -124,7 +124,7 @@ export default function ArkuiXComponentTest(){
       done()
     })
 
-    it('ArkuiXComponentTest_j', 0, async (done: Function) => {
+    it('ArkuiXComponentTest_j',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.ArkuiXComponentTest_j()).assertEqual(0)
       console.log('ArkuiXComponentTest_j will drag and check:: ')
       await Utils.sleep(200)
@@ -132,7 +132,7 @@ export default function ArkuiXComponentTest(){
       done()
     })
 
-    it('ArkuiXComponentTest_j1', 0, async (done: Function) => {
+    it('ArkuiXComponentTest_j1',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.ArkuiXComponentTest_j1()).assertEqual(0)
       console.log('ArkuiXComponentTest_j1 will drag and check:: ')
       await Utils.sleep(200)

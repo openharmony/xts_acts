@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach, beforeEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, beforeEach, Level } from '@ohos/hypium';
 import { Driver, ON, PointerMatrix, Rect } from '@ohos.UiTest';
 import router from '@ohos.router';
 import nativeRender from 'libnativerender.so'
@@ -28,7 +28,7 @@ export default function SwiperArrowStyleTest(){
       done()
     })
 
-    it('SwiperArrowStyleTest_a', 0, async (done: Function) => {
+    it('SwiperArrowStyleTest_a',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.SwiperArrowStyleTest_a()).assertEqual(0)
       console.log('SwiperArrowStyleTest_a will drag and check:: ')
       await Utils.sleep(200)
@@ -36,7 +36,7 @@ export default function SwiperArrowStyleTest(){
       done()
     })
 
-    it('SwiperArrowStyleTest_b', 0, async (done: Function) => {
+    it('SwiperArrowStyleTest_b',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.SwiperArrowStyleTest_b()).assertEqual(0)
       console.log('SwiperArrowStyleTest_b will drag and check:: ')
       await Utils.sleep(200)
@@ -44,7 +44,7 @@ export default function SwiperArrowStyleTest(){
       done()
     })
 
-    it('SwiperArrowStyleTest_c', 0, async (done: Function) => {
+    it('SwiperArrowStyleTest_c',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.SwiperArrowStyleTest_c()).assertEqual(0)
       console.log('SwiperArrowStyleTest_c will drag and check:: ')
       await Utils.sleep(200)
@@ -52,7 +52,7 @@ export default function SwiperArrowStyleTest(){
       done()
     })
 
-    it('SwiperArrowStyleTest_c1', 0, async (done: Function) => {
+    it('SwiperArrowStyleTest_c1',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.SwiperArrowStyleTest_c1()).assertEqual(0)
       console.log('SwiperArrowStyleTest_c1 will drag and check:: ')
       await Utils.sleep(200)
@@ -60,7 +60,7 @@ export default function SwiperArrowStyleTest(){
       done()
     })
 
-    it('SwiperArrowStyleTest_c2', 0, async (done: Function) => {
+    it('SwiperArrowStyleTest_c2',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.SwiperArrowStyleTest_c2()).assertEqual(0)
       console.log('SwiperArrowStyleTest_c2 will drag and check:: ')
       await Utils.sleep(200)
@@ -68,7 +68,7 @@ export default function SwiperArrowStyleTest(){
       done()
     })
 
-    it('SwiperArrowStyleTest_d', 0, async (done: Function) => {
+    it('SwiperArrowStyleTest_d',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.SwiperArrowStyleTest_d()).assertEqual(0)
       console.log('SwiperArrowStyleTest_d will drag and check:: ')
       await Utils.sleep(200)
@@ -76,7 +76,7 @@ export default function SwiperArrowStyleTest(){
       done()
     })
 
-    it('SwiperArrowStyleTest_d1', 0, async (done: Function) => {
+    it('SwiperArrowStyleTest_d1',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.SwiperArrowStyleTest_d1()).assertEqual(0)
       console.log('SwiperArrowStyleTest_d1 will drag and check:: ')
       await Utils.sleep(200)
@@ -84,7 +84,7 @@ export default function SwiperArrowStyleTest(){
       done()
     })
 
-    it('SwiperArrowStyleTest_d2', 0, async (done: Function) => {
+    it('SwiperArrowStyleTest_d2',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.SwiperArrowStyleTest_d2()).assertEqual(0)
       console.log('SwiperArrowStyleTest_d2 will drag and check:: ')
       await Utils.sleep(200)
@@ -92,7 +92,7 @@ export default function SwiperArrowStyleTest(){
       done()
     })
 
-    it('SwiperArrowStyleTest_e', 0, async (done: Function) => {
+    it('SwiperArrowStyleTest_e',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.SwiperArrowStyleTest_e()).assertEqual(0)
       console.log('SwiperArrowStyleTest_e will drag and check:: ')
       await Utils.sleep(200)
@@ -100,7 +100,7 @@ export default function SwiperArrowStyleTest(){
       done()
     })
 
-    it('SwiperArrowStyleTest_e1', 0, async (done: Function) => {
+    it('SwiperArrowStyleTest_e1',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.SwiperArrowStyleTest_e1()).assertEqual(0)
       console.log('SwiperArrowStyleTest_e1 will drag and check:: ')
       await Utils.sleep(200)
@@ -108,7 +108,7 @@ export default function SwiperArrowStyleTest(){
       done()
     })
 
-    it('SwiperArrowStyleTest_f', 0, async (done: Function) => {
+    it('SwiperArrowStyleTest_f',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.SwiperArrowStyleTest_f()).assertEqual(0)
       console.log('SwiperArrowStyleTest_f will drag and check:: ')
       await Utils.sleep(200)
@@ -116,7 +116,7 @@ export default function SwiperArrowStyleTest(){
       done()
     })
 
-    it('SwiperArrowStyleTest_f1', 0, async (done: Function) => {
+    it('SwiperArrowStyleTest_f1',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.SwiperArrowStyleTest_f1()).assertEqual(0)
       console.log('SwiperArrowStyleTest_f1 will drag and check:: ')
       await Utils.sleep(200)
@@ -124,7 +124,7 @@ export default function SwiperArrowStyleTest(){
       done()
     })
 
-    it('SwiperArrowStyleTest_g', 0, async (done: Function) => {
+    it('SwiperArrowStyleTest_g',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.SwiperArrowStyleTest_g()).assertEqual(0)
       console.log('SwiperArrowStyleTest_g will drag and check:: ')
       await Utils.sleep(200)
@@ -132,7 +132,7 @@ export default function SwiperArrowStyleTest(){
       done()
     })
 
-    it('SwiperArrowStyleTest_g1', 0, async (done: Function) => {
+    it('SwiperArrowStyleTest_g1',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.SwiperArrowStyleTest_g1()).assertEqual(0)
       console.log('SwiperArrowStyleTest_g1 will drag and check:: ')
       await Utils.sleep(200)
@@ -140,7 +140,7 @@ export default function SwiperArrowStyleTest(){
       done()
     })
 
-    it('SwiperArrowStyleTest_h', 0, async (done: Function) => {
+    it('SwiperArrowStyleTest_h',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.SwiperArrowStyleTest_h()).assertEqual(0)
       console.log('SwiperArrowStyleTest_h will drag and check:: ')
       await Utils.sleep(200)
@@ -148,7 +148,7 @@ export default function SwiperArrowStyleTest(){
       done()
     })
 
-    it('SwiperArrowStyleTest_h1', 0, async (done: Function) => {
+    it('SwiperArrowStyleTest_h1',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.SwiperArrowStyleTest_h1()).assertEqual(0)
       console.log('SwiperArrowStyleTest_h1 will drag and check:: ')
       await Utils.sleep(200)

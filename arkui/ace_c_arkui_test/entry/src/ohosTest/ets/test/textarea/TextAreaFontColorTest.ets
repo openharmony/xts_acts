@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textAreaFontColorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextAreaFontColor001', 0, async (done: Function) => {
+    it('testTextAreaFontColor001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaFontColor001()).assertEqual(0)
       done();
     });
@@ -47,7 +47,7 @@ export default function textAreaFontColorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextAreaFontColor002', 0, async (done: Function) => {
+    it('testTextAreaFontColor002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaFontColor002()).assertEqual(0)
       done();
     });
@@ -60,7 +60,7 @@ export default function textAreaFontColorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextAreaFontColor003', 0, async (done: Function) => {
+    it('testTextAreaFontColor003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaFontColor003()).assertEqual(0)
       done();
     });

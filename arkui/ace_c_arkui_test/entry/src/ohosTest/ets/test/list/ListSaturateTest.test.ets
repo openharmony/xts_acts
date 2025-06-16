@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function listSaturateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListSaturate001', 0, async (done: Function) => {
+    it('testListSaturate001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListSaturate001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function listSaturateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListSaturate002', 0, async (done: Function) => {
+    it('testListSaturate002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListSaturate002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function listSaturateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListSaturate003', 0, async (done: Function) => {
+    it('testListSaturate003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListSaturate003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function listSaturateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListSaturate004', 0, async (done: Function) => {
+    it('testListSaturate004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListSaturate004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function listSaturateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testListSaturate005', 0, async (done: Function) => {
+    it('testListSaturate005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListSaturate005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function listSaturateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testListSaturate006', 0, async (done: Function) => {
+    it('testListSaturate006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListSaturate006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function listSaturateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListSaturate007', 0, async (done: Function) => {
+    it('testListSaturate007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListSaturate007()).assertEqual(0)
       done()
     })

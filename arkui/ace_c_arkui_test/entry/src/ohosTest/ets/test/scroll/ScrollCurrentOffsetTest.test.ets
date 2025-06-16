@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 
 export default function scrollCurrentOffsetTest() {
@@ -33,7 +33,7 @@ export default function scrollCurrentOffsetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollCurrentOffset001', 0, async (done: Function) => {
+    it('testScrollCurrentOffset001', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollCurrentOffsetLinearTest';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('CurrentOffset').$attrs.backgroundColor).assertEqual('#FF00FF00')
@@ -48,7 +48,7 @@ export default function scrollCurrentOffsetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollCurrentOffset002', 0, async (done: Function) => {
+    it('testScrollCurrentOffset002', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollCurrentOffsetEaseTest';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('CurrentOffset').$attrs.backgroundColor).assertEqual('#FF00FF00')
@@ -63,7 +63,7 @@ export default function scrollCurrentOffsetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollCurrentOffset003', 0, async (done: Function) => {
+    it('testScrollCurrentOffset003', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollCurrentOffsetEaseInTest';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('CurrentOffset').$attrs.backgroundColor).assertEqual('#FF00FF00')
@@ -78,7 +78,7 @@ export default function scrollCurrentOffsetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollCurrentOffset004', 0, async (done: Function) => {
+    it('testScrollCurrentOffset004', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollCurrentOffsetEaseOutTest';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('CurrentOffset').$attrs.backgroundColor).assertEqual('#FF00FF00')
@@ -93,7 +93,7 @@ export default function scrollCurrentOffsetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollCurrentOffset005', 0, async (done: Function) => {
+    it('testScrollCurrentOffset005', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollCurrentOffsetEaseInOutTest';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('CurrentOffset').$attrs.backgroundColor).assertEqual('#FF00FF00')
@@ -108,7 +108,7 @@ export default function scrollCurrentOffsetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollCurrentOffset006', 0, async (done: Function) => {
+    it('testScrollCurrentOffset006', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollCurrentOffsetFastOutSlowInTest';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('CurrentOffset').$attrs.backgroundColor).assertEqual('#FF00FF00')
@@ -123,7 +123,7 @@ export default function scrollCurrentOffsetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollCurrentOffset007', 0, async (done: Function) => {
+    it('testScrollCurrentOffset007', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollCurrentOffsetLinearOutSlowInTest';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('CurrentOffset').$attrs.backgroundColor).assertEqual('#FF00FF00')
@@ -138,7 +138,7 @@ export default function scrollCurrentOffsetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollCurrentOffset008', 0, async (done: Function) => {
+    it('testScrollCurrentOffset008', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollCurrentOffsetFastOutLinearInTest';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('CurrentOffset').$attrs.backgroundColor).assertEqual('#FF00FF00')
@@ -153,7 +153,7 @@ export default function scrollCurrentOffsetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollCurrentOffset009', 0, async (done: Function) => {
+    it('testScrollCurrentOffset009', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollCurrentOffsetExtremeDecelerationTest';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('CurrentOffset').$attrs.backgroundColor).assertEqual('#FF00FF00')
@@ -168,7 +168,7 @@ export default function scrollCurrentOffsetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollCurrentOffset010', 0, async (done: Function) => {
+    it('testScrollCurrentOffset010', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollCurrentOffsetSharpTest';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('CurrentOffset').$attrs.backgroundColor).assertEqual('#FF00FF00')
@@ -183,7 +183,7 @@ export default function scrollCurrentOffsetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollCurrentOffset011', 0, async (done: Function) => {
+    it('testScrollCurrentOffset011', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollCurrentOffsetRhythmTest';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('CurrentOffset').$attrs.backgroundColor).assertEqual('#FF00FF00')
@@ -198,7 +198,7 @@ export default function scrollCurrentOffsetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollCurrentOffset012', 0, async (done: Function) => {
+    it('testScrollCurrentOffset012', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollCurrentOffsetSmoothTest';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('CurrentOffset').$attrs.backgroundColor).assertEqual('#FF00FF00')
@@ -213,7 +213,7 @@ export default function scrollCurrentOffsetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollCurrentOffset013', 0, async (done: Function) => {
+    it('testScrollCurrentOffset013', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollCurrentOffsetFrictionTest';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('CurrentOffset').$attrs.backgroundColor).assertEqual('#FF00FF00')

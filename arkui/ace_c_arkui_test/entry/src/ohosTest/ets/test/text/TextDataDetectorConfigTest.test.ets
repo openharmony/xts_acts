@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textDataDetectorConfigTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextDataDetectorConfig001', 0, async (done: Function) => {
+    it('testTextDataDetectorConfig001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextDataDetectorConfig001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function textDataDetectorConfigTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextDataDetectorConfig002', 0, async (done: Function) => {
+    it('testTextDataDetectorConfig002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextDataDetectorConfig002()).assertEqual(0)
       done()
     })
@@ -61,7 +61,7 @@ export default function textDataDetectorConfigTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextDataDetectorConfig003', 0, async (done: Function) => {
+    it('testTextDataDetectorConfig003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextDataDetectorConfig003()).assertEqual(0)
       done()
     })
@@ -75,7 +75,7 @@ export default function textDataDetectorConfigTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextDataDetectorConfig004', 0, async (done: Function) => {
+    it('testTextDataDetectorConfig004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextDataDetectorConfig004()).assertEqual(0)
       done()
     })
@@ -89,7 +89,7 @@ export default function textDataDetectorConfigTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextDataDetectorConfig005', 0, async (done: Function) => {
+    it('testTextDataDetectorConfig005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextDataDetectorConfig005()).assertEqual(0)
       done()
     })
@@ -103,7 +103,7 @@ export default function textDataDetectorConfigTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextDataDetectorConfig006', 0, async (done: Function) => {
+    it('testTextDataDetectorConfig006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextDataDetectorConfig006()).assertEqual(0)
       done()
     })
@@ -117,7 +117,7 @@ export default function textDataDetectorConfigTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextDataDetectorConfig007', 0, async (done: Function) => {
+    it('testTextDataDetectorConfig007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextDataDetectorConfig007()).assertEqual(0)
       done()
     })
@@ -131,7 +131,7 @@ export default function textDataDetectorConfigTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextDataDetectorConfig008', 0, async (done: Function) => {
+    it('testTextDataDetectorConfig008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextDataDetectorConfig008()).assertEqual(0)
       done()
     })

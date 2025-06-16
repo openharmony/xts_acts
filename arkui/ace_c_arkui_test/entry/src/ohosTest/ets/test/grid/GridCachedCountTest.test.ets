@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function gridCachedCountTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGridCachedCount001', 0, async (done: Function) => {
+    it('testGridCachedCount001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testGridCachedCount001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function gridCachedCountTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGridCachedCount002', 0, async (done: Function) => {
+    it('testGridCachedCount002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testGridCachedCount002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function gridCachedCountTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGridCachedCount003', 0, async (done: Function) => {
+    it('testGridCachedCount003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testGridCachedCount003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function gridCachedCountTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGridCachedCount004', 0, async (done: Function) => {
+    it('testGridCachedCount004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testGridCachedCount004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function gridCachedCountTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testGridCachedCount005', 0, async (done: Function) => {
+    it('testGridCachedCount005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testGridCachedCount005()).assertEqual(0)
       done()
     })

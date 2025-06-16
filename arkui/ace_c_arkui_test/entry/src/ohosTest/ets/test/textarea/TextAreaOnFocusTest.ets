@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect, afterEach } from '@ohos/hypium';
+import { describe, it, expect, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 
 export default function textAreaOnFocusTest() {
@@ -33,7 +33,7 @@ export default function textAreaOnFocusTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaOnFocus001', 0, async (done: Function) => {
+    it('testTextAreaOnFocus001', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'TextAreaOnFocusTest';
       await Utils.pushPage(`textarea/${PAGE_TAG}`);
       focusControl.requestFocus('TextAreaOnFocus');

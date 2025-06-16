@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, expect, describe, it } from '@ohos/hypium';
+import { beforeEach, expect, describe, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function refreshRefreshingTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRefreshRefreshing001', 0, async (done: Function) => {
+    it('testRefreshRefreshing001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRefreshRefreshing001()).assertEqual(0)
       done();
     })
@@ -47,7 +47,7 @@ export default function refreshRefreshingTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRefreshRefreshing002', 0, async (done: Function) => {
+    it('testRefreshRefreshing002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRefreshRefreshing002()).assertEqual(0)
       done();
     })
@@ -60,7 +60,7 @@ export default function refreshRefreshingTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRefreshRefreshing003', 0, async (done: Function) => {
+    it('testRefreshRefreshing003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRefreshRefreshing003()).assertEqual(0)
       done();
     })
@@ -73,7 +73,7 @@ export default function refreshRefreshingTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRefreshRefreshing004', 0, async (done: Function) => {
+    it('testRefreshRefreshing004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRefreshRefreshing004()).assertEqual(0)
       done();
     })

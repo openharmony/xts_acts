@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textAccessibilityGroupTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextAccessibilityGroup001', 0, async (done: Function) => {
+    it('testTextAccessibilityGroup001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAccessibilityGroup001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function textAccessibilityGroupTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextAccessibilityGroup002', 0, async (done: Function) => {
+    it('testTextAccessibilityGroup002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAccessibilityGroup002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function textAccessibilityGroupTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTextAccessibilityGroup003', 0, async (done: Function) => {
+    it('testTextAccessibilityGroup003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAccessibilityGroup003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function textAccessibilityGroupTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTextAccessibilityGroup004', 0, async (done: Function) => {
+    it('testTextAccessibilityGroup004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAccessibilityGroup004()).assertEqual(0)
       done()
     })

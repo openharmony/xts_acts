@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textMaskTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextMask001', 0, async (done: Function) => {
+    it('testTextMask001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextMask001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function textMaskTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextMask002', 0, async (done: Function) => {
+    it('testTextMask002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextMask002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function textMaskTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextMask003', 0, async (done: Function) => {
+    it('testTextMask003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextMask003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function textMaskTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextMask004', 0, async (done: Function) => {
+    it('testTextMask004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextMask004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function textMaskTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextMask005', 0, async (done: Function) => {
+    it('testTextMask005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextMask005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function textMaskTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextMask006', 0, async (done: Function) => {
+    it('testTextMask006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextMask006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function textMaskTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTextMask007', 0, async (done: Function) => {
+    it('testTextMask007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextMask007()).assertEqual(0)
       done()
     })

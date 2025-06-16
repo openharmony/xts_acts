@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textOverlayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextOverlay001', 0, async (done: Function) => {
+    it('testTextOverlay001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextOverlay001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function textOverlayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextOverlay002', 0, async (done: Function) => {
+    it('testTextOverlay002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextOverlay002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function textOverlayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextOverlay003', 0, async (done: Function) => {
+    it('testTextOverlay003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextOverlay003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function textOverlayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextOverlay004', 0, async (done: Function) => {
+    it('testTextOverlay004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextOverlay004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function textOverlayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextOverlay005', 0, async (done: Function) => {
+    it('testTextOverlay005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextOverlay005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function textOverlayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextOverlay006', 0, async (done: Function) => {
+    it('testTextOverlay006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextOverlay006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function textOverlayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextOverlay007', 0, async (done: Function) => {
+    it('testTextOverlay007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextOverlay007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function textOverlayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextOverlay008', 0, async (done: Function) => {
+    it('testTextOverlay008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextOverlay008()).assertEqual(0)
       done()
     })
@@ -138,7 +138,7 @@ export default function textOverlayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextOverlay009', 0, async (done: Function) => {
+    it('testTextOverlay009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextOverlay009()).assertEqual(0)
       done()
     })
@@ -151,7 +151,7 @@ export default function textOverlayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextOverlay010', 0, async (done: Function) => {
+    it('testTextOverlay010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextOverlay010()).assertEqual(0)
       done()
     })
@@ -164,7 +164,7 @@ export default function textOverlayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextOverlay011', 0, async (done: Function) => {
+    it('testTextOverlay011', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextOverlay011()).assertEqual(0)
       done()
     })
@@ -177,7 +177,7 @@ export default function textOverlayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextOverlay012', 0, async (done: Function) => {
+    it('testTextOverlay012', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextOverlay012()).assertEqual(0)
       done()
     })
@@ -190,7 +190,7 @@ export default function textOverlayTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTextOverlay013', 0, async (done: Function) => {
+    it('testTextOverlay013', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextOverlay013()).assertEqual(0)
       done()
     })

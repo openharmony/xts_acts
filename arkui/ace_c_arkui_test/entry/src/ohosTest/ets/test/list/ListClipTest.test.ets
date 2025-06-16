@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function listClipTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListClip001', 0, async (done: Function) => {
+    it('testListClip001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListClip001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function listClipTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListClip002', 0, async (done: Function) => {
+    it('testListClip002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListClip002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function listClipTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testListClip003', 0, async (done: Function) => {
+    it('testListClip003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListClip003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function listClipTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListClip004', 0, async (done: Function) => {
+    it('testListClip004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListClip004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function listClipTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListClip005', 0, async (done: Function) => {
+    it('testListClip005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListClip005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function listClipTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListClip006', 0, async (done: Function) => {
+    it('testListClip006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListClip006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function listClipTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListClip007', 0, async (done: Function) => {
+    it('testListClip007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListClip007()).assertEqual(0)
       done()
     })

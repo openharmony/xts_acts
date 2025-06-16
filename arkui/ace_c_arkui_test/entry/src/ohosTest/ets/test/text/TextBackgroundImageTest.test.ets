@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textBackgroundImageTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextBackgroundImage001', 0, async (done: Function) => {
+    it('testTextBackgroundImage001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextBackgroundImage001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function textBackgroundImageTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextBackgroundImage002', 0, async (done: Function) => {
+    it('testTextBackgroundImage002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextBackgroundImage002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function textBackgroundImageTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextBackgroundImage003', 0, async (done: Function) => {
+    it('testTextBackgroundImage003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextBackgroundImage003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function textBackgroundImageTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextBackgroundImage004', 0, async (done: Function) => {
+    it('testTextBackgroundImage004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextBackgroundImage004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function textBackgroundImageTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextBackgroundImage005', 0, async (done: Function) => {
+    it('testTextBackgroundImage005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextBackgroundImage005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function textBackgroundImageTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTextBackgroundImage006', 0, async (done: Function) => {
+    it('testTextBackgroundImage006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextBackgroundImage006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function textBackgroundImageTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTextBackgroundImage007', 0, async (done: Function) => {
+    it('testTextBackgroundImage007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextBackgroundImage007()).assertEqual(0)
       done()
     })

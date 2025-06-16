@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -29,7 +29,7 @@ export default function listAlignListItemTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListAlignListItem001', 0, async (done: Function) => {
+    it('testListAlignListItem001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListAlignListItem001()).assertEqual(0)
       done()
     })
@@ -41,7 +41,7 @@ export default function listAlignListItemTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListAlignListItem002', 0, async (done: Function) => {
+    it('testListAlignListItem002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListAlignListItem002()).assertEqual(0)
       done()
     })
@@ -53,7 +53,7 @@ export default function listAlignListItemTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListAlignListItem003', 0, async (done: Function) => {
+    it('testListAlignListItem003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListAlignListItem003()).assertEqual(0)
       done()
     })
@@ -65,7 +65,7 @@ export default function listAlignListItemTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListAlignListItem004', 0, async (done: Function) => {
+    it('testListAlignListItem004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListAlignListItem004()).assertEqual(0)
       done()
     })
@@ -77,7 +77,7 @@ export default function listAlignListItemTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListAlignListItem005', 0, async (done: Function) => {
+    it('testListAlignListItem005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListAlignListItem005()).assertEqual(0)
       done()
     })
@@ -89,7 +89,7 @@ export default function listAlignListItemTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListAlignListItem006', 0, async (done: Function) => {
+    it('testListAlignListItem006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListAlignListItem006()).assertEqual(0)
       done()
     })

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textInputMaxLengthTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputMaxLength001', 0, async (done: Function) => {
+    it('testTextInputMaxLength001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputMaxLength001()).assertEqual(0)
       done();
     });
@@ -47,7 +47,7 @@ export default function textInputMaxLengthTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputMaxLength002', 0, async (done: Function) => {
+    it('testTextInputMaxLength002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputMaxLength002()).assertEqual(0)
       done();
     });
@@ -60,7 +60,7 @@ export default function textInputMaxLengthTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputMaxLength003', 0, async (done: Function) => {
+    it('testTextInputMaxLength003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputMaxLength003()).assertEqual(0)
       done();
     });

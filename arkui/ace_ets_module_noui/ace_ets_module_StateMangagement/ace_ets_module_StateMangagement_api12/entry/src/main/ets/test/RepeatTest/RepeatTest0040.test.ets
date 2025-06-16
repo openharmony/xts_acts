@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, UIElementInfo} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -53,7 +53,7 @@ export default function RepeatTest0040() {
      * @tc.type
      * @tc.size
      */
-    it('RepeatTest0040_001', 0, async (done: Function) => {
+    it('RepeatTest0040_001', Level.LEVEL0, async (done: Function) => {
       console.info('[RepeatTest0040_001] START');
       await CommonFunc.sleep(2000);
       let driver: Driver = Driver.create();
@@ -83,7 +83,7 @@ export default function RepeatTest0040() {
      * @tc.type
      * @tc.size
      */
-    it('RepeatTest0040_002', 0, async (done: Function) => {
+    it('RepeatTest0040_002', Level.LEVEL0, async (done: Function) => {
       console.info('[RepeatTest0040_002] START');
       await CommonFunc.sleep(2000);
       let treeStr: string = JSON.stringify(getInspectorTree())
@@ -110,7 +110,7 @@ export default function RepeatTest0040() {
      * @tc.type
      * @tc.size
      */
-    it('RepeatTest0040_003', 0, async (done: Function) => {
+    it('RepeatTest0040_003', Level.LEVEL0, async (done: Function) => {
       console.info('[RepeatTest0040_003] START');
       await CommonFunc.sleep(2000);
       let driver: Driver = Driver.create();
@@ -137,7 +137,7 @@ export default function RepeatTest0040() {
      * @tc.type
      * @tc.size
      */
-    it('RepeatTest0040_004', 0, async (done: Function) => {
+    it('RepeatTest0040_004', Level.LEVEL0, async (done: Function) => {
       console.info('[RepeatTest0040_004] START');
       await CommonFunc.sleep(2000);
       let driver: Driver = Driver.create();
@@ -164,7 +164,7 @@ export default function RepeatTest0040() {
      * @tc.type
      * @tc.size
      */
-    it('RepeatTest0040_005', 0, async (done: Function) => {
+    it('RepeatTest0040_005', Level.LEVEL0, async (done: Function) => {
       console.info('[RepeatTest0040_005] START');
       await CommonFunc.sleep(2000);
       let driver: Driver = Driver.create();

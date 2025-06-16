@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function nodeContentTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNodeContent001', 0, async (done: Function) => {
+    it('testNodeContent001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testNodeContent001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function nodeContentTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNodeContent002', 0, async (done: Function) => {
+    it('testNodeContent002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testNodeContent002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function nodeContentTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNodeContent003', 0, async (done: Function) => {
+    it('testNodeContent003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testNodeContent003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function nodeContentTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNodeContent004', 0, async (done: Function) => {
+    it('testNodeContent004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testNodeContent004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function nodeContentTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNodeContent005', 0, async (done: Function) => {
+    it('testNodeContent005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testNodeContent005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function nodeContentTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNodeContent006', 0, async (done: Function) => {
+    it('testNodeContent006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testNodeContent006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function nodeContentTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNodeContent007', 0, async (done: Function) => {
+    it('testNodeContent007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testNodeContent007()).assertEqual(0)
       done()
     })

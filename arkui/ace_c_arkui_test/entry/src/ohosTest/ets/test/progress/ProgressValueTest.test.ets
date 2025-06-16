@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function progressValueTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testProgressValue001', 0, async (done: Function) => {
+    it('testProgressValue001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testProgressValue001()).assertEqual(0)
       done();
     });
@@ -47,7 +47,7 @@ export default function progressValueTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testProgressValue002', 0, async (done: Function) => {
+    it('testProgressValue002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testProgressValue002()).assertEqual(0)
       done();
     });
@@ -60,7 +60,7 @@ export default function progressValueTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testProgressValue003', 0, async (done: Function) => {
+    it('testProgressValue003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testProgressValue003()).assertEqual(0)
       done();
     });
@@ -73,7 +73,7 @@ export default function progressValueTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testProgressValue004', 0, async (done: Function) => {
+    it('testProgressValue004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testProgressValue004()).assertEqual(0)
       done();
     });
@@ -86,7 +86,7 @@ export default function progressValueTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testProgressValue005', 0, async (done: Function) => {
+    it('testProgressValue005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testProgressValue005()).assertEqual(0)
       done();
     });
@@ -99,7 +99,7 @@ export default function progressValueTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testProgressValue006', 0, async (done: Function) => {
+    it('testProgressValue006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testProgressValue006()).assertEqual(0)
       done();
     });
@@ -112,7 +112,7 @@ export default function progressValueTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testProgressValue007', 0, async (done: Function) => {
+    it('testProgressValue007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testProgressValue007()).assertEqual(0)
       done();
     });

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function stackBorderStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackBorderStyle001', 0, async (done: Function) => {
+    it('testStackBorderStyle001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackBorderStyle001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function stackBorderStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackBorderStyle002', 0, async (done: Function) => {
+    it('testStackBorderStyle002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackBorderStyle002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function stackBorderStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackBorderStyle003', 0, async (done: Function) => {
+    it('testStackBorderStyle003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackBorderStyle003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function stackBorderStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testStackBorderStyle004', 0, async (done: Function) => {
+    it('testStackBorderStyle004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackBorderStyle004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function stackBorderStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackBorderStyle005', 0, async (done: Function) => {
+    it('testStackBorderStyle005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackBorderStyle005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function stackBorderStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testStackBorderStyle006', 0, async (done: Function) => {
+    it('testStackBorderStyle006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackBorderStyle006()).assertEqual(0)
       done()
     })

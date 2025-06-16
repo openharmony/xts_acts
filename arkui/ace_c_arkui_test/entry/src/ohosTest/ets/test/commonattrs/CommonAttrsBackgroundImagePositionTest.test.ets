@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function commonAttrsBackgroundImagePositionTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundImagePosition001', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundImagePosition001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundImagePosition001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function commonAttrsBackgroundImagePositionTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundImagePosition002', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundImagePosition002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundImagePosition002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function commonAttrsBackgroundImagePositionTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundImagePosition003', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundImagePosition003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundImagePosition003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function commonAttrsBackgroundImagePositionTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundImagePosition004', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundImagePosition004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundImagePosition004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function commonAttrsBackgroundImagePositionTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundImagePosition005', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundImagePosition005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundImagePosition005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function commonAttrsBackgroundImagePositionTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundImagePosition006', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundImagePosition006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundImagePosition006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function commonAttrsBackgroundImagePositionTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundImagePosition007', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundImagePosition007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundImagePosition007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function commonAttrsBackgroundImagePositionTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundImagePosition008', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundImagePosition008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundImagePosition008()).assertEqual(0)
       done()
     })

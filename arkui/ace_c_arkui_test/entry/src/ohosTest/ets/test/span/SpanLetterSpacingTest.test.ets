@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function spanLetterSpacingTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSpanLetterSpacing001', 0, async (done: Function) => {
+    it('testSpanLetterSpacing001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSpanLetterSpacing001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function spanLetterSpacingTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSpanLetterSpacing002', 0, async (done: Function) => {
+    it('testSpanLetterSpacing002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSpanLetterSpacing002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function spanLetterSpacingTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSpanLetterSpacing003', 0, async (done: Function) => {
+    it('testSpanLetterSpacing003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSpanLetterSpacing003()).assertEqual(0)
       done()
     })

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import { Driver, ON, PointerMatrix, Rect } from '@ohos.UiTest';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
@@ -26,7 +26,7 @@ export default function swiperNestedScrollEventTest() {
       done()
     });
 
-    it('testSwiperNestedScroll001', 0, async (done: Function) => {
+    it('testSwiperNestedScroll001', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'SwiperNestedScrollTest';
       await Utils.pushPage(`swiper/${PAGE_TAG}`);
       let driver = Driver.create();
@@ -38,7 +38,7 @@ export default function swiperNestedScrollEventTest() {
       done();
     });
 
-    it('testSwiperNestedScroll002', 0, async (done: Function) => {
+    it('testSwiperNestedScroll002', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'SwiperNestedScrollChildTest';
       await Utils.pushPage(`swiper/${PAGE_TAG}`);
       let driver = Driver.create();

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textInputMaxFontSizeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputMaxFontSize001', 0, async (done: Function) => {
+    it('testTextInputMaxFontSize001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputMaxFontSize001()).assertEqual(0)
       done();
     });
@@ -46,7 +46,7 @@ export default function textInputMaxFontSizeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputMaxFontSize002', 0, async (done: Function) => {
+    it('testTextInputMaxFontSize002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputMaxFontSize002()).assertEqual(0)
       done();
     });
@@ -58,7 +58,7 @@ export default function textInputMaxFontSizeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputMaxFontSize003', 0, async (done: Function) => {
+    it('testTextInputMaxFontSize003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputMaxFontSize003()).assertEqual(0)
       done();
     });

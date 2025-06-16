@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -29,7 +29,7 @@ export default function listInitialIndexTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListInitialIndex001', 0, async (done: Function) => {
+    it('testListInitialIndex001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListInitialIndex001()).assertEqual(0)
       done()
     })
@@ -41,7 +41,7 @@ export default function listInitialIndexTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListInitialIndex002', 0, async (done: Function) => {
+    it('testListInitialIndex002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListInitialIndex002()).assertEqual(0)
       done()
     })
@@ -53,7 +53,7 @@ export default function listInitialIndexTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListInitialIndex003', 0, async (done: Function) => {
+    it('testListInitialIndex003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListInitialIndex003()).assertEqual(0)
       done()
     })
@@ -65,7 +65,7 @@ export default function listInitialIndexTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListInitialIndex004', 0, async (done: Function) => {
+    it('testListInitialIndex004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListInitialIndex004()).assertEqual(0)
       done()
     })
@@ -77,7 +77,7 @@ export default function listInitialIndexTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListInitialIndex005', 0, async (done: Function) => {
+    it('testListInitialIndex005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListInitialIndex005()).assertEqual(0)
       done()
     })

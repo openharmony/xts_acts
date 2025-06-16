@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function stackClipTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackClip001', 0, async (done: Function) => {
+    it('testStackClip001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackClip001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function stackClipTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testStackClip002', 0, async (done: Function) => {
+    it('testStackClip002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackClip002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function stackClipTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackClip003', 0, async (done: Function) => {
+    it('testStackClip003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackClip003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function stackClipTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackClip004', 0, async (done: Function) => {
+    it('testStackClip004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackClip004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function stackClipTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testStackClip005', 0, async (done: Function) => {
+    it('testStackClip005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackClip005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function stackClipTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackClip006', 0, async (done: Function) => {
+    it('testStackClip006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackClip006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function stackClipTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackClip007', 0, async (done: Function) => {
+    it('testStackClip007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackClip007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function stackClipTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testStackClip008', 0, async (done: Function) => {
+    it('testStackClip008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackClip008()).assertEqual(0)
       done()
     })
@@ -138,7 +138,7 @@ export default function stackClipTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackClip009', 0, async (done: Function) => {
+    it('testStackClip009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackClip009()).assertEqual(0)
       done()
     })
@@ -151,7 +151,7 @@ export default function stackClipTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackClip010', 0, async (done: Function) => {
+    it('testStackClip010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackClip010()).assertEqual(0)
       done()
     })
@@ -164,7 +164,7 @@ export default function stackClipTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testStackClip011', 0, async (done: Function) => {
+    it('testStackClip011', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackClip011()).assertEqual(0)
       done()
     })
@@ -177,7 +177,7 @@ export default function stackClipTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackClip012', 0, async (done: Function) => {
+    it('testStackClip012', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackClip012()).assertEqual(0)
       done()
     })
@@ -190,7 +190,7 @@ export default function stackClipTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackClip013', 0, async (done: Function) => {
+    it('testStackClip013', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackClip013()).assertEqual(0)
       done()
     })
@@ -203,7 +203,7 @@ export default function stackClipTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackClip014', 0, async (done: Function) => {
+    it('testStackClip014', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackClip014()).assertEqual(0)
       done()
     })
@@ -216,7 +216,7 @@ export default function stackClipTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testStackClip015', 0, async (done: Function) => {
+    it('testStackClip015', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackClip015()).assertEqual(0)
       done()
     })

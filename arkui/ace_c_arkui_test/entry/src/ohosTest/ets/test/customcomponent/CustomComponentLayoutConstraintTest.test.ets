@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function customComponentLayoutConstraintTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testLayoutConstraintCreate001', 0, async (done: Function) => {
+    it('testLayoutConstraintCreate001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testLayoutConstraintCreate001()).assertEqual(0);
       done();
     });
@@ -46,7 +46,7 @@ export default function customComponentLayoutConstraintTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testLayoutConstraintCopy001', 0, async (done: Function) => {
+    it('testLayoutConstraintCopy001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testLayoutConstraintCopy001()).assertEqual(0);
       done();
     });
@@ -58,7 +58,7 @@ export default function customComponentLayoutConstraintTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testLayoutConstraintMinWidth001', 0, async (done: Function) => {
+    it('testLayoutConstraintMinWidth001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testLayoutConstraintMinWidth001()).assertEqual(0);
       done();
     });
@@ -70,7 +70,7 @@ export default function customComponentLayoutConstraintTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testLayoutConstraintMinWidth002', 0, async (done: Function) => {
+    it('testLayoutConstraintMinWidth002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testLayoutConstraintMinWidth002()).assertEqual(0);
       done();
     });
@@ -82,7 +82,7 @@ export default function customComponentLayoutConstraintTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testLayoutConstraintMaxWidth001', 0, async (done: Function) => {
+    it('testLayoutConstraintMaxWidth001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testLayoutConstraintMaxWidth001()).assertEqual(0);
       done();
     });
@@ -94,7 +94,7 @@ export default function customComponentLayoutConstraintTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testLayoutConstraintMaxWidth002', 0, async (done: Function) => {
+    it('testLayoutConstraintMaxWidth002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testLayoutConstraintMaxWidth002()).assertEqual(0);
       done();
     });
@@ -106,7 +106,7 @@ export default function customComponentLayoutConstraintTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testLayoutConstraintMinHeight001', 0, async (done: Function) => {
+    it('testLayoutConstraintMinHeight001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testLayoutConstraintMinHeight001()).assertEqual(0);
       done();
     });
@@ -118,7 +118,7 @@ export default function customComponentLayoutConstraintTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testLayoutConstraintMinHeight002', 0, async (done: Function) => {
+    it('testLayoutConstraintMinHeight002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testLayoutConstraintMinHeight002()).assertEqual(0);
       done();
     });
@@ -130,7 +130,7 @@ export default function customComponentLayoutConstraintTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testLayoutConstraintMaxHeight001', 0, async (done: Function) => {
+    it('testLayoutConstraintMaxHeight001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testLayoutConstraintMaxHeight001()).assertEqual(0);
       done();
     });
@@ -142,7 +142,7 @@ export default function customComponentLayoutConstraintTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testLayoutConstraintMaxHeight002', 0, async (done: Function) => {
+    it('testLayoutConstraintMaxHeight002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testLayoutConstraintMaxHeight002()).assertEqual(0);
       done();
     });
@@ -154,7 +154,7 @@ export default function customComponentLayoutConstraintTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testLayoutConstraintPercentReferenceWidth001', 0, async (done: Function) => {
+    it('testLayoutConstraintPercentReferenceWidth001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testLayoutConstraintPercentReferenceWidth001()).assertEqual(0);
       done();
     });
@@ -166,7 +166,7 @@ export default function customComponentLayoutConstraintTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testLayoutConstraintPercentReferenceWidth002', 0, async (done: Function) => {
+    it('testLayoutConstraintPercentReferenceWidth002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testLayoutConstraintPercentReferenceWidth002()).assertEqual(0);
       done();
     });
@@ -178,7 +178,7 @@ export default function customComponentLayoutConstraintTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testLayoutConstraintPercentReferenceHeight001', 0, async (done: Function) => {
+    it('testLayoutConstraintPercentReferenceHeight001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testLayoutConstraintPercentReferenceHeight001()).assertEqual(0);
       done();
     });
@@ -190,7 +190,7 @@ export default function customComponentLayoutConstraintTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testLayoutConstraintPercentReferenceHeight002', 0, async (done: Function) => {
+    it('testLayoutConstraintPercentReferenceHeight002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testLayoutConstraintPercentReferenceHeight002()).assertEqual(0);
       done();
     });
@@ -202,7 +202,7 @@ export default function customComponentLayoutConstraintTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testLayoutConstraintMeasuredSize001', 0, async (done: Function) => {
+    it('testLayoutConstraintMeasuredSize001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testLayoutConstraintMeasuredSize001()).assertEqual(0);
       done();
     });
@@ -214,7 +214,7 @@ export default function customComponentLayoutConstraintTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testLayoutConstraintMeasuredSize002', 0, async (done: Function) => {
+    it('testLayoutConstraintMeasuredSize002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testLayoutConstraintMeasuredSize002()).assertEqual(0);
       done();
     });
@@ -226,7 +226,7 @@ export default function customComponentLayoutConstraintTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testLayoutConstraintLayoutPosition001', 0, async (done: Function) => {
+    it('testLayoutConstraintLayoutPosition001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testLayoutConstraintLayoutPosition001()).assertEqual(0);
       done();
     });
@@ -238,7 +238,7 @@ export default function customComponentLayoutConstraintTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testLayoutConstraintLayoutPosition002', 0, async (done: Function) => {
+    it('testLayoutConstraintLayoutPosition002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testLayoutConstraintLayoutPosition002()).assertEqual(0);
       done();
     });
@@ -250,7 +250,7 @@ export default function customComponentLayoutConstraintTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testLayoutConstraintMeasureNode001', 0, async (done: Function) => {
+    it('testLayoutConstraintMeasureNode001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testLayoutConstraintMeasureNode001()).assertEqual(0);
       done();
     });
@@ -262,7 +262,7 @@ export default function customComponentLayoutConstraintTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testLayoutConstraintMeasureNode002', 0, async (done: Function) => {
+    it('testLayoutConstraintMeasureNode002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testLayoutConstraintMeasureNode002()).assertEqual(0);
       done();
     });
@@ -274,7 +274,7 @@ export default function customComponentLayoutConstraintTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testLayoutConstraintLayoutNode001', 0, async (done: Function) => {
+    it('testLayoutConstraintLayoutNode001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testLayoutConstraintLayoutNode001()).assertEqual(0);
       done();
     });
@@ -286,7 +286,7 @@ export default function customComponentLayoutConstraintTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testLayoutConstraintLayoutNode002', 0, async (done: Function) => {
+    it('testLayoutConstraintLayoutNode002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testLayoutConstraintLayoutNode002()).assertEqual(0);
       done();
     });

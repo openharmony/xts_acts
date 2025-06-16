@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function commonAttrsCustomShadowTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsCustomShadow001', 0, async (done: Function) => {
+    it('testCommonAttrsCustomShadow001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsCustomShadow001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function commonAttrsCustomShadowTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsCustomShadow002', 0, async (done: Function) => {
+    it('testCommonAttrsCustomShadow002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsCustomShadow002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function commonAttrsCustomShadowTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsCustomShadow003', 0, async (done: Function) => {
+    it('testCommonAttrsCustomShadow003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsCustomShadow003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function commonAttrsCustomShadowTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsCustomShadow004', 0, async (done: Function) => {
+    it('testCommonAttrsCustomShadow004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsCustomShadow004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function commonAttrsCustomShadowTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsCustomShadow005', 0, async (done: Function) => {
+    it('testCommonAttrsCustomShadow005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsCustomShadow005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function commonAttrsCustomShadowTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsCustomShadow006', 0, async (done: Function) => {
+    it('testCommonAttrsCustomShadow006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsCustomShadow006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function commonAttrsCustomShadowTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsCustomShadow007', 0, async (done: Function) => {
+    it('testCommonAttrsCustomShadow007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsCustomShadow007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function commonAttrsCustomShadowTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsCustomShadow008', 0, async (done: Function) => {
+    it('testCommonAttrsCustomShadow008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsCustomShadow008()).assertEqual(0)
       done()
     })
@@ -138,7 +138,7 @@ export default function commonAttrsCustomShadowTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsCustomShadow009', 0, async (done: Function) => {
+    it('testCommonAttrsCustomShadow009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsCustomShadow009()).assertEqual(0)
       done()
     })

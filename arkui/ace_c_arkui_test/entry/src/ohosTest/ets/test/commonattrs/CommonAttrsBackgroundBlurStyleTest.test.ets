@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function commonAttrsBackgroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundBlurStyle001', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundBlurStyle001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundBlurStyle001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function commonAttrsBackgroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundBlurStyle002', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundBlurStyle002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundBlurStyle002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function commonAttrsBackgroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundBlurStyle003', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundBlurStyle003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundBlurStyle003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function commonAttrsBackgroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundBlurStyle004', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundBlurStyle004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundBlurStyle004()).assertEqual(0)
       done()
     }) 
@@ -86,7 +86,7 @@ export default function commonAttrsBackgroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundBlurStyle005', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundBlurStyle005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundBlurStyle005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function commonAttrsBackgroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundBlurStyle006', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundBlurStyle006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundBlurStyle006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function commonAttrsBackgroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundBlurStyle007', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundBlurStyle007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundBlurStyle007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function commonAttrsBackgroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundBlurStyle008', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundBlurStyle008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundBlurStyle008()).assertEqual(0)
       done()
     })
@@ -138,7 +138,7 @@ export default function commonAttrsBackgroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundBlurStyle009', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundBlurStyle009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundBlurStyle009()).assertEqual(0)
       done()
     })
@@ -151,7 +151,7 @@ export default function commonAttrsBackgroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundBlurStyle010', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundBlurStyle010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundBlurStyle010()).assertEqual(0)
       done()
     })
@@ -164,7 +164,7 @@ export default function commonAttrsBackgroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundBlurStyle011', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundBlurStyle011', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundBlurStyle011()).assertEqual(0)
       done()
     })
@@ -177,7 +177,7 @@ export default function commonAttrsBackgroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundBlurStyle012', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundBlurStyle012', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundBlurStyle012()).assertEqual(0)
       done()
     })
@@ -190,7 +190,7 @@ export default function commonAttrsBackgroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundBlurStyle013', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundBlurStyle013', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundBlurStyle013()).assertEqual(0)
       done()
     })
@@ -204,7 +204,7 @@ export default function commonAttrsBackgroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundBlurStyle014', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundBlurStyle014', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundBlurStyle014()).assertEqual(0)
       done()
     })
@@ -218,7 +218,7 @@ export default function commonAttrsBackgroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundBlurStyle015', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundBlurStyle015', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundBlurStyle015()).assertEqual(0)
       done()
     })
@@ -232,7 +232,7 @@ export default function commonAttrsBackgroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundBlurStyle016', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundBlurStyle016', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundBlurStyle016()).assertEqual(0)
       done()
     })
@@ -246,7 +246,7 @@ export default function commonAttrsBackgroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundBlurStyle017', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundBlurStyle017', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundBlurStyle017()).assertEqual(0)
       done()
     })
@@ -260,7 +260,7 @@ export default function commonAttrsBackgroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundBlurStyle018', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundBlurStyle018', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundBlurStyle018()).assertEqual(0)
       done()
     })
@@ -274,7 +274,7 @@ export default function commonAttrsBackgroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundBlurStyle019', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundBlurStyle019', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundBlurStyle019()).assertEqual(0)
       done()
     })
@@ -288,7 +288,7 @@ export default function commonAttrsBackgroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundBlurStyle020', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundBlurStyle020', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundBlurStyle020()).assertEqual(0)
       done()
     })
@@ -302,7 +302,7 @@ export default function commonAttrsBackgroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundBlurStyle021', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundBlurStyle021', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundBlurStyle021()).assertEqual(0)
       done()
     })
@@ -316,7 +316,7 @@ export default function commonAttrsBackgroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundBlurStyle022', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundBlurStyle022', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundBlurStyle022()).assertEqual(0)
       done()
     })
@@ -330,7 +330,7 @@ export default function commonAttrsBackgroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundBlurStyle023', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundBlurStyle023', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundBlurStyle023()).assertEqual(0)
       done()
     })
@@ -344,7 +344,7 @@ export default function commonAttrsBackgroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundBlurStyle024', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundBlurStyle024', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundBlurStyle024()).assertEqual(0)
       done()
     })
@@ -358,7 +358,7 @@ export default function commonAttrsBackgroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundBlurStyle025', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundBlurStyle025', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundBlurStyle025()).assertEqual(0)
       done()
     })
@@ -372,7 +372,7 @@ export default function commonAttrsBackgroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundBlurStyle026', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundBlurStyle026', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundBlurStyle026()).assertEqual(0)
       done()
     })
@@ -386,7 +386,7 @@ export default function commonAttrsBackgroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundBlurStyle027', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundBlurStyle027', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundBlurStyle027()).assertEqual(0)
       done()
     })
@@ -400,7 +400,7 @@ export default function commonAttrsBackgroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundBlurStyle028', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundBlurStyle028', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundBlurStyle028()).assertEqual(0)
       done()
     })
@@ -414,7 +414,7 @@ export default function commonAttrsBackgroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundBlurStyle029', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundBlurStyle029', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundBlurStyle029()).assertEqual(0)
       done()
     })
@@ -428,7 +428,7 @@ export default function commonAttrsBackgroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundBlurStyle030', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundBlurStyle030', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundBlurStyle030()).assertEqual(0)
       done()
     })
@@ -442,7 +442,7 @@ export default function commonAttrsBackgroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundBlurStyle031', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundBlurStyle031', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundBlurStyle031()).assertEqual(0)
       done()
     })
@@ -456,7 +456,7 @@ export default function commonAttrsBackgroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundBlurStyle032', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundBlurStyle032', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundBlurStyle032()).assertEqual(0)
       done()
     })
@@ -469,7 +469,7 @@ export default function commonAttrsBackgroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBackgroundBlurStyle033', 0, async (done: Function) => {
+    it('testCommonAttrsBackgroundBlurStyle033', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBackgroundBlurStyle033()).assertEqual(0)
       done()
     })

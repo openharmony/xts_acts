@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textInputStopEditingTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputStopEditing001', 0, async (done: Function) => {
+    it('testTextInputStopEditing001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputStopEditing001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function textInputStopEditingTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputStopEditing002', 0, async (done: Function) => {
+    it('testTextInputStopEditing002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputStopEditing002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function textInputStopEditingTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputStopEditing003', 0, async (done: Function) => {
+    it('testTextInputStopEditing003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputStopEditing003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function textInputStopEditingTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testTextInputStopEditing004', 0, async (done: Function) => {
+    it('testTextInputStopEditing004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputStopEditing004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function textInputStopEditingTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testTextInputStopEditing005', 0, async (done: Function) => {
+    it('testTextInputStopEditing005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputStopEditing005()).assertEqual(0)
       done()
     })

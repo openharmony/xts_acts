@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function customComponentInvertTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentInvert001', 0, async (done: Function) => {
+    it('testCustomComponentInvert001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentInvert001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function customComponentInvertTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentInvert002', 0, async (done: Function) => {
+    it('testCustomComponentInvert002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentInvert002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function customComponentInvertTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentInvert003', 0, async (done: Function) => {
+    it('testCustomComponentInvert003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentInvert003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function customComponentInvertTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentInvert004', 0, async (done: Function) => {
+    it('testCustomComponentInvert004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentInvert004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function customComponentInvertTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testCustomComponentInvert005', 0, async (done: Function) => {
+    it('testCustomComponentInvert005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentInvert005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function customComponentInvertTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testCustomComponentInvert006', 0, async (done: Function) => {
+    it('testCustomComponentInvert006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentInvert006()).assertEqual(0)
       done()
     })

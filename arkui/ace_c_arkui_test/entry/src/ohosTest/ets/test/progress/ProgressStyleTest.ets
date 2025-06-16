@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function progressStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testProgressStyle001', 0, async (done: Function) => {
+    it('testProgressStyle001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testProgressStyle001()).assertEqual(0)
       done();
     });
@@ -47,7 +47,7 @@ export default function progressStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testProgressStyle002', 0, async (done: Function) => {
+    it('testProgressStyle002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testProgressStyle002()).assertEqual(0)
       done();
     });
@@ -60,7 +60,7 @@ export default function progressStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testProgressStyle003', 0, async (done: Function) => {
+    it('testProgressStyle003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testProgressStyle003()).assertEqual(0)
       done();
     });
@@ -73,7 +73,7 @@ export default function progressStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testProgressStyle004', 0, async (done: Function) => {
+    it('testProgressStyle004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testProgressStyle004()).assertEqual(0)
       done();
     });
@@ -86,7 +86,7 @@ export default function progressStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testProgressStyle005', 0, async (done: Function) => {
+    it('testProgressStyle005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testProgressStyle005()).assertEqual(0)
       done();
     });
@@ -99,7 +99,7 @@ export default function progressStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testProgressStyle006', 0, async (done: Function) => {
+    it('testProgressStyle006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testProgressStyle006()).assertEqual(0)
       done();
     });

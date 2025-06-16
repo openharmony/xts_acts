@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function unitHeightPercentTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUnitHeightPercent001', 0, async (done: Function) => {
+    it('testUnitHeightPercent001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testUnitHeightPercent001()).assertEqual(0)
       done();
     });
@@ -46,7 +46,7 @@ export default function unitHeightPercentTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUnitHeightPercent002', 0, async (done: Function) => {
+    it('testUnitHeightPercent002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testUnitHeightPercent002()).assertEqual(0)
       done();
     });
@@ -58,7 +58,7 @@ export default function unitHeightPercentTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUnitHeightPercent003', 0, async (done: Function) => {
+    it('testUnitHeightPercent003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testUnitHeightPercent003()).assertEqual(0)
       done();
     });
@@ -70,7 +70,7 @@ export default function unitHeightPercentTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUnitHeightPercent004', 0, async (done: Function) => {
+    it('testUnitHeightPercent004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testUnitHeightPercent004()).assertEqual(0)
       done();
     }); 
@@ -82,7 +82,7 @@ export default function unitHeightPercentTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testUnitHeightPercent005', 0, async (done: Function) => {
+    it('testUnitHeightPercent005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testUnitHeightPercent005()).assertEqual(0)
       done();
     });     

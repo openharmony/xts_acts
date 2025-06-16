@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import { Driver, ON } from '@kit.TestKit';
 import { Point } from '@ohos.UiTest';
@@ -48,7 +48,7 @@ export default function requirementPanGestureTest() {
      * @tc.type       : Render
      * @tc.level      : Level1
      */
-    it('testRequirementPanGesture001', 0, async (done: Function) => {
+    it('testRequirementPanGesture001', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`requirement/${PAGE_TAG}`);
       await panGesture("swiper1", 20, 20, 10, 10)
       expect(Utils.getComponentInfoByKey('swiper1').$attrs.backgroundColor).assertEqual('#FF000000')
@@ -62,7 +62,7 @@ export default function requirementPanGestureTest() {
      * @tc.type       : Render
      * @tc.level      : Level1
      */
-    it('testRequirementPanGesture002', 0, async (done: Function) => {
+    it('testRequirementPanGesture002', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`requirement/${PAGE_TAG}`);
       await panGesture("swiper2", 20, 20, 20, 10)
       expect(Utils.getComponentInfoByKey('swiper2').$attrs.backgroundColor).assertEqual('#FF000000')
@@ -76,7 +76,7 @@ export default function requirementPanGestureTest() {
      * @tc.type       : Render
      * @tc.level      : Level1
      */
-    it('testRequirementPanGesture003', 0, async (done: Function) => {
+    it('testRequirementPanGesture003', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`requirement/${PAGE_TAG}`);
       await panGesture("swiper3", 20, 20, 30, 10)
       expect(Utils.getComponentInfoByKey('swiper3').$attrs.backgroundColor).assertEqual('#FF000000')
@@ -90,7 +90,7 @@ export default function requirementPanGestureTest() {
      * @tc.type       : Render
      * @tc.level      : Level1
      */
-    it('testRequirementPanGesture004', 0, async (done: Function) => {
+    it('testRequirementPanGesture004', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`requirement/${PAGE_TAG}`);
       await panGesture("swiper4", 20, 20, 30, 20)
       expect(Utils.getComponentInfoByKey('swiper4').$attrs.backgroundColor).assertEqual('#FF000000')
@@ -104,7 +104,7 @@ export default function requirementPanGestureTest() {
      * @tc.type       : Render
      * @tc.level      : Level1
      */
-    it('testRequirementPanGesture005', 0, async (done: Function) => {
+    it('testRequirementPanGesture005', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`requirement/${PAGE_TAG}`);
       await Utils.flingComponent("swiper5", true, true)
       expect(Utils.getComponentInfoByKey('swiper5').$attrs.backgroundColor).assertEqual('#00000000')
@@ -118,7 +118,7 @@ export default function requirementPanGestureTest() {
      * @tc.type       : Render
      * @tc.level      : Level1
      */
-    it('testRequirementPanGesture006', 0, async (done: Function) => {
+    it('testRequirementPanGesture006', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`requirement/${PAGE_TAG}`);
       await panGesture("swiper6", 20, 20, 30, 30)
       expect(Utils.getComponentInfoByKey('swiper6').$attrs.backgroundColor).assertEqual('#FF000000')
@@ -132,7 +132,7 @@ export default function requirementPanGestureTest() {
      * @tc.type       : Render
      * @tc.level      : Level1
      */
-    it('testRequirementPanGesture007', 0, async (done: Function) => {
+    it('testRequirementPanGesture007', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`requirement/${PAGE_TAG}`);
       await panGesture("swiper7", 20, 20, 20, 30)
       expect(Utils.getComponentInfoByKey('swiper7').$attrs.backgroundColor).assertEqual('#FF000000')
@@ -146,7 +146,7 @@ export default function requirementPanGestureTest() {
      * @tc.type       : Render
      * @tc.level      : Level1
      */
-    it('testRequirementPanGesture008', 0, async (done: Function) => {
+    it('testRequirementPanGesture008', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`requirement/${PAGE_TAG}`);
       await panGesture("swiper8", 20, 20, 10, 30)
       expect(Utils.getComponentInfoByKey('swiper8').$attrs.backgroundColor).assertEqual('#FF000000')
@@ -160,7 +160,7 @@ export default function requirementPanGestureTest() {
      * @tc.type       : Render
      * @tc.level      : Level1
      */
-    it('testRequirementPanGesture009', 0, async (done: Function) => {
+    it('testRequirementPanGesture009', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`requirement/${PAGE_TAG}`);
       await panGesture("swiper9", 20, 20, 10, 20)
       expect(Utils.getComponentInfoByKey('swiper9').$attrs.backgroundColor).assertEqual('#FF000000')
@@ -174,7 +174,7 @@ export default function requirementPanGestureTest() {
      * @tc.type       : Render
      * @tc.level      : Level1
      */
-    it('testRequirementPanGesture010', 0, async (done: Function) => {
+    it('testRequirementPanGesture010', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`requirement/${PAGE_TAG}`);
       await Utils.flingComponent("swiper10", true, false)
       expect(Utils.getComponentInfoByKey('swiper10').$attrs.backgroundColor).assertEqual('#00000000')

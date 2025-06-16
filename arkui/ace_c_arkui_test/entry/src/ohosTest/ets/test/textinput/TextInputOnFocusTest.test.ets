@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 
 export default function textInputOnFocusTest() {
@@ -35,7 +35,7 @@ export default function textInputOnFocusTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testTextInputOnFocus001', 0, async (done: Function) => {
+    it('testTextInputOnFocus001', Level.LEVEL1, async (done: Function) => {
       focusControl.requestFocus('OnFocusTestTextInputCompare')
       await Utils.sleep(2000)
       focusControl.requestFocus('OnFocusTestTextInput')
@@ -52,7 +52,7 @@ export default function textInputOnFocusTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testTextInputOnFocus002', 0, async (done: Function) => {
+    it('testTextInputOnFocus002', Level.LEVEL1, async (done: Function) => {
       focusControl.requestFocus('OnFocusTestTextInput')
       await Utils.sleep(2000)
       focusControl.requestFocus('OnFocusTestTextInputDisable')

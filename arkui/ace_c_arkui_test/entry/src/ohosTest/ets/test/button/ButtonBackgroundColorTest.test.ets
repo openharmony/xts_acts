@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function buttonBackgroundColorTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testButtonBackgroundColor001', 0, async (done: Function) => {
+    it('testButtonBackgroundColor001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testButtonBackgroundColor001()).assertEqual(0)
       done();
     })
@@ -47,7 +47,7 @@ export default function buttonBackgroundColorTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testButtonBackgroundColor002', 0, async (done: Function) => {
+    it('testButtonBackgroundColor002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testButtonBackgroundColor002()).assertEqual(0)
       done();
     })
@@ -60,7 +60,7 @@ export default function buttonBackgroundColorTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testButtonBackgroundColor003', 0, async (done: Function) => {
+    it('testButtonBackgroundColor003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testButtonBackgroundColor003()).assertEqual(0)
       done();
     })

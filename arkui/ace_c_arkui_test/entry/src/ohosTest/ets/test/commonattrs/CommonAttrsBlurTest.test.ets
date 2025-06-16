@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function commonAttrsBlurTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBlur001', 0, async (done: Function) => {
+    it('testCommonAttrsBlur001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBlur001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function commonAttrsBlurTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBlur002', 0, async (done: Function) => {
+    it('testCommonAttrsBlur002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBlur002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function commonAttrsBlurTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBlur003', 0, async (done: Function) => {
+    it('testCommonAttrsBlur003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBlur003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function commonAttrsBlurTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBlur004', 0, async (done: Function) => {
+    it('testCommonAttrsBlur004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBlur004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function commonAttrsBlurTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBlur005', 0, async (done: Function) => {
+    it('testCommonAttrsBlur005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBlur005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function commonAttrsBlurTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBlur006', 0, async (done: Function) => {
+    it('testCommonAttrsBlur006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBlur006()).assertEqual(0)
       done()
     })
