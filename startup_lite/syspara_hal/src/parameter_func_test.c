@@ -314,7 +314,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite,
                Function | MediumTest | Level1) {
     int ret;
 
-    char key[] = "key_for_blank_value";
+    char key[] = "202006060602";
     char value[] = "                         ";
     ret = SetParameter(key, value);
     TEST_ASSERT_EQUAL_INT(0, ret);
@@ -675,7 +675,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite,
                Function | MediumTest | Level1) {
     int ret;
 
-    char key[] = "key_for_blank_value";
+    char key[] = "202006060602";
     char rightVal[] = "                         ";
     char value[MAX_LEN] = {0};
     SetParameter(key, rightVal);
