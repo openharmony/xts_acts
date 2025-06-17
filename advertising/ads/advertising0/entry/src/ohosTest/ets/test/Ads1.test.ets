@@ -122,20 +122,5 @@ export default function adsTestPart2() {
       }
 
     })
-
-    /**
-     * @tc.number: SUB_CLOUD_ADS_INTERACTION_LISTENER_0700
-     * @tc.name: testParseAdResponse
-     * @tc.desc: callback data is not null.
-     * @tc.size: LargeTest
-     * @tc.type: Function
-     * @tc.level: Level0
-     */
-    it("tesRegisterWebAdInterface", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done) => {
-      router.pushUrl({
-        url: 'MainAbility/pages/index/webRegister'
-      })
-      done();
-    })
   })
 }

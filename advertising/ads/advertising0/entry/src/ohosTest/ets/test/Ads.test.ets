@@ -147,48 +147,5 @@ export default function adsTestPart1() {
       let load = new advertising.AdLoader(context);
       load.loadAdWithMultiSlots(multiAdRequest, adOption, adLoaderListener);
     })
-
-    /**
-     * @tc.number: SUB_CLOUD_ADS_INTERACTION_LISTENER_0400
-     * @tc.name: testAdInteractionListener
-     * @tc.desc: callback data is not null.
-     * @tc.size: LargeTest
-     * @tc.type: Function
-     * @tc.level: Level0
-     */
-    it("testAdInteractionListener", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done) => {
-      let subscriber: commonEventManager.CommonEventSubscriber = null;
-      let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-        events: ["ACTS_AdComponent_OnListener"],
-      }
-      let adInteractionListener: advertising.AdInteractionListener = {
-        onStatusChanged: (status: string, ad: advertising.Advertisement, data: string) => {
-        }
-      };
-      commonEventManager.createSubscriber(subscribeInfo, (err, data) => {
-        if (err) {
-          hilog.error(Domain, TAG, `createSubscriber failed, code is ${err.code}`);
-        } else {
-          hilog.info(Domain, TAG, `CreateSubscriber success`);
-          subscriber = data;
-
-          if (subscriber !== null) {
-            commonEventManager.subscribe(subscriber, (err, data) => {
-              if (err) {
-                hilog.error(Domain, TAG, `subscribe failed, code is ${err.code}`);
-              } else {
-                hilog.info(Domain, TAG, `SubscribeCallBack data=${JSON.stringify(data)}`);
-                done();
-              }
-            })
-          } else {
-            hilog.info(Domain, TAG, `Need create subscriber`);
-          }
-        }
-      })
-      router.pushUrl({
-        url: 'MainAbility/pages/index/p1'
-      })
-    })
   })
 }

@@ -84,9 +84,9 @@ export default function adsTest() {
      * @tc.desc: callback data is not null.
      * @tc.size: LargeTest
      * @tc.type: Function
-     * @tc.level: Level0
+     * @tc.level: Level1
      */
-    it("testGetAdRequestBody", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+    it("testGetAdRequestBody", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL1, async (done: Function) => {
       try {
         await advertising.getAdRequestBody(multiAdRequest, adOption).then((data: string) => {
           hilog.info(Domain, TAG, `testGetAdRequestBody result = ${JSON.stringify(JSON.parse(data))}`);
@@ -119,7 +119,7 @@ export default function adsTest() {
      * @tc.desc: Load ad by callback is not null.
      * @tc.size: LargeTest
      * @tc.type: Function
-     * @tc.level: Level0
+     * @tc.level: Level2
      */
     it("testMultiLoadAdByCallback_21800001", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL2, async (done: Function) => {
       let adLoaderListener: advertising.MultiSlotsAdLoadListener = {
@@ -161,7 +161,7 @@ export default function adsTest() {
      * @tc.desc: Load ad by callback is not null.
      * @tc.size: LargeTest
      * @tc.type: Function
-     * @tc.level: Level0
+     * @tc.level: Level2
      */
     it("testLoadAdByCallback_21800001", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL2, async (done: Function) => {
       let adLoaderListener: advertising.AdLoadListener = {
@@ -193,9 +193,9 @@ export default function adsTest() {
      * @tc.desc: Load ad by callback is not null.
      * @tc.size: LargeTest
      * @tc.type: Function
-     * @tc.level: Level0
+     * @tc.level: Level2
      */
-    it("testLoadAdByCallback", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+    it("testLoadAdByCallback", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL2, async (done: Function) => {
       try {
         let adLoaderListener: advertising.AdLoadListener = {
           onAdLoadFailure: (errorCode: number, errorMsg: string) => {
@@ -227,9 +227,9 @@ export default function adsTest() {
      * @tc.desc: start show ability success.
      * @tc.size: LargeTest
      * @tc.type: Function
-     * @tc.level: Level0
+     * @tc.level: Level2
      */
-    it("testShowAd", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, (done: Function) => {
+    it("testShowAd", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL2, (done: Function) => {
       try {
         hilog.info(Domain, TAG, 'enter testShowAd');
         advertising.showAd(advertisement, adDisplayOptions, uiContext);
@@ -250,9 +250,9 @@ export default function adsTest() {
      * @tc.desc: Load multi ad by callback is not null.
      * @tc.size: LargeTest
      * @tc.type: Function
-     * @tc.level: Level0
+     * @tc.level: Level2
      */
-    it("testLoadMultiAdByCallback", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+    it("testLoadMultiAdByCallback", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL2, async (done: Function) => {
       try {
         let adLoaderListener: advertising.MultiSlotsAdLoadListener = {
           onAdLoadFailure: (errorCode: number, errorMsg: string) => {
@@ -286,9 +286,9 @@ export default function adsTest() {
      * @tc.desc: callback data is not null.
      * @tc.size: LargeTest
      * @tc.type: Function
-     * @tc.level: Level0
+     * @tc.level: Level2
      */
-    it("testAdInteractionListener", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+    it("testAdInteractionListener", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL2, async (done: Function) => {
       let subscriber: commonEventManager.CommonEventSubscriber | null = null;
       let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ["ACTS_AdComponent_OnListener"],
@@ -334,9 +334,9 @@ export default function adsTest() {
      * @tc.desc: Load ad by err code 401.
      * @tc.size: LargeTest
      * @tc.type: Function
-     * @tc.level: Level0
+     * @tc.level: Level2
      */
-    it("testLoadAd_401", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+    it("testLoadAd_401", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL2, async (done: Function) => {
       let adLoaderListener: advertising.AdLoadListener = {
         onAdLoadFailure: (errorCode: number, errorMsg: string) => {
           hilog.error(Domain, TAG, 'testLoadAd_401 Callback load ad error, error code is %{public}d, error message is %{public}s.', errorCode, errorMsg);
@@ -366,9 +366,9 @@ export default function adsTest() {
      * @tc.desc: Load multi ad by err code 401.
      * @tc.size: LargeTest
      * @tc.type: Function
-     * @tc.level: Level0
+     * @tc.level: Level2
      */
-    it("testLoadAdMulti_401", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+    it("testLoadAdMulti_401", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL2, async (done: Function) => {
       let adLoaderListener: advertising.MultiSlotsAdLoadListener = {
         onAdLoadFailure: (errorCode: number, errorMsg: string) => {
           hilog.error(Domain, TAG, 'testLoadAdMulti_401 Callback load ad error, error code is %{public}d, error message is %{public}s.', errorCode, errorMsg);
@@ -400,9 +400,9 @@ export default function adsTest() {
      * @tc.desc: testShowAd_401.
      * @tc.size: LargeTest
      * @tc.type: Function
-     * @tc.level: Level0
+     * @tc.level: Level2
      */
-    it("testShowAd_401", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, (done: Function) => {
+    it("testShowAd_401", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL2, (done: Function) => {
       try {
         hilog.info(Domain, TAG, 'enter testShowAd');
         advertising.showAd(null, adDisplayOptions, uiContext);
@@ -421,9 +421,9 @@ export default function adsTest() {
      * @tc.desc: Load ad by callback is not null.
      * @tc.size: LargeTest
      * @tc.type: Function
-     * @tc.level: Level0
+     * @tc.level: Level2
      */
-    it("testLoadAdByCallback01", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+    it("testLoadAdByCallback01", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL2, async (done: Function) => {
       let adLoaderListener: advertising.AdLoadListener = {
         onAdLoadFailure: (errorCode: number, errorMsg: string) => {
           hilog.error(Domain, TAG, 'testLoadAdByCallback01 Callback load ad error, error code is %{public}d, error message is %{public}s.', errorCode, errorMsg);
@@ -448,9 +448,9 @@ export default function adsTest() {
      * @tc.desc: Load multi ad by callback is not null.
      * @tc.size: LargeTest
      * @tc.type: Function
-     * @tc.level: Level0
+     * @tc.level: Level2
      */
-    it("testLoadMultiAdByCallback01", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+    it("testLoadMultiAdByCallback01", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL2, async (done: Function) => {
       let adLoaderListener: advertising.MultiSlotsAdLoadListener = {
         onAdLoadFailure: (errorCode: number, errorMsg: string) => {
           hilog.error(Domain, TAG, 'testLoadAdByCallback01 Callback load ad error, error code is %{public}d, error message is %{public}s.', errorCode, errorMsg);
@@ -494,7 +494,7 @@ export default function adsTest() {
      * @tc.desc: Load ad by callback is not null.
      * @tc.size: LargeTest
      * @tc.type: Function
-     * @tc.level: Level0
+     * @tc.level: Level2
      */
     it("testLoadAdByCallback_21800003", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL2, async (done: Function) => {
       let adLoaderListener: advertising.AdLoadListener = {
@@ -538,9 +538,9 @@ export default function adsTest() {
      * @tc.desc: testShowAd_21800001.
      * @tc.size: LargeTest
      * @tc.type: Function
-     * @tc.level: Level0
+     * @tc.level: Level2
      */
-    it("testShowAd_21800001", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, (done: Function) => {
+    it("testShowAd_21800001", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL2, (done: Function) => {
       try {
         hilog.info(Domain, TAG, 'enter testShowAd');
         advertising.showAd(advertisement_21800001, adDisplayOptions, uiContext);
@@ -570,9 +570,9 @@ export default function adsTest() {
      * @tc.desc: testShowAd_21800004.
      * @tc.size: LargeTest
      * @tc.type: Function
-     * @tc.level: Level0
+     * @tc.level: Level2
      */
-    it("testShowAd_21800004", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, (done: Function) => {
+    it("testShowAd_21800004", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL2, (done: Function) => {
       try {
         hilog.info(Domain, TAG, 'enter testShowAd');
         advertising.showAd(advertisement_21800004, adDisplayOptions, uiContext);
@@ -590,9 +590,9 @@ export default function adsTest() {
      * @tc.desc: start show ability success.
      * @tc.size: LargeTest
      * @tc.type: Function
-     * @tc.level: Level0
+     * @tc.level: Level2
      */
-    it("testShowAd_two_params", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, (done: Function) => {
+    it("testShowAd_two_params", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL2, (done: Function) => {
       try {
         hilog.info(Domain, TAG, 'enter testShowAd');
         advertising.showAd(advertisement, adDisplayOptions);
@@ -610,9 +610,9 @@ export default function adsTest() {
      * @tc.desc: testDeleteWebAdInterface.
      * @tc.size: LargeTest
      * @tc.type: Function
-     * @tc.level: Level0
+     * @tc.level: Level2
      */
-    it("testDeleteWebAdInterface_401", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, (done: Function) => {
+    it("testDeleteWebAdInterface_401", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL2, (done: Function) => {
       try {
         hilog.info(Domain, TAG, 'enter testShowAd');
         advertising.deleteWebAdInterface(null, true);
@@ -630,9 +630,9 @@ export default function adsTest() {
      * @tc.desc: testDeleteWebAdInterface_21800001.
      * @tc.size: LargeTest
      * @tc.type: Function
-     * @tc.level: Level0
+     * @tc.level: Level2
      */
-    it("testDeleteWebAdInterface_21800001", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, (done: Function) => {
+    it("testDeleteWebAdInterface_21800001", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL2, (done: Function) => {
       try {
         let webController: webview.WebviewController = new MyController();
         hilog.info(Domain, TAG, 'enter testShowAd');
@@ -652,9 +652,9 @@ export default function adsTest() {
      * @tc.desc: tesRegisterWebAdInterface_three_param.
      * @tc.size: LargeTest
      * @tc.type: Function
-     * @tc.level: Level0
+     * @tc.level: Level2
      */
-    it("tesRegisterWebAdInterface_three_param", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+    it("tesRegisterWebAdInterface_three_param", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL2, async (done: Function) => {
       try {
         let webController: webview.WebviewController = new webview.WebviewController();
         advertising.registerWebAdInterface(webController, uiContext, true);
@@ -671,9 +671,9 @@ export default function adsTest() {
      * @tc.desc: testDeleteWebAdInterface.
      * @tc.size: LargeTest
      * @tc.type: Function
-     * @tc.level: Level0
+     * @tc.level: Level2
      */
-    it("testDeleteWebAdInterface", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, (done: Function) => {
+    it("testDeleteWebAdInterface", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL2, (done: Function) => {
       try {
         hilog.info(Domain, TAG, 'enter testShowAd');
         let webController: webview.WebviewController = new webview.WebviewController();
