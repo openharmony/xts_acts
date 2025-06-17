@@ -20,5 +20,10 @@ group("powermgr") {
     "permission:powermgr_permission_test",
     "power_manager:powermgr_power_test",
     "thermal_manager:powermgr_thermal_test",
+    "battery_manager_static:ActsPowerMgrBatteryStaticTest",
+    "display_manager_static:ActsPowerMgrDisplayStaticTest",
+    "permission_static:ActsPowermgrPermissionStaticTest",
+    "power_manager_static:ActsPowerMgrPowerStaticTest",
+    "thermal_manager_static:ActsPowerMgrThermalStaticTest",
   ]
 }
