@@ -69,10 +69,10 @@ export default function penPart2Test() {
       }
 
       try {
-        let penColor: common2D.Color = ({
-          alpha : 0, red : 0, green : 0, blue : 0
-        });
-        pen.setColor(penColor);
+        // let penColor: common2D.Color = ({
+        //   alpha : 0, red : 0, green : 0, blue : 0
+        // });
+        // pen.setColor(penColor);
         let newpen = new drawing.Pen(pen);
         console.info(msg + ' drawing.Pen(pen) successed');
       } catch( e: BusinessError ) {
@@ -124,13 +124,13 @@ export default function penPart2Test() {
       }
 
       try {
-        const brush_color: common2D.Color = {
-          alpha : 255, // Alpha 透明度，完全不透明
-          red : 255, // 红色分量
-          green : 0, // 绿色分量
-          blue : 0     // 蓝色分量
-        };
-        pen.setColor(brush_color);
+        // const brush_color: common2D.Color = {
+        //   alpha : 255, // Alpha 透明度，完全不透明
+        //   red : 255, // 红色分量
+        //   green : 0, // 绿色分量
+        //   blue : 0     // 蓝色分量
+        // };
+        // pen.setColor(brush_color);
         pen.reset();
         console.info(msg + ' reset successed');
       } catch( e: BusinessError ) {

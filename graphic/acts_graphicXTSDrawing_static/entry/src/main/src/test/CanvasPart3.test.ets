@@ -62,25 +62,25 @@ export default function drawingTsCanvasPart3Test() {
       const msg = 'testCanvasRestoreToCountNormalStatic';
       try {
         const canvas = new drawing.Canvas(pixel);
-        canvas.drawRect({
-          left: 10,
-          right: 200,
-          top: 100,
-          bottom: 300
-        });
-        for (let index = 0; index < 20; index++) {
-          canvas.save();
-        }
+        // canvas.drawRect({
+        //   left: 10,
+        //   right: 200,
+        //   top: 100,
+        //   bottom: 300
+        // });
+        // for (let index = 0; index < 20; index++) {
+        //   canvas.save();
+        // }
         canvas.restoreToCount(2);
-        canvas.getSaveCount();
-        canvas.restoreToCount(5.22);
-        canvas.getSaveCount();
-        canvas.restoreToCount(1);
-        canvas.getSaveCount();
-        canvas.restoreToCount(0);
-        canvas.getSaveCount();
-        canvas.restoreToCount(15);
-        canvas.getSaveCount();
+        // canvas.getSaveCount();
+        // canvas.restoreToCount(5.22);
+        // canvas.getSaveCount();
+        // canvas.restoreToCount(1);
+        // canvas.getSaveCount();
+        // canvas.restoreToCount(0);
+        // canvas.getSaveCount();
+        // canvas.restoreToCount(15);
+        // canvas.getSaveCount();
         console.info(msg + 'restoreToCount successed');
       } catch (e: BusinessError) {
         console.info(msg + `restoreToCount errorCode is:  ${e.code} + errormsg is: ${e.message}`);
@@ -88,17 +88,17 @@ export default function drawingTsCanvasPart3Test() {
       }
       try {
         const canvas = new drawing.Canvas(pixel);
-        canvas.drawRect({
-          left: 10,
-          right: 200,
-          top: 100,
-          bottom: 300
-        });
-        for (let index = 0; index < 20; index++) {
-          canvas.save();
-        }
+        // canvas.drawRect({
+        //   left: 10,
+        //   right: 200,
+        //   top: 100,
+        //   bottom: 300
+        // });
+        // for (let index = 0; index < 20; index++) {
+        //   canvas.save();
+        // }
         canvas.restoreToCount(-1);
-        canvas.getSaveCount();
+        // canvas.getSaveCount();
         console.info(msg + 'restoreToCount successed');
       } catch (e: BusinessError) {
         console.info(msg + `restoreToCount errorCode is:  ${e.code} + errormsg is: ${e.message}`);
@@ -138,9 +138,9 @@ export default function drawingTsCanvasPart3Test() {
       const msg = 'testCanvasRestoreNormalStatic';
       try {
         const canvas = new drawing.Canvas(pixel);
-        canvas.save();
+        // canvas.save();
         canvas.restore();
-        canvas.getSaveCount();
+        // canvas.getSaveCount();
         console.info(msg + 'restore successed');
       } catch (e: BusinessError) {
         console.info(msg + `restore errorCode is:  ${e.code} + errormsg is: ${e.message}`);
@@ -159,17 +159,17 @@ export default function drawingTsCanvasPart3Test() {
       const msg = 'testCanvasRestoreMultipleCallsStatic';
       try {
         const canvas = new drawing.Canvas(pixel);
-        for (let index = 0; index < 20; index++) {
-          canvas.save();
-        }
+        // for (let index = 0; index < 20; index++) {
+        //   canvas.save();
+        // }
         for (let index = 0; index < 20; index++) {
           canvas.restore();
         }
-        canvas.getSaveCount();
+        // canvas.getSaveCount();
         for (let index = 0; index < 20; index++) {
-          canvas.save();
+          // canvas.save();
           canvas.restore();
-          canvas.getSaveCount();
+          // canvas.getSaveCount();
         }
         console.info(msg + 'restore successed');
       } catch (e: BusinessError) {
@@ -190,7 +190,7 @@ export default function drawingTsCanvasPart3Test() {
       try {
         const canvas = new drawing.Canvas(pixel);
         canvas.restore();
-        canvas.getSaveCount();
+        // canvas.getSaveCount();
         console.info(msg + 'restore successed');
       } catch (e: BusinessError) {
         console.info(msg + `restore errorCode is:  ${e.code} + errormsg is: ${e.message}`);

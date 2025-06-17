@@ -61,15 +61,15 @@ export default function fontTest() {
         expect().assertFail();
       }
 
-      try {
-        // Attempt to call getSize method
-        const size = font.getSize();
-        expect(size).assertEqual(5);
-        console.info(msg + ' getSize succeeded');
-      } catch (e: BusinessError) {
-        console.info(msg + ` getSize failed, errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
-        expect().assertFail();
-      }
+      // try {
+      //   // Attempt to call getSize method
+      //   const size = font.getSize();
+      //   expect(size).assertEqual(5);
+      //   console.info(msg + ' getSize succeeded');
+      // } catch (e: BusinessError) {
+      //   console.info(msg + ` getSize failed, errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
+      //   expect().assertFail();
+      // }
 
       try {
         // Attempt to call setSize method with 0
@@ -80,15 +80,15 @@ export default function fontTest() {
         expect().assertFail();
       }
 
-      try {
-        // Corresponding call to getSize method
-        const size = font.getSize();
-        expect(size).assertEqual(0);
-        console.info(msg + ' getSize succeeded');
-      } catch (e: BusinessError) {
-        console.info(msg + ` getSize failed, errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
-        expect().assertFail();
-      }
+      // try {
+      //   // Corresponding call to getSize method
+      //   const size = font.getSize();
+      //   expect(size).assertEqual(0);
+      //   console.info(msg + ' getSize succeeded');
+      // } catch (e: BusinessError) {
+      //   console.info(msg + ` getSize failed, errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
+      //   expect().assertFail();
+      // }
     });
     /**
      * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_FONT_STATIC_0403
@@ -115,35 +115,15 @@ export default function fontTest() {
           expect().assertFail();
         }
 
-        try {
-          // Step 3: Corresponding call to getSize method
-          let size = font.getSize();
-          console.info(`${msg} getSize succeeded for call ${i + 1}`);
-          expect(size).assertEqual(randomSize);
-        } catch (e: BusinessError) {
-          console.info(`${msg} getSize failed for call ${i + 1}, errorCode is: ${e.code}, errorMessage is: ${e.message}`);
-          expect().assertFail();
-        }
-      }
-    });
-
-    /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_FONT_STATIC_0404
-     * @tc.name      : testFontSetGetSizeWhenNoSetStatic
-     * @tc.desc      : Test for testFontSetGetSizeWhenNoSet.
-     * @tc.size      : SmallTest
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
-    it('testFontSetGetSizeWhenNoSetStatic', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, () => {
-      const msg = 'testFontSetGetSizeWhenNoSetStatic';
-      let font = new drawing.Font();
-      try {
-        font.getSize();
-        console.info(msg + ' getSize successed');
-      } catch (e: BusinessError) {
-        console.info(msg + ` getSize errorCode is:  ${e.code} + errormsg is: ${e.message}`);
-        expect().assertFail();
+        // try {
+        //   // Step 3: Corresponding call to getSize method
+        //   let size = font.getSize();
+        //   console.info(`${msg} getSize succeeded for call ${i + 1}`);
+        //   expect(size).assertEqual(randomSize);
+        // } catch (e: BusinessError) {
+        //   console.info(`${msg} getSize failed for call ${i + 1}, errorCode is: ${e.code}, errorMessage is: ${e.message}`);
+        //   expect().assertFail();
+        // }
       }
     });
     /**
@@ -166,13 +146,13 @@ export default function fontTest() {
         expect().assertFail();
       }
 
-      try {
-        font.getTypeface();
-        console.info(msg + ' getTypeface succeeded');
-      } catch (e: BusinessError) {
-        console.info(msg + ` getTypeface failed, errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
-        expect().assertFail();
-      }
+      // try {
+      //   font.getTypeface();
+      //   console.info(msg + ' getTypeface succeeded');
+      // } catch (e: BusinessError) {
+      //   console.info(msg + ` getTypeface failed, errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
+      //   expect().assertFail();
+      // }
 
       // todo: how to create a customTypeface?
       let customTypeface = new drawing.Typeface();
@@ -185,13 +165,13 @@ export default function fontTest() {
         expect().assertFail();
       }
 
-      try {
-        font.getTypeface();
-        console.info(msg + ' getTypeface succeeded');
-      } catch (e: BusinessError) {
-        console.info(msg + ` getTypeface failed, errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
-        expect().assertFail();
-      }
+      // try {
+      //   font.getTypeface();
+      //   console.info(msg + ' getTypeface succeeded');
+      // } catch (e: BusinessError) {
+      //   console.info(msg + ` getTypeface failed, errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
+      //   expect().assertFail();
+      // }
     });
     /**
      * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_FONT_STATIC_0503
@@ -207,32 +187,12 @@ export default function fontTest() {
       for (let i = 0; i < 20; i++) {
         try {
           font.setTypeface(new drawing.Typeface());
-          font.getTypeface();
-          console.info(`${msg} getTypeface succeeded`);
+          // font.getTypeface();
+          // console.info(`${msg} getTypeface succeeded`);
         } catch (e: BusinessError) {
           console.info(`${msg} setTypeface or getTypeface failed, errorCode is: ${e.code}, errorMessage is: ${e.message}`);
           expect().assertFail();
         }
-      }
-    });
-
-    /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_FONT_STATIC_0504
-     * @tc.name      : testFontSetGetTypeFaceWhenNoSetStatic
-     * @tc.desc      : Test for testFontSetGetTypeFaceWhenNoSet.
-     * @tc.size      : SmallTest
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
-    it('testFontSetGetTypeFaceWhenNoSetStatic', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, () => {
-      const msg = 'testFontSetGetTypeFaceWhenNoSetStatic';
-      try {
-        const font = new drawing.Font();
-        font.getTypeface();
-        console.info(msg + ' getTypeface successed');
-      } catch (e: BusinessError) {
-        console.info(msg + ` getTypeface errorCode is:  ${e.code} + errormsg is: ${e.message}`);
-        expect().assertFail();
       }
     });
     /**

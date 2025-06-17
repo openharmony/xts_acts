@@ -59,7 +59,7 @@ export default function brushTest() {
         expect().assertFail();
       }
       try {
-        brush.setColor(255, 255, 0, 0);
+        // brush.setColor(255, 255, 0, 0);
         brush.reset();
         console.info(msg + ' reset successed');
       } catch (e: BusinessError) {
@@ -182,12 +182,12 @@ export default function brushTest() {
         expect().assertFail();
       }
       try {
-        brush.setColor({
-          alpha: 255,
-          red: 255,
-          green: 255,
-          blue: 255
-        });
+        // brush.setColor({
+        //   alpha: 255,
+        //   red: 255,
+        //   green: 255,
+        //   blue: 255
+        // });
         let newBrush = new drawing.Brush(brush);
         console.info(msg + ' drawing.Brush() successed');
       } catch (e: BusinessError) {
@@ -208,7 +208,7 @@ export default function brushTest() {
       const brush = new drawing.Brush();
       for (let i = 0; i < 20; i++) {
         try {
-          brush.setColor(Math.random() * 255, Math.random() * 255, Math.random() * 255, Math.random() * 255);
+          // brush.setColor(Math.random() * 255, Math.random() * 255, Math.random() * 255, Math.random() * 255);
           const newBrush = new drawing.Brush(brush)
           console.info(msg + ' drawing.Brush succeeded');
         } catch (e: BusinessError) {

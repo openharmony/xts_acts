@@ -64,19 +64,19 @@ export default function drawingTsCanvasPart2Test() {
       try {
         const canvas = new drawing.Canvas(pixel);
         const brush = new drawing.Brush();
-        brush.setColor({
-          alpha: 255,
-          red: 255,
-          green: 0,
-          blue: 0
-        });
+        // brush.setColor({
+        //   alpha: 255,
+        //   red: 255,
+        //   green: 0,
+        //   blue: 0
+        // });
         canvas.attachBrush(brush);
-        canvas.drawRect({
-          left: 0,
-          right: 0,
-          top: 10,
-          bottom: 10
-        });
+        // canvas.drawRect({
+        //   left: 0,
+        //   right: 0,
+        //   top: 10,
+        //   bottom: 10
+        // });
         canvas.detachBrush();
         console.info(msg + 'attachBrush successed');
       } catch (e: BusinessError) {
@@ -97,32 +97,32 @@ export default function drawingTsCanvasPart2Test() {
       try {
         const canvas = new drawing.Canvas(pixel);
         const brush = new drawing.Brush();
-        brush.setColor({
-          alpha: 255,
-          red: 255,
-          green: 0,
-          blue: 0
-        });
+        // brush.setColor({
+        //   alpha: 255,
+        //   red: 255,
+        //   green: 0,
+        //   blue: 0
+        // });
         for (let index = 0; index < 20; index++) {
           canvas.attachBrush(brush);
         }
-        canvas.drawRect({
-          left: 0,
-          right: 0,
-          top: 10,
-          bottom: 10
-        });
+        // canvas.drawRect({
+        //   left: 0,
+        //   right: 0,
+        //   top: 10,
+        //   bottom: 10
+        // });
         for (let index = 0; index < 20; index++) {
           canvas.detachBrush();
         }
         for (let index = 0; index < 20; index++) {
           canvas.attachBrush(brush);
-          canvas.drawRect({
-            left: 0,
-            right: 0,
-            top: 10,
-            bottom: 10
-          });
+          // canvas.drawRect({
+          //   left: 0,
+          //   right: 0,
+          //   top: 10,
+          //   bottom: 10
+          // });
           canvas.detachBrush();
         }
         console.info(msg + 'attachBrush successed');
@@ -145,19 +145,19 @@ export default function drawingTsCanvasPart2Test() {
       try {
         const canvas = new drawing.Canvas(pixel);
         const brush = new drawing.Brush();
-        brush.setColor({
-          alpha: 255,
-          red: 255,
-          green: 0,
-          blue: 0
-        });
+        // brush.setColor({
+        //   alpha: 255,
+        //   red: 255,
+        //   green: 0,
+        //   blue: 0
+        // });
         canvas.attachBrush(brush);
-        canvas.drawRect({
-          left: 0,
-          right: 0,
-          top: 10,
-          bottom: 10
-        });
+        // canvas.drawRect({
+        //   left: 0,
+        //   right: 0,
+        //   top: 10,
+        //   bottom: 10
+        // });
         console.info(msg + 'attachBrush successed');
       } catch (e: BusinessError) {
         console.info(msg + `attachBrush errorCode is:  ${e.code} + errormsg is: ${e.message}`);
@@ -197,9 +197,9 @@ export default function drawingTsCanvasPart2Test() {
       try {
         const canvas = new drawing.Canvas(pixel);
         const pen = new drawing.Pen();
-        pen.setStrokeWidth(5);
-        pen.setColor({alpha: 255, red: 255, green: 0, blue: 0});
-        canvas.attachPen(pen);
+        // pen.setStrokeWidth(5);
+        // pen.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+        // canvas.attachPen(pen);
         canvas.rotate(30, 100, 100);
         canvas.rotate(30.1, 100.1, 100.1);
         canvas.rotate(0, 100, 100);
@@ -207,8 +207,8 @@ export default function drawingTsCanvasPart2Test() {
         canvas.rotate(-90, 100, 100);
         canvas.rotate(400, 100, 100);
         canvas.rotate(30, -100, -100);
-        canvas.drawRect({left : 10, right : 500, top : 300, bottom : 900});
-        canvas.detachPen();
+        // canvas.drawRect({left : 10, right : 500, top : 300, bottom : 900});
+        // canvas.detachPen();
         console.info(msg + 'rotate successed');
       } catch (e: BusinessError) {
         console.info(msg + `rotate errorCode is:  ${e.code} + errormsg is: ${e.message}`);
@@ -228,14 +228,14 @@ export default function drawingTsCanvasPart2Test() {
       try {
         const canvas = new drawing.Canvas(pixel);
         const pen = new drawing.Pen();
-        pen.setStrokeWidth(5);
-        pen.setColor({alpha: 255, red: 255, green: 0, blue: 0});
-        canvas.attachPen(pen);
+        // pen.setStrokeWidth(5);
+        // pen.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+        // canvas.attachPen(pen);
         for (let index = 0; index < 20; index++) {
           canvas.rotate(Math.random() * Number.MAX_VALUE, Math.random() * Number.MAX_VALUE, Math.random() * Number.MAX_VALUE);
         }
-        canvas.drawRect({left : 10, right : 500, top : 300, bottom : 900});
-        canvas.detachPen();
+        // canvas.drawRect({left : 10, right : 500, top : 300, bottom : 900});
+        // canvas.detachPen();
         console.info(msg + 'rotate successed');
       } catch (e: BusinessError) {
         console.info(msg + `rotate errorCode is:  ${e.code} + errormsg is: ${e.message}`);

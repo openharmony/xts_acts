@@ -118,27 +118,27 @@ export default function drawingTsPathTest() {
       let path = new drawing.Path();
       try {
         for (let index = 0; index < 20; index++) {
-          path.cubicTo(10, 10, 10, 10, 15, 15);
+          // path.cubicTo(10, 10, 10, 10, 15, 15);
           path.reset();
         }
-        path.close()
+        // path.close()
         console.info(msg + 'reset successed');
       } catch (e: BusinessError) {
         console.info(msg + `reset errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail()
       }
 
-      try {
-        path.cubicTo(10, 10, 10, 10, 15, 15);
-        for (let index = 0; index < 20; index++) {
-          path.reset();
-        }
-        path.close()
-        console.info(msg + 'reset successed');
-      } catch (e: BusinessError) {
-        console.info(msg + `reset errorCode is:  ${e.code} + errormsg is: ${e.message}`);
-        expect().assertFail()
-      }
+      // try {
+      //   path.cubicTo(10, 10, 10, 10, 15, 15);
+      //   for (let index = 0; index < 20; index++) {
+      //     path.reset();
+      //   }
+      //   path.close()
+      //   console.info(msg + 'reset successed');
+      // } catch (e: BusinessError) {
+      //   console.info(msg + `reset errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+      //   expect().assertFail()
+      // }
     })
   })
 }

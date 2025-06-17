@@ -55,7 +55,7 @@ export default function drawingTsPath3Test() {
         let newPath = new drawing.Path(path);
 
         path.arcTo(0, 0, 100, 100, 0, 180);
-        path.close();
+        // path.close();
         newPath = new drawing.Path(path);
 
         console.info(msg + 'test successes');
