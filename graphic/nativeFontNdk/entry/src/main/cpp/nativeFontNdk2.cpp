@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
+#include <vector>
 #include "nativeFontNdk.h"
 
 #define SUCCESS 0
@@ -22,6 +23,7 @@
 #define ARR_NUM_2 2
 #define ARR_NUM_3 3
 #define ARR_NUM_4 4
+#define ARR_NUM_5 5
 #define NUM_20 20
 #define NUM_30 30
 #define NUM_40 40
@@ -29,6 +31,13 @@
 #define DOUBLE_NUM_500 500.0
 #define DOUBLE_NUM_10 10.0
 #define DOUBLE_NUM_15 15.0
+#define NEGATIVE_NUM_1 (-1)
+#define NEGATIVE_NUM_100 (-100)
+#define NUM_0 0
+#define NUM_1 1
+#define NUM_5 5
+#define NUM_5000 5000
+#define NUM_10000 10000
 
 namespace {
     const double DEFAULT_FONT_SIZE = 50;
@@ -148,6 +157,20 @@ static void TypographyTearDown()
         OH_Drawing_DestroyTypographyStyle(typoStyle2_);
         typoStyle2_ = nullptr;
     }
+}
+
+static int32_t GetUnresolvedGlyphCount(const void* text, size_t length, OH_Drawing_TextEncoding encode)
+{
+    auto typoStyle = OH_Drawing_CreateTypographyStyle();
+    auto handler = OH_Drawing_CreateTypographyHandler(typoStyle, OH_Drawing_GetFontCollectionGlobalInstance());
+    OH_Drawing_TypographyHandlerAddEncodedText(handler, text, length, encode);
+    auto typography = OH_Drawing_CreateTypography(handler);
+    OH_Drawing_TypographyLayout(typography, 100.0f);
+    int32_t unresolved = OH_Drawing_TypographyGetUnresolvedGlyphsCount(typography);
+    OH_Drawing_DestroyTypography(typography);
+    OH_Drawing_DestroyTypographyHandler(handler);
+    OH_Drawing_DestroyTypographyStyle(typoStyle);
+    return unresolved;
 }
 
 napi_value OHDrawingFontGetPathForGlyph001(napi_env env, napi_callback_info info)
@@ -417,7 +440,7 @@ napi_value OHDrawingSetTextStyleBadgeType002(napi_env env, napi_callback_info in
     OH_Drawing_SetTextStyleFontWeight(subTxtStyle, FONT_WEIGHT_400);
     OH_Drawing_SetTextStyleBadgeType(subTxtStyle, OH_Drawing_TextBadgeType::TEXT_SUBSCRIPT);
     
-    const char *text = "�������";
+    const char *text = "ÄãºÃÊÀ½ç";
     OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
     OH_Drawing_TypographyHandlerAddText(handler, text);
     OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
@@ -441,5 +464,377 @@ napi_value OHDrawingSetTextStyleBadgeType002(napi_env env, napi_callback_info in
     OH_Drawing_DestroyTypography(subTxtTypography);
     OH_Drawing_DestroyTypographyHandler(subTxtHandler);
     OH_Drawing_DestroyTextStyle(subTxtStyle);
+    return result;
+}
+
+napi_value OHDrawingTypographyHandlerAddEncodedText001(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_create_array_with_length(env, ARR_NUM_5, &result);
+    napi_value result1 = nullptr;
+    napi_value result2 = nullptr;
+    napi_value result3 = nullptr;
+    napi_value result4 = nullptr;
+    napi_value result5 = nullptr;
+    // Basic ASCII characters
+    const char ascii[] = u8"Hello World";
+    if (GetUnresolvedGlyphCount(ascii, sizeof(ascii), TEXT_ENCODING_UTF8) == NUM_0) {
+        napi_create_int32(env, SUCCESS, &result1);
+    } else {
+        napi_create_int32(env, FAIL, &result1);
+    }
+    napi_set_element(env, result, ARR_NUM_0, result1);
+    // Non-ASCII characters (Chinese)
+    const char chinese[] = u8"你好世界";
+    if (GetUnresolvedGlyphCount(chinese, sizeof(chinese), TEXT_ENCODING_UTF8) == NUM_0) {
+        napi_create_int32(env, SUCCESS, &result2);
+    } else {
+        napi_create_int32(env, FAIL, &result2);
+    }
+    napi_set_element(env, result, ARR_NUM_1, result2);
+    // Special characters
+    const char tabsNewline[] = u8"Tabs\tNewline\n";
+    if (GetUnresolvedGlyphCount(tabsNewline, sizeof(tabsNewline), TEXT_ENCODING_UTF8) == NUM_0) {
+        napi_create_int32(env, SUCCESS, &result3);
+    } else {
+        napi_create_int32(env, FAIL, &result3);
+    }
+    napi_set_element(env, result, ARR_NUM_2, result3);
+    // 4-byte emoji characters
+    const char emoji[] = u8"😊🌍🎉";
+    if (GetUnresolvedGlyphCount(emoji, sizeof(emoji), TEXT_ENCODING_UTF8) == NUM_0) {
+        napi_create_int32(env, SUCCESS, &result4);
+    } else {
+        napi_create_int32(env, FAIL, &result4);
+    }
+    napi_set_element(env, result, ARR_NUM_3, result4);
+    // Mixed case and symbols
+    const char mixedCaseSymbols[] = u8"Aa1!Ωπ";
+    if (GetUnresolvedGlyphCount(mixedCaseSymbols, sizeof(mixedCaseSymbols), TEXT_ENCODING_UTF8) == NUM_0) {
+        napi_create_int32(env, SUCCESS, &result5);
+    } else {
+        napi_create_int32(env, FAIL, &result5);
+    }
+    napi_set_element(env, result, ARR_NUM_4, result5);
+    return result;
+}
+
+napi_value OHDrawingTypographyHandlerAddEncodedText002(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_create_array_with_length(env, ARR_NUM_3, &result);
+    napi_value result1 = nullptr;
+    napi_value result2 = nullptr;
+    napi_value result3 = nullptr;
+
+    // Invalid continuation bytes
+    const char invalid1[] = "abc\x80\xff";
+    if (GetUnresolvedGlyphCount(invalid1, sizeof(invalid1), TEXT_ENCODING_UTF8) == NUM_0) {
+        napi_create_int32(env, SUCCESS, &result1);
+    } else {
+        napi_create_int32(env, FAIL, &result1);
+    }
+    napi_set_element(env, result, ARR_NUM_0, result1);
+
+    // Truncated multi-byte sequence
+    const char invalid2[] = u8"正常\xE6\x97继续";
+    if (GetUnresolvedGlyphCount(invalid2, sizeof(invalid2), TEXT_ENCODING_UTF8) == NUM_0) {
+        napi_create_int32(env, SUCCESS, &result2);
+    } else {
+        napi_create_int32(env, FAIL, &result2);
+    }
+    napi_set_element(env, result, ARR_NUM_1, result2);
+
+    // Overlong encoding
+    const char invalid3[] = "\xF0\x82\x82\xAC"; // Overlong € symbol
+    if (GetUnresolvedGlyphCount(invalid3, sizeof(invalid3), TEXT_ENCODING_UTF8) == NUM_0) {
+        napi_create_int32(env, SUCCESS, &result3);
+    } else {
+        napi_create_int32(env, FAIL, &result3);
+    }
+    napi_set_element(env, result, ARR_NUM_2, result3);
+    return result;
+}
+
+napi_value OHDrawingTypographyHandlerAddEncodedText003(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_create_array_with_length(env, ARR_NUM_4, &result);
+    napi_value result1 = nullptr;
+    napi_value result2 = nullptr;
+    napi_value result3 = nullptr;
+    napi_value result4 = nullptr;
+
+    // Basic BMP characters
+    const char16_t ascii16[] = u"Hello World";
+    if (GetUnresolvedGlyphCount(ascii16, sizeof(ascii16), TEXT_ENCODING_UTF16) == NUM_0) {
+        napi_create_int32(env, SUCCESS, &result1);
+    } else {
+        napi_create_int32(env, FAIL, &result1);
+    }
+    napi_set_element(env, result, ARR_NUM_0, result1);
+
+    // Non-BMP characters (emoji)
+    const char16_t emoji16[] = u"😀🌈";
+    if (GetUnresolvedGlyphCount(emoji16, sizeof(emoji16), TEXT_ENCODING_UTF16) == NUM_0) {
+        napi_create_int32(env, SUCCESS, &result2);
+    } else {
+        napi_create_int32(env, FAIL, &result2);
+    }
+    napi_set_element(env, result, ARR_NUM_1, result2);
+
+    // RTL text with control characters
+    const char16_t rtlText16[] = u"\x202E右到左文本";
+    if (GetUnresolvedGlyphCount(rtlText16, sizeof(rtlText16), TEXT_ENCODING_UTF16) == NUM_0) {
+        napi_create_int32(env, SUCCESS, &result3);
+    } else {
+        napi_create_int32(env, FAIL, &result3);
+    }
+    napi_set_element(env, result, ARR_NUM_2, result3);
+
+    // Combining characters
+    const char16_t combiningChars16[] = u"A\u0300\u0301";
+    if (GetUnresolvedGlyphCount(combiningChars16, sizeof(combiningChars16), TEXT_ENCODING_UTF16) == NUM_0) {
+        napi_create_int32(env, SUCCESS, &result4);
+    } else {
+        napi_create_int32(env, FAIL, &result4);
+    }
+    napi_set_element(env, result, ARR_NUM_3, result4);
+    return result;
+}
+
+napi_value OHDrawingTypographyHandlerAddEncodedText004(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_create_array_with_length(env, ARR_NUM_3, &result);
+    napi_value result1 = nullptr;
+    napi_value result2 = nullptr;
+    napi_value result3 = nullptr;
+
+    // Unpaired high surrogate
+    const char16_t invalid1[] = u"\xD800\x0041";
+    if (GetUnresolvedGlyphCount(invalid1, sizeof(invalid1), TEXT_ENCODING_UTF16) == NUM_0) {
+        napi_create_int32(env, SUCCESS, &result1);
+    } else {
+        napi_create_int32(env, FAIL, &result1);
+    }
+    napi_set_element(env, result, ARR_NUM_0, result1);
+
+    // Unpaired low surrogate
+    const char16_t invalid2[] = u"\xDC00";
+    if (GetUnresolvedGlyphCount(invalid2, sizeof(invalid2), TEXT_ENCODING_UTF16) == NUM_0) {
+        napi_create_int32(env, SUCCESS, &result2);
+    } else {
+        napi_create_int32(env, FAIL, &result2);
+    }
+    napi_set_element(env, result, ARR_NUM_1, result2);
+
+    // Swapped surrogate pair
+    const char16_t invalid3[] = u"\xDC00\xD800";
+    if (GetUnresolvedGlyphCount(invalid3, sizeof(invalid3), TEXT_ENCODING_UTF16) == NUM_0) {
+        napi_create_int32(env, SUCCESS, &result3);
+    } else {
+        napi_create_int32(env, FAIL, &result3);
+    }
+    napi_set_element(env, result, ARR_NUM_2, result3);
+    return result;
+}
+
+napi_value OHDrawingTypographyHandlerAddEncodedText005(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_create_array_with_length(env, ARR_NUM_3, &result);
+    napi_value result1 = nullptr;
+    napi_value result2 = nullptr;
+    napi_value result3 = nullptr;
+
+    // Basic ASCII range
+    const char32_t ascii32[] = U"ASCII Text!";
+    if (GetUnresolvedGlyphCount(ascii32, sizeof(ascii32), TEXT_ENCODING_UTF32) == NUM_0) {
+        napi_create_int32(env, SUCCESS, &result1);
+    } else {
+        napi_create_int32(env, FAIL, &result1);
+    }
+    napi_set_element(env, result, ARR_NUM_0, result1);
+
+    // Non-BMP characters
+    const char32_t emoji32[] = { 0x1F600, 0x1F308, NUM_0 }; // 😀🌈
+    if (GetUnresolvedGlyphCount(emoji32, sizeof(emoji32), TEXT_ENCODING_UTF32) == NUM_0) {
+        napi_create_int32(env, SUCCESS, &result2);
+    } else {
+        napi_create_int32(env, FAIL, &result2);
+    }
+    napi_set_element(env, result, ARR_NUM_1, result2);
+
+    // Maximum valid code point
+    const char32_t maxUnicode32[] = { 0x10FFFF };
+    if (GetUnresolvedGlyphCount(maxUnicode32, sizeof(maxUnicode32), TEXT_ENCODING_UTF32) == NUM_1) {
+        napi_create_int32(env, SUCCESS, &result3);
+    } else {
+        napi_create_int32(env, FAIL, &result3);
+    }
+    napi_set_element(env, result, ARR_NUM_2, result3);
+    return result;
+}
+
+napi_value OHDrawingTypographyHandlerAddEncodedText006(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_create_array_with_length(env, ARR_NUM_3, &result);
+    napi_value result1 = nullptr;
+    napi_value result2 = nullptr;
+    napi_value result3 = nullptr;
+
+    // Code point beyond U+10FFFF
+    const char32_t invalid1[] = { 0x110000 };
+    if (GetUnresolvedGlyphCount(invalid1, sizeof(invalid1), TEXT_ENCODING_UTF32) == NUM_0) {
+        napi_create_int32(env, SUCCESS, &result1);
+    } else {
+        napi_create_int32(env, FAIL, &result1);
+    }
+    napi_set_element(env, result, ARR_NUM_0, result1);
+
+    // Surrogate code points
+    const char32_t invalid2[] = { 0xD800, 0xDFFF };
+    if (GetUnresolvedGlyphCount(invalid2, sizeof(invalid2), TEXT_ENCODING_UTF32) == NUM_0) {
+        napi_create_int32(env, SUCCESS, &result2);
+    } else {
+        napi_create_int32(env, FAIL, &result2);
+    }
+    napi_set_element(env, result, ARR_NUM_1, result2);
+
+    // Negative value
+    const int invalid3[] = { NEGATIVE_NUM_100 };
+    if (GetUnresolvedGlyphCount(invalid3, sizeof(invalid3), TEXT_ENCODING_UTF32) == NUM_0) {
+        napi_create_int32(env, SUCCESS, &result3);
+    } else {
+        napi_create_int32(env, FAIL, &result3);
+    }
+    napi_set_element(env, result, ARR_NUM_2, result3);
+    return result;
+}
+
+napi_value OHDrawingTypographyHandlerAddEncodedText007(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_create_array_with_length(env, ARR_NUM_4, &result);
+    napi_value result1 = nullptr;
+    napi_value result2 = nullptr;
+    napi_value result3 = nullptr;
+    napi_value result4 = nullptr;
+
+    // Empty input with different encodings
+    if ((GetUnresolvedGlyphCount("", NUM_0, TEXT_ENCODING_UTF8) == NEGATIVE_NUM_1) &&
+        (GetUnresolvedGlyphCount(u"", NUM_0, TEXT_ENCODING_UTF16) == NEGATIVE_NUM_1) &&
+        (GetUnresolvedGlyphCount(U"", NUM_0, TEXT_ENCODING_UTF32) == NEGATIVE_NUM_1)) {
+        napi_create_int32(env, SUCCESS, &result1);
+    } else {
+        napi_create_int32(env, FAIL, &result1);
+    }
+    napi_set_element(env, result, ARR_NUM_0, result1);
+
+    // Null pointer with zero length
+    if (GetUnresolvedGlyphCount(nullptr, NUM_0, TEXT_ENCODING_UTF8) == NEGATIVE_NUM_1) {
+        napi_create_int32(env, SUCCESS, &result2);
+    } else {
+        napi_create_int32(env, FAIL, &result2);
+    }
+    napi_set_element(env, result, ARR_NUM_1, result2);
+
+    // Maximum code point boundary
+    const char32_t boundary1[] = { 0x10FFFF, 0x0000 };
+    if (GetUnresolvedGlyphCount(boundary1, sizeof(boundary1), TEXT_ENCODING_UTF32) == NUM_1) {
+        napi_create_int32(env, SUCCESS, &result3);
+    } else {
+        napi_create_int32(env, FAIL, &result3);
+    }
+    napi_set_element(env, result, ARR_NUM_2, result3);
+
+    // Minimum code point boundary
+    const char32_t boundary2[] = { 0x0000 };
+    if (GetUnresolvedGlyphCount(boundary2, sizeof(boundary2), TEXT_ENCODING_UTF32) == NUM_0) {
+        napi_create_int32(env, SUCCESS, &result4);
+    } else {
+        napi_create_int32(env, FAIL, &result4);
+    }
+    napi_set_element(env, result, ARR_NUM_3, result4);
+    return result;
+}
+
+napi_value OHDrawingTypographyHandlerAddEncodedText008(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_create_array_with_length(env, ARR_NUM_3, &result);
+    napi_value result1 = nullptr;
+    napi_value result2 = nullptr;
+    napi_value result3 = nullptr;
+
+    // Large UTF-8 text
+    std::vector<char> bigUtf8(NUM_10000, 'A');
+    if (GetUnresolvedGlyphCount(bigUtf8.data(), bigUtf8.size(), TEXT_ENCODING_UTF8) == NUM_0) {
+        napi_create_int32(env, SUCCESS, &result1);
+    } else {
+        napi_create_int32(env, FAIL, &result1);
+    }
+    napi_set_element(env, result, ARR_NUM_0, result1);
+
+    // Large UTF-16 text with surrogate pairs
+    std::vector<char16_t> bigUtf16;
+    for (int i = NUM_0; i < NUM_10000; ++i) {
+        bigUtf16.push_back(0xD83D);
+        bigUtf16.push_back(0xDE00);
+    }
+    if (GetUnresolvedGlyphCount(bigUtf16.data(), bigUtf16.size(), TEXT_ENCODING_UTF16) == NUM_0) {
+        napi_create_int32(env, SUCCESS, &result2);
+    } else {
+        napi_create_int32(env, FAIL, &result2);
+    }
+    napi_set_element(env, result, ARR_NUM_1, result2);
+
+    // Mixed valid/invalid UTF-32 data
+    std::vector<char32_t> mixed_utf32(NUM_10000, 0x1F600);
+    mixed_utf32[NUM_5000] = 0x110000; // Insert invalid code point
+    if (GetUnresolvedGlyphCount(mixed_utf32.data(), mixed_utf32.size(), TEXT_ENCODING_UTF32) == NUM_0) {
+        napi_create_int32(env, SUCCESS, &result3);
+    } else {
+        napi_create_int32(env, FAIL, &result3);
+    }
+    napi_set_element(env, result, ARR_NUM_2, result3);
+    return result;
+}
+
+napi_value OHDrawingTypographyHandlerAddEncodedText009(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_create_array_with_length(env, ARR_NUM_3, &result);
+    napi_value result1 = nullptr;
+    napi_value result2 = nullptr;
+    napi_value result3 = nullptr;
+
+    // Invalid encoding type
+    const char testStr[] = "test";
+    if (GetUnresolvedGlyphCount(testStr, sizeof(testStr), TEXT_ENCODING_GLYPH_ID) == NEGATIVE_NUM_1) {
+        napi_create_int32(env, SUCCESS, &result1);
+    } else {
+        napi_create_int32(env, FAIL, &result1);
+    }
+    napi_set_element(env, result, ARR_NUM_0, result1);
+
+    // Mismatched encoding and data
+    const char16_t utf16Data[] = u"test";
+    if (GetUnresolvedGlyphCount(utf16Data, sizeof(utf16Data), TEXT_ENCODING_UTF8) == NUM_0) {
+        napi_create_int32(env, SUCCESS, &result2);
+    } else {
+        napi_create_int32(env, FAIL, &result2);
+    }
+    napi_set_element(env, result, ARR_NUM_1, result2);
+
+    // Null pointer with non-zero length
+    if (GetUnresolvedGlyphCount(nullptr, NUM_5, TEXT_ENCODING_UTF16) == NEGATIVE_NUM_1) {
+        napi_create_int32(env, SUCCESS, &result3);
+    } else {
+        napi_create_int32(env, FAIL, &result3);
+    }
+    napi_set_element(env, result, ARR_NUM_2, result3);
     return result;
 }

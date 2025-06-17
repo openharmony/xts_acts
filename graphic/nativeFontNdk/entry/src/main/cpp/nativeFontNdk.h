@@ -39,8 +39,6 @@
 #include "native_drawing/drawing_text_line.h"
 #include "native_drawing/drawing_text_lineTypography.h"
 #include "native_drawing/drawing_register_font.h"
-#include "native_drawing/drawing_text_global.h"
-#include "native_drawing/drawing_text_blob.h"
 
 napi_value OHDrawingMatchFontDescriptors001(napi_env env, napi_callback_info info);
 napi_value OHDrawingMatchFontDescriptors002(napi_env env, napi_callback_info info);
@@ -113,4 +111,13 @@ napi_value OHDrawingGetRunPositions001(napi_env env, napi_callback_info info);
 napi_value OHDrawingGetFontCollectionGlobalInstance001(napi_env env, napi_callback_info info);
 napi_value OHDrawingSetTextStyleBadgeType001(napi_env env, napi_callback_info info);
 napi_value OHDrawingSetTextStyleBadgeType002(napi_env env, napi_callback_info info);
+napi_value OHDrawingTypographyHandlerAddEncodedText001(napi_env env, napi_callback_info info);
+napi_value OHDrawingTypographyHandlerAddEncodedText002(napi_env env, napi_callback_info info);
+napi_value OHDrawingTypographyHandlerAddEncodedText003(napi_env env, napi_callback_info info);
+napi_value OHDrawingTypographyHandlerAddEncodedText004(napi_env env, napi_callback_info info);
+napi_value OHDrawingTypographyHandlerAddEncodedText005(napi_env env, napi_callback_info info);
+napi_value OHDrawingTypographyHandlerAddEncodedText006(napi_env env, napi_callback_info info);
+napi_value OHDrawingTypographyHandlerAddEncodedText007(napi_env env, napi_callback_info info);
+napi_value OHDrawingTypographyHandlerAddEncodedText008(napi_env env, napi_callback_info info);
+napi_value OHDrawingTypographyHandlerAddEncodedText009(napi_env env, napi_callback_info info);
 #endif // NATIVEFONTNDK_USELESS_H
