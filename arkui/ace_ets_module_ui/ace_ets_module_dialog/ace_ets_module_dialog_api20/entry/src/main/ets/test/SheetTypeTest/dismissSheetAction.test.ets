@@ -45,9 +45,9 @@ export default function dismissSheetActionTest() {
     * @tc.number: dismissSheetActionTest_001
     * @tc.name  : dismissSheetActionTest_001
     * @tc.desc  : Test the SheetTypeTest not null
-    * @tc.level : Level 0
+    * @tc.level : Level 1
     */                                                                        
-    it('dismissSheetActionTest_001', 0, async (done: Function) => {
+    it('dismissSheetActionTest_001', TestType.Function | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('dismissSheetActionTest_001 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
