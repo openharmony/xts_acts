@@ -13,9 +13,11 @@
  * limitations under the License.
  */
 import SplitPlaceholder from './SplitPlaceholder.test'
+import UIContextNavDestinationUpdate from './UIContextNavDestinationUpdate.test'
 import StepperModifierPage from './StepperModifierPage.test'
 
 export default function testsuite() {
   SplitPlaceholder();
+  UIContextNavDestinationUpdate();
   StepperModifierPage();
 }
