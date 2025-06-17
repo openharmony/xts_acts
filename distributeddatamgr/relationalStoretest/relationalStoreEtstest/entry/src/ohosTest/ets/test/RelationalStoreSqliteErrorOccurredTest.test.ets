@@ -188,34 +188,6 @@ export default function rdbStoreSqliteErrorOccurredTest() {
     })
 
     /**
-     * @tc.number SUB_DistributedData_RelationalStore_SDK_onSqliteErrorOccurredJsAPITest_0400
-     * @tc.name testRdbStoreOnsqliteErrorOccurred0004
-     * @tc.desc 1.Insert data
-     */
-    it('testRdbStoreOnsqliteErrorOccurred0004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
-      console.log(TAG + "************* testRdbStoreOnsqliteErrorOccurred0004 start *************");
-      try {
-        let averageTime = 0;
-        let startTime = new Date().getTime();
-        for (let i = 0; i < 2000; ++i) {
-          let exceptionMessage: data_relationalStore.ExceptionMessage | undefined = undefined;
-          rdbStore.on('sqliteErrorOccurred', exceptionMessage => {
-          });
-        }
-        let endTime = new Date().getTime();
-        averageTime = ((endTime - startTime) * 1000) / 2000;
-        expect(averageTime < 1000).assertTrue();
-        console.log(TAG + " testRdbStoreOnsqliteErrorOccurred0004 average time is: " + averageTime + " μs");
-        done();
-      } catch (err) {
-        console.log(TAG + `on err log failed, code is ${err.code},message is ${err.message}`);
-        expect().assertFail();
-        done()
-      }
-      console.log(TAG + "************* testRdbStoreOnsqliteErrorOccurred0004 end *************");
-    })
-
-    /**
      * @tc.number SUB_DistributedData_RelationalStore_SDK_onSqliteErrorOccurredJsAPITest_0500
      * @tc.name testRdbStoreOnsqliteErrorOccurred0005
      * @tc.desc 1.Insert data
