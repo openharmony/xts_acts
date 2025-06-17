@@ -351,5 +351,50 @@ export default function nativeEffectTest() {
       expect(result[1]).assertEqual(0);
       done();
     });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_PixelmapImageInfo_GetAlphaMode_001
+     * @tc.name       : testOHPixelmapImageInfoGetAlphaMode001
+     * @tc.desc       : test PixelmapImageInfo_GetAlphaMode_001
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOHPixelmapImageInfoGetAlphaMode001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
+      let result: number = nativeEffectNdk.oHPixelmapImageInfoGetAlphaMode001();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_PixelmapNative_CreatePixelmapUsingAllocator_001
+     * @tc.name       : testOHPixelmapNativeCreatePixelmapUsingAllocator001
+     * @tc.desc       : test PixelmapNative_CreatePixelmapUsingAllocator_001
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOHPixelmapNativeCreatePixelmapUsingAllocator001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
+      let result: number = nativeEffectNdk.oHPixelmapNativeCreatePixelmapUsingAllocator001();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_PixelmapNative_CreateEmptyPixelmapUsingAllocator_001
+     * @tc.name       : testOHPixelmapNativeCreateEmptyPixelmapUsingAllocator001
+     * @tc.desc       : test PixelmapNative_CreateEmptyPixelmapUsingAllocator_001
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOHPixelmapNativeCreateEmptyPixelmapUsingAllocator001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
+      let result: number = nativeEffectNdk.oHPixelmapNativeCreateEmptyPixelmapUsingAllocator001();
+      expect(result).assertEqual(0);
+      done();
+    });
   })
 }
