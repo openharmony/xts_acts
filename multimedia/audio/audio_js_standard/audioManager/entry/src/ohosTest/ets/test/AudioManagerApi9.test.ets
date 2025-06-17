@@ -1534,12 +1534,6 @@ export default function audioManagerApi9() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_2900', 2, async (done: Function) => {
-      if (deviceTypeInfo == '2in1') {
-        console.info(`${TagFrmwk}: The device type is 2in1`);
-        expect(true).assertTrue();
-        done();
-        return;
-      }
       try {
         await audioManager.setVolume(audio.AudioVolumeType.ALARM, 1);
         await audioManager.mute(audio.AudioVolumeType.ALARM, true);
@@ -1586,12 +1580,6 @@ export default function audioManagerApi9() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_2901', 2, async (done: Function) => {
-      if (deviceTypeInfo == '2in1') {
-        console.info(`${TagFrmwk}: The device type is 2in1`);
-        expect(true).assertTrue();
-        done();
-        return;
-      }
       try {
         let maxVolumeSetting = await audioManager.getMaxVolume(audio.AudioVolumeType.ALARM);
         await audioManager.setVolume(audio.AudioVolumeType.ALARM, maxVolumeSetting);
@@ -1764,12 +1752,6 @@ export default function audioManagerApi9() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_3000', 2, async (done: Function) => {
-      if (deviceTypeInfo == '2in1') {
-        console.info(`${TagFrmwk}: The device type is 2in1`);
-        expect(true).assertTrue();
-        done();
-        return;
-      }
       try {
         await audioManager.setVolume(audio.AudioVolumeType.ACCESSIBILITY, 1);
         await audioManager.mute(audio.AudioVolumeType.ACCESSIBILITY, true);
@@ -1815,12 +1797,6 @@ export default function audioManagerApi9() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_3001', 2, async (done: Function) => {
-      if (deviceTypeInfo == '2in1') {
-        console.info(`${TagFrmwk}: The device type is 2in1`);
-        expect(true).assertTrue();
-        done();
-        return;
-      }
       try {
         let maxVolumeSetting = await audioManager.getMaxVolume(audio.AudioVolumeType.ACCESSIBILITY);
         await audioManager.setVolume(audio.AudioVolumeType.ACCESSIBILITY, maxVolumeSetting);
@@ -1936,12 +1912,6 @@ export default function audioManagerApi9() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_3003', 2, async (done: Function) => {
-      if (deviceTypeInfo == '2in1') {
-        console.info(`${TagFrmwk}: The device type is 2in1`);
-        expect(true).assertTrue();
-        done();
-        return;
-      }
       try {
         await audioManager.setVolume(audio.AudioVolumeType.ACCESSIBILITY, -1);
         await audioManager.mute(audio.AudioVolumeType.ACCESSIBILITY, true);
