@@ -110,24 +110,29 @@ export default function windowEventTest() {
         }
         subWindowClass.on('touchOutside', callback);
         await mainWindow.setPreferredOrientation(window.Orientation.LANDSCAPE);
+        await sleep(1000);
         let driver: Driver = Driver.create();
         await sleep(200);
         await driver.click(Math.round((windowLimits.minWidth as number+100)/2), 0);
+        await sleep(300);
+        console.log(`${caseName} timer1: ${timer}`);
         expect(timer).assertEqual(0);
         await driver.click((windowLimits.minWidth as number+100) + 2, 0);
+        await sleep(300);
+        console.log(`${caseName} timer2: ${timer}`);
         expect(timer).assertEqual(1);
         await mainWindow.setPreferredOrientation(window.Orientation.PORTRAIT);
+        await sleep(1000);
         subWindowClass.off('touchOutside');
         await subWindowClass.destroyWindow();
         done();
       } catch (e) {
         console.error(`${caseName} Failed. Cause: ${JSON.stringify(e)}`);
+        await subWindowClass.destroyWindow();
         if (e.code === 801) {
-          await subWindowClass.destroyWindow();
           done()
         } else {
           expect().assertFail();
-          await subWindowClass.destroyWindow();
           done()
         }
       }
@@ -168,18 +173,19 @@ export default function windowEventTest() {
         let driver: Driver = Driver.create();
         await sleep(200);
         await driver.click(Math.round(displayInfo.width/2) + 2, Math.round(displayInfo.height/2) + 2);
+        await sleep(500);
         subWindowClass.off('touchOutside');
+        console.log(`${caseName} timer1: ${timer}`);
         expect(timer).assertEqual(1);
         await subWindowClass.destroyWindow();
         done();
       } catch (e) {
         console.error(`${caseName} Failed. Cause: ${JSON.stringify(e)}`);
+        await subWindowClass.destroyWindow();
         if (e.code === 801) {
-          await subWindowClass.destroyWindow();
           done()
         } else {
           expect().assertFail();
-          await subWindowClass.destroyWindow();
           done()
         }
       }
