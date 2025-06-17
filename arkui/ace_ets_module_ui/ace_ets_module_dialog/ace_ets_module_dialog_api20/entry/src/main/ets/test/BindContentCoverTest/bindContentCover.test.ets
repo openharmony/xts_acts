@@ -52,9 +52,9 @@ export default function bindContentCoverTest() {
     * @tc.number: bindContentCoverTest_001
     * @tc.name  : bindContentCoverTest_001
     * @tc.desc  : Test the bindContentCoverTest not null
-    * @tc.level : Level 0
+    * @tc.level : Level 1
     */
-    it('bindContentCoverTest_001', 0, async (done: Function) => {
+    it('bindContentCoverTest_001', TestType.Function | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
       let btn1 = await driver.findComponent(ON.id('safeArea'));
