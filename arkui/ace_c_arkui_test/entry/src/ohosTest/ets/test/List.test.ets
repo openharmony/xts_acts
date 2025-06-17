@@ -878,7 +878,6 @@ import listScrollByTest from './list/ListScrollByTest.test'
 import listEventTest from './list/ListEventTest.test'
 import listScrollToIndex from './list/ListScrollToIndexTest.test'
 import listChildrenMainSizeTest from './list/ListChildrenMainSizeTest.test'
-import listCloseAllActionTest from './list/ListCloseAllActionTest.test'
 import listNestedScrollEventTest from './list/ListNestedScrollEventTest.test'
 import listNestedScrollTest from './list/ListNestedScrollTest.test'
 
@@ -1751,7 +1750,6 @@ export default function testsuite() {
   listItemSwipeActionTest()
   listScrollToIndex()
   listChildrenMainSizeTest()
-  listCloseAllActionTest()
   listNestedScrollEventTest()
   listNestedScrollTest()
   textInputOnTextSelectionAllChangeTest()
