@@ -48,15 +48,19 @@ export default function windowKeyBorad() {
       await sleep(1000);
       if (isPCStatus==''||isAutoWindow == 'false') {
         let input = await driver.findComponent(ON.id('textInput'));
+        console.info('beforeAll input: ' + ${JSON.stringify(input)});
         await sleep(1000);
         await input.click();
         await sleep(1000);
         let text = await driver.findComponent(ON.text('下一步'));
+        console.info('beforeAll text: ' + ${JSON.stringify(text)});
         await sleep(1000);
         if (text) {
           await text.click();
+          console.info('beforeAll click success');
         }else{
           await driver.pressBack();
+          console.info('beforeAll pressBack success');
         }
         await sleep(1000);
       }
@@ -117,8 +121,10 @@ export default function windowKeyBorad() {
           let driver: Driver = Driver.create();
           await sleep(1000);
           let input = await driver.findComponent(ON.id('textInput'));
+          console.info(`${caseName}  input: ` + ${JSON.stringify(input)});
           await sleep(1000);
           await input.click();
+          console.info(`${caseName}  click success: ` + ${JSON.stringify(input)});
           await sleep(500);
 
         }
