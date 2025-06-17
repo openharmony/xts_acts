@@ -56,7 +56,7 @@ export default function rdbstoregetValueForFlutterTest() {
 
     /**
      * @tc.name testRdbStoreGetValueForFlutter0001
-     * @tc.number SUB_DistributedData_RelationalStore_SDK_Int64JsAPITest_0900
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_Int64JsAPITest_1100
      * @tc.desc integer greater than Number.MAX_SAFE_INTEGER test
      */
     it('testRdbStoreGetValueForFlutter0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async  (done:Function) => {
@@ -89,7 +89,7 @@ export default function rdbstoregetValueForFlutterTest() {
 
     /**
      * @tc.name testRdbStoreGetValueForFlutter0002
-     * @tc.number SUB_DistributedData_RelationalStore_SDK_Int64JsAPITest_1000
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_Int64JsAPITest_1200
      * @tc.desc integer is Number.MAX_SAFE_INTEGER test
      */
     it('testRdbStoreGetValueForFlutter0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async  (done:Function) => {
@@ -121,7 +121,7 @@ export default function rdbstoregetValueForFlutterTest() {
 
     /**
      * @tc.name testRdbStoreGetValueForFlutter0003
-     * @tc.number SUB_DistributedData_RelationalStore_SDK_Int64JsAPITest_1100
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_Int64JsAPITest_1300
      * @tc.desc integer less than Number.MAX_SAFE_INTEGER test
      */
     it('testRdbStoreGetValueForFlutter0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async  (done:Function) => {
@@ -153,7 +153,7 @@ export default function rdbstoregetValueForFlutterTest() {
 
     /**
      * @tc.name testRdbStoreGetValueForFlutter0004
-     * @tc.number SUB_DistributedData_RelationalStore_SDK_Int64JsAPITest_1200
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_Int64JsAPITest_1400
      * @tc.desc integer greater than Number.MIN_SAFE_INTEGER test
      */
     it('testRdbStoreGetValueForFlutter0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async  (done:Function) => {
@@ -185,7 +185,7 @@ export default function rdbstoregetValueForFlutterTest() {
 
     /**
      * @tc.name testRdbStoreGetValueForFlutter0005
-     * @tc.number SUB_DistributedData_RelationalStore_SDK_Int64JsAPITest_1300
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_Int64JsAPITest_1500
      * @tc.desc integer is Number.MIN_SAFE_INTEGER test
      */
     it('testRdbStoreGetValueForFlutter0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async  (done:Function) => {
@@ -217,7 +217,7 @@ export default function rdbstoregetValueForFlutterTest() {
 
     /**
      * @tc.name testRdbStoreGetValueForFlutter0006
-     * @tc.number SUB_DistributedData_RelationalStore_SDK_Int64JsAPITest_1400
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_Int64JsAPITest_1600
      * @tc.desc integer less than Number.MIN_SAFE_INTEGER test
      */
     it('testRdbStoreGetValueForFlutter0006',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async  (done:Function) => {
@@ -250,7 +250,7 @@ export default function rdbstoregetValueForFlutterTest() {
 
     /**
      * @tc.name testRdbStoreGetValueForFlutter0007
-     * @tc.number SUB_DistributedData_RelationalStore_SDK_Int64JsAPITest_1500
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_Int64JsAPITest_1700
      * @tc.desc other types test
      */
     it('testRdbStoreGetValueForFlutter0007',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async  (done:Function) => {
@@ -303,7 +303,7 @@ export default function rdbstoregetValueForFlutterTest() {
 
     /**
      * @tc.name testRdbStoreGetValueForFlutter0008
-     * @tc.number SUB_DistributedData_RelationalStore_SDK_Int64JsAPITest_1600
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_Int64JsAPITest_1800
      * @tc.desc other types test
      */
     it('testRdbStoreGetValueForFlutter0008',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async  (done:Function) => {
@@ -347,7 +347,7 @@ export default function rdbstoregetValueForFlutterTest() {
     })
     /**
      * @tc.name testRdbStoreGetValueForFlutter0009
-     * @tc.number SUB_DistributedData_RelationalStore_SDK_Int64JsAPITest_1700
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_Int64JsAPITest_1900
      * @tc.desc other types test
      */
     it('testRdbStoreGetValueForFlutter0009',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async  (done:Function) => {
@@ -391,7 +391,7 @@ export default function rdbstoregetValueForFlutterTest() {
     })
     /**
      * @tc.name testRdbStoreGetValueForFlutter0010
-     * @tc.number SUB_DistributedData_RelationalStore_SDK_Int64JsAPITest_1800
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_Int64JsAPITest_2000
      * @tc.desc other types test
      */
     it('testRdbStoreGetValueForFlutter0010',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async  (done:Function) => {
@@ -435,7 +435,7 @@ export default function rdbstoregetValueForFlutterTest() {
     })
     /**
      * @tc.name testRdbStoreGetValueForFlutter0011
-     * @tc.number SUB_DistributedData_RelationalStore_SDK_Int64JsAPITest_1900
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_Int64JsAPITest_2100
      * @tc.desc other types test
      */
     it('testRdbStoreGetValueForFlutter0011',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async  (done:Function) => {
