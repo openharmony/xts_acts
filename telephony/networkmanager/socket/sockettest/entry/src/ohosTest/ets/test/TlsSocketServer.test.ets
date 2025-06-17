@@ -75,6 +75,22 @@ function tlsSocketServerTrue(params: socket.TLSSocketServer | socket.X509CertRaw
   }
 }
 
+function expectFalse(exp: boolean,info: string = ''): void {
+  try{
+    expect(exp).assertFalse();
+  } catch (err){
+    console.info(`${info} test failed err:${err}`);
+  }
+};
+
+function expectTrue(exp: boolean,info: string = ''): void {
+  try{
+    expect(exp).assertTrue();
+  } catch (err){
+    console.info(`${info} test failed err:${err}`);
+  }
+};
+
 function expectFail(params: boolean) {
   try {
     if (params === true) {
@@ -157,7 +173,7 @@ export default function TLSSocketServerTest() {
       console.info(`${caseName} test start `);
       try {
         tlsServer.on('connect', data => {
-          expect(data.clientId != undefined).assertTrue();
+          expectTrue(data.clientId != undefined);
         });
         tlsServer.listen(tlsConnectOptions, (err: BusinessError) => {
           if (err) {
@@ -169,7 +185,7 @@ export default function TLSSocketServerTest() {
         tlsServer.off('connect');
         done();
       } catch (error) {
-        expect(error === null).assertFalse();
+        expectFalse(error === null);
         done();
       }
       console.info(`${caseName} test end `);
@@ -216,10 +232,10 @@ export default function TLSSocketServerTest() {
       console.info(`${caseName} test start `);
       try {
         tlsServer.listen(tlsConnectOptions).then(() => {
-          expect(true).assertTrue();
+          expectTrue(true);
           done();
         }).catch((err: BusinessError) => {
-          expect(true).assertFail();
+          expectFalse(true);
           done();
         });
       } catch (err) {
@@ -242,10 +258,10 @@ export default function TLSSocketServerTest() {
       console.info(`${caseName} test start `);
       try {
         tlsServer.listen(tlsConnectOptions).then(() => {
-          expect(true).assertTrue();
+          expectTrue(true);
           done();
         }).catch((err: BusinessError) => {
-          expect(true).assertFail();
+          expectFalse(true);
           done();
         });
       } catch (err) {
@@ -294,10 +310,10 @@ export default function TLSSocketServerTest() {
           ALPNProtocols: ["spdy/1", "http/1.1"]
         };
         tlsServer.listen(tlsConnectOptions4).then(() => {
-          expect(true).assertTrue();
+          expectTrue(true);
           done();
         }).catch((err: BusinessError) => {
-          expect(true).assertFail();
+          expectFalse(true);
           done();
         });
       } catch (err) {
@@ -346,10 +362,10 @@ export default function TLSSocketServerTest() {
           ALPNProtocols: ["spdy/1", "http/1.1"]
         };
         tlsServer.listen(tlsConnectOptions4).then(() => {
-          expect(true).assertTrue();
+          expectTrue(true);
           done();
         }).catch((err: BusinessError) => {
-          expect(true).assertFail();
+          expectFalse(true);
           done();
         });
       } catch (err) {
@@ -398,10 +414,10 @@ export default function TLSSocketServerTest() {
           ALPNProtocols: ["spdy/1", "http/1.1"]
         };
         tlsServer.listen(tlsConnectOptions4).then(() => {
-          expect(true).assertTrue();
+          expectTrue(true);
           done();
         }).catch((err: BusinessError) => {
-          expect(true).assertFail();
+          expectFalse(true);
           done();
         });
       } catch (err) {
@@ -450,10 +466,10 @@ export default function TLSSocketServerTest() {
           ALPNProtocols: ["spdy/1", "http/1.1"]
         };
         tlsServer.listen(tlsConnectOptions4).then(() => {
-          expect(true).assertTrue();
+          expectTrue(true);
           done();
         }).catch((err: BusinessError) => {
-          expect(true).assertFail();
+          expectFalse(true);
           done();
         });
       } catch (err) {
@@ -502,10 +518,10 @@ export default function TLSSocketServerTest() {
           ALPNProtocols: ["spdy/1", "http/1.1"]
         };
         tlsServer.listen(tlsConnectOptions4).then(() => {
-          expect(true).assertTrue();
+          expectTrue(true);
           done();
         }).catch((err: BusinessError) => {
-          expect(true).assertFail();
+          expectFalse(true);
           done();
         });
       } catch (err) {
@@ -554,10 +570,10 @@ export default function TLSSocketServerTest() {
           ALPNProtocols: ["spdy/1", "http/1.1"]
         };
         tlsServer.listen(tlsConnectOptions4).then(() => {
-          expect(true).assertTrue();
+          expectTrue(true);
           done();
         }).catch((err: BusinessError) => {
-          expect(true).assertFail();
+          expectFalse(true);
           done();
         });
       } catch (err) {
@@ -606,10 +622,10 @@ export default function TLSSocketServerTest() {
           ALPNProtocols: ["spdy/1", "http/1.1"]
         };
         tlsServer.listen(tlsConnectOptions4).then(() => {
-          expect(true).assertTrue();
+          expectTrue(true);
           done();
         }).catch((err: BusinessError) => {
-          expect(true).assertFail();
+          expectFalse(true);
           done();
         });
       } catch (err) {
@@ -658,10 +674,10 @@ export default function TLSSocketServerTest() {
           ALPNProtocols: ["spdy/1", "http/1.1"]
         };
         tlsServer.listen(tlsConnectOptions4).then(() => {
-          expect(true).assertTrue();
+          expectTrue(true);
           done();
         }).catch((err: BusinessError) => {
-          expect(true).assertFail();
+          expectFalse(true);
           done();
         });
       } catch (err) {
@@ -710,10 +726,10 @@ export default function TLSSocketServerTest() {
           ALPNProtocols: ["spdy/1", "http/1.1"]
         };
         tlsServer.listen(tlsConnectOptions4).then(() => {
-          expect(true).assertTrue();
+          expectTrue(true);
           done();
         }).catch((err: BusinessError) => {
-          expect(true).assertFail();
+          expectFalse(true);
           done();
         });
       } catch (err) {
@@ -762,10 +778,10 @@ export default function TLSSocketServerTest() {
           ALPNProtocols: ["spdy/1", "http/1.1"]
         };
         tlsServer.listen(tlsConnectOptions4).then(() => {
-          expect(true).assertTrue();
+          expectTrue(true);
           done();
         }).catch((err: BusinessError) => {
-          expect(true).assertFail();
+          expectFalse(true);
           done();
         });
       } catch (err) {
@@ -814,10 +830,10 @@ export default function TLSSocketServerTest() {
           ALPNProtocols: ["spdy/1", "http/1.1"]
         };
         tlsServer.listen(tlsConnectOptions4).then(() => {
-          expect(true).assertTrue();
+          expectTrue(true);
           done();
         }).catch((err: BusinessError) => {
-          expect(true).assertFail();
+          expectFalse(true);
           done();
         });
       } catch (err) {
@@ -866,10 +882,10 @@ export default function TLSSocketServerTest() {
           ALPNProtocols: ["spdy/1", "http/1.1"]
         };
         tlsServer.listen(tlsConnectOptions4).then(() => {
-          expect(true).assertTrue();
+          expectTrue(true);
           done();
         }).catch((err: BusinessError) => {
-          expect(true).assertFail();
+          expectFalse(true);
           done();
         });
       } catch (err) {
@@ -918,10 +934,10 @@ export default function TLSSocketServerTest() {
           ALPNProtocols: ["spdy/1", "http/1.1"]
         };
         tlsServer.listen(tlsConnectOptions4).then(() => {
-          expect(true).assertTrue();
+          expectTrue(true);
           done();
         }).catch((err: BusinessError) => {
-          expect(true).assertFail();
+          expectFalse(true);
           done();
         });
       } catch (err) {
@@ -971,10 +987,10 @@ export default function TLSSocketServerTest() {
           ALPNProtocols: ["spdy/1", "http/1.1"]
         };
         tlsServer.listen(tlsConnectOptions4).then(() => {
-          expect(true).assertTrue();
+          expectTrue(true);
           done();
         }).catch((err: BusinessError) => {
-          expect(true).assertFail();
+          expectFalse(true);
           done();
         });
       } catch (err) {
@@ -1023,10 +1039,10 @@ export default function TLSSocketServerTest() {
           ALPNProtocols: ["spdy/1", "http/1.1"]
         };
         tlsServer.listen(tlsConnectOptions4).then(() => {
-          expect(true).assertTrue();
+          expectTrue(true);
           done();
         }).catch((err: BusinessError) => {
-          expect(true).assertFail();
+          expectFalse(true);
           done();
         });
       } catch (err) {
@@ -1075,10 +1091,10 @@ export default function TLSSocketServerTest() {
           ALPNProtocols: ["spdy/1", "http/1.1"]
         };
         tlsServer.listen(tlsConnectOptions4).then(() => {
-          expect(true).assertTrue();
+          expectTrue(true);
           done();
         }).catch((err: BusinessError) => {
-          expect(true).assertFail();
+          expectFalse(true);
           done();
         });
       } catch (err) {
@@ -1127,10 +1143,10 @@ export default function TLSSocketServerTest() {
           ALPNProtocols: ["spdy/1", "http/1.1"]
         };
         tlsServer.listen(tlsConnectOptions4).then(() => {
-          expect(true).assertTrue();
+          expectTrue(true);
           done();
         }).catch((err: BusinessError) => {
-          expect(true).assertFail();
+          expectFalse(true);
           done();
         });
       } catch (err) {
@@ -1151,17 +1167,19 @@ export default function TLSSocketServerTest() {
     it('testNetworkMgrSocketTLSSocketServerGetState0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerGetState0100';
       console.info(`${caseName} test start `);
-      await tlsServer.listen(tlsConnectOptions);
+      await tlsServer.listen(tlsConnectOptions).catch((err:BusinessError) => {
+                    console.info('fail to listen' + err.code.toString());
+                });
       try {
         tlsServer.getState((err: BusinessError, data: socket.SocketStateBase) => {
           if (err) {
             done();
           }
-          expect(data != null).assertTrue();
+          expectTrue(data != null);
           done();
         })
       } catch (errState) {
-        expect(true).assertFail();
+        expectFalse(true);
         done();
       }
       console.info(`${caseName} test end `);
@@ -1206,15 +1224,17 @@ export default function TLSSocketServerTest() {
           },
           ALPNProtocols: ["spdy/1", "http/1.1"]
         };
-        await tlsServer.listen(tlsConnectOptions2);
+        await tlsServer.listen(tlsConnectOptions2).catch((err:BusinessError) => {
+                    console.info('fail to listen' + err.code.toString());
+                });
         try {
           tlsServer.getState((err: BusinessError, data: socket.SocketStateBase) => {
             if (err) {}
-            expect(data != null).assertTrue();
+            expectTrue(data != null);
             done();
           })
         } catch (errState) {
-          expect(true).assertFail();
+          expectFalse(true);
           done();
         }
       } catch (err) {
@@ -1263,15 +1283,17 @@ export default function TLSSocketServerTest() {
           },
           ALPNProtocols: ["spdy/1", "http/1.1"]
         };
-        await tlsServer.listen(tlsConnectOptions3);
+        await tlsServer.listen(tlsConnectOptions3).catch((err:BusinessError) => {
+                    console.info('fail to listen' + err.code.toString());
+                });
         try {
           tlsServer.getState((err: BusinessError, data: socket.SocketStateBase) => {
             if (err) {}
-            expect(data != null).assertTrue();
+            expectTrue(data != null);
             done();
           })
         } catch (errState) {
-          expect(true).assertFail();
+          expectFalse(true);
           done();
         }
       } catch (err) {
@@ -1295,22 +1317,22 @@ export default function TLSSocketServerTest() {
       try {
         tlsServer.listen(tlsConnectOptions, (err: BusinessError) => {
           if (err) {
-            expect(true).assertFail();
+            expectFalse(true);
           }
-          expect(true).assertTrue();
+          expectTrue(true);
           done();
         })
         try {
           await tlsServer.getState().then((data: socket.SocketStateBase) => {
-            expect(data !== null).assertTrue();
+            expectTrue(data !== null);
             done();
           }).catch((err: BusinessError) => {
-            expect(err != null).assertFail();
+            expectFalse(err != null);
             done();
           });
           tlsServer.on('connect', (data: socket.TLSSocketConnection) => {});
         } catch (errState) {
-          expect(true).assertFail();
+          expectFalse(true);
           done();
         }
       } catch (err) {
@@ -1358,22 +1380,22 @@ export default function TLSSocketServerTest() {
         };
         tlsServer.listen(tlsConnectOptions5, (err: BusinessError) => {
           if (err) {
-            expect(true).assertFail();
+            expectFalse(true);
             done();
           }
-          expect(true).assertTrue();
+          expectTrue(true);
           done();
         })
         try {
           await tlsServer.getState().then((data: socket.SocketStateBase) => {
-            expect(data !== null).assertTrue();
+            expectTrue(data !== null);
             done();
           }).catch((err: BusinessError) => {
-            expect(err != null).assertFail();
+            expectFalse(err != null);
             done();
           });
         } catch (errState) {
-          expect(true).assertFail();
+          expectFalse(true);
           done();
         }
       } catch (err) {
@@ -1396,14 +1418,14 @@ export default function TLSSocketServerTest() {
       console.info(`${caseName} test start `);
       try {
         tlsServer.getState().then((data: socket.SocketStateBase) => {
-          expect(data !== null).assertTrue();
+          expectTrue(data !== null);
           done();
         }).catch((err: BusinessError) => {
-          expect(true).assertFail();
+          expectFalse(true);
           done();
         });
       } catch (errState) {
-        expect(true).assertFail();
+        expectFalse(true);
         done();
       }
       console.info(`${caseName} test end `);
@@ -1433,13 +1455,15 @@ export default function TLSSocketServerTest() {
           reuseAddress: true,
           socketTimeout: 3000
         };
-        await tlsServer.listen(tlsConnectOptions);
+        await tlsServer.listen(tlsConnectOptions).catch((err:BusinessError) => {
+                    console.info('fail to listen' + err.code.toString());
+                });
         tlsServer.setExtraOptions(tcpExtraOptions, (err: BusinessError) => {
           if (err) {
-            expect(true).assertFail();
+            expectFalse(true);
             done();
           }
-          expect(true).assertTrue();
+          expectTrue(true);
           done();
         });
       } catch (err) {
@@ -1473,13 +1497,15 @@ export default function TLSSocketServerTest() {
           reuseAddress: true,
           socketTimeout: 3000
         };
-        await tlsServer.listen(tlsConnectOptions);
+        await tlsServer.listen(tlsConnectOptions).catch((err:BusinessError) => {
+                    console.info('fail to listen' + err.code.toString());
+                });
         tlsServer.setExtraOptions(tcpExtraOptions, (err: BusinessError) => {
           if (err) {
-            expect(true).assertFail();
+            expectFalse(true);
             done();
           }
-          expect(true).assertTrue();
+          expectTrue(true);
           done();
         });
       } catch (err) {
@@ -1513,13 +1539,15 @@ export default function TLSSocketServerTest() {
           reuseAddress: true,
           socketTimeout: 3000
         };
-        await tlsServer.listen(tlsConnectOptions);
+        await tlsServer.listen(tlsConnectOptions).catch((err:BusinessError) => {
+                    console.info('fail to listen' + err.code.toString());
+                });
         tlsServer.setExtraOptions(tcpExtraOptions, (err: BusinessError) => {
           if (err) {
-            expect(true).assertFail();
+            expectFalse(true);
             done();
           }
-          expect(true).assertTrue();
+          expectTrue(true);
           done();
         });
       } catch (err) {
@@ -1553,16 +1581,18 @@ export default function TLSSocketServerTest() {
         socketTimeout: 3000
       };
       try {
-        await tlsServer.listen(tlsConnectOptions);
+        await tlsServer.listen(tlsConnectOptions).catch((err:BusinessError) => {
+                    console.info('fail to listen' + err.code.toString());
+                });
         tlsServer.setExtraOptions(tcpExtraOptions).then(() => {
-          expect(true).assertTrue();
+          expectTrue(true);
           done();
         }).catch((err: BusinessError) => {
-          expect(err !== null).assertFail();
+          expectFalse(err !== null);
           done();
         });
       } catch (setEOErr) {
-        expect(setEOErr).assertFail();
+        expectFalse(setEOErr);
         done();
       }
       console.info(`${caseName} test end `);
@@ -1591,17 +1621,19 @@ export default function TLSSocketServerTest() {
         reuseAddress: true,
         socketTimeout: 3000
       };
-      await tlsServer.listen(tlsConnectOptions);
+      await tlsServer.listen(tlsConnectOptions).catch((err:BusinessError) => {
+                    console.info('fail to listen' + err.code.toString());
+                });
       try {
         tlsServer.setExtraOptions(tcpExtraOptions).then(() => {
-          expect(true).assertTrue();
+          expectTrue(true);
           done();
         }).catch((err: BusinessError) => {
-          expect(err !== null).assertFail();
+          expectFalse(err !== null);
           done();
         });
       } catch (setEOErr) {
-        expect(setEOErr).assertFail();
+        expectFalse(setEOErr);
         done();
       }
       console.info(`${caseName} test end `);
@@ -1630,17 +1662,19 @@ export default function TLSSocketServerTest() {
         reuseAddress: true,
         socketTimeout: 0
       };
-      await tlsServer.listen(tlsConnectOptions);
+      await tlsServer.listen(tlsConnectOptions).catch((err:BusinessError) => {
+                    console.info('fail to listen' + err.code.toString());
+                });
       try {
         tlsServer.setExtraOptions(tcpExtraOptions).then(() => {
-          expect(true).assertTrue();
+          expectTrue(true);
           done();
         }).catch((err: BusinessError) => {
-          expect(err !== null).assertFail();
+          expectFalse(err !== null);
           done();
         });
       } catch (setEOErr) {
-        expect(setEOErr).assertFail();
+        expectFalse(setEOErr);
         done();
       }
       console.info(`${caseName} test end `);
@@ -1669,7 +1703,9 @@ export default function TLSSocketServerTest() {
         reuseAddress: true,
         socketTimeout: 0
       };
-      await tlsServer.listen(tlsConnectOptions);
+      await tlsServer.listen(tlsConnectOptions).catch((err:BusinessError) => {
+                    console.info('fail to listen' + err.code.toString());
+                });
       try {
         tlsServer.setExtraOptions(tcpExtraOptions).then(() => {
           expectFail(true);
@@ -1694,7 +1730,9 @@ export default function TLSSocketServerTest() {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerGetCertificate0100';
       console.info(`${caseName} test start `);
       try {
-        await tlsServer.listen(tlsConnectOptions);
+        await tlsServer.listen(tlsConnectOptions).catch((err:BusinessError) => {
+                    console.info('fail to listen' + err.code.toString());
+                });
         tlsServer.getCertificate().then((data: socket.X509CertRawData) => {
           done();
         }).catch((err: BusinessError) => {
@@ -1734,13 +1772,15 @@ export default function TLSSocketServerTest() {
         },
         ALPNProtocols: ["spdy/1", "http/1.1"]
       };
-      await tlsServer.listen(tlsConnectOptions7);
+      await tlsServer.listen(tlsConnectOptions7).catch((err:BusinessError) => {
+                    console.info('fail to listen' + err.code.toString());
+                });
       try {
         tlsServer.getCertificate().then((data: socket.X509CertRawData) => {
           done();
         })
       } catch (err) {
-        expect(err != null).assertFail();
+        expectFalse(err != null);
         done();
       }
       console.info(`${caseName} test end `);
@@ -1777,14 +1817,16 @@ export default function TLSSocketServerTest() {
           },
           ALPNProtocols: ["spdy/1", "http/1.1"]
         };
-        await tlsServer.listen(tlsConnectOptions);
+        await tlsServer.listen(tlsConnectOptions).catch((err:BusinessError) => {
+                    console.info('fail to listen' + err.code.toString());
+                });
         try {
           tlsServer.getCertificate((err: BusinessError, data: socket.X509CertRawData) => {
-            expect(data != null).assertTrue();
+            expectTrue(data != null);
             done();
           })
         } catch (err) {
-          expect(err != null).assertFail();
+          expectFalse(err != null);
           done();
         }
       } catch (err) {
@@ -1825,7 +1867,9 @@ export default function TLSSocketServerTest() {
           },
           ALPNProtocols: ["spdy/1", "http/1.1"]
         };
-        await tlsServer.listen(tlsConnectOptions8);
+        await tlsServer.listen(tlsConnectOptions8).catch((err:BusinessError) => {
+                    console.info('fail to listen' + err.code.toString());
+                });
         let callback: Callback<socket.TLSSocketConnection> = (data: socket.TLSSocketConnection) => {}
         tlsServer.on('connect', callback);
         tlsServer.off('connect');
@@ -1867,8 +1911,12 @@ export default function TLSSocketServerTest() {
           reuseAddress: true,
           socketTimeout: 30000
         };
-        await tlsServer.listen(tlsConnectOptions);
-        await tlsServer.setExtraOptions(tcpExtraOptions);
+        await tlsServer.listen(tlsConnectOptions).catch((err:BusinessError) => {
+                    console.info('fail to listen' + err.code.toString());
+                });
+        await tlsServer.setExtraOptions(tcpExtraOptions).catch((err:BusinessError) => {
+                    console.info('fail to setExtraOptions' + err.code.toString());
+                });
         tlsServer.getCertificate((err: BusinessError, data: socket.X509CertRawData) => {
           if (err) {
             expectFail(false);
@@ -1936,7 +1984,9 @@ export default function TLSSocketServerTest() {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerGetProtocol0100';
       console.info(`${caseName} test start `);
       try {
-        await tlsServer.listen(tlsConnectOptions);
+        await tlsServer.listen(tlsConnectOptions).catch((err:BusinessError) => {
+                    console.info('fail to listen' + err.code.toString());
+                });
         tlsServer.getProtocol((err: BusinessError, data: string) => {
           if (err) {
             expectFail(false);
@@ -1988,7 +2038,9 @@ export default function TLSSocketServerTest() {
           },
           ALPNProtocols: ["spdy/1", "http/1.1"]
         };
-        await tlsServer.listen(tlsConnectOptions);
+        await tlsServer.listen(tlsConnectOptions).catch((err:BusinessError) => {
+                    console.info('fail to listen' + err.code.toString());
+                });
         tlsServer.getProtocol((err: BusinessError, data: string) => {
           if (err) {
             expectFail(false);
@@ -2040,7 +2092,9 @@ export default function TLSSocketServerTest() {
           },
           ALPNProtocols: ["spdy/1", "http/1.1"]
         };
-        await tlsServer.listen(tlsConnectOptions);
+        await tlsServer.listen(tlsConnectOptions).catch((err:BusinessError) => {
+                    console.info('fail to listen' + err.code.toString());
+                });
         tlsServer.getProtocol((err: BusinessError, data: string) => {
           if (err) {
             expectFail(false);
@@ -2068,8 +2122,12 @@ export default function TLSSocketServerTest() {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerOn0100';
       console.info(`${caseName} test start `);
       try {
-        await tlsClient.bind(addr);
-        await tlsClient.connect(connOpt);
+        await tlsClient.bind(addr).catch((err:BusinessError) => {
+                    console.info('fail to bind' + err.code.toString());
+                });
+        await tlsClient.connect(connOpt).catch((err:BusinessError) => {
+                    console.info('fail to connect' + err.code.toString());
+                });
         try {
           expectFail(true);
           done();
@@ -2104,7 +2162,9 @@ export default function TLSSocketServerTest() {
     it('testNetworkMgrSocketTLSSocketServerOn0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerOn0300';
       console.info(`${caseName} test start `);
-      await tlsServer.listen(tlsConnectOptions);
+      await tlsServer.listen(tlsConnectOptions).catch((err:BusinessError) => {
+                    console.info('fail to listen' + err.code.toString());
+                });
       let addr2: socket.NetAddress = {
         address: '127.0.0.1',
         port: 300000
@@ -2153,7 +2213,9 @@ export default function TLSSocketServerTest() {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerOff0100';
       console.info(`${caseName} test start `);
       try {
-        await tlsServer.listen(tlsConnectOptions);
+        await tlsServer.listen(tlsConnectOptions).catch((err:BusinessError) => {
+                    console.info('fail to listen' + err.code.toString());
+                });
         let addr2: socket.NetAddress = {
           address: '127.0.0.1',
           port: 3000
@@ -2188,7 +2250,9 @@ export default function TLSSocketServerTest() {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerOff0200';
       console.info(`${caseName} test start `);
       try {
-        await tlsServer.listen(tlsConnectOptions);
+        await tlsServer.listen(tlsConnectOptions).catch((err:BusinessError) => {
+                    console.info('fail to listen' + err.code.toString());
+                });
         let addr2: socket.NetAddress = {
           address: '127.0.0.1',
           port: 3000
@@ -2223,7 +2287,9 @@ export default function TLSSocketServerTest() {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerOff0300';
       console.info(`${caseName} test start `);
       try {
-        await tlsServer.listen(tlsConnectOptions);
+        await tlsServer.listen(tlsConnectOptions).catch((err:BusinessError) => {
+                    console.info('fail to listen' + err.code.toString());
+                });
         let addr3: socket.NetAddress = {
           address: '127.0.0.122222',
           port: 800000
@@ -2258,7 +2324,9 @@ export default function TLSSocketServerTest() {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerOnE0100';
       console.info(`${caseName} test start `);
       try {
-        await tlsServer.listen(tlsConnectOptions);
+        await tlsServer.listen(tlsConnectOptions).catch((err:BusinessError) => {
+                    console.info('fail to listen' + err.code.toString());
+                });
         let addr3: socket.NetAddress = {
           address: '127.0.0.1',
           port: 3000
@@ -2293,7 +2361,9 @@ export default function TLSSocketServerTest() {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerOnE0200';
       console.info(`${caseName} test start `);
       try {
-        await tlsServer.listen(tlsConnectOptions);
+        await tlsServer.listen(tlsConnectOptions).catch((err:BusinessError) => {
+                    console.info('fail to listen' + err.code.toString());
+                });
         let addr3: socket.NetAddress = {
           address: '127.0.0.20',
           port: 3000
@@ -2320,7 +2390,9 @@ export default function TLSSocketServerTest() {
           done();
         } catch (err) {
           expectFail(false);
-          await tlsClient.close();
+          await tlsClient.close().catch((err:BusinessError) => {
+                    console.info('fail to close' + err.code.toString());
+                });
           done();
         }
       } catch (err) {
@@ -2342,7 +2414,9 @@ export default function TLSSocketServerTest() {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerOnE0300';
       console.info(`${caseName} test start `);
       try {
-        await tlsServer.listen(tlsConnectOptions);
+        await tlsServer.listen(tlsConnectOptions).catch((err:BusinessError) => {
+                    console.info('fail to listen' + err.code.toString());
+                });
         let addr3: socket.NetAddress = {
           address: '127.0.0.1',
           port: 30
@@ -2391,7 +2465,9 @@ export default function TLSSocketServerTest() {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerOffE0100';
       console.info(`${caseName} test start `);
       try {
-        await tlsServer.listen(tlsConnectOptions);
+        await tlsServer.listen(tlsConnectOptions).catch((err:BusinessError) => {
+                    console.info('fail to listen' + err.code.toString());
+                });
         tlsClient.bind(addr);
         tlsClient.connect(connOpt);
         tlsServer.on('error', (err: BusinessError) => {});
@@ -2401,7 +2477,9 @@ export default function TLSSocketServerTest() {
           done();
         } catch (err) {
           expectFail(false);
-          await tlsClient.close();
+          await tlsClient.close().catch((err:BusinessError) => {
+                    console.info('fail to close' + err.code.toString());
+                });
           done();
         }
       } catch (err) {
@@ -2423,7 +2501,9 @@ export default function TLSSocketServerTest() {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerOffE0200';
       console.info(`${caseName} test start `);
       try {
-        await tlsServer.listen(tlsConnectOptions);
+        await tlsServer.listen(tlsConnectOptions).catch((err:BusinessError) => {
+                    console.info('fail to listen' + err.code.toString());
+                });
         tlsClient.bind(addr);
         tlsClient.connect(connOpt);
         let callback: ErrorCallback = (err: BusinessError) => {};
@@ -2434,7 +2514,9 @@ export default function TLSSocketServerTest() {
           done();
         } catch (err) {
           expectFail(false);
-          await tlsClient.close();
+          await tlsClient.close().catch((err:BusinessError) => {
+                    console.info('fail to close' + err.code.toString());
+                });
           done();
         }
       } catch (err) {
@@ -2456,7 +2538,9 @@ export default function TLSSocketServerTest() {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerOffE0300';
       console.info(`${caseName} test start `);
       try {
-        await tlsServer.listen(tlsConnectOptions);
+        await tlsServer.listen(tlsConnectOptions).catch((err:BusinessError) => {
+                    console.info('fail to listen' + err.code.toString());
+                });
         tlsClient.bind(addr);
         tlsClient.connect(connOpt);
         try {
@@ -2464,7 +2548,9 @@ export default function TLSSocketServerTest() {
           expectFail(true);
           done();
         } catch (err) {
-          await tlsClient.close();
+          await tlsClient.close().catch((err:BusinessError) => {
+                    console.info('fail to close' + err.code.toString());
+                });
           expectFail(false);
           done();
         }

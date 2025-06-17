@@ -22,6 +22,75 @@ import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
 import { TextNodeController } from './CustomNode.test';
 import settings from '@ohos.settings';
+import { StartOptions } from '@kit.AbilityKit';
+import window from '@ohos.window';
+
+let sleep = (sleepMs: number) => new Promise<string>(resolve => setTimeout(resolve, sleepMs));
+
+async function startAbility(caseName: string, context: common.UIAbilityContext, options?: StartOptions) {
+  let want: Want = {
+    bundleName: AppStorage.get('bundleName'),
+    abilityName: 'StartAbility',
+  };
+  if (options) {
+    await context.startAbility(want, options).then(() => {
+      console.info(`${caseName} Succeeded in starting ability.`);
+    }).catch((err: BusinessError) => {
+      console.info(`${caseName} Failed in starting ability. Cause message: ${err.message}`);
+    });
+  } else {
+    await context.startAbility(want).then(() => {
+      console.info(`${caseName} Succeeded in starting ability.`);
+    }).catch((err: BusinessError) => {
+      console.info(`${caseName} Failed in starting ability. Cause message: ${err.message}`);
+    });
+  }
+  await sleep(1000)
+  let windowStageStart = AppStorage.get('windowStageStart') as window.WindowStage;
+  return windowStageStart
+}
+
+async function terminateAbility(caseName: string) {
+  let pageContext = AppStorage.get('contextStart') as common.UIAbilityContext
+  await pageContext.terminateSelf().then(() => {
+    console.log(`${caseName} terminateSelf success`);
+  }).catch((err: BusinessError) => {
+    console.error(`${caseName} terminateSelf fail, err: ${JSON.stringify(err)}`);
+  });
+  await sleep(1000)
+}
+
+// 截断小数位并格式化为两位
+function truncateAndFormat(num: number): string {
+  const truncated = Math.trunc(num * 100) / 100;
+  return truncated.toFixed(2);
+}
+
+async function isPipWindowSupport(context1: common.BaseContext){
+    let pipController: pipWindow.PiPController | undefined = undefined;
+      let mXComponentController = new XComponentController();
+      let navId = "";
+      let config: pipWindow.PiPConfiguration = {
+        context: context1,
+        componentController: mXComponentController,
+        navigationId: navId,
+        templateType: pipWindow.PiPTemplateType.VIDEO_LIVE,
+        contentWidth: 500,
+        contentHeight: 500,
+        localStorage: null!
+      };
+      pipController = await pipWindow.create(config);
+      let isPipWindowSupport =  pipController.isPiPSupported();
+        console.log('isPipWindowSupport:'+isPipWindowSupport);
+        await pipController.startPiP();
+        await  sleep(300)
+        await pipController.stopPiP();
+        if (isPipWindowSupport) {
+          return true;
+        }else{
+          return false;
+        }
+}
 
 // let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
 
@@ -30,6 +99,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
     console.log('describe window_api_test start!!!')
     const TRUE_FLAG = true;
     let tag = 'pipWindowTest'
+    let isPipWindowEnabled = false;
     let isAutoWindow: string =
       settings.getValueSync(globalThis.abilityContext, 'window_pcmode_switch_status', '',
         settings.domainName.DEVICE_SHARED);
@@ -59,6 +129,11 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
       };
       return config;
     }
+
+    beforeAll(async () => {
+      isPipWindowEnabled = await isPipWindowSupport(context1);
+      console.log('beforeAll isPipEnabled:'+isPipWindowEnabled);
+    });
 
     /**
      * @tc.number     : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0100
@@ -2288,8 +2363,8 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
         console.log('PiPSizeChange_Function_Callback_0 device type 2in1');
         done();
         return;
-      }
-      let pipController:pipWindow.PiPController | undefined = undefined;
+      }else{
+        let pipController:pipWindow.PiPController | undefined = undefined;
       let mXComponentController = new XComponentController();
       let navId = "";
       let contentWidth = 400;
@@ -2352,6 +2427,8 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           done();
         }
       }
+      }
+      
     })
     /**
      * @tc.number     : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4400
@@ -2366,8 +2443,8 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
         console.log('PiPSizeChange_Function_Callback_1 device type 2in1');
         done();
         return;
-      }
-      let pipController:pipWindow.PiPController | undefined = undefined;
+      }else{
+        let pipController:pipWindow.PiPController | undefined = undefined;
       let mXComponentController = new XComponentController();
       let navId = "";
       let contentWidth = 400;
@@ -2433,6 +2510,8 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           done();
         }
       }
+      }
+      
     })
     /**
      * @tc.number     : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4500
@@ -2447,8 +2526,8 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
         console.log('PiPSizeChange_Function_Callback_2 device type 2in1');
         done();
         return;
-      }
-      let pipController:pipWindow.PiPController | undefined = undefined;
+      }else{
+        let pipController:pipWindow.PiPController | undefined = undefined;
       let mXComponentController = new XComponentController();
       let navId = "";
       let contentWidth = 400;
@@ -2523,6 +2602,8 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           done();
         }
       }
+      }
+      
     })
 
     /**
@@ -3305,16 +3386,19 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           } else {
             console.log(`${message} Succeeded in creating pip controller, Data:${data}`)
             await pipController.startPiP();
+            await sleep(1000);
             pipController.on('controlEvent', callback);
             let button1 = await driver.findComponent(ON.id('SCBPipSceneOverlay'));
+            let Bounds = await button1.getBounds()
+            let bottom = Bounds.bottom
             let BoundsCenter = await button1.getBoundsCenter();
             let x = BoundsCenter.x;
-            let y = BoundsCenter.y;
-            console.log(`${message} BoundsCenter x: ${x}, y: ${y}`);
+            console.log(`${message} BoundsCenter x: ${x}, bottom: ${bottom}`);
             await driver.findComponent(ON.id('SCBPipSceneOverlay')).then(async (component) => {
               await component.click();
               await sleep(1000);
-              await driver.click(x, y + 182);
+              await driver.click(x, bottom - 98);
+              console.log(`${message} click position x: ${x}, y: ${bottom - 98}`);
             })
             await sleep(1000);
             expect(controlParam.controlType).assertEqual(pipWindow.PiPControlType.VIDEO_PLAY_PAUSE);
@@ -3382,17 +3466,20 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
           } else {
             console.log(`${message} Succeeded in creating pip controller, Data:${data}`)
             await pipController.startPiP();
+            await sleep(1000);
             pipController.on('controlEvent', callback);
             pipController.off('controlEvent');
             let button1 = await driver.findComponent(ON.id('SCBPipSceneOverlay'));
+            let Bounds = await button1.getBounds()
+            let bottom = Bounds.bottom
             let BoundsCenter = await button1.getBoundsCenter();
             let x = BoundsCenter.x;
-            let y = BoundsCenter.y;
-            console.log(`${message} BoundsCenter x: ${x}, y: ${y}`);
+            console.log(`${message} BoundsCenter x: ${x}, bottom: ${bottom}`);
             await driver.findComponent(ON.id('SCBPipSceneOverlay')).then(async (component) => {
               await component.click();
               await sleep(1000);
-              await driver.click(x, y + 182);
+              await driver.click(x, bottom - 98);
+              console.log(`${message} click position x: ${x}, y: ${bottom - 98}`);
             })
             await sleep(1000);
             expect(controlParam).assertEqual(undefined);
@@ -3881,6 +3968,374 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
       }
     });
 
+    /**
+     * @tc.number     : testPipWindowDefaultWindowSize_0100
+     * @tc.name       : testPipWindowDefaultWindowSize_0100
+     * @tc.desc       : 验证画中画窗口按大窗启动第二次传入undefined按关闭前大小启动
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testPipWindowDefaultWindowSize_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      const message = 'testPipWindowDefaultWindowSize_0100!'
+      try {
+        if (!isPipWindowEnabled) {
+          done();
+        }else{
+          await startAbility(message, globalThis.abilityContext);
+        let driver = Driver.create();
+        let createPip1 = await driver.findComponent(ON.id('CreatePipWindow1'));
+        await sleep(1000)
+        await createPip1.click();
+        // 确认是否是801
+        let isSupported = await driver.findComponent(ON.id('isSupported'));
+        await sleep(1000)
+        let isSupportedText = await isSupported.getText();
+        console.error(`${message} isSupportedText: ${isSupportedText}`);
+        if (isSupportedText === '801') {
+          await terminateAbility(message);
+          await sleep(1000)
+          done();
+        } else {
+          let getPipInfo1 = await driver.findComponent(ON.id('GetPiPWindowInfo1'));
+          await sleep(1000)
+          await getPipInfo1.click();
+          let getPipInfoText1 = await driver.findComponent(ON.id('PipWindowInfoText1'));
+          await sleep(1000)
+          let text1 = await getPipInfoText1.getText();
+          console.error(`${message} text1: ${text1}`);
+          expect(Number(text1.trim())).assertEqual(1)
+          let stopPip1 = await driver.findComponent(ON.id('StopPiPWindow1'));
+          await sleep(1000)
+          await stopPip1.click();
+          await terminateAbility(message);
+          await sleep(1000)
+
+          await startAbility(message, globalThis.abilityContext);
+          let createPip2 = await driver.findComponent(ON.id('CreatePipWindow2'));
+          await sleep(1000)
+          await createPip2.click();
+          let getPipInfo2 = await driver.findComponent(ON.id('GetPiPWindowInfo2'));
+          await sleep(1000)
+          await getPipInfo2.click();
+          let getPipInfoText2 = await driver.findComponent(ON.id('PipWindowInfoText2'));
+          await sleep(1000)
+          let text2 = await getPipInfoText2.getText();
+          console.error(`${message} text2: ${text2}`);
+          expect(Number(text2.trim())).assertEqual(1)
+          let stopPip2 = await driver.findComponent(ON.id('StopPiPWindow2'));
+          await sleep(1000)
+          await stopPip2.click();
+          await terminateAbility(message);
+          await sleep(1000)
+          done()
+        }
+        }
+        
+      } catch (err) {
+        console.error(`${message} Failed, Cause code ${err.code}, message ${err.message}`);
+        if (err.code === 801) {
+          done();
+        } else {
+          await terminateAbility(message);
+          await sleep(1000)
+          expect().assertFail();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number     : testPipWindowDefaultWindowSize_0200
+     * @tc.name       : testPipWindowDefaultWindowSize_0200
+     * @tc.desc       : 验证画中画窗口按大窗启动第二次传入0按关闭前大小启动
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testPipWindowDefaultWindowSize_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      const message = 'testPipWindowDefaultWindowSize_0200!'
+      try {
+        if (!isPipWindowEnabled) {
+          done();
+        }else{
+          await startAbility(message, globalThis.abilityContext);
+        let driver = Driver.create();
+        let createPip1 = await driver.findComponent(ON.id('CreatePipWindow1'));
+        await sleep(1000)
+        await createPip1.click();
+        // 确认是否是801
+        let isSupported = await driver.findComponent(ON.id('isSupported'));
+        await sleep(1000)
+        let isSupportedText = await isSupported.getText();
+        console.error(`${message} isSupportedText: ${isSupportedText}`);
+        if (isSupportedText === '801') {
+          await terminateAbility(message);
+          await sleep(1000)
+          done();
+        } else {
+          let getPipInfo1 = await driver.findComponent(ON.id('GetPiPWindowInfo1'));
+          await sleep(1000)
+          await getPipInfo1.click();
+          let getPipInfoText1 = await driver.findComponent(ON.id('PipWindowInfoText1'));
+          await sleep(1000)
+          let text1 = await getPipInfoText1.getText();
+          console.error(`${message} text1: ${text1}`);
+          expect(Number(text1.trim())).assertEqual(1)
+          let stopPip1 = await driver.findComponent(ON.id('StopPiPWindow1'));
+          await sleep(1000)
+          await stopPip1.click();
+          await terminateAbility(message);
+          await sleep(1000)
+
+          await startAbility(message, globalThis.abilityContext);
+          let createPip3 = await driver.findComponent(ON.id('CreatePipWindow3'));
+          await sleep(1000)
+          await createPip3.click();
+          let getPipInfo3 = await driver.findComponent(ON.id('GetPiPWindowInfo3'));
+          await sleep(1000)
+          await getPipInfo3.click();
+          let getPipInfoText3 = await driver.findComponent(ON.id('PipWindowInfoText3'));
+          await sleep(1000)
+          let text3 = await getPipInfoText3.getText();
+          console.error(`${message} text3: ${text3}`);
+          expect(Number(text3.trim())).assertEqual(1)
+          let stopPip3 = await driver.findComponent(ON.id('StopPiPWindow3'));
+          await sleep(1000)
+          await stopPip3.click();
+          await terminateAbility(message);
+          await sleep(1000)
+          done()
+        }
+        }
+        
+      } catch (err) {
+        console.error(`${message} Failed, Cause code ${err.code}, message ${err.message}`);
+        if (err.code === 801) {
+          done();
+        } else {
+          await terminateAbility(message);
+          await sleep(1000)
+          expect().assertFail();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number     : testPipWindowDefaultWindowSize_0300
+     * @tc.name       : testPipWindowDefaultWindowSize_0300
+     * @tc.desc       : 验证画中画窗口小窗启动后第二次传入undefined按关闭前大小启动
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testPipWindowDefaultWindowSize_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      const message = 'testPipWindowDefaultWindowSize_0300!'
+      try {
+      
+        if (!isPipWindowEnabled) {
+          done();
+        }else{
+          await startAbility(message, globalThis.abilityContext);
+        let driver = Driver.create();
+        let createPip4 = await driver.findComponent(ON.id('CreatePipWindow4'));
+        await sleep(1000)
+        await createPip4.click();
+        // 确认是否是801
+        let isSupported = await driver.findComponent(ON.id('isSupported'));
+        await sleep(1000)
+        let isSupportedText = await isSupported.getText();
+        console.error(`${message} isSupportedText: ${isSupportedText}`);
+        if (isSupportedText === '801') {
+          await terminateAbility(message);
+          await sleep(1000)
+          done();
+        } else {
+          let getPipInfo4 = await driver.findComponent(ON.id('GetPiPWindowInfo4'));
+          await sleep(1000)
+          await getPipInfo4.click();
+          let getPipInfoText4 = await driver.findComponent(ON.id('PipWindowInfoText4'));
+          await sleep(1000)
+          let text4 = await getPipInfoText4.getText();
+          console.error(`${message} text4: ${text4}`);
+          expect(Number(text4.trim())).assertLarger(0);
+          expect(Number(text4.trim())).assertLess(1);
+          let stopPip4 = await driver.findComponent(ON.id('StopPiPWindow4'));
+          await sleep(1000)
+          await stopPip4.click();
+          await terminateAbility(message);
+          await sleep(1000)
+
+          await startAbility(message, globalThis.abilityContext);
+          let createPip2 = await driver.findComponent(ON.id('CreatePipWindow2'));
+          await sleep(1000)
+          await createPip2.click();
+          let getPipInfo2 = await driver.findComponent(ON.id('GetPiPWindowInfo2'));
+          await sleep(1000)
+          await getPipInfo2.click();
+          let getPipInfoText2 = await driver.findComponent(ON.id('PipWindowInfoText2'));
+          await sleep(1000)
+          let text2 = await getPipInfoText2.getText();
+          console.error(`${message} text2: ${text2}`);
+          let textNum2 = Number(truncateAndFormat(Number(text2.trim())));
+          let textNum4 = Number(truncateAndFormat(Number(text4.trim())));
+          expect(textNum2).assertEqual(textNum4);
+          let stopPip2 = await driver.findComponent(ON.id('StopPiPWindow2'));
+          await sleep(1000)
+          await stopPip2.click();
+          await terminateAbility(message);
+          await sleep(1000)
+          done()
+        }
+        }
+
+        
+      } catch (err) {
+        console.error(`${message} Failed, Cause code ${err.code}, message ${err.message}`);
+        if (err.code === 801) {
+          done();
+        } else {
+          await terminateAbility(message);
+          await sleep(1000)
+          expect().assertFail();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number     : testPipWindowDefaultWindowSize_0400
+     * @tc.name       : testPipWindowDefaultWindowSize_0400
+     * @tc.desc       : 验证画中画窗口小窗启动后第二次传入0按上次关闭大小启动
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testPipWindowDefaultWindowSize_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      const message = 'testPipWindowDefaultWindowSize_0400!'
+      try {
+        if (!isPipWindowEnabled) {
+          done();
+        }else{
+          await startAbility(message, globalThis.abilityContext);
+        let driver = Driver.create();
+        let createPip4 = await driver.findComponent(ON.id('CreatePipWindow4'));
+        await sleep(1000)
+        await createPip4.click();
+        // 确认是否是801
+        let isSupported = await driver.findComponent(ON.id('isSupported'));
+        await sleep(1000)
+        let isSupportedText = await isSupported.getText();
+        console.error(`${message} isSupportedText: ${isSupportedText}`);
+        if (isSupportedText === '801') {
+          await terminateAbility(message);
+          await sleep(1000)
+          done();
+        } else {
+          let getPipInfo4 = await driver.findComponent(ON.id('GetPiPWindowInfo4'));
+          await sleep(1000)
+          await getPipInfo4.click();
+          let getPipInfoText4 = await driver.findComponent(ON.id('PipWindowInfoText4'));
+          await sleep(1000)
+          let text4 = await getPipInfoText4.getText();
+          console.error(`${message} text4: ${text4}`);
+          expect(Number(text4.trim())).assertLarger(0);
+          expect(Number(text4.trim())).assertLess(1);
+          let stopPip4 = await driver.findComponent(ON.id('StopPiPWindow4'));
+          await sleep(1000)
+          await stopPip4.click();
+          await terminateAbility(message);
+          await sleep(1000)
+
+          await startAbility(message, globalThis.abilityContext);
+          let createPip3 = await driver.findComponent(ON.id('CreatePipWindow3'));
+          await sleep(1000)
+          await createPip3.click();
+          let getPipInfo3 = await driver.findComponent(ON.id('GetPiPWindowInfo3'));
+          await sleep(1000)
+          await getPipInfo3.click();
+          let getPipInfoText3 = await driver.findComponent(ON.id('PipWindowInfoText3'));
+          await sleep(1000)
+          let text3 = await getPipInfoText3.getText();
+          console.error(`${message} text3: ${text3}`);
+          let textNum3 = Number(truncateAndFormat(Number(text3.trim())));
+          let textNum4 = Number(truncateAndFormat(Number(text4.trim())));
+          expect(textNum3).assertEqual(textNum4);
+          let stopPip3 = await driver.findComponent(ON.id('StopPiPWindow3'));
+          await sleep(1000)
+          await stopPip3.click();
+          await terminateAbility(message);
+          await sleep(1000)
+          done()
+        }
+        }
+
+        
+      } catch (err) {
+        console.error(`${message} Failed, Cause code ${err.code}, message ${err.message}`);
+        if (err.code === 801) {
+          done();
+        } else {
+          await terminateAbility(message);
+          expect().assertFail();
+          done();
+        }
+      }
+    });
+
+    /**
+     * @tc.number     : testPipWindowDefaultWindowSizeErrCode_0100
+     * @tc.name       : testPipWindowDefaultWindowSizeErrCode_0100
+     * @tc.desc       : 验证401错误码
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testPipWindowDefaultWindowSizeErrCode_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      const message = 'testPipWindowDefaultWindowSizeErrCode_0100!'
+      try {
+        if (!isPipWindowEnabled) {
+          done();
+        }else{
+          let pipController: pipWindow.PiPController | undefined = undefined;
+          let mXComponentController: XComponentController = new XComponentController();
+          let navId: string = "page_1"; // 假设当前页面的导航id为page_1，详见PiPConfiguration定义，具体导航名称由开发者自行定义。
+          let contentWidth: number = 800; // 假设当前内容宽度800px。
+          let contentHeight: number = 600; // 假设当前内容高度600px。
+          let config: pipWindow.PiPConfiguration = {
+            context: globalThis.abilityContext,
+            componentController: mXComponentController,
+            navigationId: navId,
+            templateType: pipWindow.PiPTemplateType.VIDEO_PLAY,
+            contentWidth: contentWidth,
+            contentHeight: contentHeight,
+            defaultWindowSizeType: 3
+          };
+          let promise : Promise<pipWindow.PiPController> = pipWindow.create(config);
+          promise.then(async (data : pipWindow.PiPController) => {
+            pipController = data;
+            console.info(`${message} Succeeded in creating pip controller. Data:${data}`);
+            console.error(`Succeeded startPiP`);
+            expect().assertFail();
+            done()
+          }).catch((err: BusinessError) => {
+            console.error(`${message} Failed to create pip controller. Cause:${err.code}, message:${err.message}`);
+            expect().assertFail();
+            done();
+          });
+        }
+          
+      } catch (err) {
+        console.error(`${message} Failed, Cause code ${err.code}, message ${err.message}`);
+        if (err.code === 801) {
+          done();
+        } else {
+          expect(err.code).assertEqual(401);
+          done();
+        }
+      }
+    });
   })
 }
 

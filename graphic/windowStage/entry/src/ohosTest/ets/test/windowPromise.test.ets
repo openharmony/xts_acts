@@ -1695,7 +1695,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("test_subWindow_GetWindowSystemBarProperties_1300004", 2, async (done: Function) => {
+    it("test_subWindow_GetWindowSystemBarProperties_1300004", TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: Function) => {
       let msgStr = "test_subWindow_GetWindowSystemBarProperties_1300004";
       console.log(msgStr + " begin");
       let SubWindowClass: ohosWindow.Window | void;
@@ -1764,7 +1764,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetWindowLimits_Function_Promise', 4, async (done: Function) => {
+    it('testSetWindowLimits_Function_Promise', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL4, async (done: Function) => {
       let tag = 'setWindowLimits_Function_Promise '
       console.log(tag + 'begin')
       try {

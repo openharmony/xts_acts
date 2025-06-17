@@ -5,8 +5,6 @@
     "MainAbility/pages/calendarPicker/calendarPickerStartEndTest",
     "MainAbility/pages/datePickerDialog/DatePickerDialogMode",
     "MainAbility/pages/timePickerDialog/timePickerDialogEnableHapticFeedback",
-    "MainAbility/pages/calendarPicker/disableDateRangeAndMarkToday",
-    "MainAbility/pages/calendarPickerDialog/dialogDisableDateRangeAndMarkToday",
     "MainAbility/pages/timePickerDialog/timePickerDialogSelectedArea",
     "MainAbility/pages/textPickerDialog/textPickerDialogSelectedArea",
     "MainAbility/pages/textPickerDialog/textPickerDialogEnableHapticFeedback",
@@ -26,6 +24,7 @@
     "MainAbility/pages/timePickerDialog/timePickerDialogBGBlurStyle",
     "MainAbility/pages/timePickerDialog/timePickerDialogBGColor",
     "MainAbility/pages/timePickerDialog/timePickerDialogShadow",
-    "MainAbility/pages/timePickerDialog/addEnableCascadeApi"
+    "MainAbility/pages/timePickerDialog/addEnableCascadeApi",
+    "MainAbility/pages/textPicker/columnWidths"
   ]
 }

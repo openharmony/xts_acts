@@ -14,7 +14,9 @@
  */
 import HidebugToDevJsTest from "./HidebugToDev.test.js";
 import HidebugCTest from "./HidebugNdk.test.js";
+import HidebugNewNdkTest from "./HidebugNewNdk.test.js"
 export default function testsuite() {
 HidebugToDevJsTest()
 HidebugCTest()
+HidebugNewNdkTest()
 }

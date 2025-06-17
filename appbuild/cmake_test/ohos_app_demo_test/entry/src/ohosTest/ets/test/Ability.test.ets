@@ -14,7 +14,7 @@
  */
 
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from '@ohos/hypium'
 
 export default function abilityTest() {
   describe('ActsAbilityTest', function () {
@@ -37,8 +37,12 @@ export default function abilityTest() {
       // Presets a clear action, which is performed after all test cases of the test suite end.
       // This API supports only one parameter: clear action function.
     })
-    it('assertContain',0, function () {
-      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+    /**
+     * @tc.number: 001
+     * @tc.name: assertContain
+     * @tc.desc: assertContain函数是否能正确判断包含关系
+     */
+    it('assertContain', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function () {
       hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
       let a = 'abc'
       let b = 'b'

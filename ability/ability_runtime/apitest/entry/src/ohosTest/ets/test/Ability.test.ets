@@ -21,7 +21,7 @@ import CommonEventManager from '@ohos.commonEventManager';
 import { BusinessError } from '@ohos.base';
 import UIAbility from '@ohos.app.ability.UIAbility';
 
-let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
+let deviceSupport = systemParameterEnhance.getSync('persist.sys.abilityms.move_ui_ability_to_background_api_enable');
 let subscriberInfo_MainAbility:CommonEventManager.CommonEventSubscribeInfo = {
   events: ["ACTS_DoAbility_Event"]
 };
@@ -264,7 +264,7 @@ export default function abilityTest() {
         console.log("====>0100 Subscribe CallBack data:====>" + JSON.stringify(data));
         globalThis.abilitydelegator.getCurrentTopAbility().then((ability:UIAbility) => {
           console.log("====>getCurrentTopAbility ability data:====>" + JSON.stringify(ability));
-          if (deviceType === '2in1') {
+          if (deviceSupport === 'false') {
             commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
             done();
             return;
@@ -318,7 +318,7 @@ export default function abilityTest() {
      * @tc.desc    : Use doAbilityBackground to change the abilitystage to background.(promise)
      */
     it('ACTS_DoAbilityBackground_0500', Level.LEVEL0, async (done:Function) => {
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }
@@ -382,7 +382,7 @@ export default function abilityTest() {
      * @tc.desc    : Use doAbilityBackground to change the abilitystage to background.(promise)
      */
     it('ACTS_DoAbilityBackground_0700', Level.LEVEL0, async (done:Function) => {
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }
@@ -478,7 +478,7 @@ export default function abilityTest() {
      * @tc.desc    : Use doAbilityBackground to change the abilitystage to background failed.(promise)
      */
     it('ACTS_DoAbilityBackground_0800', Level.LEVEL0, async (done:Function) => {
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }
@@ -574,7 +574,7 @@ export default function abilityTest() {
    * @tc.desc    : Use doAbilityForeground to change the abilitystage to foreground failed.(callback)
    */
     it('ACTS_DoAbilityForeground_0300', Level.LEVEL0, async (done:Function) => {
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }
@@ -635,7 +635,7 @@ export default function abilityTest() {
  * @tc.desc    : Use doAbilityForeground to change the abilitystage to foreground failed.(promise)
  */
     it('ACTS_DoAbilityForeground_0600', Level.LEVEL0, async (done:Function) => {
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }
@@ -691,7 +691,7 @@ export default function abilityTest() {
      * @tc.desc    : Use doAbilityBackground to change the abilitystage to background failed.(callback)
      */
     it('ACTS_DoAbilityBackground_0300', Level.LEVEL0, async (done:Function) => {
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }
@@ -750,7 +750,7 @@ export default function abilityTest() {
  * @tc.desc    : Use doAbilityBackground to change the abilitystage to background failed.(promise)
  */
     it('ACTS_DoAbilityBackground_0600', Level.LEVEL0, async (done:Function) => {
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }

@@ -14,6 +14,7 @@
  */
 import { reg } from './commonParam';
 import { DataUint8Array, IAnyObj } from './commonType';
+import { buffer } from '@kit.ArkTS';
 
 function stringToArray(str: string) {
   let arr: number[] = [];
@@ -163,6 +164,16 @@ function convertToUint8Array(str: string) {
   );
 }
 
+function compareString(a: string, b: string): boolean {
+  let buf1 = buffer.from(a);
+  let buf2 = buffer.from(b);
+  if (buf1.compare(buf2, 0, b.length, 0, a.length) == 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 
 export {
   stringToArray,
@@ -173,5 +184,6 @@ export {
   genIvParamsSpec,
   genCcmParamsSpec,
   genKeyMaterialBlob,
-  convertToUint8Array
+  convertToUint8Array,
+  compareString
 };

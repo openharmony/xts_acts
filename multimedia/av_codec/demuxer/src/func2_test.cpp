@@ -153,3 +153,14 @@ HWTEST_F(DemuxerFunc2NdkTest, SUB_MEDIA_DEMUXER_VTT_6100, TestSize.Level2)
     }
     close(fd);
 }
+
+/**
+ * @tc.number    : DEMUXER_META_0090
+ * @tc.name      : demuxer meta info, souce is null
+ * @tc.desc      : function test
+ */
+HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_META_0090, TestSize.Level0)
+{
+    OH_AVFormat *metaFormat= OH_AVSource_GetCustomMetadataFormat(nullptr);
+    ASSERT_EQ(metaFormat, nullptr);
+}

@@ -32,9 +32,10 @@ struct PatternLockL2_01 {
   @State Vue: boolean = false;
   @State passwords: Number[] = [];
   @State customModifier: PatternLockModifier = new PatternLockModifier()
-    .sideLength(200)
+    .sideLength(100)
     .circleRadius(9)
     .pathStrokeWidth(18)
+    .regularColor('#ff182431')
     .activeColor('#B0C4DE')
     .selectedColor('#228B22')
     .pathColor('#90EE90')
@@ -143,31 +144,38 @@ struct PatternLockL2_01 {
       .width('100%')
       .justifyContent(FlexAlign.SpaceBetween)
 
-      Column() {
-        Text("原生属性")
-        PatternLock(this.patternLockController)
-          .sideLength(200)
-          .circleRadius(9)
-          .pathStrokeWidth(18)
-          .activeColor('#B0C4DE')
-          .selectedColor('#228B22')
-          .pathColor('#90EE90')
-          .backgroundColor('#F5F5F5')
-          .autoReset(true)
-          .activateCircleStyle({
-            radius: LengthMetrics.vp(8)
-          })
-        Text("Modifier")
-        PatternLock(this.patternLockController1)
-          .attributeModifier(this.customModifier)
+      Column({ space: 10 }) {
+        Row({ space: 5 }){
+          Column({ space: 5 }){
+            Text("原生属性").fontColor(Color.Red).margin({ top: 10 })
+            PatternLock(this.patternLockController)
+              .sideLength(100)
+              .circleRadius(9)
+              .pathStrokeWidth(18)
+              .regularColor('#ff182431')
+              .activeColor('#B0C4DE')
+              .selectedColor('#228B22')
+              .pathColor('#90EE90')
+              .backgroundColor('#F5F5F5')
+              .autoReset(true)
+              .activateCircleStyle({
+                radius: LengthMetrics.vp(8)
+              })
+          }
+          Column({ space: 5 }){
+            Text("Modifier").fontColor(Color.Red).margin({ top: 10 })
+            PatternLock(this.patternLockController1)
+              .attributeModifier(this.customModifier)
+          }
+        }
 
         Button('确认')
-          .margin(30)
+          .height('10%')
           .onClick(() => {
             this.Vue = true;
           })
       }
-      .height('80%')
+      .height('70%')
       .width('100%')
       .backgroundColor(Color.White)
 
@@ -207,4 +215,3 @@ struct PatternLockL2_01 {
     .backgroundColor('#F1F3F5')
   }
 }
-

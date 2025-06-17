@@ -64,6 +64,7 @@ struct WebViewEnumAndSetWebController {
   dialogController: CustomDialogController | null = null
   popController: webView.WebviewController | null = null;
   controller: webView.WebviewController = new webView.WebviewController();
+  @State SourceTypeArr:ContextMenuSourceType[] = [ContextMenuSourceType.None,ContextMenuSourceType.Mouse,ContextMenuSourceType.LongPress]
 
   onPageShow() {
     let valueChangeEvent: events_emitter.InnerEvent = {
@@ -89,6 +90,46 @@ struct WebViewEnumAndSetWebController {
 
   build() {
     Column() {
+
+
+      Web({ src: $rawfile("fullScreenEnter.html"), controller: this.controller })
+        .key("WebViewEnumAndSetWebControllerWebView")
+        .blockNetwork(Boolean(this.block))
+        .cacheMode(this.CacheMode)
+        .onShowFileSelector((event) => {
+          if (event) {
+            let fileSelectorObj: FileSelectorParam = event.fileSelector
+            this.FileSelectorMode = fileSelectorObj.getMode()
+          }
+          return true
+        })
+        .multiWindowAccess(true)
+        .allowWindowOpenMethod(true)
+        .defaultFontSize(this.fontSize)
+        .onConsole((event) => {
+          if (event) {
+            console.log('onConsole getMessage:' + event.message?.getMessage())
+            console.log('onConsole getSourceId:' + event.message?.getSourceId())
+            console.log('onConsole getLineNumber:' + event.message?.getLineNumber())
+            console.log('onConsole getMessageLevel:' + event.message?.getMessageLevel())
+          }
+          return false
+        })
+        .onContextMenuShow((event) => {
+          if (event) {
+            event.result.closeContextMenu()
+            if (this.mouse) {
+              console.info("onContextMenuShow getSourceType = " + event.param.getSourceType())
+              Utils.emitEvent(this.SourceTypeArr[event.param.getSourceType()], 1981)
+            } else {
+              Utils.emitEvent(event.param.getMediaType(), 882)
+            }
+          }
+          return true
+        })
+        .javaScriptAccess(this.javaScriptAccess)
+        .height('30%')
+
       Row() {
         Button("web clicks").key('buttonEnumAndSetWebController').onClick(async () => {
           console.info("key==>" + this.str)
@@ -126,53 +167,17 @@ struct WebViewEnumAndSetWebController {
               this.controller.loadUrl("resource://rawfile/indexLongClickImage.html")
               await Utils.sleep(2000);
               let webRect = Utils.getComponentRect('WebViewEnumAndSetWebControllerWebView');
+              let downX = Math.round(globalThis.winLeft + webRect.left + (webRect.right - webRect.left) / 2);
+              let downY = Math.round(globalThis.winTop + webRect.top + (webRect.bottom - webRect.top) / 2);
               let driver = Driver.create();
               let X = Utils.getRectHorizontalCenterX(webRect)
               let Y = Utils.getRectVerticalCenterY(webRect)
-              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_RIGHT);
+              await driver.mouseClick({ x: downX, y: downY }, MouseButton.MOUSE_BUTTON_RIGHT);
               break;
             }
           }
         })
       }
-
-      Web({ src: $rawfile("fullScreenEnter.html"), controller: this.controller })
-        .key("WebViewEnumAndSetWebControllerWebView")
-        .blockNetwork(Boolean(this.block))
-        .cacheMode(this.CacheMode)
-        .onShowFileSelector((event) => {
-          if (event) {
-            let fileSelectorObj: FileSelectorParam = event.fileSelector
-            this.FileSelectorMode = fileSelectorObj.getMode()
-          }
-          return true
-        })
-        .multiWindowAccess(true)
-        .allowWindowOpenMethod(true)
-        .defaultFontSize(this.fontSize)
-        .onConsole((event) => {
-          if (event) {
-            console.log('onConsole getMessage:' + event.message?.getMessage())
-            console.log('onConsole getSourceId:' + event.message?.getSourceId())
-            console.log('onConsole getLineNumber:' + event.message?.getLineNumber())
-            console.log('onConsole getMessageLevel:' + event.message?.getMessageLevel())
-          }
-          return false
-        })
-        .onContextMenuShow((event) => {
-          if (event) {
-            event.result.closeContextMenu()
-            if (this.mouse) {
-              console.info("onContextMenuShow getSourceType = " + event.param.getSourceType())
-              Utils.emitEvent(event.param.getSourceType(), 1981)
-            } else {
-              Utils.emitEvent(event.param.getMediaType(), 882)
-            }
-          }
-          return true
-        })
-        .javaScriptAccess(this.javaScriptAccess)
-        .height('20%')
 
       Row() {
         Image("media/icon.png")

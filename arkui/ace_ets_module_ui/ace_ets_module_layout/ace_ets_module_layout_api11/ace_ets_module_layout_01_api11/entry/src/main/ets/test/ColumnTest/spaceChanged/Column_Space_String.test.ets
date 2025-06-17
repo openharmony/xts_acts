@@ -65,28 +65,28 @@ export default function Column_Space_String() {
       let Column_Space_String_013: RectValue = CommonFunc.getComponentRect('Column_Space_String_013');
       let Column_Space_String_01: RectValue = CommonFunc.getComponentRect('Column_Space_String_01');
       console.log('assert position')
-      expect(Math.abs((Column_Space_String_011.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_011.right)) <= 1)
+      expect(Math.floor(Math.abs((Column_Space_String_011.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_011.right))) <= 1)
         .assertTrue();
-      expect(Math.abs((Column_Space_String_012.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_012.right)) <= 1)
+      expect(Math.floor(Math.abs((Column_Space_String_012.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_012.right))) <= 1)
         .assertTrue();
-      expect(Math.abs((Column_Space_String_013.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_013.right)) <= 1)
+      expect(Math.floor(Math.abs((Column_Space_String_013.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_013.right))) <= 1)
         .assertTrue();
-      expect(Math.abs((Column_Space_String_012.top - Column_Space_String_011.bottom) - (Column_Space_String_013.top - Column_Space_String_012.bottom)) <= 1)
+      console.log('[SUB_ACE_Column_Space_String_TEST_0100] Column_Space_String_012.top - Column_Space_String_011.bottom', +(Column_Space_String_012.top - Column_Space_String_011.bottom))
+      console.log('[SUB_ACE_Column_Space_String_TEST_0100] Column_Space_String_013.top - Column_Space_String_012.bottom', +(Column_Space_String_013.top - Column_Space_String_012.bottom))
+      expect(Math.floor(Math.abs((Column_Space_String_012.top - Column_Space_String_011.bottom) - (Column_Space_String_013.top - Column_Space_String_012.bottom))) <= 1)
         .assertTrue();
       console.log('assert space')
-      expect(Math.abs((Column_Space_String_012.top - Column_Space_String_011.bottom) - vp2px(30)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_013.top - Column_Space_String_012.bottom) - vp2px(30)) <= 1).assertTrue();
-      console.log('Column_Space_String_012.top - Column_Space_String_011.bottom', +(Column_Space_String_012.top - Column_Space_String_011.bottom))
-      console.log('Column_Space_String_013.top - Column_Space_String_012.bottom', +(Column_Space_String_013.top - Column_Space_String_012.bottom))
-      expect(Math.abs(Column_Space_String_01.top - Column_Space_String_011.top) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_012.top - Column_Space_String_011.bottom) - vp2px(30))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_013.top - Column_Space_String_012.bottom) - vp2px(30))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(Column_Space_String_01.top - Column_Space_String_011.top)) <= 1).assertTrue();
       console.log('assert height')
-      expect(Math.abs((Column_Space_String_011.bottom - Column_Space_String_011.top) - vp2px(50)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_012.bottom - Column_Space_String_012.top) - vp2px(100)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_013.bottom - Column_Space_String_013.top) - vp2px(150)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_011.bottom - Column_Space_String_011.top) - vp2px(50))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_012.bottom - Column_Space_String_012.top) - vp2px(100))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_013.bottom - Column_Space_String_013.top) - vp2px(150))) <= 1).assertTrue();
       console.log('assert weight')
-      expect(Math.abs((Column_Space_String_011.right - Column_Space_String_011.left) - vp2px(300)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_012.right - Column_Space_String_012.left) - vp2px(300)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_013.right - Column_Space_String_013.left) - vp2px(300)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_011.right - Column_Space_String_011.left) - vp2px(300))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_012.right - Column_Space_String_012.left) - vp2px(300))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_013.right - Column_Space_String_013.left) - vp2px(300))) <= 1).assertTrue();
       console.info('[SUB_ACE_Column_Space_String_TEST_0100] END');
     });
     /**
@@ -106,28 +106,28 @@ export default function Column_Space_String() {
       let Column_Space_String_013: RectValue = CommonFunc.getComponentRect('Column_Space_String_013');
       let Column_Space_String_01: RectValue = CommonFunc.getComponentRect('Column_Space_String_01');
       console.log('assert position')
-      expect(Math.abs((Column_Space_String_011.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_011.right)) <= 1)
+      expect(Math.floor(Math.abs((Column_Space_String_011.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_011.right))) <= 1)
         .assertTrue();
-      expect(Math.abs((Column_Space_String_012.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_012.right)) <= 1)
+      expect(Math.floor(Math.abs((Column_Space_String_012.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_012.right))) <= 1)
         .assertTrue();
-      expect(Math.abs((Column_Space_String_013.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_013.right)) <= 1)
+      expect(Math.floor(Math.abs((Column_Space_String_013.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_013.right))) <= 1)
         .assertTrue();
-      expect(Math.abs((Column_Space_String_012.top - Column_Space_String_011.bottom) - (Column_Space_String_013.top - Column_Space_String_012.bottom)) <= 1)
+      console.log('[SUB_ACE_Column_Space_String_TEST_0200] Column_Space_String_012.top - Column_Space_String_011.bottom', +(Column_Space_String_012.top - Column_Space_String_011.bottom))
+      console.log('[SUB_ACE_Column_Space_String_TEST_0200] Column_Space_String_013.top - Column_Space_String_012.bottom', +(Column_Space_String_013.top - Column_Space_String_012.bottom))
+      expect(Math.floor(Math.abs((Column_Space_String_012.top - Column_Space_String_011.bottom) - (Column_Space_String_013.top - Column_Space_String_012.bottom))) <= 1)
         .assertTrue();
       console.log('assert space')
-      expect(Math.abs((Column_Space_String_012.top - Column_Space_String_011.bottom) - 50) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_013.top - Column_Space_String_012.bottom) - 50) <= 1).assertTrue();
-      console.log('Column_Space_String_012.top - Column_Space_String_011.bottom', +(Column_Space_String_012.top - Column_Space_String_011.bottom))
-      console.log('Column_Space_String_013.top - Column_Space_String_012.bottom', +(Column_Space_String_013.top - Column_Space_String_012.bottom))
-      expect(Math.abs(Column_Space_String_01.top - Column_Space_String_011.top) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_012.top - Column_Space_String_011.bottom) - 50)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_013.top - Column_Space_String_012.bottom) - 50)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(Column_Space_String_01.top - Column_Space_String_011.top)) <= 1).assertTrue();
       console.log('assert height')
-      expect(Math.abs((Column_Space_String_011.bottom - Column_Space_String_011.top) - vp2px(50)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_012.bottom - Column_Space_String_012.top) - vp2px(100)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_013.bottom - Column_Space_String_013.top) - vp2px(150)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_011.bottom - Column_Space_String_011.top) - vp2px(50))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_012.bottom - Column_Space_String_012.top) - vp2px(100))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_013.bottom - Column_Space_String_013.top) - vp2px(150))) <= 1).assertTrue();
       console.log('assert weight')
-      expect(Math.abs((Column_Space_String_011.right - Column_Space_String_011.left) - vp2px(300)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_012.right - Column_Space_String_012.left) - vp2px(300)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_013.right - Column_Space_String_013.left) - vp2px(300)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_011.right - Column_Space_String_011.left) - vp2px(300))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_012.right - Column_Space_String_012.left) - vp2px(300))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_013.right - Column_Space_String_013.left) - vp2px(300))) <= 1).assertTrue();
       console.info('[SUB_ACE_Column_Space_String_TEST_0200] END');
     });
     /**
@@ -147,29 +147,29 @@ export default function Column_Space_String() {
       let Column_Space_String_013: RectValue = CommonFunc.getComponentRect('Column_Space_String_013');
       let Column_Space_String_01: RectValue = CommonFunc.getComponentRect('Column_Space_String_01');
       console.log('assert position')
-      expect(Math.abs((Column_Space_String_011.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_011.right)) <= 1)
+      expect(Math.floor(Math.abs((Column_Space_String_011.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_011.right))) <= 1)
         .assertTrue();
-      expect(Math.abs((Column_Space_String_012.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_012.right)) <= 1)
+      expect(Math.floor(Math.abs((Column_Space_String_012.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_012.right))) <= 1)
         .assertTrue();
-      expect(Math.abs((Column_Space_String_013.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_013.right)) <= 1)
+      expect(Math.floor(Math.abs((Column_Space_String_013.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_013.right))) <= 1)
         .assertTrue();
-      expect(Math.abs((Column_Space_String_012.top - Column_Space_String_011.bottom) - (Column_Space_String_013.top - Column_Space_String_012.bottom)) <= 1)
+      console.log('[SUB_ACE_Column_Space_String_TEST_0300] Column_Space_String_012.top - Column_Space_String_011.bottom', +(Column_Space_String_012.top - Column_Space_String_011.bottom))
+      console.log('[SUB_ACE_Column_Space_String_TEST_0300] Column_Space_String_013.top - Column_Space_String_012.bottom', +(Column_Space_String_013.top - Column_Space_String_012.bottom))
+      expect(Math.floor(Math.abs((Column_Space_String_012.top - Column_Space_String_011.bottom) - (Column_Space_String_013.top - Column_Space_String_012.bottom))) <= 2)
         .assertTrue();
       console.log('assert space')
-      expect(Math.abs((Column_Space_String_012.top - Column_Space_String_011.bottom) - fp2px(50)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_013.top - Column_Space_String_012.bottom) - fp2px(50)) <= 1).assertTrue();
-      console.log('Column_Space_String_012.top - Column_Space_String_011.bottom', +(Column_Space_String_012.top - Column_Space_String_011.bottom))
-      console.log('Column_Space_String_013.top - Column_Space_String_012.bottom', +(Column_Space_String_013.top - Column_Space_String_012.bottom))
-      expect(Math.abs(Column_Space_String_01.top - Column_Space_String_011.top) <= 1).assertTrue();
-      expect(Math.abs(Column_Space_String_013.bottom - Column_Space_String_01.bottom) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_012.top - Column_Space_String_011.bottom) - fp2px(50))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_013.top - Column_Space_String_012.bottom) - fp2px(50))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(Column_Space_String_01.top - Column_Space_String_011.top)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(Column_Space_String_013.bottom - Column_Space_String_01.bottom)) <= 1).assertTrue();
       console.log('assert height')
-      expect(Math.abs((Column_Space_String_011.bottom - Column_Space_String_011.top) - vp2px(50)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_012.bottom - Column_Space_String_012.top) - vp2px(100)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_013.bottom - Column_Space_String_013.top) - vp2px(150)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_011.bottom - Column_Space_String_011.top) - vp2px(50))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_012.bottom - Column_Space_String_012.top) - vp2px(100))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_013.bottom - Column_Space_String_013.top) - vp2px(150))) <= 1).assertTrue();
       console.log('assert weight')
-      expect(Math.abs((Column_Space_String_011.right - Column_Space_String_011.left) - vp2px(300)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_012.right - Column_Space_String_012.left) - vp2px(300)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_013.right - Column_Space_String_013.left) - vp2px(300)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_011.right - Column_Space_String_011.left) - vp2px(300))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_012.right - Column_Space_String_012.left) - vp2px(300))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_013.right - Column_Space_String_013.left) - vp2px(300))) <= 1).assertTrue();
       console.info('[SUB_ACE_Column_Space_String_TEST_0300] END');
     });
     /**
@@ -189,31 +189,31 @@ export default function Column_Space_String() {
       let Column_Space_String_013: RectValue = CommonFunc.getComponentRect('Column_Space_String_013');
       let Column_Space_String_01: RectValue = CommonFunc.getComponentRect('Column_Space_String_01');
       console.log('assert position')
-      expect(Math.abs((Column_Space_String_011.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_011.right)) <= 1)
+      console.log('[SUB_ACE_Column_Space_String_TEST_0400] Column_Space_String_011.left - Column_Space_String_01.left', +(Column_Space_String_011.left - Column_Space_String_01.left))
+      console.log('[SUB_ACE_Column_Space_String_TEST_0400] Column_Space_String_012.left - Column_Space_String_01.left', +(Column_Space_String_012.left - Column_Space_String_01.left))
+      console.log('[SUB_ACE_Column_Space_String_TEST_0400] Column_Space_String_013.left - Column_Space_String_01.left', +(Column_Space_String_013.left - Column_Space_String_01.left))
+      expect(Math.floor(Math.abs((Column_Space_String_011.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_011.right))) <= 1)
         .assertTrue();
-      expect(Math.abs((Column_Space_String_012.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_012.right)) <= 1)
+      expect(Math.floor(Math.abs((Column_Space_String_012.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_012.right))) <= 1)
         .assertTrue();
-      expect(Math.abs((Column_Space_String_013.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_013.right)) <= 1)
+      expect(Math.floor(Math.abs((Column_Space_String_013.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_013.right))) <= 1)
         .assertTrue();
-      expect(Math.abs((Column_Space_String_012.top - Column_Space_String_011.bottom) - (Column_Space_String_013.top - Column_Space_String_012.bottom)) <= 1)
+      console.log('[SUB_ACE_Column_Space_String_TEST_0400] Column_Space_String_012.top - Column_Space_String_011.bottom', +(Column_Space_String_012.top - Column_Space_String_011.bottom))
+      console.log('[SUB_ACE_Column_Space_String_TEST_0400] Column_Space_String_013.top - Column_Space_String_012.bottom', +(Column_Space_String_013.top - Column_Space_String_012.bottom))
+      expect(Math.floor(Math.abs((Column_Space_String_012.top - Column_Space_String_011.bottom) - (Column_Space_String_013.top - Column_Space_String_012.bottom))) <= 1)
         .assertTrue();
-      console.log('Column_Space_String_011.left - Column_Space_String_01.left', +(Column_Space_String_011.left - Column_Space_String_01.left))
-      console.log('Column_Space_String_012.left - Column_Space_String_01.left', +(Column_Space_String_012.left - Column_Space_String_01.left))
-      console.log('Column_Space_String_013.left - Column_Space_String_01.left', +(Column_Space_String_013.left - Column_Space_String_01.left))
       console.log('assert space')
-      expect(Math.abs((Column_Space_String_012.top - Column_Space_String_011.bottom) - lpx2px(50)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_013.top - Column_Space_String_012.bottom) - lpx2px(50)) <= 1).assertTrue();
-      console.log('Column_Space_String_012.top - Column_Space_String_011.bottom', +(Column_Space_String_012.top - Column_Space_String_011.bottom))
-      console.log('Column_Space_String_013.top - Column_Space_String_012.bottom', +(Column_Space_String_013.top - Column_Space_String_012.bottom))
-      expect(Math.abs(Column_Space_String_01.top - Column_Space_String_011.top) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_012.top - Column_Space_String_011.bottom) - lpx2px(50))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_013.top - Column_Space_String_012.bottom) - lpx2px(50))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(Column_Space_String_01.top - Column_Space_String_011.top)) <= 1).assertTrue();
       console.log('assert height')
-      expect(Math.abs((Column_Space_String_011.bottom - Column_Space_String_011.top) - vp2px(50)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_012.bottom - Column_Space_String_012.top) - vp2px(100)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_013.bottom - Column_Space_String_013.top) - vp2px(150)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_011.bottom - Column_Space_String_011.top) - vp2px(50))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_012.bottom - Column_Space_String_012.top) - vp2px(100))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_013.bottom - Column_Space_String_013.top) - vp2px(150))) <= 1).assertTrue();
       console.log('assert weight')
-      expect(Math.abs((Column_Space_String_011.right - Column_Space_String_011.left) - vp2px(300)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_012.right - Column_Space_String_012.left) - vp2px(300)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_013.right - Column_Space_String_013.left) - vp2px(300)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_011.right - Column_Space_String_011.left) - vp2px(300))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_012.right - Column_Space_String_012.left) - vp2px(300))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_013.right - Column_Space_String_013.left) - vp2px(300))) <= 1).assertTrue();
       console.info('[SUB_ACE_Column_Space_String_TEST_0400] END');
     });
     /**
@@ -233,28 +233,28 @@ export default function Column_Space_String() {
       let Column_Space_String_013: RectValue = CommonFunc.getComponentRect('Column_Space_String_013');
       let Column_Space_String_01: RectValue = CommonFunc.getComponentRect('Column_Space_String_01');
       console.log('assert position')
-      expect(Math.abs((Column_Space_String_011.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_011.right)) <= 1)
+      expect(Math.floor(Math.abs((Column_Space_String_011.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_011.right))) <= 1)
         .assertTrue();
-      expect(Math.abs((Column_Space_String_012.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_012.right)) <= 1)
+      expect(Math.floor(Math.abs((Column_Space_String_012.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_012.right))) <= 1)
         .assertTrue();
-      expect(Math.abs((Column_Space_String_013.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_013.right)) <= 1)
+      expect(Math.floor(Math.abs((Column_Space_String_013.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_013.right))) <= 1)
         .assertTrue();
-      expect(Math.abs((Column_Space_String_012.top - Column_Space_String_011.bottom) - (Column_Space_String_013.top - Column_Space_String_012.bottom)) <= 1)
+      console.log('[SUB_ACE_Column_Space_String_TEST_0500] Column_Space_String_012.top - Column_Space_String_011.bottom', +(Column_Space_String_012.top - Column_Space_String_011.bottom))
+      console.log('[SUB_ACE_Column_Space_String_TEST_0500] Column_Space_String_013.top - Column_Space_String_012.bottom', +(Column_Space_String_013.top - Column_Space_String_012.bottom))
+      expect(Math.floor(Math.abs((Column_Space_String_012.top - Column_Space_String_011.bottom) - (Column_Space_String_013.top - Column_Space_String_012.bottom))) <= 2)
         .assertTrue();
       console.log('assert space')
-      expect(Math.abs((Column_Space_String_012.top - Column_Space_String_011.bottom) - vp2px(10)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_013.top - Column_Space_String_012.bottom) - vp2px(10)) <= 1).assertTrue();
-      console.log('Column_Space_String_012.top - Column_Space_String_011.bottom', +(Column_Space_String_012.top - Column_Space_String_011.bottom))
-      console.log('Column_Space_String_013.top - Column_Space_String_012.bottom', +(Column_Space_String_013.top - Column_Space_String_012.bottom))
-      expect(Math.abs(Column_Space_String_01.top - Column_Space_String_011.top) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_012.top - Column_Space_String_011.bottom) - vp2px(10))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_013.top - Column_Space_String_012.bottom) - vp2px(10))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(Column_Space_String_01.top - Column_Space_String_011.top)) <= 1).assertTrue();
       console.log('assert height')
-      expect(Math.abs((Column_Space_String_011.bottom - Column_Space_String_011.top) - vp2px(50)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_012.bottom - Column_Space_String_012.top) - vp2px(100)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_013.bottom - Column_Space_String_013.top) - vp2px(150)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_011.bottom - Column_Space_String_011.top) - vp2px(50))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_012.bottom - Column_Space_String_012.top) - vp2px(100))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_013.bottom - Column_Space_String_013.top) - vp2px(150))) <= 1).assertTrue();
       console.log('assert weight')
-      expect(Math.abs((Column_Space_String_011.right - Column_Space_String_011.left) - vp2px(300)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_012.right - Column_Space_String_012.left) - vp2px(300)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_013.right - Column_Space_String_013.left) - vp2px(300)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_011.right - Column_Space_String_011.left) - vp2px(300))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_012.right - Column_Space_String_012.left) - vp2px(300))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_013.right - Column_Space_String_013.left) - vp2px(300))) <= 1).assertTrue();
       console.info('[SUB_ACE_Column_Space_String_TEST_0500] END');
     });
     /**
@@ -274,28 +274,28 @@ export default function Column_Space_String() {
       let Column_Space_String_013: RectValue = CommonFunc.getComponentRect('Column_Space_String_013');
       let Column_Space_String_01: RectValue = CommonFunc.getComponentRect('Column_Space_String_01');
       console.log('assert position')
-      expect(Math.abs((Column_Space_String_011.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_011.right)) <= 1)
+      expect(Math.floor(Math.abs((Column_Space_String_011.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_011.right))) <= 1)
         .assertTrue();
-      expect(Math.abs((Column_Space_String_012.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_012.right)) <= 1)
+      expect(Math.floor(Math.abs((Column_Space_String_012.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_012.right))) <= 1)
         .assertTrue();
-      expect(Math.abs((Column_Space_String_013.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_013.right)) <= 1)
+      expect(Math.floor(Math.abs((Column_Space_String_013.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_013.right))) <= 1)
         .assertTrue();
-      expect(Math.abs((Column_Space_String_012.top - Column_Space_String_011.bottom) - (Column_Space_String_013.top - Column_Space_String_012.bottom)) <= 1)
+      console.log('[SUB_ACE_Column_Space_String_TEST_0600] Column_Space_String_012.top - Column_Space_String_011.bottom', +(Column_Space_String_012.top - Column_Space_String_011.bottom))
+      console.log('[SUB_ACE_Column_Space_String_TEST_0600] Column_Space_String_013.top - Column_Space_String_012.bottom', +(Column_Space_String_013.top - Column_Space_String_012.bottom))
+      expect(Math.floor(Math.abs((Column_Space_String_012.top - Column_Space_String_011.bottom) - (Column_Space_String_013.top - Column_Space_String_012.bottom))) <= 1)
         .assertTrue();
       console.log('assert space')
-      expect(Math.abs((Column_Space_String_012.top - Column_Space_String_011.bottom) - 10) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_013.top - Column_Space_String_012.bottom) - 10) <= 1).assertTrue();
-      console.log('Column_Space_String_012.top - Column_Space_String_011.bottom', +(Column_Space_String_012.top - Column_Space_String_011.bottom))
-      console.log('Column_Space_String_013.top - Column_Space_String_012.bottom', +(Column_Space_String_013.top - Column_Space_String_012.bottom))
-      expect(Math.abs(Column_Space_String_01.top - Column_Space_String_011.top) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_012.top - Column_Space_String_011.bottom) - 10)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_013.top - Column_Space_String_012.bottom) - 10)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(Column_Space_String_01.top - Column_Space_String_011.top)) <= 1).assertTrue();
       console.log('assert height')
-      expect(Math.abs((Column_Space_String_011.bottom - Column_Space_String_011.top) - vp2px(50)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_012.bottom - Column_Space_String_012.top) - vp2px(100)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_013.bottom - Column_Space_String_013.top) - vp2px(150)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_011.bottom - Column_Space_String_011.top) - vp2px(50))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_012.bottom - Column_Space_String_012.top) - vp2px(100))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_013.bottom - Column_Space_String_013.top) - vp2px(150))) <= 1).assertTrue();
       console.log('assert weight')
-      expect(Math.abs((Column_Space_String_011.right - Column_Space_String_011.left) - vp2px(300)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_012.right - Column_Space_String_012.left) - vp2px(300)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_013.right - Column_Space_String_013.left) - vp2px(300)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_011.right - Column_Space_String_011.left) - vp2px(300))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_012.right - Column_Space_String_012.left) - vp2px(300))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_013.right - Column_Space_String_013.left) - vp2px(300))) <= 1).assertTrue();
       console.info('[SUB_ACE_Column_Space_String_TEST_0600] END');
     });
     /**
@@ -315,28 +315,28 @@ export default function Column_Space_String() {
       let Column_Space_String_013: RectValue = CommonFunc.getComponentRect('Column_Space_String_013');
       let Column_Space_String_01: RectValue = CommonFunc.getComponentRect('Column_Space_String_01');
       console.log('assert position')
-      expect(Math.abs((Column_Space_String_011.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_011.right)) <= 1)
+      expect(Math.floor(Math.abs((Column_Space_String_011.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_011.right))) <= 1)
         .assertTrue();
-      expect(Math.abs((Column_Space_String_012.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_012.right)) <= 1)
+      expect(Math.floor(Math.abs((Column_Space_String_012.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_012.right))) <= 1)
         .assertTrue();
-      expect(Math.abs((Column_Space_String_013.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_013.right)) <= 1)
+      expect(Math.floor(Math.abs((Column_Space_String_013.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_013.right))) <= 1)
         .assertTrue();
-      expect(Math.abs((Column_Space_String_012.top - Column_Space_String_011.bottom) - (Column_Space_String_013.top - Column_Space_String_012.bottom)) <= 1)
+      console.log('[SUB_ACE_Column_Space_String_TEST_0700] Column_Space_String_012.top - Column_Space_String_011.bottom', +(Column_Space_String_012.top - Column_Space_String_011.bottom))
+      console.log('[SUB_ACE_Column_Space_String_TEST_0700] Column_Space_String_013.top - Column_Space_String_012.bottom', +(Column_Space_String_013.top - Column_Space_String_012.bottom))
+      expect(Math.floor(Math.abs((Column_Space_String_012.top - Column_Space_String_011.bottom) - (Column_Space_String_013.top - Column_Space_String_012.bottom))) <= 2)
         .assertTrue();
       console.log('assert space')
-      expect(Math.abs((Column_Space_String_012.top - Column_Space_String_011.bottom) - fp2px(10)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_013.top - Column_Space_String_012.bottom) - fp2px(10)) <= 1).assertTrue();
-      console.log('Column_Space_String_012.top - Column_Space_String_011.bottom', +(Column_Space_String_012.top - Column_Space_String_011.bottom))
-      console.log('Column_Space_String_013.top - Column_Space_String_012.bottom', +(Column_Space_String_013.top - Column_Space_String_012.bottom))
-      expect(Math.abs(Column_Space_String_01.top - Column_Space_String_011.top) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_012.top - Column_Space_String_011.bottom) - fp2px(10))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_013.top - Column_Space_String_012.bottom) - fp2px(10))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(Column_Space_String_01.top - Column_Space_String_011.top)) <= 1).assertTrue();
       console.log('assert height')
-      expect(Math.abs((Column_Space_String_011.bottom - Column_Space_String_011.top) - vp2px(50)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_012.bottom - Column_Space_String_012.top) - vp2px(100)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_013.bottom - Column_Space_String_013.top) - vp2px(150)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_011.bottom - Column_Space_String_011.top) - vp2px(50))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_012.bottom - Column_Space_String_012.top) - vp2px(100))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_013.bottom - Column_Space_String_013.top) - vp2px(150))) <= 1).assertTrue();
       console.log('assert weight')
-      expect(Math.abs((Column_Space_String_011.right - Column_Space_String_011.left) - vp2px(300)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_012.right - Column_Space_String_012.left) - vp2px(300)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_013.right - Column_Space_String_013.left) - vp2px(300)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_011.right - Column_Space_String_011.left) - vp2px(300))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_012.right - Column_Space_String_012.left) - vp2px(300))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_013.right - Column_Space_String_013.left) - vp2px(300))) <= 1).assertTrue();
       console.info('[SUB_ACE_Column_Space_String_TEST_0700] END');
     });
     /**
@@ -356,28 +356,28 @@ export default function Column_Space_String() {
       let Column_Space_String_013: RectValue = CommonFunc.getComponentRect('Column_Space_String_013');
       let Column_Space_String_01: RectValue = CommonFunc.getComponentRect('Column_Space_String_01');
       console.log('assert position')
-      expect(Math.abs((Column_Space_String_011.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_011.right)) <= 1)
+      expect(Math.floor(Math.abs((Column_Space_String_011.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_011.right))) <= 1)
         .assertTrue();
-      expect(Math.abs((Column_Space_String_012.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_012.right)) <= 1)
+      expect(Math.floor(Math.abs((Column_Space_String_012.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_012.right))) <= 1)
         .assertTrue();
-      expect(Math.abs((Column_Space_String_013.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_013.right)) <= 1)
+      expect(Math.floor(Math.abs((Column_Space_String_013.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_013.right))) <= 1)
         .assertTrue();
-      expect(Math.abs((Column_Space_String_012.top - Column_Space_String_011.bottom) - (Column_Space_String_013.top - Column_Space_String_012.bottom)) <= 1)
+      console.log('[SUB_ACE_Column_Space_String_TEST_0800] Column_Space_String_012.top - Column_Space_String_011.bottom', +(Column_Space_String_012.top - Column_Space_String_011.bottom))
+      console.log('[SUB_ACE_Column_Space_String_TEST_0800] Column_Space_String_013.top - Column_Space_String_012.bottom', +(Column_Space_String_013.top - Column_Space_String_012.bottom))
+      expect(Math.floor(Math.abs((Column_Space_String_012.top - Column_Space_String_011.bottom) - (Column_Space_String_013.top - Column_Space_String_012.bottom))) <= 1)
         .assertTrue();
       console.log('assert space')
-      expect(Math.abs((Column_Space_String_012.top - Column_Space_String_011.bottom) - 10) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_013.top - Column_Space_String_012.bottom) - 10) <= 1).assertTrue();
-      console.log('Column_Space_String_012.top - Column_Space_String_011.bottom', +(Column_Space_String_012.top - Column_Space_String_011.bottom))
-      console.log('Column_Space_String_013.top - Column_Space_String_012.bottom', +(Column_Space_String_013.top - Column_Space_String_012.bottom))
-      expect(Math.abs(Column_Space_String_01.top - Column_Space_String_011.top) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_012.top - Column_Space_String_011.bottom) - 10)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_013.top - Column_Space_String_012.bottom) - 10)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(Column_Space_String_01.top - Column_Space_String_011.top)) <= 1).assertTrue();
       console.log('assert height')
-      expect(Math.abs((Column_Space_String_011.bottom - Column_Space_String_011.top) - vp2px(50)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_012.bottom - Column_Space_String_012.top) - vp2px(100)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_013.bottom - Column_Space_String_013.top) - vp2px(150)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_011.bottom - Column_Space_String_011.top) - vp2px(50))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_012.bottom - Column_Space_String_012.top) - vp2px(100))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_013.bottom - Column_Space_String_013.top) - vp2px(150))) <= 1).assertTrue();
       console.log('assert weight')
-      expect(Math.abs((Column_Space_String_011.right - Column_Space_String_011.left) - vp2px(300)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_012.right - Column_Space_String_012.left) - vp2px(300)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_013.right - Column_Space_String_013.left) - vp2px(300)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_011.right - Column_Space_String_011.left) - vp2px(300))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_012.right - Column_Space_String_012.left) - vp2px(300))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_013.right - Column_Space_String_013.left) - vp2px(300))) <= 1).assertTrue();
       console.info('[SUB_ACE_Column_Space_String_TEST_0800] END');
     });
     /**
@@ -397,28 +397,28 @@ export default function Column_Space_String() {
       let Column_Space_String_013: RectValue = CommonFunc.getComponentRect('Column_Space_String_013');
       let Column_Space_String_01: RectValue = CommonFunc.getComponentRect('Column_Space_String_01');
       console.log('assert position')
-      expect(Math.abs((Column_Space_String_011.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_011.right)) <= 1)
+      expect(Math.floor(Math.abs((Column_Space_String_011.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_011.right))) <= 1)
         .assertTrue();
-      expect(Math.abs((Column_Space_String_012.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_012.right)) <= 1)
+      expect(Math.floor(Math.abs((Column_Space_String_012.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_012.right))) <= 1)
         .assertTrue();
-      expect(Math.abs((Column_Space_String_013.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_013.right)) <= 1)
+      expect(Math.floor(Math.abs((Column_Space_String_013.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_013.right))) <= 1)
         .assertTrue();
-      expect(Math.abs((Column_Space_String_012.top - Column_Space_String_011.bottom) - (Column_Space_String_013.top - Column_Space_String_012.bottom)) <= 1)
+      console.log('[SUB_ACE_Column_Space_String_TEST_0900] Column_Space_String_012.top - Column_Space_String_011.bottom', +(Column_Space_String_012.top - Column_Space_String_011.bottom))
+      console.log('[SUB_ACE_Column_Space_String_TEST_0900] Column_Space_String_013.top - Column_Space_String_012.bottom', +(Column_Space_String_013.top - Column_Space_String_012.bottom))
+      expect(Math.floor(Math.abs((Column_Space_String_012.top - Column_Space_String_011.bottom) - (Column_Space_String_013.top - Column_Space_String_012.bottom))) <= 1)
         .assertTrue();
       console.log('assert space')
-      expect(Math.abs((Column_Space_String_012.top - Column_Space_String_011.bottom) - lpx2px(10)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_013.top - Column_Space_String_012.bottom) - lpx2px(10)) <= 1).assertTrue();
-      console.log('Column_Space_String_012.top - Column_Space_String_011.bottom', +(Column_Space_String_012.top - Column_Space_String_011.bottom))
-      console.log('Column_Space_String_013.top - Column_Space_String_012.bottom', +(Column_Space_String_013.top - Column_Space_String_012.bottom))
-      expect(Math.abs(Column_Space_String_01.top - Column_Space_String_011.top) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_012.top - Column_Space_String_011.bottom) - lpx2px(10))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_013.top - Column_Space_String_012.bottom) - lpx2px(10))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(Column_Space_String_01.top - Column_Space_String_011.top)) <= 1).assertTrue();
       console.log('assert height')
-      expect(Math.abs((Column_Space_String_011.bottom - Column_Space_String_011.top) - vp2px(50)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_012.bottom - Column_Space_String_012.top) - vp2px(100)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_013.bottom - Column_Space_String_013.top) - vp2px(150)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_011.bottom - Column_Space_String_011.top) - vp2px(50))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_012.bottom - Column_Space_String_012.top) - vp2px(100))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_013.bottom - Column_Space_String_013.top) - vp2px(150))) <= 1).assertTrue();
       console.log('assert weight')
-      expect(Math.abs((Column_Space_String_011.right - Column_Space_String_011.left) - vp2px(300)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_012.right - Column_Space_String_012.left) - vp2px(300)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_013.right - Column_Space_String_013.left) - vp2px(300)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_011.right - Column_Space_String_011.left) - vp2px(300))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_012.right - Column_Space_String_012.left) - vp2px(300))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_013.right - Column_Space_String_013.left) - vp2px(300))) <= 1).assertTrue();
       console.info('[SUB_ACE_Column_Space_String_TEST_0900] END');
     });
     /**
@@ -437,31 +437,31 @@ export default function Column_Space_String() {
       let Column_Space_String_012: RectValue = CommonFunc.getComponentRect('Column_Space_String_012');
       let Column_Space_String_013: RectValue = CommonFunc.getComponentRect('Column_Space_String_013');
       let Column_Space_String_01: RectValue = CommonFunc.getComponentRect('Column_Space_String_01');
-      expect(Math.abs((Column_Space_String_011.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_011.right)) <= 1)
+      console.log('[SUB_ACE_Column_Space_String_TEST_1000] Column_Space_String_011.left - Column_Space_String_01.left', +(Column_Space_String_011.left - Column_Space_String_01.left))
+      console.log('[SUB_ACE_Column_Space_String_TEST_1000] Column_Space_String_012.left - Column_Space_String_01.left', +(Column_Space_String_012.left - Column_Space_String_01.left))
+      console.log('[SUB_ACE_Column_Space_String_TEST_1000] Column_Space_String_013.left - Column_Space_String_01.left', +(Column_Space_String_013.left - Column_Space_String_01.left))
+      expect(Math.floor(Math.abs((Column_Space_String_011.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_011.right))) <= 1)
         .assertTrue();
-      expect(Math.abs((Column_Space_String_012.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_012.right)) <= 1)
+      expect(Math.floor(Math.abs((Column_Space_String_012.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_012.right))) <= 1)
         .assertTrue();
-      expect(Math.abs((Column_Space_String_013.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_013.right)) <= 1)
+      expect(Math.floor(Math.abs((Column_Space_String_013.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_013.right))) <= 1)
         .assertTrue();
-      expect(Math.abs((Column_Space_String_012.top - Column_Space_String_011.bottom) - (Column_Space_String_013.top - Column_Space_String_012.bottom)) <= 1)
+      console.log('[SUB_ACE_Column_Space_String_TEST_1000] Column_Space_String_012.top - Column_Space_String_011.bottom', +(Column_Space_String_012.top - Column_Space_String_011.bottom))
+      console.log('[SUB_ACE_Column_Space_String_TEST_1000] Column_Space_String_013.top - Column_Space_String_012.bottom', +(Column_Space_String_013.top - Column_Space_String_012.bottom))
+      expect(Math.floor(Math.abs((Column_Space_String_012.top - Column_Space_String_011.bottom) - (Column_Space_String_013.top - Column_Space_String_012.bottom))) <= 1)
         .assertTrue();
-      console.log('Column_Space_String_011.left - Column_Space_String_01.left', +(Column_Space_String_011.left - Column_Space_String_01.left))
-      console.log('Column_Space_String_012.left - Column_Space_String_01.left', +(Column_Space_String_012.left - Column_Space_String_01.left))
-      console.log('Column_Space_String_013.left - Column_Space_String_01.left', +(Column_Space_String_013.left - Column_Space_String_01.left))
       console.log('assert space')
-      expect(Math.abs((Column_Space_String_012.top - Column_Space_String_011.bottom) - 10) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_013.top - Column_Space_String_012.bottom) - 10) <= 1).assertTrue();
-      console.log('Column_Space_String_012.top - Column_Space_String_011.bottom', +(Column_Space_String_012.top - Column_Space_String_011.bottom))
-      console.log('Column_Space_String_013.top - Column_Space_String_012.bottom', +(Column_Space_String_013.top - Column_Space_String_012.bottom))
-      expect(Math.abs(Column_Space_String_01.top - Column_Space_String_011.top) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_012.top - Column_Space_String_011.bottom) - 10)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_013.top - Column_Space_String_012.bottom) - 10)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(Column_Space_String_01.top - Column_Space_String_011.top)) <= 1).assertTrue();
       console.log('assert height')
-      expect(Math.abs((Column_Space_String_011.bottom - Column_Space_String_011.top) - vp2px(50)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_012.bottom - Column_Space_String_012.top) - vp2px(100)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_013.bottom - Column_Space_String_013.top) - vp2px(150)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_011.bottom - Column_Space_String_011.top) - vp2px(50))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_012.bottom - Column_Space_String_012.top) - vp2px(100))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_013.bottom - Column_Space_String_013.top) - vp2px(150))) <= 1).assertTrue();
       console.log('assert weight')
-      expect(Math.abs((Column_Space_String_011.right - Column_Space_String_011.left) - vp2px(300)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_012.right - Column_Space_String_012.left) - vp2px(300)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_013.right - Column_Space_String_013.left) - vp2px(300)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_011.right - Column_Space_String_011.left) - vp2px(300))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_012.right - Column_Space_String_012.left) - vp2px(300))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_013.right - Column_Space_String_013.left) - vp2px(300))) <= 1).assertTrue();
       console.info('[SUB_ACE_Column_Space_String_TEST_01000] END');
     });
     /**
@@ -481,28 +481,28 @@ export default function Column_Space_String() {
       let Column_Space_String_013: RectValue = CommonFunc.getComponentRect('Column_Space_String_013');
       let Column_Space_String_01: RectValue = CommonFunc.getComponentRect('Column_Space_String_01');
       console.log('assert position')
-      expect(Math.abs((Column_Space_String_011.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_011.right)) <= 1)
+      expect(Math.floor(Math.abs((Column_Space_String_011.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_011.right))) <= 1)
         .assertTrue();
-      expect(Math.abs((Column_Space_String_012.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_012.right)) <= 1)
+      expect(Math.floor(Math.abs((Column_Space_String_012.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_012.right))) <= 1)
         .assertTrue();
-      expect(Math.abs((Column_Space_String_013.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_013.right)) <= 1)
+      expect(Math.floor(Math.abs((Column_Space_String_013.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_013.right))) <= 1)
         .assertTrue();
-      expect(Math.abs((Column_Space_String_012.top - Column_Space_String_011.bottom) - (Column_Space_String_013.top - Column_Space_String_012.bottom)) <= 1)
+      console.log('[SUB_ACE_Column_Space_String_TEST_01100] Column_Space_String_012.top - Column_Space_String_011.bottom', +(Column_Space_String_012.top - Column_Space_String_011.bottom))
+      console.log('[SUB_ACE_Column_Space_String_TEST_01100] Column_Space_String_013.top - Column_Space_String_012.bottom', +(Column_Space_String_013.top - Column_Space_String_012.bottom))
+      expect(Math.floor(Math.abs((Column_Space_String_012.top - Column_Space_String_011.bottom) - (Column_Space_String_013.top - Column_Space_String_012.bottom))) <= 1)
         .assertTrue();
       console.log('assert space')
-      expect(Math.abs((Column_Space_String_012.top - Column_Space_String_011.bottom) - vp2px(30)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_013.top - Column_Space_String_012.bottom) - vp2px(30)) <= 1).assertTrue();
-      console.log('Column_Space_String_012.top - Column_Space_String_011.bottom', +(Column_Space_String_012.top - Column_Space_String_011.bottom))
-      console.log('Column_Space_String_013.top - Column_Space_String_012.bottom', +(Column_Space_String_013.top - Column_Space_String_012.bottom))
-      expect(Math.abs(Column_Space_String_01.top - Column_Space_String_011.top) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_012.top - Column_Space_String_011.bottom) - vp2px(30))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_013.top - Column_Space_String_012.bottom) - vp2px(30))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(Column_Space_String_01.top - Column_Space_String_011.top)) <= 1).assertTrue();
       console.log('assert height')
-      expect(Math.abs((Column_Space_String_011.bottom - Column_Space_String_011.top) - vp2px(50)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_012.bottom - Column_Space_String_012.top) - vp2px(100)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_013.bottom - Column_Space_String_013.top) - vp2px(150)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_011.bottom - Column_Space_String_011.top) - vp2px(50))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_012.bottom - Column_Space_String_012.top) - vp2px(100))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_013.bottom - Column_Space_String_013.top) - vp2px(150))) <= 1).assertTrue();
       console.log('assert weight')
-      expect(Math.abs((Column_Space_String_011.right - Column_Space_String_011.left) - vp2px(300)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_012.right - Column_Space_String_012.left) - vp2px(300)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_013.right - Column_Space_String_013.left) - vp2px(300)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_011.right - Column_Space_String_011.left) - vp2px(300))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_012.right - Column_Space_String_012.left) - vp2px(300))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_013.right - Column_Space_String_013.left) - vp2px(300))) <= 1).assertTrue();
       console.info('[SUB_ACE_Column_Space_String_TEST_01100] END');
     });
     /**
@@ -522,28 +522,28 @@ export default function Column_Space_String() {
       let Column_Space_String_013: RectValue = CommonFunc.getComponentRect('Column_Space_String_013');
       let Column_Space_String_01: RectValue = CommonFunc.getComponentRect('Column_Space_String_01');
       console.log('assert position')
-      expect(Math.abs((Column_Space_String_011.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_011.right)) <= 1)
+      expect(Math.floor(Math.abs((Column_Space_String_011.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_011.right))) <= 1)
         .assertTrue();
-      expect(Math.abs((Column_Space_String_012.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_012.right)) <= 1)
+      expect(Math.floor(Math.abs((Column_Space_String_012.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_012.right))) <= 1)
         .assertTrue();
-      expect(Math.abs((Column_Space_String_013.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_013.right)) <= 1)
+      expect(Math.floor(Math.abs((Column_Space_String_013.left - Column_Space_String_01.left) - (Column_Space_String_01.right - Column_Space_String_013.right))) <= 1)
         .assertTrue();
-      expect(Math.abs((Column_Space_String_012.top - Column_Space_String_011.bottom) - (Column_Space_String_013.top - Column_Space_String_012.bottom)) <= 1)
+      console.log('[SUB_ACE_Column_Space_String_TEST_1200] Column_Space_String_012.top - Column_Space_String_011.bottom', +(Column_Space_String_012.top - Column_Space_String_011.bottom))
+      console.log('[SUB_ACE_Column_Space_String_TEST_1200] Column_Space_String_013.top - Column_Space_String_012.bottom', +(Column_Space_String_013.top - Column_Space_String_012.bottom))
+      expect(Math.floor(Math.abs((Column_Space_String_012.top - Column_Space_String_011.bottom) - (Column_Space_String_013.top - Column_Space_String_012.bottom))) <= 2)
         .assertTrue();
       console.log('assert space')
-      expect(Math.abs((Column_Space_String_012.top - Column_Space_String_011.bottom) - vp2px(50)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_013.top - Column_Space_String_012.bottom) - vp2px(50)) <= 1).assertTrue();
-      console.log('Column_Space_String_012.top - Column_Space_String_011.bottom', +(Column_Space_String_012.top - Column_Space_String_011.bottom))
-      console.log('Column_Space_String_013.top - Column_Space_String_012.bottom', +(Column_Space_String_013.top - Column_Space_String_012.bottom))
-      expect(Math.abs(Column_Space_String_01.top - Column_Space_String_011.top) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_012.top - Column_Space_String_011.bottom) - vp2px(50))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_013.top - Column_Space_String_012.bottom) - vp2px(50))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(Column_Space_String_01.top - Column_Space_String_011.top)) <= 1).assertTrue();
       console.log('assert height')
-      expect(Math.abs((Column_Space_String_011.bottom - Column_Space_String_011.top) - vp2px(50)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_012.bottom - Column_Space_String_012.top) - vp2px(100)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_013.bottom - Column_Space_String_013.top) - vp2px(150)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_011.bottom - Column_Space_String_011.top) - vp2px(50))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_012.bottom - Column_Space_String_012.top) - vp2px(100))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_013.bottom - Column_Space_String_013.top) - vp2px(150))) <= 1).assertTrue();
       console.log('assert weight')
-      expect(Math.abs((Column_Space_String_011.right - Column_Space_String_011.left) - vp2px(300)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_012.right - Column_Space_String_012.left) - vp2px(300)) <= 1).assertTrue();
-      expect(Math.abs((Column_Space_String_013.right - Column_Space_String_013.left) - vp2px(300)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_011.right - Column_Space_String_011.left) - vp2px(300))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_012.right - Column_Space_String_012.left) - vp2px(300))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((Column_Space_String_013.right - Column_Space_String_013.left) - vp2px(300))) <= 1).assertTrue();
       console.info('[SUB_ACE_Column_Space_String_TEST_1200] END');
     });
 

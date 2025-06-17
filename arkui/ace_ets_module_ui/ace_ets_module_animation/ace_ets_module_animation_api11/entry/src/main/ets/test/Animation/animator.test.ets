@@ -15,6 +15,7 @@
 import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, Level, expect } from "@ohos/hypium"
 import Utils from '../../MainAbility/common/Utils'
+import { Component, Driver, UiWindow, ON} from '@ohos.UiTest';
 export default function animatorOnframeJsunit() {
   describe('animatorOnframeTest', () => {
     beforeEach(async (done: Function) => {
@@ -174,6 +175,69 @@ export default function animatorOnframeJsunit() {
       expect(JSON.parse(strJson).$type).assertEqual('Text');
       expect(JSON.parse(strJson).$attrs.textAlign).assertEqual("TextAlign.Center");
       console.info("[testanimatorOnframe0010] textAlign value :" + JSON.parse(strJson).$attrs.textAlign);
+      done();
+    });
+
+    /*
+     * @tc.number       testanimatorOnframe0011
+     * @tc.name         testanimatorOnframe0011
+     * @tc.desc         test animator OnFrame
+     */
+    it('testanimatorOnframe0011', Level.LEVEL0, async (done: Function) => {
+      console.info('animatorOnframe testanimatorOnframe0011 START');
+      await Utils.sleep(2000);
+
+      let driver = Driver.create();
+      await driver.delayMs(1000);
+      let playBtn: Component = await driver.findComponent(ON.id('Play'));
+      await playBtn.click()
+      console.info('[testanimatorOnframe0011] playBtn click');
+      await driver.delayMs(5000);
+
+      let strJson3: string = getInspectorByKey('Test003');
+      console.info('[testanimatorOnframe0011] strJson3: ' + JSON.parse(strJson3).$attrs.content);
+      expect(JSON.parse(strJson3).$attrs.content).assertEqual('250');
+      done();
+      
+      console.info('testanimatorOnframe0011 END');
+      done();  
+    });
+
+    /*
+     * @tc.number       testanimatorOnframe012
+     * @tc.name         testanimatorOnframe012
+     * @tc.desc         test animator onRepeat
+     */
+    it('testanimatorOnframe012', Level.LEVEL0, async (done: Function) => {
+      console.info('animatorOnframe testanimatorOnframe0011 START');
+      await Utils.sleep(2000);
+
+      let strJson4: string = getInspectorByKey('Test004');
+      console.info('[testanimatorOnframe012] strJson4: ' + JSON.parse(strJson4).$attrs.content);
+      expect(JSON.parse(strJson4).$attrs.content).assertEqual('animator-Test004:1');
+      console.info('testanimatorOnframe012 END');
+      done();  
+    });
+
+    /*
+     * @tc.number       testanimatorOnframe013
+     * @tc.name         testanimatorOnframe013
+     * @tc.desic        test animator onCancel
+     */
+    it('testanimatorOnframe013', Level.LEVEL0, async (done: Function) => {
+      console.info('animatorOnframe testanimatorOnframe013 START');
+      await Utils.sleep(1000);
+      let driver = Driver.create();
+      await driver.delayMs(1000);
+      let cancelBtn: Component = await driver.findComponent(ON.id('Cancel'));
+      await cancelBtn.click()
+      console.info('[testanimatorOnframe013] cancelBtn click');
+      await driver.delayMs(2000);
+
+      let strJson5: string = getInspectorByKey('Test005');
+      console.info('[testanimatorOnframe013] strJson5: ' + JSON.parse(strJson5).$attrs.content);
+      expect(JSON.parse(strJson5).$attrs.content).assertEqual('animator-Test005:1');
+      console.info('testanimatorOnframe013 END');
       done();
     });
   })

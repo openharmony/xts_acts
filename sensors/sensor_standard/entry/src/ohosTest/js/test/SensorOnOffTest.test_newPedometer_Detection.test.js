@@ -30,7 +30,8 @@ let PermissionFlag = {
 const PERMISSION_DENIED_CODE = 201
 const PARAMETER_ERROR_CODE = 401
 const SERVICE_EXCEPTION_CODE = 14500101
-const SERVICE_EXCEPTION_MSG = 'Service exception.'
+const SERVICE_EXCEPTION_MSG = "Service exception.Possible causes:" +
+        "1. Sensor hdf service exception;2. Sensor service ipc exception;3. Sensor data channel exception."
 const PARAMETER_ERROR_MSG = 'The parameter invalid.'
 const SENSOR_NO_SUPPORT_CODE = 14500102
 const PERMISSION_DENIED_MSG = 'Permission denied.'

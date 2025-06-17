@@ -42,9 +42,9 @@ export default class ActsShareExtensionAbility extends ShareExtensionAbility {
     commonEventManager.publish('ACTS_TEST_FOREGROUND', options, function () {
     });
     try {
-      let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
-      console.log(`====>ActsShareExtensionAbility deviceType: ${deviceType}`);
-      if (deviceType === '2in1') {
+      let deviceSupport = systemParameterEnhance.getSync('persist.sys.abilityms.move_ui_ability_to_background_api_enable');
+      console.log(`====>ActsShareExtensionAbility deviceSupport: ${deviceSupport}`);
+      if (deviceSupport === 'false') {
         console.log('====>ActsShareExtensionAbility terminateSelf start');
         setTimeout(() => {
           globalThis.session.terminateSelf();

@@ -26,7 +26,6 @@ import relationalStorePredicatesJoinTest from './RelationalStorePredicatesJoinJs
 import relationalStoreTransactionTest from './RelationalStoreTransactionJsunit.test';
 import relationalStoreResultSetTest from './RelationalStoreResultSetJsunit.test';
 import relationalStorePredicatesTest from './RelationalStorePredicatesJsunit.test';
-import cloudDataSetStrategyEtsTest from './CloudDataSetStrategyEts.test';
 import rdbStoreAttachEtsunitTest from './RdbStoreAttachEtsunit.test';
 import rdbStoreExcuteTest from './RelationalStoreExecuteEtsunit.test';
 import RdbStoreValueTypeTest from './RelationalStoreValueTypeBigInt.test';
@@ -51,6 +50,10 @@ import relationalStoreErrorCode51Test from './relationalStoreErrorCode51Test.tes
 import relationalStoreErrorCode01Test from './relationalStoreErrorCode01Test.test';
 import relationalStoreErrorCode32Test from './relationalStoreErrorCode32Test.test';
 import RelationalStoreSetDistributedTables from './RelationalStoreSetDistributedTables.test';
+import relationalStoreHavingTest from './RelationalStoreHavingTest.test';
+import PerfStatEtsTest from './RelationalStorePerfStatEtsTest.test'
+import rdbstoreRekeyEtsTest from './RelationalStoreRekeyEtsTest.test'
+import rdbStoreSqliteErrorOccurredTest from './RelationalStoreSqliteErrorOccurredTest.test'
 
 export default function testsuite() {
   relationalStoreEncryptTest()
@@ -67,7 +70,6 @@ export default function testsuite() {
   relationalStorePredicatesJoinTest()
   relationalStoreResultSetTest()
   relationalStorePredicatesTest()
-  cloudDataSetStrategyEtsTest()
   rdbStoreAttachEtsunitTest()
   rdbStoreExcuteTest()
   RdbStoreValueTypeTest()
@@ -92,5 +94,9 @@ export default function testsuite() {
   relationalStoreErrorCode51Test()
   relationalStoreErrorCode01Test()
   RelationalStoreSetDistributedTables()
+  relationalStoreHavingTest()
+  PerfStatEtsTest()
+  rdbstoreRekeyEtsTest()
+  rdbStoreSqliteErrorOccurredTest()
 }
 

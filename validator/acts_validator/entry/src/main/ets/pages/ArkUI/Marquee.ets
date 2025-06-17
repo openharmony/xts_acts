@@ -28,8 +28,8 @@ struct marquee {
   @State address: string = '';
   @State FillColor: string = '#FF000000';
   @State name: string = 'Marquee';
-  @State StepTips: string = '操作步骤：' + '\n' + '1、打开是否从右至左播放选择按钮\n2、设置速度为20' +
-    '\n3、设置循环次数为2\n4、点击开始按钮\n5、观察跑马灯是否按照预期设定运行' + '\n' + '预期结果：设置选项与最终播放效果一致则通过';
+  @State StepTips: string = '操作步骤：1、点击开始按钮\n2、打开是否从右至左播放选择按钮' +
+    '\n3、设置速度为20\n4、设置循环次数为2' + '\n' + '预期结果：设置选项与最终效果一致则通过';
   @State Vue: boolean = false;
   @State active: boolean = false;
   @State intervalNum: number = 0;
@@ -37,8 +37,7 @@ struct marquee {
   @State fromStart: boolean = false;
   @State step: number = 10;
   @State loop: number = 0;
-  @State rolling: boolean = false;
-  @State marqueeSrc: string = '欢迎来到validator,我是validator跑马灯';
+  @State marqueeSrc: string = '欢迎来到validator,我是validator跑马灯,欢迎来到validator,我是validator跑马灯';
   @State mColor: Color = Color.Gray;
 
   @Builder
@@ -108,7 +107,7 @@ struct marquee {
 
   onPageShow() {
     this.intervalNum = setInterval(() => {
-      if (this.step === 20 && this.loop === 2 && this.fromStart === true && this.rolling === true) {
+      if (this.step === 20 && this.loop === 2 && this.fromStart === true) {
         this.Vue = true;
       }
     }, 500)
@@ -144,9 +143,6 @@ struct marquee {
           .fontColor(Color.White)
           .fontSize('18fp')
           .margin({ left: '-20vp' })
-        Text('hello')
-          .fontColor(Color.White)
-          .visibility(Visibility.Hidden)
       }
       .backgroundColor(Color.Black)
       .height('10%')
@@ -162,14 +158,14 @@ struct marquee {
             fromStart: this.fromStart,
             src: this.marqueeSrc
           })
-            .width(300)
-            .height(100)
+            .width('30%')
+            .height('10%')
             .fontColor(Color.White)
-            .fontSize(35)
+            .fontSize(10)
             .allowScale(false)
             .fontWeight(FontWeight.Bold)
             .backgroundColor(Color.Gray)
-            .margin({ bottom: 40 })
+            .margin({ bottom: 10 })
             .onStart(() => {
               Logger.info(TAG, 'Marquee animation complete onStart')
             })
@@ -184,51 +180,52 @@ struct marquee {
           Button(this.start ? '停止' : '开始')
             .onClick(() => {
               this.start = !this.start
-              this.rolling = !this.rolling
             })
             .id('test_marqueeButton')
             .width(150)
-            .height(45)
-            .margin({ bottom: 20 })
+            .height('5%')
+            .margin({ bottom: 10 })
         }
         .backgroundColor(Color.White)
         .borderRadius(24)
         .width('100%')
-        .padding(15)
-        .width('100%')
 
         Text('选项')
-          .fontSize(18)
-          .height(22)
-          .alignSelf(ItemAlign.Start)
-          .margin({ left: 12, top: 12 })
+          .fontSize(10)
+          .height('10%')
+          .alignSelf(ItemAlign.Center)
+          .textAlign(TextAlign.Center)
+          .width('50%')
+          .fontColor(Color.Black)
         Column() {
           Row() {
             Text('是否从右至左播放')
-              .fontSize(18)
-              .height(22)
-              .alignSelf(ItemAlign.Start)
-              .margin({ left: 12, top: 12 })
+              .fontSize(15)
+              .alignSelf(ItemAlign.Center)
+              .textAlign(TextAlign.Center)
               .width('50%')
-            Blank()
+              .fontColor(Color.Black)
             Toggle({ type: ToggleType.Switch, isOn: this.fromStart })
               .onChange((isOn) => {
                 this.fromStart = isOn
               }).id('test_toggle')
-          }.width('100%')
-          .height(50)
+              .alignSelf(ItemAlign.Center)
+          }
+          .width('100%')
+          .height('15%')
 
           Row() {
             Text('设置速度')
-              .fontSize(18)
-              .height(22)
-              .alignSelf(ItemAlign.Start)
-              .margin({ left: 12, top: 12 })
+              .fontSize(15)
+              .alignSelf(ItemAlign.Center)
               .width('50%')
-            Blank()
+              .fontColor(Color.Black)
+              .textAlign(TextAlign.Center)
             Counter() {
-              Text(this.step.toString())
+              Text(this.step.toString()).fontColor(Color.Black).font({size:15})
             }
+            .size({height:15})
+            .foregroundColor(Color.Black)
             .onInc(() => {
               this.step++
             })
@@ -237,20 +234,22 @@ struct marquee {
                 this.step--
               }
             })
-          }.width('100%')
-          .height(50)
+          }
+          .width('100%')
+          .height('15%')
 
           Row() {
             Text('循环次数')
-              .fontSize(18)
-              .height(22)
-              .alignSelf(ItemAlign.Start)
-              .margin({ left: 12, top: 12 })
+              .fontSize(15)
+              .alignSelf(ItemAlign.Center)
               .width('50%')
-            Blank()
+              .textAlign(TextAlign.Center)
+              .fontColor(Color.Black)
             Counter() {
-              Text(this.loop.toString())
+              Text(this.loop.toString()).font({size:15}).fontColor(Color.Black)
             }
+            .size({height:16})
+            .foregroundColor(Color.Black)
             .onInc(() => {
               this.loop++
             })
@@ -260,12 +259,10 @@ struct marquee {
               }
             })
           }.width('100%')
-          .height(50)
+          .height('15%')
         }
         .backgroundColor(Color.White)
         .borderRadius(24)
-        .width('100%')
-        .padding(15)
         .width('100%')
       }
       .height('80%')
@@ -308,4 +305,3 @@ struct marquee {
     .backgroundColor('#F1F3F5')
   }
 }
-

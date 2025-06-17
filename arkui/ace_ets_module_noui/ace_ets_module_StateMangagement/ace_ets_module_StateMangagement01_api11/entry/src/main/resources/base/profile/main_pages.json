@@ -48,6 +48,7 @@
         "MainAbility/pages/@state/StateHight",
         "MainAbility/pages/@state/StateNumber",
         "MainAbility/pages/Zhuang/StorageDeprecated",
-        "MainAbility/pages/Zhuang/Persistent0040"
+        "MainAbility/pages/Zhuang/Persistent0040",
+        "MainAbility/pages/Zhuang/NonUICallBack"
     ]
 }

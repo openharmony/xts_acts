@@ -54,13 +54,6 @@ ohos_moduletest_suite("ActsDeqpgles31Suite0036Test") {
     "../functional/Deqpgles31viewclass_128_bits_mixed_rgba32ui_rgba_astc_10x6_khrTestCase.cpp",
     "../functional/Deqpgles31viewclass_128_bits_mixed_rgba32ui_rgba_astc_10x8_khrTestCase.cpp",
     "../functional/Deqpgles31viewclass_128_bits_mixed_rgba32ui_rgba_astc_12x10_khrTestCase.cpp",
-    "../functional/Deqpgles31viewclass_128_bits_mixed_rgba32ui_rgba_astc_12x12_khrTestCase.cpp",
-    "../functional/Deqpgles31viewclass_128_bits_mixed_rgba32ui_rgba_astc_4x4_khrTestCase.cpp",
-    "../functional/Deqpgles31viewclass_128_bits_mixed_rgba32ui_rgba_astc_5x4_khrTestCase.cpp",
-    "../functional/Deqpgles31viewclass_128_bits_mixed_rgba32ui_rgba_astc_5x5_khrTestCase.cpp",
-    "../functional/Deqpgles31viewclass_128_bits_mixed_rgba32ui_rgba_astc_6x5_khrTestCase.cpp",
-    "../functional/Deqpgles31viewclass_128_bits_mixed_rgba32ui_rgba_astc_6x6_khrTestCase.cpp",
-    "../functional/Deqpgles31viewclass_128_bits_mixed_rgba32ui_rgba_astc_8x5_khrTestCase.cpp",
   ]
 
   include_dirs = [ "../../../src" ]

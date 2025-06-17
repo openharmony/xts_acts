@@ -161,6 +161,12 @@ function toNextStep(avTranscoder: media.AVTranscoder | null, config: media.AVTra
       break;
     case RELEASEAVTRANSCODER_PROMISE_EVENT:
       steps.shift();
+      avTranscoder?.off('complete');
+      console.info('success avTranscoder off complete');
+      avTranscoder?.off('error');
+      console.info('success avTranscoder off error');
+      avTranscoder?.off('progressUpdate');
+      console.info('success avTranscoder off progressUpdate');
       if (canIUse("SystemCapability.Multimedia.Media.AVTranscoder")) {
         avTranscoder?.release().then(() => {
           console.info('release AVTranscoder success');

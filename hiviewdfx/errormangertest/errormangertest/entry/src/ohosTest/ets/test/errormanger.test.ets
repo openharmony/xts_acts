@@ -527,8 +527,11 @@ export default function ErrormangerTest() {
      * @tc.level Level3
      */
     it('testErrorManger_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
+      errorManager.off("globalErrorOccurred");
+      errorManager.off("globalUnhandledRejectionDetected");
       let result = ""
       let instanceType2 = -1
+      console.info("====> testErrorManger_1600 start");
       let func = (observer:errorManager.GlobalError) => {
         result = observer.message
         console.log("result instaceType")
@@ -539,16 +542,17 @@ export default function ErrormangerTest() {
         console.log("result instaceType :" + observer.instanceType);
         instanceType2 = observer.instanceType
       }
-      errorManager.on("globalErrorOccurred",func)
-      await asyncSleep(500)
-      taskpool.execute(execute1).then(() => {
-      }).catch(() => {
-        errorManager.off("globalErrorOccurred", func)
-        expect(result).assertEqual("throw error");
-        console.info("====> testErrorManger_1600 result instaceType " + JSON.stringify(instanceType2))
-        expect(instanceType2==2).assertTrue();
-        done();
-      });
+      errorManager.on("globalErrorOccurred", func)
+      let task: taskpool.Task = new taskpool.Task(execute1);
+      taskpool.executeDelayed(1000, task);
+      console.info("====> testErrorManger_1600 wait");
+      await asyncSleep(1500);
+      console.info("====> testErrorManger_1600 wait end");
+      errorManager.off("globalErrorOccurred", func)
+      expect(result).assertEqual("throw error");
+      expect(instanceType2==2).assertTrue();
+      console.info("====> testErrorManger_1600 end");
+      done();
     })
 
     /**

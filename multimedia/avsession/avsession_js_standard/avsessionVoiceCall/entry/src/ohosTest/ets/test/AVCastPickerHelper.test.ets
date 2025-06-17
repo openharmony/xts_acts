@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import avSession from '@ohos.multimedia.avsession';
 import featureAbility from '@ohos.ability.featureAbility';
 import { AVCastPickerState } from '@ohos.multimedia.avCastPickerParam';
@@ -61,7 +61,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_AVCASTPICKERHELPER_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_AVCASTPICKERHELPER_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let avCastPickerOptions : avSession.AVCastPickerOptions = {
         sessionType: 'video',
       }
@@ -83,7 +83,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_ON_PICKERSTATECHANGE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_ON_PICKERSTATECHANGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let avCastPickerOptions : avSession.AVCastPickerOptions = {
         sessionType: 'video',
       }
@@ -114,7 +114,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_ON_PICKERSTATECHANGE_0200', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_ON_PICKERSTATECHANGE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag: boolean = false;
       try {
         let avCastPickerOptions : avSession.AVCastPickerOptions = {
@@ -151,7 +151,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_AVCASTPICKERHELPER_0200', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_AVCASTPICKERHELPER_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let avCastPickerOptions : avSession.AVCastPickerOptions = {
         sessionType: 'video',
       }
@@ -182,7 +182,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_AVCASTPICKERHELPER_0300', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_AVCASTPICKERHELPER_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let avCastPickerOptions : avSession.AVCastPickerOptions = {
         sessionType: 'audio',
       }
@@ -204,7 +204,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_AVCASTPICKERHELPER_0400', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_AVCASTPICKERHELPER_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let avCastPickerOptions : avSession.AVCastPickerOptions = {
         sessionType: 'voice_call',
       }
@@ -226,7 +226,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_AVCASTPICKERHELPER_0500', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_AVCASTPICKERHELPER_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let avCastPickerOptions : avSession.AVCastPickerOptions = {
         sessionType: 'video_call',
       }
@@ -248,7 +248,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_AVCASTPICKERHELPER_0600', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_AVCASTPICKERHELPER_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let avCastPickerOptions : avSession.AVCastPickerOptions = {}
       let avCastPicker = new avSession.AVCastPickerHelper(context);
       await avCastPicker.select(avCastPickerOptions).then(() => {
@@ -268,7 +268,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AVSESSION_AVCASTPICKERHELPER_0700', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_AVCASTPICKERHELPER_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let avCastPicker = new avSession.AVCastPickerHelper(context);
       await avCastPicker.select().then(() => {
         console.info('${TAG}: avCastPicker select successfully');

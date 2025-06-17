@@ -90,7 +90,7 @@ export default function builtinsArrayReduceTest() {
         let reducedValue = array.reduce((acc, curr) => acc + curr);
       } catch (error) {
         console.info('======', error)
-        expect('out of range.').assertEqual(error.message);
+        expect('TypeError').assertEqual(error.name);
         Done();
       }
     })

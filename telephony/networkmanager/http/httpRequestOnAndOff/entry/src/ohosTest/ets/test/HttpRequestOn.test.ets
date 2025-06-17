@@ -44,6 +44,12 @@ function ExpectFail(): void {
   }
 }
 
+function sleep(time:number):Promise<string> {
+    return new Promise<string>((resolve) => {setTimeout(()=>{
+      resolve('ok')},time)
+ });
+}
+
 type emptyFunc = () => void;
 
 const TEST_MORE_LEN: number = 2;
@@ -100,7 +106,8 @@ export default function HttpRequestOnOffTest() {
                   })
                 );
               }
-              Promise.all(list).then(() => {
+              Promise.all(list).then(async() => {
+                await sleep(100);
                 ExpectTrue(called == 1);
                 httpRequest.destroy();
                 done();
@@ -169,7 +176,8 @@ export default function HttpRequestOnOffTest() {
                   })
                 );
               }
-              Promise.all(list).then(() => {
+              Promise.all(list).then(async() => {
+                await sleep(100);
                 ExpectTrue(called == 1);
                 httpRequest.destroy();
                 done();
@@ -239,7 +247,8 @@ export default function HttpRequestOnOffTest() {
                   })
                 );
               }
-              Promise.all(list).then(() => {
+              Promise.all(list).then(async() => {
+                await sleep(100);
                 ExpectTrue(called == TEST_MORE_REQUEST_LEN);
                 httpRequest.destroy();
                 done();
@@ -308,7 +317,8 @@ export default function HttpRequestOnOffTest() {
                   })
                 );
               }
-              Promise.all(list).then(() => {
+              Promise.all(list).then(async() => {
+                await sleep(100);
                 ExpectTrue(called == 1);
                 httpRequest.destroy();
                 httpRequest.off('headersReceive');
@@ -379,7 +389,8 @@ export default function HttpRequestOnOffTest() {
                 )
                 ;
               }
-              Promise.all(list).then(() => {
+              Promise.all(list).then(async() => {
+                await sleep(100);
                 ExpectTrue(called == 1);
                 httpRequest.destroy();
                 httpRequest.off('headersReceive');
@@ -450,7 +461,8 @@ export default function HttpRequestOnOffTest() {
                 )
                 ;
               }
-              Promise.all(list).then(() => {
+              Promise.all(list).then(async() => {
+                await sleep(100);
                 ExpectTrue(called == TEST_MORE_REQUEST_LEN);
                 httpRequest.destroy();
                 httpRequest.off('headersReceive');
@@ -521,7 +533,8 @@ export default function HttpRequestOnOffTest() {
                 )
                 ;
               }
-              Promise.all(list).then(() => {
+              Promise.all(list).then(async() => {
+                await sleep(100);
                 ExpectTrue(called >= 1);
                 httpRequest.destroy();
                 done();
@@ -591,7 +604,8 @@ export default function HttpRequestOnOffTest() {
                 )
                 ;
               }
-              Promise.all(list).then(() => {
+              Promise.all(list).then(async() => {
+                await sleep(100);
                 ExpectTrue(called >= 1);
                 httpRequest.destroy();
                 done();
@@ -662,7 +676,8 @@ export default function HttpRequestOnOffTest() {
                 )
                 ;
               }
-              Promise.all(list).then(() => {
+              Promise.all(list).then(async() => {
+                await sleep(100);
                 ExpectTrue(called >= TEST_MORE_REQUEST_LEN);
                 httpRequest.destroy();
                 done();
@@ -735,7 +750,8 @@ export default function HttpRequestOnOffTest() {
                 )
                 ;
               }
-              Promise.all(list).then(() => {
+              Promise.all(list).then(async() => {
+                await sleep(100);
                 ExpectTrue(called == 1);
                 httpRequest.destroy();
                 done();
@@ -807,7 +823,8 @@ export default function HttpRequestOnOffTest() {
                 )
                 ;
               }
-              Promise.all(list).then(() => {
+              Promise.all(list).then(async() => {
+                await sleep(100);
                 ExpectTrue(called == 1);
                 httpRequest.destroy();
                 done();
@@ -879,7 +896,8 @@ export default function HttpRequestOnOffTest() {
                   })
                 );
               }
-              Promise.all(list).then(() => {
+              Promise.all(list).then(async() => {
+                await sleep(100);
                 ExpectTrue(called == 2);
                 httpRequest.destroy();
                 done();
@@ -949,7 +967,8 @@ export default function HttpRequestOnOffTest() {
                   })
                 );
               }
-              Promise.all(list).then(() => {
+              Promise.all(list).then(async() => {
+                await sleep(100);
                 ExpectTrue(called >= 1);
                 httpRequest.destroy();
                 done();
@@ -1018,7 +1037,8 @@ export default function HttpRequestOnOffTest() {
                   })
                 );
               }
-              Promise.all(list).then(() => {
+              Promise.all(list).then(async() => {
+                await sleep(100);
                 ExpectTrue(called >= 1);
                 httpRequest.destroy();
                 done();
@@ -1088,7 +1108,8 @@ export default function HttpRequestOnOffTest() {
                   })
                 );
               }
-              Promise.all(list).then(() => {
+              Promise.all(list).then(async() => {
+                await sleep(100);
                 ExpectTrue(called >= TEST_MORE_REQUEST_LEN);
                 httpRequest.destroy();
                 done();
@@ -1160,7 +1181,8 @@ export default function HttpRequestOnOffTest() {
                   })
                 );
               }
-              Promise.all(list).then(() => {
+              Promise.all(list).then(async() => {
+                await sleep(100);
                 ExpectTrue(called >= 0);
                 httpRequest.destroy();
                 done();
@@ -1229,7 +1251,8 @@ export default function HttpRequestOnOffTest() {
                   })
                 );
               }
-              Promise.all(list).then(() => {
+              Promise.all(list).then(async() => {
+                await sleep(100);
                 ExpectTrue(called >= 0);
                 httpRequest.destroy();
                 done();
@@ -1301,7 +1324,8 @@ export default function HttpRequestOnOffTest() {
                   })
                 );
               }
-              Promise.all(list).then(() => {
+              Promise.all(list).then(async() => {
+                await sleep(100);
                 ExpectTrue(called >= 0);
                 httpRequest.destroy();
                 done();
@@ -1371,7 +1395,8 @@ export default function HttpRequestOnOffTest() {
                   })
                 );
               }
-              Promise.all(list).then(() => {
+              Promise.all(list).then(async() => {
+                await sleep(100);
                 ExpectTrue(called == 1);
                 httpRequest.destroy();
                 httpRequest.off('headersReceive');
@@ -1442,7 +1467,8 @@ export default function HttpRequestOnOffTest() {
                   })
                 );
               }
-              Promise.all(list).then(() => {
+              Promise.all(list).then(async() => {
+                await sleep(100);
                 ExpectTrue(called == 1);
                 httpRequest.destroy();
                 httpRequest.off('headersReceive');
@@ -1512,7 +1538,8 @@ export default function HttpRequestOnOffTest() {
                   })
                 );
               }
-              Promise.all(list).then(() => {
+              Promise.all(list).then(async() => {
+                await sleep(100);
                 ExpectTrue(called == 1);
                 httpRequest.destroy();
                 httpRequest.off('headersReceive');
@@ -1583,7 +1610,8 @@ export default function HttpRequestOnOffTest() {
                   })
                 );
               }
-              Promise.all(list).then(() => {
+              Promise.all(list).then(async() => {
+                await sleep(100);
                 ExpectTrue(called == 1);
                 httpRequest.destroy();
                 httpRequest.off('headersReceive');
@@ -1654,7 +1682,8 @@ export default function HttpRequestOnOffTest() {
                   })
                 );
               }
-              Promise.all(list).then(() => {
+              Promise.all(list).then(async() => {
+                await sleep(100);
                 ExpectTrue(called == 1);
                 httpRequest.destroy();
                 httpRequest.off('headersReceive');
@@ -1725,7 +1754,8 @@ export default function HttpRequestOnOffTest() {
                   })
                 );
               }
-              Promise.all(list).then(() => {
+              Promise.all(list).then(async() => {
+                await sleep(100);
                 ExpectTrue(called == 1);
                 httpRequest.destroy();
                 httpRequest.off('headersReceive');
@@ -1787,7 +1817,8 @@ export default function HttpRequestOnOffTest() {
                   }
                 });
               });
-              promise.then(() => {
+              promise.then(async() => {
+                await sleep(100);
                 ExpectTrue(called == 0);
                 httpRequest.destroy();
                 done();
@@ -1847,7 +1878,8 @@ export default function HttpRequestOnOffTest() {
                   }
                 });
               });
-              promise.then(() => {
+              promise.then(async() => {
+                await sleep(100);
                 ExpectTrue(called == 0);
                 httpRequest.destroy();
                 done();
@@ -1908,7 +1940,8 @@ export default function HttpRequestOnOffTest() {
                   }
                 });
               });
-              promise.then(() => {
+              promise.then(async() => {
+                await sleep(100);
                 ExpectTrue(called == 0);
                 httpRequest.destroy();
                 done();
@@ -1969,7 +2002,8 @@ export default function HttpRequestOnOffTest() {
                   }
                 });
               });
-              promise.then(() => {
+              promise.then(async() => {
+                await sleep(100);
                 ExpectTrue(called >= 0);
                 httpRequest.destroy();
                 done();
@@ -2031,7 +2065,8 @@ export default function HttpRequestOnOffTest() {
                   httpRequest.requestInStream(ADDR_TEST_STREAM_HTTPS)
                 );
               }
-              Promise.all(list).then(() => {
+              Promise.all(list).then(async() => {
+                await sleep(100);
                 ExpectTrue(called == 1);
                 httpRequest.destroy();
                 done();
@@ -2092,7 +2127,8 @@ export default function HttpRequestOnOffTest() {
                   httpRequest.requestInStream(ADDR_TEST_STREAM_HTTPS)
                 );
               }
-              Promise.all(list).then(() => {
+              Promise.all(list).then(async() => {
+                await sleep(100);
                 ExpectTrue(called == 1);
                 httpRequest.destroy();
                 done();
@@ -2153,7 +2189,8 @@ export default function HttpRequestOnOffTest() {
                   httpRequest.requestInStream(ADDR_TEST_STREAM_HTTPS)
                 );
               }
-              Promise.all(list).then(() => {
+              Promise.all(list).then(async() => {
+                await sleep(100);
                 ExpectTrue(called == TEST_MORE_REQUEST_LEN);
                 httpRequest.destroy();
                 done();
@@ -2215,7 +2252,8 @@ export default function HttpRequestOnOffTest() {
                   httpRequest.requestInStream(ADDR_TEST_STREAM_HTTPS)
                 );
               }
-              Promise.all(list).then(() => {
+              Promise.all(list).then(async() => {
+                await sleep(100);
                 ExpectTrue(called == 1);
                 httpRequest.off('headersReceive');
                 httpRequest.destroy();
@@ -2277,7 +2315,8 @@ export default function HttpRequestOnOffTest() {
                   httpRequest.requestInStream(ADDR_TEST_STREAM_HTTPS)
                 );
               }
-              Promise.all(list).then(() => {
+              Promise.all(list).then(async() => {
+                await sleep(100);
                 ExpectTrue(called == 1);
                 httpRequest.destroy();
                 httpRequest.off('headersReceive');
@@ -2339,7 +2378,8 @@ export default function HttpRequestOnOffTest() {
                   httpRequest.requestInStream(ADDR_TEST_STREAM_HTTPS)
                 );
               }
-              Promise.all(list).then(() => {
+              Promise.all(list).then(async() => {
+                await sleep(100);
                 ExpectTrue(called == TEST_MORE_REQUEST_LEN);
                 httpRequest.destroy();
                 httpRequest.off('headersReceive');
@@ -2401,7 +2441,8 @@ export default function HttpRequestOnOffTest() {
                   httpRequest.requestInStream(ADDR_TEST_STREAM_HTTPS)
                 );
               }
-              Promise.all(list).then(() => {
+              Promise.all(list).then(async() => {
+                await sleep(100);
                 ExpectTrue(called >= 1);
                 httpRequest.destroy();
                 done();
@@ -2462,7 +2503,8 @@ export default function HttpRequestOnOffTest() {
                   httpRequest.requestInStream(ADDR_TEST_STREAM_HTTPS)
                 );
               }
-              Promise.all(list).then(() => {
+              Promise.all(list).then(async() => {
+                await sleep(100);
                 ExpectTrue(called >= 1);
                 httpRequest.destroy();
                 done();
@@ -2524,7 +2566,8 @@ export default function HttpRequestOnOffTest() {
                   httpRequest.requestInStream(ADDR_TEST_STREAM_HTTPS)
                 );
               }
-              Promise.all(list).then(() => {
+              Promise.all(list).then(async() => {
+                await sleep(100);
                 ExpectTrue(called >= TEST_MORE_REQUEST_LEN);
                 httpRequest.destroy();
                 done();
@@ -2587,7 +2630,8 @@ export default function HttpRequestOnOffTest() {
                 );
               }
               Promise.all(list).then(() => {
-                setTimeout(() => {
+                setTimeout(async() => {
+                  await sleep(100);
                   console.info(`${caseName} called: ${called}}`);
                   ExpectTrue(called == 1);
                   httpRequest.destroy();
@@ -2652,7 +2696,8 @@ export default function HttpRequestOnOffTest() {
                 );
               }
               Promise.all(list).then(() => {
-                setTimeout(() => {
+                setTimeout(async() => {
+                  await sleep(100);
                   console.info(`${caseName} called: ${called}}`);
                   ExpectTrue(called == 1);
                   httpRequest.destroy();
@@ -2717,7 +2762,8 @@ export default function HttpRequestOnOffTest() {
                 );
               }
               Promise.all(list).then(() => {
-                setTimeout(() => {
+                setTimeout(async() => {
+                  await sleep(100);
                   console.info(`${caseName} called: ${called}}`);
                   ExpectTrue(called == 2);
                   httpRequest.destroy();
@@ -2781,7 +2827,8 @@ export default function HttpRequestOnOffTest() {
                   httpRequest.requestInStream(ADDR_TEST_STREAM_HTTPS)
                 );
               }
-              Promise.all(list).then(() => {
+              Promise.all(list).then(async() => {
+                await sleep(100);
                 ExpectTrue(called >= 1);
                 httpRequest.destroy();
                 done();
@@ -2842,7 +2889,8 @@ export default function HttpRequestOnOffTest() {
                   httpRequest.requestInStream(ADDR_TEST_STREAM_HTTPS)
                 );
               }
-              Promise.all(list).then(() => {
+              Promise.all(list).then(async() => {
+                await sleep(100);
                 ExpectTrue(called >= 1);
                 httpRequest.destroy();
                 done();
@@ -2904,7 +2952,8 @@ export default function HttpRequestOnOffTest() {
                   httpRequest.requestInStream(ADDR_TEST_STREAM_HTTPS)
                 );
               }
-              Promise.all(list).then(() => {
+              Promise.all(list).then(async() => {
+                await sleep(100);
                 ExpectTrue(called >= TEST_MORE_REQUEST_LEN);
                 httpRequest.destroy();
                 done();
@@ -2966,7 +3015,8 @@ export default function HttpRequestOnOffTest() {
                   httpRequest.requestInStream(ADDR_TEST_STREAM_HTTPS)
                 );
               }
-              Promise.all(list).then(() => {
+              Promise.all(list).then(async() => {
+                await sleep(100);
                 ExpectTrue(called >= 0);
                 httpRequest.destroy();
                 done();
@@ -3027,7 +3077,8 @@ export default function HttpRequestOnOffTest() {
                   httpRequest.requestInStream(ADDR_TEST_STREAM_HTTPS)
                 );
               }
-              Promise.all(list).then(() => {
+              Promise.all(list).then(async() => {
+                await sleep(100);
                 ExpectTrue(called == 0);
                 httpRequest.destroy();
                 done();
@@ -3089,7 +3140,8 @@ export default function HttpRequestOnOffTest() {
                   httpRequest.requestInStream(ADDR_TEST_STREAM_HTTPS)
                 );
               }
-              Promise.all(list).then(() => {
+              Promise.all(list).then(async() => {
+                await sleep(100);
                 ExpectTrue(called >= 0);
                 httpRequest.destroy();
                 done();
@@ -3139,7 +3191,8 @@ export default function HttpRequestOnOffTest() {
               httpRequest.on('dataReceive', () => {
                 called++;
               });
-              httpRequest.requestInStream(ADDR_TEST_STREAM_HTTPS).then((res: number) => {
+              httpRequest.requestInStream(ADDR_TEST_STREAM_HTTPS).then(async(res: number) => {
+                await sleep(100);
                 console.info(`${caseName} request sunccess, data: ${JSON.stringify(res)}`);
                 console.info(`${caseName} called: ${called}`);
                 ExpectTrue(called == 1);
@@ -3191,7 +3244,8 @@ export default function HttpRequestOnOffTest() {
               httpRequest.on('dataReceiveProgress', () => {
                 called++;
               });
-              httpRequest.request(ADDR_TEST_STREAM_HTTPS).then((res: http.HttpResponse) => {
+              httpRequest.request(ADDR_TEST_STREAM_HTTPS).then(async(res: http.HttpResponse) => {
+                await sleep(100);
                 console.info(`${caseName} request sunccess, data: ${JSON.stringify(res)}`);
                 console.info(`${caseName} called: ${called}`);
                 ExpectTrue(called == 0);
@@ -3244,7 +3298,8 @@ export default function HttpRequestOnOffTest() {
               httpRequest.on('dataEnd', () => {
                 called++;
               });
-              httpRequest.requestInStream(ADDR_TEST_STREAM_HTTPS).then((res: number) => {
+              httpRequest.requestInStream(ADDR_TEST_STREAM_HTTPS).then(async(res: number) => {
+                await sleep(100);
                 console.info(`${caseName} request sunccess, data: ${JSON.stringify(res)}`);
                 console.info(`${caseName} called: ${called}`);
                 ExpectTrue(called == 1);
@@ -3297,7 +3352,8 @@ export default function HttpRequestOnOffTest() {
               httpRequest.on('dataSendProgress', () => {
                 called++;
               });
-              httpRequest.request(ADDR_TEST_STREAM_HTTPS).then((res: http.HttpResponse) => {
+              httpRequest.request(ADDR_TEST_STREAM_HTTPS).then(async(res: http.HttpResponse) => {
+                await sleep(100);
                 console.info(`${caseName} request sunccess, data: ${JSON.stringify(res)}`);
                 ExpectTrue(called == 0);
                 httpRequest.destroy();

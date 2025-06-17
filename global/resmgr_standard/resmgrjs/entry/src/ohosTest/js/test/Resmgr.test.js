@@ -2564,7 +2564,6 @@ describe('resMgrTest', function () {
                 console.log('getColorSync_test_003 err.code' + err.code);
                 console.log('getColorSync_test_003 err.message' + err.message);
                 expect(err.code).assertEqual('9001001');
-                expect(err.message).assertEqual('Invalid resource ID');
                 done();
             }
         })

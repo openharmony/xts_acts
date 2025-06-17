@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import { Driver, ON, PointerMatrix, Rect } from '@ohos.UiTest';
 import Utils from '../common/Utils';
 
@@ -33,7 +33,7 @@ export default function TestLazyForEachExpandMode(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLazyForEachExpandMode001', 0, async (done: Function) => {
+    it('testLazyForEachExpandMode001', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'TestLazyForEachExpandMode001';
       await Utils.pushPage(`lazyForEach/${PAGE_TAG}`);
       await Utils.sleep(1000)
@@ -58,7 +58,7 @@ export default function TestLazyForEachExpandMode(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLazyForEachExpandMode002', 0, async (done: Function) => {
+    it('testLazyForEachExpandMode002', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'TestLazyForEachExpandMode002';
       await Utils.pushPage(`lazyForEach/${PAGE_TAG}`);
       await Utils.sleep(1000)
@@ -79,7 +79,7 @@ export default function TestLazyForEachExpandMode(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLazyForEachExpandMode003', 0, async (done: Function) => {
+    it('testLazyForEachExpandMode003', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'TestLazyForEachExpandMode003';
       await Utils.pushPage(`lazyForEach/${PAGE_TAG}`);
       await Utils.sleep(1000)
@@ -100,7 +100,7 @@ export default function TestLazyForEachExpandMode(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLazyForEachExpandMode004', 0, async (done: Function) => {
+    it('testLazyForEachExpandMode004', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'TestLazyForEachExpandMode004';
       await Utils.pushPage(`lazyForEach/${PAGE_TAG}`);
       await Utils.sleep(1000)
@@ -121,7 +121,7 @@ export default function TestLazyForEachExpandMode(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLazyForEachExpandMode005', 0, async (done: Function) => {
+    it('testLazyForEachExpandMode005', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'TestLazyForEachExpandMode005';
       await Utils.pushPage(`lazyForEach/${PAGE_TAG}`);
       await Utils.sleep(1000)
@@ -142,7 +142,7 @@ export default function TestLazyForEachExpandMode(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLazyForEachExpandMode006', 0, async (done: Function) => {
+    it('testLazyForEachExpandMode006', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'TestLazyForEachExpandMode006';
       await Utils.pushPage(`lazyForEach/${PAGE_TAG}`);
       await Utils.sleep(1000)
@@ -163,7 +163,7 @@ export default function TestLazyForEachExpandMode(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLazyForEachExpandMode007', 0, async (done: Function) => {
+    it('testLazyForEachExpandMode007', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'TestLazyForEachExpandMode007';
       await Utils.pushPage(`lazyForEach/${PAGE_TAG}`);
       await Utils.sleep(1000)
@@ -184,7 +184,7 @@ export default function TestLazyForEachExpandMode(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLazyForEachExpandMode008', 0, async (done: Function) => {
+    it('testLazyForEachExpandMode008', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'TestLazyForEachExpandMode008';
       await Utils.pushPage(`lazyForEach/${PAGE_TAG}`);
       await Utils.sleep(1000)
@@ -205,7 +205,7 @@ export default function TestLazyForEachExpandMode(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLazyForEachExpandMode009', 0, async (done: Function) => {
+    it('testLazyForEachExpandMode009', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'TestLazyForEachExpandMode009';
       await Utils.pushPage(`lazyForEach/${PAGE_TAG}`);
       await Utils.sleep(1000)

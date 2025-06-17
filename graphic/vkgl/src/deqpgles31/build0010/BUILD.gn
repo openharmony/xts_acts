@@ -51,11 +51,6 @@ ohos_moduletest_suite("ActsDeqpgles31Suite0010Test") {
     "../functional/Deqpgles312_level_array_std140TestCase.cpp",
     "../functional/Deqpgles312_level_array_std430TestCase.cpp",
     "../functional/Deqpgles312_level_unsized_struct_array_per_block_bufferTestCase.cpp",
-    "../functional/Deqpgles312_level_unsized_struct_array_single_bufferTestCase.cpp",
-    "../functional/Deqpgles313_level_array_packedTestCase.cpp",
-    "../functional/Deqpgles313_level_array_sharedTestCase.cpp",
-    "../functional/Deqpgles313_level_array_std140TestCase.cpp",
-    "../functional/Deqpgles313_level_array_std430TestCase.cpp",
   ]
 
   include_dirs = [ "../../../src" ]

@@ -13,12 +13,12 @@
  * limitations under the License.
  */
 
-import { saveTxtData } from '../../../common/js/saveData';
 import router from '@system.router';
 import geolocation from '@system.geolocation';
 
 export default {
     data: {
+        itemIndex: -1,
         str: '',
         title: 'location(info)',
         pass: 'true ;',
@@ -102,17 +102,24 @@ export default {
             params: {
                 step: '操作步骤：点击获取，类型，坐标系',
                 result: '预期结果：屏幕上出现位置信息，定位类型信息，坐标系信息',
-                url: 'pages/location/info/index'
+                url: 'pages/location/info/index',
+                itemIndex: this.itemIndex
             }
         });
     },
 
     back() {
         console.info('onclick back ');
-        router.replace({ uri: 'pages/second-api/index' });
+        router.replace({
+            uri: 'pages/second-api/index',
+            params: {
+                itemIndex: this.itemIndex
+            }
+        });
     },
 
     changeResult(result) {
-        saveTxtData(this, result);
+        getApp().data.keyList[this.title] = result;
+        this.back();
     },
 };

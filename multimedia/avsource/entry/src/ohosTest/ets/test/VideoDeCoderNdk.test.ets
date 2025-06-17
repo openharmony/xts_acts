@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from "@ohos/hypium"
+import { describe, it, expect, Level } from "@ohos/hypium"
 import videodecoderndk from 'libvideodecoderndk.so'
 
 export default function videoDeCoderNdkTest() {
@@ -27,7 +27,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderCreateByMime001', 0, async (done: Function) => {
+        it('testOHVideoDecoderCreateByMime001', Level.LEVEL0, async (done: Function) => {
             try { 
                 let result: number = videodecoderndk.oHVideoDecoderCreateByMime();
                 expect(result != null).assertTrue();
@@ -46,7 +46,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderCreateByName001', 0, async (done: Function) => {
+        it('testOHVideoDecoderCreateByName001', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderCreateByName();
             expect(result).assertEqual(0);
             done();
@@ -60,7 +60,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderDestroy001', 0, async (done: Function) => {
+        it('testOHVideoDecoderDestroy001', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderDestroy();
             expect(result).assertEqual(0);
             done();
@@ -74,7 +74,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderSetCallback001', 0, async (done: Function) => {
+        it('testOHVideoDecoderSetCallback001', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderSetCallback();
             expect(result).assertEqual(0);
             done();
@@ -88,7 +88,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderRegisterCallback001', 0, async (done: Function) => {
+        it('testOHVideoDecoderRegisterCallback001', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderRegisterCallback();
             expect(result).assertEqual(0);
             done();
@@ -102,7 +102,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderConfigure001', 0, async (done: Function) => {
+        it('testOHVideoDecoderConfigure001', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderConfigure();
             expect(result).assertEqual(0);
             done();
@@ -116,7 +116,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderPrepare001', 0, async (done: Function) => {
+        it('testOHVideoDecoderPrepare001', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderPrepare();
             expect(result).assertEqual(0);
             done();
@@ -130,7 +130,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStart001', 0, async (done: Function) => {
+        it('testOHVideoDecoderStart001', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStart(1, 1, 1, 1, 1, 1);
             expect(result).assertEqual(0);
             done();
@@ -144,7 +144,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStart002', 0, async (done: Function) => {
+        it('testOHVideoDecoderStart002', Level.LEVEL0, async (done: Function) => {
             try {
                 let result: number = videodecoderndk.oHVideoDecoderStart(2, 1, 1, 1, 1, 1);
                 expect(result != null).assertTrue();
@@ -163,7 +163,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStart003', 0, async (done: Function) => {
+        it('testOHVideoDecoderStart003', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStart(1, 1, 1, 1, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -177,7 +177,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStart004', 0, async (done: Function) => {
+        it('testOHVideoDecoderStart004', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStart(1, 1, 1, 0, 1, 0);
             expect(result).assertEqual(-1);
             done();
@@ -191,7 +191,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStart005', 0, async (done: Function) => {
+        it('testOHVideoDecoderStart005', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStart(1, 1, 1, 0, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -205,7 +205,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStart006', 0, async (done: Function) => {
+        it('testOHVideoDecoderStart006', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStart(1, 1, 0, 1, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -219,7 +219,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStart007', 0, async (done: Function) => {
+        it('testOHVideoDecoderStart007', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStart(1, 1, 0, 1, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -233,7 +233,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStart008', 0, async (done: Function) => {
+        it('testOHVideoDecoderStart008', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStart(1, 1, 0, 0, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -247,7 +247,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStart009', 0, async (done: Function) => {
+        it('testOHVideoDecoderStart009', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStart(1, 1, 0, 0, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -261,7 +261,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStart010', 0, async (done: Function) => {
+        it('testOHVideoDecoderStart010', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStart(1, 0, 1, 1, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -275,7 +275,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStart011', 0, async (done: Function) => {
+        it('testOHVideoDecoderStart011', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStart(1, 0, 1, 1, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -289,7 +289,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStart012', 0, async (done: Function) => {
+        it('testOHVideoDecoderStart012', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStart(1, 0, 1, 0, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -303,7 +303,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStart013', 0, async (done: Function) => {
+        it('testOHVideoDecoderStart013', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStart(1, 0, 1, 0, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -317,7 +317,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStart014', 0, async (done: Function) => {
+        it('testOHVideoDecoderStart014', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStart(1, 0, 0, 1, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -331,7 +331,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStart015', 0, async (done: Function) => {
+        it('testOHVideoDecoderStart015', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStart(1, 0, 0, 1, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -345,7 +345,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStart016', 0, async (done: Function) => {
+        it('testOHVideoDecoderStart016', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStart(1, 0, 0, 0, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -359,7 +359,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStart017', 0, async (done: Function) => {
+        it('testOHVideoDecoderStart017', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStart(1, 0, 0, 0, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -373,7 +373,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStart018', 0, async (done: Function) => {
+        it('testOHVideoDecoderStart018', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStart(0, 1, 1, 1, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -387,7 +387,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStart019', 0, async (done: Function) => {
+        it('testOHVideoDecoderStart019', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStart(0, 1, 1, 1, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -401,7 +401,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStart020', 0, async (done: Function) => {
+        it('testOHVideoDecoderStart020', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStart(0, 1, 1, 0, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -415,7 +415,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStart021', 0, async (done: Function) => {
+        it('testOHVideoDecoderStart021', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStart(0, 1, 1, 0, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -429,7 +429,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStart022', 0, async (done: Function) => {
+        it('testOHVideoDecoderStart022', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStart(0, 1, 0, 1, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -443,7 +443,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStart023', 0, async (done: Function) => {
+        it('testOHVideoDecoderStart023', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStart(0, 1, 0, 1, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -457,7 +457,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStart024', 0, async (done: Function) => {
+        it('testOHVideoDecoderStart024', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStart(0, 1, 0, 0, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -471,7 +471,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStart025', 0, async (done: Function) => {
+        it('testOHVideoDecoderStart025', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStart(0, 1, 0, 0, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -485,7 +485,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStart026', 0, async (done: Function) => {
+        it('testOHVideoDecoderStart026', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStart(0, 0, 1, 1, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -499,7 +499,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStart027', 0, async (done: Function) => {
+        it('testOHVideoDecoderStart027', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStart(0, 0, 1, 1, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -513,7 +513,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStart028', 0, async (done: Function) => {
+        it('testOHVideoDecoderStart028', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStart(0, 0, 1, 0, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -527,7 +527,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStart029', 0, async (done: Function) => {
+        it('testOHVideoDecoderStart029', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStart(0, 0, 1, 0, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -541,7 +541,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStart030', 0, async (done: Function) => {
+        it('testOHVideoDecoderStart030', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStart(0, 0, 0, 1, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -555,7 +555,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStart031', 0, async (done: Function) => {
+        it('testOHVideoDecoderStart031', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStart(0, 0, 0, 1, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -569,7 +569,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStart032', 0, async (done: Function) => {
+        it('testOHVideoDecoderStart032', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStart(0, 0, 0, 0, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -583,7 +583,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStart033', 0, async (done: Function) => {
+        it('testOHVideoDecoderStart033', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStart(0, 0, 0, 0, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -597,7 +597,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop001', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop001', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(1, 1, 1, 1, 1, 1, 1);
             expect(result).assertEqual(0);
             done();
@@ -611,7 +611,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop002', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop002', Level.LEVEL0, async (done: Function) => {
             try { 
                 let result: number = videodecoderndk.oHVideoDecoderStop(2, 1, 1, 1, 1, 1, 1);
                 expect(result != null).assertTrue();
@@ -630,7 +630,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop003', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop003', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(1, 1, 1, 1, 1, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -644,7 +644,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop004', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop004', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(1, 1, 1, 1, 0, 1, 1);
             expect(result).assertEqual(0);
             done();
@@ -658,7 +658,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop005', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop005', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(1, 1, 1, 1, 0, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -672,7 +672,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop006', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop006', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(1, 1, 1, 0, 1, 1, 0);
             expect(result).assertEqual(-1);
             done();
@@ -686,7 +686,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop007', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop007', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(1, 1, 1, 0, 1, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -700,7 +700,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop008', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop008', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(1, 1, 1, 0, 0, 1, 1);
             expect(result).assertEqual(0);
             done();
@@ -714,7 +714,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop009', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop009', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(1, 1, 1, 0, 0, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -728,7 +728,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop010', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop010', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(1, 1, 0, 1, 1, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -742,7 +742,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop011', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop011', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(1, 1, 0, 1, 1, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -756,7 +756,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop012', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop012', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(1, 1, 0, 1, 0, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -770,7 +770,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop013', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop013', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(1, 1, 0, 1, 0, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -784,7 +784,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop014', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop014', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(1, 1, 0, 0, 1, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -798,7 +798,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop015', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop015', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(1, 1, 0, 0, 1, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -812,7 +812,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop016', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop016', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(1, 1, 0, 0, 0, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -826,7 +826,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop017', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop017', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(1, 1, 0, 0, 0, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -840,7 +840,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop018', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop018', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(1, 0, 1, 1, 1, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -854,7 +854,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop019', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop019', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(1, 0, 1, 1, 1, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -868,7 +868,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop020', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop020', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(1, 0, 1, 1, 0, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -882,7 +882,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop021', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop021', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(1, 0, 1, 1, 0, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -896,7 +896,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop022', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop022', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(1, 0, 1, 0, 1, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -910,7 +910,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop023', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop023', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(1, 0, 1, 0, 1, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -924,7 +924,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop024', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop024', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(1, 0, 1, 0, 0, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -938,7 +938,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop025', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop025', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(1, 0, 1, 0, 0, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -952,7 +952,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop026', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop026', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(1, 0, 0, 1, 1, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -966,7 +966,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop027', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop027', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(1, 0, 0, 1, 1, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -980,7 +980,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop028', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop028', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(1, 0, 0, 1, 0, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -994,7 +994,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop029', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop029', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(1, 0, 0, 1, 0, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -1008,7 +1008,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop030', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop030', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(1, 0, 0, 0, 1, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -1022,7 +1022,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop031', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop031', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(1, 0, 0, 0, 1, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -1036,7 +1036,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop032', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop032', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(1, 0, 0, 0, 0, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -1050,7 +1050,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop033', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop033', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(1, 0, 0, 0, 0, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -1064,7 +1064,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop034', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop034', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(0, 1, 1, 1, 1, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -1078,7 +1078,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop035', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop035', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(0, 1, 1, 1, 1, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -1092,7 +1092,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop036', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop036', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(0, 1, 1, 1, 0, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -1106,7 +1106,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop037', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop037', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(0, 1, 1, 1, 0, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -1120,7 +1120,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop038', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop038', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(0, 1, 1, 0, 1, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -1134,7 +1134,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop039', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop039', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(0, 1, 1, 0, 1, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -1148,7 +1148,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop040', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop040', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(0, 1, 1, 0, 0, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -1162,7 +1162,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop041', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop041', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(0, 1, 1, 0, 0, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -1176,7 +1176,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop042', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop042', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(0, 1, 0, 1, 1, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -1190,7 +1190,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop043', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop043', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(0, 1, 0, 1, 1, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -1204,7 +1204,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop044', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop044', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(0, 1, 0, 1, 0, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -1218,7 +1218,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop045', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop045', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(0, 1, 0, 1, 0, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -1232,7 +1232,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop046', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop046', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(0, 1, 0, 0, 1, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -1246,7 +1246,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop047', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop047', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(0, 1, 0, 0, 1, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -1260,7 +1260,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop048', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop048', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(0, 1, 0, 0, 0, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -1274,7 +1274,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop049', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop049', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(0, 1, 0, 0, 0, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -1288,7 +1288,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop050', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop050', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(0, 0, 1, 1, 1, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -1302,7 +1302,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop051', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop051', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(0, 0, 1, 1, 1, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -1316,7 +1316,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop052', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop052', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(0, 0, 1, 1, 0, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -1330,7 +1330,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop053', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop053', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(0, 0, 1, 1, 0, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -1344,7 +1344,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop054', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop054', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(0, 0, 1, 0, 1, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -1358,7 +1358,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop055', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop055', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(0, 0, 1, 0, 1, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -1372,7 +1372,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop056', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop056', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(0, 0, 1, 0, 0, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -1386,7 +1386,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop057', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop057', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(0, 0, 1, 0, 0, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -1400,7 +1400,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop058', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop058', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(0, 0, 0, 1, 1, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -1414,7 +1414,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop059', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop059', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(0, 0, 0, 1, 1, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -1428,7 +1428,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop060', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop060', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(0, 0, 0, 1, 0, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -1442,7 +1442,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop061', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop061', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(0, 0, 0, 1, 0, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -1456,7 +1456,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop062', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop062', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(0, 0, 0, 0, 1, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -1470,7 +1470,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop063', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop063', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(0, 0, 0, 0, 1, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -1484,7 +1484,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop064', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop064', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(0, 0, 0, 0, 0, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -1498,7 +1498,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderStop065', 0, async (done: Function) => {
+        it('testOHVideoDecoderStop065', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderStop(0, 0, 0, 0, 0, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -1512,7 +1512,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush001', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush001', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(1, 1, 1, 1, 1, 1, 1);
             expect(result).assertEqual(0);
             done();
@@ -1526,7 +1526,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush002', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush002', Level.LEVEL0, async (done: Function) => {
             try { 
                 let result: number = videodecoderndk.oHVideoDecoderFlush(2, 1, 1, 1, 1, 1, 1);
                 expect(result != null).assertTrue();
@@ -1545,7 +1545,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush003', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush003', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(1, 1, 1, 1, 1, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -1559,7 +1559,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush004', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush004', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(1, 1, 1, 1, 0, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -1573,7 +1573,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush005', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush005', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(1, 1, 1, 1, 0, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -1587,7 +1587,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush006', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush006', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(1, 1, 1, 0, 1, 1, 0);
             expect(result).assertEqual(-1);
             done();
@@ -1601,7 +1601,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush007', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush007', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(1, 1, 1, 0, 1, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -1615,7 +1615,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush008', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush008', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(1, 1, 1, 0, 0, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -1629,7 +1629,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush009', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush009', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(1, 1, 1, 0, 0, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -1643,7 +1643,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush010', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush010', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(1, 1, 0, 1, 1, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -1657,7 +1657,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush011', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush011', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(1, 1, 0, 1, 1, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -1671,7 +1671,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush012', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush012', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(1, 1, 0, 1, 0, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -1685,7 +1685,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush013', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush013', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(1, 1, 0, 1, 0, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -1699,7 +1699,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush014', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush014', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(1, 1, 0, 0, 1, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -1713,7 +1713,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush015', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush015', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(1, 1, 0, 0, 1, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -1727,7 +1727,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush016', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush016', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(1, 1, 0, 0, 0, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -1741,7 +1741,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush017', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush017', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(1, 1, 0, 0, 0, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -1755,7 +1755,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush018', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush018', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(1, 0, 1, 1, 1, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -1769,7 +1769,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush019', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush019', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(1, 0, 1, 1, 1, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -1783,7 +1783,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush020', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush020', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(1, 0, 1, 1, 0, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -1797,7 +1797,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush021', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush021', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(1, 0, 1, 1, 0, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -1811,7 +1811,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush022', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush022', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(1, 0, 1, 0, 1, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -1825,7 +1825,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush023', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush023', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(1, 0, 1, 0, 1, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -1839,7 +1839,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush024', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush024', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(1, 0, 1, 0, 0, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -1853,7 +1853,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush025', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush025', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(1, 0, 1, 0, 0, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -1867,7 +1867,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush026', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush026', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(1, 0, 0, 1, 1, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -1881,7 +1881,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush027', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush027', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(1, 0, 0, 1, 1, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -1895,7 +1895,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush028', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush028', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(1, 0, 0, 1, 0, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -1909,7 +1909,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush029', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush029', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(1, 0, 0, 1, 0, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -1923,7 +1923,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush030', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush030', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(1, 0, 0, 0, 1, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -1937,7 +1937,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush031', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush031', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(1, 0, 0, 0, 1, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -1951,7 +1951,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush032', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush032', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(1, 0, 0, 0, 0, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -1965,7 +1965,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush033', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush033', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(1, 0, 0, 0, 0, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -1979,7 +1979,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush034', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush034', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(0, 1, 1, 1, 1, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -1993,7 +1993,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush035', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush035', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(0, 1, 1, 1, 1, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -2007,7 +2007,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush036', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush036', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(0, 1, 1, 1, 0, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -2021,7 +2021,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush037', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush037', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(0, 1, 1, 1, 0, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -2035,7 +2035,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush038', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush038', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(0, 1, 1, 0, 1, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -2049,7 +2049,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush039', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush039', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(0, 1, 1, 0, 1, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -2063,7 +2063,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush040', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush040', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(0, 1, 1, 0, 0, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -2077,7 +2077,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush041', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush041', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(0, 1, 1, 0, 0, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -2091,7 +2091,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush042', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush042', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(0, 1, 0, 1, 1, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -2105,7 +2105,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush043', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush043', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(0, 1, 0, 1, 1, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -2119,7 +2119,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush044', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush044', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(0, 1, 0, 1, 0, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -2133,7 +2133,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush045', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush045', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(0, 1, 0, 1, 0, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -2147,7 +2147,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush046', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush046', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(0, 1, 0, 0, 1, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -2161,7 +2161,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush047', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush047', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(0, 1, 0, 0, 1, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -2175,7 +2175,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush048', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush048', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(0, 1, 0, 0, 0, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -2189,7 +2189,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush049', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush049', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(0, 1, 0, 0, 0, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -2203,7 +2203,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush050', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush050', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(0, 0, 1, 1, 1, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -2217,7 +2217,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush051', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush051', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(0, 0, 1, 1, 1, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -2231,7 +2231,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush052', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush052', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(0, 0, 1, 1, 0, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -2245,7 +2245,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush053', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush053', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(0, 0, 1, 1, 0, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -2259,7 +2259,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush054', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush054', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(0, 0, 1, 0, 1, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -2273,7 +2273,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush055', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush055', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(0, 0, 1, 0, 1, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -2287,7 +2287,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush056', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush056', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(0, 0, 1, 0, 0, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -2301,7 +2301,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush057', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush057', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(0, 0, 1, 0, 0, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -2315,7 +2315,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush058', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush058', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(0, 0, 0, 1, 1, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -2329,7 +2329,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush059', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush059', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(0, 0, 0, 1, 1, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -2343,7 +2343,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush060', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush060', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(0, 0, 0, 1, 0, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -2357,7 +2357,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush061', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush061', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(0, 0, 0, 1, 0, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -2371,7 +2371,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush062', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush062', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(0, 0, 0, 0, 1, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -2385,7 +2385,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush063', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush063', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(0, 0, 0, 0, 1, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -2399,7 +2399,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush064', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush064', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(0, 0, 0, 0, 0, 1, 0);
             expect(result).assertEqual(0);
             done();
@@ -2413,7 +2413,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFlush065', 0, async (done: Function) => {
+        it('testOHVideoDecoderFlush065', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFlush(0, 0, 0, 0, 0, 0, 0);
             expect(result).assertEqual(0);
             done();
@@ -2427,7 +2427,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderReset001', 0, async (done: Function) => {
+        it('testOHVideoDecoderReset001', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderReset();
             expect(result).assertEqual(0);
             done();
@@ -2441,7 +2441,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderGetOutputDescription001', 0, async (done: Function) => {
+        it('testOHVideoDecoderGetOutputDescription001', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderGetOutputDescription();
             expect(result).assertEqual(0);
             done();
@@ -2455,7 +2455,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderSetParameter001', 0, async (done: Function) => {
+        it('testOHVideoDecoderSetParameter001', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderSetParameter();
             expect(result).assertEqual(0);
             done();
@@ -2469,7 +2469,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderIsValid001', 0, async (done: Function) => {
+        it('testOHVideoDecoderIsValid001', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderIsValid();
             expect(result).assertEqual(0);
             done();
@@ -2483,7 +2483,7 @@ export default function videoDeCoderNdkTest() {
         * @tc.type       : Function
         * @tc.level      : Level 1
         */
-        it('testOHVideoDecoderPushInputBuffer001', 0, async (done: Function) => {
+        it('testOHVideoDecoderPushInputBuffer001', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderPushInputBuffer();
             expect(result).assertEqual(0);
             done();
@@ -2497,7 +2497,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderFreeOutputBuffer001', 0, async (done: Function) => {
+        it('testOHVideoDecoderFreeOutputBuffer001', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderFreeOutputBuffer();
             expect(result).assertEqual(0);
             done();
@@ -2511,7 +2511,7 @@ export default function videoDeCoderNdkTest() {
          * @tc.type       : Function
          * @tc.level      : Level 1
          */
-        it('testOHVideoDecoderRenderOutputBuffer001', 0, async (done: Function) => {
+        it('testOHVideoDecoderRenderOutputBuffer001', Level.LEVEL0, async (done: Function) => {
             let result: number = videodecoderndk.oHVideoDecoderRenderOutputBuffer();
             expect(result).assertEqual(0);
             done();

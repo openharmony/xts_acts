@@ -161,33 +161,32 @@ struct gauge {
             .align(Alignment.Start)
             .height('100%')
             .width('100%')
-            .fontSize(16)
+            .fontSize(12)
+            .fontColor(Color.Red)
         }
         .height(20)
         .width('90%')
         .justifyContent(FlexAlign.Start)
-        .margin({ top: 50 })
 
         Gauge({ value: this.value })
-          .width(200)
-          .height(200)
+          .width(80)
+          .height(80)
           .colors([[0x317AF7, 1], [0x5BA854, 1], [0xE08C3A, 1], [0x9C554B, 1]])
           .startAngle(this.startAngle)
           .endAngle(this.endAngle)
           .strokeWidth(this.mWidth)
-          .margin({ top: 12 })
 
         Row() {
           Text('调整刻度')
             .align(Alignment.Start)
             .height('100%')
             .width('100%')
-            .fontSize(16)
+            .fontSize(12)
+            .fontColor(Color.Red)
         }
         .height(20)
         .width('90%')
         .justifyContent(FlexAlign.Start)
-        .margin({ top: 50 })
 
         Column() {
           Row({ space: 10 }) {
@@ -197,7 +196,6 @@ struct gauge {
               max: 100,
               style: SliderStyle.OutSet,
             })
-              .margin({ top: 12, bottom: 24 })
               .width('70%')
               .trackColor('#4DCB26')
               .selectedColor('#00A7FA')
@@ -213,9 +211,8 @@ struct gauge {
         .backgroundColor(Color.White)
         .borderRadius(24)
         .width('100%')
-        .padding(15)
       }
-      .height('80%')
+      .height('70%')
       .width('100%')
       .backgroundColor(Color.White)
 
@@ -255,4 +252,3 @@ struct gauge {
     .backgroundColor('#F1F3F5')
   }
 }
-

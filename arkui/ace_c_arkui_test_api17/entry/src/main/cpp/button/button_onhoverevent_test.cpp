@@ -26,6 +26,7 @@ namespace ArkUICapiTest
     auto GetEventTargetGlobalPositionX = -1;
     auto GetEventTargetGlobalPositionY = -1;
     auto IsHovered = false;
+    auto GetModifierKey = -1;
 
     static auto createChildNode(ArkUI_NativeNodeAPI_1 *nodeAPI, bool enabled)
     {
@@ -71,6 +72,8 @@ namespace ArkUICapiTest
         OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI);
         auto nodeHandler = OH_ArkUI_NodeEvent_GetNodeHandle(event);
 
+        uint64_t key = 1;
+        uint64_t* keys = &key;
         auto *uiInputEvent = OH_ArkUI_NodeEvent_GetInputEvent(event);
         GetEventTargetWidth = OH_ArkUI_UIInputEvent_GetEventTargetWidth(uiInputEvent);
         GetEventTargetHeight = OH_ArkUI_UIInputEvent_GetEventTargetHeight(uiInputEvent);
@@ -79,9 +82,12 @@ namespace ArkUICapiTest
         GetEventTargetGlobalPositionX = OH_ArkUI_UIInputEvent_GetEventTargetGlobalPositionX(uiInputEvent);
         GetEventTargetGlobalPositionY = OH_ArkUI_UIInputEvent_GetEventTargetGlobalPositionY(uiInputEvent);
         IsHovered = OH_ArkUI_HoverEvent_IsHovered(uiInputEvent);
+        GetModifierKey = OH_ArkUI_UIInputEvent_GetModifierKeyStates(uiInputEvent,keys);
+
         if (eventId == ON_HOVER_EVENT_ID && GetEventTargetWidth != -1 && GetEventTargetHeight != -1 &&
             GetEventTargetPositionX != -1 && GetEventTargetPositionY != -1 &&
-            GetEventTargetGlobalPositionX != -1 && GetEventTargetGlobalPositionY != -1 && IsHovered == true)
+            GetEventTargetGlobalPositionX != -1 && GetEventTargetGlobalPositionY != -1 && IsHovered == true &&
+            GetModifierKey == 0)
         {
             ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_GREEN}};
             ArkUI_AttributeItem background_color_item = {background_color_value,

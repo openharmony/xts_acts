@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 export const AvPlayerCreate: () => number;
+export const OhAvPlayerSetCurrentPathId: (a:number) => number;
 export const AvPlayerSetURLSourceAbnormalOne: () => number;
 export const AvPlayerSetURLSourceAbnormalTwo: () => number;
 export const AvPlayerSetFDSource: () => number;
@@ -21,6 +22,7 @@ export const AvPlayerSetFDSourceAbnormalTwo: () => number;
 export const AvPlayerSetFDSourceAbnormalThree: () => number;
 export const AvPlayerPrepare: (a:number,b:number,c:number) => number;
 export const AvPlayerSetAudioRendererInfo: () => number;
+export const AvPlayerSetVolumeMode: () => number;
 export const AvPlayerSetAudioInterruptMode: () => number;
 export const AvPlayerSetAudioEffectMode: () => number;
 export const AvPlayerSetOnInfoCallback: (a:number,b:number) => number;
@@ -28,7 +30,9 @@ export const AvPlayerSetOnInfoCallbackAbnormal: (a:number, b:number, c:number, d
 export const AvPlayerSetOnInfoCallbackWithPrepare: () => number;
 export const AvPlayerSetOnErrorCallback: (a:number, b:number) => number;
 export const AvPlayerSetOnErrorCallbackAbnormal: (a:number, b:number, c:number, d:number) => number;
+export const OhAvPlayerPlaySuccess: (a:number,b:number,c:number, d:number) => number;
 export const AvPlayerPlay: (a:number,b:number,c:number, d:number) => number;
+export const OhAvPlayerPauseSuccess: (a:number,b:number,c:number, d:number, e:number) => number;
 export const AvPlayerPause: (a:number,b:number,c:number, d:number, e:number) => number;
 export const AvPlayerStop: (a:number,b:number,c:number, d:number) => number;
 export const AvPlayerReset: (a:number,b:number,c:number, d:number, e:number, f:number, g:number) => number;
@@ -81,4 +85,17 @@ export const AvPlayerGetCurrentTrack: () => number;
 export const AvPlayerGetCurrentTrackAbnormalOne: () => number;
 export const dummy: (a:number,b:number) => number;
 export const dummyForSize: (a:number,b:number) => number;
-
+export const AvPlayerPrepareSetPlaybackRate: (a:number) => number;
+export const AvPlayerPlaySetPlaybackRate: (a:number) => number;
+export const AvPlayerPauseSetPlaybackRate: (a:number) => number;
+export const AvPlayerSetPlaybackRateError: (a:number) => number;
+export const AvPlayerSetPlaybackRateTwice: (a:number, b: number) => number;
+export const AvPlayerSetPlaybackRateAfterSeek: (a:number) => number;
+export const AvPlayerSetPlaybackRateBeforeSeek: (a:number) => number;
+export const AvPlayerStopSetPlaybackRate: (a:number) => number;
+export const AvPlayerIdleSetPlaybackRate: (a:number) => number;
+export const AvPlayerInitSetPlaybackRate: (a:number) => number;
+export const AvPlayerReleaseSetPlaybackRate: (a:number) => number;
+export const AvPlayerErrorSetPlaybackRate: (a:number) => number;
+export const AvPlayerCompleteSetPlaybackRate: (a:number) => number;
+export const AvPlayerSetPlaybackRateBeforePause: (a:number) => number;

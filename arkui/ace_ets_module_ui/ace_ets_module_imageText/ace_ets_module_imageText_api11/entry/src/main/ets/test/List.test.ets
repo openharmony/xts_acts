@@ -111,6 +111,10 @@ import ImageSpanVisibilityTest from "./ImageSpanTest/ImageSpanVisibility.test";
 import showCounterTest from './TextInputTest/ShowCounter.test';
 import UIFontAliasInfo from './fontTest/UIFontAliasInfo.test'
 import measureOptionsTest from './textTest/measureOptionsTest.test';
+import ContainerSpanModifierTest from './ContainerSpanTest/ContainerSpanModifier.test'
+import SearchModifierTest from "./SearchTest/SearchModifier.test";
+import SymbolGlyphFontWeightTest from "./SymbolGlyphTest/fontWeight.test";
+import SpanTextShadowTest from './textTest/SpanTextShadowTest.test';
 
 
 export default function testsuite() {
@@ -213,4 +217,8 @@ export default function testsuite() {
   showCounterTest();
   UIFontAliasInfo();
   measureOptionsTest();
+  ContainerSpanModifierTest();
+  SearchModifierTest();
+  SymbolGlyphFontWeightTest();
+  SpanTextShadowTest();
 }

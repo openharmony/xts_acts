@@ -66,6 +66,20 @@ export function setSubtitle(avPlayer: media.AVPlayer | null, src: string | media
   }
 }
 
+export function setSubtitle3(avPlayer: media.AVPlayer | null, src: string | media.AVFileDescriptor) {
+  if (!avPlayer) {
+    console.error('case avPlayer is null');
+    return;
+  }
+  if (typeof (src) === 'string') {
+    console.info('case src test');
+    avPlayer.addSubtitleFromUrl(null);
+  } else {
+    console.info('case fdsrc test');
+    avPlayer.addSubtitleFromFd(src.fd, src.offset, src.length);
+  }
+}
+
 function checkPlayTest(avPlayer: media.AVPlayer | null, playTest: PlayTest) {
   if (avPlayer == null) {
     return;

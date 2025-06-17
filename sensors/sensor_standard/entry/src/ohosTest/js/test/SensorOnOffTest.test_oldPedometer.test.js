@@ -28,7 +28,8 @@ let PermissionFlag = {
 const PERMISSION_DENIED_CODE = 201
 const PARAMETER_ERROR_CODE = 401
 const SERVICE_EXCEPTION_CODE = 14500101
-const SERVICE_EXCEPTION_MSG = 'Service exception.'
+const SERVICE_EXCEPTION_MSG = "Service exception.Possible causes:" +
+        "1. Sensor hdf service exception;2. Sensor service ipc exception;3. Sensor data channel exception."
 const PARAMETER_ERROR_MSG = 'The parameter invalid.'
 const PERMISSION_DENIED_MSG = 'Permission denied.'
 let tokenID = undefined
@@ -109,7 +110,8 @@ describe("SensorJsTest_sensor_18", function () {
     const SERVICE_EXCEPTION_CODE = 14500101
     const SENSOR_NO_SUPPORT_CODE = 14500102
     const PARAMETER_ERROR_MSG = 'The parameter invalid.'
-    const SERVICE_EXCEPTION_MSG = 'Service exception.'
+    const SERVICE_EXCEPTION_MSG = "Service exception.Possible causes:" +
+        "1. Sensor hdf service exception;2. Sensor service ipc exception;3. Sensor data channel exception."
     let invalid  = -1;
     let errMessages = ['ReferenceError: string is not defined','TypeError: is not callable','ReferenceError: xxx is not defined']
     let errMessage

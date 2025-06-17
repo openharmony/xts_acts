@@ -18,6 +18,13 @@ import onSelectedTabs from './TabsTest/onSelectedTabs.test';
 import preloadSwiper from './SwiperTest/preloadSwiper.test'; 
 import selectedSwiper from './SwiperTest/selectedSwiper.test'; 
 import SwiperIndicatorDistanceTest from './SwiperTest/SwiperIndicatorDistanceTest.test'
+import barBackground from './TabsTest/barBackground.test';
+import setGridEvent from './GridTest/setGridEvent.test'; 
+import setListEvent from './ListTest/setListEvent.test'; 
+import setScrollEvent from './ScrollTest/setScrollEvent.test';
+import listDividerOptions from './ListTest/listDividerOptions.test'; 
+import stackFromEndList from './ListTest/stackFromEndList.test'; 
+import LazyVGridLayout from './LazyVGridLayout/LazyVGridLayout.test';
 
 export default function testsuite() {
   iconTabs()
@@ -25,4 +32,11 @@ export default function testsuite() {
   preloadSwiper()
   selectedSwiper()
   SwiperIndicatorDistanceTest()
+  barBackground()
+  setGridEvent()
+  setListEvent()
+  setScrollEvent()
+  listDividerOptions()
+  stackFromEndList()
+  LazyVGridLayout()
 }

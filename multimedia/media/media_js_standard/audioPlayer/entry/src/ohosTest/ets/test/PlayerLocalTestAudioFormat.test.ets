@@ -498,5 +498,25 @@ export default function PlayerLocalTestAudioFormat() {
       let path = 'fd://' + fdNumber;
       playAudioSource(path, 219565, PLAY_TIME, true, done);
     });
+
+    /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FORMAT_MP3_0100
+        * @tc.name      : 001.Playing mp3 streams
+        * @tc.desc      : Format : MP3
+                          Codec : MP3
+                          Samplerate : 48000
+                          Bitrate : 32
+                          Channel : 1
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level0
+    */
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_FORMAT_MP3_0100', Level.LEVEL0, async (done: Function) => {
+      await mediaTestBase.getFdRead('01.mp3', done).then((testNumber) => {
+        fdNumber = testNumber;
+      });
+      let path = 'fd://' + fdNumber;
+      playAudioSource(path, 219600, PLAY_TIME, true, done);
+    }); 
   })
 }

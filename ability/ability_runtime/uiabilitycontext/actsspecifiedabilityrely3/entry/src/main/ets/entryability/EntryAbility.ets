@@ -8,6 +8,7 @@ const DOMAIN = 0x0000;
 let autoexit = true;
 
 export default class EntryAbility extends UIAbility {
+  private exitTask: number = 0;
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     this.context.getApplicationContext().setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_NOT_SET);
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onCreate');
@@ -21,7 +22,6 @@ export default class EntryAbility extends UIAbility {
 
   onDestroy(): void {
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onDestroy');
-    commonEventManager.publish('Demo3_OnDestroy', {}, () => {});
   }
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
@@ -46,9 +46,14 @@ export default class EntryAbility extends UIAbility {
     // Ability has brought to foreground
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'demo3 entry onForeground');
     if (autoexit) {
-      setTimeout(() => {
+      if (this.exitTask !== 0) {
+        return;
+      }
+      this.exitTask = setTimeout(() => {
         hilog.info(DOMAIN, 'testTag', '%{public}s', 'demo3 entry terminateSelf');
-        this.context.terminateSelf();
+        commonEventManager.publish('Demo3_Exit', {}, () => {
+          this.context.terminateSelf();
+        });
       }, 500);
     }
   }

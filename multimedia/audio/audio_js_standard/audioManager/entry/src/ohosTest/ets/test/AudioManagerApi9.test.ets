@@ -320,7 +320,7 @@ export default function audioManagerApi9() {
         done();
       } catch (error) {
         console.error(`audioManagerApi9Test: failed to setAppVolumePercentage: Callback:  ${error.message},code:${error.code}`);
-        expect(Number(error.code)).assertEqual(6800301);
+        expect(Number(error.code)).assertEqual(6800101);
         done();
       }
 
@@ -2013,6 +2013,158 @@ export default function audioManagerApi9() {
       });
       await audioManager.setVolume(audio.AudioVolumeType.MEDIA, minVolume)
       done();
+    })
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ON_VOLUMECHANGE_0200
+     * @tc.name      : OnVolumeChange - getVolumeManager - MEDIA
+     * @tc.desc      : OnVolumeChange - getVolumeManager - MEDIA
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ON_VOLUMECHANGE_0200', 3, async (done: Function) => {
+      let audioVolumeManager = audioManager.getVolumeManager();
+      try {
+        let para1 : ESObject = 1;
+        audioVolumeManager.on(para1, (volumeEvent: audio.VolumeEvent) => {
+          console.info(`VolumeType of stream: ${volumeEvent.volumeType} `);
+          console.info(`Volume level: ${volumeEvent.volume} `);
+          console.info(`Whether to updateUI: ${volumeEvent.updateUi} `);
+        });
+        expect(false).assertTrue();
+      }catch(error){
+        console.log(`${TagFrmwk}: micStateChange : error ${error}`);
+        expect(Number(error.code) == 401).assertTrue();
+        done();
+      };
+    })
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ON_VOLUMECHANGE_0300
+     * @tc.name      : OnVolumeChange - getVolumeManager - MEDIA
+     * @tc.desc      : OnVolumeChange - getVolumeManager - MEDIA
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ON_VOLUMECHANGE_0300', 3, async (done: Function) => {
+      let audioVolumeManager = audioManager.getVolumeManager();
+      try {
+        let para1 : ESObject = '1';
+        audioVolumeManager.on(para1, (volumeEvent: audio.VolumeEvent) => {
+          console.info(`VolumeType of stream: ${volumeEvent.volumeType} `);
+          console.info(`Volume level: ${volumeEvent.volume} `);
+          console.info(`Whether to updateUI: ${volumeEvent.updateUi} `);
+        });
+        expect(false).assertTrue();
+      }catch(error){
+        console.log(`${TagFrmwk}: micStateChange : error ${error}`);
+        expect(Number(error.code) == 6800101).assertTrue();
+        done();
+      };
+    })
+    /**
+     * @tc.number    : SUB_AUDIO_AUDIORENDER_OFF_DEVICECHANGE_0100
+     * @tc.name      : OnVolumeChange - getVolumeManager - MEDIA
+     * @tc.desc      : OnVolumeChange - getVolumeManager - MEDIA
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_AUDIO_AUDIORENDER_OFF_DEVICECHANGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let interAudioInterrupt: audio.AudioInterrupt = {
+        streamUsage:2,
+        contentType:0,
+        pauseWhenDucked:true
+      };
+      // 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+      let interruptCallback = (interruptAction: audio.InterruptAction) => {
+        if (interruptAction.actionType === 0) {
+          console.info('An event to gain the audio focus starts.');
+          console.info(`Focus gain event: ${interruptAction} `);
+        }
+        if (interruptAction.actionType === 1) {
+          console.info('An audio interruption event starts.');
+          console.info(`Audio interruption event: ${interruptAction} `);
+        }
+      };
+      try {
+        let audioSpatializationManager: audio.AudioSpatializationManager = audioManager.getSpatializationManager();
+        audioManager.on('interrupt', interAudioInterrupt, interruptCallback);
+        audioManager.off('interrupt', interAudioInterrupt, interruptCallback);
+        done();
+      } catch (error) {
+        console.info(`ON_MICSTATECHANGE error ${error.message}, code ${error.code}`);
+        expect(false).assertTrue();
+        done();
+      }
+      done();
+    })
+    /**
+     * @tc.number    : SUB_AUDIO_AUDIORENDER_OFF_DEVICECHANGE_0200
+     * @tc.name      : OnVolumeChange - getVolumeManager - MEDIA
+     * @tc.desc      : OnVolumeChange - getVolumeManager - MEDIA
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_AUDIO_AUDIORENDER_OFF_DEVICECHANGE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      try {
+        let audioSpatializationManager: audio.AudioSpatializationManager = audioManager.getSpatializationManager();
+        done();
+      } catch (error) {
+        console.info(`ON_MICSTATECHANGE error ${error.message}, code ${error.code}`);
+        expect(false).assertTrue();
+        done();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_ONAUDIOSCENECHANGE_0100
+     * @tc.name      : OnAudioSceneChange - audioManager
+     * @tc.desc      : OnAudioSceneChange - audioManager
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_ONAUDIOSCENECHANGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      try {
+        audioManager.on('audioSceneChange', (audioScene) => {
+          console.info(`AudioSceneChange event: ${audioScene} `);
+        });
+        expect(true).assertTrue();
+        done();
+      } catch (err) {
+        console.log('err :' + err.message)
+        expect(false).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_OFFAUDIOSCENECHANGE_0100
+     * @tc.name      : OffAudioSceneChange - audioManager
+     * @tc.desc      : OffAudioSceneChange - audioManager
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_OFFAUDIOSCENECHANGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let cb = (audioScene: audio.AudioScene) => {
+          console.info(`AudioSceneChange event: ${audioScene} `);
+      }
+      try {
+        audioManager.on('audioSceneChange', cb);
+        audioManager.off('audioSceneChange', cb);
+        audioManager.on('audioSceneChange', cb);
+        audioManager.off('audioSceneChange');
+        expect(true).assertTrue();
+        done();
+      } catch (err) {
+        console.log('err :' + err.message)
+        expect(false).assertTrue();
+        done();
+      }
     })
   })
 

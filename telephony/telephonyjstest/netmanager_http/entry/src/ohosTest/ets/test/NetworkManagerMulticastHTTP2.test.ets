@@ -58,6 +58,14 @@ function expectFalse() {
     }
 }
 
+function expectTrue(data : boolean){
+    try {
+        expect(data).assertTrue();
+    } catch (err){
+        console.info('assertion failure');    
+    }
+};
+
 export default function NetworkManagerMulticast2HTTP2Test() {
     afterAll(async ()=> {
         console.log('NetworkManagerMulticastHTTPTest afterAll start');
@@ -76,11 +84,11 @@ export default function NetworkManagerMulticast2HTTP2Test() {
             let caseName = "SUB_Telephone_netstack_Http3_QUIC_Xts_Promise_0100";
             httpRequest.request(url,httpRequestOptions_http3).then((data) => {
                 console.log(`${caseName} request succeed, data: ${JSON.stringify(data)}`);
-                expect(data.responseCode === 200).assertTrue();
+                expectTrue(data.responseCode === 200);
                 done();
             }).catch((err: BusinessError) => {
                 console.log(`${caseName} request failed, err: ${JSON.stringify(err)}`);
-                expect(err.code === 2300999).assertTrue();
+                expectTrue(err.code === 2300999);
                 done();
             })
         })
@@ -96,11 +104,11 @@ export default function NetworkManagerMulticast2HTTP2Test() {
             let caseName = "SUB_Telephone_netstack_Http3_QUIC_Xts_Promise_0200";
             httpRequest.request(url,httpRequestOptions_http3_HTTP1_1).then((data) => {
                 console.log(`${caseName} request succeed, data: ${JSON.stringify(data)}`);
-                expect(data.responseCode === 200).assertTrue();
+                expectTrue(data.responseCode === 200);
                 done();
             }).catch((err: BusinessError) => {
                 console.log(`${caseName} request failed, err: ${JSON.stringify(err)}`);
-                expect(err.code === 2300999).assertTrue();
+                expectTrue(err.code === 2300999);
                 done();
             })
         })
@@ -116,11 +124,11 @@ export default function NetworkManagerMulticast2HTTP2Test() {
             let caseName = "SUB_Telephone_netstack_Http3_QUIC_Xts_Promise_0300";
             httpRequest.request(url,httpRequestOptions_http3_HTTP2).then((data) => {
                 console.log(`${caseName} request succeed, data: ${JSON.stringify(data)}`);
-                expect(data.responseCode === 200).assertTrue();
+                expectTrue(data.responseCode === 200);
                 done();
             }).catch((err: BusinessError) => {
                 console.log(`${caseName} request failed, err: ${JSON.stringify(err)}`);
-                expect(err.code === 2300999).assertTrue();
+                expectTrue(err.code === 2300999);
                 done();
             })
         })

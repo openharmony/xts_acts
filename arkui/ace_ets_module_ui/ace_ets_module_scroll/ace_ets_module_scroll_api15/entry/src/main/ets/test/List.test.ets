@@ -22,6 +22,7 @@ import swiperPageMode from './SwiperTest/swiperPageMode.test';
 import tabsPageMode from './TabsTest/tabsPageMode.test'; 
 import getAttributeScroll from './ScrollTest/getAttributeScroll.test';
 import showDotIndicator from './IndicatorComponent/showDotIndicator.test';
+import SwiperChangeIndexTest from './SwiperTest/SwiperChangeIndex.test';
 
 export default function testsuite() {
   interceptSwiperTest()
@@ -33,4 +34,5 @@ export default function testsuite() {
   tabsPageMode()
   getAttributeScroll()
   showDotIndicator()
+  SwiperChangeIndexTest();
 }

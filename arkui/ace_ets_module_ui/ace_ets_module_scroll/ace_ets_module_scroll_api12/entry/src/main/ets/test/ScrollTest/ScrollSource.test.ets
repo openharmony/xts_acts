@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -49,7 +49,7 @@ export default function ScrollSource() {
      * @tc.type :
      * @tc.size :
      */
-    it('ScrollSource_0100', 0, async (done: Function) => {
+    it('ScrollSource_0100', Level.LEVEL0, async (done: Function) => {
       console.info('ScrollSource_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -60,7 +60,7 @@ export default function ScrollSource() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ScrollSource_0100] component obj is: " + JSON.stringify(obj));
       console.info("[ScrollSource_0100] content obj is: " + JSON.stringify(obj.$attrs.label));
-      expect(obj.$attrs.label).assertEqual('scrollSource: 7'); //SCROLLER_ANIMATION
+      expect(obj.$attrs.label).assertEqual('ScrollSource.SCROLLER_ANIMATION'); //SCROLLER_ANIMATION
       console.info('[ScrollSource_0100] END');
       done();
     });
@@ -73,7 +73,7 @@ export default function ScrollSource() {
      * @tc.type :
      * @tc.size :
      */
-    it('ScrollSource_0200', 0, async (done: Function) => {
+    it('ScrollSource_0200', Level.LEVEL0, async (done: Function) => {
       console.info('ScrollSource_0200 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -84,7 +84,7 @@ export default function ScrollSource() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[ScrollSource_0200] component obj is: " + JSON.stringify(obj));
       console.info("[ScrollSource_0200] content obj is: " + JSON.stringify(obj.$attrs.label));
-      expect(obj.$attrs.label).assertEqual('scrollSource: 6'); //SCROLLER
+      expect(obj.$attrs.label).assertEqual('ScrollSource.SCROLLER'); //SCROLLER
       console.info('[ScrollSource_0200] END');
       done();
     });

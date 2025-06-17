@@ -362,7 +362,8 @@ export default function signNormalAccessBiometricExecute() {
         {
           widgetParam: {
             title: '使用密码验证',
-            navigationButtonText: 1            
+            navigationButtonText: 1,
+            uiContext : undefined
           },
           ret: 401
         },

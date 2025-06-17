@@ -80,7 +80,7 @@ export default function printTest() {
         done();
       }).catch((error: BusinessError) => {
         console.log('print_function_0100 failed, err: ' + JSON.stringify(error));
-        expect(error.code).assertEqual(401);
+        expect(error).assertEqual(401);
         done();
       })
     })
@@ -100,7 +100,7 @@ export default function printTest() {
         try {
           if (err) {  
             console.log('print_function_0200 expect failed, err: ' + JSON.stringify(err));
-            expect(err.code).assertEqual(401);
+            expect(err).assertEqual(401);
             done();
           } else {
             expect(typeof (printTask)).assertEqual('object');
@@ -130,7 +130,7 @@ export default function printTest() {
         try {
           if (err) {  
             console.log('print_function_0300 failed, err: ' + JSON.stringify(err));
-            expect(err.code).assertEqual(13100003);
+            expect(err).assertEqual(13100003);
             done();
           } else {
             expect(typeof (printTask)).assertEqual('object');
@@ -162,6 +162,7 @@ export default function printTest() {
         console.log('print_function_0400 succeed');
         done();
       }).catch((error: BusinessError) => {
+        console.log('print_function_0400 failed, err: ' + JSON.stringify(error));
         expect(false).assertTrue();
         done();
       })
@@ -452,7 +453,7 @@ export default function printTest() {
         })
         .catch((error: BusinessError) => {
           console.log('addPrinterToDiscovery expect failed, error: ' + JSON.stringify(error));
-          expect(error.code).assertEqual(401);
+          expect(error).assertEqual(401);
           done();
       })
     })
@@ -540,7 +541,7 @@ export default function printTest() {
         })
         .catch((error: BusinessError) => {
           console.log('updatePrinterInDiscovery expect failed, error: ' + JSON.stringify(error));
-          expect(error.code).assertEqual(401);
+          expect(error).assertEqual(401);
           done();
       })
     })
@@ -588,7 +589,7 @@ export default function printTest() {
         })
         .catch((error: BusinessError) => {
           console.log('removePrinterFromDiscovery expect failed, error: ' + JSON.stringify(error));
-          expect(error.code).assertEqual(401);
+          expect(error).assertEqual(401);
           done();
       })
     })
@@ -640,7 +641,7 @@ export default function printTest() {
         done();
       }).catch((error: BusinessError) => {
         console.log('getPrinterInformationById failed, error: ' + JSON.stringify(error));
-        expect(error.code).assertEqual(print.PrintErrorCode.E_PRINT_INVALID_PRINTER);
+        expect(error).assertEqual(print.PrintErrorCode.E_PRINT_INVALID_PRINTER);
         done();
       })
     })
@@ -665,7 +666,7 @@ export default function printTest() {
         })
         .catch((error: BusinessError) => {
           console.log('getPrinterInformationById expect failed, error: ' + JSON.stringify(error));
-          expect(error.code).assertEqual(401);
+          expect(error).assertEqual(401);
           done();
       })
     })

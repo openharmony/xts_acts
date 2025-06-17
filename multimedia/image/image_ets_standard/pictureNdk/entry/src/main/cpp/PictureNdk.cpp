@@ -263,30 +263,6 @@ static napi_value SetDynamicRangeToTestPackingOptions(napi_env env, napi_callbac
     return result;
 }
 
-static napi_value SetQualityToTestPackingOptions(napi_env env, napi_callback_info info)
-{
-    napi_value result;
-    napi_value argValue[NUM_1] = {0};
-    size_t argCount = NUM_1;
-
-    napi_get_undefined(env, &result);
-    if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok || argCount < NUM_1) {
-        LOGE("SetQualityToTestPackingOptions get quality failed");
-        return result;
-    }
-
-    int32_t quality = 0;
-    napi_get_value_int32(env, argValue[NUM_0], &quality);
-
-    IMG_NAPI_CHECK_NULL_PTR(g_ctx.packingOptions, result);
-    if (OH_PackingOptions_SetQuality(g_ctx.packingOptions, quality) != IMAGE_SUCCESS) {
-        napi_throw_error(env, nullptr, "OH_PackingOptions_SetQuality failed");
-        return result;
-    }
-
-    return result;
-}
-
 static napi_value CreateTestImageSource(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
@@ -1572,33 +1548,6 @@ static napi_value GetHdrPixelmapInfo(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GetHdrPixelmapInfoForArgb(napi_env env, napi_callback_info info)
-{
-    napi_value result = nullptr;
-    napi_get_undefined(env, &result);
-    IMG_NAPI_CHECK_NULL_PTR(g_ctx.picture, result);
-    OH_PixelmapNative *hdrPixelmap = nullptr;
-    OH_PictureNative_GetHdrComposedPixelmap(g_ctx.picture, &hdrPixelmap);
-    OH_Pixelmap_ImageInfo *imageInfo = nullptr;
-    OH_PixelmapImageInfo_Create(&imageInfo);
-    Image_ErrorCode ret = OH_PixelmapNative_GetImageInfo(hdrPixelmap, imageInfo);
-
-    uint32_t *width = nullptr;
-    OH_PixelmapImageInfo_GetWidth(imageInfo, width);
-    uint32_t *height = nullptr;
-    OH_PixelmapImageInfo_GetHeight(imageInfo, height);
-    int32_t *pixelFormat = nullptr;
-    OH_PixelmapImageInfo_GetPixelFormat(imageInfo, pixelFormat);
-
-    napi_create_object(env, &result);
-    SetUint32NamedProperty(env, result, AUX_INFO_WIDTH, *width);
-    SetUint32NamedProperty(env, result, AUX_INFO_HEIGHT, *height);
-    SetUint32NamedProperty(env, result, AUX_INFO_PIXEL_FORMAT, *pixelFormat);
-    IMG_NAPI_RELEASE_PTR(hdrPixelmap, OH_PixelmapNative_Release(hdrPixelmap));
-    IMG_NAPI_RELEASE_PTR(imageInfo, OH_PixelmapImageInfo_Release(imageInfo));
-    return result;
-}
-
 static napi_value AuxiliarySinglePictureSetInfo(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
@@ -2044,91 +1993,6 @@ static napi_value AuxiliaryPictureWritePixelsErrorCode(napi_env env, napi_callba
     }
 
     napi_create_int32(env, IMAGE_BAD_PARAMETER, &result);
-    return result;
-}
-
-static napi_value GetPixelmapImageSize(napi_env env, napi_callback_info info)
-{
-    napi_value result = nullptr;
-    napi_get_undefined(env, &result);
-    if (g_ctx.pixelMap == nullptr) {
-        napi_throw_error(env, nullptr, "PixelMap is nullptr,GetPixelmapImageSize failed");
-        return result;
-    }
-
-    OH_Pixelmap_ImageInfo *imageInfo = nullptr;
-    OH_PixelmapImageInfo_Create(&imageInfo);
-    if (OH_PixelmapNative_GetImageInfo(g_ctx.pixelMap, imageInfo) != IMAGE_SUCCESS) {
-        napi_throw_error(env, nullptr, "OH_PixelmapNative_GetImageInfo failed");
-        return result;
-    }
-    uint32_t width = 0;
-    if (OH_PixelmapImageInfo_GetWidth(imageInfo, &width) != IMAGE_SUCCESS) {
-        napi_throw_error(env, nullptr, "OH_PixelmapImageInfo_GetWidth failed");
-        return result;
-    }
-    uint32_t height = 0;
-    if (OH_PixelmapImageInfo_GetHeight(imageInfo, &height) != IMAGE_SUCCESS) {
-        napi_throw_error(env, nullptr, "OH_PixelmapImageInfo_GetHeight failed");
-        return result;
-    }
-    OH_PixelmapImageInfo_Release(imageInfo);
-
-    napi_create_object(env, &result);
-    SetUint32NamedProperty(env, result, AUX_INFO_WIDTH, width);
-    SetUint32NamedProperty(env, result, AUX_INFO_HEIGHT, height);
-    return result;
-}
-
-static napi_value GetPixelmapPixelFormat(napi_env env, napi_callback_info info)
-{
-    napi_value result = nullptr;
-    napi_get_undefined(env, &result);
-    if (g_ctx.pixelMap == nullptr) {
-        napi_throw_error(env, nullptr, "PixelMap is nullptr,GetPixelmapImageSize failed");
-        return result;
-    }
-
-    OH_Pixelmap_ImageInfo *imageInfo = nullptr;
-    OH_PixelmapImageInfo_Create(&imageInfo);
-    if (OH_PixelmapNative_GetImageInfo(g_ctx.pixelMap, imageInfo) != IMAGE_SUCCESS) {
-        napi_throw_error(env, nullptr, "OH_PixelmapNative_GetImageInfo failed");
-        return result;
-    }
-    int32_t pixelFormat;
-    if (OH_PixelmapImageInfo_GetPixelFormat(imageInfo, &pixelFormat) != IMAGE_SUCCESS) {
-        napi_throw_error(env, nullptr, "OH_PixelmapImageInfo_GetPixelFormat failed");
-        return result;
-    }
-
-    OH_PixelmapImageInfo_Release(imageInfo);
-    napi_create_int32(env, pixelFormat, &result);
-    return result;
-}
-
-static napi_value PixelMapReadPixels(napi_env env, napi_callback_info info)
-{
-    napi_value result = nullptr;
-    napi_value argValue[NUM_1] = {0};
-    size_t argCount = NUM_1;
-
-    napi_get_undefined(env, &result);
-    if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok || argCount < NUM_1) {
-        LOGE("PixelMapReadPixels: failed to get input arguments!");
-        return result;
-    }
-
-    uint8_t *data = nullptr;
-    size_t length = 0;
-    napi_get_buffer_info(env, argValue[NUM_0], (void **)&data, &length);
-
-    IMG_NAPI_CHECK_NULL_PTR(g_ctx.pixelMap, result);
-    if (OH_PixelmapNative_ReadPixels(g_ctx.pixelMap, data, &length) != IMAGE_SUCCESS) {
-        napi_throw_error(env, nullptr, "OH_PixelmapNative_ReadPixels failed");
-        return result;
-    }
-
-    napi_create_int32(env, IMAGE_SUCCESS, &result);
     return result;
 }
 
@@ -2923,8 +2787,6 @@ static napi_value Init(napi_env env, napi_value exports)
             napi_default, nullptr},
         {"setDynamicRangeToTestPackingOptions", nullptr, SetDynamicRangeToTestPackingOptions, nullptr, nullptr,
             nullptr, napi_default, nullptr},
-        {"setQualityToTestPackingOptions", nullptr, SetQualityToTestPackingOptions, nullptr, nullptr,
-            nullptr, napi_default, nullptr},
         {"createTestImageSource", nullptr, CreateTestImageSource, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"createTestPixelmapByImageSource", nullptr, CreateTestPixelmapByImageSource, nullptr, nullptr, nullptr,
             napi_default, nullptr},
@@ -3006,8 +2868,6 @@ static napi_value Init(napi_env env, napi_value exports)
         {"CreateSinglePictureByImageSource", nullptr, CreateSinglePictureByImageSource, nullptr, nullptr, nullptr,
             napi_default, nullptr},
         {"GetHdrPixelmapInfo", nullptr, GetHdrPixelmapInfo, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"GetHdrPixelmapInfoForArgb", nullptr, GetHdrPixelmapInfoForArgb, nullptr, nullptr, nullptr, napi_default,
-            nullptr},
         {"AuxiliarySinglePictureSetInfo", nullptr, AuxiliarySinglePictureSetInfo, nullptr, nullptr, nullptr,
             napi_default, nullptr},
         {"SetAuxiliarySinglePicture", nullptr, SetAuxiliarySinglePicture, nullptr, nullptr, nullptr, napi_default,
@@ -3036,12 +2896,6 @@ static napi_value Init(napi_env env, napi_value exports)
         {"PictureGetMetadataErrorCode", nullptr, PictureGetMetadataErrorCode, nullptr, nullptr, nullptr, napi_default,
             nullptr},
         {"MetadataGetPropertyErrorCode", nullptr, MetadataGetPropertyErrorCode, nullptr, nullptr, nullptr, napi_default,
-            nullptr},
-        {"GetPixelmapImageSize", nullptr, GetPixelmapImageSize, nullptr, nullptr, nullptr, napi_default,
-            nullptr},
-        {"GetPixelmapPixelFormat", nullptr, GetPixelmapPixelFormat, nullptr, nullptr, nullptr, napi_default,
-            nullptr},
-        {"PixelMapReadPixels", nullptr, PixelMapReadPixels, nullptr, nullptr, nullptr, napi_default,
             nullptr},
         {"GetPixelmapBuffer", nullptr, GetPixelmapBuffer, nullptr, nullptr, nullptr, napi_default,
             nullptr},

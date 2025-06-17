@@ -3,7 +3,7 @@ import fs from '@ohos.file.fs';
 import image from '@ohos.multimedia.image';
 import { BusinessError } from '@ohos.base';
 import colorSpaceManager from '@ohos.graphics.colorSpaceManager';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 
 let sleep = async (delay: number): Promise<void> => {
   return new Promise((resolve, _) => {
@@ -96,7 +96,7 @@ export default function abilityTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it("SUB_DECODEOPTIONS_WITH_AIHDR_CREATEPIXELMAP_0100", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_AIHDR_CREATEPIXELMAP_0100", Level.LEVEL0, async (done: Function) => {
       await getFd("test.jpg");
       try{
         await getTestResult('SUB_DECODEOPTIONS_WITH_AIHDR_CREATEPIXELMAP_0100', image.DecodingDynamicRange.HDR);

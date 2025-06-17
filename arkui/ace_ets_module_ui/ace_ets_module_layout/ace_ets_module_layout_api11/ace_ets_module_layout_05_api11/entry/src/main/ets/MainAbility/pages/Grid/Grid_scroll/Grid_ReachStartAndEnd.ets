@@ -18,7 +18,7 @@ struct Grid_ReachStartAndEnd {
   @State Number: String[] = ['0', '1', '2', '3', '4'];
   scroller: Scroller = new Scroller();
   @State index: number = 0;
-  @State text2: string = '';
+  @State text2: string = '111';
   @State pad: number = 0;
 
   build() {
@@ -51,7 +51,7 @@ struct Grid_ReachStartAndEnd {
         .height('5%')
         .onClick(() => { // reset the init state
           this.index = 0;
-          this.text2 = ""
+          this.text2 = '111'
         })
       Text(`onReachStart${this.index}`).fontSize(14).id('Grid_ReachStartAndEnd_tex1')
       Text(this.text2).fontSize(14).id('Grid_ReachStartAndEnd_tex2')

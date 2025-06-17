@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 
 export default function calendarPickerEnabledTest() {
@@ -34,7 +34,7 @@ export default function calendarPickerEnabledTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCalendarPickerEnabled001', 0, async (done: Function) => {
+    it('testCalendarPickerEnabled001', Level.LEVEL1, async  (done: Function) => {
       await Utils.clickComponent('OnClickEnabledCalendarPicker')
       await Utils.sleep(1000)
       expect(Utils.getComponentInfoByKey('OnClickEnabledCalendarPicker').$attrs.backgroundColor).assertEqual('#FF00FF00')
@@ -62,7 +62,7 @@ export default function calendarPickerEnabledTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCalendarPickerEnabled002', 0, async (done: Function) => {
+    it('testCalendarPickerEnabled002', Level.LEVEL1, async  (done: Function) => {
       await Utils.clickComponent('OnClickDisabledCalendarPicker')
       await Utils.sleep(1000)
       expect(Utils.getComponentInfoByKey('OnClickDisabledCalendarPicker').$attrs.backgroundColor).assertEqual('#FFFF0000')
@@ -88,7 +88,7 @@ export default function calendarPickerEnabledTest() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testCalendarPickerEnabled003', 0, async (done: Function) => {
+    it('testCalendarPickerEnabled003', Level.LEVEL1, async  (done: Function) => {
       await Utils.clickComponent('OnClickAbnormalCalendarPicker')
       await Utils.sleep(1000)
       expect(Utils.getComponentInfoByKey('OnClickAbnormalCalendarPicker').$attrs.backgroundColor).assertEqual('#FF00FF00')

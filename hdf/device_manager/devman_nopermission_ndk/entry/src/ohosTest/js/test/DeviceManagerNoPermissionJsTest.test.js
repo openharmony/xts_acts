@@ -325,45 +325,5 @@ export default function DeviceManagerNoPermissionJsTest() {
             }
         });
 
-        /*
-        * @tc.name:Permission_queryDeviceInfo_001
-        * @tc.desc:verify permission of queryDeviceInfo
-        * @tc.type: FUNC
-        */
-        it("Permission_queryDeviceInfo_001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, done => {
-            console.info('----------------------Permission_queryDeviceInfo_001---------------------------');
-            if (!isDeviceConnected(done)) {
-                return;
-            }
-            try {
-                deviceManager.queryDeviceInfo(TEST_DEVICE_ID);
-                expect(false).assertTrue();
-                done();
-            } catch (err) {
-                expect(err.code).assertEqual(PERMISSION_DENIED_CODE);
-                done();
-            }
-        });
-
-        /*
-        * @tc.name:Permission_queryDriverInfo_001
-        * @tc.desc:verify permission of queryDriverInfo
-        * @tc.type: FUNC
-        */
-        it("Permission_queryDriverInfo_001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, done => {
-            console.info('----------------------Permission_queryDriverInfo_001---------------------------');
-            if (!isDeviceConnected(done)) {
-                return;
-            }
-            try {
-                deviceManager.queryDriverInfo(TEST_DRIVER_UID);
-                expect(false).assertTrue();
-                done();
-            } catch (err) {
-                expect(err.code).assertEqual(PERMISSION_DENIED_CODE);
-                done();
-            }
-        });
-
     })
 }

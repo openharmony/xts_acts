@@ -23,18 +23,3 @@ export const CreatePixelMapUsingAllocator: (path: string, alloType: image.Alloca
     size?: image.Size, pixelMapFormat?: image.PixelMapFormat, desiredDynamicRange?: image.DecodingDynamicRange) =>  number;
 export const GetPixelmapInfo: () => imageInfo;
 export const CreatePixelMapUsingAllocatorError: (path: string, alloType: image.AllocatorType) => number;
-
-//ARGB TEST
-export const CreatePixelMapByImageSourceFromUri: (uri: string, pixelFormat: image.PixelMapFormat,
-    alloType: boolean, DynamicRange: image.DecodingDynamicRange, allocatorType: image.AllocatorType) => image.PixelMap;
-export const CreatePixelMapByImageSourceFromBuffer:(buffer: ArrayBuffer, pixelFormat: image.PixelMapFormat) => image.PixelMap;
-export const GetPixelmapPixelFormat: (pixelMap: image.PixelMap) => image.PixelMapFormat;
-export const PixelMapRelease: (pixelMap: image.PixelMap) => number;
-export const PackPixelMapToData: (pixelMap: image.PixelMap, packing:image.PackingOption, dst: ArrayBuffer) => number;
-export const PackPixelMapToFile: (pixelMap: image.PixelMap, packing:image.PackingOption, fd: number) => number;
-export const CreatePackingOptions: () => image.PackingOption;
-export const SetMimeTypeToTestPackingOptions: (packing:image.PackingOption, format: string) => void;
-export const SetDynamicRangeToTestPackingOptions: (packing:image.PackingOption, dynamicRange: number) => void;
-export const SetQualityToTestPackingOptions: (packing:image.PackingOption, quality: number) => void;
-export const SetNeedsPackPropertiesToTestPackingOptions: (packing:image.PackingOption, needpackExif: boolean) => void;
-export const PackingOptionsRelease: (packingOption: image.PackingOption) => number;

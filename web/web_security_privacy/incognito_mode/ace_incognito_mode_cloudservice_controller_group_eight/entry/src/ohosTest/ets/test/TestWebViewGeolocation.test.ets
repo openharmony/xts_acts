@@ -87,7 +87,7 @@ export default function ActsWebViewTest2() {
      * @tc.level Level 1
      */
     it('SUB_ACE_WEB_INCOGNITO_API_0017', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
-      Utils.registerBaseEvent('testWebView_getAccessibleGeolocation0003', 'Invalid origin', 5005, done,
+      Utils.registerBaseEvent('testWebView_getAccessibleGeolocation0003', 'Invalid origin.The origin format must follow defined in RFC 6454.', 5005, done,
         (backData: events_emitter.EventData, expected: Object) => {
           console.info('Received event data: ' + JSON.stringify(backData));
           expect(backData?.data?.ACTION).assertEqual(expected);
@@ -106,7 +106,7 @@ export default function ActsWebViewTest2() {
      * @tc.level Level 1
      */
     it('SUB_ACE_WEB_INCOGNITO_API_0018', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
-      Utils.registerBaseEvent('testWebView_getAccessibleGeolocation0004', 'Invalid origin', 5006, done,
+      Utils.registerBaseEvent('testWebView_getAccessibleGeolocation0004', 'Invalid origin.The origin format must follow defined in RFC 6454.', 5006, done,
         (backData: events_emitter.EventData, expected: Object) => {
           console.info('Received event data: ' + JSON.stringify(backData));
           expect(backData?.data?.ACTION).assertEqual(expected);

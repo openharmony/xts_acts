@@ -41,14 +41,14 @@ struct SetCircle {
           Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
             Toggle({ type: ToggleType.Button, isOn: false }) {
               Text('Red')
-                .fontSize(16)
-            }.size({ width: '25%', height: '20%' })
+                .fontSize(10).fontColor(Color.Black)
+            }.size({ width: '25%' })
             .onClick(() => {
-              this.context.clearRect(90, 150, 170, 120);
+              this.context.clearRect(0, 0, 300, 200);
               this.FillColor = '#FFFF0000';
               this.context.lineWidth = 10;
               this.context.strokeStyle = '#FFFF0000';
-              this.context.strokeRect(100, 160, 150, 100);
+              this.context.strokeRect(50, 50, 100, 50);
               this.num1 = 1;
               if (this.num1 == this.num3 && this.num2 == 1) {
                 this.Vue = true;
@@ -57,14 +57,14 @@ struct SetCircle {
 
             Toggle({ type: ToggleType.Button, isOn: false }) {
               Text('Yellow')
-                .fontSize(16)
-            }.size({ width: '25%', height: '20%' })
+                .fontSize(10).fontColor(Color.Black)
+            }.size({ width: '25%' })
             .onClick(() => {
-              this.context.clearRect(90, 150, 170, 120);
+              this.context.clearRect(0, 0, 300, 200);
               this.FillColor = '#fffffc3c';
               this.context.lineWidth = 10;
               this.context.strokeStyle = '#fffffc3c';
-              this.context.strokeRect(100, 160, 150, 100);
+              this.context.strokeRect(50, 50, 100, 50);
               this.num2 = 1;
               if (this.num1 == 1 && this.num3 == this.num2) {
                 this.Vue = true;
@@ -73,14 +73,14 @@ struct SetCircle {
 
             Toggle({ type: ToggleType.Button, isOn: false }) {
               Text('Green')
-                .fontSize(16)
-            }.size({ width: '25%', height: '20%' })
+                .fontSize(10).fontColor(Color.Black)
+            }.size({ width: '25%' })
             .onClick(() => {
-              this.context.clearRect(90, 150, 170, 120);
+              this.context.clearRect(0, 0, 300, 200);
               this.FillColor = '#ff19fa00';
               this.context.lineWidth = 10;
               this.context.strokeStyle = '#ff19fa00';
-              this.context.strokeRect(100, 160, 150, 100);
+              this.context.strokeRect(50, 50, 100, 50);
               this.num3 = 1;
               if (this.num1 == 1 && this.num3 == this.num2) {
                 this.Vue = true;
@@ -98,7 +98,7 @@ struct SetCircle {
               .onReady(() => {
                 this.context.lineWidth = 10;
                 this.context.strokeStyle = this.FillColor;
-                this.context.strokeRect(100, 160, 150, 100);
+                this.context.strokeRect(50, 50, 100, 50);
               })
           }
           .width('100%')

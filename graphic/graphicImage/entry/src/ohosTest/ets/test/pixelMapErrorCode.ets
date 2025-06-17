@@ -706,5 +706,159 @@ export default function imagePixelMapErrorCodeTest() {
         }
       }
     });
+    
+    /**
+     * @tc.number    ImagePixelMapTest
+     * @tc.name      ImagePixelMapErrorCode_2500
+     * @tc.desc      image pixelMap error code
+     * @tc.level:    Level 0
+     * @tc.type :
+     * @tc.size :
+     */
+    it("ImagePixelMapErrorCode_2500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
+      const color: ArrayBuffer = new ArrayBuffer(96);
+      let opts: image.InitializationOptions = { 
+        editable: true, pixelFormat: image.PixelMapFormat.ALPHA_8, size: { height: 4, width: 6 } 
+      }
+      let pixelMap : image.PixelMap = image.createPixelMapSync(color, opts);
+      let staticMetadata: image.HdrStaticMetadata = {
+        displayPrimariesX: [1.1, 1.1, 1.1],
+        displayPrimariesY: [1.2, 1.2, 1.2],
+        whitePointX: 1.1,
+        whitePointY: 1.2,
+        maxLuminance: 2.1,
+        minLuminance: 1.0,
+        maxContentLightLevel: 2.1,
+        maxFrameAverageLightLevel: 2.1,
+      };
+      taskpoolTest(pixelMap);
+      if (pixelMap != undefined) {
+        pixelMap.setMetadata(image.HdrMetadataKey.HDR_STATIC_METADATA, staticMetadata).then(() => {
+          console.info('Succeeded in setting pixelMap metadata.');
+          expect().assertFail();
+          done();
+        }).catch((error: BusinessError) => {
+          console.error(`Failed to set the metadata.code ${error.code},message is ${error.message}`);
+          expect(Number(error) == 501).assertTrue();
+          done();
+        })
+      }
+    });
+    
+    /**
+     * @tc.number    ImagePixelMapTest
+     * @tc.name      ImagePixelMapErrorCode_2600
+     * @tc.desc      image pixelMap error code
+     * @tc.level:    Level 0
+     * @tc.type :
+     * @tc.size :
+     */
+    it("ImagePixelMapErrorCode_2600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
+      const color: ArrayBuffer = new ArrayBuffer(96);
+      let opts: image.InitializationOptions = { 
+        editable: true, pixelFormat: image.PixelMapFormat.ALPHA_8, size: { height: 4, width: 6 } 
+      }
+      let pixelMap : image.PixelMap = image.createPixelMapSync(color, opts);
+      let colorSpaceName = colorSpaceManager.ColorSpace.SRGB;
+      let targetColorSpace: colorSpaceManager.ColorSpaceManager = colorSpaceManager.create(colorSpaceName);
+      if (pixelMap != undefined) {
+        pixelMap.applyColorSpace(targetColorSpace, (error: BusinessError) => {
+          if (error) {
+            console.error(`Failed to apply color space for pixelmap object, error code is ${error}`);
+            expect().assertFail();
+            done();
+          } else {
+            console.info('Succeeded in applying color space for pixelmap object.');
+            expect(true).assertTrue();
+            done();
+          }
+        })
+      }
+    });
+    
+    /**
+     * @tc.number    ImagePixelMapTest
+     * @tc.name      ImagePixelMapErrorCode_2700
+     * @tc.desc      image pixelMap error code
+     * @tc.level:    Level 0
+     * @tc.type :
+     * @tc.size :
+     */
+    it("ImagePixelMapErrorCode_2700", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
+      const color: ArrayBuffer = new ArrayBuffer(96);
+      let opts: image.InitializationOptions = { 
+        editable: true, pixelFormat: image.PixelMapFormat.ALPHA_8, size: { height: 4, width: 6 } 
+      }
+      let pixelMap : image.PixelMap = image.createPixelMapSync(color, opts);
+      let colorSpaceName = colorSpaceManager.ColorSpace.SRGB;
+      let targetColorSpace: colorSpaceManager.ColorSpaceManager = colorSpaceManager.create(colorSpaceName);
+      if (pixelMap != undefined) {
+        pixelMap.applyColorSpace(targetColorSpace).then(() => {
+          console.info('Succeeded in applying color space for pixelmap object.');
+          expect(true).assertTrue();
+          done();
+        }).catch((error: BusinessError) => {
+          console.error(`Failed to apply color space for pixelmap object, error code is ${error}`);
+          expect().assertFail();
+          done();
+        })
+      }
+    });
+    
+    /**
+     * @tc.number    ImagePixelMapTest
+     * @tc.name      ImagePixelMapErrorCode_2800
+     * @tc.desc      image pixelMap error code
+     * @tc.level:    Level 0
+     * @tc.type :
+     * @tc.size :
+     */
+    it("ImagePixelMapErrorCode_2800", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
+      const color: ArrayBuffer = new ArrayBuffer(96);
+      let opts: image.InitializationOptions = { 
+        editable: true, pixelFormat: image.PixelMapFormat.ALPHA_8, size: { height: 4, width: 6 } 
+      }
+      let pixelMap : image.PixelMap = image.createPixelMapSync(color, opts);
+      if (pixelMap != undefined) {
+        pixelMap.applyColorSpace(null, (error: BusinessError) => {
+          if (error) {
+            console.error(`Failed to apply color space for pixelmap object, error code is ${error}`);
+            expect(Number(error) == 62980115).assertTrue();
+            done();
+          } else {
+            console.info('Succeeded in applying color space for pixelmap object.');
+            expect().assertFail();
+            done();
+          }
+        })
+      }
+    });
+    
+    /**
+     * @tc.number    ImagePixelMapTest
+     * @tc.name      ImagePixelMapErrorCode_2900
+     * @tc.desc      image pixelMap error code
+     * @tc.level:    Level 0
+     * @tc.type :
+     * @tc.size :
+     */
+    it("ImagePixelMapErrorCode_2900", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
+      const color: ArrayBuffer = new ArrayBuffer(96);
+      let opts: image.InitializationOptions = { 
+        editable: true, pixelFormat: image.PixelMapFormat.ALPHA_8, size: { height: 4, width: 6 } 
+      }
+      let pixelMap : image.PixelMap = image.createPixelMapSync(color, opts);
+      if (pixelMap != undefined) {
+        pixelMap.applyColorSpace(null).then(() => {
+          console.info('Succeeded in applying color space for pixelmap object.');
+          expect().assertFail();
+          done();
+        }).catch((error: BusinessError) => {
+          console.error(`Failed to apply color space for pixelmap object, error code is ${error}`);
+          expect(Number(error) == 62980115).assertTrue();
+          done();
+        })
+      }
+    });
   })
 }

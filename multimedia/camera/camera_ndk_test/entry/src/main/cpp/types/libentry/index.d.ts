@@ -141,6 +141,11 @@ interface autoDeviceSwitchSupportInfo {
   isSupported: boolean;
 }
 
+interface MacroSupportedinfo {
+  errorCode: number;
+  isMacroSupported: boolean;
+}
+
 export const initCamera: (surfaceId: string) => number;
 
 export const getSupportedCameras: () => cameraInfo;
@@ -460,3 +465,13 @@ export const cameraManagerRegisterFoldStatusChange: (index:number) => number;
 export const cameraManagerUnregisterFoldStatusChange: (index:number) => number;
 
 export const sessionSetQualityPrioritization: (index:number) => number;
+
+export const oHCameraManagerGetCameraDevice: (index:number) => number;
+ 
+export const oHCameraManagerGetCameraConcurrentInfos: (index:number) => number;
+ 
+export const oHCameraInputOpenConcurrentCameras: (index:number) => number;
+
+export const sessionIsMacroSupported: (a: number) => MacroSupportedinfo;
+
+export const sessionEnableMacro: (index: number, enable: boolean) => number;

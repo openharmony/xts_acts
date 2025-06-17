@@ -37,7 +37,7 @@ export default function customDialogRegisterOnWillDismissTest() {
      */
     it('testCustomDialogRegisterOnWillDismiss001', 0, async (done: Function) => {
       await Utils.pushPage(`customdialog/CustomDialogRegisterOnWillDismissTest`)
-      await Utils.clickComponent("buttonRegisterOnWillDismiss")
+      await Utils.clickComponent('buttonRegisterOnWillDismiss')
       await Utils.sleep(2000)
       let driver: Driver = Driver.create();
       await driver.pressBack()

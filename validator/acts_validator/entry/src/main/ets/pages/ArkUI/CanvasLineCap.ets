@@ -41,15 +41,15 @@ struct SetCircle {
           Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
             Toggle({ type: ToggleType.Button, isOn: false }) {
               Text('butt')
-                .fontSize(16)
-            }.size({ width: '25%', height: '20%' })
+                .fontSize(10).fontColor(Color.Black)
+            }.size({ width: '25%' })
             .onClick(() => {
-              this.context.clearRect(90, 90, 170, 120);
+              this.context.clearRect(0, 0, 350, 200);
               this.context.lineWidth = 8;
               this.context.beginPath();
               this.context.lineCap = 'butt';
-              this.context.moveTo(100, 100);
-              this.context.lineTo(250, 100);
+              this.context.moveTo(50, 50);
+              this.context.lineTo(200, 50);
               this.context.stroke();
               this.num1 = 1;
               if (this.num1 == this.num3 && this.num2 == 1) {
@@ -58,15 +58,15 @@ struct SetCircle {
             })
 
             Toggle({ type: ToggleType.Button, isOn: false }) {
-              Text('round').fontSize(16)
-            }.size({ width: '25%', height: '20%' })
+              Text('round').fontSize(10).fontColor(Color.Black)
+            }.size({ width: '25%' })
             .onClick(() => {
-              this.context.clearRect(90, 90, 170, 120);
+              this.context.clearRect(0, 0, 350, 200);
               this.context.lineWidth = 8;
               this.context.beginPath();
               this.context.lineCap = 'round';
-              this.context.moveTo(100, 100);
-              this.context.lineTo(250, 100);
+              this.context.moveTo(50, 50);
+              this.context.lineTo(200, 50);
               this.context.stroke();
               this.num2 = 1;
               if (this.num1 == 1 && this.num3 == this.num2) {
@@ -76,15 +76,15 @@ struct SetCircle {
 
             Toggle({ type: ToggleType.Button, isOn: false }) {
               Text('square')
-                .fontSize(16)
-            }.size({ width: '25%', height: '20%' })
+                .fontSize(10).fontColor(Color.Black)
+            }.size({ width: '25%' })
             .onClick(() => {
-              this.context.clearRect(90, 90, 170, 120);
+              this.context.clearRect(0, 0, 350, 200);
               this.context.lineWidth = 8;
               this.context.beginPath();
               this.context.lineCap = 'square';
-              this.context.moveTo(100, 100);
-              this.context.lineTo(250, 100);
+              this.context.moveTo(50, 50);
+              this.context.lineTo(200, 50);
               this.context.stroke();
               this.num3 = 1;
               if (this.num1 == 1 && this.num3 == this.num2) {
@@ -102,8 +102,8 @@ struct SetCircle {
                 this.context.lineWidth = 8;
                 this.context.beginPath();
                 this.context.lineCap = 'round';
-                this.context.moveTo(100, 100);
-                this.context.lineTo(250, 100);
+                this.context.moveTo(50, 50);
+                this.context.lineTo(200, 50);
                 this.context.stroke();
               })
           }

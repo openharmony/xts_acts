@@ -15,10 +15,18 @@
 
 import EmptyTest from './Empty.test';
 import EsimNoPermissionPublic from './EsimNoPermissionPublic.test';
+import eSIM from '@ohos.telephony.esim';
+const SLOT_0: number = 0;
 
 export default function testsuite() {
     if (canIUse("SystemCapability.Telephony.CoreService.Esim")) {
-      EsimNoPermissionPublic();
+      
+      if (eSIM.isSupported(SLOT_0)) {
+          EsimNoPermissionPublic();
+      } else {
+          EmptyTest();
+      } 
+
     } else {
       EmptyTest();
     }

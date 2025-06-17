@@ -27,7 +27,7 @@ describe('HiAppEventSubSecondTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('HiAppEventSub30', 3, async function (done) {
+    it('HiAppEventSub30', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info('testHiAppEventSub30 start')
         try{
             HiAppEventV9.write( (err) => {
@@ -53,7 +53,7 @@ describe('HiAppEventSubSecondTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('HiAppEventSub31', 3, async function (done) {
+    it('HiAppEventSub31', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('testHiAppEventSub31 start')
         try{
             let result = HiAppEventV9.addWatcher({
@@ -85,7 +85,7 @@ describe('HiAppEventSubSecondTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('HiAppEventSub32', 3, async function (done) {
+    it('HiAppEventSub32', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('testHiAppEventSub32 start')
         try{
             HiAppEventV9.configure({
@@ -128,7 +128,7 @@ describe('HiAppEventSubSecondTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('HiAppEventSub33', 3, async function (done) {
+    it('HiAppEventSub33', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('testHiAppEventSub33 start')
         try{
             HiAppEventV9.write({
@@ -164,7 +164,7 @@ describe('HiAppEventSubSecondTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('HiAppEventSub34', 3, async function (done) {
+    it('HiAppEventSub34', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('testHiAppEventSub34 start')
         try{
             HiAppEventV9.write({
@@ -200,7 +200,7 @@ describe('HiAppEventSubSecondTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('HiAppEventSub35', 3, async function (done) {
+    it('HiAppEventSub35', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('testHiAppEventSub35 start')
         try{
             HiAppEventV9.write({
@@ -233,7 +233,7 @@ describe('HiAppEventSubSecondTest', function () {
      * @tc.name HiAppEventSub36
      * @tc.desc HiAppEvent write interface test.
      */
-    it('HiAppEventSub36', 3, async function (done) {
+    it('HiAppEventSub36', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('testHiAppEventSub36 start')
         try{
             HiAppEventV9.write({
@@ -269,7 +269,7 @@ describe('HiAppEventSubSecondTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('HiAppEventSub37', 3, async function (done) {
+    it('HiAppEventSub37', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('testHiAppEventSub37 start')
         try{
             HiAppEventV9.write({
@@ -308,7 +308,7 @@ describe('HiAppEventSubSecondTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('HiAppEventSub38', 3, async function (done) {
+    it('HiAppEventSub38', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('testHiAppEventSub38 start')
         try{
             HiAppEventV9.write({
@@ -344,7 +344,7 @@ describe('HiAppEventSubSecondTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('HiAppEventSub39', 3, async function (done) {
+    it('HiAppEventSub39', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('testHiAppEventSub39 start')
         try{
             HiAppEventV9.write({
@@ -380,7 +380,7 @@ describe('HiAppEventSubSecondTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('HiAppEventSub40', 3, async function (done) {
+    it('HiAppEventSub40', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('testHiAppEventSub40 start')
         try{
             HiAppEventV9.write({
@@ -416,7 +416,7 @@ describe('HiAppEventSubSecondTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('HiAppEventSub41', 3, async function (done) {
+    it('HiAppEventSub41', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('testHiAppEventSub41 start')
         try{
             HiAppEventV9.write({
@@ -452,7 +452,7 @@ describe('HiAppEventSubSecondTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('HiAppEventSub42', 3, async function (done) {
+    it('HiAppEventSub42', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('testHiAppEventSub42 start')
         try{
             HiAppEventV9.write({
@@ -488,7 +488,7 @@ describe('HiAppEventSubSecondTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('HiAppEventSub43', 3, async function (done) {
+    it('HiAppEventSub43', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('testHiAppEventSub43 start')
         try{
             let largeParams = {}
@@ -525,7 +525,7 @@ describe('HiAppEventSubSecondTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('HiAppEventSub44', 3, async function (done) {
+    it('HiAppEventSub44', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('testHiAppEventSub44 start')
         try{
             let longStr = "a".repeat(8*1024 + 1);
@@ -562,7 +562,7 @@ describe('HiAppEventSubSecondTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('HiAppEventSub45', 3, async function (done) {
+    it('HiAppEventSub45', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('testHiAppEventSub45 start')
         try{
             HiAppEventV9.write({
@@ -598,7 +598,7 @@ describe('HiAppEventSubSecondTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('HiAppEventSub46', 3, async function (done) {
+    it('HiAppEventSub46', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('testHiAppEventSub46 start')
         try{
             HiAppEventV9.write({
@@ -634,7 +634,7 @@ describe('HiAppEventSubSecondTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('HiAppEventSub47', 3, async function (done) {
+    it('HiAppEventSub47', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('testHiAppEventSub47 start')
         try{
             HiAppEventV9.write({
@@ -670,7 +670,7 @@ describe('HiAppEventSubSecondTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('HiAppEventSub48', 3, async function (done) {
+    it('HiAppEventSub48', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('testHiAppEventSub48 start')
         try{
             HiAppEventV9.write({
@@ -706,7 +706,7 @@ describe('HiAppEventSubSecondTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('HiAppEventSub49', 3, async function (done) {
+    it('HiAppEventSub49', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('testHiAppEventSub49 start')
         try{
             HiAppEventV9.write({
@@ -742,7 +742,7 @@ describe('HiAppEventSubSecondTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('HiAppEventSub50', 3, async function (done) {
+    it('HiAppEventSub50', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('testHiAppEventSub50 start')
         try{
             let msgArray = []
@@ -783,7 +783,7 @@ describe('HiAppEventSubSecondTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('HiAppEventSub51', 3, async function (done) {
+    it('HiAppEventSub51', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('testHiAppEventSub11 start')
         try{
             let result = HiAppEventV9.addWatcher({
@@ -816,7 +816,7 @@ describe('HiAppEventSubSecondTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('HiAppEventSub52', 3, async function (done) {
+    it('HiAppEventSub52', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('testHiAppEventSub11 start')
         try{
             let result = HiAppEventV9.addWatcher({
@@ -849,7 +849,7 @@ describe('HiAppEventSubSecondTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('HiAppEventSub53', 3, async function (done) {
+    it('HiAppEventSub53', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('testHiAppEventSub53 start')
         try{
             let result = HiAppEventV9.addWatcher({
@@ -882,7 +882,7 @@ describe('HiAppEventSubSecondTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('HiAppEventSub54', 3, async function (done) {
+    it('HiAppEventSub54', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('testHiAppEventSub54 start')
         try{
             let result = HiAppEventV9.addWatcher({
@@ -915,7 +915,7 @@ describe('HiAppEventSubSecondTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('HiAppEventSub55', 3, async function (done) {
+    it('HiAppEventSub55', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('testHiAppEventSub55 start')
         try{
             let result = HiAppEventV9.addWatcher({
@@ -949,7 +949,7 @@ describe('HiAppEventSubSecondTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('HiAppEventSub56', 3, async function (done) {
+    it('HiAppEventSub56', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('testHiAppEventSub56 start')
         try{
             let result = HiAppEventV9.addWatcher({
@@ -982,7 +982,7 @@ describe('HiAppEventSubSecondTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('HiAppEventSub57', 3, async function (done) {
+    it('HiAppEventSub57', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('testHiAppEventSub57 start')
         try{
             let result = HiAppEventV9.addWatcher({
@@ -1015,7 +1015,7 @@ describe('HiAppEventSubSecondTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('HiAppEventSub58', 3, async function (done) {
+    it('HiAppEventSub58', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('testHiAppEventSub58 start')
         try{
             let result = HiAppEventV9.addWatcher({
@@ -1048,7 +1048,7 @@ describe('HiAppEventSubSecondTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('HiAppEventSub59', 3, async function (done) {
+    it('HiAppEventSub59', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('testHiAppEventSub59 start')
         try{
             let result = HiAppEventV9.addWatcher({
@@ -1081,7 +1081,7 @@ describe('HiAppEventSubSecondTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('HiAppEventSub60', 3, async function (done) {
+    it('HiAppEventSub60', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('testHiAppEventSub60 start')
         try{
             let result = HiAppEventV9.addWatcher({
@@ -1115,7 +1115,7 @@ describe('HiAppEventSubSecondTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('HiAppEventSub61', 3, async function (done) {
+    it('HiAppEventSub61', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('testHiAppEventSub61 start')
         try{
             let result = HiAppEventV9.addWatcher({
@@ -1148,7 +1148,7 @@ describe('HiAppEventSubSecondTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('HiAppEventSub62', 3, async function (done) {
+    it('HiAppEventSub62', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('testHiAppEventSub11 start')
         try{
             let result = HiAppEventV9.addWatcher({
@@ -1181,7 +1181,7 @@ describe('HiAppEventSubSecondTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('HiAppEventSub63', 3, async function (done) {
+    it('HiAppEventSub63', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('testHiAppEventSub63 start')
         try{
             let result = HiAppEventV9.addWatcher({
@@ -1214,7 +1214,7 @@ describe('HiAppEventSubSecondTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('HiAppEventSub64', 3, async function (done) {
+    it('HiAppEventSub64', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('testHiAppEventSub64 start')
         try{
             HiAppEventV9.configure({
@@ -1236,7 +1236,7 @@ describe('HiAppEventSubSecondTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('HiAppEventSub65', 3, async function (done) {
+    it('HiAppEventSub65', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('testHiAppEventSub65 start')
         try{
             HiAppEventV9.configure({
@@ -1258,7 +1258,7 @@ describe('HiAppEventSubSecondTest', function () {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('HiAppEventSub66', 3, async function (done) {
+    it('HiAppEventSub66', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('testHiAppEventSub66 start')
         try{
             let holder = HiAppEventV9.addWatcher({

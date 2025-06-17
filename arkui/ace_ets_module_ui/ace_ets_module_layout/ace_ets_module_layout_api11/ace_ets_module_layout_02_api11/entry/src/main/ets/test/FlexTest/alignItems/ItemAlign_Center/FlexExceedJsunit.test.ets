@@ -23,27 +23,27 @@ export default function flexExceed_CenterJsunit() {
   describe('flexItemAlignCenterTest2', () => {
     beforeEach(async () => {
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/Flex/alignItems/ItemAlign_Center/FlexExceed',
+        url: 'MainAbility/pages/Flex/alignItems/ItemAlign_Center/ItemAlign_Center_FlexExceed',
       }
       try {
         router.clear();
         await CommonFunc.sleep(1000);
         let pages = router.getState();
-        console.info("get FlexExceed state success " + JSON.stringify(pages));
-        if (!("FlexExceed" == pages.name)) {
-          console.info("get FlexExceed state success " + JSON.stringify(pages.name));
+        console.info("get ItemAlign_Center_FlexExceed state success " + JSON.stringify(pages));
+        if (!("ItemAlign_Center_FlexExceed" == pages.name)) {
+          console.info("get ItemAlign_Center_FlexExceed state success " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options)
-          console.info("push FlexExceed page success " + JSON.stringify(result));
+          console.info("push ItemAlign_Center_FlexExceed page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push FlexExceed page error " + JSON.stringify(err));
+        console.error("push ItemAlign_Center_FlexExceed page error " + JSON.stringify(err));
       }
       await CommonFunc.sleep(2000);
 
     });
     afterEach(async () => {
       await CommonFunc.sleep(1000);
-      console.info("FlexExceed after each called");
+      console.info("ItemAlign_Center_FlexExceed after each called");
     });
 
     /**
@@ -60,12 +60,12 @@ export default function flexExceed_CenterJsunit() {
         name: 'margin', value: 10
       })
       await CommonFunc.sleep(2000);
-      let strJson1 = getInspectorByKey('flexExceed01');
+      let strJson1 = getInspectorByKey('ItemAlign_Center_flexExceed01');
 
-      let textExceed01: RectValue = CommonFunc.getComponentRect('textExceed01');
-      let textExceed02: RectValue = CommonFunc.getComponentRect('textExceed02');
-      let textExceed03: RectValue = CommonFunc.getComponentRect('textExceed03');
-      let flexExceed01: RectValue = CommonFunc.getComponentRect('flexExceed01');
+      let textExceed01: RectValue = CommonFunc.getComponentRect('ItemAlign_Center_textExceed01');
+      let textExceed02: RectValue = CommonFunc.getComponentRect('ItemAlign_Center_textExceed02');
+      let textExceed03: RectValue = CommonFunc.getComponentRect('ItemAlign_Center_textExceed03');
+      let flexExceed01: RectValue = CommonFunc.getComponentRect('ItemAlign_Center_flexExceed01');
       expect(Math.abs(textExceed01.left - flexExceed01.left - Math.round(vp2px(10))) <= 1).assertTrue()
       expect(textExceed03.right).assertLess(flexExceed01.right)
       expect(Math.abs(textExceed01.top - flexExceed01.top - (flexExceed01.bottom - textExceed01.bottom)) <= 1)

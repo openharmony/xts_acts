@@ -17,6 +17,9 @@ import Utils from './Utils';
 import { Driver, ON } from '@ohos.UiTest';
 import router from '@ohos.router';
 import { WebNetErrorList } from '@ohos.web.netErrorList'
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 
 export default function webViewOnSslErrorEvent() {
 
@@ -41,6 +44,11 @@ export default function webViewOnSslErrorEvent() {
       done()
     });
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("web beforeEach start");
       done();

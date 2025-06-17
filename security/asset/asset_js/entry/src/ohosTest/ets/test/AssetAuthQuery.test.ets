@@ -108,6 +108,7 @@ export default function abilityTest() {
       challenge[2] = challenge[12];
       challenge[3] = challenge[13];
       let authToken = challenge;
+      attr2.set(asset.Tag.RETURN_TYPE, asset.ReturnType.ALL);
       attr2.set(asset.Tag.AUTH_TOKEN, authToken);
       attr2.set(asset.Tag.ALIAS, aw.StringToArray(aw.aliasNameList[0]));
       expect(await aw.assetQueryAttr(attr2))

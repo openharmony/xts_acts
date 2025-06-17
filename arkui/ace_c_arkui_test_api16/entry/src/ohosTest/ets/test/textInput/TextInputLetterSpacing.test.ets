@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import { Driver, ON, PointerMatrix, Rect } from '@ohos.UiTest';
 
@@ -35,7 +35,7 @@ export default function TextInputLetterSpacing(){
      * @tc.level      : Level 1
      */
 
-    it('textInputLetterSpacing001', 0, async (done: Function) => {
+    it('textInputLetterSpacing001', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'TextInputLetterSpacing';
       await Utils.pushPage(`textInput/${PAGE_TAG}`);
       console.info("[textInputLetterSpacing001] start succ");

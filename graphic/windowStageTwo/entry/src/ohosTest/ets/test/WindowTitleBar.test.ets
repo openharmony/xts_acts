@@ -19,6 +19,7 @@ import common from '@ohos.app.ability.common';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { Driver, ON } from '@kit.TestKit';
 import { ConfigurationConstant } from '@kit.AbilityKit';
+import { ColorMetrics } from '@kit.ArkUI';
 
 export default function windowTitleBarTest() {
   describe('windowTitleBarTest', async () => {
@@ -33,11 +34,82 @@ export default function windowTitleBarTest() {
     });
     beforeEach(() => {
     });
-    afterEach(() => {
-    });
+    afterEach(async ()=>{
+      try {
+        await sleep(1000)
+        let mainWindowClass = windowStage.getMainWindowSync()
+        let mainID = mainWindowClass.getWindowProperties().id
+        let lastWindow = await window.getLastWindow(context)
+        let lastID = lastWindow.getWindowProperties().id
+        while (mainID != lastID) {
+          await lastWindow.destroyWindow()
+          await sleep(1000)
+          lastWindow = await window.getLastWindow(context)
+          lastID = lastWindow.getWindowProperties().id
+      }
+      } catch (error) {
+        console.log('afterEach fail cause'+error)
+      }
+    })
     afterAll(() => {
     });
+/**
+     * @tc.number     : SUB_BASIC_WMS_SetStatusBarColor_ErrorCode_0100
+     * @tc.name       : test_setStatusBarColor_401
+     * @tc.desc       : setStatusBarColor接口验证401
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_setStatusBarColor_401', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      const message = 'test_setStatusBarColor_401!'
+      try {
+        let mainWindowClass = windowStage.getMainWindowSync();
+        let promise = mainWindowClass.setStatusBarColor(null);
+        promise.then(() => {
+          console.info(`${message} succeed setStatusBarColor`);
+          expect().assertFail();
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${message} promise Failed to setStatusBarColor, Cause code ${err.code}, message ${err.message}`);
+          expect(err.code).assertEqual(801);
+          done();
+        })
+      } catch (err) {
+        console.error(`${message} Failed to setStatusBarColor, Cause code ${err.code}, message ${err.message}`);
+        expect(err.code).assertEqual(401);
+        done();
+      }
+    });
 
+    /**
+     * @tc.number     : SUB_BASIC_WMS_SetStatusBarColor_ErrorCode_0200
+     * @tc.name       : test_setStatusBarColor_801
+     * @tc.desc       : setStatusBarColor接口验证801
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('test_setStatusBarColor_801', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      const message = 'test_setStatusBarColor_801!'
+      try {
+        let mainWindowClass = windowStage.getMainWindowSync();
+        let promise = mainWindowClass.setStatusBarColor(ColorMetrics.rgba(1, 1, 1));
+        promise.then(() => {
+          console.info(`${message} succeed setStatusBarColor`);
+          expect(true).assertTrue();
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${message} promise Failed to setStatusBarColor, Cause code ${err.code}, message ${err.message}`);
+          expect(err.code).assertEqual(801);
+          done();
+        })
+      } catch (err) {
+        console.error(`${message} Failed to setStatusBarColor, Cause code ${err.code}, message ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    });
     /**
      * @tc.number    : SUB_BASIC_WMS_SET_DECORBUTTON_STYLE_0100
      * @tc.name      : test_setDecorButtonStyle_null
@@ -447,20 +519,20 @@ export default function windowTitleBarTest() {
     });
     /**
      * @tc.number    : SUB_BASIC_WMS_SET_DECORBUTTON_STYLE_1300
-     * @tc.name      : test_setDecorButtonStyle_spacingBetweenButtons_12vp_24vp_11
-     * @tc.desc      : test_setDecorButtonStyle_spacingBetweenButtons_12vp_24vp_11
+     * @tc.name      : test_setDecorButtonStyle_spacingBetweenButtons_12vp_24vp_7
+     * @tc.desc      : test_setDecorButtonStyle_spacingBetweenButtons_12vp_24vp_7
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('test_setDecorButtonStyle_spacingBetweenButtons_12vp_24vp_11', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
-      let caseName: string = 'test_setDecorButtonStyle_spacingBetweenButtons_12vp_24vp_11';
+    it('test_setDecorButtonStyle_spacingBetweenButtons_12vp_24vp_7', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let caseName: string = 'test_setDecorButtonStyle_spacingBetweenButtons_12vp_24vp_7';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowClass = await windowStage.getMainWindow();
       try {
         let style: window.DecorButtonStyle = {
-          spacingBetweenButtons: 11
+          spacingBetweenButtons: 7
         };
         windowClass.setDecorButtonStyle(style);
         console.info(msgStr+ ' Succeeded in setting the style of button. Data: ' + JSON.stringify(style));
@@ -647,20 +719,20 @@ export default function windowTitleBarTest() {
     });
     /**
      * @tc.number    : SUB_BASIC_WMS_SET_DECORBUTTON_STYLE_1900
-     * @tc.name      : test_setDecorButtonStyle_closeButtonRightMargin_8vp_22vp_7
-     * @tc.desc      : test_setDecorButtonStyle_closeButtonRightMargin_8vp_22vp_7
+     * @tc.name      : test_setDecorButtonStyle_closeButtonRightMargin_8vp_22vp_5
+     * @tc.desc      : test_setDecorButtonStyle_closeButtonRightMargin_8vp_22vp_5
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('test_setDecorButtonStyle_closeButtonRightMargin_8vp_22vp_7', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
-      let caseName: string = 'test_setDecorButtonStyle_closeButtonRightMargin_8vp_22vp_7';
+    it('test_setDecorButtonStyle_closeButtonRightMargin_8vp_22vp_5', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let caseName: string = 'test_setDecorButtonStyle_closeButtonRightMargin_8vp_22vp_5';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let windowClass = await windowStage.getMainWindow();
       try {
         let style: window.DecorButtonStyle = {
-          closeButtonRightMargin: 7
+          closeButtonRightMargin: 5
         };
         windowClass.setDecorButtonStyle(style);
         console.info(msgStr+ ' Succeeded in setting the style of button. Data: ' + JSON.stringify(style));
@@ -1647,6 +1719,48 @@ export default function windowTitleBarTest() {
         }
       }
     });
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_getWindowDecorVisible_0100
+     * @tc.name      : test_getWindowDecorVisible_1300002
+     * @tc.desc      :  test_getWindowDecorVisible_1300002
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it("test_getWindowDecorVisible_1300002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      let msgStr = "test_getWindowDecorVisible_1300002";
+      console.log(msgStr + "begin");
+      let subWindowClass: window.Window;
+      try {
+        let promise = windowStage.createSubWindow('test_getWindowDecorVisible_1300002');
+        promise.then(async (data) => {
+          subWindowClass = data;
+          console.info(msgStr + 'Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+          await subWindowClass.destroyWindow();
+          subWindowClass.getWindowDecorVisible();
+          expect(false).assertTrue();
+          done();
+        }).catch(async (err: BusinessError) => {
+          console.error(msgStr + `Failed to getWindowDecorVisible. Cause code: ${err.code}, message: ${err.message}`);
+          if (err.code == 801) {
+            console.log(msgStr + '此设备不支持');
+            done();
+          } else if(err.code == 1300002){
+            expect(true).assertTrue();
+            done();
+          }else {
+            console.log(msgStr + 'Failed to setWindowMask');
+            expect(false).assertTrue();
+            done();
+          }
+
+        });
+      } catch (error) {
+        console.log(msgStr + 'Failed. Cause code:' + JSON.stringify(error.code) + error.message);
+        expect(false).assertTrue();
+        done();
+      }
+    })
 
   })
 }

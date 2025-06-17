@@ -27,7 +27,7 @@ export default function HiAppEventPamTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiAppEventSetPam01', 0, async (done:Function) => {
+    it('testHiAppEventSetPam01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('testHiAppEventSetPam01 start');
       try {
         let msgArray: Array<string> = []
@@ -188,7 +188,7 @@ export default function HiAppEventPamTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiAppEventSetPam02', 0, async (done:Function) => {
+    it('testHiAppEventSetPam02', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('testHiAppEventSetPam02 start');
       try {
         hiAppEvent.addWatcher({
@@ -269,7 +269,7 @@ export default function HiAppEventPamTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiAppEventSetPam03', 0, async (done:Function) => {
+    it('testHiAppEventSetPam03', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('testHiAppEventSetPam03 start');
       try {
         let eventParams: Record<string, hiAppEvent.ParamType> = {
@@ -297,7 +297,7 @@ export default function HiAppEventPamTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiAppEventSetPam04', 0, async (done:Function) => {
+    it('testHiAppEventSetPam04', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('testHiAppEventSetPam04 start');
       try {
         let eventParams: Record<string, hiAppEvent.ParamType> = {
@@ -325,7 +325,7 @@ export default function HiAppEventPamTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiAppEventSetPam05', 0, async (done:Function) => {
+    it('testHiAppEventSetPam05', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('testHiAppEventSetPam05 start');
       try {
         let eventParams: Record<string, hiAppEvent.ParamType> = {
@@ -353,7 +353,7 @@ export default function HiAppEventPamTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiAppEventSetPam06', 0, async (done:Function) => {
+    it('testHiAppEventSetPam06', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('testHiAppEventSetPam06 start');
       try {
         let eventParams: Record<string, hiAppEvent.ParamType> = {
@@ -381,7 +381,7 @@ export default function HiAppEventPamTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiAppEventSetPam07', 0, async (done:Function) => {
+    it('testHiAppEventSetPam07', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('testHiAppEventSetPam07 start');
       try {
         let eventParams: Record<string, hiAppEvent.ParamType> = {
@@ -409,7 +409,7 @@ export default function HiAppEventPamTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiAppEventSetPam08', 0, async (done:Function) => {
+    it('testHiAppEventSetPam08', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('testHiAppEventSetPam08 start');
       try {
         let eventParams: Record<string, hiAppEvent.ParamType> = {
@@ -439,7 +439,7 @@ export default function HiAppEventPamTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiAppEventSetPam09', 0, async (done:Function) => {
+    it('testHiAppEventSetPam09', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('testHiAppEventSetPam09 start');
       try {
         let eventParams: Record<string, hiAppEvent.ParamType> = {
@@ -467,7 +467,7 @@ export default function HiAppEventPamTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiAppEventSetPam10', 0, async (done:Function) => {
+    it('testHiAppEventSetPam10', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('testHiAppEventSetPam10 start');
       try {
         let eventParams: Record<string, hiAppEvent.ParamType> = {
@@ -495,7 +495,7 @@ export default function HiAppEventPamTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiAppEventSetPam11', 0, async (done:Function) => {
+    it('testHiAppEventSetPam11', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('testHiAppEventSetPam11 start');
       try {
         let eventParams: Record<string, hiAppEvent.ParamType> = {
@@ -523,7 +523,7 @@ export default function HiAppEventPamTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiAppEventSetPam12', 0, async (done:Function) => {
+    it('testHiAppEventSetPam12', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('testHiAppEventSetPam12 start');
       try {
         let eventParams: Record<string, hiAppEvent.ParamType> = {
@@ -553,7 +553,7 @@ export default function HiAppEventPamTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiAppEventSetPam13', 0, async (done:Function) => {
+    it('testHiAppEventSetPam13', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('testHiAppEventSetPam13 start');
       try {
         let eventParams: Record<string, hiAppEvent.ParamType> = {
@@ -582,7 +582,7 @@ export default function HiAppEventPamTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiAppEventSetPam14', 0, async (done:Function) => {
+    it('testHiAppEventSetPam14', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('testHiAppEventSetPam14 start');
       try {
         let eventParams: Record<string, hiAppEvent.ParamType> = {
@@ -612,7 +612,7 @@ export default function HiAppEventPamTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiAppEventSetPam15', 0, async (done:Function) => {
+    it('testHiAppEventSetPam15', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('testHiAppEventSetPam15 start');
       try {
         let eventParams: Record<string, hiAppEvent.ParamType> = {
@@ -640,7 +640,7 @@ export default function HiAppEventPamTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiAppEventSetPam16', 0, async (done:Function) => {
+    it('testHiAppEventSetPam16', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('testHiAppEventSetPam16 start');
       try {
         let eventParams: Record<string, hiAppEvent.ParamType> = {
@@ -668,7 +668,7 @@ export default function HiAppEventPamTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiAppEventSetPam17', 0, async (done:Function) => {
+    it('testHiAppEventSetPam17', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('testHiAppEventSetPam17 start');
       try {
         let eventParams: Record<string, hiAppEvent.ParamType> = {
@@ -696,7 +696,7 @@ export default function HiAppEventPamTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiAppEventSetPam18', 0, async (done:Function) => {
+    it('testHiAppEventSetPam18', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('testHiAppEventSetPam18 start');
       try {
         let eventParams: Record<string, hiAppEvent.ParamType> = {
@@ -724,7 +724,7 @@ export default function HiAppEventPamTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiAppEventSetPam19', 0, async (done:Function) => {
+    it('testHiAppEventSetPam19', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('testHiAppEventSetPam19 start');
       try {
         let eventParams: Record<string, hiAppEvent.ParamType> = {
@@ -752,7 +752,7 @@ export default function HiAppEventPamTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiAppEventSetPam20', 0, async (done:Function) => {
+    it('testHiAppEventSetPam20', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('testHiAppEventSetPam20 start');
       try {
         let keyString = "";
@@ -784,7 +784,7 @@ export default function HiAppEventPamTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiAppEventSetPam21', 0, async (done:Function) => {
+    it('testHiAppEventSetPam21', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('testHiAppEventSetPam21 start');
       try {
         let eventParams: Record<string, hiAppEvent.ParamType> = {};
@@ -813,7 +813,7 @@ export default function HiAppEventPamTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiAppEventSub70', 0, async (done:Function) => {
+    it('testHiAppEventSub70', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('testHiAppEventSub70 start');
       try {
         let holder = hiAppEvent.addWatcher({
@@ -879,7 +879,7 @@ export default function HiAppEventPamTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiAppEventSub71', 0, async (done:Function) => {
+    it('testHiAppEventSub71', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('testHiAppEventSub71 start');
       try {
         let holder = hiAppEvent.addWatcher({
@@ -946,7 +946,7 @@ export default function HiAppEventPamTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiAppEventSub72', 0, async (done:Function) => {
+    it('testHiAppEventSub72', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('testHiAppEventSub72 start');
       try {
         let holder = hiAppEvent.addWatcher({
@@ -1008,7 +1008,7 @@ export default function HiAppEventPamTest() {
      * @tc.type Function
      * @tc.level Level3
      */
-    it('testHiAppEventSub74', 0, async (done:Function) => {
+    it('testHiAppEventSub74', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:Function) => {
       console.info('testHiAppEventSub74 start');
       try {
         let holder = hiAppEvent.addWatcher({

@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
+import { BusinessError } from '@kit.BasicServicesKit';
 import MediaTestBase from './MediaTestBase';
 import media from '@ohos.multimedia.media'
 import audio from '@ohos.multimedia.audio';
@@ -600,6 +601,211 @@ export default function AVPlayerAudioEffectModeTest() {
             break;
           case PLAYING:
             await mediaTestBase.msleepAsync(PLAY_TIME);
+            avPlayer?.release();
+            break;
+          case RELEASED:
+            avPlayer = null;
+            done();
+            break;
+          default:
+            break;
+        }
+      });
+      avPlayer?.on('amplitudeUpdate', (value) => {
+        console.info(`get max amplitude ${value}`);
+        expect(value.length).assertEqual(5);
+      });
+      avPlayer?.on('error', (err) => {
+        console.error(`error occurred, message is ${err.message}`);
+        expect().assertFail();
+        avPlayer?.release();
+      });
+      setSource(avPlayer, fileDescriptor);
+    });
+
+    /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVPLAYER_SETPLAYBACKRANGE_0100
+        * @tc.name      : 001.test get max amplitude setplaybackrange
+        * @tc.desc      : test get max amplitude
+        * @tc.size      : MediumTest
+        * @tc.type      : performance test
+        * @tc.level     : Level3
+    */
+    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_SETPLAYBACKRANGE_0100', Level.LEVEL0, async (done: Function) => {
+      let x = [EFFECT_DEFAULT, EFFECT_NONE];
+      await media.createAVPlayer().then((video) => {
+          if (typeof (video) != 'undefined') {
+              avPlayer = video;
+          }
+          else {
+              expect().assertFail();
+              done();
+          }
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+      avPlayer?.on('stateChange', async (state, reason) => {
+          switch (state) {
+              case INITIALIZED:
+                  if (!avPlayer) {
+                      console.info(`avPlayer is: null`);
+                      break;
+                  }
+                  avPlayer.surfaceId = globalThis.value;
+                  avPlayer.prepare();
+                  break;
+              case PREPARED:
+                  if (!avPlayer) {
+                      console.info(`avPlayer is: null`);
+                      break;
+                  }
+                  try {
+                      await avPlayer.setPlaybackRange(0, -2, media.SeekMode.SEEK_CLOSEST);
+                      console.info('Succeeded setPlaybackRange 1');
+                  }
+                  catch (err) {
+                      console.error('Failed to setPlaybackRange 1' + err.message);
+                      console.error('Failed to setPlaybackRange 1' + err.code);
+                      expect(err.code).assertEqual(401);
+                  }
+                  avPlayer.play();
+                  break;
+                  1;
+              case PLAYING:
+                  await mediaTestBase.msleepAsync(PLAY_TIME);
+                  avPlayer?.release();
+                  break;
+              case RELEASED:
+                  avPlayer = null;
+                  done();
+                  break;
+              default:
+                  break;
+          }
+      });
+      avPlayer?.on('amplitudeUpdate', (value) => {
+          console.info(`get max amplitude ${value}`);
+          expect(value.length).assertEqual(5);
+      });
+      avPlayer?.on('error', (err) => {
+          console.error(`error occurred, message is ${err.message}`);
+          expect().assertFail();
+          avPlayer?.release();
+      });
+      setSource(avPlayer, fileDescriptor);
+    });
+    /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVPLAYER_SETPLAYBACKRANGE_0200
+        * @tc.name      : 002.test get max amplitude setplaybackrange
+        * @tc.desc      : test get max amplitude
+        * @tc.size      : MediumTest
+        * @tc.type      : performance test
+        * @tc.level     : Level3
+    */
+    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_SETPLAYBACKRANGE_0200', Level.LEVEL0, async (done: Function) => {
+      let audioEffectMode = [EFFECT_DEFAULT, EFFECT_NONE];
+      await media.createAVPlayer().then((video) => {
+          if (typeof (video) != 'undefined') {
+              avPlayer = video;
+          }
+          else {
+              expect().assertFail();
+              done();
+          }
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+      avPlayer?.on('stateChange', async (state, reason) => {
+          switch (state) {
+              case INITIALIZED:
+                  if (!avPlayer) {
+                      console.info(`avPlayer is: null`);
+                      break;
+                  }
+                  avPlayer.surfaceId = globalThis.value;
+                  avPlayer.prepare();
+                  let playbackPosition: number = avPlayer.getPlaybackPosition();
+                  console.info(`AVPlayer getPlaybackPosition== ${playbackPosition}`);
+                  break;
+              case PREPARED:
+                  if (!avPlayer) {
+                      console.info(`avPlayer is: null`);
+                      break;
+                  }
+                  avPlayer.setPlaybackRange(0, 6000, media.SeekMode.SEEK_CLOSEST).then(() => {
+                      console.info('Succeeded setPlaybackRange 2');
+                  }).catch((err: BusinessError) => {
+                      console.error('Failed to setPlaybackRange 2' + err.message);
+                      console.error('Failed to setPlaybackRange 2' + err.code);
+                      expect(err.code).assertEqual(401);
+                  });
+                  avPlayer.play();
+                  break;
+              case PLAYING:
+                  await mediaTestBase.msleepAsync(PLAY_TIME);
+                  avPlayer?.release();
+                  break;
+              case RELEASED:
+                  avPlayer = null;
+                  done();
+                  break;
+              default:
+                  break;
+          }
+      });
+      avPlayer?.on('amplitudeUpdate', (value) => {
+          console.info(`get max amplitude ${value}`);
+          expect(value.length).assertEqual(5);
+      });
+      avPlayer?.on('error', (err) => {
+          console.error(`error occurred, message is ${err.message}`);
+          expect().assertFail();
+          avPlayer?.release();
+      });
+      setSource(avPlayer, fileDescriptor);
+    });
+    /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVPLAYER_SETPLAYBACKRANGE_0300
+        * @tc.name      : 003.test get max amplitude setplaybackrange
+        * @tc.desc      : test get max amplitude
+        * @tc.size      : MediumTest
+        * @tc.type      : performance test
+        * @tc.level     : Level3
+    */
+    it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_SETPLAYBACKRANGE_0300', Level.LEVEL0, async (done: Function) => {
+      let audioEffectMode = [EFFECT_DEFAULT, EFFECT_NONE];
+      await media.createAVPlayer().then((video) => {
+        if (typeof (video) != 'undefined') {
+          avPlayer = video;
+        } else {
+          expect().assertFail();
+          done();
+        }
+      }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+      avPlayer?.on('stateChange', async (state, reason) => {
+        switch (state) {
+          case INITIALIZED:
+              if (!avPlayer) {
+                  console.info(`avPlayer is: null`);
+                  break;
+              }
+            avPlayer.surfaceId = globalThis.value;
+            avPlayer.prepare()
+            let playbackPosition: number = avPlayer.getPlaybackPosition()
+            console.info(`AVPlayer getPlaybackPosition== ${playbackPosition}`)
+            break;
+          case PREPARED:
+              if (!avPlayer) {
+                  console.info(`avPlayer is: null`);
+                  break;
+              }
+            avPlayer.play();
+            break;
+          case PLAYING:
+            await mediaTestBase.msleepAsync(PLAY_TIME);
+            await avPlayer?.setPlaybackRange(0, 6000, media.SeekMode.SEEK_CLOSEST).then(() => {
+              console.info('Succeeded setPlaybackRange');
+            }).catch((err: BusinessError) => {
+              console.error('Failed to setPlaybackRange' + err.message);
+              console.info('Failed to setPlaybackRange error code is' + err.code)
+              expect(err.code).assertEqual(5400102)
+            });
             avPlayer?.release();
             break;
           case RELEASED:

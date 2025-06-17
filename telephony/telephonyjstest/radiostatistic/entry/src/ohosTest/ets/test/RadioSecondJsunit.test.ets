@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it ,Level, TestType, Size} from '@ohos/hypium';
 import radio from '@ohos.telephony.radio';
 import { BusinessError } from '@ohos.base';
 
@@ -63,7 +63,7 @@ export default function radioSecondJsunit() {
      * @tc.name Test getNrOptionMode() to check the callback result
      * @tc.desc Function test
      */
-    it('Telephony_NetworkSearch_NetworkState_Async_0100', 0, async (done:Function)=> {
+    it('Telephony_NetworkSearch_NetworkState_Async_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function)=> {
       radio.getNetworkState((err, data) => {
         if (err) {
           console.error("Network unavailable");
@@ -91,7 +91,7 @@ export default function radioSecondJsunit() {
      * @tc.name testGetNetworkState_0300
      * @tc.desc Test getNetworkState api by promise.
      */
-    it('Telephony_NetworkSearch_NetworkState_Promise_0100', 0, async (done:Function)=> {
+    it('Telephony_NetworkSearch_NetworkState_Promise_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function)=> {
       try {
         const result = await radio.getNetworkState();
         console.log("Telephony_NetworkSearch_NetworkState_Promise_0100 result:" + JSON.stringify(result));
@@ -117,7 +117,7 @@ export default function radioSecondJsunit() {
      * @tc.name testGetNetworkState_0200
      * @tc.desc Test getNetworkState() api by callback, slotId is 0, to check the callback result
      */
-    it('Telephony_NetworkSearch_NetworkState_Async_0200', 0, async (done:Function)=> {
+    it('Telephony_NetworkSearch_NetworkState_Async_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function)=> {
       radio.getNetworkState(0, (err, data) => {
         if (err) {
           console.error("Network unavailable");
@@ -144,7 +144,7 @@ export default function radioSecondJsunit() {
      * @tc.name testGetNetworkState_0400
      * @tc.desc Test getNetworkState() api by promise, slotId is 0, to check the callback result
      */
-    it('Telephony_NetworkSearch_NetworkState_Promise_0200', 0, async (done:Function)=> {
+    it('Telephony_NetworkSearch_NetworkState_Promise_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function)=> {
       try {
         const result = await radio.getNetworkState(0);
         console.log("Telephony_NetworkSearch_NetworkState_Promise_0200 result:" + JSON.stringify(result));
@@ -170,7 +170,7 @@ export default function radioSecondJsunit() {
      * @tc.name TestGetRadioTech_0500
      * @tc.desc Test getRadioTech() api by callback .SlotId parameter input is 0
      */
-    it("Telephony_NetworkSearch_getRadioTech_Async_0500", 0, async (done:Function)=> {
+    it("Telephony_NetworkSearch_getRadioTech_Async_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function)=> {
       let slotId = 0;
       radio.getRadioTech(slotId, (err, data) => {
         if (err) {
@@ -191,7 +191,7 @@ export default function radioSecondJsunit() {
      * @tc.name TestGetRadioTech_0500
      * @tc.desc SlotId parameter input is 0 ,Test getRadioTech() api by promise
      */
-    it("Telephony_NetworkSearch_getRadioTech_Promise_0500", 0, async (done:Function) => {
+    it("Telephony_NetworkSearch_getRadioTech_Promise_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let slotId = 0;
       let promise = radio.getRadioTech(slotId);
       promise.then(data => {
@@ -211,7 +211,7 @@ export default function radioSecondJsunit() {
      * @tc.name testGetNetworkSelectionMode_0600
      * @tc.desc SlotId parameter input is 0, test getNetworkSelectionMode() api by callback.
      */
-    it('Telephony_NetworkSearch_getNetworkSelectionMode_Async_0600', 0, async (done:Function) => {
+    it('Telephony_NetworkSearch_getNetworkSelectionMode_Async_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let slotId = 0;
       radio.getNetworkSelectionMode(slotId, (err, data) => {
         if (err) {
@@ -233,7 +233,7 @@ export default function radioSecondJsunit() {
      * @tc.name testGetNetworkSelectionMode_0700
      * @tc.desc SlotId parameter input is 0, test getNetworkSelectionMode() api by promise.
      */
-    it('Telephony_NetworkSearch_getNetworkSelectionMode_Promise_0600', 0, async (done:Function) => {
+    it('Telephony_NetworkSearch_getNetworkSelectionMode_Promise_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       let slotId = 0;
       let promise = radio.getNetworkSelectionMode(slotId);
       promise.then(data => {
@@ -254,7 +254,7 @@ export default function radioSecondJsunit() {
      * @tc.name testGetISOCountryCodeForNetwork_0500
      * @tc.desc SlotId parameter input is 0, test getISOCountryCodeForNetwork() api by callback.
      */
-    it('Telephony_NetworkSearch_getISOCountryCodeForNetwork_Async_0500', 0, async (done:Function) => {
+    it('Telephony_NetworkSearch_getISOCountryCodeForNetwork_Async_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       radio.getISOCountryCodeForNetwork(0, (err, data) => {
         if (err) {
           console.log("Telephony_NetworkSearch_getISOCountryCodeForNetwork_Async_0500 fail err:" + JSON.stringify(err));
@@ -274,7 +274,7 @@ export default function radioSecondJsunit() {
      * @tc.name testGetISOCountryCodeForNetwork_0600
      * @tc.desc SlotId parameter input is 0, test getISOCountryCodeForNetwork() api by promise.
      */
-    it('Telephony_NetworkSearch_getISOCountryCodeForNetwork_Promise_0500', 0, async (done:Function) => {
+    it('Telephony_NetworkSearch_getISOCountryCodeForNetwork_Promise_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       try {
         let data = await radio.getISOCountryCodeForNetwork(0);
         console.log(
@@ -293,7 +293,7 @@ export default function radioSecondJsunit() {
      * @tc.name testGetSignalInformation_0500
      * @tc.desc SlotId parameter input is 0, test getSignalInformation() api by callback.
      */
-    it('Telephony_NetworkSearch_getSignalInformation_Async_0500', 0, async (done:Function) => {
+    it('Telephony_NetworkSearch_getSignalInformation_Async_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       radio.getSignalInformation(0, (err, data) => {
         if (err) {
           console.log("Telephony_NetworkSearch_getSignalInformation_Async_0500 fail err:" + JSON.stringify(err));
@@ -313,7 +313,7 @@ export default function radioSecondJsunit() {
      * @tc.name testGetSignalInformation_0600
      * @tc.desc SlotId parameter input is 0, test getSignalInformation() api by promise.
      */
-    it('Telephony_NetworkSearch_getSignalInformation_Promise_0500', 0, async (done:Function) => {
+    it('Telephony_NetworkSearch_getSignalInformation_Promise_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:Function) => {
       try {
         let data = await radio.getSignalInformation(0);
         console.log(

@@ -20,6 +20,7 @@ import { commonEventManager } from '@kit.BasicServicesKit';
 const DOMAIN = 0x0000;
 
 export default class SingletonAbility extends UIAbility {
+  private exitTask: number = 0;
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onCreate');
     commonEventManager.publish('demo2_singleton_onCreate', {}, () => {});
@@ -27,7 +28,6 @@ export default class SingletonAbility extends UIAbility {
 
   onDestroy(): void {
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onDestroy');
-    commonEventManager.publish('demo2_singleton_onDestroy', {}, () => {});
   }
 
   onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam): void {
@@ -56,9 +56,14 @@ export default class SingletonAbility extends UIAbility {
   onForeground(): void {
     // Ability has brought to foreground
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onForeground');
-    setTimeout(() => {
+    if (this.exitTask !== 0) {
+      return;
+    }
+    this.exitTask = setTimeout(() => {
       hilog.info(DOMAIN, 'testTag', '%{public}s', 'demo2 singleton terminateSelf');
-      this.context.terminateSelf();
+      commonEventManager.publish('demo2_singleton_Exit', {}, () => {
+        this.context.terminateSelf();
+      });
     }, 500);
   }
 

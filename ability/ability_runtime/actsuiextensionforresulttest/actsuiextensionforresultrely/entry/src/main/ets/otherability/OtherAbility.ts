@@ -68,9 +68,9 @@ export default class OtherAbility extends UIAbility {
     }
 
     try {
-      let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
-      console.log(`====>OtherAbility deviceType: ${deviceType}`);
-      if (deviceType === '2in1') {
+      let deviceSupport = systemParameterEnhance.getSync('persist.sys.abilityms.move_ui_ability_to_background_api_enable');
+      console.log(`====>OtherAbility deviceSupport: ${deviceSupport}`);
+      if (deviceSupport === 'false') {
         console.log('====>OtherAbility terminateSelfWithResult start');
         setTimeout(() => {
           this.context.terminateSelfWithResult({

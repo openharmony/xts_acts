@@ -56,7 +56,7 @@ export default function listItemGroupNone() {
       console.info("[listItemGroupNone_0100] component obj is: " + JSON.stringify(JSON.parse(strJson)));
       console.info("[listItemGroupNone_0100] content: " + JSON.stringify(JSON.parse(strJson).$attrs.content));
       await CommonFunc.sleep(1000);
-      expect(JSON.parse(strJson).$attrs.content).assertEqual('itemGroupArea: 0');//NONE
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('ListItemGroupArea.NONE');//NONE
       console.info('[listItemGroupNone_0100] END');
       done();
     });

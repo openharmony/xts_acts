@@ -1092,5 +1092,38 @@ export default function fontTest() {
       expect(result).assertEqual(0);
       done();
     });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_Drawing_SetTextStyleBadgeType_001
+     * @tc.name       : testOHDrawingSetTextStyleBadgeType001
+     * @tc.desc       : test OHDrawingSetTextStyleBadgeType001
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOHDrawingSetTextStyleBadgeType001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
+      let result: Array<number> = nativeFontNdk.oHDrawingSetTextStyleBadgeType001();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      expect(result[2]).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_Drawing_SetTextStyleBadgeType_002
+     * @tc.name       : testOHDrawingSetTextStyleBadgeType002
+     * @tc.desc       : test OHDrawingSetTextStyleBadgeType002
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOHDrawingSetTextStyleBadgeType002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
+      let result: Array<number> = nativeFontNdk.oHDrawingSetTextStyleBadgeType002();
+      expect(result[0]).assertEqual(0);
+      expect(result[1]).assertEqual(0);
+      done();
+    });
   })
 }

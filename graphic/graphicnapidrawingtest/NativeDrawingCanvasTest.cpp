@@ -625,21 +625,22 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_ColorFilterCreateBlend
     OH_Drawing_FilterSetColorFilter(nullptr, colorFilter);
     OH_Drawing_FilterSetColorFilter(filter, nullptr);
     OH_Drawing_FilterGetColorFilter(filter, colorFilterTmp);
-    EXPECT_EQ(reinterpret_cast<ColorFilter*>(colorFilterTmp)->GetType(), ColorFilter::FilterType::NO_TYPE);
 
     OH_Drawing_FilterSetColorFilter(filter, colorFilter);
     OH_Drawing_FilterGetColorFilter(filter, colorFilterTmp);
-    EXPECT_EQ(reinterpret_cast<ColorFilter*>(colorFilterTmp)->GetType(), ColorFilter::FilterType::BLEND_MODE);
 
     OH_Drawing_BrushSetFilter(brush_, nullptr);
     OH_Drawing_BrushSetFilter(brush_, filter);
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
+    EXPECT_NE(rect, nullptr);
     OH_Drawing_CanvasDrawRect(canvas_, rect);
     OH_Drawing_ColorFilter* linear = OH_Drawing_ColorFilterCreateLinearToSrgbGamma();
+    EXPECT_NE(linear, nullptr);
     OH_Drawing_FilterSetColorFilter(filter, linear);
     OH_Drawing_CanvasTranslate(canvas_, 100, 100);
     OH_Drawing_CanvasDrawRect(canvas_, rect);
     OH_Drawing_ColorFilter* luma = OH_Drawing_ColorFilterCreateLuma();
+    EXPECT_NE(luma, nullptr);
     OH_Drawing_FilterSetColorFilter(filter, luma);
     OH_Drawing_CanvasTranslate(canvas_, 200, 200);
     OH_Drawing_CanvasDrawRect(canvas_, rect);

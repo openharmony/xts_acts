@@ -14,7 +14,7 @@
  */
 
 import worker, { MessageEvents } from "@ohos.worker";
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { abilityDelegatorRegistry, BY, UiDriver } from '@kit.TestKit';
 import { abilityAccessCtrl, common, PermissionRequestResult, Permissions } from '@kit.AbilityKit';
@@ -346,7 +346,7 @@ export default function multiThreadTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_RECEIVER_MULTI_THREAD_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RECEIVER_MULTI_THREAD_0100', Level.LEVEL0, async (done: Function) => {
       await doTestForCreator(done, "SUB_MULTIMEDIA_IMAGE_RECEIVER_MULTI_THREAD_0100", "entry_test/ets/workers/creator.ets");
     });
     /**
@@ -358,7 +358,7 @@ export default function multiThreadTest() {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_IMAGE_RECEIVER_MULTI_THREAD_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_IMAGE_RECEIVER_MULTI_THREAD_0200', Level.LEVEL0, async (done: Function) => {
       let isSupportedCamerasResult = isSupportedCameras(); 
       if(!isSupportedCamerasResult){
         console.info('Failed to obtain the default camera or device object.Not support usb camera');

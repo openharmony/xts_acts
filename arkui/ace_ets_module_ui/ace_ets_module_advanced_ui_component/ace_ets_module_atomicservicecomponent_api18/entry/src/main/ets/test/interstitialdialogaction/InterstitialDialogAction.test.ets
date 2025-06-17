@@ -65,7 +65,7 @@ export default function interstitialdialogactionTest() {
       let driver = await Driver.create();
       await driver.delayMs(2000);
       // 查看interstitialdialogactionTest是否存在以下入口。
-      let tab1 = await driver.findComponent(ON.text("show dialog"));
+      let tab1 = await driver.findComponent(ON.text("show dialog 1"));
       expect(tab1 !== null).assertTrue();
       console.info('[interstitialdialogactionTest_0100] END');
       done();

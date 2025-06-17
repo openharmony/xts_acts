@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from "@ohos/hypium"
 import Utils from './Utils'
 
 export default function XComponentTestJsunit() {
@@ -29,8 +29,11 @@ export default function XComponentTestJsunit() {
      * @tc.number    SUB_ACE_BASIC_ETS_API_0100
      * @tc.name      XComponentTest001
      * @tc.desc      aceXComponentEtsTest
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
      */
-    it('XComponentTest001', 0, async (done: Function) => {
+    it('XComponentTest001', Level.LEVEL0, async (done: Function) => {
       await Utils.sleep(1500);
       console.info('XComponentTest001 START');
 
@@ -50,8 +53,11 @@ export default function XComponentTestJsunit() {
      * @tc.number    SUB_ACE_BASIC_ETS_API_0200
      * @tc.name      XComponentTest002
      * @tc.desc      aceXComponentEtsTest
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
      */
-    it('XComponentTest002', 0, async (done: Function) => {
+    it('XComponentTest002', Level.LEVEL0, async (done: Function) => {
       await Utils.sleep(1000);
       console.info('xclog XComponentTest002 START');    
 
@@ -81,8 +87,11 @@ export default function XComponentTestJsunit() {
      * @tc.number    SUB_ACE_BASIC_ETS_API_0300
      * @tc.name      XComponentTest003
      * @tc.desc      aceXComponentEtsTest
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
      */
-    it('XComponentTest003', 0, async (done: Function) => {
+    it('XComponentTest003', Level.LEVEL0, async (done: Function) => {
       await Utils.sleep(1000);
       console.info('xclog XComponentTest003 START');
 
@@ -112,8 +121,11 @@ export default function XComponentTestJsunit() {
      * @tc.number    SUB_ACE_BASIC_ETS_API_0400
      * @tc.name      XComponentTest004
      * @tc.desc      aceXComponentEtsTest
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
      */
-    it('XComponentTest004', 0, async (done: Function) => {
+    it('XComponentTest004', Level.LEVEL0, async (done: Function) => {
       await Utils.sleep(1000);
       console.info('xclog XComponentTest004 START');
 
@@ -154,8 +166,11 @@ export default function XComponentTestJsunit() {
      * @tc.number    SUB_ACE_BASIC_ETS_API_0500
      * @tc.name      XComponentTest005
      * @tc.desc      aceXComponentEtsTest
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
      */
-    it('XComponentTest005', 0, async (done: Function) => {
+    it('XComponentTest005', Level.LEVEL0, async (done: Function) => {
       await Utils.sleep(1000);
       console.info('xclog XComponentTest005 START');
 
@@ -197,8 +212,11 @@ export default function XComponentTestJsunit() {
      * @tc.number    SUB_ACE_BASIC_ETS_API_0600
      * @tc.name      XComponentTest006
      * @tc.desc      aceXComponentEtsTest
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
      */
-    it('XComponentTest006', 0, async (done: Function) => {
+    it('XComponentTest006', Level.LEVEL0, async (done: Function) => {
       await Utils.sleep(1000);
       console.info('xclog XComponentTest006 START');
       let x_value = 340;
@@ -236,8 +254,11 @@ export default function XComponentTestJsunit() {
      * @tc.number    SUB_ACE_BASIC_ETS_API_0700
      * @tc.name      XComponentTest007
      * @tc.desc      aceXComponentEtsTest
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
      */
-    it('XComponentTest007', 0, async (done: Function) => {
+    it('XComponentTest007', Level.LEVEL0, async (done: Function) => {
       await Utils.sleep(1000);
       console.info('xclog XComponentTest007 START');
       //let x_value = 340;
@@ -272,8 +293,12 @@ export default function XComponentTestJsunit() {
      * @tc.number    SUB_ACE_BASIC_ETS_API_0800
      * @tc.name      XComponentTest008
      * @tc.desc      aceXComponentEtsTest
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
      */
-  it('XComponentTest008', 0, async (done: Function) => {
+
+  it('XComponentTest008', Level.LEVEL0, async (done: Function) => {
       await Utils.sleep(1000);
       console.info('xclog XComponentTest008 START');
       //let x_value = 340;

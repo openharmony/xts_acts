@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium'
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium'
 import { Driver, ON, PointerMatrix, Rect } from '@ohos.UiTest'
 import Utils from '../common/Utils'
 
@@ -33,7 +33,7 @@ export default function listScrollToIndexTest(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('listScrollToIndexTest001', 0, async (done: Function) => {
+    it('listScrollToIndexTest001', Level.LEVEL1, async (done: Function) => {
       console.info('listScrollToIndexTest001 START' )
       let PAGE_TAG = 'ListScrollToTest'
       await Utils.pushPage(`listScrollTo/${PAGE_TAG}`)
@@ -62,7 +62,7 @@ export default function listScrollToIndexTest(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('listScrollToItemInGroupTest001', 0, async (done: Function) => {
+    it('listScrollToItemInGroupTest001', Level.LEVEL1, async (done: Function) => {
       console.info('listScrollToItemInGroupTest001 START' )
       let PAGE_TAG = 'ListScrollToTest'
       await Utils.pushPage(`listScrollTo/${PAGE_TAG}`)
@@ -91,7 +91,7 @@ export default function listScrollToIndexTest(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('listItemGroupHeaderAndFooterTest001', 0, async (done: Function) => {
+    it('listItemGroupHeaderAndFooterTest001', Level.LEVEL1, async (done: Function) => {
       console.info('listItemGroupHeaderAndFooterTest001 START' )
       let PAGE_TAG = 'ListScrollToTest'
       await Utils.pushPage(`listScrollTo/${PAGE_TAG}`)

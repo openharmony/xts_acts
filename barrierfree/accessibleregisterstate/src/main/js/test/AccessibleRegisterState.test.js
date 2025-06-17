@@ -40,7 +40,7 @@ describe('AccessibleRegisterState', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-    it('SUB_BASIC_BARRIERFREE_API_AccessibleRegisterState_0100', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
+    it('SUB_BASIC_BARRIERFREE_API_AccessibleRegisterState_0100', TestType.FUNCTION | Size.SmallTest| Level.LEVEL0, async function (done) {
       console.info('SUB_BASIC_BARRIERFREE_API_AccessibleRegisterState_0100');
       let callbackdata = (data) => {
       }
@@ -58,7 +58,7 @@ describe('AccessibleRegisterState', function () {
     * @tc.type    User
     * @tc.level   Level 1
     */
-    it('SUB_BASIC_BARRIERFREE_API_AccessibleRegisterState_0200', TestType.FUNCTION | Size.SmallTest| Level.LEVEL1, async function (done) {
+    it('SUB_BASIC_BARRIERFREE_API_AccessibleRegisterState_0200', TestType.FUNCTION | Size.SmallTest| Level.LEVEL0, async function (done) {
       console.info('SUB_BASIC_BARRIERFREE_API_AccessibleRegisterState_0200');
       let callbackdata = (data) => {
       }

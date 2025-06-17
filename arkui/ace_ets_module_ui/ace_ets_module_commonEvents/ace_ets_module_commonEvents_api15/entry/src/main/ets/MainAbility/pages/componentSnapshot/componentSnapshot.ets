@@ -31,7 +31,12 @@ struct SnapshotExample {
       Button('click to generate UI snapshot')
         .onClick(() => {
           try {
-            let pixelmap = componentSnapshot.getSync('root', {scale : 2, waitUntilRenderFinished : true})
+            let pixelmap = componentSnapshot.getSync('root', {scale : 2, waitUntilRenderFinished : true,                  region: {
+              left: 200,
+              right: 200,
+              top: 100,
+              bottom: 200
+            }})
             this.pixmap = pixelmap
             this.value = 'suc'
           } catch (error) {

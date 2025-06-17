@@ -18,6 +18,7 @@
     "@ohos/hypium": "1.0.6"
   },
   "author": "",
+  "modelVersion": "5.0.0",
   "name": "backgroundtaskmanager_ets_nop",
   "description": "XTS",
   "main": "",

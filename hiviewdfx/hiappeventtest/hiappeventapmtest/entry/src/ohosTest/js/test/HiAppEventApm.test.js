@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import hiAppEvent from '@ohos.hiviewdfx.hiAppEvent';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium';
 
 export default function HiAppEventJSTest() {
     describe('HiAppEventJSTest', () => {
@@ -26,7 +26,7 @@ export default function HiAppEventJSTest() {
          * @tc.type Function
          * @tc.level Level3
          */
-        it('testHiAppEventJs02', 0, async function (done) {
+        it('testHiAppEventJs02', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info('testHiAppEventJs02 start');
             let processor = {
                 name: 'analyticskit',
@@ -54,7 +54,7 @@ export default function HiAppEventJSTest() {
          * @tc.type Function
          * @tc.level Level3
          */
-        it('testHiAppEventJs03', 0, async function (done) {
+        it('testHiAppEventJs03', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info('testHiAppEventJs03 start');
             let processor = {
                 name: '',
@@ -80,7 +80,7 @@ export default function HiAppEventJSTest() {
          * @tc.type Function
          * @tc.level Level3
          */
-        it('testHiAppEventJs04', 0, async function (done) {
+        it('testHiAppEventJs04', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info('testHiAppEventJs04 start');
             let processor = {
                 name: 'analyticskit_native',
@@ -110,7 +110,7 @@ export default function HiAppEventJSTest() {
          * @tc.type Function
          * @tc.level Level3
          */
-        it('testHiAppEventJs05', 0, async function (done) {
+        it('testHiAppEventJs05', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info('testHiAppEventJs05 start');
             let config = {
                 "": "",
@@ -158,7 +158,7 @@ export default function HiAppEventJSTest() {
          * @tc.type Function
          * @tc.level Level3
          */
-        it('testHiAppEventJs06', 0, async function (done) {
+        it('testHiAppEventJs06', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info('testHiAppEventJs06 start');
             let idName = "";
             for (let i = 0; i < 256; i++) {
@@ -196,7 +196,7 @@ export default function HiAppEventJSTest() {
          * @tc.type Function
          * @tc.level Level3
          */
-        it('testHiAppEventJs07', 0, async function (done) {
+        it('testHiAppEventJs07', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info('testHiAppEventJs07 start');
             let processor = {
                 name: 'analyticskit_native',
@@ -223,7 +223,7 @@ export default function HiAppEventJSTest() {
          * @tc.type Function
          * @tc.level Level3
          */
-        it('testHiAppEventJs08', 0, async function (done) {
+        it('testHiAppEventJs08', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info('testHiAppEventJs08 start');
             let processor = {
                 name: 'analyticskit_native',
@@ -250,7 +250,7 @@ export default function HiAppEventJSTest() {
          * @tc.type Function
          * @tc.level Level3
          */
-        it('testHiAppEventJs09', 0, async function (done) {
+        it('testHiAppEventJs09', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info('testHiAppEventJs09 start');
             let propertyName = "";
             for (let i = 0; i < 256; i++) {
@@ -288,7 +288,7 @@ export default function HiAppEventJSTest() {
          * @tc.type Function
          * @tc.level Level3
          */
-        it('testHiAppEventJs10', 0, async function (done) {
+        it('testHiAppEventJs10', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info('testHiAppEventJs10 start');
             let processor = {
                 name: 'analyticskit_native',
@@ -315,7 +315,7 @@ export default function HiAppEventJSTest() {
          * @tc.type Function
          * @tc.level Level3
          */
-        it('testHiAppEventJs11', 0, async function (done) {
+        it('testHiAppEventJs11', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info('testHiAppEventJs11 start');
             let processor = {
                 name: 'analyticskit_native',
@@ -342,7 +342,7 @@ export default function HiAppEventJSTest() {
          * @tc.type Function
          * @tc.level Level3
          */
-        it('testHiAppEventJs12', 0, async function (done) {
+        it('testHiAppEventJs12', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info('testHiAppEventJs12 start');
             try {
                 hiAppEvent.setUserId("", "testUserIdValue")
@@ -364,7 +364,7 @@ export default function HiAppEventJSTest() {
          * @tc.type Function
          * @tc.level Level3
          */
-        it('testHiAppEventJs13', 0, async function (done) {
+        it('testHiAppEventJs13', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info('testHiAppEventJs13 start');
             let idName = "";
             for (let i = 0; i < 257; i++) {
@@ -390,7 +390,7 @@ export default function HiAppEventJSTest() {
          * @tc.type Function
          * @tc.level Level3
          */
-        it('testHiAppEventJs14', 0, async function (done) {
+        it('testHiAppEventJs14', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info('testHiAppEventJs14 start');
             let idName = "1testUserId";
             try {
@@ -413,7 +413,7 @@ export default function HiAppEventJSTest() {
          * @tc.type Function
          * @tc.level Level3
          */
-        it('testHiAppEventJs15', 0, async function (done) {
+        it('testHiAppEventJs15', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info('testHiAppEventJs15 start');
             let idValue = "";
             for (let i = 0; i < 257; i++) {
@@ -439,7 +439,7 @@ export default function HiAppEventJSTest() {
          * @tc.type Function
          * @tc.level Level3
          */
-        it('testHiAppEventJs16', 0, async function (done) {
+        it('testHiAppEventJs16', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info('testHiAppEventJs16 start');
             try {
                 hiAppEvent.setUserProperty("", "userPropertyValue")
@@ -461,7 +461,7 @@ export default function HiAppEventJSTest() {
          * @tc.type Function
          * @tc.level Level3
          */
-        it('testHiAppEventJs17', 0, async function (done) {
+        it('testHiAppEventJs17', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info('testHiAppEventJs17 start');
             let propertyName = "";
             for (let i = 0; i < 257; i++) {
@@ -487,7 +487,7 @@ export default function HiAppEventJSTest() {
          * @tc.type Function
          * @tc.level Level3
          */
-        it('testHiAppEventJs18', 0, async function (done) {
+        it('testHiAppEventJs18', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info('testHiAppEventJs18 start');
             let propertyName = "1testName";
             try {
@@ -510,7 +510,7 @@ export default function HiAppEventJSTest() {
          * @tc.type Function
          * @tc.level Level3
          */
-        it('testHiAppEventJs19', 0, async function (done) {
+        it('testHiAppEventJs19', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info('testHiAppEventJs19 start');
             let propertyValue = "";
             for (let i = 0; i < 1025; i++) {
@@ -535,7 +535,7 @@ export default function HiAppEventJSTest() {
          * @tc.type Function
          * @tc.level Level3
          */
-        it('testHiAppEventJs20', 0, async function (done) {
+        it('testHiAppEventJs20', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info('testHiAppEventJs20 start');
             try {
                 hiAppEvent.getUserId("")
@@ -557,7 +557,7 @@ export default function HiAppEventJSTest() {
          * @tc.type Function
          * @tc.level Level3
          */
-        it('testHiAppEventJs21', 0, async function (done) {
+        it('testHiAppEventJs21', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info('testHiAppEventJs21 start');
             let idName = "";
             for (let i = 0; i < 257; i++) {
@@ -583,7 +583,7 @@ export default function HiAppEventJSTest() {
          * @tc.type Function
          * @tc.level Level3
          */
-        it('testHiAppEventJs22', 0, async function (done) {
+        it('testHiAppEventJs22', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info('testHiAppEventJs22 start');
             let idName = "1testUserId";
             try {
@@ -606,7 +606,7 @@ export default function HiAppEventJSTest() {
          * @tc.type Function
          * @tc.level Level3
          */
-        it('testHiAppEventJs23', 0, async function (done) {
+        it('testHiAppEventJs23', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info('testHiAppEventJs23 start');
             try {
                 hiAppEvent.getUserProperty("")
@@ -628,7 +628,7 @@ export default function HiAppEventJSTest() {
          * @tc.type Function
          * @tc.level Level3
          */
-        it('testHiAppEventJs24', 0, async function (done) {
+        it('testHiAppEventJs24', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info('testHiAppEventJs24 start');
             let propertyName = "";
             for (let i = 0; i < 257; i++) {
@@ -654,7 +654,7 @@ export default function HiAppEventJSTest() {
          * @tc.type Function
          * @tc.level Level3
          */
-        it('testHiAppEventJs25', 0, async function (done) {
+        it('testHiAppEventJs25', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             console.info('testHiAppEventJs25 start');
             let propertyName = "1testName";
             try {

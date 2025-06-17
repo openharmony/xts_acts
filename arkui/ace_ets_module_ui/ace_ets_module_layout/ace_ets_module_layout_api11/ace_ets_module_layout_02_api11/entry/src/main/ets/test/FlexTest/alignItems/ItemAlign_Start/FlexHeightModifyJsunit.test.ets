@@ -23,27 +23,27 @@ export default function flexHeightModify_StartJsunit() {
   describe('flexItemAlignStartTest6', () => {
     beforeEach(async () => {
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/Flex/alignItems/ItemAlign_Start/FlexHeightModify',
+        url: 'MainAbility/pages/Flex/alignItems/ItemAlign_Start/ItemAlign_Start_FlexHeightModify',
       }
       try {
         router.clear();
         await CommonFunc.sleep(1000);
         let pages = router.getState();
-        console.info("get FlexHeightModify state success " + JSON.stringify(pages));
-        if (!("FlexHeightModify" == pages.name)) {
-          console.info("get FlexHeightModify state success " + JSON.stringify(pages.name));
+        console.info("get ItemAlign_Start_FlexHeightModify state success " + JSON.stringify(pages));
+        if (!("ItemAlign_Start_FlexHeightModify" == pages.name)) {
+          console.info("get ItemAlign_Start_FlexHeightModify state success " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options)
-          console.info("push FlexHeightModify page success " + JSON.stringify(result));
+          console.info("push ItemAlign_Start_FlexHeightModify page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push FlexHeightModify page error " + JSON.stringify(err));
+        console.error("push ItemAlign_Start_FlexHeightModify page error " + JSON.stringify(err));
       }
       await CommonFunc.sleep(2000);
 
     });
     afterEach(async () => {
       await CommonFunc.sleep(1000);
-      console.info("FlexHeightModify after each called");
+      console.info("ItemAlign_Start_FlexHeightModify after each called");
     });
 
     /**
@@ -53,12 +53,12 @@ export default function flexHeightModify_StartJsunit() {
      */
     it('testFlexItemAlignStartDefaultSize', 0, async () => {
       console.info('new testFlexItemAlignStartDefaultSize START');
-      let strJson1 = getInspectorByKey('flexHeightModify');
+      let strJson1 = getInspectorByKey('ItemAlign_Start_flexHeightModify');
 
-      let textHeightModify01: RectValue = CommonFunc.getComponentRect('textHeightModify01');
-      let textHeightModify02: RectValue = CommonFunc.getComponentRect('textHeightModify02');
-      let textHeightModify03: RectValue = CommonFunc.getComponentRect('textHeightModify03');
-      let flexHeightModify: RectValue = CommonFunc.getComponentRect('flexHeightModify');
+      let textHeightModify01: RectValue = CommonFunc.getComponentRect('ItemAlign_Start_textHeightModify01');
+      let textHeightModify02: RectValue = CommonFunc.getComponentRect('ItemAlign_Start_textHeightModify02');
+      let textHeightModify03: RectValue = CommonFunc.getComponentRect('ItemAlign_Start_textHeightModify03');
+      let flexHeightModify: RectValue = CommonFunc.getComponentRect('ItemAlign_Start_flexHeightModify');
 
       expect(Math.abs(textHeightModify01.top - textHeightModify02.top) <= 1).assertTrue()
       expect(Math.abs(textHeightModify02.top - textHeightModify03.top) <= 1).assertTrue()
@@ -90,12 +90,12 @@ export default function flexHeightModify_StartJsunit() {
         name: 'height', value: 80
       });
       await CommonFunc.sleep(2000);
-      let strJson1 = getInspectorByKey('flexHeightModify');
+      let strJson1 = getInspectorByKey('ItemAlign_Start_flexHeightModify');
 
-      let textHeightModify01: RectValue = CommonFunc.getComponentRect('textHeightModify01');
-      let textHeightModify02: RectValue = CommonFunc.getComponentRect('textHeightModify02');
-      let textHeightModify03: RectValue = CommonFunc.getComponentRect('textHeightModify03');
-      let flexHeightModify: RectValue = CommonFunc.getComponentRect('flexHeightModify');
+      let textHeightModify01: RectValue = CommonFunc.getComponentRect('ItemAlign_Start_textHeightModify01');
+      let textHeightModify02: RectValue = CommonFunc.getComponentRect('ItemAlign_Start_textHeightModify02');
+      let textHeightModify03: RectValue = CommonFunc.getComponentRect('ItemAlign_Start_textHeightModify03');
+      let flexHeightModify: RectValue = CommonFunc.getComponentRect('ItemAlign_Start_flexHeightModify');
 
       expect(Math.abs(textHeightModify01.top - textHeightModify02.top) <= 1).assertTrue()
       expect(Math.abs(textHeightModify02.top - textHeightModify03.top) <= 1).assertTrue()

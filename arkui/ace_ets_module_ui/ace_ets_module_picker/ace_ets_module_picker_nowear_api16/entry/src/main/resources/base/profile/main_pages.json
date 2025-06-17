@@ -1,8 +1,6 @@
 {
     "src": [
         "MainAbility/pages/index/index",
-        "MainAbility/pages/CalendarPicker/calendarPickerOnChangeModifier",
-        "MainAbility/pages/select/selectNode",
-        "MainAbility/pages/textPicker/columnWidths"
+        "MainAbility/pages/select/selectNode"
     ]
 }

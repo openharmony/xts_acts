@@ -22,6 +22,12 @@ export default {
     console.info('quit app');
     app.terminate();
   },
+  swipeEvent(e) {
+    if (e.direction === 'right') {
+      console.info('swipeEvent');
+      app.terminate();
+    }
+  },
   changeCompent: routePage('pages/second-compent/index').changePage,
   changeAPI: routePage('pages/second-api/index').changePage,
   changeSaveFile() {

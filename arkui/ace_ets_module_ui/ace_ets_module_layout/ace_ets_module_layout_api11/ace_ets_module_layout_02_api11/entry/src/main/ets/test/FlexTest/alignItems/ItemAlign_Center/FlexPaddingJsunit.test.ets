@@ -23,27 +23,27 @@ export default function flexPadding_CenterJsunit() {
   describe('flexItemAlignCenterTest', () => {
     beforeEach(async () => {
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/Flex/alignItems/ItemAlign_Center/FlexPadding',
+        url: 'MainAbility/pages/Flex/alignItems/ItemAlign_Center/ItemAlign_Center_FlexPadding',
       }
       try {
         router.clear();
         await CommonFunc.sleep(1000);
         let pages = router.getState();
-        console.info("get FlexPadding state success " + JSON.stringify(pages));
-        if (!("FlexPadding" == pages.name)) {
-          console.info("get FlexPadding state success " + JSON.stringify(pages.name));
+        console.info("get ItemAlign_Center_FlexPadding state success " + JSON.stringify(pages));
+        if (!("ItemAlign_Center_FlexPadding" == pages.name)) {
+          console.info("get ItemAlign_Center_FlexPadding state success " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options)
-          console.info("push FlexPadding page success " + JSON.stringify(result));
+          console.info("push ItemAlign_Center_FlexPadding page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push FlexPadding page error " + JSON.stringify(err));
+        console.error("push ItemAlign_Center_FlexPadding page error " + JSON.stringify(err));
       }
       await CommonFunc.sleep(2000);
 
     });
     afterEach(async () => {
       await CommonFunc.sleep(1000);
-      console.info("FlexPadding after each called");
+      console.info("ItemAlign_Center_FlexPadding after each called");
     });
 
     /**
@@ -57,12 +57,12 @@ export default function flexPadding_CenterJsunit() {
         name: 'padding', value: 10
       });
       await CommonFunc.sleep(2000);
-      let strJson1 = getInspectorByKey('flexPadding01');
+      let strJson1 = getInspectorByKey('ItemAlign_Center_flexPadding01');
 
-      let textFlexPadding01: RectValue = CommonFunc.getComponentRect('textFlexPadding01');
-      let textFlexPadding02: RectValue = CommonFunc.getComponentRect('textFlexPadding02');
-      let textFlexPadding03: RectValue = CommonFunc.getComponentRect('textFlexPadding03');
-      let flexPadding01: RectValue = CommonFunc.getComponentRect('flexPadding01');
+      let textFlexPadding01: RectValue = CommonFunc.getComponentRect('ItemAlign_Center_textFlexPadding01');
+      let textFlexPadding02: RectValue = CommonFunc.getComponentRect('ItemAlign_Center_textFlexPadding02');
+      let textFlexPadding03: RectValue = CommonFunc.getComponentRect('ItemAlign_Center_textFlexPadding03');
+      let flexPadding01: RectValue = CommonFunc.getComponentRect('ItemAlign_Center_flexPadding01');
       expect(Math.abs(textFlexPadding01.left - flexPadding01.left - Math.round(vp2px(10))) <= 1).assertTrue()
       expect(Math.abs(flexPadding01.right - textFlexPadding03.right - Math.round(vp2px(40))) <= 1).assertTrue()
       expect(Math.abs(textFlexPadding01.top - flexPadding01.top - (flexPadding01.bottom - textFlexPadding01.bottom)) <= 1)

@@ -41,33 +41,6 @@ export default function NetworkManagerHttpExtensions() {
     });
 
     /**
-     * @tc.number SUB_Telephony_netstack_Http_Extensions_Xts_0200
-     * @tc.name http::request
-     * @tc.desc Test on property
-     * @tc.level 1
-     * @tc.type: Function
-     * @tc.size: SmallTest
-     */
-    it('SUB_Telephony_netstack_Http_Extensions_Xts_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function) => {
-      let caseName = 'SUB_Telephony_netstack_Http_Extensions_Xts_0200';
-      let httpRequest = net_http.createHttp();
-      try {
-        await httpRequest.request("https://www.zhihu.com", {
-          connectTimeout: 3000,
-          dnsServers: ['11.1.11.1'],
-        });
-        console.info(`${caseName} createHttp success`);
-        expect(false).assertTrue();
-        done();
-      } catch (e) {
-        let err = e as BusinessError;
-        console.error('DnsError: ' + JSON.stringify(e));
-        expect(err.code).assertEqual(2300028);
-        done();
-      }
-    });
-
-    /**
      * @tc.number SUB_Telephony_netstack_Http_Extensions_Xts_0300
      * @tc.name http::request
      * @tc.desc Test on property

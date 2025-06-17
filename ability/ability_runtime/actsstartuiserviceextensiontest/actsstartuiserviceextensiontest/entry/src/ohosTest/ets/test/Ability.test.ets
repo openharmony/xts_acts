@@ -63,28 +63,22 @@ export default function abilityTest() {
     it('SUB_Ability_AbilityRuntime_UIServiceExtension_0100', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIServiceExtension_0100";
       console.info('====> [SUB_Ability_AbilityRuntime_UIServiceExtension_0100] isSupportCapability: ' + isSupportCapability);
-      if (isSupportCapability === true) {
-        try{
-          testAbilityContext.startUIServiceExtensionAbility(null).then((data)=>{
-            console.info(tag + '====> startUIServiceExtensionAbility: ' + JSON.stringify(data));
-            try{expect().assertFail();}catch{};
-            done();
-          }).catch((err:BusinessError)=>{
-            try{expect().assertFail();}catch{};
-            done();
-          })
-        }catch(err){
-          expect(err?.code).assertEqual(ERR_CODE);
+      try{
+        testAbilityContext.startUIServiceExtensionAbility(null).then((data)=>{
+          console.info(tag + '====> startUIServiceExtensionAbility: ' + JSON.stringify(data));
+          try{expect().assertFail();}catch{};
           done();
+        }).catch((err:BusinessError)=>{
+          try{expect().assertFail();}catch{};
+          done();
+        })
+      }catch(err){
+        if(err?.code === 801){
+          console.info(tag + '====> startUIServiceExtensionAbility: ' + JSON.stringify(err));
+        }else{
+          expect(err?.code).assertEqual(ERR_CODE);
         }
-       
-      } else if (isSupportCapability === false) {
-        console.log(`${tag} function not enable.`);
-        expect(isSupportCapability).assertFalse();
         done();
-      } else {
-        console.log(`${tag} wrong param`);
-        expect().assertFail();
         done();
       }
     })
@@ -100,41 +94,121 @@ export default function abilityTest() {
     it('SUB_Ability_AbilityRuntime_UIServiceExtension_0200', Level.LEVEL0, async (done: Function) => {
       let tag = "SUB_Ability_AbilityRuntime_UIServiceExtension_0200";
       console.info('====> [SUB_Ability_AbilityRuntime_UIServiceExtension_0100] isSupportCapability: ' + isSupportCapability);
-      if (isSupportCapability === true) {
-        let dataCallBack : common.UIServiceExtensionConnectCallback = {
-          // 接收数据
-          onData: (data: Record<string, Object>) => {
-            console.log(tag + `dataCallBack received data`, JSON.stringify(data));
-            try{expect().assertFail();}catch{};
-            done();
-          },
-          // 连接断开
-          onDisconnect: () => {
-            console.log(tag + `dataCallBack onDisconnect`);
-            try{expect().assertFail();}catch{};
-            done();
-          }
+      let dataCallBack : common.UIServiceExtensionConnectCallback = {
+        // 接收数据
+        onData: (data: Record<string, Object>) => {
+          console.log(tag + `dataCallBack received data`, JSON.stringify(data));
+          try{expect().assertFail();}catch{};
+          done();
+        },
+        // 连接断开
+        onDisconnect: () => {
+          console.log(tag + `dataCallBack onDisconnect`);
+          try{expect().assertFail();}catch{};
+          done();
         }
-        try{
-        testAbilityContext.connectUIServiceExtensionAbility(null, dataCallBack).then((proxy: common.UIServiceProxy)=>{
-          console.info(tag + '====> startUIServiceExtensionAbility: ' + JSON.stringify(proxy));
+      }
+      try{
+      testAbilityContext.connectUIServiceExtensionAbility(null, dataCallBack).then((proxy: common.UIServiceProxy)=>{
+        console.info(tag + '====> startUIServiceExtensionAbility: ' + JSON.stringify(proxy));
+        try{expect().assertFail();}catch{};
+        done();
+      }).catch((err:BusinessError)=>{
+        try{expect().assertFail();}catch{};
+        done();
+      })
+      }catch(err){
+        if(err?.code === 801){
+          console.info(tag + '====> startUIServiceExtensionAbility: ' + JSON.stringify(err));
+        }else{
+          expect(err?.code).assertEqual(ERR_CODE);
+        }
+        done();
+      }
+    })
+
+    /*
+     * @tc.number: SUB_Ability_AbilityRuntime_UIServiceExtension_1000
+     * @tc.name: When the input parameter want is null, an error code is returned.
+     * @tc.desc: When the input parameter want is null, an error code is returned.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
+     */
+    it('SUB_Ability_AbilityRuntime_UIServiceExtension_1000', Level.LEVEL0, async (done: Function) => {
+      let tag = "SUB_Ability_AbilityRuntime_UIServiceExtension_1000";
+      console.info('====> [SUB_Ability_AbilityRuntime_UIServiceExtension_1000] isSupportCapability: ' + isSupportCapability);
+      try{
+        testAbilityContext.startUIServiceExtensionAbility({
+          bundleName:"com.acts.startuiserviceextensiontest",
+          abilityName:"abilityerror"
+        }).then((data)=>{
+          console.info(tag + '====> startUIServiceExtensionAbility: ' + JSON.stringify(data));
           try{expect().assertFail();}catch{};
           done();
         }).catch((err:BusinessError)=>{
-          try{expect().assertFail();}catch{};
+          console.info(tag + '====> startUIServiceExtensionAbility: ' + JSON.stringify(err));
+          if(err?.code === 801){
+            console.info(tag + '====> startUIServiceExtensionAbility not support: ' + JSON.stringify(err));
+          }else{
+            try{expect(err?.code).assertEqual(16000001);}catch{};
+          }
           done();
         })
       }catch(err){
-        expect(err?.code).assertEqual(ERR_CODE);
+        if(err?.code === 801){
+          console.info(tag + '====> startUIServiceExtensionAbility: ' + JSON.stringify(err));
+        }else{
+          expect().assertFail();
+        }
         done();
       }
-      } else if (isSupportCapability === false) {
-        console.log(`${tag} function not enable.`);
-        expect(isSupportCapability).assertFalse();
+    })
+
+    /*
+     * @tc.number: SUB_Ability_AbilityRuntime_UIServiceExtension_1100
+     * @tc.name: When the input parameter want is null, an error code is returned.
+     * @tc.desc: When the input parameter want is null, an error code is returned.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 3
+     */
+    it('SUB_Ability_AbilityRuntime_UIServiceExtension_1100', Level.LEVEL0, async (done: Function) => {
+      let tag = "SUB_Ability_AbilityRuntime_UIServiceExtension_1100";
+      console.info('====> [SUB_Ability_AbilityRuntime_UIServiceExtension_1100] isSupportCapability: ' + isSupportCapability);
+      let dataCallBack : common.UIServiceExtensionConnectCallback = {
+        // 接收数据
+        onData: (data: Record<string, Object>) => {
+          console.log(tag + `dataCallBack received data`, JSON.stringify(data));
+          try{expect().assertFail();}catch{};
+          done();
+        },
+        // 连接断开
+        onDisconnect: () => {
+          console.log(tag + `dataCallBack onDisconnect`);
+          try{expect().assertFail();}catch{};
+          done();
+        }
+      }
+      try{
+      testAbilityContext.connectUIServiceExtensionAbility({
+        bundleName:"com.acts.startuiserviceextensiontest",
+        abilityName:"abilityerror"
+      }, dataCallBack).then((proxy: common.UIServiceProxy)=>{
+        console.info(tag + '====> connectUIServiceExtensionAbility: ' + JSON.stringify(proxy));
+        try{expect().assertFail();}catch{};
         done();
-      } else {
-        console.log(`${tag} wrong param`);
-        expect().assertFail();
+      }).catch((err:BusinessError)=>{
+        console.info(tag + '====> connectUIServiceExtensionAbility: ' + JSON.stringify(err));
+        try{expect(err?.code).assertEqual(16000001);}catch{};
+        done();
+      })
+      }catch(err){
+        if(err?.code === 801){
+          console.info(tag + '====> connectUIServiceExtensionAbility: ' + JSON.stringify(err));
+        }else{
+          expect().assertFail();
+        }
         done();
       }
     })

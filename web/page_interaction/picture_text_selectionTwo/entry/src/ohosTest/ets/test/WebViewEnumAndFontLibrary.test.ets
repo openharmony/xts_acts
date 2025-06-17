@@ -16,7 +16,9 @@
 import { afterEach, beforeAll, beforeEach, describe, it , TestType, Size, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
-
+import { accessibility, config } from '@kit.AccessibilityKit';
+const CAPACITY: accessibility.Capability[] = ['retrieve', 'gesture'];
+const BUNDLE_NAME = 'com.example.myaccessibilityapp/AccessibilityExtAbility';
 export default function WebViewEnumAndFontLibrary() {
 
   describe('WebViewEnumAndFontLibraryTest', () => {
@@ -42,6 +44,11 @@ export default function WebViewEnumAndFontLibrary() {
     });
 
     beforeEach(async (done: Function) => {
+      config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
+        console.info(`enable success`);
+        }).catch((err: object) => {
+        console.error(`failed to enable, ${err}`);
+      })
       await Utils.sleep(2000);
       console.info("web beforeEach start");
       done();
@@ -155,7 +162,7 @@ export default function WebViewEnumAndFontLibrary() {
     it('testWebContextMenuParamGetMediaType001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitWebContextMenuParamGetMediaType", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testWebContextMenuParamGetMediaType001", 0, 807, done);
+      Utils.registerEvent("testWebContextMenuParamGetMediaType001", ContextMenuMediaType.None, 807, done);
       sendEventByKey('buttonEnumAndFontLibrary', 10, '');
     })
 
@@ -185,7 +192,22 @@ export default function WebViewEnumAndFontLibrary() {
     it('testWebContextMenuParamGetSourceType001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitWebContextMenuParamGetSourceType", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testWebContextMenuParamGetSourceType001", 2, 809, done);
+      Utils.registerEvent("testWebContextMenuParamGetSourceType001", ContextMenuSourceType.LongPress, 809, done);
+      sendEventByKey('buttonEnumAndFontLibrary', 10, '');
+    })
+
+    /*
+    * @tc.number     : SUB_WEB_WEBCONTEXTMENUPARAMGETSOURCETYPE_0200
+    * @tc.name       : testWebContextMenuParamGetSourceType001
+    * @tc.desc       : test WebContextMenuParamGetSourceType
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testWebContextMenuParamGetSourceType002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
+      Utils.emitEvent("emitWebContextMenuParamGetSourceTypeNone", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testWebContextMenuParamGetSourceType002", ContextMenuSourceType.None, 20250423, done);
       sendEventByKey('buttonEnumAndFontLibrary', 10, '');
     })
 
@@ -200,7 +222,7 @@ export default function WebViewEnumAndFontLibrary() {
     it('testWebContextMenuParamGetInputFieldType001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitWebContextMenuParamGetInputFieldType", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testWebContextMenuParamGetInputFieldType001", 0, 810, done);
+      Utils.registerEvent("testWebContextMenuParamGetInputFieldType001", ContextMenuInputFieldType.None, 810, done);
       sendEventByKey('buttonEnumAndFontLibrary', 10, '');
     })
 
@@ -245,7 +267,7 @@ export default function WebViewEnumAndFontLibrary() {
     it('testContextMenuInputFieldTypeNone001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitContextMenuInputFieldTypeNone", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testContextMenuInputFieldTypeNone001", 0, 831, done);
+      Utils.registerEvent("testContextMenuInputFieldTypeNone001", ContextMenuInputFieldType.None, 831, done);
       sendEventByKey('buttonEnumAndFontLibrary', 10, '');
     })
 
@@ -260,7 +282,7 @@ export default function WebViewEnumAndFontLibrary() {
     it('testContextMenuSourceTypeLongPress001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitContextMenuSourceTypeLongPress", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testContextMenuSourceTypeLongPress001", 2, 841, done);
+      Utils.registerEvent("testContextMenuSourceTypeLongPress001", ContextMenuSourceType.LongPress, 841, done);
       sendEventByKey('buttonEnumAndFontLibrary', 10, '');
     })
 
@@ -290,7 +312,7 @@ export default function WebViewEnumAndFontLibrary() {
     it('testContextMenuMediaType001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       Utils.emitEvent("emitContextMenuMediaTypeNone", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testContextMenuMediaType001", 0, 881, done);
+      Utils.registerEvent("testContextMenuMediaType001", ContextMenuMediaType.None, 881, done);
       sendEventByKey('buttonEnumAndFontLibrary', 10, '');
     })
 

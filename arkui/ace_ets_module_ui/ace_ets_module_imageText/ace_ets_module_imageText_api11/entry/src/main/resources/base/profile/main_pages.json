@@ -99,6 +99,10 @@
         "MainAbility/pages/ImageSpan/ImageSpanVisibility",
         "MainAbility/pages/TextInput/ShowCounter",
         "MainAbility/pages/font/UIFontAliasInfo",
-        "MainAbility/pages/text/measureOptionsTest"
+        "MainAbility/pages/text/measureOptionsTest",
+        "MainAbility/pages/ContainerSpan/ContainerSpanModifier",
+        "MainAbility/pages/Search/SearchModifier",
+        "MainAbility/pages/SymbolGlyph/fontWeight",
+        "MainAbility/pages/text/SpanTextShadowTest"
     ]
 }

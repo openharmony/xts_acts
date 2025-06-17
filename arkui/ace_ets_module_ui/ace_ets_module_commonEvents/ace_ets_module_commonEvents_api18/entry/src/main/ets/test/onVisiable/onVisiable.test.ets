@@ -31,7 +31,7 @@ export default function onVisibleAreaApproximateChangeTest() {
         console.info("get onVisibleAreaApproximateChange state pages: " + JSON.stringify(pages));
         if (!("onVisibleAreaApproximateChange" == pages.name)) {
           console.info("get onVisibleAreaApproximateChange state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.replaceUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push onVisibleAreaApproximateChange success: " + JSON.stringify(result));
         }

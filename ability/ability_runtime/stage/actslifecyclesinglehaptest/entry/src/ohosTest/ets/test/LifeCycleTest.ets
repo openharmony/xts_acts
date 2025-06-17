@@ -21,7 +21,7 @@ import Want from '@ohos.app.ability.Want';
 import common from '@ohos.app.ability.common';
 import AbilityLifecycleCallback from '@ohos.app.ability.AbilityLifecycleCallback';
 
-let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
+let deviceSupport = systemParameterEnhance.getSync('persist.sys.abilityms.move_ui_ability_to_background_api_enable');
 let subscriber: commonEvent.CommonEventSubscriber;
 
 let TAG = "";
@@ -185,7 +185,7 @@ export default function lifecycleTest() {
      */
     it("Singlehap_LifeCycleTest_0200", Level.LEVEL0, async (done: Function) => {
       console.log("------------Singlehap_LifeCycleTest_0200 START-------------");
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }
@@ -261,7 +261,7 @@ export default function lifecycleTest() {
     */
     it("Singlehap_LifeCycleTest_0300", Level.LEVEL0, async (done: Function) => {
       console.log("------------Singlehap_LifeCycleTest_0300 START-------------");
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }
@@ -345,7 +345,7 @@ export default function lifecycleTest() {
      */
     it("Singlehap_LifeCycleTest_0400", Level.LEVEL0, async (done: Function) => {
       console.log("------------Singlehap_LifeCycleTest_0400 START-------------");
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }
@@ -385,12 +385,14 @@ export default function lifecycleTest() {
               }
             }
             console.log(TAG + " terminateSelfwithresult para: " + JSON.stringify(para));
-            globalThis.ability3.terminateSelfWithResult(para)
+            setTimeout(()=>{
+              globalThis.ability3.terminateSelfWithResult(para)
               .then((data: ESObject) => {
                 console.log(TAG + " terminateSelfwithresult successful data: " + JSON.stringify(data));
               }).catch((error: base.BusinessError) => {
-              console.log(TAG + " terminateSelfwithresult error: " + JSON.stringify(error));
-            });
+                console.log(TAG + " terminateSelfwithresult error: " + JSON.stringify(error));
+              });
+            },500)
           } else if (data.event === 'MainAbility3_onAbilityDestroy' && count === 2) {
             console.log(TAG + " registerAbilityLifecycleCallback listKey : " + JSON.stringify(globalThis.list3));
             console.log(TAG + " registerAbilityLifecycleCallback callbackid : " + JSON.stringify(globalThis.callbackid3));
@@ -436,7 +438,7 @@ export default function lifecycleTest() {
      */
     it("Singlehap_LifeCycleTest_0500", Level.LEVEL0, async (done: Function) => {
       console.log("------------Singlehap_LifeCycleTest_0500 START-------------");
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }
@@ -529,7 +531,7 @@ export default function lifecycleTest() {
      */
     it("Singlehap_LifeCycleTest_0600", Level.LEVEL0, async (done: Function) => {
       console.log("------------Singlehap_LifeCycleTest_0600 START-------------");
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }
@@ -727,7 +729,7 @@ export default function lifecycleTest() {
      */
     it("Singlehap_LifeCycleTest_0800", Level.LEVEL0, async (done: Function) => {
       console.log("------------Singlehap_LifeCycleTest_0800 START-------------");
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }
@@ -807,7 +809,7 @@ export default function lifecycleTest() {
      */
     it("Singlehap_LifeCycleTest_0900", Level.LEVEL0, async (done: Function) => {
       console.log("------------Singlehap_LifeCycleTest_0900 START-------------");
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }
@@ -883,7 +885,7 @@ export default function lifecycleTest() {
      */
     it("Singlehap_LifeCycleTest_1000", Level.LEVEL0, async (done: Function) => {
       console.log("------------Singlehap_LifeCycleTest_1000 START-------------");
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }
@@ -1019,7 +1021,7 @@ export default function lifecycleTest() {
      */
     it("Singlehap_LifeCycleTest_1200", Level.LEVEL0, async (done: Function) => {
       console.log("------------Singlehap_LifeCycleTest_1200 START-------------");
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }
@@ -1078,7 +1080,7 @@ export default function lifecycleTest() {
     */
     it("Singlehap_LifeCycleTest_1300", Level.LEVEL0, async (done: Function) => {
       console.log("------------Singlehap_LifeCycleTest_1300 start-------------");
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }
@@ -1156,7 +1158,7 @@ export default function lifecycleTest() {
      */
     it("Singlehap_LifeCycleTest_1400", Level.LEVEL0, async (done: Function) => {
       console.log("------------Singlehap_LifeCycleTest_1400 start-------------");
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }
@@ -1233,7 +1235,7 @@ export default function lifecycleTest() {
      */
     it("Singlehap_LifeCycleTest_1500", Level.LEVEL0, async (done: Function) => {
       console.log("------------Singlehap_LifeCycleTest_1500 START-------------");
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }
@@ -1413,7 +1415,7 @@ export default function lifecycleTest() {
      */
     it("Singlehap_LifeCycleTest_2000", Level.LEVEL0, async (done: Function) => {
       console.log("------------Singlehap_LifeCycleTest_2000 START-------------");
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }
@@ -1510,7 +1512,7 @@ export default function lifecycleTest() {
     */
     it("Singlehap_LifeCycleTest_2100", Level.LEVEL0, async (done: Function) => {
       console.log("------------Singlehap_LifeCycleTest_2100 START-------------");
-      if (deviceType === '2in1') {
+      if (deviceSupport === 'false') {
         done();
         return;
       }

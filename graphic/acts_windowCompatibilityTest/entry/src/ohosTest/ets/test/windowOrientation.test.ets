@@ -54,7 +54,7 @@ export default function windowOrientationTest(context: common.UIAbilityContext, 
       console.log(msg + ' beforeEach end!!!');
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5340
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOWORIENTATION_JS_API_0010
      * @tc.name      : testSetPreferredOrientation_DialogWindow_Promise
      * @tc.desc      : Verify the scenario of creating the application type window
      * @tc.size      : MediumTest
@@ -91,7 +91,7 @@ export default function windowOrientationTest(context: common.UIAbilityContext, 
       await (tempWnd as window.Window).destroyWindow();
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5350
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOWORIENTATION_JS_API_0020
      * @tc.name      : testSetPreferredOrientation_DialogWindow_Callback
      * @tc.desc      : Verify the scenario of creating the application type window
      * @tc.size      : MediumTest
@@ -137,7 +137,7 @@ export default function windowOrientationTest(context: common.UIAbilityContext, 
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5360
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOWORIENTATION_JS_API_0030
      * @tc.name      : testSetPreferredOrientation_SubWindow_Promise
      * @tc.desc      : Verify the scenario of creating the application type window
      * @tc.size      : MediumTest
@@ -170,7 +170,7 @@ export default function windowOrientationTest(context: common.UIAbilityContext, 
       await (subWin as window.Window).destroyWindow();
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5370
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOWORIENTATION_JS_API_0040
      * @tc.name      : testSetPreferredOrientation_SubWindow_Callback
      * @tc.desc      : Verify the scenario of creating the application type window
      * @tc.size      : MediumTest
@@ -212,7 +212,7 @@ export default function windowOrientationTest(context: common.UIAbilityContext, 
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5380
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOWORIENTATION_JS_API_0050
      * @tc.name      : testGetPreferredOrientation_DialogWindow
      * @tc.desc      : Verify the scenario of creating the application type window
      * @tc.size      : MediumTest
@@ -244,7 +244,7 @@ export default function windowOrientationTest(context: common.UIAbilityContext, 
       await (tempWnd as window.Window).destroyWindow();
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5390
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOWORIENTATION_JS_API_0060
      * @tc.name      : testGetPreferredOrientation_SubWindow
      * @tc.desc      : Verify the scenario of creating the application type window
      * @tc.size      : MediumTest
@@ -273,7 +273,7 @@ export default function windowOrientationTest(context: common.UIAbilityContext, 
     })
 
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5650
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOWORIENTATION_JS_API_0070
      * @tc.name      : testSetPreferredOrientation_SubWindowWithOptions_Promise
      * @tc.desc      : Verify the scenario of creating the application type window
      * @tc.size      : MediumTest
@@ -320,7 +320,7 @@ export default function windowOrientationTest(context: common.UIAbilityContext, 
     })
 
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5660
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOWORIENTATION_JS_API_0080
      * @tc.name      : testSetPreferredOrientation_SubWindowWithOptions_Callback
      * @tc.desc      : Verify the scenario of creating the application type window
      * @tc.size      : MediumTest
@@ -377,7 +377,7 @@ export default function windowOrientationTest(context: common.UIAbilityContext, 
     })
 
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5670
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_WINDOWORIENTATION_JS_API_0090
      * @tc.name      : testGetPreferredOrientation_SubWindowWithOptions
      * @tc.desc      : Verify the scenario of creating the application type window
      * @tc.size      : MediumTest

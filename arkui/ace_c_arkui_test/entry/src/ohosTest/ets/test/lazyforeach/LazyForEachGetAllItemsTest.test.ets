@@ -39,7 +39,7 @@ export default function lazyForEachGetAllItemsTest() {
      */
     it('testLazyForEachGetAllItems001', 0, async (done: Function) => {
       await Utils.pushPage(`lazyforeach/LazyForEachGetAllItemsTest`)
-      await Utils.clickComponent("btn")
+      await Utils.clickComponent('btn')
       await Utils.sleep(SleepTime)
       expect(Utils.getComponentInfoByKey('colGetAllItems').$attrs.backgroundColor).assertEqual(ColorGreen)
       done()

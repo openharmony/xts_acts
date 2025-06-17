@@ -13,12 +13,12 @@
  * limitations under the License.
  */
 
-import { saveTxtData } from '../../../common/js/saveData';
 import router from '@system.router';
 import brightness from '@system.brightness';
 
 export default {
     data: {
+        itemIndex: -1,
         modeType: '',
         modeStr: ['手动调', '自动调'],
         keepScreen: true,
@@ -83,18 +83,25 @@ export default {
             params: {
                 step: '操作步骤：点击获取模式、模式类型，常亮开关',
                 result: '预期结果：显示亮度模式，切换模式后亮度模式随之变化，常亮开关开启屏幕常亮',
-                url: 'pages/brightness/mode/index'
+                url: 'pages/brightness/mode/index',
+                itemIndex: this.itemIndex
             }
         });
     },
 
     back() {
         console.info('onclick back ');
-        router.replace({ uri: 'pages/second-api/index' });
+        router.replace({
+            uri: 'pages/second-api/index',
+            params: {
+                itemIndex: this.itemIndex
+            }
+        });
     },
 
     changeResult(result) {
-        saveTxtData(this, result);
+        getApp().data.keyList[this.title] = result;
+        this.back();
     },
 
 };
