@@ -121,10 +121,10 @@ export default function windowKeyBorad() {
           let driver: Driver = Driver.create();
           await sleep(1000);
           let input = await driver.findComponent(ON.id('textInput'));
-          console.info(`${caseName}  input: ` + ${JSON.stringify(input)});
+          console.info(`${caseName}  input: ` + JSON.stringify(input));
           await sleep(1000);
           await input.click();
-          console.info(`${caseName}  click success: ` + ${JSON.stringify(input)});
+          console.info(`${caseName}  click success: ` + JSON.stringify(input));
           await sleep(500);
 
         }
