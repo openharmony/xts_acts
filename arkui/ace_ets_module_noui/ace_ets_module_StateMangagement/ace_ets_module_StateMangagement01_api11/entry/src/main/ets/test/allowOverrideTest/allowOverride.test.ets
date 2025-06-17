@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -63,7 +63,7 @@ export default function allowOverride() {
     * @tc.type :
     * @tc.size :
     */
-    it('allowOverride_0100', 0, async (done: Function) => {
+    it('allowOverride_0100', Level.LEVEL0, async (done: Function) => {
       console.info('allowOverride_0100 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('allowOverride_Consume');

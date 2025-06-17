@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -55,7 +55,7 @@ export default function StorageLinkJsunit1() {
       done();
     });
 
-    it('StorageLinkJsunit1_0100', 0, async (done: Function) => {
+    it('StorageLinkJsunit1_0100', Level.LEVEL0, async (done: Function) => {
       // Get the init value of button_son1
       console.info('[StorageLinkJsunit1_0100] START');
       let driver = await UiDriver.create()
@@ -72,7 +72,7 @@ export default function StorageLinkJsunit1() {
       done();
     });
 
-    it('StorageLinkJsunit1_0200', 0, async (done: Function) => {
+    it('StorageLinkJsunit1_0200', Level.LEVEL0, async (done: Function) => {
       // Get the init value of button_son2
       console.info('[StorageLinkJsunit1_0200] START');
       let driver = await UiDriver.create()
@@ -89,7 +89,7 @@ export default function StorageLinkJsunit1() {
       done();
     });
 
-    it('StorageLinkJsunit1_0300', 0, async (done: Function) => {
+    it('StorageLinkJsunit1_0300', Level.LEVEL0, async (done: Function) => {
       // Get the init value of button_son3
       console.info('[StorageLinkJsunit1_0300] START');
       let driver = await UiDriver.create()
@@ -106,7 +106,7 @@ export default function StorageLinkJsunit1() {
       done();
     });
 
-    it('StorageLinkJsunit1_0400', 0, async (done: Function) => {
+    it('StorageLinkJsunit1_0400', Level.LEVEL0, async (done: Function) => {
       // Get the init value of button_son4
       console.info('[StorageLinkJsunit1_0400] START');
       let driver = await UiDriver.create()
@@ -123,7 +123,7 @@ export default function StorageLinkJsunit1() {
       done();
     });
 
-    it('StorageLinkJsunit1_0500', 0, async (done: Function) => {
+    it('StorageLinkJsunit1_0500', Level.LEVEL0, async (done: Function) => {
       // Get the init value of button_son5
       console.info('[StorageLinkJsunit1_0500] START');
       let driver = await UiDriver.create()
@@ -140,7 +140,7 @@ export default function StorageLinkJsunit1() {
       done();
     });
 
-    it('StorageLinkJsunit1_0600', 0, async (done: Function) => {
+    it('StorageLinkJsunit1_0600', Level.LEVEL0, async (done: Function) => {
       // Get the init value of button_son6
       console.info('[StorageLinkJsunit1_0600] START');
       let driver = await UiDriver.create()
@@ -157,7 +157,7 @@ export default function StorageLinkJsunit1() {
       done();
     });
 
-    it('StorageLinkJsunit1_0700', 0, async (done: Function) => {
+    it('StorageLinkJsunit1_0700', Level.LEVEL0, async (done: Function) => {
       // Get the init value of button_son7
       console.info('[StorageLinkJsunit1_0700] START');
       let driver = await UiDriver.create()
@@ -174,7 +174,7 @@ export default function StorageLinkJsunit1() {
       done();
     });
 
-    it('StorageLinkJsunit1_0800', 0, async (done: Function) => {
+    it('StorageLinkJsunit1_0800', Level.LEVEL0, async (done: Function) => {
       // Get the init value of button_son8
       console.info('[StorageLinkJsunit1_0800] START');
       let driver = await UiDriver.create()
@@ -191,7 +191,7 @@ export default function StorageLinkJsunit1() {
       done();
     });
 
-    it('StorageLinkJsunit1_0900', 0, async (done: Function) => {
+    it('StorageLinkJsunit1_0900', Level.LEVEL0, async (done: Function) => {
       // Get the init value of button_son9
       console.info('[StorageLinkJsunit1_0900] START');
       let driver = await UiDriver.create()
@@ -208,7 +208,7 @@ export default function StorageLinkJsunit1() {
       done();
     });
 
-    it('StorageLinkJsunit1_1000', 0, async (done: Function) => {
+    it('StorageLinkJsunit1_1000', Level.LEVEL0, async (done: Function) => {
       // Get the init value of button_son9
       console.info('[StorageLinkJsunit1_1000] START');
       let driver = await UiDriver.create()
@@ -225,7 +225,7 @@ export default function StorageLinkJsunit1() {
       done();
     });
 
-    it('StorageLinkJsunit1_1100', 0, async (done: Function) => {
+    it('StorageLinkJsunit1_1100', Level.LEVEL0, async (done: Function) => {
       // Get the init value of button_son11
       console.info('[StorageLinkJsunit1_1100] START');
       let driver = await UiDriver.create()
@@ -242,7 +242,7 @@ export default function StorageLinkJsunit1() {
       done();
     });
 
-    it('StorageLinkJsunit1_1200', 0, async (done: Function) => {
+    it('StorageLinkJsunit1_1200', Level.LEVEL0, async (done: Function) => {
       // Get the init value of button_son11
       console.info('[StorageLinkJsunit1_1200] START');
       let driver = await UiDriver.create()

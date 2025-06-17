@@ -27,7 +27,7 @@ import {
   PointerMatrix,
   UIElementInfo
 } from '@ohos.UiTest';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 
 function sleep(time: number) {
@@ -72,7 +72,7 @@ export default function FreezeV1Test03() {
      * @tc.name Freeze001
      * @tc.desc aceEtsTest
      */
-    it('FreezeTest001', 0, async () => {
+    it('FreezeTest001', Level.LEVEL0, async () => {
       console.info('FreezeTest001 START');
       let driver = await Driver.create();
 
@@ -103,7 +103,7 @@ export default function FreezeV1Test03() {
      * @tc.name Freeze002
      * @tc.desc aceEtsTest
      */
-    it('FreezeTest002', 0, async () => {
+    it('FreezeTest002', Level.LEVEL0, async () => {
       console.info('FreezeTest002 START');
       let driver = await Driver.create();
       let nextPage1 = await driver.findComponent(ON.id('NextPage1'));
@@ -132,7 +132,7 @@ export default function FreezeV1Test03() {
      * @tc.name Freeze003_003
      * @tc.desc aceEtsTest
      */
-    it('FreezeTest003', 0, async () => {
+    it('FreezeTest003', Level.LEVEL0, async () => {
       console.info('FreezeTest003 START');
       let driver = await Driver.create();
       let nextPage2 = await driver.findComponent(ON.id('NextPage2'));
@@ -161,7 +161,7 @@ export default function FreezeV1Test03() {
      * @tc.name Freeze004
      * @tc.desc aceEtsTest
      */
-    it('FreezeTest004', 0, async () => {
+    it('FreezeTest004', Level.LEVEL0, async () => {
       console.info('FreezeTest004 START');
       let driver = await Driver.create();
       let backPage3 = await driver.findComponent(ON.id('BackPage3'));
@@ -187,7 +187,7 @@ export default function FreezeV1Test03() {
      * @tc.name Freeze005
      * @tc.desc aceEtsTest
      */
-    it('FreezeTest005', 0, async () => {
+    it('FreezeTest005', Level.LEVEL0, async () => {
       console.info('FreezeTest005 START');
       let driver = await Driver.create();
       let backPage2 = await driver.findComponent(ON.id('BackPage2'));

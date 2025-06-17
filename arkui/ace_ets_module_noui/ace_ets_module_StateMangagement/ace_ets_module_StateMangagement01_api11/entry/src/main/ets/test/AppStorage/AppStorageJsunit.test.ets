@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 
 function sleep(time: number) {
@@ -60,7 +60,7 @@ export default function appStorageJsunit() {
      * @tc.name appStorageTest001
      * @tc.desc aceEtsTest
      */
-    it('appStorageTest001', 0, async () => {
+    it('appStorageTest001', Level.LEVEL0, async () => {
       console.info('AppStorageTest001 START');
       await sleep(1)
       let strJson = getInspectorByKey('Button0_1');
@@ -79,7 +79,7 @@ export default function appStorageJsunit() {
      * @tc.name appStorageTest002
      * @tc.desc aceEtsTest
      */
-    it('appStorageTest002', 0, async () => {
+    it('appStorageTest002', Level.LEVEL0, async () => {
       console.info('AppStorageTest002 START');
       let strJson = getInspectorByKey('Button0_2');
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -94,7 +94,7 @@ export default function appStorageJsunit() {
      * @tc.name appStorageTest003
      * @tc.desc aceEtsTest
      */
-    it('appStorageTest003', 0, async () => {
+    it('appStorageTest003', Level.LEVEL0, async () => {
       console.info('AppStorageTest003 START');
       let strJson = getInspectorByKey('Button0_3');
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -109,7 +109,7 @@ export default function appStorageJsunit() {
      * @tc.name appStorageTest004
      * @tc.desc aceEtsTest
      */
-    it('appStorageTest004', 0, async () => {
+    it('appStorageTest004', Level.LEVEL0, async () => {
       console.info('AppStorageTest004 START');
       let strJson = getInspectorByKey('Button0_4');
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -124,7 +124,7 @@ export default function appStorageJsunit() {
      * @tc.name appStorageTest005
      * @tc.desc aceEtsTest
      */
-    it('appStorageTest005', 0, async () => {
+    it('appStorageTest005', Level.LEVEL0, async () => {
       console.info('AppStorageTest005 START');
       let strJson = getInspectorByKey('Button0_5');
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -139,7 +139,7 @@ export default function appStorageJsunit() {
      * @tc.name appStorageTest006
      * @tc.desc aceEtsTest
      */
-    it('appStorageTest006', 0, async () => {
+    it('appStorageTest006', Level.LEVEL0, async () => {
       console.info('AppStorageTest006 START');
       let strJson = getInspectorByKey('Button0_6');
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -155,7 +155,7 @@ export default function appStorageJsunit() {
      * @tc.name appStorageTest007
      * @tc.desc aceEtsTest
      */
-    it('appStorageTest007', 0, async () => {
+    it('appStorageTest007', Level.LEVEL0, async () => {
       console.info('AppStorageTest007 START');
       let strJson = getInspectorByKey('Button0_7');
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -170,7 +170,7 @@ export default function appStorageJsunit() {
      * @tc.name appStorageTest008
      * @tc.desc aceEtsTest
      */
-    it('appStorageTest008', 0, async () => {
+    it('appStorageTest008', Level.LEVEL0, async () => {
       console.info('AppStorageTest008 START');
       let strJson = getInspectorByKey('Button0_8');
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -185,7 +185,7 @@ export default function appStorageJsunit() {
      * @tc.name appStorageTest009
      * @tc.desc aceEtsTest
      */
-    it('appStorageTest009', 0, async () => {
+    it('appStorageTest009', Level.LEVEL0, async () => {
       console.info('AppStorageTest009 START');
       let strJson = getInspectorByKey('Button0_9');
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -200,7 +200,7 @@ export default function appStorageJsunit() {
      * @tc.name appStorageTest010
      * @tc.desc aceEtsTest
      */
-    it('appStorageTest010', 0, async () => {
+    it('appStorageTest010', Level.LEVEL0, async () => {
       console.info('AppStorageTest010 START');
       let strJson = getInspectorByKey('Button0_10');
       let obj: Record<string, Object> = JSON.parse(strJson);
@@ -215,7 +215,7 @@ export default function appStorageJsunit() {
      * @tc.name appStorageTest011
      * @tc.desc aceEtsTest
      */
-    it('appStorageTest011', 0, async () => {
+    it('appStorageTest011', Level.LEVEL0, async () => {
       console.info('AppStorageTest011 START');
       let strJson = getInspectorByKey('Button0_12');
       let obj: Record<string, Object> = JSON.parse(strJson);

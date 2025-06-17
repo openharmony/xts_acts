@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -60,7 +60,7 @@ export default function ConsumeArray1() {
    * @tc.desc  : To test that the Consume decorator supports union types.
    * @tc.level : Level 2
    */
-    it('ConsumeArray_0500', 0, async (done: Function) => {
+    it('ConsumeArray_0500', Level.LEVEL0, async (done: Function) => {
       console.info('ConsumeArray_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -81,7 +81,7 @@ export default function ConsumeArray1() {
   * @tc.desc  : To test that the Consume decorator supports union types.
   * @tc.level : Level 2
   */
-    it('ConsumeArray_0600', 0, async (done: Function) => {
+    it('ConsumeArray_0600', Level.LEVEL0, async (done: Function) => {
       console.info('ConsumeArray_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -102,7 +102,7 @@ export default function ConsumeArray1() {
   * @tc.desc  : To test that the Consume decorator supports union types.
   * @tc.level : Level 2
   */
-    it('ConsumeArray_0700', 0, async (done: Function) => {
+    it('ConsumeArray_0700', Level.LEVEL0, async (done: Function) => {
       console.info('ConsumeArray_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -123,7 +123,7 @@ export default function ConsumeArray1() {
   * @tc.desc  : To test that the Consume decorator supports union types.
   * @tc.level : Level 2
   */
-    it('ConsumeArray_0800', 0, async (done: Function) => {
+    it('ConsumeArray_0800', Level.LEVEL0, async (done: Function) => {
       console.info('ConsumeArray_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -144,7 +144,7 @@ export default function ConsumeArray1() {
   * @tc.desc  : To test that the Consume decorator supports union types.
   * @tc.level : Level 2
   */
-    it('ConsumeArray_0900', 0, async (done: Function) => {
+    it('ConsumeArray_0900', Level.LEVEL0, async (done: Function) => {
       console.info('StateArray_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
