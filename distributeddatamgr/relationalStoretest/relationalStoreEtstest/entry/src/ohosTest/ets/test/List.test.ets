@@ -54,6 +54,8 @@ import relationalStoreHavingTest from './RelationalStoreHavingTest.test';
 import PerfStatEtsTest from './RelationalStorePerfStatEtsTest.test'
 import rdbstoreRekeyEtsTest from './RelationalStoreRekeyEtsTest.test'
 import rdbStoreSqliteErrorOccurredTest from './RelationalStoreSqliteErrorOccurredTest.test'
+import rdbstoregetRowForFlutterTest from './RelationalStoreGetRowForFlutter.test'
+import rdbstoregetValueForFlutterTest from './RelationalStoreGetValueForFlutter.test'
 
 export default function testsuite() {
   relationalStoreEncryptTest()
@@ -98,5 +100,7 @@ export default function testsuite() {
   PerfStatEtsTest()
   rdbstoreRekeyEtsTest()
   rdbStoreSqliteErrorOccurredTest()
+  rdbstoregetRowForFlutterTest()
+  rdbstoregetValueForFlutterTest()
 }
 
