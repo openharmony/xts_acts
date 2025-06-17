@@ -700,7 +700,7 @@ export default function relationalStoreBatchInsertTest() {
           bucket,
           relationalStore.ConflictResolution.ON_CONFLICT_NONE
         );
-        expect(info.sql).assertEqul("INSERT INTO tableName(age,desc,name,sex) VALUES (?,?,?,?)");
+        expect(info.sql).assertEqual("INSERT INTO tableName(age,desc,name,sex) VALUES (?,?,?,?)");
         done();
       } catch (e) {
         console.error( TAG + 'getInsertSqlInfo' + e.code + e.message);
