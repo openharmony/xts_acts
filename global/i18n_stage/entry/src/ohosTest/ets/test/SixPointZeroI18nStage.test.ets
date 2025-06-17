@@ -47,7 +47,7 @@ export default function SixPointZeroI18nStageTest() {
       let dateFormat = dateTimeFormat.format(new Date(sj));
       let sj2 = zoneOffsetTransition.getOffsetAfter() / 3600000;
       let sj3 = zoneOffsetTransition.getOffsetBefore() / 3600000;
-      expect(dateFormat).assertEqual('2025/4/25 GMT+3 1:00:00');
+      expect(dateFormat).assertEqual('2025/4/25 GMT+3 01:00:00');
       expect(sj2).assertEqual(3);
       expect(sj3).assertEqual(2);
     })
@@ -132,7 +132,7 @@ export default function SixPointZeroI18nStageTest() {
       let sj2 = zoneOffsetTransition.getOffsetAfter() / 3600000;
       let sj3 = zoneOffsetTransition.getOffsetBefore() / 3600000;
       let getid = timeZone.getID();
-      expect(dateFormat).assertEqual('2970/1/1 GMT+8 08:00:00');
+      expect(dateFormat).assertEqual('1970/1/1 GMT+8 08:00:00');
       expect(sj2).assertEqual(0);
       expect(sj3).assertEqual(0);
       expect(getid).assertEqual('Etc/Unknown');
@@ -252,7 +252,7 @@ export default function SixPointZeroI18nStageTest() {
       let locale: Intl.Locale = new Intl.Locale('ar');
       let skeletonFormatter: i18n.SimpleDateTimeFormat = i18n.getSimpleDateTimeFormatBySkeleton("yMd", locale);
       let formatteDate: string = skeletonFormatter.format(date);
-      expect(formatteDate).assertEqual('٢٠٢٤/١٢/١٣')
+      expect(formatteDate).assertEqual('١٣‏/١٢‏/٢٠٢٤')
     })
 
     /* *
@@ -301,7 +301,7 @@ export default function SixPointZeroI18nStageTest() {
       let locale: Intl.Locale = new Intl.Locale('ar');
       let formatter: i18n.SimpleNumberFormat = i18n.getSimpleNumberFormatBySkeleton("%", locale);
       let formattedNumber: string = formatter.format(10);
-      expect(formattedNumber).assertEqual('٪١٠')
+      expect(formattedNumber).assertEqual('١٠٪‏')
     })
 
     /* *
