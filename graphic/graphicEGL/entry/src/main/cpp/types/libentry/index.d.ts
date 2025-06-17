@@ -41,6 +41,7 @@ export const eglInitialize: () => number;
 export const eglInitializeAbnormal: () => number;
 export const eglMakeCurrent: () => number;
 export const eglMakeCurrentAbnormal: () => number;
+export const eglSwapBuffersWithDamageKHRRect1: () => number;
 export const eglQueryContext: () => number;
 export const eglQueryContextAbnormal: () => number;
 export const eglQueryString: () => number;
