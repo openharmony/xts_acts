@@ -148,6 +148,8 @@ static void OnNativeChildProcessExit(int32_t pid, int32_t signal)
     OH_LOG_INFO(LOG_APP, "child exit, pid:%{public}d, signal:%{public}d", pid, signal);
     thread = new ArkTsThread();
     thread->CallFunc();
+    delete thread;
+    thread = nullptr;
 }
 
 static napi_value ChildProcessAdd(napi_env env, napi_callback_info info)
@@ -361,6 +363,7 @@ static napi_value StartChildNoArgs(napi_env env, napi_callback_info info)
 {
     OH_LOG_INFO(LOG_APP, "===================StartChildWithNoArgs");
     int32_t ret = static_cast<int32_t>(StartChildWithNoArgs());
+    OH_LOG_INFO(LOG_APP, "===================StartChildWithNoArgs end: %{public}d", ret);
     napi_value napiRet;
     napi_create_int32(env, ret, &napiRet);
     return napiRet;
