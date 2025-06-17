@@ -70,6 +70,7 @@
     it('testVideoProcessTs002', Level.LEVEL0, async(done: Function) => {
         if (access("/system/lib64/libvideoprocessingengine_ext.z.so", 0)) {
             expect(true).assertTrue();
+            done();
         }
         try {
             let sourceImage = await imageSource.createPixelMap() as image.PixelMap;
@@ -104,6 +105,7 @@
     it('testVideoProcessTs003', Level.LEVEL0, async(done: Function) => {
         if (access("/system/lib64/libvideoprocessingengine_ext.z.so", 0)) {
             expect(true).assertTrue();
+            done();
         }
         try {
             let sourceImage = await imageSource.createPixelMap() as image.PixelMap;
@@ -138,6 +140,7 @@
     it('testVideoProcessTs004', Level.LEVEL0, async(done: Function) => {
         if (access("/system/lib64/libvideoprocessingengine_ext.z.so", 0)) {
             expect(true).assertTrue();
+            done();
         }
         try {
             let sourceImage = await imageSource.createPixelMap() as image.PixelMap;
@@ -172,6 +175,7 @@
     it('testVideoProcessTs005', Level.LEVEL0, async(done: Function) => {
         if (access("/system/lib64/libvideoprocessingengine_ext.z.so", 0)) {
             expect(true).assertTrue();
+            done();
         }
         try {
             let sourceImage = await imageSource.createPixelMap() as image.PixelMap;
@@ -206,6 +210,7 @@
     it('testVideoProcessTs006', Level.LEVEL0, async(done: Function) => {
         if (access("/system/lib64/libvideoprocessingengine_ext.z.so", 0)) {
             expect(true).assertTrue();
+            done();
         }
         try {
             let sourceImage = await imageSource.createPixelMap() as image.PixelMap;
@@ -240,6 +245,7 @@
     it('testVideoProcessTs007', Level.LEVEL0, async(done: Function) => {
         if (access("/system/lib64/libvideoprocessingengine_ext.z.so", 0)) {
             expect(true).assertTrue();
+            done();
         }
         try {
             let sourceImage = await imageSource.createPixelMap() as image.PixelMap;
@@ -271,6 +277,7 @@
     it('testVideoProcessTs008', Level.LEVEL0, async(done: Function) => {
         if (access("/system/lib64/libvideoprocessingengine_ext.z.so", 0)) {
             expect(true).assertTrue();
+            done();
         }
         try {
             let sourceImage = await imageSource.createPixelMap() as image.PixelMap;
@@ -305,6 +312,7 @@
     it('testVideoProcessTs009', Level.LEVEL0, async(done: Function) => {
         if (access("/system/lib64/libvideoprocessingengine_ext.z.so", 0)) {
             expect(true).assertTrue();
+            done();
         }
         try {
             let sourceImage = await imageSource.createPixelMap() as image.PixelMap;
