@@ -3033,3 +3033,22 @@ Camera_ErrorCode NDKCamera::SessionEnableMacro(int useCaseCode, bool isEnable)
     }
     return ret_;
 }
+
+Camera_ErrorCode NDKCamera::WhiteBalanceTest(void)
+{
+    LOG("WhiteBalanceTest begin.");
+    bool flag;
+    int ret = OH_CaptureSession_IsWhiteBalanceModeSupported(
+        captureSession_, Camera_WhiteBalanceMode::CAMERA_WHITE_BALANCE_MODE_CLOUDY, &flag);
+    int32_t max = 0;
+    int32_t min = 0;
+    ret = OH_CaptureSession_GetWhiteBalanceRange(captureSession_, &min, &max);
+    int32_t temp = 3000;
+    ret = OH_CaptureSession_SetWhiteBalance(captureSession_, temp);
+    ret = OH_CaptureSession_GetWhiteBalance(captureSession_, &temp);
+    ret = OH_CaptureSession_SetWhiteBalanceMode(
+        captureSession_, Camera_WhiteBalanceMode::CAMERA_WHITE_BALANCE_MODE_CLOUDY);
+    Camera_WhiteBalanceMode mode = Camera_WhiteBalanceMode::CAMERA_WHITE_BALANCE_MODE_AUTO;
+    ret = OH_CaptureSession_GetWhiteBalanceMode(captureSession_, &mode);
+    return ret_;
+}

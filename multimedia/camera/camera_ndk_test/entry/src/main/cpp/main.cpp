@@ -2652,6 +2652,16 @@ static napi_value SessionEnableMacro(napi_env env, napi_callback_info info)
     napi_create_int32(env, code, &errorCode);
     return errorCode;
 }
+
+static napi_value GetWhiteBalanceTest(napi_env env, napi_callback_info info)
+{
+    napi_value jsValue = nullptr;
+
+    napi_create_int32(env, ndkCamera_->WhiteBalanceTest(), &jsValue);
+
+    return jsValue;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -2665,6 +2675,7 @@ static napi_value Init(napi_env env, napi_value exports)
         { "getCameraHostNameInspection", nullptr, GetCameraHostNameInspection, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "getCameraHostName", nullptr, GetCameraHostName, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "getCameraHostType", nullptr, GetCameraHostType, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "getWhiteBalanceTest", nullptr, GetWhiteBalanceTest, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "createCameraInput", nullptr, CreateCameraInput, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "createCameraInputWithPositionAndType", nullptr, CreateCameraInputWithPositionAndType, nullptr, nullptr,
             nullptr, napi_default, nullptr },
