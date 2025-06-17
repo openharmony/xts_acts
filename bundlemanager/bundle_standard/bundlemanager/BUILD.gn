@@ -33,6 +33,7 @@ group("bundlemanager") {
       "actsbundlegetmainelementnametest:ActsBundleGetMainElementNameTest",
       "actsbundlemanageretstest:ActsBundleManagerEtsTest",
       "actsbundlemanageroverlaytest:ActsBundleMgrOverlayEtsTest",
+      "actsbundlemanageroverlayteststatic:ActsBundleMgrOverlayEtsDemoStaticTest",
       "actsbundlemanagerstagetest:ActsBundleMgrStageEtsTest",
       "actsbundlemanagertest:ActsBundleManagerTest",
       "actsbundlemanagertestcaseAddition:ActsbundlemgrcaseAdditionEtsTest",
