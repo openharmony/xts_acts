@@ -40,6 +40,7 @@ describe('HiTraceJsTest', function () {
      */
     it('testHitraceApi01', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         console.info('testHitraceApi01 start');
+        hiTraceChain.clearId();
         try{
             let traceId = hiTraceChain.begin("hitrace01", hiTraceChain.HiTraceFlag.DEFAULT);
             let traceIdIsvalid = hiTraceChain.isValid(traceId);
@@ -64,6 +65,7 @@ describe('HiTraceJsTest', function () {
      */
     it('testHitraceApi02', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         console.info('testHitraceApi02 start');
+        hiTraceChain.clearId();
         try{
             let traceId = hiTraceChain.begin("hitrace02", hiTraceChain.HiTraceFlag.INCLUDE_ASYNC |
             hiTraceChain.HiTraceFlag.DONOT_CREATE_SPAN);
@@ -89,6 +91,7 @@ describe('HiTraceJsTest', function () {
      */
     it('testHitraceApi03', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         console.info('testHitraceApi03 start');
+        hiTraceChain.clearId();
         try{
             let traceId = hiTraceChain.begin("hitrace03", hiTraceChain.HiTraceFlag.TP_INFO);
             let curTraceId = hiTraceChain.getId();
@@ -115,6 +118,7 @@ describe('HiTraceJsTest', function () {
      */
     it('testHitraceApi04', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         console.info('testHitraceApi04 start');
+        hiTraceChain.clearId();
         try{
             let traceId = hiTraceChain.begin("hitrace04", hiTraceChain.HiTraceFlag.NO_BE_INFO);
             let spanTraceId = hiTraceChain.createSpan();
@@ -140,6 +144,7 @@ describe('HiTraceJsTest', function () {
      */
     it('testHitraceApi05', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         console.info('testHitraceApi05 start');
+        hiTraceChain.clearId();
         try{
             let traceId = hiTraceChain.begin("hitrace05");
             hiTraceChain.enableFlag(traceId, hiTraceChain.HiTraceFlag.DISABLE_LOG);
@@ -165,6 +170,7 @@ describe('HiTraceJsTest', function () {
      */
     it('testHitraceApi06', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         console.info('testHitraceApi06 start');
+        hiTraceChain.clearId();
         try{
             let traceId = hiTraceChain.begin("hitrace06");
             hiTraceChain.enableFlag(traceId, hiTraceChain.HiTraceFlag.FAILURE_TRIGGER);
@@ -191,6 +197,7 @@ describe('HiTraceJsTest', function () {
      */
     it('testHitraceApi07', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async function (done) {
         console.info('testHitraceApi07 start');
+        hiTraceChain.clearId();
         try{
             let traceId = hiTraceChain.begin("hitrace07", hiTraceChain.HiTraceFlag.D2D_TP_INFO);
             let enabledDoNotCreateSpanFlag = hiTraceChain.isFlagEnabled(traceId, hiTraceChain.HiTraceFlag.D2D_TP_INFO)
