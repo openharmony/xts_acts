@@ -115,7 +115,16 @@ export default function ActsNotificationRequestTest() {
         try {
           notificationManager.publish(notificationRequest, (err) => {
             hilog.info(0x000, `${TEST_CASE_NAME}`, `${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s', JSON.stringify(err));
-            expect(err).assertEqual(null);
+            if (err.code!==0) {
+              console.info(`${TEST_CASE_NAME} publish err: ${err.code}`)
+              expect(false).assertTrue()
+              done()
+            }else {
+              console.info(`${TEST_CASE_NAME} publish success`)
+              expect(true).assertTrue()
+              await Utils.msSleep(1000)
+              done()
+            }
             hilog.info(0x000, `${TEST_CASE_NAME}`, `${TEST_CASE_NAME} test case end`);
             done();
           })
