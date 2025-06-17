@@ -28,6 +28,7 @@ group("distributeddatamgr") {
       "crossplatform/relationalstoreetstest:ActsCrossplatformRelationalStoreTest",
       "dataAbilityEtsTest:ActsDataAbilityTest",
       "dataObjecttest:dataObjecttest",
+      "dataShareEts_static:ActsDataShareStaticTest",
       "dataSharejstest/hap:dataShare_js_test",
       "distributedKVStoretest:distributedKVStoretest",
       "kvStoretest:kvStoretest",
