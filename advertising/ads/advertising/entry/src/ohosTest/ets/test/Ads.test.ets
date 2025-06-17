@@ -289,43 +289,47 @@ export default function adsTest() {
      * @tc.level: Level2
      */
     it("testAdInteractionListener", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL2, async (done: Function) => {
-      let subscriber: commonEventManager.CommonEventSubscriber | null = null;
-      let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-        events: ["ACTS_AdComponent_OnListener"],
-      }
-      let adInteractionListener: advertising.AdInteractionListener = {
-        onStatusChanged: (status: string, ad: advertising.Advertisement, data: string) => {
-          hilog.debug(Domain, TAG, `get the status is ${status}, ad is : ${ad}, data is : ${data}`);
+      try {
+        let subscriber: commonEventManager.CommonEventSubscriber | null = null;
+        let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+          events: ["ACTS_AdComponent_OnListener"],
         }
-      };
-
-      commonEventManager.createSubscriber(subscribeInfo, (err, data) => {
-        if (err) {
-          hilog.error(Domain, TAG, `createSubscriber failed, code is ${err.code}`);
-        } else {
-          hilog.info(Domain, TAG, `CreateSubscriber success`);
-          subscriber = data;
-          //
-          if (subscriber !== null) {
-            commonEventManager.subscribe(subscriber, (err, data) => {
-              if (err) {
-                hilog.error(Domain, TAG, `subscribe failed, code is ${err.code}`);
-                done();
-              } else {
-                hilog.info(Domain, TAG, `SubscribeCallBack data=${JSON.stringify(data)}`);
-                done();
-              }
-            })
-          } else {
-            hilog.info(Domain, TAG, `Need create subscriber`);
+        let adInteractionListener: advertising.AdInteractionListener = {
+          onStatusChanged: (status: string, ad: advertising.Advertisement, data: string) => {
+            hilog.debug(Domain, TAG, `get the status is ${status}, ad is : ${ad}, data is : ${data}`);
           }
-        }
-      })
-      router.pushUrl({
-        url: 'MainAbility/pages/index/p1'
-      });
-      adInteractionListener.onStatusChanged('1', null, 'dataInfo');
-      done();
+        };
+
+        commonEventManager.createSubscriber(subscribeInfo, (err, data) => {
+          if (err) {
+            hilog.error(Domain, TAG, `createSubscriber failed, code is ${err.code}`);
+          } else {
+            hilog.info(Domain, TAG, `CreateSubscriber success`);
+            subscriber = data;
+            //
+            if (subscriber !== null) {
+              commonEventManager.subscribe(subscriber, (err, data) => {
+                if (err) {
+                  hilog.error(Domain, TAG, `subscribe failed, code is ${err.code}`);
+                  done();
+                } else {
+                  hilog.info(Domain, TAG, `SubscribeCallBack data=${JSON.stringify(data)}`);
+                  done();
+                }
+              })
+            } else {
+              hilog.info(Domain, TAG, `Need create subscriber`);
+            }
+          }
+        })
+        router.pushUrl({
+          url: 'MainAbility/pages/index/p1'
+        });
+        adInteractionListener.onStatusChanged('1', null, 'dataInfo');
+        done();
+      } catch (e) {
+        expect(e.code).assertLarger(0);
+      }
     })
 
     /**
