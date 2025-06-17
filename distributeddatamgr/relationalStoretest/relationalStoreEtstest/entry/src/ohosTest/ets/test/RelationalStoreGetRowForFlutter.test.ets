@@ -91,7 +91,7 @@ export default function rdbstoregetRowForFlutterTest() {
     })
 
     /**
-     * @tc.name testRdbStoreGetRowForFlutter_0002
+     * @tc.name testRdbStoreGetRowForFlutter0002
      * @tc.number SUB_DistributedData_RelationalStore_SDK_Int64JsAPITest_0200
      * @tc.desc integer is Number.MAX_SAFE_INTEGER test
      */
