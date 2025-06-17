@@ -16,7 +16,7 @@
 @Entry
 @Component
 struct Index {
-  @State message: string = 'OsAccountTest';
+  @State message: string = 'XTS TEST';
 
   aboutToAppear() {
     console.info("start run testcase!!!!");
