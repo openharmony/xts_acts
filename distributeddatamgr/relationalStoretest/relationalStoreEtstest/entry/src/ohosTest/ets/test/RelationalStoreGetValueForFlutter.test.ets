@@ -55,12 +55,12 @@ export default function rdbstoregetValueForFlutterTest() {
 
 
     /**
-     * @tc.name testRdbStoreGetValueForFlutter_0001
+     * @tc.name testRdbStoreGetValueForFlutter0001
      * @tc.number SUB_DistributedData_RelationalStore_SDK_Int64JsAPITest_0900
      * @tc.desc integer greater than Number.MAX_SAFE_INTEGER test
      */
-    it('testRdbStoreGetValueForFlutter_0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async  (done:Function) => {
-      console.log(TAG + "************* testRdbStoreGetValueForFlutter_0001 start *************");
+    it('testRdbStoreGetValueForFlutter0001',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async  (done:Function) => {
+      console.log(TAG + "************* testRdbStoreGetValueForFlutter0001 start *************");
       let valueNum = Number.MAX_SAFE_INTEGER.toString() + 0;
       rdbStore = await relationalStore.getRdbStore(context, STORE_CONFIG);
       await rdbStore.executeSql(CREATE_TABLE_TEST);
@@ -71,27 +71,29 @@ export default function rdbstoregetValueForFlutterTest() {
         let rowId = await rdbStore.insert("test", valueBucket1);
         expect(1).assertEqual(rowId);
       } catch (err) {
-        console.error(TAG + `### insert failed, code:${err.code}, message:${err.message}`);
+        console.error(TAG + `insert failed, code:${err.code}, message:${err.message}`);
       }
       try {
         let resultSet = await rdbStore.querySql('SELECT * FROM test');
         expect(true).assertEqual(resultSet.goToFirstRow());
         expect(valueNum).assertEqual(resultSet.getValueForFlutter(resultSet.getColumnIndex('age')));
         resultSet.close();
+        done();
       } catch (err) {
-        console.error(TAG + `### query failed, code:${err.code}, message:${err.message}`);
+        console.error(TAG + `query failed, code:${err.code}, message:${err.message}`);
+        expect().assertFail();
+        done();
       }
-      done();
-      console.log(TAG + "************* testRdbStoreGetValueForFlutter_0001 end *************");
+      console.log(TAG + "************* testRdbStoreGetValueForFlutter0001 end *************");
     })
 
     /**
-     * @tc.name testRdbStoreGetValueForFlutter_0002
+     * @tc.name testRdbStoreGetValueForFlutter0002
      * @tc.number SUB_DistributedData_RelationalStore_SDK_Int64JsAPITest_1000
      * @tc.desc integer is Number.MAX_SAFE_INTEGER test
      */
-    it('testRdbStoreGetValueForFlutter_0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async  (done:Function) => {
-      console.log(TAG + "************* testRdbStoreGetValueForFlutter_0002 start *************");
+    it('testRdbStoreGetValueForFlutter0002',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async  (done:Function) => {
+      console.log(TAG + "************* testRdbStoreGetValueForFlutter0002 start *************");
       rdbStore = await relationalStore.getRdbStore(context, STORE_CONFIG);
       await rdbStore.executeSql(CREATE_TABLE_TEST);
       const valueBucket1: ValuesBucket = {
@@ -101,27 +103,29 @@ export default function rdbstoregetValueForFlutterTest() {
         let rowId = await rdbStore.insert("test", valueBucket1);
         expect(1).assertEqual(rowId);
       } catch (err) {
-        console.error(TAG + `### insert failed, code:${err.code}, message:${err.message}`);
+        console.error(TAG + `insert failed, code:${err.code}, message:${err.message}`);
       }
       try {
         let resultSet = await rdbStore.querySql('SELECT * FROM test');
         expect(true).assertEqual(resultSet.goToFirstRow());
         expect(Number.MAX_SAFE_INTEGER).assertEqual(resultSet.getValueForFlutter(resultSet.getColumnIndex('age')));
         resultSet.close();
+        done();
       } catch (err) {
-        console.error(TAG + `### query failed, code:${err.code}, message:${err.message}`);
+        console.error(TAG + `query failed, code:${err.code}, message:${err.message}`);
+        expect().assertFail();
+        done();
       }
-      done();
-      console.log(TAG + "************* testRdbStoreGetValueForFlutter_0002 end *************");
+      console.log(TAG + "************* testRdbStoreGetValueForFlutter0002 end *************");
     })
 
     /**
-     * @tc.name testRdbStoreGetValueForFlutter_0003
+     * @tc.name testRdbStoreGetValueForFlutter0003
      * @tc.number SUB_DistributedData_RelationalStore_SDK_Int64JsAPITest_1100
      * @tc.desc integer less than Number.MAX_SAFE_INTEGER test
      */
-    it('testRdbStoreGetValueForFlutter_0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async  (done:Function) => {
-      console.log(TAG + "************* testRdbStoreGetValueForFlutter_0003 start *************");
+    it('testRdbStoreGetValueForFlutter0003',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async  (done:Function) => {
+      console.log(TAG + "************* testRdbStoreGetValueForFlutter0003 start *************");
       rdbStore = await relationalStore.getRdbStore(context, STORE_CONFIG);
       await rdbStore.executeSql(CREATE_TABLE_TEST);
       const valueBucket1: ValuesBucket = {
@@ -131,27 +135,29 @@ export default function rdbstoregetValueForFlutterTest() {
         let rowId = await rdbStore.insert("test", valueBucket1);
         expect(1).assertEqual(rowId);
       } catch (err) {
-        console.error(TAG + `### insert failed, code:${err.code}, message:${err.message}`);
+        console.error(TAG + `insert failed, code:${err.code}, message:${err.message}`);
       }
       try {
         let resultSet = await rdbStore.querySql('SELECT * FROM test');
         expect(true).assertEqual(resultSet.goToFirstRow());
         expect(100).assertEqual(resultSet.getValueForFlutter(resultSet.getColumnIndex('age')));
         resultSet.close();
+        done();
       } catch (err) {
-        console.error(TAG + `### query failed, code:${err.code}, message:${err.message}`);
+        console.error(TAG + `query failed, code:${err.code}, message:${err.message}`);
+        expect().assertFail();
+        done();
       }
-      done();
-      console.log(TAG + "************* testRdbStoreGetValueForFlutter_0003 end *************");
+      console.log(TAG + "************* testRdbStoreGetValueForFlutter0003 end *************");
     })
 
     /**
-     * @tc.name testRdbStoreGetValueForFlutter_0004
+     * @tc.name testRdbStoreGetValueForFlutter0004
      * @tc.number SUB_DistributedData_RelationalStore_SDK_Int64JsAPITest_1200
      * @tc.desc integer greater than Number.MIN_SAFE_INTEGER test
      */
-    it('testRdbStoreGetValueForFlutter_0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async  (done:Function) => {
-      console.log(TAG + "************* testRdbStoreGetValueForFlutter_0004 start *************");
+    it('testRdbStoreGetValueForFlutter0004',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async  (done:Function) => {
+      console.log(TAG + "************* testRdbStoreGetValueForFlutter0004 start *************");
       rdbStore = await relationalStore.getRdbStore(context, STORE_CONFIG);
       await rdbStore.executeSql(CREATE_TABLE_TEST);
       const valueBucket1: ValuesBucket = {
@@ -161,27 +167,29 @@ export default function rdbstoregetValueForFlutterTest() {
         let rowId = await rdbStore.insert("test", valueBucket1);
         expect(1).assertEqual(rowId);
       } catch (err) {
-        console.error(TAG + `### insert failed, code:${err.code}, message:${err.message}`);
+        console.error(TAG + `insert failed, code:${err.code}, message:${err.message}`);
       }
       try {
         let resultSet = await rdbStore.querySql('SELECT * FROM test');
         expect(true).assertEqual(resultSet.goToFirstRow());
         expect(-100).assertEqual(resultSet.getValueForFlutter(resultSet.getColumnIndex('age')));
         resultSet.close();
+        done();
       } catch (err) {
-        console.error(TAG + `### query failed, code:${err.code}, message:${err.message}`);
+        console.error(TAG + `query failed, code:${err.code}, message:${err.message}`);
+        expect().assertFail();
+        done();
       }
-      done();
-      console.log(TAG + "************* testRdbStoreGetValueForFlutter_0004 end *************");
+      console.log(TAG + "************* testRdbStoreGetValueForFlutter0004 end *************");
     })
 
     /**
-     * @tc.name testRdbStoreGetValueForFlutter_0005
+     * @tc.name testRdbStoreGetValueForFlutter0005
      * @tc.number SUB_DistributedData_RelationalStore_SDK_Int64JsAPITest_1300
      * @tc.desc integer is Number.MIN_SAFE_INTEGER test
      */
-    it('testRdbStoreGetValueForFlutter_0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async  (done:Function) => {
-      console.log(TAG + "************* testRdbStoreGetValueForFlutter_0005 start *************");
+    it('testRdbStoreGetValueForFlutter0005',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async  (done:Function) => {
+      console.log(TAG + "************* testRdbStoreGetValueForFlutter0005 start *************");
       rdbStore = await relationalStore.getRdbStore(context, STORE_CONFIG);
       await rdbStore.executeSql(CREATE_TABLE_TEST);
       const valueBucket1: ValuesBucket = {
@@ -191,27 +199,29 @@ export default function rdbstoregetValueForFlutterTest() {
         let rowId = await rdbStore.insert("test", valueBucket1);
         expect(1).assertEqual(rowId);
       } catch (err) {
-        console.error(TAG + `### insert failed, code:${err.code}, message:${err.message}`);
+        console.error(TAG + `insert failed, code:${err.code}, message:${err.message}`);
       }
       try {
         let resultSet = await rdbStore.querySql('SELECT * FROM test');
         expect(true).assertEqual(resultSet.goToFirstRow());
         expect(Number.MIN_SAFE_INTEGER).assertEqual(resultSet.getValueForFlutter(resultSet.getColumnIndex('age')));
         resultSet.close();
+        done();
       } catch (err) {
-        console.error(TAG + `### query failed, code:${err.code}, message:${err.message}`);
+        console.error(TAG + `query failed, code:${err.code}, message:${err.message}`);
+        expect().assertFail();
+        done();
       }
-      done();
-      console.log(TAG + "************* testRdbStoreGetValueForFlutter_0005 end *************");
+      console.log(TAG + "************* testRdbStoreGetValueForFlutter0005 end *************");
     })
 
     /**
-     * @tc.name testRdbStoreGetValueForFlutter_0006
+     * @tc.name testRdbStoreGetValueForFlutter0006
      * @tc.number SUB_DistributedData_RelationalStore_SDK_Int64JsAPITest_1400
      * @tc.desc integer less than Number.MIN_SAFE_INTEGER test
      */
-    it('testRdbStoreGetValueForFlutter_0006',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async  (done:Function) => {
-      console.log(TAG + "************* testRdbStoreGetValueForFlutter_0006 start *************");
+    it('testRdbStoreGetValueForFlutter0006',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async  (done:Function) => {
+      console.log(TAG + "************* testRdbStoreGetValueForFlutter0006 start *************");
       let valueNum = Number.MIN_SAFE_INTEGER.toString() + 0;
       rdbStore = await relationalStore.getRdbStore(context, STORE_CONFIG);
       await rdbStore.executeSql(CREATE_TABLE_TEST);
@@ -222,27 +232,29 @@ export default function rdbstoregetValueForFlutterTest() {
         let rowId = await rdbStore.insert("test", valueBucket1);
         expect(1).assertEqual(rowId);
       } catch (err) {
-        console.error(TAG + `### insert failed, code:${err.code}, message:${err.message}`);
+        console.error(TAG + `insert failed, code:${err.code}, message:${err.message}`);
       }
       try {
         let resultSet = await rdbStore.querySql('SELECT * FROM test');
         expect(true).assertEqual(resultSet.goToFirstRow());
         expect(valueNum).assertEqual(resultSet.getValueForFlutter(resultSet.getColumnIndex('age')));
         resultSet.close();
+        done();
       } catch (err) {
-        console.error(TAG + `### query failed, code:${err.code}, message:${err.message}`);
+        console.error(TAG + `query failed, code:${err.code}, message:${err.message}`);
+        expect().assertFail();
+        done();
       }
-      done();
-      console.log(TAG + "************* testRdbStoreGetValueForFlutter_0006 end *************");
+      console.log(TAG + "************* testRdbStoreGetValueForFlutter0006 end *************");
     })
 
     /**
-     * @tc.name testRdbStoreGetValueForFlutter_0007
+     * @tc.name testRdbStoreGetValueForFlutter0007
      * @tc.number SUB_DistributedData_RelationalStore_SDK_Int64JsAPITest_1500
      * @tc.desc other types test
      */
-    it('testRdbStoreGetValueForFlutter_0007',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async  (done:Function) => {
-      console.log(TAG + "************* testRdbStoreGetValueForFlutter_0007 start *************");
+    it('testRdbStoreGetValueForFlutter0007',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async  (done:Function) => {
+      console.log(TAG + "************* testRdbStoreGetValueForFlutter0007 start *************");
       rdbStore = await relationalStore.getRdbStore(context, STORE_CONFIG);
       await rdbStore.executeSql(CREATE_TABLE_TEST);
       const asset1: relationalStore.Asset = {
@@ -264,7 +276,7 @@ export default function rdbstoregetValueForFlutterTest() {
         let rowId = await rdbStore.insert("test", valueBucket1);
         expect(1).assertEqual(rowId);
       } catch (err) {
-        console.error(TAG + `### insert failed, code:${err.code}, message:${err.message}`);
+        console.error(TAG + `insert failed, code:${err.code}, message:${err.message}`);
       }
       try {
         let resultSet = await rdbStore.querySql('SELECT * FROM test');
@@ -280,20 +292,22 @@ export default function rdbstoregetValueForFlutterTest() {
         expect(asset1.size).assertEqual(assets2.size);
         expect(asset1.path).assertEqual(assets2.path);
         resultSet.close();
+        done();
       } catch (err) {
-        console.error(TAG + `### query failed, code:${err.code}, message:${err.message}`);
+        console.error(TAG + `query failed, code:${err.code}, message:${err.message}`);
+        expect().assertFail();
+        done();
       }
-      done();
-      console.log(TAG + "************* testRdbStoreGetValueForFlutter_0007 end *************");
+      console.log(TAG + "************* testRdbStoreGetValueForFlutter0007 end *************");
     })
 
     /**
-     * @tc.name testRdbStoreGetValueForFlutter_0008
+     * @tc.name testRdbStoreGetValueForFlutter0008
      * @tc.number SUB_DistributedData_RelationalStore_SDK_Int64JsAPITest_1600
      * @tc.desc other types test
      */
-    it('testRdbStoreGetValueForFlutter_0008',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async  (done:Function) => {
-      console.log(TAG + "************* testRdbStoreGetValueForFlutter_0008 start *************");
+    it('testRdbStoreGetValueForFlutter0008',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async  (done:Function) => {
+      console.log(TAG + "************* testRdbStoreGetValueForFlutter0008 start *************");
       rdbStore = await relationalStore.getRdbStore(context, STORE_CONFIG);
       await rdbStore.executeSql(CREATE_TABLE_TEST);
       const asset1: relationalStore.Asset = {
@@ -315,27 +329,29 @@ export default function rdbstoregetValueForFlutterTest() {
         let rowId = await rdbStore.insert("test", valueBucket1);
         expect(1).assertEqual(rowId);
       } catch (err) {
-        console.error(TAG + `### insert failed, code:${err.code}, message:${err.message}`);
+        console.error(TAG + `insert failed, code:${err.code}, message:${err.message}`);
       }
       try {
         let resultSet = await rdbStore.querySql('SELECT * FROM test');
         resultSet.goToFirstRow();
         resultSet.getValueForFlutter(null);
         resultSet.close();
+        expect().assertFail();
+        done();
       } catch (err) {
-        console.error(TAG + `### query failed, code:${err.code}, message:${err.message}`);
+        console.error(TAG + `query failed, code:${err.code}, message:${err.message}`);
         expect(err.code == 401).assertTrue();
+        done();
       }
-      done();
-      console.log(TAG + "************* testRdbStoreGetValueForFlutter_0008 end *************");
+      console.log(TAG + "************* testRdbStoreGetValueForFlutter0008 end *************");
     })
     /**
-     * @tc.name testRdbStoreGetValueForFlutter_0009
+     * @tc.name testRdbStoreGetValueForFlutter0009
      * @tc.number SUB_DistributedData_RelationalStore_SDK_Int64JsAPITest_1700
      * @tc.desc other types test
      */
-    it('testRdbStoreGetValueForFlutter_0009',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async  (done:Function) => {
-      console.log(TAG + "************* testRdbStoreGetValueForFlutter_0009 start *************");
+    it('testRdbStoreGetValueForFlutter0009',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async  (done:Function) => {
+      console.log(TAG + "************* testRdbStoreGetValueForFlutter0009 start *************");
       rdbStore = await relationalStore.getRdbStore(context, STORE_CONFIG);
       await rdbStore.executeSql(CREATE_TABLE_TEST);
       const asset1: relationalStore.Asset = {
@@ -357,27 +373,29 @@ export default function rdbstoregetValueForFlutterTest() {
         let rowId = await rdbStore.insert("test", valueBucket1);
         expect(1).assertEqual(rowId);
       } catch (err) {
-        console.error(TAG + `### insert failed, code:${err.code}, message:${err.message}`);
+        console.error(TAG + `insert failed, code:${err.code}, message:${err.message}`);
       }
       try {
         let resultSet = await rdbStore.querySql('SELECT * FROM test');
         resultSet.goToFirstRow();
         resultSet.getValueForFlutter(undefined);
         resultSet.close();
+        expect().assertFail();
+        done();
       } catch (err) {
-        console.error(TAG + `### query failed, code:${err.code}, message:${err.message}`);
+        console.error(TAG + `query failed, code:${err.code}, message:${err.message}`);
         expect(err.code == 401).assertTrue();
+        done();
       }
-      done();
-      console.log(TAG + "************* testRdbStoreGetValueForFlutter_0009 end *************");
+      console.log(TAG + "************* testRdbStoreGetValueForFlutter0009 end *************");
     })
     /**
-     * @tc.name testRdbStoreGetValueForFlutter_0010
+     * @tc.name testRdbStoreGetValueForFlutter0010
      * @tc.number SUB_DistributedData_RelationalStore_SDK_Int64JsAPITest_1800
      * @tc.desc other types test
      */
-    it('testRdbStoreGetValueForFlutter_0010',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async  (done:Function) => {
-      console.log(TAG + "************* testRdbStoreGetValueForFlutter_0010 start *************");
+    it('testRdbStoreGetValueForFlutter0010',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async  (done:Function) => {
+      console.log(TAG + "************* testRdbStoreGetValueForFlutter0010 start *************");
       rdbStore = await relationalStore.getRdbStore(context, STORE_CONFIG);
       await rdbStore.executeSql(CREATE_TABLE_TEST);
       const asset1: relationalStore.Asset = {
@@ -406,20 +424,22 @@ export default function rdbstoregetValueForFlutterTest() {
         resultSet.goToFirstRow();
         resultSet.close()
         resultSet.getValueForFlutter(1);
+        expect().assertFail();
+        done();
       } catch (err) {
         console.error(TAG + `### query failed, code:${err.code}, message:${err.message}`);
         expect(err.code == 14800014).assertTrue();
+        done();
       }
-      done();
-      console.log(TAG + "************* testRdbStoreGetValueForFlutter_0010 end *************");
+      console.log(TAG + "************* testRdbStoreGetValueForFlutter0010 end *************");
     })
     /**
-     * @tc.name testRdbStoreGetValueForFlutter_0011
+     * @tc.name testRdbStoreGetValueForFlutter0011
      * @tc.number SUB_DistributedData_RelationalStore_SDK_Int64JsAPITest_1900
      * @tc.desc other types test
      */
-    it('testRdbStoreGetValueForFlutter_0011',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async  (done:Function) => {
-      console.log(TAG + "************* testRdbStoreGetValueForFlutter_0011 start *************");
+    it('testRdbStoreGetValueForFlutter0011',  TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async  (done:Function) => {
+      console.log(TAG + "************* testRdbStoreGetValueForFlutter0011 start *************");
       rdbStore = await relationalStore.getRdbStore(context, STORE_CONFIG);
       await rdbStore.executeSql(CREATE_TABLE_TEST);
       const asset1: relationalStore.Asset = {
@@ -449,12 +469,13 @@ export default function rdbstoregetValueForFlutterTest() {
         resultSet.getValueForFlutter(-1);
         resultSet.close()
         expect().assertFail();
+        done();
       } catch (err) {
         console.error(TAG + `### query failed, code:${err.code}, message:${err.message}`);
         expect(err.code == 14800013).assertTrue();
+        done();
       }
-      done();
-      console.log(TAG + "************* testRdbStoreGetValueForFlutter_0011 end *************");
+      console.log(TAG + "************* testRdbStoreGetValueForFlutter0011 end *************");
     })
   })
 }
