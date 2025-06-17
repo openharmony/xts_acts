@@ -18,16 +18,16 @@ import { window } from '@kit.ArkUI';
 
 const caseName: string = 'SUB_Ability_AbilityRuntime_setFontSizeAtApp_0500';
 
-export default class setFontSizeAbility005 extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+export default class SetFontSizeAbility005 extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(0x0000, 'testTag', '%{public}s', caseName + 'setFontSizeAbility005 onCreate');
   }
 
-  onDestroy() {
+  onDestroy(): void {
     hilog.info(0x0000, 'testTag', '%{public}s', caseName + 'setFontSizeAbility005 onDestroy');
   }
 
-  onWindowStageCreate(windowStage: window.WindowStage) {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
     hilog.info(0x0000, 'testTag', '%{public}s', caseName + 'setFontSizeAbility005 onWindowStageCreate');
 
     windowStage.loadContent('testability/pages/setFontSizeAbility005', (err, data) => {
@@ -39,15 +39,15 @@ export default class setFontSizeAbility005 extends UIAbility {
     });
   }
 
-  onWindowStageDestroy() {
+  onWindowStageDestroy(): void {
     hilog.info(0x0000, 'testTag', '%{public}s', caseName + 'setFontSizeAbility005 onWindowStageDestroy');
   }
 
-  onForeground() {
+  onForeground(): void {
     hilog.info(0x0000, 'testTag', '%{public}s', caseName + 'setFontSizeAbility005 onForeground');
   }
 
-  onBackground() {
+  onBackground(): void {
     hilog.info(0x0000, 'testTag', '%{public}s', caseName + 'setFontSizeAbility005 onBackground');
   }
 }
