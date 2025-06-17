@@ -16,13 +16,21 @@
 import UIAbility from '@ohos.app.ability.UIAbility';
 import hilog from '@ohos.hilog';
 import window from '@ohos.window';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
 
 export default class AssistAbility01 extends UIAbility {
   onCreate(want, launchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'AssistAbility01 onCreate');
     globalThis.AssistAbility01 = this.context
     hilog.info(0x0000, 'testTag', '%{public}s', `AssistAbility01 JSON.stringify(want) is: ${JSON.stringify(want)}`);
+    let optionsWant = {
+      parameters: {
+        result: JSON.stringify(want.parameters)
+      }
+    };
+    commonEventManager.publish('ACTS_TEST_ON_CREATE_WANT_ASSIST', optionsWant, function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'commonEventManager AssistAbility01 publish ACTS_TEST_ON_CREATE_WANT_ASSIST');
+    });
   }
 
   onDestroy() {
@@ -66,5 +74,6 @@ export default class AssistAbility01 extends UIAbility {
   onBackground() {
     // Ability has back to background
     hilog.info(0x0000, 'testTag', '%{public}s', 'AssistAbility01 onBackground');
+    globalThis.AssistAbility01.terminateSelf();
   }
 }

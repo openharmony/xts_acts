@@ -27,6 +27,14 @@ export default class CallerInfo01 extends UIAbility {
     globalThis.CallerInfo01 = this.context
     hilog.info(0x0000, 'testTag', '%{public}s', `CallerInfo01 JSON.stringify(want) is: ${JSON.stringify(want)}`);
     hilog.info(0x0000, 'testTag', '%{public}s', `CallerInfo01 JSON.stringify(want.parameters) is: ${JSON.stringify(want.parameters)}`);
+    let optionsWant = {
+      parameters: {
+        result: JSON.stringify(want.parameters)
+      }
+    };
+    commonEventManager.publish('ACTS_TEST_ON_CREATE_WANT', optionsWant, function () {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'commonEventManager CallerInfo01 publish ACTS_TEST_ON_CREATE_WANT');
+    });
   }
 
   onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam) {

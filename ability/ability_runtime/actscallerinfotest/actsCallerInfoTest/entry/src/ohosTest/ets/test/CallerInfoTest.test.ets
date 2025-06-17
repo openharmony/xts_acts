@@ -24,7 +24,8 @@ let ACTS_EVENT: commonEventManager.CommonEventSubscribeInfo = {
     'ACTS_TEST_DESTROY',
     'ACTS_TEST_BACK',
     'ACTS_TEST_ON_NEW_WANT',
-    'ACTS_TEST_ON_CREATE_WANT'
+    'ACTS_TEST_ON_CREATE_WANT',
+    'ACTS_TEST_ON_CREATE_WANT_ASSIST'
   ]
 };
 
@@ -47,7 +48,7 @@ export default function callerInfoTest() {
     beforeEach(() => {
     })
     afterEach(async () => {
-      await sleep(500);
+      await sleep(2500);
     })
     afterAll(() => {
     })
@@ -92,6 +93,22 @@ export default function callerInfoTest() {
                     `startAbility failed, error.code: ${code}, error.message: ${message}`);
                 }
               }, 500);
+            }
+            if (data.event == 'ACTS_TEST_ON_CREATE_WANT') {
+              hilog.info(0x0000, 'testTag',
+                `%{public}s', onNewWant, data.parameters.result: ${data.parameters?.result}`);
+              let result:string = checkWantParameters(data.parameters?.result)
+              hilog.info(0x0000, 'testTag',
+                `%{public}s', ACTS_TEST_ON_CREATE_WANT, result is : ${result}`);
+              expect(result).assertEqual('{"component.startup.newRules":true,"debugApp":false,"moduleName":"entry_test","ohos.aafwk.param.callerAbilityName":"TestAbility","ohos.aafwk.param.callerAppId":"com.acts.actsCallerInfoTest_BCtwbrrZTeauTbNG/l1Ke4eowNrJ4I6h8q1xuy6k/XA3i/OlSG8a8Z3HbAVqe2Ic8rHq3139L51ZTFTZKDqc6fw=","ohos.aafwk.param.callerAppIdentifier":"","ohos.aafwk.param.callerBundleName":"com.acts.actsCallerInfoTest"}')
+            }
+            if (data.event == 'ACTS_TEST_ON_CREATE_WANT_ASSIST') {
+              hilog.info(0x0000, 'testTag',
+                `%{public}s', onNewWant, data.parameters.result: ${data.parameters?.result}`);
+              let result:string = checkWantParameters(data.parameters?.result)
+              hilog.info(0x0000, 'testTag',
+                `%{public}s', ACTS_TEST_ON_CREATE_WANT_ASSIST, result is : ${result}`);
+              expect(result).assertEqual('{"component.startup.newRules":true,"moduleName":"entry","ohos.aafwk.param.callerAbilityName":"callerInfo01","ohos.aafwk.param.callerAppId":"com.acts.actsCallerInfoTest_BCtwbrrZTeauTbNG/l1Ke4eowNrJ4I6h8q1xuy6k/XA3i/OlSG8a8Z3HbAVqe2Ic8rHq3139L51ZTFTZKDqc6fw=","ohos.aafwk.param.callerAppIdentifier":"","ohos.aafwk.param.callerBundleName":"com.acts.actsCallerInfoTest"}')
             }
             if (data.event == 'ACTS_TEST_ON_NEW_WANT') {
               hilog.info(0x0000, 'testTag',
