@@ -23,10 +23,10 @@ struct DismissSheetActionExample {
  @Builder
   sideBuilder() {
     Column() {
-      Button("change slide1")
+      Button('change slide1')
         .margin(10)
         .fontSize(20)
-      Button("change slide2")
+      Button('change slide2')
         .margin(10)
         .fontSize(20)
     }
@@ -51,9 +51,6 @@ struct DismissSheetActionExample {
           showClose: true,  
           blurStyle: BlurStyle.Regular, 
           enableOutsideInteractive: false,
-          //onAppear: () => {
-          //  console.log("BindSheet onAppear.");
-          //},
           onWillDismiss: ((DismissSheetAction: DismissSheetAction) => {
             if (DismissSheetAction.reason == DismissReason.SLIDE) {
               DismissSheetAction.dismiss(); //注册dismiss行为
@@ -62,7 +59,7 @@ struct DismissSheetActionExample {
           }),
           onWillSpringBackWhenDismiss: ((SpringBackAction: SpringBackAction) => {
             //没有注册springBack，下拉半模态页面无回弹行为
-            //SpringBackAction.springBack();
+            SpringBackAction.springBack();
           }),
         })
         Text(this.str).key('DismissReason')
