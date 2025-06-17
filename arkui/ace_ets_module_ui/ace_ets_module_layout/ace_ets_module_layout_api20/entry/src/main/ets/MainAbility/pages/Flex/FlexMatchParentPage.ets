@@ -16,20 +16,20 @@ import { LengthMetrics } from '@kit.ArkUI'
 
 @Entry
 @Component
-struct FlexLayoutPolicyPage {
+struct FlexMatchParentPage {
   build() {
     Flex() {
       Flex().backgroundColor(Color.Pink)
         .width(LayoutPolicy.matchParent)
         .height(LayoutPolicy.matchParent)
-        .id('FlexLayoutPolicyTest_0100_Flex_child')
+        .key('FlexMatchParentTest_0100_child')
     }
     .width(200)
     .height(200)
     .padding(20)
-    .border({ width: 5, color: Color.Yellow })
+    .border({ width: 10, color: Color.Yellow })
     .safeAreaPadding(LengthMetrics.vp(10))
     .backgroundColor(Color.Red)
-    .id('FlexLayoutPolicyTest_0100_Flex_parent')
+    .key('FlexMatchParentTest_0100_parent')
   }
 }

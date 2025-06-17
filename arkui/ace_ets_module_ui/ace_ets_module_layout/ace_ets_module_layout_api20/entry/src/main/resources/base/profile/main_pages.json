@@ -1,7 +1,7 @@
 {
     "src": [
         "MainAbility/pages/index/index",
-        "MainAbility/pages/Flex/FlexLayoutPolicyPage",
+        "MainAbility/pages/Flex/FlexMatchParentPage",
         "MainAbility/pages/GridRow/GridRowNoColumnsPage",
         "MainAbility/pages/GridRow/GridRowFixAtIdealSizePage",
         "MainAbility/pages/GridCol/GridColFixAtIdealSizePage",

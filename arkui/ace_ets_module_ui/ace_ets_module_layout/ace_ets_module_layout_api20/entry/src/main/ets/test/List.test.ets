@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import FlexLayoutPolicyTest from './Flex/FlexLayoutPolicyTest.test.ets'
+import FlexMatchParentTest from './Flex/FlexMatchParentTest.test.ets'
 import GridRowNoColumnsTest from './GridRow/GridRowNoColumnsTest.test.ets'
 import LayoutInspectorTest from './inspector/layoutInspector.test.ets'
 import ColumnMatchParentTest from './Column/ColumnMatchParentTest.ets'
@@ -35,7 +35,7 @@ import StackSafeAreaTest from './Stack/StackSafeAreaTest.ets'
 import StackChildAlignmentTest from './Stack/StackChildAlignmentTest.ets'
 
 export default function testsuite() {
-  FlexLayoutPolicyTest();
+  FlexMatchParentTest();
   GridRowNoColumnsTest();
   ColumnMatchParentTest();
   ColumnWrapContentTest();

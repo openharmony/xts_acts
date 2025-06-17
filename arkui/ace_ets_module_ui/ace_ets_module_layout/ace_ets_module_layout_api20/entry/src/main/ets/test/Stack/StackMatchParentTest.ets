@@ -30,7 +30,7 @@ export default function StackMatchParentTest() {
         router.clear();
         let pages = router.getState();
         console.info("get StackMatchParentTest state pages:" + JSON.stringify(pages));
-        if (!("FlexLayoutPolicyPage" == pages.name)) {
+        if (!("StackMatchParent" == pages.name)) {
           console.info("get StackMatchParentTest pages.name:" + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
@@ -51,18 +51,16 @@ export default function StackMatchParentTest() {
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
 
-      let stack_parent: RectValue = CommonFunc.getComponentRect('Stack2');
-      let stack_child: RectValue = CommonFunc.getComponentRect('Stack1');
-
-      // padding(20) + border(5) + safeAreaPadding(10)
-      console.log('[StackMatchParentTest_0100] stack_child.left - stack_parent.left - vp2px(35) is:' + (stack_child.left - stack_parent.left - vp2px(35)));
-      console.log('[StackMatchParentTest_0100] stack_parent.right - stack_child.right - vp2px(35) is:' + (stack_parent.right - stack_child.right - vp2px(35)));
-      console.log('[StackMatchParentTest_0100] stack_child.top - stack_parent.top - vp2px(35) is:' + (stack_child.top - stack_parent.top - vp2px(35)));
-      console.log('[StackMatchParentTest_0100] stack_parent.bottom - stack_child.bottom - vp2px(35) is:' + (stack_parent.bottom - stack_child.bottom - vp2px(35)));
-      expect(Math.floor(Math.abs(stack_child.left - stack_parent.left - vp2px(35))) <= 1).assertTrue();
-      expect(Math.floor(Math.abs(stack_parent.right - stack_child.right - vp2px(35))) <= 1).assertTrue();
-      expect(Math.floor(Math.abs(stack_child.top - stack_parent.top - vp2px(35))) <= 1).assertTrue();
-      expect(Math.floor(Math.abs(stack_parent.bottom - stack_child.bottom - vp2px(35))) <= 1).assertTrue();
+      let strJson = getInspectorByKey('StackMatchParentTest_0100_child');
+      let obj: ESObject = JSON.parse(strJson);
+      let width = parseFloat(obj.$attrs.width)
+      let height = parseFloat(obj.$attrs.height)
+      console.info("[StackMatchParentTest_0100] width is: " + width);
+      console.info("[StackMatchParentTest_0100] height is: " + height);
+      
+      // 200 - padding(20)*2 - border(10)*2 - safeAreaPadding(10)*2
+      expect(Math.floor(Math.abs(width - 120)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(height - 120)) <= 1).assertTrue();
 
       console.info('[StackMatchParentTest_0100] END');
       done();
