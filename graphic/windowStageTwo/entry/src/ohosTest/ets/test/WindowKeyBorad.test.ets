@@ -48,12 +48,12 @@ export default function windowKeyBorad() {
       await sleep(1000);
       if (isPCStatus==''||isAutoWindow == 'false') {
         let input = await driver.findComponent(ON.id('textInput'));
-        console.info('beforeAll input: ' + ${JSON.stringify(input)});
+        console.info('beforeAll input: ' + JSON.stringify(input));
         await sleep(1000);
         await input.click();
         await sleep(1000);
         let text = await driver.findComponent(ON.text('下一步'));
-        console.info('beforeAll text: ' + ${JSON.stringify(text)});
+        console.info('beforeAll text: ' + JSON.stringify(text));
         await sleep(1000);
         if (text) {
           await text.click();
