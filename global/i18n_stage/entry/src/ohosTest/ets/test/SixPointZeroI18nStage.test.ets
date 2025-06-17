@@ -301,7 +301,7 @@ export default function SixPointZeroI18nStageTest() {
       let locale: Intl.Locale = new Intl.Locale('ar');
       let formatter: i18n.SimpleNumberFormat = i18n.getSimpleNumberFormatBySkeleton("%", locale);
       let formattedNumber: string = formatter.format(10);
-      expect(formattedNumber).assertEqual('١٠٪‏')
+      expect(formattedNumber).assertEqual('١٠٪؜‏')
     })
 
     /* *
