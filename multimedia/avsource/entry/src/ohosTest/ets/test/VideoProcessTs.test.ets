@@ -17,7 +17,7 @@
  import { image } from '@kit.ImageKit';
  import { describe, it, expect, Level } from '@ohos/hypium';
  import { abilityDelegatorRegistry } from '@kit.TestKit';
- import deviceInfo from '@ohos.deviceInfo';
+ import { fileIo as fs } from '@kit.CoreFileKit';
 
  let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
  let abilityDelegatorArguments: abilityDelegatorRegistry.AbilityDelegatorArgs;
@@ -68,7 +68,7 @@
      * @tc.level      : Level 1
      */
     it('testVideoProcessTs002', Level.LEVEL0, async(done: Function) => {
-        if (access("/system/lib64/libvideoprocessingengine_ext.z.so", 0)) {
+        if (!fs.accessSync("/system/lib64/libvideoprocessingengine_ext.z.so")) {
             expect(true).assertTrue();
             done();
         }
@@ -103,7 +103,7 @@
      * @tc.level      : Level 1
      */
     it('testVideoProcessTs003', Level.LEVEL0, async(done: Function) => {
-        if (access("/system/lib64/libvideoprocessingengine_ext.z.so", 0)) {
+        if (!fs.accessSync("/system/lib64/libvideoprocessingengine_ext.z.so")) {
             expect(true).assertTrue();
             done();
         }
@@ -138,7 +138,7 @@
      * @tc.level      : Level 1
      */
     it('testVideoProcessTs004', Level.LEVEL0, async(done: Function) => {
-        if (access("/system/lib64/libvideoprocessingengine_ext.z.so", 0)) {
+        if (!fs.accessSync("/system/lib64/libvideoprocessingengine_ext.z.so")) {
             expect(true).assertTrue();
             done();
         }
@@ -173,7 +173,7 @@
      * @tc.level      : Level 1
      */
     it('testVideoProcessTs005', Level.LEVEL0, async(done: Function) => {
-        if (access("/system/lib64/libvideoprocessingengine_ext.z.so", 0)) {
+        if (!fs.accessSync("/system/lib64/libvideoprocessingengine_ext.z.so")) {
             expect(true).assertTrue();
             done();
         }
@@ -208,7 +208,7 @@
      * @tc.level      : Level 1
      */
     it('testVideoProcessTs006', Level.LEVEL0, async(done: Function) => {
-        if (access("/system/lib64/libvideoprocessingengine_ext.z.so", 0)) {
+        if (!fs.accessSync("/system/lib64/libvideoprocessingengine_ext.z.so")) {
             expect(true).assertTrue();
             done();
         }
@@ -243,7 +243,7 @@
      * @tc.level      : Level 1
      */
     it('testVideoProcessTs007', Level.LEVEL0, async(done: Function) => {
-        if (access("/system/lib64/libvideoprocessingengine_ext.z.so", 0)) {
+        if (!fs.accessSync("/system/lib64/libvideoprocessingengine_ext.z.so")) {
             expect(true).assertTrue();
             done();
         }
@@ -275,7 +275,7 @@
      * @tc.level      : Level 1
      */
     it('testVideoProcessTs008', Level.LEVEL0, async(done: Function) => {
-        if (access("/system/lib64/libvideoprocessingengine_ext.z.so", 0)) {
+        if (!fs.accessSync("/system/lib64/libvideoprocessingengine_ext.z.so")) {
             expect(true).assertTrue();
             done();
         }
@@ -310,7 +310,7 @@
      * @tc.level      : Level 1
      */
     it('testVideoProcessTs009', Level.LEVEL0, async(done: Function) => {
-        if (access("/system/lib64/libvideoprocessingengine_ext.z.so", 0)) {
+        if (!fs.accessSync("/system/lib64/libvideoprocessingengine_ext.z.so")) {
             expect(true).assertTrue();
             done();
         }
