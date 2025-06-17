@@ -61,66 +61,6 @@ export default function listEventTest() {
   describe('ListEventTest', () => {
 
     /*
-    * @tc.number     : SUB_ARKUI_CAPI_LIST_ON_SCROLL_0001
-    * @tc.name       : testListOnScroll001
-    * @tc.desc       : test onScroll event callback with rebound
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testListOnScroll001', 0, async (done: Function) => {
-      await Utils.pushPage(`list/ListOnScrollTest`);
-      // Fingers rolling upwards with rebound
-      {
-        await flingComponentV('list', true, 20000, 80)
-        await Utils.sleep(1000)
-        await flingComponentV('list', true, 20000, 80, 0, 150)
-        await Utils.sleep(3000)
-        let dataArray: number[][] = nativeRender.listGetOnScrollData()
-        let willOffsetData: number[] = dataArray[0];
-        let willStateData: number[] = dataArray[1];
-        console.log('testListOnScroll001 dataArray =', JSON.stringify(dataArray))
-        expect(willOffsetData[0] > 0 && willOffsetData[willOffsetData.length-1] < 0).assertEqual(true)
-        expect(willStateData[0] < 0.000001).assertEqual(true)
-      }
-      // Fingers rolling downwards with rebound
-      {
-        await flingComponentV('list', false, 20000, 80)
-        await Utils.sleep(1000)
-        await flingComponentV('list', false, 20000, 80, 0, 150)
-        await Utils.sleep(3000)
-        let dataArray: number[][] = nativeRender.listGetOnScrollData()
-        let willOffsetData: number[] = dataArray[0];
-        let willStateData: number[] = dataArray[1];
-        console.log('testListOnScroll001 dataArray =', JSON.stringify(dataArray))
-        expect(willOffsetData[0] < 0 && willOffsetData[willOffsetData.length-1] > 0).assertEqual(true)
-        expect(willStateData[0] < 0.000001).assertEqual(true)
-      }
-      done()
-    })
-    /*
-    * @tc.number     : SUB_ARKUI_CAPI_LIST_ON_SCROLL_0002
-    * @tc.name       : testListOnScroll002
-    * @tc.desc       : test onScroll event callback without rebound
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testListOnScroll002', 0, async (done: Function) => {
-      await Utils.pushPage(`list/ListOnScrollTest`);
-      // Fingers rolling upwards without rebound
-      await flingComponentV('list', true, 200, 20)
-      await Utils.sleep(3000)
-      let dataArray: number[][] = nativeRender.listGetOnScrollData()
-      let willOffsetData: number[] = dataArray[0];
-      let willStateData: number[] = dataArray[1];
-      console.log('testListOnScroll002 dataArray =', JSON.stringify(dataArray))
-      expect(willOffsetData.length == 1 && willOffsetData[0] > 0).assertEqual(true)
-      expect(willStateData.length == 1 && willStateData[0] < 0.000001).assertEqual(true)
-      done()
-    })
-
-    /*
     * @tc.number     : SUB_ARKUI_CAPI_LIST_ON_SCROLL_0003
     * @tc.name       : testListOnScroll003
     * @tc.desc       : test Scroll the mouse backwards
@@ -140,28 +80,6 @@ export default function listEventTest() {
       let willOffsetData: number[] = dataArray[0];
       let willStateData: number[] = dataArray[1];
       console.log('testListOnScroll003 dataArray =', JSON.stringify(dataArray))
-      expect(willOffsetData.length == 1 && willOffsetData[0] > 0).assertEqual(true)
-      expect(willStateData.length == 1 && willStateData[0] < 0.000001).assertEqual(true)
-      done()
-    })
-
-    /*
-    * @tc.number     : SUB_ARKUI_CAPI_LIST_ON_SCROLL_0004
-    * @tc.name       : testListOnScroll004
-    * @tc.desc       : test Drag the scrollbar downwards with your fingers
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testListOnScroll004', 0, async (done: Function) => {
-      await Utils.pushPage(`list/ListOnScrollTest`);
-      // Drag the scrollbar downwards with your fingers
-      await flingComponentV('list', false, 100, 80, 135)
-      await Utils.sleep(3000)
-      let dataArray: number[][] = nativeRender.listGetOnScrollData()
-      let willOffsetData: number[] = dataArray[0];
-      let willStateData: number[] = dataArray[1];
-      console.log('testListOnScroll004 dataArray =', JSON.stringify(dataArray))
       expect(willOffsetData.length == 1 && willOffsetData[0] > 0).assertEqual(true)
       expect(willStateData.length == 1 && willStateData[0] < 0.000001).assertEqual(true)
       done()
@@ -289,108 +207,6 @@ export default function listEventTest() {
     })
 
     /*
-    * @tc.number     : SUB_ARKUI_CAPI_LIST_ON_WILL_DID_SCROLL_0001
-    * @tc.name       : testListOnWillDidScroll001
-    * @tc.desc       : test onWillScroll and onDidScroll event callback with rebound
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testListOnWillDidScroll001', 0, async (done: Function) => {
-      await Utils.pushPage(`list/ListOnWillDidScrollTest`);
-      // Fingers rolling upwards with rebound
-      {
-        await flingComponentV('list', true, 20000, 80)
-        await Utils.sleep(1000)
-        await flingComponentV('list', true, 40000, 80)
-        await Utils.sleep(3000)
-        let dataArray: number[][] = nativeRender.listGetOnWillDidScrollData()
-        let willOffsetData: number[] = dataArray[0];
-        let willStateData: number[] = dataArray[1];
-        let willSourceData: number[] = dataArray[2];
-        let didOffsetData: number[] = dataArray[3];
-        let didStateData: number[] = dataArray[4];
-        console.log('testListOnWillDidScroll001 dataArray =', JSON.stringify(dataArray))
-        expect(willOffsetData[0] > 0 && willOffsetData[willOffsetData.length-1] < 0).assertEqual(true)
-        expect(willStateData[0] == ScrollState.Scroll && willStateData[1] == ScrollState.Fling).assertEqual(true)
-        expect(willSourceData[0] == ScrollSource.DRAG && willSourceData[1] == ScrollSource.FLING &&
-          willSourceData[willSourceData.length-1] == ScrollSource.EDGE_EFFECT).assertEqual(true)
-        expect(didOffsetData[0] > 0 && didOffsetData[1] < 0).assertEqual(true)
-        expect(didStateData[didStateData.length-3] == ScrollState.Scroll &&
-          didStateData[didStateData.length-2] == ScrollState.Fling &&
-          didStateData[didStateData.length-1] == ScrollState.Idle).assertEqual(true)
-      }
-      done()
-    })
-
-    /*
-    * @tc.number     : SUB_ARKUI_CAPI_LIST_ON_WILL_DID_SCROLL_0007
-    * @tc.name       : testListOnWillDidScroll007
-    * @tc.desc       : test onWillScroll and onDidScroll event callback with rebound
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testListOnWillDidScroll007', 0, async (done: Function) => {
-      await Utils.pushPage(`list/ListOnWillDidScrollTest`);
-      // Fingers rolling downwards with rebound
-      {
-        await flingComponentV('list', false, 20000, 80)
-        await Utils.sleep(1000)
-        await flingComponentV('list', false, 40000, 80)
-        await Utils.sleep(3000)
-        let dataArray: number[][] = nativeRender.listGetOnWillDidScrollData()
-        let willOffsetData: number[] = dataArray[0];
-        let willStateData: number[] = dataArray[1];
-        let willSourceData: number[] = dataArray[2];
-        let didOffsetData: number[] = dataArray[3];
-        let didStateData: number[] = dataArray[4];
-        console.log('testListOnWillDidScroll007 dataArray =', JSON.stringify(dataArray))
-        expect(willOffsetData[0] < 0 && willOffsetData[willOffsetData.length-1] > 0).assertEqual(true)
-        expect(willStateData[0] == ScrollState.Scroll && willStateData[1] == ScrollState.Fling).assertEqual(true)
-        expect(willSourceData[0] == ScrollSource.DRAG && willSourceData[1] == ScrollSource.FLING &&
-          willSourceData[willSourceData.length-1] == ScrollSource.EDGE_EFFECT).assertEqual(true)
-        expect(didOffsetData[0] < 0 && didOffsetData[1] > 0).assertEqual(true)
-        expect(didStateData[didStateData.length-3] == ScrollState.Scroll &&
-          didStateData[didStateData.length-2] == ScrollState.Fling &&
-          didStateData[didStateData.length-1] == ScrollState.Idle).assertEqual(true)
-      }
-      done()
-    })
-
-    /*
-    * @tc.number     : SUB_ARKUI_CAPI_LIST_ON_WILL_DID_SCROLL_0002
-    * @tc.name       : testListOnWillDidScroll002
-    * @tc.desc       : test onWillScroll and onDidScroll event callback without rebound
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testListOnWillDidScroll002', 0, async (done: Function) => {
-      await Utils.pushPage(`list/ListOnWillDidScrollTest`);
-      // Fingers rolling upwards without rebound
-      await flingComponentV('list', true, 200, 20)
-      await Utils.sleep(3000)
-      let dataArray: number[][] = nativeRender.listGetOnWillDidScrollData()
-      let willOffsetData: number[] = dataArray[0];
-      let willStateData: number[] = dataArray[1];
-      let willSourceData: number[] = dataArray[2];
-      let didOffsetData: number[] = dataArray[3];
-      let didStateData: number[] = dataArray[4];
-      console.log('testListOnWillDidScroll002 dataArray =', JSON.stringify(dataArray))
-      expect(willOffsetData.length == 1 && willOffsetData[0] > 0).assertEqual(true)
-      expect(willStateData.length == 2 && willStateData[0] == ScrollState.Scroll &&
-        willStateData[1] == ScrollState.Fling).assertEqual(true)
-      expect(willSourceData.length == 2 && willSourceData[0] == ScrollSource.DRAG &&
-        willSourceData[1] == ScrollSource.FLING).assertEqual(true)
-      expect(didOffsetData.length == 1 && didOffsetData[0] > 0).assertEqual(true)
-      expect(didStateData.length == 3 && didStateData[0] == ScrollState.Scroll &&
-        didStateData[1] == ScrollState.Fling && didStateData[2] == ScrollState.Idle)
-        .assertEqual(true)
-      done()
-    })
-
-    /*
     * @tc.number     : SUB_ARKUI_CAPI_LIST_ON_WILL_DID_SCROLL_0003
     * @tc.name       : testListOnWillDidScroll003
     * @tc.desc       : test Scroll the mouse backwards
@@ -418,38 +234,6 @@ export default function listEventTest() {
       expect(willSourceData.length == 1 && willSourceData[0] == ScrollSource.OTHER_USER_INPUT).assertEqual(true)
       expect(didOffsetData.length == 1 && didOffsetData[0] > 0).assertEqual(true)
       expect(didStateData.length == 2 && didStateData[0] == ScrollState.Scroll && didStateData[1] == ScrollState.Idle)
-        .assertEqual(true)
-      done()
-    })
-
-    /*
-    * @tc.number     : SUB_ARKUI_CAPI_LIST_ON_WILL_DID_SCROLL_0004
-    * @tc.name       : testListOnWillDidScroll004
-    * @tc.desc       : test Drag the scrollbar downwards with your fingers
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testListOnWillDidScroll004', 0, async (done: Function) => {
-      await Utils.pushPage(`list/ListOnWillDidScrollTest`);
-      // Drag the scrollbar downwards with your fingers
-      await flingComponentV('list', false, 100, 60, 135)
-      await Utils.sleep(3000)
-      let dataArray: number[][] = nativeRender.listGetOnWillDidScrollData()
-      let willOffsetData: number[] = dataArray[0];
-      let willStateData: number[] = dataArray[1];
-      let willSourceData: number[] = dataArray[2];
-      let didOffsetData: number[] = dataArray[3];
-      let didStateData: number[] = dataArray[4];
-      console.log('testListOnWillDidScroll004 dataArray =', JSON.stringify(dataArray))
-      expect(willOffsetData.length == 1 && willOffsetData[0] > 0).assertEqual(true)
-      expect(willStateData.length == 2 && willStateData[0] == ScrollState.Scroll &&
-        willStateData[1] == ScrollState.Fling).assertEqual(true)
-      expect(willSourceData.length == 2 && willSourceData[0] == ScrollSource.SCROLL_BAR &&
-        willSourceData[1] == ScrollSource.SCROLL_BAR_FLING).assertEqual(true)
-      expect(didOffsetData.length == 1 && didOffsetData[0] > 0).assertEqual(true)
-      expect(didStateData.length == 3 && didStateData[0] == ScrollState.Scroll &&
-        didStateData[1] == ScrollState.Fling && didStateData[2] == ScrollState.Idle)
         .assertEqual(true)
       done()
     })
@@ -534,89 +318,6 @@ export default function listEventTest() {
         .assertEqual(true)
       done()
     })
-    /*
-    * @tc.number     : SUB_ARKUI_CAPI_LIST_ON_WILL_SCROLL_0001
-    * @tc.name       : testListOnWillScroll001
-    * @tc.desc       : test onWillScroll event callback with rebound
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testListOnWillScroll001', 0, async (done: Function) => {
-      await Utils.pushPage(`list/ListOnWillScrollTest`);
-      // Fingers rolling upwards with rebound
-      {
-        await flingComponentV('list', true, 20000, 80)
-        await Utils.sleep(1000)
-        await flingComponentV('list', true, 40000, 80)
-        await Utils.sleep(3000)
-        let dataArray: number[][] = nativeRender.listGetOnWillScrollData()
-        let willOffsetData: number[] = dataArray[0];
-        let willStateData: number[] = dataArray[1];
-        let willSourceData: number[] = dataArray[2];
-        console.log('testListOnWillScroll001 dataArray =', JSON.stringify(dataArray))
-        expect(willOffsetData[0] > 0 && willOffsetData[willOffsetData.length-1] < 0).assertEqual(true)
-        expect(willStateData[0] == ScrollState.Scroll && willStateData[1] == ScrollState.Fling).assertEqual(true)
-        expect(willSourceData[0] == ScrollSource.DRAG && willSourceData[1] == ScrollSource.FLING &&
-          willSourceData[willSourceData.length-1] == ScrollSource.EDGE_EFFECT).assertEqual(true)
-      }
-      done()
-    })
-
-    /*
-    * @tc.number     : SUB_ARKUI_CAPI_LIST_ON_WILL_SCROLL_0007
-    * @tc.name       : testListOnWillScroll007
-    * @tc.desc       : test onWillScroll event callback with rebound
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testListOnWillScroll007', 0, async (done: Function) => {
-      await Utils.pushPage(`list/ListOnWillScrollTest`);
-      // Fingers rolling downwards with rebound
-      {
-        await flingComponentV('list', false, 20000, 80)
-        await Utils.sleep(1000)
-        await flingComponentV('list', false, 40000, 80)
-        await Utils.sleep(3000)
-        let dataArray: number[][] = nativeRender.listGetOnWillScrollData()
-        let willOffsetData: number[] = dataArray[0];
-        let willStateData: number[] = dataArray[1];
-        let willSourceData: number[] = dataArray[2];
-        console.log('testListOnWillScroll007 dataArray =', JSON.stringify(dataArray))
-        expect(willOffsetData[0] < 0 && willOffsetData[willOffsetData.length-1] > 0).assertEqual(true)
-        expect(willStateData[0] == ScrollState.Scroll && willStateData[1] == ScrollState.Fling).assertEqual(true)
-        expect(willSourceData[0] == ScrollSource.DRAG && willSourceData[1] == ScrollSource.FLING &&
-          willSourceData[willSourceData.length-1] == ScrollSource.EDGE_EFFECT).assertEqual(true)
-      }
-      done()
-    })
-
-    /*
-    * @tc.number     : SUB_ARKUI_CAPI_LIST_ON_WILL_SCROLL_0002
-    * @tc.name       : testListOnWillScroll002
-    * @tc.desc       : test onWillScroll event callback without rebound
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testListOnWillScroll002', 0, async (done: Function) => {
-      await Utils.pushPage(`list/ListOnWillScrollTest`);
-      // Fingers rolling upwards without rebound
-      await flingComponentV('list', true, 200, 20)
-      await Utils.sleep(3000)
-      let dataArray: number[][] = nativeRender.listGetOnWillScrollData()
-      let willOffsetData: number[] = dataArray[0];
-      let willStateData: number[] = dataArray[1];
-      let willSourceData: number[] = dataArray[2];
-      console.log('testListOnWillScroll002 dataArray =', JSON.stringify(dataArray))
-      expect(willOffsetData.length == 1 && willOffsetData[0] > 0).assertEqual(true)
-      expect(willStateData.length == 2 && willStateData[0] == ScrollState.Scroll &&
-        willStateData[1] == ScrollState.Fling).assertEqual(true)
-      expect(willSourceData.length == 2 && willSourceData[0] == ScrollSource.DRAG &&
-        willSourceData[1] == ScrollSource.FLING).assertEqual(true)
-      done()
-    })
 
     /*
     * @tc.number     : SUB_ARKUI_CAPI_LIST_ON_WILL_SCROLL_0003
@@ -642,32 +343,6 @@ export default function listEventTest() {
       expect(willOffsetData.length == 1 && willOffsetData[0] > 0).assertEqual(true)
       expect(willStateData.length == 1 && willStateData[0] == ScrollState.Scroll).assertEqual(true)
       expect(willSourceData.length == 1 && willSourceData[0] == ScrollSource.OTHER_USER_INPUT).assertEqual(true)
-      done()
-    })
-
-    /*
-    * @tc.number     : SUB_ARKUI_CAPI_LIST_ON_WILL_SCROLL_0004
-    * @tc.name       : testListOnWillScroll004
-    * @tc.desc       : test Drag the scrollbar downwards with your fingers
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testListOnWillScroll004', 0, async (done: Function) => {
-      await Utils.pushPage(`list/ListOnWillScrollTest`);
-      // Drag the scrollbar downwards with your fingers
-      await flingComponentV('list', false, 100, 60, 135)
-      await Utils.sleep(3000)
-      let dataArray: number[][] = nativeRender.listGetOnWillScrollData()
-      let willOffsetData: number[] = dataArray[0];
-      let willStateData: number[] = dataArray[1];
-      let willSourceData: number[] = dataArray[2];
-      console.log('testListOnWillScroll004 dataArray =', JSON.stringify(dataArray))
-      expect(willOffsetData.length == 1 && willOffsetData[0] > 0).assertEqual(true)
-      expect(willStateData.length == 2 && willStateData[0] == ScrollState.Scroll &&
-        willStateData[1] == ScrollState.Fling).assertEqual(true)
-      expect(willSourceData.length == 2 && willSourceData[0] == ScrollSource.SCROLL_BAR &&
-        willSourceData[1] == ScrollSource.SCROLL_BAR_FLING).assertEqual(true)
       done()
     })
 
@@ -736,85 +411,6 @@ export default function listEventTest() {
         willSourceData[1] == ScrollSource.FLING).assertEqual(true)
       done()
     })
-    /*
-    * @tc.number     : SUB_ARKUI_CAPI_LIST_ON_DID_SCROLL_0001
-    * @tc.name       : testListOnDidScroll001
-    * @tc.desc       : test onDidScroll event callback with rebound
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testListOnDidScroll001', 0, async (done: Function) => {
-      await Utils.pushPage(`list/ListOnDidScrollTest`);
-      // Fingers rolling upwards with rebound
-      {
-        await flingComponentV('list', true, 20000, 80)
-        await Utils.sleep(1000)
-        await flingComponentV('list', true, 40000, 80)
-        await Utils.sleep(3000)
-        let dataArray: number[][] = nativeRender.listGetOnDidScrollData()
-        let didOffsetData: number[] = dataArray[0];
-        let didStateData: number[] = dataArray[1];
-        console.log('testListOnDidScroll001 dataArray =', JSON.stringify(dataArray))
-        expect(didOffsetData[0] > 0 && didOffsetData[1] < 0).assertEqual(true)
-        expect(didStateData[didStateData.length-3] == ScrollState.Scroll &&
-          didStateData[didStateData.length-2] == ScrollState.Fling &&
-          didStateData[didStateData.length-1] == ScrollState.Idle).assertEqual(true)
-
-      }
-      done()
-    })
-    /*
-    * @tc.number     : SUB_ARKUI_CAPI_LIST_ON_DID_SCROLL_0007
-    * @tc.name       : testListOnDidScroll007
-    * @tc.desc       : test onDidScroll event callback with rebound
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testListOnDidScroll007', 0, async (done: Function) => {
-      await Utils.pushPage(`list/ListOnDidScrollTest`);
-      // Fingers rolling downwards with rebound
-      {
-        await flingComponentV('list', false, 20000, 80)
-        await Utils.sleep(1000)
-        await flingComponentV('list', false, 40000, 80)
-        await Utils.sleep(3000)
-        let dataArray: number[][] = nativeRender.listGetOnDidScrollData()
-        let didOffsetData: number[] = dataArray[0];
-        let didStateData: number[] = dataArray[1];
-        console.log('testListOnDidScroll007 dataArray =', JSON.stringify(dataArray))
-        expect(didOffsetData[0] < 0 && didOffsetData[1] > 0).assertEqual(true)
-        expect(didStateData[didStateData.length-3] == ScrollState.Scroll &&
-          didStateData[didStateData.length-2] == ScrollState.Fling &&
-          didStateData[didStateData.length-1] == ScrollState.Idle).assertEqual(true)
-      }
-      done()
-    })
-
-    /*
-    * @tc.number     : SUB_ARKUI_CAPI_LIST_ON_DID_SCROLL_0002
-    * @tc.name       : testListOnDidScroll002
-    * @tc.desc       : test onDidScroll event callback without rebound
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testListOnDidScroll002', 0, async (done: Function) => {
-      await Utils.pushPage(`list/ListOnDidScrollTest`);
-      // Fingers rolling upwards without rebound
-      await flingComponentV('list', true, 200, 20)
-      await Utils.sleep(3000)
-      let dataArray: number[][] = nativeRender.listGetOnDidScrollData()
-      let didOffsetData: number[] = dataArray[0];
-      let didStateData: number[] = dataArray[1];
-      console.log('testListOnDidScroll002 dataArray =', JSON.stringify(dataArray))
-      expect(didOffsetData.length == 1 && didOffsetData[0] > 0).assertEqual(true)
-      expect(didStateData.length == 3 && didStateData[0] == ScrollState.Scroll &&
-        didStateData[1] == ScrollState.Fling && didStateData[2] == ScrollState.Idle)
-        .assertEqual(true)
-      done()
-    })
 
     /*
     * @tc.number     : SUB_ARKUI_CAPI_LIST_ON_DID_SCROLL_0003
@@ -838,30 +434,6 @@ export default function listEventTest() {
       console.log('testListOnDidScroll003 dataArray =', JSON.stringify(dataArray))
       expect(didOffsetData.length == 1 && didOffsetData[0] > 0).assertEqual(true)
       expect(didStateData.length == 2 && didStateData[0] == ScrollState.Scroll && didStateData[1] == ScrollState.Idle)
-        .assertEqual(true)
-      done()
-    })
-
-    /*
-    * @tc.number     : SUB_ARKUI_CAPI_LIST_ON_DID_SCROLL_0004
-    * @tc.name       : testListOnDidScroll004
-    * @tc.desc       : test Drag the scrollbar downwards with your fingers
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testListOnDidScroll004', 0, async (done: Function) => {
-      await Utils.pushPage(`list/ListOnDidScrollTest`);
-      // Drag the scrollbar downwards with your fingers
-      await flingComponentV('list', false, 100, 60, 135)
-      await Utils.sleep(3000)
-      let dataArray: number[][] = nativeRender.listGetOnDidScrollData()
-      let didOffsetData: number[] = dataArray[0];
-      let didStateData: number[] = dataArray[1];
-      console.log('testListOnDidScroll004 dataArray =', JSON.stringify(dataArray))
-      expect(didOffsetData.length == 1 && didOffsetData[0] > 0).assertEqual(true)
-      expect(didStateData.length == 3 && didStateData[0] == ScrollState.Scroll &&
-        didStateData[1] == ScrollState.Fling && didStateData[2] == ScrollState.Idle)
         .assertEqual(true)
       done()
     })
@@ -924,125 +496,6 @@ export default function listEventTest() {
       expect(didStateData.length == 3 && didStateData[0] == ScrollState.Scroll &&
         didStateData[1] == ScrollState.Fling && didStateData[2] == ScrollState.Idle)
         .assertEqual(true)
-      done()
-    })
-    /*
-    * @tc.number     : SUB_ARKUI_CAPI_LIST_ON_SCROLL_INDEX_0001
-    * @tc.name       : testListOnScrollIndex001
-    * @tc.desc       : test onScrollIndex event when forward
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testListOnScrollIndex001', 0, async (done: Function) => {
-      await Utils.pushPage(`list/ListOnScrollIndexTest`);
-      await flingComponentV('list', true, 20000, 50)
-      await Utils.sleep(1500)
-      let dataArray: number[][] = nativeRender.listGetOnScrollIndexData()
-      let firstArray: number[] = dataArray[0];
-      let lastArray: number[] = dataArray[1];
-      let subComponentIndexArray: number[] = dataArray[2];
-      console.log('testListOnScrollIndex001 dataArray =', JSON.stringify(dataArray))
-      expect(firstArray.length == lastArray.length && lastArray.length == subComponentIndexArray.length &&
-        firstArray.length != 0).assertEqual(true)
-      expect(firstArray[firstArray.length - 1] == 12).assertEqual(true)
-      expect(lastArray[lastArray.length - 1] == 15).assertEqual(true)
-      expect(subComponentIndexArray[subComponentIndexArray.length - 1] == 13).assertEqual(true)
-      done()
-      done()
-    })
-
-    /*
-    * @tc.number     : SUB_ARKUI_CAPI_LIST_ON_SCROLL_INDEX_0002
-    * @tc.name       : testListOnScrollIndex002
-    * @tc.desc       : test onScrollIndex event when forward
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testListOnScrollIndex002', 0, async (done: Function) => {
-      await Utils.pushPage(`list/ListOnScrollIndexTest`);
-      await flingComponentV('list', false, 20000, 50)
-      await Utils.sleep(1500)
-      let dataArray: number[][] = nativeRender.listGetOnScrollIndexData()
-      let firstArray: number[] = dataArray[0];
-      let lastArray: number[] = dataArray[1];
-      let subComponentIndexArray: number[] = dataArray[2];
-      console.log('testListOnScrollIndex002 dataArray =', JSON.stringify(dataArray))
-      expect(firstArray.length == lastArray.length && lastArray.length == subComponentIndexArray.length &&
-        firstArray.length != 0).assertEqual(true)
-      expect(firstArray[firstArray.length - 1] == 0).assertEqual(true)
-      expect(lastArray[lastArray.length - 1] == 3).assertEqual(true)
-      expect(subComponentIndexArray[subComponentIndexArray.length - 1] == 2).assertEqual(true)
-      done()
-    })
-
-    /*
-    * @tc.number     : SUB_ARKUI_CAPI_LIST_ON_SCROLL_FRAME_BEGIN_0001
-    * @tc.name       : testListOnScrollFrameBegin001
-    * @tc.desc       : test OnScrollFrameBegin event when downForward without rebound
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testListOnScrollFrameBegin001', 0, async (done: Function) => {
-      await Utils.pushPage(`list/ListOnScrollFrameBeginTest`);
-      await flingComponentV('list', false, 500, 15)
-      await Utils.sleep(1500)
-      let dataArray = nativeRender.listGetOnWillDidScrollData();
-      let willOffsetData: number[] = dataArray[0];
-      let willStateData: number[] = dataArray[1];
-      console.log('testListOnScrollFrameBegin001 dataArray =', JSON.stringify(dataArray))
-      expect(willOffsetData.length == 1 && willOffsetData[0] < 0).assertEqual(true)
-      expect(willStateData.length == 2 && willStateData[0] == ScrollState.Scroll &&
-        willStateData[1] == ScrollState.Fling).assertEqual(true)
-      done()
-    })
-
-    /*
-    * @tc.number     : SUB_ARKUI_CAPI_LIST_ON_SCROLL_FRAME_BEGIN_0002
-    * @tc.name       : testListOnScrollFrameBegin002
-    * @tc.desc       : test OnScrollFrameBegin event when upForward with rebound
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testListOnScrollFrameBegin002', 0, async (done: Function) => {
-      await Utils.pushPage(`list/ListOnScrollFrameBeginTest`);
-      await flingComponentV('list', true, 20000, 80)
-      await Utils.sleep(1000)
-      await flingComponentV('list', true, 20000, 80)
-      await Utils.sleep(1500)
-      let dataArray = nativeRender.listGetOnWillDidScrollData();
-      let willOffsetData: number[] = dataArray[0];
-      let willStateData: number[] = dataArray[1];
-      console.log('testListOnScrollFrameBegin002 dataArray =', JSON.stringify(dataArray))
-      expect(willOffsetData.length == 1 && willOffsetData[0] > 0).assertEqual(true)
-      expect(willStateData[0] == ScrollState.Scroll && willStateData[1] == ScrollState.Fling).assertEqual(true)
-      done()
-    })
-
-    /*
-    * @tc.number     : SUB_ARKUI_CAPI_LIST_ON_SCROLL_FRAME_BEGIN_0003
-    * @tc.name       : testListOnScrollFrameBegin003
-    * @tc.desc       : test OnScrollFrameBegin event use scrollbar when upForward
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testListOnScrollFrameBegin003', 0, async (done: Function) => {
-      await Utils.pushPage(`list/ListOnScrollFrameBeginTest`);
-      let speed: number = 100
-      let distance: number = 80
-      let offsetX: number = 135
-      await flingComponentV('list', true, speed, distance, offsetX)
-      await Utils.sleep(1500)
-      let dataArray = nativeRender.listGetOnWillDidScrollData();
-      let willOffsetData: number[] = dataArray[0];
-      let willStateData: number[] = dataArray[1];
-      console.log('testListOnScrollFrameBegin003 dataArray =', JSON.stringify(dataArray))
-      expect(willOffsetData.length == 0).assertEqual(true)
-      expect(willStateData.length == 0).assertEqual(true)
       done()
     })
 
