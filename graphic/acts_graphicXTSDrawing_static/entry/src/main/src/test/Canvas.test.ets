@@ -91,6 +91,81 @@ export default function drawingTsCanvasTest() {
       }
     })
     /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_CANVAS_STATIC_0200
+     * @tc.name      : testCanvasDrawRectNormalStatic
+     * @tc.desc      : testCanvasDrawRectNormalStatic
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('testCanvasDrawRectNormalStatic', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
+      const msg = 'testCanvasDrawRectNormalStatic';
+      try {
+        let canvas = new drawing.Canvas(pixel);
+        const pen = new drawing.Pen();
+        // pen.setStrokeWidth(5);
+        // pen.setColor({
+        //   alpha: 255, red: 255, green: 0, blue: 0
+        // });
+        // canvas.attachPen(pen);
+        canvas.drawRect({
+          left: 0, right: 0, top: 10, bottom: 10
+        });
+        canvas.drawRect({
+          left: 100.32, right: 100.5, top: 400.2, bottom: 400.3
+        });
+        canvas.drawRect({
+          left: 0, right: 0, top: 0, bottom: 100
+        });
+        canvas.drawRect({
+          left: 0, right: 100, top: 100, bottom: 100
+        });
+        canvas.drawRect({
+          left: 100, right: 100, top: 100, bottom: 100
+        });
+        canvas.drawRect({
+          left: -100, right: 100, top: -100, bottom: 100
+        });
+        canvas.drawRect({
+          left: 100, right: -100, top: 100, bottom: -100
+        });
+        canvas.drawRect({
+          left: 200, right: 100, top: 200, bottom: 100
+        });
+        // canvas.detachPen();
+        console.info(msg + 'drawRect successed');
+      } catch (e: BusinessError) {
+        console.info(msg + `drawRect errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_CANVAS_STATIC_0201
+     * @tc.name      : testCanvasDrawRect2NormalStatic
+     * @tc.desc      : testCanvasDrawRect2NormalStatic
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('testCanvasDrawRect2NormalStatic', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, () => {
+      const msg = 'testCanvasDrawRect2NormalStatic';
+      try {
+        let canvas = new drawing.Canvas(pixel);
+        const pen = new drawing.Pen();
+        // pen.setStrokeWidth(5);
+        // pen.setColor({
+        //   alpha: 255, red: 255, green: 0, blue: 0
+        // });
+        // canvas.attachPen(pen);
+        canvas.drawRect(0, 0, 10, 10);
+        // canvas.detachPen();
+        console.info(msg + '2 drawRect successed');
+      } catch (e: BusinessError) {
+        console.info(msg + `2 drawRect errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect().assertFail();
+      }
+    })
+    /**
      * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_CANVAS_STATIC_0600
      * @tc.name      : testCanvasDrawPixelMapMeshNormalStatic
      * @tc.desc      : testCanvasDrawPixelMapMeshNormal
