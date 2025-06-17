@@ -45,9 +45,9 @@ export default function SheetTypeTest() {
     * @tc.number: SheetTypeTest_001
     * @tc.name  : SheetTypeTest_001
     * @tc.desc  : Test the SheetTypeTest not null
-    * @tc.level : Level 0
+    * @tc.level : Level 1
     */
-    it('SheetTypeTest_001', 0, async (done: Function) => {
+    it('SheetTypeTest_001', TestType.Function | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('SheetTypeTest_001 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
