@@ -17,6 +17,7 @@ add_library(nativerender SHARED
     customcomponent/CustomComponentOndrawFrontTest.cpp
     customcomponent/CustomComponentOndrawBehindTest.cpp
     EmbeddedComponentOption/EmbeddedComponentOptionTest.cpp
+    uiState/UiStatesTest.cpp
 )
 
 add_library(nativefunc SHARED

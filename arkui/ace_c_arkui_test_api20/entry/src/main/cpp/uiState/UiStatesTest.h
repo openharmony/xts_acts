@@ -1,10 +1,10 @@
-/**
+/*
  * Copyright (c) 2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -13,14 +13,21 @@
  * limitations under the License.
  */
 
-import getDisplayId from './DragTest/getDisplayId.test';
-import tapLocationTest from './TapGestureTest/tapLocation.test';
-import PanGestureTest from './PanGestureTest/observer.test';
-import colorMetricsTest from './ColorTest/colorMetrics.test'
+#ifndef ARKUI_CAPI_XTS_UISTATES_TEST_H
+#define ARKUI_CAPI_XTS_UISTATES_TEST_H
 
-export default function testsuite() {
-  getDisplayId();
-  tapLocationTest();
-  PanGestureTest();
-  colorMetricsTest();
-}
+#include "../common/common.h"
+
+#include <ace/xcomponent/native_interface_xcomponent.h>
+#include <arkui/native_interface.h>
+#include <arkui/native_node.h>
+
+namespace ArkUICapiTest {
+
+    class UiStatesTest {
+    public:
+        ~UiStatesTest();
+        static napi_value CreateNativeNode(napi_env env, napi_callback_info info);
+    };
+} // namespace ArkUICapiTest
+#endif // ARKUI_CAPI_XTS_UISTATES_TEST_H

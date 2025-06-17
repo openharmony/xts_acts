@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2025 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,14 +13,21 @@
  * limitations under the License.
  */
 
-import getDisplayId from './DragTest/getDisplayId.test';
-import tapLocationTest from './TapGestureTest/tapLocation.test';
-import PanGestureTest from './PanGestureTest/observer.test';
-import colorMetricsTest from './ColorTest/colorMetrics.test'
+import render from 'libnativerender.so'
+import { CommonView } from '../../componet/CommonView';
 
-export default function testsuite() {
-  getDisplayId();
-  tapLocationTest();
-  PanGestureTest();
-  colorMetricsTest();
+@Entry
+@Component
+struct UiStatesTest {
+  PAGE_TAG: string = 'UiStatesTest';
+
+  build() {
+    Column() {
+      CommonView({
+        pageTag: this.PAGE_TAG,
+      }).onAppear(() => {
+        render.uiStatesTest(this.PAGE_TAG);
+      })
+    }
+  }
 }
