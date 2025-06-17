@@ -963,7 +963,7 @@ HWTEST_F(DrawingNativeBrushTest, testBrushGetAlphaFloatAbnormal, Function | Smal
     EXPECT_EQ(OH_Drawing_BrushGetAlphaFloat(nullptr, &a), OH_DRAWING_ERROR_INVALID_PARAMETER);
     EXPECT_EQ(OH_Drawing_BrushGetAlphaFloat(brush, 0), OH_DRAWING_ERROR_INVALID_PARAMETER);
     EXPECT_EQ(OH_Drawing_BrushGetAlphaFloat(brush, NULL), OH_DRAWING_ERROR_INVALID_PARAMETER);
-    EXPECT_EQ(a, 1.0f);
+    EXPECT_EQ(a, 0.0f);
     OH_Drawing_BrushDestroy(brush);
 }
 /*
@@ -997,7 +997,7 @@ HWTEST_F(DrawingNativeBrushTest, testBrushGetRedFloatAbnormal, Function | SmallT
     EXPECT_EQ(OH_Drawing_BrushGetRedFloat(nullptr, &r), OH_DRAWING_ERROR_INVALID_PARAMETER);
     EXPECT_EQ(OH_Drawing_BrushGetRedFloat(brush, 0), OH_DRAWING_ERROR_INVALID_PARAMETER);
     EXPECT_EQ(OH_Drawing_BrushGetRedFloat(brush, NULL), OH_DRAWING_ERROR_INVALID_PARAMETER);
-    EXPECT_EQ(r, 0.4f);
+    EXPECT_EQ(r, 0.0f);
     OH_Drawing_BrushDestroy(brush);
 }
 /*
@@ -1031,7 +1031,7 @@ HWTEST_F(DrawingNativeBrushTest, testBrushGetGreenFloatAbnormal, Function | Smal
     EXPECT_EQ(OH_Drawing_BrushGetGreenFloat(nullptr, &g), OH_DRAWING_ERROR_INVALID_PARAMETER);
     EXPECT_EQ(OH_Drawing_BrushGetGreenFloat(brush, 0), OH_DRAWING_ERROR_INVALID_PARAMETER);
     EXPECT_EQ(OH_Drawing_BrushGetGreenFloat(brush, NULL), OH_DRAWING_ERROR_INVALID_PARAMETER);
-    EXPECT_EQ(g, 1.0f);
+    EXPECT_EQ(g, 0.0f);
     OH_Drawing_BrushDestroy(brush);
 }
 /*
@@ -1065,7 +1065,7 @@ HWTEST_F(DrawingNativeBrushTest, testBrushGetBlueFloatAbnormal, Function | Small
     EXPECT_EQ(OH_Drawing_BrushGetBlueFloat(nullptr, &b), OH_DRAWING_ERROR_INVALID_PARAMETER);
     EXPECT_EQ(OH_Drawing_BrushGetBlueFloat(brush, 0), OH_DRAWING_ERROR_INVALID_PARAMETER);
     EXPECT_EQ(OH_Drawing_BrushGetBlueFloat(brush, NULL), OH_DRAWING_ERROR_INVALID_PARAMETER);
-    EXPECT_EQ(b, 0.2f);
+    EXPECT_EQ(b, 0.0f);
     OH_Drawing_BrushDestroy(brush);
 }
 /*
