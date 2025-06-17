@@ -945,6 +945,7 @@ HWTEST_F(DrawingNativeBrushTest, testBrushGetAlphaFloatNormal, Function | SmallT
     float a = 0.f;
     OH_Drawing_BrushSetColor4f(brush, 1.0f, 0.4f, 1.0f, 0.2f, nullptr);
     EXPECT_EQ(OH_Drawing_BrushGetAlphaFloat(brush, &a), OH_DRAWING_SUCCESS);
+    EXPECT_EQ(a, 1.0f);
     OH_Drawing_BrushDestroy(brush);
 }
 /*
@@ -962,6 +963,7 @@ HWTEST_F(DrawingNativeBrushTest, testBrushGetAlphaFloatAbnormal, Function | Smal
     EXPECT_EQ(OH_Drawing_BrushGetAlphaFloat(nullptr, &a), OH_DRAWING_ERROR_INVALID_PARAMETER);
     EXPECT_EQ(OH_Drawing_BrushGetAlphaFloat(brush, 0), OH_DRAWING_ERROR_INVALID_PARAMETER);
     EXPECT_EQ(OH_Drawing_BrushGetAlphaFloat(brush, NULL), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    EXPECT_EQ(a, 1.0f);
     OH_Drawing_BrushDestroy(brush);
 }
 /*
@@ -977,6 +979,7 @@ HWTEST_F(DrawingNativeBrushTest, testBrushGetRedFloatNormal, Function | SmallTes
     float r = 0.f;
     OH_Drawing_BrushSetColor4f(brush, 1.0f, 0.4f, 1.0f, 0.2f, nullptr);
     EXPECT_EQ(OH_Drawing_BrushGetRedFloat(brush, &r), OH_DRAWING_SUCCESS);
+    EXPECT_EQ(r, 0.4f);
     OH_Drawing_BrushDestroy(brush);
 }
 /*
@@ -994,6 +997,7 @@ HWTEST_F(DrawingNativeBrushTest, testBrushGetRedFloatAbnormal, Function | SmallT
     EXPECT_EQ(OH_Drawing_BrushGetRedFloat(nullptr, &r), OH_DRAWING_ERROR_INVALID_PARAMETER);
     EXPECT_EQ(OH_Drawing_BrushGetRedFloat(brush, 0), OH_DRAWING_ERROR_INVALID_PARAMETER);
     EXPECT_EQ(OH_Drawing_BrushGetRedFloat(brush, NULL), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    EXPECT_EQ(r, 0.4f);
     OH_Drawing_BrushDestroy(brush);
 }
 /*
@@ -1009,6 +1013,7 @@ HWTEST_F(DrawingNativeBrushTest, testBrushGetGreenFloatNormal, Function | SmallT
     float g = 0.f;
     OH_Drawing_BrushSetColor4f(brush, 1.0f, 0.4f, 1.0f, 0.2f, nullptr);
     EXPECT_EQ(OH_Drawing_BrushGetGreenFloat(brush, &g), OH_DRAWING_SUCCESS);
+    EXPECT_EQ(g, 1.0f);
     OH_Drawing_BrushDestroy(brush);
 }
 /*
@@ -1026,6 +1031,7 @@ HWTEST_F(DrawingNativeBrushTest, testBrushGetGreenFloatAbnormal, Function | Smal
     EXPECT_EQ(OH_Drawing_BrushGetGreenFloat(nullptr, &g), OH_DRAWING_ERROR_INVALID_PARAMETER);
     EXPECT_EQ(OH_Drawing_BrushGetGreenFloat(brush, 0), OH_DRAWING_ERROR_INVALID_PARAMETER);
     EXPECT_EQ(OH_Drawing_BrushGetGreenFloat(brush, NULL), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    EXPECT_EQ(g, 1.0f);
     OH_Drawing_BrushDestroy(brush);
 }
 /*
@@ -1041,6 +1047,7 @@ HWTEST_F(DrawingNativeBrushTest, testBrushGetBlueFloatNormal, Function | SmallTe
     float b = 0.f;
     OH_Drawing_BrushSetColor4f(brush, 1.0f, 0.4f, 1.0f, 0.2f, nullptr);
     EXPECT_EQ(OH_Drawing_BrushGetBlueFloat(brush, &b), OH_DRAWING_SUCCESS);
+    EXPECT_EQ(b, 0.2f);
     OH_Drawing_BrushDestroy(brush);
 }
 /*
@@ -1058,6 +1065,7 @@ HWTEST_F(DrawingNativeBrushTest, testBrushGetBlueFloatAbnormal, Function | Small
     EXPECT_EQ(OH_Drawing_BrushGetBlueFloat(nullptr, &b), OH_DRAWING_ERROR_INVALID_PARAMETER);
     EXPECT_EQ(OH_Drawing_BrushGetBlueFloat(brush, 0), OH_DRAWING_ERROR_INVALID_PARAMETER);
     EXPECT_EQ(OH_Drawing_BrushGetBlueFloat(brush, NULL), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    EXPECT_EQ(b, 0.2f);
     OH_Drawing_BrushDestroy(brush);
 }
 /*
@@ -1070,8 +1078,20 @@ HWTEST_F(DrawingNativeBrushTest, testBrushGetBlueFloatAbnormal, Function | Small
  */
 HWTEST_F(DrawingNativeBrushTest, testBrushSetColor4fNormal, Function | SmallTest | Level2) {
     OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
+    float a = 0.f;
+    float r = 0.f;
+    float g = 0.f;
+    float b = 0.f;
     OH_Drawing_ErrorCode errorCode = OH_Drawing_BrushSetColor4f(brush, 1.0f, 0.4f, 1.0f, 0.2f, nullptr);
+    OH_Drawing_BrushGetAlphaFloat(brush, &a);
+    OH_Drawing_BrushGetRedFloat(brush, &r);
+    OH_Drawing_BrushGetGreenFloat(brush, &g);
+    OH_Drawing_BrushGetBlueFloat(brush, &b);        
     EXPECT_EQ(errorCode, OH_DRAWING_SUCCESS);
+    EXPECT_EQ(a, 1.0f);
+    EXPECT_EQ(r, 0.4f);
+    EXPECT_EQ(g, 1.0f);
+    EXPECT_EQ(b, 0.2f);
     OH_Drawing_BrushDestroy(brush);
 }
 /*
@@ -1084,15 +1104,35 @@ HWTEST_F(DrawingNativeBrushTest, testBrushSetColor4fNormal, Function | SmallTest
  */
 HWTEST_F(DrawingNativeBrushTest, testBrushSetColor4fAbnormal, Function | SmallTest | Level3) {
     OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
+    float a = 0.f;
+    float r = 0.f;
+    float g = 0.f;
+    float b = 0.f;
     OH_Drawing_ErrorCode errorCode1 = OH_Drawing_BrushSetColor4f(nullptr, 1.0f, 0.4f, 1.0f, 0.2f, nullptr);
     OH_Drawing_ErrorCode errorCode2 = OH_Drawing_BrushSetColor4f(brush, 1.2f, 0.4f, 1.0f, 0.2f, nullptr);
+    OH_Drawing_BrushGetAlphaFloat(brush, &a);
+    EXPECT_EQ(a, 1.0f);
     OH_Drawing_ErrorCode errorCode3 = OH_Drawing_BrushSetColor4f(brush, -1.0f, 0.4f, 1.0f, 0.2f, nullptr);
+    OH_Drawing_BrushGetAlphaFloat(brush, &a);
+    EXPECT_EQ(a, 0.0f);
     OH_Drawing_ErrorCode errorCode4 = OH_Drawing_BrushSetColor4f(brush, 1.0f, 1.4f, 1.0f, 0.2f, nullptr);
+    OH_Drawing_BrushGetRedFloat(brush, &r);
+    EXPECT_EQ(r, 1.0f);
     OH_Drawing_ErrorCode errorCode5 = OH_Drawing_BrushSetColor4f(brush, 1.0f, -0.4f, 1.0f, 0.2f, nullptr);
+    OH_Drawing_BrushGetRedFloat(brush, &r);
+    EXPECT_EQ(r, 0.0f);
     OH_Drawing_ErrorCode errorCode6 = OH_Drawing_BrushSetColor4f(brush, 1.0f, 0.4f, 1.2f, 0.2f, nullptr);
+    OH_Drawing_BrushGetGreenFloat(brush, &g);
+    EXPECT_EQ(g, 1.0f);
     OH_Drawing_ErrorCode errorCode7 = OH_Drawing_BrushSetColor4f(brush, 1.0f, 0.4f, -1.0f, 0.2f, nullptr);
+    OH_Drawing_BrushGetGreenFloat(brush, &g);
+    EXPECT_EQ(g, 0.0f);
     OH_Drawing_ErrorCode errorCode8 = OH_Drawing_BrushSetColor4f(brush, 1.0f, 0.4f, 1.0f, 1.2f, nullptr);
+    OH_Drawing_BrushGetBlueFloat(brush, &b);
+    EXPECT_EQ(b, 1.0f);
     OH_Drawing_ErrorCode errorCode9 = OH_Drawing_BrushSetColor4f(brush, 1.0f, 0.4f, 1.0f, -0.2f, nullptr);
+    OH_Drawing_BrushGetBlueFloat(brush, &b);
+    EXPECT_EQ(b, 0.0f);
     EXPECT_EQ(errorCode1, OH_DRAWING_ERROR_INVALID_PARAMETER);
     EXPECT_EQ(errorCode2, OH_DRAWING_SUCCESS);
     EXPECT_EQ(errorCode3, OH_DRAWING_SUCCESS);
