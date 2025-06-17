@@ -15,11 +15,8 @@
 
 {
   "license": "",
-  "devDependencies": {
-    "@ohos/hypium": "1.0.6"
-  },
   "author": "",
-  "name": "com.acts.cloud.ad.level.test",
+  "name": "entry",
   "description": "Please describe the basic information.",
   "main": "",
   "version": "1.0.0",
