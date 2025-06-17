@@ -1086,7 +1086,7 @@ HWTEST_F(DrawingNativeBrushTest, testBrushSetColor4fNormal, Function | SmallTest
     OH_Drawing_BrushGetAlphaFloat(brush, &a);
     OH_Drawing_BrushGetRedFloat(brush, &r);
     OH_Drawing_BrushGetGreenFloat(brush, &g);
-    OH_Drawing_BrushGetBlueFloat(brush, &b);        
+    OH_Drawing_BrushGetBlueFloat(brush, &b);
     EXPECT_EQ(errorCode, OH_DRAWING_SUCCESS);
     EXPECT_EQ(a, 1.0f);
     EXPECT_EQ(r, 0.4f);
