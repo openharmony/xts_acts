@@ -18,3 +18,5 @@ export const customComponentOnDrawFrontTest: (a: string) => void;
 
 export const customComponentOnDrawBehindTest: (a: string) => void;
 export const testEmbeddedComponentOption: (a: string) => void;
+
+export const uiStatesTest: (a: string) => void;
