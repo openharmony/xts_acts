@@ -15,9 +15,17 @@
 import menuSubMenuExpandSymbolTest from './MenuTest/subMenuExpandSymbol.test';
 import customDialogGetstateTest from './customdialogTest/customdialog.test';
 import ratingStarStyle from './RatingTest/ratingStarStyle.test';
+import SheetTypeTest from './SheetTypeTest/sheetTypeSide.test';
+import closeToastTest from './promptActionTest/closeToastTest.test';
+import dismissSheetActionTest from './SheetTypeTest/dismissSheetAction.test';
+import bindContentCoverTest from './BindContentCoverTest/bindContentCover.test';
 
 export default function testsuite() {
   menuSubMenuExpandSymbolTest();
   customDialogGetstateTest();
   ratingStarStyle();
+  SheetTypeTest();
+  closeToastTest();
+  dismissSheetActionTest();
+  bindContentCoverTest()
 }
