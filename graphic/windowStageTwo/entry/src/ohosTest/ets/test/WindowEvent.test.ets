@@ -79,12 +79,12 @@ export default function windowEventTest() {
     })
 
     /**
-     * @tc.number    : SUB_BASIC_WMS_TOUCHOUTSIDE_TOPBAR_0100
-     * @tc.name      : testTouchOutSide_TopBar_0100
-     * @tc.desc      : 验证点击窗口范围内的topbar区域不触发touchOutside回调
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.number : SUB_BASIC_WMS_TOUCHOUTSIDE_TOPBAR_0100
+     * @tc.name : testTouchOutSide_TopBar_0100
+     * @tc.desc : 验证点击窗口范围内的topbar区域不触发touchOutside回调
+     * @tc.size : MediumTest
+     * @tc.type : Function
+     * @tc.level : Level 0
      */
     it('testTouchOutSide_TopBar_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let caseName: string = 'testTouchOutSide_TopBar_0100 ';
@@ -96,16 +96,16 @@ export default function windowEventTest() {
       let timer = 0;
       try {
         let windowLimits = subWindowClass.getWindowLimits();
-        console.info(${caseName} windowLimits: ${JSON.stringify(windowLimits)});
+        console.info(`${caseName} windowLimits: ${JSON.stringify(windowLimits)}`);
         await subWindowClass.resize(windowLimits.minWidth as number+200, windowLimits.minHeight as number);
         await subWindowClass.moveWindowTo(200, 0);
         await subWindowClass.showWindow();
         await sleep(1000);
         let windowProperties = subWindowClass.getWindowProperties();
-        console.log(${caseName} windowProperties: ${JSON.stringify(windowProperties)});
+        console.log(`${caseName} windowProperties: ${JSON.stringify(windowProperties)}`);
         const callback = () => {
           timer++;
-          console.log(${caseName} timer: ${timer});
+          console.log(`${caseName} timer: ${timer}`);
         }
         subWindowClass.on('touchOutside', callback);
         await mainWindow.setPreferredOrientation(window.Orientation.LANDSCAPE);
