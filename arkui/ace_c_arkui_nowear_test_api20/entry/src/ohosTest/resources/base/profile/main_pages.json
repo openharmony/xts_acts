@@ -2,6 +2,8 @@
   "src": [
     "MainAbility/pages/XTSIndex",
     "MainAbility/pages/testgesture",
-    "MainAbility/pages/button/ButtonGetTypeTest"
+    "MainAbility/pages/button/ButtonGetTypeTest",
+    "MainAbility/pages/dragEvent/dragEventGetDisplayId",
+    "MainAbility/pages/dragEvent/dragEventGetDragSource"
   ]
 }
