@@ -20404,5 +20404,2796 @@ export default function imageExifGetModifyTest() {
         done();
       }
     })
+
+    
+	
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_15200
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_15200
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteIsXmageSupported', '10000')_promise
+    *                 3.getImageProperty('HwMnoteIsXmageSupported') compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_15200', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_15200';
+    const key = image.PropertyKey.IS_XMAGE_SUPPORTED;
+    const modifyData = '10000'
+    const compareData = '10000'
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromise(testTag, key, modifyData, compareData,
+                `test_exif_empty.${modfiyFileSuffixs[i]}`, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                `modifyImageProperty promise error HwMnoteIsXmageSupported ImageSource: %{public}s, file:test_exif_empty.%{public}s`,
+                createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteIsXmageSupported ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_15300
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_15300
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteIsXmageSupported', 'abc')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_15300', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_15300';
+    const key = image.PropertyKey.IS_XMAGE_SUPPORTED;
+    const propertyValue = '10000'
+    const errorValue = 'abc'
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_empty.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteIsXmageSupported ImageSource: %{public}s, file:test_exif_empty.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteIsXmageSupported ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_15400
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_15400
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteIsXmageSupported', '12ab')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_15400', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_15400';
+    const key = image.PropertyKey.IS_XMAGE_SUPPORTED;
+    const propertyValue = '10000'
+    const errorValue = '12ab'
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_empty.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteIsXmageSupported ImageSource: %{public}s, file:test_exif_empty.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteIsXmageSupported ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_15500
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_15500
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteIsXmageSupported', '')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_15500', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_15500';
+    const key = image.PropertyKey.IS_XMAGE_SUPPORTED;
+    const propertyValue = '10000'
+    const errorValue = ''
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_empty.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteIsXmageSupported ImageSource: %{public}s, file:test_exif_empty.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteIsXmageSupported ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_15600
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_15600
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteIsXmageSupported', '+')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_15600', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_15600';
+    const key = image.PropertyKey.IS_XMAGE_SUPPORTED;
+    const propertyValue = '10000'
+    const errorValue = '+'
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_empty.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteIsXmageSupported ImageSource: %{public}s, file:test_exif_empty.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteIsXmageSupported ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_14800
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_14800
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteIsXmageSupported', '10000')_promise
+    *                 3.getImageProperty('HwMnoteIsXmageSupported') compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_14800', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_14800';
+    const key = image.PropertyKey.IS_XMAGE_SUPPORTED;
+    const modifyData = '10000'
+    const compareData = '10000'
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromise(testTag, key, modifyData, compareData,
+                `test_exif_v2.${modfiyFileSuffixs[i]}`, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                `modifyImageProperty promise error HwMnoteIsXmageSupported ImageSource: %{public}s, file:test_exif_v2.%{public}s`,
+                createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteIsXmageSupported ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_14900
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_14900
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteIsXmageSupported', 'abc')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_14900', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_14900';
+    const key = image.PropertyKey.IS_XMAGE_SUPPORTED;
+    const propertyValue = '10000'
+    const errorValue = 'abc'
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_v2.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteIsXmageSupported ImageSource: %{public}s, file:test_exif_v2.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteIsXmageSupported ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_15000
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_15000
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteIsXmageSupported', '12ab')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_15000', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_15000';
+    const key = image.PropertyKey.IS_XMAGE_SUPPORTED;
+    const propertyValue = '10000'
+    const errorValue = '12ab'
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_v2.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteIsXmageSupported ImageSource: %{public}s, file:test_exif_v2.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteIsXmageSupported ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_15100
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_15100
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteIsXmageSupported', '')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_15100', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_15100';
+    const key = image.PropertyKey.IS_XMAGE_SUPPORTED;
+    const propertyValue = '10000'
+    const errorValue = ''
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_v2.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteIsXmageSupported ImageSource: %{public}s, file:test_exif_v2.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteIsXmageSupported ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_15200
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_15200
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteIsXmageSupported', '+')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_15200', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_15200';
+    const key = image.PropertyKey.IS_XMAGE_SUPPORTED;
+    const propertyValue = '10000'
+    const errorValue = '+'
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_v2.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteIsXmageSupported ImageSource: %{public}s, file:test_exif_v2.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteIsXmageSupported ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_15700
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_15700
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteXmageMode', '10000')_promise
+    *                 3.getImageProperty('HwMnoteXmageMode') compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_15700', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_15700';
+    const key = image.PropertyKey.XMAGE_MODE;
+    const modifyData = '10000'
+    const compareData = '10000'
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromise(testTag, key, modifyData, compareData,
+                `test_exif_empty.${modfiyFileSuffixs[i]}`, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                `modifyImageProperty promise error HwMnoteXmageMode ImageSource: %{public}s, file:test_exif_empty.%{public}s`,
+                createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteXmageMode ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_15800
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_15800
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteXmageMode', 'abc')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_15800', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_15800';
+    const key = image.PropertyKey.XMAGE_MODE;
+    const propertyValue = '10000'
+    const errorValue = 'abc'
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_empty.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteXmageMode ImageSource: %{public}s, file:test_exif_empty.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteXmageMode ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_15900
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_15900
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteXmageMode', '12ab')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_15900', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_15900';
+    const key = image.PropertyKey.XMAGE_MODE;
+    const propertyValue = '10000'
+    const errorValue = '12ab'
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_empty.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteXmageMode ImageSource: %{public}s, file:test_exif_empty.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteXmageMode ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_16000
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_16000
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteXmageMode', '')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_16000', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_16000';
+    const key = image.PropertyKey.XMAGE_MODE;
+    const propertyValue = '10000'
+    const errorValue = ''
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_empty.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteXmageMode ImageSource: %{public}s, file:test_exif_empty.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteXmageMode ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_16100
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_16100
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteXmageMode', '+')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_16100', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_16100';
+    const key = image.PropertyKey.XMAGE_MODE;
+    const propertyValue = '10000'
+    const errorValue = '+'
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_empty.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteXmageMode ImageSource: %{public}s, file:test_exif_empty.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteXmageMode ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_15300
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_15300
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteXmageMode', '10000')_promise
+    *                 3.getImageProperty('HwMnoteXmageMode') compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_15300', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_15300';
+    const key = image.PropertyKey.XMAGE_MODE;
+    const modifyData = '10000'
+    const compareData = '10000'
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromise(testTag, key, modifyData, compareData,
+                `test_exif_v2.${modfiyFileSuffixs[i]}`, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                `modifyImageProperty promise error HwMnoteXmageMode ImageSource: %{public}s, file:test_exif_v2.%{public}s`,
+                createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteXmageMode ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_15400
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_15400
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteXmageMode', 'abc')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_15400', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_15400';
+    const key = image.PropertyKey.XMAGE_MODE;
+    const propertyValue = '10000'
+    const errorValue = 'abc'
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_v2.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteXmageMode ImageSource: %{public}s, file:test_exif_v2.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteXmageMode ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_15500
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_15500
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteXmageMode', '12ab')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_15500', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_15500';
+    const key = image.PropertyKey.XMAGE_MODE;
+    const propertyValue = '10000'
+    const errorValue = '12ab'
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_v2.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteXmageMode ImageSource: %{public}s, file:test_exif_v2.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteXmageMode ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_15600
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_15600
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteXmageMode', '')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_15600', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_15600';
+    const key = image.PropertyKey.XMAGE_MODE;
+    const propertyValue = '10000'
+    const errorValue = ''
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_v2.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteXmageMode ImageSource: %{public}s, file:test_exif_v2.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteXmageMode ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_15700
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_15700
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteXmageMode', '+')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_15700', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_15700';
+    const key = image.PropertyKey.XMAGE_MODE;
+    const propertyValue = '10000'
+    const errorValue = '+'
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_v2.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteXmageMode ImageSource: %{public}s, file:test_exif_v2.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteXmageMode ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_16200
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_16200
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteXmageLeft', '10000')_promise
+    *                 3.getImageProperty('HwMnoteXmageLeft') compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_16200', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_16200';
+    const key = image.PropertyKey.XMAGE_LEFT;
+    const modifyData = '10000'
+    const compareData = '10000'
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromise(testTag, key, modifyData, compareData,
+                `test_exif_empty.${modfiyFileSuffixs[i]}`, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                `modifyImageProperty promise error HwMnoteXmageLeft ImageSource: %{public}s, file:test_exif_empty.%{public}s`,
+                createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteXmageLeft ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_16300
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_16300
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteXmageLeft', 'abc')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_16300', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_16300';
+    const key = image.PropertyKey.XMAGE_LEFT;
+    const propertyValue = '10000'
+    const errorValue = 'abc'
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_empty.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteXmageLeft ImageSource: %{public}s, file:test_exif_empty.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteXmageLeft ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_16400
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_16400
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteXmageLeft', '12ab')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_16400', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_16400';
+    const key = image.PropertyKey.XMAGE_LEFT;
+    const propertyValue = '10000'
+    const errorValue = '12ab'
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_empty.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteXmageLeft ImageSource: %{public}s, file:test_exif_empty.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteXmageLeft ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_16500
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_16500
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteXmageLeft', '')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_16500', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_16500';
+    const key = image.PropertyKey.XMAGE_LEFT;
+    const propertyValue = '10000'
+    const errorValue = ''
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_empty.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteXmageLeft ImageSource: %{public}s, file:test_exif_empty.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteXmageLeft ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_16600
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_16600
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteXmageLeft', '+')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_16600', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_16600';
+    const key = image.PropertyKey.XMAGE_LEFT;
+    const propertyValue = '10000'
+    const errorValue = '+'
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_empty.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteXmageLeft ImageSource: %{public}s, file:test_exif_empty.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteXmageLeft ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_15800
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_15800
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteXmageLeft', '10000')_promise
+    *                 3.getImageProperty('HwMnoteXmageLeft') compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_15800', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_15800';
+    const key = image.PropertyKey.XMAGE_LEFT;
+    const modifyData = '10000'
+    const compareData = '10000'
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromise(testTag, key, modifyData, compareData,
+                `test_exif_v2.${modfiyFileSuffixs[i]}`, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                `modifyImageProperty promise error HwMnoteXmageLeft ImageSource: %{public}s, file:test_exif_v2.%{public}s`,
+                createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteXmageLeft ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_15900
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_15900
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteXmageLeft', 'abc')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_15900', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_15900';
+    const key = image.PropertyKey.XMAGE_LEFT;
+    const propertyValue = '10000'
+    const errorValue = 'abc'
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_v2.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteXmageLeft ImageSource: %{public}s, file:test_exif_v2.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteXmageLeft ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_16000
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_16000
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteXmageLeft', '12ab')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_16000', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_16000';
+    const key = image.PropertyKey.XMAGE_LEFT;
+    const propertyValue = '10000'
+    const errorValue = '12ab'
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_v2.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteXmageLeft ImageSource: %{public}s, file:test_exif_v2.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteXmageLeft ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_16100
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_16100
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteXmageLeft', '')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_16100', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_16100';
+    const key = image.PropertyKey.XMAGE_LEFT;
+    const propertyValue = '10000'
+    const errorValue = ''
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_v2.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteXmageLeft ImageSource: %{public}s, file:test_exif_v2.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteXmageLeft ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_16200
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_16200
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteXmageLeft', '+')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_16200', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_16200';
+    const key = image.PropertyKey.XMAGE_LEFT;
+    const propertyValue = '10000'
+    const errorValue = '+'
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_v2.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteXmageLeft ImageSource: %{public}s, file:test_exif_v2.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteXmageLeft ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_16700
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_16700
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteXmageTop', '10000')_promise
+    *                 3.getImageProperty('HwMnoteXmageTop') compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_16700', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_16700';
+    const key = image.PropertyKey.XMAGE_TOP;
+    const modifyData = '10000'
+    const compareData = '10000'
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromise(testTag, key, modifyData, compareData,
+                `test_exif_empty.${modfiyFileSuffixs[i]}`, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                `modifyImageProperty promise error HwMnoteXmageTop ImageSource: %{public}s, file:test_exif_empty.%{public}s`,
+                createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteXmageTop ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_16800
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_16800
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteXmageTop', 'abc')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_16800', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_16800';
+    const key = image.PropertyKey.XMAGE_TOP;
+    const propertyValue = '10000'
+    const errorValue = 'abc'
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_empty.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteXmageTop ImageSource: %{public}s, file:test_exif_empty.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteXmageTop ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_16900
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_16900
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteXmageTop', '12ab')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_16900', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_16900';
+    const key = image.PropertyKey.XMAGE_TOP;
+    const propertyValue = '10000'
+    const errorValue = '12ab'
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_empty.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteXmageTop ImageSource: %{public}s, file:test_exif_empty.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteXmageTop ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_17000
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_17000
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteXmageTop', '')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_17000', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_17000';
+    const key = image.PropertyKey.XMAGE_TOP;
+    const propertyValue = '10000'
+    const errorValue = ''
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_empty.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteXmageTop ImageSource: %{public}s, file:test_exif_empty.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteXmageTop ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_17100
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_17100
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteXmageTop', '+')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_17100', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_17100';
+    const key = image.PropertyKey.XMAGE_TOP;
+    const propertyValue = '10000'
+    const errorValue = '+'
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_empty.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteXmageTop ImageSource: %{public}s, file:test_exif_empty.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteXmageTop ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_16300
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_16300
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteXmageTop', '10000')_promise
+    *                 3.getImageProperty('HwMnoteXmageTop') compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_16300', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_16300';
+    const key = image.PropertyKey.XMAGE_TOP;
+    const modifyData = '10000'
+    const compareData = '10000'
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromise(testTag, key, modifyData, compareData,
+                `test_exif_v2.${modfiyFileSuffixs[i]}`, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                `modifyImageProperty promise error HwMnoteXmageTop ImageSource: %{public}s, file:test_exif_v2.%{public}s`,
+                createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteXmageTop ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_16400
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_16400
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteXmageTop', 'abc')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_16400', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_16400';
+    const key = image.PropertyKey.XMAGE_TOP;
+    const propertyValue = '10000'
+    const errorValue = 'abc'
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_v2.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteXmageTop ImageSource: %{public}s, file:test_exif_v2.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteXmageTop ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_16500
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_16500
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteXmageTop', '12ab')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_16500', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_16500';
+    const key = image.PropertyKey.XMAGE_TOP;
+    const propertyValue = '10000'
+    const errorValue = '12ab'
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_v2.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteXmageTop ImageSource: %{public}s, file:test_exif_v2.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteXmageTop ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_16600
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_16600
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteXmageTop', '')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_16600', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_16600';
+    const key = image.PropertyKey.XMAGE_TOP;
+    const propertyValue = '10000'
+    const errorValue = ''
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_v2.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteXmageTop ImageSource: %{public}s, file:test_exif_v2.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteXmageTop ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_16700
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_16700
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteXmageTop', '+')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_16700', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_16700';
+    const key = image.PropertyKey.XMAGE_TOP;
+    const propertyValue = '10000'
+    const errorValue = '+'
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_v2.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteXmageTop ImageSource: %{public}s, file:test_exif_v2.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteXmageTop ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_17200
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_17200
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteXmageRight', '10000')_promise
+    *                 3.getImageProperty('HwMnoteXmageRight') compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_17200', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_17200';
+    const key = image.PropertyKey.XMAGE_RIGHT;
+    const modifyData = '10000'
+    const compareData = '10000'
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromise(testTag, key, modifyData, compareData,
+                `test_exif_empty.${modfiyFileSuffixs[i]}`, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                `modifyImageProperty promise error HwMnoteXmageRight ImageSource: %{public}s, file:test_exif_empty.%{public}s`,
+                createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteXmageRight ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_17300
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_17300
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteXmageRight', 'abc')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_17300', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_17300';
+    const key = image.PropertyKey.XMAGE_RIGHT;
+    const propertyValue = '10000'
+    const errorValue = 'abc'
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_empty.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteXmageRight ImageSource: %{public}s, file:test_exif_empty.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteXmageRight ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_17400
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_17400
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteXmageRight', '12ab')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_17400', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_17400';
+    const key = image.PropertyKey.XMAGE_RIGHT;
+    const propertyValue = '10000'
+    const errorValue = '12ab'
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_empty.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteXmageRight ImageSource: %{public}s, file:test_exif_empty.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteXmageRight ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_17500
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_17500
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteXmageRight', '')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_17500', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_17500';
+    const key = image.PropertyKey.XMAGE_RIGHT;
+    const propertyValue = '10000'
+    const errorValue = ''
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_empty.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteXmageRight ImageSource: %{public}s, file:test_exif_empty.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteXmageRight ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_17600
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_17600
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteXmageRight', '+')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_17600', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_17600';
+    const key = image.PropertyKey.XMAGE_RIGHT;
+    const propertyValue = '10000'
+    const errorValue = '+'
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_empty.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteXmageRight ImageSource: %{public}s, file:test_exif_empty.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteXmageRight ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_16800
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_16800
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteXmageRight', '10000')_promise
+    *                 3.getImageProperty('HwMnoteXmageRight') compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_16800', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_16800';
+    const key = image.PropertyKey.XMAGE_RIGHT;
+    const modifyData = '10000'
+    const compareData = '10000'
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromise(testTag, key, modifyData, compareData,
+                `test_exif_v2.${modfiyFileSuffixs[i]}`, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                `modifyImageProperty promise error HwMnoteXmageRight ImageSource: %{public}s, file:test_exif_v2.%{public}s`,
+                createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteXmageRight ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_16900
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_16900
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteXmageRight', 'abc')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_16900', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_16900';
+    const key = image.PropertyKey.XMAGE_RIGHT;
+    const propertyValue = '10000'
+    const errorValue = 'abc'
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_v2.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteXmageRight ImageSource: %{public}s, file:test_exif_v2.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteXmageRight ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_17000
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_17000
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteXmageRight', '12ab')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_17000', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_17000';
+    const key = image.PropertyKey.XMAGE_RIGHT;
+    const propertyValue = '10000'
+    const errorValue = '12ab'
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_v2.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteXmageRight ImageSource: %{public}s, file:test_exif_v2.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteXmageRight ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_17100
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_17100
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteXmageRight', '')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_17100', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_17100';
+    const key = image.PropertyKey.XMAGE_RIGHT;
+    const propertyValue = '10000'
+    const errorValue = ''
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_v2.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteXmageRight ImageSource: %{public}s, file:test_exif_v2.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteXmageRight ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_17200
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_17200
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteXmageRight', '+')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_17200', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_17200';
+    const key = image.PropertyKey.XMAGE_RIGHT;
+    const propertyValue = '10000'
+    const errorValue = '+'
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_v2.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteXmageRight ImageSource: %{public}s, file:test_exif_v2.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteXmageRight ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_17700
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_17700
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteXmageBottom', '10000')_promise
+    *                 3.getImageProperty('HwMnoteXmageBottom') compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_17700', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_17700';
+    const key = image.PropertyKey.XMAGE_BOTTOM;
+    const modifyData = '10000'
+    const compareData = '10000'
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromise(testTag, key, modifyData, compareData,
+                `test_exif_empty.${modfiyFileSuffixs[i]}`, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                `modifyImageProperty promise error HwMnoteXmageBottom ImageSource: %{public}s, file:test_exif_empty.%{public}s`,
+                createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteXmageBottom ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_17800
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_17800
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteXmageBottom', 'abc')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_17800', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_17800';
+    const key = image.PropertyKey.XMAGE_BOTTOM;
+    const propertyValue = '10000'
+    const errorValue = 'abc'
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_empty.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteXmageBottom ImageSource: %{public}s, file:test_exif_empty.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteXmageBottom ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_17900
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_17900
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteXmageBottom', '12ab')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_17900', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_17900';
+    const key = image.PropertyKey.XMAGE_BOTTOM;
+    const propertyValue = '10000'
+    const errorValue = '12ab'
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_empty.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteXmageBottom ImageSource: %{public}s, file:test_exif_empty.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteXmageBottom ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_18000
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_18000
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteXmageBottom', '')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_18000', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_18000';
+    const key = image.PropertyKey.XMAGE_BOTTOM;
+    const propertyValue = '10000'
+    const errorValue = ''
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_empty.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteXmageBottom ImageSource: %{public}s, file:test_exif_empty.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteXmageBottom ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_18100
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_18100
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteXmageBottom', '+')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_18100', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_18100';
+    const key = image.PropertyKey.XMAGE_BOTTOM;
+    const propertyValue = '10000'
+    const errorValue = '+'
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_empty.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteXmageBottom ImageSource: %{public}s, file:test_exif_empty.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteXmageBottom ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_17300
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_17300
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteXmageBottom', '10000')_promise
+    *                 3.getImageProperty('HwMnoteXmageBottom') compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_17300', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_17300';
+    const key = image.PropertyKey.XMAGE_BOTTOM;
+    const modifyData = '10000'
+    const compareData = '10000'
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromise(testTag, key, modifyData, compareData,
+                `test_exif_v2.${modfiyFileSuffixs[i]}`, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                `modifyImageProperty promise error HwMnoteXmageBottom ImageSource: %{public}s, file:test_exif_v2.%{public}s`,
+                createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteXmageBottom ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_17400
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_17400
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteXmageBottom', 'abc')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_17400', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_17400';
+    const key = image.PropertyKey.XMAGE_BOTTOM;
+    const propertyValue = '10000'
+    const errorValue = 'abc'
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_v2.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteXmageBottom ImageSource: %{public}s, file:test_exif_v2.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteXmageBottom ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_17500
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_17500
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteXmageBottom', '12ab')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_17500', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_17500';
+    const key = image.PropertyKey.XMAGE_BOTTOM;
+    const propertyValue = '10000'
+    const errorValue = '12ab'
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_v2.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteXmageBottom ImageSource: %{public}s, file:test_exif_v2.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteXmageBottom ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_17600
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_17600
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteXmageBottom', '')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_17600', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_17600';
+    const key = image.PropertyKey.XMAGE_BOTTOM;
+    const propertyValue = '10000'
+    const errorValue = ''
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_v2.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteXmageBottom ImageSource: %{public}s, file:test_exif_v2.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteXmageBottom ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_17700
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_17700
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteXmageBottom', '+')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_17700', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_17700';
+    const key = image.PropertyKey.XMAGE_BOTTOM;
+    const propertyValue = '10000'
+    const errorValue = '+'
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_v2.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteXmageBottom ImageSource: %{public}s, file:test_exif_v2.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteXmageBottom ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_18200
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_18200
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteCloudEnhancementMode', '10000')_promise
+    *                 3.getImageProperty('HwMnoteCloudEnhancementMode') compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_18200', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_18200';
+    const key = image.PropertyKey.CLOUD_ENHANCEMENT_MODE;
+    const modifyData = '10000'
+    const compareData = '10000'
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromise(testTag, key, modifyData, compareData,
+                `test_exif_empty.${modfiyFileSuffixs[i]}`, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                `modifyImageProperty promise error HwMnoteCloudEnhancementMode ImageSource: %{public}s, file:test_exif_empty.%{public}s`,
+                createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteCloudEnhancementMode ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_18300
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_18300
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteCloudEnhancementMode', 'abc')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_18300', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_18300';
+    const key = image.PropertyKey.CLOUD_ENHANCEMENT_MODE;
+    const propertyValue = '10000'
+    const errorValue = 'abc'
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_empty.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteCloudEnhancementMode ImageSource: %{public}s, file:test_exif_empty.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteCloudEnhancementMode ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_18400
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_18400
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteCloudEnhancementMode', '12ab')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_18400', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_18400';
+    const key = image.PropertyKey.CLOUD_ENHANCEMENT_MODE;
+    const propertyValue = '10000'
+    const errorValue = '12ab'
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_empty.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteCloudEnhancementMode ImageSource: %{public}s, file:test_exif_empty.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteCloudEnhancementMode ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_18500
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_18500
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteCloudEnhancementMode', '')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_18500', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_18500';
+    const key = image.PropertyKey.CLOUD_ENHANCEMENT_MODE;
+    const propertyValue = '10000'
+    const errorValue = ''
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_empty.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteCloudEnhancementMode ImageSource: %{public}s, file:test_exif_empty.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteCloudEnhancementMode ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_18600
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_18600
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteCloudEnhancementMode', '+')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_18600', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_18600';
+    const key = image.PropertyKey.CLOUD_ENHANCEMENT_MODE;
+    const propertyValue = '10000'
+    const errorValue = '+'
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_empty.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteCloudEnhancementMode ImageSource: %{public}s, file:test_exif_empty.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteCloudEnhancementMode ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_17800
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_17800
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteCloudEnhancementMode', '10000')_promise
+    *                 3.getImageProperty('HwMnoteCloudEnhancementMode') compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_17800', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_17800';
+    const key = image.PropertyKey.CLOUD_ENHANCEMENT_MODE;
+    const modifyData = '10000'
+    const compareData = '10000'
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromise(testTag, key, modifyData, compareData,
+                `test_exif_v2.${modfiyFileSuffixs[i]}`, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                `modifyImageProperty promise error HwMnoteCloudEnhancementMode ImageSource: %{public}s, file:test_exif_v2.%{public}s`,
+                createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteCloudEnhancementMode ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_17900
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_17900
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteCloudEnhancementMode', 'abc')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_17900', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_17900';
+    const key = image.PropertyKey.CLOUD_ENHANCEMENT_MODE;
+    const propertyValue = '10000'
+    const errorValue = 'abc'
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_v2.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteCloudEnhancementMode ImageSource: %{public}s, file:test_exif_v2.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteCloudEnhancementMode ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_18000
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_18000
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteCloudEnhancementMode', '12ab')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_18000', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_18000';
+    const key = image.PropertyKey.CLOUD_ENHANCEMENT_MODE;
+    const propertyValue = '10000'
+    const errorValue = '12ab'
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_v2.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteCloudEnhancementMode ImageSource: %{public}s, file:test_exif_v2.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteCloudEnhancementMode ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_18100
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_18100
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteCloudEnhancementMode', '')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_18100', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_18100';
+    const key = image.PropertyKey.CLOUD_ENHANCEMENT_MODE;
+    const propertyValue = '10000'
+    const errorValue = ''
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_v2.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteCloudEnhancementMode ImageSource: %{public}s, file:test_exif_v2.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteCloudEnhancementMode ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+    
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_18200
+    * @tc.name      : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_18200
+    * @tc.desc      : 1.create imageSource
+    *                 2.modifyImageProperty('HwMnoteCloudEnhancementMode', '+')_promise
+    *                 3.errorCode compare
+    * @tc.size      : MediumTest
+    * @tc.type      : Functional
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_18200', Level.LEVEL0, async (done: Function) => {
+    const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_18200';
+    const key = image.PropertyKey.CLOUD_ENHANCEMENT_MODE;
+    const propertyValue = '10000'
+    const errorValue = '+'
+    const expectedModifyErrorCode = 62980135
+    const createImageSourceTypes = ["fd", "uri"]
+    try {
+        for(let j = 0; j < createImageSourceTypes.length; j++){
+            for(let i=0; i<modfiyFileSuffixs.length; i++){
+            const checkResult = await testModifyPromiseError(testTag, key, errorValue, propertyValue,
+                `test_exif_v2.${modfiyFileSuffixs[i]}`, expectedModifyErrorCode, createImageSourceTypes[j]);
+            if(!checkResult){
+                hilog.info(0x0000, testTag, 
+                    `modifyImageProperty promise error HwMnoteCloudEnhancementMode ImageSource: %{public}s, file:test_exif_v2.%{public}s`,
+                    createImageSourceTypes[j], modfiyFileSuffixs[i]);
+                expect().assertFail()
+                done()
+            }
+            }
+        }
+        expect(true).assertTrue()
+        done()
+    } catch (e) {
+        hilog.info(0x0000, testTag, `createImageSource promise error HwMnoteCloudEnhancementMode ` + e);
+        expect().assertFail();
+        done();
+    }
+    })
+	
+	
+
   })
 }
