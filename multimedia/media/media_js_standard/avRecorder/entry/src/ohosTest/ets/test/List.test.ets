@@ -13,11 +13,13 @@
  * limitations under the License.
  */
 
+import AVRecorderFuncAccTest from './AVRecorderFuncAccTest.test'
 import avRecorderTest from './AVRecorderFuncTest.test'
 import {avVideoRecorderTestOne,executeAVVideoRecorder} from './AvVideoRecorderFuncTestOne.test'
 let isExecuteAVVideoRecorder = executeAVVideoRecorder();
 
 export default function testsuite() {
+   AVRecorderFuncAccTest();
    avRecorderTest();
    if(isExecuteAVVideoRecorder){
       avVideoRecorderTestOne();
