@@ -61,6 +61,7 @@ group("arkui") {
       "ace_ets_component_apilack:ActsAceEtsApiLackTest",
       "ace_ets_component_common_attrss:componentAttrssTest",
       "ace_ets_component_seven:componentSevenAttrssTest",
+      "ace_ets_display_sync_static:DisplaySyncStaticTest",
       "ace_ets_module_noui:ActsAceEtsModuleNoUITest",
       "ace_ets_module_ui:ActsAceEtsModuleUITest",
       "ace_ets_ux_five:UxFiveTest",
