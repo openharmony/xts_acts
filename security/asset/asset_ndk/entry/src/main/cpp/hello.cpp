@@ -91,20 +91,14 @@ static napi_value Asset_AddCE(napi_env env, napi_callback_info info)
     };
     Asset_ResultSet resultSet = {0};
     int32_t ret = OH_Asset_Query(attr2, sizeof(attr2) / sizeof(attr2[0]), &resultSet);
-    if (ret == ASSET_SUCCESS)
-    {
+    if (ret == ASSET_SUCCESS) {
         Asset_Attr *secret = OH_Asset_ParseAttr(resultSet.results + 0, ASSET_TAG_SECRET);
-        if (memcmp(secret->value.blob.data, reinterpret_cast<uint8_t *>(secretBuffer), secret->value.blob.size) == 0)
-        {
+        if (memcmp(secret->value.blob.data, reinterpret_cast<uint8_t *>(secretBuffer), secret->value.blob.size) == 0) {
             ret = MAGIC_RET;
-        }
-        else
-        {
+        } else {
             ret = -1;
         }
-    }
-    else
-    {
+    } else {
         ret = -1;
     }
     napi_value result;
@@ -156,14 +150,12 @@ static int32_t AssetPreAndPostQuerySuccess(Asset_Attr *attr, uint32_t attrCnt)
     Asset_Blob challenge = {static_cast<uint32_t>(32), reinterpret_cast<uint8_t *>(challengeBuffer)};
     int32_t result = 0;
     int32_t ret = OH_Asset_PreQuery(attr, attrCnt, &challenge);
-    if (ret == ASSET_SUCCESS)
-    {
+    if (ret == ASSET_SUCCESS) {
         Asset_Attr attr2[] = {
             {.tag = ASSET_TAG_AUTH_CHALLENGE, .value.blob = challenge},
         };
         int32_t ret2 = OH_Asset_PostQuery(attr2, sizeof(attr2) / sizeof(attr2[0]));
-        if (ret2 == ASSET_SUCCESS)
-        {
+        if (ret2 == ASSET_SUCCESS) {
             result = 1;
         }
         OH_Asset_FreeBlob(&challenge);
@@ -177,8 +169,7 @@ static int32_t AssetPreAndPostQueryNotFound(Asset_Attr *attr, uint32_t attrCnt)
     Asset_Blob challenge = {static_cast<uint32_t>(32), reinterpret_cast<uint8_t *>(challengeBuffer)};
     int32_t result = 0;
     int32_t ret = OH_Asset_PreQuery(attr, attrCnt, &challenge);
-    if (ret == ASSET_NOT_FOUND)
-    {
+    if (ret == ASSET_NOT_FOUND) {
         result = 1;
     }
     return result;
@@ -254,8 +245,7 @@ static napi_value Asset_PreAndPostQueryError(napi_env env, napi_callback_info in
 
     int32_t ret = OH_Asset_PreQuery(attr, sizeof(attr) / sizeof(attr[0]), &challenge);
     int32_t result = 0;
-    if (ret == ASSET_INVALID_ARGUMENT)
-    {
+    if (ret == ASSET_INVALID_ARGUMENT) {
         result += 1;
     }
 
@@ -266,14 +256,12 @@ static napi_value Asset_PreAndPostQueryError(napi_env env, napi_callback_info in
     };
 
     ret = OH_Asset_PreQuery(attr2, sizeof(attr2) / sizeof(attr2[0]), &challenge);
-    if (ret == ASSET_INVALID_ARGUMENT)
-    {
+    if (ret == ASSET_INVALID_ARGUMENT) {
         result += 1;
     }
     Asset_Attr attr3[] = {};
     ret = OH_Asset_PostQuery(attr3, sizeof(attr3) / sizeof(attr3[0]));
-    if (ret == ASSET_INVALID_ARGUMENT)
-    {
+    if (ret == ASSET_INVALID_ARGUMENT) {
         result += 1;
     }
     napi_value result_real;
@@ -304,16 +292,12 @@ static napi_value Asset_PreQuery(napi_env env, napi_callback_info info)
     int32_t ret = OH_Asset_PreQuery(attr, sizeof(attr) / sizeof(attr[0]), &challenge);
     napi_value result;
     napi_value tmp;
-    if (ret == ASSET_SUCCESS)
-    {
+    if (ret == ASSET_SUCCESS) {
         napi_create_string_utf8(env, reinterpret_cast<char *>(challenge.data), challenge.size, &tmp);
         OH_Asset_FreeBlob(&challenge);
-        if (tmp != NULL)
-        {
+        if (tmp != NULL) {
             return tmp;
-        }
-        else
-        {
+        } else {
             ret = -1;
         }
     }
@@ -345,11 +329,9 @@ static napi_value Asset_PreAndPostQuery(napi_env env, napi_callback_info info)
     int32_t ret = OH_Asset_PreQuery(attr, sizeof(attr) / sizeof(attr[0]), &challenge);
     napi_value result;
     napi_value tmp;
-    if (ret == ASSET_SUCCESS)
-    {
+    if (ret == ASSET_SUCCESS) {
         napi_create_string_utf8(env, reinterpret_cast<char *>(challenge.data), challenge.size, &tmp);
-        if (tmp != NULL)
-        {
+        if (tmp != NULL) {
             Asset_Attr attr2[] = {
                 {.tag = ASSET_TAG_AUTH_CHALLENGE, .value.blob = challenge},
             };
@@ -357,9 +339,7 @@ static napi_value Asset_PreAndPostQuery(napi_env env, napi_callback_info info)
             napi_create_uint32(env, ret2, &result);
             OH_Asset_FreeBlob(&challenge);
             return result;
-        }
-        else
-        {
+        } else {
             ret = -1;
         }
     }
@@ -454,8 +434,7 @@ static int32_t AssetRemoveInvalidArg(Asset_Attr *attr, uint32_t attrCnt)
 {
     int32_t result = 0;
     int32_t ret = OH_Asset_Remove(attr, attrCnt);
-    if (ret == ASSET_INVALID_ARGUMENT)
-    {
+    if (ret == ASSET_INVALID_ARGUMENT) {
         result = 1;
     }
     return result;
@@ -544,20 +523,14 @@ static napi_value Asset_QueryAll(napi_env env, napi_callback_info info)
     };
     Asset_ResultSet resultSet = {0};
     int32_t ret = OH_Asset_Query(attr, sizeof(attr) / sizeof(attr[0]), &resultSet);
-    if (ret == ASSET_SUCCESS)
-    {
+    if (ret == ASSET_SUCCESS) {
         Asset_Attr *secret = OH_Asset_ParseAttr(resultSet.results + 0, ASSET_TAG_SECRET);
-        if (memcmp(secret->value.blob.data, reinterpret_cast<uint8_t *>(secretBuffer), secret->value.blob.size) == 0)
-        {
+        if (memcmp(secret->value.blob.data, reinterpret_cast<uint8_t *>(secretBuffer), secret->value.blob.size) == 0) {
             ret = MAGIC_RET;
-        }
-        else
-        {
+        } else {
             ret = -1;
         }
-    }
-    else
-    {
+    } else {
         ret = -1;
     }
     napi_value result;
@@ -589,10 +562,8 @@ static napi_value Asset_QueryOption(napi_env env, napi_callback_info info)
     };
     Asset_ResultSet resultSet = {0};
     int32_t ret = OH_Asset_Query(attr, sizeof(attr) / sizeof(attr[0]), &resultSet);
-    if (ret == ASSET_SUCCESS)
-    {
-        if (resultSet.count == value0)
-        {
+    if (ret == ASSET_SUCCESS) {
+        if (resultSet.count == value0) {
             ret = MAGIC_RET;
         }
     }
@@ -607,8 +578,7 @@ static int32_t AssetQueryInvalidArg(Asset_Attr *attr, uint32_t attrCnt)
     int32_t result = 0;
     Asset_ResultSet resultSet = {0};
     int32_t ret = OH_Asset_Query(attr, attrCnt, &resultSet);
-    if (ret == ASSET_INVALID_ARGUMENT)
-    {
+    if (ret == ASSET_INVALID_ARGUMENT) {
         result = 1;
     }
     OH_Asset_FreeResultSet(&resultSet);
@@ -684,10 +654,8 @@ static napi_value Asset_QueryNum(napi_env env, napi_callback_info info)
     };
     Asset_ResultSet resultSet = {0};
     int32_t ret = OH_Asset_Query(attr, sizeof(attr) / sizeof(attr[0]), &resultSet);
-    if (ret == ASSET_SUCCESS)
-    {
-        if (resultSet.count == value0)
-        {
+    if (ret == ASSET_SUCCESS) {
+        if (resultSet.count == value0) {
             ret = MAGIC_RET;
         }
     }
@@ -718,10 +686,8 @@ static napi_value Asset_QueryLabel(napi_env env, napi_callback_info info)
     Asset_Attr attr[] = {{.tag = ASSET_TAG_DATA_LABEL_NORMAL_1, .value.blob = label}};
     Asset_ResultSet resultSet = {0};
     int32_t ret = OH_Asset_Query(attr, sizeof(attr) / sizeof(attr[0]), &resultSet);
-    if (ret == ASSET_SUCCESS)
-    {
-        if (resultSet.count == value0)
-        {
+    if (ret == ASSET_SUCCESS) {
+        if (resultSet.count == value0) {
             ret = MAGIC_RET;
         }
     }
@@ -815,8 +781,7 @@ static int32_t AssetUpdateInvalidArg(Asset_Attr *query, uint32_t queryCnt, Asset
 {
     int32_t result = 0;
     int32_t ret = OH_Asset_Update(query, queryCnt, attributesToUpdate, updateCnt);
-    if (ret == ASSET_INVALID_ARGUMENT)
-    {
+    if (ret == ASSET_INVALID_ARGUMENT) {
         result = 1;
     }
     return result;
@@ -886,12 +851,9 @@ static napi_value Asset_QuerySyncResult(napi_env env, napi_callback_info info)
     Asset_SyncResult syncResult = {0};
     int32_t result = OH_Asset_QuerySyncResult(NULL, 0, &syncResult);
     napi_value result_real = nullptr;
-    if (result == ASSET_SUCCESS)
-    {
+    if (result == ASSET_SUCCESS) {
         napi_create_uint32(env, 0, &result_real);
-    }
-    else
-    {
+    } else {
         napi_create_uint32(env, -1, &result_real);
     }
     return result_real;
