@@ -1164,8 +1164,8 @@ export default function SecurityHuksInterfaceErrorCodeTest() {
 
     /**
      * @tc.number : SUB_Security_HUKS_ErrorCode_Api20_Interface_0100
-     * @tc.name   : test wrap key, error code 12000018
-     * @tc.desc   : generate key, wrap key
+     * @tc.name   : SUB_Security_HUKS_ErrorCode_Api20_Interface_0100
+     * @tc.desc   : test wrap key, error code 12000018
      * @tc.type   : Safety
      * @tc.size   : SmallTest
      * @tc.level  : Level3
@@ -1184,8 +1184,8 @@ export default function SecurityHuksInterfaceErrorCodeTest() {
 
     /**
      * @tc.number : SUB_Security_HUKS_ErrorCode_Api20_Interface_0200
-     * @tc.name   : test unwrap key, error code 12000018
-     * @tc.desc   : generate key, unwrap key
+     * @tc.name   : SUB_Security_HUKS_ErrorCode_Api20_Interface_0200
+     * @tc.desc   : test unwrap key, error code 12000018
      * @tc.type   : Safety
      * @tc.size   : SmallTest
      * @tc.level  : Level3
@@ -1205,8 +1205,8 @@ export default function SecurityHuksInterfaceErrorCodeTest() {
 
     /**
      * @tc.number : SUB_Security_HUKS_ErrorCode_Api20_Interface_0300
-     * @tc.name   : test generate key, error code 12000014
-     * @tc.desc   : generate key
+     * @tc.name   : SUB_Security_HUKS_ErrorCode_Api20_Interface_0300
+     * @tc.desc   : test generate key, error code 12000014
      * @tc.type   : Safety
      * @tc.size   : SmallTest
      * @tc.level  : Level3

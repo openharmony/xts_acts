@@ -254,11 +254,11 @@ export default function AssetNdkTest() {
     })
 
     /**
-     * @tc.number :SUB_Security_Asset_QuerySyncResult_NDK_Func_0200
-     * @tc.name  :SUB_Security_Asset_QuerySyncResult_NDK_Func_0200
-     * @tc.desc  :test querySyncResult
-     * @tc.size  :Medium
-     * @tc.type  :Func
+     * @tc.number :SUB_Security_Asset_QuerySyncResult_NDK_Func_0100
+     * @tc.name   :SUB_Security_Asset_QuerySyncResult_NDK_Func_0100
+     * @tc.desc   :test querySyncResult
+     * @tc.size   :Medium
+     * @tc.type   :Func
      * @tc.level  :Level3
      */
     it('SUB_Security_Asset_QuerySyncResult_NDK_Func_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {

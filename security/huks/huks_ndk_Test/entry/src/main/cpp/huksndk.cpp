@@ -40,7 +40,8 @@
 #define DEVICE_ID "test_device_id"
 #define SIZE_1024 1024
 
-struct AddonData {
+struct AddonData
+{
     napi_async_work asyncWork = nullptr;
     napi_deferred deferred = nullptr;
     napi_ref callback = nullptr;
@@ -48,13 +49,15 @@ struct AddonData {
     double result = 0;
 };
 
-static void resultAsyncWork(napi_env env, napi_status status, void *data) {
+static void resultAsyncWork(napi_env env, napi_status status, void *data)
+{
     AddonData *addonData = static_cast<AddonData *>(data);
     napi_value result = nullptr;
     napi_create_double(env, addonData->result, &result);
     napi_resolve_deferred(env, addonData->deferred, result);
 
-    if (addonData->callback != nullptr) {
+    if (addonData->callback != nullptr)
+    {
         napi_delete_reference(env, addonData->callback);
     }
 
@@ -63,27 +66,32 @@ static void resultAsyncWork(napi_env env, napi_status status, void *data) {
     addonData = nullptr;
 };
 
-static napi_value OHHuksGetSdkVersion(napi_env env, napi_callback_info info) {
+static napi_value OHHuksGetSdkVersion(napi_env env, napi_callback_info info)
+{
     int returnValue = FAIL;
     napi_value result = nullptr;
     struct OH_Huks_Blob *gkeyAlias = (struct OH_Huks_Blob *)malloc(sizeof(struct OH_Huks_Blob));
-    if (gkeyAlias != nullptr) {
+    if (gkeyAlias != nullptr)
+    {
         gkeyAlias->data = static_cast<uint8_t *>(malloc(sizeof(uint8_t)));
         gkeyAlias->size = SIZE_1024;
     }
     struct OH_Huks_Result resultSt = OH_Huks_GetSdkVersion(gkeyAlias);
-    if (resultSt.errorCode == (int32_t)OH_HUKS_SUCCESS) {
+    if (resultSt.errorCode == (int32_t)OH_HUKS_SUCCESS)
+    {
         returnValue = SUCCESS;
     }
     napi_create_int32(env, returnValue, &result);
     return result;
 }
 
-static napi_value OHHuksGetSdkVersionErr(napi_env env, napi_callback_info info) {
+static napi_value OHHuksGetSdkVersionErr(napi_env env, napi_callback_info info)
+{
     int returnValue = FAIL;
     struct OH_Huks_Blob *gkeyAlias = new OH_Huks_Blob{};
     struct OH_Huks_Result resultSt = OH_Huks_GetSdkVersion(gkeyAlias);
-    if (resultSt.errorCode != OH_HUKS_SUCCESS) {
+    if (resultSt.errorCode != OH_HUKS_SUCCESS)
+    {
         returnValue = SUCCESS;
     }
     napi_value result = nullptr;
@@ -103,7 +111,8 @@ struct OH_Huks_Param tmpParams[] = {
     {.tag = OH_HUKS_TAG_AUTH_STORAGE_LEVEL, .uint32Param = OH_HUKS_AUTH_STORAGE_LEVEL_DE},
 };
 
-static napi_value OHHuksGenerateKeyItem(napi_env env, napi_callback_info info) {
+static napi_value OHHuksGenerateKeyItem(napi_env env, napi_callback_info info)
+{
     char alias[64] = {0};
     strcpy(alias, ALIAS);
     static const struct OH_Huks_Blob gkeyAlias = {sizeof(ALIAS),
@@ -113,17 +122,20 @@ static napi_value OHHuksGenerateKeyItem(napi_env env, napi_callback_info info) {
     OH_Huks_Result ret;
     OH_Huks_InitParamSet(&paramSet);
     ret = OH_Huks_AddParams(paramSet, tmpParams, sizeof(tmpParams) / sizeof(tmpParams[0]));
-    if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS) {
+    if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS)
+    {
         OH_Huks_FreeParamSet(&paramSet);
     }
 
     ret = OH_Huks_BuildParamSet(&paramSet);
-    if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS) {
+    if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS)
+    {
         OH_Huks_FreeParamSet(&paramSet);
     }
 
     struct OH_Huks_Result resultSt = OH_Huks_GenerateKeyItem(&gkeyAlias, paramSet, nullptr);
-    if (resultSt.errorCode == (int32_t)OH_HUKS_SUCCESS) {
+    if (resultSt.errorCode == (int32_t)OH_HUKS_SUCCESS)
+    {
         returnValue = SUCCESS;
     }
     OH_Huks_DeleteKeyItem(&gkeyAlias, paramSet);
@@ -138,10 +150,12 @@ static struct OH_Huks_Param *g_paramNullptr = nullptr;
 static struct OH_Huks_Blob *g_blobNullptr = nullptr;
 static struct OH_Huks_CertChain *g_certChainNullptr = nullptr;
 
-static napi_value OHHuksGenerateKeyItemErr(napi_env env, napi_callback_info info) {
+static napi_value OHHuksGenerateKeyItemErr(napi_env env, napi_callback_info info)
+{
     int returnValue = FAIL;
     struct OH_Huks_Result resultSt = OH_Huks_GenerateKeyItem(g_blobNullptr, g_paramSetNullptr, g_paramSetNullptr);
-    if (resultSt.errorCode != (int32_t)OH_HUKS_SUCCESS) {
+    if (resultSt.errorCode != (int32_t)OH_HUKS_SUCCESS)
+    {
         returnValue = SUCCESS;
     }
     OH_Huks_DeleteKeyItem(g_blobNullptr, g_paramSetNullptr);
@@ -160,7 +174,8 @@ static struct OH_Huks_Param g_genParams041[] = {
     {.tag = OH_HUKS_TAG_BLOCK_MODE, .uint32Param = OH_HUKS_MODE_ECB},
     {.tag = OH_HUKS_TAG_AUTH_STORAGE_LEVEL, .uint32Param = OH_HUKS_AUTH_STORAGE_LEVEL_DE}};
 
-static void doOHHuksExportPublicKeyItem(napi_env env, void *data) {
+static void doOHHuksExportPublicKeyItem(napi_env env, void *data)
+{
     AddonData *addonData = static_cast<AddonData *>(data);
 
     int returnValue = FAIL;
@@ -175,14 +190,16 @@ static void doOHHuksExportPublicKeyItem(napi_env env, void *data) {
     struct OH_Huks_Result resultSt = OH_Huks_ExportPublicKeyItem(&keyAlias, genParamSet, &publicKey);
     OH_Huks_DeleteKeyItem(&keyAlias, genParamSet);
     OH_Huks_FreeParamSet(&genParamSet);
-    if (resultSt.errorCode == (int32_t)OH_HUKS_SUCCESS) {
+    if (resultSt.errorCode == (int32_t)OH_HUKS_SUCCESS)
+    {
         returnValue = SUCCESS;
     }
 
     addonData->result = returnValue;
 }
 
-static napi_value OHHuksExportPublicKeyItem(napi_env env, napi_callback_info info) {
+static napi_value OHHuksExportPublicKeyItem(napi_env env, napi_callback_info info)
+{
     napi_value promise = nullptr;
     napi_deferred deferred = nullptr;
     napi_create_promise(env, &deferred, &promise);
@@ -202,10 +219,12 @@ static napi_value OHHuksExportPublicKeyItem(napi_env env, napi_callback_info inf
     return promise;
 }
 
-static napi_value OHHuksExportPublicKeyItemErr(napi_env env, napi_callback_info info) {
+static napi_value OHHuksExportPublicKeyItemErr(napi_env env, napi_callback_info info)
+{
     int returnValue = FAIL;
     struct OH_Huks_Result resultSt = OH_Huks_ExportPublicKeyItem(g_blobNullptr, g_paramSetNullptr, g_blobNullptr);
-    if (resultSt.errorCode != (int32_t)OH_HUKS_SUCCESS) {
+    if (resultSt.errorCode != (int32_t)OH_HUKS_SUCCESS)
+    {
         returnValue = SUCCESS;
     }
     napi_value result = nullptr;
@@ -222,7 +241,8 @@ static struct OH_Huks_Param g_encryptParams041[] = {
     {.tag = OH_HUKS_TAG_BLOCK_MODE, .uint32Param = OH_HUKS_MODE_ECB},
     {.tag = OH_HUKS_TAG_AUTH_STORAGE_LEVEL, .uint32Param = OH_HUKS_AUTH_STORAGE_LEVEL_DE}};
 
-static void doOHHuksImportKeyItem(napi_env env, void *data) {
+static void doOHHuksImportKeyItem(napi_env env, void *data)
+{
     AddonData *addonData = static_cast<AddonData *>(data);
     int returnValue = FAIL;
     uint8_t tmpPublicKey[OH_HUKS_RSA_KEY_SIZE_1024] = {PARAM_0};
@@ -241,7 +261,8 @@ static void doOHHuksImportKeyItem(napi_env env, void *data) {
     InitParamSet(&encryptParamSet, g_encryptParams041, sizeof(g_encryptParams041) / sizeof(OH_Huks_Param));
 
     struct OH_Huks_Result resultSt = OH_Huks_ImportKeyItem(&newKeyAlias, encryptParamSet, &publicKey);
-    if (resultSt.errorCode == (int32_t)OH_HUKS_SUCCESS) {
+    if (resultSt.errorCode == (int32_t)OH_HUKS_SUCCESS)
+    {
         returnValue = SUCCESS;
     }
 
@@ -253,7 +274,8 @@ static void doOHHuksImportKeyItem(napi_env env, void *data) {
     addonData->result = returnValue;
 };
 
-static napi_value OHHuksImportKeyItem(napi_env env, napi_callback_info info) {
+static napi_value OHHuksImportKeyItem(napi_env env, napi_callback_info info)
+{
     napi_value promise = nullptr;
     napi_deferred deferred = nullptr;
     napi_create_promise(env, &deferred, &promise);
@@ -273,10 +295,12 @@ static napi_value OHHuksImportKeyItem(napi_env env, napi_callback_info info) {
     return promise;
 }
 
-static napi_value OHHuksImportKeyItemErr(napi_env env, napi_callback_info info) {
+static napi_value OHHuksImportKeyItemErr(napi_env env, napi_callback_info info)
+{
     int returnValue = FAIL;
     struct OH_Huks_Result resultSt = OH_Huks_ImportKeyItem(g_blobNullptr, g_paramSetNullptr, g_blobNullptr);
-    if (resultSt.errorCode != (int32_t)OH_HUKS_SUCCESS) {
+    if (resultSt.errorCode != (int32_t)OH_HUKS_SUCCESS)
+    {
         returnValue = SUCCESS;
     }
     napi_value result = nullptr;
@@ -284,7 +308,8 @@ static napi_value OHHuksImportKeyItemErr(napi_env env, napi_callback_info info) 
     return result;
 }
 
-static napi_value OHHuksDeleteKeyItem(napi_env env, napi_callback_info info) {
+static napi_value OHHuksDeleteKeyItem(napi_env env, napi_callback_info info)
+{
     char alias[64] = {0};
     strcpy(alias, ALIAS);
     static const struct OH_Huks_Blob gkeyAlias = {sizeof(ALIAS),
@@ -293,18 +318,21 @@ static napi_value OHHuksDeleteKeyItem(napi_env env, napi_callback_info info) {
     struct OH_Huks_ParamSet *paramSet = nullptr;
     OH_Huks_InitParamSet(&paramSet);
     OH_Huks_Result ret = OH_Huks_AddParams(paramSet, tmpParams, sizeof(tmpParams) / sizeof(tmpParams[0]));
-    if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS) {
+    if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS)
+    {
         OH_Huks_FreeParamSet(&paramSet);
     }
 
     ret = OH_Huks_BuildParamSet(&paramSet);
-    if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS) {
+    if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS)
+    {
         OH_Huks_FreeParamSet(&paramSet);
     }
 
     OH_Huks_GenerateKeyItem(&gkeyAlias, paramSet, nullptr);
     struct OH_Huks_Result resultSt = OH_Huks_DeleteKeyItem(&gkeyAlias, paramSet);
-    if (resultSt.errorCode == (int32_t)OH_HUKS_SUCCESS) {
+    if (resultSt.errorCode == (int32_t)OH_HUKS_SUCCESS)
+    {
         returnValue = SUCCESS;
     }
     napi_value result = nullptr;
@@ -312,10 +340,12 @@ static napi_value OHHuksDeleteKeyItem(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value OHHuksDeleteKeyItemErr(napi_env env, napi_callback_info info) {
+static napi_value OHHuksDeleteKeyItemErr(napi_env env, napi_callback_info info)
+{
     int returnValue = FAIL;
     struct OH_Huks_Result resultSt = OH_Huks_DeleteKeyItem(g_blobNullptr, g_paramSetNullptr);
-    if (resultSt.errorCode != (int32_t)OH_HUKS_SUCCESS) {
+    if (resultSt.errorCode != (int32_t)OH_HUKS_SUCCESS)
+    {
         returnValue = SUCCESS;
     }
     napi_value result = nullptr;
@@ -323,7 +353,8 @@ static napi_value OHHuksDeleteKeyItemErr(napi_env env, napi_callback_info info) 
     return result;
 }
 
-static napi_value OHHuksIsKeyItemExist(napi_env env, napi_callback_info info) {
+static napi_value OHHuksIsKeyItemExist(napi_env env, napi_callback_info info)
+{
     char alias[64] = {0};
     strcpy(alias, ALIAS);
     static const struct OH_Huks_Blob gkeyAlias = {sizeof(ALIAS),
@@ -333,18 +364,21 @@ static napi_value OHHuksIsKeyItemExist(napi_env env, napi_callback_info info) {
     OH_Huks_InitParamSet(&paramSet);
 
     OH_Huks_Result ret = OH_Huks_AddParams(paramSet, tmpParams, sizeof(tmpParams) / sizeof(tmpParams[0]));
-    if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS) {
+    if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS)
+    {
         OH_Huks_FreeParamSet(&paramSet);
     }
 
     ret = OH_Huks_BuildParamSet(&paramSet);
-    if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS) {
+    if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS)
+    {
         OH_Huks_FreeParamSet(&paramSet);
     }
 
     OH_Huks_GenerateKeyItem(&gkeyAlias, paramSet, nullptr);
     struct OH_Huks_Result resultSt = OH_Huks_IsKeyItemExist(&gkeyAlias, paramSet);
-    if (resultSt.errorCode == (int32_t)OH_HUKS_SUCCESS) {
+    if (resultSt.errorCode == (int32_t)OH_HUKS_SUCCESS)
+    {
         returnValue = SUCCESS;
     }
     OH_Huks_DeleteKeyItem(&gkeyAlias, paramSet);
@@ -353,10 +387,12 @@ static napi_value OHHuksIsKeyItemExist(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value OHHuksIsKeyItemExistErr(napi_env env, napi_callback_info info) {
+static napi_value OHHuksIsKeyItemExistErr(napi_env env, napi_callback_info info)
+{
     int returnValue = FAIL;
     struct OH_Huks_Result resultSt = OH_Huks_IsKeyItemExist(g_blobNullptr, g_paramSetNullptr);
-    if (resultSt.errorCode != (int32_t)OH_HUKS_SUCCESS) {
+    if (resultSt.errorCode != (int32_t)OH_HUKS_SUCCESS)
+    {
         returnValue = SUCCESS;
     }
     napi_value result = nullptr;
@@ -386,17 +422,20 @@ static napi_value OHHuksInitSession(napi_env env, napi_callback_info info)
     struct OH_Huks_ParamSet *paramSet = nullptr;
     OH_Huks_InitParamSet(&paramSet);
     OH_Huks_Result ret = OH_Huks_AddParams(paramSet, tmpParams, sizeof(tmpParams) / sizeof(tmpParams[0]));
-    if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS) {
+    if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS)
+    {
         OH_Huks_FreeParamSet(&paramSet);
     }
     ret = OH_Huks_BuildParamSet(&paramSet);
-    if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS) {
+    if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS)
+    {
         OH_Huks_FreeParamSet(&paramSet);
     }
     OH_Huks_GenerateKeyItem(&gkeyAlias, paramSet, nullptr);
     InitParamSet(&hkdfParamSet, g_hkdfParams001, sizeof(g_hkdfParams001) / sizeof(OH_Huks_Param));
     struct OH_Huks_Result resultSt = OH_Huks_InitSession(&gkeyAlias, hkdfParamSet, &handleDerive, nullptr);
-    if (resultSt.errorCode == (int32_t)OH_HUKS_SUCCESS) {
+    if (resultSt.errorCode == (int32_t)OH_HUKS_SUCCESS)
+    {
         returnValue = SUCCESS;
     }
     OH_Huks_DeleteKeyItem(&gkeyAlias, paramSet);
@@ -405,11 +444,13 @@ static napi_value OHHuksInitSession(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value OHHuksInitSessionErr(napi_env env, napi_callback_info info) {
+static napi_value OHHuksInitSessionErr(napi_env env, napi_callback_info info)
+{
     int returnValue = FAIL;
     struct OH_Huks_Result resultSt =
         OH_Huks_InitSession(g_blobNullptr, g_paramSetNullptr, g_blobNullptr, g_blobNullptr);
-    if (resultSt.errorCode != (int32_t)OH_HUKS_SUCCESS) {
+    if (resultSt.errorCode != (int32_t)OH_HUKS_SUCCESS)
+    {
         returnValue = SUCCESS;
     }
     napi_value result = nullptr;
@@ -417,21 +458,25 @@ static napi_value OHHuksInitSessionErr(napi_env env, napi_callback_info info) {
     return result;
 }
 
-OH_Huks_Result TestGenerateKey(const struct OH_Huks_Blob *keyAlias) {
+OH_Huks_Result TestGenerateKey(const struct OH_Huks_Blob *keyAlias)
+{
     struct OH_Huks_ParamSet *paramSet = nullptr;
     OH_Huks_Result ret = OH_Huks_InitParamSet(&paramSet);
-    if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS) {
+    if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS)
+    {
         return ret;
     }
 
     ret = OH_Huks_AddParams(paramSet, tmpParams, sizeof(tmpParams) / sizeof(tmpParams[0]));
-    if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS) {
+    if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS)
+    {
         OH_Huks_FreeParamSet(&paramSet);
         return ret;
     }
 
     ret = OH_Huks_BuildParamSet(&paramSet);
-    if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS) {
+    if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS)
+    {
         OH_Huks_FreeParamSet(&paramSet);
         return ret;
     }
@@ -457,29 +502,35 @@ static const struct OH_Huks_Param g_commonParams[] = {
 };
 
 OH_Huks_Result GenerateParamSet(struct OH_Huks_ParamSet **paramSet, const struct OH_Huks_Param tmpParams[],
-                                uint32_t paramCount) {
+                                uint32_t paramCount)
+{
     OH_Huks_Result ret = OH_Huks_InitParamSet(paramSet);
-    if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS) {
+    if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS)
+    {
         return ret;
     }
 
     ret = OH_Huks_AddParams(*paramSet, tmpParams, paramCount);
-    if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS) {
+    if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS)
+    {
         OH_Huks_FreeParamSet(paramSet);
         return ret;
     }
 
     ret = OH_Huks_BuildParamSet(paramSet);
-    if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS) {
+    if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS)
+    {
         OH_Huks_FreeParamSet(paramSet);
         return ret;
     }
     return ret;
 }
 
-void *HksMalloc(size_t size) {
+void *HksMalloc(size_t size)
+{
     void *ptr = nullptr;
-    if (size == (size_t)PARAM_0) {
+    if (size == (size_t)PARAM_0)
+    {
         return static_cast<void *>(ptr);
     }
     return malloc(size);
@@ -487,34 +538,42 @@ void *HksMalloc(size_t size) {
 
 void HksFree(void *ptr) { free(ptr); }
 
-void FreeCertChain(struct OH_Huks_CertChain **certChain, const uint32_t pos) {
-    if (certChain == nullptr || *certChain == nullptr) {
+void FreeCertChain(struct OH_Huks_CertChain **certChain, const uint32_t pos)
+{
+    if (certChain == nullptr || *certChain == nullptr)
+    {
         return;
     }
 
-    if ((*certChain)->certs == nullptr) {
+    if ((*certChain)->certs == nullptr)
+    {
         HksFree(*certChain);
         *certChain = nullptr;
         return;
     }
-    for (uint32_t j = 0; j < pos; j++) {
-        if ((*certChain)->certs[j].data != nullptr) {
+    for (uint32_t j = 0; j < pos; j++)
+    {
+        if ((*certChain)->certs[j].data != nullptr)
+        {
             HksFree((*certChain)->certs[j].data);
             (*certChain)->certs[j].data = nullptr;
         }
     }
 
-    if ((*certChain)->certs != nullptr) {
+    if ((*certChain)->certs != nullptr)
+    {
         HksFree((*certChain)->certs);
         (*certChain)->certs = nullptr;
     }
 
-    if (*certChain != nullptr) {
+    if (*certChain != nullptr)
+    {
         HksFree(*certChain);
         *certChain = nullptr;
     }
 }
-struct HksTestCertChain {
+struct HksTestCertChain
+{
     bool certChainExist;
     bool certCountValid;
     bool certDataExist;
@@ -522,28 +581,35 @@ struct HksTestCertChain {
 };
 static uint32_t CERT_COUNT = 4;
 
-int32_t ConstructDataToCertChain(struct OH_Huks_CertChain **certChain, const struct HksTestCertChain *certChainParam) {
-    if (!certChainParam->certChainExist) {
+int32_t ConstructDataToCertChain(struct OH_Huks_CertChain **certChain, const struct HksTestCertChain *certChainParam)
+{
+    if (!certChainParam->certChainExist)
+    {
         return PARAM_0;
     }
     *certChain = static_cast<struct OH_Huks_CertChain *>(HksMalloc(sizeof(struct OH_Huks_CertChain)));
-    if (*certChain == nullptr) {
+    if (*certChain == nullptr)
+    {
         return OH_HUKS_ERR_CODE_ILLEGAL_ARGUMENT;
     }
-    if (!certChainParam->certCountValid) {
+    if (!certChainParam->certCountValid)
+    {
         (*certChain)->certsCount = PARAM_0;
         (*certChain)->certs = nullptr;
         return PARAM_0;
     }
     (*certChain)->certsCount = CERT_COUNT;
-    if (!certChainParam->certDataExist) {
+    if (!certChainParam->certDataExist)
+    {
         (*certChain)->certs = nullptr;
         return PARAM_0;
     }
     (*certChain)->certs =
         static_cast<struct OH_Huks_Blob *>(HksMalloc(sizeof(struct OH_Huks_Blob) * ((*certChain)->certsCount)));
-    if (*certChain != nullptr) {
-        for (uint32_t i = PARAM_0; i < (*certChain)->certsCount; i++) {
+    if (*certChain != nullptr)
+    {
+        for (uint32_t i = PARAM_0; i < (*certChain)->certsCount; i++)
+        {
             (*certChain)->certs[i].size = certChainParam->certDataSize;
             (*certChain)->certs[i].data =
                 reinterpret_cast<uint8_t *>(static_cast<char *>(HksMalloc((*certChain)->certs[i].size)));
@@ -553,7 +619,8 @@ int32_t ConstructDataToCertChain(struct OH_Huks_CertChain **certChain, const str
     return PARAM_0;
 }
 
-static napi_value OHHuksAttestKeyItem(napi_env env, napi_callback_info info) {
+static napi_value OHHuksAttestKeyItem(napi_env env, napi_callback_info info)
+{
     char alias[64] = {0};
     strcpy(alias, ALIAS);
     static const struct OH_Huks_Blob gkeyAlias = {sizeof(ALIAS),
@@ -566,7 +633,8 @@ static napi_value OHHuksAttestKeyItem(napi_env env, napi_callback_info info) {
     (void)ConstructDataToCertChain(&certChain, &certParam);
     struct OH_Huks_Result resultSt = OH_Huks_AttestKeyItem(&gkeyAlias, paramSet, certChain);
     int returnValue = FAIL;
-    if (resultSt.errorCode == (int32_t)OH_HUKS_ERR_CODE_PERMISSION_FAIL) {
+    if (resultSt.errorCode == (int32_t)OH_HUKS_ERR_CODE_PERMISSION_FAIL)
+    {
         returnValue = SUCCESS;
     }
     napi_value result = nullptr;
@@ -574,10 +642,12 @@ static napi_value OHHuksAttestKeyItem(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value OHHuksAttestKeyItemErr(napi_env env, napi_callback_info info) {
+static napi_value OHHuksAttestKeyItemErr(napi_env env, napi_callback_info info)
+{
     struct OH_Huks_Result resultSt = OH_Huks_AttestKeyItem(g_blobNullptr, g_paramSetNullptr, g_certChainNullptr);
     int returnValue = FAIL;
-    if (resultSt.errorCode != (int32_t)OH_HUKS_SUCCESS) {
+    if (resultSt.errorCode != (int32_t)OH_HUKS_SUCCESS)
+    {
         returnValue = SUCCESS;
     }
     napi_value result = nullptr;
@@ -585,11 +655,13 @@ static napi_value OHHuksAttestKeyItemErr(napi_env env, napi_callback_info info) 
     return result;
 }
 
-static napi_value OHHuksInitParamSet(napi_env env, napi_callback_info info) {
+static napi_value OHHuksInitParamSet(napi_env env, napi_callback_info info)
+{
     struct OH_Huks_ParamSet *paramSet = nullptr;
     OH_Huks_Result resultSt = OH_Huks_InitParamSet(&paramSet);
     int returnValue = FAIL;
-    if (resultSt.errorCode == (int32_t)OH_HUKS_SUCCESS) {
+    if (resultSt.errorCode == (int32_t)OH_HUKS_SUCCESS)
+    {
         returnValue = SUCCESS;
     }
     napi_value result = nullptr;
@@ -597,10 +669,12 @@ static napi_value OHHuksInitParamSet(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value OHHuksInitParamSetErr(napi_env env, napi_callback_info info) {
+static napi_value OHHuksInitParamSetErr(napi_env env, napi_callback_info info)
+{
     OH_Huks_Result resultSt = OH_Huks_InitParamSet(nullptr);
     int returnValue = FAIL;
-    if (resultSt.errorCode != (int32_t)OH_HUKS_SUCCESS) {
+    if (resultSt.errorCode != (int32_t)OH_HUKS_SUCCESS)
+    {
         returnValue = SUCCESS;
     }
     napi_value result = nullptr;
@@ -608,12 +682,14 @@ static napi_value OHHuksInitParamSetErr(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value OHHuksAddParams(napi_env env, napi_callback_info info) {
+static napi_value OHHuksAddParams(napi_env env, napi_callback_info info)
+{
     struct OH_Huks_ParamSet *paramSet = nullptr;
     OH_Huks_InitParamSet(&paramSet);
     OH_Huks_Result resultSt = OH_Huks_AddParams(paramSet, tmpParams, sizeof(tmpParams) / sizeof(tmpParams[0]));
     int returnValue = FAIL;
-    if (resultSt.errorCode == (int32_t)OH_HUKS_SUCCESS) {
+    if (resultSt.errorCode == (int32_t)OH_HUKS_SUCCESS)
+    {
         returnValue = SUCCESS;
     }
     napi_value result = nullptr;
@@ -621,10 +697,12 @@ static napi_value OHHuksAddParams(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value OHHuksAddParamsErr(napi_env env, napi_callback_info info) {
+static napi_value OHHuksAddParamsErr(napi_env env, napi_callback_info info)
+{
     OH_Huks_Result resultSt = OH_Huks_AddParams(g_paramSetNullptr, g_paramNullptr, 0);
     int returnValue = FAIL;
-    if (resultSt.errorCode != (int32_t)OH_HUKS_SUCCESS) {
+    if (resultSt.errorCode != (int32_t)OH_HUKS_SUCCESS)
+    {
         returnValue = SUCCESS;
     }
     napi_value result = nullptr;
@@ -632,17 +710,20 @@ static napi_value OHHuksAddParamsErr(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value OHHuksBuildParamSet(napi_env env, napi_callback_info info) {
+static napi_value OHHuksBuildParamSet(napi_env env, napi_callback_info info)
+{
     struct OH_Huks_ParamSet *paramSet = nullptr;
     OH_Huks_InitParamSet(&paramSet);
     OH_Huks_Result ret = OH_Huks_AddParams(paramSet, tmpParams, sizeof(tmpParams) / sizeof(tmpParams[0]));
-    if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS) {
+    if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS)
+    {
         OH_Huks_FreeParamSet(&paramSet);
     }
 
     OH_Huks_Result resultSt = OH_Huks_BuildParamSet(&paramSet);
     int returnValue = FAIL;
-    if (resultSt.errorCode == (int32_t)OH_HUKS_SUCCESS) {
+    if (resultSt.errorCode == (int32_t)OH_HUKS_SUCCESS)
+    {
         returnValue = SUCCESS;
     }
     napi_value result = nullptr;
@@ -650,10 +731,12 @@ static napi_value OHHuksBuildParamSet(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value OHHuksBuildParamSetErr(napi_env env, napi_callback_info info) {
+static napi_value OHHuksBuildParamSetErr(napi_env env, napi_callback_info info)
+{
     OH_Huks_Result resultSt = OH_Huks_BuildParamSet(nullptr);
     int returnValue = FAIL;
-    if (resultSt.errorCode != (int32_t)OH_HUKS_SUCCESS) {
+    if (resultSt.errorCode != (int32_t)OH_HUKS_SUCCESS)
+    {
         returnValue = SUCCESS;
     }
     napi_value result = nullptr;
@@ -661,18 +744,21 @@ static napi_value OHHuksBuildParamSetErr(napi_env env, napi_callback_info info) 
     return result;
 }
 
-static napi_value OHHuksFreeParamSet(napi_env env, napi_callback_info info) {
+static napi_value OHHuksFreeParamSet(napi_env env, napi_callback_info info)
+{
     struct OH_Huks_ParamSet *paramSet = nullptr;
     OH_Huks_InitParamSet(&paramSet);
     OH_Huks_Result ret = OH_Huks_AddParams(paramSet, tmpParams, sizeof(tmpParams) / sizeof(tmpParams[0]));
     OH_Huks_Result resultSt;
     resultSt.errorCode = TEST_VALUE;
-    if (ret.errorCode == (int32_t)OH_HUKS_SUCCESS) {
+    if (ret.errorCode == (int32_t)OH_HUKS_SUCCESS)
+    {
         OH_Huks_FreeParamSet(&paramSet);
         resultSt = OH_Huks_BuildParamSet(&paramSet);
     }
     int returnValue = FAIL;
-    if (resultSt.errorCode != (int32_t)OH_HUKS_SUCCESS && resultSt.errorCode != TEST_VALUE) {
+    if (resultSt.errorCode != (int32_t)OH_HUKS_SUCCESS && resultSt.errorCode != TEST_VALUE)
+    {
         returnValue = SUCCESS;
     }
     napi_value result = nullptr;
@@ -680,19 +766,22 @@ static napi_value OHHuksFreeParamSet(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value OHHuksIsParamSetValid(napi_env env, napi_callback_info info) {
+static napi_value OHHuksIsParamSetValid(napi_env env, napi_callback_info info)
+{
     struct OH_Huks_ParamSet *paramSet = nullptr;
     OH_Huks_InitParamSet(&paramSet);
 
     OH_Huks_Result ret = OH_Huks_AddParams(paramSet, tmpParams, sizeof(tmpParams) / sizeof(tmpParams[0]));
-    if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS) {
+    if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS)
+    {
         OH_Huks_FreeParamSet(&paramSet);
     }
 
     OH_Huks_BuildParamSet(&paramSet);
     OH_Huks_Result resultSt = OH_Huks_IsParamSetValid(paramSet, paramSet->paramSetSize);
     int returnValue = FAIL;
-    if (resultSt.errorCode == (int32_t)OH_HUKS_SUCCESS) {
+    if (resultSt.errorCode == (int32_t)OH_HUKS_SUCCESS)
+    {
         returnValue = SUCCESS;
     }
     napi_value result = nullptr;
@@ -700,10 +789,12 @@ static napi_value OHHuksIsParamSetValid(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value OHHuksIsParamSetValidErr(napi_env env, napi_callback_info info) {
+static napi_value OHHuksIsParamSetValidErr(napi_env env, napi_callback_info info)
+{
     OH_Huks_Result resultSt = OH_Huks_IsParamSetValid(g_paramSetNullptr, 0);
     int returnValue = FAIL;
-    if (resultSt.errorCode != (int32_t)OH_HUKS_SUCCESS) {
+    if (resultSt.errorCode != (int32_t)OH_HUKS_SUCCESS)
+    {
         returnValue = SUCCESS;
     }
     napi_value result = nullptr;
@@ -711,19 +802,22 @@ static napi_value OHHuksIsParamSetValidErr(napi_env env, napi_callback_info info
     return result;
 }
 
-static napi_value OHHuksIsParamSetTagValid(napi_env env, napi_callback_info info) {
+static napi_value OHHuksIsParamSetTagValid(napi_env env, napi_callback_info info)
+{
     struct OH_Huks_ParamSet *paramSet = nullptr;
     OH_Huks_InitParamSet(&paramSet);
 
     OH_Huks_Result ret = OH_Huks_AddParams(paramSet, tmpParams, sizeof(tmpParams) / sizeof(tmpParams[0]));
-    if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS) {
+    if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS)
+    {
         OH_Huks_FreeParamSet(&paramSet);
     }
 
     OH_Huks_BuildParamSet(&paramSet);
     OH_Huks_Result resultSt = OH_Huks_IsParamSetTagValid(paramSet);
     int returnValue = FAIL;
-    if (resultSt.errorCode == (int32_t)OH_HUKS_SUCCESS) {
+    if (resultSt.errorCode == (int32_t)OH_HUKS_SUCCESS)
+    {
         returnValue = SUCCESS;
     }
     napi_value result = nullptr;
@@ -731,10 +825,12 @@ static napi_value OHHuksIsParamSetTagValid(napi_env env, napi_callback_info info
     return result;
 }
 
-static napi_value OHHuksIsParamSetTagValidErr(napi_env env, napi_callback_info info) {
+static napi_value OHHuksIsParamSetTagValidErr(napi_env env, napi_callback_info info)
+{
     OH_Huks_Result resultSt = OH_Huks_IsParamSetTagValid(g_paramSetNullptr);
     int returnValue = FAIL;
-    if (resultSt.errorCode != (int32_t)OH_HUKS_SUCCESS) {
+    if (resultSt.errorCode != (int32_t)OH_HUKS_SUCCESS)
+    {
         returnValue = SUCCESS;
     }
     napi_value result = nullptr;
@@ -742,12 +838,14 @@ static napi_value OHHuksIsParamSetTagValidErr(napi_env env, napi_callback_info i
     return result;
 }
 
-static napi_value OHHuksCheckParamMatch(napi_env env, napi_callback_info info) {
+static napi_value OHHuksCheckParamMatch(napi_env env, napi_callback_info info)
+{
     struct OH_Huks_Param baseParam = {.tag = OH_HUKS_TAG_ALGORITHM, .uint64Param = (uint64_t)1};
     struct OH_Huks_Param otherParam = {.tag = OH_HUKS_TAG_ALGORITHM, .uint64Param = (uint64_t)1};
     OH_Huks_Result resultSt = OH_Huks_CheckParamMatch(&baseParam, &otherParam);
     int returnValue = FAIL;
-    if (resultSt.errorCode == (int32_t)OH_HUKS_SUCCESS) {
+    if (resultSt.errorCode == (int32_t)OH_HUKS_SUCCESS)
+    {
         returnValue = SUCCESS;
     }
     napi_value result = nullptr;
@@ -755,12 +853,14 @@ static napi_value OHHuksCheckParamMatch(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value OHHuksCheckParamMatchErr(napi_env env, napi_callback_info info) {
+static napi_value OHHuksCheckParamMatchErr(napi_env env, napi_callback_info info)
+{
     struct OH_Huks_Param baseParam = {.tag = OH_HUKS_TAG_ALGORITHM, .uint64Param = (uint64_t)1};
     struct OH_Huks_Param otherParam = {.tag = OH_HUKS_TAG_ALGORITHM, .uint64Param = (uint64_t)2};
     OH_Huks_Result resultSt = OH_Huks_CheckParamMatch(&baseParam, &otherParam);
     int returnValue = FAIL;
-    if (resultSt.errorCode != (int32_t)OH_HUKS_SUCCESS) {
+    if (resultSt.errorCode != (int32_t)OH_HUKS_SUCCESS)
+    {
         returnValue = SUCCESS;
     }
     napi_value result = nullptr;
@@ -768,17 +868,20 @@ static napi_value OHHuksCheckParamMatchErr(napi_env env, napi_callback_info info
     return result;
 }
 
-static napi_value OHHuksFreshParamSet(napi_env env, napi_callback_info info) {
+static napi_value OHHuksFreshParamSet(napi_env env, napi_callback_info info)
+{
     struct OH_Huks_ParamSet *paramSet = nullptr;
     OH_Huks_InitParamSet(&paramSet);
     OH_Huks_Result ret = OH_Huks_AddParams(paramSet, tmpParams, sizeof(tmpParams) / sizeof(tmpParams[0]));
-    if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS) {
+    if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS)
+    {
         OH_Huks_FreeParamSet(&paramSet);
     }
     OH_Huks_BuildParamSet(&paramSet);
     OH_Huks_Result resultSt = OH_Huks_FreshParamSet(paramSet, true);
     int returnValue = FAIL;
-    if (resultSt.errorCode == (int32_t)OH_HUKS_SUCCESS) {
+    if (resultSt.errorCode == (int32_t)OH_HUKS_SUCCESS)
+    {
         returnValue = SUCCESS;
     }
     napi_value result = nullptr;
@@ -786,10 +889,12 @@ static napi_value OHHuksFreshParamSet(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value OHHuksFreshParamSetErr(napi_env env, napi_callback_info info) {
+static napi_value OHHuksFreshParamSetErr(napi_env env, napi_callback_info info)
+{
     OH_Huks_Result resultSt = OH_Huks_FreshParamSet(nullptr, 0);
     int returnValue = FAIL;
-    if (resultSt.errorCode != (int32_t)OH_HUKS_SUCCESS) {
+    if (resultSt.errorCode != (int32_t)OH_HUKS_SUCCESS)
+    {
         returnValue = SUCCESS;
     }
     napi_value result = nullptr;
@@ -811,7 +916,8 @@ static struct OH_Huks_Param g_signParamsTest001[] = {
     {.tag = OH_HUKS_TAG_DIGEST, .uint32Param = OH_HUKS_DIGEST_SHA1},
     {.tag = OH_HUKS_TAG_AUTH_STORAGE_LEVEL, .uint32Param = OH_HUKS_AUTH_STORAGE_LEVEL_DE}};
 
-static napi_value OHHuksGetParam(napi_env env, napi_callback_info info) {
+static napi_value OHHuksGetParam(napi_env env, napi_callback_info info)
+{
     char keyAliasString[] = "HksDSASignVerifyKeyAliasTest001";
     struct OH_Huks_Blob keyAlias = {sizeof(keyAliasString),
                                     reinterpret_cast<uint8_t *>(static_cast<char *>(keyAliasString))};
@@ -826,7 +932,8 @@ static napi_value OHHuksGetParam(napi_env env, napi_callback_info info) {
     struct OH_Huks_Param *tmpParam = nullptr;
     OH_Huks_Result resultSt = OH_Huks_GetParam(signParamSet, OH_HUKS_TAG_PURPOSE, &tmpParam);
     int returnValue = FAIL;
-    if (resultSt.errorCode == (int32_t)OH_HUKS_SUCCESS) {
+    if (resultSt.errorCode == (int32_t)OH_HUKS_SUCCESS)
+    {
         returnValue = SUCCESS;
     }
     OH_Huks_DeleteKeyItem(&keyAlias, genParamSet);
@@ -835,10 +942,12 @@ static napi_value OHHuksGetParam(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value OHHuksGetParamErr(napi_env env, napi_callback_info info) {
+static napi_value OHHuksGetParamErr(napi_env env, napi_callback_info info)
+{
     OH_Huks_Result resultSt = OH_Huks_GetParam(g_paramSetNullptr, 0, &g_paramNullptr);
     int returnValue = FAIL;
-    if (resultSt.errorCode != (int32_t)OH_HUKS_SUCCESS) {
+    if (resultSt.errorCode != (int32_t)OH_HUKS_SUCCESS)
+    {
         returnValue = SUCCESS;
     }
     napi_value result = nullptr;
@@ -846,19 +955,22 @@ static napi_value OHHuksGetParamErr(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value OHHuksCopyParamSet(napi_env env, napi_callback_info info) {
+static napi_value OHHuksCopyParamSet(napi_env env, napi_callback_info info)
+{
     struct OH_Huks_ParamSet *paramSet = nullptr;
     struct OH_Huks_ParamSet *paramSetTo = nullptr;
     OH_Huks_InitParamSet(&paramSet);
     OH_Huks_Result ret = OH_Huks_AddParams(paramSet, tmpParams, sizeof(tmpParams) / sizeof(tmpParams[0]));
-    if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS) {
+    if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS)
+    {
         OH_Huks_FreeParamSet(&paramSet);
     }
     OH_Huks_BuildParamSet(&paramSet);
 
     OH_Huks_Result resultSt = OH_Huks_CopyParamSet(paramSet, paramSet->paramSetSize, &paramSetTo);
     int returnValue = FAIL;
-    if (resultSt.errorCode == (int32_t)OH_HUKS_SUCCESS) {
+    if (resultSt.errorCode == (int32_t)OH_HUKS_SUCCESS)
+    {
         returnValue = SUCCESS;
     }
     napi_value result = nullptr;
@@ -866,10 +978,12 @@ static napi_value OHHuksCopyParamSet(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value OHHuksCopyParamSetErr(napi_env env, napi_callback_info info) {
+static napi_value OHHuksCopyParamSetErr(napi_env env, napi_callback_info info)
+{
     OH_Huks_Result resultSt = OH_Huks_CopyParamSet(g_paramSetNullptr, 0, &g_paramSetNullptr);
     int returnValue = FAIL;
-    if (resultSt.errorCode != (int32_t)OH_HUKS_SUCCESS) {
+    if (resultSt.errorCode != (int32_t)OH_HUKS_SUCCESS)
+    {
         returnValue = SUCCESS;
     }
     napi_value result = nullptr;
@@ -877,10 +991,12 @@ static napi_value OHHuksCopyParamSetErr(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value OHHuksUpdateSessionErr(napi_env env, napi_callback_info info) {
+static napi_value OHHuksUpdateSessionErr(napi_env env, napi_callback_info info)
+{
     OH_Huks_Result resultSt = OH_Huks_UpdateSession(g_blobNullptr, g_paramSetNullptr, g_blobNullptr, g_blobNullptr);
     int returnValue = FAIL;
-    if (resultSt.errorCode != (int32_t)OH_HUKS_SUCCESS) {
+    if (resultSt.errorCode != (int32_t)OH_HUKS_SUCCESS)
+    {
         returnValue = SUCCESS;
     }
     napi_value result = nullptr;
@@ -888,10 +1004,12 @@ static napi_value OHHuksUpdateSessionErr(napi_env env, napi_callback_info info) 
     return result;
 }
 
-static napi_value OHHuksFinishSessionErr(napi_env env, napi_callback_info info) {
+static napi_value OHHuksFinishSessionErr(napi_env env, napi_callback_info info)
+{
     OH_Huks_Result resultSt = OH_Huks_FinishSession(g_blobNullptr, g_paramSetNullptr, g_blobNullptr, g_blobNullptr);
     int returnValue = FAIL;
-    if (resultSt.errorCode != (int32_t)OH_HUKS_SUCCESS) {
+    if (resultSt.errorCode != (int32_t)OH_HUKS_SUCCESS)
+    {
         returnValue = SUCCESS;
     }
     napi_value result = nullptr;
@@ -899,10 +1017,12 @@ static napi_value OHHuksFinishSessionErr(napi_env env, napi_callback_info info) 
     return result;
 }
 
-static napi_value OHHuksAbortSessionErr(napi_env env, napi_callback_info info) {
+static napi_value OHHuksAbortSessionErr(napi_env env, napi_callback_info info)
+{
     OH_Huks_Result resultSt = OH_Huks_AbortSession(g_blobNullptr, g_paramSetNullptr);
     int returnValue = FAIL;
-    if (resultSt.errorCode != (int32_t)OH_HUKS_SUCCESS) {
+    if (resultSt.errorCode != (int32_t)OH_HUKS_SUCCESS)
+    {
         returnValue = SUCCESS;
     }
     napi_value result = nullptr;
@@ -944,7 +1064,8 @@ static struct OH_Huks_Param g_pbkdf2FinishParams001[] = {
     {.tag = OH_HUKS_TAG_DIGEST, .uint32Param = OH_HUKS_DIGEST_SHA256},
     {.tag = OH_HUKS_TAG_AUTH_STORAGE_LEVEL, .uint32Param = OH_HUKS_AUTH_STORAGE_LEVEL_DE}};
 
-static napi_value OHHuksUpdateSession(napi_env env, napi_callback_info info) {
+static napi_value OHHuksUpdateSession(napi_env env, napi_callback_info info)
+{
     char alias[] = {"HksPBKDF2DeriveKeyAliasTest001_1"};
     struct OH_Huks_Blob keyAlias = {sizeof("HksPBKDF2DeriveKeyAliasTest001_1"),
                                     reinterpret_cast<uint8_t *>(static_cast<char *>(alias))};
@@ -966,7 +1087,8 @@ static napi_value OHHuksUpdateSession(napi_env env, napi_callback_info info) {
     struct OH_Huks_Blob outData = {COMMON_SIZE, tmpOut};
     OH_Huks_Result resultSt = OH_Huks_UpdateSession(&handleDerive, pbkdf2ParamSet, &inData, &outData);
     int returnValue = FAIL;
-    if (resultSt.errorCode == (int32_t)OH_HUKS_SUCCESS) {
+    if (resultSt.errorCode == (int32_t)OH_HUKS_SUCCESS)
+    {
         returnValue = SUCCESS;
     }
     OH_Huks_DeleteKeyItem(&keyAlias, genParamSet);
@@ -975,7 +1097,8 @@ static napi_value OHHuksUpdateSession(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value OHHuksFinishSession(napi_env env, napi_callback_info info) {
+static napi_value OHHuksFinishSession(napi_env env, napi_callback_info info)
+{
     char alias[] = {"HksPBKDF2DeriveKeyAliasTest001_1"};
     struct OH_Huks_Blob keyAlias = {sizeof("HksPBKDF2DeriveKeyAliasTest001_1"),
                                     reinterpret_cast<uint8_t *>(static_cast<char *>(alias))};
@@ -1005,7 +1128,8 @@ static napi_value OHHuksFinishSession(napi_env env, napi_callback_info info) {
     struct OH_Huks_Blob outDataDerive = {COMMON_SIZE, outDataD};
     OH_Huks_Result resultSt = OH_Huks_FinishSession(&handleDerive, pbkdf2FinishParamSet, &inData, &outDataDerive);
     int returnValue = FAIL;
-    if (resultSt.errorCode == (int32_t)OH_HUKS_SUCCESS) {
+    if (resultSt.errorCode == (int32_t)OH_HUKS_SUCCESS)
+    {
         returnValue = SUCCESS;
     }
     OH_Huks_DeleteKeyItem(&keyAlias, genParamSet);
@@ -1014,7 +1138,8 @@ static napi_value OHHuksFinishSession(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value OHHuksAbortSession(napi_env env, napi_callback_info info) {
+static napi_value OHHuksAbortSession(napi_env env, napi_callback_info info)
+{
     char alias[] = {"HksPBKDF2DeriveKeyAliasTest001_1"};
     struct OH_Huks_Blob keyAlias = {sizeof("HksPBKDF2DeriveKeyAliasTest001_1"),
                                     reinterpret_cast<uint8_t *>(static_cast<char *>(alias))};
@@ -1042,7 +1167,8 @@ static napi_value OHHuksAbortSession(napi_env env, napi_callback_info info) {
 
     OH_Huks_Result resultSt = OH_Huks_AbortSession(&handleDerive, pbkdf2ParamSet);
     int returnValue = FAIL;
-    if (resultSt.errorCode == (int32_t)OH_HUKS_SUCCESS) {
+    if (resultSt.errorCode == (int32_t)OH_HUKS_SUCCESS)
+    {
         returnValue = SUCCESS;
     }
     OH_Huks_DeleteKeyItem(&keyAlias, genParamSet);
@@ -1053,7 +1179,8 @@ static napi_value OHHuksAbortSession(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value OHHuksGetKeyItemParamSet(napi_env env, napi_callback_info info) {
+static napi_value OHHuksGetKeyItemParamSet(napi_env env, napi_callback_info info)
+{
     char alias[64] = {0};
     strcpy(alias, ALIAS);
     static const struct OH_Huks_Blob gkeyAlias = {sizeof(ALIAS),
@@ -1061,18 +1188,22 @@ static napi_value OHHuksGetKeyItemParamSet(napi_env env, napi_callback_info info
     int returnValue = FAIL;
     struct OH_Huks_ParamSet *paramSet = nullptr;
     OH_Huks_Result ret = OH_Huks_InitParamSet(&paramSet);
-    if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS) {
+    if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS)
+    {
     }
     ret = OH_Huks_AddParams(paramSet, tmpParams, sizeof(tmpParams) / sizeof(tmpParams[0]));
-    if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS) {
+    if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS)
+    {
         OH_Huks_FreeParamSet(&paramSet);
     }
     ret = OH_Huks_BuildParamSet(&paramSet);
-    if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS) {
+    if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS)
+    {
         OH_Huks_FreeParamSet(&paramSet);
     }
     struct OH_Huks_Result resSt = OH_Huks_IsKeyItemExist(&gkeyAlias, paramSet);
-    if (resSt.errorCode == (int32_t)OH_HUKS_SUCCESS) {
+    if (resSt.errorCode == (int32_t)OH_HUKS_SUCCESS)
+    {
         OH_Huks_DeleteKeyItem(&gkeyAlias, paramSet);
         OH_Huks_FreeParamSet(&paramSet);
     }
@@ -1082,7 +1213,8 @@ static napi_value OHHuksGetKeyItemParamSet(napi_env env, napi_callback_info info
     OH_Huks_BuildParamSet(&paramSetOut);
     paramSetOut->paramSetSize = COMMON_SIZE;
     struct OH_Huks_Result resultSt = OH_Huks_GetKeyItemParamSet(&gkeyAlias, paramSet, paramSetOut);
-    if (resultSt.errorCode == (int32_t)OH_HUKS_SUCCESS) {
+    if (resultSt.errorCode == (int32_t)OH_HUKS_SUCCESS)
+    {
         returnValue = SUCCESS;
     }
     OH_Huks_DeleteKeyItem(&gkeyAlias, paramSet);
@@ -1093,10 +1225,12 @@ static napi_value OHHuksGetKeyItemParamSet(napi_env env, napi_callback_info info
     return result;
 }
 
-static napi_value OHHuksGetKeyItemParamSetErr(napi_env env, napi_callback_info info) {
+static napi_value OHHuksGetKeyItemParamSetErr(napi_env env, napi_callback_info info)
+{
     int returnValue = FAIL;
     struct OH_Huks_Result resultSt = OH_Huks_GetKeyItemParamSet(nullptr, nullptr, nullptr);
-    if (resultSt.errorCode != (int32_t)OH_HUKS_SUCCESS) {
+    if (resultSt.errorCode != (int32_t)OH_HUKS_SUCCESS)
+    {
         returnValue = SUCCESS;
     }
     napi_value result = nullptr;
@@ -1104,17 +1238,20 @@ static napi_value OHHuksGetKeyItemParamSetErr(napi_env env, napi_callback_info i
     return result;
 }
 
-static napi_value OHHuksImportWrappedKeyItem(napi_env env, napi_callback_info info) {
+static napi_value OHHuksImportWrappedKeyItem(napi_env env, napi_callback_info info)
+{
     int result = oHHuksImportWrappedKeyItem();
     napi_value ret;
     napi_create_int32(env, result, &ret);
     return ret;
 }
 
-static napi_value OHHuksImportWrappedKeyItemErr(napi_env env, napi_callback_info info) {
+static napi_value OHHuksImportWrappedKeyItemErr(napi_env env, napi_callback_info info)
+{
     int returnValue = FAIL;
     struct OH_Huks_Result resultSt = OH_Huks_ImportWrappedKeyItem(nullptr, nullptr, nullptr, nullptr);
-    if (resultSt.errorCode != (int32_t)OH_HUKS_SUCCESS) {
+    if (resultSt.errorCode != (int32_t)OH_HUKS_SUCCESS)
+    {
         returnValue = SUCCESS;
     }
     napi_value result = nullptr;
@@ -1130,7 +1267,8 @@ static struct OH_Huks_Param g_genAnonAttestParams[] = {
     {.tag = OH_HUKS_TAG_BLOCK_MODE, .uint32Param = OH_HUKS_MODE_ECB},
     {.tag = OH_HUKS_TAG_AUTH_STORAGE_LEVEL, .uint32Param = OH_HUKS_AUTH_STORAGE_LEVEL_DE},
 };
-static napi_value OHHuksAnonAttestKeyItem(napi_env env, napi_callback_info info) {
+static napi_value OHHuksAnonAttestKeyItem(napi_env env, napi_callback_info info)
+{
     char alias[64] = {0};
     strcpy(alias, ALIAS);
     static const struct OH_Huks_Blob gkeyAlias = {sizeof(ALIAS),
@@ -1151,7 +1289,8 @@ static napi_value OHHuksAnonAttestKeyItem(napi_env env, napi_callback_info info)
     (void)ConstructDataToCertChain(&certChain, &certParam);
     struct OH_Huks_Result resultSt = OH_Huks_AnonAttestKeyItem(&gkeyAlias, anonAttestParamSet, certChain);
     int returnValue = FAIL;
-    if (resultSt.errorCode == (int32_t)OH_HUKS_SUCCESS) {
+    if (resultSt.errorCode == (int32_t)OH_HUKS_SUCCESS)
+    {
         returnValue = SUCCESS;
     }
     napi_value result = nullptr;
@@ -1159,7 +1298,8 @@ static napi_value OHHuksAnonAttestKeyItem(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value OHHuksListAliases(napi_env env, napi_callback_info info) {
+static napi_value OHHuksListAliases(napi_env env, napi_callback_info info)
+{
     char alias1[64] = {0};
     char alias2[64] = {0};
     strcpy(alias1, "testAlias1");
@@ -1179,9 +1319,12 @@ static napi_value OHHuksListAliases(napi_env env, napi_callback_info info) {
     struct OH_Huks_KeyAliasSet *query_aliases = nullptr;
     struct OH_Huks_Result resultSt = OH_Huks_ListAliases(listAliasedParamSet, &query_aliases);
     int returnValue = SUCCESS;
-    if (resultSt.errorCode != (int32_t)OH_HUKS_SUCCESS) {
+    if (resultSt.errorCode != (int32_t)OH_HUKS_SUCCESS)
+    {
         returnValue = FAIL;
-    } else if (query_aliases->aliasesCnt == 0) {
+    }
+    else if (query_aliases->aliasesCnt == 0)
+    {
         returnValue = FAIL;
     }
     napi_value result = nullptr;
@@ -1189,7 +1332,8 @@ static napi_value OHHuksListAliases(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value OHHuksFreeKeyAliasSet(napi_env env, napi_callback_info info) {
+static napi_value OHHuksFreeKeyAliasSet(napi_env env, napi_callback_info info)
+{
     char alias1[64] = {0};
     char alias2[64] = {0};
     strcpy(alias1, "testAlias1");
@@ -1209,7 +1353,8 @@ static napi_value OHHuksFreeKeyAliasSet(napi_env env, napi_callback_info info) {
     struct OH_Huks_KeyAliasSet *query_aliases = nullptr;
     struct OH_Huks_Result resultSt = OH_Huks_ListAliases(listAliasedParamSet, &query_aliases);
     int returnValue = SUCCESS;
-    if (resultSt.errorCode != (int32_t)OH_HUKS_SUCCESS || query_aliases->aliasesCnt == 0) {
+    if (resultSt.errorCode != (int32_t)OH_HUKS_SUCCESS || query_aliases->aliasesCnt == 0)
+    {
         returnValue = FAIL;
     }
     OH_Huks_FreeKeyAliasSet(query_aliases);
@@ -1218,7 +1363,8 @@ static napi_value OHHuksFreeKeyAliasSet(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value OHHuksWrapKey(napi_env env, napi_callback_info info) {
+static napi_value OHHuksWrapKey(napi_env env, napi_callback_info info)
+{
     char alias[64] = {0};
     strcpy(alias, ALIAS);
     static const struct OH_Huks_Blob gkeyAlias = {sizeof(ALIAS),
@@ -1236,7 +1382,8 @@ static napi_value OHHuksWrapKey(napi_env env, napi_callback_info info) {
     struct OH_Huks_Result resultSt = OH_Huks_WrapKey(&gkeyAlias, wrapKeyParamSet, &outData);
     int returnValue = SUCCESS;
     if (resultSt.errorCode != (int32_t)OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY &&
-        resultSt.errorCode != OH_HUKS_ERR_CODE_NOT_SUPPORTED_API) {
+        resultSt.errorCode != OH_HUKS_ERR_CODE_NOT_SUPPORTED_API)
+    {
         returnValue = FAIL;
     }
     napi_value result = nullptr;
@@ -1244,7 +1391,8 @@ static napi_value OHHuksWrapKey(napi_env env, napi_callback_info info) {
     return result;
 }
 
-static napi_value OHHuksUnwrapKey(napi_env env, napi_callback_info info) {
+static napi_value OHHuksUnwrapKey(napi_env env, napi_callback_info info)
+{
     char alias[64] = {0};
     strcpy(alias, ALIAS);
     static const struct OH_Huks_Blob gkeyAlias = {sizeof(ALIAS),
@@ -1263,7 +1411,8 @@ static napi_value OHHuksUnwrapKey(napi_env env, napi_callback_info info) {
     struct OH_Huks_Result resultSt = OH_Huks_UnwrapKey(&gkeyAlias, wrapKeyParamSet, &outData);
     int returnValue = SUCCESS;
     if (resultSt.errorCode != (int32_t)OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY &&
-        resultSt.errorCode != OH_HUKS_ERR_CODE_NOT_SUPPORTED_API) {
+        resultSt.errorCode != OH_HUKS_ERR_CODE_NOT_SUPPORTED_API)
+    {
         returnValue = FAIL;
     }
     napi_value result = nullptr;
@@ -1272,7 +1421,8 @@ static napi_value OHHuksUnwrapKey(napi_env env, napi_callback_info info) {
 }
 
 EXTERN_C_START
-static napi_value Init(napi_env env, napi_value exports) {
+static napi_value Init(napi_env env, napi_value exports)
+{
     napi_property_descriptor desc[] = {
         {"oHHuksGetSdkVersion", nullptr, OHHuksGetSdkVersion, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"oHHuksGetSdkVersionErr", nullptr, OHHuksGetSdkVersionErr, nullptr, nullptr, nullptr, napi_default, nullptr},
