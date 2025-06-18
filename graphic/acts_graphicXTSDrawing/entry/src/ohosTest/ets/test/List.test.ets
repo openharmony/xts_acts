@@ -30,6 +30,7 @@ import textBlobTest from './TextBlob.test';
 import drawingTsPathTest from './Path.test';
 import drawingTsPath2Test from './Path2.test';
 import drawingTsPath3Test from './Path3.test';
+import drawingTsPath5Test from './Path5.test';
 import drawingTsCanvasTest from './Canvas.test';
 import drawingTsCanvasPart2Test from './CanvasPart2.test';
 import drawingTsCanvasPart3Test from './CanvasPart3.test';
@@ -66,6 +67,7 @@ export default function testsuite() {
   drawingTsPathTest();
   drawingTsPath2Test();
   drawingTsPath3Test();
+  drawingTsPath5Test();
   drawingTsCanvasTest();
   drawingTsCanvasPart2Test();
   drawingTsCanvasPart3Test();
