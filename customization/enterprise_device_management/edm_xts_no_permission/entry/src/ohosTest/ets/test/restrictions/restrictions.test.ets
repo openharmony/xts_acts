@@ -35,6 +35,7 @@ const LABEL_NEAR_LINK = "nearLink";
 const LABEL_MTP_CLIENT = "mtpClient";
 const LABEL_MTP_SERVER = "mtpServer";
 const LABEL_SET_APN = "setApn";
+const LABEL_SET_ETHERNET_IP = "setEthernetIp";
 
 export default function restrictionsTest() {
   describe('restrictions_test', () => {
@@ -46,6 +47,7 @@ export default function restrictionsTest() {
     testRemoveDisallowedListForAccountPolicy();
     testGetDisallowedListForAccountPolicy();
     testSetUserRestrictionPolicy();
+    testGetUserRestrictedPolicy();
   })
 }
 
@@ -268,6 +270,52 @@ function testSetUserRestrictionPolicy() {
       expect(false).assertTrue();
     } catch (error) {
       console.info(' --- test_set_user_restriction_0100 error 201 or 801 is expected, actually catch: ' + error.code);
+      expect((error.code == 201) || (error.code == 801)).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_USER_RESTRICTION_JS_0200
+   * @tc.name      : test_set_user_restriction_0200
+   * @tc.desc      : test restrictions setUserRestriction with setting item 'setEthernetIp' with normal admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_user_restriction_0200", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+    try {
+      restrictions.setUserRestriction(SELFWANT, LABEL_SET_ETHERNET_IP, true);
+      expect(false).assertTrue();
+    } catch (error) {
+      console.info('test_set_user_restriction_0200 error 201 or 801 is expected, actually catch: ' + error.code);
+      expect((error.code == 201) || (error.code == 801)).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+}
+
+function testGetUserRestrictedPolicy() {
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_GET_USER_RESTRICTED_JS_0100
+   * @tc.name      : test_get_user_restricted_0100
+   * @tc.desc      : test restrictions getUserRestricted with setting item 'setEthernetIp' with normal admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_get_user_restricted_0100", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+    try {
+      restrictions.getUserRestricted(SELFWANT, LABEL_SET_ETHERNET_IP);
+      expect(false).assertTrue();
+    } catch (error) {
+      console.info('test_get_user_restricted_0100 error 201 or 801 is expected, actually catch: ' + error.code);
       expect((error.code == 201) || (error.code == 801)).assertTrue();
     } finally {
       await adminManager.disableAdmin(SELFWANT);

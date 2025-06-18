@@ -40,6 +40,7 @@ const LABEL_SAMBA_SERVER = "sambaServer";
 const LABEL_REMOTE_DESK = "remoteDesk";
 const LABEL_REMOTE_DIAGNOSIS = "remoteDiagnosis";
 const LABEL_SET_APN = "setApn";
+const LABEL_SET_ETHERNET_IP = "setEthernetIp";
 
 export default function restrictionsTest() {
   describe('restrictions_test', () => {
@@ -51,6 +52,7 @@ export default function restrictionsTest() {
     testRemoveDisallowedListForAccountPolicy();
     testGetDisallowedListForAccountPolicy();
     testSetUserRestrictionPolicy();
+    testGetUserRestrictedPolicy();
   })
 }
 
@@ -1849,12 +1851,195 @@ function testSetUserRestrictionPolicy() {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
     try {
       restrictions.setUserRestriction(SELFWANT, LABEL_SET_APN, true);
+      restrictions.setUserRestriction(SELFWANT, LABEL_SET_APN, false);
     } catch (error) {
       console.info(' --- test_set_user_restriction_0300 error 801 is expected, actually catch: ' + error.code);
       expect(error.code == 801).assertTrue();
     } finally {
-      restrictions.setUserRestriction(SELFWANT, LABEL_SET_APN, false);
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_USER_RESTRICTION_JS_0400
+   * @tc.name      : test_set_user_restriction_0400
+   * @tc.desc      : test setUserRestriction with setting item 'setEthernetIp' with unActiveadmin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_user_restriction_0400", Level.LEVEL2, async (done: Function) => {
+    try {
+      restrictions.setUserRestriction(SELFWANT, LABEL_SET_ETHERNET_IP, true);
+      expect(false).assertTrue();
+    } catch (error) {
+      console.info('test_set_user_restriction_0400 error 9200001 or 801 is expected, actually catch: '
+        + error.code);
+      expect((error.code == 9200001) || (error.code == 801)).assertTrue();
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_USER_RESTRICTION_JS_0401
+   * @tc.name      : test_set_user_restriction_0401
+   * @tc.desc      : test setUserRestriction with setting item 'setEthernetIp' with normal admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_user_restriction_0401", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+    try {
+      restrictions.setUserRestriction(SELFWANT, LABEL_SET_ETHERNET_IP, true);
+      expect(false).assertTrue();
+    } catch (error) {
+      console.info('test_set_user_restriction_0401 error 9200002 or 801 is expected, actually catch: '
+        + error.code);
+      expect((error.code == 9200002) || (error.code == 801)).assertTrue();
+    } finally {
       await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_USER_RESTRICTION_JS_0402
+   * @tc.name      : test_set_user_restriction_0402
+   * @tc.desc      : test setUserRestriction with setting item 'setEthernetIp' with super admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_user_restriction_0402", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      restrictions.setUserRestriction(SELFWANT, LABEL_SET_ETHERNET_IP, true);
+      let res : boolean = restrictions.getUserRestricted(SELFWANT, LABEL_SET_ETHERNET_IP);
+      expect(res).assertTrue();
+      restrictions.setUserRestriction(SELFWANT, LABEL_SET_ETHERNET_IP, false);
+    } catch (error) {
+      console.info('test_set_user_restriction_0402 error 801 is expected, actually catch: '
+        + error.code);
+      expect(error.code == 801).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_USER_RESTRICTION_JS_0403
+   * @tc.name      : test_set_user_restriction_0403
+   * @tc.desc      : test setUserRestriction with setting item 'setEthernetIp' with super admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_user_restriction_0403", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      restrictions.setUserRestriction(SELFWANT, LABEL_SET_ETHERNET_IP, false);
+      let res : boolean = restrictions.getUserRestricted(SELFWANT, LABEL_SET_ETHERNET_IP);
+      expect(res).assertFalse();
+    } catch (error) {
+      console.info('test_set_user_restriction_0403 error 801 is expected, actually catch: '
+        + error.code);
+      expect(error.code == 801).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+}
+
+function testGetUserRestrictedPolicy() {
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_GET_USER_RESTRICTED_JS_0100
+   * @tc.name      : test_get_user_restricted_0100
+   * @tc.desc      : test restrictions getUserRestricted with setting item 'setEthernetIp' with unActiveadmin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_get_user_restricted_0100", Level.LEVEL2, async (done: Function) => {
+    try {
+      restrictions.getUserRestricted(SELFWANT, LABEL_SET_ETHERNET_IP);
+      expect(false).assertTrue();
+    } catch (error) {
+      console.info('test_get_user_restricted_0100 error 9200001 or 801 is expected, actually catch: '
+        + error.code);
+      expect((error.code == 9200001) || (error.code == 801)).assertTrue();
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_GET_USER_RESTRICTED_JS_0101
+   * @tc.name      : test_get_user_restricted_0101
+   * @tc.desc      : test restrictions getUserRestricted with setting item 'setEthernetIp' with normal admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_get_user_restricted_0101", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+    try {
+      restrictions.getUserRestricted(SELFWANT, LABEL_SET_ETHERNET_IP);
+      expect(false).assertTrue();
+    } catch (error) {
+      console.info('test_get_user_restricted_0101 error 9200002 or 801 is expected, actually catch: '
+        + error.code);
+      expect((error.code == 9200002) || (error.code == 801)).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_GET_USER_RESTRICTED_JS_0102
+   * @tc.name      : test_get_user_restricted_0102
+   * @tc.desc      : test restrictions getUserRestricted with setting item 'setEthernetIp' with invalid admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_get_user_restricted_0102", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      restrictions.getUserRestricted(INVALID_WANT, LABEL_SET_ETHERNET_IP);
+      expect(false).assertTrue();
+    } catch (error) {
+      console.info('test_get_user_restricted_0102 error 401 or 801 is expected, actually catch: '
+        + error.code);
+      expect((error.code == 401) || (error.code == 801)).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_GET_USER_RESTRICTED_JS_0103
+   * @tc.name      : test_get_user_restricted_0103
+   * @tc.desc      : test restrictions getUserRestricted with setting item 'setEthernetIp' with super admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_get_user_restricted_0103", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      let res : boolean = restrictions.getUserRestricted(SELFWANT, LABEL_SET_ETHERNET_IP);
+      expect(res).assertFalse();
+    } catch (error) {
+      console.info('test_get_user_restricted_0103 error 801 is expected, actually catch: '
+        + error.code);
+      expect(error.code == 801).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
     }
     done();
   });
