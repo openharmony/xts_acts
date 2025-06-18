@@ -12,7 +12,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import taskPoolSendableTest from './taskPoolSendable.test'
+import taskPoolSendableTest from './TaskPoolSendable.test'
 
 
 export default function testsuite() {
