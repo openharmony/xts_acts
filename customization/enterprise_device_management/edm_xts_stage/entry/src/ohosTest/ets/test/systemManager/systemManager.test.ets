@@ -1017,7 +1017,7 @@ function testGetAutoUnlockAfterReboot() {
       systemManager.getAutoUnlockAfterReboot(INVALID_WANT);
       expect(false).assertTrue();
     } catch (error) {
-      expect(error.code == 801 || error.code == 9200002).assertTrue();
+      expect(error.code == 801 || error.code == 401).assertTrue();
     } finally {
       await adminManager.disableAdmin(SELFWANT);
     }

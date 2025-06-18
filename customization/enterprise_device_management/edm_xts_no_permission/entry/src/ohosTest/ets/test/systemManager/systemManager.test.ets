@@ -214,9 +214,10 @@ function testSetAutoUnlockAfterReboot() {
   it("test_set_auto_unlock_after_reboot_0001", Level.LEVEL2, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
     try {
-      let authData: string = await systemManager.setAutoUnlockAfterReboot(SELFWANT, false);
+      await systemManager.setAutoUnlockAfterReboot(SELFWANT, false);
+      expect(false).assertTrue();
     } catch (error) {
-      expect(error.code == 201).assertTrue();
+      expect(error.code == 801 || error.code == 201).assertTrue();
     } finally {
       await adminManager.disableAdmin(SELFWANT);
     }
@@ -236,9 +237,10 @@ function testGetAutoUnlockAfterReboot() {
   it("test_get_auto_unlock_after_reboot_0001", Level.LEVEL2, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
     try {
-      let authData: string = await systemManager.getAutoUnlockAfterReboot(SELFWANT);
+      await systemManager.getAutoUnlockAfterReboot(SELFWANT);
+      expect(false).assertTrue();
     } catch (error) {
-      expect(error.code == 201).assertTrue();
+      expect(error.code == 801 || error.code == 201).assertTrue();
     } finally {
       await adminManager.disableAdmin(SELFWANT);
     }
