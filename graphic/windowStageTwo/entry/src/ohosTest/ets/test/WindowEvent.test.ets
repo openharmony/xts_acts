@@ -87,110 +87,117 @@ export default function windowEventTest() {
      * @tc.level     : Level 0
      */
     it('testTouchOutSide_TopBar_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
-let caseName: string = 'testTouchOutSide_TopBar_0100 ';
-console.log(caseName + 'begin');
-let mainWindow = windowStage.getMainWindowSync();
-let subWindowClass = await windowStage.createSubWindow('testTouchOutSide_TopBar_0100');
-await subWindowClass.setUIContent('testability/pages/First/index2');
-await sleep(1000);
-let timer = 0;
-try {
-let windowLimits = subWindowClass.getWindowLimits();
-console.info(${caseName} windowLimits: ${JSON.stringify(windowLimits)});
-await subWindowClass.resize(windowLimits.minWidth as number+200, windowLimits.minHeight as number);
-await subWindowClass.moveWindowTo(0, 0);
-await subWindowClass.showWindow();
-await sleep(1000);
+      let caseName: string = 'testTouchOutSide_TopBar_0100 ';
+      console.log(caseName + 'begin');
+      let mainWindow = windowStage.getMainWindowSync();
+      let subWindowClass = await windowStage.createSubWindow('testTouchOutSide_TopBar_0100');
+      await subWindowClass.setUIContent('testability/pages/First/index2');
+      await sleep(1000);
+      let timer = 0;
+      try {
+        let windowLimits = subWindowClass.getWindowLimits();
+        console.info(${caseName} windowLimits: ${JSON.stringify(windowLimits)});
+        await subWindowClass.resize(windowLimits.minWidth as number+200, windowLimits.minHeight as number);
+        await subWindowClass.moveWindowTo(200, 0);
+        await subWindowClass.showWindow();
+        await sleep(1000);
+        let windowProperties = subWindowClass.getWindowProperties();
+        console.log(${caseName} windowProperties: ${JSON.stringify(windowProperties)});
+        const callback = () => {
+          timer++;
+          console.log(${caseName} timer: ${timer});
+        }
+        subWindowClass.on('touchOutside', callback);
+        await mainWindow.setPreferredOrientation(window.Orientation.LANDSCAPE);
 
-    const callback = () => {
-      timer++;
-      console.log(`${caseName} timer: ${timer}`);
-    }
-    subWindowClass.on('touchOutside', callback);
-    await mainWindow.setPreferredOrientation(window.Orientation.LANDSCAPE);
-    await sleep(1000);
-    let driver: Driver = Driver.create();
-    await sleep(200);
-    await driver.click(Math.round((windowLimits.minWidth as number+200)/2), 0);
-    console.log(`${caseName} timer1: ${timer}`);
-    expect(timer).assertEqual(0);
-    await driver.click(((windowLimits.minWidth as number+200)+10) , 0);
-    await sleep(300);
-    console.log(`${caseName} timer2: ${timer}`);
-    expect(timer).assertEqual(1);
-    await mainWindow.setPreferredOrientation(window.Orientation.PORTRAIT);
-    await sleep(1000);
-    subWindowClass.off('touchOutside');
-    await subWindowClass.destroyWindow();
-    done();
-  } catch (e) {
-    console.error(`${caseName} Failed. Cause: ${JSON.stringify(e)}`);
-    await subWindowClass.destroyWindow();
-    if (e.code === 801) {
-      done()
-    } else {
-      expect().assertFail();
-      done()
-    }
-  }
-});
+        await sleep(1000);
+        let driver: Driver = Driver.create();
+        await sleep(200);
+        // await driver.click(Math.round((windowLimits.minWidth as number+200)/2), 0);
+        await driver.click(Math.round((windowProperties.windowRect.left as number+10)), 0);
+        await sleep(300);
+        console.log(`${caseName} timer1: ${timer}`);
+        expect(timer).assertEqual(0);
+        // await driver.click(((windowLimits.minWidth as number+200)+10) , 0);
+        await driver.click(((windowProperties.windowRect.left as number)-10) , 0);
+        await sleep(300);
+        console.log(`${caseName} timer2: ${timer}`);
+        expect(timer).assertEqual(1);
+        await mainWindow.setPreferredOrientation(window.Orientation.PORTRAIT);
+        await sleep(1000);
+        subWindowClass.off('touchOutside');
+        await subWindowClass.destroyWindow();
+        done();
+      } catch (e) {
+        console.error(`${caseName} Failed. Cause: ${JSON.stringify(e)}`);
+        await subWindowClass.destroyWindow();
+        if (e.code === 801) {
+          done()
+        } else {
+          expect().assertFail();
+          done()
+        }
+      }
+    });
 
-/**
- * @tc.number    : SUB_BASIC_WMS_TOUCHOUTSIDE_0100
- * @tc.name      : testTouchOutSide_0100
- * @tc.desc      : 验证子窗在主窗内，点击子窗，主窗可监听到touchoutside回调
- * @tc.size      : MediumTest
- * @tc.type      : Function
- * @tc.level     : Level 0
- */
-it('testTouchOutSide_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
-  let caseName: string = 'testTouchOutSide_0100 ';
-  console.log(caseName + 'begin');
-  let mainWindow = windowStage.getMainWindowSync();
-  let subWindowClass = await windowStage.createSubWindow('testTouchOutSide_0100');
-  await subWindowClass.setUIContent('testability/pages/First/index2');
-  await sleep(1000);
-  try {
+    /**
+     * @tc.number    : SUB_BASIC_WMS_TOUCHOUTSIDE_0100
+     * @tc.name      : testTouchOutSide_0100
+     * @tc.desc      : 验证子窗在主窗内，点击子窗，主窗可监听到touchoutside回调
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('testTouchOutSide_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let caseName: string = 'testTouchOutSide_0100 ';
+      console.log(caseName + 'begin');
+      let mainWindow = windowStage.getMainWindowSync();
+      let subWindowClass = await windowStage.createSubWindow('testTouchOutSide_0100');
+      await subWindowClass.setUIContent('testability/pages/First/index2');
+      await sleep(1000);
+      try {
 
-    let timer = 0;
+        let timer = 0;
 
-    let windowLimits = subWindowClass.getWindowLimits();
-    console.info(`${caseName} windowLimits: ${JSON.stringify(windowLimits)}`);
-    await subWindowClass.resize(windowLimits.minWidth as number, windowLimits.minHeight as number);
-    await sleep(1000);
-    let displayInfo = display.getDefaultDisplaySync();
-    console.info(`${caseName} :display.getDefaultDisplaySync. info: ${JSON.stringify(displayInfo)}`);
-    await subWindowClass.moveWindowTo(displayInfo.width/2, displayInfo.height/2);
+        let windowLimits = subWindowClass.getWindowLimits();
+        console.info(`${caseName} windowLimits: ${JSON.stringify(windowLimits)}`);
+        await subWindowClass.resize(windowLimits.minWidth as number, windowLimits.minHeight as number);
+        await sleep(1000);
+        let displayInfo = display.getDefaultDisplaySync();
+        console.info(`${caseName} :display.getDefaultDisplaySync. info: ${JSON.stringify(displayInfo)}`);
+        await subWindowClass.moveWindowTo(displayInfo.width/2, displayInfo.height/2);
 
-    await subWindowClass.showWindow();
-    await sleep(1000);
-    const callback = async () => {
-      timer++;
-      console.log(`${caseName} timer: ${timer}`);
-      expect(timer).assertEqual(1);
-      await sleep(300);
-      subWindowClass.off('touchOutside');
+        await subWindowClass.showWindow();
+        await sleep(1000);
+        let windowProperties = subWindowClass.getWindowProperties();
+        console.log(`${caseName} windowProperties: ${JSON.stringify(windowProperties)}`);
+        const callback = async () => {
+          timer++;
+          console.log(`${caseName} timer: ${timer}`);
+          expect(timer).assertEqual(1);
+          await sleep(300);
+          subWindowClass.off('touchOutside');
 
-      await subWindowClass.destroyWindow();
-      done();
-    }
-    mainWindow.on('touchOutside', callback);
-    let driver: Driver = Driver.create();
-    await sleep(200);
-    await driver.click(Math.round(displayInfo.width/2) + 5, Math.round(displayInfo.height/2) + 5);
-    await sleep(300);
+          await subWindowClass.destroyWindow();
+          done();
+        }
+        mainWindow.on('touchOutside', callback);
+        let driver: Driver = Driver.create();
+        await sleep(200);
+        await driver.click(Math.round(windowProperties.windowRect.left as number+10), Math.round(windowProperties.windowRect.top as number+10));
+        await sleep(300);
 
-  } catch (e) {
-    console.error(`${caseName} Failed. Cause: ${JSON.stringify(e)}`);
-    await subWindowClass.destroyWindow();
-    if (e.code === 801) {
-      done()
-    } else {
-      expect().assertFail();
-      done()
-    }
-  }
-});
+      } catch (e) {
+        console.error(`${caseName} Failed. Cause: ${JSON.stringify(e)}`);
+        await subWindowClass.destroyWindow();
+        if (e.code === 801) {
+          done()
+        } else {
+          expect().assertFail();
+          done()
+        }
+      }
+    });
 
   })
 }
