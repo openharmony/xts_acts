@@ -21,6 +21,7 @@ group("graphic") {
       "acts_display:ActsDisplayTest",
       "acts_drawing_native:ActsDrawingNativeTest",
       "acts_graphicXTSDrawing:ActsDrawingTsTest",
+      "acts_graphicXTSDrawing_static:ActsDrawingTsStaticTest",
       "acts_pipwindow:ActsPipWindowTest",
       "acts_windowCompatibilityTest:ActsWindowCompatibilityTest",
       "component3D:ActsComponent3DTest",

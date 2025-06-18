@@ -17,6 +17,7 @@ group("account") {
   if (is_standard_system) {
     deps = [
       "OsAccountTest_js:ActsOsAccountJSApiTest",
+      "OsAccountTest_js_static:ActsOsAccountJSApiStaticTest",
       "account_ndk:account_ndk_test",
       "account_nopermissiontest:ActsAccountNoPermissionTest",
       "appaccount:appaccount_hap",

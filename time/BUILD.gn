@@ -19,6 +19,6 @@ group("time") {
     "timeNDKTest:ActsTimeNdkTest",
     "timeTest:ActsTimeAPITest",
     "timeauthorityTest:ActsTimeAuthorityAPITest",
-    "dateTimeStaticTest:ActsDateTimeAPIStaticTest",
+    "dateTimeTestStatic:ActsDateTimeAPIStaticTest",
   ]
 }
