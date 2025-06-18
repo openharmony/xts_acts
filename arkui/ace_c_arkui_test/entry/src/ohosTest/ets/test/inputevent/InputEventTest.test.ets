@@ -1098,7 +1098,7 @@ export default function InputEventTest() {
      */
     it('testInputEvent080', Level.LEVEL1, async (done: Function) => {
       await axisInputEventTest('testInputEvent080', 'OH_ArkUI_UIInputEvent_GetAction', true,
-        -1); //Axis event has no action
+        3); // AXIS_EVENT_ACTION_END
       done();
     });
     /*
