@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textAreaTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaType001', 0, async (done: Function) => {
+    it('testTextAreaType001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaType001()).assertEqual(0)
       done();
     });
@@ -47,7 +47,7 @@ export default function textAreaTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaType002', 0, async (done: Function) => {
+    it('testTextAreaType002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaType002()).assertEqual(0)
       done();
     });
@@ -60,7 +60,7 @@ export default function textAreaTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaType003', 0, async (done: Function) => {
+    it('testTextAreaType003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaType003()).assertEqual(0)
       done();
     });
@@ -73,7 +73,7 @@ export default function textAreaTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaType004', 0, async (done: Function) => {
+    it('testTextAreaType004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaType004()).assertEqual(0)
       done();
     });
@@ -86,7 +86,7 @@ export default function textAreaTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaType005', 0, async (done: Function) => {
+    it('testTextAreaType005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaType005()).assertEqual(0)
       done();
     });

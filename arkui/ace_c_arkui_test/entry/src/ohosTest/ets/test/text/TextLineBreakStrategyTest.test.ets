@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textLineBreakStrategyTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextLineBreakStrategy001', 0, async (done: Function) => {
+    it('testTextLineBreakStrategy001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextLineBreakStrategy001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function textLineBreakStrategyTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextLineBreakStrategy002', 0, async (done: Function) => {
+    it('testTextLineBreakStrategy002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextLineBreakStrategy002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function textLineBreakStrategyTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextLineBreakStrategy003', 0, async (done: Function) => {
+    it('testTextLineBreakStrategy003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextLineBreakStrategy003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function textLineBreakStrategyTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTextLineBreakStrategy004', 0, async (done: Function) => {
+    it('testTextLineBreakStrategy004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextLineBreakStrategy004()).assertEqual(0)
       done()
     })

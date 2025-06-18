@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function commonAttrsAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAlign001', 0, async (done: Function) => {
+    it('testCommonAttrsAlign001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlign001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function commonAttrsAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAlign002', 0, async (done: Function) => {
+    it('testCommonAttrsAlign002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlign002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function commonAttrsAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAlign003', 0, async (done: Function) => {
+    it('testCommonAttrsAlign003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlign003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function commonAttrsAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAlign004', 0, async (done: Function) => {
+    it('testCommonAttrsAlign004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlign004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function commonAttrsAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAlign005', 0, async (done: Function) => {
+    it('testCommonAttrsAlign005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlign005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function commonAttrsAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAlign006', 0, async (done: Function) => {
+    it('testCommonAttrsAlign006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlign006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function commonAttrsAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAlign007', 0, async (done: Function) => {
+    it('testCommonAttrsAlign007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlign007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function commonAttrsAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAlign008', 0, async (done: Function) => {
+    it('testCommonAttrsAlign008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlign008()).assertEqual(0)
       done()
     })
@@ -138,7 +138,7 @@ export default function commonAttrsAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAlign009', 0, async (done: Function) => {
+    it('testCommonAttrsAlign009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlign009()).assertEqual(0)
       done()
     })
@@ -151,7 +151,7 @@ export default function commonAttrsAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAlign010', 0, async (done: Function) => {
+    it('testCommonAttrsAlign010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlign010()).assertEqual(0)
       done()
     })
@@ -164,7 +164,7 @@ export default function commonAttrsAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testCommonAttrsAlign011', 0, async (done: Function) => {
+    it('testCommonAttrsAlign011', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlign011()).assertEqual(0)
       done()
     })
@@ -178,7 +178,7 @@ export default function commonAttrsAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testCommonAttrsAlign012', 0, async (done: Function) => {
+    it('testCommonAttrsAlign012', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlign012()).assertEqual(0)
       done()
     })
@@ -192,7 +192,7 @@ export default function commonAttrsAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAlign013', 0, async (done: Function) => {
+    it('testCommonAttrsAlign013', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlign013()).assertEqual(0)
       done()
     })
@@ -206,7 +206,7 @@ export default function commonAttrsAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAlign014', 0, async (done: Function) => {
+    it('testCommonAttrsAlign014', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlign014()).assertEqual(0)
       done()
     })
@@ -220,7 +220,7 @@ export default function commonAttrsAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAlign015', 0, async (done: Function) => {
+    it('testCommonAttrsAlign015', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlign015()).assertEqual(0)
       done()
     })
@@ -234,7 +234,7 @@ export default function commonAttrsAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAlign016', 0, async (done: Function) => {
+    it('testCommonAttrsAlign016', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlign016()).assertEqual(0)
       done()
     })
@@ -248,7 +248,7 @@ export default function commonAttrsAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAlign017', 0, async (done: Function) => {
+    it('testCommonAttrsAlign017', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlign017()).assertEqual(0)
       done()
     })
@@ -262,7 +262,7 @@ export default function commonAttrsAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAlign018', 0, async (done: Function) => {
+    it('testCommonAttrsAlign018', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlign018()).assertEqual(0)
       done()
     })
@@ -276,7 +276,7 @@ export default function commonAttrsAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAlign019', 0, async (done: Function) => {
+    it('testCommonAttrsAlign019', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlign019()).assertEqual(0)
       done()
     })
@@ -290,7 +290,7 @@ export default function commonAttrsAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAlign020', 0, async (done: Function) => {
+    it('testCommonAttrsAlign020', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlign020()).assertEqual(0)
       done()
     })
@@ -304,7 +304,7 @@ export default function commonAttrsAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAlign021', 0, async (done: Function) => {
+    it('testCommonAttrsAlign021', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlign021()).assertEqual(0)
       done()
     })
@@ -318,7 +318,7 @@ export default function commonAttrsAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAlign022', 0, async (done: Function) => {
+    it('testCommonAttrsAlign022', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlign022()).assertEqual(0)
       done()
     })
@@ -332,7 +332,7 @@ export default function commonAttrsAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAlign023', 0, async (done: Function) => {
+    it('testCommonAttrsAlign023', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlign023()).assertEqual(0)
       done()
     })
@@ -346,7 +346,7 @@ export default function commonAttrsAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAlign024', 0, async (done: Function) => {
+    it('testCommonAttrsAlign024', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlign024()).assertEqual(0)
       done()
     })
@@ -360,7 +360,7 @@ export default function commonAttrsAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAlign025', 0, async (done: Function) => {
+    it('testCommonAttrsAlign025', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlign025()).assertEqual(0)
       done()
     })
@@ -374,7 +374,7 @@ export default function commonAttrsAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAlign026', 0, async (done: Function) => {
+    it('testCommonAttrsAlign026', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlign026()).assertEqual(0)
       done()
     })
@@ -388,7 +388,7 @@ export default function commonAttrsAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAlign027', 0, async (done: Function) => {
+    it('testCommonAttrsAlign027', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlign027()).assertEqual(0)
       done()
     })
@@ -402,7 +402,7 @@ export default function commonAttrsAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAlign028', 0, async (done: Function) => {
+    it('testCommonAttrsAlign028', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlign028()).assertEqual(0)
       done()
     })
@@ -416,7 +416,7 @@ export default function commonAttrsAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAlign029', 0, async (done: Function) => {
+    it('testCommonAttrsAlign029', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlign029()).assertEqual(0)
       done()
     })
@@ -430,7 +430,7 @@ export default function commonAttrsAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAlign030', 0, async (done: Function) => {
+    it('testCommonAttrsAlign030', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlign030()).assertEqual(0)
       done()
     })
@@ -444,7 +444,7 @@ export default function commonAttrsAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAlign031', 0, async (done: Function) => {
+    it('testCommonAttrsAlign031', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlign031()).assertEqual(0)
       done()
     })
@@ -458,7 +458,7 @@ export default function commonAttrsAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAlign032', 0, async (done: Function) => {
+    it('testCommonAttrsAlign032', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlign032()).assertEqual(0)
       done()
     })
@@ -472,7 +472,7 @@ export default function commonAttrsAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAlign033', 0, async (done: Function) => {
+    it('testCommonAttrsAlign033', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlign033()).assertEqual(0)
       done()
     })
@@ -486,7 +486,7 @@ export default function commonAttrsAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAlign034', 0, async (done: Function) => {
+    it('testCommonAttrsAlign034', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlign034()).assertEqual(0)
       done()
     })
@@ -500,7 +500,7 @@ export default function commonAttrsAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAlign035', 0, async (done: Function) => {
+    it('testCommonAttrsAlign035', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlign035()).assertEqual(0)
       done()
     })
@@ -514,7 +514,7 @@ export default function commonAttrsAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAlign036', 0, async (done: Function) => {
+    it('testCommonAttrsAlign036', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlign036()).assertEqual(0)
       done()
     })
@@ -528,7 +528,7 @@ export default function commonAttrsAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAlign037', 0, async (done: Function) => {
+    it('testCommonAttrsAlign037', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlign037()).assertEqual(0)
       done()
     })
@@ -542,7 +542,7 @@ export default function commonAttrsAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAlign038', 0, async (done: Function) => {
+    it('testCommonAttrsAlign038', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlign038()).assertEqual(0)
       done()
     })
@@ -556,7 +556,7 @@ export default function commonAttrsAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAlign039', 0, async (done: Function) => {
+    it('testCommonAttrsAlign039', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlign039()).assertEqual(0)
       done()
     })
@@ -570,7 +570,7 @@ export default function commonAttrsAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAlign040', 0, async (done: Function) => {
+    it('testCommonAttrsAlign040', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlign040()).assertEqual(0)
       done()
     })
@@ -584,7 +584,7 @@ export default function commonAttrsAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAlign041', 0, async (done: Function) => {
+    it('testCommonAttrsAlign041', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlign041()).assertEqual(0)
       done()
     })
@@ -598,7 +598,7 @@ export default function commonAttrsAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAlign042', 0, async (done: Function) => {
+    it('testCommonAttrsAlign042', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlign042()).assertEqual(0)
       done()
     })
@@ -611,7 +611,7 @@ export default function commonAttrsAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsAlign043', 0, async (done: Function) => {
+    it('testCommonAttrsAlign043', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlign043()).assertEqual(0)
       done()
     })

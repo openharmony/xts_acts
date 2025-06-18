@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function sliderSelectedColorTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSliderSelectedColor002', 0, async (done: Function) => {
+    it('testSliderSelectedColor002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderSelectedColor002()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function sliderSelectedColorTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSliderSelectedColor003', 0, async (done: Function) => {
+    it('testSliderSelectedColor003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderSelectedColor003()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function sliderSelectedColorTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSliderSelectedColor004', 0, async (done: Function) => {
+    it('testSliderSelectedColor004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderSelectedColor004()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function sliderSelectedColorTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSliderSelectedColor005', 0, async (done: Function) => {
+    it('testSliderSelectedColor005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderSelectedColor005()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function sliderSelectedColorTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSliderSelectedColor006', 0, async (done: Function) => {
+    it('testSliderSelectedColor006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderSelectedColor006()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function sliderSelectedColorTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSliderSelectedColor007', 0, async (done: Function) => {
+    it('testSliderSelectedColor007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderSelectedColor007()).assertEqual(0)
       done()
     })

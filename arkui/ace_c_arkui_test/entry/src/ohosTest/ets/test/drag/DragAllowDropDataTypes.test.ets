@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function DragAllowDropDataTypesTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('DragSetNodeAllowedDropDataTypesTest001', 0, async (done: Function) => {
+    it('DragSetNodeAllowedDropDataTypesTest001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.drag_setNodeAllowedDropDataTypes_001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function DragAllowDropDataTypesTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('DisallowNodeAnyDropDataTypesTest002', 0, async (done: Function) => {
+    it('DisallowNodeAnyDropDataTypesTest002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.drag_disallowNodeAnyDropDataTypes_002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function DragAllowDropDataTypesTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('AllowNodeAllDropDataTypesTest003', 0, async (done: Function) => {
+    it('AllowNodeAllDropDataTypesTest003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.drag_allowNodeAllDropDataTypes_003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function DragAllowDropDataTypesTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('DragSetNodeDraggableTest004', 0, async (done: Function) => {
+    it('DragSetNodeDraggableTest004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.drag_setNodeDraggable_004()).assertEqual(0)
       done()
     })

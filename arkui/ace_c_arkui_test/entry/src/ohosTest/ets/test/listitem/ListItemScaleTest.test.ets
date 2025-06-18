@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function listItemScaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListItemScale001', 0, async (done: Function) => {
+    it('testListItemScale001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListItemScale001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function listItemScaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListItemScale002', 0, async (done: Function) => {
+    it('testListItemScale002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListItemScale002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function listItemScaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListItemScale003', 0, async (done: Function) => {
+    it('testListItemScale003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListItemScale003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function listItemScaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListItemScale004', 0, async (done: Function) => {
+    it('testListItemScale004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListItemScale004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function listItemScaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListItemScale005', 0, async (done: Function) => {
+    it('testListItemScale005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListItemScale005()).assertEqual(0)
       done()
     })

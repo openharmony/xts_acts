@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textPickerWidthTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextPickerWidth001', 0, async (done: Function) => {
+    it('testTextPickerWidth001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextPickerWidth001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function textPickerWidthTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testTextPickerWidth002', 0, async (done: Function) => {
+    it('testTextPickerWidth002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextPickerWidth002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function textPickerWidthTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextPickerWidth003', 0, async (done: Function) => {
+    it('testTextPickerWidth003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextPickerWidth003()).assertEqual(0)
       done()
     })

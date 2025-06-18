@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function sliderMaxTest() {
     * @tc.type: Function
     * @tc.level: Level 1
     */
-    it('testSliderMax001', 0, async (done: Function) => {
+    it('testSliderMax001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderMax001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function sliderMaxTest() {
     * @tc.type: Function
     * @tc.level: Level 1
     */
-    it('testSliderMax002', 0, async (done: Function) => {
+    it('testSliderMax002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderMax002()).assertEqual(0)
       done()
     })
@@ -61,7 +61,7 @@ export default function sliderMaxTest() {
     * @tc.type: Function
     * @tc.level: Level 2
     */
-    it('testSliderMax003', 0, async (done: Function) => {
+    it('testSliderMax003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderMax003()).assertEqual(0)
       done()
     })
@@ -74,7 +74,7 @@ export default function sliderMaxTest() {
     * @tc.type: Function
     * @tc.level: Level 1
     */
-    it('testSliderMax004', 0, async (done: Function) => {
+    it('testSliderMax004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderMax004()).assertEqual(0)
       done()
     })
@@ -87,7 +87,7 @@ export default function sliderMaxTest() {
     * @tc.type: Function
     * @tc.level: Level 1
     */
-    it('testSliderMax005', 0, async (done: Function) => {
+    it('testSliderMax005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderMax005()).assertEqual(0)
       done()
     })

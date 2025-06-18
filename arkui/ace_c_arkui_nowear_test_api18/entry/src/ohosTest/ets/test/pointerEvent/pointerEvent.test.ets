@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach, beforeEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, beforeEach, Level } from '@ohos/hypium';
 import { Driver, ON, PointerMatrix, Rect } from '@ohos.UiTest';
 import router from '@ohos.router';
 import nativeRender from 'libnativerender.so'
@@ -28,7 +28,7 @@ export default function PointerEventTest(){
       done()
     })
 
-    it('PointerEventTest_a', 0, async (done: Function) => {
+    it('PointerEventTest_a',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.PointerEventTest_a()).assertEqual(0)
       console.log('PointerEventTest_a will drag and check:: ')
       await Utils.sleep(200)
@@ -36,7 +36,7 @@ export default function PointerEventTest(){
       done()
     })
 
-    it('PointerEventTest_a1', 0, async (done: Function) => {
+    it('PointerEventTest_a1',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.PointerEventTest_a1()).assertEqual(0)
       console.log('PointerEventTest_a1 will drag and check:: ')
       await Utils.sleep(200)
@@ -44,7 +44,7 @@ export default function PointerEventTest(){
       done()
     })
 
-    it('PointerEventTest_b', 0, async (done: Function) => {
+    it('PointerEventTest_b',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.PointerEventTest_b()).assertEqual(0)
       console.log('PointerEventTest_b will drag and check:: ')
       await Utils.sleep(200)
@@ -52,7 +52,7 @@ export default function PointerEventTest(){
       done()
     })
 
-    it('PointerEventTest_b1', 0, async (done: Function) => {
+    it('PointerEventTest_b1',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.PointerEventTest_b1()).assertEqual(0)
       console.log('PointerEventTest_b1 will drag and check:: ')
       await Utils.sleep(200)

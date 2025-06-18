@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import { ComponentInfo } from '../common/Interfaces';
 import Utils from '../common/Utils';
 
@@ -35,7 +35,7 @@ export default function radioOnChangeTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testRadioOnChange001', 0, async (done: Function) => {
+    it('testRadioOnChange001', Level.LEVEL1, async (done: Function) => {
       await Utils.clickComponent('OnChangeRadio')
       await Utils.sleep(3000);
       expect(Utils.getComponentInfoByKey('OnChangeRadio').$attrs.backgroundColor).assertEqual('#FFFF0000')

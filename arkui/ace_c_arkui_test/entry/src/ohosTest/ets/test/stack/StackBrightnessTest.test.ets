@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function stackBrightnessTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackBrightness001', 0, async (done: Function) => {
+    it('testStackBrightness001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackBrightness001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function stackBrightnessTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackBrightness002', 0, async (done: Function) => {
+    it('testStackBrightness002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackBrightness002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function stackBrightnessTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackBrightness003', 0, async (done: Function) => {
+    it('testStackBrightness003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackBrightness003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function stackBrightnessTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackBrightness004', 0, async (done: Function) => {
+    it('testStackBrightness004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackBrightness004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function stackBrightnessTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackBrightness005', 0, async (done: Function) => {
+    it('testStackBrightness005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackBrightness005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function stackBrightnessTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackBrightness006', 0, async (done: Function) => {
+    it('testStackBrightness006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackBrightness006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function stackBrightnessTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackBrightness007', 0, async (done: Function) => {
+    it('testStackBrightness007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackBrightness007()).assertEqual(0)
       done()
     })

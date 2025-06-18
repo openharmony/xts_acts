@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach, beforeEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, beforeEach,  Level } from '@ohos/hypium';
 import { Driver, ON, PointerMatrix, Rect } from '@ohos.UiTest';
 import router from '@ohos.router';
 import nativeRender from 'libnativerender.so'
@@ -55,7 +55,7 @@ export default function FocusControlTest4(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('SUB_ARKUI_CAPI_FocusControlTest_TEST004', 0, async (done: Function) => {
+    it('SUB_ARKUI_CAPI_FocusControlTest_TEST004',  Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'focuscontrol4';
       await Utils.pushPage(`focuscontrol/${PAGE_TAG}`);
       await Utils.sleep(3000);

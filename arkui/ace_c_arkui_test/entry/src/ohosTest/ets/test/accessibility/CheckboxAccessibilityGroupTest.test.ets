@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function checkboxAccessibilityGroupTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCheckboxAccessibilityGroup001', 0, async (done: Function) => {
+    it('testCheckboxAccessibilityGroup001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCheckboxAccessibilityGroup001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function checkboxAccessibilityGroupTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCheckboxAccessibilityGroup002', 0, async (done: Function) => {
+    it('testCheckboxAccessibilityGroup002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCheckboxAccessibilityGroup002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function checkboxAccessibilityGroupTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testCheckboxAccessibilityGroup003', 0, async (done: Function) => {
+    it('testCheckboxAccessibilityGroup003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCheckboxAccessibilityGroup003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function checkboxAccessibilityGroupTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testCheckboxAccessibilityGroup004', 0, async (done: Function) => {
+    it('testCheckboxAccessibilityGroup004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCheckboxAccessibilityGroup004()).assertEqual(0)
       done()
     })

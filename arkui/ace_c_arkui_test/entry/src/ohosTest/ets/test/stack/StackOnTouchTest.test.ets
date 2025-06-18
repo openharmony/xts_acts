@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 
 export default function stackOnTouchTest() {
@@ -34,7 +34,7 @@ export default function stackOnTouchTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testStackOnTouch001', 0, async (done: Function) => {
+    it('testStackOnTouch001', Level.LEVEL1, async (done: Function) => {
       await Utils.clickComponent('OnTouchTest');
       await Utils.sleep(1000);
       expect(Utils.getComponentInfoByKey('OnTouchTest').$attrs.backgroundColor).assertEqual('#FF00FF00')
@@ -49,7 +49,7 @@ export default function stackOnTouchTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testStackOnTouch002', 0, async (done: Function) => {
+    it('testStackOnTouch002', Level.LEVEL1, async (done: Function) => {
       await Utils.clickComponent('OnTouchTestDisable');
       await Utils.sleep(1000);
       expect(Utils.getComponentInfoByKey('OnTouchTestDisable').$attrs.backgroundColor).assertEqual('#FFFF0000')

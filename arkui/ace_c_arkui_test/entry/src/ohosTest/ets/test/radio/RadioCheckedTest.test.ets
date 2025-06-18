@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, expect, describe, it } from '@ohos/hypium';
+import { beforeEach, expect, describe, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function radioCheckedTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRadioChecked001', 0, async (done: Function) => {
+    it('testRadioChecked001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRadioChecked001()).assertEqual(0)
       done();
     })
@@ -47,7 +47,7 @@ export default function radioCheckedTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRadioChecked002', 0, async (done: Function) => {
+    it('testRadioChecked002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRadioChecked002()).assertEqual(0)
       done();
     })
@@ -60,7 +60,7 @@ export default function radioCheckedTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRadioChecked003', 0, async (done: Function) => {
+    it('testRadioChecked003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRadioChecked003()).assertEqual(0)
       done();
     })
@@ -73,7 +73,7 @@ export default function radioCheckedTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRadioChecked004', 0, async (done: Function) => {
+    it('testRadioChecked004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRadioChecked004()).assertEqual(0)
       done();
     })
@@ -86,7 +86,7 @@ export default function radioCheckedTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRadioChecked005', 0, async (done: Function) => {
+    it('testRadioChecked005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRadioChecked005()).assertEqual(0)
       done();
     })
@@ -99,7 +99,7 @@ export default function radioCheckedTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRadioChecked006', 0, async (done: Function) => {
+    it('testRadioChecked006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRadioChecked006()).assertEqual(0)
       done();
     })
@@ -112,7 +112,7 @@ export default function radioCheckedTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRadioChecked007', 0, async (done: Function) => {
+    it('testRadioChecked007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRadioChecked007()).assertEqual(0)
       done();
     })

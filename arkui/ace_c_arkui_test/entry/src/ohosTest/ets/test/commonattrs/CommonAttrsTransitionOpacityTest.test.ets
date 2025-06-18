@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function commonAttrsTransitionEffectOpacityTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsTransitionOpacity001', 0, async (done: Function) => {
+    it('testCommonAttrsTransitionOpacity001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsTransitionOpacity001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function commonAttrsTransitionEffectOpacityTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsTransitionOpacity002', 0, async (done: Function) => {
+    it('testCommonAttrsTransitionOpacity002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsTransitionOpacity002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function commonAttrsTransitionEffectOpacityTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsTransitionOpacity003', 0, async (done: Function) => {
+    it('testCommonAttrsTransitionOpacity003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsTransitionOpacity003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function commonAttrsTransitionEffectOpacityTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsTransitionOpacity004', 0, async (done: Function) => {
+    it('testCommonAttrsTransitionOpacity004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsTransitionOpacity004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function commonAttrsTransitionEffectOpacityTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsTransitionOpacity005', 0, async (done: Function) => {
+    it('testCommonAttrsTransitionOpacity005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsTransitionOpacity005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function commonAttrsTransitionEffectOpacityTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsTransitionOpacity006', 0, async (done: Function) => {
+    it('testCommonAttrsTransitionOpacity006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsTransitionOpacity006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function commonAttrsTransitionEffectOpacityTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsTransitionOpacity007', 0, async (done: Function) => {
+    it('testCommonAttrsTransitionOpacity007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsTransitionOpacity007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function commonAttrsTransitionEffectOpacityTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsTransitionOpacity008', 0, async (done: Function) => {
+    it('testCommonAttrsTransitionOpacity008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsTransitionOpacity008()).assertEqual(0)
       done()
     })
@@ -138,7 +138,7 @@ export default function commonAttrsTransitionEffectOpacityTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsTransitionOpacity009', 0, async (done: Function) => {
+    it('testCommonAttrsTransitionOpacity009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsTransitionOpacity009()).assertEqual(0)
       done()
     })
@@ -151,7 +151,7 @@ export default function commonAttrsTransitionEffectOpacityTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsTransitionOpacity010', 0, async (done: Function) => {
+    it('testCommonAttrsTransitionOpacity010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsTransitionOpacity010()).assertEqual(0)
       done()
     })
@@ -164,7 +164,7 @@ export default function commonAttrsTransitionEffectOpacityTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsTransitionOpacity011', 0, async (done: Function) => {
+    it('testCommonAttrsTransitionOpacity011', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsTransitionOpacity011()).assertEqual(0)
       done()
     })
@@ -177,7 +177,7 @@ export default function commonAttrsTransitionEffectOpacityTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsTransitionOpacity012', 0, async (done: Function) => {
+    it('testCommonAttrsTransitionOpacity012', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsTransitionOpacity012()).assertEqual(0)
       done()
     })
@@ -190,7 +190,7 @@ export default function commonAttrsTransitionEffectOpacityTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsTransitionOpacity013', 0, async (done: Function) => {
+    it('testCommonAttrsTransitionOpacity013', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsTransitionOpacity013()).assertEqual(0)
       done()
     })
@@ -203,7 +203,7 @@ export default function commonAttrsTransitionEffectOpacityTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsTransitionOpacity014', 0, async (done: Function) => {
+    it('testCommonAttrsTransitionOpacity014', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsTransitionOpacity014()).assertEqual(0)
       done()
     })
@@ -216,7 +216,7 @@ export default function commonAttrsTransitionEffectOpacityTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsTransitionOpacity015', 0, async (done: Function) => {
+    it('testCommonAttrsTransitionOpacity015', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsTransitionOpacity015()).assertEqual(0)
       done()
     })

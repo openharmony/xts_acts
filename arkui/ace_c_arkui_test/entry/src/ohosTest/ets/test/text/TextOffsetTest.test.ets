@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textOffsetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextOffset001', 0, async (done: Function) => {
+    it('testTextOffset001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextOffset001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function textOffsetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextOffset002', 0, async (done: Function) => {
+    it('testTextOffset002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextOffset002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function textOffsetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextOffset003', 0, async (done: Function) => {
+    it('testTextOffset003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextOffset003()).assertEqual(0)
       done()
     })

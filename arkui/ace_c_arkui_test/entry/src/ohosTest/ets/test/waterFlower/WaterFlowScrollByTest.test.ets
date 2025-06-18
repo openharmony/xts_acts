@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeRender from 'libnativerender.so'
 
@@ -29,7 +29,7 @@ export default function waterFlowScrollByTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWaterFlowScrollBy001', 0, async (done: Function) => {
+    it('testWaterFlowScrollBy001', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`waterflow/WaterFlowScrollBy001Test`);
       await Utils.clickComponent('btn1')
       await Utils.sleep(1500)
@@ -51,7 +51,7 @@ export default function waterFlowScrollByTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWaterFlowScrollBy002', 0, async (done: Function) => {
+    it('testWaterFlowScrollBy002', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`waterflow/WaterFlowScrollBy002Test`);
       await Utils.clickComponent('btn2')
       await Utils.sleep(1500)
@@ -73,7 +73,7 @@ export default function waterFlowScrollByTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWaterFlowScrollBy003', 0, async (done: Function) => {
+    it('testWaterFlowScrollBy003', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`waterflow/WaterFlowScrollBy003Test`);
       await Utils.clickComponent('btn3')
       await Utils.sleep(1500)
@@ -95,7 +95,7 @@ export default function waterFlowScrollByTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWaterFlowScrollBy004', 0, async (done: Function) => {
+    it('testWaterFlowScrollBy004', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`waterflow/WaterFlowScrollBy004Test`);
       await Utils.clickComponent('btn2')
       await Utils.clickComponent('btn2')

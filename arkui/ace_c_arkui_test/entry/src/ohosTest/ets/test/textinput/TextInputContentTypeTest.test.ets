@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textInputContentTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputContentType001', 0, async (done: Function) => {
+    it('testTextInputContentType001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputContentType001()).assertEqual(0)
       done();
     });
@@ -46,7 +46,7 @@ export default function textInputContentTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputContentType002', 0, async (done: Function) => {
+    it('testTextInputContentType002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputContentType002()).assertEqual(0)
       done();
     });
@@ -58,7 +58,7 @@ export default function textInputContentTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputContentType003', 0, async (done: Function) => {
+    it('testTextInputContentType003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputContentType003()).assertEqual(0)
       done();
     });
@@ -70,7 +70,7 @@ export default function textInputContentTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputContentType004', 0, async (done: Function) => {
+    it('testTextInputContentType004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputContentType004()).assertEqual(0)
       done();
     });
@@ -82,7 +82,7 @@ export default function textInputContentTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputContentType005', 0, async (done: Function) => {
+    it('testTextInputContentType005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputContentType005()).assertEqual(0)
       done();
     });
@@ -94,7 +94,7 @@ export default function textInputContentTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputContentType006', 0, async (done: Function) => {
+    it('testTextInputContentType006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputContentType006()).assertEqual(0)
       done();
     });
@@ -106,7 +106,7 @@ export default function textInputContentTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputContentType007', 0, async (done: Function) => {
+    it('testTextInputContentType007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputContentType007()).assertEqual(0)
       done();
     });
@@ -118,7 +118,7 @@ export default function textInputContentTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputContentType008', 0, async (done: Function) => {
+    it('testTextInputContentType008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputContentType008()).assertEqual(0)
       done();
     });
@@ -130,7 +130,7 @@ export default function textInputContentTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputContentType009', 0, async (done: Function) => {
+    it('testTextInputContentType009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputContentType009()).assertEqual(0)
       done();
     });
@@ -142,7 +142,7 @@ export default function textInputContentTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputContentType010', 0, async (done: Function) => {
+    it('testTextInputContentType010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputContentType010()).assertEqual(0)
       done();
     });
@@ -154,7 +154,7 @@ export default function textInputContentTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputContentType011', 0, async (done: Function) => {
+    it('testTextInputContentType011', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputContentType011()).assertEqual(0)
       done();
     });
@@ -166,7 +166,7 @@ export default function textInputContentTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputContentType012', 0, async (done: Function) => {
+    it('testTextInputContentType012', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputContentType012()).assertEqual(0)
       done();
     });
@@ -178,7 +178,7 @@ export default function textInputContentTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputContentType013', 0, async (done: Function) => {
+    it('testTextInputContentType013', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputContentType013()).assertEqual(0)
       done();
     });
@@ -190,7 +190,7 @@ export default function textInputContentTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputContentType014', 0, async (done: Function) => {
+    it('testTextInputContentType014', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputContentType014()).assertEqual(0)
       done();
     });
@@ -202,7 +202,7 @@ export default function textInputContentTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputContentType015', 0, async (done: Function) => {
+    it('testTextInputContentType015', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputContentType015()).assertEqual(0)
       done();
     });
@@ -214,7 +214,7 @@ export default function textInputContentTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputContentType016', 0, async (done: Function) => {
+    it('testTextInputContentType016', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputContentType016()).assertEqual(0)
       done();
     });
@@ -226,7 +226,7 @@ export default function textInputContentTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputContentType017', 0, async (done: Function) => {
+    it('testTextInputContentType017', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputContentType017()).assertEqual(0)
       done();
     });
@@ -238,7 +238,7 @@ export default function textInputContentTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputContentType018', 0, async (done: Function) => {
+    it('testTextInputContentType018', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputContentType018()).assertEqual(0)
       done();
     });
@@ -250,7 +250,7 @@ export default function textInputContentTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputContentType019', 0, async (done: Function) => {
+    it('testTextInputContentType019', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputContentType019()).assertEqual(0)
       done();
     });
@@ -262,7 +262,7 @@ export default function textInputContentTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputContentType020', 0, async (done: Function) => {
+    it('testTextInputContentType020', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputContentType020()).assertEqual(0)
       done();
     });
@@ -274,7 +274,7 @@ export default function textInputContentTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputContentType021', 0, async (done: Function) => {
+    it('testTextInputContentType021', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputContentType021()).assertEqual(0)
       done();
     });
@@ -286,7 +286,7 @@ export default function textInputContentTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputContentType022', 0, async (done: Function) => {
+    it('testTextInputContentType022', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputContentType022()).assertEqual(0)
       done();
     });
@@ -298,7 +298,7 @@ export default function textInputContentTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputContentType023', 0, async (done: Function) => {
+    it('testTextInputContentType023', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputContentType023()).assertEqual(0)
       done();
     });

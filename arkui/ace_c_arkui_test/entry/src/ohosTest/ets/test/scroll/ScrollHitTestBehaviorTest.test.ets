@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 
 export default function scrollHitTestBehaviorTest() {
@@ -27,7 +27,7 @@ export default function scrollHitTestBehaviorTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testScrollHitTestBehavior001', 0, async (done: Function) => {
+    it('testScrollHitTestBehavior001', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollHitTestBehaviorDefaultTest';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       await Utils.clickComponent('Default')
@@ -48,7 +48,7 @@ export default function scrollHitTestBehaviorTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testScrollHitTestBehavior002', 0, async (done: Function) => {
+    it('testScrollHitTestBehavior002', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollHitTestBehaviorBlockTest';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       await Utils.clickComponent('Block')
@@ -69,7 +69,7 @@ export default function scrollHitTestBehaviorTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testScrollHitTestBehavior003', 0, async (done: Function) => {
+    it('testScrollHitTestBehavior003', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollHitTestBehaviorTransparentTest';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       await Utils.clickComponent('Transparent')
@@ -90,7 +90,7 @@ export default function scrollHitTestBehaviorTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testScrollHitTestBehavior004', 0, async (done: Function) => {
+    it('testScrollHitTestBehavior004', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollHitTestBehaviorNoneTest';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       await Utils.clickComponent('None')

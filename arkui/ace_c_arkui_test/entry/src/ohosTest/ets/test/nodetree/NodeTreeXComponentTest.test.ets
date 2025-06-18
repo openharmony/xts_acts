@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, describe, expect, it } from '@ohos/hypium';
+import { afterEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 
 export default function nodeTreeXComponentTest() {
@@ -33,7 +33,7 @@ export default function nodeTreeXComponentTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testNodeTreeXComponent001', 0, async (done: Function) => {
+    it('testNodeTreeXComponent001', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'NodeTreeXComponentTest';
       await Utils.pushPage(`nodetree/${PAGE_TAG}`);
       await Utils.clickComponent('NodeTreeXComponent');
@@ -50,7 +50,7 @@ export default function nodeTreeXComponentTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testNodeTreeXComponent002', 0, async (done: Function) => {
+    it('testNodeTreeXComponent002', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'NodeTreeXComponentDetachTest';
       await Utils.pushPage(`nodetree/${PAGE_TAG}`);
       await Utils.clickComponent('NodeTreeXComponentDetach');
@@ -67,7 +67,7 @@ export default function nodeTreeXComponentTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testNodeTreeXComponent003', 0, async (done: Function) => {
+    it('testNodeTreeXComponent003', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'NodeTreeXComponent401Test';
       await Utils.pushPage(`nodetree/${PAGE_TAG}`);
       await Utils.clickComponent('NodeTreeXComponent401');
@@ -84,7 +84,7 @@ export default function nodeTreeXComponentTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testNodeTreeXComponent004', 0, async (done: Function) => {
+    it('testNodeTreeXComponent004', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'NodeTreeXComponentDetach401Test';
       await Utils.pushPage(`nodetree/${PAGE_TAG}`);
       await Utils.clickComponent('NodeTreeXComponentDetach401');

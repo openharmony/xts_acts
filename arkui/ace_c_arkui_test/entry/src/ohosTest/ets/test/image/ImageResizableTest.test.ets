@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function imageResizableTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageResizable001', 0, async (done: Function) => {
+    it('testImageResizable001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageResizable001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function imageResizableTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageResizable002', 0, async (done: Function) => {
+    it('testImageResizable002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageResizable002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function imageResizableTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageResizable003', 0, async (done: Function) => {
+    it('testImageResizable003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageResizable003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function imageResizableTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageResizable004', 0, async (done: Function) => {
+    it('testImageResizable004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageResizable004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function imageResizableTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageResizable005', 0, async (done: Function) => {
+    it('testImageResizable005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageResizable005()).assertEqual(0)
       done()
     })

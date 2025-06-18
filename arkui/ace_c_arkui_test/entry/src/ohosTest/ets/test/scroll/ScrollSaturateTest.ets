@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function scrollSaturateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollSaturate001', 0, async (done: Function) => {
+    it('testScrollSaturate001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollSaturate001()).assertEqual(0)
       done();
     });
@@ -47,7 +47,7 @@ export default function scrollSaturateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollSaturate002', 0, async (done: Function) => {
+    it('testScrollSaturate002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollSaturate002()).assertEqual(0)
       done();
     });
@@ -60,7 +60,7 @@ export default function scrollSaturateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollSaturate003', 0, async (done: Function) => {
+    it('testScrollSaturate003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollSaturate003()).assertEqual(0)
       done();
     });
@@ -73,7 +73,7 @@ export default function scrollSaturateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollSaturate004', 0, async (done: Function) => {
+    it('testScrollSaturate004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollSaturate004()).assertEqual(0)
       done();
     });
@@ -86,7 +86,7 @@ export default function scrollSaturateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testScrollSaturate005', 0, async (done: Function) => {
+    it('testScrollSaturate005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollSaturate005()).assertEqual(0)
       done();
     });
@@ -99,7 +99,7 @@ export default function scrollSaturateTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testScrollSaturate006', 0, async (done: Function) => {
+    it('testScrollSaturate006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollSaturate006()).assertEqual(0)
       done();
     });

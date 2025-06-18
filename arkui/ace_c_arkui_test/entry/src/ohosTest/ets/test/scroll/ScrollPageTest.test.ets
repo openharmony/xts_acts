@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 
 export default function scrollPageTest() {
@@ -34,7 +34,7 @@ export default function scrollPageTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testScrollPage001', 0, async (done: Function) => {
+    it('testScrollPage001', Level.LEVEL1, async (done: Function) => {
       await Utils.clickComponent('scrollPageTestButtonUp')
       await Utils.sleep(2000)
       expect(Utils.getComponentInfoByKey('scrollPageUp').$attrs.backgroundColor).assertEqual('#FF00FF00')
@@ -49,7 +49,7 @@ export default function scrollPageTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testScrollPage002', 0, async (done: Function) => {
+    it('testScrollPage002', Level.LEVEL1, async (done: Function) => {
       await Utils.clickComponent('scrollPageTestButtonDown')
       await Utils.sleep(2000)
       expect(Utils.getComponentInfoByKey('scrollPageDown').$attrs.backgroundColor).assertEqual('#FF00FF00')

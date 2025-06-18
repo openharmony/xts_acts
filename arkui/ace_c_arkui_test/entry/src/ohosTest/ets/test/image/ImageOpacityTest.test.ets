@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function imageOpacityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageOpacity001', 0, async (done: Function) => {
+    it('testImageOpacity001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageOpacity001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function imageOpacityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageOpacity002', 0, async (done: Function) => {
+    it('testImageOpacity002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageOpacity002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function imageOpacityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageOpacity003', 0, async (done: Function) => {
+    it('testImageOpacity003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageOpacity003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function imageOpacityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageOpacity004', 0, async (done: Function) => {
+    it('testImageOpacity004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageOpacity004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function imageOpacityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testImageOpacity005', 0, async (done: Function) => {
+    it('testImageOpacity005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageOpacity005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function imageOpacityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testImageOpacity006', 0, async (done: Function) => {
+    it('testImageOpacity006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageOpacity006()).assertEqual(0)
       done()
     })

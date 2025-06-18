@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function commonAttrsTransformCenterTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsTransformCenter001', 0, async (done: Function) => {
+    it('testCommonAttrsTransformCenter001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsTransformCenter001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function commonAttrsTransformCenterTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsTransformCenter002', 0, async (done: Function) => {
+    it('testCommonAttrsTransformCenter002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsTransformCenter002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function commonAttrsTransformCenterTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsTransformCenter003', 0, async (done: Function) => {
+    it('testCommonAttrsTransformCenter003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsTransformCenter003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function commonAttrsTransformCenterTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsTransformCenter004', 0, async (done: Function) => {
+    it('testCommonAttrsTransformCenter004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsTransformCenter004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function commonAttrsTransformCenterTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsTransformCenter005', 0, async (done: Function) => {
+    it('testCommonAttrsTransformCenter005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsTransformCenter005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function commonAttrsTransformCenterTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsTransformCenter006', 0, async (done: Function) => {
+    it('testCommonAttrsTransformCenter006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsTransformCenter006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function commonAttrsTransformCenterTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsTransformCenter007', 0, async (done: Function) => {
+    it('testCommonAttrsTransformCenter007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsTransformCenter007()).assertEqual(0)
       done()
     })

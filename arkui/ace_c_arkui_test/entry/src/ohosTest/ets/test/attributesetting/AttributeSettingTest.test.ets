@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function attributeSettingTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testAttributeSetting001', 0, async (done: Function) => {
+    it('testAttributeSetting001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAttributeSetting001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function attributeSettingTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testAttributeSetting002', 0, async (done: Function) => {
+    it('testAttributeSetting002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAttributeSetting002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function attributeSettingTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testAttributeSetting003', 0, async (done: Function) => {
+    it('testAttributeSetting003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAttributeSetting003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function attributeSettingTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testAttributeSetting004', 0, async (done: Function) => {
+    it('testAttributeSetting004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAttributeSetting004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function attributeSettingTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testAttributeSetting005', 0, async (done: Function) => {
+    it('testAttributeSetting005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAttributeSetting005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function attributeSettingTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testAttributeSetting006', 0, async (done: Function) => {
+    it('testAttributeSetting006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAttributeSetting006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function attributeSettingTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testAttributeSetting007', 0, async (done: Function) => {
+    it('testAttributeSetting007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAttributeSetting007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function attributeSettingTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testAttributeSetting008', 0, async (done: Function) => {
+    it('testAttributeSetting008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAttributeSetting008()).assertEqual(0)
       done()
     })
@@ -138,7 +138,7 @@ export default function attributeSettingTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testAttributeSetting009', 0, async (done: Function) => {
+    it('testAttributeSetting009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAttributeSetting009()).assertEqual(0)
       done()
     })
@@ -151,7 +151,7 @@ export default function attributeSettingTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testAttributeSetting010', 0, async (done: Function) => {
+    it('testAttributeSetting010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAttributeSetting010()).assertEqual(0)
       done()
     })

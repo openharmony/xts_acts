@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function timePickerSelectedTextStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTimePickerSelectedTextStyle001', 0, async (done: Function) => {
+    it('testTimePickerSelectedTextStyle001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTimePickerSelectedTextStyle001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function timePickerSelectedTextStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTimePickerSelectedTextStyle002', 0, async (done: Function) => {
+    it('testTimePickerSelectedTextStyle002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTimePickerSelectedTextStyle002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function timePickerSelectedTextStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTimePickerSelectedTextStyle003', 0, async (done: Function) => {
+    it('testTimePickerSelectedTextStyle003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTimePickerSelectedTextStyle003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function timePickerSelectedTextStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTimePickerSelectedTextStyle004', 0, async (done: Function) => {
+    it('testTimePickerSelectedTextStyle004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTimePickerSelectedTextStyle004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function timePickerSelectedTextStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTimePickerSelectedTextStyle005', 0, async (done: Function) => {
+    it('testTimePickerSelectedTextStyle005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTimePickerSelectedTextStyle005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function timePickerSelectedTextStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTimePickerSelectedTextStyle006', 0, async (done: Function) => {
+    it('testTimePickerSelectedTextStyle006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTimePickerSelectedTextStyle006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function timePickerSelectedTextStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTimePickerSelectedTextStyle007', 0, async (done: Function) => {
+    it('testTimePickerSelectedTextStyle007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTimePickerSelectedTextStyle007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function timePickerSelectedTextStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTimePickerSelectedTextStyle008', 0, async (done: Function) => {
+    it('testTimePickerSelectedTextStyle008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTimePickerSelectedTextStyle008()).assertEqual(0)
       done()
     })
@@ -138,7 +138,7 @@ export default function timePickerSelectedTextStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTimePickerSelectedTextStyle009', 0, async (done: Function) => {
+    it('testTimePickerSelectedTextStyle009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTimePickerSelectedTextStyle009()).assertEqual(0)
       done()
     })
@@ -151,7 +151,7 @@ export default function timePickerSelectedTextStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTimePickerSelectedTextStyle010', 0, async (done: Function) => {
+    it('testTimePickerSelectedTextStyle010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTimePickerSelectedTextStyle010()).assertEqual(0)
       done()
     })
@@ -164,7 +164,7 @@ export default function timePickerSelectedTextStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTimePickerSelectedTextStyle011', 0, async (done: Function) => {
+    it('testTimePickerSelectedTextStyle011', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTimePickerSelectedTextStyle011()).assertEqual(0)
       done()
     })
@@ -177,7 +177,7 @@ export default function timePickerSelectedTextStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTimePickerSelectedTextStyle012', 0, async (done: Function) => {
+    it('testTimePickerSelectedTextStyle012', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTimePickerSelectedTextStyle012()).assertEqual(0)
       done()
     })
@@ -190,7 +190,7 @@ export default function timePickerSelectedTextStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTimePickerSelectedTextStyle013', 0, async (done: Function) => {
+    it('testTimePickerSelectedTextStyle013', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTimePickerSelectedTextStyle013()).assertEqual(0)
       done()
     })

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function customComponentScaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentScale001', 0, async (done: Function) => {
+    it('testCustomComponentScale001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentScale001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function customComponentScaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentScale002', 0, async (done: Function) => {
+    it('testCustomComponentScale002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentScale002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function customComponentScaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentScale003', 0, async (done: Function) => {
+    it('testCustomComponentScale003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentScale003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function customComponentScaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentScale004', 0, async (done: Function) => {
+    it('testCustomComponentScale004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentScale004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function customComponentScaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentScale005', 0, async (done: Function) => {
+    it('testCustomComponentScale005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentScale005()).assertEqual(0)
       done()
     })

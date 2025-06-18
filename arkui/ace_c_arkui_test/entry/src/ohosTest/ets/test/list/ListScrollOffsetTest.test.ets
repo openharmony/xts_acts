@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach,beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterEach,beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 import { Driver } from '@kit.TestKit';
@@ -31,7 +31,7 @@ export default function listScrollOffsetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListScrollOffset001', 0, async (done: Function) => {
+    it('testListScrollOffset001', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListScrollOffset001Test`);
       await Utils.clickComponent('btn')
       await Utils.sleep(1500)
@@ -53,7 +53,7 @@ export default function listScrollOffsetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListScrollOffset002', 0, async (done: Function) => {
+    it('testListScrollOffset002', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListScrollOffset002Test`);
       await Utils.clickComponent('btn')
       await Utils.sleep(1500)
@@ -75,7 +75,7 @@ export default function listScrollOffsetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListScrollOffset003', 0, async (done: Function) => {
+    it('testListScrollOffset003', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListScrollOffset003Test`);
       await Utils.clickComponent('btn')
       await Utils.sleep(1500)
@@ -97,7 +97,7 @@ export default function listScrollOffsetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListScrollOffset004', 0, async (done: Function) => {
+    it('testListScrollOffset004', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListScrollOffset004Test`);
       await Utils.clickComponent('btn')
       await Utils.sleep(1500)
@@ -119,7 +119,7 @@ export default function listScrollOffsetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListScrollOffset005', 0, async (done: Function) => {
+    it('testListScrollOffset005', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListScrollOffset005Test`);
       await Utils.clickComponent('btn')
       await Utils.sleep(1500)
@@ -141,7 +141,7 @@ export default function listScrollOffsetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListScrollOffset006', 0, async (done: Function) => {
+    it('testListScrollOffset006', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListScrollOffset006Test`);
       await Utils.clickComponent('btn')
       await Utils.sleep(1500)
@@ -163,7 +163,7 @@ export default function listScrollOffsetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListScrollOffset007', 0, async (done: Function) => {
+    it('testListScrollOffset007', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListScrollOffset007Test`);
       await Utils.clickComponent('btn')
       await Utils.sleep(1500)
@@ -185,7 +185,7 @@ export default function listScrollOffsetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListScrollOffset008', 0, async (done: Function) => {
+    it('testListScrollOffset008', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListScrollOffset008Test`);
       await Utils.clickComponent('btn')
       await Utils.sleep(1500)
@@ -207,7 +207,7 @@ export default function listScrollOffsetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListScrollOffset009', 0, async (done: Function) => {
+    it('testListScrollOffset009', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListScrollOffset009Test`);
       await Utils.clickComponent('btn')
       await Utils.sleep(1500)
@@ -229,7 +229,7 @@ export default function listScrollOffsetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListScrollOffset010', 0, async (done: Function) => {
+    it('testListScrollOffset010', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListScrollOffset010Test`);
       await Utils.clickComponent('btn')
       await Utils.sleep(1500)
@@ -251,7 +251,7 @@ export default function listScrollOffsetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListScrollOffset011', 0, async (done: Function) => {
+    it('testListScrollOffset011', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListScrollOffset011Test`);
       await Utils.clickComponent('btn')
       await Utils.sleep(1500)
@@ -273,7 +273,7 @@ export default function listScrollOffsetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListScrollOffset012', 0, async (done: Function) => {
+    it('testListScrollOffset012', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListScrollOffset012Test`);
       await Utils.clickComponent('btn')
       await Utils.sleep(1500)
@@ -295,7 +295,7 @@ export default function listScrollOffsetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListScrollOffset013', 0, async (done: Function) => {
+    it('testListScrollOffset013', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListScrollOffset013Test`);
       await Utils.clickComponent('btn')
       await Utils.sleep(1500)
@@ -317,7 +317,7 @@ export default function listScrollOffsetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListScrollOffset014', 0, async (done: Function) => {
+    it('testListScrollOffset014', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListScrollOffset014Test`);
       await Utils.clickComponent('btn')
       await Utils.sleep(1500)
@@ -339,7 +339,7 @@ export default function listScrollOffsetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListScrollOffset015', 0, async (done: Function) => {
+    it('testListScrollOffset015', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListScrollOffset015Test`);
       await Utils.clickComponent('btn')
       await Utils.sleep(1500)
@@ -361,7 +361,7 @@ export default function listScrollOffsetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListScrollOffset016', 0, async (done: Function) => {
+    it('testListScrollOffset016', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListScrollOffset016Test`);
       await Utils.clickComponent('btn')
       await Utils.sleep(1500)
@@ -383,7 +383,7 @@ export default function listScrollOffsetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListScrollOffset017', 0, async (done: Function) => {
+    it('testListScrollOffset017', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListScrollOffset017Test`);
       await Utils.clickComponent('btn')
       await Utils.sleep(1500)
@@ -405,7 +405,7 @@ export default function listScrollOffsetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListScrollOffset018', 0, async (done: Function) => {
+    it('testListScrollOffset018', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListScrollOffset018Test`);
       await Utils.clickComponent('btn')
       await Utils.sleep(1500)
@@ -427,7 +427,7 @@ export default function listScrollOffsetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListScrollOffset019', 0, async (done: Function) => {
+    it('testListScrollOffset019', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListScrollOffset019Test`);
       await Utils.clickComponent('btn')
       await Utils.sleep(1500)
@@ -449,7 +449,7 @@ export default function listScrollOffsetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListScrollOffset020', 0, async (done: Function) => {
+    it('testListScrollOffset020', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListScrollOffset020Test`);
       await Utils.clickComponent('btn')
       await Utils.sleep(1500)
@@ -471,7 +471,7 @@ export default function listScrollOffsetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListScrollOffset021', 0, async (done: Function) => {
+    it('testListScrollOffset021', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListScrollOffset021Test`);
       await Utils.clickComponent('btn')
       await Utils.sleep(1500)
@@ -493,7 +493,7 @@ export default function listScrollOffsetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListScrollOffset022', 0, async (done: Function) => {
+    it('testListScrollOffset022', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListScrollOffset022Test`);
       await Utils.clickComponent('btn')
       await Utils.sleep(1500)

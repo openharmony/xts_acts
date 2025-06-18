@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function loadingProgressEnableLoadingTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLoadingProgressEnableLoading001', 0, async (done: Function) => {
+    it('testLoadingProgressEnableLoading001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testLoadingProgressEnableLoading001()).assertEqual(0)
       done();
     });
@@ -47,7 +47,7 @@ export default function loadingProgressEnableLoadingTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLoadingProgressEnableLoading002', 0, async (done: Function) => {
+    it('testLoadingProgressEnableLoading002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testLoadingProgressEnableLoading002()).assertEqual(0)
       done();
     });
@@ -60,7 +60,7 @@ export default function loadingProgressEnableLoadingTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLoadingProgressEnableLoading003', 0, async (done: Function) => {
+    it('testLoadingProgressEnableLoading003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testLoadingProgressEnableLoading003()).assertEqual(0)
       done();
     });

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function scrollScrollAbleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollScrollable001', 0, async (done: Function) => {
+    it('testScrollScrollable001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollScrollAble001()).assertEqual(0)
       done();
     });
@@ -47,7 +47,7 @@ export default function scrollScrollAbleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollScrollable002', 0, async (done: Function) => {
+    it('testScrollScrollable002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollScrollAble002()).assertEqual(0)
       done();
     });
@@ -60,7 +60,7 @@ export default function scrollScrollAbleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testScrollScrollable003', 0, async (done: Function) => {
+    it('testScrollScrollable003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollScrollAble003()).assertEqual(0)
       done();
     });
@@ -73,7 +73,7 @@ export default function scrollScrollAbleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testScrollScrollable004', 0, async (done: Function) => {
+    it('testScrollScrollable004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollScrollAble004()).assertEqual(0)
       done();
     });

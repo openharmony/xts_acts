@@ -34,7 +34,7 @@ export default function customDialogShowTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCustomDialogShow001', 0, async (done: Function) => {
+    it('testCustomDialogShow001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomDialogShow001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function customDialogShowTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCustomDialogShow002', 0, async (done: Function) => {
+    it('testCustomDialogShow002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomDialogShow002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function customDialogShowTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCustomDialogShow003', 0, async (done: Function) => {
+    it('testCustomDialogShow003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomDialogShow003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function customDialogShowTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCustomDialogShow004', 0, async (done: Function) => {
+    it('testCustomDialogShow004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomDialogShow004()).assertEqual(0)
       done()
     })

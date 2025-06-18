@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textInputStyleTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputStyle001', 0, async (done: Function) => {
+    it('testTextInputStyle001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputStyle001()).assertEqual(0)
       done();
     });
@@ -46,7 +46,7 @@ export default function textInputStyleTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputStyle002', 0, async (done: Function) => {
+    it('testTextInputStyle002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputStyle002()).assertEqual(0)
       done();
     });
@@ -58,7 +58,7 @@ export default function textInputStyleTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputStyle003', 0, async (done: Function) => {
+    it('testTextInputStyle003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputStyle003()).assertEqual(0)
       done();
     });
@@ -70,7 +70,7 @@ export default function textInputStyleTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputStyle004', 0, async (done: Function) => {
+    it('testTextInputStyle004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputStyle004()).assertEqual(0)
       done();
     });
@@ -82,7 +82,7 @@ export default function textInputStyleTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputStyle005', 0, async (done: Function) => {
+    it('testTextInputStyle005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputStyle005()).assertEqual(0)
       done();
     });

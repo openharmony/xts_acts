@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function listItemBorderRadiusTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListItemBorderRadius001', 0, async (done: Function) => {
+    it('testListItemBorderRadius001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListItemBorderRadius001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function listItemBorderRadiusTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListItemBorderRadius002', 0, async (done: Function) => {
+    it('testListItemBorderRadius002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListItemBorderRadius002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function listItemBorderRadiusTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListItemBorderRadius003', 0, async (done: Function) => {
+    it('testListItemBorderRadius003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListItemBorderRadius003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function listItemBorderRadiusTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testListItemBorderRadius004', 0, async (done: Function) => {
+    it('testListItemBorderRadius004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListItemBorderRadius004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function listItemBorderRadiusTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testListItemBorderRadius005', 0, async (done: Function) => {
+    it('testListItemBorderRadius005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListItemBorderRadius005()).assertEqual(0)
       done()
     })

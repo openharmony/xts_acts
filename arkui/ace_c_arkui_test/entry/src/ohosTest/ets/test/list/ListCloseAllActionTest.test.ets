@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import { Driver } from '@kit.TestKit';
 import nativeRender from 'libnativerender.so'
@@ -77,7 +77,7 @@ export default function listCloseAllActionTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListCloseAllAction001', 0, async (done: Function) => {
+    it('testListCloseAllAction001', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListCloseAllActionTest`);
       await flingComponentH("list1", true, 1000, 100);
       await Utils.clickComponent('callbackButton0')
@@ -97,7 +97,7 @@ export default function listCloseAllActionTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListCloseAllAction002', 0, async (done: Function) => {
+    it('testListCloseAllAction002', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListCloseAllActionTest`);
       await flingComponentH("list1", true, 1000, 100);
       await Utils.clickComponent('nullCallbackButton0')
@@ -117,7 +117,7 @@ export default function listCloseAllActionTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListCloseAllAction003', 0, async (done: Function) => {
+    it('testListCloseAllAction003', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListCloseAllActionTest`);
       await flingComponentV("list2", true, 1000, 100);
       await Utils.clickComponent('callbackButton1')
@@ -137,7 +137,7 @@ export default function listCloseAllActionTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListCloseAllAction004', 0, async (done: Function) => {
+    it('testListCloseAllAction004', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListCloseAllActionTest`);
       await flingComponentV("list2", true, 1000, 100);
       await Utils.clickComponent('nullCallbackButton1')

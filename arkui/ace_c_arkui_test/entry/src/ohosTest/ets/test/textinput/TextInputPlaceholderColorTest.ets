@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textInputPlaceholderColorTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputPlaceholderColor001', 0, async (done: Function) => {
+    it('testTextInputPlaceholderColor001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputPlaceholderColor001()).assertEqual(0)
       done();
     });
@@ -47,7 +47,7 @@ export default function textInputPlaceholderColorTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputPlaceholderColor002', 0, async (done: Function) => {
+    it('testTextInputPlaceholderColor002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputPlaceholderColor002()).assertEqual(0)
       done();
     });
@@ -60,7 +60,7 @@ export default function textInputPlaceholderColorTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputPlaceholderColor003', 0, async (done: Function) => {
+    it('testTextInputPlaceholderColor003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputPlaceholderColor003()).assertEqual(0)
       done();
     });

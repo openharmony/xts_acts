@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textInputCancelButtonTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputCancelButton001', 0, async (done: Function) => {
+    it('testTextInputCancelButton001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputCancelButton001()).assertEqual(0)
       done();
     });
@@ -47,7 +47,7 @@ export default function textInputCancelButtonTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputCancelButton002', 0, async (done: Function) => {
+    it('testTextInputCancelButton002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputCancelButton002()).assertEqual(0)
       done();
     });
@@ -60,7 +60,7 @@ export default function textInputCancelButtonTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputCancelButton003', 0, async (done: Function) => {
+    it('testTextInputCancelButton003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputCancelButton003()).assertEqual(0)
       done();
     });
@@ -73,7 +73,7 @@ export default function textInputCancelButtonTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputCancelButton004', 0, async (done: Function) => {
+    it('testTextInputCancelButton004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputCancelButton004()).assertEqual(0)
       done();
     });
@@ -85,7 +85,7 @@ export default function textInputCancelButtonTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputCancelButton005', 0, async (done: Function) => {
+    it('testTextInputCancelButton005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputCancelButton005()).assertEqual(0)
       done();
     });
@@ -97,7 +97,7 @@ export default function textInputCancelButtonTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextInputCancelButton006', 0, async (done: Function) => {
+    it('testTextInputCancelButton006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputCancelButton006()).assertEqual(0)
       done();
     });

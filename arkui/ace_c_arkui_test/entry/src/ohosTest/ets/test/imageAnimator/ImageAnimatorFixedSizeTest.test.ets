@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function imageAnimatorFixedSizeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testImageAnimatorFixedSize001', 0, async (done: Function) => {
+    it('testImageAnimatorFixedSize001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageAnimatorFixedSize001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function imageAnimatorFixedSizeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testImageAnimatorFixedSize002', 0, async (done: Function) => {
+    it('testImageAnimatorFixedSize002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageAnimatorFixedSize002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function imageAnimatorFixedSizeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testImageAnimatorFixedSize003', 0, async (done: Function) => {
+    it('testImageAnimatorFixedSize003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageAnimatorFixedSize003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function imageAnimatorFixedSizeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testImageAnimatorFixedSize004', 0, async (done: Function) => {
+    it('testImageAnimatorFixedSize004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageAnimatorFixedSize004()).assertEqual(0)
       done()
     })

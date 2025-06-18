@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition001', 0, async (done: Function) => {
+    it('testStackTransition001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition002', 0, async (done: Function) => {
+    it('testStackTransition002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition003', 0, async (done: Function) => {
+    it('testStackTransition003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition004', 0, async (done: Function) => {
+    it('testStackTransition004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testStackTransition005', 0, async (done: Function) => {
+    it('testStackTransition005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition006', 0, async (done: Function) => {
+    it('testStackTransition006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition007', 0, async (done: Function) => {
+    it('testStackTransition007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition008', 0, async (done: Function) => {
+    it('testStackTransition008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition008()).assertEqual(0)
       done()
     })
@@ -138,7 +138,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition009', 0, async (done: Function) => {
+    it('testStackTransition009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition009()).assertEqual(0)
       done()
     })
@@ -151,7 +151,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition010', 0, async (done: Function) => {
+    it('testStackTransition010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition010()).assertEqual(0)
       done()
     })
@@ -164,7 +164,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition011', 0, async (done: Function) => {
+    it('testStackTransition011', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition011()).assertEqual(0)
       done()
     })
@@ -177,7 +177,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition012', 0, async (done: Function) => {
+    it('testStackTransition012', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition012()).assertEqual(0)
       done()
     })
@@ -190,7 +190,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition013', 0, async (done: Function) => {
+    it('testStackTransition013', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition013()).assertEqual(0)
       done()
     })
@@ -203,7 +203,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition014', 0, async (done: Function) => {
+    it('testStackTransition014', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition014()).assertEqual(0)
       done()
     })
@@ -216,7 +216,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition015', 0, async (done: Function) => {
+    it('testStackTransition015', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition015()).assertEqual(0)
       done()
     })
@@ -229,7 +229,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition016', 0, async (done: Function) => {
+    it('testStackTransition016', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition016()).assertEqual(0)
       done()
     })
@@ -242,7 +242,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition017', 0, async (done: Function) => {
+    it('testStackTransition017', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition017()).assertEqual(0)
       done()
     })
@@ -255,7 +255,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition018', 0, async (done: Function) => {
+    it('testStackTransition018', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition018()).assertEqual(0)
       done()
     })
@@ -268,7 +268,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testStackTransition019', 0, async (done: Function) => {
+    it('testStackTransition019', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition019()).assertEqual(0)
       done()
     })
@@ -281,7 +281,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testStackTransition020', 0, async (done: Function) => {
+    it('testStackTransition020', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition020()).assertEqual(0)
       done()
     })
@@ -294,7 +294,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition021', 0, async (done: Function) => {
+    it('testStackTransition021', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition021()).assertEqual(0)
       done()
     })
@@ -307,7 +307,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition022', 0, async (done: Function) => {
+    it('testStackTransition022', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition022()).assertEqual(0)
       done()
     })
@@ -320,7 +320,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition023', 0, async (done: Function) => {
+    it('testStackTransition023', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition023()).assertEqual(0)
       done()
     })
@@ -333,7 +333,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition024', 0, async (done: Function) => {
+    it('testStackTransition024', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition024()).assertEqual(0)
       done()
     })
@@ -346,7 +346,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition025', 0, async (done: Function) => {
+    it('testStackTransition025', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition025()).assertEqual(0)
       done()
     })
@@ -359,7 +359,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition026', 0, async (done: Function) => {
+    it('testStackTransition026', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition026()).assertEqual(0)
       done()
     })
@@ -372,7 +372,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition027', 0, async (done: Function) => {
+    it('testStackTransition027', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition027()).assertEqual(0)
       done()
     })
@@ -385,7 +385,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition028', 0, async (done: Function) => {
+    it('testStackTransition028', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition028()).assertEqual(0)
       done()
     })
@@ -398,7 +398,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition029', 0, async (done: Function) => {
+    it('testStackTransition029', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition029()).assertEqual(0)
       done()
     })
@@ -411,7 +411,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition030', 0, async (done: Function) => {
+    it('testStackTransition030', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition030()).assertEqual(0)
       done()
     })
@@ -424,7 +424,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition031', 0, async (done: Function) => {
+    it('testStackTransition031', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition031()).assertEqual(0)
       done()
     })
@@ -437,7 +437,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition032', 0, async (done: Function) => {
+    it('testStackTransition032', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition032()).assertEqual(0)
       done()
     })
@@ -450,7 +450,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition033', 0, async (done: Function) => {
+    it('testStackTransition033', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition033()).assertEqual(0)
       done()
     })
@@ -463,7 +463,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testStackTransition034', 0, async (done: Function) => {
+    it('testStackTransition034', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition034()).assertEqual(0)
       done()
     })
@@ -476,7 +476,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testStackTransition035', 0, async (done: Function) => {
+    it('testStackTransition035', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition035()).assertEqual(0)
       done()
     })
@@ -489,7 +489,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition036', 0, async (done: Function) => {
+    it('testStackTransition036', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition036()).assertEqual(0)
       done()
     })
@@ -502,7 +502,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition037', 0, async (done: Function) => {
+    it('testStackTransition037', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition037()).assertEqual(0)
       done()
     })
@@ -515,7 +515,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition038', 0, async (done: Function) => {
+    it('testStackTransition038', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition038()).assertEqual(0)
       done()
     })
@@ -528,7 +528,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition039', 0, async (done: Function) => {
+    it('testStackTransition039', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition039()).assertEqual(0)
       done()
     })
@@ -541,7 +541,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition040', 0, async (done: Function) => {
+    it('testStackTransition040', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition040()).assertEqual(0)
       done()
     })
@@ -554,7 +554,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition041', 0, async (done: Function) => {
+    it('testStackTransition041', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition041()).assertEqual(0)
       done()
     })
@@ -567,7 +567,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition042', 0, async (done: Function) => {
+    it('testStackTransition042', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition042()).assertEqual(0)
       done()
     })
@@ -580,7 +580,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition043', 0, async (done: Function) => {
+    it('testStackTransition043', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition043()).assertEqual(0)
       done()
     })
@@ -593,7 +593,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition044', 0, async (done: Function) => {
+    it('testStackTransition044', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition044()).assertEqual(0)
       done()
     })
@@ -606,7 +606,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition045', 0, async (done: Function) => {
+    it('testStackTransition045', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition045()).assertEqual(0)
       done()
     })
@@ -619,7 +619,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition046', 0, async (done: Function) => {
+    it('testStackTransition046', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition046()).assertEqual(0)
       done()
     })
@@ -632,7 +632,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition047', 0, async (done: Function) => {
+    it('testStackTransition047', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition047()).assertEqual(0)
       done()
     })
@@ -645,7 +645,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition048', 0, async (done: Function) => {
+    it('testStackTransition048', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition048()).assertEqual(0)
       done()
     })
@@ -658,7 +658,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testStackTransition049', 0, async (done: Function) => {
+    it('testStackTransition049', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition049()).assertEqual(0)
       done()
     })
@@ -671,7 +671,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testStackTransition050', 0, async (done: Function) => {
+    it('testStackTransition050', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition050()).assertEqual(0)
       done()
     })
@@ -684,7 +684,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition051', 0, async (done: Function) => {
+    it('testStackTransition051', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition051()).assertEqual(0)
       done()
     })
@@ -697,7 +697,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition052', 0, async (done: Function) => {
+    it('testStackTransition052', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition052()).assertEqual(0)
       done()
     })
@@ -710,7 +710,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition053', 0, async (done: Function) => {
+    it('testStackTransition053', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition053()).assertEqual(0)
       done()
     })
@@ -723,7 +723,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition054', 0, async (done: Function) => {
+    it('testStackTransition054', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition054()).assertEqual(0)
       done()
     })
@@ -736,7 +736,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition055', 0, async (done: Function) => {
+    it('testStackTransition055', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition055()).assertEqual(0)
       done()
     })
@@ -749,7 +749,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition056', 0, async (done: Function) => {
+    it('testStackTransition056', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition056()).assertEqual(0)
       done()
     })
@@ -762,7 +762,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition057', 0, async (done: Function) => {
+    it('testStackTransition057', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition057()).assertEqual(0)
       done()
     })
@@ -775,7 +775,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition058', 0, async (done: Function) => {
+    it('testStackTransition058', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition058()).assertEqual(0)
       done()
     })
@@ -788,7 +788,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition059', 0, async (done: Function) => {
+    it('testStackTransition059', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition059()).assertEqual(0)
       done()
     })
@@ -801,7 +801,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition060', 0, async (done: Function) => {
+    it('testStackTransition060', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition060()).assertEqual(0)
       done()
     })
@@ -814,7 +814,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition061', 0, async (done: Function) => {
+    it('testStackTransition061', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition061()).assertEqual(0)
       done()
     })
@@ -827,7 +827,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition062', 0, async (done: Function) => {
+    it('testStackTransition062', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition062()).assertEqual(0)
       done()
     })
@@ -840,7 +840,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackTransition063', 0, async (done: Function) => {
+    it('testStackTransition063', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition063()).assertEqual(0)
       done()
     })
@@ -853,7 +853,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testStackTransition064', 0, async (done: Function) => {
+    it('testStackTransition064', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition064()).assertEqual(0)
       done()
     })
@@ -866,7 +866,7 @@ export default function stackTransitionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testStackTransition065', 0, async (done: Function) => {
+    it('testStackTransition065', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackTransition065()).assertEqual(0)
       done()
     })

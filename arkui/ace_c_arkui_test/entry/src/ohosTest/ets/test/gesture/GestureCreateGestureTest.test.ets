@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import { Driver, ON, PointerMatrix } from '@kit.TestKit';
 import { Point } from '@ohos.UiTest';
@@ -81,7 +81,7 @@ export default function gestureCreateGestureTest() {
      * @tc.type       : Render
      * @tc.level      : Level 1
      */
-    it('testGestureCreateGesture001', 0, async (done: Function) => {
+    it('testGestureCreateGesture001', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`gesture/${PAGE_TAG1}`);
       await Utils.clickComponent('button1')
       await Utils.clickComponent('button2')
@@ -103,7 +103,7 @@ export default function gestureCreateGestureTest() {
      * @tc.type       : Render
      * @tc.level      : Level 1
      */
-    it('testGestureCreateGesture002', 0, async (done: Function) => {
+    it('testGestureCreateGesture002', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`gesture/${PAGE_TAG1}`);
       await Utils.longClickComponent('button5')
       await Utils.longClickComponent('button6')
@@ -125,7 +125,7 @@ export default function gestureCreateGestureTest() {
      * @tc.type       : Render
      * @tc.level      : Level 1
      */
-    it('testGestureCreateGesture003', 0, async (done: Function) => {
+    it('testGestureCreateGesture003', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`gesture/${PAGE_TAG1}`);
       expect(Utils.getComponentInfoByKey('button9').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done();
@@ -139,7 +139,7 @@ export default function gestureCreateGestureTest() {
      * @tc.type       : Render
      * @tc.level      : Level 1
      */
-    it('testGestureCreateGesture004', 0, async (done: Function) => {
+    it('testGestureCreateGesture004', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`gesture/${PAGE_TAG2}`);
       await panGesture('column1', 40, 40, 80, 40)
       await panGesture('column2', 80, 40, 40, 40)
@@ -173,7 +173,7 @@ export default function gestureCreateGestureTest() {
      * @tc.type       : Render
      * @tc.level      : Level 1
      */
-    it('testGestureCreateGesture005', 0, async (done: Function) => {
+    it('testGestureCreateGesture005', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'GestureCreateGesture2Test';
       await Utils.pushPage(`gesture/${PAGE_TAG}`);
       await pinchGesture('column1')
@@ -194,7 +194,7 @@ export default function gestureCreateGestureTest() {
      * @tc.type       : Render
      * @tc.level      : Level 1
      */
-    it('testGestureCreateGesture006', 0, async (done: Function) => {
+    it('testGestureCreateGesture006', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'GestureCreateGesture2Test';
       await Utils.pushPage(`gesture/${PAGE_TAG}`);
       await rotationGesture('column4')
@@ -217,7 +217,7 @@ export default function gestureCreateGestureTest() {
      * @tc.type       : Render
      * @tc.level      : Level 1
      */
-    it('testGestureCreateGesture007', 0, async (done: Function) => {
+    it('testGestureCreateGesture007', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'GestureCreateGesture3Test';
       await Utils.pushPage(`gesture/${PAGE_TAG}`, ()=>{
         setTimeout(()=>{}, 1000)
@@ -254,7 +254,7 @@ export default function gestureCreateGestureTest() {
      * @tc.type       : Render
      * @tc.level      : Level 1
      */
-    it('testGestureCreateGesture008', 0, async (done: Function) => {
+    it('testGestureCreateGesture008', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'GestureCreateGesture4Test';
       await Utils.pushPage(`gesture/${PAGE_TAG}`, ()=>{
         setTimeout(()=>{}, 1000)

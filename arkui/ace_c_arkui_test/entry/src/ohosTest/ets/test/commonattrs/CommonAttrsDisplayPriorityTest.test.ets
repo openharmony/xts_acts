@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function commonAttrsDisplayPriorityTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsDisplayPriority001', 0, async (done: Function) => {
+    it('testCommonAttrsDisplayPriority001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsDisplayPriority001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function commonAttrsDisplayPriorityTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsDisplayPriority002', 0, async (done: Function) => {
+    it('testCommonAttrsDisplayPriority002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsDisplayPriority002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function commonAttrsDisplayPriorityTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsDisplayPriority003', 0, async (done: Function) => {
+    it('testCommonAttrsDisplayPriority003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsDisplayPriority003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function commonAttrsDisplayPriorityTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsDisplayPriority004', 0, async (done: Function) => {
+    it('testCommonAttrsDisplayPriority004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsDisplayPriority004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function commonAttrsDisplayPriorityTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsDisplayPriority005', 0, async (done: Function) => {
+    it('testCommonAttrsDisplayPriority005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsDisplayPriority005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function commonAttrsDisplayPriorityTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsDisplayPriority006', 0, async (done: Function) => {
+    it('testCommonAttrsDisplayPriority006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsDisplayPriority006()).assertEqual(0)
       done()
     })

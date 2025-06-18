@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -37,7 +37,7 @@ export default function lazyForEachReloadItemTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLazyForEachReloadItem001', 0, async (done: Function) => {
+    it('testLazyForEachReloadItem001', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`lazyforeach/LazyForEachReloadItemTest`)
       await Utils.clickComponent('btn')
       await Utils.sleep(SleepTime)
@@ -53,7 +53,7 @@ export default function lazyForEachReloadItemTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLazyForEachReloadItem002', 0, async (done: Function) => {
+    it('testLazyForEachReloadItem002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testLazyForEachReloadItem002()).assertEqual(0)
       done()
     })

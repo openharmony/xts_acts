@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function imageFitOriginalSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageFitOriginalSize001', 0, async (done: Function) => {
+    it('testImageFitOriginalSize001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageFitOriginalSize001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function imageFitOriginalSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageFitOriginalSize002', 0, async (done: Function) => {
+    it('testImageFitOriginalSize002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageFitOriginalSize002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function imageFitOriginalSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageFitOriginalSize003', 0, async (done: Function) => {
+    it('testImageFitOriginalSize003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageFitOriginalSize003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function imageFitOriginalSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageFitOriginalSize004', 0, async (done: Function) => {
+    it('testImageFitOriginalSize004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageFitOriginalSize004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function imageFitOriginalSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageFitOriginalSize005', 0, async (done: Function) => {
+    it('testImageFitOriginalSize005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageFitOriginalSize005()).assertEqual(0)
       done()
     })

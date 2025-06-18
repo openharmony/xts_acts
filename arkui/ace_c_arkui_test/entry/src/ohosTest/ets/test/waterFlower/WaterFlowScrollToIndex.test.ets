@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, describe, expect, it } from '@ohos/hypium';
+import { afterEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import { WaterFlowScrollToIndexData } from '../../MainAbility/pages/waterflow/WaterFlowScrollToIndexTest'
 import nativeRender from 'libnativerender.so'
@@ -34,7 +34,7 @@ export default function waterFlowScrollToIndex() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWaterFlowScrollToIndex001', 0, async (done: Function) => {
+    it('testWaterFlowScrollToIndex001', Level.LEVEL1, async (done: Function) => {
       let option: WaterFlowScrollToIndexData =
         new WaterFlowScrollToIndexData('WaterFlowScrollToIndexTest001', 30, ScrollAlign.START)
       await Utils.pushPageByParams(`waterflow/WaterFlowScrollToIndexTest`, option)
@@ -54,7 +54,7 @@ export default function waterFlowScrollToIndex() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWaterFlowScrollToIndex002', 0, async (done: Function) => {
+    it('testWaterFlowScrollToIndex002', Level.LEVEL1, async (done: Function) => {
       let option: WaterFlowScrollToIndexData =
         new WaterFlowScrollToIndexData('WaterFlowScrollToIndexTest002', -100, ScrollAlign.START)
       await Utils.pushPageByParams(`waterflow/WaterFlowScrollToIndexTest`, option)
@@ -74,7 +74,7 @@ export default function waterFlowScrollToIndex() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWaterFlowScrollToIndex003', 0, async (done: Function) => {
+    it('testWaterFlowScrollToIndex003', Level.LEVEL1, async (done: Function) => {
       let option: WaterFlowScrollToIndexData =
         new WaterFlowScrollToIndexData('WaterFlowScrollToIndexTest003', 100, ScrollAlign.START)
       await Utils.pushPageByParams(`waterflow/WaterFlowScrollToIndexTest`, option)
@@ -94,7 +94,7 @@ export default function waterFlowScrollToIndex() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWaterFlowScrollToIndex004', 0, async (done: Function) => {
+    it('testWaterFlowScrollToIndex004', Level.LEVEL1, async (done: Function) => {
       let option: WaterFlowScrollToIndexData =
         new WaterFlowScrollToIndexData('WaterFlowScrollToIndexTest004', 40, ScrollAlign.CENTER)
       await Utils.pushPageByParams(`waterflow/WaterFlowScrollToIndexTest`, option)
@@ -114,7 +114,7 @@ export default function waterFlowScrollToIndex() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWaterFlowScrollToIndex005', 0, async (done: Function) => {
+    it('testWaterFlowScrollToIndex005', Level.LEVEL1, async (done: Function) => {
       let option: WaterFlowScrollToIndexData =
         new WaterFlowScrollToIndexData('WaterFlowScrollToIndexTest005', 20, ScrollAlign.END)
       await Utils.pushPageByParams(`waterflow/WaterFlowScrollToIndexTest`, option)
@@ -134,7 +134,7 @@ export default function waterFlowScrollToIndex() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWaterFlowScrollToIndex006', 0, async (done: Function) => {
+    it('testWaterFlowScrollToIndex006', Level.LEVEL1, async (done: Function) => {
       let option: WaterFlowScrollToIndexData =
         new WaterFlowScrollToIndexData('WaterFlowScrollToIndexTest006', 40, ScrollAlign.AUTO)
       await Utils.pushPageByParams(`waterflow/WaterFlowScrollToIndexTest`, option)
@@ -154,7 +154,7 @@ export default function waterFlowScrollToIndex() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWaterFlowScrollToIndex007', 0, async (done: Function) => {
+    it('testWaterFlowScrollToIndex007', Level.LEVEL1, async (done: Function) => {
       let option: WaterFlowScrollToIndexData = new WaterFlowScrollToIndexData('WaterFlowScrollToIndexTest007', 20, -1)
       await Utils.pushPageByParams(`waterflow/WaterFlowScrollToIndexTest`, option)
       await Utils.sleep(1500)
@@ -173,7 +173,7 @@ export default function waterFlowScrollToIndex() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testWaterFlowScrollToIndex008', 0, async (done: Function) => {
+    it('testWaterFlowScrollToIndex008', Level.LEVEL1, async (done: Function) => {
       let option: WaterFlowScrollToIndexData = new WaterFlowScrollToIndexData('WaterFlowScrollToIndexTest008', 40, 4)
       await Utils.pushPageByParams(`waterflow/WaterFlowScrollToIndexTest`, option)
       await Utils.sleep(1500)

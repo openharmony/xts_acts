@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function commonAttrsBorderRadiusTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBorderRadius001', 0, async (done: Function) => {
+    it('testCommonAttrsBorderRadius001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBorderRadius001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function commonAttrsBorderRadiusTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBorderRadius002', 0, async (done: Function) => {
+    it('testCommonAttrsBorderRadius002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBorderRadius002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function commonAttrsBorderRadiusTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBorderRadius003', 0, async (done: Function) => {
+    it('testCommonAttrsBorderRadius003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBorderRadius003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function commonAttrsBorderRadiusTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBorderRadius004', 0, async (done: Function) => {
+    it('testCommonAttrsBorderRadius004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBorderRadius004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function commonAttrsBorderRadiusTest() {
      * @tc.type       : Function
      * @tc.level      : Level2
      */
-    it('testCommonAttrsBorderRadius005', 0, async (done: Function) => {
+    it('testCommonAttrsBorderRadius005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBorderRadius005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function commonAttrsBorderRadiusTest() {
      * @tc.type       : Function
      * @tc.level      : Level2
      */
-    it('testCommonAttrsBorderRadius006', 0, async (done: Function) => {
+    it('testCommonAttrsBorderRadius006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBorderRadius006()).assertEqual(0)
       done()
     })

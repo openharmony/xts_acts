@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, UIElementInfo} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -53,7 +53,7 @@ export default function IfElseTest0100() {
      * @tc.type
      * @tc.size
      */
-    it('IfElseTest0100_001', 0, async (done: Function) => {
+    it('IfElseTest0100_001', Level.LEVEL0, async (done: Function) => {
       console.info('[IfElseTest0100_001] START');
       await CommonFunc.sleep(2000);
       let driver: Driver = Driver.create();
@@ -98,7 +98,7 @@ export default function IfElseTest0100() {
      * @tc.type
      * @tc.size
      */
-    it('IfElseTest0100_002', 0, async (done: Function) => {
+    it('IfElseTest0100_002', Level.LEVEL0, async (done: Function) => {
       console.info('[IfElseTest0100_001] START');
       await CommonFunc.sleep(2000);
       let driver: Driver = Driver.create();
@@ -143,7 +143,7 @@ export default function IfElseTest0100() {
      * @tc.type
      * @tc.size
      */
-    it('IfElseTest0100_003', 0, async (done: Function) => {
+    it('IfElseTest0100_003', Level.LEVEL0, async (done: Function) => {
       console.info('[IfElseTest0100_001] START');
       await CommonFunc.sleep(2000);
       let driver: Driver = Driver.create();

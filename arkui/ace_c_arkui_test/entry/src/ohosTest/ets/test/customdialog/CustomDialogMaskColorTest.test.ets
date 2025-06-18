@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function customDialogMaskColorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomDialogMaskColor001', 0, async (done: Function) => {
+    it('testCustomDialogMaskColor001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomDialogMaskColor001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function customDialogMaskColorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testCustomDialogMaskColor002', 0, async (done: Function) => {
+    it('testCustomDialogMaskColor002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomDialogMaskColor002()).assertEqual(0)
       done()
     })

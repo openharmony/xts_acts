@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function stackMarginTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackMargin001', 0, async (done: Function) => {
+    it('testStackMargin001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackMargin001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function stackMarginTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackMargin002', 0, async (done: Function) => {
+    it('testStackMargin002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackMargin002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function stackMarginTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackMargin003', 0, async (done: Function) => {
+    it('testStackMargin003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackMargin003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function stackMarginTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackMargin004', 0, async (done: Function) => {
+    it('testStackMargin004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackMargin004()).assertEqual(0)
       done()
     })

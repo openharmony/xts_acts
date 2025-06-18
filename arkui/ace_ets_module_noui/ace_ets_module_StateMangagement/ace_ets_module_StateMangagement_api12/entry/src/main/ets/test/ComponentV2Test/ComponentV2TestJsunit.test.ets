@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -53,7 +53,7 @@ export default function ComponentV2TestJsunit() {
      * @tc.type
      * @tc.size
      */
-    it('ComponentV2TestJsunit_001', 0, async (done: Function) => {
+    it('ComponentV2TestJsunit_001', Level.LEVEL0, async (done: Function) => {
       console.info('[ComponentV2TestJsunit_001] START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
@@ -77,7 +77,7 @@ export default function ComponentV2TestJsunit() {
      * @tc.type
      * @tc.size
      */
-    it('ComponentV2TestJsunit_002', 0, async (done: Function) => {
+    it('ComponentV2TestJsunit_002', Level.LEVEL0, async (done: Function) => {
       console.info('[ComponentV2TestJsunit_002] START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
@@ -101,7 +101,7 @@ export default function ComponentV2TestJsunit() {
      * @tc.type
      * @tc.size
      */
-    it('ComponentV2TestJsunit_003', 0, async (done: Function) => {
+    it('ComponentV2TestJsunit_003', Level.LEVEL0, async (done: Function) => {
       console.info('[ComponentV2TestJsunit_003] START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
@@ -125,7 +125,7 @@ export default function ComponentV2TestJsunit() {
      * @tc.type
      * @tc.size
      */
-    it('ComponentV2TestJsunit_004', 0, async (done: Function) => {
+    it('ComponentV2TestJsunit_004', Level.LEVEL0, async (done: Function) => {
       console.info('[ComponentV2TestJsunit_004] START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
@@ -154,7 +154,7 @@ export default function ComponentV2TestJsunit() {
      * @tc.type
      * @tc.size
      */
-    it('ComponentV2TestJsunit_005', 0, async (done: Function) => {
+    it('ComponentV2TestJsunit_005', Level.LEVEL0, async (done: Function) => {
       console.info('[ComponentV2TestJsunit_005] START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();

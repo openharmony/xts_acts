@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function customDialogSetGridColumnCountTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCustomDialogSetGridColumnCount001', 0, async (done: Function) => {
+    it('testCustomDialogSetGridColumnCount001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomDialogSetGridColumnCount001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function customDialogSetGridColumnCountTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCustomDialogSetGridColumnCount002', 0, async (done: Function) => {
+    it('testCustomDialogSetGridColumnCount002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomDialogSetGridColumnCount002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function customDialogSetGridColumnCountTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCustomDialogSetGridColumnCount003', 0, async (done: Function) => {
+    it('testCustomDialogSetGridColumnCount003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomDialogSetGridColumnCount003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function customDialogSetGridColumnCountTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCustomDialogSetGridColumnCount004', 0, async (done: Function) => {
+    it('testCustomDialogSetGridColumnCount004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomDialogSetGridColumnCount004()).assertEqual(0)
       done()
     })

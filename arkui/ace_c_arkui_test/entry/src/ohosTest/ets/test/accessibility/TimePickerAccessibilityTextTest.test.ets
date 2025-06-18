@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function timePickerAccessibilityTextTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTimePickerAccessibilityText001', 0, async (done: Function) => {
+    it('testTimePickerAccessibilityText001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTimePickerAccessibilityText001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function timePickerAccessibilityTextTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTimePickerAccessibilityText002', 0, async (done: Function) => {
+    it('testTimePickerAccessibilityText002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTimePickerAccessibilityText002()).assertEqual(0)
       done()
     })

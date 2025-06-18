@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it,  Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import { Driver, ON, PointerMatrix, Rect } from '@ohos.UiTest';
 
@@ -34,7 +34,7 @@ export default function setKeyProcessingMode02(){
      * @tc.level      : Level 1
      */
 
-    it('setKeyProcessingMode001', 0, async (done: Function) => {
+    it('setKeyProcessingMode001',  Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'setKeyProcessingMode02';
       await Utils.pushPage(`setKeyProcessingMode/${PAGE_TAG}`);
       console.info("[setKeyProcessingMode001] start succ");

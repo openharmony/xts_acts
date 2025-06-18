@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function rowAlignItemsTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testRowAlignItems001', 0, async (done: Function) => {
+    it('testRowAlignItems001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRowAlignItems001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function rowAlignItemsTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testRowAlignItems002', 0, async (done: Function) => {
+    it('testRowAlignItems002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRowAlignItems002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function rowAlignItemsTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testRowAlignItems003', 0, async (done: Function) => {
+    it('testRowAlignItems003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRowAlignItems003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function rowAlignItemsTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testRowAlignItems004', 0, async (done: Function) => {
+    it('testRowAlignItems004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRowAlignItems004()).assertEqual(0)
       done()
     })

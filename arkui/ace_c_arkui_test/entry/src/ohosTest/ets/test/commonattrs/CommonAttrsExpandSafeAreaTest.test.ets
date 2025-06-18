@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -35,7 +35,7 @@ export default function commonAttrsExpandSafeAreaTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsExpandSafeArea001', 0, async (done: Function) => {
+    it('testCommonAttrsExpandSafeArea001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsExpandSafeArea001()).assertEqual(0)
       done()
     })
@@ -49,7 +49,7 @@ export default function commonAttrsExpandSafeAreaTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsExpandSafeArea002', 0, async (done: Function) => {
+    it('testCommonAttrsExpandSafeArea002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsExpandSafeArea002()).assertEqual(0)
       done()
     })
@@ -63,7 +63,7 @@ export default function commonAttrsExpandSafeAreaTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsExpandSafeArea003', 0, async (done: Function) => {
+    it('testCommonAttrsExpandSafeArea003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsExpandSafeArea003()).assertEqual(0)
       done()
     })
@@ -76,7 +76,7 @@ export default function commonAttrsExpandSafeAreaTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsExpandSafeArea004', 0, async (done: Function) => {
+    it('testCommonAttrsExpandSafeArea004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsExpandSafeArea004()).assertEqual(0)
       done()
     })

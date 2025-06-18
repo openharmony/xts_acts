@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, expect, describe, it } from '@ohos/hypium';
+import { beforeEach, expect, describe, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function refreshPullDownRatioTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRefreshPullDownRatio001', 0, async (done: Function) => {
+    it('testRefreshPullDownRatio001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRefreshPullDownRatio001()).assertEqual(0)
       done();
     })
@@ -47,7 +47,7 @@ export default function refreshPullDownRatioTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRefreshPullDownRatio002', 0, async (done: Function) => {
+    it('testRefreshPullDownRatio002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRefreshPullDownRatio002()).assertEqual(0)
       done();
     })
@@ -60,7 +60,7 @@ export default function refreshPullDownRatioTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRefreshPullDownRatio003', 0, async (done: Function) => {
+    it('testRefreshPullDownRatio003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRefreshPullDownRatio003()).assertEqual(0)
       done();
     })
@@ -73,7 +73,7 @@ export default function refreshPullDownRatioTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRefreshPullDownRatio004', 0, async (done: Function) => {
+    it('testRefreshPullDownRatio004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRefreshPullDownRatio004()).assertEqual(0)
       done();
     })
@@ -86,7 +86,7 @@ export default function refreshPullDownRatioTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRefreshPullDownRatio005', 0, async (done: Function) => {
+    it('testRefreshPullDownRatio005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRefreshPullDownRatio005()).assertEqual(0)
       done();
     })
@@ -99,7 +99,7 @@ export default function refreshPullDownRatioTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRefreshPullDownRatio006', 0, async (done: Function) => {
+    it('testRefreshPullDownRatio006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRefreshPullDownRatio006()).assertEqual(0)
       done();
     })
@@ -112,7 +112,7 @@ export default function refreshPullDownRatioTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRefreshPullDownRatio007', 0, async (done: Function) => {
+    it('testRefreshPullDownRatio007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRefreshPullDownRatio007()).assertEqual(0)
       done();
     })

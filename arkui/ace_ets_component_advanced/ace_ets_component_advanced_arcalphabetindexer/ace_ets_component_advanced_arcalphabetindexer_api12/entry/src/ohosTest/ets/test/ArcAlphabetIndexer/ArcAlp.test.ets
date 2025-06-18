@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it,  Level } from '@ohos/hypium';
 import router from '@system.router';
 import CommonFunc from '../../MainAbility/utils/Common';
 import events_emitter from '@ohos.events.emitter';
@@ -72,7 +72,7 @@ export default function ArcAlphabetIndexer() {
      * @tc.type  : Function
      * @tc.level : Level 0
      */
-    it('ArkUX_Stage_ArcAlphabetIndexer_ComponentTest_0100', 0, async (done: Function) => {
+    it('ArkUX_Stage_ArcAlphabetIndexer_ComponentTest_0100',  Level.LEVEL0, async (done: Function) => {
       // Verify the functions of the ArcAlphabetIndexer component
       console.info('[ArkUX_Stage_ArcAlphabetIndexer_ComponentTest_0100] START');
       let strJson = getInspectorByKey('arcAlphabetIndex01');
@@ -153,7 +153,7 @@ export default function ArcAlphabetIndexer() {
      * @tc.type  : Function
      * @tc.level : Level 0
      */
-    it('ArkUX_Stage_ArcAlphabetIndexer_ComponentTest_0200', 0, async (done: Function) => {
+    it('ArkUX_Stage_ArcAlphabetIndexer_ComponentTest_0200',  Level.LEVEL0, async (done: Function) => {
       // Verify the functions of the ArcAlphabetIndexer component
       console.info('[ArkUX_Stage_ArcAlphabetIndexer_ComponentTest_0200] START');
       let strJson = getInspectorByKey('arcAlphabetIndex02');
@@ -237,7 +237,7 @@ export default function ArcAlphabetIndexer() {
      * @tc.type  : Function
      * @tc.level : Level 0
      */
-    it('ArkUX_Stage_ArcAlphabetIndexer_ComponentTest_0300', 0, async (done: Function) => {
+    it('ArkUX_Stage_ArcAlphabetIndexer_ComponentTest_0300',  Level.LEVEL0, async (done: Function) => {
       // Verify the functions of the ArcAlphabetIndexer component
       console.info('[ArkUX_Stage_ArcAlphabetIndexer_ComponentTest_0300] START');
       let strJson = getInspectorByKey('arcAlphabetIndex03');
@@ -302,7 +302,7 @@ export default function ArcAlphabetIndexer() {
      * @tc.type  : Function
      * @tc.level : Level 0
      */
-    it('ArkUX_Stage_ArcAlphabetIndexer_ComponentTest_0400', 0, async () => {
+    it('ArkUX_Stage_ArcAlphabetIndexer_ComponentTest_0400',  Level.LEVEL0, async () => {
       console.info('ArkUX_Stage_ArcAlphabetIndexer_ComponentTest_0400 START');
       try {
         let callback = (indexEvent: events_emitter.EventData) => {
@@ -328,7 +328,7 @@ export default function ArcAlphabetIndexer() {
      * @tc.type  : Function
      * @tc.level : Level 0
      */
-    it('ArkUX_Stage_ArcAlphabetIndexer_ComponentTest_0500', 0, async (done: Function) => {
+    it('ArkUX_Stage_ArcAlphabetIndexer_ComponentTest_0500',  Level.LEVEL0, async (done: Function) => {
       // Verify the functions of the ArcAlphabetIndexer component
       console.info('[ArkUX_Stage_ArcAlphabetIndexer_ComponentTest_0500] START');
       let backData: events_emitter.EventData = {

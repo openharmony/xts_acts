@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function customComponentForegroundBlurStyleTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCustomComponentForegroundBlurStyle001', 0, async (done: Function) => {
+    it('testCustomComponentForegroundBlurStyle001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentForegroundBlurStyle001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function customComponentForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentForegroundBlurStyle002', 0, async (done: Function) => {
+    it('testCustomComponentForegroundBlurStyle002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentForegroundBlurStyle002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function customComponentForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentForegroundBlurStyle003', 0, async (done: Function) => {
+    it('testCustomComponentForegroundBlurStyle003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentForegroundBlurStyle003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function customComponentForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentForegroundBlurStyle004', 0, async (done: Function) => {
+    it('testCustomComponentForegroundBlurStyle004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentForegroundBlurStyle004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function customComponentForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentForegroundBlurStyle005', 0, async (done: Function) => {
+    it('testCustomComponentForegroundBlurStyle005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentForegroundBlurStyle005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function customComponentForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentForegroundBlurStyle006', 0, async (done: Function) => {
+    it('testCustomComponentForegroundBlurStyle006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentForegroundBlurStyle006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function customComponentForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentForegroundBlurStyle007', 0, async (done: Function) => {
+    it('testCustomComponentForegroundBlurStyle007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentForegroundBlurStyle007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function customComponentForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentForegroundBlurStyle008', 0, async (done: Function) => {
+    it('testCustomComponentForegroundBlurStyle008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentForegroundBlurStyle008()).assertEqual(0)
       done()
     })
@@ -138,7 +138,7 @@ export default function customComponentForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentForegroundBlurStyle009', 0, async (done: Function) => {
+    it('testCustomComponentForegroundBlurStyle009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentForegroundBlurStyle009()).assertEqual(0)
       done()
     })
@@ -151,7 +151,7 @@ export default function customComponentForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentForegroundBlurStyle010', 0, async (done: Function) => {
+    it('testCustomComponentForegroundBlurStyle010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentForegroundBlurStyle010()).assertEqual(0)
       done()
     })
@@ -164,7 +164,7 @@ export default function customComponentForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentForegroundBlurStyle011', 0, async (done: Function) => {
+    it('testCustomComponentForegroundBlurStyle011', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentForegroundBlurStyle011()).assertEqual(0)
       done()
     })
@@ -177,7 +177,7 @@ export default function customComponentForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentForegroundBlurStyle012', 0, async (done: Function) => {
+    it('testCustomComponentForegroundBlurStyle012', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentForegroundBlurStyle012()).assertEqual(0)
       done()
     })
@@ -190,7 +190,7 @@ export default function customComponentForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentForegroundBlurStyle013', 0, async (done: Function) => {
+    it('testCustomComponentForegroundBlurStyle013', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentForegroundBlurStyle013()).assertEqual(0)
       done()
     })
@@ -203,7 +203,7 @@ export default function customComponentForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testCustomComponentForegroundBlurStyle014', 0, async (done: Function) => {
+    it('testCustomComponentForegroundBlurStyle014', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentForegroundBlurStyle014()).assertEqual(0)
       done()
     })
@@ -216,7 +216,7 @@ export default function customComponentForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentForegroundBlurStyle015', 0, async (done: Function) => {
+    it('testCustomComponentForegroundBlurStyle015', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentForegroundBlurStyle015()).assertEqual(0)
       done()
     })
@@ -229,7 +229,7 @@ export default function customComponentForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentForegroundBlurStyle016', 0, async (done: Function) => {
+    it('testCustomComponentForegroundBlurStyle016', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentForegroundBlurStyle016()).assertEqual(0)
       done()
     })
@@ -242,7 +242,7 @@ export default function customComponentForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentForegroundBlurStyle017', 0, async (done: Function) => {
+    it('testCustomComponentForegroundBlurStyle017', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentForegroundBlurStyle017()).assertEqual(0)
       done()
     })
@@ -255,7 +255,7 @@ export default function customComponentForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testCustomComponentForegroundBlurStyle018', 0, async (done: Function) => {
+    it('testCustomComponentForegroundBlurStyle018', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentForegroundBlurStyle018()).assertEqual(0)
       done()
     })
@@ -268,7 +268,7 @@ export default function customComponentForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentForegroundBlurStyle019', 0, async (done: Function) => {
+    it('testCustomComponentForegroundBlurStyle019', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentForegroundBlurStyle019()).assertEqual(0)
       done()
     })
@@ -281,7 +281,7 @@ export default function customComponentForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentForegroundBlurStyle020', 0, async (done: Function) => {
+    it('testCustomComponentForegroundBlurStyle020', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentForegroundBlurStyle020()).assertEqual(0)
       done()
     })
@@ -294,7 +294,7 @@ export default function customComponentForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testCustomComponentForegroundBlurStyle021', 0, async (done: Function) => {
+    it('testCustomComponentForegroundBlurStyle021', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentForegroundBlurStyle021()).assertEqual(0)
       done()
     })
@@ -307,7 +307,7 @@ export default function customComponentForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testCustomComponentForegroundBlurStyle022', 0, async (done: Function) => {
+    it('testCustomComponentForegroundBlurStyle022', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentForegroundBlurStyle022()).assertEqual(0)
       done()
     })
@@ -320,7 +320,7 @@ export default function customComponentForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentForegroundBlurStyle023', 0, async (done: Function) => {
+    it('testCustomComponentForegroundBlurStyle023', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentForegroundBlurStyle023()).assertEqual(0)
       done()
     })
@@ -333,7 +333,7 @@ export default function customComponentForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentForegroundBlurStyle024', 0, async (done: Function) => {
+    it('testCustomComponentForegroundBlurStyle024', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentForegroundBlurStyle024()).assertEqual(0)
       done()
     })
@@ -346,7 +346,7 @@ export default function customComponentForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentForegroundBlurStyle025', 0, async (done: Function) => {
+    it('testCustomComponentForegroundBlurStyle025', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentForegroundBlurStyle025()).assertEqual(0)
       done()
     })
@@ -359,7 +359,7 @@ export default function customComponentForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testCustomComponentForegroundBlurStyle026', 0, async (done: Function) => {
+    it('testCustomComponentForegroundBlurStyle026', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentForegroundBlurStyle026()).assertEqual(0)
       done()
     })
@@ -372,7 +372,7 @@ export default function customComponentForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testCustomComponentForegroundBlurStyle027', 0, async (done: Function) => {
+    it('testCustomComponentForegroundBlurStyle027', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentForegroundBlurStyle027()).assertEqual(0)
       done()
     })
@@ -385,7 +385,7 @@ export default function customComponentForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentForegroundBlurStyle028', 0, async (done: Function) => {
+    it('testCustomComponentForegroundBlurStyle028', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentForegroundBlurStyle028()).assertEqual(0)
       done()
     })
@@ -398,7 +398,7 @@ export default function customComponentForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentForegroundBlurStyle029', 0, async (done: Function) => {
+    it('testCustomComponentForegroundBlurStyle029', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentForegroundBlurStyle029()).assertEqual(0)
       done()
     })
@@ -411,7 +411,7 @@ export default function customComponentForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentForegroundBlurStyle030', 0, async (done: Function) => {
+    it('testCustomComponentForegroundBlurStyle030', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentForegroundBlurStyle030()).assertEqual(0)
       done()
     })
@@ -424,7 +424,7 @@ export default function customComponentForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testCustomComponentForegroundBlurStyle031', 0, async (done: Function) => {
+    it('testCustomComponentForegroundBlurStyle031', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentForegroundBlurStyle031()).assertEqual(0)
       done()
     })
@@ -437,7 +437,7 @@ export default function customComponentForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentForegroundBlurStyle032', 0, async (done: Function) => {
+    it('testCustomComponentForegroundBlurStyle032', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentForegroundBlurStyle032()).assertEqual(0)
       done()
     })

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function testArkUI() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testArkUI001', 0, async (done: Function) => {
+    it('testArkUI001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function testArkUI() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testArkUI002', 0, async (done: Function) => {
+    it('testArkUI002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function testArkUI() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testArkUI003', 0, async (done: Function) => {
+    it('testArkUI003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function testArkUI() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testArkUI004', 0, async (done: Function) => {
+    it('testArkUI004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function testArkUI() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testArkUI005', 0, async (done: Function) => {
+    it('testArkUI005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function testArkUI() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testArkUI006', 0, async (done: Function) => {
+    it('testArkUI006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function testArkUI() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testArkUI007', 0, async (done: Function) => {
+    it('testArkUI007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI007()).assertEqual(0)
       done()
     })
@@ -124,7 +124,7 @@ export default function testArkUI() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testArkUI008', 0, async (done: Function) => {
+    it('testArkUI008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI008()).assertEqual(0)
       done()
     })
@@ -136,7 +136,7 @@ export default function testArkUI() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testArkUI009', 0, async (done: Function) => {
+    it('testArkUI009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI009()).assertEqual(0)
       done()
     })
@@ -148,7 +148,7 @@ export default function testArkUI() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testArkUI010', 0, async (done: Function) => {
+    it('testArkUI010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI010()).assertEqual(0)
       done()
     })
@@ -160,7 +160,7 @@ export default function testArkUI() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testArkUI011', 0, async (done: Function) => {
+    it('testArkUI011', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI011()).assertEqual(0)
       done()
     })
@@ -172,7 +172,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI012', 0, async (done: Function) => {
+    it('testArkUI012', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI012()).assertEqual(0)
       done()
     })
@@ -184,7 +184,7 @@ export default function testArkUI() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testArkUI013', 0, async (done: Function) => {
+    it('testArkUI013', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI013()).assertEqual(0)
       done()
     })
@@ -197,7 +197,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI014', 0, async (done: Function) => {
+    it('testArkUI014', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI014()).assertEqual(0)
       done()
     })
@@ -209,7 +209,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI015', 0, async (done: Function) => {
+    it('testArkUI015', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI015()).assertEqual(0)
       done()
     })
@@ -221,7 +221,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI016', 0, async (done: Function) => {
+    it('testArkUI016', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI016()).assertEqual(0)
       done()
     })
@@ -233,7 +233,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI017', 0, async (done: Function) => {
+    it('testArkUI017', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI017()).assertEqual(0)
       done()
     })
@@ -245,7 +245,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI018', 0, async (done: Function) => {
+    it('testArkUI018', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI018()).assertEqual(0)
       done()
     })
@@ -257,7 +257,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI019', 0, async (done: Function) => {
+    it('testArkUI019', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI019()).assertEqual(0)
       done()
     })
@@ -269,7 +269,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI020', 0, async (done: Function) => {
+    it('testArkUI020', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI020()).assertEqual(0)
       done()
     })
@@ -281,7 +281,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI021', 0, async (done: Function) => {
+    it('testArkUI021', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI021()).assertEqual(0)
       done()
     })
@@ -293,7 +293,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI022', 0, async (done: Function) => {
+    it('testArkUI022', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI022()).assertEqual(0)
       done()
     })
@@ -305,7 +305,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI024', 0, async (done: Function) => {
+    it('testArkUI024', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI024()).assertEqual(0)
       done()
     })
@@ -317,7 +317,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI025', 0, async (done: Function) => {
+    it('testArkUI025', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI025()).assertEqual(0)
       done()
     })
@@ -329,7 +329,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI026', 0, async (done: Function) => {
+    it('testArkUI026', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI026()).assertEqual(0)
       done()
     })
@@ -341,7 +341,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI028', 0, async (done: Function) => {
+    it('testArkUI028', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI028()).assertEqual(0)
       done()
     })
@@ -353,7 +353,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI029', 0, async (done: Function) => {
+    it('testArkUI029', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI029()).assertEqual(0)
       done()
     })
@@ -365,7 +365,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI030', 0, async (done: Function) => {
+    it('testArkUI030', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI030()).assertEqual(0)
       done()
     })
@@ -377,7 +377,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI031', 0, async (done: Function) => {
+    it('testArkUI031', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI031()).assertEqual(0)
       done()
     })
@@ -389,7 +389,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI032', 0, async (done: Function) => {
+    it('testArkUI032', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI032()).assertEqual(0)
       done()
     })
@@ -401,7 +401,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI033', 0, async (done: Function) => {
+    it('testArkUI033', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI033()).assertEqual(0)
       done()
     })
@@ -413,7 +413,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI034', 0, async (done: Function) => {
+    it('testArkUI034', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI034()).assertEqual(0)
       done()
     })
@@ -425,7 +425,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI035', 0, async (done: Function) => {
+    it('testArkUI035', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI035()).assertEqual(0)
       done()
     })
@@ -437,7 +437,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI036', 0, async (done: Function) => {
+    it('testArkUI036', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI036()).assertEqual(0)
       done()
     })
@@ -449,7 +449,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI037', 0, async (done: Function) => {
+    it('testArkUI037', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI037()).assertEqual(0)
       done()
     })
@@ -461,7 +461,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI038', 0, async (done: Function) => {
+    it('testArkUI038', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI038()).assertEqual(0)
       done()
     })
@@ -473,7 +473,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI039', 0, async (done: Function) => {
+    it('testArkUI039', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI039()).assertEqual(0)
       done()
     })
@@ -485,7 +485,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI040', 0, async (done: Function) => {
+    it('testArkUI040', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI040()).assertEqual(0)
       done()
     })
@@ -497,7 +497,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI041', 0, async (done: Function) => {
+    it('testArkUI041', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI041()).assertEqual(0)
       done()
     })
@@ -509,7 +509,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI042', 0, async (done: Function) => {
+    it('testArkUI042', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI042()).assertEqual(0)
       done()
     })
@@ -521,7 +521,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI043', 0, async (done: Function) => {
+    it('testArkUI043', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI043()).assertEqual(0)
       done()
     })
@@ -533,7 +533,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI044', 0, async (done: Function) => {
+    it('testArkUI044', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI044()).assertEqual(0)
       done()
     })
@@ -545,7 +545,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI045', 0, async (done: Function) => {
+    it('testArkUI045', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI045()).assertEqual(0)
       done()
     })
@@ -557,7 +557,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI046', 0, async (done: Function) => {
+    it('testArkUI046', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI046()).assertEqual(0)
       done()
     })
@@ -569,7 +569,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI047', 0, async (done: Function) => {
+    it('testArkUI047', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI047()).assertEqual(0)
       done()
     })
@@ -581,7 +581,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI048', 0, async (done: Function) => {
+    it('testArkUI048', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI048()).assertEqual(0)
       done()
     })
@@ -593,7 +593,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI049', 0, async (done: Function) => {
+    it('testArkUI049', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI049()).assertEqual(0)
       done()
     })
@@ -605,7 +605,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI050', 0, async (done: Function) => {
+    it('testArkUI050', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI050()).assertEqual(0)
       done()
     })
@@ -617,7 +617,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI051', 0, async (done: Function) => {
+    it('testArkUI051', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI051()).assertEqual(0)
       done()
     })
@@ -629,7 +629,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI054', 0, async (done: Function) => {
+    it('testArkUI054', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI054()).assertEqual(0)
       done()
     })
@@ -641,7 +641,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI055', 0, async (done: Function) => {
+    it('testArkUI055', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI055()).assertEqual(0)
       done()
     })
@@ -653,7 +653,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI056', 0, async (done: Function) => {
+    it('testArkUI056', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI056()).assertEqual(0)
       done()
     })
@@ -665,7 +665,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI057', 0, async (done: Function) => {
+    it('testArkUI057', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI057()).assertEqual(0)
       done()
     })
@@ -677,7 +677,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI058', 0, async (done: Function) => {
+    it('testArkUI058', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI058()).assertEqual(0)
       done()
     })
@@ -689,7 +689,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI059', 0, async (done: Function) => {
+    it('testArkUI059', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI059()).assertEqual(0)
       done()
     })
@@ -701,7 +701,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI060', 0, async (done: Function) => {
+    it('testArkUI060', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI060()).assertEqual(0)
       done()
     })
@@ -713,7 +713,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI061', 0, async (done: Function) => {
+    it('testArkUI061', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI061()).assertEqual(0)
       done()
     })
@@ -725,7 +725,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI062', 0, async (done: Function) => {
+    it('testArkUI062', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI062()).assertEqual(0)
       done()
     })
@@ -737,7 +737,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI063', 0, async (done: Function) => {
+    it('testArkUI063', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI063()).assertEqual(0)
       done()
     })
@@ -749,7 +749,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI064', 0, async (done: Function) => {
+    it('testArkUI064', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI064()).assertEqual(0)
       done()
     })
@@ -761,7 +761,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI065', 0, async (done: Function) => {
+    it('testArkUI065', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI065()).assertEqual(0)
       done()
     })
@@ -773,7 +773,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI066', 0, async (done: Function) => {
+    it('testArkUI066', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI066()).assertEqual(0)
       done()
     })
@@ -785,7 +785,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI067', 0, async (done: Function) => {
+    it('testArkUI067', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI067()).assertEqual(0)
       done()
     })
@@ -797,7 +797,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI068', 0, async (done: Function) => {
+    it('testArkUI068', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI068()).assertEqual(0)
       done()
     })
@@ -809,7 +809,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI069', 0, async (done: Function) => {
+    it('testArkUI069', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI069()).assertEqual(0)
       done()
     })
@@ -821,7 +821,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI070', 0, async (done: Function) => {
+    it('testArkUI070', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI070()).assertEqual(0)
       done()
     })
@@ -833,7 +833,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI071', 0, async (done: Function) => {
+    it('testArkUI071', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI071()).assertEqual(0)
       done()
     })
@@ -845,7 +845,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI072', 0, async (done: Function) => {
+    it('testArkUI072', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI072()).assertEqual(0)
       done()
     })
@@ -857,7 +857,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI073', 0, async (done: Function) => {
+    it('testArkUI073', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI073()).assertEqual(0)
       done()
     })
@@ -869,7 +869,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI074', 0, async (done: Function) => {
+    it('testArkUI074', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI074()).assertEqual(0)
       done()
     })
@@ -881,7 +881,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI075', 0, async (done: Function) => {
+    it('testArkUI075', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI075()).assertEqual(0)
       done()
     })
@@ -893,7 +893,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI076', 0, async (done: Function) => {
+    it('testArkUI076', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI076()).assertEqual(0)
       done()
     })
@@ -905,7 +905,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI077', 0, async (done: Function) => {
+    it('testArkUI077', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI077()).assertEqual(0)
       done()
     })
@@ -917,7 +917,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI078', 0, async (done: Function) => {
+    it('testArkUI078', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI078()).assertEqual(0)
       done()
     })
@@ -929,7 +929,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI079', 0, async (done: Function) => {
+    it('testArkUI079', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI079()).assertEqual(0)
       done()
     })
@@ -941,7 +941,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI080', 0, async (done: Function) => {
+    it('testArkUI080', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI080()).assertEqual(0)
       done()
     })
@@ -953,7 +953,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI081', 0, async (done: Function) => {
+    it('testArkUI081', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI081()).assertEqual(0)
       done()
     })
@@ -965,7 +965,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI082', 0, async (done: Function) => {
+    it('testArkUI082', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI082()).assertEqual(0)
       done()
     })
@@ -977,7 +977,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI083', 0, async (done: Function) => {
+    it('testArkUI083', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI083()).assertEqual(0)
       done()
     })
@@ -989,7 +989,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI084', 0, async (done: Function) => {
+    it('testArkUI084', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI084()).assertEqual(0)
       done()
     })
@@ -1001,7 +1001,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI085', 0, async (done: Function) => {
+    it('testArkUI085', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI085()).assertEqual(0)
       done()
     })
@@ -1013,7 +1013,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI086', 0, async (done: Function) => {
+    it('testArkUI086', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI086()).assertEqual(0)
       done()
     })
@@ -1025,7 +1025,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI087', 0, async (done: Function) => {
+    it('testArkUI087', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI087()).assertEqual(0)
       done()
     })
@@ -1037,7 +1037,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI088', 0, async (done: Function) => {
+    it('testArkUI088', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI088()).assertEqual(0)
       done()
     })
@@ -1049,7 +1049,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI089', 0, async (done: Function) => {
+    it('testArkUI089', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI089()).assertEqual(0)
       done()
     })
@@ -1061,7 +1061,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI090', 0, async (done: Function) => {
+    it('testArkUI090', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI090()).assertEqual(0)
       done()
     })
@@ -1073,7 +1073,7 @@ export default function testArkUI() {
       * @tc.type       : Function
       * @tc.level      : Level 1
       */
-    it('testArkUI091', 0, async (done: Function) => {
+    it('testArkUI091', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testArkUI091()).assertEqual(0)
       done()
     })

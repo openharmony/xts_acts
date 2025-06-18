@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 
 export default function textInputEnabledTest() {
@@ -34,7 +34,7 @@ export default function textInputEnabledTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testTextInputEnabled001', 0, async (done: Function) => {
+    it('testTextInputEnabled001', Level.LEVEL1, async (done: Function) => {
       await Utils.clickComponent('OnClickEnabledTextInput')
       await Utils.sleep(1000)
       expect(Utils.getComponentInfoByKey('OnClickEnabledTextInput').$attrs.backgroundColor).assertEqual('#FFFFFF00')
@@ -58,7 +58,7 @@ export default function textInputEnabledTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testTextInputEnabled002', 0, async (done: Function) => {
+    it('testTextInputEnabled002', Level.LEVEL1, async (done: Function) => {
       await Utils.clickComponent('OnClickDisabledTextInput')
       await Utils.sleep(1000)
       expect(Utils.getComponentInfoByKey('OnClickDisabledTextInput').$attrs.backgroundColor).assertEqual('#FFFF0000')
@@ -82,7 +82,7 @@ export default function textInputEnabledTest() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testTextInputEnabled003', 0, async (done: Function) => {
+    it('testTextInputEnabled003', Level.LEVEL1, async (done: Function) => {
       await Utils.clickComponent('OnClickAbnormalTextInput')
       await Utils.sleep(1000)
       expect(Utils.getComponentInfoByKey('OnClickAbnormalTextInput').$attrs.backgroundColor).assertEqual('#FFFFFF00')

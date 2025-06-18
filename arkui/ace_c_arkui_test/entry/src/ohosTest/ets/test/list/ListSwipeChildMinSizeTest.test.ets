@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function ListSwipeChildMinSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListChildMainSize001', 0, async (done: Function) => {
+    it('testListChildMainSize001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListChildMainSize001()).assertEqual(1)
       done()
     })
@@ -47,7 +47,7 @@ export default function ListSwipeChildMinSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
     */
-    it('testListChildMainSize002', 0, async (done: Function) => {
+    it('testListChildMainSize002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListChildMainSize002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function ListSwipeChildMinSizeTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
    */
-    it('testListChildMainSize003', 0, async (done: Function) => {
+    it('testListChildMainSize003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListChildMainSize003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function ListSwipeChildMinSizeTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
    */
-    it('testListChildMainSize004', 0, async (done: Function) => {
+    it('testListChildMainSize004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListChildMainSize004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function ListSwipeChildMinSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
     */
-    it('testListChildMainSize005', 0, async (done: Function) => {
+    it('testListChildMainSize005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListChildMainSize005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function ListSwipeChildMinSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
     */
-    it('testListChildMainSize006', 0, async (done: Function) => {
+    it('testListChildMainSize006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListChildMainSize006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function ListSwipeChildMinSizeTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
    */
-    it('testListSwipeOption007', 0, async (done: Function) => {
+    it('testListSwipeOption007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListSwipeOption007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function ListSwipeChildMinSizeTest() {
    * @tc.type       : Function
    * @tc.level      : Level 1
   */
-    it('testListSwipeOption008', 0, async (done: Function) => {
+    it('testListSwipeOption008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListSwipeOption008()).assertEqual(0)
       done()
     })
@@ -138,7 +138,7 @@ export default function ListSwipeChildMinSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testNodeUtils010', 0, async (done: Function) => {
+    it('testNodeUtils010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testNodeUtils010()).assertEqual(0)
       done()
     })
@@ -151,7 +151,7 @@ export default function ListSwipeChildMinSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
    */
-    it('testNodeUtils020', 0, async (done: Function) => {
+    it('testNodeUtils020', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testNodeUtils020()).assertEqual(0)
       done()
     })
@@ -164,7 +164,7 @@ export default function ListSwipeChildMinSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
     */
-    it('testNodeUtils030', 0, async (done: Function) => {
+    it('testNodeUtils030', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testNodeUtils030()).assertEqual(0)
       done()
     })
@@ -177,7 +177,7 @@ export default function ListSwipeChildMinSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
     */
-    it('testNodeUtils040', 0, async (done: Function) => {
+    it('testNodeUtils040', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testNodeUtils040()).assertEqual(0)
       done()
     })
@@ -190,7 +190,7 @@ export default function ListSwipeChildMinSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
     */
-    it('testNodeUtils050', 0, async (done: Function) => {
+    it('testNodeUtils050', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testNodeUtils050()).assertEqual(0)
       done()
     })
@@ -203,7 +203,7 @@ export default function ListSwipeChildMinSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
     */
-    it('testNodeUtils060', 0, async (done: Function) => {
+    it('testNodeUtils060', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testNodeUtils060()).assertEqual(0)
       done()
     })
@@ -216,7 +216,7 @@ export default function ListSwipeChildMinSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
     */
-    it('testAccessibility070', 0, async (done: Function) => {
+    it('testAccessibility070', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAccessibility070()).assertEqual(1)
       done()
     })
@@ -230,7 +230,7 @@ export default function ListSwipeChildMinSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
     */
-    it('testAccessibility080', 0, async (done: Function) => {
+    it('testAccessibility080', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAccessibility080()).assertEqual(1)
       done()
     })
@@ -243,7 +243,7 @@ export default function ListSwipeChildMinSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
     */
-    it('testAccessibility090', 0, async (done: Function) => {
+    it('testAccessibility090', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAccessibility090()).assertEqual(1)
       done()
     })
@@ -256,7 +256,7 @@ export default function ListSwipeChildMinSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
     */
-    it('testAccessibility010', 0, async (done: Function) => {
+    it('testAccessibility010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAccessibility010()).assertEqual(1)
       done()
     })
@@ -269,7 +269,7 @@ export default function ListSwipeChildMinSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
     */
-    it('testAccessibility011', 0, async (done: Function) => {
+    it('testAccessibility011', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testAccessibility011()).assertEqual(1)
       done()
     })
@@ -283,7 +283,7 @@ export default function ListSwipeChildMinSizeTest() {
    * @tc.type       : Function
    * @tc.level      : Level 1
   */
-    it('testImageAniMator009', 0, async (done: Function) => {
+    it('testImageAniMator009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageAniMator009()).assertEqual(1)
       done()
     })
@@ -296,7 +296,7 @@ export default function ListSwipeChildMinSizeTest() {
    * @tc.type       : Function
    * @tc.level      : Level 1
   */
-    it('testImageAniMator010', 0, async (done: Function) => {
+    it('testImageAniMator010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageAniMator010()).assertEqual(0)
       done()
     })
@@ -310,7 +310,7 @@ export default function ListSwipeChildMinSizeTest() {
    * @tc.type       : Function
    * @tc.level      : Level 1
   */
-    it('testImageAniMator010', 0, async (done: Function) => {
+    it('testImageAniMator010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageAniMator011()).assertEqual(1)
       done()
     }) 

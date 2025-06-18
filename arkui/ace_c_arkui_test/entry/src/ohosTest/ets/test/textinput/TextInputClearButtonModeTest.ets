@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textInputClearButtonModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextInputClearButtonMode001', 0, async (done: Function) => {
+    it('testTextInputClearButtonMode001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputClearButtonMode001()).assertEqual(0)
       done();
     });
@@ -47,7 +47,7 @@ export default function textInputClearButtonModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextInputClearButtonMode002', 0, async (done: Function) => {
+    it('testTextInputClearButtonMode002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputClearButtonMode002()).assertEqual(0)
       done();
     });
@@ -60,7 +60,7 @@ export default function textInputClearButtonModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextInputClearButtonMode003', 0, async (done: Function) => {
+    it('testTextInputClearButtonMode003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputClearButtonMode003()).assertEqual(0)
       done();
     });
@@ -73,7 +73,7 @@ export default function textInputClearButtonModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextInputClearButtonMode004', 0, async (done: Function) => {
+    it('testTextInputClearButtonMode004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputClearButtonMode004()).assertEqual(0)
       done();
     });

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, UIElementInfo} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -53,7 +53,7 @@ export default function ForEachTest003() {
      * @tc.type
      * @tc.size
      */
-    it('ForEachTest003_001', 0, async (done: Function) => {
+    it('ForEachTest003_001', Level.LEVEL0, async (done: Function) => {
       console.info('[ForEachTest003_001] START');
       await CommonFunc.sleep(2000);
       let driver: Driver = Driver.create();
@@ -79,7 +79,7 @@ export default function ForEachTest003() {
      * @tc.type
      * @tc.size
      */
-    it('ForEachTest003_002', 0, async (done: Function) => {
+    it('ForEachTest003_002', Level.LEVEL0, async (done: Function) => {
       console.info('[ForEachTest003_002] START');
       await CommonFunc.sleep(2000);
       let driver: Driver = Driver.create();
@@ -105,7 +105,7 @@ export default function ForEachTest003() {
      * @tc.type
      * @tc.size
      */
-    it('ForEachTest003_003', 0, async (done: Function) => {
+    it('ForEachTest003_003', Level.LEVEL0, async (done: Function) => {
       console.info('[ForEachTest003_003] START');
       await CommonFunc.sleep(2000);
       let driver: Driver = Driver.create();
@@ -139,7 +139,7 @@ export default function ForEachTest003() {
      * @tc.type
      * @tc.size
      */
-    it('ForEachTest003_004', 0, async (done: Function) => {
+    it('ForEachTest003_004', Level.LEVEL0, async (done: Function) => {
       console.info('[ForEachTest003_004] START');
       await CommonFunc.sleep(2000);
       let driver: Driver = Driver.create();
@@ -165,7 +165,7 @@ export default function ForEachTest003() {
      * @tc.type
      * @tc.size
      */
-    it('ForEachTest003_005', 0, async (done: Function) => {
+    it('ForEachTest003_005', Level.LEVEL0, async (done: Function) => {
       console.info('[ForEachTest003_005] START');
       await CommonFunc.sleep(2000);
       let driver: Driver = Driver.create();
@@ -199,7 +199,7 @@ export default function ForEachTest003() {
      * @tc.type
      * @tc.size
      */
-    it('ForEachTest003_006', 0, async (done: Function) => {
+    it('ForEachTest003_006', Level.LEVEL0, async (done: Function) => {
       console.info('[ForEachTest003_006] START');
       await CommonFunc.sleep(2000);
       let driver: Driver = Driver.create();
@@ -225,7 +225,7 @@ export default function ForEachTest003() {
      * @tc.type
      * @tc.size
      */
-    it('ForEachTest003_007', 0, async (done: Function) => {
+    it('ForEachTest003_007', Level.LEVEL0, async (done: Function) => {
       console.info('[ForEachTest003_007] START');
       await CommonFunc.sleep(2000);
       let driver: Driver = Driver.create();

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textRadialGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextRadialGradient001', 0, async (done: Function) => {
+    it('testTextRadialGradient001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextRadialGradient001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function textRadialGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextRadialGradient002', 0, async (done: Function) => {
+    it('testTextRadialGradient002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextRadialGradient002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function textRadialGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextRadialGradient003', 0, async (done: Function) => {
+    it('testTextRadialGradient003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextRadialGradient003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function textRadialGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextRadialGradient004', 0, async (done: Function) => {
+    it('testTextRadialGradient004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextRadialGradient004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function textRadialGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTextRadialGradient005', 0, async (done: Function) => {
+    it('testTextRadialGradient005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextRadialGradient005()).assertEqual(0)
       done()
     })

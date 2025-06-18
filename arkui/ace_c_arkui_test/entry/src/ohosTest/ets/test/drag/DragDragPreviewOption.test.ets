@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function DragDragPreviewOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('DragDragPreviewOptionTest001', 0, async (done: Function) => {
+    it('DragDragPreviewOptionTest001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.drag_DragPreviewOption_Dispose_001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function DragDragPreviewOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('DragDragPreviewOptionTest002', 0, async (done: Function) => {
+    it('DragDragPreviewOptionTest002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.drag_DragPreviewOption_SetScaleMode_002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function DragDragPreviewOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('DragDragPreviewOptionTest003', 0, async (done: Function) => {
+    it('DragDragPreviewOptionTest003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.drag_DragPreviewOption_SetDefaultShadowEnabled_003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function DragDragPreviewOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('DragDragPreviewOptionTest004', 0, async (done: Function) => {
+    it('DragDragPreviewOptionTest004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.drag_DragPreviewOption_SetDefaultRadiusEnabled_004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function DragDragPreviewOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('DragDragPreviewOptionTest005', 0, async (done: Function) => {
+    it('DragDragPreviewOptionTest005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.drag_DragPreviewOption_SetNumberBadgeEnabled_005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function DragDragPreviewOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('DragDragPreviewOptionTest006', 0, async (done: Function) => {
+    it('DragDragPreviewOptionTest006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.drag_DragPreviewOption_SetBadgeNumber_006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function DragDragPreviewOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('DragDragPreviewOptionTest007', 0, async (done: Function) => {
+    it('DragDragPreviewOptionTest007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.drag_DragPreviewOption_SetDefaultAnimationBeforeLiftingEnabled_007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function DragDragPreviewOptionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('DragDragPreviewOptionTest008', 0, async (done: Function) => {
+    it('DragDragPreviewOptionTest008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.drag_DragPreviewOption_SetNodeDragPreviewOption_008()).assertEqual(0)
       done()
     })

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function customComponentConstraintSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentConstraintSize001', 0, async (done: Function) => {
+    it('testCustomComponentConstraintSize001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentConstraintSize001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function customComponentConstraintSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentConstraintSize002', 0, async (done: Function) => {
+    it('testCustomComponentConstraintSize002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentConstraintSize002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function customComponentConstraintSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testCustomComponentConstraintSize003', 0, async (done: Function) => {
+    it('testCustomComponentConstraintSize003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentConstraintSize003()).assertEqual(0)
       done()
     })
@@ -72,7 +72,7 @@ export default function customComponentConstraintSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testCustomComponentConstraintSize004', 0, async (done: Function) => {
+    it('testCustomComponentConstraintSize004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentConstraintSize004()).assertEqual(0)
       done()
     })
