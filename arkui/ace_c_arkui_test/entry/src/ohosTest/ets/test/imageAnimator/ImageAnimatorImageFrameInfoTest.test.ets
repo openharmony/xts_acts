@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, expect, describe, it } from '@ohos/hypium';
+import { beforeEach, expect, describe, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function imageAnimatorImageFrameInfoTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testImageAniMatorImageFramelnfo001', 0, async (done: Function) => {
+    it('testImageAniMatorImageFramelnfo001', Level.LEVEL1, async (done: Function) => {
         expect(nativeFunc.testImageAniMatorImageFramelnfo001()).assertEqual(1)
         done()
     })
@@ -47,7 +47,7 @@ export default function imageAnimatorImageFrameInfoTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testImageAniMatorImageFramelnfo002', 0, async (done: Function) => {
+    it('testImageAniMatorImageFramelnfo002', Level.LEVEL1, async (done: Function) => {
         expect(nativeFunc.testImageAniMatorImageFramelnfo002()).assertEqual(0)
         done()
     })
@@ -60,7 +60,7 @@ export default function imageAnimatorImageFrameInfoTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testImageAniMatorImageFramelnfo003', 0, async (done: Function) => {
+    it('testImageAniMatorImageFramelnfo003', Level.LEVEL1, async (done: Function) => {
         expect(nativeFunc.testImageAniMatorImageFramelnfo003()).assertEqual(1)
         done()
     })
@@ -73,7 +73,7 @@ export default function imageAnimatorImageFrameInfoTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testImageAniMatorImageFramelnfo004', 0, async (done: Function) => {
+    it('testImageAniMatorImageFramelnfo004', Level.LEVEL1, async (done: Function) => {
         expect(nativeFunc.testImageAniMatorImageFramelnfo004()).assertEqual(1)
         done()
     })

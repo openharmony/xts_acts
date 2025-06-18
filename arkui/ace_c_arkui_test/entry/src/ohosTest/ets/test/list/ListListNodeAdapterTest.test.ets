@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -29,7 +29,7 @@ export default function listListNodeAdapterTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListListNodeAdapter001', 0, async (done: Function) => {
+    it('testListListNodeAdapter001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListListNodeAdapter001()).assertEqual(0)
       done()
     })
@@ -41,7 +41,7 @@ export default function listListNodeAdapterTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListListNodeAdapter002', 0, async (done: Function) => {
+    it('testListListNodeAdapter002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListListNodeAdapter002()).assertEqual(0)
       done()
     })
@@ -53,7 +53,7 @@ export default function listListNodeAdapterTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListListNodeAdapter003', 0, async (done: Function) => {
+    it('testListListNodeAdapter003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListListNodeAdapter003()).assertEqual(0)
       done()
     })

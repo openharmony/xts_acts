@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -53,7 +53,7 @@ export default function Local2Jsunit() {
      * @tc.type
      * @tc.size
      */
-    it('Local2Jsunit_001', 0, async (done: Function) => {
+    it('Local2Jsunit_001', Level.LEVEL0, async (done: Function) => {
       console.info('[Local2Jsunit_001] START');
       let strJson1 = getInspectorByKey('num_text');
       let obj1: ESObject = JSON.parse(strJson1);

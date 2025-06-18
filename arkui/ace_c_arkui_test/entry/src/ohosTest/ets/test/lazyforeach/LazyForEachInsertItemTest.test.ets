@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -37,7 +37,7 @@ export default function lazyForEachInsertItemTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLazyForEachInsertItem001', 0, async (done: Function) => {
+    it('testLazyForEachInsertItem001', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`lazyforeach/LazyForEachInsertItemTest`)
       await Utils.clickComponent('btn')
       await Utils.sleep(SleepTime)
@@ -53,7 +53,7 @@ export default function lazyForEachInsertItemTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLazyForEachInsertItem002', 0, async (done: Function) => {
+    it('testLazyForEachInsertItem002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testLazyForEachInsertItem002()).assertEqual(0)
       done()
     })

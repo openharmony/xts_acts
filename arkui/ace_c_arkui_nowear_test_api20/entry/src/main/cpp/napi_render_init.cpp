@@ -16,6 +16,8 @@
 #include "common/common.h"
 #include "manager/plugin_manager.h"
 #include "button/button_gettype_test.h"
+#include "drag/GetDisplayIdTest.h"
+#include "drag/GetDragSourceTest.h"
 #include "dropBadge/EnableDropDisallowedBadgeTest.h"
 
 namespace ArkUICapiTest
@@ -32,6 +34,10 @@ namespace ArkUICapiTest
 
         napi_property_descriptor desc[] = {
             {"buttonGetTypeTest", nullptr, ButtonGetTypeTest::CreateNativeNode, nullptr, nullptr,
+            nullptr, napi_default, nullptr},
+            {"dragEventGetDisplayId", nullptr, GetDisplayIdTest::CreateNativeNode, nullptr, nullptr,
+            nullptr, napi_default, nullptr},
+            {"dragEventGetDragSource", nullptr, GetDragSourceTest::CreateNativeNode, nullptr, nullptr,
             nullptr, napi_default, nullptr},
             {"enableDropDisallowedBadge", nullptr, EnableDropDisallowedBadgeTest::CreateNativeNode, nullptr, nullptr,
             nullptr, napi_default, nullptr},

@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import CommonFunc from '../../MainAbility/common/Common'
 import events_emitter from '@ohos.events.emitter';
 import config from '@ohos.accessibility.config';
@@ -62,7 +62,7 @@ config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
      * @tc.name         testuiAppearanceALWAYS_DARK0001
      * @tc.desic         aceuiAppearanceALWAYS_DARKEtsTest0001
      */
-    it('testuiAppearanceALWAYS_DARK0001', 0, async (done: Function) => {
+    it('testuiAppearanceALWAYS_DARK0001', Level.LEVEL0, async (done: Function) => {
       console.info('uiAppearanceALWAYS_DARK testuiAppearanceALWAYS_DARK0001 START');
       await CommonFunc.sleep(2000);
       try {
@@ -88,7 +88,7 @@ config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
      * @tc.name         testuiAppearanceALWAYS_LIGHT0001
      * @tc.desic         aceuiAppearanceALWAYS_LIGHTEtsTest0001
      */
-    it('testuiAppearanceALWAYS_LIGHT0001', 0, async (done: Function) => {
+    it('testuiAppearanceALWAYS_LIGHT0001', Level.LEVEL0, async (done: Function) => {
       console.info('uiAppearanceALWAYS_LIGHT testuiAppearanceALWAYS_LIGHT0001 START');
       await CommonFunc.sleep(2000);
       try {

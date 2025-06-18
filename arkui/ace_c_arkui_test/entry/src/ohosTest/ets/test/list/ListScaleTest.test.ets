@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function listScaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListScale001', 0, async (done: Function) => {
+    it('testListScale001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListScale001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function listScaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListScale002', 0, async (done: Function) => {
+    it('testListScale002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListScale002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function listScaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListScale003', 0, async (done: Function) => {
+    it('testListScale003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListScale003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function listScaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListScale004', 0, async (done: Function) => {
+    it('testListScale004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListScale004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function listScaleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListScale005', 0, async (done: Function) => {
+    it('testListScale005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListScale005()).assertEqual(0)
       done()
     })

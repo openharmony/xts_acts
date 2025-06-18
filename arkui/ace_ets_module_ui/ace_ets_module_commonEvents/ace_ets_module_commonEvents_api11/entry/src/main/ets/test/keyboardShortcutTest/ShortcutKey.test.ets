@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeEach, afterEach, it, expect,beforeAll } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect,beforeAll, Level } from '@ohos/hypium';
 import router from '@ohos.router'
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
@@ -101,7 +101,7 @@ config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
      *tc.name   Custom keyboard shortcuts
      *tc.desc   Custom keyboard shortcuts
      */
-    it('ArkUI_Shortcut_Key_0100', 0, async () => {
+    it('ArkUI_Shortcut_Key_0100', Level.LEVEL0, async () => {
       let CASE = 'ArkUI_Shortcut_Key_0100'
       console.info(`${SUITE} ${CASE} START`);
 
@@ -125,7 +125,7 @@ config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
      *tc.name   Custom keyboard shortcuts
      *tc.desc   Custom keyboard shortcuts
      */
-    it('ArkUI_Shortcut_Key_0200', 0, async () => {
+    it('ArkUI_Shortcut_Key_0200', Level.LEVEL0, async () => {
       let CASE = 'ArkUI_Shortcut_Key_0200'
       console.info(`${SUITE} ${CASE} START`);
 
@@ -149,7 +149,7 @@ config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
      *tc.name   Custom keyboard shortcuts
      *tc.desc   Custom keyboard shortcuts
      */
-    it('ArkUI_Shortcut_Key_0300', 0, async () => {
+    it('ArkUI_Shortcut_Key_0300', Level.LEVEL0, async () => {
       let CASE = 'ArkUI_Shortcut_Key_0300'
       console.info(`${SUITE} ${CASE} START`);
 
@@ -173,7 +173,7 @@ config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
      *tc.name   Custom keyboard shortcuts
      *tc.desc   Custom keyboard shortcuts
      */
-    it('ArkUI_Shortcut_Key_0400', 0, async () => {
+    it('ArkUI_Shortcut_Key_0400', Level.LEVEL0, async () => {
       let CASE = 'ArkUI_Shortcut_Key_0400'
       console.info(`${SUITE} ${CASE} START`);
 

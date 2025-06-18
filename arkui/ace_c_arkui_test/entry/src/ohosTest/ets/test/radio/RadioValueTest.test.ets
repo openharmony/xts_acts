@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, expect, describe, it } from '@ohos/hypium';
+import { beforeEach, expect, describe, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function radioValueTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRadioValue001', 0, async (done: Function) => {
+    it('testRadioValue001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRadioValue001()).assertEqual(0)
       done();
     })
@@ -47,7 +47,7 @@ export default function radioValueTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRadioValue002', 0, async (done: Function) => {
+    it('testRadioValue002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRadioValue002()).assertEqual(0)
       done();
     })
@@ -60,7 +60,7 @@ export default function radioValueTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRadioValue003', 0, async (done: Function) => {
+    it('testRadioValue003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRadioValue003()).assertEqual(0)
       done();
     })

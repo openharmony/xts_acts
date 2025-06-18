@@ -3,6 +3,9 @@
     "MainAbility/pages/XTSIndex",
     "MainAbility/pages/testgesture",
     "MainAbility/pages/onIdle/TestPostOnIdle",
-    "MainAbility/pages/EmbeddedComponentOption/TestEmbeddedComponentOption"
+    "MainAbility/pages/customcomponent/CustomComponentOnDrawBehindTest",
+    "MainAbility/pages/customcomponent/CustomComponentOnDrawFrontTest",
+    "MainAbility/pages/EmbeddedComponentOption/TestEmbeddedComponentOption",
+    "MainAbility/pages/uiState/UiStatesTest"
   ]
 }

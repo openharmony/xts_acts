@@ -16,20 +16,20 @@ import { LengthMetrics } from '@kit.ArkUI'
 
 @Entry
 @Component
-struct StackMatchParent1 {
+struct StackMatchParent {
   build() {
     Stack() {
       Stack().backgroundColor(Color.Pink)
         .width(LayoutPolicy.matchParent)
         .height(LayoutPolicy.matchParent)
-        .id('Stack1')
+        .key('StackMatchParentTest_0100_child')
     }
-    .width(150)
-    .height(150)
+    .width(200)
+    .height(200)
     .padding(20)
-    .border({ width: 5, color: Color.Yellow })
+    .border({ width: 10, color: Color.Yellow })
     .safeAreaPadding(LengthMetrics.vp(10))
     .backgroundColor(Color.Red)
-    .id('Stack2')
+    .key('StackMatchParentTest_0100_parent')
   }
 }

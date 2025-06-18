@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function DragDragActionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('DragActionTest001', 0, async (done: Function) => {
+    it('DragActionTest001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.drag_DragAction_Dispose_001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function DragDragActionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('DragActionTest002', 0, async (done: Function) => {
+    it('DragActionTest002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.drag_DragAction_SetPointerId_002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function DragDragActionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('DragActionTest003', 0, async (done: Function) => {
+    it('DragActionTest003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.drag_DragAction_SetPixelMaps_003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function DragDragActionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('DragActionTest004', 0, async (done: Function) => {
+    it('DragActionTest004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.drag_DragAction_SetTouchPointX_004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function DragDragActionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('DragActionTest005', 0, async (done: Function) => {
+    it('DragActionTest005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.drag_DragAction_SetTouchPointY_005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function DragDragActionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('DragActionTest006', 0, async (done: Function) => {
+    it('DragActionTest006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.drag_DragAction_SetDragPreviewOption_006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function DragDragActionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('DragActionTest007', 0, async (done: Function) => {
+    it('DragActionTest007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.drag_DragAction_RegisterStatusListener_007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function DragDragActionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('DragActionTest008', 0, async (done: Function) => {
+    it('DragActionTest008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.drag_DragAction_UnregisterStatusListener_008()).assertEqual(0)
       done()
     })
@@ -138,7 +138,7 @@ export default function DragDragActionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('DragActionTest009', 0, async (done: Function) => {
+    it('DragActionTest009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.drag_DragAction_StartDrag_009()).assertEqual(0)
       done()
     })
@@ -151,7 +151,7 @@ export default function DragDragActionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('DragAndDropInfoTest0010', 0, async (done: Function) => {
+    it('DragAndDropInfoTest0010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.drag_DragAction_DragAndDropInfo_0010()).assertEqual(0)
       done()
     })

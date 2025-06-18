@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function timePickerUseMilitaryTimeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTimePickerUseMilitaryTime001', 0, async (done: Function) => {
+    it('testTimePickerUseMilitaryTime001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTimePickerUseMilitaryTime001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function timePickerUseMilitaryTimeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTimePickerUseMilitaryTime002', 0, async (done: Function) => {
+    it('testTimePickerUseMilitaryTime002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTimePickerUseMilitaryTime002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function timePickerUseMilitaryTimeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTimePickerUseMilitaryTime003', 0, async (done: Function) => {
+    it('testTimePickerUseMilitaryTime003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTimePickerUseMilitaryTime003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function timePickerUseMilitaryTimeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTimePickerUseMilitaryTime004', 0, async (done: Function) => {
+    it('testTimePickerUseMilitaryTime004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTimePickerUseMilitaryTime004()).assertEqual(0)
       done()
     })

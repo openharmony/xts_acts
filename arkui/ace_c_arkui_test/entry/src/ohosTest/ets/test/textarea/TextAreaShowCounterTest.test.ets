@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textAreaShowCounterTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaShowCounter001', 0, async (done: Function) => {
+    it('testTextAreaShowCounter001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaShowCounter001()).assertEqual(0)
       done();
     });
@@ -47,7 +47,7 @@ export default function textAreaShowCounterTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaShowCounter002', 0, async (done: Function) => {
+    it('testTextAreaShowCounter002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaShowCounter002()).assertEqual(0)
       done();
     });
@@ -60,7 +60,7 @@ export default function textAreaShowCounterTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaShowCounter003', 0, async (done: Function) => {
+    it('testTextAreaShowCounter003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaShowCounter003()).assertEqual(0)
       done();
     });
@@ -73,7 +73,7 @@ export default function textAreaShowCounterTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaShowCounter004', 0, async (done: Function) => {
+    it('testTextAreaShowCounter004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaShowCounter004()).assertEqual(0)
       done();
     });
@@ -86,7 +86,7 @@ export default function textAreaShowCounterTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaShowCounter005', 0, async (done: Function) => {
+    it('testTextAreaShowCounter005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaShowCounter005()).assertEqual(0)
       done();
     });
@@ -99,7 +99,7 @@ export default function textAreaShowCounterTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaShowCounter006', 0, async (done: Function) => {
+    it('testTextAreaShowCounter006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaShowCounter006()).assertEqual(0)
       done();
     });
@@ -112,7 +112,7 @@ export default function textAreaShowCounterTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaShowCounter007', 0, async (done: Function) => {
+    it('testTextAreaShowCounter007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaShowCounter007()).assertEqual(0)
       done();
     });

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -53,7 +53,7 @@ export default function ParamTestJsunit1() {
      * @tc.type
      * @tc.size
      */
-    it('ParamTestJsunit1_001', 0, async (done: Function) => {
+    it('ParamTestJsunit1_001', Level.LEVEL0, async (done: Function) => {
       console.info('[ParamTestJsunit1_001] START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
@@ -87,7 +87,7 @@ export default function ParamTestJsunit1() {
      * @tc.type
      * @tc.size
      */
-    it('ParamTestJsunit1_002', 0, async (done: Function) => {
+    it('ParamTestJsunit1_002', Level.LEVEL0, async (done: Function) => {
       console.info('[ParamTestJsunit1_002] START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
@@ -116,7 +116,7 @@ export default function ParamTestJsunit1() {
      * @tc.type
      * @tc.size
      */
-    it('ParamTestJsunit1_003', 0, async (done: Function) => {
+    it('ParamTestJsunit1_003', Level.LEVEL0, async (done: Function) => {
       console.info('[ParamTestJsunit1_003] START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
@@ -145,7 +145,7 @@ export default function ParamTestJsunit1() {
      * @tc.type
      * @tc.size
      */
-    it('ParamTestJsunit1_004', 0, async (done: Function) => {
+    it('ParamTestJsunit1_004', Level.LEVEL0, async (done: Function) => {
       console.info('[ParamTestJsunit1_004] START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
@@ -174,7 +174,7 @@ export default function ParamTestJsunit1() {
      * @tc.type
      * @tc.size
      */
-    it('ParamTestJsunit1_005', 0, async (done: Function) => {
+    it('ParamTestJsunit1_005', Level.LEVEL0, async (done: Function) => {
       console.info('[ParamTestJsunit1_005] START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
@@ -200,7 +200,7 @@ export default function ParamTestJsunit1() {
       done();
     });
     
-    it('ParamTestJsunit1_006', 0, async (done: Function) => {
+    it('ParamTestJsunit1_006', Level.LEVEL0, async (done: Function) => {
       console.info('[ParamTestJsunit1_006] START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
@@ -218,7 +218,7 @@ export default function ParamTestJsunit1() {
       done();
     });
 
-    it('ParamTestJsunit1_007', 0, async (done: Function) => {
+    it('ParamTestJsunit1_007', Level.LEVEL0, async (done: Function) => {
       console.info('[ParamTestJsunit1_007] START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();

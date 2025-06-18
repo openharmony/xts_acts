@@ -60,7 +60,7 @@ struct TextLineSpacing {
 
       Text('onlyBetweenLines: false')
         .id('Text_lineSpacing_false')
-        .lineSpacing(LengthMetrics.percent(1), { onlyBetweenLines: false })
+        .lineSpacing(LengthMetrics.percent(0.5), { onlyBetweenLines: false })
         .height('5%')
 
       Text('Text: lineSpacing(default)')

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function sliderTrackThicknessTest() {
     * @tc.type: Function
     * @tc.level: Level 1
     */
-    it('testSliderTrackThickness001', 0, async (done: Function) => {
+    it('testSliderTrackThickness001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderTrackThickness001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function sliderTrackThicknessTest() {
     * @tc.type: Function
     * @tc.level: Level 1
     */
-    it('testSliderTrackThickness002', 0, async (done: Function) => {
+    it('testSliderTrackThickness002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderTrackThickness002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function sliderTrackThicknessTest() {
     * @tc.type: Function
     * @tc.level: Level 1
     */
-    it('testSliderTrackThickness003', 0, async (done: Function) => {
+    it('testSliderTrackThickness003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderTrackThickness003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function sliderTrackThicknessTest() {
     * @tc.type: Function
     * @tc.level: Level 1
     */
-    it('testSliderTrackThickness004', 0, async (done: Function) => {
+    it('testSliderTrackThickness004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderTrackThickness004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function sliderTrackThicknessTest() {
     * @tc.type: Function
     * @tc.level: Level 1
     */
-    it('testSliderTrackThickness005', 0, async (done: Function) => {
+    it('testSliderTrackThickness005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderTrackThickness005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function sliderTrackThicknessTest() {
     * @tc.type: Function
     * @tc.level: Level 1
     */
-    it('testSliderTrackThickness006', 0, async (done: Function) => {
+    it('testSliderTrackThickness006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderTrackThickness006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function sliderTrackThicknessTest() {
     * @tc.type: Function
     * @tc.level: Level 1
     */
-    it('testSliderTrackThickness007', 0, async (done: Function) => {
+    it('testSliderTrackThickness007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderTrackThickness007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function sliderTrackThicknessTest() {
     * @tc.type: Function
     * @tc.level: Level 1
     */
-    it('testSliderTrackThickness008', 0, async (done: Function) => {
+    it('testSliderTrackThickness008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderTrackThickness008()).assertEqual(0)
       done()
     })
@@ -138,7 +138,7 @@ export default function sliderTrackThicknessTest() {
     * @tc.type: Function
     * @tc.level: Level 1
     */
-    it('testSliderTrackThickness009', 0, async (done: Function) => {
+    it('testSliderTrackThickness009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderTrackThickness009()).assertEqual(0)
       done()
     })
@@ -151,7 +151,7 @@ export default function sliderTrackThicknessTest() {
     * @tc.type: Function
     * @tc.level: Level 1
     */
-    it('testSliderTrackThickness010', 0, async (done: Function) => {
+    it('testSliderTrackThickness010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderTrackThickness010()).assertEqual(0)
       done()
     })
@@ -164,7 +164,7 @@ export default function sliderTrackThicknessTest() {
     * @tc.type: Function
     * @tc.level: Level 1
     */
-    it('testSliderTrackThickness011', 0, async (done: Function) => {
+    it('testSliderTrackThickness011', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderTrackThickness011()).assertEqual(0)
       done()
     })
@@ -177,7 +177,7 @@ export default function sliderTrackThicknessTest() {
     * @tc.type: Function
     * @tc.level: Level 1
     */
-    it('testSliderTrackThickness012', 0, async (done: Function) => {
+    it('testSliderTrackThickness012', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderTrackThickness012()).assertEqual(0)
       done()
     })
@@ -190,7 +190,7 @@ export default function sliderTrackThicknessTest() {
     * @tc.type: Function
     * @tc.level: Level 1
     */
-    it('testSliderTrackThickness013', 0, async (done: Function) => {
+    it('testSliderTrackThickness013', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderTrackThickness013()).assertEqual(0)
       done()
     })
@@ -203,7 +203,7 @@ export default function sliderTrackThicknessTest() {
     * @tc.type: Function
     * @tc.level: Level 1
     */
-    it('testSliderTrackThickness014', 0, async (done: Function) => {
+    it('testSliderTrackThickness014', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderTrackThickness014()).assertEqual(0)
       done()
     })
@@ -216,7 +216,7 @@ export default function sliderTrackThicknessTest() {
     * @tc.type: Function
     * @tc.level: Level 1
     */
-    it('testSliderTrackThickness015', 0, async (done: Function) => {
+    it('testSliderTrackThickness015', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderTrackThickness015()).assertEqual(0)
       done()
     })

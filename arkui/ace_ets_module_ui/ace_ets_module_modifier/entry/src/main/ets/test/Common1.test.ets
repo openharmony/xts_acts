@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
@@ -53,7 +53,7 @@ export default function common1Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('Common1001', 0, async (done: Function) => {
+    it('Common1001', Level.LEVEL0, async (done: Function) => {
       console.info('[Common1001] START');
       let strJsonNew = getInspectorByKey('common1');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -74,7 +74,7 @@ export default function common1Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('Common1002', 0, async (done: Function) => {
+    it('Common1002', Level.LEVEL0, async (done: Function) => {
       console.info('[Common1002] START');
       let strJsonNew = getInspectorByKey('common1');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -95,7 +95,7 @@ export default function common1Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('Common1003', 0, async (done: Function) => {
+    it('Common1003', Level.LEVEL0, async (done: Function) => {
       console.info('[Common1003] START');
       let strJsonNew = getInspectorByKey('common1');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -116,7 +116,7 @@ export default function common1Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('Common1004', 0, async (done: Function) => {
+    it('Common1004', Level.LEVEL0, async (done: Function) => {
       console.info('[Common1004] START');
       let strJsonNew = getInspectorByKey('common1');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -137,7 +137,7 @@ export default function common1Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('Common1005', 0, async (done: Function) => {
+    it('Common1005', Level.LEVEL0, async (done: Function) => {
       console.info('[Common1005] START');
       let strJsonNew = getInspectorByKey('common1');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -154,7 +154,7 @@ export default function common1Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('Common1006', 0, async (done: Function) => {
+    it('Common1006', Level.LEVEL0, async (done: Function) => {
       console.info('[Common1006] START');
       let strJsonNew = getInspectorByKey('common1');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -171,7 +171,7 @@ export default function common1Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('Common1007', 0, async (done: Function) => {
+    it('Common1007', Level.LEVEL0, async (done: Function) => {
       console.info('[Common1007] START');
       let strJsonNew = getInspectorByKey('common1');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -188,7 +188,7 @@ export default function common1Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('Common1008', 0, async (done: Function) => {
+    it('Common1008', Level.LEVEL0, async (done: Function) => {
       console.info('[Common1008] START');
       let strJsonNew = getInspectorByKey('common1');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -205,7 +205,7 @@ export default function common1Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('Common1009', 0, async (done: Function) => {
+    it('Common1009', Level.LEVEL0, async (done: Function) => {
       console.info('[Common1009] START');
       let strJsonNew = getInspectorByKey('common1');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -222,7 +222,7 @@ export default function common1Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('Common1010', 0, async (done: Function) => {
+    it('Common1010', Level.LEVEL0, async (done: Function) => {
       console.info('[Common1010] START');
       let strJsonNew = getInspectorByKey('common2');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -243,7 +243,7 @@ export default function common1Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('Common1011', 0, async (done: Function) => {
+    it('Common1011', Level.LEVEL0, async (done: Function) => {
       console.info('[Common1011] START');
       let strJsonNew = getInspectorByKey('common2');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -260,7 +260,7 @@ export default function common1Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('Common1012', 0, async (done: Function) => {
+    it('Common1012', Level.LEVEL0, async (done: Function) => {
       console.info('[Common1012] START');
       let strJsonNew = getInspectorByKey('common2');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -277,7 +277,7 @@ export default function common1Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('Common1013', 0, async (done: Function) => {
+    it('Common1013', Level.LEVEL0, async (done: Function) => {
       console.info('[Common1013] START');
       let strJsonNew = getInspectorByKey('common2');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -295,7 +295,7 @@ export default function common1Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('Common1014', 0, async (done: Function) => {
+    it('Common1014', Level.LEVEL0, async (done: Function) => {
       console.info('[Common1014] START');
       let strJsonNew = getInspectorByKey('common2');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -312,7 +312,7 @@ export default function common1Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('Common1015', 0, async (done: Function) => {
+    it('Common1015', Level.LEVEL0, async (done: Function) => {
       console.info('[Common1015] START');
       let strJsonNew = getInspectorByKey('common2');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -329,7 +329,7 @@ export default function common1Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('Common1016', 0, async (done: Function) => {
+    it('Common1016', Level.LEVEL0, async (done: Function) => {
       console.info('[Common1016] START');
       let strJsonNew = getInspectorByKey('common2');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -347,7 +347,7 @@ export default function common1Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('Common1017', 0, async (done: Function) => {
+    it('Common1017', Level.LEVEL0, async (done: Function) => {
       console.info('[Common1017] START');
       let strJsonNew = getInspectorByKey('common2');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -366,7 +366,7 @@ export default function common1Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('Common1018', 0, async (done: Function) => {
+    it('Common1018', Level.LEVEL0, async (done: Function) => {
       console.info('[Common1018] START');
       let strJsonNew = getInspectorByKey('common3');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -383,7 +383,7 @@ export default function common1Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('Common1019', 0, async (done: Function) => {
+    it('Common1019', Level.LEVEL0, async (done: Function) => {
       console.info('[Common1019] START');
       let strJsonNew = getInspectorByKey('testid');
       console.info("[Common1019] component Common1017 is: " + strJsonNew);
@@ -399,7 +399,7 @@ export default function common1Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('Common1020', 0, async (done: Function) => {
+    it('Common1020', Level.LEVEL0, async (done: Function) => {
       console.info('[Common1020] START');
       let strJsonNew = getInspectorByKey('testkey');
       expect(strJsonNew).assertNotNull;
@@ -414,7 +414,7 @@ export default function common1Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('Common1021', 0, async (done: Function) => {
+    it('Common1021', Level.LEVEL0, async (done: Function) => {
       console.info('[Common1021] START');
       let strJsonNew = getInspectorByKey('common3');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -431,7 +431,7 @@ export default function common1Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('Common1022', 0, async (done: Function) => {
+    it('Common1022', Level.LEVEL0, async (done: Function) => {
       console.info('[Common1022] START');
       let strJsonNew = getInspectorByKey('common3');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -448,7 +448,7 @@ export default function common1Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('Common1023', 0, async (done: Function) => {
+    it('Common1023', Level.LEVEL0, async (done: Function) => {
       console.info('[Common1023] START');
       let strJsonNew = getInspectorByKey('common2');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -465,7 +465,7 @@ export default function common1Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('Common1024', 0, async (done: Function) => {
+    it('Common1024', Level.LEVEL0, async (done: Function) => {
       console.info('[Common1024] START');
       let strJsonNew = getInspectorByKey('common3');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -482,7 +482,7 @@ export default function common1Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('Common1025', 0, async (done: Function) => {
+    it('Common1025', Level.LEVEL0, async (done: Function) => {
       console.info('[Common1025] START');
       let strJsonNew = getInspectorByKey('common2');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -500,7 +500,7 @@ export default function common1Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('Common1026', 0, async (done: Function) => {
+    it('Common1026', Level.LEVEL0, async (done: Function) => {
       console.info('[Common1026] START');
       let strJsonNew = getInspectorByKey('common2');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -518,7 +518,7 @@ export default function common1Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('Common1027', 0, async (done: Function) => {
+    it('Common1027', Level.LEVEL0, async (done: Function) => {
       console.info('[Common1027] START');
       let strJsonNew = getInspectorByKey('common2');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -536,7 +536,7 @@ export default function common1Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('Common1028', 0, async (done: Function) => {
+    it('Common1028', Level.LEVEL0, async (done: Function) => {
       console.info('[Common1028] START');
       let strJsonNew = getInspectorByKey('common1');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -553,7 +553,7 @@ export default function common1Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('Common1029', 0, async (done: Function) => {
+    it('Common1029', Level.LEVEL0, async (done: Function) => {
       console.info('[Common1029] START');
       let strJsonNew = getInspectorByKey('common1');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -570,7 +570,7 @@ export default function common1Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('Common1030', 0, async (done: Function) => {
+    it('Common1030', Level.LEVEL0, async (done: Function) => {
       console.info('[Common1030] START');
       let strJsonNew = getInspectorByKey('common1');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -587,7 +587,7 @@ export default function common1Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('Common1031', 0, async (done: Function) => {
+    it('Common1031', Level.LEVEL0, async (done: Function) => {
       console.info('[Common1031] START');
       let strJsonNew = getInspectorByKey('common1');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -605,7 +605,7 @@ export default function common1Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('Common1032', 0, async (done: Function) => {
+    it('Common1032', Level.LEVEL0, async (done: Function) => {
       console.info('[Common1032] START');
       let strJsonNew = getInspectorByKey('common1');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -622,7 +622,7 @@ export default function common1Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('Common1033', 0, async (done: Function) => {
+    it('Common1033', Level.LEVEL0, async (done: Function) => {
       console.info('[Common1033] START');
       let strJsonNew = getInspectorByKey('common1');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -639,7 +639,7 @@ export default function common1Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('Common1034', 0, async (done: Function) => {
+    it('Common1034', Level.LEVEL0, async (done: Function) => {
       console.info('[Common1034] START');
       let strJsonNew = getInspectorByKey('common3');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -656,7 +656,7 @@ export default function common1Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('Common1035', 0, async (done: Function) => {
+    it('Common1035', Level.LEVEL0, async (done: Function) => {
       console.info('[Common1035] START');
       let strJsonNew = getInspectorByKey('common1');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -673,7 +673,7 @@ export default function common1Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('Common1036', 0, async (done: Function) => {
+    it('Common1036', Level.LEVEL0, async (done: Function) => {
       console.info('[Common1036] START');
       let strJsonNew = getInspectorByKey('common1');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -691,7 +691,7 @@ export default function common1Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('Common1037', 0, async (done: Function) => {
+    it('Common1037', Level.LEVEL0, async (done: Function) => {
       console.info('[Common1037] START');
       let strJsonNew = getInspectorByKey('common1');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -708,7 +708,7 @@ export default function common1Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('Common1038', 0, async (done: Function) => {
+    it('Common1038', Level.LEVEL0, async (done: Function) => {
       console.info('[Common1038] START');
       let strJsonNew = getInspectorByKey('common2');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -726,7 +726,7 @@ export default function common1Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('Common1039', 0, async (done: Function) => {
+    it('Common1039', Level.LEVEL0, async (done: Function) => {
       console.info('[Common1039] START');
       let strJsonNew = getInspectorByKey('common2');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -743,7 +743,7 @@ export default function common1Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('Common1040', 0, async (done: Function) => {
+    it('Common1040', Level.LEVEL0, async (done: Function) => {
       console.info('[Common1040] START');
       let strJsonNew = getInspectorByKey('common2');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -760,7 +760,7 @@ export default function common1Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('Common1041', 0, async (done: Function) => {
+    it('Common1041', Level.LEVEL0, async (done: Function) => {
       console.info('[Common1041] START');
       let strJsonNew = getInspectorByKey('common2');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -777,7 +777,7 @@ export default function common1Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('Common1042', 0, async (done: Function) => {
+    it('Common1042', Level.LEVEL0, async (done: Function) => {
       console.info('[Common1042] START');
       let strJsonNew = getInspectorByKey('common2');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -794,7 +794,7 @@ export default function common1Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('Common1043', 0, async (done: Function) => {
+    it('Common1043', Level.LEVEL0, async (done: Function) => {
       console.info('[Common1043] START');
       let strJsonNew = getInspectorByKey('testbutton');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -813,7 +813,7 @@ export default function common1Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('Common1044', 0, async (done: Function) => {
+    it('Common1044', Level.LEVEL0, async (done: Function) => {
       console.info('[Common1044] START');
       let strJsonNew = getInspectorByKey('testbutton');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -830,7 +830,7 @@ export default function common1Jsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('Common1046', 0, async (done: Function) => {
+    it('Common1046', Level.LEVEL0, async (done: Function) => {
       console.info('[Common1046] START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

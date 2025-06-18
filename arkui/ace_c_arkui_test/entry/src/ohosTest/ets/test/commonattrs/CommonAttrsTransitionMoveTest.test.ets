@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function commonAttrsTransitionEffectMoveTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsTransitionMove001', 0, async (done: Function) => {
+    it('testCommonAttrsTransitionMove001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsTransitionMove001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function commonAttrsTransitionEffectMoveTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsTransitionMove002', 0, async (done: Function) => {
+    it('testCommonAttrsTransitionMove002', Level.LEVEL1, async (done: Function) => {
         expect(nativeFunc.testCommonAttrsTransitionMove002()).assertEqual(0)
         done()
     })
@@ -59,7 +59,7 @@ export default function commonAttrsTransitionEffectMoveTest() {
      * @tc.size       : MediumTest
      * @tc.type       : Function
      */
-    it('testCommonAttrsTransitionMove003', 0, async (done: Function) => {
+    it('testCommonAttrsTransitionMove003', Level.LEVEL1, async (done: Function) => {
         expect(nativeFunc.testCommonAttrsTransitionMove003()).assertEqual(0)
         done()
     })
@@ -71,7 +71,7 @@ export default function commonAttrsTransitionEffectMoveTest() {
      * @tc.size       : MediumTest
      * @tc.type       : Function
      */
-    it('testCommonAttrsTransitionMove004', 0, async (done: Function) => {
+    it('testCommonAttrsTransitionMove004', Level.LEVEL1, async (done: Function) => {
         expect(nativeFunc.testCommonAttrsTransitionMove004()).assertEqual(0)
         done()
     })
@@ -83,7 +83,7 @@ export default function commonAttrsTransitionEffectMoveTest() {
      * @tc.size       : MediumTest
      * @tc.type       : Function
      */
-    it('testCommonAttrsTransitionMove005', 0, async (done: Function) => {
+    it('testCommonAttrsTransitionMove005', Level.LEVEL1, async (done: Function) => {
         expect(nativeFunc.testCommonAttrsTransitionMove005()).assertEqual(0)
         done()
     })
@@ -95,7 +95,7 @@ export default function commonAttrsTransitionEffectMoveTest() {
      * @tc.size       : MediumTest
      * @tc.type       : Function
      */
-    it('testCommonAttrsTransitionMove006', 0, async (done: Function) => {
+    it('testCommonAttrsTransitionMove006', Level.LEVEL1, async (done: Function) => {
         expect(nativeFunc.testCommonAttrsTransitionMove006()).assertEqual(0)
         done()
     })
@@ -107,7 +107,7 @@ export default function commonAttrsTransitionEffectMoveTest() {
      * @tc.size       : MediumTest
      * @tc.type       : Function
      */
-    it('testCommonAttrsTransitionMove007', 0, async (done: Function) => {
+    it('testCommonAttrsTransitionMove007', Level.LEVEL1, async (done: Function) => {
         expect(nativeFunc.testCommonAttrsTransitionMove007()).assertEqual(0)
         done()
     })

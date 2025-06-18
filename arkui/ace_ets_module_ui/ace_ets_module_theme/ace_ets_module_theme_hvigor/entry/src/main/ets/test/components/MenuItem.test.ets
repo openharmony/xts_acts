@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import router from '@ohos.router';
-import { afterAll, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterAll, beforeAll, beforeEach, describe, it, expect , Level} from '@ohos/hypium';
 import { MenuKeys, menuThemeProperty } from '../../MainAbility/pages/components/MenuPage';
 import { colorValuesKey } from '../../MainAbility/pages/index/index';
 import { greenCustomTheme, redCustomTheme } from '../../MainAbility/themes/CustomTheme';
@@ -76,7 +76,7 @@ export default function menuItemThemeTest() {
       * @tc.size      : MediumTest
       * @tc.type      : Function
       */
-    it(`ActsMenuItemThemeColors_0100`, 0, () => {
+    it(`ActsMenuItemThemeColors_0100`, Level.LEVEL2, () => {
       const CASE: string = `ActsMenuItemThemeColors_0100`;
       console.info(`${SUITE} ${CASE} START`);
       const menuJSON = getInspectorByKey(MenuKeys.menuItemSystem)
@@ -94,7 +94,7 @@ export default function menuItemThemeTest() {
       * @tc.size      : MediumTest
       * @tc.type      : Function
       */
-    it(`ActsMenuItemThemeColors_0200`, 0, () => {
+    it(`ActsMenuItemThemeColors_0200`, Level.LEVEL2, () => {
       const CASE: string = `ActsMenuItemThemeColors_0200`;
       console.info(`${SUITE} ${CASE} START`);
       const menuJSON = getInspectorByKey(MenuKeys.menuItemWithTheme);
@@ -114,7 +114,7 @@ export default function menuItemThemeTest() {
       * @tc.size      : MediumTest
       * @tc.type      : Function
       */
-    it(`ActsMenuItemThemeColors_0300`, 0, async () => {
+    it(`ActsMenuItemThemeColors_0300`, Level.LEVEL0, async () => {
       const CASE: string = `ActsMenuItemThemeColors_0300`;
       console.info(`${SUITE} ${CASE} START`);
       await sleep(frameTime);

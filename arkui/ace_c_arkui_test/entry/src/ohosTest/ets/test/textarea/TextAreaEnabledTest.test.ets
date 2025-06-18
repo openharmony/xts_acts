@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 
 export default function textAreaEnabledTest() {
@@ -34,7 +34,7 @@ export default function textAreaEnabledTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testTextAreaEnabled001', 0, async (done: Function) => {
+    it('testTextAreaEnabled001', Level.LEVEL1, async (done: Function) => {
       await Utils.clickComponent('OnClickEnabledTextarea')
       await Utils.sleep(1000)
       expect(Utils.getComponentInfoByKey('OnClickEnabledTextarea').$attrs.backgroundColor).assertEqual('#FFFFFF00')
@@ -58,7 +58,7 @@ export default function textAreaEnabledTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testTextAreaEnabled002', 0, async (done: Function) => {
+    it('testTextAreaEnabled002', Level.LEVEL1, async (done: Function) => {
       await Utils.clickComponent('OnClickDisabledTextarea')
       await Utils.sleep(1000)
       expect(Utils.getComponentInfoByKey('OnClickDisabledTextarea').$attrs.backgroundColor).assertEqual('#FFFF0000')
@@ -82,7 +82,7 @@ export default function textAreaEnabledTest() {
     * @tc.type       : Function
     * @tc.level      : Level 2
     */
-    it('testTextAreaEnabled003', 0, async (done: Function) => {
+    it('testTextAreaEnabled003', Level.LEVEL1, async (done: Function) => {
       await Utils.clickComponent('OnClickAbnormalTextarea')
       await Utils.sleep(1000)
       expect(Utils.getComponentInfoByKey('OnClickAbnormalTextarea').$attrs.backgroundColor).assertEqual('#FFFFFF00')

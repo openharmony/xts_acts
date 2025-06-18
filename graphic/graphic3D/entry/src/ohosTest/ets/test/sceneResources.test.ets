@@ -16,6 +16,7 @@ import { Vec4, Aabb, SceneResourceType, SceneResource, Shader, MaterialType, Mat
   Animation, EnvironmentBackgroundType, Environment, Node, Geometry, SceneResourceFactory, Scene } from '@ohos.graphics.scene'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium'
 import * as scene3d from '@ohos.graphics.scene'
+import { GenRandom, sleep } from '../common/utils';
 
 export default function sceneResourcesTest() {
   describe('sceneResourcesTest', ()=> {
@@ -48,7 +49,7 @@ export default function sceneResourcesTest() {
       console.info(msg + ' begin ');
       try {
         let startFlag = false;
-        scene0 = await Scene.load($rawfile("gltf/BrainStem/glTF/BrainStem.gltf"));
+        scene0 = await Scene.load($rawfile("gltf/BrainStem/glTF/BrainStem.glb"));
         expect(scene0 != undefined).assertTrue();
         console.info(msg + " Succeed in load ");
         anim = scene0?.animations[0];
@@ -252,7 +253,7 @@ export default function sceneResourcesTest() {
       let msg = "============================testEnvironmentIndirectDiffuseFactor";
       console.info(msg + ' begin ');
       try {
-        scene1 = await Scene.load($rawfile("gltf/DamagedHelmet/glTF/DamagedHelmet.gltf"));
+        scene1 = await Scene.load($rawfile("gltf/DamagedHelmet/glTF/DamagedHelmet.glb"));
         expect(scene1 != undefined).assertTrue();
         console.info(msg + " get scene1 success ");
         rf = scene1?.getResourceFactory();
@@ -434,7 +435,7 @@ export default function sceneResourcesTest() {
         let subMeshes: SubMesh[];
         let aabb: Aabb;
         let materialOrg: Material;
-        scene2 = await Scene.load($rawfile("gltf/Cube/glTF/Cube.gltf"));
+        scene2 = await Scene.load($rawfile("gltf/Cube/glTF/Cube.glb"));
         expect(scene2 != undefined).assertTrue();
         console.info(msg + " get scene2 success ");
         rf1 = scene2?.getResourceFactory();
@@ -560,20 +561,722 @@ export default function sceneResourcesTest() {
         done();
       }
     })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHIC3D_JS_API_0760
+     * @tc.name      : testMaterialType_METALLIC_ROUGHNESS
+     * @tc.desc      : Verify that METALLIC_ROUGHNESS material can be created and its basic properties are set correctly
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testMaterialType_METALLIC_ROUGHNESS', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async(done:Function)=> {
+        let msg = "============================testMaterialType_METALLIC_ROUGHNESS";
+        console.info(msg + ' begin ');
+        try {
+          scene0 = await Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
+          expect(scene0 != undefined).assertTrue();
+          console.info(msg + " get scene0 success ");
+          rf = scene0.getResourceFactory();
+          let material = await rf.createMaterial(
+            { name: 'metalMat' },
+            MaterialType.METALLIC_ROUGHNESS
+          );
+          expect(MaterialType.METALLIC_ROUGHNESS).assertEqual(2);
+          expect(material != null).assertTrue();
+          expect(material.materialType).assertEqual(MaterialType.METALLIC_ROUGHNESS);
+
+          material.shadowReceiver = true;
+          material.cullMode = scene3d.CullMode.BACK;
+          material.blend = {enabled: true};
+          material.alphaCutoff = 0.5;
+          material.renderSort = {
+            renderSortLayer: 32,
+            renderSortLayerOrder: 0
+          };
+          expect(material.shadowReceiver).assertTrue();
+          expect(material.cullMode).assertEqual(scene3d.CullMode.BACK);
+          expect(material.blend.enabled).assertTrue();
+          expect(material.alphaCutoff).assertEqual(0.5);
+          expect(material.renderSort.renderSortLayer).assertEqual(32);
+          expect(material.renderSort.renderSortLayerOrder).assertEqual(0);
+
+          console.info(msg + " test completed successfully");
+          done();
+        } catch (err) {
+          console.info(msg + " Failed in testMaterialType_METALLIC_ROUGHNESS  " + JSON.stringify(err));
+          expect().assertFail();
+          done();
+        }
+      })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHIC3D_JS_API_0770
+     * @tc.name      : testCullMode
+     * @tc.desc      : Verify that the material's cullMode supports NONE, FRONT, and BACK modes
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testCullMode', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async(done:Function)=> {
+      let msg = "============================testCullMode";
+      console.info(msg + ' begin ');
+      try {
+        scene0 = await Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
+        expect(scene0 != undefined).assertTrue();
+        console.info(msg + " get scene0 success ");
+        rf = scene0.getResourceFactory();
+        let material = await rf.createMaterial(
+          { name: 'testCullModeMat' },
+          MaterialType.METALLIC_ROUGHNESS
+        );
+        expect(material != null).assertTrue();
+
+        material.cullMode = scene3d.CullMode.NONE;
+        expect(material.cullMode).assertEqual(scene3d.CullMode.NONE);
+
+        material.cullMode = scene3d.CullMode.FRONT;
+        expect(material.cullMode).assertEqual(scene3d.CullMode.FRONT);
+
+        material.cullMode = scene3d.CullMode.BACK;
+        expect(material.cullMode).assertEqual(scene3d.CullMode.BACK);
+
+        console.info(msg + " test completed successfully");
+        done();
+      } catch (err) {
+        console.info(msg + " Failed in testCullMode  " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHIC3D_JS_API_0780
+     * @tc.name      : testBlend
+     * @tc.desc      : Verify the assignment and retrieval of the blend.enabled property in the material
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testBlend', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async(done:Function)=> {
+      let msg = "============================testBlend";
+      console.info(msg + ' begin ');
+      try {
+        let scene = await Scene.load($rawfile("gltf/DamagedHelmet/glTF/DamagedHelmet.glb"));
+        console.info(msg, "scene loaded:", scene != null);
+        expect(scene != null).assertTrue();
+
+        let rf = scene.getResourceFactory();
+        console.info(msg, "resourceFactory:", rf != null);
+        expect(rf != null).assertTrue();
+
+        let blendNode = scene.root?.getNodeByPath("Scene/node_damagedHelmet_-6514");
+        console.info(msg, "blendNode:", blendNode);
+        expect(blendNode != null).assertTrue();
+        if (!blendNode) {
+          console.error(msg, "blendNode is null or undefined");
+          expect().assertFail();
+        }
+
+        let blendMaterial = (blendNode as scene3d.Geometry).mesh.subMeshes[0].material;
+        console.info(msg, "blendMaterial:", blendMaterial);
+        expect(blendMaterial != null).assertTrue();
+
+        if (blendMaterial) {
+          blendMaterial.blend = { enabled: false};
+          console.info(msg, "blendMaterial.blend.enabled set to false:", blendMaterial.blend.enabled);
+          expect(blendMaterial.blend.enabled).assertFalse();
+          blendMaterial.blend = { enabled: true};
+          console.info(msg, "blendMaterial.blend.enabled set to true:", blendMaterial.blend.enabled);
+          expect(blendMaterial.blend.enabled).assertTrue();
+        }
+        console.info(msg + " test completed successfully");
+        done();
+      } catch (err) {
+        console.info(msg + " Failed in testBlend  " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHIC3D_JS_API_0790
+     * @tc.name      : testRenderSort
+     * @tc.desc      : Verify material’s renderSortLayer and renderSortLayerOrder can be set and read correctly
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testRenderSort', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async(done:Function)=> {
+      let msg = "============================testRenderSort";
+      console.info(msg + ' begin ');
+      try {
+        scene0 = await Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
+        expect(scene0 != undefined).assertTrue();
+        console.info(msg + " get scene0 success ");
+        rf = scene0.getResourceFactory();
+        let material = await rf.createMaterial(
+          { name: 'renderSortTestMat' },
+          MaterialType.METALLIC_ROUGHNESS
+        );
+        console.info(msg, 'material created:', material !== null);
+        expect(material != null).assertTrue();
+
+        material.renderSort = {
+          renderSortLayer: 10,
+          renderSortLayerOrder: 20
+        };
+        console.info(msg, 'renderSort set 1:', JSON.stringify(material.renderSort));
+        expect(material.renderSort?.renderSortLayer).assertEqual(10);
+        expect(material.renderSort?.renderSortLayerOrder).assertEqual(20);
+
+        material.renderSort = {
+          renderSortLayer: 63,
+          renderSortLayerOrder: 255
+        };
+        console.info(msg, 'renderSort set 2:', JSON.stringify(material.renderSort));
+        expect(material.renderSort?.renderSortLayer).assertEqual(63);
+        expect(material.renderSort?.renderSortLayerOrder).assertEqual(255);
+        console.info(msg + " test completed successfully");
+        done();
+      } catch (err) {
+        console.info(msg + " Failed in testRenderSort  " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHIC3D_JS_API_0800
+     * @tc.name      : testMaterial
+     * @tc.desc      : verifies that key rendering properties of the Material interface
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testMaterial', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async(done:Function)=> {
+      let msg = "============================testMaterial";
+      console.info(msg + ' begin ');
+      try {
+        scene0 = await Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
+        expect(scene0 != undefined).assertTrue();
+        console.info(msg + " get scene0 success ");
+        rf = scene0.getResourceFactory();
+        let material = await rf.createMaterial({ name: 'fullFeatureMat' }, MaterialType.METALLIC_ROUGHNESS);
+        expect(material != null).assertTrue();
+        expect(material.materialType).assertEqual(MaterialType.METALLIC_ROUGHNESS);
+
+        material.shadowReceiver = true;
+        expect(material.shadowReceiver).assertTrue();
+        material.shadowReceiver = false;
+        expect(material.shadowReceiver).assertFalse();
+
+        let cullModes = [scene3d.CullMode.BACK, scene3d.CullMode.FRONT, scene3d.CullMode.NONE];
+        for (let i = 0; i < cullModes.length; i++) {
+          material.cullMode = cullModes[i];
+          expect(material.cullMode).assertEqual(cullModes[i]);
+        }
+
+        material.blend = { enabled: true };
+        expect(material.blend?.enabled).assertTrue();
+        material.blend = { enabled: false };
+        expect(material.blend?.enabled).assertFalse();
+
+        let alphaValues = [0.0, 0.5, 1.0];
+        for (let i = 0; i < alphaValues.length; i++) {
+          material.alphaCutoff = alphaValues[i];
+          expect(material.alphaCutoff).assertEqual(alphaValues[i]);
+        }
+
+        let sortConfigs: number[][] = [
+          [0, 0],
+          [32, 0],
+          [63, 128]
+        ];
+        for (let i = 0; i < sortConfigs.length; i++) {
+          let layer = sortConfigs[i][0];
+          let order = sortConfigs[i][1];
+          material.renderSort = {
+            renderSortLayer: layer,
+            renderSortLayerOrder: order
+          };
+          expect(material.renderSort.renderSortLayer).assertEqual(layer);
+          expect(material.renderSort.renderSortLayerOrder).assertEqual(order);
+        }
+        console.info(msg + " test completed successfully");
+        done();
+      } catch (err) {
+        console.info(msg + " Failed in testMaterial  " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHIC3D_JS_API_0810
+     * @tc.name      : testMaterialProperty_image_factor_sampler
+     * @tc.desc      : Verifies setting and accessing image, factor, and sampler properties of MaterialProperty
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testMaterialProperty_image_factor_sampler', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let msg = "============================testMaterialProperty_image_factor_sampler";
+      try {
+        let scene = await Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
+        console.info(msg + " scene loaded");
+
+        let node = scene.getNodeByPath('rootNode_/Unnamed Node 1/AnimatedCube') as scene3d.Geometry;
+        console.info(msg + " node found:", node?.name);
+        let material = node.mesh.subMeshes[0].material as scene3d.MetallicRoughnessMaterial;
+        console.info(msg + " material obtained");
+
+        let baseColor: scene3d.MaterialProperty = material.baseColor;
+        expect(baseColor != null).assertTrue();
+        console.info(msg + " baseColor property obtained");
+
+        expect(baseColor.factor != null).assertTrue();
+        console.info(msg + " baseColor.factor:", JSON.stringify(baseColor.factor));
+
+        let factory = scene.getResourceFactory();
+        let baseColorImage = await factory.createImage({
+          name: "baseColorTex",
+          uri: $rawfile("gltf/Cube/glTF/Cube_BaseColor.png")
+        });
+        baseColor.image = baseColorImage;
+        expect(baseColor.image).assertEqual(baseColorImage);
+        console.info(msg + " baseColor.image assigned and verified");
+
+        if (baseColor.sampler) {
+          baseColor.sampler.minFilter = scene3d.SamplerFilter.NEAREST;
+          expect(baseColor.sampler.minFilter).assertEqual(scene3d.SamplerFilter.NEAREST);
+          console.info(msg + " baseColor.sampler.minFilter set and verified");
+
+          baseColor.sampler.magFilter = scene3d.SamplerFilter.LINEAR;
+          expect(baseColor.sampler.magFilter).assertEqual(scene3d.SamplerFilter.LINEAR);
+          console.info(msg + " baseColor.sampler.magFilter set and verified");
+        } else {
+          console.info(msg + " baseColor.sampler is null or undefined, skipping sampler tests");
+        }
+        console.info(msg + " test completed successfully");
+        done();
+      } catch (err) {
+        console.error(msg + " Failed in testMaterialProperty_image_factor_sampler: " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHIC3D_JS_API_0820
+     * @tc.name      : testMetallicRoughnessMaterial
+     * @tc.desc      : Verifies that all MaterialProperty-type attributes in MetallicRoughnessMaterial exist and are accessible
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testMetallicRoughnessMaterial', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let msg = "============================testMetallicRoughnessMaterial";
+      try {
+        let scene = await Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
+        console.info(msg + " scene loaded");
+
+        let node = scene.getNodeByPath('rootNode_/Unnamed Node 1/AnimatedCube') as scene3d.Geometry;
+        console.info(msg + " node found:", node?.name);
+
+        let material = node.mesh.subMeshes[0].material as scene3d.MetallicRoughnessMaterial;
+        console.info(msg + " material obtained");
+
+        expect(material.baseColor != null).assertTrue();
+        console.info(msg + " checking property: baseColor");
+
+        expect(material.normal != null).assertTrue();
+        console.info(msg + " checking property: normal");
+
+        expect(material.material != null).assertTrue();
+        console.info(msg + " checking property: material");
+
+        expect(material.ambientOcclusion != null).assertTrue();
+        console.info(msg + " checking property: ambientOcclusion");
+
+        expect(material.emissive != null).assertTrue();
+        console.info(msg + " checking property: emissive");
+
+        expect(material.clearCoat != null).assertTrue();
+        console.info(msg + " checking property: clearCoat");
+
+        expect(material.clearCoatRoughness != null).assertTrue();
+        console.info(msg + " checking property: clearCoatRoughness");
+
+        expect(material.clearCoatNormal != null).assertTrue();
+        console.info(msg + " checking property: clearCoatNormal");
+
+        expect(material.sheen != null).assertTrue();
+        console.info(msg + " checking property: sheen");
+
+        expect(material.specular != null).assertTrue();
+        console.info(msg + " checking property: specular");
+        console.info(msg + " test completed successfully");
+        done();
+      } catch (err) {
+        console.error(msg + " Failed in testMetallicRoughnessMaterial: ", err);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHIC3D_JS_API_0830
+     * @tc.name      : testSamplerFilter
+     * @tc.desc      : Verifies that the SamplerFilter enum values NEAREST and LINEAR are correctly defined as 0 and 1
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testSamplerFilter', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let msg = "============================testSamplerFilter";
+      try {
+        expect(scene3d.SamplerFilter.NEAREST).assertEqual(0);
+        console.info(msg + " NEAREST = 0 verified");
+        expect(scene3d.SamplerFilter.LINEAR).assertEqual(1);
+        console.info(msg + " LINEAR = 1 verified");
+
+        let scene = await Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
+        console.info(msg + " scene loaded successfully");
+
+        let node = scene.getNodeByPath('rootNode_/Unnamed Node 1/AnimatedCube') as scene3d.Geometry;
+        expect(node != null).assertTrue();
+        console.info(msg + " node found:", node?.name ?? "null");
+
+        let material = node.mesh.subMeshes[0].material as scene3d.MetallicRoughnessMaterial;
+        console.info(msg + " material obtained");
+
+        let sampler: scene3d.Sampler | undefined = material.baseColor.sampler;
+        if (!sampler) {
+          console.error(msg + " sampler is null");
+          expect(false).assertTrue();
+          done();
+          return;
+        }
+        console.info(msg + " sampler obtained");
+
+        let filters = [scene3d.SamplerFilter.NEAREST, scene3d.SamplerFilter.LINEAR];
+        for (let filter of filters) {
+          sampler.minFilter = filter;
+          console.info(`${msg} set sampler.minFilter = ${filter}`);
+          expect(sampler.minFilter).assertEqual(filter);
+
+          sampler.magFilter = filter;
+          console.info(`${msg} set sampler.magFilter = ${filter}`);
+          expect(sampler.magFilter).assertEqual(filter);
+        }
+        console.info(msg + " test completed successfully");
+        done();
+      } catch (err) {
+        console.error(msg + " Failed in testSamplerFilter: " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHIC3D_JS_API_0840
+     * @tc.name      : testSamplerAddressMode
+     * @tc.desc      : Verifies that SamplerAddressMode enum values are correctly
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testSamplerAddressMode', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let msg = "============================testSamplerAddressMode";
+      try {
+        expect(scene3d.SamplerAddressMode.REPEAT).assertEqual(0);
+        console.info(msg + " REPEAT = 0 verified");
+        expect(scene3d.SamplerAddressMode.MIRRORED_REPEAT).assertEqual(1);
+        console.info(msg + " MIRRORED_REPEAT = 1 verified");
+        expect(scene3d.SamplerAddressMode.CLAMP_TO_EDGE).assertEqual(2);
+        console.info(msg + " CLAMP_TO_EDGE = 2 verified");
+
+        let scene = await Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
+        console.info(msg + " scene loaded successfully");
+
+        let node = scene.getNodeByPath('rootNode_/Unnamed Node 1/AnimatedCube') as scene3d.Geometry;
+        expect(node != null).assertTrue();
+        console.info(msg + " node found:", node?.name ?? "null");
+
+        let material = node.mesh.subMeshes[0].material as scene3d.MetallicRoughnessMaterial;
+        console.info(msg + " material obtained");
+
+        let sampler: scene3d.Sampler | undefined = material.baseColor.sampler;
+        if (!sampler) {
+          console.error(msg + " sampler is null");
+          expect(false).assertTrue();
+          done();
+          return;
+        }
+        console.info(msg + " sampler obtained");
+
+        const modes = [
+          scene3d.SamplerAddressMode.REPEAT,
+          scene3d.SamplerAddressMode.MIRRORED_REPEAT,
+          scene3d.SamplerAddressMode.CLAMP_TO_EDGE
+        ];
+        for (let mode of modes) {
+          sampler.addressModeU = mode;
+          console.info(`${msg} set sampler.addressModeU = ${mode}`);
+          expect(sampler.addressModeU).assertEqual(mode);
+
+          sampler.addressModeV = mode;
+          console.info(`${msg} set sampler.addressModeV = ${mode}`);
+          expect(sampler.addressModeV).assertEqual(mode);
+        }
+        console.info(msg + " test completed successfully");
+        done();
+      } catch (err) {
+        console.error(msg + " Failed in testSamplerAddressMode: " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHIC3D_JS_API_0850
+     * @tc.name      : testSampler_mipMapMode
+     * @tc.desc      : Verify whether the mipMapMode attribute can be properly set and read
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testSampler_mipMapMode', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async(done:Function)=> {
+      let msg = "============================testSampler_mipMapMode";
+      console.info(msg + ' begin ');
+      try {
+        let scene = await Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
+        console.info(msg + " scene loaded successfully");
+
+        let node = scene.getNodeByPath('rootNode_/Unnamed Node 1/AnimatedCube') as scene3d.Geometry;
+        console.info(msg + " node found:", node?.name ?? "null");
+        expect(node != null).assertTrue();
+
+        let material = node.mesh.subMeshes[0].material as scene3d.MetallicRoughnessMaterial;
+        console.info(msg + " material obtained");
+
+        let sampler: scene3d.Sampler | undefined = material.baseColor.sampler;
+        if (!sampler) {
+          console.error(msg + " sampler is null");
+          expect(false).assertTrue();
+          return;
+        }
+        console.info(msg + " sampler obtained");
+
+        let mipMapModes = [
+          scene3d.SamplerFilter.NEAREST,
+          scene3d.SamplerFilter.LINEAR,
+        ];
+
+        for (let i = 0; i < mipMapModes.length; i++) {
+          let mode = mipMapModes[i];
+          sampler.mipMapMode = mode;
+          console.info(`${msg} set mipMapMode = ${mode} (index ${i})`);
+          expect(sampler.mipMapMode).assertEqual(mode);
+        }
+
+        console.info(msg + " test completed successfully");
+        done();
+      } catch (err) {
+        console.info(msg + " Failed in testSampler_mipMapMode  " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHIC3D_JS_API_0860
+     * @tc.name      : testSampler_minFilter_and_magFilter
+     * @tc.desc      : Verify whether the minFilter and magFilter properties can be set and read normally
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testSampler_minFilter_and_magFilter', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: Function) => {
+        let msg = "========== testSampler_minFilter_and_magFilter";
+        try {
+          let scene = await Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
+          console.info(msg + " scene loaded successfully");
+
+          let node = scene.getNodeByPath('rootNode_/Unnamed Node 1/AnimatedCube') as scene3d.Geometry;
+          console.info(msg + " node found:", node?.name ?? "null");
+          expect(node != null).assertTrue();
+
+          let material = node.mesh.subMeshes[0].material as scene3d.MetallicRoughnessMaterial;
+          console.info(msg + " material obtained");
+
+          let sampler: scene3d.Sampler |undefined = material.baseColor.sampler;
+          if (!sampler) {
+            console.error(msg + " sampler is null");
+            expect(false).assertTrue();
+            return;
+          }
+          console.info(msg + " sampler obtained");
+
+          let filters = [scene3d.SamplerFilter.NEAREST, scene3d.SamplerFilter.LINEAR];
+
+          for (let i = 0; i < filters.length; i++) {
+            let filter = filters[i];
+
+            sampler.minFilter = filter;
+            console.info(`${msg} set minFilter = ${filter} (index ${i})`);
+            expect(sampler.minFilter).assertEqual(filter);
+
+            sampler.magFilter = filter;
+            console.info(`${msg} set magFilter = ${filter} (index ${i})`);
+            expect(sampler.magFilter).assertEqual(filter);
+          }
+
+          console.info(msg + " test completed successfully");
+          done();
+        } catch (err) {
+          console.error(msg + " Failed in testSampler_minFilter_and_magFilter:", JSON.stringify(err));
+          expect().assertFail();
+          done();
+        }
+      });
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHIC3D_JS_API_0870
+     * @tc.name      : testSampler_addressModeU
+     * @tc.desc      : Verify the assignment and state switching logic of Sampler.addressModeU
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testSampler_addressModeU', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async(done:Function)=> {
+      let msg = "============================testSampler_addressModeU";
+      console.info(msg + ' begin ');
+      try {
+        let scene = await Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
+        console.info(msg + " scene loaded successfully");
+
+        let node = scene.getNodeByPath('rootNode_/Unnamed Node 1/AnimatedCube') as scene3d.Geometry;
+        console.info(msg + " node found: " + (node?.name ?? "null"));
+        expect(node != null).assertTrue();
+
+        let material = node.mesh.subMeshes[0].material as scene3d.MetallicRoughnessMaterial;
+        console.info(msg + " material obtained");
+        let sampler: scene3d.Sampler | undefined = material.baseColor.sampler;
+        if (!sampler) {
+          console.error(msg + " sampler is null");
+          expect(false).assertTrue();
+          return;
+        }
+        console.info(msg + " sampler obtained");
+
+        let modes = [
+          scene3d.SamplerAddressMode.REPEAT,
+          scene3d.SamplerAddressMode.MIRRORED_REPEAT,
+          scene3d.SamplerAddressMode.CLAMP_TO_EDGE,
+        ];
+        for (let i = 0; i < modes.length; i++) {
+          let mode = modes[i];
+          sampler.addressModeU = mode;
+          console.info(`${msg} set addressModeU = ${mode} (index ${i})`);
+          expect(sampler.addressModeU).assertEqual(mode);
+        }
+
+        console.info(msg + " test completed successfully");
+        done();
+      } catch (err) {
+        console.info(msg + " Failed in testSampler_addressModeU  " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHIC3D_JS_API_0880
+     * @tc.name      : testSampler_addressModeV
+     * @tc.desc      : Verify the assignment and state switching logic of Sampler.addressModeV
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testSampler_addressModeV', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async(done:Function)=> {
+      let msg = "============================testSampler_addressModeV";
+      console.info(msg + ' begin ');
+      try {
+        let scene = await Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
+        console.info(msg + " scene loaded successfully");
+
+        let node = scene.getNodeByPath('rootNode_/Unnamed Node 1/AnimatedCube') as scene3d.Geometry;
+        console.info(msg + " node found: " + (node?.name ?? "null"));
+        expect(node != null).assertTrue();
+
+        let material = node.mesh.subMeshes[0].material as scene3d.MetallicRoughnessMaterial;
+        console.info(msg + " material obtained");
+
+        let sampler: scene3d.Sampler | undefined = material.baseColor.sampler;
+        if (!sampler) {
+          console.error(msg + " sampler is null");
+          expect(false).assertTrue();
+          return;
+        }
+        console.info(msg + " sampler obtained");
+
+        let modes = [
+          scene3d.SamplerAddressMode.REPEAT,
+          scene3d.SamplerAddressMode.MIRRORED_REPEAT,
+          scene3d.SamplerAddressMode.CLAMP_TO_EDGE,
+        ];
+
+        for (let i = 0; i < modes.length; i++) {
+          let mode = modes[i];
+          sampler.addressModeV = mode;
+          console.info(`${msg} set addressModeV = ${mode} (index ${i})`);
+          expect(sampler.addressModeV).assertEqual(mode);
+        }
+        console.info(msg + " test completed successfully");
+        done();
+      } catch (err) {
+        console.info(msg + " Failed in testSampler_addressModeV  " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHIC3D_JS_API_0890
+     * @tc.name      : testAnimation_speed
+     * @tc.desc      : Verify whether the speed attribute of Animation can be successfully assigned
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testAnimation_speed', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async(done:Function)=> {
+      let msg = "============================testAnimation_speed";
+      console.info(msg + ' begin ');
+      try {
+        let scene = await Scene.load($rawfile("gltf/BrainStem/glTF/BrainStem.glb"));
+        let animation: Animation = scene.animations[0];
+        animation.enabled = true;
+        animation.speed = 1.5;
+        animation.start();
+        console.info("Animation started with speed:", animation.speed);
+        expect(animation.speed).assertEqual(1.5);
+
+        animation.speed = -2.0;
+        console.info("Animation reversed with speed:", animation.speed);
+        expect(animation.speed).assertEqual(-2.0);
+
+        animation.stop();
+        console.info(msg + " test completed successfully");
+        done();
+      } catch (err) {
+        console.info(msg + " Failed in testAnimation_speed  " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    })
   })
-}
-
-
-function sleep(time: number) {
-  return new Promise<void>((resolve, reject) => {
-    setTimeout(() => {
-      resolve();
-    }, time)
-  }).then(() => {
-    console.info(`sleep ${time} over...`);
-  })
-}
-
-function GenRandom(): number {
-  return Math.random() * 2 - 1;
 }

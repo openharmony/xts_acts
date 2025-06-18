@@ -385,12 +385,14 @@ export default function lifecycleTest() {
               }
             }
             console.log(TAG + " terminateSelfwithresult para: " + JSON.stringify(para));
-            globalThis.ability3.terminateSelfWithResult(para)
+            setTimeout(()=>{
+              globalThis.ability3.terminateSelfWithResult(para)
               .then((data: ESObject) => {
                 console.log(TAG + " terminateSelfwithresult successful data: " + JSON.stringify(data));
               }).catch((error: base.BusinessError) => {
-              console.log(TAG + " terminateSelfwithresult error: " + JSON.stringify(error));
-            });
+                console.log(TAG + " terminateSelfwithresult error: " + JSON.stringify(error));
+              });
+            },500)
           } else if (data.event === 'MainAbility3_onAbilityDestroy' && count === 2) {
             console.log(TAG + " registerAbilityLifecycleCallback listKey : " + JSON.stringify(globalThis.list3));
             console.log(TAG + " registerAbilityLifecycleCallback callbackid : " + JSON.stringify(globalThis.callbackid3));

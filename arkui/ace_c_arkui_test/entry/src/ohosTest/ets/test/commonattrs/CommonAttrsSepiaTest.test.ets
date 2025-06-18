@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function commonAttrsSepiaTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsSepia001', 0, async (done: Function) => {
+    it('testCommonAttrsSepia001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsSepia001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function commonAttrsSepiaTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsSepia002', 0, async (done: Function) => {
+    it('testCommonAttrsSepia002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsSepia002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function commonAttrsSepiaTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsSepia003', 0, async (done: Function) => {
+    it('testCommonAttrsSepia003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsSepia003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function commonAttrsSepiaTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsSepia004', 0, async (done: Function) => {
+    it('testCommonAttrsSepia004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsSepia004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function commonAttrsSepiaTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testCommonAttrsSepia005', 0, async (done: Function) => {
+    it('testCommonAttrsSepia005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsSepia005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function commonAttrsSepiaTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testCommonAttrsSepia006', 0, async (done: Function) => {
+    it('testCommonAttrsSepia006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsSepia006()).assertEqual(0)
       done()
     })

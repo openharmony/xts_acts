@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import router from '@ohos.router';
 
@@ -57,7 +57,7 @@ export default function noBarrierComponentsTest() {
       // Presets a clear action, which is performed after all test cases of the test suite end.
       // This API supports only one parameter: clear action function.
     })
-    it('noBarrierComponents001', 0, async (done: Function) => {
+    it('noBarrierComponents001', Level.LEVEL0, async (done: Function) => {
       console.info('noBarrierComponents001 START');
       setTimeout(() => {
         try {
@@ -72,7 +72,7 @@ export default function noBarrierComponentsTest() {
         done();
       }, 500)
     });
-    it('noBarrierComponents002', 0, async (done: Function) => {
+    it('noBarrierComponents002', Level.LEVEL0, async (done: Function) => {
       console.info('noBarrierComponents002 START');
       setTimeout(() => {
         try {
@@ -87,7 +87,7 @@ export default function noBarrierComponentsTest() {
         done();
       }, 500)
     });
-    it('noBarrierComponents003', 0, async (done: Function) => {
+    it('noBarrierComponents003', Level.LEVEL0, async (done: Function) => {
       console.info('noBarrierComponents003 START');
       setTimeout(() => {
         try {
@@ -102,7 +102,7 @@ export default function noBarrierComponentsTest() {
         done();
       }, 500)
     });
-    it('noBarrierComponents004', 0, async (done: Function) => {
+    it('noBarrierComponents004', Level.LEVEL0, async (done: Function) => {
       console.info('noBarrierComponents004 START');
       setTimeout(() => {
         try {
@@ -117,7 +117,7 @@ export default function noBarrierComponentsTest() {
         done();
       }, 500)
     });
-    it('noBarrierComponents005', 0, async (done: Function) => {
+    it('noBarrierComponents005', Level.LEVEL0, async (done: Function) => {
       console.info('noBarrierComponents005 START');
       setTimeout(() => {
         try {
@@ -132,7 +132,7 @@ export default function noBarrierComponentsTest() {
         done();
       }, 500)
     });
-    it('noBarrierComponents006', 0, async (done: Function) => {
+    it('noBarrierComponents006', Level.LEVEL0, async (done: Function) => {
       console.info('noBarrierComponents006 START');
       setTimeout(() => {
         try {
@@ -147,7 +147,7 @@ export default function noBarrierComponentsTest() {
         done();
       }, 500)
     });
-    it('noBarrierComponents007', 0, async (done: Function) => {
+    it('noBarrierComponents007', Level.LEVEL0, async (done: Function) => {
       console.info('noBarrierComponents006 START');
       setTimeout(() => {
         try {
@@ -162,7 +162,7 @@ export default function noBarrierComponentsTest() {
         done();
       }, 500)
     });
-    it('noBarrierComponents008', 0, async (done: Function) => {
+    it('noBarrierComponents008', Level.LEVEL0, async (done: Function) => {
       console.info('noBarrierComponents008 START');
       setTimeout(() => {
         try {
@@ -177,7 +177,7 @@ export default function noBarrierComponentsTest() {
         done();
       }, 500)
     });
-    it('noBarrierComponents010', 0, async (done: Function) => {
+    it('noBarrierComponents010', Level.LEVEL0, async (done: Function) => {
       console.info('noBarrierComponents010 START');
       setTimeout(() => {
         try {
@@ -193,7 +193,7 @@ export default function noBarrierComponentsTest() {
       }, 500)
     });
 
-    it('noBarrierComponents011', 0, async (done: Function) => {
+    it('noBarrierComponents011', Level.LEVEL0, async (done: Function) => {
       console.info('noBarrierComponents011 START');
       setTimeout(() => {
         try {
@@ -208,7 +208,7 @@ export default function noBarrierComponentsTest() {
         done();
       }, 500)
     });
-    it('noBarrierComponents012', 0, async (done: Function) => {
+    it('noBarrierComponents012', Level.LEVEL0, async (done: Function) => {
       console.info('noBarrierComponents011 START');
       setTimeout(() => {
         try {
@@ -223,7 +223,7 @@ export default function noBarrierComponentsTest() {
         done();
       }, 500)
     });
-    it('noBarrierComponents013', 0, async (done: Function) => {
+    it('noBarrierComponents013', Level.LEVEL0, async (done: Function) => {
       console.info('noBarrierComponents013 START');
       setTimeout(() => {
         try {
@@ -238,7 +238,7 @@ export default function noBarrierComponentsTest() {
         done();
       }, 500)
     });
-    it('noBarrierComponents014', 0, async (done: Function) => {
+    it('noBarrierComponents014', Level.LEVEL0, async (done: Function) => {
       console.info('noBarrierComponents014 START');
       setTimeout(() => {
         try {
@@ -253,7 +253,7 @@ export default function noBarrierComponentsTest() {
         done();
       }, 500)
     });
-    it('noBarrierComponents015', 0, async (done: Function) => {
+    it('noBarrierComponents015', Level.LEVEL0, async (done: Function) => {
       console.info('noBarrierComponents015 START');
       setTimeout(() => {
         try {
@@ -268,7 +268,7 @@ export default function noBarrierComponentsTest() {
         done();
       }, 500)
     });
-    it('noBarrierComponents016', 0, async (done: Function) => {
+    it('noBarrierComponents016', Level.LEVEL0, async (done: Function) => {
       console.info('noBarrierComponents016 START');
       setTimeout(() => {
         try {
@@ -283,7 +283,7 @@ export default function noBarrierComponentsTest() {
         done();
       }, 500)
     });
-    it('noBarrierComponents017', 0, async (done: Function) => {
+    it('noBarrierComponents017', Level.LEVEL0, async (done: Function) => {
       console.info('noBarrierComponents017 START');
       setTimeout(() => {
         try {
@@ -298,7 +298,7 @@ export default function noBarrierComponentsTest() {
         done();
       }, 500)
     });
-    it('noBarrierComponents018', 0, async (done: Function) => {
+    it('noBarrierComponents018', Level.LEVEL0, async (done: Function) => {
       console.info('noBarrierComponents018 START');
       setTimeout(() => {
         try {
@@ -313,7 +313,7 @@ export default function noBarrierComponentsTest() {
         done();
       }, 500)
     });
-    it('noBarrierComponents019', 0, async (done: Function) => {
+    it('noBarrierComponents019', Level.LEVEL0, async (done: Function) => {
       console.info('noBarrierComponents019 START');
       setTimeout(() => {
         try {
@@ -328,7 +328,7 @@ export default function noBarrierComponentsTest() {
         done();
       }, 500)
     });
-    it('noBarrierComponents009', 0, async (done: Function) => {
+    it('noBarrierComponents009', Level.LEVEL0, async (done: Function) => {
       console.info('noBarrierComponents009 START');
       setTimeout(() => {
         try {
@@ -343,7 +343,7 @@ export default function noBarrierComponentsTest() {
         done();
       }, 500)
     });
-    it('noBarrierComponents020', 0, async (done: Function) => {
+    it('noBarrierComponents020', Level.LEVEL0, async (done: Function) => {
       console.info('noBarrierComponents020 START');
       setTimeout(() => {
         try {
@@ -358,7 +358,7 @@ export default function noBarrierComponentsTest() {
         done();
       }, 500)
     });
-    it('noBarrierComponents021', 0, async (done: Function) => {
+    it('noBarrierComponents021', Level.LEVEL0, async (done: Function) => {
       console.info('noBarrierComponents021 START');
       setTimeout(() => {
         try {
@@ -373,7 +373,7 @@ export default function noBarrierComponentsTest() {
         done();
       }, 500)
     });
-    it('noBarrierComponents022', 0, async (done: Function) => {
+    it('noBarrierComponents022', Level.LEVEL0, async (done: Function) => {
       console.info('noBarrierComponents022 START');
       setTimeout(() => {
         try {
@@ -388,7 +388,7 @@ export default function noBarrierComponentsTest() {
         done();
       }, 500)
     });
-    it('noBarrierComponents023', 0, async (done: Function) => {
+    it('noBarrierComponents023', Level.LEVEL0, async (done: Function) => {
       console.info('noBarrierComponents023 START');
       setTimeout(() => {
         try {
@@ -403,7 +403,7 @@ export default function noBarrierComponentsTest() {
         done();
       }, 500)
     });
-    it('noBarrierComponents024', 0, async (done: Function) => {
+    it('noBarrierComponents024', Level.LEVEL0, async (done: Function) => {
       console.info('noBarrierComponents024 START');
       setTimeout(() => {
         try {
@@ -419,7 +419,7 @@ export default function noBarrierComponentsTest() {
       }, 500)
     });
     
-    it('noBarrierComponents026', 0, async (done: Function) => {
+    it('noBarrierComponents026', Level.LEVEL0, async (done: Function) => {
       console.info('noBarrierComponents026 START');
       setTimeout(() => {
         try {
@@ -434,7 +434,7 @@ export default function noBarrierComponentsTest() {
         done();
       }, 500)
     });
-    it('noBarrierComponents027', 0, async (done: Function) => {
+    it('noBarrierComponents027', Level.LEVEL0, async (done: Function) => {
       console.info('noBarrierComponents027 START');
       setTimeout(() => {
         try {
@@ -449,7 +449,7 @@ export default function noBarrierComponentsTest() {
         done();
       }, 500)
     });
-    it('noBarrierComponents028', 0, async (done: Function) => {
+    it('noBarrierComponents028', Level.LEVEL0, async (done: Function) => {
       console.info('noBarrierComponents028 START');
       setTimeout(() => {
         try {
@@ -465,7 +465,7 @@ export default function noBarrierComponentsTest() {
       }, 500)
     });
    
-    it('noBarrierComponents030', 0, async (done: Function) => {
+    it('noBarrierComponents030', Level.LEVEL0, async (done: Function) => {
       console.info('noBarrierComponents030 START');
       setTimeout(() => {
         try {

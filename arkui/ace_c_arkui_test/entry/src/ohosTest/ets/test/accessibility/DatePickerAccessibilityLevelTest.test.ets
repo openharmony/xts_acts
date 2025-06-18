@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function datePickerAccessibilityLevelTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDatePickerAccessibilityLevel001', 0, async (done: Function) => {
+    it('testDatePickerAccessibilityLevel001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testDatePickerAccessibilityLevel001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function datePickerAccessibilityLevelTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDatePickerAccessibilityLevel002', 0, async (done: Function) => {
+    it('testDatePickerAccessibilityLevel002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testDatePickerAccessibilityLevel002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function datePickerAccessibilityLevelTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDatePickerAccessibilityLevel003', 0, async (done: Function) => {
+    it('testDatePickerAccessibilityLevel003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testDatePickerAccessibilityLevel003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function datePickerAccessibilityLevelTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testDatePickerAccessibilityLevel004', 0, async (done: Function) => {
+    it('testDatePickerAccessibilityLevel004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testDatePickerAccessibilityLevel004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function datePickerAccessibilityLevelTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testDatePickerAccessibilityLevel005', 0, async (done: Function) => {
+    it('testDatePickerAccessibilityLevel005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testDatePickerAccessibilityLevel005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function datePickerAccessibilityLevelTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testDatePickerAccessibilityLevel006', 0, async (done: Function) => {
+    it('testDatePickerAccessibilityLevel006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testDatePickerAccessibilityLevel006()).assertEqual(0)
       done()
     })

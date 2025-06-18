@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function commonAttrsZIndexTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsZIndex001', 0, async (done: Function) => {
+    it('testCommonAttrsZIndex001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsZIndex001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function commonAttrsZIndexTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsZIndex002', 0, async (done: Function) => {
+    it('testCommonAttrsZIndex002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsZIndex002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function commonAttrsZIndexTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsZIndex003', 0, async (done: Function) => {
+    it('testCommonAttrsZIndex003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsZIndex003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function commonAttrsZIndexTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsZIndex004', 0, async (done: Function) => {
+    it('testCommonAttrsZIndex004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsZIndex004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function commonAttrsZIndexTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsZIndex005', 0, async (done: Function) => {
+    it('testCommonAttrsZIndex005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsZIndex005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function commonAttrsZIndexTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsZIndex006', 0, async (done: Function) => {
+    it('testCommonAttrsZIndex006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsZIndex006()).assertEqual(0)
       done()
     })

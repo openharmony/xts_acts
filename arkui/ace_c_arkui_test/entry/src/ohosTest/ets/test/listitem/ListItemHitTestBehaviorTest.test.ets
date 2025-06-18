@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {  describe, expect, it } from '@ohos/hypium';
+import {  describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 
 export default function listItemHitTestBehaviorTest() {
@@ -27,7 +27,7 @@ export default function listItemHitTestBehaviorTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListItemHitTestBehavior001', 0, async (done: Function) => {
+    it('testListItemHitTestBehavior001', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ListItemHitTestBehaviorDefaultTest';
       await Utils.pushPage(`listitem/${PAGE_TAG}`);
       await Utils.clickComponent('Default')
@@ -47,7 +47,7 @@ export default function listItemHitTestBehaviorTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListItemHitTestBehavior002', 0, async (done: Function) => {
+    it('testListItemHitTestBehavior002', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ListItemHitTestBehaviorBlockTest';
       await Utils.pushPage(`listitem/${PAGE_TAG}`);
       await Utils.clickComponent('Block')
@@ -67,7 +67,7 @@ export default function listItemHitTestBehaviorTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListItemHitTestBehavior003', 0, async (done: Function) => {
+    it('testListItemHitTestBehavior003', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ListItemHitTestBehaviorTransparentTest';
       await Utils.pushPage(`listitem/${PAGE_TAG}`);
       await Utils.clickComponent('Transparent')
@@ -87,7 +87,7 @@ export default function listItemHitTestBehaviorTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListItemHitTestBehavior004', 0, async (done: Function) => {
+    it('testListItemHitTestBehavior004', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ListItemHitTestBehaviorNoneTest';
       await Utils.pushPage(`listitem/${PAGE_TAG}`);
       await Utils.clickComponent('None')

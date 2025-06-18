@@ -260,7 +260,7 @@ struct EnabledPage {
             }.backgroundColor(Color.Green).commonStyle()
           } else if (this.targetView == 'Counter') {
             Counter() {
-              Text('1')
+              Text('1').focusable(true)
             }.commonStyle()
           } else if (this.targetView == 'Flex') {
             Flex() {

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 
 export default function customComponentDrawContextGetSizeTest() {
@@ -35,7 +35,7 @@ export default function customComponentDrawContextGetSizeTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCustomComponentDrawContextGetSize001', 0, async (done: Function) => {
+    it('testCustomComponentDrawContextGetSize001', Level.LEVEL1, async (done: Function) => {
       await Utils.sleep(1000)
       expect(Utils.getComponentInfoByKey('OnDrawTest').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done()

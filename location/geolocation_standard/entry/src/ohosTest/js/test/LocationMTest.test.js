@@ -775,9 +775,10 @@ export default function geolocationTest_geo7() {
                     expect(true).assertEqual(poiArray[0].confidence != -1)
                     expect(true).assertEqual(poiArray[0].name != 'NA')
                     expect(true).assertEqual(poiArray[0].latitude != -1)
-                    expect(true).assertEqual(poiArray[0].lontitude != -1)
+                    expect(true).assertEqual(poiArray[0].longitude != -1)
                     expect(true).assertEqual(poiArray[0].administrativeArea != 'NA')
-                    expect(true).assertEqual(poiArray[0].locatity != 'NA')
+                    expect(true).assertEqual(poiArray[0].subAdministrativeArea != 'NA')
+                    expect(true).assertEqual(poiArray[0].locality != 'NA')
                     expect(true).assertEqual(poiArray[0].subLocality != 'NA')
                     expect(true).assertEqual(poiArray[0].address != 'NA')
                 }

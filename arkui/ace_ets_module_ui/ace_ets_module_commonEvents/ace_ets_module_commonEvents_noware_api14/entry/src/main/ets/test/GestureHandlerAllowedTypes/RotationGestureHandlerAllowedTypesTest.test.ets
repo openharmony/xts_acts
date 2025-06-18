@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
 import {PointerMatrix, UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode} from '@ohos.UiTest';
@@ -58,7 +58,7 @@ export default function RotationGestureHandlerAllowedTypesTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('RotationGestureHandlerAllowedTypesTest_0010', 0, async (done: Function) => {
+    it('RotationGestureHandlerAllowedTypesTest_0010', Level.LEVEL0, async (done: Function) => {
       console.info('RotationGestureHandlerAllowedTypesTest_0010 START');
       await CommonFunc.sleep(1000);
       let windowOffsetX:number = globalThis.winLeft

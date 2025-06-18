@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium';
 import Utils from './Utils'
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest';
 
@@ -48,7 +48,7 @@ export default function radioGroupJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testRadioGroup001', 0, async (done: Function) => {
+    it('testRadioGroup001', Level.LEVEL0, async (done: Function) => {
       console.info("[testRadioGroup001] START");
       let strJson = getInspectorByKey('RadioOne');
       let obj: ESObject = JSON.parse(strJson);
@@ -70,7 +70,7 @@ export default function radioGroupJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testRadioGroup002', 0, async (done: Function) => {
+    it('testRadioGroup002', Level.LEVEL0, async (done: Function) => {
       console.info("[testRadioGroup002] START");
       let strJson = getInspectorByKey('RadioOne');
       let obj: ESObject = JSON.parse(strJson);
@@ -89,7 +89,7 @@ export default function radioGroupJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testRadioGroup003', 0, async (done: Function) => {
+    it('testRadioGroup003', Level.LEVEL0, async (done: Function) => {
       console.info('testRadioGroup003 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

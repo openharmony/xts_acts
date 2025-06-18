@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function sliderAccessibilityLevelTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSliderAccessibilityLevel001', 0, async (done: Function) => {
+    it('testSliderAccessibilityLevel001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderAccessibilityLevel001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function sliderAccessibilityLevelTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSliderAccessibilityLevel002', 0, async (done: Function) => {
+    it('testSliderAccessibilityLevel002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderAccessibilityLevel002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function sliderAccessibilityLevelTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSliderAccessibilityLevel003', 0, async (done: Function) => {
+    it('testSliderAccessibilityLevel003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderAccessibilityLevel003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function sliderAccessibilityLevelTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSliderAccessibilityLevel004', 0, async (done: Function) => {
+    it('testSliderAccessibilityLevel004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderAccessibilityLevel004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function sliderAccessibilityLevelTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testSliderAccessibilityLevel005', 0, async (done: Function) => {
+    it('testSliderAccessibilityLevel005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderAccessibilityLevel005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function sliderAccessibilityLevelTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testSliderAccessibilityLevel006', 0, async (done: Function) => {
+    it('testSliderAccessibilityLevel006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderAccessibilityLevel006()).assertEqual(0)
       done()
     })

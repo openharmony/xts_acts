@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function commonAttrsBrightnessTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBrightness001', 0, async (done: Function) => {
+    it('testCommonAttrsBrightness001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBrightness001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function commonAttrsBrightnessTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBrightness002', 0, async (done: Function) => {
+    it('testCommonAttrsBrightness002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBrightness002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function commonAttrsBrightnessTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBrightness003', 0, async (done: Function) => {
+    it('testCommonAttrsBrightness003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBrightness003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function commonAttrsBrightnessTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBrightness004', 0, async (done: Function) => {
+    it('testCommonAttrsBrightness004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBrightness004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function commonAttrsBrightnessTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBrightness005', 0, async (done: Function) => {
+    it('testCommonAttrsBrightness005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBrightness005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function commonAttrsBrightnessTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBrightness006', 0, async (done: Function) => {
+    it('testCommonAttrsBrightness006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBrightness006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function commonAttrsBrightnessTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBrightness007', 0, async (done: Function) => {
+    it('testCommonAttrsBrightness007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBrightness007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function commonAttrsBrightnessTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsBrightness008', 0, async (done: Function) => {
+    it('testCommonAttrsBrightness008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsBrightness008()).assertEqual(0)
       done()
     })

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 import { Driver, ON } from '@ohos.UiTest';
@@ -30,7 +30,7 @@ export default function textAreaSelectionMenuHiddenTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaSelectionMenuHidden001', 0, async (done: Function) => {
+    it('testTextAreaSelectionMenuHidden001', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`textarea/${PAGE_TAG}`);
       focusControl.requestFocus('textArea')
       await Utils.sleep(1000)

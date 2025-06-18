@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 
 export default function commonEventOnBlurTest() {
@@ -34,7 +34,7 @@ export default function commonEventOnBlurTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCommonEventOnBlur001', 0, async (done: Function) => {
+    it('testCommonEventOnBlur001', Level.LEVEL1, async (done: Function) => {
       focusControl.requestFocus('OnBlurTestButtonCompare')
       await Utils.sleep(2000)
       focusControl.requestFocus('OnBlurTestButton')
@@ -52,7 +52,7 @@ export default function commonEventOnBlurTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCommonEventOnBlur002', 0, async (done: Function) => {
+    it('testCommonEventOnBlur002', Level.LEVEL1, async (done: Function) => {
       focusControl.requestFocus('OnBlurTestButtonDisable')
       await Utils.sleep(2000)
       focusControl.requestFocus('OnBlurTestButton')

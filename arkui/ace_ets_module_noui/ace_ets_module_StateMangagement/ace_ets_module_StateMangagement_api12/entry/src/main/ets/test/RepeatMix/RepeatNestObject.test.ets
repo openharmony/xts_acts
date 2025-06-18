@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -66,7 +66,7 @@ export default function RepeatNestObject() {
      * @tc.type
      * @tc.size
      */
-    it('RepeatNestObject_001', 0, async (done: Function) => {
+    it('RepeatNestObject_001', Level.LEVEL0, async (done: Function) => {
       console.info('[RepeatNestObject_001] START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();

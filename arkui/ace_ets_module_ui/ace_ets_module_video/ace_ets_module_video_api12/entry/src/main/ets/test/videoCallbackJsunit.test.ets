@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import router from '@ohos.router';
 import Utils from './Utils';
 import {
@@ -65,7 +65,7 @@ export default function videoCallbackJsunit() {
      * @tc.type      : Function
      * @tc.level     : level 0
      */
-    it('videoCallbackJsunit_0500', 0, async (done: Function) => {
+    it('videoCallbackJsunit_0500', Level.LEVEL0, async (done: Function) => {
       let driver = Driver.create();
       let callback = (event: events_emitter.EventData) => {
         expect(event.data?.action).assertEqual('onStart');
@@ -104,7 +104,7 @@ export default function videoCallbackJsunit() {
      * @tc.type      : Function
      * @tc.level     : level 0
      */
-    it('videoCallbackJsunit_0501', 0, async (done: Function) => {
+    it('videoCallbackJsunit_0501', Level.LEVEL0, async (done: Function) => {
       let driver = Driver.create();
       let callback = (event: events_emitter.EventData) => {
         expect(event.data?.action).assertEqual('onStart');

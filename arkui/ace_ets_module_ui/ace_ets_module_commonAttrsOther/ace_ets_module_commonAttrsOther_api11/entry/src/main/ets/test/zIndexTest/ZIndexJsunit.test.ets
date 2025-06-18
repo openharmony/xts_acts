@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -45,7 +45,7 @@ export default function zIndexJsunit() {
       console.info("zIndex after each called");
     });
 
-    it('testZIndex01', 0, async () => {
+    it('testZIndex01', Level.LEVEL0, async () => {
       console.info('[testZIndex01] START');
       await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('zIndex');
@@ -55,7 +55,7 @@ export default function zIndexJsunit() {
 
     });
 
-    it('testZIndex02', 0, async () => {
+    it('testZIndex02', Level.LEVEL0, async () => {
       console.info('[testZIndex02] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -80,7 +80,7 @@ export default function zIndexJsunit() {
 
     });
 
-    it('testZIndex03', 0, async () => {
+    it('testZIndex03', Level.LEVEL0, async () => {
       console.info('[testZIndex03] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -105,7 +105,7 @@ export default function zIndexJsunit() {
 
     });
 
-    it('testZIndex04', 0, async () => {
+    it('testZIndex04', Level.LEVEL0, async () => {
       console.info('[testZIndex04] START');
       try {
         let eventData: events_emitter.EventData = {

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect,beforeAll } from "@ohos/hypium";
+import { describe, beforeEach, afterEach, it, expect,beforeAll, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -58,7 +58,7 @@ config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
       console.info("PanGesture after each called");
     });
 
-    it('testPanGesture01', 0, async (done: Function) => {
+    it('testPanGesture01', Level.LEVEL0, async (done: Function) => {
       console.info('[testPanGesture01] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -80,7 +80,7 @@ config.enableAbility(BUNDLE_NAME, CAPACITY).then(() => {
       done();
     });
 
-    it('testPanGesture02', 0, async (done: Function) => {
+    it('testPanGesture02', Level.LEVEL0, async (done: Function) => {
       let rect = CommonFunc.getComponentRect('PanGesture')
       console.info("[testPanGesture02] rectInfo is " + JSON.stringify(rect));
       x_value = rect.left + (rect.right - rect.left) / 10

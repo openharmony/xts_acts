@@ -16,20 +16,20 @@ import { LengthMetrics } from '@kit.ArkUI'
 
 @Entry
 @Component
-struct RowMatchParent1 {
+struct RowMatchParent {
   build() {
     Row() {
       Row().backgroundColor(Color.Pink)
         .width(LayoutPolicy.matchParent)
         .height(LayoutPolicy.matchParent)
-        .id('Row1')
+        .key('RowMatchParentTest_0100_child')
     }
-    .width(150)
-    .height(150)
+    .width(200)
+    .height(200)
     .padding(20)
-    .border({ width: 5, color: Color.Yellow })
+    .border({ width: 10, color: Color.Yellow })
     .safeAreaPadding(LengthMetrics.vp(10))
     .backgroundColor(Color.Red)
-    .id('Row2')
+    .key('RowMatchParentTest_0100_parent')
   }
 }

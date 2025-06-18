@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { expect, it, afterEach, afterAll, beforeEach, beforeAll, describe } from "@ohos/hypium"
+import { expect, it, afterEach, afterAll, beforeEach, beforeAll, describe, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   PointerMatrix,
@@ -60,7 +60,7 @@ export default function comSizeAbilityTest_07() {
         * @tc.desc  : test the size of component
         * @tc.level : Level 2
         */
-    it('comSizeAbilityTestJsunit_20', 0, async (done: Function) => {
+    it('comSizeAbilityTestJsunit_20', Level.LEVEL0, async (done: Function) => {
       console.info('comSizeAbilityTestJsunit_20 START')
       await CommonFunc.sleep(1000);
       if (globalThis.winLeft == 0) {
@@ -93,7 +93,7 @@ export default function comSizeAbilityTest_07() {
         * @tc.desc  : test the size of component
         * @tc.level : Level 2
         */
-    it('comSizeAbilityTestJsunit_21', 0, async (done: Function) => {
+    it('comSizeAbilityTestJsunit_21', Level.LEVEL0, async (done: Function) => {
       console.info('comSizeAbilityTestJsunit_21 START')
       await CommonFunc.sleep(1000);
       if (globalThis.winLeft == 0) {
@@ -132,7 +132,7 @@ export default function comSizeAbilityTest_07() {
         * @tc.desc  : test the size of component
         * @tc.level : Level 2
         */
-    it('comSizeAbilityTestJsunit_22', 0, async (done: Function) => {
+    it('comSizeAbilityTestJsunit_22', Level.LEVEL0, async (done: Function) => {
       console.info('comSizeAbilityTestJsunit_22 START')
       await CommonFunc.sleep(1000);
       if (globalThis.winLeft == 0) {

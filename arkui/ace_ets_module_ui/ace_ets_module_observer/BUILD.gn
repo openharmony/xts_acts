@@ -16,5 +16,6 @@ group("ActsAceEtsModuleObserverTest") {
   deps = [
     "ace_ets_module_observer_api11:ActsAceEtsModuleObserverApi11Test",
     "ace_ets_module_observer_api12:ActsAceEtsModuleObserverApi12Test",
+    "ace_ets_module_observer_api20:ActsAceEtsModuleObserverApi20Test",
   ]
 }

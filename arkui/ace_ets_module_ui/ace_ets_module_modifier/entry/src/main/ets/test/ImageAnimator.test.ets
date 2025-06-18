@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
@@ -47,7 +47,7 @@ export default function imageAnimatorJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('imageAnimatorTest_0001', 0, async (done: Function) => {
+    it('imageAnimatorTest_0001', Level.LEVEL0, async (done: Function) => {
       console.info('imageAnimatorTest_0001 START');
       let strJsonNew = getInspectorByKey('imageAnimator');
       
@@ -66,7 +66,7 @@ export default function imageAnimatorJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('imageAnimatorTest_0002', 0, async (done: Function) => {
+    it('imageAnimatorTest_0002', Level.LEVEL0, async (done: Function) => {
       console.info('imageAnimatorTest_0002 START');
       let strJsonNew = getInspectorByKey('imageAnimator');
       
@@ -85,7 +85,7 @@ export default function imageAnimatorJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('imageAnimatorTest_0003', 0, async (done: Function) => {
+    it('imageAnimatorTest_0003', Level.LEVEL0, async (done: Function) => {
       console.info('imageAnimatorTest_0003 START');
       let strJsonNew = getInspectorByKey('imageAnimator');
       
@@ -104,7 +104,7 @@ export default function imageAnimatorJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('imageAnimatorTest_0004', 0, async (done: Function) => {
+    it('imageAnimatorTest_0004', Level.LEVEL0, async (done: Function) => {
       console.info('imageAnimatorTest_0004 START');
       let strJsonNew = getInspectorByKey('imageAnimator');
       
@@ -123,7 +123,7 @@ export default function imageAnimatorJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('imageAnimatorTest_0005', 0, async (done: Function) => {
+    it('imageAnimatorTest_0005', Level.LEVEL0, async (done: Function) => {
       console.info('imageAnimatorTest_0005 START');
       let strJsonNew = getInspectorByKey('imageAnimator');
       
@@ -142,7 +142,7 @@ export default function imageAnimatorJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('imageAnimatorTest_0006', 0, async (done: Function) => {
+    it('imageAnimatorTest_0006', Level.LEVEL0, async (done: Function) => {
       console.info('imageAnimatorTest_0006 START');
       let strJsonNew = getInspectorByKey('imageAnimator');
       
@@ -161,7 +161,7 @@ export default function imageAnimatorJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('imageAnimatorTest_0007', 0, async (done: Function) => {
+    it('imageAnimatorTest_0007', Level.LEVEL0, async (done: Function) => {
       console.info('imageAnimatorTest_0007 START');
       let strJsonNew = getInspectorByKey('imageAnimator');
       
@@ -181,7 +181,7 @@ export default function imageAnimatorJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('imageAnimatorTest_0008', 0, async (done: Function) => {
+    it('imageAnimatorTest_0008', Level.LEVEL0, async (done: Function) => {
 
       console.info('imageAnimatorTest_0008 START');
       let driver = Driver.create();

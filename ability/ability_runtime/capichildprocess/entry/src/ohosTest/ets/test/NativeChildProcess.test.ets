@@ -72,12 +72,12 @@ export default function nativeChildProcessTest() {
         let a = 123;
         let b = 456;
         expect(a + b).assertEqual(testNapi.childProcessAdd(a, b));
-        expect(1).assertEqual(testNapi.requestExitChildProcess());
+        expect(1).assertEqual(testNapi.requestExitChildProcess(0));
         await sleep(600);
 
         console.info(`${tag}: Test restart native child process`);
         expect(0).assertEqual(testNapi.startNativeChildProcess('libentry.so'));
-        expect(1).assertEqual(testNapi.requestExitChildProcess());
+        expect(1).assertEqual(testNapi.requestExitChildProcess(0));
         await sleep(600);
       } catch(err) {
         console.error(`${tag} error: ${JSON.stringify(err)}`);
@@ -190,7 +190,7 @@ export default function nativeChildProcessTest() {
 
         expect(0).assertEqual(testNapi.startNativeChildProcess('libentry.so'));
         expect(16010005).assertEqual(testNapi.childProcessStartNewProcess());
-        expect(1).assertEqual(testNapi.requestExitChildProcess());
+        expect(1).assertEqual(testNapi.requestExitChildProcess(0));
         await sleep(600);
       } catch(err) {
         console.error(`${tag} error: ${JSON.stringify(err)}`);
@@ -249,7 +249,7 @@ export default function nativeChildProcessTest() {
         }
         expect(16010006).assertEqual(testNapi.startNativeChildProcess('libentry.so'));
         for (let i = 0; i < 50; i++) {
-          expect(1).assertEqual(testNapi.requestExitChildProcess());
+          expect(1).assertEqual(testNapi.requestExitChildProcess(0));
         }
         await sleep(600);
       } catch(err) {
@@ -307,7 +307,7 @@ export default function nativeChildProcessTest() {
 
         expect(0).assertEqual(testNapi.busyTest());
         await sleep(100);
-        expect(1).assertEqual(testNapi.requestExitChildProcess());
+        expect(1).assertEqual(testNapi.requestExitChildProcess(0));
         await sleep(600);
       } catch(err) {
         console.error(`${tag} error: ${JSON.stringify(err)}`);
@@ -373,7 +373,7 @@ export default function nativeChildProcessTest() {
         }
 
         expect(0).assertEqual(testNapi.startNativeChildProcess('libentry.so'));
-        expect(1).assertEqual(testNapi.requestExitChildProcess());
+        expect(1).assertEqual(testNapi.requestExitChildProcess(0));
 
         await sleep(600);
       } catch(err) {
@@ -406,7 +406,7 @@ export default function nativeChildProcessTest() {
         }
 
         for (let i = 0; i < 50; i++) {
-          expect(1).assertEqual(testNapi.requestExitChildProcess());
+          expect(1).assertEqual(testNapi.requestExitChildProcess(0));
         }
         await sleep(600);
       } catch(err) {
@@ -438,13 +438,13 @@ export default function nativeChildProcessTest() {
           expect(0).assertEqual(testNapi.startNativeChildProcess('libentry.so'));
         }
         expect(16010006).assertEqual(testNapi.startNativeChildProcess('libentry.so'));
-        expect(1).assertEqual(testNapi.requestExitChildProcess());
+        expect(1).assertEqual(testNapi.requestExitChildProcess(0));
 
         await sleep(100);
         expect(0).assertEqual(testNapi.startNativeChildProcess('libentry.so'));
 
         for (let i = 0; i < 50; i++) {
-          expect(1).assertEqual(testNapi.requestExitChildProcess());
+          expect(1).assertEqual(testNapi.requestExitChildProcess(0));
         }
         await sleep(600);
       } catch(err) {

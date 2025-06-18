@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium';
 import Utils from './Utils'
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest';
 
@@ -48,7 +48,7 @@ export default function pathNewTest() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testPathNe0004', 0, async (done: Function) => {
+    it('testPathNe0004', Level.LEVEL0, async (done: Function) => {
       console.info('pathNe testPathNe0004 START');
       let strJson = getInspectorByKey('PathKey1');
       console.info("[testPathNe0004] component fontSize strJson:" + strJson);
@@ -67,7 +67,7 @@ export default function pathNewTest() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testPathNe0005', 0, async (done: Function) => {
+    it('testPathNe0005', Level.LEVEL0, async (done: Function) => {
       console.info('testPathNe0005 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

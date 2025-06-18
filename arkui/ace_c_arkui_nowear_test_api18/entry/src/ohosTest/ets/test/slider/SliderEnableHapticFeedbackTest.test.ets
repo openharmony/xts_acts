@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function SliderTest() {
     * @tc.type: Function
     * @tc.level: Level 1
     */
-    it('testSliderEnableHpaticFeedback001', 0, async (done: Function) => {
+    it('testSliderEnableHpaticFeedback001',  Level.LEVEL0, async (done: Function) => {
       expect(nativeFunc.testSliderEnableHpaticFeedback001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function SliderTest() {
     * @tc.type: Function
     * @tc.level: Level 1
     */
-    it('testSliderEnableHpaticFeedback002', 0, async (done: Function) => {
+    it('testSliderEnableHpaticFeedback002',  Level.LEVEL0, async (done: Function) => {
       expect(nativeFunc.testSliderEnableHpaticFeedback002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function SliderTest() {
     * @tc.type: Function
     * @tc.level: Level 1
     */
-    it('testSliderEnableHpaticFeedback003', 0, async (done: Function) => {
+    it('testSliderEnableHpaticFeedback003',  Level.LEVEL0, async (done: Function) => {
       expect(nativeFunc.testSliderEnableHpaticFeedback003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function SliderTest() {
     * @tc.type: Function
     * @tc.level: Level 2
     */
-    it('testSliderEnableHpaticFeedback004', 0, async (done: Function) => {
+    it('testSliderEnableHpaticFeedback004',  Level.LEVEL0, async (done: Function) => {
       expect(nativeFunc.testSliderEnableHpaticFeedback004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function SliderTest() {
     * @tc.type: Function
     * @tc.level: Level 1
     */
-    it('testSliderEnableHpaticFeedback005', 0, async (done: Function) => {
+    it('testSliderEnableHpaticFeedback005',  Level.LEVEL0, async (done: Function) => {
       expect(nativeFunc.testSliderEnableHpaticFeedback005()).assertEqual(0)
       done()
     })

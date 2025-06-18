@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textAreaContentTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaContentType001', 0, async (done: Function) => {
+    it('testTextAreaContentType001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaContentType001()).assertEqual(0)
       done();
     });
@@ -46,7 +46,7 @@ export default function textAreaContentTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaContentType002', 0, async (done: Function) => {
+    it('testTextAreaContentType002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaContentType002()).assertEqual(0)
       done();
     });
@@ -58,7 +58,7 @@ export default function textAreaContentTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaContentType003', 0, async (done: Function) => {
+    it('testTextAreaContentType003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaContentType003()).assertEqual(0)
       done();
     }); 
@@ -70,7 +70,7 @@ export default function textAreaContentTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaContentType004', 0, async (done: Function) => {
+    it('testTextAreaContentType004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaContentType004()).assertEqual(0)
       done();
     }); 
@@ -82,7 +82,7 @@ export default function textAreaContentTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaContentType005', 0, async (done: Function) => {
+    it('testTextAreaContentType005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaContentType005()).assertEqual(0)
       done();
     }); 
@@ -94,7 +94,7 @@ export default function textAreaContentTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaContentType006', 0, async (done: Function) => {
+    it('testTextAreaContentType006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaContentType006()).assertEqual(0)
       done();
     });
@@ -106,7 +106,7 @@ export default function textAreaContentTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaContentType007', 0, async (done: Function) => {
+    it('testTextAreaContentType007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaContentType007()).assertEqual(0)
       done();
     });
@@ -118,7 +118,7 @@ export default function textAreaContentTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaContentType008', 0, async (done: Function) => {
+    it('testTextAreaContentType008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaContentType008()).assertEqual(0)
       done();
     }); 
@@ -130,7 +130,7 @@ export default function textAreaContentTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaContentType009', 0, async (done: Function) => {
+    it('testTextAreaContentType009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaContentType009()).assertEqual(0)
       done();
     });
@@ -142,7 +142,7 @@ export default function textAreaContentTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaContentType010', 0, async (done: Function) => {
+    it('testTextAreaContentType010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaContentType010()).assertEqual(0)
       done();
     });
@@ -154,7 +154,7 @@ export default function textAreaContentTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaContentType011', 0, async (done: Function) => {
+    it('testTextAreaContentType011', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaContentType011()).assertEqual(0)
       done();
     });
@@ -166,7 +166,7 @@ export default function textAreaContentTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaContentType012', 0, async (done: Function) => {
+    it('testTextAreaContentType012', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaContentType012()).assertEqual(0)
       done();
     });
@@ -178,7 +178,7 @@ export default function textAreaContentTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaContentType013', 0, async (done: Function) => {
+    it('testTextAreaContentType013', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaContentType013()).assertEqual(0)
       done();
     });
@@ -190,7 +190,7 @@ export default function textAreaContentTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaContentType014', 0, async (done: Function) => {
+    it('testTextAreaContentType014', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaContentType014()).assertEqual(0)
       done();
     });
@@ -202,7 +202,7 @@ export default function textAreaContentTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaContentType015', 0, async (done: Function) => {
+    it('testTextAreaContentType015', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaContentType015()).assertEqual(0)
       done();
     });
@@ -214,7 +214,7 @@ export default function textAreaContentTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaContentType016', 0, async (done: Function) => {
+    it('testTextAreaContentType016', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaContentType016()).assertEqual(0)
       done();
     });
@@ -226,7 +226,7 @@ export default function textAreaContentTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaContentType017', 0, async (done: Function) => {
+    it('testTextAreaContentType017', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaContentType017()).assertEqual(0)
       done();
     });
@@ -238,7 +238,7 @@ export default function textAreaContentTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaContentType018', 0, async (done: Function) => {
+    it('testTextAreaContentType018', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaContentType018()).assertEqual(0)
       done();
     });
@@ -250,7 +250,7 @@ export default function textAreaContentTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaContentType019', 0, async (done: Function) => {
+    it('testTextAreaContentType019', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaContentType019()).assertEqual(0)
       done();
     });
@@ -262,7 +262,7 @@ export default function textAreaContentTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaContentType020', 0, async (done: Function) => {
+    it('testTextAreaContentType020', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaContentType020()).assertEqual(0)
       done();
     }); 
@@ -274,7 +274,7 @@ export default function textAreaContentTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaContentType021', 0, async (done: Function) => {
+    it('testTextAreaContentType021', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaContentType021()).assertEqual(0)
       done();
     });   
@@ -286,7 +286,7 @@ export default function textAreaContentTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaContentType022', 0, async (done: Function) => {
+    it('testTextAreaContentType022', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaContentType022()).assertEqual(0)
       done();
     }); 
@@ -298,7 +298,7 @@ export default function textAreaContentTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaContentType023', 0, async (done: Function) => {
+    it('testTextAreaContentType023', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaContentType023()).assertEqual(0)
       done();
     });
@@ -310,7 +310,7 @@ export default function textAreaContentTypeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaContentType024', 0, async (done: Function) => {
+    it('testTextAreaContentType024', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaContentType024()).assertEqual(0)
       done();
     });

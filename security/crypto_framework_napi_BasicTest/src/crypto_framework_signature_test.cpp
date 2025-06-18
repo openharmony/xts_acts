@@ -652,6 +652,9 @@ static OH_Crypto_ErrCode OHTEST_DoNoSegmentSign(const char *algoName, OH_CryptoP
     ret = OH_CryptoSign_Final(sign, msgBlob, signData);
     if (ret != CRYPTO_SUCCESS) {
         goto EXIT;
+    } else {
+        const char *signName = OH_CryptoSign_GetAlgoName(sign);
+        EXPECT_TRUE(signName != nullptr);
     }
 
 EXIT:

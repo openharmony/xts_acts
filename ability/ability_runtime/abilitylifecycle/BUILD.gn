@@ -17,6 +17,7 @@ group("abilitylifecycletest") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "asynclifecycletest:ActsAsyncLifeCycleTest",
       "lifecyclemain:ActsLifeCycleMainTest",
       "lifecycletest:ActsLifeCycleTest",
     ]

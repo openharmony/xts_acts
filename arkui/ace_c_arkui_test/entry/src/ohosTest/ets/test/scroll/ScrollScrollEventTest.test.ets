@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import { Driver, ON } from '@kit.TestKit';
 import nativeRender from 'libnativerender.so'
@@ -39,7 +39,7 @@ export default function scrollScrollEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testScrollScrollEvent001', 0, async (done: Function) => {
+    it('testScrollScrollEvent001', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollScrollEventOnWillScrollTest';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       await fling_p('OnWillScroll')
@@ -56,7 +56,7 @@ export default function scrollScrollEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testScrollScrollEvent002', 0, async (done: Function) => {
+    it('testScrollScrollEvent002', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollScrollEventOnDidScrollTest';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       await fling_p('OnDidScroll')
@@ -73,7 +73,7 @@ export default function scrollScrollEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testScrollScrollEvent003', 0, async (done: Function) => {
+    it('testScrollScrollEvent003', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollScrollEventOnReachStartTest';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       await Utils.sleep(1000)
@@ -89,7 +89,7 @@ export default function scrollScrollEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testScrollScrollEvent004', 0, async (done: Function) => {
+    it('testScrollScrollEvent004', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollScrollEventOnReachEndTest';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       await fling_p('OnReachEnd')
@@ -106,7 +106,7 @@ export default function scrollScrollEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testScrollScrollEvent005', 0, async (done: Function) => {
+    it('testScrollScrollEvent005', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollScrollEventScrollBy001Test';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('ScrollBy001').$attrs.backgroundColor).assertEqual('#FF00FF00')
@@ -121,7 +121,7 @@ export default function scrollScrollEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testScrollScrollEvent006', 0, async (done: Function) => {
+    it('testScrollScrollEvent006', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollScrollEventScrollBy002Test';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('ScrollBy002').$attrs.backgroundColor).assertEqual('#FF00FF00')
@@ -136,7 +136,7 @@ export default function scrollScrollEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testScrollScrollEvent007', 0, async (done: Function) => {
+    it('testScrollScrollEvent007', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollScrollEventScrollBy003Test';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('ScrollBy003').$attrs.backgroundColor).assertEqual('#FF00FF00')
@@ -151,7 +151,7 @@ export default function scrollScrollEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testScrollScrollEvent008', 0, async (done: Function) => {
+    it('testScrollScrollEvent008', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollScrollEventScrollBy004Test';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('ScrollBy004').$attrs.backgroundColor).assertEqual('#FF00FF00')
@@ -166,7 +166,7 @@ export default function scrollScrollEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testScrollScrollEvent009', 0, async (done: Function) => {
+    it('testScrollScrollEvent009', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollScrollEventScrollBy005Test';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('ScrollBy005').$attrs.backgroundColor).assertEqual('#FF00FF00')
@@ -181,7 +181,7 @@ export default function scrollScrollEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testScrollScrollEvent010', 0, async (done: Function) => {
+    it('testScrollScrollEvent010', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollScrollEventScrollBy006Test';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('ScrollBy006').$attrs.backgroundColor).assertEqual('#FF00FF00')
@@ -196,7 +196,7 @@ export default function scrollScrollEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testScrollScrollEvent011', 0, async (done: Function) => {
+    it('testScrollScrollEvent011', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollScrollEventOnWillDidScrollTest';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       await fling_p('OnWillDidScroll')

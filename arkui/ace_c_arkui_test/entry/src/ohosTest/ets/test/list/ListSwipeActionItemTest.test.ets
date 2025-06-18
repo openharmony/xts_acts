@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function ListSwipeActionItemTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListSwipeAction001', 0, async (done: Function) => {
+    it('testListSwipeAction001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListSwipeActionCreate()).assertEqual(1)
       done()
     })
@@ -47,7 +47,7 @@ export default function ListSwipeActionItemTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
     */
-    it('testListSwipeAction002', 0, async (done: Function) => {
+    it('testListSwipeAction002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListSwipeActionSetActionAreaDistance001()).assertEqual(0);
       done()
     })
@@ -60,7 +60,7 @@ export default function ListSwipeActionItemTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
     */
-    it('testListSwipeAction003', 0, async (done: Function) => {
+    it('testListSwipeAction003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListSwipeActionOptionEdgeEffect()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function ListSwipeActionItemTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
     */
-    it('testListSwipeAction004', 0, async (done: Function) => {
+    it('testListSwipeAction004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListSwipeActionItem007()).assertEqual(1)
       done()
     })
@@ -86,7 +86,7 @@ export default function ListSwipeActionItemTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
     */
-    it('testListSwipeAction005', 0, async (done: Function) => {
+    it('testListSwipeAction005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListSwipeActionItem006()).assertEqual(1)
       done()
     })
@@ -99,7 +99,7 @@ export default function ListSwipeActionItemTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
     */
-    it('testListSwipeAction006', 0, async (done: Function) => {
+    it('testListSwipeAction006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListSwipeActionOptionCreate()).assertEqual(1);
       done()
     })
@@ -112,7 +112,7 @@ export default function ListSwipeActionItemTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
     */
-    it('testListSwipeAction007', 0, async (done: Function) => {
+    it('testListSwipeAction007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListSwipeActionItem008()).assertEqual(1);
       done()
     })
@@ -125,7 +125,7 @@ export default function ListSwipeActionItemTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
     */
-    it('testListSwipeAction008', 0, async (done: Function) => {
+    it('testListSwipeAction008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListSwipeActionItem009()).assertEqual(1);
       done()
     })

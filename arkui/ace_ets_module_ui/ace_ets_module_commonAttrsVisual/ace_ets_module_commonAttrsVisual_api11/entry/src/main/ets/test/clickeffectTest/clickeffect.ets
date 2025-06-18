@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium'
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
 let emitKey = "emitUserAgent";
@@ -45,7 +45,7 @@ export default function clickeffectTest() {
      * @tc.name      Test the ClickEffect properties of the Toogle_Switch component
      * @tc.desc      Set the parameter to Light level with default scale
      */
-    it('ArkUXII_Stage_ClickEffect_Toggle_0100', 0, async   (done:Function)=> {
+    it('ArkUXII_Stage_ClickEffect_Toggle_0100', Level.LEVEL2, async   (done:Function)=> {
       console.info("ArkUXII_Stage_ClickEffect_Toggle_0100 start");
       setTimeout(() => {
         try {
@@ -312,7 +312,7 @@ export default function clickeffectTest() {
      * @tc.desc      First Set the level to null
      *               Second Set the level to Middle
      */
-    it('ArkUXII_Stage_ClickEffect_Toggle_1300', 0, async   (done:Function)=> {
+    it('ArkUXII_Stage_ClickEffect_Toggle_1300', Level.LEVEL2, async   (done:Function)=> {
       console.info("ArkUXII_Stage_ClickEffect_Toggle_1300 start");
       setTimeout(() => {
         try {

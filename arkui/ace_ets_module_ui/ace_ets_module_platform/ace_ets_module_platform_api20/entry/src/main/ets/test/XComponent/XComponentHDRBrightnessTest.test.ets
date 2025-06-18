@@ -52,7 +52,7 @@ export default function XComponentHDRBrightnessTest() {
      * @tc.desc      Test XComponentHDRBrightness
      * @tc.level     Level 2
      */
-    it('XComponentHDRBrightness_0100', Level.LEVEL1, async (done: Function) => {
+    it('XComponentHDRBrightness_0100', Level.LEVEL2, async (done: Function) => {
       console.info('[XComponentHDRBrightness_0100] START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);

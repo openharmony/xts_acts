@@ -32,6 +32,8 @@ struct Index {
         })
 
       Button('Start Ability')
+        .width('1%')
+        .height('1%')
         .fontSize(50)
         .fontWeight(FontWeight.Bold)
         .onClick(() => {

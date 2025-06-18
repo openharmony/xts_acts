@@ -29,6 +29,8 @@ export default function systemManagerTest() {
     testNotifyUpdatePackages();
     testGetUpdateResult();
     testGetUpdateAuthData();
+    testSetAutoUnlockAfterReboot();
+    testGetAutoUnlockAfterReboot();
   })
 }
 
@@ -843,6 +845,179 @@ function testGetUpdateAuthData() {
       expect(authData.length).not().assertEqual(0);
     } catch (error) {
       expect(false).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+}
+
+function testSetAutoUnlockAfterReboot() {
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_AUTO_UNLOCK_AFTER_REBOOT_JS_0001
+   * @tc.name      : test_set_auto_unlock_after_reboot_0001
+   * @tc.desc      : test systemManager setAutoUnlockAfterReboot without admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_auto_unlock_after_reboot_0001", Level.LEVEL2, async (done: Function) => {
+    try {
+      systemManager.setAutoUnlockAfterReboot(SELFWANT, false);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 801 || error.code == 9200001).assertTrue();
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_AUTO_UNLOCK_AFTER_REBOOT_JS_0002
+   * @tc.name      : test_set_auto_unlock_after_reboot_0002
+   * @tc.desc      : test systemManager setAutoUnlockAfterReboot with normal admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_auto_unlock_after_reboot_0002", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+    try {
+      systemManager.setAutoUnlockAfterReboot(SELFWANT, false);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 801 || error.code == 9200002).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_AUTO_UNLOCK_AFTER_REBOOT_JS_0003
+   * @tc.name      : test_set_auto_unlock_after_reboot_0003
+   * @tc.desc      : test systemManager setAutoUnlockAfterReboot true
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_auto_unlock_after_reboot_0003", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    let errorCode: number = 0;
+    try {
+      systemManager.setAutoUnlockAfterReboot(SELFWANT, true);
+      let rel: boolean = systemManager.getAutoUnlockAfterReboot(SELFWANT)
+      expect(rel).assertTrue();
+    } catch (error) {
+      errorCode = error.code;
+      expect(error.code == 801 || false).assertTrue();
+    } finally {
+      if (errorCode == 0){
+        systemManager.setAutoUnlockAfterReboot(SELFWANT, false);
+      }
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+  
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_AUTO_UNLOCK_AFTER_REBOOT_JS_0004
+   * @tc.name      : test_set_auto_unlock_after_reboot_0004
+   * @tc.desc      : test systemManager setAutoUnlockAfterReboot false
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_auto_unlock_after_reboot_0004", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      systemManager.setAutoUnlockAfterReboot(SELFWANT, false);
+      let rel: boolean = systemManager.getAutoUnlockAfterReboot(SELFWANT)
+      expect(rel).assertFalse();
+    } catch (error) {
+      expect(error.code == 801 || false).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_AUTO_UNLOCK_AFTER_REBOOT_JS_0005
+   * @tc.name      : test_set_auto_unlock_after_reboot_0005
+   * @tc.desc      : test systemManager setAutoUnlockAfterReboot with invalid admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_auto_unlock_after_reboot_0005", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      systemManager.setAutoUnlockAfterReboot(INVALID_WANT, false);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 801 || error.code == 401).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+}
+
+function testGetAutoUnlockAfterReboot() {
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_GET_AUTO_UNLOCK_AFTER_REBOOT_JS_0001
+   * @tc.name      : test_get_auto_unlock_after_reboot_0001
+   * @tc.desc      : test systemManager getAutoUnlockAfterReboot without admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_get_auto_unlock_after_reboot_0001", Level.LEVEL2, async (done: Function) => {
+    try {
+      systemManager.getAutoUnlockAfterReboot(SELFWANT);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 801 || error.code == 9200001).assertTrue();
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_GET_AUTO_UNLOCK_AFTER_REBOOT_JS_0002
+   * @tc.name      : test_get_auto_unlock_after_reboot_0002
+   * @tc.desc      : test systemManager getAutoUnlockAfterReboot with normal admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_get_auto_unlock_after_reboot_0002", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+    try {
+      systemManager.getAutoUnlockAfterReboot(SELFWANT);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 801 || error.code == 9200002).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_GET_AUTO_UNLOCK_AFTER_REBOOT_JS_0003
+   * @tc.name      : test_get_auto_unlock_after_reboot_0003
+   * @tc.desc      : test systemManager getAutoUnlockAfterReboot with invalid admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_get_auto_unlock_after_reboot_0003", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+    try {
+      systemManager.getAutoUnlockAfterReboot(INVALID_WANT);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 801 || error.code == 401).assertTrue();
     } finally {
       await adminManager.disableAdmin(SELFWANT);
     }

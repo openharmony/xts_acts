@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterAll, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterAll, beforeAll, beforeEach, describe, it, expect , Level} from '@ohos/hypium';
 import router from '@ohos.router';
 import { greenCustomTheme, redCustomTheme } from '../../MainAbility/themes/CustomTheme';
 import { frameTime, sleep } from '../Utils';
@@ -76,7 +76,7 @@ export default function loadingProgressThemeTest() {
       * @tc.size      : MediumTest
       * @tc.type      : Function
       */
-    it(`ActsLoadingProgressThemeColors_0100`, 0, () => {
+    it(`ActsLoadingProgressThemeColors_0100`, Level.LEVEL2, () => {
       const CASE: string = `ActsloadingProgressThemeColors_0100`
       console.info(`${SUITE} ${CASE} START`)
       const loadingProgressJSON = getInspectorByKey(LoadingProgressKeys.loadingProgressSystem)
@@ -94,7 +94,7 @@ export default function loadingProgressThemeTest() {
       * @tc.size      : MediumTest
       * @tc.type      : Function
       */
-    it(`ActsLoadingProgressThemeColors_0200`, 0, () => {
+    it(`ActsLoadingProgressThemeColors_0200`, Level.LEVEL2, () => {
       const CASE: string = `ActsLoadingProgressThemeColors_0200`
       console.info(`${SUITE} ${CASE} START`);
       const loadingProgressJSON = getInspectorByKey(LoadingProgressKeys.loadingProgressWithTheme)
@@ -114,7 +114,7 @@ export default function loadingProgressThemeTest() {
       * @tc.size      : MediumTest
       * @tc.type      : Function
       */
-    it(`ActsLoadingProgressThemeColors_0300`, 0, async () => {
+    it(`ActsLoadingProgressThemeColors_0300`, Level.LEVEL0, async () => {
       const CASE: string = `ActsLoadingProgressThemeColors_0300`
       console.info(`${SUITE} ${CASE} START`)
       await sleep(frameTime)

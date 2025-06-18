@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function toggleUnSelectedColorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testToggleUnSelectedColor001', 0, async (done: Function) => {
+    it('testToggleUnSelectedColor001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testToggleUnSelectedColor001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function toggleUnSelectedColorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testToggleUnSelectedColor002', 0, async (done: Function) => {
+    it('testToggleUnSelectedColor002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testToggleUnSelectedColor002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function toggleUnSelectedColorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testToggleUnSelectedColor003', 0, async (done: Function) => {
+    it('testToggleUnSelectedColor003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testToggleUnSelectedColor003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function toggleUnSelectedColorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testToggleUnSelectedColor004', 0, async (done: Function) => {
+    it('testToggleUnSelectedColor004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testToggleUnSelectedColor004()).assertEqual(0)
       done()
     })

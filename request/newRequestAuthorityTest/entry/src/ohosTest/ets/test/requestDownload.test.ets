@@ -129,12 +129,42 @@ export default function requestDownloadJSUnit() {
         expect(request.agent.Faults.SSL).assertEqual(112);
         console.info("====>SUB_MISC_REQUEST_DOWNLOAD_faults_0010 request.agent.Faults.REDIRECT: " + request.agent.Faults.REDIRECT);
         expect(request.agent.Faults.REDIRECT).assertEqual(128);
+        console.info("====>SUB_MISC_REQUEST_DOWNLOAD_faults_0010 request.agent.Faults.LOW_SPEED: " + request.agent.Faults.LOW_SPEED);
+        expect(request.agent.Faults.LOW_SPEED).assertEqual(144);
       } catch (err) {
         console.error("====>SUB_MISC_REQUEST_DOWNLOAD_faults_0010 error: " + err);
         expect().assertFail();
       }
       console.info("====>-----------------------SUB_MISC_REQUEST_DOWNLOAD_faults_0010 end-----------------------");
       done();
+    });
+
+    /**
+     * @tc.number    SUB_Request_Download_on_waitingReason_1000
+     * @tc.name      SUB_Request_Download_on_waitingReason_1000
+     * @tc.desc      download task of WaitingReason.
+     * @tc.size      MEDIUMTEST
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Request_Download_on_waitingReason_1000', Level.LEVEL2, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_Download_on_waitingReason_1000 is starting-----------------------");
+      try {
+        console.info("====>SUB_Request_Download_on_waitingReason_1000 request.agent.WaitingReason.TASK_QUEUE_FULL: " + request.agent.WaitingReason.TASK_QUEUE_FULL);
+        expect(request.agent.WaitingReason.TASK_QUEUE_FULL).assertEqual(0);
+        console.info("====>SUB_Request_Download_on_waitingReason_1000 request.agent.WaitingReason.NETWORK_NOT_MATCH: " + request.agent.WaitingReason.NETWORK_NOT_MATCH);
+        expect(request.agent.WaitingReason.NETWORK_NOT_MATCH).assertEqual(1);
+        console.info("====>SUB_Request_Download_on_waitingReason_1000 request.agent.WaitingReason.APP_BACKGROUND: " + request.agent.WaitingReason.APP_BACKGROUND);
+        expect(request.agent.WaitingReason.APP_BACKGROUND).assertEqual(2);
+        console.info("====>SUB_Request_Download_on_waitingReason_1000 request.agent.WaitingReason.USER_INACTIVATED: " + request.agent.WaitingReason.USER_INACTIVATED);
+        expect(request.agent.WaitingReason.USER_INACTIVATED).assertEqual(3);
+        console.info("====>-----------------------SUB_Request_Download_on_waitingReason_1000 end-----------------------");
+        done();
+      } catch (err) {
+        console.error("====>SUB_Request_Download_on_waitingReason_1000 error: " + err);
+        expect().assertFail();
+        done();
+      }
     });
 
     /**

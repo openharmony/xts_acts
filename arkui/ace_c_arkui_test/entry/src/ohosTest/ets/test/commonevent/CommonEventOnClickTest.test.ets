@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 
 export default function commonEventOnClickTest() {
@@ -34,7 +34,7 @@ export default function commonEventOnClickTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCommonEventOnClick001', 0, async (done: Function) => {
+    it('testCommonEventOnClick001', Level.LEVEL1, async (done: Function) => {
       await Utils.clickComponent('OnClickTestImage')
       await Utils.sleep(2000)
       expect(Utils.getComponentInfoByKey('OnClickTestImage').$attrs.backgroundColor).assertEqual('#FF00FF00')
@@ -49,7 +49,7 @@ export default function commonEventOnClickTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCommonEventOnClick002', 0, async (done: Function) => {
+    it('testCommonEventOnClick002', Level.LEVEL1, async (done: Function) => {
       await Utils.clickComponent('OnClickTestImageDisable')
       await Utils.sleep(2000)
       expect(Utils.getComponentInfoByKey('OnClickTestImageDisable').$attrs.backgroundColor).assertEqual('#FFFF0000')

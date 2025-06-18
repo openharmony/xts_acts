@@ -829,6 +829,44 @@ static napi_value SUB_IMF_NDK_TextConfig_Create_0100(napi_env env, napi_callback
         return result;
     }
 
+    const char16_t *expPlaceholder = u"abcdef";
+    size_t expPlaceholderLength = 3;
+    returnValue = OH_TextConfig_SetPlaceholder(config, expPlaceholder, expPlaceholderLength);
+    if (returnValue != InputMethod_ErrorCode::IME_ERR_OK) {
+        napi_value result = nullptr;
+        NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+        OH_LOG_Print(LOG_APP, LOG_INFO, 0, "", "NDKTest====>OH_TextConfig_SetPlaceholder fail.");
+        return result;
+    }
+    char16_t actPlaceholder[5];
+    size_t actPlaceholderLength = 4;
+    returnValue = OH_TextConfig_GetPlaceholder(config, actPlaceholder, &actPlaceholderLength);
+    if (returnValue != InputMethod_ErrorCode::IME_ERR_OK) {
+        napi_value result = nullptr;
+        NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+        OH_LOG_Print(LOG_APP, LOG_INFO, 0, "", "NDKTest====>OH_TextConfig_GetPlaceholder fail.");
+        return result;
+    }
+
+    const char16_t *expAbilityName = u"abcdef";
+    size_t expAbilityNameLength = 3;
+    returnValue = OH_TextConfig_SetAbilityName(config, expAbilityName, expAbilityNameLength);
+    if (returnValue != InputMethod_ErrorCode::IME_ERR_OK) {
+        napi_value result = nullptr;
+        NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+        OH_LOG_Print(LOG_APP, LOG_INFO, 0, "", "NDKTest====>OH_TextConfig_SetAbilityName fail.");
+        return result;
+    }
+    char16_t actAbilityName[5];
+    size_t actAbilityNameLength = 4;
+    returnValue = OH_TextConfig_GetAbilityName(config, actAbilityName, &actAbilityNameLength);
+    if (returnValue != InputMethod_ErrorCode::IME_ERR_OK) {
+        napi_value result = nullptr;
+        NAPI_CALL(env, napi_create_int32(env, returnValue, &result));
+        OH_LOG_Print(LOG_APP, LOG_INFO, 0, "", "NDKTest====>OH_TextConfig_GetAbilityName fail.");
+        return result;
+    }
+
     OH_TextConfig_Destroy(config);
 
     napi_value result = nullptr;

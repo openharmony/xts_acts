@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -63,7 +63,7 @@ export default function visualEffectTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('visualEffectTest_0100', 0, async (done: Function) => {
+    it('visualEffectTest_0100', Level.LEVEL2, async (done: Function) => {
       console.info('visualEffectTest_0100 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('visualEffect_text');
@@ -82,7 +82,7 @@ export default function visualEffectTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('foregroundFilterTest_0200', 0, async (done: Function) => {
+    it('foregroundFilterTest_0200', Level.LEVEL0, async (done: Function) => {
       console.info('foregroundFilterTest_0200 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('foregroundFilter_text');
@@ -101,7 +101,7 @@ export default function visualEffectTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('backgroundFilterTest_0300', 0, async (done: Function) => {
+    it('backgroundFilterTest_0300', Level.LEVEL0, async (done: Function) => {
       console.info('backgroundFilterTest_0300 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('backgroundFilter_text');
@@ -119,7 +119,7 @@ export default function visualEffectTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('compositingFilterTest_0400', 0, async (done: Function) => {
+    it('compositingFilterTest_0400', Level.LEVEL0, async (done: Function) => {
       console.info('compositingFilterTest_0400 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('compositingFilter_text');

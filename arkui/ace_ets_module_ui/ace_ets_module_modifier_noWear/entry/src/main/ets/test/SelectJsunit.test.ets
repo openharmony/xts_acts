@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level} from '@ohos/hypium';
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import Utils from './Utils';
 import router from '@ohos.router';
@@ -49,7 +49,7 @@ export default function selectJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUI_Stage_Select_Layout_0100', 0, async (done: Function) => {
+    it('ArkUI_Stage_Select_Layout_0100', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_Stage_Select_Layout_0100 start");
       let strJson = getInspectorByKey('selectTest');
       let objNew: ESObject = JSON.parse(strJson);
@@ -66,7 +66,7 @@ export default function selectJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUI_Stage_Select_Space_0100', 0, async (done: Function) => {
+    it('ArkUI_Stage_Select_Space_0100', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_Stage_Select_Space_0100 start");
       let strJson = getInspectorByKey('selectTest');
       let objNew: ESObject = JSON.parse(strJson);
@@ -83,7 +83,7 @@ export default function selectJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUI_Stage_Select_selected_0100', 0, async (done: Function) => {
+    it('ArkUI_Stage_Select_selected_0100', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_Stage_Select_selected_0100 start");
       let strJson = getInspectorByKey('selectTest');
       let objNew: ESObject = JSON.parse(strJson);
@@ -100,7 +100,7 @@ export default function selectJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUI_Stage_Select_value_0100', 0, async (done: Function) => {
+    it('ArkUI_Stage_Select_value_0100', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_Stage_Select_value_0100 start");
       let strJson = getInspectorByKey('selectTest');
       let objNew: ESObject = JSON.parse(strJson);
@@ -117,7 +117,7 @@ export default function selectJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUI_Stage_Select_font_0100', 0, async (done: Function) => {
+    it('ArkUI_Stage_Select_font_0100', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_Stage_Select_font_0100 start");
       let strJson = getInspectorByKey('selectTest');
       let objNew: ESObject = JSON.parse(strJson);
@@ -134,7 +134,7 @@ export default function selectJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUI_Stage_Select_fontColor_0100', 0, async (done: Function) => {
+    it('ArkUI_Stage_Select_fontColor_0100', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_Stage_Select_fontColor_0100 start");
       let strJson = getInspectorByKey('selectTest');
       let objNew: ESObject = JSON.parse(strJson);
@@ -151,7 +151,7 @@ export default function selectJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUI_Stage_Select_selectedOptionFont_0100', 0, async (done: Function) => {
+    it('ArkUI_Stage_Select_selectedOptionFont_0100', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_Stage_Select_selectedOptionFont_0100 start");
       let strJson = getInspectorByKey('selectTest');
       let objNew: ESObject = JSON.parse(strJson);
@@ -168,7 +168,7 @@ export default function selectJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUI_Stage_Select_selectedOptionFontColor_0100', 0, async (done: Function) => {
+    it('ArkUI_Stage_Select_selectedOptionFontColor_0100', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_Stage_Select_selectedOptionFontColor_0100 start");
       let strJson = getInspectorByKey('selectTest');
       let objNew: ESObject = JSON.parse(strJson);
@@ -184,7 +184,7 @@ export default function selectJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUI_Stage_Select_menuAlign_0100', 0, async (done: Function) => {
+    it('ArkUI_Stage_Select_menuAlign_0100', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_Stage_Select_menuAlign_0100 start");
       let strJson = getInspectorByKey('selectTest');
       let objNew: ESObject = JSON.parse(strJson);
@@ -200,7 +200,7 @@ export default function selectJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUI_Stage_Select_selectedOptionBgColor_0100', 0, async (done: Function) => {
+    it('ArkUI_Stage_Select_selectedOptionBgColor_0100', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_Stage_Select_selectedOptionBgColor_0100 start");
       let strJson = getInspectorByKey('selectTest');
       let objNew: ESObject = JSON.parse(strJson);
@@ -217,7 +217,7 @@ export default function selectJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUI_Stage_Select_optionBgColor_0100', 0, async (done: Function) => {
+    it('ArkUI_Stage_Select_optionBgColor_0100', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_Stage_Select_optionBgColor_0100 start");
       let strJson = getInspectorByKey('selectTest');
       let objNew: ESObject = JSON.parse(strJson);
@@ -234,7 +234,7 @@ export default function selectJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUI_Stage_Select_optionFont_0100', 0, async (done: Function) => {
+    it('ArkUI_Stage_Select_optionFont_0100', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_Stage_Select_optionFont_0100 start");
       let strJson = getInspectorByKey('selectTest');
       let objNew: ESObject = JSON.parse(strJson);
@@ -251,7 +251,7 @@ export default function selectJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUI_Stage_Select_optionWidth_0100', 0, async (done: Function) => {
+    it('ArkUI_Stage_Select_optionWidth_0100', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_Stage_Select_optionWidth_0100 start");
       let strJson = getInspectorByKey('selectTest');
       let objNew: ESObject = JSON.parse(strJson);
@@ -268,7 +268,7 @@ export default function selectJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUI_Stage_Select_optionHeight_0100', 0, async (done: Function) => {
+    it('ArkUI_Stage_Select_optionHeight_0100', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_Stage_Select_optionHeight_0100 start");
       let strJson = getInspectorByKey('selectTest');
       let objNew: ESObject = JSON.parse(strJson);
@@ -285,7 +285,7 @@ export default function selectJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUI_Stage_Select_optionFontColor_0100', 0, async (done: Function) => {
+    it('ArkUI_Stage_Select_optionFontColor_0100', Level.LEVEL0, async (done: Function) => {
       console.info("ArkUI_Stage_Select_optionFontColor_0100 start");
       let strJsonNew = getInspectorByKey('selectTest');
       let objNew: ESObject = JSON.parse(strJsonNew);
@@ -303,7 +303,7 @@ export default function selectJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUI_Stage_Select_change_0101', 0, async (done: Function) => {
+    it('ArkUI_Stage_Select_change_0101', Level.LEVEL0, async (done: Function) => {
       console.info('ArkUI_Stage_Select_change_0101 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

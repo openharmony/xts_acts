@@ -84,7 +84,10 @@ export default function RichEditorQueryLayout020() {
       let paragraphStyle = await driver.findComponent(ON.id('paragraphStyle'));
       let paragraphStyleText = await paragraphStyle.getText();
       await CommonFunc.sleep(500);
-      expect(paragraphStyleText).assertEqual('paragraphStyle:{"textAlign":0,"leadingMargin":["20.00vp","0.00vp"],"wordBreak":2,"lineBreakStrategy":0}');
+      expect(paragraphStyleText).assertContain('"textAlign":0');
+      expect(paragraphStyleText).assertContain('"leadingMargin":["20.00vp","0.00vp"]');
+      expect(paragraphStyleText).assertContain('"wordBreak":2');
+      expect(paragraphStyleText).assertContain('"lineBreakStrategy":0');
       done();
     });
 

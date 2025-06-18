@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { afterEach, describe, expect, it } from '@ohos/hypium';
+import { afterEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import { ListScrollToIndexData } from '../../MainAbility/pages/list/ListScrollToIndexTest'
 import nativeRender from 'libnativerender.so'
@@ -34,7 +34,7 @@ export default function listScrollToIndex() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListScrollToIndex001', 0, async (done: Function) => {
+    it('testListScrollToIndex001', Level.LEVEL1, async (done: Function) => {
       let option: ListScrollToIndexData =
         new ListScrollToIndexData('ListScrollToIndexTest001', 30, ScrollAlign.START)
       await Utils.pushPageByParams(`list/ListScrollToIndexTest`, option)
@@ -56,7 +56,7 @@ export default function listScrollToIndex() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListScrollToIndex002', 0, async (done: Function) => {
+    it('testListScrollToIndex002', Level.LEVEL1, async (done: Function) => {
       let option: ListScrollToIndexData =
         new ListScrollToIndexData('ListScrollToIndexTest002', -100, ScrollAlign.START)
       await Utils.pushPageByParams(`list/ListScrollToIndexTest`, option)
@@ -78,7 +78,7 @@ export default function listScrollToIndex() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListScrollToIndex003', 0, async (done: Function) => {
+    it('testListScrollToIndex003', Level.LEVEL1, async (done: Function) => {
       let option: ListScrollToIndexData =
         new ListScrollToIndexData('ListScrollToIndexTest003', 100, ScrollAlign.START)
       await Utils.pushPageByParams(`list/ListScrollToIndexTest`, option)
@@ -100,7 +100,7 @@ export default function listScrollToIndex() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListScrollToIndex004', 0, async (done: Function) => {
+    it('testListScrollToIndex004', Level.LEVEL1, async (done: Function) => {
       let option: ListScrollToIndexData =
         new ListScrollToIndexData('ListScrollToIndexTest004', 40, ScrollAlign.CENTER)
       await Utils.pushPageByParams(`list/ListScrollToIndexTest`, option)
@@ -122,7 +122,7 @@ export default function listScrollToIndex() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListScrollToIndex005', 0, async (done: Function) => {
+    it('testListScrollToIndex005', Level.LEVEL1, async (done: Function) => {
       let option: ListScrollToIndexData =
         new ListScrollToIndexData('ListScrollToIndexTest005', 20, ScrollAlign.END)
       await Utils.pushPageByParams(`list/ListScrollToIndexTest`, option)
@@ -144,7 +144,7 @@ export default function listScrollToIndex() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListScrollToIndex006', 0, async (done: Function) => {
+    it('testListScrollToIndex006', Level.LEVEL1, async (done: Function) => {
       let option: ListScrollToIndexData =
         new ListScrollToIndexData('ListScrollToIndexTest006', 40, ScrollAlign.AUTO)
       await Utils.pushPageByParams(`list/ListScrollToIndexTest`, option)
@@ -166,7 +166,7 @@ export default function listScrollToIndex() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListScrollToIndex007', 0, async (done: Function) => {
+    it('testListScrollToIndex007', Level.LEVEL1, async (done: Function) => {
       let option: ListScrollToIndexData = new ListScrollToIndexData('ListScrollToIndexTest007', 20, -1)
       await Utils.pushPageByParams(`list/ListScrollToIndexTest`, option)
       await Utils.sleep(1500)
@@ -187,7 +187,7 @@ export default function listScrollToIndex() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListScrollToIndex008', 0, async (done: Function) => {
+    it('testListScrollToIndex008', Level.LEVEL1, async (done: Function) => {
       let option: ListScrollToIndexData = new ListScrollToIndexData('ListScrollToIndexTest008', 40, 4)
       await Utils.pushPageByParams(`list/ListScrollToIndexTest`, option)
       await Utils.sleep(1500)

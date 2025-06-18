@@ -1112,6 +1112,7 @@ static OH_CryptoAsymKeySpec *OHTEST_GenEcCommonParamsSpec(OH_CryptoPubKey *pubKe
     Crypto_DataBlob g_y = { .data = nullptr, .len = 0};
     Crypto_DataBlob n = { .data = nullptr, .len = 0};
     Crypto_DataBlob h = { .data = nullptr, .len = 0};
+    Crypto_DataBlob gh = { .data = nullptr, .len = 0};
 
     EXPECT_EQ(OH_CryptoAsymKeySpec_Create("ECC", CRYPTO_ASYM_KEY_COMMON_PARAMS_SPEC, &specCtx), CRYPTO_SUCCESS);
     EXPECT_EQ(OH_CryptoPubKey_GetParam(pubKey, CRYPTO_ECC_FP_P_DATABLOB, &fp), CRYPTO_SUCCESS);
@@ -1128,6 +1129,7 @@ static OH_CryptoAsymKeySpec *OHTEST_GenEcCommonParamsSpec(OH_CryptoPubKey *pubKe
     EXPECT_EQ(OH_CryptoAsymKeySpec_SetParam(specCtx, CRYPTO_ECC_G_Y_DATABLOB, &g_y), CRYPTO_SUCCESS);
     EXPECT_EQ(OH_CryptoAsymKeySpec_SetParam(specCtx, CRYPTO_ECC_N_DATABLOB, &n), CRYPTO_SUCCESS);
     EXPECT_EQ(OH_CryptoAsymKeySpec_SetParam(specCtx, CRYPTO_ECC_H_INT, &h), CRYPTO_SUCCESS);
+    EXPECT_EQ(OH_CryptoAsymKeySpec_GetParam(specCtx, CRYPTO_ECC_H_INT, &gh), CRYPTO_SUCCESS);
 
     OH_Crypto_FreeDataBlob(&g_x);
     OH_Crypto_FreeDataBlob(&g_y);
@@ -1135,6 +1137,7 @@ static OH_CryptoAsymKeySpec *OHTEST_GenEcCommonParamsSpec(OH_CryptoPubKey *pubKe
     OH_Crypto_FreeDataBlob(&b);
     OH_Crypto_FreeDataBlob(&n);
     OH_Crypto_FreeDataBlob(&h);
+    OH_Crypto_FreeDataBlob(&gh);
     OH_Crypto_FreeDataBlob(&fp);
     return specCtx;
 }

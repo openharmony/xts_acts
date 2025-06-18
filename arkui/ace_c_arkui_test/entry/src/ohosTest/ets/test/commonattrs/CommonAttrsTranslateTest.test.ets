@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function commonAttrsTranslateTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsTranslate001', 0, async (done: Function) => {
+    it('testCommonAttrsTranslate001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsTranslate001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function commonAttrsTranslateTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsTranslate002', 0, async (done: Function) => {
+    it('testCommonAttrsTranslate002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsTranslate002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function commonAttrsTranslateTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsTranslate003', 0, async (done: Function) => {
+    it('testCommonAttrsTranslate003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsTranslate003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function commonAttrsTranslateTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsTranslate004', 0, async (done: Function) => {
+    it('testCommonAttrsTranslate004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsTranslate004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function commonAttrsTranslateTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsTranslate005', 0, async (done: Function) => {
+    it('testCommonAttrsTranslate005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsTranslate005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function commonAttrsTranslateTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsTranslate006', 0, async (done: Function) => {
+    it('testCommonAttrsTranslate006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsTranslate006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function commonAttrsTranslateTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsTranslate007', 0, async (done: Function) => {
+    it('testCommonAttrsTranslate007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsTranslate007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function commonAttrsTranslateTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsTranslate008', 0, async (done: Function) => {
+    it('testCommonAttrsTranslate008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsTranslate008()).assertEqual(0)
       done()
     })
@@ -138,7 +138,7 @@ export default function commonAttrsTranslateTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsTranslate009', 0, async (done: Function) => {
+    it('testCommonAttrsTranslate009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsTranslate009()).assertEqual(0)
       done()
     })
@@ -151,7 +151,7 @@ export default function commonAttrsTranslateTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsTranslate010', 0, async (done: Function) => {
+    it('testCommonAttrsTranslate010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsTranslate010()).assertEqual(0)
       done()
     })
@@ -164,7 +164,7 @@ export default function commonAttrsTranslateTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsTranslate011', 0, async (done: Function) => {
+    it('testCommonAttrsTranslate011', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsTranslate011()).assertEqual(0)
       done()
     })
@@ -177,7 +177,7 @@ export default function commonAttrsTranslateTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsTranslate012', 0, async (done: Function) => {
+    it('testCommonAttrsTranslate012', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsTranslate012()).assertEqual(0)
       done()
     })
@@ -190,7 +190,7 @@ export default function commonAttrsTranslateTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsTranslate013', 0, async (done: Function) => {
+    it('testCommonAttrsTranslate013', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsTranslate013()).assertEqual(0)
       done()
     })
@@ -203,7 +203,7 @@ export default function commonAttrsTranslateTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsTranslate014', 0, async (done: Function) => {
+    it('testCommonAttrsTranslate014', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsTranslate014()).assertEqual(0)
       done()
     })
@@ -216,7 +216,7 @@ export default function commonAttrsTranslateTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsTranslate015', 0, async (done: Function) => {
+    it('testCommonAttrsTranslate015', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsTranslate015()).assertEqual(0)
       done()
     })
@@ -229,7 +229,7 @@ export default function commonAttrsTranslateTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsTranslate016', 0, async (done: Function) => {
+    it('testCommonAttrsTranslate016', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsTranslate016()).assertEqual(0)
       done()
     })

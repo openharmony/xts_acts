@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level} from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import router from '@ohos.router';
@@ -50,7 +50,7 @@ export default function scrollEnablePagingJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUI_Stage_scrollEnablePaging01', 0, async (done: Function) => {
+    it('ArkUI_Stage_scrollEnablePaging01', Level.LEVEL0, async (done: Function) => {
       console.info('[ArkUI_Stage_scrollEnablePaging01] START');
       await Utils.sleep(2000)
       let scrollRect = Utils.getComponentRect('ScrollTest');

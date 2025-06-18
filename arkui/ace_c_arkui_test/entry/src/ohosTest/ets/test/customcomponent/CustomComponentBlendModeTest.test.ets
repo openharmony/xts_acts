@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -36,7 +36,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode001', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode001()).assertEqual(0)
       done()
     })
@@ -51,7 +51,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode002', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode002()).assertEqual(0)
       done()
     })
@@ -66,7 +66,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode003', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode003()).assertEqual(0)
       done()
     })
@@ -81,7 +81,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode004', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode004()).assertEqual(0)
       done()
     })
@@ -96,7 +96,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode005', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode005()).assertEqual(0)
       done()
     })
@@ -111,7 +111,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode006', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode006()).assertEqual(0)
       done()
     })
@@ -126,7 +126,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode007', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode007()).assertEqual(0)
       done()
     })
@@ -141,7 +141,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode008', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode008()).assertEqual(0)
       done()
     })
@@ -156,7 +156,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode009', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode009()).assertEqual(0)
       done()
     })
@@ -171,7 +171,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode010', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode010()).assertEqual(0)
       done()
     })
@@ -186,7 +186,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode011', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode011', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode011()).assertEqual(0)
       done()
     })
@@ -201,7 +201,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode012', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode012', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode012()).assertEqual(0)
       done()
     })
@@ -216,7 +216,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode013', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode013', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode013()).assertEqual(0)
       done()
     })
@@ -231,7 +231,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode014', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode014', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode014()).assertEqual(0)
       done()
     })
@@ -246,7 +246,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode015', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode015', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode015()).assertEqual(0)
       done()
     })
@@ -261,7 +261,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode016', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode016', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode016()).assertEqual(0)
       done()
     })
@@ -276,7 +276,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode017', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode017', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode017()).assertEqual(0)
       done()
     })
@@ -291,7 +291,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode018', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode018', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode018()).assertEqual(0)
       done()
     })
@@ -306,7 +306,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode019', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode019', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode019()).assertEqual(0)
       done()
     })
@@ -321,7 +321,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode020', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode020', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode020()).assertEqual(0)
       done()
     })
@@ -336,7 +336,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode021', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode021', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode021()).assertEqual(0)
       done()
     })
@@ -351,7 +351,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode022', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode022', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode022()).assertEqual(0)
       done()
     })
@@ -366,7 +366,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode023', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode023', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode023()).assertEqual(0)
       done()
     })
@@ -381,7 +381,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode024', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode024', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode024()).assertEqual(0)
       done()
     })
@@ -396,7 +396,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode025', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode025', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode025()).assertEqual(0)
       done()
     })
@@ -411,7 +411,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode026', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode026', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode026()).assertEqual(0)
       done()
     })
@@ -426,7 +426,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode027', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode027', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode027()).assertEqual(0)
       done()
     })
@@ -441,7 +441,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode028', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode028', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode028()).assertEqual(0)
       done()
     })
@@ -456,7 +456,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode029', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode029', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode029()).assertEqual(0)
       done()
     })
@@ -471,7 +471,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode030', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode030', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode030()).assertEqual(0)
       done()
     })
@@ -486,7 +486,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode031', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode031', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode031()).assertEqual(0)
       done()
     })
@@ -501,7 +501,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode032', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode032', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode032()).assertEqual(0)
       done()
     })
@@ -516,7 +516,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode033', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode033', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode033()).assertEqual(0)
       done()
     })
@@ -531,7 +531,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode034', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode034', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode034()).assertEqual(0)
       done()
     })
@@ -546,7 +546,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode035', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode035', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode035()).assertEqual(0)
       done()
     })
@@ -561,7 +561,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode036', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode036', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode036()).assertEqual(0)
       done()
     })
@@ -576,7 +576,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode037', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode037', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode037()).assertEqual(0)
       done()
     })
@@ -591,7 +591,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode038', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode038', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode038()).assertEqual(0)
       done()
     })
@@ -606,7 +606,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode039', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode039', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode039()).assertEqual(0)
       done()
     })
@@ -621,7 +621,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode040', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode040', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode040()).assertEqual(0)
       done()
     })
@@ -636,7 +636,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode041', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode041', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode041()).assertEqual(0)
       done()
     })
@@ -651,7 +651,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode042', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode042', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode042()).assertEqual(0)
       done()
     })
@@ -666,7 +666,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode043', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode043', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode043()).assertEqual(0)
       done()
     })
@@ -681,7 +681,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode044', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode044', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode044()).assertEqual(0)
       done()
     })
@@ -696,7 +696,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode045', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode045', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode045()).assertEqual(0)
       done()
     })
@@ -711,7 +711,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode046', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode046', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode046()).assertEqual(0)
       done()
     })
@@ -726,7 +726,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode047', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode047', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode047()).assertEqual(0)
       done()
     })
@@ -741,7 +741,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode048', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode048', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode048()).assertEqual(0)
       done()
     })
@@ -756,7 +756,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode049', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode049', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode049()).assertEqual(0)
       done()
     })
@@ -771,7 +771,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode050', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode050', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode050()).assertEqual(0)
       done()
     })
@@ -786,7 +786,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode051', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode051', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode051()).assertEqual(0)
       done()
     })
@@ -801,7 +801,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode052', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode052', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode052()).assertEqual(0)
       done()
     })
@@ -816,7 +816,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode053', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode053', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode053()).assertEqual(0)
       done()
     })
@@ -831,7 +831,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode054', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode054', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode054()).assertEqual(0)
       done()
     })
@@ -846,7 +846,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode055', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode055', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode055()).assertEqual(0)
       done()
     })
@@ -861,7 +861,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode056', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode056', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode056()).assertEqual(0)
       done()
     })
@@ -876,7 +876,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode057', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode057', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode057()).assertEqual(0)
       done()
     })
@@ -891,7 +891,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode058', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode058', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode058()).assertEqual(0)
       done()
     })
@@ -906,7 +906,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode059', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode059', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode059()).assertEqual(0)
       done()
     })
@@ -921,7 +921,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode060', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode060', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode060()).assertEqual(0)
       done()
     })
@@ -934,7 +934,7 @@ export default function customComponentBlendModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentBlendMode061', 0, async (done: Function) => {
+    it('testCustomComponentBlendMode061', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBlendMode061()).assertEqual(0)
       done()
     })

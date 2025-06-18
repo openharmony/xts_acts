@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from './Utils';
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
@@ -49,7 +49,7 @@ export default function navigatorJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('test_Navigator_0021', 0, async (done: Function) => {
+    it('test_Navigator_0021', Level.LEVEL0, async (done: Function) => {
       console.info('[test_Navigator_0021] START');
       let strJson = getInspectorByKey('Navigator1');
       let obj: ESObject = JSON.parse(strJson);
@@ -67,7 +67,7 @@ export default function navigatorJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('test_Navigator_0022', 0, async (done: Function) => {
+    it('test_Navigator_0022', Level.LEVEL0, async (done: Function) => {
       console.info('[test_Navigator_0022] START');
       let strJson = getInspectorByKey('Navigator1');
       let obj: ESObject = JSON.parse(strJson);
@@ -85,7 +85,7 @@ export default function navigatorJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('test_Navigator_0023', 0, async (done: Function) => {
+    it('test_Navigator_0023', Level.LEVEL0, async (done: Function) => {
       console.info('[test_Navigator_0023] START');
       let strJson = getInspectorByKey('Navigator1');
       let obj: ESObject = JSON.parse(strJson);
@@ -103,7 +103,7 @@ export default function navigatorJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('test_Navigator_0024', 0, async (done: Function) => {
+    it('test_Navigator_0024', Level.LEVEL0, async (done: Function) => {
       console.info('[test_Navigator_0024] START');
       let strJson = getInspectorByKey('Navigator1');
       let obj: ESObject = JSON.parse(strJson);
@@ -121,7 +121,7 @@ export default function navigatorJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('test_Navigator_0025', 0, async (done: Function) => {
+    it('test_Navigator_0025', Level.LEVEL0, async (done: Function) => {
       console.info('test_Navigator_0025 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

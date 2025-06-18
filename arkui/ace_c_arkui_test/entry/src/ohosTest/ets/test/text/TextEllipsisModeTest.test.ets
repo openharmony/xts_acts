@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textEllipsisModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextEllipsisMode001', 0, async (done: Function) => {
+    it('testTextEllipsisMode001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextEllipsisMode001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function textEllipsisModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextEllipsisMode002', 0, async (done: Function) => {
+    it('testTextEllipsisMode002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextEllipsisMode002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function textEllipsisModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextEllipsisMode003', 0, async (done: Function) => {
+    it('testTextEllipsisMode003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextEllipsisMode003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function textEllipsisModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextEllipsisMode004', 0, async (done: Function) => {
+    it('testTextEllipsisMode004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextEllipsisMode004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function textEllipsisModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextEllipsisMode005', 0, async (done: Function) => {
+    it('testTextEllipsisMode005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextEllipsisMode005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function textEllipsisModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextEllipsisMode006', 0, async (done: Function) => {
+    it('testTextEllipsisMode006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextEllipsisMode006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function textEllipsisModeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextEllipsisMode007', 0, async (done: Function) => {
+    it('testTextEllipsisMode007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextEllipsisMode007()).assertEqual(0)
       done()
     })

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function commonAttrsOpacityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsOpacity001', 0, async (done: Function) => {
+    it('testCommonAttrsOpacity001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsOpacity001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function commonAttrsOpacityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsOpacity002', 0, async (done: Function) => {
+    it('testCommonAttrsOpacity002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsOpacity002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function commonAttrsOpacityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsOpacity003', 0, async (done: Function) => {
+    it('testCommonAttrsOpacity003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsOpacity003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function commonAttrsOpacityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsOpacity004', 0, async (done: Function) => {
+    it('testCommonAttrsOpacity004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsOpacity004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function commonAttrsOpacityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testCommonAttrsOpacity005', 0, async (done: Function) => {
+    it('testCommonAttrsOpacity005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsOpacity005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function commonAttrsOpacityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testCommonAttrsOpacity006', 0, async (done: Function) => {
+    it('testCommonAttrsOpacity006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsOpacity006()).assertEqual(0)
       done()
     })

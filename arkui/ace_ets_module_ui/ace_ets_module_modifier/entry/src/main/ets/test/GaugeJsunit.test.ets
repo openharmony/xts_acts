@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
@@ -47,7 +47,7 @@ export default function gaugeJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testGauge0121', 0, async (done: Function) => {
+    it('testGauge0121', Level.LEVEL0, async (done: Function) => {
       console.info('[testGauge0121] START');
       let strJsonNew = getInspectorByKey('GaugeKey1');
 
@@ -67,7 +67,7 @@ export default function gaugeJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testGauge0122', 0, async (done: Function) => {
+    it('testGauge0122', Level.LEVEL0, async (done: Function) => {
       console.info('[testGauge0122] START');
       let strJsonNew = getInspectorByKey('GaugeKey1');
 
@@ -87,7 +87,7 @@ export default function gaugeJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testGauge0123', 0, async (done: Function) => {
+    it('testGauge0123', Level.LEVEL0, async (done: Function) => {
       console.info('[testGauge0123] START');
       let strJsonNew = getInspectorByKey('GaugeKey1');
 
@@ -107,7 +107,7 @@ export default function gaugeJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testGauge0124', 0, async (done: Function) => {
+    it('testGauge0124', Level.LEVEL0, async (done: Function) => {
       console.info('[testGauge0124] START');
       let strJsonNew = getInspectorByKey('GaugeKey1');
 
@@ -127,7 +127,7 @@ export default function gaugeJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testGauge0125', 0, async (done: Function) => {
+    it('testGauge0125', Level.LEVEL0, async (done: Function) => {
       console.info('[testGauge0125] START');
       let strJsonNew = getInspectorByKey('GaugeKey1');
 
@@ -147,7 +147,7 @@ export default function gaugeJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testGauge0126', 0, async (done: Function) => {
+    it('testGauge0126', Level.LEVEL0, async (done: Function) => {
       console.info('[testGauge0126] START');
       let strJsonNew = getInspectorByKey('GaugeKey1');
 
@@ -168,7 +168,7 @@ export default function gaugeJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testGauge0127', 0, async (done: Function) => {
+    it('testGauge0127', Level.LEVEL0, async (done: Function) => {
       console.info('[testGauge0127] START');
       let strJsonNew = getInspectorByKey('GaugeKey1');
 
@@ -190,7 +190,7 @@ export default function gaugeJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testGauge0128', 0, async (done: Function) => {
+    it('testGauge0128', Level.LEVEL0, async (done: Function) => {
       console.info('[testGauge0128] START');
       let strJsonNew = getInspectorByKey('GaugeKey1');
 
@@ -210,7 +210,7 @@ export default function gaugeJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testGauge0129', 0, async (done: Function) => {
+    it('testGauge0129', Level.LEVEL0, async (done: Function) => {
       console.info('testGauge0129 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

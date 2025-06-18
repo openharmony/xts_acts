@@ -52,7 +52,7 @@ export default function XComponentDrawingCanvasTestTest() {
      * @tc.desc      Test XComponentDrawingCanvasTest
      * @tc.level     Level 2
      */
-    it('XComponentDrawingCanvasTest_0100', Level.LEVEL1, async (done: Function) => {
+    it('XComponentDrawingCanvasTest_0100', Level.LEVEL2, async (done: Function) => {
       console.info('[XComponentDrawingCanvasTest_0100] START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function imageAnimatorFillModeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testImageAnimatorFillMode001', 0, async (done: Function) => {
+    it('testImageAnimatorFillMode001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageAnimatorFillMode001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function imageAnimatorFillModeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testImageAnimatorFillMode002', 0, async (done: Function) => {
+    it('testImageAnimatorFillMode002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageAnimatorFillMode002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function imageAnimatorFillModeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testImageAnimatorFillMode003', 0, async (done: Function) => {
+    it('testImageAnimatorFillMode003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageAnimatorFillMode003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function imageAnimatorFillModeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testImageAnimatorFillMode004', 0, async (done: Function) => {
+    it('testImageAnimatorFillMode004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageAnimatorFillMode004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function imageAnimatorFillModeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testImageAnimatorFillMode005', 0, async (done: Function) => {
+    it('testImageAnimatorFillMode005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageAnimatorFillMode005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function imageAnimatorFillModeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testImageAnimatorFillMode006', 0, async (done: Function) => {
+    it('testImageAnimatorFillMode006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageAnimatorFillMode006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function imageAnimatorFillModeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testImageAnimatorFillMode007', 0, async (done: Function) => {
+    it('testImageAnimatorFillMode007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageAnimatorFillMode007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function imageAnimatorFillModeTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testImageAnimatorFillMode008', 0, async (done: Function) => {
+    it('testImageAnimatorFillMode008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageAnimatorFillMode008()).assertEqual(0)
       done()
     })

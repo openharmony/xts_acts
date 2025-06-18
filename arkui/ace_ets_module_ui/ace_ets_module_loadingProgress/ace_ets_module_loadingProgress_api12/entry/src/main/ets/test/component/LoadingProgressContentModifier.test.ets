@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium'
 import Utils from './Utils';
 import { Driver, ON } from '@ohos.UiTest';
 
@@ -53,7 +53,7 @@ export default function LoadingProgressContentModifier() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('LoadingProgressContentModifier_001', 0, async (done: Function) => {
+    it('LoadingProgressContentModifier_001', Level.LEVEL1, async (done: Function) => {
       console.info('[LoadingProgressContentModifier_001] START');
       let strJson2 = getInspectorByKey('loadingProgressContentModifierKey01');
       let obj1: ESObject = JSON.parse(strJson2);

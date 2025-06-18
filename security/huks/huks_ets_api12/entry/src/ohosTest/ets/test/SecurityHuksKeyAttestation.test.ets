@@ -12,12 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 import huks from '@ohos.security.huks';
-import { SetParam, MergeOption } from './utils/HuksOptionUtil';
-import { GetEd25519GenerateOption, GetX25519GenerateOption } from './options/GenerateKeyOptions';
-import { GetAttestKeyOption } from './options/AttestKeyOptions';
-import { GetImportPubKeyOptions } from './options/ImportOptions';
+import { MergeOptions, SetParam } from './utils/huks/HuksOptionsUtils';
+import { GetEd25519GenerateOption, GetX25519GenerateOption } from './utils/options/GenerateKeyOptions';
+import { GetAttestKeyOption } from './utils/options/AttestKeyOptions';
+import { GetImportPubKeyOptions } from './utils/options/ImportOptions';
 
 
 export default function SecurityHuksKeyAttestationTest() {
@@ -51,7 +51,7 @@ export default function SecurityHuksKeyAttestationTest() {
     it('SUB_Security_HUKS_KeyAttestation_AnonAttestKey_API16_Func_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_KeyAttestation_AnonAttestKey_API16_Func_0100";
       let genKeyOptions: huks.HuksOptions = GetX25519GenerateOption(256);
-      let anonAttestKeyOptions: huks.HuksOptions = MergeOption(GetX25519GenerateOption(256), GetAttestKeyOption());
+      let anonAttestKeyOptions: huks.HuksOptions = MergeOptions(GetX25519GenerateOption(256), GetAttestKeyOption());
       try {
         await huks.generateKeyItem(testNumber, genKeyOptions);
         let res = (await huks.anonAttestKeyItem(testNumber, anonAttestKeyOptions)).certChains as Array<string>;
@@ -73,8 +73,8 @@ export default function SecurityHuksKeyAttestationTest() {
     it('SUB_Security_HUKS_KeyAttestation_AnonAttestKey_API16_Func_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_KeyAttestation_AnonAttestKey_API16_Func_0200";
       let genKeyOptions: huks.HuksOptions = GetX25519GenerateOption(256);
-      let importPubKeyOptions: huks.HuksOptions = MergeOption(GetX25519GenerateOption(256), GetImportPubKeyOptions());
-      let anonAttestKeyOptions: huks.HuksOptions = MergeOption(GetX25519GenerateOption(256), GetAttestKeyOption());
+      let importPubKeyOptions: huks.HuksOptions = MergeOptions(GetX25519GenerateOption(256), GetImportPubKeyOptions());
+      let anonAttestKeyOptions: huks.HuksOptions = MergeOptions(GetX25519GenerateOption(256), GetAttestKeyOption());
       try {
         await huks.generateKeyItem(testNumber, genKeyOptions);
         importPubKeyOptions.inData = (await huks.exportKeyItem(testNumber, genKeyOptions)).outData as Uint8Array;
@@ -99,7 +99,7 @@ export default function SecurityHuksKeyAttestationTest() {
     it('SUB_Security_HUKS_KeyAttestation_AnonAttestKey_API16_Func_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_KeyAttestation_AnonAttestKey_API16_Func_0300";
       let genKeyOptions: huks.HuksOptions = GetEd25519GenerateOption(256);
-      let anonAttestKeyOptions: huks.HuksOptions = MergeOption(GetEd25519GenerateOption(256), GetAttestKeyOption());
+      let anonAttestKeyOptions: huks.HuksOptions = MergeOptions(GetEd25519GenerateOption(256), GetAttestKeyOption());
       try {
         await huks.generateKeyItem(testNumber, genKeyOptions);
         let res = (await huks.anonAttestKeyItem(testNumber, anonAttestKeyOptions)).certChains as Array<string>;
@@ -121,8 +121,8 @@ export default function SecurityHuksKeyAttestationTest() {
     it('SUB_Security_HUKS_KeyAttestation_AnonAttestKey_API16_Func_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async () => {
       let testNumber: string = "SUB_Security_HUKS_KeyAttestation_AnonAttestKey_API16_Func_0400";
       let genKeyOptions: huks.HuksOptions = GetEd25519GenerateOption(256);
-      let importPubKeyOptions: huks.HuksOptions = MergeOption(GetEd25519GenerateOption(256), GetImportPubKeyOptions());
-      let anonAttestKeyOptions: huks.HuksOptions = MergeOption(GetEd25519GenerateOption(256), GetAttestKeyOption());
+      let importPubKeyOptions: huks.HuksOptions = MergeOptions(GetEd25519GenerateOption(256), GetImportPubKeyOptions());
+      let anonAttestKeyOptions: huks.HuksOptions = MergeOptions(GetEd25519GenerateOption(256), GetAttestKeyOption());
       try {
         await huks.generateKeyItem(testNumber, genKeyOptions);
         importPubKeyOptions.inData = (await huks.exportKeyItem(testNumber, genKeyOptions)).outData as Uint8Array;

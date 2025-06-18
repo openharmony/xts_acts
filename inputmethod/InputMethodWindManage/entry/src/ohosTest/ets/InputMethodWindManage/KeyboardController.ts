@@ -474,6 +474,26 @@ export class KeyboardController {
           console.debug(TAG + '====>Sub_InputMethod_IMF_onoffcallingDisplayDidChange_0200 event:' + data.event);
           that.Sub_InputMethod_IMF_onoffcallingDisplayDidChange_0200();
           break;
+        case 504:
+          console.debug(TAG + '====>Sub_InputMethod_IME_setImmersiveEffect_0100 event:' + data.event);
+          that.Sub_InputMethod_IME_setImmersiveEffect_0100();
+          break;
+        case 505:
+          console.debug(TAG + '====>Sub_InputMethod_IME_setImmersiveEffect_0200 event:' + data.event);
+          that.Sub_InputMethod_IME_setImmersiveEffect_0200();
+          break;
+        case 506:
+          console.debug(TAG + '====>Sub_InputMethod_IME_setImmersiveEffect_0300 event:' + data.event);
+          that.Sub_InputMethod_IME_setImmersiveEffect_0300();
+          break;
+        case 507:
+          console.debug(TAG + '====>Sub_InputMethod_IME_setImmersiveEffect_0400 event:' + data.event);
+          that.Sub_InputMethod_IME_setImmersiveEffect_0400();
+          break;
+        case 508:
+          console.debug(TAG + '====>Sub_InputMethod_IME_setImmersiveEffect_0500 event:' + data.event);
+          that.Sub_InputMethod_IME_setImmersiveEffect_0500();
+          break;
       }
     }
 
@@ -2706,7 +2726,7 @@ export class KeyboardController {
         data: 'FAILED'
     };
     inputmethodengine.getKeyboardDelegate().on('editorAttributeChanged', (attr:inputMethodEngine.EditorAttribute) => {
-      console.info(TAG + `====>on_EditorAttribute_callback = ${JSON.stringify(attr)} immersiveMode = ${attr.immersiveMode}`); 
+      console.info(TAG + `====>on_EditorAttribute_callback = ${JSON.stringify(attr)} immersiveMode = ${attr.immersiveMode}  gradientMode = ${attr.gradientMode}`); 
       this.immersive = attr.immersiveMode;
       inputmethodengine.getKeyboardDelegate().off('editorAttributeChanged');
     });
@@ -3360,5 +3380,153 @@ export class KeyboardController {
       console.info(TAG + '====>Sub_InputMethod_IMF_onoffcallingDisplayDidChange_0200 cathch err: ' + JSON.stringify(err));
       commoneventmanager.publish('Sub_InputMethod_IMF_onoffcallingDisplayDidChange_0200', commonEventPublishData, this.publishCallback);
     }
+  }
+
+  private async Sub_InputMethod_IME_setImmersiveEffect_0100(): Promise<void> {
+    console.info(TAG + '====>receive Sub_InputMethod_IME_setImmersiveEffect_0100 data');
+    let commonEventPublishData = {
+        data: 'FAILED'
+    };
+    try {
+      this.softKeyboardPanel.setImmersiveMode(inputMethodEngine.ImmersiveMode.LIGHT_IMMERSIVE);
+      let effect: inputMethodEngine.ImmersiveEffect = {
+        gradientHeight: 0,
+        gradientMode: inputMethodEngine.GradientMode.NONE,
+        fluidLightMode: inputMethodEngine.FluidLightMode.NONE
+      };
+      this.softKeyboardPanel.setImmersiveEffect(effect);
+      console.info(TAG + '====>Sub_InputMethod_IME_setImmersiveEffect_0100 ImmersiveMode :' + JSON.stringify(effect));
+      commonEventPublishData = {
+        data: 'SUCCESS'
+      };
+      console.info(TAG + '====>Sub_InputMethod_IME_setImmersiveEffect_0100 success ');
+    } catch (err) {
+      if (err.code === 801) {
+        commonEventPublishData = {
+          data: 'SUCCESS'
+        };
+      };
+      console.info(TAG + '====>Sub_InputMethod_IME_setImmersiveEffect_0100 cathch err: ' + JSON.stringify(err));
+    };
+    commoneventmanager.publish('Sub_InputMethod_IME_setImmersiveEffect_0100', commonEventPublishData, this.publishCallback);
+  }
+
+  private async Sub_InputMethod_IME_setImmersiveEffect_0200(): Promise<void> {
+    console.info(TAG + '====>receive Sub_InputMethod_IME_setImmersiveEffect_0200 data');
+    let commonEventPublishData = {
+        data: 'FAILED'
+    };
+    try {
+      this.softKeyboardPanel.setImmersiveMode(inputMethodEngine.ImmersiveMode.LIGHT_IMMERSIVE);
+      let effect: inputMethodEngine.ImmersiveEffect = {
+        gradientHeight: 1,
+        gradientMode: inputMethodEngine.GradientMode.NONE,
+        fluidLightMode: inputMethodEngine.FluidLightMode.NONE
+      };
+      this.softKeyboardPanel.setImmersiveEffect(effect);
+      console.info(TAG + '====>Sub_InputMethod_IME_setImmersiveEffect_0200 effect :' + JSON.stringify(effect));
+    } catch (err) {
+      if (err.code === 801) {
+        commonEventPublishData = {
+          data: 'SUCCESS'
+        };
+      };
+      if (err.code === 12800020) {
+        commonEventPublishData = {
+          data: 'SUCCESS'
+        };
+      };
+      console.info(TAG + '====>Sub_InputMethod_IME_setImmersiveEffect_0200 cathch err: ' + JSON.stringify(err));
+    };
+    commoneventmanager.publish('Sub_InputMethod_IME_setImmersiveEffect_0200', commonEventPublishData, this.publishCallback);
+  }
+
+  private async Sub_InputMethod_IME_setImmersiveEffect_0300(): Promise<void> {
+    console.info(TAG + '====>receive Sub_InputMethod_IME_setImmersiveEffect_0300 data');
+    let commonEventPublishData = {
+        data: 'FAILED'
+    };
+    try {
+      this.softKeyboardPanel.setImmersiveMode(inputMethodEngine.ImmersiveMode.NONE_IMMERSIVE);
+      let effect: inputMethodEngine.ImmersiveEffect = {
+        gradientHeight: 0,
+        gradientMode: inputMethodEngine.GradientMode.LINEAR_GRADIENT,
+        fluidLightMode: inputMethodEngine.FluidLightMode.NONE
+      };
+      this.softKeyboardPanel.setImmersiveEffect(effect);
+      console.info(TAG + '====>Sub_InputMethod_IME_setImmersiveEffect_0300 effect :' + JSON.stringify(effect));
+    } catch (err) {
+      if (err.code === 801) {
+        commonEventPublishData = {
+          data: 'SUCCESS'
+        };
+      };
+      if (err.code === 12800020) {
+        commonEventPublishData = {
+          data: 'SUCCESS'
+        };
+      };
+      console.info(TAG + '====>Sub_InputMethod_IME_setImmersiveEffect_0300 cathch err: ' + JSON.stringify(err));
+    };
+    commoneventmanager.publish('Sub_InputMethod_IME_setImmersiveEffect_0300', commonEventPublishData, this.publishCallback);
+  }
+
+  private async Sub_InputMethod_IME_setImmersiveEffect_0400(): Promise<void> {
+    console.info(TAG + '====>receive Sub_InputMethod_IME_setImmersiveEffect_0400 data');
+    let commonEventPublishData = {
+        data: 'FAILED'
+    };
+    try {
+      this.softKeyboardPanel.setImmersiveMode(inputMethodEngine.ImmersiveMode.LIGHT_IMMERSIVE);
+      let effect: inputMethodEngine.ImmersiveEffect = {
+        gradientHeight: 0,
+        gradientMode: inputMethodEngine.GradientMode.LINEAR_GRADIENT,
+        fluidLightMode: inputMethodEngine.FluidLightMode.BACKGROUND_FLUID_LIGHT 
+      };
+      this.softKeyboardPanel.setImmersiveEffect(effect);
+      console.info(TAG + '====>Sub_InputMethod_IME_setImmersiveEffect_0400 effect :' + JSON.stringify(effect));
+    } catch (err) {
+      if (err.code === 801) {
+        commonEventPublishData = {
+          data: 'SUCCESS'
+        };
+      };
+      if (err.code === 202) {
+        commonEventPublishData = {
+          data: 'SUCCESS'
+        };
+      };
+      console.info(TAG + '====>Sub_InputMethod_IME_setImmersiveEffect_0400 cathch err: ' + JSON.stringify(err));
+    };
+    commoneventmanager.publish('Sub_InputMethod_IME_setImmersiveEffect_0400', commonEventPublishData, this.publishCallback);
+  }
+
+  private async Sub_InputMethod_IME_setImmersiveEffect_0500(): Promise<void> {
+    console.info(TAG + '====>receive Sub_InputMethod_IME_setImmersiveEffect_0500 data');
+    let commonEventPublishData = {
+        data: 'FAILED'
+    };
+    try {
+      this.softKeyboardPanel.setImmersiveMode(inputMethodEngine.ImmersiveMode.LIGHT_IMMERSIVE);
+      let effect: inputMethodEngine.ImmersiveEffect = {
+        gradientHeight: 1,
+        gradientMode: inputMethodEngine.GradientMode.LINEAR_GRADIENT,
+        fluidLightMode: inputMethodEngine.FluidLightMode.NONE 
+      };
+      this.softKeyboardPanel.setImmersiveEffect(effect);
+      console.info(TAG + '====>Sub_InputMethod_IME_setImmersiveEffect_0500 effect :' + JSON.stringify(effect));
+      commonEventPublishData = {
+        data: 'SUCCESS'
+      };
+      console.info(TAG + '====>Sub_InputMethod_IME_setImmersiveEffect_0500 success ');
+    } catch (err) {
+      if (err.code === 801) {
+        commonEventPublishData = {
+          data: 'SUCCESS'
+        };
+      };
+      console.info(TAG + '====>Sub_InputMethod_IME_setImmersiveEffect_0500 cathch err: ' + JSON.stringify(err));
+    };
+    commoneventmanager.publish('Sub_InputMethod_IME_setImmersiveEffect_0500', commonEventPublishData, this.publishCallback);
   }
 }

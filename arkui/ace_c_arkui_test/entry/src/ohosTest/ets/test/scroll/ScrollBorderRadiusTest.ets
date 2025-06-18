@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function scrollBorderRadiusTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollBorderRadius001', 0, async (done: Function) => {
+    it('testScrollBorderRadius001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollBorderRadius001()).assertEqual(0)
       done();
     });
@@ -47,7 +47,7 @@ export default function scrollBorderRadiusTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testScrollBorderRadius002', 0, async (done: Function) => {
+    it('testScrollBorderRadius002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollBorderRadius002()).assertEqual(0)
       done();
     });
@@ -60,7 +60,7 @@ export default function scrollBorderRadiusTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollBorderRadius003', 0, async (done: Function) => {
+    it('testScrollBorderRadius003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollBorderRadius003()).assertEqual(0)
       done();
     });

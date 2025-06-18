@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function spanTextBackgroundStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSpanTextBackgroundStyle001', 0, async (done: Function) => {
+    it('testSpanTextBackgroundStyle001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSpanTextBackgroundStyle001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function spanTextBackgroundStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSpanTextBackgroundStyle002', 0, async (done: Function) => {
+    it('testSpanTextBackgroundStyle002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSpanTextBackgroundStyle002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function spanTextBackgroundStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSpanTextBackgroundStyle003', 0, async (done: Function) => {
+    it('testSpanTextBackgroundStyle003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSpanTextBackgroundStyle003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function spanTextBackgroundStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSpanTextBackgroundStyle004', 0, async (done: Function) => {
+    it('testSpanTextBackgroundStyle004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSpanTextBackgroundStyle004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function spanTextBackgroundStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSpanTextBackgroundStyle005', 0, async (done: Function) => {
+    it('testSpanTextBackgroundStyle005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSpanTextBackgroundStyle005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function spanTextBackgroundStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSpanTextBackgroundStyle006', 0, async (done: Function) => {
+    it('testSpanTextBackgroundStyle006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSpanTextBackgroundStyle006()).assertEqual(0)
       done()
     })

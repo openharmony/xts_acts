@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textAreaBlurOnSubmitTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaBlurOnSubmit001', 0, async (done: Function) => {
+    it('testTextAreaBlurOnSubmit001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaBlurOnSubmit001()).assertEqual(0)
       done();
     });
@@ -47,7 +47,7 @@ export default function textAreaBlurOnSubmitTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaBlurOnSubmit002', 0, async (done: Function) => {
+    it('testTextAreaBlurOnSubmit002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaBlurOnSubmit002()).assertEqual(0)
       done();
     });
@@ -60,7 +60,7 @@ export default function textAreaBlurOnSubmitTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaBlurOnSubmit003', 0, async (done: Function) => {
+    it('testTextAreaBlurOnSubmit003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaBlurOnSubmit003()).assertEqual(0)
       done();
     });

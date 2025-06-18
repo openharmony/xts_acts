@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium"
 import router from '@system.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from "../../MainAbility/common/Common";
@@ -50,7 +50,7 @@ export default function MovingPhotoView() {
      * @tc.level      : Level 3
      */
 
-    it('MovingPhotoView_001', 0, async function (done) {
+    it('MovingPhotoView_001', Level.LEVEL3, async function (done) {
 
       console.info('[MovingPhotoView_001] START');
       await CommonFunc.sleep(1000);
@@ -74,7 +74,7 @@ export default function MovingPhotoView() {
      * @tc.level      : Level 3
      */
 
-    it('MovingPhotoView_002', 0, async function (done) {
+    it('MovingPhotoView_002', Level.LEVEL3, async function (done) {
 
       console.info('[MovingPhotoView_002] START');
       await CommonFunc.sleep(1000);

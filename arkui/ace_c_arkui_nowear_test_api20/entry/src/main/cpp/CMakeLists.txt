@@ -14,6 +14,8 @@ add_library(nativerender SHARED
     manager/plugin_manager.cpp
     napi_render_init.cpp
     button/button_gettype_test.cpp
+    drag/GetDisplayIdTest.cpp
+    drag/GetDragSourceTest.cpp
     dropBadge/EnableDropDisallowedBadgeTest.cpp
 )
 

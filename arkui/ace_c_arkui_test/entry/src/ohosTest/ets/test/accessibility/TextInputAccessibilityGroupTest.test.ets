@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textInputAccessibilityGroupTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextInputAccessibilityGroup001', 0, async (done: Function) => {
+    it('testTextInputAccessibilityGroup001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputAccessibilityGroup001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function textInputAccessibilityGroupTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextInputAccessibilityGroup002', 0, async (done: Function) => {
+    it('testTextInputAccessibilityGroup002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputAccessibilityGroup002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function textInputAccessibilityGroupTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTextInputAccessibilityGroup003', 0, async (done: Function) => {
+    it('testTextInputAccessibilityGroup003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputAccessibilityGroup003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function textInputAccessibilityGroupTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTextInputAccessibilityGroup004', 0, async (done: Function) => {
+    it('testTextInputAccessibilityGroup004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputAccessibilityGroup004()).assertEqual(0)
       done()
     })

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function imageSpanSrcTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageSpanSrc001', 0, async (done: Function) => {
+    it('testImageSpanSrc001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageSpanSrc001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function imageSpanSrcTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageSpanSrc002', 0, async (done: Function) => {
+    it('testImageSpanSrc002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageSpanSrc002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function imageSpanSrcTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageSpanSrc003', 0, async (done: Function) => {
+    it('testImageSpanSrc003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageSpanSrc003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function imageSpanSrcTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageSpanSrc004', 0, async (done: Function) => {
+    it('testImageSpanSrc004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageSpanSrc004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function imageSpanSrcTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageSpanSrc005', 0, async (done: Function) => {
+    it('testImageSpanSrc005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageSpanSrc005()).assertEqual(0)
       done()
     })

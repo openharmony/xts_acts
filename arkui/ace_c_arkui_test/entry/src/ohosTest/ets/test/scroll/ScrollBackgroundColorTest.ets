@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function scrollBackgroundColorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollBackgroundColor001', 0, async (done: Function) => {
+    it('testScrollBackgroundColor001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollBackgroundColor001()).assertEqual(0)
       done();
     });
@@ -47,7 +47,7 @@ export default function scrollBackgroundColorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollBackgroundColor002', 0, async (done: Function) => {
+    it('testScrollBackgroundColor002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollBackgroundColor002()).assertEqual(0)
       done();
     });
@@ -60,7 +60,7 @@ export default function scrollBackgroundColorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollBackgroundColor003', 0, async (done: Function) => {
+    it('testScrollBackgroundColor003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollBackgroundColor003()).assertEqual(0)
       done();
     });

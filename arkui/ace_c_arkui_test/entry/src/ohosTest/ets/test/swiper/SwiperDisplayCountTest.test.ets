@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function swiperDisplayCountTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSwiperDisplayCount001', 0, async (done: Function) => {
+    it('testSwiperDisplayCount001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperDisplayCount001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function swiperDisplayCountTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSwiperDisplayCount002', 0, async (done: Function) => {
+    it('testSwiperDisplayCount002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperDisplayCount002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function swiperDisplayCountTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testSwiperDisplayCount004', 0, async (done: Function) => {
+    it('testSwiperDisplayCount004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperDisplayCount004()).assertEqual(0)
       done()
     })

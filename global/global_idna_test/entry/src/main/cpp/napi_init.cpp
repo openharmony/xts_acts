@@ -23,6 +23,10 @@
 #include "unicode/uloc.h"
 #include "hilog/log.h"
 #include <cstdint>
+#include "hilog/log.h"
+#include "unicode/ubrk.h"
+#include "unicode/ustring.h"
+
 
 static napi_value TestUidna_openUTS46(napi_env env, napi_callback_info)
 {
@@ -1154,6 +1158,268 @@ static napi_value testU_errorName(napi_env env, napi_callback_info)
     return result;
 }
 
+static napi_value testUbrk_setUText_0100(napi_env env, napi_callback_info info)
+{
+    UChar s1[] = {0x41, 0x42, 0x20, 1};
+    UText *ut = nullptr;
+    UBreakIterator *bb = nullptr;
+    int nber;
+    const char *test = "zh_CN";
+    UErrorCode icu_status = U_ZERO_ERROR;
+    bb = ubrk_open(UBRK_WORD, test, NULL, 0, &icu_status);
+    ut = utext_openUChars(ut, s1, -1, &icu_status);
+    ubrk_setUText(bb, ut, &icu_status);
+    nber = ubrk_next(bb);
+    bool flag = (nber == 2);
+    napi_value result = nullptr;
+    napi_get_boolean(env, flag, &result);
+    ubrk_close(bb);
+    utext_close(ut);
+    return result;
+}
+
+static napi_value testUbrk_setUText_0200(napi_env env, napi_callback_info info)
+{
+    UChar s1[] = {0x41, 0x42, 0x43, 0x44, 0x45, 0};
+    UText *ut = nullptr;
+    UBreakIterator *bb = nullptr;
+    int nber;
+    const char *test = "zh_CN";
+    UErrorCode icu_status = U_ZERO_ERROR;
+    bb = ubrk_open(UBRK_WORD, test, NULL, 0, &icu_status);
+    ut = utext_openUChars(ut, s1, -1, &icu_status);
+    ubrk_setUText(bb, ut, &icu_status);
+    nber = ubrk_next(bb);
+    bool flag = (nber == 5);
+    napi_value result = nullptr;
+    napi_get_boolean(env, flag, &result);
+    ubrk_close(bb);
+    utext_close(ut);
+    return result;
+}
+
+static napi_value testUbrk_setUText_0300(napi_env env, napi_callback_info info)
+{
+    UChar s1[] = u"He's from";
+    UText *ut = nullptr;
+    UBreakIterator *bb = nullptr;
+    int nber;
+    const char *test = "zh_CN";
+    UErrorCode icu_status = U_ZERO_ERROR;
+    bb = ubrk_open(UBRK_WORD, test, NULL, 0, &icu_status);
+    ut = utext_openUChars(ut, s1, -1, &icu_status);
+    ubrk_setUText(bb, ut, &icu_status);
+    nber = ubrk_next(bb);
+    bool flag = (nber == 4);
+    napi_value result = nullptr;
+    napi_get_boolean(env, flag, &result);
+    ubrk_close(bb);
+    utext_close(ut);
+    return result;
+}
+
+static napi_value testUbrk_setUText_0400(napi_env env, napi_callback_info info)
+{
+    UChar s1[] = u"Couldn't open";
+    UText *ut = nullptr;
+    UBreakIterator *bb = nullptr;
+    int nber;
+    const char *test = "zh_CN";
+    UErrorCode icu_status = U_ZERO_ERROR;
+    bb = ubrk_open(UBRK_WORD, test, NULL, 0, &icu_status);
+    ut = utext_openUChars(ut, s1, -1, &icu_status);
+    ubrk_setUText(bb, ut, &icu_status);
+    nber = ubrk_next(bb);
+    bool flag = (nber == 8);
+    napi_value result = nullptr;
+    napi_get_boolean(env, flag, &result);
+    ubrk_close(bb);
+    utext_close(ut);
+    return result;
+}
+
+static napi_value testUbrk_setUText_0500(napi_env env, napi_callback_info info)
+{
+    UChar s1[] = u"Cloned Iterator failed";
+    UText *ut = nullptr;
+    UBreakIterator *bb = nullptr;
+    int nber;
+    const char *test = "zh_CN";
+    UErrorCode icu_status = U_ZERO_ERROR;
+    bb = ubrk_open(UBRK_WORD, test, NULL, 0, &icu_status);
+    ut = utext_openUChars(ut, s1, -1, &icu_status);
+    ubrk_setUText(bb, ut, &icu_status);
+    nber = ubrk_next(bb);
+    bool flag = (nber == 6);
+    napi_value result = nullptr;
+    napi_get_boolean(env, flag, &result);
+    ubrk_close(bb);
+    utext_close(ut);
+    return result;
+}
+
+static napi_value testUbrk_setUText_0600(napi_env env, napi_callback_info info)
+{
+    UChar s1[] = u"";
+    UText *ut = nullptr;
+    UBreakIterator *bb = nullptr;
+    int nber;
+    const char *test = "zh_CN";
+    UErrorCode icu_status = U_ZERO_ERROR;
+    bb = ubrk_open(UBRK_WORD, test, NULL, 0, &icu_status);
+    ut = utext_openUChars(ut, s1, -1, &icu_status);
+    ubrk_setUText(bb, ut, &icu_status);
+    nber = ubrk_next(bb);
+    bool flag = (nber == -1);
+    napi_value result = nullptr;
+    napi_get_boolean(env, flag, &result);
+    ubrk_close(bb);
+    utext_close(ut);
+    return result;
+}
+
+static napi_value testUbrk_setUText_0700(napi_env env, napi_callback_info info)
+{
+    UChar s1[] = u"马到成功";
+    UText *ut = nullptr;
+    UBreakIterator *bb = nullptr;
+    int nber;
+    const char *test = "zh_CN";
+    UErrorCode icu_status = U_ZERO_ERROR;
+    bb = ubrk_open(UBRK_WORD, test, NULL, 0, &icu_status);
+    ut = utext_openUChars(ut, s1, -1, &icu_status);
+    ubrk_setUText(bb, ut, &icu_status);
+    nber = ubrk_next(bb);
+    bool flag = (nber == 4);
+    napi_value result = nullptr;
+    napi_get_boolean(env, flag, &result);
+    ubrk_close(bb);
+    utext_close(ut);
+    return result;
+}
+
+static napi_value testUbrk_setUText_0800(napi_env env, napi_callback_info info)
+{
+    UChar s1[] = u"不知道我的国家";
+    UText *ut = nullptr;
+    UBreakIterator *bb = nullptr;
+    int nber;
+    const char *test = "zh_CN";
+    UErrorCode icu_status = U_ZERO_ERROR;
+    bb = ubrk_open(UBRK_WORD, test, NULL, 0, &icu_status);
+    ut = utext_openUChars(ut, s1, -1, &icu_status);
+    ubrk_setUText(bb, ut, &icu_status);
+    nber = ubrk_next(bb);
+    bool flag = (nber == 3);
+    napi_value result = nullptr;
+    napi_get_boolean(env, flag, &result);
+    ubrk_close(bb);
+    utext_close(ut);
+    return result;
+}
+
+static napi_value testUbrk_setUText_0900(napi_env env, napi_callback_info info)
+{
+    UChar s1[] = u"我的国家";
+    UText *ut = nullptr;
+    UBreakIterator *bb = nullptr;
+    int nber;
+    const char *test = "zh_CN";
+    UErrorCode icu_status = U_ZERO_ERROR;
+    bb = ubrk_open(UBRK_WORD, test, NULL, 0, &icu_status);
+    ut = utext_openUChars(ut, s1, -1, &icu_status);
+    ubrk_setUText(bb, ut, &icu_status);
+    nber = ubrk_next(bb);
+    bool flag = (nber == 2);
+    napi_value result = nullptr;
+    napi_get_boolean(env, flag, &result);
+    ubrk_close(bb);
+    utext_close(ut);
+    return result;
+}
+
+static napi_value testUbrk_setUText_1000(napi_env env, napi_callback_info info)
+{
+    UChar s1[] = u"我我我我我";
+    UText *ut = nullptr;
+    UBreakIterator *bb = nullptr;
+    int nber;
+    const char *test = "zh_CN";
+    UErrorCode icu_status = U_ZERO_ERROR;
+    bb = ubrk_open(UBRK_WORD, test, NULL, 0, &icu_status);
+    ut = utext_openUChars(ut, s1, -1, &icu_status);
+    ubrk_setUText(bb, ut, &icu_status);
+    nber = ubrk_next(bb);
+    bool flag = (nber == 1);
+    napi_value result = nullptr;
+    napi_get_boolean(env, flag, &result);
+    ubrk_close(bb);
+    utext_close(ut);
+    return result;
+}
+
+static napi_value testUbrk_clone_0100(napi_env env, napi_callback_info info)
+{
+    const UChar text[] = u"He's form Africa.Mr. Livingston, I presume? Yeah";
+    UBreakIterator *someUterators[2];
+    UBreakIterator *brk;
+    UErrorCode status = U_ZERO_ERROR;
+    int32_t pos;
+    const char *test = "en_US";
+    someUterators[0] = ubrk_open(UBRK_WORD, test, text, u_strlen(text), &status);
+    brk = ubrk_clone(someUterators[0], &status);
+    pos = ubrk_next(brk);
+    bool flag = (pos == 4);
+    napi_value result = nullptr;
+    napi_get_boolean(env, flag, &result);
+    return result;
+}
+
+static napi_value testUbrk_clone_0200(napi_env env, napi_callback_info info)
+{
+    const UChar text[] = u"He's form Africa.Mr. Livingston, I presume? Yeah";
+    UBreakIterator *someUterators[2];
+    UBreakIterator *brk;
+    UBreakIterator *brk2;
+    UBreakIterator *brk3;
+    UErrorCode status = U_ZERO_ERROR;
+    int32_t pos;
+    int32_t pos2;
+    int32_t pos3;
+    const char *test = "en_US";
+    someUterators[0] = ubrk_open(UBRK_WORD, test, text, u_strlen(text), &status);
+    brk = ubrk_clone(someUterators[0], &status);
+    pos = ubrk_next(brk);
+    brk2 = ubrk_clone(brk, &status);
+    pos2 = ubrk_current(brk2);
+    brk3 = ubrk_clone(brk2, &status);
+    pos3 = ubrk_next(brk3);
+    bool flagA = (pos == 4);
+    bool flagB = (pos2 == 4);
+    bool flagC = (pos3 == 5);
+    bool flag = (flagA & flagB & flagC);
+    napi_value result = nullptr;
+    napi_get_boolean(env, flag, &result);
+    return result;
+}
+
+static napi_value testUbrk_clone_0300(napi_env env, napi_callback_info info)
+{
+    const UChar text[] = u"";
+    UBreakIterator *someUterators[2];
+    UBreakIterator *brk;
+    UErrorCode status = U_ZERO_ERROR;
+    int32_t pos;
+    const char *test = "en_US";
+    someUterators[0] = ubrk_open(UBRK_WORD, test, text, u_strlen(text), &status);
+    brk = ubrk_clone(someUterators[0], &status);
+    pos = ubrk_next(brk);
+    bool flag = (pos == -1);
+    napi_value result = nullptr;
+    napi_get_boolean(env, flag, &result);
+    return result;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -1310,6 +1576,32 @@ static napi_value Init(napi_env env, napi_value exports)
             nullptr, nullptr, napi_default, nullptr},
         {"testu_errorName", nullptr, testU_errorName, nullptr,
             nullptr, nullptr, napi_default, nullptr},
+        {"testubrk_setUText_0100", nullptr, testUbrk_setUText_0100, nullptr,
+            nullptr, nullptr, napi_default, nullptr},
+        {"testubrk_setUText_0200", nullptr, testUbrk_setUText_0200, nullptr,
+            nullptr, nullptr, napi_default, nullptr},
+        {"testubrk_setUText_0300", nullptr, testUbrk_setUText_0300, nullptr,
+            nullptr, nullptr, napi_default, nullptr},
+        {"testubrk_setUText_0400", nullptr, testUbrk_setUText_0400, nullptr,
+            nullptr, nullptr, napi_default, nullptr},
+        {"testubrk_setUText_0500", nullptr, testUbrk_setUText_0500, nullptr,
+            nullptr, nullptr, napi_default, nullptr},
+        {"testubrk_setUText_0600", nullptr, testUbrk_setUText_0600, nullptr,
+            nullptr, nullptr, napi_default, nullptr},
+        {"testubrk_setUText_0700", nullptr, testUbrk_setUText_0700, nullptr,
+            nullptr, nullptr, napi_default, nullptr},
+        {"testubrk_setUText_0800", nullptr, testUbrk_setUText_0800, nullptr,
+            nullptr, nullptr, napi_default, nullptr},
+        {"testubrk_setUText_0900", nullptr, testUbrk_setUText_0900, nullptr,
+            nullptr, nullptr, napi_default, nullptr},
+        {"testubrk_setUText_1000", nullptr, testUbrk_setUText_1000, nullptr,
+            nullptr, nullptr, napi_default, nullptr},
+        {"testubrk_clone_0100", nullptr, testUbrk_clone_0100, nullptr,
+            nullptr, nullptr, napi_default, nullptr},
+        {"testubrk_clone_0200", nullptr, testUbrk_clone_0200, nullptr,
+            nullptr, nullptr, napi_default, nullptr},
+        {"testubrk_clone_0300", nullptr, testUbrk_clone_0300, nullptr,
+            nullptr, nullptr, napi_default, nullptr}
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;

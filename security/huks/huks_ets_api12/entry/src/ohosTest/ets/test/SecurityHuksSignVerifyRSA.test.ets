@@ -12,11 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 import { huks } from '@kit.UniversalKeystoreKit';
-import { SetParam, GenParam, GetDataBySize, CheckSoftware, CheckWearable } from './utils/HuksOptionUtil';
-import { StringToUint8Array } from './utils/CommonUtil';
-import { SignVerify, SignVerifyData } from './utils/SignVerifyUtil';
+import { CheckSoftware, CheckWearable, GenParam, SetParam } from './utils/huks/HuksOptionsUtils';
+import { GetDataBySize, StringToUint8Array } from './utils/CommonUtils';
+import { SignVerify, SignVerifyData } from './utils/huks/SignVerifyUtils';
 
 
 export default function SecurityHuksSignVerifyRSATest() {

@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium';
 import Utils from './Utils'
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest';
 
@@ -49,7 +49,7 @@ export default function counterJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testCounter01', 0, async (done: Function) => {
+    it('testCounter01', Level.LEVEL0, async (done: Function) => {
       console.info('[testCounter01] START');
       let strJson = getInspectorByKey('Counter');
       console.info("[testCounter01] obj is : " + JSON.stringify(JSON.parse(strJson).$attrs));
@@ -66,7 +66,7 @@ export default function counterJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testCounter02', 0, async (done: Function) => {
+    it('testCounter02', Level.LEVEL0, async (done: Function) => {
       console.info('[testCounter02] START');
       let strJson = getInspectorByKey('Counter');
       console.info("[testCounter02] obj is : " + JSON.stringify(JSON.parse(strJson).$attrs));
@@ -83,7 +83,7 @@ export default function counterJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('testCounter03', 0, async (done: Function) => {
+    it('testCounter03', Level.LEVEL0, async (done: Function) => {
       console.info('testCounter03 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

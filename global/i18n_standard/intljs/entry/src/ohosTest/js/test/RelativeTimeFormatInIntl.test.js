@@ -120,7 +120,7 @@ describe('RelativeTimeFormatInIntlTest', function () {
         let relativetimefmt = new Intl.RelativeTimeFormat('en', { style: 'narrow' });
         let value = relativetimefmt.format(100,'second');
         console.log('i18n_test_relativetimeformat_0300 ' + value);
-        expect(value).assertEqual('in 100 sec.');
+        expect(value).assertEqual('in 100s');
     })
 
     /* *

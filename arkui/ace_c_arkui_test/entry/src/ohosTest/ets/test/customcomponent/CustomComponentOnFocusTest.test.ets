@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 
 export default function customComponentOnFocusTest() {
@@ -34,7 +34,7 @@ export default function customComponentOnFocusTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCustomComponentOnFocus001', 0, async (done: Function) => {
+    it('testCustomComponentOnFocus001', Level.LEVEL1, async (done: Function) => {
       focusControl.requestFocus('OnFocusTestCustomComponentCompare')
       await Utils.sleep(2000)
       focusControl.requestFocus('OnFocusTestCustomComponent')
@@ -51,7 +51,7 @@ export default function customComponentOnFocusTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCustomComponentOnFocus002', 0, async (done: Function) => {
+    it('testCustomComponentOnFocus002', Level.LEVEL1, async (done: Function) => {
       focusControl.requestFocus('OnFocusTestCustomComponent')
       await Utils.sleep(2000)
       focusControl.requestFocus('OnFocusTestCustomComponentDisable')

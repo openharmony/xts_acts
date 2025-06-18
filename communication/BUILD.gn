@@ -29,6 +29,7 @@ group("communication") {
       "dsoftbus/rpc:ActsRpcJsTest",
       "dsoftbus/rpc_request:ActsRpcRequestJsTest",
       "dsoftbus/linkEnhance:ActslinkEnhanceTest",
+      "dsoftbus/linkEnhanceNoPermission:ActslinkEnhanceNoPermissionTest",
       "netstack_http_nop:ActsHttpNopStageTest",
       "netstack_socket_nop:ActsSocketNoPermissionTest",
       "nfc_Controller:ActsNFCJSTest",

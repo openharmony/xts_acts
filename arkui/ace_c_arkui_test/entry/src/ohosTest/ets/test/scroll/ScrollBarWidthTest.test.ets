@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function scrollBarWidthTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollBarWidth001', 0, async (done: Function) => {
+    it('testScrollBarWidth001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollBarWidth001()).assertEqual(0)
       done();
     });
@@ -47,7 +47,7 @@ export default function scrollBarWidthTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollBarWidth002', 0, async (done: Function) => {
+    it('testScrollBarWidth002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollBarWidth002()).assertEqual(0)
       done();
     });
@@ -60,7 +60,7 @@ export default function scrollBarWidthTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollBarWidth003', 0, async (done: Function) => {
+    it('testScrollBarWidth003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollBarWidth003()).assertEqual(0)
       done();
     });
@@ -73,7 +73,7 @@ export default function scrollBarWidthTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollBarWidth004', 0, async (done: Function) => {
+    it('testScrollBarWidth004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollBarWidth004()).assertEqual(0)
       done();
     });
@@ -86,7 +86,7 @@ export default function scrollBarWidthTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollBarWidth005', 0, async (done: Function) => {
+    it('testScrollBarWidth005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollBarWidth005()).assertEqual(0)
       done();
     });
@@ -99,7 +99,7 @@ export default function scrollBarWidthTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollBarWidth006', 0, async (done: Function) => {
+    it('testScrollBarWidth006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollBarWidth006()).assertEqual(0)
       done();
     });

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textAreaSelectedBackgroundColorTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaSelectedBackgroundColor001', 0, async (done: Function) => {
+    it('testTextAreaSelectedBackgroundColor001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaSelectedBackgroundColor001()).assertEqual(0)
       done();
     });
@@ -47,7 +47,7 @@ export default function textAreaSelectedBackgroundColorTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaSelectedBackgroundColor002', 0, async (done: Function) => {
+    it('testTextAreaSelectedBackgroundColor002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaSelectedBackgroundColor002()).assertEqual(0)
       done();
     });
@@ -60,7 +60,7 @@ export default function textAreaSelectedBackgroundColorTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaSelectedBackgroundColor003', 0, async (done: Function) => {
+    it('testTextAreaSelectedBackgroundColor003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaSelectedBackgroundColor003()).assertEqual(0)
       done();
     });

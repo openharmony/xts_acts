@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function listItemOpacityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListItemOpacity001', 0, async (done: Function) => {
+    it('testListItemOpacity001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListItemOpacity001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function listItemOpacityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListItemOpacity002', 0, async (done: Function) => {
+    it('testListItemOpacity002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListItemOpacity002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function listItemOpacityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListItemOpacity003', 0, async (done: Function) => {
+    it('testListItemOpacity003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListItemOpacity003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function listItemOpacityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testListItemOpacity004', 0, async (done: Function) => {
+    it('testListItemOpacity004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListItemOpacity004()).assertEqual(0)
       done()
     })

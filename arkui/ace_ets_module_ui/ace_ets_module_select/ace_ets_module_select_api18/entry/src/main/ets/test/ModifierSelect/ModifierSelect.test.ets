@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
  import { BY, UiDriver } from '@kit.TestKit';
  import { router } from '@kit.ArkUI';
  import Utils from '../../MainAbility/common/Utils';
@@ -49,7 +49,7 @@
       * @tc.type
       * @tc.size
       */
-     it('ModifierSelect001', 0, async (done: Function) => {
+     it('ModifierSelect001', Level.LEVEL3, async (done: Function) => {
        let Key: string = 'ModifierSelect01'
         let strJson = getInspectorByKey(Key);
        console.log('ModifierSelect001')

@@ -268,7 +268,7 @@ export default function MultiSegmentButtonV2PageTest() {
      * @tc.type
      * @tc.level Level.LEVEL0
      */
-    it('MultiSegmentButtonV2PageTest_010', 0, async (done: Function) => {
+    it('MultiSegmentButtonV2PageTest_010', Level.LEVEL0, async (done: Function) => {
       console.log("[MultiSegmentButtonV2PageTest_010] START");
       const driver = Driver.create();
       await driver.delayMs(1000);

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import { Driver, ON, PointerMatrix, Rect } from '@ohos.UiTest';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
@@ -35,7 +35,7 @@ export default function animationEventTest(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimateOption001', 0, async (done: Function) => {
+    it('testAnimateOption001', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'AnimateToTest';
       await Utils.pushPage(`animation/${PAGE_TAG}`, ()=>{
         setTimeout(()=>{}, 500)
@@ -55,7 +55,7 @@ export default function animationEventTest(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testKeyframeAnimateOption012', 0, async (done: Function) => {
+    it('testKeyframeAnimateOption012', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'KeyframeRegisterOnFinishTest';
       await Utils.pushPage(`animation/${PAGE_TAG}`, ()=>{
         setTimeout(()=>{}, 1000)
@@ -74,7 +74,7 @@ export default function animationEventTest(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testKeyframeAnimateOption023', 0, async (done: Function) => {
+    it('testKeyframeAnimateOption023', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'KeyframeRegisterOnEventTest';
       await Utils.pushPage(`animation/${PAGE_TAG}`, ()=>{
         setTimeout(()=>{}, 1000)
@@ -93,7 +93,7 @@ export default function animationEventTest(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption047', 0, async (done: Function) => {
+    it('testAnimatorOption047', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'AnimatorRegisterOnFrameTest';
       await Utils.pushPage(`animation/${PAGE_TAG}`, ()=>{
         setTimeout(()=>{}, 1500)
@@ -114,7 +114,7 @@ export default function animationEventTest(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption050', 0, async (done: Function) => {
+    it('testAnimatorOption050', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'AnimatorRegisterOnFinishTest';
       await Utils.pushPage(`animation/${PAGE_TAG}`, ()=>{
         setTimeout(()=>{}, 1000)
@@ -135,7 +135,7 @@ export default function animationEventTest(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption053', 0, async (done: Function) => {
+    it('testAnimatorOption053', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'AnimatorRegisterOnCancelTest';
       await Utils.pushPage(`animation/${PAGE_TAG}`, ()=>{
         setTimeout(()=>{}, 1000)
@@ -156,7 +156,7 @@ export default function animationEventTest(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption056', 0, async (done: Function) => {
+    it('testAnimatorOption056', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'AnimatorRegisterOnRepeatTest';
       await Utils.pushPage(`animation/${PAGE_TAG}`, ()=>{
         setTimeout(()=>{}, 1000)
@@ -175,7 +175,7 @@ export default function animationEventTest(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAnimatorOption062', 0, async (done: Function) => {
+    it('testAnimatorOption062', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'AnimatorReverseTest';
       await Utils.pushPage(`animation/${PAGE_TAG}`, ()=>{
         setTimeout(()=>{}, 1000)

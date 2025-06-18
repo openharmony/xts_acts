@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function listScrollBarTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListScrollBar001', 0, async (done: Function) => {
+    it('testListScrollBar001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListScrollBar001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function listScrollBarTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListScrollBar002', 0, async (done: Function) => {
+    it('testListScrollBar002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListScrollBar002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function listScrollBarTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListScrollBar003', 0, async (done: Function) => {
+    it('testListScrollBar003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListScrollBar003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function listScrollBarTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testListScrollBar004', 0, async (done: Function) => {
+    it('testListScrollBar004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListScrollBar004()).assertEqual(0)
       done()
     })

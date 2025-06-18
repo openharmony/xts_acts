@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level} from '@ohos/hypium';
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
@@ -49,7 +49,7 @@ export default function textpickerJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUI_textpicker_002', 0, async (done: Function) => {
+    it('ArkUI_textpicker_002', Level.LEVEL0, async (done: Function) => {
       console.info('[ArkUI_textpicker_002] START');
       let strJson = getInspectorByKey('textPicker');
       let obj: ESObject = JSON.parse(strJson);
@@ -68,7 +68,7 @@ export default function textpickerJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUI_textpicker_003', 0, async (done: Function) => {
+    it('ArkUI_textpicker_003', Level.LEVEL0, async (done: Function) => {
       console.info('[ArkUI_textpicker_003] START');
       let strJson = getInspectorByKey('textPicker');
       let obj: ESObject = JSON.parse(strJson);
@@ -88,7 +88,7 @@ export default function textpickerJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUI_textpicker_004', 0, async (done: Function) => {
+    it('ArkUI_textpicker_004', Level.LEVEL0, async (done: Function) => {
       console.info('[ArkUI_textpicker_004] START');
       let strJson = getInspectorByKey('textPicker');
       let obj: ESObject = JSON.parse(strJson);
@@ -108,7 +108,7 @@ export default function textpickerJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUI_textpicker_005', 0, async (done: Function) => {
+    it('ArkUI_textpicker_005', Level.LEVEL0, async (done: Function) => {
       console.info('[ArkUI_textpicker_005] START');
       let strJson = getInspectorByKey('textPicker');
       let obj: ESObject = JSON.parse(strJson);
@@ -125,7 +125,7 @@ export default function textpickerJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUI_textpicker_006', 0, async (done: Function) => {
+    it('ArkUI_textpicker_006', Level.LEVEL0, async (done: Function) => {
       console.info('[ArkUI_textpicker_006] START');
       let strJson = getInspectorByKey('textPicker');
       let obj: ESObject = JSON.parse(strJson);
@@ -142,7 +142,7 @@ export default function textpickerJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUI_textpicker_001', 0, async (done: Function) => {
+    it('ArkUI_textpicker_001', Level.LEVEL0, async (done: Function) => {
       console.info('[ArkUI_textpicker_001] START');
       let strJson = getInspectorByKey('textPicker');
       let obj: ESObject = JSON.parse(strJson);
@@ -163,7 +163,7 @@ export default function textpickerJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ArkUI_textpicker_011', 0, async (done: Function) => {
+    it('ArkUI_textpicker_011', Level.LEVEL0, async (done: Function) => {
       console.info('[ArkUI_textpicker_011] START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

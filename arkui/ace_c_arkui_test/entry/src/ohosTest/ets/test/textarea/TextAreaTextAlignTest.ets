@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textAreaTextAlignTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaTextAlign001', 0, async (done: Function) => {
+    it('testTextAreaTextAlign001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaTextAlign001()).assertEqual(0)
       done();
     });
@@ -47,7 +47,7 @@ export default function textAreaTextAlignTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaTextAlign002', 0, async (done: Function) => {
+    it('testTextAreaTextAlign002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaTextAlign002()).assertEqual(0)
       done();
     });
@@ -60,7 +60,7 @@ export default function textAreaTextAlignTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaTextAlign003', 0, async (done: Function) => {
+    it('testTextAreaTextAlign003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaTextAlign003()).assertEqual(0)
       done();
     });
@@ -73,7 +73,7 @@ export default function textAreaTextAlignTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaTextAlign004', 0, async (done: Function) => {
+    it('testTextAreaTextAlign004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaTextAlign004()).assertEqual(0)
       done();
     });
@@ -86,7 +86,7 @@ export default function textAreaTextAlignTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testTextAreaTextAlign005', 0, async (done: Function) => {
+    it('testTextAreaTextAlign005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAreaTextAlign005()).assertEqual(0)
       done();
     });

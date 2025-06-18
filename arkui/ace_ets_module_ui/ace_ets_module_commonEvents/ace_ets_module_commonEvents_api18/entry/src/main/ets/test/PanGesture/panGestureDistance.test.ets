@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium';
 import { UiComponent, UiDriver, Component, Driver, ON, BY, } from '@ohos.UiTest';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -55,7 +55,7 @@ export default function panGestureDistanceTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('panGesture_panRecognizer_getDistance_0010', 0, async (done: Function) => {
+    it('panGesture_panRecognizer_getDistance_0010', Level.LEVEL0, async (done: Function) => {
       console.info('panGesture_panRecognizer_getDistance_0010 START');
       let gridRect = CommonFunc.getComponentRectOnScreen('getDistance')
       let driver = Driver.create()
@@ -83,7 +83,7 @@ export default function panGestureDistanceTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('panGesture_panRecognizer_getDistance_0020', 0, async (done: Function) => {
+    it('panGesture_panRecognizer_getDistance_0020', Level.LEVEL0, async (done: Function) => {
       console.info('panGesture_panRecognizer_getDistance_0020 START');
       let gridRect = CommonFunc.getComponentRectOnScreen('getDistance')
       let driver = Driver.create()
@@ -112,7 +112,7 @@ export default function panGestureDistanceTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('panGesture_panRecognizer_getDistance_0030', 0, async (done: Function) => {
+    it('panGesture_panRecognizer_getDistance_0030', Level.LEVEL0, async (done: Function) => {
       console.info('panGesture_panRecognizer_getDistance_0030 START');
       let gridRect = CommonFunc.getComponentRectOnScreen('modifierGetDistance')
       let driver = Driver.create()

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function commonAttrsColorBlendTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsColorBlend001', 0, async (done: Function) => {
+    it('testCommonAttrsColorBlend001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsColorBlend001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function commonAttrsColorBlendTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsColorBlend002', 0, async (done: Function) => {
+    it('testCommonAttrsColorBlend002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsColorBlend002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function commonAttrsColorBlendTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsColorBlend003', 0, async (done: Function) => {
+    it('testCommonAttrsColorBlend003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsColorBlend003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function commonAttrsColorBlendTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsColorBlend004', 0, async (done: Function) => {
+    it('testCommonAttrsColorBlend004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsColorBlend004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function commonAttrsColorBlendTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsColorBlend005', 0, async (done: Function) => {
+    it('testCommonAttrsColorBlend005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsColorBlend005()).assertEqual(0)
       done()
     })

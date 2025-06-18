@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function imageAnimatorDurationTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testImageAnimatorDuration001', 0, async (done: Function) => {
+    it('testImageAnimatorDuration001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageAnimatorDuration001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function imageAnimatorDurationTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testImageAnimatorDuration002', 0, async (done: Function) => {
+    it('testImageAnimatorDuration002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageAnimatorDuration002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function imageAnimatorDurationTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testImageAnimatorDuration003', 0, async (done: Function) => {
+    it('testImageAnimatorDuration003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageAnimatorDuration003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function imageAnimatorDurationTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testImageAnimatorDuration004', 0, async (done: Function) => {
+    it('testImageAnimatorDuration004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageAnimatorDuration004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function imageAnimatorDurationTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testImageAnimatorDuration005', 0, async (done: Function) => {
+    it('testImageAnimatorDuration005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageAnimatorDuration005()).assertEqual(0)
       done()
     })

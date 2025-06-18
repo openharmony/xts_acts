@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textTextAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextTextAlign001', 0, async (done: Function) => {
+    it('testTextTextAlign001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextTextAlign001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function textTextAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextTextAlign002', 0, async (done: Function) => {
+    it('testTextTextAlign002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextTextAlign002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function textTextAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextTextAlign003', 0, async (done: Function) => {
+    it('testTextTextAlign003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextTextAlign003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function textTextAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextTextAlign004', 0, async (done: Function) => {
+    it('testTextTextAlign004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextTextAlign004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function textTextAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTextTextAlign005', 0, async (done: Function) => {
+    it('testTextTextAlign005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextTextAlign005()).assertEqual(0)
       done()
     })

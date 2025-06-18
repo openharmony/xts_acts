@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function scrollLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollLinearGradient001', 0, async (done: Function) => {
+    it('testScrollLinearGradient001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollLinearGradient001()).assertEqual(0)
       done();
     });
@@ -47,7 +47,7 @@ export default function scrollLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollLinearGradient002', 0, async (done: Function) => {
+    it('testScrollLinearGradient002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollLinearGradient002()).assertEqual(0)
       done();
     });
@@ -60,7 +60,7 @@ export default function scrollLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollLinearGradient003', 0, async (done: Function) => {
+    it('testScrollLinearGradient003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollLinearGradient003()).assertEqual(0)
       done();
     });
@@ -73,7 +73,7 @@ export default function scrollLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollLinearGradient004', 0, async (done: Function) => {
+    it('testScrollLinearGradient004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollLinearGradient004()).assertEqual(0)
       done();
     });
@@ -86,7 +86,7 @@ export default function scrollLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollLinearGradient005', 0, async (done: Function) => {
+    it('testScrollLinearGradient005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollLinearGradient005()).assertEqual(0)
       done();
     });
@@ -99,7 +99,7 @@ export default function scrollLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollLinearGradient006', 0, async (done: Function) => {
+    it('testScrollLinearGradient006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollLinearGradient006()).assertEqual(0)
       done();
     });
@@ -112,7 +112,7 @@ export default function scrollLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollLinearGradient007', 0, async (done: Function) => {
+    it('testScrollLinearGradient007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollLinearGradient007()).assertEqual(0)
       done();
     });
@@ -125,7 +125,7 @@ export default function scrollLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollLinearGradient008', 0, async (done: Function) => {
+    it('testScrollLinearGradient008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollLinearGradient008()).assertEqual(0)
       done();
     });
@@ -138,7 +138,7 @@ export default function scrollLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollLinearGradient009', 0, async (done: Function) => {
+    it('testScrollLinearGradient009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollLinearGradient009()).assertEqual(0)
       done();
     });
@@ -151,7 +151,7 @@ export default function scrollLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollLinearGradient010', 0, async (done: Function) => {
+    it('testScrollLinearGradient010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollLinearGradient010()).assertEqual(0)
       done();
     });

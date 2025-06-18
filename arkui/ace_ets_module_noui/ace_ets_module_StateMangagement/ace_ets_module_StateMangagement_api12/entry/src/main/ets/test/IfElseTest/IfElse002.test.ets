@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import { UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix } from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -50,7 +50,7 @@ export default function IfElse002Test() {
      * @tc.type :
      * @tc.size :
      */
-    it('IfElse002Test_01', 0, async (done: Function) => {
+    it('IfElse002Test_01', Level.LEVEL0, async (done: Function) => {
       console.info('[IfElse002Test_01] START');
       let driver: Driver = Driver.create();
       await CommonFunc.sleep(1000);
@@ -69,7 +69,7 @@ export default function IfElse002Test() {
       console.info('[IfElse002Test_01] END');
       done();
     });
-    it('IfElse002Test_02', 0, async (done: Function) => {
+    it('IfElse002Test_02', Level.LEVEL0, async (done: Function) => {
       console.info('[IfElse002Test_02] START');
       let driver: Driver = Driver.create();
       await CommonFunc.sleep(1000);

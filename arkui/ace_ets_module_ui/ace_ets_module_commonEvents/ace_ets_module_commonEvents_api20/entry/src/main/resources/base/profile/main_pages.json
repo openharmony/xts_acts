@@ -4,6 +4,6 @@
         "MainAbility/pages/Drag/getDisplayId",
         "MainAbility/pages/TapGesture/tapLocation",
         "MainAbility/pages/PanGesture/observer",
-        "MainAbility/pages/frameNode/framenode"
+        "MainAbility/pages/Color/colorMetrics"
     ]
 }

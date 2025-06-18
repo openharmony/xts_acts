@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeRender from 'libnativerender.so'
 import { Driver, ON, PointerMatrix } from '@kit.TestKit';
@@ -72,7 +72,7 @@ export default function gestureGestureInfoTest() {
      * @tc.type       : Render
      * @tc.level      : Level1
      */
-    it('testGestureGestureInfo001', 0, async (done: Function) => {
+    it('testGestureGestureInfo001', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`gesture/${PAGE_TAG}`);
       await Utils.longClickComponent('button1')
       let dataArray: number[][] = nativeRender.getGestureData();
@@ -90,7 +90,7 @@ export default function gestureGestureInfoTest() {
      * @tc.type       : Render
      * @tc.level      : Level1
      */
-    it('testGestureGestureInfo002', 0, async (done: Function) => {
+    it('testGestureGestureInfo002', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`gesture/${PAGE_TAG}`);
       await pan('column2', 40, 40, 80, 40)
       let dataArray: number[][] = nativeRender.getGestureData();
@@ -109,7 +109,7 @@ export default function gestureGestureInfoTest() {
      * @tc.type       : Render
      * @tc.level      : Level1
      */
-    it('testGestureGestureInfo003', 0, async (done: Function) => {
+    it('testGestureGestureInfo003', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`gesture/${PAGE_TAG}`);
       await pan('column3', 40, 40, 80, 40)
       let dataArray: number[][] = nativeRender.getGestureData();
@@ -127,7 +127,7 @@ export default function gestureGestureInfoTest() {
      * @tc.type       : Render
      * @tc.level      : Level1
      */
-    it('testGestureGestureInfo004', 0, async (done: Function) => {
+    it('testGestureGestureInfo004', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`gesture/${PAGE_TAG}`);
       await rotation('column4')
       let dataArray: number[][] = nativeRender.getGestureData();
@@ -145,7 +145,7 @@ export default function gestureGestureInfoTest() {
      * @tc.type       : Render
      * @tc.level      : Level1
      */
-    it('testGestureGestureInfo005', 0, async (done: Function) => {
+    it('testGestureGestureInfo005', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`gesture/${PAGE_TAG}`);
       await pinch('column5')
       let dataArray: number[][] = nativeRender.getGestureData();

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -66,7 +66,7 @@ export default function Extend0010TestJsunit() {
      * @tc.type
      * @tc.size
      */
-    it('Extend0010TestJsunit_001', 0, async (done: Function) => {
+    it('Extend0010TestJsunit_001', Level.LEVEL0, async (done: Function) => {
       console.info('[Extend0010TestJsunit_001] START');
       await CommonFunc.sleep(2000);
       let obj: ESObject = JSON.parse(getInspectorByKey('tv_extend0010Id'));

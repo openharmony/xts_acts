@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { afterAll, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
+import { afterAll, beforeAll, beforeEach, describe, it, expect , Level} from '@ohos/hypium';
 import router from '@ohos.router';
 import { colorValuesKey } from '../../MainAbility/pages/index/index';
 import { frameTime, sleep } from '../Utils';
@@ -124,7 +124,7 @@ export default function buttonThemeTest() {
       * @tc.size      : MediumTest
       * @tc.type      : Function
       */
-    it('ActsButtonThemeColors_0100', 0, () => {
+    it('ActsButtonThemeColors_0100', Level.LEVEL2, () => {
       const CASE: string = 'ActsButtonThemeColors_0100';
       console.info(`${SUITE} ${CASE} START`);
       buttonKeysSystemNormal.forEach((buttonKey) => {
@@ -150,7 +150,7 @@ export default function buttonThemeTest() {
       * @tc.size      : MediumTest
       * @tc.type      : Function
       */
-    it('ActsButtonThemeColors_0200', 0, () => {
+    it('ActsButtonThemeColors_0200', Level.LEVEL2, () => {
       const CASE: string = 'ActsButtonThemeColors_0200';
       console.info(`${SUITE} ${CASE} START`);
       buttonKeysSystemEmphasized.forEach((buttonKey) => {
@@ -176,7 +176,7 @@ export default function buttonThemeTest() {
         * @tc.size      : MediumTest
         * @tc.type      : Function
         */
-    it('ActsButtonThemeColors_0300', 0, () => {
+    it('ActsButtonThemeColors_0300', Level.LEVEL2, () => {
       const CASE: string = 'ActsButtonThemeColors_0300';
       console.info(`${SUITE} ${CASE} START`);
       buttonKeysSystemTextual.forEach((buttonKey) => {
@@ -202,7 +202,7 @@ export default function buttonThemeTest() {
       * @tc.size      : MediumTest
       * @tc.type      : Function
       */
-    it('ActsButtonThemeColors_0400', 0, () => {
+    it('ActsButtonThemeColors_0400', Level.LEVEL2, () => {
       const CASE: string = 'ActsButtonThemeColors_0400';
       console.info(`${SUITE} ${CASE} START`);
       buttonKeyWithThemeNormal.forEach((buttonKey) => {
@@ -229,7 +229,7 @@ export default function buttonThemeTest() {
       * @tc.size      : MediumTest
       * @tc.type      : Function
       */
-    it('ActsButtonThemeColors_0500', 0, () => {
+    it('ActsButtonThemeColors_0500', Level.LEVEL2, () => {
       const CASE: string = 'ActsButtonThemeColors_0500';
       console.info(`${SUITE} ${CASE} START`);
       buttonKeyWithThemeEmphasized.forEach((buttonKey) => {
@@ -254,7 +254,7 @@ export default function buttonThemeTest() {
       * @tc.size      : MediumTest
       * @tc.type      : Function
       */
-    it('ActsButtonThemeColors_0600', 0, () => {
+    it('ActsButtonThemeColors_0600', Level.LEVEL2, () => {
       const CASE: string = 'ActsButtonThemeColors_0600';
       console.info(`${SUITE} ${CASE} START`);
       buttonKeyWithThemeTextual.forEach((buttonKey) => {
@@ -281,7 +281,7 @@ export default function buttonThemeTest() {
       * @tc.size      : MediumTest
       * @tc.type      : Function
       */
-    it('ActsButtonThemeColors_0700', 0, async () => {
+    it('ActsButtonThemeColors_0700', Level.LEVEL0, async () => {
       const CASE: string = 'ActsButtonThemeColors_0700';
       console.info(`${SUITE} ${CASE} START`);
       await sleep(frameTime);
@@ -309,7 +309,7 @@ export default function buttonThemeTest() {
       * @tc.size      : MediumTest
       * @tc.type      : Function
       */
-    it('ActsButtonThemeColors_0800', 0, () => {
+    it('ActsButtonThemeColors_0800', Level.LEVEL2, () => {
       const CASE: string = 'ActsButtonThemeColors_0800';
       console.info(`${SUITE} ${CASE} START`);
       buttonKeyWithThemeEmphasized.forEach((buttonKey) => {
@@ -337,7 +337,7 @@ export default function buttonThemeTest() {
       * @tc.size      : MediumTest
       * @tc.type      : Function
       */
-    it('ActsButtonThemeColors_0900', 0, () => {
+    it('ActsButtonThemeColors_0900', Level.LEVEL2, () => {
       const CASE: string = 'ActsButtonThemeColors_0900';
       console.info(`${SUITE} ${CASE} START`);
       buttonKeyWithThemeTextual.forEach((buttonKey) => {

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import {
   UiComponent,
   UiDriver,
@@ -68,7 +68,7 @@ export default function InteractionEventBindingInfoTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('InteractionEventBindingInfoTest_0100', 0, async (done: Function) => {
+    it('InteractionEventBindingInfoTest_0100', Level.LEVEL0, async (done: Function) => {
       console.info('InteractionEventBindingInfoTest_0100 START');
       let driver = await Driver.create()
       let button = await driver.findComponent(ON.id('baseTrue'));
@@ -91,7 +91,7 @@ export default function InteractionEventBindingInfoTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('InteractionEventBindingInfoTest_0200', 0, async (done: Function) => {
+    it('InteractionEventBindingInfoTest_0200', Level.LEVEL0, async (done: Function) => {
       console.info('InteractionEventBindingInfoTest_0200 START');
       let driver = await Driver.create()
       let button = await driver.findComponent(ON.id('nodeTrue'));
@@ -114,7 +114,7 @@ export default function InteractionEventBindingInfoTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('InteractionEventBindingInfoTest_0300', 0, async (done: Function) => {
+    it('InteractionEventBindingInfoTest_0300', Level.LEVEL0, async (done: Function) => {
       console.info('InteractionEventBindingInfoTest_0300 START');
       let driver = await Driver.create()
       let button = await driver.findComponent(ON.id('builtInTrue'));
@@ -137,7 +137,7 @@ export default function InteractionEventBindingInfoTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('InteractionEventBindingInfoTest_0400', 0, async (done: Function) => {
+    it('InteractionEventBindingInfoTest_0400', Level.LEVEL0, async (done: Function) => {
       console.info('InteractionEventBindingInfoTest_0400 START');
       let driver = await Driver.create()
       let button = await driver.findComponent(ON.id('baseFalse'));
@@ -160,7 +160,7 @@ export default function InteractionEventBindingInfoTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('InteractionEventBindingInfoTest_0500', 0, async (done: Function) => {
+    it('InteractionEventBindingInfoTest_0500', Level.LEVEL0, async (done: Function) => {
       console.info('InteractionEventBindingInfoTest_0500 START');
       let driver = await Driver.create()
       let button = await driver.findComponent(ON.id('nodeFalse'));
@@ -183,7 +183,7 @@ export default function InteractionEventBindingInfoTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('InteractionEventBindingInfoTest_0600', 0, async (done: Function) => {
+    it('InteractionEventBindingInfoTest_0600', Level.LEVEL0, async (done: Function) => {
       console.info('InteractionEventBindingInfoTest_0600 START');
       let driver = await Driver.create()
       let button = await driver.findComponent(ON.id('nativeFalse'));
@@ -206,7 +206,7 @@ export default function InteractionEventBindingInfoTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('InteractionEventBindingInfoTest_0700', 0, async (done: Function) => {
+    it('InteractionEventBindingInfoTest_0700', Level.LEVEL0, async (done: Function) => {
       console.info('InteractionEventBindingInfoTest_0700 START');
       let driver = await Driver.create()
       let button = await driver.findComponent(ON.id('builtInFalse'));
@@ -229,7 +229,7 @@ export default function InteractionEventBindingInfoTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('InteractionEventBindingInfoTest_0800', 0, async (done: Function) => {
+    it('InteractionEventBindingInfoTest_0800', Level.LEVEL0, async (done: Function) => {
       console.info('InteractionEventBindingInfoTest_0800 START');
       let driver = await Driver.create()
       let button = await driver.findComponent(ON.id('undefined'));

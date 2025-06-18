@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textDecorationTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextDecoration001', 0, async (done: Function) => {
+    it('testTextDecoration001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextDecoration001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function textDecorationTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextDecoration002', 0, async (done: Function) => {
+    it('testTextDecoration002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextDecoration002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function textDecorationTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextDecoration003', 0, async (done: Function) => {
+    it('testTextDecoration003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextDecoration003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function textDecorationTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextDecoration004', 0, async (done: Function) => {
+    it('testTextDecoration004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextDecoration004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function textDecorationTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTextDecoration005', 0, async (done: Function) => {
+    it('testTextDecoration005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextDecoration005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function textDecorationTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextDecoration006', 0, async (done: Function) => {
+    it('testTextDecoration006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextDecoration006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function textDecorationTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextDecoration007', 0, async (done: Function) => {
+    it('testTextDecoration007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextDecoration007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function textDecorationTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextDecoration008', 0, async (done: Function) => {
+    it('testTextDecoration008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextDecoration008()).assertEqual(0)
       done()
     })
@@ -138,7 +138,7 @@ export default function textDecorationTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextDecoration009', 0, async (done: Function) => {
+    it('testTextDecoration009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextDecoration009()).assertEqual(0)
       done()
     })
@@ -151,7 +151,7 @@ export default function textDecorationTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextDecoration010', 0, async (done: Function) => {
+    it('testTextDecoration010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextDecoration010()).assertEqual(0)
       done()
     })
@@ -164,7 +164,7 @@ export default function textDecorationTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextDecoration011', 0, async (done: Function) => {
+    it('testTextDecoration011', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextDecoration011()).assertEqual(0)
       done()
     })
@@ -178,7 +178,7 @@ export default function textDecorationTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextDecoration012', 0, async (done: Function) => {
+    it('testTextDecoration012', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextDecoration012()).assertEqual(0)
       done()
     })
@@ -192,7 +192,7 @@ export default function textDecorationTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextDecoration013', 0, async (done: Function) => {
+    it('testTextDecoration013', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextDecoration013()).assertEqual(0)
       done()
     })
@@ -205,7 +205,7 @@ export default function textDecorationTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextDecoration014', 0, async (done: Function) => {
+    it('testTextDecoration014', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextDecoration014()).assertEqual(0)
       done()
     })
@@ -219,7 +219,7 @@ export default function textDecorationTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextDecoration015', 0, async (done: Function) => {
+    it('testTextDecoration015', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextDecoration015()).assertEqual(0)
       done()
     })

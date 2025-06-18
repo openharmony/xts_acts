@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import { ComponentInfo } from '../common/Interfaces';
 import Utils from '../common/Utils';
 
@@ -31,7 +31,7 @@ export default function imageSpanOnClickTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageSpanOnClick001', 0, async (done: Function) => {
+    it('testImageSpanOnClick001', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`imagespan/${PAGE_TAG}`);
       await Utils.clickComponent('imageSpanClick');
       await Utils.sleep(4000);

@@ -19,7 +19,7 @@ import{ appManager, common, Want } from '@kit.AbilityKit';
 import{ BusinessError, commonEventManager } from '@kit.BasicServicesKit';
 import{ data } from '@kit.TelephonyKit';
 import { systemParameterEnhance } from '@kit.BasicServicesKit';
-import { Driver, ON ,Component } from '@kit.TestKit';
+import { Driver, ON, Component, MatchPattern } from '@kit.TestKit';
 
 const TAG: string = 'ProcessModel';
 const DOMAIN_NUMBER: number = 0xFF00;
@@ -109,6 +109,13 @@ export default function abilityTest() {
         await driver.delayMs(1000);
         let Button: Component = await driver.findComponent(ON.id('TestCase4'));
         await Button.click();
+        await driver.delayMs(1000);
+        let Button2: Component = await driver.findComponent(ON.text('amsdialog', MatchPattern.CONTAINS));
+        if(Button2){
+          let Button3: Component = await driver.findComponent(ON.text('允许'));
+          await Button3.click();
+          await driver.delayMs(1000);
+        }
         const  driver1 =Driver.create();
         await driver1.delayMs(1000);
         let Button1: Component = await driver1.findComponent(ON.text('label'));

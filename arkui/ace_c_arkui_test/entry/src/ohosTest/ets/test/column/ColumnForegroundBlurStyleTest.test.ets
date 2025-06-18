@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function columnForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testColumnForegroundBlurStyle001', 0, async (done: Function) => {
+    it('testColumnForegroundBlurStyle001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testColumnForegroundBlurStyle001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function columnForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testColumnForegroundBlurStyle002', 0, async (done: Function) => {
+    it('testColumnForegroundBlurStyle002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testColumnForegroundBlurStyle002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function columnForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testColumnForegroundBlurStyle003', 0, async (done: Function) => {
+    it('testColumnForegroundBlurStyle003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testColumnForegroundBlurStyle003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function columnForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testColumnForegroundBlurStyle004', 0, async (done: Function) => {
+    it('testColumnForegroundBlurStyle004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testColumnForegroundBlurStyle004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function columnForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testColumnForegroundBlurStyle005', 0, async (done: Function) => {
+    it('testColumnForegroundBlurStyle005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testColumnForegroundBlurStyle005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function columnForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testColumnForegroundBlurStyle006', 0, async (done: Function) => {
+    it('testColumnForegroundBlurStyle006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testColumnForegroundBlurStyle006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function columnForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testColumnForegroundBlurStyle007', 0, async (done: Function) => {
+    it('testColumnForegroundBlurStyle007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testColumnForegroundBlurStyle007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function columnForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testColumnForegroundBlurStyle008', 0, async (done: Function) => {
+    it('testColumnForegroundBlurStyle008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testColumnForegroundBlurStyle008()).assertEqual(0)
       done()
     })
@@ -138,7 +138,7 @@ export default function columnForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testColumnForegroundBlurStyle009', 0, async (done: Function) => {
+    it('testColumnForegroundBlurStyle009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testColumnForegroundBlurStyle009()).assertEqual(0)
       done()
     })
@@ -151,7 +151,7 @@ export default function columnForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testColumnForegroundBlurStyle010', 0, async (done: Function) => {
+    it('testColumnForegroundBlurStyle010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testColumnForegroundBlurStyle010()).assertEqual(0)
       done()
     })
@@ -164,7 +164,7 @@ export default function columnForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testColumnForegroundBlurStyle011', 0, async (done: Function) => {
+    it('testColumnForegroundBlurStyle011', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testColumnForegroundBlurStyle011()).assertEqual(0)
       done()
     })
@@ -177,7 +177,7 @@ export default function columnForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testColumnForegroundBlurStyle012', 0, async (done: Function) => {
+    it('testColumnForegroundBlurStyle012', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testColumnForegroundBlurStyle012()).assertEqual(0)
       done()
     })
@@ -190,7 +190,7 @@ export default function columnForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testColumnForegroundBlurStyle013', 0, async (done: Function) => {
+    it('testColumnForegroundBlurStyle013', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testColumnForegroundBlurStyle013()).assertEqual(0)
       done()
     })
@@ -203,7 +203,7 @@ export default function columnForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testColumnForegroundBlurStyle014', 0, async (done: Function) => {
+    it('testColumnForegroundBlurStyle014', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testColumnForegroundBlurStyle014()).assertEqual(0)
       done()
     })
@@ -216,7 +216,7 @@ export default function columnForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testColumnForegroundBlurStyle015', 0, async (done: Function) => {
+    it('testColumnForegroundBlurStyle015', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testColumnForegroundBlurStyle015()).assertEqual(0)
       done()
     })
@@ -229,7 +229,7 @@ export default function columnForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testColumnForegroundBlurStyle016', 0, async (done: Function) => {
+    it('testColumnForegroundBlurStyle016', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testColumnForegroundBlurStyle016()).assertEqual(0)
       done()
     })
@@ -242,7 +242,7 @@ export default function columnForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testColumnForegroundBlurStyle017', 0, async (done: Function) => {
+    it('testColumnForegroundBlurStyle017', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testColumnForegroundBlurStyle017()).assertEqual(0)
       done()
     })
@@ -255,7 +255,7 @@ export default function columnForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testColumnForegroundBlurStyle018', 0, async (done: Function) => {
+    it('testColumnForegroundBlurStyle018', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testColumnForegroundBlurStyle018()).assertEqual(0)
       done()
     })
@@ -268,7 +268,7 @@ export default function columnForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testColumnForegroundBlurStyle019', 0, async (done: Function) => {
+    it('testColumnForegroundBlurStyle019', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testColumnForegroundBlurStyle019()).assertEqual(0)
       done()
     })
@@ -281,7 +281,7 @@ export default function columnForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testColumnForegroundBlurStyle020', 0, async (done: Function) => {
+    it('testColumnForegroundBlurStyle020', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testColumnForegroundBlurStyle020()).assertEqual(0)
       done()
     })
@@ -294,7 +294,7 @@ export default function columnForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testColumnForegroundBlurStyle021', 0, async (done: Function) => {
+    it('testColumnForegroundBlurStyle021', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testColumnForegroundBlurStyle021()).assertEqual(0)
       done()
     })
@@ -307,7 +307,7 @@ export default function columnForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testColumnForegroundBlurStyle022', 0, async (done: Function) => {
+    it('testColumnForegroundBlurStyle022', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testColumnForegroundBlurStyle022()).assertEqual(0)
       done()
     })
@@ -320,7 +320,7 @@ export default function columnForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testColumnForegroundBlurStyle023', 0, async (done: Function) => {
+    it('testColumnForegroundBlurStyle023', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testColumnForegroundBlurStyle023()).assertEqual(0)
       done()
     })
@@ -333,7 +333,7 @@ export default function columnForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testColumnForegroundBlurStyle024', 0, async (done: Function) => {
+    it('testColumnForegroundBlurStyle024', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testColumnForegroundBlurStyle024()).assertEqual(0)
       done()
     })
@@ -346,7 +346,7 @@ export default function columnForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testColumnForegroundBlurStyle025', 0, async (done: Function) => {
+    it('testColumnForegroundBlurStyle025', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testColumnForegroundBlurStyle025()).assertEqual(0)
       done()
     })
@@ -359,7 +359,7 @@ export default function columnForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testColumnForegroundBlurStyle026', 0, async (done: Function) => {
+    it('testColumnForegroundBlurStyle026', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testColumnForegroundBlurStyle026()).assertEqual(0)
       done()
     })
@@ -372,7 +372,7 @@ export default function columnForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testColumnForegroundBlurStyle027', 0, async (done: Function) => {
+    it('testColumnForegroundBlurStyle027', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testColumnForegroundBlurStyle027()).assertEqual(0)
       done()
     })
@@ -385,7 +385,7 @@ export default function columnForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testColumnForegroundBlurStyle028', 0, async (done: Function) => {
+    it('testColumnForegroundBlurStyle028', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testColumnForegroundBlurStyle028()).assertEqual(0)
       done()
     })
@@ -398,7 +398,7 @@ export default function columnForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testColumnForegroundBlurStyle029', 0, async (done: Function) => {
+    it('testColumnForegroundBlurStyle029', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testColumnForegroundBlurStyle029()).assertEqual(0)
       done()
     })
@@ -411,7 +411,7 @@ export default function columnForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testColumnForegroundBlurStyle030', 0, async (done: Function) => {
+    it('testColumnForegroundBlurStyle030', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testColumnForegroundBlurStyle030()).assertEqual(0)
       done()
     })
@@ -424,7 +424,7 @@ export default function columnForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testColumnForegroundBlurStyle031', 0, async (done: Function) => {
+    it('testColumnForegroundBlurStyle031', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testColumnForegroundBlurStyle031()).assertEqual(0)
       done()
     })
@@ -437,7 +437,7 @@ export default function columnForegroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testColumnForegroundBlurStyle032', 0, async (done: Function) => {
+    it('testColumnForegroundBlurStyle032', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testColumnForegroundBlurStyle032()).assertEqual(0)
       done()
     })

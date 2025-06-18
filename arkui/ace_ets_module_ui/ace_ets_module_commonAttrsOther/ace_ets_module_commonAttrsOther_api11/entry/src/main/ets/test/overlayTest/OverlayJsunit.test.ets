@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import CommonFunc from '../../MainAbility/common/Common';
@@ -46,7 +46,7 @@ export default function overLayJsunit() {
       console.info("overlay after each called");
     });
 
-    it('testOverlay01', 0, async (done: Function) => {
+    it('testOverlay01', Level.LEVEL0, async (done: Function) => {
       console.info('[testOverlay01] START');
       await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('overlay');
@@ -60,7 +60,7 @@ export default function overLayJsunit() {
       done()
     });
 
-    it('testOverlay02', 0, async (done: Function) => {
+    it('testOverlay02', Level.LEVEL0, async (done: Function) => {
       console.info('[testOverlay02] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -86,7 +86,7 @@ export default function overLayJsunit() {
       done()
     });
 
-    it('testOverlay03', 0, async (done: Function) => {
+    it('testOverlay03', Level.LEVEL0, async (done: Function) => {
       console.info('[testOverlay03] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -117,7 +117,7 @@ export default function overLayJsunit() {
       done()
     });
 
-    it('testOverlay04', 0, async (done: Function) => {
+    it('testOverlay04', Level.LEVEL0, async (done: Function) => {
       console.info('[testOverlay04] START');
       await CommonFunc.sleep(1000);
       try {
@@ -144,7 +144,7 @@ export default function overLayJsunit() {
       done()
     });
 
-    it('testOverlay05', 0, async (done: Function) => {
+    it('testOverlay05', Level.LEVEL0, async (done: Function) => {
       console.info('[testOverlay05] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -170,7 +170,7 @@ export default function overLayJsunit() {
       done()
     });
 
-    it('testOverlay06', 0, async (done: Function) => {
+    it('testOverlay06', Level.LEVEL0, async (done: Function) => {
       console.info('[testOverlay06] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -198,7 +198,7 @@ export default function overLayJsunit() {
       done()
     });
 
-    it('testOverlay07', 0, async (done: Function) => {
+    it('testOverlay07', Level.LEVEL0, async (done: Function) => {
       console.info('[testOverlay07] START');
       try {
         let eventData: events_emitter.EventData = {
@@ -224,7 +224,7 @@ export default function overLayJsunit() {
       done()
     });
 
-    it('testOverlay08', 0, async (done: Function) => {
+    it('testOverlay08', Level.LEVEL0, async (done: Function) => {
       console.info('[testOverlay08] START');
       try {
         let eventData: events_emitter.EventData = {

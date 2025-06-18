@@ -30,7 +30,7 @@ export default function RowMatchParentTest() {
         router.clear();
         let pages = router.getState();
         console.info("get RowMatchParentTest state pages:" + JSON.stringify(pages));
-        if (!("FlexLayoutPolicyPage" == pages.name)) {
+        if (!("RowMatchParent" == pages.name)) {
           console.info("get RowMatchParentTest pages.name:" + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
@@ -51,18 +51,16 @@ export default function RowMatchParentTest() {
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
 
-      let row_parent: RectValue = CommonFunc.getComponentRect('Row2');
-      let row_child: RectValue = CommonFunc.getComponentRect('Row1');
-
-      // padding(20) + border(5) + safeAreaPadding(10)
-      console.log('[RowMatchParentTest_0100] row_child.left - row_parent.left - vp2px(35) is:' + (row_child.left - row_parent.left - vp2px(35)));
-      console.log('[RowMatchParentTest_0100] row_parent.right - row_child.right - vp2px(35) is:' + (row_parent.right - row_child.right - vp2px(35)));
-      console.log('[RowMatchParentTest_0100] row_child.top - row_parent.top - vp2px(35) is:' + (row_child.top - row_parent.top - vp2px(35)));
-      console.log('[RowMatchParentTest_0100] row_parent.bottom - row_child.bottom - vp2px(35) is:' + (row_parent.bottom - row_child.bottom - vp2px(35)));
-      expect(Math.floor(Math.abs(row_child.left - row_parent.left - vp2px(35))) <= 1).assertTrue();
-      expect(Math.floor(Math.abs(row_parent.right - row_child.right - vp2px(35))) <= 1).assertTrue();
-      expect(Math.floor(Math.abs(row_child.top - row_parent.top - vp2px(35))) <= 1).assertTrue();
-      expect(Math.floor(Math.abs(row_parent.bottom - row_child.bottom - vp2px(35))) <= 1).assertTrue();
+      let strJson = getInspectorByKey('RowMatchParentTest_0100_child');
+      let obj: ESObject = JSON.parse(strJson);
+      let width = parseFloat(obj.$attrs.width)
+      let height = parseFloat(obj.$attrs.height)
+      console.info("[RowMatchParentTest_0100] width is: " + width);
+      console.info("[RowMatchParentTest_0100] height is: " + height);
+      
+      // 200 - padding(20)*2 - border(10)*2 - safeAreaPadding(10)*2
+      expect(Math.floor(Math.abs(width - 120)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(height - 120)) <= 1).assertTrue();
 
       console.info('[RowMatchParentTest_0100] END');
       done();

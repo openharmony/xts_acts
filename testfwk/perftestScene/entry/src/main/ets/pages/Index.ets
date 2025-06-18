@@ -24,7 +24,22 @@ struct Index {
         .fontSize(25)
         .fontWeight(FontWeight.Bold)
         .onClick(async () => {
+          console.info('jump to ListPage')
           await router.pushUrl({ url: "pages/ListPage"})
+          console.info('jump to ListPage over')
+        })
+        Button() {
+          Text('navigation')
+            .fontSize(25)
+            .fontWeight(FontWeight.Bold)
+        }
+        .key('my-key2')
+        .type(ButtonType.Capsule)
+        .margin({ top: 20 })
+        .onClick(() => {
+          console.info('jump to navigation')
+          router.pushUrl({url: "pages/navigation"})
+          console.info('jump to navigation over')
         })
       }
       .width('100%')

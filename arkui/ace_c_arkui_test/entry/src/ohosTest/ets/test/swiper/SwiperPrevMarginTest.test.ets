@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function swiperPrevMarginTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSwiperPrevMargin001', 0, async (done: Function) => {
+    it('testSwiperPrevMargin001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperPrevMargin001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function swiperPrevMarginTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSwiperPrevMargin002', 0, async (done: Function) => {
+    it('testSwiperPrevMargin002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperPrevMargin002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function swiperPrevMarginTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSwiperPrevMargin003', 0, async (done: Function) => {
+    it('testSwiperPrevMargin003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperPrevMargin003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function swiperPrevMarginTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSwiperPrevMargin004', 0, async (done: Function) => {
+    it('testSwiperPrevMargin004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperPrevMargin004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function swiperPrevMarginTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSwiperPrevMargin005', 0, async (done: Function) => {
+    it('testSwiperPrevMargin005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperPrevMargin005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function swiperPrevMarginTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSwiperPrevMargin006', 0, async (done: Function) => {
+    it('testSwiperPrevMargin006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperPrevMargin006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function swiperPrevMarginTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSwiperPrevMargin007', 0, async (done: Function) => {
+    it('testSwiperPrevMargin007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperPrevMargin007()).assertEqual(0)
       done()
     })

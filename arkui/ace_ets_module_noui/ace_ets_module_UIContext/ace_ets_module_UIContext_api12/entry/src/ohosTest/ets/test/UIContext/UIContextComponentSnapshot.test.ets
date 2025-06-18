@@ -44,8 +44,12 @@ export default function UIContextComponentSnapshot() {
     /**
      * @tc.number SUB_ACE_UI_SNAPSHOT_GETSYNC_0390
      * @tc.name testButton
-     * @tc.desc
+     * @tc.desc UIContextComponentSnapshot_0100
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
      */
+
     it('UIContextComponentSnapshot_0100', Level.LEVEL0, async (done: Function) => {
       console.info('UIContextComponentSnapshot_0100 START');
       await CommonFunc.sleep(1000);
@@ -64,8 +68,12 @@ export default function UIContextComponentSnapshot() {
     /**
      * @tc.number SUB_ACE_UI_SNAPSHOT_GETSYNC_0370
      * @tc.name testButton
-     * @tc.desc
+     * @tc.desc UIContextComponentSnapshot_0200
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
      */
+
     it('UIContextComponentSnapshot_0200', Level.LEVEL0, async (done: Function) => {
       console.info('UIContextComponentSnapshot_0200 START');
       await CommonFunc.sleep(1000);
@@ -84,8 +92,12 @@ export default function UIContextComponentSnapshot() {
     /**
      * @tc.number SUB_ACE_UI_SNAPSHOT_GETSYNC_0410
      * @tc.name testButton
-     * @tc.desc
+     * @tc.desc UIContextComponentSnapshot_0300
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
      */
+
     it('UIContextComponentSnapshot_0300', Level.LEVEL0, async (done: Function) => {
       console.info('UIContextComponentSnapshot_0300 START');
       await CommonFunc.sleep(1000);
@@ -104,8 +116,12 @@ export default function UIContextComponentSnapshot() {
     /**
      * @tc.number SUB_ACE_UI_SNAPSHOT_GETSYNC_0380
      * @tc.name testButton
-     * @tc.desc
+     * @tc.desc UIContextComponentSnapshot_0400
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
      */
+
     it('UIContextComponentSnapshot_0400', Level.LEVEL0, async (done: Function) => {
       console.info('UIContextComponentSnapshot_0400 START');
       await CommonFunc.sleep(1000);

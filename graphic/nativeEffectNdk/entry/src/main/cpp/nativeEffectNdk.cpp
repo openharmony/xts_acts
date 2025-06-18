@@ -575,6 +575,52 @@ static napi_value OHPixelmapNativeDestroy001(napi_env env, napi_callback_info in
     return result;
 }
 
+static napi_value OHPixelmapImageInfoGetAlphaMode001(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    OH_Pixelmap_ImageInfo *imageInfo = nullptr;
+    int32_t alphaMode = 0;
+    Image_ErrorCode ret = OH_PixelmapImageInfo_GetAlphaMode(imageInfo, &alphaMode);
+    if (ret == IMAGE_BAD_PARAMETER) {
+        napi_create_int32(env, SUCCESS, &result);
+    } else {
+        napi_create_int32(env, FAIL, &result);
+    }
+    return result;
+}
+
+static napi_value OHPixelmapNativeCreatePixelmapUsingAllocator001(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    uint8_t *data = nullptr;
+    size_t dataLength = 0;
+    OH_Pixelmap_InitializationOptions *ops = nullptr;
+    OH_PixelmapNative *pixelMap = nullptr;
+    Image_ErrorCode ret = OH_PixelmapNative_CreatePixelmapUsingAllocator(data, dataLength, ops,
+        IMAGE_ALLOCATOR_MODE_AUTO, &pixelMap);
+    if (ret == IMAGE_BAD_PARAMETER) {
+        napi_create_int32(env, SUCCESS, &result);
+    } else {
+        napi_create_int32(env, FAIL, &result);
+    }
+    return result;
+}
+
+static napi_value OHPixelmapNativeCreateEmptyPixelmapUsingAllocator001(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    OH_Pixelmap_InitializationOptions *ops = nullptr;
+    OH_PixelmapNative *pixelMap = nullptr;
+    Image_ErrorCode ret = OH_PixelmapNative_CreateEmptyPixelmapUsingAllocator(ops,
+        IMAGE_ALLOCATOR_MODE_AUTO, &pixelMap);
+    if (ret == IMAGE_BAD_PARAMETER) {
+        napi_create_int32(env, SUCCESS, &result);
+    } else {
+        napi_create_int32(env, FAIL, &result);
+    }
+    return result;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -625,6 +671,13 @@ static napi_value Init(napi_env env, napi_value exports)
         {"oHPixelmapInitializationOptionsEditable001", nullptr, OHPixelmapInitializationOptionsEditable001,
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"oHPixelmapNativeDestroy001", nullptr, OHPixelmapNativeDestroy001,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"oHPixelmapImageInfoGetAlphaMode001", nullptr, OHPixelmapImageInfoGetAlphaMode001,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"oHPixelmapNativeCreatePixelmapUsingAllocator001", nullptr, OHPixelmapNativeCreatePixelmapUsingAllocator001,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"oHPixelmapNativeCreateEmptyPixelmapUsingAllocator001", nullptr,
+         OHPixelmapNativeCreateEmptyPixelmapUsingAllocator001,
          nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);

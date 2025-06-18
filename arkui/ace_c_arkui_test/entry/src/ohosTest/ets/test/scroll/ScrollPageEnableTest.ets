@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function scrollPageEnableTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollPageEnable001', 0, async (done: Function) => {
+    it('testScrollPageEnable001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollPageEnable001()).assertEqual(0)
       done();
     });
@@ -47,7 +47,7 @@ export default function scrollPageEnableTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollPageEnable002', 0, async (done: Function) => {
+    it('testScrollPageEnable002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollPageEnable002()).assertEqual(0)
       done();
     });
@@ -60,7 +60,7 @@ export default function scrollPageEnableTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollPageEnable003', 0, async (done: Function) => {
+    it('testScrollPageEnable003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollPageEnable003()).assertEqual(0)
       done();
     });
@@ -73,7 +73,7 @@ export default function scrollPageEnableTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollPageEnable004', 0, async (done: Function) => {
+    it('testScrollPageEnable004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollPageEnable004()).assertEqual(0)
       done();
     });
@@ -86,7 +86,7 @@ export default function scrollPageEnableTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollPageEnable005', 0, async (done: Function) => {
+    it('testScrollPageEnable005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollPageEnable005()).assertEqual(0)
       done();
     });

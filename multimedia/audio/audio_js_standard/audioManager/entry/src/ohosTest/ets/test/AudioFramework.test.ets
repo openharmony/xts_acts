@@ -1392,12 +1392,6 @@ export default function audioFramework() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_2500', 2, async (done: Function) => {
-      if (deviceTypeInfo == '2in1') {
-        console.info(`${TagFrmwk}: The device type is 2in1`);
-        expect(true).assertTrue();
-        done();
-        return;
-      }
       try {
         await audioManager.setVolume(audio.AudioVolumeType.MEDIA, lowVol);
         await audioManager.setVolume(audio.AudioVolumeType.RINGTONE, maxVol)
@@ -1425,12 +1419,6 @@ export default function audioFramework() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_2600', 2, (done: Function) => {
-      if (deviceTypeInfo == '2in1') {
-        console.info(`${TagFrmwk}: The device type is 2in1`);
-        expect(true).assertTrue();
-        done();
-        return;
-      }
       audioManager.setVolume(audio.AudioVolumeType.MEDIA, highVol, (err) => {
         if (err) {
           console.error(`${TagFrmwk}: failed to set volume MEDIA: Callback: ENAME :  ${err.message}`);
@@ -1472,12 +1460,6 @@ export default function audioFramework() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_2700', 2, async (done: Function) => {
-      if (deviceTypeInfo == '2in1') {
-        console.info(`${TagFrmwk}: The device type is 2in1`);
-        expect(true).assertTrue();
-        done();
-        return;
-      }
       try {
         await audioManager.setVolume(audio.AudioVolumeType.RINGTONE, highVol);
         console.info(`${TagFrmwk}: Ringtone setVolume promise: ENAME: successful`);
@@ -1506,12 +1488,6 @@ export default function audioFramework() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_2800', 2, (done: Function) => {
-      if (deviceTypeInfo == '2in1') {
-        console.info(`${TagFrmwk}: The device type is 2in1`);
-        expect(true).assertTrue();
-        done();
-        return;
-      }
       audioManager.setVolume(audio.AudioVolumeType.RINGTONE, lowVol, (err) => {
         if (err) {
           console.error(`${TagFrmwk}: failed to set volume: Callback: ENAME:  ${err.message}`);
@@ -3662,12 +3638,6 @@ export default function audioFramework() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_1700', 2, async (done: Function) => {
-      if (deviceTypeInfo == '2in1') {
-        console.info(`${TagFrmwk}: The device type is 2in1`);
-        expect(true).assertTrue();
-        done();
-        return;
-      }
       try {
         await audioManager.setVolume(audio.AudioVolumeType.VOICE_CALL, highVol);
         await audioManager.mute(audio.AudioVolumeType.VOICE_CALL, true);
@@ -3700,12 +3670,6 @@ export default function audioFramework() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_1800', 2, async (done: Function) => {
-      if (deviceTypeInfo == '2in1') {
-        console.info(`${TagFrmwk}: The device type is 2in1`);
-        expect(true).assertTrue();
-        done();
-        return;
-      }
       try {
         await audioManager.setVolume(audio.AudioVolumeType.VOICE_CALL, highVol);
       } catch (err) {
@@ -3768,12 +3732,6 @@ export default function audioFramework() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_1900', 2, async (done: Function) => {
-      if (deviceTypeInfo == '2in1') {
-        console.info(`${TagFrmwk}: The device type is 2in1`);
-        expect(true).assertTrue();
-        done();
-        return;
-      }
       try {
         await audioManager.setVolume(audio.AudioVolumeType.VOICE_ASSISTANT, highVol);
         await audioManager.mute(audio.AudioVolumeType.VOICE_ASSISTANT, true);
@@ -3807,12 +3765,6 @@ export default function audioFramework() {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_2000', 2, async (done: Function) => {
-      if (deviceTypeInfo == '2in1') {
-        console.info(`${TagFrmwk}: The device type is 2in1`);
-        expect(true).assertTrue();
-        done();
-        return;
-      }
       try {
         await audioManager.setVolume(audio.AudioVolumeType.VOICE_ASSISTANT, highVol);
       } catch (err) {
@@ -5221,6 +5173,62 @@ export default function audioFramework() {
       done();
     })
 
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_INTERRUPT_1300
+     * @tc.name      : InterruptHint - INTERRUPT_HINT_UNDUCK
+     * @tc.desc      : InterruptHint - INTERRUPT_HINT_UNDUCK
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_INTERRUPT_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      expect(audio.InterruptHint.INTERRUPT_HINT_MUTE).assertEqual(6);
+      await sleep(50);
+      done();
+    })
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_INTERRUPT_1400
+     * @tc.name      : InterruptHint - INTERRUPT_HINT_UNDUCK
+     * @tc.desc      : InterruptHint - INTERRUPT_HINT_UNDUCK
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_INTERRUPT_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      expect(audio.InterruptHint.INTERRUPT_HINT_UNMUTE).assertEqual(7);
+      await sleep(50);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_INTERRUPT_0013
+     * @tc.name      : SUB_MULTIMEDIA_AUDIO_MANAGER_INTERRUPT_0013
+     * @tc.desc      : InterruptHint - INTERRUPT_HINT_MUTE
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_INTERRUPT_0013',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      expect(audio.InterruptHint.INTERRUPT_HINT_MUTE).assertEqual(6);
+      await sleep(50);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_INTERRUPT_0014
+     * @tc.name      : SUB_MULTIMEDIA_AUDIO_MANAGER_INTERRUPT_0014
+     * @tc.desc      : InterruptHint - INTERRUPT_HINT_UNMUTE
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_INTERRUPT_0014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      expect(audio.InterruptHint.INTERRUPT_HINT_UNMUTE).assertEqual(7);
+      await sleep(50);
+      done();
+    })
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_INTERRUPTACTIONTYPE_0100
      * @tc.name      : InterruptActionType - TYPE_ACTIVATED
@@ -5310,8 +5318,14 @@ export default function audioFramework() {
       console.info("audio.DeviceType.REMOTE_CAST:" + audio.DeviceType.REMOTE_CAST);
       expect(audio.DeviceType.USB_DEVICE).assertEqual(25);
       console.info("audio.DeviceType.USB_DEVICE:" + audio.DeviceType.USB_DEVICE);
+      expect(audio.DeviceType.HDMI).assertEqual(27);
+      console.info("audio.DeviceType.HDMI:" + audio.DeviceType.HDMI);
+      expect(audio.DeviceType.LINE_DIGITAL).assertEqual(28);
+      console.info("audio.DeviceType.LINE_DIGITAL:" + audio.DeviceType.LINE_DIGITAL);
       expect(audio.DeviceType.REMOTE_DAUDIO).assertEqual(29);
       console.info("audio.DeviceType.REMOTE_DAUDIO:" + audio.DeviceType.REMOTE_DAUDIO);
+      expect(audio.DeviceType.NEARLINK).assertEqual(31);
+      console.info("audio.DeviceType.NEARLINK:" + audio.DeviceType.NEARLINK);
       expect(audio.DeviceType.DEFAULT).assertEqual(1000);
       console.info("audio.DeviceType.DEFAULT:" + audio.DeviceType.DEFAULT);
       await sleep(50);
@@ -6183,6 +6197,55 @@ export default function audioFramework() {
       }
       expect(flag).assertTrue();
       done();
+    })
+
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_AUDIO_ISACOUSTICECHOCANCELERSUPPORTED_0100
+    * @tc.name      : SUB_MULTIMEDIA_AUDIO_ISACOUSTICECHOCANCELERSUPPORTED_0100
+    * @tc.desc      : isAcousticEchoCancelerSupported - 
+    * @tc.size      : MEDIUM
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_AUDIO_ISACOUSTICECHOCANCELERSUPPORTED_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, 
+    (done: Function) => {
+        let audioStreamManager: audio.AudioStreamManager = audio.getAudioManager().getStreamManager();
+        let flag: boolean = false;
+        try {
+            let isSupportAEC: boolean = audioStreamManager.isAcousticEchoCancelerSupported(audio.SourceType.SOURCE_TYPE_LIVE);
+            console.info(`[AEC Support] SourceType: ${audio.SourceType.SOURCE_TYPE_LIVE}, Status: ${isSupportAEC}`);
+            flag = true;
+        } catch (err) {
+            let error = err as BusinessError;
+            console.error(`isAcousticEchoCancelerSupported ERROR: ${error}`);
+        }
+        expect(flag).assertTrue();
+        done();
+    })
+
+    /**
+    * @tc.number    : SUB_MULTIMEDIA_AUDIO_ISACOUSTICECHOCANCELERSUPPORTED_0200
+    * @tc.name      : SUB_MULTIMEDIA_AUDIO_ISACOUSTICECHOCANCELERSUPPORTED_0200
+    * @tc.desc      : isAcousticEchoCancelerSupported - 6800101
+    * @tc.size      : MEDIUM
+    * @tc.type      : Function
+    * @tc.level     : Level 2
+    */
+    it('SUB_MULTIMEDIA_AUDIO_ISACOUSTICECHOCANCELERSUPPORTED_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, 
+    (done: Function) => {
+        let audioStreamManager: audio.AudioStreamManager = audio.getAudioManager().getStreamManager();
+        let flag: boolean = false;
+        try {
+            let param: ESObject = -100;
+            let isSupportAEC: boolean = audioStreamManager.isAcousticEchoCancelerSupported(param);
+            console.info(`[AEC Support] SourceType: ${audio.SourceType.SOURCE_TYPE_LIVE}, Status: ${isSupportAEC}`);
+        } catch (err) {
+            let error = err as BusinessError;
+            console.error(`isAcousticEchoCancelerSupported ERROR: ${error}`);
+            flag = true;
+        }
+        expect(flag).assertTrue();
+        done();
     })
   })
 }
