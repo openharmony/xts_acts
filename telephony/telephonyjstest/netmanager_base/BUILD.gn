@@ -18,16 +18,12 @@ group("netmanager_base") {
   if (is_standard_system) {
     deps = [
       "actshttpscertificatetest:ActsHttpsCertificateTest",
-      "dns:ActsDNSTest",
       "dnsndk:dns_ndk",
       "jshttp:ActsJSHTTPTest",
-      "multicastconnection201_dns:ActsNetworkManagerMulDNS201Test",
-      "multicastconnection_dns:ActsNetworkManagerMulDNSTest",
       "network_netmanager:network_netmanagerndk",
       "network_nopermission:ActsNetworkNopermissionTest",
       "network_nowifi:ActsNetworkNowifiTest",
       "network_wifi:ActsNetworkWifiTest",
-      "register:ActsRegisterTest",
       "socket:ActsSocketTest",
       "system_fetch:ActsSystemFetchTest",
     ]

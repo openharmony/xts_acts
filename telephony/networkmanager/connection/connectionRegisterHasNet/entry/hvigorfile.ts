@@ -13,10 +13,5 @@
  * limitations under the License.
  */
 
-import ConnectionPublicNopTest from './ConnectionPublicNop.test';
-import Multicastconnection201Test from './ConnectionNoP.test';
-
-export default function testsuite() {
-  ConnectionPublicNopTest();
-  Multicastconnection201Test();
-}
+// Script for compiling build behavior. It is built in the build plug-in and cannot be modified currently.
+export { hapTasks } from '@ohos/hvigor-ohos-plugin';

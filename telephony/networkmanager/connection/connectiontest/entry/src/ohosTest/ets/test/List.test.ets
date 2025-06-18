@@ -12,20 +12,27 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
-import connectionPublicTest from './ConnectionPublic.test';
-import ConnectionTest from './Connection.test';
+ 
 import EmptyTest from './Empty.test';
 import sim from '@ohos.telephony.sim';
+import connectionPublicTest from './ConnectionPublic.test';
+import ConnectionTest from './Connection.test';
 import connectionErrorTest from './ConnectionErrorCode.test';
+import MulticastconnectionPromiseTest from './ConnectionPromise.test';
+import MulticastconnectionCallbackTest from './ConnectionCallback.test';
+import ConnectionHandleTest from './ConnectionHandle.test'
+
 
 export default function testsuite() {
     if (sim.getMaxSimCount()>1){
         connectionPublicTest();
         ConnectionTest();
+        MulticastconnectionPromiseTest();
+        MulticastconnectionCallbackTest();
+        ConnectionHandleTest();
         connectionErrorTest();
     }
     else{
-        EmptyTest()
+        EmptyTest();
     }
 }
