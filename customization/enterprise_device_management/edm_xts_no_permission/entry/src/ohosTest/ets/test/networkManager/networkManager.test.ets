@@ -111,6 +111,19 @@ const DOMAIN_FILTER_RULE4: networkManager.DomainFilterRule = {
   action: networkManager.Action.REJECT
 };
 
+const ADD_APN_INFO: Record<string, string> = {
+  "apn": "TEST_ADD_APN",
+  "mcc": "TEST_ADD_MCC",
+  "mnc": "TEST_ADD_MNC",
+  "apnName": "TEST_ADD_APN_NAME",
+  "proxy": "TEST_ADD_PROXY",
+};
+
+const UPDATE_APN_INFO: Record<string, string> = {
+  "apn": "TEST_UPDATE_APN",
+  "proxy": "TEST_UPDATE_PROXY",
+};
+
 export default function networkManagerTest() {
   describe('networkManager_test', () => {
     testGetAllNetworkInterfacesSync();
@@ -137,6 +150,12 @@ export default function networkManagerTest() {
 
     testTurnOnMobileData();
     testTurnOffMobileData();
+
+    testAddApn();
+    testDeleteApn();
+    testUpdateApn();
+    testSetPreferredApn();
+    testQueryApn();
   })
 }
 
@@ -592,6 +611,142 @@ function testTurnOffMobileData() {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
     try {
       networkManager.turnOffMobileData(SELFWANT);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 201).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+}
+
+function testAddApn() {
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_APN_JS_0001
+   * @tc.name      : test_add_apn_0001
+   * @tc.desc      : test networkManager addApn with normal admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_add_apn_0001", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+    try {
+      networkManager.addApn(SELFWANT, ADD_APN_INFO);
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 201).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+}
+
+function testDeleteApn() {
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_DELETE_APN_JS_0001
+   * @tc.name      : test_delete_apn_0001
+   * @tc.desc      : test networkManager deleteApn with normal admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_delete_apn_0001", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+    try {
+      networkManager.deleteApn(SELFWANT, "0");
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 201).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+}
+
+function testUpdateApn() {
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_UPDATE_APN_JS_0001
+   * @tc.name      : test_update_apn_0001
+   * @tc.desc      : test networkManager updateApn with normal admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_update_apn_0001", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+    try {
+      networkManager.updateApn(SELFWANT, UPDATE_APN_INFO, "0");
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 201).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+}
+
+function testSetPreferredApn() {
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_PREFERRED_APN_JS_0001
+   * @tc.name      : test_set_preferred_apn_0001
+   * @tc.desc      : test networkManager setPreferredApn with normal admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_preferred_apn_0001", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+    try {
+      networkManager.setPreferredApn(SELFWANT, "0");
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 201).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+}
+
+function testQueryApn() {
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_QUERY_APN_JS_0001
+   * @tc.name      : test_query_apn_0001
+   * @tc.desc      : test networkManager queryApn with normal admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_query_apn_0001", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+    try {
+      networkManager.queryApn(SELFWANT, "0");
+      expect(false).assertTrue();
+    } catch (error) {
+      expect(error.code == 201).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_QUERY_APN_JS_0002
+   * @tc.name      : test_query_apn_0002
+   * @tc.desc      : test networkManager queryApn with normal admin
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_query_apn_0002", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+    try {
+      networkManager.queryApn(SELFWANT, ADD_APN_INFO);
       expect(false).assertTrue();
     } catch (error) {
       expect(error.code == 201).assertTrue();

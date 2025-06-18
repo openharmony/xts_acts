@@ -177,6 +177,9 @@
       },
       {
         "name": "ohos.permission.ENTERPRISE_SET_KIOSK"
+      },
+      {
+        "name": "ohos.permission.ENTERPRISE_MANAGE_APN"
       }
     ]
   }

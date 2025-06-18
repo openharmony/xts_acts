@@ -162,6 +162,9 @@
       },
       {
         "name": "ohos.permission.ENTERPRISE_MANAGE_DELEGATED_POLICY"
+      },
+      {
+        "name": "ohos.permission.ENTERPRISE_MANAGE_APN"
       }
     ]
   }
