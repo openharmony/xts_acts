@@ -41,6 +41,10 @@
 #define NUM_4 4
 #define NUM_5 5
 #define NUM_6 6
+#define NUM_7 7
+#define NUM_8 8
+#define NUM_9 9
+#define NUM_10 10
 #define MAX_BUFFER_SIZE 512
 #define MAX_COLOR_SIZE 96
 #define MAX_QUALITY_SIZE 98
@@ -2768,9 +2772,326 @@ static napi_value GetImageSourceSupportedFormatsError(napi_env env, napi_callbac
     return getJsResult(env, errCode);
 }
 
+static napi_value testCropAndScaleStrategy(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    napi_value argValue[NUM_10] = {0};
+    size_t argCount = NUM_10;
+
+    if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok) {
+        return result;
+    }
+    
+    int32_t fd;
+    napi_get_value_int32(env, argValue[NUM_0], &fd);
+    OH_ImageSourceNative *imageSource = nullptr;
+    Image_ErrorCode errCode = OH_ImageSourceNative_CreateFromFd(fd, &imageSource);
+    if (errCode != IMAGE_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "CreateImageSource failed, errCode: %{public}d.", errCode);
+        napi_create_int32(env, errCode, &result);
+        return result;
+    }
+    OH_LOG_INFO(LOG_APP, "CreateImageSource success, errCode: %{public}d.", errCode);
+    
+    OH_DecodingOptions *decodeOpts = nullptr;
+    errCode = OH_DecodingOptions_Create(&decodeOpts);
+    if (errCode != IMAGE_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "CreateDecodingOptions failed, errCode: %{public}d.", errCode);
+        napi_create_int32(env, errCode, &result);
+        return result;
+    }
+    OH_LOG_INFO(LOG_APP, "CreateDecodingOptions success, errCode: %{public}d.", errCode);
+    
+    uint32_t pixelFormat = 3;
+    errCode = OH_DecodingOptions_SetPixelFormat(decodeOpts, pixelFormat);
+    if (errCode != IMAGE_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "SetPixelFormat failed, errCode: %{public}d.", errCode);
+        napi_create_int32(env, errCode, &result);
+        return result;
+    }
+    OH_LOG_INFO(LOG_APP, "SetPixelFormat success, errCode: %{public}d.", errCode);
+   
+    Image_Size imageSize;
+    napi_get_value_uint32(env, argValue[NUM_1], &imageSize.width);
+    napi_get_value_uint32(env, argValue[NUM_2], &imageSize.height);
+    errCode = OH_DecodingOptions_SetDesiredSize(decodeOpts, &imageSize);
+    if (errCode != IMAGE_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "SetDesiredSize failed, errCode: %{public}d.", errCode);
+        napi_create_int32(env, errCode, &result);
+        return result;
+    }
+    OH_LOG_INFO(LOG_APP, "SetDesiredSize success, errCode: %{public}d.", errCode);
+    
+    Image_Region image_Region;
+    napi_get_value_uint32(env, argValue[NUM_3], &image_Region.x);
+    napi_get_value_uint32(env, argValue[NUM_4], &image_Region.y);
+    napi_get_value_uint32(env, argValue[NUM_5], &image_Region.width);
+    napi_get_value_uint32(env, argValue[NUM_6], &image_Region.height);
+    errCode = OH_DecodingOptions_SetCropRegion(decodeOpts, &image_Region);
+    if (errCode != IMAGE_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "SetCropRegion failed, errCode: %{public}d.", errCode);
+        napi_create_int32(env, errCode, &result);
+        return result;
+    }
+    OH_LOG_INFO(LOG_APP, "SetCropRegion success, errCode: %{public}d.", errCode);
+    
+    int32_t cropAndScaleStrategy = 0;
+    napi_get_value_int32(env, argValue[NUM_7], &cropAndScaleStrategy);
+    Image_ErrorCode ret = OH_DecodingOptions_SetCropAndScaleStrategy(decodeOpts, cropAndScaleStrategy);
+    
+    OH_PixelmapNative *resPixMap = nullptr;
+    errCode = OH_ImageSourceNative_CreatePixelmap(imageSource, decodeOpts, &resPixMap);
+    if (IMAGE_SUCCESS != errCode) {
+        OH_LOG_ERROR(LOG_APP, "CreatePixelmap failed, errCode: %{public}d.", errCode);
+        napi_create_int32(env, errCode, &result);
+        return result;
+    }
+    OH_LOG_INFO(LOG_APP, "CreatePixelmap success, errCode: %{public}d.", errCode);
+    
+    if (TEST_PIXELMAP != nullptr) {
+        errCode = releaseTestPixelmap();
+        if (errCode != IMAGE_SUCCESS) {
+            OH_LOG_ERROR(LOG_APP, "ImagePixelmapNativeCTest createPixelMap releaseTestPixelmap failed, errCode: %{public}d.", errCode);
+            return result;
+        }
+    }
+    TEST_PIXELMAP = resPixMap;
+
+    OH_Pixelmap_ImageInfo *imageInfo;
+    errCode = OH_PixelmapImageInfo_Create(&imageInfo);
+    if (errCode != IMAGE_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "OH_PixelmapImageInfo_Create failed, errCode: %{public}d.", errCode);
+        return nullptr;
+    }
+    errCode = OH_PixelmapNative_GetImageInfo(TEST_PIXELMAP, imageInfo);
+    if (errCode != IMAGE_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "OH_PixelmapNative_GetImageInfo failed, errCode: %{public}d.", errCode);
+        return nullptr;
+    }
+    ImageInfo imageInfoJs;
+    errCode = OH_PixelmapImageInfo_GetWidth(imageInfo, &(imageInfoJs.width));
+    if (errCode != IMAGE_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "OH_PixelmapImageInfo_GetWidth failed, errCode: %{public}d.", errCode);
+        return nullptr;
+    }
+    uint32_t iwidth;
+    napi_get_value_uint32(env, argValue[NUM_8], &iwidth);
+    OH_LOG_INFO(LOG_APP, "width is %{public}d", iwidth);
+    OH_LOG_INFO(LOG_APP, "imageInfo getWidth is %{public}d", imageInfoJs.width);
+    errCode = OH_PixelmapImageInfo_GetHeight(imageInfo, &(imageInfoJs.height));
+    if (errCode != IMAGE_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "OH_PixelmapImageInfo_GetHeight failed, errCode: %{public}d.", errCode);
+        return nullptr;
+    }
+    uint32_t iheight;
+    napi_get_value_uint32(env, argValue[NUM_9], &iheight);
+    OH_LOG_INFO(LOG_APP, "height is %{public}d", iheight);
+    OH_LOG_INFO(LOG_APP, "imageInfo getHeight is %{public}d", imageInfoJs.height);
+
+    if (iwidth == imageInfoJs.width && iheight == imageInfoJs.height) {
+        napi_create_int32(env, 0, &result);
+    } else {
+        napi_create_int32(env, -1, &result);
+    }
+    return result;
+}
+
+static napi_value testCropAndScaleStrategyWithCropRegion(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    napi_value argValue[NUM_8] = {0};
+    size_t argCount = NUM_8;
+
+    if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok) {
+        return result;
+    }
+    
+    int32_t fd;
+    napi_get_value_int32(env, argValue[NUM_0], &fd);
+    OH_ImageSourceNative *imageSource = nullptr;
+    Image_ErrorCode errCode = OH_ImageSourceNative_CreateFromFd(fd, &imageSource);
+    if (errCode != IMAGE_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "CreateImageSource failed, errCode: %{public}d.", errCode);
+        napi_create_int32(env, errCode, &result);
+        return result;
+    }
+    OH_LOG_INFO(LOG_APP, "CreateImageSource success, errCode: %{public}d.", errCode);
+    
+    OH_DecodingOptions *decodeOpts = nullptr;
+    errCode = OH_DecodingOptions_Create(&decodeOpts);
+    if (errCode != IMAGE_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "CreateDecodingOptions failed, errCode: %{public}d.", errCode);
+        napi_create_int32(env, errCode, &result);
+        return result;
+    }
+    OH_LOG_INFO(LOG_APP, "CreateDecodingOptions success, errCode: %{public}d.", errCode);
+    
+    uint32_t pixelFormat = 3;
+    errCode = OH_DecodingOptions_SetPixelFormat(decodeOpts, pixelFormat);
+    if (errCode != IMAGE_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "SetPixelFormat failed, errCode: %{public}d.", errCode);
+        napi_create_int32(env, errCode, &result);
+        return result;
+    }
+    OH_LOG_INFO(LOG_APP, "SetPixelFormat success, errCode: %{public}d.", errCode);
+    
+    Image_Region image_Region;
+    napi_get_value_uint32(env, argValue[NUM_1], &image_Region.x);
+    napi_get_value_uint32(env, argValue[NUM_2], &image_Region.y);
+    napi_get_value_uint32(env, argValue[NUM_3], &image_Region.width);
+    napi_get_value_uint32(env, argValue[NUM_4], &image_Region.height);
+    errCode = OH_DecodingOptions_SetCropRegion(decodeOpts, &image_Region);
+    if (errCode != IMAGE_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "SetCropRegion failed, errCode: %{public}d.", errCode);
+        napi_create_int32(env, errCode, &result);
+        return result;
+    }
+    OH_LOG_INFO(LOG_APP, "SetCropRegion success, errCode: %{public}d.", errCode);
+    
+    int32_t cropAndScaleStrategy = 0;
+    napi_get_value_int32(env, argValue[NUM_5], &cropAndScaleStrategy);
+    Image_ErrorCode ret = OH_DecodingOptions_SetCropAndScaleStrategy(decodeOpts, cropAndScaleStrategy);
+    
+    OH_PixelmapNative *resPixMap = nullptr;
+    errCode = OH_ImageSourceNative_CreatePixelmap(imageSource, decodeOpts, &resPixMap);
+    if (IMAGE_SUCCESS != errCode) {
+        OH_LOG_ERROR(LOG_APP, "CreatePixelmap failed, errCode: %{public}d.", errCode);
+        napi_create_int32(env, errCode, &result);
+        return result;
+    }
+    OH_LOG_INFO(LOG_APP, "CreatePixelmap success, errCode: %{public}d.", errCode);
+    
+    if (TEST_PIXELMAP != nullptr) {
+        errCode = releaseTestPixelmap();
+        if (errCode != IMAGE_SUCCESS) {
+            OH_LOG_ERROR(LOG_APP, "ImagePixelmapNativeCTest createPixelMap releaseTestPixelmap failed, errCode: %{public}d.", errCode);
+            return result;
+        }
+    }
+    TEST_PIXELMAP = resPixMap;
+
+    OH_Pixelmap_ImageInfo *imageInfo;
+    errCode = OH_PixelmapImageInfo_Create(&imageInfo);
+    if (errCode != IMAGE_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "OH_PixelmapImageInfo_Create failed, errCode: %{public}d.", errCode);
+        return nullptr;
+    }
+    errCode = OH_PixelmapNative_GetImageInfo(TEST_PIXELMAP, imageInfo);
+    if (errCode != IMAGE_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "OH_PixelmapNative_GetImageInfo failed, errCode: %{public}d.", errCode);
+        return nullptr;
+    }
+    ImageInfo imageInfoJs;
+    errCode = OH_PixelmapImageInfo_GetWidth(imageInfo, &(imageInfoJs.width));
+    if (errCode != IMAGE_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "OH_PixelmapImageInfo_GetWidth failed, errCode: %{public}d.", errCode);
+        return nullptr;
+    }
+    uint32_t iwidth;
+    napi_get_value_uint32(env, argValue[NUM_6], &iwidth);
+    OH_LOG_INFO(LOG_APP, "width is %{public}d", iwidth);
+    OH_LOG_INFO(LOG_APP, "imageInfo getWidth is %{public}d", imageInfoJs.width);
+    errCode = OH_PixelmapImageInfo_GetHeight(imageInfo, &(imageInfoJs.height));
+    if (errCode != IMAGE_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "OH_PixelmapImageInfo_GetHeight failed, errCode: %{public}d.", errCode);
+        return nullptr;
+    }
+    uint32_t iheight;
+    napi_get_value_uint32(env, argValue[NUM_7], &iheight);
+    OH_LOG_INFO(LOG_APP, "height is %{public}d", iheight);
+    OH_LOG_INFO(LOG_APP, "imageInfo getHeight is %{public}d", imageInfoJs.height);
+
+    if (iwidth == imageInfoJs.width && iheight == imageInfoJs.height) {
+        napi_create_int32(env, 0, &result);
+    } else {
+        napi_create_int32(env, -1, &result);
+    }
+    return result;
+}
+
+static napi_value testCropAndScaleStrategyErr(napi_env env, napi_callback_info info) {
+    napi_value result = nullptr;
+    napi_value argValue[NUM_8] = {0};
+    size_t argCount = NUM_8;
+
+    if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok) {
+        return result;
+    }
+    
+    int32_t fd;
+    napi_get_value_int32(env, argValue[NUM_0], &fd);
+    OH_ImageSourceNative *imageSource = nullptr;
+    Image_ErrorCode errCode = OH_ImageSourceNative_CreateFromFd(fd, &imageSource);
+    if (errCode != IMAGE_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "CreateImageSource failed, errCode: %{public}d.", errCode);
+        napi_create_int32(env, errCode, &result);
+        return result;
+    }
+    OH_LOG_INFO(LOG_APP, "CreateImageSource success, errCode: %{public}d.", errCode);
+    
+    OH_DecodingOptions *decodeOpts = nullptr;
+    errCode = OH_DecodingOptions_Create(&decodeOpts);
+    if (errCode != IMAGE_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "CreateDecodingOptions failed, errCode: %{public}d.", errCode);
+        napi_create_int32(env, errCode, &result);
+        return result;
+    }
+    OH_LOG_INFO(LOG_APP, "CreateDecodingOptions success, errCode: %{public}d.", errCode);
+    
+    uint32_t pixelFormat = 3;
+    errCode = OH_DecodingOptions_SetPixelFormat(decodeOpts, pixelFormat);
+    if (errCode != IMAGE_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "SetPixelFormat failed, errCode: %{public}d.", errCode);
+        napi_create_int32(env, errCode, &result);
+        return result;
+    }
+    OH_LOG_INFO(LOG_APP, "SetPixelFormat success, errCode: %{public}d.", errCode);
+   
+    Image_Size imageSize;
+    napi_get_value_uint32(env, argValue[NUM_1], &imageSize.width);
+    napi_get_value_uint32(env, argValue[NUM_2], &imageSize.height);
+    errCode = OH_DecodingOptions_SetDesiredSize(decodeOpts, &imageSize);
+    if (errCode != IMAGE_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "SetDesiredSize failed, errCode: %{public}d.", errCode);
+        napi_create_int32(env, errCode, &result);
+        return result;
+    }
+    OH_LOG_INFO(LOG_APP, "SetDesiredSize success, errCode: %{public}d.", errCode);
+    
+    Image_Region image_Region;
+    napi_get_value_uint32(env, argValue[NUM_3], &image_Region.x);
+    napi_get_value_uint32(env, argValue[NUM_4], &image_Region.y);
+    napi_get_value_uint32(env, argValue[NUM_5], &image_Region.width);
+    napi_get_value_uint32(env, argValue[NUM_6], &image_Region.height);
+    errCode = OH_DecodingOptions_SetCropRegion(decodeOpts, &image_Region);
+    if (errCode != IMAGE_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "SetCropRegion failed, errCode: %{public}d.", errCode);
+        napi_create_int32(env, errCode, &result);
+        return result;
+    }
+    OH_LOG_INFO(LOG_APP, "SetCropRegion success, errCode: %{public}d.", errCode);
+    
+    int32_t cropAndScaleStrategy = 0;
+    napi_get_value_int32(env, argValue[NUM_7], &cropAndScaleStrategy);
+    Image_ErrorCode ret = OH_DecodingOptions_SetCropAndScaleStrategy(decodeOpts, cropAndScaleStrategy);
+    
+    OH_PixelmapNative *resPixMap = nullptr;
+    errCode = OH_ImageSourceNative_CreatePixelmap(imageSource, decodeOpts, &resPixMap);
+    if (IMAGE_SUCCESS != errCode) {
+        OH_LOG_ERROR(LOG_APP, "CreatePixelmap failed, expect fail, errCode: %{public}d.", errCode);
+        napi_create_int32(env, 0, &result);
+        return result;
+    } else {
+        OH_LOG_ERROR(LOG_APP, "CreatePixelmap succecc, expect fail, errCode: %{public}d.", errCode);
+        napi_create_int32(env, -1, &result);
+        return result;
+    }
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports) {
     napi_property_descriptor desc[] = {
+        {"testCropAndScaleStrategy", nullptr, testCropAndScaleStrategy, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testCropAndScaleStrategyWithCropRegion", nullptr, testCropAndScaleStrategyWithCropRegion, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testCropAndScaleStrategyErr", nullptr, testCropAndScaleStrategyErr, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testInitializationOptions", nullptr, TestInitializationOptions, nullptr, nullptr, nullptr, napi_default,
          nullptr},
         {"testCreatePixelmap", nullptr, TestCreatePixelmap, nullptr, nullptr, nullptr, napi_default, nullptr},
