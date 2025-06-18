@@ -17,7 +17,7 @@
  import { image } from '@kit.ImageKit';
  import { describe, it, expect, Level } from '@ohos/hypium';
  import { abilityDelegatorRegistry } from '@kit.TestKit';
- import deviceInfo from '@ohos.deviceInfo';
+ import { fileIo as fs } from '@kit.CoreFileKit';
 
  let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
  let abilityDelegatorArguments: abilityDelegatorRegistry.AbilityDelegatorArgs;
@@ -68,6 +68,10 @@
      * @tc.level      : Level 1
      */
     it('testVideoProcessTs002', Level.LEVEL0, async(done: Function) => {
+        if (!fs.accessSync("/system/lib64/libvideoprocessingengine_ext.z.so")) {
+            expect(true).assertTrue();
+            done();
+        }
         try {
             let sourceImage = await imageSource.createPixelMap() as image.PixelMap;
             const imageInfo: image.ImageInfo = await sourceImage.getImageInfo();
@@ -99,6 +103,10 @@
      * @tc.level      : Level 1
      */
     it('testVideoProcessTs003', Level.LEVEL0, async(done: Function) => {
+        if (!fs.accessSync("/system/lib64/libvideoprocessingengine_ext.z.so")) {
+            expect(true).assertTrue();
+            done();
+        }
         try {
             let sourceImage = await imageSource.createPixelMap() as image.PixelMap;
             const imageInfo: image.ImageInfo = await sourceImage.getImageInfo();
@@ -130,6 +138,10 @@
      * @tc.level      : Level 1
      */
     it('testVideoProcessTs004', Level.LEVEL0, async(done: Function) => {
+        if (!fs.accessSync("/system/lib64/libvideoprocessingengine_ext.z.so")) {
+            expect(true).assertTrue();
+            done();
+        }
         try {
             let sourceImage = await imageSource.createPixelMap() as image.PixelMap;
             const imageInfo: image.ImageInfo = await sourceImage.getImageInfo();
@@ -161,6 +173,10 @@
      * @tc.level      : Level 1
      */
     it('testVideoProcessTs005', Level.LEVEL0, async(done: Function) => {
+        if (!fs.accessSync("/system/lib64/libvideoprocessingengine_ext.z.so")) {
+            expect(true).assertTrue();
+            done();
+        }
         try {
             let sourceImage = await imageSource.createPixelMap() as image.PixelMap;
             const imageInfo: image.ImageInfo = await sourceImage.getImageInfo();
@@ -192,6 +208,10 @@
      * @tc.level      : Level 1
      */
     it('testVideoProcessTs006', Level.LEVEL0, async(done: Function) => {
+        if (!fs.accessSync("/system/lib64/libvideoprocessingengine_ext.z.so")) {
+            expect(true).assertTrue();
+            done();
+        }
         try {
             let sourceImage = await imageSource.createPixelMap() as image.PixelMap;
             const imageInfo: image.ImageInfo = await sourceImage.getImageInfo();
@@ -223,6 +243,10 @@
      * @tc.level      : Level 1
      */
     it('testVideoProcessTs007', Level.LEVEL0, async(done: Function) => {
+        if (!fs.accessSync("/system/lib64/libvideoprocessingengine_ext.z.so")) {
+            expect(true).assertTrue();
+            done();
+        }
         try {
             let sourceImage = await imageSource.createPixelMap() as image.PixelMap;
             let imageProcessor = videoProcessingEngine.create() as videoProcessingEngine.ImageProcessor;
@@ -251,6 +275,10 @@
      * @tc.level      : Level 1
      */
     it('testVideoProcessTs008', Level.LEVEL0, async(done: Function) => {
+        if (!fs.accessSync("/system/lib64/libvideoprocessingengine_ext.z.so")) {
+            expect(true).assertTrue();
+            done();
+        }
         try {
             let sourceImage = await imageSource.createPixelMap() as image.PixelMap;
             const imageInfo: image.ImageInfo = await sourceImage.getImageInfo();
@@ -282,6 +310,10 @@
      * @tc.level      : Level 1
      */
     it('testVideoProcessTs009', Level.LEVEL0, async(done: Function) => {
+        if (!fs.accessSync("/system/lib64/libvideoprocessingengine_ext.z.so")) {
+            expect(true).assertTrue();
+            done();
+        }
         try {
             let sourceImage = await imageSource.createPixelMap() as image.PixelMap;
             let imageProcessor = videoProcessingEngine.create() as videoProcessingEngine.ImageProcessor;
