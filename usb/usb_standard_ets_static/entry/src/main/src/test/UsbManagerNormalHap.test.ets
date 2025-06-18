@@ -137,10 +137,10 @@ export default function UsbManagerNormalHapTest() {
      */
     it("usbEnumTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void): Promise<void> => {
       hilog.info(domain, tag, '%{public}s', '----------------------usbEnumTest001---------------------------');
-      hilog.info(domain, tag, `USB_REQUEST_DIR_TO_DEVICE: ${usbManager.USBRequestDirection.USB_REQUEST_DIR_TO_DEVICE}`);
+      hilog.info(domain, tag, `USB_REQUEST_DIR_TO_DEVICE: ${UsbMgr.USBRequestDirection.USB_REQUEST_DIR_TO_DEVICE}`);
       expect(typeof(UsbMgr.USBRequestDirection.USB_REQUEST_DIR_TO_DEVICE)).assertEqual('number');
       expect(UsbMgr.USBRequestDirection.USB_REQUEST_DIR_TO_DEVICE.toString()).assertEqual(USB_REQUEST_DIR_TO_DEVICE_STR);
-      hilog.info(domain, tag, `USB_REQUEST_DIR_FROM_DEVICE: ${usbManager.USBRequestDirection.USB_REQUEST_DIR_FROM_DEVICE}`);
+      hilog.info(domain, tag, `USB_REQUEST_DIR_FROM_DEVICE: ${UsbMgr.USBRequestDirection.USB_REQUEST_DIR_FROM_DEVICE}`);
       expect(typeof(UsbMgr.USBRequestDirection.USB_REQUEST_DIR_FROM_DEVICE)).assertEqual('number');
       expect(UsbMgr.USBRequestDirection.USB_REQUEST_DIR_FROM_DEVICE.toString()).assertEqual(USB_REQUEST_DIR_FROM_DEVICE_STR);
       done()
