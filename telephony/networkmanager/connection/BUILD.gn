@@ -18,7 +18,7 @@ group("connection") {
   if (is_standard_system) {
     deps = [
       "connectionnoptest:ActsNetworkMgrConnectionNopTest",
-      "connectionRegisterHasNet:ActsMgrConnectionRegisterHasNetTest"
+      "connectionRegisterHasNet:ActsMgrConnectionRegisterHasNetTest",
       "connectiontest:ActsNetworkMgrConnectionTest",
     ]
   }
