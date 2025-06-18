@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 import nativeRender from 'libnativerender.so'
@@ -30,7 +30,7 @@ export default function listScrollPageTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListScrollPage001', 0, async (done: Function) => {
+    it('testListScrollPage001', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListScrollPageTest`);
       await Utils.clickComponent('btn2')
       await Utils.sleep(1500)
@@ -54,7 +54,7 @@ export default function listScrollPageTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListScrollPage002', 0, async (done: Function) => {
+    it('testListScrollPage002', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListScrollPageTest`);
       await Utils.clickComponent('btn1')
       await Utils.sleep(1500)

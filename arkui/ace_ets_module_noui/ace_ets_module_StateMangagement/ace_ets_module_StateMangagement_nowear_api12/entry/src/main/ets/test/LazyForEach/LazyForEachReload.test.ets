@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -63,7 +63,7 @@ export default function LazyForEachReload() {
      * @tc.name LazyForEachReload
      * @tc.desc Test LazyForEachReload
      */
-    it('LazyForEachReload_001', 0, async (done: Function) => {
+    it('LazyForEachReload_001', Level.LEVEL0, async (done: Function) => {
       console.info('[LazyForEachReload_001] START');      
       await CommonFunc.sleep(500);
 

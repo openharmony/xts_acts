@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function  () {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextInputPadding001', 0, async (done: Function) => {
+    it('testTextInputPadding001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputPadding001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function  () {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextInputPadding002', 0, async (done: Function) => {
+    it('testTextInputPadding002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputPadding002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function  () {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextInputPadding003', 0, async (done: Function) => {
+    it('testTextInputPadding003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputPadding003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function  () {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextInputPadding004', 0, async (done: Function) => {
+    it('testTextInputPadding004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextInputPadding004()).assertEqual(0)
       done()
     })

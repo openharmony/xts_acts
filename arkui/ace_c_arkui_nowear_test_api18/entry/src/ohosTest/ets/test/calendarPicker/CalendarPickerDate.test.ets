@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import { Driver, ON, PointerMatrix, Rect } from '@ohos.UiTest';
 import Utils from '../common/Utils';
 
@@ -33,7 +33,7 @@ export default function calendarPickerDateTest(){
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCalendarPickerDate001', 0, async (done: Function) => {
+    it('testCalendarPickerDate001',  Level.LEVEL0, async (done: Function) => {
       let PAGE_TAG = 'TestCalendarPickerDate';
       await Utils.pushPage(`calendarPicker/${PAGE_TAG}`);
       await Utils.sleep(3000)

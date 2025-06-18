@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function scrollShadowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollShadow001', 0, async (done: Function) => {
+    it('testScrollShadow001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollShadow001()).assertEqual(0)
       done();
     });
@@ -47,7 +47,7 @@ export default function scrollShadowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollShadow002', 0, async (done: Function) => {
+    it('testScrollShadow002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollShadow002()).assertEqual(0)
       done();
     });
@@ -60,7 +60,7 @@ export default function scrollShadowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollShadow003', 0, async (done: Function) => {
+    it('testScrollShadow003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollShadow003()).assertEqual(0)
       done();
     });
@@ -73,7 +73,7 @@ export default function scrollShadowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollShadow004', 0, async (done: Function) => {
+    it('testScrollShadow004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollShadow004()).assertEqual(0)
       done();
     });
@@ -86,7 +86,7 @@ export default function scrollShadowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollShadow005', 0, async (done: Function) => {
+    it('testScrollShadow005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollShadow005()).assertEqual(0)
       done();
     });
@@ -99,7 +99,7 @@ export default function scrollShadowTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollShadow006', 0, async (done: Function) => {
+    it('testScrollShadow006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testScrollShadow006()).assertEqual(0)
       done();
     });

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import { Driver } from '@kit.TestKit';
 import nativeRender from 'libnativerender.so'
@@ -68,7 +68,7 @@ export default function listEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListOnScroll001', 0, async (done: Function) => {
+    it('testListOnScroll001', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListOnScrollTest`);
       // Fingers rolling upwards with rebound
       {
@@ -106,7 +106,7 @@ export default function listEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListOnScroll002', 0, async (done: Function) => {
+    it('testListOnScroll002', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListOnScrollTest`);
       // Fingers rolling upwards without rebound
       await flingComponentV('list', true, 200, 20)
@@ -128,7 +128,7 @@ export default function listEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListOnScroll003', 0, async (done: Function) => {
+    it('testListOnScroll003', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListOnScrollTest`);
       // Scroll the mouse backwards
       await mouseScrollV('list', true, () => {
@@ -153,7 +153,7 @@ export default function listEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListOnScroll004', 0, async (done: Function) => {
+    it('testListOnScroll004', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListOnScrollTest`);
       // Drag the scrollbar downwards with your fingers
       await flingComponentV('list', false, 100, 80, 135)
@@ -175,7 +175,7 @@ export default function listEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListOnScroll005', 0, async (done: Function) => {
+    it('testListOnScroll005', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListOnScrollTest`);
       {
         await Utils.clickComponent('btn1')
@@ -209,7 +209,7 @@ export default function listEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListOnScroll006', 0, async (done: Function) => {
+    it('testListOnScroll006', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListOnScrollTest`);
       await flingComponentV('list', true)
       await Utils.clickComponent('list')
@@ -232,7 +232,7 @@ export default function listEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListOnScrollStop001', 0, async (done: Function) => {
+    it('testListOnScrollStop001', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListOnScrollStopTest`);
       await Utils.clickComponent('btn')
       await Utils.sleep(1500)
@@ -248,7 +248,7 @@ export default function listEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListOnScrollStart001', 0, async (done: Function) => {
+    it('testListOnScrollStart001', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListOnScrollStartTest`);
       await Utils.clickComponent('btn')
       await Utils.sleep(1500)
@@ -264,7 +264,7 @@ export default function listEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListOnReachStart001', 0, async (done: Function) => {
+    it('testListOnReachStart001', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListOnReachStartTest`);
       await Utils.clickComponent('btn')
       await Utils.sleep(1500)
@@ -280,7 +280,7 @@ export default function listEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListOnReachEnd001', 0, async (done: Function) => {
+    it('testListOnReachEnd001', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListOnReachEndTest`);
       await Utils.clickComponent('btn')
       await Utils.sleep(1500)
@@ -296,7 +296,7 @@ export default function listEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListOnWillDidScroll001', 0, async (done: Function) => {
+    it('testListOnWillDidScroll001', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListOnWillDidScrollTest`);
       // Fingers rolling upwards with rebound
       {
@@ -331,7 +331,7 @@ export default function listEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListOnWillDidScroll007', 0, async (done: Function) => {
+    it('testListOnWillDidScroll007', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListOnWillDidScrollTest`);
       // Fingers rolling downwards with rebound
       {
@@ -366,7 +366,7 @@ export default function listEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListOnWillDidScroll002', 0, async (done: Function) => {
+    it('testListOnWillDidScroll002', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListOnWillDidScrollTest`);
       // Fingers rolling upwards without rebound
       await flingComponentV('list', true, 200, 20)
@@ -398,7 +398,7 @@ export default function listEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListOnWillDidScroll003', 0, async (done: Function) => {
+    it('testListOnWillDidScroll003', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListOnWillDidScrollTest`);
       // Scroll the mouse backwards
       await mouseScrollV('list', true, () => {
@@ -430,7 +430,7 @@ export default function listEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListOnWillDidScroll004', 0, async (done: Function) => {
+    it('testListOnWillDidScroll004', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListOnWillDidScrollTest`);
       // Drag the scrollbar downwards with your fingers
       await flingComponentV('list', false, 100, 60, 135)
@@ -462,7 +462,7 @@ export default function listEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListOnWillDidScroll005', 0, async (done: Function) => {
+    it('testListOnWillDidScroll005', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListOnWillDidScrollTest`);
       {
         await Utils.clickComponent('btn1')
@@ -510,7 +510,7 @@ export default function listEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListOnWillDidScroll006', 0, async (done: Function) => {
+    it('testListOnWillDidScroll006', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListOnWillDidScrollTest`);
       await flingComponentV('list', true)
       await Utils.clickComponent('list')
@@ -542,7 +542,7 @@ export default function listEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListOnWillScroll001', 0, async (done: Function) => {
+    it('testListOnWillScroll001', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListOnWillScrollTest`);
       // Fingers rolling upwards with rebound
       {
@@ -571,7 +571,7 @@ export default function listEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListOnWillScroll007', 0, async (done: Function) => {
+    it('testListOnWillScroll007', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListOnWillScrollTest`);
       // Fingers rolling downwards with rebound
       {
@@ -600,7 +600,7 @@ export default function listEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListOnWillScroll002', 0, async (done: Function) => {
+    it('testListOnWillScroll002', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListOnWillScrollTest`);
       // Fingers rolling upwards without rebound
       await flingComponentV('list', true, 200, 20)
@@ -626,7 +626,7 @@ export default function listEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListOnWillScroll003', 0, async (done: Function) => {
+    it('testListOnWillScroll003', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListOnWillScrollTest`);
       // Scroll the mouse backwards
       await mouseScrollV('list', true, () => {
@@ -653,7 +653,7 @@ export default function listEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListOnWillScroll004', 0, async (done: Function) => {
+    it('testListOnWillScroll004', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListOnWillScrollTest`);
       // Drag the scrollbar downwards with your fingers
       await flingComponentV('list', false, 100, 60, 135)
@@ -679,7 +679,7 @@ export default function listEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListOnWillScroll005', 0, async (done: Function) => {
+    it('testListOnWillScroll005', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListOnWillScrollTest`);
       {
         await Utils.clickComponent('btn1')
@@ -718,7 +718,7 @@ export default function listEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListOnWillScroll006', 0, async (done: Function) => {
+    it('testListOnWillScroll006', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListOnWillScrollTest`);
       await flingComponentV('list', true)
       await Utils.clickComponent('list')
@@ -744,7 +744,7 @@ export default function listEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListOnDidScroll001', 0, async (done: Function) => {
+    it('testListOnDidScroll001', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListOnDidScrollTest`);
       // Fingers rolling upwards with rebound
       {
@@ -772,7 +772,7 @@ export default function listEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListOnDidScroll007', 0, async (done: Function) => {
+    it('testListOnDidScroll007', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListOnDidScrollTest`);
       // Fingers rolling downwards with rebound
       {
@@ -800,7 +800,7 @@ export default function listEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListOnDidScroll002', 0, async (done: Function) => {
+    it('testListOnDidScroll002', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListOnDidScrollTest`);
       // Fingers rolling upwards without rebound
       await flingComponentV('list', true, 200, 20)
@@ -824,7 +824,7 @@ export default function listEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListOnDidScroll003', 0, async (done: Function) => {
+    it('testListOnDidScroll003', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListOnDidScrollTest`);
       // Scroll the mouse backwards
       await mouseScrollV('list', true, () => {
@@ -850,7 +850,7 @@ export default function listEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListOnDidScroll004', 0, async (done: Function) => {
+    it('testListOnDidScroll004', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListOnDidScrollTest`);
       // Drag the scrollbar downwards with your fingers
       await flingComponentV('list', false, 100, 60, 135)
@@ -874,7 +874,7 @@ export default function listEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListOnDidScroll005', 0, async (done: Function) => {
+    it('testListOnDidScroll005', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListOnDidScrollTest`);
       {
         await Utils.clickComponent('btn1')
@@ -910,7 +910,7 @@ export default function listEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListOnDidScroll006', 0, async (done: Function) => {
+    it('testListOnDidScroll006', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListOnDidScrollTest`);
       await flingComponentV('list', true)
       await Utils.clickComponent('list')
@@ -934,7 +934,7 @@ export default function listEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListOnScrollIndex001', 0, async (done: Function) => {
+    it('testListOnScrollIndex001', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListOnScrollIndexTest`);
       await flingComponentV('list', true, 20000, 50)
       await Utils.sleep(1500)
@@ -960,7 +960,7 @@ export default function listEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListOnScrollIndex002', 0, async (done: Function) => {
+    it('testListOnScrollIndex002', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListOnScrollIndexTest`);
       await flingComponentV('list', false, 20000, 50)
       await Utils.sleep(1500)
@@ -985,7 +985,7 @@ export default function listEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListOnScrollFrameBegin001', 0, async (done: Function) => {
+    it('testListOnScrollFrameBegin001', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListOnScrollFrameBeginTest`);
       await flingComponentV('list', false, 500, 15)
       await Utils.sleep(1500)
@@ -1007,7 +1007,7 @@ export default function listEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListOnScrollFrameBegin002', 0, async (done: Function) => {
+    it('testListOnScrollFrameBegin002', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListOnScrollFrameBeginTest`);
       await flingComponentV('list', true, 20000, 80)
       await Utils.sleep(1000)
@@ -1030,7 +1030,7 @@ export default function listEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListOnScrollFrameBegin003', 0, async (done: Function) => {
+    it('testListOnScrollFrameBegin003', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListOnScrollFrameBeginTest`);
       let speed: number = 100
       let distance: number = 80
@@ -1054,7 +1054,7 @@ export default function listEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testListOnScrollFrameBegin004', 0, async (done: Function) => {
+    it('testListOnScrollFrameBegin004', Level.LEVEL1, async (done: Function) => {
       await Utils.pushPage(`list/ListOnScrollFrameBeginTest`);
       await Utils.clickComponent('btn')
       await Utils.sleep(1500)

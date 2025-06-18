@@ -241,13 +241,16 @@ export default function flex_NoWrap_FlexMarPad_TextMarPadTest() {
       expect(Math.floor(Math.abs(secondText.bottom - secondText.top - vp2px(150))) <= 1).assertTrue();
       expect(Math.floor(Math.abs(thirdText.bottom - thirdText.top - vp2px(200))) <= 1).assertTrue();
 
-      expect(Math.floor(Math.abs(firstText.right - firstText.left - vp2px(380) / 3)) <= 1).assertTrue();
-      expect(Math.floor(Math.abs(firstText.right - firstText.left - (secondText.right - secondText.left))) <= 1)
-        .assertTrue();
-      expect(Math.floor(Math.abs(firstText.right - firstText.left - (thirdText.right - thirdText.left))) <= 1)
-        .assertTrue();
-      expect(Math.floor(Math.abs(secondText.left - firstText.right - vp2px(20))) <= 1).assertTrue();
-      expect(Math.floor(Math.abs(thirdText.left - secondText.right - vp2px(20))) <= 1).assertTrue();
+      console.info('[testWrapNoWrapFlexMarPadTextMarPad] px2vp(firstText.right - firstText.left): ' + px2vp(firstText.right - firstText.left));
+      console.info('[testWrapNoWrapFlexMarPadTextMarPad] px2vp(secondText.right - secondText.left): ' + px2vp(secondText.right - secondText.left));
+      console.info('[testWrapNoWrapFlexMarPadTextMarPad] px2vp(thirdText.right - thirdText.left): ' + px2vp(thirdText.right - thirdText.left));
+      console.info('[testWrapNoWrapFlexMarPadTextMarPad] px2vp(secondText.left - firstText.right): ' + px2vp(secondText.left - firstText.right));
+      console.info('[testWrapNoWrapFlexMarPadTextMarPad] px2vp(thirdText.left - secondText.right): ' + px2vp(thirdText.left - secondText.right));
+      expect(Math.floor(Math.abs(px2vp(firstText.right - firstText.left) - 380 / 3)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(px2vp(secondText.right - secondText.left) - 380 / 3)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(px2vp(thirdText.right - thirdText.left) - 380 / 3)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(px2vp(secondText.left - firstText.right) - 20)) <= 1).assertTrue();
+      expect(Math.floor(Math.abs(px2vp(thirdText.left - secondText.right) - 20)) <= 1).assertTrue();
 
       expect(Math.floor(Math.abs(flexContainer.right - thirdText.right - vp2px(40))) <= 1).assertTrue();
       expect(Math.floor(Math.abs(thirdText.bottom - flexContainer.bottom - vp2px(40))) <= 1).assertTrue();

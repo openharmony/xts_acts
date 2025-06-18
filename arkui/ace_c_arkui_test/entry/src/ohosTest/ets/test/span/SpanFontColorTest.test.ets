@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function spanFontColorTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSpanFontColor001', 0, async (done: Function) => {
+    it('testSpanFontColor001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSpanFontColor001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function spanFontColorTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSpanFontColor002', 0, async (done: Function) => {
+    it('testSpanFontColor002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSpanFontColor002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function spanFontColorTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSpanFontColor003', 0, async (done: Function) => {
+    it('testSpanFontColor003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSpanFontColor003()).assertEqual(0)
       done()
     })

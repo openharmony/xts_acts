@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function commonAttrsClipTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsClip001', 0, async (done: Function) => {
+    it('testCommonAttrsClip001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsClip001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function commonAttrsClipTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsClip002', 0, async (done: Function) => {
+    it('testCommonAttrsClip002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsClip002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function commonAttrsClipTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testCommonAttrsClip003', 0, async (done: Function) => {
+    it('testCommonAttrsClip003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsClip003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function commonAttrsClipTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsClip004', 0, async (done: Function) => {
+    it('testCommonAttrsClip004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsClip004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function commonAttrsClipTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsClip005', 0, async (done: Function) => {
+    it('testCommonAttrsClip005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsClip005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function commonAttrsClipTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsClip006', 0, async (done: Function) => {
+    it('testCommonAttrsClip006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsClip006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function commonAttrsClipTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsClip007', 0, async (done: Function) => {
+    it('testCommonAttrsClip007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsClip007()).assertEqual(0)
       done()
     })

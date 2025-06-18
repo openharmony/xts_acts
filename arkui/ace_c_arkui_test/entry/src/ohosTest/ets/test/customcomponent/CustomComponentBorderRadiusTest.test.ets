@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function customComponentBorderRadiusTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCustomComponentBorderRadius001', 0, async (done: Function) => {
+    it('testCustomComponentBorderRadius001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBorderRadius001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function customComponentBorderRadiusTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCustomComponentBorderRadius002', 0, async (done: Function) => {
+    it('testCustomComponentBorderRadius002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBorderRadius002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function customComponentBorderRadiusTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCustomComponentBorderRadius003', 0, async (done: Function) => {
+    it('testCustomComponentBorderRadius003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBorderRadius003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function customComponentBorderRadiusTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCustomComponentBorderRadius004', 0, async (done: Function) => {
+    it('testCustomComponentBorderRadius004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBorderRadius004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function customComponentBorderRadiusTest() {
      * @tc.type       : Function
      * @tc.level      : Level2
      */
-    it('testCustomComponentBorderRadius005', 0, async (done: Function) => {
+    it('testCustomComponentBorderRadius005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBorderRadius005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function customComponentBorderRadiusTest() {
      * @tc.type       : Function
      * @tc.level      : Level2
      */
-    it('testCustomComponentBorderRadius006', 0, async (done: Function) => {
+    it('testCustomComponentBorderRadius006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentBorderRadius006()).assertEqual(0)
       done()
     })

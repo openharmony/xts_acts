@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -57,7 +57,7 @@ export default function ProvideConsume0050TestJsunit() {
       await CommonFunc.sleep(1000);
       console.info("ProvideConsume0050TestJsunit after each called");
     });
-    it('assertContain', 0, async () => {
+    it('assertContain', Level.LEVEL0, async () => {
       await CommonFunc.sleep(1000);
       console.info('[ProvideConsume0100Test_001] START');
       await CommonFunc.sleep(1000);

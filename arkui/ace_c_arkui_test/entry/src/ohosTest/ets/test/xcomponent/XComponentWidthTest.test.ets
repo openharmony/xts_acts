@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function xComponentWidthTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testXComponentWidth001', 0, async (done: Function) => {
+    it('testXComponentWidth001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testXComponentWidth001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function xComponentWidthTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testXComponentWidth002', 0, async (done: Function) => {
+    it('testXComponentWidth002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testXComponentWidth002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function xComponentWidthTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testXComponentWidth003', 0, async (done: Function) => {
+    it('testXComponentWidth003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testXComponentWidth003()).assertEqual(0)
       done()
     })

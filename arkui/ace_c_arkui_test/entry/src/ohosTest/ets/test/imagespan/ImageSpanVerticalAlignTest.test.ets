@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function imageSpanVerticalAlignTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testImageSpanVerticalAlign001', 0, async (done: Function) => {
+    it('testImageSpanVerticalAlign001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageSpanVerticalAlign001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function imageSpanVerticalAlignTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testImageSpanVerticalAlign002', 0, async (done: Function) => {
+    it('testImageSpanVerticalAlign002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageSpanVerticalAlign002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function imageSpanVerticalAlignTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testImageSpanVerticalAlign003', 0, async (done: Function) => {
+    it('testImageSpanVerticalAlign003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageSpanVerticalAlign003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function imageSpanVerticalAlignTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testImageSpanVerticalAlign004', 0, async (done: Function) => {
+    it('testImageSpanVerticalAlign004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageSpanVerticalAlign004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function imageSpanVerticalAlignTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testImageSpanVerticalAlign005', 0, async (done: Function) => {
+    it('testImageSpanVerticalAlign005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageSpanVerticalAlign005()).assertEqual(0)
       done()
     })

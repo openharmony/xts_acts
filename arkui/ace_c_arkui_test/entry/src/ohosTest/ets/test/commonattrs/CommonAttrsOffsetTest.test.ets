@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function commonAttrsOffsetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsOffset001', 0, async (done: Function) => {
+    it('testCommonAttrsOffset001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsOffset001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function commonAttrsOffsetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsOffset002', 0, async (done: Function) => {
+    it('testCommonAttrsOffset002', Level.LEVEL1, async (done: Function) => {
         expect(nativeFunc.testCommonAttrsOffset002()).assertEqual(0)
         done()
     })
@@ -60,7 +60,7 @@ export default function commonAttrsOffsetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsOffset003', 0, async (done: Function) => {
+    it('testCommonAttrsOffset003', Level.LEVEL1, async (done: Function) => {
         expect(nativeFunc.testCommonAttrsOffset003()).assertEqual(0)
         done()
     })
@@ -73,7 +73,7 @@ export default function commonAttrsOffsetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsOffset004', 0, async (done: Function) => {
+    it('testCommonAttrsOffset004', Level.LEVEL1, async (done: Function) => {
         expect(nativeFunc.testCommonAttrsOffset004()).assertEqual(0)
         done()
     })
@@ -86,7 +86,7 @@ export default function commonAttrsOffsetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsOffset005', 0, async (done: Function) => {
+    it('testCommonAttrsOffset005', Level.LEVEL1, async (done: Function) => {
         expect(nativeFunc.testCommonAttrsOffset005()).assertEqual(0)
         done()
     })   
@@ -99,7 +99,7 @@ export default function commonAttrsOffsetTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsOffset006', 0, async (done: Function) => {
+    it('testCommonAttrsOffset006', Level.LEVEL1, async (done: Function) => {
         expect(nativeFunc.testCommonAttrsOffset006()).assertEqual(0)
         done()
     })

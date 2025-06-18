@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function xComponentIdTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXComponentId001', 0, async (done: Function) => {
+    it('testXComponentId001', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'XComponentId001Test';
       await Utils.pushPage(`xcomponent/${PAGE_TAG}`);
       expect(JSON.parse(getInspectorByKey('xcomponent001')).$attrs.width).assertEqual('100.00vp')
@@ -49,7 +49,7 @@ export default function xComponentIdTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXComponentId002', 0, async (done: Function) => {
+    it('testXComponentId002', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'XComponentId002Test';
       await Utils.pushPage(`xcomponent/${PAGE_TAG}`);
       expect(JSON.parse(getInspectorByKey('xcomponent002')).$attrs.width).assertEqual('100.00vp')
@@ -64,7 +64,7 @@ export default function xComponentIdTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXComponentId003', 0, async (done: Function) => {
+    it('testXComponentId003', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'XComponentId003Test';
       await Utils.pushPage(`xcomponent/${PAGE_TAG}`);
       expect(JSON.parse(getInspectorByKey('xcomponent003')).$attrs.width).assertEqual('100.00vp')
@@ -79,7 +79,7 @@ export default function xComponentIdTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testXComponentId004', 0, async (done: Function) => {
+    it('testXComponentId004', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'XComponentId004Test';
       await Utils.pushPage(`xcomponent/${PAGE_TAG}`);
       expect(JSON.parse(getInspectorByKey('xcomponent004')).$attrs.width).assertEqual('100.00vp')

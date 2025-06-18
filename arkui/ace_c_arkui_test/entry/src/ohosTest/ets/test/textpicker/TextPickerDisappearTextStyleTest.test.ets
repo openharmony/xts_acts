@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textPickerDisappearTextStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextPickerDisappearTextStyle001', 0, async (done: Function) => {
+    it('testTextPickerDisappearTextStyle001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextPickerDisappearTextStyle001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function textPickerDisappearTextStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTextPickerDisappearTextStyle002', 0, async (done: Function) => {
+    it('testTextPickerDisappearTextStyle002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextPickerDisappearTextStyle002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function textPickerDisappearTextStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextPickerDisappearTextStyle003', 0, async (done: Function) => {
+    it('testTextPickerDisappearTextStyle003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextPickerDisappearTextStyle003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function textPickerDisappearTextStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextPickerDisappearTextStyle004', 0, async (done: Function) => {
+    it('testTextPickerDisappearTextStyle004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextPickerDisappearTextStyle004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function textPickerDisappearTextStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextPickerDisappearTextStyle005', 0, async (done: Function) => {
+    it('testTextPickerDisappearTextStyle005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextPickerDisappearTextStyle005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function textPickerDisappearTextStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextPickerDisappearTextStyle006', 0, async (done: Function) => {
+    it('testTextPickerDisappearTextStyle006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextPickerDisappearTextStyle006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function textPickerDisappearTextStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextPickerDisappearTextStyle007', 0, async (done: Function) => {
+    it('testTextPickerDisappearTextStyle007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextPickerDisappearTextStyle007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function textPickerDisappearTextStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextPickerDisappearTextStyle008', 0, async (done: Function) => {
+    it('testTextPickerDisappearTextStyle008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextPickerDisappearTextStyle008()).assertEqual(0)
       done()
     })
@@ -138,7 +138,7 @@ export default function textPickerDisappearTextStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextPickerDisappearTextStyle009', 0, async (done: Function) => {
+    it('testTextPickerDisappearTextStyle009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextPickerDisappearTextStyle009()).assertEqual(0)
       done()
     })
@@ -151,7 +151,7 @@ export default function textPickerDisappearTextStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextPickerDisappearTextStyle010', 0, async (done: Function) => {
+    it('testTextPickerDisappearTextStyle010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextPickerDisappearTextStyle010()).assertEqual(0)
       done()
     })
@@ -164,7 +164,7 @@ export default function textPickerDisappearTextStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextPickerDisappearTextStyle011', 0, async (done: Function) => {
+    it('testTextPickerDisappearTextStyle011', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextPickerDisappearTextStyle011()).assertEqual(0)
       done()
     })
@@ -177,7 +177,7 @@ export default function textPickerDisappearTextStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextPickerDisappearTextStyle012', 0, async (done: Function) => {
+    it('testTextPickerDisappearTextStyle012', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextPickerDisappearTextStyle012()).assertEqual(0)
       done()
     })
@@ -190,7 +190,7 @@ export default function textPickerDisappearTextStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextPickerDisappearTextStyle013', 0, async (done: Function) => {
+    it('testTextPickerDisappearTextStyle013', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextPickerDisappearTextStyle013()).assertEqual(0)
       done()
     })

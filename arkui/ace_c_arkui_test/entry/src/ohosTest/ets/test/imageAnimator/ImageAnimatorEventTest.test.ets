@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import { Driver, ON, PointerMatrix, Rect } from '@ohos.UiTest';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
@@ -35,7 +35,7 @@ export default function imageAnimatorEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testImageAnimatorOnStart001', 0, async (done: Function) => {
+    it('testImageAnimatorOnStart001', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ImageAnimatorOnCancelTest';
       await Utils.pushPage(`imageAnimator/${PAGE_TAG}`);
       let driver = await Driver.create()
@@ -58,7 +58,7 @@ export default function imageAnimatorEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testImageAnimatorOnPause001', 0, async (done: Function) => {
+    it('testImageAnimatorOnPause001', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ImageAnimatorOnPauseTest';
       await Utils.pushPage(`imageAnimator/${PAGE_TAG}`);
       let driver = await Driver.create()
@@ -81,7 +81,7 @@ export default function imageAnimatorEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testImageAnimatorOnFinish001', 0, async (done: Function) => {
+    it('testImageAnimatorOnFinish001', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ImageAnimatorOnFinishTest';
       await Utils.pushPage(`imageAnimator/${PAGE_TAG}`);
       let driver = await Driver.create()
@@ -105,7 +105,7 @@ export default function imageAnimatorEventTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testImageAnimatorOnRepeat001', 0, async (done: Function) => {
+    it('testImageAnimatorOnRepeat001', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ImageAnimatorOnRepeatTest';
       await Utils.pushPage(`imageAnimator/${PAGE_TAG}`);
       let driver = await Driver.create()

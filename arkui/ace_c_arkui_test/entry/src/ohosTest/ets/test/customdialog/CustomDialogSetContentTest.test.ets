@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function customDialogSetContentTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCustomDialogSetContent001', 0, async (done: Function) => {
+    it('testCustomDialogSetContent001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomDialogSetContent001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function customDialogSetContentTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCustomDialogSetContent002', 0, async (done: Function) => {
+    it('testCustomDialogSetContent002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomDialogSetContent002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function customDialogSetContentTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCustomDialogSetContent003', 0, async (done: Function) => {
+    it('testCustomDialogSetContent003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomDialogSetContent003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function customDialogSetContentTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCustomDialogSetContent004', 0, async (done: Function) => {
+    it('testCustomDialogSetContent004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomDialogSetContent004()).assertEqual(0)
       done()
     })

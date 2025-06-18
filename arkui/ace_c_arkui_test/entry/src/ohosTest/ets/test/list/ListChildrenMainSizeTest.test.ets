@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -29,7 +29,7 @@ export default function listChildrenMainSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListChildrenMainSize001', 0, async (done: Function) => {
+    it('testListChildrenMainSize001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListChildrenMainSize001()).assertEqual(0)
       done()
     })
@@ -42,7 +42,7 @@ export default function listChildrenMainSizeTest() {
      * @tc.level      : Level 1
      */
 
-    it('testListChildrenMainSize002', 0, async (done: Function) => {
+    it('testListChildrenMainSize002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListChildrenMainSize002()).assertEqual(0)
       done()
     })
@@ -54,7 +54,7 @@ export default function listChildrenMainSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListChildrenMainSize003', 0, async (done: Function) => {
+    it('testListChildrenMainSize003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListChildrenMainSize003()).assertEqual(0)
       done()
     })
@@ -66,7 +66,7 @@ export default function listChildrenMainSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListChildrenMainSize004', 0, async (done: Function) => {
+    it('testListChildrenMainSize004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListChildrenMainSize004()).assertEqual(0)
       done()
     })
@@ -78,7 +78,7 @@ export default function listChildrenMainSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListChildrenMainSize005', 0, async (done: Function) => {
+    it('testListChildrenMainSize005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListChildrenMainSize005()).assertEqual(0)
       done()
     })
@@ -90,7 +90,7 @@ export default function listChildrenMainSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListChildrenMainSize006', 0, async (done: Function) => {
+    it('testListChildrenMainSize006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListChildrenMainSize006()).assertEqual(0)
       done()
     })
@@ -102,7 +102,7 @@ export default function listChildrenMainSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListChildrenMainSize007', 0, async (done: Function) => {
+    it('testListChildrenMainSize007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListChildrenMainSize007()).assertEqual(0)
       done()
     })
@@ -114,7 +114,7 @@ export default function listChildrenMainSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListChildrenMainSize008', 0, async (done: Function) => {
+    it('testListChildrenMainSize008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListChildrenMainSize008()).assertEqual(0)
       done()
     })
@@ -126,7 +126,7 @@ export default function listChildrenMainSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListChildrenMainSize009', 0, async (done: Function) => {
+    it('testListChildrenMainSize009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListChildrenMainSize009()).assertEqual(0)
       done()
     })
@@ -138,7 +138,7 @@ export default function listChildrenMainSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListChildrenMainSize010', 0, async (done: Function) => {
+    it('testListChildrenMainSize010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListChildrenMainSize010()).assertEqual(0)
       done()
     })
@@ -150,7 +150,7 @@ export default function listChildrenMainSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListChildrenMainSize011', 0, async (done: Function) => {
+    it('testListChildrenMainSize011', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListChildrenMainSize011()).assertEqual(0)
       done()
     })
@@ -162,7 +162,7 @@ export default function listChildrenMainSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListChildrenMainSize012', 0, async (done: Function) => {
+    it('testListChildrenMainSize012', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListChildrenMainSize012()).assertEqual(0)
       done()
     })
@@ -174,7 +174,7 @@ export default function listChildrenMainSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListChildrenMainSize013', 0, async (done: Function) => {
+    it('testListChildrenMainSize013', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListChildrenMainSize013()).assertEqual(0)
       done()
     })
@@ -186,7 +186,7 @@ export default function listChildrenMainSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListChildrenMainSize014', 0, async (done: Function) => {
+    it('testListChildrenMainSize014', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListChildrenMainSize014()).assertEqual(0)
       done()
     })
@@ -198,7 +198,7 @@ export default function listChildrenMainSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListChildrenMainSize015', 0, async (done: Function) => {
+    it('testListChildrenMainSize015', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListChildrenMainSize015()).assertEqual(0)
       done()
     })
@@ -210,7 +210,7 @@ export default function listChildrenMainSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListChildrenMainSize016', 0, async (done: Function) => {
+    it('testListChildrenMainSize016', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListChildrenMainSize016()).assertEqual(0)
       done()
     })
@@ -222,7 +222,7 @@ export default function listChildrenMainSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListChildrenMainSize017', 0, async (done: Function) => {
+    it('testListChildrenMainSize017', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListChildrenMainSize017()).assertEqual(0)
       done()
     })
@@ -234,7 +234,7 @@ export default function listChildrenMainSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListChildrenMainSize018', 0, async (done: Function) => {
+    it('testListChildrenMainSize018', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListChildrenMainSize018()).assertEqual(0)
       done()
     })
@@ -246,7 +246,7 @@ export default function listChildrenMainSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListChildrenMainSize019', 0, async (done: Function) => {
+    it('testListChildrenMainSize019', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListChildrenMainSize019()).assertEqual(0)
       done()
     })
@@ -258,7 +258,7 @@ export default function listChildrenMainSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListChildrenMainSize020', 0, async (done: Function) => {
+    it('testListChildrenMainSize020', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListChildrenMainSize020()).assertEqual(0)
       done()
     })
@@ -270,7 +270,7 @@ export default function listChildrenMainSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListChildrenMainSize021', 0, async (done: Function) => {
+    it('testListChildrenMainSize021', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListChildrenMainSize021()).assertEqual(0)
       done()
     })
@@ -282,7 +282,7 @@ export default function listChildrenMainSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListChildrenMainSize022', 0, async (done: Function) => {
+    it('testListChildrenMainSize022', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListChildrenMainSize022()).assertEqual(0)
       done()
     })
@@ -294,7 +294,7 @@ export default function listChildrenMainSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListChildrenMainSize023', 0, async (done: Function) => {
+    it('testListChildrenMainSize023', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListChildrenMainSize023()).assertEqual(0)
       done()
     })
@@ -306,7 +306,7 @@ export default function listChildrenMainSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListChildrenMainSize024', 0, async (done: Function) => {
+    it('testListChildrenMainSize024', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListChildrenMainSize024()).assertEqual(0)
       done()
     })
@@ -318,7 +318,7 @@ export default function listChildrenMainSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListChildrenMainSize025', 0, async (done: Function) => {
+    it('testListChildrenMainSize025', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListChildrenMainSize025()).assertEqual(0)
       done()
     })
@@ -330,7 +330,7 @@ export default function listChildrenMainSizeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListChildrenMainSize026', 0, async (done: Function) => {
+    it('testListChildrenMainSize026', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListChildrenMainSize026()).assertEqual(0)
       done()
     })

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -65,7 +65,7 @@ export default function V1ToV2() {
      * @tc.type
      * @tc.size
      */
-    it('v1Tov2_001', 0, async (done: Function) => {
+    it('v1Tov2_001', Level.LEVEL0, async (done: Function) => {
       console.info('[v1Tov2_001] START');
       let obj: ESObject = JSON.parse(getInspectorByKey('state_string_value'));
       await CommonFunc.sleep(1000);
@@ -74,7 +74,7 @@ export default function V1ToV2() {
       console.info('[v1Tov2_001] END');
       done();
     })
-    it('v1Tov2_002', 0, async (done: Function) => {
+    it('v1Tov2_002', Level.LEVEL0, async (done: Function) => {
       console.info('[v1Tov2_002] START');
       let obj: ESObject = JSON.parse(getInspectorByKey('prop_number_value'));
       await CommonFunc.sleep(1000);
@@ -83,7 +83,7 @@ export default function V1ToV2() {
       console.info('[v1Tov2_002] END');
       done();
     })
-    it('v1Tov2_003', 0, async (done: Function) => {
+    it('v1Tov2_003', Level.LEVEL0, async (done: Function) => {
       console.info('[v1Tov2_003] START');
       let obj: ESObject = JSON.parse(getInspectorByKey('provide_enum_value'));
       await CommonFunc.sleep(1000);
@@ -92,7 +92,7 @@ export default function V1ToV2() {
       console.info('[v1Tov2_003] END');
       done();
     })
-    it('v1Tov2_004', 0, async (done: Function) => {
+    it('v1Tov2_004', Level.LEVEL0, async (done: Function) => {
       console.info('[v1Tov2_004] START');
       let obj: ESObject = JSON.parse(getInspectorByKey('consume_null_value'));
       await CommonFunc.sleep(1000);
@@ -101,7 +101,7 @@ export default function V1ToV2() {
       console.info('[v1Tov2_004] END');
       done();
     })
-    it('v1Tov2_005', 0, async (done: Function) => {
+    it('v1Tov2_005', Level.LEVEL0, async (done: Function) => {
       console.info('[v1Tov2_005] START');
       let obj: ESObject = JSON.parse(getInspectorByKey('storage_link_undefined_value'));
       await CommonFunc.sleep(1000);
@@ -110,7 +110,7 @@ export default function V1ToV2() {
       console.info('[v1Tov2_005] END');
       done();
     })
-    it('v1Tov2_006', 0, async (done: Function) => {
+    it('v1Tov2_006', Level.LEVEL0, async (done: Function) => {
       console.info('[v1Tov2_006] START');
       let obj: ESObject = JSON.parse(getInspectorByKey('storage_prop_string_value'));
       await CommonFunc.sleep(1000);
@@ -119,7 +119,7 @@ export default function V1ToV2() {
       console.info('[v1Tov2_006] END');
       done();
     })
-    it('v1Tov2_007', 0, async (done: Function) => {
+    it('v1Tov2_007', Level.LEVEL0, async (done: Function) => {
       console.info('[v1Tov2_007] START');
       let obj: ESObject = JSON.parse(getInspectorByKey('func_value2'));
       await CommonFunc.sleep(1000);
@@ -128,7 +128,7 @@ export default function V1ToV2() {
       console.info('[v1Tov2_007] END');
       done();
     })
-    it('v1Tov2_008', 0, async (done: Function) => {
+    it('v1Tov2_008', Level.LEVEL0, async (done: Function) => {
       console.info('[v1Tov2_008] START');
       let obj: ESObject = JSON.parse(getInspectorByKey('link_boolean_value'));
       await CommonFunc.sleep(1000);

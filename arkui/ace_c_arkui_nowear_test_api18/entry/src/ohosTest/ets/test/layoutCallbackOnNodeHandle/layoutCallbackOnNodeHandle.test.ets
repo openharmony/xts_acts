@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach, beforeEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, beforeEach, Level } from '@ohos/hypium';
 import { Driver, ON, PointerMatrix, Rect } from '@ohos.UiTest';
 import router from '@ohos.router';
 import nativeRender from 'libnativerender.so'
@@ -28,7 +28,7 @@ export default function LayoutCallbackOnNodeHandleTest(){
       done()
     })
 
-    it('LayoutCallbackOnNodeHandleTest_a', 0, async (done: Function) => {
+    it('LayoutCallbackOnNodeHandleTest_a',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.LayoutCallbackOnNodeHandleTest_a()).assertEqual(0)
       console.log('LayoutCallbackOnNodeHandleTest_a will drag and check:: ')
       await Utils.sleep(200)
@@ -36,7 +36,7 @@ export default function LayoutCallbackOnNodeHandleTest(){
       done()
     })
 
-    it('LayoutCallbackOnNodeHandleTest_a1', 0, async (done: Function) => {
+    it('LayoutCallbackOnNodeHandleTest_a1',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.LayoutCallbackOnNodeHandleTest_a1()).assertEqual(0)
       console.log('LayoutCallbackOnNodeHandleTest_a1 will drag and check:: ')
       await Utils.sleep(200)
@@ -44,7 +44,7 @@ export default function LayoutCallbackOnNodeHandleTest(){
       done()
     })
 
-    it('LayoutCallbackOnNodeHandleTest_b', 0, async (done: Function) => {
+    it('LayoutCallbackOnNodeHandleTest_b',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.LayoutCallbackOnNodeHandleTest_b()).assertEqual(0)
       console.log('LayoutCallbackOnNodeHandleTest_b will drag and check:: ')
       await Utils.sleep(200)
@@ -52,7 +52,7 @@ export default function LayoutCallbackOnNodeHandleTest(){
       done()
     })
 
-    it('LayoutCallbackOnNodeHandleTest_b1', 0, async (done: Function) => {
+    it('LayoutCallbackOnNodeHandleTest_b1',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.LayoutCallbackOnNodeHandleTest_b1()).assertEqual(0)
       console.log('LayoutCallbackOnNodeHandleTest_b1 will drag and check:: ')
       await Utils.sleep(200)
@@ -60,7 +60,7 @@ export default function LayoutCallbackOnNodeHandleTest(){
       done()
     })
 
-    it('LayoutCallbackOnNodeHandleTest_c', 0, async (done: Function) => {
+    it('LayoutCallbackOnNodeHandleTest_c',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.LayoutCallbackOnNodeHandleTest_c()).assertEqual(0)
       console.log('LayoutCallbackOnNodeHandleTest_c will drag and check:: ')
       await Utils.sleep(200)
@@ -68,7 +68,7 @@ export default function LayoutCallbackOnNodeHandleTest(){
       done()
     })
 
-    it('LayoutCallbackOnNodeHandleTest_c1', 0, async (done: Function) => {
+    it('LayoutCallbackOnNodeHandleTest_c1',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.LayoutCallbackOnNodeHandleTest_c1()).assertEqual(0)
       console.log('LayoutCallbackOnNodeHandleTest_c1 will drag and check:: ')
       await Utils.sleep(200)
@@ -76,7 +76,7 @@ export default function LayoutCallbackOnNodeHandleTest(){
       done()
     })
 
-    it('LayoutCallbackOnNodeHandleTest_d', 0, async (done: Function) => {
+    it('LayoutCallbackOnNodeHandleTest_d',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.LayoutCallbackOnNodeHandleTest_d()).assertEqual(0)
       console.log('LayoutCallbackOnNodeHandleTest_d will drag and check:: ')
       await Utils.sleep(200)
@@ -84,7 +84,7 @@ export default function LayoutCallbackOnNodeHandleTest(){
       done()
     })
 
-    it('LayoutCallbackOnNodeHandleTest_d1', 0, async (done: Function) => {
+    it('LayoutCallbackOnNodeHandleTest_d1',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.LayoutCallbackOnNodeHandleTest_d1()).assertEqual(0)
       console.log('LayoutCallbackOnNodeHandleTest_d1 will drag and check:: ')
       await Utils.sleep(200)
@@ -92,7 +92,7 @@ export default function LayoutCallbackOnNodeHandleTest(){
       done()
     })
 
-    it('NapiWrapEnhanceTest_d', 0, async (done: Function) => {
+    it('NapiWrapEnhanceTest_d',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.NapiWrapEnhanceTest_d()).assertEqual(0)
       console.log('NapiWrapEnhanceTest_d will drag and check:: ')
       await Utils.sleep(200)
@@ -100,7 +100,7 @@ export default function LayoutCallbackOnNodeHandleTest(){
       done()
     })
 
-    it('NapiWrapEnhanceTest_d1', 0, async (done: Function) => {
+    it('NapiWrapEnhanceTest_d1',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.NapiWrapEnhanceTest_d1()).assertEqual(0)
       console.log('NapiWrapEnhanceTest_d1 will drag and check:: ')
       await Utils.sleep(200)

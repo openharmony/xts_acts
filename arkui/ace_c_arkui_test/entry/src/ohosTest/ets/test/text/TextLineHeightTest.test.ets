@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textLineHeightTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextLineHeight001', 0, async (done: Function) => {
+    it('testTextLineHeight001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextLineHeight001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function textLineHeightTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextLineHeight002', 0, async (done: Function) => {
+    it('testTextLineHeight002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextLineHeight002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function textLineHeightTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextLineHeight003', 0, async (done: Function) => {
+    it('testTextLineHeight003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextLineHeight003()).assertEqual(0)
       done()
     })
@@ -74,7 +74,7 @@ export default function textLineHeightTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextLineHeight004', 0, async (done: Function) => {
+    it('testTextLineHeight004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextLineHeight004()).assertEqual(0)
       done()
     })

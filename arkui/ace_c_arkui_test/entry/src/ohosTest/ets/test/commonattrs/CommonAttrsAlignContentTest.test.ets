@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, beforeEach, it } from '@ohos/hypium';
+import { expect, describe, beforeEach, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function commonAttrsAlignContentTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testCommonAttrsAlignContent001', 0, async (done: Function) => {
+    it('testCommonAttrsAlignContent001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlignContent001()).assertEqual(0)
       done();
     })
@@ -47,7 +47,7 @@ export default function commonAttrsAlignContentTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testCommonAttrsAlignContent002', 0, async (done: Function) => {
+    it('testCommonAttrsAlignContent002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlignContent002()).assertEqual(0)
       done();
     })
@@ -60,7 +60,7 @@ export default function commonAttrsAlignContentTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testCommonAttrsAlignContent003', 0, async (done: Function) => {
+    it('testCommonAttrsAlignContent003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlignContent003()).assertEqual(0)
       done();
     })
@@ -73,7 +73,7 @@ export default function commonAttrsAlignContentTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testCommonAttrsAlignContent004', 0, async (done: Function) => {
+    it('testCommonAttrsAlignContent004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlignContent004()).assertEqual(0)
       done();
     })
@@ -86,7 +86,7 @@ export default function commonAttrsAlignContentTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testCommonAttrsAlignContent005', 0, async (done: Function) => {
+    it('testCommonAttrsAlignContent005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlignContent005()).assertEqual(0)
       done();
     })
@@ -99,7 +99,7 @@ export default function commonAttrsAlignContentTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testCommonAttrsAlignContent006', 0, async (done: Function) => {
+    it('testCommonAttrsAlignContent006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlignContent006()).assertEqual(0)
       done();
     })
@@ -112,7 +112,7 @@ export default function commonAttrsAlignContentTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testCommonAttrsAlignContent007', 0, async (done: Function) => {
+    it('testCommonAttrsAlignContent007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlignContent007()).assertEqual(0)
       done();
     })
@@ -125,7 +125,7 @@ export default function commonAttrsAlignContentTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testCommonAttrsAlignContent008', 0, async (done: Function) => {
+    it('testCommonAttrsAlignContent008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlignContent008()).assertEqual(0)
       done();
     })
@@ -138,7 +138,7 @@ export default function commonAttrsAlignContentTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testCommonAttrsAlignContent009', 0, async (done: Function) => {
+    it('testCommonAttrsAlignContent009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsAlignContent009()).assertEqual(0)
       done();
     })

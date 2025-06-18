@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function commonAttrsLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsLinearGradient001', 0, async (done: Function) => {
+    it('testCommonAttrsLinearGradient001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsLinearGradient001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function commonAttrsLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsLinearGradient002', 0, async (done: Function) => {
+    it('testCommonAttrsLinearGradient002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsLinearGradient002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function commonAttrsLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsLinearGradient003', 0, async (done: Function) => {
+    it('testCommonAttrsLinearGradient003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsLinearGradient003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function commonAttrsLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsLinearGradient004', 0, async (done: Function) => {
+    it('testCommonAttrsLinearGradient004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsLinearGradient004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function commonAttrsLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsLinearGradient005', 0, async (done: Function) => {
+    it('testCommonAttrsLinearGradient005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsLinearGradient005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function commonAttrsLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsLinearGradient006', 0, async (done: Function) => {
+    it('testCommonAttrsLinearGradient006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsLinearGradient006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function commonAttrsLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsLinearGradient007', 0, async (done: Function) => {
+    it('testCommonAttrsLinearGradient007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsLinearGradient007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function commonAttrsLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsLinearGradient008', 0, async (done: Function) => {
+    it('testCommonAttrsLinearGradient008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsLinearGradient008()).assertEqual(0)
       done()
     })
@@ -138,7 +138,7 @@ export default function commonAttrsLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsLinearGradient009', 0, async (done: Function) => {
+    it('testCommonAttrsLinearGradient009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsLinearGradient009()).assertEqual(0)
       done()
     })
@@ -151,7 +151,7 @@ export default function commonAttrsLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCommonAttrsLinearGradient010', 0, async (done: Function) => {
+    it('testCommonAttrsLinearGradient010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsLinearGradient010()).assertEqual(0)
       done()
     })

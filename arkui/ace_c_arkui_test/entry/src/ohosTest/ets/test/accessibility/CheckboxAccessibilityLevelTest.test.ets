@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function checkboxAccessibilityLevelTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCheckboxAccessibilityLevel001', 0, async (done: Function) => {
+    it('testCheckboxAccessibilityLevel001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCheckboxAccessibilityLevel001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function checkboxAccessibilityLevelTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCheckboxAccessibilityLevel002', 0, async (done: Function) => {
+    it('testCheckboxAccessibilityLevel002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCheckboxAccessibilityLevel002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function checkboxAccessibilityLevelTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCheckboxAccessibilityLevel003', 0, async (done: Function) => {
+    it('testCheckboxAccessibilityLevel003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCheckboxAccessibilityLevel003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function checkboxAccessibilityLevelTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCheckboxAccessibilityLevel004', 0, async (done: Function) => {
+    it('testCheckboxAccessibilityLevel004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCheckboxAccessibilityLevel004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function checkboxAccessibilityLevelTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testCheckboxAccessibilityLevel005', 0, async (done: Function) => {
+    it('testCheckboxAccessibilityLevel005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCheckboxAccessibilityLevel005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function checkboxAccessibilityLevelTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testCheckboxAccessibilityLevel006', 0, async (done: Function) => {
+    it('testCheckboxAccessibilityLevel006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCheckboxAccessibilityLevel006()).assertEqual(0)
       done()
     })

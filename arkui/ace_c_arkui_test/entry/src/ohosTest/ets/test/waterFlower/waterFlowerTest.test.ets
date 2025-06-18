@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function testWaterFlower() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWaterFlower001', 0, async (done: Function) => {
+    it('testWaterFlower001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testWaterFlower_001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function testWaterFlower() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWaterFlower002', 0, async (done: Function) => {
+    it('testWaterFlower002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testWaterFlower_002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function testWaterFlower() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWaterFlower003', 0, async (done: Function) => {
+    it('testWaterFlower003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testWaterFlower_003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function testWaterFlower() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWaterFlower004', 0, async (done: Function) => {
+    it('testWaterFlower004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testWaterFlower_004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function testWaterFlower() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testWaterFlower005', 0, async (done: Function) => {
+    it('testWaterFlower005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testWaterFlower_005()).assertEqual(0)
       done()
     })

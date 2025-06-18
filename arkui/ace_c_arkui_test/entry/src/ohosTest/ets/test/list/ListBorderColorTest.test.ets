@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function listBorderColorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListBorderColor001', 0, async (done: Function) => {
+    it('testListBorderColor001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListBorderColor001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function listBorderColorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListBorderColor002', 0, async (done: Function) => {
+    it('testListBorderColor002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListBorderColor002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function listBorderColorTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListBorderColor003', 0, async (done: Function) => {
+    it('testListBorderColor003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListBorderColor003()).assertEqual(0)
       done()
     })

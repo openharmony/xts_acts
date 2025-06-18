@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { beforeAll, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 
 export default function customComponentOnAreaChangeTest() {
@@ -34,7 +34,7 @@ export default function customComponentOnAreaChangeTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCustomComponentOnAreaChange001', 0, async (done: Function) => {
+    it('testCustomComponentOnAreaChange001', Level.LEVEL1, async (done: Function) => {
       await Utils.clickComponent('OnAreaChangeTestCustomComponentSize')
       await Utils.sleep(2000)
       expect(Utils.getComponentInfoByKey('OnAreaChangeTestCustomComponentSize').$attrs.backgroundColor)
@@ -50,7 +50,7 @@ export default function customComponentOnAreaChangeTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCustomComponentOnAreaChange002', 0, async (done: Function) => {
+    it('testCustomComponentOnAreaChange002', Level.LEVEL1, async (done: Function) => {
       await Utils.clickComponent('OnAreaChangeTestCustomComponentMoveCompare')
       await Utils.sleep(2000)
       expect(Utils.getComponentInfoByKey('OnAreaChangeTestCustomComponentMove').$attrs.backgroundColor)
@@ -66,7 +66,7 @@ export default function customComponentOnAreaChangeTest() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('testCustomComponentOnAreaChange003', 0, async (done: Function) => {
+    it('testCustomComponentOnAreaChange003', Level.LEVEL1, async (done: Function) => {
       await Utils.clickComponent('OnAreaChangeTestCustomComponentOffset')
       await Utils.sleep(2000)
       expect(Utils.getComponentInfoByKey('OnAreaChangeTestCustomComponentOffset').$attrs.backgroundColor)

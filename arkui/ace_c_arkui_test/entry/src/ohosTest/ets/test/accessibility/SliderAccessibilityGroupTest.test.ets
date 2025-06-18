@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function sliderAccessibilityGroupTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSliderAccessibilityGroup001', 0, async (done: Function) => {
+    it('testSliderAccessibilityGroup001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderAccessibilityGroup001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function sliderAccessibilityGroupTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSliderAccessibilityGroup002', 0, async (done: Function) => {
+    it('testSliderAccessibilityGroup002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderAccessibilityGroup002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function sliderAccessibilityGroupTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testSliderAccessibilityGroup003', 0, async (done: Function) => {
+    it('testSliderAccessibilityGroup003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderAccessibilityGroup003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function sliderAccessibilityGroupTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testSliderAccessibilityGroup004', 0, async (done: Function) => {
+    it('testSliderAccessibilityGroup004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderAccessibilityGroup004()).assertEqual(0)
       done()
     })

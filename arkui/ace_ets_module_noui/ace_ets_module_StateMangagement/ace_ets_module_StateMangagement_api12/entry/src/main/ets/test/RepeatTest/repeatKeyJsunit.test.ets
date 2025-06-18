@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -50,7 +50,7 @@ export default function repeatKeyJsunit() {
      * @tc.name RepeatKey
      * @tc.desc aceEtsTest
      */
-    it('RepeatKey001', 0, async () => {
+    it('RepeatKey001', Level.LEVEL0, async () => {
       console.info('RepeatKey001 START');
       expect(!!getInspectorByKey('one')).assertTrue();
       console.info('RepeatKey001 END');
@@ -61,7 +61,7 @@ export default function repeatKeyJsunit() {
      * @tc.name RepeatKey
      * @tc.desc aceEtsTest
      */
-    it('RepeatKey002', 0, async () => {
+    it('RepeatKey002', Level.LEVEL0, async () => {
       console.info('RepeatKey001 START');
       expect(!getInspectorByKey('one1')).assertTrue();
       console.info('RepeatKey001 END');

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -33,7 +33,7 @@ export default function listItemLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListItemLinearGradient001', 0, async (done: Function) => {
+    it('testListItemLinearGradient001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListItemLinearGradient001()).assertEqual(0)
       done()
     })
@@ -46,7 +46,7 @@ export default function listItemLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListItemLinearGradient002', 0, async (done: Function) => {
+    it('testListItemLinearGradient002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListItemLinearGradient002()).assertEqual(0)
       done()
     })
@@ -59,7 +59,7 @@ export default function listItemLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListItemLinearGradient003', 0, async (done: Function) => {
+    it('testListItemLinearGradient003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListItemLinearGradient003()).assertEqual(0)
       done()
     })
@@ -72,7 +72,7 @@ export default function listItemLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListItemLinearGradient004', 0, async (done: Function) => {
+    it('testListItemLinearGradient004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListItemLinearGradient004()).assertEqual(0)
       done()
     })
@@ -85,7 +85,7 @@ export default function listItemLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListItemLinearGradient005', 0, async (done: Function) => {
+    it('testListItemLinearGradient005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListItemLinearGradient005()).assertEqual(0)
       done()
     })
@@ -98,7 +98,7 @@ export default function listItemLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListItemLinearGradient006', 0, async (done: Function) => {
+    it('testListItemLinearGradient006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListItemLinearGradient006()).assertEqual(0)
       done()
     })
@@ -111,7 +111,7 @@ export default function listItemLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListItemLinearGradient007', 0, async (done: Function) => {
+    it('testListItemLinearGradient007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListItemLinearGradient007()).assertEqual(0)
       done()
     })
@@ -124,7 +124,7 @@ export default function listItemLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListItemLinearGradient008', 0, async (done: Function) => {
+    it('testListItemLinearGradient008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListItemLinearGradient008()).assertEqual(0)
       done()
     })
@@ -137,7 +137,7 @@ export default function listItemLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListItemLinearGradient009', 0, async (done: Function) => {
+    it('testListItemLinearGradient009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListItemLinearGradient009()).assertEqual(0)
       done()
     })
@@ -150,7 +150,7 @@ export default function listItemLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListItemLinearGradient010', 0, async (done: Function) => {
+    it('testListItemLinearGradient010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListItemLinearGradient010()).assertEqual(0)
       done()
     })

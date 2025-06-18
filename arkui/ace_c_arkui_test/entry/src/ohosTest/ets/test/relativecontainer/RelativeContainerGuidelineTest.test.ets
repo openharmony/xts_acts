@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function relativeContainerGuidelineTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContainerGuidelineOptionCreate001', 0, async (done: Function) => {
+    it('testRelativeContainerGuidelineOptionCreate001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContainerGuidelineOptionCreate001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function relativeContainerGuidelineTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContainerGuidelineOptionDispose001', 0, async (done: Function) => {
+    it('testRelativeContainerGuidelineOptionDispose001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContainerGuidelineOptionDispose001()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function relativeContainerGuidelineTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContainerGuidelineOptionSetId001', 0, async (done: Function) => {
+    it('testRelativeContainerGuidelineOptionSetId001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContainerGuidelineOptionSetId001()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function relativeContainerGuidelineTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContainerGuidelineOptionSetId002', 0, async (done: Function) => {
+    it('testRelativeContainerGuidelineOptionSetId002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContainerGuidelineOptionSetId002()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function relativeContainerGuidelineTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContainerGuidelineOptionSetId003', 0, async (done: Function) => {
+    it('testRelativeContainerGuidelineOptionSetId003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContainerGuidelineOptionSetId003()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function relativeContainerGuidelineTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContainerGuidelineOptionSetId004', 0, async (done: Function) => {
+    it('testRelativeContainerGuidelineOptionSetId004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContainerGuidelineOptionSetId004()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function relativeContainerGuidelineTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContainerGuidelineOptionGetId001', 0, async (done: Function) => {
+    it('testRelativeContainerGuidelineOptionGetId001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContainerGuidelineOptionGetId001()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function relativeContainerGuidelineTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContainerGuidelineOptionGetId002', 0, async (done: Function) => {
+    it('testRelativeContainerGuidelineOptionGetId002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContainerGuidelineOptionGetId002()).assertEqual(0)
       done()
     })
@@ -138,7 +138,7 @@ export default function relativeContainerGuidelineTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContainerGuidelineOptionSetDirection001', 0, async (done: Function) => {
+    it('testRelativeContainerGuidelineOptionSetDirection001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContainerGuidelineOptionSetDirection001()).assertEqual(0)
       done()
     })
@@ -151,7 +151,7 @@ export default function relativeContainerGuidelineTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContainerGuidelineOptionSetDirection002', 0, async (done: Function) => {
+    it('testRelativeContainerGuidelineOptionSetDirection002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContainerGuidelineOptionSetDirection002()).assertEqual(0)
       done()
     })
@@ -164,7 +164,7 @@ export default function relativeContainerGuidelineTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContainerGuidelineOptionGetDirection001', 0, async (done: Function) => {
+    it('testRelativeContainerGuidelineOptionGetDirection001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContainerGuidelineOptionGetDirection001()).assertEqual(0)
       done()
     })
@@ -177,7 +177,7 @@ export default function relativeContainerGuidelineTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContainerGuidelineOptionGetDirection002', 0, async (done: Function) => {
+    it('testRelativeContainerGuidelineOptionGetDirection002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContainerGuidelineOptionGetDirection002()).assertEqual(0)
       done()
     })
@@ -190,7 +190,7 @@ export default function relativeContainerGuidelineTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContainerGuidelineOptionSetPositionStart001', 0, async (done: Function) => {
+    it('testRelativeContainerGuidelineOptionSetPositionStart001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContainerGuidelineOptionSetPositionStart001()).assertEqual(0)
       done()
     })
@@ -203,7 +203,7 @@ export default function relativeContainerGuidelineTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContainerGuidelineOptionSetPositionStart002', 0, async (done: Function) => {
+    it('testRelativeContainerGuidelineOptionSetPositionStart002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContainerGuidelineOptionSetPositionStart002()).assertEqual(0)
       done()
     })
@@ -216,7 +216,7 @@ export default function relativeContainerGuidelineTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContainerGuidelineOptionSetPositionStart003', 0, async (done: Function) => {
+    it('testRelativeContainerGuidelineOptionSetPositionStart003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContainerGuidelineOptionSetPositionStart003()).assertEqual(0)
       done()
     })
@@ -229,7 +229,7 @@ export default function relativeContainerGuidelineTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContainerGuidelineOptionSetPositionStart004', 0, async (done: Function) => {
+    it('testRelativeContainerGuidelineOptionSetPositionStart004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContainerGuidelineOptionSetPositionStart004()).assertEqual(0)
       done()
     })
@@ -242,7 +242,7 @@ export default function relativeContainerGuidelineTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContainerGuidelineOptionGetPositionStart001', 0, async (done: Function) => {
+    it('testRelativeContainerGuidelineOptionGetPositionStart001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContainerGuidelineOptionGetPositionStart001()).assertEqual(0)
       done()
     })
@@ -255,7 +255,7 @@ export default function relativeContainerGuidelineTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContainerGuidelineOptionGetPositionStart002', 0, async (done: Function) => {
+    it('testRelativeContainerGuidelineOptionGetPositionStart002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContainerGuidelineOptionGetPositionStart002()).assertEqual(0)
       done()
     })
@@ -268,7 +268,7 @@ export default function relativeContainerGuidelineTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContainerGuidelineOptionSetPositionEnd001', 0, async (done: Function) => {
+    it('testRelativeContainerGuidelineOptionSetPositionEnd001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContainerGuidelineOptionSetPositionEnd001()).assertEqual(0)
       done()
     })
@@ -281,7 +281,7 @@ export default function relativeContainerGuidelineTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContainerGuidelineOptionSetPositionEnd002', 0, async (done: Function) => {
+    it('testRelativeContainerGuidelineOptionSetPositionEnd002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContainerGuidelineOptionSetPositionEnd002()).assertEqual(0)
       done()
     })
@@ -294,7 +294,7 @@ export default function relativeContainerGuidelineTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContainerGuidelineOptionSetPositionEnd003', 0, async (done: Function) => {
+    it('testRelativeContainerGuidelineOptionSetPositionEnd003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContainerGuidelineOptionSetPositionEnd003()).assertEqual(0)
       done()
     })
@@ -307,7 +307,7 @@ export default function relativeContainerGuidelineTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContainerGuidelineOptionSetPositionEnd004', 0, async (done: Function) => {
+    it('testRelativeContainerGuidelineOptionSetPositionEnd004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContainerGuidelineOptionSetPositionEnd004()).assertEqual(0)
       done()
     })
@@ -320,7 +320,7 @@ export default function relativeContainerGuidelineTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContainerGuidelineOptionGetPositionEnd001', 0, async (done: Function) => {
+    it('testRelativeContainerGuidelineOptionGetPositionEnd001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContainerGuidelineOptionGetPositionEnd001()).assertEqual(0)
       done()
     })
@@ -333,7 +333,7 @@ export default function relativeContainerGuidelineTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testRelativeContainerGuidelineOptionGetPositionEnd002', 0, async (done: Function) => {
+    it('testRelativeContainerGuidelineOptionGetPositionEnd002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testRelativeContainerGuidelineOptionGetPositionEnd002()).assertEqual(0)
       done()
     })

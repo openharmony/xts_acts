@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import { Driver, ON, PointerMatrix, Rect } from '@ohos.UiTest';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
@@ -36,7 +36,7 @@ export default function gestureTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testLongPressGesture001', 0, async (done: Function) => {
+    it('testLongPressGesture001', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'LongPressGestureTest';
       await Utils.pushPage(`gesture/${PAGE_TAG}`);
       await Utils.sleep(1000)
@@ -56,7 +56,7 @@ export default function gestureTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testAxisGestureTest001', 0, async (done: Function) => {
+    it('testAxisGestureTest001', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'AxisGestureTest';
       await Utils.pushPage(`gesture/${PAGE_TAG}`);
       await Utils.sleep(1000)
@@ -104,7 +104,7 @@ export default function gestureTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSwipeGesture001', 0, async (done: Function) => {
+    it('testSwipeGesture001', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'SwipeGestureTest';
       await Utils.pushPage(`gesture/${PAGE_TAG}`);
       let driver = Driver.create();
@@ -126,7 +126,7 @@ export default function gestureTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testPanGesture001', 0, async (done: Function) => {
+    it('testPanGesture001', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'PanGestureTest';
       let driver = Driver.create();
       await Utils.pushPage(`gesture/${PAGE_TAG}`);
@@ -148,7 +148,7 @@ export default function gestureTest() {
   * @tc.type       : Function
   * @tc.level      : Level 1
   */
-  it('testPinchGesture001', 0, async (done: Function) => {
+  it('testPinchGesture001', Level.LEVEL1, async (done: Function) => {
     let PAGE_TAG = 'PinchGestureTest';
     await Utils.pushPage(`gesture/${PAGE_TAG}`);    
     let driver = await Driver.create()
@@ -168,7 +168,7 @@ export default function gestureTest() {
   * @tc.type       : Function
   * @tc.level      : Level 1
   */
-  it('testRotateGesture001', 0, async (done: Function) => {
+  it('testRotateGesture001', Level.LEVEL1, async (done: Function) => {
     let PAGE_TAG = 'RotateGestureTest';
     await Utils.pushPage(`gesture/${PAGE_TAG}`);    
     let driver = Driver.create()
@@ -197,7 +197,7 @@ export default function gestureTest() {
   * @tc.type       : Function
   * @tc.level      : Level 1
   */
-  it('testInterruptGesture001', 0, async (done: Function) => {
+  it('testInterruptGesture001', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'InterruptGestureTest';
       await Utils.pushPage(`gesture/${PAGE_TAG}`);
       let driver = Driver.create();

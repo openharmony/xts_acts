@@ -52,17 +52,30 @@ export default function windowKeyBorad() {
         await sleep(1000);
         await input.click();
         await sleep(1000);
-        let text = await driver.findComponent(ON.text('下一步'));
-        console.info('beforeAll text: ' + JSON.stringify(text));
+        let text1 = await driver.findComponent(ON.text('同意'));
+        console.info('beforeAll text1: ' + JSON.stringify(text1));
+        let text2 = await driver.findComponent(ON.text('下一步'));
+        console.info('beforeAll text2: ' + JSON.stringify(text2));
         await sleep(1000);
-        if (text) {
+        if (text1) {
+          await text1.click();
+          console.info('beforeAll 同意 click success');
+          await sleep(1000);
+          let text = await driver.findComponent(ON.text('下一步'));
+          console.info('beforeAll text: ' + JSON.stringify(text));
           await text.click();
-          console.info('beforeAll click success');
-        }else{
+          console.info('beforeAll 下一步 click success');
+          await sleep(1000);
+        } else if(text2){
+          await text2.click();
+          console.info('beforeAll 下一步 click success');
+          await sleep(1000);
+        } else{
           await driver.pressBack();
           console.info('beforeAll pressBack success');
         }
         await sleep(1000);
+
       }
     });
     beforeEach(() => {

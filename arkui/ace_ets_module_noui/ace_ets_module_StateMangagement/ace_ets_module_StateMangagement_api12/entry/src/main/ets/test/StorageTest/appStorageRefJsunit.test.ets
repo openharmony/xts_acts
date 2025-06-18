@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -50,7 +50,7 @@ export default function appStorageRefJsunit() {
      * @tc.type:
      * @tc.size:
      */
-    it('appStorageRefJsunit_0100', 0, async () => {
+    it('appStorageRefJsunit_0100', Level.LEVEL0, async () => {
       console.info('appStorageRefJsunit001 START');
       let strJson = getInspectorByKey('app_ref_1');
       let obj: ESObject = JSON.parse(strJson);

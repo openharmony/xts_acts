@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function stackBackgroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackBackgroundBlurStyle001', 0, async (done: Function) => {
+    it('testStackBackgroundBlurStyle001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackBackgroundBlurStyle001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function stackBackgroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackBackgroundBlurStyle002', 0, async (done: Function) => {
+    it('testStackBackgroundBlurStyle002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackBackgroundBlurStyle002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function stackBackgroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackBackgroundBlurStyle003', 0, async (done: Function) => {
+    it('testStackBackgroundBlurStyle003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackBackgroundBlurStyle003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function stackBackgroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackBackgroundBlurStyle004', 0, async (done: Function) => {
+    it('testStackBackgroundBlurStyle004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackBackgroundBlurStyle004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function stackBackgroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackBackgroundBlurStyle005', 0, async (done: Function) => {
+    it('testStackBackgroundBlurStyle005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackBackgroundBlurStyle005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function stackBackgroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackBackgroundBlurStyle006', 0, async (done: Function) => {
+    it('testStackBackgroundBlurStyle006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackBackgroundBlurStyle006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function stackBackgroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackBackgroundBlurStyle007', 0, async (done: Function) => {
+    it('testStackBackgroundBlurStyle007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackBackgroundBlurStyle007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function stackBackgroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackBackgroundBlurStyle008', 0, async (done: Function) => {
+    it('testStackBackgroundBlurStyle008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackBackgroundBlurStyle008()).assertEqual(0)
       done()
     })
@@ -138,7 +138,7 @@ export default function stackBackgroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackBackgroundBlurStyle009', 0, async (done: Function) => {
+    it('testStackBackgroundBlurStyle009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackBackgroundBlurStyle009()).assertEqual(0)
       done()
     })
@@ -151,7 +151,7 @@ export default function stackBackgroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackBackgroundBlurStyle010', 0, async (done: Function) => {
+    it('testStackBackgroundBlurStyle010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackBackgroundBlurStyle010()).assertEqual(0)
       done()
     })
@@ -164,7 +164,7 @@ export default function stackBackgroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackBackgroundBlurStyle011', 0, async (done: Function) => {
+    it('testStackBackgroundBlurStyle011', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackBackgroundBlurStyle011()).assertEqual(0)
       done()
     })
@@ -177,7 +177,7 @@ export default function stackBackgroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackBackgroundBlurStyle012', 0, async (done: Function) => {
+    it('testStackBackgroundBlurStyle012', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackBackgroundBlurStyle012()).assertEqual(0)
       done()
     })
@@ -190,7 +190,7 @@ export default function stackBackgroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testStackBackgroundBlurStyle013', 0, async (done: Function) => {
+    it('testStackBackgroundBlurStyle013', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackBackgroundBlurStyle013()).assertEqual(0)
       done()
     })
@@ -203,7 +203,7 @@ export default function stackBackgroundBlurStyleTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testStackBackgroundBlurStyle014', 0, async (done: Function) => {
+    it('testStackBackgroundBlurStyle014', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testStackBackgroundBlurStyle014()).assertEqual(0)
       done()
     })

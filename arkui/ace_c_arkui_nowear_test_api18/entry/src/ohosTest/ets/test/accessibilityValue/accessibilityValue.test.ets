@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach, beforeEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, beforeEach, Level } from '@ohos/hypium';
 import { Driver, ON, PointerMatrix, Rect } from '@ohos.UiTest';
 import router from '@ohos.router';
 import nativeRender from 'libnativerender.so'
@@ -28,7 +28,7 @@ export default function AccessibilityValueTest(){
       done()
     })
 
-    it('AccessibilityValueTest_a', 0, async (done: Function) => {
+    it('AccessibilityValueTest_a',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.AccessibilityValueTest_a()).assertEqual(0)
       console.log('AccessibilityValueTest_a will drag and check:: ')
       await Utils.sleep(200)
@@ -36,7 +36,7 @@ export default function AccessibilityValueTest(){
       done()
     })
 
-    it('AccessibilityValueTest_a1', 0, async (done: Function) => {
+    it('AccessibilityValueTest_a1',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.AccessibilityValueTest_a1()).assertEqual(0)
       console.log('AccessibilityValueTest_a1 will drag and check:: ')
       await Utils.sleep(200)
@@ -44,7 +44,7 @@ export default function AccessibilityValueTest(){
       done()
     })
 
-    it('AccessibilityValueTest_b', 0, async (done: Function) => {
+    it('AccessibilityValueTest_b',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.AccessibilityValueTest_b()).assertEqual(0)
       console.log('AccessibilityValueTest_b will drag and check:: ')
       await Utils.sleep(200)
@@ -52,7 +52,7 @@ export default function AccessibilityValueTest(){
       done()
     })
 
-    it('AccessibilityValueTest_b1', 0, async (done: Function) => {
+    it('AccessibilityValueTest_b1',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.AccessibilityValueTest_b1()).assertEqual(0)
       console.log('AccessibilityValueTest_b1 will drag and check:: ')
       await Utils.sleep(200)
@@ -60,7 +60,7 @@ export default function AccessibilityValueTest(){
       done()
     })
 
-    it('AccessibilityValueTest_c', 0, async (done: Function) => {
+    it('AccessibilityValueTest_c',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.AccessibilityValueTest_c()).assertEqual(0)
       console.log('AccessibilityValueTest_c will drag and check:: ')
       await Utils.sleep(200)
@@ -68,7 +68,7 @@ export default function AccessibilityValueTest(){
       done()
     })
 
-    it('AccessibilityValueTest_c1', 0, async (done: Function) => {
+    it('AccessibilityValueTest_c1',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.AccessibilityValueTest_c1()).assertEqual(0)
       console.log('AccessibilityValueTest_c1 will drag and check:: ')
       await Utils.sleep(200)
@@ -76,7 +76,7 @@ export default function AccessibilityValueTest(){
       done()
     })
 
-    it('AccessibilityValueTest_d', 0, async (done: Function) => {
+    it('AccessibilityValueTest_d',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.AccessibilityValueTest_d()).assertEqual(0)
       console.log('AccessibilityValueTest_d will drag and check:: ')
       await Utils.sleep(200)
@@ -84,7 +84,7 @@ export default function AccessibilityValueTest(){
       done()
     })
 
-    it('AccessibilityValueTest_d1', 0, async (done: Function) => {
+    it('AccessibilityValueTest_d1',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.AccessibilityValueTest_d1()).assertEqual(0)
       console.log('AccessibilityValueTest_d1 will drag and check:: ')
       await Utils.sleep(200)
@@ -92,7 +92,7 @@ export default function AccessibilityValueTest(){
       done()
     })
 
-    it('AccessibilityValueTest_e', 0, async (done: Function) => {
+    it('AccessibilityValueTest_e',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.AccessibilityValueTest_e()).assertEqual(0)
       console.log('AccessibilityValueTest_e will drag and check:: ')
       await Utils.sleep(200)
@@ -100,7 +100,7 @@ export default function AccessibilityValueTest(){
       done()
     })
 
-    it('AccessibilityValueTest_e1', 0, async (done: Function) => {
+    it('AccessibilityValueTest_e1',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.AccessibilityValueTest_e1()).assertEqual(0)
       console.log('AccessibilityValueTest_e1 will drag and check:: ')
       await Utils.sleep(200)
@@ -108,7 +108,7 @@ export default function AccessibilityValueTest(){
       done()
     })
 
-    it('AccessibilityValueTest_f', 0, async (done: Function) => {
+    it('AccessibilityValueTest_f',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.AccessibilityValueTest_f()).assertEqual(0)
       console.log('AccessibilityValueTest_f will drag and check:: ')
       await Utils.sleep(200)
@@ -116,7 +116,7 @@ export default function AccessibilityValueTest(){
       done()
     })
 
-    it('AccessibilityValueTest_f1', 0, async (done: Function) => {
+    it('AccessibilityValueTest_f1',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.AccessibilityValueTest_f1()).assertEqual(0)
       console.log('AccessibilityValueTest_f1 will drag and check:: ')
       await Utils.sleep(200)
@@ -124,7 +124,7 @@ export default function AccessibilityValueTest(){
       done()
     })
 
-    it('AccessibilityValueTest_g', 0, async (done: Function) => {
+    it('AccessibilityValueTest_g',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.AccessibilityValueTest_g()).assertEqual(0)
       console.log('AccessibilityValueTest_g will drag and check:: ')
       await Utils.sleep(200)
@@ -132,7 +132,7 @@ export default function AccessibilityValueTest(){
       done()
     })
 
-    it('AccessibilityValueTest_g1', 0, async (done: Function) => {
+    it('AccessibilityValueTest_g1',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.AccessibilityValueTest_g1()).assertEqual(0)
       console.log('AccessibilityValueTest_g1 will drag and check:: ')
       await Utils.sleep(200)
@@ -140,7 +140,7 @@ export default function AccessibilityValueTest(){
       done()
     })
 
-    it('AccessibilityValueTest_h', 0, async (done: Function) => {
+    it('AccessibilityValueTest_h',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.AccessibilityValueTest_h()).assertEqual(0)
       console.log('AccessibilityValueTest_h will drag and check:: ')
       await Utils.sleep(200)
@@ -148,7 +148,7 @@ export default function AccessibilityValueTest(){
       done()
     })
 
-    it('AccessibilityValueTest_h1', 0, async (done: Function) => {
+    it('AccessibilityValueTest_h1',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.AccessibilityValueTest_h1()).assertEqual(0)
       console.log('AccessibilityValueTest_h1 will drag and check:: ')
       await Utils.sleep(200)
@@ -156,7 +156,7 @@ export default function AccessibilityValueTest(){
       done()
     })
 
-    it('AccessibilityValueTest_i', 0, async (done: Function) => {
+    it('AccessibilityValueTest_i',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.AccessibilityValueTest_i()).assertEqual(0)
       console.log('AccessibilityValueTest_i will drag and check:: ')
       await Utils.sleep(200)
@@ -164,7 +164,7 @@ export default function AccessibilityValueTest(){
       done()
     })
 
-    it('AccessibilityValueTest_i1', 0, async (done: Function) => {
+    it('AccessibilityValueTest_i1',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.AccessibilityValueTest_i1()).assertEqual(0)
       console.log('AccessibilityValueTest_i1 will drag and check:: ')
       await Utils.sleep(200)
@@ -172,7 +172,7 @@ export default function AccessibilityValueTest(){
       done()
     })
 
-    it('AccessibilityValueTest_j', 0, async (done: Function) => {
+    it('AccessibilityValueTest_j',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.AccessibilityValueTest_j()).assertEqual(0)
       console.log('AccessibilityValueTest_j will drag and check:: ')
       await Utils.sleep(200)
@@ -180,7 +180,7 @@ export default function AccessibilityValueTest(){
       done()
     })
 
-    it('AccessibilityValueTest_j1', 0, async (done: Function) => {
+    it('AccessibilityValueTest_j1',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.AccessibilityValueTest_j1()).assertEqual(0)
       console.log('AccessibilityValueTest_j1 will drag and check:: ')
       await Utils.sleep(200)
@@ -188,7 +188,7 @@ export default function AccessibilityValueTest(){
       done()
     })
 
-    it('AccessibilityValueTest_k1', 0, async (done: Function) => {
+    it('AccessibilityValueTest_k1',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.AccessibilityValueTest_k1()).assertEqual(0)
       console.log('AccessibilityValueTest_k1 will drag and check:: ')
       await Utils.sleep(200)
@@ -196,7 +196,7 @@ export default function AccessibilityValueTest(){
       done()
     })
 
-    it('AccessibilityValueTest_l', 0, async (done: Function) => {
+    it('AccessibilityValueTest_l',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.AccessibilityValueTest_l()).assertEqual(0)
       console.log('AccessibilityValueTest_l will drag and check:: ')
       await Utils.sleep(200)
@@ -204,7 +204,7 @@ export default function AccessibilityValueTest(){
       done()
     })
 
-    it('AccessibilityValueTest_l1', 0, async (done: Function) => {
+    it('AccessibilityValueTest_l1',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.AccessibilityValueTest_l1()).assertEqual(0)
       console.log('AccessibilityValueTest_l1 will drag and check:: ')
       await Utils.sleep(200)
@@ -212,7 +212,7 @@ export default function AccessibilityValueTest(){
       done()
     })
 
-    it('AccessibilityValueTest_m', 0, async (done: Function) => {
+    it('AccessibilityValueTest_m',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.AccessibilityValueTest_m()).assertEqual(0)
       console.log('AccessibilityValueTest_m will drag and check:: ')
       await Utils.sleep(200)
@@ -220,7 +220,7 @@ export default function AccessibilityValueTest(){
       done()
     })
 
-    it('AccessibilityValueTest_m1', 0, async (done: Function) => {
+    it('AccessibilityValueTest_m1',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.AccessibilityValueTest_m1()).assertEqual(0)
       console.log('AccessibilityValueTest_m1 will drag and check:: ')
       await Utils.sleep(200)
@@ -228,7 +228,7 @@ export default function AccessibilityValueTest(){
       done()
     })
 
-    it('AccessibilityValueTest_n', 0, async (done: Function) => {
+    it('AccessibilityValueTest_n',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.AccessibilityValueTest_n()).assertEqual(0)
       console.log('AccessibilityValueTest_n will drag and check:: ')
       await Utils.sleep(200)
@@ -236,7 +236,7 @@ export default function AccessibilityValueTest(){
       done()
     })
 
-    it('AccessibilityValueTest_n1', 0, async (done: Function) => {
+    it('AccessibilityValueTest_n1',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.AccessibilityValueTest_n1()).assertEqual(0)
       console.log('AccessibilityValueTest_n1 will drag and check:: ')
       await Utils.sleep(200)
@@ -244,7 +244,7 @@ export default function AccessibilityValueTest(){
       done()
     })
 
-    it('AccessibilityValueTest_o', 0, async (done: Function) => {
+    it('AccessibilityValueTest_o',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.AccessibilityValueTest_o()).assertEqual(0)
       console.log('AccessibilityValueTest_o will drag and check:: ')
       await Utils.sleep(200)
@@ -252,7 +252,7 @@ export default function AccessibilityValueTest(){
       done()
     })
 
-    it('AccessibilityValueTest_o1', 0, async (done: Function) => {
+    it('AccessibilityValueTest_o1',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.AccessibilityValueTest_o1()).assertEqual(0)
       console.log('AccessibilityValueTest_o1 will drag and check:: ')
       await Utils.sleep(200)
@@ -260,7 +260,7 @@ export default function AccessibilityValueTest(){
       done()
     })
 
-    it('AccessibilityValueTest_p', 0, async (done: Function) => {
+    it('AccessibilityValueTest_p',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.AccessibilityValueTest_p()).assertEqual(0)
       console.log('AccessibilityValueTest_p will drag and check:: ')
       await Utils.sleep(200)
@@ -268,7 +268,7 @@ export default function AccessibilityValueTest(){
       done()
     })
 
-    it('AccessibilityValueTest_p1', 0, async (done: Function) => {
+    it('AccessibilityValueTest_p1',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.AccessibilityValueTest_p1()).assertEqual(0)
       console.log('AccessibilityValueTest_p1 will drag and check:: ')
       await Utils.sleep(200)

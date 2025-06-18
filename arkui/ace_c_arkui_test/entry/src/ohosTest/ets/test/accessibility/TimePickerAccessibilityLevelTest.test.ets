@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function timePickerAccessibilityLevelTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTimePickerAccessibilityLevel001', 0, async (done: Function) => {
+    it('testTimePickerAccessibilityLevel001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTimePickerAccessibilityLevel001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function timePickerAccessibilityLevelTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTimePickerAccessibilityLevel002', 0, async (done: Function) => {
+    it('testTimePickerAccessibilityLevel002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTimePickerAccessibilityLevel002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function timePickerAccessibilityLevelTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTimePickerAccessibilityLevel003', 0, async (done: Function) => {
+    it('testTimePickerAccessibilityLevel003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTimePickerAccessibilityLevel003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function timePickerAccessibilityLevelTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTimePickerAccessibilityLevel004', 0, async (done: Function) => {
+    it('testTimePickerAccessibilityLevel004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTimePickerAccessibilityLevel004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function timePickerAccessibilityLevelTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTimePickerAccessibilityLevel005', 0, async (done: Function) => {
+    it('testTimePickerAccessibilityLevel005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTimePickerAccessibilityLevel005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function timePickerAccessibilityLevelTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTimePickerAccessibilityLevel006', 0, async (done: Function) => {
+    it('testTimePickerAccessibilityLevel006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTimePickerAccessibilityLevel006()).assertEqual(0)
       done()
     })

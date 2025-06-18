@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function commonAttrsSaturateTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsSaturate001', 0, async (done: Function) => {
+    it('testCommonAttrsSaturate001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsSaturate001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function commonAttrsSaturateTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsSaturate002', 0, async (done: Function) => {
+    it('testCommonAttrsSaturate002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsSaturate002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function commonAttrsSaturateTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsSaturate003', 0, async (done: Function) => {
+    it('testCommonAttrsSaturate003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsSaturate003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function commonAttrsSaturateTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsSaturate004', 0, async (done: Function) => {
+    it('testCommonAttrsSaturate004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsSaturate004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function commonAttrsSaturateTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsSaturate005', 0, async (done: Function) => {
+    it('testCommonAttrsSaturate005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsSaturate005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function commonAttrsSaturateTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsSaturate006', 0, async (done: Function) => {
+    it('testCommonAttrsSaturate006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsSaturate006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function commonAttrsSaturateTest() {
      * @tc.type       : Function
      * @tc.level      : Level1
      */
-    it('testCommonAttrsSaturate007', 0, async (done: Function) => {
+    it('testCommonAttrsSaturate007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCommonAttrsSaturate007()).assertEqual(0)
       done()
     })

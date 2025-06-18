@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, it, expect } from '@ohos/hypium';
+import { beforeEach, describe, it, expect, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function customComponentFlexBasisTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testCustomComponentFlexBasis001', 0, async (done: Function) => {
+    it('testCustomComponentFlexBasis001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentFlexBasis001()).assertEqual(0)
       done();
     })
@@ -47,7 +47,7 @@ export default function customComponentFlexBasisTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('testCustomComponentFlexBasis002', 0, async (done: Function) => {
+    it('testCustomComponentFlexBasis002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentFlexBasis002()).assertEqual(0)
       done();
     })

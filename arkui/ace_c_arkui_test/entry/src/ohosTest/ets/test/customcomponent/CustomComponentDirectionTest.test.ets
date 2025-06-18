@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function customComponentDirectionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentDirection001', 0, async (done: Function) => {
+    it('testCustomComponentDirection001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentDirection001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function customComponentDirectionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentDirection002', 0, async (done: Function) => {
+    it('testCustomComponentDirection002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentDirection002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function customComponentDirectionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentDirection003', 0, async (done: Function) => {
+    it('testCustomComponentDirection003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentDirection003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function customComponentDirectionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentDirection004', 0, async (done: Function) => {
+    it('testCustomComponentDirection004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentDirection004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function customComponentDirectionTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testCustomComponentDirection005', 0, async (done: Function) => {
+    it('testCustomComponentDirection005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentDirection005()).assertEqual(0)
       done()
     })

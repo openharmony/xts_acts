@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function imageLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageLinearGradient001', 0, async (done: Function) => {
+    it('testImageLinearGradient001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageLinearGradient001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function imageLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageLinearGradient002', 0, async (done: Function) => {
+    it('testImageLinearGradient002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageLinearGradient002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function imageLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageLinearGradient003', 0, async (done: Function) => {
+    it('testImageLinearGradient003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageLinearGradient003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function imageLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageLinearGradient004', 0, async (done: Function) => {
+    it('testImageLinearGradient004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageLinearGradient004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function imageLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageLinearGradient005', 0, async (done: Function) => {
+    it('testImageLinearGradient005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageLinearGradient005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function imageLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageLinearGradient006', 0, async (done: Function) => {
+    it('testImageLinearGradient006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageLinearGradient006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function imageLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageLinearGradient007', 0, async (done: Function) => {
+    it('testImageLinearGradient007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageLinearGradient007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function imageLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageLinearGradient008', 0, async (done: Function) => {
+    it('testImageLinearGradient008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageLinearGradient008()).assertEqual(0)
       done()
     })
@@ -138,7 +138,7 @@ export default function imageLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageLinearGradient009', 0, async (done: Function) => {
+    it('testImageLinearGradient009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageLinearGradient009()).assertEqual(0)
       done()
     })
@@ -151,7 +151,7 @@ export default function imageLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageLinearGradient010', 0, async (done: Function) => {
+    it('testImageLinearGradient010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageLinearGradient010()).assertEqual(0)
       done()
     })
@@ -164,7 +164,7 @@ export default function imageLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageLinearGradient011', 0, async (done: Function) => {
+    it('testImageLinearGradient011', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageLinearGradient011()).assertEqual(0)
       done()
     })
@@ -177,7 +177,7 @@ export default function imageLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageLinearGradient012', 0, async (done: Function) => {
+    it('testImageLinearGradient012', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageLinearGradient012()).assertEqual(0)
       done()
     })
@@ -190,7 +190,7 @@ export default function imageLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageLinearGradient013', 0, async (done: Function) => {
+    it('testImageLinearGradient013', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageLinearGradient013()).assertEqual(0)
       done()
     })
@@ -203,7 +203,7 @@ export default function imageLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageLinearGradient014', 0, async (done: Function) => {
+    it('testImageLinearGradient014', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageLinearGradient014()).assertEqual(0)
       done()
     })
@@ -216,7 +216,7 @@ export default function imageLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageLinearGradient015', 0, async (done: Function) => {
+    it('testImageLinearGradient015', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageLinearGradient015()).assertEqual(0)
       done()
     })
@@ -229,7 +229,7 @@ export default function imageLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageLinearGradient016', 0, async (done: Function) => {
+    it('testImageLinearGradient016', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageLinearGradient016()).assertEqual(0)
       done()
     })
@@ -242,7 +242,7 @@ export default function imageLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageLinearGradient017', 0, async (done: Function) => {
+    it('testImageLinearGradient017', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageLinearGradient017()).assertEqual(0)
       done()
     })
@@ -255,7 +255,7 @@ export default function imageLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageLinearGradient018', 0, async (done: Function) => {
+    it('testImageLinearGradient018', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageLinearGradient018()).assertEqual(0)
       done()
     })
@@ -268,7 +268,7 @@ export default function imageLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageLinearGradient019', 0, async (done: Function) => {
+    it('testImageLinearGradient019', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageLinearGradient019()).assertEqual(0)
       done()
     })
@@ -281,7 +281,7 @@ export default function imageLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageLinearGradient020', 0, async (done: Function) => {
+    it('testImageLinearGradient020', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageLinearGradient020()).assertEqual(0)
       done()
     })
@@ -294,7 +294,7 @@ export default function imageLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testImageLinearGradient021', 0, async (done: Function) => {
+    it('testImageLinearGradient021', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageLinearGradient021()).assertEqual(0)
       done()
     })

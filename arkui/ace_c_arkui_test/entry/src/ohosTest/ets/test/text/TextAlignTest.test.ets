@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextAlign001', 0, async (done: Function) => {
+    it('testTextAlign001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAlign001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function textAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextAlign002', 0, async (done: Function) => {
+    it('testTextAlign002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAlign002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function textAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextAlign003', 0, async (done: Function) => {
+    it('testTextAlign003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAlign003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function textAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextAlign004', 0, async (done: Function) => {
+    it('testTextAlign004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAlign004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function textAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextAlign005', 0, async (done: Function) => {
+    it('testTextAlign005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAlign005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function textAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextAlign006', 0, async (done: Function) => {
+    it('testTextAlign006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAlign006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function textAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextAlign007', 0, async (done: Function) => {
+    it('testTextAlign007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAlign007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function textAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextAlign008', 0, async (done: Function) => {
+    it('testTextAlign008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAlign008()).assertEqual(0)
       done()
     })
@@ -138,7 +138,7 @@ export default function textAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextAlign009', 0, async (done: Function) => {
+    it('testTextAlign009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAlign009()).assertEqual(0)
       done()
     })
@@ -151,7 +151,7 @@ export default function textAlignTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextAlign010', 0, async (done: Function) => {
+    it('testTextAlign010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextAlign010()).assertEqual(0)
       done()
     })

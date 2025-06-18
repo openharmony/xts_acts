@@ -1681,7 +1681,12 @@ export default function AVPlayerNdkTest() {
      * @tc.level      : Level 0
      */
     it('testAvPlayerCompleteSetPlaybackRate001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
-      let result: number = avplayer.AvPlayerCompleteSetPlaybackRate(3.25);
+      let user: avplayer.NdkUser = avplayer.AvPlayerCompleteSetPlaybackRate(3.25);
+      let result = -1;
+      while (result != 0) {
+        await Utils.sleep(1000);
+        result = avplayer.CheckAvPlayerPlaybackRate(user);
+      }
       expect(result).assertEqual(0);
       done();
     });
@@ -1695,7 +1700,12 @@ export default function AVPlayerNdkTest() {
      * @tc.level      : Level 0
      */
     it('testAvPlayerCompleteSetPlaybackRate002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
-      let result: number = avplayer.AvPlayerCompleteSetPlaybackRate(3.5);
+      let user: avplayer.NdkUser = avplayer.AvPlayerCompleteSetPlaybackRate(3.5);
+      let result = -1;
+      while (result != 0) {
+        await Utils.sleep(1000);
+        result = avplayer.CheckAvPlayerPlaybackRate(user);
+      }
       expect(result).assertEqual(0);
       done();
     });
@@ -1709,7 +1719,12 @@ export default function AVPlayerNdkTest() {
      * @tc.level      : Level 0
      */
     it('testAvPlayerCompleteSetPlaybackRate003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
-      let result: number = avplayer.AvPlayerCompleteSetPlaybackRate(3.75);
+      let user: avplayer.NdkUser = avplayer.AvPlayerCompleteSetPlaybackRate(3.75);
+      let result = -1;
+      while (result != 0) {
+        await Utils.sleep(1000);
+        result = avplayer.CheckAvPlayerPlaybackRate(user);
+      }
       expect(result).assertEqual(0);
       done();
     });
@@ -1723,7 +1738,12 @@ export default function AVPlayerNdkTest() {
      * @tc.level      : Level 0
      */
     it('testAvPlayerCompleteSetPlaybackRate004', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
-      let result: number = avplayer.AvPlayerCompleteSetPlaybackRate(4.0);
+      let user: avplayer.NdkUser = avplayer.AvPlayerCompleteSetPlaybackRate(4.0);
+      let result = -1;
+      while (result != 0) {
+        await Utils.sleep(1000);
+        result = avplayer.CheckAvPlayerPlaybackRate(user);
+      }
       expect(result).assertEqual(0);
       done();
     });

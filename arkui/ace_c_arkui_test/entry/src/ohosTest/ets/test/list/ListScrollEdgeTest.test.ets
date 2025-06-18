@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -29,7 +29,7 @@ export default function listScrollEdgeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListScrollEdge001', 0, async (done: Function) => {
+    it('testListScrollEdge001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListScrollEdge001()).assertEqual(0)
       done()
     })
@@ -41,7 +41,7 @@ export default function listScrollEdgeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListScrollEdge002', 0, async (done: Function) => {
+    it('testListScrollEdge002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListScrollEdge002()).assertEqual(0)
       done()
     })
@@ -53,7 +53,7 @@ export default function listScrollEdgeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListScrollEdge003', 0, async (done: Function) => {
+    it('testListScrollEdge003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListScrollEdge003()).assertEqual(0)
       done()
     })
@@ -65,7 +65,7 @@ export default function listScrollEdgeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListScrollEdge004', 0, async (done: Function) => {
+    it('testListScrollEdge004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListScrollEdge004()).assertEqual(0)
       done()
     })
@@ -77,7 +77,7 @@ export default function listScrollEdgeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListScrollEdge005', 0, async (done: Function) => {
+    it('testListScrollEdge005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListScrollEdge005()).assertEqual(0)
       done()
     })
@@ -89,7 +89,7 @@ export default function listScrollEdgeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListScrollEdge006', 0, async (done: Function) => {
+    it('testListScrollEdge006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListScrollEdge006()).assertEqual(0)
       done()
     })
@@ -101,7 +101,7 @@ export default function listScrollEdgeTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListScrollEdge007', 0, async (done: Function) => {
+    it('testListScrollEdge007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListScrollEdge007()).assertEqual(0)
       done()
     })

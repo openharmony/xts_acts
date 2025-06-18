@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function imageBorderWidthTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageBorderWidth001', 0, async (done: Function) => {
+    it('testImageBorderWidth001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageBorderWidth001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function imageBorderWidthTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageBorderWidth002', 0, async (done: Function) => {
+    it('testImageBorderWidth002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageBorderWidth002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function imageBorderWidthTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageBorderWidth003', 0, async (done: Function) => {
+    it('testImageBorderWidth003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageBorderWidth003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function imageBorderWidthTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageBorderWidth004', 0, async (done: Function) => {
+    it('testImageBorderWidth004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageBorderWidth004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function imageBorderWidthTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testImageBorderWidth005', 0, async (done: Function) => {
+    it('testImageBorderWidth005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageBorderWidth005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function imageBorderWidthTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testImageBorderWidth006', 0, async (done: Function) => {
+    it('testImageBorderWidth006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageBorderWidth006()).assertEqual(0)
       done()
     })

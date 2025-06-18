@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function spanDecorationTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSpanDecoration001', 0, async (done: Function) => {
+    it('testSpanDecoration001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSpanDecoration001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function spanDecorationTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSpanDecoration002', 0, async (done: Function) => {
+    it('testSpanDecoration002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSpanDecoration002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function spanDecorationTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSpanDecoration003', 0, async (done: Function) => {
+    it('testSpanDecoration003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSpanDecoration003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function spanDecorationTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSpanDecoration004', 0, async (done: Function) => {
+    it('testSpanDecoration004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSpanDecoration004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function spanDecorationTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testSpanDecoration005', 0, async (done: Function) => {
+    it('testSpanDecoration005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSpanDecoration005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function spanDecorationTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSpanDecoration006', 0, async (done: Function) => {
+    it('testSpanDecoration006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSpanDecoration006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function spanDecorationTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSpanDecoration007', 0, async (done: Function) => {
+    it('testSpanDecoration007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSpanDecoration007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function spanDecorationTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSpanDecoration008', 0, async (done: Function) => {
+    it('testSpanDecoration008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSpanDecoration008()).assertEqual(0)
       done()
     })
@@ -138,7 +138,7 @@ export default function spanDecorationTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSpanDecoration009', 0, async (done: Function) => {
+    it('testSpanDecoration009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSpanDecoration009()).assertEqual(0)
       done()
     })
@@ -151,7 +151,7 @@ export default function spanDecorationTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSpanDecoration010', 0, async (done: Function) => {
+    it('testSpanDecoration010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSpanDecoration010()).assertEqual(0)
       done()
     })
@@ -164,7 +164,7 @@ export default function spanDecorationTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSpanDecoration011', 0, async (done: Function) => {
+    it('testSpanDecoration011', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSpanDecoration011()).assertEqual(0)
       done()
     })
@@ -177,7 +177,7 @@ export default function spanDecorationTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSpanDecoration012', 0, async (done: Function) => {
+    it('testSpanDecoration012', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSpanDecoration012()).assertEqual(0)
       done()
     })

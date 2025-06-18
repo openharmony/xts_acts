@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function customComponentMaskTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentMask001', 0, async (done: Function) => {
+    it('testCustomComponentMask001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentMask001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function customComponentMaskTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentMask002', 0, async (done: Function) => {
+    it('testCustomComponentMask002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentMask002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function customComponentMaskTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testCustomComponentMask003', 0, async (done: Function) => {
+    it('testCustomComponentMask003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentMask003()).assertEqual(0)
       done()
     })
@@ -75,7 +75,7 @@ export default function customComponentMaskTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentMask004', 0, async (done: Function) => {
+    it('testCustomComponentMask004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentMask004()).assertEqual(0)
       done()
     })
@@ -88,7 +88,7 @@ export default function customComponentMaskTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentMask005', 0, async (done: Function) => {
+    it('testCustomComponentMask005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentMask005()).assertEqual(0)
       done()
     })
@@ -101,7 +101,7 @@ export default function customComponentMaskTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testCustomComponentMask006', 0, async (done: Function) => {
+    it('testCustomComponentMask006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentMask006()).assertEqual(0)
       done()
     })
@@ -114,7 +114,7 @@ export default function customComponentMaskTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentMask007', 0, async (done: Function) => {
+    it('testCustomComponentMask007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentMask007()).assertEqual(0)
       done()
     })
@@ -127,7 +127,7 @@ export default function customComponentMaskTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentMask008', 0, async (done: Function) => {
+    it('testCustomComponentMask008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentMask008()).assertEqual(0)
       done()
     })
@@ -140,7 +140,7 @@ export default function customComponentMaskTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentMask009', 0, async (done: Function) => {
+    it('testCustomComponentMask009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentMask009()).assertEqual(0)
       done()
     })
@@ -153,7 +153,7 @@ export default function customComponentMaskTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testCustomComponentMask010', 0, async (done: Function) => {
+    it('testCustomComponentMask010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentMask010()).assertEqual(0)
       done()
     })
@@ -166,7 +166,7 @@ export default function customComponentMaskTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentMask011', 0, async (done: Function) => {
+    it('testCustomComponentMask011', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentMask011()).assertEqual(0)
       done()
     })
@@ -179,7 +179,7 @@ export default function customComponentMaskTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentMask012', 0, async (done: Function) => {
+    it('testCustomComponentMask012', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentMask012()).assertEqual(0)
       done()
     })
@@ -192,7 +192,7 @@ export default function customComponentMaskTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testCustomComponentMask013', 0, async (done: Function) => {
+    it('testCustomComponentMask013', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentMask013()).assertEqual(0)
       done()
     })
@@ -205,7 +205,7 @@ export default function customComponentMaskTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentMask014', 0, async (done: Function) => {
+    it('testCustomComponentMask014', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentMask014()).assertEqual(0)
       done()
     })
@@ -218,7 +218,7 @@ export default function customComponentMaskTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testCustomComponentMask015', 0, async (done: Function) => {
+    it('testCustomComponentMask015', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentMask015()).assertEqual(0)
       done()
     })
@@ -231,7 +231,7 @@ export default function customComponentMaskTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testCustomComponentMask016', 0, async (done: Function) => {
+    it('testCustomComponentMask016', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testCustomComponentMask016()).assertEqual(0)
       done()
     })

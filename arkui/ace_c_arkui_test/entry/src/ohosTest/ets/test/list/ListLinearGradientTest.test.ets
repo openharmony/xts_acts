@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function listLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListLinearGradient001', 0, async (done: Function) => {
+    it('testListLinearGradient001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListLinearGradient001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function listLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListLinearGradient002', 0, async (done: Function) => {
+    it('testListLinearGradient002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListLinearGradient002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function listLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListLinearGradient003', 0, async (done: Function) => {
+    it('testListLinearGradient003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListLinearGradient003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function listLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListLinearGradient004', 0, async (done: Function) => {
+    it('testListLinearGradient004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListLinearGradient004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function listLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListLinearGradient005', 0, async (done: Function) => {
+    it('testListLinearGradient005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListLinearGradient005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function listLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListLinearGradient006', 0, async (done: Function) => {
+    it('testListLinearGradient006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListLinearGradient006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function listLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListLinearGradient007', 0, async (done: Function) => {
+    it('testListLinearGradient007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListLinearGradient007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function listLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListLinearGradient008', 0, async (done: Function) => {
+    it('testListLinearGradient008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListLinearGradient008()).assertEqual(0)
       done()
     })
@@ -138,7 +138,7 @@ export default function listLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListLinearGradient009', 0, async (done: Function) => {
+    it('testListLinearGradient009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListLinearGradient009()).assertEqual(0)
       done()
     })
@@ -151,7 +151,7 @@ export default function listLinearGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListLinearGradient010', 0, async (done: Function) => {
+    it('testListLinearGradient010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListLinearGradient010()).assertEqual(0)
       done()
     })

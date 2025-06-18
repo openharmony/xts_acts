@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function buttonAccessibilityLevelTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testButtonAccessibilityLevel001', 0, async (done: Function) => {
+    it('testButtonAccessibilityLevel001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testButtonAccessibilityLevel001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function buttonAccessibilityLevelTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testButtonAccessibilityLevel002', 0, async (done: Function) => {
+    it('testButtonAccessibilityLevel002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testButtonAccessibilityLevel002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function buttonAccessibilityLevelTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testButtonAccessibilityLevel003', 0, async (done: Function) => {
+    it('testButtonAccessibilityLevel003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testButtonAccessibilityLevel003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function buttonAccessibilityLevelTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testButtonAccessibilityLevel004', 0, async (done: Function) => {
+    it('testButtonAccessibilityLevel004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testButtonAccessibilityLevel004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function buttonAccessibilityLevelTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testButtonAccessibilityLevel005', 0, async (done: Function) => {
+    it('testButtonAccessibilityLevel005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testButtonAccessibilityLevel005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function buttonAccessibilityLevelTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testButtonAccessibilityLevel006', 0, async (done: Function) => {
+    it('testButtonAccessibilityLevel006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testButtonAccessibilityLevel006()).assertEqual(0)
       done()
     })

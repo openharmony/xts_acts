@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function scrollScrollToTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollScrollTo001', 0, async (done: Function) => {
+    it('testScrollScrollTo001', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollScrollToLinearTest';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('ScrollTo').$attrs.backgroundColor).assertEqual('#FF00FF00')
@@ -49,7 +49,7 @@ export default function scrollScrollToTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollScrollTo002', 0, async (done: Function) => {
+    it('testScrollScrollTo002', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollScrollToEaseTest';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('ScrollTo').$attrs.backgroundColor).assertEqual('#FF00FF00')
@@ -64,7 +64,7 @@ export default function scrollScrollToTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollScrollTo003', 0, async (done: Function) => {
+    it('testScrollScrollTo003', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollScrollToEaseInTest';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('ScrollTo').$attrs.backgroundColor).assertEqual('#FF00FF00')
@@ -79,7 +79,7 @@ export default function scrollScrollToTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollScrollTo004', 0, async (done: Function) => {
+    it('testScrollScrollTo004', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollScrollToEaseOutTest';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('ScrollTo').$attrs.backgroundColor).assertEqual('#FF00FF00')
@@ -94,7 +94,7 @@ export default function scrollScrollToTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollScrollTo005', 0, async (done: Function) => {
+    it('testScrollScrollTo005', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollScrollToEaseInOutTest';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('ScrollTo').$attrs.backgroundColor).assertEqual('#FF00FF00')
@@ -109,7 +109,7 @@ export default function scrollScrollToTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollScrollTo006', 0, async (done: Function) => {
+    it('testScrollScrollTo006', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollScrollToFastOutSlowInTest';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('ScrollTo').$attrs.backgroundColor).assertEqual('#FF00FF00')
@@ -124,7 +124,7 @@ export default function scrollScrollToTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollScrollTo007', 0, async (done: Function) => {
+    it('testScrollScrollTo007', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollScrollToLinearOutSlowInTest';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('ScrollTo').$attrs.backgroundColor).assertEqual('#FF00FF00')
@@ -139,7 +139,7 @@ export default function scrollScrollToTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollScrollTo008', 0, async (done: Function) => {
+    it('testScrollScrollTo008', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollScrollToFastOutLinearInTest';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('ScrollTo').$attrs.backgroundColor).assertEqual('#FF00FF00')
@@ -154,7 +154,7 @@ export default function scrollScrollToTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollScrollTo009', 0, async (done: Function) => {
+    it('testScrollScrollTo009', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollScrollToExtremeDecelerationTest';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('ScrollTo').$attrs.backgroundColor).assertEqual('#FF00FF00')
@@ -169,7 +169,7 @@ export default function scrollScrollToTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollScrollTo010', 0, async (done: Function) => {
+    it('testScrollScrollTo010', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollScrollToSharpTest';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('ScrollTo').$attrs.backgroundColor).assertEqual('#FF00FF00')
@@ -184,7 +184,7 @@ export default function scrollScrollToTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollScrollTo011', 0, async (done: Function) => {
+    it('testScrollScrollTo011', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollScrollToRhythmTest';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('ScrollTo').$attrs.backgroundColor).assertEqual('#FF00FF00')
@@ -199,7 +199,7 @@ export default function scrollScrollToTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollScrollTo012', 0, async (done: Function) => {
+    it('testScrollScrollTo012', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollScrollToSmoothTest';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('ScrollTo').$attrs.backgroundColor).assertEqual('#FF00FF00')
@@ -214,7 +214,7 @@ export default function scrollScrollToTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollScrollTo013', 0, async (done: Function) => {
+    it('testScrollScrollTo013', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollScrollToFrictionTest';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('ScrollTo').$attrs.backgroundColor).assertEqual('#FF00FF00')
@@ -229,7 +229,7 @@ export default function scrollScrollToTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollScrollTo014', 0, async (done: Function) => {
+    it('testScrollScrollTo014', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollScrollToCanOverScrollTest';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       await Utils.sleep(3000)
@@ -245,7 +245,7 @@ export default function scrollScrollToTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollScrollTo015', 0, async (done: Function) => {
+    it('testScrollScrollTo015', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollScrollToCanOverScrollOffTest';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       await Utils.sleep(3000)
@@ -261,7 +261,7 @@ export default function scrollScrollToTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollScrollTo016', 0, async (done: Function) => {
+    it('testScrollScrollTo016', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollScrollTo001Test';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       await Utils.clickComponent('ScrollTo001');
@@ -278,7 +278,7 @@ export default function scrollScrollToTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollScrollTo017', 0, async (done: Function) => {
+    it('testScrollScrollTo017', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollScrollTo002Test';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       await Utils.clickComponent('ScrollTo002');
@@ -295,7 +295,7 @@ export default function scrollScrollToTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollScrollTo018', 0, async (done: Function) => {
+    it('testScrollScrollTo018', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollScrollTo003Test';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       await Utils.clickComponent('ScrollTo003');
@@ -312,7 +312,7 @@ export default function scrollScrollToTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollScrollTo019', 0, async (done: Function) => {
+    it('testScrollScrollTo019', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollScrollTo004Test';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       await Utils.clickComponent('ScrollTo004');
@@ -329,7 +329,7 @@ export default function scrollScrollToTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollScrollTo020', 0, async (done: Function) => {
+    it('testScrollScrollTo020', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollScrollTo005Test';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       await Utils.clickComponent('ScrollTo005');
@@ -346,7 +346,7 @@ export default function scrollScrollToTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollScrollTo021', 0, async (done: Function) => {
+    it('testScrollScrollTo021', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollScrollTo006Test';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       await Utils.clickComponent('ScrollTo006');
@@ -363,7 +363,7 @@ export default function scrollScrollToTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testScrollScrollTo022', 0, async (done: Function) => {
+    it('testScrollScrollTo022', Level.LEVEL1, async (done: Function) => {
       let PAGE_TAG = 'ScrollScrollTo007Test';
       await Utils.pushPage(`scroll/${PAGE_TAG}`);
       await Utils.clickComponent('ScrollTo007');

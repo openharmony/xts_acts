@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function sliderBlockColorTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSliderBlockColor001', 0, async (done: Function) => {
+    it('testSliderBlockColor001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderBlockColor001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function sliderBlockColorTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSliderBlockColor002', 0, async (done: Function) => {
+    it('testSliderBlockColor002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderBlockColor002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function sliderBlockColorTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSliderBlockColor003', 0, async (done: Function) => {
+    it('testSliderBlockColor003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderBlockColor003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function sliderBlockColorTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSliderBlockColor004', 0, async (done: Function) => {
+    it('testSliderBlockColor004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderBlockColor004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function sliderBlockColorTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSliderBlockColor005', 0, async (done: Function) => {
+    it('testSliderBlockColor005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderBlockColor005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function sliderBlockColorTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSliderBlockColor006', 0, async (done: Function) => {
+    it('testSliderBlockColor006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderBlockColor006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function sliderBlockColorTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testSliderBlockColor007', 0, async (done: Function) => {
+    it('testSliderBlockColor007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSliderBlockColor007()).assertEqual(0)
       done()
     })

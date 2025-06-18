@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function swiperCurveTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSwiperCurve001', 0, async (done: Function) => {
+    it('testSwiperCurve001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperCurve001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function swiperCurveTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSwiperCurve002', 0, async (done: Function) => {
+    it('testSwiperCurve002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperCurve002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function swiperCurveTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSwiperCurve003', 0, async (done: Function) => {
+    it('testSwiperCurve003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperCurve003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function swiperCurveTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSwiperCurve004', 0, async (done: Function) => {
+    it('testSwiperCurve004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperCurve004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function swiperCurveTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSwiperCurve005', 0, async (done: Function) => {
+    it('testSwiperCurve005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperCurve005()).assertEqual(0)
       done()
     })
@@ -99,7 +99,7 @@ export default function swiperCurveTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSwiperCurve006', 0, async (done: Function) => {
+    it('testSwiperCurve006', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperCurve006()).assertEqual(0)
       done()
     })
@@ -112,7 +112,7 @@ export default function swiperCurveTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSwiperCurve007', 0, async (done: Function) => {
+    it('testSwiperCurve007', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperCurve007()).assertEqual(0)
       done()
     })
@@ -125,7 +125,7 @@ export default function swiperCurveTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSwiperCurve008', 0, async (done: Function) => {
+    it('testSwiperCurve008', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperCurve008()).assertEqual(0)
       done()
     })
@@ -138,7 +138,7 @@ export default function swiperCurveTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSwiperCurve009', 0, async (done: Function) => {
+    it('testSwiperCurve009', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperCurve009()).assertEqual(0)
       done()
     })
@@ -151,7 +151,7 @@ export default function swiperCurveTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSwiperCurve010', 0, async (done: Function) => {
+    it('testSwiperCurve010', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperCurve010()).assertEqual(0)
       done()
     })
@@ -164,7 +164,7 @@ export default function swiperCurveTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSwiperCurve011', 0, async (done: Function) => {
+    it('testSwiperCurve011', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperCurve011()).assertEqual(0)
       done()
     })
@@ -177,7 +177,7 @@ export default function swiperCurveTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSwiperCurve012', 0, async (done: Function) => {
+    it('testSwiperCurve012', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperCurve012()).assertEqual(0)
       done()
     })
@@ -190,7 +190,7 @@ export default function swiperCurveTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testSwiperCurve013', 0, async (done: Function) => {
+    it('testSwiperCurve013', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperCurve013()).assertEqual(0)
       done()
     })
@@ -203,7 +203,7 @@ export default function swiperCurveTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testSwiperCurve014', 0, async (done: Function) => {
+    it('testSwiperCurve014', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testSwiperCurve014()).assertEqual(0)
       done()
     })

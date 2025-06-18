@@ -5324,6 +5324,8 @@ export default function audioFramework() {
       console.info("audio.DeviceType.LINE_DIGITAL:" + audio.DeviceType.LINE_DIGITAL);
       expect(audio.DeviceType.REMOTE_DAUDIO).assertEqual(29);
       console.info("audio.DeviceType.REMOTE_DAUDIO:" + audio.DeviceType.REMOTE_DAUDIO);
+      expect(audio.DeviceType.NEARLINK).assertEqual(31);
+      console.info("audio.DeviceType.NEARLINK:" + audio.DeviceType.NEARLINK);
       expect(audio.DeviceType.DEFAULT).assertEqual(1000);
       console.info("audio.DeviceType.DEFAULT:" + audio.DeviceType.DEFAULT);
       await sleep(50);

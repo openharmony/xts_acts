@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textVisibilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextVisibility001', 0, async (done: Function) => {
+    it('testTextVisibility001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextVisibility001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function textVisibilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextVisibility002', 0, async (done: Function) => {
+    it('testTextVisibility002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextVisibility002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function textVisibilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextVisibility003', 0, async (done: Function) => {
+    it('testTextVisibility003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextVisibility003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function textVisibilityTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTextVisibility004', 0, async (done: Function) => {
+    it('testTextVisibility004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextVisibility004()).assertEqual(0)
       done()
     })

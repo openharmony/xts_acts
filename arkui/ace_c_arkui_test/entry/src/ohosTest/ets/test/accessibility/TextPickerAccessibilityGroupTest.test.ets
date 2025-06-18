@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function textPickerAccessibilityGroupTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextPickerAccessibilityGroup001', 0, async (done: Function) => {
+    it('testTextPickerAccessibilityGroup001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextPickerAccessibilityGroup001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function textPickerAccessibilityGroupTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testTextPickerAccessibilityGroup002', 0, async (done: Function) => {
+    it('testTextPickerAccessibilityGroup002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextPickerAccessibilityGroup002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function textPickerAccessibilityGroupTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTextPickerAccessibilityGroup003', 0, async (done: Function) => {
+    it('testTextPickerAccessibilityGroup003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextPickerAccessibilityGroup003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function textPickerAccessibilityGroupTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testTextPickerAccessibilityGroup004', 0, async (done: Function) => {
+    it('testTextPickerAccessibilityGroup004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testTextPickerAccessibilityGroup004()).assertEqual(0)
       done()
     })

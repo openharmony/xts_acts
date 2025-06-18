@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -29,7 +29,7 @@ export default function listItemGroupSetDividerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListItemGroupSetDivider001', 0, async (done: Function) => {
+    it('testListItemGroupSetDivider001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListItemGroupSetDivider001()).assertEqual(0)
       done()
     })
@@ -41,7 +41,7 @@ export default function listItemGroupSetDividerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListItemGroupSetDivider002', 0, async (done: Function) => {
+    it('testListItemGroupSetDivider002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListItemGroupSetDivider002()).assertEqual(0)
       done()
     })
@@ -53,7 +53,7 @@ export default function listItemGroupSetDividerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListItemGroupSetDivider003', 0, async (done: Function) => {
+    it('testListItemGroupSetDivider003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListItemGroupSetDivider003()).assertEqual(0)
       done()
     })
@@ -65,7 +65,7 @@ export default function listItemGroupSetDividerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListItemGroupSetDivider004', 0, async (done: Function) => {
+    it('testListItemGroupSetDivider004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListItemGroupSetDivider004()).assertEqual(0)
       done()
     })
@@ -77,7 +77,7 @@ export default function listItemGroupSetDividerTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testListItemGroupSetDivider005', 0, async (done: Function) => {
+    it('testListItemGroupSetDivider005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testListItemGroupSetDivider005()).assertEqual(0)
       done()
     })

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { expect, describe, it, afterEach, beforeEach } from '@ohos/hypium';
+import { expect, describe, it, afterEach, beforeEach, Level } from '@ohos/hypium';
 import { Driver, ON, PointerMatrix, Rect } from '@ohos.UiTest';
 import router from '@ohos.router';
 import nativeRender from 'libnativerender.so'
@@ -28,7 +28,7 @@ export default function TextPickerCascadeTest(){
       done()
     })
 
-    it('TextPickerCascadeTest_a', 0, async (done: Function) => {
+    it('TextPickerCascadeTest_a',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.TextPickerCascadeTest_a()).assertEqual(0)
       console.log('TextPickerCascadeTest_a will drag and check:: ')
       await Utils.sleep(200)
@@ -36,7 +36,7 @@ export default function TextPickerCascadeTest(){
       done()
     })
 
-    it('TextPickerCascadeTest_a1', 0, async (done: Function) => {
+    it('TextPickerCascadeTest_a1',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.TextPickerCascadeTest_a1()).assertEqual(0)
       console.log('TextPickerCascadeTest_a1 will drag and check:: ')
       await Utils.sleep(200)
@@ -44,7 +44,7 @@ export default function TextPickerCascadeTest(){
       done()
     })
 
-    it('TextPickerCascadeTest_b', 0, async (done: Function) => {
+    it('TextPickerCascadeTest_b',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.TextPickerCascadeTest_b()).assertEqual(0)
       console.log('TextPickerCascadeTest_b will drag and check:: ')
       await Utils.sleep(200)
@@ -52,7 +52,7 @@ export default function TextPickerCascadeTest(){
       done()
     })
 
-    it('TextPickerCascadeTest_b1', 0, async (done: Function) => {
+    it('TextPickerCascadeTest_b1',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.TextPickerCascadeTest_b1()).assertEqual(0)
       console.log('TextPickerCascadeTest_b1 will drag and check:: ')
       await Utils.sleep(200)
@@ -60,7 +60,7 @@ export default function TextPickerCascadeTest(){
       done()
     })
 
-    it('TextPickerCascadeTest_c', 0, async (done: Function) => {
+    it('TextPickerCascadeTest_c',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.TextPickerCascadeTest_c()).assertEqual(0)
       console.log('TextPickerCascadeTest_c will drag and check:: ')
       await Utils.sleep(200)
@@ -68,7 +68,7 @@ export default function TextPickerCascadeTest(){
       done()
     })
 
-    it('TextPickerCascadeTest_c1', 0, async (done: Function) => {
+    it('TextPickerCascadeTest_c1',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.TextPickerCascadeTest_c1()).assertEqual(0)
       console.log('TextPickerCascadeTest_c1 will drag and check:: ')
       await Utils.sleep(200)
@@ -76,7 +76,7 @@ export default function TextPickerCascadeTest(){
       done()
     })
 
-    it('TextPickerCascadeTest_d', 0, async (done: Function) => {
+    it('TextPickerCascadeTest_d',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.TextPickerCascadeTest_d()).assertEqual(0)
       console.log('TextPickerCascadeTest_d will drag and check:: ')
       await Utils.sleep(200)
@@ -84,7 +84,7 @@ export default function TextPickerCascadeTest(){
       done()
     })
 
-    it('TextPickerCascadeTest_d1', 0, async (done: Function) => {
+    it('TextPickerCascadeTest_d1',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.TextPickerCascadeTest_d1()).assertEqual(0)
       console.log('TextPickerCascadeTest_d1 will drag and check:: ')
       await Utils.sleep(200)
@@ -92,7 +92,7 @@ export default function TextPickerCascadeTest(){
       done()
     })
 
-    it('TextPickerCascadeTest_e', 0, async (done: Function) => {
+    it('TextPickerCascadeTest_e',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.TextPickerCascadeTest_e()).assertEqual(0)
       console.log('TextPickerCascadeTest_e will drag and check:: ')
       await Utils.sleep(200)
@@ -100,7 +100,7 @@ export default function TextPickerCascadeTest(){
       done()
     })
 
-    it('TextPickerCascadeTest_e1', 0, async (done: Function) => {
+    it('TextPickerCascadeTest_e1',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.TextPickerCascadeTest_e1()).assertEqual(0)
       console.log('TextPickerCascadeTest_e1 will drag and check:: ')
       await Utils.sleep(200)
@@ -108,7 +108,7 @@ export default function TextPickerCascadeTest(){
       done()
     })
 
-    it('TextPickerCascadeTest_f', 0, async (done: Function) => {
+    it('TextPickerCascadeTest_f',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.TextPickerCascadeTest_f()).assertEqual(0)
       console.log('TextPickerCascadeTest_f will drag and check:: ')
       await Utils.sleep(200)
@@ -116,7 +116,7 @@ export default function TextPickerCascadeTest(){
       done()
     })
 
-    it('TextPickerCascadeTest_f1', 0, async (done: Function) => {
+    it('TextPickerCascadeTest_f1',  Level.LEVEL0, async (done: Function) => {
       expect(nativeRender.TextPickerCascadeTest_f1()).assertEqual(0)
       console.log('TextPickerCascadeTest_f1 will drag and check:: ')
       await Utils.sleep(200)

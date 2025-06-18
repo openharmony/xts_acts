@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import { beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import Utils from '../common/Utils';
 import nativeFunc from 'libnativefunc.so'
 
@@ -34,7 +34,7 @@ export default function imageRadialGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageRadialGradient001', 0, async (done: Function) => {
+    it('testImageRadialGradient001', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageRadialGradient001()).assertEqual(0)
       done()
     })
@@ -47,7 +47,7 @@ export default function imageRadialGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageRadialGradient002', 0, async (done: Function) => {
+    it('testImageRadialGradient002', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageRadialGradient002()).assertEqual(0)
       done()
     })
@@ -60,7 +60,7 @@ export default function imageRadialGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageRadialGradient003', 0, async (done: Function) => {
+    it('testImageRadialGradient003', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageRadialGradient003()).assertEqual(0)
       done()
     })
@@ -73,7 +73,7 @@ export default function imageRadialGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testImageRadialGradient004', 0, async (done: Function) => {
+    it('testImageRadialGradient004', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageRadialGradient004()).assertEqual(0)
       done()
     })
@@ -86,7 +86,7 @@ export default function imageRadialGradientTest() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testImageRadialGradient005', 0, async (done: Function) => {
+    it('testImageRadialGradient005', Level.LEVEL1, async (done: Function) => {
       expect(nativeFunc.testImageRadialGradient005()).assertEqual(0)
       done()
     })
