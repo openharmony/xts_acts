@@ -18,7 +18,7 @@ group("form") {
   if (is_standard_system) {
     deps = [
       "formmanager:formmanager",
-      "ActsFormStaticTest:ActsFormStaticTest",
+      "ActsFormTestStatic:ActsFormStaticTest",
     ]
   }
 }
