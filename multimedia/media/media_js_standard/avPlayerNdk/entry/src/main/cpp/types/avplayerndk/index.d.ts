@@ -12,6 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+interface NdkUser {}
+
 export const AvPlayerCreate: () => number;
 export const OhAvPlayerSetCurrentPathId: (a:number) => number;
 export const AvPlayerSetURLSourceAbnormalOne: () => number;
@@ -97,5 +100,6 @@ export const AvPlayerIdleSetPlaybackRate: (a:number) => number;
 export const AvPlayerInitSetPlaybackRate: (a:number) => number;
 export const AvPlayerReleaseSetPlaybackRate: (a:number) => number;
 export const AvPlayerErrorSetPlaybackRate: (a:number) => number;
-export const AvPlayerCompleteSetPlaybackRate: (a:number) => number;
+export const AvPlayerCompleteSetPlaybackRate: (a:number) => NdkUser;
 export const AvPlayerSetPlaybackRateBeforePause: (a:number) => number;
+export const CheckAvPlayerPlaybackRate: (a:NdkUser) => number;
