@@ -42,6 +42,7 @@ const LABEL_REMOTE_DESK = "remoteDesk";
 const LABEL_REMOTE_DIAGNOSIS = "remoteDiagnosis";
 const LABEL_SET_APN = "setApn";
 const LABEL_USB_STORAGE_DEVICE_WRITE = "usbStorageDeviceWrite";
+const LABEL_VPN = "vpn";
 
 export default function restrictionsTest() {
   describe('restrictions_test', () => {
@@ -742,6 +743,49 @@ function testSetDisallowedPolicy() {
       restrictions.setDisallowedPolicy(SELFWANT, LABEL_REMOTE_DIAGNOSIS, true);
       expect(restrictions.getDisallowedPolicy(SELFWANT, LABEL_REMOTE_DIAGNOSIS)).assertTrue();
       restrictions.setDisallowedPolicy(SELFWANT, LABEL_REMOTE_DIAGNOSIS, false);
+    } catch (error) {
+      expect(false).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_DISALLOWED_POLICY_JS_0133
+   * @tc.name      : test_set_disallowed_policy_0133
+   * @tc.desc      : test restrictions setDisallowedPolicy
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_disallowed_policy_0133", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      restrictions.setDisallowedPolicy(SELFWANT, LABEL_VPN, true);
+      expect(restrictions.getDisallowedPolicy(SELFWANT, LABEL_VPN)).assertTrue();
+      restrictions.setDisallowedPolicy(SELFWANT, LABEL_VPN, false);
+    } catch (error) {
+      expect(false).assertTrue();
+    } finally {
+      await adminManager.disableAdmin(SELFWANT);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_DISALLOWED_POLICY_JS_0134
+   * @tc.name      : test_set_disallowed_policy_0134
+   * @tc.desc      : test restrictions setDisallowedPolicy
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_disallowed_policy_0134", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      restrictions.setDisallowedPolicy(SELFWANT, LABEL_VPN, false);
+      expect(restrictions.getDisallowedPolicy(SELFWANT, LABEL_VPN)).assertFalse();
     } catch (error) {
       expect(false).assertTrue();
     } finally {
