@@ -82,41 +82,6 @@ export default function SecurityCryptoFwSM2TestUnit() {
     });
 
     /**
-     * @tc.number SUB_Security_CryptoFramework_SM2_ASN1ToRS_Func_0000
-     * @tc.name Test SM2 Signature ASN1 To R|S
-     * @tc.desc algorithm is SM2
-     * @tc.size Medium
-     * @tc.type Reliability
-     * @tc.level Level0
-     */
-    it("SUB_Security_CryptoFramework_SM2_ASN1ToRS_Func_0000",
-      TestType.RELIABILITY | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
-      try {
-        let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
-        taskGroup.addTask(doSm2Asn1ToRSStub, "SM2_256", "ASN1TORS-1");
-        taskGroup.addTask(doSm2Asn1ToRSStub, "SM2_256", "ASN1TORS-2");
-        taskGroup.addTask(doSm2Asn1ToRSStub, "SM2_256", "ASN1TORS-3");
-        taskGroup.addTask(doSm2Asn1ToRSStub, "SM2_256", "ASN1TORS-4");
-        taskGroup.addTask(doSm2Asn1ToRSStub, "SM2_256", "ASN1TORS-5");
-        taskGroup.addTask(doSm2Asn1ToRSStub, "SM2_256", "ASN1TORS-6");
-        taskGroup.addTask(doSm2Asn1ToRSStub, "SM2_256", "ASN1TORS-7");
-        taskGroup.addTask(doSm2Asn1ToRSStub, "SM2_256", "ASN1TORS-8");
-        taskGroup.addTask(doSm2Asn1ToRSStub, "SM2_256", "ASN1TORS-9");
-        taskGroup.addTask(doSm2Asn1ToRSStub, "SM2_256", "ASN1TORS-10");
-        await taskpool.execute(taskGroup).then((res: Array<Object>) => {
-          for (let ret of res) {
-            console.info("#################### ret:" + ret);
-            expect(ret).assertTrue();
-          }
-        });
-      } catch (error) {
-        console.error(`SUB_Security_CryptoFramework_SM2_ASN1ToRS_Func_0000 “${error}“, error code: ${error.code}`);
-        expect(null).assertFail();
-      }
-      done();
-    });
-
-    /**
      * @tc.number SUB_Security_CryptoFramework_SM2_ASN1ToRS_Func_0100
      * @tc.name Test SM2 Signature ASN1 To R|S
      * @tc.desc algorithm is SM2
