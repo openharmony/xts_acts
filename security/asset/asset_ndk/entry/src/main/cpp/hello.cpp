@@ -12,8 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include "napi/native_api.h"
 #include "asset/asset_api.h"
+#include "napi/native_api.h"
 #include <bits/alltypes.h>
 #include <cstring>
 
@@ -21,8 +21,7 @@ static const int MAGIC_RET = 9999;
 static const int BUFF_MAX = 4096;
 static const char *DEMO_LABEL = "demo_label";
 
-static napi_value Asset_Add(napi_env env, napi_callback_info info)
-{
+static napi_value Asset_Add(napi_env env, napi_callback_info info) {
     size_t argc = 2;
     napi_value args[2] = {nullptr};
 
@@ -55,8 +54,7 @@ static napi_value Asset_Add(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value Asset_AddCE(napi_env env, napi_callback_info info)
-{
+static napi_value Asset_AddCE(napi_env env, napi_callback_info info) {
     size_t argc = 2;
     napi_value args[2] = {nullptr};
 
@@ -107,8 +105,7 @@ static napi_value Asset_AddCE(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value Asset_Add_Auth(napi_env env, napi_callback_info info)
-{
+static napi_value Asset_Add_Auth(napi_env env, napi_callback_info info) {
     size_t argc = 2;
     napi_value args[2] = {nullptr};
 
@@ -144,8 +141,7 @@ static napi_value Asset_Add_Auth(napi_env env, napi_callback_info info)
     return result;
 }
 
-static int32_t AssetPreAndPostQuerySuccess(Asset_Attr *attr, uint32_t attrCnt)
-{
+static int32_t AssetPreAndPostQuerySuccess(Asset_Attr *attr, uint32_t attrCnt) {
     uint8_t challengeBuffer[32] = "";
     Asset_Blob challenge = {static_cast<uint32_t>(32), reinterpret_cast<uint8_t *>(challengeBuffer)};
     int32_t result = 0;
@@ -163,8 +159,7 @@ static int32_t AssetPreAndPostQuerySuccess(Asset_Attr *attr, uint32_t attrCnt)
     return result;
 }
 
-static int32_t AssetPreAndPostQueryNotFound(Asset_Attr *attr, uint32_t attrCnt)
-{
+static int32_t AssetPreAndPostQueryNotFound(Asset_Attr *attr, uint32_t attrCnt) {
     uint8_t challengeBuffer[32] = "";
     Asset_Blob challenge = {static_cast<uint32_t>(32), reinterpret_cast<uint8_t *>(challengeBuffer)};
     int32_t result = 0;
@@ -175,8 +170,7 @@ static int32_t AssetPreAndPostQueryNotFound(Asset_Attr *attr, uint32_t attrCnt)
     return result;
 }
 
-static napi_value Asset_PreAndPostQueryNormal(napi_env env, napi_callback_info info)
-{
+static napi_value Asset_PreAndPostQueryNormal(napi_env env, napi_callback_info info) {
     size_t argc = 2;
     napi_value args[2] = {nullptr};
 
@@ -210,14 +204,13 @@ static napi_value Asset_PreAndPostQueryNormal(napi_env env, napi_callback_info i
 
     Asset_Attr attr3[] = {};
     result += AssetPreAndPostQuerySuccess(attr3, sizeof(attr3) / sizeof(attr3[0]));
-    
+
     napi_value result_real;
     napi_create_uint32(env, result, &result_real);
     return result_real;
 }
 
-static napi_value Asset_PreAndPostQueryError(napi_env env, napi_callback_info info)
-{
+static napi_value Asset_PreAndPostQueryError(napi_env env, napi_callback_info info) {
     size_t argc = 2;
     napi_value args[2] = {nullptr};
 
@@ -269,8 +262,7 @@ static napi_value Asset_PreAndPostQueryError(napi_env env, napi_callback_info in
     return result_real;
 }
 
-static napi_value Asset_PreQuery(napi_env env, napi_callback_info info)
-{
+static napi_value Asset_PreQuery(napi_env env, napi_callback_info info) {
     size_t argc = 1;
     napi_value args[1] = {nullptr};
 
@@ -305,8 +297,7 @@ static napi_value Asset_PreQuery(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value Asset_PreAndPostQuery(napi_env env, napi_callback_info info)
-{
+static napi_value Asset_PreAndPostQuery(napi_env env, napi_callback_info info) {
     size_t argc = 1;
     napi_value args[1] = {nullptr};
 
@@ -343,13 +334,12 @@ static napi_value Asset_PreAndPostQuery(napi_env env, napi_callback_info info)
             ret = -1;
         }
     }
-    
+
     napi_create_uint32(env, ret, &result);
     return result;
 }
 
-static napi_value Asset_PostQuery(napi_env env, napi_callback_info info)
-{
+static napi_value Asset_PostQuery(napi_env env, napi_callback_info info) {
     size_t argc = 1;
     napi_value args[1] = {nullptr};
 
@@ -371,8 +361,7 @@ static napi_value Asset_PostQuery(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value Asset_RemoveAll(napi_env env, napi_callback_info info)
-{
+static napi_value Asset_RemoveAll(napi_env env, napi_callback_info info) {
     Asset_Attr attr[] = {
 
     };
@@ -382,8 +371,7 @@ static napi_value Asset_RemoveAll(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value Asset_Remove(napi_env env, napi_callback_info info)
-{
+static napi_value Asset_Remove(napi_env env, napi_callback_info info) {
     size_t argc = 1;
     napi_value args[1] = {nullptr};
 
@@ -406,8 +394,7 @@ static napi_value Asset_Remove(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value Asset_RemoveLabel(napi_env env, napi_callback_info info)
-{
+static napi_value Asset_RemoveLabel(napi_env env, napi_callback_info info) {
     size_t argc = 1;
     napi_value args[1] = {nullptr};
 
@@ -430,8 +417,7 @@ static napi_value Asset_RemoveLabel(napi_env env, napi_callback_info info)
     return result;
 }
 
-static int32_t AssetRemoveInvalidArg(Asset_Attr *attr, uint32_t attrCnt)
-{
+static int32_t AssetRemoveInvalidArg(Asset_Attr *attr, uint32_t attrCnt) {
     int32_t result = 0;
     int32_t ret = OH_Asset_Remove(attr, attrCnt);
     if (ret == ASSET_INVALID_ARGUMENT) {
@@ -440,8 +426,7 @@ static int32_t AssetRemoveInvalidArg(Asset_Attr *attr, uint32_t attrCnt)
     return result;
 }
 
-static napi_value Asset_RemoveError(napi_env env, napi_callback_info info)
-{
+static napi_value Asset_RemoveError(napi_env env, napi_callback_info info) {
     size_t argc = 2;
     napi_value args[2] = {nullptr};
 
@@ -498,8 +483,7 @@ static napi_value Asset_RemoveError(napi_env env, napi_callback_info info)
     return result_real;
 }
 
-static napi_value Asset_QueryAll(napi_env env, napi_callback_info info)
-{
+static napi_value Asset_QueryAll(napi_env env, napi_callback_info info) {
     size_t argc = 2;
     napi_value args[2] = {nullptr};
 
@@ -539,8 +523,7 @@ static napi_value Asset_QueryAll(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value Asset_QueryOption(napi_env env, napi_callback_info info)
-{
+static napi_value Asset_QueryOption(napi_env env, napi_callback_info info) {
     size_t argc = 4;
     napi_value args[4] = {nullptr};
 
@@ -573,8 +556,7 @@ static napi_value Asset_QueryOption(napi_env env, napi_callback_info info)
     return result;
 }
 
-static int32_t AssetQueryInvalidArg(Asset_Attr *attr, uint32_t attrCnt)
-{
+static int32_t AssetQueryInvalidArg(Asset_Attr *attr, uint32_t attrCnt) {
     int32_t result = 0;
     Asset_ResultSet resultSet = {0};
     int32_t ret = OH_Asset_Query(attr, attrCnt, &resultSet);
@@ -585,8 +567,7 @@ static int32_t AssetQueryInvalidArg(Asset_Attr *attr, uint32_t attrCnt)
     return result;
 }
 
-static napi_value Asset_QueryError(napi_env env, napi_callback_info info)
-{
+static napi_value Asset_QueryError(napi_env env, napi_callback_info info) {
     size_t argc = 2;
     napi_value args[2] = {nullptr};
 
@@ -639,8 +620,7 @@ static napi_value Asset_QueryError(napi_env env, napi_callback_info info)
     return result_real;
 }
 
-static napi_value Asset_QueryNum(napi_env env, napi_callback_info info)
-{
+static napi_value Asset_QueryNum(napi_env env, napi_callback_info info) {
     size_t argc = 1;
     napi_value args[1] = {nullptr};
 
@@ -665,8 +645,7 @@ static napi_value Asset_QueryNum(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value Asset_QueryLabel(napi_env env, napi_callback_info info)
-{
+static napi_value Asset_QueryLabel(napi_env env, napi_callback_info info) {
     size_t argc = 2;
     napi_value args[2] = {nullptr};
 
@@ -697,8 +676,7 @@ static napi_value Asset_QueryLabel(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value Asset_UpdateEasy(napi_env env, napi_callback_info info)
-{
+static napi_value Asset_UpdateEasy(napi_env env, napi_callback_info info) {
     size_t argc = 2;
     napi_value args[2] = {nullptr};
 
@@ -734,8 +712,7 @@ static napi_value Asset_UpdateEasy(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value Asset_UpdateLabel(napi_env env, napi_callback_info info)
-{
+static napi_value Asset_UpdateLabel(napi_env env, napi_callback_info info) {
     size_t argc = 3;
     napi_value args[3] = {nullptr};
 
@@ -777,8 +754,7 @@ static napi_value Asset_UpdateLabel(napi_env env, napi_callback_info info)
 }
 
 static int32_t AssetUpdateInvalidArg(Asset_Attr *query, uint32_t queryCnt, Asset_Attr *attributesToUpdate,
-                                     uint32_t updateCnt)
-{
+                                     uint32_t updateCnt) {
     int32_t result = 0;
     int32_t ret = OH_Asset_Update(query, queryCnt, attributesToUpdate, updateCnt);
     if (ret == ASSET_INVALID_ARGUMENT) {
@@ -787,8 +763,7 @@ static int32_t AssetUpdateInvalidArg(Asset_Attr *query, uint32_t queryCnt, Asset
     return result;
 }
 
-static napi_value Asset_UpdateError(napi_env env, napi_callback_info info)
-{
+static napi_value Asset_UpdateError(napi_env env, napi_callback_info info) {
     size_t argc = 2;
     napi_value args[2] = {nullptr};
 
@@ -846,9 +821,21 @@ static napi_value Asset_UpdateError(napi_env env, napi_callback_info info)
     return result_real;
 }
 
+
+static napi_value Asset_QuerySyncResult(napi_env env, napi_callback_info info) {
+    Asset_SyncResult syncResult = {0};
+    int32_t result = OH_Asset_QuerySyncResult(NULL, 0, &syncResult);
+    napi_value result_real = nullptr;
+    if (result == ASSET_SUCCESS) {
+        napi_create_uint32(env, 0, &result_real);
+    } else {
+        napi_create_uint32(env, -1, &result_real);
+    }
+    return result_real;
+}
+
 EXTERN_C_START
-static napi_value Init(napi_env env, napi_value exports)
-{
+static napi_value Init(napi_env env, napi_value exports) {
     napi_property_descriptor desc[] = {
         {"asset_add", nullptr, Asset_Add, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"asset_addCE", nullptr, Asset_AddCE, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -872,6 +859,7 @@ static napi_value Init(napi_env env, napi_value exports)
         {"asset_preQuery", nullptr, Asset_PreQuery, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"asset_preAndPostQuery", nullptr, Asset_PreAndPostQuery, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"asset_postQuery", nullptr, Asset_PostQuery, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"asset_querySyncResult", nullptr, Asset_QuerySyncResult, nullptr, nullptr, nullptr, napi_default, nullptr},
 
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
@@ -886,7 +874,7 @@ static napi_module g_module = {.nm_version = 1,
                                .nm_flags = 0,
                                .nm_filename = nullptr,
                                .nm_register_func = Init,
-                               .nm_modname = "assetNdkTest",
+                               .nm_modname = "assetndktest",
                                .nm_priv = ((void *)0),
                                .reserved = {0}};
 

@@ -17,7 +17,7 @@ import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, TestT
 
 import * as aw from './aw/AssetAwNdk';
 import asset from '@ohos.security.asset';
-import myAssetNdk from 'libassetNdkTest.so';
+import myAssetNdk from 'libassetndktest.so';
 
 
 export default function AssetNdkTest() {
@@ -251,6 +251,19 @@ export default function AssetNdkTest() {
         .assertEqual(aw.assetQueryTrue);
       expect(myAssetNdk.asset_queryAll(aw.aliasLong, aw.secLong))
         .assertEqual(-1);
+    })
+
+    /**
+     * @tc.number :SUB_Security_Asset_QuerySyncResult_NDK_Func_0200
+     * @tc.name  :SUB_Security_Asset_QuerySyncResult_NDK_Func_0200
+     * @tc.desc  :test querySyncResult
+     * @tc.size  :Medium
+     * @tc.type  :Func
+     * @tc.level  :Level3
+     */
+    it('SUB_Security_Asset_QuerySyncResult_NDK_Func_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
+      let result: number = myAssetNdk.asset_querySyncResult();
+      expect(result).assertEqual(0);
     })
 
   })
