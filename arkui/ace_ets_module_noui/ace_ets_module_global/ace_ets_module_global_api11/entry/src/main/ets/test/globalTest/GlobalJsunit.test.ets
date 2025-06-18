@@ -15,7 +15,7 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, Level, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import Utils from '../Utils';
-import deviceinfo from '@ohos.deviceInfo';
+import deviceInfo from '@ohos.deviceInfo';
 export default function globalJsunit() {
   describe('globalJsunit', () => {
     beforeEach(async (done: Function) => {
@@ -87,43 +87,43 @@ export default function globalJsunit() {
       let caseName: string = "ACE_global_isApiVersionGreaterOrEqual"
       console.info(`${caseName} START`);
 
-      let majorApiVersion: number = deviceinfo.sdkApiVersion;
-      let minorApiVersion: number = deviceinfo.sdkMinorApiVersion;
-      let patchApiVersion: number = deviceinfo.sdkPatchApiVersion;
+      let majorApiVersion: number = deviceInfo.sdkApiVersion;
+      let minorApiVersion: number = deviceInfo.sdkMinorApiVersion;
+      let patchApiVersion: number = deviceInfo.sdkPatchApiVersion;
       console.info('IsApiVersionGreaterOrEqual, major:' + majorApiVersion + ', minor:' + minorApiVersion + ', patch:' + patchApiVersion);
       // 验证非法版本
-      let result: boolean = isApiVersionGreaterOrEqual('0,2,3');
+      let result: boolean = isApiVersionGreaterOrEqual('0.2.3');
       expect(result).assertEqual(false);
-      result = isApiVersionGreaterOrEqual('1000,2,3');
+      result = isApiVersionGreaterOrEqual('1000.2.3');
       expect(result).assertEqual(false);
-      result = isApiVersionGreaterOrEqual('1,-1,3');
+      result = isApiVersionGreaterOrEqual('1.-1.3');
       expect(result).assertEqual(false);
-      result = isApiVersionGreaterOrEqual('1,1000,3');
+      result = isApiVersionGreaterOrEqual('1.1000.3');
       expect(result).assertEqual(false);
-      result = isApiVersionGreaterOrEqual('1,2,-1');
+      result = isApiVersionGreaterOrEqual('1.2.-1');
       expect(result).assertEqual(false);
-      result = isApiVersionGreaterOrEqual('1,2,1000');
+      result = isApiVersionGreaterOrEqual('1.2.1000');
       expect(result).assertEqual(false);
 
       if (majorApiVersion < 2 || majorApiVersion > 999 || minorApiVersion < 0 || patchApiVersion < 0) {
         done();
       } else {
         // 验证传参等于系统版本时返回1
-        let result1: boolean = isApiVersionGreaterOrEqual(`${majorApiVersion},${minorApiVersion},${patchApiVersion}`);
+        let result1: boolean = isApiVersionGreaterOrEqual(`${majorApiVersion}.${minorApiVersion}.${patchApiVersion}`);
         console.info('IsApiVersionGreaterOrEqual result1:' + result1);
         expect(result1).assertEqual(true);
 
         // 验证传参小于系统版本时返回1
         majorApiVersion -= 1;
-        let result2 : boolean = isApiVersionGreaterOrEqual(`${majorApiVersion},${minorApiVersion},${patchApiVersion}`);
+        let result2 : boolean = isApiVersionGreaterOrEqual(`${majorApiVersion}.${minorApiVersion}.${patchApiVersion}`);
         console.info('IsApiVersionGreaterOrEqual result2:' + result2);
         expect(result2).assertEqual(true);
 
         // 验证传参大于系统版本时返回0
         majorApiVersion += 2;
-        let result3 : boolean = isApiVersionGreaterOrEqual(`${majorApiVersion},${minorApiVersion},${patchApiVersion}`);
+        let result3 : boolean = isApiVersionGreaterOrEqual(`${majorApiVersion}.${minorApiVersion}.${patchApiVersion}`);
         console.info('IsApiVersionGreaterOrEqual result3:' + result3);
-        expect(result3).assertEqual(true);
+        expect(result3).assertEqual(false);
       }
       console.info(`${caseName} END`);
       done()
