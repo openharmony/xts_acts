@@ -323,10 +323,9 @@ struct MyStateSample {
             }
             case "ProxyRule": {
               try {
-                let proxyRules: Array<webView.ProxyRule>;
                 let proxyConfig: webView.ProxyConfig = new webView.ProxyConfig();
                 proxyConfig.insertProxyRule("https://www.example.com", webView.ProxySchemeFilter.MATCH_HTTP);
-                proxyRules = proxyConfig.getProxyRules();
+                let proxyRules = proxyConfig.getProxyRules();
                 for (let i = 0; i < proxyRules.length; i++) {
                   hilog.info(0x0000, 'testTag', 'Proxy SchemeFiletr=' + proxyRules[i].getSchemeFilter());
                   hilog.info(0x0000, 'testTag', 'Proxy Url=' + proxyRules[i].getUrl());

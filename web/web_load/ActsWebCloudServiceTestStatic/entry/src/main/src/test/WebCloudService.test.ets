@@ -289,7 +289,7 @@ export default function webCloudServiceTest() {
 
         /**
          * @tc.number     : SUB_WEB_WEBVIEWCONTROLLER_GETTITLE_0001
-         * @tc.name       : testWebviewController_postUrl_static
+         * @tc.name       : testWebviewController_loadData_getTitle_static
          * @tc.desc       : test PostUrl
          * @tc.size       : MediumTest
          * @tc.type       : Function
