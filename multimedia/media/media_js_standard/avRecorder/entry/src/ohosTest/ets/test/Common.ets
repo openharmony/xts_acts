@@ -152,6 +152,12 @@ export default class Commmon {
     let filename = `avRecorder_${timestamp}.m4a`;
     return filename;
   }
+  
+  resourceNameAac() {
+    let timestamp = Date.now();
+    let filename = `avRecorder_${timestamp}.aac`;
+    return filename;
+  }
 
   async idleCallback(avRecorder: media.AVRecorder, avConfig: media.AVRecorderConfig, done: Function) {
     console.info('case idleCallback called');
