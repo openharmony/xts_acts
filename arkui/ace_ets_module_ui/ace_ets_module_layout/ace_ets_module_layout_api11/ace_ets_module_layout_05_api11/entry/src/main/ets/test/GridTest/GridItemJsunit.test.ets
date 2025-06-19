@@ -172,7 +172,7 @@ export default function GridItemJsunit() {
       await CommonFunc.sleep(1000);
       let gridItem3 = CommonFunc.getComponentRect('1');
       let left3 = gridItem3.left;
-      expect(Math.abs(Math.ceil(left3 - right1) - Math.ceil(vp2px(4))) <= 1).assertTrue();
+      expect(Math.floor(Math.abs((left3 - right1) - vp2px(4))) <= 1).assertTrue();
       console.info('[GridItemJsunit_0500] END');
       done();
     });

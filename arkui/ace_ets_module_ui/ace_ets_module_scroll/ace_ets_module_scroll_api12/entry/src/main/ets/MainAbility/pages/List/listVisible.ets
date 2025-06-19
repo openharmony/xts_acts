@@ -27,6 +27,14 @@ struct ListVisibleExample {
     {
       title: '星期二',
       projects: ['物理', '化学', '生物']
+    },
+    {
+      title: '星期三',
+      projects: ['历史', '政治', '地理']
+    },
+    {
+      title: '星期四',
+      projects: ['英语', '语文', '数学']
     }
   ]
 
@@ -108,7 +116,7 @@ struct ListVisibleExample {
           ' end index in group: ' + end.itemIndexInGroup)
       })
       .width('90%')
-      .height('70%')
+      .height('50%')
     }
     .width('100%')
     .height('100%')
