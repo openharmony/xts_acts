@@ -30,8 +30,8 @@ export default function ActsNotificationManagerDistributedTest() {
       let TAG:string = "Sub_Notification_Ans_Distributed_Enable_Static_4100"
       console.info(`${TAG} Sub_Notification_Ans_Distributed_Enable_4100 START`)
       try {
-        notificationManager.isDistributedEnabled((err, data) => {
-          if (err&&err.code!==0) {
+        notificationManager.isDistributedEnabled((err: BusinessError | null, data:boolean | undefined) => {
+          if (err) {
             console.info(`${TAG} isDistributedEnabled AsyncCallback err: ${err.code}, errMes: ${err.message}`)
             expect(false).assertTrue()
             done()

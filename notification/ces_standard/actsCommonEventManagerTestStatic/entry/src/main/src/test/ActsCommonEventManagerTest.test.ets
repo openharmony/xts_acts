@@ -22,8 +22,8 @@ export default function ActsCommonEventManagerTest() {
         try {
           hilog.info(domain, TAG, `Sub_Notification_Ans_Publish_Publish_4700 START`)
           hilog.info(domain, TAG, `Sub_Notification_Ans_Publish_Publish_4700 setTimeout come in `);
-          commonEventManager.publish('EVENT01', (err) => {
-            if (err && err.code !== 0) {
+          commonEventManager.publish('EVENT01', (err: BusinessError | null) => {
+            if (err) {
               hilog.info(domain, TAG, `Sub_Notification_Ans_Publish_Publish_4700 err, %{public}s`,
                 JSON.stringify(err));
               expect(false).assertTrue()
@@ -56,8 +56,8 @@ export default function ActsCommonEventManagerTest() {
           isOrdered: true
         }
         try {
-          commonEventManager.publish("EVENT02", options, (err) => {
-            if (err && err.code !== 0) {
+          commonEventManager.publish("EVENT02", options, (err: BusinessError | null) => {
+            if (err) {
               hilog.info(domain, TAG, `Sub_Notification_Ans_Publish_Publish_4800 err, %{public}s`,
                 JSON.stringify(err));
               expect(false).assertTrue()
@@ -69,7 +69,7 @@ export default function ActsCommonEventManagerTest() {
             }
           })
           await Utils.msSleep(3000)
-        } catch (err) {
+        } catch (err: BusinessError) {
           hilog.info(domain, TAG, `Sub_Notification_Ans_Publish_Publish_4800 failed,  %{public}s`,
             JSON.stringify(err));
           expect(false).assertTrue()
@@ -91,8 +91,8 @@ export default function ActsCommonEventManagerTest() {
           events: new Array<string>('event03')
         }
         try {
-          commonEventManager.createSubscriber(subscribeInfo, (err, commonEventSubscriber) => {
-            if (err && err.code !== 0) {
+          commonEventManager.createSubscriber(subscribeInfo, (err: BusinessError | null, commonEventSubscriber: commonEventManager.CommonEventSubscriber| null) => {
+            if (err) {
               hilog.info(domain, TAG, `Sub_Notification_Ans_Subscriber_Subscribe_1500 err,`)
               expect(false).assertTrue()
               done()
@@ -149,8 +149,8 @@ export default function ActsCommonEventManagerTest() {
         }
 
         try {
-          commonEventManager.createSubscriber(subscribeInfo, (err, commonEventSubscriber) => {
-            if (err && err.code !== 0) {
+          commonEventManager.createSubscriber(subscribeInfo, (err: BusinessError | null, commonEventSubscriber: commonEventManager.CommonEventSubscriber| null) => {
+            if (err) {
               hilog.info(domain, TAG,
                 `Sub_Notification_Ans_Subscriber_Subscribe_0400 createSubscriber err, %{public}s`,
                 JSON.stringify(err));
@@ -160,7 +160,7 @@ export default function ActsCommonEventManagerTest() {
               hilog.info(domain, TAG, `Sub_Notification_Ans_Subscriber_Subscribe_0400 createSubscriber success `)
               subscriber = commonEventSubscriber
               try {
-                commonEventManager.subscribe(subscriber, (err, data) => {
+                commonEventManager.subscribe(subscriber, (err: BusinessError | null, data: commonEventManager.CommonEventData| null) => {
                   if (err) {
                     hilog.info(domain, TAG,
                       `Sub_Notification_Ans_Subscriber_Subscribe_0400 subscribe_1 err, %{public}s`,
@@ -205,8 +205,8 @@ export default function ActsCommonEventManagerTest() {
         }
 
         try {
-          commonEventManager.createSubscriber(subscribeInfo, (err, commonEventSubscriber) => {
-            if (err && err.code !== 0) {
+          commonEventManager.createSubscriber(subscribeInfo, (err: BusinessError | null, commonEventSubscriber: commonEventManager.CommonEventSubscriber| null) => {
+            if (err) {
               hilog.info(domain, TAG,
                 `Sub_Notification_Ans_Subscriber_Unsubscribe_0200 createSubscriber err, %{public}s`,
                 JSON.stringify(err));
@@ -216,7 +216,7 @@ export default function ActsCommonEventManagerTest() {
               hilog.info(domain, TAG, `Sub_Notification_Ans_Subscriber_Unsubscribe_0200 createSubscriber success `)
               subscriber = commonEventSubscriber
               try {
-                commonEventManager.subscribe(subscriber, (err, data) => {
+                commonEventManager.subscribe(subscriber, (err: BusinessError | null, data: commonEventManager.CommonEventData| null) => {
                   if (err) {
                     hilog.info(domain, TAG,
                       `Sub_Notification_Ans_Subscriber_Unsubscribe_0200 subscribe_1 err, %{public}s`,
@@ -236,8 +236,8 @@ export default function ActsCommonEventManagerTest() {
               }
               await Utils.msSleep(2000)
               try {
-                commonEventManager.unsubscribe(subscriber, (err) => {
-                  if (err && err.code !== 0) {
+                commonEventManager.unsubscribe(subscriber, (err: BusinessError | null) => {
+                  if (err) {
                     hilog.info(domain, TAG,
                       `Sub_Notification_Ans_Subscriber_Unsubscribe_0200 unsubscribe err, %{public}s`,
                       JSON.stringify(err));
@@ -268,8 +268,8 @@ export default function ActsCommonEventManagerTest() {
           done()
         }
         try {
-          commonEventManager.createSubscriber(subscribeInfo, (err, commonEventSubscriber) => {
-            if (err && err.code !== 0) {
+          commonEventManager.createSubscriber(subscribeInfo, (err: BusinessError | null, commonEventSubscriber: commonEventManager.CommonEventSubscriber| null) => {
+            if (err) {
               hilog.info(domain, TAG,
                 `Sub_Notification_Ans_Subscriber_Unsubscribe_0200 createSubscriber2 err, %{public}s`,
                 JSON.stringify(err));
@@ -279,7 +279,7 @@ export default function ActsCommonEventManagerTest() {
               hilog.info(domain, TAG, `Sub_Notification_Ans_Subscriber_Unsubscribe_0200 createSubscriber2 success `)
               subscriber = commonEventSubscriber
               try {
-                commonEventManager.subscribe(subscriber, (err, data) => {
+                commonEventManager.subscribe(subscriber, (err: BusinessError | null, data: commonEventManager.CommonEventData| null) => {
                   if (err) {
                     hilog.info(domain, TAG,
                       `Sub_Notification_Ans_Subscriber_Unsubscribe_0200 subscribe_2 err, %{public}s`,

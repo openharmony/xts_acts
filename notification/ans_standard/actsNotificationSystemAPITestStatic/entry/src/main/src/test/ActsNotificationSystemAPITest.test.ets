@@ -76,7 +76,7 @@ export default function ActsNotificationSystemAPITest() {
         }
         console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_Static_4100 PUBLISH`);
         try {
-          notificationManager.publish(notificationRequest, 0, (err: BusinessError) => {
+          notificationManager.publish(notificationRequest, 0, (err: BusinessError | null) => {
             if (err) {
               console.info(`${TAG} publish AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
               expect(err.code).assertEqual(202);
@@ -110,7 +110,7 @@ export default function ActsNotificationSystemAPITest() {
           bundle: bundle_name,
           uid: 0
         }
-        notificationManager.setNotificationEnable(bundleOpt, true, (err: BusinessError) => {
+        notificationManager.setNotificationEnable(bundleOpt, true, (err: BusinessError | null) => {
           if (err) {
             console.info(`${TAG} setNotificationEnable AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
             expect(err.code).assertEqual(202);
@@ -139,7 +139,7 @@ export default function ActsNotificationSystemAPITest() {
           bundle: bundle_name,
           uid: 0
         }
-        notificationManager.isNotificationEnabled(bundleOpt, (err: BusinessError, data) => {
+        notificationManager.isNotificationEnabled(bundleOpt, (err: BusinessError | null, data:boolean | undefined) => {
           if (err) {
             console.info(`${TAG} isNotificationEnabled AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
             expect(err.code).assertEqual(202);
@@ -164,8 +164,8 @@ export default function ActsNotificationSystemAPITest() {
         let TAG = 'Sub_Notification_Ans_Enable_Query_Static_0200 ===>'
         console.info(`${TAG} Sub_Notification_Ans_Enable_Query_Static_0200 START`);
 
-        notificationManager.isNotificationEnabled((err: BusinessError, data) => {
-          if (err.code !== 0) {
+        notificationManager.isNotificationEnabled((err: BusinessError | null, data:boolean | undefined) => {
+          if (err) {
             console.info(`${TAG} isNotificationEnabled AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
             expect(false).assertTrue()
             done()
@@ -188,7 +188,7 @@ export default function ActsNotificationSystemAPITest() {
         let TAG = 'Sub_Notification_Ans_Enable_Query_Static_0300 ===>'
         console.info(`${TAG} Sub_Notification_Ans_Enable_Query_Static_0300 START`);
 
-        notificationManager.isNotificationEnabled(0, (err: BusinessError, data) => {
+        notificationManager.isNotificationEnabled(0, (err: BusinessError | null, data:boolean | undefined) => {
           if (err) {
             console.info(`${TAG} isNotificationEnabled AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
             expect(err.code).assertEqual(202);
@@ -217,7 +217,7 @@ export default function ActsNotificationSystemAPITest() {
           bundle: bundle_name,
           uid: 0
         }
-        notificationManager.displayBadge(bundleOpt, true, (err: BusinessError) => {
+        notificationManager.displayBadge(bundleOpt, true, (err: BusinessError | null) => {
           if (err) {
             console.info(`${TAG} displayBadge AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
             if (err.code == 801) {
@@ -251,7 +251,7 @@ export default function ActsNotificationSystemAPITest() {
           bundle: bundle_name,
           uid: 0
         }
-        notificationManager.isBadgeDisplayed(bundleOpt, (err: BusinessError, data) => {
+        notificationManager.isBadgeDisplayed(bundleOpt, (err: BusinessError | null, data:boolean | undefined) => {
           if (err) {
             console.info(`${TAG} isBadgeDisplayed AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
             if (err.code == 801) {
@@ -286,7 +286,7 @@ export default function ActsNotificationSystemAPITest() {
           uid: 0
         }
 
-        notificationManager.getSlotsByBundle(bundleOpt, (err: BusinessError, data) => {
+        notificationManager.getSlotsByBundle(bundleOpt, (err: BusinessError | null, data:Array<notificationManager.NotificationSlot> | undefined) => {
           if (err) {
             console.info(`${TAG} getSlotsByBundle AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
             if (err.code == 801) {
@@ -316,7 +316,7 @@ export default function ActsNotificationSystemAPITest() {
         let TAG = 'Sub_Notification_Ans_Distributed_Search_Static_2000 ===>'
         console.info(`${TAG} Sub_Notification_Ans_Distributed_Search_Static_2000 START`);
 
-        notificationManager.getAllActiveNotifications((err: BusinessError, data) => {
+        notificationManager.getAllActiveNotifications((err: BusinessError| null,  data:Array<notificationManager.NotificationRequest> | undefined) => {
           if (err) {
             console.info(`${TAG} getAllActiveNotifications AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
             expect(err.code).assertEqual(202);
@@ -346,7 +346,7 @@ export default function ActsNotificationSystemAPITest() {
           uid: 0
         }
         let type = notificationManager.SlotType.SOCIAL_COMMUNICATION;
-        notificationManager.setNotificationEnableSlot(bundleOpt, type, true, (err: BusinessError) => {
+        notificationManager.setNotificationEnableSlot(bundleOpt, type, true, (err: BusinessError| null) => {
           if (err) {
             console.info(`${TAG} setNotificationEnableSlot AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
             if (err.code == 801) {
@@ -381,7 +381,7 @@ export default function ActsNotificationSystemAPITest() {
           uid: 0
         }
         let type = notificationManager.SlotType.SOCIAL_COMMUNICATION;
-        notificationManager.isNotificationSlotEnabled(bundleOpt, type, (err: BusinessError, data) => {
+        notificationManager.isNotificationSlotEnabled(bundleOpt, type, (err: BusinessError| null , data:boolean | undefined) => {
           if (err) {
             console.info(`${TAG} isNotificationSlotEnabled AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
             if (err.code == 801) {
@@ -411,7 +411,7 @@ export default function ActsNotificationSystemAPITest() {
         let TAG = 'Sub_Notification_Ans_Subscriber_Subscribe_Static_0100 ===>'
         console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_Static_0100 START`);
 
-        notificationSubscribe.subscribe(subscriber, (err: BusinessError) => {
+        notificationSubscribe.subscribe(subscriber, (err: BusinessError| null) => {
           if (err) {
             console.info(`${TAG} subscribe AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
             expect(err.code).assertEqual(202);
@@ -440,7 +440,7 @@ export default function ActsNotificationSystemAPITest() {
           bundleNames: [bundle_name],
           userId: 0
         }
-        notificationSubscribe.subscribe(subscriber, subscribeInfo, (err: BusinessError) => {
+        notificationSubscribe.subscribe(subscriber, subscribeInfo, (err: BusinessError| null) => {
           if (err) {
             console.info(`${TAG} subscribe AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
             expect(err.code).assertEqual(202);
@@ -493,7 +493,7 @@ export default function ActsNotificationSystemAPITest() {
         let TAG = 'Sub_Notification_Ans_Subscriber_Unsubscribe_Static_0100 ===>'
         console.info(`${TAG} Sub_Notification_Ans_Subscriber_Unsubscribe_Static_0100 START`);
 
-        notificationSubscribe.unsubscribe(subscriber, (err: BusinessError) => {
+        notificationSubscribe.unsubscribe(subscriber, (err: BusinessError| null) => {
           if (err) {
             console.info(`${TAG} unsubscribe AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
             expect(err.code).assertEqual(202);
@@ -527,7 +527,7 @@ export default function ActsNotificationSystemAPITest() {
           label: 'test'
         }
         notificationSubscribe.remove(bundleOpt, key, notificationSubscribe.RemoveReason.CLICK_REASON_REMOVE,
-          (err: BusinessError) => {
+          (err: BusinessError| null) => {
             if (err) {
               console.info(`${TAG} remove AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
               expect(err.code).assertEqual(202);
@@ -553,7 +553,7 @@ export default function ActsNotificationSystemAPITest() {
         console.info(`${TAG} Sub_Notification_Ans_Delete_SpecifiedGroup_Static_0300 START`);
 
         notificationSubscribe.remove("device_0_1", notificationSubscribe.RemoveReason.CLICK_REASON_REMOVE,
-          (err: BusinessError) => {
+          (err: BusinessError| null) => {
             if (err) {
               console.info(`${TAG} remove AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
               expect(err.code).assertEqual(202);

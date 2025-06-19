@@ -29,8 +29,8 @@ export default function ActsNotificationDistributedTest() {
     it('Sub_Notification_Ans_Enable_SetEnable_Static_5000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: () => void): Promise<void> =>  {
       let TAG:string = "Sub_Notification_Ans_Enable_SetEnable_Static_5000"
       console.info(`${TAG} Sub_Notification_Ans_Enable_SetEnable_5000 START`)
-      notificationManager.isDistributedEnabled((err,data) => {
-        if (err.code) {
+      notificationManager.isDistributedEnabled((err: BusinessError | null, data:boolean | undefined) => {
+        if (err) {
           console.info(`${TAG} isDistributedEnabled AsyncCallback err: ${err.code}`)
           expect(false).assertTrue()
           done()
