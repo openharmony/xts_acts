@@ -103,6 +103,7 @@ export default function startAbilityForResultTwoTest() {
               expect(ability01OnWindowStageDestroy).assertEqual('ability01OnWindowStageDestroy_success')
               expect(ability01OnForeground).assertEqual('ability01OnForeground_success')
               expect(ability01OnBackground).assertEqual('ability01OnBackground_success')
+              hilog.info(0x0000, 'testTag', '%{public}s', `${tag} end`);
               done();
             }, 1000);
           }
@@ -235,6 +236,7 @@ export default function startAbilityForResultTwoTest() {
               expect(entryAbility4OnForeground02).assertEqual('entryAbility4OnForeground02_success');
               expect(entryAbility4OnBackground01).assertEqual('entryAbility4OnBackground01_success');
               expect(entryAbility4OnBackground02).assertEqual('entryAbility4OnBackground02_success');
+              hilog.info(0x0000, 'testTag', '%{public}s', `${tag} end`);
               done();
             }, 1000);
           }

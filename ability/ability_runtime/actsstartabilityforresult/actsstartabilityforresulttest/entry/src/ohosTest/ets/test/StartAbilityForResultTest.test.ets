@@ -81,6 +81,7 @@ export default function StartAbilityForResultTest() {
           } else {
             expect(error.code).assertEqual(2097152);
           }
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} end`);
           done();
         })
       } catch (err) {
@@ -119,6 +120,7 @@ export default function StartAbilityForResultTest() {
           } else {
             expect(error.code).assertEqual(2097152);
           }
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} end`);
           done();
         })
       } catch (err) {
@@ -168,6 +170,7 @@ export default function StartAbilityForResultTest() {
         expect(lifeMethodCalledCount).assertEqual(3);
         await delegator.removeAbilityMonitor(monitor).then((data) => {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} removeAbilityMonitor successful: ${JSON.stringify(data)}`);
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} end`);
           done();
         }).catch((err:BusinessError) => {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} removeAbilityMonitor successful: ${JSON.stringify(err.message)}`);
@@ -236,6 +239,7 @@ export default function StartAbilityForResultTest() {
           } else {
             expect(err.code).assertEqual(2097152);
           }
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} end`);
           done();
         })
       }
@@ -280,6 +284,7 @@ export default function StartAbilityForResultTest() {
           } else {
             expect(err.code).assertEqual(2097152);
           }
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} end`);
           done();
         })
       }
@@ -329,6 +334,7 @@ export default function StartAbilityForResultTest() {
         expect(lifeMethodCalledCount).assertEqual(3);
         await delegator.removeAbilityMonitor(monitor).then((data) => {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} removeAbilityMonitor successful: ${JSON.stringify(data)}`);
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} end`);
           done();
         }).catch((err:BusinessError) => {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} removeAbilityMonitor successful: ${JSON.stringify(err.message)}`);
@@ -403,6 +409,7 @@ export default function StartAbilityForResultTest() {
         expect(lifeMethodCalledCount).assertEqual(3);
         await delegator.removeAbilityMonitor(monitor).then((data) => {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} removeAbilityMonitor successful: ${JSON.stringify(data)}`);
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} end`);
           done();
         }).catch((err:BusinessError) => {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} removeAbilityMonitor successful: ${JSON.stringify(err.message)}`);
@@ -484,6 +491,7 @@ export default function StartAbilityForResultTest() {
         expect(lifeMethodCalledCount).assertEqual(3);
         await delegator.removeAbilityMonitor(monitor).then((data) => {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} removeAbilityMonitor successful: ${JSON.stringify(data)}`);
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} end`);
           done();
         }).catch((err:BusinessError) => {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} removeAbilityMonitor successful: ${JSON.stringify(err.message)}`);
@@ -560,6 +568,7 @@ export default function StartAbilityForResultTest() {
         expect(lifeMethodCalledCount).assertEqual(3);
         await delegator.removeAbilityMonitor(monitor).then((data) => {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} removeAbilityMonitor successful: ${JSON.stringify(data)}`);
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} end`);
           done();
         }).catch((err:BusinessError) => {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} removeAbilityMonitor successful: ${JSON.stringify(err.message)}`);
@@ -642,6 +651,7 @@ export default function StartAbilityForResultTest() {
         expect(lifeMethodCalledCount).assertEqual(3);
         await delegator.removeAbilityMonitor(monitor).then((data) => {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} removeAbilityMonitor successful: ${JSON.stringify(data)}`);
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} end`);
           done();
         }).catch((err:BusinessError) => {
           hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} removeAbilityMonitor successful: ${JSON.stringify(err.message)}`);
