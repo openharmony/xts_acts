@@ -1,4 +1,4 @@
-# Copyright (C) 2024 Huawei Device Co., Ltd.
+# Copyright (c) 2024 Huawei Device Co., Ltd.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -11,14 +11,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//build/ohos_var.gni")
+import("//test/xts/tools/build/suite.gni")
 
-group("socket") {
+ohos_js_app_suite("ActsNetworkMgrSocketHasNetTest") {
+  test_hap = true
   testonly = true
-  if (is_standard_system) {
-    deps = [ 
-    "socketHasNetTest:ActsNetworkMgrSocketHasNetTest",
-    "sockettest:ActsNetworkMgrSocketTest" 
-    ]
-  }
+  js_build_mode = "debug"
+  certificate_profile = "signature/openharmony_sx.p7b"
+  hap_name = "ActsNetworkMgrSocketHasNetTest"
+  part_name = "sms_mms"
+  subsystem_name = "telephony"
 }
