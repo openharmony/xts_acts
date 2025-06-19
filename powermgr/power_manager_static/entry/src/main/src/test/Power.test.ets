@@ -354,7 +354,7 @@ export default function PowerTest() {
       let TAG: string = 'testPowerTest_static_1500';
       hilog.info(domain, tag, `${TAG} start`);
       try {
-        ohos_power.setPowerMode(ohos_power.DevicePowerMode.MODE_NORMAL, (error: Error) => {
+        ohos_power.setPowerMode(ohos_power.DevicePowerMode.MODE_NORMAL, (error: BusinessError | null) => {
           if (error) {
             hilog.error(domain, tag, `${TAG} error.toString: ${JSON.stringify(error)}`);
             expect(error.message).assertContain('System permission is denied');
