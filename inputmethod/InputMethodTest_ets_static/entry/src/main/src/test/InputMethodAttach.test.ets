@@ -43,14 +43,13 @@ export default function inputMethodAttachTest() {
                 inputAttribute: attribute
             }
             let CallBack = (error: BusinessError) => {
+                expect(error.code == 0).assertTrue();
                 if (error.code != 0) {
                     console.info(`${CASE_NAME} execution fail,error: [${error.code}, ${error.message}]`);
-                    expect().assertFail();
-                    done();
                 } else {
                     console.info(`${CASE_NAME} execution success`);
-                    done();
                 }
+                done();
             };
             try {
                 inputMethod.getController().attach(true, ATTRIBUTE, CallBack);
@@ -75,14 +74,13 @@ export default function inputMethodAttachTest() {
                 }
             }
             let CallBack = (error: BusinessError) => {
+                expect(error.code == 0).assertTrue();
                 if (error.code != 0) {
                     console.info(`${CASE_NAME} execution fail,error: [${error.code}, ${error.message}]`);
-                    expect().assertFail();
-                    done();
                 } else {
                     console.info(`${CASE_NAME} execution success`);
-                    done();
                 }
+                done();
             };
             try {
                 inputMethod.getController().attach(false, ATTRIBUTE, CallBack);
@@ -107,8 +105,9 @@ export default function inputMethodAttachTest() {
                 }
             }
             try {
-                let data = await inputMethod.getController().attach(true, ATTRIBUTE);
-                console.info(`${CASE_NAME} execution success, data: ${JSON.stringify(data)}`);
+                await inputMethod.getController().attach(true, ATTRIBUTE);
+                console.info(`${CASE_NAME} execution success`);
+                expect(true).assertTrue();
                 done();
             } catch (error: BusinessError) {
                 console.info(`${CASE_NAME} catch error, error: [${error.code}, ${error.message}]`);
@@ -131,8 +130,9 @@ export default function inputMethodAttachTest() {
                 }
             }
             try {
-                let data = await inputMethod.getController().attach(false, ATTRIBUTE);
-                console.info(`${CASE_NAME} execution success, data: ${JSON.stringify(data)}`);
+                await inputMethod.getController().attach(false, ATTRIBUTE);
+                console.info(`${CASE_NAME} execution success`);
+                expect(true).assertTrue();
                 done();
             } catch (error: BusinessError) {
                 console.info(`${CASE_NAME} catch error, error: [${error.code}, ${error.message}]`);
@@ -156,8 +156,9 @@ export default function inputMethodAttachTest() {
             }
             const reason = inputMethod.RequestKeyboardReason.NONE;
             try {
-                let data = await inputMethod.getController().attach(false, ATTRIBUTE, reason);
-                console.info(`${CASE_NAME} execution success, data: ${JSON.stringify(data)}`);
+                await inputMethod.getController().attach(false, ATTRIBUTE, reason);
+                console.info(`${CASE_NAME} execution success`);
+                expect(true).assertTrue();
                 done();
             } catch (error: BusinessError) {
                 console.info(`${CASE_NAME} catch error, error: [${error.code}, ${error.message}]`);

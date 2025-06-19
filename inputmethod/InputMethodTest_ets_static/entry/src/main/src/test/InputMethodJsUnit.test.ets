@@ -128,6 +128,7 @@ export default function inputMethodTest() {
                     }
                 } catch (err: BusinessError) {
                     console.error("====>inputmethodNomal_test_hideSoftKeyboard_static_001 catch err: " + JSON.stringify(err));
+                    expect().assertFail();
                     done();
                     console.info("====>inputmethodNomal_test_hideSoftKeyboard_static_001 end");
                 }
@@ -203,6 +204,7 @@ export default function inputMethodTest() {
                     done();
                 } catch (err) {
                     console.error("inputmethod_test_getInputMethods_static_001 catch error: " + err);
+                    expect().assertFail();
                     done();
                 }
             });
@@ -225,12 +227,14 @@ export default function inputMethodTest() {
                     if (err.code != 0) {
                         console.error("inputmethod_test_getInputMethods_static_002 failed because: " + JSON.stringify(err));
                         expect().assertFail();
+                        done();
                     };
                     console.info("====>inputmethod_test_getInputMethods_static_002 listInputMethod result---");
                     expect(arr != null).assertTrue();
                     done();
                 } catch (err) {
                     console.error("inputmethod_test_getInputMethods_static_002 catch error: " + err);
+                    expect().assertFail();
                     done();
                 }
             });
@@ -253,7 +257,6 @@ export default function inputMethodTest() {
                 expect(typeof (setting) === 'object').assertTrue();
                 done();
                 console.info("====>************* inputmethod_test_getInputMethods_static_003 Test end*************");
-                done();
             } catch (err) {
                 console.info("inputmethod_test_getInputMethods_static_003 catch error: " + err);
                 expect().assertFail();
@@ -278,7 +281,6 @@ export default function inputMethodTest() {
                 expect(typeof (setting) === 'object').assertTrue();
                 done();
                 console.info("====>************* inputmethod_test_getInputMethods_static_004 Test end*************");
-                done();
             } catch (err) {
                 console.info("inputmethod_test_getInputMethods_static_004 catch error: " + err);
                 expect().assertFail();
@@ -307,15 +309,9 @@ export default function inputMethodTest() {
             }
             let arr1 = ["com.example.kikakeyboard", "com.huawei.hmos.inputmethod"];
             bool = arr.includes(arr1[0]) || arr.includes(arr1[1]);
-            if (bool) {
-                expect(true).assertTrue();
-                console.info("====>SUB_InputMethod_IMF_Enable_static_0100 bool: " + JSON.stringify(bool));
-                done();
-            } else {
-                console.info("====>SUB_InputMethod_IMF_Enable_static_0100 bool: " + JSON.stringify(bool));
-                expect().assertFail();
-                done();
-            }
+            expect(bool == true).assertTrue();
+            console.info("====>SUB_InputMethod_IMF_Enable_static_0100 bool: " + JSON.stringify(bool));
+            done();
         });
 
         /**
@@ -337,6 +333,7 @@ export default function inputMethodTest() {
                 done();
             } catch (err) {
                 console.info("====>SUB_InputMethod_IMF_Enable_static_0200 Failed to getInputMethodsSync" + JSON.stringify(err) + err);
+                expect().assertFail();
                 done();
                 console.info("-----------------------SUB_InputMethod_IMF_Enable_static_0200 Test end-----------------------");
             }
@@ -369,17 +366,12 @@ export default function inputMethodTest() {
                     }
                     let arr1 = ["com.example.kikakeyboard", "com.huawei.hmos.inputmethod"];
                     bool = arr.includes(arr1[0]) || arr.includes(arr1[1]);
-                    if (bool) {
-                        expect(true).assertTrue();
-                        console.info("====>SUB_InputMethod_IMF_Enable_static_0400 bool: " + JSON.stringify(bool));
-                        done();
-                    } else {
-                        console.info("====>SUB_InputMethod_IMF_Enable_static_0400 bool: " + JSON.stringify(bool));
-                        expect().assertFail();
-                        done();
-                    }
+                    expect(bool == true).assertTrue();
+                    console.info("====>SUB_InputMethod_IMF_Enable_static_0400 bool: " + JSON.stringify(bool));
+                    done();
                 } catch (err) {
                     console.info("====>SUB_InputMethod_IMF_Enable_static_0400 err: " + JSON.stringify(err));
+                    expect().assertFail();
                     done();
                 }
             });
@@ -406,19 +398,14 @@ export default function inputMethodTest() {
                 }
                 let arr1 = ["com.example.kikakeyboard", "com.huawei.hmos.inputmethod"];
                 bool = arr.includes(arr1[0]) || arr.includes(arr1[1]);
-                if (bool) {
-                    expect(true).assertTrue();
-                    console.info("====>SUB_InputMethod_IMF_Enable_static_0500 bool: " + JSON.stringify(bool));
-                    done();
-                } else {
-                    console.info("====>SUB_InputMethod_IMF_Enable_static_0500 bool: " + JSON.stringify(bool));
-                    expect().assertFail();
-                    done();
-                }
-            } catch (err) {
-                console.info("====>SUB_InputMethod_IMF_Enable_static_0500 catch error: " + JSON.stringify(err));
+                expect(bool == true).assertTrue();
+                console.info("====>SUB_InputMethod_IMF_Enable_static_0500 bool: " + JSON.stringify(bool));
                 done();
                 console.info("-----------------------SUB_InputMethod_IMF_Enable_static_0500 end-----------------------");
+            } catch (err) {
+                console.info("====>SUB_InputMethod_IMF_Enable_static_0500 catch error: " + JSON.stringify(err));
+                expect().assertFail();
+                done();
             }
         });
 
@@ -442,15 +429,9 @@ export default function inputMethodTest() {
             }
             let arr1 = ["com.example.kikakeyboard", "com.huawei.hmos.inputmethod"];
             bool = arr.includes(arr1[0]) || arr.includes(arr1[1]);
-            if (bool) {
-                expect(true).assertTrue();
-                console.info("====>SUB_InputMethod_IMF_Enable_static_0600 bool: " + JSON.stringify(bool));
-                done();
-            } else {
-                console.info("====>SUB_InputMethod_IMF_Enable_static_0600 bool: " + JSON.stringify(bool));
-                expect().assertFail();
-                done();
-            }
+            expect(bool == true).assertTrue();
+            console.info("====>SUB_InputMethod_IMF_Enable_static_0600 bool: " + JSON.stringify(bool));
+            done();
         });
 
         /*
@@ -466,13 +447,7 @@ export default function inputMethodTest() {
             try {
                 let inputMethodSubtype = inputMethod.getCurrentInputMethodSubtype();
                 console.info("====>inputMethod_test_getCurrentInputMethodSubtype_static_001 result:" + typeof inputMethodSubtype);
-                if (typeof inputMethodSubtype == "object") {
-                    console.info("====>inputMethod_test_getCurrentInputMethodSubtype_static_001 getCurrentInputMethodSubtype success");
-                    expect(true).assertTrue();
-                } else {
-                    console.info("====>inputMethod_test_getCurrentInputMethodSubtype_static_001 getCurrentInputMethodSubtype failed");
-                    expect().assertFail();
-                };
+                expect(typeof (inputMethodSubtype) === 'object').assertTrue();
             } catch (error) {
                 console.info("====>inputMethod_test_getCurrentInputMethodSubtype_static_001 getCurrentInputMethodSubtype error" + JSON.stringify(error));
                 expect().assertFail();
@@ -549,13 +524,13 @@ export default function inputMethodTest() {
                         console.info("====>inputMethod_test_listCurrentInputMethodSubtype_static_001  failed" + JSON.stringify(err));
                         expect().assertFail();
                         done();
-                    }
-                    ;
+                    };
                     console.info("====>inputMethod_test_listCurrentInputMethodSubtype_static_001 listCurrentInputMethodSubtype: " + JSON.stringify(data));
-                    expect(true).assertTrue();
+                    expect(data != null).assertTrue();
                     done();
                 } catch (error) {
                     console.info("====>inputMethod_test_listCurrentInputMethodSubtype_static_001 listCurrentInputMethodSubtype catch error" + JSON.stringify(error));
+                    expect().assertFail();
                     done();
                 }
             });
@@ -576,6 +551,7 @@ export default function inputMethodTest() {
                 let inputMethodSetting = inputMethod.getSetting();
                 console.info("====>inputMethod_test_listCurrentInputMethodSubtype_002 getSetting result:" + inputMethodSetting);
                 let data = await inputMethodSetting.listCurrentInputMethodSubtype();
+                expect(data != null).assertTrue();
                 console.info("====>inputMethod_test_listCurrentInputMethodSubtype_002 listCurrentInputMethodSubtype: ");
                 done();
             } catch (error) {
@@ -609,10 +585,11 @@ export default function inputMethodTest() {
                         done();
                     }
                     console.info("====>inputMethod_test_listInputMethodSubtype_static_001 listInputMethodSubtype: " + JSON.stringify(data));
-                    expect(true).assertTrue();
+                    expect(data != null).assertTrue();
                     done();
                 } catch (error) {
                     console.info("====>inputMethod_test_listInputMethodSubtype_static_001 listInputMethodSubtype catch error" + JSON.stringify(error));
+                    expect().assertFail();
                     done();
                 }
             });
@@ -656,6 +633,7 @@ export default function inputMethodTest() {
                     ;
                 } catch (error) {
                     console.info("====>inputMethod_test_listInputMethodSubtype_static_002 listInputMethodSubtype catch error" + JSON.stringify(error));
+                    expect().assertFail();
                     done();
                 }
             });
@@ -680,7 +658,7 @@ export default function inputMethodTest() {
                 console.info("====>inputMethod_test_listInputMethodSubtype_static_003 getSetting result:" + inputMethodSetting);
                 inputMethodSetting.listInputMethodSubtype(inputM).then((data: Array<InputMethodSubtype>) => {
                     console.info("====>inputMethod_test_listInputMethodSubtype_static_003 listInputMethodSubtype: ");
-                    expect(true).assertTrue();
+                    expect(data != null).assertTrue();
                     done();
                 }).catch((err: Error):void => {
                     console.info("====>inputMethod_test_listInputMethodSubtype_static_003  failed" + JSON.stringify(err));
@@ -817,12 +795,6 @@ export default function inputMethodTest() {
          * @tc.level   2
          */
         it('Sub_Misc_inputMethod_EnterKeyType_static_0100', Level.LEVEL2, async (done: () => void) => {
-
-            let functionKey: inputMethod.FunctionKey = {
-                enterKeyType: inputMethod.EnterKeyType.UNSPECIFIED
-            };
-            console.info("====>Sub_Misc_inputMethod_EnterKeyType_static_0100 unspecified:" + functionKey.enterKeyType);
-            expect(functionKey.enterKeyType == 0).assertTrue();
             let unspecified = inputMethod.EnterKeyType.UNSPECIFIED;
             console.info("====>Sub_Misc_inputMethod_EnterKeyType_static_0100 unspecified:" + unspecified);
             expect(unspecified == 0).assertTrue();
@@ -961,6 +933,7 @@ export default function inputMethodTest() {
             } catch (err) {
                 console.info('====>Sub_Misc_inputMethod_inputWindowInfo_static_0201 fail: ' + JSON.stringify(err));
                 expect().assertFail();
+                done();
             }
         });
        /*
@@ -996,18 +969,11 @@ export default function inputMethodTest() {
         * @tc.level   2
         */
         it('Sub_Misc_inputMethod_FunctionKey_static_0100', Level.LEVEL2, async (done: () => void) => {
-            let select_all = inputMethod.ExtendAction.SELECT_ALL;
-            console.info("====>Sub_Misc_inputMethod_ExtendAction_static_0100 select_all:" + select_all);
-            expect(select_all == 0).assertTrue();
-            let cut = inputMethod.ExtendAction.CUT;
-            console.info("====>Sub_Misc_inputMethod_ExtendAction_static_0100 cut:" + cut);
-            expect(cut == 3).assertTrue();
-            let copy = inputMethod.ExtendAction.COPY;
-            console.info("====>Sub_Misc_inputMethod_ExtendAction_static_0100 copy:" + copy);
-            expect(copy == 4).assertTrue();
-            let paste = inputMethod.ExtendAction.PASTE;
-            console.info("====>Sub_Misc_inputMethod_ExtendAction_static_0100 paste:" + paste);
-            expect(paste == 5).assertTrue();
+            let functionKey: inputMethod.FunctionKey = {
+                enterKeyType: inputMethod.EnterKeyType.UNSPECIFIED
+            };
+            console.info("====>Sub_Misc_inputMethod_EnterKeyType_static_0100 unspecified:" + functionKey.enterKeyType);
+            expect(functionKey.enterKeyType == 0).assertTrue();
             done();
         });
     })

@@ -85,14 +85,11 @@ export default function inputMethodTest() {
             let CallBack = (error: BusinessError) => {
                 if (error.code != 0) {
                     console.info(`${CASE_NAME} execution fail,error: [${error.code}, ${error.message}]`);
-                    expectFalse();
-                    done();
-                    
                 } else {
                     console.info(`${CASE_NAME} execution success`);
-                    done();
-                    
                 }
+                expect(error.code == 0).assertTrue();
+                done();
             };
             try {
                 inputMethod.getController().showTextInput(CallBack);
@@ -120,7 +117,6 @@ export default function inputMethodTest() {
                     console.info(`${CASE_NAME} execution success`);
                     expectFalse();
                     done();
-                    
                 }
             };
             try {
@@ -151,8 +147,8 @@ export default function inputMethodTest() {
             try {
                 let data = await inputMethod.getController().showTextInput();
                 console.info(`${CASE_NAME} execution success `);
+                expect(true).assertTrue();
                 done();
-                
             } catch (error:BusinessError) {
                 console.info(`${CASE_NAME} catch error, error: [${error.code}, ${error.message}]`);
                 expectFalse();
@@ -200,14 +196,11 @@ export default function inputMethodTest() {
             let CallBack = (error: BusinessError) => {
                 if (error.code != 0) {
                     console.info(`${CASE_NAME} execution fail,error: [${error.code}, ${error.message}]`);
-                    expectFalse();
-                    done();
-
                 } else {
-                    console.info(`${CASE_NAME} execution success `);
-                    done();
-
+                    console.info(`${CASE_NAME} execution success`);
                 }
+                expect(error.code == 0).assertTrue();
+                done();
             };
             try {
                 inputMethod.getController().hideTextInput(CallBack);
@@ -271,11 +264,11 @@ export default function inputMethodTest() {
                 console.info(`${CASE_NAME} catch error, expect error: [${error.code}, ${error.message}]`);
                 expect(error.code === INVALID_INPUT_METHOD_CLIENT_DETACHED).assertTrue();
                 done();
-                
             }
             try {
-                let data = await inputMethod.getController().hideTextInput();
+                await inputMethod.getController().hideTextInput();
                 console.info(`${CASE_NAME} execution success `);
+                expect(true).assertTrue();
                 done();
 
             } catch (error:BusinessError) {
@@ -326,14 +319,11 @@ export default function inputMethodTest() {
             let CallBack = (error: BusinessError) => {
                 if (error.code != 0) {
                     console.info(`${CASE_NAME} execution fail,error: [${error.code}, ${error.message}]`);
-                    expectFalse();
-                    done();
-                    
                 } else {
-                    console.info(`${CASE_NAME} execution success `);
-                    done();
-                    
+                    console.info(`${CASE_NAME} execution success`);
                 }
+                expect(error.code == 0).assertTrue();
+                done();
             };
             try {
                 inputMethod.getController().detach(CallBack);
@@ -353,8 +343,9 @@ export default function inputMethodTest() {
         it('SUB_Misc_inputMethod_detach_Promise_static_0100', Level.LEVEL2, async (done: () => void) => {
             const CASE_NAME = 'SUB_Misc_inputMethod_detach_Promise_static_0100';
             try {
-                let data = await inputMethod.getController().detach();
+                await inputMethod.getController().detach();
                 console.info(`${CASE_NAME} execution success `);
+                expect(true).assertTrue();
                 done();
                 
             } catch (error:BusinessError) {

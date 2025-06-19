@@ -42,6 +42,7 @@ export default function inputMethodOnOffTest() {
                 inputMethodSetting.on("imeChange", callback1);
                 inputMethodSetting.off("imeChange", callback1);
                 inputMethodSetting.off("imeChange");
+                expect(true).assertTrue();
                 done();
             } catch (error: BusinessError) {
                 hilog.error(domain, tag, `${CASE_NAME} catch error, error: [${error.code}, ${error.message}]`);
@@ -70,6 +71,7 @@ export default function inputMethodOnOffTest() {
                 inputMethodSetting.on("selectByMovement", callback1);
                 inputMethodSetting.off("selectByMovement", callback1);
                 inputMethodSetting.off("selectByMovement");
+                expect(true).assertTrue();
                 done();
             } catch (error: BusinessError) {
                 hilog.error(domain, tag, `${CASE_NAME} catch error, error: [${error.code}, ${error.message}]`);
@@ -98,6 +100,7 @@ export default function inputMethodOnOffTest() {
                 inputMethodSetting.on("selectByRange", callback1);
                 inputMethodSetting.off("selectByRange", callback1);
                 inputMethodSetting.off("selectByRange");
+                expect(true).assertTrue();
                 done();
             } catch (error: BusinessError) {
                 hilog.error(domain, tag, `${CASE_NAME} catch error, error: [${error.code}, ${error.message}]`);
@@ -126,6 +129,7 @@ export default function inputMethodOnOffTest() {
                 inputMethodSetting.on("sendKeyboardStatus", callback1);
                 inputMethodSetting.off("sendKeyboardStatus", callback1);
                 inputMethodSetting.off("sendKeyboardStatus");
+                expect(true).assertTrue();
                 done();
             } catch (error: BusinessError) {
                 hilog.error(domain, tag, `${CASE_NAME} catch error, error: [${error.code}, ${error.message}]`);
@@ -154,6 +158,7 @@ export default function inputMethodOnOffTest() {
                 inputMethodSetting.on("sendFunctionKey", callback1);
                 inputMethodSetting.off("sendFunctionKey", callback1);
                 inputMethodSetting.off("sendFunctionKey");
+                expect(true).assertTrue();
                 done();
             } catch (error: BusinessError) {
                 hilog.error(domain, tag, `${CASE_NAME} catch error, error: [${error.code}, ${error.message}]`);
@@ -182,6 +187,7 @@ export default function inputMethodOnOffTest() {
                 inputMethodSetting.on("moveCursor", callback1);
                 inputMethodSetting.off("moveCursor", callback1);
                 inputMethodSetting.off("moveCursor");
+                expect(true).assertTrue();
                 done();
             } catch (error: BusinessError) {
                 hilog.error(domain, tag, `${CASE_NAME} catch error, error: [${error.code}, ${error.message}]`);
@@ -210,6 +216,7 @@ export default function inputMethodOnOffTest() {
                 inputMethodSetting.on("deleteRight", callback1);
                 inputMethodSetting.off("deleteRight", callback1);
                 inputMethodSetting.off("deleteRight");
+                expect(true).assertTrue();
                 done();
             } catch (error: BusinessError) {
                 hilog.error(domain, tag, `${CASE_NAME} catch error, error: [${error.code}, ${error.message}]`);
@@ -238,6 +245,7 @@ export default function inputMethodOnOffTest() {
                 inputMethodSetting.on("deleteLeft", callback1);
                 inputMethodSetting.off("deleteLeft", callback1);
                 inputMethodSetting.off("deleteLeft");
+                expect(true).assertTrue();
                 done();
             } catch (error: BusinessError) {
                 hilog.error(domain, tag, `${CASE_NAME} catch error, error: [${error.code}, ${error.message}]`);
@@ -266,6 +274,7 @@ export default function inputMethodOnOffTest() {
                 inputMethodSetting.on("handleExtendAction", callback1);
                 inputMethodSetting.off("handleExtendAction", callback1);
                 inputMethodSetting.off("handleExtendAction");
+                expect(true).assertTrue();
                 done();
             } catch (error: BusinessError) {
                 hilog.error(domain, tag, `${CASE_NAME} catch error, error: [${error.code}, ${error.message}]`);
@@ -294,6 +303,7 @@ export default function inputMethodOnOffTest() {
                 inputMethodSetting.on("insertText", callback1);
                 inputMethodSetting.off("insertText", callback1);
                 inputMethodSetting.off("insertText");
+                expect(true).assertTrue();
                 done();
             } catch (error: BusinessError) {
                 hilog.error(domain, tag, `${CASE_NAME} catch error, error: [${error.code}, ${error.message}]`);
@@ -324,6 +334,7 @@ export default function inputMethodOnOffTest() {
                 inputMethodSetting.on("getRightTextOfCursor", callback1);
                 inputMethodSetting.off("getRightTextOfCursor", callback1);
                 inputMethodSetting.off("getRightTextOfCursor");
+                expect(true).assertTrue();
                 done();
             } catch (error: BusinessError) {
                 hilog.error(domain, tag, `${CASE_NAME} catch error, error: [${error.code}, ${error.message}]`);
@@ -354,6 +365,7 @@ export default function inputMethodOnOffTest() {
                 inputMethodSetting.on("getLeftTextOfCursor", callback1);
                 inputMethodSetting.off("getLeftTextOfCursor", callback1);
                 inputMethodSetting.off("getLeftTextOfCursor");
+                expect(true).assertTrue();
                 done();
             } catch (error: BusinessError) {
                 hilog.error(domain, tag, `${CASE_NAME} catch error, error: [${error.code}, ${error.message}]`);
@@ -384,6 +396,7 @@ export default function inputMethodOnOffTest() {
                 inputMethodSetting.on("getTextIndexAtCursor", callback1);
                 inputMethodSetting.off("getTextIndexAtCursor", callback1);
                 inputMethodSetting.off("getTextIndexAtCursor");
+                expect(true).assertTrue();
                 done();
             } catch (error: BusinessError) {
                 hilog.error(domain, tag, `${CASE_NAME} catch error, error: [${error.code}, ${error.message}]`);
