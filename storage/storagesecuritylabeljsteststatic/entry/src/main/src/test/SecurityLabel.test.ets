@@ -92,7 +92,7 @@ let s4: securityLabel.DataLevel = "s4";
         let level = securityLabel.getSecurityLabelSync(fpath);
         expect(level == s2).assertTrue();
         fs.unlinkSync(fpath);
-      } catch (e) {
+      } catch (e: BusinessError) {
         hilog.info(domain, tag, '%{public}s', 'securitylabel_test_set_security_label_sync_static_002 has failed for ' + JSON.stringify(e));
         expect(false).assertTrue();
       }

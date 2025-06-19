@@ -77,7 +77,7 @@ export default function cloudCloudSyncTest() {
 
     /**
      * @tc.number SUB_STORAGE_CLOUDSYNC_TEST_0300
-     * @tc.name test_cloudSync_State_003
+     * @tc.name test_cloudSync_State_static_003
      * @tc.desc function of API, on_progress, SyncState.UPLOADING
      * @tc.size MediumTest
      * @tc.type Function
@@ -853,7 +853,7 @@ export default function cloudCloudSyncTest() {
         fileCache.on('progress', callback);
         expect(true).assertTrue();
       } catch (e: BusinessError) {
-        hilog.info(domain, tag, '%{public}s', 'test_cloudSync_State_032 has failed for' + e.message + ', code: ' + e.code);
+        hilog.info(domain, tag, '%{public}s', 'test_cloudSync_State_static_032 has failed for' + e.message + ', code: ' + e.code);
         expect(false).assertTrue();
       }
       done();

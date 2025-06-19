@@ -247,7 +247,7 @@ export default function cloudFileDownloadTest() {
 
     /**
      * @tc.number SUB_STORAGE_DOWNLOAD_ERROR_TEST_0100
-     * @tc.name test_Download_Error_001
+     * @tc.name test_Download_Error_static_001
      * @tc.desc function of API, Test DownloadErrorType NO_ERROR
      * @tc.size MediumTest
      * @tc.type Function
@@ -379,7 +379,7 @@ export default function cloudFileDownloadTest() {
 
     /**
      * @tc.number SUB_STORAGE_DOWNLOAD_ERROR_TEST_0500
-     * @tc.name test_Download_Error_005
+     * @tc.name test_Download_Error_static_005
      * @tc.desc function of API, Test DownloadErrorType CONTENT_NOT_FOUND
      * @tc.size MediumTest
      * @tc.type Function
@@ -507,7 +507,7 @@ export default function cloudFileDownloadTest() {
 
     /**
      * @tc.number SUB_STORAGE_DOWNLOAD_ERROR_TEST_0900
-     * @tc.name test_CloudSync_ErrorType_009
+     * @tc.name test_CloudSync_ErrorType_static_009
      * @tc.desc function of API, Test ErrorType BATTERY_LEVEL_LOW
      * @tc.size MediumTest
      * @tc.type Function

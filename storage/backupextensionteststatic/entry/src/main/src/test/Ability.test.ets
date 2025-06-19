@@ -4,6 +4,7 @@ import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry
 import BackupExtensionAbility from '@ohos.application.BackupExtensionAbility';
 import { BundleVersion } from '@ohos.application.BackupExtensionAbility';
 import Utils from './Util.test';
+import { BusinessError } from '@ohos.base';
 
 let domain: number = 0x0000;
 let tag: string = 'testTag';
@@ -43,7 +44,7 @@ export default function abilityTest() {
                 hilog.info(domain, tag, '%{public}s', 'backup-extension run ok');
                 expect(true).assertTrue()
                 done()
-            } catch (error) {
+            } catch (error: BusinessError) {
                 hilog.info(domain, tag, '%{public}s', 'backupextension error:'+ JSON.stringify(error));
                 expect(false).assertTrue()
                 done()
