@@ -1917,11 +1917,11 @@ export default function TextPicker() {
       let phAccessHelper: photoAccessHelper.PhotoAccessHelper = photoAccessHelper.getPhotoAccessHelper(getContext());
       try {
         phAccessHelper.getPhotoPickerComponentDefaultAlbumName().then((defaultAlbumName: string) => {
-          console.info("testPicer40 getPhotoPickerComponentDefaultAlbumName, result = " + defaultAlbumName);
-          if (result) {
+          console.info("testPicer40 getPhotoPickerComponentDefaultAlbumName, defaultAlbumName = " + defaultAlbumName);
+          if (defaultAlbumName) {
             expect(true).assertTrue();
           } else {
-            console.error("testPicker40 empty result");
+            console.error("testPicker40 empty defaultAlbumName");
             expect(false).assertTrue();
           }
         })
