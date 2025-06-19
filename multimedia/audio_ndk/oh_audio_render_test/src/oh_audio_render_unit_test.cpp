@@ -1160,7 +1160,7 @@ HWTEST(OHAudioRenderUnitTest, OH_AudioRenderer_GetUnderflowCount_002, TestSize.L
     uint32_t underFlowCount;
     result = OH_AudioRenderer_GetUnderflowCount(audioRenderer, &underFlowCount);
     EXPECT_EQ(result, AUDIOSTREAM_SUCCESS);
-    EXPECT_EQ(underFlowCount, 0);
+    EXPECT_GT(underFlowCount, 0);
 
     OH_AudioRenderer_Stop(audioRenderer);
     OH_AudioRenderer_Release(audioRenderer);
