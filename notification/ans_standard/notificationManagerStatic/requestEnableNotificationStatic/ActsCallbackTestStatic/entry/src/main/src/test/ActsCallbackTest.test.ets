@@ -43,7 +43,7 @@ export default function ActsCallbackTest() {
           hilog.info(domain, tag, '%{public}s', 'onAbilityCreate end');
 
         },
-      }, (err : BusinessError) : void => {
+      }, (err : BusinessError| null) : void => {
         if (err != null ) {
           hilog.info(domain, tag, '%{public}s', '-----'+ err.code);
         }
@@ -64,8 +64,8 @@ export default function ActsCallbackTest() {
       TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
       async (done: () => void): Promise<void> => {
         let TAG = 'Sub_Notification_Ans_NotificationManager_RequestEnableNotification_Callback_Test_Static_0100'
-        notificationManager.requestEnableNotification(testAbilityContext, (err: BusinessError) => {
-          if (err.code!==0) {
+        notificationManager.requestEnableNotification(testAbilityContext, (err: BusinessError| null) => {
+          if (err) {
             console.info(`${TAG} requestEnableNotification err: ${JSON.stringify(err)}`)
             expect(false).assertTrue()
             done()
