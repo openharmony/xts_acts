@@ -352,6 +352,7 @@ public:
     int32_t ColorSpace(void);
     Camera_ErrorCode SessionIsMacroSupported(int useCaseCode);
     Camera_ErrorCode SessionEnableMacro(int useCaseCode, bool enable);
+    Camera_ErrorCode WhiteBalanceTest(void);
 
     // test aid
     Camera_ErrorCode SetSceneMode(int useCaseCode);

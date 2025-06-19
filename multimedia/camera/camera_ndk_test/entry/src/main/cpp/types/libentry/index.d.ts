@@ -164,6 +164,8 @@ export const getCameraHostName: () => number;
 
 export const getCameraHostType: () => number;
 
+export const getWhiteBalanceTest: () => number;
+
 export const createCameraInput: () => number;
 
 export const createCameraInputWithPositionAndType: (position: number, type: number) => number;
