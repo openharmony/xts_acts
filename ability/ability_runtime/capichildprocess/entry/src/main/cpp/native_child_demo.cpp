@@ -22,12 +22,21 @@
 #include <unistd.h>
 #include <hilog/log.h>
 #include <vector>
+#include <ctime>
 #undef LOG_DOMAIN
 #undef LOG_TAG
 #define LOG_DOMAIN 0x3200
 #define LOG_TAG "CHILD_TAG"
 
 extern "C" {
+void delay_ms(int milliseconds)
+{
+    clock_t start_time = clock();
+    while (clock() < start_time + milliseconds * (CLOCKS_PER_SEC / 1000)) {
+        ;
+    }
+}
+
 void Main(NativeChildProcess_Args args)
 {
     // 子进程的入口函数，实现子进程的业务逻辑
@@ -50,6 +59,7 @@ void Main(NativeChildProcess_Args args)
         current = current->next;
         close(fd);
     }
+    delay_ms(200);
     OH_LOG_INFO(LOG_APP, "=================== end");
 }
 }

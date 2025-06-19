@@ -197,12 +197,11 @@ export default function nativeChildProcessExitTest() {
           return;
         }
 
-        let ret : Number = testNapi.startNativeChildProcess('libentry.so');
-        expect(0).assertEqual(ret);
-        await sleep(600);
-
         expect(0).assertEqual(testNapi.registerNativeChildExit());
         await sleep(600);
+
+        let ret : Number = testNapi.startChildNoArgs();
+        expect(0).assertEqual(ret);
 
         subscriber = await commonEvent.createSubscriber(subscriberInfo);
         commonEvent.subscribe(subscriber, (err, data) => {
@@ -228,14 +227,10 @@ export default function nativeChildProcessExitTest() {
             console.debug("in SUB_Ability_AbilityRuntime_NativeChildProcessExit_0400 - timeout");
             commonEvent.unsubscribe(subscriber);
             expect().assertFail();
-        }
-        console.debug("SUB_Ability_AbilityRuntime_NativeChildProcessExit_0400 - timeout");
+          }
+          console.debug("SUB_Ability_AbilityRuntime_NativeChildProcessExit_0400 - timeout");
         }, NATIVE_EXIT_TIMEOUT);
 
-        expect(0).assertEqual(testNapi.requestExitChildProcess(1));
-        await sleep(600);
-
-        testNapi.destroyThread();
         expect(0).assertEqual(testNapi.unregisterNativeChildExit());
         await sleep(600);
       } catch(err) {
