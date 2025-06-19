@@ -70,6 +70,7 @@ export default function callerInfoTest() {
           let unSubscribeCallback = () => {
             setTimeout(async () => {
               hilog.info(0x0000, 'testTag', `${tag} unSubscribeCallback`);
+              hilog.info(0x0000, 'testTag', '%{public}s', `${tag} end`);
               done();
             }, 1000);
           }
@@ -95,26 +96,47 @@ export default function callerInfoTest() {
               }, 500);
             }
             if (data.event == 'ACTS_TEST_ON_CREATE_WANT') {
-              hilog.info(0x0000, 'testTag',
-                `%{public}s', onNewWant, data.parameters.result: ${data.parameters?.result}`);
-              let result:string = checkWantParameters(data.parameters?.result)
-              hilog.info(0x0000, 'testTag',
-                `%{public}s', ACTS_TEST_ON_CREATE_WANT, result is : ${result}`);
-              expect(result).assertEqual('{"component.startup.newRules":true,"debugApp":false,"moduleName":"entry_test","ohos.aafwk.param.callerAbilityName":"TestAbility","ohos.aafwk.param.callerAppId":"com.acts.actsCallerInfoTest_BCtwbrrZTeauTbNG/l1Ke4eowNrJ4I6h8q1xuy6k/XA3i/OlSG8a8Z3HbAVqe2Ic8rHq3139L51ZTFTZKDqc6fw=","ohos.aafwk.param.callerAppIdentifier":"","ohos.aafwk.param.callerBundleName":"com.acts.actsCallerInfoTest"}')
+              try {
+                hilog.info(0x0000, 'testTag',
+                  `%{public}s', onNewWant, data.parameters.result: ${data.parameters?.result}`);
+                let result:string = checkWantParameters(data.parameters?.result)
+                hilog.info(0x0000, 'testTag',
+                  `%{public}s', ACTS_TEST_ON_CREATE_WANT, result is : ${result}`);
+                expect(result).assertEqual('{"component.startup.newRules":true,"debugApp":false,"moduleName":"entry_test","ohos.aafwk.param.callerAbilityName":"TestAbility","ohos.aafwk.param.callerAppId":"com.acts.actsCallerInfoTest_BCtwbrrZTeauTbNG/l1Ke4eowNrJ4I6h8q1xuy6k/XA3i/OlSG8a8Z3HbAVqe2Ic8rHq3139L51ZTFTZKDqc6fw=","ohos.aafwk.param.callerAppIdentifier":"","ohos.aafwk.param.callerBundleName":"com.acts.actsCallerInfoTest"}')
+              } catch (err) {
+                hilog.info(0x0000, 'testTag', '%{public}s',
+                  `ACTS_TEST_ON_CREATE_WANT check failed, error.code: ${code}, error.message: ${message}`);
+                expect().assertFail()
+                done();
+              }
             }
             if (data.event == 'ACTS_TEST_ON_CREATE_WANT_ASSIST') {
-              hilog.info(0x0000, 'testTag',
-                `%{public}s', onNewWant, data.parameters.result: ${data.parameters?.result}`);
-              let result:string = checkWantParameters(data.parameters?.result)
-              hilog.info(0x0000, 'testTag',
-                `%{public}s', ACTS_TEST_ON_CREATE_WANT_ASSIST, result is : ${result}`);
-              expect(result).assertEqual('{"component.startup.newRules":true,"moduleName":"entry","ohos.aafwk.param.callerAbilityName":"callerInfo01","ohos.aafwk.param.callerAppId":"com.acts.actsCallerInfoTest_BCtwbrrZTeauTbNG/l1Ke4eowNrJ4I6h8q1xuy6k/XA3i/OlSG8a8Z3HbAVqe2Ic8rHq3139L51ZTFTZKDqc6fw=","ohos.aafwk.param.callerAppIdentifier":"","ohos.aafwk.param.callerBundleName":"com.acts.actsCallerInfoTest"}')
+              try {
+                hilog.info(0x0000, 'testTag',
+                  `%{public}s', onNewWant, data.parameters.result: ${data.parameters?.result}`);
+                let result:string = checkWantParameters(data.parameters?.result)
+                hilog.info(0x0000, 'testTag',
+                  `%{public}s', ACTS_TEST_ON_CREATE_WANT_ASSIST, result is : ${result}`);
+                expect(result).assertEqual('{"component.startup.newRules":true,"moduleName":"entry","ohos.aafwk.param.callerAbilityName":"callerInfo01","ohos.aafwk.param.callerAppId":"com.acts.actsCallerInfoTest_BCtwbrrZTeauTbNG/l1Ke4eowNrJ4I6h8q1xuy6k/XA3i/OlSG8a8Z3HbAVqe2Ic8rHq3139L51ZTFTZKDqc6fw=","ohos.aafwk.param.callerAppIdentifier":"","ohos.aafwk.param.callerBundleName":"com.acts.actsCallerInfoTest"}')
+              } catch (err) {
+                hilog.info(0x0000, 'testTag', '%{public}s',
+                  `ACTS_TEST_ON_CREATE_WANT_ASSIST check failed, error.code: ${code}, error.message: ${message}`);
+                expect().assertFail()
+                done();
+              }
             }
             if (data.event == 'ACTS_TEST_ON_NEW_WANT') {
-              hilog.info(0x0000, 'testTag',
-                `%{public}s', onNewWant, data.parameters.result: ${data.parameters?.result}`);
-              let result:string = checkWantParameters(data.parameters?.result)
-              expect(result).assertEqual('{"debugApp":false,"moduleName":"entry_test","ohos.aafwk.param.callerAbilityName":"callerInfo02","ohos.aafwk.param.callerAppId":"com.acts.actsCallerInfoTest_BCtwbrrZTeauTbNG/l1Ke4eowNrJ4I6h8q1xuy6k/XA3i/OlSG8a8Z3HbAVqe2Ic8rHq3139L51ZTFTZKDqc6fw=","ohos.aafwk.param.callerAppIdentifier":"","ohos.aafwk.param.callerBundleName":"com.acts.actsCallerInfoTest"}')
+              try {
+                hilog.info(0x0000, 'testTag',
+                  `%{public}s', onNewWant, data.parameters.result: ${data.parameters?.result}`);
+                let result:string = checkWantParameters(data.parameters?.result)
+                expect(result).assertEqual('{"debugApp":false,"moduleName":"entry_test","ohos.aafwk.param.callerAbilityName":"callerInfo02","ohos.aafwk.param.callerAppId":"com.acts.actsCallerInfoTest_BCtwbrrZTeauTbNG/l1Ke4eowNrJ4I6h8q1xuy6k/XA3i/OlSG8a8Z3HbAVqe2Ic8rHq3139L51ZTFTZKDqc6fw=","ohos.aafwk.param.callerAppIdentifier":"","ohos.aafwk.param.callerBundleName":"com.acts.actsCallerInfoTest"}')
+              } catch (err) {
+                hilog.info(0x0000, 'testTag', '%{public}s',
+                  `ACTS_TEST_ON_NEW_WANT check failed, error.code: ${code}, error.message: ${message}`);
+                expect().assertFail()
+                done();
+              }
             }
             if (data.event == 'ACTS_TEST_DESTROY') {
               setTimeout(() => {
@@ -146,6 +168,7 @@ export default function callerInfoTest() {
           let unSubscribeCallback = () => {
             setTimeout(async () => {
               hilog.info(0x0000, 'testTag', `${tag} unSubscribeCallback`);
+              hilog.info(0x0000, 'testTag', '%{public}s', `${tag} end`);
               done();
             }, 1000);
           }
@@ -170,10 +193,17 @@ export default function callerInfoTest() {
               }
             }
             if (data.event == 'ACTS_TEST_ON_CREATE_WANT') {
-              hilog.info(0x0000, 'testTag',
-                `%{public}s', onNewWant, data.parameters.result: ${data.parameters?.result}`);
-              let result:string = checkWantParameters(data.parameters?.result)
-              expect(result).assertEqual('{"component.startup.newRules":true,"debugApp":false,"moduleName":"entry_test","ohos.aafwk.param.callerAbilityName":"TestAbility","ohos.aafwk.param.callerAppId":"com.acts.actsCallerInfoTest_BCtwbrrZTeauTbNG/l1Ke4eowNrJ4I6h8q1xuy6k/XA3i/OlSG8a8Z3HbAVqe2Ic8rHq3139L51ZTFTZKDqc6fw=","ohos.aafwk.param.callerAppIdentifier":"","ohos.aafwk.param.callerBundleName":"com.acts.actsCallerInfoTest"}')
+              try {
+                hilog.info(0x0000, 'testTag',
+                  `%{public}s', onNewWant, data.parameters.result: ${data.parameters?.result}`);
+                let result:string = checkWantParameters(data.parameters?.result)
+                expect(result).assertEqual('{"component.startup.newRules":true,"debugApp":false,"moduleName":"entry_test","ohos.aafwk.param.callerAbilityName":"TestAbility","ohos.aafwk.param.callerAppId":"com.acts.actsCallerInfoTest_BCtwbrrZTeauTbNG/l1Ke4eowNrJ4I6h8q1xuy6k/XA3i/OlSG8a8Z3HbAVqe2Ic8rHq3139L51ZTFTZKDqc6fw=","ohos.aafwk.param.callerAppIdentifier":"","ohos.aafwk.param.callerBundleName":"com.acts.actsCallerInfoTest"}')
+              } catch (err) {
+                hilog.info(0x0000, 'testTag', '%{public}s',
+                  `ACTS_TEST_ON_CREATE_WANT check failed, error.code: ${code}, error.message: ${message}`);
+                expect().assertFail()
+                done();
+              }
             }
             if (data.event == 'ACTS_TEST_DESTROY') {
               setTimeout(() => {
@@ -205,6 +235,7 @@ export default function callerInfoTest() {
           let unSubscribeCallback = () => {
             setTimeout(async () => {
               hilog.info(0x0000, 'testTag', `${tag} unSubscribeCallback`);
+              hilog.info(0x0000, 'testTag', '%{public}s', `${tag} end`);
               done();
             }, 1000);
           }
@@ -234,10 +265,17 @@ export default function callerInfoTest() {
               }
             }
             if (data.event == 'ACTS_TEST_ON_CREATE_WANT') {
-              hilog.info(0x0000, 'testTag',
-                `%{public}s', onCreate, want is: ${data.parameters?.result}`);
-              let result:string = checkWantParameters(data.parameters?.result)
-              expect(result).assertEqual('{"component.startup.newRules":true,"debugApp":false,"moduleName":"entry_test","ohos.aafwk.param.callerAbilityName":"TestAbility","ohos.aafwk.param.callerAppId":"com.acts.actsCallerInfoTest_BCtwbrrZTeauTbNG/l1Ke4eowNrJ4I6h8q1xuy6k/XA3i/OlSG8a8Z3HbAVqe2Ic8rHq3139L51ZTFTZKDqc6fw=","ohos.aafwk.param.callerAppIdentifier":"","ohos.aafwk.param.callerBundleName":"com.acts.actsCallerInfoTest"}')
+              try {
+                hilog.info(0x0000, 'testTag',
+                  `%{public}s', onCreate, want is: ${data.parameters?.result}`);
+                let result:string = checkWantParameters(data.parameters?.result)
+                expect(result).assertEqual('{"component.startup.newRules":true,"debugApp":false,"moduleName":"entry_test","ohos.aafwk.param.callerAbilityName":"TestAbility","ohos.aafwk.param.callerAppId":"com.acts.actsCallerInfoTest_BCtwbrrZTeauTbNG/l1Ke4eowNrJ4I6h8q1xuy6k/XA3i/OlSG8a8Z3HbAVqe2Ic8rHq3139L51ZTFTZKDqc6fw=","ohos.aafwk.param.callerAppIdentifier":"","ohos.aafwk.param.callerBundleName":"com.acts.actsCallerInfoTest"}')
+              } catch (err) {
+                hilog.info(0x0000, 'testTag', '%{public}s',
+                  `ACTS_TEST_ON_CREATE_WANT check failed, error.code: ${code}, error.message: ${message}`);
+                expect().assertFail()
+                done();
+              }
             }
             if (data.event == 'ACTS_TEST_DESTROY') {
               setTimeout(() => {
@@ -269,6 +307,7 @@ export default function callerInfoTest() {
           let unSubscribeCallback = () => {
             setTimeout(async () => {
               hilog.info(0x0000, 'testTag', `${tag} unSubscribeCallback`);
+              hilog.info(0x0000, 'testTag', '%{public}s', `${tag} end`);
               done();
             }, 1000);
           }
@@ -298,10 +337,17 @@ export default function callerInfoTest() {
               }
             }
             if (data.event == 'ACTS_TEST_ON_CREATE_WANT') {
-              hilog.info(0x0000, 'testTag',
-                `%{public}s', onCreate, want is: ${data.parameters?.result}`);
-              let result:string = checkWantParameters(data.parameters?.result)
-              expect(result).assertEqual('{"component.startup.newRules":true,"debugApp":false,"moduleName":"entry_test","ohos.aafwk.param.callerAbilityName":"TestAbility","ohos.aafwk.param.callerAppId":"com.acts.actsCallerInfoTest_BCtwbrrZTeauTbNG/l1Ke4eowNrJ4I6h8q1xuy6k/XA3i/OlSG8a8Z3HbAVqe2Ic8rHq3139L51ZTFTZKDqc6fw=","ohos.aafwk.param.callerAppIdentifier":"","ohos.aafwk.param.callerBundleName":"com.acts.actsCallerInfoTest"}')
+              try {
+                hilog.info(0x0000, 'testTag',
+                  `%{public}s', onCreate, want is: ${data.parameters?.result}`);
+                let result:string = checkWantParameters(data.parameters?.result)
+                expect(result).assertEqual('{"component.startup.newRules":true,"debugApp":false,"moduleName":"entry_test","ohos.aafwk.param.callerAbilityName":"TestAbility","ohos.aafwk.param.callerAppId":"com.acts.actsCallerInfoTest_BCtwbrrZTeauTbNG/l1Ke4eowNrJ4I6h8q1xuy6k/XA3i/OlSG8a8Z3HbAVqe2Ic8rHq3139L51ZTFTZKDqc6fw=","ohos.aafwk.param.callerAppIdentifier":"","ohos.aafwk.param.callerBundleName":"com.acts.actsCallerInfoTest"}')
+              } catch (err) {
+                hilog.info(0x0000, 'testTag', '%{public}s',
+                  `ACTS_TEST_ON_CREATE_WANT check failed, error.code: ${code}, error.message: ${message}`);
+                expect().assertFail()
+                done();
+              }
             }
             if (data.event == 'ACTS_TEST_DESTROY') {
               setTimeout(() => {
@@ -333,6 +379,7 @@ export default function callerInfoTest() {
           let unSubscribeCallback = () => {
             setTimeout(async () => {
               hilog.info(0x0000, 'testTag', `${tag} unSubscribeCallback`);
+              hilog.info(0x0000, 'testTag', '%{public}s', `${tag} end`);
               done();
             }, 1000);
           }
@@ -357,11 +404,18 @@ export default function callerInfoTest() {
               }
             }
             if (data.event == 'ACTS_TEST_ON_CREATE_WANT') {
-              hilog.info(0x0000, 'testTag',
-                `%{public}s', onCreate, want is: ${data.parameters?.result}`);
-              let onCreateWant: string = data.parameters?.result
-              let result:string = checkWantParameters(data.parameters?.result)
-              expect(result).assertEqual('{"component.startup.newRules":true,"debugApp":false,"moduleName":"entry_test","ohos.aafwk.param.callerAbilityName":"TestAbility","ohos.aafwk.param.callerAppId":"com.acts.actsCallerInfoTest_BCtwbrrZTeauTbNG/l1Ke4eowNrJ4I6h8q1xuy6k/XA3i/OlSG8a8Z3HbAVqe2Ic8rHq3139L51ZTFTZKDqc6fw=","ohos.aafwk.param.callerAppIdentifier":"","ohos.aafwk.param.callerBundleName":"com.acts.actsCallerInfoTest"}')
+              try {
+                hilog.info(0x0000, 'testTag',
+                  `%{public}s', onCreate, want is: ${data.parameters?.result}`);
+                let onCreateWant: string = data.parameters?.result
+                let result:string = checkWantParameters(data.parameters?.result)
+                expect(result).assertEqual('{"component.startup.newRules":true,"debugApp":false,"moduleName":"entry_test","ohos.aafwk.param.callerAbilityName":"TestAbility","ohos.aafwk.param.callerAppId":"com.acts.actsCallerInfoTest_BCtwbrrZTeauTbNG/l1Ke4eowNrJ4I6h8q1xuy6k/XA3i/OlSG8a8Z3HbAVqe2Ic8rHq3139L51ZTFTZKDqc6fw=","ohos.aafwk.param.callerAppIdentifier":"","ohos.aafwk.param.callerBundleName":"com.acts.actsCallerInfoTest"}')
+              } catch (err) {
+                hilog.info(0x0000, 'testTag', '%{public}s',
+                  `ACTS_TEST_ON_CREATE_WANT check failed, error.code: ${code}, error.message: ${message}`);
+                expect().assertFail()
+                done();
+              }
             }
             if (data.event == 'ACTS_TEST_DESTROY') {
               setTimeout(() => {
