@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Shenzhen Kaihong Digital Industry Development Co., Ltd.
+ * Copyright (c) 2025 Shenzhen Kaihong Digital Industry Development Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -40,7 +40,7 @@ export default function drawingTsPath5Test() {
       // This API supports only one parameter: clear action function.
     })
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_3300
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_3900
      * @tc.name      : testPathApproximateNormal
      * @tc.desc      : testPathApproximateNormal
      * @tc.size      : MediumTest
@@ -99,7 +99,7 @@ export default function drawingTsPath5Test() {
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_3301
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_3901
      * @tc.name      : testPathApproximateToNull
      * @tc.desc      : testPathApproximateToNull
      * @tc.size      : MediumTest
@@ -129,7 +129,7 @@ export default function drawingTsPath5Test() {
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_3302
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_3902
      * @tc.name      : testPathApproximateMultipleCalls
      * @tc.desc      : testPathApproximateMultipleCalls
      * @tc.size      : MediumTest
@@ -152,36 +152,8 @@ export default function drawingTsPath5Test() {
       }
 
     })
-    // /**
-    //  * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_3303
-    //  * @tc.name      : testPathApproximateAbnormal
-    //  * @tc.desc      : testPathApproximateAbnormal
-    //  * @tc.size      : MediumTest
-    //  * @tc.type      : Function
-    //  * @tc.level     : Level3
-    //  */
-    // it('testPathApproximateAbnormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
-    //   const msg = 'testPathApproximateAbnormal';
-    //   let path: drawing.Path = new drawing.Path();
-    //   try {
-    //     path.approximate(-0.99999);
-    //     console.info(msg + `approximate -0.99999 successes`);
-    //     expect().assertFail()
-    //   } catch (e) {
-    //     console.info(msg + `approximate -0.99999 errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-    //     expect(e.code).assertEqual(25900001);
-    //   }
-    //   try {
-    //     path.approximate(1.1);
-    //     console.info(msg + `approximate 1.1 successes`);
-    //     expect().assertFail()
-    //   } catch (e) {
-    //     console.info(msg + `approximate 1.1 errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-    //     expect(e.code).assertEqual(25900001);
-    //   }
-    // })
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_3400
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_4000
      * @tc.name      : testPathInterpolateNormal
      * @tc.desc      : testPathInterpolateNormal
      * @tc.size      : MediumTest
@@ -250,7 +222,7 @@ export default function drawingTsPath5Test() {
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_3401
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_4001
      * @tc.name      : testPathInterpolateToNull
      * @tc.desc      : testPathInterpolateToNull
      * @tc.size      : MediumTest
@@ -314,7 +286,7 @@ export default function drawingTsPath5Test() {
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_3402
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_4002
      * @tc.name      : testPathInterpolateMultipleCalls
      * @tc.desc      : testPathInterpolateMultipleCalls
      * @tc.size      : MediumTest
@@ -342,38 +314,8 @@ export default function drawingTsPath5Test() {
         expect().assertFail()
       }
     })
-    // /**
-    //  * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_3403
-    //  * @tc.name      : testPathInterpolateAbnormal
-    //  * @tc.desc      : testPathInterpolateAbnormal
-    //  * @tc.size      : MediumTest
-    //  * @tc.type      : Function
-    //  * @tc.level     : Level3
-    //  */
-    // it('testPathInterpolateAbnormal', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, () => {
-    //   const msg = 'testPathInterpolateAbnormal';
-    //   let path: drawing.Path = new drawing.Path();
-    //   let other: drawing.Path = new drawing.Path();
-    //   let interpolatedPath: drawing.Path = new drawing.Path();
-    //   try {
-    //     path.interpolate(other,-0.99999, interpolatedPath);
-    //     console.info(msg + `interpolate -0.99999 successes`);
-    //     expect().assertFail()
-    //   } catch (e) {
-    //     console.info(msg + `interpolate -0.99999 errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-    //     expect(e.code).assertEqual(25900001);
-    //   }
-    //   try {
-    //     path.interpolate(other,1.1, interpolatedPath);
-    //     console.info(msg + `interpolate 1.1 successes`);
-    //     expect().assertFail()
-    //   } catch (e) {
-    //     console.info(msg + `interpolate 1.1 errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-    //     expect(e.code).assertEqual(25900001);
-    //   }
-    // })
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_3500
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_4100
      * @tc.name      : testPathIsInterpolateNormal
      * @tc.desc      : testPathIsInterpolateNormal
      * @tc.size      : MediumTest
@@ -427,7 +369,7 @@ export default function drawingTsPath5Test() {
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_3501
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_4101
      * @tc.name      : testPathIsInterpolateToNull
      * @tc.desc      : testPathIsInterpolateToNull
      * @tc.size      : MediumTest
@@ -455,7 +397,7 @@ export default function drawingTsPath5Test() {
       }
     })
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_3502
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_4102
      * @tc.name      : testPathIsInterpolateMultipleCalls
      * @tc.desc      : testPathIsInterpolateMultipleCalls
      * @tc.size      : MediumTest
