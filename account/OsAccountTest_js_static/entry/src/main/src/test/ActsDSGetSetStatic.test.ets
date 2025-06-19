@@ -92,7 +92,7 @@ export default function ActsDAGetSetTestStatic() {
         let accountAbility: account.DistributedAccountAbility = account.getDistributedAccountAbility();
         try {
           hilog.info(domain, tag, "====>start getOsAccountDistributedInfo callback");
-          accountAbility.getOsAccountDistributedInfo((err: BusinessError, data: account.DistributedInfo) => {
+          accountAbility.getOsAccountDistributedInfo((err: BusinessError<void> | null, data: account.DistributedInfo | undefined) => {
             hilog.info(domain, tag, '====>getOsAccountDistributedInfoStatic_test0200 err:' + JSON.stringify(err));
             hilog.info(domain, tag, '====>getOsAccountDistributedInfoStatic_test0200 data:' + JSON.stringify(data));
             try {
