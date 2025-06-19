@@ -1963,6 +1963,7 @@ export default function TextPicker() {
       let strJson: string = getInspectorByKey('PhotoPickerComponent');
       console.info("testPicker41 JSON.parse(strJson) is" + strJson);
       expect(JSON.parse(strJson).$attrs.visibility).assertEqual('Visibility.Visible');
+      await CommonFunc.sleep(2000);
       router.back();
       console.info("testPicker41 finish");
       done();
@@ -1999,6 +2000,7 @@ export default function TextPicker() {
       let strJson: string = getInspectorByKey('PhotoPickerComponent');
       console.info("testPicker42 JSON.parse(strJson) is" + strJson);
       expect(JSON.parse(strJson).$attrs.visibility).assertEqual('Visibility.Visible');
+      await CommonFunc.sleep(2000);
       router.back();
       console.info("testPicker42 finish");
       done();
@@ -2035,6 +2037,7 @@ export default function TextPicker() {
       let strJson: string = getInspectorByKey('PhotoPickerComponent');
       console.info("testPicker43 JSON.parse(strJson) is" + strJson);
       expect(JSON.parse(strJson).$attrs.visibility).assertEqual('Visibility.Visible');
+      await CommonFunc.sleep(2000);
       router.back();
       console.info("testPicker43 finish");
       done();
