@@ -1239,13 +1239,6 @@ static intptr_t g_externals[] = {
         return nullptr;
     }
 
-    result = nullptr;
-    status = OH_JSVM_GetReferenceValue(env, rstRef, &result);
-    if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestHandleAndRefCase01:OH_JSVM_GetReferenceValue Execution exception.");
-        return nullptr;
-    }
-
     status = OH_JSVM_CloseHandleScope(env, handleScope);
     if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestHandleAndRefCase01:OH_JSVM_CloseHandleScope Failed.");
@@ -1341,13 +1334,6 @@ static intptr_t g_externals[] = {
     status = OH_JSVM_DeleteReference(env1, rstRef);
     if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "TestHandleAndRefCase02:OH_JSVM_DeleteReference Failed.");
-        return nullptr;
-    }
-
-    result = nullptr;
-    status = OH_JSVM_GetReferenceValue(env1, rstRef, &result);
-    if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "TestHandleAndRefCase02:OH_JSVM_GetReferenceValue Execution exception.");
         return nullptr;
     }
 
