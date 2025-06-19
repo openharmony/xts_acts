@@ -96,15 +96,20 @@ export default function ActsDAGetSetTestStatic() {
             hilog.info(domain, tag, '====>getOsAccountDistributedInfoStatic_test0200 err:' + JSON.stringify(err));
             hilog.info(domain, tag, '====>getOsAccountDistributedInfoStatic_test0200 data:' + JSON.stringify(data));
             try {
-              expect(err.code + '' == '0').assertTrue();
-              expect(data.name == 'ohosAnonymousName').assertTrue();
-              expect(data.id == 'ohosAnonymousUid').assertTrue();
-              expect(data.event == '').assertTrue();
-              expect(data.status == account.DistributedAccountStatus.NOT_LOGGED_IN).assertTrue();
+              if (err && data) {
+                expect(err.code + '' == '0').assertTrue();
+                expect(data.name == 'ohosAnonymousName').assertTrue();
+                expect(data.id == 'ohosAnonymousUid').assertTrue();
+                expect(data.event == '').assertTrue();
+                expect(data.status == account.DistributedAccountStatus.NOT_LOGGED_IN).assertTrue();
+                hilog.info(domain, tag, "====>getOsAccountDistributedInfoStatic_test0200 success");
+              } else {
+                hilog.info(domain, tag, '====>getOsAccountDistributedInfo fail');
+                expect().assertFail();
+              }
             } catch (err: BusinessError<void>) {
               hilog.info(domain, tag, '====>Assert Fail, err:' + JSON.stringify(err));
             }
-            hilog.info(domain, tag, "====>getOsAccountDistributedInfoStatic_test0200 success");
             done();
           });
         } catch (err: BusinessError<void>) {
