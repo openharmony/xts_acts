@@ -1694,11 +1694,7 @@ export class KeyboardController {
       return () => assertRunnable();
     } catch (err) {
       console.info(TAG + ` Throw err is ${JSON.stringify(err)}`);
-      if (err.code === 801) {
-        return () => Promise.resolve(true);
-      } else {
-        return () => Promise.resolve(false);
-      } 
+      return () => Promise.resolve(false);
     }
   }
 
@@ -2076,6 +2072,11 @@ export class KeyboardController {
         };
       }
     } catch (err) {
+      if (err.code === 801) {
+        commonEventPublishData = {
+          data: 'SUCCESS'
+        };
+      }
       console.log(`${TAG}====>${testName} catch errL ${JSON.stringify(err)}`);
     }
     commoneventmanager.publish(testName, commonEventPublishData, this.publishCallback);
