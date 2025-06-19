@@ -23,7 +23,7 @@ export default function fileuriTest() {
       try {
         let path = "/data/storage/el2/base/haps/entry/files/sync.jpg";
         let uri = fileUri.getUriFromPath(path);
-        let result = "file://com.example.fileuri/data/storage/el2/base/haps/entry/files/sync.jpg"
+        let result = "file://ohos.acts.storage.fileuri.static/data/storage/el2/base/haps/entry/files/sync.jpg"
         hilog.info(domain, tag, "test_FileUri_GetUriFromPath_static_000 uri: %{public}s", uri);
         hilog.info(domain, tag, "test_FileUri_GetUriFromPath_static_000 result: %{public}s", result);
         expect(uri != "").assertTrue();
@@ -45,7 +45,7 @@ export default function fileuriTest() {
     it('test_FileUri_GetUriFromPath_static_001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (): Promise<void> => {
       try {
         let uri = fileUri.getUriFromPath("");
-        let result = "file://com.example.fileuri"
+        let result = "file://ohos.acts.storage.fileuri.static"
         hilog.info(domain, tag, "test_FileUri_GetUriFromPath_static_001 uri: %{public}s", uri);
         hilog.info(domain, tag, "test_FileUri_GetUriFromPath_static_001 result: %{public}s", result);
         expect(uri != "").assertTrue();
