@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -64,7 +64,7 @@ export default function StateArrayJsunit() {
       await CommonFunc.sleep(1000);
     });
 
-    it('StateArrayJsunit_0100', 0, async (done: Function) => {
+    it('StateArrayJsunit_0100', Level.LEVEL0, async (done: Function) => {
 
       console.info('StateArrayJsunit_0100 START');
       let strJson = getInspectorByKey('text_Array');
@@ -76,7 +76,7 @@ export default function StateArrayJsunit() {
       done();
     });
 
-    it('StateArrayJsunit_0200', 0, async (done: Function) => {
+    it('StateArrayJsunit_0200', Level.LEVEL0, async (done: Function) => {
 
       console.info('StateArrayJsunit_0200 START');
       let driver = await UiDriver.create()
@@ -92,7 +92,7 @@ export default function StateArrayJsunit() {
       done();
     });
 
-    it('StateArrayJsunit_0300', 0, async (done: Function) => {
+    it('StateArrayJsunit_0300', Level.LEVEL0, async (done: Function) => {
 
       console.info('StateArrayJsunit_0300 START');
       let driver = await UiDriver.create()
@@ -108,7 +108,7 @@ export default function StateArrayJsunit() {
       done();
     });
 
-    it('StateArrayJsunit_0400', 0, async (done: Function) => {
+    it('StateArrayJsunit_0400', Level.LEVEL0, async (done: Function) => {
 
       console.info('StateArrayJsunit_0400 START');
       let driver = await UiDriver.create()
@@ -124,7 +124,7 @@ export default function StateArrayJsunit() {
       done();
     });
 
-    it('StateArrayJsunit_0500', 0, async (done: Function) => {
+    it('StateArrayJsunit_0500', Level.LEVEL0, async (done: Function) => {
 
       console.info('StateArrayJsunit_0500 START');
       let strJson = getInspectorByKey('text_ClassA');
@@ -136,7 +136,7 @@ export default function StateArrayJsunit() {
       done();
     });
 
-    it('StateArrayJsunit_0600', 0, async (done: Function) => {
+    it('StateArrayJsunit_0600', Level.LEVEL0, async (done: Function) => {
 
       console.info('StateArrayJsunit_0600 START');
       let driver = await UiDriver.create()
@@ -152,7 +152,7 @@ export default function StateArrayJsunit() {
       done();
     });
 
-    it('StateArrayJsunit_0700', 0, async (done: Function) => {
+    it('StateArrayJsunit_0700', Level.LEVEL0, async (done: Function) => {
 
       console.info('StateArrayJsunit_0700 START');
       let driver = await UiDriver.create()

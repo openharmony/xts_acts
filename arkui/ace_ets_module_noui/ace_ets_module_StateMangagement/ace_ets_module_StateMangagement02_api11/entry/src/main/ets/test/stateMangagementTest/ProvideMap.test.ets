@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -62,7 +62,7 @@ export default function ProvideMap() {
     * @tc.type : 
     * @tc.size : 
     */
-    it('ProvideMap_0100', 0, async (done: Function) => {
+    it('ProvideMap_0100', Level.LEVEL0, async (done: Function) => {
       console.info('ProvideMap_0100 START');
       let driver: Driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -87,7 +87,7 @@ export default function ProvideMap() {
     * @tc.type : 
     * @tc.size : 
     */
-    it('ProvideMap_0200', 0, async (done: Function) => {
+    it('ProvideMap_0200', Level.LEVEL0, async (done: Function) => {
       console.info('ProvideMap_0200 START');
       let driver: Driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -112,7 +112,7 @@ export default function ProvideMap() {
     * @tc.type : 
     * @tc.size : 
     */
-    it('ProvideMap_0300', 0, async (done: Function) => {
+    it('ProvideMap_0300', Level.LEVEL0, async (done: Function) => {
       console.info('ProvideMap_0300 START');
       let driver: Driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -137,7 +137,7 @@ export default function ProvideMap() {
     * @tc.type : 
     * @tc.size : 
     */
-    it('ProvideMap_0400', 0, async (done: Function) => {
+    it('ProvideMap_0400', Level.LEVEL0, async (done: Function) => {
       console.info('ProvideMap_0400 START');
       let driver: Driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -162,7 +162,7 @@ export default function ProvideMap() {
     * @tc.type : 
     * @tc.size : 
     */
-    it('ProvideMap_0500', 0, async (done: Function) => {
+    it('ProvideMap_0500', Level.LEVEL0, async (done: Function) => {
       console.info('ProvideMap_0500 START');
       let driver: Driver = await Driver.create()
       await CommonFunc.sleep(1000);

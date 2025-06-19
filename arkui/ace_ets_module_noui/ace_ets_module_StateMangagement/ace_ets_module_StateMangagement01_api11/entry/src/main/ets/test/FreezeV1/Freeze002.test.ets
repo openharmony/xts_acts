@@ -14,7 +14,7 @@
  */
 
 import { UIElementInfo, Driver, ON, } from '@ohos.UiTest';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 
 function sleep(time: number) {
@@ -59,7 +59,7 @@ export default function FreezeV1Test02() {
      * @tc.name Freeze002_001
      * @tc.desc aceEtsTest
      */
-    it('FreezeTest001', 0, async () => {
+    it('FreezeTest001', Level.LEVEL0, async () => {
       console.info('FreezeTest001 START');
       let driver = await Driver.create();
       let list1 = await driver.findComponent(ON.id('List'));

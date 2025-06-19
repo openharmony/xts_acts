@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -56,7 +56,7 @@ export default function Storage11Jsunit() {
     });
 
     //link给定的键值key存在，返回对应该键值的属性的双向绑定的数据 47
-    it('Storage11Jsunit_0100', 0, async (done: Function) => {
+    it('Storage11Jsunit_0100', Level.LEVEL0, async (done: Function) => {
 
       console.info('[Storage11Jsunit_0100] START');
       let driver = await UiDriver.create()
@@ -72,7 +72,7 @@ export default function Storage11Jsunit() {
     });
 
     //link给定的键值key不存在，返回undefined
-    it('Storage11Jsunit_0200', 0, async (done: Function) => {
+    it('Storage11Jsunit_0200', Level.LEVEL0, async (done: Function) => {
       console.info('[Storage11Jsunit_0200] START');
       let driver = await UiDriver.create()
       let Storage11Button2 = await driver.findComponent(BY.key('Storage11Button2'));
@@ -87,7 +87,7 @@ export default function Storage11Jsunit() {
     });
 
     //setAndLink给定的键值key存在，返回对应该键值的属性的双向绑定的数据 47
-    it('Storage11Jsunit_0300', 0, async (done: Function) => {
+    it('Storage11Jsunit_0300', Level.LEVEL0, async (done: Function) => {
       console.info('[Storage11Jsunit_0300] START');
       let driver = await UiDriver.create()
       let Storage11Button3 = await driver.findComponent(BY.key('Storage11Button3'));
@@ -102,7 +102,7 @@ export default function Storage11Jsunit() {
     });
 
     //setAndLink给定的键值key不存在，初始化新的数据 5
-    it('Storage11Jsunit_0400', 0, async (done: Function) => {
+    it('Storage11Jsunit_0400', Level.LEVEL0, async (done: Function) => {
       console.info('[Storage11Jsunit_0400] START');
       let driver = await UiDriver.create()
       let Storage11Button4 = await driver.findComponent(BY.key('Storage11Button4'));
@@ -117,7 +117,7 @@ export default function Storage11Jsunit() {
     });
 
     //prop给定的键值key存在，返回对应该键值的属性的双向绑定的数据 47
-    it('Storage11Jsunit_0500', 0, async (done: Function) => {
+    it('Storage11Jsunit_0500', Level.LEVEL0, async (done: Function) => {
       console.info('[Storage11Jsunit_0500] START');
       let driver = await UiDriver.create()
       let Storage11Button5 = await driver.findComponent(BY.key('Storage11Button5'));
@@ -132,7 +132,7 @@ export default function Storage11Jsunit() {
     });
 
     //prop给定的键值key存在，返回undefined
-    it('Storage11Jsunit_0600', 0, async (done: Function) => {
+    it('Storage11Jsunit_0600', Level.LEVEL0, async (done: Function) => {
       console.info('[Storage11Jsunit_0600] START');
       let driver = await UiDriver.create()
       let Storage11Button6 = await driver.findComponent(BY.key('Storage11Button6'));
@@ -147,7 +147,7 @@ export default function Storage11Jsunit() {
     });
 
     //setAndProp给定的键值key存在，返回对应该键值的属性的双向绑定的数据 47
-    it('Storage11Jsunit_0700', 0, async (done: Function) => {
+    it('Storage11Jsunit_0700', Level.LEVEL0, async (done: Function) => {
       console.info('[Storage11Jsunit_0700] START');
       let driver = await UiDriver.create()
       let Storage11Button7 = await driver.findComponent(BY.key('Storage11Button7'));
@@ -162,7 +162,7 @@ export default function Storage11Jsunit() {
     });
 
     //setAndProp给定的键值key存在，返回对应该键值的属性的双向绑定的数据 5
-    it('Storage11Jsunit_0800', 0, async (done: Function) => {
+    it('Storage11Jsunit_0800', Level.LEVEL0, async (done: Function) => {
       console.info('[Storage11Jsunit_0800] START');
       let driver = await UiDriver.create()
       let Storage11Button8 = await driver.findComponent(BY.key('Storage11Button8'));

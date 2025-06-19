@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {
   UiComponent,
@@ -56,7 +56,7 @@ export default function StorageProp22Jsunit() {
       done();
     });
 
-    it('StorageProp22Jsunit_0100', 0, async (done: Function) => {
+    it('StorageProp22Jsunit_0100', Level.LEVEL0, async (done: Function) => {
       console.info('StorageProp22Jsunit_0100 START');
       let strJson = getInspectorByKey('lse1');
       let obj: ESObject = JSON.parse(strJson);
@@ -67,7 +67,7 @@ export default function StorageProp22Jsunit() {
       done();
     });
 
-    it('StorageProp22Jsunit_0200', 0, async (done: Function) => {
+    it('StorageProp22Jsunit_0200', Level.LEVEL0, async (done: Function) => {
       console.info('StorageProp22Jsunit_0200 START');
       let strJson = getInspectorByKey('text_sp');
       let obj: ESObject = JSON.parse(strJson);
@@ -78,7 +78,7 @@ export default function StorageProp22Jsunit() {
       done();
     });
 
-    it('StorageProp22Jsunit_0300', 0, async (done: Function) => {
+    it('StorageProp22Jsunit_0300', Level.LEVEL0, async (done: Function) => {
 
       console.info('StorageProp22Jsunit_0300 START');
       let strJson = getInspectorByKey('lse2');
@@ -90,7 +90,7 @@ export default function StorageProp22Jsunit() {
       done();
     });
 
-    it('StorageProp22Jsunit_0400', 0, async (done: Function) => {
+    it('StorageProp22Jsunit_0400', Level.LEVEL0, async (done: Function) => {
 
       console.info('StorageProp22Jsunit_0400 START');
       let strJson = getInspectorByKey('text_spb');
@@ -102,7 +102,7 @@ export default function StorageProp22Jsunit() {
       done();
     });
 
-    it('StorageProp22Jsunit_0500', 0, async (done: Function) => {
+    it('StorageProp22Jsunit_0500', Level.LEVEL0, async (done: Function) => {
 
       console.info('StorageProp22Jsunit_0500 START');
       let driver = await UiDriver.create()
@@ -125,7 +125,7 @@ export default function StorageProp22Jsunit() {
       done();
     });
 
-    it('StorageProp22Jsunit_0600', 0, async (done: Function) => {
+    it('StorageProp22Jsunit_0600', Level.LEVEL0, async (done: Function) => {
       console.info('StorageProp22Jsunit_0600 START');
       let driver = await UiDriver.create()
       let button = await driver.findComponent(BY.key('btn_lse1'));
@@ -147,7 +147,7 @@ export default function StorageProp22Jsunit() {
       done();
     });
 
-    it('StorageProp22Jsunit_0700', 0, async (done: Function) => {
+    it('StorageProp22Jsunit_0700', Level.LEVEL0, async (done: Function) => {
 
       console.info('StorageProp22Jsunit_0700 START');
       let driver = await UiDriver.create()
@@ -170,7 +170,7 @@ export default function StorageProp22Jsunit() {
       done();
     });
 
-    it('StorageProp22Jsunit_0800', 0, async (done: Function) => {
+    it('StorageProp22Jsunit_0800', Level.LEVEL0, async (done: Function) => {
 
       console.info('StorageProp22Jsunit_0800 START');
       let driver = await UiDriver.create()
