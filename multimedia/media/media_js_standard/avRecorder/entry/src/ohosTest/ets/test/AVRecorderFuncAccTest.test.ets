@@ -83,7 +83,7 @@ export default function AVRecorderFuncAccTest() {
 
     /* *
         * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_AAC_AUDIO_FUNCTION_0100
-        * @tc.name      : 001.test pause
+        * @tc.name      : SUB_MULTIMEDIA_MEDIA_AVRECORDER_AAC_AUDIO_FUNCTION_0100
         * @tc.desc      : Recorder audio 001.pause
         * @tc.size      : MediumTest
         * @tc.type      : Function test
@@ -103,7 +103,7 @@ export default function AVRecorderFuncAccTest() {
 
     /* *
         * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_AAC_AUDIO_FUNCTION_0200
-        * @tc.name      : 002.pause->resume
+        * @tc.name      : SUB_MULTIMEDIA_MEDIA_AVRECORDER_AAC_AUDIO_FUNCTION_0200
         * @tc.desc      : Recorder audio pause->resume
         * @tc.size      : MediumTest
         * @tc.type      : Function test
@@ -1092,7 +1092,7 @@ export default function AVRecorderFuncAccTest() {
 
     /* *
         * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_AAC_RELEASE_API_2900
-        * @tc.name      : SUB_MULTIMEDIA_MEDIA_AVRECORDER_AAC_RELEASE_API_2800
+        * @tc.name      : SUB_MULTIMEDIA_MEDIA_AVRECORDER_AAC_RELEASE_API_2900
         * @tc.desc      : Recorder audio resume->release
         * @tc.size      : MediumTest
         * @tc.type      : Reliabilit test
@@ -1771,7 +1771,7 @@ export default function AVRecorderFuncAccTest() {
 
     /* *
         * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_AAC_PREPARE_API_0460
-        * @tc.name      : SUB_MULTIMEDIA_MEDIA_AVRECORDER_AAC_GETAVRECORDERCONFIG_API_007
+        * @tc.name      : SUB_MULTIMEDIA_MEDIA_AVRECORDER_AAC_PREPARE_API_0460
         * @tc.desc      : Recorder audio channel
         * @tc.size      : MediumTest
         * @tc.type      : Reliabilit test
