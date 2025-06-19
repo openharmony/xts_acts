@@ -15,7 +15,7 @@
 
 import { describe, it, expect, TestType, Size, Level, beforeAll} from "../../../hypium/index";
 import hilog from '@ohos.hilog'
-import usbMgr from '@ohos.usbManager'
+import usbMgr from '@ohos.usbManager';
 import { BusinessError } from '@ohos.base';
 
 const domain: number = 0x0000;
