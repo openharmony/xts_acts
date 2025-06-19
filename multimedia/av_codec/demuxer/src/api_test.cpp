@@ -111,6 +111,28 @@ HWTEST_F(DemuxerApiNdkTest, OH_AVSource_CreateWithDataSource_0100, TestSize.Leve
 }
 
 /**
+ * @tc.number    : OH_AVSource_CreateWithDataSourceExt_0100
+ * @tc.name      : OH_AVSource_CreateWithDataSourceExt para error
+ * @tc.desc      : api test
+ */
+HWTEST_F(DemuxerApiNdkTest, OH_AVSource_CreateWithDataSourceExt_0100, TestSize.Level2)
+{
+    OH_AVSource* source = OH_AVSource_CreateWithDataSourceExt(nullptr, nullptr);
+    ASSERT_EQ(nullptr, source);
+
+    OH_AVDataSourceExt dataSourceExt = {
+        .size = 1000,
+        .readAt = nullptr
+    };
+    source = OH_AVSource_CreateWithDataSourceExt(&dataSourceExt, nullptr);
+    ASSERT_EQ(nullptr, source);
+
+    int dummy = 123;
+    source = OH_AVSource_CreateWithDataSourceExt(nullptr, &dummy);
+    ASSERT_EQ(nullptr, source);
+}
+
+/**
  * @tc.number    : DEMUXER_ILLEGAL_PARA_0100
  * @tc.name      : OH_AVSource_CreateWithURI para error
  * @tc.desc      : api test
