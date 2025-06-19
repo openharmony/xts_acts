@@ -492,7 +492,7 @@ export default function SocketGetSocketFdTest() {
             ExpectFail();
             done();
           }).finally(()=>{
-            console.info("`$\{caseName} getSocketFd index is `+index+=====finally")
+            console.info("`${caseName} getSocketFd index is `+index+=====finally")
             if (index < BASE_COUNT) {
               loopToGetFd(index + 1);
             }else {
