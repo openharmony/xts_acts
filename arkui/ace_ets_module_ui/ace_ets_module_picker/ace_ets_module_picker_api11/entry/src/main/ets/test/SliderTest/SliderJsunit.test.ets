@@ -14,7 +14,7 @@
  */
 
 
-import { afterEach, beforeEach, describe, expect, it } from '@ohos/hypium';
+import { afterEach, beforeEach, describe, expect, it, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 
 function sleep(time: number) {
@@ -60,7 +60,7 @@ export default function sliderJsunit() {
      * @tc.name testGetSliderAttr010
      * @tc.desc aceEtsTest
      */
-    it('testGetSliderAttr010', 0, async (done: Function) => {
+    it('testGetSliderAttr010', Level.LEVEL1, async (done: Function) => {
       console.info('testGetSliderAttr1 START');
       let strJson = getInspectorByKey('slider1');
       let obj: ESObject = JSON.parse(strJson);
@@ -82,7 +82,7 @@ export default function sliderJsunit() {
      * @tc.name testGetSliderAttr020
      * @tc.desc aceEtsTest
      */
-    it('testGetSliderAttr020', 0, async (done: Function) => {
+    it('testGetSliderAttr020', Level.LEVEL1, async (done: Function) => {
       console.info('testGetSliderAttr2 START');
       let strJson = getInspectorByKey('slider2');
       let obj: ESObject = JSON.parse(strJson);

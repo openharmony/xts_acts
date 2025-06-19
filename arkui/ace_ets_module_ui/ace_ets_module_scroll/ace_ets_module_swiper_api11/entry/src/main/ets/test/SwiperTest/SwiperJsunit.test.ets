@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
 import events_emitter from '@ohos.events.emitter';
@@ -45,7 +45,7 @@ export default function swiperJsunit() {
       console.info("swiper after each called");
     });
 
-    it('swiperTest_0100', 0, async (done: Function) => {
+    it('swiperTest_0100', Level.LEVEL1, async (done: Function) => {
       console.info('swiperTest_0100 START');
       let strJson: string = getInspectorByKey('swiper');
       console.info("swiperTest_0100 component strJson:" + strJson);
@@ -60,7 +60,7 @@ export default function swiperJsunit() {
       done()
     });
 
-    it('swiperTest_0200', 0, async (done: Function) => {
+    it('swiperTest_0200', Level.LEVEL1, async (done: Function) => {
       console.info('swiperTest_0200 START');
       let strJson: string = getInspectorByKey('swiper');
       console.info("swiperTest_0200 component strJson:" + strJson);
@@ -71,7 +71,7 @@ export default function swiperJsunit() {
       done()
     });
 
-    it('swiperTest_0300', 0, async (done: Function) => {
+    it('swiperTest_0300', Level.LEVEL1, async (done: Function) => {
       console.info('swiperTest_0300 START');
       let strJson: string = getInspectorByKey('swiper');
       console.info("swiperTest_0300 component strJson:" + strJson);
@@ -83,7 +83,7 @@ export default function swiperJsunit() {
       done()
     });
 
-    it('swiperTest_0400', 0, async (done: Function) => {
+    it('swiperTest_0400', Level.LEVEL1, async (done: Function) => {
       console.info('swiperTest_0400 START');
       let strJson: string = getInspectorByKey('swiper');
       console.info("swiperTest_0400 component strJson:" + strJson);
@@ -95,7 +95,7 @@ export default function swiperJsunit() {
       done()
     });
 
-    it('swiperTest_0500', 0, async (done: Function) => {
+    it('swiperTest_0500', Level.LEVEL1, async (done: Function) => {
       console.info('swiperTest_0500 START');
       let strJson: string = getInspectorByKey('swiper');
       console.info("swiperTest_0500 component strJson:" + strJson);
@@ -107,7 +107,7 @@ export default function swiperJsunit() {
       done()
     });
 
-    it('swiperTest_0600', 0, async (done: Function) => {
+    it('swiperTest_0600', Level.LEVEL1, async (done: Function) => {
       console.info('swiperTest_0600 START');
       try {
         let eventData: events_emitter.EventData = {
@@ -133,7 +133,7 @@ export default function swiperJsunit() {
       done()
     });
 
-    it('swiperTest_0700', 0, async (done: Function) => {
+    it('swiperTest_0700', Level.LEVEL1, async (done: Function) => {
       console.info('swiperTest_0700 START');
       try {
         let eventData: events_emitter.EventData = {
@@ -159,7 +159,7 @@ export default function swiperJsunit() {
       done()
     });
 
-    it('swiperTest_0800', 0, async (done: Function) => {
+    it('swiperTest_0800', Level.LEVEL1, async (done: Function) => {
       console.info('swiperTest_0800 START');
       await CommonFunc.sleep(1500);
       let callback = (InnerEvent: events_emitter.EventData) => {
@@ -182,7 +182,7 @@ export default function swiperJsunit() {
       done()
     });
 
-    it('swiperTest_0900', 0, async (done: Function) => {
+    it('swiperTest_0900', Level.LEVEL1, async (done: Function) => {
       console.info('swiperTest_0900 START');
       await CommonFunc.sleep(1500);
       let callback = (InnerEvent: events_emitter.EventData) => {
@@ -204,7 +204,7 @@ export default function swiperJsunit() {
       console.info('swiperTest_0900 END');
     });
 
-    it('swiperTest_1000', 0, async (done: Function) => {
+    it('swiperTest_1000', Level.LEVEL1, async (done: Function) => {
       console.info('swiperTest_1000 START');
       await CommonFunc.sleep(1500);
       let callbackOne = (InnerEventOne: events_emitter.EventData) => {
@@ -240,7 +240,7 @@ export default function swiperJsunit() {
       console.info('swiperTest_1000 END');
     });
 
-    it('swiperTest_1100', 0, async (done: Function) => {
+    it('swiperTest_1100', Level.LEVEL1, async (done: Function) => {
       console.info('swiperTest_1100 START');
       try {
         let eventData: events_emitter.EventData = {
@@ -266,7 +266,7 @@ export default function swiperJsunit() {
       done()
     });
 
-    it('swiperTest_1200', 0, async (done: Function) => {
+    it('swiperTest_1200', Level.LEVEL1, async (done: Function) => {
       console.info('swiperTest_1200 START');
       try {
         let eventData: events_emitter.EventData = {
@@ -292,7 +292,7 @@ export default function swiperJsunit() {
       done()
     });
 
-    it('swiperTest_1300', 0, async (done: Function) => {
+    it('swiperTest_1300', Level.LEVEL1, async (done: Function) => {
       console.info('swiperTest_1300 START');
       try {
         let eventData: events_emitter.EventData = {
@@ -318,7 +318,7 @@ export default function swiperJsunit() {
       done()
     });
 
-    it('swiperTest_1400', 0, async (done: Function) => {
+    it('swiperTest_1400', Level.LEVEL1, async (done: Function) => {
       console.info('swiperTest_1400 START');
       try {
         let eventData: events_emitter.EventData = {
@@ -343,7 +343,7 @@ export default function swiperJsunit() {
       done()
     });
 
-    it('swiperTest_1500', 0, async (done: Function) => {
+    it('swiperTest_1500', Level.LEVEL1, async (done: Function) => {
       console.info('swiperTest_1500 START');
       try {
         let eventData: events_emitter.EventData = {
@@ -369,7 +369,7 @@ export default function swiperJsunit() {
       done()
     });
 
-    it('swiperTest_1600', 0, async (done: Function) => {
+    it('swiperTest_1600', Level.LEVEL1, async (done: Function) => {
       console.info('swiperTest_1600 START');
       try {
         let eventData: events_emitter.EventData = {
@@ -395,7 +395,7 @@ export default function swiperJsunit() {
       done()
     });
 
-    it('swiperTest_1700', 0, async (done: Function) => {
+    it('swiperTest_1700', Level.LEVEL1, async (done: Function) => {
       console.info('swiperTest_1700 START');
       try {
         let eventData: events_emitter.EventData = {
@@ -421,7 +421,7 @@ export default function swiperJsunit() {
       done()
     });
 
-    it('swiperTest_1800', 0, async (done: Function) => {
+    it('swiperTest_1800', Level.LEVEL1, async (done: Function) => {
       console.info('swiperTest_1800 START');
       try {
         let eventData: events_emitter.EventData = {
@@ -447,7 +447,7 @@ export default function swiperJsunit() {
       done()
     });
 
-    it('swiperTest_1900', 0, async (done: Function) => {
+    it('swiperTest_1900', Level.LEVEL1, async (done: Function) => {
       console.info('swiperTest_1900 START');
       try {
         let eventData: events_emitter.EventData = {
@@ -473,7 +473,7 @@ export default function swiperJsunit() {
       done()
     });
 
-    it('swiperTest_2000', 0, async (done: Function) => {
+    it('swiperTest_2000', Level.LEVEL1, async (done: Function) => {
       console.info('swiperTest_2000 START');
       try {
         let eventData: events_emitter.EventData = {

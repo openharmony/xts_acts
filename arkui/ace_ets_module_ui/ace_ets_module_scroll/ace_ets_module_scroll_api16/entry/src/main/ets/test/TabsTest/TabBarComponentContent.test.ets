@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -48,7 +48,7 @@ export default function TabBarComponentContent() {
      * @tc.desc      Test whether ComponentContent is effective on tabbar
      * @tc.level     Level 2
      */
-    it('TabBarComponentContent_0100', 0, async (done: Function) => {
+    it('TabBarComponentContent_0100', Level.LEVEL1, async (done: Function) => {
       let driver = Driver.create();
       let button1 = await driver.findComponent(ON.id('button1'));
       await button1.click();
@@ -70,7 +70,7 @@ export default function TabBarComponentContent() {
      * @tc.desc      Test whether undefined is effective on tabbar
      * @tc.level     Level 2
      */
-    it('TabBarComponentContent_0200', 0, async (done: Function) => {
+    it('TabBarComponentContent_0200', Level.LEVEL1, async (done: Function) => {
       let driver = Driver.create();
       let button2 = await driver.findComponent(ON.id('button2'));
       await button2.click();
@@ -88,7 +88,7 @@ export default function TabBarComponentContent() {
      * @tc.desc      Test whether null is effective on tabbar
      * @tc.level     Level 2
      */
-    it('TabBarComponentContent_0300', 0, async (done: Function) => {
+    it('TabBarComponentContent_0300', Level.LEVEL1, async (done: Function) => {
       let driver = Driver.create();
       let button3 = await driver.findComponent(ON.id('button3'));
       await button3.click();

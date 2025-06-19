@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, {RectValue} from "../../../MainAbility/common/Common";
 import {
@@ -74,7 +74,7 @@ export default function swiperItemPadMar() {
     //     * @tc.name      testSwiperItemSetPaddingMargin.
     //     * @tc.desc      Set swiper's  first item's  margin and padding both values ' 20 '.
     //     */
-    //    it('testSwiperItemSetPaddingMargin', 0, async  (done:Function)=> {
+    //    it('testSwiperItemSetPaddingMargin', Level.LEVEL1, async  (done:Function)=> {
     //      console.info('new testSwiperItemSetPaddingMargin START');
     //      await CommonFunc.sleep(1000);
     //      let strJson = getInspectorByKey('swiperItemPadMar');

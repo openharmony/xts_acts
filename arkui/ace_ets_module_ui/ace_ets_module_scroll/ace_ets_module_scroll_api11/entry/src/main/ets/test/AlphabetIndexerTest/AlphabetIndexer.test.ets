@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -101,7 +101,7 @@ export default function ActsAlphabetIndexerUxTest() {
       done();
     })
 
-    it('ArkUI_AlphabetIndexer_0100', 0, async (done: Function) => {
+    it('ArkUI_AlphabetIndexer_0100', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_0100 start");
       let strJson = getInspectorByKey('alphabetIndexerTest1');
       let obj: ESObject = JSON.parse(strJson);
@@ -114,7 +114,7 @@ export default function ActsAlphabetIndexerUxTest() {
       done();
     });
 
-    it('ArkUI_AlphabetIndexer_0600', 0, async (done: Function) => {
+    it('ArkUI_AlphabetIndexer_0600', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_0600 start");
       let strJson = getInspectorByKey('alphabetIndexerTest6');
       let obj: ESObject = JSON.parse(strJson);
@@ -123,7 +123,7 @@ export default function ActsAlphabetIndexerUxTest() {
       done();
     });
 
-    it('ArkUI_AlphabetIndexer_0700', 0, async (done: Function) => {
+    it('ArkUI_AlphabetIndexer_0700', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_0700 start");
       let strJson = getInspectorByKey('alphabetIndexerTest7');
       let obj: ESObject = JSON.parse(strJson);
@@ -131,7 +131,7 @@ export default function ActsAlphabetIndexerUxTest() {
       done();
     });
 
-    it('ArkUI_AlphabetIndexer_0800', 0, async (done: Function) => {
+    it('ArkUI_AlphabetIndexer_0800', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_0800 start");
       let strJson = getInspectorByKey('alphabetIndexerTest2');
       try {
@@ -156,7 +156,7 @@ export default function ActsAlphabetIndexerUxTest() {
       done();
     });
 
-    it('ArkUI_AlphabetIndexer_0900', 0, async (done: Function) => {
+    it('ArkUI_AlphabetIndexer_0900', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_0900 start");
       let strJson = getInspectorByKey('alphabetIndexerTest2');
       try {
@@ -181,7 +181,7 @@ export default function ActsAlphabetIndexerUxTest() {
       done();
     });
 
-    it('ArkUI_AlphabetIndexer_1000', 0, async (done: Function) => {
+    it('ArkUI_AlphabetIndexer_1000', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_1000 start");
       let strJson = getInspectorByKey('alphabetIndexerTest2');
       try {
@@ -206,7 +206,7 @@ export default function ActsAlphabetIndexerUxTest() {
       done();
     });
 
-    it('ArkUI_AlphabetIndexer_1100', 0, async (done: Function) => {
+    it('ArkUI_AlphabetIndexer_1100', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_1100 start");
       let strJson = getInspectorByKey('alphabetIndexerTest2');
       try {
@@ -231,7 +231,7 @@ export default function ActsAlphabetIndexerUxTest() {
       done();
     });
 
-    it('ArkUI_AlphabetIndexer_1200', 0, async (done: Function) => {
+    it('ArkUI_AlphabetIndexer_1200', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_1200 start");
       let strJson = getInspectorByKey('alphabetIndexerTest2');
       try {
@@ -256,7 +256,7 @@ export default function ActsAlphabetIndexerUxTest() {
       done();
     });
 
-    it('ArkUI_AlphabetIndexer_1300', 0, async (done: Function) => {
+    it('ArkUI_AlphabetIndexer_1300', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_1300 start");
       let strJson = getInspectorByKey('alphabetIndexerTest2');
       try {
@@ -281,7 +281,7 @@ export default function ActsAlphabetIndexerUxTest() {
       done();
     });
 
-    it('ArkUI_AlphabetIndexer_1400', 0, async (done: Function) => {
+    it('ArkUI_AlphabetIndexer_1400', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_1400 start");
       let strJson = getInspectorByKey('alphabetIndexerTest3');
       try {
@@ -306,7 +306,7 @@ export default function ActsAlphabetIndexerUxTest() {
       done();
     });
 
-    it('ArkUI_AlphabetIndexer_1500', 0, async (done: Function) => {
+    it('ArkUI_AlphabetIndexer_1500', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_1500 start");
       let strJson = getInspectorByKey('alphabetIndexerTest3');
       try {
@@ -331,7 +331,7 @@ export default function ActsAlphabetIndexerUxTest() {
       done();
     });
 
-    it('ArkUI_AlphabetIndexer_1600', 0, async (done: Function) => {
+    it('ArkUI_AlphabetIndexer_1600', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_1600 start");
       let strJson = getInspectorByKey('alphabetIndexerTest3');
       try {
@@ -356,7 +356,7 @@ export default function ActsAlphabetIndexerUxTest() {
       done();
     });
 
-    it('ArkUI_AlphabetIndexer_1700', 0, async (done: Function) => {
+    it('ArkUI_AlphabetIndexer_1700', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_1700 start");
       let strJson = getInspectorByKey('alphabetIndexerTest3');
       try {
@@ -381,7 +381,7 @@ export default function ActsAlphabetIndexerUxTest() {
       done();
     });
 
-    it('ArkUI_AlphabetIndexer_1800', 0, async (done: Function) => {
+    it('ArkUI_AlphabetIndexer_1800', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_1800 start");
       let strJson = getInspectorByKey('alphabetIndexerTest3');
       try {
@@ -406,7 +406,7 @@ export default function ActsAlphabetIndexerUxTest() {
       done();
     });
 
-    it('ArkUI_AlphabetIndexer_1900', 0, async (done: Function) => {
+    it('ArkUI_AlphabetIndexer_1900', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_1900 start");
       let strJson = getInspectorByKey('alphabetIndexerTest3');
       try {
@@ -431,7 +431,7 @@ export default function ActsAlphabetIndexerUxTest() {
       done();
     })
 
-    it('ArkUI_AlphabetIndexer_2600', 0, async (done: Function) => {
+    it('ArkUI_AlphabetIndexer_2600', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_2600 start");
       let strJson = getInspectorByKey('alphabetIndexerTest4');
       try {
@@ -456,7 +456,7 @@ export default function ActsAlphabetIndexerUxTest() {
       done();
     });
 
-    it('ArkUI_AlphabetIndexer_2700', 0, async (done: Function) => {
+    it('ArkUI_AlphabetIndexer_2700', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_2700 start");
       let strJson = getInspectorByKey('alphabetIndexerTest4');
       try {
@@ -481,7 +481,7 @@ export default function ActsAlphabetIndexerUxTest() {
       done();
     });
 
-    it('ArkUI_AlphabetIndexer_2800', 0, async (done: Function) => {
+    it('ArkUI_AlphabetIndexer_2800', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_2800 start");
       let strJson = getInspectorByKey('alphabetIndexerTest4');
       try {
@@ -506,7 +506,7 @@ export default function ActsAlphabetIndexerUxTest() {
       done();
     });
 
-    it('ArkUI_AlphabetIndexer_2900', 0, async (done: Function) => {
+    it('ArkUI_AlphabetIndexer_2900', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_2900 start");
       let strJson = getInspectorByKey('alphabetIndexerTest4');
       try {
@@ -531,7 +531,7 @@ export default function ActsAlphabetIndexerUxTest() {
       done();
     });
 
-    it('ArkUI_AlphabetIndexer_3000', 0, async (done: Function) => {
+    it('ArkUI_AlphabetIndexer_3000', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_3000 start");
       let strJson = getInspectorByKey('alphabetIndexerTest4');
       try {
@@ -556,7 +556,7 @@ export default function ActsAlphabetIndexerUxTest() {
       done();
     });
 
-    it('ArkUI_AlphabetIndexer_3100', 0, async (done: Function) => {
+    it('ArkUI_AlphabetIndexer_3100', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_AlphabetIndexer_3100 start");
       let strJson = getInspectorByKey('alphabetIndexerTest4');
       try {

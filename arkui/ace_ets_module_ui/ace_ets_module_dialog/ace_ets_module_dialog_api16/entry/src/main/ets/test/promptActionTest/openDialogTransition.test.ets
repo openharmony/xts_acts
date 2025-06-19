@@ -14,7 +14,7 @@
  */
 
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { abilityDelegatorRegistry, Driver, ON } from '@kit.TestKit';
 import { Want } from '@kit.AbilityKit';
 import CommonFunc from '../../MainAbility/common/Common';
@@ -79,7 +79,7 @@ export default function openDialogTransitionTest() {
       }
     });
 
-    it('OpenDialogTransitionTest_100', 0, async (done: Function) => {
+    it('OpenDialogTransitionTest_100', Level.LEVEL2, async (done: Function) => {
       console.info('OpenDialogTransitionTest_100 start');
       let driver: Driver = Driver.create();
       let maskTransitionButton = await driver.findComponent(ON.id('EnableMaskTransition'));
@@ -98,7 +98,7 @@ export default function openDialogTransitionTest() {
       done();
     });
 
-    it('OpenDialogTransitionTest_200', 0, async (done: Function) => {
+    it('OpenDialogTransitionTest_200', Level.LEVEL2, async (done: Function) => {
       console.info('OpenDialogTransitionTest_200 start');
       let driver: Driver = Driver.create();
       let dialogTransitionButton = await driver.findComponent(ON.id('EnableDialogTransition'));
@@ -117,7 +117,7 @@ export default function openDialogTransitionTest() {
       done();
     });
 
-    it('OpenDialogTransitionTest_300', 0, async (done: Function) => {
+    it('OpenDialogTransitionTest_300', Level.LEVEL2, async (done: Function) => {
       console.info('OpenDialogTransitionTest_300 start');
       let driver: Driver = Driver.create();
       let dialogTransitionButton = await driver.findComponent(ON.id('EnableDialogTransition'));
@@ -140,7 +140,7 @@ export default function openDialogTransitionTest() {
       done();
     });
 
-    it('OpenDialogTransitionTest_400', 0, async (done: Function) => {
+    it('OpenDialogTransitionTest_400', Level.LEVEL2, async (done: Function) => {
       console.info('OpenDialogTransitionTest_400 start');
       let driver: Driver = Driver.create();
       let maskTransitionButton = await driver.findComponent(ON.id('EnableMaskTransition'));
@@ -163,7 +163,7 @@ export default function openDialogTransitionTest() {
       done();
     });
 
-    it('OpenDialogTransitionTest_500', 0, async (done: Function) => {
+    it('OpenDialogTransitionTest_500', Level.LEVEL2, async (done: Function) => {
       console.info('OpenDialogTransitionTest_500 start');
       let driver: Driver = Driver.create();
       let maskTransitionButton = await driver.findComponent(ON.id('EnableMaskTransition'));
@@ -186,7 +186,7 @@ export default function openDialogTransitionTest() {
       done();
     });
 
-    it('OpenDialogTransitionTest_600', 0, async (done: Function) => {
+    it('OpenDialogTransitionTest_600', Level.LEVEL2, async (done: Function) => {
       console.info('OpenDialogTransitionTest_600 start');
       let driver: Driver = Driver.create();
       let maskTransitionButton = await driver.findComponent(ON.id('EnableMaskTransition'));

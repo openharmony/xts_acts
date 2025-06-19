@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from '../../MainAbility/common/Utils';
 import events_emitter from '@ohos.events.emitter';
@@ -45,8 +45,16 @@ export default function customDialogControllerJsunit() {
       await Utils.sleep(1000);
       console.info("customDialogControllers after each called");
     });
+    /**
+     * @tc.number    testCustomDialogControllers_100
+     * @tc.name      testCustomDialogControllers_100
+     * @tc.desc      set api
+     * @tc.level:    Level 1
+     * @tc.type :
+     * @tc.size :
+     */
 
-    it('testCustomDialogControllers_100', 0, async (done: Function) => {
+    it('testCustomDialogControllers_100', Level.LEVEL2, async (done: Function) => {
       console.info('[testCustomDialogControllers_100] START');
       let driver = await Driver.create()
       let callback = (eventData: events_emitter.EventData) => {

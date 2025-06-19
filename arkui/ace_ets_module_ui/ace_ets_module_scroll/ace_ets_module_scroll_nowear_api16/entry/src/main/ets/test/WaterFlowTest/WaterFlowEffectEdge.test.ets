@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router'
 import { Driver, Component, ON } from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
@@ -45,7 +45,7 @@ export default function WaterFlowEffectEdge() {
      * @tc.name   :test effect edge callback
      * @tc.desc   :test whether edgeEffectiveness Options are effective
      */
-    it('ArkUI_WaterFlow_EffectEdge_0500', 0, async (done: Function) => {
+    it('ArkUI_WaterFlow_EffectEdge_0500', Level.LEVEL1, async (done: Function) => {
       let json1 = getInspectorByKey('waterFlow4')
       await sleep(1000)
       let obj: ESObject = JSON.parse(json1);

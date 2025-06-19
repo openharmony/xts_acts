@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../../MainAbility/utils/Common';
 import {
@@ -64,7 +64,7 @@ export default function SwiperMargin_2() {
     * @tc.type       : Function
     * @tc.size       :
     */
-    it('SwiperMargin_0040', 0, async (done: Function) => {
+    it('SwiperMargin_0040', Level.LEVEL1, async (done: Function) => {
       console.info('[SwiperMargin_0040] START');
 
       let strJson = getInspectorByKey('swiperMargin_2');
@@ -96,7 +96,7 @@ export default function SwiperMargin_2() {
      * @tc.type       : Function
      * @tc.size       :
      */
-    it('SwiperMargin_0170', 0, async (done: Function) => {
+    it('SwiperMargin_0170', Level.LEVEL1, async (done: Function) => {
       console.info('[SwiperMargin_0170] START');
       let rect = CommonFunc.getComponentRectOnScreen('swiperMargin_2')
       console.info("SwiperMargin_0170 swiper rect is " + rect.left + " --" + rect.right + "--" + rect.top + "--" +

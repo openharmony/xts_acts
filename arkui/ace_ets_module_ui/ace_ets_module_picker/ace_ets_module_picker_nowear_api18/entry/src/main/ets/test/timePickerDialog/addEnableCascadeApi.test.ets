@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import { router } from '@kit.ArkUI';
 import CommonFunc from '../../MainAbility/common/Common';
 
@@ -40,7 +40,7 @@ export default function enableCascadeTest() {
       done();
     });
 
-    it('TimePickerDialog_EnableCascade_001', 0, async (done: Function) => {
+    it('TimePickerDialog_EnableCascade_001', Level.LEVEL1, async (done: Function) => {
       let tagName = 'TimePickerDialog_EnableCascade_001';
       console.info('[' + tagName + '] START============================');
       await CommonFunc.sleep(1000);
@@ -68,7 +68,7 @@ export default function enableCascadeTest() {
      * @tc.size
      */
 
-    it('TimePickerDialog_EnableCascade_002', 0, async (done: Function) => {
+    it('TimePickerDialog_EnableCascade_002', Level.LEVEL1, async (done: Function) => {
       let tagName = 'TimePickerDialog_EnableCascade_002';
       console.info('[' + tagName + '] START============================');
       await CommonFunc.sleep(1000);
@@ -95,7 +95,7 @@ export default function enableCascadeTest() {
      * @tc.type
      * @tc.size
      */
-    it('TimePickerDialog_EnableCascade_003', 0, async (done: Function) => {
+    it('TimePickerDialog_EnableCascade_003', Level.LEVEL1, async (done: Function) => {
       let tagName = 'TimePickerDialog_EnableCascade_003';
       console.info('[' + tagName + '] START============================');
       await CommonFunc.sleep(1000);
@@ -122,7 +122,7 @@ export default function enableCascadeTest() {
      * @tc.size
      */
 
-    it('TimePickerDialog_EnableCascade_004', 0, async (done: Function) => {
+    it('TimePickerDialog_EnableCascade_004', Level.LEVEL1, async (done: Function) => {
       let tagName = 'TimePickerDialog_EnableCascade_004';
       console.info('[' + tagName + '] START============================');
       await CommonFunc.sleep(1000);

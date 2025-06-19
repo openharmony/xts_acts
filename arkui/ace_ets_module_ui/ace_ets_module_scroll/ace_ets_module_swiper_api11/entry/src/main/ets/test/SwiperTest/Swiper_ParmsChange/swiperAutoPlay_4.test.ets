@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, {RectValue} from "../../../MainAbility/common/Common";
 import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, UiDirection, MouseButton } from '@ohos.UiTest';
@@ -48,7 +48,7 @@ export default function swiperAutoPlay_4() {
      * @tc.name      testSwiperAutoPlaySetting_4
      * @tc.desc      Set swiper's  AutoPlay  value ' false ' and interval values '-1000'.
      */
-    it('testSwiperAutoPlaySetting_4', 0, async  (done:Function)=> {
+    it('testSwiperAutoPlaySetting_4', Level.LEVEL1, async  (done:Function)=> {
       console.info('new testSwiperAutoPlaySetting_4 START');
       let strJson = getInspectorByKey('autoPlay04');
 

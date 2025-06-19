@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from "../../MainAbility/common/Common";
 
@@ -52,7 +52,7 @@ export default function radioTest() {
      * @tc.name Tests the checkedBackgroundColor property of the radio component
      * @tc.desc Radio common components, set checkedBackgroundColor property parameter to "#FF000000"
      */
-    it('ArkUX_Stage_Radio_CheckedBackgroundColor_0100', 0, async (done: Function) => {
+    it('ArkUX_Stage_Radio_CheckedBackgroundColor_0100', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Radio_CheckedBackgroundColor_0100 START');
       setTimeout(() => {
         try {
@@ -83,7 +83,7 @@ export default function radioTest() {
      * @tc.name Tests the checkedBackgroundColor property of the radio component
      * @tc.desc Radio common components, set checkedBackgroundColor property parameter to 0xffc0cb
      */
-    it('ArkUX_Stage_Radio_CheckedBackgroundColor_0200', 0, async (done: Function) => {
+    it('ArkUX_Stage_Radio_CheckedBackgroundColor_0200', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Radio_CheckedBackgroundColor_0200 START');
       setTimeout(() => {
         try {
@@ -114,7 +114,7 @@ export default function radioTest() {
      * @tc.name Tests the checkedBackgroundColor property of the radio component
      * @tc.desc Radio common components, set checkedBackgroundColor property parameter to 'rgb(255,0,0)'
      */
-    it('ArkUX_Stage_Radio_CheckedBackgroundColor_0300', 0, async (done: Function) => {
+    it('ArkUX_Stage_Radio_CheckedBackgroundColor_0300', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Radio_CheckedBackgroundColor_0300 START');
       setTimeout(() => {
         try {
@@ -145,7 +145,7 @@ export default function radioTest() {
      * @tc.name Tests the checkedBackgroundColor property of the radio component
      * @tc.desc Radio common components, set checkedBackgroundColor property parameter to Color.Green
      */
-    it('ArkUX_Stage_Radio_CheckedBackgroundColor_0400', 0, async (done: Function) => {
+    it('ArkUX_Stage_Radio_CheckedBackgroundColor_0400', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Radio_CheckedBackgroundColor_0400 START');
       setTimeout(() => {
         try {
@@ -177,7 +177,7 @@ export default function radioTest() {
      * @tc.desc Radio common components, set checkedBackgroundColor property parameter to
      *               $r("app.color.radio_BackgroundColor")
      */
-    it('ArkUX_Stage_Radio_CheckedBackgroundColor_0500', 0, async (done: Function) => {
+    it('ArkUX_Stage_Radio_CheckedBackgroundColor_0500', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Radio_CheckedBackgroundColor_0500 START');
       setTimeout(() => {
         try {
@@ -209,7 +209,7 @@ export default function radioTest() {
      * @tc.desc Radio common components, set checkedBackgroundColor property parameter to "rgb(138,43,226)",
      *               and set the checkedBackgroundColor parameter to Color.Gray
      */
-    it('ArkUX_Stage_Radio_CheckedBackgroundColor_0600', 0, async (done: Function) => {
+    it('ArkUX_Stage_Radio_CheckedBackgroundColor_0600', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Radio_CheckedBackgroundColor_0600 START');
       setTimeout(() => {
         try {
@@ -241,7 +241,7 @@ export default function radioTest() {
      * @tc.desc Radio common components, set checkedBackgroundColor property parameter to 0x00ff00,
      *               set the general attribute backgroundColor parameter to Color.Pink
      */
-    it('ArkUX_Stage_Radio_CheckedBackgroundColor_0700', 0, async (done: Function) => {
+    it('ArkUX_Stage_Radio_CheckedBackgroundColor_0700', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Radio_CheckedBackgroundColor_0700 START');
       setTimeout(() => {
         try {
@@ -272,7 +272,7 @@ export default function radioTest() {
      * @tc.name Tests the checkedBackgroundColor property of the radio component
      * @tc.desc Radio common components, set checkedBackgroundColor property parameter to ''
      */
-    it('ArkUX_Stage_Radio_CheckedBackgroundColor_0800', 0, async (done: Function) => {
+    it('ArkUX_Stage_Radio_CheckedBackgroundColor_0800', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Radio_CheckedBackgroundColor_0800 START');
       setTimeout(() => {
         try {
@@ -303,7 +303,7 @@ export default function radioTest() {
      * @tc.name Tests the checkedBackgroundColor property of the radio component
      * @tc.desc Radio common components, set checkedBackgroundColor property parameter to null
      */
-    it('ArkUX_Stage_Radio_CheckedBackgroundColor_0900', 0, async (done: Function) => {
+    it('ArkUX_Stage_Radio_CheckedBackgroundColor_0900', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Radio_CheckedBackgroundColor_0900 START');
       setTimeout(() => {
         try {
@@ -334,7 +334,7 @@ export default function radioTest() {
      * @tc.name Tests the checkedBackgroundColor property of the radio component
      * @tc.desc Radio common components, set checkedBackgroundColor property parameter to undefined
      */
-    it('ArkUX_Stage_Radio_CheckedBackgroundColor_1000', 0, async (done: Function) => {
+    it('ArkUX_Stage_Radio_CheckedBackgroundColor_1000', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Radio_CheckedBackgroundColor_1000 START');
       setTimeout(() => {
         try {
@@ -366,7 +366,7 @@ export default function radioTest() {
      * @tc.desc Radio common components, set checkedBackgroundColor property parameter to "rgb(138,43,226)",
      *               and set the checkedBackgroundColor parameter to undefined
      */
-    it('ArkUX_Stage_Radio_CheckedBackgroundColor_1100', 0, async (done: Function) => {
+    it('ArkUX_Stage_Radio_CheckedBackgroundColor_1100', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Radio_CheckedBackgroundColor_1100 START');
       setTimeout(() => {
         try {
@@ -397,7 +397,7 @@ export default function radioTest() {
      * @tc.name Tests the checkedBackgroundColor property of the radio component
      * @tc.desc Radio common components, set checkedBackgroundColor property parameter to 'bgr(138,43,226)'
      */
-    it('ArkUX_Stage_Radio_CheckedBackgroundColor_1200', 0, async (done: Function) => {
+    it('ArkUX_Stage_Radio_CheckedBackgroundColor_1200', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Radio_CheckedBackgroundColor_1200 START');
       setTimeout(() => {
         try {
@@ -428,7 +428,7 @@ export default function radioTest() {
      * @tc.name Tests the uncheckedBorderColor property of the radio component
      * @tc.desc Radio common components, set uncheckedBorderColor property parameter to "#FF00FF00"
      */
-    it('ArkUX_Stage_Radio_UncheckedBorderColor_0100', 0, async (done: Function) => {
+    it('ArkUX_Stage_Radio_UncheckedBorderColor_0100', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Radio_UncheckedBorderColor_0100 START');
       setTimeout(() => {
         try {
@@ -459,7 +459,7 @@ export default function radioTest() {
      * @tc.name Tests the uncheckedBorderColor property of the radio component
      * @tc.desc Radio common components, set uncheckedBorderColor property parameter to 0xffc0cb
      */
-    it('ArkUX_Stage_Radio_UncheckedBorderColor_0200', 0, async (done: Function) => {
+    it('ArkUX_Stage_Radio_UncheckedBorderColor_0200', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Radio_UncheckedBorderColor_0200 START');
       setTimeout(() => {
         try {
@@ -490,7 +490,7 @@ export default function radioTest() {
      * @tc.name Tests the uncheckedBorderColor property of the radio component
      * @tc.desc Radio common components, set uncheckedBorderColor property parameter to 'rgb(255,255,0)'
      */
-    it('ArkUX_Stage_Radio_UncheckedBorderColor_0300', 0, async (done: Function) => {
+    it('ArkUX_Stage_Radio_UncheckedBorderColor_0300', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Radio_UncheckedBorderColor_0300 START');
       setTimeout(() => {
         try {
@@ -521,7 +521,7 @@ export default function radioTest() {
      * @tc.name Tests the uncheckedBorderColor property of the radio component
      * @tc.desc Radio common components, set uncheckedBorderColor property parameter to Color.Blue
      */
-    it('ArkUX_Stage_Radio_UncheckedBorderColor_0400', 0, async (done: Function) => {
+    it('ArkUX_Stage_Radio_UncheckedBorderColor_0400', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Radio_UncheckedBorderColor_0400 START');
       setTimeout(() => {
         try {
@@ -553,7 +553,7 @@ export default function radioTest() {
      * @tc.desc Radio common components, set uncheckedBorderColor property parameter to
      *               $r("app.color.radio_UnBorderColor")
      */
-    it('ArkUX_Stage_Radio_UncheckedBorderColor_0500', 0, async (done: Function) => {
+    it('ArkUX_Stage_Radio_UncheckedBorderColor_0500', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Radio_UncheckedBorderColor_0500 START');
       setTimeout(() => {
         try {
@@ -585,7 +585,7 @@ export default function radioTest() {
      * @tc.desc Radio common components, set uncheckedBorderColor property parameter to "rgb(138,43,226)"
      *               and set the uncheckedBorderColor parameter to Color.Black
      */
-    it('ArkUX_Stage_Radio_UncheckedBorderColor_0600', 0, async (done: Function) => {
+    it('ArkUX_Stage_Radio_UncheckedBorderColor_0600', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Radio_UncheckedBorderColor_0600 START');
       setTimeout(() => {
         try {
@@ -617,7 +617,7 @@ export default function radioTest() {
      * @tc.desc Radio common components, set checkedBackgroundColor property parameter to 0xffa500,
      *               set the general attribute backgroundColor parameter to Color.Pink
      */
-    it('ArkUX_Stage_Radio_UncheckedBorderColor_0700', 0, async (done: Function) => {
+    it('ArkUX_Stage_Radio_UncheckedBorderColor_0700', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Radio_UncheckedBorderColor_0700 START');
       setTimeout(() => {
         try {
@@ -648,7 +648,7 @@ export default function radioTest() {
      * @tc.name Tests the uncheckedBorderColor property of the radio component
      * @tc.desc Radio common components, set uncheckedBorderColor property parameter to ''
      */
-    it('ArkUX_Stage_Radio_UncheckedBorderColor_0800', 0, async (done: Function) => {
+    it('ArkUX_Stage_Radio_UncheckedBorderColor_0800', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Radio_UncheckedBorderColor_0800 START');
       setTimeout(() => {
         try {
@@ -679,7 +679,7 @@ export default function radioTest() {
      * @tc.name Tests the uncheckedBorderColor property of the radio component
      * @tc.desc Radio common components, set uncheckedBorderColor property parameter to null
      */
-    it('ArkUX_Stage_Radio_UncheckedBorderColor_0900', 0, async (done: Function) => {
+    it('ArkUX_Stage_Radio_UncheckedBorderColor_0900', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Radio_UncheckedBorderColor_0900 START');
       setTimeout(() => {
         try {
@@ -710,7 +710,7 @@ export default function radioTest() {
      * @tc.name Tests the uncheckedBorderColor property of the radio component
      * @tc.desc Radio common components, set uncheckedBorderColor property parameter to undefined
      */
-    it('ArkUX_Stage_Radio_UncheckedBorderColor_1000', 0, async (done: Function) => {
+    it('ArkUX_Stage_Radio_UncheckedBorderColor_1000', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Radio_UncheckedBorderColor_1000 START');
       setTimeout(() => {
         try {
@@ -742,7 +742,7 @@ export default function radioTest() {
      * @tc.desc Radio common components, set uncheckedBorderColor property parameter to "rgb(138,43,226)",
      *               and set the uncheckedBorderColor parameter to undefined
      */
-    it('ArkUX_Stage_Radio_UncheckedBorderColor_1100', 0, async (done: Function) => {
+    it('ArkUX_Stage_Radio_UncheckedBorderColor_1100', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Radio_UncheckedBorderColor_1100 START');
       setTimeout(() => {
         try {
@@ -773,7 +773,7 @@ export default function radioTest() {
      * @tc.name Tests the uncheckedBorderColor property of the radio component
      * @tc.desc Radio common components, set uncheckedBorderColor property parameter to 'bgr(138,43,226)'
      */
-    it('ArkUX_Stage_Radio_UncheckedBorderColor_1200', 0, async (done: Function) => {
+    it('ArkUX_Stage_Radio_UncheckedBorderColor_1200', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Radio_UncheckedBorderColor_1200 START');
       setTimeout(() => {
         try {
@@ -804,7 +804,7 @@ export default function radioTest() {
      * @tc.name Tests the indicatorColor property of the radio component
      * @tc.desc Radio common components, set indicatorColor property parameter to "#FF00FFFF"
      */
-    it('ArkUX_Stage_Radio_IndicatorColor_0100', 0, async (done: Function) => {
+    it('ArkUX_Stage_Radio_IndicatorColor_0100', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Radio_IndicatorColor_0100 START');
       setTimeout(() => {
         try {
@@ -834,7 +834,7 @@ export default function radioTest() {
      * @tc.name Tests the indicatorColor property of the radio component
      * @tc.desc Radio common components, set indicatorColor property parameter to 0xffc0cb
      */
-    it('ArkUX_Stage_Radio_IndicatorColor_0200', 0, async (done: Function) => {
+    it('ArkUX_Stage_Radio_IndicatorColor_0200', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Radio_IndicatorColor_0200 START');
       setTimeout(() => {
         try {
@@ -864,7 +864,7 @@ export default function radioTest() {
      * @tc.name Tests the indicatorColor property of the radio component
      * @tc.desc Radio common components, set indicatorColor property parameter to 'rgb(255,97,0)'
      */
-    it('ArkUX_Stage_Radio_IndicatorColor_0300', 0, async (done: Function) => {
+    it('ArkUX_Stage_Radio_IndicatorColor_0300', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Radio_IndicatorColor_0300 START');
       setTimeout(() => {
         try {
@@ -894,7 +894,7 @@ export default function radioTest() {
      * @tc.name Tests the indicatorColor property of the radio component
      * @tc.desc Radio common components, set indicatorColor property parameter to Color.Yellow
      */
-    it('ArkUX_Stage_Radio_IndicatorColor_0400', 0, async (done: Function) => {
+    it('ArkUX_Stage_Radio_IndicatorColor_0400', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Radio_IndicatorColor_0400 START');
       setTimeout(() => {
         try {
@@ -925,7 +925,7 @@ export default function radioTest() {
      * @tc.desc Radio common components, set indicatorColor property parameter to
      *               $r("app.color.radio_IndicatorColor")
      */
-    it('ArkUX_Stage_Radio_IndicatorColor_0500', 0, async (done: Function) => {
+    it('ArkUX_Stage_Radio_IndicatorColor_0500', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Radio_IndicatorColor_0500 START');
       setTimeout(() => {
         try {
@@ -956,7 +956,7 @@ export default function radioTest() {
      * @tc.desc Radio common components, set indicatorColor property parameter to "rgb(138,43,226)",
      *               and set the indicatorColor parameter to Color.Black
      */
-    it('ArkUX_Stage_Radio_IndicatorColor_0600', 0, async (done: Function) => {
+    it('ArkUX_Stage_Radio_IndicatorColor_0600', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Radio_IndicatorColor_0600 START');
       setTimeout(() => {
         try {
@@ -987,7 +987,7 @@ export default function radioTest() {
      * @tc.desc Radio common components, set indicatorColor property parameter to "rgb(138,43,226)",
      *               set the general attribute backgroundColor parameter to Color.Pink
      */
-    it('ArkUX_Stage_Radio_IndicatorColor_0700', 0, async (done: Function) => {
+    it('ArkUX_Stage_Radio_IndicatorColor_0700', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Radio_IndicatorColor_0700 START');
       setTimeout(() => {
         try {
@@ -1017,7 +1017,7 @@ export default function radioTest() {
      * @tc.name Tests the indicatorColor property of the radio component
      * @tc.desc Radio common components, set indicatorColor property parameter to ''
      */
-    it('ArkUX_Stage_Radio_IndicatorColor_0800', 0, async (done: Function) => {
+    it('ArkUX_Stage_Radio_IndicatorColor_0800', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Radio_IndicatorColor_0800 START');
       setTimeout(() => {
         try {
@@ -1047,7 +1047,7 @@ export default function radioTest() {
      * @tc.name Tests the indicatorColor property of the radio component
      * @tc.desc Radio common components, set indicatorColor property parameter to null
      */
-    it('ArkUX_Stage_Radio_IndicatorColor_0900', 0, async (done: Function) => {
+    it('ArkUX_Stage_Radio_IndicatorColor_0900', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Radio_IndicatorColor_0900 START');
       setTimeout(() => {
         try {
@@ -1077,7 +1077,7 @@ export default function radioTest() {
      * @tc.name Tests the indicatorColor property of the radio component
      * @tc.desc Radio common components, set indicatorColor property parameter to undefined
      */
-    it('ArkUX_Stage_Radio_IndicatorColor_1000', 0, async (done: Function) => {
+    it('ArkUX_Stage_Radio_IndicatorColor_1000', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Radio_IndicatorColor_1000 START');
       setTimeout(() => {
         try {
@@ -1108,7 +1108,7 @@ export default function radioTest() {
      * @tc.desc Radio common components, set indicatorColor property parameter to "rgb(138,43,226)",
      *               and set the indicatorColor parameter to undefined
      */
-    it('ArkUX_Stage_Radio_IndicatorColor_1100', 0, async (done: Function) => {
+    it('ArkUX_Stage_Radio_IndicatorColor_1100', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Radio_IndicatorColor_1100 START');
       setTimeout(() => {
         try {
@@ -1138,7 +1138,7 @@ export default function radioTest() {
      * @tc.name Tests the indicatorColor property of the radio component
      * @tc.desc Radio common components, set indicatorColor property parameter to 'bgr(138,43,226)'
      */
-    it('ArkUX_Stage_Radio_IndicatorColor_1200', 0, async (done: Function) => {
+    it('ArkUX_Stage_Radio_IndicatorColor_1200', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Radio_IndicatorColor_1200 START');
       setTimeout(() => {
         try {
@@ -1170,7 +1170,7 @@ export default function radioTest() {
      *                                        set uncheckedBorderColor property parameter to "#FFDB70DB"
      *                                        set indicatorColor property parameter to "#FFFFFF00"
      */
-    it('ArkUX_Stage_Radio_Color_0100', 0, async (done: Function) => {
+    it('ArkUX_Stage_Radio_Color_0100', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Radio_Color_0100 START');
       setTimeout(() => {
         try {
@@ -1202,7 +1202,7 @@ export default function radioTest() {
      * @tc.name The test did not set the new attribute of the radio component
      * @tc.desc The new attribute of radio component is not set, View the default value
      */
-    it('ArkUX_Stage_Radio_0100', 0, async (done: Function) => {
+    it('ArkUX_Stage_Radio_0100', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Radio_0100 START');
       setTimeout(() => {
         try {

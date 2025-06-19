@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../MainAbility/common/Common";
 import {
@@ -64,7 +64,7 @@ export default function swiperDisableSwipeFalse() {
      * @tc.name testSwiperDisableSwipeFalse.
      * @tc.desc Set swiper's disableSwipe values 'false'.
      */
-    it('testSwiperDisableSwipeFalse', 0, async (done: Function) => {
+    it('testSwiperDisableSwipeFalse', Level.LEVEL1, async (done: Function) => {
       console.info('new testSwiperDisableSwipeFalse START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('disableFalse');

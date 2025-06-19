@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 
 let emitKey = 'emitUserAgent';
@@ -39,7 +39,7 @@ export default function buttonTypeTest() {
       }
       done()
     });
-    it('buttonType_0200', 0, async (done: Function) => {
+    it('buttonType_0200', Level.LEVEL2, async (done: Function) => {
       console.info('buttonType_0200 start');
       setTimeout(() => {
         try {

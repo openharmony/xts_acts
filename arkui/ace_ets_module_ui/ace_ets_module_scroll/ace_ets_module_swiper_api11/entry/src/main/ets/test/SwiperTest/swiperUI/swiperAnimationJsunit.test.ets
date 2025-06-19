@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import ohosrouter from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../../MainAbility/common/Common';
@@ -58,7 +58,7 @@ export default function swiperAnimationJsunit() {
     * @tc.level : Level 2
     */
 
-    it('swiperAnimationJsunit_0024', 0, async (done: Function) => {
+    it('swiperAnimationJsunit_0024', Level.LEVEL1, async (done: Function) => {
       console.info('swiperAnimationJsunit_0024');
       try {
          ohosrouter.back({url:'MainAbility/pages/index/second'});
@@ -116,7 +116,7 @@ export default function swiperAnimationJsunit() {
     * @tc.level : Level 2
     */
 
-   it('swiperAnimationJsunit_0012', 0, async (done: Function) => {
+   it('swiperAnimationJsunit_0012', Level.LEVEL1, async (done: Function) => {
       console.info('swiperAnimationJsunit_0012 START');
       await CommonFunc.sleep(1000);
       try {
@@ -176,7 +176,7 @@ export default function swiperAnimationJsunit() {
     * @tc.level : Level 2
     */
 
-   it('swiperAnimationJsunit_0027', 0, async (done: Function) => {
+   it('swiperAnimationJsunit_0027', Level.LEVEL1, async (done: Function) => {
       console.info('swiperAnimationJsunit_0027 START');
       await CommonFunc.sleep(1000);
       try {
@@ -239,7 +239,7 @@ export default function swiperAnimationJsunit() {
     * @tc.level : Level 2
     */
 
-   it('swiperAnimationJsunit_0019', 0, async (done: Function) => {
+   it('swiperAnimationJsunit_0019', Level.LEVEL1, async (done: Function) => {
       console.info('swiperAnimationJsunit_0019 START');
       await CommonFunc.sleep(1000);
       try {
@@ -308,7 +308,7 @@ export default function swiperAnimationJsunit() {
     * @tc.level : Level 2
     */
 
-   it('swiperAnimationJsunit_0022', 0, async (done: Function) => {
+   it('swiperAnimationJsunit_0022', Level.LEVEL1, async (done: Function) => {
       console.info('swiperAnimationJsunit_0019 START');
       await CommonFunc.sleep(1000);
       try {
@@ -364,7 +364,7 @@ export default function swiperAnimationJsunit() {
     * @tc.level : Level 2
     */
 
-   it('swiperAnimationJsunit_0023', 0, async (done: Function) => {
+   it('swiperAnimationJsunit_0023', Level.LEVEL1, async (done: Function) => {
       console.info('swiperAnimationJsunit_0023 START');
       await CommonFunc.sleep(1000);
       try {
@@ -430,7 +430,7 @@ export default function swiperAnimationJsunit() {
     * @tc.level : Level 2
     */
 
-   it('swiperAnimationJsunit_0011', 0, async (done: Function) => {
+   it('swiperAnimationJsunit_0011', Level.LEVEL1, async (done: Function) => {
       console.info('swiperAnimationJsunit_0011 START');
       await CommonFunc.sleep(1000);
       try {
@@ -498,7 +498,7 @@ export default function swiperAnimationJsunit() {
     * @tc.level : Level 2
     */
 
-   it('swiperAnimationJsunit_0028', 0, async (done: Function) => {
+   it('swiperAnimationJsunit_0028', Level.LEVEL1, async (done: Function) => {
       console.info('swiperAnimationJsunit_0011 START');
       await CommonFunc.sleep(1000);
       try {
@@ -570,7 +570,7 @@ export default function swiperAnimationJsunit() {
     * @tc.level : Level 2
     */
 
-   it('swiperAnimationJsunit_0020', 0, async (done: Function) => {
+   it('swiperAnimationJsunit_0020', Level.LEVEL1, async (done: Function) => {
       console.info('swiperAnimationJsunit_0011 START');
       await CommonFunc.sleep(1000);
       try {
@@ -647,7 +647,7 @@ export default function swiperAnimationJsunit() {
     * @tc.level : Level 2
     */
 
-   it('swiperAnimationGestureJsunit_0016', 0, async (done: Function) => {
+   it('swiperAnimationGestureJsunit_0016', Level.LEVEL1, async (done: Function) => {
       console.info('swiperAnimationGestureJsunit_0016 START');
       await CommonFunc.sleep(1000);
       try {
@@ -709,7 +709,7 @@ export default function swiperAnimationJsunit() {
     * @tc.level : Level 2
     */
 
-   it('swiperAnimationGestureJsunit_0017', 0, async (done: Function) => {
+   it('swiperAnimationGestureJsunit_0017', Level.LEVEL1, async (done: Function) => {
       console.info('swiperAnimationGestureJsunit_0017 START');
       await CommonFunc.sleep(1000);
       try {
@@ -774,7 +774,7 @@ export default function swiperAnimationJsunit() {
     * @tc.level : Level 2
     */
 
-   it('swiperAnimationGestureJsunit_0019', 0, async (done: Function) => {
+   it('swiperAnimationGestureJsunit_0019', Level.LEVEL1, async (done: Function) => {
       console.info('swiperAnimationGestureJsunit_0019 START');
       await CommonFunc.sleep(1000);
       try {
@@ -842,7 +842,7 @@ export default function swiperAnimationJsunit() {
     * @tc.level : Level 2
     */
 
-   it('swiperAnimationGestureJsunit_0020', 0, async (done: Function) => {
+   it('swiperAnimationGestureJsunit_0020', Level.LEVEL1, async (done: Function) => {
       console.info('swiperAnimationGestureJsunit_0020 START');
       await CommonFunc.sleep(1000);
       try {

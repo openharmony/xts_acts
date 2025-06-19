@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from '../../MainAbility/common/Utils'
 
 export default function swiperCurveJsunit() {
@@ -49,7 +49,7 @@ export default function swiperCurveJsunit() {
      * @tc.name         testswiperCurve0001
      * @tc.desic         aceswiperCurveEtsTest0001
      */
-    it('testswiperCurve0001', 0, async () => {
+    it('testswiperCurve0001', Level.LEVEL1, async () => {
       console.info('swiperCurve testswiperCurve0001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('swiper');
@@ -66,7 +66,7 @@ export default function swiperCurveJsunit() {
      * @tc.name         testswiperCurve0002
      * @tc.desic         aceswiperCurveEtsTest0002
      */
-    it('testswiperCurve0002', 0, async () => {
+    it('testswiperCurve0002', Level.LEVEL1, async () => {
       console.info('swiperCurve testswiperCurve0002 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('swiper');
@@ -83,7 +83,7 @@ export default function swiperCurveJsunit() {
      * @tc.name         testswiperCurve0003
      * @tc.desic         aceswiperCurveEtsTest0003
      */
-    it('testswiperCurve0003', 0, async () => {
+    it('testswiperCurve0003', Level.LEVEL1, async () => {
       console.info('swiperCurve testswiperCurve0003 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('swiper');
@@ -100,7 +100,7 @@ export default function swiperCurveJsunit() {
      * @tc.name         testswiperCurve0004
      * @tc.desic         aceswiperCurveEtsTest0004
      */
-    it('testswiperCurve0004', 0, async () => {
+    it('testswiperCurve0004', Level.LEVEL1, async () => {
       console.info('swiperCurve testswiperCurve0004 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('swiper');
@@ -117,7 +117,7 @@ export default function swiperCurveJsunit() {
      * @tc.name         testswiperCurve0005
      * @tc.desic         aceswiperCurveEtsTest0005
      */
-    it('testswiperCurve0005', 0, async () => {
+    it('testswiperCurve0005', Level.LEVEL1, async () => {
       console.info('swiperCurve testswiperCurve0005 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('swiper');
@@ -134,7 +134,7 @@ export default function swiperCurveJsunit() {
      * @tc.name         testswiperCurve0006
      * @tc.desic         aceswiperCurveEtsTest0006
      */
-    it('testswiperCurve0006', 0, async () => {
+    it('testswiperCurve0006', Level.LEVEL1, async () => {
       console.info('swiperCurve testswiperCurve0006 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('swiper');
@@ -151,7 +151,7 @@ export default function swiperCurveJsunit() {
      * @tc.name         testswiperCurve0007
      * @tc.desic         aceswiperCurveEtsTest0007
      */
-    it('testswiperCurve0007', 0, async () => {
+    it('testswiperCurve0007', Level.LEVEL1, async () => {
       console.info('swiperCurve testswiperCurve0007 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('swiper');
@@ -168,7 +168,7 @@ export default function swiperCurveJsunit() {
      * @tc.name         testswiperCurve0008
      * @tc.desic         aceswiperCurveEtsTest0008
      */
-    it('testswiperCurve0008', 0, async () => {
+    it('testswiperCurve0008', Level.LEVEL1, async () => {
       console.info('swiperCurve testswiperCurve0008 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('swiper');
@@ -185,7 +185,7 @@ export default function swiperCurveJsunit() {
      * @tc.name         testswiperCurve0009
      * @tc.desic         aceswiperCurveEtsTest0009
      */
-    it('testswiperCurve0009', 0, async () => {
+    it('testswiperCurve0009', Level.LEVEL1, async () => {
       console.info('swiperCurve testswiperCurve0009 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('swiper');
@@ -202,7 +202,7 @@ export default function swiperCurveJsunit() {
      * @tc.name         testswiperCurve0010
      * @tc.desic         aceswiperCurveEtsTest0010
      */
-    it('testswiperCurve00010', 0, async () => {
+    it('testswiperCurve00010', Level.LEVEL1, async () => {
       console.info('swiperCurve testswiperCurve00010 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('swiper');
@@ -220,7 +220,7 @@ export default function swiperCurveJsunit() {
      * @tc.desic         aceswiperCurveEtsTest0011
      */
     /***有问题***/
-    it('testswiperCurve00011', 0, async () => {
+    it('testswiperCurve00011', Level.LEVEL1, async () => {
       console.info('swiperCurve testswiperCurve00011 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('swiper');

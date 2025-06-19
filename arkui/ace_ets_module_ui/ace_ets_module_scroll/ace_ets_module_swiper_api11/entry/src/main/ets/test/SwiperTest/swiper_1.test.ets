@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 
@@ -87,7 +87,7 @@ export default function swiperTest_1() {
      * @tc.name Tests the selectedDigitFont property of the swiper component
      * @tc.desc Set the selectedDigitFont property parameter to {size:34,weight:"800"}
      */
-    it('ArkUX_Stage_Swiper_SelectedDigitFont_0100', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_SelectedDigitFont_0100', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_SelectedDigitFont_0100 START');
       setTimeout(() => {
         try {
@@ -118,7 +118,7 @@ export default function swiperTest_1() {
      * @tc.name Tests the selectedDigitFont property of the swiper component
      * @tc.desc Set the selectedDigitFont property parameter to {size:"20px",weight:200}
      */
-    it('ArkUX_Stage_Swiper_SelectedDigitFont_0200', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_SelectedDigitFont_0200', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_SelectedDigitFont_0200 START');
       setTimeout(() => {
         try {
@@ -149,7 +149,7 @@ export default function swiperTest_1() {
      * @tc.name Tests the selectedDigitFont property of the swiper component
      * @tc.desc Set the selectedDigitFont property parameter to {size:"48%",weight:900}
      */
-    it('ArkUX_Stage_Swiper_SelectedDigitFont_0300', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_SelectedDigitFont_0300', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_SelectedDigitFont_0300 START');
       setTimeout(() => {
         try {
@@ -180,7 +180,7 @@ export default function swiperTest_1() {
      * @tc.name Tests the selectedDigitFont property of the swiper component
      * @tc.desc Set the selectedDigitFont property parameter to {size:"",weight:FontWeight.Bolder}
      */
-    it('ArkUX_Stage_Swiper_SelectedDigitFont_0400', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_SelectedDigitFont_0400', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_SelectedDigitFont_0400 START');
       setTimeout(() => {
         try {
@@ -211,7 +211,7 @@ export default function swiperTest_1() {
      * @tc.name Tests the selectedDigitFont property of the swiper component
      * @tc.desc Set the selectedDigitFont property parameter to {size:-2,weight:1000}
      */
-    it('ArkUX_Stage_Swiper_SelectedDigitFont_0500', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_SelectedDigitFont_0500', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_SelectedDigitFont_0500 START');
       setTimeout(() => {
         try {
@@ -242,7 +242,7 @@ export default function swiperTest_1() {
      * @tc.name Tests the selectedDigitFont property of the swiper component
      * @tc.desc Set the selectedDigitFont property parameter to {size:"abc",weight:null}
      */
-    it('ArkUX_Stage_Swiper_SelectedDigitFont_0600', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_SelectedDigitFont_0600', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_SelectedDigitFont_0600 START');
       setTimeout(() => {
         try {
@@ -273,7 +273,7 @@ export default function swiperTest_1() {
      * @tc.name Tests the selectedDigitFont property of the swiper component
      * @tc.desc Set the selectedDigitFont property parameter to {size:"1000%",weight:""}
      */
-    it('ArkUX_Stage_Swiper_SelectedDigitFont_0700', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_SelectedDigitFont_0700', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_SelectedDigitFont_0700 START');
       setTimeout(() => {
         try {
@@ -304,7 +304,7 @@ export default function swiperTest_1() {
      * @tc.name Tests the selectedDigitFont property of the swiper component
      * @tc.desc Set the selectedDigitFont property parameter to {size:"100vp",weight:"adf@$5"}
      */
-    it('ArkUX_Stage_Swiper_SelectedDigitFont_0800', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_SelectedDigitFont_0800', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_SelectedDigitFont_0800 START');
       setTimeout(() => {
         try {
@@ -336,7 +336,7 @@ export default function swiperTest_1() {
      * @tc.desc Set the selectedDigitFont property parameter to {size:10,weight:200},
      *               and set the selectedDigitFont property parameter to {size:"40lpx",weight:500} again
      */
-    it('ArkUX_Stage_Swiper_SelectedDigitFont_0900', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_SelectedDigitFont_0900', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_SelectedDigitFont_0900 START');
       setTimeout(() => {
         try {
@@ -368,7 +368,7 @@ export default function swiperTest_1() {
      * @tc.desc Set the selectedDigitFont property parameter to {size:10,weight:500},
      *               and set the selectedDigitFont property parameter to the exception value {size:"abc",weight:null} again
      */
-    it('ArkUX_Stage_Swiper_SelectedDigitFont_1000', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_SelectedDigitFont_1000', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_SelectedDigitFont_1000 START');
       setTimeout(() => {
         try {
@@ -400,7 +400,7 @@ export default function swiperTest_1() {
      * @tc.desc Set the selectedDigitFont property parameter to {size:10,weight:600},
      *               and set the general property size and layoutWeight property value to null
      */
-    it('ArkUX_Stage_Swiper_SelectedDigitFont_1100', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_SelectedDigitFont_1100', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_SelectedDigitFont_1100 START');
       setTimeout(() => {
         try {
@@ -431,7 +431,7 @@ export default function swiperTest_1() {
      * @tc.name Tests the digitFont property of the swiper component
      * @tc.desc Set the digitFont property parameter to {size:34,weight:"800"}
      */
-    it('ArkUX_Stage_Swiper_DigitFont_0100', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_DigitFont_0100', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_DigitFont_0100 START');
       setTimeout(() => {
         try {
@@ -462,7 +462,7 @@ export default function swiperTest_1() {
      * @tc.name Tests the digitFont property of the swiper component
      * @tc.desc Set the digitFont property parameter to {size:"20px",weight:200}
      */
-    it('ArkUX_Stage_Swiper_DigitFont_0200', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_DigitFont_0200', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_DigitFont_0200 START');
       setTimeout(() => {
         try {
@@ -493,7 +493,7 @@ export default function swiperTest_1() {
      * @tc.name Tests the digitFont property of the swiper component
      * @tc.desc Set the digitFont property parameter to {size:"48%",weight:900}
      */
-    it('ArkUX_Stage_Swiper_DigitFont_0300', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_DigitFont_0300', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_DigitFont_0300 START');
       setTimeout(() => {
         try {
@@ -524,7 +524,7 @@ export default function swiperTest_1() {
      * @tc.name Tests the digitFont property of the swiper component
      * @tc.desc Set the digitFont property parameter to {size:"",weight:FontWeight.Bolder}
      */
-    it('ArkUX_Stage_Swiper_DigitFont_0400', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_DigitFont_0400', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_DigitFont_0400 START');
       setTimeout(() => {
         try {
@@ -555,7 +555,7 @@ export default function swiperTest_1() {
      * @tc.name Tests the digitFont property of the swiper component
      * @tc.desc Set the digitFont property parameter to {size:-2,weight:1000}
      */
-    it('ArkUX_Stage_Swiper_DigitFont_0500', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_DigitFont_0500', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_DigitFont_0500 START');
       setTimeout(() => {
         try {
@@ -586,7 +586,7 @@ export default function swiperTest_1() {
      * @tc.name Tests the digitFont property of the swiper component
      * @tc.desc Set the digitFont property parameter to {size:"abc",weight:null}
      */
-    it('ArkUX_Stage_Swiper_DigitFont_0600', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_DigitFont_0600', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_DigitFont_0600 START');
       setTimeout(() => {
         try {
@@ -617,7 +617,7 @@ export default function swiperTest_1() {
      * @tc.name Tests the digitFont property of the swiper component
      * @tc.desc Set the digitFont property parameter to {size:"1000%",weight:""}
      */
-    it('ArkUX_Stage_Swiper_DigitFont_0700', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_DigitFont_0700', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_DigitFont_0700 START');
       setTimeout(() => {
         try {
@@ -648,7 +648,7 @@ export default function swiperTest_1() {
      * @tc.name Tests the digitFont property of the swiper component
      * @tc.desc Set the digitFont property parameter to {size:"100vp",weight:"adf@$5"}
      */
-    it('ArkUX_Stage_Swiper_DigitFont_0800', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_DigitFont_0800', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_DigitFont_0800 START');
       setTimeout(() => {
         try {
@@ -680,7 +680,7 @@ export default function swiperTest_1() {
      * @tc.desc Set the digitFont property parameter to {size:10,weight:200},
      *               and set the digitFont property parameter to {size:"40lpx",weight:500} again
      */
-    it('ArkUX_Stage_Swiper_DigitFont_0900', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_DigitFont_0900', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_DigitFont_0900 START');
       setTimeout(() => {
         try {
@@ -712,7 +712,7 @@ export default function swiperTest_1() {
      * @tc.desc Set the digitFont property parameter to {size:10,weight:500},
      *               and set the digitFont property parameter to the exception value {size:"abc",weight:null} again
      */
-    it('ArkUX_Stage_Swiper_DigitFont_1000', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_DigitFont_1000', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_DigitFont_1000 START');
       setTimeout(() => {
         try {
@@ -744,7 +744,7 @@ export default function swiperTest_1() {
      * @tc.desc Set the digitFont property parameter to {size:10,weight:600},
      *               and set the general property size and layoutWeight property value to null
      */
-    it('ArkUX_Stage_Swiper_DigitFont_1100', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_DigitFont_1100', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_DigitFont_1100 START');
       setTimeout(() => {
         try {
@@ -775,7 +775,7 @@ export default function swiperTest_1() {
      * @tc.name Tests the digitFont property of the swiper component
      * @tc.desc Set the Indicator property parameter to top(1)
      */
-    it('ArkUX_Stage_Swiper_Indicator_0100', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_Indicator_0100', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_Indicator_0100 START');
       setTimeout(() => {
         try {
@@ -806,7 +806,7 @@ export default function swiperTest_1() {
      * @tc.name Tests the digitFont property of the swiper component
      * @tc.desc Set the Indicator property parameter to bottom(1)
      */
-    it('ArkUX_Stage_Swiper_Indicator_0200', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_Indicator_0200', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_Indicator_0200 START');
       setTimeout(() => {
         try {
@@ -835,7 +835,7 @@ export default function swiperTest_1() {
      * @tc.name Tests the digitFont property of the swiper component
      * @tc.desc Set the Indicator property parameter to left(1)
      */
-    it('ArkUX_Stage_Swiper_Indicator_0300', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_Indicator_0300', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_Indicator_0300 START');
       setTimeout(() => {
         try {
@@ -864,7 +864,7 @@ export default function swiperTest_1() {
      * @tc.name Tests the digitFont property of the swiper component
      * @tc.desc Set the Indicator property parameter to right(1)
      */
-    it('ArkUX_Stage_Swiper_Indicator_0400', 0, async (done: Function) => {
+    it('ArkUX_Stage_Swiper_Indicator_0400', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Swiper_Indicator_0400 START');
       setTimeout(() => {
         try {

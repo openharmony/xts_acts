@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../MainAbility/common/Common";
 import {
@@ -68,7 +68,7 @@ export default function swiperVertical() {
     //     * @tc.name      testSwipeSetVerticalFalse
     //     * @tc.desc      Set swiper's  vertical  value ' false '.
     //     */
-    //    it('testSwipeSetVerticalFalse', 0, async  (done:Function)=> {
+    //    it('testSwipeSetVerticalFalse', Level.LEVEL1, async  (done:Function)=> {
     //      console.info('new testSwipeSetVerticalFalse START');
     //      let strJson = getInspectorByKey('verticalkey');
     //
@@ -120,7 +120,7 @@ export default function swiperVertical() {
     //     * @tc.name      testSwipeSetVerticalTrue
     //     * @tc.desc      Set swiper's  vertical  value ' true '.
     //     */
-    //    it('testSwipeSetVerticalTrue', 0, async  (done:Function)=> {
+    //    it('testSwipeSetVerticalTrue', Level.LEVEL1, async  (done:Function)=> {
     //      console.info('new testSwipeSetVerticalTrue START');
     //      globalThis.value.message.notify({name:'swiperVertical', value: true});
     //      await CommonFunc.sleep(1000);

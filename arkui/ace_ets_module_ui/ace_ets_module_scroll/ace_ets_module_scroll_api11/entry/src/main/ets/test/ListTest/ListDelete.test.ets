@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router'
 import { Driver, Component, ON } from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
@@ -56,7 +56,7 @@ export default function ListDeleteTest() {
      *tc.name   Set swipeAction.end by CustomBuilder
      *tc.desc   Set swipeAction.end by CustomBuilder and edgeEffect is SwipeEdgeEffect.None
      */
-    it('ArkUI_List_Delete_0100', 0, async (done: Function) => {
+    it('ArkUI_List_Delete_0100', Level.LEVEL1, async (done: Function) => {
       let CASE: string = 'ArkUI_List_Delete_0100'
       console.info(`${SUITE} ${CASE} START`);
       await sleep(2000);
@@ -88,7 +88,7 @@ export default function ListDeleteTest() {
      *tc.name   Set swipeAction.start by CustomBuilder
      *tc.desc   Set swipeAction.start by CustomBuilder and edgeEffect is SwipeEdgeEffect.None
      */
-    it('ArkUI_List_Delete_0200', 0, async (done: Function) => {
+    it('ArkUI_List_Delete_0200', Level.LEVEL1, async (done: Function) => {
       let CASE: string = 'ArkUI_List_Delete_0200'
       console.info(`${SUITE} ${CASE} START`);
 
@@ -120,7 +120,7 @@ export default function ListDeleteTest() {
      *tc.name   Set swipeAction.end by SwipeActionItem
      *tc.desc   Set swipeAction.end by SwipeActionItem and edgeEffect is SwipeEdgeEffect.Spring
      */
-    it('ArkUI_List_Delete_0500', 0, async (done: Function) => {
+    it('ArkUI_List_Delete_0500', Level.LEVEL1, async (done: Function) => {
       let CASE: string = 'ArkUI_List_Delete_0500'
       console.info(`${SUITE} ${CASE} START`);
 

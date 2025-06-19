@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium'
 import router from '@ohos.router';
 export default function checkBoxTest1() {
   describe('ActsCheckBoxTest1', () => {
@@ -41,7 +41,7 @@ export default function checkBoxTest1() {
      *tc.name   Tests the unselectedColor property of the Checkbox component
      *tc.desc   Set the unselectedColor property parameter to 0x00ff00
      */
-    it('ArkUX_Stage_Checkbox_unselectedColor_0100', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_unselectedColor_0100', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_unselectedColor_0100 START');
       setTimeout(() => {
         try {
@@ -68,7 +68,7 @@ export default function checkBoxTest1() {
      *tc.name   Tests the unselectedColor property of the Checkbox component
      *tc.desc   Set the unselectedColor property parameter to '#fffd0000'
      */
-    it('ArkUX_Stage_Checkbox_unselectedColor_0200', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_unselectedColor_0200', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_unselectedColor_0200 START');
       setTimeout(() => {
         try {
@@ -95,7 +95,7 @@ export default function checkBoxTest1() {
      *tc.name   Tests the unselectedColor property of the Checkbox component
      *tc.desc   Set the unselectedColor property parameter to 'rgb(138,43,226)'
      */
-    it('ArkUX_Stage_Checkbox_unselectedColor_0300', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_unselectedColor_0300', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_unselectedColor_0300 START');
       setTimeout(() => {
         try {
@@ -122,7 +122,7 @@ export default function checkBoxTest1() {
      *tc.name   Tests the unselectedColor property of the Checkbox component
      *tc.desc   Set the unselectedColor property parameter to Color.Pink
      */
-    it('ArkUX_Stage_Checkbox_unselectedColor_0400', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_unselectedColor_0400', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_unselectedColor_0400 START');
       setTimeout(() => {
         try {
@@ -149,7 +149,7 @@ export default function checkBoxTest1() {
      *tc.name   Tests the unselectedColor property of the Checkbox component
      *tc.desc   Set the unselectedColor property parameter to $r("app.color.checkbox_Color")
      */
-    it('ArkUX_Stage_Checkbox_unselectedColor_0500', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_unselectedColor_0500', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_unselectedColor_0500 START');
       setTimeout(() => {
         try {
@@ -176,7 +176,7 @@ export default function checkBoxTest1() {
      *tc.name   Tests the unselectedColor property of the Checkbox component
      *tc.desc   Set the unselectedColor property parameter to an outlier ""
      */
-    it('ArkUX_Stage_Checkbox_unselectedColor_0600', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_unselectedColor_0600', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_unselectedColor_0600 START');
       setTimeout(() => {
         try {
@@ -203,7 +203,7 @@ export default function checkBoxTest1() {
      *tc.name   Tests the unselectedColor property of the Checkbox component
      *tc.desc   Set the unselectedColor property parameter to an outlier null
      */
-    it('ArkUX_Stage_Checkbox_unselectedColor_0700', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_unselectedColor_0700', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_unselectedColor_0700 START');
       setTimeout(() => {
         try {
@@ -230,7 +230,7 @@ export default function checkBoxTest1() {
      *tc.name   Tests the unselectedColor property of the Checkbox component
      *tc.desc   Set the unselectedColor property parameter to an outlier undefined
      */
-    it('ArkUX_Stage_Checkbox_unselectedColor_0800', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_unselectedColor_0800', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_unselectedColor_0800 START');
       setTimeout(() => {
         try {
@@ -258,7 +258,7 @@ export default function checkBoxTest1() {
      *tc.desc   Set the unselectedColor property parameter to Color.Pink
      *          and again set the unselectedColor property parameter to "#FFFD0000".
      */
-    it('ArkUX_Stage_Checkbox_unselectedColor_0900', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_unselectedColor_0900', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_unselectedColor_0900 START');
       setTimeout(() => {
         try {
@@ -286,7 +286,7 @@ export default function checkBoxTest1() {
      *tc.desc   Set the unselectedColor property parameter to Color.Pink
      *          and again set the unselectedColor property parameter to the outlier value of undefined
      */
-    it('ArkUX_Stage_Checkbox_unselectedColor_1000', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_unselectedColor_1000', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_unselectedColor_1000 START');
       setTimeout(() => {
         try {
@@ -313,7 +313,7 @@ export default function checkBoxTest1() {
      *tc.name   Tests the unselectedColor property of the Checkbox component
      *tc.desc   Set unselectedColor property parameter to outlier 'bgr(138,43,226)'
      */
-    it('ArkUX_Stage_Checkbox_unselectedColor_1100', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_unselectedColor_1100', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_unselectedColor_1100 START');
       setTimeout(() => {
         try {
@@ -341,7 +341,7 @@ export default function checkBoxTest1() {
      *tc.desc   Set the unselectedColor property parameter to 0x00ff00
      *          and the universal property backgroundColor property value to the outlier null
      */
-    it('ArkUX_Stage_Checkbox_unselectedColor_1200', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_unselectedColor_1200', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_unselectedColor_1200 START');
       setTimeout(() => {
         try {
@@ -368,7 +368,7 @@ export default function checkBoxTest1() {
      *tc.name   Tests the CheckMarkColor property of the Checkbox component
      *tc.desc   Set the checkMarkColor property parameter to 0x00ff00
      */
-    it('ArkUX_Stage_Checkbox_CheckMarkColor_0100', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_CheckMarkColor_0100', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_CheckMarkColor_0100 START');
       setTimeout(() => {
         try {
@@ -399,7 +399,7 @@ export default function checkBoxTest1() {
      *tc.name   Tests the CheckMarkColor property of the Checkbox component
      *tc.desc   Set the checkMarkColor property parameter to '#fffd0000'
      */
-    it('ArkUX_Stage_Checkbox_CheckMarkColor_0200', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_CheckMarkColor_0200', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_CheckMarkColor_0200 START');
       setTimeout(() => {
         try {
@@ -430,7 +430,7 @@ export default function checkBoxTest1() {
      *tc.name   Tests the CheckMarkColor property of the Checkbox component
      *tc.desc   Set the checkMarkColor property parameter to 'rgb(138,43,226)'
      */
-    it('ArkUX_Stage_Checkbox_CheckMarkColor_0300', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_CheckMarkColor_0300', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_CheckMarkColor_0300 START');
       setTimeout(() => {
         try {
@@ -461,7 +461,7 @@ export default function checkBoxTest1() {
      *tc.name   Tests the CheckMarkColor property of the Checkbox component
      *tc.desc   Set the checkMarkColor property parameter to Color.Pink
      */
-    it('ArkUX_Stage_Checkbox_CheckMarkColor_0400', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_CheckMarkColor_0400', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_CheckMarkColor_0400 START');
       setTimeout(() => {
         try {
@@ -492,7 +492,7 @@ export default function checkBoxTest1() {
      *tc.name   Tests the CheckMarkColor property of the Checkbox component
      *tc.desc   Set the checkMarkColor property parameter to $r("app.color.checkbox_Color")
      */
-    it('ArkUX_Stage_Checkbox_CheckMarkColor_0500', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_CheckMarkColor_0500', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_CheckMarkColor_0500 START');
       setTimeout(() => {
         try {
@@ -523,7 +523,7 @@ export default function checkBoxTest1() {
      *tc.name   Tests the CheckMarkColor property of the Checkbox component
      *tc.desc   Set the checkMarkColor property parameter to an outlier ""
      */
-    it('ArkUX_Stage_Checkbox_CheckMarkColor_0600', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_CheckMarkColor_0600', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_CheckMarkColor_0600 START');
       setTimeout(() => {
         try {
@@ -554,7 +554,7 @@ export default function checkBoxTest1() {
      *tc.name   Tests the CheckMarkColor property of the Checkbox component
      *tc.desc   Set the checkMarkColor property parameter to an outlier null
      */
-    it('ArkUX_Stage_Checkbox_CheckMarkColor_0700', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_CheckMarkColor_0700', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_CheckMarkColor_0700 START');
       setTimeout(() => {
         try {
@@ -585,7 +585,7 @@ export default function checkBoxTest1() {
      *tc.name   Tests the CheckMarkColor property of the Checkbox component
      *tc.desc   Set the checkMarkColor property parameter to an outlier undefined
      */
-    it('ArkUX_Stage_Checkbox_CheckMarkColor_0800', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_CheckMarkColor_0800', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_CheckMarkColor_0800 START');
       setTimeout(() => {
         try {
@@ -617,7 +617,7 @@ export default function checkBoxTest1() {
      *tc.desc   Set the checkMarkColor property parameter to Color.Pink
      *          and again set the checkMarkColor property parameter to "#FFFD0000".
      */
-    it('ArkUX_Stage_Checkbox_CheckMarkColor_0900', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_CheckMarkColor_0900', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_CheckMarkColor_0900 START');
       setTimeout(() => {
         try {
@@ -649,7 +649,7 @@ export default function checkBoxTest1() {
      *tc.desc   Set the checkMarkColor property parameter to Color.Pink
      *          and again set the checkMarkColor property parameter to the outlier 'bgr(138,43,226)'.
      */
-    it('ArkUX_Stage_Checkbox_CheckMarkColor_1000', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_CheckMarkColor_1000', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_CheckMarkColor_1000 START');
       setTimeout(() => {
         try {
@@ -680,7 +680,7 @@ export default function checkBoxTest1() {
      *tc.name   Tests the CheckMarkColor property of the Checkbox component
      *tc.desc   Set checkMarkColor property parameter to outlier 'bgr(138,43,226)'
      */
-    it('ArkUX_Stage_Checkbox_CheckMarkColor_1100', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_CheckMarkColor_1100', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_CheckMarkColor_1100 START');
       setTimeout(() => {
         try {
@@ -712,7 +712,7 @@ export default function checkBoxTest1() {
      *tc.desc   Set the checkMarkColor property parameter to 0x00ff00
      *          and the universal property backgroundColor property value to null outlier
      */
-    it('ArkUX_Stage_Checkbox_CheckMarkColor_1200', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_CheckMarkColor_1200', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_CheckMarkColor_1200 START');
       setTimeout(() => {
         try {
@@ -743,7 +743,7 @@ export default function checkBoxTest1() {
      *tc.name   Tests the CheckMarkSize property of the Checkbox component
      *tc.desc   Set the checkMarkSize property parameter to 0
      */
-    it('ArkUX_Stage_Checkbox_CheckMarkSize_0100', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_CheckMarkSize_0100', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_CheckMarkSize_0100 START');
       setTimeout(() => {
         try {
@@ -774,7 +774,7 @@ export default function checkBoxTest1() {
      *tc.name   Tests the CheckMarkSize property of the Checkbox component
      *tc.desc   Set the checkMarkSize property parameter to 1
      */
-    it('ArkUX_Stage_Checkbox_CheckMarkSize_0200', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_CheckMarkSize_0200', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_CheckMarkSize_0200 START');
       setTimeout(() => {
         try {
@@ -805,7 +805,7 @@ export default function checkBoxTest1() {
      *tc.name   Tests the CheckMarkSize property of the Checkbox component
      *tc.desc   Set the checkMarkSize property to string "60px".
      */
-    it('ArkUX_Stage_Checkbox_CheckMarkSize_0300', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_CheckMarkSize_0300', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_CheckMarkSize_0300 START');
       setTimeout(() => {
         try {
@@ -836,7 +836,7 @@ export default function checkBoxTest1() {
      *tc.name   Tests the CheckMarkSize property of the Checkbox component
      *tc.desc   Set the checkMarkSize property parameter to the percentage string "120%".
      */
-    it('ArkUX_Stage_Checkbox_CheckMarkSize_0400', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_CheckMarkSize_0400', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_CheckMarkSize_0400 START');
       setTimeout(() => {
         try {
@@ -868,7 +868,7 @@ export default function checkBoxTest1() {
      *tc.desc   Set the checkMarkSize property parameter to
      *          the resource reference type $r("app.string.Check_Mark_Size_test")
      */
-    it('ArkUX_Stage_Checkbox_CheckMarkSize_0500', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_CheckMarkSize_0500', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_CheckMarkSize_0500 START');
       setTimeout(() => {
         try {
@@ -899,7 +899,7 @@ export default function checkBoxTest1() {
      *tc.name   Tests the CheckMarkSize property of the Checkbox component
      *tc.desc   Set the checkMarkSize property parameter to an outlier ""
      */
-    it('ArkUX_Stage_Checkbox_CheckMarkSize_0600', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_CheckMarkSize_0600', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_CheckMarkSize_0600 START');
       setTimeout(() => {
         try {
@@ -930,7 +930,7 @@ export default function checkBoxTest1() {
      *tc.name   Tests the CheckMarkSize property of the Checkbox component
      *tc.desc   Set the checkMarkSize property parameter to an outlier null
      */
-    it('ArkUX_Stage_Checkbox_CheckMarkSize_0700', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_CheckMarkSize_0700', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_CheckMarkSize_0700 START');
       setTimeout(() => {
         try {
@@ -961,7 +961,7 @@ export default function checkBoxTest1() {
      *tc.name   Tests the CheckMarkSize property of the Checkbox component
      *tc.desc   Set the checkMarkSize property parameter to an outlier undefined
      */
-    it('ArkUX_Stage_Checkbox_CheckMarkSize_0800', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_CheckMarkSize_0800', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_CheckMarkSize_0800 START');
       setTimeout(() => {
         try {
@@ -993,7 +993,7 @@ export default function checkBoxTest1() {
      *tc.desc   Set the checkMarkSize property parameter to 10
      *          and again set the checkMarkSize property parameter to 40
      */
-    it('ArkUX_Stage_Checkbox_CheckMarkSize_0900', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_CheckMarkSize_0900', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_CheckMarkSize_0900 START');
       setTimeout(() => {
         try {
@@ -1025,7 +1025,7 @@ export default function checkBoxTest1() {
      *tc.desc   Set the checkMarkSize property parameter to 10
      *          and again set the checkMarkSize property parameter to the exception value undefined
      */
-    it('ArkUX_Stage_Checkbox_CheckMarkSize_1000', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_CheckMarkSize_1000', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_CheckMarkSize_1000 START');
       setTimeout(() => {
         try {
@@ -1056,7 +1056,7 @@ export default function checkBoxTest1() {
      *tc.name   Tests the CheckMarkSize property of the Checkbox component
      *tc.desc   Set the checkMarkSize property parameter to the outlier "asdf#$8".
      */
-    it('ArkUX_Stage_Checkbox_CheckMarkSize_1100', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_CheckMarkSize_1100', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_CheckMarkSize_1100 START');
       setTimeout(() => {
         try {
@@ -1087,7 +1087,7 @@ export default function checkBoxTest1() {
      *tc.name   Tests the CheckMarkSize property of the Checkbox component
      *tc.desc   Set the checkMarkSize property parameter to 10lpx and the generic size property value to null
      */
-    it('ArkUX_Stage_Checkbox_CheckMarkSize_1200', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_CheckMarkSize_1200', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_CheckMarkSize_1200 START');
       setTimeout(() => {
         try {
@@ -1118,7 +1118,7 @@ export default function checkBoxTest1() {
      *tc.name   Tests the CheckMarkSize property of the Checkbox component
      *tc.desc   Set the checkMarkSize property parameter to an outlier -10
      */
-    it('ArkUX_Stage_Checkbox_CheckMarkSize_1300', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_CheckMarkSize_1300', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_CheckMarkSize_1300 START');
       setTimeout(() => {
         try {
@@ -1149,7 +1149,7 @@ export default function checkBoxTest1() {
      *tc.name   Tests the CheckMarkWidth property of the Checkbox component
      *tc.desc   Set the checkMarkWidth property parameter to 0
      */
-    it('ArkUX_Stage_Checkbox_CheckMarkWidth_0100', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_CheckMarkWidth_0100', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_CheckMarkWidth_0100 START');
       setTimeout(() => {
         try {
@@ -1181,7 +1181,7 @@ export default function checkBoxTest1() {
      *tc.name   Tests the CheckMarkWidth property of the Checkbox component
      *tc.desc   Set the checkMarkWidth property parameter to 1
      */
-    it('ArkUX_Stage_Checkbox_CheckMarkWidth_0200', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_CheckMarkWidth_0200', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_CheckMarkWidth_0200 START');
       setTimeout(() => {
         try {
@@ -1212,7 +1212,7 @@ export default function checkBoxTest1() {
      *tc.name   Tests the CheckMarkWidth property of the Checkbox component
      *tc.desc   Set the checkMarkWidth property to string "60px".
      */
-    it('ArkUX_Stage_Checkbox_CheckMarkWidth_0300', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_CheckMarkWidth_0300', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_CheckMarkWidth_0300 START');
       setTimeout(() => {
         try {
@@ -1243,7 +1243,7 @@ export default function checkBoxTest1() {
      *tc.name   Tests the CheckMarkWidth property of the Checkbox component
      *tc.desc   Set the checkMarkWidth property argument to the percentage string "120%".
      */
-    it('ArkUX_Stage_Checkbox_CheckMarkWidth_0400', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_CheckMarkWidth_0400', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_CheckMarkWidth_0400 START');
       setTimeout(() => {
         try {
@@ -1275,7 +1275,7 @@ export default function checkBoxTest1() {
      *tc.desc   Set the checkMarkWidth property parameter to
      *          the resource reference type $r("app.string.Check_Mark_Size_test").
      */
-    it('ArkUX_Stage_Checkbox_CheckMarkWidth_0500', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_CheckMarkWidth_0500', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_CheckMarkWidth_0500 START');
       setTimeout(() => {
         try {
@@ -1306,7 +1306,7 @@ export default function checkBoxTest1() {
      *tc.name   Tests the CheckMarkWidth property of the Checkbox component
      *tc.desc   Set the checkMarkWidth property parameter to an outlier ""
      */
-    it('ArkUX_Stage_Checkbox_CheckMarkWidth_0600', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_CheckMarkWidth_0600', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_CheckMarkWidth_0600 START');
       setTimeout(() => {
         try {
@@ -1337,7 +1337,7 @@ export default function checkBoxTest1() {
      *tc.name   Tests the CheckMarkWidth property of the Checkbox component
      *tc.desc   Set the checkMarkWidth property parameter to an outlier null
      */
-    it('ArkUX_Stage_Checkbox_CheckMarkWidth_0700', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_CheckMarkWidth_0700', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_CheckMarkWidth_0700 START');
       setTimeout(() => {
         try {
@@ -1368,7 +1368,7 @@ export default function checkBoxTest1() {
      *tc.name   Tests the CheckMarkWidth property of the Checkbox component
      *tc.desc   Set the checkMarkWidth property parameter to an outlier undefined
      */
-    it('ArkUX_Stage_Checkbox_CheckMarkWidth_0800', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_CheckMarkWidth_0800', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_CheckMarkWidth_0800 START');
       setTimeout(() => {
         try {
@@ -1399,7 +1399,7 @@ export default function checkBoxTest1() {
      *tc.name   Tests the CheckMarkWidth property of the Checkbox component
      *tc.desc   Set the checkMarkWidth property parameter to 10 and the checkMarkWidth property parameter to 5fp again
      */
-    it('ArkUX_Stage_Checkbox_CheckMarkWidth_0900', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_CheckMarkWidth_0900', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_CheckMarkWidth_0900 START');
       setTimeout(() => {
         try {
@@ -1431,7 +1431,7 @@ export default function checkBoxTest1() {
      *tc.desc   Set the checkMarkWidth property parameter to 10
      *          and again set the checkMarkWidth property parameter to the exception value undefined
      */
-    it('ArkUX_Stage_Checkbox_CheckMarkWidth_1000', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_CheckMarkWidth_1000', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_CheckMarkWidth_1000 START');
       setTimeout(() => {
         try {
@@ -1462,7 +1462,7 @@ export default function checkBoxTest1() {
      *tc.name   Tests the CheckMarkWidth property of the Checkbox component
      *tc.desc   Set the checkMarkWidth property parameter to an exception value of "asdf#$8".
      */
-    it('ArkUX_Stage_Checkbox_CheckMarkWidth_1100', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_CheckMarkWidth_1100', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_CheckMarkWidth_1100 START');
       setTimeout(() => {
         try {
@@ -1493,7 +1493,7 @@ export default function checkBoxTest1() {
      *tc.name   Tests the CheckMarkWidth property of the Checkbox component
      *tc.desc   Set the checkMarkWidth property parameter to "40lpx" and the common property width property value to null
      */
-    it('ArkUX_Stage_Checkbox_CheckMarkWidth_1200', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_CheckMarkWidth_1200', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_CheckMarkWidth_1200 START');
       setTimeout(() => {
         try {
@@ -1524,7 +1524,7 @@ export default function checkBoxTest1() {
      *tc.name   Tests the CheckMarkWidth property of the Checkbox component
      *tc.desc   Set the checkMarkWidth property parameter to an exception value of -1.
      */
-    it('ArkUX_Stage_Checkbox_CheckMarkWidth_1300', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_CheckMarkWidth_1300', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_CheckMarkWidth_1300 START');
       setTimeout(() => {
         try {
@@ -1557,7 +1557,7 @@ export default function checkBoxTest1() {
      *tc.desc   Simultaneous setting checkMarkWidth(40) checkMarkSize(40)
      *          checkMarkColor(0x00ff00) unselectedColor(Color.Pink)
      */
-    it('ArkUX_Stage_Checkbox_CheckMarkWidth_1400', 0, async (done: Function) => {
+    it('ArkUX_Stage_Checkbox_CheckMarkWidth_1400', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Stage_Checkbox_CheckMarkWidth_1400 START');
       setTimeout(() => {
         try {

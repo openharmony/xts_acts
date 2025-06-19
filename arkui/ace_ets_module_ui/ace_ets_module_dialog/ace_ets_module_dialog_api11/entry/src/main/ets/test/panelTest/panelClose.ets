@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium'
 import router from '@ohos.router';
 import CommonFunc from "../../MainAbility/common/Common";
 let emitKey = "emitUserAgent";
@@ -52,7 +52,7 @@ export default function panelTest() {
      *tc.name   Support modifying  the close icon shown or not
      *tc.desc   Sets the showCloseIcon property parameter to true
      */
-    it('ArkUX_Stage_Panel_showCloseIcon_0100', 0, async (done: Function) => {
+    it('ArkUX_Stage_Panel_showCloseIcon_0100', Level.LEVEL2, async (done: Function) => {
       console.info('ArkUX_Stage_Panel_showCloseIcon_0100 START');
       try {
         let strJson = getInspectorByKey('ArkUX_Stage_Panel_showCloseIcon_0100');
@@ -74,7 +74,7 @@ export default function panelTest() {
      *tc.name   Support modifying  the close icon shown or not
      *tc.desc   Sets the showCloseIcon property parameter to false
      */
-    it('ArkUX_Stage_Panel_showCloseIcon_0200', 0, async (done: Function) => {
+    it('ArkUX_Stage_Panel_showCloseIcon_0200', Level.LEVEL2, async (done: Function) => {
       console.info('ArkUX_Stage_Panel_showCloseIcon_0200 START')
       try {
         let strJson = getInspectorByKey('ArkUX_Stage_Panel_showCloseIcon_0200');
@@ -96,7 +96,7 @@ export default function panelTest() {
      *tc.name   Support modifying  the close icon shown or not
      *tc.desc   Sets the showCloseIcon property parameter from true to false
      */
-    it('ArkUX_Stage_Panel_showCloseIcon_0300', 0, async (done: Function) => {
+    it('ArkUX_Stage_Panel_showCloseIcon_0300', Level.LEVEL2, async (done: Function) => {
       console.info('ArkUX_Stage_Panel_showCloseIcon_0300 START');
       try {
         let strJson = getInspectorByKey('ArkUX_Stage_Panel_showCloseIcon_0300');
@@ -118,7 +118,7 @@ export default function panelTest() {
      *tc.name   Support modifying  the close icon shown or not
      *tc.desc   Sets the showCloseIcon property parameter from false to true
      */
-    it('ArkUX_Stage_Panel_showCloseIcon_0400', 0, async (done: Function) => {
+    it('ArkUX_Stage_Panel_showCloseIcon_0400', Level.LEVEL2, async (done: Function) => {
       console.info('ArkUX_Stage_Panel_showCloseIcon_0400 START');
       try {
         let strJson = getInspectorByKey('ArkUX_Stage_Panel_showCloseIcon_0400');
@@ -140,7 +140,7 @@ export default function panelTest() {
      *tc.name   Support modifying  the close icon shown or not
      *tc.desc   Sets the showCloseIcon property parameter to " "
      */
-    it('ArkUX_Stage_Panel_showCloseIcon_0500', 0, async (done: Function) => {
+    it('ArkUX_Stage_Panel_showCloseIcon_0500', Level.LEVEL2, async (done: Function) => {
       console.info('ArkUX_Stage_Panel_showCloseIcon_0500 START');
       try {
         let strJson = getInspectorByKey('ArkUX_Stage_Panel_showCloseIcon_0500');
@@ -162,7 +162,7 @@ export default function panelTest() {
      *tc.name   Support modifying  the close icon shown or not
      *tc.desc   Sets the showCloseIcon property parameter to null
      */
-    it('ArkUX_Stage_Panel_showCloseIcon_0600', 0, async (done: Function) => {
+    it('ArkUX_Stage_Panel_showCloseIcon_0600', Level.LEVEL2, async (done: Function) => {
       console.info('ArkUX_Stage_Panel_showCloseIcon_0600 START');
       try {
         let strJson = getInspectorByKey('ArkUX_Stage_Panel_showCloseIcon_0600');
@@ -184,7 +184,7 @@ export default function panelTest() {
      *tc.name   Support modifying  the close icon shown or not
      *tc.desc   Sets the showCloseIcon property parameter to number 0
      */
-    it('ArkUX_Stage_Panel_showCloseIcon_0700', 0, async (done: Function) => {
+    it('ArkUX_Stage_Panel_showCloseIcon_0700', Level.LEVEL2, async (done: Function) => {
       console.info('ArkUX_Stage_Panel_showCloseIcon_0700 START');
       try {
         let strJson = getInspectorByKey('ArkUX_Stage_Panel_showCloseIcon_0700');
@@ -206,7 +206,7 @@ export default function panelTest() {
      *tc.name   Support modifying  the close icon shown or not
      *tc.desc   Sets the showCloseIcon property parameter to number 1
      */
-    it('ArkUX_Stage_Panel_showCloseIcon_0800', 0, async (done: Function) => {
+    it('ArkUX_Stage_Panel_showCloseIcon_0800', Level.LEVEL2, async (done: Function) => {
       console.info('ArkUX_Stage_Panel_showCloseIcon_0800 START');
       try {
         let strJson = getInspectorByKey('ArkUX_Stage_Panel_showCloseIcon_0800');
@@ -228,7 +228,7 @@ export default function panelTest() {
      *tc.name   Support modifying  the close icon shown or not
      *tc.desc   Sets the showCloseIcon property parameter to number 100
      */
-    it('ArkUX_Stage_Panel_showCloseIcon_0900', 0, async (done: Function) => {
+    it('ArkUX_Stage_Panel_showCloseIcon_0900', Level.LEVEL2, async (done: Function) => {
       console.info('ArkUX_Stage_Panel_showCloseIcon_0900 START');
       try {
         let strJson = getInspectorByKey('ArkUX_Stage_Panel_showCloseIcon_0900');
@@ -250,7 +250,7 @@ export default function panelTest() {
      *tc.name   Support modifying  the close icon shown or not
      *tc.desc   Sets the showCloseIcon property parameter to undefined
      */
-    it('ArkUX_Stage_Panel_showCloseIcon_1000', 0, async (done: Function) => {
+    it('ArkUX_Stage_Panel_showCloseIcon_1000', Level.LEVEL2, async (done: Function) => {
       console.info('ArkUX_Stage_Panel_showCloseIcon_1000 START');
       try {
         let strJson = getInspectorByKey('ArkUX_Stage_Panel_showCloseIcon_1000');
@@ -272,7 +272,7 @@ export default function panelTest() {
      *tc.name   Support modifying  the close icon shown or not
      *tc.desc   Sets the showCloseIcon property parameter to string "true"
      */
-    it('ArkUX_Stage_Panel_showCloseIcon_1100', 0, async (done: Function) => {
+    it('ArkUX_Stage_Panel_showCloseIcon_1100', Level.LEVEL2, async (done: Function) => {
       console.info('ArkUX_Stage_Panel_showCloseIcon_1100 START');
       try {
         let strJson = getInspectorByKey('ArkUX_Stage_Panel_showCloseIcon_1100');
@@ -294,7 +294,7 @@ export default function panelTest() {
      *tc.name   Support modifying  the close icon shown or not
      *tc.desc   Not sets the showCloseIcon property parameter
      */
-    it('ArkUX_Stage_Panel_showCloseIcon_1200', 0, async (done: Function) => {
+    it('ArkUX_Stage_Panel_showCloseIcon_1200', Level.LEVEL2, async (done: Function) => {
       console.info('ArkUX_Stage_Panel_showCloseIcon_1200 START');
       try {
         let strJson = getInspectorByKey('ArkUX_Stage_Panel_showCloseIcon_1200');
@@ -316,7 +316,7 @@ export default function panelTest() {
      *tc.name   Support modifying  the close icon shown or not
      *tc.desc   Sets the showCloseIcon property parameter from true to undefined
      */
-    it('ArkUX_Stage_Panel_showCloseIcon_1300', 0, async (done: Function) => {
+    it('ArkUX_Stage_Panel_showCloseIcon_1300', Level.LEVEL2, async (done: Function) => {
       console.info('ArkUX_Stage_Panel_showCloseIcon_1300 START');
       try {
         let strJson = getInspectorByKey('ArkUX_Stage_Panel_showCloseIcon_1300');
@@ -338,7 +338,7 @@ export default function panelTest() {
      *tc.name   Support modifying  the close icon shown or not
      *tc.desc   Sets the showCloseIcon property parameter from true to null
      */
-    it('ArkUX_Stage_Panel_showCloseIcon_1400', 0, async (done: Function) => {
+    it('ArkUX_Stage_Panel_showCloseIcon_1400', Level.LEVEL2, async (done: Function) => {
       console.info('ArkUX_Stage_Panel_showCloseIcon_1400 START');
       try {
         let strJson = getInspectorByKey('ArkUX_Stage_Panel_showCloseIcon_1400');
@@ -360,7 +360,7 @@ export default function panelTest() {
      *tc.name   Support modifying  the close icon shown or not
      *tc.desc   Sets the showCloseIcon property parameter from true to " "
      */
-    it('ArkUX_Stage_Panel_showCloseIcon_1500', 0, async (done: Function) => {
+    it('ArkUX_Stage_Panel_showCloseIcon_1500', Level.LEVEL2, async (done: Function) => {
       console.info('ArkUX_Stage_Panel_showCloseIcon_1500 START');
       try {
         let strJson = getInspectorByKey('ArkUX_Stage_Panel_showCloseIcon_1500');

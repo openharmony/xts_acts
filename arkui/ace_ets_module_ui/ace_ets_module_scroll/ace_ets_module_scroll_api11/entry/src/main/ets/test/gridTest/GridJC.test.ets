@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 
 export default function ActsGridTest() {
@@ -43,7 +43,7 @@ export default function ActsGridTest() {
       // This API supports only one parameter: preset action function.
     })
 
-    it('ArkUX_Grid_List_Swiper_0200', 0, async (done: Function) => {
+    it('ArkUX_Grid_List_Swiper_0200', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Grid_List_Swiper_0200 START');
       setTimeout(() => {
         try {
@@ -62,7 +62,7 @@ export default function ActsGridTest() {
       }, 500)
     });
 
-    it('ArkUX_Grid_List_Swiper_0210', 0, async (done: Function) => {
+    it('ArkUX_Grid_List_Swiper_0210', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Grid_List_Swiper_0210 START');
       setTimeout(() => {
         try {
@@ -81,7 +81,7 @@ export default function ActsGridTest() {
       }, 500)
     });
 
-    it('ArkUX_Grid_List_Swiper_0220', 0, async (done: Function) => {
+    it('ArkUX_Grid_List_Swiper_0220', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Grid_List_Swiper_0220 START');
       setTimeout(() => {
         try {
@@ -99,7 +99,7 @@ export default function ActsGridTest() {
       }, 500)
     });
 
-    it('ArkUX_Grid_List_Swiper_0230', 0, async (done: Function) => {
+    it('ArkUX_Grid_List_Swiper_0230', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Grid_List_Swiper_0230 START');
       setTimeout(() => {
         try {
@@ -117,7 +117,7 @@ export default function ActsGridTest() {
       }, 500)
     });
 
-    it('ArkUX_Grid_List_Swiper_0240', 0, async (done: Function) => {
+    it('ArkUX_Grid_List_Swiper_0240', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Grid_List_Swiper_0240 START');
       setTimeout(() => {
         try {
@@ -135,7 +135,7 @@ export default function ActsGridTest() {
       }, 500)
     });
 
-    it('ArkUX_Grid_List_Swiper_0350', 0, async (done: Function) => {
+    it('ArkUX_Grid_List_Swiper_0350', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Grid_List_Swiper_0350 START');
       setTimeout(() => {
         try {
@@ -153,7 +153,7 @@ export default function ActsGridTest() {
       }, 500)
     });
 
-    it('ArkUX_Grid_List_Swiper_0360', 0, async (done: Function) => {
+    it('ArkUX_Grid_List_Swiper_0360', Level.LEVEL1, async (done: Function) => {
       console.info('ArkUX_Grid_List_Swiper_0360 START');
       setTimeout(() => {
         try {

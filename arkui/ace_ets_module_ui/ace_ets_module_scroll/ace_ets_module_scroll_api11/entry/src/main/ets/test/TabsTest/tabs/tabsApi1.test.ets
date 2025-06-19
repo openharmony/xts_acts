@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
@@ -52,7 +52,7 @@ export default function tabsApi1() {
      * @tc.type
     * @tc.sizeace_ets_module_scroll/ace_ets_module_scroll_api11/entry/src/main/ets/test/ScrollTest/Scroll.test.ets:61:11
      */
-    it('tabsApi1_0100', 0, async (done: Function) => {
+    it('tabsApi1_0100', Level.LEVEL1, async (done: Function) => {
       console.info('[tabsApi1_0100] START');
       await CommonFunc.sleep(2000);
 

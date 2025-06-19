@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../MainAbility/common/Common";
 import {
@@ -70,7 +70,7 @@ export default function swiperItemVisibility() {
      * @tc.name Swiper_VisibleChanged_SetVisibility
      * @tc.desc Set swiper's  first items visiblity  value ' Visible '.
      */
-    it('SUB_ACE_SWIPER_VISIBLECHANGED_0100', 0, async (done: Function) => {
+    it('SUB_ACE_SWIPER_VISIBLECHANGED_0100', Level.LEVEL1, async (done: Function) => {
       console.info('new SUB_ACE_SWIPER_VISIBLECHANGED_0100 START');
       globalThis.value.message.notify({
         name: 'index', value: 0
@@ -129,7 +129,7 @@ export default function swiperItemVisibility() {
      * @tc.name Swiper_VisibleChanged_SetVisibility
      * @tc.desc Set swiper's  first items visiblity  value ' hidden '.
      */
-    it('SUB_ACE_SWIPER_VISIBLECHANGED_0200', 0, async (done: Function) => {
+    it('SUB_ACE_SWIPER_VISIBLECHANGED_0200', Level.LEVEL1, async (done: Function) => {
       console.info('new SUB_ACE_SWIPER_VISIBLECHANGED_0200 START');
       globalThis.value.message.notify({
         name: 'visibility3', value: Visibility.Hidden
@@ -191,7 +191,7 @@ export default function swiperItemVisibility() {
      * @tc.name Swiper_VisibleChanged_SetVisibility
      * @tc.desc Set swiper's  first items visiblity  value ' None '.
      */
-    it('SUB_ACE_SWIPER_VISIBLECHANGED_0300', 0, async (done: Function) => {
+    it('SUB_ACE_SWIPER_VISIBLECHANGED_0300', Level.LEVEL1, async (done: Function) => {
       console.info('new SUB_ACE_SWIPER_VISIBLECHANGED_0300 START');
       globalThis.value.message.notify({
         name: 'visibility2', value: Visibility.None

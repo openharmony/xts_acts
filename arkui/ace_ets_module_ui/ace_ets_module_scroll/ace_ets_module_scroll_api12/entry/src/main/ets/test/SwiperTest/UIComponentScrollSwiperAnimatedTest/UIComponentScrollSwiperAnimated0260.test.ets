@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../../MainAbility/utils/Common';
 import {
@@ -64,7 +64,7 @@ export default function UIComponentScrollSwiperAnimated0260() {
      * @tc.type
      * @tc.size
      */
-    it('SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_ANIMATED_0260', 0, async (done: Function) => {
+    it('SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_ANIMATED_0260', Level.LEVEL1, async (done: Function) => {
       console.info(`SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_ANIMATED_0260 start.`);
       await CommonFunc.sleep(6000);
       let strIndex: string = getInspectorByKey('UIComponentScrollSwiperAnimated0260_text')

@@ -15,7 +15,7 @@
 
 import events_emitter from '@ohos.events.emitter';
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from '../../MainAbility/common/Utils'
 
 export default function checkBoxGroupSelectAllJsunit() {
@@ -50,7 +50,7 @@ export default function checkBoxGroupSelectAllJsunit() {
      * @tc.name         testcheckBoxGroupSelectAll0001
      * @tc.desic         acecheckBoxGroupSelectAllEtsTest0001
      */
-    it('testcheckBoxGroupSelectAll0001', 0, async () => {
+    it('testcheckBoxGroupSelectAll0001', Level.LEVEL1, async () => {
       console.info('checkBoxGroupSelectAll testcheckBoxGroupSelectAll0001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('CheckboxGroup');
@@ -67,7 +67,7 @@ export default function checkBoxGroupSelectAllJsunit() {
      * @tc.name         testcheckBoxGroupSelectAll0002
      * @tc.desic         acecheckBoxGroupSelectAllEtsTest0002
      */
-    it('testcheckBoxGroupSelectAll0002', 0, async () => {
+    it('testcheckBoxGroupSelectAll0002', Level.LEVEL1, async () => {
       console.info('checkBoxGroupSelectAll testcheckBoxGroupSelectAll0002 START');
       try {
         let eventData: events_emitter.EventData = {

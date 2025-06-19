@@ -14,7 +14,7 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import Utils from '../../MainAbility/common/Utils'
 
 export default function textPickerDefaultPickerItemHeightJsunit() {
@@ -49,7 +49,7 @@ export default function textPickerDefaultPickerItemHeightJsunit() {
      * @tc.name         testtextPickerDefaultPickerItemHeight0001
      * @tc.desic         acetextPickerDefaultPickerItemHeightEtsTest0001
      */
-    it('testtextPickerDefaultPickerItemHeight0001', 0, async () => {
+    it('testtextPickerDefaultPickerItemHeight0001', Level.LEVEL1, async () => {
       console.info('textPickerDefaultPickerItemHeight testtextPickerDefaultPickerItemHeight0001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('defaultPickerItemHeightText');
@@ -68,7 +68,7 @@ export default function textPickerDefaultPickerItemHeightJsunit() {
      * @tc.name         testtextPickerDefaultPickerItemHeight0002
      * @tc.desic         acetextPickerDefaultPickerItemHeightEtsTest0002
      */
-    it('testtextPickerDefaultPickerItemHeight0002', 0, async () => {
+    it('testtextPickerDefaultPickerItemHeight0002', Level.LEVEL1, async () => {
       console.info('textPickerDefaultPickerItemHeight testtextPickerDefaultPickerItemHeight0002 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('defaultPickerItemHeightText');
@@ -86,7 +86,7 @@ export default function textPickerDefaultPickerItemHeightJsunit() {
      * @tc.name         testtextPickerDefaultPickerItemHeight0003
      * @tc.desic         acetextPickerDefaultPickerItemHeightEtsTest0003
      */
-    it('testtextPickerDefaultPickerItemHeight0003', 0, async () => {
+    it('testtextPickerDefaultPickerItemHeight0003', Level.LEVEL1, async () => {
       console.info('textPickerDefaultPickerItemHeight testtextPickerDefaultPickerItemHeight0003 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('defaultPickerItemHeightText');
@@ -105,7 +105,7 @@ export default function textPickerDefaultPickerItemHeightJsunit() {
      * @tc.name         testtextPickerDefaultPickerItemHeight0004
      * @tc.desic         acetextPickerDefaultPickerItemHeightEtsTest0004
      */
-    it('testtextPickerDefaultPickerItemHeight0004', 0, async () => {
+    it('testtextPickerDefaultPickerItemHeight0004', Level.LEVEL1, async () => {
       console.info('textPickerDefaultPickerItemHeight testtextPickerDefaultPickerItemHeight0004 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('defaultPickerItemHeightText');
@@ -122,7 +122,7 @@ export default function textPickerDefaultPickerItemHeightJsunit() {
      * @tc.name         testtextPickerDefaultPickerItemHeight0005
      * @tc.desic         acetextPickerDefaultPickerItemHeightEtsTest0005
      */
-    it('testtextPickerDefaultPickerItemHeight0005', 0, async () => {
+    it('testtextPickerDefaultPickerItemHeight0005', Level.LEVEL1, async () => {
       console.info('textPickerDefaultPickerItemHeight testtextPickerDefaultPickerItemHeight0005 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('defaultPickerItemHeightText');
@@ -139,7 +139,7 @@ export default function textPickerDefaultPickerItemHeightJsunit() {
      * @tc.name         testtextPickerDefaultPickerItemHeight0006
      * @tc.desic         acetextPickerDefaultPickerItemHeightEtsTest0006
      */
-    it('testtextPickerDefaultPickerItemHeight0006', 0, async () => {
+    it('testtextPickerDefaultPickerItemHeight0006', Level.LEVEL1, async () => {
       console.info('textPickerDefaultPickerItemHeight testtextPickerDefaultPickerItemHeight0006 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('defaultPickerItemHeightText');
@@ -158,7 +158,7 @@ export default function textPickerDefaultPickerItemHeightJsunit() {
      * @tc.name         testtextPickerDefaultPickerItemHeight0007
      * @tc.desic         acetextPickerDefaultPickerItemHeightEtsTest0007
      */
-    it('testtextPickerDefaultPickerItemHeight0007', 0, async () => {
+    it('testtextPickerDefaultPickerItemHeight0007', Level.LEVEL1, async () => {
       console.info('textPickerDefaultPickerItemHeight testtextPickerDefaultPickerItemHeight0007 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('defaultPickerItemHeightText');
@@ -177,7 +177,7 @@ export default function textPickerDefaultPickerItemHeightJsunit() {
      * @tc.name         testtextPickerDefaultPickerItemHeight0009
      * @tc.desic         acetextPickerDefaultPickerItemHeightEtsTest0009
      */
-    it('testtextPickerDefaultPickerItemHeight0009', 0, async () => {
+    it('testtextPickerDefaultPickerItemHeight0009', Level.LEVEL1, async () => {
       console.info('textPickerDefaultPickerItemHeight testtextPickerDefaultPickerItemHeight009 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('defaultPickerItemHeightText');
@@ -194,7 +194,7 @@ export default function textPickerDefaultPickerItemHeightJsunit() {
      * @tc.name         testtextPickerDefaultPickerItemHeight0010
      * @tc.desic         acetextPickerDefaultPickerItemHeightEtsTest0010
      */
-    it('testtextPickerDefaultPickerItemHeight0010', 0, async () => {
+    it('testtextPickerDefaultPickerItemHeight0010', Level.LEVEL1, async () => {
       console.info('textPickerDefaultPickerItemHeight testtextPickerDefaultPickerItemHeight0010 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('defaultPickerItemHeightText');
@@ -213,7 +213,7 @@ export default function textPickerDefaultPickerItemHeightJsunit() {
      * @tc.name         testtextPickerDefaultPickerItemHeight0011
      * @tc.desic         acetextPickerDefaultPickerItemHeightEtsTest0011
      */
-    it('testtextPickerDefaultPickerItemHeight0011', 0, async () => {
+    it('testtextPickerDefaultPickerItemHeight0011', Level.LEVEL1, async () => {
       console.info('textPickerDefaultPickerItemHeight testtextPickerDefaultPickerItemHeight0011 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('defaultPickerItemHeightText');

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import ohosrouter from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../../MainAbility/common/Common';
@@ -54,7 +54,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
 
     });
 
-    it('SwiperNextPrevMarginAddJsunit_0100', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0100', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0100 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('swiperNextPrevMargin');
@@ -71,7 +71,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
     * @tc.desc  : test swiper width = padding + subcomponentwidth
     * @tc.level : Level 2
     */
-    it('SwiperNextPrevMarginAddJsunit_0036', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0036', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0036 START');
       await CommonFunc.sleep(1000);
       // dymanic chage the value
@@ -90,7 +90,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
     * @tc.desc  : test swiper width = padding + subcomponentwidth
     * @tc.level : Level 2
     */
-    it('SwiperNextPrevMarginAddJsunit_0300', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0300', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0300 START');
       await CommonFunc.sleep(1000);
       // dymanic chage the value
@@ -119,7 +119,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
    * @tc.desc  : test swiper width = padding + subcomponentwidth
    * @tc.level : Level 2
    */
-    it('SwiperNextPrevMarginAddJsunit_0400', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0400', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0400 START');
       await CommonFunc.sleep(1000);
       // dymanic chage the value
@@ -149,7 +149,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
     * @tc.desc  : test swiper width = padding + subcomponentwidth
     * @tc.level : Level 2
     */
-    it('SwiperNextPrevMarginAddJsunit_022', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_022', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_022 START');
       await CommonFunc.sleep(1000);
       // dymanic chage the value
@@ -173,7 +173,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       done();
     });
 
-    it('SwiperNextPrevMarginAddJsunit_0500', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0500', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0500 START');
       await CommonFunc.sleep(1000);
       // dymanic chage the value
@@ -197,7 +197,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       done();
     });
 
-    it('SwiperNextPrevMarginAddJsunit_0600', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0600', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0600 START');
       await CommonFunc.sleep(1000);
       // dymanic chage the value
@@ -221,7 +221,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       done();
     });
 
-    it('SwiperNextPrevMarginAddJsunit_0700', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0700', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0700 START');
       await CommonFunc.sleep(1000);
       // dymanic chage the value
@@ -237,7 +237,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       done();
     });
 
-    it('SwiperNextPrevMarginAddJsunit_0800', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0800', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0800 START');
       await CommonFunc.sleep(1000);
       // dymanic chage the value
@@ -261,7 +261,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       done();
     });
 
-    it('SwiperNextPrevMarginAddJsunit_0900', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0900', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0900 START');
       await CommonFunc.sleep(1000);
       // dymanic chage the value
@@ -285,7 +285,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       done();
     });
 
-    it('SwiperNextPrevMarginAddJsunit_1000', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_1000', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_1000 START');
       await CommonFunc.sleep(1000);
       // dymanic chage the value
@@ -309,7 +309,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       done();
     });
 
-    it('SwiperNextPrevMarginAddJsunit_1100', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_1100', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_1100 START');
       await CommonFunc.sleep(1000);
       // dymanic chage the value
@@ -335,7 +335,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       done();
     });
 
-    it('SwiperNextPrevMarginAddJsunit_1200', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_1200', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_1100 START');
       await CommonFunc.sleep(1000);
       // dymanic chage the value
@@ -361,7 +361,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       done();
     });
 
-    it('SwiperNextPrevMarginAddJsunit_1300', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_1300', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_1300 START');
       await CommonFunc.sleep(1000);
       // dymanic chage the value
@@ -387,7 +387,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       done();
     });
 
-    it('SwiperNextPrevMarginAddJsunit_1400', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_1400', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_1400 START');
       await CommonFunc.sleep(1000);
       // dymanic chage the value
@@ -413,7 +413,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       done();
     });
 
-    it('SwiperNextPrevMarginAddJsunit_1500', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_1500', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_1500 START');
       await CommonFunc.sleep(1000);
       // dymanic chage the value
@@ -451,7 +451,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       done();
     });
 
-    it('SwiperNextPrevMarginAddJsunit_1600', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_1600', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_1600 START');
       await CommonFunc.sleep(1000);
       // dymanic chage the value
@@ -489,7 +489,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       done();
     });
 
-    it('SwiperNextPrevMarginAddJsunit_1700', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_1700', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_1700 START');
       await CommonFunc.sleep(1000);
       // dymanic chage the value
@@ -531,7 +531,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       done();
     });
 
-    it('SwiperNextPrevMarginAddJsunit_1800', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_1800', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_1800 START');
       await CommonFunc.sleep(1000);
       // dymanic chage the value
@@ -574,7 +574,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       done();
     });
 
-    it('SwiperNextPrevMarginAddJsunit_1900', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_1900', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_1900 START');
       await CommonFunc.sleep(1000);
       // dymanic chage the value
@@ -617,7 +617,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       done();
     });
 
-    it('SwiperNextPrevMarginAddJsunit_2000', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_2000', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_2000 START');
       await CommonFunc.sleep(1000);
       // dymanic chage the value
@@ -660,7 +660,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       done();
     });
 
-    it('SwiperNextPrevMarginAddJsunit_2100', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_2100', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_2100 START');
       await CommonFunc.sleep(1000);
       // dymanic chage the value
@@ -703,7 +703,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       done();
     });
 
-    it('SwiperNextPrevMarginAddJsunit_2200', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_2200', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_2200 START');
       await CommonFunc.sleep(1000);
       // dymanic chage the value
@@ -746,7 +746,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       done();
     });
 
-    it('SwiperNextPrevMarginAddJsunit_2300', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_2300', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_2300 START');
       await CommonFunc.sleep(1000);
       // dymanic chage the value
@@ -795,7 +795,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_020', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_020', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_2400 START');
       await CommonFunc.sleep(1000);
       // dymanic chage the value
@@ -834,7 +834,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       done();
     });
 
-    it('SwiperNextPrevMarginAddJsunit_2500', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_2500', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_2500 START');
       await CommonFunc.sleep(1000);
       // dymanic chage the value
@@ -884,7 +884,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.level : Level 2
      */
 
-    it('SwiperNextPrevMarginAddJsunit_0076', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0076', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0076 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -932,7 +932,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
     * @tc.level : Level 2
     */
 
-    it('SwiperNextPrevMarginAddJsunit_0078', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0078', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0078 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -981,7 +981,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
     * @tc.level : Level 2
     */
 
-    it('SwiperNextPrevMarginAddJsunit_0077', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0077', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0077 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -1033,7 +1033,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
     * @tc.level : Level 2
     */
 
-    it('SwiperNextPrevMarginAddJsunit_0081', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0081', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0081 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -1082,7 +1082,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.level : Level 2
      */
 
-    it('SwiperNextPrevMarginAddJsunit_0080', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0080', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0080 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -1134,7 +1134,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.level : Level 2
      */
 
-    it('SwiperNextPrevMarginAddJsunit_0079', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0079', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0079 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -1185,7 +1185,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
    * @tc.level : Level 2
    */
 
-    it('SwiperNextPrevMarginAddJsunit_0082', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0082', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0082 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -1236,7 +1236,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
     * @tc.level : Level 2
     */
 
-    it('SwiperNextPrevMarginAddJsunit_0083', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0083', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0083 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -1287,7 +1287,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
    * @tc.level : Level 2
    */
 
-    it('SwiperNextPrevMarginAddJsunit_0084', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0084', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0084 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -1334,7 +1334,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
     * @tc.desc  : test swiper width = padding + subcomponentwidth
     * @tc.level : Level 2
     */
-    it('SwiperNextPrevMarginAddJsunit_0085', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0085', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0085 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -1381,7 +1381,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0063', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0063', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0063 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -1430,7 +1430,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0062', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0062', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0062 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -1479,7 +1479,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0061', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0061', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0061 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -1527,7 +1527,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0060', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0060', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0060 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -1583,7 +1583,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0067', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0067', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0061 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -1637,7 +1637,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0066', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0066', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0066 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -1690,7 +1690,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0065', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0065', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0065 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -1744,7 +1744,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0064', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0064', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0064 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -1797,7 +1797,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0055', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0055', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0055 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -1850,7 +1850,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0054', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0054', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0054 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -1901,7 +1901,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0053', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0053', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0053 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -1952,7 +1952,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0052', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0052', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0052 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -2012,7 +2012,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0059', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0059', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0059 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -2066,7 +2066,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0058', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0058', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0058 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -2119,7 +2119,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0057', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0057', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0057 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -2173,7 +2173,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0056', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0056', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0058 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -2226,7 +2226,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0050', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0050', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0050 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -2276,7 +2276,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0051', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0051', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0051 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -2327,7 +2327,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0042', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0042', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0051 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -2382,7 +2382,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0043', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0043', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0043 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -2437,7 +2437,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0044', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0044', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0051 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -2492,7 +2492,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0045', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0045', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0045 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -2547,7 +2547,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0046', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0046', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0046 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -2613,7 +2613,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0047', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0047', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0047 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -2670,7 +2670,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0048', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0048', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0048 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -2728,7 +2728,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0049', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0049', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0049 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -2785,7 +2785,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0072', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0072', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0072 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -2844,7 +2844,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0073', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0073', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0073 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -2902,7 +2902,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0074', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0074', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0074 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -2960,7 +2960,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0075', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0075', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0075 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -3019,7 +3019,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0068', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0068', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0068 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -3078,7 +3078,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0069', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0069', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0069 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -3137,7 +3137,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0070', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0070', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0070 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -3196,7 +3196,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0071', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0071', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0071 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -3255,7 +3255,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0041', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0041', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0041 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -3318,7 +3318,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0040', 0, async (done: Function) => {
+    it('SwiperNextPrevMarginAddJsunit_0040', Level.LEVEL1, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0040 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();

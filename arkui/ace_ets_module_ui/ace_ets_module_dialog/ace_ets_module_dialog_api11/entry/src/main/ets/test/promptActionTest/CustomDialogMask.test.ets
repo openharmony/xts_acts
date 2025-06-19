@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router'
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import { BusinessError } from '@ohos.base'
@@ -50,7 +50,7 @@ export default function CustomDialogMaskTest() {
      *tc.name   CustomDialogController#maskColor not set
      *tc.desc   CustomDialogController#maskColor not set
      */
-    it('ArkUI_CustomDialog_Mask_0100', 0, async (done: Function) => {
+    it('ArkUI_CustomDialog_Mask_0100', Level.LEVEL2, async (done: Function) => {
       let CASE: string = 'ArkUI_CustomDialog_Mask_0100'
       console.info(`${SUITE} ${CASE} START`);
 
@@ -72,7 +72,7 @@ export default function CustomDialogMaskTest() {
      *tc.name   CustomDialogController#maskColor set by Color
      *tc.desc   CustomDialogController#maskColor set by Color
      */
-    it('ArkUI_CustomDialog_Mask0200', 0, async (done: Function) => {
+    it('ArkUI_CustomDialog_Mask0200', Level.LEVEL2, async (done: Function) => {
       let CASE: string = 'ArkUI_CustomDialog_Mask0200'
       console.info(`${SUITE} ${CASE} START`);
       await CommonFunc.sleep(1000);
@@ -93,7 +93,7 @@ export default function CustomDialogMaskTest() {
      *tc.name   CustomDialogController#maskColor set by string
      *tc.desc   CustomDialogController#maskColor set by string
      */
-    it('ArkUI_CustomDialog_Mask0300', 0, async (done: Function) => {
+    it('ArkUI_CustomDialog_Mask0300', Level.LEVEL2, async (done: Function) => {
       let CASE: string = 'ArkUI_CustomDialog_Mask0300'
       console.info(`${SUITE} ${CASE} START`);
       let driver: Driver = Driver.create()
@@ -113,7 +113,7 @@ export default function CustomDialogMaskTest() {
      *tc.name   CustomDialogController#maskColor set by Resource
      *tc.desc   CustomDialogController#maskColor set by Resource
      */
-    it('ArkUI_CustomDialog_Mask0400', 0, async (done: Function) => {
+    it('ArkUI_CustomDialog_Mask0400', Level.LEVEL2, async (done: Function) => {
       let CASE: string = 'ArkUI_CustomDialog_Mask0400'
       console.info(`${SUITE} ${CASE} START`);
       let driver: Driver = Driver.create()
@@ -133,7 +133,7 @@ export default function CustomDialogMaskTest() {
      *tc.name   CustomDialogController#maskColor set by number
      *tc.desc   CustomDialogController#maskColor set by number
      */
-    it('ArkUI_CustomDialog_Mask0500', 0, async (done: Function) => {
+    it('ArkUI_CustomDialog_Mask0500', Level.LEVEL2, async (done: Function) => {
       let CASE: string = 'ArkUI_CustomDialog_Mask0500'
       console.info(`${SUITE} ${CASE} START`);
       let driver: Driver = Driver.create()

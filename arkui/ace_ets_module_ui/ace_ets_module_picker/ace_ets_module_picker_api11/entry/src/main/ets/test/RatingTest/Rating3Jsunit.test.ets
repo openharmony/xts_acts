@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium"
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import Utils from '../Utils';
 import events_emitter from '@ohos.events.emitter';
@@ -44,7 +44,7 @@ export default function rating3Jsunit() {
       console.info("rating after each called");
     });
 
-    it('testRating_100', 0, async (done: Function) => {
+    it('testRating_100', Level.LEVEL1, async (done: Function) => {
       console.info('testRating_100 START');
       await Utils.sleep(1000);
       try {
@@ -71,7 +71,7 @@ export default function rating3Jsunit() {
       done();
     });
 
-    it('testRating_200', 0, async (done: Function) => {
+    it('testRating_200', Level.LEVEL1, async (done: Function) => {
       console.info('[testRating_200] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('Rating');
@@ -82,7 +82,7 @@ export default function rating3Jsunit() {
       done();
     });
 
-    it('testRating_300', 0, async (done: Function) => {
+    it('testRating_300', Level.LEVEL1, async (done: Function) => {
       console.info('testRating_300 START');
       await Utils.sleep(1000);
       try {
@@ -110,7 +110,7 @@ export default function rating3Jsunit() {
       done();
     });
 
-    it('testRating_400', 0, async (done: Function) => {
+    it('testRating_400', Level.LEVEL1, async (done: Function) => {
       console.info('testRating_400 START');
       await Utils.sleep(1000);
       try {
@@ -137,7 +137,7 @@ export default function rating3Jsunit() {
       done();
     });
 
-    it('testRating_500', 0, async (done: Function) => {
+    it('testRating_500', Level.LEVEL1, async (done: Function) => {
       console.info('testRating_500 START');
       await Utils.sleep(1000);
       try {
@@ -164,7 +164,7 @@ export default function rating3Jsunit() {
       done();
     });
 
-    it('testRating_600', 0, async (done: Function) => {
+    it('testRating_600', Level.LEVEL1, async (done: Function) => {
       console.info('testRating_600 START');
       await Utils.sleep(1000);
       try {
@@ -191,7 +191,7 @@ export default function rating3Jsunit() {
       done();
     });
 
-    it('testRating_700', 0, async (done: Function) => {
+    it('testRating_700', Level.LEVEL1, async (done: Function) => {
       console.info('testRating_700 START');
       await Utils.sleep(1000);
       try {
@@ -218,7 +218,7 @@ export default function rating3Jsunit() {
       done();
     });
 
-    it('testRating_800', 0, async (done: Function) => {
+    it('testRating_800', Level.LEVEL1, async (done: Function) => {
       console.info('testRating_800 START');
       await Utils.sleep(1000);
       try {
@@ -245,7 +245,7 @@ export default function rating3Jsunit() {
       done();
     });
 
-    it('testRating_900', 0, async (done: Function) => {
+    it('testRating_900', Level.LEVEL1, async (done: Function) => {
       console.info('testRating_900 START');
       await Utils.sleep(1000);
       try {

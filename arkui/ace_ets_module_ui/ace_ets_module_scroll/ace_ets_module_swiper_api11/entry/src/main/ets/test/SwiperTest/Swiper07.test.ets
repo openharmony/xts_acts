@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 
 export default function Swiper07Test() {
@@ -43,7 +43,7 @@ export default function Swiper07Test() {
       // This API supports only one parameter: preset action function.
     })
 
-    it('ArkUX_Grid_List_Swiper_0300', 0, async (done: Function) =>{
+    it('ArkUX_Grid_List_Swiper_0300', Level.LEVEL1, async (done: Function) =>{
       console.info('ArkUX_Grid_List_Swiper_0300 START');
       setTimeout(()=>{
         try{
@@ -63,7 +63,7 @@ export default function Swiper07Test() {
       },500)
     });
 
-    it('ArkUX_Grid_List_Swiper_0310', 0, async (done: Function) =>{
+    it('ArkUX_Grid_List_Swiper_0310', Level.LEVEL1, async (done: Function) =>{
       console.info('ArkUX_Grid_List_Swiper_0310 START');
       setTimeout(()=>{
         try{
@@ -83,7 +83,7 @@ export default function Swiper07Test() {
       },500)
     });
 
-    it('ArkUX_Grid_List_Swiper_0320', 0, async (done: Function) =>{
+    it('ArkUX_Grid_List_Swiper_0320', Level.LEVEL1, async (done: Function) =>{
       console.info('ArkUX_Grid_List_Swiper_0320 START');
       setTimeout(()=>{
         try{
@@ -100,7 +100,7 @@ export default function Swiper07Test() {
       },500)
     });
 
-    it('ArkUX_Grid_List_Swiper_0330', 0, async (done: Function) =>{
+    it('ArkUX_Grid_List_Swiper_0330', Level.LEVEL1, async (done: Function) =>{
       console.info('ArkUX_Grid_List_Swiper_0330 START');
       setTimeout(()=>{
         try{
@@ -117,7 +117,7 @@ export default function Swiper07Test() {
       },500)
     });
 
-    it('ArkUX_Grid_List_Swiper_0340', 0, async (done: Function) =>{
+    it('ArkUX_Grid_List_Swiper_0340', Level.LEVEL1, async (done: Function) =>{
       console.info('ArkUX_Grid_List_Swiper_0340 START');
       setTimeout(()=>{
         try{

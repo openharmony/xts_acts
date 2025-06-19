@@ -44,7 +44,7 @@ export default function datePickerDialogBlurStyleOptionsTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('datePickerDialogBlurStyleOptions_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('datePickerDialogBlurStyleOptions_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let tagName = 'datePickerDialogBlurStyleOptions';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000);
@@ -86,7 +86,7 @@ export default function datePickerDialogBlurStyleOptionsTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('datePickerDialogBlurStyleOptions_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('datePickerDialogBlurStyleOptions_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let tagName = 'datePickerDialogBlurStyleOptions_0200';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000);
@@ -118,7 +118,7 @@ export default function datePickerDialogBlurStyleOptionsTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('datePickerDialogBlurStyleOptions_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('datePickerDialogBlurStyleOptions_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let tagName = 'datePickerDialogBlurStyleOptions_0300';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000);

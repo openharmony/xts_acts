@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../Utils';
@@ -45,7 +45,7 @@ export default function Toggle3Jsunit() {
       console.info("toggle after each called");
     });
 
-    it('testToggle01', 0, async (done: Function) => {
+    it('testToggle01', Level.LEVEL1, async (done: Function) => {
       console.info('[testToggle01] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('toggle');
@@ -56,7 +56,7 @@ export default function Toggle3Jsunit() {
       done();
     });
 
-    it('testToggle02', 0, async (done: Function) => {
+    it('testToggle02', Level.LEVEL1, async (done: Function) => {
       console.info('[testToggle02] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('toggle');
@@ -66,7 +66,7 @@ export default function Toggle3Jsunit() {
       done();
     });
 
-    it('testToggle03', 0, async (done: Function) => {
+    it('testToggle03', Level.LEVEL1, async (done: Function) => {
       console.info('[testToggle03] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('toggle');
@@ -76,7 +76,7 @@ export default function Toggle3Jsunit() {
       done();
     });
 
-    it('testToggle04', 0, async (done: Function) => {
+    it('testToggle04', Level.LEVEL1, async (done: Function) => {
       console.info('testToggle04 START');
       try {
         let eventData: events_emitter.EventData = {
@@ -101,7 +101,7 @@ export default function Toggle3Jsunit() {
       done();
     });
 
-    it('testToggle05', 0, async (done: Function) => {
+    it('testToggle05', Level.LEVEL1, async (done: Function) => {
       console.info('testToggle05 START');
       try {
         let eventData: events_emitter.EventData = {
@@ -126,7 +126,7 @@ export default function Toggle3Jsunit() {
       done();
     });
 
-    it('testToggle08', 0, async (done: Function) => {
+    it('testToggle08', Level.LEVEL1, async (done: Function) => {
       console.info('testToggle04 START');
       try {
         let eventData: events_emitter.EventData = {
@@ -151,7 +151,7 @@ export default function Toggle3Jsunit() {
       done();
     });
 
-    it('testToggle09', 0, async (done: Function) => {
+    it('testToggle09', Level.LEVEL1, async (done: Function) => {
       console.info('testToggle04 START');
       try {
         let eventData: events_emitter.EventData = {

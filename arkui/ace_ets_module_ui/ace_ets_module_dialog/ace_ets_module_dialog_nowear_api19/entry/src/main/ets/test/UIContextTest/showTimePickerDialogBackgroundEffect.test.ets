@@ -44,7 +44,7 @@ export default function showTimePickerDialogBackgroundEffectTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('showTimePickerDialogBackgroundEffectTest_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('showTimePickerDialogBackgroundEffectTest_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let tagName = 'showTimePickerDialogBackgroundEffectTest_0100';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000);
@@ -92,7 +92,7 @@ export default function showTimePickerDialogBackgroundEffectTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('showTimePickerDialogBackgroundEffectTest_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('showTimePickerDialogBackgroundEffectTest_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let tagName = 'showTimePickerDialogDialogBackgroundEffectTest_0200';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000);
@@ -127,7 +127,7 @@ export default function showTimePickerDialogBackgroundEffectTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('showTimePickerDialogBackgroundEffectTest_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('showTimePickerDialogBackgroundEffectTest_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let tagName = 'showTimePickerDialogBackgroundEffectTest_0300';
       console.info('[' + tagName + '] START============================');
       await Utils.sleep(1000);

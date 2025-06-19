@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium'
 import events_emitter from '@ohos.events.emitter';
 import Utils from "../../MainAbility/common/Common";
 import router from '@ohos.router';
@@ -68,7 +68,7 @@ export default function select() {
      * @tc.name Tests the arrowPosition property of the select component
      * @tc.desc the default arrowPosition parameter is "ArrowPosition.END"
      */
-    it('ArkUI_Stage_Select_Layout_0100', 0, async (done: Function) => {
+    it('ArkUI_Stage_Select_Layout_0100', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Stage_Select_Layout_0100 start");
       let strJson = getInspectorByKey('selectTest');
       let objNew: ESObject = JSON.parse(strJson);
@@ -82,7 +82,7 @@ export default function select() {
      * @tc.name Tests the arrowPosition property of the select component
      * @tc.desc set arrowPosition to "ArrowPosition.START"
      */
-    it('ArkUI_Stage_Select_Layout_0200', 0, async (done: Function) => {
+    it('ArkUI_Stage_Select_Layout_0200', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Stage_Select_Layout_0200 start");
       try {
         let eventData: events_emitter.EventData = {
@@ -112,7 +112,7 @@ export default function select() {
      * @tc.name Tests the arrowPosition property of the select component
      * @tc.desc set arrowPosition to abnormol value null then get the default value ArrowPosition.END
      */
-    it('ArkUI_Stage_Select_Layout_0300', 0, async (done: Function) => {
+    it('ArkUI_Stage_Select_Layout_0300', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Stage_Select_Layout_0300 start");
       try {
         let eventData: events_emitter.EventData = {
@@ -142,7 +142,7 @@ export default function select() {
      * @tc.name Tests the arrowPosition property of the select component
      * @tc.desc set arrowPosition to abnormol value -1 then get the default value "ArrowPosition.END"
      */
-    it('ArkUI_Stage_Select_Layout_0400', 0, async (done: Function) => {
+    it('ArkUI_Stage_Select_Layout_0400', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Stage_Select_Layout_0400 start");
       try {
         let eventData: events_emitter.EventData = {
@@ -172,7 +172,7 @@ export default function select() {
      * @tc.name Tests the space property of the select component
      * @tc.desc get the default value of "space" is '8.00vp'
      */
-    it('ArkUI_Stage_Select_Space_0100', 0, async (done: Function) => {
+    it('ArkUI_Stage_Select_Space_0100', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Stage_Select_Space_0100 start");
       let strJson = getInspectorByKey('selectTest');
       let objNew: ESObject = JSON.parse(strJson);
@@ -186,7 +186,7 @@ export default function select() {
      * @tc.name Tests the space property of the select component
      * @tc.desc set space to 20.00 then get the value is '20.00vp'
      */
-    it('ArkUI_Stage_Select_Space_0200', 0, async (done: Function) => {
+    it('ArkUI_Stage_Select_Space_0200', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Stage_Select_Space_0200 start");
       try {
         let eventData: events_emitter.EventData = {
@@ -216,7 +216,7 @@ export default function select() {
      * @tc.name Tests the space property of the select component
      * @tc.desc set space to string type '40.00vp' then get the value is '40.00vp'
      */
-    it('ArkUI_Stage_Select_Space_0300', 0, async (done: Function) => {
+    it('ArkUI_Stage_Select_Space_0300', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Stage_Select_Space_0300 start");
       try {
         let eventData: events_emitter.EventData = {
@@ -246,7 +246,7 @@ export default function select() {
      * @tc.name Tests the space property of the select component
      * @tc.desc set space to abnormol value null then get the default value is '8.00vp'
      */
-    it('ArkUI_Stage_Select_Space_0400', 0, async (done: Function) => {
+    it('ArkUI_Stage_Select_Space_0400', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Stage_Select_Space_0400 start");
       try {
         let eventData: events_emitter.EventData = {
@@ -276,7 +276,7 @@ export default function select() {
      * @tc.name Tests the space property of the select component
      * @tc.desc set space to abnormol value -1 then get the default value is '8.00vp'
      */
-    it('ArkUI_Stage_Select_Space_0500', 0, async (done: Function) => {
+    it('ArkUI_Stage_Select_Space_0500', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Stage_Select_Space_0500 start");
       try {
         let eventData: events_emitter.EventData = {
@@ -306,7 +306,7 @@ export default function select() {
      * @tc.name Tests the space property of the select component
      * @tc.desc set space to normol resource type then get the correct value is '50.00vp'
      */
-    it('ArkUI_Stage_Select_Space_0600', 0, async (done: Function) => {
+    it('ArkUI_Stage_Select_Space_0600', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Stage_Select_Space_0600 start");
       try {
         let eventData: events_emitter.EventData = {
@@ -336,7 +336,7 @@ export default function select() {
      * @tc.name Tests the space property of the select component
      * @tc.desc set space to string type '40.00vp' then get the value is '40.00vp'
      */
-    it('ArkUI_Stage_Select_Space_0700', 0, async (done: Function) => {
+    it('ArkUI_Stage_Select_Space_0700', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Stage_Select_Space_0700 start");
       try {
         let eventData: events_emitter.EventData = {
@@ -367,7 +367,7 @@ export default function select() {
      * @tc.name Tests the space property of the select component
      * @tc.desc set space to string type '40.00vp' then get the value is '40.00vp'
      */
-    it('ArkUI_Stage_Select_Space_0800', 0, async (done: Function) => {
+    it('ArkUI_Stage_Select_Space_0800', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Stage_Select_Space_0800 start");
       try {
         let eventData: events_emitter.EventData = {
@@ -397,7 +397,7 @@ export default function select() {
      * @tc.name Tests the space property of the select component
      * @tc.desc set space to string type '40.00vp' then get the value is '40.00vp'
      */
-    it('ArkUI_Stage_Select_Space_0900', 0, async (done: Function) => {
+    it('ArkUI_Stage_Select_Space_0900', Level.LEVEL1, async (done: Function) => {
       console.info("ArkUI_Stage_Select_Space_0900 start");
       try {
         let eventData: events_emitter.EventData = {

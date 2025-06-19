@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router'
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import Utils from '../../MainAbility/common/MyUtils';
@@ -57,7 +57,7 @@ export default function ListScrollToItemInGroup() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('ArkUI_List_Scroll_To_Item_In_Group_0001', 0, async (done: Function) => {
+    it('ArkUI_List_Scroll_To_Item_In_Group_0001', Level.LEVEL1, async (done: Function) => {
       console.info('[ArkUI_List_Scroll_To_Item_In_Group_0001] START');
       let List: Rect = Utils.getComponentRect('MyList1');
       let ListItem: Rect = Utils.getComponentRect('ListItem_Group0_Index0');
@@ -75,7 +75,7 @@ export default function ListScrollToItemInGroup() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('ArkUI_List_Scroll_To_Item_In_Group_0100', 0, async (done: Function) => {
+    it('ArkUI_List_Scroll_To_Item_In_Group_0100', Level.LEVEL1, async (done: Function) => {
       console.info('[ArkUI_List_Scroll_To_Item_In_Group_0100] START');
       let driver: Driver = Driver.create();
       let btn: Component = await driver.findComponent(ON.id('Btn_0_1'));
@@ -97,7 +97,7 @@ export default function ListScrollToItemInGroup() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('ArkUI_List_Scroll_To_Item_In_Group_0200', 0, async (done: Function) => {
+    it('ArkUI_List_Scroll_To_Item_In_Group_0200', Level.LEVEL1, async (done: Function) => {
       console.info('[ArkUI_List_Scroll_To_Item_In_Group_0200] START');
       let driver: Driver = Driver.create();
       let btn: Component = await driver.findComponent(ON.id('Btn_1_2'));
@@ -122,7 +122,7 @@ export default function ListScrollToItemInGroup() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('ArkUI_List_Scroll_To_Item_In_Group_0300', 0, async (done: Function) => {
+    it('ArkUI_List_Scroll_To_Item_In_Group_0300', Level.LEVEL1, async (done: Function) => {
       console.info('[ArkUI_List_Scroll_To_Item_In_Group_0300] START');
       let driver: Driver = Driver.create();
       let btn: Component = await driver.findComponent(ON.id('Btn_2_2'));
@@ -145,7 +145,7 @@ export default function ListScrollToItemInGroup() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('ArkUI_List_Scroll_To_Item_In_Group_0400', 0, async (done: Function) => {
+    it('ArkUI_List_Scroll_To_Item_In_Group_0400', Level.LEVEL1, async (done: Function) => {
       console.info('[ArkUI_List_Scroll_To_Item_In_Group_0400] START');
       let driver: Driver = Driver.create();
       let btn: Component = await driver.findComponent(ON.id('Btn_3_1'));
@@ -167,7 +167,7 @@ export default function ListScrollToItemInGroup() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('ArkUI_List_Scroll_To_Item_In_Group_0500', 0, async (done: Function) => {
+    it('ArkUI_List_Scroll_To_Item_In_Group_0500', Level.LEVEL1, async (done: Function) => {
       console.info('[ArkUI_List_Scroll_To_Item_In_Group_0500] START');
       let driver: Driver = Driver.create();
       let btn: Component = await driver.findComponent(ON.id('Btn_3_11'));
@@ -187,7 +187,7 @@ export default function ListScrollToItemInGroup() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('ArkUI_List_Scroll_To_Item_In_Group_0600', 0, async (done: Function) => {
+    it('ArkUI_List_Scroll_To_Item_In_Group_0600', Level.LEVEL1, async (done: Function) => {
       console.info('[ArkUI_List_Scroll_To_Item_In_Group_0600] START');
       let OldListItem: Rect = Utils.getComponentRect('ListItem_Group3_Index11');
       let driver: Driver = Driver.create();
@@ -207,7 +207,7 @@ export default function ListScrollToItemInGroup() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('ArkUI_List_Scroll_To_Item_In_Group_0700', 0, async (done: Function) => {
+    it('ArkUI_List_Scroll_To_Item_In_Group_0700', Level.LEVEL1, async (done: Function) => {
       console.info('[ArkUI_List_Scroll_To_Item_In_Group_0700] START');
       let OldListItem: Rect = Utils.getComponentRect('ListItem_Group3_Index11');
       let driver: Driver = Driver.create();

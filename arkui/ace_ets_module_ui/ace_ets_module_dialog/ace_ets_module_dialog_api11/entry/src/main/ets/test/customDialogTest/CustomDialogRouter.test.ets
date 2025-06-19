@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, it, expect } from "@ohos/hypium"
+import { describe, beforeEach, it, expect, Level } from '@ohos/hypium';
 import router from '@ohos.router';
 import {Driver, ON} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';;
@@ -49,7 +49,7 @@ export default function CustomDialogRouter() {
      * @tc.type :
      * @tc.size :
      */
-    it('CustomDialogRouter_0100', 0, async (done: Function) => {
+    it('CustomDialogRouter_0100', Level.LEVEL2, async (done: Function) => {
       console.info('CustomDialogRouter_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
