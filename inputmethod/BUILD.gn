@@ -23,5 +23,7 @@ group("inputmethod") {
     "InputMethodTest_Stage:ActsImeAbilityTest",
     "InputMethodTest_ets:ActsInputMethodEtsTest",
     "InputMethodWindManage:ActsInputMethodWindManageTest",
+    "InputMethodTest_ets_static:ActsInputMethodEtsStaticTest",
+    "InputMethodAuthorityTestStatic:ActsInputMethodAuthorityStaticTest",
   ]
 }
