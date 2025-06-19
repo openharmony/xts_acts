@@ -33,6 +33,12 @@ import TextAreaMinLinesTest from './TextAreaTest/TextAreaMinLines.test';
 import RichEditorUndoStyleTest from './RichEditorTest/RichEditorUndoStyle.test';
 import TextLineSpacingTest from './TextTest/TextLineSpacing.test';
 import TextAreaLineSpacingTest from './TextAreaTest/TextAreaLineSpacing.test';
+import SearchAutoCapitalizationModeTest from './SearchTest/SearchAutoCapitalizationMode.test';
+import SearchAutoCapitalizationModeModifierTest from './SearchTest/SearchAutoCapitalizationModeModifier.test';
+import TextAreaAutoCapitalizationModeTest from './TextAreaTest/TextAreaAutoCapitalizationMode.test';
+import TextAreaAutoCapitalizationModeModifierTest from './TextAreaTest/TextAreaAutoCapitalizationModeModifier.test';
+import TextInputAutoCapitalizationModeTest from './TextInputTest/TextInputAutoCapitalizationMode.test';
+import TextInputAutoCapitalizationModeModifierTest from './TextInputTest/TextInputAutoCapitalizationModeModifier.test';
 
 
 export default function testsuite() {
@@ -56,4 +62,10 @@ export default function testsuite() {
   RichEditorUndoStyleTest();
   TextLineSpacingTest();
   TextAreaLineSpacingTest();
+  SearchAutoCapitalizationModeTest();
+  SearchAutoCapitalizationModeModifierTest();
+  TextAreaAutoCapitalizationModeTest();
+  TextAreaAutoCapitalizationModeModifierTest();
+  TextInputAutoCapitalizationModeTest();
+  TextInputAutoCapitalizationModeModifierTest();
 }
