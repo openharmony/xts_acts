@@ -15,7 +15,7 @@
 
 import { describe, it, expect, TestType, Size, Level, beforeAll} from "../../../hypium/index";
 import hilog from '@ohos.hilog'
-import { UsbManager } from '@ohos.usbManager'
+import usbMgr from '@ohos.usbManager'
 import { BusinessError } from '@ohos.base';
 
 const domain: number = 0x0000;
@@ -39,10 +39,10 @@ export default function UsbManagerNormalHapTest() {
     it("getDevicesTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void): Promise<void> => {
       hilog.info(domain, tag, '%{public}s', '----------------------getDevicesTest001---------------------------');
       try {
-        const devices: UsbManager.USBDevice[] = UsbManager.getDevices();
+        const devices: usbMgr.USBDevice[] = usbMgr.getDevices();
         hilog.info(domain, tag, JSON.stringify(devices));
         for (let i = 0; i < devices.length; i++) {
-          const device: UsbManager.USBDevice = devices[i];
+          const device: usbMgr.USBDevice = devices[i];
           hilog.info(domain, tag, "Device Information:");
           hilog.info(domain, tag, `  Bus Number: ${device.busNum}`);
           expect(typeof(device.busNum)).assertEqual('number');
@@ -137,12 +137,12 @@ export default function UsbManagerNormalHapTest() {
      */
     it("usbEnumTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void): Promise<void> => {
       hilog.info(domain, tag, '%{public}s', '----------------------usbEnumTest001---------------------------');
-      hilog.info(domain, tag, `USB_REQUEST_DIR_TO_DEVICE: ${UsbManager.USBRequestDirection.USB_REQUEST_DIR_TO_DEVICE}`);
-      expect(typeof(UsbManager.USBRequestDirection.USB_REQUEST_DIR_TO_DEVICE)).assertEqual('number');
-      expect(UsbManager.USBRequestDirection.USB_REQUEST_DIR_TO_DEVICE.toString()).assertEqual(USB_REQUEST_DIR_TO_DEVICE_STR);
-      hilog.info(domain, tag, `USB_REQUEST_DIR_FROM_DEVICE: ${UsbManager.USBRequestDirection.USB_REQUEST_DIR_FROM_DEVICE}`);
-      expect(typeof(UsbManager.USBRequestDirection.USB_REQUEST_DIR_FROM_DEVICE)).assertEqual('number');
-      expect(UsbManager.USBRequestDirection.USB_REQUEST_DIR_FROM_DEVICE.toString()).assertEqual(USB_REQUEST_DIR_FROM_DEVICE_STR);
+      hilog.info(domain, tag, `USB_REQUEST_DIR_TO_DEVICE: ${usbMgr.USBRequestDirection.USB_REQUEST_DIR_TO_DEVICE}`);
+      expect(typeof(usbMgr.USBRequestDirection.USB_REQUEST_DIR_TO_DEVICE)).assertEqual('number');
+      expect(usbMgr.USBRequestDirection.USB_REQUEST_DIR_TO_DEVICE.toString()).assertEqual(USB_REQUEST_DIR_TO_DEVICE_STR);
+      hilog.info(domain, tag, `USB_REQUEST_DIR_FROM_DEVICE: ${usbMgr.USBRequestDirection.USB_REQUEST_DIR_FROM_DEVICE}`);
+      expect(typeof(usbMgr.USBRequestDirection.USB_REQUEST_DIR_FROM_DEVICE)).assertEqual('number');
+      expect(usbMgr.USBRequestDirection.USB_REQUEST_DIR_FROM_DEVICE.toString()).assertEqual(USB_REQUEST_DIR_FROM_DEVICE_STR);
       done()
       hilog.info(domain, tag, '%{public}s', 'usbEnumTest001 end');
     })
