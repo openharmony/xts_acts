@@ -1,0 +1,200 @@
+import { describe, it, expect, TestType, Size, Level, beforeAll} from "../../../hypium/index";
+import hilog from '@ohos.hilog'
+import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
+import common from '@ohos.app.ability.common';
+import UIAbility from '@ohos.app.ability.UIAbility';
+import { BusinessError } from '@ohos.base';
+import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
+import Want from '@ohos.app.ability.Want';
+import Utils from './Util.test';
+import  buffer  from '@ohos.buffer';
+import cryptoFramework from '@ohos.security.cryptoFramework';
+import * as commonUtils from './utils/common/commonUtils';
+import * as digestSyncUtils from './utils/digest/digestSyncUtils';
+let domain: number = 0x0000; //日志标识,0x0000作为测试框架的业务标识
+let tag: string = 'testTag'; //日志标识字符串,作为tag标识当前runner类下的测试行为
+let testAbilityContext:common.UIAbilityContext;
+
+
+export default function SecurityCryptoFwDigestSyncTestUnit() {
+  describe("SecurityCryptoFwDigestSyncTestUnit", (): void => {
+    hilog.info(domain, tag, '%{public}s', 'describe start');
+    beforeAll(() => {
+      hilog.info(domain, tag, '%{public}s', 'beforeAll start');
+      let abilityDelegator:abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator()
+      abilityDelegator.addAbilityMonitor({
+        abilityName: "EntryAbility",
+        moduleName:"entry",
+        onAbilityCreate: (abilitys : UIAbility) : void => {
+          // let str1:string = abilitys.context.filesDir
+          // hilog.info(domain, tag, '%{public}s', 'beforeAll fileDir' + str1);
+          // if (abilitys.context) {
+          //     hilog.info(domain, tag, '%{public}s', 'beforeAll context');
+          //     if (abilitys.context.resourceManager) {}
+          // }
+          // abilityss.context.terminateSelf()
+          testAbilityContext = abilitys.context
+          hilog.info(domain, tag, '%{public}s', 'onAbilityCreate end');
+
+        },
+      }, (err : BusinessError) : void => {
+        if (err != null ) {
+          hilog.info(domain, tag, '%{public}s', '-----'+ err.code);
+        }
+        hilog.info(domain, tag, '%{public}s', 'BusinessError  end');
+      });
+      await Utils.msSleep(2000)
+      abilityDelegator.executeShellCommand("aa start -a EntryAbility -b com.example.helloworld")
+      await Utils.msSleep(2000)
+      hilog.info(domain, tag, '%{public}s', 'beforeAll end');
+    })
+
+    /**
+     * @tc.number SUB_Security_CryptoFramework_DigestSync_Func_0100
+     * @tc.name Test digest algorithm traversal test. Sync style. Process success
+     * @tc.desc algorithm is digest
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level3
+     */
+    it("SUB_Security_CryptoFramework_DigestSync_Func_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: () => void): Promise<void> => {
+      try {
+        let messageLen: int = 128;
+        let message: cryptoFramework.DataBlob = await commonUtils.createData(messageLen);
+        for(let algName of digestSyncUtils.DIGEST_SPEC) {
+          let dataRes: digestSyncUtils.mdInfo = digestSyncUtils.doMdSync(algName, message);
+          let mdSize: number = digestSyncUtils.getMdSize(algName);
+          expect(dataRes.mdObj.getMdLength()).assertEqual(mdSize);
+        }
+      } catch (error: BusinessError) {
+        console.error(`Digest “${error}“, error code: ${error.code}`);
+        expect(null).assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_CryptoFramework_DigestSync_Func_0200
+     * @tc.name Test digest algorithm traversal test. Sync style. Process success
+     * @tc.desc algorithm is digest
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level3
+     */
+    it("SUB_Security_CryptoFramework_DigestSync_Func_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: () => void): Promise<void> => {
+      try {
+        let messageLen: int = 128;
+        let blockSize: number = 20;
+        let message: cryptoFramework.DataBlob = await commonUtils.createData(messageLen);
+        for(let algName of digestSyncUtils.DIGEST_SPEC) {
+          let dataResSpilt: digestSyncUtils.mdInfo = digestSyncUtils.doMdSyncSplit(algName, message, blockSize);
+          let dataRes: digestSyncUtils.mdInfo = digestSyncUtils.doMdSync(algName, message);
+          let ret: boolean = commonUtils.compareDataBlob(dataRes.dataRes, dataResSpilt.dataRes);
+          let mdSize: number = digestSyncUtils.getMdSize(algName);
+          expect(ret).assertTrue();
+          expect(dataResSpilt.mdObj.getMdLength()).assertEqual(mdSize);
+          expect(dataRes.mdObj.getMdLength()).assertEqual(mdSize);
+        }
+      } catch (error: BusinessError) {
+        console.error(`Digest “${error}“, error code: ${error.code}`);
+        expect(null).assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_CryptoFramework_DigestSync_Func_0300
+     * @tc.name Test digest algorithm traversal test. Sync style. Process success
+     * @tc.desc algorithm is digest
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level3
+     */
+    it("SUB_Security_CryptoFramework_DigestSync_Func_0300", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: () => void): Promise<void> => {
+      try {
+        for(let algName of digestSyncUtils.DIGEST_SPEC) {
+          let dataRes: digestSyncUtils.mdInfo = digestSyncUtils.doMdWithNoUpdateSync(algName);
+          let mdSize: number = digestSyncUtils.getMdSize(algName);
+          expect(dataRes.mdObj.getMdLength()).assertEqual(mdSize);
+        }
+      } catch (error: BusinessError) {
+        console.error(`Digest “${error}“, error code: ${error.code}`);
+        expect(null).assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_CryptoFramework_DigestSync_Func_0400
+     * @tc.name Test digest algorithm traversal test. Sync style. Process success
+     * @tc.desc algorithm is digest
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level3
+     */
+    it("SUB_Security_CryptoFramework_DigestSync_Func_0400", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: () => void): Promise<void> => {
+      try {
+        let data: string = '';
+        let dataArray: Uint8Array = commonUtils.stringToUint8Array(data);
+        let message: cryptoFramework.DataBlob = {
+          data: dataArray
+        }
+        for(let algName of digestSyncUtils.DIGEST_SPEC) {
+          let md: cryptoFramework.Md = cryptoFramework.createMd(algName);
+          try {
+            md.updateSync(message);
+          } catch (error: BusinessError) {
+            console.error(`Digest Update “${error}“, error code: ${error.code}`);
+            expect(error.code).assertEqual(17630001);
+          }
+        }
+        expect(null).assertNull();
+      } catch (error: BusinessError) {
+        console.error(`Digest “${error}“, error code: ${error.code}`);
+        expect(null).assertTrue();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_CryptoFramework_DigestSync_Func_0500
+     * @tc.name Test digest algorithm traversal test. Sync style. Process success
+     * @tc.desc algorithm is digest
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level3
+     */
+    it("SUB_Security_CryptoFramework_DigestSync_Func_0500", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: () => void): Promise<void> => {
+      try {
+        let algName: string = "SHA3-256";
+        cryptoFramework.createMd(algName);
+        expect(null).assertTrue();
+      } catch (error: BusinessError) {
+        console.error(`Digest “${error}“, error code: ${error.code}`);
+        expect(error.code).assertEqual(401);
+      }
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_CryptoFramework_DigestSync_Func_0600
+     * @tc.name Test digest algorithm traversal test. Sync style. Process success
+     * @tc.desc algorithm is digest
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level3
+     */
+    it("SUB_Security_CryptoFramework_DigestSync_Func_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: () => void): Promise<void> => {
+      try {
+        let md: cryptoFramework.Md;
+        md.digestSync()
+      } catch (error: BusinessError) {
+        console.error(`Digest “${error}“, error code: ${error.code}`);
+        expect(error.code).assertEqual(undefined);
+      }
+      done();
+    });
+
+
+  });
+}
