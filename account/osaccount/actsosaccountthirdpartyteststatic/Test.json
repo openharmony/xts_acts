@@ -2,15 +2,15 @@
     "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "180000",
-        "bundle-name": "ohos.acts.account.osaccount.static",
+        "test-timeout": "300000",
+        "bundle-name": "com.example.actsosaccountthirdpartytest.static",
         "module-name": "entry",
-        "shell-timeout": "600000",
-        "testcase-timeout": "180000"
+        "shell-timeout": "200000",
+        "testcase-timeout": "200000"
     },
     "kits": [{
         "test-file-name": [
-            "ActsOsAccountJSApiStaticTest.hap"
+            "ActsOsAccountThirdPartyStaticTest.hap"
         ],
         "type": "AppInstallKit",
         "cleanup-apps": true
