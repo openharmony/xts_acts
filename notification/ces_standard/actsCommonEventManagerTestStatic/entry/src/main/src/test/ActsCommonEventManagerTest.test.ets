@@ -26,7 +26,7 @@ export default function ActsCommonEventManagerTest() {
           commonEventManager.publish('EVENT01', (err: BusinessError | null) => {
             if (err) {
               hilog.info(domain, TAG, `Sub_Notification_Ans_Publish_Publish_4700 err, %{public}s`,
-                JSON.stringify(err));
+                JSON.stringify(err as BusinessError));
               expect(false).assertTrue()
               done();
             } else {
@@ -60,7 +60,7 @@ export default function ActsCommonEventManagerTest() {
           commonEventManager.publish("EVENT02", options, (err: BusinessError | null) => {
             if (err) {
               hilog.info(domain, TAG, `Sub_Notification_Ans_Publish_Publish_4800 err, %{public}s`,
-                JSON.stringify(err));
+                JSON.stringify(err as BusinessError));
               expect(false).assertTrue()
               done();
             } else {
@@ -70,7 +70,7 @@ export default function ActsCommonEventManagerTest() {
             }
           })
           await Utils.msSleep(3000)
-        } catch (err: BusinessError) {
+        } catch (err) {
           hilog.info(domain, TAG, `Sub_Notification_Ans_Publish_Publish_4800 failed,  %{public}s`,
             JSON.stringify(err));
           expect(false).assertTrue()
@@ -154,18 +154,18 @@ export default function ActsCommonEventManagerTest() {
             if (err) {
               hilog.info(domain, TAG,
                 `Sub_Notification_Ans_Subscriber_Subscribe_0400 createSubscriber err, %{public}s`,
-                JSON.stringify(err));
+                JSON.stringify(err as BusinessError));
               expect(false).assertTrue()
               done()
             } else {
               hilog.info(domain, TAG, `Sub_Notification_Ans_Subscriber_Subscribe_0400 createSubscriber success `)
               subscriber = commonEventSubscriber
               try {
-                commonEventManager.subscribe(subscriber, (err: BusinessError | null, data: commonEventManager.CommonEventData| null) => {
+                commonEventManager.subscribe(subscriber, (err: BusinessError | null, data: commonEventManager.CommonEventData| undefined) => {
                   if (err) {
                     hilog.info(domain, TAG,
                       `Sub_Notification_Ans_Subscriber_Subscribe_0400 subscribe_1 err, %{public}s`,
-                      JSON.stringify(err));
+                      JSON.stringify(err as BusinessError));
                     expect(false).assertTrue()
                     done()
                   } else {
@@ -210,18 +210,18 @@ export default function ActsCommonEventManagerTest() {
             if (err) {
               hilog.info(domain, TAG,
                 `Sub_Notification_Ans_Subscriber_Unsubscribe_0200 createSubscriber err, %{public}s`,
-                JSON.stringify(err));
+                JSON.stringify(err as BusinessError));
               expect(false).assertTrue()
               done()
             } else {
               hilog.info(domain, TAG, `Sub_Notification_Ans_Subscriber_Unsubscribe_0200 createSubscriber success `)
               subscriber = commonEventSubscriber
               try {
-                commonEventManager.subscribe(subscriber, (err: BusinessError | null, data: commonEventManager.CommonEventData| null) => {
+                commonEventManager.subscribe(subscriber, (err: BusinessError | null, data: commonEventManager.CommonEventData| undefined) => {
                   if (err) {
                     hilog.info(domain, TAG,
                       `Sub_Notification_Ans_Subscriber_Unsubscribe_0200 subscribe_1 err, %{public}s`,
-                      JSON.stringify(err));
+                      JSON.stringify(err as BusinessError));
                     expect(false).assertTrue()
                     done()
                   } else {
@@ -241,7 +241,7 @@ export default function ActsCommonEventManagerTest() {
                   if (err) {
                     hilog.info(domain, TAG,
                       `Sub_Notification_Ans_Subscriber_Unsubscribe_0200 unsubscribe err, %{public}s`,
-                      JSON.stringify(err));
+                      JSON.stringify(err as BusinessError));
                     expect(false).assertTrue()
                     done()
                   } else {
@@ -273,18 +273,18 @@ export default function ActsCommonEventManagerTest() {
             if (err) {
               hilog.info(domain, TAG,
                 `Sub_Notification_Ans_Subscriber_Unsubscribe_0200 createSubscriber2 err, %{public}s`,
-                JSON.stringify(err));
+                JSON.stringify(err as BusinessError));
               expect(false).assertTrue()
               done()
             } else {
               hilog.info(domain, TAG, `Sub_Notification_Ans_Subscriber_Unsubscribe_0200 createSubscriber2 success `)
               subscriber = commonEventSubscriber
               try {
-                commonEventManager.subscribe(subscriber, (err: BusinessError | null, data: commonEventManager.CommonEventData| null) => {
+                commonEventManager.subscribe(subscriber, (err: BusinessError | null, data: commonEventManager.CommonEventData| undefined) => {
                   if (err) {
                     hilog.info(domain, TAG,
                       `Sub_Notification_Ans_Subscriber_Unsubscribe_0200 subscribe_2 err, %{public}s`,
-                      JSON.stringify(err));
+                      JSON.stringify(err as BusinessError));
                     expect(false).assertTrue()
                     done()
                   } else {
