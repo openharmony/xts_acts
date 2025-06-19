@@ -18,6 +18,7 @@
 #include "button/button_gettype_test.h"
 #include "drag/GetDisplayIdTest.h"
 #include "drag/GetDragSourceTest.h"
+#include "dropBadge/EnableDropDisallowedBadgeTest.h"
 
 namespace ArkUICapiTest
 {
@@ -37,6 +38,8 @@ namespace ArkUICapiTest
             {"dragEventGetDisplayId", nullptr, GetDisplayIdTest::CreateNativeNode, nullptr, nullptr,
             nullptr, napi_default, nullptr},
             {"dragEventGetDragSource", nullptr, GetDragSourceTest::CreateNativeNode, nullptr, nullptr,
+            nullptr, napi_default, nullptr},
+            {"enableDropDisallowedBadge", nullptr, EnableDropDisallowedBadgeTest::CreateNativeNode, nullptr, nullptr,
             nullptr, napi_default, nullptr},
         };
         if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok)

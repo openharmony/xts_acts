@@ -16,6 +16,7 @@ add_library(nativerender SHARED
     button/button_gettype_test.cpp
     drag/GetDisplayIdTest.cpp
     drag/GetDragSourceTest.cpp
+    dropBadge/EnableDropDisallowedBadgeTest.cpp
 )
 
 add_library(nativefunc SHARED
