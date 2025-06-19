@@ -3,6 +3,7 @@ import hilog from '@ohos.hilog'
 import commonEventManager from '@ohos.commonEventManager';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import Utils from './Util.test';
+import { BusinessError } from '@ohos.base';
 
 let domain: number = 0x0000; //日志标识,0x0000作为测试框架的业务标识
 let TAG = 'SUB_NOTIFICATION_CES_MANAGER_TEST ===>'
