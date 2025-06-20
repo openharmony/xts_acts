@@ -19,7 +19,7 @@ import window from '@ohos.window';
 import { commonEventManager } from '@kit.BasicServicesKit';
 
 export default class UiAbility03 extends UIAbility {
-  onCreate(want, launchParam) {
+  onCreate(want, launchParam):void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility03 onCreate');
     globalThis.uiAbilityContext3 = this.context
     hilog.info(0x0000, 'testTag', '%{public}s', `UiAbility03 JSON.stringify(want) is: ${JSON.stringify(want)}`);
@@ -28,11 +28,11 @@ export default class UiAbility03 extends UIAbility {
     });
   }
 
-  onDestroy() {
+  onDestroy():void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility03 onDestroy');
   }
 
-  onWindowStageCreate(windowStage: window.WindowStage) {
+  onWindowStageCreate(windowStage: window.WindowStage):void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility03 onWindowStageCreate');
     commonEventManager.publish('ability03_onWindowStageCreate', function () {
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_5000 publish ability03_onWindowStageCreate');
@@ -46,11 +46,11 @@ export default class UiAbility03 extends UIAbility {
     });
   }
 
-  onWindowStageDestroy() {
+  onWindowStageDestroy():void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility03 onWindowStageDestroy');
   }
 
-  onForeground() {
+  onForeground():void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility03 onForeground');
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility03 execute router.back!');
     commonEventManager.publish('ability03_onForeground', function () {
@@ -63,7 +63,7 @@ export default class UiAbility03 extends UIAbility {
     }, 500);
   }
 
-  onBackground() {
+  onBackground():void {
     // Ability has back to background
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility03 onBackground');
     commonEventManager.publish('ability03_onBackground', function () {

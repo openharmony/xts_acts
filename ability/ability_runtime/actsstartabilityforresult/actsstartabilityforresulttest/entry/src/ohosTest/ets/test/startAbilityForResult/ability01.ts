@@ -19,7 +19,7 @@ import window from '@ohos.window';
 import { commonEventManager } from '@kit.BasicServicesKit';
 
 export default class UiAbility01 extends UIAbility {
-  onCreate(want, launchParam) {
+  onCreate(want, launchParam):void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility01 onCreate');
     globalThis.uiAbilityContext1 = this.context
     hilog.info(0x0000, 'testTag', '%{public}s', `UiAbility01 JSON.stringify(want) is: ${JSON.stringify(want)}`);
@@ -31,14 +31,14 @@ export default class UiAbility01 extends UIAbility {
     }
   }
 
-  onDestroy() {
+  onDestroy():void {
     commonEventManager.publish('ability01_onDestroy', function () {
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_0500 publish ability01_onDestroy');
     });
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility01 onDestroy');
   }
 
-  onWindowStageCreate(windowStage: window.WindowStage) {
+  onWindowStageCreate(windowStage: window.WindowStage):void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility01 onWindowStageCreate');
     commonEventManager.publish('ability01_onWindowStageCreate', function () {
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_0500 publish ability01_onWindowStageCreate');
@@ -52,14 +52,14 @@ export default class UiAbility01 extends UIAbility {
     });
   }
 
-  onWindowStageDestroy() {
+  onWindowStageDestroy():void {
     commonEventManager.publish('ability01_onWindowStageDestroy', function () {
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_0500 publish ability01_onWindowStageDestroy');
     });
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility01 onWindowStageDestroy');
   }
 
-  onForeground() {
+  onForeground():void {
     commonEventManager.publish('ability01_onForeground', function () {
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_0500 publish ability01_onForeground');
     });
@@ -71,7 +71,7 @@ export default class UiAbility01 extends UIAbility {
     hilog.info(0x0000, 'testTag', '%{public}s', 'UiAbility01 onForeground');
   }
 
-  onBackground() {
+  onBackground():void {
     // Ability has back to background
     commonEventManager.publish('ability01_onBackground', function () {
       hilog.info(0x0000, 'testTag', '%{public}s', 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbilityForResult_0500 publish ability01_onBackground');

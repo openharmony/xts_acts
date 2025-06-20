@@ -61,7 +61,7 @@ export default function StartAbilityForResultTest() {
      * @tc.size: MediumTest
      * @tc.type: Function
      */
-    it('AbilityRuntime_StartAndTerminate_StartAbility_2400', Level.LEVEL3, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2400', Level.LEVEL3, async (done: Function) => {
       const TAG = 'StartAbility';
       const TEST_SUITE_NAME: string = 'StartAbilityTest';
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2400';
@@ -100,7 +100,7 @@ export default function StartAbilityForResultTest() {
      * @tc.size : MediumTest
      * @tc.type : Function
      */
-    it('AbilityRuntime_StartAndTerminate_StartAbility_2600', Level.LEVEL3, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2600', Level.LEVEL3, async (done: Function) => {
       const TAG = 'StartAbility';
       const TEST_SUITE_NAME: string = 'StartAbilityTest';
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2600';
@@ -140,7 +140,7 @@ export default function StartAbilityForResultTest() {
      * @tc.size: MediumTest
      * @tc.type: Function
      */
-    it('AbilityRuntime_StartAndTerminate_StartAbility_2700', Level.LEVEL3, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2700', Level.LEVEL3, async (done: Function) => {
       const TAG = 'StartAbility';
       const TEST_SUITE_NAME: string = 'StartAbilityTest';
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2700';
@@ -216,7 +216,7 @@ export default function StartAbilityForResultTest() {
      * @tc.size: MediumTest
      * @tc.type: Function
      */
-    it('AbilityRuntime_StartAndTerminate_StartAbility_2800', Level.LEVEL3, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2800', Level.LEVEL3, async (done: Function) => {
       const TAG = 'StartAbility';
       const TEST_SUITE_NAME: string = 'StartAbilityTest';
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2800';
@@ -261,7 +261,7 @@ export default function StartAbilityForResultTest() {
      * @tc.size: MediumTest
      * @tc.type: Function
      */
-    it('AbilityRuntime_StartAndTerminate_StartAbility_2900', Level.LEVEL3, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2900', Level.LEVEL3, async (done: Function) => {
       const TAG = 'StartAbility';
       const TEST_SUITE_NAME: string = 'StartAbilityTest';
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_2900';
@@ -305,7 +305,7 @@ export default function StartAbilityForResultTest() {
      * @tc.size: MediumTest
      * @tc.type: Function
      */
-    it('AbilityRuntime_StartAndTerminate_StartAbility_3000', Level.LEVEL3, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3000', Level.LEVEL3, async (done: Function) => {
 
       const TAG = 'StartAbility';
       const TEST_SUITE_NAME: string = 'StartAbilityTest';
@@ -381,7 +381,7 @@ export default function StartAbilityForResultTest() {
      * @tc.size: MediumTest
      * @tc.type: Function
      */
-    it('AbilityRuntime_StartAndTerminate_StartAbility_3100', Level.LEVEL3, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3100', Level.LEVEL3, async (done: Function) => {
       const TAG = 'StartAbility';
       const TEST_SUITE_NAME: string = 'StartAbilityTest';
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3100';
@@ -462,7 +462,7 @@ export default function StartAbilityForResultTest() {
      * @tc.size: MediumTest
      * @tc.type: Function
      */
-    it('AbilityRuntime_StartAndTerminate_StartAbility_3200', Level.LEVEL3, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3200', Level.LEVEL3, async (done: Function) => {
 
       const TAG = 'StartAbility';
       const TEST_SUITE_NAME: string = 'StartAbilityTest';
@@ -539,7 +539,7 @@ export default function StartAbilityForResultTest() {
      * @tc.size: MediumTest
      * @tc.type: Function
      */
-    it('AbilityRuntime_StartAndTerminate_StartAbility_3300', Level.LEVEL3, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3300', Level.LEVEL3, async (done: Function) => {
 
       const TAG = 'StartAbility';
       const TEST_SUITE_NAME: string = 'StartAbilityTest';
@@ -622,7 +622,7 @@ export default function StartAbilityForResultTest() {
      * @tc.size: MediumTest
      * @tc.type: Function
      */
-    it('AbilityRuntime_StartAndTerminate_StartAbility_3400', Level.LEVEL3, async (done: Function) => {
+    it('SUB_Ability_AbilityRuntime_StartAndTerminate_StartAbility_3400', Level.LEVEL3, async (done: Function) => {
 
       const TAG = 'StartAbility';
       const TEST_SUITE_NAME: string = 'StartAbilityTest';
