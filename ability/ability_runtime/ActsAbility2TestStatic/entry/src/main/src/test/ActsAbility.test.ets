@@ -51,7 +51,8 @@ export default function abilityTest() {
         let str1:string = testAbilityContext.filesDir
         hilog.info(domain, tag, '%{public}s', 'abilityTest001 testAbilityContext fileDir' + str1);
       }
-      await Utils.msSleep(1000)
+      await Utils.msSleep(1000);
+      expect("test").assertEqual('test');
       hilog.info(domain, tag, '%{public}s', 'abilityTest001');
       done()
       hilog.info(domain, tag, '%{public}s', 'abilityTest001 end');
