@@ -337,6 +337,7 @@ export default function errCodeQueryTest() {
               }
               commonEventManager.publish("terminateEntryAbility1",() => {});
               commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
+                console.info(`[${TAG}] unsubscribe succeed`);
                 done();
               });
             })
@@ -398,6 +399,7 @@ export default function errCodeQueryTest() {
               }
               commonEventManager.publish("terminateEntryAbility1",() => {});
               commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
+                console.info(`[${TAG}] unsubscribe succeed`);
                 done();
               });
             })
@@ -458,6 +460,7 @@ export default function errCodeQueryTest() {
               }
               commonEventManager.publish("terminateEntryAbility1",() => {});
               commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
+                console.info(`[${TAG}] unsubscribe succeed`);
                 done();
               });
             })
@@ -518,6 +521,7 @@ export default function errCodeQueryTest() {
               }
               commonEventManager.publish("terminateEntryAbility1",() => {});
               commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
+                console.info(`[${TAG}] unsubscribe succeed`);
                 done();
               });
             })
@@ -578,6 +582,7 @@ export default function errCodeQueryTest() {
               }
               commonEventManager.publish("terminateEntryAbility1",() => {});
               commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
+                console.info(`[${TAG}] unsubscribe succeed`);
                 done();
               });
             })
@@ -638,6 +643,7 @@ export default function errCodeQueryTest() {
               }
               commonEventManager.publish("terminateEntryAbility1",() => {});
               commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
+                console.info(`[${TAG}] unsubscribe succeed`);
                 done();
               });
             })
@@ -698,6 +704,7 @@ export default function errCodeQueryTest() {
               }
               commonEventManager.publish("terminateEntryAbility1",() => {});
               commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
+                console.info(`[${TAG}] unsubscribe succeed`);
                 done();
               });
             })
@@ -758,6 +765,7 @@ export default function errCodeQueryTest() {
               }
               commonEventManager.publish("terminateEntryAbility1",() => {});
               commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
+                console.info(`[${TAG}] unsubscribe succeed`);
                 done();
               });
             })
@@ -818,6 +826,7 @@ export default function errCodeQueryTest() {
               }
               commonEventManager.publish("terminateEntryAbility1",() => {});
               commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
+                console.info(`[${TAG}] unsubscribe succeed`);
                 done();
               });
             })
@@ -878,6 +887,7 @@ export default function errCodeQueryTest() {
               }
               commonEventManager.publish("terminateEntryAbility1",() => {});
               commonEventManager.unsubscribe(commonEventSubscriber, (err, data) => {
+                console.info(`[${TAG}] unsubscribe succeed`);
                 done();
               });
             })
