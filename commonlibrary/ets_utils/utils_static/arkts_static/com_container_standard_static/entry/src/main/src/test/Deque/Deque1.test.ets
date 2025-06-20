@@ -12,10 +12,22 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level, Size, TestType } from '../../../../hypium/index';
+import {
+  describe,
+  beforeAll,
+  beforeEach,
+  afterEach,
+  afterAll,
+  it,
+  expect,
+  TestType,
+  Level,
+  Size
+} from '../../../../hypium/index';
 import Deque from '@ohos.util.Deque';
 import { BusinessError } from '@ohos.base';
 import hilog from '@ohos.hilog'
+import Utils from '../Util.test';
 
 class C1 {
   name: string;
@@ -29,7 +41,9 @@ class C1 {
 
 export default function DequeTest() {
   describe('dequeTest', (): void => {
-
+    afterEach(() => {
+      await Utils.msSleep(10)
+    })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_DEQUE_0100
      * @tc.name       : testInsertFront0001

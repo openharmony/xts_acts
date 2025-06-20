@@ -12,6 +12,7 @@ import {
 } from '../../../../hypium/index';
 import HashMap from '@ohos.util.HashMap';
 import { BusinessError } from '@ohos.base';
+import Utils from '../Util.test';
 
 async function sleep(count: int): Promise<int> {
   return new Promise<int>((resolve, reject) => {
@@ -33,6 +34,9 @@ class Temp1 {
 
 export default function HashMapTest2() {
   describe('hashMapTest2', (): void => {
+    afterEach(() => {
+      await Utils.msSleep(10)
+    })
     /**
      * @tc.number    : SUB_COMMONLIBRARY_UTIL_BASE_HASHMAP_LENGTH_0100
      * @tc.name      : testHashMapLength0001

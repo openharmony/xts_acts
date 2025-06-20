@@ -12,6 +12,7 @@ import {
 } from '../../../../hypium/index';
 import { BusinessError } from '@ohos.base';
 import PlainArray from '@ohos.util.PlainArray';
+import Utils from '../Util.test';
 
 class Tmp {
   age: number = 0
@@ -23,6 +24,9 @@ class Tmp {
 
 export default function PlainArrayTest2() {
   describe('plainArrayTest2', (): void => {
+    afterEach(() => {
+      await Utils.msSleep(10)
+    })
     /**
      * @tc.number    : SUB_COMMONLIBRARY_UTIL_BASE_PLAINARRAY_CONSTRUCTOR_0100
      * @tc.name      : testPlainArrayConstructor0001
@@ -610,20 +614,20 @@ export default function PlainArrayTest2() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    // it('testPlainArrayGetKeyAt0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  (): void => {
-    //   const TAG = 'testPlainArrayGetKeyAt0005';
-    //   try {
-    //     let plainArray: PlainArray<string> = new PlainArray<string>();
-    //     plainArray.add(1, "squirrel");
-    //     plainArray.add(2, "sparrow");
-    //     let result = plainArray.getKeyAt(1);
-    //     let index = plainArray.getIndexOfKey(result);
-    //     expect(String(index)).assertEqual('1');
-    //   } catch (err: BusinessError) {
-    //     console.error(`${TAG} failed, error: ${err.code} ${err.message}}`);
-    //     expect(false).assertFail();
-    //   }
-    // });
+    it('testPlainArrayGetKeyAt0005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,  (): void => {
+      const TAG = 'testPlainArrayGetKeyAt0005';
+      try {
+        let plainArray: PlainArray<string> = new PlainArray<string>();
+        plainArray.add(1, "squirrel");
+        plainArray.add(2, "sparrow");
+        let result = plainArray.getKeyAt(1);
+        let index = plainArray.getIndexOfKey(result);
+        expect(String(index)).assertEqual('1');
+      } catch (err: BusinessError) {
+        console.error(`${TAG} failed, error: ${err.code} ${err.message}}`);
+        expect(false).assertFail();
+      }
+    });
 
     /**
      * @tc.number    : SUB_COMMONLIBRARY_UTIL_BASE_PLAINARRAY_GETVALUEAT_0100

@@ -13,11 +13,26 @@
  * limitations under the License.
  */
 import HashMap from '@ohos.util.HashMap';
-import { describe, expect, it, Level, Size, TestType } from '../../../../hypium/index';
+import {
+  describe,
+  beforeAll,
+  beforeEach,
+  afterEach,
+  afterAll,
+  it,
+  expect,
+  TestType,
+  Level,
+  Size
+} from '../../../../hypium/index';
 import { BusinessError } from '@ohos.base';
+import Utils from '../Util.test';
 
 export default function HashMapTest1() {
   describe("HashMapTest1", (): void => {
+    afterEach(() => {
+      await Utils.msSleep(10)
+    })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_HASHMAP_0100
      * @tc.name       : testHashMap0001

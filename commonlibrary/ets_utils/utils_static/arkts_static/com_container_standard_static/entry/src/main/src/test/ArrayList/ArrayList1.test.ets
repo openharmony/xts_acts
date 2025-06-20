@@ -13,8 +13,20 @@
  * limitations under the License.
  */
 import ArrayList from '@ohos.util.ArrayList';
-import { describe, expect, it, Level, Size, TestType } from '../../../../hypium/index';
+import {
+  describe,
+  beforeAll,
+  beforeEach,
+  afterEach,
+  afterAll,
+  it,
+  expect,
+  TestType,
+  Level,
+  Size
+} from '../../../../hypium/index';
 import { BusinessError } from '@ohos.base';
+import Utils from '../Util.test';
 
 
 class C1 {
@@ -29,7 +41,9 @@ class C1 {
 
 export default function ArraylistTest1() {
   describe("ArraylistTest1", (): void => {
-
+    afterEach(() => {
+      await Utils.msSleep(10)
+    })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_ARRAY_0100
      * @tc.name       : testArray0001

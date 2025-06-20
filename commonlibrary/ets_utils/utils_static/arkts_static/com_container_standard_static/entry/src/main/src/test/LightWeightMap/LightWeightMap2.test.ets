@@ -12,10 +12,22 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '../../../../hypium/index';
+import {
+  describe,
+  beforeAll,
+  beforeEach,
+  afterEach,
+  afterAll,
+  it,
+  expect,
+  TestType,
+  Level,
+  Size
+} from '../../../../hypium/index';
 import LightWeightMap from '@ohos.util.LightWeightMap';
 import { BusinessError } from '@ohos.base';
 import hilog from '@ohos.hilog'
+import Utils from '../Util.test';
 
 interface ComplexValue {
   name: string;
@@ -31,7 +43,9 @@ interface ComplexKey {
 
 export default function LightWeightMapTest2() {
   describe('lightWeightMapTest2', (): void => {
-
+    afterEach(() => {
+      await Utils.msSleep(10)
+    })
     /**
      * @tc.number    : SUB_COMMONLIBRARY_UTIL_BASE_LIGHTWEIGHTMAP_CONSTRUCTOR_0100
      * @tc.name      : testLightWeightMapConstructor0001
@@ -1210,7 +1224,7 @@ export default function LightWeightMapTest2() {
 
     /**
      * @tc.number    : SUB_COMMONLIBRARY_UTIL_BASE_LIGHTWEIGHTMAP_REMOVE_0200
-     * @tc.name      : testLightWeightMapRemove0002--无效
+     * @tc.name      : testLightWeightMapRemove0002
      * @tc.desc      : Testing LightWeightMap remove data by null or undefined key
      * @tc.size      : MediumTest
      * @tc.type      : Function

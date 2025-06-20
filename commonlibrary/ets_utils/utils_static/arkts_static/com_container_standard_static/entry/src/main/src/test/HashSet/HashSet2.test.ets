@@ -1,6 +1,18 @@
-import { describe, expect, it, Level, Size, TestType } from '../../../../hypium/index';
+import {
+  describe,
+  beforeAll,
+  beforeEach,
+  afterEach,
+  afterAll,
+  it,
+  expect,
+  TestType,
+  Level,
+  Size
+} from '../../../../hypium/index';
 import { BusinessError } from '@ohos.base';
 import HashSet from '@ohos.util.HashSet';
+import Utils from '../Util.test';
 
 class Tmp {
   name: number = 0
@@ -13,6 +25,9 @@ class Temp1 {
 
 export default function hasSetTest2() {
   describe('hasSetTest2', (): void => {
+    afterEach(() => {
+      await Utils.msSleep(10)
+    })
     /**
      * @tc.number    : SUB_COMMONLIBRARY_UTIL_BASE_HASHSET_LENGTH_0100
      * @tc.name      : testHashSetLength0001

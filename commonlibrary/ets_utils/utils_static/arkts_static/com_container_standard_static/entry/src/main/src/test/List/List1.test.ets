@@ -12,6 +12,7 @@ import {
 } from '../../../../hypium/index';
 import List from '@ohos.util.List';
 import { BusinessError } from '@ohos.base';
+import Utils from '../Util.test';
 
 class Temp1 {
   age: number = 0
@@ -30,6 +31,9 @@ class Temp {
 
 export default function ArkListTest() {
   describe('arkListTest', (): void => {
+    afterEach(() => {
+      await Utils.msSleep(10)
+    })
     /**
      * @tc.number    : SUB_COMMONLIBRARY_UTIL_BASE_LIST_CONSTRUCTOR_0100
      * @tc.name      : testListConstructor0001

@@ -13,8 +13,20 @@
  * limitations under the License.
  */
 import PlainArray from '@ohos.util.PlainArray';
-import { describe, expect, it, Level, Size, TestType } from '../../../../hypium/index';
+import {
+  describe,
+  beforeAll,
+  beforeEach,
+  afterEach,
+  afterAll,
+  it,
+  expect,
+  TestType,
+  Level,
+  Size
+} from '../../../../hypium/index';
 import { BusinessError } from '@ohos.base';
+import Utils from '../Util.test';
 
 class InfoC {
   name: string
@@ -28,6 +40,9 @@ class InfoC {
 
 export default function PlainArrayTest1() {
   describe("PlainArrayTest1", (): void => {
+    afterEach(() => {
+      await Utils.msSleep(10)
+    })
 
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_PLAINARRAY_0100

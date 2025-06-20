@@ -1,17 +1,18 @@
 import {
-  afterAll,
-  afterEach,
+  describe,
   beforeAll,
   beforeEach,
-  describe,
-  expect,
+  afterEach,
+  afterAll,
   it,
+  expect,
+  TestType,
   Level,
-  Size,
-  TestType
+  Size
 } from '../../../../hypium/index';
 import ArrayList from '@ohos.util.ArrayList';
 import { BusinessError } from '@ohos.base';
+import Utils from '../Util.test';
 
 class Temp {
   age: number = 0
@@ -39,6 +40,9 @@ class Cat {
 
 export default function ArrayListTest2() {
   describe('arrayListTest2', (): void => {
+    afterEach(() => {
+      await Utils.msSleep(10)
+    })
     /**
      * @tc.number    : SUB_COMMONLIBRARY_UTIL_BASE_ARRAYLIST_LENGTH_0100
      * @tc.name      : testArrayListLength0001

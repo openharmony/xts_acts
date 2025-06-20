@@ -12,10 +12,22 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '../../../../hypium/index'
+import {
+  describe,
+  beforeAll,
+  beforeEach,
+  afterEach,
+  afterAll,
+  it,
+  expect,
+  TestType,
+  Level,
+  Size
+} from '../../../../hypium/index';
 import LinkedList from '@ohos.util.LinkedList';
 import { BusinessError } from '@ohos.base';
 import hilog from '@ohos.hilog'
+import Utils from '../Util.test';
 
 class Temp {
   age: number;
@@ -29,6 +41,9 @@ class Temp {
 
 export default function LinkedListTest1() {
   describe('linkedListTest1', (): void => {
+    afterEach(() => {
+      await Utils.msSleep(10)
+    })
     /**
      * @tc.number    : SUB_COMMONLIBRARY_UTIL_BASE_LINKED_LIST_ADD_0100
      * @tc.name      : testLinkedListAdd0001

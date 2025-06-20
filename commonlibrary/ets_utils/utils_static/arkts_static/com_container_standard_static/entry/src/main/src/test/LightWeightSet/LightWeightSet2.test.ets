@@ -12,10 +12,22 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Level, Size } from '../../../../hypium/index';
+import {
+  describe,
+  beforeAll,
+  beforeEach,
+  afterEach,
+  afterAll,
+  it,
+  expect,
+  TestType,
+  Level,
+  Size
+} from '../../../../hypium/index';
 import { BusinessError } from '@ohos.base';
 import hilog from '@ohos.hilog';
 import LightWeightSet from '@ohos.util.LightWeightSet';
+import Utils from '../Util.test';
 
 class C1 {
   name: string;
@@ -37,7 +49,9 @@ class C2 {
 
 export default function LightWeightSetTest2() {
   describe('lightWeightSetTest2', (): void => {
-
+    afterEach(() => {
+      await Utils.msSleep(10)
+    })
     // class C1 {
     //   name: string = ""
     //   age: string = ""
