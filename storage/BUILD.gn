@@ -28,6 +28,7 @@ group("storage") {
       "storagefileiojstest:storagefileio_js_test",
       "storagefileiondktest:ActsStorageFileioNdkTest",
       "storagefileiov9jstest:storagefileiov9_js_test",
+      "storagefileiov9jsteststatic:storagefileiov9_js_test_static",
       "storagefilejstest:storagefile_js_test",
       "storagefilesharejstest:storagefileshare_js_test",
       "storagefilesharendktest:ActsStorageFileshareNdkTest",
