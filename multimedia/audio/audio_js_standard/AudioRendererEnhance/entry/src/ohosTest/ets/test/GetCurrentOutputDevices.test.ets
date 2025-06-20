@@ -224,7 +224,7 @@ export default function audioRendererTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETCURRENTOUTPUTDEVICES_PROMISE_0200', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETCURRENTOUTPUTDEVICES_PROMISE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         await renderPlay();
         await audioRen.getCurrentOutputDevices().then((data: ESObject) => {
@@ -293,7 +293,7 @@ export default function audioRendererTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETCURRENTOUTPUTDEVICES_CALLBACK_0200', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETCURRENTOUTPUTDEVICES_CALLBACK_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       await renderPlay();
       audioRen.getCurrentOutputDevices((err: BusinessError, data: ESObject) => {
         if (err) {

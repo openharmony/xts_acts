@@ -219,7 +219,7 @@ export default function audioRendererTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETCHANNELBLENMODE_0200', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETCHANNELBLENMODE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         await audioRen.setChannelBlendMode(audio.ChannelBlendMode.MODE_BLEND_LR)
         console.info(`${Tag}:  setChannelBlendMode :SUCCESS`);
@@ -240,7 +240,7 @@ export default function audioRendererTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETCHANNELBLENMODE_0300', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETCHANNELBLENMODE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         await audioRen.setChannelBlendMode(audio.ChannelBlendMode.MODE_ALL_LEFT)
         console.info(`${Tag}:  setChannelBlendMode :SUCCESS`);
@@ -261,7 +261,7 @@ export default function audioRendererTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETCHANNELBLENMODE_0400', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETCHANNELBLENMODE_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         await audioRen.setChannelBlendMode(audio.ChannelBlendMode.MODE_ALL_RIGHT)
         console.info(`${Tag}:  setChannelBlendMode :SUCCESS`);
@@ -282,7 +282,7 @@ export default function audioRendererTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETCHANNELBLENMODE_0500', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETCHANNELBLENMODE_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         //unsupported option, 6800104
         await audioRen.setChannelBlendMode(env.INPUT_PARAMETER_TYPE_NUMBER);
@@ -304,7 +304,7 @@ export default function audioRendererTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETCHANNELBLENMODE_0600', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETCHANNELBLENMODE_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         //unsupported option, 6800104
         await audioRen.setChannelBlendMode(env.INPUT_PARAMETER_TYPE_NUMBER_4);
@@ -326,7 +326,7 @@ export default function audioRendererTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETCHANNELBLENMODE_0700', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETCHANNELBLENMODE_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         //invalid parameter, 6800101
         await audioRen.setChannelBlendMode(env.INVALID_PARAMETER_STRING);
@@ -348,7 +348,7 @@ export default function audioRendererTest() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETCHANNELBLENMODE_0800', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETCHANNELBLENMODE_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         for (let index = 0; index < env.StreamUsage.length; index++) {
           let AudioStreamInfo: AudioStreamInfo = {

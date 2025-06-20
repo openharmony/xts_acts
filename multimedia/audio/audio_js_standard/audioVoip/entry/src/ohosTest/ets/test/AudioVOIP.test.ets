@@ -17,7 +17,7 @@ import audio from '@ohos.multimedia.audio';
 import fileio from '@ohos.fileio';
 import featureAbility from '@ohos.ability.featureAbility'
 import resourceManager from '@ohos.resourceManager';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import { Driver } from '@ohos.UiTest';
 import { ON } from '@ohos.UiTest';
@@ -452,7 +452,7 @@ export default function audioVoip() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOIP_PLAY_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_PLAY_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
 
       let AudioStreamInfo: AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -489,7 +489,7 @@ export default function audioVoip() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
 
       let AudioStreamInfo: AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -524,7 +524,7 @@ export default function audioVoip() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOIP_RECPLAY_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_RECPLAY_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
 
       let AudioStreamInfoCap: AudioStreamInfoCap = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,

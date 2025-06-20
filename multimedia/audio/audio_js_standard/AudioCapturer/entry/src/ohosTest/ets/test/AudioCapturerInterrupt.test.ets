@@ -355,7 +355,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
       let flag1 = false;
       let flag2 = false;
@@ -395,7 +395,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       console.log('capturerInfo.MIC', JSON.stringify(capturerInfo.MIC))
@@ -429,7 +429,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let capture1: audio.AudioCapturer = await createAudioCapturer(capturerInfo.MIC, streamInfo.A16000, done)
       await capturerStart(capture1, done)
       capture1.on("audioInterrupt", async (eventAction) => {
@@ -454,7 +454,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_0400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer = await createAudioCapturer(capturerInfo.MIC, streamInfo.A16000, done)
@@ -487,7 +487,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_0500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let capture: audio.AudioCapturer = await createAudioCapturer(capturerInfo.MIC, streamInfo.A16000, done)
       await capturerStart(capture, done)
       capture.on("audioInterrupt", async (eventAction) => {
@@ -513,7 +513,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_0600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_0600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let render:ESObject;
@@ -553,7 +553,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_0700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_0700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer = await createAudioCapturer(capturerInfo.MIC, streamInfo.A16000, done)
@@ -586,7 +586,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_0900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer = await createAudioCapturer(capturerInfo.MIC, streamInfo.A16000, done)
@@ -619,7 +619,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_1000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_1000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer = await createAudioCapturer(capturerInfo.MIC, streamInfo.A16000, done)
@@ -652,7 +652,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_1100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer = await createAudioCapturer(capturerInfo.MIC, streamInfo.A16000, done)
@@ -685,7 +685,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_1200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer = await createAudioCapturer(capturerInfo.MIC, streamInfo.A16000, done)
@@ -718,7 +718,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_1300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer = await createAudioCapturer(capturerInfo.MIC, streamInfo.A16000, done)
@@ -751,7 +751,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_1400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_1400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture1: audio.AudioCapturer =
@@ -783,7 +783,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_1500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_1500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture1: audio.AudioCapturer =
@@ -816,7 +816,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_1600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_1600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let capture1: audio.AudioCapturer =
         await createAudioCapturer(capturerInfo.VOICE_RECOGNITION, streamInfo.A16000, done)
       await capturerStart(capture1, done)
@@ -842,7 +842,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_1700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_1700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer =
@@ -876,7 +876,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_1800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_1800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer =
@@ -910,7 +910,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_1900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_1900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer =
@@ -944,7 +944,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_2000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_2000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer =
@@ -978,7 +978,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_2200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer =
@@ -1016,7 +1016,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_2300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer =
@@ -1050,7 +1050,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_2400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_2400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer =
@@ -1084,7 +1084,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_2500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_2500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer =
@@ -1118,7 +1118,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_2600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_2600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer =
@@ -1152,7 +1152,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_2700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_2700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture1: audio.AudioCapturer =
@@ -1184,7 +1184,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_2800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_2800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture1: audio.AudioCapturer =
@@ -1217,7 +1217,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_2900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_2900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture1: audio.AudioCapturer =
@@ -1250,7 +1250,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_3000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer =
@@ -1284,7 +1284,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_3100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_3100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer =
@@ -1318,7 +1318,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_3200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_3200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer =
@@ -1352,7 +1352,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_3300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_3300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer =
@@ -1386,7 +1386,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_3500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_3500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer =
@@ -1420,7 +1420,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_3600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_3600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer =
@@ -1454,7 +1454,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_3700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_3700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer =
@@ -1488,7 +1488,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_3800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_3800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer =
@@ -1522,7 +1522,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_3900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_3900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer =
@@ -1556,7 +1556,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_5400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_5400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture1: audio.AudioCapturer =
@@ -1588,7 +1588,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_5500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_5500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture1: audio.AudioCapturer =
@@ -1621,7 +1621,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_5600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_5600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture1: audio.AudioCapturer =
@@ -1654,7 +1654,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_5700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_5700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture1: audio.AudioCapturer =
@@ -1687,7 +1687,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_5800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_5800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer =
@@ -1725,7 +1725,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_5900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_5900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer =
@@ -1759,7 +1759,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_6000', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_6000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer =
@@ -1793,7 +1793,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_6100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_6100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer =
@@ -1827,7 +1827,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_6200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_6200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer =
@@ -1865,7 +1865,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_6300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_6300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer =
@@ -1899,7 +1899,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_6500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_6500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer =
@@ -1933,7 +1933,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_6600', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_6600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer =
@@ -1967,7 +1967,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_6700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_6700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer =
@@ -2001,7 +2001,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_6900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_6900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer =
@@ -2035,7 +2035,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_8100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_8100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture1: audio.AudioCapturer = await createAudioCapturer(capturerInfo.MIC, streamInfo.A16000, done)
@@ -2067,7 +2067,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_8500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_8500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture1: audio.AudioCapturer =
@@ -2100,7 +2100,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_8800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_8800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture1: audio.AudioCapturer =
@@ -2133,7 +2133,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_9900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_9900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer = await createAudioCapturer(capturerInfo.MIC, streamInfo.A16000, done)
@@ -2166,7 +2166,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_10100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_10100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer = await createAudioCapturer(capturerInfo.MIC, streamInfo.A16000, done)
@@ -2199,7 +2199,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_10200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_10200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer = await createAudioCapturer(capturerInfo.MIC, streamInfo.A16000, done)
@@ -2232,7 +2232,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_10300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_10300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer = await createAudioCapturer(capturerInfo.MIC, streamInfo.A16000, done)
@@ -2265,7 +2265,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_10700', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_10700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer =
@@ -2299,7 +2299,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_10800', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_10800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer =
@@ -2333,7 +2333,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_10900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_10900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer =
@@ -2367,7 +2367,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_12100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_12100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer =
@@ -2401,7 +2401,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_12300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_12300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer =
@@ -2435,7 +2435,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_12400', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_12400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer =
@@ -2469,7 +2469,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_12500', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_12500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer =
@@ -2503,7 +2503,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_12900', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_12900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer =
@@ -2537,7 +2537,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_13100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_13100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer =
@@ -2571,7 +2571,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_13200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_13200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer =
@@ -2606,7 +2606,7 @@ export default function audioCapturerInterrupt() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_13300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_13300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let flag1 = false;
       let flag2 = false;
       let capture: audio.AudioCapturer =

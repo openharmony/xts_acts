@@ -103,7 +103,7 @@ export default function audioManagerApi9() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_ERRORS_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_ERRORS_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       expect(audio.AudioErrors.ERROR_INVALID_PARAM).assertEqual(6800101);
       expect(audio.AudioErrors.ERROR_NO_MEMORY).assertEqual(6800102);
       expect(audio.AudioErrors.ERROR_ILLEGAL_STATE).assertEqual(6800103);
@@ -123,7 +123,7 @@ export default function audioManagerApi9() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_DEFAULT_VOLUME_GROUP_ID_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_DEFAULT_VOLUME_GROUP_ID_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       expect(audio.DEFAULT_VOLUME_GROUP_ID).assertEqual(1);
       await sleep(50);
       done();
@@ -137,7 +137,7 @@ export default function audioManagerApi9() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_DEFAULT_INTERRUPT_GROUP_ID_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_DEFAULT_INTERRUPT_GROUP_ID_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       expect(audio.DEFAULT_INTERRUPT_GROUP_ID).assertEqual(1);
       await sleep(50);
       done();
@@ -151,7 +151,7 @@ export default function audioManagerApi9() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_COMUNICATIONDEVICETYPE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_COMUNICATIONDEVICETYPE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       expect(audio.CommunicationDeviceType.SPEAKER).assertEqual(2);
       await sleep(50);
       done();
@@ -166,7 +166,7 @@ export default function audioManagerApi9() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SYNC_0100', 3, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SYNC_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let audioVolumeManager = audioManager.getVolumeManager();
       try {
         let groupManager = audioVolumeManager.getVolumeGroupManagerSync(audio.DEFAULT_VOLUME_GROUP_ID)
@@ -194,7 +194,7 @@ export default function audioManagerApi9() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SYNC_0200', 3, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SYNC_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let audioVolumeManager = audioManager.getVolumeManager();
       try {
         let groupManager = audioVolumeManager.getVolumeGroupManagerSync(volGroupId);
@@ -216,7 +216,7 @@ export default function audioManagerApi9() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SYNC_0300', 3, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SYNC_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let audioVolumeManager = audioManager.getVolumeManager();
       try {
         let groupManager = audioVolumeManager.getVolumeGroupManagerSync(strParams);
@@ -238,7 +238,7 @@ export default function audioManagerApi9() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SYNC_0400', 3, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SYNC_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let audioVolumeManager = audioManager.getVolumeManager();
       try {
         let groupManager = audioVolumeManager.getVolumeGroupManagerSync(numParams);
@@ -357,7 +357,7 @@ export default function audioManagerApi9() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGERERROR_0100', 3, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGERERROR_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let audioVolumeManager = audioManager.getVolumeManager();
         let groupManager: ESObject = await audioVolumeManager.getVolumeGroupManager(numParams);
@@ -383,7 +383,7 @@ export default function audioManagerApi9() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGERERROR_0200', 3, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGERERROR_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let audioVolumeManager = audioManager.getVolumeManager();
         let groupManager: ESObject = await audioVolumeManager.getVolumeGroupManager(numParams);
@@ -409,7 +409,7 @@ export default function audioManagerApi9() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGERERROR_0300', 3, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGERERROR_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let audioVolumeManager = audioManager.getVolumeManager();
         let groupManager: ESObject = await audioVolumeManager.getVolumeGroupManager(undefined);
@@ -435,7 +435,7 @@ export default function audioManagerApi9() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGERERROR_0400', 3, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGERERROR_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let audioVolumeManager = audioManager.getVolumeManager();
         let groupManager: ESObject = await audioVolumeManager.getVolumeGroupManager(volGroupId);
@@ -463,7 +463,7 @@ export default function audioManagerApi9() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_0100', 3, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let audioVolumeManager = audioManager.getVolumeManager();
       audioVolumeManager.getVolumeGroupManager(audio.DEFAULT_VOLUME_GROUP_ID, (err, groupManager) => {
         if (err) {
@@ -491,7 +491,7 @@ export default function audioManagerApi9() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_0200', 3, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let audioVolumeManager = audioManager.getVolumeManager();
         let groupManager = await audioVolumeManager.getVolumeGroupManager(audio.DEFAULT_VOLUME_GROUP_ID);
@@ -518,7 +518,7 @@ export default function audioManagerApi9() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETVOLUME_0100', 3, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETVOLUME_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let groupManager: audio.AudioVolumeGroupManager;
       try {
         let audioVolumeManager = audioManager.getVolumeManager();
@@ -551,7 +551,7 @@ export default function audioManagerApi9() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETVOLUME_0200', 3, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETVOLUME_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let audioVolumeManager = audioManager.getVolumeManager();
         let groupManager = await audioVolumeManager.getVolumeGroupManager(audio.DEFAULT_VOLUME_GROUP_ID);
@@ -579,7 +579,7 @@ export default function audioManagerApi9() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETMAXVOLUME_0100', 3, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETMAXVOLUME_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let audioVolumeManager = audioManager.getVolumeManager();
         let groupManager = await audioVolumeManager.getVolumeGroupManager(audio.DEFAULT_VOLUME_GROUP_ID);
@@ -616,7 +616,7 @@ export default function audioManagerApi9() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETMAXVOLUME_0200', 3, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETMAXVOLUME_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let audioVolumeManager = audioManager.getVolumeManager();
         let groupManager = await audioVolumeManager.getVolumeGroupManager(audio.DEFAULT_VOLUME_GROUP_ID);
@@ -646,7 +646,7 @@ export default function audioManagerApi9() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETMINVOLUME_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETMINVOLUME_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         let audioVolumeManager = audioManager.getVolumeManager();
         let groupManager = await audioVolumeManager.getVolumeGroupManager(audio.DEFAULT_VOLUME_GROUP_ID);
@@ -680,7 +680,7 @@ export default function audioManagerApi9() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETMINVOLUME_0200', 3, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETMINVOLUME_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let audioVolumeManager = audioManager.getVolumeManager();
         let groupManager = await audioVolumeManager.getVolumeGroupManager(audio.DEFAULT_VOLUME_GROUP_ID);
@@ -707,7 +707,7 @@ export default function audioManagerApi9() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ISMUTE_0100', 3, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ISMUTE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let groupManager: audio.AudioVolumeGroupManager;
       try {
         let audioVolumeManager = audioManager.getVolumeManager();
@@ -738,7 +738,7 @@ export default function audioManagerApi9() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ISMUTE_0200', 3, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ISMUTE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let audioVolumeManager = audioManager.getVolumeManager();
         let groupManager = await audioVolumeManager.getVolumeGroupManager(audio.DEFAULT_VOLUME_GROUP_ID);
@@ -769,7 +769,7 @@ export default function audioManagerApi9() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETRINGERMODE_0100', 3, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETRINGERMODE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let groupManager: audio.AudioVolumeGroupManager;
       try {
         let audioVolumeManager = audioManager.getVolumeManager();
@@ -809,7 +809,7 @@ export default function audioManagerApi9() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SETRINGERMODE_0200', 3, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SETRINGERMODE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
         let audioVolumeManager = audioManager.getVolumeManager();
         let groupManager = await audioVolumeManager.getVolumeGroupManager(audio.DEFAULT_VOLUME_GROUP_ID);
@@ -909,7 +909,7 @@ export default function audioManagerApi9() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SETMICROPHONEMUTE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SETMICROPHONEMUTE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let audioVolumeManager = audioManager.getVolumeManager();
       let groupManager = await audioVolumeManager.getVolumeGroupManager(audio.DEFAULT_VOLUME_GROUP_ID);
       groupManager.setMicrophoneMute(true, (err, data) => {
@@ -945,7 +945,7 @@ export default function audioManagerApi9() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SETMICROPHONEMUTE_0200', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SETMICROPHONEMUTE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         let audioVolumeManager = audioManager.getVolumeManager();
         let groupManager = await audioVolumeManager.getVolumeGroupManager(audio.DEFAULT_VOLUME_GROUP_ID);
@@ -974,7 +974,7 @@ export default function audioManagerApi9() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ONMICSTATECHANGE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ONMICSTATECHANGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let audioVolumeManager = audioManager.getVolumeManager();
       let groupManager = await audioVolumeManager.getVolumeGroupManager(audio.DEFAULT_VOLUME_GROUP_ID);
       try {
@@ -1018,7 +1018,7 @@ export default function audioManagerApi9() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_AUDIO_STREAM_MANAGER_ISACTIVE_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_STREAM_MANAGER_ISACTIVE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.log(`${TagFrmwk}: Promise : isActive Media: NOTE: audio NOT PLAYING as MEDIA for the test case to PASS`);
       const PROMISE = streamManager.isActive(audioMedia);
       PROMISE.then((data) => {
@@ -1159,7 +1159,7 @@ export default function audioManagerApi9() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_ISCOMMUNICATIONDEVICE_SYNC_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_ISCOMMUNICATIONDEVICE_SYNC_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let flag: boolean | null = null;
         let AudioRoutingManager = audioManager.getRoutingManager();
@@ -1208,7 +1208,7 @@ export default function audioManagerApi9() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_ISCOMMUNICATIONDEVICE_SYNC_0200', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_ISCOMMUNICATIONDEVICE_SYNC_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let AudioRoutingManager = audioManager.getRoutingManager();
       try {
         let value = AudioRoutingManager.isCommunicationDeviceActiveSync(null)
@@ -1231,7 +1231,7 @@ export default function audioManagerApi9() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_ISCOMMUNICATIONDEVICE_SYNC_0300', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_ISCOMMUNICATIONDEVICE_SYNC_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let AudioRoutingManager = audioManager.getRoutingManager();
       try {
         let value = AudioRoutingManager.isCommunicationDeviceActiveSync(123)
@@ -1254,7 +1254,7 @@ export default function audioManagerApi9() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_ISCOMMUNICATIONDEVICE_SYNC_0400', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_ISCOMMUNICATIONDEVICE_SYNC_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       let AudioRoutingManager = audioManager.getRoutingManager();
       try {
         let value = AudioRoutingManager.isCommunicationDeviceActiveSync(strParams);
@@ -1277,7 +1277,7 @@ export default function audioManagerApi9() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_SETCOMMUNICATIONDEVICE_0100', 1, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_SETCOMMUNICATIONDEVICE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       try {
         let flag: boolean | null = null;
         let AudioRoutingManager = audioManager.getRoutingManager();
@@ -1328,7 +1328,7 @@ export default function audioManagerApi9() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_SETCOMMUNICATIONDEVICE_0200', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_SETCOMMUNICATIONDEVICE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let flag: boolean | null = null;
       let AudioRoutingManager = audioManager.getRoutingManager();
       let outputDeviceDescription = await AudioRoutingManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG);
@@ -1376,7 +1376,7 @@ export default function audioManagerApi9() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0100', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let audioVolumeManager: audio.AudioVolumeManager = audioManager.getVolumeManager();
       let VolumeGroupManager = await audioVolumeManager.getVolumeGroupManager(audio.DEFAULT_VOLUME_GROUP_ID);
       let count = 0;
@@ -1414,7 +1414,7 @@ export default function audioManagerApi9() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0200', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let audioVolumeManager = audioManager.getVolumeManager();
       let VolumeGroupManager = await audioVolumeManager.getVolumeGroupManager(audio.DEFAULT_VOLUME_GROUP_ID);
       console.info('getVolumeGroupManager Callback START.');
@@ -1451,7 +1451,7 @@ export default function audioManagerApi9() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0300', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let audioVolumeManager = audioManager.getVolumeManager();
       let VolumeGroupManager = await audioVolumeManager.getVolumeGroupManager(audio.DEFAULT_VOLUME_GROUP_ID);
       console.info('getVolumeGroupManager Callback START.');
@@ -1490,7 +1490,7 @@ export default function audioManagerApi9() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0400', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       let audioVolumeManager = audioManager.getVolumeManager();
       let VolumeGroupManager = await audioVolumeManager.getVolumeGroupManager(audio.DEFAULT_VOLUME_GROUP_ID);
       let count = 0;
@@ -1533,7 +1533,7 @@ export default function audioManagerApi9() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_2900', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_2900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         await audioManager.setVolume(audio.AudioVolumeType.ALARM, 1);
         await audioManager.mute(audio.AudioVolumeType.ALARM, true);
@@ -1579,7 +1579,7 @@ export default function audioManagerApi9() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_2901', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_2901', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         let maxVolumeSetting = await audioManager.getMaxVolume(audio.AudioVolumeType.ALARM);
         await audioManager.setVolume(audio.AudioVolumeType.ALARM, maxVolumeSetting);
@@ -1636,7 +1636,7 @@ export default function audioManagerApi9() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_2902', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_2902', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         let maxVolumeSetting = await audioManager.getMaxVolume(audio.AudioVolumeType.ALARM);
         await audioManager.setVolume(audio.AudioVolumeType.ALARM, maxVolumeSetting+1);
@@ -1694,7 +1694,7 @@ export default function audioManagerApi9() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_2903', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_2903', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         await audioManager.setVolume(audio.AudioVolumeType.ALARM, -1);
         await audioManager.mute(audio.AudioVolumeType.ALARM, true);
@@ -1751,7 +1751,7 @@ export default function audioManagerApi9() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_3000', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         await audioManager.setVolume(audio.AudioVolumeType.ACCESSIBILITY, 1);
         await audioManager.mute(audio.AudioVolumeType.ACCESSIBILITY, true);
@@ -1796,7 +1796,7 @@ export default function audioManagerApi9() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_3001', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_3001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         let maxVolumeSetting = await audioManager.getMaxVolume(audio.AudioVolumeType.ACCESSIBILITY);
         await audioManager.setVolume(audio.AudioVolumeType.ACCESSIBILITY, maxVolumeSetting);
@@ -1853,7 +1853,7 @@ export default function audioManagerApi9() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_3002', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_3002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         let maxVolumeSetting = await audioManager.getMaxVolume(audio.AudioVolumeType.ACCESSIBILITY);
         await audioManager.setVolume(audio.AudioVolumeType.ACCESSIBILITY, maxVolumeSetting+1);
@@ -1911,7 +1911,7 @@ export default function audioManagerApi9() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_3003', 2, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_3003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
       try {
         await audioManager.setVolume(audio.AudioVolumeType.ACCESSIBILITY, -1);
         await audioManager.mute(audio.AudioVolumeType.ACCESSIBILITY, true);
@@ -1968,7 +1968,7 @@ export default function audioManagerApi9() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ON_VOLUMECHANGE_0100', 3, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ON_VOLUMECHANGE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let audioVolumeManager = audioManager.getVolumeManager();
       let maxVolume = await audioManager.getMaxVolume(audio.AudioVolumeType.MEDIA)
       let minVolume = await audioManager.getMinVolume(audio.AudioVolumeType.MEDIA)
@@ -1992,7 +1992,7 @@ export default function audioManagerApi9() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ON_VOLUMECHANGE_0200', 3, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ON_VOLUMECHANGE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let audioVolumeManager = audioManager.getVolumeManager();
       try {
         let para1 : ESObject = 1;
@@ -2016,7 +2016,7 @@ export default function audioManagerApi9() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ON_VOLUMECHANGE_0300', 3, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ON_VOLUMECHANGE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       let audioVolumeManager = audioManager.getVolumeManager();
       try {
         let para1 : ESObject = '1';

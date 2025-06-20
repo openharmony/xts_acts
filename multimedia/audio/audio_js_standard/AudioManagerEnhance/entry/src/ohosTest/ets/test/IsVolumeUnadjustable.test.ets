@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import audio from '@ohos.multimedia.audio';
 import featureAbility from '@ohos.ability.featureAbility';
 import * as env from './Const.ets';
@@ -82,7 +82,7 @@ export default function audioManagerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ISVOLUMEUNADJUSTABLE_0100', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ISVOLUMEUNADJUSTABLE_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let bol = audioVolumeGroupManager.isVolumeUnadjustable();
         console.info(`isVolumeUnadjustable SUCCESS, is ${bol}`);
@@ -103,7 +103,7 @@ export default function audioManagerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ISVOLUMEUNADJUSTABLE_0200', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ISVOLUMEUNADJUSTABLE_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let bol = audioVolumeGroupManager.isVolumeUnadjustable();
         let vol = await audioVolumeGroupManager.getMinVolume(audio.AudioVolumeType.MEDIA);
@@ -127,7 +127,7 @@ export default function audioManagerTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ISVOLUMEUNADJUSTABLE_0300', 0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ISVOLUMEUNADJUSTABLE_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try {
         let bol = audioVolumeGroupManager.isVolumeUnadjustable();
         let Vol = await audioVolumeGroupManager.getVolume(audio.AudioVolumeType.MEDIA);
