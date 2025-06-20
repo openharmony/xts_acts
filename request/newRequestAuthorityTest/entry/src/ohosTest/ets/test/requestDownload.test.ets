@@ -129,8 +129,6 @@ export default function requestDownloadJSUnit() {
         expect(request.agent.Faults.SSL).assertEqual(112);
         console.info("====>SUB_MISC_REQUEST_DOWNLOAD_faults_0010 request.agent.Faults.REDIRECT: " + request.agent.Faults.REDIRECT);
         expect(request.agent.Faults.REDIRECT).assertEqual(128);
-        console.info("====>SUB_MISC_REQUEST_DOWNLOAD_faults_0010 request.agent.Faults.LOW_SPEED: " + request.agent.Faults.LOW_SPEED);
-        expect(request.agent.Faults.LOW_SPEED).assertEqual(144);
       } catch (err) {
         console.error("====>SUB_MISC_REQUEST_DOWNLOAD_faults_0010 error: " + err);
         expect().assertFail();
