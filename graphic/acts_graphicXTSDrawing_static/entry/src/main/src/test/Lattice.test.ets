@@ -170,7 +170,8 @@ export default function latticeTest() {
         expect().assertFail();
       }
       try {
-        drawing.Lattice.createImageLattice([ 200, 400 ], [ 200, 400 ], 2, 2);
+       let lattice =  drawing.Lattice.createImageLattice([ 200, 400 ], [ 200, 400 ], 2, 2);
+        expect(lattice != null || lattice != undefined).assertTrue();
         console.info(msg + ' createImageLattgitice 13 successed');
       } catch( e: BusinessError ) {
         console.info(msg + ` createImageLattice 13 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
