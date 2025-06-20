@@ -1,0 +1,16 @@
+{
+	"BuildOptions":{
+		"BUNDLE_NAME":"com.open.harmony.actsaceloadstatusenhancedtesttwo.static",
+		"SELECT_BUILD_MODE":"",
+		"BUILD_PATH":{
+			"OUTPUT_PATH":"D:\\xts_acts\\web\\web_load\\load_status\\ace_load_status_enhanced_two_static\\build\\outputs\\default"
+		},
+		"SELECT_BUILD_PRODUCT":"default"
+	},
+	"CommonInfo":{
+		"crossplatform.projectType":"",
+		"project.ide.version":"5.0.7.1",
+		"current.select.product":"default",
+		"current.select.buildMode":""
+	}
+}
