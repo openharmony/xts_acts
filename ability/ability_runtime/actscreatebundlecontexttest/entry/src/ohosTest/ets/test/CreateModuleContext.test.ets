@@ -56,6 +56,7 @@ export default function createModuleContextTest() {
       try {
         application.createModuleContext(context, 'entry_test').then((data: Context) => {
           hilog.info(0x0000, 'testTag', '%{public}s', `${tag} createBundleContext success! data is :${JSON.stringify(data)}`);
+          // getConfigurationSync
           let value = context.resourceManager.getConfigurationSync();
           hilog.info(0x0000, 'testTag', '%{public}s', `resourceManager.getConfigurationSync value is: ${JSON.stringify(value)}`)
           let direction = value.direction;
@@ -64,6 +65,47 @@ export default function createModuleContextTest() {
           expect(direction).assertEqual(0)
           expect(locale).assertEqual("zh_Hans_CN")
           expect(colorMode).assertEqual(1)
+          // getConfiguration
+          try {
+            context.resourceManager.getConfiguration((error: BusinessError, value: resourceManager.Configuration) => {
+              if (error != null) {
+                console.error("getConfiguration callback error is " + error);
+              } else {
+                hilog.info(0x0000, 'testTag', '%{public}s', `resourceManager.getConfiguration value is: ${JSON.stringify(value)}`)
+                direction = value.direction;
+                locale = value.locale;
+                colorMode = value.colorMode
+                expect(direction).assertEqual(0)
+                expect(locale).assertEqual("zh_Hans_CN")
+                expect(colorMode).assertEqual(1)
+              }
+            });
+          } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            hilog.error(0x0000, 'testTag', '%{public}s', `getConfiguration failed, error code: ${code}, message: ${message}.`);
+            expect().assertFail()
+            done();
+          }
+          // getString
+          try {
+            context.resourceManager.getString(33554435, (error: Error, value: string) => {
+              if (error != null) {
+                hilog.error(0x0000, 'testTag', '%{public}s', `getString failed, error is ${error}`);
+              } else {
+                let str = value;
+                hilog.info(0x0000, 'testTag', '%{public}s', `resourceManager.getString labelStr is: ${JSON.stringify(str)}`)
+                expect(str).assertEqual("test_label")
+              }
+            });
+          } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            hilog.error(0x0000, 'testTag', '%{public}s', `getConfiguration failed, error code: ${code}, message: ${message}.`);
+            expect().assertFail()
+            done();
+          }
+          // getStringSync
           try {
             let labelStr = context.resourceManager.getStringSync(33554435);
             hilog.info(0x0000, 'testTag', '%{public}s', `resourceManager.getStringSync labelStr is: ${JSON.stringify(labelStr)}`)
@@ -72,6 +114,8 @@ export default function createModuleContextTest() {
             let code = (error as BusinessError).code;
             let message = (error as BusinessError).message;
             hilog.error(0x0000, 'testTag', '%{public}s', `getStringSync failed, error code: ${code}, message: ${message}.`);
+            expect().assertFail()
+            done();
           }
           checkFeatureModuleContext(data, tag, done);
         }).catch((error: BusinessError) => {
