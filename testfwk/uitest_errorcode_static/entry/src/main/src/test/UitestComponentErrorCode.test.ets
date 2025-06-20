@@ -419,7 +419,7 @@ export default function uitestComponentErrorTest() {
     })
 
     /*
-    * @tc.number: UitestComponentErrorTest_015
+    * @tc.number: UitestComponentErrorTest_026
     * @tc.name: test_isScrollable_17000004_static
     * @tc.desc: isScrollable 17000004 test.
     */

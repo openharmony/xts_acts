@@ -192,6 +192,7 @@ export default function uitestDriverTest() {
       await driver.delayMs(waitUiReadyMs)
       await driver.setDisplayRotation(DisplayRotation.ROTATION_0)
       await driver.delayMs(waitUiReadyMs)
+      expect(rotation instanceof DisplayRotation).assertTrue();	  
       let rotation = await driver.getDisplayRotation()
       if (rotation == DisplayRotation.ROTATION_90) {
         console.info('The device is displayed in horizontal on default')
@@ -236,7 +237,7 @@ export default function uitestDriverTest() {
 
     /*
      * @tc.number: uitestDriverTest_0053
-     * @tc.name: testSetDisplayRotationEnabled
+     * @tc.name: testSetDisplayRotationEnabled_static
      * @tc.desc: setDisplayRotationEnabled test.
      */
     it('testSetDisplayRotationEnabled_static',TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
