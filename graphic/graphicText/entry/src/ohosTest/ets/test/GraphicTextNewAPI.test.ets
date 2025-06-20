@@ -354,14 +354,12 @@ export default function graphicTextNewAPI() {
         paragraph.layoutSync(600);
         expect(true).assertTrue();
         let lines: Array<text.TextLine> = paragraph.getTextLines();
-        let length = textLines.length;
-
-
+        let length = lines.length;
         for(let i =0 ; i < length ; i++) {
           let runs: Array<text.Run> = lines[i].getGlyphRuns();
           let x: number = 0;
           let y: number = 0;
-          for (let j = 0; j < runslength; j++) {
+          for (let j = 0; j < runs.length; j++) {
             let glyphs = runs[j].getGlyphs();
             let font = runs[j].getFont();
             try {
@@ -437,14 +435,12 @@ export default function graphicTextNewAPI() {
         paragraph.layoutSync(600);
         expect(true).assertTrue();
         let lines: Array<text.TextLine> = paragraph.getTextLines();
-        let length = textLines.length;
-
-
+        let length = lines.length;
         for(let i =0 ; i < length ; i++) {
           let runs: Array<text.Run> = lines[i].getGlyphRuns();
           let x: number = 0;
           let y: number = 0;
-          for (let j = 0; j < runslength; j++) {
+          for (let j = 0; j < runs.length; j++) {
             let glyphs = runs[j].getGlyphs();
             let font = runs[j].getFont();
             try {
@@ -463,7 +459,7 @@ export default function graphicTextNewAPI() {
             }
             try {
               let advancesNull = runs[0].getAdvances(null);
-              expect(advancesRange).assertTrue(undefined);
+              expect(advancesNull).assertTrue(undefined);
             } catch (err) {
               console.info(msg + JSON.stringify(err));
               expect().assertFail();
