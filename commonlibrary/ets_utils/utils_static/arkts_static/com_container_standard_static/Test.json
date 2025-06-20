@@ -10,7 +10,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActContainerStatic.hap"
+                "ActsContainerStaticTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
