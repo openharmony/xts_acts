@@ -169,6 +169,13 @@ export default function latticeTest() {
         console.info(msg + ` createImageLattice12 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
         expect().assertFail();
       }
+      try {
+        drawing.Lattice.createImageLattice([ 200, 400 ], [ 200, 400 ], 2, 2);
+        console.info(msg + ' createImageLattice 13 successed');
+      } catch( e: BusinessError ) {
+        console.info(msg + ` createImageLattice 13 errorCode is:  ${ e.code } + errormsg is: ${ e.message }`);
+        expect().assertFail();
+      }
     });
 
     /**
