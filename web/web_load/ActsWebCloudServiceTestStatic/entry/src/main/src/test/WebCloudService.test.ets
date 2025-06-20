@@ -118,7 +118,7 @@ export default function webCloudServiceTest() {
          */
         it('testOnProgressChange_static', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: () => void): Promise<void> => {
             Utils.emitEvent("OnProgressChange", 10);
-            Utils.registerEvent("testOnProgressChange_static", "100", 102, done);
+            Utils.registerEvent("testOnProgressChange_static", "onProgressChange", 102, done);
             await Utils.msSleep(2000);
             try {
                 let driver = Driver.create();
@@ -568,7 +568,7 @@ export default function webCloudServiceTest() {
          */
         it('testWebview_cookieManager_static', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL1, async (done: () => void): Promise<void> => {
             Utils.emitEvent("CookieManager", 10);
-            Utils.registerEvent("testWebview_cookieManager_static", "done*done*done*done", 126, done);
+            Utils.registerEvent("testWebview_cookieManager_static", "done", 126, done);
             await Utils.msSleep(2000);
             try {
                 let driver = Driver.create();
