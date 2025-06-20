@@ -102,7 +102,11 @@ export default function Prop2() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[Prop2_0300] component obj is: " + JSON.stringify(obj));
       console.info("[Prop2_0300] title: " + JSON.stringify(obj.$attrs.fontSize));
-      expect(obj.$attrs.fontSize).assertEqual('16.00fp');
+      let compareBtnStrJson = getInspectorByKey('compareBtn');
+      let compareBtnObj: ESObject = JSON.parse(compareBtnStrJson);
+      console.info("[Prop2_0300] component compareBtnObj is: " + JSON.stringify(compareBtnObj));
+      console.info("[Prop2_0300] title: " + JSON.stringify(compareBtnObj.$attrs.fontSize));
+      expect(obj.$attrs.fontSize).assertEqual(compareBtnObj.$attrs.fontSize);
       console.info('[Prop2_0300] END');
       done();
 
@@ -118,7 +122,11 @@ export default function Prop2() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[Prop2_0400] component obj is: " + JSON.stringify(obj));
       console.info("[Prop2_0400] title: " + JSON.stringify(obj.$attrs.fontSize));
-      expect(obj.$attrs.fontSize).assertEqual('16.00fp');
+      let compareBtnStrJson = getInspectorByKey('compareBtn');
+      let compareBtnObj: ESObject = JSON.parse(compareBtnStrJson);
+      console.info("[Prop2_0400] component compareBtnObj is: " + JSON.stringify(compareBtnObj));
+      console.info("[Prop2_0400] title: " + JSON.stringify(compareBtnObj.$attrs.fontSize));
+      expect(obj.$attrs.fontSize).assertEqual(compareBtnObj.$attrs.fontSize);
       console.info('[Prop2_0400] END');
       done();
 
@@ -172,7 +180,11 @@ export default function Prop2() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[Prop2_0700] component obj is: " + JSON.stringify(obj));
       console.info("[Prop2_0700] title: " + JSON.stringify(obj.$attrs.fontSize));
-      expect(obj.$attrs.fontSize).assertEqual('16.00fp');
+      let compareBtnStrJson = getInspectorByKey('compareBtn');
+      let compareBtnObj: ESObject = JSON.parse(compareBtnStrJson);
+      console.info("[Prop2_0700] component compareBtnObj is: " + JSON.stringify(compareBtnObj));
+      console.info("[Prop2_0700] title: " + JSON.stringify(compareBtnObj.$attrs.fontSize));
+      expect(obj.$attrs.fontSize).assertEqual(compareBtnObj.$attrs.fontSize);
       console.info('[Prop2_0700] END');
       done();
 
@@ -190,7 +202,11 @@ export default function Prop2() {
       let obj: ESObject = JSON.parse(strJson);
       console.info("[Prop2_0800] component obj is: " + JSON.stringify(obj));
       console.info("[Prop2_0800] title: " + JSON.stringify(obj.$attrs.fontSize));
-      expect(obj.$attrs.fontSize).assertEqual('16.00fp');
+      let compareBtnStrJson = getInspectorByKey('compareBtn');
+      let compareBtnObj: ESObject = JSON.parse(compareBtnStrJson);
+      console.info("[Prop2_0800] component compareBtnObj is: " + JSON.stringify(compareBtnObj));
+      console.info("[Prop2_0800] title: " + JSON.stringify(compareBtnObj.$attrs.fontSize));
+      expect(obj.$attrs.fontSize).assertEqual(compareBtnObj.$attrs.fontSize);
       console.info('[Prop2_0800] END');
       done();
 
