@@ -785,13 +785,13 @@ export default function extensionWindowPropertiesTest() {
       }
     })
     /**
-      * @tc.number : SUB_BASIC_WMS_WINDOW_ON_UIEXTENSION_SECURElIMITCHANGE_ERROECODE_0200
-      * @tc.name : testOffuiExtensionLimitChange_DestoryedSubWindow
-      * @tc.desc : testOffuiExtensionLimitChange_DestoryedSubWindow
-      * @tc.size : MediumTest
-      * @tc.type : Function
-      * @tc.level : Level2
-    */
+     * @tc.number : SUB_BASIC_WMS_WINDOW_ON_UIEXTENSION_SECURElIMITCHANGE_ERROECODE_0200
+     * @tc.name : testOffuiExtensionLimitChange_DestoryedSubWindow
+     * @tc.desc : testOffuiExtensionLimitChange_DestoryedSubWindow
+     * @tc.size : MediumTest
+     * @tc.type : Function
+     * @tc.level : Level2
+     */
     it('testOffuiExtensionLimitChange_DestoryedSubWindow', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async(done: Function) => {
       let caseName = 'testOffuiExtensionLimitChange_DestoryedSubWindow';
       let subWindowClass = await windowStage.createSubWindow('testOffuiExtensionLimitChange_DestoryedSubWindow');
@@ -802,7 +802,7 @@ export default function extensionWindowPropertiesTest() {
         expect().assertFail();
         done()
       } catch (error) {
-        console.error(${caseName} Failed. Cause: ${JSON.stringify(error)});
+        console.error(`${caseName} Failed. Cause: ${JSON.stringify(error)}`);
         if (error.code === 801) {
           done();
         } else {
@@ -812,7 +812,7 @@ export default function extensionWindowPropertiesTest() {
       }
     })
 
-    
+
 
 
 
