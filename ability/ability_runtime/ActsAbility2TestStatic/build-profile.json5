@@ -16,18 +16,6 @@
 {
   "app": {
     "signingConfigs": [
-      {
-        "name": "default",
-        "material": {
-          "certpath": "C:/Users/Administrator/.ohos/config/openharmony/default_ActsAbility2TestStatic_8dpLbRjgoBWOI_jHj1OEVoeT2O-fcdqsix-OEUxCp_8=.cer",
-          "storePassword": "0000001A30D840AEBC6745BAF28A64C9500DC04F1EEE642FCA3703BCCA155F9C123F0FFF0F623767E108",
-          "keyAlias": "debugKey",
-          "keyPassword": "0000001AEDBE195F61FD4B0DD790953C4DA155D64DF79BDE176479D5702F70B44007FEB1D90CF94F66AE",
-          "profile": "C:/Users/Administrator/.ohos/config/openharmony/default_ActsAbility2TestStatic_8dpLbRjgoBWOI_jHj1OEVoeT2O-fcdqsix-OEUxCp_8=.p7b",
-          "signAlg": "SHA256withECDSA",
-          "storeFile": "C:/Users/Administrator/.ohos/config/openharmony/default_ActsAbility2TestStatic_8dpLbRjgoBWOI_jHj1OEVoeT2O-fcdqsix-OEUxCp_8=.p12"
-        }
-      }
     ],
     "products": [
       {
