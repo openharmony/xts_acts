@@ -4,7 +4,6 @@ import AbilityConstant from '@ohos.app.ability.AbilityConstant';
 import window from '@ohos.window';
 import { BusinessError } from '@ohos.base';
 import hilog from '@ohos.hilog';
-import { MyCallback } from '../models/MyCallback';
 import { AppStorage } from '@ohos.arkui.stateManagement'
 import common from '@ohos.app.ability.common';
 
@@ -21,7 +20,7 @@ class EntryAbility extends UIAbility {
         hilog.info(0x0000, 'testTag EntryAbility', 'loadContent error');
         return;
       }
-      hilog.info(0x0000, 'testTag EntryAbility', 'loadContent ok'+JSON.stringify(this.context));
+      hilog.info(0x0000, 'testTag EntryAbility', 'loadContent ok');
       hilog.info(0x0000, 'testTag EntryAbility', 'onWindowStageCreate ok');
     });
   }

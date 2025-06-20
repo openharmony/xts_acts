@@ -17,8 +17,10 @@ group("storage") {
   if (is_standard_system) {
     deps = [
       "backupextensiontest:backupextension_js_test",
+      "backupextensionteststatic:backupextension_js_test_static",
       "storagebackupextensionjstest:storagebackupextension_js_test",
       "storagedownloadcloudsyncjstest:storagedownloadcloudsync_js_test",
+      "storagedownloadcloudsyncjsteststatic:storagedownloadcloudsync_js_test_static",
       "storageenvironmentjstest:storageenvironment_js_test",
       "storageenvironmentjsteststatic:storageenvironment_js_test_static",
       "storageenvironmentndktest:ActsStorageEnvironmentNdkTest",
@@ -30,11 +32,14 @@ group("storage") {
       "storagefilesharejstest:storagefileshare_js_test",
       "storagefilesharendktest:ActsStorageFileshareNdkTest",
       "storagefileurijstest:storagefileuri_js_test",
+      "storagefileurijsteststatic:storagefileuri_js_test_static",
       "storagefileurindktest:ActsStorageFileUriNdkTest",
       "storagenopermissionjstest:storagenopermission_js_test",
       "storagepickerjstest:storagepicker_js_test",
       "storagesecuritylabeljstest:storagesecuritylabel_js_test",
+      "storagesecuritylabeljsteststatic:storagesecuritylabel_js_test_static",
       "storagestatfsjstest:storagestatfs_js_test",
+      "storagestatfsjsteststatic:storagestatfs_js_test_static",
       "storagestatisticsjstest:storagestatistics_js_test",
     ]
   }
