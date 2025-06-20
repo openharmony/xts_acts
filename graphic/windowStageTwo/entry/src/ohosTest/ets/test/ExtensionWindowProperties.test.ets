@@ -65,7 +65,7 @@ export default function extensionWindowPropertiesTest() {
       await windowClass.setUIContent('testability/pages/WindowTest/EmbeddedComponentPage');
       await sleep(2000);
       let driver = Driver.create();
-      let btn = await driver.findComponent(ON.id('button1'));
+      let btn = await driver.findComponent(ON.id('Button'));
       console.log(caseName + ' btn1 : ' + btn);
 
       if (btn == undefined) {

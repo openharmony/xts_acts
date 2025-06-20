@@ -31,7 +31,7 @@ struct Extension {
         .fontSize(20)
         .fontWeight(FontWeight.Bold)
       Button("获取组件大小")
-        .id('button1')
+        .id('Button')
         .width('90%').margin({top: 5, bottom: 5}).fontSize(16).onClick(() => {
           let session: UIExtensionContentSession | undefined = storage.get<UIExtensionContentSession>("session");
           let extensionWindow: uiExtension.WindowProxy | undefined = session?.getUIExtensionWindowProxy();
