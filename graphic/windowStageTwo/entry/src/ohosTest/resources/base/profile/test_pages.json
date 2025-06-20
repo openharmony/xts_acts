@@ -29,10 +29,6 @@
     "testability/pages/shiftAppWindow/subWindow",
     "testability/pages/shiftAppWindow/mainWindow",
     "testability/pages/WindowTest/LoadContentByName",
-    "testability/pages/WindowTest/KeyBoradTest",
-     "testability/pages/WindowTest/extensionHide",
-    "testability/pages/WindowTest/extensionHide2",
-    "testability/pages/WindowTest/EmbeddedComponentHidePage",
-    "testability/pages/WindowTest/EmbeddedComponentHidePage2"
+    "testability/pages/WindowTest/KeyBoradTest"
   ]
 }
