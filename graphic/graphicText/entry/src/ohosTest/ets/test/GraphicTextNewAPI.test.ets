@@ -378,7 +378,7 @@ export default function graphicTextNewAPI() {
             }
             try {
               let advancesRange = runs[0].getAdvances({start:-1, end:2});
-              expect(advancesRange).assertTrue(undefined);
+              expect(advancesRange).assertEqual(undefined);
             } catch (err) {
               console.info(msg + JSON.stringify(err));
               expect().assertFail();
@@ -452,14 +452,14 @@ export default function graphicTextNewAPI() {
             }
             try {
               let advancesRange = runs[0].getAdvances({start:0, end:-10});
-              expect(advancesRange).assertTrue(undefined);
+              expect(advancesRange).assertEqual(undefined);
             } catch (err) {
               console.info(msg + JSON.stringify(err));
               expect().assertFail();
             }
             try {
               let advancesNull = runs[0].getAdvances(null);
-              expect(advancesNull).assertTrue(undefined);
+              expect(advancesNull).assertEqual(undefined);
             } catch (err) {
               console.info(msg + JSON.stringify(err));
               expect().assertFail();
