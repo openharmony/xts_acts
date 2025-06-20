@@ -52,7 +52,6 @@ export default function abilityTest() {
         bundleName: 'com.test.actssetfontsizetest',
         abilityName: 'setFontSizeAbility001'
       };
-      let errCode: string | undefined = undefined;
       let subscriber: commonEventManager.CommonEventSubscriber | undefined;
       let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ['setFontSize0100']
@@ -73,11 +72,19 @@ export default function abilityTest() {
                 console.error(`${caseName} Failed to subscribe common event. Code is ${err.code}, message is ${err.message}`);
               } else {
                 console.info(`${caseName} CommenEventData.data is ${data.data}`);
-                errCode = data.data;
+                expect(data.data).assertEqual('401');
+                commonEventManager.unsubscribe(subscriber, (err: BusinessError) => {
+                  if (err) {
+                    console.error(`${caseName} Failed to unsubscribe. Code is ${err.code}, message is ${err.message}`);
+                  }
+                  subscriber = undefined;
+                  console.info(`${caseName} Succeeded in unsubscribing.`);
+                  console.log(`${caseName} ends.`);
+                  done();
+                });
               }
             });
           });
-
         context.startAbility(want, (err: BusinessError) => {
           if(err.code) {
             console.error(`${caseName} Failed to startAbility.Code: ${err.code}, message: ${err.message}`);
@@ -89,17 +96,6 @@ export default function abilityTest() {
         let driver:Driver = Driver.create();
         let button1: Component = await driver.findComponent(ON.id('set and show'));
         await button1.click();
-        await sleep(4000);
-        commonEventManager.unsubscribe(subscriber, (err: BusinessError) => {
-          if (err) {
-            console.error(`${caseName} Failed to unsubscribe. Code is ${err.code}, message is ${err.message}`);
-          }
-          subscriber = undefined;
-          console.info(`${caseName} Succeeded in unsubscribing.`);
-          expect(errCode).assertEqual('401');
-          console.log(`${caseName} ends.`);
-          done();
-        });
       } catch (e) {
         console.error(`${caseName} Failed to running this case.e is ${JSON.stringify(e)}`);
       }
@@ -121,7 +117,6 @@ export default function abilityTest() {
         bundleName: 'com.test.actssetfontsizetest',
         abilityName: 'setFontSizeAbility002'
       };
-      let fontSizeScale: string | undefined = undefined;
       let subscriber: commonEventManager.CommonEventSubscriber | undefined;
       let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ['setFontSize0200'],
@@ -142,11 +137,19 @@ export default function abilityTest() {
                 console.error(`${caseName} Failed to subscribe common event. Code is ${err.code}, message is ${err.message}`);
               } else {
                 console.info(`${caseName} CommenEventData.data is ${data.data}`);
-                fontSizeScale = data.data;
+                expect(data.data).assertEqual('0');
+                commonEventManager.unsubscribe(subscriber, (err: BusinessError) => {
+                  if (err) {
+                    console.error(`${caseName} Failed to unsubscribe. Code is ${err.code}, message is ${err.message}`);
+                  }
+                  subscriber = undefined;
+                  console.info(`${caseName} Succeeded in unsubscribing.`);
+                  console.log(`${caseName} ends.`);
+                  done();
+                });
               }
             });
           });
-
         context.startAbility(want, (err: BusinessError) => {
           if(err.code) {
             console.error(`${caseName} Failed to startAbility.Code: ${err.code}, message: ${err.message}`);
@@ -160,17 +163,6 @@ export default function abilityTest() {
         await button1.click();
         let button2: Component = await driver.findComponent(ON.id('show'));
         await button2.click();
-        await sleep(4000);
-        commonEventManager.unsubscribe(subscriber, (err: BusinessError) => {
-          if (err) {
-            console.error(`${caseName} Failed to unsubscribe. Code is ${err.code}, message is ${err.message}`);
-          }
-          subscriber = undefined;
-          console.info(`${caseName} Succeeded in unsubscribing.`);
-          expect(fontSizeScale).assertEqual('0');
-          console.log(`${caseName} ends.`);
-          done();
-        });
       } catch (e) {
         console.error(`${caseName} Failed to running this case.e is ${JSON.stringify(e)}`);
       }
@@ -191,7 +183,6 @@ export default function abilityTest() {
         bundleName: 'com.test.actssetfontsizetest',
         abilityName: 'setFontSizeAbility003'
       };
-      let fontSizeScale: string | undefined = undefined;
       let subscriber: commonEventManager.CommonEventSubscriber | undefined;
       let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ['setFontSize0300'],
@@ -212,7 +203,16 @@ export default function abilityTest() {
                 console.error(`${caseName} Failed to subscribe common event. Code is ${err.code}, message is ${err.message}`);
               } else {
                 console.info(`${caseName} CommenEventData.data is ${data.data}`);
-                fontSizeScale = data.data;
+                expect(data.data).assertEqual('2');
+                commonEventManager.unsubscribe(subscriber, (err: BusinessError) => {
+                  if (err) {
+                    console.error(`${caseName} Failed to unsubscribe. Code is ${err.code}, message is ${err.message}`);
+                  }
+                  subscriber = undefined;
+                  console.info(`${caseName} Succeeded in unsubscribing.`);
+                  console.log(`${caseName} ends.`);
+                  done();
+                });
               }
             });
           });
@@ -230,17 +230,6 @@ export default function abilityTest() {
         await button1.click();
         let button2: Component = await driver.findComponent(ON.id('show'));
         await button2.click();
-        await sleep(4000);
-        commonEventManager.unsubscribe(subscriber, (err: BusinessError) => {
-          if (err) {
-            console.error(`${caseName} Failed to unsubscribe. Code is ${err.code}, message is ${err.message}`);
-          }
-          subscriber = undefined;
-          console.info(`${caseName} Succeeded in unsubscribing.`);
-          expect(fontSizeScale).assertEqual('2');
-          console.log(`${caseName} ends.`);
-          done();
-        });
       } catch (e) {
         console.error(`${caseName} Failed to running this case.e is ${JSON.stringify(e)}`);
       }
@@ -261,7 +250,6 @@ export default function abilityTest() {
         bundleName: 'com.test.actssetfontsizetest',
         abilityName: 'setFontSizeAbility004'
       };
-      let fontSizeScale: string | undefined = undefined;
       let subscriber: commonEventManager.CommonEventSubscriber | undefined;
       let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ['setFontSize0400'],
@@ -282,7 +270,17 @@ export default function abilityTest() {
                 console.error(`${caseName} Failed to subscribe common event. Code is ${err.code}, message is ${err.message}`);
               } else {
                 console.info(`${caseName} CommenEventData.data is ${data.data}`);
-                fontSizeScale = data.data;
+                expect(data.data).assertEqual('9999999');
+                commonEventManager.unsubscribe(subscriber, (err: BusinessError) => {
+                  if (err) {
+                    console.error(`${caseName} Failed to unsubscribe. Code is ${err.code}, message is ${err.message}`);
+                  }
+                  subscriber = undefined;
+                  console.info(`${caseName} Succeeded in unsubscribing.`);
+
+                  console.log(`${caseName} ends.`);
+                  done();
+                });
               }
             });
           });
@@ -300,16 +298,6 @@ export default function abilityTest() {
         let button2: Component = await driver.findComponent(ON.id('show'));
         await button2.click();
         await sleep(4000);
-        commonEventManager.unsubscribe(subscriber, (err: BusinessError) => {
-          if (err) {
-            console.error(`${caseName} Failed to unsubscribe. Code is ${err.code}, message is ${err.message}`);
-          }
-          subscriber = undefined;
-          console.info(`${caseName} Succeeded in unsubscribing.`);
-          expect(fontSizeScale).assertEqual('9999999');
-          console.log(`${caseName} ends.`);
-          done();
-        });
       } catch (e) {
         console.error(`${caseName} Failed to running this case.e is ${JSON.stringify(e)}`);
       }
@@ -330,7 +318,6 @@ export default function abilityTest() {
         bundleName: 'com.test.actssetfontsizetest',
         abilityName: 'setFontSizeAbility005'
       };
-      let errCode: string | undefined = undefined;
       let subscriber: commonEventManager.CommonEventSubscriber | undefined;
       let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ['setFontSize0500'],
@@ -351,7 +338,16 @@ export default function abilityTest() {
                 console.error(`${caseName} Failed to subscribe common event. Code is ${err.code}, message is ${err.message}`);
               } else {
                 console.info(`${caseName} CommenEventData.data is ${data.data}`);
-                errCode = data.data;
+                expect(data.data).assertEqual('401');
+                commonEventManager.unsubscribe(subscriber, (err: BusinessError) => {
+                  if (err) {
+                    console.error(`${caseName} Failed to unsubscribe. Code is ${err.code}, message is ${err.message}`);
+                  }
+                  subscriber = undefined;
+                  console.info(`${caseName} Succeeded in unsubscribing.`);
+                  console.log(`${caseName} ends.`);
+                  done();
+                });
               }
             });
           });
@@ -366,17 +362,6 @@ export default function abilityTest() {
         let driver:Driver = Driver.create();
         let button1: Component = await driver.findComponent(ON.id('set and show'));
         await button1.click();
-        await sleep(4000);
-        commonEventManager.unsubscribe(subscriber, (err: BusinessError) => {
-          if (err) {
-            console.error(`${caseName} Failed to unsubscribe. Code is ${err.code}, message is ${err.message}`);
-          }
-          subscriber = undefined;
-          console.info(`${caseName} Succeeded in unsubscribing.`);
-          expect(errCode).assertEqual('401');
-          console.log(`${caseName} ends.`);
-          done();
-        });
       } catch (e) {
         console.error(`${caseName} Failed to running this case.e is ${JSON.stringify(e)}`);
       }
@@ -397,7 +382,6 @@ export default function abilityTest() {
         bundleName: 'com.test.actssetfontsizetest',
         abilityName: 'setFontSizeAbility006'
       };
-      let errCode: string | undefined = undefined;
       let subscriber: commonEventManager.CommonEventSubscriber | undefined;
       let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ['setFontSize0600'],
@@ -418,7 +402,17 @@ export default function abilityTest() {
                 console.error(`${caseName} Failed to subscribe common event. Code is ${err.code}, message is ${err.message}`);
               } else {
                 console.info(`${caseName} CommenEventData.data is ${data.data}`);
-                errCode = data.data;
+                expect(data.data).assertEqual('401');
+                commonEventManager.unsubscribe(subscriber, (err: BusinessError) => {
+                  if (err) {
+                    console.error(`${caseName} Failed to unsubscribe. Code is ${err.code}, message is ${err.message}`);
+                  }
+                  subscriber = undefined;
+                  console.info(`${caseName} Succeeded in unsubscribing.`);
+
+                  console.log(`${caseName} ends.`);
+                  done();
+                });
               }
             });
           });
@@ -433,17 +427,6 @@ export default function abilityTest() {
         let driver:Driver = Driver.create();
         let button1: Component = await driver.findComponent(ON.id('set and show'));
         await button1.click();
-        await sleep(4000);
-        commonEventManager.unsubscribe(subscriber, (err: BusinessError) => {
-          if (err) {
-            console.error(`${caseName} Failed to unsubscribe. Code is ${err.code}, message is ${err.message}`);
-          }
-          subscriber = undefined;
-          console.info(`${caseName} Succeeded in unsubscribing.`);
-          expect(errCode).assertEqual('401');
-          console.log(`${caseName} ends.`);
-          done();
-        });
       } catch (e) {
         console.error(`${caseName} Failed to running this case.e is ${JSON.stringify(e)}`);
       }
@@ -464,7 +447,6 @@ export default function abilityTest() {
         bundleName: 'com.test.actssetfontsizetest',
         abilityName: 'setFontSizeAbility007'
       };
-      let errCode: string | undefined = undefined;
       let subscriber: commonEventManager.CommonEventSubscriber | undefined;
       let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ['setFontSize0700'],
@@ -485,7 +467,17 @@ export default function abilityTest() {
                 console.error(`${caseName} Failed to subscribe common event. Code is ${err.code}, message is ${err.message}`);
               } else {
                 console.info(`${caseName} CommenEventData.data is ${data.data}`);
-                errCode = data.data;
+                expect(data.data).assertEqual('401');
+                commonEventManager.unsubscribe(subscriber, (err: BusinessError) => {
+                  if (err) {
+                    console.error(`${caseName} Failed to unsubscribe. Code is ${err.code}, message is ${err.message}`);
+                  }
+                  subscriber = undefined;
+                  console.info(`${caseName} Succeeded in unsubscribing.`);
+
+                  console.log(`${caseName} ends.`);
+                  done();
+                });
               }
             });
 
@@ -501,17 +493,6 @@ export default function abilityTest() {
         let driver:Driver = Driver.create();
         let button: Component = await driver.findComponent(ON.id('set and show'));
         await button.click();
-        await sleep(4000);
-        commonEventManager.unsubscribe(subscriber, (err: BusinessError) => {
-          if (err) {
-            console.error(`${caseName} Failed to unsubscribe. Code is ${err.code}, message is ${err.message}`);
-          }
-          subscriber = undefined;
-          console.info(`${caseName} Succeeded in unsubscribing.`);
-          expect(errCode).assertEqual('401');
-          console.log(`${caseName} ends.`);
-          done();
-        });
       } catch (e) {
         console.error(`${caseName} Failed to running this case.e is ${JSON.stringify(e)}`);
       }
@@ -532,7 +513,6 @@ export default function abilityTest() {
         bundleName: 'com.test.actssetfontsizetest',
         abilityName: 'setFontSizeAbility008'
       };
-      let fontSizeScale: string | undefined = undefined;
       let subscriber: commonEventManager.CommonEventSubscriber | undefined;
       let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ['setFontSize0800'],
@@ -553,7 +533,16 @@ export default function abilityTest() {
                 console.error(`${caseName} Failed to subscribe common event. Code is ${err.code}, message is ${err.message}`);
               } else {
                 console.info(`${caseName} CommenEventData.data is ${data.data}`);
-                fontSizeScale = data.data;
+                expect(data.data).assertEqual('0');
+                commonEventManager.unsubscribe(subscriber, (err: BusinessError) => {
+                  if (err) {
+                    console.error(`${caseName} Failed to unsubscribe. Code is ${err.code}, message is ${err.message}`);
+                  }
+                  subscriber = undefined;
+                  console.info(`${caseName} Succeeded in unsubscribing.`);
+                  console.log(`${caseName} ends.`);
+                  done();
+                });
               }
             });
           });
@@ -570,17 +559,6 @@ export default function abilityTest() {
         await button1.click();
         let button2: Component = await driver.findComponent(ON.id('show'));
         await button2.click();
-        await sleep(4000);
-        commonEventManager.unsubscribe(subscriber, (err: BusinessError) => {
-          if (err) {
-            console.error(`${caseName} Failed to unsubscribe. Code is ${err.code}, message is ${err.message}`);
-          }
-          subscriber = undefined;
-          console.info(`${caseName} Succeeded in unsubscribing.`);
-          expect(fontSizeScale).assertEqual('0');
-          console.log(`${caseName} ends.`);
-          done();
-        });
       } catch (e) {
         console.error(`${caseName} Failed to running this case.e is ${JSON.stringify(e)}`);
       }
@@ -601,7 +579,6 @@ export default function abilityTest() {
         bundleName: 'com.test.actssetfontsizetest',
         abilityName: 'setFontSizeAbility009'
       };
-      let fontSizeScale: string | undefined = undefined;
       let subscriber: commonEventManager.CommonEventSubscriber | undefined;
       let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ['setFontSize0900'],
@@ -622,7 +599,16 @@ export default function abilityTest() {
                 console.error(`${caseName} Failed to subscribe common event. Code is ${err.code}, message is ${err.message}`);
               } else {
                 console.info(`${caseName} CommenEventData.data is ${data.data}`);
-                fontSizeScale = data.data;
+                expect(data.data).assertEqual('2');
+                commonEventManager.unsubscribe(subscriber, (err: BusinessError) => {
+                  if (err) {
+                    console.error(`${caseName} Failed to unsubscribe. Code is ${err.code}, message is ${err.message}`);
+                  }
+                  subscriber = undefined;
+                  console.info(`${caseName} Succeeded in unsubscribing.`);
+                  console.log(`${caseName} ends.`);
+                  done();
+                });
               }
             });
           });
@@ -639,17 +625,6 @@ export default function abilityTest() {
         await button1.click();
         let button2: Component = await driver.findComponent(ON.id('show'));
         await button2.click();
-        await sleep(4000);
-        commonEventManager.unsubscribe(subscriber, (err: BusinessError) => {
-          if (err) {
-            console.error(`${caseName} Failed to unsubscribe. Code is ${err.code}, message is ${err.message}`);
-          }
-          subscriber = undefined;
-          console.info(`${caseName} Succeeded in unsubscribing.`);
-          expect(fontSizeScale).assertEqual('2');
-          console.log(`${caseName} ends.`);
-          done();
-        });
       } catch (e) {
         console.error(`${caseName} Failed to running this case.e is ${JSON.stringify(e)}`);
       }
@@ -674,7 +649,6 @@ export default function abilityTest() {
       let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ['setFontSize1000'],
       };
-      let fontSizeScale: string | undefined = undefined;
       try {
         commonEventManager.createSubscriber(subscribeInfo,
           async (err: BusinessError, data: commonEventManager.CommonEventSubscriber) => {
@@ -691,10 +665,18 @@ export default function abilityTest() {
                 console.error(`${caseName} Failed to subscribe common event. Code is ${err.code}, message is ${err.message}`);
               } else {
                 console.info(`${caseName} CommenEventData.data is ${data.data}`);
-                fontSizeScale = data.data;
+                expect(data.data).assertEqual('9999999');
+                commonEventManager.unsubscribe(subscriber, (err: BusinessError) => {
+                  if (err) {
+                    console.error(`${caseName} Failed to unsubscribe. Code is ${err.code}, message is ${err.message}`);
+                  }
+                  subscriber = undefined;
+                  console.info(`${caseName} Succeeded in unsubscribing.`);
+                  console.log(`${caseName} ends.`);
+                  done();
+                });
               }
             });
-
           });
         context.startAbility(want, (err: BusinessError) => {
           if(err.code) {
@@ -709,17 +691,6 @@ export default function abilityTest() {
         await button1.click();
         let button2: Component = await driver.findComponent(ON.id('show'));
         await button2.click();
-        await sleep(4000);
-        commonEventManager.unsubscribe(subscriber, (err: BusinessError) => {
-          if (err) {
-            console.error(`${caseName} Failed to unsubscribe. Code is ${err.code}, message is ${err.message}`);
-          }
-          subscriber = undefined;
-          console.info(`${caseName} Succeeded in unsubscribing.`);
-          expect(fontSizeScale).assertEqual('9999999');
-          console.log(`${caseName} ends.`);
-          done();
-        });
       } catch (e) {
         console.error(`${caseName} Failed to running this case.e is ${JSON.stringify(e)}`);
       }
@@ -740,7 +711,6 @@ export default function abilityTest() {
         bundleName: 'com.test.actssetfontsizetest',
         abilityName: 'setFontSizeAbility011'
       };
-      let errCode: string | undefined = undefined;
       let subscriber: commonEventManager.CommonEventSubscriber | undefined;
       let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ['setFontSize1100'],
@@ -761,7 +731,16 @@ export default function abilityTest() {
                 console.error(`${caseName} Failed to subscribe common event. Code is ${err.code}, message is ${err.message}`);
               } else {
                 console.info(`${caseName} CommenEventData.data is ${data.data}`);
-                errCode = data.data;
+                expect(data.data).assertEqual('401');
+                commonEventManager.unsubscribe(subscriber, (err: BusinessError) => {
+                  if (err) {
+                    console.error(`${caseName} Failed to unsubscribe. Code is ${err.code}, message is ${err.message}`);
+                  }
+                  subscriber = undefined;
+                  console.info(`${caseName} Succeeded in unsubscribing.`);
+                  console.log(`${caseName} ends.`);
+                  done();
+                });
               }
             });
           });
@@ -776,17 +755,6 @@ export default function abilityTest() {
         let driver:Driver = Driver.create();
         let button1: Component = await driver.findComponent(ON.id('set and show'));
         await button1.click();
-        await sleep(4000);
-        commonEventManager.unsubscribe(subscriber, (err: BusinessError) => {
-          if (err) {
-            console.error(`${caseName} Failed to unsubscribe. Code is ${err.code}, message is ${err.message}`);
-          }
-          subscriber = undefined;
-          console.info(`${caseName} Succeeded in unsubscribing.`);
-          expect(errCode).assertEqual('401');
-          console.log(`${caseName} ends.`);
-          done();
-        });
       } catch (e) {
         console.error(`${caseName} Failed to running this case.e is ${JSON.stringify(e)}`);
       }
@@ -807,7 +775,6 @@ export default function abilityTest() {
         bundleName: 'com.test.actssetfontsizetest',
         abilityName: 'setFontSizeAbility012'
       };
-      let errCode: string | undefined = undefined;
       let subscriber: commonEventManager.CommonEventSubscriber | undefined;
       let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
         events: ['setFontSize1200'],
@@ -828,7 +795,16 @@ export default function abilityTest() {
                 console.error(`${caseName} Failed to subscribe common event. Code is ${err.code}, message is ${err.message}`);
               } else {
                 console.info(`${caseName} CommenEventData.data is ${data.data}`);
-                errCode = data.data;
+                expect(data.data).assertEqual('401');
+                commonEventManager.unsubscribe(subscriber, (err: BusinessError) => {
+                  if (err) {
+                    console.error(`${caseName} Failed to unsubscribe. Code is ${err.code}, message is ${err.message}`);
+                  }
+                  subscriber = undefined;
+                  console.info(`${caseName} Succeeded in unsubscribing.`);
+                  console.log(`${caseName} ends.`);
+                  done();
+                });
               }
             });
           });
@@ -843,17 +819,6 @@ export default function abilityTest() {
         let driver:Driver = Driver.create();
         let button1: Component = await driver.findComponent(ON.id('set and show'));
         await button1.click();
-        await sleep(4000);
-        commonEventManager.unsubscribe(subscriber, (err: BusinessError) => {
-          if (err) {
-            console.error(`${caseName} Failed to unsubscribe. Code is ${err.code}, message is ${err.message}`);
-          }
-          subscriber = undefined;
-          console.info(`${caseName} Succeeded in unsubscribing.`);
-          expect(errCode).assertEqual('401');
-          console.log(`${caseName} ends.`);
-          done();
-        });
       } catch (e) {
         console.error(`${caseName} Failed to running this case.e is ${JSON.stringify(e)}`);
       }
