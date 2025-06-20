@@ -51,7 +51,7 @@ class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
     hilog.info(DOMAIN, TAG, 'onWindowStageCreate');
     try {
-      windowStage.loadContent('pages/Index', (err: BusinessError<void>): void => {
+      windowStage.loadContent('pages/Index', (err: BusinessError<void> | null): void => {
         hilog.info(DOMAIN, TAG, 'loadContent entering');
         MyCallback.runCasesOfCallback();
         if (err.code) {

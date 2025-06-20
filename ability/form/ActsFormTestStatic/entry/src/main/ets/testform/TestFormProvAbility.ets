@@ -37,8 +37,9 @@ class TestFormProvAbility extends UIAbility {
     hilog.info(DOMAIN, TAG, 'onWindowStageCreate');
     this.xtsWindowStage = windowStage;
     try {
-      this.xtsWindowStage?.loadContent('testform/pages/XtsFormProvider', (err: BusinessError<void>): void => {
-        if (err.code) {
+      this.xtsWindowStage?.loadContent('testform/pages/XtsFormProvider',
+        (err: BusinessError<void> | null): void => {
+        if (err?.code) {
           hilog.info(DOMAIN, TAG, 'loadContent error');
           return;
         }
