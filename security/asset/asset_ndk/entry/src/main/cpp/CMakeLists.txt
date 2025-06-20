@@ -11,6 +11,6 @@ endif()
 include_directories(${NATIVERENDER_ROOT_PATH}
                     ${NATIVERENDER_ROOT_PATH}/include)
 
-add_library(assetNdkTest SHARED hello.cpp)
-target_link_libraries(assetNdkTest PUBLIC libace_napi.z.so)
-target_link_libraries(assetNdkTest PUBLIC libasset_ndk.z.so)
+add_library(assetndktest SHARED hello.cpp)
+target_link_libraries(assetndktest PUBLIC libace_napi.z.so)
+target_link_libraries(assetndktest PUBLIC libasset_ndk.z.so)
